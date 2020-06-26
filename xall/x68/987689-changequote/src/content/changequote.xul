@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://changequote/locale/changequote.dtd">
+<overlay id="CQoverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://changequote/content/changequote.js" />
+<script type="application/x-javascript" src="chrome://messenger/content/dateFormat.js" />
+<script type="application/x-javascript">
+<![CDATA[
+	window.addEventListener("load", CQaddListener, false);
+	window.addEventListener("unload", standardHeader, false);
+]]>
+</script>
+
+<toolbarbutton id="button-reply" type="menu-button" oncommand="MsgReplyMessage(event);">
+		<menupopup onpopupshowing="CQsetReverseLabel()">
+		<menuitem id="replyhtml" label="&CQlabelitem1;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,false);" />
+		<menuitem id="replytext" label="&CQlabelitem2;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,false);" />
+		<menuseparator />
+		<menuitem id="replyhtml_reversequote1" label="&CQlabelitem1; &noquote;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,true);" />
+		<menuitem id="replytext_reversequote1" label="&CQlabelitem2;  &noquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,true);" />
+		<menuitem id="replyhtml_reversequote2" label="&CQlabelitem1; &yesquote;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,true);" />
+		<menuitem id="replytext_reversequote2" label="&CQlabelitem2; &yesquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,true);" />
+		<menuseparator />
+		<menuitem id="reply_noquote" label="&CQnoReplyTo;" oncommand="CQnoReplyTo(event);" />
+		</menupopup>
+</toolbarbutton>
+
+<toolbarbutton id="button-replyall" type="menu-button" oncommand="MsgReplyToAllMessage(event);">
+		<menupopup onpopupshowing="CQsetReverseLabelALL()">
+		<menuitem id="replyallhtml" label="&CQlabelitem1;"  tooltiptext="&CQlabelitem1;" oncommand="replyAllHTML(event,false);" />
+		<menuitem id="replyalltext" label="&CQlabelitem2;"  tooltiptext="&CQlabelitem2;"  oncommand="replyAllText(event,false);" />
+		<menuseparator />
+		<menuitem id="replyhtmlALL_reversequote1" label="&CQlabelitem1; &noquote;" tooltiptext="&CQlabelitem1;" oncommand="replyAllHTML(event,true);" />
+		<menuitem id="replytextALL_reversequote1" label="&CQlabelitem2;  &noquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyAllText(event,true);" />
+		<menuitem id="replyhtmlALL_reversequote2" label="&CQlabelitem1; &yesquote;" tooltiptext="&CQlabelitem1;" oncommand="replyAllHTML(event,true);" />
+		<menuitem id="replytextALL_reversequote2" label="&CQlabelitem2; &yesquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyAllText(event,true);" />
+		</menupopup>
+</toolbarbutton>
+
+<button id="hdrReplyToSenderButton" type="menu-button" class="toolbarbutton-1 msgHeaderView-button hdrReplyButton">
+	<menupopup id="hdrReplyToSenderDropdown" onpopupshowing="CQsetReverseLabelHRD()">
+		<menuseparator />
+		<menuitem label="&CQlabelitem1;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,false);" />
+		<menuitem label="&CQlabelitem2;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,false);" />
+		<menuseparator />
+		<menuitem id="replyhtml_reversequote_hrd3" label="&CQlabelitem1; &noquote;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,true);" />
+		<menuitem id="replytext_reversequote_hrd3" label="&CQlabelitem2;  &noquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,true);" />
+		<menuitem id="replyhtml_reversequote_hrd4" label="&CQlabelitem1; &yesquote;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,true);" />
+		<menuitem id="replytext_reversequote_hrd4" label="&CQlabelitem2; &yesquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,true);" />
+		<menuseparator />
+		<menuitem label="&CQnoReplyTo;" oncommand="CQnoReplyTo(event);" />
+	</menupopup>
+</button>
+
+<button id="hdrReplyButton" type="menu-button" class="toolbarbutton-1 msgHeaderView-button hdrReplyButton">
+<menupopup id="hdrReplyDropdown" onpopupshowing="CQsetReverseLabelHRD()">
+		<menuseparator />
+		<menuitem label="&CQlabelitem1;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,false);" />
+		<menuitem label="&CQlabelitem2;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,false);" />
+		<menuseparator />
+		<menuitem id="replyhtml_reversequote_hrd1" label="&CQlabelitem1; &noquote;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,true);" />
+		<menuitem id="replytext_reversequote_hrd1" label="&CQlabelitem2;  &noquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,true);" />
+		<menuitem id="replyhtml_reversequote_hrd2" label="&CQlabelitem1; &yesquote;" tooltiptext="&CQlabelitem1;" oncommand="replyHTML(event,true);" />
+		<menuitem id="replytext_reversequote_hrd2" label="&CQlabelitem2; &yesquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyText(event,true);" />
+		<menuseparator />
+		<menuitem label="&CQnoReplyTo;" oncommand="CQnoReplyTo(event);" />
+</menupopup>
+</button>
+
+<menupopup id="hdrReplyAllDropdown" onpopupshowing="CQsetReverseLabelAllHRD()">
+		<menuseparator />
+		<menuitem label="&CQlabelitem1;"  tooltiptext="&CQlabelitem1;" oncommand="replyAllHTML(event,false);" />
+		<menuitem label="&CQlabelitem2;"  tooltiptext="&CQlabelitem2;"  oncommand="replyAllText(event,false);" />
+		<menuseparator />
+		<menuitem id="replyhtmlALL_reversequote_hrd1" label="&CQlabelitem1; &noquote;" tooltiptext="&CQlabelitem1;" oncommand="replyAllHTML(event,true);" />
+		<menuitem id="replytextALL_reversequote_hrd1" label="&CQlabelitem2;  &noquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyAllText(event,true);" />
+		<menuitem id="replyhtmlALL_reversequote_hrd2" label="&CQlabelitem1; &yesquote;" tooltiptext="&CQlabelitem1;" oncommand="replyAllHTML(event,true);" />
+		<menuitem id="replytextALL_reversequote_hrd2" label="&CQlabelitem2; &yesquote;"  tooltiptext="&CQlabelitem2;" oncommand="replyAllText(event,true);" />
+</menupopup>
+			
+</overlay>
+

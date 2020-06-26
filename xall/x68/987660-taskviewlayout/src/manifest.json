@@ -3,37 +3,31 @@
              "applications": {
                 "gecko": {
                    "id": "TaskviewLayout@Sungho.Hwang",
-                   "strict_min_version": "68.0"
+                   "strict_min_version": "71.0"
                     }
              },
 	"name": "TaskviewLayout",
-	"version": "55.3",
-	"description": "Layout taskview",
+	"version": "60.4",
+	"description": "Put task view up to read document of long sentences. Put task view neutrally to read tree lists. Put task view vertically to read document in which records are many. For height of neutrally horizontal view, it is changeable before any event. For changing sizes of vertical task view, they are not available, it is good not to resize task tree which was shrunk enough. Instead, See task view to close Today pane. Please, let me know whether default sizes of task tree, task view are needed to change them. praise Cardinal Soo-Hwan, Kim.",
              "icons": {
-               "32": "icons/taskviewlayout32.png",
-               "16": "icons/taskviewlayout16.png"
+               "32": "icons/taskviewlayout32.png"
                  },
-"background": {
-  "scripts": ["content/background.js"]
-},
-"permissions": [
-    "menus",
-    "activeTab",
-  "*://developer.mozilla.org/*",
-  "webRequest",
-  "*://mozilla.org/*",
-  "tabs",
-  "tabHide"
-  ],
 "browser_action": {
     "default_icon": "icons/taskviewlayout32.png",
-    "default_title": "Taskview layout",
-    "default_popup": "content/taskviewlayout.html"
+    "default_title": "TaskviewLayout",
+    "default_popup": "popup.html"
   },
 "content_scripts": [
   {
-    "matches": ["*://*.mozilla.org/*"],
-    "js": ["content/taskviewlayout.js", "content/taskviewlayout1.js", "content/taskviewlayout2.js", "content/taskviewlayout3.js"]
+    "matches": ["*://developer.mozilla.org/*"],
+    "js": ["form1.js", "form2.js", "form3.js", "form4.js", "refresh5.js"]
   }
-]
+],
+"permissions": [
+  "webRequest", "webNavigation", "tabs", "nativeMessaging", "activeTab", "tabHide", "*://developer.mozilla.org/*", "<all_urls>",
+"https://www.thunderbird.net/*", "https://start.thunderbird.net/*"
+        ],
+"background": {
+  "scripts": ["background1.js", "background2.js", "background3.js", "background4.js", "background5.js"]
+}
 }

@@ -5,7 +5,11 @@ function autoAddressCleanerMain(evt)
 	var msgType = document.getElementById("msgcomposeWindow").getAttribute("msgtype");
 	//Now: 0, Later: 1, Save: 2, SaveAs: 3, SaveAsDraft: 4, SaveAsTemplate: 5, SendUnsent: 6, AutoSaveAsDraft: 7, Background: 8
 	//console.log(document.getElementById("msgcomposeWindow").getAttribute("msgtype"));
-	var donothing = [2, 4, 7, 5];
+	//var donothing = [2, 4, 7, 5];
+	var donothing = [Ci.nsIMsgCompDeliverMode.Save,
+					 Ci.nsIMsgCompDeliverMode.SaveAsDraft,
+					 Ci.nsIMsgCompDeliverMode.AutoSaveAsDraft,
+					 Ci.nsIMsgCompDeliverMode.SaveAsTemplate];
 	if (gMsgCompose && gMsgCompose.compFields)
 	{
 	    //if (msgType == nsIMsgCompDeliverMode.Save ||

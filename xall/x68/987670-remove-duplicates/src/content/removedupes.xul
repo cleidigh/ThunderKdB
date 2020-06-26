@@ -20,6 +20,12 @@
    label="&removedupes.popupmenuname;"
    insertafter="folderPaneContext-compact"
    oncommand="removeDupes.Rdm.removeDuplicateMessages();"/>
+  <menuitem id="folderPaneContext-removeDuplicatesPrefs"
+   label="&removedupesPrefs.title;"
+   insertafter="folderPaneContext-removeDuplicateMessages"
+   oncommand="removeDupes.PrefDialog.showRemoveDuplicatesPrefs();"/>
+  <menuseparator 
+   insertafter="folderPaneContext-removeDuplicatesPrefs" />
  </popup>
 
 </overlay>

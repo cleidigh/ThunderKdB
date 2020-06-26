@@ -1,5 +1,5 @@
 let form = document.querySelector("form");
-let serverUrl = form.querySelector(`input[name="serverUrl"]`);
+let webdavUrl = form.querySelector(`input[name="webdavUrl"]`);
 let username = form.querySelector(`input[name="username"]`);
 let token = form.querySelector(`input[name="token"]`);
 let path = form.querySelector(`input[name="path"]`);
@@ -14,8 +14,8 @@ let accountId = new URL(location.href).searchParams.get("accountId");
 
 browser.storage.local.get([accountId]).then(accountInfo => {
   if (accountId in accountInfo) {
-    if ("serverUrl" in accountInfo[accountId]) {
-      serverUrl.value = accountInfo[accountId].serverUrl;
+    if ("webdavUrl" in accountInfo[accountId]) {
+      webdavUrl.value = accountInfo[accountId].webdavUrl;
     }
     if ("username" in accountInfo[accountId]) {
       username.value = accountInfo[accountId].username;
@@ -36,11 +36,11 @@ button.onclick = async () => {
     return;
   }
 
-  serverUrl.disabled = username.disabled = token.disabled = path.disabled = button.disabled = true;
-  let serverUrl_value = serverUrl.value;
-  if (!serverUrl_value.endsWith("/")) {
-    serverUrl_value += "/";
-    serverUrl.value = serverUrl_value;
+  webdavUrl.disabled = username.disabled = token.disabled = path.disabled = button.disabled = true;
+  let webdavUrl_value = webdavUrl.value;
+  if (!webdavUrl_value.endsWith("/")) {
+    webdavUrl_value += "/";
+    webdavUrl.value = webdavUrl_value;
   }
   let path_value = path.value;
   if (!path_value.endsWith("/")) {
@@ -55,7 +55,7 @@ button.onclick = async () => {
   let start = Date.now();
   await browser.storage.local.set({
     [accountId]: {
-      serverUrl: serverUrl_value,
+      webdavUrl: webdavUrl_value,
       username: username.value,
       token: token.value,
       path: path_value
@@ -63,6 +63,6 @@ button.onclick = async () => {
   });
   await browser.cloudFile.updateAccount(accountId, { configured: true });
   setTimeout(() => {
-    serverUrl.disabled = username.disabled = token.disabled = path.disabled = button.disabled = false;
+    webdavUrl.disabled = username.disabled = token.disabled = path.disabled = button.disabled = false;
   }, Math.max(0, start + 500 - Date.now()));
 };

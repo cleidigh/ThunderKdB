@@ -1,0 +1,53 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+SYNTAX FÖR ANPASSADE HUVUDEN
+
+%%1 = avsändare 
+%%2 = mottagare 
+%%3 = mottagare (Kopia:)
+%%4 = ämne
+%%5 = datum 
+%%6 = avsändare (endast namn) 
+%%7 = avsändare (endast adress)
+%%8 = mottagare (endast namn) 
+%%9 = mottagare (Kopia: - endast namn) 
+
+De delar som är omslutna av {{ och }} visas
+endast om huvudet inuti dem inte är null.
+Det betyder att ett huvud med
+
+Till: %%2{{ och %%3}} 
+
+kommer att ge
+
+Till: mail1@xxx.org (om Kopia: är null)
+Till: mail1@xxx.org och mail2@xxx.org (om Kopia: är mail2@xxx.org)
+
+
+SYNTAX FÖR ANPASSADE DATUMFORMAT
+
+%d = dag i månaden, 2 siffror ("01" till "31")
+%D = dag i veckan, textuell, engelska, 3 bokstäver ("Fri")
+%m = månad ("01" till "12")
+%M = månad, textuell, engelska, 3 bokstäver ("Oct")
+%y = år, 2 siffror ("99")
+%Y = år, 4 siffror ("1999")
+%i = minuter ("00" till "59")
+%s = sekunder ("00" till "59")
+%H = timmar, 24-timmarsformat ("00" till "23")
+%h = timmar, 12-timmarsformat ("01" till "12")
+%A = "AM" eller "PM"
+%a = "am" eller "pm"
+%e = space-filled date of month
+%z = timezone offset from UTC
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

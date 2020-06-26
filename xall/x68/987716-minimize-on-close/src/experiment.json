@@ -1,0 +1,47 @@
+[
+  {
+    "namespace": "ex_windows",
+    "functions": [
+      {
+        "name": "lockWindow",
+        "type": "function",
+        "async": true,
+        "description": "Prevents closing the given window. Whenever the window would get closed, the onClosing event is triggered instead of the onRemoved event.",
+        "parameters": [
+          {
+            "name": "windowId",
+            "type": "integer",
+            "description": "Window ID of the window to prevent closing of, as defined for the 'windows' API schema"
+          }
+        ]
+      },
+      {
+        "name": "unlockWindow",
+        "type": "function",
+        "async": true,
+        "description": "Permits closing a window previously locked with lockWindow(windowId). Has no effect if the window was not locked.",
+        "parameters": [
+          {
+            "name": "windowId",
+            "type": "integer",
+            "description": "Window ID of the window to prevent closing of, as defined for the 'windows' API schema"
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onClosing",
+        "type": "function",
+        "description": "Called instead of closing the window, whenever a window locked with lockWindow(windowId) attempts to get closed.",
+        "parameters": [
+          {
+            "name": "windowId",
+            "type": "integer",
+            "description": "Window ID of the locked window that would have been closed"
+          }
+        ]
+      }
+    ]
+  }
+]

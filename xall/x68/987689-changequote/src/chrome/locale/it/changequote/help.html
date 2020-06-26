@@ -1,0 +1,52 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+SINTASSI PER LE INTESTAZIONI PERSONALIZZATE
+
+%%1 = autore
+%%2 = destinatari
+%%3 = destinatari (CC)
+%%4 = oggetto
+%%5 = data 
+%%6 = autore (solo nome) 
+%%7 = autore (solo email)
+%%8 = destinatari (solo nome)
+%%9 = destinatari (CC - solo nome)
+
+Le parti racchiuse tra {{ e }} sono mostrate solo
+se l'intestazione all'interno non è nulla.
+Questo significa che con un'intestazione con
+
+A : %%2{{ and %%3}} 
+
+si avrà
+
+A : mail1@xxx.org (se CC è nullo)
+A : mail1@xxx.org and mail2@xxx.org (se CC è mail2@xxx.org)
+
+
+SINTASSI PER IL FORMATO PERSONALIZZATO DELLA DATA
+
+%d = giorno del mese a 2 cifre ("01" - "31")
+%D = giorno del mese, testo, inglese, 3 lettere ("Fri")
+%m = mese ("01" - "12")
+%M = mese, testo, inglese, 3 lettere ("Jan")
+%Y, %y = anno, 4 cifre ("1999")
+%i = minuti ("00" to "59")
+%s = secondi ("00" to "59")
+%H = ora, formato 24 ore ("00" - "23")
+%h = ora, formato 12 ore ("01" - "12")
+%A = "AM" o "PM"
+%a = "am" o "pm"
+%e = giorno del mese con spazi
+%z = fuso orario rispetto all'UTC
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

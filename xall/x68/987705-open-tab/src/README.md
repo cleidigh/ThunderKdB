@@ -7,4 +7,4 @@ This extension opens the link in new tab.
 This extension includes:
 
 * open URL in new tab:
-  - only
+  - This feature only

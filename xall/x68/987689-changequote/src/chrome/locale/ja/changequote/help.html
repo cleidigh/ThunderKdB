@@ -1,0 +1,52 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+[カスタマイズ用の変換構文]
+
+%%1 = 差出人 (From)
+%%2 = 受取人 (To)
+%%3 = 同報受取人 (Cc)
+%%4 = 件名 (Subject)
+%%5 = 日付 (Date)
+%%6 = 差出人 (名前のみ)
+%%7 = 差出人 (メールアドレスのみ)
+%%8 = 受取人 (To - 名前のみ)
+%%9 = 同報受取人 (Cc - 名前のみ)
+
+内部ヘッダが空白でない場合、{{ and }} で
+囲まれた部分を表示することができます。
+これは次のような内容となります。
+
+To : %%2{{ and %%3}} 
+
+とすると下記のように展開されます。
+
+To : mail1@xxx.org (Cc が空白の場合)
+To : mail1@xxx.org and mail2@xxx.org (Cc が mail2@xxx.org の場合)
+
+
+[カスタマイズ用の日付変換構文]
+
+%d = 日付 (01 ～ 31)
+%D = 曜日 ("Fri")
+%m = 月 (01 ～ 12)
+%M = 月 ("Jan")
+%Y = 年 (西暦 4 桁 "1999")
+%i = 分 (00 ～ 59)
+%s = 秒 (00 ～ 59)
+%H = 24 時間制 (00 ～ 23)
+%h = 12 時間制 (01 ～ 12)
+%A = "AM" または "PM"
+%a = "am" または "pm"
+%e = "月初からの日数"
+%z = "UTC タイムゾーン"
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

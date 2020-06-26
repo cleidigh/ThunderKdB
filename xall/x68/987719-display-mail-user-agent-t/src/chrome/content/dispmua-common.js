@@ -101,8 +101,21 @@ dispMUA.searchIcon = (strUserAgent) =>
 
     if (!strUserAgent)
     {
+      strUserAgent = dispMUA.getHeader("x-mail-agent");
+    }
+    if (!strUserAgent)
+    {
       strUserAgent = dispMUA.getHeader("x-newsreader");
     }
+  }
+  //X-Mailer may be MIME encoded. Ignored if not UTF-8
+  const target = "=?UTF-8?B?";
+  if (strUserAgent.startsWith(target)) {
+    let regExp = new RegExp(target.replace(/\?/g, "\\?"), "g");
+    strUserAgent = strUserAgent.replace(/\s/, "");
+    strUserAgent = strUserAgent.replace(regExp, "");
+    strUserAgent = strUserAgent.replace(/\?=/g, "");
+    strUserAgent = decodeURIComponent(escape(atob(strUserAgent)));
   }
 
   var strExtra = "";
@@ -119,18 +132,33 @@ dispMUA.searchIcon = (strUserAgent) =>
   else if (/*dispMUA.getHeader("x-ms-office365-filtering-correlation-id") &&
            dispMUA.getHeader("x-ms-publictraffictype"))*/
            // thanks silversonic https://twitter.com/silversonicboom
-           (dispMUA.getHeader("X-MS-Exchange-CrossTenant-fromentityheader").toLowerCase() == "hosted" &&
-            dispMUA.getHeader("X-MS-Exchange-CrossTenant-mailboxtype").toLowerCase() == "hosted") ||
-           (dispMUA.getHeader("X-MS-Exchange-CrossTenant-fromentityheader").toLowerCase() == "hosted" &&
-            dispMUA.getHeader("X-MS-Exchange-Transport-CrossTenantHeadersStamped") != "")
+           (dispMUA.getHeader("x-ms-exchange-crosstenant-fromentityheader").toLowerCase() == "hosted" &&
+            dispMUA.getHeader("x-ms-exchange-crosstenant-mailboxtype").toLowerCase() == "hosted") ||
+           (dispMUA.getHeader("x-ms-exchange-crosstenant-fromentityheader").toLowerCase() == "hosted" &&
+            dispMUA.getHeader("x-ms-exchange-transport-crosstenantheadersstamped") != "")
           )
   {
     strExtra = "o365";
   }
-  else if (dispMUA.getHeader("X-Correlation-ID"))
+  else if (dispMUA.getHeader("x-ms-exchange-crosstenant-fromentityheader").toLowerCase() == "internet" &&
+           dispMUA.getHeader("x-originatororg").toLowerCase() == "outlook.com")
   {
-    if (dispMUA.getHeader("X-Correlation-ID") == dispMUA.getHeader("Message-ID"))
+    strExtra = "oweb";
+  }
+  else if (dispMUA.getHeader("x-correlation-id"))
+  {
+    if (dispMUA.getHeader("x-correlation-id") == dispMUA.getHeader("message-id"))
       strExtra = "fairemail" ;
+  }
+  else if (dispMUA.getHeader("x-ebay-mailtracker"))
+  {
+    let re = /d=(export\.)?ebay\.[\.a-z]{2,6};/
+    if (re.test(dispMUA.headers.extractHeader("dkim-signature", true))) strExtra = "ebay" ;
+    else if (dispMUA.getHeader("message-id").endsWith("@starship>")) strExtra = "ebay" ;
+  }
+  else if (dispMUA.getHeader("sender") == dispMUA.getHeader("from"))
+  {
+    if (dispMUA.getHeader("sender").endsWith("ebay.com>")) strExtra = "ebay" ;
   }
 
   strUserAgent = strUserAgent.replace(/(^\s+)|(\s+$)/g, "");
@@ -140,7 +168,9 @@ dispMUA.searchIcon = (strUserAgent) =>
   if (strUserAgent != "")
   {
     dispMUA.Info["STRING"] = strUserAgent;
-    var lower = strUserAgent.toLowerCase();
+    //var lower = strUserAgent.toLowerCase();
+    //MUA string starts with "WebService", Yahoo! Mail, maybe
+    var lower = strUserAgent.toLowerCase().replace(/^webservice\/[0-9\. ]+/, "");
 
     //user overlay array
     for (let key in dispMUA.arDispMUAOverlay)
@@ -206,29 +236,41 @@ dispMUA.searchIcon = (strUserAgent) =>
 
     if (dispMUA.Info["ICON"] == "thunderbird.png")
     {
+      let re = /rv:(\d{1,2}\.\d)/g;
+      let arr = re.exec(lower);
+      let rv = 2;
+      if (arr) rv = Number(arr[1]);
+      re = /thunderbird[\/ ]([0-9a-z\.]+)/;
+      arr = re.exec(lower);
+      let ver = arr[1];
+      let tb = "thunderbird";
+      if (ver.indexOf('a') > 0) tb = "daily";
+      else if (ver.indexOf('b') > 0) tb = "earibird";
+      else if (rv >= 60) tb += "60";
+      tb += "-";
       if (lower.indexOf("; linux") > -1)
       {
-        dispMUA.Info["ICON"] = "thunderbird-linux.png";
+        dispMUA.Info["ICON"] = tb + "linux.png";
       }
       else if ((lower.indexOf("(windows") > -1) || (lower.indexOf("; windows") > -1))
       {
-        dispMUA.Info["ICON"] = "thunderbird-windows.png";
+        dispMUA.Info["ICON"] = tb + "windows.png";
       }
       else if ((lower.indexOf("(macintosh") > -1) || (lower.indexOf("; intel mac") > -1) || (lower.indexOf("; ppc mac") > -1))
       {
-        dispMUA.Info["ICON"] = "thunderbird-mac.png";
+        dispMUA.Info["ICON"] = tb + "mac.png";
       }
       else if (lower.indexOf("; sunos") > -1)
       {
-        dispMUA.Info["ICON"] = "thunderbird-sunos.png";
+        dispMUA.Info["ICON"] = tb + "sunos.png";
       }
       else if (lower.indexOf("; freebsd") > -1)
       {
-        dispMUA.Info["ICON"] = "thunderbird-freebsd.png";
+        dispMUA.Info["ICON"] = tb + "freebsd.png";
       }
       else if (lower.indexOf("(x11") > -1)
       {
-        dispMUA.Info["ICON"] = "thunderbird-x11.png";
+        dispMUA.Info["ICON"] = tb + "x11.png";
       }
     }
   }
@@ -253,11 +295,25 @@ dispMUA.searchIcon = (strUserAgent) =>
       dispMUA.Info["URL"] = "https://outlook.com";
       dispMUA.Info["FOUND"] = true;
     }
+    else if (strExtra == "oweb")
+    {
+      dispMUA.Info["ICON"] = "o365outlook.png";
+      dispMUA.Info["STRING"] = "Outlook.com";
+      dispMUA.Info["URL"] = "https://outlook.com";
+      dispMUA.Info["FOUND"] = true;
+    }
     else if (strExtra == "fairemail")
     {
       dispMUA.Info["ICON"] = "fairemail.png";
       dispMUA.Info["STRING"] = "FairEmail";
       dispMUA.Info["URL"] = "https://email.faircode.eu/";
+      dispMUA.Info["FOUND"] = true;
+    }
+    else if (strExtra == "ebay")
+    {
+      dispMUA.Info["ICON"] = "ebay2012.png";
+      dispMUA.Info["STRING"] = "eBay";
+      dispMUA.Info["URL"] = "https://www.ebay.com/";
       dispMUA.Info["FOUND"] = true;
     }
   }
@@ -376,12 +432,18 @@ dispMUA.showInfo = () =>
 
 /*
 *  change icon position
-*  iconPosition: true = lest, false = right(default)
+*  iconPosition: true = left, false = right(default)
 */
 dispMUA.changeIconPosition = (iconPosition) =>
 {
+  let cohe = document.getElementById("CompactHeader_dispMUAexp");
+  if (cohe) {
+    if (!cohe.getAttribute("style")) {
+      cohe.setAttribute("style", "flex-shrink: 0;");
+    }
+  }
   var dispMUAelem = document.getElementById("dispMUA");
-  var cohe = document.getElementById("CompactHeader_collapsedHeaderView");
+  cohe = document.getElementById("CompactHeader_collapsedHeaderView");
   if (iconPosition)
   {
     document.getElementById("expandedHeadersBottomBox").insertBefore(document.getElementById("dispMUA"), document.getElementById("expandedHeaders2"));
@@ -407,7 +469,8 @@ dispMUA.loadJSON = (fname) =>
 {
   var req = new XMLHttpRequest();
   req.open("GET", "chrome://dispmua/content/" + fname , true);
-  req.overrideMimeType("text/plain; charset=x-user-defined");
+  //req.overrideMimeType("text/plain; charset=x-user-defined");
+  req.overrideMimeType("application/json; charset=UTF-8");
 
   req.onreadystatechange = (aEvt) =>
   {
@@ -586,7 +649,7 @@ dispMUA.infopopup = () =>
       param[3] = dispMUA.bundle.GetStringFromName("dispMUA.supported");
     }
 
-    window.openDialog("chrome://dispmua/content/feedback.xul",
+    window.openDialog("chrome://dispmua/content/feedback.xhtml",
       "feedback", "chrome=yes,centerscreen",
       param[0], param[1], param[2], param[3], param[4], param[5]);
   }

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/primaryToolbar.css"?>
+<?xml-stylesheet href="chrome://dispmua/skin/dispmua.css" type="text/css"?>
+
+<!DOCTYPE window SYSTEM "chrome://dispmua/locale/dispmua.dtd">
+
+<window xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="dispmuaFeedback"
+	title="dispMUA: &feedback.title;"
+	autostretch="always"
+	orient="vertical"
+	onkeypress="doKeypress(event);"
+	onload="init();">
+
+    <script src="chrome://global/content/preferencesBindings.js"/>
+	<script src="chrome://dispmua/content/feedback.js"/>
+	<script src="chrome://global/content/globalOverlay.js"/>
+	<script src="chrome://global/content/editMenuOverlay.js.js"/>
+
+	<groupbox orient="horizontal" class="groupbox">
+		<vbox flex="1">
+			<vbox><html:input id="feedback-MUA1" class="plain" readonly="true" style="min-width:280px; width:100%; background:none; font-weight:bold; font-size:large;"/></vbox>
+			<vbox><html:input id="feedback-MUA2" class="plain" readonly="true" style="width:100%; background:none;"/></vbox>
+			<spacer minheight="3"/>
+			<vbox><html:label id="feedback-supported"/></vbox>
+		</vbox>
+		<spacer minwidth="10"/>
+		<vbox>
+			<spacer flex="1"/>
+			<image id="feedback-icon" onclick="doOpenURL();" style="width:48px; height:48px;"/>
+			<spacer flex="1"/>
+		</vbox>
+		<vbox>
+			<image id="feedback-throbber" src="chrome://dispmua/skin/throbber.png" style="width:16px; height:16px; margin-left:3px;"/>
+			<spacer flex="1"/>
+		</vbox>
+	</groupbox>
+	<groupbox orient="vertical" class="groupbox">
+		<vbox><html:input id="feedback-mailinfo1" class="plain" readonly="true" style="width:100%; background:none;"/></vbox>
+		<separator class="thin"/>
+		<vbox><html:input id="feedback-mailinfo2" class="plain" readonly="true" style="width:100%; background:none;"/></vbox>
+		<separator class="thin"/>
+		<vbox><html:input id="feedback-iconinfo" class="plain" readonly="true" style="width:100%; background:none;"/></vbox>
+	</groupbox>
+	<groupbox class="groupbox">
+		<checkbox id="feedback-checkbox" preference="extensions.dispMUA.iconPosition" label="&icon.position.label;"/>
+	</groupbox>
+	<hbox>
+		<button label="&feedback.button.send;" onclick="doSend();" id="feedback-button-send"/>
+		<spacer flex="1"/>
+		<button label="&feedback.button.close;" onclick="doClose();" id="feedback-button-close"/>
+	</hbox>
+	<separator class="thin"/>
+</window>

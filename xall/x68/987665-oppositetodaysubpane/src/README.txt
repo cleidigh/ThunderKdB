@@ -1,12 +1,12 @@
-README version 1.4
+README version 1.6
 
 Title: OppositeTodaySubpane
-Main source: install.rdf, chrome.manifest, oppositetodaysubpane.xul.
+Main source: manifest.json.
 Required addons: Lightning
 Description: 
 When today pane is hidden for wide view, it is to remain Today subpane on folder pane and calendar mini-month or subscription pane.
 
 
-September 1 2019.
+January 29 2020.
 
 From Sungho Hwang.

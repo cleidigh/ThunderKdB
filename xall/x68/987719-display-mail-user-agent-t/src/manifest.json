@@ -2,18 +2,19 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.8.6",
+  "version": "1.8.13.20",
   "default_locale": "en_US",
   "author": "Jürgen Ernst, Dipl.-Ing.(FH)/Toshi_",
-  "homepage_url": "https://addons.thunderbird.net/ja/thunderbird/addon/display-mail-user-agent-t/",
+  "homepage_url": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
   "legacy": true,
   "applications": {
     "gecko": {
       "id": "DisplayMailUserAgent-T@Toshi_",
-      "strict_min_version": "60.0"
+      "strict_min_version": "68.0"
     }
   }, 
   "icons": {
-    "32": "chrome/skin/classic/logo.png"
+    "32": "chrome/skin/classic/logo.png",
+    "64": "chrome/skin/classic/logo64.png"
   }
 }

@@ -43,8 +43,9 @@
       <li>
         <label>
           <h2 data-message="serverURLLabel"></h2>
+          <img src="images/webdav-files.png" alt="WebDav URL from Settings" width="400" height="315" />
           <p data-message="serverURLDesc"></p>
-          <input type="url" name="serverUrl" required="true" placeholder="https://my.owncloud.server/owncloud" />
+          <input type="url" name="webdavUrl" required="true" placeholder="https://my.owncloud.server/remote.php/dav/files/username/" />
         </label>
       </li>
       <li>
@@ -65,7 +66,7 @@
         <label>
           <h2 data-message="pathLabel"></h2>
           <p data-message="pathDesc"></p>
-          <input type="text" name="path" placeholder="/MailAttachments" value="/MailAttachments" />
+          <input type="text" name="path" placeholder="/MailAttachments/" value="/MailAttachments/" />
         </label>
       </li>
     </ul>

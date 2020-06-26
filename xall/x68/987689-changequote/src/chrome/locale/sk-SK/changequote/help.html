@@ -1,0 +1,52 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+SYNTAX FOR CUSTOMIZED HEADERS
+
+%%1 = author 
+%%2 = recipients 
+%%3 = recipients (CC)
+%%4 = subject
+%%5 = date 
+%%6 = author (name only) 
+%%7 = author (address only)
+%%8 = recipients (name only)
+%%9 = recipients (CC - name only)
+
+The parts enclosed between {{ and }} are displayed
+just if the header inside is not null.
+This means that a header with
+
+To : %%2{{ and %%3}} 
+
+will give
+
+To : mail1@xxx.org (if CC is null)
+To : mail1@xxx.org and mail2@xxx.org (if CC is mail2@xxx.org)
+
+
+SYNTAX FOR CUSTOMIZED DATE FORMAT
+
+%d = day of the month, 2 digits ("01" to "31")
+%D = day of the week, textual, english, 3 letters ("Fri")
+%m = month ("01" to "12")
+%M = month, textual, english, 3 letters ("Jan")
+%Y, %y = year, 4 digits ("1999")
+%i = minutes ("00" to "59")
+%s = seconds ("00" to "59")
+%H = hour, 24-hour format ("00" to "23")
+%h = hour, 12-hour format ("01" to "12")
+%A = "AM" or "PM"
+%a = "am" or "pm"
+%e = space-filled date of month
+%z = timezone offset from UTC
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

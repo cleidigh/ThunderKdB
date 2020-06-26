@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "applications": {
+        "gecko": {
+            "id": "changequote@caligraf",
+            "strict_min_version": "68.0"
+        }
+    },
+    "name": "changeQuote",
+    "description": "Change the reply header and the reply format",
+    "version": "1.4",
+    "homepage_url": "https://github.com/caligraf/ChangeQuote/wiki",
+    "icons": {
+		"32": "icon/icon32x32.png"
+	},
+    "legacy": {
+        "type": "xul",
+        "options": {
+            "page": "chrome://changequote/content/changequoteOptions.xul",
+            "open_in_tab": false
+        }
+    }
+}

@@ -1,35 +1,35 @@
 {
   "extensionDescription": {
-    "message": "Uploads your large attachments to your OwnCloud and instead inserts a link into your email."
+    "message": "Uploads your large attachments to your own cloud and instead inserts a public link into your email."
   },
   "extensionName": {
-    "message": "FileLink Provider for OwnCloud"
+    "message": "FileLink Provider for OwnCloud and NextCloud"
   },
   "serviceName": {
-    "message": "OwnCloud"
+    "message": "CloudFileLink"
   },
   "serverURLLabel": {
-    "message": "Server URL"
+    "message": "WebDAV URL"
   },
   "serverURLDesc": {
-    "message": "The base URL of the OwnCloud server"
+    "message": "Your Personal WebDAV file path can be found under Settings in the lower left of the Files screen."
   },
   "usernameLabel": {
     "message": "Username"
   },
   "usernameDesc": {
-    "message": "Your OwnCloud username"
+    "message": "Your OwnCloud/NextCloud username"
   },
   "tokenLabel": {
     "message": "App Token / Password"
   },
   "tokenDesc": {
-    "message": "An app token (preferrable) or password. (Generate an OwnCloud app token via User -> Settings -> Security -> App Token)  WARNING: this token is stored insecurely."
+    "message": "An app token (preferrable) or password. (Generate an app token via User -> Settings -> Security -> App Token)  WARNING: this token is stored insecurely.  NOTE: this may require the OAuth2 plugin on the server."
   },
   "pathLabel": {
     "message": "Storage Path"
   },
   "pathDesc": {
-    "message": "The path where the files are stored in OwnCloud (must begin and end with a '/')"
+    "message": "The path where the files are stored in OwnCloud (it must already exist and begin and end with a '/')"
   }
 }

@@ -20,8 +20,10 @@ removeDupes.PrefDialog =
      document.getElementById ( 'removedupesRecipientPref' ).checked             = this.checkRecipientPref();
      document.getElementById ( 'removedupesReverseSearchPref' ).checked         = this.checkReverseSearchPref();
      document.getElementById ( 'removedupesSubFolderFirstPref' ).checked        = this.checkSubFolderFirstPref();
+     document.getElementById ( 'removedupesIgnoreSubFoldersPref' ).checked      = this.checkIgnoreSubFoldersPref();
      document.getElementById ( 'removedupesExcludeTrashcanPref' ).checked       = this.checkExcludeTrashcanPref();
      document.getElementById ( 'removedupesExcludeSentfolderPref' ).checked     = this.checkExcludeSentfolderPref();
+     document.getElementById ( 'removedupesExcludeArchivesPref' ).checked       = this.checkExcludeArchivesPref();
      document.getElementById ( 'removedupesAutodeletePref' ).checked            = this.checkAutodeletePref();
      document.getElementById ( 'removedupesShowDuplicatesDialogPref' ).checked  = this.checkShowDuplicatesDialogPref();
      document.getElementById ( 'removedupesDebugInfoPref' ).checked             = this.checkDebugInfoPref();
@@ -42,8 +44,10 @@ removeDupes.PrefDialog =
      var checkRecipient       = document.getElementById('removedupesRecipientPref').checked;
      var reverseSearch        = document.getElementById('removedupesReverseSearchPref').checked;
      var subFolderFirst       = document.getElementById('removedupesSubFolderFirstPref').checked;
+     var ignoreSubFolders     = document.getElementById('removedupesIgnoreSubFoldersPref').checked;
      var excludeTrashcan      = document.getElementById('removedupesExcludeTrashcanPref').checked;
      var excludeSentfolder    = document.getElementById('removedupesExcludeSentfolderPref').checked;
+     var excludeArchives      = document.getElementById('removedupesExcludeArchivesPref').checked;
      var autodelete           = document.getElementById('removedupesAutodeletePref').checked;
      var showDuplicatesDialog = document.getElementById('removedupesShowDuplicatesDialogPref').checked;
      var debugInfo            = document.getElementById('removedupesDebugInfoPref').checked;
@@ -66,9 +70,11 @@ removeDupes.PrefDialog =
      this.pmpWritePref ( 'extensions.removedupes.checkrecipient',       checkRecipient,       this.pmpBoolean );
      this.pmpWritePref ( 'extensions.removedupes.reversesearch',        reverseSearch,        this.pmpBoolean );
      this.pmpWritePref ( 'extensions.removedupes.subfolderfirst',       subFolderFirst,       this.pmpBoolean );
+     this.pmpWritePref ( 'extensions.removedupes.ignoreSubFolders',     ignoreSubFolders,     this.pmpBoolean );
      this.pmpWritePref ( 'extensions.removedupes.autodelete',           autodelete,           this.pmpBoolean );
      this.pmpWritePref ( 'extensions.removedupes.excludeTrashcan',      excludeTrashcan,      this.pmpBoolean );
      this.pmpWritePref ( 'extensions.removedupes.excludeSentfolder',    excludeSentfolder,    this.pmpBoolean );
+     this.pmpWritePref ( 'extensions.removedupes.excludeArchives',      excludeArchives,      this.pmpBoolean );
      this.pmpWritePref ( 'extensions.removedupes.debuginfo',            debugInfo,            this.pmpBoolean );
      this.pmpWritePref ( 'extensions.removedupes.showDuplicatesDialog', showDuplicatesDialog, this.pmpBoolean );
      this.pmpWritePref ( 'extensions.removedupes.prefereddelete',       preferedDelete,       this.pmpNumber );
@@ -166,6 +172,15 @@ removeDupes.PrefDialog =
 
 
 
+   checkIgnoreSubFoldersPref : function()
+   {
+     var h = this.pmpReadPref ( 'extensions.removedupes.ignoreSubFolders',this.pmpBoolean);
+     if (h == null) h = false;
+     return h;
+   },
+
+
+
    checkExcludeTrashcanPref : function()
    {
      var h = this.pmpReadPref ( 'extensions.removedupes.excludeTrashcan',this.pmpBoolean);
@@ -179,6 +194,15 @@ removeDupes.PrefDialog =
    {
      var h = this.pmpReadPref ( 'extensions.removedupes.excludeSentfolder',this.pmpBoolean);
      if (h == null) h = true;
+     return h;
+   },
+
+
+
+   checkExcludeArchivesPref : function()
+   {
+     var h = this.pmpReadPref ( 'extensions.removedupes.excludeArchives',this.pmpBoolean);
+     if (h == null) h = false;
      return h;
    },
 

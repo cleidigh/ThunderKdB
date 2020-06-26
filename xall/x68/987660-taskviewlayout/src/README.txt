@@ -1,4 +1,4 @@
-README version 1.4
+README version 1.5
 
 Title: TaskviewLayout
 
@@ -16,6 +16,6 @@ Instead, See task view to close Today pane.
 Please, let me know whether default sizes of task tree, task view are needed to change them.
 praise Cardinal Soo-Hwan, Kim.
 
-September 05 2019.
+December 01 2019.
 
 From Sungho Hwang.

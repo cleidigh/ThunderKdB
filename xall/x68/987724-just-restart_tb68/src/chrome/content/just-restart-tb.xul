@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this file,
+   - You can obtain one at http://mozilla.org/MPL/2.0/.  -->
+
+<!DOCTYPE overlay SYSTEM "chrome://just-restart/locale/just-restart.dtd">
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/x-javascript" src="just-restart.js" />
+
+  <commandset>
+    <command id="cmd_just_restart" oncommand="jrExec();" />
+  </commandset>
+
+  <keyset>
+    <key id="key_just_restart" key="Z" modifiers="accel,shift" command="cmd_just_restart" />
+  </keyset>
+
+  <menupopup id="menu_FilePopup">
+    <menuseparator id="menu_FileRestartSeparator" insertbefore="menu_FileQuitSeparator" />
+    <menuitem id="menu_FileRestartItem" label="&jr.menu.restart.label;" key="key_just_restart" accesskey="&jr.menu.restart.accesskey;" command="cmd_just_restart" />
+  </menupopup>
+</overlay>

@@ -180,17 +180,18 @@ class CopyPatchAddon {
                  * provide one.
                  */
                 if (patch.indexOf("\nSigned-off-by: ") >= 0) {
+                    var msg = patch.split("\n---\n")[0];
                     var lastFrom = null;
 
-                    var lastFromStart = patch.lastIndexOf("From: ");
-                    if (lastFromStart > 0 && patch.charAt(lastFromStart - 1) != "\n")
+                    var lastFromStart = msg.lastIndexOf("From: ");
+                    if (lastFromStart > 0 && msg.charAt(lastFromStart - 1) != "\n")
                         lastFromStart = -1;
                     if (lastFromStart >= 0) {
-                        var lastFromEnd = patch.indexOf("\n", lastFromStart);
+                        var lastFromEnd = msg.indexOf("\n", lastFromStart);
                         if (lastFromEnd >= 0)
-                            lastFrom = patch.substring(lastFromStart + 6, lastFromEnd);
+                            lastFrom = msg.substring(lastFromStart + 6, lastFromEnd);
                     }
-                    if (lastFrom == null || patch.indexOf("\nSigned-off-by: " + lastFrom) < 0)
+                    if (lastFrom == null || msg.indexOf("\nSigned-off-by: " + lastFrom) < 0)
                         win.alert("WARNING: Author did not sign off the patch or email addresses differ.");
                 }
 

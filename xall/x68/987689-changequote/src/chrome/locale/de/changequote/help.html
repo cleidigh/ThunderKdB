@@ -1,0 +1,53 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+SYNTAX FÜR ANGEPASSTES ANTWORTFORMAT
+
+%%1 = Autor
+%%2 = Empfänger
+%%3 = Empfänger (CC)
+%%4 = Betreff
+%%5 = Datum
+%%6 = Autor (nur Name) 
+%%7 = Autor (nur Adresse)
+%%8 = Empfänger (nur Name) 
+%%9 = Empfänger (CC - nur Name) 
+
+Das Teil zwischen {{ und }} wird nur dann
+angezeigt, wenn Inhalt dazwischen nicht leer ist. 
+Das bedeutet, dass Antwortkopf
+
+An: %%2{{ und %%3}} 
+
+wird so aussehen:
+
+An: mail1@xxx.org (wenn CC leer ist)
+An: mail1@xxx.org und mail2@xxx.org (wenn CC mail2@xxx.org ist)
+
+
+SYNTAX FÜR ANGEPASSTES DATUMFORMAT
+
+%d = Tag des Monats, 2 Zahlen("01" bis "31")
+%D = Tag der Woche, 3 Buchstaben("Fri")
+%m = Monat("01" bis "12")
+%M = Monat, 3 Buchstaben("Jan")
+%y = Jahr, 2 Zahlen("99")
+%Y = Jahr, 4 Zahlen("1999")
+%i = Minuten("00" bis "59")
+%s = Sekunden("00" bis "59")
+%H = Stunde, 24-Stunden Format ("00" bis "23")
+%h = Stunde, 12-Stunden Format ("01" bis "12")
+%A = "AM" oder "PM"
+%a = "am" oder "pm"
+%e = space-filled date of month
+%z = timezone offset from UTC
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

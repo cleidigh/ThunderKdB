@@ -1,0 +1,56 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+MUKAUTETTUJEN OTSAKETIETOJEN SYNTAKSI
+
+%%1 = lähettäjä
+%%2 = vastaanottajat
+%%3 = vastaanottajat (kopio)
+%%4 = aihe
+%%5 = päiväys
+%%6 = lähettäjä (vain nimi) 
+%%7 = lähettäjä (vain osoite)
+%%8 = vastaanottajat (vain nimi) 
+%%9 = vastaanottajat (kopio - vain nimi) 
+
+Komennot, jotka sijoitetaan aaltosulkeiden {{ ja }} väliin,
+näytetään vain silloin, jos otsaketieto ei ole tyhjä 
+(null). Tämä tarkoittaa, että otsaketieto
+
+Vastaanottaja: %%2{{ ja %%3}} 
+
+antaa tulokseksi
+
+Vastaanottaja: mail1@xxx.org (jos kopio-otsake on tyhjä)
+Vastaanottaja: mail1@xxx.org ja mail2@xxx.org (jos kopio-
+   otsake on mail2@xxx.org)
+
+
+MUKAUTETUN PÄIVÄYSMUODON SYNTAKSI
+
+%d = kuukaudenpäivä, 2 numeroa (”01” - ”31”)
+%D = viikonpäivä tekstinä, englanninkielinen,
+     3 kirjainta (”Fri”)
+%m = kuukausi (”01” - ”12”)
+%M = kuukausi tekstinä, englanninkielinen,
+     3 kirjainta (”Jan”)
+%y = vuosi, 2 numeroa (”99”)
+%Y = vuosi, 4 numeroa (”1999”)
+%i = minuutit (”00” - ”59”)
+%s = sekunnit (”00” - ”59”)
+%H = tunnit, 24 tunnin muoto (”00” - ”23”)
+%h = tunnit, 12 tunnin muoto (”01” - ”12”)
+%A = ”AM” tai ”PM”
+%a = ”am” tai ”pm”
+%e = space-filled date of month
+%z = timezone offset from UTC
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

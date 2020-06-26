@@ -1,0 +1,53 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+SINTAXE PARA CABEÇALHOS CUSTOMIZADOS
+
+%%1 = autor
+%%2 = destinatários 
+%%3 = destinatários (CC)
+%%4 = assunto
+%%5 = data 
+%%6 = autor (apenas nome) 
+%%7 = autor (apenas endereço)
+%%8 = destinatários (apenas nome) 
+%%9 = destinatários (CC - apenas nome) 
+
+Os trechos envolvidos por {{ e }} são exibidos
+somente se o cabeçalho interno não for vazio.
+Isto significa que um cabeçalho com
+
+Para : %%2{{ e %%3}} 
+
+resultará em
+
+Para : mail1@xxx.org (se CC estiver vazio)
+Para : mail1@xxx.org e mail2@xxx.org (se CC for mail2@xxx.org)
+
+
+SINTAXE PARA FORMATOS DE DATA CUSTOMIZADOS
+
+%d = dia do mês, 2 dígitos ("01" a "31")
+%D = dia da semana, textual, inglês, 3 letras ("Sex")
+%m = mês ("01" a "12")
+%M = mês, textual, inglês, 3 letras ("Jan")
+%y = ano, 2 dígitos ("99")
+%Y = ano, 4 dígitos ("1999")
+%i = minutos ("00" a "59")
+%s = segundos ("00" a "59")
+%H = hora, formato 24 horas ("00" a "23")
+%h = hora, formato 12 horas ("01" a "12")
+%A = "AM" ou "PM"
+%a = "am" ou "pm"
+%e = space-filled date of month
+%z = timezone offset from UTC
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

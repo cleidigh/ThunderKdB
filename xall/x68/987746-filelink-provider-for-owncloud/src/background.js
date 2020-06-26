@@ -6,14 +6,19 @@ var uploads = new Map();
 
 async function getAccountInfo(accountId) {
   let accountInfo = await browser.storage.local.get([accountId]);
-  if (!accountInfo[accountId] || !("serverUrl" in accountInfo[accountId])) {
+  if (!accountInfo[accountId] || !("webdavUrl" in accountInfo[accountId])) {
     throw new Error("No Accounts found.");
   }
   return accountInfo[accountId];
 }
 
-browser.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) => {
-  //console.log("onFileUpload", id, account, name);
+browser.cloudFile.onFileUpload.addListener(async (account, params) => {
+
+  let { id, name, data } = params;
+
+  name = "" + Date.now() + "_" + name;
+
+  console.log("onFileUpload", id, account, name);
 
   let accountInfo = await getAccountInfo(account.id);
 
@@ -27,11 +32,11 @@ browser.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) =
 
   uploads.set(id, uploadInfo);
 
-  let {serverUrl, username, token, path} = accountInfo;
+  let {webdavUrl, username, token, path} = accountInfo;
 
   const authHeader = "Basic " + btoa(username + ":" + token);
 
-  let url = serverUrl + "remote.php/dav/files/" + username + path + encodeURIComponent(name);
+  let url = webdavUrl + path + encodeURIComponent(name);
 
   let headers = {
     "Content-Type": "application/octet-stream",
@@ -52,15 +57,19 @@ browser.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) =
 
   delete uploadInfo.abortController;
   if (response.status > 299) {
-    throw new Error("response was not ok");
+    throw new Error("response was not ok: server status code: " + response.status + ", response message: " + response.statusText);
   }
 
-  const newUrl = serverUrl + "ocs/v1.php/apps/files_sharing/api/v1/shares?format=json";
+  const serverUrl = webdavUrl.substr(0, webdavUrl.indexOf("remote.php"));
+  const shareUrl = serverUrl + "ocs/v1.php/apps/files_sharing/api/v1/shares?format=json";
+
   uploadInfo.abortController = new AbortController();
+  uploads.set(id, uploadInfo);
   
   headers = {
     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-    Authorization: authHeader
+    Authorization: authHeader,
+    "OCS-APIRequest": true
   };
 
   fetchInfo = {
@@ -70,16 +79,20 @@ browser.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) =
     signal: uploadInfo.abortController.signal,
   };
 
-  //console.log("requesting public link", newUrl, fetchInfo);
+  console.log("requesting public link", shareUrl, fetchInfo);
 
-  response = await fetch(newUrl, fetchInfo);
+  response = await fetch(shareUrl, fetchInfo);
 
   //console.log("public link response", response);
 
   if(response.ok)
   {
     let respJson = await response.json();
-    return {url: respJson.ocs.data.url};
+
+    uploadInfo.shareID = respJson.ocs.data.id;
+    uploads.set(id, uploadInfo);
+
+    return {url: respJson.ocs.data.url + "/download"};
   }
   else
     return {aborted: true}
@@ -101,17 +114,25 @@ browser.cloudFile.onFileDeleted.addListener(async (account, id) => {
     return;
   }
 
+  // FIXME how do we get a confirmation popup in TB MailExtensions?
+  // let wishDelete = confirm("Do you wish to delete the file on the server?");
+  // if(!wishDelete){
+  //   return;
+  // }
+
   let accountInfo = await getAccountInfo(account.id);
 
-  let {name} = uploadInfo;
-  let {serverUrl, username, token, path} = accountInfo;
+  let {shareID} = uploadInfo;
+  let {webdavUrl, username, token} = accountInfo;
 
   const authHeader = "Basic " + btoa(username + ":" + token);
 
-  let url = serverUrl + "remote.php/dav/files/" + username + path + encodeURIComponent(name);
+  const serverUrl = webdavUrl.substr(0, webdavUrl.indexOf("remote.php"));
+  const shareUrl = serverUrl + "ocs/v1.php/apps/files_sharing/api/v1/shares/" + shareID;
 
   let headers = {
-    Authorization: authHeader
+    Authorization: authHeader,
+    "OCS-APIRequest": true
   };
 
   let fetchInfo = {
@@ -121,14 +142,14 @@ browser.cloudFile.onFileDeleted.addListener(async (account, id) => {
 
   //console.log("sending delete", url, fetchInfo);
 
-  let response = await fetch(url, fetchInfo);
+  let response = await fetch(shareUrl, fetchInfo);
 
   //console.log("delete response", response);
 
   uploads.delete(id);
   
   if (response.status > 299) {
-    throw new Error("response was not ok");
+    throw new Error("response was not ok: server status code: " + response.status + ", response message: " + response.statusText);
   }
 
 });

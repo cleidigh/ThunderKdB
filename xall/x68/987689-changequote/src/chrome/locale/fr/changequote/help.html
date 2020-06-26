@@ -1,0 +1,56 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+--------------------------------------------------------------------------
+SYNTAXE DES EN-TÊTES PERSONNALISÉS
+--------------------------------------------------------------------------
+%%1 = auteur
+%%2 = destinataires
+%%3 = destinataires (Copie)
+%%4 = sujet
+%%5 = date 
+%%6 = auteur (seulement le nom) 
+%%7 = auteur (seulement l'adresse)
+%%8 = destinataires (seulement le nom) 
+%%9 = destinataires (Copie - seulement le nom) 
+
+Les parties insérées entre {{ et }} seront affichées seulement si
+le champ correspondant de l'en-tête est renseigné.
+
+Cela signifie par exemple que
+
+Pour : %%2{{ et %%3}} 
+
+donnera :
+
+Pour : mail1@xxx.org (si CC est vide)
+Pour : mail1@xxx.org et mail2@xxx.org (si CC est mail2@xxx.org)
+
+----------------------------------------------------------------------------------------------
+SYNTAXE DU FORMAT DE DATE PERSONNALISÉ
+----------------------------------------------------------------------------------------------
+
+%d = jour du mois, sur deux chiffres (de "01" à "31")
+%D = jour de la semaine, en anglais, avec les trois lettres initiales ("Fri")
+%m = mois ("01" à "12")
+%M = mois, en anglais, avec les trois lettres initiales ("Jan")
+%y = année, 2 chiffres ("99")
+%Y = année, 4 chiffres ("1999")
+%i = minutes ("00" à "59")
+%s = secondes ("00" à "59")
+%H = heure, au format 24h ("00" à "23")
+%h = heure, au format 12h ("01" à "12")
+%A = "AM" ou "PM"
+%a = "am" ou "pm"
+%e = space-filled date of month
+%z = timezone offset from UTC
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

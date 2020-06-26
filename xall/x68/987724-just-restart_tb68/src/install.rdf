@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>{5afc0857-ce93-471c-9a00-b6247890dc1d}</em:id>
+    <em:version>1.0.5</em:version>
+    <em:type>2</em:type>
+
+    <!-- Firefox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>47.0</em:minVersion>
+        <em:maxVersion>49.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>10.0</em:minVersion>
+        <em:maxVersion>45.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <em:name>Just Restart!</em:name>
+    <em:description>Restart application with Ctrl+Shift+Z.</em:description>
+    <em:creator>SAKURAI Kenichi</em:creator>
+    <em:homepageURL>https://github.com/kenichisak/just-restart</em:homepageURL>
+    <em:multiprocessCompatible>true</em:multiprocessCompatible>
+
+    <em:localized>
+      <Description>
+        <em:locale>es</em:locale>
+        <em:description>Reinicia la aplicación con Ctrl+Máyus+Z.</em:description>
+        <em:translator>strel</em:translator>
+      </Description>
+    </em:localized>
+
+    <em:localized>
+      <Description>
+        <em:locale>ja-JP</em:locale>
+        <em:description>Ctrl+Shift+Z. で再起動します。</em:description>
+      </Description>
+    </em:localized>
+
+  </Description>
+</RDF>

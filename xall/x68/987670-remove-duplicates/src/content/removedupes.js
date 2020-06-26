@@ -26,8 +26,10 @@ removeDupes.Rdm =
   checkBody          : false,
   checkRecipient     : false,
   subFolderFirst     : false,
+  ignoreSubFolders   : false,
   excludeTrashcan    : false,
   excludeSentfolder  : false,
+  excludeArchives    : false,
   autodelete         : false,
   debugInfo          : false,
   lowMemThreshold    : 200000,
@@ -46,6 +48,7 @@ removeDupes.Rdm =
   MSG_FOLDER_FLAG_SENTMAIL   : 0x0200,
   MSG_FOLDER_FLAG_INBOX      : 0x1000,
   MSG_FOLDER_FLAG_IMAPBOX    : 0x2000,
+  MSG_FOLDER_FLAG_ARCHIVES   : 0x4000,
   MSG_FOLDER_FLAG_JUNK       : 0x40000000,
 
 
@@ -245,8 +248,10 @@ removeDupes.Rdm =
     checkRecipient       = removeDupes.PrefDialog.checkRecipientPref();
     reverseSearch        = removeDupes.PrefDialog.checkReverseSearchPref();
     subFolderFirst       = removeDupes.PrefDialog.checkSubFolderFirstPref();
+    ignoreSubFolders     = removeDupes.PrefDialog.checkIgnoreSubFoldersPref();
     excludeTrashcan      = removeDupes.PrefDialog.checkExcludeTrashcanPref();
     excludeSentfolder    = removeDupes.PrefDialog.checkExcludeSentfolderPref();
+    excludeArchives      = removeDupes.PrefDialog.checkExcludeArchivesPref();
     autodelete           = removeDupes.PrefDialog.checkAutodeletePref();
     debugInfo            = removeDupes.PrefDialog.checkDebugInfoPref();
     prefPreferedDelete   = removeDupes.PrefDialog.checkPreferedDeletePref ();
@@ -306,17 +311,24 @@ removeDupes.Rdm =
       if ( folder.flags & this.MSG_FOLDER_FLAG_SENTMAIL )
         return;
 
+    if ( excludeArchives )
+      if ( folder.flags & this.MSG_FOLDER_FLAG_ARCHIVES )
+        return;
+
     if ( !subFolderFirst )
       this.folderList.push ( folder )
 
-    if (folder.hasSubFolders)
+    if ( !ignoreSubFolders )
     {
-      var subFolders;
-      subFolders = folder.subFolders;
-      while ( subFolders.hasMoreElements() )
+      if (folder.hasSubFolders)
       {
-        var f = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
-        this.buildUpFolderList (f);
+        var subFolders;
+        subFolders = folder.subFolders;
+        while ( subFolders.hasMoreElements() )
+        {
+          var f = subFolders.getNext().QueryInterface(Components.interfaces.nsIMsgFolder);
+          this.buildUpFolderList (f);
+        }
       }
     }
 
@@ -372,14 +384,14 @@ removeDupes.Rdm =
           var s = "" + message.folder.getUriForMsg (message) +" "+ hash +" "+ obj.messageTable.length
           obj.messageTable.push ( s );
           if (obj.debugInfo)
-            alert ( "lowmem A: " + s );
+            console.log ( "lowmem A: " + s );
         }
         else
         {
           // more readable, but also more memory consuming
           var m = new obj.messageClass ( message.folder.getUriForMsg (message), hash, obj.messageTable.length );
           if (obj.debugInfo)
-            alert ( "normmem A: "+message.folder.getUriForMsg (message) +"\nB: "+ hash +"\nC: "+ obj.messageTable.length );
+            console.log ( "normmem A: "+message.folder.getUriForMsg (message) +"\nB: "+ hash +"\nC: "+ obj.messageTable.length );
           obj.messageTable.push ( m );
         }
         obj.numCurrentMessage ++;
@@ -464,14 +476,14 @@ removeDupes.Rdm =
         var s = "" + message.folder.getUriForMsg (message) +" "+ hash +" "+ obj.messageTable.length
         obj.messageTable.push ( s );
         if (obj.debugInfo)
-          alert ( "lowmem A: " + s );
+          console.log ( "lowmem A: " + s );
       }
       else
       {
         // more readable, but also more memory consuming
         var m = new obj.messageClass ( message.folder.getUriForMsg (message), hash, obj.messageTable.length );
         if (obj.debugInfo)
-          alert ( "normmem A: "+message.folder.getUriForMsg (message) +"\nB: "+ hash +"\nC: "+ obj.messageTable.length );
+          console.log ( "normmem A: "+message.folder.getUriForMsg (message) +"\nB: "+ hash +"\nC: "+ obj.messageTable.length );
         obj.messageTable.push ( m );
       }
       obj.numCurrentMessage ++;

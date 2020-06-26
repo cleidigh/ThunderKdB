@@ -1,0 +1,52 @@
+<html>
+<head>
+ <meta content="text/html;charset=UTF-8" http-equiv="content-type">
+  <title></title>
+</head>
+<body>
+<pre>
+<!-- LOCALIZED PART BEGINNING -->
+SYNTAXIS VOOR AANGEPASTE HEADERS
+
+%%1 = schrijver 
+%%2 = ontvangers 
+%%3 = ontvangers (CC)
+%%4 = onderwerp
+%%5 = datum 
+%%6 = schrijver (alleen naam) 
+%%7 = schrijver (alleen adres)
+%%2 = ontvangers (alleen naam) 
+%%3 = ontvangers (CC - alleen naam) 
+
+De delen tussen {{ en }} worden alleen weergegeven
+als de header erin niet leeg is.
+Dit betekent dat een header met
+
+Aan : %%2{{ en %%3}} 
+
+het volgende geeft:
+
+Aan : mail1@xxx.org (als CC leeg is)
+Aan : mail1@xxx.org en mail2@xxx.org (als CC mail2@xxx.org is)
+
+SYNTAXIS VOOR DATUMOPMAAK
+
+%d = dag van de maand, 2 cijfers (“01” tot “31”)
+%D = dag van de week, tekstueel, Nederlands, 3 letters (“Vri”)
+%m = maand (“01” tot “12”)
+%M = maand, tekstueel, Nederlands, 3 letters (“Jan”)
+%y = jaar, 2 cijfers (“99”)
+%Y = jaar, 4 cijfers (“1999”)
+%i = minuten (“00” tot “59”)
+%s = seconden (“00” tot “59”)
+%H = tijd, 24-uursopmaak (“00” tot “23”)
+%h = tijd, 12-uursopmaak (“01” tot “12”)
+%A = “VM” of “NM”
+%a = “vm” of “nm”
+%e = space-filled date of month
+%z = timezone offset from UTC
+<!-- LOCALIZED PART END -->
+
+</pre>
+</body>
+</html>

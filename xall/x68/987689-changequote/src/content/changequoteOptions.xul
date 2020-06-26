@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<!DOCTYPE overlay SYSTEM "chrome://changequote/locale/changequote.dtd">
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	onload="CQprefsIn();"
+        buttons="accept, cancel"
+        title="Change Quote and Reply Format">
+  <script type="application/x-javascript" src="chrome://changequote/content/changequoteOptions.js" />
+  <script type="application/x-javascript" src="chrome://changequote/content/changequote.js" />
+
+   <tabbox>
+	  <tabs>
+ 	   <tab label="&CQcaption1;" selected="true"/>
+	   <tab label="&CQnewstitle;" />
+  	   <tab label="&CQcaption2;"/>
+	   <tab label="&help;"/>	
+  	 </tabs>
+   	<tabpanels>
+	<tabpanel orient="vertical">
+  <groupbox flex="1">
+    <radiogroup id="headersGroup">
+	<hbox>
+		<radio id="CQradio1" label="&CQlabel1;" oncommand="toggleExt()" />
+	</hbox>
+	<hbox>
+		<spacer width="50px" />
+		<checkbox id="CQradio1checkbox" label="&CQlabel1a;" />
+	</hbox>
+	<hbox>
+		<spacer width="50px" />
+		<checkbox id="CQradio1checkbox2" label="&CQlabel1b;" />
+	</hbox>
+	<hbox>
+		<spacer width="50px" />
+		<checkbox id="CQradio1BOLD" label="&CQbold;" />
+	</hbox>
+	<hbox>
+		<radio id="CQradio2" label="&CQlabel2;" oncommand="toggleStandard()"/>
+	</hbox>
+	<hbox>
+		<radio id="CQradio3" label="&CQlabel3;" oncommand="toggleCustomizedBox()"/>
+	</hbox>
+	<textbox id="CHbox" multiline="true" rows="4" />
+	 <hbox>
+		<checkbox id="CQadd_newline" label="&addNewLine;"  />
+	</hbox>
+	 <hbox>
+		<checkbox id="CQhtml_support" label="&htmlSupport;"  />
+	</hbox>
+    </radiogroup>
+	 </groupbox>
+	 <groupbox flex="1">
+	 <hbox>
+		<checkbox id="CQradio1checkbox3" label="&CQlabel1c;" oncommand="toggleLongDate()" />
+	</hbox>
+	<hbox>
+			<spacer width="30"/>
+			<radiogroup id="dateLongRadioGroup">
+				<radio id="CQdatelocalized" label="&CQdatelongLOClabel;"/>
+				<radio id="CQdatelongINT" label="&CQdatelongINTlabel;" />
+				<radio id="CQdateorig" label="&CQdatelongORIGlabel;"/>
+				<hbox>
+					<radio id="CQdatecustom" label="&dateCustom; (&local;)"/>
+					<textbox id="dateCustomBox" />
+				</hbox>
+				<hbox>
+					<radio id="CQdatecustomUTC" label="&dateCustom; (&sender;)"/>
+					<textbox id="dateCustomBoxUTC" />
+				</hbox>
+			</radiogroup>
+	</hbox>
+	<hbox>
+		<spacer width="30"/>
+		<checkbox id="CQcapitalize_date" label="&capitalizeDate;" />
+	</hbox>
+  </groupbox>
+
+</tabpanel>
+<tabpanel>
+	<groupbox flex="1">
+	<hbox>
+		<checkbox id="CQnewsCheckbox" label="&CQlabel1d;" oncommand="checkboxcheck4()" />
+	</hbox>
+		<textbox id="CHbox-news" multiline="true" rows="4" />
+	 <hbox>
+		<checkbox id="CQhtml_news_support" label="&htmlSupport;"  />
+	</hbox>
+	</groupbox>
+</tabpanel>
+<tabpanel>
+  <groupbox flex="1">
+    <hbox>
+	<checkbox id="CQoption2" label="&CQlabel4;" oncommand="checkboxcheck3()" />
+    </hbox>
+    <hbox>
+	<spacer width="50" />
+	<label value="&CQalternativeformat;" />
+    </hbox>
+    <hbox>
+	<spacer width="50"/>
+	<radiogroup id="AlternativePref">
+		<radio id="CQradio2default" label="&CQradio2defaultlabel;"/>
+		<radio id="CQradio2html" label="&CQradio2htmllabel;"/>
+		<radio id="CQradio2plain" label="&CQradio2plainlabel;"/>
+	</radiogroup>
+    </hbox>	
+     <hbox>
+	<checkbox id="CQoption3" label="&CQlabel5;"  />
+    </hbox>
+    <hbox>
+	<checkbox id="CQoption4" label="&CQlabel6;"  />
+    </hbox>
+     <hbox>
+	<checkbox id="CQoption5" label="&CQlabel7;"  />
+    </hbox>
+  </groupbox>
+</tabpanel>
+<tabpanel>
+	<vbox width="500px">
+		<iframe src="chrome://changequote/locale/help.html" flex="1" type="content" />
+	</vbox>
+</tabpanel>
+</tabpanels>
+</tabbox>
+</dialog>
