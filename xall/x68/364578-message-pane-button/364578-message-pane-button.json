@@ -16,38 +16,39 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 280,
+    "average_daily_users": 257,
     "categories": {
         "thunderbird": [
             "miscellaneous"
         ]
     },
     "contributions_url": null,
+    "created": "2012-02-27T18:06:02Z",
     "current_version": {
-        "id": 1414950,
+        "id": 2473512,
         "compatibility": {
             "thunderbird": {
-                "max": "74.0a1",
-                "min": "2.0"
+                "max": "*",
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/message-pane-button/versions/1414950",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/message-pane-button/versions/2473512",
         "files": [
             {
-                "id": 188374,
-                "created": "2013-01-20T23:30:04Z",
-                "hash": "sha256:5bc445164616caa9d7a2d229d21b837dc8bf5511026319a2a17fb4f75098ad93",
-                "is_restart_required": true,
-                "is_webextension": false,
+                "id": 1016654,
+                "created": "2020-03-06T17:26:10Z",
+                "hash": "sha256:aa320ce2d37753ad59d5ac4ac551964a392a6e2c2ff08352151eaa6368528d24",
+                "is_restart_required": false,
+                "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5035,
+                "size": 2811,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/188374/message_pane_button-1.02-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016654/message_pane_button-2.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -77,11 +78,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Updated Max Version Level to 20.*"
+            "en-US": "Updated to work with the new Thunderbird standards.  This will not work with older versions of Thunderbird."
         },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/message-pane-button/versions/1.02",
-        "version": "1.02"
+        "reviewed": "2020-06-09T19:32:36Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/message-pane-button/versions/2.0",
+        "version": "2.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -102,7 +103,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2013-01-28T01:39:06Z",
+    "last_updated": "2020-06-09T19:32:36Z",
     "name": {
         "en-US": "Message Pane Button"
     },
@@ -176,6 +177,7 @@
     "tags": [
         "button",
         "f8",
+        "firefox57",
         "message body",
         "message pane",
         "message reading",
@@ -186,12 +188,11 @@
     "weekly_downloads": 29,
     "xpilib": {
         "ext_comp": {
-            "mext": false,
+            "compNoMax": true,
+            "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp60": true,
-            "comp61plus": true,
-            "comp60OldDate": true
+            "comp60pv": true,
+            "comp60pv_date": "2013-01-20T23:30:04Z"
         }
     }
 }

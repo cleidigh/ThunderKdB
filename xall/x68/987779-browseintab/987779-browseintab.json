@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 188,
+    "average_daily_users": 207,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -21,7 +21,7 @@
         "id": 2473594,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "77.0",
                 "min": "68.0"
             }
         },
@@ -81,7 +81,9 @@
     },
     "default_locale": "en-US",
     "description": null,
-    "developer_comments": null,
+    "developer_comments": {
+        "en-US": "The addon validator has not been updated for new javascript syntax and rejects addons with valid new syntax. See the <a href=\"https://bitbucket.org/alta8888/browseintab\" rel=\"nofollow\">homepage</a> for the latest version."
+    },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/edit",
     "guid": "browseintab@mozdev.org",
     "has_eula": false,
@@ -104,28 +106,60 @@
     },
     "previews": [
         {
-            "id": 205951,
+            "id": 205998,
             "caption": {
-                "en-US": "BrowseInTab Options/Preferences (Tb74+)."
+                "en-US": "BrowseInTab Options/Preferences (Tb78+). Links Tab."
             },
             "image_size": [
-                919,
+                836,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205951.png?modified=1587079393",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205998.png?modified=1592173903",
             "thumbnail_size": [
-                230,
+                209,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205951.png?modified=1587079393"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205998.png?modified=1592173903"
+        },
+        {
+            "id": 205999,
+            "caption": {
+                "en-US": "BrowseInTab Options/Preferences (Tb78+). Tabs and Toolbars Tab."
+            },
+            "image_size": [
+                836,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205999.png?modified=1592173903",
+            "thumbnail_size": [
+                209,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205999.png?modified=1592173903"
+        },
+        {
+            "id": 206000,
+            "caption": {
+                "en-US": "BrowseInTab urlBar refresh and zoom buttons(Tb78+), along with internationalized domain url and uBlock badge in a content tab."
+            },
+            "image_size": [
+                836,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206000.png?modified=1592173903",
+            "thumbnail_size": [
+                209,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206000.png?modified=1592173903"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.54501,
-        "count": 3,
-        "average": 5,
-        "text_count": 3
+        "bayesian_average": 4.41903,
+        "count": 4,
+        "average": 4.75,
+        "text_count": 4
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/reviews/",
     "requires_payment": false,
@@ -152,9 +186,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true,
+            "compNoMax": true
         }
     }
 }

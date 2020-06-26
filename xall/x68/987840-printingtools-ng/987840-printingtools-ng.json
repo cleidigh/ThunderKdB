@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 17,
+    "average_daily_users": 204,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "http://paypal.me/cleidigh",
     "created": "2020-06-05T22:31:33Z",
     "current_version": {
-        "id": 2473776,
+        "id": 2473799,
         "compatibility": {
             "thunderbird": {
                 "max": "72.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/printingtools-ng/versions/2473776",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/printingtools-ng/versions/2473799",
         "files": [
             {
-                "id": 1016938,
-                "created": "2020-06-06T17:57:33Z",
-                "hash": "sha256:103fa8393c7ca4b7825066414b570d3c6db60cc6582a8e27adac64695083c039",
+                "id": 1016961,
+                "created": "2020-06-12T19:50:57Z",
+                "hash": "sha256:111463d4cdb9a23278290a713f63ccdfeaf68f3384040734bdebc16ed23de327",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 73935,
+                "size": 101012,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016938/printingtools_ng-0.1.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016961/printingtools_ng-0.1.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -72,15 +72,18 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Version fix"
+            "en-US": "- Fix missing strings in several locales\n- Add new locales\n- Default printer option"
         },
-        "reviewed": "2020-06-08T21:06:22Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/printingtools-ng/versions/0.1.2",
-        "version": "0.1.2"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/printingtools-ng/versions/0.1.3",
+        "version": "0.1.3"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "PrintingTools NG provides numerous layout and formatting options for\nprinting messages, the address books and individual contacts.  It is\na fork and update of the original PrintingTools extension.  Currently\nthe extension supports Thunderbird 68-72 with the intention of ultimately\nconverting to a full MailExtension for 78+.\n\nThe following are the main enhancements provided by PrintingTools NG, \nsee the options for additional features.\n\nOptions &amp; Menus:\n- Options access from the Tools/Add-on options\n- Printing Options menu added to File menus\n- Optional \"Printing Options\" button added to Print Preview window\n\nMessage Layout &amp; Formatting:\n- Add message header border\n- Add Username, Folder or custom title\n- Hide standard or extended headers\n- Reorder standard headers\n- Add for the attachment table to header with icons\n- Hide inline attachments\n- Configure font family and size\n- Highlight quoted text color, font and size\n- Print selected text only\n\nAddressBook &amp; Contact Layout &amp; Formatting:\n- Configure font family and size\n- Compact printing format option\n- Print name and e-mail only\n- Remove \"Card For\" from entries"
+        "en-US": "PrintingTools NG provides numerous layout and formatting options for\nprinting messages, the address books and individual contacts.  It is\na fork and update of the original PrintingTools extension.  Currently\nthe extension supports Thunderbird 68-72 with the intention of ultimately\nconverting to a full MailExtension for 78+.\n\n<b>New Version 0.1.3 : Locales/printer</b>\n\n- New Default Printer option (persistent)\n- Fix missing translations\n- Many new locales\n \nFull locale list (original and new):\n\n   (hy) Armenian, (ca) Catalan, (zh-CN) Chinese (Simplified), \n   (da) Danish, (nl) Dutch, (en) English, (fi) Finnish, \n   (fr) French, (gl) Galician, (de) German, (el) Greek, \n   (hu) Hungarian, (it) Italian, (ja) Japanese, (ko) Korean,\n   (no) Norwegian, (pl) Polish, (pt-PT) Portuguese (Portugal), \n   (ru) Russian, (sk) Slovak, (sl) Slovenian, (es) Spanish, \n   (sv) Swedish, (uk) Ukrainian\n\n\nThe following are the main enhancements provided by PrintingTools NG, \nsee the options for additional features.\n\nOptions &amp; Menus:\n- Options access from the Tools/Add-on options\n- Printing Options menu added to File menus\n- Optional \"Printing Options\" button added to Print Preview window\n\nMessage Layout &amp; Formatting:\n- Add message header border\n- Add Username, Folder or custom title\n- Hide standard or extended headers\n- Reorder standard headers\n- Add for the attachment table to header with icons\n- Hide inline attachments\n- Configure font family and size\n- Highlight quoted text color, font and size\n- Print selected text only\n\nAddressBook &amp; Contact Layout &amp; Formatting:\n- Configure font family and size\n- Compact printing format option\n- Print name and e-mail only\n- Remove \"Card For\" from entries",
+        "de": "PrintingTools NG bietet zahlreiche Layout- und Formatierungsoptionen für\nDrucken von Nachrichten, Adressbüchern und einzelnen Kontakten. Es ist\neine Abzweigung und Aktualisierung der ursprünglichen PrintingTools-Erweiterung. Zur Zeit\nDie Erweiterung unterstützt Thunderbird 68-72 mit der Absicht, letztendlich\nKonvertierung in eine vollständige MailExtension für 78+.\n\n<b> Neue Version 0.1.3: Gebietsschemas / Drucker \n\n- Neue Standarddruckeroption (dauerhaft)\n- Fehlende Übersetzungen korrigieren\n- Viele neue Orte\n \nVollständige Gebietsschemaliste (Original und Neu):\n\n   (hy) Armenier, (ca) Katalaner, (zh-CN) Chinesen (vereinfacht),\n   (da) Dänisch, (nl) Niederländisch, (en) Englisch, (fi) Finnisch,\n   (fr) Französisch, (gl) Galizisch, (de) Deutsch, (el) Griechisch,\n   (hu) Ungarisch, (it) Italienisch, (ja) Japanisch, (ko) Koreanisch,\n   (nein) Norwegisch, (pl) Polnisch, (pt-PT) Portugiesisch (Portugal),\n   (ru) Russisch, (sk) Slowakisch, (sl) Slowenisch, (es) Spanisch,\n   (sv) schwedisch, (uk) ukrainisch\n\n\nIm Folgenden sind die wichtigsten Verbesserungen aufgeführt, die von PrintingTools NG bereitgestellt werden:\nWeitere Funktionen finden Sie in den Optionen.\n\nOptionen &amp; Menüs:\n- Zugriff auf Optionen über die Tools / Add-On-Optionen\n- Das Menü Druckoptionen wurde zu den Dateimenüs hinzugefügt\n- Optionale Schaltfläche \"Druckoptionen\" zum Fenster \"Seitenansicht\" hinzugefügt\n\nNachrichtenlayout und Formatierung:\n- Nachrichtenkopfrahmen hinzufügen\n- Fügen Sie Benutzername, Ordner oder benutzerdefinierten Titel hinzu\n- Standard- oder erweiterte Header ausblenden\n- Standard-Header neu anordnen\n- Fügen Sie die Anhangstabelle mit Symbolen zur Kopfzeile hinzu\n- Inline-Anhänge ausblenden\n- Konfigurieren Sie Schriftfamilie und Schriftgröße\n- Markieren Sie die zitierte Textfarbe, Schriftart und Größe\n- Nur ausgewählten Text drucken\n\nAdressbuch &amp; Kontakt Layout &amp; Formatierung:\n- Konfigurieren Sie Schriftfamilie und Schriftgröße\n- Kompakte Druckformatoption\n- Nur Name und E-Mail drucken\n- Entfernen Sie \"Card For\" aus den Einträgen</b>",
+        "ja": "PrintingTools NGは、多くのレイアウトとフォーマットのオプションを提供します\nメッセージ、アドレス帳、個々の連絡先の印刷。です\nオリジナルのPrintingTools拡張のフォークとアップデート。現在\n拡張機能は、最終的にはThunderbird 68-72をサポートします\n78+の完全なMailExtensionに変換します。\n\n<b>新しいバージョン0.1.3：ロケール/プリンタ\n\n-新しいデフォルトプリンターオプション（永続）\n-不足している翻訳を修正\n-多くの新しいロケール\n \n完全なロケールリスト（オリジナルと新規）：\n\n   （hy）アルメニア語、（ca）カタロニア語、（zh-CN）中国語（簡体字）、\n   （da）デンマーク語、（nl）オランダ語、（en）英語、（fi）フィンランド語、\n   （fr）フランス語、（gl）ガリシア語、（de）ドイツ語、（el）ギリシャ語、\n   （hu）ハンガリー語、（it）イタリア語、（ja）日本語、（ko）韓国語、\n   （いいえ）ノルウェー語、（pl）ポーランド語、（pt-PT）ポルトガル語（ポルトガル）、\n   （ru）ロシア語、（sk）スロバキア語、（sl）スロベニア語、（es）スペイン語、\n   （sv）スウェーデン語、（uk）ウクライナ語\n\n\n以下は、PrintingTools NGによって提供される主な機能強化です。\n追加機能のオプションを参照してください。\n\nオプションとメニュー：\n-ツール/アドオンオプションからのオプションアクセス\n-[ファイル]メニューに[印刷オプション]メニューを追加\n-オプションの「印刷オプション」ボタンが印刷プレビューウィンドウに追加されました\n\nメッセージのレイアウトとフォーマット：\n-メッセージヘッダーの境界線を追加する\n-ユーザー名、フォルダ、またはカスタムタイトルを追加\n-標準または拡張ヘッダーを非表示にする\n-標準ヘッダーの並べ替え\n-添付ファイルテーブルをアイコン付きのヘッダーに追加\n-インラインの添付ファイルを隠す\n-フォントファミリーとサイズを設定する\n-引用されたテキストの色、フォント、サイズを強調表示します\n-選択したテキストのみを印刷\n\nアドレス帳と連絡先のレイアウトとフォーマット：\n-フォントファミリーとサイズを設定する\n-コンパクトな印刷形式オプション\n-名前と電子メールのみを印刷\n-エントリから「カードの」を削除します</b>",
+        "es": "PrintingTools NG ofrece numerosas opciones de diseño y formato para\nimprimir mensajes, libretas de direcciones y contactos individuales. Está\nuna bifurcación y actualización de la extensión original de PrintingTools. Actualmente\nla extensión es compatible con Thunderbird 68-72 con la intención de finalmente\nconvirtiendo a una MailExtension completa para 78.\n\n<b> Nueva versión 0.1.3: configuraciones regionales</b>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/printingtools-ng/edit",
@@ -88,7 +91,10 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
-        "en-US": "https://github.com/cleidigh/printing-tools-ng"
+        "en-US": "https://github.com/cleidigh/printing-tools-ng",
+        "de": "https://github.com/cleidigh/printing-tools-ng",
+        "ja": "https://github.com/cleidigh/printing-tools-ng",
+        "es": "https://github.com/cleidigh/printing-tools-ng"
     },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987840-64.png?modified=85dbfe79",
     "icons": {
@@ -99,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-06-08T21:06:21Z",
+    "last_updated": "2020-06-12T21:22:55Z",
     "name": {
         "sk": "PrintingTools NG",
         "sv-SE": "PrintingTools NG",
@@ -206,10 +212,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.34957,
-        "count": 2,
+        "bayesian_average": 4.71587,
+        "count": 5,
         "average": 5,
-        "text_count": 2
+        "text_count": 5
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/printingtools-ng/reviews/",
     "requires_payment": false,

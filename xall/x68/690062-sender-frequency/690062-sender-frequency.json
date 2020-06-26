@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6190/6190978.png?modified=1531852834"
         }
     ],
-    "average_daily_users": 303,
+    "average_daily_users": 300,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,30 @@
     "contributions_url": null,
     "created": "2016-03-07T13:03:44Z",
     "current_version": {
-        "id": 2471929,
+        "id": 2473818,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
+                "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sender-frequency/versions/2471929",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sender-frequency/versions/2473818",
         "files": [
             {
-                "id": 1014997,
-                "created": "2019-08-07T10:15:45Z",
-                "hash": "sha256:ed0e17868b5c4993e3f851d110dcc0248d10a1483c4e0f6d5ce5e357dce103ed",
-                "is_restart_required": true,
+                "id": 1016980,
+                "created": "2020-06-19T17:50:38Z",
+                "hash": "sha256:38bb569ebf98104d5f9e183fb2b95dfa02779354fe8b290b1454e0bca739b6b6",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 3375,
+                "size": 4774,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1014997/sender_frequency-1.3.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016980/sender_frequency-2.0.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,10 +71,13 @@
             },
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-GB": "",
+            "en-US": "Switched to WebExtension Experiment for compatibility with TB 78. Still backwards compatible with TB 68."
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-frequency/versions/1.3.1",
-        "version": "1.3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-frequency/versions/2.0.3",
+        "version": "2.0.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -95,7 +98,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-08-07T10:31:54Z",
+    "last_updated": "2020-06-19T18:01:33Z",
     "name": {
         "en-US": "Sender Frequency"
     },
@@ -144,11 +147,9 @@
     "weekly_downloads": 49,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
-            "compNoMax": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-04T23:16:24Z"
         }

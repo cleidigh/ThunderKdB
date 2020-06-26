@@ -1,0 +1,112 @@
+{
+    "id": 987841,
+    "authors": [
+        {
+            "id": 14189997,
+            "name": "Dylan",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/dpichot/",
+            "username": "dpichot",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 10,
+    "categories": {
+        "thunderbird": [
+            "miscellaneous"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2020-06-07T15:55:21Z",
+    "current_version": {
+        "id": 2473779,
+        "compatibility": {
+            "thunderbird": {
+                "max": "73.0",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/protonmail-thunderbird-theme/versions/2473779",
+        "files": [
+            {
+                "id": 1016941,
+                "created": "2020-06-07T15:55:21Z",
+                "hash": "sha256:53dcb9c0d15189a69104811027f252d1a0ab05e561e7aade55019d670bb7e538",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 628320,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016941/protonmail-2.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2020-06-09T19:31:44Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/protonmail-thunderbird-theme/versions/2.1",
+        "version": "2.1"
+    },
+    "default_locale": "fr",
+    "description": {
+        "fr": "# Protonmail Thunderbird theme\nA Thunderbird theme inspired by Protonmail beta design and based on the Monterail theme of thunderbird\n\n## Thunderbird v68\nUnfortunately this version of Thundebird (v68) broke this and a lot more of themes and unfortunately it is not easy, nor possible, to update and adjust this theme at this moment, because the so called \"full themes\" are no more supported.\nFor this reason the theme is been converted to a legacy extension**, and for now it's working.\n\n## What is this?\nThis is a full theme for the Thunderbird e-mail client, inspired by [Protonmail](<a href=\"https://beta.protonmail.com\" rel=\"nofollow\">https://beta.protonmail.com</a>) design and based on the [Monterail](<a href=\"https://github.com/conema/monterail-fulldark\" rel=\"nofollow\">https://github.com/conema/monterail-fulldark</a>). As opposed to the spymastermatt's version, this theme can be **installed easily and quickly with an addon** and it's **compatible with Thunderbird 60.x and 68**.\n\n## Installation\n### Manual (from source)\nThe first step is to [download](<a href=\"https://github.com/conema/monterail-fulldark/archive/master.zip\" rel=\"nofollow\">https://github.com/conema/monterail-fulldark/archive/master.zip</a>) the theme, unzip the contents and re-create a zip only with the content of \"monterail-fulldark\" folder. Change the extension of the archive to \".xpi\". An extensive guide for install the xpi file can be found [here](<a href=\"https://support.mozilla.org/en-US/kb/installing-addon-thunderbird\" rel=\"nofollow\">https://support.mozilla.org/en-US/kb/installing-addon-thunderbird</a>) on the Mozilla support site, starting from \"A slightly less ideal case\". The Addon Manager can be found by clicking the menu icon ![menu](<a href=\"https://prod-cdn.sumo.mozilla.net/uploads/gallery/images/2017-10-22-15-37-15-18c775.png\" rel=\"nofollow\">https://prod-cdn.sumo.mozilla.net/uploads/gallery/images/2017-10-22-15-37-15-18c775.png</a>) (on the right, next to the search bar) followed by Add-ons and click on the Themes panel on the left.\n\n### Theme market (**recommended procedure**)\nThe theme can be directly downloaded from the Thunderbird Add-on market, the old version can be found by searching \"Monterail Full Dark\" directly in the add-on page of thunderbird or [there](<a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-fulldark/\" rel=\"nofollow\">https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-fulldark/</a>), the new version can be found by searching \"Monterail Full Dark 2.0 for TB&gt;68\" directly in the add-on page of thunderbird or [there](<a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-full-dark-2/\" rel=\"nofollow\">https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-full-dark-2/</a>).\n\n## FAQ\n* Installation fail/Theme didn't change in Thunderbird 60&lt;br&gt;\nThis seems a know issue of Thunderbird 60 [[1]](<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1484393\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1484393</a>) [[2]](<a href=\"http://forums.mozillazine.org/viewtopic.php?f=39\" rel=\"nofollow\">http://forums.mozillazine.org/viewtopic.php?f=39</a>&amp;t=3041219). With this workaround it'll work:\n  1. Go where your application data are stored, they usually can be found in:\n    - Windows: `C:\\Users\\[your windows user]\\AppData\\Roaming\\Thunderbird\\Profiles\\[(literally) random letters and numbers].default/`\n    - Linux: `/home/[your linux user]/.thunderbird/[(literally) random letters and numbers].default/`\n    - MacOS: `/home/[your macos user]/Library/Thunderbird/Profiles/[(literally) random letters and numbers].default/`\n  2. Go to the \"extensions\" folder, here there should be a file named \"MonterailFullDark@conema.me.xpi\"\n  3. While Thunderbird is opened in background, delete the \"MonterailFullDark@conema.me.xpi\" file.\n  4. Restart Thunderbird and reinstall the theme\n  5. Restart Thunderbird again, the theme now should work\n\n* This theme works with Windows/Linux/MacOS?\n\nYes. Currently the theme has been tested only on Windows 10 and openSUSE. You are free to open an issue here on GitHub if you find bugs.\n\n## Credits\nThis addon is based on [Monterail by Paenglab](<a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/monterail/\" rel=\"nofollow\">https://addons.thunderbird.net/en-US/thunderbird/addon/monterail/</a>), source code is included.\n\nSpecial thanks to spymastermatt for the work that he done to create the original dark theme."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/protonmail-thunderbird-theme/edit",
+    "guid": "Protonmail2@conema.me",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987841-64.png?modified=5c926c3d",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987841-32.png?modified=5c926c3d",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987841-64.png?modified=5c926c3d"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-06-09T19:31:44Z",
+    "name": {
+        "fr": "Protonmail Thunderbird theme"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/protonmail-thunderbird-theme/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987841",
+    "slug": "protonmail-thunderbird-theme",
+    "status": "public",
+    "summary": {
+        "fr": "A Thunderbird v68 &lt; theme inspired by Protonmail beta design and based on the Monterail theme of thunderbird"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/protonmail-thunderbird-theme/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true
+        }
+    }
+}

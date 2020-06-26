@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
         }
     ],
-    "average_daily_users": 15177,
+    "average_daily_users": 15058,
     "categories": {
         "seamonkey": [
             "downloading-and-file-management"
@@ -22,26 +22,26 @@
     "contributions_url": null,
     "created": "2012-05-06T09:12:42Z",
     "current_version": {
-        "id": 2473010,
+        "id": 2473822,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "73.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2473010",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2473822",
         "files": [
             {
-                "id": 1016117,
-                "created": "2019-12-13T15:43:29Z",
-                "hash": "sha256:d7ca88fdfdf8c39707c26c89078340515fdbc934bb76b98b139a0ffaf18276ee",
+                "id": 1016984,
+                "created": "2020-06-20T10:09:20Z",
+                "hash": "sha256:bc70efe07c93f25e1d63d537f797135cc91d66230ce1a3fe5f0ab39e565e8ec2",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 451180,
+                "size": 455261,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016117/quickfilters-4.3.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016984/quickfilters-4.4.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,14 +51,14 @@
             "name": {
                 "en-US": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/4.3.1"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/4.4.1"
         },
         "release_notes": {
-            "en-US": "quickFilters Change Log - Version 4.3.1\n\n<ul><li>Missing notifyBox can lead to problems when toggling assistant</li><li>Premium feature: run filters local inbox didn't work depending on local folder hostname, changed method of determining whether an inbox is in local folders (to force filter running)</li><li>Made modification of toolbar more reliable</li><li>Fixed licensing problem with accounts that have no default identity</li><li><a href=\"https://github.com/RealRaven2000/quickFilters/issues/2\" rel=\"nofollow\">[issue 2]</a> Merged filters: some conditions may end up not working.\n\nWhen merging multiple filters, sometimes conditions will not work. This is caused by mixing filters with different radio buttons \"all conditions\" vs \"any conditions\". Apparently the merged filter conditions internal \"booleanAnd\" attributes are not changed towards that of the target filter. So if the target (first) filter has \"any\" and the merged filter has \"all\" it may lead to some (or all) of it's conditions being to ignored.</li><li>Added configuration options to troubleshooter. Simply right-click the troubleshoot button to get a choice between the following tests:\n<ol> <li><code>incomingFlag</code> - filters sometimes are missing this flag and will never be executed when downloading new mail. However you may want to have some filters that you only want to run manually so you may want to generally disable this check.</li> <li><code>invalidTargetFolder</code> - can occur when filters are imported from other / older mail profiles or folders are moved / deleted on Imap.\n </li> <li><code>customActions</code> - finds invalid custom actions which may have been added by 3rd party add-ons (e.g FiltaQuilla); this problem will occur such Add-ons are disabled or uninstalled.\n </li> <li><code>mixedAnyAndAll</code> - NEW TROUBLESHOOTING STEP: Fix filters that have both mixed Any and All conditions. This can occur when merging filters that have different Any/All definitions and may lead to some conditions being omitted.\n </li></ol></li><li><a href=\"https://github.com/RealRaven2000/quickFilters/issues/3\" rel=\"nofollow\">[issue 3]</a> \nFilter conditions which deal with subject are not exported correctly during backup. This will lead to the condition having a \"disabled\" subject attribute in the editor after importing them.</li>  </ul>"
+            "en-US": "quickFilters Change Log - Version 4.4.1\n\n\nI am currently paying somebody to migrate all my Add-on support sites away from the free host on <a href=\"http://mozdev.org\" rel=\"nofollow\">mozdev.org</a>, which is closing operation end of June. To keep having support sites and ongoing development, please <a href=\"https://sites.fastspring.com/quickfolders/instant/quickfilters?referrer=atn-version-notes\" rel=\"nofollow\">buy a license</a> (the complete migration cost me $650, so there are some expense I hope to recover from the community of users).\n\nI will also have to rewrite all mail Add-ons as web extensions, which is currently not yet possible as all necessary APIs to replace the deprecated tech has not been implemented. As in between step I plan to release QuickFolders as a \"web experiment\" for Thunderbird 78+ but this will take a few weeks of work. If you are interested in using a version of quickFilters that works with Thunderbird 78, <a href=\"https://sites.fastspring.com/quickfolders/instant/quickfilters?referrer=atn-version-notes\" rel=\"nofollow\">buy a license</a> to support the project.\n\n<ul><li><a href=\"https://github.com/RealRaven2000/quickFilters/issues/2\" rel=\"nofollow\">[issue 12]</a> Pro Feature: Add keyboard shortcuts for Run Filters buttons. These can be enabled and configured on  the quickFilters Pro tab. This feature is useful for archiving or anti-Junkfilters which should be configured to only run manually.\n      \n      Default shortcuts are:\n        Shift + F: Run Filters on folder\n        Shift + R: Run Filters on selected mails</li><li>migrated support website from free server <a href=\"http://mozdev.org\" rel=\"nofollow\">mozdev.org</a> to github.</li>  <li>4.4.1 - Fixed a layout problem in settings that caused some bad text characters showing at the top of the dialog.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/4.3.1",
-        "version": "4.3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/4.4.1",
+        "version": "4.4.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -83,7 +83,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-12-13T16:17:45Z",
+    "last_updated": "2020-06-20T11:27:26Z",
     "name": {
         "ru": "quickFilters",
         "fr": "quickFilters",
@@ -531,10 +531,11 @@
     "weekly_downloads": 463,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true
+            "comp69plus": true,
+            "comp60": true,
+            "comp61plus": true
         }
     }
 }

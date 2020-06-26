@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 21229,
+    "average_daily_users": 20549,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -25,26 +25,26 @@
     "contributions_url": "https://paypal.me/protzenko",
     "created": "2009-12-10T03:34:09Z",
     "current_version": {
-        "id": 2473774,
+        "id": 2473835,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmail-conversation-view/versions/2473774",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmail-conversation-view/versions/2473835",
         "files": [
             {
-                "id": 1016936,
-                "created": "2020-06-06T10:08:36Z",
-                "hash": "sha256:9915f1cf9cdb2b6f2bcbb938488466e244974af946f901bd4746c4147b2f9a10",
+                "id": 1016997,
+                "created": "2020-06-25T20:53:36Z",
+                "hash": "sha256:be899be22836ab8ead3525be059a9932617e73b549ffbbe12f918dd1c499fbdb",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 958961,
+                "size": 958051,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016936/thunderbird_conversations-3.1.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016997/thunderbird_conversations-3.1.16-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "addressBooks",
@@ -64,16 +64,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Added support for Thunderbird 77 beta.\n* Fixed jumping to folder by clicking on a folder name.\n* Lots of fixes to prevent new messages being received into a selected conversation from being marked as read immediately or affecting the display. This should make receiving new messages a lot more stable now.\n* Fixes a race condition where switching rapidly may have ended up display the wrong conversation.\n* Improved handling of when the add-on update. Future updates should work better without needing to restart.\n* Fixes display of attachments if messages are not downloaded for offline use.\n* Performance improvements when displaying messages.\n* Attempt to fix issue with grey background on Linux.\n* Added Ukrainian translation."
+            "en-US": "* Fixes an issue where the extension might start up badly and not work.\n* Fixes an issue where the assistant installed customisations were removed on each upgrade.\n* Fixes an issue where certain reading emails could cause heavy CPU usage and Thunderbird to be slow to respond.\n* Fixes some compatibility issues with Thunderbird 78.\n\nIf uninstalling, before removing the add-on, the customisations can be removed by going to Conversation's preferences, and selecting the undo customisations at the bottom."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/versions/3.1.6",
-        "version": "3.1.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/versions/3.1.16",
+        "version": "3.1.16"
     },
     "default_locale": "en-US",
     "description": {
         "fr": "<a href=\"https://groups.google.com/d/topic/mozilla-labs/CZbSaSpnBxE/discussion\" rel=\"nofollow\">Faites part de vos réactions</a> - <a href=\"http://wiki.github.com/protz/GMail-Conversation-View\" rel=\"nofollow\"><b>Site Web</b> (avec de la documentation)</a> - <a href=\"http://wiki.github.com/protz/GMail-Conversation-View/faq\" rel=\"nofollow\">FAQ</a> - <a href=\"http://github.com/protz/GMail-Conversation-View/issues\" rel=\"nofollow\">Signalez des problèmes</a> - <a href=\"http://github.com/protz/GMail-Conversation-View/commits/master\" rel=\"nofollow\">Suivez les dernières nouveautés</a> - <a href=\"http://jonathan.xulforum.org/files/gcv-nightlies/\" rel=\"nofollow\">Versions en développement</a>\n\n<b>Nous serons ravis de lire vos réactions ! Cliquez sur le lien ci-dessus :-)</b>\n\nThunderbird Conversations est une extension pour Thunderbird qui comme son nom l'indique affiche vos courriers en mode conversation. Les fonctions les plus sympas sont les suivantes :\n- la vue en conversation classique qui récupère les messages de tous les dossiers, à la manière de Gmail ;\n- l'intégration de <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/243985/\" rel=\"nofollow\">Thunderbird Contacts</a> : les participants sont repérables par une infobulle, qui comprend leur avatar et profil de Facebook, Twitter…\n- la réponse rapide, avec l'autocomplétion qui vous permet de dire votre mot dans une discussion en un clin d'œil\n- les citations masquées qui améliorent la lisibilité\n- les raccourcis-clavier,\n- et quelques astuces supplémentaires à découvrir.",
-        "en-US": "<a href=\"https://github.com/protz/thunderbird-conversations/wiki\" rel=\"nofollow\"><b>Website</b> (including documentation)</a> - <a href=\"https://github.com/protz/thunderbird-conversations/wiki/FAQ\" rel=\"nofollow\">FAQ</a> - <a href=\"https://github.com/protz/thunderbird-conversations/issues\" rel=\"nofollow\">Report bugs</a> - <a href=\"https://github.com/protz/thunderbird-conversations/commits/master\" rel=\"nofollow\">Track changes</a>\n\nThunderbird Conversations is a Thunderbird extension which, as the name implies, enables a conversation view in your Thunderbird. Notable features include:\n<ul><li>a regular conversation view that fetches messages from all folders, and behaves just like Gmail’s</li><li>a quick reply feature, with autocomplete, that allows you to reply to a thread in a snap,</li><li>quoted parts are collapsed,</li><li>keyboard shortcuts,</li><li>and a few other bonus features.</li></ul>\n<b>Don't forget to hit View &gt; Sort By &gt; Threaded</b> in the menus. To remove the unified folder view, hit <b>View &gt; Folders &gt; All</b>.\n\n<b>Permissions</b>\n\nConversations will ask for various permission when it is installed or upgraded from older versions. This is a new permission model. These allows Conversations to access your messages so that it can display the contents to you in Conversation's format. They also allow conversations to provide buttons and shortcuts so you can easily process your mail.\n\n<b>We welcome feedback, but only if you've read the <b><a href=\"https://github.com/protz/thunderbird-conversations/wiki/faq\" rel=\"nofollow\">FAQ</a></b> before :-)</b>\n\n<b>Known Issues with Thunderbird 68</b>\n\n<ul><li><a href=\"https://github.com/protz/thunderbird-conversations/issues/1361\" rel=\"nofollow\">Quick Reply is not working in 68</a>. This is a work in progress due to the changes in TB 68.</li></ul>",
+        "en-US": "<a href=\"https://github.com/protz/thunderbird-conversations/wiki\" rel=\"nofollow\"><b>Website</b> (including documentation)</a> - <a href=\"https://github.com/protz/thunderbird-conversations/wiki/FAQ\" rel=\"nofollow\">FAQ</a> - <a href=\"https://github.com/protz/thunderbird-conversations/issues\" rel=\"nofollow\">Report bugs</a> - <a href=\"https://github.com/protz/thunderbird-conversations/commits/master\" rel=\"nofollow\">Track changes</a>\n\nThunderbird Conversations is a Thunderbird extension which, as the name implies, enables a conversation view in your Thunderbird. Notable features include:\n<ul><li>a regular conversation view that fetches messages from all folders, and behaves just like Gmail’s</li><li>a quick reply feature, with autocomplete, that allows you to reply to a thread in a snap,</li><li>quoted parts are collapsed,</li><li>keyboard shortcuts,</li><li>and a few other bonus features.</li></ul>\n<b>Don't forget to hit View &gt; Sort By &gt; Threaded</b> in the menus. To remove the unified folder view, hit <b>View &gt; Folders &gt; All</b>.\n\n<b>Permissions</b>\n\nConversations will ask for various permission when it is installed or upgraded from older versions. This is a new permission model. These allows Conversations to access your messages so that it can display the contents to you in Conversation's format. They also allow conversations to provide buttons and shortcuts so you can easily process your mail.\n\n<b>We welcome feedback, but only if you've read the <b><a href=\"https://github.com/protz/thunderbird-conversations/wiki/faq\" rel=\"nofollow\">FAQ</a></b> before :-)</b>\n\n<b>Known Issues with Thunderbird 68 and later</b>\n\n<ul><li><a href=\"https://github.com/protz/thunderbird-conversations/issues/1361\" rel=\"nofollow\">Quick Reply is not working in 68</a>. This is a work in progress due to the changes in TB 68.</li></ul>",
         "it": "<a href=\"https://groups.google.com/d/topic/mozilla-labs/CZbSaSpnBxE/discussion\" rel=\"nofollow\">Lascia un feedback</a> - <a href=\"http://wiki.github.com/protz/GMail-Conversation-View\" rel=\"nofollow\"><b>Visita il sito web</b> (documentazione inclusa)</a> - <a href=\"http://wiki.github.com/protz/GMail-Conversation-View/faq\" rel=\"nofollow\">Consulta le FAQ</a> - <a href=\"http://github.com/protz/GMail-Conversation-View/issues\" rel=\"nofollow\">Segnala un bug</a> - <a href=\"http://github.com/protz/GMail-Conversation-View/commits/master\" rel=\"nofollow\">Segui le modifiche</a> - <a href=\"http://jonathan.xulforum.org/files/gcv-nightlies/\" rel=\"nofollow\">Preleva l'ultima versione di sviluppo</a>\n\n<b>I feedback sono apprezzati! Utilizzare il relativo link qui sopra per inviarne uno</b>\n\nThunderbird Conversations è un'estensione per Thunderbird che, come implica il nome stesso, permette di visualizzare le e-mail sotto forma di conversazioni. Le caratterestiche di nota sono le seguenti:\n- regolare visualizzazione sotto forma di conversazioni in modo analogo al sito web di Gmail, prendendo i messaggi da tutte le cartelle\n- integrazione con l'estensione <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/243985/\" rel=\"nofollow\">Thunderbird Contacts</a>: i partecipanti hanno i tooltip nella conversazione, ed è possibile visualizzarne avatar e profili da Facebook, Twitter, etc…\n- possibilità di risposta rapida con autocompletamento\n- parti citate contratte (quindi non visibili)\n- scorciatoie da tastiera\n- alcuni altri bonus",
         "pt-BR": "<a href=\"https://groups.google.com/d/topic/mozilla-labs/CZbSaSpnBxE/discussion\" rel=\"nofollow\">Enviar comentário</a> - <a href=\"http://wiki.github.com/protz/GMail-Conversation-View\" rel=\"nofollow\"><b>Site</b> (com documentação)</a> - <a href=\"http://wiki.github.com/protz/GMail-Conversation-View/faq\" rel=\"nofollow\">Perguntas frequentes</a> - <a href=\"http://github.com/protz/GMail-Conversation-View/issues\" rel=\"nofollow\">Comunicar erro</a> - <a href=\"http://github.com/protz/GMail-Conversation-View/commits/master\" rel=\"nofollow\">Verificar alterações</a> - <a href=\"http://jonathan.xulforum.org/files/gcv-nightlies/\" rel=\"nofollow\">Versões mais recentes em desenvolvimento</a>\n\n<b>Comentários são bem-vindos! Veja o link para enviar comentários acima. :-)</b>\n\nO Thunderbird Conversations é uma extensão para o Thunderbird que, como o nome indica, permite um modo de conversa no seu Thunderbird.\nEntre os recursos dignos de nota, temos:\n- um modo de conversa que busca mensagens em todas as pastas, funcionando igual ao do Gmail;\n- integração com a extensão <a href=\"https://addons.mozilla.org/pt-BR/thunderbird/addon/mozilla-labs-contacts/\" rel=\"nofollow\">Mozilla Labs: Contacts</a>: ao passar o mouse sobre os participantes de uma conversa, são exibidas informações sobre eles, podendo ser exibidos com avatar e perfil do Facebook, Twitter, etc;\n- um recurso que permite responder diretamente nas mensagens de uma conversa, num piscar de olhos e com preenchimento automático;\n- texto de mensagens anteriores são ocultadas;\n- atalhos de teclado;\n- e alguns outros recursos extras.",
         "sv-SE": "<a href=\"https://groups.google.com/d/topic/mozilla-labs/CZbSaSpnBxE/discussion\" rel=\"nofollow\">Ge oss feedback</a> - <a href=\"http://wiki.github.com/protz/GMail-Conversation-View\" rel=\"nofollow\"><b>Webbplats</b> (inkluderar dokumentation)</a> - <a href=\"http://wiki.github.com/protz/GMail-Conversation-View/faq\" rel=\"nofollow\">Vanliga frågor och svar</a> - <a href=\"http://github.com/protz/GMail-Conversation-View/issues\" rel=\"nofollow\">Rapportera buggar</a> - <a href=\"http://github.com/protz/GMail-Conversation-View/commits/master\" rel=\"nofollow\">Spåra ändringar</a> - <a href=\"http://jonathan.xulforum.org/files/gcv-nightlies/\" rel=\"nofollow\">Senaste utvecklingsversionerna</a>\n\n<b>Vi älskar att få feedback! Klicka gärna på feedbacklänken ovan :-)</b>\n\nThunderbird Conversations är ett Thunderbird-tillägg som, precis som namnet antyder, ger tillgång till en konversationsvy i Thunderbird. Bland funktionerna märks:\n- en klassisk konversationsvy som hämtar meddelanden från samtliga mappar och beter sig precis som Gmails konversationsvy,\n- integrering med <a href=\"https://addons.mozilla.org/sv-SE/thunderbird/addon/mozilla-labs-contacts/\" rel=\"nofollow\">Mozilla Labs: Contacts</a>: Deltagarna har egna verktygstips i konversationen och du kan se deras användarbilder och profiler från Facebook, Twitter o.s.v.,\n- en snabbsvarsfunktion, med autokomplettering, som låter dig svara på en tråd i en handvändning,\n- citerade delar är hopfällda,\n- kortkommandon,\n- samt några ytterligare bonusfunktioner.",
@@ -102,16 +102,16 @@
         "ja": "https://github.com/protz/GMail-Conversation-View/wiki",
         "pl": "https://github.com/protz/GMail-Conversation-View/wiki"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/54/54035-64.png?modified=1589442765",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/54/54035-64.png?modified=1592259445",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/54/54035-32.png?modified=1589442765",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/54/54035-64.png?modified=1589442765"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/54/54035-32.png?modified=1592259445",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/54/54035-64.png?modified=1592259445"
     },
     "is_disabled": false,
     "is_experimental": false,
-    "is_featured": false,
+    "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2020-06-09T11:54:37Z",
+    "last_updated": "2020-06-26T03:12:31Z",
     "name": {
         "fr": "Thunderbird Conversations",
         "en-US": "Thunderbird Conversations",
@@ -123,94 +123,80 @@
     },
     "previews": [
         {
-            "id": 51375,
+            "id": 205997,
             "caption": {
+                "en-GB": "Messages are stacked together. Participants have tooltips with avatars.",
                 "en-US": "Messages are stacked together. Participants have tooltips with avatars."
             },
             "image_size": [
-                468,
-                371
+                838,
+                742
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51375.png?modified=1589442765",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205997.png?modified=1592156463",
             "thumbnail_size": [
-                252,
+                226,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51375.png?modified=1589442765"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205997.png?modified=1592156463"
         },
         {
             "id": 205970,
             "caption": {
-                "en-GB": "",
-                "en-US": "Image attachment have thumbnails. You can click on the thumbnail to view the image in a new tab or click the gallery button to view all."
+                "en-GB": "Image attachment have thumbnails. You can click on the thumbnail to view the image or click the gallery button to view all.",
+                "en-US": "Image attachment have thumbnails. You can click on the thumbnail to view the image or click the gallery button to view all."
             },
             "image_size": [
                 590,
                 302
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205970.png?modified=1589442765",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205970.png?modified=1592156463",
             "thumbnail_size": [
                 320,
                 164
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205970.png?modified=1589442765"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205970.png?modified=1592156463"
         },
         {
             "id": 205969,
             "caption": {
-                "en-GB": "",
-                "en-US": "Various actions are provided."
+                "en-GB": "Various actions are provided for each message.",
+                "en-US": "Various actions are provided for each message."
             },
             "image_size": [
                 526,
                 594
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205969.png?modified=1589442765",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205969.png?modified=1592156463",
             "thumbnail_size": [
                 177,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205969.png?modified=1589442765"
-        },
-        {
-            "id": 51377,
-            "caption": {
-                "en-US": "If you have Thunderbird Contacts installed, you will be able to open twitter / facebook profiles in new tabs."
-            },
-            "image_size": [
-                444,
-                254
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51377.png?modified=1589442765",
-            "thumbnail_size": [
-                320,
-                183
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51377.png?modified=1589442765"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205969.png?modified=1592156463"
         },
         {
             "id": 51379,
             "caption": {
-                "en-US": "Quick Reply."
+                "en-GB": "Quick Reply (coming back soon)",
+                "en-US": "Quick Reply (coming back soon)"
             },
             "image_size": [
                 491,
                 310
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51379.png?modified=1589442765",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/51/51379.png?modified=1592156463",
             "thumbnail_size": [
                 317,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51379.png?modified=1589442765"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/51/51379.png?modified=1592156463"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.76827,
-        "count": 458,
-        "average": 3.7707,
-        "text_count": 458
+        "bayesian_average": 3.76878,
+        "count": 459,
+        "average": 3.7712,
+        "text_count": 459
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/reviews/",
     "requires_payment": false,

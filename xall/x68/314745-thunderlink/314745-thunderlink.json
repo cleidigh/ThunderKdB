@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14152/14152415.png?modified=1535722458"
         }
     ],
-    "average_daily_users": 1079,
+    "average_daily_users": 1085,
     "categories": {
         "thunderbird": [
             "importexport",
@@ -26,26 +26,26 @@
     "contributions_url": "https://paypal.me/jameschardy",
     "created": "2011-05-13T08:55:36Z",
     "current_version": {
-        "id": 2473711,
+        "id": 2473757,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "73.0",
                 "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderlink/versions/2473711",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderlink/versions/2473757",
         "files": [
             {
-                "id": 1016873,
-                "created": "2020-05-15T02:10:07Z",
-                "hash": "sha256:8813eacdb26bd0b45e3d8f369750fde6f9b65c40c313662fac1e60dda928ccaa",
+                "id": 1016919,
+                "created": "2020-05-28T22:08:56Z",
+                "hash": "sha256:42ae7491f2c95ad4589bbc339d6c2939a90497cb7aad497aa6cf70e9305f5f91",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 24302,
+                "size": 25496,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016873/thunderlink-1.2.10-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016919/thunderlink-1.2.11-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -58,11 +58,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Minor updates, enabling 'mid:' RFC-compliant message URLs and a few more sender tags"
+            "en-US": "Restored the exact localized date string available with '&lt;date&gt;' tag on 1.2.9 (but that changed format for 1.2.10) as '&lt;localeDate&gt;'"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/versions/1.2.10",
-        "version": "1.2.10"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderlink/versions/1.2.11",
+        "version": "1.2.11"
     },
     "default_locale": "en-US",
     "description": {
@@ -90,7 +90,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-23T02:11:20Z",
+    "last_updated": "2020-06-09T19:28:49Z",
     "name": {
         "en-US": "ThunderLink",
         "de": "ThunderLink"
@@ -180,10 +180,11 @@
     "weekly_downloads": 106,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true
+            "comp69plus": true,
+            "comp60": true,
+            "comp61plus": true
         }
     }
 }
