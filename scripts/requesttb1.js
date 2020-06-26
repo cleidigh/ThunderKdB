@@ -748,7 +748,7 @@ async function getExtensions() {
 	let qs = { page: 0, app: "thunderbird", type: "extension", sort: "users" };
 	qs.page = 1;
 
-	const stopPage = 55;
+	const stopPage = 57;
 	promises = [];
 	pages = [];
 
@@ -882,7 +882,7 @@ async function g1() {
 	// try {
 	let p = [];
 	let indexStart = 0;	
-	let indexEnd = 68;
+	let indexEnd = 69;
 	console.debug(`StartingGetFiles: ${indexStart} - ${indexEnd} : ${extsJson.length}`);
 	for (let index = indexStart; index < indexEnd; index++) {
 		// console.debug('GetIndex ' + index);
