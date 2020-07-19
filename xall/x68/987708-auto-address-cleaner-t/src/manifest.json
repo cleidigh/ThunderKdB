@@ -2,18 +2,23 @@
   "manifest_version": 2,
   "name": "Auto Address Cleaner T",
   "description": "__MSG_extensionDescription__",
-  "version": "1.0.8",
+  "version": "1.1",
   "default_locale": "en",
-  "author": "markopee/Toshi_",
+  "author": "Toshi_",
   "homepage_url": "https://addons.thunderbird.net/thunderbird/addon/auto-address-cleaner-t/",
-  "legacy": true,
   "applications": {
     "gecko": {
       "id": "AutoAddressCleaner-T@Toshi_",
-      "strict_min_version": "60.0"
+      "strict_min_version": "74.0a1"
     }
   }, 
-  "icons": {
+  "permissions": [
+    "compose"
+  ],
+  "background": {
+    "scripts": ["scripts/background.js"]
+  },
+    "icons": {
     "64": "icons/broom-64.png"
   }
 }

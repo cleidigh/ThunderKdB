@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Feedback</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/feedback.css" />
+    <script src="/scripts/feedback.js" defer="true"></script>
+</head>
+<body>
+    <div class="popup-page">
+        <div class="wrap">
+            <div style="flex: 1;">
+                <input id="feedback-MUA1" type="text" readonly="readonly" class="flat" style="min-width:280px; width:100%; background:none; font-weight:bold; font-size:large;"></input>
+                <input id="feedback-MUA2" type="text" readonly="readonly" class="flat" style="width: 100%;"></input>
+                <label id="feedback-supported"/>
+            </div>
+            <div class="icon">
+                <image id="feedback-icon0" src="images/logo64.png" style="width:48px; height: 48px;" />
+            </div>
+            <div class="throbber">
+                <image id="feedback-throbber0" src="images/throbber.png"/>
+            </div>
+        </div>
+        <div>
+            <input id="feedback-mailinfo1" type="text" readonly="readonly" class="flat" />
+            <input id="feedback-mailinfo2" type="text" readonly="readonly" class="flat" />
+            <input id="feedback-iconinfo" type="text" readonly="readonly" class="flat" />
+        </div>
+        <div class="wrapbutton">
+            <input type="button" id="feedback-button-send"/>
+            <input type="button" id="feedback-button-close"/>
+        </div>
+    </div>
+</body>
+</html>

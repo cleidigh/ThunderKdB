@@ -9,12 +9,12 @@
 
 #qfb-show-filter-bar {
   -moz-appearance: none !important;
-  list-style-image: url("chrome://phoenityIcons/skin/icons/mail-toolbar.png");
+  list-style-image: url("./icons/mail-toolbar.png");
   -moz-image-region: rect(0px 552px 24px 528px);
 }
 
 toolbar[iconsize="small"] #qfb-show-filter-bar {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/mail-toolbar-small.png");
+  list-style-image: url("./icons/mail-toolbar-small.png");
   -moz-image-region: rect(0px 368px 16px 352px);
 }
 
@@ -50,11 +50,11 @@ toolbar[iconsize="small"] #qfb-show-filter-bar {
 /* :::: Filter Buttons :::: */
 
 #qfb-sticky {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/pin_unpinned.png");
+  list-style-image: url("./icons/pin_unpinned.png");
 }
 
 #qfb-sticky[checked] {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/pin_pinned.png");
+  list-style-image: url("./icons/pin_pinned.png");
 }
 
 #qfb-sticky .toolbarbutton-icon,
@@ -63,33 +63,33 @@ toolbar[iconsize="small"] #qfb-show-filter-bar {
 }
 
 #qfb-unread {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  list-style-image: url("./icons/quickfilterbar.png");
   -moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
 #qfb-starred {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  list-style-image: url("./icons/quickfilterbar.png");
   -moz-image-region: rect(0px, 32px, 16px, 16px);
 }
 
 .qfb-starred-nostar {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  list-style-image: url("./icons/quickfilterbar.png");
   -moz-image-region: rect(0px, 32px, 16px, 16px);
-  filter: url("chrome://phoenityIcons/skin/icons/extensions.svg#greyscale");
+  filter: url("./icons/extensions.svg#greyscale");
 }
 
 #qfb-inaddrbook {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  list-style-image: url("./icons/quickfilterbar.png");
   -moz-image-region: rect(0px, 48px, 16px, 32px);
 }
 
 #qfb-tags {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  list-style-image: url("./icons/quickfilterbar.png");
   -moz-image-region: rect(0px, 64px, 16px, 48px);
 }
 
 #qfb-attachment {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/quickfilterbar.png");
+  list-style-image: url("./icons/quickfilterbar.png");
   -moz-image-region: rect(0px, 80px, 16px, 64px);
 }
 

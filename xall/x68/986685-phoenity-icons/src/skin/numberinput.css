@@ -6,14 +6,17 @@
 @namespace html "http://www.w3.org/1999/xhtml";
 
 *|input[type="number"]::-moz-number-spin-box {
-  -moz-appearance: spinner;
-  margin: -5px -4px -5px 4px;
+  margin: -3px -7px -5px 5px;
 }
 
 @media (-moz-os-version: windows-win7),
        (-moz-os-version: windows-win8),
        (-moz-os-version: windows-win10) {
   html|input[type="number"]::-moz-number-spin-box {
-    margin: -2px -4px -2px 4px;
+    margin: -2px -2px -2px 2px;
+  }
+  html|input[type="number"]::-moz-number-spin-up,
+  html|input[type="number"]::-moz-number-spin-down {
+    min-height: 10px;
   }
 }

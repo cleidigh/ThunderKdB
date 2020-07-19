@@ -6,7 +6,7 @@
 #mailredirect-toolbarbutton,
 #mailredirect-toolbarbutton:hover,
 #mailredirect-toolbarbutton[disabled="true"]{
-  list-style-image: url("chrome://phoenityIcons/skin/mailredirect/mailredirect-large.png") !important;
+  list-style-image: url("mailredirect-large.png") !important;
   -moz-image-region: rect(0 24px 24px 0) !important;
 }
 
@@ -14,7 +14,7 @@ toolbar[iconsize="small"] #hdrMailredirectButton,
 toolbar[iconsize="small"] #mailredirect-toolbarbutton,
 toolbar[iconsize="small"] #mailredirect-toolbarbutton:hover,
 toolbar[iconsize="small"] #mailredirect-toolbarbutton[disabled="true"] {
-  list-style-image: url("chrome://phoenityIcons/skin/mailredirect/mailredirect-small.png") !important;
+  list-style-image: url("mailredirect-small.png") !important;
   -moz-image-region: rect(0 16px 16px 0) !important;
 }
 
@@ -30,7 +30,7 @@ toolbar[iconsize="small"] #mailredirect-toolbarbutton[disabled="true"] {
 /* ..... subject column, mail ..... */
 
 tree > treechildren::-moz-tree-image(subjectCol, kw-redirected) {
-  list-style-image: url("chrome://phoenityIcons/skin/mailredirect/mailredirect-icons.png");
+  list-style-image: url("mailredirect-icons.png");
   -moz-image-region: rect(0 16px 16px 0);
 }
 

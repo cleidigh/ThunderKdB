@@ -2,20 +2,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-@import url("chrome://phoenityIcons/skin/chat/status.css");
+@import url("chat/status.css");
 
 @namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";
 
 .startChatBubble {
-  list-style-image: url('chrome://phoenityIcons/skin/chat/prpl-generic/icon.png');
+  list-style-image: url('chat/prpl-generic/icon.png');
   box-shadow: none !important;
 }
 
 .closeConversationButton {
   margin-inline-end: 0;
   -moz-stack-sizing: ignore;
-  list-style-image: url("chrome://phoenityIcons/skin/icons/Search-close.png");
+  list-style-image: url("./icons/Search-close.png");
   -moz-image-region: rect(0, 16px, 16px, 0);
   box-shadow: none !important;
 }
@@ -27,34 +27,34 @@
 }
 
 .userIcon[src=""] {
-  background-image: url("chrome://phoenityIcons/skin/icons/userIcon.png");
+  background-image: url("./icons/userIcon.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 .status-overlay-icon[status="away"],
 .status-overlay-icon[status="unavailable"] {
-  list-style-image: url('chrome://phoenityIcons/skin/chat/away.png');
+  list-style-image: url('chat/away.png');
 }
 
 .status-overlay-icon[status="idle"] {
-  list-style-image: url('chrome://phoenityIcons/skin/chat/idle.png');
+  list-style-image: url('chat/idle.png');
 }
 
 .status-overlay-icon[status="mobile"] {
-  list-style-image: url('chrome://phoenityIcons/skin/chat/mobile.png');
+  list-style-image: url('chat/mobile.png');
 }
 
 .status-overlay-icon[status="offline"] {
-  list-style-image: url('chrome://phoenityIcons/skin/chat/offline.png');
+  list-style-image: url('chat/offline.png');
 }
 
 .status-overlay-icon[status="unknown"] {
-  list-style-image: url('chrome://phoenityIcons/skin/chat/unknown.png');
+  list-style-image: url('chat/unknown.png');
 }
 
 #searchResultConv > .prplBuddyIcon > .protoIcon {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/mail-toolbar-small.png");
+  list-style-image: url("./icons/mail-toolbar-small.png");
   -moz-image-region: rect(0px 368px 16px 352px);
 }
 
@@ -105,34 +105,34 @@
 }
 
 #button-add-buddy {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/chat-toolbar.png");
+  list-style-image: url("./icons/chat-toolbar.png");
   -moz-image-region: rect(0px 22px 22px 0px);
 }
 
 #button-join-chat {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/chat-toolbar.png");
+  list-style-image: url("./icons/chat-toolbar.png");
   -moz-image-region: rect(0px 44px 22px 22px);
 }
 
 #button-chat-accounts {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/chat-toolbar.png");
+  list-style-image: url("./icons/chat-toolbar.png");
   -moz-image-region: rect(0px 66px 22px 44px);
 }
 
 /* Small toolbar icons */
 
 toolbar[iconsize="small"] #button-add-buddy {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/chat-toolbar-small.png");
+  list-style-image: url("./icons/chat-toolbar-small.png");
   -moz-image-region: rect(0px 16px 16px 0px);
 }
 
 toolbar[iconsize="small"] #button-join-chat {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/chat-toolbar-small.png");
+  list-style-image: url("./icons/chat-toolbar-small.png");
   -moz-image-region: rect(0px 32px 16px 16px);
 }
 
 toolbar[iconsize="small"] #button-chat-accounts {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/chat-toolbar-small.png");
+  list-style-image: url("./icons/chat-toolbar-small.png");
   -moz-image-region: rect(0px 48px 16px 32px);
 }
 
@@ -146,13 +146,13 @@ toolbar[iconsize="small"] #button-chat-accounts {
 #imStatusAvailable,
 #appmenu_imStatusAvailable,
 richlistitem[state="connected"] .accountStateIcon {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/status.png");
+  list-style-image: url("./icons/status.png");
   -moz-image-region: rect(0px 16px 16px 0px);
 }
 
 #statusTypeIcon[status="idle"],
 .statusTypeIcon[status="idle"] {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/status.png");
+  list-style-image: url("./icons/status.png");
   -moz-image-region: rect(0px 32px 16px 16px);
 }
 
@@ -164,7 +164,7 @@ richlistitem[state="connected"] .accountStateIcon {
 #imStatusOffline,
 #appmenu_imStatusOffline,
 richlistitem[state="disconnected"] .accountStateIcon {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/status.png");
+  list-style-image: url("./icons/status.png");
   -moz-image-region: rect(0px 48px 16px 32px);
 }
 
@@ -175,7 +175,7 @@ richlistitem[state="disconnected"] .accountStateIcon {
 .statusTypeIcon[status="away"],
 #imStatusUnavailable,
 #appmenu_imStatusUnavailable {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/status.png");
+  list-style-image: url("./icons/status.png");
   -moz-image-region: rect(0px 64px 16px 48px);
 }
 
@@ -198,6 +198,6 @@ toolbar[mode="text"] #statusTypeIcon .toolbarbutton-icon {
 
 .tabmail-tab[type="chat"],
 .alltabs-item[type="chat"] {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/mail-toolbar-small.png");
+  list-style-image: url("./icons/mail-toolbar-small.png");
   -moz-image-region: rect(0px 320px 16px 304px);
 }

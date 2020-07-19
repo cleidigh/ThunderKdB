@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-@import url("chrome://phoenityIcons/skin/chat/status.css");
+@import url("./status.css");
 
 @namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";
@@ -25,7 +25,7 @@
 }
 
 .statusTypeIcon[left][status="chat"] {
-  list-style-image: url('chrome://phoenityIcons/skin/chat/chat-left-16.png') !important;
+  list-style-image: url('./chat-left-16.png') !important;
 }
 
 .userIconHolder[userIcon] + .statusTypeIcon {

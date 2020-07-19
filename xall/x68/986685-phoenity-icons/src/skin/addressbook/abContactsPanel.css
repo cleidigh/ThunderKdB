@@ -5,17 +5,17 @@
 /* ::::: directory pane icons ::::: */
 
 treechildren::-moz-tree-image(DirCol) {
-  list-style-image: url("chrome://phoenityIcons/skin/addressbook/icons/addrbook.png");
+  list-style-image: url("./icons/addrbook.png");
 }
 
 treechildren::-moz-tree-image(DirCol, IsMailList-true) {
-  list-style-image: url("chrome://phoenityIcons/skin/addressbook/icons/ablist.png");
+  list-style-image: url("./icons/ablist.png");
 }
 
 treechildren::-moz-tree-image(DirCol, IsRemote-true) {
-  list-style-image: url("chrome://phoenityIcons/skin/addressbook/icons/remote-addrbook.gif");
+  list-style-image: url("./icons/remote-addrbook.gif");
 }
 
 treechildren::-moz-tree-image(DirCol, IsRemote-true, IsSecure-true) {
-  list-style-image: url("chrome://phoenityIcons/skin/addressbook/icons/secure-remote-addrbook.gif");
+  list-style-image: url("./icons/secure-remote-addrbook.gif");
 }

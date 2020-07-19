@@ -3,28 +3,28 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #button-security {
-  list-style-image: url("chrome://phoenityIcons/skin/messengercompose/compose-toolbar.png");
+  list-style-image: url("../messengercompose/compose-toolbar.png");
   -moz-image-region: rect(0px 120px 24px 96px);
 }
 
 toolbar[iconsize="small"] #button-security {
-  list-style-image: url("chrome://phoenityIcons/skin/messengercompose/compose-toolbar-small.png");
+  list-style-image: url("../messengercompose/compose-toolbar-small.png");
   -moz-image-region: rect(0px 80px 16px 64px);
 }
 
 #msgcomposeWindow[signing="ok"] #signing-status {
-  list-style-image: url("chrome://phoenityIcons/skin/smime/icons/SignOk.png");
+  list-style-image: url("./icons/SignOk.png");
 }
 
 #msgcomposeWindow[signing="notok"] #signing-status {
-  list-style-image: url("chrome://phoenityIcons/skin/smime/icons/SignNotOk.png");
+  list-style-image: url("./icons/SignNotOk.png");
 }
 
 #msgcomposeWindow[crypto="ok"] #encryption-status {
-  list-style-image: url("chrome://phoenityIcons/skin/smime/icons/CryptoOk.png");
+  list-style-image: url("./icons/CryptoOk.png");
 }
 
 #msgcomposeWindow[crypto="notok"] #encryption-status {
-  list-style-image: url("chrome://phoenityIcons/skin/smime/icons/CryptoNotOk.png");
+  list-style-image: url("./icons/CryptoNotOk.png");
 }
 

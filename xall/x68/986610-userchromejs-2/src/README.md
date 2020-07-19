@@ -11,4 +11,6 @@ I am open to the possibility of adding a library of helper functions back to the
 
 The home page of this add-on is currently [on Github](https://github.com/jikamens/userChromeJS). Also feel free to [contact me](mailto:jik@kamens.us) with questions or feedback.
 
-This add-on is Copyright (C) 2019 Jonathan Kamens. It is released under the terms of the [Mozilla Public License Version 2.0](LICENSE.txt), a copy of which is included in the add-on in the file "LICENSE.txt".
+This add-on is Copyright (C) 2019-2020 Jonathan Kamens. It is released under the terms of the [Mozilla Public License Version 2.0](LICENSE.txt), a copy of which is included in the add-on in the file "LICENSE.txt".
+
+Thank you to Jorg K <jorgk@jorgk.com> for the initial port to Thunderbird 78.

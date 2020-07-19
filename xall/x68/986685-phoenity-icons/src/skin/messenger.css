@@ -12,15 +12,16 @@
 /* ::::: online/offline icons ::::: */
 
 #offline-status[offline="true"] {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/offline.png");
+  list-style-image: url("./icons/offline.png");
 }
 
 #offline-status {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/online.png");
+  list-style-image: url("./icons/online.png");
 }
 
 /* ::::: tabbar-toolbar button fix ::::: */
 
+/*
 #navigation-toolbox > toolbar[brighttext] {
   --toolbarbutton-hover-background: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .25));
   --toolbarbutton-hover-bordercolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .5));
@@ -30,9 +31,13 @@
   --toolbarbutton-active-boxshadow: 0 0 0 1px var(--lwt-toolbarbutton-active-background, rgba(255, 255, 255, .4)) inset;
   --toolbarbutton-checkedhover-backgroundcolor: var(--lwt-toolbarbutton-hover-background, rgba(255, 255, 255, .5));
 }
+*/
 
 /* ::::: column picker :::::  */
 
 .treecol-image .tree-columnpicker-icon {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/columnpicker.svg");
+  list-style-image: url("chrome://global/skin/icons/columnpicker.svg");
+/*
+  list-style-image: url("./icons/columnpicker.svg");
+*/
 }

@@ -36,11 +36,8 @@
 
 /* Preference tabs */
 
-#gContactSyncPrefs tabs {
-  background-color: -moz-Field;
-}
-
 #gContactSyncPrefs tab {
+  min-width: 60px !important;
   margin: 0px 1px 0px 0px;
   padding: 2px 4px;
 }
@@ -54,11 +51,11 @@
 }
 
 #gContactSyncPrefs #main_tab {
-  list-style-image: url("chrome://phoenityIcons/skin/gContactSync/preferences.png") !important;
+  list-style-image: url("preferences.png") !important;
 }
 #gContactSyncPrefs #interface_tab {
-  list-style-image: url("chrome://phoenityIcons/skin/gContactSync/interface.png") !important;
+  list-style-image: url("interface.png") !important;
 }
 #gContactSyncPrefs #advanced_tab {
-  list-style-image: url("chrome://phoenityIcons/skin/gContactSync/advanced.png") !important;
+  list-style-image: url("advanced.png") !important;
 }

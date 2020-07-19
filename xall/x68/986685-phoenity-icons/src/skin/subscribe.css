@@ -6,12 +6,12 @@
   == Styles for the subscribe dialog.
   ======================================================================= */
 
-@import url("chrome://phoenityIcons/skin/folderMenus.css");
+@import url(folderMenus.css);
 
 /* ::::: Folders :::::: */
 
 treechildren::-moz-tree-image(nameColumn) {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/folder.png");
+  list-style-image: url("./icons/folder.png");
   -moz-image-region: rect(0 16px 16px 0);
 }
 
@@ -26,7 +26,7 @@ treechildren::-moz-tree-image(nameColumn2, nntp) {
 /* ::::: Servers :::::: */
 
 .subscribeMenuItem {
-  list-style-image: url("chrome://phoenityIcons/skin/icons/server.png");
+  list-style-image: url("./icons/server.png");
   -moz-image-region: rect(0 16px 16px 0);
 }
 
