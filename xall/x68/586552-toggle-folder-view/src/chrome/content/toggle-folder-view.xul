@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://toggle-folder-view/skin/button.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://toggle-folder-view/locale/button.dtd">
+<overlay id="toggle-folder-view" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://toggle-folder-view/content/toggle-folder-view.js"></script>
+  <toolbarpalette id="MailToolbarPalette">
+  <toolbarbutton
+	type="toolbar-button"
+  class="toolbarbutton-1"
+	id="togglefolderview"
+	label="&togglefolderview.label;"
+	tooltiptext="&togglefolderview.tooltip;"
+	oncommand="toggleFolderView.toggleFolderView();"/>
+	</toolbarpalette>
+</overlay>

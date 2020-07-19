@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!--
+/************************************
+ ************************************
+ ***                              ***
+ ***  2010 (C) Zoiper.com         ***
+ ***                              ***
+ ************************************
+ ************************************/
+-->
+
+<?xml-stylesheet href="chrome://zoiper/content/zoiper.css" type="text/css"?>
+
+<overlay id="zoiperOverlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/javascript" src="chrome://zoiper/content/zoiper.js"/>
+
+    <toolbar id="ab-bar2"
+             defaultset="button-newcard,button-newlist,separator,button-editcard,button-newmessage,separator,button-abdelete,separator,button-abzoiper,spring,search-container">
+        <toolbarbutton id="button-abzoiper"
+                       class="toolbarbutton-1"
+                       label="Zoiper"
+                       tooltiptext="Make a call using Zoiper Communicator."
+                       oncommand="OnZoiperButtonClick();"/>
+    </toolbar>
+</overlay>

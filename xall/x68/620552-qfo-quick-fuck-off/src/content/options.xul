@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<prefwindow id="qfo-prefs" title="Quick Fuck Off" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <prefpane label="Quick Fuck Off">
+    <preferences>
+      <preference id="qfo-option-shout" name="extensions.qfo.shoutcloud" type="bool" />
+      <preference id="qfo-option-plaintext" name="extensions.qfo.plaintext" type="bool" />
+    </preferences>
+
+    <grid>
+      <columns>
+        <column flex="4"/>
+        <column flex="1"/>
+      </columns>
+      <rows>
+        <row>
+          <label control="shoutcloud" value="SHOUTCLOUD!" />
+          <checkbox id="shoutcloud" preference="qfo-option-shout" />
+        </row>
+        <row>
+          <label control="plaintext" value="Force plaintext" />
+          <checkbox id="plaintext" preference="qfo-option-plaintext" />
+        </row>
+      </rows>
+    </grid>
+  </prefpane>
+</prefwindow>

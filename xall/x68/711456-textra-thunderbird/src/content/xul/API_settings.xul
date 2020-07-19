@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://TexTra/locale/locale.dtd">
+
+<window id="Window_TexTra_API_Settings" title="TexTra &TexTra.set_api;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="window_onload()">
+
+  <stringbundle id="table_locale" src="chrome://TexTra/locale/locale_js.properties" />
+  <script src="../js/utils.js"/>
+  <script src="../js/oauth.js"/>
+  <script src="../js/sha1.js"/>
+  <script src="../js/aes.js"/>
+  <script src="../js/api.js"/>
+  <script src="./API_settings.js"/>
+
+  <grid>
+
+    <columns>
+      <column />
+      <column />
+    </columns>
+
+    <rows>
+      <row>
+        <label id="label1" value="&TexTra.user_name;" />
+        <textbox id="tb_user_name" colspan="2"/>
+      </row>
+
+      <row>
+        <label id="label1" value="API KEY" />
+        <textbox id="tb_api_key" />
+      </row>
+
+      <row>
+        <label id="label1" value="API SECRET" />
+        <textbox id="tb_api_secret" />
+      </row>
+
+
+    </rows>
+
+  </grid>
+
+  <grid>
+
+    <columns>
+      <column />
+      <column />
+      <column />
+    </columns>
+
+    <rows>
+
+      <row>
+        <label id="label1" value="&TexTra.server;" />
+        <menulist id="cb_api_prot">
+          <menupopup>
+            <menuitem label="https" value="https"/>
+            <menuitem label="http" value="http"/>
+          </menupopup>
+        </menulist>
+        <textbox id="tb_server_url"/>
+        <button id="btn_reset" label="&TexTra.reset;" oncommand="init_server();"/>
+      </row>
+    </rows>
+
+  </grid>
+  <box orient="horizontal" align="right">
+    <button id="btn_save" label="&TexTra.save;" oncommand="btn_save();"/>
+    <button id="btn_cancel" label="&TexTra.cancel;" oncommand="window.close()"/>
+  </box>
+
+</window>

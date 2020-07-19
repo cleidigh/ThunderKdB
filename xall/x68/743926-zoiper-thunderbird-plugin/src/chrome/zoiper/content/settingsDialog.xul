@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<!--
+/************************************
+ ************************************
+ ***                              ***
+ ***  2010 (C) Zoiper.com         ***
+ ***                              ***
+ ************************************
+ ************************************/
+-->
+
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog buttons="accept, cancel"
+        id="zoiper-settings-dialog"
+        onload="OnLoadSettingsDialog();"
+        title="Zoiper Communicator - Settings"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/javascript" src="chrome://zoiper/content/zoiper.js"/>
+    <script type="application/javascript">
+        window.document.addEventListener( 'dialogaccept', OnSaveSettings );
+    </script>
+
+    <groupbox align="start">
+        <label class="header">Zoiper Communicator executable path</label>
+        <hbox>
+            <textbox id="zoiper_path" maxlength="256" size="50" flex="1"/>
+            <button label="Browse" oncommand="OnBrowseClick(); return false;"/>
+        </hbox>
+    </groupbox>
+</dialog>

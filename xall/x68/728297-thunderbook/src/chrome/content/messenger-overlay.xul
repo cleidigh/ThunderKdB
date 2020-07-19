@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://thunderbook/skin/primaryToolbar-overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://thunderbook/locale/messenger-overlay.dtd">
+<!-- Copyright 2016-2019 Julien L. <julienl81@hotmail.com>
+
+   - This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://thunderbook/content/uuid.js" />
+  <script type="application/javascript" src="chrome://thunderbook/content/jquery-3.0.0.min.js" />
+  <script type="application/javascript" src="chrome://thunderbook/content/util.js" />
+  <script type="application/javascript" src="chrome://thunderbook/content/domain.js" />
+  <script type="application/javascript" src="chrome://thunderbook/content/messenger-adapter.js" />
+  <script type="application/javascript" src="chrome://thunderbook/content/epub.js"/>
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="thunderbook-stringbundle" src="chrome://thunderbook/locale/messenger-adapter.properties"/>
+  </stringbundleset>
+
+  <!-- Adds a button in the toolbar (and in the Customize Toolbar window as well). -->
+  <toolbar id="mail-bar3">
+    <toolbarbutton id="button-export-as-ebook"
+      class="toolbarbutton-1"
+      label="&messenger.toolbar.button.label;"
+      oncommand="openFileSelectionWindowToExportAsEbook();"
+      tooltiptext="&messenger.toolbar.button.tooltiptext;"
+      removable="true"
+      insertafter="button-appmenu"
+      />
+  </toolbar>
+
+  <!-- Adds an entry in the pop-up menu of every message folder.
+       A possible improvement would be to be able to generate an
+       e-book with messages of one folder only. -->
+  <menupopup id="folderPaneContext">
+    <menuitem id="folderPaneContext-exportAsEbook"
+      label="&messenger.menupopup.menuitem.label;"
+      oncommand="openFileSelectionWindowToExportAsEbookForFolder(event);"
+      insertbefore="folderPaneContext-sep3"
+      />	
+  </menupopup>
+</overlay>

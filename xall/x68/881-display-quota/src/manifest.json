@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "{c1ac4523-76c2-9995-adbd-d93bf5141bea}",
+      "strict_min_version": "68.0"
+    }
+  },
+  "name": "Display Quota",
+  "description": "This extension will display the current status of your quota in thunderbird's statusbar and will warn you when you reach a configurable limit",
+  "version": "0.4.2",
+  "icons": {
+    "48": "icons/DisplayQuota.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://displayquota/content/displayquotaoptions.xul",
+      "open_in_tab": false
+    }
+  }
+}

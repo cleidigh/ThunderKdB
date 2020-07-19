@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://TexTra/skin/toolbar-button.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://TexTra/locale/locale.dtd">
+
+<!-- オーバーレイすることを表す -->
+<overlay id="TexTra" 
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundleset>
+    <stringbundle id="table_locale" src="chrome://TexTra/locale/locale_js.properties" />
+  </stringbundleset>
+  
+  <!-- ツールメニューの追加 -->
+	<menupopup id="menu_ToolsPopup">
+    <menu id="adf" label="TexTra">
+      <menupopup>
+        <menuitem insertafter="devToolsSeparator" label="&TexTra.TrsLookUp;"
+			    accesskey="T" oncommand="show_translate_form();" />
+        <menuitem insertafter="devToolsSeparator" label="&TexTra.reg_terms;"
+			    accesskey="R" oncommand="show_regist_terms();" />
+        <menuitem insertafter="devToolsSeparator" label="&TexTra.Settings;"
+			    accesskey="P" oncommand="show_property();" />
+      </menupopup>
+    </menu>
+  </menupopup>
+
+  <!-- ツールバーボタンの追加 -->
+  <toolbarpalette id="MailToolbarPalette">
+    <toolbarbutton id="TexTra-button" class="toolbarbutton-1"
+      label="TexTra" tooltiptext="TexTra"
+      oncommand="show_menu_on_toolbar_button(event);"/>
+  </toolbarpalette>
+
+  <!-- 右クリックメニューに追加 -->
+  <popup id="mailContext">
+    <menuitem label="&TexTra.trans; TexTra" oncommand="show_popup('trans')" class="menuitem-iconic" 
+              image="chrome://TexTra/skin/icons/TexTra_white016.png"/>
+    <menuitem label="&TexTra.lookup; TexTra" oncommand="show_popup('dict')" class="menuitem-iconic"
+              image="chrome://TexTra/skin/icons/TexTra_white016.png"/>
+  </popup>
+
+  <!-- JavaScriptファイルのインポート -->
+  <script type="application/x-javascript" src="js/oauth.js" />
+  <script type="application/x-javascript" src="js/sha1.js" />
+  <script type="application/x-javascript" src="js/jquery.js" />
+  <script type="application/x-javascript" src="js/utils.js" />
+  <script type="application/x-javascript" src="js/aes.js" />
+  <script type="application/x-javascript" src="js/api.js" />
+  <script type="application/x-javascript" src="js/popup.js" />
+  <script type="application/x-javascript" src="TexTra.js" />
+
+</overlay>

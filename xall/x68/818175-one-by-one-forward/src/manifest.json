@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "onebyoneforward@thunderbird.nzeid.net",
+      "strict_min_version": "68.0"
+    }
+  },
+  "name": "One-by-One Forward",
+  "description": "Forward the selected emails, one-by-one, to the recipients you specify using your choice of attachment handling.",
+  "version": "1.2.0",
+  "icons": {},
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://onebyoneforward/content/options.xul",
+      "open_in_tab": true
+    }
+  }
+}

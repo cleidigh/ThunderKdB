@@ -1,0 +1,30 @@
+<?xml version="1.0"?> 
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://expertspam/locale/expertspam.dtd">
+
+<prefwindow id="expertspamOptions" title="Expertspam options"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<script type="application/x-javascript" src="chrome://expertspam/content/expertspam.js"/>
+	
+	<prefpane id="pref-pane1">
+		<!-- expertspam preferences -->
+		<preferences>
+			<preference id="expertspam_showInToolbar" name="extensions.expertspam.showInToolbar" type="bool"/>
+			<preference id="expertspam_showInMenu" name="extensions.expertspam.showInMenu" type="bool"/>
+			
+			<preference id="expertspam_spam_tagAsJunk" name="extensions.expertspam.spam.tagAsJunk" type="bool"/>
+			<preference id="expertspam_spam_moveToTrash" name="extensions.expertspam.spam.moveToTrash" type="bool"/>
+		</preferences>
+		
+		<vbox flex="1">
+			<label value="&expertspam.option.general.show;"/>
+			<checkbox preference="expertspam_showInToolbar" label="&expertspam.option.general.showintoolbar;"/>
+			<checkbox preference="expertspam_showInMenu" label="&expertspam.option.general.showinmenu;"/>
+			<separator/>
+			<label value="&expertspam.option.action;" />
+			<checkbox preference="expertspam_spam_tagAsJunk" label="&expertspam.option.tagAsJunk;" />
+			<checkbox preference="expertspam_spam_moveToTrash" label="&expertspam.option.moveToTrash;" />
+		</vbox>
+	</prefpane>
+</prefwindow>

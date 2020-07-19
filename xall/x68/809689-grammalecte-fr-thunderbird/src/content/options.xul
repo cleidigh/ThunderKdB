@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://grammarchecker/content/options.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://grammarchecker/locale/options.dtd">
+
+<dialog
+  id="grammalecte-options-window"
+  title="&window.title;"
+  orient="vertical"
+  buttons="accept, cancel"
+  defaultButton="accept"
+  width="400"
+  onload="document.getElementById('grammalecte-options-window').centerWindowOnScreen();"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <!-- Other elements go here -->
+
+  <div class="dialogheader-title">&dialogheader.label;</div>
+
+  <checkbox id="check_signature" label="&check_signature.label;" accesskey="&check_signature.accesskey;" />
+
+  <script type="application/javascript" src="options.js" />
+
+</dialog>

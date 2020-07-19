@@ -1,0 +1,46 @@
+<html>
+
+<head>
+	<title>__MSG_options__</title>
+	<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="jquery-ui.min.js"></script>
+	 <meta charset="UTF-8">
+</head>
+
+<body>
+	<hr />
+	<div align="center">
+		<div id="page1">
+			<table>
+				<tr>
+					<td>__MSG_server__</td>
+					<td><input type='text' id='server_ip' size='20' maxlength='20'></td>
+				</tr>
+				<tr>
+					<td>Click to Dial Token:</td>
+					<td><input type='text' id='token' size='50' maxlength='50'></td>
+				</tr>
+				<tr>
+					<td>__MSG_prefix__</td>
+					<td><input type='text' id='prefix' size='20' maxlength='20'></td>
+				</tr>
+				<tr>
+					<td>__MSG_peer__</td>
+					<td><input type='text' id='peer' size='20' maxlength='20'></td>
+				</tr>
+				<tr>
+					<td>__MSG_dialplan_nr__</td>
+					<td><input type='text' id='dialplan_nr' size='20' maxlength='20'></td>
+				</tr>
+				<tr>
+					<td>__MSG_https__</td>
+					<td><input type='checkbox' id='is_https'></td>
+				</tr>
+			</table>
+			<div id="status"></div>
+			<button id="save">__MSG_save__</button>
+		</div>
+	</div>
+</body>
+<script src="options.js"></script>
+</html>

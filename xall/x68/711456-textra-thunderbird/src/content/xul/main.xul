@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://TexTra/locale/locale.dtd">
+
+
+  <window id="WINDOW_TexTra_Translate" title="TexTra [&TexTra.trans;]" width="350" height="400"
+          xmlns:html="http://www.w3.org/1999/xhtml"
+          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <stringbundle id="table_locale" src="chrome://TexTra/locale/locale_js.properties" />
+    <script src="../js/utils.js"/>
+    <script src="../js/jquery.js"/>
+    <script src="../js/oauth.js"/>
+    <script src="../js/sha1.js"/>
+    <script src="../js/aes.js"/>
+    <script src="../js/api.js"/>
+    <script src="./main.js"/>
+    <script src="./translate_trans.js"/>
+    <script src="./translate_ref_dic.js"/>
+    <script src="./translate_regist_taiyaku.js"/>
+    <script src="./translate_history.js"/>
+    
+    <toolbox>
+      <toolbar>
+        <toolbarbutton label="&TexTra.trans;" oncommand="show_panels('trans')"/>
+        <toolbarbutton label="&TexTra.lookup;" oncommand="show_panels('ref_dic')"/>
+        <toolbarbutton label="&TexTra.his;" oncommand="show_panels('hist_trans')"/>
+        <toolbarbutton label="&TexTra.other;" type="menu-button">
+          <menupopup>
+            <menuitem label="&TexTra.reg_bill;" oncommand="show_panels('regist_taiyaku')"/>
+            <menuitem label="&TexTra.reg_terms;" oncommand="show_form_regist_term()"/>
+            <menuitem label="&TexTra.set_api;" oncommand="show_form_api_settings()"/>
+            <menuitem label="&TexTra.set_mt;" oncommand="show_form_mt_settings()"/>
+            <menuitem label="&TexTra.help;" oncommand="show_help()"/>
+            <menuitem label="&TexTra.minhon;" oncommand="show_minhon()"/>
+          </menupopup>
+        </toolbarbutton>
+        <toolbarbutton label="&TexTra.set_lang;" oncommand="show_panels('lang')"/>
+      </toolbar>
+    </toolbox>
+
+  
+    
+    <box id="box_trs" orient="vertical">
+      <label id="label1" value="&TexTra.org;" />
+      <html:textarea id="tb_trs_txt_org" rows="4"/>
+      <box orient="horizontal" align="right">
+        <image id="img_trs_please_wait" src="chrome://TexTra/skin/icons/please_wait.gif" style="display:none"/>
+        <label id="link_open_history_trs" class="text-link" value="&TexTra.his;"/>
+        <label id="link_dic_taiyaku_trs" class="text-link" value="&TexTra.reg_glos;" onclick="open_dic_taiyaku_page()"/>
+        <button id="btn_trs_trans" label="&TexTra.trans;" oncommand="call_trans_text();"/>
+      </box>
+
+      <label id="label1" value="&TexTra.trs_sent;" />
+      <label id="hdn_trs_lang_org" hidden="true"/>
+      <label id="hdn_trs_lang_trs" hidden="true"/>
+      <box id="box_trs_trans" orient="vertical" flex="0" height="200" style='overflow: auto; background-color: gainsboro;'/>
+    </box>
+
+
+
+    <box id="box_regist_taiyaku" orient="vertical" hidden="true">
+      <label id="label1" value="&TexTra.org;" />
+      <html:textarea id="tb_rt_txt_org" rows="4"/>
+      <label id="label1" value="&TexTra.trs_sent;" />
+      <html:textarea id="tb_rt_txt_trans" rows="4"/>
+      <box orient="horizon" align="right">
+        <label id="link_dic_taiyaku_rt" class="text-link" value="&TexTra.reg_of_glos;"/>
+        <button id="btn_regist_taiyaku" label="&TexTra.reg;" oncommand="modify_taiyaku_rt();"/>
+      </box>
+    </box>
+  
+  
+
+    <box id="box_ref_dic" orient="vertical" flex="0" hidden="true">
+      <box orient="horizontal" align="center">
+        <label id="label1" value="&TexTra.term;" />
+        <html:textarea id="tb_ref_dic_txt_org" rows="2"/>
+      </box>
+      <box orient="horizontal" align="right">
+        <image id="img_refer_dic_please_wait" src="chrome://TexTra/skin/icons/please_wait.gif" style="display:none"/>
+        <label id="link_open_history_refer_dic" class="text-link" value="&TexTra.his;"/>
+        <button id="btn_ref_dic" label="&TexTra.lookup;" oncommand="call_refer_dic();"/>
+      </box>
+      <html:textarea id="tb_ref_dic_result" rows="10"/>
+    </box>
+
+
+
+    <box id="box_history" orient="vertical" hidden="true">
+      <box orient="horizontal">
+        <label id="link_history_trs" class="text-link" value="&TexTra.hist_trans;" onclick="set_history_panel('trans')"/>
+        <label id="link_history_dic" class="text-link" value="&TexTra.hist_lookup;" onclick="set_history_panel('dic')"/>
+      </box>
+      <label class="text-link" value="&TexTra.claer_hist;" onclick="clear_history()"/>
+      <box id="box_histrs_list" orient="vertical" flex="0" height="300" style='overflow: auto; background-color: gainsboro;'>
+        <html:table id="tbl_hist_trans" border="1"/>
+        <html:table id="tbl_hist_dic" border="1" style="display:none;"/>
+      </box>
+    </box>
+
+    <box id="box_lang" orient="vertical" hidden="true">
+      <box orient="horizontal" align="center">
+        <label id="label1" value="&TexTra.lang_org;" />
+        <menulist id="sb_lang_org" oncommand="check_lang_combo1()">
+          <menupopup>
+          </menupopup>
+        </menulist>
+        <button id="btn_replace_langs" label="⇔" flex="0" oncommand="replace_language();" height="25"/>
+      </box>
+      <box id="box_lang" orient="horizontal" align="center">
+        <label id="label1" value="&TexTra.lang_trs;" />
+        <menulist id="sb_lang_trans" oncommand="check_lang_combo2()">
+          <menupopup>
+          </menupopup>
+        </menulist>
+      </box>
+    </box>
+  
+    <separator/>
+
+    <box orient="horizontal" align="right">
+      <button id="btn_cancel" label="&TexTra.close;" flex="0" oncommand="window.close();"/>
+    </box>
+
+  </window>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>qfo@tuxproject.de</em:id>
+    <em:type>2</em:type>
+    <em:name>QFO - Quick Fuck Off</em:name>
+    <em:description>This extension serves the purpose of providing instant access to the FOAAS web service. FOAAS (Fuck Off As A Service) provides a modern, RESTful, scalable solution to the common problem of telling people to fuck off.</em:description>
+    <em:version>2.0.0</em:version><!-- this will follow the latest supported FOAAS version -->
+    <em:optionsURL>chrome://qfo/content/options.xul</em:optionsURL>
+    <em:creator>tux.</em:creator>
+    <em:contributor>Edward Lee</em:contributor>
+    <!-- Thunderbird -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>9.0</em:minVersion>
+        <em:maxVersion>*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+    <!-- SeaMonkey -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}</em:id>
+        <em:minVersion>2.20</em:minVersion>
+        <em:maxVersion>*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

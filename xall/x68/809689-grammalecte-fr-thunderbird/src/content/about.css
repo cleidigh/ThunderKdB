@@ -1,0 +1,46 @@
+/* CSS */
+
+.descr {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.stdlabel {
+	font-size: 16px;
+	text-align: center;
+}
+
+#website {
+	font-size: 16px;
+	font-weight: bold;
+	color: hsl(210, 50%, 50%);
+	text-align: center;
+	cursor: pointer;
+}
+
+#contrib {
+	font-size: 16px;
+	text-align: center;
+	color: hsl(210, 50%, 50%);
+	cursor: pointer;
+}
+
+
+/*
+    TB Next: fix dialogheaders
+*/
+dialogheader {
+  -moz-binding: url("chrome://messenger/content/generalBindings.xml#dialogheader");
+  margin: 0 5px 5px;
+  border: 1px solid ThreeDDarkShadow;
+  padding: 5px 8px;
+  background-color: Highlight;
+  color: HighlightText;
+}
+
+.dialogheader-title {
+  margin: 0 !important;
+  font-size: larger;
+  font-weight: bold;
+}

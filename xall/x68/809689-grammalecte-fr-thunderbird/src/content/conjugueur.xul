@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://grammarchecker/content/conjugueur.css" type="text/css"?>
+
+
+<dialog
+  id="grammalecte-conjugueur-window"
+  title="Grammalecte · Conjugueur…"
+  orient="vertical"
+  width="580"
+  buttons="extra1"
+  buttonlabelextra1="Conjuguer"
+  ondialogextra1="oConj.getVerbAndConjugate();"
+  defaultButton="extra1"
+  onload="document.getElementById('grammalecte-conjugueur-window').centerWindowOnScreen();"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+
+  <!-- Other elements go here -->
+  <box>
+    <spacer flex="1"/>
+    <image src="chrome://grammarchecker/skin/grammarcheck.png" />
+    <textbox id="verb" value="" />
+    <button id="conjugate" label="Conjuguer" />
+    <spacer flex="1"/>
+  </box>
+
+  <box>
+    <spacer flex="1"/>
+    <checkbox id="oneg" label="Négation" />
+    <checkbox id="opro" label="Pronominal" />
+    <checkbox id="ofem" label="Féminin" />
+    <checkbox id="oint" label="Interrogatif" />
+    <checkbox id="otco" label="Temps composés" />
+    <spacer flex="1"/>
+  </box>
+
+  <box>
+    <spacer flex="1"/>
+    <box orient="vertical">
+      <label id="verb_title">.</label>
+      <label id="info">.</label>
+    </box>
+    <spacer flex="1"/>
+  </box>
+
+  <columns>
+    <column>
+      <groupbox class="groupbox" id="infinitif">
+        <label class="sub_header">Infinitif</label>
+        <label id="infi" class="cj">.</label>
+      </groupbox>
+
+      <groupbox class="groupbox" id="imperatif">
+        <label class="sub_header">Impératif</label>
+        <label id="impe_temps" class="temps">Présent</label>
+        <label id="impe1" class="cj">.</label>
+        <label id="impe2" class="cj">.</label>
+        <label id="impe3" class="cj">.</label>
+      </groupbox>
+    </column>
+
+    <column>
+      <groupbox class="groupbox" id="partpre">
+        <label class="sub_header">Participe présent</label>
+        <label id="ppre" class="cj">.</label>
+      </groupbox>
+
+      <groupbox class="groupbox" id="partpas">
+        <label class="sub_header">Participes passés</label>
+        <label id="ppas1" class="cj">.</label>
+        <label id="ppas2" class="cj">.</label>
+        <label id="ppas3" class="cj">.</label>
+        <label id="ppas4" class="cj">.</label>
+      </groupbox>
+    </column>
+  </columns>
+
+  <columns>
+    <column>
+      <groupbox class="groupbox" id="indicatif">
+        <label class="sub_header">Indicatif</label>
+        <label id="ipre_temps" class="temps">Présent</label>
+        <label id="ipre1" class="cj">.</label>
+        <label id="ipre2" class="cj">.</label>
+        <label id="ipre3" class="cj">.</label>
+        <label id="ipre4" class="cj">.</label>
+        <label id="ipre5" class="cj">.</label>
+        <label id="ipre6" class="cj">.</label>
+
+        <label id="iimp_temps" class="temps">Imparfait</label>
+        <label id="iimp1" class="cj">.</label>
+        <label id="iimp2" class="cj">.</label>
+        <label id="iimp3" class="cj">.</label>
+        <label id="iimp4" class="cj">.</label>
+        <label id="iimp5" class="cj">.</label>
+        <label id="iimp6" class="cj">.</label>
+
+        <label id="ipsi_temps" class="temps">Passé simple</label>
+        <label id="ipsi1" class="cj">.</label>
+        <label id="ipsi2" class="cj">.</label>
+        <label id="ipsi3" class="cj">.</label>
+        <label id="ipsi4" class="cj">.</label>
+        <label id="ipsi5" class="cj">.</label>
+        <label id="ipsi6" class="cj">.</label>
+
+        <label id="ifut_temps" class="temps">Futur</label>
+        <label id="ifut1" class="cj">.</label>
+        <label id="ifut2" class="cj">.</label>
+        <label id="ifut3" class="cj">.</label>
+        <label id="ifut4" class="cj">.</label>
+        <label id="ifut5" class="cj">.</label>
+        <label id="ifut6" class="cj">.</label>
+      </groupbox>
+      <description id="smallnote">Ce verbe n’a pas encore été vérifié. C’est pourquoi les options “pronominal” et “temps composés” sont désactivées.</description>
+    </column>
+
+    <column>
+      <groupbox class="groupbox" id="subjonctif">
+        <label class="sub_header">Subjonctif</label>
+        <label id="spre_temps" class="temps">Présent</label>
+        <label id="spre1" class="cj">.</label>
+        <label id="spre2" class="cj">.</label>
+        <label id="spre3" class="cj">.</label>
+        <label id="spre4" class="cj">.</label>
+        <label id="spre5" class="cj">.</label>
+        <label id="spre6" class="cj">.</label>
+
+        <label id="simp_temps" class="temps">Imparfait</label>
+        <label id="simp1" class="cj">.</label>
+        <label id="simp2" class="cj">.</label>
+        <label id="simp3" class="cj">.</label>
+        <label id="simp4" class="cj">.</label>
+        <label id="simp5" class="cj">.</label>
+        <label id="simp6" class="cj">.</label>
+      </groupbox>
+
+      <groupbox class="groupbox" id="conditionnel">
+        <label class="sub_header">Conditionnel</label>
+        <label id="conda_temps" class="temps">Présent</label>
+        <label id="conda1" class="cj">.</label>
+        <label id="conda2" class="cj">.</label>
+        <label id="conda3" class="cj">.</label>
+        <label id="conda4" class="cj">.</label>
+        <label id="conda5" class="cj">.</label>
+        <label id="conda6" class="cj">.</label>
+
+        <label id="condb_temps" class="temps">.</label>
+        <label id="condb1" class="cj">.</label>
+        <label id="condb2" class="cj">.</label>
+        <label id="condb3" class="cj">.</label>
+        <label id="condb4" class="cj">.</label>
+        <label id="condb5" class="cj">.</label>
+        <label id="condb6" class="cj">.</label>
+      </groupbox>
+    </column>
+  </columns>
+
+  <script type="application/javascript" src="resource://grammalecte/graphspell/helpers.js"/>
+  <script type="application/javascript" src="resource://grammalecte/fr/conj.js"/>
+  <script type="application/javascript" src="conjugueur.js"/>
+</dialog>

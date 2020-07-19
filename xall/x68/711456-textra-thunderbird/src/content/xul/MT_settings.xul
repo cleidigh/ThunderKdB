@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://TexTra/locale/locale.dtd">
+
+<window id="Window_TexTra_Regist_terms" title="TexTra &TexTra.set_mt;"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <stringbundle id="table_locale" src="chrome://TexTra/locale/locale_js.properties" />
+  <script src="../js/utils.js"/>
+  <script src="../js/oauth.js"/>
+  <script src="../js/sha1.js"/>
+  <script src="../js/aes.js"/>
+  <script src="../js/api.js"/>
+  <script src="./MT_settings.js"/>
+
+  <box orient="horizontal" align="center">
+    <label id="label1" value="&TexTra.lang_org;" />
+    <menulist id="sb_lang_org" oncommand="check_lang_combo1()">
+      <menupopup>
+      </menupopup>
+    </menulist>
+    <label id="label1" value="&TexTra.lang_trs;" />
+    <menulist id="sb_lang_trans" oncommand="check_lang_combo2()">
+      <menupopup>
+      </menupopup>
+    </menulist>
+    <button id="btn_replace_langs" label="⇔" flex="0" oncommand="replace_language();" height="25"/>
+  </box>
+  <box orient="horizontal" align="right">
+    <label id="link_MT_list" class="text-link" value="&TexTra.open_api_MT_list;"/>
+  </box>
+
+  <grid>
+
+    <columns>
+      <column />
+      <column />
+    </columns>
+
+    <rows>
+      <row>
+        <label id="label1" value="URL"/>
+        <textbox id="text_URL" width="400"/>
+      </row>
+
+    </rows>
+
+  </grid>
+
+  <separator/>
+
+  <box orient="horizontal" align="right">
+    <button id="btn_save" label="&TexTra.save;" flex="0" oncommand="save_url(false);"/>
+    <button id="btn_default" label="&TexTra.default;" oncommand="save_url(true);"/>
+    <button id="btn_close" label="&TexTra.cancel;" flex="0" oncommand="window.close();"/>
+  </box>
+  
+</window>

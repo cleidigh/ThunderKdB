@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://expertspam/skin/button.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://expertspam/locale/expertspam.dtd">
+
+<overlay id="expertspam_overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://expertspam/content/expertspam.js"/>
+	
+	<commandset>
+		<command id="expertspam_cmd_spam" oncommand="expertspam.report('spam');"/>
+		<command id="expertspam_cmd_ham" oncommand="expertspam.report('ham');"/>
+	</commandset>
+
+	<!--Create the header-view-toolbar's button -->
+	<toolbarpalette id="header-view-toolbar-palette">
+		<toolbarbutton id="expertspam_button_spamham"
+			class="toolbarbutton-1 msgHeaderView-button"
+			command="expertspam_cmd_spam" />
+	</toolbarpalette>
+
+	<!--Create the contextual tools -->
+	<popup id="mailContext">
+		<menuitem id="expertspam_menu_spamham" command="expertspam_cmd_spam"/>
+		<menuseparator id="expertspam_separator"/>
+	</popup>
+</overlay>

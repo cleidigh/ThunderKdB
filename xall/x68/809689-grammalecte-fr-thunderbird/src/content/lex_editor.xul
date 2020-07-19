@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://grammarchecker/content/lex_editor.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://grammarchecker/locale/lex_editor.dtd">
+
+<dialog
+  id="grammalecte-lexicon-editor-window"
+  title="&window.title;"
+  orient="vertical"
+  buttons="cancel"
+  buttonlabelcancel="&button.cancel.label;"
+  ondialogcancel="return;"
+  width="500"
+  onload="document.getElementById('grammalecte-lexicon-editor-window').centerWindowOnScreen();"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <!-- Other elements go here -->
+  <hbox>
+    <label class="dictionary" value="Dictionnaire personnel" />
+    <spacer flex="1" />
+    <label class="dic_text align_right" value="Enregistré le :" />
+    <label id="dic_save_date" class="dic_text" value="[néant]" />
+    <spacer flex="1" />
+    <label id="dic_num_entries" class="dic_text align_right" value="0" />
+    <label class="dic_text" value="entrées" />
+    <spacer flex="1" />
+    <button id="import_button" label="Importer" />
+    <button id="export_button" label="Exporter" />
+  </hbox>
+
+  <tabbox id="tabs" selectedIndex="0">
+    <tabs>
+      <tab label="&tab.editor.label;"/>
+      <tab label="&tab.lexicon.label;"/>
+      <tab label="&tab.search.label;"/>
+      <tab label="&tab.info.label;"/>
+    </tabs>
+
+    <tabpanels>
+
+      <!-- NEW WORD -->
+      <tabpanel orient="vertical">
+
+        <hbox>
+
+          <vbox>
+            <div class="dialogheader-title">&dialogheader.newword.label;</div>
+            <textbox id="lemma" value="" />
+
+            <checkbox id="tag_N" class="subsection" label="Nom et adjectif" />
+            <hbox class="m_left">
+              <radiogroup id="pos_nom_commun" orient="vertical">
+                <radio id="nom_adj" class="option" label="Nom et adjectif" value=":N:A" />
+                <radio id="nom" class="option" label="Nom" value=":N" />
+                <radio id="adj" class="option" label="Adjectif" value=":A" />
+              </radiogroup>
+              <radiogroup id="genre_nom_commun" orient="vertical">
+                <radio id="N_epi" class="option" label="épicène" value=":e" />
+                <radio id="N_mas" class="option" label="masculin" value=":m" />
+                <radio id="N_fem" class="option" label="féminin" value=":f" />
+              </radiogroup>
+              <radiogroup id="pluriel_nom_commun" orient="vertical">
+                <radio id="N_s" class="option" label="pluriel en ·s" value="s" />
+                <radio id="N_x" class="option" label="pluriel en ·x" value="x" />
+                <radio id="N_inv" class="option" label="invariable" value="i" />
+              </radiogroup>
+            </hbox>
+            <vbox class="m_left2">
+              <label class="subsection" value="[optionnel] Autre forme (masculine, féminine, variante…)" />
+              <textbox id="lemma2" value="" />
+              <hbox>
+                <radiogroup id="pos_nom_commun2" orient="vertical">
+                  <radio id="nom_adj2" class="option" label="Nom et adjectif" value=":N:A" />
+                  <radio id="nom2" class="option" label="Nom" value=":N" />
+                  <radio id="adj2" class="option" label="Adjectif" value=":A" />
+                </radiogroup>
+                <radiogroup id="genre_nom_commun2" orient="vertical">
+                  <radio id="N_epi2" class="option" label="épicène" value=":e" />
+                  <radio id="N_mas2" class="option" label="masculin" value=":m" />
+                  <radio id="N_fem2" class="option" label="féminin" value=":f" />
+                </radiogroup>
+                <radiogroup id="pluriel_nom_commun2" orient="vertical">
+                  <radio id="N_s2" class="option" label="pluriel en ·s" value="s" />
+                  <radio id="N_x2" class="option" label="pluriel en ·x" value="x" />
+                  <radio id="N_inv2" class="option" label="invariable" value="inv" />
+                </radiogroup>
+              </hbox>
+            </vbox>
+
+            <checkbox id="tag_M" class="subsection" label="Nom propre" />
+            <hbox class="m_left">
+              <radiogroup id="pos_nom_propre" orient="vertical">
+                <radio id="M1" class="option" label="Prénom" value=":M1" />
+                <radio id="M2" class="option" label="Patronyme" value=":M2" />
+                <radio id="MP" class="option" label="Autre" value=":MP" />
+              </radiogroup>
+              <radiogroup id="genre_nom_propre" orient="vertical">
+                <radio id="M_epi" class="option" label="épicène" value=":e" />
+                <radio id="M_mas" class="option" label="masculin" value=":m" />
+                <radio id="M_fem" class="option" label="féminin" value=":f" />
+              </radiogroup>
+            </hbox>
+
+            <checkbox id="tag_V" class="subsection" label="Verbe" />
+            <hbox class="m_left">
+              <vbox>
+                <checkbox id="v_i" class="v_usage" label="intransitif" />
+                <checkbox id="v_t" class="v_usage" label="transitif" />
+                <checkbox id="v_n" class="v_usage" label="transitif indirect" />
+                <checkbox id="v_p" class="v_usage" label="pronominal" />
+                <checkbox id="v_m" class="v_usage" label="impersonnel" />
+              </vbox>
+              <vbox>
+                <label value="Auxilaire avec le passé composé" />
+                <checkbox id="v_ae" class="v_usage" label="être" />
+                <checkbox id="v_aa" class="v_usage" label="avoir" />
+                <label value="" />
+                <checkbox id="v_ppas" class="v_usage" label="Participe passé invariable" />
+              </vbox>
+            </hbox>
+            <hbox class="m_left">
+              <label class="subsection" value="Verbe modèle [optionnel]" />
+              <textbox id="verbe_modele" class="v_textbox" value="" />
+            </hbox>
+
+            <checkbox id="tag_W" class="subsection" label="Adverbe" />
+
+            <checkbox id="tag_X" class="subsection" label="Autre" />
+            <vbox class="m_left">
+              <hbox>
+                <label class="subsection other_label" value="Flexion" />
+                <textbox id="flexion" class="other_textbox" value="" />
+              </hbox>
+              <hbox>
+                <label class="subsection other_label" value="Étiquettes" />
+                <textbox id="tags" class="other_textbox" value="" />
+              </hbox>
+            </vbox>
+          </vbox>
+
+          <vbox>
+            <div class="dialogheader-title">&dialogheader.generated_words.label;</div>
+            <richlistbox id="generated_words_table" seltype="multiple">
+              <!--
+              <listhead>
+                <listheader label="Flexions"/>
+                <listheader label="Étiquettes"/>
+              </listhead>
+
+              <listcols>
+                <listcol flex="1"/>
+                <listcol flex="1"/>
+              </listcols>
+
+              <listitem>
+                <listcell label="George"/>
+                <listcell label="House"/>
+              </listitem>
+              -->
+            </richlistbox>
+            <progressmeter id="progress_new_words" value="0"/>
+            <!--<html:progress id="progress_new_words" max="100" value="0">-->
+            <hbox>
+              <button id="delete_selection" label="Effacer la sélection" />
+              <spacer flex="1" />
+              <button id="add_to_lexicon" label="Ajouter au lexique" />
+            </hbox>
+          </vbox>
+        </hbox>
+      </tabpanel>
+
+      <!-- LEXICON -->
+      <tabpanel orient="vertical">
+        <div class="dialogheader-title">&dialogheader.lexicon.label;</div>
+        <hbox>
+          <vbox>
+            <hbox>
+              <label class="info_label" value="Nombre d’entrées : " />
+              <label id="num_entries" class="data" value="0" />
+            </hbox>
+            <spacer flex="1" />
+            <button id="delete_button" label="Supprimer la sélection" />
+            <spacer flex="20" />
+            <progressmeter id="progress_lexicon" value="0"/>
+            <!--<html:progress id="progress_lexicon" max="100" value="0">-->
+            <button id="save_button" label="Enregistrer" />
+          </vbox>
+
+          <vbox>
+            <richlistbox id="lexicon_table" seltype="multiple">
+              <!--
+              <listhead>
+                <listheader label="Flexions"/>
+                <listheader label="Lemmes"/>
+                <listheader label="Étiquettes"/>
+              </listhead>
+
+              <listcols>
+                <listcol flex="4"/>
+                <listcol flex="3"/>
+                <listcol flex="4"/>
+              </listcols>
+
+              <listitem>
+                <listcell label="George"/>
+                <listcell label="House Painter"/>
+                <listcell label="House"/>
+              </listitem>
+              -->
+            </richlistbox>
+          </vbox>
+        </hbox>
+      </tabpanel>
+
+      <tabpanel orient="vertical">
+        <hbox>
+          <vbox>
+            <div class="dialogheader-title">&dialogheader.search.similar.label;</div>
+            <hbox>
+              <textbox id="search_similar" value="" />
+              <button id="search_similar_button" label="Chercher" />
+            </hbox>
+
+            <spacer flex="1" />
+
+            <div class="dialogheader-title">&dialogheader.search.regex.label;</div>
+            <hbox>
+              <label value="Flexion" />
+              <spacer flex="1" />
+              <textbox id="search_flexion_pattern" value="" />
+            </hbox>
+            <hbox>
+              <label value="Étiquettes" />
+              <spacer flex="1" />
+              <textbox id="search_tags_pattern" value="" />
+            </hbox>
+            <button id="search_regex_button" label="Chercher" />
+            <label value="" />
+            <description>La recherche par expressions régulières peut générer un nombre gigantesque de résultats. Seules les 2000 premières occurrences trouvées seront affichées. La recherche peut être longue, parce tout le graphe de mots, qui contient 500 000 flexions, sera parcouru si besoin.</description>
+
+            <spacer flex="1" />
+
+            <progressmeter id="progress_search" value="0"/>
+            <!--<html:progress id="progress_search" max="100" value="0">-->
+            <hbox>
+              <spacer flex="1" />
+              <label id="search_num_entries" class="align_right" value="0" />
+              <label value="entrées" />
+            </hbox>
+          </vbox>
+          <vbox>
+            <div class="dialogheader-title">&dialogheader.search.result.label;</div>
+            <richlistbox id="search_table">
+              <!--
+              <listhead>
+                <listheader label="Flexions"/>
+                <listheader label="Lemmes"/>
+                <listheader label="Étiquettes"/>
+              </listhead>
+
+              <listcols>
+                <listcol flex="4"/>
+                <listcol flex="3"/>
+                <listcol flex="4"/>
+              </listcols>
+
+              <listitem>
+                <listcell label="George"/>
+                <listcell label="House Painter"/>
+                <listcell label="House"/>
+              </listitem>
+              -->
+            </richlistbox>
+          </vbox>
+        </hbox>
+      </tabpanel>
+
+      <tabpanel orient="vertical">
+        <hbox>
+          <vbox>
+            <div class="dialogheader-title">&dialogheader.info.label;</div>
+            <label class="bold" value="Enregistrement" />
+            <description>Les modifications apportées au lexique ne sont enregistrées dans le dictionnaire qu’au moment où vous cliquez sur ‹Enregistrer› dans l’onglet ‹Lexique›.</description>
+            <spacer flex="1" />
+            <label class="bold" value="Doublons" />
+            <description>Il est inutile de purger votre lexique des doublons éventuels. Les doublons sont automatiquement supprimés lors de la création du dictionnaire.</description>
+            <spacer flex="1" />
+            <label class="bold" value="Compilation du dictionnaire" />
+            <description>Le dictionnaire est compilé comme un graphe de mots sous la forme d’une chaîne binaire dans un fichier JSON. Cette opération peut prendre du temps et consommer beaucoup de mémoire si votre lexique contient plusieurs dizaines de milliers d’entrées.</description>
+            <spacer flex="1" />
+            <label class="bold" value="Avertissement" />
+            <description>Il est déconseillé d’utiliser la catégorie ‹Autre› pour générer autre chose que des noms, des adjectifs, des noms propres, des verbes et des adverbes. Il n’y a aucune garantie que les étiquettes pour les autres catégories, notamment les mots grammaticaux, ne changeront pas.</description>
+          </vbox>
+          <vbox>
+            <div class="dialogheader-title">&dialogheader.tags.label;</div>
+            <richlistbox id="tags_table">
+              <!--
+              <listhead>
+                <listheader label="Étiquettes"/>
+                <listheader label="Signification"/>
+              </listhead>
+
+              <listcols>
+                <listcol flex="1"/>
+                <listcol flex="10"/>
+              </listcols>
+
+              <listitem>
+                <listcell label="House Painter"/>
+                <listcell label="House"/>
+              </listitem>
+              -->
+            </richlistbox>
+          </vbox>
+        </hbox>
+      </tabpanel>
+
+    </tabpanels>
+
+  </tabbox>
+
+  <script type="application/x-javascript" src="resource://grammalecte/graphspell/helpers.js" />
+  <script type="application/x-javascript" src="resource://grammalecte/graphspell/str_transform.js" />
+  <script type="application/x-javascript" src="resource://grammalecte/graphspell/char_player.js" />
+  <script type="application/x-javascript" src="resource://grammalecte/graphspell/dawg.js" />
+  <script type="application/x-javascript" src="resource://grammalecte/graphspell/ibdawg.js" />
+  <script type="application/x-javascript" src="resource://grammalecte/graphspell/spellchecker.js" />
+  <script type="application/x-javascript" src="resource://grammalecte/fr/conj.js" />
+  <script type="application/x-javascript" src="resource://grammalecte/fr/conj_generator.js" />
+  <script type="application/x-javascript" src="resource://grammalecte/fr/lexicographe.js" />
+  <script type="application/x-javascript" src="file_handler.js" />
+  <script type="application/x-javascript" src="lex_editor.js" />
+
+</dialog>

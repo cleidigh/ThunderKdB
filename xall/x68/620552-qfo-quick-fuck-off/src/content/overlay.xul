@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="chrome://qfo/skin/overlay.css" type="text/css" ?>
+<overlay id="qfo-messenger-overlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml">
+  <script type="application/x-javascript" src="chrome://qfo/content/qfo.js" />
+  <keyset>
+    <key id="qfo-run" modifiers="accel sxhift" key="F"
+      oncommand="QFO.insertFuckOff();"
+      />
+  </keyset>
+  <menupopup id="insertMenuPopup">
+    <menuitem id="qfo-menuitem" oncommand="QFO.insertFuckOff();" label="Fuck off!" accesskey="F"/>
+  </menupopup>
+  <toolbarpalette id="MsgComposeToolbarPalette">
+    <toolbarbutton id="qfo-button-1"
+      accesskey="F"
+      class="toolbarbutton-1"
+      label="Fuck off!"
+      oncommand="QFO.insertFuckOff();"
+      >
+    </toolbarbutton>
+  </toolbarpalette>
+</overlay>

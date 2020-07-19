@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_application_title__",
+  "description": "__MSG_application_description__",
+  "default_locale": "de",
+  "version": "1.5",
+  "permissions": ["menus", "storage"],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "options_ui": {
+    "page": "options.html"
+  },
+  "background": {
+    "scripts": ["dialnumber.js"]
+  },
+  "applications": {
+    "gecko": {
+      "id": "{cab12c02-bc33-4b9e-a28f-b198aa5d7549}",
+      "strict_min_version": "68.3.0"
+    }
+  }
+}

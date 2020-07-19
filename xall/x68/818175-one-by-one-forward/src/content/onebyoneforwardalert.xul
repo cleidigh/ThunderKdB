@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window id="onebyoneforward-alert"
+        title="One-by-One Forward"
+        orient="horizontal"
+        onload="window.document.getElementById('onebyoneforward-alert-text').textContent = window.opener.getOneByOneForwardAlert();"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<vbox align="center" flex="1">
+  <hbox id="onebyoneforward-alert-text" align="center" flex="1" style="font-size: 16px; font-weight: bold;"></hbox>
+</vbox>
+</window>

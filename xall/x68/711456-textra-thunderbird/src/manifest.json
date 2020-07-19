@@ -1,0 +1,23 @@
+﻿{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "TexTra_Thunderbird@nict.jp",
+      "strict_min_version": "68.0",
+      "strict_max_version": "71.*"
+    }
+  },
+  "name": "TexTra",
+  "description": "「みんなの自動翻訳」を利用した翻訳を行います。",
+  "version": "1.0.17",
+  "icons": {
+    "32": "skin/icons/TexTra_white032.png"
+  },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://TexTra/content/xul/property.xul",
+      "open_in_tab": false
+    }
+  }
+}
