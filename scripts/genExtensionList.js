@@ -72,7 +72,7 @@ const cBadge_maxv_star_warn = "![Thunderbird 68 Compatible](https://img.shields.
 var cBadge_type_setup = { bLeftText: 'Type', bRightText: '', bColor: 'purple', bTooltip: '', badgeBasedURL: 'https://img.shields.io/badge/'};
 const cBadge_mx = makeBadgeElement({ bLeftText: 'MX', bRightText: '%20+', bColor: 'purple', bTooltip: 'MailExtension (has manifest.json)', badgeBasedURL: 'https://img.shields.io/badge/'});
 
-const cBadge_webexp = makeBadgeElement({ bLeftText: 'WebExp', bRightText: '%20+', bColor: 'lightblue', bTooltip: 'MailExtension WebExperiment API', badgeBasedURL: 'https://img.shields.io/badge/'});
+var cBadge_webexp_setup = { bLeftText: 'WebExp', bRightText: '%20+', bColor: 'blue', bTooltip: 'MailExtension WebExperiment API', badgeBasedURL: 'https://img.shields.io/badge/'};
 
 // const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
 const cBadge_legacy_rs = makeBadgeElement({ bLeftText: 'Leg', bRightText: '%20rs', bColor: 'purple', bTooltip: 'Legacy - Requires Restart', badgeBasedURL: 'https://img.shields.io/badge/'});
@@ -162,6 +162,9 @@ var reports = {
 				compSet.comp61plus = false;
 				compSet.comp69plus = false;
 				compSet.comp60pv = false;
+				compSet.comp68pv = false;
+				extJson.xpilib.ext_comp.comp68 = false;
+				
 				console.debug('True');
 				return true;
 			} else {
@@ -408,12 +411,6 @@ function createExtMDTableRow(extJson) {
 			console.debug('male extent type ');
 		}
 
-		console.debug('c: ' + extJson.xpilib.ext_comp);
-		if (extJson.xpilib.ext_comp.webexp) {
-			comp_badges += cBadge_webexp;
-			
-			console.debug(comp_badges);
-		}
 
 		if (compSet.legacy == true && (compSet.legacy_type == 'xul' || compSet.legacy_type === undefined)) {
 			// comp_badges += " " + cBadge_legacy_rs;
@@ -435,6 +432,14 @@ function createExtMDTableRow(extJson) {
 		let cBadge_type = makeBadgeElement(cBadge_type_setup);
 		console.debug('types '+ cBadge_type.bRightText);
 		comp_badges += " " + cBadge_type;
+
+		if (extJson.xpilib.ext_comp.webexp) {
+			cBadge_webexp_setup.bTooltip = "test";
+			cBadge_webexp = makeBadgeElement(cBadge_webexp_setup);
+			comp_badges += " " + cBadge_webexp;
+			
+			console.debug(comp_badges);
+		}
 
 		if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp60 === true && extJson.xpilib.ext_comp.comp60OldDate === true) {
 			comp_badges += " " + cBadge_tb60_date_warning;
@@ -465,7 +470,7 @@ function createExtMDTableRow(extJson) {
 
 	let targetGroupDir = "";
 
-	if (comp_badges.includes(cBadge_tb68)) {
+	if (comp_badges.includes(cBadge_tb68) || comp_badges.includes(cBadge_tb78p)) {
 		targetGroupDir = extGroupTB68Dir;
 
 	} else if (comp_badges.includes(cBadge_tb60)) {
