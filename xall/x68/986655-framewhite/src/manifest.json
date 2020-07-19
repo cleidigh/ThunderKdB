@@ -1,0 +1,47 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "FrameWhite@Sungho.Hwang",
+                   "strict_min_version": "71.0"
+                 }
+             },
+	"name": "FrameWhite",
+	"version": "60.3",
+	"description": "This is a theme with white frames.",
+             "icons": {
+                "32": "icons/w_large.png"
+                },
+"browser_action": {
+    "default_icon": "icons/w_large.png",
+    "default_title": "FrameWhite",
+    "default_popup": "popup.html"
+  },
+"permissions": [
+        ],
+"background": {
+  "scripts": ["background.js"]
+},
+"content_scripts": [
+  {
+    "matches": ["*://*.mozilla.org/*"],
+    "js": ["form.js"]
+  }
+],
+ "experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "myapi"
+          ]
+        ],
+        "script": "code.js"
+      }
+    }
+  }
+}
