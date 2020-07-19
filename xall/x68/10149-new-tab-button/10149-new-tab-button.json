@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1081,
+    "average_daily_users": 1068,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,34 @@
     "contributions_url": null,
     "created": "2008-12-25T06:06:35Z",
     "current_version": {
-        "id": 2472920,
+        "id": 2473855,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-tab-button/versions/2472920",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-tab-button/versions/2473855",
         "files": [
             {
-                "id": 1016027,
-                "created": "2019-11-23T16:17:14Z",
-                "hash": "sha256:9ea228c9e8610058ff1e8273abba9fe0f3f57848bfa15307f4954fecdc03879e",
-                "is_restart_required": true,
+                "id": 1017017,
+                "created": "2020-07-01T15:12:36Z",
+                "hash": "sha256:fb2aa6ba9d483d8a78849d50651e45eb9d906274b041d8bda2227b982be0bd78",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 10485,
+                "size": 6262,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016027/new_tab_button-0.3.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017017/new_tab_button-2.0.4-tb.xpi?src=",
+                "permissions": [
+                    "activeTab",
+                    "tabs",
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -76,12 +80,12 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Support TB68.x",
+            "en-US": "Rewritten in MailExtensions",
             "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-tab-button/versions/0.3.0",
-        "version": "0.3.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-tab-button/versions/2.0.4",
+        "version": "2.0.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -104,7 +108,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-11-24T18:21:27Z",
+    "last_updated": "2020-07-11T11:07:25Z",
     "name": {
         "en-US": "New Tab Button"
     },
@@ -167,10 +171,9 @@
     "weekly_downloads": 43,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-25T17:36:59Z"
         }

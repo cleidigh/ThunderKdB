@@ -9,40 +9,45 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 14278,
+    "average_daily_users": 14295,
     "categories": {
         "thunderbird": [
             "appearance",
             "tags"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "",
     "created": "2007-05-13T07:45:00Z",
     "current_version": {
-        "id": 2473591,
+        "id": 2473857,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/tag-toolbar/versions/2473591",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/tag-toolbar/versions/2473857",
         "files": [
             {
-                "id": 1016737,
-                "created": "2020-04-04T12:25:32Z",
-                "hash": "sha256:d2b72c3ee2d5670dd211fac0a356ef0f871f2d4e9fd4ba90f112c1e1c108edb9",
-                "is_restart_required": true,
+                "id": 1017019,
+                "created": "2020-07-01T15:16:09Z",
+                "hash": "sha256:d398bdde2f712e44b0b565e2d76cebff3d119191a4a0e65fdc9aa9c10022d349",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 119366,
+                "size": 18993,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016737/tag_toolbar-1.0.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017019/tag_toolbar-2.0.4-tb.xpi?src=",
+                "permissions": [
+                    "activeTab",
+                    "tabs",
+                    "messagesRead",
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -76,12 +81,12 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Fixed: Text color of thread pane is not configurable",
+            "en-US": "Rewritten in MailExtensions.\nChange add-on name from \"Tag Toolbar\" to \"Tag Popup\" since MailExtensions version enumerate tags by a popup, not a toolbar.",
             "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/tag-toolbar/versions/1.0.2",
-        "version": "1.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/tag-toolbar/versions/2.0.4",
+        "version": "2.0.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -98,143 +103,181 @@
         "en-US": "http://hogi.sakura.ne.jp/en/",
         "ja": "http://hogi.sakura.ne.jp/ja/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4970-64.png?modified=1591542389",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4970-64.png?modified=b1c016e5",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4970-32.png?modified=1591542389",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4970-64.png?modified=1591542389"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4970-32.png?modified=b1c016e5",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4970-64.png?modified=b1c016e5"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-04-22T10:52:00Z",
+    "last_updated": "2020-07-16T14:54:57Z",
     "name": {
-        "en-US": "Tag Toolbar",
-        "ja": "Tag Toolbar"
+        "en-US": "Tag Toolbar / Tag Popup",
+        "ja": "Tag Toolbar / Tag Popup"
     },
     "previews": [
         {
             "id": 13937,
             "caption": {
-                "en-US": "With Category List"
+                "en-US": "With Category List (v1.x)",
+                "ja": "With Category List (v1.x)"
             },
             "image_size": [
                 206,
                 104
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13937.png?modified=1530208336",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13937.png?modified=1595006545",
             "thumbnail_size": [
                 206,
                 104
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13937.png?modified=1530208336"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13937.png?modified=1595006545"
         },
         {
             "id": 14071,
             "caption": {
-                "en-US": "Text Mode"
+                "en-US": "Text Mode( v1.x)",
+                "ja": "Text Mode( v1.x)"
             },
             "image_size": [
                 243,
                 113
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14071.png?modified=1530208340",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14071.png?modified=1595006545",
             "thumbnail_size": [
                 243,
                 113
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14071.png?modified=1530208340"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14071.png?modified=1595006545"
         },
         {
             "id": 14072,
             "caption": {
-                "en-US": "Category Editor",
-                "ja": "カテゴリ設定"
+                "en-US": "Category Editor (v1.x)",
+                "ja": "Category Editor (v1.x)"
             },
             "image_size": [
                 487,
                 295
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14072.png?modified=1530208340",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14072.png?modified=1595006545",
             "thumbnail_size": [
                 320,
                 194
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14072.png?modified=1530208340"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14072.png?modified=1595006545"
         },
         {
             "id": 14218,
             "caption": {
-                "en-US": "Color Mode"
+                "en-US": "Color Mode (v1.x)",
+                "ja": "Color Mode (v1.x)"
             },
             "image_size": [
                 237,
                 95
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14218.png?modified=1530208340",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14218.png?modified=1595006545",
             "thumbnail_size": [
                 237,
                 95
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14218.png?modified=1530208340"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14218.png?modified=1595006545"
         },
         {
             "id": 14965,
             "caption": {
-                "en-US": "Category Mode"
+                "en-US": "Category Mode (v1.x)",
+                "ja": "Category Mode (v1.x)"
             },
             "image_size": [
                 267,
                 214
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14965.png?modified=1530208341",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/14/14965.png?modified=1595006545",
             "thumbnail_size": [
                 250,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14965.png?modified=1530208341"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/14/14965.png?modified=1595006545"
         },
         {
             "id": 55898,
             "caption": {
-                "en-US": "Coloring thread pane by tag colors",
-                "ja": ""
+                "en-US": "Coloring thread pane by tag colors (both v1.x and v2.x)",
+                "ja": "Coloring thread pane by tag colors (both v1.x and v2.x)"
             },
             "image_size": [
                 393,
                 298
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/55/55898.png?modified=1530208341",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/55/55898.png?modified=1595006545",
             "thumbnail_size": [
                 264,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/55/55898.png?modified=1530208341"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/55/55898.png?modified=1595006545"
         },
         {
             "id": 55899,
             "caption": {
-                "en-US": "Options for thread pane coloring",
-                "ja": ""
+                "en-US": "Options for thread pane coloring (both v1.x and v2.x)",
+                "ja": "Options for thread pane coloring (both v1.x and v2.x)"
             },
             "image_size": [
                 518,
                 241
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/55/55899.png?modified=1530208341",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/55/55899.png?modified=1595006545",
             "thumbnail_size": [
                 320,
                 149
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/55/55899.png?modified=1530208341"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/55/55899.png?modified=1595006545"
+        },
+        {
+            "id": 206026,
+            "caption": {
+                "en-US": "Toggle tags by popup (v2.x)",
+                "ja": "Toggle tags by popup (v2.x)"
+            },
+            "image_size": [
+                301,
+                461
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206026.png?modified=1595006545",
+            "thumbnail_size": [
+                131,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206026.png?modified=1595006545"
+        },
+        {
+            "id": 206027,
+            "caption": {
+                "en-US": "Toggle tags on message header view",
+                "ja": "Toggle tags on message header view"
+            },
+            "image_size": [
+                560,
+                73
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206027.png?modified=1595006545",
+            "thumbnail_size": [
+                320,
+                42
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206027.png?modified=1595006545"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.02787,
-        "count": 65,
-        "average": 4.0462,
-        "text_count": 65
+        "bayesian_average": 4.04238,
+        "count": 66,
+        "average": 4.0606,
+        "text_count": 66
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/tag-toolbar/reviews/",
     "requires_payment": false,
@@ -261,10 +304,9 @@
     "weekly_downloads": 281,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-25T17:35:30Z"
         }

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 20427,
+    "average_daily_users": 20948,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -22,30 +22,37 @@
     "contributions_url": null,
     "created": "2006-03-25T00:40:57Z",
     "current_version": {
-        "id": 2472978,
+        "id": 2473864,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/check-and-send/versions/2472978",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/check-and-send/versions/2473864",
         "files": [
             {
-                "id": 1016085,
-                "created": "2019-12-08T08:59:13Z",
-                "hash": "sha256:00a7525f08bc68a687497fa3e5b3c376a48836eebb7f0fca3eab22cb725f0a30",
-                "is_restart_required": true,
+                "id": 1017026,
+                "created": "2020-07-02T13:33:17Z",
+                "hash": "sha256:8c6eafe53610437fa23dd88db0b70b94a8c23798f323234dbeff0a0eefac85f8",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 46152,
+                "size": 26364,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016085/check_and_send-1.1.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017026/check_and_send-2.0.10-tb.xpi?src=",
+                "permissions": [
+                    "addressBooks",
+                    "accountsRead",
+                    "compose",
+                    "tabs",
+                    "activeTab",
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -79,12 +86,12 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Fixed: Confirmation of recipient name check is not work\nFixed: Recipient name is removed if it is not in address book. Now the name is kept.",
+            "en-US": "Fixed: wrong Japanese locale string",
             "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-and-send/versions/1.1.1",
-        "version": "1.1.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-and-send/versions/2.0.10",
+        "version": "2.0.10"
     },
     "default_locale": "en-US",
     "description": {
@@ -111,7 +118,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-12-08T12:18:01Z",
+    "last_updated": "2020-07-02T13:35:03Z",
     "name": {
         "en-US": "Check and Send",
         "ja": "Check and Send",
@@ -121,19 +128,104 @@
         {
             "id": 5517,
             "caption": {
-                "en-US": "Confirm before you send a mail.",
-                "ja": "メッセージ送信前に確認"
+                "en-US": "Confirm before you send a mail. (v1.x)",
+                "ja": "メッセージ送信前に確認 (v1.x)"
             },
             "image_size": [
                 200,
                 117
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5517.png?modified=1530208140",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/5/5517.png?modified=1593784894",
             "thumbnail_size": [
                 200,
                 117
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5517.png?modified=1530208140"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/5/5517.png?modified=1593784894"
+        },
+        {
+            "id": 206004,
+            "caption": {
+                "en-US": "Confirm before you send a mail. (v2.x)",
+                "ja": "Confirm before you send a mail. (v2.x)"
+            },
+            "image_size": [
+                755,
+                707
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206004.png?modified=1593784894",
+            "thumbnail_size": [
+                214,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206004.png?modified=1593784894"
+        },
+        {
+            "id": 206005,
+            "caption": {
+                "en-US": "Options for recipient type address checking (v2.x)",
+                "ja": "Options for recipient type address checking (v2.x)"
+            },
+            "image_size": [
+                804,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206005.png?modified=1593784894",
+            "thumbnail_size": [
+                201,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206005.png?modified=1593784894"
+        },
+        {
+            "id": 206006,
+            "caption": {
+                "en-US": "Options for recipient name, identity and attachment checking (v2.x)",
+                "ja": "Options for recipient name, identity and attachment checking (v2.x)"
+            },
+            "image_size": [
+                808,
+                688
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206006.png?modified=1593784894",
+            "thumbnail_size": [
+                235,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206006.png?modified=1593784894"
+        },
+        {
+            "id": 206007,
+            "caption": {
+                "en-US": "Options for word checking (v2.x)",
+                "ja": "Options for word checking (v2.x)"
+            },
+            "image_size": [
+                818,
+                552
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206007.png?modified=1593784894",
+            "thumbnail_size": [
+                296,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206007.png?modified=1593784894"
+        },
+        {
+            "id": 206008,
+            "caption": {
+                "en-US": "Options for day/date checking (v2.x)",
+                "ja": "Options for day/date checking (v2.x)"
+            },
+            "image_size": [
+                813,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206008.png?modified=1593784894",
+            "thumbnail_size": [
+                203,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206008.png?modified=1593784894"
         }
     ],
     "public_stats": false,
@@ -170,10 +262,9 @@
     "weekly_downloads": 455,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-25T17:29:08Z"
         }

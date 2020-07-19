@@ -1,0 +1,148 @@
+{
+    "id": 987711,
+    "authors": [
+        {
+            "id": 14173089,
+            "name": "Anton Sarukhanov",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/antsar/",
+            "username": "antsar",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 3,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2019-10-23T20:14:19Z",
+    "current_version": {
+        "id": 2473721,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unsafelinks/versions/2473721",
+        "files": [
+            {
+                "id": 1016883,
+                "created": "2020-05-17T20:30:26Z",
+                "hash": "sha256:07537f12e081767efea5c00393ec471437175ebd84294fc73133901259695070",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 5503,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016883/un_safelinks-1.4-tb.xpi?src=",
+                "permissions": [
+                    "messagesRead"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "Support a wider variety of safelinks URLs."
+        },
+        "reviewed": "2020-07-18T20:48:10Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unsafelinks/versions/1.4",
+        "version": "1.4"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "A Thunderbird add-on to revert the link rewriting done by Office 365's Advanced Threat Protection feature.\n\nATP makes links illegible and provides questionable security benefit <a href=\"https://blog.tylerbickford.com/2016/06/16/microsoft-advanced-threat-protection-is-a-disaster/\" rel=\"nofollow\">[1]</a>, <a href=\"https://emtunc.org/blog/03/2017/bypassing-safe-links-exchange-online-advanced-threat-protection/\" rel=\"nofollow\">[2]</a>, <a href=\"https://halon.io/blog/fooled-microsofts-safe-link-technology/\" rel=\"nofollow\">[3]</a>. This add-on will revert those links to their original state.\n\nOnly the message view pane is affected; actual emails (local and remote) will be untouched. Replies to messages containing rewritten links will still contain rewritten links."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unsafelinks/edit",
+    "guid": "unsafelinks@ant.sr",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://ant.sr/unsafelinks"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987711-64.png?modified=83d1e20c",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987711-32.png?modified=83d1e20c",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987711-64.png?modified=83d1e20c"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-07-18T20:48:10Z",
+    "name": {
+        "en-US": "Un-Safelinks"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unsafelinks/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987711",
+    "slug": "unsafelinks",
+    "status": "public",
+    "summary": {
+        "en-US": "Replace URLs which have been rewritten by Office 365 Advanced Threat Protection with the original URL."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "atp",
+        "content",
+        "exchange",
+        "firefox57",
+        "link",
+        "office365",
+        "outlook",
+        "rewrite"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unsafelinks/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true
+        }
+    }
+}

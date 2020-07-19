@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1579925536"
         }
     ],
-    "average_daily_users": 161,
+    "average_daily_users": 163,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2019-04-01T02:34:06Z",
     "current_version": {
-        "id": 2473546,
+        "id": 2473932,
         "compatibility": {
             "thunderbird": {
-                "max": "71.*",
+                "max": "*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/userchromejs-2/versions/2473546",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/userchromejs-2/versions/2473932",
         "files": [
             {
-                "id": 1016690,
-                "created": "2020-03-17T14:21:33Z",
-                "hash": "sha256:601da9d7967452f25b26cb9a5f3c21daed9b1da67788d33b6688d23f5f1233ce",
-                "is_restart_required": true,
+                "id": 1017094,
+                "created": "2020-07-17T10:35:15Z",
+                "hash": "sha256:5738f001ca7d192adb794a4c17d2102f87fcc25015084d57c59db784772159e3",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 8297,
+                "size": 8953,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016690/userchromejs-0.0.9-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017094/userchromejs-0.0.10-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,11 +50,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Remove Kickstarter campaign pop-up, since the campaign has succeeded and is almost over."
+            "en-US": "Thunderbird 78 compatibility!\n\nThank you to Jorg K &lt;jorgk@jorgk.com&gt; for the initial port to Thunderbird 78.\n\nNote that if you check \"location\" in your userChrome.js file, in Thunderbird 78 window locations end in \".xhtml\" instead of \".xul\". You can write userChrome.js checks that are compatible with both Thunderbird 68 and Thunderbird 78 by doing something like:\n\nif (location.href.startsWith(\"chrome://messenger/content/messenger.x\")) {\n    ...\n}"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/userchromejs-2/versions/0.0.9",
-        "version": "0.0.9"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/userchromejs-2/versions/0.0.10",
+        "version": "0.0.10"
     },
     "default_locale": "en-US",
     "description": {
@@ -76,7 +76,7 @@
     "is_experimental": true,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-03-17T14:36:46Z",
+    "last_updated": "2020-07-17T13:01:44Z",
     "name": {
         "en-US": "userChromeJS"
     },
@@ -110,10 +110,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2019-04-01T02:43:27Z"
         }

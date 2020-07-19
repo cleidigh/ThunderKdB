@@ -1,5 +1,48 @@
 [
     {
+        "id": 2473909,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.0",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2473909",
+        "files": [
+            {
+                "id": 1017071,
+                "created": "2020-07-10T15:21:52Z",
+                "hash": "sha256:8e74490dfbf86fcc3efd6e5ead507d5e83592069eac329ddfbba40847bdc31d5",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 684812,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017071/smarttemplate4-2.11.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 7344,
+            "name": {
+                "en-US": "CC BY-ND 4.0"
+            },
+            "text": {
+                "en-US": "LICENSE\n\n\nSmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the SmartTemplate4 Add-on (distributed as a XPI file) and all files contained within it\nPremium Feature - a feature or function of the software which is protected by the mechanism outlined below\nSmartTemplate4 Pro - Refers to the registered version of SmartTemplate4\n\n\nAll contents of The Program are subject to the GNU General Public License Version 3\n(the \"License\"); you may not use the file except in compliance with\nthe License. You may obtain a copy of the complete License at\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/legalcode\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a>\nFor a  human-readable summary thereof please refer\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by \na paid registration scheme. Registration keys can be obtained via various licensing links\nfrom within the software (Settings &gt; Advanced &gt; SmartTemplate4 Pro tab, SmartTemplate4 context menu, \npremium notification messages). The profits from Registration are used to develop\nand distribute the program further and to feed the author, as he would like to spend\nmore time developing open source software. Some Premium features may be available in \nthe free software, but they may be restricted (e.g. through a notification to the \nregistration). Premium features are not essential to the core functionality of \nthe Program, but are there to provide an incentive for financially supporting the \nenhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys.\nRegistration keys are personal, non-transferrable and usually restricted to a time period\n(typically one year). To protect their personal nature they are tied to the user's \nEmail address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused \nin order to avoid our monetisation by giving this away for free or cheaper than us \nthus disincentivising the current developers from putting a lot of time into \ndevelopment and support.\n\n\nIf plan to you use large portions of the code please contact the author\n(Axel Grude)\nAnd Support (Marky Mark DE)\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nCreative Commons (CC BY-ND 4.0) License for more details.\n\n\nATTRIBUTIONS\n\nSmartTemplate4 includes work by\n\nCurrent developer: \nAxel Grude\nMarky Mark DE\n\nContributors: \nAris - style support\ntool8 - development, Version 0.7.2 - 0.8.0\n\nTranslations: \nThe current list of translators is listed in the install.rdf (Add-ons Manager / About) and\ndisplayed on the \"about\" Tab.\n\nNOIA ICON SET:\nThis Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE \n-&gt; see:Noia_KDE_0.95.tar_4.tgz / lesser.txt\n\t\t       \nMade by Carlitus (Carles Carbonell Bernado)\n &lt;mail@carlitus.net&gt;"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.11.2"
+        },
+        "release_notes": {
+            "en-US": "&lt;meta charset=\"UTF-8\"&gt;\n&lt;style&gt;b { display: block; margin-top: 10px; } &lt;/style&gt;\n\nFull change log with screen shots <a href=\"http://smarttemplates.quickfolders.org/version.html#2.11.2\" rel=\"nofollow\">can be found here</a>\n\nYou can also find there a discounted sale for Pro and Standard licenses for 2 weeks in July.\n\n<b>Latest News</b>\n\n<ul>  <li>    I have started to rewrite all mail Add-ons for compatibility with Thunderbird 78. I have hired a developer and am currently thinking of ways to fund raise the development effort - probably several man weeks of rewriting. please do not manually update to Thunderbird78 yet. An automatic update will not happen until September 2020.\n    \n    If you are interested in using a version of SmartTemplate&amp;#8308 that works with Thunderbird 78, consider         \n    <a href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\" rel=\"nofollow\">buying a license</a>\n    to support the project.\n\n    In other news we have just successfully migrated all Add-on support sites away from the free host on &lt;span class=\"emphasis\"&gt;<a href=\"http://mozdev.org\" rel=\"nofollow\">mozdev.org</a>, which is now closed&lt;/span&gt;. To keep having support sites and ongoing development, please \n    <a href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\" rel=\"nofollow\">buy a license</a>\n    (the migration has cost around $650, so there are some expense I hope to recover from the community of users).\n  </li></ul>\n<b>Bug Fixes</b>\n<ul>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/75\" rel=\"nofollow\">[issue 75]</a> \n    Clicking %style% from variables tabs inserts %file% instead.\n    \n    This is not intended, as only the %style(file.css)% command will produce predictable results for including file names. With this fix, clicking on  the %file()% variable in the variables tab will now insert the correct syntax in the template area.\n  </li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/74\" rel=\"nofollow\">[issue 74]</a> In some cases the menu templates in compact header reply buttons are doubled up\n  </li>  <li><a href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/73\" rel=\"nofollow\">[issue 73]</a> Improve Name Capitalization: support double names, such as \"Klaus-Dieter\"\n  </li> </ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.11.2",
+        "version": "2.11.2"
+    },
+    {
         "id": 2473823,
         "channel": "listed",
         "compatibility": {

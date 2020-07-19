@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 4662,
+    "average_daily_users": 4676,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2019-07-12T01:56:00Z",
     "current_version": {
-        "id": 2473147,
+        "id": 2473927,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/versions/2473147",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/versions/2473927",
         "files": [
             {
-                "id": 1016258,
-                "created": "2020-01-03T06:46:49Z",
-                "hash": "sha256:5339f568832f51fb26b831c5a333f96f26990160b110ae01e6550f240cf68af8",
+                "id": 1017089,
+                "created": "2020-07-16T01:53:14Z",
+                "hash": "sha256:685c77e2d9d33722ea54b701e66757696bedd355f013f6df4511a9524be9e6f3",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 409842,
+                "size": 443902,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016258/phoenity_icons-2.8-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017089/phoenity_icons-2.9-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,11 +50,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Improved support for gContactSync.\nMinor fix for dark GTK themes on Linux.\nFixed slow or partial loading of icons."
+            "en-US": "Tweaked the numberbox appearance.\nFixed WebExtension icon size when using large icons.\nRemoved \"chrome:\" from most internal css links."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/versions/2.8",
-        "version": "2.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/versions/2.9",
+        "version": "2.9"
     },
     "default_locale": "en-US",
     "description": {
@@ -77,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-03T08:52:05Z",
+    "last_updated": "2020-07-16T12:10:12Z",
     "name": {
         "en-US": "Phoenity Icons"
     },
@@ -91,20 +91,20 @@
                 990,
                 660
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205700.png?modified=1564861336",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205700.png?modified=1595049757",
             "thumbnail_size": [
                 300,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205700.png?modified=1564861336"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205700.png?modified=1595049757"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.81856,
-        "count": 8,
+        "bayesian_average": 4.83759,
+        "count": 9,
         "average": 5,
-        "text_count": 8
+        "text_count": 9
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/reviews/",
     "requires_payment": false,
@@ -126,10 +126,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 15984,
+    "average_daily_users": 15563,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "created": "2016-04-28T07:04:50Z",
     "current_version": {
-        "id": 2469753,
+        "id": 2473873,
         "compatibility": {
             "thunderbird": {
-                "max": "72.0a1",
-                "min": "66.0"
+                "max": "*",
+                "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-button/versions/2469753",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-button/versions/2473873",
         "files": [
             {
-                "id": 1012811,
-                "created": "2019-05-17T09:42:06Z",
-                "hash": "sha256:0a3d123857d425fcb2c8f98c2c8e4a0e284f34c1a5789ee06986013820c327d8",
-                "is_restart_required": true,
+                "id": 1017035,
+                "created": "2020-07-05T20:42:04Z",
+                "hash": "sha256:0fd66952dae8fff00d31ad5aa0e200099aa4dfaef2326f21673ee1115a429e37",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 15626,
+                "size": 25734,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012811/spater_senden_schaltflache-1.5.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017035/spater_senden_schaltflache-2.0b1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,12 +51,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Compatible with Thunderbird 67.0 Beta 3 and upcoming 68",
-            "de": "Funktioniert ab Thunderbird 67.0 Beta 3 und der kommenden Version 68.0"
+            "en-US": "Makes the add-ons simmple button compatible with Thunderbird 78 by using an experimtent_api. Unfortunately, the button in Thunderbird 78 now always remains active, even if the button, just like the primary send button, is actually supposed to be inactive.",
+            "de": "Macht das Add-on mit der simplen Schaltfläche kompatibel zu Thunderbird 78, indem eine experimtent_api genutzt wird. Leider bleibt die Schaltfläche in Thunderbird 78 jetzt immer aktiv, auch wenn die Schaltfläche genauso wie die primäre Senden-Schaltfläche eigentlich gerade inaktiv sein sollte."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-button/versions/1.5.2",
-        "version": "1.5.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-button/versions/2.0b1",
+        "version": "2.0b1"
     },
     "default_locale": "en-US",
     "description": {
@@ -84,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-05-17T10:17:45Z",
+    "last_updated": "2020-07-10T15:29:22Z",
     "name": {
         "en-US": "Send Later Button",
         "de": "Später senden-Schaltfläche"
@@ -188,12 +188,11 @@
     "weekly_downloads": 259,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
-            "comp60pv_date": "2018-04-01T12:42:50Z"
+            "comp60pv_date": "2018-04-11T14:24:42Z"
         }
     }
 }

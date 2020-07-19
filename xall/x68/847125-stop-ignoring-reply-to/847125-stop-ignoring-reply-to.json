@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 466,
+    "average_daily_users": 467,
     "categories": {
         "thunderbird": [
             "composition"
@@ -58,7 +58,7 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "With Thunderbird 52, one thing that was changed was \"When replying to a mailing list, reply will be sent to address in From header ignoring Reply-to header\". Some people, like myself, were frustrated by this change, and would prefer the previous functionality. For example, if you are subscribed to a mailing list and are used to using the keyboard shortcut to respond to the whole list, Thunderbird 52 changed it so that it only responds to whoever sent the email originally.\n\nThis add-on is very simple and has no configuration. If you enable the add-on, whenever you open a reply window and start composing a reply to only the sender of an email, it checks to see if there is a Reply-to listed in the header. If there is, it populates the \"To\" box with the address listed in Reply-to instead of the sender. That's the only thing this add-on does. That means if you respond to an email sent to a list, the default \"Reply\" will now automatically create an email to send to the whole list. If you only want to send to the original sender, you just need to change the \"To\" address."
+        "en-US": "This plugin isn't working currently, and hasn't been working since Thunderbird updated their add on structure.\n\nHowever, all is not lost! Shortly after I created this plugin, the developers added a hidden option to the advanced options that will allow you to configure it to stop ignoring the reply-to header!\n\nGo to the \"Tools\" menu, and under \"Options\", select \"Advanced\". Choose the \"General\" tab. At the bottom, you'll see a button that says \"Config Editor...\" If you click it, it will probably pop up a box that says \"This might void your warranty!\" Click the button that says \"I accept the risk!\"\n\nSearch for the one called \"mail.override_list_reply_to\". Double click it to Change it to \"false\".\n\nOne of these days, I plan on fixing this plugin so it works again. But until that day, know that this option is available."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/stop-ignoring-reply-to/edit",

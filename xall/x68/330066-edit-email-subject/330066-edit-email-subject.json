@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 3909,
+    "average_daily_users": 3960,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -25,30 +25,36 @@
     "contributions_url": "https://donate.mozilla.org/",
     "created": "2011-07-22T00:32:54Z",
     "current_version": {
-        "id": 2473569,
+        "id": 2473922,
         "compatibility": {
             "thunderbird": {
-                "max": "69.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/edit-email-subject/versions/2473569",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/edit-email-subject/versions/2473922",
         "files": [
             {
-                "id": 1016713,
-                "created": "2020-03-24T23:59:41Z",
-                "hash": "sha256:22fc46b82279dc5503fba24db1af67bdaaf64d0e4a04325befae15d12b877154",
-                "is_restart_required": true,
+                "id": 1017084,
+                "created": "2020-07-14T07:37:53Z",
+                "hash": "sha256:3886bbbd81b91384d6ee59fc6c9910cf726e3b9c3c23dff615951d27e0553441",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 28544,
+                "size": 31007,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016713/editemailsubject-3.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017084/editemailsubject-4.2-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "menus",
+                    "messagesRead",
+                    "messagesMove",
+                    "accountsRead"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -79,8 +85,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/edit-email-subject/versions/3.2",
-        "version": "3.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/edit-email-subject/versions/4.2",
+        "version": "4.2"
     },
     "default_locale": "fr",
     "description": {
@@ -105,7 +111,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-03-28T14:41:55Z",
+    "last_updated": "2020-07-15T22:28:27Z",
     "name": {
         "fr": "EditEmailSubject",
         "en-US": "EditEmailSubject (Edit email Subject)"
@@ -182,10 +188,9 @@
     "weekly_downloads": 167,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2017-05-10T14:32:32Z"
         }

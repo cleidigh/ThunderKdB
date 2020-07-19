@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5345/5345566.png?modified=1369707204"
         }
     ],
-    "average_daily_users": 332,
+    "average_daily_users": 339,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,66 +28,26 @@
     "contributions_url": "",
     "created": "2010-06-21T02:02:29Z",
     "current_version": {
-        "id": 2472322,
+        "id": 2473827,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/create-jira-issue/versions/2472322",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/create-jira-issue/versions/2473827",
         "files": [
             {
-                "id": 1015392,
-                "created": "2019-09-09T07:57:18Z",
-                "hash": "sha256:94757c292ff6890633170936541f010dfe122ac81c369905ab763258506da42b",
+                "id": 1016989,
+                "created": "2020-06-23T08:54:41Z",
+                "hash": "sha256:9c49c36cca84ddab72d491fcb5baa12731f3573d999d2f3d71278c92d554f48c",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
-                "platform": "linux",
-                "size": 149419,
+                "platform": "all",
+                "size": 157304,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015392/teamworkx_thunderbird_integration_for_jira-1.0.68.1a-tb-linux.xpi?src=",
-                "permissions": [
-                    "activeTab",
-                    "browserSettings",
-                    "clipboardRead",
-                    "contextMenus",
-                    "identity",
-                    "notifications"
-                ]
-            },
-            {
-                "id": 1015393,
-                "created": "2019-09-09T07:57:18Z",
-                "hash": "sha256:94757c292ff6890633170936541f010dfe122ac81c369905ab763258506da42b",
-                "is_restart_required": true,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "mac",
-                "size": 149419,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015393/teamworkx_thunderbird_integration_for_jira-1.0.68.1a-tb-mac.xpi?src=",
-                "permissions": [
-                    "activeTab",
-                    "browserSettings",
-                    "clipboardRead",
-                    "contextMenus",
-                    "identity",
-                    "notifications"
-                ]
-            },
-            {
-                "id": 1015394,
-                "created": "2019-09-09T07:57:18Z",
-                "hash": "sha256:94757c292ff6890633170936541f010dfe122ac81c369905ab763258506da42b",
-                "is_restart_required": true,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "windows",
-                "size": 149419,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015394/teamworkx_thunderbird_integration_for_jira-1.0.68.1a-tb-windows.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016989/thunderbird_integration_fur_jira-1.0.68.1b-tb.xpi?src=",
                 "permissions": [
                     "activeTab",
                     "browserSettings",
@@ -128,11 +88,12 @@
             "url": "http://www.gnu.org/licenses/lgpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Thunderbird 68 Release"
+            "en-US": "- Some Bugfixes\n- Integrated changes from a user \"epoq\"\n- Can now attach inline images from emails\n- Handles conversion from HTML tables to Jira tables (to a certain degree)",
+            "de": "- Einige Bugfixes\n- Änderungen des Users \"epoq\" integriert\n- Kann jetzt auch inline Images aus Emails anhängen\n- Kann jetzt HTML Tabellen in Jira Tabellen (bis zu einem gewissen Grad) wandeln"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/create-jira-issue/versions/1.0.68.1a",
-        "version": "1.0.68.1a"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/create-jira-issue/versions/1.0.68.1b",
+        "version": "1.0.68.1b"
     },
     "default_locale": "en-US",
     "description": {
@@ -160,7 +121,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-09-09T13:09:36Z",
+    "last_updated": "2020-07-15T13:09:36Z",
     "name": {
         "en-US": "Teamworkx Thunderbird Integration for Jira",
         "de": "Thunderbird Integration für JIRA"
@@ -273,10 +234,9 @@
     "weekly_downloads": 76,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2019-06-19T09:31:01Z"
         }

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 29665,
+    "average_daily_users": 29234,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": null,
     "created": "2005-06-20T06:09:41Z",
     "current_version": {
-        "id": 2473102,
+        "id": 2473872,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-quota/versions/2473102",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-quota/versions/2473872",
         "files": [
             {
-                "id": 1016213,
-                "created": "2019-12-29T16:01:16Z",
-                "hash": "sha256:3f9ad39395211ebdb37b149daae8b583350d08249258d769c85fae56ef96ccb6",
+                "id": 1017034,
+                "created": "2020-07-05T15:00:16Z",
+                "hash": "sha256:75a81be41a76a4633cb4a0b2b5f95d11ac53de1d4499a4bce3ace66fbe97f66f",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 68145,
+                "size": 68143,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016213/display_quota-0.4.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017034/display_quota-0.4.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -71,11 +71,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Now only compatible with Thunderbird &gt;= 68. The quota bar's color now reflects the status of the quota."
+            "en-US": "Fixed undefined variable (Thanks Gregory)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-quota/versions/0.4.1",
-        "version": "0.4.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-quota/versions/0.4.2",
+        "version": "0.4.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -97,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-01-29T18:19:18Z",
+    "last_updated": "2020-07-16T13:48:30Z",
     "name": {
         "fr": "Display Quota",
         "en-US": "Display Quota"
@@ -173,10 +173,9 @@
     "weekly_downloads": 374,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-27T18:54:30Z"
         }

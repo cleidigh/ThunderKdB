@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14180/14180175.png?modified=1580647754"
         }
     ],
-    "average_daily_users": 17,
+    "average_daily_users": 24,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-05-06T07:30:11Z",
     "current_version": {
-        "id": 2473797,
+        "id": 2473946,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "68.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2473797",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2473946",
         "files": [
             {
-                "id": 1016959,
-                "created": "2020-06-12T10:31:28Z",
-                "hash": "sha256:8307cf6a87daad66d564c6b2ceff0526c79177d226d8cbddae77b3dbc437b00b",
+                "id": 1017108,
+                "created": "2020-07-18T03:29:04Z",
+                "hash": "sha256:7b42a21584b3b417578589c5cf7559298b6fafa31179985c752efd6bdbfc5088",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1524007,
+                "size": 1609351,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016959/autobucket-1.0.9-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017108/autobucket-1.0.13-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "menus",
@@ -56,17 +56,17 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fixed an issue where the date order of statistics was wrong.",
-            "ja": "統計情報の日付順がおかしい問題を修正"
+            "en-US": "Fixed a default shortcut because it was batting with a Thunderbird shortcut when used on Linux.\n\nYou can change the shortcut from the gear icon at the top right of the add-on page.",
+            "ja": "Linuxで使用した際にThunderbirdのショートカットとバッティングしていたのでデフォルトを修正。\n\nショートカットはアドオンページの右上の歯車アイコンから変更できます。"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.0.9",
-        "version": "1.0.9"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.0.13",
+        "version": "1.0.13"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Basic usage\n\n1. Add a classification tag to Thunderbird and restart Thunderbird\n2. Select the tag used for classification from the add-on settings and restart Thunderbird\n3. Let's learn which tag to assign from AutoBucket in the menu displayed by right-clicking the email\n4. After classifying some, right click or shortcut to judge mail. AutoBucket automatically classifies and tags according to the learning content.\n5. If you find a wrong email in the classification, please let us know again. Classification accuracy will improve from the next time.\n\nHelp\n<a href=\"https://a-tak.github.io/auto-bucket/\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/</a>",
-        "ja": "基本的な使い方\n\n1. 分類用のタグをThunderbirdに追加してThunderbirdを再起動します\n2. アドオンの設定から分類に使用するタグを選択してThunderbirdを再起動します\n3. メールを右クリックして、AutoBucketのメニューからどのタグに割り当てるか学習させます\n4. いくつか分類をしたら右クリックかショートカットでメールを判定します。AutoBucketが学習内容に応じて自動で分類してタグをつけます。\n5. 分類に誤ったメールがあれば再度学習させてください。次回からの分類精度が上がっていきます。\n\n\nこの拡張機能はフォルダ内のメールを一括処理するために、メールアカウントとフォルダへのアクセス権を必要とします。\n\nヘルプ\n<a href=\"https://a-tak.github.io/auto-bucket/README_ja\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/README_ja</a>"
+        "en-US": "We have confirmed the problem that the setting screen is not displayed correctly with Thunderbird78. Please wait for a while until the correction.\n\nBasic usage\n\n1. Add a classification tag to Thunderbird and restart Thunderbird\n2. Select the tag used for classification from the add-on settings and restart Thunderbird\n3. Let's learn which tag to assign from AutoBucket in the menu displayed by right-clicking the email\n4. After classifying some, right click or shortcut to judge mail. AutoBucket automatically classifies and tags according to the learning content.\n5. If you find a wrong email in the classification, please let us know again. Classification accuracy will improve from the next time.\n\nHelp\n<a href=\"https://a-tak.github.io/auto-bucket/\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/</a>",
+        "ja": "Thunderbird78では設定画面が正しく表示されない問題を確認しております。修正までしばらくお待ちください。\n\n基本的な使い方\n\n1. 分類用のタグをThunderbirdに追加してThunderbirdを再起動します\n2. アドオンの設定から分類に使用するタグを選択してThunderbirdを再起動します\n3. メールを右クリックして、AutoBucketのメニューからどのタグに割り当てるか学習させます\n4. いくつか分類をしたら右クリックかショートカットでメールを判定します。AutoBucketが学習内容に応じて自動で分類してタグをつけます。\n5. 分類に誤ったメールがあれば再度学習させてください。次回からの分類精度が上がっていきます。\n\n\nこの拡張機能はフォルダ内のメールを一括処理するために、メールアカウントとフォルダへのアクセス権を必要とします。\n\nヘルプ\n<a href=\"https://a-tak.github.io/auto-bucket/README_ja\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/README_ja</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/edit",
@@ -86,7 +86,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-06-12T10:35:03Z",
+    "last_updated": "2020-07-18T03:30:03Z",
     "name": {
         "en-US": "AutoBucket",
         "ja": "AutoBucket"
@@ -146,10 +146,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 2.19995,
-        "count": 2,
-        "average": 2.5,
-        "text_count": 2
+        "bayesian_average": 3.04143,
+        "count": 3,
+        "average": 3.3333,
+        "text_count": 3
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/reviews/",
     "requires_payment": false,
@@ -175,9 +175,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp61plus": true,
+            "compNoMax": true
         }
     }
 }

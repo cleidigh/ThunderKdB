@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2107,
+    "average_daily_users": 2205,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -19,30 +19,32 @@
     "contributions_url": "",
     "created": "2019-10-16T11:51:13Z",
     "current_version": {
-        "id": 2473391,
+        "id": 2473934,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
-                "min": "60.0"
+                "max": "*",
+                "min": "74.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-address-cleaner-t/versions/2473391",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-address-cleaner-t/versions/2473934",
         "files": [
             {
-                "id": 1016513,
-                "created": "2020-02-06T07:06:35Z",
-                "hash": "sha256:b49a0c6f92096d53d5c5b622ca0143d9a46b3880a9d00223eaa765bbd57bc154",
-                "is_restart_required": true,
+                "id": 1017096,
+                "created": "2020-07-17T12:51:25Z",
+                "hash": "sha256:fc9b8a3b92715fb9dd200a1e8209966eea201b28f2a1d5203f96ad775fb186c9",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 8612,
+                "size": 4709,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016513/auto_address_cleaner_t-1.0.8-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017096/auto_address_cleaner_t-1.1-tb.xpi?src=",
+                "permissions": [
+                    "compose"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -51,12 +53,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Support for TB73 later(xhtml)\nAdded install.rdf for TB60",
-            "ja": "TB73以降へ対応(xhtml)\nTB60用にinstall.rdfを追加"
+            "en-US": "Conversion to Thunderbird WebExtension",
+            "ja": "Thunderbird WebExtension化"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-address-cleaner-t/versions/1.0.8",
-        "version": "1.0.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-address-cleaner-t/versions/1.1",
+        "version": "1.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -84,7 +86,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-02-09T23:35:33Z",
+    "last_updated": "2020-07-17T12:55:03Z",
     "name": {
         "en-US": "Auto Address Cleaner T",
         "ja": "Auto Address Cleaner T"
@@ -122,11 +124,11 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp60": true,
-            "comp61plus": true
+            "comp60pv": true,
+            "comp60pv_date": "2019-10-16T11:51:14Z"
         }
     }
 }

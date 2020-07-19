@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12406/12406433.png?modified=1468026812"
         }
     ],
-    "average_daily_users": 360,
+    "average_daily_users": 365,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,30 +18,30 @@
     "contributions_url": null,
     "created": "2016-07-09T01:15:48Z",
     "current_version": {
-        "id": 2472761,
+        "id": 2473948,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/layout-button/versions/2472761",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/layout-button/versions/2473948",
         "files": [
             {
-                "id": 1015859,
-                "created": "2019-10-18T20:59:57Z",
-                "hash": "sha256:b0cc6d4053c36f461621c3244de70cafd1032143402573d24e293bd7550e87b7",
-                "is_restart_required": true,
+                "id": 1017110,
+                "created": "2020-07-18T12:14:34Z",
+                "hash": "sha256:53cd6be6c6b31f37dbbb57d9baf8ac3f7e34bb8128472a5d865912ef3a9872f9",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 72994,
+                "size": 3259,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015859/layout_button-2.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017110/layout_button-3.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -51,12 +51,12 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/layout-button/versions/2.0",
-        "version": "2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/layout-button/versions/3.0",
+        "version": "3.0"
     },
     "default_locale": "en-GB",
     "description": {
-        "en-GB": "If, like me, you often swtich between multiple differently sized monitors or simply regularly change Thunderbird's layout view then this add-on allows you to add a button to the toolbar to change the layout quickly. The main button cycles through the three layout views and also there is a menu to manually select the layout view desired."
+        "en-GB": "If, like me, you often swtich between multiple differently sized monitors or simply regularly change Thunderbird's layout view then this add-on allows you to add a button to the toolbar to change the layout quickly. The main button has a popup to select the desired layout view and also addional options to do quick modifications show as show/hide panels."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/layout-button/edit",
@@ -66,33 +66,33 @@
     "homepage": {
         "en-GB": "http://www.turtletec.ie"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/714/714655-64.png?modified=1468197192",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/714/714655-64.png?modified=1595075658",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/714/714655-32.png?modified=1468197192",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/714/714655-64.png?modified=1468197192"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/714/714655-32.png?modified=1595075658",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/714/714655-64.png?modified=1595075658"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-01T17:13:18Z",
+    "last_updated": "2020-07-18T12:15:03Z",
     "name": {
         "en-GB": "Layout Button"
     },
     "previews": [
         {
-            "id": 175963,
+            "id": 206043,
             "caption": null,
             "image_size": [
-                338,
-                104
+                299,
+                304
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/175/175963.png?modified=1530209207",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206043.png?modified=1595075555",
             "thumbnail_size": [
-                320,
-                98
+                197,
+                200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/175/175963.png?modified=1530209207"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206043.png?modified=1595075555"
         }
     ],
     "public_stats": false,
@@ -110,7 +110,9 @@
     "summary": {
         "en-GB": "A toolbar button to switch between layouts."
     },
-    "support_email": null,
+    "support_email": {
+        "en-GB": "software@turtletec.ie"
+    },
     "support_url": null,
     "tags": [
         "firefox57"
@@ -120,12 +122,10 @@
     "weekly_downloads": 39,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
-            "comp60pv": true,
-            "comp60pv_date": "2016-07-10T12:04:10Z"
+            "comp60": true
         }
     }
 }

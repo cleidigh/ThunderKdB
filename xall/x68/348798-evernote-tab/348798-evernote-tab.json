@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1129,
+    "average_daily_users": 1098,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,34 @@
     "contributions_url": null,
     "created": "2011-11-09T05:54:13Z",
     "current_version": {
-        "id": 2472625,
+        "id": 2473859,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/evernote-tab/versions/2472625",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/evernote-tab/versions/2473859",
         "files": [
             {
-                "id": 1015697,
-                "created": "2019-09-15T16:53:19Z",
-                "hash": "sha256:2fec46d69731dd85eb8f0ae509329d1a49e412fc7baeb374edc955340ae666b2",
-                "is_restart_required": true,
+                "id": 1017021,
+                "created": "2020-07-01T15:18:13Z",
+                "hash": "sha256:a14e1946427e0ec4bca41a31bd3e4d6b5feefd8f7e4753b1e68df7e886547bfa",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5328,
+                "size": 3728,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015697/evernote_tab-0.1.21-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017021/evernote_tab-2.0.2-tb.xpi?src=",
+                "permissions": [
+                    "tabs",
+                    "webNavigation",
+                    "cookies"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -76,8 +80,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/evernote-tab/versions/0.1.21",
-        "version": "0.1.21"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/evernote-tab/versions/2.0.2",
+        "version": "2.0.2"
     },
     "default_locale": "ja",
     "description": {
@@ -100,7 +104,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-21T18:18:36Z",
+    "last_updated": "2020-07-01T15:20:03Z",
     "name": {
         "en-US": "Evernote Tab",
         "ja": "Evernote Tab"
@@ -153,10 +157,9 @@
     "weekly_downloads": 31,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

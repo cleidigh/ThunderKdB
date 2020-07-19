@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/9/9020.png?modified=1479819670"
         }
     ],
-    "average_daily_users": 2525,
+    "average_daily_users": 2587,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -25,30 +25,26 @@
     "contributions_url": null,
     "created": "2004-10-06T10:38:55Z",
     "current_version": {
-        "id": 2472774,
+        "id": 2473926,
         "compatibility": {
-            "seamonkey": {
-                "max": "2.50.*",
-                "min": "2.0a"
-            },
             "thunderbird": {
-                "max": "68.*",
-                "min": "31.0a1"
+                "max": "*",
+                "min": "65.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/versions/2472774",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/versions/2473926",
         "files": [
             {
-                "id": 1015874,
-                "created": "2019-10-23T19:37:22Z",
-                "hash": "sha256:d93343a2d2df486bee59ff4820b83d0da40d4a5a7555bf32c0cf3d86bd3ac8f1",
+                "id": 1017088,
+                "created": "2020-07-15T19:37:22Z",
+                "hash": "sha256:d78101c8b425d5bc6a645c2a3b369f4c7eb93367d8f38ee1a5ca75176d78bcd0",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 81220,
+                "size": 81349,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015874/bidi_mail_ui-0.10-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017088/bidi_mail_ui-0.10.1b2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -86,11 +82,11 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Relative to 0.9.8:\n* Compatibility: Thunderbird version upto 68.*, inclusive. This actually involved quite a lot of changes under the hood.\n* Compatibility: Seamonkey compatibility _should_ have improved, but this has not been effectively tested.\n* Fix: Seamonkey preferences dialog was trying to load a no-longer-existent function.\n* Preferences for the extension are now named \"extensions.bidiui.mail.some_pref_name\" rather than \"bidiui.mail.some_pref_name\n* Now avoiding the Error Console message about an error with a \"contentaccessible=yes\" line in chrome.manifest"
+            "en-US": "* Fix: A bug in the message composition code which has some either surfaced just recently or has somehow started manifesting more frequently.\n* Website switched to <a href=\"https://github.com/eyalroz/bidimailui/\" rel=\"nofollow\">https://github.com/eyalroz/bidimailui/</a>  - since MozDev is going to be taken down soon."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/versions/0.10",
-        "version": "0.10"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/versions/0.10.1b2",
+        "version": "0.10.1b2"
     },
     "default_locale": "en-US",
     "description": {
@@ -118,7 +114,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-10-27T08:49:10Z",
+    "last_updated": "2020-07-15T20:45:45Z",
     "name": {
         "en-US": "BiDi Mail UI"
     },
@@ -188,10 +184,11 @@
     "weekly_downloads": 94,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true,
-            "comp61plus": true
+            "comp60pv": true,
+            "comp60pv_date": "2018-05-19T22:43:27Z"
         }
     }
 }

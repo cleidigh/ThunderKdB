@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 33755,
+    "average_daily_users": 33553,
     "categories": {
         "firefox": [
             "other"
@@ -25,27 +25,28 @@
     "contributions_url": "",
     "created": "2018-10-20T01:02:38Z",
     "current_version": {
-        "id": 2473632,
+        "id": 2473912,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "78.*",
+                "min": "68.8.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/owl-for-exchange/versions/2473632",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/owl-for-exchange/versions/2473912",
         "files": [
             {
-                "id": 1016781,
-                "created": "2020-04-25T05:27:40Z",
-                "hash": "sha256:09b2bdf74b413db20bc010197641693803b21100dcfba685906b191c1b1109bf",
+                "id": 1017074,
+                "created": "2020-07-10T21:32:02Z",
+                "hash": "sha256:7461cb9fa920aade75b6fefc094578598e6541657f8e7bbbbf9f1906453660e1",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 258965,
+                "size": 255552,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016781/eule_fur_exchange-0.7.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017074/eule_fur_exchange-0.7.6-tb.xpi?src=",
                 "permissions": [
+                    "addressBooks",
                     "cookies",
                     "storage",
                     "tabs",
@@ -64,13 +65,10 @@
             },
             "url": null
         },
-        "release_notes": {
-            "en-US": "* Feature: tags/keywords\n* Calendar: Fix timezone, for repeat events spanning summer time change\n* Calendar: Fix invite response\n* Calendar: Fix Listener is undefined\n* Login: Warn that custom cookie preferences cause \"Login expired\"\n* Login: Better checks that login is finished\n* Login: Better error message on wrong password\n* Login: Hotmail: Keep me signed in\n* EWS: Support GAL\n* EWS: Fix folder creation\n* Exchange 2013: Fix automatic mail check\n* Exchange 2010: Fix copying messages to Exchange account",
-            "de": ""
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.7.2",
-        "version": "0.7.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.7.6",
+        "version": "0.7.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -115,7 +113,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-04-25T05:48:22Z",
+    "last_updated": "2020-07-10T21:39:12Z",
     "name": {
         "ru": "Сова для Exchange",
         "fr": "Chouette pour Exchange",
@@ -133,10 +131,10 @@
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.42765,
-        "count": 46,
-        "average": 4.4565,
-        "text_count": 46
+        "bayesian_average": 4.39775,
+        "count": 52,
+        "average": 4.4231,
+        "text_count": 52
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/reviews/",
     "requires_payment": true,
@@ -172,6 +170,7 @@
         "ext_comp": {
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
             "comp61plus": true,
             "compNoMax": true,
             "comp60pv": true,
