@@ -1,0 +1,77 @@
+[
+  {
+    "namespace": "oabeApi",
+    "functions": [
+      {
+        "name": "openAttachmentFromActiveMail",
+        "type": "function",
+        "description": "Open attachment(s) from current active message.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "filter",
+            "type": "object",
+            "description": "Attachment files filtering",
+            "properties": {
+              "name": {
+                "type": "string",
+                "optional": true
+              },
+              "partID": {
+                "type": "string",
+                "optional": true
+              }
+            }
+          },
+          {
+            "name": "options",
+            "type": "object",
+            "optional": true,
+            "description": "Various options for executing program",
+            "properties": {
+              "workDir": {
+                "type": "string",
+                "description": "Save attachment to this directory if specified",
+                "optional": true
+              },
+              "program": {
+                "type": "string",
+                "description": "Run attachment with this program if specified. Otherwise program is decided by OS shell",
+                "optional": true
+              },
+              "parameters": {
+                "type": "array",
+                "description": "Supplying arguments for program if specified",
+                "items": {
+                  "type": "string"
+                },
+                "optional": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "listAttachmentFromActiveMail",
+        "type": "function",
+        "description": "Enumerate attachment(s) from current active message.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "pickFile",
+        "type": "function",
+        "description": "Pick up a file from local filesystem.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "pickDir",
+        "type": "function",
+        "description": "Pick up a directory from local filesystem.",
+        "async": true,
+        "parameters": []
+      }
+    ]
+  }
+]

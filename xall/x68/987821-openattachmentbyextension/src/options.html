@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>OpenAttach: Options</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="jquery.mobile-1.4.5.css" />
+  <style type="text/css">
+  </style>
+</head>
+
+<body>
+  <div data-role="page" id="page-top">
+
+    <div data-role="header" data-position="fixed">
+      <h1>OpenAttach: Options</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <div class="ui-body ui-body-a ui-corner-all" id="topLoadingPanel">
+        <h3>Loading</h3>
+        <p>Please wait.</p>
+      </div>
+
+      <p>Select option going to customize:</p>
+      <p><a href="#page-workdir" class="ui-btn ui-shadow ui-corner-all">Temporary directory to open attachments</a></p>
+      <p><a href="#page-extensions" class="ui-btn ui-shadow ui-corner-all">Command to run with extensions</a></p>
+    </div><!-- /content -->
+
+  </div><!-- /page -->
+
+  <div data-role="page" id="page-workdir">
+
+    <div data-role="header" data-position="fixed">
+      <h1>Temporary directory to open attachments</h1>
+      <a href="#page-top" data-icon="back" class="ui-btn-left">Back</a>
+      <a href="#" data-icon="check" class="ui-btn-right" id="saveWorkDirBtn">Save</a>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <p>
+        <label for="useWorkDirCheck">Use specified directory below (otherwise it tries to place files in TmpD):</label>
+        <input type="checkbox" data-role="flipswitch" id="useWorkDirCheck">
+      </p>
+
+      Temporary directory to open attachments:
+      <input type="text" id="workDirEdit" value="">
+
+      <button class="ui-btn ui-btn-inline" id="refWorkDirBtn">Browse...</button>
+    </div><!-- /content -->
+
+  </div><!-- /page two -->
+
+  <div data-role="page" id="page-extensions">
+
+    <div data-role="header" data-position="fixed">
+      <h1>Command to run with extensions</h1>
+      <a href="#page-top" data-icon="back" class="ui-btn-left">Back</a>
+      <a href="#page-extension-detail" data-icon="plus" class="ui-btn-inline" id="gotoAddNewExtensionBtn">Add</a>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <p>
+        <label for="extensions">Command to run with extensions:</label>
+      </p>
+      <ul data-role="listview" id="extensionsListView">
+      </ul>
+    </div><!-- /content -->
+
+  </div><!-- /page popup -->
+
+  <div data-role="page" id="page-extension-detail">
+
+    <div data-role="header" data-position="fixed">
+      <h1>Command to run with extension detail</h1>
+      <a href="#page-extensions" data-icon="back" class="ui-btn-left">Back</a>
+      <a href="#page-extensions" data-icon="check" class="ui-btn-right" id="saveExtensionDetailBtn">Save</a>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <h4>Extension (without period):</h4>
+      <input type="text" id="extensionEdit" value="">
+
+      <p><i>Notes:</i></p>
+      <ul>
+        <li>Extension <code>@@@</code> stands for files without extension</li>
+        <li>Extension <code>###</code> stands for all files with numeric extensions</li>
+        <li>Extension <code>***</code> stands for every file (for extensions which are not defined)</li>
+        <li>Extension <code>winmaildat</code> stands for <cpde>winmail.dat</cpde> files</li>
+      </ul>
+
+      <h4>Command:</h4>
+      <input type="text" id="commandEdit" value="">
+
+      <p><i>Note:</i> Use <code>%%</code> to add arguments to the command. Use <code>%%</code> per one argument.</p>
+
+      <div>
+        <button class="ui-btn ui-btn-inline" id="refCommandBtn">Browse...</button>
+      </div>
+
+      <h4>Other operations:</h4>
+
+      <div>
+        <a href="#page-extensions" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left"
+          id="removeThisExtensionBtn">Remove
+          this file extension</a>
+      </div>
+
+    </div><!-- /content -->
+
+  </div><!-- /page two -->
+
+  <script src="scripts/jquery-3.5.1.js"></script>
+  <script src="scripts/jquery-migrate-3.3.0.js"></script>
+  <script src="scripts/jquery.mobile-1.4.5.js"></script>
+  <script src="js/options.js" type="module"></script>
+</body>
+
+</html>

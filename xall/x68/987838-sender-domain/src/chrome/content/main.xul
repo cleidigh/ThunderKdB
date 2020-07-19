@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE main SYSTEM "chrome://rcruzs00_sender_domain/locale/main.dtd">
+
+<overlay id="showaddressonly"
+          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<tree id="threadTree">
+
+
+ <treecols id="threadCols">
+  <splitter class="tree-splitter" />
+  <treecol id="crz_senderCol" persist="hidden ordinal width" 
+           currentView="unthreaded" flex="2"
+           label="&crz.sender.label;" tooltiptext="&crz.sender.tooltip;" />
+ </treecols>
+ 
+
+ <treecols id="threadCols">
+  <splitter class="tree-splitter" />
+  <treecol id="crz_senderReverseCol" persist="hidden ordinal width" 
+           currentView="unthreaded" flex="2"
+           label="&crz.senderReverse.label;" tooltiptext="&crz.senderReverse.tooltip;" />
+ </treecols>
+
+
+</tree>
+
+<!-- include our javascript file -->
+<script type="text/javascript" src="chrome://rcruzs00_sender_domain/content/main.js"/> 
+
+</overlay>

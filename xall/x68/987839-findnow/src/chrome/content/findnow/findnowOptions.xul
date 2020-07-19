@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE dialog [ <!ENTITY % mainDTD SYSTEM "chrome://findnow/locale/findnow.dtd">
+%mainDTD;
+<!ENTITY % backupDTD SYSTEM "chrome://findnow/locale/autobackup.dtd">
+	%backupDTD;
+	]>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet href="chrome://findnow/content/findnow.css" type="text/css"?>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="optionsdialog"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    type="child"
+    title="FindNow">
+
+	<grid>
+		<columns>
+			<column flex="1" />
+		</columns>
+		<rows>
+			<row>
+				<hbox align="center">
+					<checkbox id="defaultButton" label="&defaultButton;" checked="false" />
+				</hbox>
+			</row>
+			<row>
+				<checkbox id="use_export_eml_dir" label="&emlExport;"
+					oncommand="setTimeout(com_hw_FindNow.options.toggleDirCheck, 200, this);" />
+				<textbox id="export_eml_dir" value="" size="35" />
+				<button label="&browse;" oncommand="com_hw_FindNow.options.pickFile(this);" />
+			</row>
+			<row>
+				<checkbox id="use_export_eml_sub_dir" label="&emlExportSub;"
+					oncommand="setTimeout(com_hw_FindNow.options.toggleDirCheck, 202, this);" />
+				<textbox id="export_eml_sub_dir" value="" size="35" />
+			</row>
+			<row>
+				<hbox align="center">
+					<checkbox id="addtimeCheckbox" label="&addtime.label;" checked="false" />
+				</hbox>
+			</row>
+			<!--<row>
+				<hbox align="center">
+					<checkbox id="save_auto_eml" label="&saveAuto;" checked="false" />
+				</hbox>
+			</row>-->
+		</rows>
+	</grid>
+
+	<!--
+	<tabbox>
+		<tabs>
+		   <tab label="&misc;" selected="true"/>
+		   <tab label="&filenameFormat;" />
+		   <tab label="&savedirs;" />
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<groupbox>
+					<caption label="&MBcaptionlabel1;" />
+					<hbox class="groupbox-title" >
+						<label class="header groupbox-label">&MBcaptionlabel1;</label>
+					</hbox>
+					<hbox align="center">
+						<checkbox id="MBoverwrite" label="&MBlabel1;" />
+					</hbox>
+					<hbox align="center">
+						<checkbox id="setTimestamp" label="&addTimestamp;" />
+					</hbox>
+					<spacer height="20px" />
+
+				</groupbox>
+				<hbox flex="1" pack="end" >
+					<image src="chrome://findnow/images/findnow.png" width="48px" height="48px"
+					  maxwidth="48px" maxheight="54px" style="padding-top: 6px;"/>
+				</hbox>
+			</tabpanel>
+			<tabpanel>
+				<vbox>
+						<hbox align="center">
+							<checkbox id="MBasciiname" label="&MBlabel2;" />
+						</hbox>
+						<spacer height="20px" />
+						<groupbox>
+							<caption label="&captionCustomize;" />
+							<hbox class="groupbox-title" >
+								<label class="header groupbox-label">&captionCustomize;</label>
+							</hbox>
+							<hbox align="center">
+								<checkbox id="customizeFilenames" label="&customizeFilename;" checked="false"
+									oncommand="setTimeout(com_hw_FindNow.options.customNamesCheck,200,this);" />
+							</hbox>
+							<spacer height="10px" />
+							<hbox align="center">
+								<menulist id="part1">
+									<menupopup id="part1-popup-list">
+										<menuitem id="m0" label="&subject;" value="%s" />
+										<menuitem label="&date;" value="%d" />
+										<menuitem label="&key;" value="%k" />
+										<menuitem label="&name; (&sender;/&recipient;)" value="%n" />
+										<menuitem label="&name; (&sender;)" value="%a" />
+										<menuitem label="&name; (&recipient;)" value="%r" />
+									</menupopup>
+								</menulist>
+								<label value="-" />
+								<menulist id="part2">
+									<menupopup id="part2-popup-list">
+										<menuitem label="&subject;" value="%s" />
+										<menuitem label="&date;" value="%d" selected="true" />
+										<menuitem label="&key;" value="%k" />
+										<menuitem label="&name; (&sender;/&recipient;)" value="%n" />
+										<menuitem label="&name; (&sender;)" value="%a" />
+										<menuitem label="&name; (&recipient;)" value="%r" />
+										<menuitem label=" " value="%e" />
+									</menupopup>
+								</menulist>
+								<label value="-" />
+								<menulist id="part3">
+									<menupopup id="part3-popup-list">
+										<menuitem label="&subject;" value="%s" />
+										<menuitem label="&date;" value="%d" />
+										<menuitem label="&key;" value="%k" selected="true" />
+										<menuitem label="&name; (&sender;/&recipient;)" value="%n" />
+										<menuitem label="&name; (&sender;)" value="%a" />
+										<menuitem label="&name; (&recipient;)" value="%r" />
+										<menuitem label=" " value="%e" />
+									</menupopup>
+								</menulist>
+							</hbox>
+							<spacer height="10px" />
+							<hbox align="center">
+								<checkbox id="addtimeCheckbox" label="&addtime.label;" checked="false" />
+							</hbox>
+							<hbox align="center">
+								<checkbox id="useISOTimeCheckbox" label="&useisotime.label;" checked="false" />
+							</hbox>
+							<hbox align="center">
+								<checkbox id="addPrefix" label="&addPrefix;" checked="false" />
+								<textbox id="prefixText" />
+							</hbox>
+							<spacer height="10px" />
+						</groupbox>
+						<groupbox>
+							<caption label="&misc;" />
+							<hbox class="groupbox-title">
+								<label class="header groupbox-label">&misc;</label>
+							</hbox>
+							<hbox align="center">
+								<checkbox id="cutSub" label="&cutSub;" />
+							</hbox>
+							<hbox align="center">
+								<checkbox id="cutFN" label="&cutFN;" />
+							</hbox>
+							<hbox align="center">
+								<label value="&filenameCharset;" />
+								<textbox id="filenameCharset" />
+							</hbox>
+						</groupbox>
+				</vbox>
+			</tabpanel>
+			<tabpanel orient="vertical">
+				<groupbox>
+					<caption label="&savedirs;" />
+					<hbox class="groupbox-title">
+						<label class="header groupbox-label">&savedirs;</label>
+					</hbox>
+
+				</groupbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+	-->
+
+	<script type="application/javascript" src="chrome://findnow/content/utils.js" />
+    <script type="application/javascript" src="chrome://findnow/content/findnowOptions.js" />
+</dialog>

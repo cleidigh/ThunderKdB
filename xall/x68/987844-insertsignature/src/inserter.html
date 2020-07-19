@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+
+  <title>Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="jquery.mobile-1.4.5.css" />
+  <style type="text/css">
+    /* This make the scrollbar always visible and only active when needed. */
+    html {
+      overflow-y: scroll;
+    }
+  </style>
+</head>
+
+<body style="width:500px; height:500px;">
+  <div data-role="page" id="page-top">
+
+    <div data-role="header" data-position="fixed">
+      <h1 data-trans="text">Signature inserter</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <p><a href="#page-templates" class="ui-btn ui-shadow ui-corner-all" data-trans="text">Edit signatures</a></p>
+      <p data-trans="text">Click signature to insert:</p>
+
+      <ul data-role="listview" id="templatesInserterListView">
+        <li>Loading...</li>
+      </ul>
+    </div><!-- /content -->
+
+  </div><!-- /page -->
+
+  <div data-role="page" id="page-templates">
+
+    <div data-role="header" data-position="fixed">
+      <h1 data-trans="text">Click signature to edit</h1>
+      <a href="#page-top" data-icon="back" class="ui-btn-left" data-trans="text">Back</a>
+      <a href="#page-template-detail" data-icon="plus" class="ui-btn-inline" id="gotoAddNewTemplateBtn"
+        data-trans="text">Add</a>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <ul data-role="listview" id="templatesListView">
+      </ul>
+
+      <h4 data-trans="text">Other operations:</h4>
+
+      <div>
+        <a href="#page-templates" class="ui-btn ui-btn-inline ui-icon-action ui-btn-icon-left"
+          id="importFromWindowsLiveMailBtn" data-trans="text">Import and overwrite from Windows Live Mail</a>
+      </div>
+      <div>
+        <a href="#page-exporter" class="ui-btn ui-btn-inline ui-icon-carat-r ui-btn-icon-left" data-trans="text">Export
+          signatures</a>
+        <a href="#page-importer" class="ui-btn ui-btn-inline ui-icon-carat-r ui-btn-icon-left" data-trans="text">Import
+          signatures</a>
+      </div>
+    </div><!-- /content -->
+
+  </div><!-- /page popup -->
+
+  <div data-role="page" id="page-template-detail">
+
+    <div data-role="header" data-position="fixed">
+      <h1 data-trans="text">Signature detail</h1>
+      <a href="#page-templates" data-icon="back" class="ui-btn-left" data-trans="text">Back</a>
+      <a href="#page-templates" data-icon="check" class="ui-btn-right" id="saveTemplateDetailBtn"
+        data-trans="text">Save</a>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <h4 data-trans="text">Label:</h4>
+      <input type="text" id="titleEdit" value="">
+
+      <h4 data-trans="text">Plain text to be inserted:</h4>
+      <textarea id="templateEdit"></textarea>
+
+      <h4 data-trans="text">Other operations:</h4>
+
+      <div>
+        <a href="#page-templates" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left"
+          id="removeThisTemplateBtn" data-trans="text">Remove this</a>
+      </div>
+
+    </div><!-- /content -->
+
+  </div><!-- /page -->
+
+  <div data-role="page" id="page-exporter">
+
+    <div data-role="header" data-position="fixed">
+      <h1 data-trans="text">Export signatures</h1>
+      <a href="#page-templates" data-icon="back" class="ui-btn-left" data-trans="text">Back</a>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <p data-trans="text">You can copy exported data:</p>
+      <p>
+        <button class="ui-btn ui-shadow ui-corner-all" data-trans="text" id="copyExportedData">Copy to
+          clipboard</button>
+      </p>
+      <p data-trans="text" id="exportedDataCopied" style="display: none;">Copied!</p>
+
+      <textarea id="exportData"></textarea>
+
+    </div><!-- /content -->
+
+  </div><!-- /page -->
+
+  <div data-role="page" id="page-importer">
+
+    <div data-role="header" data-position="fixed">
+      <h1 data-trans="text">Import signatures</h1>
+      <a href="#page-templates" data-icon="back" class="ui-btn-left" data-trans="text">Back</a>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+      <p data-trans="text">Paste exported data here:</p>
+
+      <textarea id="importData"></textarea>
+
+      <p>
+        <button class="ui-btn ui-shadow ui-corner-all" data-trans="text" id="proceedDataImport">Proceed import</button>
+      </p>
+      <p id="imported" style="display:none;">...</p>
+      <div id="importErrorPanel" style="display:none;">
+        <p data-trans="text">There is an error while import.</p>
+        <blockquote id="importErrorMessage"></blockquote>
+      </div>
+
+    </div><!-- /content -->
+
+  </div><!-- /page -->
+
+
+  <script src="scripts/jquery-3.5.1.js"></script>
+  <script src="scripts/jquery-migrate-3.3.0.js"></script>
+  <script src="scripts/jquery.mobile-1.4.5.js"></script>
+  <script src="js/inserter.js" type="module"></script>
+</body>
+
+</html>

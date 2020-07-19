@@ -1,0 +1,139 @@
+body {
+    font-family: monospace;
+    height: 400px;
+    width: 420px;
+    overflow-x:hidden;
+    overflow-y: scroll;
+}
+textarea {
+    width: 400px;
+    height:150px;
+    background: #FFF;
+    border:1px solid black;
+    color:rgb(206, 18, 18);
+}
+input, select {
+    width:400px!important;
+    border:1px solid rgb(206, 18, 18);
+    margin-bottom:3px;
+}
+input[type=checkbox]{
+    width:initial!important;
+}
+#new_key_name{
+    width:300px!important;
+}
+input[type=button]{
+    background-color: rgb(206, 18, 18);
+    color:#FFF;
+    height:25x;
+}
+select {
+    color:rgb(206, 18, 18);
+}
+.group:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.tabs {
+    list-style: none;
+    cursor:pointer;
+}
+.tabs li {
+    display: inline;
+}
+.tabs li a {
+    color: black;
+    float: left;
+    display: block;
+    padding: 4px 10px;
+    margin-left: -1px;
+    position: relative;
+    left: 1px;
+    background: white;
+    text-decoration: none;
+}
+.tabs li a:hover {
+    background: #ccc;
+}
+/* Generic styles & example one */
+.inactiveTab{
+    display:none;
+}
+.activeClass{
+    display:block;
+}
+.box-wrap {
+    position: relative;
+    min-height: 400px;
+}
+.tabbed-area {
+    margin-top:10px;
+   background: white;
+    padding: 5px;
+    left: 0;
+}
+
+.adjacent {
+    top:5px;
+    min-height: 300px;
+    width:400px;
+    border-top: 1px solid rgb(206, 18, 18);
+    background: white;
+    overflow:hidden;
+}
+.adjacent .tabs {
+    z-index: 2;
+}
+.adjacent .tabs li a {
+    padding-bottom: 10px;
+    background: -moz-linear-gradient(top, white, #eee);
+}
+#box-actions:target, #box-settings:target, #box-others:target {
+    z-index: 1;
+}
+#box-actions:target ~ .tabs a[href='#box-actions'], #box-settings:target ~ .tabs a[href='#box-settings'], #box-others:target ~ .tabs a[href='#box-others'] {
+    background: white;
+    border-bottom: 1px solid white;
+}
+.tabbed-area {
+    margin-top:10px;
+}
+.key_row{
+    border:1px solid black;
+    height: 70px;
+    width: 400px;
+}
+.key_row_name{
+    font-size:10px;
+    font-style: bold;
+}
+.row_generate_public_key .key_row_delete, .key_row_key{
+    font-size:8px;
+    height: 8px;
+    font-style: italic;
+    overflow: hidden;
+}
+.key_row_delete{
+    text-decoration:underline;
+    color:red;
+}
+.row_generate_public_key {
+    color: blue;
+}
+.key_row_delete{
+    cursor:pointer;
+}
+.key_row_public{
+    background-color:#d6d6d6;
+}
+#keys_tab{
+    width:400px;
+}
+#new_private_key_block, #new_private_key_block_enable{
+    display:none;
+}

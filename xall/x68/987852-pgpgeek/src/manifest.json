@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "PGPGeek",
+    "description": "Quick & easy PGP encryption / decryption tool",
+    "version": "1.6",
+    "author": "dave-hill@dyrk.org",
+    "applications": {
+        "gecko": {
+            "id": "enygmail@dyrk.org",
+            "strict_min_version": "78.0"
+        }
+    },
+    "browser_action": {
+        "default_popup": "views/popup.html",
+        "default_title": "PGPGeek",
+        "default_icon": "images/internet-32px.png"
+    },
+    "compose_action": {
+        "default_icon":  "images/internet-32px.png",
+        "default_popup": "views/popup.html",
+        "default_title": "Encrypt / Decrypt PGP Message"
+    },
+    "background": {
+        "scripts": ["scripts/bgscript.js"]
+    },
+    "permissions": ["compose", "storage", "clipboardWrite"],
+    "icons": {
+        "64": "images/internet.png",
+        "32": "images/internet-32px.png",
+        "16": "images/internet-16px.png"
+    }
+}

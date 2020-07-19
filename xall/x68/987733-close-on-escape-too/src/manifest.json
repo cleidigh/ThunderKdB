@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "Close on Escape Too",
+    "description": "Updated version of David Winter's Close on Escape",
+    "version": "1.0",
+    "author": "[Norm Green]",
+    "applications": {
+        "gecko": {
+            "id": "nrgiii66@gmail.com",
+            "strict_min_version": "68.0"
+        }
+    },
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://closetabonesc/content/options.xul",
+      "open_in_tab": true
+    }
+  }    
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE overlay SYSTEM "chrome://foldercolors/locale/foldercolors.dtd">
+
+<!--
+Color Folders v1.0
+Copyright(c) 2011 fisheater
+
+Corrected, restaurated  and republished by Lab5 ( www.lab5.ch )
+
+Forked by Brooks Kline to support TB 68+, as:
+Folder Colors v1.0.0
+Folder Colors v1.0.1
+
+-->
+
+<overlay id="foldercolors-overlay"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+  <script type="application/javascript" src="chrome://foldercolors/content/foldercolors.js" />
+  <popup id="folderPaneContext" >
+    <menu id="folderPaneContext-colorFolders" class="menu-iconic" label="&menu_foldercolors.label;" accesskey="f" >
+      <menupopup id="folderColorPopup" class="folderColorDefault" >
+        <menuitem class="menuitem-iconic folderColorDefault" value="folderColorDefault" label="&menu_default.label;" />
+        <menuitem class="menuitem-iconic folderColorFFFFFF" value="folderColorFFFFFF" label="&menu_white.label;" />
+        <menuitem class="menuitem-iconic folderColorCCCCCC" value="folderColorCCCCCC" label="&menu_lightgray.label;" />
+        <menuitem class="menuitem-iconic folderColor333333" value="folderColor333333" label="&menu_darkgray.label;" />
+        <menuitem class="menuitem-iconic folderColorCC0000" value="folderColorCC0000" label="&menu_red.label;" />
+        <menuitem class="menuitem-iconic folderColorFFAA00" value="folderColorFFAA00" label="&menu_orange.label;" />
+        <menuitem class="menuitem-iconic folderColorFFEE00" value="folderColorFFEE00" label="&menu_yellow.label;" />
+        <menuitem class="menuitem-iconic folderColorBBCC00" value="folderColorBBCC00" label="&menu_yellowgreen.label;" />
+        <menuitem class="menuitem-iconic folderColor009900" value="folderColor009900" label="&menu_green.label;" />
+        <menuitem class="menuitem-iconic folderColor00CCCC" value="folderColor00CCCC" label="&menu_cyan.label;" />
+        <menuitem class="menuitem-iconic folderColor0000FF" value="folderColor0000FF" label="&menu_blue.label;" />
+        <menuitem class="menuitem-iconic folderColor9933FF" value="folderColor9933FF" label="&menu_violet.label;" />
+        <menuitem class="menuitem-iconic folderColorCC33CC" value="folderColorCC33CC" label="&menu_magenta.label;" />
+        <!--menuseparator />
+        <menu id="folderColorMoreColors" class="menu-iconic folderDefault" label="&menu_morecolors.label;">
+          <menupopup id="folderColorPickerPupup" >
+            <colorpicker id="folderColorPicker" palettename="standard" />
+          </menupopup>
+        </menu-->
+      </menupopup>
+    </menu>
+  </popup>
+</overlay>

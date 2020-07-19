@@ -1,0 +1,50 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "0.2.0",
+  "applications": {
+    "gecko": {
+      "id": "InsertSignature@digitaldolphins.jp",
+      "strict_min_version": "68.6.0"
+    }
+  },
+  "icons": {
+    "64": "icons/64.png",
+    "48": "icons/48.png",
+    "32": "icons/32.png",
+    "24": "icons/24.png",
+    "16": "icons/16.png"
+  },
+  "author": "kenjiuno",
+  "homepage_url": "https://github.com/HiraokaHyperTools/InsertSignature",
+  "default_locale": "en-US",
+  "compose_action": {
+    "default_area": "formattoolbar",
+    "default_icon": {
+      "64": "icons/64.png",
+      "48": "icons/48.png",
+      "32": "icons/32.png",
+      "24": "icons/24.png",
+      "16": "icons/16.png"
+    },
+    "default_popup": "inserter.html",
+    "default_title": "__MSG_actionTitle__"
+  },
+  "experiment_apis": {
+    "insertSignatureApi": {
+      "schema": "api/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "insertSignatureApi"
+          ]
+        ],
+        "script": "api/implementation.js"
+      }
+    }
+  }
+}

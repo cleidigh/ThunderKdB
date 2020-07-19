@@ -1,0 +1,60 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "0.9.0",
+  "applications": {
+    "gecko": {
+      "id": "OpenAttachmentByExtension@digitaldolphins.jp",
+      "strict_min_version": "68.6.0"
+    }
+  },
+  "icons": {
+    "64": "icons/64.png",
+    "48": "icons/48.png",
+    "32": "icons/32.png",
+    "24": "icons/24.png",
+    "16": "icons/16.png"
+  },
+  "author": "kenjiuno",
+  "homepage_url": "https://github.com/HiraokaHyperTools/OpenAttachmentByExtension",
+  "default_locale": "en-US",
+  "message_display_action": {
+    "default_icon": {
+      "64": "icons/64.png",
+      "48": "icons/48.png",
+      "32": "icons/32.png",
+      "24": "icons/24.png",
+      "16": "icons/16.png"
+    },
+    "default_popup": "open-attach.html",
+    "default_title": "OpenAttach..."
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "OpenAttach...",
+    "default_icon": {
+      "64": "icons/64.png",
+      "48": "icons/48.png",
+      "32": "icons/32.png",
+      "24": "icons/24.png",
+      "16": "icons/16.png"
+    }
+  },
+  "experiment_apis": {
+    "oabeApi": {
+      "schema": "api/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "oabeApi"
+          ]
+        ],
+        "script": "api/implementation.js"
+      }
+    }
+  }
+}

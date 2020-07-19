@@ -1,0 +1,34 @@
+[
+  {
+    "namespace": "insertSignatureApi",
+    "functions": [
+      {
+        "name": "insertTextAtCurrentEditor",
+        "type": "function",
+        "description": "Insert text at current editor",
+        "async": true,
+        "parameters": [
+          {
+            "name": "options",
+            "type": "object",
+            "description": "Various options other than text for future extension",
+            "properties": {
+              "text": {
+                "type": "string",
+                "description": "Text to be inserted",
+                "optional": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "importSignatureFromWindowsLiveMail",
+        "type": "function",
+        "description": "Import signatures from Windows Live Mail registry",
+        "async": true,
+        "parameters": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="desc.css" type="text/css"?>
+
+<overlay id="calendar-event-dialog-inner"
+      onload="onLoad();"
+      onunload="onEventDialogUnload();"
+      onresize="rearrangeAttendees();"  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" height="17px">
+
+<toolbarpalette id="event-toolbarpalette">
+<toolbarbutton id="desc" label=" Task descriptions" type="menu">
+<menupopup>
+<menu label=" Screen color">
+<menupopup>
+<menuitem onclick="
+window.frames[0].document.activeElement.style.backgroundColor = '#303030';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.backgroundColor = '#303030';
+" label=" Dark screen"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.backgroundColor = '#808080';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.backgroundColor = '#808080';
+" label=" Grey screen"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.backgroundColor = '#F1F1F1';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.backgroundColor = '#F1F1F1';
+" label=" Light screen"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.backgroundColor = '#F0E68C';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.backgroundColor = '#F0E68C';
+" label=" Khaki screen"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.backgroundColor = '#FFFFFF';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.backgroundColor = '#FFFFFF';
+" label=" White screen"/>
+</menupopup>
+</menu>
+
+<menu label=" Font color">
+<menupopup>
+<menuitem onclick="
+window.frames[0].document.activeElement.style.color = 'black';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.color = 'black';
+" label=" Black font"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.color = 'blue';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.color = 'blue';
+" label=" Blue font"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.color = 'green';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.color = 'green';
+" label=" Green font"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.color = 'red';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.color = 'red';
+" label=" Red font"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.color = 'white';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.color = 'white';
+" label=" White font"/>
+</menupopup>
+</menu>
+
+<menu label=" Font Family">
+<menupopup>
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontFamily = 'serif';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontFamily = 'serif';
+" label=" Font serif"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontFamily = 'sans-serif';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontFamily = 'sans-serif';
+" label=" Font sans-serif"/>
+</menupopup>
+</menu>
+
+<menu label=" Font weight">
+<menupopup>
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontWeight = 'bold';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontWeight = 'bold';
+" label=" Font bold"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontWeight = 'normal';
+window.frames[0].document.activeElement.style.fontStyle = 'normal';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontWeight = 'normal';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontStyle = 'normal';
+" label=" Font normal"/>
+</menupopup>
+</menu>
+
+<menu label=" Font style">
+<menupopup>
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontStyle = 'italic';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontStyle = 'italic';
+" label=" Font italic"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontWeight = 'normal';
+window.frames[0].document.activeElement.style.fontStyle = 'normal';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontWeight = 'normal';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontStyle = 'normal';
+" label=" Font normal"/>
+</menupopup>
+</menu>
+
+<menu label=" Font size">
+<menupopup>
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontSize = 'small';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontSize = 'small';
+" label=" Small font"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontSize = 'medium';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontSize ='medium';
+" label=" Medium font"/>
+
+<menuitem onclick="
+window.frames[0].document.activeElement.style.fontSize = 'large';
+window.frames.opener.document.getElementById('calendar-task-details-description').style.fontSize = 'large';
+" label=" Large font"/>
+</menupopup>
+</menu>
+</menupopup>
+</toolbarbutton>
+</toolbarpalette>
+<script language="javascript" src="jsonToDOM.js"/>
+</overlay>
+

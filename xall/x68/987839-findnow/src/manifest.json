@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "__MSG_extensionName__",
+    "version": "1.0",
+    "description": "__MSG_extensionDescription__",
+    "author": "Stefan Werfling",
+    "applications": {
+        "gecko": {
+            "id": "FindNow@hw-softwareentwicklung.de",
+            "strict_min_version": "68.0"
+        }
+    },
+    "legacy": {
+        "options": {
+            "page": "chrome://findnow/content/findnowOptions.xul",
+            "open_in_tab": false
+        }
+    },
+    "permissions": [
+    ],
+    "icons": {
+        "64": "chrome/images/findnow.png"
+    },
+    "default_locale": "en-US"
+}

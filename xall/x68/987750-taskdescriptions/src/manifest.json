@@ -1,0 +1,22 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "TaskDescriptions@Sungho.Hwang",
+                   "strict_min_version": "71.0"
+                    }
+             },
+	"name": "TaskDescriptions",
+	"version": "1.8",
+	"description": "This is buttons to switch task descriptions colors and font styles.",
+             "icons": {
+               "32": "icons/desc.png"
+                 },
+             "legacy" : {
+               "type": "xul",
+               "options" : {
+               "page" : "chrome://taskdescriptions/content/desc.xul",
+               "open_in_tab": true
+               }
+             }
+}

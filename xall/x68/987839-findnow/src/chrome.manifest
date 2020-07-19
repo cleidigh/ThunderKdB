@@ -1,0 +1,11 @@
+content	findnow	chrome/content/findnow/
+
+# Use messenger.xul for TB68+
+
+overlay	chrome://messenger/content/messenger.xul	chrome://findnow/content/findnow.xul
+overlay	chrome://messenger/content/messageWindow.xul	chrome://findnow/content/findnow.xul
+style chrome://messenger/content/messenger.xul 		chrome://findnow/content/findnow.css
+style chrome://messenger/content/messageWindow.xul 	chrome://findnow/content/findnow.css
+
+locale	findnow	en-US	chrome/locale/en-US/findnow/
+locale	findnow	de	chrome/locale/de/findnow/

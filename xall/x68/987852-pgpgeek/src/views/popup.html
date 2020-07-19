@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../css/popup.css" />
+</head>
+
+<body>
+
+    <ul class="tabs group">
+        <li id='actions-tab'> { <b>Acti</b>ons } </li>
+        <li id='settings-tab'> <b>{</b> Ma<b>na</b>ge } </li>
+        <li id='others-tab'> { Othe<b>rs }</b> </li>
+    </ul>
+    <div class="tabbed-area adjacent">
+        <div class="inactiveTab activeClass" id="box-actions">
+            <div id="encryption_block">
+                <b>Encryption</b><br />
+                Encrypt mail with this public key <br />
+                <select id="encrypt_select_public_key"></select>
+                <input type="button" id="crypt" value="Encrypt this email" /> <br>
+                <p></p>
+                <br />
+                <p></p>
+            </div>
+            <b>Decryption</b><br />
+            Generate a public key <span id="decrypt_full_description">or decrypt mail</span> with this private key
+            <br />
+            <select id="decrypt_select_private_key"></select><br>
+            Fill the passphrase : <br />
+            <input type="text" id="decrypt_passphrase" placeholder="** passphrase required **" /><br />
+            <input type="button" id="decrypt" value="Decrypt this email" /><br />
+            <input type="button" id="generate_public_key_to_mail" value="Generate a public Key" />
+        </div>
+        <div class="inactiveTab" id="box-settings">
+            <p>
+            <p><b>Add NEW Key</b></p><br />
+
+            Select type <br />
+            <select id="new_type_key">
+                <option value='public'>PUBLIC</option>
+                <option value='private'>PRIVATE</option>
+            </select><br />
+            <div id="new_private_key_block">
+                <input type="checkbox" id="new_private_key_block_generate_checkbox">
+                <label for="new_private_key_block_generate_checkbox">Generate new private Key (RSA / 4096
+                    bits)</label><br />
+                <div id="new_private_key_block_enable">
+                    Name <br />
+                    <input type="text" id="new_private_key_block_generate_name" placeholder="John Doe** required">
+                    Email <br />
+                    <input type="text" id="new_private_key_block_generate_email"
+                        placeholder="john.doe@email.com** required">
+                    Passphrase <br />
+                    <input type="text" id="new_private_key_block_generate_passphrase"
+                        placeholder="passphrase** required">
+                    <input type="button" value="generate" id="new_private_key_block_generate_button">
+                </div>
+            </div>
+            Set custom Name<br />
+            <input type="text" id="new_key_name"><br>
+            Copy / paste key<br />
+            <textarea id="new_key" placeholder="==== PGP Public / Private Key =====
+                ...."></textarea><br />
+            <input type="button" id="add_new_key_button" value="Save my new Key" />
+            <br />
+            <p></p>
+            Manage my keys<br />
+            <div id="keys_tab"></div>
+            </p>
+        </div>
+        <div class="inactiveTab" id="box-others">
+            <p>
+
+            <p><b>About</b></p>
+            Version : 1.6 <br />
+            Author : dave-hill @ dyrk.org<br />
+            <br />
+            <p><b>Special Thanks</b></p>
+            <ul>
+                <li>openpgpjs <i>(https://openpgpjs.org/)</i></li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    <script src="../scripts/lib/openpgp.min.js" defer=""></script>
+    <script src="../scripts/class/pgpMaster.js" defer=""></script>
+    <script src="../scripts/class/pgpStorage.js" defer=""></script>
+    <script src="../scripts/others/displaySettings.js" defer=""></script>
+    <script src="../scripts/others/common.js" defer=""></script>
+    <script src="../scripts/others/tabs.js" defer=""></script>
+    <script src="../scripts/popup.js" defer=""></script>
+</body>
+
+</html>
+
+<!-- Shiiiiit ; https://open-source.developpez.com/actu/280212/Thunderbird-78-va-ajouter-une-fonctionnalite-integree-pour-le-chiffrement-de-courriels-et-les-signatures-numeriques-a-l-aide-du-standard-OpenPGP/#:~:text=Et%20les%20signatures%20num%C3%A9riques%20%C3%A0%20l'aide%20du%20standard%20OpenPGP,-Le%202019%2D10&text=Le%20projet%20Thunderbird%20a%20annonc%C3%A9,l'aide%20du%20standard%20OpenPGP.-->

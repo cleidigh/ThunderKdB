@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE dialog [ <!ENTITY % mainDTD SYSTEM "chrome://findnow/locale/findnow.dtd">
+%mainDTD;
+<!ENTITY % backupDTD SYSTEM "chrome://findnow/locale/autobackup.dtd">
+	%backupDTD;
+	]>
+
+<overlay id="findnow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<?xml-stylesheet href="chrome://findnow/content/findnow.css" type="text/css"?>
+	<script type="application/x-javascript" src="chrome://findnow/content/utils.js"/>
+	<script type="application/x-javascript" src="chrome://findnow/content/findnow.js"/>
+
+	<toolbar id="header-view-toolbar">
+		<toolbarbutton class="toolbarbutton-1 msgHeaderView-button"
+			id="saveToFindnow" image="chrome://messenger/skin/icons/getmsg.svg"
+			label="&LayDown;" oncommand="com_hw_FindNow.exporter.saveTo();"/>
+	</toolbar>
+</overlay>
