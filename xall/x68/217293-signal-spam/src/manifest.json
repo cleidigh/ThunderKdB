@@ -1,28 +1,159 @@
 {
-  "manifest_version": 2,
-  "applications": {
-    "gecko": {
-      "id": "signal-spam@signal-spam.fr",
-      "strict_min_version": "68.0"
-    }
-  },
-  "icons": {
-    "16": "chrome/content/signalspam/logo/16x16.png",
-    "32": "chrome/content/signalspam/logo/32x32.png",
-    "48": "chrome/content/signalspam/logo/48x48.png",
-    "96": "chrome/content/signalspam/logo/96x96.png",
-    "128": "chrome/content/signalspam/logo/128x128.png",
-    "256": "chrome/content/signalspam/logo/256x256.png"
-  },
-  "name": "Signal Spam",
-  "description": "Signal Spam Extension",
-  "version": "3.1.2",
-  "author": "VERIFROM for Signal Spam",
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://signalspam/content/signalspam/settings.xul",
-      "open_in_tab": true
-    }
-  }
+	"manifest_version": 2,
+	"applications": {
+		"gecko": {
+			"id": "signal-spam@signal-spam.fr",
+			"strict_min_version": "77.0"
+		}
+	},
+	"name": "Signal Spam",
+	"author": "VERIFROM for Signal Spam",
+	"description": "__MSG_description__",
+	"version": "4.0.4",
+	"icons": {
+		"16": "logo/16x16.png",
+		"32": "logo/32x32.png",
+		"48": "logo/48x48.png",
+		"96": "logo/96x96.png",
+		"128": "logo/128x128.png",
+		"256": "logo/256x256.png"
+	},
+	"default_locale": "en",
+	"options_ui": {
+		"page": "html/options.html",
+		"open_in_tab": true
+	},
+	"permissions": [
+		"notifications",
+		"messagesRead",
+		"storage",
+		"activeTab",
+		"tabs",
+		"menus",
+		"accountsRead",
+		"messagesMove",
+		"https://*.signal-spam.fr/*"
+	],
+	"experiment_apis": {
+		"notification": {
+			"schema": "experiments/notification/schema.json",
+			"parent": {
+				"scopes": [
+					"addon_parent"
+				],
+				"paths": [
+					[
+						"notification"
+					]
+				],
+				"script": "experiments/notification/notification.js"
+			}
+		},
+		"legacyprefs": {
+			"schema": "experiments/legacyprefs/schema.json",
+			"parent": {
+				"scopes": [
+					"addon_parent"
+				],
+				"paths": [
+					[
+						"legacyprefs"
+					]
+				],
+				"script": "experiments/legacyprefs/legacyprefs.js"
+			}
+		}
+	},
+	"content_security_policy": "script-src 'self' 'sha256-Le3UjCT7ZQcJphS9E7Z53Jlvx8+rC2zKNv2shRMlptk='; object-src 'self'; ",
+	"background": {
+		"scripts": [
+			"js/purify.min.js",
+			"js/xxhash.js",
+			"js/uint64.js",
+			"js/xxhash64.js",
+			"js/URLCanonicalization.js",
+			"js/socket.io.js",
+			"specific/extensionConfig.js",
+			"js/verifrom_api.js",
+			"js/verifrom-localize.js",
+			"background.js"
+		]
+	},
+	"browser_action": {
+		"browser_style": true,
+		"default_icon": "logo/logosignalspam.svg",
+		"default_title": "__MSG_report__",
+		"theme_icons": [
+			{
+				"light": "logo/light-logosignalspam.svg",
+				"dark": "logo/logosignalspam.svg",
+				"size": 16
+			},
+			{
+				"light": "logo/light-logosignalspam.svg",
+				"dark": "logo/logosignalspam.svg",
+				"size": 32
+			}
+		]
+	},
+	"message_display_action": {
+		"browser_style": true,
+		"default_title": "__MSG_report__",
+		"default_icon": "logo/logosignalspam.svg",
+		"theme_icons": [
+			{
+				"light": "logo/light-logosignalspam.svg",
+				"dark": "logo/logosignalspam.svg",
+				"size": 16
+			},
+			{
+				"light": "logo/light-logosignalspam.svg",
+				"dark": "logo/logosignalspam.svg",
+				"size": 32
+			}
+		]
+	},
+	"web_accessible_resources": [
+		"html/empty.html",
+		"html/notAuthentified.html",
+		"html/notAvailable.html",
+		"html/notListening.html",
+		"html/notReady.html",
+		"html/options.html",
+		"html/spinner.html",
+		"img/close.png",
+		"img/spinner.gif",
+		"img/icon25.png",
+		"img/icon32.png",
+		"img/icon48.png",
+		"img/icon65.png",
+		"img/icon96.png",
+		"img/icon128.png",
+		"img/warning.png",
+		"img/Icone-Loupe.gif",
+		"img/VERIFROM-logo-marque-carre-RGB-96x96.png",
+		"img/warning.png",
+		"css/sidebar.css",
+		"specific/js/config.json",
+		"js/jquery-3.2.1.min.js",
+		"locales_signalspam/signalspam-fr.json",
+		"locales_signalspam/signalspam-fr-FR.json",
+		"locales_signalspam/signalspam-en.json",
+		"html/manifests/update-fr.html",
+		"html/manifests/update-en.html",
+		"html/manifests/install-fr.html",
+		"html/manifests/install-en.html",
+		"html/views/multipleReportsSentView.html",
+		"html/views/phishingEmailAlertView.html",
+		"html/views/reportEmailView.html",
+		"html/views/reportMultipleEmailsView.html",
+		"html/views/sendingReportsView.html",
+		"html/views/sendingSingleReportView.html",
+		"html/views/singleReportSentView.html",
+		"html/views/spinnerView.html",
+		"html/views/multipleReportsFailedView.html",
+		"html/views/singleReportFailedView.html",
+		"html/views/updateavailable.html",
+		"html/reminder.html"
+	]
 }

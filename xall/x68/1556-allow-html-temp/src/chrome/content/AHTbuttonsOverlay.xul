@@ -3,58 +3,58 @@
 <?xml-stylesheet href="chrome://allowhtmltemp/skin/aht_buttons.css" type="text/css"?>
 
 <!DOCTYPE overlay [
-	<!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd">
-	%messengerDTD;
-	<!ENTITY % allowhtmltempDTD SYSTEM "chrome://allowhtmltemp/locale/allowhtmltemp.dtd">
-	%allowhtmltempDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd">
+  %messengerDTD;
+  <!ENTITY % allowhtmltempDTD SYSTEM "chrome://allowhtmltemp/locale/allowhtmltemp.dtd">
+  %allowhtmltempDTD;
 ]>
 
 <overlay id="AHTtoolbarbuttonOverlay"
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-	<script type="application/x-javascript" src="chrome://allowhtmltemp/content/AHTfunctions.js"/>
-	<script type="application/x-javascript" src="chrome://allowhtmltemp/content/AHTbuttonsListeners.js"/>
+  <script type="application/x-javascript" src="chrome://allowhtmltemp/content/AHTfunctions.js"/>
+  <script type="application/x-javascript" src="chrome://allowhtmltemp/content/AHTbuttonsListeners.js"/>
 
-	<keyset>
-		<key id="ahtButton-key" 
-			modifiers="accel alt" 
-			keycode="VK_F5" 
-			oncommand="ahtFunctions.AllowHTMLtemp(false, 'keyboard');"/>
-	</keyset>
+  <keyset>
+    <key id="ahtButton-key" 
+        modifiers="accel alt" 
+        keycode="VK_F5" 
+        oncommand="ahtFunctions.AllowHTMLtemp(false, 'keyboard');"/>
+  </keyset>
 
-	<toolbarpalette id="MailToolbarPalette">
-		<toolbarbutton id="AllowHTMLtemp"
-						class="toolbarAHTButton toolbarbutton-1"
-						label="&allowhtmltemp.button.label;"
-						tooltiptext="&allowhtmltemp.button.tooltip;"
-						key="extensions.AHT.key.allowHTMLonce"
-						labelAHT-htmlStatusPlus="&allowhtmltemp.button.label;"
-						labelAHT-htmlStatusOriginal="&allowhtmltemp.button.label;"
-						labelAHT-htmlStatusSanitized="&allowhtmltemp.button.label;"
-						labelAHT-htmlStatusPlaintext="&bodyAsPlaintext.label;"
-						oncommand="ahtFunctions.AllowHTMLtemp(event, 'button');">
-		</toolbarbutton>
-	</toolbarpalette>
+  <toolbarpalette id="MailToolbarPalette">
+    <toolbarbutton id="AllowHTMLtemp"
+        class="toolbarAHTButton toolbarbutton-1"
+        label="&allowhtmltemp.button.label;"
+        tooltiptext="&allowhtmltemp.button.tooltip;"
+        key="extensions.AHT.key.allowHTMLonce"
+        labelAHT-htmlStatusPlus="&allowhtmltemp.button.label;"
+        labelAHT-htmlStatusOriginal="&allowhtmltemp.button.label;"
+        labelAHT-htmlStatusSanitized="&allowhtmltemp.button.label;"
+        labelAHT-htmlStatusPlaintext="&bodyAsPlaintext.label;"
+        oncommand="ahtFunctions.AllowHTMLtemp(event, 'button');">
+    </toolbarbutton>
+  </toolbarpalette>
 
-	<toolbarpalette id="header-view-toolbar-palette">
-		<toolbarbutton id="hdrAHTButton"
-						class="hdrAHTButton toolbarbutton-1 msgHeaderView-button customize-header-toolbar-button"
-						label="&allowhtmltemp.button.label;"
-						tooltiptext="&allowhtmltemp.button.tooltip;"
-						labelAHT-htmlStatusPlus="&allowhtmltemp.button.label;"
-						labelAHT-htmlStatusOriginal="&allowhtmltemp.button.label;"
-						labelAHT-htmlStatusSanitized="&allowhtmltemp.button.label;"
-						labelAHT-htmlStatusPlaintext="&bodyAsPlaintext.label;"
-						oncommand="ahtFunctions.AllowHTMLtemp(event, 'button');RestoreFocusAfterHdrButton();">
-		</toolbarbutton>
-	</toolbarpalette>
+  <toolbarpalette id="header-view-toolbar-palette">
+    <toolbarbutton id="hdrAHTButton"
+        class="hdrAHTButton toolbarbutton-1 msgHeaderView-button customize-header-toolbar-button"
+        label="&allowhtmltemp.button.label;"
+        tooltiptext="&allowhtmltemp.button.tooltip;"
+        labelAHT-htmlStatusPlus="&allowhtmltemp.button.label;"
+        labelAHT-htmlStatusOriginal="&allowhtmltemp.button.label;"
+        labelAHT-htmlStatusSanitized="&allowhtmltemp.button.label;"
+        labelAHT-htmlStatusPlaintext="&bodyAsPlaintext.label;"
+        oncommand="ahtFunctions.AllowHTMLtemp(event, 'button');RestoreFocusAfterHdrButton();">
+    </toolbarbutton>
+  </toolbarpalette>
 
-	<menupopup id="remoteContentOptions">
-	    <menuitem id="aht_remoteContentOptionAllowForMsg"
-	    	insertafter="remoteContentOptionAllowForMsg"
-	        label="&remoteContentOptionsAllowForMsg.label;"
-	        accesskey="&remoteContentOptionsAllowForMsg.accesskey;"
-	        oncommand="ahtFunctions.AllowHTMLtemp(false, 'remoteButton');"
-	        hidden="true"/>
-	</menupopup>
+  <menupopup id="remoteContentOptions">
+    <menuitem id="aht_remoteContentOptionAllowForMsg"
+        insertafter="remoteContentOptionAllowForMsg"
+        label="&remoteContentOptionsAllowForMsg.label;"
+        accesskey="&remoteContentOptionsAllowForMsg.accesskey;"
+        oncommand="ahtFunctions.AllowHTMLtemp(false, 'remoteButton');"
+        hidden="true"/>
+  </menupopup>
 </overlay>

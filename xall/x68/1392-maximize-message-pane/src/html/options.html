@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Maximize Message Pane Options</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="options.css">
+  <script src="../scripts/l10n.js" defer></script>
+  <script src="../scripts/options.js" defer></script>
+</head>
+
+<body class="option-page">
+  <form name="mmp_form">
+    <h3 l10n-tag="mmpOptCommands"></h3>
+    <input type="radio" name="command_opt" id="cmd_max_msg_pane">
+    <label for="cmd_max_msg_pane" l10n-tag="mmpOptMP"></label><br>
+    <input type="radio" name="command_opt" id="cmd_tgl_fld_pane">
+    <label for="cmd_tgl_fld_pane" l10n-tag="mmpOptFP"></label><br>
+    <input type="radio" name="command_opt" id="cmd_tgl_msg_pane">
+    <label for="cmd_tgl_msg_pane" l10n-tag="mmpOptTP"></label><br>
+    
+    <h3 l10n-tag="mmpOptAdditionalCmd"></h3>
+    <input type="checkbox" name="command_add_opt" id="use_splitters">
+    <label for="use_splitters" l10n-tag="mmpOptSplitterCmd"></label><br>
+    <input type="checkbox" name="command_add_opt" id="use_msgheader">
+    <label for="use_msgheader" l10n-tag="mmpOptHdrCmd"></label><br>
+    
+    <h3 l10n-tag="mmpOptComp"></h3>
+    <input type="checkbox" name="col_comp" id="col_folder">
+    <label for="col_folder" l10n-tag="mmpOptCompFP"></label><br>
+    <input type="checkbox" name="col_comp" id="col_header">
+    <label for="col_header" l10n-tag="mmpOptCompHdr"></label><br>
+    <input type="checkbox" name="col_comp" id="col_attach">
+    <label for="col_attach" l10n-tag="mmpOptCompAttach"></label><br>
+    <input type="checkbox" name="col_comp" id="col_ltn">
+    <label for="col_ltn" l10n-tag="mmpOptCompLtn"></label><br>
+    <input type="checkbox" name="col_comp" id="col_other_en">
+    <label for="col_other_en" l10n-tag="mmpOptCompOther"></label>
+    <input type="text" name="col_comp" id="col_other_elems" size="50" l10n-ph-tag="mmpOptCompOtherPH"><br>
+  </form>
+</body>
+
+</html>

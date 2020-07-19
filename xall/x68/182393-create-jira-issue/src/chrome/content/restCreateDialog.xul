@@ -12,8 +12,9 @@
 
 	<script src="restCreateDialog.js"/>
 	<menupopup id="attachmentsContextMenu">
-		<menuitem label="&context.row.rename.label;" oncommand="renameDialog();" />
-		<menuitem label="&context.row.origname.label;" oncommand="originalName();" />
+		<menuitem id="menuitemAttachmentRenameDialog" label="&context.row.rename.label;" />
+		<menuitem id="menuitemAttachmentPrefixFilename" label="&context.row.prefixfilename.label;" />
+		<menuitem id="menuitemAttachmentOriginalName" label="&context.row.origname.label;" />
 	</menupopup>
 	<!-- Page 1; choose project and issuetype -->
 	<wizardpage onpageshow="loadData();" pageid="basedata" id="wiz_page_basedata" description="&wizard.select.project.issuetype;">
@@ -44,20 +45,16 @@
 		</grid>
 		<vbox>
 			<caption label="&dialog.table.attachments.label;" />
-			<listbox seltype="multiple" id="attachmentList" rows="10"
+			<richlistbox seltype="multiple" id="attachmentList" rows="10"
 				width="650" contextmenu="attachmentsContextMenu">
 				<listhead>
-					<listheader label="&dialog.row.id.label;" width="20" />
-					<listheader label="&dialog.row.name.label;" width="200" />
-					<listheader label="&dialog.row.rename.label;" width="200" />
-					<listheader label="&dialog.row.size.label;" width="100" />
-					<listheader label="&dialog.row.mime.label;" width="150" />
+					<label class="header" flex="1" value="&dialog.row.id.label;" width="20" />
+					<label class="header" flex="1" value="&dialog.row.name.label;" width="200" />
+					<label class="header" flex="1" value="&dialog.row.rename.label;" width="200" />
+					<label class="header" flex="1" value="&dialog.row.size.label;" width="100" />
+					<label class="header" flex="1" value="&dialog.row.mime.label;" width="150" />
 				</listhead>
-				<listcols>
-					<listcol />
-					<listcol flex="1" />
-				</listcols>
-			</listbox>
+			</richlistbox>
 			<hbox>
 				<spacer flex="1"/>
 				<button label="&wizard.attachments.reload;" oncommand="_showAttachments();" class="reload"/>

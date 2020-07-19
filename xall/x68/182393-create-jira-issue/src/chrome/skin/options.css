@@ -1,11 +1,29 @@
-treechildren::-moz-tree-checkbox { list-style-image: none; }
+treechildren#searchresultstreechildren::-moz-tree-checkbox { list-style-image: none; }
 /* gif taken from seamonkey/thunderbird */
-treechildren::-moz-tree-checkbox(checked){ list-style-image: url("chrome://createjiraissue/skin/cbox-check.gif"); }
-treechildren::-moz-tree-row(selected) { background-color: #FFFFAA; }
-treechildren::-moz-tree-row(odd) { background-color: #EEEEEE; }
-treechildren::-moz-tree-row(odd, selected) { background-color: #FFFFAA; }
-treechildren::-moz-tree-cell-text(selected) { color: #000000; }
-treechildren::-moz-tree-cell-text(odd, selected) { color: #000000; }
+treechildren#searchresultstreechildren::-moz-tree-checkbox(checked){ list-style-image: url("chrome://createjiraissue/skin/cbox-check.gif"); }
+treechildren#searchresultstreechildren::-moz-tree-row(selected) { background-color: #FFFFAA; }
+treechildren#searchresultstreechildren::-moz-tree-row(odd) { background-color: #EEEEEE; }
+treechildren#searchresultstreechildren::-moz-tree-row(odd, selected) { background-color: #FFFFAA; }
+treechildren#searchresultstreechildren::-moz-tree-cell-text(selected) { color: #000000; }
+treechildren#searchresultstreechildren::-moz-tree-cell-text(odd, selected) { color: #000000; }
+
+treechildren#selectedissuetreechildren::-moz-tree-checkbox { list-style-image: none; }
+/* gif taken from seamonkey/thunderbird */
+treechildren#selectedissuetreechildren::-moz-tree-checkbox(checked){ list-style-image: url("chrome://createjiraissue/skin/cbox-check.gif"); }
+treechildren#selectedissuetreechildren::-moz-tree-row(selected) { background-color: #FFFFAA; }
+treechildren#selectedissuetreechildren::-moz-tree-row(odd) { background-color: #EEEEEE; }
+treechildren#selectedissuetreechildren::-moz-tree-row(odd, selected) { background-color: #FFFFAA; }
+treechildren#selectedissuetreechildren::-moz-tree-cell-text(selected) { color: #000000; }
+treechildren#selectedissuetreechildren::-moz-tree-cell-text(odd, selected) { color: #000000; }
+
+treechildren#ldapaddressbook::-moz-tree-checkbox { list-style-image: none; }
+/* gif taken from seamonkey/thunderbird */
+treechildren#ldapaddressbook::-moz-tree-checkbox(checked){ list-style-image: url("chrome://createjiraissue/skin/cbox-check.gif"); }
+treechildren#ldapaddressbook::-moz-tree-row(selected) { background-color: #FFFFAA; }
+treechildren#ldapaddressbook::-moz-tree-row(odd) { background-color: #EEEEEE; }
+treechildren#ldapaddressbook::-moz-tree-row(odd, selected) { background-color: #FFFFAA; }
+treechildren#ldapaddressbook::-moz-tree-cell-text(selected) { color: #000000; }
+treechildren#ldapaddressbook::-moz-tree-cell-text(odd, selected) { color: #000000; }
 .sync-jira { list-style-image: url("chrome://createjiraissue/skin/Sync.png"); }
 .test-jira { list-style-image: url("chrome://createjiraissue/skin/Refresh.png"); }
 .list-new { list-style-image: url("chrome://createjiraissue/skin/New.png"); }

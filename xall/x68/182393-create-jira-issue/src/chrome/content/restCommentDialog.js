@@ -34,6 +34,18 @@ var jql = "";
 var timerid;
 var strbundle = Services.strings.createBundle("chrome://createjiraissue/locale/createjiraissue.properties");
 var renameAttachmentId = null;
+// EPOQ CHANGES START
+var contactEmails = [];
+var lastSearchFn = null;
+Components.utils.import("chrome://createjiraissue/content/epoq/request-fixes.js");
+Components.utils.import("chrome://createjiraissue/content/epoq/htmltable2jiratext.js");
+
+function getOrigHdr(origURI) {
+	var msgHdr = getMessenger().messageServiceFromURI(origURI)
+			.messageURIToMsgHdr(origURI);
+	return msgHdr;
+}
+// EPOQ CHANGES END
 
 function showHelp() {
 	openUrl("https://documentation.catworkx.com/x/I4BiAQ");
@@ -91,6 +103,10 @@ function setupInitialParameters() {
 		}
 	}
 
+	// EPOQ CHANGES START
+  initHideClosedCheckbox();
+	// EPOQ CHANGES END
+
 	var extra1 = document.getElementById('commentWizard').getButton("extra1");
 	extra1.setAttribute("hidden",false);
 	extra1.setAttribute("icon","help");
@@ -98,7 +114,7 @@ function setupInitialParameters() {
 	extra1.addEventListener('command', showHelp, true);
 
 	var next = document.getElementById('commentWizard').getButton("next");
-	next.default = false; 
+	next.default = false;
 	next.setAttribute("default", false);
 
 	initDone = true;
@@ -127,6 +143,9 @@ function loadFilters() {
 	var menuList = document.getElementById("jirafilterlist");
 	menuList.setAttribute("wait-cursor", "true");
 	xmlhttp.open("GET", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader("Authorization", "Basic " + credentials);
 	xmlhttp.send(null);
 	xmlhttp.onreadystatechange = function() {
@@ -186,6 +205,9 @@ function searchByFilter() {
 }
 
 function jqlSearch() {
+	// EPOQ CHANGES START
+	lastSearchFn = jqlSearch;
+	// EPOQ CHANGES END
 	var field = document.getElementById("jqlField");
 	jql = field.value;
 	// consoleService.logStringMessage("jqlSearch: jql " + jql);
@@ -193,6 +215,9 @@ function jqlSearch() {
 }
 
 function fulltextSearch() {
+	// EPOQ CHANGES START
+	lastSearchFn = fulltextSearch;
+	// EPOQ CHANGES END
 	var field = document.getElementById("fulltextField");
 	var value = field.value;
 	jql = 'text ~ "' + value + '"';
@@ -204,6 +229,9 @@ function fulltextSearch() {
 }
 
 function issuekeySearch() {
+	// EPOQ CHANGES START
+	lastSearchFn = issuekeySearch;
+	// EPOQ CHANGES END
 	var field = document.getElementById("issuekeyField");
 	var value = field.value;
 	jql = 'issuekey = ' + value;
@@ -215,9 +243,16 @@ function issuekeySearch() {
 }
 
 function historySearch() {
+	// EPOQ CHANGES START
+	lastSearchFn = historySearch;
+	// EPOQ CHANGES END
 	try {
 		var lastissues = _cleanupHistoryIssues();
 		prefs.setCharPref("lastissues", lastissues);
+		// EPOQ CHANGES START
+		// TODO: Find cause of this. Empty issue key was added?
+		lastissues = lastissues.replace(/,$/, '');
+		// EPOQ CHANGES END
 		if (lastissues != null && lastissues != "" && lastissues != ",") {
 			jql = "issuekey in (" + lastissues + ")";
 			var jqlField = document.getElementById("jqlField");
@@ -260,6 +295,14 @@ function _cleanupHistoryIssues() {
 }
 
 function _search(hideError) {
+	// EPOQ CHANGES START
+	var jqlField = document.getElementById("jqlField");
+	if(prefs.prefHasUserValue('hideclosedissues') && prefs.getBoolPref('hideclosedissues')) {
+		jql = 'status != closed AND status != resolved AND status != completed AND status != accepted AND status != done AND ' + jql;
+		jqlField.setAttribute("value", jql);
+		jqlField.value = jql;
+	}
+	// EPOQ CHANGES END
 	//consoleService.logStringMessage("_search: jql " + jql);
 	if ( jql == undefined || jql == null || jql == "" || jql == "issuekey = ") {
 		return;
@@ -455,42 +498,57 @@ function loadFields() {
 function removeAllItems(myListBox){
     var count = myListBox.itemCount;
     while(count-- > 0){
-        myListBox.removeItemAt(0);
+			//EPOQ CHANGE START
+        myListBox.getItemAtIndex(0).remove();
+			//EPOQ CHANGE END
     }
 }
 
 function _showAttachments(){
 	// var attachments = window.arguments[0].attachments;
 	var attachments = window.opener.createjiraissue.attachments;
-	//consoleService.logStringMessage("[_showAttachments]: attachments: " + attachments);
+	consoleService.logStringMessage("[_showAttachments]: attachments: " + attachments);
 	var theList = document.getElementById('attachmentList');
 	removeAllItems(theList);
-
+	//EPOQ CHANGE START
 	try {
 		if ( attachments ) {
 			for (var i = 0; i < attachments.length; i++) {
-		        var row = document.createElement('listitem');
+		        //var row = document.createElement('listitem');
+				var row = document.createElement('richlistitem');
 		        row.setAttribute("id","attachmentId_"+i);
 
-		        var cell = document.createElement('listcell');
-		        cell.setAttribute('label', i);
+		        var cell = document.createElement('label');
+		        cell.setAttribute('value', i);
+		        cell.setAttribute('width', 20);
+		        cell.setAttribute('flex', 1);
+		        cell.setAttribute("id","attachmentOrig_"+i);
 		        row.appendChild(cell);
 
-		        cell = document.createElement('listcell');
-		        cell.setAttribute('label', attachments[i].name );
+		        cell = document.createElement('label');
+		        cell.setAttribute('value', attachments[i].name );
+		        cell.setAttribute('width', 200);
+		        cell.setAttribute('flex', 1);
+		        cell.setAttribute("id","attachmentNew_"+i);
 		        row.appendChild(cell);
 
 		        // rename cell
-		        cell = document.createElement('listcell');
-		        cell.setAttribute('label', attachments[i].name );
+		        cell = document.createElement('label');
+		        cell.setAttribute('value', attachments[i].name );
+		        cell.setAttribute('width', 200);
+		        cell.setAttribute('flex', 1);
 		        row.appendChild(cell);
 
-		        cell = document.createElement('listcell');
-		        cell.setAttribute('label', attachments[i].size );
+		        cell = document.createElement('label');
+		        cell.setAttribute('value', attachments[i].size );
+		        cell.setAttribute('width', 100);
+		        cell.setAttribute('flex', 1);
 		        row.appendChild(cell);
 
-		        cell = document.createElement('listcell');
-		        cell.setAttribute('label', attachments[i].contentType );
+		        cell = document.createElement('label');
+		        cell.setAttribute('value', attachments[i].contentType );
+		        cell.setAttribute('width', 150);
+		        cell.setAttribute('flex', 1);
 		        row.appendChild(cell);
 
 		        theList.appendChild(row);
@@ -498,35 +556,71 @@ function _showAttachments(){
 			var menu = document.getElementById('attachmentsContextMenu');
 			menu.addEventListener("popupshowing", function(event) {
 				var target = event.target.triggerNode;
-				while (target && target.localName != "listitem")
+				while (target && target.localName != "richlistitem")
 					target = target.parentNode;
 				if (!target)
 					return event.preventDefault(); // Don't show context menu without a list item
 				renameAttachmentId = target.getAttribute("id");
-				//consoleService.logStringMessage("[_showAttachments][popupshowing]: id " + renameAttachmentId);
+				consoleService.logStringMessage("[_showAttachments][popupshowing]: id " + renameAttachmentId);
 			}, false);
 		}
 	} catch (e) {
 		alert(e);
 	}
+	var menuitem = document.getElementById('menuitemAttachmentRenameDialog');
+	menuitem.addEventListener("click", renameDialog);
+	menuitem = document.getElementById('menuitemAttachmentPrefixFilename');
+	menuitem.addEventListener("click", prefixFilename);
+	menuitem = document.getElementById('menuitemAttachmentOriginalName');
+	menuitem.addEventListener("click", originalName);
 }
-
+//EPOQ CHANGE END
 
 function renameDialog(event){
-	//consoleService.logStringMessage("[renameDialog]: start, renameAttachmentId = " + renameAttachmentId);
+	event.preventDefault();
+	consoleService.logStringMessage("[renameDialog]: start, renameAttachmentId = " + renameAttachmentId);
 	if ( renameAttachmentId != null ) {
 		var row = document.getElementById(renameAttachmentId);
-		//consoleService.logStringMessage("[originalName]: row: " + row);
+		consoleService.logStringMessage("[renameDialog]: row: " + row);
 		if ( row.hasChildNodes() ){
-			var children = row.getElementsByTagName("listcell");
-			//consoleService.logStringMessage("[originalName]: children: " + children);
-			if ( children && children.length > 3 ) {
-				var value = children[2].getAttribute('label');
-				//consoleService.logStringMessage("[originalName]: value: " + value);
+			var children = row.getElementsByTagName("label");
+			consoleService.logStringMessage("[renameDialog]: children: " + children);
+			consoleService.logStringMessage("[renameDialog]: children.length: " + children.length);
+			if ( children && children.length >= 3 ) {
+				var value = children[2].getAttribute('value');
+				consoleService.logStringMessage("[renameDialog]: value: " + value);
 				var response = prompt(strbundle.GetStringFromName("wizard.button.reload.projects"), value);
-				//consoleService.logStringMessage("[originalName]: response: " + response);
+				consoleService.logStringMessage("[renameDialog]: response: " + response);
 				if ( response ) {
-					children[2].setAttribute('label', response);
+					consoleService.logStringMessage("[prefixFilename]: value: " + children[2].getAttribute('value'));
+					children[2].setAttribute('value', response);
+					consoleService.logStringMessage("[prefixFilename]: value: " + children[2].getAttribute('value'));
+				}
+			}
+		}
+	}
+}
+
+function prefixFilename(event){
+	event.preventDefault();
+	consoleService.logStringMessage("[prefixFilename]: start, renameAttachmentId = " + renameAttachmentId);
+	if ( renameAttachmentId != null ) {
+		var row = document.getElementById(renameAttachmentId);
+		consoleService.logStringMessage("[prefixFilename]: row: " + row);
+		if ( row.hasChildNodes() ){
+			var children = row.getElementsByTagName("label");
+			consoleService.logStringMessage("[prefixFilename]: children: " + children);
+			consoleService.logStringMessage("[renameDialog]: children.length: " + children.length);
+			if ( children && children.length >= 3 ) {
+				var value = children[2].getAttribute('value');
+				consoleService.logStringMessage("[prefixFilename]: value: " + value);
+				var today = new Date();
+				var response = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate() + '-' + today.getHours() + ":" + today.getMinutes() + '-' + value;
+				consoleService.logStringMessage("[prefixFilename]: response: " + response);
+				if ( response ) {
+					consoleService.logStringMessage("[prefixFilename]: value: " + children[2].getAttribute('value'));
+					children[2].setAttribute('value', response);
+					consoleService.logStringMessage("[prefixFilename]: value: " + children[2].getAttribute('value'));
 				}
 			}
 		}
@@ -534,15 +628,17 @@ function renameDialog(event){
 }
 
 function originalName(event){
-	//consoleService.logStringMessage("[originalName]: start, renameAttachmentId = " + renameAttachmentId);
+	event.preventDefault();
+	consoleService.logStringMessage("[originalName]: start, renameAttachmentId = " + renameAttachmentId);
 	if ( renameAttachmentId != null ) {
 		var row = document.getElementById(renameAttachmentId);
-		//consoleService.logStringMessage("[originalName]: row: " + row);
+		consoleService.logStringMessage("[originalName]: row: " + row);
 		if ( row.hasChildNodes() ){
-			var children = row.getElementsByTagName("listcell");
-			//consoleService.logStringMessage("[originalName]: children: " + children);
-			if ( children && children.length > 3 ) {
-				children[2].setAttribute('label', children[1].getAttribute('label'));
+			var children = row.getElementsByTagName("label");
+			consoleService.logStringMessage("[originalName]: children: " + children);
+			consoleService.logStringMessage("[originalName]: children.length: " + children.length);
+			if ( children && children.length >= 3 ) {
+				children[2].setAttribute('value', children[1].getAttribute('value'));
 			}
 		}
 	}
@@ -552,6 +648,9 @@ function _addRoles2Visibilty() {
 	var xmlhttp = new XMLHttpRequest();
 	var url = jiraurl + "/rest/api/2/project/" + selectedProjectKey + "/role";
 	xmlhttp.open("GET", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader("Authorization", "Basic " + credentials);
 	try {
 		xmlhttp.send(null);
@@ -613,6 +712,9 @@ function _addGroups2Visibilty() {
 	var xmlhttp = new XMLHttpRequest();
 	var url = jiraurl + "/rest/api/latest/groups/picker";
 	xmlhttp.open("GET", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader("Authorization", "Basic " + credentials);
 	try {
 		xmlhttp.send(null);
@@ -712,6 +814,9 @@ function createComment() {
 	// consoleService.logStringMessage("createComment url " + url + " text " +
 	// text);
 	xmlhttp.open("POST", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader("Authorization", "Basic " + credentials);
 	xmlhttp.setRequestHeader('Content-Type', 'application/json');
 	xmlhttp.setRequestHeader("User-Agent","");
@@ -853,7 +958,18 @@ function openUrl(url) {
 
 function openIssue(key){
 	var url = window.arguments[0].jiraurl + "/browse/" + key;
-	openUrl(url);
+	//EPOQ CHANGE START
+  //openUrl(url);
+  let uri = url;
+  if (!(uri instanceof Components.interfaces.nsIURI))
+    uri = Components.classes["@mozilla.org/network/io-service;1"]
+                    .getService(Components.interfaces.nsIIOService)
+                    .newURI(url, null, null);
+
+  Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+            .getService(Components.interfaces.nsIExternalProtocolService)
+            .loadURI(uri);
+  //EPOQ CHANGE END
 }
 
 function respondMail(key){
@@ -917,15 +1033,14 @@ function attachFiles(issueKey) {
 	if ( selectedAttachments && selectedAttachments.length > 0 ) {
 		var i, item;
 		var max = selectedAttachments.length;
+		//EPOQ CHANGE START
 		for (i=0;i<max;i++){
 			item = selectedAttachments[i];
-			//alert("item " + item);
-			//alert("hasChildNodes " + item.hasChildNodes());
-			var cells = item.getElementsByTagName("listcell");
-			//alert("cells " + cells);
-			selectedIds.push(cells[0].getAttribute("label"));
-			names.push(cells[2].getAttribute("label"));
-			mimeTypes.push(cells[4].getAttribute("label"));
+			var cells = item.getElementsByTagName("label");
+			selectedIds.push(cells[0].getAttribute("value"));
+			names.push(cells[2].getAttribute("value"));
+			mimeTypes.push(cells[4].getAttribute("value"));
+			//EPOQ CHANGE END
 			/*
                      if ( cells ) {
                              var j, cell;
@@ -967,6 +1082,41 @@ function attachFiles(issueKey) {
 	}
 	return;
 }
+
+// EPOQ CHANGES START
+function initHideClosedCheckbox() {
+	if(prefs.prefHasUserValue('hideclosedissues')) {
+		document.getElementById("hide-closed-issues").checked = prefs.getBoolPref('hideclosedissues');
+	}
+}
+
+function initTable2JiraCheckbox() {
+  if(prefs.prefHasUserValue('table2jira')) {
+    document.getElementById("table-2-jira").checked = prefs.getBoolPref('table2jira');
+  }
+}
+
+function onHideClosedChanged(ele) {
+	prefs.setBoolPref('hideclosedissues', ele.checked);
+	if(lastSearchFn != null) {
+		lastSearchFn();
+	} else {
+		LOG("lastSearchFn is null");
+	}
+}
+function onTable2JiraChanged(ele) {
+  prefs.setBoolPref('table2jira', ele.checked);
+  //console.log("###click");
+  //console.log(prefs.getBoolPref("table2jira"));
+  if (prefs.getBoolPref("table2jira")) {
+  document.getElementById("fld_comment").value = window.arguments[0].issueDescriptionJiraTable;
+	//console.log("true");
+  } else {
+  document.getElementById("fld_comment").value = window.arguments[0].issueDescription;
+	//console.log("false");
+};
+}
+// EPOQ CHANGES END
 
 function initWizard() {
 //	consoleService.logStringMessage("initWizard: start");

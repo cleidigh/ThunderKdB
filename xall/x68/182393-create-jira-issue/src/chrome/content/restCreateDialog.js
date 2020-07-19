@@ -39,6 +39,16 @@ var currentTempoAccountField = null;
 var currentTempoAccountID = null;
 var strbundle = Services.strings.createBundle("chrome://createjiraissue/locale/createjiraissue.properties");
 
+// EPOQ CHANGES START
+Components.utils.import("chrome://createjiraissue/content/epoq/request-fixes.js");
+
+function getOrigHdr(origURI) {
+	var msgHdr = getMessenger().messageServiceFromURI(origURI)
+			.messageURIToMsgHdr(origURI);
+	return msgHdr;
+}
+// EPOQ CHANGES END
+
 function resetIssueTypes(){
 	var menuList = document.getElementById("jiraissuetypemenulist");
 	menuList.setAttribute("disabled","true");
@@ -112,9 +122,9 @@ function loadData(){
 	extra2.addEventListener('command', showHelp, true);
 
 	var next = document.getElementById('createWizard').getButton("next");
-	next.default = false; 
+	next.default = false;
 	next.setAttribute("default", false);
-	
+
 	if ( doResetProjects == false ) {
 		selectionChanged();
 		return;
@@ -143,6 +153,9 @@ function loadProjects(){
 	var url = jiraurl + "/rest/api/latest/project";
 	var credentials = btoa(username + ":" + password);
 	xmlhttp.open("GET", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader("Authorization","Basic " + credentials);
 	xmlhttp.send(null);
 	xmlhttp.onreadystatechange = function() {
@@ -240,6 +253,9 @@ function loadIssueTypes(){
 	var url = jiraurl + "/rest/api/latest/project/" + projectKey + "?expand";
 	var credentials = btoa(username + ":" + password);
 	xmlhttp.open("GET", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader("Authorization","Basic " + credentials);
 	xmlhttp.send(null);
 	xmlhttp.onreadystatechange = function() {
@@ -257,7 +273,10 @@ function loadIssueTypes(){
 					tempItem.setAttribute("label", "");
 					tempItem.setAttribute("value", -1);
 					tempItem.selected = true;
-					issuetypeMenu.appendChild(tempItem);
+					// EPOQ CHANGES START
+					// No empty selection!
+					//issuetypeMenu.appendChild(tempItem);
+					// EPOQ CHANGES END
 					for (var i = 0; i < issueTypes.length; i++) {
 						var issueType = issueTypes[i];
 						tempItem = document.createElement("menuitem");
@@ -493,6 +512,9 @@ function loadFields(){
 	// FIXME: move into _getCreatemeta() and add trigger for _getTempoaAccountFields
 	var credentials = btoa(username + ":" + password);
 	xmlhttp.open("GET", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader("Authorization","Basic " + credentials);
 	xmlhttp.send(null);
 	xmlhttp.onreadystatechange = function() {
@@ -593,42 +615,57 @@ function loadFields(){
 function removeAllItems(myListBox){
     var count = myListBox.itemCount;
     while(count-- > 0){
-        myListBox.removeItemAt(0);
+			//EPOQ CHANGE START
+        myListBox.getItemAtIndex(0).remove();
+			//EPOQ CHANGE END
     }
 }
 
 function _showAttachments(){
 	// var attachments = window.arguments[0].attachments;
 	var attachments = window.opener.createjiraissue.attachments;
-	//consoleService.logStringMessage("[_showAttachments]: attachments: " + attachments);
+	consoleService.logStringMessage("[_showAttachments]: attachments: " + attachments);
 	var theList = document.getElementById('attachmentList');
 	removeAllItems(theList);
-
+	//EPOQ CHANGE START
 	try {
 		if ( attachments ) {
 			for (var i = 0; i < attachments.length; i++) {
-		        var row = document.createElement('listitem');
+		        //var row = document.createElement('listitem');
+				var row = document.createElement('richlistitem');
 		        row.setAttribute("id","attachmentId_"+i);
 
-		        var cell = document.createElement('listcell');
-		        cell.setAttribute('label', i);
+		        var cell = document.createElement('label');
+		        cell.setAttribute('value', i);
+		        cell.setAttribute('width', 20);
+		        cell.setAttribute('flex', 1);
+		        cell.setAttribute("id","attachmentOrig_"+i);
 		        row.appendChild(cell);
 
-		        cell = document.createElement('listcell');
-		        cell.setAttribute('label', attachments[i].name );
+		        cell = document.createElement('label');
+		        cell.setAttribute('value', attachments[i].name );
+		        cell.setAttribute('width', 200);
+		        cell.setAttribute('flex', 1);
+		        cell.setAttribute("id","attachmentNew_"+i);
 		        row.appendChild(cell);
 
 		        // rename cell
-		        cell = document.createElement('listcell');
-		        cell.setAttribute('label', attachments[i].name );
+		        cell = document.createElement('label');
+		        cell.setAttribute('value', attachments[i].name );
+		        cell.setAttribute('width', 200);
+		        cell.setAttribute('flex', 1);
 		        row.appendChild(cell);
 
-		        cell = document.createElement('listcell');
-		        cell.setAttribute('label', attachments[i].size );
+		        cell = document.createElement('label');
+		        cell.setAttribute('value', attachments[i].size );
+		        cell.setAttribute('width', 100);
+		        cell.setAttribute('flex', 1);
 		        row.appendChild(cell);
 
-		        cell = document.createElement('listcell');
-		        cell.setAttribute('label', attachments[i].contentType );
+		        cell = document.createElement('label');
+		        cell.setAttribute('value', attachments[i].contentType );
+		        cell.setAttribute('width', 150);
+		        cell.setAttribute('flex', 1);
 		        row.appendChild(cell);
 
 		        theList.appendChild(row);
@@ -636,34 +673,71 @@ function _showAttachments(){
 			var menu = document.getElementById('attachmentsContextMenu');
 			menu.addEventListener("popupshowing", function(event) {
 				var target = event.target.triggerNode;
-				while (target && target.localName != "listitem")
+				while (target && target.localName != "richlistitem")
 					target = target.parentNode;
 				if (!target)
 					return event.preventDefault(); // Don't show context menu without a list item
 				renameAttachmentId = target.getAttribute("id");
-				//consoleService.logStringMessage("[_showAttachments][popupshowing]: id " + renameAttachmentId);
+				consoleService.logStringMessage("[_showAttachments][popupshowing]: id " + renameAttachmentId);
 			}, false);
 		}
 	} catch (e) {
 		alert(e);
 	}
+	var menuitem = document.getElementById('menuitemAttachmentRenameDialog');
+	menuitem.addEventListener("click", renameDialog);
+	menuitem = document.getElementById('menuitemAttachmentPrefixFilename');
+	menuitem.addEventListener("click", prefixFilename);
+	menuitem = document.getElementById('menuitemAttachmentOriginalName');
+	menuitem.addEventListener("click", originalName);
 }
+//EPOQ CHANGE END
 
 function renameDialog(event){
-	//consoleService.logStringMessage("[renameDialog]: start, renameAttachmentId = " + renameAttachmentId);
+	event.preventDefault();
+	consoleService.logStringMessage("[renameDialog]: start, renameAttachmentId = " + renameAttachmentId);
 	if ( renameAttachmentId != null ) {
 		var row = document.getElementById(renameAttachmentId);
-		//consoleService.logStringMessage("[originalName]: row: " + row);
+		consoleService.logStringMessage("[renameDialog]: row: " + row);
 		if ( row.hasChildNodes() ){
-			var children = row.getElementsByTagName("listcell");
-			//consoleService.logStringMessage("[originalName]: children: " + children);
-			if ( children && children.length > 3 ) {
-				var value = children[2].getAttribute('label');
-				//consoleService.logStringMessage("[originalName]: value: " + value);
+			var children = row.getElementsByTagName("label");
+			consoleService.logStringMessage("[renameDialog]: children: " + children);
+			consoleService.logStringMessage("[renameDialog]: children.length: " + children.length);
+			if ( children && children.length >= 3 ) {
+				var value = children[2].getAttribute('value');
+				consoleService.logStringMessage("[renameDialog]: value: " + value);
 				var response = prompt(strbundle.GetStringFromName("wizard.button.reload.projects"), value);
-				//consoleService.logStringMessage("[originalName]: response: " + response);
+				consoleService.logStringMessage("[renameDialog]: response: " + response);
 				if ( response ) {
-					children[2].setAttribute('label', response);
+					consoleService.logStringMessage("[prefixFilename]: value: " + children[2].getAttribute('value'));
+					children[2].setAttribute('value', response);
+					consoleService.logStringMessage("[prefixFilename]: value: " + children[2].getAttribute('value'));
+				}
+			}
+		}
+	}
+}
+
+function prefixFilename(event){
+	event.preventDefault();
+	consoleService.logStringMessage("[prefixFilename]: start, renameAttachmentId = " + renameAttachmentId);
+	if ( renameAttachmentId != null ) {
+		var row = document.getElementById(renameAttachmentId);
+		consoleService.logStringMessage("[prefixFilename]: row: " + row);
+		if ( row.hasChildNodes() ){
+			var children = row.getElementsByTagName("label");
+			consoleService.logStringMessage("[prefixFilename]: children: " + children);
+			consoleService.logStringMessage("[renameDialog]: children.length: " + children.length);
+			if ( children && children.length >= 3 ) {
+				var value = children[2].getAttribute('value');
+				consoleService.logStringMessage("[prefixFilename]: value: " + value);
+				var today = new Date();
+				var response = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate() + '-' + today.getHours() + ":" + today.getMinutes() + '-' + value;
+				consoleService.logStringMessage("[prefixFilename]: response: " + response);
+				if ( response ) {
+					consoleService.logStringMessage("[prefixFilename]: value: " + children[2].getAttribute('value'));
+					children[2].setAttribute('value', response);
+					consoleService.logStringMessage("[prefixFilename]: value: " + children[2].getAttribute('value'));
 				}
 			}
 		}
@@ -671,15 +745,17 @@ function renameDialog(event){
 }
 
 function originalName(event){
-	//consoleService.logStringMessage("[originalName]: start, renameAttachmentId = " + renameAttachmentId);
+	event.preventDefault();
+	consoleService.logStringMessage("[originalName]: start, renameAttachmentId = " + renameAttachmentId);
 	if ( renameAttachmentId != null ) {
 		var row = document.getElementById(renameAttachmentId);
-		//consoleService.logStringMessage("[originalName]: row: " + row);
+		consoleService.logStringMessage("[originalName]: row: " + row);
 		if ( row.hasChildNodes() ){
-			var children = row.getElementsByTagName("listcell");
-			//consoleService.logStringMessage("[originalName]: children: " + children);
-			if ( children && children.length > 3 ) {
-				children[2].setAttribute('label', children[1].getAttribute('label'));
+			var children = row.getElementsByTagName("label");
+			consoleService.logStringMessage("[originalName]: children: " + children);
+			consoleService.logStringMessage("[originalName]: children.length: " + children.length);
+			if ( children && children.length >= 3 ) {
+				children[2].setAttribute('value', children[1].getAttribute('value'));
 			}
 		}
 	}
@@ -747,9 +823,9 @@ function issueFieldsChanged(){
 			for (i = 0; i < requiredSelections.length; i++) {
 				id = requiredSelections[i];
 				element = document.getElementById(id);
-				item = element.selectedItem;
+				var item = element.selectedItem;
 				if (item != null) {
-					var value = item.value;
+					value = item.value;
 					//consoleService.logStringMessage("required field " + id + " is set to " + value);
 					if (value == null || value == "") {
 						canAdvance = false;
@@ -773,6 +849,7 @@ function issueFieldsChanged(){
 function submitFields(){
 //	consoleService.logStringMessage("submitFields called: json " + json);
 	json.fields = new Object();
+	json.update = new Object();
 //	consoleService.logStringMessage("submitFields called: json.fields " + json.fields);
 //	consoleService.logStringMessage("submitFields allFields ");
 //	consoleService.logStringMessage(JSON.stringify(allFields, null, 4));
@@ -824,10 +901,10 @@ function submitFields(){
 					field = createmeta["projects"][0]["issuetypes"][0]["fields"][id]; // FIXME: we accidentially re-use this "field" refer to line 755
 					type = _saveAccess(field.schema, "type");
 					//consoleService.logStringMessage("submitFields allFields field.id: " + name + "\nfield.type: " + type);
-					if (name == "project" || name == "issuetype" || name == "reporter" || name == "assignee" || (name == "parent" && type == "issuelink" && _saveAccess(field.schema, "system") == "parent")) {
+					if (name == "project" || name == "issuetype" || name == "reporter" || name == "assignee" || _saveAccess(field.schema, "custom") == "com.atlassian.jira.plugin.system.customfieldtypes:userpicker" || (name == "parent" && type == "issuelink" && _saveAccess(field.schema, "system") == "parent")) {
 						var origVal = value;
 						value = new Object();
-						value.name = new String(origVal).toUpperCase(); // ensure only uppercase letters (default for JIRA)
+						value.name = new String(origVal).toUpperCase(); // ensure only uppercase letters (default for Jira)
 						if (name == "project") {
 							value.id = projectId;
 						} else if (name == "issuetype") {
@@ -844,7 +921,15 @@ function submitFields(){
 						value = value.toString();
 						//consoleService.logStringMessage("submitFields string repr:" + value);
 						//value = value.replace(".",prefs.getCharPref("decimalsep"));
-						value = new Number(value);
+						try {
+							if ( _saveAccess(field.schema, "custom") == "com.atlassian.jira.plugin.system.customfieldtypes:float" ) {
+								value = Number.parseFloat(value);
+							} else {
+								value = Number.parseInt(value);
+							}
+						} catch (e) {
+							value = new Number(value); // fallback
+						}
 						//consoleService.logStringMessage("submitFields number repr:" + value);
 					} else if ((_saveAccess(field.schema, "custom") == "is.origo.jira.tempo-plugin:billingKeys") || (type == "account" && _saveAccess(field.schema, "custom") == "com.tempoplugin.tempo-accounts:accounts.customfield")) {
 						//consoleService.logStringMessage("submitFields fieldObj.selectedItem:" + fieldObj.selectedItem);
@@ -856,10 +941,20 @@ function submitFields(){
 						value = value.toString();
 						//consoleService.logStringMessage("submitFields tempo string repr:" + value);
 						//value = value.replace(".",prefs.getCharPref("decimalsep"));
-						value = new Number(value);
+						try {
+							value = Number.parseInt(value);
+						} catch (e) {
+							value = new Number(value); // fallback
+						}
 						currentTempoAccountField = name;
 						currentTempoAccountID = value;
 						//consoleService.logStringMessage("submitFields tempo number repr:" + value);
+						// '{"update":{"'+currentTempoAccountField+'":[{"set":"'+currentTempoAccountID+'"}]}}'
+						json.update[name] = new Array();
+						var updateData = new Object();
+						updateData['set'] = value.toString();
+						json.update[id].push(updateData);
+						value = null; // ensure only the update object is filled
 					} else if (name == "description") {
 						field = document.getElementById("_pfx_" + id);
 						value = field.value;
@@ -994,6 +1089,9 @@ function createIssue(){
 	var url = jiraurl + "/rest/api/latest/issue";
 	var credentials = btoa(username + ":" + password);
 	xmlhttp.open("POST", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader('Content-Type', 'application/json');
 	xmlhttp.setRequestHeader("Authorization","Basic " + credentials);
 	xmlhttp.setRequestHeader("User-Agent","");
@@ -1248,7 +1346,9 @@ function _getUserField(field, key, type, username, startTyping) {
 	// field.autoCompleteUrl => /rest/api/latest/user/search?username=...
 	if ( key == "reporter" ) {
 		//consoleService.logStringMessage("key " + key + " username " + username);
-		tempField.setAttribute("value",username);
+//EPOQ CHANGE START
+		tempField.setAttribute("value",username.substring(0, username.lastIndexOf("@")));
+//EPOQ CHANGE END
 	}
 	return tempField;
 }
@@ -1424,7 +1524,18 @@ function openUrl(url) {
 
 function openIssue(key){
 	var url = window.arguments[0].jiraurl + "/browse/" + key;
-	openUrl(url);
+  //EPOQ CHANGE START
+  //openUrl(url);
+  let uri = url;
+  if (!(uri instanceof Components.interfaces.nsIURI))
+    uri = Components.classes["@mozilla.org/network/io-service;1"]
+                    .getService(Components.interfaces.nsIIOService)
+                    .newURI(url, null, null);
+
+  Components.classes["@mozilla.org/uriloader/external-protocol-service;1"]
+            .getService(Components.interfaces.nsIExternalProtocolService)
+            .loadURI(uri);
+  //EPOQ CHANGE END
 }
 
 function respondMail(key){
@@ -1492,6 +1603,7 @@ function _getLDAPAddressbookField(field, key, type) {
 	treecols.appendChild(treecol);
 	tree.appendChild(treecols);
 	var treechildren = document.createElement("treechildren");
+	treechildren.setAttribute("id","ldapaddressbook");
 	tree.appendChild(treechildren);
 	panel.appendChild(tree);
 	var textbox = document.createElement("textbox");
@@ -1519,6 +1631,9 @@ function _searchLDAPAdressbook(event){
 	var credentials = btoa(username + ":" + password);
 	try {
 		xmlhttp.open("GET", url, true, username, password);
+		// EPOQ CHANGES START
+		applyRequestFixes(xmlhttp);
+		// EPOQ CHANGES END
 		xmlhttp.setRequestHeader("Authorization", "Basic " + credentials);
 		xmlhttp.setRequestHeader("Accept", "application/json");
 		xmlhttp.setRequestHeader("Content-Type", "application/json; charset=utf-8");
@@ -1648,6 +1763,9 @@ function _getTempoAccountFieldValues(){
 	var credentials = btoa(username + ":" + password);
 	try {
 		xmlhttp.open("GET", url, true, username, password);
+		// EPOQ CHANGES START
+		applyRequestFixes(xmlhttp);
+		// EPOQ CHANGES END
 		xmlhttp.setRequestHeader("Authorization", "Basic " + credentials);
 		xmlhttp.send(null);
 		xmlhttp.onreadystatechange = function() {
@@ -1776,15 +1894,14 @@ function attachFiles(issueKey) {
 	if ( selectedAttachments && selectedAttachments.length > 0 ) {
 		var i, item;
 		var max = selectedAttachments.length;
+		//EPOQ CHANGE START
 		for (i=0;i<max;i++){
 			item = selectedAttachments[i];
-			//alert("item " + item);
-			//alert("hasChildNodes " + item.hasChildNodes());
-			var cells = item.getElementsByTagName("listcell");
-			//alert("cells " + cells);
-			selectedIds.push(cells[0].getAttribute("label"));
-			names.push(cells[2].getAttribute("label"));
-			mimeTypes.push(cells[4].getAttribute("label"));
+			var cells = item.getElementsByTagName("label");
+			selectedIds.push(cells[0].getAttribute("value"));
+			names.push(cells[2].getAttribute("value"));
+			mimeTypes.push(cells[4].getAttribute("value"));
+			//EPOQ CHANGE END
 			/*
                      if ( cells ) {
                              var j, cell;

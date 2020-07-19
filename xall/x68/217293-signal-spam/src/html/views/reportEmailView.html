@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="/css/sidebar.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Signaler, c'est agir</title>
+    <script src="/js/popup.js" defer></script>
+</head>
+<body class="sidebarBody-Grey">
+<table class='SPsection SPsectionLogo' id='SigSpamsectionLogo'>
+    <tbody>
+    <tr>
+        <td rowspan="2" style="max-width:9vmin;"><a href='https://www.signal-spam.fr/espace-membre' target='_signalspam'
+                                                    class='externallink'><img
+                src='https://vrf01.signal-spam.fr//extension/images/SignalSpam65.png' alt=
+                'Signal Spam' class='SPlogo'/></a></td>
+        <td rowspan="2">
+            <div class='SPlogoTitle' data-verifromlocalize='contentScript.sidebar.title'>Signaler, c'est agir</div>
+            <div id='verifromcopyright'>
+                <span data-verifromlocalize='contentScript.sidebar.copyright'>D&eacute;velopp&eacute; par </span>
+                <a href='https://www.verifrom.com' target='_newtab' style='color: whitesmoke;' class='externallink'>VERIFROM</a>
+                <div id='logoVerifrom'></div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table class='SPsection SPsectionOK'>
+    <tbody>
+    <tr>
+        <td>
+            <div class="SPsectionOK" id="calltoaction" data-verifromlocalize='contentScript.sidebar.calltoactionsingle'>
+                Si vous consid&eacute;rez que l&apos;e-mail ci-contre est un
+                spam (pourriel), cliquez sur le bouton ci-dessous
+            </div>
+            <div>
+                <span class="SPsectionOK" id="calltoaction" data-verifromlocalize="contentScript.sidebar.emailfrom"
+                      style="font-weight: bold;">De:</span>
+                <p class="SPsectionOK"
+                   style="width:95vw; margin:0px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"
+                   id="fromvalue"></p>
+            </div>
+            <div>
+                <span class="SPsectionOK" id="calltoaction" data-verifromlocalize="contentScript.sidebar.emailsubject"
+                      style="font-weight: bold;">Objet:</span>
+                <p class="SPsectionOK"
+                   style="width:95vw; margin:0px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;"
+                   id="emailsubject"></p></div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class='SPOKBox' id='SigSpamOKBox' data-verifromlocalize='contentScript.sidebar.buttonlabel'>
+                SIGNALER
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class='SPoriginalDesc'>
+              <span data-verifromlocalize='contentScript.sidebar.disclosureSingle'>En signalant cet e-mail, son contenu sera transmis à nos services pour analyse afin de déployer, avec les acteurs appropriés les <a
+                      href='https://www.signal-spam.fr/comment-sont-traites-vos-signalements' target='_signalspam'
+                      class='externallink'>contre-mesures adaptées</a>
+                <BR/>Consulter <a href='https://www.signal-spam.fr/espace-membre' target='_signalspam' class='externallink'>l’historique de vos précédents signalements</a> sur votre compte Signal Spam.
+              </span>
+            </p>
+            <p class='SPoriginalDesc'>
+            <div id="zoomOriginalEmail">
+                <div class="SPloupe"></div>
+                <span data-verifromlocalize='contentScript.sidebar.zoom'> Visualisez le contenu transmis dans le signalement en cliquant sur la loupe :</span>
+            </div>
+            </p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

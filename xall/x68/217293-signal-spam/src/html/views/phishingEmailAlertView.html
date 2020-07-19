@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link href="/css/sidebar.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="/js/popup.js" defer></script>
+  <title>Signaler c'est agir</title>
+</head>
+<body class="sidebarBody">
+  <table class='SPsection SPsectionLogo' id='SigSpamsectionLogo' style='background-color: rgb(212, 43, 95);'>
+    <tbody>
+    <tr>
+      <td rowspan="2" style="max-width:9vmin;"><a href='https://www.signal-spam.fr/espace-membre' target='_signalspam' class='externallink'><img src='https://vrf01.signal-spam.fr/extension/images/SignalSpam65.png' alt=
+              'Signal Spam' class='SPlogo'/></a></td>
+      <td rowspan="2">
+        <div class='SPlogoTitle' data-verifromlocalize='contentScript.sidebar.phishingtitle'>Phishing D&eacute;tect&eacute;</div>
+        <div id='verifromcopyright'>
+          <span data-verifromlocalize='contentScript.sidebar.copyright'>D&eacute;velopp&eacute; par </span>
+          <a href='https://www.verifrom.com' target='_newtab' style='color: whitesmoke;' class='externallink'>VERIFROM</a>
+          <div id='logoVerifrom'></div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <table class='SPsection SPsectionOK'>
+    <tbody>
+      <tr>
+        <td colspan='2' style='text-align:justify;'>
+          <div data-verifromlocalize='contentScript.sidebar.phishingdetected'>Des liens vers des sites de phishing ont &eacute;t&eacute; d&eacute;tect&eacute;s dans le(s) mail(s) affich&eacute;(s) ci-contre.</div>
+          <div data-verifromlocalize='contentScript.sidebar.phishinglinks'>Chaque lien vers ces sites sont signal&eacute;s par le logo Signal Spam. Nous vous recommandons de ne cliquer sur aucun des liens contenus dans ce(s) mail(s) ou d'agir avec prudence.</div>
+          <div data-verifromlocalize='contentScript.sidebar.phishingreport'>Pour nous transmettre les informations relatives au(x) email(s) affich&eacute;(s) ci-contre cliquez sur le bouton ci-dessous</div>
+          <div id='SigSpamOKBox' class='SPOKBox' data-verifromlocalize='contentScript.sidebar.buttonlabel'>SIGNALER</div>
+        </td>
+      </tr>
+      <tr><td colspan='2'></td></tr>
+      <tr>
+        <td colspan='2' class='originalDesc'>
+          <div data-verifromlocalize='contentScript.sidebar.disclosure'>Le contenu de ce(s) email(s) sera transmis &agrave; nos services pour analyse afin de compl&eacute;ter les informations sur le(s) site(s) potentiellement malveillant(s) correspondant &agrave; la tentative de fraude.</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan='2' style='font-size: 0.9em; padding-top: 5%; text-align: justify;'><span data-verifromlocalize='contentScript.sidebar.phishingfalsepos'>Si vous jugez que l'e-mail ci-contre est légitime et qu'aucun des liens signalés n'est frauduleux, vous pouvez prévenir Signal Spam : </span>
+          <a style='cursor:pointer; margin-left: 2%; margin-right: 2%; padding: 1px 4px 1px 4px; border-radius: 2px; text-transform: capitalize; color: white; background-color: green; text-decoration: none; font-size: 0.9em;' id='falsePositiveLink' data-verifromlocalize='contentScript.sidebar.phishingfalseposbutton'>Faux-Positif</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

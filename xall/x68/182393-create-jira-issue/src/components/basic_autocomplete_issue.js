@@ -162,9 +162,9 @@ ProviderAutoCompleteSearch.prototype = {
 		 */
 		startSearch: function(searchString, searchParam, previousResult, listener) {
 			//get preferences
-			prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+			var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
 			prefs = prefs.getBranch("extensions.createjiraissue.");
-			lastissues = prefs.getCharPref("lastissues");
+			var lastissues = prefs.getCharPref("lastissues");
 			var results = lastissues.split(",");
 			var filteredResults = new Array();
 			var lowerSearchString = searchString.toLowerCase();

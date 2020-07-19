@@ -1,0 +1,273 @@
+
+body {
+    font-family: sans-serif;
+}
+
+/* The alert message box */
+.alert {
+    padding: 2vw;
+    color: white;
+    margin-bottom: 15px;
+    position: fixed;
+    top: 1.5%;
+    width: 95%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.notvisible {
+    display: none;
+    opacity: 0;
+}
+
+.visible {
+    display: block;
+    opacity: 1;
+}
+
+.visible.success {
+    background-color: #4CAF50;
+}
+
+.visible.info {
+    background-color: #2196F3;
+}
+
+.visible.warning {
+    background-color: #ff9800;
+}
+
+.visible.error {
+    background-color: #f44336;
+}
+
+/* The close button */
+.closebtn {
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+#errorMessage {
+}
+
+#successMessage {
+}
+
+@media only screen and (min-width: 500px) {
+    /* rules that only apply for canvases narrower than 1000px */
+    .mainDiv {
+        /*border: gainsboro;
+        border-size: inherit;
+        border-style: solid;
+        border-width: medium;*/
+        padding: 2px;
+        max-width: 100%;
+    }
+}
+
+.mainDiv {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer {
+    background: #1e64a3 url(/img/bg-footer.png) repeat-x 0 0;
+    height: 80px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.block-logo-footer {
+    background: transparent url(/img/signal_spam-sprite.png) no-repeat -205px -34px;
+    width: 116px;
+    height: 28px;
+    background-size: 900px;
+    display: block;
+    text-indent: -9999px;
+    display: block;
+    position: inherit;
+    margin-left: 65%;
+}
+
+.description {
+    font: 12px/1.0 Arial, sans-serif;
+    text-align: justify;
+    display: inline-block;
+    line-height: normal;
+}
+
+.inputline {
+    width: 100%;
+    font: bold 12px/1.0 Arial, sans-serif;
+    font-weight: bold;
+    font-weight: bold;
+    color: black;
+    display: inline-flex;
+}
+
+.label {
+    font-weight: bold;
+    width: 110px;
+    font: bold 12px/1.5 Arial, sans-serif;
+    font-weight: bold;
+    color: black;
+    text-align: right;
+    display: inline-block;
+}
+
+.button {
+    width: 30%;
+    color: white;
+    background-color: #BE0044;
+    background-size: 1000%;
+    height: 33px;
+    border: #FFFFFF;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 4px;
+    top-margin: 7px;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-left: 35%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    text-align: center;
+}
+
+.ReportButton {
+    width: 109px;
+    height: 33px;
+    border: none;
+    text-transform: uppercase;
+    font: bold 12px/1.0 Arial, sans-serif;
+    background: greenyellow;
+    padding: 3px 3px 3px;
+    font-weight: bold;
+    color: green;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+.charte {
+    color: white;
+    text-decoration: initial;
+    padding: 5px;
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+    font: 10px/1.0 Arial, sans-serif;
+}
+
+.onoffswitch {
+    position: relative;
+    width: 69px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #999999;
+    border-radius: 9px;
+}
+
+.onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 18px;
+    padding: 0;
+    line-height: 18px;
+    font-size: 13px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: attr(yes);
+    padding-left: 9px;
+    background-color: #24E034;
+    color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+    content: attr(no);
+    padding-right: 9px;
+    background-color: #EEEEEE;
+    color: #999999;
+    text-align: right;
+}
+
+.onoffswitch-switch {
+    display: block;
+    width: 22px;
+    margin: -2px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 47px;
+    border: 2px solid #999999;
+    border-radius: 9px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
+
+#frequencyRange {
+    position: relative;
+    top: 2px;
+}
+
+#frequencyRange:after,
+#frequencyRange:before {
+    position: absolute;
+    top: 1em;
+    color: #aaa;
+}
+
+#frequencyRange:before {
+    left: 0em;
+    content: attr(min);
+}
+
+#frequencyRange:after {
+    right: 0em;
+    content: attr(max);
+}

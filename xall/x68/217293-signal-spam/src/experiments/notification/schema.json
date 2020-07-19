@@ -1,0 +1,110 @@
+[
+  {
+    "namespace": "notification",
+    "functions": [
+      {
+        "name": "show",
+        "description": "Show a notification",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Notification ID",
+            "type": "string"
+          },
+          {
+            "name": "message",
+            "description": "Notification Message",
+            "type": "string"
+          },
+          {
+            "name": "icon",
+            "description": "Notification Icon URL",
+            "type": "string"
+          },
+          {
+            "name": "buttons",
+            "description": "Buttons to add in notification",
+            "optional": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "description": "Label of the button",
+                  "type": "string"
+                },
+                "popup": {
+                  "description": "URI of the popup",
+                  "optional": true,
+                  "type": "string"
+                },
+                "isDefault": {
+                  "description": "Default button",
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          {
+            "name": "windowId",
+            "description": "window id or undefined for the current window/tab",
+            "type": "integer",
+            "optional": true
+          },
+          {
+            "name": "priority",
+            "description": "Notification priority (color...)",
+            "type": "integer",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "hide",
+        "description": "Hide a notification",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Notification ID",
+            "type": "string"
+          },
+          {
+            "name": "windowId",
+            "description": "window Id or undefined for the current window/tab",
+            "type": "integer",
+            "optional": true
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onClicked",
+        "description": "Click event on a button",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "buttonLabel",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "onRemoved",
+        "description": "Notification was removed",
+        "type": "function",
+        "parameters": []
+      },
+      {
+        "name": "onDismissed",
+        "description": "Notification was dismissed (user closed notification)",
+        "type": "function",
+        "parameters": []
+      }
+    ]
+  }
+]

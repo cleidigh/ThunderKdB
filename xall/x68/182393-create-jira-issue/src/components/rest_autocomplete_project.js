@@ -1,11 +1,19 @@
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 
+//EPOQ CHANGE START
+Components.utils.importGlobalProperties(["XMLHttpRequest"]);
+//EPOQ CHANGE END
+
 Cu.import('resource://gre/modules/XPCOMUtils.jsm');
 
 const CLASS_ID = Components.ID('f5e08e77-82ee-4603-8d38-26ec591aa89c');
 const CLASS_NAME = "REST AutoComplete Project";
 const CONTRACT_ID = '@mozilla.org/autocomplete/search;1?name=rest-autocomplete-project';
+
+// EPOQ CHANGES START
+Components.utils.import("chrome://createjiraissue/content/epoq/request-fixes.js");
+// EPOQ CHANGES END
 
 /**
  * @constructor
@@ -182,12 +190,18 @@ ProviderAutoCompleteSearch.prototype = {
 				return;
 			}
 			var that = this;
-			var xmlhttp = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance();
+			//EPOQ CHANGE START
+			//var xmlhttp = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"].createInstance();
+			var xmlhttp = new XMLHttpRequest();
+			//EPOQ CHANGE START
 			var lowerSearchString = searchString.toLowerCase();
 			var url = jiraurl + "/rest/api/2/jql/autocompletedata/suggestions?fieldName=project&fieldValue=" + lowerSearchString;
 			//consoleService.logStringMessage("rest-autocomplete-project:startSearch() url " + url);
 			var credentials = btoa(username + ":" + password);
 			xmlhttp.open("GET", url, true, username, password);
+			// EPOQ CHANGES START
+			applyRequestFixes(xmlhttp);
+			// EPOQ CHANGES END
 			xmlhttp.setRequestHeader("Authorization","Basic " + credentials);
 			xmlhttp.send(null);
 			xmlhttp.onreadystatechange = function() {

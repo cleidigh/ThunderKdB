@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <link href="/css/options.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="/logo/96x96.png"/>
+    <title>Signal Spam - Options</title>
+</head>
+<body>
+<div class='mainDiv'>
+    <p class='description'>
+    <p style="text-align:center;">
+    <H2 style="text-align:center;" data-VerifromLocalize="options.title">Options Signal Spam</H2></p>
+    <p class='description'><B><span id='thanks' data-VerifromLocalize="options.title2">Merci d'avoir install&eacute; l'extension Signal Spam.<BR>Les informations ci-dessous sont n&eacute;cessaires pour vous identifier aupr&egrave;s de l'association Signal Spam lors d'un signalement.</span></B>
+    </p>
+    <p class='description' id='message' data-VerifromLocalize="options.title3"><strong>Si vous n'&#234;tes pas encore
+        inscrit, veuillez <a href='https://www.signal-spam.fr/espace-membre/inscription' target='_newtab'>cliquer
+            ici</a> pour proc&eacute;der l'inscription</strong>. Cette inscription vous permettra de signaler &agrave;
+        l'association Signal Spam tout courriel non sollicit&eacute; ou frauduleux (spam). Puis reportez ci-dessous les
+        informations, adresse email et mot de passe, utilis&eacute;s lors de votre inscription sur le site de
+        l'association Signal Spam.</p>
+    <table>
+        <tr>
+            <td><label class='label' for='email' data-VerifromLocalize="options.e-mail.label">Nom d'utilisateur
+                :</label></td>
+            <td><input type='text' id='email' size=40 extensionOption="email"/></td>
+        </tr>
+        <tr>
+            <td><label class='label' for='password' data-VerifromLocalize="options.password.label">Mot de passe
+                :</label></td>
+            <td><input type='password' id='password' size=16 extensionOption="password"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="1">
+                <p class='description' data-VerifromLocalize="options.passwordLost.label">Si vous avez oubli&eacute; le
+                    mot de passe de votre compte Signal Spam, demandez un nouveau mot de passe en <a
+                            href="https://www.signal-spam.fr/espace-membre/mot-de-passe" target='_newtab'>cliquant
+                        ici.</a></p>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <p class='CGU' id='CGU'><input type=checkbox id='validCGU' extensionOption="cgu"> <span
+                        class='description'
+                        style='display:inline;'
+                        data-VerifromLocalize="options.CGU.label">Oui, je confirme avoir pris connaissance des <a
+                        href='https://www.signal-spam.fr/cgu' target='_newtab'>conditions g&eacute;n&eacute;rales d'utilisation</a>.</span>
+                </p>
+            </td>
+        </tr>
+    </table>
+    <div style="height:2em;"></div>
+    <table style="width:90%;">
+        <tr>
+            <td style="width:33%;">
+                <span class="description"><strong data-VerifromLocalize="options.oneclick.label">Procéder aux signalements en un seul clic :</strong></span>
+            </td>
+            <td>
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="oneClickOption"
+                           extensionOption="oneClickOption" checked>
+                    <label class="onoffswitch-label" for="oneClickOption">
+                        <span class="onoffswitch-inner" yes="YES" no="NO"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-bottom:2em;">
+                <span class='description' data-VerifromLocalize="options.oneclickDescription.label">En cochant cette option vous n'aurez plus à confirmer les signalements après un clic sur le bouton Signal Spam dans la barre d'outils du navigateur.</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="description"><strong data-VerifromLocalize="options.URLDETECT.label">Détection des URLs frauduleuses (hors webmails) :</strong></span>
+            </td>
+            <td>
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="URLDETECT" extensionOption="URLDETECT" checked>
+                    <label class="onoffswitch-label" for="URLDETECT">
+                        <span class="onoffswitch-inner" yes="YES" no="NO"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-bottom:2em;">
+                <span class='description' data-VerifromLocalize="options.URLDETECT.description">En désactivant cette fonctionnalité (option ci-dessous cochée), vous ne serez plus alerté lorsque votre navigateur ouvre une page présentant un risque de fraude. Vous pourrez réactiver cette option en cochant la fonctionnalité à nouveau.</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class='description'><strong data-VerifromLocalize="options.movereport.title">Archivage des e-mails signalés :</strong></span>
+            </td>
+            <td>
+                <div class="onoffswitch">
+                    <input name="movereport" class="onoffswitch-checkbox" id="movereport" extensionOption="movereport" checked type="checkbox">
+                    <label class="onoffswitch-label" for="movereport">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <span class='description' data-VerifromLocalize="options.movereport.description">Les e-mails signalés seront automatiquement déplacés dans le dossier des courriers indésirables (spam), ou supprimés, en fonction des paramètres de sécurité de Thunderbird. Si cette option n'est pas sélectionnée les e-mails ne seront pas déplacés ou supprimés lors d'un signalement à Signal Spam, quels que soient les paramètres choisis dans les préférences de Thunderbird.</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class='description'><strong data-VerifromLocalize="options.markread.title">Marquer comme lu les e-mails signalés :</strong></span>
+            </td>
+            <td>
+                <div class="onoffswitch">
+                    <input name="markread" class="onoffswitch-checkbox" id="markread" extensionOption="markread" checked type="checkbox">
+                    <label class="onoffswitch-label" for="markread">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <span class='description' data-VerifromLocalize="options.markread.description">Les e-mails signalés seront automatiquement marqués comme lus.</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class='description'><strong data-VerifromLocalize="options.markspam.title">Marquer les e-mails signalés comme SPAM :</strong></span>
+            </td>
+            <td>
+                <div class="onoffswitch">
+                    <input name="markspam" class="onoffswitch-checkbox" id="markspam" extensionOption="markspam" checked type="checkbox">
+                    <label class="onoffswitch-label" for="markspam">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <span class='description' data-VerifromLocalize="options.markspam.description">Les e-mails signalés seront automatiquement marqués comme SPAM.</span>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <p>
+    <button class='button' id="save" data-VerifromLocalize="options.save">Enregistrer</button>
+    </p>
+    <!--
+    <HR>
+    <div><p class='description' data-VerifromLocalize="options.troublesReport.title"><strong>Transmettre un rapport &agrave; Signal Spam en cas d'anomalie :</strong></p>
+    <p class='description' data-VerifromLocalize="options.troublesReport.title2">La transmission d'un rapport nécessite préalablement de contacter l'assistance Signal Spam en <a href='https://assistance.signal-spam.fr/' target='_assistance'>cliquant ici</a></p>
+    <p class='description'><span data-VerifromLocalize="options.troublesReport.ticket">Numéro du ticket support Signal Spam :</span>
+    <input type="text" size=10 maxlength=10 id="ticket"><BR><span data-VerifromLocalize="options.troublesReport.ticket2">(obtenu après avoir contacté <a href='https://assistance.signal-spam.fr/' target='_assistance'>l'assistance Signal Spam</a>)</p>
+    <p class='description'><span  data-VerifromLocalize="options.troublesReport.ticketEmail">Email de réponse :</span>
+    <input type="email" size=47 maxlength=80 id="responseEmail"></p>
+    <p class='description'  data-VerifromLocalize="options.troublesReport.cause">Pr&eacute;cisez l'anomalie constat&eacute;e :</p>
+    <textarea cols=35 rows=3 maxlength=1024 id='reportMessage' style='max-width:80%;max-height:100px;'></textarea>
+    <span id='report' class='ReportButton' style="margin-left:40%;"  data-VerifromLocalize="options.troublesReport.send">ENVOYER</span>
+    </div>
+    -->
+    <div class="alert notvisible" id="statusBox">
+        <span class="closebtn">&times;</span>
+        <strong id="statusMessage"></strong>
+    </div>
+    <script type="text/javascript" src="/specific/options.js"></script>
+    <!--<script type="text/javascript" src="/js/localizeGUI.js"></script>-->
+</div>
+</body>
+</html>

@@ -21,6 +21,10 @@ if (typeof(mimeMsg) === 'undefined')
   (typeof(window) !== 'undefined') ? this.mimeMsg = {} : mimeMsg = {};
 
 Components.utils.import("resource:///modules/gloda/mimemsg.js", mimeMsg);
+// EPOQ CHANGES START
+Components.utils.import("chrome://createjiraissue/content/epoq/transwindow.js");
+Components.utils.import("chrome://createjiraissue/content/epoq/htmltable2jiratext.js");
+// EPOQ CHANGES END
 var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
 //consoleService.logStringMessage("[overlay.js]: loading begin");
 
@@ -180,15 +184,79 @@ var createjiraissue = {
 		createjiraissue.mailbodyprefixWiki = createjiraissue.mailbodyprefixWiki + "----\n\n";
 
 		var doc = document.getElementById("messagepane").contentDocument;
-        var mailbodyhtml = doc.body.innerHTML;
-        var selection = doc.getSelection();
-        if(selection != null && selection.toString().length > 0) {
-            mailbodyhtml = selection.toString();
-        }
+    // EPOQ CHANGES START
+		var mailbodyhtml = null;
+		createjiraissue.mailbody = mailbodyhtml;
+		var selection = doc.getSelection();
+		if (selection.rangeCount > 0) {
+      var rangei = selection.getRangeAt(0);
+      var clonedSelection = rangei.cloneContents();
+      var docy = document.implementation.createHTMLDocument("New Document");
+      var div = docy.createElement('div');
+      div.appendChild(clonedSelection);
+      var doctype = document.implementation.createDocumentType( 'html', '', '');
+      var dom = document.implementation.createDocument('', 'html', doctype);
+      dom.documentElement.appendChild(div);
+      createjiraissue.jiratable = htmltable2jiratext(dom.getElementsByTagName("tr"));
+      if (createjiraissue.jiratable == "") {
+        createjiraissue.jiratable = htmlrow2jiratext(dom.getElementsByTagName("th"));
+        createjiraissue.jiratable += htmlrow2jiratext(dom.getElementsByTagName("td"));
+      };
+      createjiraissue.jiratable = htmlremovetable(dom) + createjiraissue.jiratable;
+			var range = selection.getRangeAt(0);
+			if (!range.collapsed) {
+				var text = selection.toString().replace(/[\n\r]+/g, "\n");
+        			var rangeText = range.toString();
+        			var selectionText = selection.toString();
+				// As a quick workaround use the one that has newlines if the other doesn't.
+				var rangeHasNewline = rangeText.indexOf('\n') != -1;
+				var selectionHasNewline = selectionText.indexOf('\n') != -1;
+				if(rangeHasNewline && !selectionHasNewline) {
+					text = rangeText.replace(/[\n\r]+/g, "\n");
+				}
+				if(!rangeHasNewline && selectionHasNewline) {
+					text = selectionText.replace(/[\n\r]+/g, "\n");
+				}
+
+				mailbodyhtml = text;
+				createjiraissue.mailbody = mailbodyhtml;
+			}
+		}
+
+		if (mailbodyhtml == null) {
+			// Selection.toString() preserves newline, Range.toString() does
+			// not.
+			// So we change the selection temporarily.
+			var r = doc.createRange();
+			r.selectNodeContents(doc.body);
+			selection.removeAllRanges();
+			selection.addRange(r);
+			mailbodyhtml = selection.toString();
+      var rangei = selection.getRangeAt(0);
+      var clonedSelection = rangei.cloneContents();
+      var docy = document.implementation.createHTMLDocument("New Document");
+      var div = docy.createElement('div');
+      div.appendChild(clonedSelection);
+      var doctype = document.implementation.createDocumentType( 'html', '', '');
+      var dom = document.implementation.createDocument('', 'html', doctype);
+      dom.documentElement.appendChild(div);
+      createjiraissue.jiratable = htmltable2jiratext(dom.getElementsByTagName("tr"));
+      if (createjiraissue.jiratable == "") {
+        createjiraissue.jiratable = htmlrow2jiratext(dom.getElementsByTagName("th"));
+        createjiraissue.jiratable += htmlrow2jiratext(dom.getElementsByTagName("td"));
+      };
+      createjiraissue.jiratable = htmlremovetable(dom) + createjiraissue.jiratable;
+			createjiraissue.mailbody = mailbodyhtml;
+			selection.removeAllRanges();
+		}
+		// EPOQ CHANGES END
         //createjiraissue.LOG(createjiraissue.mailbodyhtml);
 
         // remove html tags
-        createjiraissue.mailbody = mailbodyhtml.replace(/<([^>]+)>/g, '');
+		// EPOQ CHANGES START
+		// SUG-25: Thunderbird: Plugin shouldn't remove html tags
+        // createjiraissue.mailbody = mailbodyhtml.replace(/<([^>]+)>/g, '');
+		// EPOQ CHANGES END
         // trim
         createjiraissue.mailbody = createjiraissue.mailbody.replace(/^\s*|\s*$/g, "");
         // remove extra newlines
@@ -224,11 +292,88 @@ var createjiraissue = {
      * @see https://dev.mozilla.jp/localmdc/localmdc_2730.html
      */
     mimeMessageGetAttachments: function (aMsg) {
-    	return aMsg.allAttachments;
+      //EPOQ CHANGE START
+      var MessageURI = gFolderDisplay.selectedMessageUris[0];
+      var doc = document.getElementById("messagepane").contentDocument;
+      var inlineimages = doc.body.getElementsByTagName("img");
+      var allAttachments = aMsg.allUserAttachments;
+
+      var tmpAttachments = [];
+
+      function findBycontentTypeRecursive(array, contentType) {
+        if (array.parts) {
+          findBycontentTypeRecursive(array.parts, contentType);
+        };
+        for (let index = 0; index < array.length; index++) {
+          const element = array[index];
+          if (array[index].parts) {
+            findBycontentTypeRecursive(array[index].parts, contentType);
+          };
+          if (element["contentType"].includes(contentType)) {
+            tmpAttachments.push(element);
+            allAttachments.push(element);
+            return element;
+            if (element.children) {
+              const found = findBycontentTypeRecursive(element.children, contentType);
+
+              if (found) {
+                return found;
+              }
+            }
+          }
+        }
+      };
+      findBycontentTypeRecursive(aMsg, "image");
+      for (i = 0; i < inlineimages.length; i++) {
+        var srcurl = inlineimages[i].src;
+        var tempobject = {};
+        tempobject.url = srcurl;
+        var srcquery = [];
+        srcquery = srcurl.split("?")[1];
+        if (typeof srcquery !== 'undefined' && srcquery.length > 0) {
+            var srcparams = [];
+            srcparams = srcquery.split("&");
+            if (typeof srcparams !== 'undefined' && srcparams.length > 0) {
+                for (j = 0; j < srcparams.length; j++) {
+                  if (srcparams[j].split("=")[0] == "part") {
+                    tempobject.partName = srcparams[j].split("=")[1];
+                  } else {
+                    tempobject.partName = "";
+                  };
+                  if (srcparams[j].split("=")[0] == "filename") {
+                    tempobject.name = srcparams[j].split("=")[1];
+                  } else {
+                    tempobject.name = "INL#" + i + "_" + srcurl.substr(srcurl.length - 10);
+                  };
+                };
+              } else {
+                tempobject.name = "INL#" + i + "_" + srcurl.substr(srcurl.length - 10);
+              };
+          } else {
+            tempobject.name = "INL#" + i + "_" + srcurl.substr(srcurl.length - 10);
+          };
+        var found = false;
+        for (var k = 0; k < allAttachments.length; k++) {
+          if (allAttachments[k].url == tempobject.url) {
+            found = true;
+            k = allAttachments.length;
+          };
+        };
+        if (!found) {
+        allAttachments.push(tempobject);
+        };
+      };
+      for (var l = 0; l < allAttachments.length; l++) {
+        if (typeof allAttachments[l].url === 'undefined' || allAttachments[l].url === "") {
+          allAttachments.splice(l, 1);
+        };
+      };
+      return allAttachments;
+      //EPOQ CHANGE END
     	/*
     	 * the filter function stopped working after TB 60
     	 * returning an Part 1.2 like attachments seem not to have had any impact to any older TB version anyway
-    	 * 
+    	 *
     	createjiraissue.aConsoleService.logStringMessage("[mimeMessageGetAttachments]: start");
     	var attachments = new Array();
     	var attachment;
@@ -339,9 +484,9 @@ var createjiraissue = {
         		from: createjiraissue.from,
             issueSubject: createjiraissue.mailsubject,
             issueDescription: createjiraissue.mailbody,
-			issueDescriptionPrefix: createjiraissue.mailbodyprefix,
-			issueDescriptionPrefixWiki: createjiraissue.mailbodyprefixWiki,
-			prefs: createjiraissue.prefs,
+      			issueDescriptionPrefix: createjiraissue.mailbodyprefix,
+      			issueDescriptionPrefixWiki: createjiraissue.mailbodyprefixWiki,
+      			prefs: createjiraissue.prefs,
             jiraurl: createjiraissue.jiraurl,
             username: createjiraissue.username,
             password: createjiraissue.password,
@@ -370,9 +515,10 @@ var createjiraissue = {
         		from: createjiraissue.from,
             issueSubject: createjiraissue.mailsubject,
             issueDescription: createjiraissue.mailbody,
-			issueDescriptionPrefix: createjiraissue.mailbodyprefix,
-			issueDescriptionPrefixWiki: createjiraissue.mailbodyprefixWiki,
-			prefs: createjiraissue.prefs,
+            issueDescriptionJiraTable: createjiraissue.jiratable,
+      			issueDescriptionPrefix: createjiraissue.mailbodyprefix,
+      			issueDescriptionPrefixWiki: createjiraissue.mailbodyprefixWiki,
+      			prefs: createjiraissue.prefs,
             jiraurl: createjiraissue.jiraurl,
             username: createjiraissue.username,
             password: createjiraissue.password,
@@ -388,7 +534,46 @@ var createjiraissue = {
 	createjiraissue.dialogWindow = dlg;
 	createjiraissue.getAttachmentContent();
 	}
+  // EPOQ CHANGES START
+,
+getParams: function() {
+  createjiraissue.loadSettings();
+  if (createjiraissue.error) {
+    return;
+  }
+  return {
+    prefs: createjiraissue.prefs,
+          jiraurl: createjiraissue.jiraurl,
+          username: createjiraissue.username,
+          password: createjiraissue.password,
+      };
+},
+
+setIssueCommentHashes: function(uri, indexed) {
+  createjiraissue.issueCommentHashes = {
+    uri: uri,
+    indexed: indexed
+  }
+},
+// EPOQ CHANGES END
 };
 
 //consoleService.logStringMessage("[overlay.js]: createjiraissue: " + createjiraissue);
 //consoleService.logStringMessage("[overlay.js]: done loading");
+// EPOQ CHANGES START
+if(!transwindow.initTimer) {
+	transwindow.initTimer = true;
+	DEBUG("registering transwindow timer");
+	setInterval(function() {
+		if(typeof(transwindow.request) == "undefined") return;
+		if(transwindow.request.ok) {
+			//LOG("request!");
+			var uri = transwindow.request.uri;
+			var text = transwindow.request.text;
+			transwindow.request.ok = false;
+			LOG("RECEIVED TRANSWINDOW REQUEST " + uri);
+			createjiraissue.restCommentDialog(uri, text);
+		}
+	}, 500);
+}
+// EPOQ CHANGES END

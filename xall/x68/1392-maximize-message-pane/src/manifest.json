@@ -1,24 +1,81 @@
 {
   "manifest_version": 2,
-  "name": "Maximize Message Pane",
-  "description": "Maximize message pane by collapsing thread pane and folder pane.",
-  "version": "1.3.1",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.0.7",
   "author": "H.Ogi",
-  "homepage_url": "http://hogi.sakura.ne.jp/en/",
-  "legacy": {
-  	"type": "xul",
-    "options" : {
-      "page" : "chrome://maxmsgpane/content/settings.xul",
-      "open_in_tab" : false
+  "homepage_url": "__MSG_extensionHomepage_url__",
+  "experiment_apis": {
+    "maxMsgPaneApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "maxMsgPaneApi"
+          ]
+        ],
+        "script": "scripts/implementation.js"
+      }
     }
   },
+
+  "background": {
+    "scripts": [
+      "scripts/background.js"
+    ]
+  },
+
+  "permissions": [
+    "storage",
+    "messagesRead",
+    "accountsRead"
+  ],
+
+  "browser_action": {
+    "default_title": "__MSG_extensionDefault_title__",
+    "default_area": "tabstrip",
+    "default_icon": "images/max32.png"
+  },
+
+  "message_display_action": {
+    "default_icon": "images/max32.png",
+    "default_title": "__MSG_extensionDefault_title__"
+  },
+
+  "commands": {
+    "cmd_max-msg-pane": {
+      "suggested_key": {
+        "default": "Shift+F8"
+      },
+      "description": "Maximize message pane"
+    },
+
+    "cmd_toggle-folder-pane": {
+      "suggested_key": {
+        "default": "F9"
+      },
+      "description": "Toggle folder pane"
+    }
+  },
+
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
+  },
+
+  "default_locale": "en",
+  
   "applications": {
     "gecko": {
       "id": "{CC1FC7EB-79F7-4A28-B12C-731304F16E53}",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   },
+
   "icons": {
-    "32": "max32.png"
+    "32": "images/max32.png"
   }
 }

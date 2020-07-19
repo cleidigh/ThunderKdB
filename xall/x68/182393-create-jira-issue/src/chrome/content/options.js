@@ -5,6 +5,9 @@ var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(
 var loginManager = Components.classes["@mozilla.org/login-manager;1"].getService(Components.interfaces.nsILoginManager);
 const nsIFilePicker = Components.interfaces.nsIFilePicker;
 var strbundle = Services.strings.createBundle("chrome://createjiraissue/locale/options.properties");
+// EPOQ CHANGES START
+Components.utils.import("chrome://createjiraissue/content/epoq/request-fixes.js");
+// EPOQ CHANGES END
 
 function showHelp() {
 	var index = document.getElementById("settingsTabs").selectedIndex;
@@ -81,15 +84,15 @@ function onLoad(event) {
 		    button.setAttribute("disabled",false);
 		    button.setAttribute("default",true);
 		    button.addEventListener("click", function(event) {
-				  event.preventDefault(); 
+				  event.preventDefault();
 				  savePrefs();
 				});
 		    button.addEventListener("keypress", function(event) {
-				  event.preventDefault(); 
+				  event.preventDefault();
 				  savePrefs();
 				});
 		    button.addEventListener("command", function(event) {
-				  event.preventDefault(); 
+				  event.preventDefault();
 				  savePrefs();
 				});
 		    button = settingsNode.getButton('cancel');
@@ -103,15 +106,15 @@ function onLoad(event) {
 		    button.setAttribute("hidden",false);
 		    button.setAttribute("disabled",false);
 		    button.addEventListener("click", function(event) {
-				  event.preventDefault(); 
+				  event.preventDefault();
 				  showHelp();
 				});
 		    button.addEventListener("keypress", function(event) {
-				  event.preventDefault(); 
+				  event.preventDefault();
 				  showHelp();
 				});
 		    button.addEventListener("command", function(event) {
-				  event.preventDefault(); 
+				  event.preventDefault();
 				  showHelp();
 				});
 		} catch (e) {
@@ -132,10 +135,10 @@ function onLoad(event) {
 				}
 	    	});
 	    });
-	
+
 	    // configuration of the observer:
 	    var config = { attributes: true };
-	
+
 	    // pass in the target node, as well as the observer options
 	    observer.observe(settingsNode, config);
 	    */
@@ -150,11 +153,11 @@ function onLoad(event) {
 	onPaneSplashLoad(event);
 	onPaneHelpLoad(event);
 	document.addEventListener("dialogaccept", function(event) {
-		  event.preventDefault(); 
+		  event.preventDefault();
 		  savePrefs();
 		});
 	document.addEventListener("dialoghelp", function(event) {
-		  event.preventDefault(); 
+		  event.preventDefault();
 		  showHelp();
 		});
 	//consoleService.logStringMessage("onLoad done");
@@ -322,6 +325,9 @@ function testConnection() {
 	var url = jiraurl + "/rest/api/latest/serverInfo";
 	var credentials = btoa(username + ":" + password);
 	xmlhttp.open("GET", url, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp);
+	// EPOQ CHANGES END
 	xmlhttp.setRequestHeader("Authorization","Basic " + credentials);
 	xmlhttp.send(null);
 	xmlhttp.onreadystatechange = function() {
@@ -338,6 +344,9 @@ function testConnection() {
 	var xmlhttp2 = new XMLHttpRequest();
 	var url2 = jiraurl + "/rest/api/latest/user?username="+username;
 	xmlhttp2.open("GET", url2, true, username, password);
+	// EPOQ CHANGES START
+	applyRequestFixes(xmlhttp2);
+	// EPOQ CHANGES END
 	xmlhttp2.setRequestHeader("Authorization","Basic " + credentials);
 	xmlhttp2.send(null);
 	xmlhttp2.onreadystatechange = function() {

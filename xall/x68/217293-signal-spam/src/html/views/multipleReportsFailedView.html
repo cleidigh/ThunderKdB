@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="/css/sidebar.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="/js/popup.js" defer></script>
+</head>
+<body class="sidebarBody">
+<table class='SPsection SPsectionLogo' id='SigSpamsectionLogo'>
+    <tbody>
+    <tr>
+        <td rowspan="2" style="max-width:9vmin;"><a href='https://www.signal-spam.fr/espace-membre' target='_signalspam' class='externallink'><img src='https://vrf01.signal-spam.fr/extension/images/SignalSpam65.png' alt=
+                'Signal Spam' class='SPlogo'/></a></td>
+        <td rowspan="2">
+            <div class='SPlogoTitle' data-verifromlocalize='contentScript.sidebar.title'>Signaler, c'est agir</div>
+            <div id='verifromcopyright'>
+                <span data-verifromlocalize='contentScript.sidebar.copyright'>D&eacute;velopp&eacute; par </span>
+                <a href='https://www.verifrom.com' target='_newtab' style='color: whitesmoke;' class='externallink'>VERIFROM</a>
+                <div id='logoVerifrom'></div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table class='SPsection SPsectionOK' style="background:white;">
+    <tbody>
+    <tr>
+        <td>
+            <div class="SPsectionOK" id="calltoaction">
+                <p data-verifromlocalize='contentScript.sidebar.multiplereportsfailed'>Une erreur est survenue lors de la transmission des signalements.</p>
+                <p>
+                    <span data-verifromlocalize='contentScript.sidebar.successNumber'>Nombre de signalements transmis : </span><span id="successNumber"></span><BR/>
+                    <span data-verifromlocalize='contentScript.sidebar.failureNumber'>Nombre de signalements en erreur : </span><span id="failureNumber"></span>
+                </p>
+                <p>
+                    <span data-verifromlocalize='contentScript.sidebar.failureReason'>Code Erreur : </span><span id="failureReason"></span>
+                </p>
+            </div>
+        </td>
+        <BR/>
+    </tr>
+    <tr>
+        <td>
+            <div class='SPOKBox' id='SigSpamOKBox' data-verifromlocalize='contentScript.sidebar.buttonlabelReported'>
+                MERCI
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class='SPsectionOK' data-verifromlocalize='contentScript.sidebar.support'>
+                Si le problème persiste, vous pouvez soumettre une demande d'assistance au support Signal Spam : <a href='https://assistance.signal-spam.fr/index.php' class='externallink'>cliquez ici</a>.
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

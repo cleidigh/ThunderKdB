@@ -3,129 +3,129 @@
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
 
 <!DOCTYPE dialog [
-	<!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
-	%messengerDTD;
-	<!ENTITY % AllowHTMLtempPrefsDTD SYSTEM "chrome://allowhtmltemp/locale/allowhtmltemp-pref.dtd">
-	%AllowHTMLtempPrefsDTD;
+  <!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd">
+  %messengerDTD;
+  <!ENTITY % AllowHTMLtempPrefsDTD SYSTEM "chrome://allowhtmltemp/locale/allowhtmltemp-pref.dtd">
+  %AllowHTMLtempPrefsDTD;
 ]>
 
 <dialog id="allowhtmltempPrefs"
-		xmlns:html="http://www.w3.org/1999/xhtml"
-		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-		title="&allowhtmltemp.pref.title;"
-		buttons="accept"
-		onload="ahtFunctions.InitPrefs()">
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    title="&allowhtmltemp.pref.title;"
+    buttons="accept"
+    onload="ahtFunctions.InitPrefs()">
 
-	<vbox id="allowhtmltempPrefs-pane" style="background-color: white; padding: 1em; padding-top: 0; border: 1px solid lightgrey;">
+  <vbox id="allowhtmltempPrefs-pane" style="background-color: white; padding: 1em; padding-top: 0; border: 1px solid lightgrey;">
 
-		<html:div style="width: 50em;">
-			<html:p>&allowhtmltemp.pref.text1; &allowhtmltemp.pref.text2;</html:p>
-		</html:div>
+    <html:div style="width: 50em;">
+      <html:p>&allowhtmltemp.pref.text1; &allowhtmltemp.pref.text2;</html:p>
+    </html:div>
 
-		<html:fieldset>
-			<html:legend style="font-weight: bold;">&allowhtmltemp.pref.HeaderHtml.label; (&bodyMenu.label;)</html:legend>
-			<html:div>
-				<html:div style="width: 50%; float: left;">
-					<html:fieldset>
-						<html:legend>&allowhtmltemp.pref.AppHtml.label;</html:legend>
-						<radiogroup id="ahtAppHtmlRadiogroup">
-							<radio id="ahtAppHtmlBodyAllowHTML" label="&bodyAllowHTML.label; &allowhtmltemp.pref.notRecommended.label;"
-									oncommand="ahtFunctions.AhtSetMsgBodyAllowHTML()"/>
-							<radio id="ahtAppHtmlBodySanitized" label="&bodySanitized.label;"
-									oncommand="ahtFunctions.AhtSetMsgBodySanitized()"/>
-							<radio id="ahtAppHtmlBodyAsPlaintext" label="&bodyAsPlaintext.label;"
-									oncommand="ahtFunctions.AhtSetMsgBodyAsPlaintext()"/>
-							<radio id="ahtAppHtmlBodyAllParts" label="&bodyAllParts.label;"
-									oncommand="ahtFunctions.AhtSetMsgBodyAllParts()"/>
-						</radiogroup>
-					</html:fieldset>
-				</html:div>
-				<html:fieldset>
-					<html:legend>&allowhtmltemp.pref.ButtonHtml.label;</html:legend>
-					<radiogroup id="ahtButtonHtmlRadiogroup"
-								preference="extensions.allowhtmltemp.ButtonFunction">
-						<radio id="ahtButtonFunctionOriginalHTML" label="&bodyAllowHTML.label;"
-								accesskey="&bodyAllowHTML.accesskey;"
-								value="0"/>
-						<radio id="ahtButtonFunctionSanitizedHTML" label="&bodySanitized.label;"
-								accesskey="&bodySanitized.accesskey;"
-								value="1"/>
-						<radio id="ahtButtonFunctionPlaintext" label="&bodyAsPlaintext.label;"
-								accesskey="&bodyAsPlaintext.accesskey;"
-								value="2"/>
-					</radiogroup>
-				</html:fieldset>
-			</html:div>
-		</html:fieldset>
+    <html:fieldset style="padding-bottom: 0;">
+      <html:legend style="font-weight: bold;">&allowhtmltemp.pref.HeaderHtml.label; (&bodyMenu.label;)</html:legend>
+      <html:div>
+        <html:div style="width: 50%; float: left;">
+          <html:fieldset>
+            <html:legend>&allowhtmltemp.pref.AppHtml.label;</html:legend>
+            <radiogroup id="ahtAppHtmlRadiogroup">
+              <radio id="ahtAppHtmlBodyAllowHTML" label="&bodyAllowHTML.label; &allowhtmltemp.pref.notRecommended.label;"
+                  oncommand="ahtFunctions.AhtSetMsgBodyAllowHTML()"/>
+              <radio id="ahtAppHtmlBodySanitized" label="&bodySanitized.label;"
+                  oncommand="ahtFunctions.AhtSetMsgBodySanitized()"/>
+              <radio id="ahtAppHtmlBodyAsPlaintext" label="&bodyAsPlaintext.label;"
+                  oncommand="ahtFunctions.AhtSetMsgBodyAsPlaintext()"/>
+              <radio id="ahtAppHtmlBodyAllParts" label="&bodyAllParts.label;"
+                  oncommand="ahtFunctions.AhtSetMsgBodyAllParts()"/>
+            </radiogroup>
+          </html:fieldset>
+        </html:div>
+        <html:fieldset>
+          <html:legend>&allowhtmltemp.pref.ButtonHtml.label;</html:legend>
+          <radiogroup id="ahtButtonHtmlRadiogroup"
+              preference="extensions.allowhtmltemp.ButtonFunction">
+            <radio id="ahtButtonFunctionOriginalHTML" label="&bodyAllowHTML.label;"
+                accesskey="&bodyAllowHTML.accesskey;"
+                value="0"/>
+            <radio id="ahtButtonFunctionSanitizedHTML" label="&bodySanitized.label;"
+                accesskey="&bodySanitized.accesskey;"
+                value="1"/>
+            <radio id="ahtButtonFunctionPlaintext" label="&bodyAsPlaintext.label;"
+                accesskey="&bodyAsPlaintext.accesskey;"
+                value="2"/>
+          </radiogroup>
+        </html:fieldset>
+      </html:div>
+    </html:fieldset>
 
-		<html:div style="width: 50em;">
-			<html:p>&allowhtmltemp.pref.text3; &allowhtmltemp.pref.text4; &allowhtmltemp.pref.text5;</html:p>
-		</html:div>
+    <html:div style="width: 50em;">
+      <html:p>&allowhtmltemp.pref.text3; &allowhtmltemp.pref.text4; &allowhtmltemp.pref.text5;</html:p>
+    </html:div>
 
-		<html:fieldset>
-			<html:legend style="font-weight: bold;">&allowhtmltemp.pref.HeaderRemoteContent.label;</html:legend>
-			<vbox>
-				<checkbox id="ahtRemoteContentPrefCheckbox"
-				          label="&allowhtmltemp.pref.remoteContentOption.label;"
-				          accesskey="&allowhtmltemp.pref.remoteContentOption.accesskey;"
-				          preference="mailnews.message_display.disable_remote_image"
-				          oncommand="ahtFunctions.RefreshPrefsOption()"/>
-				<hbox class="indent">
-					<checkbox id="ahtForceRemoteContentPrefCheckbox"
-					          label="&allowhtmltemp.pref.forceRemoteContentOption.label;"
-					          accesskey="&allowhtmltemp.pref.forceRemoteContentOption.accesskey;"
-					          preference="extensions.allowhtmltemp.ForceRemoteContent"/>
-				 </hbox>
-			</vbox>
-		</html:fieldset>
+    <html:fieldset>
+      <html:legend style="font-weight: bold;">&allowhtmltemp.pref.HeaderRemoteContent.label;</html:legend>
+      <vbox>
+        <checkbox id="ahtRemoteContentPrefCheckbox"
+            label="&allowhtmltemp.pref.remoteContentOption.label;"
+            accesskey="&allowhtmltemp.pref.remoteContentOption.accesskey;"
+            preference="mailnews.message_display.disable_remote_image"
+            oncommand="ahtFunctions.RefreshPrefsOption()"/>
+        <hbox class="indent">
+          <checkbox id="ahtForceRemoteContentPrefCheckbox"
+              label="&allowhtmltemp.pref.forceRemoteContentOption.label;"
+              accesskey="&allowhtmltemp.pref.forceRemoteContentOption.accesskey;"
+              preference="extensions.allowhtmltemp.ForceRemoteContent"/>
+         </hbox>
+      </vbox>
+    </html:fieldset>
 
-		<html:fieldset>
-			<html:legend style="font-weight: bold;">&allowhtmltemp.pref.HeaderJavaScript.label;</html:legend>
-			<vbox>
-				<checkbox id="ahtJavaScriptPrefCheckbox"
-				          label="&allowhtmltemp.pref.jsOption.label;"
-				          accesskey="&allowhtmltemp.pref.jsOption.accesskey;"
-				          preference="javascript.enabled"
-				          oncommand="ahtFunctions.RefreshPrefsOption()"/>
-				<hbox class="indent">
-					<checkbox id="ahtJavaScriptTempPrefCheckbox"
-					          label="&allowhtmltemp.pref.jsTempOption.label;"
-					          accesskey="&allowhtmltemp.pref.jsTempOption.accesskey;"
-					          preference="extensions.allowhtmltemp.JavaScriptTemp"/>
-				</hbox>
-			</vbox>
-		</html:fieldset>
+    <html:fieldset style="margin-top: 1em;">
+      <html:legend style="font-weight: bold;">&allowhtmltemp.pref.HeaderJavaScript.label;</html:legend>
+      <vbox>
+        <checkbox id="ahtJavaScriptPrefCheckbox"
+            label="&allowhtmltemp.pref.jsOption.label;"
+            accesskey="&allowhtmltemp.pref.jsOption.accesskey;"
+            preference="javascript.enabled"
+            oncommand="ahtFunctions.RefreshPrefsOption()"/>
+        <hbox class="indent">
+          <checkbox id="ahtJavaScriptTempPrefCheckbox"
+              label="&allowhtmltemp.pref.jsTempOption.label;"
+              accesskey="&allowhtmltemp.pref.jsTempOption.accesskey;"
+              preference="extensions.allowhtmltemp.JavaScriptTemp"/>
+        </hbox>
+      </vbox>
+    </html:fieldset>
 
-		<html:fieldset>
-			<html:legend style="font-weight: bold;">&allowhtmltemp.pref.HeaderAttachments.label;</html:legend>
-			<vbox>
-				<checkbox id="ahtInlineAttachmentsPrefCheckbox"
-				          label="&allowhtmltemp.pref.inlineOption.label;"
-				          accesskey="&allowhtmltemp.pref.inlineOption.accesskey;"
-				          preference="mail.inline_attachments"
-				          oncommand="ahtFunctions.RefreshPrefsOption()"/>
-				<hbox class="indent">
-					<checkbox id="ahtInlineAttachmentsTempPrefCheckbox"
-					          label="&allowhtmltemp.pref.inlineTempOption.label;"
-					          accesskey="&allowhtmltemp.pref.inlineTempOption.accesskey;"
-					          preference="extensions.allowhtmltemp.InlineAttachmentsTemp"/>
-				</hbox>
-			</vbox>
-		</html:fieldset>
+    <html:fieldset style="margin-top: 1em;">
+      <html:legend style="font-weight: bold;">&allowhtmltemp.pref.HeaderAttachments.label;</html:legend>
+      <vbox>
+        <checkbox id="ahtInlineAttachmentsPrefCheckbox"
+            label="&allowhtmltemp.pref.inlineOption.label;"
+            accesskey="&allowhtmltemp.pref.inlineOption.accesskey;"
+            preference="mail.inline_attachments"
+            oncommand="ahtFunctions.RefreshPrefsOption()"/>
+        <hbox class="indent">
+          <checkbox id="ahtInlineAttachmentsTempPrefCheckbox"
+              label="&allowhtmltemp.pref.inlineTempOption.label;"
+              accesskey="&allowhtmltemp.pref.inlineTempOption.accesskey;"
+              preference="extensions.allowhtmltemp.InlineAttachmentsTemp"/>
+        </hbox>
+      </vbox>
+    </html:fieldset>
 
-	</vbox>
+  </vbox>
 
-	<script 
-		src="chrome://allowhtmltemp/content/AHTfunctions.js"
-		type="application/javascript"/>
-	<script 
-		src="chrome://messenger/content/mailWindowOverlay.js" 
-		type="application/javascript"/>
-	<script 
-		src="chrome://global/content/preferencesBindings.js" 
-		type="application/javascript"/>
-	<script 
-		src="chrome://allowhtmltemp/content/preferences.js" 
-		type="application/javascript"/>          
+  <script 
+    src="chrome://allowhtmltemp/content/AHTfunctions.js"
+    type="application/javascript"/>
+  <script 
+    src="chrome://messenger/content/mailWindowOverlay.js" 
+    type="application/javascript"/>
+  <script 
+    src="chrome://global/content/preferencesBindings.js" 
+    type="application/javascript"/>
+  <script 
+    src="chrome://allowhtmltemp/content/preferences.js" 
+    type="application/javascript"/>
 
 </dialog>

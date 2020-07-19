@@ -1,0 +1,536 @@
+{
+	"description": {
+		"message": "Report spam, unsollicited or fraudulent e-mails to Signal Spam.",
+		"description": "Description of the extension in page chrome://extensions"},
+	"report": {
+		"message": "REPORT",
+		"description": "Report label"},
+	"language": {
+		"message": "en",
+		"description": ""
+	},
+	"actionButton": {
+		"message": "Signal Spam - Click here to report to Signal Spam",
+		"description": ""
+	},
+	"documents./html/options.html": {
+		"message": "Signal Spam Options",
+		"description": ""
+	},
+	"documents./html/phishingAlert.html": {
+		"message": "Phishing Alert",
+		"description": ""
+	},
+	"notlistening1": {
+		"message": "This site is not a webmail compatible with Signal Spam extension. No report is possible.",
+		"description": ""
+	},
+	"notlistening2": {
+		"message": "However, if the webmail is loading please wait.",
+		"description": ""
+	},
+	"notready": {
+		"message": "Signal Spam extension is starting, please wait.",
+		"description": ""
+	},
+	"notauthentified": {
+		"message": "Your Signal Spam extension requires valid user credentials (user ID and password). Please check your credentials in the <a id='options' href='#options'>extension settings</a> and sign in.",
+		"description": ""
+	},
+	"notavailable": {
+		"message": "The Signal Spam extension is temporarly not available for this webmail. We are working to make this webmail compatible as soon as possible.",
+		"description": ""
+	},
+	"options.yes": {
+		"message": "Yes",
+		"description": ""
+	},
+	"options.no": {
+		"message": "No",
+		"description": ""
+	},
+	"options.title": {
+		"message": "Signal Spam extension settings",
+		"description": ""
+	},
+	"options.title2": {
+		"message": "Thanks for using the Signal Spam extension.<BR>To use this extension, you must sign in using your Signal Spam user ID and password. Please use the form below to identify yourself.",
+		"description": ""
+	},
+	"options.title3": {
+		"message": "<strong>If you have not yet registered as a Signal Spam user, please <a href='https://www.signal-spam.fr/espace-membre/inscription' target='_newtab'>click here</a> to register and then fill in the form below. This registration will allow you to use this extension for reporting spam or fraudulent e-mails, or being alerted when we detect a link to a fradulent website in your browser.",
+		"description": ""
+	},
+	"options.e-mail.description": {
+		"message": "Username to sign in on Signal Spam website - different from e-mail address",
+		"description": ""
+	},
+	"options.e-mail.label": {
+		"message": "User ID:",
+		"description": ""
+	},
+	"options.password.description": {
+		"message": "Le mot de passe",
+		"description": ""
+	},
+	"options.password.label": {
+		"message": "Password:",
+		"description": ""
+	},
+	"options.passwordLost.description": {
+		"message": "Si l'utilisateur n'a plus son mot de passe, il peut le retrouver via le site Signal Spam",
+		"description": ""
+	},
+	"options.passwordLost.label": {
+		"message": "If you can't remember your password, <a href='https://www.signal-spam.fr/espace-membre/mot-de-passe' target='_newtab' class='externallink'>click here</a> to ask for a new one.",
+		"description": ""
+	},
+	"options.CGU.description": {
+		"message": "General User Agreement",
+		"description": ""
+	},
+	"options.CGU.label": {
+		"message": "By using this extension, you acknowledge you red <a href='https://www.signal-spam.fr/cgu' target='_newtab' class='externallink'>this General User Agreeement</a> and agree to abide by all its terms and conditions.",
+		"description": ""
+	},
+	"options.oneclick.description": {
+		"message": "Option de signalement en 1 clic",
+		"description": ""
+	},
+	"options.oneclick.label": {
+		"message": "Report in one click:",
+		"description": ""
+	},
+	"options.oneclickDescription.description": {
+		"message": "Option de signalement en 1 clic",
+		"description": ""
+	},
+	"options.oneclickDescription.label": {
+		"message": "Select YES if you wish to report e-mail(s) in one click. After opening an e-mail or selecting e-mails, the report will be transmitted to Signal Spam at once when you click on the Signal Spam button in your browser toolbar.",
+		"description": ""
+	},
+	"options.URLDETECT.title": {
+		"message": "Deactivate fraudulent site (URLs) detection on opening a new browser tab or window (outside a webmail)",
+		"description": ""
+	},
+	"options.URLDETECT.description": {
+		"message": "Activating this feature (setting option above to Yes), you will be alerted if you reach a site identified as a fraudulent site. We strongly recommend you keep this feature activated (setting option to Yes).",
+		"description": ""
+	},
+	"options.URLDETECT.label": {
+		"message": "Fraudulent URL detection:",
+		"description": ""
+	},
+	"options.FEEDBACK.title": {
+		"message": "Feedback after report",
+		"description": ""
+	},
+	"options.FEEDBACK.description": {
+		"message": "If you'd like to receive a feedback after you report a fraudulent e-mail, set an e-mail address and activate the option below.",
+		"description": ""
+	},
+	"options.FEEDBACK.labelOption": {
+		"message": "You want a feedback after a report:",
+		"description": ""
+	},
+	"options.FEEDBACK.labele-mail": {
+		"message": "e-mail address to receive the feedback:",
+		"description": ""
+	},
+	"options.FEEDBACK.legal": {
+		"message": "Your e-mail address is held in strict confidence and will only be used for sending feedback e-mails. It will not be shared with any third party or used for commercial purposes.",
+		"description": ""
+	},
+	"options.REMINDER.title": {
+		"message": "Reminder for how to use this extension in webmails:",
+		"description": ""
+	},
+	"options.REMINDER.label": {
+		"message": "Reminder frequency every <span id='frequency'>X</span> days:",
+		"description": ""
+	},
+	"options.ANALYTICS.title": {
+		"message": "Extension usage statistics:",
+		"description": ""
+	},
+	"options.ANALYTICS.description": {
+		"message": "By activating this option, you acknowledge some anonymous data on your extension usage will be transmitted to VERIFROM for analysis and service improvement.",
+		"description": ""
+	},
+	"options.ANALYTICS.label": {
+		"message": "Enable usage data transmission :",
+		"description": ""
+	},
+	"options.movereport.title": {
+		"message": "Archive all reported e-mails:",
+		"description": ""
+	},
+	"options.movereport.description": {
+		"message": "Reported e-mails will be automatically moved to the Spam folder.",
+		"description": ""
+	},
+	"options.markspam.title": {
+		"message": "Mark e-mails flagged as SPAM:",
+		"description": ""
+	},
+	"options.markspam.description": {
+		"message": "Reported e-mails will automatically be marked as SPAM after reporting.",
+		"description": ""
+	},
+	"options.markread.title": {
+		"message": "Mark e-mails flagged as read:",
+		"description": ""
+	},
+	"options.markread.description": {
+		"message": "Reported e-mails will automatically be marked as read after reporting.",
+		"description": ""
+	},
+	"options.save": {
+		"message": "Save",
+		"description": ""
+	},
+	"options.saved": {
+		"message": "Parameters saved...",
+		"description": ""
+	},
+	"options.invalidCredentials": {
+		"message": "The user ID and/or password is invalid. You must sign in to be able to use this extension. Please check information above.",
+		"description": ""
+	},
+	"options.error403": {
+		"message": "Please confirm your account before reporting. An email has been sent to you containing the confirmation link (remember to check the Spam folder).",
+		"description": ""
+	},
+	"options.noConnection": {
+		"message": "Cannot connect to Signal Spam. Please check your internet connection and try again.",
+		"description": ""
+	},
+	"options.missingPassword": {
+		"message": "Your password is missing.",
+		"description": ""
+	},
+	"options.invalidUserId": {
+		"message": "This User ID is invalid. The user ID is different from your e-mail address. Please set the user ID you chose when you registered on Signal Spam website.",
+		"description": ""
+	},
+	"options.validateAgreement": {
+		"message": "You must accept the General User Agreement.",
+		"description": ""
+	},
+	"options.errorVerifyingCredentials": {
+		"message": "Error - Impossible to check user ID and password.",
+		"description": ""
+	},
+	"options.error1": {
+		"message": "e-mail address is required if you wish to receive reports feedbacks.",
+		"description": ""
+	},
+	"options.error2": {
+		"message": "e-mail address seems incorrect (required for reports feedbacks).",
+		"description": ""
+	},
+	"options.troublesReport.title": {
+		"message": "<strong>Send an extension failure report to Signal Spam :</strong>",
+		"description": ""
+	},
+	"options.troublesReport.title2": {
+		"message": "Reporting failure requires, previsouly, to <a href='https://assistance.signal-spam.fr/' target='_assistance' class='externallink'>contact Signal Spam user assistance</a>",
+		"description": ""
+	},
+	"options.troublesReport.ticket": {
+		"message": "Assistance ticket ID:",
+		"description": ""
+	},
+	"options.troublesReport.ticket2": {
+		"message": "(You get a ticket ID after having contacted <a href='https://assistance.signal-spam.fr/' target='_assistance' class='externallink'>Signal Spam assistance</a>)",
+		"description": ""
+	},
+	"options.troublesReport.tickete-mail": {
+		"message": "e-mail to get answer:",
+		"description": ""
+	},
+	"options.troublesReport.cause": {
+		"message": "Precise the failure encountered:",
+		"description": ""
+	},
+	"options.troublesReport.send": {
+		"message": "SEND",
+		"description": ""
+	},
+	"contentScript.notificationMessage.title": {
+		"message": "Signal Spam",
+		"description": ""
+	},
+	"contentScript.notificationMessage.nomail1": {
+		"message": "To report unsollicited e-mail, select e-mails or open an e-mail in your webmail and click on the extension button in the browser toolbar.",
+		"description": ""
+	},
+	"contentScript.notificationMessage.nomail2": {
+		"message": "To report unsollicited e-mail, select e-mails or open an e-mail in your webmail and click on the extension button in the browser toolbar. Standard mode is activated in your webmail, you cannot select a conversation (thread of e-mails). We recommend you deactivate Standard Mode in your webmail preferences.",
+		"description": ""
+	},
+	"contentScript.notificationMessage.nomail3": {
+		"message": "To report unsollicited e-mail, open an e-mail in your webmail and click on the extension button in the browser toolbar.",
+		"description": ""
+	},
+	"contentScript.notificationMessage.error1": {
+		"message": "Signal Spam extension encountered an error. Parameters not loaded. Please refresh the current page in your browser.",
+		"description": ""
+	},
+	"contentScript.notificationMessage.error2": {
+		"message": "Signal Spam extension encountered an error while retrieving e-mails for report. Please retry or request assistance from Signal Spam support if this problem remains.",
+		"description": ""
+	},
+	"contentScript.sidebar.title": {
+		"message": "Signaler c'est agir",
+		"description": ""
+	},
+	"contentScript.sidebar.copyright": {
+		"message": " Developed by ",
+		"description": ""
+	},
+	"contentScript.sidebar.calltoactionsingle": {
+		"message": "If you wish to report the selected or displayed e-mail as spam or unsollicited e-mail, click on the button below",
+		"description": ""
+	},
+	"contentScript.sidebar.calltoaction": {
+		"message": "If you wish to report the selected e-mails as spam or unsollicited e-mails,  click on the button below",
+		"description": ""
+	},
+	"contentScript.sidebar.disclosure": {
+		"message": "By reporting e-mail(s), the(ir) content will be transmitted to our services for analysis purposes and deployment of <a href='https://www.signal-spam.fr/comment-sont-traites-vos-signalements' class='externallink' target='_signalspam'>appropriate counter-measures </a>.<BR>Check <a href='https://www.signal-spam.fr/espace-membre' class='externallink' target='_signalspam'>your previous reports</a> on your Signal Spam account webpage.",
+		"description": ""
+	},
+	"contentScript.sidebar.disclosureSingle": {
+		"message": "By reporting e-mail, its content will be transmitted to our services for analysis purposes and deployment of <a href='https://www.signal-spam.fr/comment-sont-traites-vos-signalements' class='externallink' target='_signalspam'>appropriate counter-measures </a>.<BR>Check <a href='https://www.signal-spam.fr/espace-membre' class='externallink' target='_signalspam'>your previous reports</a> on your Signal Spam account webpage.",
+		"description": ""
+	},
+	"contentScript.sidebar.numbering": {
+		"message": "You have selected <span id='VFSELECTEDMAILS'></span> e-mails to report",
+		"description": ""
+	},
+	"contentScript.sidebar.emailfrom": {
+		"message": "From:",
+		"description": ""
+	},
+	"contentScript.sidebar.emailsubject": {
+		"message": "Subject:",
+		"description": ""
+	},
+	"contentScript.sidebar.buttonlabel": {
+		"message": "REPORT",
+		"description": ""
+	},
+	"contentScript.sidebar.phishingtitle": {
+		"message": "Fraudulent links detected",
+		"description": ""
+	},
+	"contentScript.sidebar.phishingdetected": {
+		"message": "Links to fraudulent sites have been detected in the mail(s) displayed in your webmail",
+		"description": ""
+	},
+	"contentScript.sidebar.phishinglinks": {
+		"message": "Each concerned link is marked with the Signal Spam logo. We strongly recommend you do not click such marked link or be the most careful.",
+		"description": ""
+	},
+	"contentScript.sidebar.phishingreport": {
+		"message": "You can still report fraudulent e-mail(s) details for analysis and possibly new counter-measures operations",
+		"description": ""
+	},
+	"contentScript.sidebar.phishingfalsepos": {
+		"message": "If you consider this e-mail as legitimate and none of the links is fraudulent, report this to Signal Spam : ",
+		"description": ""
+	},
+	"contentScript.sidebar.phishingfalseposbutton": {
+		"message": "False-Positive",
+		"description": ""
+	},
+	"contentScript.sidebar.zoom": {
+		"message": "Click here to view reported data.",
+		"description": ""
+	},
+	"contentScript.sidebar.reportOnGoing": {
+		"message": "Please wait...",
+		"description": ""
+	},
+	"contentScript.sidebar.reportTransmission": {
+		"message": "Thank you for your report, transmission is ongoing.",
+		"description": ""
+	},
+	"contentScript.sidebar.buttonlabelReported": {
+		"message": "THANKS",
+		"description": ""
+	},
+	"contentScript.sidebar.singlereportok": {
+		"message": "The reported e-mail has been transmitted to Signal Spam",
+		"description": ""
+	},
+	"contentScript.sidebar.multiplereportsok": {
+		"message": "The reported e-mails have been transmitted to Signal Spam",
+		"description": ""
+	},
+	"contentScript.sidebar.sendingsinglereport": {
+		"message": "Transmitting report... please wait",
+		"description": ""
+	},
+	"contentScript.sidebar.sendingmultiplereports": {
+		"message": "Transmitting reports... please wait",
+		"description": ""
+	},
+	"contentScript.sidebar.reportsNumber": {
+		"message": "Number of reports to transmit: ",
+		"description": ""
+	},
+	"contentScript.sidebar.multiplereportsfailed": {
+		"message": "An error occured while transmitting one of the reports.",
+		"description": ""
+	},
+	"contentScript.sidebar.successNumber": {
+		"message": "Number of transmitted reports: ",
+		"description": ""
+	},
+	"contentScript.sidebar.failureNumber": {
+		"message": "Number of failed transmissions: ",
+		"description": ""
+	},
+	"contentScript.sidebar.failureReason": {
+		"message": "Error code: ",
+		"description": ""
+	},
+	"contentScript.sidebar.newversionavailable": {
+		"message": "A new version of the Signal Spam extension is available.",
+		"description": ""
+	},
+	"contentScript.sidebar.newversionnumber": {
+		"message": "New version: <span id='VERSIONNUMBER'></span>",
+		"description": ""
+	},
+	"contentScript.sidebar.currentversionnumber": {
+		"message": "Current version: <span id='CURRENTVERSIONNUMBER'></span>",
+		"description": ""
+	},
+	"contentScript.sidebar.calltoupdate": {
+		"message": "You should update this extension to take benefits of new features.",
+		"description": ""
+	},
+	"contentScript.sidebar.howtoupdate": {
+		"message": "To proceed to update, open the Add-Ons list tab in your browser (chrome://extensions/), then click on the button in the right-upper corner to update extensions.",
+		"description": ""
+	},
+	"contentScript.sidebar.support": {
+		"message": "You may submit a support request to Signal : <a href='https://assistance.signal-spam.fr/index.php' class='externallink' target='_signalspam'>click here</a>.",
+		"description": ""
+	},
+	"contentScript.reminder.title": {
+		"message": "Signal Spam extension - Reminder",
+		"description": ""
+	},
+	"contentScript.reminder.message1": {
+		"message": "How to report a spam or phishing e-mail: open or select the e-mail(s) in your Webmail, then click on the extension button ",
+		"description": ""
+	},
+	"contentScript.reminder.message2": {
+		"message": "in the browser toolbar.</p><p>See this reminder periodically?",
+		"description": ""
+	},
+	"contentScript.reminder.message3": {
+		"message": "can also be modified in options",
+		"description": ""
+	},
+	"contentScript.reminder.message4": {
+		"message": "Every <span id=\"frequencyDisplayed\"></span> days",
+		"description": ""
+	},
+	"contentScript.reportStatus.success": {
+		"message": "Thank You",
+		"description": ""
+	},
+	"contentScript.reportStatus.error": {
+		"message": "Unknown error",
+		"description": ""
+	},
+	"contentScript.reportStatus.invalidpassword": {
+		"message": "User ID or password is invalid",
+		"description": ""
+	},
+	"contentScript.reportStatus.error403": {
+		"message": "Please confirm your account before reporting. An e-mail has been sent to you and contains the confirmation link (remember to check the spam folder).",
+		"description": ""
+	},
+	"phishingAlert.warning": {
+		"message": "WARNING",
+		"description": ""
+	},
+	"phishingAlert.message1": {
+		"message": "The page, referenced by the URL below, being opened in your browser has been identified as fraudulent.",
+		"description": ""
+	},
+	"phishingAlert.message2": {
+		"message": "We strongly recommend you do not continue your navigation on this site.",
+		"description": ""
+	},
+	"phishingAlert.message3": {
+		"message": "",
+		"description": ""
+	},
+	"phishingAlert.return": {
+		"message": "Go back to previous page",
+		"description": ""
+	},
+	"phishingAlert.buttonlabel": {
+		"message": "&#9888; I understood risks, however I still want to visit this site",
+		"description": ""
+	},
+	"phishingAlert.false1": {
+		"message": "If you consider this alert as a \"false positive\" phishing detection,",
+		"description": ""
+	},
+	"phishingAlert.false2": {
+		"message": " and this URL is not fraudulent: ",
+		"description": ""
+	},
+	"phishingAlert.false3": {
+		"message": "for letting us know and investigate on its status.",
+		"description": ""
+	},
+	"phishingAlert.buttonlabel2": {
+		"message": "click here",
+		"description": ""
+	},
+	"phishingAlert.falsePositiveOK": {
+		"message": "Thanks for this information, we'll check this site",
+		"description": ""
+	},
+	"reportUrl.message1": {
+		"message": "If you wish to report the current page as a fraudulent website, click on the REPORT button below.",
+		"description": ""
+	},
+	"reportUrl.message2": {
+		"message": "The content of this web site will be analyzed, and appropriate counter-measures will be taken if a fraud attempt is detected.",
+		"description": ""
+	},
+	"reportUrl.buttonlabel": {
+		"message": "REPORT",
+		"description": ""
+	},
+	"update.updated": {
+		"message": "The extension has been updated",
+		"description": ""
+	},
+	"update.more": {
+		"message": "More details",
+		"description": ""
+	},
+	"critical.noparams": {
+		"message": "Extension could not start",
+		"description": ""
+	},
+	"reports.title": {
+		"message": "Your previous reports",
+		"description": ""
+	},
+	"popupmenu.tooltip": {
+		"message": "Hold down the Shift key and click<BR>on the extension button to display this menu",
+		"description": ""
+	}
+}

@@ -12,7 +12,6 @@
  * 		   Holger Lehmann <holger.lehmann_AT_catworkx.de>
  *
  */
-Components.utils.import("resource://gre/modules/FileUtils.jsm");
 const Ci = Components.interfaces;
 const Cu = Components.utils;
 const Cc = Components.classes;
@@ -20,6 +19,9 @@ Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://gre/modules/NetUtil.jsm");
 Cu.import("resource://gre/modules/XPCOMUtils.jsm");
 Cu.import("resource://gre/modules/FileUtils.jsm");
+// EPOQ CHANGES START
+Cu.import("chrome://createjiraissue/content/epoq/request-fixes.js");
+// EPOQ CHANGES END
 
 var aConsoleService = Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService);
 var prefs = Components.classes["@mozilla.org/preferences-service;1"]
@@ -41,26 +43,19 @@ function onLoad() {
 	var urls = new Array();
 	var sizes = new Array();
 
-	aConsoleService.logStringMessage("[onLoad]: arguments: " + window.arguments);
-	aConsoleService.logStringMessage("[onLoad]: selectedIds: " + selectedIds);
-	aConsoleService.logStringMessage("[onLoad]: attachments: " + attachments);
-	aConsoleService.logStringMessage("[onLoad]: names: " + names);
-	aConsoleService.logStringMessage("[onLoad]: mimeTypes: " + mimeTypes);
 
 	try {
 		// Fixes CWXTP-130
 		if ( selectedIds && attachments && names && mimeTypes ) {
 			var i;
 			for (i = 0; i < selectedIds.length; i++) {
-				aConsoleService.logStringMessage("[onLoad]: i: " + i);
-				aConsoleService.logStringMessage("[onLoad]: selectedIds[i]: " + selectedIds[i]);
 				urls.push(attachments[selectedIds[i]].url);
 				sizes.push(attachments[selectedIds[i]].size);
 			}
 			uploadAttachments(urls, names, sizes, mimeTypes);
 		}
 	} catch (e) {
-		aConsoleService.logStringMessage("[onLoad]: exception while accessing attachments: " + e);
+		console.log("[onLoad]: exception while accessing attachments: " + e);
 	}
 }
 
@@ -86,7 +81,11 @@ function uploadAttachments(urls, fileNames, fileSizes, mimeTypes) {
 		tempHbox.appendChild(tempField);
 		tempHbox.appendChild(tempProgress);
 		vbox.appendChild(tempHbox);
-		var channel = Services.io.newChannelFromURI(url); // FIXME: Obsolete since Gecko 48 -> https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIIOService#newChannelFromURI2()
+		console.log("###url: " + url);
+		//EPOQ CHANGE START
+		// var channel = Services.io.newChannelFromURI(url); // FIXME: Obsolete since Gecko 48 -> https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIIOService#newChannelFromURI2()
+		var channel = Services.io.newChannelFromURI(url,null,Services.scriptSecurityManager.getSystemPrincipal(),null,Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL,Ci.nsIContentPolicy.TYPE_OTHER);
+		//EPOQ CHANGE END
 		var listener = {
 		    issueKey : "",
 		    resturl : "",
@@ -120,11 +119,11 @@ function uploadAttachments(urls, fileNames, fileSizes, mimeTypes) {
 				this.success = true;
 				this.attachFile();
 			},
-
-			onDataAvailable : function(/* nsIRequest */aRequest, /* nsISupports */
-					aContext,
+			//EPOQ CHANGE START
+			onDataAvailable : function(/* nsIRequest */aRequest,
 					/* nsIInputStream */aStream, /* int */aOffset, /* int */
 					aCount) {
+				//EPOQ CHANGE END
 				// Fortunately, we have in Gecko 2.0 a nice wrapper
 				this.data = this.data + NetUtil.readInputStreamToString(aStream, aCount);
 				var val = this.progressMeter.getAttribute('value');
@@ -142,7 +141,7 @@ function uploadAttachments(urls, fileNames, fileSizes, mimeTypes) {
 		listener.mimeType = mimeTypes[i];
 		listener.finish = finish;
 		listener.progressMeter = tempProgress;
-		listener.hbox = tempHbox,
+		listener.hbox = tempHbox;
 		// store listener in order to ensure the have all finished
 		listeners.push(listener);
 
@@ -175,9 +174,11 @@ function _uploadViaREST(listener) {
 	var credentials = btoa(window.arguments[0].username + ":" + window.arguments[0].password);
 
 	oReq.open("POST", listener.resturl, true, window.arguments[0].username, window.arguments[0].password);
-	oReq.setRequestHeader("X-Atlassian-Token","nocheck"); // taken from the docs
+	// EPOQ CHANGES START
+	oReq.setRequestHeader("X-Atlassian-Token","no-check"); // taken from the docs
 	oReq.setRequestHeader("Authorization","Basic " + credentials);
-	oReq.setRequestHeader("User-Agent","");
+	oReq.setRequestHeader("User-Agent","xx");
+	// EPOQ CHANGES END
 	// from: https://developer.mozilla.org/en-US/Add-ons/Code_snippets/File_I_O
 	var tempDirDefault = prefs.getBoolPref("tempDirDefault");
 	var tempDirAlternate = prefs.getCharPref("tempDirAlternate");
@@ -198,7 +199,7 @@ function _uploadViaREST(listener) {
 		try {
 			aFile = FileUtils.getFile("TmpD", [ listener.fileName ]);
 		} catch (e2) {
-			aConsoleService.logStringMessage("[updateProgress]: exception while handling file: " + e2);
+			console.log("[updateProgress]: exception while handling file: " + e2);
 			listener.finished = true;
 			transferFailed(null);
 		}
@@ -215,27 +216,30 @@ function _uploadViaREST(listener) {
 			stream.close();
 		}
 	} catch (e) {
-		aConsoleService.logStringMessage("[updateProgress]: exception while creating / writing into file: " + e);
+		console.log("[updateProgress]: exception while creating / writing into file: " + e);
 		listener.finished = true;
 		transferFailed(null);
 	}
 	var formData = new FormData();
-	//aConsoleService.logStringMessage("[updateProgress]: aFile: " + aFile);
-	//aConsoleService.logStringMessage("[updateProgress]: aFile.path: " + aFile.path);
-	// taken from https://github.com/mozilla/gecko-dev/blob/master/toolkit/crashreporter/CrashSubmit.jsm:207
 	let promises = [File.createFromFileName(aFile.path).then(file => {
-			//aConsoleService.logStringMessage("[updateProgress.promises]: file: " + file);
-        	formData.append("file", file, listener.fileName);
-			//aConsoleService.logStringMessage("[updateProgress.promises]: sending request: ");
-        	oReq.send(formData);
-    	})
-    ];
+		console.log("[updateProgress.promises]: file: " + file);
+      	//EPOQ CHANGE START
+		// var today = new Date();
+		// var fileNameDate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate() + '-' + today.getHours() + ":" + today.getMinutes() + '-' + listener.fileName;
+		// formData.append("file", file, fileNameDate);
+		formData.append("file", file, listener.fileName);
+		oReq.send(formData);
+		oReq.onload = function() {
+			console.log("###oReq.response: " + oReq.response);
+		};
+        //EPOQ CHANGE END
+	})];
 	// progress on transfers from the server to the client (downloads)
 	function updateProgress (oEvent) {
 		if (oEvent.lengthComputable) {
 			listener.progressMeter.setAttribute('max', oEvent.total);
 			listener.progressMeter.setAttribute('value', oEvent.loaded);
-			var percentComplete = oEvent.loaded / oEvent.total;
+			//var percentComplete = oEvent.loaded / oEvent.total;
 		} else {
 			// Unable to compute progress information since the total size is unknown
 			listener.progressMeter.setAttribute("mode","undetermined");
@@ -256,7 +260,7 @@ function _uploadViaREST(listener) {
 				aFile.remove(false);
 			}
 		} catch (e) {
-			aConsoleService.logStringMessage("[transferComplete]: Exception while removing the file: " + e);
+			console.log("[transferComplete]: Exception while removing the file: " + e);
 		}
 		if ( finish != null ) {
 			finish();
@@ -264,14 +268,14 @@ function _uploadViaREST(listener) {
 	}
 
 	function transferFailed(evt) {
-		aConsoleService.logStringMessage("[transferFailed]: An error occurred while transferring the file.");
+		console.log("[transferFailed]: An error occurred while transferring the file.");
 		try {
 			var keepTempFiles = prefs.getBoolPref("keepTempFiles");
 			if (keepTempFiles == false) {
 				aFile.remove(false);
 			}
 		} catch (e) {
-			aConsoleService.logStringMessage("[transferFailed]: Exception while removing the file: " + e);
+			console.log("[transferFailed]: Exception while removing the file: " + e);
 		}
 	}
 
@@ -282,7 +286,7 @@ function _uploadViaREST(listener) {
 				aFile.remove(false);
 			}
 		} catch (e) {
-			aConsoleService.logStringMessage("[transferCanceled]: Exception while removing the file: " + e);
+			console.log("[transferCanceled]: Exception while removing the file: " + e);
 		}
 		abort();
 	}

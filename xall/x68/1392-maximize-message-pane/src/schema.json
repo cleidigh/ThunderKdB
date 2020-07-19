@@ -1,0 +1,85 @@
+[
+  {
+    "namespace": "maxMsgPaneApi",
+    "functions": [
+      {
+        "name": "setFocusThreadPane",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "collapse",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "elementID",
+            "type": "string",
+            "description": "Element ID to be collapsed"
+          },
+          {
+            "name": "collapse",
+            "type": "boolean",
+            "description": "Collapse or not"
+          }
+        ]
+      },
+      {
+        "name": "isCollapsed",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "elementID",
+            "type": "string",
+            "description": "Target element ID"
+          }
+        ]
+      },
+      {
+        "name": "setFlex",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "elementID",
+            "type": "string",
+            "description": "Element ID to be flexed"
+          },
+          {
+            "name": "flex",
+            "type": "integer",
+            "description": "Flex value"
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onDblClick",
+        "type": "function",
+        "description": "Fires when the user dboule-clicks anywhere on the splitter or message header in the main window.",
+        "parameters": [
+          {
+            "name": "elementId",
+            "type": "string",
+            "description": "The ID of the element the user double-clicked."
+          },
+          {
+            "type": "integer",
+            "name": "x",
+            "minimum": 0,
+            "description": "The X position of the mouse when the user double-clicked."
+          },
+          {
+            "type": "integer",
+            "name": "y",
+            "minimum": 0,
+            "description": "The Y position of the mouse when the user double-clicked."
+          }
+        ]
+      }
+    ]
+  }
+]

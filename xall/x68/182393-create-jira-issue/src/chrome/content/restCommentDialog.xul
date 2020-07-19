@@ -10,8 +10,9 @@
 
 	<script src="restCommentDialog.js"/>
 	<menupopup id="attachmentsContextMenu">
-		<menuitem label="&context.row.rename.label;" oncommand="renameDialog();" />
-		<menuitem label="&context.row.origname.label;" oncommand="originalName();" />
+		<menuitem id="menuitemAttachmentRenameDialog" label="&context.row.rename.label;" />
+		<menuitem id="menuitemAttachmentPrefixFilename" label="&context.row.prefixfilename.label;" />
+		<menuitem id="menuitemAttachmentOriginalName" label="&context.row.origname.label;" />
 	</menupopup>
 	<!-- Page 1; filter, query & results -->
 	<wizardpage pageid="basedata" id="wiz_page_basedata">
@@ -90,7 +91,12 @@
 			</columns>
 			<rows>
 				<row>
-					<label class="header">&search.results.label;</label>
+					<!-- EPOQ CHANGES START -->
+					<hbox>
+						<label flex="1" class="header">&search.results.label;</label>
+						<checkbox id="hide-closed-issues" label="Hide closed" oncommand="onHideClosedChanged(this);"/>
+					</hbox>
+					<!-- EPOQ CHANGES END -->
 				</row>
 				<row flex="1">
 					<tree id="searchresultstree" flex="1" treelines="false" seltype="single" onselect="searchTreeSelected(event.target);" ondblclick="if (document.getElementById('commentWizard').canAdvance == true) document.getElementById('commentWizard').advance(null);" editable="false">
@@ -164,6 +170,14 @@
 					<splitter orient="vertical" collapse="before">
 						<grippy/>
 					</splitter>
+					<!-- EPOQ CHANGES START -->
+					<row>
+						<hbox>
+							<label flex="1" class="header">&transform.tables.label;</label>
+							<checkbox id="table-2-jira" oncommand="onTable2JiraChanged(this);"/>
+						</hbox>
+					</row>
+					<!-- EPOQ CHANGES END -->
 					<row flex="8">
 						<label control="fld_comment" accesskey="&wizard.field.comment.accesskey;" value="&wizard.field.comment.label;"/>
 						<html:textarea id="fld_comment"/>
@@ -184,20 +198,16 @@
 		</groupbox>
 		<vbox>
 			<caption label="&dialog.table.attachments.label;" />
-			<listbox seltype="multiple" id="attachmentList" rows="10"
+			<richlistbox seltype="multiple" id="attachmentList" rows="10"
 				width="650" contextmenu="attachmentsContextMenu">
 				<listhead>
-					<listheader label="&dialog.row.id.label;" width="20" />
-					<listheader label="&dialog.row.name.label;" width="200" />
-					<listheader label="&dialog.row.rename.label;" width="200" />
-					<listheader label="&dialog.row.size.label;" width="100" />
-					<listheader label="&dialog.row.mime.label;" width="150" />
+					<label class="header" flex="1" value="&dialog.row.id.label;" width="20" />
+					<label class="header" flex="1" value="&dialog.row.name.label;" width="200" />
+					<label class="header" flex="1" value="&dialog.row.rename.label;" width="200" />
+					<label class="header" flex="1" value="&dialog.row.size.label;" width="100" />
+					<label class="header" flex="1" value="&dialog.row.mime.label;" width="150" />
 				</listhead>
-				<listcols>
-					<listcol />
-					<listcol flex="1" />
-				</listcols>
-			</listbox>
+			</richlistbox>
 			<hbox>
 				<spacer flex="1"/>
 				<button label="&wizard.attachments.reload;" oncommand="_showAttachments();" class="reload"/>

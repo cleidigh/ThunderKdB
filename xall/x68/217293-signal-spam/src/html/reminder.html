@@ -1,0 +1,17 @@
+<span style="font-weight:bold;color:black;">
+    <p>
+        <span data-verifromlocalize="contentScript.reminder.message1">Pour signaler un spam ou un e-mail de Phishing, ouvrez l'e-mail ou sélectionnez les e-mails à signaler dans votre Webmail, puis cliquez sur l'icône </span><img style="height: 19px;vertical-align: middle;"><span data-verifromlocalize="contentScript.reminder.message2"> située dans la barre d'outils de votre navigateur.
+        </span>(<span style="text-decoration: underline; cursor: pointer; color: grey;" id="options" data-verifromlocalize="contentScript.reminder.message3">modifiable dans les options</span>)
+    </p>
+<div class="onoffswitch">
+    <input checked="" id="myonoffswitch" class="onoffswitch-checkbox" name="onoffswitch" type="checkbox">
+    <label for="myonoffswitch" class="onoffswitch-label">
+        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+        <span class="onoffswitch-switch"></span>
+    </label>
+</div>
+<div style="display: inline-block;margin-left: 1em;position:relative; top:-26px; left:92px;">
+    <span data-verifromlocalize="contentScript.reminder.message4">Tous les <span id="frequencyDisplayed">5</span> jours:</span>
+</div>
+    <input step="5" value="5" max="25" min="5" id="frequencyRange" type="range">
+</span>

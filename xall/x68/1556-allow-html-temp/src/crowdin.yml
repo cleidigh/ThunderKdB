@@ -1,0 +1,7 @@
+files:
+  - source: /chrome/locale/en/*.*
+    translation: /chrome/locale/%locale%/%original_file_name%
+    escape_special_characters: 0
+  - source: /_locales/en/*.json
+    translation: /_locales/%locale_with_underscore%/%original_file_name%
+    escape_special_characters: 0

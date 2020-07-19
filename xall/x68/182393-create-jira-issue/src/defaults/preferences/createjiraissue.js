@@ -22,3 +22,6 @@ pref("extensions.createjiraissue.tempDirDefault",true);
 pref("extensions.createjiraissue.tempDirAlternate","");
 pref("extensions.createjiraissue.keepTempFiles",false);
 pref("extensions.createjiraissue.addOnTempoSupport",false);
+// EPOQ CHANGE START
+pref("general.config.sandbox_enabled", false);
+// EPOQ CHANGE END
