@@ -149,7 +149,9 @@ function updateHeader() {
 }
 
 function showErrors() {
-    if (false === ncc.public_shares_enabled) {
+    if (ncc.laststatus) {
+        popup.error(ncc.laststatus);
+    } else if (false === ncc.public_shares_enabled) {
         popup.error('sharing_off');
     } else {
         if (ncc.enforce_password && (!useDlPassword.checked || (!downloadPassword.value && !useGeneratedDlPassword.checked))) {
@@ -213,7 +215,7 @@ async function handleFormData() {
 
     copyData();
 
-    // Get info from cloud
+    // Check login and get info from cloud
     await updateCloudInfo();
 
     // Try to convert the password into App Token if necessary
@@ -238,11 +240,14 @@ async function handleFormData() {
             .forEach(element => {
                 element.value = element.value.trim();
             });
+        // Remove extra slashes from folder path
         storageFolder.value = "/" + storageFolder.value.split('/').filter(e => "" !== e).join('/');
 
         const url = new URL(serverUrl.value);
+        // Remove double slashes from url
         const shortpath = url.pathname.split('/').filter(e => "" !== e);
 
+        // If user pasted complete url of file app, extract cloud base url
         if (shortpath[shortpath.length - 1] === 'files' && shortpath[shortpath.length - 2] === 'apps') {
             shortpath.pop();
             shortpath.pop();
@@ -252,6 +257,7 @@ async function handleFormData() {
         }
         serverUrl.value = url.origin + '/' + shortpath.join('/');
 
+        // Make sure, url end with a slash
         if (!serverUrl.value.endsWith('/')) {
             serverUrl.value += '/';
         }
@@ -277,11 +283,12 @@ async function handleFormData() {
     }
 
     /**
-     * Try login data by fetching Quota. If that succeeds, get capabilities and
-     * store them in the Cloudconnection object,inform user about it.
+     * Try login data by fetching user id. If that succeeds, get quota and capabilities and
+     * store them in the Cloudconnection object.
      */
     async function updateCloudInfo() {
         let answer = await ncc.updateUserId();
+        ncc.laststatus = null;
         if (answer._failed) {
             // If login failed, we might be using an app token which requires a lowercase user name
             const oldname = ncc.username;
@@ -293,7 +300,7 @@ async function handleFormData() {
             }
         }
         if (answer._failed) {
-            popup.error(answer.status);
+            ncc.laststatus = answer.status;
         } else {
             ncc.forgetCapabilities();
             await Promise.all([ncc.updateFreeSpaceInfo(), getCapabilities(),]);

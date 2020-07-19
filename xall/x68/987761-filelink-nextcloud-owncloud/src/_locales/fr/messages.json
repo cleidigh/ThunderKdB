@@ -86,6 +86,9 @@
   "error_401": {
     "message": "Échec de la connexion. Vérifiez le nom d'utilisateur et le mot de passe."
   },
+  "error_503": {
+    "message": "Maintenance du serveur en cours. Veuillez réessayer plus tard."
+  },
   "error_sharing_off": {
     "message": "Le partage n'est pas activé sur ce serveur Cloud. Contactez votre administrateur pour l'activer."
   },
@@ -139,6 +142,10 @@
   "status_sharing": {
     "message": "Partage du fichier"
   },
+  "status_checkingspace": {
+    "description": "This is a littel tricky, because it has to work seperately as a status message and in the error message (see the other status_ strings in messages.json)",
+    "message": "Vérification de l'espace disponible"
+  },
   "status_error": {
     "description": "The $1 will be replaced with one of the states above, eg 'Sharing failed'. You may put text before and after it. If this doesn't work in your language, please tell me.",
     "message": "$1 : échec"
@@ -148,5 +155,8 @@
   },
   "warn_nonascii_password": {
     "message": "Votre mot de passe contient des caractères qui semblent poser un problème d'identification. Veuillez utiliser plutôt un mot de passe d'application."
+  },
+  "advanced_options": {
+    "message": "Options avancées"
   }
 }

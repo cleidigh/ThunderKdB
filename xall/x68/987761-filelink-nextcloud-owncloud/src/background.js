@@ -60,8 +60,15 @@ async function updateAccount(accountId) {
     await ncc.load();
     await upgradeOldConfigurations();
 
-    await Promise.all([ncc.updateFreeSpaceInfo(), ncc.updateCapabilities(),]);
-    await ncc.updateConfigured();
+    // Check if login works
+    const answer = await ncc.updateUserId();
+    ncc.laststatus = null;
+    if (answer._failed) {
+        ncc.laststatus = answer.status;
+    } else {
+        await Promise.all([ncc.updateFreeSpaceInfo(), ncc.updateCapabilities(),]);
+        await ncc.updateConfigured();
+    }
     ncc.store();
 
     function upgradeOldConfigurations() {

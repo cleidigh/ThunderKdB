@@ -15,7 +15,7 @@
     "message": "Server URL"
   },
   "serverUrl_details": {
-    "message": "The base URL of the Cloud server, must start with http or https.\nIf your server runs on a non-standard port, put it into the URL."
+    "message": "The base URL of the Cloud server must start with http or https.\nIf your server runs on a non-standard port, put it into the URL."
   },
   "username": {
     "message": "Username"
@@ -27,7 +27,7 @@
     "message": "App token or password"
   },
   "password_details": {
-    "message": "An app token (preferable) or password.\nWith Nextcloud onlythe Add-On tries to convert a user password into an app token before storing it. But if that fails, your password is stored unencrypted."
+    "message": "An app token (preferable) or password.\nWith Nextcloud only the Add-On tries to convert a user password into an app token before storing it. If that fails, your password is stored unencrypted."
   },
   "storageFolder": {
     "message": "Storage path in Cloud"
@@ -35,7 +35,7 @@
   "storageFolder_details": {
     "message": "The path where attachments will be are stored in your Cloud. If it doesn't exits, it's created during upload."
   },
-  "useDlPassword": {
+  "downloadPasswords": {
     "message": "Password protect downloads"
   },
   "useNoDlPassword": {
@@ -50,6 +50,9 @@
   "useGeneratedDlPassword_details": {
     "message": "A random password will be generated for every file. Copy it from the status popup after upload."
   },
+  "useDlPassword": {
+    "message": "Password protect downloads"
+  },
   "oneDlPassword": {
     "message": "One Password for all downloads"
   },
@@ -57,7 +60,7 @@
     "message": "This password must comply to the rules the admin of your Cloud enforces (eg. length, character set, ...). Otherwise the upload will fail. Tell this password to the recipients; they will need it to download the attachment."
   },
   "expiryDaysBefore": {
-    "message": "Expire downloads after "
+    "message": "Downloads expire after "
   },
   "expiryDaysAfter": {
     "message": " days"
@@ -89,20 +92,23 @@
     "message": "Account verification failed: wrong username or incompatible cloud or network error."
   },
   "warn_unsupported_cloud": {
-    "message": "Obsolete version of Nextcloud or ownCloud. You might loose data. Ask your cloud admin to update."
+    "message": "Obsolete version of Nextcloud or ownCloud. You might lose data. Ask your cloud admin to update."
   },
   "obsolete_version": {
     "description": "This is displayed over the icon if the cloud version is not supported, so it should be quite short and contain at most two lines.",
     "message": "Obsolete\nversion"
   },
   "error_401": {
-    "message": "Login failed. Check user name and password."
+    "message": "Login failed. Check username and password."
+  },
+  "error_503": {
+    "message": "Server is in maintenance mode. Try again later."
   },
   "error_sharing_off": {
     "message": "Sharing is disabled on this cloud. Ask your admin to enable it."
   },
   "error_invalid_pw": {
-    "message": "Invalid download password (uploads will fail). Reason given by server: $1"
+    "message": "Invalid download password (uploads will fail). Server says: $1"
   },
   "error_password_enforced": {
     "message": "Your cloud requires a download password."
@@ -139,6 +145,9 @@
   "status_sharing": {
     "message": "Sharing"
   },
+  "status_checkingspace": {
+    "message": "Checking free space"
+  },
   "status_error": {
     "description": "The $1 will be replaced with one of the states above, eg 'Sharing failed'. You may put text before and after it. If this doesn't work in your language, please tell me.",
     "message": "$1 failed"
@@ -148,5 +157,8 @@
   },
   "warn_nonascii_password": {
     "message": "Your password contains characters that are likely to cause login problems. Use an app password instead."
+  },
+  "advanced_options": {
+    "message": "Advanced Options"
   }
 }

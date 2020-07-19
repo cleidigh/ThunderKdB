@@ -93,65 +93,67 @@
       <input id="password" type="password" required class="input__field" value="" />
       </p>
 
-      <p>
-      <div class="labelline">
-        <label for="storageFolder" class="input__label" data-message="storageFolder"></label>
-        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
-          <div class="card card--shadow" data-message="storageFolder_details"></div>
+      <details>
+        <summary data-message="advanced_options"></summary>
+        <p>
+        <div class="labelline">
+          <label for="storageFolder" class="input__label" data-message="storageFolder"></label>
+          <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+            <div class="card card--shadow" data-message="storageFolder_details"></div>
+          </div>
         </div>
-      </div>
-      <input id="storageFolder" type="text" required class="input__field" value="/Mail-attachments" />
-      </p>
+        <input id="storageFolder" type="text" required class="input__field" value="/Mail-attachments" />
+        </p>
 
-      <p>
-      <div class="labelline">
-        <input id="useExpiry" type="checkbox" class="input checkbox" />
-        <span class="spacer">
-          <label for="useExpiry" class="input__label" data-message="expiryDaysBefore"></label>
-          <input type="number" id="expiryDays" min="1" step="1" value="7" disabled class="input__field">
-          <label class="input__label" data-message="expiryDaysAfter"></label>
-        </span>
-        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
-          <div class="card card--shadow" data-message="expiry_details"></div>
+        <p>
+        <div class="labelline">
+          <input id="useExpiry" type="checkbox" class="input checkbox" />
+          <span class="spacer">
+            <label for="useExpiry" class="input__label" data-message="expiryDaysBefore"></label>
+            <input type="number" id="expiryDays" min="1" step="1" value="7" disabled class="input__field">
+            <label class="input__label" data-message="expiryDaysAfter"></label>
+          </span>
+          <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+            <div class="card card--shadow" data-message="expiry_details"></div>
+          </div>
         </div>
-      </div>
-      </p>
+        </p>
 
-      <p>
-      <div class="labelline">
-        <label class="input__label" data-message="useDlPassword"></label>
-        <input id="useDlPassword" type="checkbox" disabled hidden />
-      </div>
-      <div class="labelline">
-        <span class="spacer">
-          <input id="useNoDlPassword" type="radio" name="DLPRadio" checked class="input radio" />
-          <label for="useNoDlPassword" class="input__label" data-message="useNoDlPassword"></label>
-        </span>
-        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
-          <div class="card card--shadow" data-message="useNoDlPassword_details"></div>
+        <p>
+        <div class="labelline">
+          <label class="input__label" data-message="useDlPassword"></label>
+          <input id="useDlPassword" type="checkbox" disabled hidden />
         </div>
-      </div>
-      <div class="labelline">
-        <span class="spacer">
-          <input id="useGeneratedDlPassword" type="radio" name="DLPRadio" class="input radio" />
-          <label for="useGeneratedDlPassword" class="input__label" data-message="useGeneratedDlPassword"></label>
-        </span>
-        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
-          <div class="card card--shadow" data-message="useGeneratedDlPassword_details"></div>
+        <div class="labelline">
+          <span class="spacer">
+            <input id="useNoDlPassword" type="radio" name="DLPRadio" checked class="input radio" />
+            <label for="useNoDlPassword" class="input__label" data-message="useNoDlPassword"></label>
+          </span>
+          <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+            <div class="card card--shadow" data-message="useNoDlPassword_details"></div>
+          </div>
         </div>
-      </div>
-      <div class="labelline">
-        <span class="spacer">
-          <input id="oneDLPassword" type="radio" name="DLPRadio" class="input radio" />
-          <label for="oneDLPassword" class="input__label" data-message="oneDlPassword"></label>
-        </span>
-        <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
-          <div class="card card--shadow" data-message="useDlPassword_details"></div>
+        <div class="labelline">
+          <span class="spacer">
+            <input id="useGeneratedDlPassword" type="radio" name="DLPRadio" class="input radio" />
+            <label for="useGeneratedDlPassword" class="input__label" data-message="useGeneratedDlPassword"></label>
+          </span>
+          <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+            <div class="card card--shadow" data-message="useGeneratedDlPassword_details"></div>
+          </div>
         </div>
-      </div>
-      <input id="downloadPassword" type="text" disabled class="input__field" value="" />
-      </p>
-
+        <div class="labelline">
+          <span class="spacer">
+            <input id="oneDLPassword" type="radio" name="DLPRadio" class="input radio" />
+            <label for="oneDLPassword" class="input__label" data-message="oneDlPassword"></label>
+          </span>
+          <div class="helpbutton"><img src="images/Help.svg" alt="Help icon">
+            <div class="card card--shadow" data-message="useDlPassword_details"></div>
+          </div>
+        </div>
+        <input id="downloadPassword" type="text" disabled class="input__field" value="" />
+        </p>
+      </details>
       <p>
         <button id="saveButton" class="button button--primary" type="button" disabled
           data-message="saveButton"></button>

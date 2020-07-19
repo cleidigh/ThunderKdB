@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "AutoBucket",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "author": "A-tak",
   "description": "__MSG_extensionDescription__",
   "homepage_url": "__MSG_homepage__",
@@ -12,7 +12,7 @@
   "applications": {
     "gecko": {
       "id": "autobacket@a-tak.com",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   },
   "default_locale": "en",
@@ -35,34 +35,38 @@
   "options_ui": {
     "page": "options/options.html",
     "chrome_style": true,
-    "open_in_tab": false
+    "open_in_tab": true
   },
   "commands": {
     "all-classificate": {
       "suggested_key": {
         "default": "Alt+Shift+B",
-        "windows": "Ctrl+B"
+        "windows": "Ctrl+B",
+        "linux": "Alt+Shift+B"
       },
       "description": "__MSG_allClassificateDescription__"
     },
     "classificate": {
       "suggested_key": {
         "default": "Alt+Shift+C",
-        "windows": "Ctrl+Shift+C"
+        "windows": "Ctrl+Shift+C",
+        "linux": "Alt+Shift+C"
       },
       "description": "__MSG_classificateDescription__"
     },
     "view-log": {
       "suggested_key": {
         "default": "Alt+Shift+V",
-        "windows": "Ctrl+Shift+V"
+        "windows": "Ctrl+Shift+V",
+        "linux": "Ctrl+Shift+V"
       },
       "description": "__MSG_viewLogDescription__"
     },
     "statsitics": {
       "suggested_key": {
         "default": "Alt+Shift+S",
-        "windows": "Ctrl+Shift+S"
+        "windows": "Ctrl+Shift+S",
+        "linux": "Alt+Shift+S"
       },
       "description": "__MSG_statisticsDescription__"
     }

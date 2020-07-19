@@ -56,6 +56,7 @@ class CloudConnection {
             "User-Agent": "Filelink for *cloud",
         };
         this._davUrl = null;
+        this.laststatus = null;
     }
 
     /**
@@ -89,37 +90,46 @@ class CloudConnection {
     async uploadFile(fileId, fileName, fileObject) {
         const upload_status = new Status(fileName);
         attachmentStatus.set(fileId, upload_status);
-        upload_status.set_status('preparing');
+        upload_status.set_status('checkingspace');
 
-        // Get the server's actual DAV URL
-        if (!this._davUrl) {
-            // Fetch URL from capabilities
-            const data = await this._doApiCall(apiUrlCapabilities);
-            if (data && data.capabilities && data.capabilities.core && data.capabilities.core["webdav-root"]) {
-                this._davUrl = data.capabilities.core["webdav-root"];
-            } else {
-                // Use default from docs instead
-                this._davUrl = davUrlDefault + this.user_id;
-            }
-        }
+        // Check for sufficient free space
+        const data = await this.updateFreeSpaceInfo();
+        if (!data ||                // no data in response, try to upload anyway
+            !data.quota ||          // no quota in resonse, so none set
+            data.quota.free < 0 ||  // quota set but unlimited
+            data.quota.free > fileObject.size) {
 
-        const uploader = new DavUploader(
-            this.serverUrl, this.username, this.password, this._davUrl, this.storageFolder);
-
-        const response = await uploader.uploadFile(fileId, fileName, fileObject);
-
-        if (response.aborted) {
-            return response;
-        } else if (response.ok) {
-            upload_status.set_status('sharing');
-            this.updateFreeSpaceInfo();
-            let url = await this._getShareLink(fileName, fileId);
-            if (url) {
-                if (upload_status.status !== 'generatedpassword') {
-                    Status.remove(fileId);
+            upload_status.set_status('preparing');
+            // Get the server's actual DAV URL
+            if (!this._davUrl) {
+                // Fetch URL from capabilities
+                const data = await this._doApiCall(apiUrlCapabilities);
+                if (data && data.capabilities && data.capabilities.core && data.capabilities.core["webdav-root"]) {
+                    this._davUrl = data.capabilities.core["webdav-root"];
+                } else {
+                    // Use default from docs instead
+                    this._davUrl = davUrlDefault + this.user_id;
                 }
-                url += "/download";
-                return { url, aborted: false, };
+            }
+
+            const uploader = new DavUploader(
+                this.serverUrl, this.username, this.password, this._davUrl, this.storageFolder);
+
+            const response = await uploader.uploadFile(fileId, fileName, fileObject);
+
+            if (response.aborted) {
+                return response;
+            } else if (response.ok) {
+                upload_status.set_status('sharing');
+                this.updateFreeSpaceInfo();
+                let url = await this._getShareLink(fileName, fileId);
+                if (url) {
+                    if (upload_status.status !== 'generatedpassword') {
+                        Status.remove(fileId);
+                    }
+                    url += "/download";
+                    return { url, aborted: false, };
+                }
             }
         }
         upload_status.fail();

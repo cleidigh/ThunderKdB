@@ -1,0 +1,161 @@
+{
+  "extensionDescription": {
+    "message": "Töltsön fel óriásfájl méret mellékleteket a saját felhőbe, és küldje el a hivatkozását e-mailben"
+  },
+  "extensionName": {
+    "message": "*cloud - óriásfájl-küldése a Nextcloud és ownCloud számára"
+  },
+  "saveButton": {
+    "message": "Mentés"
+  },
+  "resetButton": {
+    "message": "Visszaállítás"
+  },
+  "serverUrl": {
+    "message": "Kiszolgáló URL"
+  },
+  "serverUrl_details": {
+    "message": "A felhő kiszolgáló alap URL-jének http vagy https-rel kell kezdődnie.\nHa a kiszolgáló nem szabványos kikötőn fut, írja be az URL-be."
+  },
+  "username": {
+    "message": "Felhasználónév"
+  },
+  "username_details": {
+    "message": "A felhasználóneved a felhő kiszolgálón"
+  },
+  "password": {
+    "message": "Alkalmazás vezérjel vagy jelszó"
+  },
+  "password_details": {
+    "message": "Alkalmazás vezérjel (előnyben részesít) vagy jelszó.\nA Nextcloud használatával csak a kiegészítő megpróbálja átalakítani a felhasználói jelszavakat alkalmazás tokenekké, mielőtt tárolná azokat. De ha ez nem sikerül, akkor a jelszavát titkosítatlanul tárolja."
+  },
+  "storageFolder": {
+    "message": "Tárolási út a felhőben"
+  },
+  "storageFolder_details": {
+    "message": "Az az útvonal, ahova a mellékleteket a saját felhőben tárolja. Ha nem létezik, akkor a feltöltés során lesz létrehozva."
+  },
+  "useDlPassword": {
+    "message": "Jelszóval védett letöltések"
+  },
+  "useNoDlPassword": {
+    "message": "Nincs jelszó"
+  },
+  "useNoDlPassword_details": {
+    "message": "Jelszómentes letöltése"
+  },
+  "useGeneratedDlPassword": {
+    "message": "Létrehozott jelszavak használata"
+  },
+  "useGeneratedDlPassword_details": {
+    "message": "Minden fájlhoz véletlenszerű jelszó jön létre. Másolja a jelszót az állapot előugró ablakból a feltöltés után."
+  },
+  "oneDlPassword": {
+    "message": "Egy jelszó az összes letöltéshez"
+  },
+  "useDlPassword_details": {
+    "message": "Ennek a jelszónak meg kell felelnie a felhőrendszergazda által végrehajtott szabályoknak (pl. hosszúság, karakterkészlet,…). Ellenkező esetben a feltöltés sikertelen lesz. Mondja el ezt a jelszót a címzetteknek; szüksége lesz rá a melléklet letöltéséhez."
+  },
+  "expiryDaysBefore": {
+    "message": "Letöltések lejár:"
+  },
+  "expiryDaysAfter": {
+    "message": " nap"
+  },
+  "expiry_details": {
+    "message": "A napok száma a letöltés elérhető lesz, a mai napot is beleértve."
+  },
+  "freespace": {
+    "message": "Szabad hely ($FREE$GB/$FULL$GB)",
+    "placeholders": {
+      "free": {
+        "content": "$1"
+      },
+      "full": {
+        "content": "$2"
+      }
+    }
+  },
+  "success": {
+    "message": "Sikerült!"
+  },
+  "error_0": {
+    "message": "Ismeretlen hiba"
+  },
+  "error_typeerror": {
+    "message": "Nincs kapcsolat. Ellenőrizze a kiszolgáló URL-jét és a hálózati kapcsolatot."
+  },
+  "error_404": {
+    "message": "Fiók ellenőrzése sikertelen: helytelen felhasználónév, nem összeegyeztethetetlen felhő vagy hálózati hiba."
+  },
+  "error_503": {
+  "message": "Kiszolgáló karbantartási módban van. Próbálkozzon újra később."
+  }, 
+  "warn_unsupported_cloud": {
+    "message": "A Nextcloud vagy a ownCloud elavult verziója. Elveszítheti az adatokat. Kérje meg a felhőrendszergazdát, hogy frissítse."
+  },
+  "obsolete_version": {
+    "description": "Ez az ikon felett jelenik meg, ha a felhő verziója nem támogatott, tehát elég rövidnek kell lennie, és legfeljebb két sort tartalmazhat.",
+    "message": "Elavult\nverzió"
+  },
+  "error_401": {
+    "message": "Bejelentkezés sikertelen. Ellenőrizze a felhasználónevet és a jelszót."
+  },
+  "error_sharing_off": {
+    "message": "Felhő megosztása letiltva. Kérdezze meg rendszergazdáját, hogy engedélyezze a megosztást."
+  },
+  "error_invalid_pw": {
+    "message": "Érvénytelen letöltési jelszó (feltöltések sikertelen lesznek). Kiszolgálóválasz: $1"
+  },
+  "error_password_enforced": {
+    "message": "Letöltési jelszó szükséges a felhőhöz."
+  },
+  "warn_expiry_too_long": {
+    "message": "A felhőrendszergazda a leghosszabb lejárati időt, $1 napot állította be. Az értéket csökkentették, különben a feltöltés sikertelen lesz."
+  },
+  "warn_no_config_check": {
+    "message": "Fiókellenőrzés sikertelen. Hálózati problémák?"
+  },
+  "status_menuname": {
+    "description": "Ezt a *cloud logó után helyezzük el, hogy létrejöjjön a gomb az üzenetírási ablakban, amely megnyitja az előrehaladás felbukkanó ablakot",
+    "message": "Állapot"
+  },
+  "status_no_uploads": {
+    "message": "Nincsenek folyamatban feltöltések"
+  },
+  "status_button_clear": {
+    "description": "Gomb az üzenetek eltávolításához az előugró ablakból",
+    "message": "Teljesített feltöltések törlése"
+  },
+  "status_preparing": {
+    "message": "Előkészítés"
+  },
+  "status_creating": {
+    "message": "Mappa létrehozása"
+  },
+  "status_moving": {
+    "message": "Az ütköző fájl áthelyezése"
+  },
+  "status_uploading": {
+    "message": "Feltöltés"
+  },
+  "status_sharing": {
+    "message": "Megosztás"
+  },
+  "status_checkingspace": {
+  "message": "Szabad hely ellenőrzése"
+  },
+  "status_error": {
+    "description": "A(z) $1 helyébe a fenti állapotok egyike lép, például „Megosztás sikertelen”. Előtte és utána szöveget is elhelyezhet. Ha ez nem működik az Ön nyelvén, kérlek, mondja meg.",
+    "message": "$1 sikertelen"
+  },
+  "status_password": {
+    "message": "jelszó: $1"
+  },
+  "warn_nonascii_password": {
+    "message": "Jelszava olyan karaktereket tartalmaz, amelyek valószínűleg bejelentkezési problémákat okoznak. Ehelyett használjon alkalmazásjelszót."
+  },
+  "advanced_options": {
+    "message": "Haladó beállítások"
+  }
+}
