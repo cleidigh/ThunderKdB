@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 12958,
+    "average_daily_users": 11963,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
@@ -26,65 +26,53 @@
     "contributions_url": null,
     "created": "2010-08-15T09:23:12Z",
     "current_version": {
-        "id": 2473515,
+        "id": 2473958,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "77.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signal-spam/versions/2473515",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signal-spam/versions/2473958",
         "files": [
             {
-                "id": 1016657,
-                "created": "2020-03-08T08:20:01Z",
-                "hash": "sha256:ab938bc5d14d8bf0dec9f21d3e468488587a02768f90dd93505e560c3818a889",
-                "is_restart_required": true,
+                "id": 1017120,
+                "created": "2020-07-19T19:22:13Z",
+                "hash": "sha256:d972a9ff67243fbf9f452d414dfe18f8e9366c2a76a8835799c527e26d77f2ee",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
-                "platform": "linux",
-                "size": 432010,
+                "platform": "all",
+                "size": 370713,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016657/signal_spam-3.1.2-tb-linux.xpi?src=",
-                "permissions": []
-            },
-            {
-                "id": 1016658,
-                "created": "2020-03-08T08:20:01Z",
-                "hash": "sha256:ab938bc5d14d8bf0dec9f21d3e468488587a02768f90dd93505e560c3818a889",
-                "is_restart_required": true,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "mac",
-                "size": 432010,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016658/signal_spam-3.1.2-tb-mac.xpi?src=",
-                "permissions": []
-            },
-            {
-                "id": 1016659,
-                "created": "2020-03-08T08:20:01Z",
-                "hash": "sha256:ab938bc5d14d8bf0dec9f21d3e468488587a02768f90dd93505e560c3818a889",
-                "is_restart_required": true,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "windows",
-                "size": 432010,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016659/signal_spam-3.1.2-tb-windows.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017120/signal_spam-4.0.4-tb.xpi?src=",
+                "permissions": [
+                    "notifications",
+                    "messagesRead",
+                    "storage",
+                    "activeTab",
+                    "tabs",
+                    "menus",
+                    "accountsRead",
+                    "messagesMove",
+                    "https://*.signal-spam.fr/*"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6769,
             "name": null,
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signal-spam/license/3.1.2"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signal-spam/license/4.0.4"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-GB": "New version compatible with Thunderbird 78",
+            "fr": "Version 4.0 compatible avec Thunderbird 78",
+            "en-US": "New version compatible with Thundebird 78."
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signal-spam/versions/3.1.2",
-        "version": "3.1.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signal-spam/versions/4.0.4",
+        "version": "4.0.4"
     },
     "default_locale": "fr",
     "description": {
@@ -109,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-03-14T20:21:34Z",
+    "last_updated": "2020-07-19T19:25:21Z",
     "name": {
         "fr": "Signal Spam",
         "en-US": "Signal Spam"
@@ -186,10 +174,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 2.51181,
-        "count": 110,
-        "average": 2.5182,
-        "text_count": 110
+        "bayesian_average": 2.5341,
+        "count": 111,
+        "average": 2.5405,
+        "text_count": 111
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signal-spam/reviews/",
     "requires_payment": false,
@@ -218,10 +206,9 @@
     "weekly_downloads": 452,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-31T12:35:11Z"
         }

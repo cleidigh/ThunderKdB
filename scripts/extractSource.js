@@ -171,6 +171,7 @@ async function walkFolders(parentFolder, options) {
 
 		}
 
+		console.debug(`Check Source: ${parentFolder}/${extDir}/src`);
 		if (!fs.existsSync(`${parentFolder}/${extDir}/src`)) {
 			if (options.checkOnly) {
 				console.debug('Missing: ' + `index: ${index} : ${extDir}/src  : Ignore`);

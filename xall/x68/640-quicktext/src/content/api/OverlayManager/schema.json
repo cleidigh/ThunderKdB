@@ -1,0 +1,72 @@
+[
+  {
+    "namespace": "OverlayManager",
+    "functions": [
+      {
+        "name": "init",
+        "type": "function",
+        "description": "Setup the OverlayManager and declare the location of OverlayManager.jsm",
+        "async": true,
+        "parameters": [
+          {
+            "name": "aPath",
+            "type": "string",
+            "description": "The relative location of OverlayManager.jsm from the root of the extension."
+          }
+        ]
+      },
+      {
+        "name": "setVerbosity",
+        "type": "function",
+        "description": "Sets the verbosity of the overlay manager.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "level",
+            "type": "integer",
+            "description": "Verbosity level"
+          }
+        ]
+      },
+      {
+        "name": "getVerbosity",
+        "type": "function",
+        "description": "Gets the verbosity of the overlay manager.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "activate",
+        "type": "function",
+        "description": "Activates the overlay manager.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "deactivate",
+        "type": "function",
+        "description": "Deactivates the overlay manager.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "register",
+        "type": "function",
+        "description": "registers an overlay",
+        "async": true,
+        "parameters": [
+          {
+            "name": "dst",
+            "type": "string",
+            "description": "File to be overlayed."
+          },
+          {
+            "name": "overlay",
+            "type": "string",
+            "description": "Overlay file."
+          }
+        ]
+      }
+    ]
+  }
+]

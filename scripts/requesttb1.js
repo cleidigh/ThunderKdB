@@ -176,7 +176,7 @@ function requestATN_URL2(addon_id, query_type, options) {
 			request.get(extRequestOptions)
 				.then(response => {
 					// console.debug('Valid');
-					console.debug(response.body);
+					// console.debug(response.body);
 					// console.debug(response.next);
 					resolve(response.body);
 
@@ -405,6 +405,11 @@ function compatibilityCheck(extJson, options) {
 			compSet.comp69plus = true;
 		}
 
+		if (v_max_num >= 78) {
+			console.debug('   comp78Plus');
+			compSet.comp78plus = true;
+		}
+
 		if (v_min_num <= 60 && v_max_num >= 60) {
 			compSet.comp60 = true;
 		}
@@ -423,6 +428,12 @@ function compatibilityCheck(extJson, options) {
 		} else if (v_min_num >= 60 && mext) {
 			compSet.comp68 = true;
 		}
+
+
+		if (v_min_num >= 78 && mext) {
+			compSet.comp78plus = true;
+		}
+
 
 		if (v_min_num >= 60 && v_min_num < 61) {
 			compSet.comp60 = true;
@@ -542,7 +553,7 @@ async function getExtensionFiles(addon_identifier, index) {
 
 		let targetGroupDir = "";
 
-		if (ext_comp.comp68) {
+		if (ext_comp.comp68 || ext_comp.comp78plus) {
 			targetGroupDir = extGroupTB68Dir;
 		} else if (ext_comp.comp60) {
 			targetGroupDir = extGroupTB60Dir;
@@ -628,6 +639,18 @@ async function getExtensionFiles(addon_identifier, index) {
 
 			} else {
 				// console.debug('Manifest NoLegacy');
+			}
+			
+			// check experiments
+			console.debug(manifestJson);
+			console.debug(manifestJson.background);
+			console.debug(manifestJson.experiment_apis);
+			if (manifestJson.experiment_apis != undefined) {
+				console.debug('WebExperiment');
+				ext_comp.webexp = true;
+				console.debug(ext_comp);
+			} else {
+				ext_comp.webexp = false;
 			}
 		} else if (fs.existsSync(`${extRootDir}/src/install.rdf`)) {
 			// console.debug('CheckingInstall:');

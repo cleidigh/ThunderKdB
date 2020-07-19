@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/3/3346/3346687.png?modified=1398679002"
         }
     ],
-    "average_daily_users": 103021,
+    "average_daily_users": 103725,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -25,30 +25,32 @@
     "contributions_url": "https://www.paypal.me/johnbieling",
     "created": "2005-04-28T05:45:37Z",
     "current_version": {
-        "id": 2473469,
+        "id": 2473809,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "78.*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quicktext/versions/2473469",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quicktext/versions/2473809",
         "files": [
             {
-                "id": 1016601,
-                "created": "2020-02-22T14:07:24Z",
-                "hash": "sha256:b5d5446f4a1ffe9a42fd628e7ba9f517aa735029c1b4073c27ff58a5358901c9",
-                "is_restart_required": true,
+                "id": 1016971,
+                "created": "2020-06-16T10:11:58Z",
+                "hash": "sha256:2d001643fa9a82b37fc5ded74dfa5cef52e7f19aed73e9c7263ee63bc1e7f3c5",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 100490,
+                "size": 108692,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016601/quicktext-2.15-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016971/quicktext-3.1-tb.xpi?src=",
+                "permissions": [
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -58,8 +60,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/versions/2.15",
-        "version": "2.15"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/versions/3.1",
+        "version": "3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -82,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-02-22T15:32:54Z",
+    "last_updated": "2020-06-16T11:09:51Z",
     "name": {
         "en-US": "Quicktext",
         "hu": "Gyorsszöveg (Quicktext)"
@@ -125,10 +127,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.45298,
-        "count": 379,
-        "average": 4.4565,
-        "text_count": 379
+        "bayesian_average": 4.46206,
+        "count": 378,
+        "average": 4.4656,
+        "text_count": 378
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quicktext/reviews/",
     "requires_payment": false,
@@ -153,9 +155,11 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
-            "compNoMax": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-06-17T09:03:53Z",
             "comp60pv": true,
             "comp60pv_date": "2018-04-18T18:03:54Z"
         }

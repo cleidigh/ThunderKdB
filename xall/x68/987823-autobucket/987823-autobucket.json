@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14180/14180175.png?modified=1580647754"
         }
     ],
-    "average_daily_users": 24,
+    "average_daily_users": 27,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-05-06T07:30:11Z",
     "current_version": {
-        "id": 2473946,
+        "id": 2473956,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2473946",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2473956",
         "files": [
             {
-                "id": 1017108,
-                "created": "2020-07-18T03:29:04Z",
-                "hash": "sha256:7b42a21584b3b417578589c5cf7559298b6fafa31179985c752efd6bdbfc5088",
+                "id": 1017118,
+                "created": "2020-07-19T08:56:07Z",
+                "hash": "sha256:5dea5d4b10b15f682bc8a0cae87305dbc18bc7fde341bdd3f50afabc3dc1667e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1609351,
+                "size": 1609379,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017108/autobucket-1.0.13-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017118/autobucket-1.1.0-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "menus",
@@ -56,17 +56,17 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fixed a default shortcut because it was batting with a Thunderbird shortcut when used on Linux.\n\nYou can change the shortcut from the gear icon at the top right of the add-on page.",
-            "ja": "Linuxで使用した際にThunderbirdのショートカットとバッティングしていたのでデフォルトを修正。\n\nショートカットはアドオンページの右上の歯車アイコンから変更できます。"
+            "en-US": "* Added a function to automatically judge new mail and add a classification tag",
+            "ja": "* 新着メールに対して自動的に判定し分類タグを追加する機能を追加しました"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.0.13",
-        "version": "1.0.13"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.1.0",
+        "version": "1.1.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "We have confirmed the problem that the setting screen is not displayed correctly with Thunderbird78. Please wait for a while until the correction.\n\nBasic usage\n\n1. Add a classification tag to Thunderbird and restart Thunderbird\n2. Select the tag used for classification from the add-on settings and restart Thunderbird\n3. Let's learn which tag to assign from AutoBucket in the menu displayed by right-clicking the email\n4. After classifying some, right click or shortcut to judge mail. AutoBucket automatically classifies and tags according to the learning content.\n5. If you find a wrong email in the classification, please let us know again. Classification accuracy will improve from the next time.\n\nHelp\n<a href=\"https://a-tak.github.io/auto-bucket/\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/</a>",
-        "ja": "Thunderbird78では設定画面が正しく表示されない問題を確認しております。修正までしばらくお待ちください。\n\n基本的な使い方\n\n1. 分類用のタグをThunderbirdに追加してThunderbirdを再起動します\n2. アドオンの設定から分類に使用するタグを選択してThunderbirdを再起動します\n3. メールを右クリックして、AutoBucketのメニューからどのタグに割り当てるか学習させます\n4. いくつか分類をしたら右クリックかショートカットでメールを判定します。AutoBucketが学習内容に応じて自動で分類してタグをつけます。\n5. 分類に誤ったメールがあれば再度学習させてください。次回からの分類精度が上がっていきます。\n\n\nこの拡張機能はフォルダ内のメールを一括処理するために、メールアカウントとフォルダへのアクセス権を必要とします。\n\nヘルプ\n<a href=\"https://a-tak.github.io/auto-bucket/README_ja\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/README_ja</a>"
+        "en-US": "Basic usage\n\n1. Add a classification tag to Thunderbird and restart Thunderbird\n2. Select the tag used for classification from the add-on settings and restart Thunderbird\n3. Let's learn which tag to assign from AutoBucket in the menu displayed by right-clicking the email\n4. After classifying some, right click or shortcut to judge mail. AutoBucket automatically classifies and tags according to the learning content.\n5. If you find a wrong email in the classification, please let us know again. Classification accuracy will improve from the next time.\n\nHelp\n<a href=\"https://a-tak.github.io/auto-bucket/\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/</a>",
+        "ja": "基本的な使い方\n\n1. 分類用のタグをThunderbirdに追加してThunderbirdを再起動します\n2. アドオンの設定から分類に使用するタグを選択してThunderbirdを再起動します\n3. メールを右クリックして、AutoBucketのメニューからどのタグに割り当てるか学習させます\n4. いくつか分類をしたら右クリックかショートカットでメールを判定します。AutoBucketが学習内容に応じて自動で分類してタグをつけます。\n5. 分類に誤ったメールがあれば再度学習させてください。次回からの分類精度が上がっていきます。\n\n\nこの拡張機能はフォルダ内のメールを一括処理するために、メールアカウントとフォルダへのアクセス権を必要とします。\n\nヘルプ\n<a href=\"https://a-tak.github.io/auto-bucket/README_ja\" rel=\"nofollow\">https://a-tak.github.io/auto-bucket/README_ja</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/edit",
@@ -86,7 +86,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-18T03:30:03Z",
+    "last_updated": "2020-07-19T09:00:03Z",
     "name": {
         "en-US": "AutoBucket",
         "ja": "AutoBucket"
@@ -175,10 +175,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp61plus": true,
-            "compNoMax": true
+            "comp78plus": true
         }
     }
 }

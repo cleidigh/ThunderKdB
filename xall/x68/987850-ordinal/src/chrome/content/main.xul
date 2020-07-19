@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<overlay id="sample"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <tree id="threadTree">
+    <treecols id="threadCols">
+    <splitter class="tree-splitter" />
+    <treecol id="ordinal" persist="hidden ordinal width" 
+           currentView="unthreaded" flex="1"
+           label="#" tooltiptext="Click to sort by the ordinal number" />
+    </treecols>
+  </tree>
+  
+  <script type="text/javascript" src="chrome://ordinal/content/main.js"/> 
+</overlay>
