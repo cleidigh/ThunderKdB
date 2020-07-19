@@ -1,5 +1,5 @@
 "use strict";
-Components.utils.import("resource://gre/modules/Preferences.jsm");
+var { Preferences } = ChromeUtils.import("resource://gre/modules/Preferences.jsm");
 
 /*
     This file is part of Lightning Calendar Tabs extension.
@@ -38,7 +38,7 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 	LightningCalendarTabs.tabUtils.PERIOD_MONTH = "month";
 	LightningCalendarTabs.tabUtils.PERIOD_DAY = "day";
 
-	LightningCalendarTabs.tabUtils.prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+	LightningCalendarTabs.tabUtils.prefs = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch);
 	
 	LightningCalendarTabs.tabUtils.prepareTabVisual = function(tab, i, date, periodType) {
 		var prefs = LightningCalendarTabs.tabUtils.prefs;
@@ -94,11 +94,11 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 	};
 
 	LightningCalendarTabs.tabUtils.getCalendarToday = function() {
-		return  currentView().today();
+		return LightningCalendarTabs.win.currentView().today();
 	}
 
 	LightningCalendarTabs.tabUtils.getCalendarStartDate = function() {
-		return currentView().rangeStartDate;
+		return LightningCalendarTabs.win.currentView().rangeStartDate;
 	}
 	
 	LightningCalendarTabs.tabUtils.resetDateToWeekStart = function(date) {

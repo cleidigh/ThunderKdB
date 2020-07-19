@@ -50,7 +50,7 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 				var tmpDate = date.clone();
 				tmpDate.month+= i;
 
-				var tab = document.createXULElement("tab");
+				var tab = LightningCalendarTabs.win.document.createXULElement("tab");
 				this.makeTabLabel(tab, tmpDate);
 
 				LightningCalendarTabs.tabUtils.prepareTabVisual(tab, i, tmpDate, this.periodType);
@@ -71,7 +71,7 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 	};
 
 	LightningCalendarTabs.monthTabs.prototype.selectMonth = function(date) {
-		currentView().goToDay(date);
+		LightningCalendarTabs.win.currentView().goToDay(date);
 	};
 
 	LightningCalendarTabs.monthTabs.prototype.dateEqual = function(a, b) {

@@ -11,9 +11,9 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 	 */  	
 	LightningCalendarTabs.prefObserver = function(branch_name, callback) {  
 		//Keeping a reference to the observed preference branch or it will get garbage collected.  
-		var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
+		var prefService = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefService);
 		this._branch = prefService.getBranch(branch_name);  
-		this._branch.QueryInterface(Components.interfaces.nsIPrefBranch);  
+		this._branch.QueryInterface(Ci.nsIPrefBranch);  
 		this._callback = callback;  
 	};
 	  
