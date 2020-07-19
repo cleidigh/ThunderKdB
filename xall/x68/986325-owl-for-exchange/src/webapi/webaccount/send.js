@@ -21,7 +21,7 @@ var gSendObserver = {
         return;
       }
       if (msgCompose.compFields.fcc || msgCompose.compFields.fcc2) {
-        let folder = RDF.GetResource(msgCompose.compFields.fcc || msgCompose.compFields.fcc2).QueryInterface(Ci.nsIMsgFolder);
+        let folder = MailServices.folderLookup.getFolderForURL(msgCompose.compFields.fcc || msgCompose.compFields.fcc2);
         if (folder.server != incomingServer || !folder.getStringProperty("FolderId")) {
           return;
         }
@@ -74,7 +74,7 @@ function Send(aDelegator, aBaseInterfaces) {
 Send.prototype = {
   _JsPrototypeToDelegate: true,
   /// nsISupports
-  QueryInterface: QIUtils.generateQI(gSendProperties.baseInterfaces),
+  QueryInterface: ChromeUtils.generateQI(gSendProperties.baseInterfaces),
   /// nsIMsgSend
   gatherMimeAttachments: function() {
     // This causes the send process to be interrupted and call us back via
@@ -99,7 +99,8 @@ Send.prototype = {
       }
       let content = await readFileAsync(aFile);
       let bcc = ToMailboxObjects(compFields.bcc);
-      let message = await CallExtension(incomingServer, "ComposeMessageFromMime", { content, bcc }, msgWindow);
+      let deliveryReceipt = compFields.DSN;
+      let message = await CallExtension(incomingServer, "ComposeMessageFromMime", { content, bcc, deliveryReceipt }, msgWindow);
       if (this.cppBase.sendReport) {
         this.cppBase.sendReport.currentProcess = Ci.nsIMsgSendReport.process_SMTP;
       }
@@ -107,10 +108,10 @@ Send.prototype = {
       let sentFolder = null;
       let save = "";
       if (compFields.fcc) {
-        sentFolder = RDF.GetResource(compFields.fcc).QueryInterface(Ci.nsIMsgFolder);
+        sentFolder = MailServices.folderLookup.getFolderForURL(compFields.fcc);
         save = sentFolder.getStringProperty("FolderId");
       } else if (compFields.fcc2) {
-        sentFolder = RDF.GetResource(compFields.fcc2).QueryInterface(Ci.nsIMsgFolder);
+        sentFolder = MailServices.folderLookup.getFolderForURL(compFields.fcc2);
         save = sentFolder.getStringProperty("FolderId");
       }
       await CallExtension(incomingServer, "SendMessage", { message, save }, msgWindow);

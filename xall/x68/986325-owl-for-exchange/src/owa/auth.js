@@ -540,10 +540,16 @@ OWAAccount.prototype.TaggedFetch = async function(aUrl, aOptions) {
  * @throws           {Error}   If the login tab was closed
  */
 OWAAccount.prototype.LoginWithOAuthInTab = async function(aMsgWindow) {
+  try {
+    await browser.uiTweaks.ensureCalendarTodayPaneViews();
+  } catch (ex) {
+    logError(ex);
+  }
   // We want to skip the landing page for personal Microsoft accounts.
   let isHotmail = this.serverURL.hostname == kHotmailServer;
   let url = isHotmail ? this.serverURL + "?nlp=1" : this.serverURL.href;
   let hadPasswordError = false;
+  let alreadyClosed = false;
   return new Promise(async (resolve, reject) => {
     var tab;
     async function open() {
@@ -553,6 +559,10 @@ OWAAccount.prototype.LoginWithOAuthInTab = async function(aMsgWindow) {
       browser.webNavigation.onCompleted.addListener(loadListener);
     }
     async function close(closeTab) {
+      if (alreadyClosed) {
+        return;
+      }
+      alreadyClosed = true;
       browser.webNavigation.onCompleted.removeListener(loadListener);
       browser.tabs.onRemoved.removeListener(tabsListener);
       browser.cookies.onChanged.removeListener(cookiesListener);
@@ -630,7 +640,7 @@ OWAAccount.prototype.LoginWithOAuthInPopup = async function() {
   // We want to skip the landing page for personal Microsoft accounts.
   let isHotmail = this.serverURL.hostname == kHotmailServer;
   let url = isHotmail ? this.serverURL + "?nlp=1" : this.serverURL.href;
-
+  let alreadyClosed = false;
   return new Promise(async (resolve, reject) => {
     async function open() {
       browser.request.onCompleted.addListener(loadListener);
@@ -639,6 +649,10 @@ OWAAccount.prototype.LoginWithOAuthInPopup = async function() {
       await browser.request.open(url);
     }
     async function close(closeWindow) {
+      if (alreadyClosed) {
+        return;
+      }
+      alreadyClosed = true;
       browser.request.onCompleted.removeListener(loadListener);
       browser.request.onClosed.removeListener(requestListener);
       browser.cookies.onChanged.removeListener(cookiesListener);

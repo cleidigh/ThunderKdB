@@ -1,6 +1,6 @@
 
 /**
- * {Map serverId {String} -> account {EWSAccount}}
+ * {Map serverId {String} -> account {Promise<EWSAccount>}}
  */
 var gEWSAccounts = new Map();
 
@@ -490,7 +490,7 @@ async CheckFolders(aMsgWindow, aForLogin) {
     return;
   }
 
-  let folderTree = await this.FindFolders(aMsgWindow); // emails.js
+  let folderTree = await this.FindMyFolders(aMsgWindow); // emails.js
   await browser.incomingServer.sendFolderTree(this.serverID, folderTree);
 }
 
@@ -603,11 +603,12 @@ EWSAccount.DispatchOperation = async function(aServerId, aOperation, aParameters
     let tempAccount = await new EWSAccount(aServerId);
     return tempAccount.VerifyLogin(); // auth.js
   }
-  var account = gEWSAccounts.get(aServerId);
-  if (!account) {
-    account = await new EWSAccount(aServerId);
-    gEWSAccounts.set(aServerId, account);
+  var promise = gEWSAccounts.get(aServerId);
+  if (!promise) {
+    promise = new EWSAccount(aServerId);
+    gEWSAccounts.set(aServerId, promise);
   }
+  var account = await promise;
   await account.EnsureStartup(aMsgWindow);
   await EnsureLicensed(aServerId); // license.js
   return account.ProcessOperation(aOperation, aParameters, aMsgWindow); // emails.js

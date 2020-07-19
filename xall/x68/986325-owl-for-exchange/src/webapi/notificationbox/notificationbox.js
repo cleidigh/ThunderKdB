@@ -23,33 +23,21 @@ function injectStyleSheet(aDoc, aURI) {
 }
 
 /**
- * Try to create a new notificationbox for a 3-pane window.
+ * Create a new notificationbox for a 3-pane window.
  *
  * @param aWin {Window}
  * @returns    {NotificationBox}
  */
 function createNotificationBox(aWin) {
-  let insertBox = element => {
-    element.id = kBoxID;
-    element.setAttribute("notificationside", "top");
-    doc.documentElement.insertBefore(element, doc.getElementById("navigation-toolbox").nextElementSibling);
-  };
   let doc = aWin.document;
-  let box = doc.getElementById("mail-notification-box"); // TB 60 COMPAT
-  if (box) {
-    // Clone the existing notificationbox.
-    // We can't create one from scratch because it won't have any XBL.
-    // (Unless we fiddle around with document fragments.)
-    box = box.cloneNode(false);
-    box._notificationBox = box;
-    insertBox(box);
-  } else {
-    box = new aWin.MozElements.NotificationBox(insertBox);
-  }
   for (let uri of gStyleSheets) {
     injectStyleSheet(doc, uri);
   }
-  return box;
+  return new aWin.MozElements.NotificationBox(element => {
+    element.id = kBoxID;
+    element.setAttribute("notificationside", "top");
+    doc.documentElement.insertBefore(element, doc.getElementById("navigation-toolbox").nextElementSibling);
+  });
 }
 
 /**
@@ -138,14 +126,14 @@ this.notificationbox = class extends ExtensionAPI {
             }
           }
         },
-        onButton: new ExtensionCommon.EventManager(context, "notificationbox.onButton", fire => {
+        onButton: new ExtensionCommon.EventManager({ context, name: "notificationbox.onButton", register: fire => {
           gButtonCallbacks.add(fire);
           return () => gButtonCallbacks.delete(fire);
-        }).api(),
-        onClosed: new ExtensionCommon.EventManager(context, "notificationbox.onButton", fire => {
+        }}).api(),
+        onClosed: new ExtensionCommon.EventManager({ context, name: "notificationbox.onButton", register: fire => {
           gClosedCallbacks.add(fire);
           return () => gClosedCallbacks.delete(fire);
-        }).api(),
+        }}).api(),
       }
     };
   }

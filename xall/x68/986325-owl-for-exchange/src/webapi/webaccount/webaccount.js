@@ -1,9 +1,6 @@
+var {XPCOMUtils} = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
-try {
 var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
-} catch (ex) {
-var {MailServices} = ChromeUtils.import("resource:///modules/mailServices.js"); // COMPAT for TB 60
-}
 var {jsmime} = ChromeUtils.import("resource:///modules/jsmime.jsm");
 var {JSAccountUtils} = ChromeUtils.import("resource:///modules/jsaccount/JSAccountUtils.jsm");
 
@@ -31,21 +28,28 @@ var gAddressBooksMarkedAsReadOnly = new Set();
 /// An array of modules that need to be registered with the component manager.
 var gModules = [];
 var {ExtensionError} = ExtensionUtils;
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var gComponentRegistrar = Components.manager.QueryInterface(Ci.nsIComponentRegistrar);
-var RDF = Cc["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
 var gContentSecManager = Cc["@mozilla.org/contentsecuritymanager;1"].getService(Ci.nsIContentSecurityManager);
 
 /**
- * COMPAT for TB 60
- * In Thunderbird trunk, an nsISimpleEnumerator is already an Iterator.
- * @param aXPCOMEnumerator {nsISimpleEnumerator}
- * @param aInterface       {nsIIDRef}
- * @returns                {Iterator}
+ * Converts an nsIArray into an Array.
+ *
+ * @param aIArray {nsIArray}
+ * @param aUUID   {nsIIDRef} The type of XPCOM elements of the array
+ * @returns       {Array}
+ *
+ * If the parameter is not an nsIArray then it is simply returned.
+ * This is useful for functions that need to be backward compatible.
  */
-function iterateEnumerator(aXPCOMEnumerator, aInterface)
-{
-  return XPCOMUtils.IterSimpleEnumerator ? XPCOMUtils.IterSimpleEnumerator(aXPCOMEnumerator, aInterface) : aXPCOMEnumerator;
+function toArray(aIArray, aUUID) {
+  if (aIArray instanceof Ci.nsIArray) {
+    let array = [];
+    for (let i = 0; i < aIArray.length; i++) {
+      array.push(aIArray.queryElementAt(i, aUUID));
+    }
+    return array;
+  }
+  return aIArray;
 }
 
 /**
@@ -164,8 +168,7 @@ function getIncomingServer(key)
 
 function getFolderById(aServer, aFolderId) {
   let descendants = aServer.rootFolder.descendants;
-  for (let i = 0; i < descendants.length; i++) {
-    let msgFolder = descendants.queryElementAt(i, Ci.nsIMsgFolder);
+  for (let msgFolder of toArray(aServer.rootFolder.descendants, Ci.nsIMsgFolder)) {
     if (msgFolder.getStringProperty("FolderId") == aFolderId) {
       return msgFolder;
     }
@@ -175,7 +178,6 @@ function getFolderById(aServer, aFolderId) {
 
 var gMsgWindowList = [null];
 
-var CallExtension = // COMPAT for TB 60
 async function CallExtension(aServer, aOperation, aData, aMsgWindow)
 {
   let msgWindowHandle = 0;
@@ -208,14 +210,15 @@ async function CallExtension(aServer, aOperation, aData, aMsgWindow)
     // Add our stack to the extension stack
     ex.stack += error.stack;
     Object.assign(error, ex);
+    // Explicitly copy the message as newer versions don't do that automatically
+    error.message = ex.message;
     throw error;
   }
 }
-; // COMPAT for TB 60
 
 function folderExists(aFolderURI)
 {
-  return RDF.GetResource(aFolderURI).QueryInterface(Ci.nsIMsgFolder).parent != null;
+  return MailServices.folderLookup.getFolderForURL(aFolderURI) != null;
 }
 
 /**
@@ -275,29 +278,41 @@ function CheckSpecialFolder(aServer, aType, aURI)
   }
 }
 
+/**
+ * Updates the Thunderbird folder tree given a folder hiearchy.
+ *
+ * @param aServer     {nsIMsgIncomingServer}
+ * @param aFolderTree {FolderTree}
+ */
 function UpdateFolderTree(aServer, aFolderTree)
 {
   // Get the current list of folders so we can delete non-existent ones.
-  let folders = [];
-  let folderArray = aServer.rootFolder.descendants;
-  for (let i = 0; i < folderArray.length; i++) {
-    let folder = folderArray.queryElementAt(i, Ci.nsIMsgFolder);
-    if (!(folder.flags & Ci.nsMsgFolderFlags.Virtual)) {
-      folders.push(folder);
-    }
+  let foldersToSkip = Ci.nsMsgFolderFlags.Virtual;
+  if (aFolderTree[0].keepSharedFolders) {
+    foldersToSkip |= Ci.nsMsgFolderFlags.ImapOtherUser;
   }
+  let oldFolders = [];
+  /**
+   * @param parentFolder {nsIMsgFolder}
+   * @param children     {Array[FolderTree]}
+   */
   let processFolderTree = (parentFolder, children) => {
+    for (let folder of parentFolder.subFolders) {
+      if (!(folder.flags & foldersToSkip)) {
+        oldFolders.push(folder);
+      }
+    }
     for (let child of children) {
       // Get or create the local child folder.
       let msgFolder;
       if (parentFolder.containsChildNamed(child.name)) {
         msgFolder = parentFolder.getChildNamed(child.name);
-        folders.splice(folders.indexOf(msgFolder), 1);
+        oldFolders.splice(oldFolders.indexOf(msgFolder), 1);
       } else {
         try {
           msgFolder = CreateSubfolder(aServer, parentFolder, child.name); // folder.js
         } catch (ex) {
-          if (ex.result == NS_MSG_FOLDER_EXISTS && !folderArray.length) {
+          if (ex.result == NS_MSG_FOLDER_EXISTS && !aServer.rootFolder.hasSubFolders) {
             // We don't appear to have any existing folders at all,
             // not even the Inbox. We want to try very hard to create
             // these initial folders, but something's stopping us.
@@ -334,11 +349,17 @@ function UpdateFolderTree(aServer, aFolderTree)
           }
         }
       }
+      msgFolder.setStringProperty("FolderType", child.type);
+      if (child.keepSubfolders) {
+        // This is a folder that we failed to retrieve.
+        // We don't have any properties for it or its descendents.
+        // Just leave the existing subtree alone for now.
+        continue;
+      }
       // The FolderId is an extension-provided string that we pass back
       // to the extension whenever we want to refer to a specific folder.
       // Save it as a string property so that we can easily retrieve it.
       msgFolder.setStringProperty("FolderId", child.id);
-      msgFolder.setStringProperty("FolderType", child.type);
       // Update the counts on the folder.
       msgFolder.changeNumPendingTotalMessages(child.total - msgFolder.getTotalMessages(false));
       msgFolder.changeNumPendingUnread(child.unread - msgFolder.getNumUnread(false));
@@ -353,7 +374,7 @@ function UpdateFolderTree(aServer, aFolderTree)
   }
   processFolderTree(aServer.rootFolder, aFolderTree);
   // Delete any remaining folders.
-  for (let folder of folders) {
+  for (let folder of oldFolders) {
     if (folder.parent) { // parent may have already been deleted
       folder.parent.propagateDelete(folder, true, null);
     }
@@ -377,9 +398,7 @@ function HeartTransplant(aServer)
     let folder = aServer.rootFolder;
     if (folder instanceof Ci.msgIOverride) {
       folder.jsDelegate = new Folder(folder, gFolderProperties.baseInterfaces);
-      let descendants = folder.descendants;
-      for (let i = 0; i < descendants.length; i++) {
-        let folder = descendants.queryElementAt(i, Ci.nsIMsgFolder);
+      for (folder of toArray(folder.descendants, Ci.nsIMsgFolder)) {
         if (folder instanceof Ci.msgIOverride) {
           folder.jsDelegate = new Folder(folder, gFolderProperties.baseInterfaces);
         }
@@ -398,7 +417,7 @@ function checkForUnwantedOffice365SMTP() {
     if (MailServices.accounts.accounts.length > 2) {
       return;
     }
-    for (let account of iterateEnumerator(MailServices.accounts.accounts.enumerate(Ci.nsIMsgAccount), Ci.nsIMsgAccount)) {
+    for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       switch (account.incomingServer.type) {
       case "owl":
       case "owl-ews":
@@ -411,7 +430,7 @@ function checkForUnwantedOffice365SMTP() {
 
     let smtpCount = 0;
     let smtpServer = null;
-    for (smtpServer of iterateEnumerator(MailServices.smtp.servers, Ci.nsISmtpServer)) {
+    for (smtpServer of MailServices.smtp.servers) {
       smtpCount++;
     }
     if (smtpCount != 1) {
@@ -421,7 +440,7 @@ function checkForUnwantedOffice365SMTP() {
       return;
     }
     // Use global default server -> Use Exchange protocol to send mail
-    MailServices.accounts.allIdentities.queryElementAt(0, Ci.nsIMsgIdentity).smtpServerKey = "";
+    /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.allIdentities, Ci.nsIMsgIdentity)[0].smtpServerKey = "";
     // Delete the SMTP server
     try {
       smtpServer.forgetPassword();
@@ -439,16 +458,13 @@ function checkForUnwantedOffice365SMTP() {
  */
 function useGlobalPreferredServer(aType) {
   try {
-    if (Services.prefs.getBoolPref("owl.useGlobalPreferredServer." + aType, false)) {
+    if (Services.prefs.getBoolPref("extensions.owl.useGlobalPreferredServer." + aType, false)) {
       return;
     }
-    Services.prefs.setBoolPref("owl.useGlobalPreferredServer." + aType, true);
-    let allAccounts = MailServices.accounts.accounts;
-    for (let i = 0; i < allAccounts.length; i++) {
-      let account = allAccounts.queryElementAt(i, Ci.nsIMsgAccount);
+    Services.prefs.setBoolPref("extensions.owl.useGlobalPreferredServer." + aType, true);
+    for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       if (account.incomingServer.type == aType) {
-        for (let j = 0; j < account.identities.length; j++) {
-          let identity = account.identities.queryElementAt(i, Ci.nsIMsgIdentity);
+        for (let identity of /* COMPAT for TB 68 (bug 1612239) */toArray(account.identities, Ci.nsIMsgIdentity)) {
           identity.smtpServerKey = "";
         }
       }
@@ -491,7 +507,7 @@ function loadScripts() {
   extBaseURL = extBaseURL.slice(0, extBaseURL.lastIndexOf("/") + 1);
 
   for (let file of kScriptFiles) {
-    Services.scriptloader.loadSubScript(extBaseURL + file);
+    Services.scriptloader.loadSubScriptWithOptions(extBaseURL + file, { ignoreCache: true });
   }
 
   for (let module of gModules) {
@@ -519,9 +535,7 @@ this.webAccount = class extends ExtensionAPI {
             logExpectedError(ex);
           }
           try {
-            let identities = MailServices.accounts.allIdentities;
-            for (let i = 0; i < identities.length; i++) {
-              let { email, fullName } = identities.queryElementAt(i, Ci.nsIMsgIdentity);
+            for (let { email, fullName } of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.allIdentities, Ci.nsIMsgIdentity)) {
               if (email) {
                 return { email, fullName };
               }
@@ -560,9 +574,7 @@ this.webAccount = class extends ExtensionAPI {
             logError(ex);
           }
           try {
-            let identities = MailServices.accounts.getIdentitiesForServer(server);
-            for (let i = 0; i < identities.length; i++) {
-              let { email, fullName } = identities.queryElementAt(i, Ci.nsIMsgIdentity);
+            for (let { email, fullName } of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.getIdentitiesForServer(server), Ci.nsIMsgIdentity)) {
               if (email) {
                 return { email, fullName };
               }
@@ -592,10 +604,8 @@ this.webAccount = class extends ExtensionAPI {
         getIdentities: function(key) {
           let server = getIncomingServer(key);
           try {
-            let identities = MailServices.accounts.getIdentitiesForServer(server);
             let result = [];
-            for (let i = 0; i < identities.length; i++) {
-              let { email, fullName } = identities.queryElementAt(i, Ci.nsIMsgIdentity);
+            for (let { email, fullName } of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.getIdentitiesForServer(server), Ci.nsIMsgIdentity)) {
               result.push({ email, fullName });
             }
             return result;
@@ -622,8 +632,13 @@ this.webAccount = class extends ExtensionAPI {
           }
           try {
             let bundle = Services.strings.createBundle("chrome://messenger/locale/imapMsgs.properties");
-            let passwordPrompt = bundle.formatStringFromName("imapEnterServerPasswordPrompt", [server.realUsername, server.realHostName], 2);
-            let passwordTitle = bundle.GetStringFromName("imapEnterPasswordPromptTitle");
+            let passwordPrompt = bundle.formatStringFromName("imapEnterServerPasswordPrompt", [server.realUsername, server.realHostName], 2); // COMPAT for TB 68 (bug 1557793)
+            let passwordTitle;
+            try { // COMPAT for TB 68 (bug 1594178)
+              passwordTitle = bundle.formatStringFromName("imapEnterPasswordPromptTitleWithUsername", [server.realUsername]);
+            } catch (ex) { // COMPAT for TB 68 (bug 1594178)
+              passwordTitle = bundle.GetStringFromName("imapEnterPasswordPromptTitle"); // COMPAT for TB 68 (bug 1594178)
+            } // COMPAT for TB 68 (bug 1594178)
             // getPasswordWithUI() checks the password manager and fulfills the request from there,
             // without prompting, if possible. For that, it doesn't even need a msgWindow.
             if (!server.getPasswordWithUI(passwordPrompt, passwordTitle, msgWindow)) {
@@ -646,8 +661,8 @@ this.webAccount = class extends ExtensionAPI {
               return false;
             }
             let bundle = Services.strings.createBundle("chrome://messenger/locale/messenger.properties");
-            let message = bundle.formatStringFromName("mailServerLoginFailed2", [server.realHostName, server.realUsername], 2);
-            let title = bundle.formatStringFromName("mailServerLoginFailedTitleWithAccount", [server.prettyName], 1);
+            let message = bundle.formatStringFromName("mailServerLoginFailed2", [server.realHostName, server.realUsername], 2); // COMPAT for TB 68 (bug 1557793)
+            let title = bundle.formatStringFromName("mailServerLoginFailedTitleWithAccount", [server.prettyName], 1); // COMPAT for TB 68 (bug 1557793)
             let retry = bundle.GetStringFromName("mailServerLoginFailedRetryButton");
             let enter = bundle.GetStringFromName("mailServerLoginFailedEnterNewPasswordButton");
             if (passwordErrorMessage) {
@@ -835,9 +850,7 @@ this.webAccount = class extends ExtensionAPI {
         getServersOfTypes: function(types) {
           try {
             let keys = [];
-            let allServers = MailServices.accounts.allServers;
-            for (let i = 0; i < allServers.length; i++) {
-              let server = allServers.queryElementAt(i, Ci.nsIMsgIncomingServer);
+            for (let server of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.allServers, Ci.nsIMsgIncomingServer)) {
               if (types.includes(server.type)) {
                 keys.push(server.key);
               }
@@ -861,9 +874,8 @@ this.webAccount = class extends ExtensionAPI {
           let server = MailServices.accounts.findRealServer(aUsername, aHostname, aScheme, 443);
           if (server) {
             // Check that there's an account for the server we found.
-            let accounts = MailServices.accounts.accounts;
-            for (let i = 0; i < accounts.length; i++) {
-              if (server == accounts.queryElementAt(i, Ci.nsIMsgAccount).incomingServer) {
+            for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
+              if (server == account.incomingServer) {
                 throw new ExtensionError("Server already exists");
               }
             }
@@ -922,7 +934,7 @@ this.webAccount = class extends ExtensionAPI {
             try {
               let url = aScheme + "://" + aHostname;
               let login = Cc["@mozilla.org/login-manager/loginInfo;1"].createInstance(Ci.nsILoginInfo);
-              login.init(url, null, url, aUsername, aPassword, "", "");
+              login.init(url, null, url, aUsername, aPassword, /* COMPAT for TB 68 (bug 1555152) */ "", "");
               Services.logins.addLogin(login);
             } catch (ex) {
               logError(ex);
@@ -961,22 +973,17 @@ this.webAccount = class extends ExtensionAPI {
         setSchemeOptions: function(aScheme, aOptions) {
           gSchemeOptions.set(aScheme, aOptions);
         },
-        dispatcher: new ExtensionCommon.EventManager(context, "webAccount.dispatcher", (listener, scheme) => {
+        dispatcher: new ExtensionCommon.EventManager({ context, name: "webAccount.dispatcher", register: (listener, scheme) => {
           try {
             for (let module of gModules) {
               gComponentRegistrar.registerFactory(module.classID, null, module.contractID + scheme, null);
-            }
-            if (scheme.length > 3) { // COMPAT for TB 60 (bug 1492905)
-              gComponentRegistrar.registerFactory(gMessageServiceProperties.classID, null, gMessageServiceProperties.contractID + scheme.slice(0, 4) + "-message" + scheme.slice(4), null);
             }
             gDispatchListeners.set(scheme, listener);
             if (!gSchemeOptions.has(scheme)) {
               gSchemeOptions.set(scheme, {});
             }
             // If this is a reinstall then the server may already be active.
-            let allServers = MailServices.accounts.allServers;
-            for (let i = 0; i < allServers.length; i++) {
-              let server = allServers.queryElementAt(i, Ci.nsIMsgIncomingServer);
+            for (let server of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.allServers, Ci.nsIMsgIncomingServer)) {
               if (server.type == scheme) {
                 HeartTransplant(server);
               }
@@ -993,7 +1000,7 @@ this.webAccount = class extends ExtensionAPI {
             logError(ex);
             throw SanitiseException(ex);
           }
-        }).api(),
+        }}).api(),
       }
     };
   }

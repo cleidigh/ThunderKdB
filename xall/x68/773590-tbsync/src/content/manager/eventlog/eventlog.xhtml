@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<dialog
+    width="600"
+    height="400"
+    title="__TBSYNCMSG_eventlog.title__"
+    buttons="cancel, extra1"
+    onload="tbSyncEventLog.onload();"
+    onunload="tbSyncEventLog.onunload();"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+
+    <script type="application/javascript" src="chrome://tbsync/content/manager/eventlog/eventlog.js"/>
+    <script type="text/javascript" src="chrome://tbsync/content/scripts/locales.js" /> 
+
+    <vbox flex="1">
+        <richlistbox id="tbsync.eventlog" flex="1" seltype="single" disabled="true"/>
+    </vbox>
+</dialog>

@@ -551,7 +551,10 @@ OWAAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
   if (invitation) {
     return invitation;
   }
-  let action = aNotify && aFolder == "calendar" ? "CreateCalendarEvent" : "CreateItem";
+  // For OWA, we only get notifications, if we use `UpdateCalendarEvent`
+  // instead of the `UpdateItem` with the `SendMeetingInvitations` flag.
+  // But `CreateCalendarEvent` fails on Exchange 2013, if the event has no attendees.
+  let action = aNotify && aFolder == "calendar" && aEvent.requiredAttendees.length + aEvent.optionalAttendees.length ? "CreateCalendarEvent" : "CreateItem";
   let create = {
     __type: "CreateItemJsonRequest:#Exchange",
     Header: {
@@ -688,7 +691,10 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
       return;
     }
   }
-  let action = aNotify && aFolder == "calendar" ? "UpdateCalendarEvent" : "UpdateItem";
+  // For OWA, we only get notifications, if we use `UpdateCalendarEvent`
+  // instead of the `UpdateItem` with the `SendMeetingInvitations` flag.
+  // But `CreateCalendarEvent` fails on Exchange 2013, if the event has no attendees.
+  let action = aNotify && aFolder == "calendar" && aOldEvent.requiredAttendees.length + aOldEvent.optionalAttendees.length + aNewEvent.requiredAttendees.length + aNewEvent.optionalAttendees.length ? "UpdateCalendarEvent" : "UpdateItem";
   let newEvent = OWAAccount.ConvertToOWA(aFolder, aNewEvent);
   let oldEvent = OWAAccount.ConvertToOWA(aFolder, aOldEvent);
   // OWA ignores a time zone change unless we include the time as well.
@@ -762,17 +768,24 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
   let response = await this.CallService(action, request); // owa.js
   let responseTag = OWAAccount.kResponseMap[aNewEvent.participation];
   if (responseTag) {
-    await this.RespondToInvitation(response.Items[0].ItemId.Id, responseTag, false);
+    // If this is a recurring instance, we have to notify because
+    // Lightning won't tell us the original master recurrence later.
+    let isRecurrence = aNewEvent.index > 0;
+    await this.RespondToInvitation(response.Items[0].ItemId.Id, responseTag, isRecurrence);
   }
 }
 
 /**
  * Update the participation for an invitation
  *
- * @param aEventId      {String} The id of the invitation to update
- * @param aParticipaton {String} The new participation status
+ * @param aEventId      {String}  The id of the invitation to update
+ * @param aIsRecurrence {Boolean} Whether this is a recurrence instance
+ * @param aParticipaton {String}  The new participation status
  */
-OWAAccount.prototype.NotifyParticipation = async function(aEventId, aParticipation) {
+OWAAccount.prototype.NotifyParticipation = async function(aEventId, aParticipation, aIsRecurrence) {
+  if (aIsRecurrence) {
+    return; // We don't support this after the fact, due to Lightning weirdness.
+  }
   let responseTag = OWAAccount.kResponseMap[aParticipation];
   if (!responseTag || responseTag == "Decline") {
     // We don't support this after the fact, because the item is already gone.
@@ -923,7 +936,7 @@ OWAAccount.prototype.GetFreeBusy = async function(aAttendee, aStartTime, aEndTim
 browser.calendarProvider.dispatcher.addListener(async function(aServerId, aOperation, aParameters) {
   try {
     await EnsureLicensed(); // licence.js
-    let account = gOWAAccounts.get(aServerId);
+    let account = await gOWAAccounts.get(aServerId);
     switch (aOperation) {
     case "SyncEvents":
       return await account.SyncEvents(aParameters.delegate, aParameters.folder, aParameters.syncState);
@@ -934,7 +947,7 @@ browser.calendarProvider.dispatcher.addListener(async function(aServerId, aOpera
     case "UpdateEvent":
       return await account.UpdateEvent(aParameters.folder, aParameters.newEvent, aParameters.oldEvent, aParameters.notify);
     case "NotifyParticipation":
-      return await account.NotifyParticipation(aParameters.id, aParameters.participation, true);
+      return await account.NotifyParticipation(aParameters.id, aParameters.participation, aParameters.isRecurrence);
     case "DeleteEvent":
       return await account.DeleteEvent(aParameters.id, aParameters.notify);
     case "GetFreeBusy":

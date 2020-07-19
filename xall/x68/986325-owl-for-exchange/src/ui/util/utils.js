@@ -75,9 +75,5 @@ function stripLongQueryValues(aURL)
  */
 async function noAwait(aPromise, aErrorCallback)
 {
-  try {
-    await aPromise;
-  } catch (ex) {
-    aErrorCallback(ex);
-  }
+  aPromise.then(null, aErrorCallback);
 }

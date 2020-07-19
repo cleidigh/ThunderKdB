@@ -9,7 +9,7 @@ function ProtocolInfo() {
 }
 
 ProtocolInfo.prototype = {
-  QueryInterface: QIUtils.generateQI([Ci.nsIMsgProtocolInfo]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgProtocolInfo]),
   // nsIMsgProtocolInfo
   get defaultLocalPath() {
     try {

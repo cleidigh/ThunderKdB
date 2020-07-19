@@ -44,7 +44,8 @@ var gHideElementsForJsAccount = [
 async function overlayListener(aDocument)
 {
   try {
-    if (aDocument.documentURI == "chrome://messenger/content/am-server.xul") {
+    if (aDocument.documentURI == "chrome://messenger/content/am-server.xhtml" ||
+        aDocument.documentURI == "chrome://messenger/content/am-server.xul") { // COMPAT for TB 68 (bug 1605845)
       let enableGAL = aDocument.createElementNS(aDocument.documentElement.namespaceURI, "checkbox");
       enableGAL.id = "server.GAL_enabled";
       enableGAL.setAttribute("hidefor", "pop3,imap,nntp,movemail");
@@ -140,7 +141,8 @@ async function overlayListener(aDocument)
           }
         }
       }
-    } else if (aDocument.documentURI == "chrome://messenger/content/am-main.xul") {
+    } else if (aDocument.documentURI == "chrome://messenger/content/am-main.xhtml" ||
+        aDocument.documentURI == "chrome://messenger/content/am-main.xul") { // COMPAT for TB 68 (bug 1605845)
       let window = aDocument.defaultView;
       let onPreInit = window.onPreInit;
       window.onPreInit = function(account, accountValues) {
@@ -149,8 +151,7 @@ async function overlayListener(aDocument)
         element.hidden = element.previousElementSibling.hidden = gSchemeOptions.has(type);
         onPreInit(account, accountValues);
       };
-    } else if (aDocument.documentURI == "chrome://messenger/content/am-copies.xul" ||
-        aDocument.documentURI == "chrome://messenger/content/am-identity-edit.xul") {
+    } else if (/^chrome:\/\/messenger\/content\/am-(copies|identity-edit)\.x(htm|u)l$/.test(aDocument.documentURI)) { // xul COMPAT for TB 68 (bug 1605845)
       let window = aDocument.defaultView;
       let setupFccItems = window.setupFccItems;
       window.setupFccItems = function() {
@@ -164,12 +165,8 @@ async function overlayListener(aDocument)
           let {sentFolder = "sameServer"} = gSchemeOptions.get(serverType);
           aDocument.getElementById("identity.doFcc").disabled = true;
           aDocument.getElementById("identity.doFcc").checked = true;
-          if (aDocument.getElementById("broadcaster_doFcc")) {
-            aDocument.getElementById("broadcaster_doFcc").setAttribute("disabled", "true"); // COMPAT for TB 60 (bug 1512884)
-          } else {
-            for (let element of aDocument.querySelectorAll(".depends-on-do-fcc")) {
-              element.setAttribute("disabled", true);
-            }
+          for (let element of aDocument.querySelectorAll(".depends-on-do-fcc")) {
+            element.setAttribute("disabled", true);
           }
           let disablePicker = sentFolder == "SentMail" || !aDocument.getElementById("identity.doFcc").checked;
           msgFccFolderPopup.parentNode.disabled = disablePicker;
@@ -182,19 +179,15 @@ async function overlayListener(aDocument)
             msgFccFolderPopup._ensureInitialized();
             msgFccFolderPopup.selectFolder(msgFccFolderPopup.parentNode.folder);
           }
-          if (aDocument.getElementById("broadcaster_doFcc")) {
-            aDocument.getElementById("broadcaster_doFcc").removeAttribute("disabled"); // COMPAT for TB 60 (bug 1512884)
-          } else {
-            for (let element of aDocument.querySelectorAll(".depends-on-do-fcc")) {
-              element.removeAttribute("disabled");
-            }
+          for (let element of aDocument.querySelectorAll(".depends-on-do-fcc")) {
+            element.removeAttribute("disabled");
           }
           aDocument.getElementById("identity.doFcc").disabled = false;
           aDocument.getElementById("identity.fccReplyFollowsParent").disabled = false;
           setupFccItems();
         }
       };
-    } else if (/^chrome:\/\/messenger\/content\/addressbook\/ab((Edit|New)Card|(Edit|Mail)List)Dialog\.xul$/.test(aDocument.documentURI)) {
+    } else if (/^chrome:\/\/messenger\/content\/addressbook\/ab((Edit|New)Card|(Edit|Mail)List)Dialog\.x(htm|u)l$/.test(aDocument.documentURI)) { // xul COMPAT for TB 68 (bug 1605845)
       aDocument.defaultView.GetDirectoryFromURI = function(aURI) {
         let directory = MailServices.ab.getDirectory(aURI);
         if (gAddressBooksMarkedAsReadOnly.has(directory.UID)) {
@@ -206,12 +199,9 @@ async function overlayListener(aDocument)
         }
         return directory;
       };
-    } else if (aDocument.documentURI == "about:preferences" ||
-        aDocument.documentURI == "chrome://messenger/content/AccountManager.xul") { // COMPAT for TB 60 (bug 1096006)
+    } else if (aDocument.documentURI == "about:accountsettings" ||
+        aDocument.documentURI == "chrome://messenger/content/AccountManager.xul") { // COMPAT for TB 68 (bug 1096006)
       let window = aDocument.defaultView;
-      if (!window.gAccountTree) { // COMPAT for TB 60 (bug 1096006)
-        return;
-      }
       let _build = window.gAccountTree._build;
       window.gAccountTree._build = function at_build() {
         _build.call(window.gAccountTree);
@@ -229,9 +219,12 @@ async function overlayListener(aDocument)
             // Convert the child node list into an array and iterate that instead.
             for (let panel of [...treekids.children]) {
               switch (panel.getAttribute("PageTag")) {
-              case "am-junk.xul":
-              case "am-mdn.xul":
-              case "am-smime.xul":
+              case "am-e2e.xhtml":
+              case "am-junk.xhtml":
+              case "am-mdn.xhtml":
+              case "am-junk.xul": // COMPAT for TB 68 (bug 1605845)
+              case "am-mdn.xul": // COMPAT for TB 68 (bug 1605845)
+              case "am-smime.xul": // COMPAT for TB 68 (bug 1603809)
                 panel.remove();
               }
             }
@@ -251,7 +244,7 @@ let folderListener = {
   OnItemIntPropertyChanged: async function(aMsgFolder, aProperty, aOldValue, aNewValue) {
     // Other flags may get set at the same time so check that
     // the new flags includes Inbox and the old flags does not.
-    if (aProperty == "FolderFlag" && (aNewValue & Ci.nsMsgFolderFlags.Inbox) && !(aOldValue & Ci.nsMsgFolderFlags.Inbox)) {
+    if (aProperty == "FolderFlag" && (aNewValue & Ci.nsMsgFolderFlags.Inbox) && !(aOldValue & Ci.nsMsgFolderFlags.Inbox) && aMsgFolder.parent.isServer) {
       await Promise.resolve(); // async equivalent to executeSoon()
       // We only need to change the selected folder in one window.
       let mail3Pane = Services.wm.getMostRecentWindow("mail:3pane");
@@ -277,7 +270,7 @@ function PaneOverride(aProperties) {
 }
 
 PaneOverride.prototype = {
-  QueryInterface: QIUtils.generateQI([Ci.nsIFactory, Ci.nsIMsgAccountManagerExtension]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIFactory, Ci.nsIMsgAccountManagerExtension]),
   // nsIFactory
   createInstance: function(aOuter, aIID) {
     if (aOuter) {
@@ -302,11 +295,16 @@ gMDNProperties.factory = new PaneOverride(gMDNProperties);
 RegisterFactory(gMDNProperties, true);
 
 var gSMimeProperties = {
-  baseClassID: Components.ID("{f2809796-1dd1-11b2-8c1b-8f15f007c699}"),
-  contractID: "@mozilla.org/accountmanager/extension;1?name=smime",
+  baseClassID: Components.ID("{d7aad508-991c-401a-8b3f-7e4e055e1e2b}"),
+  contractID: "@mozilla.org/accountmanager/extension;1?name=e2e",
   classDescription: "Security Pane Override",
   classID: Components.ID("{d79318b7-f2b1-4a7f-944b-a8341f8a8a2e}"),
 };
+
+if ("@mozilla.org/accountmanager/extension;1?name=smime" in Components.classes) { // COMPAT for TB 68 (bug 1603809)
+  gSMimeProperties.baseClassID = Components.ID("{f2809796-1dd1-11b2-8c1b-8f15f007c699}"); // COMPAT for TB 68 (bug 1603809)
+  gSMimeProperties.contractID = "@mozilla.org/accountmanager/extension;1?name=smime"; // COMPAT for TB 68 (bug 1603809)
+} // COMPAT for TB 68 (bug 1603809)
 
 gSMimeProperties.factory = new PaneOverride(gSMimeProperties);
 RegisterFactory(gSMimeProperties, true);

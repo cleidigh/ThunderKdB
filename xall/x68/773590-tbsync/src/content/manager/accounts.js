@@ -231,7 +231,6 @@ var tbSyncAccounts = {
           break;
         
         case "info":
-        case "nolightning":
         case "notsyncronized":
         case "modified":
           src = "info16.png";
@@ -242,7 +241,7 @@ var tbSyncAccounts = {
           break;
 
         case "syncing":
-          switch (current.replace("chrome://tbsync/skin/","")) {
+          switch (current.replace("chrome://tbsync/content/skin/","")) {
             case "sync16_1.png": 
               src = "sync16_2.png"; 
               break;
@@ -271,7 +270,7 @@ var tbSyncAccounts = {
       }
     }
     
-    return "chrome://tbsync/skin/" + src;
+    return "chrome://tbsync/content/skin/" + src;
   },
 
   updateAccountLogo: function (id) {
@@ -279,7 +278,7 @@ var tbSyncAccounts = {
     let listItem = document.getElementById("tbSyncAccounts.accounts." + id);
     if (listItem) {
       let obj = listItem.childNodes[0];
-      obj.src = tbSyncAccounts.hasInstalledProvider(id) ? TbSync.providers[accountData.getAccountProperty("provider")].Base.getProviderIcon(16, accountData) : "chrome://tbsync/skin/provider16.png";
+      obj.src = tbSyncAccounts.hasInstalledProvider(id) ? TbSync.providers[accountData.getAccountProperty("provider")].Base.getProviderIcon(16, accountData) : "chrome://tbsync/content/skin/provider16.png";
     }
   },
 
@@ -411,7 +410,7 @@ var tbSyncAccounts = {
       for (let i=accountsList.getRowCount()-1; i>=0; i--) {
         accountsList.getItemAtIndex(i).remove();
       }
-      document.getElementById("tbSyncAccounts.contentFrame").setAttribute("src", "chrome://tbsync/content/manager/noaccounts.xul");
+      document.getElementById("tbSyncAccounts.contentFrame").setAttribute("src", "chrome://tbsync/content/manager/noaccounts.xhtml");
     }
   },
 
@@ -438,7 +437,7 @@ var tbSyncAccounts = {
       entry.setAttribute("hidden", false);
     } else if (isDefault) {
       entry.setAttribute("label", TbSync.providers.defaultProviders[provider].name);
-      entry.setAttribute("image", "chrome://tbsync/skin/provider16.png");                    
+      entry.setAttribute("image", "chrome://tbsync/content/skin/provider16.png");                    
       entry.setAttribute("hidden", false);
     } else {
       entry.setAttribute("hidden", true);
@@ -461,9 +460,9 @@ var tbSyncAccounts = {
     if (selectedAccount !== null) { //account id could be 0, so need to check for null explicitly
       let provider = TbSync.db.getAccountProperty(selectedAccount, "provider");            
       if (tbSyncAccounts.hasInstalledProvider(selectedAccount)) {
-        document.getElementById("tbSyncAccounts.contentFrame").setAttribute("src", "chrome://tbsync/content/manager/editAccount.xul?provider="+provider+"&id=" + selectedAccount);
+        document.getElementById("tbSyncAccounts.contentFrame").setAttribute("src", "chrome://tbsync/content/manager/editAccount.xhtml?provider="+provider+"&id=" + selectedAccount);
       } else {
-        document.getElementById("tbSyncAccounts.contentFrame").setAttribute("src", "chrome://tbsync/content/manager/missingProvider.xul?provider="+provider);
+        document.getElementById("tbSyncAccounts.contentFrame").setAttribute("src", "chrome://tbsync/content/manager/missingProvider.xhtml?provider="+provider);
       }
     }
   },
@@ -493,7 +492,7 @@ var tbSyncAccounts = {
     }
     TbSync.manager.prefWindowObj.document.getElementById("tbSyncAccountManager.installProvider").hidden=false;
     TbSync.manager.prefWindowObj.document.getElementById("tbSyncAccountManager.installProvider").setAttribute("active","true");
-    TbSync.manager.prefWindowObj.document.getElementById("tbSyncAccountManager.contentWindow").setAttribute("src", "chrome://tbsync/content/manager/installProvider.xul?provider="+provider);        
+    TbSync.manager.prefWindowObj.document.getElementById("tbSyncAccountManager.contentWindow").setAttribute("src", "chrome://tbsync/content/manager/installProvider.xhtml?provider="+provider);        
   },
       
 };

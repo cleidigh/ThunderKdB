@@ -1,6 +1,6 @@
 const kMinimumRenew = 14 * 24 * 60 * 60 * 1000; // 2 weeks
 
-let { FetchTicket, AddTicketFromString, CheckLicense, OpenPurchasePage, registerGlobalObserver, logError } = browser.extension.getBackgroundPage();
+let { FetchTicket, AddTicketFromString, CheckLicense, OpenPurchasePage, registerGlobalObserver, logError, browser } = window.browser.extension.getBackgroundPage();
 
 let gBundle = null;
 

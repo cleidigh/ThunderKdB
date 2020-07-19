@@ -1,5 +1,3 @@
-var newChannelFromURI = "newChannelFromURI2" in Services.io ? "newChannelFromURI2" : "newChannelFromURI"; // COMPAT for TB 60 (bug 1529252)
-
 /// Properties used when creating the component factory.
 var gMessageServiceProperties = {
   contractID: "@mozilla.org/messenger/messageservice;1?type=",
@@ -11,7 +9,7 @@ function MessageService() {
 }
 
 MessageService.prototype = {
-  QueryInterface: QIUtils.generateQI([Ci.nsIMsgMessageFetchPartService, Ci.nsIMsgMessageService]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgMessageFetchPartService, Ci.nsIMsgMessageService]),
   // nsIMsgMessageFetchPartService
   /**
    * Fetches a single attachment rather than the entire message.
@@ -29,7 +27,7 @@ MessageService.prototype = {
       if (aUrlListener && aURI instanceof Ci.nsIMsgMailNewsUrl) {
         aURI.RegisterListener(aUrlListener);
       }
-      let channel = Services.io[newChannelFromURI](aURI, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
+      let channel = Services.io.newChannelFromURI(aURI, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
       channel.asyncOpen(aDisplayConsumer, null);
       return aURI;
     } catch (ex) {
@@ -53,7 +51,7 @@ MessageService.prototype = {
       let uri = Services.io.newURI(aSrcURI);
       uri.QueryInterface(Ci.nsIMsgMailNewsUrl).msgWindow = aMsgWindow;
       uri.QueryInterface(Ci.msgIJaUrl).setUrlType(aMoveMessage);
-      let channel = Services.io[newChannelFromURI](uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
+      let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
       channel.asyncOpen(aCopyListener, null);
     } catch (ex) {
       logError(ex);
@@ -84,10 +82,6 @@ MessageService.prototype = {
       try {
         let uri = Services.io.newURI(aMessageURI).QueryInterface(Ci.nsIMsgMailNewsUrl);
         uri.msgWindow = aMsgWindow;
-        if (uri.loadURI.length == 3) { // COMPAT for TB 60
-          uri.loadURI(aDisplayConsumer, null, Ci.nsIWebNavigation.LOAD_FLAGS_NONE);
-          return;
-        }
         uri.loadURI(aDisplayConsumer, Ci.nsIWebNavigation.LOAD_FLAGS_NONE);
       } catch (ex) {
         logError(ex);
@@ -97,7 +91,7 @@ MessageService.prototype = {
       try {
         let uri = Services.io.newURI(aMessageURI).QueryInterface(Ci.nsIMsgMailNewsUrl);
         uri.msgWindow = aMsgWindow;
-        let channel = Services.io[newChannelFromURI](uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
+        let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
         channel.asyncOpen(aDisplayConsumer, null);
       } catch (ex) {
         logError(ex);
@@ -123,10 +117,6 @@ MessageService.prototype = {
     try {
       let uri = Services.io.newURI(aUrl).QueryInterface(Ci.nsIMsgMailNewsUrl);
       uri.msgWindow = aMsgWindow;
-      if (uri.loadURI.length == 3) { // COMPAT for TB 60
-        uri.loadURI(aDisplayConsumer, null, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK);
-        return;
-      }
       uri.loadURI(aDisplayConsumer, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK);
     } catch (ex) {
       logError(ex);
@@ -154,7 +144,7 @@ MessageService.prototype = {
       uri.msgWindow = aMsgWindow;
       uri.QueryInterface(Ci.nsIMsgMessageUrl).canonicalLineEnding = aCanonical;
       let listener = uri.getSaveAsListener(aEnvelope, aFile);
-      let channel = Services.io[newChannelFromURI](uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
+      let channel = Services.io.newChannelFromURI(uri, null, Services.scriptSecurityManager.getSystemPrincipal(), null, Ci.nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL, Ci.nsIContentPolicy.TYPE_OTHER);
       channel.asyncOpen(listener, null);
     } catch (ex) {
       logError(ex);
@@ -225,9 +215,6 @@ MessageService.prototype = {
    * @throws     {Exception} If the URI is invalid
    */
   messageURIToMsgHdr: function(aUri) {
-    // nsMsgCompose::RememberQueuedDisposition rolls its own URI instead of
-    // calling .generateMessageURI(key) or .msgDatabase.GetMsgHdrForKey(key)...
-    aUri = aUri.replace(/-message(.*)#/, "$1?key="); // COMPAT for TB 60 (bug 1492905)
     try {
       let uri = Services.io.newURI(aUri);
       let folder = uri.QueryInterface(Ci.nsIMsgMailNewsUrl).folder;

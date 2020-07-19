@@ -91,9 +91,7 @@ function getStack(ex) {
 function getEmailAddressForUser() {
   try {
     const kTypes = ["owl", "owl-ews"];
-    let allAccounts = MailServices.accounts.accounts;
-    for (let i = 0; i < allAccounts.length; i++) {
-      let account = allAccounts.queryElementAt(i, Ci.nsIMsgAccount);
+    for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       if (kTypes.includes(account.incomingServer.type)) {
         return account.defaultIdentity.email;
       }
@@ -115,9 +113,7 @@ function getEmailAddressForUser() {
 function getLoginURLForUser() {
   try {
     const kTypes = ["owl", "owl-ews"];
-    let allAccounts = MailServices.accounts.accounts;
-    for (let i = 0; i < allAccounts.length; i++) {
-      let account = allAccounts.queryElementAt(i, Ci.nsIMsgAccount);
+    for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       if (kTypes.includes(account.incomingServer.type)) {
         return account.incomingServer.getUnicharValue(
             account.incomingServer.type == "owl-ews" ? "ews_url" : "owa_url");

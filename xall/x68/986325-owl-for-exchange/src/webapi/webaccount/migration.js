@@ -60,10 +60,8 @@ async function checkForHotmail() {
  * @returns {Array[nsIMsgAccount]} The server ids of the Hotmail accounts
  */
 function getHotmailAccounts() {
-  let accounts = MailServices.accounts.accounts;
   let hotmail = [];
-  for (let i = 0; i < accounts.length; i++) {
-    let account = accounts.queryElementAt(i, Ci.nsIMsgAccount);
+  for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
     switch (account.incomingServer.type) {
     case "owl-ews":
       return []; // TODO but probably not Hotmail
@@ -88,9 +86,8 @@ function getHotmailAccounts() {
  * @returns {Boolean}
  */
 function hasIMAPHotmailAccount(aUsername) {
-  let accounts = MailServices.accounts.accounts;
-  for (let i = 0; i < accounts.length; i++) {
-    let incomingServer = accounts.queryElementAt(i, Ci.nsIMsgAccount).incomingServer;
+  for (let account of /* COMPAT for TB 68 (bug 1614846) */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
+    let incomingServer = account.incomingServer;
     if (incomingServer.type != "imap" && incomingServer.type != "pop3") {
       continue;
     }
@@ -129,7 +126,7 @@ function verifyIMAPLogin(aOwlAccount) {
       server.socketType = Ci.nsMsgSocketType.SSL;
       server.valid = true;
       let bundle = Services.strings.createBundle("chrome://messenger/locale/imapMsgs.properties");
-      let passwordPrompt = bundle.formatStringFromName("imapEnterServerPasswordPrompt", [server.realUsername, server.realHostName], 2);
+      let passwordPrompt = bundle.formatStringFromName("imapEnterServerPasswordPrompt", [server.realUsername, server.realHostName], 2); // COMPAT for TB 68 (bug 1557793)
       let passwordTitle = bundle.GetStringFromName("imapEnterPasswordPromptTitle");
       server.password = aOwlAccount.incomingServer.getPasswordWithUI(passwordPrompt, passwordTitle, MailServices.mailSession.topmostMsgWindow);
         server.verifyLogon({
@@ -170,9 +167,9 @@ function createIMAPAccount(aOwlAccount) {
     server.prettyName = aOwlAccount.incomingServer.prettyName;
     server.valid = true;
     account = MailServices.accounts.createAccount();
-    let identities = aOwlAccount.identities;
-    for (let i = 0; i < identities.length; i++) {
-      account.addIdentity(identities.queryElementAt(i, Ci.nsIMsgIdentity));
+    let identities = /* COMPAT for TB 68 (bug 1612239) */toArray(aOwlAccount.identities, Ci.nsIMsgIdentity);
+    for (let identity of identities) {
+      account.addIdentity(identity);
     }
     account.incomingServer = server;
     savePassword("imap://outlook.office365.com", username, password);
@@ -186,8 +183,8 @@ function createIMAPAccount(aOwlAccount) {
     if (!MailServices.smtp.defaultServer) {
       MailServices.smtp.defaultServer = smtpServer;
     }
-    for (let i = 0; i < identities.length; i++) {
-      identities.queryElementAt(i, Ci.nsIMsgIdentity).smtpServerKey = smtpServer.key;
+    for (let identity of identities) {
+      identity.smtpServerKey = smtpServer.key;
     }
     savePassword("smtp://outlook.office365.com", username, password);
   } catch (ex) {
@@ -205,7 +202,7 @@ function createIMAPAccount(aOwlAccount) {
 function savePassword(serverURL, username, password) {
   try {
     let login = Cc["@mozilla.org/login-manager/loginInfo;1"].createInstance(Ci.nsILoginInfo);
-    login.init(serverURL, null, serverURL, username, password, "", "");
+    login.init(serverURL, null, serverURL, username, password, /* COMPAT for TB 68 */ "", "");
     Services.logins.addLogin(login);
   } catch (ex) {
     logError(ex);

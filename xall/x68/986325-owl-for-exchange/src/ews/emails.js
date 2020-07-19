@@ -4,7 +4,7 @@
  *
  * @param aMsgWindow {Integer}
  */
-EWSAccount.prototype.FindFolders = async function(aMsgWindow) {
+EWSAccount.prototype.FindMyFolders = async function(aMsgWindow) {
   let request = {
     m$GetFolder: {
       m$FolderShape: {
@@ -632,8 +632,9 @@ EWSAccount.prototype.CreateMessage = async function(aMsgWindow, aBody, aContentT
  * @param aFolder        {String} The id of the folder to save to
  * @param aContent       {String} The MIME source
  * @param aBccRecipients {Array[MailboxObject]}
+ * @param aDSN           {Boolean}
  */
-EWSAccount.prototype.SendMime = async function(aMsgWindow, aFolder, aContent, aBccRecipients) {
+EWSAccount.prototype.SendMime = async function(aMsgWindow, aFolder, aContent, aBccRecipients, aDSN) {
   let create = {
     m$CreateItem: {
       m$SavedItemFolderId: aFolder ? {
@@ -647,6 +648,7 @@ EWSAccount.prototype.SendMime = async function(aMsgWindow, aFolder, aContent, aB
           t$BccRecipients: {
             t$Mailbox: aBccRecipients.map(MailboxObject2EWS),
           },
+          t$IsDeliveryReceiptRequested: aDSN,
         }],
       },
       MessageDisposition: "SendAndSaveCopy", // always save, even if the folder pref is empty - server will use default Sent mail folder - Hotfix for #425
@@ -661,12 +663,13 @@ EWSAccount.prototype.SendMime = async function(aMsgWindow, aFolder, aContent, aB
  * @param aMsgWindow     {Integer}
  * @param aContent       {String} The MIME source
  * @param aBccRecipients {Array[MailboxObject]}
+ * @param aDSN           {Boolean}
  * @returns              {String} The id of the new item
  *
  * The message is always created in the Drafts folder.
  * @see SendMessage() for sending it.
  */
-EWSAccount.prototype.ComposeMime = async function(aMsgWindow, aContent, aBccRecipients) {
+EWSAccount.prototype.ComposeMime = async function(aMsgWindow, aContent, aBccRecipients, aDSN) {
   let create = {
     m$CreateItem: {
       m$Items: {
@@ -675,6 +678,7 @@ EWSAccount.prototype.ComposeMime = async function(aMsgWindow, aContent, aBccReci
           t$BccRecipients: {
             t$Mailbox: aBccRecipients.map(MailboxObject2EWS),
           },
+          t$IsDeliveryReceiptRequested: aDSN,
         }],
       },
       MessageDisposition: "SaveOnly",
@@ -1161,9 +1165,9 @@ EWSAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "SendMessage":
     return this.SendMessage(aMsgWindow, aParameters.message, aParameters.save);
   case "ComposeMessageFromMime":
-    return this.ComposeMime(aMsgWindow, aParameters.content, aParameters.bcc);
+    return this.ComposeMime(aMsgWindow, aParameters.content, aParameters.bcc, aParameters.deliveryReceipt);
   case "SendMessageFromMime":
-    return this.SendMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.bcc);
+    return this.SendMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.bcc, aParameters.deliveryReceipt);
   case "CreateMessageFromMime":
     return this.CreateMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged, aParameters.keywords);
   case "DeleteMessages":

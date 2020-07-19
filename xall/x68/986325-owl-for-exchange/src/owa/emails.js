@@ -1,7 +1,12 @@
 /**
- * Retrieves the folder hierarchy using the sessiondata.ashx OWA API endpoint.
+ * Retrieves the folder list using the sessiondata.ashx OWA API endpoint.
+ *
+ * @returns        {Object}
+ *   folderList:   {Array[Object]} The Exchange folder objects. Flat list.
+ *     @see Microsoft documentation for the properties of Exchange folder objects
+ *   rootFolderId: {String}        The Exchange folder id of the root folder
  */
-OWAAccount.prototype.FindFolders = async function() {
+OWAAccount.prototype.FindMyFolders = async function() {
   let url = this.serverURL + "sessiondata.ashx";
   let response = await fetch(url, {
     method: "POST",
@@ -9,7 +14,91 @@ OWAAccount.prototype.FindFolders = async function() {
   });
   let json = await this.CheckJSONResponse(response, url); // owa.js
   let {RootFolder} = json.findFolders.Body.ResponseMessages.Items[0];
-  return ConvertFolderList(RootFolder.Folders.filter(folder => folder.__type == "Folder:#Exchange"), RootFolder.ParentFolder.FolderId.Id);
+  return {
+    folderList: RootFolder.Folders.filter(folder => folder.__type == "Folder:#Exchange"),
+    rootFolderId: RootFolder.ParentFolder.FolderId.Id,
+  };
+}
+
+/**
+ * Retrieves shared mailboxes configured in OWA.
+ *
+ * @returns {Array[FolderTree]} An array of shared mailbox folder hierarchies
+ *
+ * If any of the calls to `FindSharedFolders()` throws an exception,
+ * a placeholder object is substitutued in its place. This placeholder only
+ * has the name and type properties, plus a boolean flag `keepSharedFolders`.
+ */
+OWAAccount.prototype.GetSharedFolders = async function() {
+  let result = await this.CallService("GetOtherMailboxConfiguration", {});
+  let mailboxes = result.OtherMailboxEntries;
+  return Promise.all(mailboxes.map(async mailbox => {
+    try {
+      return await this.FindSharedFolders(mailbox);
+    } catch (ex) {
+      logError(ex);
+      // Return a placeholder object so we don't accidentally delete
+      // shared folders that we successfully retrieved previously.
+      return {
+        name: mailbox.DisplayName,
+        type: "ImapOtherUser",
+        keepSubfolders: true,
+      };
+    }
+  }));
+}
+
+/**
+ * Retrieves the folder hierarchy for a shared mailbox.
+ *
+ * @param aMailbox        {Object}     The shared mailbox
+ *   DisplayName          {String}
+ *   PrincipalSMTPAddress {String}
+ * @returns               {FolderTree} The folder hiearchy of the shared mailbox
+ */
+OWAAccount.prototype.FindSharedFolders = async function(aMailbox) {
+  let query = {
+    __type: "FindFolderJsonRequest:#Exchange",
+    Header: {
+      __type: "JsonRequestHeaders:#Exchange",
+      RequestServerVersion: "Exchange2013",
+    },
+    Body: {
+      __type: "FindFolderRequest:#Exchange",
+      FolderShape: {
+        BaseShape: "Default",
+        AdditionalProperties: [{
+          __type: "PropertyUri:#Exchange",
+            FieldURI: "folder:FolderClass",
+        }, {
+          __type: "PropertyUri:#Exchange",
+            FieldURI: "folder:ParentFolderId",
+        }, {
+          __type: "PropertyUri:#Exchange",
+            FieldURI: "folder:DistinguishedFolderId",
+        }],
+      },
+      Paging: null,
+      ParentFolderIds: [{
+        __type: "DistinguishedFolderId:#Exchange",
+        Id: "msgfolderroot",
+        Mailbox: {
+          EmailAddress: aMailbox.PrincipalSMTPAddress,
+        },
+      }],
+      ReturnParentFolder: true,
+      Traversal: "Deep",
+    },
+  };
+  let result = await this.CallService("FindFolder", query); // owa.js
+  return {
+    id: result.RootFolder.ParentFolder.FolderId.Id,
+    name: aMailbox.DisplayName,
+    type: "ImapOtherUser",
+    total: 0,
+    unread: 0,
+    children: ConvertFolderList(result.RootFolder.Folders.filter(folder => folder.__type == "Folder:#Exchange"), result.RootFolder.ParentFolder.FolderId.Id),
+  };
 }
 
 /**
@@ -482,12 +571,13 @@ OWAAccount.prototype.CreateMessage = async function(aBody, aContentType, aFrom, 
  *
  * @param aContent       {String} The MIME source
  * @param aBccRecipients {Array[MailboxObject]}
+ * @param aDSN           {Boolean}
  * @returns              {String} The id of the new item
  *
  * The message is always created in the Drafts folder.
  * @see SendMessage() for sending it.
  */
-OWAAccount.prototype.ComposeMime = async function(aContent, aBccRecipients) {
+OWAAccount.prototype.ComposeMime = async function(aContent, aBccRecipients, aDSN) {
   let create = {
     __type: "CreateItemJsonRequest:#Exchange",
     Header: {
@@ -503,6 +593,7 @@ OWAAccount.prototype.ComposeMime = async function(aContent, aBccRecipients) {
           Value: btoa(aContent),
         },
         BccRecipients: aBccRecipients.map(MailboxObject2OWA),
+        IsDeliveryReceiptRequested: aDSN,
       }],
       MessageDisposition: "SaveOnly",
     },
@@ -770,8 +861,9 @@ OWAAccount.prototype.UpdateKeywords = async function(aFolder, aItem, aKeywords) 
  * @param aFolder        {String} The id of the folder to save to
  * @param aContent       {String} The MIME source
  * @param aBccRecipients {Array[MailboxObject]}
+ * @param aDSN           {Boolean}
  */
-OWAAccount.prototype.SendMime = async function(aFolder, aContent, aBccRecipients) {
+OWAAccount.prototype.SendMime = async function(aFolder, aContent, aBccRecipients, aDSN) {
   let create = {
     __type: "CreateItemJsonRequest:#Exchange",
     Header: {
@@ -787,6 +879,7 @@ OWAAccount.prototype.SendMime = async function(aFolder, aContent, aBccRecipients
           Value: btoa(aContent),
         },
         BccRecipients: aBccRecipients.map(MailboxObject2OWA),
+        IsDeliveryReceiptRequested: aDSN,
       }],
       /* EWS accepts a SavedItemFolderId, but OWA doesn't seem to.
       SavedItemFolderId: {
@@ -963,7 +1056,7 @@ OWAAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "CreateMessage":
     return this.CreateMessage(aParameters.body, aParameters.contentType, aParameters.from, aParameters.replyTo, aParameters.to, aParameters.cc, aParameters.bcc, aParameters.subject, aParameters.priority, aParameters.deliveryReceipt, aParameters.readReceipt, aParameters.references);
   case "ComposeMessageFromMime":
-    return this.ComposeMime(aParameters.content, aParameters.bcc);
+    return this.ComposeMime(aParameters.content, aParameters.bcc, aParameters.deliveryReceipt);
   case "CreateMessageFromMime":
     return this.CreateMime(aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged, aParameters.keywords);
   case "DeleteMessages":
@@ -977,7 +1070,7 @@ OWAAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "UpdateKeywords":
     return this.UpdateKeywords(aParameters.folder, aParameters.message, aParameters.keywords);
   case "SendMessageFromMime":
-    return this.SendMime(aParameters.folder, aParameters.content, aParameters.bcc);
+    return this.SendMime(aParameters.folder, aParameters.content, aParameters.bcc, aParameters.deliveryReceipt);
   case "SendMessage":
     return this.SendMessage(aParameters.message, aParameters.save);
   case "AddAttachment":

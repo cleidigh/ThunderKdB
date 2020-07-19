@@ -2,25 +2,30 @@
   "applications": {
     "gecko": {
       "id": "tbsync@jobisoft.de",
-      "strict_min_version": "68.0",
-      "strict_max_version": "69.*"
+      "strict_min_version": "78.0"
     }
   },
   "manifest_version": 2,
   "name": "TbSync",
-  "version": "2.12",
+  "version": "2.16",
   "author": "John Bieling",
   "homepage_url": "https://github.com/jobisoft/TbSync",
   "default_locale": "en-US",
   "description": "__MSG_extensionDescription__",
   "icons": {
-    "32": "skin/tbsync.png"
+    "32": "content/skin/tbsync.png"
   },
-  "legacy": {
-    "type": "bootstrap",
-    "options": {
-      "page": "chrome://tbsync/content/manager/addonoptions.xul",
-      "open_in_tab": false
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "experiment_apis": {
+    "LegacyBootstrap": {
+      "schema": "content/api/LegacyBootstrap/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["LegacyBootstrap"]],
+        "script": "content/api/LegacyBootstrap/implementation.js"
+      }
     }
   }
 }

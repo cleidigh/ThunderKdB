@@ -63,7 +63,7 @@ function Server(aDelegator, aBaseInterfaces, aDiscoveredSubFolders = false) {
 Server.prototype = {
   _JsPrototypeToDelegate: true,
   /// nsISupports
-  QueryInterface: QIUtils.generateQI(gServerProperties.baseInterfaces),
+  QueryInterface: ChromeUtils.generateQI(gServerProperties.baseInterfaces),
   /// nsMsgIncomingServer overrides
   get localStoreType() {
     return this.cppBase.type;
@@ -110,12 +110,8 @@ Server.prototype = {
       try {
         aUrlListener.OnStartRunningUrl(uri);
         let error = await CallExtension(this.cppBase, "VerifyLogin", null, null);
-        try {
-          uri.errorCode = error.code || "login-error-unknown";
-          uri.errorMessage = error.message || error.toString();
-        } catch (ex) {
-          // COMPAT TB 60 Property does not exist in TB 60
-        }
+        uri.errorCode = error.code || "login-error-unknown";
+        uri.errorMessage = error.message || error.toString();
         try {
           aUrlListener.OnStopRunningUrl(uri, error.message ? Cr.NS_ERROR_FAILURE : Cr.NS_OK);
         } catch (ex) { // don't report OnStopRunningUrl error to itself

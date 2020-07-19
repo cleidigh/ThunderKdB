@@ -50,7 +50,7 @@ class OWAError extends ParameterError {
 }
 
 /**
- * {Map serverId {String} -> account {OWAAccount}}
+ * {Map serverId {String} -> account {Promise<OWAAccount>}}
  */
 var gOWAAccounts = new Map();
 
@@ -415,7 +415,19 @@ async CheckFolders(aForLogin)
     return;
   }
 
-  let folderTree = await this.FindFolders(); // emails.js
+  let { folderList, rootFolderId } = await this.FindMyFolders(); // emails.js
+  let sharedFolders; // {Array of FolderTree} (If undefined, the server call failed)
+  try {
+    sharedFolders = await this.GetSharedFolders(); // emails.js
+  } catch (ex) {
+    logError(ex);
+  }
+  let folderTree = ConvertFolderList(folderList, rootFolderId, sharedFolders);
+  if (!sharedFolders) {
+    // We failed to retrieve the list of shared folders itself.
+    // Don't accidentally delete shared folders that we retrieved previously.
+    folderTree[0].keepSharedFolders = true;
+  }
   await browser.incomingServer.sendFolderTree(this.serverID, folderTree);
 }
 
@@ -489,11 +501,12 @@ OWAAccount.DispatchOperation = async function(aServerId, aOperation, aParameters
     return tempAccount.VerifyLogin(); // auth.js
   }
 
-  var account = gOWAAccounts.get(aServerId);
-  if (!account) {
-    account = await getAccountObject(aServerId);
-    gOWAAccounts.set(aServerId, account);
+  var promise = gOWAAccounts.get(aServerId);
+  if (!promise) {
+    promise = getAccountObject(aServerId);
+    gOWAAccounts.set(aServerId, promise);
   }
+  var account = await promise;
 
   return account.EnsureLoggedIn(aMsgWindow, async () => { // auth.js
     await EnsureLicensed(aServerId); // license.js

@@ -29,6 +29,8 @@ var tbSyncEventLog = {
     eventlog.hidden = false;
     eventlog.ensureIndexIsVisible(eventlog.getRowCount()-1);
     document.documentElement.getButton("extra1").onclick = tbSyncEventLog.onclear;
+    document.documentElement.getButton("extra1").label = TbSync.getString("eventlog.clear");
+    document.documentElement.getButton("cancel").label = TbSync.getString("eventlog.close");
   },
 
   onclear: function () {
@@ -73,7 +75,7 @@ var tbSyncEventLog = {
 
     let image = document.createXULElement("image");
     let src = entry.type.endsWith("_rerun") ? "sync" : entry.type;
-    image.setAttribute("src", "chrome://tbsync/skin/" + src + "16.png");
+    image.setAttribute("src", "chrome://tbsync/content/skin/" + src + "16.png");
     image.setAttribute("style", "margin:4px 4px 4px 4px;");
     leftColumn.appendChild(image);
     

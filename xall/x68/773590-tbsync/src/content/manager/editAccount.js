@@ -67,7 +67,12 @@ var tbSyncAccountSettings = {
   },
 
 
-
+  onInject: function (window) {
+    //called when the provider is injecting, call its onload function and pass in his AccountData Obj
+    if (tbSyncEditAccountOverlay && tbSyncEditAccountOverlay.hasOwnProperty("onload")) {
+      tbSyncEditAccountOverlay.onload(window, new TbSync.AccountData(tbSyncAccountSettings.accountID));
+    }
+  },
 
   onload: function () {
     //load observers
@@ -97,7 +102,7 @@ var tbSyncAccountSettings = {
     }        
     
     //load overlays from the provider (if any)
-    TbSync.messenger.overlayManager.injectAllOverlays(window, "chrome://tbsync/content/manager/editAccount.xul?provider=" + tbSyncAccountSettings.provider);
+    TbSync.messenger.overlayManager.injectAllOverlays(window, "chrome://tbsync/content/manager/editAccount.xhtml?provider=" + tbSyncAccountSettings.provider);
     tbSyncAccountSettings.loadSettings();
     
     //done, folderlist must be updated while visible
@@ -231,7 +236,6 @@ var tbSyncAccountSettings = {
     switch (status) {
       case "success":
       case "disabled":
-      case "nolightning":
       case "syncing":
         document.getElementById("syncstate").removeAttribute("style");
         break;

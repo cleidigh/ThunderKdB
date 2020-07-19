@@ -759,17 +759,25 @@ EWSAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
   let response = await this.CallService(null, request); // ews.js
   let responseTag = kResponseMap[aNewEvent.participation];
   if (responseTag) {
-    await this.RespondToInvitation(response.Items.CalendarItem.ItemId, responseTag, "SaveOnly");
+    // If this is a recurring instance, we have to notify because
+    // Lightning won't tell us the original master recurrence later.
+    let isRecurrence = aNewEvent.index > 0;
+    await this.RespondToInvitation(response.Items.CalendarItem.ItemId, responseTag,
+      isRecurrence ? "SendAndSaveCopy" : "SaveOnly");
   }
 }
 
 /**
  * Update the participation for an invitation
  *
- * @param aEventId      {String} The id of the invitation to update
- * @param aParticipaton {String} The new participation status
+ * @param aEventId      {String}  The id of the invitation to update
+ * @param aParticipaton {String}  The new participation status
+ * @param aIsRecurrence {Boolean} Whether this is a recurrence instance
  */
-EWSAccount.prototype.NotifyParticipation = async function(aEventId, aParticipation) {
+EWSAccount.prototype.NotifyParticipation = async function(aEventId, aParticipation, aIsRecurrence) {
+  if (aIsRecurrence) {
+    return; // We don't support this after the fact, due to Lightning weirdness.
+  }
   let responseTag = kResponseMap[aParticipation];
   if (!responseTag || responseTag == "t$DeclineItem") {
     // We don't support this after the fact, because the item is already gone.
@@ -923,7 +931,7 @@ EWSAccount.prototype.GetFreeBusy = async function(aAttendee, aStartTime, aEndTim
 browser.calendarProvider.dispatcher.addListener(async function(aServerId, aOperation, aParameters) {
   try {
     await EnsureLicensed(); // licence.js
-    let account = gEWSAccounts.get(aServerId);
+    let account = await gEWSAccounts.get(aServerId);
     switch (aOperation) { // all these operations live in emails.js
     case "SyncEvents":
       return await account.SyncEvents(aParameters.delegate, aParameters.folder, aParameters.syncState);
@@ -932,7 +940,7 @@ browser.calendarProvider.dispatcher.addListener(async function(aServerId, aOpera
     case "UpdateEvent":
       return await account.UpdateEvent(aParameters.folder, aParameters.newEvent, aParameters.oldEvent, aParameters.notify);
     case "NotifyParticipation":
-      return await account.NotifyParticipation(aParameters.id, aParameters.participation, true);
+      return await account.NotifyParticipation(aParameters.id, aParameters.participation, aParameters.isRecurrence);
     case "DeleteEvent":
       return await account.DeleteEvent(aParameters.id, aParameters.notify);
     case "GetFreeBusy":

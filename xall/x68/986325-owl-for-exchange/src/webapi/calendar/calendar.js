@@ -1,18 +1,17 @@
+var {XPCOMUtils} = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
-try {
 var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
-} catch (ex) {
-var {MailServices} = ChromeUtils.import("resource:///modules/mailServices.js"); // COMPAT for TB 60
-}
 try {
-  var {cal} = ChromeUtils.import("resource://calendar/modules/calUtils.jsm");
-  var {splitRecurrenceRules, checkRecurrenceRule, countOccurrences} = ChromeUtils.import("resource://calendar/modules/calRecurrenceUtils.jsm");
-  if (!countOccurrences) { // COMPAT for TB 60
-    countOccurrences = aItem => null; // Don't bother, Lightning doesn't either.
-  }
+  var {cal} = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm");
+  var {splitRecurrenceRules, checkRecurrenceRule, countOccurrences} = ChromeUtils.import("resource:///modules/calendar/calRecurrenceUtils.jsm");
 } catch (ex) {
-  // Calendar isn't installed. Eat the exception to allow the extension to load.
-  cal = null;
+  try { // COMPAT for TB 68 (bug 1608610)
+    cal = ChromeUtils.import("resource://calendar/modules/calUtils.jsm").cal; // COMPAT for TB 68 (bug 1608610)
+    ({splitRecurrenceRules, checkRecurrenceRule, countOccurrences} = ChromeUtils.import("resource://calendar/modules/calRecurrenceUtils.jsm")); // COMPAT for TB 68 (bug 1608610)
+  } catch (ex) { // COMPAT for TB 68 (bug 1608610)
+    // Calendar isn't installed. Eat the exception to allow the extension to load.
+    cal = null;
+  } // COMPAT for TB 68 (bug 1608610)
 }
 const nsMsgViewIndex_None = 0xFFFFFFFF;
 
@@ -132,8 +131,7 @@ function getDefaultCalendar() {
   try {
     // Assume exactly one 3pane window.
     let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
-    let widget = mainWindow.document.getElementById("calendar-list-tree-widget");
-    return widget.compositeCalendar.defaultCalendar;
+    return cal.view.getCompositeCalendar(mainWindow).defaultCalendar;
   } catch (ex) {
     return null;
   }
@@ -151,10 +149,13 @@ function selectCalendar(aCalendar) {
   try {
     // Assume exactly one 3pane window.
     let mainWindow = Services.wm.getMostRecentWindow("mail:3pane");
-    let widget = mainWindow.document.getElementById("calendar-list-tree-widget");
-    if (widget.tree) {
-      widget.selectCalendarById(aCalendar.id);
-    }
+    let compositeCalendar = cal.view.getCompositeCalendar(mainWindow);
+    // Make sure that we use the cached calendar, rather than our raw calendar.
+    compositeCalendar.defaultCalendar = compositeCalendar.getCalendarById(aCalendar.id);
+    let widget = mainWindow.document.getElementById("calendar-list-tree-widget"); // COMPAT for TB 68
+    if (widget && widget.tree) { // COMPAT for TB 68
+      widget.selectCalendarById(aCalendar.id); // COMPAT for TB 68
+    } // COMPAT for TB 68
   } catch (ex) {
     logError(ex);
   }
@@ -257,7 +258,11 @@ function JSON2Item(aJSON, aItem) {
   aItem.id = aJSON.uid;
   aItem.title = aJSON.title;
   aItem.setProperty("location", aJSON.location);
-  aItem.setCategories(aJSON.categories.length, aJSON.categories);
+  if (aItem.setCategories.length == 2) { // COMPAT for TB 68 (bug 1557504)
+    aItem.setCategories(aJSON.categories.length, aJSON.categories); // COMPAT for TB 68 (bug 1557504)
+  } else { // COMPAT for TB 68 (bug 1557504)
+    aItem.setCategories(aJSON.categories);
+  } // COMPAT for TB 68 (bug 1557504)
   aItem.setProperty("description", aJSON.description);
   aItem.priority = aJSON.priority;
   aItem.privacy = aJSON.privacy;
@@ -325,13 +330,25 @@ function JSON2Item(aJSON, aItem) {
       } else {
         days = days.map(day => day += aJSON.recurrence.weekOfMonth * 8);
       }
-      rule.setComponent("BYDAY", days.length, days);
+      if (rule.setComponent.length == 3) { // COMPAT for TB 68 (bug 1602425)
+        rule.setComponent("BYDAY", days.length, days); // COMPAT for TB 68 (bug 1602425)
+      } else { // COMPAT for TB 68 (bug 1602425)
+        rule.setComponent("BYDAY", days);
+      } // COMPAT for TB 68 (bug 1602425)
     }
     if (aJSON.recurrence.dayOfMonth) {
-      rule.setComponent("BYMONTHDAY", 1, [aJSON.recurrence.dayOfMonth]);
+      if (rule.setComponent.length == 3) { // COMPAT for TB 68 (bug 1602425)
+        rule.setComponent("BYMONTHDAY", 1, [aJSON.recurrence.dayOfMonth]); // COMPAT for TB 68 (bug 1602425)
+      } else { // COMPAT for TB 68 (bug 1602425)
+        rule.setComponent("BYMONTHDAY", [aJSON.recurrence.dayOfMonth]);
+      } // COMPAT for TB 68 (bug 1602425)
     }
     if (aJSON.recurrence.monthOfYear) {
-      rule.setComponent("BYMONTH", 1, [aJSON.recurrence.monthOfYear]);
+      if (rule.setComponent.length == 3) { // COMPAT for TB 68 (bug 1602425)
+        rule.setComponent("BYMONTH", 1, [aJSON.recurrence.monthOfYear]); // COMPAT for TB 68 (bug 1602425)
+      } else { // COMPAT for TB 68 (bug 1602425)
+        rule.setComponent("BYMONTH", [aJSON.recurrence.monthOfYear]);
+      } // COMPAT for TB 68 (bug 1602425)
     }
     rule.interval = aJSON.recurrence.interval;
     if (aJSON.recurrence.until) {
@@ -438,15 +455,15 @@ function Item2JSON(aItem, aJSON) {
   aJSON.priority = aItem.priority;
   aJSON.privacy = aItem.privacy;
   aJSON.status = aItem.getProperty("TRANSP");
-  let alarms = aItem.getAlarms({});
+  let alarms = aItem.getAlarms(/* COMPAT for TB 68 (bug 1557504) */{});
   if (alarms.length == 1 && alarms[0].related == Ci.calIAlarm.ALARM_RELATED_START) {
     aJSON.reminder = alarms[0].offset.inSeconds;
   }
-  aJSON.categories = aItem.getCategories({});
+  aJSON.categories = aItem.getCategories(/* COMPAT for TB 68 (bug 1557504) */{});
   aJSON.description = aItem.getProperty("description");
   aJSON.requiredAttendees = [];
   aJSON.optionalAttendees = [];
-  for (let attendee of aItem.getAttendees({})) {
+  for (let attendee of aItem.getAttendees(/* COMPAT for TB 68 (bug 1557504) */{})) {
     switch (attendee.role) {
     case "REQ-PARTICIPANT":
       aJSON.requiredAttendees.push({
@@ -470,7 +487,7 @@ function Item2JSON(aItem, aJSON) {
       aJSON.recurrence.type = rule.type;
       aJSON.recurrence.interval = rule.interval;
       if (checkRecurrenceRule(rule, ["BYDAY"])) {
-        let days = rule.getComponent("BYDAY", {});
+        let days = rule.getComponent("BYDAY", /* COMPAT for TB 68 (bug 1602425) */{});
         if (days[0] < 0) {
           aJSON.recurrence.weekOfMonth = 5;
           aJSON.recurrence.days = days.map(day => -8 - day);
@@ -495,7 +512,7 @@ function Item2JSON(aItem, aJSON) {
         }
       }
       if (checkRecurrenceRule(rule, ["BYMONTHDAY"])) {
-        aJSON.recurrence.dayOfMonth = rule.getComponent("BYMONTHDAY", {})[0];
+        aJSON.recurrence.dayOfMonth = rule.getComponent("BYMONTHDAY", /* COMPAT for TB 68 (bug 1602425) */{})[0];
       }
       if ((aJSON.recurrence.type == "MONTHLY" || aJSON.recurrence.type == "YEARLY") &&
           !(aJSON.recurrence.days || aJSON.recurrence.dayOfMonth)) {
@@ -504,7 +521,7 @@ function Item2JSON(aItem, aJSON) {
       }
       if (aJSON.recurrence.type == "YEARLY") {
         if (checkRecurrenceRule(rule, ["BYMONTH"])) {
-          aJSON.recurrence.monthOfYear = rule.getComponent("BYMONTH", {})[0];
+          aJSON.recurrence.monthOfYear = rule.getComponent("BYMONTH", /* COMPAT for TB 68 (bug 1602425) */{})[0];
         } else {
           // Translate Calendar's "yearly" into something Exchange can handle.
           aJSON.recurrence.monthOfYear = aItem.recurrenceStartDate.month + 1;
@@ -518,7 +535,7 @@ function Item2JSON(aItem, aJSON) {
         // The untilDate is provided in UTC, but we want the local date part.
         aJSON.recurrence.until = DatePart(rule.untilDate.getInTimezone(aItem.startDate.timezone));
       }
-      let exceptions = aItem.recurrenceInfo.getExceptionIds({});
+      let exceptions = aItem.recurrenceInfo.getExceptionIds(/* COMPAT for TB 68  (bug 1602423) */{});
       if (exceptions.length || deletions.length) {
         let maxDate = aItem.recurrenceStartDate;
         for (let deletion of deletions) {
@@ -527,7 +544,7 @@ function Item2JSON(aItem, aJSON) {
             maxDate = deletion.date;
           }
         }
-        let occurrences = rule.getOccurrences(aItem.recurrenceStartDate, aItem.recurrenceStartDate, maxDate, 0, {});
+        let occurrences = rule.getOccurrences(aItem.recurrenceStartDate, aItem.recurrenceStartDate, maxDate, 0, /* COMPAT for TB 68 (bug 1602424) */{});
         occurrences.push(maxDate);
         aJSON.deletions = deletions.map(deletion => occurrences.findIndex(date => !date.compare(deletion.date)) + 1);
       }
@@ -593,8 +610,7 @@ class Calendar extends (cal && cal.provider.BaseClass) {
     this.initProviderBase();
     this.offlineStorage = null;
     this.senderAddress = null;
-    let QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
-    this.QueryInterface = QIUtils.generateQI([Ci.calICalendar, Ci.calIChangeLog, Ci.calISchedulingSupport, Ci.calIItipTransport, Ci.calIFreeBusyProvider]);
+    this.QueryInterface = ChromeUtils.generateQI([Ci.calICalendar, Ci.calIChangeLog, Ci.calISchedulingSupport, Ci.calIItipTransport, Ci.calIFreeBusyProvider]);
   }
   /**
    * Invoke the extension's dispatch listener.
@@ -659,16 +675,20 @@ class Calendar extends (cal && cal.provider.BaseClass) {
   get scheme() {
     return "mailto";
   }
-  async sendItems(aCount, aRecipients, aItipItem) {
+  async sendItems(aRecipients, aItipItem, aItipItemTB68) {
+    if (aItipItemTB68) { // COMPAT for TB 68 (bug 1557504)
+      aItipItem = aItipItemTB68; // COMPAT for TB 68 (bug 1557504)
+    } // COMPAT for TB 68 (bug 1557504)
     if (aItipItem.responseMethod == "REPLY") {
       try {
         // We disabled the response when the item was modified,
         // but the user wanted to respond. Send the response now.
-        let invitation = aItipItem.getItemList({})[0];
+        let invitation = aItipItem.getItemList(/* COMPAT for TB 68 (bug 1557504) */{})[0];
         let folder = this.getItemFolder(invitation);
         let id = this.offlineStorage.getMetaData(invitation.id);
         let participation = cal.itip.getInvitedAttendee(invitation, aItipItem.targetCalendar).participationStatus;
-        await this.callExtension("NotifyParticipation", { folder, id, participation });
+        let isRecurrence = invitation.recurrenceId != null;
+        await this.callExtension("NotifyParticipation", { folder, id, participation, isRecurrence });
       } catch (ex) {
         logError(ex);
       }
@@ -751,18 +771,26 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       if (!result) {
         return false;
       }
-      let uids = {}, itemids = {};
+      let uids, itemids;
       if (!result.deletions || result.deletions.length) {
-        this.offlineStorage.getAllMetaData({}, uids, itemids);
+        if (this.offlineStorage.getAllMetaData) { // COMPAT for TB 68 (bug 1557504)
+          let outuids = {}, outitemids = {}; // COMPAT for TB 68 (bug 1557504)
+          this.offlineStorage.getAllMetaData({}, outuids, outitemids); // COMPAT for TB 68 (bug 1557504)
+          uids = outuids.value; // COMPAT for TB 68 (bug 1557504)
+          itemids = outitemids.value; // COMPAT for TB 68 (bug 1557504)
+        } else { // COMPAT for TB 68 (bug 1557504)
+          uids = this.offlineStorage.getAllMetaDataIds();
+          itemids = this.offlineStorage.getAllMetaDataValues();
+        } // COMPAT for TB 68 (bug 1557504)
       }
-      if (!result.deletions && itemids.value.length) {
-        result.deletions = await this.callExtension("FindDeleted", { itemids: itemids.value });
+      if (!result.deletions && itemids.length) {
+        result.deletions = await this.callExtension("FindDeleted", { itemids });
       }
       if (result.deletions && result.deletions.length) {
         for (let deletion of result.deletions) {
-          let index = itemids.value.indexOf(deletion);
+          let index = itemids.indexOf(deletion);
           if (index >= 0) {
-            let oldItem = await promiseStorage.getItem(uids.value[index]);
+            let oldItem = await promiseStorage.getItem(uids[index]);
             if (oldItem.length) {
               await promiseStorage.deleteItem(oldItem[0]);
             }
@@ -785,7 +813,7 @@ class Calendar extends (cal && cal.provider.BaseClass) {
               await promiseStorage.adoptItem(newEvent);
             }
           } else {
-            if (newEvent.getOccurrencesBetween(oneYearAgo, null, {}).length) {
+            if (newEvent.getOccurrencesBetween(oneYearAgo, null, /* COMPAT for TB 68 (bug 1557504) */{}).length) {
               await promiseStorage.adoptItem(newEvent);
             }
           }
@@ -854,7 +882,7 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       let event = {};
       let folder = this.getItemFolder(aEvent, event);
       // Check whether we accepted or declined an invitation.
-      for (let newAttendee of aEvent.getAttendees({})) {
+      for (let newAttendee of aEvent.getAttendees(/* COMPAT for TB 68 (bug 1557504) */{})) {
         if (newAttendee.participationStatus) {
           event.participation = newAttendee.participationStatus;
         }
@@ -895,10 +923,10 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       // which is 1 more than the number of recurring items so far.
       if (aNewEvent.recurrenceId) {
         let [[rule]] = splitRecurrenceRules(aNewEvent.parentItem.recurrenceInfo);
-        newEvent.index = rule.QueryInterface(Ci.calIRecurrenceRule).getOccurrences(aNewEvent.parentItem.recurrenceStartDate, aNewEvent.parentItem.recurrenceStartDate, aNewEvent.recurrenceId, 0, {}).length + 1;
+        newEvent.index = rule.QueryInterface(Ci.calIRecurrenceRule).getOccurrences(aNewEvent.parentItem.recurrenceStartDate, aNewEvent.parentItem.recurrenceStartDate, aNewEvent.recurrenceId, 0, /* COMPAT for TB 68 (bug 1602424) */{}).length + 1;
       }
       // Check whether we accepted or declined an invitation.
-      for (let newAttendee of aNewEvent.getAttendees({})) {
+      for (let newAttendee of aNewEvent.getAttendees(/* COMPAT for TB 68 (bug 1557504) */{})) {
         let oldAttendee = aOldEvent.getAttendeeById(newAttendee.id);
         if (oldAttendee && oldAttendee.participationStatus != newAttendee.participationStatus) {
           newEvent.participation = newAttendee.participationStatus;
@@ -1022,7 +1050,7 @@ this.calendar = class extends ExtensionAPI {
             }
           }
         },
-        dispatcher: new ExtensionCommon.EventManager(context, "calendarProvider.dispatcher", (listener, scheme) => {
+        dispatcher: new ExtensionCommon.EventManager({ context, name: "calendarProvider.dispatcher", register: (listener, scheme) => {
           Calendar.gListeners.set(scheme, listener);
           return () => {
             Calendar.gListeners.delete(scheme);
@@ -1032,7 +1060,7 @@ this.calendar = class extends ExtensionAPI {
               }
             }
           };
-        }).api(),
+        }}).api(),
       }
     };
   }

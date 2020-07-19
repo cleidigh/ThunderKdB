@@ -1,6 +1,4 @@
 var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var {XPCOMUtils} = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 
 var {ExtensionError} = ExtensionUtils;
 /// A map of urls to the browser request windows.
@@ -49,9 +47,9 @@ class BrowserRequest {
     return "";
   }
   /**
-   * Called when browserRequest.xul is open.
+   * Called when browserRequest.xhtml is open.
    *
-   * @param aWindow      {Window}         The chrome browserRequest.xul window
+   * @param aWindow      {Window}         The chrome browserRequest.xhtml window
    * @param aWebProgress {nsIWebProgress} The browser element's progress object
    */
   loaded(aWindow, aWebProgress) {
@@ -59,7 +57,7 @@ class BrowserRequest {
     aWebProgress.addProgressListener(this.browserListener, Ci.nsIWebProgress.NOTIFY_LOCATION | Ci.nsIWebProgress.NOTIFY_STATE_NETWORK);
     this.webProgress = aWebProgress;
   }
-  /// Called if the user closed browserRequest.xul
+  /// Called if the user closed browserRequest.xhtml
   cancelled() {
     gBrowserRequests.delete(this.originalURL);
     this.webProgress.removeProgressListener(this.browserListener);
@@ -89,7 +87,7 @@ class BrowserListener {
   onSecurityChange(aWebProgress, aRequest, aState) {}
   onContentBlockingEvent(aWebProgress, aRequest, aEvent) {}
 }
-BrowserListener.prototype.QueryInterface = QIUtils.generateQI(
+BrowserListener.prototype.QueryInterface = ChromeUtils.generateQI(
     ["nsIWebProgressListener", "nsISupportsWeakReference"]);
 
 this.request = class extends ExtensionAPI {
@@ -101,7 +99,15 @@ this.request = class extends ExtensionAPI {
             throw new ExtensionError("Attempt to reopen existing browser request");
           }
           gBrowserRequests.set(aUrl, null);
-          Services.ww.openWindow(null, "chrome://messenger/content/browserRequest.xul", null, "chrome,centerscreen,width=980px,height=600px", new BrowserRequest(aUrl));
+          try { // COMPAT for TB 68
+            // Sadly Firefox forgot to remove the category entry for
+            // application/vnd.mozilla.xul+xml but fortunately they did
+            // remove the entry for mozilla.application/cached-xul
+            Services.catMan.getCategoryEntry("Gecko-Content-Viewers", "mozilla.application/cached-xul"); // COMPAT for TB 68
+            Services.ww.openWindow(null, "chrome://messenger/content/browserRequest.xul", null, "chrome,centerscreen,width=980px,height=600px", new BrowserRequest(aUrl)); // COMPAT for TB 68
+          } catch (ex) { // COMPAT for TB 68
+            Services.ww.openWindow(null, "chrome://messenger/content/browserRequest.xhtml", null, "chrome,centerscreen,width=980px,height=600px", new BrowserRequest(aUrl));
+          } // COMPAT for TB 68
         },
         executeScript: async function(aUrl, aCode) {
           if (!gBrowserRequests.has(aUrl)) {
@@ -139,18 +145,18 @@ this.request = class extends ExtensionAPI {
             gBrowserRequests.delete(aUrl);
           }
         },
-        onCompleted: new ExtensionCommon.EventManager(context, "request.onCompleted", (listener, scheme) => {
+        onCompleted: new ExtensionCommon.EventManager({ context, name: "request.onCompleted", register: (listener, scheme) => {
           gLoadListeners.push(listener);
           return () => {
             gLoadListeners.splice(gLoadListeners.indexOf(listener), 1);
           };
-        }).api(),
-        onClosed: new ExtensionCommon.EventManager(context, "request.onClosed", (listener, scheme) => {
+        }}).api(),
+        onClosed: new ExtensionCommon.EventManager({ context, name: "request.onClosed", register: (listener, scheme) => {
           gCloseListeners.push(listener);
           return () => {
             gCloseListeners.splice(gCloseListeners.indexOf(listener), 1);
           };
-        }).api(),
+        }}).api(),
       }
     };
   }

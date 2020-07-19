@@ -128,6 +128,9 @@ class ExchangeVersionError extends OwlError { // TODO extends ParameterError
  * @param ex The error or exception to be serialised
  * @returns {Error} new object with a message containing JSON
  *    The properties of |ex| are copied here.
+ *
+ * An additional benefit is that the stack we see here ends at the
+ * Extension Manager, so we can concatenate the experiment's stack.
  */
 function serialiseError(ex) {
   return new Error(JSON.stringify(Object.assign({
@@ -184,12 +187,21 @@ function MailboxObject2OWA(aAddress) {
 /**
  * Takes a list of folders from Exchange and converts it into a tree.
  *
- * @param aFolders      {Array[Object]} A list of Exchange folders
+ * @param aFolders      {Array[Object]} A list of Exchange folder objects
  * @param aRootFolderId {String}        The folder id of the root pseudo-folder
- * @returns             {Array[Object]} A tree of folders
+ * @param aExtraFolders {Array[FolderTree]?} Folders to be added to the server
+ * @returns             {Array[FolderTree]}  The top-level folders
+ * @see Microsoft documentation for the properties of Exchange folder objects
+ * @type FolderTree {Object} An object representing a folder hierarchy
+ *         id       {String} The folder id of the folder
+ *         name     {String} The display name of the folder
+ *         type     {String} The special folder type
+ *         total    {Number} The total number of messages in the folder
+ *         unread   {Number} The number of unread messages in the folder
+ *         children {Array[FolderTree]} A tree of child folder objects
  *
  * This function filters on the class of the folder, but not the type.
- * The caller must not to pass folders that are not Folder type.
+ * The caller must not pass folders that are not of Folder type.
  *
  * Note: If the parent of a folder cannot be found,
  *       it will be added as a child of the root instead.
@@ -197,10 +209,10 @@ function MailboxObject2OWA(aAddress) {
  *       if the name would otherwise conflict.
  *       The name on the server is not changed.
  */
-function ConvertFolderList(aFolders, aRootFolderId)
+function ConvertFolderList(aFolders, aRootFolderId, aExtraFolders = [])
 {
   let allFolders = [];
-  let orphans = [];
+  allFolders.id = aRootFolderId;
   /// A map of folder IDs to the array that will hold child folders.
   let folderMap = {};
   // Initialise the map with the root of the folder hierarchy.
@@ -212,8 +224,8 @@ function ConvertFolderList(aFolders, aRootFolderId)
       // Add the current folder's child array to the map.
       folderMap[id] = [];
       // Add the folder details to the parent's child array.
-      // If the parent isn't found then add it as an orphan instead.
-      (folderMap[folder.ParentFolderId.Id] || orphans).push({
+      // If the parent isn't found then add it as an extra folder instead.
+      (folderMap[folder.ParentFolderId.Id] || aExtraFolders).push({
         id: id,
         name: folder.DisplayName,
         type: kFolderTypes[folder.DistinguishedFolderId] || "",
@@ -223,15 +235,15 @@ function ConvertFolderList(aFolders, aRootFolderId)
       });
     }
   }
-  // The server gets to adopt any orphans.
-  for (let orphan of orphans) {
-    let name = orphan.name;
+  // Extra folders (shared folders and orphans) get added to the server.
+  for (let extra of aExtraFolders) {
+    let name = extra.name;
     let count = 0;
     // If the name duplicates an existing folder, add suffix -1 (or -2 etc.)
-    while (allFolders.find(folder => folder.name == orphan.name)) {
-      orphan.name = name + --count;
+    while (allFolders.find(folder => folder.name == extra.name)) {
+      extra.name = name + --count;
     }
-    allFolders.push(orphan);
+    allFolders.push(extra);
   }
   return allFolders;
 }

@@ -22,7 +22,7 @@ var tbSyncAccountManager = {
   },
   
   onload: function () {
-    TbSync.AccountManagerTabs = ["accounts.xul", "catman.xul", "supporter.xul", "help.xul"];
+    TbSync.AccountManagerTabs = ["accounts.xhtml", "catman.xhtml", "supporter.xhtml", "help.xhtml"];
     tbSyncAccountManager.selectTab(0);
   },
   
@@ -58,7 +58,7 @@ var tbSyncAccountManager = {
   },
   
   initSupportWizard: function() {
-    document.documentElement.getButton("finish").disabled = true;
+    document.getElementById("SupportWizard").getButton("finish").disabled = true;
 
     let menu = document.getElementById("tbsync.supportwizard.faultycomponent");
 
@@ -73,6 +73,9 @@ var tbSyncAccountManager = {
     document.getElementById("tbsync.supportwizard.faultycomponent.menulist").addEventListener("select", tbSyncAccountManager.checkSupportWizard);
     document.getElementById("tbsync.supportwizard.description").addEventListener("input", tbSyncAccountManager.checkSupportWizard);
     document.addEventListener("wizardfinish", tbSyncAccountManager.prepareBugReport);
+
+    // bug https://bugzilla.mozilla.org/show_bug.cgi?id=1618252
+    document.getElementById('SupportWizard')._adjustWizardHeader();
   },
   
   checkSupportWizard: function() {
@@ -81,7 +84,7 @@ var tbSyncAccountManager = {
     let description = document.getElementById("tbsync.supportwizard.description").value;
 
     //just check and update button status
-    document.documentElement.getButton("finish").disabled = (provider == "" || subject == "" || description== "");        
+    document.getElementById("SupportWizard").getButton("finish").disabled = (provider == "" || subject == "" || description== "");        
   },
 
   prepareBugReport: function(event) {

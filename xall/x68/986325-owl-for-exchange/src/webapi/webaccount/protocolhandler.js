@@ -9,6 +9,7 @@ function Channel(aURI, aLoadInfo) {
   this.contentType = "message/rfc822";
   this.contentCharset = "";
   this.contentLength = -1;
+  this.canceled = false;
   this.contentDisposition = Ci.nsIChannel.DISPOSITION_INLINE;
   this.contentDispositionFilename = null;
   this.contentDispositionHeader = null;
@@ -34,19 +35,7 @@ function Channel(aURI, aLoadInfo) {
 }
 
 Channel.prototype = {
-  QueryInterface: QIUtils.generateQI([Ci.nsIPrivateBrowsingChannel, Ci.nsIChannel, Ci.nsIRequest]),
-  // nsIPrivateBrowsingChannel
-  /**
-   * Workaround for crash opening attachment. Unless the channel
-   * is private, nsExternalAppHandler::CreateTransfer will call
-   * nsIDownloadHistory::AddDownload which will crash because
-   * it can't serialise our URL.
-   */
-  get isChannelPrivate() {
-    return true;
-  },
-  setPrivate() {}, // no-op
-  // Can't override isPrivateModeOverridden (!)
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIChannel, Ci.nsIRequest]),
   // nsIChannel
   /**
    * Called to synchronousely retrieve the source of a message.
@@ -61,16 +50,11 @@ Channel.prototype = {
       this.asyncOpen(listener, null);
     }
     let stream = listener.inputStream;
-    stream.available();
-    // XXX Bug 1531708 stream.available() doesn't always throw like it should
-    if (this.status != Cr.NS_OK) {
-      throw Components.Exception("", this.status);
-    }
+    stream.available(); // throws if the channel could not be opened
+    if (this.status != Cr.NS_OK) { // COMPAT for TB 68 (bug 1531708)
+      throw Components.Exception("", this.status); // COMPAT for TB 68 (bug 1531708)
+    } // COMPAT for TB 68 (bug 1531708)
     return stream;
-  },
-  /// Security-checked version of open.
-  open2: function() {
-    return this.open();
   },
   /**
    * This is the central function used to retrieve content of a message.
@@ -116,26 +100,14 @@ Channel.prototype = {
    *   This would go through the message service but the necessary function
    *   has not been implemented yet.
    */
-  asyncOpen: function(aListener, aContext) {
-    if (aContext && aContext != this.URI) { // COMPAT for TB 60 (bug 1520868)
-      throw Cr.NS_ERROR_NOT_AVAILABLE;
-    } // COMPAT for TB 60
+  asyncOpen: function(aListener) {
     /* IF MINI SYNTH */
     // We can't serve parts if we don't have an offline body.
     if (/&part=([.\d]+)/.test(this.URI.query) && !(this.hdr.flags & Ci.nsMsgMessageFlags.Offline)) {
       throw Cr.NS_ERROR_FAILURE;
     }
     /* END IF */
-    let listener = this.maybeConvertData(gContentSecManager.performSecurityCheck(this, aListener));
-    if (listener.onStartRequest.length == 2) { // COMPAT for TB 60 (bug 1525319)
-      let convertedListener = listener;
-      listener = {
-        onStartRequest: (aRequest) => convertedListener.onStartRequest(this, this.URI),
-        onStopRequest: (aRequest, aStatus) => convertedListener.onStopRequest(this, this.URI, aStatus),
-        onDataAvailable: (aRequest, aStream, aOffset, aCount) => convertedListener.onDataAvailable(this, this.URI, aStream, aOffset, aCount),
-      };
-    } // COMPAT for TB 60 (bug 1525319)
-    this.retrieveMessage(listener);
+    this.retrieveMessage(this.maybeConvertData(gContentSecManager.performSecurityCheck(this, aListener)));
   },
   /// Insert a stream converter if the caller needs one.
   maybeConvertData: function(aListener) {
@@ -373,15 +345,12 @@ Channel.prototype = {
     }
     return mimeContent;
   },
-  /// Security-checked version of asyncOpen.
-  /// COMPAT for TB 60 (bug 1520868)
-  asyncOpen2: function(aListener) {
-    this.asyncOpen(gContentSecManager.performSecurityCheck(this, aListener), null);
-  },
+  // nsIRequest
   isPending: function() {
     return this._isPending;
   },
   cancel: function(aStatus) {
+    this.canceled = true;
     this.status = this.status || aStatus;
   },
   // XXX TODO
@@ -389,6 +358,12 @@ Channel.prototype = {
     throw Cr.NS_ERROR_NOT_AVAILABLE;
   },
   resume: function() {
+    throw Cr.NS_ERROR_NOT_AVAILABLE;
+  },
+  getTRRMode: function() {
+    return Ci.nsIRequest.TRR_DEFAULT_MODE;
+  },
+  setTRRMode: function(aMode) {
     throw Cr.NS_ERROR_NOT_AVAILABLE;
   },
 };
@@ -412,7 +387,7 @@ function ProtocolHandler() {
 }
 
 ProtocolHandler.prototype = {
-  QueryInterface: QIUtils.generateQI(gProtocolHandlerProperties.baseInterfaces),
+  QueryInterface: ChromeUtils.generateQI(gProtocolHandlerProperties.baseInterfaces),
   // nsIMsgMessageFetchPartService
   fetchMimePart: function(aURI, aMessageURI, aDisplayConsumer, aMsgWindow, aUrlListener) {
     console.log("fetchMimePart being called on the protocol handler instead of the message service, fix caller!");
@@ -466,12 +441,6 @@ ProtocolHandler.prototype = {
    * @returns         {nsIChannel}
    */
   newChannel: function(aURI, aLoadInfo) {
-    return new Channel(aURI, aLoadInfo);
-  },
-  /**
-   * COMPAT for TB 60 (bug 1528971)
-   */
-  newChannel2: function(aURI, aLoadInfo) {
     return new Channel(aURI, aLoadInfo);
   },
   /**
