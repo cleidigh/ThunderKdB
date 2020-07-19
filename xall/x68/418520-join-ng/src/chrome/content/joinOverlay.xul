@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://join-ng/locale/join-ng.dtd">
+
+<overlay id="joinOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/javascript" src="chrome://join-ng/content/join.js"/>
+	<script type="application/javascript" src="chrome://messenger/content/addressbook/abMailListDialog.js"/> 
+
+	<popup id="mailContext">
+		<menuitem id="join-ng" label="&join-ng.label;" accesskey="J" oncommand="Join.Main();"/>
+	</popup>
+
+	<stringbundleset id="stringbundleset">
+		<stringbundle id="JoinNGBundle" src="chrome://join-ng/locale/join-ng.properties"/> 
+	</stringbundleset>
+
+</overlay>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>{25d7aa80-9f4b-11e1-a8b0-0800200c9a66}</em:id>
+    <em:version>1.1.1</em:version>
+    <em:type>2</em:type>
+
+    <!-- Target Application this extension can install into, 
+         with minimum and maximum supported versions. -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+        <em:minVersion>60.0</em:minVersion>
+        <em:maxVersion>68.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Front End MetaData -->
+    <em:name>MarkSubfolders New</em:name>
+    <em:iconURL>chrome://markallreadsub/skin/icon32x32.png</em:iconURL>
+    <em:description>Mark all read for Subfolders</em:description>
+    <em:creator>H.Yasuda / M. Richter</em:creator>
+    <em:homepageURL>https://github.com/ponchofiesta/marksubfolders-new</em:homepageURL>
+  </Description>
+</RDF>

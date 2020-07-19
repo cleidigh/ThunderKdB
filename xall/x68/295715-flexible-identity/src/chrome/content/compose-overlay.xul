@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE window [
+  <!ENTITY % dtd1 SYSTEM "chrome://fid/locale/branding.dtd"> %dtd1;
+  <!ENTITY % dtd2 SYSTEM "chrome://fid/locale/overlay.dtd"> %dtd2;
+]>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/javascript" src="chrome://fid/content/rules.js"/>
+<script type="application/javascript" src="chrome://fid/content/identity.js"/>
+
+<menupopup id="optionsMenuPopup">
+    <menuseparator/>
+    <menuitem label="&overlay.menuitem;" accesskey="&overlay.accesskey;"
+        oncommand="fidIdentity.showOptions();"/>
+</menupopup>
+
+</overlay>

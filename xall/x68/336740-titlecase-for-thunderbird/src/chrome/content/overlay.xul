@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<overlay id="titlecasethunderbird-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js"/>
+
+ <popup id="msgComposeContext">
+    <menuseparator id="activities-separator"/>
+    <menu id="titlecasethunderbird-menu" label="TitleCase">
+      <menupopup id="titlecasethunderbird-menupopup">
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="Proper case" oncommand="titlecasethunderbird.onMenuItemCommand(this, event); "/>
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="Title case" oncommand="titlecasethunderbird.onMenuTitleCase(this, event); "/>
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="Title case (CamelCase)" oncommand="titlecasethunderbird.onMenuTitleCaseCamel(this, event); "/>
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="Start Case" oncommand="titlecasethunderbird.onMenuStartCase(this, event); "/>
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="Start Case (CamelCase)" oncommand="titlecasethunderbird.onMenuStartCaseCamel(this, event); "/>
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="CamelCase" oncommand="titlecasethunderbird.onMenuCamelCase(this, event); "/>
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="All UPPER case" oncommand="titlecasethunderbird.onMenuAllUppercase(this, event); "/>
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="All lower case" oncommand="titlecasethunderbird.onMenuAllLowercase(this, event); "/>
+        <menuitem id="context-titlecasethunderbird" value="this.value();" label="tOGGLE cASE" oncommand="titlecasethunderbird.onMenuToggleCase(this, event); "/>
+      </menupopup>
+    </menu>
+  </popup>
+</overlay>

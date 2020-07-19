@@ -1,0 +1,23 @@
+richlistbox > richlistitem.mailmindr-overviewlist-item:nth-child(odd) {
+    /* tbd */
+}
+
+richlistitem.mailmindr-overviewlist-item {
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+richlistitem.mailmindr-overviewlist-item > hbox {
+    display: grid;
+    flex-basis: content;
+    align-content: space-between;
+}
+
+richlistitem.mailmindr-overviewlist-item label.subject {
+    font-weight: bold;
+}
+
+richlistitem.mailmindr-overviewlist-item label.author,
+richlistitem.mailmindr-overviewlist-item label.due {
+    padding-left: 1em;
+}

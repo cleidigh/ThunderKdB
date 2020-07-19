@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE dialog [ <!ENTITY % actioneditorDTD SYSTEM "chrome://mailmindr/locale/dialogs/actioneditor.dtd">
+%actioneditorDTD; ]>
+<dialog
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    persist="screenX screenY"
+    buttons="accept,cancel"
+    ondialogaccept="mailmindr.dialogs.actioneditor.onDialogAccept()"
+    ondialogcancel="mailmindr.dialogs.actioneditor.onDialogCancel()"
+    title="&mailmindr.dlg.action.title;"
+>
+    <script
+        type="application/x-javascript"
+        src="chrome://mailmindr/content/dialogs/actioneditor.js"
+    />
+
+    <dialogheader
+        title="mailmindr"
+        description="&mailmindr.dlg.action.titledesc;"
+    />
+
+    <groupbox id="mailmindrActionEditorEditfields">
+        <caption label="&mailmindr.dlg.action.caption.name;" />
+
+        <vbox>
+            <vbox>
+                <label value="&mailmindr.dlg.action.label.name;" />
+                <textbox id="" value="" />
+            </vbox>
+            <vbox>
+                <label value="&mailmindr.dlg.action.label.description;" />
+                <spacer flex="1" />
+                <textbox id="" multiline="true" value="" />
+            </vbox>
+        </vbox>
+    </groupbox>
+
+    <groupbox>
+        <caption label="&mailmindr.dlg.action.caption.setAction;" />
+
+        <vbox>
+            <checkbox
+                id="mailmindrCheckDoShowDialog"
+                checked="true"
+                label="&mailmindr.dlg.action.label.showdialog;"
+            />
+            <checkbox
+                id="mailmindrCheckDoMarkAsUnread"
+                checked="true"
+                label="&mailmindr.dlg.action.label.markunread;"
+            />
+            <checkbox
+                id="mailmindrCheckDoMarkFlag"
+                label="&mailmindr.dlg.action.label.markflag;"
+            />
+            <hbox>
+                <checkbox
+                    id="mailmindrCheckTagAction"
+                    label="&mailmindr.dlg.action.label.tagwith;"
+                />
+                <separator orient="horizontal" />
+                <menulist id="mailmindrTags" disabled="true">
+                    <menupopup> </menupopup>
+                </menulist>
+            </hbox>
+            <vbox>
+                <checkbox
+                    id="mailmindrCheckFolderAction"
+                    label="&mailmindr.dlg.action.label.folderaction;"
+                />
+                <hbox>
+                    <separator orient="vertical" />
+                    <vbox>
+                        <radiogroup id="mailmindr_folderActionSettings">
+                            <radio
+                                id="mailmindrDoMove"
+                                label="&mailmindr.dlg.action.label.movetotarget;"
+                                disabled="true"
+                            />
+                            <radio
+                                id="mailmindrDoCopy"
+                                label="&mailmindr.dlg.action.label.copytotarget;"
+                                disabled="true"
+                            />
+                        </radiogroup>
+                        <hbox align="center">
+                            <label
+                                id="mailmindrTargetFolderLabel"
+                                value="&mailmindr.dlg.action.label.targetfolder;"
+                                disabled="true"
+                            />
+                            <menulist
+                                id="mailmindrTargetFolder"
+                                disabled="true"
+                            >
+                                <menupopup>
+                                    <menuitem label="Posteingang" />
+                                </menupopup>
+                            </menulist>
+                        </hbox>
+                    </vbox>
+                </hbox>
+            </vbox>
+        </vbox>
+    </groupbox>
+</dialog>

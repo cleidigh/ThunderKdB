@@ -1,0 +1,150 @@
+
+.sivAction[sivtype],
+.sivConditionText,
+.sivConditionCode
+{
+  border: 1px #DDE4E9 solid;
+  background-color: #F3F6F7;
+  padding-left:3px;
+
+  cursor: default;
+}
+
+.sivConditionCode code
+{
+  flex: auto 1 1;
+  white-space: pre-wrap;
+}
+
+.sivConditionCode,
+.sivConditionText,
+.sivEditableElement[sivtype],
+.sivEditableElement
+{
+  display: flex;
+  flex-direction: row;
+}
+.sivEditableElement > .sivSummaryContent,
+.sivEditableElement > .sivSummaryCode {
+  flex: 1 1 auto;
+}
+
+.sivEditableElement > .sivSummaryCode {
+  white-space: pre-wrap;
+}
+
+.sivSummaryControls {
+  color: lightslategray;
+}
+
+.sivOperator > ul {
+  margin-bottom: inherit;
+}
+
+
+.sivEditableElement:hover
+{
+  border: 1px red #EDEDED solid;
+  background-color: white;
+  box-shadow: 0 0 7px gray;
+}
+
+
+div[sivtype][sivDragging="true"] {
+  border-radius: 2px;
+  box-shadow: 0 0 5px red;
+}
+
+.sivSummaryContent em{
+  font-family:courier;
+  font-style:normal;
+}
+
+
+  .sivEditableElement h1 {
+    font-size:1em;
+    padding:0px;
+    margin:0px;
+  }
+
+
+/* Blocks */
+
+.sivBlock > .sivBlockChild:nth-last-of-type(2)
+{
+  background-image: url('hline.png');
+  background-position: 2px top;
+  background-repeat: no-repeat;
+}
+
+
+.sivBlock > .sivBlockSpacer:nth-last-of-type(1)
+{
+  background-image: none;
+  padding-bottom: 0px;
+}
+
+.sivBlockChild
+{
+  background-image: url('vline.png'), url('hline.png');
+  background-position:  -7px center, 2px top;
+  background-repeat: repeat-y, no-repeat;
+}
+
+.sivConditionChild,
+.sivConditionSpacer:not(:first-of-type) {
+  background-image: url('vline2.png');
+  background-position:  -4px center;
+  background-repeat: repeat-y;
+}
+
+.sivBlockChild,
+.sivConditionChild {
+  padding-left:15px;
+}
+
+.sivConditionalChild {
+  padding:3px;
+  background-color: #E8EDF0;
+  border: 1px #DDE4E9 solid
+}
+
+/* Dropmarkers*/
+.sivBlockSpacer
+{
+  background-image: url('vline.png');
+  background-position:  -7px top;
+  background-repeat: repeat-y;
+
+  padding:2px 0px 2px 0px;
+}
+
+.sivConditionSpacer{
+  padding:0px;
+}
+
+
+.sivBlockSpacer > .sivDropBox,
+.sivOperatorSpacer > .sivDropBox,
+.sivConditionSpacer > .sivDropBox
+{
+  height: 3px;
+}
+
+.sivBlockSpacer[sivDragging="true"] > .sivDropBox,
+.sivConditionSpacer[sivDragging="true"] > .sivDropBox,
+.sivOperatorSpacer[sivDragging="true"] > .sivDropBox
+ {
+  background-color : red;
+  background-image: -moz-linear-gradient(rgba(255,255,255,.25), rgba(0,0,0,.15));
+  box-shadow: 0 0 5px red;
+}
+
+#toolbar div[sivtype]
+{
+  margin:2px 5px;
+  padding:0px 3px;
+  background-color: lightgray;
+  border-radius:3px;
+  border: 1px solid gray;
+}

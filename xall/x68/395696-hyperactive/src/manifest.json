@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Hyperactive",
+    "description": "Scans hyperlinks in composed messages and alerts if one of the hyperlinks is broken.",
+    "version": "2020.2.15",
+    "author": "Uri Hartmann",
+    "applications": {
+        "gecko": {
+            "id": "hyperactive@urihart.addons.mozilla.org",
+            "strict_min_version": "61.0"
+        }
+    },
+    "permissions": [
+    ],
+    "icons": {
+        "64": "chrome/skin/hyperactive64.png",
+        "32": "chrome/skin/hyperactive32.png",
+        "16": "chrome/skin/hyperactive16.png"
+    },
+    "legacy": {
+        "type" : "bootstrap",
+        "options": {
+            "page": "chrome://myextension/content/options.xul",
+            "open_in_tab": true
+        }
+    }
+}

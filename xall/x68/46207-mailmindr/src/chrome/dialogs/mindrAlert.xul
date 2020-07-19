@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://mailmindr/skin/mailmindrList.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailmindr/skin/dialogs/mindrAlert.css" type="text/css"?>
+
+<!DOCTYPE window [ <!ENTITY % mindralertDTD SYSTEM "chrome://mailmindr/locale/dialogs/mindralert.dtd">
+%mindralertDTD; ]>
+<window id="mailmindrAlertDialog" 
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" buttonlabelaccept="&mailmindr.dialogs.mindralert.button.dismiss.caption;" style="padding: 1em;" persist="screenX screenY width height sizemode" title="&mailmindr.dialogs.mindralert.title;" windowtype="mailmindr:alert">
+    <script type="application/x-javascript" src="chrome://mailmindr/content/mailmindrListView.js" />
+    <script type="application/x-javascript" src="chrome://mailmindr/content/dialogs/mindrAlert.js" />
+
+    <hbox flex="1">
+        <vbox flex="1">
+            <label for="mailmindr-alert-listbox">&mailmindr.dialogs.mindralert.label.listbox;</label>
+            <tree id="mailmindr-alert-listbox" flex="1">
+                <treecols>
+                    <treecol id="mindrid" label="id" ignoreincolumnpicker="true" primary="true" hidden="true" />
+                    <treecol id="mailmindrPendingListColSubject" label="&mailmindr.dialogs.mindralert.label.colSubject;" flex="2" align="left" persist="ordinal width" />
+                    <treecol id="mailmindrPendingListColFrom" label="&mailmindr.dialogs.mindralert.label.colFrom;" flex="1" align="left" persist="ordinal width" />
+                    <treecol id="mailmindrPendingListColRemainingTime" label="&mailmindr.dialogs.mindralert.label.colTime;" flex="1" alert="right" persist="ordinal width" />
+                </treecols>
+
+                <treechildren class="mailmindrMindrList" />
+            </tree>
+            <hbox>
+                <button id="mailmindrDismissAllMindrButton" disabled="true" label="&mailmindr.dialogs.mindralert.button.dismissall.caption;" />
+                <spacer flex="1" />
+                <button id="mailmindrViewMessageButton" disabled="true" label="&mailmindr.dialogs.mindralert.label.viewmessagebutton;" />
+                <button id="mailmindrDismissMindrButton" disabled="true" label="&mailmindr.dialogs.mindralert.button.dismiss.caption;" />
+            </hbox>
+        </vbox>
+    </hbox>
+</window>

@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "applications": {
+      "gecko": {
+        "id": "tbdialout@oak-wood.co.uk",
+        "strict_min_version": "68.0"
+      }
+    },
+    "name": "__MSG_extensionName__",
+    "description": "__MSG_extensionDescription__",
+    "author": "Chris Hastie",
+    "homepage_url": "http://www.oak-wood.co.uk/tbdialout",
+    "default_locale": "en",
+    "version": "1.8.0",
+    "icons": {
+      "32": "icons/tbdo32.png",
+      "48": "icons/tbdo48.png",
+      "64": "icons/tbdo64.png",
+      "96": "icons/tbdo96.png"
+    },
+    "legacy": {
+      "type": "xul",
+      "options": {
+        "page": "chrome://tbdialout/content/options.xul",
+        "open_in_tab": false
+      }
+    }
+}

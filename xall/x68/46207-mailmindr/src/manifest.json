@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "default_locale": "en",
+    "name": "__MSG_extensionName__",
+    "description": "__MSG_extensionDescription__",
+    "applications": {
+        "gecko": {
+            "id": "mailmindr@arndissler.net",
+            "strict_min_version": "68.0"
+        }
+    },
+    "author": "Arnd Issler",
+    "homepage_url": "https://mailmindr.net/",
+    "version": "0.9.4",
+    "icons": {
+        "32": "chrome/content/images/32x32/mailmindr.png"
+    },
+    "legacy": {
+        "type": "bootstrap",
+        "options": {
+            "page": "chrome://mailmindr/content/preferences/preferences.xul",
+            "open_in_tab": true
+        }
+    },
+    "permissions": ["storage"]
+}

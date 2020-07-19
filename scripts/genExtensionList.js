@@ -148,6 +148,21 @@ var reports = {
 			}
 		}
 	},
+	tbmx: {
+		baseReportName: "extension-list-tbmx",
+		reportFilter: function (extJson) {
+			// target 60 - !68
+			let compSet = extJson.xpilib.ext_comp;
+			console.debug(`comp ${compSet} `);
+			if ( (compSet.comp68 || compSet.comp68pv) ) {
+				console.debug('True');
+				return true;
+			} else {
+				return false;
+			}
+		}
+	},
+	
 	recentActivity: {
 		baseReportName: "extension-list-recent-activity",
 		reportFilter: function (extJson) {
@@ -471,3 +486,4 @@ genExtensionListFromJson(extsJson, reports.tb60);
 genExtensionListFromJson(extsJson, reports.tb60Only);
 genExtensionListFromJson(extsJson, reports.all);
 genExtensionListFromJson(extsJson, reports.recentActivity);
+genExtensionListFromJson(extsJson, reports.tbmx);

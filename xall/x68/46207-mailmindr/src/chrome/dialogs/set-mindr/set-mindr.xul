@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE dialog [ <!ENTITY % setmindrDTD SYSTEM "chrome://mailmindr/locale/dialogs/setmindr.dtd">
+%setmindrDTD; ]>
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+    xmlns:html="http://www.w3.org/1999/xhtml" persist="screenX screenY" X-buttons="accept,cancel" ondialogcancel="return mailmindr.dialogs.setmindr.onDialogCancel()" style="max-width: 25em !important;" title="&mailmindr.dlg.setmindr.title;" windowtype="mailmindr:setmindr">
+    <browser type="content" src="set-mindr.html" flex="1" tabindex="-1" />
+</dialog>

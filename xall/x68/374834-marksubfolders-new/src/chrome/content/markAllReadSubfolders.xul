@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://markallreadsub/locale/markAllReadSubfolders.dtd">
+
+<overlay id="MarkAllReadSubfolders" 
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/javascript" src="chrome://markallreadsub/content/markAllReadSubfolders.js"/>
+
+ <popup id="folderPaneContext">
+  <menuitem id="folderPaneContext-markMailSubfolderAllRead"
+            insertafter="folderPaneContext-markMailFolderAllRead"
+            label="&folderContextMarkMailSubfolderAllRead.label;"
+            accesskey="&folderContextMarkMailSubfolderAllRead.accesskey;"
+            oncommand="gMarkSubfolders.msgMarkAllRead_Subfolders();"/>
+ </popup>
+
+</overlay>
+

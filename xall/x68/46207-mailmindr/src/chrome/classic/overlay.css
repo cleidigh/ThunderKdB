@@ -1,0 +1,39 @@
+#mailmindrReplies {
+    height: 7em;
+}
+
+#mailmindrButtonToggleMindr {
+  list-style-image: url("chrome://mailmindr/content/images/mailmindr-button.png");
+}
+
+toolbar[iconsize="small"] #mailmindrButtonToggleMindr {
+  list-style-image: url("chrome://mailmindr/content/images/mailmindr-button-small.png");
+}
+
+#mailmindrReplies toolbar > toolbarbutton {
+    -moz-user-focus: ignore;
+    -moz-user-select: none;
+    -moz-box-sizing: border-box;
+    -moz-binding: url("chrome://global/content/bindings/button.xml#button");
+    -moz-appearance: button;
+    display: -moz-box;
+    margin-top: 5px;
+    margin-right-value: 6px;
+    margin-bottom: 3px;
+    margin-left-value: 6px;
+    margin-left-ltr-source: physical;
+    margin-left-rtl-source: physical;
+    margin-right-ltr-source: physical;
+    margin-right-rtl-source: physical;
+    min-width: 59px; /* -- original value is 79 */
+    color: buttontext;
+    text-shadow: none;
+}
+
+#mailmindrReplies toolbar > toolbarbutton[disabled="true"] {
+    color: graytext;
+}
+
+#mailmindrReplies toolbar {
+    -moz-appearance: none;
+}

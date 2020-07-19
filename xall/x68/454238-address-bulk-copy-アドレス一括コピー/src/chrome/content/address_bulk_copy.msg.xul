@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE window SYSTEM "chrome://address_bulk_copy/locale/address_bulk_copy.dtd">
+
+<overlay id="address_bulk_copy" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="chrome://address_bulk_copy/content/address_bulk_copy.js"/>
+	
+	<vbox id="expandedHeadersBox">
+		<hbox id="address_bulk_copy-msg-hbox">
+			<toolbar id="address_bulk_copy-msg-toolbar">
+				<toolbarbutton
+				id="address_bulk_copy.msg.button"
+				label="&address_bulk_copy.msg.button.label;"
+				oncommand="address_bulk_copy.bulkCopyFromMsg();"
+				/>
+			</toolbar>
+		</hbox>
+	</vbox>
+	
+</overlay>

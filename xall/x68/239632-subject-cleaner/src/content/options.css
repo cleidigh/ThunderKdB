@@ -1,0 +1,72 @@
+html {
+  background-color: #f9f9fa;
+}
+
+label.header {
+  margin: 15px;
+}
+
+label.group {
+  font-weight: bold;
+}
+
+tree {
+  width: 800px;
+  height: 204px;
+}
+
+treecol {
+  color: #000 !important;
+  border-inline-start-style: none !important;
+}
+
+treecol.right {
+  text-align: right;
+}
+
+treecol.noheader label {
+  opacity: 0;
+}
+
+treechildren::-moz-tree-row {
+  background-color: #fff;
+}
+
+treechildren::-moz-tree-cell {
+  padding: 0px 10px;
+}
+
+treechildren::-moz-tree-cell-text {
+  color: #000;
+}
+
+treechildren::-moz-tree-cell-text(inputtext,hover) {
+  margin-top: 2px;
+  border-bottom: 2px solid #2292d0;
+}
+
+treechildren::-moz-tree-checkbox(checked) {
+  list-style-image: url("chrome://global/skin/icons/check.svg");
+  -moz-context-properties: fill, stroke;
+  fill: #2292d0;
+}
+
+treechildren::-moz-tree-checkbox(checked,delete) {
+  list-style-image: url("chrome://messenger/skin/icons/delete.svg");
+  -moz-context-properties: fill, stroke;
+  fill: #2292d0;
+}
+
+checkbox {
+  margin: 2px 5px !important;
+}
+
+textbox.testbox {
+  width: 800px;
+  margin: 5px;
+}
+
+textbox.testbox.result {
+  color: #2292d0 !important;
+  opacity: 1;
+}

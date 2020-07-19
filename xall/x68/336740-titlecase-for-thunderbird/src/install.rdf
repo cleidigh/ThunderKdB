@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+
+		<em:name>TitleCase For Thunderbird</em:name>
+			<em:version>2.6.1</em:version>
+			<em:type>2</em:type>
+			<em:id>TitleCaseThunderbird@htdsoftware.com</em:id>
+      <em:creator>Joshua Pack</em:creator>
+			<em:description>Transform strings into Title Case, Proper Case, Upper Case, and Lower Case.	Highlight your text and only changing what you highlighted.</em:description>
+			<em:homepageURL>http://www.htdsoftware.com/</em:homepageURL>
+			<em:contributor>None</em:contributor>
+			<em:translator>None</em:translator>
+
+		<em:targetApplication>
+		<!-- Thunderbird -->
+			 <Description>
+				<em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
+				<em:minVersion>1.0</em:minVersion>
+				<em:maxVersion>*</em:maxVersion>
+			 </Description>
+		</em:targetApplication>
+
+  </Description>
+</RDF>

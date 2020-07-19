@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "Purge Events Plus",
+    "description": "Cleans up huge calendars",
+    "version": "0.3.4",
+    "author": "MPK",
+    "applications": {
+        "gecko": {
+            "id": "{2d686c2a-3eeb-4aa1-a8a4-aaf6214c79a6}",
+            "strict_min_version": "68.0"
+        }
+    },
+    "icons": {
+        "64": "icon_64.png"
+    },
+	"legacy": {
+		"type": "xul",
+		"options": {
+			"page": "chrome://purgeevents/content/purgeeventsPurgeNow.xul",
+			"open_in_tab": false
+		}
+  }
+}

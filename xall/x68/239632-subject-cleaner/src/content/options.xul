@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/in-content/common.css" type="text/css"?>
+<?xml-stylesheet href="chrome://subjectcleaner/content/options.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://subjectcleaner/locale/subjectcleaner.dtd">
+
+<html id="options" title="&setting.title;"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  onload="SubjectCleanerOptions.startup()">
+
+  <script type="application/x-javascript" src="chrome://global/content/nsUserSettings.js"/>
+  <script type="application/x-javascript" src="chrome://subjectcleaner/content/prefutil.js"/>
+  <script type="application/x-javascript" src="chrome://subjectcleaner/content/clean.js"/>
+  <script type="application/x-javascript" src="chrome://subjectcleaner/content/options.js"/>
+
+  <vbox>
+    <label class="header" value="&setting.title;"/>
+
+    <label class="indent group" value="&setting.tab.setting;"/>
+    <hbox class="indent">
+      <tree id="removalListTree" seltype="single" editable="true">
+        <treecols mousethrough="always">
+          <treecol class="right" type="text" editable="false" label="No."/>
+          <treecol type="text" editable="true" label="&setting.removallist.removalstring;" flex="1"/>
+          <treecol type="checkbox" editable="true" label="&setting.removallist.casesensitive;"/>
+          <treecol type="checkbox" editable="true" label="&setting.removallist.regexp;"/>
+          <treecol class="noheader" type="checkbox" editable="false" label="delete" ignoreincolumnpicker="true"/>
+        </treecols>
+        <treechildren/>
+      </tree>
+      <spacer flex="1"/>
+      <vbox>
+        <button id="add" label="&setting.removallist.button.add;"/>
+      </vbox>
+    </hbox>
+    <separator class="thin"/>
+    <vbox class="indent">
+      <hbox>
+        <checkbox id="autoRemove" label="&setting.checkbox.autoremove;"/>
+        <spacer flex="1"/>
+      </hbox>
+      <hbox>
+        <checkbox id="autoFocus" label="&setting.checkbox.autofocus;"/>
+        <spacer flex="1"/>
+      </hbox>
+    </vbox>
+
+    <separator class="groove-thin"/>
+
+    <label class="indent group" value="&setting.tab.test;"/>
+    <vbox class="indent">
+      <hbox>
+        <textbox id="testBox" class="testbox" placeholder="Re: [ml:0002] Re: [ml:0001] meeting"/>
+        <spacer flex="1"/>
+        <button id="test" label="&setting.test.button.execute;"/>
+      </hbox>
+      <hbox>
+        <textbox id="testBoxResult" class="testbox result" disabled="true"/>
+        <spacer flex="1"/>
+      </hbox>
+    </vbox>
+
+    <separator class="groove-thin"/>
+
+    <hbox align="right">
+      <button id="default" label="&setting.default;"/>
+      <button id="apply" label="&setting.apply;"/>
+    </hbox>
+  </vbox>
+
+</html>

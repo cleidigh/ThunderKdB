@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'EmojiOneSvg';
+  src:  url('font/emojione-svg.woff2') format('woff2'),
+        url('font/emojione-svg.woff') format('woff');
+}
+
+#emojiMenu {
+  font-family: 'EmojiOneSvg';
+}
+
+#emojiMenu .toolbarbutton-text {
+  display: inline !important;
+}
+
+#emojiPopup .toolbarbutton-text {
+  font-size: 2em !important;
+}
+
+/*Make the popup panel have a white backround, a nice shadow, resize to the correct size, and remove the annoying grey vertical bar on the left*/
+#emojiPopup {
+  -moz-appearance: tabpanels;
+}
+
+/*Make the separator start all the way at the left, and not at the (no longer existing) vertical line*/
+#emojiMenu menuseparator {
+  -moz-appearance: none;
+}
+
+/*Make the emoji blue for computers with black and white emoji*/
+toolbarbutton.emojiSelectedCategory {
+  color: #26A0DA;
+}
