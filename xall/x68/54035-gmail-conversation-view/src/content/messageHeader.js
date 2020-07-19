@@ -170,11 +170,7 @@ class ContactLabel extends React.PureComponent {
     })), /*#__PURE__*/React.createElement("span", null, this.props.separator), /*#__PURE__*/React.createElement("span", {
       className: "tooltipWrapper contact"
     }, /*#__PURE__*/React.createElement("span", {
-      className: "contactName",
-      name: this.props.contact.name,
-      email: this.props.contact.displayEmail,
-      realemail: this.props.contact.email,
-      avatar: this.props.contact.avatar
+      className: "contactName"
     }, this.props.detailView && !!this.props.contact.contactId && "\u2605 ", this.props.contact.name.trim(), this.props.contact.extra && /*#__PURE__*/React.createElement("label", {
       xmlns: "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul",
       crop: "center",
@@ -254,7 +250,7 @@ class MessageHeader extends React.PureComponent {
       onClick: this.onClickStar
     }, /*#__PURE__*/React.createElement(SvgIcon, {
       hash: "star"
-    })), this.props.from.avatarIsDefault ? /*#__PURE__*/React.createElement("abbr", {
+    })), this.props.from.avatar.startsWith("chrome:") ? /*#__PURE__*/React.createElement("abbr", {
       className: "contactInitials",
       style: this.props.from.colorStyle
     }, this.props.from.initials) : /*#__PURE__*/React.createElement("span", {

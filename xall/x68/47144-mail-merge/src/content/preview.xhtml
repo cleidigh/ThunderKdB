@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailmerge/content/preview.css" type="text/css"?>
+
+<dialog
+	id="mailmerge"
+	windowtype="mailmerge"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	title="Mail Merge"
+	buttons="accept"
+	onload="mailmerge.load();">
+	
+	<script type="application/x-javascript" src="chrome://mailmerge/content/preview.js" />
+	
+	<vbox id="mailmerge-content">
+		
+		<html:fieldset id="mailmerge-file" hidden="true">
+			<html:legend i18n="mailmerge.preview.file"></html:legend>
+			<html:div>
+				<html:table id="mailmerge-file-table" />
+			</html:div>
+		</html:fieldset>
+		
+		<html:fieldset id="mailmerge-message" hidden="true">
+			<html:legend i18n="mailmerge.preview.message"></html:legend>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.index"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-index" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.from"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-from" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.to"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-to" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.cc"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-cc" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.bcc"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-bcc" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.reply"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-reply" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.subject"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-subject" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.body"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-body" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.attachments"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-attachments" />
+			</html:div>
+			<html:div>
+				<html:span i18n="mailmerge.preview.message.sendlater"></html:span>
+				<html:span />
+				<html:span id="mailmerge-message-sendlater" />
+			</html:div>
+		</html:fieldset>
+		
+	</vbox>
+	
+	<hbox>
+		
+		<button id="mailmerge-begin" label="&lt;&lt;" i18n="aria-label=mailmerge.preview.begin" oncommand="mailmerge.begin();" hidden="true" />
+		<button id="mailmerge-previous" label="&lt;" i18n="aria-label=mailmerge.preview.previous" oncommand="mailmerge.previous();" hidden="true" />
+		<button id="mailmerge-next" label="&gt;" i18n="aria-label=mailmerge.preview.next" oncommand="mailmerge.next();" hidden="true" />
+		<button id="mailmerge-end" label="&gt;&gt;" i18n="aria-label=mailmerge.preview.end" oncommand="mailmerge.end();" hidden="true" />
+		<spacer flex="1" />
+		<button dlgtype="accept" />
+		
+	</hbox>
+	
+</dialog>

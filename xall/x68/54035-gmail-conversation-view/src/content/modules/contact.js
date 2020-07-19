@@ -102,7 +102,7 @@ ContactFromAB.prototype = {
       matchingCards.length !== 0
         ? {
             ...matchingCards[0].properties,
-            id: matchingCards[0],
+            id: matchingCards[0].id,
           }
         : null;
     this._card = card;
@@ -117,11 +117,21 @@ ContactFromAB.prototype = {
       // - firstName lastName (if one of these is non-empty)
       // - the parsed name
       // - the email
-      if (this._useCardName && card.DisplayName) {
-        this._name = card.DisplayName;
-      }
-      if (this._useCardName && (card.FirstName || card.LastName)) {
-        this._name = card.FirstName + " " + card.LastName;
+      if (this._useCardName) {
+        if (card.DisplayName) {
+          this._name = card.DisplayName;
+        } else {
+          if (card.FirstName) {
+            this._name = card.FirstName;
+          }
+          if (card.LastName) {
+            if (this._name) {
+              this._name += " " + card.LastName;
+            } else {
+              this._name = card.LastName;
+            }
+          }
+        }
       }
       if (!this._name) {
         this._name = this._email;
@@ -139,6 +149,8 @@ ContactFromAB.prototype = {
         return photoURI;
       }
     }
+    // It would be nice to return null here and let the UI sort out the default.
+    // However, with the current version comparisons, that makes it hard to do.
     return defaultPhotoURI;
   },
 
@@ -148,7 +160,7 @@ ContactFromAB.prototype = {
    * different. This allows one to share a common color for a same card in the
    * address book.
    */
-  async toTmplData(useColor, position, email, isDetail) {
+  async toTmplData(position, email, isDetail) {
     const identityEmails = await browser.convContacts
       .getIdentityEmails({ includeNntpIdentities: false })
       .catch(console.error);
@@ -182,11 +194,9 @@ ContactFromAB.prototype = {
       tooltipName: tooltipName != email ? tooltipName : "",
       email,
       avatar: this.avatar,
-      avatarIsDefault: this.avatar.substr(0, 6) === "chrome",
       contactId: this._card ? this._card.id : null,
       extra,
-      // Parameter aUseColor is optional, and undefined means true
-      colorStyle: useColor === false ? {} : { backgroundColor: this.color },
+      colorStyle: { backgroundColor: this.color },
     };
     return data;
   },

@@ -1,0 +1,104 @@
+[
+  {
+    "namespace": "tagPopupApi",
+    "functions": [
+      {
+        "name": "onTagsChange",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "showAdditionalTagsInMsgHdrView",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "tags",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string"
+                },
+                "tag": {
+                  "type": "string"
+                },
+                "fgRGB": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Tags to be shown in the message header view"
+          }
+        ]
+      },
+      {
+        "name": "insertCSS",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "css",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "removeCSS",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "getSelectorForKey",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "key",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "isColorContrastEnough",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "color",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onClick",
+        "type": "function",
+        "description": "Fires when the user Clicks on the a tag in the message header view.",
+        "parameters": [
+          {
+            "name": "tagKey",
+            "type": "string",
+            "description": "Tag key which is clicked"
+          },
+          {
+            "type": "integer",
+            "name": "x",
+            "minimum": 0,
+            "description": "The X position of the mouse when the user clicked."
+          },
+          {
+            "type": "integer",
+            "name": "y",
+            "minimum": 0,
+            "description": "The Y position of the mouse when the user clicked."
+          }
+        ]
+      }
+    ]
+  }
+]

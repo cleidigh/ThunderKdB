@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Tag Popup Options</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="options.css">
+  <script src="../scripts/l10n.js" defer></script>
+  <script src="../scripts/cssmgr.js" defer></script>
+  <script src="../scripts/options.js" defer></script>
+</head>
+
+<body class="option-page">
+  <form name="tpup_form">
+    <p>
+      <input type="checkbox" name="use_msghdr" id="use_msghdr">
+      <label for="use_msghdr" l10n-tag="tpupOptMsgHdr"></label>
+    </p>
+    <p>
+      <input type="checkbox" id="bgcolor_en">
+      <label for="bgcolor_en" l10n-tag="tpupOptBgColorEn"></label>
+      <br>
+    </p>
+    <div class="indent">
+      <p>
+        <label l10n-tag="tpupOptLightness"></label>&nbsp;
+        <input type="number" value=75 min="0" max="100" size="3" id="lightness">
+        &nbsp;&nbsp;&nbsp;
+        <label l10n-tag="tpupOptTextColor"></label>&nbsp;
+        <select id="fg_mode">
+          <option value="0" l10n-tag="tpupOptTextColorTag"></option>
+          <option value="1" l10n-tag="tpupOptTextColorBW"></option>
+          <option value="2" l10n-tag="tpupOptTextColorComp"></option>
+        </select>
+      </p>
+      <p>
+      <label l10n-tag="tpupOptPreview"></label>
+      <br>
+      <select size="10" style="width: 200px; background-color:white !important;"
+              class="indent" id="colorSample" disabled>
+      </select>
+      </p>
+    </div>
+  </form>
+</body>
+
+</html>

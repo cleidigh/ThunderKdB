@@ -60,7 +60,7 @@ XPCOMUtils.defineLazyGetter(this, "MsgHdrToMimeMessage", () => {
 XPCOMUtils.defineLazyGetter(this, "mimeMsgToContentSnippetAndMeta", () => {
   let tmp = {};
   try {
-    ChromeUtils.import("rresource:///modules/gloda/connotent.js", tmp);
+    ChromeUtils.import("resource:///modules/gloda/connotent.js", tmp);
   } catch (ex) {
     ChromeUtils.import("resource:///modules/gloda/GlodaContent.jsm", tmp);
   }
@@ -307,6 +307,7 @@ class Message {
     this.contentType = "";
     this.hasRemoteContent = false;
     this.isPhishing = false;
+    this.smimeReload = false;
 
     // A list of email addresses
     this.mailingLists = [];
@@ -397,7 +398,7 @@ class Message {
     this._contacts = this._contacts.concat(contacts);
     // false means "no colors"
     return Promise.all(
-      contacts.map(([x, email]) => x.toTmplData(false, Contacts.kTo, email))
+      contacts.map(([x, email]) => x.toTmplData(Contacts.kTo, email))
     );
   }
 
@@ -435,6 +436,7 @@ class Message {
       read: this.read,
       realFrom: this._realFrom.email || this._from.email,
       recipientsIncludeLists: this.isReplyListEnabled,
+      smimeReload: this.smimeReload,
       snippet: this._snippet,
       starred: messageHeader.flagged,
     };
@@ -449,11 +451,7 @@ class Message {
     ];
     this._contacts.push(contactFrom);
     // true means "with colors"
-    data.from = await contactFrom[0].toTmplData(
-      true,
-      Contacts.kFrom,
-      contactFrom[1]
-    );
+    data.from = await contactFrom[0].toTmplData(Contacts.kFrom, contactFrom[1]);
     data.from.separator = "";
 
     data.to = await this.getContactsFrom(this._to);
@@ -546,6 +544,16 @@ class Message {
     this.hasRemoteContent = true;
     Log.debug("This message's remote content was blocked");
 
+    const msgData = await this.toReactData();
+    // TODO: make getting the window less ugly.
+    this._conversation._htmlPane.conversationDispatch({
+      type: "MSG_UPDATE_DATA",
+      msgData,
+    });
+  }
+
+  async setSmimeReload() {
+    this.smimeReload = true;
     const msgData = await this.toReactData();
     // TODO: make getting the window less ugly.
     this._conversation._htmlPane.conversationDispatch({

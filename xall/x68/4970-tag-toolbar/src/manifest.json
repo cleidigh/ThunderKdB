@@ -1,24 +1,68 @@
 {
   "manifest_version": 2,
-  "name": "Tag Toolbar",
-  "description": "Add toolbar for toggling tags",
-  "version": "1.0.2",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.0.4",
   "author": "H.Ogi",
-  "homepage_url": "http://hogi.sakura.ne.jp/en/",
-  "legacy": {
-  	"type": "xul",
-    "options" : {
-      "page" : "chrome://tagbar/content/settings.xul",
-      "open_in_tab" : false
+  "homepage_url": "__MSG_extensionHomepage_url__",
+  "experiment_apis": {
+    "tagPopupApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "tagPopupApi"
+          ]
+        ],
+        "script": "scripts/implementation.js"
+      }
     }
+  },
+  "browser_action": {
+    "default_popup": "html/popup.html",
+    "default_title": "__MSG_extensionDefault_title__",
+    "default_icon": "images/title32.png"
+  },
+  "message_display_action": {
+    "default_popup": "html/popup.html",
+    "default_title": "__MSG_extensionDefault_title__",
+    "default_icon": "images/title32.png"
+  },
+  "commands": {
+    "cmd_open-tag-popup": {
+      "suggested_key": {
+        "default": "F10"
+      },
+      "description": "Show toolbar popup"
+    }
+  },
+  "background": {
+    "scripts": [
+      "scripts/cssmgr.js",
+      "scripts/background.js"
+    ]
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "messagesRead",
+    "storage"
+  ],
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
+  },
+  "default_locale": "en",
+  "icons": {
+    "32": "images/title32.png"
   },
   "applications": {
     "gecko": {
       "id": "{61A64500-335C-418D-8FCB-E072A9ABF3DA}",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
-  },
-  "icons": {
-    "32": "title32.png"
   }
 }

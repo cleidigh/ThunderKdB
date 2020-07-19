@@ -51,7 +51,7 @@ class MessageIFrame extends React.Component {
     if (this.props.expanded) {
       this.iframe.classList.remove("hidden");
 
-      if (this.currentUrl != this.props.msgUri || prevProps.hasRemoteContent && !this.props.hasRemoteContent) {
+      if (this.currentUrl != this.props.msgUri || prevProps.hasRemoteContent && !this.props.hasRemoteContent || !prevProps.smimeReload && this.props.smimeReload) {
         startLoad = true;
 
         if (this.dueToExpansion === undefined) {
@@ -155,13 +155,12 @@ class MessageIFrame extends React.Component {
   }
 
   adjustHeight() {
-    const iframeDoc = this.iframe.contentDocument; // This is needed in case the timeout kicked in after the message
-    // was loaded but before we collapsed quotes. Then, the scrollheight
-    // is too big, so we need to make the iframe small, so that its
-    // scrollheight corresponds to its "real" height (there was an issue
-    // with offsetheight, don't remember what, though).
+    const iframeDoc = this.iframe.contentDocument; // The +1 here is due to having occasionally seen issues on Mac where
+    // the frame just doesn't quite scroll properly. In this case,
+    // getComputedStyle(body).height is .2px greater than the scrollHeight.
+    // Hence we try to work around that here.
 
-    const scrollHeight = iframeDoc.body.scrollHeight;
+    const scrollHeight = iframeDoc.body.scrollHeight + 1;
     this.iframe.style.height = scrollHeight + "px"; // So now we might overflow horizontally, which causes a horizontal
     // scrollbar to appear, which narrows the vertical height available,
     // which causes a vertical scrollbar to appear.
@@ -319,7 +318,7 @@ class MessageIFrame extends React.Component {
       }
 
       return false;
-    } // https://github.com/protz/thunderbird-conversations/issues#issue/179
+    } // https://github.com/thunderbird-conversations/thunderbird-conversations/issues#issue/179
     // See link above for a rationale ^^
 
 
@@ -397,6 +396,7 @@ MessageIFrame.propTypes = {
   initialPosition: PropTypes.number.isRequired,
   msgUri: PropTypes.string.isRequired,
   neckoUrl: PropTypes.string.isRequired,
+  smimeReload: PropTypes.bool.isRequired,
   tenPxFactor: PropTypes.number.isRequired,
   prefs: PropTypes.object.isRequired,
   realFrom: PropTypes.string.isRequired

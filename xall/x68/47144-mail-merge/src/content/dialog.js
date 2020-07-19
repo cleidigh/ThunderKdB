@@ -13,22 +13,20 @@ var mailmerge = {
 	
 	load: function() {
 		
-		var stringbundle = document.getElementById("mailmerge-stringbundle");
+		if(window.opener.cardbookRepository) { document.getElementById("mailmerge-general-source").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.general.source.cardbook"), "Cardbook")); }
+		document.getElementById("mailmerge-general-source").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.general.source.addressbook"), "AddressBook"));
+		document.getElementById("mailmerge-general-source").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.general.source.csv"), "CSV"));
+		document.getElementById("mailmerge-general-source").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.general.source.json"), "JSON"));
+		document.getElementById("mailmerge-general-source").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.general.source.xlsx"), "XLSX"));
 		
-		if(window.opener.cardbookRepository) { document.getElementById("mailmerge-general-source").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.source.cardbook"), "Cardbook")); }
-		document.getElementById("mailmerge-general-source").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.source.addressbook"), "AddressBook"));
-		document.getElementById("mailmerge-general-source").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.source.csv"), "CSV"));
-		document.getElementById("mailmerge-general-source").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.source.json"), "JSON"));
-		document.getElementById("mailmerge-general-source").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.source.xlsx"), "XLSX"));
+		document.getElementById("mailmerge-general-delivermode").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.general.delivermode.saveasdraft"), "SaveAsDraft"));
+		document.getElementById("mailmerge-general-delivermode").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.general.delivermode.sendlater"), "Later"));
+		document.getElementById("mailmerge-general-delivermode").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.general.delivermode.sendnow"), "Now"));
 		
-		document.getElementById("mailmerge-general-delivermode").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.delivermode.saveasdraft"), "SaveAsDraft"));
-		document.getElementById("mailmerge-general-delivermode").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.delivermode.sendlater"), "Later"));
-		document.getElementById("mailmerge-general-delivermode").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.delivermode.sendnow"), "Now"));
-		
-		document.getElementById("mailmerge-cardbook-addressbook").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.cardbook.addressbooks"), ""));
+		document.getElementById("mailmerge-cardbook-addressbook").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.cardbook.addressbook.addressbooks"), ""));
 		if(window.opener.cardbookRepository) { mailmerge.cardbook(); }
 		
-		document.getElementById("mailmerge-addressbook-addressbook").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.addressbook.addressbooks"), ""));
+		document.getElementById("mailmerge-addressbook-addressbook").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.addressbook.addressbook.addressbooks"), ""));
 		mailmerge.addressbook();
 		
 		document.getElementById("mailmerge-csv-characterset-select").add(mailmerge.option("utf-8", "utf-8"));
@@ -62,29 +60,29 @@ var mailmerge = {
 		document.getElementById("mailmerge-csv-characterset-select").add(mailmerge.option("macintosh", "macintosh"));
 		document.getElementById("mailmerge-csv-characterset-select").value = "";
 		
-		document.getElementById("mailmerge-csv-fielddelimiter").add(mailmerge.option(",", ",", stringbundle.getString("mailmerge.dialog.fielddelimiter.comma")));
-		document.getElementById("mailmerge-csv-fielddelimiter").add(mailmerge.option(";", ";", stringbundle.getString("mailmerge.dialog.fielddelimiter.semicolon")));
-		document.getElementById("mailmerge-csv-fielddelimiter").add(mailmerge.option(":", ":", stringbundle.getString("mailmerge.dialog.fielddelimiter.colon")));
-		document.getElementById("mailmerge-csv-fielddelimiter").add(mailmerge.option("Tab", "\t", stringbundle.getString("mailmerge.dialog.fielddelimiter.tab")));
+		document.getElementById("mailmerge-csv-fielddelimiter").add(mailmerge.option(",", ",", mailmerge.i18n.localizeMessage("mailmerge.dialog.csv.fielddelimiter.comma")));
+		document.getElementById("mailmerge-csv-fielddelimiter").add(mailmerge.option(";", ";", mailmerge.i18n.localizeMessage("mailmerge.dialog.csv.fielddelimiter.semicolon")));
+		document.getElementById("mailmerge-csv-fielddelimiter").add(mailmerge.option(":", ":", mailmerge.i18n.localizeMessage("mailmerge.dialog.csv.fielddelimiter.colon")));
+		document.getElementById("mailmerge-csv-fielddelimiter").add(mailmerge.option("Tab", "\t", mailmerge.i18n.localizeMessage("mailmerge.dialog.csv.fielddelimiter.tab")));
 		
-		document.getElementById("mailmerge-csv-textdelimiter").add(mailmerge.option("\"", "\"", stringbundle.getString("mailmerge.dialog.textdelimiter.doublequote")));
-		document.getElementById("mailmerge-csv-textdelimiter").add(mailmerge.option("\'", "\'", stringbundle.getString("mailmerge.dialog.textdelimiter.singlequote")));
-		document.getElementById("mailmerge-csv-textdelimiter").add(mailmerge.option("", "", stringbundle.getString("mailmerge.dialog.textdelimiter.none")));
+		document.getElementById("mailmerge-csv-textdelimiter").add(mailmerge.option("\"", "\"", mailmerge.i18n.localizeMessage("mailmerge.dialog.csv.textdelimiter.doublequote")));
+		document.getElementById("mailmerge-csv-textdelimiter").add(mailmerge.option("\'", "\'", mailmerge.i18n.localizeMessage("mailmerge.dialog.csv.textdelimiter.singlequote")));
+		document.getElementById("mailmerge-csv-textdelimiter").add(mailmerge.option("", "", mailmerge.i18n.localizeMessage("mailmerge.dialog.csv.textdelimiter.none")));
 		
-		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.recur.none"), ""));
-		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.recur.minutely"), "minutely"));
-		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.recur.daily"), "daily"));
-		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.recur.weekly"), "weekly"));
-		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.recur.monthly"), "monthly"));
-		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.recur.yearly"), "yearly"));
+		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.recur.none"), ""));
+		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.recur.minutely"), "minutely"));
+		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.recur.daily"), "daily"));
+		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.recur.weekly"), "weekly"));
+		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.recur.monthly"), "monthly"));
+		document.getElementById("mailmerge-sendlater-recur").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.recur.yearly"), "yearly"));
 		
-		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.only.sunday"), "0"));
-		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.only.monday"), "1"));
-		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.only.tuesday"), "2"));
-		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.only.wednesday"), "3"));
-		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.only.thursday"), "4"));
-		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.only.friday"), "5"));
-		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(stringbundle.getString("mailmerge.dialog.only.saturday"), "6"));
+		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.only.sunday"), "0"));
+		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.only.monday"), "1"));
+		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.only.tuesday"), "2"));
+		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.only.wednesday"), "3"));
+		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.only.thursday"), "4"));
+		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.only.friday"), "5"));
+		document.getElementById("mailmerge-sendlater-only").add(mailmerge.option(mailmerge.i18n.localizeMessage("mailmerge.dialog.sendlater.only.saturday"), "6"));
 		
 		mailmerge.init();
 		
@@ -147,17 +145,16 @@ var mailmerge = {
 		/* delivermodewarning start */
 		if(document.getElementById("mailmerge-general-delivermode").value == "Now") {
 			
-			var bundle = document.getElementById("mailmerge-stringbundle");
 			var flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
 			var check = { value : false };
 			
 			switch(Services.prompt.confirmEx(
 				window,
-				bundle.getString("mailmerge.dialog.delivermodewarning.title"),
-				bundle.getString("mailmerge.dialog.delivermodewarning.message"),
+				mailmerge.i18n.localizeMessage("mailmerge.delivermodewarning.title"),
+				mailmerge.i18n.localizeMessage("mailmerge.delivermodewarning.message"),
 				flags,
-				bundle.getString("mailmerge.dialog.delivermodewarning.send"),
-				bundle.getString("mailmerge.dialog.delivermodewarning.cancel"),
+				mailmerge.i18n.localizeMessage("mailmerge.delivermodewarning.send"),
+				mailmerge.i18n.localizeMessage("mailmerge.delivermodewarning.cancel"),
 				null,
 				null,
 				check))
@@ -170,9 +167,9 @@ var mailmerge = {
 					
 				case 1:
 					
-					//prefs.setBoolPref("delivermodewarning", !check.value);
-					event.stopPropagation();
 					event.preventDefault();
+					event.stopPropagation();
+					//prefs.setBoolPref("delivermodewarning", !check.value);
 					return;
 					
 				default:;
@@ -225,7 +222,7 @@ var mailmerge = {
 	
 	help: function(event) {
 		
-		window.openDialog("chrome://mailmerge/content/about.xul", "_blank", "chrome,dialog,modal,centerscreen", null);
+		window.openDialog("chrome://mailmerge/content/about.xhtml", "_blank", "chrome,dialog,modal,centerscreen", null);
 		
 	},
 	
@@ -351,7 +348,7 @@ var mailmerge = {
 			if(Array.isArray(json)) {
 				
 				var params = { type: "FILE", json: json }
-				window.openDialog("chrome://mailmerge/content/preview.xul", "_blank", "chrome,dialog,modal,centerscreen", params);
+				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 				
 			}
 			
@@ -369,7 +366,7 @@ var mailmerge = {
 			if(Array.isArray(json)) {
 				
 				var params = { type: "FILE", json: json }
-				window.openDialog("chrome://mailmerge/content/preview.xul", "_blank", "chrome,dialog,modal,centerscreen", params);
+				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 				
 			}
 			
@@ -388,7 +385,7 @@ var mailmerge = {
 			if(Array.isArray(json)) {
 				
 				var params = { type: "FILE", json: json }
-				window.openDialog("chrome://mailmerge/content/preview.xul", "_blank", "chrome,dialog,modal,centerscreen", params);
+				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 				
 			}
 			
@@ -399,7 +396,7 @@ var mailmerge = {
 			if(mailmergeutils.init(mailmerge.prefs())) {
 				
 				var params = { type: "MESSAGE" }
-				window.openDialog("chrome://mailmerge/content/preview.xul", "_blank", "chrome,dialog,modal,centerscreen", params);
+				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 				
 			}
 			
