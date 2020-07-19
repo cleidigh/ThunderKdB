@@ -1,24 +1,64 @@
 {
   "manifest_version": 2,
-  "name": "New Tab Button",
-  "description": "Add toolbar button for opening messages in new tabs",
-  "version": "0.3.0",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.0.4",
   "author": "H.Ogi",
-  "homepage_url": "http://hogi.sakura.ne.jp/en/",
-  "legacy": {
-  	"type": "xul",
-    "options" : {
-      "page" : "chrome://opentab/content/settings.xul",
-      "open_in_tab" : false
+  "homepage_url": "__MSG_extensionHomepage_url__",
+  "experiment_apis": {
+    "newTabButtonApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+            "addon_parent"
+          ],
+        "paths": [
+            [
+              "newTabButtonApi"
+            ]
+          ],
+        "script": "scripts/implementation.js"
+      }
     }
   },
+  
+  "browser_action": {
+    "default_title": "__MSG_extensionDefault_title__",
+    "default_icon": "images/tab24.gif"
+  },
+  
+  "message_display_action": {
+    "default_title": "__MSG_extensionDefault_title__",
+    "default_icon": "images/tab24.gif"
+  },
+  
+  "permissions": [
+      "activeTab",
+      "tabs",
+      "storage"
+    ],
+
+  "background": {
+    "scripts": [
+        "scripts/background.js"
+      ]
+  },
+
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
+  },
+  
+  "icons": {
+    "24": "images/tab24.gif"
+  },
+  
+  "default_locale": "en",
+  
   "applications": {
     "gecko": {
       "id": "{3AB03506-4329-483F-BA03-EA5493232260}",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
-  },
-  "icons": {
-    "24": "tab24.gif"
   }
 }
