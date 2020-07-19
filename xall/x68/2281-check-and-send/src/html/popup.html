@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
+  <script src="../scripts/l10n.js" defer></script>
+  <script src="../scripts/popup.js" defer></script>
+</head>
+
+<body>
+  <div class="popup-page">
+    <div id="checkingMessage">
+      <h3 l10n-tag="casPopupChecking"></h3>
+    </div>
+    <div id="warningArea" class="box-collapse">
+      <form name="casalert">
+        <div id="noError">
+          <h3 l10n-tag="casPopupNoError"></h3>
+        </div>
+
+        <!-- Identity -->
+        <div id="identityArea">
+          <h3 class="titleline-simple" l10n-tag="casPopupIdentity"></h3>
+          <ul>
+            <li class="dia_list" id="identityName"></li>
+          </ul>
+        </div>
+
+        <!-- Recipients -->
+        <div id="recArea">
+          <h3 class="titleline-simple" l10n-tag="casPopupRecipients"></h3>
+          <ul>
+            <li class="dia_list" id="recEmptyToLi" l10n-tag="casPopupEmptyTo">
+            </li>
+            <li class="dia_list" id="recEmptyCcLi" l10n-tag="casPopupEmptyCc">
+            </li>
+            <li class="dia_list" id="recEmptyBccLi" l10n-tag="casPopupEmptyBcc">
+            </li>
+            <li class="dia_list" id="recEmptyReplyToLi" l10n-tag="casPopupEmptyReplyTo">
+            </li>
+            <li class="dia_list" id="recTooManyToCcLi" l10n-tag="casPopupTooManyToCc">
+            </li>
+          </ul>
+          <ul>
+            <li class="dia_list" id="dupToLi">
+              <span l10n-tag="casPopupDupTo"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="dupTo">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="dupCcLi">
+              <span l10n-tag="casPopupDupCc"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="dupCc">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="dupBccLi">
+              <span l10n-tag="casPopupDupBcc"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="dupBcc">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="dupReplyToLi">
+              <span l10n-tag="casPopupDupReplyTo"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="dupReplyTo">
+                  </tbody>
+                </table>
+              </div>
+            </li>
+          </ul>
+          <ul>
+            <li class="dia_list" id="addrCheckToLi">
+              <span l10n-tag="casPopupAddrCheckTo"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="addrCheckTo">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="addrCheckCcLi">
+              <span l10n-tag="casPopupAddrCheckCc"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="addrCheckCc">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="addrCheckBccLi">
+              <span l10n-tag="casPopupAddrCheckBcc"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="addrCheckBcc">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="addrCheckReplyToLi">
+              <span l10n-tag="casPopupAddrCheckReplyTo"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="addrCheckReplyTo">
+                  </tbody>
+                </table>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- Attachments -->
+        <div id="attachArea">
+          <h3 class="titleline-simple" l10n-tag="casPopupAttachments"></h3>
+          <ul>
+            <li class="dia_list" id="attachSizeLi">
+              <div id="attachSize" l10n-tag="casPopupAttachSize">
+              </div>
+            </li>
+            <li class="dia_list" id="attachListLi">
+              <span l10n-tag="casPopupAttachList"></span>
+              <div id="attachlist" class="border">
+              </div>
+            </li>
+          </ul>
+        </div>
+        <br>
+
+        <!-- Keywords -->
+        <div id="keywordsArea">
+          <h3 class="titleline-simple" l10n-tag="casPopupKeywords"></h3>
+          <!-- Subject -->
+          <div id="kwSubjectArea">
+            <span l10n-tag="casPopupSubject"></span>
+            <ul>
+              <li class="dia_list" id="ngWordsSubjectLi">
+                <span l10n-tag="casPopupNgWordsSubject"></span>
+                <br>
+                <div id="ngWordsSubject" class="border">
+                </div>
+                <br>
+              </li>
+              <li class="dia_list" id="mustWordsSubjectLi">
+                <span l10n-tag="casPopupMustWordsSubject"></span>
+                <br>
+                <div id="mustWordsSubject" class="border">
+                </div>
+              </li>
+            </ul>
+          </div>
+          <!-- Message body -->
+          <div id="kwBodyArea">
+            Message
+            <ul>
+              <li class="dia_list" id="ngWordsBodyLi">
+                <span l10n-tag="casPopupNgWordsBody"></span>
+                <br>
+                <div id="ngWordsBody" class="border">
+                </div>
+                <br>
+              </li>
+              <li class="dia_list" id="mustWordsBodyLi">
+                <span l10n-tag="casPopupMustWordsBody"></span>
+                <br>
+                <div id="mustWordsBody" class="border">
+                </div>
+              </li>
+            </ul>
+          </div>
+          <br>
+        </div>
+
+        <div id="recNameArea">
+          <h3 class="titleline-simple" l10n-tag="casPopupRecName"></h3>
+          <ul>
+            <li class="dia_list" id="toRecNameLi">
+              <span l10n-tag="casPopupToRecName"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="toRecName">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="ccRecNameLi">
+              <span l10n-tag="casPopupCcRecName"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="ccRecName">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="replyToRecNameLi">
+              <span l10n-tag="casPopupReplyToRecName"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="replyToRecName">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div id="dayDateArea">
+          <h3 class="titleline-simple" l10n-tag="casPopupDayDate"></h3>
+          <ul>
+            <li class="dia_list" id="wrongDayLi">
+              <span l10n-tag="casPopupWrongDay"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="wrongDay">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="noteDayLi">
+              <span l10n-tag="casPopupNoteDay"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="noteDay">
+                  </tbody>
+                </table>
+                <br>
+              </div>
+            </li>
+            <li class="dia_list" id="invalidDateLi">
+              <span l10n-tag="casPopupInvalidDate"></span>
+              <br>
+              <div class="noborder">
+                <table class="addrtable">
+                  <tbody id="invalidDate">
+                  </tbody>
+                </table>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <br>
+        <div id="submitArea" align="left" class="noborder">
+          <input type="button" name="okbutton" id="okbutton" l10n-val-tag="casPopupSend">
+          <input type="button" name="ngbutton" id="ngbutton" l10n-val-tag="casPopupCancel">
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

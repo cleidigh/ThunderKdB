@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Check and Send Options</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="options.css">
+  <script src="../scripts/l10n.js" defer></script>
+  <script src="../scripts/options.js" defer></script>
+</head>
+
+<body class="option-page">
+  <form name="cas_form">
+    <!-- Identity and config mode -->
+    <h3>
+      <span l10n-tag="casOptOptionsFor"></span>
+      <select name="identity" id="identity">
+        <option value="common" l10n-tag="casOptCommon"></option>
+      </select>
+    </h3>
+    <div class="indent">
+      <div id="casEnableCommon">
+        <input type="radio" name="casEnable" id="casEnable0" value="0" checked>
+        <label l10n-tag="casOptUseCommon" for="casEnable0"></label>
+        <br>
+      </div>
+      <input type="radio" name="casEnable" id="casEnable1" value="1">
+      <label l10n-tag="casOptConfigId" for="casEnable1"></label>
+      <br>
+      <input type="radio" name="casEnable" id="casEnable2" value="2">
+      <label l10n-tag="casOptAllDisabled" for="casEnable2"></label><br>
+    </div>
+
+    <!-- Config area -->
+    <div id="configArea">
+      <hr color="silver">
+      <h3 l10n-tag="casOptRecType"></h3>
+      <span l10n-tag="casOptCheckBlank"></span>
+      <br>
+      <div class="indent">
+        <input type="checkbox" name="recType" id="needTo">
+        <label l10n-tag="casOptTo" for="needTo"></label>
+        <input type="checkbox" name="recType" id="needCc">
+        <label l10n-tag="casOptCc" for="needCc"></label>
+        <input type="checkbox" name="recType" id="needBcc">
+        <label l10n-tag="casOptBcc" for="needBcc"></label>
+        <input type="checkbox" name="recType" id="needReplyTo">
+        <label l10n-tag="casOptReplyTo" for="needReplyTo"></label>
+      </div>
+      <p>
+        <span l10n-tag="casOptTooManyToCc"></span>
+        <input type="number" name="recTypeNum" min="0" value="0" style="width: 3em" id="limitToCc">
+        <span l10n-tag="casOptTooManyToCc2"></span>
+      </p>
+      <h3 l10n-tag="casOptRecAddr"></h3>
+      <p>
+        <input type="radio" name="addrCheckMode" id="addrCheckMode0" value="0">
+        <label l10n-tag="casOptAddrPopupAll" for="addrCheckMode0"></label>
+      </p>
+      <input type="radio" name="addrCheckMode" id="addrCheckMode1" value="1">
+      <label l10n-tag="casOptAddrListCheck" for="addrCheckMode1"></label>
+      <br>
+      <div class="indent">
+        <input type="checkbox" id="addrCheckAbEnable">
+        <label l10n-tag="casOptAddrCheckAbEnable" for="addrCheckAbEnable"></label>
+        <select id="abWhite">
+          <option value="false" l10n-tag="casOptFound"></option>
+          <option value="true" l10n-tag="casOptNotFound"></option>
+        </select>
+        <label l10n-tag="casOptAddrCheckAbEnable2" for="addrCheckAbEnable"></label>
+        <br>
+        <div class="indent">
+          <div class="border" style="width: 411px" id="addrCheckAbs">
+          </div>
+        </div>
+        <br>
+        <input type="checkbox" id="addrCheckListEnable">
+        <label l10n-tag="casOptAddrCheckListEnable" for="addrCheckListEnable"></label>
+        <select id="listWhite">
+          <option value="false" l10n-tag="casOptFound"></option>
+          <option value="true" l10n-tag="casOptNotFound"></option>
+        </select>
+        <label l10n-tag="casOptAddrCheckListEnable2" for="addrCheckListEnable"></label>
+        <br>
+        <select size="4" style="width: 420px" class="indent" id="addrList">
+        </select>
+        <br>
+        <input type="text" style="width: 310px" class="indent" l10n-ph-tag="casOptInputAddr" id="addrListInput">
+        <input type="button" l10n-val-tag="casOptAdd" id="addrListAdd">
+        <input type="button" l10n-val-tag="casOptDel" id="addrListDel">
+        <br><br>
+        <input type="checkbox" id="addrCheckExcludeBcc">
+        <label l10n-tag="casOptExBcc" for="addrCheckExcludeBcc"></label>
+        <br>
+        <input type="checkbox" id="addrCheckBoth">
+        <label l10n-tag="casOptAddrCheckBoth" for="addrCheckBoth"></label>
+      </div>
+      <p>
+        <input type="radio" name="addrCheckMode" id="addrCheckMode2" value="2">
+        <label l10n-tag="casOptNotPopup" for="addrCheckMode2"></label>
+      </p>
+      <p>
+        <input type="checkbox" id="checkDup">
+        <label l10n-tag="casOptRmDup" for="checkDup"></label>
+        <br>
+        <input type="checkbox" class="indent" id="dupSuppressWarn">
+        <label l10n-tag="casOptRmDupNoWarn" for="dupSuppressWarn"></label>
+      </p>
+      <h3 l10n-tag="casOptRecName"></h3>
+      <p>
+        <input type="radio" name="recNameMode" id="recNameMode0" value="0">
+        <label l10n-tag="casOptCorrectName" for="recNameMode0"></label>
+        <br>
+        <input type="checkbox" class="indent" id="recNameRemoveNotInAb">
+        <label l10n-tag="casOptCorrectNameRemove" for="recNameRemoveNotInAb"></label>
+      </p>
+      <label class="indent" l10n-tag="casOptAddressbooks"></label><br>
+      <div class="indent">
+        <div class="border" style="width: 420px" id="recNameAbs">
+        </div>
+      </div>
+      <p>
+        <input type="radio" name="recNameMode" id="recNameMode1" value="1">
+        <label l10n-tag="casOptRemoveName" for="recNameMode1"></label>
+      </p>
+      <p>
+        <input type="radio" name="recNameMode" id="recNameMode2" value="2">
+        <label l10n-tag="casOptCorrectNothingDone" for="recNameMode2"></label>
+      </p>
+      <p>
+        <input type="checkbox" id="recNameSuppressWarn">
+        <label l10n-tag="casOptCorrectNameNoWarn" for="recNameSuppressWarn"></label>
+      </p>
+
+      <h3 l10n-tag="casOptIdentity"></h3>
+      <input type="checkbox" id="showIdentity">
+      <label l10n-tag="casOptPopupIdentity" for="showIdentity"></label>
+
+      <h3 l10n-tag="casOptAttach"></h3>
+      <p>
+        <span l10n-tag="casOptAttachSize"></span>
+        <input type="number" id="attachSizeLimit" min="0" value="0" style="width: 3em">
+        <span l10n-tag="casOptAttachSize2"></span>
+      </p>
+      <p>
+        <input type="checkbox" id="attachExtCheckEnable">
+        <label l10n-tag="casOptAttachExt" for="attachExtCheckEnable"></label>
+        <select id="attachBlacklistCheck">
+          <option value="true" l10n-tag="casOptIs"></option>
+          <option value="false" l10n-tag="casOptIsNot"></option>
+        </select>
+        <label l10n-tag="casOptAttachExt2" for="attachExtCheckEnable"></label>
+        <br>
+        <select size="4" style="width: 420px" class="indent" id="attachExts">
+        </select>
+        <br>
+        <input type="text" style="width: 310px" class="indent" id="attachExtsInput" l10n-ph-tag="casOptInputExt">
+        <input type="button" l10n-val-tag="casOptAdd" id="attachExtsAdd">
+        <input type="button" l10n-val-tag="casOptDel" id="attachExtsDel">
+        <br>
+      </p>
+      <h3 l10n-tag="casOptWords"></h3>
+      <input type="checkbox" id="wordNGCheckEnable">
+      <label l10n-tag="casOptWordsCheck" for="wordNGCheckEnable"></label>
+      <br>
+      <div class="indent">
+        <select size="4" style="width: 420px" id="ngWords">
+        </select>
+        <br>
+        <input type="text" style="width: 310px" l10n-ph-tag="casOptInputWord" id="ngWordsInput">
+        <input type="button" l10n-val-tag="casOptAdd" id="ngWordsAdd">
+        <input type="button" l10n-val-tag="casOptDel" id="ngWordsDel">
+        <br>
+      </div>
+      <br>
+      <input type="checkbox" id="wordMustCheckEnable">
+      <label l10n-tag="casOptWordsCheckMust" for="wordMustCheckEnable"></label>
+      <br>
+      <div class="indent">
+        <select size="4" style="width: 420px" id="mustWords">
+        </select>
+        <br>
+        <input type="text" style="width: 310px" l10n-ph-tag="casOptInputWord" id="mustWordsInput">
+        <input type="button" l10n-val-tag="casOptAdd" id="mustWordsAdd">
+        <input type="button" l10n-val-tag="casOptDel" id="mustWordsDel">
+      </div>
+      <p>
+        <input type="checkbox" id="wordIsRegExp">
+        <label l10n-tag="casOptRegExp" for="wordIsRegExp"></label>
+      </p>
+      <p>
+        <input type="checkbox" id="wordCaseSense">
+        <label l10n-tag="casOptCaseSense" for="wordCaseSense"></label>
+      </p>
+      <p>
+        <input type="checkbox" id="wordIgnoreQuote">
+        <label l10n-tag="casOptIgnoreQuote" for="wordIgnoreQuote"></label>
+      </p>
+      <p>
+        <label l10n-tag="casOptSearchIn"></label>
+        <br>
+        <input class="indent" type="checkbox" id="wordCheckSubject">
+        <label l10n-tag="casOptSubject" for="wordCheckSubject"></label>
+        <input type="checkbox" id="wordCheckBody">
+        <label l10n-tag="casOptBody" for="wordCheckBody"></label>
+      </p>
+
+      <!-- Day/Date check -->
+      <h3 l10n-tag="casOptDayDate"></h3>
+      <p>
+        <input type="checkbox" id="checkWrongDay">
+        <label l10n-tag="casOptWrongDay" for="checkWrongDay"></label>
+      </p>
+      <p>
+        <label l10n-tag="casOptNoteDay"></label>
+        <br>
+        <input name="noteDay" class="indent" type="checkbox" id="noteDay0">
+        <label l10n-tag="casShortDay0" for="noteDay0"></label>
+        <input name="noteDay" type="checkbox" id="noteDay1">
+        <label l10n-tag="casShortDay1" for="noteDay1"></label>
+        <input name="noteDay" type="checkbox" id="noteDay2">
+        <label l10n-tag="casShortDay2" for="noteDay2"></label>
+        <input name="noteDay" type="checkbox" id="noteDay3">
+        <label l10n-tag="casShortDay3" for="noteDay3"></label>
+        <input name="noteDay" type="checkbox" id="noteDay4">
+        <label l10n-tag="casShortDay4" for="noteDay4"></label>
+        <input name="noteDay" type="checkbox" id="noteDay5">
+        <label l10n-tag="casShortDay5" for="noteDay5"></label>
+        <input name="noteDay" type="checkbox" id="noteDay6">
+        <label l10n-tag="casShortDay6" for="noteDay6"></label>
+      </p>
+      <p>
+        <input type="checkbox" id="checkInvalidDate">
+        <label l10n-tag="casOptInvalidDate" for="checkInvalidDate"></label>
+      </p>
+      <br>
+      <label l10n-tag="casOptDatePattern"></label>
+      <div class="indent">
+        <select size="4" style="width: 420px" id="dayDate">
+        </select>
+        <br>
+        <input type="text" style="width: 170px" l10n-ph-tag="casOptDatePatternInput" id="dayDateInput">
+        <label l10n-tag="casOptMonth"></label>
+        <select id="dayDateMonth">
+          <option value="1" selected>$1</option>
+          <option value="2">$2</option>
+          <option value="3">$3</option>
+        </select>
+        <label l10n-tag="casOptDate"></label>
+        <select id="dayDateDate">
+          <option value="1">$1</option>
+          <option value="2" selected>$2</option>
+          <option value="3">$3</option>
+        </select>
+        <label l10n-tag="casOptDay"></label>
+        <select id="dayDateDay">
+          <option value="1">$1</option>
+          <option value="2">$2</option>
+          <option value="3" selected>$3</option>
+          <option value="-1">-</option>
+        </select>
+        <br>
+        <div align="right" style="width: 420px">
+          <input type="button" l10n-val-tag="casOptAdd" id="dayDateAdd">
+          <input type="button" l10n-val-tag="casOptUpdate" id="dayDateUpdate">
+          <input type="button" l10n-val-tag="casOptDel" id="dayDateDel">
+        </div>
+      </div>
+      <p>
+        <label l10n-tag="casOptMonthDef"></label>&nbsp;&nbsp;<strong id="monthDefErr" l10n-tag="casOptInvalidJson" class="box-collapse"></strong>
+        <br>
+        <textarea class="indent" id="monthDef" rows="5" cols="40"></textarea>
+      </p>
+      <p>
+        <label l10n-tag="casOptDateDef"></label>&nbsp;&nbsp;<strong id="dateDefErr" l10n-tag="casOptInvalidJson" class="box-collapse"></strong>
+        <br>
+        <textarea class="indent" id="dateDef" rows="5" cols="40"></textarea>
+      </p>
+      <p>
+        <label l10n-tag="casOptDayDef"></label>&nbsp;&nbsp;<strong id="dayDefErr" l10n-tag="casOptInvalidJson" class="box-collapse"></strong>
+        <br>
+        <textarea class="indent" id="dayDef" rows="5" cols="40"></textarea>
+      </p>
+    </div>
+  </form>
+</body>
+
+</html>

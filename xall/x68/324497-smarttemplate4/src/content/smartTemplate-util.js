@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.11.1",
+	HARDCODED_CURRENTVERSION : "2.11.2",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -321,6 +321,7 @@ SmartTemplate4.Util = {
       
       if (document) {
         let tabmail = document.getElementById("tabmail");
+        if (!tabmail) return; // we are not in a main window
         util.logDebug("adding tablistener for tabmail.");
         // tabmail.registerTabMonitor()
         let tabContainer = tabmail.tabContainer || document.getElementById('tabmail-tabs');
@@ -1297,10 +1298,23 @@ SmartTemplate4.Util = {
         while ("\\\"\'\{\[\(\)".indexOf(word.charAt(findw))>=0 && findw<word.length) {
           findw++; // skip these characters, so we hit alphabetics again
         }
+        
+        
         // Titlecase and re-append to Array
         words[i] = word.substring(0, findw)
                        .concat(word.charAt(findw).toLocaleUpperCase())
                        .concat(word.substring(findw + 1).toLocaleLowerCase());
+        // deal with composite names, e.g. Klaus-Dieter
+        let compositeName = words[i].split('-');
+        if (compositeName.length>1) {
+          let cname = '';
+          for (let m=0; m<compositeName.length; m++) {
+            if (m>0)
+              cname += '-';
+            cname += compositeName[m].charAt(0).toLocaleUpperCase() + compositeName[m].substring(1);
+          }
+          words[i] = cname;
+        }
       }
       str = words.join(' ');
       return str;
@@ -2937,7 +2951,7 @@ SmartTemplate4.Util.firstRun =
 			setTimeout(
 			  function() {
 					SmartTemplate4.fileTemplates.initMenus();
-				}, 4500
+				}, 3000
 			);
       
       util.initTabListener(); // need this for initialising fileTemplate menus in single message window

@@ -1,21 +1,43 @@
 {
   "manifest_version": 2,
-  "name": "Check and Send",
-  "description": "Confirm before sending mail.",
-  "version": "1.1.1",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.0.10",
   "author": "H.Ogi",
-  "homepage_url": "http://hogi.sakura.ne.jp/en/",
-  "legacy": {
-  	"type": "xul",
-    "options" : {
-      "page" : "chrome://chksend/content/settings.xul",
-      "open_in_tab" : false
-    }
+  "homepage_url": "__MSG_extensionHomepage_url__",
+
+  "compose_action": {
+    "default_popup": "html/popup.html",
+    "default_title": "__MSG_extensionDefault_title__",
+    "default_icon": "images/question.png"
   },
+
+  "permissions": [
+    "addressBooks",
+    "accountsRead",
+    "compose",
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+
+  "background": {
+    "scripts": [
+        "scripts/background.js"
+      ]
+  },
+
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
+  },
+
+  "default_locale": "en",
+  
   "applications": {
     "gecko": {
       "id": "{1B0ADFEC-846C-401D-BA54-7842CBD485D4}",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   }
 }

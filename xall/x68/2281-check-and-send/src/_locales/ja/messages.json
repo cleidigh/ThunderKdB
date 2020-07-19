@@ -1,0 +1,423 @@
+{
+  //manifest.json
+  "extensionName": {
+    "message": "Check and Send"
+  },
+  "extensionDescription": {
+    "message": "メール送信前に確認ポップアップを表示します。"
+  },
+  "extensionHomepage_url": {
+    "message": "https://hogi.sakura.ne.jp/ja/"
+  },
+  "extensionDefault_title": {
+    "message": "チェック"
+  },
+  
+  //popup
+  "casPopupChecking": {
+    "message": "チェック中 ..."
+  },
+  "casPopupNoError": {
+    "message": "エラーは見つかりませんでした。送信してもよろしいですか？"
+  },
+  "casPopupIdentity": {
+    "message": "差出人"
+  },
+  "casPopupRecipients": {
+    "message": "宛先"
+  },
+  "casPopupEmptyTo": {
+    "message": "Toが空欄です。"
+  },
+  "casPopupEmptyCc": {
+    "message": "Ccが空欄です。"
+  },
+  "casPopupEmptyBcc": {
+    "message": "Bccが空欄です。"
+  },
+  "casPopupEmptyReplyTo": {
+    "message": "Reply-Toが空欄です。"
+  },
+  "casPopupTooManyToCc": {
+    "message": "To/Ccが多いですが、Bccがありません。"
+  },
+  "casPopupDupTo": {
+    "message": "以下の重複したToアドレスはマージされます："
+  },
+  "casPopupDupCc": {
+    "message": "以下の重複したCcアドレスはマージされます："
+  },
+  "casPopupDupBcc": {
+    "message": "以下の重複したBccアドレスはマージされます："
+  },
+  "casPopupDupReplyTo": {
+    "message": "以下の重複したReply-Toアドレスはマージされます："
+  },
+  "casPopupAddrCheckTo": {
+    "message": "以下の宛先がToにみつかりました："
+  },
+  "casPopupAddrCheckCc": {
+    "message": "以下の宛先がCcにみつかりました："
+  },
+  "casPopupAddrCheckBcc": {
+    "message": "以下の宛先がBccにみつかりました："
+  },
+  "casPopupAddrCheckReplyTo": {
+    "message": "以下の宛先がReply-Toにみつかりました："
+  },
+  "casPopupAttachments": {
+    "message": "添付ファイル"
+  },
+  "casPopupAttachSize": {
+    "message": "ファイルサイズが制限を超えています： % MB."
+  },
+  "casPopupAttachList": {
+    "message": "以下のファイルが指定した条件にマッチしました:"
+  },
+  "casPopupKeywords": {
+    "message": "キーワード"
+  },
+  "casPopupSubject": {
+    "message": "件名"
+  },
+  "casPopupNgWordsSubject": {
+    "message": "以下の単語が件名にみつかりました："
+  },
+  "casPopupMustWordsSubject": {
+    "message": "以下の単語が件名にみつかりませんでした："
+  },
+  "casPopupNgWordsBody": {
+    "message": "以下の単語が本文にみつかりました："
+  },
+  "casPopupMustWordsBody": {
+    "message": "以下の単語が本文にみつかりませんでした："
+  },
+  "casPopupRecName": {
+    "message": "宛名"
+  },
+  "casPopupToRecName": {
+    "message": "Toは以下のように修正されます："
+  },
+  "casPopupCcRecName": {
+    "message": "Ccは以下のように修正されます："
+  },
+  "casPopupReplyToRecName": {
+    "message": "Reply-Toは以下のように修正されます："
+  },
+  "casPopupDayDate": {
+    "message": "曜日/日付"
+  },
+  "casPopupWrongDay": {
+    "message": "以下の日付と曜日が一致していません："
+  },
+  "casPopupNoteDay": {
+    "message": "以下の日付は指定された曜日です："
+  },
+  "casPopupInvalidDate": {
+    "message": "以下の日付は正しくありません："
+  },
+  "casPopupSend": {
+    "message": "送信"
+  },
+  "casPopupCancel": {
+    "message": "キャンセル"
+  },
+  
+  //options
+  "casOptOptionsFor": {
+    "message": "設定する差出人："
+  },
+  "casOptCommon": {
+    "message": "共通"
+  },
+  "casOptUseCommon": {
+    "message": "共通設定を使う"
+  },
+  "casOptConfigId": {
+    "message": "差出人ごとに設定する"
+  },
+  "casOptAllDisabled": {
+    "message": "すべてのチェックを無効にする"
+  },
+  "casOptRecType": {
+    "message": "宛先の種類"
+  },
+  "casOptCheckBlank": {
+    "message": "以下が空欄だった場合に確認する："
+  },
+  "casOptTo": {
+    "message": "宛先"
+  },
+  "casOptCc": {
+    "message": "Cc"
+  },
+  "casOptBcc": {
+    "message": "Bcc"
+  },
+  "casOptReplyTo": {
+    "message": "Reply-To"
+  },
+  "casOptTooManyToCc": {
+    "message": "宛先/Ccが"
+  },
+  "casOptTooManyToCc2": {
+    "message": "個を超え、Bccがなかったら確認する"
+  },
+  "casOptRecAddr": {
+    "message": "宛先のアドレス"
+  },
+  "casOptAddrPopupAll": {
+    "message": "全てのアドレスをポップアップする"
+  },
+  "casOptAddrListCheck": {
+    "message": "リストに基づいてポップアップする"
+  },
+  "casOptAddrCheckAbEnable": {
+    "message": "アドレスがアドレス帳に"
+  },
+  "casOptAddrCheckAbEnable2": {
+    "message": "確認する："
+  },
+  "casOptFound": {
+    "message": "あったら"
+  },
+  "casOptNotFound": {
+    "message": "なかったら"
+  },
+  "casOptAllAb": {
+    "message": "すべてのアドレス帳"
+  },
+  "casOptAddrCheckListEnable": {
+    "message": "アドレスがリストに"
+  },
+  "casOptAddrCheckListEnable2": {
+    "message": "確認する："
+  },
+  "casOptInputAddr": {
+    "message": "アドレスかドメインを入力。ワイルドカード可。"
+  },
+  "casOptAdd": {
+    "message": "追加"
+  },
+  "casOptDel": {
+    "message": "削除"
+  },
+  "casOptExBcc": {
+    "message": "Bccを上記チェックから除外する"
+  },
+  "casOptAddrCheckBoth": {
+    "message": "上記チェックの両方にマッチしたアドレスのみポップアップする"
+  },
+  "casOptNotPopup": {
+    "message": "ポップアップしない"
+  },
+  "casOptRmDup": {
+    "message": "重複したアドレスを削除する"
+  },
+  "casOptRmDupNoWarn": {
+    "message": "削除前に確認しない"
+  },
+  "casOptRecName": {
+    "message": "宛名"
+  },
+  "casOptCorrectName": {
+    "message": "宛名をアドレス帳の宛名に修正する"
+  },
+  "casOptCorrectNameRemove": {
+    "message": "アドレス帳にない場合は宛名を削除する"
+  },
+  "casOptAddressbooks": {
+    "message": "アドレス帳："
+  },
+  "casOptRemoveName": {
+    "message": "宛名を削除する"
+  },
+  "casOptCorrectNothingDone": {
+    "message": "なにもしない"
+  },
+  "casOptCorrectNameNoWarn": {
+    "message": "修正前に確認しない"
+  },
+  "casOptIdentity": {
+    "message": "差出人"
+  },
+  "casOptPopupIdentity": {
+    "message": "差出人をポップアップする"
+  },
+  "casOptAttach": {
+    "message": "添付ファイル"
+  },
+  "casOptAttachSize": {
+    "message": "添付ファイルのサイズが"
+  },
+  "casOptAttachSize2": {
+    "message": "MBを超えたら確認する"
+  },
+  "casOptAttachExt": {
+    "message": "添付ファイルの拡張子が以下"
+  },
+  "casOptIs": {
+    "message": "だったら"
+  },
+  "casOptIsNot": {
+    "message": "でなかったら"
+  },
+  "casOptAttachExt2": {
+    "message": "確認する："
+  },
+  "casOptInputExt": {
+    "message": "拡張子を入力"
+  },
+  "casOptWords": {
+    "message": "単語"
+  },
+  "casOptWordsCheck": {
+    "message": "以下の単語がメール中にあったら確認する："
+  },
+  "casOptInputWord": {
+    "message": "単語を入力"
+  },
+  "casOptWordsCheckMust": {
+    "message": "以下の単語がメール中になかったら確認する："
+  },
+  "casOptRegExp": {
+    "message": "正規表現として解釈する"
+  },
+  "casOptCaseSense": {
+    "message": "大文字と小文字を区別する"
+  },
+  "casOptIgnoreQuote": {
+    "message": "引用と署名を検索対象から除外する"
+  },
+  "casOptSearchIn": {
+    "message": "以下を検索する："
+  },
+  "casOptSubject": {
+    "message": "件名"
+  },
+  "casOptBody": {
+    "message": "本文"
+  },
+  "casOptDayDate": {
+    "message": "曜日/日付"
+  },
+  "casOptWrongDay": {
+    "message": "曜日と日付の整合を確認する"
+  },
+  "casOptNoteDay": {
+    "message": "メッセージに以下の曜日が含まれていたら確認する"
+  },
+  "casOptInvalidDate": {
+    "message": "不正な日時をチェックする"
+  },
+  "casOptDatePattern": {
+    "message": "正規表現と後方参照："
+  },
+  "casOptDatePatternInput": {
+    "message": "正規表現を入力"
+  },
+  "casOptMonth": {
+    "message": "月:"
+  },
+  "casOptDate": {
+    "message": "日:"
+  },
+  "casOptDay": {
+    "message": "曜日:"
+  },
+  "casOptUpdate": {
+    "message": "更新"
+  },
+  "casOptMonthDef": {
+    "message": "月の定義："
+  },
+  "casOptDateDef": {
+    "message": "日の定義："
+  },
+  "casOptDayDef": {
+    "message": "曜日の定義："
+  },
+  "casOptInvalidJson": {
+    "message": "設定が正しくありません。元の設定に戻しました。"
+  },
+  
+  //common
+  "casFullDay0": {
+    "message": "日曜日"
+  },
+  "casFullDay1": {
+    "message": "月曜日"
+  },
+  "casFullDay2": {
+    "message": "火曜日"
+  },
+  "casFullDay3": {
+    "message": "水曜日"
+  },
+  "casFullDay4": {
+    "message": "木曜日"
+  },
+  "casFullDay5": {
+    "message": "金曜日"
+  },
+  "casFullDay6": {
+    "message": "土曜日"
+  },
+  "casShortDay0": {
+    "message": "日"
+  },
+  "casShortDay1": {
+    "message": "月"
+  },
+  "casShortDay2": {
+    "message": "火"
+  },
+  "casShortDay3": {
+    "message": "水"
+  },
+  "casShortDay4": {
+    "message": "木"
+  },
+  "casShortDay5": {
+    "message": "金"
+  },
+  "casShortDay6": {
+    "message": "土"
+  },
+  "casShortMonth0": {
+    "message": "Jan"
+  },
+  "casShortMonth1": {
+    "message": "Feb"
+  },
+  "casShortMonth2": {
+    "message": "Mar"
+  },
+  "casShortMonth3": {
+    "message": "Apr"
+  },
+  "casShortMonth4": {
+    "message": "May"
+  },
+  "casShortMonth5": {
+    "message": "Jun"
+  },
+  "casShortMonth6": {
+    "message": "Jul"
+  },
+  "casShortMonth7": {
+    "message": "Aug"
+  },
+  "casShortMonth8": {
+    "message": "Sep"
+  },
+  "casShortMonth9": {
+    "message": "Oct"
+  },
+  "casShortMonth10": {
+    "message": "Nov"
+  },
+  "casShortMonth11": {
+    "message": "Dec"
+  }
+}

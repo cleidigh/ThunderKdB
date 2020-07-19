@@ -1,0 +1,423 @@
+{
+  //manifest.json
+  "extensionName": {
+    "message": "Check and Send"
+  },
+  "extensionDescription": {
+    "message": "Confirm before sending mail."
+  },
+  "extensionHomepage_url": {
+    "message": "https://hogi.sakura.ne.jp/en/"
+  },
+  "extensionDefault_title": {
+    "message": "Check"
+  },
+  
+  //popup
+  "casPopupChecking": {
+    "message": "Checking message ..."
+  },
+  "casPopupNoError": {
+    "message": "No error was found. Are you sure you want to send the message?"
+  },
+  "casPopupIdentity": {
+    "message": "Identity"
+  },
+  "casPopupRecipients": {
+    "message": "Recipients"
+  },
+  "casPopupEmptyTo": {
+    "message": "To field is empty."
+  },
+  "casPopupEmptyCc": {
+    "message": "Cc field is empty."
+  },
+  "casPopupEmptyBcc": {
+    "message": "Bcc field is empty."
+  },
+  "casPopupEmptyReplyTo": {
+    "message": "Reply-To field is empty."
+  },
+  "casPopupTooManyToCc": {
+    "message": "Too many To/Cc without Bcc."
+  },
+  "casPopupDupTo": {
+    "message": "Following duplicated recipients in To field will be merged:"
+  },
+  "casPopupDupCc": {
+    "message": "Following duplicated recipients in Cc field will be merged:"
+  },
+  "casPopupDupBcc": {
+    "message": "Following duplicated recipients in Bcc field will be merged:"
+  },
+  "casPopupDupReplyTo": {
+    "message": "Following duplicated recipients in Reply-To field will be merged:"
+  },
+  "casPopupAddrCheckTo": {
+    "message": "Following recipients are in To field:"
+  },
+  "casPopupAddrCheckCc": {
+    "message": "Following recipients are in Cc field:"
+  },
+  "casPopupAddrCheckBcc": {
+    "message": "Following recipients are in Bcc field:"
+  },
+  "casPopupAddrCheckReplyTo": {
+    "message": "Following recipients are in Reply-To field:"
+  },
+  "casPopupAttachments": {
+    "message": "Attachments"
+  },
+  "casPopupAttachSize": {
+    "message": "Total size exceeds the limit: % MB."
+  },
+  "casPopupAttachList": {
+    "message": "The following files match with predefined condition:"
+  },
+  "casPopupKeywords": {
+    "message": "Keywords"
+  },
+  "casPopupSubject": {
+    "message": "Subject"
+  },
+  "casPopupNgWordsSubject": {
+    "message": "Following words were found in the subject:"
+  },
+  "casPopupMustWordsSubject": {
+    "message": "Following words were NOT found in the subject:"
+  },
+  "casPopupNgWordsBody": {
+    "message": "Following words were found in the message:"
+  },
+  "casPopupMustWordsBody": {
+    "message": "Following words were NOT found in the message:"
+  },
+  "casPopupRecName": {
+    "message": "Recipient name"
+  },
+  "casPopupToRecName": {
+    "message": "To field will be corrected as follows:"
+  },
+  "casPopupCcRecName": {
+    "message": "Cc field will be corrected as follows:"
+  },
+  "casPopupReplyToRecName": {
+    "message": "Reply-To field will be corrected as follows:"
+  },
+  "casPopupDayDate": {
+    "message": "Day/Date"
+  },
+  "casPopupWrongDay": {
+    "message": "Following date and day are not consistent:"
+  },
+  "casPopupNoteDay": {
+    "message": "The following date is the predefined day:"
+  },
+  "casPopupInvalidDate": {
+    "message": "Following date is invalid:"
+  },
+  "casPopupSend": {
+    "message": "Send"
+  },
+  "casPopupCancel": {
+    "message": "Cancel"
+  },
+  
+  //options
+  "casOptOptionsFor": {
+    "message": "Options for:"
+  },
+  "casOptCommon": {
+    "message": "Common"
+  },
+  "casOptUseCommon": {
+    "message": "Use Common settings"
+  },
+  "casOptConfigId": {
+    "message": "Configure for this identity"
+  },
+  "casOptAllDisabled": {
+    "message": "All checks are disabled"
+  },
+  "casOptRecType": {
+    "message": "Recipient Type"
+  },
+  "casOptCheckBlank": {
+    "message": "Confirm if the following fields are blank:"
+  },
+  "casOptTo": {
+    "message": "To"
+  },
+  "casOptCc": {
+    "message": "Cc"
+  },
+  "casOptBcc": {
+    "message": "Bcc"
+  },
+  "casOptReplyTo": {
+    "message": "Reply-To"
+  },
+  "casOptTooManyToCc": {
+    "message": "Confirm if the number of To/Cc exceed"
+  },
+  "casOptTooManyToCc2": {
+    "message": "without Bcc"
+  },
+  "casOptRecAddr": {
+    "message": "Recipient Address"
+  },
+  "casOptAddrPopupAll": {
+    "message": "Popup all recipients"
+  },
+  "casOptAddrListCheck": {
+    "message": "Popup based on lists"
+  },
+  "casOptAddrCheckAbEnable": {
+    "message": "Confirm if the address is"
+  },
+  "casOptAddrCheckAbEnable2": {
+    "message": "in the address book:"
+  },
+  "casOptFound": {
+    "message": "Found"
+  },
+  "casOptNotFound": {
+    "message": "Not Found"
+  },
+  "casOptAllAb": {
+    "message": "All address books"
+  },
+  "casOptAddrCheckListEnable": {
+    "message": "Confirm if the address is"
+  },
+  "casOptAddrCheckListEnable2": {
+    "message": "in the list:"
+  },
+  "casOptInputAddr": {
+    "message": "Input an address or domain. Wild card can be used."
+  },
+  "casOptAdd": {
+    "message": "Add"
+  },
+  "casOptDel": {
+    "message": "Delete"
+  },
+  "casOptExBcc": {
+    "message": "Exclude Bcc from the checks above"
+  },
+  "casOptAddrCheckBoth": {
+    "message": "Popup address only if it matched with the both checks above"
+  },
+  "casOptNotPopup": {
+    "message": "Not popup"
+  },
+  "casOptRmDup": {
+    "message": "Remove duplicated address found in a field"
+  },
+  "casOptRmDupNoWarn": {
+    "message": "Do not confirm before the removal"
+  },
+  "casOptRecName": {
+    "message": "Recipient Name"
+  },
+  "casOptCorrectName": {
+    "message": "Correct recipient names if they differ from ones in an address book"
+  },
+  "casOptCorrectNameRemove": {
+    "message": "Remove a recipient name if it is not found in an address book"
+  },
+  "casOptAddressbooks": {
+    "message": "Address books:"
+  },
+  "casOptRemoveName": {
+    "message": "Remove recipient names"
+  },
+  "casOptCorrectNothingDone": {
+    "message": "Nothing is done"
+  },
+  "casOptCorrectNameNoWarn": {
+    "message": "Do not confirm before the correction"
+  },
+  "casOptIdentity": {
+    "message": "Identity"
+  },
+  "casOptPopupIdentity": {
+    "message": "Popup identity"
+  },
+  "casOptAttach": {
+    "message": "Attachments"
+  },
+  "casOptAttachSize": {
+    "message": "Confirm if the size of attachments exceeds"
+  },
+  "casOptAttachSize2": {
+    "message": "MB"
+  },
+  "casOptAttachExt": {
+    "message": "Confirm if the extension of the attachment"
+  },
+  "casOptIs": {
+    "message": "Is"
+  },
+  "casOptIsNot": {
+    "message": "Is Not"
+  },
+  "casOptAttachExt2": {
+    "message": "one of the following:"
+  },
+  "casOptInputExt": {
+    "message": "Input an extension"
+  },
+  "casOptWords": {
+    "message": "Words"
+  },
+  "casOptWordsCheck": {
+    "message": "Confirm if the following words appear in the message:"
+  },
+  "casOptInputWord": {
+    "message": "Input a word"
+  },
+  "casOptWordsCheckMust": {
+    "message": "Confirm if the following words DO NOT appear in the message:"
+  },
+  "casOptRegExp": {
+    "message": "Interpret the queries as regular expressions"
+  },
+  "casOptCaseSense": {
+    "message": "Search in a case-sensitive manner"
+  },
+  "casOptIgnoreQuote": {
+    "message": "Ignore the occurrences in quoted text and signature"
+  },
+  "casOptSearchIn": {
+    "message": "Search in:"
+  },
+  "casOptSubject": {
+    "message": "Subject"
+  },
+  "casOptBody": {
+    "message": "Message body"
+  },
+  "casOptDayDate": {
+    "message": "Day/Date"
+  },
+  "casOptWrongDay": {
+    "message": "Check day/date consistency"
+  },
+  "casOptNoteDay": {
+    "message": "Confirm if a message includes the following day"
+  },
+  "casOptInvalidDate": {
+    "message": "Check invalid date"
+  },
+  "casOptDatePattern": {
+    "message": "Regular expression pattern and back reference:"
+  },
+  "casOptDatePatternInput": {
+    "message": "Input RegExp pattern"
+  },
+  "casOptMonth": {
+    "message": "Month:"
+  },
+  "casOptDate": {
+    "message": "Date:"
+  },
+  "casOptDay": {
+    "message": "Day:"
+  },
+  "casOptUpdate": {
+    "message": "Update"
+  },
+  "casOptMonthDef": {
+    "message": "Month definition:"
+  },
+  "casOptDateDef": {
+    "message": "Date definition:"
+  },
+  "casOptDayDef": {
+    "message": "Day definition:"
+  },
+  "casOptInvalidJson": {
+    "message": "Invalid configuration. Rollback."
+  },
+  
+  //common
+  "casFullDay0": {
+    "message": "Sunday"
+  },
+  "casFullDay1": {
+    "message": "Monday"
+  },
+  "casFullDay2": {
+    "message": "Tuesday"
+  },
+  "casFullDay3": {
+    "message": "Wednesday"
+  },
+  "casFullDay4": {
+    "message": "Thursday"
+  },
+  "casFullDay5": {
+    "message": "Friday"
+  },
+  "casFullDay6": {
+    "message": "Saturday"
+  },
+  "casShortDay0": {
+    "message": "Sun"
+  },
+  "casShortDay1": {
+    "message": "Mon"
+  },
+  "casShortDay2": {
+    "message": "Tue"
+  },
+  "casShortDay3": {
+    "message": "Wed"
+  },
+  "casShortDay4": {
+    "message": "Thu"
+  },
+  "casShortDay5": {
+    "message": "Fri"
+  },
+  "casShortDay6": {
+    "message": "Sat"
+  },
+  "casShortMonth0": {
+    "message": "Jan"
+  },
+  "casShortMonth1": {
+    "message": "Feb"
+  },
+  "casShortMonth2": {
+    "message": "Mar"
+  },
+  "casShortMonth3": {
+    "message": "Apr"
+  },
+  "casShortMonth4": {
+    "message": "May"
+  },
+  "casShortMonth5": {
+    "message": "Jun"
+  },
+  "casShortMonth6": {
+    "message": "Jul"
+  },
+  "casShortMonth7": {
+    "message": "Aug"
+  },
+  "casShortMonth8": {
+    "message": "Sep"
+  },
+  "casShortMonth9": {
+    "message": "Oct"
+  },
+  "casShortMonth10": {
+    "message": "Nov"
+  },
+  "casShortMonth11": {
+    "message": "Dec"
+  }
+}
