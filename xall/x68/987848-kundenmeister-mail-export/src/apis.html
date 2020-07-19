@@ -31,23 +31,26 @@
             width: 300px;
         }
 
-        .email-list {
+        .list {
             list-style: none;
-            text-align: left;
-            padding: 0px;
-            border: 1px solid #393939;
+            padding: 15px;
             margin: 0px;
-            width: 503px;
-            max-height: 300px;
-            overflow: auto;
+            width: 480px;
         }
 
-        .custom-email-list-item {
+        .list-item {
             padding: 10px 10px;
-            width: 286px;
+            width: 300px;
             cursor: pointer;
             color: #393939;
             display: inline-block;
+        }
+
+        .custom-email-list-item {
+        }
+
+        .custom-project-list-item {
+
         }
 
         .company-text {
@@ -58,6 +61,7 @@
 
         .name-text {
             font-size: 15px;
+            word-break: break-word;
         }
 
         .email-text {
@@ -71,51 +75,159 @@
         }
 
         .input-search-element {
-            width: 500px;
+            width: 700px;
             height: 40px;
             font-size: 14px;
         }
 
         .btn {
-            padding: 10px 30px;
+            padding: 5px;
             font-size: 14px;
             color: #fff;
             display: block;
-            background-color: #000;
+            border: 1px solid #393939 !important;
+            background-color: #393939;
         }
 
         .email-btn {
             background-color: #428bca !important;
             border: 1px solid #428bca !important;
-            padding: 10px 23px !important;
+            padding: 5px 17px !important;
             margin: 5px 0px;
         }
 
         .comment-btn {
             background-color: #ffb752 !important;
             border: 1px solid #ffb752 !important;
-            padding: 10px !important;
             margin: 5px 0px;
         }
+
+        .project-comment-btn {
+            background-color: #ffb752 !important;
+            border: 1px solid #ffb752 !important;
+            margin: 5px 0px;
+        }
+
+        .opportunity-comment-btn {
+            background-color: #ffb752 !important;
+            border: 1px solid #ffb752 !important;
+            margin: 5px 0px;
+        }
+
 
         .save-actions {
             text-align: center;
             display: inline-block;
+            /*    vertical-align: super;*/
         }
 
         li {
-            border-bottom: 1px solid #393939;
+            border: 1px solid #e4e6e9;
             max-height: 140px;
+        }
+
+        .item-label {
+            display: inline-block;
+            padding: 45px 10px;
+            vertical-align: top;
+            width: 100px;
+            text-align: right;
+        }
+
+        .item-list-container {
+            display: inline-block;
+            margin: 20px 0px;
+            border-left: 2px solid;
+        }
+
+        .item-count {
+            font-size: 12px;
+            color: rgb(43, 125, 188);
+        }
+
+        .contact-list-container {
+            border-color: #ECCB71 !important;
+        }
+
+        .project-list-container {
+            border-color: #E05656 !important;
+        }
+
+        .opportunity-list-container {
+            border-color: #DD56C0 !important;
+        }
+
+        .response-container {
+            /*    width: 700px;*/
+            border: solid 1px rgb(229, 229, 229);
+            border-bottom: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            max-height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 10px;
+        }
+
+        .response-categories {
+            border-bottom: solid 1px rgb(200, 200, 200);
+        }
+
+        .pagination {
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        .pagination-container {
+            text-align: right;
+        }
+
+        .prev {
+            color: #E05656 !important;
+        }
+
+        .next {
+            color: #428bca !important;
+        }
+
+        .loader {
+            width: 100%;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .loader-icon {
+            margin: 25% 40%;
+            width: 15%;
+        }
+
+        .version-container {
+            position: fixed;
+            bottom: 2px;
+            left: 2px;
+            background-color: #000;
+            color: #fff;
+            padding: 2px
+        }
+
+        .logout-container {
+            display: block;
+            margin: 15px 0px 15px 650px;
         }
     </style>
 
 </head>
 
 <body>
+
+<!-- Autentication panel starts-->
 <div id="login_form" style="display:none;">
     <div class="container">
         <div class="item-container">
-            <img src="icons/Kundenmeister-typo-black.svg" class="logo">
+            <img src="icons/Kundenmeister-typo-black.svg" class="logo" alt="Logo">
         </div>
         <div class="item-container">
             <div class="label-div">
@@ -137,128 +249,777 @@
             <input type="checkbox" value="Remember me" id="remember_me" checked>Keep me logged in
         </div>
         <div class="item-container ">
-            <input type="button" name="submit" value="login" class="btn" id="login_btn"/>
+            <input type="button" name="submit" value="Login" class="btn" id="login_btn"/>
         </div>
     </div>
 </div>
-<div id="search_form"  style="display:none;">
+<!-- Autentication panel ends-->
+
+<!--Search panel starts -->
+<div id="search_form" style="display:none;">
     <div class="item-container">
         <div style="display:inline-block;">
+            <div class="logout-container">
+                <button value="Logout" class="btn" id="logout_btn">Logout</button>
+            </div>
             <div class="label-div">
-                Search for Customer
+                Search for Contact / Project / Opportunity
             </div>
             <div>
-                <input name="email" id="email" class="input-search-element" placeholder="Search with customer name.."/>
-                <!--<input type="button" value="send" class="btn" id="send"/>-->
+                <input name="email" id="email" class="input-search-element" placeholder=" Search"/>
             </div>
-            <div>
-                <ul class="email-list" id="email_list" style="display:none;">
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+            <div class="response-container" id="response_container" style="display:none;">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                <!--Contact list container starts-->
+                <div class="response-categories">
+                    <div class="item-label">
+                        <div>Contacts</div>
+                        <div class="item-count">hits : <span id="contact_count"></span></div>
+                    </div>
+                    <div class="item-list-container contact-list-container">
+                        <ul class="email-list list" id="email_list">
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
-                        </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
-                        </div>
-                    </li>
-                    <li style="display:none;">
-                        <div class="custom-email-list-item">
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
 
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="contact-list-item">
+                                <div class="custom-email-list-item list-item">
+
+                                </div>
+                                <div class="contact-actions save-actions">
+                                    <input type="button" value="Save as email" class="email-btn btn">
+                                    <input type="button" value="Save as comment" class="comment-btn btn">
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!--Contact list container ends-->
+
+                <!--Project list container starts-->
+                <div class="response-categories">
+                    <div class="item-label">
+                        <div>Projects</div>
+                        <div class="item-count">hits : <span id="project_count"></span></div>
+                    </div>
+                    <div class="item-list-container project-list-container">
+                        <ul class="project-list list" id="project_list">
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item  list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="project-list-item">
+                                <div class="custom-project-list-item list-item">
+
+                                </div>
+                                <div class="project-actions save-actions">
+                                    <input type="button" value="Save as comment" class="project-comment-btn btn">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pagination-container">
+                            <a href="javascript:void(0);" class="pagination prev" id="prev" style="display:none;">
+                                Prev </a>
+                            <a href="javascript:void(0);" class="pagination next" id="next" style="display:none;">
+                                Next </a>
                         </div>
-                        <div class="save-actions">
-                            <input type="button" value="Save as email" class="email-btn btn">
-                            <input type="button" value="Save as comment" class="comment-btn btn">
+                    </div>
+                </div>
+                <!--Project list container ends-->
+
+                <!--Opportunity list container starts-->
+                <div class="response-categories">
+                    <div class="item-label">
+                        <div>Opportunities</div>
+                        <div class="item-count">hits : <span id="opportunity_count"></span></div>
+                    </div>
+                    <div class="item-list-container opportunity-list-container">
+                        <ul class="opportunity-list list" id="opportunity_list">
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                            <li style="display:none;" class="opportunity-list-item">
+                                <div class="custom-opportunity-list-item  list-item">
+
+                                </div>
+                                <div class="opportunity-actions save-actions">
+                                    <input type="button" value="Save as comment" class="opportunity-comment-btn btn">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="pagination-container">
+                            <a href="javascript:void(0);" class="pagination prev" id="opportunity_prev"
+                               style="display:none;"> Prev </a>
+                            <a href="javascript:void(0);" class="pagination next" id="opportunity_next"
+                               style="display:none;"> Next </a>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+                <!--Opportunity list container ends-->
+
             </div>
         </div>
-        <div style="display:inline-block;margin: 25px;position:absolute">
-            <button value="Logout" class="btn" id="logout_btn">Logout</button>
+
+        <!--The below div is for converting html to text for export-->
+        <div id="body_text" style="display:none;">
+
         </div>
     </div>
+
+</div>
+<!--Search panel ends -->
+<!--loader-->
+<div class="loader" id="loader" style="display:none;">
+    <img src="icons/loader.gif" class="loader-icon" alt="loader">
+</div>
+<!--Version-->
+<div class="version-container">
+    v1.1.1
 </div>
 </body>
 

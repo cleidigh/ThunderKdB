@@ -1,5 +1,4 @@
 let windowDetails = {};
-const gettingStoredSettings = browser.storage.local.get();
 browser.browserAction.onClicked.addListener(async () => {
     checkWindow();
 });
@@ -7,6 +6,7 @@ onError = (e) => {
     console.error(e);
 }
 checkWindow = () => {
+
     if (windowDetails.id) {
         let updateInfo = {state: "normal", focused: true, drawAttention: true};
         let getInfo = {populate: false, windowTypes: ['app', 'normal', 'panel', 'popup']}
@@ -23,9 +23,9 @@ createPopup = () => {
     let createData = {
         type: "popup",
         url: "apis.html",
-        titlePreface: "KundenMeister Addon",
-        width: 500,
-        height: 500
+        titlePreface: "KundenMeister CRM Mail Export",
+        width: 800,
+        height: 800
     };
     browser.windows.create(createData).then(Window => {
         windowDetails = Window;
