@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!--
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+-->
+
+<!DOCTYPE window [
+<!ENTITY % enigMailDTD SYSTEM "chrome://enigmail/locale/enigmail.dtd" >
+%enigMailDTD;
+]>
+
+<overlay id="enigmailMessengerOverlay"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript"  src="chrome://enigmail/content/ui/enigmailMessengerOverlay.js"/>
+
+  <menupopup id="taskPopup">
+    <menuitem id="enigmailUpgradeMenu"
+        label="&enigmail.messenger.menulabel;"
+        insertbefore="devtoolsMenu"
+        oncommand="E2TBWindows.openUpdateInfo()"
+        collapsed="true"/>
+  </menupopup>
+</overlay>

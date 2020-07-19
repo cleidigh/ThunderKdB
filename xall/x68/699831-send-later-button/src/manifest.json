@@ -1,19 +1,58 @@
 {
   "manifest_version": 2,
-  "legacy": true,
+  "default_locale": "en",
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.5.2",
+  "version": "2.0b1",
   "author": "Alexander Ihrig",
   "homepage_url": "https://www.thunderbird-mail.de/lexicon/entry/154-sp%C3%A4ter-senden-schaltfl%C3%A4che/",
+  "icons": {
+    "16": "icons/sendlater.svg",
+    "24": "icons/sendlater.svg",
+    "32": "icons/sendlater.svg",
+    "48": "icons/sendlater.svg",
+    "64": "icons/sendlater.svg",
+    "96": "icons/sendlater.svg"
+  },
   "applications": {
-    "gecko": {
+      "gecko": {
       "id": "sendlaterbutton@thunderbird-mail.de",
-      "strict_min_version": "66.0"
+         "strict_min_version": "78.0a1"
+      }
+  },
+  "experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "myapi"
+          ]
+        ],
+        "script": "implementation.js"
+      }
     }
   },
-  "default_locale": "en",
-  "icons": {
-    "32": "icons/sendlater_32.png",
-    "64": "icons/sendlater_64.png"
-  }}
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "compose_action": {
+    "browser_style": true,
+    "default_title": "__MSG_buttonLabel__",
+    "default_icon": "icons/sendlater.svg",
+    "theme_icons": [{
+      "light": "icons/sendlater_light.svg",
+      "dark": "icons/sendlater_dark.svg",
+      "size": 16
+    }, {
+      "light": "icons/sendlater_light.svg",
+      "dark": "icons/sendlater_dark.svg",
+      "size": 32
+    }]
+  }
+}

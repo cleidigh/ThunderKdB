@@ -9,6 +9,7 @@
 var EXPORTED_SYMBOLS = ["EnigmailTrust"];
 
 const EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
+const EnigmailCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 
 // trust flags according to GPG documentation:
 // - https://www.gnupg.org/documentation/manuals/gnupg.pdf
@@ -70,45 +71,8 @@ var EnigmailTrust = {
   },
 
   getTrustLabel: function(trustCode) {
-    let keyTrust;
-    switch (trustCode) {
-      case 'q':
-        keyTrust = EnigmailLocale.getString("keyValid.unknown");
-        break;
-      case 'i':
-        keyTrust = EnigmailLocale.getString("keyValid.invalid");
-        break;
-      case 'd':
-      case 'D':
-        keyTrust = EnigmailLocale.getString("keyValid.disabled");
-        break;
-      case 'r':
-        keyTrust = EnigmailLocale.getString("keyValid.revoked");
-        break;
-      case 'e':
-        keyTrust = EnigmailLocale.getString("keyValid.expired");
-        break;
-      case 'n':
-        keyTrust = EnigmailLocale.getString("keyTrust.untrusted");
-        break;
-      case 'm':
-        keyTrust = EnigmailLocale.getString("keyTrust.marginal");
-        break;
-      case 'f':
-        keyTrust = EnigmailLocale.getString("keyTrust.full");
-        break;
-      case 'u':
-        keyTrust = EnigmailLocale.getString("keyTrust.ultimate");
-        break;
-      case 'g':
-        keyTrust = EnigmailLocale.getString("keyTrust.group");
-        break;
-      case '-':
-        keyTrust = "-";
-        break;
-      default:
-        keyTrust = "";
-    }
-    return keyTrust;
+    const cApi = EnigmailCryptoAPI();
+
+    return cApi.getTrustLabel(trustCode);
   }
 };

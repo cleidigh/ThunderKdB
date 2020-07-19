@@ -106,7 +106,6 @@ var EnigmailKey = {
     const cApi = EnigmailCryptoAPI();
     let keyList = [];
     let key = {};
-    let blocks;
     errorMsgObj.value = "";
 
     try {
@@ -125,7 +124,7 @@ var EnigmailKey = {
     if (interactive && retArr.length === 1) {
       key = retArr[0];
       if (("revoke" in key) && (!("name" in key))) {
-        this.importRevocationCert(key.id, blocks.join("\n"));
+        this.importRevocationCert(key.id, keyBlockStr);
         return [];
       }
     }

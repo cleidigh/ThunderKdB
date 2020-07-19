@@ -642,7 +642,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 			var accounts = cardbookPreferences.getAllPrefIds();
 			for (var dirPrefId of accounts) {
 				if (cardbookPreferences.getBoolPref(cardbookPreferences.prefCardBookData + dirPrefId + "." + "enabled", true) &&
-					cardbookPreferences.getStringPref(cardbookPreferences.prefCardBookData + dirPrefId + "." + "type")) {
+					cardbookPreferences.getType(dirPrefId) != "SEARCH") {
 					tmpArray.push([cardbookPreferences.getName(dirPrefId), dirPrefId]);
 				}
 			}

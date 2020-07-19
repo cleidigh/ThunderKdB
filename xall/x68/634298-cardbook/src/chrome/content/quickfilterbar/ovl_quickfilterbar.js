@@ -245,9 +245,12 @@ var ABFacetingFilter = {
 			}
 		};
 		
-		// -- nuke existing exposed addressbooks, but not the mode selector (which is first)
-		while (ABbar.childNodes.length > 1) {
-			ABbar.lastChild.remove();
+		for (let i = ABbar.childNodes.length -1; i >= 0; i--) {
+			let child = ABbar.childNodes[i];
+			if (child.tagName == "menulist") {
+				break;
+			}
+			ABbar.removeChild(child);
 		}
 
 		let addCount = 0;

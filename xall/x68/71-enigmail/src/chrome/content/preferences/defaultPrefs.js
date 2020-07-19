@@ -166,6 +166,12 @@ pref("extensions.enigmail.confirmBeforeSending", 0);
 // Show or hide the Enigmail (or pEp) column in the message list
 pref("extensions.enigmail.columnVisible", false);
 
+// Type of crypto-API to use - EXPERIMENTAL & INCOMPLETE -- DON'T USE!!!
+// 0: choose automatically
+// 1: GnuPG
+// 2: OpenPGP.js
+pref("extensions.enigmail.cryptoAPI", 1);
+
 // show "Missing Trust in own keys" message (and remember selected state)
 pref("extensions.enigmail.warnOnMissingOwnerTrust", true);
 

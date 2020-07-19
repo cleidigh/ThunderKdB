@@ -1,89 +1,30 @@
-"use strict";
-
-/* globals MozXULElement */
+/* globals MozXULElement, ExtensionCommon */
 
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { ExtensionSupport } = ChromeUtils.import('resource:///modules/ExtensionSupport.jsm');
-var { ExtensionParent } = ChromeUtils.import('resource://gre/modules/ExtensionParent.jsm');
+var { ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
+var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 
 const EXTENSION_NAME = "jorgk@thunderHTMLedit";
 var extension = ExtensionParent.GlobalManager.getExtension(EXTENSION_NAME);
 
 function loadCSS(url) {
-  const styleSheetService = Cc['@mozilla.org/content/style-sheet-service;1']
-                              .getService(Ci.nsIStyleSheetService);
+  const styleSheetService = Cc["@mozilla.org/content/style-sheet-service;1"]
+    .getService(Ci.nsIStyleSheetService);
   const styleSheetURI = Services.io.newURI(url, null, null);
   styleSheetService.loadAndRegisterSheet(styleSheetURI, styleSheetService.AUTHOR_SHEET);
 }
 
-function iframeLoaded(win) {
-  // Populate iframe content and run setup scripts.
-  let iframe = win.document.getElementById("thunderHTMLedit-content-source-ace");
-  let cw = iframe.contentWindow;
-  
-  let style = cw.document.createElement('style');
-  style.type = 'text/css';
-  style.textContent = `
-    #editor {position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
-
-    .ace_line .ace_ex_fold {
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      box-sizing: border-box;
-      display: inline-block;
-      outline: 1px solid rgba(128,128,128,0.6);
-      border-radius: 4px;
-      background-color: rgba(128,128,128,0.2);
-      cursor: pointer;
-      pointer-events: auto;
-    }
-
-    .ace_line .ace_ex_fold:hover{
-      outline: 1px solid rgba(128,128,128,0.8);
-      background-color: rgba(128,128,128,0.4);
-    }
-
-    .ace_line .ace_fold {
-        box-sizing: border-box!important;
-        height: initial!important;
-        margin: 0px!important;
-        background-image: none!important;
-        background-color: lightgray;
-        color: red;
-        border: 1px solid gray;
-        border-radius: 0px;
-    }
-  `;
-  cw.document.getElementsByTagName('head')[0].appendChild(style);
-
-  let editor =  cw.document.createElement("div");
-  editor.id = "editor";
-  cw.document.body.appendChild(editor);
-
-  Services.scriptloader.loadSubScript(extension.getURL("chrome/content/ace/ace.js"), cw);
-  Services.scriptloader.loadSubScript(extension.getURL("chrome/content/ace/ext-language_tools.js"), cw);
-  cw.document.documentElement.setAttribute('windowtype', 'editor:source');
-  cw.ace.config.set('basePath', extension.getURL("chrome/content/ace"));
-  win.ThunderHTMLedit_.SourceEditor.initWindow(cw);
-}
-
-function setupUI(domWindow, l10n) {
-  let l10nObj = JSON.parse(l10n);
+function setupUI(win) {
+  let l10nObj = JSON.parse(ThunderHTMLedit.l10n);
 
   // All our stuff lives inside this object, so create it now.
-  domWindow.ThunderHTMLedit_ = { pleaseDonate: l10nObj["pleaseDonate"] };
+  win.ThunderHTMLedit_ = { pleaseDonate: l10nObj.pleaseDonate };
 
-  Services.scriptloader.loadSubScript(extension.getURL("chrome/content/thunderHTMLedit-composer.js"), domWindow);
-
-  // We already set the defaults, so just register the preferences here.
-  domWindow.ThunderHTMLedit_.ThunderHTMLeditPrefs.definePreference('License',  { type: 'string' });
-  domWindow.ThunderHTMLedit_.ThunderHTMLeditPrefs.definePreference('UseCount', { type: 'int' });
-  domWindow.ThunderHTMLedit_.ThunderHTMLeditPrefs.definePreference('FontSize', { type: 'int' });
-  domWindow.ThunderHTMLedit_.ThunderHTMLeditPrefs.definePreference('FontFamily', { type: 'string' });
-  domWindow.ThunderHTMLedit_.ThunderHTMLeditPrefs.definePreference('DarkTheme', { type: 'bool' });
+  Services.scriptloader.loadSubScript(extension.getURL("content/thunderHTMLedit-composer.js"), win.ThunderHTMLedit_);
+  win.ThunderHTMLedit_.init(win);
 
   // Note that collapsed will be set to "false" by code.
-  let xul = domWindow.MozXULElement.parseXULToFragment(`
+  let xul = win.MozXULElement.parseXULToFragment(`
     <hbox id="thunderHTMLedit-tabbox-box">
       <hbox id="thunderHTMLedit-content-tab" collapsed="true">
         <radiogroup onselect="if (typeof ThunderHTMLedit_ != 'undefined') ThunderHTMLedit_.SelectEditMode(this.selectedIndex, false);" flex="1" tabindex="1">
@@ -96,50 +37,88 @@ function setupUI(domWindow, l10n) {
       <iframe id="thunderHTMLedit-content-source-ace" data-preview="true" flex="1"/>
     </vbox>
   `);
-  let appContent = domWindow.document.getElementById("appcontent");
-  let contentFrame = domWindow.document.getElementById("content-frame");
+  let appContent = win.document.getElementById("appcontent");
+  let contentFrame = win.document.getElementById("content-frame");
   appContent.insertBefore(xul, contentFrame);
 
-  // The former SourceEditor module can now be accessed via ThunderHTMLedit_.
-  domWindow.ThunderHTMLedit_.SourceEditor.initFind(domWindow);
+  if (ThunderHTMLedit.existingWindows.includes(win)) {
+    // Looks like the window was existing when the add-on got activated. So let's
+    // do some more initialisation. Basically we need to trigger the state listener.
+    win.ThunderHTMLedit_.stateListener.NotifyComposeBodyReady();
+  }
 
-  domWindow.setTimeout(() => iframeLoaded(domWindow, extension));
+  // The former SourceEditor module can now be accessed via ThunderHTMLedit_.
+  win.ThunderHTMLedit_.SourceEditor.initFind(win);
+
+  win.ThunderHTMLedit_.extension = extension;
 }
 
-function tearDownUI(domWindow) {
-  delete domWindow.ThunderHTMLedit_;
-}  
+function tearDownUI(win) {
+  let isHTML = win.document.getElementById("content-frame").getAttribute("collapsed");
+  if (isHTML) win.ThunderHTMLedit_.SelectEditMode(0, false);
+  win.ThunderHTMLedit_.destroy(win);
+
+  let tabbox = win.document.getElementById("thunderHTMLedit-tabbox-box");
+  if (tabbox) tabbox.remove();
+  let sourcebox = win.document.getElementById("thunderHTMLedit-content-source-box");
+  if (sourcebox) sourcebox.remove();
+
+  delete win.ThunderHTMLedit_;
+
+  let ind = ThunderHTMLedit.existingWindows.indexOf(win);
+  if (ind >= 0) ThunderHTMLedit.existingWindows.splice(ind, 1);
+}
 
 // Implements the functions defined in the experiments section of schema.json.
 var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
+  onStartup() {}
+
+  onShutdown(isAppShutdown) {
+    if (isAppShutdown) return;
+    // Looks like we got uninstalled. Maybe a new version will be installed now.
+    // Due to new versions not taking effect (https://bugzilla.mozilla.org/show_bug.cgi?id=1634348)
+    // we invalidate the startup cache. That's the same effect as starting with -purgecaches
+    // (or deleting the startupCache directory from the profile).
+    Services.obs.notifyObservers(null, "startupcache-invalidate");
+  }
+
   getAPI(context) {
     context.callOnClose(this);
     return {
       ThunderHTMLedit: {
         addComposeWindowListener(l10n) {
-          let defaultsBranch = Services.prefs.getDefaultBranch('extensions.thunderHTMLedit.');
-          defaultsBranch.setStringPref('License', 'unlicensed');
-          defaultsBranch.setIntPref('UseCount', 0);
-          defaultsBranch.setIntPref('FontSize', 13);
-          defaultsBranch.setStringPref('FontFamily', 'monospace');
-          defaultsBranch.setBoolPref('DarkTheme', false);
+          ThunderHTMLedit.l10n = l10n;
+          let defaultsBranch = Services.prefs.getDefaultBranch("extensions.thunderHTMLedit.");
+          defaultsBranch.setStringPref("License", "unlicensed");
+          defaultsBranch.setIntPref("UseCount", 0);
+          defaultsBranch.setIntPref("FontSize", 13);
+          defaultsBranch.setStringPref("FontFamily", "monospace");
+          defaultsBranch.setBoolPref("DarkTheme", false);
 
           let os = Services.appinfo.OS;
           let dir = (os == "WINNT" ? "win" : (os == "Darwin" ? "mac" : "linux"));
-          loadCSS(extension.getURL(`chrome/skin/${dir}/composer.css`));
+          loadCSS(extension.getURL(`content/skin/${dir}/composer.css`));
+
+          // Before we register our listener, we get the existing windows.
+          let windows = ExtensionSupport.openWindows;  // Returns iterator.
+          ThunderHTMLedit.existingWindows = [];
+          for (let w of windows) ThunderHTMLedit.existingWindows.push(w);
 
           ExtensionSupport.registerWindowListener(EXTENSION_NAME, {
             chromeURLs: ["chrome://messenger/content/messengercompose/messengercompose.xul",
-                         "chrome://messenger/content/messengercompose/messengercompose.xhtml"],
-            onLoadWindow: ((w) => setupUI(w, l10n)),
+              "chrome://messenger/content/messengercompose/messengercompose.xhtml"],
+            onLoadWindow: setupUI,
             onUnloadWindow: tearDownUI,
           });
-        }
-      }
-    }
+        },
+      },
+    };
   }
 
   close() {
     ExtensionSupport.unregisterWindowListener(EXTENSION_NAME);
+    for (let win of Services.wm.getEnumerator("msgcompose")) {
+      tearDownUI(win);
+    }
   }
 };

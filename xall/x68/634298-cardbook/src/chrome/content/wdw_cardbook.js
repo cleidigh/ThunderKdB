@@ -2941,8 +2941,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					wdw_cardbook.enableOrDisableElement(['editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats',
 															'readOnlyOrReadWriteFromAccountsOrCats'], true);
 				} else {
-					wdw_cardbook.enableOrDisableElement(['editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats',
-															'readOnlyOrReadWriteFromAccountsOrCats'], false);
+					wdw_cardbook.enableOrDisableElement(['editAccountFromAccountsOrCats', 'removeAccountFromAccountsOrCats', 'enableOrDisableFromAccountsOrCats'], false);
+					if (myType == "SEARCH") {
+						wdw_cardbook.enableOrDisableElement(['readOnlyOrReadWriteFromAccountsOrCats'], true);
+					} else {
+						wdw_cardbook.enableOrDisableElement(['readOnlyOrReadWriteFromAccountsOrCats'], false);
+					}
 				}
 				wdw_cardbook.enableOrDisableElement(['addAccountFromAccountsOrCats'], false);
 				if (document.getElementById('cardsTree').view.rowCount == 0) {

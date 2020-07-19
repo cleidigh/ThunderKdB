@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script defer="" src="layout.js" type="application/javascript"></script>
+    <style>
+        input {
+            display: none;
+        }
+        input[type="checkbox"] + label,
+        input[name="layout"] + label {
+            text-align: center;
+            display: block;
+            border: 1px solid #ccc;
+            margin: 0.2em 0;
+            padding: 0.4em;
+        }
+        input[type="checkbox"] + label:hover,
+        input[name="layout"] + label:hover {
+            border: 1px solid #000;
+        }
+        input[type="checkbox"]:checked + label,
+        input[name="layout"]:checked + label {
+            background-color: rgba(204,204,204,0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="standard">
+        <input id="input_standard" type="radio" name="layout" value="standard">
+        <label for="input_standard"></label>
+    </div>
+    <div id="wide">
+        <input id="input_wide" type="radio" name="layout" value="wide">
+        <label for="input_wide"></label>
+    </div>
+    <div id="vertical">
+        <input id="input_vertical" type="radio" name="layout" value="vertical">
+        <label for="input_vertical"></label>
+    </div>
+    <hr />
+    <div id="folderPaneVisible">
+        <input id="input_folderPaneVisible" type="checkbox">
+        <label for="input_folderPaneVisible"></label>
+    </div>
+    <div id="messagePaneVisible">
+        <input id="input_messagePaneVisible" type="checkbox">
+        <label for="input_messagePaneVisible"></label>
+    </div>
+</body>
+
+</html>

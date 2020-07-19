@@ -1,0 +1,51 @@
+#thunderHTMLedit-tabbox-box {
+  border-bottom: 1px solid ButtonShadow;
+}
+
+#thunderHTMLedit-content-tab {
+  padding: 2px 5px 0;
+}
+
+#thunderHTMLedit-content-tab > radiogroup {
+  -moz-box-orient: horizontal;
+}
+
+#thunderHTMLedit-content-tab > radiogroup > radio {
+  -moz-appearance: none;
+  color: -moz-dialogText;
+  border: 1px solid ButtonShadow;
+  border-bottom-width: 0;
+  margin: 2px 0 0;
+  padding: 1px 8px;
+}
+
+#thunderHTMLedit-content-tab > radiogroup > radio:first-child {
+  border-inline-end-width: 0;
+}
+
+#thunderHTMLedit-content-tab > radiogroup > radio:hover {
+  background-color: rgba(0,0,0,.2);
+}
+
+#thunderHTMLedit-content-tab > radiogroup > radio[selected="true"] {
+  background-color: -moz-field;
+  margin-bottom: -1px;
+  padding-bottom: 2px;
+}
+
+#thunderHTMLedit-content-tab > radiogroup > radio > .radio-check {
+  display: none;
+}
+
+#thunderHTMLedit-content-tab > radiogroup > radio > .radio-label-box {
+  margin-inline-start: 0;
+  padding-inline-start: 0;
+}
+
+#thunderHTMLedit-content-tab > radiogroup > radio[focused="true"] > .radio-label-box {
+  outline: none;
+}
+
+#thunderHTMLedit-content-source-findbar {
+  background-color: -moz-dialog;
+}

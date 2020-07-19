@@ -197,9 +197,8 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		loadCountries: function (aPopup, aMenu, aDefaultValue, aAddEmptyCountries, aUseCodeValues) {
 			// const { L10nRegistry } = ChromeUtils.import("resource://gre/modules/L10nRegistry.jsm");
 			// var regionStrBundleTest = L10nRegistry.generateBundlesSync(["en-US", "fr"], ["toolkit/intl/regionNames.ftl"])
-				
-			var regionStrBundle = new LocalizationSync(["toolkit/intl/regionNames.ftl"]);
 			var myResult = [];
+			var regionStrBundle = new LocalizationSync(["toolkit/intl/regionNames.ftl"]);
 			for (let bundle of regionStrBundle.bundles) {
 				for (let string of bundle._messages) {
 					if (aUseCodeValues) {

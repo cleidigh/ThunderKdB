@@ -92,13 +92,7 @@ var EnigmailLog = {
   },
 
   WRITE: function(str) {
-    function withZeroes(val, digits) {
-      return ("0000" + val.toString()).substr(-digits);
-    }
-
-    var d = new Date();
-    var datStr = d.getFullYear() + "-" + withZeroes(d.getMonth() + 1, 2) + "-" + withZeroes(d.getDate(), 2) + " " + withZeroes(d.getHours(), 2) + ":" + withZeroes(d.getMinutes(), 2) + ":" +
-      withZeroes(d.getSeconds(), 2) + "." + withZeroes(d.getMilliseconds(), 3) + " ";
+    let datStr = this.getLogDateStr(new Date()) + " ";
     if (EnigmailLog.level >= 4)
       dump(datStr + str);
 
@@ -165,5 +159,14 @@ var EnigmailLog = {
       "File:    " + ex.fileName + "\n" +
       "Line:    " + ex.lineNumber + "\n" +
       "Stack:   " + ex.stack + "\n");
+  },
+
+  getLogDateStr(d) {
+    function withZeroes(val, digits) {
+      return val.toString().padStart(digits, "0");
+    }
+
+    return d.getFullYear() + "-" + withZeroes(d.getMonth() + 1, 2) + "-" + withZeroes(d.getDate(), 2) + " " + withZeroes(d.getHours(), 2) + ":" + withZeroes(d.getMinutes(), 2) + ":" +
+      withZeroes(d.getSeconds(), 2) + "." + withZeroes(d.getMilliseconds(), 3);
   }
 };

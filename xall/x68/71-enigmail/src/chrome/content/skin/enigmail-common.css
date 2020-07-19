@@ -1,0 +1,96 @@
+/*
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+
+/**
+ * Common Enigmail styles for all platforms
+ */
+
+
+
+
+/***************************************************
+ *  Various other styles
+ ***************************************************/
+
+.enigmailDialogTitle {
+  font-size: 120%;
+  font-weight: bold;
+  padding-bottom: 6px;
+}
+
+.enigmailDialogBody {
+  -moz-user-focus: normal;
+  -moz-user-select: text;
+  cursor: text !important;
+  white-space: pre-wrap;
+  unicode-bidi: -moz-plaintext;
+}
+
+.enigmailDialogInfoBox {
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 0px 10px 0px 10px;
+}
+
+
+/***************************************************
+ * Styles for Setup Wizard
+ ***************************************************/
+
+.enigmailOkSign {
+  content: url("chrome://enigmail/content/skin/ok-sign.svg");
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 1.3em;
+}
+
+/***************************************************
+ * Styles for Menubar
+ ***************************************************/
+
+#enigmail-menubar {
+  background-color: var(--toolbar-bgcolor);
+  color: var(--toolbar-color);
+}
+
+#enigmail-menubar > menu {
+  color: var(--toolbar-color);
+}
+
+
+radio#CQradio1 .radio-check,
+radio#CQradio2 .radio-check,
+radio#CQradio3 .radio-check,
+radiogroup#dateLongRadioGroup .radio-check {
+  -moz-appearance: radio !important;
+}
+radiogroup#AlternativePref .radio-check {
+  -moz-appearance: radio !important;
+}
+
+
+/* a spinning wheel circle */
+.enigmailWheel {
+  list-style-image: url("chrome://enigmail/content/skin/spinning-wheel.png");
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.enigmailSpinning {
+  animation: enigmailDoRotation 1.4s infinite linear;
+  transform: translateZ(0);
+}
+
+@keyframes enigmailDoRotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

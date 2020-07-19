@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+-->
+
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://enigmail/content/skin/enigmail.css" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % enigMailDTD SYSTEM "chrome://enigmail/locale/enigmail.dtd" >
+%enigMailDTD;
+]>
+
+<window title=""
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept,help,cancel,extra1,extra2"
+        onload="onLoad();"
+        xmlns:html="http://www.w3.org/1999/xhtml">
+<dialog id="enigmailMsgBox"
+        buttonpack="center">
+
+  <script type="application/x-javascript" src="chrome://enigmail/content/ui/enigmailMsgBox.js"/>
+
+  <popupset>
+    <menupopup id="ctxmenu">
+      <menuitem label="&enigmail.copyCmd.label;" oncommand="copyToClipbrd()"/>
+    </menupopup>
+  </popupset>
+
+  <hbox id="filler" style="min-width: 0%;">
+    <spacer style="width: 29em;"/>
+  </hbox>
+
+  <html:table>
+    <html:tr>
+      <html:td>
+        <hbox id="iconContainer" align="start">
+          <image id="infoImage" class="spaced" collapsed="true"/>
+        </hbox>
+      </html:td>
+      <html:td>
+        <vbox id="infoContainer" pack="center">
+          <label id="macosDialogTitle" collapsed="true" class="enigmailDialogTitle"/>
+          <vbox id="msgContainer" style="max-width: 45em;">
+            <description id="msgtext" context="ctxmenu" noinitialfocus="true" class="enigmailDialogBody"/>
+          </vbox>
+        </vbox>
+      </html:td>
+    </html:tr>
+    <html:tr id="checkboxContainer" hidden="true">
+      <html:td>
+      </html:td>
+      <html:td>
+        <checkbox id="theCheckBox" checked="false" oncommand="checkboxCb()"/>
+      </html:td>
+    </html:tr>
+  </html:table>
+  </dialog>
+</window>

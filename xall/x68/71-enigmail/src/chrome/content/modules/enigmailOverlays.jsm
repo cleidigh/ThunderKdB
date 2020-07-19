@@ -53,72 +53,11 @@ var gCoreStartup = false;
 const overlays = {
   // main mail reading window
   "chrome://messenger/content/messenger.xul": [
-    "columnOverlay.xul", {
-      // Overlay for Thunderbird
-      url: "messengerOverlay-tbird.xul",
-      application: "!postbox@postbox-inc.com"
-    }, {
-      // Overlay for Postbox
-      url: "messengerOverlay-pbx.xul",
-      application: "postbox@postbox-inc.com"
-    },
-    "enigmailMessengerOverlay.xul",
-    "enigmailMsgHdrViewOverlay.xul"
+    "enigmailMessengerOverlay.xhtml"
   ],
-
-  // single message reader window
-  "chrome://messenger/content/messageWindow.xul": [{
-      // Overlay for Thunderbird
-      url: "messengerOverlay-tbird.xul",
-      application: "!postbox@postbox-inc.com"
-    }, {
-      // Overlay for Postbox
-      url: "messengerOverlay-pbx.xul",
-      application: "postbox@postbox-inc.com"
-    },
-    "enigmailMessengerOverlay.xul",
-    "enigmailMsgHdrViewOverlay.xul"
-  ],
-
-  "chrome://messenger/content/messengercompose/messengercompose.xul": [{
-    // Overlay for Thunderbird
-    url: "enigmailMsgComposeOverlay.xul",
-    application: "!postbox@postbox-inc.com"
-  }, {
-    // Overlay for Postbox
-    url: "enigmailMsgComposeOverlay-pbx.xul",
-    application: "postbox@postbox-inc.com"
-  }],
-
-  "chrome://messenger/content/FilterEditor.xul": [{
-    // Overlay for TB 67+
-    url: "enigmailFilterEditorOverlay.xul",
-    minGeckoVersion: "67.0a1"
-  }, {
-    // Overlay for TB <= 66
-    url: "tb60FilterEditorOverlay.xul",
-    maxGeckoVersion: "66.0"
-  }],
-  "chrome://messenger/content/FilterListDialog.xul": ["enigmailFilterListOverlay.xul"],
-  "chrome://messenger/content/am-identity-edit.xul": [
-    "enigmailAmIdEditOverlay.xul",
-    "enigmailEditIdentity.xul"
-  ],
-  "chrome://messenger/content/addressbook/addressbook.xul": ["enigmailAbCardViewOverlay.xul"],
-  "chrome://enigmail/content/ui/editSingleAccount.xul": ["enigmailEditIdentity.xul"],
-
-  // Overlay for privacy preferences in Thunderbird
-  "chrome://messenger/content/preferences/preferences.xul": [{
-    url: "enigmailPrivacyOverlay.xul",
-    application: "!postbox@postbox-inc.com"
-  }],
-
-  // Overlay for Customize Toolbar (Windows, Linux)
-  "chrome://messenger/content/customizeToolbar.xul": ["enigmailCustToolOverlay.xul"], // TB 60+
-  "chrome://global/content/customizeToolbar.xul": ["enigmailCustToolOverlay.xul"], // TB <= 52.x
-
-  // Overlay for Account Manager
-  "chrome://messenger/content/AccountManager.xul": ["accountManagerOverlay.xul"]
+  "chrome://messenger/content/messenger.xhtml": [
+    "enigmailMessengerOverlay.xhtml"
+  ]
 };
 
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;

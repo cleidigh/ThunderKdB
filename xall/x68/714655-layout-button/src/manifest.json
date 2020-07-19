@@ -1,18 +1,29 @@
 {
-  "manifest_version": 2,
-  "applications": {
-    "gecko": {
-      "id": "layoutbutton@turtletec.ie",
-      "strict_min_version": "68.0"
-    }
-  },
-  "name": "Layout Button",
-  "description": "A toolbar button to switch between layouts.",
-  "version": "2.0",
-  "icons": {
-    "24": "chrome/skin/icon.png"
-  },
-  "legacy": {
-    "type": "xul"
-  }
+    "name": "__MSG_extensionName__",
+    "description": "__MSG_extensionDescription__",
+    "version": "3.0",
+    "applications": {
+        "gecko": {
+            "id": "layoutbutton@turtletec.ie"
+        }
+    },
+    "icons": {
+        "16": "icon-light.svg",
+        "32": "icon-light.svg",
+        "64": "icon-light.svg"
+    },
+    "browser_action": {
+        "default_popup": "layout.html",
+        "default_title": "Layout",
+        "theme_icons": [
+            {
+                "dark": "icon-light.svg",
+                "light": "icon-dark.svg",
+                "size": 16
+            }
+        ]
+    },
+    "permissions": [],
+    "default_locale": "en",
+    "manifest_version": 2
 }

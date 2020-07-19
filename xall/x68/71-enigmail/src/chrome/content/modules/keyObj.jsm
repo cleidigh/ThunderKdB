@@ -61,6 +61,7 @@ var EXPORTED_SYMBOLS = ["newEnigmailKeyObj"];
      * clone
      * getMinimalPubKey
      * getVirtualKeySize
+     * getSecretKey
 */
 
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
@@ -124,7 +125,7 @@ class EnigmailKeyObj {
   get signatures() {
     if (this._sigList === null) {
       const cApi = EnigmailCryptoAPI();
-      this._sigList = cApi.sync(cApi.getKeySignatures(this.keyId));
+      this._sigList = cApi.sync(cApi.getKeySignatures(this.fpr));
     }
 
     return this._sigList;
