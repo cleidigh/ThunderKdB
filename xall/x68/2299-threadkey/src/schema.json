@@ -1,0 +1,46 @@
+[
+  {
+    "namespace": "myapi",
+    "functions": [
+      {
+        "name": "startup",
+        "type": "function",
+        "description": "Initialize the extension.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "l10nStrings",
+            "type": "string",
+            "description": "Stringified L10N object containing the strings"
+          },
+          {
+            "name": "locale",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "threadSortCmd",
+        "type": "function",
+        "description": "View > Sort By > Threaded.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "unthreadSortCmd",
+        "type": "function",
+        "description": "View > Sort By > Unthreaded.",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "groupedBySortCmd",
+        "type": "function",
+        "description": "View > Sort By > Grouped By Sort.",
+        "async": true,
+        "parameters": []
+      }
+    ],
+    "events": []
+  }
+]
