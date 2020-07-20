@@ -28,34 +28,30 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MQ9MHQUW23YSA",
     "created": "2006-03-28T07:41:06Z",
     "current_version": {
-        "id": 2471854,
+        "id": 2473966,
         "compatibility": {
-            "seamonkey": {
-                "max": "*",
-                "min": "2.49"
-            },
             "thunderbird": {
-                "max": "73.0",
-                "min": "52.0"
+                "max": "*",
+                "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/threadkey/versions/2471854",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/threadkey/versions/2473966",
         "files": [
             {
-                "id": 1014920,
-                "created": "2019-07-29T19:41:36Z",
-                "hash": "sha256:376b4134d1333b5f0d16ec9774398eed8d795f6ca9f881810989d257dce9b4de",
-                "is_restart_required": true,
+                "id": 1017128,
+                "created": "2020-07-20T08:38:09Z",
+                "hash": "sha256:876dd136e6c33c38bd0145d16cd0947fce9cae10a036d890ca79bbee26c6917c",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 19733,
+                "size": 11866,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1014920/threadkey-1.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017128/threadkey-2.0a2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -63,12 +59,10 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": {
-            "en-US": "Changed minimum version to Thunderbird 52.0"
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/threadkey/versions/1.4",
-        "version": "1.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/threadkey/versions/2.0a2",
+        "version": "2.0a2"
     },
     "default_locale": "en-US",
     "description": {
@@ -111,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-08-03T20:57:48Z",
+    "last_updated": "2020-07-20T09:10:44Z",
     "name": {
         "ru": "ThreadKey",
         "fr": "ThreadKey",
@@ -175,11 +169,12 @@
     "weekly_downloads": 53,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp60": true,
-            "comp61plus": true
+            "comp78plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2013-09-12T00:15:35Z"
         }
     }
 }

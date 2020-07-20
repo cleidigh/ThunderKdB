@@ -19,30 +19,30 @@
     "contributions_url": "https://www.paypal.me/johnbieling",
     "created": "2018-08-20T06:58:40Z",
     "current_version": {
-        "id": 2473648,
+        "id": 2473952,
         "compatibility": {
             "thunderbird": {
-                "max": "69.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dav-4-tbsync/versions/2473648",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dav-4-tbsync/versions/2473952",
         "files": [
             {
-                "id": 1016797,
-                "created": "2020-04-28T10:34:19Z",
-                "hash": "sha256:e8587e97ef0405ea99343d0e01630946667fd8366eb774d1f5f3a71f1bc014df",
-                "is_restart_required": true,
+                "id": 1017114,
+                "created": "2020-07-18T21:51:51Z",
+                "hash": "sha256:e349b88093f6b5d3da68e8e61ec5fb8dd7c4f3e9e203417e11b43adf07320199",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 274435,
+                "size": 289637,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016797/provider_fur_caldav_carddav-1.12-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017114/provider_fur_caldav_carddav-1.16-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -52,8 +52,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dav-4-tbsync/versions/1.12",
-        "version": "1.12"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dav-4-tbsync/versions/1.16",
+        "version": "1.16"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,7 +78,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-29T08:22:05Z",
+    "last_updated": "2020-07-20T10:40:29Z",
     "name": {
         "en-US": "Provider for CalDAV & CardDAV",
         "de": "Provider für CalDAV & CardDAV"
@@ -196,10 +196,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2019-01-30T21:56:24Z"
         }

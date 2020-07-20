@@ -370,7 +370,9 @@ function compatibilityCheck(extJson, options) {
 
 	
 	}
+	console.debug('Before v_min_n ' + v_min);
 	let v_min_num = p.exec(v_min);
+
 	console.debug('min type '+typeof(v_min_num) + '  '+v_min_num[0]);
 	if (v_min_num && isNaN(v_min_num) ) {
 		console.debug(`   ${extJson.slug} Mi: vMin: ${v_min} vMax: ${v_max} vMax_nun: ${v_max_num}  ME: ${mext}`);
@@ -433,7 +435,6 @@ function compatibilityCheck(extJson, options) {
 		if (v_min_num >= 78 && mext) {
 			compSet.comp78plus = true;
 		}
-
 
 		if (v_min_num >= 60 && v_min_num < 61) {
 			compSet.comp60 = true;
@@ -645,6 +646,11 @@ async function getExtensionFiles(addon_identifier, index) {
 			console.debug(manifestJson);
 			console.debug(manifestJson.background);
 			console.debug(manifestJson.experiment_apis);
+			let v_min = `${manifestJson.applications.gecko.strict_min_version}`;
+			// let v_max = `${manifestJson.current_version.compatibility.thunderbird.max}`;
+			// var mext = manifestJson.current_version.files[0].is_webextension;
+		
+
 			if (manifestJson.experiment_apis != undefined) {
 				console.debug('WebExperiment');
 				ext_comp.webexp = true;
@@ -670,6 +676,9 @@ async function getExtensionFiles(addon_identifier, index) {
 			// console.debug('ReadingInstall: ' + `${extRootName} : ${ext_comp.legacy.legacy_type}`);
 		}
 
+		if (!ext_comp.legacy && ext_comp.mext) {
+			ext_comp.comp78plus = true;
+		}
 		// _7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
 		// console.debug('Starting unzip: ' + xpiFileName);
 		// fileUnzip(`${extRootDir}/xpi/${xpiFileName}`, { dir: `${extRootDir}/src` });
@@ -686,7 +695,7 @@ async function getExtensionFiles(addon_identifier, index) {
 		// resolve();
 	} catch (e) {
 		// reject(0);
-		console.debug('Error Files ' + '  ' + e);
+		console.debug('Error Files ' + '  ' + e + ' '+e.stack);
 		// throw e;
 		return 0;
 	}
