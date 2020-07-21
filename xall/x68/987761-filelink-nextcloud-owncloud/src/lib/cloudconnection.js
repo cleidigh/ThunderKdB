@@ -95,7 +95,7 @@ class CloudConnection {
         // Check for sufficient free space
         const data = await this.updateFreeSpaceInfo();
         if (!data ||                // no data in response, try to upload anyway
-            !data.quota ||          // no quota in resonse, so none set
+            !data.quota ||          // no quota in response, so none set
             data.quota.free < 0 ||  // quota set but unlimited
             data.quota.free > fileObject.size) {
 

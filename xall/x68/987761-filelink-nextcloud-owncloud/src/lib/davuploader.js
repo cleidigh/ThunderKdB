@@ -213,6 +213,7 @@ class DavUploader {
             }
             else {
                 attachmentStatus.get(fileId).fail();
+                response.ok = false;
             }
         }
         allAbortControllers.delete(fileId);
@@ -258,7 +259,7 @@ class DavUploader {
         url += encodepath(path);
 
         // Remove session password as it interferes with credentials 
-        await browser.cookies.remove({ url, name: "oc_sessionPassphrase", });
+        await browser.cookies.remove({ url, name: "oc_sessionPassphrase", firstPartyDomain: "", });
 
         return new Promise((resolve, reject) => {
             const uploadRequest = new XMLHttpRequest();

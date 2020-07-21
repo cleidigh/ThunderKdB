@@ -258,7 +258,7 @@ var sync = {
 
 
     singleFolder: async function (syncData)  {
-        // add target to syncData (getTarget() will throw "nolightning" if lightning missing)
+        // add target to syncData
         try {
             // accessing the target for the first time will check if it is avail and if not will create it (if possible)
             syncData.target = await syncData.currentFolderData.targetData.getTarget();
@@ -1149,7 +1149,7 @@ wbxml.ctag();*/
             let cats = [];
             if (Array.isArray(data.Categories.Category)) cats = data.Categories.Category;
             else cats.push(data.Categories.Category);
-            item.setCategories(cats.length, cats);
+            item.setCategories(cats);
         }
     },
     
@@ -1229,12 +1229,12 @@ wbxml.ctag();*/
                 // TODO
             }
             if (data.Recurrence.DayOfMonth) {
-                recRule.setComponent("BYMONTHDAY", 1, [data.Recurrence.DayOfMonth]);
+                recRule.setComponent("BYMONTHDAY", [data.Recurrence.DayOfMonth]);
             }
             if (data.Recurrence.DayOfWeek) {
                 let DOW = data.Recurrence.DayOfWeek;
                 if (DOW == 127 && (recRule.type == "MONTHLY" || recRule.type == "YEARLY")) {
-                    recRule.setComponent("BYMONTHDAY", 1, [-1]);
+                    recRule.setComponent("BYMONTHDAY", [-1]);
                 }
                 else {
                     let days = [];
@@ -1251,11 +1251,11 @@ wbxml.ctag();*/
                             }
                         }
                     }
-                    recRule.setComponent("BYDAY", days.length, days);
+                    recRule.setComponent("BYDAY", days);
                 }
             }
             if (data.Recurrence.FirstDayOfWeek) {
-                //recRule.setComponent("WKST", 1, [data.Recurrence.FirstDayOfWeek]); // WKST is not a valid component
+                //recRule.setComponent("WKST", [data.Recurrence.FirstDayOfWeek]); // WKST is not a valid component
                 //recRule.weekStart = data.Recurrence.FirstDayOfWeek; // - (NS_ERROR_NOT_IMPLEMENTED) [calIRecurrenceRule.weekStart]
                 TbSync.eventlog.add("info", syncData.eventLogInfo, "FirstDayOfWeek tag ignored (not supported).", item.icalString);                
             }
@@ -1267,7 +1267,7 @@ wbxml.ctag();*/
                 // TODO
             }
             if (data.Recurrence.MonthOfYear) {
-                recRule.setComponent("BYMONTH", 1, [data.Recurrence.MonthOfYear]);
+                recRule.setComponent("BYMONTH", [data.Recurrence.MonthOfYear]);
             }
             if (data.Recurrence.Occurrences) {
                 recRule.count = data.Recurrence.Occurrences;

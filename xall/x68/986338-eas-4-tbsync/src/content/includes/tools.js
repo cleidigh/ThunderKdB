@@ -25,10 +25,7 @@ var tools = {
     },
 
     getIdentityKey: function (email) {
-        let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager);
-        let accounts = acctMgr.accounts;
-        for (let a = 0; a < accounts.length; a++) {
-            let account = accounts.queryElementAt(a, Components.interfaces.nsIMsgAccount);
+        for (let account of MailServices.accounts.accounts) {
             if (account.defaultIdentity && account.defaultIdentity.email == email) return account.defaultIdentity.key;
         }
         return "";
@@ -528,12 +525,10 @@ var tools = {
 
 //TODO: Invites
 /*
-if (TbSync.lightningIsAvailable()) {
     cal.itip.checkAndSendOrigial = cal.itip.checkAndSend;
     cal.itip.checkAndSend = function(aOpType, aItem, aOriginalItem) {
         //if this item is added_by_user, do not call checkAndSend yet, because the UID is wrong, we need to sync first to get the correct ID - TODO
         TbSync.dump("cal.checkAndSend", aOpType);
         cal.itip.checkAndSendOrigial(aOpType, aItem, aOriginalItem);
     }
-}
 */

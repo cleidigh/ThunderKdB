@@ -8,7 +8,7 @@
  
  "use strict";
 
-var { OAuth2_1 } = ChromeUtils.import("chrome://eas4tbsync/content/OAuth2_1.jsm");
+var { OAuth2 } = ChromeUtils.import("resource:///modules/OAuth2.jsm");
 
 var network = {  
     
@@ -82,7 +82,9 @@ var network = {
           auth_uri : "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
           token_uri : "https://login.microsoftonline.com/common/oauth2/v2.0/token",
           redirect_uri : "https://login.microsoftonline.com/common/oauth2/nativeclient",
-          scope : "offline_access https://outlook.office.com/EAS.AccessAsUser.All",
+          // changed in beta 1.14.1, according to
+          // https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#default-and-consent
+          scope : "offline_access https://outlook.office.com/.default", //"offline_access https://outlook.office.com/EAS.AccessAsUser.All",
           client_id : "2980deeb-7460-4723-864a-f9b0f10cd992",
         }
         break;
@@ -91,16 +93,17 @@ var network = {
         return null;
     }
 
-    let oauth = new OAuth2_1("", config.scope, config.client_id, config.client_secret);
+    let oauth = new OAuth2(config.auth_uri, config.token_uri, config.scope, config.client_id, config.client_secret);
     oauth.requestWindowFeatures = "chrome,private,centerscreen,width=500,height=750";
 
-    // The v2 endpoints are different and need manual override
-    oauth.authURI = config.auth_uri ;
-    oauth.tokenURI = config.token_uri;
-    oauth.completionURI = config.redirect_uri;
+    // The v2 redirection endpoint differs from the default and needs manual override
+    oauth.redirectionEndpoint = config.redirect_uri;
     
     oauth.extraAuthParams = [
-      ["prompt", "consent"],
+      // removed in beta 1.14.1, according to
+      // https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#default-and-consent
+      // prompt = consent will always ask for admin consent, even if it was granted
+      //["prompt", "consent"],
       ["login_hint", user],
     ];
         

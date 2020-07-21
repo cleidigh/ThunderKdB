@@ -8,7 +8,7 @@
  
  "use strict";
 
-Components.utils.import("chrome://tbsync/content/tbsync.jsm");
+var { TbSync } = ChromeUtils.import("chrome://tbsync/content/tbsync.jsm");
 
 var tbSyncEasAddressBookDetails = {
     
@@ -23,6 +23,7 @@ var tbSyncEasAddressBookDetails = {
             window.document.getElementById("abResultsTree").addEventListener("select", tbSyncEasAddressBookDetails.onAbResultSelectionChanged, false);
             tbSyncEasAddressBookDetails.onAbResultSelectionChanged();
         }
+        TbSync.localizeNow(window, "eas");
     },
 
     onRemove: function (window) {

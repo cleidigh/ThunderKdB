@@ -8,15 +8,15 @@
  
  "use strict";
 
-Components.utils.import("chrome://tbsync/content/tbsync.jsm");
-Components.utils.import("resource://gre/modules/osfile.jsm");
+var { TbSync } = ChromeUtils.import("chrome://tbsync/content/tbsync.jsm");
+var { OS } = ChromeUtils.import("resource://gre/modules/osfile.jsm");
 
 var tbSyncAbEasCardWindow = {
     
     onBeforeInject: function (window) {
         let aParentDirURI  = "";
 
-        if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xul") {
+        if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xhtml") {
             //get provider via uri from drop down
             aParentDirURI = window.document.getElementById("abPopup").value;
         } else {
@@ -52,7 +52,7 @@ var tbSyncAbEasCardWindow = {
             }
         }
 
-        if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xul") {
+        if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xhtml") {
             window.RegisterSaveListener(tbSyncAbEasCardWindow.onSaveCard);        
         } else {            
             window.RegisterLoadListener(tbSyncAbEasCardWindow.onLoadCard);
@@ -61,11 +61,15 @@ var tbSyncAbEasCardWindow = {
             //if this window was open during inject, load the extra fields
             if (gEditCard) tbSyncAbEasCardWindow.onLoadCard(gEditCard.card, window.document);
         }
+        TbSync.localizeNow(window, "eas");
+        
+        // append OS attribute to select proper CSS
+        window.document.getElementById("easFields1Panel").setAttribute("OS", OS.Constants.Sys.Name);
         window.sizeToContent();
     },
 
     onRemove: function (window) {
-        if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xul") {
+        if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xhtml") {
             window.UnregisterSaveListener(tbSyncAbEasCardWindow.onSaveCard);
         } else {
             window.UnregisterLoadListener(tbSyncAbEasCardWindow.onLoadCard);

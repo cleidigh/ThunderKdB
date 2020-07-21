@@ -151,20 +151,25 @@ email_text.onkeyup = () => {
 customerSearch = () => {
     let keyword = email_text.value.trim().split(" ");
     let search_query = 'where=[';
+    let sort_query = 'sort=[';
     if (keyword.length > 1) {
         for (let i = 0; i < keyword.length; i++) {
             if (i == 0) {
-                search_query += '[{"property":"Customer.firstName","operator":"LIKE","value":"%' + keyword[i] + '%"},"and",{"property":"Customer.name","operator":"LIKE","value":"%' + keyword[i + 1] + '%"}],"or",{"property":"Customer.firm","operator":"LIKE","value":"%' + keyword[i] + '%"}';
+                search_query += '[[{"property":"Customer.firstName","operator":"like","value":"' + keyword[i] + '%"},"or",{"property":"Customer.name","operator":"like","value":"' + keyword[i] + '%"}],"or",[{"property":"Customer.firm","operator":"like","value":"' + keyword[i] + '%"}],"or",[{"property":"Customer.firstName","operator":"like","value":"%' + keyword[i] + '%"},"or",{"property":"Customer.name","operator":"like","value":"%' + keyword[i] + '%"}],"or",[{"property":"Customer.firm","operator":"like","value":"%' + keyword[i] + '%"}]]';
+                sort_query += '{"type":"switch","cases":[{"weight":190,"where":[[{"property":"Customer.firstName","operator":"like","value":"' + keyword[i] + '%"},"or",{"property":"Customer.name","operator":"like","value":"' + keyword[i] + '%"}]]},{"weight":180,"where":[[{"property":"Customer.firm","operator":"like","value":"' + keyword[i] + '%"}]]},{"weight":160,"where":[[{"property":"Customer.firstName","operator":"like","value":"%' + keyword[i] + '%"},"or",{"property":"Customer.name","operator":"like","value":"%' + keyword[i] + '%"}]]},{"weight":150,"where":[[{"property":"Customer.firm","operator":"like","value":"%' + keyword[i] + '%"}]]}],"order":"desc"}';
             } else {
-                search_query += ',"or",[{"property":"Customer.firstName","operator":"LIKE","value":"%' + keyword[i] + '%"},"and",{"property":"Customer.name","operator":"LIKE","value":"%' + keyword[i - 1] + '%"}],"or",{"property":"Customer.firm","operator":"LIKE","value":"%' + keyword[i] + '%"}';
+                search_query += ',"and",[[{"property":"Customer.firstName","operator":"like","value":"' + keyword[i] + '%"},"or",{"property":"Customer.name","operator":"like","value":"' + keyword[i] + '%"}],"or",[{"property":"Customer.firm","operator":"like","value":"' + keyword[i] + '%"}],"or",[{"property":"Customer.firstName","operator":"like","value":"%' + keyword[i] + '%"},"or",{"property":"Customer.name","operator":"like","value":"%' + keyword[i] + '%"}],"or",[{"property":"Customer.firm","operator":"like","value":"%' + keyword[i] + '%"}]]';
+                sort_query += ',{"type":"switch","cases":[{"weight":190,"where":[[{"property":"Customer.firstName","operator":"like","value":"' + keyword[i] + '%"},"or",{"property":"Customer.name","operator":"like","value":"' + keyword[i] + '%"}]]},{"weight":180,"where":[[{"property":"Customer.firm","operator":"like","value":"' + keyword[i] + '%"}]]},{"weight":160,"where":[[{"property":"Customer.firstName","operator":"like","value":"%' + keyword[i] + '%"},"or",{"property":"Customer.name","operator":"like","value":"%' + keyword[i] + '%"}]]},{"weight":150,"where":[[{"property":"Customer.firm","operator":"like","value":"%' + keyword[i] + '%"}]]}],"order":"desc"}';
             }
         }
     } else {
-        search_query += '{"property":"Customer.name","operator":"LIKE","value":"%' + email_text.value + '%"},"or",{"property":"Customer.firstName","operator":"LIKE","value":"%' + email_text.value + '%"},"or",{"property":"Customer.firm","operator":"LIKE","value":"%' + email_text.value + '%"}';
+        search_query += '[[{"property":"Customer.firstName","operator":"like","value":"' + email_text.value + '%"},"or",{"property":"Customer.name","operator":"like","value":"' + email_text.value + '%"}],"or",[{"property":"Customer.firm","operator":"like","value":"' + email_text.value + '%"}],"or",[{"property":"Customer.firstName","operator":"like","value":"%' + email_text.value + '%"},"or",{"property":"Customer.name","operator":"like","value":"%' + email_text.value + '%"}],"or",[{"property":"Customer.firm","operator":"like","value":"%' + email_text.value + '%"}]]';
+        sort_query += '{"type":"switch","cases":[{"weight":190,"where":[[{"property":"Customer.firstName","operator":"like","value":"' + email_text.value + '%"},"or",{"property":"Customer.name","operator":"like","value":"' + email_text.value + '%"}]]},{"weight":180,"where":[[{"property":"Customer.firm","operator":"like","value":"' + email_text.value + '%"}]]},{"weight":160,"where":[[{"property":"Customer.firstName","operator":"like","value":"%' + email_text.value + '%"},"or",{"property":"Customer.name","operator":"like","value":"%' + email_text.value + '%"}]]},{"weight":150,"where":[[{"property":"Customer.firm","operator":"like","value":"%' + email_text.value + '%"}]]}],"order":"desc"}';
     }
     search_query += ']';
-    let url = encodeURI('https://api.kundenmeister.com/v13/model/Customer?' + search_query + '&select=["Customer.id","Customer.mail","Customer.firm","Customer.name","Customer.street","Customer.city","Customer.postalCode"]');
-    //console.log(url);
+    sort_query += ']';
+    url = 'https://api.kundenmeister.com/v13/model/Customer?' + search_query + '&' + sort_query + '&select=["Customer.id","Customer.mail","Customer.firm","Customer.name","Customer.firstName","Customer.street","Customer.city","Customer.postalCode"]&groupby=["Customer.id"]&distinct=true&limit=999';
+    url = encodeURI(url);
     fetch(url, {
         method: "GET",
         headers: myHeaders,
@@ -189,7 +194,7 @@ customerSearch = () => {
         if (result && result.length > 0) {
             let i = 0;
             while (result.length > i) {
-                child_div[i].innerHTML = '<div class="company-text">' + result[i]['Customer.firm'] + '</div><div class="name-text">' + result[i]['Customer.name'] + '</div><div class="email-text">' + result[i]['Customer.mail'] + '</div><div class="location-text">' + result[i]['Customer.street'] + ' ' + result[i]['Customer.city'] + '</div>';
+                child_div[i].innerHTML = '<div class="company-text">' + result[i]['Customer.firm'] + '</div><div class="name-text">' + result[i]['Customer.name'] + ' ' + result[i]['Customer.firstName'] + '</div><div class="email-text">' + result[i]['Customer.mail'] + '</div><div class="location-text">' + result[i]['Customer.street'] + ' ' + result[i]['Customer.city'] + '</div>';
                 child[i].style.display = "block";
                 child_action[i].style.display = "inline-block";
                 email_action[i].id = "email_" + result[i]['Customer.id'];
@@ -498,7 +503,6 @@ exportComment = (comment_obj, type) => {
                 while (messageListItems.length > i) {
                     messageId = messageListItems[i].id;
                     browser.messages.getFull(messageId).then((MessagePart) => {
-                        //console.log(MessagePart);
                         bodyText = "";
 
                         // extract message from messagepart starts
@@ -552,15 +556,13 @@ exportComment = (comment_obj, type) => {
                             parts_count++;
                         }
 
-                        //console.log(bodyText);
                         bodyTextArr = bodyText.toString().split("</style>");
                         if (bodyTextArr.length > 1) {
-                            document.getElementById("body_text").innerHTML = bodyTextArr[1];
+                            document.getElementById("body_text").innerHTML = bodyTextArr[bodyTextArr.length - 1];
                         } else {
                             document.getElementById("body_text").innerHTML = bodyText;
                         }
                         inner_text = document.getElementById("body_text").innerText;
-                        //console.log(inner_text);
                         inner_text = inner_text.replace(/\s\s+/g, "\n\n");
                         if (MessagePart.headers.from) {
                             text_content = "From: " + MessagePart.headers.from.toString() + "\n";           //  append from email address
@@ -585,7 +587,6 @@ exportComment = (comment_obj, type) => {
                         } else if (type === "opportunity") {
                             commentObject["Comment.opportunityId"] = customer_id_arr[2];
                         }
-                        //console.log(commentObject);
                         url = "https://api.kundenmeister.com/v13/model/Comment";
                         fetch(url, {
                             method: "POST",

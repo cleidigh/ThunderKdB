@@ -33,17 +33,18 @@ var Base = class {
 
         dav.openWindows = {};
 
-        dav.overlayManager = new OverlayManager({verbose: 0});
-        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xul", "chrome://dav4tbsync/content/overlays/abNewCardWindow.xul");
-        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xul", "chrome://dav4tbsync/content/overlays/abCardWindow.xul");
-        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abEditCardDialog.xul", "chrome://dav4tbsync/content/overlays/abCardWindow.xul");
-        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xul", "chrome://dav4tbsync/content/overlays/addressbookoverlay.xul");
-        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xul", "chrome://dav4tbsync/content/overlays/addressbookdetailsoverlay.xul");
+        let providerData = new TbSync.ProviderData("dav");   
+        dav.overlayManager = new OverlayManager(providerData.extension, {verbose: 0});
+        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xhtml", "chrome://dav4tbsync/content/overlays/abNewCardWindow.xhtml");
+        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xhtml", "chrome://dav4tbsync/content/overlays/abCardWindow.xhtml");
+        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abEditCardDialog.xhtml", "chrome://dav4tbsync/content/overlays/abCardWindow.xhtml");
+        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xhtml", "chrome://dav4tbsync/content/overlays/addressbookoverlay.xhtml");
+        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xhtml", "chrome://dav4tbsync/content/overlays/addressbookdetailsoverlay.xhtml");
 
         // The abCSS.xul overlay is just adding a CSS file.
-        await dav.overlayManager.registerOverlay("chrome://messenger/content/messengercompose/messengercompose.xul", "chrome://dav4tbsync/content/overlays/abCSS.xul");
-        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xul", "chrome://dav4tbsync/content/overlays/abCSS.xul");
-        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xul", "chrome://dav4tbsync/content/overlays/abCSS.xul");
+        await dav.overlayManager.registerOverlay("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome://dav4tbsync/content/overlays/abCSS.xhtml");
+        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xhtml", "chrome://dav4tbsync/content/overlays/abCSS.xhtml");
+        await dav.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xhtml", "chrome://dav4tbsync/content/overlays/abCSS.xhtml");
 
         dav.overlayManager.startObserving();
     }
@@ -79,7 +80,7 @@ var Base = class {
     /**
      * Returns version of the TbSync API this provider is using
      */
-    static getApiVersion() { return "2.2"; }
+    static getApiVersion() { return "2.3"; }
 
 
 
@@ -97,11 +98,11 @@ var Base = class {
         
         switch (size) {
             case 16:
-                return "chrome://dav4tbsync/skin/"+root+"16.png";
+                return "chrome://dav4tbsync/content/skin/"+root+"16.png";
             case 32:
-                return "chrome://dav4tbsync/skin/"+root+"32.png";
+                return "chrome://dav4tbsync/content/skin/"+root+"32.png";
             default :
-                return "chrome://dav4tbsync/skin/"+root+"48.png";
+                return "chrome://dav4tbsync/content/skin/"+root+"48.png";
         }
     }
 
@@ -136,31 +137,22 @@ var Base = class {
 
 
     /**
-     * Returns the URL of the string bundle file of this provider, it can be
-     * accessed by TbSync.getString(<key>, <provider>)
-     */
-    static getStringBundleUrl() {
-        return "chrome://dav4tbsync/locale/dav.properties";
-    }
-
-
-    /**
      * Returns URL of the new account window.
      *
      * The URL will be opened via openDialog(), when the user wants to create a
      * new account of this provider.
      */
     static getCreateAccountWindowUrl() {
-        return "chrome://dav4tbsync/content/manager/createAccount.xul";
+        return "chrome://dav4tbsync/content/manager/createAccount.xhtml";
     }
 
 
     /**
      * Returns overlay XUL URL of the edit account dialog
-     * (chrome://tbsync/content/manager/editAccount.xul)
+     * (chrome://tbsync/content/manager/editAccount.xhtml)
      */
     static getEditAccountOverlayUrl() {
-        return "chrome://dav4tbsync/content/manager/editAccountOverlay.xul";
+        return "chrome://dav4tbsync/content/manager/editAccountOverlay.xhtml";
     }
 
 
@@ -299,23 +291,22 @@ var Base = class {
         );
 
         // searchQuery has all the (or(...)) searches, link them up with (and(...)).
-        searchQuery = "?(and" + searchQuery + ")";
+        searchQuery = "(and" + searchQuery + ")";
         
         while (allAddressBooks.hasMoreElements()) {
             let abook = allAddressBooks.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
             if (abook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
                 if (TbSync.addressbook.getStringValue(abook, "tbSyncAccountID","") == accountData.accountID) {
-                    let cards = MailServices.ab.getDirectory(abook.URI + searchQuery).childCards;
-                    while (cards.hasMoreElements()) {
-                        let card = cards.getNext().QueryInterface(Components.interfaces.nsIAbCard);
-                        
+                    let cards = await TbSync.addressbook.searchDirectory(abook.URI, searchQuery)
+                    for (let card of cards) {                        
                         if (card.isMailList) {
 
                             entries.push({
                                 value: card.getProperty("DisplayName", "") + " <"+ card.getProperty("DisplayName", "") +">", 
                                 comment: "",
                                 icon: dav.Base.getProviderIcon(16, accountData),
-                                style: "",				    
+                                // https://bugzilla.mozilla.org/show_bug.cgi?id=1653213
+                                style: "dav4tbsync-abook",
                             });
                         
                         } else {                        
@@ -335,7 +326,8 @@ var Base = class {
                                                         .map(entry => TbSync.getString("autocomplete." + entry.toUpperCase() , "dav"))
                                                         .join(", "),
                                     icon: dav.Base.getProviderIcon(16, accountData),
-                                    style: "",				    
+                                    // https://bugzilla.mozilla.org/show_bug.cgi?id=1653213
+                                    style: "dav4tbsync-abook",				    
                                 });
                             }
                             
@@ -549,7 +541,8 @@ var TargetData_addressbook = class extends TbSync.addressbook.AdvancedTargetData
     }
 
     async createAddressbook(newname) {
-        let dirPrefId = MailServices.ab.newAddressBook(newname, "", 2);
+        // https://searchfox.org/comm-central/source/mailnews/addrbook/src/nsDirPrefs.h
+        let dirPrefId = MailServices.ab.newAddressBook(newname, "", 101);
         let directory = MailServices.ab.getDirectoryFromId(dirPrefId);
       
         dav.sync.resetFolderSyncInfo(this.folderData);
@@ -668,7 +661,9 @@ var TargetData_calendar = class extends TbSync.lightning.AdvancedTargetData {
 
             newCalendar.setProperty("username", authData.username);
             newCalendar.setProperty("color", this.folderData.getFolderProperty("targetColor"));
-            newCalendar.setProperty("calendar-main-in-composite", true);
+            // removed in TB78, as it seems to not fully enable the calendar, if present before registering
+            // https://searchfox.org/comm-central/source/calendar/base/content/calendar-management.js#385
+            //newCalendar.setProperty("calendar-main-in-composite",true);
             newCalendar.setProperty("cache.enabled", this.folderData.accountData.getAccountProperty("useCalendarCache"));
         }
 
@@ -722,18 +717,18 @@ var StandardFolderList = class {
         switch (folderData.getFolderProperty("type")) {
             case "carddav":
                 if (folderData.getFolderProperty("shared")) {
-                    return "chrome://tbsync/skin/contacts16_shared.png";
+                    return "chrome://tbsync/content/skin/contacts16_shared.png";
                 } else {
-                    return "chrome://tbsync/skin/contacts16.png";
+                    return "chrome://tbsync/content/skin/contacts16.png";
                 }
             case "caldav":
                 if (folderData.getFolderProperty("shared")) {
-                    return "chrome://tbsync/skin/calendar16_shared.png";
+                    return "chrome://tbsync/content/skin/calendar16_shared.png";
                 } else {
-                    return "chrome://tbsync/skin/calendar16.png";
+                    return "chrome://tbsync/content/skin/calendar16.png";
                 }
             case "ics":
-                return "chrome://dav4tbsync/skin/ics16.png";
+                return "chrome://dav4tbsync/content/skin/ics16.png";
         }
     }
 

@@ -47,114 +47,110 @@ var Base = class {
         eas.windowsToIanaTimezoneMap = {};
         eas.openWindows = {};
 
-        eas.overlayManager = new OverlayManager({verbose: 0});
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xul", "chrome://eas4tbsync/content/overlays/abNewCardWindow.xul");
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xul", "chrome://eas4tbsync/content/overlays/abCardWindow.xul");
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abEditCardDialog.xul", "chrome://eas4tbsync/content/overlays/abCardWindow.xul");
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xul", "chrome://eas4tbsync/content/overlays/addressbookoverlay.xul");
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xul", "chrome://eas4tbsync/content/overlays/addressbookdetailsoverlay.xul");
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xul", "chrome://eas4tbsync/content/overlays/abServerSearch.xul");
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abContactsPanel.xul", "chrome://eas4tbsync/content/overlays/abServerSearch.xul");
+        let providerData = new TbSync.ProviderData("eas");   
+        eas.overlayManager = new OverlayManager(providerData.extension, {verbose: 0});
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xhtml", "chrome://eas4tbsync/content/overlays/abNewCardWindow.xhtml");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xhtml", "chrome://eas4tbsync/content/overlays/abCardWindow.xhtml");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abEditCardDialog.xhtml", "chrome://eas4tbsync/content/overlays/abCardWindow.xhtml");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xhtml", "chrome://eas4tbsync/content/overlays/addressbookoverlay.xhtml");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xhtml", "chrome://eas4tbsync/content/overlays/addressbookdetailsoverlay.xhtml");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xhtml", "chrome://eas4tbsync/content/overlays/abServerSearch.xhtml");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abContactsPanel.xhtml", "chrome://eas4tbsync/content/overlays/abServerSearch.xhtml");
 
         // The abCSS.xul overlay is just adding a CSS file.
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/messengercompose/messengercompose.xul", "chrome://eas4tbsync/content/overlays/abCSS.xul");
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xul", "chrome://eas4tbsync/content/overlays/abCSS.xul");
-        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xul", "chrome://eas4tbsync/content/overlays/abCSS.xul");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome://eas4tbsync/content/overlays/abCSS.xhtml");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/abNewCardDialog.xhtml", "chrome://eas4tbsync/content/overlays/abCSS.xhtml");
+        await eas.overlayManager.registerOverlay("chrome://messenger/content/addressbook/addressbook.xhtml", "chrome://eas4tbsync/content/overlays/abCSS.xhtml");
 
         eas.overlayManager.startObserving();
                 
         try {
             // Create a basic error info (no accountname or foldername, just the provider)
             let eventLogInfo = new TbSync.EventLogInfo("eas");
-            
-            if (TbSync.lightning.isAvailable()) {
-                
-                //get timezone info of default timezone (old cal. without dtz are depricated)
-                eas.defaultTimezone = (TbSync.lightning.cal.dtz && TbSync.lightning.cal.dtz.defaultTimezone) ? TbSync.lightning.cal.dtz.defaultTimezone : TbSync.lightning.cal.calendarDefaultTimezone();
-                eas.utcTimezone = (TbSync.lightning.cal.dtz && TbSync.lightning.cal.dtz.UTC) ? TbSync.lightning.cal.dtz.UTC : TbSync.lightning.cal.UTC();
-                if (eas.defaultTimezone && eas.defaultTimezone.icalComponent) {
-                    TbSync.eventlog.add("info", eventLogInfo, "Default timezone has been found.");                    
-                } else {
-                    TbSync.eventlog.add("info", eventLogInfo, "Default timezone is not defined, using UTC!");
-                    eas.defaultTimezone = eas.utcTimezone;
-                }
-
-                eas.defaultTimezoneInfo = eas.tools.getTimezoneInfo(eas.defaultTimezone);
-                if (!eas.defaultTimezoneInfo) {
-                    TbSync.eventlog.add("info", eventLogInfo, "Could not create defaultTimezoneInfo");
-                }
-                
-                //get windows timezone data from CSV
-                let aliasData = await eas.tools.fetchFile("chrome://eas4tbsync/content/timezonedata/Aliases.csv");
-                let aliasNames = {};
-                for (let i = 0; i<aliasData.length; i++) {
-                    let lData = aliasData[i].split(",");
-                    if (lData.length<2) continue;
-                    aliasNames[lData[0].toString().trim()] = lData[1].toString().trim().split(" ");
-                }
-
-                let csvData = await eas.tools.fetchFile("chrome://eas4tbsync/content/timezonedata/WindowsTimezone.csv");
-                for (let i = 0; i<csvData.length; i++) {
-                    let lData = csvData[i].split(",");
-                    if (lData.length<3) continue;
-                    
-                    let windowsZoneName = lData[0].toString().trim();
-                    let zoneType = lData[1].toString().trim();
-                    let ianaZoneName = lData[2].toString().trim();
-                    
-                    if (zoneType == "001") eas.windowsToIanaTimezoneMap[windowsZoneName] = ianaZoneName;
-                    if (ianaZoneName == eas.defaultTimezoneInfo.std.id) eas.defaultTimezoneInfo.std.windowsZoneName = windowsZoneName;
-                                        
-                    // build the revers map as well, which is many-to-one, grap iana aliases from the csvData and from the aliasData
-                    // 1. multiple iana zones map to the same windows zone
-                    let ianaZones = ianaZoneName.split(" "); 
-                    for (let ianaZone of ianaZones) {
-                        eas.ianaToWindowsTimezoneMap[ianaZone] = windowsZoneName;
-                        if (aliasNames.hasOwnProperty(ianaZone)) {
-                            for (let aliasName of aliasNames[ianaZone]) {
-                                // 2. multiple iana zonescan be an alias to a main iana zone
-                                eas.ianaToWindowsTimezoneMap[aliasName] = windowsZoneName;
-                            }
-                        }
-                    }
-                }
-
-                let tzService = TbSync.lightning.cal.getTimezoneService();
-                let enumerator = tzService.timezoneIds;
-                while (enumerator.hasMore()) {
-                    let id = enumerator.getNext();
-                    if (!eas.ianaToWindowsTimezoneMap[id]) {
-                        TbSync.eventlog.add("info", eventLogInfo, "The IANA timezone <"+id+"> cannot be mapped to any Exchange timezone.");
-                    }
-                }
-
-                
-                //If an EAS calendar is currently NOT associated with an email identity, try to associate, 
-                //but do not change any explicitly set association
-                // - A) find email identity and accociate (which sets organizer to that user identity)
-                // - B) overwrite default organizer with current best guess
-                //TODO: Do this after email accounts changed, not only on restart? 
-                let providerData = new TbSync.ProviderData("eas");
-                let folders = providerData.getFolders({"selected": true, "type": ["8","13"]});
-                for (let folder of folders) {
-                    let calendar = TbSync.lightning.cal.getCalendarManager().getCalendarById(folder.getFolderProperty("target"));
-                    if (calendar && calendar.getProperty("imip.identity.key") == "") {
-                        //is there an email identity for this eas account?
-                        let authData = eas.network.getAuthData(folder.accountData);
-
-                        let key = eas.tools.getIdentityKey(authData.user);
-                        if (key === "") { //TODO: Do this even after manually switching to NONE, not only on restart?
-                            //set transient calendar organizer settings based on current best guess and 
-                            calendar.setProperty("organizerId", TbSync.lightning.cal.email.prependMailTo(authData.user));
-                            calendar.setProperty("organizerCN",  calendar.getProperty("fallbackOrganizerName"));
-                        } else {                      
-                            //force switch to found identity
-                            calendar.setProperty("imip.identity.key", key);
-                        }
-                    }
-                }
+                            
+            //get timezone info of default timezone (old cal. without dtz are depricated)
+            eas.defaultTimezone = (TbSync.lightning.cal.dtz && TbSync.lightning.cal.dtz.defaultTimezone) ? TbSync.lightning.cal.dtz.defaultTimezone : TbSync.lightning.cal.calendarDefaultTimezone();
+            eas.utcTimezone = (TbSync.lightning.cal.dtz && TbSync.lightning.cal.dtz.UTC) ? TbSync.lightning.cal.dtz.UTC : TbSync.lightning.cal.UTC();
+            if (eas.defaultTimezone && eas.defaultTimezone.icalComponent) {
+                TbSync.eventlog.add("info", eventLogInfo, "Default timezone has been found.");                    
             } else {
-                    TbSync.eventlog.add("info", eventLogInfo, "Lightning was not loaded, creation of timezone objects has been skipped.");
+                TbSync.eventlog.add("info", eventLogInfo, "Default timezone is not defined, using UTC!");
+                eas.defaultTimezone = eas.utcTimezone;
+            }
+
+            eas.defaultTimezoneInfo = eas.tools.getTimezoneInfo(eas.defaultTimezone);
+            if (!eas.defaultTimezoneInfo) {
+                TbSync.eventlog.add("info", eventLogInfo, "Could not create defaultTimezoneInfo");
+            }
+            
+            //get windows timezone data from CSV
+            let aliasData = await eas.tools.fetchFile("chrome://eas4tbsync/content/timezonedata/Aliases.csv");
+            let aliasNames = {};
+            for (let i = 0; i<aliasData.length; i++) {
+                let lData = aliasData[i].split(",");
+                if (lData.length<2) continue;
+                aliasNames[lData[0].toString().trim()] = lData[1].toString().trim().split(" ");
+            }
+
+            let csvData = await eas.tools.fetchFile("chrome://eas4tbsync/content/timezonedata/WindowsTimezone.csv");
+            for (let i = 0; i<csvData.length; i++) {
+                let lData = csvData[i].split(",");
+                if (lData.length<3) continue;
+                
+                let windowsZoneName = lData[0].toString().trim();
+                let zoneType = lData[1].toString().trim();
+                let ianaZoneName = lData[2].toString().trim();
+                
+                if (zoneType == "001") eas.windowsToIanaTimezoneMap[windowsZoneName] = ianaZoneName;
+                if (ianaZoneName == eas.defaultTimezoneInfo.std.id) eas.defaultTimezoneInfo.std.windowsZoneName = windowsZoneName;
+                                    
+                // build the revers map as well, which is many-to-one, grap iana aliases from the csvData and from the aliasData
+                // 1. multiple iana zones map to the same windows zone
+                let ianaZones = ianaZoneName.split(" "); 
+                for (let ianaZone of ianaZones) {
+                    eas.ianaToWindowsTimezoneMap[ianaZone] = windowsZoneName;
+                    if (aliasNames.hasOwnProperty(ianaZone)) {
+                        for (let aliasName of aliasNames[ianaZone]) {
+                            // 2. multiple iana zonescan be an alias to a main iana zone
+                            eas.ianaToWindowsTimezoneMap[aliasName] = windowsZoneName;
+                        }
+                    }
+                }
+            }
+
+            let tzService = TbSync.lightning.cal.getTimezoneService();
+            let enumerator = tzService.timezoneIds;
+            while (enumerator.hasMore()) {
+                let id = enumerator.getNext();
+                if (!eas.ianaToWindowsTimezoneMap[id]) {
+                    TbSync.eventlog.add("info", eventLogInfo, "The IANA timezone <"+id+"> cannot be mapped to any Exchange timezone.");
+                }
+            }
+
+            
+            //If an EAS calendar is currently NOT associated with an email identity, try to associate, 
+            //but do not change any explicitly set association
+            // - A) find email identity and accociate (which sets organizer to that user identity)
+            // - B) overwrite default organizer with current best guess
+            //TODO: Do this after email accounts changed, not only on restart? 
+            let providerData = new TbSync.ProviderData("eas");
+            let folders = providerData.getFolders({"selected": true, "type": ["8","13"]});
+            for (let folder of folders) {
+                let calendar = TbSync.lightning.cal.getCalendarManager().getCalendarById(folder.getFolderProperty("target"));
+                if (calendar && calendar.getProperty("imip.identity.key") == "") {
+                    //is there an email identity for this eas account?
+                    let authData = eas.network.getAuthData(folder.accountData);
+
+                    let key = eas.tools.getIdentityKey(authData.user);
+                    if (key === "") { //TODO: Do this even after manually switching to NONE, not only on restart?
+                        //set transient calendar organizer settings based on current best guess and 
+                        calendar.setProperty("organizerId", TbSync.lightning.cal.email.prependMailTo(authData.user));
+                        calendar.setProperty("organizerCN",  calendar.getProperty("fallbackOrganizerName"));
+                    } else {                      
+                        //force switch to found identity
+                        calendar.setProperty("imip.identity.key", key);
+                    }
+                }
             }
         } catch(e) {
             Components.utils.reportError(e);        
@@ -192,7 +188,7 @@ var Base = class {
     /**
      * Returns version of the TbSync API this provider is using
      */
-    static getApiVersion() { return "2.2"; }
+    static getApiVersion() { return "2.3"; }
 
 
     /**
@@ -203,11 +199,11 @@ var Base = class {
         
         switch (size) {
             case 16:
-                return "chrome://eas4tbsync/skin/" + base + "16.png";
+                return "chrome://eas4tbsync/content/skin/" + base + "16.png";
             case 32:
-                return "chrome://eas4tbsync/skin/" + base + "32.png";
+                return "chrome://eas4tbsync/content/skin/" + base + "32.png";
             default :
-                return "chrome://eas4tbsync/skin/" + base + "64.png";
+                return "chrome://eas4tbsync/content/skin/" + base + "64.png";
         }
     }
 
@@ -219,8 +215,8 @@ var Base = class {
         return {
             "Schiessl, Michael 1" : {name: "Michael Schiessl", description: "Tine 2.0", icon: "", link: "" },
             "Schiessl, Michael 2" : {name: "Michael Schiessl", description: " Exchange 2007", icon: "", link: "" },
-            "netcup GmbH" : {name: "netcup GmbH", description : "SOGo", icon: "chrome://eas4tbsync/skin/sponsors/netcup.png", link: "http://www.netcup.de/" },
-            "nethinks GmbH" : {name: "nethinks GmbH", description : "Zarafa", icon: "chrome://eas4tbsync/skin/sponsors/nethinks.png", link: "http://www.nethinks.com/" },
+            "netcup GmbH" : {name: "netcup GmbH", description : "SOGo", icon: "chrome://eas4tbsync/content/skin/sponsors/netcup.png", link: "http://www.netcup.de/" },
+            "nethinks GmbH" : {name: "nethinks GmbH", description : "Zarafa", icon: "chrome://eas4tbsync/content/skin/sponsors/nethinks.png", link: "http://www.nethinks.com/" },
             "Jau, Stephan" : {name: "Stephan Jau", description: "Horde", icon: "", link: "" },
             "Zavar " : {name: "Zavar", description: "Zoho", icon: "", link: "" },
         };
@@ -244,31 +240,22 @@ var Base = class {
 
 
     /**
-     * Returns the URL of the string bundle file of this provider, it can be
-     * accessed by TbSync.getString(<key>, <provider>)
-     */
-    static getStringBundleUrl() {
-        return "chrome://eas4tbsync/locale/eas.properties";
-    }
-
-
-    /**
      * Returns URL of the new account window.
      *
      * The URL will be opened via openDialog(), when the user wants to create a
      * new account of this provider.
      */
     static getCreateAccountWindowUrl() {
-        return "chrome://eas4tbsync/content/manager/createAccount.xul";
+        return "chrome://eas4tbsync/content/manager/createAccount.xhtml";
     }
 
 
     /**
      * Returns overlay XUL URL of the edit account dialog
-     * (chrome://tbsync/content/manager/editAccount.xul)
+     * (chrome://tbsync/content/manager/editAccount.xhtml)
      */
     static getEditAccountOverlayUrl() {
-        return "chrome://eas4tbsync/content/manager/editAccountOverlay.xul";
+        return "chrome://eas4tbsync/content/manager/editAccountOverlay.xhtml";
     }
 
 
@@ -385,7 +372,7 @@ var Base = class {
                         value: results[count].Properties.DisplayName + " <" + results[count].Properties.EmailAddress + ">", 
                         comment: TbSync.getString("autocomplete.serverdirectory", "eas") + " ("+accountData.getAccountProperty("accountname")+")",
                         icon: eas.Base.getProviderIcon(16, accountData),
-                        style: "EASGAL",
+                        style: "EASGAL-abook",
                     });
                 }
             }
@@ -586,7 +573,8 @@ var TargetData_addressbook = class extends TbSync.addressbook.AdvancedTargetData
     }
     
     async createAddressbook(newname) {
-        let dirPrefId = MailServices.ab.newAddressBook(newname, "", 2);  /* kPABDirectory - return abManager.newAddressBook(name, "moz-abmdbdirectory://", 2); */
+        // https://searchfox.org/comm-central/source/mailnews/addrbook/src/nsDirPrefs.h
+        let dirPrefId = MailServices.ab.newAddressBook(newname, "", 101);
         let directory = MailServices.ab.getDirectoryFromId(dirPrefId);
         
         eas.sync.resetFolderSyncInfo(this.folderData);
@@ -658,7 +646,9 @@ var TargetData_calendar = class extends TbSync.lightning.AdvancedTargetData {
 
         newCalendar.setProperty("color", this.folderData.getFolderProperty("targetColor"));
         newCalendar.setProperty("relaxedMode", true); //sometimes we get "generation too old for modifyItem", check can be disabled with relaxedMode
-        newCalendar.setProperty("calendar-main-in-composite",true);
+        // removed in TB78, as it seems to not fully enable the calendar, if present before registering
+        // https://searchfox.org/comm-central/source/calendar/base/content/calendar-management.js#385
+        //newCalendar.setProperty("calendar-main-in-composite",true);
         newCalendar.setProperty("readOnly", this.folderData.getFolderProperty("downloadonly"));
         
         switch (this.folderData.getFolderProperty("type")) {
@@ -744,7 +734,7 @@ var StandardFolderList = class {
                 src = "todo16.png";
                 break;
         }
-        return "chrome://tbsync/skin/" + src;
+        return "chrome://tbsync/content/skin/" + src;
     }
 
 

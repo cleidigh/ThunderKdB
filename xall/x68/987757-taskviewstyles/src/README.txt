@@ -1,6 +1,8 @@
-README version 1.0
+README version 1.1
 
 Title: TaskviewStyles
+
+Authors: Sungho Hwang, John Bieling.
 
 Required addons: Lightning.
 
@@ -9,6 +11,6 @@ Change taskview styles
 
 send a gift to a friend Eunjo.
 
-January 07 2020.
+July 20 2020.
 
 From Sungho Hwang.
