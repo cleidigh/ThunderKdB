@@ -1,0 +1,160 @@
+{
+    "id": 467893,
+    "authors": [
+        {
+            "id": 10327347,
+            "name": "NISHIMURA Ryohei",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/nattoheaven/",
+            "username": "nattoheaven",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 44,
+    "categories": {
+        "seamonkey": [
+            "miscellaneous"
+        ],
+        "thunderbird": [
+            "calendar",
+            "composition"
+        ]
+    },
+    "contributions_url": null,
+    "created": "2013-10-15T19:18:26Z",
+    "current_version": {
+        "id": 2473436,
+        "compatibility": {
+            "thunderbird": {
+                "max": "73.0",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/macro-template/versions/2473436",
+        "files": [
+            {
+                "id": 1016564,
+                "created": "2020-02-14T22:05:32Z",
+                "hash": "sha256:ef1c0197fd16b70e92ffd46a8db231f8e6c9ca94d808bb9425537a3fd345fda0",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 14081,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016564/macro_template-2.1.1.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/macro-template/versions/2.1.1.1",
+        "version": "2.1.1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Macro Template is an Add-on to replace <em>To / Cc / Bcc / Subject</em> fields and bodies of mail templates with the following macros:\nThank you for supporting Thunderbird 68 by <a href=\"https://github.com/hiromiya-lndbl\" rel=\"nofollow\">hiromiya-lndbl</a>.\n\n<ul><li> <em>{{{y}}}</em> is replaced to the year without zero padding when you open the template.</li><li> <em>{{{yyyy}}}</em> to the year with zero padding.</li><li> <em>{{{M}}}</em> to the numerical month without zero padding.</li><li> <em>{{{MM}}}</em> to the numerical month with zero padding.</li><li> <em>{{{MMM}}}</em> to the 3-letter roman month name.</li><li> <em>{{{MMMM}}}</em> to the roman month fullname.</li><li> <em>{{{d}}}</em> to the day in month without zero padding.</li><li> <em>{{{dd}}}</em> to the day in month with zero padding.</li><li> <em>{{{E}}}</em> to the day fullname in week.</li><li> <em>{{{EEE}}}</em> to the 3-letter day name in week.</li><li> <em>{{{H}}}</em> to the hour (0 - 23) without zero padding.</li><li> <em>{{{HH}}}</em> to the hour (0 - 23) with zero padding.</li><li> <em>{{{m}}}</em> to the minute without zero padding.</li><li> <em>{{{mm}}}</em> to the minute with zero padding.</li><li> <em>{{{s}}}</em> to the second without zero padding.</li><li> <em>{{{ss}}}</em> to the second with zero padding.</li></ul>",
+        "ja": "Macro Template は、日付用のマクロで、メールテンプレートの <em>To / Cc / Bcc / 件名 / 本文</em>を置換するアドオンです。\n<a href=\"https://github.com/hiromiya-lndbl\" rel=\"nofollow\">hiromiya-lndbl</a> 氏による Thunderbird 68 への対応に感謝します。\n\n<ul><li> <em>{{{y}}}</em> はテンプレートを開いた時の、ゼロ埋めをしない年に変換されます。 </li><li> <em>{{{yyyy}}}</em> はゼロ埋めをする年です。 </li><li> <em>{{{M}}}</em> はゼロ埋めをしない数字の月です。 </li><li> <em>{{{MM}}}</em> はゼロ埋めをする数字の月です。 </li><li> <em>{{{MMM}}}</em> は英語の月名で、3 文字に省略します。 </li><li> <em>{{{MMMM}}}</em> は英語の月名で、省略はしません。 </li><li> <em>{{{d}}}</em> はゼロ埋めをしない日です。 </li><li> <em>{{{dd}}}</em> はゼロ埋めをする日です。 </li><li> <em>{{{E}}}</em> は英語の曜日で、省略はしません。 </li><li> <em>{{{EEE}}}</em> は英語の曜日で、3 文字に省略します </li><li> <em>{{{H}}}</em> はゼロ埋めをしない時 (0 - 23) です。 </li><li> <em>{{{HH}}}</em> はゼロ埋めをする時 (0 - 23) です。 </li><li> <em>{{{m}}}</em> はゼロ埋めをしない分です。 </li><li> <em>{{{mm}}}</em> はゼロ埋めをする分です。 </li><li> <em>{{{s}}}</em> はゼロ埋めをしない秒です。 </li><li> <em>{{{ss}}}</em> はゼロ埋めをする秒です。 </li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/macro-template/edit",
+    "guid": "macrotemplate@nattoheaven.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/nattoheaven/macrotemplate",
+        "ja": ""
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-07-21T12:11:40Z",
+    "name": {
+        "en-US": "Macro Template",
+        "ja": "Macro Template"
+    },
+    "previews": [
+        {
+            "id": 115517,
+            "caption": null,
+            "image_size": [
+                700,
+                383
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/115/115517.png?modified=1530209044",
+            "thumbnail_size": [
+                320,
+                175
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/115/115517.png?modified=1530209044"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.55518,
+        "count": 2,
+        "average": 5,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/macro-template/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/467893",
+    "slug": "macro-template",
+    "status": "public",
+    "summary": {
+        "en-US": "Macro Template is to replace mail templates with macros for date formatting.",
+        "ja": "Macro Template は、日付用のマクロでメールテンプレートを置換するアドオンです。"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/nattoheaven/macrotemplate"
+    },
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/macro-template/",
+    "weekly_downloads": 28,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true
+        }
+    }
+}
