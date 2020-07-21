@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="ip.js"/>
+    <script type="application/x-javascript" src="tracerouter.js"/>
+    <script type="application/x-javascript" src="epvp.js"/>
+    <script type="application/x-javascript" src="thunderbird.js"/>
+
+    <!-- //// -->
+    <!--
+    	<hbox id="expandedHeadersBottomBox">
+    		<vbox>
+                    <button id="epvpVisualizePath" style=" margin-left:2px; margin-right:2px;" class="msgHeaderView-button" label="Path Visualize" onclick="epvp_tc.visualize();"/>
+        </vbox>
+    	</hbox>
+    -->
+
+    <toolbar id="header-view-toolbar">
+        <toolbarbutton
+            id="epvpVisualizePath"
+            type="button"
+            label="Path Visualize"
+            class="toolbarbutton-1 msgHeaderView-button hdrPathVisualizeButton"
+            image="chrome://epvp/skin/icon19p.png"
+            oncommand="runEPVP();">
+        </toolbarbutton>
+        <!-- ////- -->
+        <toolbarbutton
+             id="epvpVisualizePathReply"
+             type="button"
+             label="Reply with Path"
+             class="menuitem-iconic hdrReplyButton"
+             oncommand="runEPVP(1); event.stopPropagation();" >
+        </toolbarbutton>
+        <!-- ////- -->
+    </toolbar>
+    <!-- onclick="epvp_tc.visualize();" -->
+    <!-- //// -->
+
+    <!-- ////- -->
+    <!--
+    <toolbar id="header-view-toolbar">
+        <toolbarbutton id="epvpVisualizePathReply"
+            label="Reply with Path Visualize"
+            class="toolbarbutton-1 msgHeaderView-button hdrPathVisualizeButton hdrReplyButton"
+            image="chrome://epvp/skin/icon.png"
+            onclick="runEPVP(1);"/>
+    </toolbar>
+    -->
+    <!-- ////- -->
+
+</overlay>

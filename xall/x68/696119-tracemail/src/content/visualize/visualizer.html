@@ -1,0 +1,796 @@
+
+<!-- The beginning and end of this HTML document are added in the “createVisualizerHTML” function. -->
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>
+        TracEmail
+    </title>
+    <link rel="shortcut icon" href="chrome://epvp/skin/icon64p.png">
+    <style>
+        .body{
+            width: 754px;
+            position: relative;
+            margin: 15px;
+            font-family: Arial, serif;
+            background-color: #FFFFFF;
+        }
+        .header {
+            float: left;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .logo-container a {
+            border: 1px solid #FFFFFF;
+            display: inline-block;
+            line-height: 0;
+            padding: 5px 0;
+        }
+        .logo-container a:hover {
+            border: 1px solid #000000;
+        }
+        .header .logo-container img {
+            height: 50px;
+        }
+
+        a img {
+            border: none;
+        }
+
+        #iewarning {
+            background-color: rgb(255,0,0);
+            height: 50px;
+            text-align: left;
+            font-weight: bold;
+            margin: 15px 0;
+            clear: both;
+        }
+        .dlhref {
+            float: left;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: inline-block;
+            text-align: center;
+            font-size: 10pt;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .dlhref a
+        {
+            display: inline-block;
+            color: #000000;
+        }
+        .dlhref a:visited
+        {
+            color: #000000;
+        }
+
+        .maildata {
+            width: 100%;
+            text-align: center;
+            margin: 10px 0 10px 0;
+        }
+        .slabel {
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 10px 0 10px;
+        }
+
+        sup {
+            font-size: 0.9em;
+        }
+        /* ---------------------------------------------------------------*/
+        .bannerclass {
+            margin: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+        .bannertext1{
+            font-size: 40px;
+        }
+        .bannertext2{
+            font-size: 15px;
+        }
+        /* ---------------------------------------------------------------*/
+        .content {
+            width: 100%;
+            clear: both;
+            position: relative;
+        }
+        .maparea{
+            padding-bottom: 0;
+            position: relative;
+        }
+        .map{
+            width: 750px;
+            height: 350px;
+            background-color: #CCEDE2;
+            border: 2px solid black;
+            overflow: hidden;
+        }
+
+        .floatdiv{
+            position: absolute;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.85);
+            margin-left: 10px;
+            max-width: 300px;
+        }
+
+        .symbols {
+            /*float:left;*/
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            position: absolute;
+            border: 2px solid black;
+            height: 105;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        #symbolstable{
+            /*border: 1px solid black;*/
+            margin: 2px;
+
+        }
+        #symbolstable td{
+            border: 1px solid black;
+            min-width: 20px;
+        }
+        /* ---------------------------------------------------------------*/
+        .routesummary {
+            padding-bottom: 10px;
+        }
+        #routesummarytable{
+            /*width: 780px;*/
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #routesummarytable th{
+            background-color: grey;
+            min-width: 150px;
+        }
+        #routesummarytable tr.d0{
+            background-color: rgba(114, 119, 167, 0.9);
+            margin-left: 20px;
+        }
+        #routesummarytable tr.d1{
+            background-color: rgba(84, 129, 167, 0.9);
+        }
+        #routesummarytable td{
+            padding: 2px 7px;
+        }
+        /* ---------------------------------------------------------------*/
+        .footer {
+        }
+
+        .footer .logo-container {
+            margin: 30px 0;
+            text-align: center;
+            width: 100%;
+            float: left;
+        }
+
+        .footer .logo-container a {
+            display: inline-block;
+            margin: 0 30px;
+            line-height: 0;
+            padding: 5px 0;
+        }
+
+        .download {
+            font-size: 17px;
+            text-align: center;
+            margin: 15px;
+        }
+
+        .support {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            clear: both;
+            height: 35px;
+            margin: 0 0 15px 0;
+        }
+
+        .support img {
+            float: left;
+            margin-right: 15px;
+        }
+
+        .help {
+            text-align: justify;
+            border: 2px dotted rgba(0, 0, 0, 0.5);
+            padding: 6px;
+        }
+
+        .credits {
+            text-align: justify;
+            font-size: 11px;
+        }
+        /* ---------------------------------------------------------------*/
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="body">
+<!-- Header Begin -->
+<div  class="header" id="header">
+    <div class="logo-container">
+        <!-- pi-logo -->
+        <a href="https://www.privacyinternational.org/" target="_blank">
+            <img src="data:image/gif;base64,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" />
+        </a>
+    </div>
+
+    <!-- Classification Begin -->
+    <div class="bannerclass">
+        <span class="bannertext1">Email Privacy Status:</span><br/>
+        <span class="bannertext2">communication surveillance in countries through which this email was routed <br/>(based on routing path simulation)</span>
+    </div>
+    <!-- Classification End -->
+
+</div>
+<!-- Header End -->
+
+<!-- Meta begin -->
+<div class="maildata">
+    <span class="slabel">From:</span>#email.sender#
+    <span class="slabel">To:</span>#email.receiver#
+    <br />
+    <span class="slabel">Sent at:</span>#email.date#
+</div>
+<!-- Meta end -->
+
+<div id="iewarning">
+    <img style="float:left; margin:3px" src="data:image/png;base64,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"/>
+    <div>You are using Internet Explorer! This browser is not SVG compatible, to see the visual path of the email, please <a href="http://www.mozilla.org/firefox/">install Mozilla Firefox</a> or Google Chrome or Apple Safari.</div>
+</div>
+<!-- Content Begin -->
+<!-- Save result start -->
+<script type="text/javascript">
+    function save() {
+        try {
+
+            //parse url
+            var url = new String(window.location);
+            ////
+            //url = url.match("content.*html");
+            url = url.match("content.*html").pop();
+            ////
+
+            //open and read file
+
+            ////
+            function initFile(id, file) {
+                var directoryService = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
+                var profileFolder = directoryService.get("ProfD", Components.interfaces.nsIFile);
+                try {
+                    profileFolder.append("extensions");
+                    profileFolder.append(id);
+                    var d = file.split("/");
+                    for (var i in d) {
+                        profileFolder.append(d[i]);
+                    }
+                    return profileFolder;
+                } catch (e) {
+                    alert(e + " id: " + id + " file: " + file + " caller: " + initFile.caller);
+                    throw e;
+                }
+            }
+            ////
+
+            ////
+            //var em = Components.classes["@mozilla.org/extensions/manager;1"].
+            //         getService(Components.interfaces.nsIExtensionManager);
+            //var originalfile = em.getInstallLocation("epvp@pet-portal.eu").getItemFile("epvp@pet-portal.eu", url);
+            var originalfile = initFile("epvp@pet-portal.eu", url);
+            ////
+
+            var is = Components.classes["@mozilla.org/network/file-input-stream;1"]
+                .createInstance( Components.interfaces.nsIFileInputStream );
+            is.init( originalfile,0x01, 00004, null);
+            var sis = Components.classes["@mozilla.org/scriptableinputstream;1"]
+                .createInstance( Components.interfaces.nsIScriptableInputStream );
+            sis.init( is );
+            var originalcontent = sis.read( sis.available() );
+
+
+            //cleaning
+            originalcontent = originalcontent.replace(/<!-- Save result start -->[\s\S]*<!-- Save result end -->/,"");
+
+            ////-
+            var hideip = document.getElementById('hideip').checked;
+            if (hideip) {
+                originalcontent = originalcontent.replace(/(\d{1,3}\.\d{1,3})\.\d{1,3}\.\d{1,3}/g, "$1.x.x");
+            }
+            ////-
+            ////--
+            var hidemeta = document.getElementById('hidemeta').checked;
+            if (hidemeta) {
+                originalcontent = originalcontent.replace(/<!-- Meta begin -->[\s\S]*<!-- Meta end -->/, "");
+            }
+            ////--
+
+            //saving
+            var nsIFilePicker = Components.interfaces.nsIFilePicker;
+            var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
+            fp.init(window, "Select a file to the result of visualizer", nsIFilePicker.modeSave);
+            fp.appendFilters(nsIFilePicker.filterHTML);
+            fp.defaultString = "#filename#.html";
+
+            fp.open(function (res) {
+                if (res == nsIFilePicker.returnOK || res == nsIFilePicker.returnReplace){
+                    var file = fp.file;
+                    var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance(Components.interfaces.nsIFileOutputStream);
+
+                    foStream.init(file, 0x02 | 0x08 | 0x20, 0666, 0);
+
+                    var outfile = Components.classes["@mozilla.org/intl/converter-output-stream;1"].
+                    createInstance(Components.interfaces.nsIConverterOutputStream);
+                    outfile.init(foStream, "UTF-8", 0, 0);
+                    outfile.writeString( originalcontent );
+                    outfile.close();
+                }
+            });
+
+        } catch (e) {}
+    }
+    ////-
+</script>
+
+
+<div class="dlhref">
+    <a style="cursor:pointer" onclick="save();">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAGBUlEQVRoge2aXWwc1RXHf/fM7K7Xm+z6Yx0nTSCB4MQEBSUUIqS2ihxaIaRK0D6k9KUPfajUl6oqEh9tIaAgBGpV4AUQbyD1JQ+0UitVramN0/YhVGoClahC0lIgIQnYMXYW27Mf5/ZhZjZjez9mvEuTSBzJmv/ce+5/zsz9349z14YV9sTkyBhwQESGVNUCiAiqWr8aY7DW1u+jPklxTF+jqp8AE4fGTk1G4zWRwEdE5O+qWmj3sCvwAlE8p6p3HBo7dQpAguC3Ae8CBUCDPxpgALXWtvJJipO2KwDvBjHjBm91InBCRKQVjpbF8U/KGRMDnAD6zOGpnWOqOgGoiIgGfdUIR8ua+STFHXAIcECAu7h27S4XKIY9CdeMhEI8KIBVVcIu0sAa4WhZHP+knAkxquoP4m7bnHcOr1ICLEYEq4orGfqz13X9WeEsBF2RkJFPl87y0FeOM5QbifoJwMOvF8mlBsQYacqZGAN0S0Ll6qJu7/uaDuVGULUr2+pI/37KtcWuSmjZ1+zULBYrpn630mrUuvk4oNsSMiLG2qZtfR9Tv73qJKRW1QZLf4O2gc8qaV09EroS1n0JtWjr+1zNEvJBawmtnp06X8i6uZWQFm19fDX3wBeDOLklkpBXLVHRJXElTcrJAtLxILbWUrOeVHQJrVZJSVYy7rrWHBHsAmG+2TK5uFT+WPcOH5RdG+7W/1z8GyfOv8ZM+b+SdQqacdbjOK4EEgJolLj45b6EsFTls/KsVnRJdgzu19HiPWzo3S7/nP6dHv/oCOszw3ESmni70XJtgZ2DX+f+3S8BcOvwt7jv5l8y751n8r3n+OuHLyJVwTU9bbmq6lEqf0Kx90bu3/0St236zrL6W4a/SbmywOnZqVh8sSRka5as01efYML6fGYj944+LfeOPs3xc0c48s6PpOSdpxnP3NJH9Lh5+eHtv+f6vn1RrmU713xmI2priNMlCaWdXnnz3Kt63+gvJJsuhMWX5WGEvZsOyt5NB/W9uTehiYS+u/tl2ZLfE+bUDXNiQI9+8AL9PZtjSSjWLGQwFNJf4udvbKZS84h8AADU+jGpWm4o7GvIoapsye8Jp+xV9SHnT1/fyPrUEGHO0M5C2SxbVBph10lLPr2BB8fzslCebegjYiTC2cRnOY5c5aE/DZByM5Jye+Jw+HGHXyfO4uFImkJmsz4yUdRPF892LSeu1Dx94I+9mk0XcMh8vguZGJf+zDYem7yO2cUPV8kpEZcIS9V5HhzPsy41jCuZ5BwhUZLudp2UFHPb5dDk9UwvnI4llUb4kvexPDw+SF92i6TcTFKO5BJaVmaNFnM38fjkiJ4rvZNUNjqz+D4/+/NGHejdirHOWmTY+V5IjMNQbjtPTd3CmUtvxZKTiHChdJLHJ7cxkL0BMZ2d7KxJQtFyR1zZsG5EnvnLHt6fPda2+8/M/UOenBqVodxNuE5qTdLrSEKVmqclb0ZL3rQuVC5S8qb1s/JFXZcu8sTRO/WtC79pKpu3L/yWx974svamB3SpOkeUo+TNaE0rn+/JXE0rZNxevnHjI6ZmPWuMRdXff4pYVC3/njnKruI9pKSnvsCJESq1RU7PTPG9W5/D38X6bUUs1hock+HoB8/jVRdwTKptLMb4z030AnPeWX519xI0OvRZYRpZbdUqKcny7V3Ptmzz1a0/4Md/yDCQ3do2Fhsc3yTKB2parftFTBrhZjxN/Otl1tTq7q1iWUYQewz4vaZ2RWLeCQ6vwc9WJOC+PI3GnYV63T6OnXlFjJ+YdzKDrJrZjDFy7Mwr5NIDiWah2BmZqmouXZTX/vUT/fXb3yc4Ohcb+KwFq/rbab/MkEsPSNbtV1VttoVeW0YWtVxqkFxqkLDnwsG6VtysPq65wccgfKN2A2fFgEx+jtOGMzEGLsYexJGybg/iNWBUdVaAca5dGzcAh6d2zgH5KxxMUpt/dP/JQrgO7AsHzzUiIVT18rHGobFTJ4EdwHxQFl0hV66W0sYnKU7abh7YEcR8+b9VQjs8tfMAcAAoEmPP838yA0wDE4/uPzkRrfgfEYzcfaXu3P8AAAAASUVORK5CYII=" />
+        <br/>Save as HTML
+    </a><br />
+    <input type="checkbox" id="hideip"/><label for="hideip">Hide IPs</label>
+    <br />
+    <input type="checkbox" id="hidemeta"/><label for="hidemeta">Hide meta</label>
+</div>
+<!-- Save result end -->
+<div class="content" id="content">
+    <!-- Map area-->
+    <div class="maparea">
+        <!-- Symbols Begin -->
+        <div class="symbols" id="symbols">
+            <table id="symbolstable">
+                <tr><td id="class2">
+                    <table><tr><td style="background-color:rgba(0,135,0,0.95);"></td><td style="border:none;">Respected<sup><a style="cursor:pointer;" onclick='scrolltofootnotes();'>1</a></sup></td></tr></table>
+                </td></tr>
+                <tr><td id="class1">
+                    <table><tr><td style="background-color:rgba(222,222,0,0.9);"></td><td style="border:none;">Partial Interference</td></tr></table>
+                </td></tr>
+                <tr><td id="class0">
+                    <table><tr><td style="background-color:rgba(180,0,0,0.87);"></td><td style="border:none;">Not respected</td></tr></table>
+                </td></tr>
+            </table>
+        </div>
+        <!-- Symbols End -->
+
+
+        <div class="map" id="map">
+            <script>
+                function countryBubbleWOData(geo, data) {
+                    return [
+                        '<div id = "countrybubble" class = "hoverinfo">' +
+                        '<div align = "center" style="font-weight:bold">' + data.country +"</div><hr/>" +
+                        '<div style = "margin:5px;">' +
+                        "<table><tr><td>Data Retention:</td><td>" + (data.dr == "true" ? "YES" : "NO") + "</td></tr>" +
+                        "<tr><td>Warrantless Interception:</td><td>" + (data.wr == "true" ? "YES" : "NO") + "</td></tr></table>" +
+                        '</div>' +
+                        '<hr/><div style="margin:5px;font-size:smaller;font-style:italic;">Click on the country for details</div>' +
+                        '</div>'
+                    ].join('');
+                }
+
+                function countryBubbleWData(geo, data) {
+                    return [
+                        '<div id = "countrybubble" class = "hoverinfo">' +
+                        '<div align="center" style="font-weight:bold">' + data.country +"</div><hr/>" +
+                        '<div style = "margin:5px;">' +
+                        "<table><tr><td>Data Retention:</td><td>" + (data.dr == "true" ? "YES" : "NO")+"</td></tr>" +
+                        '<tr><td style="margin:5px;font-size:smaller;font-style:italic;">' + data.datarettext + '</td></tr>' +
+                        "<tr><td>Warrantless Interception:</td><td>" + (data.wr == "true" ? "YES" : "NO") + "</td></tr>" +
+                        '<tr><td style="margin:5px;font-size:smaller;font-style:italic;">' + data.warrantlesstext + '</td></tr></table>' +
+                        '</div>' +
+                        '</div>'
+                    ].join('');
+                }
+
+                var countryBubble = countryBubbleWOData;
+
+                var j = 0;
+                while (j < RouteItems.length && RouteItems[j].Latitude == "" && RouteItems[j].Longitude == "")
+                    ++j;
+                var latmax = RouteItems[j].Latitude;
+                var latmin = RouteItems[j].Latitude;
+                var lonmax = RouteItems[j].Longitude;
+                var lonmin = RouteItems[j].Longitude;
+                for (var i = 0; i < RouteItems.length; ++i) {
+                    if (RouteItems[i].Latitude != "" && RouteItems[i].Longitude != "") {
+                        if (RouteItems[i].Latitude > latmax) latmax = RouteItems[i].Latitude;
+                        if (RouteItems[i].Latitude < latmin) latmin = RouteItems[i].Latitude;
+                        if (RouteItems[i].Longitude > lonmax) lonmax = RouteItems[i].Longitude;
+                        if (RouteItems[i].Longitude < lonmin) lonmin = RouteItems[i].Longitude;
+                    }
+                }
+
+                var centerlat = latmax/2 + latmin/2;
+                var centerlon = lonmax/2 + lonmin/2;
+
+                var map = new Datamap({
+                    element: document.getElementById('map'),
+
+                    fills: {
+                        defaultFill : '#acacac',
+                        defaultDot  : '#0000FF',
+                        sender      : '#00aaaa',
+                        receiver    : '#a70090'
+                    },
+
+                    setProjection: function(element) {
+                        var projection = d3.geo.equirectangular()
+                                .center([centerlon, centerlat])
+                                .scale( 39577.412 / Math.sqrt((latmax-latmin)*(latmax-latmin) + (lonmax-lonmin)*(lonmax-lonmin)) )
+                                .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+
+                        var path = d3.geo.path().projection(projection);
+                        return { path: path, projection: projection };
+                    },
+
+                    geographyConfig: {
+                        popupTemplate: function(geo, data) {
+                            return countryBubble(geo, data);
+                        }
+                    }
+                });
+            </script>
+        </div>
+        <!-- Map End -->
+    </div>
+    <!--End map area-->
+    <!-- Route Summary Begin -->
+    <div class="routesummary" id="routesummary">
+        <!--<h3>Route Summary:</h3>-->
+        <br/>
+        <table id="routesummarytable" >
+            <tr><!--<th>Country Classification</th>-->
+                <th >IP Address</th>
+                <th >Country</th>
+                <!--<th>Read More...</th>-->
+                <th style="min-width:10px;"></th>
+                <th >Comments</th>
+            </tr>
+            <tr id="nosender_tr">
+                <td style="background-color:rgba(120,120,120,0.5);">Not available</td>
+                <td style="background-color:rgba(120,120,120,0.5);"></td>
+                <!--<td style="background-color:rgba(120,120,120,0.5);"></td>-->
+                <td style="background-color:rgba(120,120,120,0.5);"></td>
+                <td style="background-color:rgba(120,120,120,0.5);">Sender</td>
+            <tr>
+        </table>
+    </div>
+
+    <!-- Route Summary End -->
+    <!-- Footer Begin -->
+    <div class="footer" id="footer">
+        <div class="download">
+            <a href="http://#websiteurl#">DOWNLOAD</a> the software to create your own Email Privacy Status!
+        </div>
+        <div class="download">
+            <a href="http://#websiteurl#">#websiteurl#</a>
+        </div>
+        <div class="logo-container">
+            <!-- infokom-logo -->
+            <a href="http://www.bme-infokom.hu/" target="_blank">
+                <img src="data:image/gif;base64,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">
+            </a>
+            <!-- pet-logo -->
+            <a href="http://pet-portal.eu/" target="_blank">
+                <img src="data:image/gif;base64,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" />
+            </a>
+            <!-- hit-logo -->
+            <a href="http://www.hit.bme.hu/" target="_blank">
+                <img src="data:image/gif;base64,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">
+            </a>
+        </div>
+        <div class="support">
+            <img  width="60px" src="data:image/gif;base64,R0lGODlhqgBxAMQAABANjyAahs+mHWBNX++/CjAmfIBmTK+MMEAzc3BaVt+yE7+ZJp9/OlBAaY9yQ//MAAAAmQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAACqAHEAAAX/ICSOZGmeaKqubOu+cCzPdG3feK7vfO//wKBwSCwaj8ikcslsOp/QqHRKrVqv2Kx2y+16IYWvWKkAjM/EwGOAbgMTj4N7zhM8Hma6fhTIqwoKd4KDBA0sYXtYDmwsAAeDggIBLAFyiVcKli0DkAYucH6XUgV3oSpqg4YtdoyiUg53qixwD3YPDC2omq5LjpCQDip2CRANBAQpAwS/kZO8SQnLkAQIpwqIEAALsiYFtsDPTN6DAqYmAObOKAAMhNXhTN+3b5Dm8EWoCsvIPwt3ttzuGYHDAEAAfwFzAHhwDYKBeQKRLGjlEFePAQVHIBAQEYk6Pj7MoetIsqRJjSc3/33sciBhyhIHiH1ZaPHliYUcv3BSYBMFJzxaACAYisDfGqLvTAIwwNSALQZNZVLxxexBoZfGqkrCouzXVpvafgXTAmhQzZ4Q5HniIu3OWLQLB+3C0uDOgmU80Ra7k+ARUC3tiB18gM0mg4YQlFG8IqCwgbc2DYQqIBVLOr2YM2vezLmz58+gQ4vmtXhOgpUkAV0SULnkw8Ju1OQ8aQeyG1r2SDd9yHB3Ui4HFwiXJkD4grOuAsiDlPFLWWYHcl+CNc0lF6qCCJQO91MQajHyWt+j5d1NXEFz79khwFu8TqsNqEsXpSY6GAWzzxxYkMfYdl4JVMbOd12sNQIA7o2m4P+CDDbo4IMQRijhhEyMJAZsmQ3wXxZfbXZAelqokSBYpbyXH2Y/bWiFXwSSFFZVD/BXxThVaRdZVQZWAQB1kDSG1nN3IJZFVoIgZ5NfdxhpxXl3qOjiHcdYxcVPtoB4EieNjWPdFI94gkAg83XEAGQOKDkFAEI64mREqLUYhYUkuEnhnEP0UcSaFC5SxAEY0jlCJkQsZJufIpDyVxA7EZoNUu08YABSOgSAlFEDQDohOzA62kKfJWD3y1VzEjmIkCuUs0lbgsjoZwCBpBomH2u4AOQDg84pj5knwGHlOeAoiooA+7ywngs/HYCXohDAEYwvWxaA6jQbMmBjWHI6uA1HCQngmg2S5HAqwgKOjQihSLP0iiw+kGx5bg+0tKrtujv444kx/MAbBJrYKKeuvTfACRK/AAcs8MAEF2zwwQgnrPDCDDccTggAOw==" />
+            <div>
+                With the support of the Fundamental Rights and Citizenship Program of the European Comission
+            </div>
+        </div>
+        <div class="help">
+            <h2> Help </h2>
+            <h3> Data Retention: </h3>
+            <p>Refers to all obligations on the part of data controllers (the person or administrative entity that determines the purposes and means of the processing of personal data) to retain personal data for certain purposes. In the telecommunication field, data retention refers to the obligation for providers of electronic communications to retain traffic and location data of communications through telephone, e-mail, etc. for the purpose to make this data available to law enforcement agencies for investigation, detection and prosecution of serious crime.</p>
+            <h3> Warrantless Interception of Communication:</h3>
+            <p>Refers to the possibility for law enforcement authorities (police, public prosecutors or other public authorities) or security agencies (intelligence services or other national security bodies) to know the content of private communications without obtaining a pre or post authorization to do so by a third party (judicial authority, parliamentary commission or other ad hoc commission).</p>
+
+            <div id="footnotes" style="margin-bottom:5px;">
+                <h4 style="text-align:left;margin:0px;">Footnotes:</h4>
+                <sup>1</sup> "Respected" refers to the confidentality of the e-mail. (The data it generates and its content)<br/>
+                <sup>2</sup> Reserved IP adresses have no known location, thus can't be drawn on the map.
+            </div>
+
+        </div>
+        <div class = "credits">
+            <p>
+                This extension includes IP2Location LITE data available from <a href="https://lite.ip2location.com">http://lite.ip2location.com</a>.
+            </p>
+        </div>
+    </div>
+    <!-- Footer End -->
+</div>
+<!-- Content End -->
+<!--HELP-->
+
+
+
+
+<script language="javascript" id = "main">
+    //Globals
+    var RouteItems = new Array(); //Array of route items
+    var bubblesString = String('map.bubbles([\n');
+    var bubble=null;
+    var dragging = {x:0,y:0,on:false};
+    var arcString = String('map.arc([\n');
+    var choroplethString = String('map.updateChoropleth({\n');
+
+
+    var userAgent = navigator.userAgent.toLowerCase();
+    // Figure out what browser is being used
+    var browser = {
+        version: (userAgent.match( /.+(?:rv|it|ra|ie|me)[\/: ]([\d.]+)/ ) || [])[1],
+        chrome: /chrome/.test( userAgent ),
+        safari: /webkit/.test( userAgent ) && !/chrome/.test( userAgent ),
+        opera: /opera/.test( userAgent ),
+        msie: /msie/.test( userAgent ) && !/opera/.test( userAgent ),
+        mozilla: /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test( userAgent )
+    };
+
+
+
+    function scrolltofootnotes() {
+        document.getElementById('footnotes').scrollIntoView();
+    }
+
+
+    function countryOver(e) {
+        if(bubble==null)
+        {
+            bubble=document.createElement("div");
+            bubble.setAttribute("class","floatdiv");
+        }
+        document.getElementById("content").appendChild(bubble);
+        dr=e.target.getAttribute("dataret");
+        wr=e.target.getAttribute("warrantless");
+
+        bubble.innerHTML =   '<div class = "hoverinfo">'
+                            +'<div align="center" style="font-weight:bold">'+e.target.getAttribute("countryname")+"</div><hr/>"
+                            +'<div style="margin:5px;">'
+                            +"<table><tr><td>Data Retention:</td><td>"+(dr=="true"?"YES":"NO")+"</td></tr>"
+                            +"<tr><td>Warrantless Interception:</td><td>"+(wr=="true"?"YES":"NO")+"</td></tr></table>"
+                            +'</div>'
+                            +'<hr/><div style="margin:5px;font-size:smaller;font-style:italic;">Click on the country for details</div>'
+                            +'</div>';
+
+        var str="class"+e.target.getAttribute("classrank");
+        document.getElementById(str).style.background="rgba(111,111,0, 0.5)";
+        document.getElementById(str).style.border="1px solid black";
+    }
+
+
+
+    function countryMove(e) {
+        ////
+        bubble.style.left = (e.pageX + 0) + "px";
+        bubble.style.top = (e.pageY - document.getElementById("content").offsetTop + 3) + "px";
+        ////
+    }
+
+
+
+    function countryClick(e) {
+        if(!dragging.on) {
+            bubble.innerHTML = '<div class = "hoverinfo">'
+                              +'<div align="center" style="font-weight:bold">'+e.target.getAttribute("countryname")+"</div><hr/>"
+                              +'<div style="margin:5px;">'
+                              +"<table><tr><td>Data Retention:</td><td>"+(dr=="true"?"YES":"NO")+"</td></tr>"
+                              +'<tr><td style="margin:5px;font-size:smaller;font-style:italic;">'+e.target.getAttribute("datarettext")+'</td></tr>'
+                              +"<tr><td>Warrantless Interception:</td><td>"+(wr=="true"?"YES":"NO")+"</td></tr>"
+                              +'<tr><td style="margin:5px;font-size:smaller;font-style:italic;">'+e.target.getAttribute("warrantlesstext")+'</td></tr></table>'
+                              +'</div>'
+                              +'</div>';
+        }
+    }
+
+
+
+    function countryOut(e) {
+        var str="class"+e.target.getAttribute("classrank");
+        document.getElementById(str).style.border="1px solid black";
+        document.getElementById(str).style.background="none";
+        bubble.parentNode.removeChild(bubble);
+    }
+
+
+
+    function Rank(ri) {
+        if(ri.Warrantless==true)
+        {
+            ri.ClassificationColor="rgba(180,0,0,0.87)";
+            ri.ClassificationRank=0;
+        }
+        else if(ri.DataRet==true)
+        {
+            ri.ClassificationColor="rgba(222,222,0,0.9)";
+            ri.ClassificationRank=1;
+        }
+        else
+        {
+            ri.ClassificationColor="rgba(0,135,0,0.95)";
+            ri.ClassificationRank=2;
+        }
+    }
+
+
+
+    //***********************************************
+    function init() {
+        //Setting up the bubble information for the map
+        document.getElementById("map").addEventListener("click", function (ev) {
+            countryBubble = countryBubbleWData;
+        }, true);
+        document.getElementById("map").addEventListener("mouseout", function (ev) {
+            countryBubble = countryBubbleWOData;
+        }, true);
+
+
+        //** Drawing the dots and arcs **//
+        var origin = {
+            'Latitude': 91,
+            'Longitude': 181
+        };
+        var destination = {
+            'Latitude': 91,
+            'Longitude': 181
+        };
+        for (var i = 0; i < RouteItems.length; ++i) {
+            Rank(RouteItems[i]);
+
+            var table=document.getElementById("routesummarytable"); //get the summary table
+            var tr=document.createElement("tr"); //create a new row
+            var td0=document.createElement("td"); //create cell for NodeIP
+            var td1=document.createElement("td"); //create cell for CountryName
+            td1.style.background=RouteItems[i].ClassificationColor;
+            var td3=document.createElement("td"); //Create cell for "Read more..."
+            var td4=document.createElement("td"); //Create cell for comments
+            var td5=document.createElement("td"); //Create cell for color
+
+            td0.innerHTML=RouteItems[i].NodeIP; //fill NodeIP
+            td1.innerHTML=RouteItems[i].CountryName + (RouteItems[i].City ? (', ' + RouteItems[i].City) : ''); //Fill CountryName
+            if(RouteItems[i].CountryName == "Reserved")
+                td1.innerHTML+='<sup><a style="cursor:pointer;" onclick="scrolltofootnotes();">2</a></sup>';
+            td3.innerHTML='<a href="http://www.privacyinternational.org/">Read more...</a>';//Fill Read more line
+            td5.style.background="#0000ff";
+
+            //Filling comments
+            if(RouteItems[i].Comment == "Sender") {
+                var nostr = document.getElementById("nosender_tr");
+                nostr.parentNode.removeChild(nostr);
+                td4.innerHTML = "Sender";
+                td5.style.background = "#00aaaa";
+            } else if(i+1 == RouteItems.length) {
+                td4.innerHTML = "Receiver";
+                td5.style.background = "#a70090";
+            }
+
+            //Adding Cells to Row
+            tr.appendChild(td0);
+            tr.appendChild(td1);
+            tr.appendChild(td5);
+            tr.appendChild(td4);
+            tr.setAttribute("class","d"+i%2);
+            table.appendChild(tr); //Adding Row to Table
+            //End Filling
+
+
+            //Setting the color of the dot
+            var color = 'defaultDot';
+            var size = 3;
+            if (RouteItems[i].Comment == "Sender") {
+                color = "sender";
+                size = 5;
+            }
+            else if (i+1 == RouteItems.length) {
+                color = "receiver";
+                size = 5;
+            }
+
+            if (RouteItems[i].Code != '') {
+                choroplethString +=
+                    RouteItems[i].Code + ': {' +
+                    'fillColor: \'' + RouteItems[i].ClassificationColor + '\', ' +
+                    'country: \'' + RouteItems[i].CountryName + '\', ' +
+                    'dr: \'' + RouteItems[i].DataRet + '\', ' +
+                    'wr: \'' + RouteItems[i].Warrantless + '\', ' +
+                    'datarettext: \'' + RouteItems[i].DataRetText + '\', ' +
+                    'warrantlesstext: \'' + RouteItems[i].WarrantlessText + '\' ' +
+                    '},\n';
+
+
+                bubblesString +=
+                    '{\n' +
+                    'name: \''  + (RouteItems[i].City != "" ? RouteItems[i].City : "reserved") + '\',\n' +
+                    'latitude: ' + RouteItems[i].Latitude + ',\n' +
+                    'longitude: ' + RouteItems[i].Longitude + ',\n' +
+                    'radius: \'' + size + '\',\n' +
+                    'fillKey: \'' + color + '\'\n' +
+                    '},\n';
+
+                //Drawing the arcs between route points
+                if (origin.Latitude > 90)
+                    origin = RouteItems[i];
+                destination = RouteItems[i];
+                arcString +=
+                    '{\n' +
+                    '        origin: {\n' +
+                    '            latitude: ' + origin.Latitude + ',\n' +
+                    '            longitude: ' + origin.Longitude + '\n' +
+                    '        },\n' +
+                    '        destination: {\n' +
+                    '            latitude: ' + destination.Latitude + ',\n' +
+                    '            longitude: ' + destination.Longitude + '\n' +
+                    '        }\n' +
+                    '},\n';
+                origin = destination;
+
+
+                td1.setAttribute("countryname", RouteItems[i].CountryName);
+                td1.setAttribute("dataret", RouteItems[i].DataRet);
+                td1.setAttribute("warrantless", RouteItems[i].Warrantless);
+                td1.setAttribute("bubblelink", RouteItems[i].BubbleLink);
+                td1.setAttribute("classrank", RouteItems[i].ClassificationRank);
+                td1.setAttribute("datarettext", RouteItems[i].DataRetText);
+                td1.setAttribute("warrantlesstext",RouteItems[i].WarrantlessText);
+                td1.addEventListener("mouseover", countryOver, true);
+                td1.addEventListener("click", countryClick, true);
+                td1.addEventListener("mousemove", countryMove, true);
+                td1.addEventListener("mouseout", countryOut, true);
+            }
+        }
+
+        //Closing the strings with the appropriate format
+        bubblesString += ']);';
+        arcString += '], { strokeWidth: 2,\n' +
+            '         greatArc: true}\n' +
+            '    );';
+        choroplethString += '});';
+
+
+        //** Adding map bubbles and arcs strings before the next element in the HTML document **//
+        var mapdata = document.createElement("script");
+        mapdata.id = 'mapdata';
+        mapdata.innerHTML = bubblesString + '\n' + arcString + '\n' + choroplethString;
+        var thisElement = document.getElementById('main');
+        var parentElement = thisElement.parentNode;
+        parentElement.insertBefore(mapdata, thisElement.nextSibling);
+
+
+        //if(browser.msie||browser.opera)
+        if (browser.msie && parseFloat(browser.version) < 9.0) {
+            alert("< IE 9.0");
+        } else {
+            var iewarning=document.getElementById("iewarning");
+            iewarning.parentNode.removeChild(iewarning);
+        }
+
+    }
+    //*******************END*************************
+

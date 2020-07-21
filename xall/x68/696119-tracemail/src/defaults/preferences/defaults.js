@@ -1,0 +1,2 @@
+pref("extensions.emailtraceroutevisualizer.promotext", "TRACEMAIL\nVisualize the path of your emails, and know who else might read them!\nDownload the tool from: https://tracemail.eu");
+pref("extensions.emailtraceroutevisualizer.epvpheader", true);

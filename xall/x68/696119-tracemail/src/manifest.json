@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "epvp@pet-portal.eu",
+      "strict_min_version": "68.0"
+    }
+  },
+  "name": "TracEmail",
+  "description": "Visualizes the estimation of the path of your email message on an interactive map.",
+  "version": "2.0.2",
+
+  "legacy": {
+    "type": "xul",
+    "options": {
+      "page": "chrome://epvp/content/options.xul"
+    }
+  },
+
+  "author": "Tamas Besenyei",
+
+  "icons": {
+    "32": "skin/icon32p.png",
+    "64": "skin/icon64p.png"
+  }
+}
