@@ -630,16 +630,17 @@ async function getExtensionFiles(addon_identifier, index) {
 				console.debug(`Missing manifest file: ${extRootDir}/src/manifest.json`);
 				return 1;
 			}
-			// console.debug('check legacy');
+			console.debug('check legacy');
 			if (manifestJson.legacy !== undefined) {
 				let legacy = JSON.stringify(manifestJson.legacy);
-				// console.debug(legacy);
+				console.debug(legacy);
 				ext_comp.legacy = true;
 				ext_comp.legacy_type = (typeof manifestJson.legacy.type === 'string') ? manifestJson.legacy.type : 'xul';
 				// console.debug('ReadingManifest: ' + `${extRootName} : ${ext_comp.legacy_type}`);
 
 			} else {
 				// console.debug('Manifest NoLegacy');
+				ext_comp.legacy = false;
 			}
 			
 			// check experiments

@@ -434,7 +434,7 @@ function createExtMDTableRow(extJson) {
 		comp_badges += " " + cBadge_type;
 
 		if (extJson.xpilib.ext_comp.webexp) {
-			cBadge_webexp_setup.bTooltip = "test";
+			// cBadge_webexp_setup.bTooltip = "test";
 			cBadge_webexp = makeBadgeElement(cBadge_webexp_setup);
 			comp_badges += " " + cBadge_webexp;
 			
