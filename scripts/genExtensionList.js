@@ -162,8 +162,10 @@ var reports = {
 				compSet.comp61plus = false;
 				compSet.comp69plus = false;
 				compSet.comp60pv = false;
+				compSet.comp60 = false;
 				compSet.comp68pv = false;
 				extJson.xpilib.ext_comp.comp68 = false;
+				
 				
 				console.debug('True');
 				return true;
