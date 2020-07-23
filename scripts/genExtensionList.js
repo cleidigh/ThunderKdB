@@ -155,8 +155,9 @@ var reports = {
 	tbmx: {
 		baseReportName: "extension-list-tbmx",
 		reportFilter: function (extJson) {
-			// target 60 - !68
 			let compSet = extJson.xpilib.ext_comp;
+
+			
 			console.debug(`comp ${compSet} `);
 			if ( (compSet.comp78plus) ) {
 				compSet.comp61plus = false;
@@ -437,7 +438,13 @@ function createExtMDTableRow(extJson) {
 
 		if (extJson.xpilib.ext_comp.webexp) {
 			// cBadge_webexp_setup.bTooltip = "test";
+			let manifestPath = `..\\xall\\x68\\${extJson.id}-${extJson.slug}\\src\\manifest.json`;
+			console.debug(manifestPath);
+
+			cBadge_webexp_setup.bLink = manifestPath;
+
 			cBadge_webexp = makeBadgeElement(cBadge_webexp_setup);
+
 			comp_badges += " " + cBadge_webexp;
 			
 			console.debug(comp_badges);
