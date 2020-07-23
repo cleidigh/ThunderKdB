@@ -14,8 +14,8 @@ body {
 <div class="search-banner">	
 	<img class="banner-image" src='/ThunderKdB/docs/images/Thunderbird-Banner.png'
 		style="padding-right: 60px; height: 40px; width: 170px" />
-	<label class="banner-header">Extensions: Thunderbird MailExtension or 78 Compatible (77)</label>
-	<label class="banner-header-rt">2020-07-22</label>
+	<label class="banner-header">WIP-Beware! Extensions: Thunderbird MailExtension or 78 Compatible (77)</label>
+	<label class="banner-header-rt">2020-07-23</label>
 
 </div>
 <div>
