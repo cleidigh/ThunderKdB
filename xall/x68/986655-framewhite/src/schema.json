@@ -1,13 +1,52 @@
 [
   {
-    "namespace": "myapi",
+    "namespace": "setStyle",
     "functions": [
       {
-        "name": "code",
+        "name": "setOne",
         "type": "function",
         "description": "",
-        "async": true,
-        "parameters": []
+        "async": false,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "ID of the object, whose style should be changed."
+          },
+          {
+            "name": "property",
+            "type": "string",
+            "description": "CSS property, which should be changed."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "New value for the given CSS property."
+          }
+        ]
+      },
+{
+        "name": "setTwo",
+        "type": "function",
+        "description": "",
+        "async": false,
+        "parameters": [
+          {
+            "name": "selector",
+            "type": "string",
+            "description": "Selector of the object, whose style should be changed."
+          },
+          {
+            "name": "property",
+            "type": "string",
+            "description": "CSS property, which should be changed."
+          },
+          {
+            "name": "value",
+            "type": "string",
+            "description": "New value for the given CSS property."
+          }
+        ]
       }
     ]
   }

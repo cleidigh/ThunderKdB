@@ -7,7 +7,7 @@
                  }
              },
 	"name": "FrameWhite",
-	"version": "60.3",
+	"version": "61.2",
 	"description": "This is a theme with white frames.",
              "icons": {
                 "32": "icons/w_large.png"
@@ -19,17 +19,8 @@
   },
 "permissions": [
         ],
-"background": {
-  "scripts": ["background.js"]
-},
-"content_scripts": [
-  {
-    "matches": ["*://*.mozilla.org/*"],
-    "js": ["form.js"]
-  }
-],
  "experiment_apis": {
-    "myapi": {
+    "setStyle": {
       "schema": "schema.json",
       "parent": {
         "scopes": [
@@ -37,10 +28,10 @@
         ],
         "paths": [
           [
-            "myapi"
+            "setStyle"
           ]
         ],
-        "script": "code.js"
+        "script": "implementation.js"
       }
     }
   }

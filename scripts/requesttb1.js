@@ -337,6 +337,11 @@ function isCompatible(checkVersion, minv, maxv) {
 function compatibilityCheck(extJson, options) {
 
 	console.debug(`CompatibilityCheck: ${extJson.slug} `);
+
+if (extJson.slug === "browseintab") {
+	console.debug('BrowseTrack');
+}
+
 	let compSet = {};
 	let v_min = `${extJson.current_version.compatibility.thunderbird.min}`;
 	let v_max = `${extJson.current_version.compatibility.thunderbird.max}`;
@@ -348,6 +353,7 @@ function compatibilityCheck(extJson, options) {
 	if (v_max === "*") {
 		v_max_num = -1;
 		compSet.compNoMax = true;
+		console.debug('NoMax: ' + extJson.slug);
 	} else {
 		v_max_num = p.exec(v_max);
 		console.debug('vMax '+v_max_num);
@@ -434,6 +440,7 @@ function compatibilityCheck(extJson, options) {
 
 		if (v_min_num >= 78 && mext) {
 			compSet.comp78plus = true;
+			console.debug('NoMax2: ' + extJson.slug);
 		}
 
 		if (v_min_num >= 60 && v_min_num < 61) {
@@ -478,7 +485,8 @@ function compatibilityCheck(extJson, options) {
 
 			if (v_max === "*") {
 				v_max_num = -1;
-				compSet.compNoMax = true;
+				// pv_compSet.compNoMax = true;
+				console.debug('NoMax3: ' + extJson.slug);
 			} else {
 				v_max_num = p.exec(v_max);
 			}
@@ -648,8 +656,7 @@ async function getExtensionFiles(addon_identifier, index) {
 			console.debug(manifestJson.background);
 			console.debug(manifestJson.experiment_apis);
 			let v_min = `${manifestJson.applications.gecko.strict_min_version}`;
-			// let v_max = `${manifestJson.current_version.compatibility.thunderbird.max}`;
-			// var mext = manifestJson.current_version.files[0].is_webextension;
+			let v_max = `${manifestJson.applications.gecko.strict_max_version}`;
 		
 
 			if (manifestJson.experiment_apis != undefined) {
@@ -677,9 +684,18 @@ async function getExtensionFiles(addon_identifier, index) {
 			// console.debug('ReadingInstall: ' + `${extRootName} : ${ext_comp.legacy.legacy_type}`);
 		}
 
-		if (!ext_comp.legacy && ext_comp.mext) {
+		console.debug('CompatibilityMax');
+		// let vmax = ext.current_version.compatibility.thunderbird.max;
+		// console.debug(vmax);
+		if (!ext_comp.legacy && ext_comp.mext && ext_comp.compNoMax) {
 			ext_comp.comp78plus = true;
+			console.debug('78C: ' + ext.slug);
 		}
+		// } else {
+		// 	ext_comp.comp78plus = false;
+		// 	console.debug('78C: ' + ext.slug);
+		// }
+
 		// _7zCommand = ['x', `${extRootDir}/xpi/${xpiFileName}`, `-o${extRootDir}/src`];
 		// console.debug('Starting unzip: ' + xpiFileName);
 		// fileUnzip(`${extRootDir}/xpi/${xpiFileName}`, { dir: `${extRootDir}/src` });
