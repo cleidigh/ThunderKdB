@@ -1,0 +1,193 @@
+/*
+   CSS Document
+   White
+   Design par Olivier R.
+*/
+
+* { margin: 0; padding: 0; }
+img { border: none; }
+
+
+/* Generic classes */
+
+.fleft { float: left; }
+.fright { float: right; }
+.center { text-align: center; }
+.right { text-align: right; }
+.left { text-align: left; }
+.justify { text-align: justify; }
+.hidden { display: none; }
+.clearer { clear: both; font-size: 0; height: 0; }
+
+body {
+    background: hsl(0, 0%, 100%) url(../img/lines.png);
+    font: normal 16px "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+    color: #505050;
+}
+
+.inbox {
+    width: 800px;
+    margin: 20px auto 10px auto;
+    padding: 10px 30px 30px 30px;
+    background: hsl(0, 0%, 100%);
+    border: 2px solid hsl(210, 0%, 90%);
+    border-radius: 20px;
+}
+
+
+#message_box {
+    display: none;
+    position: fixed;
+    top: 33%;
+    left: calc(50% - 325px);
+}
+#message {
+    display: inline-block;
+    padding: 5px 20px;
+    width: 600px;
+    background-color: hsl(0, 50%, 50%);
+    color: hsl(0, 50%, 98%);
+    border-style: solid;
+    border-width: 3px 0 3px 3px;
+    border-color: hsla(0, 50%, 40%, .5);
+    border-radius: 5px 0 0 5px;
+}
+#message_close_button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: hsl(0, 50%, 40%);
+    color: hsl(0, 90%, 90%);
+    border-style: solid;
+    border-width: 3px 3px 3px 0;
+    border-color: hsla(0, 50%, 30%, .5);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+
+h1 {
+    margin: 5px 0 5px 0;
+    color: hsl(210, 50%, 50%);
+    font: bold 24px "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+}
+h2 {
+    margin: 10px 0 2px 0;
+    color: hsl(0, 50%, 50%);
+    font: bold 20px "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+}
+
+
+input[type=text].large {
+    display: inline-block;
+    width: 250px;
+    padding: 5px 10px;
+    border: 2px solid hsl(0, 0%, 80%);
+    border-radius: 3px;
+    height: 24px;
+    background: transparent;
+    font: normal 20px Tahoma, "Ubuntu Condensed";
+    color: hsl(0, 0%, 20%);
+}
+
+input[type=text].medium {
+    display: inline-block;
+    width: 175px;
+    padding: 2px 5px;
+    border: 2px solid hsl(0, 0%, 80%);
+    border-radius: 3px;
+    height: 20px;
+    background: transparent;
+    font: normal 18px Tahoma, "Ubuntu Condensed";
+    color: hsl(0, 0%, 20%);
+}
+
+input[placeholder] {
+    color: hsl(0, 0%, 50%);
+}
+
+
+#connect_panel {
+    background-color: hsl(210, 50%, 90%);
+    border-radius: 5px;
+    padding: 3px 10px;
+}
+#submit_button {
+    display: inline-block;
+    padding: 1px 5px;
+    background-color: hsl(210, 50%, 30%);
+    color: hsl(210, 0%, 100%);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+.dic_button {
+    margin: 2px;
+    display: inline-block;
+}
+.dic_button_close {
+    display: inline-block;
+    padding: 1px 5px;
+    background-color: hsl(0, 50%, 50%);
+    color: hsl(0, 90%, 90%);
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    border-color: hsl(0, 50%, 45%);
+    border-radius: 3px 0 0 3px;
+    cursor: pointer;
+}
+.dic_button_label {
+    display: inline-block;
+    padding: 1px 10px;
+    background-color: hsl(210, 50%, 94%);
+    border-style: solid;
+    border-width: 1px 1px 1px 0;
+    border-color: hsl(210, 50%, 70%);
+    border-radius: 0 3px 3px 0;
+}
+
+.apply {
+    display: none;
+    float: right;
+    padding: 2px 10px;
+    background: hsl(120, 50%, 30%);
+    color: hsl(120, 50%, 96%);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+
+/*
+    Table
+*/
+#wait_progress {
+    width: 100%;
+    height: 4px;
+}
+
+table {
+    border: 1px solid hsl(210, 10%, 50%);
+    width: 100%;
+    font-size: 14px;
+}
+th {
+    padding: 5px 10px;
+    border-left: 1px solid hsl(210, 10%, 90%);
+    text-align: left;
+}
+td {
+    padding: 0 10px;
+    vertical-align: top;
+}
+.delete_entry {
+    cursor: pointer;
+    font-weight: bold;
+    color: hsl(0, 100%, 50%);
+}
+.select_entry {
+    cursor: pointer;
+    background-color: hsl(210, 50%, 30%);
+    color: hsl(210, 50%, 100%);
+    border-radius: 3px;
+    text-align: center;
+}

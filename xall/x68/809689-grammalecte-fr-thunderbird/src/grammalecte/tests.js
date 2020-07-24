@@ -7,10 +7,8 @@
 "use strict";
 
 
-if(typeof(process) !== 'undefined') {
+if (typeof(process) !== 'undefined') {
     var helpers = require("./graphspell/helpers.js");
-} else if (typeof(require) !== 'undefined') {
-    var helpers = require("resource://grammalecte/graphspell/helpers.js");
 }
 
 

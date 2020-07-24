@@ -80,11 +80,10 @@ if (Set.prototype.grammalecte === undefined) {
 
 
 
-if(typeof(process) !== 'undefined') {
+if (typeof(process) !== 'undefined') {
     var helpers = require("../graphspell/helpers.js");
-} else if (typeof(require) !== 'undefined') {
-    var helpers = require("resource://grammalecte/graphspell/helpers.js");
 }
+
 
 var conj = {
     _lVtyp: [],
@@ -672,23 +671,14 @@ class Verb {
 
 // Initialization
 if(!conj.bInit && typeof(process) !== 'undefined') {
-    // Work with nodejs
+    // NodeJS
     conj.init(helpers.loadFile(__dirname+"/conj_data.json"));
 } else if (!conj.bInit && typeof(browser) !== 'undefined') {
     // WebExtension Standard (but not in Worker)
-    conj.init(helpers.loadFile(browser.extension.getURL("grammalecte/fr/conj_data.json")));
+    conj.init(helpers.loadFile(browser.runtime.getURL("grammalecte/fr/conj_data.json")));
 } else if (!conj.bInit && typeof(chrome) !== 'undefined') {
     // WebExtension Chrome (but not in Worker)
-    conj.init(helpers.loadFile(chrome.extension.getURL("grammalecte/fr/conj_data.json")));
-} else if (!conj.bInit && typeof(require) !== 'undefined') {
-    // Add-on SDK and Thunderbird
-    conj.init(helpers.loadFile("resource://grammalecte/fr/conj_data.json"));
-} else if (!conj.bInit && typeof(self) !== 'undefined' && typeof(self.port) !== 'undefined' && typeof(self.port.on) !== 'undefined') {
-    // used within Firefox content script (conjugation panel).
-    // can’t load JSON from here, so we do it in ui.js and send it here.
-    self.port.on("provideConjData", function (sJSONData) {
-        conj.init(sJSONData);
-    });
+    conj.init(helpers.loadFile(chrome.runtime.getURL("grammalecte/fr/conj_data.json")));
 } else if (conj.bInit){
     console.log("Module conj déjà initialisé");
 } else {

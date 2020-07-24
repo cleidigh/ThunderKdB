@@ -33,13 +33,13 @@ if (String.prototype.grammalecte === undefined) {
         return (this.search(/^[a-zà-öA-Zø-ÿÀ-ÖØ-ßĀ-ʯﬀ-ﬆᴀ-ᶿ]+$/) !== -1);
     };
     String.prototype.gl_isLowerCase = function () {
-        return (this.search(/^[a-zà-öø-ÿﬀ-ﬆ0-9-]+$/) !== -1);
+        return (this.search(/^[a-zà-öø-ÿﬀ-ﬆ0-9 '’-]+$/) !== -1);
     };
     String.prototype.gl_isUpperCase = function () {
-        return (this.search(/^[A-ZÀ-ÖØ-ßŒ0-9-]+$/) !== -1);
+        return (this.search(/^[A-ZÀ-ÖØ-ßŒ0-9 '’-]+$/) !== -1  &&  this.search(/^[0-9]+$/) === -1);
     };
     String.prototype.gl_isTitle = function () {
-        return (this.search(/^[A-ZÀ-ÖØ-ßŒ][a-zà-öø-ÿﬀ-ﬆ'’-]+$/) !== -1);
+        return (this.search(/^[A-ZÀ-ÖØ-ßŒ][a-zà-öø-ÿﬀ-ﬆ '’-]+$/) !== -1);
     };
     String.prototype.gl_toCapitalize = function () {
         return this.slice(0,1).toUpperCase() + this.slice(1).toLowerCase();
@@ -203,12 +203,12 @@ const _dTag = new Map([
     [':Cs', [" conjonction de subordination,", "Conjonction de subordination"]],
     [':Ĉs', [" conjonction de subordination (él.),", "Conjonction de subordination (élément)"]],
 
-    [':Ñ', [" locution nominale (él.),", "Locution nominale (élément)"]],
-    [':Â', [" locution adjectivale (él.),", "Locution adjectivale (élément)"]],
-    [':Ṽ', [" locution verbale (él.),", "Locution verbale (élément)"]],
-    [':Ŵ', [" locution adverbiale (él.),", "Locution adverbiale (élément)"]],
-    [':Ŕ', [" locution prépositive (él.),", "Locution prépositive (élément)"]],
-    [':Ĵ', [" locution interjective (él.),", "Locution interjective (élément)"]],
+    [':ÉN', [" locution nominale (él.),", "Locution nominale (élément)"]],
+    [':ÉA', [" locution adjectivale (él.),", "Locution adjectivale (élément)"]],
+    [':ÉV', [" locution verbale (él.),", "Locution verbale (élément)"]],
+    [':ÉW', [" locution adverbiale (él.),", "Locution adverbiale (élément)"]],
+    [':ÉR', [" locution prépositive (él.),", "Locution prépositive (élément)"]],
+    [':ÉJ', [" locution interjective (él.),", "Locution interjective (élément)"]],
 
     [':Zp', [" préfixe,", "Préfixe"]],
     [':Zs', [" suffixe,", "Suffixe"]],

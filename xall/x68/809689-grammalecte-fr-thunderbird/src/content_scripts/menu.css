@@ -1,0 +1,43 @@
+/*
+    CSS
+    Button for Grammalecte
+*/
+
+div.grammalecte_menu_main_button {
+    all: initial;
+    position: absolute;
+    box-sizing: border-box;
+    display: none;
+    margin: -10px 0 0 -18px;
+    width: 16px;
+    height: 16px;
+    background-color: hsla(210, 80%, 95%, .5);
+    border: 3px solid hsla(210, 80%, 50%, .9);
+    border-top: 3px solid hsla(210, 80%, 90%, .9);
+    border-left: 3px solid hsla(210, 80%, 90%, .9);
+    border-radius: 50%;
+    font-family: "Trebuchet MS", "Fira Sans", "Ubuntu Condensed", "Liberation Sans", sans-serif;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 hsla(210, 80%, 50%, .7);
+    z-index: 2147483640; /* maximum is 2147483647: https://stackoverflow.com/questions/491052/minimum-and-maximum-value-of-z-index */
+    animation: grammalecte-spin 2s ease 1;
+}
+div.grammalecte_menu_main_button:hover {
+    background-color: hsla(210, 80%, 50%, .05);
+    animation: grammalecte-spin .5s linear infinite;
+}
+
+@keyframes grammalecte-spin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(.9);
+        box-shadow: 0 0 0 10px hsla(210, 50%, 50%, 0);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        box-shadow: 0 0 0 0 hsla(210, 50%, 50%, 0);
+    }
+}

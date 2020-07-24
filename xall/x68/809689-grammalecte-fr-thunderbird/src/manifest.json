@@ -3,19 +3,61 @@
   "applications": {
     "gecko": {
       "id": "French-GC-TB@grammalecte.net",
-      "strict_min_version": "68.0a1"
+      "strict_min_version": "78.0a1"
     }
   },
   "name": "Grammalecte [fr]",
+  "short_name": "Grammalecte [fr]",
   "description": "Correcteur grammatical, orthographique et typographique pour le français.",
-  "version": "1.9.2",
+  "version": "1.11.0",
 
   "author": "Olivier R.",
   "homepage_url": "https://grammalecte.net",
 
+  "default_locale": "fr",
 
+  "icons": { "16": "img/logo-16.png",
+             "32": "img/logo-32.png",
+             "48": "img/logo-48.png",
+             "64": "img/logo-64.png",
+             "80": "img/logo-80.png",
+             "96": "img/logo-96.png" },
 
-  "legacy":  {
-    "type": "xul"
-  }
+  "browser_action": {
+    "default_icon": "img/logo-32.png",
+    "default_title": "Grammalecte",
+    "default_popup": "panel/main.html",
+    "browser_style": false
+  },
+
+  "compose_action": {
+    "default_area": "maintoolbar",
+    "default_icon": "img/logo-32.png",
+    "default_title": "Analyser",
+    "browser_style": false
+  },
+
+  "background": {
+    "scripts": [
+      "grammalecte/graphspell/helpers.js",
+      "background.js"
+    ]
+  },
+
+  "commands": {
+    "conjugueur_tab": {
+      "suggested_key": { "default": "Ctrl+Shift+6" },
+      "description": "Ouvre le conjugueur"
+    },
+    "lexicon_editor": {
+      "suggested_key": { "default": "Ctrl+Shift+7" },
+      "description": "Ouvre l’éditeur lexical"
+    }
+  },
+
+  "permissions": [
+    "compose",
+    "downloads",
+    "storage"
+  ]
 }

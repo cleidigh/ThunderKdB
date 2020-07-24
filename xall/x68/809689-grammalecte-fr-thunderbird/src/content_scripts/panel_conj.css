@@ -1,0 +1,127 @@
+/*
+   CSS Document
+*/
+
+div#grammalecte_conj_panel_content {
+    padding: 20px 0;
+    width: 100%;
+}
+
+div.centered_bar {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    width: 500px;
+    margin: 0 auto;
+}
+
+div.grammalecte_clearer {
+    clear: both;
+    font-size: 0;
+    height: 0;
+}
+
+
+h1.grammalecte_conj_title {
+    margin: 5px 0 2px 0;
+    color: hsl(210, 50%, 50%);
+    font: bold 30px Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    text-align: center;
+}
+h2.grammalecte_conj_title {
+    margin: 5px 0 2px 0;
+    color: hsl(0, 50%, 50%);
+    font: bold 16px Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+}
+h3.grammalecte_conj_title {
+    margin: 5px 0 2px 0;
+    color: hsl(210, 50%, 50%);
+    font: bold 14px Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+}
+
+div#grammalecte_conj_verb_info {
+    text-align: center;
+    color: hsl(210, 00%, 40%);
+}
+
+div.grammalecte_conj_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 10px;
+}
+
+div.grammalecte_conj_column {
+    width: 50%;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+
+div#grammalecte_conj_verb {
+    display: inline-block;
+    width: 230px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: 2px solid hsl(0, 0%, 80%);
+    border-radius: 3px;
+    height: 20px;
+    background: transparent;
+    font: normal 18px Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    color: hsl(0, 0%, 30%);
+}
+div#grammalecte_conj_verb {
+    color: hsl(0, 0%, 70%);
+}
+
+div#grammalecte_conj_button {
+    display: inline-block;
+    padding: 7px 10px;
+    font-size: 18px;
+    background-color: hsl(210, 30%, 50%);
+    color: hsl(210, 30%, 80%);
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+div#grammalecte_conj_button:hover {
+    background-color: hsl(210, 60%, 40%);
+    color: hsl(210, 60%, 90%);
+    box-shadow: 0 0 2px hsl(210, 60%, 50%);
+}
+
+div#grammalecte_conj_options {
+    margin: 10px 0 0 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+div.grammalecte_conj_option_off {
+    display: inline-block;
+    margin: 2px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTczbp9jAAADGUlEQVQ4T2P4//8/VTFWQUowggEEQJoRiJlB/BfPn6vMbmrp6AqPOdUeGPa4Iyj8cbN/0Kn5HV0db169UoHqA6kF6UGYg8QBSYAw09SKqtoaTYMvtfLq/5t5xf+1MTD9B+FGIZl/ILEaZe2vs5pba0FqkfRhNZChzNx6RYOU0v96Nb3/tWLyH6aVlC8+vHNX8Yn9B4on5RctrpFQ/FCnZfi/hUvsf7W714q3b9/C9YIwsoEMNaERdQ1aRv9rZFX/13r7bH729KkQVA7uirdv3gjVefpsrjez+d8gLPO/PSOzDqoGjOGMnVu3qtcZWryrU9T+3x0Tv+HFy5cMZ44d99+ydm0oTM38SZNDN61e4w9il+qabGgytftfzy34bsGcOeowNXAD8/kl2hpMrP7X8wm/b6mtFQFpbGZg+NfCwPRn5cJFDlPaOxwaROX+tLAL/ls4fYb/vbt3RWo1Dd7XA4Nn87LlbRgGlptbH28QV/o/rbxy6dt37xgak1PqmwQk/zdYO/yrkZD9WCsm/bHO2PIfMJL+d+fk13/79o0hX151aYOS9v8paZnHMQysNDZ/1Cgq939KTW0ZTGxKfUN+rZTy/zoLuz9Aw/7U6Br/7y0uzQfJ/fz5kyFHWKKsUdvof4uX3yOYHkwDa+vgBq5YsNClAeiiekvbP7UGZn/q9Ez+z504yQUk9wNoYJYIHgPBXgaGx+TCkiUg/qye3sgGAalf9daO/4Cu/FOrqgMy9B9IbNnsOZE/fvwAeXlJnYoOdi+DIqXRyPI/MLw+5GdmCk5raSkFJeZmLpH/faVl+eWhkfl1ihqgxP2/JSOr9O6dO4I12kYfcEYKPNnIa/3vT0rdcOnKFYYlU6bVTCwugStuTkppm1hVXfP6zRuGIgMCyQaE4QlbWvl/Q2Dwxtu3bvFB5eAJG5hc+Bp8AzY2ABN2k4A07oQNxGANkKyn8h8YZqAc8356eeXiQzt2Fp/Yt78YlA1rFTXfA9MfLOutxJf1YK6AFw71Mir/m5AKB2C6/AcSAxUOwJKIYOEAM5RqxRdVMFZB8vF/BgAKMNpeW+niqQAAAABJRU5ErkJggg==') no-repeat;
+    background-color: none;
+    padding: 0 3px 0 22px ;
+    border-radius: 3px;
+    cursor: pointer;
+}
+div.grammalecte_conj_option_on {
+    display: inline-block;
+    margin: 2px;
+    background:  url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwQAADsEBuJFr7QAAABl0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMC4xNzNun2MAAAMnSURBVDhPY/j//z9VMVZBSjC6ACMQM4PYz1+8UGmaPrsjvL7rVGB1++Oguo7H/pXNpzpmz+949eaNClQ9SC1ID9wMOAOIQRIgzFQxYWqtZk7NF/ms2v+8mc3/GAra/oOwUE7jP5CYcnbN1+aps2pBapH0YTWQwTyrbIVUVsN/rdy6/9KZNe8qJk5fsOvQkeL9x04UF/RMWSAPFAPJcWW1/HcvqF7x9u1buF4QRjaQIbS0pk6rsOG/ItAVLgXVG2/duSMOlYO74v7DR+JuBTVbDPPr/wvnNvzPaGqvg6oBYzhj686d6vq59e/Uc2r/B1U1r3v69ClMjgUNg7zJ4JBbsdK8qPE/d079uznzF6iDxEAYbiB/TH6bGdB1LFnNb3smTZaDioMMgKmBuZJtwtyFZcUNLYb62VWPpHLr/y/buLkNpg6mmME8p/y4PDBssjsmLIKKsQIxcqCDY9+/sGIab07Lf9XUssP66SUbFLPq/qf1TDkBkgNhuIHGOZWPhDIa/zdMnl4O4n/89AmUNPig8mCX+hdWz1AGWmpS0PhfOLF0oWZsVo0GMBw9K1oeQ9UhDDTMrHwkmtX4v6pvYv7xkyflGMqaP/oXV6/89esXWD6gsHKmcnbtf1AY+5Q3r9+0aRODXFhaiVYe2MBHGAYaZZUdNyhu+q+ZkD2ZNb6iTqOg4b9MZv3/6KrG2S6ZBRNVgC7Tyav7b5Zdufr3nz9sv4EWySTmLwaJA718HMNA4ficNsOihv8qOVVvI5PTxFNae6eL5jX+18yt/QM06C/IMAugYe8/fAB7//bde/LAxP9WCmgp1kgBJRvDvLp38sBATmzpXbt582aGhMauuaBYBLnCOLNiPTBcQRHFAAoGrZTidXiTDQiDEzYwTMSAhkbVtW6Yt3ART3Rd63xguoTFPMPd+/clPIvrNoKSGN6EDcTgnADKejJAV4EiwCi35iXQlQuXrN9UcuTM2fyCvimLZDNr3iJlvZX4sh4svTFV9E+pBYbdF4mc+v9AL//jym3+z1Dc+l8st46kwgFmKErxFVbXcdqvpv1JQE0nycUXVTBWQfLxfwYA8YUHpiMfZa8AAAAASUVORK5CYII=') no-repeat;
+    background-color: hsla(120, 50%, 50%, .2);
+    padding: 0 3px 0 22px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+div#grammalecte_conj_note {
+    margin: 10px 20px;
+    font-size: 11px;
+    color: hsl(0, 0%, 60%);
+    text-align: center;
+}

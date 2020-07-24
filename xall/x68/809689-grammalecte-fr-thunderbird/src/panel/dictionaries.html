@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="dictionaries.css" />
+    <title>Grammalecte · Dictionnaires communautaires</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+
+    <div id="message_box">
+      <div id="message">[néant]</div><div id="message_close_button">×</div>
+    </div>
+
+    <div class="inbox">
+      <h1>Grammalecte · Dictionnaires communautaires</h1>
+
+      <div id="connect_panel">
+        <form id="connect_form" method="post" enctype="multipart/form-data">
+          <p>
+            Non connecté.
+            <label for="email">E-mail : </label> <input type="email" id="email" name="email" />
+            <label for="password">Mot de passe : </label> <input type="password" id="pw" name="pw" />
+            <span id="submit_button">Se connecter</span>
+            |
+            <a href="http://dic.grammalecte.net" target="_blank">Inscription</a>
+          </p>
+        </form>
+        <div id="connect_info">
+          <p>
+            Connecté. Identifiants : <span id="login_label"> </span>, <span id="email_label"> </span>
+          </p>
+        </div>
+      </div>
+
+      <h2>Dictionnaires sélectionnés</h2>
+      <p id="dictionaries_list">[Aucun]<p>
+
+      <div id="apply" class="apply">Appliquer les modifications</div>
+      <h2><span id="num_dic">0</span> dictionnaires disponibles</h2>
+      <progress id="wait_progress" value="0"></progress>
+      <table id="dictionaries_table">
+      </table>
+    </div> <!-- inbox -->
+
+
+    <script src="../grammalecte/graphspell/helpers.js"></script>
+    <script src="../grammalecte/graphspell/char_player.js"></script>
+    <script src="../grammalecte/graphspell/str_transform.js"></script>
+    <script src="../grammalecte/graphspell/dawg.js"></script>
+    <script src="../grammalecte/graphspell/ibdawg.js"></script>
+    <script src="../grammalecte/graphspell/dic_merger.js"></script>
+    <script src="../grammalecte/graphspell/spellchecker.js"></script>
+    <script src="dictionaries.js"></script>
+  </body>
+
+</html>

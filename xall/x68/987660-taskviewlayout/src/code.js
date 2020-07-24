@@ -15,6 +15,7 @@ formTwo.addEventListener('click', function () {
           browser.myapi.setNine('calendar-task-tree', 'resize', 'vertical');
           browser.myapi.setTen('calendar-task-tree', 'overflow', 'auto'); 
           browser.myapi.setEleven('calendar-task-box', 'flexDirection', 'column');
+          browser.myapi.setFourteen('calendar-task-tree', 'refresh', 'true');
 });
 
 formThree.addEventListener('click', function () {
@@ -35,4 +36,5 @@ formThree.addEventListener('click', function () {
           browser.myapi.setEight('calendar-task-details-container', 'flex', '1');
           browser.myapi.setNine('calendar-task-tree', 'resize', 'horizontal');
           browser.myapi.setTen('calendar-task-tree', 'overflow', 'auto');
+          browser.myapi.setFourteen('calendar-task-tree', 'refresh', 'true');
 });

@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="lex_editor.css" />
+    <title>Grammalecte · Éditeur lexical</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+
+    <div class="inbox">
+
+      <h1>Éditeur lexical</h1>
+
+      <div class="big_block">
+        <div class="dic_container">
+          <div><h3>Dictionnaire</h3></div>
+          <div class="dic_container">
+            <select id="dic_selector">
+              <option value="__personal__">__personnel__</option>
+            </select>
+            <!--<div id="new_dictionary_button" title="Créer un dictionnaire partagé">+</div>-->
+            <div id="delete_dictionary_button" title="Supprimer ce dictionnaire">−</div>
+          </div>
+
+          <div>[<span id="dic_save_date">—</span>]</div>
+          <div><span id="dic_num_entries">[rien]</span> </div>
+          <div>
+            <input type="file" id="import_input" accept=".json" style="display: none;">
+            <label id="import_button" for="import_input">Importer</label>
+          </div>
+          <div id="export_button">Exporter</div>
+        </div>
+        <div id="new_dictionary_section" style="display: none;">
+          <div class="dic_container">
+            <div>Nouveau dictionnaire partagé</div>
+            <div>Nom : fr.x.<input type="text" id="new_dictionary_name" required> · Description : <input type="text" id="new_dictionary_description" required></div>
+            <div id="create_dictionary_button">Créer</div>
+          </div>
+        </div>
+        <progress id="wait_progress" value="0"></progress>
+      </div>
+
+      <div id="buttons" class="container">
+        <div id="lexicon_button" class="main_button">
+          Lexique · <span id="num_entries">[rien]</span> <span id="save_button">Enregistrer</span>
+        </div>
+        <div id="add_button" class="main_button">Ajout</div>
+        <div id="search_button" class="main_button">Recherche</div>
+        <div id="info_button" class="main_button">Informations</div>
+      </div>
+
+      <div id="add_page">
+        <div class="columns">
+          <div id="word_generator">
+            <h2>Nouveau mot (lemme)</h2>
+            <input type="text" id="lemma" class="large" name="lemma" maxlength="60" value="" placeholder="votre mot" pattern="^[a-zA-Zà-ö0-9À-Öø-ÿØ-ßĀ-ʯ._-]+$" autofocus />
+
+            <div id="editor">
+
+              <div id="sections">
+                <h3 class="category" id="select_nom" data-tag="N">Nom commun</h3>
+                <div id="section_nom" class="section">
+                  <p class="typeline">
+                    <input type="radio" id="up_type_nom" name="POS" value=":N" /> <label class="widelabel" for="up_type_nom">Nom</label>
+                    <input type="radio" id="up_type_adj" name="POS" value=":A" /> <label class="widelabel" for="up_type_adj">Adjectif</label>
+                    <input type="radio" id="up_type_nomadj" name="POS" value=":N:A" /> <label class="widelabel" for="up_type_nomadj">Nom &amp; adjectif</label>
+                  </p>
+                  <div class="container">
+                    <div class="block">
+                      <h3>Genre</h3>
+                      <p><input type="radio" id="up_nom_genre_e" name="genre" value=":e" /><label for="up_nom_genre_e"> épicène</label></p>
+                      <p><input type="radio" id="up_nom_genre_m" name="genre" value=":m" /><label for="up_nom_genre_m"> masculin</label></p>
+                      <p><input type="radio" id="up_nom_genre_f" name="genre" value=":f" /><label for="up_nom_genre_f"> féminin</label></p>
+                    </div>
+                    <div class="block">
+                      <h3>Pluriel</h3>
+                      <p><input type="radio" id="up_nom_pluriel_s" name="pluriel" value="s" /><label for="up_nom_pluriel_s"> pluriel en ·s</label></p>
+                      <p><input type="radio" id="up_nom_pluriel_x" name="pluriel" value="x" /><label for="up_nom_pluriel_x"> pluriel en ·x</label></p>
+                      <p><input type="radio" id="up_nom_pluriel_i" name="pluriel" value="i" /><label for="up_nom_pluriel_i"> invariable</label></p>
+                    </div>
+                  </div>
+
+                  <h3>[optionnel] Autre forme (masculine, féminine, variante, etc.)</h3>
+                  <input type="text" id="lemma2" class="large" name="lemma2" maxlength="60" value="" pattern="^[a-zA-Zà-ö0-9À-Öø-ÿØ-ßĀ-ʯ._-]+$" placeholder="votre mot" />
+                  <div id="word_section2">
+                    <p class="typeline">
+                      <input type="radio" id="up_type_nom2" name="POS2" value=":N" /> <label class="widelabel" for="up_type_nom2">Nom</label>
+                      <input type="radio" id="up_type_adj2" name="POS2" value=":A" /> <label class="widelabel" for="up_type_adj2">Adjectif</label>
+                      <input type="radio" id="up_type_nomadj2" name="POS2" value=":N:A" /> <label class="widelabel" for="up_type_nomadj2">Nom &amp; adjectif</label>
+                    </p>
+                    <div class="container">
+                      <div class="block">
+                        <h3>Genre</h3>
+                        <p><input type="radio" id="up_nom2_genre_e" name="genre2" value=":e" /><label for="up_nom2_genre_e"> épicène</label></p>
+                        <p><input type="radio" id="up_nom2_genre_m" name="genre2" value=":m" /><label for="up_nom2_genre_m"> masculin</label></p>
+                        <p><input type="radio" id="up_nom2_genre_f" name="genre2" value=":f" /><label for="up_nom2_genre_f"> féminin</label></p>
+                      </div>
+                      <div class="block">
+                        <h3>Pluriel</h3>
+                        <p><input type="radio" id="up_nom2_pluriel_s" name="pluriel2" value="s" /><label for="up_nom2_pluriel_s"> pluriel en ·s</label></p>
+                        <p><input type="radio" id="up_nom2_pluriel_x" name="pluriel2" value="x" /><label for="up_nom2_pluriel_x"> pluriel en ·x</label></p>
+                        <p><input type="radio" id="up_nom2_pluriel_i" name="pluriel2" value="i" /><label for="up_nom2_pluriel_i"> invariable</label></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="category" id="select_verbe" data-tag="V">Verbe</h3>
+                <div id="section_verbe" class="section">
+                  <div class="block">
+                    <h3><input type="checkbox" id="up_v_i" value="i" /><label for="up_v_i"> intransitif</label></h3>
+                    <div class="description">Le verbe peut s’utiliser sans complément d’objet.</div>
+                    <details>
+                      <div class="container">
+                        <div class="examples_true">Je dors.<br/>Tu pars.<br/>Elle pense.<br/>Nous écrivons.<br/>Vous manifestez.<br/>Ils viennent.</div>
+                        <div class="examples_false">J’appartiens à ce groupe…<br/>J’accède au niveau supérieur.</div>
+                      </div>
+                    </details>
+                  </div>
+                  <div class="block">
+                    <h3><input type="checkbox" id="up_v_t" value="t" /><label for="up_v_t"> transitif direct</label></h3>
+                    <div class="description">Ce verbe peut s’utiliser avec un complément d’objet direct (COD).</div>
+                    <details>
+                      <div class="container">
+                        <div class="examples_true">Je mange <i>une pomme</i>.<br/>Tu donnes <i>une bonne impression</i>.<br/>Elle écrit <i>un livre</i>.<br/>Nous fabriquons <i>une œuvre</i>.</div>
+                        <div class="examples_false">Je pars ce matin.<br/>J’appartiens à…</div>
+                      </div>
+                    </details>
+                  </div>
+                  <div class="block">
+                    <h3><input type="checkbox" id="up_v_n" value="n" /><label for="up_v_n"> transitif indirect</label></h3>
+                    <div class="description">Ce verbe peut s’utiliser avec un complément d’objet indirect (COI). Attention à ne pas confondre avec un complément circonstanciel de temps, de lieu ou de manière.</div>
+                    <details>
+                      <div class="container">
+                        <div class="examples_true">Je donne un cadeau <i>à sa femme</i>.<br/>Elle appartient <i>à ce groupe</i>.</div>
+                        <div class="examples_false">Elle danse à l’opéra.</div>
+                      </div>
+                    </details>
+                  </div>
+                  <div class="block">
+                    <h3><input type="checkbox" id="up_v_p" value="p" /><label for="up_v_p"> pronominal</label></h3>
+                    <div class="description">Ce verbe peut s’utiliser pronominalement.</div>
+                    <details>
+                      <div class="container">
+                        <div class="examples_true">Je me suis trompé.<br/>Tu t’es étonné toi-même.<br/>Elle s’est souvenu de ses études.<br/>Nous nous sommes égarés.<br/>Vous vous êtes retrouvées.<br/>Ils se sont rappelé leur enfance.</div>
+                        <div class="examples_false">Je me suis venu.<br/>tu t’es arrivé.<br/>elle s’est marché.<br/>nous nous sommes courus.<br/>vous vous êtes acculés.<br/>Elles se sont capitulées.</div>
+                      </div>
+                    </details>
+                  </div>
+                  <div class="block">
+                    <h3><input type="checkbox" id="up_v_m" value="m" /><label for="up_v_m"> impersonnel</label></h3>
+                    <div class="description">Ce verbe ne peut s’utiliser à la première personne, mais uniquement à la troisième personne du singulier ou du pluriel.</div>
+                    <details>
+                      <div class="container">
+                        <div class="examples_true">Il pleut.<br/>Il faut.</div>
+                        <div class="examples_false">Je pleus.<br/>Nous fallons.</div>
+                      </div>
+                    </details>
+                  </div>
+                  <div class="block">
+                    <h3>Auxiliaire pour le passé composé</label></h3>
+                    <div class="space_container">
+                      <div>
+                        <input type="checkbox" id="up_v_ae" value="e" /><label for="up_v_ae"> être</label>
+                      </div>
+                      <details class="inline">
+                        <div class="container">
+                          <div class="examples_true">Je suis venu.<br/>Je suis parti.</div>
+                          <div class="examples_false">J’ai venu.<br/>J’ai parti.</div>
+                        </div>
+                      </details>
+                    </div>
+
+                    <div class="space_container">
+                      <div>
+                        <input type="checkbox" id="up_v_aa" value="a" /><label for="up_v_aa"> avoir</label>
+                      </div>
+                      <details class="inline">
+                        <div class="container">
+                          <div class="examples_true">J’ai mangé.<br/>J’ai prié.</div>
+                          <div class="examples_false">Je suis mangé.<br/>Je suis prié.</div>
+                        </div>
+                      </details>
+                    </div>
+                  </div>
+
+                  <div class="block">
+                    <h3><input type="checkbox" id="up_v_ppas" /><label for="up_v_ppas"> participe passé invariable</label></h3>
+                    <p class="description">Cette option est ignorée si vous utilisez un verbe modèle.</p>
+                  </div>
+
+                  <div class="block">
+                    <h3>Verbe modèle [optionnel]</h3>
+                    <p class="description">Il est déconseillé d’utiliser un verbe modèle : ce n’est pas nécessaire la très grande majorité des verbes du 1ᵉʳ groupe et du 2ᵉ groupe. Ce ne peut être utile et bénéfique que pour les cas particuliers.</p>
+                    <input type="text" id="verb_pattern" class="large" name="verb_pattern" maxlength="60" value="" placeholder="verbe modèle" pattern="^[a-zA-Zà-ö0-9À-Öø-ÿØ-ßĀ-ʯ-]+$" />
+                    <details>
+                      <p>Il est fortement recommandé d’appliquer les règles d’un verbe du même groupe que celui que vous créez. Mais aucune restriction n’est imposée.</p>
+                      <p><b>Classification des groupes :</b></p>
+                      <ul>
+                        <li>
+                          <b>1ᵉʳ groupe</b> : verbes finissant par -<i>er</i>. Attention : contrairement au préjugé commun, ce groupe est irrégulier. Beaucoup de verbes voient leur racine modifiée dans certaines formes conjuguées :
+                          <ul>
+                            <li>ajout ou modification de diacritiques (verbes finissant par -<i>cer</i>, -<i>ecer</i>, -<i>emer</i>, -<i>ener</i>, -<i>eper</i>, -<i>erer</i>, -<i>eser</i>, -<i>ever</i>, -<i>evrer</i>, -<i>eler</i>, -<i>eter</i>, -<i>ébrer</i>, -<i>écer</i>, -<i>écher</i>, -<i>écrer</i>, -<i>éder</i>, -<i>éger</i>, -<i>égler</i>, -<i>égner</i>, -<i>égrer</i>, -<i>éguer</i>, -<i>éler</i>, -<i>émer</i>, -<i>éner</i>, -<i>éper</i>, -<i>équer</i>, -<i>érer</i>, -<i>éser</i>, -<i>éter</i>, -<i>étrer</i>, -<i>évrer</i>, -<i>éyer</i>),</li>
+                            <li>un ‹e› euphonique est ajouté sur la plupart des verbes finissant par -<i>ger</i>,</li>
+                            <li>certains verbes finissant par -<i>yer</i> remplacent éventuellement le ‹y› par un ‹i›,</li>
+                            <li>doublement irrégulier de certaines consonnes (<i>geler</i> ne se conjugue pas comme <i>appeler</i>, <i>acheter</i> ne se conjugue pas comme <i>jeter</i>)</li>
+                            <li>irrégularités diverses (<i>aller</i>, <i>envoyer</i>, <i>renvoyer</i>)…</li>
+                          </ul>
+                        </li>
+                        <li><b>2ᵉ groupe</b> : verbes finissant par -<i>ir</i>. Ce groupe est de loin le plus régulier. Mais de nombreux verbes finissant par -<i>ir</i> appartiennent au 3ᵉ groupe.</li>
+                        <li><b>3ᵉ groupe</b>. Autres verbes irréguliers.</li>
+                        <li>Les verbes <i>être</i> et <i>avoir</i> n’appartiennent à aucun groupe. Il est recommandé de ne pas s’en servir comme modèle.</li>
+                      </ul>
+                    </details>
+                  </div>
+                </div>
+
+                <h3 class="category" id="select_adverbe" data-tag="W">Adverbe</h3>
+                <div id="section_adverbe" class="section"></div>
+
+                <h3 class="category" id="select_nom_propre" data-tag="M">Nom propre</h3>
+                <div id="section_nom_propre" class="section">
+                  <div class="container">
+                    <div class="block">
+                      <h3>Type</h3>
+                      <p><input type="radio" id="up_nom_propre_M1" name="pos_nom_propre" value=":M1" /><label for="up_nom_propre_M1"> Prénom</label></p>
+                      <p><input type="radio" id="up_nom_propre_M2" name="pos_nom_propre" value=":M2" /><label for="up_nom_propre_M2"> Patronyme</label></p>
+                      <p><input type="radio" id="up_nom_propre_MP" name="pos_nom_propre" value=":MP" /><label for="up_nom_propre_MP"> Autre</label></p>
+                    </div>
+                    <div class="block">
+                      <h3>Genre</h3>
+                      <p><input type="radio" id="up_nom_propre_genre_e" name="genre_m" value=":e" /><label for="up_nom_propre_genre_e"> épicène</label></p>
+                      <p><input type="radio" id="up_nom_propre_genre_m" name="genre_m" value=":m" /><label for="up_nom_propre_genre_m"> masculin</label></p>
+                      <p><input type="radio" id="up_nom_propre_genre_f" name="genre_m" value=":f" /><label for="up_nom_propre_genre_f"> féminin</label></p>
+                    </div>
+                  </div>
+                </div>
+                <h3 class="category" id="select_autre" data-tag="X">Autre</h3>
+                <div id="section_autre" class="section">
+                  <h3>Flexion</h3>
+                  <p><input type="text" id="flexion" name="flexion" class="large" maxlength="20" value="" pattern="^[a-zA-Zà-ö0-9À-Öø-ÿØ-ßĀ-ʯ._-]+$" placeholder="flexion" /></p>
+                  <h3>Étiquettes</h3>
+                  <p><input type="text" id="tags" name="tags" class="large" maxlength="20" value="" pattern="^:[a-zA-Zà-ö0-9À-Öø-ÿØ-ßĀ-ʯ:._-]+$" placeholder="étiquettes" /></p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- #new_word_generator -->
+
+          <div id="generated_words">
+            <h2>Mots générés</h2>
+            <table id="generated_words_table">
+
+            </table>
+            <div id="buttonline">
+              <div id="add_to_lexicon">Ajouter au lexique</div>
+            </div>
+          </div> <!-- #generated_words -->
+        </div> <!-- .columns -->
+      </div> <!-- #add_page -->
+
+
+      <div id="lexicon_page">
+        <h2>Votre lexique</h2>
+        <table id="lexicon_table">
+
+        </table>
+      </div> <!-- #lexicon_page -->
+
+
+      <div id="search_page">
+        <div class="columns">
+          <div style="margin-right: 20px;">
+            <h2>Recherche</h2>
+
+            <h3 style="margin-top: 20px;">Graphies similaires</h3>
+            <p><input id="search_similar" class="medium" type="text" /></p>
+            <p><div id="search_similar_button" class="button_search">Chercher</div></p>
+
+            <h3 style="margin-top: 20px;">Expressions régulières</h3>
+            <p><b>Flexion</b></p>
+            <p> <input id="search_flexion_pattern" class="medium" type="text" /></p>
+
+            <p><b>Étiquettes</b></p>
+            <p><input id="search_tags_pattern" class="medium" type="text" /></p>
+            <p><div id="search_regex_button" class="button_search">Chercher</div></p>
+
+            <p style="margin-top: 50px;">La recherche par expressions régulières peut générer un nombre gigantesque de résultats. Seules les 2000 premières occurrences trouvées seront affichées. La recherche peut être longue, parce tout le graphe de mots, qui contient 500 000 flexions, sera parcouru si besoin.</p>
+          </div>
+
+          <div>
+            <h2>Résultats</h2>
+            <table id="search_table">
+
+            </table>
+          </div>
+        </div>
+      </div> <!-- #search_page -->
+
+
+      <div id="info_page">
+        <div class="columns">
+          <div style="margin-right: 20px;">
+            <h2>Informations</h2>
+            <h3>Enregistrement</h3>
+            <p>Les modifications apportées au lexique ne sont enregistrées dans le dictionnaire qu’au moment où vous cliquez sur ‹Enregistrer› dans l’onglet ‹Lexique›.</p>
+            <p> </p>
+
+            <h3>Doublons</h3>
+            <p>Il est inutile de purger votre lexique des doublons éventuels. Les doublons sont automatiquement supprimés lors de la création du dictionnaire.</p>
+            <p> </p>
+
+            <h3>Compilation du dictionnaire</h3>
+            <p>Le dictionnaire est compilé comme un graphe de mots sous la forme d’une chaîne binaire dans un fichier JSON. Cette opération peut prendre du temps et consommer beaucoup de mémoire si votre lexique contient plusieurs dizaines de milliers d’entrées.</p>
+            <p> </p>
+
+            <h3>Étiquettes rares</h3>
+            <p>Il est déconseillé d’utiliser la catégorie ‹Autre› pour générer autre chose que des noms, des adjectifs, des noms propres, des verbes et des adverbes. Il n’y a aucune garantie que les étiquettes pour les autres catégories, notamment les mots grammaticaux, ne changeront pas.</p>
+          </div>
+
+          <div>
+            <table id="tags_table">
+
+            </table>
+          </div>
+        </div>
+      </div> <!-- #info_page -->
+
+    </div>
+
+
+    <script src="../grammalecte/graphspell/helpers.js"></script>
+    <script src="../grammalecte/graphspell/char_player.js"></script>
+    <script src="../grammalecte/graphspell/str_transform.js"></script>
+    <script src="../grammalecte/graphspell/dawg.js"></script>
+    <script src="../grammalecte/graphspell/ibdawg.js"></script>
+    <script src="../grammalecte/graphspell/spellchecker.js"></script>
+    <script src="../grammalecte/fr/conj.js"></script>
+    <script src="../grammalecte/fr/conj_generator.js"></script>
+    <script src="../grammalecte/fr/lexicographe.js"></script>
+    <script src="lex_editor.js"></script>
+  </body>
+
+</html>

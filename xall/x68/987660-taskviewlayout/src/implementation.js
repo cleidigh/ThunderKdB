@@ -113,6 +113,14 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             let element = window.document.getElementById(id).childNodes[0];
             element.display = value;
           }
+          },
+          setFourteen: function(id, property, value) {
+            let windows = Services.wm.getEnumerator("mail:3pane");
+            while (windows.hasMoreElements()) {
+            let window = windows.getNext();
+            let element = window.document.getElementById(id);
+            element.refresh(value);
+          }
           }
 }
   }

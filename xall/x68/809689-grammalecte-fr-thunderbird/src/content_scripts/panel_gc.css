@@ -1,0 +1,280 @@
+/*
+    Grammar checker
+*/
+div#grammalecte_gc_panel_content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: auto;
+}
+
+div.grammalecte_paragraph_block {
+    margin: 5px 5px 0 5px;
+}
+
+p.grammalecte_paragraph {
+    margin: 0;
+    padding: 12px;
+    background-color: hsl(0, 0%, 96%);
+    border-radius: 2px;
+    line-height: 1.3;
+    text-align: left;
+    font-size: 14px;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    color: hsl(0, 0%, 0%);
+    hyphens: none;
+}
+
+
+/*
+    Action buttons
+*/
+div.grammalecte_paragraph_actions {
+    float: right;
+    margin: 0 0 5px 10px;
+}
+
+div.grammalecte_paragraph_button {
+    display: inline-block;
+    text-align: center;
+    margin-left: 2px;
+    padding: 1px 4px 3px 4px;
+    cursor: pointer;
+    font-family: "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+    font-size: 14px;
+    color: hsl(0, 0%, 96%);
+    border-radius: 2px;
+}
+
+div.grammalecte_paragraph_actions .grammalecte_green {
+    color: hsl(0, 0%, 80%);
+}
+div.grammalecte_paragraph_actions .grammalecte_green:hover {
+    background-color: hsl(120, 50%, 40%);
+    color: hsl(0, 0%, 100%);
+}
+div.grammalecte_paragraph_actions .grammalecte_red {
+    font-weight: bold;
+    color: hsl(0, 50%, 80%);
+}
+div.grammalecte_paragraph_actions .grammalecte_red:hover {
+    background-color: hsl(0, 50%, 40%);
+    color: hsl(0, 50%, 96%);
+}
+
+@keyframes grammalecte-pulse {
+    0% { box-shadow: 0 0 0 1px hsla(0, 100%, 50%, .4); }
+    50% { box-shadow: 0 0 0 3px hsla(0, 100%, 50%, .4); }
+    100% { box-shadow: 0 0 0 1px hsla(0, 100%, 50%, .4); }
+}
+
+
+/*
+    TOOLTIP
+*/
+img#grammalecte_tooltip_arrow {
+    position: absolute;
+    display: none;
+}
+
+div#grammalecte_tooltip {
+    position: absolute;
+    margin: 0;
+    display: none;
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px hsla(0, 0%, 0%, 0.3);
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    cursor: default;
+    text-decoration: none;
+    border: 3px solid hsl(210, 50%, 30%);
+    color: hsl(210, 10%, 20%);
+    z-index: 1000;
+    text-align: left;
+    /*box-shadow: 0px 0px 0px 4px hsla(210, 0%, 50%, 0.4);*/
+}
+
+div#grammalecte_tooltip_message_block {
+    margin: 0;
+    padding: 5px 10px 5px 10px;
+    background-color: hsl(210, 50%, 30%);
+    color: hsl(210, 50%, 96%);
+}
+div#grammalecte_tooltip_actions {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 7px 10px 5px 10px;
+    background-color: hsl(210, 50%, 30%);
+    color: hsl(210, 50%, 96%);
+}
+div#grammalecte_tooltip_rule_id {
+    display: none;
+    margin: 0 0 5px 0;
+    border: 1px solid hsl(210, 50%, 60%);
+    background-color: hsl(210, 50%, 40%);
+    padding: 2px 5px;
+    border-radius: 2px;
+    color: hsla(210, 0%, 96%, 1);
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    text-align: center;
+}
+div#grammalecte_tooltip_message {
+    margin: 0 0 5px 0;
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 15px;
+    color: hsl(210, 50%, 96%);
+}
+div#grammalecte_tooltip_ignore {
+    display: inline-block;
+    padding: 1px 5px;
+    background-color: hsl(30, 30%, 40%);
+    color: hsla(30, 0%, 96%, 1);
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+}
+div#grammalecte_tooltip_ignore:hover {
+    background-color: hsl(30, 30%, 50%);
+    color: hsla(0, 0%, 100%, 1);
+    text-shadow: 0 0 3px hsl(30, 30%, 60%);
+}
+div#grammalecte_tooltip_url {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 1px 5px;
+    background-color: hsl(210, 50%, 50%);
+    color: hsla(210, 0%, 96%, 1);
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+}
+div#grammalecte_tooltip_url:hover {
+    background-color: hsl(210, 50%, 60%);
+    color: hsla(0, 0%, 100%, 1);
+    text-shadow: 0 0 3px hsl(210, 30%, 60%);
+}
+div#grammalecte_tooltip_db_search {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 1px 5px;
+    /*background-color: hsl(210, 50%, 50%);*/
+    color: hsla(210, 0%, 96%, .1);
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 12px;
+    text-decoration: none;
+}
+div#grammalecte_tooltip_db_search:hover {
+    background-color: hsla(210, 50%, 50%, .1);
+    color: hsla(0, 0%, 100%, .2);
+    text-shadow: 0 0 3px hsla(210, 30%, 60%, .2);
+}
+
+div#grammalecte_tooltip_sugg_title {
+    padding: 0 10px;
+    background-color: hsl(210, 10%, 90%);
+    color: hsl(210, 50%, 30%);
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+}
+div.grammalecte_tooltip_other_sugg_title {
+    margin: 5px 0;
+    padding: 0px 10px;
+    line-height: normal;
+    border-radius: 2px;
+    background-color: hsl(210, 10%, 90%);
+    color: hsl(210, 50%, 30%);
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+}
+div#grammalecte_tooltip_sugg_block {
+    padding: 10px;
+    background-color: hsl(210, 10%, 96%);
+    border-radius: 0 0 2px 2px;
+    line-height: 24px;
+}
+div.grammalecte_tooltip_sugg {
+    display: inline-block;
+    padding: 1px 6px;
+    min-height: 18px;
+    background-color: hsl(180, 60%, 40%);
+    color: hsl(180, 0%, 96%);
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: Tahoma, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    text-decoration: none;
+}
+div.grammalecte_tooltip_sugg:hover {
+    background-color: hsla(180, 70%, 45%, 1);
+    color: hsla(0, 0%, 100%, 1);
+}
+
+
+/*
+    ERRORS
+*/
+mark.grammalecte_error,
+mark.grammalecte_spellerror {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: hsl(240, 0%, 85%);        /* default color */
+    color: hsl(240, 0%, 10%);                   /* default color */
+    border-bottom: solid 2px hsl(0, 0%, 50%);   /* default color */
+    font-size: 14px;
+    font-style: normal;
+    font-family : "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    text-decoration: none;
+    text-shadow: unset;
+    text-align: left;
+    hyphens: none;
+}
+mark.grammalecte_error:hover,
+mark.grammalecte_spellerror:hover {
+    opacity: .9;
+    box-shadow: 0px 0px 0px 3px hsla(0, 0%, 50%, 0.25);
+}
+
+mark.grammalecte_spellerror {
+    background-color: hsl(0, 100%, 95%);
+    color: hsl(0, 80%, 20%);
+    border-bottom: solid 2px hsl(0, 100%, 50%);
+}
+
+
+mark.grammalecte_error_corrected,
+mark.grammalecte_error_ignored {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    border-radius: 2px;
+    text-decoration: none;
+    background-color: hsla(120, 50%, 70%, 1);
+    color: hsla(0, 0%, 4%, 1);
+    font-size: 14px;
+    font-style: normal;
+    font-family : "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    text-decoration: none;
+    text-shadow: unset;
+    text-align: left;
+    hyphens: none;
+}
+mark.grammalecte_error_ignored {
+    background-color: hsla(30, 20%, 80%, 1);
+}

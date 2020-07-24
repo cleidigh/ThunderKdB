@@ -1,0 +1,254 @@
+/*
+    CSS
+    Content panels for Grammalecte
+*/
+
+div.grammalecte_panel {
+    all: initial;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    /* flexbox */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    /* end flexbox */
+    box-sizing: content-box;
+    z-index: 2147483641; /* maximum is 2147483647: https://stackoverflow.com/questions/491052/minimum-and-maximum-value-of-z-index */
+    border: 2px solid hsl(210, 50%, 50%);
+    border-radius: 10px 10px 10px 10px;
+    background-color: hsl(210, 0%, 100%);
+    color: hsl(0, 0%, 0%);
+    font-family: "Trebuchet MS", "Fira Sans", "Ubuntu Condensed", "Liberation Sans", sans-serif;
+    box-shadow: 0 0 1px 6px hsla(210, 50%, 50%, .5);
+    line-height: normal;
+    text-shadow: none;
+    text-decoration: none;
+    text-align: left;
+    hyphens: none;
+}
+div.grammalecte_panel img {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+div.grammalecte_panel_bar {
+    position: sticky;
+    background-color: hsl(210, 50%, 50%);
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid hsl(210, 20%, 86%);
+
+}
+div.grammalecte_panel_title {
+    padding: 3px 20px;
+    color: hsl(210, 30%, 96%);
+    font-size: 20px;
+}
+div.grammalecte_panel_label {
+    display: inline-block;
+    padding: 0 10px;
+    font-family: "Trebuchet MS", "Fira Sans", "Ubuntu Condensed", "Liberation Sans", sans-serif;
+}
+div.grammalecte_panel_invisible_marker {
+    position: absolute;
+    /*visibility: hidden;*/
+    font-size: 4px;
+    color: hsla(210, 0%, 90%, 0);
+}
+
+div.grammalecte_panel_commands {
+    float: right;
+    display: flex;
+    align-items: stretch;
+}
+div.grammalecte_panel_button {
+    padding: 1px 10px;
+    font-family: "Trebuchet MS", "Fira Sans", "Ubuntu Condensed", "Liberation Sans", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+}
+div.grammalecte_copy_button {
+    border-radius: 2px;
+    color: hsla(210, 0%, 100%, .4);
+    margin-right: 10px;
+}
+div.grammalecte_copy_button:hover {
+    background-color: hsl(210, 50%, 55%);
+    color: hsla(210, 0%, 100%, 1);
+}
+div.grammalecte_move_button {
+    padding: 1px 5px;
+    border-radius: 16px;
+    color: hsl(180, 0%, 100%);
+    opacity: .2;
+}
+div.grammalecte_move_button_changeWidth {
+    padding: 1px 10px;
+    background: center no-repeat url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path fill="%23fff" d="m 6,2 4,4 -4,4"/><path fill="%23fff" d="m 0,6 4,4 v -8"/></svg>');
+}
+div.grammalecte_move_button_changeHeight {
+    padding: 1px 10px;
+    margin-right: 10px;
+    background: center no-repeat url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path fill="%23fff" d="m 6,0 4,4 h -8"/><path fill="%23fff" d="m 2,6 4,4 4,-4"/></svg>');
+}
+div.grammalecte_move_button_center {
+    padding: 1px 10px;
+    background: center no-repeat url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle fill="%23fff" cx="6" cy="6" r="4"/></svg>') ;
+}
+div.grammalecte_move_button_up {
+    padding: 1px 10px;
+    background: center no-repeat url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path fill="%23fff" d="m 6,2 6,6 h -12"/></svg>');
+}
+div.grammalecte_move_button_right {
+    padding: 1px 10px;
+    background: center no-repeat url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path fill="%23fff" d="m 4,0 6,6 -6,6"/></svg>');
+}
+div.grammalecte_move_button_down {
+    padding: 1px 10px;
+    background: center no-repeat url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path fill="%23fff" d="m 0,4 6,6 6,-6"/></svg>');
+}
+div.grammalecte_move_button_left {
+    padding: 1px 10px;
+    background: center no-repeat url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"><path fill="%23fff" d="m 2,6 6,6 v -12"/></svg>');
+}
+div.grammalecte_move_button:hover {
+    background-color: hsla(180, 80%, 50%, .2);
+    color: hsla(180, 0%, 100%, 1);
+    opacity: 1;
+}
+div.grammalecte_close_button {
+    border-radius: 0 8px 0 4px;
+    background-color: hsla(0, 80%, 50%, .5);
+    color: hsla(210, 0%, 100%, .5);
+}
+div.grammalecte_close_button:hover {
+    background-color: hsl(0, 100%, 60%);
+    color: hsla(210, 0%, 100%, 1);
+}
+
+div.grammalecte_panel_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+div.grammalecte_menu_button {
+    color: hsl(210, 50%, 96%);
+    padding: 5px 10px;
+    font-size: 12px;
+    font-variant: small-caps;
+    cursor: pointer;
+    border-radius: 3px;
+}
+div.grammalecte_menu_button:hover {
+    background-color: hsl(210, 80%, 40%);
+}
+div.grammalecte_menu_subbutton {
+    display: inline-block;
+    padding: 0 5px;
+    margin-left: 5px;
+    border-radius: 3px;
+    background-color: hsl(0, 50%, 50%);
+    font-size: 10px;
+    color: hsl(0, 50%, 96%);
+    opacity: .7;
+}
+div.grammalecte_menu_subbutton:hover {
+    opacity: 1;
+}
+
+div.grammalecte_panel_content {
+    /* https://stackoverflow.com/questions/7676022/html5-flexible-box-model-height-calculation/15388247#15388247 */
+    position: relative;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+div#grammalecte_panel_message_block {
+    display: none;
+    padding: 10px;
+    margin-bottom: 3px;
+    background-color: hsl(60, 90%, 80%);
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    border-color: hsl(60, 90%, 50%);
+    color: hsl(60, 10%, 40%);
+    font-family: "Trebuchet MS", "Fira Sans", "Ubuntu Condensed", "Liberation Sans", sans-serif;
+    font-size: 14px;
+    hyphens: auto;
+}
+div#grammalecte_panel_message_action_button {
+    margin: 10px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    background-color: hsl(30, 100%, 50%);
+    color: hsl(30, 60%, 95%);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+div#grammalecte_panel_message_close_button {
+    float: right;
+    margin: 0 0 10px 10px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background-color: hsl(60, 90%, 50%);
+    color: hsl(0, 60%, 80%);
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+div#grammalecte_panel_message_close_button:hover {
+    background-color: hsl(0, 100%, 60%);
+    color: hsl(0, 50%, 100%);
+}
+
+div.grammalecte_panel_flow_message {
+    padding: 12px;
+    background-color: hsl(210, 40%, 82%);
+    color: hsl(210, 20%, 30%);
+    font-family: "Trebuchet MS", "Fira Sans", "Ubuntu Condensed", "Liberation Sans", sans-serif;
+    font-size: 14px;
+}
+
+
+
+
+
+/*
+    Spinner
+*/
+div.grammalecte_spinner {
+    visibility: hidden;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 2px;
+    left: 190px;
+    background-color: hsla(0, 100%, 30%, .5);
+    border: 3px solid hsla(0, 100%, 30%, .5);
+    border-top: 3px solid hsla(0, 100%, 50%, .9);
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 hsla(0, 80%, 50%, .7);
+    animation: grammalecte-spin-big 2s linear infinite;
+}
+
+@keyframes grammalecte-spin-big {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(.95);
+        box-shadow: 0 0 0 10px hsla(0, 50%, 50%, 0);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        box-shadow: 0 0 0 0 hsla(0, 50%, 50%, 0);
+    }
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="conjugueur.css" />
+        <title>Grammalecte · Conjugueur</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    </head>
+
+    <body>
+        <header>
+            <div class="mainflow">
+                <div class="logo" style="margin: -10px 0 0 0;">
+                    <img src="../img/logo-96.png" alt="" />
+                </div>
+            </div>
+        </header>
+
+        <div id="main">
+            <div class="inbox">
+
+                <div class="right" style="margin: 10px 30px 0 0">
+                    <input type="text" id="verb" name="verb" maxlength="40" value="" placeholder="entrez un verbe" autofocus />
+                    <div id="conjugate">Conjuguer</div>
+                </div>
+
+                <h1 id="verb_title" class="center">&nbsp;</h1>
+                <p id="info" class="center">&nbsp;</p>
+
+                <p id="options">
+                    <label for="oneg">Négation</label> <input type="checkbox" id="oneg" name="oneg" value="ON"  />
+                    · <label for="oint">Interrogatif</label> <input type="checkbox" id="oint" name="oint" value="ON"  />
+                    · <label for="ofem">Féminin</label> <input type="checkbox" id="ofem" name="ofem" value="ON"  />
+                    · <label id="opro_lbl" for="opro">Pronominal</label> <input type="checkbox" id="opro" name="opro" value="ON"  />
+                    · <label id="otco_lbl" for="otco">Temps composés</label> <input type="checkbox" id="otco" name="otco" value="ON"  />
+                </p>
+                <p id="smallnote">❦</p>
+
+                <div class="clearer"></div>
+
+                <!-- section 1 -->
+                <div class="container">
+                    <div class="colonne">
+                        <div id="infinitif" class="box">
+                            <h2 id="infinitif_title">Infinitif</h2>
+                            <p id="infi">&nbsp;</p>
+                        </div>
+                        <div id="imperatif" class="box">
+                            <h2 id="imperatif_title">Impératif</h2>
+                            <h3 id="impe_temps">Présent</h3>
+                            <p id="impe1">&nbsp;</p>
+                            <p id="impe2">&nbsp;</p>
+                            <p id="impe3">&nbsp;</p>
+                        </div>
+                    </div>
+
+                    <div class="colonne">
+                        <div id="partpre" class="box">
+                            <h2 id="partpre_title">Participe présent</h2>
+                            <p id="ppre">&nbsp;</p>
+                        </div>
+                        <div id="partpas" class="box">
+                            <h2 id="partpas_title">Participes passés</h2>
+                            <p id="ppas1">&nbsp;</p>
+                            <p id="ppas2">&nbsp;</p>
+                            <p id="ppas3">&nbsp;</p>
+                            <p id="ppas4">&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearer"></div>
+
+                <!-- section 2 -->
+                <div class="container">
+                    <div class="colonne">
+                        <div id="indicatif" class="box">
+                            <h2 id="indicatif_title">Indicatif</h2>
+                            <div id="ipre">
+                                <h3 id="ipre_temps">Présent</h3>
+                                <p id="ipre1">&nbsp;</p>
+                                <p id="ipre2">&nbsp;</p>
+                                <p id="ipre3">&nbsp;</p>
+                                <p id="ipre4">&nbsp;</p>
+                                <p id="ipre5">&nbsp;</p>
+                                <p id="ipre6">&nbsp;</p>
+                            </div>
+                            <div id="iimp">
+                                <h3 id="iimp_temps">Imparfait</h3>
+                                <p id="iimp1">&nbsp;</p>
+                                <p id="iimp2">&nbsp;</p>
+                                <p id="iimp3">&nbsp;</p>
+                                <p id="iimp4">&nbsp;</p>
+                                <p id="iimp5">&nbsp;</p>
+                                <p id="iimp6">&nbsp;</p>
+                            </div>
+                            <div id="ipsi">
+                                <h3 id="ipsi_temps">Passé simple</h3>
+                                <p id="ipsi1">&nbsp;</p>
+                                <p id="ipsi2">&nbsp;</p>
+                                <p id="ipsi3">&nbsp;</p>
+                                <p id="ipsi4">&nbsp;</p>
+                                <p id="ipsi5">&nbsp;</p>
+                                <p id="ipsi6">&nbsp;</p>
+                            </div>
+                            <div id="ifut">
+                                <h3 id="ifut_temps">Futur</h3>
+                                <p id="ifut1">&nbsp;</p>
+                                <p id="ifut2">&nbsp;</p>
+                                <p id="ifut3">&nbsp;</p>
+                                <p id="ifut4">&nbsp;</p>
+                                <p id="ifut5">&nbsp;</p>
+                                <p id="ifut6">&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="colonne">
+                        <div id="subjonctif" class="box">
+                            <h2 id="subjontif_title">Subjonctif</h2>
+                            <div id="spre">
+                                <h3 id="spre_temps">Présent</h3>
+                                <p id="spre1">&nbsp;</p>
+                                <p id="spre2">&nbsp;</p>
+                                <p id="spre3">&nbsp;</p>
+                                <p id="spre4">&nbsp;</p>
+                                <p id="spre5">&nbsp;</p>
+                                <p id="spre6">&nbsp;</p>
+                            </div>
+                            <div id="simp">
+                                <h3 id="simp_temps">Imparfait</h3>
+                                <p id="simp1">&nbsp;</p>
+                                <p id="simp2">&nbsp;</p>
+                                <p id="simp3">&nbsp;</p>
+                                <p id="simp4">&nbsp;</p>
+                                <p id="simp5">&nbsp;</p>
+                                <p id="simp6">&nbsp;</p>
+                            </div>
+                        </div>
+                        <div id="conditionnel" class="box">
+                            <h2 id="conditionnel_title">Conditionnel</h2>
+                            <div id="conda">
+                                <h3 id="conda_temps">Présent</h3>
+                                <p id="conda1">&nbsp;</p>
+                                <p id="conda2">&nbsp;</p>
+                                <p id="conda3">&nbsp;</p>
+                                <p id="conda4">&nbsp;</p>
+                                <p id="conda5">&nbsp;</p>
+                                <p id="conda6">&nbsp;</p>
+                            </div>
+                            <div id="condb">
+                                <h3 id="condb_temps">&nbsp;</h3>
+                                <p id="condb1">&nbsp;</p>
+                                <p id="condb2">&nbsp;</p>
+                                <p id="condb3">&nbsp;</p>
+                                <p id="condb4">&nbsp;</p>
+                                <p id="condb5">&nbsp;</p>
+                                <p id="condb6">&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearer"></div>
+
+            </div>
+
+
+        </div>
+
+        <script src="../grammalecte/graphspell/helpers.js"></script>
+        <script src="../grammalecte/fr/conj.js"></script>
+        <script src="conjugueur.js"></script>
+    </body>
+
+</html>

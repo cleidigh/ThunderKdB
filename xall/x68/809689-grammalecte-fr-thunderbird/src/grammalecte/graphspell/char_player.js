@@ -77,13 +77,53 @@ var char_player = {
         return sNewWord.normalize("NFC");
     },
 
+    oDistanceBetweenChars: {
+        "a": {},
+        "e": {"é": 0.5},
+        "é": {"e": 0.5},
+        "i": {"y": 0.2},
+        "o": {},
+        "u": {},
+        "y": {"i": 0.3},
+        "b": {"d": 0.8, "h": 0.9},
+        "c": {"ç": 0.1, "k": 0.5, "q": 0.5, "s": 0.5, "x": 0.5, "z": 0.8},
+        "d": {"b": 0.8},
+        "f": {"v": 0.8},
+        "g": {"j": 0.5},
+        "h": {"b": 0.9},
+        "j": {"g": 0.5, "i": 0.9},
+        "k": {"c": 0.5, "q": 0.1, "x": 0.5},
+        "l": {"i": 0.9},
+        "m": {"n": 0.8},
+        "n": {"m": 0.8, "r": 0.9},
+        "p": {"q": 0.9},
+        "q": {"c": 0.5, "k": 0.1, "p": 0.9},
+        "r": {"n": 0.9, "j": 0.9},
+        "s": {"c": 0.5, "ç": 0.1, "x": 0.5, "z": 0.5},
+        "t": {"d": 0.9},
+        "v": {"f": 0.8, "w": 0.1},
+        "w": {"v": 0.1},
+        "x": {"c": 0.5, "k": 0.5, "q": 0.5, "s": 0.5},
+        "z": {"s": 0.5}
+    },
+
+    distanceBetweenChars: function (c1, c2) {
+        if (c1 == c2) {
+            return 0;
+        }
+        if (this.oDistanceBetweenChars.hasOwnProperty(c1) && this.oDistanceBetweenChars[c1].hasOwnProperty(c2)) {
+            return this.oDistanceBetweenChars[c1][c2];
+        }
+        return 1;
+    },
+
     _xTransCharsForSimplification: new Map([
-        ['à', 'a'],  ['é', 'é'],  ['î', 'i'],  ['ô', 'o'],  ['û', 'u'],  ['ÿ', 'i'],  ['y', 'i'],
-        ['â', 'a'],  ['è', 'é'],  ['ï', 'i'],  ['ö', 'o'],  ['ù', 'u'],  ['ŷ', 'i'],
-        ['ä', 'a'],  ['ê', 'é'],  ['í', 'i'],  ['ó', 'o'],  ['ü', 'u'],  ['ý', 'i'],
-        ['á', 'a'],  ['ë', 'é'],  ['ì', 'i'],  ['ò', 'o'],  ['ú', 'u'],  ['ỳ', 'i'],
-        ['ā', 'a'],  ['ē', 'é'],  ['ī', 'i'],  ['ō', 'o'],  ['ū', 'u'],  ['ȳ', 'i'],
-        ['ç', 'c'],  ['ñ', 'n'],  ['k', 'q'],  ['w', 'v'],
+        ['à', 'a'],  ['é', 'é'],  ['î', 'i'],  ['ô', 'o'],  ['û', 'u'],  ['ÿ', 'y'],
+        ['â', 'a'],  ['è', 'é'],  ['ï', 'i'],  ['ö', 'o'],  ['ù', 'u'],  ['ŷ', 'y'],
+        ['ä', 'a'],  ['ê', 'é'],  ['í', 'i'],  ['ó', 'o'],  ['ü', 'u'],  ['ý', 'y'],
+        ['á', 'a'],  ['ë', 'é'],  ['ì', 'i'],  ['ò', 'o'],  ['ú', 'u'],  ['ỳ', 'y'],
+        ['ā', 'a'],  ['ē', 'é'],  ['ī', 'i'],  ['ō', 'o'],  ['ū', 'u'],  ['ȳ', 'y'],
+        ['ç', 'c'],  ['ñ', 'n'],
         ['œ', 'oe'], ['æ', 'ae'],
         ['ſ', 's'],  ['ﬃ', 'ffi'],  ['ﬄ', 'ffl'],  ['ﬀ', 'ff'],  ['ﬅ', 'ft'],  ['ﬁ', 'fi'],  ['ﬂ', 'fl'],  ['ﬆ', 'st'],
         ["⁰", "0"], ["¹", "1"], ["²", "2"], ["³", "3"], ["⁴", "4"], ["⁵", "5"], ["⁶", "6"], ["⁷", "7"], ["⁸", "8"], ["⁹", "9"],
@@ -102,7 +142,7 @@ var char_player = {
             }
             i++;
         }
-        return sNewWord.replace(/eau/g, "o").replace(/au/g, "o").replace(/ai/g, "ẽ").replace(/ei/g, "ẽ").replace(/ph/g, "f");
+        return sNewWord.replace(/eau/g, "o").replace(/au/g, "o").replace(/ai/g, "é").replace(/ei/g, "é").replace(/ph/g, "f");
     },
 
     _xTransNumbersToExponent: new Map([
@@ -125,6 +165,19 @@ var char_player = {
     // Similar chars
 
     d1to1: new Map([
+        ["'", "'’"],    // U+0027: apostrophe droite
+        ["’", "’"],     // U+2019: apostrophe typographique  (sera utilisée par défaut)
+        ["ʼ", "ʼ’"],    // U+02BC: Lettre modificative apostrophe
+        ["‘", "‘’"],    // U+2018: guillemet-apostrophe culbuté
+        ["‛", "‛’"],    // U+201B: guillemet-virgule supérieur culbuté
+        ["´", "´’"],    // U+00B4: accent aigu
+        ["`", "`’"],    // U+0060: accent grave
+        ["′", "′’"],    // U+2032: prime
+        ["‵", "‵’"],    // U+2035: prime réfléchi
+        ["՚", "՚’"],    // U+055A: apostrophe arménienne
+        ["ꞌ", "ꞌ’"],    // U+A78C: latin minuscule saltillo
+        ["Ꞌ", "Ꞌ’"],    // U+A78B: latin majuscule saltillo
+
         ["1", "1₁liîLIÎ"],
         ["2", "2₂zZ"],
         ["3", "3₃eéèêEÉÈÊ"],

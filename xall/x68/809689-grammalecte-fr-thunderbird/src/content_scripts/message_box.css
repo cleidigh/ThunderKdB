@@ -1,0 +1,69 @@
+/*
+    CSS
+    Message box for Grammalecte
+*/
+
+div.grammalecte_message_box {
+    all: initial;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    margin-top: -50px;
+    margin-left: -200px;
+    min-height: 100px;
+    box-sizing: content-box;
+    z-index: 2147483647; /* maximum is 2147483647: https://stackoverflow.com/questions/491052/minimum-and-maximum-value-of-z-index */
+    border: 2px solid hsl(210, 50%, 50%);
+    border-radius: 10px 10px 10px 10px;
+    background-color: hsl(210, 50%, 50%);
+    color: hsl(0, 10%, 92%);
+    font-family: "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+    box-shadow: 0 0 2px 1px hsla(210, 50%, 50%, .5);
+    line-height: normal;
+    text-shadow: none;
+    text-decoration: none;
+    text-align: left;
+}
+div.grammalecte_message_box img {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+
+div.grammalecte_message_box_bar {
+    position: sticky;
+    width: 100%;
+    background-color: hsl(210, 50%, 50%);
+    border-radius: 10px 10px 0 0;
+    border-bottom: 1px solid hsl(210, 50%, 47%);
+    color: hsl(0, 10%, 92%);
+    font-size: 20px;
+}
+div.grammalecte_message_box_title {
+    padding: 10px 20px;
+}
+div.grammalecte_message_box_label {
+    display: inline-block;
+    padding: 0 10px;
+}
+div.grammalecte_message_box_invisible_marker {
+    position: absolute;
+    /*visibility: hidden;*/
+    font-size: 6px;
+    color: hsl(210, 50%, 50%); /* same color than panel_bar background */
+}
+
+div.grammalecte_message_box_content {
+    height: calc(100% - 55px); /* panel height - title_bar */
+    padding: 20px;
+    color: hsl(0, 50%, 96%);
+    font-size: 18px;
+}
+div.grammalecte_message_box_content p {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+}

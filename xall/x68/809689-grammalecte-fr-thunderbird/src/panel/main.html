@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css"/>
+    <link rel="stylesheet" href="../3rd/font-awesome-4.7.0/css/font-awesome.min.css"/>
+  </head>
+
+  <body>
+    <div id="main">
+
+      <header id="menu">
+        <nav>
+          <header id="logo">
+            <img src="../img/logo-32.png">
+          </header>
+          <ul>
+            <div class="select select_block" data-page="home_page">
+              <p class="select" data-page="home_page"><i class="select select_icon fa fa-star" data-page="home_page"></i></p>
+              <p class="select select_label" data-page="home_page">Accueil</p>
+            </div>
+            <div class="select select_block" data-page="ui_options_page">
+              <p class="select" data-page="ui_options_page"><i class="select select_icon fa fa-cube" data-page="ui_options_page"></i></p>
+              <p class="select select_label" data-page="ui_options_page">Interface</p>
+            </div>
+            <div class="select select_block" data-page="gc_options_page">
+              <p class="select" data-page="gc_options_page"><i class="select select_icon fa fa-cog" data-page="gc_options_page"></i></p>
+              <p class="select select_label" data-page="gc_options_page">Grammaire</p>
+            </div>
+            <div class="select select_block" data-page="sc_options_page">
+              <p class="select" data-page="sc_options_page"><i class="select select_icon fa fa-book" data-page="sc_options_page"></i></p>
+              <p class="select select_label" data-page="sc_options_page">Dictionnaires</p>
+            </div>
+            <div class="select select_block" data-page="info_page">
+              <p class="select" data-page="info_page"><i class="select select_icon fa fa-info-circle" data-page="info_page"></i></p>
+              <p class="select select_label" data-page="info_page">Informations</p>
+            </div>
+            <div class="select select_block invisible" data-page="test_page">
+              <p class="select" data-page="test_page"><i class="select select_icon fa fa-flask" data-page="test_page"></i></p>
+              <p class="select select_label" data-page="test_page">Zone de test</p>
+            </div>
+          </ul>
+        </nav>
+      </header> <!-- #menu -->
+
+      <div id="page">
+
+        <section id="home_page" class="page">
+
+          <div id="mainlogo">
+            <div class="center"><img src="../img/logo150_text.png" alt="Grammalecte"></div>
+            <p class="underline center">
+              Version 1.11.0
+            </p>
+            <p id="link_website" class="link center" data-url="http://grammalecte.net/?from=grammalecte-fx">Site web</p>
+            <div class="notice center">
+              <div id="conj_button">Conjugueur</div>
+            </div>
+          </div>
+
+          <div id="thanks">
+            <p class="center">Grammalecte remercie</p>
+            <p class="center"><img id="link_sponsor1" class="link border" src="../img/LaMouette.png" alt="La Mouette" data-url="http://www.lamouette.org/?from=grammalecte-fx" /></p>
+            <p class="center"><img id="link_sponsor2" class="link border" src="../img/Algoo_logo.png" alt="Algoo" data-url="https://www.algoo.fr/?from=grammalecte-fx" /></p>
+            <p id="link_othersponsors" class="link center" data-url="http://grammalecte.net/#thanks">
+              et tous ceux qui l’ont soutenu
+            </p>
+          </div>
+        </section> <!-- #home_page -->
+
+        <section id="ui_options_page" class="page">
+          <h1>OPTIONS D’INTERFACE</h1>
+          <h2>Menu contextuel</h2>
+          <p>Les commandes permettant de lancer Grammalecte sont trouvables via le menu contextuel.</p>
+          <p class="right"><img src="../img/contextmenu.png" title="menu contextuel sur sélection" /></p>
+          <h2>Boutons d’accès</h2>
+          <p>Grammalecte peut aussi afficher un bouton d’accès au correcteur en bas à gauche des zones de texte.</p>
+          <p class="right"><img src="../img/menu_button1.png" title="bouton d’accès au correcteur" /></p>
+          <p>Vous pouvez activer ou désactiver l’affichage de ces boutons sur les zones de texte. Il existe deux types de zones de texte.</p>
+          <div class="option_section" id="ui_option_textarea_box">
+              <p><input type="checkbox" id="ui_option_textarea" /> <label for="ui_option_textarea">“Textareas”</label></p>
+              <p class="option_description">Ces zones de texte sont les champs de formulaire usuels pour saisir du texte. Ils ne permettent que la saisie de texte brut, sans fioritures.</p>
+          </div>
+          <div class="option_section" id="ui_option_editablenode_box">
+              <p><input type="checkbox" id="ui_option_editablenode" /> <label for="ui_option_editablenode">“Nodes” éditables</label></p>
+              <p class="option_description">Ces zones de texte sont des sections de page web éditables. Il est fréquent que ces zones de texte apparaissent comme des “textareas” standard. Il est aussi fréquent que ces zones de texte soient couplées avec toutes sortes de logiciels (de simples scripts d’aide à la mise en page ou des applications complexes). Ces zones de texte permettent l’affichage de texte enrichi (italique, gras, hyperlien, images, etc.).</p>
+          </div>
+          <h2>Raccourcis clavier</h2>
+          <p class="shortcut">CTRL+MAJ+F</p>
+          <p class="shortcut_label">Correcteur grammatical</p>
+          <p class="shortcut">CTRL+MAJ+6</p>
+          <p class="shortcut_label">Conjugueur</p>
+          <p class="shortcut">CTRL+MAJ+7</p>
+          <p class="shortcut_label">Éditeur lexical</p>
+          <!--<p class="shortcut">CTRL+MAJ+8</p>
+          <p class="shortcut_label">Dictionnaires communautaires</p>-->
+        </section> <!-- #ui_options_page -->
+
+        <section id="gc_options_page" class="page">
+          <h1>OPTIONS GRAMMATICALES</h1>
+          <div id="grammar_options">
+            
+<div id="subsection_basic" class="opt_subsection">
+  <h2 data-l10n-id="option_basic">Typographie</h2>
+  <p><input type="checkbox" id="option_typo" class="gc_option" data-option="typo"/><label id="option_label_typo" for="option_typo" data-l10n-id="option_typo">Signes typographiques</label></p>
+  <p><input type="checkbox" id="option_apos" class="gc_option" data-option="apos"/><label id="option_label_apos" for="option_apos" data-l10n-id="option_apos">Apostrophe typographique</label></p>
+  <p><input type="checkbox" id="option_eepi" class="gc_option" data-option="eepi"/><label id="option_label_eepi" for="option_eepi" data-l10n-id="option_eepi">Écriture épicène</label></p>
+  <p><input type="checkbox" id="option_esp" class="gc_option" data-option="esp"/><label id="option_label_esp" for="option_esp" data-l10n-id="option_esp">Espaces surnuméraires</label></p>
+  <p><input type="checkbox" id="option_tab" class="gc_option" data-option="tab"/><label id="option_label_tab" for="option_tab" data-l10n-id="option_tab">Tabulations surnuméraires</label></p>
+  <p><input type="checkbox" id="option_nbsp" class="gc_option" data-option="nbsp"/><label id="option_label_nbsp" for="option_nbsp" data-l10n-id="option_nbsp">Espaces insécables</label></p>
+  <p><input type="checkbox" id="option_unit" class="gc_option" data-option="unit"/><label id="option_label_unit" for="option_unit" data-l10n-id="option_unit">Espaces insécables avant unités de mesure</label></p>
+  <p><input type="checkbox" id="option_tu" class="gc_option" data-option="tu"/><label id="option_label_tu" for="option_tu" data-l10n-id="option_tu">Traits d’union</label></p>
+  <p><input type="checkbox" id="option_maj" class="gc_option" data-option="maj"/><label id="option_label_maj" for="option_maj" data-l10n-id="option_maj">Majuscules</label></p>
+  <p><input type="checkbox" id="option_minis" class="gc_option" data-option="minis"/><label id="option_label_minis" for="option_minis" data-l10n-id="option_minis">Majuscules pour ministères</label></p>
+  <p><input type="checkbox" id="option_num" class="gc_option" data-option="num"/><label id="option_label_num" for="option_num" data-l10n-id="option_num">Nombres</label></p>
+  <p><input type="checkbox" id="option_nf" class="gc_option" data-option="nf"/><label id="option_label_nf" for="option_nf" data-l10n-id="option_nf">Normes françaises</label></p>
+  <p><input type="checkbox" id="option_virg" class="gc_option" data-option="virg"/><label id="option_label_virg" for="option_virg" data-l10n-id="option_virg">Virgules</label></p>
+  <p><input type="checkbox" id="option_poncfin" class="gc_option" data-option="poncfin"/><label id="option_label_poncfin" for="option_poncfin" data-l10n-id="option_poncfin">Ponctuation finale [!]</label></p>
+  <p><input type="checkbox" id="option_ocr" class="gc_option" data-option="ocr"/><label id="option_label_ocr" for="option_ocr" data-l10n-id="option_ocr">Erreurs de numérisation (OCR) [!]</label></p>
+  <p><input type="checkbox" id="option_chim" class="gc_option" data-option="chim"/><label id="option_label_chim" for="option_chim" data-l10n-id="option_chim">Chimie</label></p>
+  <p><input type="checkbox" id="option_liga" class="gc_option" data-option="liga"/><label id="option_label_liga" for="option_liga" data-l10n-id="option_liga">Signaler ligatures typographiques</label></p>
+  <p><input type="checkbox" id="option_mapos" class="gc_option" data-option="mapos"/><label id="option_label_mapos" for="option_mapos" data-l10n-id="option_mapos">Apostrophe manquante après lettres isolées [!]</label></p>
+</div>
+
+<div id="subsection_gramm" class="opt_subsection">
+  <h2 data-l10n-id="option_gramm">Noms et adjectifs</h2>
+  <p><input type="checkbox" id="option_conf" class="gc_option" data-option="conf"/><label id="option_label_conf" for="option_conf" data-l10n-id="option_conf">Confusions et faux-amis</label></p>
+  <p><input type="checkbox" id="option_sgpl" class="gc_option" data-option="sgpl"/><label id="option_label_sgpl" for="option_sgpl" data-l10n-id="option_sgpl">Pluriels (locutions)</label></p>
+  <p><input type="checkbox" id="option_gn" class="gc_option" data-option="gn"/><label id="option_label_gn" for="option_gn" data-l10n-id="option_gn">Accords (genre et nombre)</label></p>
+</div>
+
+<div id="subsection_verbs" class="opt_subsection">
+  <h2 data-l10n-id="option_verbs">Verbes</h2>
+  <p><input type="checkbox" id="option_infi" class="gc_option" data-option="infi"/><label id="option_label_infi" for="option_infi" data-l10n-id="option_infi">Infinitif</label></p>
+  <p><input type="checkbox" id="option_conj" class="gc_option" data-option="conj"/><label id="option_label_conj" for="option_conj" data-l10n-id="option_conj">Conjugaisons</label></p>
+  <p><input type="checkbox" id="option_ppas" class="gc_option" data-option="ppas"/><label id="option_label_ppas" for="option_ppas" data-l10n-id="option_ppas">Participes passés, adjectifs</label></p>
+  <p><input type="checkbox" id="option_imp" class="gc_option" data-option="imp"/><label id="option_label_imp" for="option_imp" data-l10n-id="option_imp">Impératif</label></p>
+  <p><input type="checkbox" id="option_inte" class="gc_option" data-option="inte"/><label id="option_label_inte" for="option_inte" data-l10n-id="option_inte">Interrogatif</label></p>
+  <p><input type="checkbox" id="option_vmode" class="gc_option" data-option="vmode"/><label id="option_label_vmode" for="option_vmode" data-l10n-id="option_vmode">Modes verbaux</label></p>
+</div>
+
+<div id="subsection_style" class="opt_subsection">
+  <h2 data-l10n-id="option_style">Style</h2>
+  <p><input type="checkbox" id="option_bs" class="gc_option" data-option="bs"/><label id="option_label_bs" for="option_bs" data-l10n-id="option_bs">Populaire</label></p>
+  <p><input type="checkbox" id="option_pleo" class="gc_option" data-option="pleo"/><label id="option_label_pleo" for="option_pleo" data-l10n-id="option_pleo">Pléonasmes</label></p>
+  <p><input type="checkbox" id="option_eleu" class="gc_option" data-option="eleu"/><label id="option_label_eleu" for="option_eleu" data-l10n-id="option_eleu">Élisions et euphonies</label></p>
+  <p><input type="checkbox" id="option_neg" class="gc_option" data-option="neg"/><label id="option_label_neg" for="option_neg" data-l10n-id="option_neg">Adverbe de négation [!]</label></p>
+  <p><input type="checkbox" id="option_redon1" class="gc_option" data-option="redon1"/><label id="option_label_redon1" for="option_redon1" data-l10n-id="option_redon1">Répétitions dans le paragraphe [!]</label></p>
+  <p><input type="checkbox" id="option_redon2" class="gc_option" data-option="redon2"/><label id="option_label_redon2" for="option_redon2" data-l10n-id="option_redon2">Répétitions dans la phrase [!]</label></p>
+</div>
+
+<div id="subsection_misc" class="opt_subsection">
+  <h2 data-l10n-id="option_misc">Divers</h2>
+  <p><input type="checkbox" id="option_date" class="gc_option" data-option="date"/><label id="option_label_date" for="option_date" data-l10n-id="option_date">Validité des dates</label></p>
+  <p><input type="checkbox" id="option_mc" class="gc_option" data-option="mc"/><label id="option_label_mc" for="option_mc" data-l10n-id="option_mc">Mots composés [!]</label></p>
+</div>
+
+<div id="subsection_debug" class="opt_subsection">
+  <h2 data-l10n-id="option_debug">Débogage</h2>
+  <p><input type="checkbox" id="option_idrule" class="gc_option" data-option="idrule"/><label id="option_label_idrule" for="option_idrule" data-l10n-id="option_idrule">Identifiant des règles de contrôle [!]</label></p>
+</div>
+
+          </div>
+          <div id="default_options_button" class="button blue center">Options par défaut</div>
+        </section> <!-- #gc_options_page -->
+
+        <section id="sc_options_page" class="page">
+          <h1>OPTIONS ORTHOGRAPHIQUES</h1>
+          <div id="hunspell_options">
+            <h2>DICTIONNAIRES DE GRAMMALECTE</h2>
+            <div class="option_section" id="main_dic_box">
+                <p><input type="checkbox" id="main_dic" data-dictionary="main" checked disabled="disabled" /> <label for="main_dic">Dictionnaire principal</label></p>
+                <p class="option_description">Environ 83 000 entrées, 500 000 flexions.<br/>Ni éditable, ni désactivable.<br/>Ce dictionnaire est créé à partir du dictionnaire orthographique pour Firefox et LibreOffice, conçu sur le <a id="link_grammalecte" class="link" data-url="http://grammalecte.net/home.php?prj=fr">site de Grammalecte</a>.</p>
+                <div id="spelling_section">
+                  <p class="subheader">Orthographe</p>
+                  <p>
+                    <div class="radiolike" id="spelling_classic" data-dicname="fr-classic.json" />Classique</div>
+                    <div class="radiolike" id="spelling_reform" data-dicname="fr-reform.json" />Réforme 1990</div>
+                    <div class="radiolike selected" id="spelling_allvars" data-dicname="fr-allvars.json" />Toutes variantes</div>
+                  </p>
+                </div>
+            </div>
+            <div class="option_section" id="community_dic_box">
+                <p><input type="checkbox" id="community_dic" data-dictionary="community" disabled/> <label for="community_dic" style="color: hsl(0, 0%, 70%);">Dictionnaire communautaire</label></p>
+                <p class="option_description" style="color: hsl(0, 0%, 70%);">Ce dictionnaire est composé à partir de dictionnaires communautaires disponibles en ligne aux membres.</p>
+                <p class="option_description">Non disponible. Fonctionnalité à venir.</p>
+                <div class="button_row">
+                  <!--<div class="dic_button" id="dic_community_button">Éditer</div>
+                  <div class="dic_button" id="dictionaries_button">Dictionnaires en ligne</div>-->
+                </div>
+            </div>
+            <div class="option_section" id="personal_dic_box">
+                <p><input type="checkbox" id="personal_dic" data-dictionary="personal" /> <label for="personal_dic">Dictionnaire personnel</label></p>
+                <p class="option_description">Ce dictionnaire est créé et édité via l’éditeur lexical et n’est pas partagé.</p>
+                <div class="button_row">
+                  <div class="dic_button" id="dic_personal_button">Éditer</div>
+                </div>
+            </div>
+          </div>
+
+          <div id="hunspell_options" style="display: none; opacity: .25">
+            <h2>DICTIONNAIRES HUNSPELL</h2>
+            <p class="dictionaries_info">Les dictionnaires Hunspell ne sont utilisées que pour la correction orthographique proposée par Firefox (soulignement rouge).<br/><br/>Section inactive.<br/>Le système d’extension <i>WebExtension</i> ne propose pas encore d’interface de programmation pour le correcteur orthographique.</p>
+            <div class="option_section" id="fr-FR-modern_box">
+                <p><input type="checkbox" id="fr-FR-modern" /> <label for="fr-FR-modern">“Moderne”</label></p>
+                <p class="option_description">Ce dictionnaire propose l’orthographe telle qu’elle est écrite aujourd’hui le plus couramment. C’est le dictionnaire recommandé si le français n’est pas votre langue maternelle ou si vous ne désirez qu’une seule graphie correcte par mot.</p>
+            </div>
+            <div class="option_section" id="fr-FR-classic_box">
+                <p><input type="checkbox" id="fr-FR-classic" /> <label for="fr-FR-classic">“Classique” (recommandé)</label></p>
+                <p class="option_description">Il s’agit du dictionnaire “Moderne”, avec des graphies classiques en sus, certaines encore communément utilisées, d’autres désuètes. C’est le dictionnaire recommandé si le français est votre langue maternelle.</p>
+            </div>
+            <div class="option_section" id="fr-FR-reform_box">
+                <p><input type="checkbox" id="fr-FR-reform" /> <label for="fr-FR-reform">“Réforme 1990”</label></p>
+                <p class="option_description">Avec ce dictionnaire, seule l’orthographe réformée est reconnue. Attendu que bon nombre de graphies réformées sont considérées comme erronées par beaucoup, ce dictionnaire est déconseillé. Les graphies passées dans l’usage sont déjà incluses dans le dictionnaire “Moderne”.</p>
+            </div>
+            <div class="option_section" id="fr-FR-classic-reform_box">
+                <p><input type="checkbox" id="fr-FR-classic-reform" /> <label for="fr-FR-classic-reform">“Toutes variantes”</label></p>
+                <p class="option_description">Ce dictionnaire contient les variantes graphiques, classiques, réformées, ainsi que d’autres plus rares encore. Ce dictionnaire est déconseillé à ceux qui ne connaissent pas très bien la langue française.</p>
+            </div>
+          </div>
+        </section> <!-- #sc_options_page -->
+
+        <section id="test_page" class="page">
+          <div id="test_cmd">
+            <h1>ZONE DE TEST</h1>
+            <p>Section de contrôle pour le développement du logiciel…</p>
+            <div id="restart_worker" class="button blue fright">Redémarrer le worker</div>
+            <div id="fulltests_button" class="button blue">Tests complets</div>
+            <textarea id="text_to_test" rows="10"></textarea>
+            <div id="text_to_test_button" class="button green">Analyser</div>
+            <div id="link_testpage" class="button link" data-url="https://grammalecte.net/test.html">Page de test</div>
+          </div>
+          <pre id="tests_result"></pre>
+        </section> <!-- #test_page -->
+
+        <section id="info_page" class="page">
+          <h1>INFORMATIONS</h1>
+
+          <h2>Licence d’utilisation</h2>
+          <p>Grammalecte est un correcteur grammatical <i>open&nbsp;source</i> sous <span id="link_gpl" class="link" data-url="https://www.gnu.org/licenses/gpl.html">licence GPL 3</span>.</p>
+
+          <h2>Respect de la vie privée</h2>
+          <p>Grammalecte ne modifie aucun réglage de votre navigateur, ne vous espionne pas et ne communique aucune information de quelque sorte à quiconque, pas même à l’auteur du logiciel.</p>
+
+          <h2>Droits demandés par l’extension à votre navigateur</h2>
+          <h3>“Accéder à vos données pour tous les sites web” (Firefox)</h3>
+          <p>Il est nécessaire de pouvoir lire ce que contient une page web pour proposer la correction grammaticale. Ceci ne se fait qu’à la demande de l’utilisateur.</p>
+          <p>Contrairement à tous les autres correcteurs grammaticaux, tout se fait en mode hors-ligne. Aucune information n’est transmise.</p>
+
+          <h3>“Télécharger des fichiers et consulter et modifier l’historique des téléchargements” (Firefox)</h3>
+          <p>Grammalecte requiert les droits de l’interface “downloads” pour pouvoir exporter votre dictionnaire personnel sur le disque dur (par une astuce de programmation).</p>
+          <p>Mais l’extension ne télécharge rien et ne consulte ni ne modifie votre historique de téléchargement.</p>
+
+          <h3>“Ajouter des données dans le presse-papiers” (Firefox)</h3>
+          <p>Ce droit est nécessaire pour copier, uniquement à votre demande, le texte corrigé dans le presse-papiers. (Cette fonctionnalité est expérimentale et peut ne pas fonctionner.)</p>
+
+          <h2>Revue de code</h2>
+          <p>Le code de l’extension est passé en revue par les équipes de Mozilla et de Google.</p>
+
+          <h2>Développement et tests</h2>
+          <p>Cette extension est développée et testée avec Firefox. Il se peut qu’il y ait des différences de comportement avec Chrome et les autres navigateurs avec lesquels cette extension est compatible.</p>
+        </section> <!-- #info_page -->
+
+      </div> <!-- #page -->
+
+    </div> <!-- #main -->
+
+    <script src="../grammalecte/graphspell/helpers.js"></script>
+    <script src="main.js"></script>
+  </body>
+
+</html>

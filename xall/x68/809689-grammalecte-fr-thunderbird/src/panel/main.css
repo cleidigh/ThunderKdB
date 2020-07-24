@@ -1,0 +1,423 @@
+/*
+    flexbox:
+    https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+*/
+
+@font-face {
+    font-family: "Yanone Kaffeesatz";
+    font-weight: normal;
+    src: url(../fonts/YanoneKaffeesatz-Regular.otf) format("opentype");
+}
+@font-face {
+    font-family: "Yanone Kaffeesatz";
+    font-weight: bold;
+    src: url(../fonts/YanoneKaffeesatz-Bold.otf) format("opentype");
+}
+
+/* reset */
+
+* { margin: 0; padding: 0; }
+img { border: none; }
+
+
+/* Selection */
+
+::-moz-selection {
+    background-color: hsl(210, 50%, 60%);
+    color: hsl(210, 20%, 100%);
+    text-shadow: 0 0 2px hsl(210, 80%, 20%);
+    border-radius: 2px;
+}
+::selection {
+    background-color: hsl(210, 50%, 60%);
+    color: hsl(210, 20%, 100%);
+    text-shadow: 0 0 2px hsl(210, 80%, 20%);
+    border-radius: 2px;
+}
+
+
+/* Generic classes */
+
+.fleft { float: left; }
+.fright { float: right; }
+
+.center { text-align: center; }
+.right { text-align: right; }
+.left { text-align: left; }
+.justify { text-align: justify; }
+
+.hidden { display: none; }
+.clearer { clear: both; font-size: 0; height: 0; }
+
+.red {          background-color: hsl(0, 50%, 50%);   color: hsl(0, 0%, 96%); }
+.red:hover {    background-color: hsl(0, 60%, 40%);   color: hsl(0, 0%, 100%); }
+.cyan {         background-color: hsl(180, 50%, 50%); color: hsl(0, 0%, 96%); }
+.cyan:hover {   background-color: hsl(180, 60%, 40%); color: hsl(0, 0%, 100%); }
+.green {        background-color: hsl(120, 50%, 40%); color: hsl(120, 10%, 96%); }
+.green:hover {  background-color: hsl(120, 60%, 30%); color: hsl(120, 10%, 96%); }
+.blue {         background-color: hsl(210, 50%, 50%); color: hsl(210, 10%, 96%); }
+.blue:hover {   background-color: hsl(210, 60%, 40%); color: hsl(210, 10%, 96%); }
+
+.border { border: 1px solid hsl(210, 20%, 80%); }
+
+
+/* links */
+
+.link {
+    color: hsl(210, 70%, 40%);
+    text-decoration: none;
+    cursor: pointer;
+}
+.link:hover {
+    text-shadow: 0 0 2px hsl(210, 80%, 60%);
+}
+
+
+
+/* Main classes */
+
+html {
+    box-sizing: border-box;
+    width: 450px;
+    height: 500px;
+    font-family: "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+}
+body {
+    width: 450px;
+    height: 500px;
+}
+/*
+    Maximal height of a panel in WebExtention seems to be 500px.
+    When going over this limit, a scrollbar appears which destructs the
+    horizontal balance of elements.
+    --> vertical scrolling is done with overflow in #page.
+        #page must have the same height than body.
+*/
+
+#main {
+    display: flex;
+    background-color: hsl(210, 0%, 100%);
+    min-height: 100%;
+}
+
+#menu {
+    width: 100px;
+    border-right: solid 1px hsl(210, 0%, 70%);
+    background-color: hsl(210, 10%, 96%);
+    color: hsl(210, 10%, 96%);
+}
+#logo {
+    padding: 10px;
+    text-align: center;
+}
+#menu .select_block {
+    min-width: 100px;
+    padding: 10px 0;
+    border-bottom: 1px solid hsl(210, 10%, 90%);
+    text-align: center;
+    cursor: pointer;
+    color: hsl(210, 10%, 50%);
+    font-size: 20px;
+}
+.invisible {
+    opacity: .05;
+}
+#menu .select_block:hover {
+    background-color: hsl(210, 20%, 92%);
+    color: hsl(210, 80%, 50%);
+    text-shadow: 0px 0px 1px hsl(210, 100%, 70%);
+    opacity: 1;
+}
+.select_label {
+    font-size: 12px;
+    font-variant-caps: small-caps;
+}
+
+#page {
+    background-color: hsl(210, 0%, 100%);
+    min-width: calc(100% - 101px);
+    height: 500px;
+    overflow: auto;
+}
+#page h1 {
+    margin: 0 0 10px 0;
+    color: hsl(210, 50%, 50%);
+    font: bold 30px 'Yanone Kaffeesatz', "Oswald", "Liberation Sans Narrow", sans-serif;
+}
+
+
+/*
+    Home
+*/
+#home_page {
+    display: block;
+    background-color: hsl(210, 20%, 92%);
+    min-height: 100%;
+}
+#home_page #mainlogo {
+    padding: 5px 20px 20px 20px;
+    background-color: hsl(210, 20%, 96%);
+}
+#home_page .notice {
+    margin-top: 5px;
+    font-size: 12px;
+    font-variant-caps: small-caps;
+    color: hsl(210, 20%, 50%);
+}
+#home_page #thanks {
+    padding: 20px 0 0 0;
+    border-top: 1px solid hsl(210, 20%, 88%);
+    font-size: 14px;
+}
+
+#conj_button {
+    margin: 0 auto;
+    width: 100px;
+    padding: 2px 10px;
+    background-color: hsl(210, 50%, 50%);
+    color: hsl(210, 10%, 96%);
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+/*
+    Help
+*/
+#ui_options_page {
+    display: none;
+    padding: 20px;
+}
+#ui_options_page h2 {
+    margin-top: 10px;
+    font: bold 20px 'Yanone Kaffeesatz', "Oswald", "Liberation Sans Narrow", sans-serif;
+    color: hsl(210, 50%, 50%);
+}
+#ui_options_page .shortcut {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 13px;
+}
+#ui_options_page .shortcut_label {
+    margin-left: 30px;
+}
+
+/*
+    Grammar checking options
+*/
+#gc_options_page {
+    display: none;
+    padding: 20px;
+}
+.opt_subsection {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: hsl(210, 20%, 95%);
+    border-radius: 3px;
+}
+.opt_subsection h2 {
+    color: hsl(210, 30%, 50%);
+    margin-bottom: 3px;
+    font-size: 16px;
+    font-family: "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+}
+.opt_subsection p {
+    padding: 2px 3px;
+    display: flex;
+    align-items: center;
+}
+.opt_subsection p:hover {
+    background-color: hsl(210, 20%, 90%);
+    border-radius: 2px;
+}
+.opt_subsection label {
+    flex: 1;
+    font-size: 12px;
+}
+.opt_subsection input {
+    order: 1
+}
+
+#gc_options_page .button {
+    margin: 20px 30px 0 30px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.option_section {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: hsl(210, 20%, 96%);
+}
+.option_section label {
+    font-size: 16px;
+    line-height: 20px;
+    color: hsl(210, 20%, 50%);
+    font-weight: bold;
+}
+.option_description {
+    padding: 0 0 0 20px;
+    color: hsl(0, 0%, 0%);
+    font-size: 12px;
+}
+
+
+#spelling_section {
+    padding: 5px 0 0 20px;
+}
+#spelling_section .subheader {
+    font-size: 14px;
+    font-weight: bold;
+    color: hsl(210, 20%, 50%);
+}
+#spelling_section .radiolike {
+    display: inline-block;
+    padding: 3px 5px;
+    font-size: 11px;
+    color: hsl(210, 10%, 96%);
+    background-color: hsl(210, 10%, 80%);
+    border-radius: 3px;
+    cursor: pointer;
+}
+#spelling_section .radiolike:hover {
+    color: hsl(210, 10%, 100%);
+    background-color: hsl(210, 10%, 50%);
+    box-shadow: 0 0 3px 3px hsl(210, 30%, 85%);
+}
+#spelling_section .selected {
+    color: hsl(210, 10%, 100%);
+    background-color: hsl(210, 50%, 50%);
+}
+
+
+
+/*
+    Spell checking options
+*/
+#sc_options_page {
+    display: none;
+    padding: 20px;
+}
+.dictionaries_info {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: hsl(0, 50%, 40%);
+    color: hsl(0, 10%, 96%);
+}
+#sc_options_page h2 {
+    margin-top: 20px;
+    font: normal 22px 'Yanone Kaffeesatz', "Oswald", "Liberation Sans Narrow", sans-serif;
+    color: hsl(210, 50%, 50%);
+}
+.button_row {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 5px 0 0 0;
+}
+.dic_button {
+    margin-left: 10px;
+    padding: 2px 10px;
+    background-color: hsl(210, 50%, 50%);
+    color: hsl(210, 10%, 96%);
+    cursor: pointer;
+    font-size: 14px;
+    font-variant-caps: small-caps;
+    border-radius: 3px;
+}
+
+
+/*
+  Test page
+*/
+#test_page {
+    display: none;
+    background-color: hsl(210, 20%, 96%);
+    min-height: 100%;
+}
+#test_cmd {
+    padding: 15px;
+    background-color: hsl(210, 20%, 92%);
+    border-bottom: 1px solid hsl(210, 20%, 90%);
+}
+#test_cmd textarea {
+    width: 95%;
+    padding: 5px;
+    border: 2px solid hsl(210, 20%, 80%);
+    background-color: hsl(210, 20%, 98%);
+    border-radius: 3px;
+    resize: vertical;
+}
+
+#tests_result {
+    padding: 15px;
+}
+
+#test_page .button {
+    margin: 2px;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+#info_page {
+    display: none;
+    padding: 20px;
+}
+#info_page h2 {
+    margin-top: 20px;
+    font: bold 18px "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+    color: hsl(210, 50%, 50%);
+}
+#info_page h3 {
+    margin-top: 20px;
+    font: bold 16px "Trebuchet MS", "Fira Sans", "Liberation Sans", sans-serif;
+    color: hsl(210, 20%, 50%);
+}
+#info_page p {
+    font-size: 14px;
+}
+
+
+/*
+    CSS Spinner
+    Double bounce
+    http://tobiasahlin.com/spinkit/
+*/
+.spinner {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 2px;
+    right: 120px;
+}
+.double-bounce1, .double-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: hsl(180, 50%, 75%);
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}
+.double-bounce2 {
+    animation-delay: -1.0s;
+}
+
+@keyframes sk-bounce {
+    0%, 100% {
+        transform: scale(0.0);
+    } 50% {
+        transform: scale(1.0);
+    }
+}
