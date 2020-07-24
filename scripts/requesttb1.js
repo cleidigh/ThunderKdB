@@ -662,6 +662,7 @@ async function getExtensionFiles(addon_identifier, index) {
 			if (manifestJson.experiment_apis != undefined) {
 				console.debug('WebExperiment');
 				ext_comp.webexp = true;
+				
 				console.debug(ext_comp);
 			} else {
 				ext_comp.webexp = false;

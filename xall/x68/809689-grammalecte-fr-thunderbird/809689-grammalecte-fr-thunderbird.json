@@ -18,30 +18,34 @@
     "contributions_url": null,
     "created": "2017-04-26T07:28:02Z",
     "current_version": {
-        "id": 2473663,
+        "id": 2473986,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0a1"
+                "max": "*",
+                "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/grammalecte-fr-thunderbird/versions/2473663",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/grammalecte-fr-thunderbird/versions/2473986",
         "files": [
             {
-                "id": 1016818,
-                "created": "2020-05-02T14:27:32Z",
-                "hash": "sha256:c6c0cf81dedf456bf4f7a3e3d9d13c2e23b646a7e243b796382bb098a5a407aa",
-                "is_restart_required": true,
+                "id": 1017148,
+                "created": "2020-07-23T09:41:10Z",
+                "hash": "sha256:e73409a379533b43096c413d8d684c2c4924ed1e3fcbe22f0fc1fd87223189eb",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4031522,
+                "size": 4987589,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016818/grammalecte_fr_for_thunderbird-1.9.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017148/grammalecte_fr_for_thunderbird-1.11.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "downloads",
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,12 +75,12 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "fr": "[Mise à jour] Correcteur grammatical.\n[Mise à jour] Dictionnaires orthographiques.\n[Compatibilité] Thunderbird 68",
-            "en-US": "[Update] Grammar checker.\n[Update] Spelling dictionaries.\n[Compatibility] Thunderbird 68"
+            "fr": "[Mise à jour] Correcteur grammatical.\n[Mise à jour] Dictionnaires orthographiques.\n[Compatibilité] MailExtension pour Thunderbird 78+",
+            "en-US": "[Update] Grammar checker.\n[Update] Spell checking dictionaries.\n[Compatibility] MailExtension for Thunderbird 78+"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/grammalecte-fr-thunderbird/versions/1.9.2",
-        "version": "1.9.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/grammalecte-fr-thunderbird/versions/1.11.0",
+        "version": "1.11.0"
     },
     "default_locale": "fr",
     "description": {
@@ -101,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-02T17:44:22Z",
+    "last_updated": "2020-07-23T09:45:03Z",
     "name": {
         "fr": "Grammalecte [fr] (for Thunderbird)",
         "en-US": "Grammalecte [fr] (for Thunderbird)"
@@ -260,10 +264,10 @@
     "weekly_downloads": 220,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-07T13:28:56Z"
         }

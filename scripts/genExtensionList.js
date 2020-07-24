@@ -72,7 +72,7 @@ const cBadge_maxv_star_warn = "![Thunderbird 68 Compatible](https://img.shields.
 var cBadge_type_setup = { bLeftText: 'Type', bRightText: '', bColor: 'purple', bTooltip: '', badgeBasedURL: 'https://img.shields.io/badge/'};
 const cBadge_mx = makeBadgeElement({ bLeftText: 'MX', bRightText: '%20+', bColor: 'purple', bTooltip: 'MailExtension (has manifest.json)', badgeBasedURL: 'https://img.shields.io/badge/'});
 
-var cBadge_webexp_setup = { bLeftText: 'WebExp', bRightText: '%20+', bColor: 'blue', bTooltip: 'MailExtension WebExperiment API', badgeBasedURL: 'https://img.shields.io/badge/'};
+var cBadge_webexp_setup = { bLeftText: 'WebExp', bRightText: '%20+', bColor: 'blue', bTooltip: 'MailExtension WebExperiment API (Click for manifest)', badgeBasedURL: 'https://img.shields.io/badge/'};
 
 // const cBadge_legacy_rs = "![Thunderbird 68 Compatible](https://img.shields.io/badge/Leg-%20rs-purple.png)"
 const cBadge_legacy_rs = makeBadgeElement({ bLeftText: 'Leg', bRightText: '%20rs', bColor: 'purple', bTooltip: 'Legacy - Requires Restart', badgeBasedURL: 'https://img.shields.io/badge/'});
@@ -442,7 +442,6 @@ function createExtMDTableRow(extJson) {
 			console.debug(manifestPath);
 
 			cBadge_webexp_setup.bLink = manifestPath;
-
 			cBadge_webexp = makeBadgeElement(cBadge_webexp_setup);
 
 			comp_badges += " " + cBadge_webexp;

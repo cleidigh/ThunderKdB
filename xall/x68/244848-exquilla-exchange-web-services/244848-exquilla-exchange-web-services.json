@@ -19,30 +19,30 @@
     "contributions_url": "",
     "created": "2010-10-22T13:33:05Z",
     "current_version": {
-        "id": 2472971,
+        "id": 2473985,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "60.5"
+                "max": "78.*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/exquilla-exchange-web-services/versions/2472971",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/exquilla-exchange-web-services/versions/2473985",
         "files": [
             {
-                "id": 1016078,
-                "created": "2019-12-06T00:14:32Z",
-                "hash": "sha256:a63bfa2178cc15c11ed9a3aa69ae65e825e2c4f3a8ccd6a94d3260a0b9a34e17",
-                "is_restart_required": true,
+                "id": 1017147,
+                "created": "2020-07-23T08:38:15Z",
+                "hash": "sha256:55368df4ca9cfac47aaa4ca96bb9169f42dc50521e7f283164c8aa84c8ef9410",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 401030,
+                "size": 413891,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016078/exquilla_for_exchange-68.1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017147/exquilla_for_exchange-78.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 7057,
             "name": {
@@ -51,12 +51,12 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "- Fix setting up accounts with NTLM authentication",
+            "en-US": "- Support for Thunderbird 78",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/exquilla-exchange-web-services/versions/68.1.1",
-        "version": "68.1.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/exquilla-exchange-web-services/versions/78.0",
+        "version": "78.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -79,7 +79,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-12-08T14:46:50Z",
+    "last_updated": "2020-07-23T11:23:19Z",
     "name": {
         "en-US": "ExQuilla for Exchange"
     },
@@ -115,7 +115,8 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2019-06-28T21:58:02Z"
