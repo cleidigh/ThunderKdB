@@ -1,0 +1,171 @@
+{
+    "id": 987769,
+    "authors": [
+        {
+            "id": 14178184,
+            "name": "Andreas Krinke",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/akrinke/",
+            "username": "akrinke",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "chat",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2020-01-23T10:39:14Z",
+    "current_version": {
+        "id": 2473270,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/disable-signature/versions/2473270",
+        "files": [
+            {
+                "id": 1016382,
+                "created": "2020-01-23T10:39:14Z",
+                "hash": "sha256:d83d94d6a390e7bad6e9005af61a43e47812f10efda7181814bce43e413cba34",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 17343,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016382/disable_signature-1.0.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2020-07-25T10:57:44Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-signature/versions/1.0.0",
+        "version": "1.0.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "In Thunderbird, it is currently not possible to delete or detach the attachments of S/MIME signed messages. This annoyed me because I wanted to delete large attachments so that my mailbox would not get too large.\n\nThis addon allows you to disable the S/MIME signature of messages. Afterwards, these messages are no longer recognized as signed and their attachments can be deleted or detached.\n\n<strong>Attention: This addon does not work for encrypted messaged! They must be decrypted first!</strong>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/disable-signature/edit",
+    "guid": "disable-signature@akrinke.addons.thunderbird.net",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://addons.thunderbird.net/thunderbird/addon/disable-signature/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987769-64.png?modified=7b32e40c",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987769-32.png?modified=7b32e40c",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987769-64.png?modified=7b32e40c"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-07-25T10:57:44Z",
+    "name": {
+        "en-US": "Disable Signature"
+    },
+    "previews": [
+        {
+            "id": 206048,
+            "caption": {
+                "en-US": "Before: You cannot detach or delete attachments from signed emails.",
+                "de": ""
+            },
+            "image_size": [
+                808,
+                593
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206048.png?modified=1595670216",
+            "thumbnail_size": [
+                273,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206048.png?modified=1595670216"
+        },
+        {
+            "id": 206049,
+            "caption": {
+                "en-US": "This plugin allows you to disable the signature of signed emails. Just right-click on the email and select \"Disable signature\" (or use the menu entry Message → Disable signature).",
+                "de": ""
+            },
+            "image_size": [
+                808,
+                692
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206049.png?modified=1595670182",
+            "thumbnail_size": [
+                234,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206049.png?modified=1595670182"
+        },
+        {
+            "id": 206050,
+            "caption": {
+                "en-US": "After that the email is no longer signed and attachments can be deleted or detached. The original signature is still available as a new attachment \"smime.p7s\".",
+                "de": ""
+            },
+            "image_size": [
+                808,
+                692
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206050.png?modified=1595670218",
+            "thumbnail_size": [
+                234,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206050.png?modified=1595670218"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.85771,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-signature/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987769",
+    "slug": "disable-signature",
+    "status": "public",
+    "summary": {
+        "en-US": "Allows to disable the S/MIME signature of messages. Afterwards, these messages are no longer recognized as signed and their attachments can be deleted or detached."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/akrinke/thunderbird-disable-signature"
+    },
+    "tags": [
+        "firefox57",
+        "signature",
+        "smime",
+        "thunderbird"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-signature/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true
+        }
+    }
+}
