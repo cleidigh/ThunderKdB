@@ -1,101 +1,104 @@
 ﻿// * Software:	Thunderbird Add-on "TRANSLITERUSSIAN"
-// * Version:	0.2 beta
-// * Date:		2020-05-09
+// * Version:	0.3 beta
+// * Date:		2020-07-25
 // * Author:	Vlad Koutsenok (www.koutsenok.de)
 // * File:		newmessage.js
 
 var element = document.getElementById("transliterussian");
 var button_newmessage = document.getElementById("button_newmessage");
 
+var vorlastchar = "";
+
 function createNewMessage(){
 	browser.compose.beginNew({body: element.value});
 }
 
-function translate(){
+function translate(e){
 	
-	var latintext = element.value;
-	var textlength = latintext.length;
-	var lastchar = latintext.substr(textlength-1, textlength);
-	var vorlastchar = latintext.substr(textlength-2, 1);
-	var basestring = latintext.substr(0, textlength-1);
+	var is2char = null;
+	var flag = 1;
+	var flag2 = 0;
+	var text = element.value;
+	var latinchar = e.data;
 	var translatechar = "";
+	var position = e.target.selectionStart;
 
-	switch(lastchar) {
+	switch(latinchar) {
 		
 		// Cases [a, ja, h, ch, sh, zh]
 		case "A":
 			if(vorlastchar == String.fromCharCode(1081)){ 			// "j"
 				translatechar = String.fromCharCode(1103);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
 				translatechar = String.fromCharCode(1071);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else translatechar = String.fromCharCode(1040);
 			break;
 		case "a":
 			if(vorlastchar == String.fromCharCode(1081)){			// "j"
 				translatechar = String.fromCharCode(1103);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
 				translatechar = String.fromCharCode(1071);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else translatechar = String.fromCharCode(1072);
 			break;
 		case "h":
 			if(vorlastchar == String.fromCharCode(1079)){			// "c"
 				translatechar = String.fromCharCode(1095);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1047)){		// "C"
 				translatechar = String.fromCharCode(1063);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1089)){		// "s"
 				translatechar = String.fromCharCode(1096);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1057)){		// "S"
 				translatechar = String.fromCharCode(1064);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1094)){		// "z"
 				translatechar = String.fromCharCode(1078);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1062)){		// "Z"
 				translatechar = String.fromCharCode(1046);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			}
 			else translatechar = String.fromCharCode(1093);
 			break;
 		case "H":
 			if(vorlastchar == String.fromCharCode(1079)){			// "c"
 				translatechar = String.fromCharCode(1095);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1047)){		// "C"
 				translatechar = String.fromCharCode(1063);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1089)){		// "s"
 				translatechar = String.fromCharCode(1096);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1057)){		// "S"
 				translatechar = String.fromCharCode(1064);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1094)){		// "z"
 				translatechar = String.fromCharCode(1078);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1062)){		// "Z"
 				translatechar = String.fromCharCode(1046);
-				basestring = latintext.substr(0, textlength-2);
+				is2char = true;
 			}
 			else translatechar = String.fromCharCode(1061);
 			break;
@@ -262,11 +265,24 @@ function translate(){
 			translatechar = String.fromCharCode(1100);
 			break;
 		default:
-        translatechar = lastchar;
+			if(latinchar == null){
+				flag = 0;
+			}
+			else{
+				translatechar = latinchar;
+				flag = 1;
+			}
 	} 
-
-	element.value = basestring + translatechar;
-
+	vorlastchar = translatechar;
+	
+	if(is2char){
+		flag = 2;
+		flag2 = 1;
+	}
+	
+	element.value = text.substring(0, position - flag) + translatechar + text.substring(position);
+	element.setSelectionRange(position - flag2, position - flag2);
+	is2char = false;
 }
 
 element.addEventListener("input", translate);

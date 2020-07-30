@@ -20,7 +20,7 @@
 		<h2 lang="de"><span> SPF Test </span></h2>
 		
 		<input type="range" id="spf_slider" min="1" max="30">
-		<label for="spf_slider"><span id="spfVal"></span></label>
+		<label for="spf_slider">Punktzahl für diesen Test: <span id="spfVal"></span></label>
 		</p>
 		<label>
 		<span lang="de">Dieser Test überprüft das Vorkommen des SPF Headers und dessen ergebnis. <br>
@@ -33,7 +33,7 @@
 		<h2 lang="de"><span> Zeitzonen Test </span></h2>
 		
 		<input type="range" id="tz_slider" min="1" max="30">
-		<label for="tz_slider">Timezone Rating: <span id="tzVal"></span></label>
+		<label for="tz_slider">Punktzahl für diesen Test: <span id="tzVal"></span></label>
 		</p>
 		<label>
 		<span lang="de">Dieser Test vergleicht die Zeitzone des Absendeortes mit dem Standort des E-Mail Servers von dem gesendet worden ist. </span>
@@ -45,7 +45,7 @@
 		<h2 lang="de"><span> Blacklist Test </span></h2>
 		
 		<input type="range" id="bl_slider" min="1" max="30">
-		<label for="bl_slider">Blacklist Rating: <span id="blVal"></span></label>
+		<label for="bl_slider">Punktzahl für diesen Test: <span id="blVal"></span></label>
 		</p>
 		<label>
 		<span lang="de"> In diesem Test wird überprüft, ob die IP Adressen von der E-Mail auf der Spam Blacklist vorkommt. </span>
@@ -57,7 +57,7 @@
 		<h2><span lang="de"> Ursprungs Test </span></h2>
 		
 		<input type="range" id="origin_slider" min="1" max="30">
-		<label for="origin_slider">Origin Rating: <span id="oriVal"></span></label>
+		<label for="origin_slider">Punktzahl für diesen Test: <span id="oriVal"></span></label>
 		</p>
 		
 		<label>
@@ -72,15 +72,15 @@
 		<label for="localOnly"><span lang="de">Diesen Test NICHT nutzen</span></label>
 		<br>
 		<input type="range" id="api_slider" min="1" max="5">
-		<label for="api_slider">API Rating: x<span id="apiVal"></span></label>
+		<label for="api_slider">Multiplikator für diesen Test: x<span id="apiVal"></span></label>
 		</p>
 		
 		<label>
 		<span lang="de"> 
 		Dieser Test nutzt eine API um die E-Mail von SpamAssassin überprüfen zu lassen. <br>
-		DAS BEDEUTET DAS DIE E-MAIL ZU EINER DRITTEN PARTEI GESENDET WIRD.<br>
-		Bei der Drittpartei sollte diese nur maschinell überprüft werden, da der Entwickler aber <br>
-		kein zugriff auf die internen Vorgänge der API hat kann dieses nicht garantiert werden.
+		DAS BEDEUTET, DASS DIE E-MAIL ZU EINER DRITTEN PARTEI GESENDET WIRD.<br>
+		Bei der Drittpartei sollte diese nur maschinell überprüft werden, da der Entwickler aber kein zugriff auf die internen Vorgänge der API hat kann dieses nicht garantiert werden.<br>
+		Der Rückgabewert der API liegt zwischen 0 und 15 Punkten. Um diese Punkte den anderen Tests anzugleichen wird ein Multiplikator anstelle einer frei einstellbaren Punktzahl genutzt.
 		</span>
 		</label>
 	</div>
@@ -93,7 +93,7 @@
 		<label for="api_slider">Benötigte Punktzahl bis die E-Mail als Spam markiert wird: <span id="neededScore"></span></label>
 		</p>
 		<label>
-		<span lang="de"> An dieser Stelle kann eingestellt werden, wie viele punkte erreicht sein müssen, damit eine E-Mail als Spam gelten soll. </span>
+		<span lang="de"> An dieser Stelle kann eingestellt werden, wie viele Punkte erreicht sein müssen, damit eine E-Mail als Spam gelten soll. </span>
 		</label>
 	</div>
   </body>

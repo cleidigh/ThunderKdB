@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!-- Copyright 2020 Andreas Krinke -->
+<!-- This code is licensed under MPL 2.0. See LICENSE.txt for details. -->
+
+<overlay
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript" src="disablesignature.js"/>
+  <script type="application/x-javascript">
+    window.addEventListener("load", disableSignatureObj.disableSignatureInit, false);
+  </script>
+</overlay>

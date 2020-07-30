@@ -1,0 +1,12 @@
+# Copyright (c) 2020 Andreas Krinke.
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License,
+# v. 2.0. If a copy of the MPL was not distributed with this file, You can
+# obtain one at http://mozilla.org/MPL/2.0/.
+content	disablesignature	chrome/content/
+
+locale disablesignature en chrome/locale/en/
+locale disablesignature de chrome/locale/de/
+
+overlay chrome://messenger/content/messenger.xul chrome://disablesignature/content/disablesignatureOverlay.xul
+
