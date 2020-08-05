@@ -563,7 +563,7 @@ async function getExtensionFiles(addon_identifier, index) {
 
 		let targetGroupDir = "";
 
-		if (ext_comp.comp68 || ext_comp.comp78plus) {
+		if (ext_comp.comp68 || ext_comp.comp78plus || ext_comp.comp78pv) {
 			targetGroupDir = extGroupTB68Dir;
 		} else if (ext_comp.comp60) {
 			targetGroupDir = extGroupTB60Dir;
