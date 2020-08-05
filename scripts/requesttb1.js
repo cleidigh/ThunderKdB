@@ -338,10 +338,6 @@ function compatibilityCheck(extJson, options) {
 
 	console.debug(`CompatibilityCheck: ${extJson.slug} `);
 
-if (extJson.slug === "browseintab") {
-	console.debug('BrowseTrack');
-}
-
 	let compSet = {};
 	let v_min = `${extJson.current_version.compatibility.thunderbird.min}`;
 	let v_max = `${extJson.current_version.compatibility.thunderbird.max}`;
@@ -515,6 +511,11 @@ if (extJson.slug === "browseintab") {
 				}
 			}
 
+			if (v_min_num >= 78) {
+				pv_compSet.comp78pv = true;
+				// pv_compSet.comp78pv_version = ver_date;
+			}
+			
 		}
 		// console.debug(pv_compSet);
 		// console.debug(compSet);
@@ -661,8 +662,11 @@ async function getExtensionFiles(addon_identifier, index) {
 
 			if (manifestJson.experiment_apis != undefined) {
 				console.debug('WebExperiment');
+				let exp_apis = manifestJson.experiment_apis;
 				ext_comp.webexp = true;
-				
+				ext_comp.webexpSchemaNames = Object.keys(exp_apis);
+				ext_comp.webexpSchemas = exp_apis;
+
 				console.debug(ext_comp);
 			} else {
 				ext_comp.webexp = false;

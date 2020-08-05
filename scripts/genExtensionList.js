@@ -44,6 +44,9 @@ let ext_exdata = [
 const cBadge_alt_ext_tb68_setup = { bLeftText: '68', bRightText: 'Alt%20+', bColor: 'brightgreen', bTooltip: '', badgeBasedURL: 'https://img.shields.io/badge/'};
 
 const cBadge_tb78p_setup = { bLeftText: '78', bRightText: '%20cV', bColor: 'orange', bTooltip: 'Current Version: TB78 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
+const cBadge_tb78_pv_setup = { bLeftText: '78', bRightText: '%20pV', bColor: 'orange', bTooltip: 'Prior Version: TB78 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
+
+
 const cBadge_tb68_setup = { bLeftText: '68', bRightText: '%20cV', bColor: 'brightgreen', bTooltip: 'Current Version: TB68 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
 const cBadge_tb68_pv_setup = { bLeftText: '68', bRightText: '%20pV', bColor: 'green', bTooltip: 'Prior Version: TB68 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
 
@@ -51,6 +54,7 @@ const cBadge_tb60_setup = { bLeftText: '60', bRightText: '%20cV', bColor: 'darkg
 const cBadge_tb60_pv_setup = { bLeftText: '60', bRightText: '%20pV', bColor: 'darkgreen', bTooltip: 'Prior Version: TB60 Compatible', badgeBasedURL: 'https://img.shields.io/badge/'};
 
 const cBadge_tb78p = makeBadgeElement(cBadge_tb78p_setup);
+const cBadge_tb78_pv = makeBadgeElement(cBadge_tb78_pv_setup);
 
 const cBadge_tb68 = makeBadgeElement(cBadge_tb68_setup);
 const cBadge_tb68_pv = makeBadgeElement(cBadge_tb68_pv_setup);
@@ -159,14 +163,16 @@ var reports = {
 
 			
 			console.debug(`comp ${compSet} `);
-			if ( (compSet.comp78plus) ) {
+			if ( (compSet.comp78plus || compSet.comp78pv) ) {
 				compSet.comp61plus = false;
 				compSet.comp69plus = false;
 				compSet.comp60pv = false;
 				compSet.comp60 = false;
 				compSet.comp68pv = false;
 				extJson.xpilib.ext_comp.comp68 = false;
-				
+				if (compSet.comp78plus && compSet.comp78pv) {
+					compSet.comp78pv = false;
+				}
 				
 				console.debug('True');
 				return true;
@@ -364,6 +370,10 @@ function createExtMDTableRow(extJson) {
 		comp_badges += cBadge_tb78p;
 	}
 
+	if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp78pv === true) {
+		comp_badges += cBadge_tb78_pv;
+	}
+
 	if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp !== undefined) {
 		console.debug(extJson.xpilib);
 		compSet = extJson.xpilib.ext_comp;
@@ -442,8 +452,40 @@ function createExtMDTableRow(extJson) {
 			console.debug(manifestPath);
 
 			cBadge_webexp_setup.bLink = manifestPath;
+			cBadge_webexp_setup.bTooltip = "Click for manifest.json&#010;SchemaNames:&#010;";
+
+			if (extJson.xpilib.ext_comp.webexpSchemaNames.includes("WindowsListener")) {
+				cBadge_webexp_setup.bLeftText = "WinLAPI"
+			}
+
+			var	schema = extJson.xpilib.ext_comp.webexpSchemaNames;
+			console.debug('schema names '+ extJson.slug);
+			console.debug(schema);
+
+			if (schema) {
+				console.debug('SchemaSet');
+				cBadge_webexp_setup.bTooltip += "&#10;";
+				let max =  Math.min(schema.length, 14);
+				console.debug(max);
+				for (let index = 0; index < max; index++) {
+					const element = schema[index];
+					// cBadge_webexp_setup.bTooltip += (element + "&#10;");
+					cBadge_webexp_setup.bTooltip += (element + "&#10;" );
+					
+					console.debug(element);
+				};
+
+				if (extJson.xpilib.ext_comp.webexpSchemaNames.length > 15) {
+					cBadge_webexp_setup.bTooltip += "&#10;...";
+				}
+
+
+			}
+
+			console.debug(cBadge_webexp_setup.bTooltip);
 			cBadge_webexp = makeBadgeElement(cBadge_webexp_setup);
 
+			
 			comp_badges += " " + cBadge_webexp;
 			
 			console.debug(comp_badges);
