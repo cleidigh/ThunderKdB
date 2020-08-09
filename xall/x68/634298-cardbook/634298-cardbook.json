@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 48738,
+    "average_daily_users": 48503,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -19,30 +19,30 @@
     "contributions_url": "https://www.paypal.me/CardBook/10eur",
     "created": "2015-07-21T05:46:14Z",
     "current_version": {
-        "id": 2474000,
+        "id": 2474047,
         "compatibility": {
             "thunderbird": {
-                "max": "69.*",
-                "min": "68.0a1"
+                "max": "*",
+                "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2474000",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2474047",
         "files": [
             {
-                "id": 1017162,
-                "created": "2020-07-27T10:03:39Z",
-                "hash": "sha256:63064ec9b81254b7a928c1146ef7d6769d3dbc0f06d3de8b9012c3d2e6407b60",
-                "is_restart_required": true,
+                "id": 1017209,
+                "created": "2020-08-06T18:40:37Z",
+                "hash": "sha256:c289611daa29f32402c72af179a39ecda6bef9329e54de72cbe4cacf1f2e151a",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1119413,
+                "size": 913696,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017162/cardbook-45.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017209/cardbook-51.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,13 +50,10 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": {
-            "fr": "",
-            "en-US": "- fixes when writing an email with no main Thunderbird window"
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/45.0",
-        "version": "45.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/51.3",
+        "version": "51.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -123,7 +120,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2020-08-01T21:42:18Z",
+    "last_updated": "2020-08-06T18:42:46Z",
     "name": {
         "el": "Επαφές (CardBook)",
         "vi": "CardBook",
@@ -728,13 +725,17 @@
     "weekly_downloads": 3717,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp78pv": true,
+            "comp78pv_date": "2020-07-25T14:44:00Z",
+            "comp78pv_version": "51.1",
+            "comp78pv_vmin": "78.0a1",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
-            "comp60pv_date": "2019-04-10T17:55:17Z"
+            "comp60pv_date": "2019-05-08T11:24:28Z"
         }
     }
 }

@@ -1,5 +1,90 @@
 [
     {
+        "id": 2474047,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2474047",
+        "files": [
+            {
+                "id": 1017209,
+                "created": "2020-08-06T18:40:37Z",
+                "hash": "sha256:c289611daa29f32402c72af179a39ecda6bef9329e54de72cbe4cacf1f2e151a",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 913696,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017209/cardbook-51.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/51.3",
+        "version": "51.3"
+    },
+    {
+        "id": 2474027,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.*",
+                "min": "68.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2474027",
+        "files": [
+            {
+                "id": 1017189,
+                "created": "2020-08-03T09:00:18Z",
+                "hash": "sha256:dc956bbd4505c4964a8215d435c105f0a1985ecc9d8e71c968293c2648d508c8",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1119428,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017189/cardbook-45.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "fr": "",
+            "en-US": "- fix for addresses with parenthesis"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/45.1",
+        "version": "45.1"
+    },
+    {
         "id": 2474000,
         "channel": "listed",
         "compatibility": {
@@ -2110,93 +2195,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/36.0",
         "version": "36.0"
-    },
-    {
-        "id": 2469691,
-        "channel": "listed",
-        "compatibility": {
-            "thunderbird": {
-                "max": "60.*",
-                "min": "51.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2469691",
-        "files": [
-            {
-                "id": 1012747,
-                "created": "2019-04-24T10:40:21Z",
-                "hash": "sha256:bd4bf54125a21ad56e936e5183c9835d1a87343bbede0d692e16187542db2646",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 1065633,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012747/cardbook-35.7-tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "fr": "",
-            "en-US": "- little fixes for categories (big thanks to Yuki \"Piro\" Hiroshi)\n- option extensions.cardbook.setupCardDAVAccounts for setting remote CardDAV AB at first use"
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/35.7",
-        "version": "35.7"
-    },
-    {
-        "id": 2469671,
-        "channel": "listed",
-        "compatibility": {
-            "thunderbird": {
-                "max": "60.*",
-                "min": "51.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2469671",
-        "files": [
-            {
-                "id": 1012725,
-                "created": "2019-04-10T17:55:17Z",
-                "hash": "sha256:0c3307072728d4f09cfe051a118e4583321c6312d055da9ccf9333ebdf976905",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 1131669,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012725/cardbook-35.6-tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "fr": "",
-            "en-US": "- 2 little fixes for color behaviour\n- events now saved with X-ABDATE and x-ABLABEL"
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/35.6",
-        "version": "35.6"
     }
 ]

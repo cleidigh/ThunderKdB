@@ -529,6 +529,7 @@ function createExtMDTableRow(extJson) {
 		targetGroupDir = extGroupTBOtherDir;
 	}
 
+	
 	// const extRootName = `${addon_identifier}-${ext.slug}`;
 	// const extRootDir = `${rootDir}/${extGroupAllDir}/${targetGroupDir}/${extRootName}`;
 
@@ -538,8 +539,17 @@ function createExtMDTableRow(extJson) {
 
 	let rank = extJson.xpilib.rank;
 
-	// row += `${extJson.id} | ${name} | ${summary} | ${extJson.current_version.version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${comp_badges} | 60.0 - 69.* |\n`;
-	row += `${rank} | ${extJson.id} |  ${homepage_icon} ${name_link} | ${extJson.current_version.version.substr(0, 12)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
+	// cleidigh fixup for prior versions
+	if (extJson.xpilib !== undefined && extJson.xpilib.ext_comp.comp78pv === true) {
+		console.debug('Pope prior version route ' + extJson.slug);
+		console.debug(`${extJson.xpilib.ext_comp.comp78pv_version}`);
+		row += `${rank} | ${extJson.id} |  ${homepage_icon} ${name_link} | ${extJson.xpilib.ext_comp.comp78pv_version} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
+		console.debug(row);
+	} else {
+		row += `${rank} | ${extJson.id} |  ${homepage_icon} ${name_link} | ${extJson.current_version.version.substr(0, 12)} | ${extJson.current_version.files[0].created.split('T')[0]} | ${extJson.average_daily_users} | ${v_min} | ${v_max} | ${comp_badges} |\n`;
+
+	}
+
 
 	return row;
 }

@@ -513,6 +513,11 @@ function compatibilityCheck(extJson, options) {
 
 			if (v_min_num >= 78) {
 				pv_compSet.comp78pv = true;
+				pv_compSet.comp78pv_date = ver_date;
+				pv_compSet.comp78pv_version = `${ext_ver.version}`;
+				console.debug('70PV ' + pv_compSet.comp78pv_version);
+				pv_compSet.comp78pv_vmin = v_min;
+				pv_compSet.comp78pv_vmax = v_max;
 				// pv_compSet.comp78pv_version = ver_date;
 			}
 			
