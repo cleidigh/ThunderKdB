@@ -170,6 +170,7 @@ var reports = {
 				compSet.comp60 = false;
 				compSet.comp68pv = false;
 				extJson.xpilib.ext_comp.comp68 = false;
+
 				if (compSet.comp78plus && compSet.comp78pv) {
 					compSet.comp78pv = false;
 				}
@@ -425,7 +426,7 @@ function createExtMDTableRow(extJson) {
 		}
 
 
-		if (compSet.legacy == true && (compSet.legacy_type == 'xul' || compSet.legacy_type === undefined)) {
+		if (compSet.legacy == true && (compSet.legacy_type == 'xul' || compSet.legacy_type === undefined && !compSet.comp78plus)) {
 			// comp_badges += " " + cBadge_legacy_rs;
 			comp_type.push("RS");
 			cBadge_type_setup.bTooltip += "&#10; - RS : Legacy, Requires Restart";
