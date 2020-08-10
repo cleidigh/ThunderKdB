@@ -1,0 +1,32 @@
+{
+	"name": "__MSG_extName__",
+	"version": "51.3",
+	"description": "__MSG_extDesc__",
+	"author": "Philippe VIGNEAU",
+	"default_locale": "en-US",
+	"applications": {
+		"gecko": {
+			"id": "cardbook@vigneau.philippe",
+			"strict_min_version": "78.0a1"
+		}
+	},
+	"icons": {
+		"16": "chrome/content/skin/cardbook_16_16.png",
+		"24": "chrome/content/skin/cardbook_24_24.png",
+		"32": "chrome/content/skin/cardbook_32_32.png"
+	},
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"experiment_apis": {
+		"ConversionHelper": {
+			"schema": "chrome/content/api/ConversionHelper/schema.json",
+			"parent": {
+				"scopes": ["addon_parent"],
+				"paths": [["ConversionHelper"]],
+				"script": "chrome/content/api/ConversionHelper/implementation.js"
+			}
+		}
+	},
+	"manifest_version": 2
+}

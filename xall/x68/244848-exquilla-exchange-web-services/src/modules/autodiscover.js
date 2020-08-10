@@ -17,24 +17,9 @@ var EwsAutoDiscover = {};
 let Cu = Components.utils;
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
 var { EwsFBA } = ChromeUtils.import("resource://exquilla/EwsFBA.jsm");
-Cu.importGlobalProperties(["fetch", "XMLHttpRequest"]);
-if ("@mozilla.org/xmlextras/domparser;1" in Cc) {
-  this.DOMParser = Components.Constructor("@mozilla.org/xmlextras/domparser;1", Ci.nsIDOMParser); // COMPAT for TB 60
-} else {
-  Cu.importGlobalProperties(["DOMParser"]);
-}
-if (Ci.nsIDOMElement) {
-  this.Element = {
-    isInstance: function(aElement) { // COMPAT for TB 60
-      return aElement instanceof Ci.nsIDOMElement;
-    },
-  };
-} else {
-  Cu.importGlobalProperties(["Element"]);
-}
+Cu.importGlobalProperties(["DOMParser", "Element", "fetch", "XMLHttpRequest"]);
 Utils.importLocally(this);
 
 var _log = null;
@@ -563,12 +548,7 @@ EventListener.prototype =
     else
     {
       log.debug('Looking for a password in the password manager');
-      let foundLogins;
-      if (Services.logins.findLogins.length == 4) { // COMPAT for TB 60
-        foundLogins = Services.logins.findLogins({}, aHostname, null, aHostname);
-      } else {
-        foundLogins = Services.logins.findLogins(aHostname, null, aHostname);
-      }
+      let foundLogins = Services.logins.findLogins(aHostname, null, aHostname);
       log.debug('Looking for login with effective user name ' + domainAndUser);
       for (let login of foundLogins)
       {
@@ -693,14 +673,7 @@ EventListener.prototype =
   },
 
   // nsISupports
-  QueryInterface: function(iid) {
-    if (!iid.equals(Ci.nsIBadCertListener2) &&
-        !iid.equals(Ci.nsIAuthPrompt2) &&
-        !iid.equals(Ci.nsIInterfaceRequestor) &&
-        !iid.equals(Ci.nsISupports))
-      throw Components.results.NS_ERROR_NO_INTERFACE;
-    return this;
-  },
+  QueryInterface: ChromeUtils.generateQI([/* COMPAT for TB 68 */Ci.nsIBadCertListener2, Ci.nsIAuthPrompt2, Ci.nsIInterfaceRequestor]/* COMPAT for TB 68 */.filter(i => i)),
 
   startTimeout: function _startTimeout() {
     let self = this;
@@ -820,7 +793,7 @@ function _newAsyncPromptConsumer(aCallback, aContext)
 {
   let obj = 
   {
-    QueryInterface: QIUtils.generateQI([Ci.nsICancelable]),
+    QueryInterface: ChromeUtils.generateQI([Ci.nsICancelable]),
     callback: aCallback,
     context: aContext,
     cancel: function() {
@@ -848,12 +821,7 @@ function savePassword(aHostname, aUser, aDomain, aPassword)
 {
   log.config('commonDialogClone adding credentials to login manager for user <' + aUser + '> domain <' + aDomain + '> hostname ' + aHostname);
   // delete existing logins
-  let foundLogins;
-  if (Services.logins.findLogins.length == 4) { // COMPAT for TB 60
-    foundLogins = Services.logins.findLogins({}, aHostname, null, aHostname);
-  } else {
-    foundLogins = Services.logins.findLogins(aHostname, null, aHostname);
-  }
+  let foundLogins = Services.logins.findLogins(aHostname, null, aHostname);
   let domainAndUser = (aDomain && aDomain.length ? aDomain + "\\" : "") + aUser;
   let newLogin = Cc["@mozilla.org/login-manager/loginInfo;1"]
                    .createInstance(Ci.nsILoginInfo);

@@ -19,7 +19,7 @@ exquilla.fpOverlay = (function _fpOverlay()
   const Cu = Components.utils;
   const Cr = Components.results;
   Object.assign(exquilla, ChromeUtils.import("resource://exquilla/ewsUtils.jsm"));
-  Object.assign(exquilla, ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js")); // COMPAT for TB 60
+  Object.assign(exquilla, ChromeUtils.import("resource:///modules/MailServices.jsm"));
   let pub = {};
   let log = exquilla.Utils.ewsLog;
 

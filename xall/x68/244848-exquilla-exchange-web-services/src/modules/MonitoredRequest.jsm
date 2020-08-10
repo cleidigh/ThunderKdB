@@ -25,21 +25,7 @@ const CE = Components.Exception;
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
-Cu.importGlobalProperties(["XMLHttpRequest"]);
-if ("@mozilla.org/xmlextras/xmlserializer;1" in Cc) {
-  this.XMLSerializer = Components.Constructor("@mozilla.org/xmlextras/xmlserializer;1", Ci.nsIDOMSerializer); // COMPAT for TB 60
-} else {
-  Cu.importGlobalProperties(["XMLSerializer"]);
-}
-if (Ci.nsIDOMNode) {
-  this.Node = {
-    isInstance: function(aNode) { // COMPAT for TB 60
-      return aNode instanceof Ci.nsIDOMNode;
-    },
-  };
-} else {
-  Cu.importGlobalProperties(["Node"]);
-}
+Cu.importGlobalProperties(["Node", "XMLHttpRequest", "XMLSerializer"]);
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("soap");

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
-<?xml-stylesheet href="chrome://mailmerge/content/dialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://mailmerge/content/style.css" type="text/css"?>
 
 <dialog
 	id="mailmerge"
@@ -13,7 +13,7 @@
 	
 	<script type="application/x-javascript" src="chrome://mailmerge/content/dialog.js" />
 	
-	<vbox id="mailmerge-content">
+	<vbox id="mailmerge-content" class="dialog">
 		
 		<html:fieldset id="mailmerge-general">
 			<html:legend i18n="mailmerge.dialog.general"></html:legend>
@@ -120,6 +120,11 @@
 		<html:fieldset id="mailmerge-batch">
 			<html:legend i18n="mailmerge.dialog.batch"></html:legend>
 			<html:div>
+				<html:span id="mailmerge-batch-pause-label" i18n="mailmerge.dialog.batch.pause"></html:span>
+				<html:span><html:input type="checkbox" id="mailmerge-batch-pause-checkbox" aria-labelledby="mailmerge-batch-pause-label" onchange="mailmerge.checkbox();" /></html:span>
+				<html:span><html:input type="text" id="mailmerge-batch-pause" aria-labelledby="mailmerge-batch-pause-label" /></html:span>
+			</html:div>
+			<html:div>
 				<html:span id="mailmerge-batch-start-label" i18n="mailmerge.dialog.batch.start"></html:span>
 				<html:span><html:input type="checkbox" id="mailmerge-batch-start-checkbox" aria-labelledby="mailmerge-batch-start-label" onchange="mailmerge.checkbox();" /></html:span>
 				<html:span><html:input type="number" id="mailmerge-batch-start" aria-labelledby="mailmerge-batch-start-label" min="1" /></html:span>
@@ -128,11 +133,6 @@
 				<html:span id="mailmerge-batch-stop-label" i18n="mailmerge.dialog.batch.stop"></html:span>
 				<html:span><html:input type="checkbox" id="mailmerge-batch-stop-checkbox" aria-labelledby="mailmerge-batch-stop-label" onchange="mailmerge.checkbox();" /></html:span>
 				<html:span><html:input type="number" id="mailmerge-batch-stop" aria-labelledby="mailmerge-batch-stop-label" min="1" /></html:span>
-			</html:div>
-			<html:div>
-				<html:span id="mailmerge-batch-pause-label" i18n="mailmerge.dialog.batch.pause"></html:span>
-				<html:span><html:input type="checkbox" id="mailmerge-batch-pause-checkbox" aria-labelledby="mailmerge-batch-pause-label" onchange="mailmerge.checkbox();" /></html:span>
-				<html:span><html:input type="text" id="mailmerge-batch-pause" aria-labelledby="mailmerge-batch-pause-label" /></html:span>
 			</html:div>
 		</html:fieldset>
 		

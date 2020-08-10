@@ -20,27 +20,9 @@ ChromeUtils.defineModuleGetter(this, "Utils",
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "OS", "resource://gre/modules/osfile.jsm");
-if ("@mozilla.org/xmlextras/domparser;1" in Cc) {
-  this.DOMParser = Components.Constructor("@mozilla.org/xmlextras/domparser;1", Ci.nsIDOMParser); // COMPAT for TB 60
-} else {
-  Cu.importGlobalProperties(["DOMParser"]);
-}
-if ("@mozilla.org/xmlextras/xmlserializer;1" in Cc) {
-  this.XMLSerializer = Components.Constructor("@mozilla.org/xmlextras/xmlserializer;1", Ci.nsIDOMSerializer); // COMPAT for TB 60
-} else {
-  Cu.importGlobalProperties(["XMLSerializer"]);
-}
-if (Ci.nsIDOMElement) {
-  this.Element = {
-    isInstance: function(aElement) { // COMPAT for TB 60
-      return aElement instanceof Ci.nsIDOMElement;
-    },
-  };
-} else {
-  Cu.importGlobalProperties(["Element"]);
-}
+Cu.importGlobalProperties(["DOMParser", "Element", "XMLSerializer"]);
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("native");
@@ -55,7 +37,6 @@ ChromeUtils.defineModuleGetter(this, "SoapTransport",
 ChromeUtils.defineModuleGetter(this, "Base64", "resource://exquilla/Base64.jsm");
 
 ChromeUtils.defineModuleGetter(this, "EWStoPL", "resource://exquilla/EWStoPL.js");
-var { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.js");
 
 // namespaces
 const nsTypes = "http://schemas.microsoft.com/exchange/services/2006/types";

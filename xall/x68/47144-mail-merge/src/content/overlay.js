@@ -5,9 +5,9 @@ function load(win) {
 	
 	this.win = win;
 	
-	var element = win.document.getElementById("menu-item-send-now");
+	let element = win.document.getElementById("menu-item-send-now");
 	
-	var menuitem = win.document.createXULElement("menuitem");
+	let menuitem = win.document.createXULElement("menuitem");
 	menuitem.setAttribute("id", "mailmerge-menuitem");
 	menuitem.setAttribute("label", "Mail Merge");
 	menuitem.setAttribute("oncommand", "mailmerge.init();");
@@ -15,7 +15,7 @@ function load(win) {
 	menuitem.setAttribute("image", "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAvklEQVQ4jc3RIU4DQRTG8R8XaIKjqeQA1U1IOAMn4ABV7DHwlegSJAcgJLvU1GBxkJU0VRgQFME02bSz+7auX/LEzJv3n/nm41+nWGET1DcuZDTpMbyt4vgB6+TzJHewTU3ALW7w2+M1VQ5Q4OEAS6HO8Wr/DxZbQBXccI+rLsBbAFjqTskZnlqazxhGgBeMMNtp3CX/jxFgg3eMk78PTHGJT9QdgFJj8YVrDBLoJ+3XuWiainIOAWUAmHcN/wEJuKU38uCNMgAAAABJRU5ErkJggg==");
 	element.parentNode.insertBefore(menuitem, element);
 	
-	var menuseparator = win.document.createXULElement("menuseparator");
+	let menuseparator = win.document.createXULElement("menuseparator");
 	menuseparator.setAttribute("id", "mailmerge-menuseparator");
 	element.parentNode.insertBefore(menuseparator, element);
 	
@@ -40,7 +40,7 @@ function init() {
 		win.Recipients2CompFields(win.gMsgCompose.compFields);
 		if(win.gMsgCompose.compFields.to == "") {
 			
-			var bundle = win.document.getElementById("bundle_composeMsgs");
+			let bundle = win.document.getElementById("bundle_composeMsgs");
 			Services.prompt.alert(win, bundle.getString("addressInvalidTitle"), bundle.getString("noRecipients"));
 			return;
 			
@@ -52,11 +52,11 @@ function init() {
 	/* subjectempty start */
 	try {
 		
-		var subject = win.document.getElementById("msgSubject").value;
+		let subject = win.document.getElementById("msgSubject").value;
 		if(subject == "") {
 			
-			var bundle = win.document.getElementById("bundle_composeMsgs");
-			var flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
+			let bundle = win.document.getElementById("bundle_composeMsgs");
+			let flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
 			
 			if(Services.prompt.confirmEx(
 				win,
@@ -80,8 +80,8 @@ function init() {
 		
 		if(win.gManualAttachmentReminder || (Services.prefs.getBoolPref("mail.compose.attachment_reminder_aggressive") && win.gNotification.notificationbox.getNotificationWithValue("attachmentReminder"))) {
 			
-			var bundle = win.document.getElementById("bundle_composeMsgs");
-			var flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
+			let bundle = win.document.getElementById("bundle_composeMsgs");
+			let flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
 			
 			if(Services.prompt.confirmEx(
 				win,
@@ -119,8 +119,8 @@ function init() {
 	/* enigmail start */
 	if(win.Enigmail) {
 		
-		var identity = win.getCurrentIdentity();
-		var autoencryptdrafts = identity.getBoolAttribute("autoEncryptDrafts");
+		let identity = win.getCurrentIdentity();
+		let autoencryptdrafts = identity.getBoolAttribute("autoEncryptDrafts");
 		
 		identity.setBoolAttribute("autoEncryptDrafts", false);
 		win.SaveAsTemplate();
@@ -155,15 +155,15 @@ function dialog() {
 	/* template end */
 	
 	/* dialog start */
-	var params = { accept: false }
+	let params = { accept: false }
 	win.openDialog("chrome://mailmerge/content/dialog.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 	if(params.accept) {
 		
 		/* debug start */
-		var prefs = Services.prefs.getBranch("extensions.mailmerge.");
+		let prefs = Services.prefs.getBranch("extensions.mailmerge.");
 		if(prefs.getBoolPref("debug")) {
 			
-			var msg = "";
+			let msg = "";
 			
 			msg += "Mail Merge: Preferences" + "\n";
 			msg += "source" + " " + win.mailmergeutils.prefs.source + "\n";
@@ -178,9 +178,9 @@ function dialog() {
 			msg += "json" + " " + win.mailmergeutils.prefs.json + "\n";
 			msg += "xlsx" + " " + win.mailmergeutils.prefs.xlsx + "\n";
 			msg += "sheetname" + " " + win.mailmergeutils.prefs.sheetname + "\n";
+			msg += "pause" + " " + win.mailmergeutils.prefs.pause + "\n";
 			msg += "start" + " " + win.mailmergeutils.prefs.start + "\n";
 			msg += "stop" + " " + win.mailmergeutils.prefs.stop + "\n";
-			msg += "pause" + " " + win.mailmergeutils.prefs.pause + "\n";
 			msg += "at" + " " + win.mailmergeutils.prefs.at + "\n";
 			msg += "recur" + " " + win.mailmergeutils.prefs.recur + "\n";
 			msg += "every" + " " + win.mailmergeutils.prefs.every + "\n";
@@ -217,12 +217,12 @@ function dialog() {
 			msg += "\n";
 			
 			msg += "Mail Merge: Attachments" + "\n";
-			var attachments = win.gMsgCompose.compFields.attachments;
+			let attachments = win.gMsgCompose.compFields.attachments;
 			while(attachments.hasMoreElements()) {
 				
 				try {
 					
-					var attachment = attachments.getNext();
+					let attachment = attachments.getNext();
 					attachment.QueryInterface(Ci.nsIMsgAttachment);
 					
 					msg += attachment.url.trim().replace(/^file\:\/\//g, '') + "\n";
@@ -247,18 +247,19 @@ function dialog() {
 
 function check(event) {
 	
-	var msgtype = win.document.getElementById("msgcomposeWindow").getAttribute("msgtype");
+	let msgtype = win.document.getElementById("msgcomposeWindow").getAttribute("msgtype");
 	if(msgtype != Ci.nsIMsgCompDeliverMode.Now && msgtype != Ci.nsIMsgCompDeliverMode.Later) { return; }
 	
+	let prefs = Services.prefs.getBranch("extensions.mailmerge.");
+	
 	/* recipientsreminder start */
-	var prefs = Services.prefs.getBranch("extensions.mailmerge.");
 	if(prefs.getBoolPref("recipientsreminder")) {
 		
-		var recipients = win.gMsgCompose.compFields.splitRecipients(win.gMsgCompose.compFields.to, false, {});
+		let recipients = win.gMsgCompose.compFields.splitRecipients(win.gMsgCompose.compFields.to, false, {});
 		if(recipients.length > prefs.getIntPref("recipients")) {
 			
-			var flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
-			var check = { value : false };
+			let flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
+			let check = { value : false };
 			
 			switch(Services.prompt.confirmEx(
 				win,
@@ -294,7 +295,6 @@ function check(event) {
 	/* recipientsreminder end */
 	
 	/* variablesreminder start */
-	var prefs = Services.prefs.getBranch("extensions.mailmerge.");
 	if(prefs.getBoolPref("variablesreminder")) {
 		
 		if(
@@ -307,8 +307,8 @@ function check(event) {
 			win.gMsgCompose.editor.outputToString("text/html", 4).includes("{{") && win.gMsgCompose.editor.outputToString("text/html", 4).includes("}}")
 		) {
 			
-			var flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
-			var check = { value : false };
+			let flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
+			let check = { value : false };
 			
 			switch(Services.prompt.confirmEx(
 				win,

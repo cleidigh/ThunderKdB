@@ -29,12 +29,12 @@ function template() {
 	
 	win.mailmergeutils.template.attachments = [];
 	
-	var attachments = win.gMsgCompose.compFields.attachments;
+	let attachments = win.gMsgCompose.compFields.attachments;
 	while(attachments.hasMoreElements()) {
 		
 		try {
 			
-			var attachment = attachments.getNext();
+			let attachment = attachments.getNext();
 			attachment.QueryInterface(Ci.nsIMsgAttachment);
 			
 			win.mailmergeutils.template.attachments.push(attachment);
@@ -56,11 +56,12 @@ function init(prefs) {
 	/* objects end */
 	
 	/* source start */
+	let params, json, objects;
 	switch(win.mailmergeutils.prefs.source) {
 		
 		case "Cardbook":
 			
-			var objects = win.mailmergeutils.cardbook();
+			objects = win.mailmergeutils.cardbook();
 			if(!Array.isArray(objects)) { return false; }
 			
 			win.mailmergeutils.objects = objects;
@@ -68,7 +69,7 @@ function init(prefs) {
 			
 		case "AddressBook":
 			
-			var objects = win.mailmergeutils.addressbook();
+			objects = win.mailmergeutils.addressbook();
 			if(!Array.isArray(objects)) { return false; }
 			
 			win.mailmergeutils.objects = objects;
@@ -76,7 +77,7 @@ function init(prefs) {
 			
 		case "CSV":
 			
-			var params = {
+			params = {
 				
 				file: win.mailmergeutils.prefs.csv,
 				characterset: win.mailmergeutils.prefs.characterset,
@@ -85,10 +86,10 @@ function init(prefs) {
 				
 			}
 			
-			var json = win.mailmergeutils.csv(params);
+			json = win.mailmergeutils.csv(params);
 			if(!Array.isArray(json)) { return false; }
 			
-			var objects = win.mailmergeutils.array(json);
+			objects = win.mailmergeutils.array(json);
 			if(!Array.isArray(objects)) { return false; }
 			
 			win.mailmergeutils.objects = objects;
@@ -96,16 +97,16 @@ function init(prefs) {
 			
 		case "JSON":
 			
-			var params = {
+			params = {
 				
 				file: win.mailmergeutils.prefs.json
 				
 			}
 			
-			var json = win.mailmergeutils.json(params);
+			json = win.mailmergeutils.json(params);
 			if(!Array.isArray(json)) { return false; }
 			
-			var objects = win.mailmergeutils.array(json);
+			objects = win.mailmergeutils.array(json);
 			if(!Array.isArray(objects)) { return false; }
 			
 			win.mailmergeutils.objects = objects;
@@ -113,17 +114,17 @@ function init(prefs) {
 			
 		case "XLSX":
 			
-			var params = {
+			params = {
 				
 				file: win.mailmergeutils.prefs.xlsx,
 				sheetname: win.mailmergeutils.prefs.sheetname
 				
 			}
 			
-			var json = win.mailmergeutils.xlsx(params);
+			json = win.mailmergeutils.xlsx(params);
 			if(!Array.isArray(json)) { return false; }
 			
-			var objects = win.mailmergeutils.array(json);
+			objects = win.mailmergeutils.array(json);
 			if(!Array.isArray(objects)) { return false; }
 			
 			win.mailmergeutils.objects = objects;
@@ -135,12 +136,12 @@ function init(prefs) {
 	/* source end */
 	
 	/* stop start */
-	var stop = (win.mailmergeutils.prefs.stop == "") ? win.mailmergeutils.objects.length : win.mailmergeutils.prefs.stop;
+	let stop = (win.mailmergeutils.prefs.stop == "") ? win.mailmergeutils.objects.length : win.mailmergeutils.prefs.stop;
 	win.mailmergeutils.objects.splice(stop);
 	/* stop end */
 	
 	/* start start */
-	var start = (win.mailmergeutils.prefs.start == "") ? 1 : win.mailmergeutils.prefs.start;
+	let start = (win.mailmergeutils.prefs.start == "") ? 1 : win.mailmergeutils.prefs.start;
 	win.mailmergeutils.objects.splice(0, start - 1);
 	/* start end */
 	
@@ -150,34 +151,34 @@ function init(prefs) {
 
 function cardbook() {
 	
-	var objects = [];
+	let objects = [];
 	
 	/* to start */
-	var to = win.mailmergeutils.template.to;
+	let to = win.mailmergeutils.template.to;
 	to = jsmime.headerparser.decodeRFC2047Words(to);
 	to = win.gMsgCompose.compFields.splitRecipients(to, false, {});
 	/* to end */
 	
 	/* array start */
-	for(var i = 0; i < to.length; i++) {
+	for(let i = 0; i < to.length; i++) {
 		
 		if(to[i].includes("{{") && to[i].includes("}}")) {
 			
 			/* cardbook start */
 			try {
 				
-				var accounts = win.cardbookRepository.cardbookAccounts;
-				for(var j = 0; j < accounts.length; j++) {
+				let accounts = win.cardbookRepository.cardbookAccounts;
+				for(let j = 0; j < accounts.length; j++) {
 					
-					var account = accounts[j];
+					let account = accounts[j];
 					if(account[1] && account[5] && account[6] != "SEARCH") {
 						
 						if(win.mailmergeutils.prefs.cardbook && win.mailmergeutils.prefs.cardbook != account[4]) { continue; }
 						
-						var cards = (win.cardbookRepository.cardbookDisplayCards[account[4]].cards || win.cardbookRepository.cardbookDisplayCards[account[4]]);
-						for(var k = 0; k < cards.length; k++) {
+						let cards = (win.cardbookRepository.cardbookDisplayCards[account[4]].cards || win.cardbookRepository.cardbookDisplayCards[account[4]]);
+						for(let k = 0; k < cards.length; k++) {
 							
-							var recipient = to[i];
+							let recipient = to[i];
 							recipient = recipient.replace(new RegExp(' <>', 'g'), '');
 							recipient = win.mailmergeutils.substitute(recipient, cards[k]);
 							
@@ -205,23 +206,26 @@ function cardbook() {
 		
 		if(to[i].includes("@")) {
 			
-			var objPattern = new RegExp("\\s*(?:(.*) <(.*)>|(.*))\\s*", "g");
-			var arrMatches = objPattern.exec(to[i]);
+			let objPattern = new RegExp("\\s*(?:(.*) <(.*)>|(.*))\\s*", "g");
+			let arrMatches = objPattern.exec(to[i]);
 			arrMatches = (arrMatches[2] || arrMatches[3]);
+			
+			let card;
 			
 			/* cardbook start */
 			try {
 				
-				var accounts = win.cardbookRepository.cardbookAccounts;
-				for(var j = 0; j < accounts.length; j++) {
+				let accounts = win.cardbookRepository.cardbookAccounts;
+				for(let j = 0; j < accounts.length; j++) {
 					
-					var account = accounts[j];
+					let account = accounts[j];
 					if(account[1] && account[5] && account[6] != "SEARCH") {
 						
 						if(win.mailmergeutils.prefs.cardbook && win.mailmergeutils.prefs.cardbook != account[4]) { continue; }
 						
-						var cards = (win.cardbookRepository.cardbookDisplayCards[account[4]].cards || win.cardbookRepository.cardbookDisplayCards[account[4]]);
-						var card = cards.filter(function(element) { for(var i = 0; i < element.email.length; i++) { if(element.email[i][0][0].toLowerCase() == arrMatches.toLowerCase()) { return true; } } })[0];
+						let cards = (win.cardbookRepository.cardbookDisplayCards[account[4]].cards || win.cardbookRepository.cardbookDisplayCards[account[4]]);
+						
+						card = cards.filter(function(element) { for(let i = 0; i < element.email.length; i++) { if(element.email[i][0][0].toLowerCase() == arrMatches.toLowerCase()) { return true; } } })[0];
 						if(card) { break; }
 						
 					}
@@ -249,41 +253,41 @@ function cardbook() {
 
 function addressbook() {
 	
-	var objects = [];
+	let objects = [];
 	
 	/* to start */
-	var to = win.mailmergeutils.template.to;
+	let to = win.mailmergeutils.template.to;
 	to = jsmime.headerparser.decodeRFC2047Words(to);
 	to = win.gMsgCompose.compFields.splitRecipients(to, false, {});
 	/* to end */
 	
 	/* array start */
-	for(var i = 0; i < to.length; i++) {
+	for(let i = 0; i < to.length; i++) {
 		
 		if(to[i].includes("{{") && to[i].includes("}}")) {
 			
 			/* addressbook start */
 			try {
 				
-				var addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
+				let addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
 				while(addressbooks.hasMoreElements()) {
 					
 					try {
 						
-						var addressbook = addressbooks.getNext();
+						let addressbook = addressbooks.getNext();
 						addressbook.QueryInterface(Ci.nsIAbDirectory);
 						
 						if(win.mailmergeutils.prefs.addressbook && win.mailmergeutils.prefs.addressbook != addressbook.uuid) { continue; }
 						
-						var cards = addressbook.childCards;
+						let cards = addressbook.childCards;
 						while(cards.hasMoreElements()) {
 							
-							var card = cards.getNext();
+							let card = cards.getNext();
 							card.QueryInterface(Ci.nsIAbCard);
 							
 							if(card.isMailList) { continue; }
 							
-							var recipient = to[i];
+							let recipient = to[i];
 							recipient = recipient.replace(new RegExp(' <>', 'g'), '');
 							recipient = win.mailmergeutils.substitute(recipient, card);
 							
@@ -311,24 +315,26 @@ function addressbook() {
 		
 		if(to[i].includes("@")) {
 			
-			var objPattern = new RegExp("\\s*(?:(.*) <(.*)>|(.*))\\s*", "g");
-			var arrMatches = objPattern.exec(to[i]);
+			let objPattern = new RegExp("\\s*(?:(.*) <(.*)>|(.*))\\s*", "g");
+			let arrMatches = objPattern.exec(to[i]);
 			arrMatches = (arrMatches[2] || arrMatches[3]);
+			
+			let card;
 			
 			/* addressbook start */
 			try {
 				
-				var addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
+				let addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
 				while(addressbooks.hasMoreElements()) {
 					
 					try {
 						
-						var addressbook = addressbooks.getNext();
+						let addressbook = addressbooks.getNext();
 						addressbook.QueryInterface(Ci.nsIAbDirectory);
 						
 						if(win.mailmergeutils.prefs.addressbook && win.mailmergeutils.prefs.addressbook != addressbook.uuid) { continue; }
 						
-						var card = addressbook.getCardFromProperty("PrimaryEmail", arrMatches, false);
+						card = addressbook.getCardFromProperty("PrimaryEmail", arrMatches, false);
 						if(card) { break; }
 						
 					} catch(e) { console.warn(e); }
@@ -356,6 +362,8 @@ function addressbook() {
 
 function csv(params) {
 	
+	let json, bytes = "";
+	
 	/* file start */
 	try {
 		
@@ -363,16 +371,16 @@ function csv(params) {
 		params.file = params.file.trim().replace(/^file\:\/\//g, '');
 		/* compatibility end */
 		
-		var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+		let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
 		file.initWithPath(params.file);
 		
-		var fileInputStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
+		let fileInputStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
 		fileInputStream.init(file, -1, 0, 0);
 		
-		var converterInputStream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
+		let converterInputStream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
 		converterInputStream.init(fileInputStream, params.characterset, 0, 0);
 		
-		var bytes = "", string = {};
+		let string = {};
 		while(converterInputStream.readString(4096, string) != 0) {
 			bytes += string.value;
 		}
@@ -388,7 +396,7 @@ function csv(params) {
 	/* csv start */
 	try {
 		
-		var json = win.mailmergeutils.parse(bytes, params.fielddelimiter, params.textdelimiter);
+		json = win.mailmergeutils.parse(bytes, params.fielddelimiter, params.textdelimiter);
 		
 	} catch(e) {
 		
@@ -404,6 +412,8 @@ function csv(params) {
 
 function json(params) {
 	
+	let json, bytes = "";
+	
 	/* file start */
 	try {
 		
@@ -411,16 +421,16 @@ function json(params) {
 		params.file = params.file.trim().replace(/^file\:\/\//g, '');
 		/* compatibility end */
 		
-		var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+		let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
 		file.initWithPath(params.file);
 		
-		var fileInputStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
+		let fileInputStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
 		fileInputStream.init(file, -1, 0, 0);
 		
-		var converterInputStream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
+		let converterInputStream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
 		converterInputStream.init(fileInputStream, "utf-8", 0, 0);
 		
-		var bytes = "", string = {};
+		let string = {};
 		while(converterInputStream.readString(4096, string) != 0) {
 			bytes += string.value;
 		}
@@ -436,7 +446,7 @@ function json(params) {
 	/* json start */
 	try {
 		
-		var json = JSON.parse(bytes);
+		json = JSON.parse(bytes);
 		json = (Array.isArray(json)) ? json : [[]];
 		
 	} catch(e) {
@@ -453,6 +463,8 @@ function json(params) {
 
 function xlsx(params) {
 	
+	let json, bytes = "";
+	
 	/* file start */
 	try {
 		
@@ -460,16 +472,16 @@ function xlsx(params) {
 		params.file = params.file.trim().replace(/^file\:\/\//g, '');
 		/* compatibility end */
 		
-		var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+		let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
 		file.initWithPath(params.file);
 		
-		var fileInputStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
+		let fileInputStream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
 		fileInputStream.init(file, -1, -1, false);
 		
-		var binaryInputStream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
+		let binaryInputStream = Cc["@mozilla.org/binaryinputstream;1"].createInstance(Ci.nsIBinaryInputStream);
 		binaryInputStream.setInputStream(fileInputStream);
 		
-		var bytes = binaryInputStream.readBytes(binaryInputStream.available());
+		bytes = binaryInputStream.readBytes(binaryInputStream.available());
 		
 	} catch(e) {
 		
@@ -484,9 +496,9 @@ function xlsx(params) {
 		
 		Services.scriptloader.loadSubScript("chrome://mailmerge/content/xlsx.core.min.js");
 		
-		var workbook = XLSX.read(bytes, { type: "binary" });
-		var sheet = workbook.Sheets[(params.sheetname || workbook.SheetNames[0])];
-		var json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+		let workbook = XLSX.read(bytes, { type: "binary" });
+		let sheet = workbook.Sheets[(params.sheetname || workbook.SheetNames[0])];
+		json = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: "", raw: false });
 		
 	} catch(e) {
 		
@@ -502,14 +514,14 @@ function xlsx(params) {
 
 function array(json) {
 	
-	var objects = [];
+	let objects = [];
 	
 	/* array start */
-	for(var i = 1; i < json.length; i++) {
+	for(let i = 1; i < json.length; i++) {
 		
 		/* object start */
-		var object = [];
-		for(var j = 0; j < json[0].length; j++) {
+		let object = [];
+		for(let j = 0; j < json[0].length; j++) {
 			
 			if(json[0][j] == "") { continue; }
 			object[json[0][j]] = (json[i][j] === undefined || json[i][j] === null) ? "" : json[i][j].toString();
@@ -518,7 +530,7 @@ function array(json) {
 		/* object end */
 		
 		/* to start */
-		var to = win.mailmergeutils.template.to;
+		let to = win.mailmergeutils.template.to;
 		to = jsmime.headerparser.decodeRFC2047Words(to);
 		to = win.mailmergeutils.substitute(to, object);
 		/* to end */
@@ -558,12 +570,12 @@ function parse(string, fielddelimiter, textdelimiter) {
 	if(string == "") { return [[]]; }
 	/* compatibility end */
 	
-	var objPattern = new RegExp("(\r\n|\r|\n|" + fielddelimiter + "|^)(?:[" + textdelimiter + "]([^" + textdelimiter + "]*(?:[" + textdelimiter + "][" + textdelimiter + "][^" + textdelimiter + "]*)*)[" + textdelimiter + "]|([^" + fielddelimiter + textdelimiter + "\r\n]*))", "g");
+	let objPattern = new RegExp("(\r\n|\r|\n|" + fielddelimiter + "|^)(?:[" + textdelimiter + "]([^" + textdelimiter + "]*(?:[" + textdelimiter + "][" + textdelimiter + "][^" + textdelimiter + "]*)*)[" + textdelimiter + "]|([^" + fielddelimiter + textdelimiter + "\r\n]*))", "g");
 	
-	var arrData = [], arrMatches = [];
+	let arrData = [], arrMatches = [];
 	while(arrMatches = objPattern.exec(string)) {
 		
-		var strMatchedValue = "";
+		let strMatchedValue = "";
 		
 		if(arrMatches[1] == fielddelimiter && arrMatches.index == 0) {
 			arrData.push([]);
@@ -587,7 +599,7 @@ function parse(string, fielddelimiter, textdelimiter) {
 	}
 	
 	/* compatibility start */
-	for(var row = 0; row < arrData[0].length; row++) {
+	for(let row = 0; row < arrData[0].length; row++) {
 		
 		arrData[0][row] = arrData[0][row].replace(new RegExp('[{]', 'g'), '');
 		arrData[0][row] = arrData[0][row].replace(new RegExp('[|]', 'g'), '');
@@ -605,15 +617,15 @@ function compose(index) {
 	if(!win.mailmergeutils.objects[index]) { return false; }
 	
 	/* object start */
-	var object = win.mailmergeutils.objects[index].object;
+	let object = win.mailmergeutils.objects[index].object;
 	/* object end */
 	
 	/* compfields start */
-	var compFields = Cc["@mozilla.org/messengercompose/composefields;1"].createInstance(Ci.nsIMsgCompFields);
+	let compFields = Cc["@mozilla.org/messengercompose/composefields;1"].createInstance(Ci.nsIMsgCompFields);
 	/* compfields end */
 	
 	/* composeparams start */
-	var composeParams = Cc["@mozilla.org/messengercompose/composeparams;1"].createInstance(Ci.nsIMsgComposeParams);
+	let composeParams = Cc["@mozilla.org/messengercompose/composeparams;1"].createInstance(Ci.nsIMsgComposeParams);
 	composeParams.type = Ci.nsIMsgCompType.New;
 	composeParams.format = (win.gMsgCompose.composeHTML) ? Ci.nsIMsgCompFormat.HTML : Ci.nsIMsgCompFormat.PlainText;
 	composeParams.identity = win.mailmergeutils.template.identity;
@@ -621,41 +633,45 @@ function compose(index) {
 	/* composeparams end */
 	
 	/* compose start */
-	var compose = Cc["@mozilla.org/messengercompose/compose;1"].createInstance(Ci.nsIMsgCompose);
+	let compose = Cc["@mozilla.org/messengercompose/compose;1"].createInstance(Ci.nsIMsgCompose);
 	compose.initialize(composeParams);
 	/* compose end */
 	
 	/* format start */
-	var format = win.mailmergeutils.template.format;
-	switch(format) {
+	try {
 		
-		case Ci.nsIMsgCompSendFormat.Both:
+		let format = win.mailmergeutils.template.format;
+		switch(format) {
 			
-			compFields.forcePlainText = false;
-			compFields.useMultipartAlternative = true;
-			break;
+			case Ci.nsIMsgCompSendFormat.Both:
+				
+				compFields.forcePlainText = false;
+				compFields.useMultipartAlternative = true;
+				break;
+				
+			case Ci.nsIMsgCompSendFormat.HTML:
+				
+				compFields.forcePlainText = false;
+				compFields.useMultipartAlternative = false;
+				break;
+				
+			case Ci.nsIMsgCompSendFormat.PlainText:
+				
+				compFields.forcePlainText = true;
+				compFields.useMultipartAlternative = false;
+				break;
+				
+			default:;
 			
-		case Ci.nsIMsgCompSendFormat.HTML:
-			
-			compFields.forcePlainText = false;
-			compFields.useMultipartAlternative = false;
-			break;
-			
-		case Ci.nsIMsgCompSendFormat.PlainText:
-			
-			compFields.forcePlainText = true;
-			compFields.useMultipartAlternative = false;
-			break;
-			
-		default:;
+		}
 		
-	}
+	} catch(e) { console.warn(e); }
 	/* format end */
 	
 	/* from start */
 	try {
 		
-		var from = win.mailmergeutils.template.from;
+		let from = win.mailmergeutils.template.from;
 		from = jsmime.headerparser.decodeRFC2047Words(from);
 		from = from.replace(new RegExp('<"', 'g'), '<');
 		from = from.replace(new RegExp('">', 'g'), '>');
@@ -670,7 +686,7 @@ function compose(index) {
 	/* to start */
 	try {
 		
-		var to = win.mailmergeutils.objects[index].to;
+		let to = win.mailmergeutils.objects[index].to;
 		to = jsmime.headerparser.decodeRFC2047Words(to);
 		to = to.replace(new RegExp('<"', 'g'), '<');
 		to = to.replace(new RegExp('">', 'g'), '>');
@@ -685,7 +701,7 @@ function compose(index) {
 	/* cc start */
 	try {
 		
-		var cc = win.mailmergeutils.template.cc;
+		let cc = win.mailmergeutils.template.cc;
 		cc = jsmime.headerparser.decodeRFC2047Words(cc);
 		cc = cc.replace(new RegExp('<"', 'g'), '<');
 		cc = cc.replace(new RegExp('">', 'g'), '>');
@@ -700,7 +716,7 @@ function compose(index) {
 	/* bcc start */
 	try {
 		
-		var bcc = win.mailmergeutils.template.bcc;
+		let bcc = win.mailmergeutils.template.bcc;
 		bcc = jsmime.headerparser.decodeRFC2047Words(bcc);
 		bcc = bcc.replace(new RegExp('<"', 'g'), '<');
 		bcc = bcc.replace(new RegExp('">', 'g'), '>');
@@ -715,7 +731,7 @@ function compose(index) {
 	/* reply start */
 	try {
 		
-		var reply = win.mailmergeutils.template.reply;
+		let reply = win.mailmergeutils.template.reply;
 		reply = jsmime.headerparser.decodeRFC2047Words(reply);
 		reply = reply.replace(new RegExp('<"', 'g'), '<');
 		reply = reply.replace(new RegExp('">', 'g'), '>');
@@ -730,7 +746,7 @@ function compose(index) {
 	/* subject start */
 	try {
 		
-		var subject = win.mailmergeutils.template.subject;
+		let subject = win.mailmergeutils.template.subject;
 		subject = win.mailmergeutils.substitute(subject, object);
 		compFields.subject = subject;
 		
@@ -740,7 +756,7 @@ function compose(index) {
 	/* body start */
 	try {
 		
-		var body = win.mailmergeutils.template.body;
+		let body = win.mailmergeutils.template.body;
 		body = body.replace(new RegExp('%7B', 'g'), '{');
 		body = body.replace(new RegExp('%7C', 'g'), '|');
 		body = body.replace(new RegExp('%7D', 'g'), '}');
@@ -751,105 +767,117 @@ function compose(index) {
 	/* body end */
 	
 	/* attachments start */
-	var attachments = win.mailmergeutils.template.attachments;
-	for(var i = 0; i < attachments.length; i++) {
+	try {
 		
-		try {
-			
-			compFields.addAttachment(attachments[i]);
-			
-		} catch(e) { console.warn(e); }
-		
-	}
-	/* attachments end */
-	
-	/* attachments start */
-	var attachments = win.mailmergeutils.prefs.attachments;
-	attachments = win.mailmergeutils.substitute(attachments, object);
-	attachments = attachments.replace(/(\r\n|\r|\n)/g, "\n").split("\n");
-	for(var i = 0; i < attachments.length; i++) {
-		
-		try {
-			
-			/* compatibility start */
-			attachments[i] = attachments[i].trim().replace(/^file\:\/\//g, '');
-			/* compatibility end */
-			
-			if(attachments[i] == "") { continue; }
-			
-			var file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
-			file.initWithPath(attachments[i]);
-			
-			if(!file.exists() || !file.isFile()) { continue; }
-			
-			var attachment = Cc["@mozilla.org/messengercompose/attachment;1"].createInstance(Ci.nsIMsgAttachment);
-			attachment.url = Services.io.getProtocolHandler("file").QueryInterface(Ci.nsIFileProtocolHandler).getURLSpecFromFile(file);
-			attachment.name = win.gMsgCompose.AttachmentPrettyName(attachment.url, null);
-			attachment.size = file.fileSize;
-			
-			compFields.addAttachment(attachment);
-			
-		} catch(e) { console.warn(e); }
-		
-	}
-	/* attachments end */
-	
-	/* sendlater start */
-	var at = win.mailmergeutils.prefs.at;
-	at = win.mailmergeutils.substitute(at, object);
-	if(win.mailmergeutils.prefs.delivermode == "SaveAsDraft" && win.Sendlater3Util && at) {
-		
-		try {
-			
-			var recur = win.mailmergeutils.prefs.recur;
-			if(recur == "") {
-				recur = "none";
-			}
-			if(recur == "monthly") {
-				recur = "monthly" + " " + sl3dateparse.DateParse(at).getDate();
-			}
-			if(recur == "yearly") {
-				recur = "yearly" + " " + sl3dateparse.DateParse(at).getMonth() + " " + sl3dateparse.DateParse(at).getDate();
-			}
-			
-			var every = win.mailmergeutils.prefs.every;
-			if(every) {
-				every = " " + "/" + " " + parseInt(every);
-			}
-			
-			var between = win.mailmergeutils.prefs.between;
-			if(between) {
-				between = " " + "between" + " " + between.replace(/:/g, '').replace(/-/g, ' ').replace(/  /g, ' ');
-			}
-			
-			var only = win.mailmergeutils.prefs.only;
-			if(only) {
-				only = " " + "on" + " " + only;
-			}
+		let attachments = win.mailmergeutils.template.attachments;
+		for(let i = 0; i < attachments.length; i++) {
 			
 			try {
 				
-				compFields.setHeader("X-Send-Later-Uuid", win.Sendlater3Util.getInstanceUuid());
-				compFields.setHeader("X-Send-Later-At", win.Sendlater3Util.FormatDateTime(sl3dateparse.DateParse(at), true));
-				compFields.setHeader("X-Send-Later-Recur", recur + every + between + only);
+				compFields.addAttachment(attachments[i]);
 				
 			} catch(e) { console.warn(e); }
 			
-		} catch(e) {
+		}
+		
+	} catch(e) { console.warn(e); }
+	/* attachments end */
+	
+	/* attachments start */
+	try {
+		
+		let attachments = win.mailmergeutils.prefs.attachments;
+		attachments = win.mailmergeutils.substitute(attachments, object);
+		attachments = attachments.replace(/(\r\n|\r|\n)/g, "\n").split("\n");
+		for(let i = 0; i < attachments.length; i++) {
 			
-			win.mailmergeutils.error(e);
-			return false;
+			try {
+				
+				/* compatibility start */
+				attachments[i] = attachments[i].trim().replace(/^file\:\/\//g, '');
+				/* compatibility end */
+				
+				if(attachments[i] == "") { continue; }
+				
+				let file = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+				file.initWithPath(attachments[i]);
+				
+				if(!file.exists() || !file.isFile()) { continue; }
+				
+				let attachment = Cc["@mozilla.org/messengercompose/attachment;1"].createInstance(Ci.nsIMsgAttachment);
+				attachment.url = Services.io.getProtocolHandler("file").QueryInterface(Ci.nsIFileProtocolHandler).getURLSpecFromFile(file);
+				attachment.name = win.gMsgCompose.AttachmentPrettyName(attachment.url, null);
+				attachment.size = file.fileSize;
+				
+				compFields.addAttachment(attachment);
+				
+			} catch(e) { console.warn(e); }
 			
 		}
 		
-	}
+	} catch(e) { console.warn(e); }
+	/* attachments end */
+	
+	/* sendlater start */
+	try {
+		
+		let at = win.mailmergeutils.prefs.at;
+		at = win.mailmergeutils.substitute(at, object);
+		if(win.mailmergeutils.prefs.delivermode == "SaveAsDraft" && win.Sendlater3Util && at) {
+			
+			try {
+				
+				let recur = win.mailmergeutils.prefs.recur;
+				if(recur == "") {
+					recur = "none";
+				}
+				if(recur == "monthly") {
+					recur = "monthly" + " " + sl3dateparse.DateParse(at).getDate();
+				}
+				if(recur == "yearly") {
+					recur = "yearly" + " " + sl3dateparse.DateParse(at).getMonth() + " " + sl3dateparse.DateParse(at).getDate();
+				}
+				
+				let every = win.mailmergeutils.prefs.every;
+				if(every) {
+					every = " " + "/" + " " + parseInt(every);
+				}
+				
+				let between = win.mailmergeutils.prefs.between;
+				if(between) {
+					between = " " + "between" + " " + between.replace(/:/g, '').replace(/-/g, ' ').replace(/  /g, ' ');
+				}
+				
+				let only = win.mailmergeutils.prefs.only;
+				if(only) {
+					only = " " + "on" + " " + only;
+				}
+				
+				try {
+					
+					compFields.setHeader("X-Send-Later-Uuid", win.Sendlater3Util.getInstanceUuid());
+					compFields.setHeader("X-Send-Later-At", win.Sendlater3Util.FormatDateTime(sl3dateparse.DateParse(at), true));
+					compFields.setHeader("X-Send-Later-Recur", recur + every + between + only);
+					
+				} catch(e) { console.warn(e); }
+				
+			} catch(e) {
+				
+				win.mailmergeutils.error(e);
+				return false;
+				
+			}
+			
+		}
+		
+	} catch(e) { console.warn(e); }
 	/* sendlater end */
 	
 	/* customheaders start */
 	try {
 		
-		var header = Services.prefs.getStringPref("mail.compose.other.header").split(",");
-		for(var i = 0; i < header.length; i++) {
+		let header = Services.prefs.getStringPref("mail.compose.other.header").split(",");
+		for(let i = 0; i < header.length; i++) {
 			
 			if(win.gMsgCompose.compFields.hasHeader(header[i])) {
 				compFields.setHeader(header[i], win.mailmergeutils.substitute(win.gMsgCompose.compFields.getHeader(header[i]), object));
@@ -881,11 +909,11 @@ function pause(index) {
 	if(!win.mailmergeutils.objects[index]) { return false; }
 	
 	/* object start */
-	var object = win.mailmergeutils.objects[index].object;
+	let object = win.mailmergeutils.objects[index].object;
 	/* object end */
 	
 	/* pause start */
-	var pause = win.mailmergeutils.prefs.pause;
+	let pause = win.mailmergeutils.prefs.pause;
 	pause = win.mailmergeutils.substitute(pause, object);
 	pause = pause.split("-").sort();
 	pause[0] = (parseInt(pause[0]) || "");
@@ -901,17 +929,17 @@ function substitute(string, object) {
 	
 	if(!string || !string.includes("{{") || !string.includes("}}")) { return string; }
 	
-	//var objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}])", "g");
-	//var objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}])", "g");
-	//var objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}])", "g");
-	//var objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}])", "g");
-	var objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^{}]*)[}][}])", "g");
+	//let objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}])", "g");
+	//let objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}])", "g");
+	//let objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}])", "g");
+	//let objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}])", "g");
+	let objPattern = new RegExp("(?:[{][{]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[|]([^|{}]*)[}][}]|[{][{]([^{}]*)[}][}])", "g");
 	
-	var arrMatches = objPattern.exec(string);
+	let arrMatches = objPattern.exec(string);
 	if(!arrMatches) { return string; }
 	
 	/* workaround start */
-	for(var i = 1; i < arrMatches.length; i++) {
+	for(let i = 1; i < arrMatches.length; i++) {
 		
 		if(!arrMatches[i]) { continue; }
 		arrMatches[i] = arrMatches[i].replace(new RegExp('\n(  )*', 'g'), ' ');

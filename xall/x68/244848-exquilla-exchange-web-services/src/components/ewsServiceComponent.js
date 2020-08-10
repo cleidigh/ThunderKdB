@@ -14,13 +14,18 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
+try { // COMPAT for TB 68
+  Object.defineProperties(ChromeUtils.import("resource:///modules/AddrBookManager.jsm").AddrBookManager.prototype, Object.getOwnPropertyDescriptors(ChromeUtils.import("resource://exquilla/AddrBookManager.jsm").AddrBookManager.prototype));
+  MailServices.ab = MailServices.ab.wrappedJSObject;
+  Services.obs.notifyObservers(null, "addrbook-reload", null);
+} catch (ex) { // COMPAT for TB 68
+} // COMPAT for TB 68
 
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
@@ -125,9 +130,10 @@ EwsService.prototype = {
   },
   //classID: Components.ID("@MSQ_EWSSERVICE_CID2@"),
   classID: Components.ID("{909A8F4E-F966-47f1-A65D-5A9C186A8790}"),
-  QueryInterface: QIUtils.generateQI([Ci.nsIMsgProtocolInfo,
-                                      Ci.nsIMsgMessageService,
-                                      Ci.nsIProtocolHandler]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgProtocolInfo,
+                                          Ci.nsIMsgMessageService,
+                                          Ci.nsIMsgProtocolHandler,
+                                          Ci.nsIProtocolHandler]/* COMPAT for TB 68 */.filter(i => i)),
 
   // local methods
   _fetchMessage(aMessageURI,
@@ -162,11 +168,7 @@ EwsService.prototype = {
     }
 
     if (aDisplayConsumer instanceof Ci.nsIDocShell) {
-      if (uri.loadURI.length == 3) { // COMPAT for TB 60
-        uri.loadURI(aDisplayConsumer, null, Ci.nsIWebNavigation.LOAD_FLAGS_NONE);
-      } else {
-        uri.loadURI(aDisplayConsumer, Ci.nsIWebNavigation.LOAD_FLAGS_NONE);
-      }
+      uri.loadURI(aDisplayConsumer, Ci.nsIWebNavigation.LOAD_FLAGS_NONE);
       return uri;
     }
 
@@ -449,11 +451,7 @@ EwsService.prototype = {
     uri.uri = aMessageURI;
 
     if (aDisplayConsumer instanceof Ci.nsIDocShell) {
-      if (uri.loadURI.length == 3) { // COMPAT for TB 60
-        uri.loadURI(aDisplayConsumer, null, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK);
-      } else {
-        uri.loadURI(aDisplayConsumer, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK);
-      }
+      uri.loadURI(aDisplayConsumer, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK);
       return;
     }
     throw CE("openAttachment only support doc shells", Cr.NS_ERROR_UNEXPECTED);
@@ -541,11 +539,6 @@ EwsService.prototype = {
 
   newChannel(aURI, aLoadInfo)
   {
-    return this.newChannel2(aURI, aLoadInfo); // COMPAT for TB 60
-  },
-
-  newChannel2(aURI, aLoadInfo)
-  {
     let protocol = Cc["@mesquilla.com/ewsprotocol;1"]
                      .createInstance(Ci.nsIChannel).wrappedJSObject;
     protocol.setURI(aURI);
@@ -566,3 +559,4 @@ EwsService.prototype = {
 }
 
 var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsService]);
+var EXPORTED_SYMBOLS = ["NSGetFactory"];

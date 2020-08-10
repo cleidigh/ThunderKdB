@@ -15,9 +15,9 @@ const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, 
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "MailUtils",
-  ChromeUtils.generateQI ? "resource:///modules/MailUtils.jsm" : "resource:///modules/MailUtils.js"); // COMPAT for TB 60
+  "resource:///modules/MailUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 
@@ -245,7 +245,7 @@ EwsSend.prototype = {
 
           if (!savetoNativeFolder)
           {
-            let folder = MailUtils.getExistingFolder ? MailUtils.getExistingFolder(savetoURL) : MailUtils.getFolderForURI(savetoURL, false); // COMPAT for TB 60
+            let folder = MailUtils.getExistingFolder(savetoURL);
             let ewsFolder = safeGetJS(folder, "EwsMsgFolder");
             if (ewsFolder)
               savetoNativeFolder = ewsFolder.nativeMailbox.getNativeFolder(ewsFolder.folderId);
@@ -516,7 +516,7 @@ EwsSend.prototype = {
                 let copyListener = new PromiseUtils.CopyListener();
                 executeSoon( function () {
                   copyService.CopyFileMessage(file,
-                                              MailUtils.getExistingFolder ? MailUtils.getExistingFolder(savetoURL) : MailUtils.getFolderForURI(savetoURL), // COMPAT for TB 60
+                                              MailUtils.getExistingFolder(savetoURL),
                                               null, // msgToReplace
                                               false, // isDraftOrTemplate
                                               0, // aMsgFlags
@@ -661,22 +661,17 @@ function addAddresses(aList, aName, aProperties)
   if (!aList.length)
     return;
 
-  let headerParser = Cc["@mozilla.org/messenger/headerparser;1"]
-                       .getService(Ci.nsIMsgHeaderParser);
-  let addresses = {};
-  let names = {};
-  let fullNames = {};
-  let numAddresses = headerParser.parseHeadersWithArray(aList, addresses, names, fullNames);
+  let addresses = MailServices.headerParser.parseEncodedHeader(aList);
 
   let toPL = oPL({});
-  for (let i = 0; i < numAddresses; i++)
+  for (let address of addresses)
   {
-    let mailbox = oPL( {Name: (names.value[i] || ""),
-                        EmailAddress: addresses.value[i]
+    let mailbox = oPL( {Name: (address.name || ""),
+                        EmailAddress: address.email
                        } );
     toPL.appendPropertyList('Mailbox', mailbox);
   }
-  if (numAddresses)
+  if (addresses.length)
     aProperties.appendPropertyList(aName, toPL);
 }
 
@@ -691,3 +686,4 @@ EwsSendConstructor.prototype = {
 }
 
 var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsSendConstructor]);
+var EXPORTED_SYMBOLS = ["NSGetFactory"];

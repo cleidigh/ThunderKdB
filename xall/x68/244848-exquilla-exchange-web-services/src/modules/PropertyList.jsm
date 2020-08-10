@@ -30,7 +30,7 @@ function safeInstanceOf(obj, iface) {
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("native");

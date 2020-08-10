@@ -1,0 +1,18 @@
+.cardIconHeader {
+	list-style-image: url("chrome://cardbook/content/skin/abcard.svg");
+}
+
+treechildren::-moz-tree-image(cardIcon) {
+	list-style-image: url("chrome://messenger/skin/icons/contact.svg");
+}
+
+treechildren::-moz-tree-image(cardIcon, MailList) {
+	list-style-image: url("chrome://messenger/skin/icons/ablist.svg");
+}
+
+menuitem[isAList="false"] {
+	list-style-image: url("chrome://messenger/skin/icons/contact.svg");
+}
+menuitem[isAList="true"] {
+	list-style-image: url("chrome://messenger/skin/icons/ablist.svg");
+}

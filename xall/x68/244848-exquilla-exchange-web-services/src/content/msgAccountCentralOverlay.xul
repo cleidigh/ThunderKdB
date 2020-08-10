@@ -12,12 +12,14 @@
 <?xml-stylesheet href="chrome://exquilla/skin/msgAccountCentralOverlay.css" type="text/css"?>
 <overlay id="exquilla-macOverlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <!-- script type="application/javascript" src="msgAccountCentralOverlay.js"/ -->
+  <script type="application/javascript" src="chrome://exquilla/content/msgAccountCentralOverlay.js"/>
+  <!-- COMPAT for TB 68 -->
   <vbox id="CreateAccountsList">
     <label value="ExQuilla"
            id="CreateAccountExquilla"
            class="acctCentralNewAcctText acctCentralLinkText"
-           onclick='window.openDialog("chrome://exquilla/content/ewsAccountWizard.xul", "AccountWizard", "chrome,modal,titlebar,centerscreen", {});'
+           onclick="ChromeUtils.import('resource://exquilla/ewsUtils.jsm').Utils.openAccountWizard();"
     />
   </vbox>
+  <!-- COMPAT for TB 68 -->
 </overlay>

@@ -13,7 +13,6 @@ const EXPORTED_SYMBOLS = ["EwsNativeMailbox"];
 
 var Cu = Components.utils;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
 Utils.importLocally(this);
 var _log = null;
@@ -87,7 +86,7 @@ EwsNativeMailbox.prototype = {
     return this;
   },
 
-  QueryInterface: QIUtils.generateQI([Ci.nsISupportsWeakReference]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsISupportsWeakReference]),
 
   get username()  { return this._username;},
   set username(a) { this._username = a;},
@@ -114,12 +113,7 @@ EwsNativeMailbox.prototype = {
       let loginURI = "https://" + uriObject.host;
       log.debug("NativeMailbox get password for username " + this.username +
                 " loginURI " + loginURI);
-      let foundLogins;
-      if (Services.logins.findLogins.length == 4) { // COMPAT for TB 60
-        foundLogins = Services.logins.findLogins({}, loginURI, null, loginURI);
-      } else {
-        foundLogins = Services.logins.findLogins(loginURI, null, loginURI);
-      }
+      let foundLogins = Services.logins.findLogins(loginURI, null, loginURI);
       for (let login of foundLogins) {
         if (login.username == domainAndUser) {
           if (login.password)

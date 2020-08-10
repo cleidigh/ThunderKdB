@@ -111,14 +111,12 @@
     if (gNotificationBox) {
       return;
     }
-    gNotificationBox = document.getElementById("exquilla-notification-box");
-    if (gNotificationBox.getNotificationWithValue) { // COMPAT for TB 60
-      return;
-    }
-    gNotificationBox = new MozElements.NotificationBox(element => {
+    let boxEl = document.getElementById("exquilla-notification-box");
+    gNotificationBox = boxEl ? boxEl._notificationBox : new MozElements.NotificationBox(element => {
       element.id = "exquilla-notification-box";
       element.setAttribute("notificationside", "top");
-      document.getElementById("exquilla-notification-box").replaceWith(element);
+      document.documentElement.insertBefore(element,
+        document.getElementById("navigation-toolbox").nextSibling);
     });
   }
 

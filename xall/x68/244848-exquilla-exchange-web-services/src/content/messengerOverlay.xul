@@ -19,11 +19,8 @@
 
 <overlay id="exquilla-overlay"
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-  <script type="application/javascript" src="exquilla.js"/>
-  <script type="application/javascript" src="license-ui/license-ui.js"/>
-  <window id="messengerWindow">
-    <notificationbox id="exquilla-notification-box" notificationside="top" insertafter="navigation-toolbox"/><!-- COMPAT for TB 60 -->
-  </window>
+  <script type="application/javascript" src="chrome://exquilla/content/exquilla.js"/>
+  <script type="application/javascript" src="chrome://exquilla/content/license-ui/license-ui.js"/>
 
   <menupopup id="taskPopup">
     <menu id='exquilla-menu' class='menu-iconic' label='&exquilla.menu;'
@@ -32,7 +29,7 @@
         <menuitem id="exquilla.openSettingsTab"
                   oncommand="exquilla.openSettingsTab();"/>
         <menuitem label="&exquilla.addExchangeAccount;"
-                  oncommand="exquilla.msgOpenAccountWizard();"/>
+                  oncommand="exquilla.Utils.openAccountWizard();"/>
         <menuitem label='&exquilla.openHelp;' oncommand='exquilla.openHelpTab();'/>
         <menuitem label='&exquilla.openLog;' oncommand='exquilla.openLog();'/>
       </menupopup>
@@ -43,19 +40,7 @@
     <menuitem id='exquilla-menu-NewAccount' class='menuitem-iconic' label='&exquilla.addExchangeAccount;'
               insertbefore="newAccountMenuItem"
               image="chrome://exquilla/skin/letter-x-icon-16.png"
-              oncommand="exquilla.msgOpenAccountWizard();"/>
-  </menupopup>
-
-  <menupopup id="appmenu_taskPopup">
-    <menu id='exquilla-menu2' class='menu-iconic' label='&exquilla.menu;'
-          image='chrome://exquilla/skin/letter-x-icon-16.png'>
-      <menupopup>
-        <menuitem label="&exquilla.addExchangeAccount;"
-                  oncommand="exquilla.msgOpenAccountWizard();"/>
-        <menuitem label='&exquilla.openHelp;' oncommand='exquilla.openHelpTab();'/>
-        <menuitem label='&exquilla.openLog;' oncommand='exquilla.openLog();'/>
-      </menupopup>
-    </menu>
+              oncommand="exquilla.Utils.openAccountWizard();"/>
   </menupopup>
 
 </overlay>

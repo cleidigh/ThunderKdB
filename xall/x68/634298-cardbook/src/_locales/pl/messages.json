@@ -1,0 +1,5018 @@
+{
+	"extName": {
+		"message": "CardBook"
+	},
+	"extDesc": {
+		"message": "Książka adresowa z obsługą vCard"
+	},
+	"browserActionTitle": {
+		"message": "CardBook",
+		"description": "Przełącz na zakładkę CardBook"
+	},
+	"cardbookTitle": {
+		"message": "CardBook"
+	},
+	"cardbookPrefTitle": {
+		"message": "Ustawienia CardBook"
+	},
+	"statusProgressInformationTooltip": {
+		"message": "Kliknij tutaj, aby zobaczyć log"
+	},
+	"imageSelectionTitle": {
+		"message": "Wybierz obraz"
+	},
+	"imageSaveTitle": {
+		"message": "Zapisz obraz"
+	},
+	"fileSaveTitle": {
+		"message": "Zapisz plik"
+	},
+	"dirSaveTitle": {
+		"message": "Zapisz katalog"
+	},
+	"dirChooseTitle": {
+		"message": "Wybierz katalog"
+	},
+	"fileCreationVCFTitle": {
+		"message": "Utwórz nowy plik VCF (strona kodowa UTF-8)"
+	},
+	"fileSelectionVCFTitle": {
+		"message": "Otwórz istniejący plik VCF (strona kodowa UTF-8)"
+	},
+	"fileImportTitle": {
+		"message": "Importuj plik VCF (strona kodowa UTF-8)"
+	},
+	"dirImportTitle": {
+		"message": "Importuj z katalogu"
+	},
+	"fileCreationTPLTitle": {
+		"message": "Utwórz nowy plik TPL"
+	},
+	"fileSelectionTPLTitle": {
+		"message": "Otwórz istniejący plik TPL"
+	},
+	"fileSelectionTitle": {
+		"message": "Położenie odnośnika"
+	},
+	"uncategorizedCards": {
+		"message": "Bez kategorii"
+	},
+	"collectedCards": {
+		"message": "Zebrane wizytówki"
+	},
+	"enableFromAccountsOrCats": {
+		"message": "Włącz książkę adresową"
+	},
+	"disableFromAccountsOrCats": {
+		"message": "Wyłącz książkę adresową"
+	},
+	"readWriteFromAccountsOrCats": {
+		"message": "Przełącz książkę adresową w tryb odczytu i zapisu"
+	},
+	"readOnlyFromAccountsOrCats": {
+		"message": "Przełącz książkę adresową w tryb tylko do odczytu"
+	},
+	"editCategoryFromAccountsOrCats": {
+		"message": "Edytuj kategorię"
+	},
+	"removeCategoryFromAccountsOrCats": {
+		"message": "Usuń kategorię"
+	},
+	"convertCategoryFromAccountsOrCats": {
+		"message": "Zamień kategorię w listę"
+	},
+	"editNodeFromAccountsOrCats": {
+		"message": "??Edit Node??"
+	},
+	"removeNodeFromAccountsOrCats": {
+		"message": "??Remove Node??"
+	},
+	"convertNodeFromAccountsOrCats": {
+		"message": "??Create List from Node??"
+	},
+	"viewCardButtonLabel": {
+		"message": "Podgląd"
+	},
+	"editCardButtonLabel": {
+		"message": "Edytuj"
+	},
+	"viewInCardBookMenuLabel": {
+		"message": "Podgląd w CardBook"
+	},
+	"mergeCardsLabel": {
+		"message": "Połącz wizytówki"
+	},
+	"forgetCardsLabel": {
+		"message": "Ignoruj"
+	},
+	"deleteCardsLabel": {
+		"message": "Usuń"
+	},
+	"showForgottenLabel": {
+		"message": "Pokaż ignorowane"
+	},
+	"showForgottenAccesskey": {
+		"message": "P"
+	},
+	"hideForgottenLabel": {
+		"message": "Ukryj ignorowane"
+	},
+	"hideForgottenAccesskey": {
+		"message": "U"
+	},
+	"noContactsDuplicated": {
+		"message": "Nie znaleziono powielonych wizytówek."
+	},
+	"serverWarningGoogleLabel": {
+		"message": "Używanie Google jest w fazie testów (Google nie przestrzega standardów vCard)."
+	},
+	"Validating1Label": {
+		"message": "Trwa weryfikacja ($P1$)…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"Validating2Label": {
+		"message": "Trwa weryfikacja…"
+	},
+	"ValidatingURLFailedLabel": {
+		"message": "Adres URL jest nieprawidłowy"
+	},
+	"ValidationFailedLabel": {
+		"message": "Weryfikacja zakończyła się niepowodzeniem"
+	},
+	"ValidationOKLabel": {
+		"message": "Weryfikacja przebiegła pomyślnie"
+	},
+	"customFieldsErrorUPPERCASE": {
+		"message": "Nazwy własnych pól powinny być wielkimi literami: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorX": {
+		"message": "Nazwy własnych pól powinny zaczynać się od X-: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorFIELD": {
+		"message": "$P1$ jest zarezerwowanym słowem i nie może być używany dla nazwy własnego pola",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorCHAR": {
+		"message": "Nazwy własnych pól nie mogą zawierać znaków modyfikacji, takich jak przecinek, średnik, dwukropek lub kropka: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorUNIQUE": {
+		"message": "Nazwy własnych pól powinny być unikalne (własne pola są definiowane w różnych zakładkach)."
+	},
+	"customFieldsErrorLABEL": {
+		"message": "Etykiety własnych pól nie mogą być puste."
+	},
+	"allContactsLoadedFromFile": {
+		"message": "$P1$ : Wszystkie wizytówki załadowane z pliku.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"notAllContactsLoadedFromFile": {
+		"message": "$P1$ : Nie wszystkie wizytówki załadowane z pliku: $P2$ z błędami.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroRunning": {
+		"message": "$P1$ : Trwa synchronizacja",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroNotTried": {
+		"message": "$P1$ : Nie próbowano synchronizacji",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinished": {
+		"message": "$P1$ : Synchronizacja zakończona",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinishedResult": {
+		"message": "$P1$ : Synchronizacja zakończona, rezultat dla wizytówek:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroProcessed": {
+		"message": "Przetworzone wizytówki: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpToDate": {
+		"message": "$P1$ : Wizytówki aktualne: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnServer": {
+		"message": "$P1$ : Nowe wizytówki na serwerze: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnServer": {
+		"message": "$P1$ : Wizytówki zaktualizowane na serwerze: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnServer": {
+		"message": "$P1$ : Wizytówki usunięte na serwerze: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDisk": {
+		"message": "$P1$ : Wizytówki usunięte na dysku: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Wizytówki usunięte na dysku i zaktualizowane na serwerze: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnDisk": {
+		"message": "$P1$ : Nowe wizytówki na dysku: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDisk": {
+		"message": "$P1$ : Wizytówki zaktualizowane na dysku: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnBoth": {
+		"message": "$P1$ : Wizytówki zaktualizowane na dysku i serwerze: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Wizytówki zaktualizowane na dysku i usunięte na serwerze: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetOKFromServer": {
+		"message": "$P1$ : Zmiany pobrane z serwera: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetKOFromServer": {
+		"message": "$P1$ : Zmiany nie pobrane z serwera: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutOKToServer": {
+		"message": "$P1$ : Zmiany wysłane na serwer: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutKOToServer": {
+		"message": "$P1$ : Zmiany nie wysłane na serwer: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroImpossible": {
+		"message": "$P1$ : Nie można dokonać synchronizacji z serwerem.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBFinishedResult": {
+		"message": "??$P1$ : Local database opened, contacts result :??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBCardsOK": {
+		"message": "$P1$ : Wizytówki otwarte: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDBCardsKO": {
+		"message": "$P1$ : Wizytówki z błędami: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirFinishedResult": {
+		"message": "$P1$ : Katalog otwarty, rezultat dla wizytówek:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDirCardsOK": {
+		"message": "$P1$ : Wizytówki otwarte: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirCardsKO": {
+		"message": "$P1$ : Wizytówki z błędami: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileFinishedResult": {
+		"message": "$P1$ : Plik otwarty, rezultat dla wizytówek:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFileCardsOK": {
+		"message": "$P1$ : Wizytówki otwarte: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileCardsKO": {
+		"message": "$P1$ : Wizytówki z błędami: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroForcedToResync": {
+		"message": "$P1$ : Musimy ponownie zsynchronizować to konto",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroAllFinished": {
+		"message": "Wszystkie synchronizacje zakończone"
+	},
+	"discoveryRunning": {
+		"message": "$P1$ : Trwa automatyczne wykrywanie książek adresowych",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageGetResponse": {
+		"message": "$P1$ : Pobrane obrazy: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"imageGetError": {
+		"message": "$P1$ : Obrazy z błędami: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importFinishedResult": {
+		"message": "$P1$ : Importowanie zakończone, rezultat dla wizytówek:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importCardsOK": {
+		"message": "$P1$ : Zaimportowane wizytówki: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importCardsKO": {
+		"message": "$P1$ : Wizytówki z błędami: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importAllFinished": {
+		"message": "Zakończono importowanie"
+	},
+	"cardDeletedOnDisk": {
+		"message": "$P1$ : Wizytówka $P2$ usunięta z dysku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDisk": {
+		"message": "$P1$ : Wizytówka $P2$ zaktualizowana na dysku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyGetFromCache": {
+		"message": "$P1$ : Wizytówka $P2$ już odczytana z pamięci podręcznej",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardGetFromCache": {
+		"message": "$P1$ : Wizytówka $P2$ odczytana z pamięci podręcznej",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Wizytówka $P2$ usunięta z dysku i zaktualizowana na serwerze",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnBoth": {
+		"message": "$P1$ : Wizytówka $P2$ zaktualizowana na dysku i serwerze",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnServer": {
+		"message": "$P1$ : Wizytówka $P2$ zaktualizowana na serwerze (znaleziony etag: $P3$, etag w pamięci podręcznej: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"cardNewOnServer": {
+		"message": "$P1$ : Znaleziono nową wiztyówkę na serwerze",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardLoadedFromCache": {
+		"message": "$P1$ : Wizytówka $P2$ załadowana z pamięci podręcznej",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardLoadedFromCacheDB": {
+		"message": "$P1$ : Wizytówka $P2$ załadowana z pamięci podręcznej (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardNewOnDisk": {
+		"message": "$P1$ : Wizytówka $P2$ nowa na dysku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Wizytówka $P2$ zaktualizowana na dysku i usunięta na serwerze",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnServer": {
+		"message": "$P1$ : Wizytówka $P2$ usunięta na serwerze",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyExists": {
+		"message": "$P1$ : Wizytówka $P2$ już istnieje",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"askUserTitle": {
+		"message": "Konflikt modyfikacji wizytówki"
+	},
+	"askUserPersistMessage": {
+		"message": "Zastosuj do innych istniejących wizytówek"
+	},
+	"keepAskUserLabel": {
+		"message": "Zachowaj wizytówkę"
+	},
+	"overwriteAskUserLabel": {
+		"message": "Nadpisz wizytówkę"
+	},
+	"duplicateAskUserLabel": {
+		"message": "Powiel wizytówkę"
+	},
+	"deleteAskUserLabel": {
+		"message": "Usuń wizytówkę"
+	},
+	"localAskUserLabel": {
+		"message": "Preferuj zmianę lokalną"
+	},
+	"remoteAskUserLabel": {
+		"message": "Preferuj zmianę zdalną"
+	},
+	"mergeAskUserLabel": {
+		"message": "Połącz różnice"
+	},
+	"serverCardDeletedFromServer": {
+		"message": "$P1$ : Wizytówka $P2$ usunięta z serwera",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardNotExistServer": {
+		"message": "$P1$ : Wizytówka $P2$ nie istnieje na serwerze",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardDeleteFailed": {
+		"message": "$P1$ : Usunięcie wizytówki $P2$ z serwera nieudane (url: $P3$, status: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingDeletion": {
+		"message": "$P1$ : Wizytówka $P2$: wysyłanie żądań usunięcia…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Wizytówka $P2$ zaktualizowana na serwerze (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Wizytówka $P2$ zaktualizowana na serwerze (brak etag w odpowiedzi)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdateFailed": {
+		"message": "$P1$ : Aktualizacja wizytówki $P2$ na serwerze nieudane (url: $P3$, status: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingUpdate": {
+		"message": "$P1$ : Wizytówka $P2$: wysyłanie żądań aktualizacji…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithEtag": {
+		"message": "$P1$ : Wizytówka $P2$ utworzona na serwerze (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Wizytówka $P2$ utworzona na serwerze (brak etag w odpowiedzi)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreateFailed": {
+		"message": "$P1$ : Utworzenie wizytówki $P2$ na serwerze nieudane (url: $P3$, status: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingCreate": {
+		"message": "$P1$ : Wizytówka $P2$: wysyłąnie żądań utworzenia…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetImageFailed": {
+		"message": "$P1$ : Nieudane pobranie obrazu dla wizytówki $P2$ (url: $P3$, status: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetImageOK": {
+		"message": "$P1$ : Obraz pobrany dla wizytówki $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingImage": {
+		"message": "$P1$ : Pobieranie obrazu dla wizytówki $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetOK": {
+		"message": "$P1$ : Wizytówka $P2$ pobrana z serwera",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetFailed": {
+		"message": "$P1$ : Pobranie z serwera nieudane (url: $P2$, status: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"synchronizationFailed": {
+		"message": "$P1$ : Synchronizacja nieudana (krok: $P2$, url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"synchronizationUnauthorized": {
+		"message": "$P1$: Nie można zalogować się na serwerze. Prawdopodobnie nazwa użytkownika, hasło lub konfiguracja są niewłaściwie ustawione.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationSearchingCards": {
+		"message": "$P1$ : Wyszukiwanie wizytówek…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery": {
+		"message": "$P1$ : Uwierzytelnianie bez żądania wykrywania na $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery4": {
+		"message": "$P1$ : Wykrywanie żądania faza 4 na $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery3": {
+		"message": "$P1$ : Wykrywanie żądania faza 3 na $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery2": {
+		"message": "$P1$ : Wykrywanie żądania faza 2 na $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery1": {
+		"message": "$P1$ : Wykrywanie żądania faza 1 na $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleAccessTokenOK": {
+		"message": "$P1$ : Token dostępu Google otrzymany, token dostępu: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRefreshTokenOK": {
+		"message": "$P1$ : Odświeżony token Google otrzymany, odświeżony token: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleGetNewRefreshToken": {
+		"message": "$P1$ : Próbuję uzyskać nowy odświeżony token Google od $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleNewRefreshTokenOK": {
+		"message": "$P1$ : Otrzymany kod autoryzacyjny: $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestAccessToken": {
+		"message": "$P1$ : Zapytanie o token dostępu Google od $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestRefreshToken": {
+		"message": "$P1$ : Zapytanie o odświeżony token Google od $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooAccessTokenOK": {
+		"message": "$P1$ : Token dostępu Yahoo! otrzymany, token dostępu: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRefreshTokenOK": {
+		"message": "$P1$ : Odświeżony token Yahoo! otrzymany, odświeżony token: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooGetNewRefreshToken": {
+		"message": "$P1$ : Próbuję uzyskać nowy odświeżony token Yahoo! od $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooNewRefreshTokenOK": {
+		"message": "$P1$ : Otrzymany kod autoryzacyjny: $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestAccessToken": {
+		"message": "$P1$ : Zapytanie o token dostępu Yahoo! od $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestRefreshToken": {
+		"message": "$P1$ : Zapytanie o odświeżony token Yahoo! od $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncDeleting": {
+		"message": "$P1$ : Usuwanie procesu okresowej synchronizacji (id: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncSetting": {
+		"message": "$P1$ : Ustawianie procesu okresowej synchronizacji (interwał: $P2$ ms, id: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"periodicSyncSyncing": {
+		"message": "$P1$ : Synchronizacja z powodu okresowej synchronizacji…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileEmpty": {
+		"message": "Plik $P1$ jest pusty",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileAlreadyOpen": {
+		"message": "Plik $P1$ już jest otwarty w CardBook",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryAlreadyOpen": {
+		"message": "Katalog $P1$ już jest otwarty w CardBook",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"parsingCardError": {
+		"message": "$P1$ : Błąd przetwarzania wizytówki: \n$P2$ \n$P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"addressbookOpened": {
+		"message": "$P1$ : Książka adresowa otwarta",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookModified": {
+		"message": "$P1$ : Książka adresowa zmodyfikowana",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDeleted": {
+		"message": "$P1$ : Książka adresowa zamknięta",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookCreated": {
+		"message": "$P1$ : Książka adresowa utworzona",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDisabled": {
+		"message": "$P1$ : Książka adresowa wyłączona",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadOnly": {
+		"message": "$P1$ : Książka adresowa w trygie tylko do odczytu",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadWrite": {
+		"message": "$P1$ : Książka adresowa w trybie odczyt-zapis",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookEnabled": {
+		"message": "$P1$ : Książka adresowa włączona",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreated": {
+		"message": "$P1$ : Wizytówka $P2$ utworzona",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdated": {
+		"message": "$P1$ : Wizytówka $P2$ zaktualizowana",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeleted": {
+		"message": "$P1$ : Wizytówka $P2$ usunięta",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAddedToCategory": {
+		"message": "$P1$ : Wizytówka $P2$ dodana do kategorii $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardDeletedFromAllCategory": {
+		"message": "$P1$ : Wizytówka $P2$ usunięta ze wszystkich kategorii",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardsConverted": {
+		"message": "??$P1$ : contacts converted into $P2$ : $P3$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }       
+	},
+	"cardsConvertedUndo": {
+		"message": "??VCards converted??"
+	},
+	"cardsImportedFromFileUndo": {
+		"message": "??File $P1$ imported??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsImportedFromDirUndo": {
+		"message": "??Directory $P1$ imported??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"undoActionDoneUndo": {
+		"message": "??Undo done ($P1$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"redoActionDoneUndo": {
+		"message": "??Redo done ($P1$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreatedUndo": {
+		"message": "Wizytówka $P1$ utworzona",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardUpdatedUndo": {
+		"message": "Wizytówka $P1$ zaktualizowana",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"outgoingEmailCollectedUndo": {
+		"message": "??Outgoing email collected??"
+	},
+	"emailCollectedByFilterUndo": {
+		"message": "??Emails collected by filter??"
+	},
+	"emailDeletedByFilterUndo": {
+		"message": "??Emails deleted by filter??"
+	},
+	"cardsMergedUndo": {
+		"message": "??Contacts merged??"
+	},
+	"cardsDuplicatedUndo": {
+		"message": "??Contacts duplicated??"
+	},
+	"displayNameGenerated": {
+		"message": "??$P1$ : contacts having their display names regenerated : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"displayNameGeneratedUndo": {
+		"message": "??Display names regenerated??"
+	},
+	"cardModifiedUndo": {
+		"message": "Wizytówka $P1$ zaktualizowana",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted1Undo": {
+		"message": "Wizytówka $P1$ usunięta",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted2Undo": {
+		"message": "??Contacts deleted??"
+	},
+	"cardsPastedUndo": {
+		"message": "??Contacts pasted??"
+	},
+	"cardsDraggedUndo": {
+		"message": "??Contacts dragged??"
+	},
+	"categoryCreated": {
+		"message": "$P1$ : Kategoria $P2$ utworzona",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryCreatedUndo": {
+		"message": "Kategoria $P1$ utworzona",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categorySelectedUndo": {
+		"message": "??Category $P1$ selected??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryUnselectedUndo": {
+		"message": "??Category $P1$ unselected??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryRenamedUndo": {
+		"message": "??Category $P1$ renamed??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryDeleted": {
+		"message": "$P1$ : Kategoria $P2$ usunięta",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedUndo": {
+		"message": "Kategoria $P1$ usunięta",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryConvertedToListUndo": {
+		"message": "??Category $P1$ converted to list??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listConvertedToCategoryUndo": {
+		"message": "??List $P1$ converted to category??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"linePastedUndo": {
+		"message": "??Line pasted??"
+	},
+	"nodeRenamedUndo": {
+		"message": "??Node $P1$ renamed??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"nodeDeleted": {
+		"message": "??$P1$ : Node $P2$ deleted??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletedUndo": {
+		"message": "??Node $P1$ deleted??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listCreatedFromNodeUndo": {
+		"message": "??List $P1$ created from node??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoFile": {
+		"message": "Wizytówki wyeksportowane do pliku $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoFile": {
+		"message": "Wizytówka wyeksportowana do pliku $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoDir": {
+		"message": "Wizytówki wyeksportowane do katalogu $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoDir": {
+		"message": "Wizytówka wyeksportowana do katalogu $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importNotIntoSameFile": {
+		"message": "Nie można zaimportować do tego samego pliku"
+	},
+	"importNotIntoSameDir": {
+		"message": "Nie można zaimportować do tego samego katalogu"
+	},
+	"clipboardWrong": {
+		"message": "Dane w schowku nie mogą być zaimportowane"
+	},
+	"clipboardEmpty": {
+		"message": "Schowek pusty"
+	},
+	"imageError": {
+		"message": "Obraz nie został dodany z powodu błędu"
+	},
+	"imageErrorWithMessage": {
+		"message": "Nie dodany obraz: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageSavedToFile": {
+		"message": "Obraz zapisany do pliku: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"contactsCopied": {
+		"message": "Wizytówki skopiowane do schowka"
+	},
+	"contactCopied": {
+		"message": "Wizytówka skopiowana do schowka"
+	},
+	"lineCopied": {
+		"message": "Pozycja skopiowana do schowka"
+	},
+	"linePastedToCard": {
+		"message": "Pozycja wklejona do wizytówki: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFound": {
+		"message": "Liczba znalezionych wizytówek: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContacts": {
+		"message": "Liczba wizytówek: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFoundModified": {
+		"message": "Liczba znalezionych wizytówek: $P1$ (zmodyfikowane lokalnie: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberContactsModified": {
+		"message": "Liczba wizytówek: $P1$ (zmodyfikowane lokalnie: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberLines": {
+		"message": "Liczba wierszy: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbook.searchFrom.name": {
+		"message": "CardBook Od"
+	},
+	"cardbook.searchTo.name": {
+		"message": "CardBook Do"
+	},
+	"cardbook.searchCc.name": {
+		"message": "CardBook Kopia"
+	},
+	"cardbook.searchBcc.name": {
+		"message": "CardBook Ukryta kopia"
+	},
+	"cardbook.searchAll.name": {
+		"message": "CardBook Od, Do, Kopia lub Ukryta kopia"
+	},
+	"cardbook.searchCorrespondents.name": {
+		"message": "??CardBook Correspondents??"
+	},
+	"cardbook.addFrom.name": {
+		"message": "Dodaj Od do CardBook"
+	},
+	"cardbook.addTo.name": {
+		"message": "Dodaj Do do CardBook"
+	},
+	"cardbook.addCc.name": {
+		"message": "Dodaj Kopia do CardBook"
+	},
+	"cardbook.addBcc.name": {
+		"message": "Dodaj Ukryta kopia do CardBook"
+	},
+	"cardbook.addAll.name": {
+		"message": "Add Od, Do, Kopia lub Ukryta kopia CardBook"
+	},
+	"cardbook.removeFrom.name": {
+		"message": "Usunąć Od z Cardbook"
+	},
+	"cardbook.removeTo.name": {
+		"message": "Usunąć Do z Cardbook"
+	},
+	"cardbook.removeCc.name": {
+		"message": "Usunąć Kopia z Cardbook"
+	},
+	"cardbook.removeBcc.name": {
+		"message": "Usunąć Ukryta z Cardbook"
+	},
+	"cardbook.removeAll.name": {
+		"message": "Usunąć Od, Do, Kopia lub Ukryta kopia z Cardbook"
+	},
+	"urlDownloaded": {
+		"message": "Pobrany URL: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookHeader": {
+		"message": "Książka adresowa"
+	},
+	"photoLabel": {
+		"message": "Zdjęcie"
+	},
+	"versionLabel": {
+		"message": "Wersja"
+	},
+	"revLabel": {
+		"message": "Ostatnia aktualizacja"
+	},
+	"lastnameLabel": {
+		"message": "Nazwisko"
+	},
+	"firstnameLabel": {
+		"message": "Imię"
+	},
+	"othernameLabel": {
+		"message": "Drugie imię"
+	},
+	"prefixnameLabel": {
+		"message": "Przedrostek"
+	},
+	"suffixnameLabel": {
+		"message": "Przyrostek"
+	},
+	"fnLabel": {
+		"message": "Wyświetlana nazwa"
+	},
+	"nicknameLabel": {
+		"message": "Pseudonim"
+	},
+	"genderLabel": {
+		"message": "Płeć"
+	},
+	"bdayLabel": {
+		"message": "Urodziny"
+	},
+	"birthplaceLabel": {
+		"message": "Miejsce urodzin"
+	},
+	"anniversaryLabel": {
+		"message": "Rocznica"
+	},
+	"deathdateLabel": {
+		"message": "Data śmierci"
+	},
+	"deathplaceLabel": {
+		"message": "Miejsce śmierci"
+	},
+	"titleLabel": {
+		"message": "Tytuł"
+	},
+	"roleLabel": {
+		"message": "Stanowisko"
+	},
+	"orgLabel": {
+		"message": "Organizacja"
+	},
+	"categoriesLabel": {
+		"message": "Kategorie"
+	},
+	"adrLabel": {
+		"message": "Adresy"
+	},
+	"telLabel": {
+		"message": "Numer telefonu"
+	},
+	"emailLabel": {
+		"message": "Adresy e-mail"
+	},
+	"imppLabel": {
+		"message": "Komunikator"
+	},
+	"urlLabel": {
+		"message": "URL"
+	},
+	"eventLabel": {
+		"message": "Wydarzenia"
+	},
+	"noteLabel": {
+		"message": "Notatki"
+	},
+	"postOfficeLabel": {
+		"message": "Skrytka pocztowa"
+	},
+	"extendedAddrLabel": {
+		"message": "Mieszkanie lub lokal"
+	},
+	"streetLabel": {
+		"message": "Ulica"
+	},
+	"localityLabel": {
+		"message": "Region (Powiat lub gmina)"
+	},
+	"regionLabel": {
+		"message": "Województwo"
+	},
+	"postalCodeLabel": {
+		"message": "Kod pocztowy"
+	},
+	"countryLabel": {
+		"message": "Państwo"
+	},
+	"ageLabel": {
+		"message": "Wiek"
+	},
+	"ABNameLabel": {
+		"message": "Książka adresowa"
+	},
+	"cardIconLabel": {
+		"message": "Ikona"
+	},
+	"nameLabel": {
+		"message": "Nazwa"
+	},
+	"mailerLabel": {
+		"message": "Program pocztowy"
+	},
+	"tzLabel": {
+		"message": "Strefa czasowa"
+	},
+	"geoLabel": {
+		"message": "Geo"
+	},
+	"prodidLabel": {
+		"message": "Prodid"
+	},
+	"sortstringLabel": {
+		"message": "Sortowanie po"
+	},
+	"uidLabel": {
+		"message": "Uid"
+	},
+	"cbidLabel": {
+		"message": "CardBook id"
+	},
+	"class1Label": {
+		"message": "Klasa"
+	},
+	"dirPrefIdLabel": {
+		"message": "DirPrefId"
+	},
+	"kindLabel": {
+		"message": "Rodzaj"
+	},
+	"etagLabel": {
+		"message": "Etag"
+	},
+	"phoneticfirstnameLabel": {
+		"message": "Imię (Wymowa)"
+	},
+	"phoneticlastnameLabel": {
+		"message": "Nazwisko (Wymowa)"
+	},
+	"custom1Label": {
+		"message": "1. informacja"
+	},
+	"custom2Label": {
+		"message": "2. informacja"
+	},
+	"custom3Label": {
+		"message": "3. informacja"
+	},
+	"custom4Label": {
+		"message": "4. informacja"
+	},
+	"warningTitle": {
+		"message": "Uwaga"
+	},
+	"errorTitle": {
+		"message": "Błąd"
+	},
+	"confirmTitle": {
+		"message": "Potwierdź"
+	},
+	"birthdaysListWindowLabel": {
+		"message": "Lista urodzin (razem: $P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"syncListWindowLabelRunning": {
+		"message": "Trwa synchronizacja urodzin ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelEnded": {
+		"message": "Zakończono synchronizację urodzin ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelFailed": {
+		"message": "Synchronizacja urodzin nieudana"
+	},
+	"syncListExistingEntry": {
+		"message": "$P1$ : Istniejące wydarzenie w Lightning: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListCreatedEntry": {
+		"message": "$P1$ : Utworzone wydarzenie w Lightning: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListErrorEntry": {
+		"message": "$P1$ : Błąd wydarzenia w Lightning: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"noBirthdaysFoundMessage": {
+		"message": "Nie znaleziono urodzin do $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"noEmailFoundMessage": {
+		"message": "Nie znaleziono e-maila dla $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventEntryTitleMessage": {
+		"message": "Urodziny %1$S, Wiek: %2$S"
+	},
+	"calendarNotFoundTitle": {
+		"message": "Przypomnienie o urodzinach - Synchronizacja z Lightning anulowana"
+	},
+	"calendarNotFoundMessage": {
+		"message": "Kalendarz $P1$ nie znaleziony. Synchronizacja z Lightning anulowana.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"calendarNotWritableTitle": {
+		"message": "Przypomnienie o urodzinach - Synchronizacja z Lightning anulowana"
+	},
+	"calendarNotWritableMessage": {
+		"message": "Nie można zapisać w kalendarzu $P1$ (może tylko do odczytu lub niedostępny?). Synchronizacja z Lightning anulowana.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"errorAttachingFile": {
+		"message": "Załączanie vCard: Nie można stworzyć pliku do załączenia vCard do e-maila: $P1$ ($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"errorInfiniteLoopRecursion": {
+		"message": "Listy : nieskończona pętla rekursji dla list: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"WRONG_VERSION": {
+		"message": "Obsługiwane tylko wersje 3.0 lub 4.0 vCard"
+	},
+	"unableToParseResponse": {
+		"message": "$P1$: Nie można przetworzyć odpowiedzi serwera z powodu tej linii: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"dateEntry1Wrong": {
+		"message": "??$P1$ : Contact $P2$ has a date field value ($P3$) that does not match the date format of the address book ($P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"dateEntry2Wrong": {
+		"message": "??Date field value ($P1$) does not match the date format of the address book ($P2$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"validateIntegerMsg": {
+		"message": "Pole $P1$ powinno być puste lub zawierać liczbę całkowitą od 1 do $P2$ (wartość: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"eventNameNull": {
+		"message": "??At least one event has an empty description??"
+	},
+	"eventDateNull": {
+		"message": "??At least one event has an empty date??"
+	},
+	"invalidURL": {
+		"message": "Nieprawidłowy URL : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbookSearchInputDefault": {
+		"message": "Szukaj…"
+	},
+	"blogtype": {
+		"message": "Blog"
+	},
+	"celltype": {
+		"message": "Komórkowy"
+	},
+	"faxtype": {
+		"message": "Faks"
+	},
+	"homefaxtype": {
+		"message": "Faks domowy"
+	},
+	"homepagetype": {
+		"message": "Strona główna"
+	},
+	"hometype": {
+		"message": "Domowy"
+	},
+	"iphonetype": {
+		"message": "iPhone"
+	},
+	"maintype": {
+		"message": "Główny"
+	},
+	"othertype": {
+		"message": "Inny"
+	},
+	"pagertype": {
+		"message": "Pager"
+	},
+	"profiletype": {
+		"message": "Profil"
+	},
+	"workfaxtype": {
+		"message": "Faks służbowy"
+	},
+	"worktype": {
+		"message": "Służbowy"
+	},
+	"types.gender.f": {
+		"message": "Żeńska"
+	},
+	"types.gender.m": {
+		"message": "Męska"
+	},
+	"types.gender.n": {
+		"message": "Brak"
+	},
+	"types.gender.o": {
+		"message": "Inna"
+	},
+	"types.gender.u": {
+		"message": "Nieznana"
+	},
+	"typesTooltip": {
+		"message": "Możesz zmienić dostępne rodzaje w ustawieniach CardBook."
+	},
+	"prefLabel": {
+		"message": "Podstawowy"
+	},
+	"prefValueLabel": {
+		"message": "Podstawowy"
+	},
+	"prefWeightTooltip": {
+		"message": "To ustawienie może mieć wartość od 1 do 100. W przypadku normalnego użytkowania, pozostaw to pole puste."
+	},
+	"impp.skype": {
+		"message": "Skype"
+	},
+	"impp.jabber": {
+		"message": "Jabber"
+	},
+	"impp.googletalk": {
+		"message": "Google Talk"
+	},
+	"impp.qq": {
+		"message": "Tencent QQ"
+	},
+	"addToAddressbook": {
+		"message": "Dodaj do tej książki adresowej"
+	},
+	"wdw_cardEditionViewResultTitle": {
+		"message": "Wynik modyfikacji wizytówki"
+	},
+	"wdw_cardEditionViewResultHideCreateTitle": {
+		"message": "Wynika modyfikacji wizytówki"
+	},
+	"wdw_cardEditionAddEmailTitle": {
+		"message": "Zarejestruj nowy adres e-mail"
+	},
+	"wdw_cardEditionCreateContactTitle": {
+		"message": "Dodaj nową wizytówkę do książki adresowej"
+	},
+	"wdw_cardEditionCreateListTitle": {
+		"message": "Dodaj nową listę dystrybucyjną"
+	},
+	"wdw_cardEditionEditContactTitle": {
+		"message": "Modyfikacja wizytówki"
+	},
+	"wdw_cardEditionEditListTitle": {
+		"message": "Edytuj listę"
+	},
+	"wdw_cardEditionAddLineTitle": {
+		"message": "Modyfikacja wizytówki"
+	},
+	"wdw_cardEditionViewContactTitle": {
+		"message": "Podgląd wizytówki"
+	},
+	"wdw_cardEditionViewListTitle": {
+		"message": "Podgląd listy"
+	},
+	"wdw_cardbookPrintTitleLong": {
+		"message": "Podgląd wydruku $P1$ - CardBook - Thunderbird",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookPrintTitle": {
+		"message": "Podgląd wydruku"
+	},
+	"displayGroupboxLabel": {
+		"message": "Wyświetlana nazwa"
+	},
+	"personalGroupboxLabel": {
+		"message": "Informacje osobiste"
+	},
+	"orgGroupboxLabel": {
+		"message": "Informacje służbowe"
+	},
+	"categoriesHeader": {
+		"message": "Kategorie"
+	},
+	"adrGroupboxLabel": {
+		"message": "Adresy"
+	},
+	"telGroupboxLabel": {
+		"message": "Numery telefonu"
+	},
+	"emailGroupboxLabel": {
+		"message": "Adresy e-mail"
+	},
+	"urlGroupboxLabel": {
+		"message": "URLe"
+	},
+	"eventGroupboxLabel": {
+		"message": "Wydarzenia"
+	},
+	"noteGroupboxLabel": {
+		"message": "Notatki"
+	},
+	"searchTermsGroupboxLabel": {
+		"message": "Hasła wyszukiwania"
+	},
+	"addedCardsGroupboxLabel": {
+		"message": "Zaznaczone elementy"
+	},
+	"mailPopularityGroupboxLabel": {
+		"message": "Popularność e-mail"
+	},
+	"addEntryTooltip": {
+		"message": "Dodaj wpis"
+	},
+	"removeEntryTooltip": {
+		"message": "Usuń wpis"
+	},
+	"upEntryTooltip": {
+		"message": "Przesuń do góry"
+	},
+	"downEntryTooltip": {
+		"message": "Przesuń do dołu"
+	},
+	"validatedEntryTooltip": {
+		"message": "Ważny"
+	},
+	"noValidatedEntryTooltip": {
+		"message": "Sprawdź poprawność"
+	},
+	"notValidatedEntryTooltip": {
+		"message": "Nieprawidłowy format"
+	},
+	"linkEntryTooltip": {
+		"message": "Wstaw odnośnik…"
+	},
+	"selectedCardsDeletionConfirmMessagePF": {
+		"message": "Na pewno chcesz usunąć wybraną wizytówkę?;Na pewno chcesz usunąć wybrane $P1$ wizytówki?;Na pewno chcesz usunąć wybrane $P1$ wizytówek?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"catDeletionsConfirmMessagePF": {
+		"message": "Na pewno chcesz usunąć kategorię $P2$, która zawiera jedną wizytówkę?;Na pewno chcesz usunąć kategorię $P2$, która zawiera $P1$ wizytówki?;Na pewno chcesz usunąć kategorię $P2$, która zawiera $P1$ wizytówek?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletionsConfirmMessagePF": {
+		"message": "??Are you sure you want to delete the node $P2$ which contains one contact?;Are you sure you want to delete the node $P2$ which contains $P1$ contacts???",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"accountDeletionConfirmMessage": {
+		"message": "Na pewno chcesz usunąć książkę adresową $P1$ z CardBook?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletionDiscoveryConfirmMessage": {
+		"message": "Wygląda na to, że książka adresowa $P1$ została usunięta z serwera. Czy chcesz ją usunąć z CardBook?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentFileMessage": {
+		"message": "usuń plik $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentDirMessage": {
+		"message": "usuń katalog $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryDeletionConfirmMessage": {
+		"message": "Katalog $P1$ nie jest pusty. Na pewno chcesz usunąć wszystkie elementy z tego katalogu?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"choiceMappingTitle": {
+		"message": "Wybór kolumn"
+	},
+	"choiceavailableColumnsGroupboxLabel": {
+		"message": "Dostępne kolumny"
+	},
+	"choiceaddedColumnsGroupboxLabel": {
+		"message": "Wybrane kolumny"
+	},
+	"exportMappingTitle": {
+		"message": "Wybór eksportowanych kolumn"
+	},
+	"exportavailableColumnsGroupboxLabel": {
+		"message": "Dostępne kolumny"
+	},
+	"exportaddedColumnsGroupboxLabel": {
+		"message": "Wybrane kolumny"
+	},
+	"importMappingTitle": {
+		"message": "Tabela przyporządkowania kolumn"
+	},
+	"importavailableColumnsGroupboxLabel": {
+		"message": "Dostępne kolumny"
+	},
+	"importaddedColumnsGroupboxLabel": {
+		"message": "Wybrane kolumny"
+	},
+	"importfoundColumnsGroupboxLabel": {
+		"message": "Kolumna nagłówków"
+	},
+	"importblankColumn": {
+		"message": "Pusta kolumna"
+	},
+	"importNoTypeLabel": {
+		"message": "brak typu"
+	},
+	"fieldDelimiterLabel": {
+		"message": "Separator kolumn"
+	},
+	"includePrefLabel": {
+		"message": "??Include preferences??"
+	},
+	"lineHeaderLabel": {
+		"message": "Pierwsza linia jako nagłówek"
+	},
+	"missingColumnsConfirmMessage": {
+		"message": "Liczba wybranych kolumn jest inna niż liczba kolumn w pliku, co oznacza, że brakujące lub niepotrzebne kolumny nie będą brane pod uwagę. Kontynuować?"
+	},
+	"toUpperCase": {
+		"message": "Wielkimi literami"
+	},
+	"toLowerCase": {
+		"message": "Małymi literami"
+	},
+	"copyFieldValue": {
+		"message": "Kopiuj ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"pasteFieldValue": {
+		"message": "Wklej ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookRenameFieldEditTypeTitle": {
+		"message": "Edytor typ"
+	},
+	"wdw_cardbookRenameFieldAddTypeTitle": {
+		"message": "Dodaj nowy typ"
+	},
+	"wdw_cardbookRenameFieldOrgTitle": {
+		"message": "Edytor organizacji"
+	},
+	"wdw_cardbookRenameFieldEditCatTitle": {
+		"message": "Edytor kategorii"
+	},
+	"wdw_cardbookRenameFieldAddCatTitle": {
+		"message": "Dodaj nową kategorię"
+	},
+	"wdw_cardbookRenameFieldEditNodeTitle": {
+		"message": "??Edit Node??"
+	},
+	"wdw_cardbookRenameFieldEditTypeLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldAddTypeLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldOrgLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldEditCatLabel": {
+		"message": "Kategoria:"
+	},
+	"wdw_cardbookRenameFieldAddCatLabel": {
+		"message": "Kategoria:"
+	},
+	"wdw_cardbookRenameFieldEditNodeLabel": {
+		"message": "$P1$:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
+		"message": "Zdefiniuj ograniczenie konta pocztowego"
+	},
+	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
+		"message": "Zdefiniuj zbieranie adresów z poczty wychodzącej"
+	},
+	"ignoreCaseIgnoreDiacriticLabel": {
+		"message": "Zignorowac wielkosc liter i znaki diakrytyczne"
+	},
+	"ignoreCaseMatchDiacriticLabel": {
+		"message": "Zignorowac wielkosc liter, uwzglednic znaki diakrytyczne"
+	},
+	"matchCaseIgnoreDiacriticLabel": {
+		"message": "Uwzglednic wielkosc liter, zignorowac znaki diakrytyczne"
+	},
+	"matchCaseMatchDiacriticLabel": {
+		"message": "Uwzglednic wielkosc liter i znaki diakrytyczne"
+	},
+	"allCategories": {
+		"message": "Pokaż wszystkie"
+	},
+	"onlyCategories": {
+		"message": "Tylko kategorie"
+	},
+	"noCategory": {
+		"message": "Tylko kontakty"
+	},
+	"multipleCategories": {
+		"message": "Wiele kategorii"
+	},
+	"none": {
+		"message": "Brak"
+	},
+	"multipleTypes": {
+		"message": "Wiele typów"
+	},
+	"noType": {
+		"message": "Brak typu"
+	},
+	"eventContactsWindowLabel": {
+		"message": "Wydarzenia dla: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fnDuplicatedMessage": {
+		"message": "(kopia)"
+	},
+	"allMailAccounts": {
+		"message": "Wszystkie konta pocztowe"
+	},
+	"includeLabel": {
+		"message": "Uwzględniaj"
+	},
+	"excludeLabel": {
+		"message": "Nie uwzględniaj"
+	},
+	"sendButtonLabel": {
+		"message": "Wyślij e-mail"
+	},
+	"doNotShowAnymore": {
+		"message": "Nie ostrzegaj, gdy próbuję wysłać e-mail do wizytówek bez adresu e-mail."
+	},
+	"emptyEmailsCardConfirmMessage": {
+		"message": "Ta wizytówka nie ma adresu e-mail: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"emptyEmailsCardsConfirmMessage": {
+		"message": "Te wizytówki nie mają adresów e-mail: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventInNoteEventPrefix": {
+		"message": "Wydarzenie"
+	},
+	"deathSuffix": {
+		"message": "(śmierć)"
+	},
+	"dateFormatsDLabel": {
+		"message": "D"
+	},
+	"dateFormatsMLabel": {
+		"message": "M"
+	},
+	"dateFormatsYLabel": {
+		"message": "Y"
+	},
+	"customLabel": {
+		"message": "Informacja"
+	},
+	"valueAlreadyExists": {
+		"message": "Nazwa $P1$ już istnieje",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"allAccountsLabel": {
+		"message": "Wszystkie książki adresowe"
+	},
+	"enabledAccountsLabel": {
+		"message": "Włączone książki adresowe"
+	},
+	"disabledAccountsLabel": {
+		"message": "Wyłączone książki adresowe"
+	},
+	"localAccountsLabel": {
+		"message": "Lokalne książki adresowe"
+	},
+	"remoteAccountsLabel": {
+		"message": "Zdalne książki adresowe"
+	},
+	"searchAccountsLabel": {
+		"message": "Zachowane wyszukiwania"
+	},
+	"wdw_passwordMissingTitle": {
+		"message": "Podaj hasło"
+	},
+	"wdw_passwordWrongTitle": {
+		"message": "Nieprawidłowe hasło"
+	},
+	"dateDisplayedFormatLong": {
+		"message": "długi: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"dateDisplayedFormatShort": {
+		"message": "krótki: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressFormatFormula": {
+		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
+	},
+	"newTokenTitle": {
+		"message": "Zaloguj się do konta „$P1$”",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"newTokenDescription": {
+		"message": "??CardBook would like to access your $P1$ account to retrieve contacts. Credentials and contact data are only transferred between your computer and Google, no third party sites are involved.??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"invalidEmail": {
+		"message": "$P1$ nie jest poprawnym adresem e-mail. Adres e-mail powinien mieć budowę użytkownik@domena.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"appendEmailLabel": {
+		"message": "Dodaj do listy: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryAddNew": {
+		"message": "Dodaj nową kategorię"
+	},
+	"typeAddNew": {
+		"message": "Dodaj nowy typ"
+	},
+	"allContacts": {
+		"message": "Wszystkie kontakty"
+	},
+	"keyDescription": {
+		"message": "??Encryption key??"
+	},
+	"encryptionStarted": {
+		"message": "??Starting encryption??"
+	},
+	"encryptionProcessed": {
+		"message": "??Items encrypted: $P1$/$P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"encryptionFinished": {
+		"message": "??Encryption finished??"
+	},
+	"decryptionStarted": {
+		"message": "??Starting decryption??"
+	},
+	"decryptionProcessed": {
+		"message": "??Items decrypted: $P1$/$P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"decryptionFinished": {
+		"message": "??Decryption finished??"
+	},
+	"menu_undo.long.label": {
+		"message": "Cofnij - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_undo.short.label": {
+		"message": "Cofnij"
+	},
+	"menu_redo.long.label": {
+		"message": "Przywróć - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_redo.short.label": {
+		"message": "Przywróć"
+	},
+	"cardbookMenuItemLabel": {
+		"message": "CardBook"
+	},
+	"cardbookMenuItemAccesskey": {
+		"message": "b"
+	},
+	"cardbookMenuItemKey": {
+		"message": "b"
+	},
+	"cardbookMenuItemTooltip": {
+		"message": "Przełącz na zakładkę CardBook"
+	},
+	"cardbookToolbarButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookToolbarButtonTooltip": {
+		"message": "Przełącz na zakładkę CardBook"
+	},
+	"cardbookTabButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookTabButtonTooltip": {
+		"message": "Przełącz na zakładkę CardBook"
+	},
+	"cardbookQFBButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookQFBButtonTooltip": {
+		"message": "Wyświetl wiadomości pochodzące wyłącznie od kontaktów z książki adresowej"
+	},
+	"quickFilterBar.booleanMode.tooltip": {
+		"message": "Filtrowanie etykiet"
+	},
+	"quickFilterBar.booleanModeAny.label": {
+		"message": "Dowolna z:"
+	},
+	"quickFilterBar.booleanModeAny.tooltip": {
+		"message": "Przynajmniej jedna wybrana etykieta musi być obecna"
+	},
+	"quickFilterBar.booleanModeAll.label": {
+		"message": "Wszystkie z:"
+	},
+	"quickFilterBar.booleanModeAll.tooltip": {
+		"message": "Wszystkie wybrane etykiety muszą być obecne"
+	},
+	"newCardBookCardMenuLabel": {
+		"message": "Wizytówkę CardBook…"
+	},
+	"newCardBookCardMenuAccesskey": {
+		"message": "C"
+	},
+	"newCardBookCardMenuKey": {
+		"message": "N"
+	},
+	"newCardBookSearchMenuLabel": {
+		"message": "Wyszukaj w CardBook…"
+	},
+	"newCardBookSearchMenuAccesskey": {
+		"message": "C"
+	},
+	"addToCardBookMenuLabel": {
+		"message": "Dodaj wizytówkę CardBook"
+	},
+	"addToCardBookMenuAccesskey": {
+		"message": "D"
+	},
+	"editInCardBookMenuLabel": {
+		"message": "Edytuj wizytówkę CardBook"
+	},
+	"editInCardBookMenuAccesskey": {
+		"message": "E"
+	},
+	"deleteInCardBookMenuLabel": {
+		"message": "Usuń wizytówkę CardBook"
+	},
+	"deleteInCardBookMenuAccesskey": {
+		"message": "U"
+	},
+	"IMPPMenuLabel": {
+		"message": "Połącz z…"
+	},
+	"IMPPMenuAccesskey": {
+		"message": "o"
+	},
+	"findAllEmailsFromContactMessengerLabel": {
+		"message": "Znajdź e-maile związane z tą wizytówką"
+	},
+	"findAllEmailsFromContactMessengerAccesskey": {
+		"message": "w"
+	},
+	"findEmailsFromEmailMessengerLabel": {
+		"message": "Znajdź e-maile związane z tym adresem e-mail"
+	},
+	"findEmailsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"findAllEventsFromContactMessengerLabel": {
+		"message": "Znajdź wydarzenia w kalendarzu związane z tą wizytówką"
+	},
+	"findAllEventsFromContactMessengerAccesskey": {
+		"message": "w"
+	},
+	"findEventsFromEmailMessengerLabel": {
+		"message": "Znajdź wydarzenia w kalendarzu związane z tym adresem e-mail"
+	},
+	"findEventsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"mailContext-addToCardBookMenuLabel": {
+		"message": "Dodaj wizytówkę CardBook…"
+	},
+	"mailContext-addToCardBookMenuAccesskey": {
+		"message": "D"
+	},
+	"addAllAttachementsToCardBookMenuLabel": {
+		"message": "Wszystkie do CardBook…"
+	},
+	"addAttachementToCardBookMenuLabel": {
+		"message": "Do CardBook…"
+	},
+	"cardbookABPaneItemLabel": {
+		"message": "Panel książki adresowej"
+	},
+	"cardbookABPaneItemAccesskey": {
+		"message": "A"
+	},
+	"cardbookContactPaneItemLabel": {
+		"message": "Panel wizytówki"
+	},
+	"cardbookContactPaneItemAccesskey": {
+		"message": "w"
+	},
+	"wizard.title": {
+		"message": "Dodaj nową książkę adresową"
+	},
+	"wizard.label": {
+		"message": "Dodaj nową książkę adresową"
+	},
+	"welcomePage.wizard.description": {
+		"message": "Witaj"
+	},
+	"welcomePage.description": {
+		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
+	},
+	"initialPage.wizard.description": {
+		"message": "Położenie nowej książki adresowej."
+	},
+	"initialPage.description": {
+		"message": "Czy książka adresowa jest lokalna czy zdalna?"
+	},
+	"initialPage.computer.label": {
+		"message": "Lokalna"
+	},
+	"initialPage.network.label": {
+		"message": "Zdalna"
+	},
+	"initialPage.standard.label": {
+		"message": "Zaimportuj książki adresowe Thunderbirda"
+	},
+	"initialPage.search.label": {
+		"message": "Wyszukaj w istniejących książkach adresowych"
+	},
+	"initialPage.find.label": {
+		"message": "??Search for remote address books??"
+	},
+	"localPage.wizard.description": {
+		"message": "Rodzaj i położenie nowej lokalnej książki adresowej."
+	},
+	"localPage.type.description": {
+		"message": "Jakiego rodzaju jest lokalna książka adresowa?"
+	},
+	"localPage.type.label": {
+		"message": "Typ"
+	},
+	"localPage.createDB.label": {
+		"message": "Stwórz nową książkę adresową"
+	},
+	"localPage.createDirectory.label": {
+		"message": "Stwórz nową książkę adresową (katalog)"
+	},
+	"localPage.createFile.label": {
+		"message": "Stwórz nową książkę adresową (plik)"
+	},
+	"localPage.openDirectory.label": {
+		"message": "Otwórz istniejącą książkę adresową (katalog)"
+	},
+	"localPage.openFile.label": {
+		"message": "Otwórz istniejącą książkę adresową (plik)"
+	},
+	"localPage.uri.groupbox": {
+		"message": "Położenie"
+	},
+	"localPage.uri.label": {
+		"message": "Katalog lub plik:"
+	},
+	"localPage.uri.description": {
+		"message": "Wybierz położenie nowej książki adresowej. Jeśli tworzysz nowy plik, nadaj mu rozszerzenie .vcf."
+	},
+	"localPage.uributton.label": {
+		"message": "Przeglądaj"
+	},
+	"remotePage.wizard.description": {
+		"message": "Rodzaj i położenie nowej zdalnej książki adresowej."
+	},
+	"remotePage.description": {
+		"message": "Jakiego rodzaju jest książka adresowa? (Uwaga: Google NIE przestrzega standardów vCard)"
+	},
+	"remotePage.type.label": {
+		"message": "Typ"
+	},
+	"remotePage.carddav.label": {
+		"message": "CardDAV"
+	},
+	"remotePage.google.label": {
+		"message": "Google"
+	},
+	"remotePage.apple.label": {
+		"message": "Apple"
+	},
+	"remotePage.yahoo.label": {
+		"message": "Yahoo!"
+	},
+	"remotePage.connection.label": {
+		"message": "Połączenie"
+	},
+	"remotePage.url.description": {
+		"message": "Dla CardDAV, wpisz URL zdalnej książki adresowej. Możesz spróbować wpisać częściowy URL (np. http(s)://carddav.example.org). Jeśli masz książkę adresową Google, nic tu nie wpisuj."
+	},
+	"remotePage.url.label": {
+		"message": "URL:"
+	},
+	"remotePage.credentials.description": {
+		"message": "Wpisz dane logowania do książki adresowej. Jeśli masz książkę adresową Google, nazwa użytkownika to Twój adres e-mail Google."
+	},
+	"remotePage.user.label": {
+		"message": "Nazwa użytkownika:"
+	},
+	"remotePage.password.label": {
+		"message": "Hasło:"
+	},
+	"remotePage.passwordShow.label": {
+		"message": "Pokaż"
+	},
+	"remotePage.validatebutton.label": {
+		"message": "Sprawdź"
+	},
+	"locationSearchPage.wizard.description": {
+		"message": "Definicja wyszukiwania zaawansowanego."
+	},
+	"locationSearchPage.label": {
+		"message": "Wyszukiwanie zaawansowane"
+	},
+	"abSearchHeading.label": {
+		"message": "Szukaj w:"
+	},
+	"abSearchHeading.accesskey": {
+		"message": "u"
+	},
+	"matchAll.label": {
+		"message": "Wszystkie warunki spełnione"
+	},
+	"matchAll.accesskey": {
+		"message": "d"
+	},
+	"matchAny.label": {
+		"message": "Spełniony dowolny z warunków"
+	},
+	"matchAny.accesskey": {
+		"message": "S"
+	},
+	"googleOauthPage.wizard.description": {
+		"message": "Uwierzytelnie Google"
+	},
+	"namePage.wizard.description": {
+		"message": "Właściwości książki adresowej"
+	},
+	"namePage.selected.label": {
+		"message": "Wybrana"
+	},
+	"namePage.name.label": {
+		"message": "Nazwa"
+	},
+	"namePage.color.label": {
+		"message": "Kolor"
+	},
+	"namePage.urnuuid.label": {
+		"message": "Używaj urn:uuid"
+	},
+	"namePage.DBCached.label": {
+		"message": "Pracuj w trybie offline"
+	},
+	"namePage.vCardVersion.label": {
+		"message": "vCard"
+	},
+	"namesPage.wizard.description": {
+		"message": "Właściwości książek adresowych"
+	},
+	"namesPage.name.label": {
+		"message": "Nazwy"
+	},
+	"namesPage.name.description": {
+		"message": "Wykryto wiele książek adresowych. Wybierz, które z nich chcesz otworzyć i ich nazwy:"
+	},
+	"findPage.wizard.description": {
+		"message": "??Remote address book search??"
+	},
+	"findPage.name1.description": {
+		"message": "??No remote address books found.??"
+	},
+	"findPage.name2.description": {
+		"message": "??One remote address book found. Validate remote address book to add:??"
+	},
+	"findPage.name3.description": {
+		"message": "??Multiple remote address books found. Validate remote address books to add:??"
+	},
+	"finishPage.wizard.description": {
+		"message": "??Address books configuration??"
+	},
+	"finishPage.description": {
+		"message": "Nowa książka adresowa została skonfigurowana."
+	},
+	"finishsPage.description": {
+		"message": "Nowe książki adresowe zostały skonfigurowane."
+	},
+	"wdw_addressbooksEditTitle": {
+		"message": "Właściwości książki adresowej"
+	},
+	"colorLabel": {
+		"message": "Kolor:"
+	},
+	"name.ABedit.label": {
+		"message": "Nazwa:"
+	},
+	"name.ABedit.accesskey": {
+		"message": "N"
+	},
+	"nodesLabel": {
+		"message": "??Nodes:??"
+	},
+	"categoriesNodeLabel": {
+		"message": "Kategorie"
+	},
+	"orgNodeLabel": {
+		"message": "Organizacja"
+	},
+	"typeLabel": {
+		"message": "Typ:"
+	},
+	"username.ABedit.label": {
+		"message": "Nazwa użytkownika:"
+	},
+	"vCardVersionLabel": {
+		"message": "vCard:"
+	},
+	"readonlyLabel": {
+		"message": "Tryb tylko do odczytu"
+	},
+	"readonlyAccesskey": {
+		"message": "T"
+	},
+	"urnuuidLabel": {
+		"message": "Używaj urn:uuid"
+	},
+	"DBCachedLabel": {
+		"message": "Pracuj w trybie offline"
+	},
+	"autoSyncGroupboxLabel": {
+		"message": "Synchronizacja okresowa"
+	},
+	"autoSyncLabel": {
+		"message": "Włącz synchronizację okresową"
+	},
+	"autoSyncAccesskey": {
+		"message": "s"
+	},
+	"autoSyncIntervalLabel": {
+		"message": "Interwał synchronizacji okresowej (w minutach):"
+	},
+	"autoSyncIntervalAccesskey": {
+		"message": "I"
+	},
+	"miscTabLabel": {
+		"message": "Różne"
+	},
+	"fnFormulaCaption": {
+		"message": "Wyświetlana nazwa"
+	},
+	"fnFormulaLabel": {
+		"message": "Stwórz Wyświetlaną nazwę:"
+	},
+	"fnFormulaAccesskey": {
+		"message": "S"
+	},
+	"resetFnFormulaLabel": {
+		"message": "Przywróć domyślne"
+	},
+	"resetFnFormulaAccesskey": {
+		"message": "P"
+	},
+	"applyToABButtonLabel": {
+		"message": "??Apply to…??"
+	},
+	"applyToABButtonAccesskey": {
+		"message": "A"
+	},
+	"wdw_adrEditionTitle": {
+		"message": "Edytor adresu"
+	},
+	"adrPostOfficeLabel": {
+		"message": "Skrytka pocztowa"
+	},
+	"adrExtendedAddrLabel": {
+		"message": "Mieszkanie lub lokal"
+	},
+	"adrStreetLabel": {
+		"message": "Ulica"
+	},
+	"adrLocalityLabel": {
+		"message": "Region (Powiat lub gmina)"
+	},
+	"adrRegionLabel": {
+		"message": "Województwo"
+	},
+	"adrPostalCodeLabel": {
+		"message": "Kod pocztowy"
+	},
+	"adrCountryLabel": {
+		"message": "Państwo"
+	},
+	"deprecatedLabel": {
+		"message": "Przestarzałe"
+	},
+	"daysLeftColumnLabel": {
+		"message": "Pozostało dni"
+	},
+	"nameColumnLabel": {
+		"message": "Imię i nazwisko"
+	},
+	"ageColumnLabel": {
+		"message": "Wiek"
+	},
+	"dateOfBirthColumnLabel": {
+		"message": "Data urodzenia"
+	},
+	"dateOfBirthFoundColumnLabel": {
+		"message": "Znaleziona data"
+	},
+	"emailColumnLabel": {
+		"message": "E-mail"
+	},
+	"sendEmailLabel": {
+		"message": "Napisz nową wiadomość"
+	},
+	"sendEmailAccesskey": {
+		"message": "W"
+	},
+	"syncLightningMenuItemLabel": {
+		"message": "Synchronizuj z Lightning"
+	},
+	"syncLightningMenuAccesskey": {
+		"message": "S"
+	},
+	"calendarNameLabel": {
+		"message": "Kalendarz"
+	},
+	"calendarIdLabel": {
+		"message": "Id kalendarza"
+	},
+	"existingLabel": {
+		"message": "Istniejące"
+	},
+	"failedLabel": {
+		"message": "Nieudane"
+	},
+	"succeededLabel": {
+		"message": "Udane"
+	},
+	"wdw_bulkOperationTitle": {
+		"message": "Uruchomiony…"
+	},
+	"wdw_cardbookConfigurationAddCustomFieldTitle": {
+		"message": "Edytor własnych pól"
+	},
+	"customFieldCodeLabel": {
+		"message": "Nazwa pola:"
+	},
+	"customFieldLabelLabel": {
+		"message": "Etykieta pola:"
+	},
+	"mailAccountLabel": {
+		"message": "Konto pocztowe:"
+	},
+	"addressbookLabel": {
+		"message": "Książka adresowa:"
+	},
+	"categoryLabel": {
+		"message": "Kategoria:"
+	},
+	"wdw_cardbookConfigurationAddIMPPTitle": {
+		"message": "Edytor protokołu"
+	},
+	"IMPPCodeLabel": {
+		"message": "Kod:"
+	},
+	"IMPPLabelLabel": {
+		"message": "Etykieta:"
+	},
+	"IMPPProtocolLabel": {
+		"message": "Protokół:"
+	},
+	"wdw_cardbookConfigurationAddVcardTitle": {
+		"message": "Wybierz vCard"
+	},
+	"contactLabel": {
+		"message": "Wizytówka:"
+	},
+	"filenameLabel": {
+		"message": "Załączony plik:"
+	},
+	"vCardLabel": {
+		"message": "vCard"
+	},
+	"CardBookTabLabel": {
+		"message": "Karta CardBook"
+	},
+	"IMPPsTabLabel": {
+		"message": "Komunikatory internetowe"
+	},
+	"customFieldsTabLabel": {
+		"message": "Własne pola"
+	},
+	"listsTabLabel": {
+		"message": "Listy"
+	},
+	"syncTabLabel": {
+		"message": "Synchronizacja"
+	},
+	"emailTabLabel": {
+		"message": "E-mail"
+	},
+	"birthdaylistTabLabel": {
+		"message": "Urodziny"
+	},
+	"synclistTabLabel": {
+		"message": "Przypomnienia o urodzinach"
+	},
+	"integrationGroupboxLabel": {
+		"message": "Integracja z Thunderbird"
+	},
+	"autocompletionLabel": {
+		"message": "Automatyczne uzupełnianie adresów e-mail"
+	},
+	"autocompletionAccesskey": {
+		"message": "A"
+	},
+	"autocompletionTooltip": {
+		"message": "Rozszerza automatyczne uzupełnianie adresów z wizytówek we wbudowanych książkach adresowych Thunderbirda o automatyczne uzupełnianie adresów z wizytówek w książkach adresowych CardBook."
+	},
+	"autocompleteSortByPopularityLabel": {
+		"message": "Sortuj adresy e-mail według popularności"
+	},
+	"autocompleteSortByPopularityAccesskey": {
+		"message": "p"
+	},
+	"autocompleteProposeConcatEmailsLabel": {
+		"message": "Proponuj wszystkie e-maile z wizytówki w jednym ciągu"
+	},
+	"autocompleteProposeConcatEmailsAccesskey": {
+		"message": "C"
+	},
+	"autocompleteShowAddressbookLabel": {
+		"message": "Pokaż nazwę książki adresowej"
+	},
+	"autocompleteShowAddressbookAccesskey": {
+		"message": "S"
+	},
+	"autocompleteWithColorLabel": {
+		"message": "Używaj koloru książki adresowej"
+	},
+	"autocompleteWithColorAccesskey": {
+		"message": "O"
+	},
+	"autocompleteRestrictSearchLabel": {
+		"message": "Ogranicz wyszukiwanie do"
+	},
+	"autocompleteRestrictSearchAccesskey": {
+		"message": "G"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Edytuj"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "E"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Przywróć domyślne"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "d"
+	},
+	"useColorLabel": {
+		"message": "Używaj koloru książki adresowej do:"
+	},
+	"useColorBackgroundLabel": {
+		"message": "tła"
+	},
+	"useColorBackgroundAccesskey": {
+		"message": "T"
+	},
+	"useColorTextLabel": {
+		"message": "tekstu"
+	},
+	"useColorTextAccesskey": {
+		"message": "K"
+	},
+	"useColorNothingLabel": {
+		"message": "Nic"
+	},
+	"useColorNothingAccesskey": {
+		"message": "N"
+	},
+	"exclusiveLabel": {
+		"message": "Wyłączne źródło wizytówek"
+	},
+	"exclusiveAccesskey": {
+		"message": "W"
+	},
+	"exclusiveTooltip": {
+		"message": "Wyłącz, aby pobierać adresy z wizytówek we wbudowanych książkach adresowych Thunderbirda do żółtych gwiazdek, wyświetlanych nazw i autouzupełniania adresów e-mail."
+	},
+	"accountsRestrictionsLabel": {
+		"message": "Ograniczenia kont pocztowych"
+	},
+	"accountsRestrictionsEnabledLabel": {
+		"message": "Włączone"
+	},
+	"accountsRestrictionsMailNameLabel": {
+		"message": "Konto pocztowe"
+	},
+	"accountsRestrictionsABNameLabel": {
+		"message": "Książka adresowa"
+	},
+	"accountsRestrictionsCatNameLabel": {
+		"message": "Kategoria"
+	},
+	"accountsRestrictionsIncludeNameLabel": {
+		"message": "Typ"
+	},
+	"addRestrictionLabel": {
+		"message": "Dodaj"
+	},
+	"addRestrictionAccesskey": {
+		"message": "D"
+	},
+	"renameRestrictionLabel": {
+		"message": "Edytuj"
+	},
+	"renameRestrictionAccesskey": {
+		"message": "E"
+	},
+	"deleteRestrictionLabel": {
+		"message": "Usuń"
+	},
+	"deleteRestrictionAccesskey": {
+		"message": "U"
+	},
+	"emailsCollectionLabel": {
+		"message": "Zbieraj adresy z poczty wychodzącej"
+	},
+	"emailsCollectionTooltip": {
+		"message": "Rozszerza zbieranie adresów e-mail Thunderbirda. Włącz, aby adresy e-mail, których nie ma w żadnych książkach adresowych CardBook, były dodawane do wybranej książki lub książek adresowych."
+	},
+	"emailsCollectionEnabledLabel": {
+		"message": "Włączone"
+	},
+	"emailsCollectionMailNameLabel": {
+		"message": "Konto pocztowe"
+	},
+	"emailsCollectionABNameLabel": {
+		"message": "Książka adresowa"
+	},
+	"emailsCollectionCatNameLabel": {
+		"message": "Kategoria"
+	},
+	"addEmailsCollectionLabel": {
+		"message": "Dodaj"
+	},
+	"addEmailsCollectionAccesskey": {
+		"message": "D"
+	},
+	"renameEmailsCollectionLabel": {
+		"message": "Edytuj"
+	},
+	"renameEmailsCollectionAccesskey": {
+		"message": "E"
+	},
+	"deleteEmailsCollectionLabel": {
+		"message": "Usuń"
+	},
+	"deleteEmailsCollectionAccesskey": {
+		"message": "U"
+	},
+	"logGroupboxLabel": {
+		"message": "Log"
+	},
+	"debugModeLabel": {
+		"message": "Tryb debugowania"
+	},
+	"debugModeAccesskey": {
+		"message": "B"
+	},
+	"debugModeTooltip": {
+		"message": "Włącz tryb debugowania, aby zwiększyć szczegółowość logu."
+	},
+	"statusInformationLineNumberLabel": {
+		"message": "Ilość linii przechowywanych w logu:"
+	},
+	"statusInformationLineNumberAccesskey": {
+		"message": "I"
+	},
+	"tabsEditingGroupboxLabel": {
+		"message": "Pokaż zakładki"
+	},
+	"listTabLabel": {
+		"message": "Lista"
+	},
+	"listTabAccesskey": {
+		"message": "L"
+	},
+	"mailPopularityTab.conf.label": {
+		"message": "Popularność e-mail"
+	},
+	"mailPopularityTab.conf.accesskey": {
+		"message": "E"
+	},
+	"technicalTab.conf.label": {
+		"message": "Techniczne"
+	},
+	"technicalTab.conf.accesskey": {
+		"message": "C"
+	},
+	"vCardTab.conf.label": {
+		"message": "vCard"
+	},
+	"vCardTab.conf.accesskey": {
+		"message": "V"
+	},
+	"advancedTab1Label": {
+		"message": "Zaawansowane"
+	},
+	"advancedTab.conf.label": {
+		"message": "Zaawansowane (tylko vCard 4.0)"
+	},
+	"advancedTab.conf.accesskey": {
+		"message": "Z"
+	},
+	"localizeEditingGroupboxLabel": {
+		"message": "Lokalizuj przy pomocy"
+	},
+	"localizeEngineOpenStreetMapLabel": {
+		"message": "OpenStreetMap"
+	},
+	"localizeEngineOpenStreetMapAccesskey": {
+		"message": "O"
+	},
+	"localizeEngineGoogleMapsLabel": {
+		"message": "Mapy Google"
+	},
+	"localizeEngineGoogleMapsAccesskey": {
+		"message": "G"
+	},
+	"localizeEngineBingMapsLabel": {
+		"message": "Mapy Bing"
+	},
+	"localizeEngineBingMapsAccesskey": {
+		"message": "B"
+	},
+	"localizeTargetLabel": {
+		"message": "Otwieraj zewnętrzne linki"
+	},
+	"localizeTargetInLabel": {
+		"message": "W Thunderbirdzie"
+	},
+	"localizeTargetInAccesskey": {
+		"message": "T"
+	},
+	"localizeTargetOutLabel": {
+		"message": "Poza Thunderbirdem"
+	},
+	"localizeTargetOutAccesskey": {
+		"message": "H"
+	},
+	"showNameAsLabel": {
+		"message": "Pokazuj nazwę jako"
+	},
+	"showNameAsLFLabel": {
+		"message": "Nazwisko Imię"
+	},
+	"showNameAsLFAccesskey": {
+		"message": "N"
+	},
+	"showNameAsLFCommaLabel": {
+		"message": "Nazwisko, Imię"
+	},
+	"showNameAsLFCommaAccesskey": {
+		"message": "A"
+	},
+	"showNameAsFLLabel": {
+		"message": "Imię Nazwisko"
+	},
+	"showNameAsFLAccesskey": {
+		"message": "I"
+	},
+	"showNameAsDSPLabel": {
+		"message": "Wyświetlana nazwa"
+	},
+	"showNameAsDSPAccesskey": {
+		"message": "W"
+	},
+	"adrFormulaCaption": {
+		"message": "Adres"
+	},
+	"adrFormulaLabel": {
+		"message": "Sposób wyświetlania adresów:"
+	},
+	"adrFormulaAccesskey": {
+		"message": "R"
+	},
+	"resetAdrFormulaLabel": {
+		"message": "Przywróć domyślne"
+	},
+	"resetAdrFormulaAccesskey": {
+		"message": "P"
+	},
+	"miscEditingGroupboxLabel": {
+		"message": "Różne"
+	},
+	"preferEmailEditionLabel": {
+		"message": "Podwójne kliknięcie na wizytówce edytuje zamiast wysyłać e-mail"
+	},
+	"preferEmailEditionAccesskey": {
+		"message": "D"
+	},
+	"dateDisplayedFormatLabel": {
+		"message": "Format daty:"
+	},
+	"dateDisplayedFormatAccesskey": {
+		"message": "y"
+	},
+	"defaultRegionLabel": {
+		"message": "??Default Region:??"
+	},
+	"defaultRegionAccesskey": {
+		"message": "D"
+	},
+	"defaultRegionTooltip": {
+		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"preferenceGroupboxLabel": {
+		"message": "Oznaczenie Podstawowy"
+	},
+	"usePreferenceValueLabel": {
+		"message": "Używaj wartości ustawienia (tylko vCard 4.0)"
+	},
+	"usePreferenceValueAccesskey": {
+		"message": "Y"
+	},
+	"preferenceValueLabel": {
+		"message": "Etykieta oznaczenia Podstawowy"
+	},
+	"preferenceValueAccesskey": {
+		"message": "o"
+	},
+	"ABtypesGroupboxLabel": {
+		"message": "Książka adresowa"
+	},
+	"typesCategoryGoogleLabel": {
+		"message": "Google"
+	},
+	"typesCategoryGoogleAccesskey": {
+		"message": "G"
+	},
+	"typesCategoryAppleLabel": {
+		"message": "Apple"
+	},
+	"typesCategoryAppleAccesskey": {
+		"message": "A"
+	},
+	"typesCategoryYahooLabel": {
+		"message": "Yahoo!"
+	},
+	"typesCategoryYahooAccesskey": {
+		"message": "Y"
+	},
+	"typesCategoryOthersLabel": {
+		"message": "Inne"
+	},
+	"typesCategoryOthersAccesskey": {
+		"message": "n"
+	},
+	"typesGroupboxLabel": {
+		"message": "Typy"
+	},
+	"typesCategoryAdrLabel": {
+		"message": "Adres"
+	},
+	"typesCategoryAdrAccesskey": {
+		"message": "S"
+	},
+	"typesCategoryEmailLabel": {
+		"message": "E-mail"
+	},
+	"typesCategoryEmailAccesskey": {
+		"message": "m"
+	},
+	"typesCategoryImppLabel": {
+		"message": "IMPP"
+	},
+	"typesCategoryImppAccesskey": {
+		"message": "I"
+	},
+	"typesCategoryTelLabel": {
+		"message": "Telefon"
+	},
+	"typesCategoryTelAccesskey": {
+		"message": "T"
+	},
+	"typesCategoryUrlLabel": {
+		"message": "URL"
+	},
+	"typesCategoryUrlAccesskey": {
+		"message": "R"
+	},
+	"typesLabelLabel": {
+		"message": "Etykieta"
+	},
+	"addTypeLabel": {
+		"message": "Dodaj"
+	},
+	"addTypeAccesskey": {
+		"message": "D"
+	},
+	"renameTypeLabel": {
+		"message": "Edytuj"
+	},
+	"renameTypeAccesskey": {
+		"message": "E"
+	},
+	"deleteTypeLabel": {
+		"message": "Usuń"
+	},
+	"deleteTypeAccesskey": {
+		"message": "U"
+	},
+	"resetTypeLabel": {
+		"message": "Przywróć domyślne"
+	},
+	"resetTypeAccesskey": {
+		"message": "Z"
+	},
+	"IMPPGroupboxWarn": {
+		"message": "Te ustawienia pozwalają na korzystanie z komunikatorów internetowych przy pomocy odpowiedniego protokołu."
+	},
+	"IMPPGroupboxLabel": {
+		"message": "Komunikatory internetowe"
+	},
+	"preferIMPPPrefLabel": {
+		"message": "Używaj komunikatora internetowego oznaczonego"
+	},
+	"preferIMPPPrefAccesskey": {
+		"message": "U"
+	},
+	"preferIMPPPrefWarn": {
+		"message": "Jeśli nie jest oznaczony żaden adres, zostanie zaproponowane połączenie ze wszystkimi adresami wizytówki."
+	},
+	"IMPPCodeHeaderLabel": {
+		"message": "Kod"
+	},
+	"IMPPLabelHeaderLabel": {
+		"message": "Etykieta"
+	},
+	"IMPPProtocolHeaderLabel": {
+		"message": "Protokół"
+	},
+	"addIMPPLabel": {
+		"message": "Dodaj"
+	},
+	"addIMPPAccesskey": {
+		"message": "D"
+	},
+	"renameIMPPLabel": {
+		"message": "Edytuj"
+	},
+	"renameIMPPAccesskey": {
+		"message": "E"
+	},
+	"deleteIMPPLabel": {
+		"message": "Usuń"
+	},
+	"deleteIMPPAccesskey": {
+		"message": "U"
+	},
+	"URLPhoneGroupboxLabel": {
+		"message": "??URL opening for soft phones??"
+	},
+	"URLPhoneGroupboxWarn": {
+		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain $1, referring to the phone number.??"
+	},
+	"URLPhoneURLLabel": {
+		"message": "URL:"
+	},
+	"URLPhoneURLAccesskey": {
+		"message": "R"
+	},
+	"URLPhoneUserLabel": {
+		"message": "Nazwa użytkownika:"
+	},
+	"URLPhoneUserAccesskey": {
+		"message": "N"
+	},
+	"URLPhonePasswordLabel": {
+		"message": "Hasło:"
+	},
+	"URLPhonePasswordAccesskey": {
+		"message": "H"
+	},
+	"URLPhonePasswordShowLabel": {
+		"message": "Pokaż"
+	},
+	"URLPhonePasswordShowAccesskey": {
+		"message": "P"
+	},
+	"URLPhoneBackgroundLabel": {
+		"message": "??Run in background??"
+	},
+	"URLPhoneBackgroundAccesskey": {
+		"message": "S"
+	},
+	"encryptionGroupboxLabel": {
+		"message": "Szyfrowanie wiadomości"
+	},
+	"encryptionExplanation": {
+		"message": "??CardBook may encrypt your local data. For this purpose, it will use a secret key stored in the Password Manager. If you loose this key, the recovery of your local data is impossible. For a complete protection, activating the Thunderbird master password feature is recommended.??"
+	},
+	"localDataEncryptionEnabledLabel": {
+		"message": "??Encrypt locally cached cards??"
+	},
+	"localDataEncryptionEnabledAccesskey": {
+		"message": "E"
+	},
+	"customFieldRankHeader": {
+		"message": "Kolejność"
+	},
+	"customFieldCodeHeader": {
+		"message": "Nazwa pola"
+	},
+	"customFieldLabelHeader": {
+		"message": "Etykieta pola"
+	},
+	"customFieldsPersTitleLabel": {
+		"message": "Informacje osobiste"
+	},
+	"customFieldsPersTitleAccesskey": {
+		"message": "o"
+	},
+	"customFieldsOrgTitleLabel": {
+		"message": "Informacje służbowe"
+	},
+	"customFieldsOrgTitleAccesskey": {
+		"message": "s"
+	},
+	"addCustomFieldsLabel": {
+		"message": "Dodaj"
+	},
+	"addCustomFieldsAccesskey": {
+		"message": "D"
+	},
+	"renameCustomFieldsLabel": {
+		"message": "Edytuj"
+	},
+	"renameCustomFieldsAccesskey": {
+		"message": "E"
+	},
+	"deleteCustomFieldsLabel": {
+		"message": "Usuń"
+	},
+	"deleteCustomFieldsAccesskey": {
+		"message": "U"
+	},
+	"orgWarn": {
+		"message": "Pole Organizacja może zawierać strukturę wartości tekstowych składającą się z elementów oddzielonych ŚREDNIKIEM (na przykład: twojafirma;twojausługa;twójdział). Pola poniżej opisują etykiety elementów tej struktury."
+	},
+	"orgRankLabel": {
+		"message": "Kolejność"
+	},
+	"orgLabelLabel": {
+		"message": "Etykieta pola"
+	},
+	"listPanelLabel": {
+		"message": "Jeśli Twój serwer nie obsługuje kategorii (Google, Apple, Zimbra, itd…), listy są dobrym sposobem na wysyłanie e-maili do grup odbiorców. vCard 3.0 nie obsługuje natywnie list, ale można je zastąpić własnymi polami, więc jeśli chcesz używać list w vCard 3.0, musisz zdefiniować te pola."
+	},
+	"listGroupboxLabel": {
+		"message": "Własne pola dla list"
+	},
+	"kindCustomLabel": {
+		"message": "Rodzaj:"
+	},
+	"kindCustomAccesskey": {
+		"message": "R"
+	},
+	"memberCustomLabel": {
+		"message": "Członek:"
+	},
+	"memberCustomAccesskey": {
+		"message": "C"
+	},
+	"resetListLabel": {
+		"message": "Przywróć domyślne"
+	},
+	"resetListAccesskey": {
+		"message": "P"
+	},
+	"syncGroupboxLabel": {
+		"message": "Synchronizacja"
+	},
+	"syncWarn": {
+		"message": "Synchronizacja wysyła Twoje zmiany do zdalnego serwera, a zmiany na serwerze do Ciebie."
+	},
+	"syncAfterChangeLabel": {
+		"message": "??Synchronize after changes??"
+	},
+	"syncAfterChangeAccesskey": {
+		"message": "c"
+	},
+	"initialSyncLabel": {
+		"message": "Wykonaj początkową synchronizację przy uruchomieniu Thunderbirda"
+	},
+	"initialSyncAccesskey": {
+		"message": "W"
+	},
+	"initialSyncDelayLabel": {
+		"message": "Opóźnij wykonanie pierwszych zapytań (sekundy):"
+	},
+	"initialSyncDelayAccesskey": {
+		"message": "O"
+	},
+	"solveConflictsLabel": {
+		"message": "Jeśli wizytówka została zmodyfikowana zarówno na serwerze jak i lokalnie:"
+	},
+	"solveConflictsLocalLabel": {
+		"message": "Preferuj zmianę lokalną"
+	},
+	"solveConflictsLocalAccesskey": {
+		"message": "P"
+	},
+	"solveConflictsRemoteLabel": {
+		"message": "Preferuj zmianę zdalną"
+	},
+	"solveConflictsRemoteAccesskey": {
+		"message": "z"
+	},
+	"solveConflictsUserLabel": {
+		"message": "Zapytaj użytkownika"
+	},
+	"solveConflictsUserAccesskey": {
+		"message": "u"
+	},
+	"maxModifsPushedLabel": {
+		"message": "Liczba maksymalna modyfikacji dodanej do synchronizacji:"
+	},
+	"maxModifsPushedAccesskey": {
+		"message": "L"
+	},
+	"requestsGroupboxLabel": {
+		"message": "Połączenia"
+	},
+	"requestsTimeoutLabel": {
+		"message": "Czas oczekiwania (w sekundach):"
+	},
+	"requestsTimeoutAccesskey": {
+		"message": "C"
+	},
+	"multigetLabel": {
+		"message": "Dla zapytań GET, grupuj wizytówki po:"
+	},
+	"multigetAccesskey": {
+		"message": "D"
+	},
+	"discoveryGroupboxLabel": {
+		"message": "Wykrywanie książek adresowych"
+	},
+	"discoveryWarn": {
+		"message": "Przy każdej synchronizacji poniższe adresy będą sprawdzane w poszukiwaniu nowych lub usuniętych książek adresowych."
+	},
+	"discoveryAccountsGroupboxLabel": {
+		"message": "Konta"
+	},
+	"advancedSyncGroupboxLabel": {
+		"message": "Ustawienia zaawansowane"
+	},
+	"decodeReportLabel": {
+		"message": "Dekoduj adresy URL dla zapytań REPORT"
+	},
+	"decodeReportAccesskey": {
+		"message": "U"
+	},
+	"miscEmailGroupboxLabel": {
+		"message": "Wysyłanie e-maili"
+	},
+	"preferEmailPrefLabel": {
+		"message": "Używaj adresów e-mail oznaczonych jako Podstawowy"
+	},
+	"preferEmailPrefAccesskey": {
+		"message": "P"
+	},
+	"preferEmailPrefWarn": {
+		"message": "Jeśli żaden z adresów nie jest oznaczony jako Podstawowy, wiadomość zostanie wysłana na wszystkie adresy z wizytówki."
+	},
+	"warnEmptyEmailsLabel": {
+		"message": "Ostrzegaj, jeśli próbuję wysłać e-mail do wizytówki bez adresu e-mail"
+	},
+	"warnEmptyEmailsAccesskey": {
+		"message": "O"
+	},
+	"useOnlyEmailLabel": {
+		"message": "Używaj samych adresów e-mail, bez Wyświetlanych nazw"
+	},
+	"useOnlyEmailAccesskey": {
+		"message": "U"
+	},
+	"attachVCardWarn": {
+		"message": "Aby automatycznie dodawać vCard do Twoich e-maili, wybierz vCard dla każdego konta pocztowego. Gdy ta opcja jest włączona, CardBook załączy wybrany vCard do każdego e-maila wychodzącego z tego konta."
+	},
+	"attachVCardGroupboxLabel": {
+		"message": "Dodaj vCard"
+	},
+	"accountsVCardsEnabledLabel": {
+		"message": "Włączone"
+	},
+	"accountsVCardsMailLabel": {
+		"message": "Konto pocztowe"
+	},
+	"accountsVCardsABNameLabel": {
+		"message": "Książka adresowa"
+	},
+	"accountsVCardsFileNameLabel": {
+		"message": "Załączony plik"
+	},
+	"accountsVCardsFnLabel": {
+		"message": "Wizytówka"
+	},
+	"addVCardLabel": {
+		"message": "Dodaj"
+	},
+	"addVCardAccesskey": {
+		"message": "D"
+	},
+	"renameVCardLabel": {
+		"message": "Edytuj"
+	},
+	"renameVCardAccesskey": {
+		"message": "E"
+	},
+	"deleteVCardLabel": {
+		"message": "Usuń"
+	},
+	"deleteVCardAccesskey": {
+		"message": "U"
+	},
+	"birthdayListWarn": {
+		"message": "Format dat urodzin jest ustawiany we właściwościach książki adresowej"
+	},
+	"addressbooksGroupboxLabel": {
+		"message": "Książki adresowe"
+	},
+	"selectAllABsLabel": {
+		"message": "Zaznacz wszystko"
+	},
+	"searchForLabel": {
+		"message": "Szukaj:"
+	},
+	"bday.conf.label": {
+		"message": "Urodziny"
+	},
+	"bday.conf.accesskey": {
+		"message": "U"
+	},
+	"anniversary.conf.label": {
+		"message": "Rocznica (tylko vCard 4.0)"
+	},
+	"anniversary.conf.accesskey": {
+		"message": "R"
+	},
+	"deathdate.conf.label": {
+		"message": "Data śmierci (tylko vCard 4.0)"
+	},
+	"deathdate.conf.accesskey": {
+		"message": "D"
+	},
+	"eventsLabel": {
+		"message": "Wydarzenia"
+	},
+	"eventsAccesskey": {
+		"message": "W"
+	},
+	"calendarsGroupboxLabel": {
+		"message": "Kalendarze"
+	},
+	"selectAllCalendarsLabel": {
+		"message": "Zaznacz wszystko"
+	},
+	"remindersTabLabel": {
+		"message": "Przypomnienia"
+	},
+	"remindViaPopupWindowGroupboxLabel": {
+		"message": "Przypomnij w wyskakującym okienku"
+	},
+	"numberOfDaysForSearchingLabel": {
+		"message": "Ilość dni, w których szukać urodzin:"
+	},
+	"numberOfDaysForSearchingAccesskey": {
+		"message": "I"
+	},
+	"showPopupOnStartupLabel": {
+		"message": "Pokaż wyskakujące okienko przy starcie"
+	},
+	"showPopupOnStartupAccesskey": {
+		"message": "s"
+	},
+	"showPeriodicPopupLabel": {
+		"message": "Pokaż wyskakujące okienko codziennie"
+	},
+	"showPeriodicPopupAccesskey": {
+		"message": "c"
+	},
+	"periodicPopupTimeLabel": {
+		"message": "Pokaż o (hh:mm):"
+	},
+	"periodicPopupTimeAccesskey": {
+		"message": "O"
+	},
+	"showPopupEvenIfNoBirthdayLabel": {
+		"message": "Pokaż wyskakujące okienko, gdy lista urodzin jest pusta"
+	},
+	"showPopupEvenIfNoBirthdayAccesskey": {
+		"message": "w"
+	},
+	"remindViaLightningGroupboxLabel": {
+		"message": "Przypominaj za pomocą Lightning, dodatku kalendarzowego do Thunderbird"
+	},
+	"numberOfDaysForWritingLabel": {
+		"message": "Ilość dni, w których zapisywać urodziny:"
+	},
+	"numberOfDaysForWritingAccesskey": {
+		"message": "d"
+	},
+	"syncWithLightningOnStartupLabel": {
+		"message": "Synchronizuj z Lightning przy starcie"
+	},
+	"syncWithLightningOnStartupAccesskey": {
+		"message": "L"
+	},
+	"calendarEntryTitleLabel": {
+		"message": "Nazwa wydarzenia:"
+	},
+	"calendarEntryTitleTooltip": {
+		"message": "Szablon nazwy wydarzenia. Powinien zawierać dwa pola &#37;S, odpowiednio zastępowane imieniem i nazwiskiem oraz wiekiem. Jeśli pole jest puste, użyty zostanie komunikat domyślny."
+	},
+	"calendarEntryTitleAccesskey": {
+		"message": "y"
+	},
+	"resetCalendarEntryTitleButtonLabel": {
+		"message": "Przywróć domyślne"
+	},
+	"resetCalendarEntryTitleButtonAccesskey": {
+		"message": "P"
+	},
+	"calendarEntryTimeLabel": {
+		"message": "Czas wydarzenia (hh:mm):"
+	},
+	"calendarEntryTimeAccesskey": {
+		"message": "z"
+	},
+	"calendarEntryWholeDayLabel": {
+		"message": "Wydarzenie całodniowe"
+	},
+	"calendarEntryWholeDayAccesskey": {
+		"message": "A"
+	},
+	"calendarEntryAlarmLabel": {
+		"message": "Przypomnienie(a) na n godzin przed wydarzeniem w kalendarzu (przykład: 4,+1):"
+	},
+	"calendarEntryAlarmTooltip": {
+		"message": "Wpisz na ile godzin przed rocznicą Lightning powinien wyświetlić przypomnienie. Jeśli pole pozostawisz puste, przypomnienie nie pojawi się. Jeśli chcesz kilka przypomnień, oddziel je przecinkami."
+	},
+	"calendarEntryAlarmAccesskey": {
+		"message": "p"
+	},
+	"calendarEntryCategoriesLabel": {
+		"message": "Kategoria(e) wydarzenia:"
+	},
+	"calendarEntryCategoriesTooltip": {
+		"message": "Jedna lub więcej kategorii, rozdzielonych przecinkami. Jeśli pole jest puste, nie będzie kategorii."
+	},
+	"calendarEntryCategoriesAccesskey": {
+		"message": "K"
+	},
+	"categoriesPicker.label": {
+		"message": "Filtr kategorii:"
+	},
+	"categoriesPicker.accesskey": {
+		"message": "F"
+	},
+	"deleteAddrBookCard.label": {
+		"message": "Usuń"
+	},
+	"deleteAddrBookCard.accesskey": {
+		"message": "U"
+	},
+	"editAddrBookCard.label": {
+		"message": "Edytuj"
+	},
+	"editAddrBookCard.accesskey": {
+		"message": "E"
+	},
+	"addressbookPicker.label": {
+		"message": "Książka adresowa:"
+	},
+	"addressbookPicker.accesskey": {
+		"message": "K"
+	},
+	"searchContacts.label": {
+		"message": "Szukaj:"
+	},
+	"searchContacts.accesskey": {
+		"message": "S"
+	},
+	"SearchNameOrEmail.label": {
+		"message": "Imię, nazwisko lub e-mail"
+	},
+	"addtoToFieldMenu.label": {
+		"message": "Dodaj do pola „Do”"
+	},
+	"addtoToFieldMenu.accesskey": {
+		"message": "o"
+	},
+	"addtoCcFieldMenu.label": {
+		"message": "Dodaj do pola „Kopia”"
+	},
+	"addtoCcFieldMenu.accesskey": {
+		"message": "a"
+	},
+	"addtoBccFieldMenu.label": {
+		"message": "Dodaj do pola „Ukryta kopia”"
+	},
+	"addtoBccFieldMenu.accesskey": {
+		"message": "r"
+	},
+	"addtoReplytoFieldMenu.label": {
+		"message": "Dodaj do pola Zwrotny adres e-mail"
+	},
+	"addtoReplytoFieldMenu.accesskey": {
+		"message": "D"
+	},
+	"toButton.label": {
+		"message": "„Do:”"
+	},
+	"toButton.accesskey": {
+		"message": "D"
+	},
+	"ccButton.label": {
+		"message": "„Kopia:”"
+	},
+	"ccButton.accesskey": {
+		"message": "i"
+	},
+	"bccButton.label": {
+		"message": "„Ukryta kopia:”"
+	},
+	"bccButton.accesskey": {
+		"message": "U"
+	},
+	"replytoButton.label": {
+		"message": "Dodaj do Zwrotny adres e-mail:"
+	},
+	"replytoButton.accesskey": {
+		"message": "D"
+	},
+	"newContactAbContext.label": {
+		"message": "Nowy kontakt"
+	},
+	"newContactAbContext.accesskey": {
+		"message": "k"
+	},
+	"newListAbContext.label": {
+		"message": "Nowa lista"
+	},
+	"newListAbContext.accesskey": {
+		"message": "l"
+	},
+	"wdw_cardbookWindowLabel": {
+		"message": "CardBook"
+	},
+	"enableAccountsTooltip": {
+		"message": "Włącz lub wyłącz przeszukiwanie i synchronizację książek adresowych."
+	},
+	"colorAccountsTooltip": {
+		"message": "Zaznaczaj kolorem wyniki wyszukiwania w książkach adresowych (gdy wyszukiwanie obejmuje wiele książek adresowych)."
+	},
+	"readonlyAccountsTooltip": {
+		"message": "Ustaw książki adresowe w tryb tylko do odczytu lub odczytu i zapisu."
+	},
+	"searchRemoteLabel": {
+		"message": "Ta książka adresowa wyświetla kontakty wyłącznie po wyszukiwaniu"
+	},
+	"columnChooser2.tooltip": {
+		"message": "Zaznacz, które kolumny będą wyświetlane"
+	},
+	"cardbookAccountMenuLabel": {
+		"message": "Książka adresowa"
+	},
+	"cardbookAccountMenuAddServerLabel": {
+		"message": "Nowa książka adresowa"
+	},
+	"cardbookAccountMenuEditServerLabel": {
+		"message": "Edytuj książkę adresową"
+	},
+	"cardbookAccountMenuCloseServerLabel": {
+		"message": "Usuń książkę adresową"
+	},
+	"cardbookAccountMenuSyncLabel": {
+		"message": "Synchronizuj książkę adresową"
+	},
+	"cardbookAccountMenuSyncsLabel": {
+		"message": "Synchronizuj wszystkie książki adresowe"
+	},
+	"cardbookContactsMenuLabel": {
+		"message": "Wizytówki"
+	},
+	"cardbookToolsMenuLabel": {
+		"message": "Narzędzia"
+	},
+	"cardbookToolsMenuBirthdayListLabel": {
+		"message": "Przeglądaj listę urodzin"
+	},
+	"cardbookToolsMenuSyncLightningLabel": {
+		"message": "Dodaj datę urodzin do kalendarza"
+	},
+	"cardbookToolsMenuFindAllDuplicatesLabel": {
+		"message": "Znajdź powielone wizytówki we wszystkich książkach adresowych"
+	},
+	"cardbookToolsMenuFindSingleDuplicatesLabel": {
+		"message": "Znajdź powielone wizytówki w bieżącej książce adresowej"
+	},
+	"cardbookToolsMenuPrefsLabel": {
+		"message": "Ustawienia CardBook"
+	},
+	"cardbookToolbarLabel": {
+		"message": "Pasek narzędzi CardBook"
+	},
+	"cardbookToolbarAccesskey": {
+		"message": "a"
+	},
+	"cardbookABPaneToolbarLabel": {
+		"message": "Pasek wyboru książki adresowej CardBook"
+	},
+	"cardbookABPaneToolbarAccesskey": {
+		"message": "W"
+	},
+	"CustomizeCardBookToolbarLabel": {
+		"message": "Dostosuj…"
+	},
+	"CustomizeCardBookToolbarAccesskey": {
+		"message": "T"
+	},
+	"cardbookToolbarAddServerButtonLabel": {
+		"message": "Nowa książka adresowa"
+	},
+	"cardbookToolbarAddServerButtonTooltip": {
+		"message": "Dodaj zdalną lub lokalną książkę adresową"
+	},
+	"cardbookToolbarSyncButtonLabel": {
+		"message": "Synchronizuj"
+	},
+	"cardbookToolbarSyncButtonTooltip": {
+		"message": "Synchronizuj wszystkie zdalne książki adresowe"
+	},
+	"cardbookToolbarWriteButtonLabel": {
+		"message": "Napisz"
+	},
+	"cardbookToolbarWriteButtonTooltip": {
+		"message": "Utwórz nową wiadomość"
+	},
+	"cardbookToolbarChatButtonLabel": {
+		"message": "Connect To"
+	},
+	"cardbookToolbarChatButtonTooltip": {
+		"message": "Połącz z adresatem za pomocą komunikatora"
+	},
+	"cardbookToolbarConfigurationButtonLabel": {
+		"message": "Ustawienia"
+	},
+	"cardbookToolbarConfigurationButtonTooltip": {
+		"message": "Ustawienia programu CardBook"
+	},
+	"cardbookToolbarAddContactButtonLabel": {
+		"message": "Nowa wizytówka"
+	},
+	"cardbookToolbarAddContactButtonTooltip": {
+		"message": "Dodaj nową wizytówkę do książki adresowej"
+	},
+	"cardbookToolbarAddListButtonLabel": {
+		"message": "Nowa lista"
+	},
+	"cardbookToolbarAddListButtonTooltip": {
+		"message": "Dodaj nową listę dystrybucyjną"
+	},
+	"cardbookToolbarEditButtonLabel": {
+		"message": "Edytuj"
+	},
+	"cardbookToolbarEditButtonTooltip": {
+		"message": "Zmodyfikuj istniejącą wizytówkę"
+	},
+	"cardbookToolbarRemoveButtonLabel": {
+		"message": "Usuń"
+	},
+	"cardbookToolbarRemoveButtonTooltip": {
+		"message": "Usuń bieżącą wizytówkę"
+	},
+	"cardbookToolbarPrintButtonLabel": {
+		"message": "Podgląd wydruku"
+	},
+	"cardbookToolbarPrintButtonTooltip": {
+		"message": "Wydrukuj wybrane elementy"
+	},
+	"cardbookToolbarBackButtonLabel": {
+		"message": "Cofnij"
+	},
+	"cardbookToolbarBackButtonTooltip": {
+		"message": "??Go back one action??"
+	},
+	"cardbookToolbarForwardButtonLabel": {
+		"message": "Przywróć"
+	},
+	"cardbookToolbarForwardButtonTooltip": {
+		"message": "??Go forward one action??"
+	},
+	"cardbookToolbarAppMenuButtonLabel": {
+		"message": "Menu CardBook"
+	},
+	"cardbookToolbarAppMenuButtonTooltip": {
+		"message": "Menu CardBook"
+	},
+	"cardbookToolbarSearchBoxLabel": {
+		"message": "Wyszukaj wizytówki"
+	},
+	"cardbookToolbarSearchBoxTooltip": {
+		"message": "Wyszukaj wizytówki"
+	},
+	"cardbookToolbarComplexSearchLabel": {
+		"message": "Wyszukiwanie zaawansowane"
+	},
+	"cardbookToolbarComplexSearchTooltip": {
+		"message": "Wyszukiwanie z uwzględnieniem wielu warunków"
+	},
+	"cardbookToolbarThMenuButtonLabel": {
+		"message": "Menu aplikacji"
+	},
+	"cardbookToolbarThMenuButtonTooltip": {
+		"message": "Pokaż menu Thunderbird"
+	},
+	"cardbookToolbarABMenuLabel": {
+		"message": "??Address Books View??"
+	},
+	"cardbookToolbarABMenuTooltip": {
+		"message": "??Filter how address books are displayed??"
+	},
+	"generalTabLabel": {
+		"message": "Podsumowanie"
+	},
+	"mailPopularityTabLabel": {
+		"message": "Popularność e-mail"
+	},
+	"technicalTabLabel": {
+		"message": "Techniczne"
+	},
+	"vCardTabLabel": {
+		"message": "vCard"
+	},
+	"noteTabLabel": {
+		"message": "Notatki"
+	},
+	"advancedTabLabel": {
+		"message": "Zaawansowane"
+	},
+	"miscGroupboxLabel": {
+		"message": "Różne"
+	},
+	"othersGroupboxLabel": {
+		"message": "Inne"
+	},
+	"techGroupboxLabel": {
+		"message": "Techniczne"
+	},
+	"labelGroupboxLabel": {
+		"message": "Etykiety"
+	},
+	"agentLabel": {
+		"message": "Agent"
+	},
+	"keyLabel": {
+		"message": "Klucz"
+	},
+	"photolocalURILabel": {
+		"message": "Lokalne zdjęcie"
+	},
+	"logolocalURILabel": {
+		"message": "Lokalne logo"
+	},
+	"soundlocalURILabel": {
+		"message": "Lokalny dźwięk"
+	},
+	"photoURILabel": {
+		"message": "Zdjęcie"
+	},
+	"logoURILabel": {
+		"message": "Logo"
+	},
+	"soundURILabel": {
+		"message": "Dźwięk"
+	},
+	"cardurlLabel": {
+		"message": "Card URL"
+	},
+	"cacheuriLabel": {
+		"message": "Cache URI"
+	},
+	"localizeadrTreeLabel": {
+		"message": "Lokalizuj"
+	},
+	"toEmailEmailTreeLabel": {
+		"message": "Napisz nową wiadomość"
+	},
+	"ccEmailEmailTreeLabel": {
+		"message": "Napisz nową wiadomość (kopia/cc)"
+	},
+	"bccemailemailTreeLabel": {
+		"message": "Napisz nową wiadomość (ukryta kopia/bcc)"
+	},
+	"findemailemailTreeLabel": {
+		"message": "Znajdź e-maile związane z tym adresem e-mail"
+	},
+	"findeventemailTreeLabel": {
+		"message": "Znajdź wydarzenia związane z tym adresem e-mail"
+	},
+	"openURLTreeLabel": {
+		"message": "Otwórz adres URL"
+	},
+	"toEmailCardFromAccountsOrCatsLabel": {
+		"message": "Napisz nową wiadomość"
+	},
+	"toEmailCardFromCardsLabel": {
+		"message": "Napisz nową wiadomość"
+	},
+	"ccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Napisz nową wiadomość (kopia)"
+	},
+	"ccEmailCardFromCardsLabel": {
+		"message": "Napisz nową wiadomość (kopia)"
+	},
+	"bccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Napisz nową wiadomość (ukryta kopia)"
+	},
+	"bccEmailCardFromCardsLabel": {
+		"message": "Napisz nową wiadomość (ukryta kopia)"
+	},
+	"shareCardByEmailFromAccountsOrCatsLabel": {
+		"message": "Wyślij e-mailem"
+	},
+	"shareCardByEmailFromCardsLabel": {
+		"message": "Wyślij e-mailem"
+	},
+	"categoryHeader": {
+		"message": "Kategoria"
+	},
+	"findEmailsFromCardsLabel": {
+		"message": "Znajdź e-maile związane z tą wizytówką"
+	},
+	"findEventsFromCardsLabel": {
+		"message": "Znajdź wydarzenia związane z tą wizytówką"
+	},
+	"localizeCardFromCardsLabel": {
+		"message": "Lokalizuj"
+	},
+	"openURLCardFromCardsLabel": {
+		"message": "Otwórz adresy URL"
+	},
+	"cutCardFromAccountsOrCatsLabel": {
+		"message": "Wytnij"
+	},
+	"cutCardFromCardsLabel": {
+		"message": "Wytnij"
+	},
+	"copyCardFromAccountsOrCatsLabel": {
+		"message": "Kopiuj"
+	},
+	"copyCardFromCardsLabel": {
+		"message": "Kopiuj"
+	},
+	"pasteCardFromAccountsOrCatsLabel": {
+		"message": "Wklej"
+	},
+	"pasteCardFromCardsLabel": {
+		"message": "Wklej"
+	},
+	"pasteEntryLabel": {
+		"message": "Wklej pozycję"
+	},
+	"exportCardToFileLabel": {
+		"message": "Eksportuj do pliku"
+	},
+	"exportCardToDirLabel": {
+		"message": "Eksportuj do katalogu"
+	},
+	"importCardFromFileLabel": {
+		"message": "Importuj wizytówkę z pliku"
+	},
+	"importCardFromDirLabel": {
+		"message": "Importuj wizytówkę z katalogu"
+	},
+	"findDuplicatesFromAccountsOrCatsLabel": {
+		"message": "Znajdź powielone wizytówki w bieżącej książce adresowej"
+	},
+	"generateFnFromAccountsOrCatsLabel": {
+		"message": "Stwórz Wyświetlane nazwy"
+	},
+	"mergeCardsFromCardsLabel": {
+		"message": "Połącz wizytówki"
+	},
+	"duplicateCardFromCardsLabel": {
+		"message": "Powiel wizytówkę"
+	},
+	"convertListToCategoryFromCardsLabel": {
+		"message": "Zamień listę w kategorię"
+	},
+	"editAccountFromAccountsOrCatsLabel": {
+		"message": "Edytuj książkę adresową"
+	},
+	"syncAccountFromAccountsOrCatsLabel": {
+		"message": "Synchronizuj książkę adresową"
+	},
+	"removeAccountFromAccountsOrCatsLabel": {
+		"message": "Usuń książkę adresową"
+	},
+	"editEventLabel": {
+		"message": "Edytuj wydarzenie"
+	},
+	"editEventAccesskey": {
+		"message": "E"
+	},
+	"eventsTree.title.label": {
+		"message": "Nazwa"
+	},
+	"eventsTree.title.tooltip2": {
+		"message": "Sortowanie według nazwy"
+	},
+	"eventsTree.startdate.label": {
+		"message": "Początek"
+	},
+	"eventsTree.startdate.tooltip2": {
+		"message": "Sortowanie według daty rozpoczęcia"
+	},
+	"eventsTree.enddate.label": {
+		"message": "Koniec"
+	},
+	"eventsTree.enddate.tooltip2": {
+		"message": "Sortowanie według daty zakończenia"
+	},
+	"eventsTree.categories.label": {
+		"message": "Kategoria"
+	},
+	"eventsTree.categories.tooltip2": {
+		"message": "Sortowanie według kategorii"
+	},
+	"eventsTree.location.label": {
+		"message": "Miejsce"
+	},
+	"eventsTree.location.tooltip2": {
+		"message": "Sortowanie według miejsca"
+	},
+	"eventsTree.status.label": {
+		"message": "Stan"
+	},
+	"eventsTree.status.tooltip2": {
+		"message": "Sortowanie według stanu"
+	},
+	"eventsTree.calendarname.label": {
+		"message": "Nazwa kalendarza"
+	},
+	"eventsTree.calendarname.tooltip2": {
+		"message": "Sortowanie według nazwy kalendarza"
+	},
+	"createEventLabel": {
+		"message": "Nowe wydarzenie"
+	},
+	"createEventAccesskey": {
+		"message": "N"
+	},
+	"adrFormulaExplanation": {
+		"message": "Można dostosować sposób, w który CardBook wyświetla adresy. Formuła zawiera bloki otoczone „()”. ??In these blocks there might be many parts delimited by „|”.??"
+	},
+	"fnFormulaExplanation": {
+		"message": "Można dostosować sposób, w który CardBook tworzy Wyświetlaną nazwę. Formuła zawiera bloki otoczone „()”. ??In these blocks there might be many parts delimited by „|”.??"
+	},
+	"formulaExplanation1": {
+		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
+	},
+	"formulaExplanation2": {
+		"message": "??({{1}}|{{2}}|{{3}}) : If {{1}} equals {{2}}, then the block will be replaced by {{3}}.??"
+	},
+	"formulaExplanation3": {
+		"message": "??({{1}}|{{2}}|{{3}}|{{4}}) : If {{1}} equals {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation4": {
+		"message": "??({{1}}|*|{{2}}|{{3}}|{{4}}) : If {{1}} includes {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation5": {
+		"message": "??({{1}}|^|{{2}}|{{3}}|{{4}}) : If {{1}} starts with {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation6": {
+		"message": "??({{1}}|$|{{2}}|{{3}}|{{4}}) : If {{1}} ends with {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"settingsTitlelabel": {
+		"message": "Ustawienia drukowania"
+	},
+	"title.print.label": {
+		"message": "Tytuł:"
+	},
+	"title.print.accesskey": {
+		"message": "T"
+	},
+	"displayHeadersLabel": {
+		"message": "Pokaż nagłówki akapitów"
+	},
+	"displayHeadersAccesskey": {
+		"message": "P"
+	},
+	"displayFieldNamesLabel": {
+		"message": "Nazwy pól"
+	},
+	"displayFieldNamesAccesskey": {
+		"message": "N"
+	},
+	"displayTypesLabel": {
+		"message": "Typy i ustawienia"
+	},
+	"displayTypesAccesskey": {
+		"message": "y"
+	},
+	"fieldsToPrintGroupboxLabel": {
+		"message": "Co drukować"
+	},
+	"displayLabel": {
+		"message": "Wyświetlana nazwa"
+	},
+	"displayAccesskey": {
+		"message": "W"
+	},
+	"personalLabel": {
+		"message": "Informacje osobiste"
+	},
+	"personalAccesskey": {
+		"message": "o"
+	},
+	"org.print.label": {
+		"message": "Informacje służbowe"
+	},
+	"org.print.accesskey": {
+		"message": "s"
+	},
+	"categories.print.label": {
+		"message": "Kategorie"
+	},
+	"categories.print.accesskey": {
+		"message": "K"
+	},
+	"adr.print.label": {
+		"message": "Adresy"
+	},
+	"adr.print.accesskey": {
+		"message": "A"
+	},
+	"tel.print.label": {
+		"message": "Numery telefonów"
+	},
+	"tel.print.accesskey": {
+		"message": "u"
+	},
+	"email.print.label": {
+		"message": "Adresy e-mail"
+	},
+	"email.print.accesskey": {
+		"message": "m"
+	},
+	"impp.print.label": {
+		"message": "Komunikatory internetowe"
+	},
+	"impp.print.accesskey": {
+		"message": "e"
+	},
+	"url.print.label": {
+		"message": "Adresy URL"
+	},
+	"url.print.ccesskey": {
+		"message": "R"
+	},
+	"note.print.label": {
+		"message": "Notatki"
+	},
+	"note.print.accesskey": {
+		"message": "i"
+	},
+	"useColorCheckLabel": {
+		"message": "Użyj koloru"
+	},
+	"useColorCheckAccesskey": {
+		"message": "U"
+	},
+	"existingDataGroupboxLabel": {
+		"message": "Dodaj do tej wizytówki"
+	},
+	"cardbookSwitchButtonTooltip": {
+		"message": "Zamień nazwisko i imię"
+	},
+	"descriptionTextbox": {
+		"message": "Opis"
+	},
+	"categoriesTextboxLabel": {
+		"message": "Dodaj nową kategorię"
+	},
+	"typesTextboxLabel": {
+		"message": "Dodaj nowy typ"
+	},
+	"categoriesListboxLabel": {
+		"message": "Istniejące kategorie"
+	},
+	"categoryMenuLabel": {
+		"message": "Nowa kategoria…"
+	},
+	"viewResultEditionLabel": {
+		"message": "Zobacz efekt"
+	},
+	"viewResultEditionAccesskey": {
+		"message": "e"
+	},
+	"createEditionLabel": {
+		"message": "Stwórz"
+	},
+	"createEditionAccesskey": {
+		"message": "S"
+	},
+	"createAndReplaceEditionLabel": {
+		"message": "Stwórz i zastąp"
+	},
+	"createAndReplaceEditionAccesskey": {
+		"message": "i"
+	},
+	"saveEditionLabel": {
+		"message": "Zapisz"
+	},
+	"saveEditionAccesskey": {
+		"message": "Z"
+	},
+	"validateEditionLabel": {
+		"message": "Sprawdź"
+	},
+	"validateEditionAccesskey": {
+		"message": "S"
+	},
+	"cancelEditionLabel": {
+		"message": "Anuluj"
+	},
+	"cancelEditionAccesskey": {
+		"message": "A"
+	},
+	"closeEditionLabel": {
+		"message": "Zamknij"
+	},
+	"closeEditionAccesskey": {
+		"message": "k"
+	},
+	"buttonAppendToListLabel": {
+		"message": "Dodaj"
+	},
+	"buttonAppendToListAccesskey": {
+		"message": "D"
+	},
+	"buttonRemoveFromListLabel": {
+		"message": "Usuń"
+	},
+	"buttonRemoveFromListAccesskey": {
+		"message": "U"
+	},
+	"buttonGuessFromListLabel": {
+		"message": "Automatycznie"
+	},
+	"buttonGuessFromListAccesskey": {
+		"message": "t"
+	},
+	"loadTemplateLabel": {
+		"message": "Wybierz szablon"
+	},
+	"loadTemplateAccesskey": {
+		"message": "w"
+	},
+	"saveTemplateLabel": {
+		"message": "Zapisz szablon"
+	},
+	"saveTemplateAccesskey": {
+		"message": "s"
+	},
+	"convertVCardsLabel": {
+		"message": "??Convert vCards??"
+	},
+	"convertVCardsTooltip": {
+		"message": "??The vCard version of some contacts is different from the vCard version of your address book, this button may convert these vCards??"
+	},
+	"convertVCardsAccesskey": {
+		"message": "C"
+	},
+	"wdw_findDuplicatesTitle": {
+		"message": "Powielone wizytówki"
+	},
+	"addImageCardFromFileLabel": {
+		"message": "Dodaj obraz z pliku"
+	},
+	"pasteImageCardLabel": {
+		"message": "Wklej obraz"
+	},
+	"saveImageCardLabel": {
+		"message": "Zapisz obraz jako…"
+	},
+	"copyImageCardLabel": {
+		"message": "Kopiuj obraz"
+	},
+	"copyImageLocationCardLabel": {
+		"message": "Kopiuj adres obrazu"
+	},
+	"deleteImageCardLabel": {
+		"message": "Usuń obraz"
+	},
+	"kind.edit.label": {
+		"message": "Rodzaj"
+	},
+	"kind.edit.accesskey": {
+		"message": "R"
+	},
+	"addEmailGroupboxLabel": {
+		"message": "Adres e-mail"
+	},
+	"availableCardsGroupboxLabel": {
+		"message": "Dostępne wizytówki"
+	},
+	"nameOrEmailLabel": {
+		"message": "Imię, nazwisko lub e-mail"
+	},
+	"appendContactLabel": {
+		"message": "Dodaj do listy"
+	},
+	"deletelistTreeLabel": {
+		"message": "Usuń z listy"
+	},
+	"editCardFromListLabel": {
+		"message": "Edytuj tę wizytówkę"
+	},
+	"wdw_logEditionTitle": {
+		"message": "Log"
+	},
+	"logEditionValueLabel": {
+		"message": "Czas zdarzenia"
+	},
+	"refreshLogEditionLabel": {
+		"message": "Odśwież"
+	},
+	"refreshLogEditionAccesskey": {
+		"message": "O"
+	},
+	"flushLogEditionLabel": {
+		"message": "Wyczyść listę"
+	},
+	"flushLogEditionAccesskey": {
+		"message": "C"
+	},
+	"clipboardLogEditionLabel": {
+		"message": "Skopiuj do schowka"
+	},
+	"clipboardLogEditionAccesskey": {
+		"message": "p"
+	},
+	"cancelLogEditionLabel": {
+		"message": "OK"
+	},
+	"cancelLogEditionAccesskey": {
+		"message": "O"
+	},
+	"wdw_mergeCardsTitle": {
+		"message": "Połącz wizytówki"
+	},
+	"mergeInstructionsLabel": {
+		"message": "Wybierz pola, które chcesz zachować w nowej wizytówce"
+	},
+	"persTitleLabel": {
+		"message": "Informacje osobiste"
+	},
+	"orgTitleLabel": {
+		"message": "Informacje służbowe"
+	}
+}

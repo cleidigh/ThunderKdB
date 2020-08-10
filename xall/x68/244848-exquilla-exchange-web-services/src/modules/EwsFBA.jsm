@@ -211,10 +211,15 @@ function doFbaExpanded(aUsername, aPassword, aUrl)
   {
     log.debug("windowProgressListener.onLocationChange location " + location.spec);
     const PRIORITY_INFO_LOW = 4;
+    if (!windowProgressListener.notifyBox) {
+      let window = Services.ww.activeWindow;
+      windowProgressListener.notifyBox = new window.MozElements.NotificationBox(element => {
+        let document = window.document;
+        document.documentElement.insertBefore(element, document.documentElement.firstElementChild);
+      });
+    }
     // show the current URL in the notification bar
-    let notifyBox = Services.ww.activeWindow.document.getElementById('notifications');
-    if (notifyBox)
-      notifyBox.appendNotification(location.spec, "", 'chrome://exquilla/skin/letter-x-icon-16.png', PRIORITY_INFO_LOW);
+    windowProgressListener.notifyBox.appendNotification(location.spec, "", 'chrome://exquilla/skin/letter-x-icon-16.png', PRIORITY_INFO_LOW);
   };
 
   function onListener(aBrowser, aProgressListener) {
@@ -229,11 +234,11 @@ function doFbaExpanded(aUsername, aPassword, aUrl)
 
   if (isModal)
   {
-    let fbaWindow = Services.ww.openWindow(activeWindow, "chrome://exquilla/content/moreinfo.xul", "ExQuillaFBA",
+    let fbaWindow = Services.ww.openWindow(activeWindow, "chrome://exquilla/content/moreinfo.xhtml", "ExQuillaFBA",
                            "centerscreen,chrome,location,width=980,height=600", null);
     fbaWindow.addEventListener("load", function(e) {
         let browser = fbaWindow.document.getElementById('maincontent');
-        browser.loadURI(aUrl);
+        browser.loadURI(aUrl, { triggeringPrincipal: browser.nodePrincipal });
         browser.addProgressListener(windowProgressListener, Ci.nsIWebProgress.NOTIFY_ALL);
       });
   }
@@ -392,11 +397,7 @@ function doFbaCollapsed(aUsername, aPassword, aUrl, aCallback)
   browser.addProgressListener(progressListener,
                               Ci.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
   log.debug("browser.loadURIWithFlags for url " + aUrl);
-  if (browser.loadURIWithFlags) { // COMPAT for TB 60
-    browser.loadURIWithFlags(aUrl, Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK, null, null, null);
-  } else {
-    browser.loadURI(aUrl, { flags: Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK });
-  }
+  browser.loadURI(aUrl, { triggeringPrincipa: browser.nodePrincipal, flags: Ci.nsIWebNavigation.LOAD_FLAGS_IS_LINK });
   return;
 } catch (e) {re(e);}}
 

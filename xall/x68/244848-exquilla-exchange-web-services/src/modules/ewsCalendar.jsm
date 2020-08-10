@@ -14,7 +14,6 @@
 var EXPORTED_SYMBOLS = ["EwsCalendar"];
 let Cu = Components.utils;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
 Utils.importLocally(this);
 ChromeUtils.defineModuleGetter(this, "StringArray",
@@ -836,7 +835,7 @@ function EwsCalendar()
 //try {
 EwsCalendar.prototype =
 {
-  QueryInterface:   QIUtils.generateQI([Ci.calICalendar, Ci.calISchedulingSupport]),
+  QueryInterface:   ChromeUtils.generateQI([Ci.calICalendar, Ci.calISchedulingSupport]),
 
    /*
     * implement calISchedulingSupport

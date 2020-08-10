@@ -11,8 +11,6 @@ var Ci = Components.interfaces;
 var Cr = Components.results;
 var Cu = Components.utils;
 
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm"); // COMPAT for TB 60
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 
 // A partial JavaScript implementation of the base server methods.
@@ -36,12 +34,12 @@ JaBaseAbDirectory.Properties = {
 
   // Interfaces implemented by the base CPP version of this object.
   baseInterfaces:     [ Ci.nsIAbDirectory,
-                        Ci.nsIAbCollection,
-                        Ci.nsIAbItem,
+                        Ci.nsIAbCollection, // COMPAT for TB 68
+                        Ci.nsIAbItem, // COMPAT for TB 68
                         Ci.msgIOverride,
                         Ci.nsISupports,
                         Ci.nsIInterfaceRequestor,
-                        ],
+                        ]/* COMPAT for TB 68 */.filter(i => i),
 
   // We don't typically define this as a creatable component, but if we do use
   // these. Subclasses for particular account types require these defined for
@@ -58,7 +56,7 @@ JaBaseAbDirectory.prototype = {
   _JsPrototypeToDelegate: true,
 
   // QI to the interfaces.
-  QueryInterface: QIUtils.generateQI(JaBaseAbDirectory.Properties.baseInterfaces),
+  QueryInterface: ChromeUtils.generateQI(JaBaseAbDirectory.Properties.baseInterfaces),
 
   // Used to access an instance as JS, bypassing XPCOM.
   get wrappedJSObject() {

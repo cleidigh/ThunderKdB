@@ -11,13 +11,12 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("contacts");
@@ -32,6 +31,8 @@ ChromeUtils.defineModuleGetter(this, "PropertyList",
                                "resource://exquilla/PropertyList.jsm");
 ChromeUtils.defineModuleGetter(this, "JaBaseAbDirectory",
                                "resource://exquilla/JaBaseAbDirectory.jsm");
+ChromeUtils.defineModuleGetter(this, "PromiseUtils",
+                               "resource://exquilla/PromiseUtils.jsm");
 
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 
@@ -55,6 +56,7 @@ function EwsAbDirectory(aDelegator, aBaseInterfaces) {
 
   this.mNativeFolder = null;
   this.cards = null;
+  this.mailLists = [];
   this.addressMap = null;
   this.mURI = null;
 
@@ -118,9 +120,8 @@ EwsAbDirectory.prototype = {
       log.config('ewsAbDirectory get childCards for query, directory URI is ' + this.mURI);
     if (this.isMailList)
     {
-      let addressLists = this.addressLists;
-      log.debug('child card count ' + addressLists.length);
-      return addressLists.enumerate();
+      log.debug('child card count ' + (this.cards ? this.cards.size : 0));
+      return new ArrayEnumerator(this.cards ? [...this.cards.values()] : []);
     }
     // Setup a call to get existing ids
     let cardArray = [];
@@ -150,16 +151,7 @@ EwsAbDirectory.prototype = {
 
   get childNodes()
   {
-    if (this.isMailList)
-    {
-      return new ArrayEnumerator([]);
-    }
-    let mailLists = [];
-    let addressLists = this.addressLists;
-    for (let i = 0; i < addressLists.length; i++)
-      mailLists.push(addressLists.queryElementAt(i, Ci.nsIAbDirectory));
-    log.debug('found ' + mailLists.length + ' nodes');
-    return new ArrayEnumerator(mailLists);
+    return new ArrayEnumerator(this.wrap.mailLists);
   },
 
   get URI()
@@ -205,17 +197,15 @@ EwsAbDirectory.prototype = {
       log.warn('***Warning: trying to add existing mailList ' + aDirectory.URI);
       return;
     }
-    this.addressLists.appendElement(aDirectory, false);
+    this.wrap.mailLists.push(aDirectory);
     MailServices.ab.notifyDirectoryItemAdded(this, aDirectory);
   },
 
   hasDirectory: function _hasDirectory(aDirectory)
   {
-    let addressLists = this.addressLists;
     let uri = aDirectory.URI;
-    for (let i = 0; i < addressLists.length; i++)
+    for (let existingDirectory of this.wrap.mailLists)
     {
-      let existingDirectory = addressLists.queryElementAt(i, Ci.nsIAbDirectory);
       //dl('Looking for subdirectory ' + existingDirectory.URI);
       if (uri == existingDirectory.URI)
         return true;
@@ -980,13 +970,10 @@ EwsAbDirectory.prototype = {
       let itemId = aItem.itemId;
       let itemName = aItem.properties.getAString('DisplayName');
 
-      // glue the distribution list to cards.
-      let addressLists = this.addressLists;
-      // search the addressLists for a matching item
+      // search the mailLists for a matching item
       let itemDirectory = null;
-      for (let i = 0; i < addressLists.length; i++)
+      for (let addressList of this.mailLists)
       {
-        let addressList = addressLists.queryElementAt(i, Ci.nsIAbDirectory);
         if (itemId == addressList.getStringValue('itemId', ''))
         {
           itemDirectory = addressList;
@@ -1017,12 +1004,10 @@ EwsAbDirectory.prototype = {
       itemDirectory.dirName = itemName;
 
       // The item directory at this point might be a js item, or it might point to the
-      //  underlying C++ skinkglue item. Let's make sure it points to the skinkglue item
-      //  for consistency.
-      //itemDirectory = itemDirectory.QueryInterface(Ci.nsIAbDirectory);
+      //  underlying C++ skinkglue item. Let's make sure it points to the js item.
+      itemDirectory = safeGetJS(itemDirectory);
 
-      let dlList = itemDirectory.addressLists;
-      dlList.clear();
+      itemDirectory.cards = new Map();
 
       let mailboxes = aItem.dlExpansion.getPropertyLists('Mailbox');
       for (let itemMailbox of mailboxes)
@@ -1046,7 +1031,7 @@ EwsAbDirectory.prototype = {
         card.displayName = itemMailbox.getAString('Name');
         card.primaryEmail = itemMailbox.getAString('EmailAddress');
         log.debug('Adding card for name ' + card.displayName);
-        dlList.appendElement(card, false);
+        itemDirectory.cards.set(card.primaryEmail, card);
       }
     }
     else
@@ -1268,6 +1253,32 @@ EwsAbDirectory.prototype = {
                        .createInstance(Ci.nsIAbDirectoryQueryProxy);
     queryProxy.initiate();
     queryProxy.doQuery(this.wrap.mNoQueryDirectory, qarguments, this.wrap, -1, 0);
+  },
+
+  search: async function _search(aQuery, aListener)
+  {
+    let qarguments = Cc["@mozilla.org/addressbook/directory/query-arguments;1"]
+                      .createInstance(Ci.nsIAbDirectoryQueryArguments);
+    let expression = MailServices.ab.convertQueryStringToExpression(aQuery);
+    qarguments.expression = expression;
+    // Don't search the subdirectories which are mailing lists. Is this correct?
+    qarguments.querySubDirectories = false;
+
+    if (this.mIsGAL) {
+      while (expression instanceof Ci.nsIAbBooleanExpression) {
+        expression = toArray(expression.expressions, Ci.nsISupports)[0];
+      }
+      let term = expression.QueryInterface(Ci.nsIAbBooleanConditionString).value;
+      let listener = new PromiseUtils.MachineListener();
+      let dirListener = new SearchGALListener(this, listener);
+      this.mailbox.resolveNames(term, true, dirListener);
+      await listener.promise;
+    }
+
+    let queryProxy = Cc["@mozilla.org/addressbook/directory-query/proxy;1"]
+                       .createInstance(Ci.nsIAbDirectoryQueryProxy);
+    queryProxy.initiate();
+    queryProxy.doQuery(this, qarguments, aListener, -1, 0);
   },
 
   rebuild: function _rebuild()
@@ -1498,7 +1509,7 @@ function EwsAbDirFactory()
 EwsAbDirFactory.prototype = 
 {
   classID:          Components.ID("{BDE94D3E-5A66-4027-AADA-13CE8FE762E6}"),
-  QueryInterface:   QIUtils.generateQI([Ci.nsIAbDirFactory]),
+  QueryInterface:   ChromeUtils.generateQI([Ci.nsIAbDirFactory]),
 
   // nsIAbDirFactory implementation
 
@@ -1658,9 +1669,6 @@ EwsRebuildListener.prototype.onEvent = function EwsRebuildListener_onEvent(aItem
         MailServices.ab.notifyDirectoryItemDeleted(directory.delegator, card);
       directory.addressMap = (addressMapCache[directory.URI] = {});
       directory.cards = (cardCache[directory.URI] = {});
-
-      // remove all existing directories or cards stored in addressLists
-      //  TODO
 
       // clear the datastore for this native folder
       this.mState = "WAIT_DELETE";
@@ -1830,3 +1838,4 @@ function SearchGALListener_onEvent(aItem, aEvent, aData, result)
 } catch(e) {re(e);}}
 
 var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsAbDirectoryConstructor, EwsAbDirFactory]);
+var EXPORTED_SYMBOLS = ["NSGetFactory"];

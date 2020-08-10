@@ -16,7 +16,7 @@ ChromeUtils.defineModuleGetter(this, "Utils",
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "OS", "resource://gre/modules/osfile.jsm");
 ChromeUtils.defineModuleGetter(this, "Preferences",
   "resource://gre/modules/Preferences.jsm");
@@ -107,17 +107,18 @@ EwsIncomingServer.prototype = {
       rootFolder = this.cppBase.rootFolder;
     } catch (e) { log.error(e);}
 
-    if (rootFolder)
-      return rootFolder;
-
-    log.warn("Error creating root folder, removing for serverURI " + this.serverURI);
-    let rdf = Cc["@mozilla.org/rdf/rdf-service;1"]
-                .getService(Ci.nsIRDFService);
-    let serverResource = rdf.GetResource(this.serverURI);
-    // Maybe this is a bogus item, created before ExQuilla loaded. Remove the resource
-    //  and try again.
-    rdf.UnregisterResource(serverResource);
-    rootFolder = this.cppBase.rootFolder
+    /* COMPAT for TB 68 */
+    if (!rootFolder && "@mozilla.org/rdf/rdf-service;1" in Cc) {
+      log.warn("Error creating root folder, removing for serverURI " + this.serverURI);
+      let rdf = Cc["@mozilla.org/rdf/rdf-service;1"]
+                  .getService(Ci.nsIRDFService);
+      let serverResource = rdf.GetResource(this.serverURI);
+      // Maybe this is a bogus item, created before ExQuilla loaded. Remove the resource
+      //  and try again.
+      rdf.UnregisterResource(serverResource);
+      rootFolder = this.cppBase.rootFolder;
+    }
+    /* COMPAT for TB 68 */
     if (!rootFolder)
       throw CE("Could not create root folder", Cr.NS_ERROR_FAILURE);
     return rootFolder;
@@ -412,13 +413,8 @@ EwsIncomingServer.prototype = {
     // Login manager can produce valid fails, e.g. NS_ERROR_ABORT when a user
     // cancels the master password dialog. Therefore handle that here, but don't
     // warn about it.
-    var logins;
     try {
-      if (Services.logins.findLogins.length == 4) { // COMPAT for TB 60
-        logins = Services.logins.findLogins({}, currServerUri, null, currServerUri);
-      } else {
-        logins = Services.logins.findLogins(currServerUri, null, currServerUri);
-      }
+      var logins = Services.logins.findLogins(currServerUri, null, currServerUri);
     } catch (e) {}
 
     // Don't abort here, if we didn't find any or failed, then we'll just have
@@ -805,11 +801,7 @@ EwsIncomingServer.prototype = {
             this._fileStream.init(this._saveToFile, PR_WRONLY | PR_CREATE_FILE, 0o600, 0);
           },
 
-          onDataAvailable(aRequest, aInputStream, aInputStreamTB60/* aOffset */, aCount, aCountTB60) {
-            if (typeof aCountTB60 == "number") { // COMPAT for TB 60
-              aInputStream = aInputStreamTB60;
-              aCount = aCountTB60;
-            }
+          onDataAvailable(aRequest, aInputStream, aOffset, aCount) {
             log.debug("SaveChannelToFileListener.onDataAvailable count=" + aCount);
             let writeCount = this._fileStream.writeFrom(aInputStream, aCount);
             if (writeCount != aCount) {
@@ -1051,3 +1043,4 @@ EwsIncomingServerConstructor.prototype = {
 }
 
 var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsIncomingServerConstructor]);
+var EXPORTED_SYMBOLS = ["NSGetFactory"];

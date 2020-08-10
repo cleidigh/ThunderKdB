@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/mainToolbarButton.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookQFB.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookQFB1.css" type="text/css"?>
+
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookMain.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookEmpty.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookCheckboxes.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookTreeChildrens.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooks.css" type="text/css"?>
+<!-- for the preference star -->
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookPrefStar.css" type="text/css"?>
+<!-- for MailList icon -->
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookCardsIcon.css" type="text/css"?>
+<!-- for the search field -->
+<?xml-stylesheet href="chrome://messenger/skin/searchBox.css" type="text/css"?>
+<!-- for the icons of the CardBook main toolbar -->
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookToolbarButtons.css" type="text/css"?>
+<!-- for the icons of the CardBook menus -->
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookMenuIcons.css" type="text/css"?>
+<!-- for the search textbox -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+
+<overlay id="ovl_cardbook"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookEncryptor.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookIndexedDB.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookWebDAV.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookWindowUtils.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookElementTools.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserverRepository.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserver.js"/>
+	<!-- <script type="application/x-javascript" src="chrome://cardbook/content/standalone/ovl_winTaskBar.js"/> -->
+	<script type="application/x-javascript" src="chrome://cardbook/content/ovl_init.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/formatEmailCorrespondents/ovl_formatEmailCorrespondents.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/layout/ovl_cardbookLayout.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/mailContact/ovl_cardbookMailContacts.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/wdw_cardbook.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/ovl_cardbook.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/commandLine/cmd-line-handler.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/birthdays/ovl_birthdays.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/attachvCard/ovl_attachvCard.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookNotifications.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookTreeUtils.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookClipboard.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookTreeCols.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookWindowObserver.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookDirTree.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_imageEdition.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_cardEdition.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/mailContact/ovl_cardbookFindEmails.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/mailContact/ovl_cardbookFindEvents.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/attachments/ovl_attachments.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	 <!-- for the function onViewToolbarsPopupShowing and CustomizeMailToolbar -->
+	<script type="application/x-javascript" src="chrome://messenger/content/mailCore.js"/>
+	<!-- for the textbox -->
+	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
+
+	<broadcasterset id="cardbookBroadcasters" appendto="messengerWindow">
+		<broadcaster id="cardboookModeBroadcasterTab" mode="mail"/>
+	</broadcasterset>
+
+	<!-- horrible hack to have the CardBook keys defined -->
+	<!-- <keyset id="viewZoomKeys"> -->
+	<key id="CardBookKey" key="__CARDBOOKMSG_cardbookMenuItemKey__" modifiers="accel, shift" oncommand="ovl_cardbook.open();" insertafter="key_fullZoomReduce"/>
+	<key id="CardBookNewContactKey" key="__CARDBOOKMSG_newCardBookCardMenuKey__" modifiers="accel, shift" oncommand="wdw_cardbook.newKey();" insertafter="key_fullZoomReduce"/>
+	<key id="CardBookMenuKey" keycode="VK_F9" oncommand="wdw_cardbook.F9Key();" insertafter="key_fullZoomReduce"/>
+
+	<!-- <menupopup id="menu_NewPopup"> -->
+	<menuitem id="newCardBookCardMenu" label="__CARDBOOKMSG_newCardBookCardMenuLabel__" accesskey="__CARDBOOKMSG_newCardBookCardMenuAccesskey__"
+		key="CardBookNewContactKey"
+		insertafter="menu_newCard" oncommand="wdw_cardbook.newKey();"/>
+
+	<!-- <menupopup id="menu_FindPopup"> -->
+	<menuitem id="newCardBookSearchMenu" label="__CARDBOOKMSG_newCardBookSearchMenuLabel__" accesskey="__CARDBOOKMSG_newCardBookSearchMenuAccesskey__"
+		insertafter="searchAddressesCmd" oncommand="wdw_cardbook.addAddressbook('search');"/>
+
+	<!-- <menupopup id="view_layout_popup"> -->
+	<menuitem id="cardbookABPaneItem"
+		type="checkbox"
+		label="__CARDBOOKMSG_cardbookABPaneItemLabel__" accesskey="__CARDBOOKMSG_cardbookABPaneItemAccesskey__"
+		oncommand="ovl_cardbookLayout.changeResizePanes('viewABPane')"
+		insertafter="menu_showFolderPane"/>
+	<menuitem id="cardbookContactPaneItem"
+		type="checkbox" key="key_toggleMessagePane"
+		label="__CARDBOOKMSG_cardbookContactPaneItemLabel__" accesskey="__CARDBOOKMSG_cardbookContactPaneItemAccesskey__"
+		command="cmd_toggleMessagePane"
+		insertafter="menu_showMessage"/>
+
+	<!-- <menupopup id="taskPopup"> -->
+	<menuitem id="cardbookMenuItem"
+		label="__CARDBOOKMSG_cardbookMenuItemLabel__" accesskey="__CARDBOOKMSG_cardbookMenuItemAccesskey__"
+		key="CardBookKey"
+		tooltiptext="__CARDBOOKMSG_cardbookMenuItemTooltip__"
+		oncommand="ovl_cardbook.open()"
+		insertafter="addressBook"/>
+
+	<!-- <menupopup id="appmenu_taskPopup"> -->
+	<menuitem id="cardbookAppMenuItem"
+		label="__CARDBOOKMSG_cardbookMenuItemLabel__" accesskey="__CARDBOOKMSG_cardbookMenuItemAccesskey__"
+		key="CardBookKey"
+		tooltiptext="__CARDBOOKMSG_cardbookMenuItemTooltip__"
+		oncommand="ovl_cardbook.open()"
+		insertafter="appmenu_addressBook"/>
+
+	<!-- <toolbarpalette id="MailToolbarPalette"> -->
+	<toolbarbutton id="cardbookToolbarButton"
+		insertafter="button-chat"
+		label="__CARDBOOKMSG_cardbookToolbarButtonLabel__"
+		tooltiptext="__CARDBOOKMSG_cardbookToolbarButtonTooltip__"
+		removable="true"
+		is="toolbarbutton-badge-button"
+		oncommand="ovl_cardbook.open();"
+		class="toolbarbutton-1"/>
+
+	<commandset id="cardbook_commands" appendto="messengerWindow">
+		<command id="cardbookTabButtonOpen"
+			oncommand="ovl_cardbook.open();"/>
+	</commandset>
+
+	<!-- <toolbar id="tabbar-toolbar"> -->
+	<toolbarbutton id="cardbookTabButton"
+		appendto="tabbar-toolbar"
+		class="toolbarbutton-1"
+		title="__CARDBOOKMSG_cardbookTabButtonLabel__"
+		tooltiptext="__CARDBOOKMSG_cardbookTabButtonTooltip__"
+		command="cardbookTabButtonOpen"/>
+
+	<!-- <menupopup id="emailAddressPopup"> -->
+	<menuseparator id="editCardBookSeparator" insertafter="viewContactItem"/>
+	<menu id="addToCardBookMenu" label="__CARDBOOKMSG_addToCardBookMenuLabel__" accesskey="__CARDBOOKMSG_addToCardBookMenuAccesskey__" insertafter="editCardBookSeparator">
+		<menupopup id="addToCardBookMenuPopup" onpopupshowing="ovl_cardbookMailContacts.addToCardBookMenuSubMenu(this.id, ovl_cardbookMailContacts.addToCardBook)"/>
+	</menu>
+	<menuitem id="editInCardBookMenu" label="__CARDBOOKMSG_editInCardBookMenuLabel__" accesskey="__CARDBOOKMSG_editInCardBookMenuAccesskey__" insertafter="addToCardBookMenu" onclick="ovl_cardbookMailContacts.editOrViewContact();"/>
+	<menuitem id="deleteInCardBookMenu" label="__CARDBOOKMSG_deleteInCardBookMenuLabel__" accesskey="__CARDBOOKMSG_deleteInCardBookMenuAccesskey__" insertafter="editInCardBookMenu" onclick="ovl_cardbookMailContacts.deleteContact();"/>
+	<menuseparator id="IMPPCardBookSeparator" insertafter="deleteInCardBookMenu"/>
+	<menu id="IMPPCards" label="__CARDBOOKMSG_IMPPMenuLabel__" accesskey="__CARDBOOKMSG_IMPPMenuAccesskey__" insertafter="IMPPCardBookSeparator">
+		<menupopup id="IMPPCardsMenuPopup"/>
+	</menu>
+	<menuseparator id="findCardBookSeparator1" insertafter="IMPPCards"/>
+	<menuitem id="findEmailsFromEmailMessenger" label="__CARDBOOKMSG_findEmailsFromEmailMessengerLabel__" accesskey="__CARDBOOKMSG_findEmailsFromEmailMessengerAccesskey__"
+		oncommand="ovl_cardbookFindEmails.findEmailsFromEmail();" insertafter="findCardBookSeparator1"/>
+	<menuitem id="findAllEmailsFromContactMessenger" label="__CARDBOOKMSG_findAllEmailsFromContactMessengerLabel__" accesskey="__CARDBOOKMSG_findAllEmailsFromContactMessengerAccesskey__"
+		oncommand="ovl_cardbookFindEmails.findAllEmailsFromContact();" insertafter="findEmailsFromEmailMessenger"/>
+	<menuitem id="findEventsFromEmailMessenger" label="__CARDBOOKMSG_findEventsFromEmailMessengerLabel__" accesskey="__CARDBOOKMSG_findEventsFromEmailMessengerAccesskey__"
+		oncommand="ovl_cardbookFindEvents.findEventsFromEmail();" insertafter="findAllEmailsFromContactMessenger"/>
+	<menuitem id="findAllEventsFromContactMessenger" label="__CARDBOOKMSG_findAllEventsFromContactMessengerLabel__" accesskey="__CARDBOOKMSG_findAllEventsFromContactMessengerAccesskey__"
+		oncommand="ovl_cardbookFindEvents.findAllEventsFromContact();" insertafter="findEventsFromEmailMessenger"/>
+	<menuseparator id="findCardBookSeparator2" insertafter="findAllEventsFromContactMessenger"/>
+
+	<!-- <menupopup id="mailContext"> -->
+	<menu id="mailContext-addToCardBookMenu" label="__CARDBOOKMSG_mailContext-addToCardBookMenuLabel__" accesskey="__CARDBOOKMSG_mailContext-addToCardBookMenuAccesskey__" insertafter="mailContext-addemail">
+		<menupopup id="mailContext-addToCardBookMenuPopup" onpopupshowing="ovl_cardbookMailContacts.addToCardBookMenuSubMenu(this.id, ovl_cardbookMailContacts.mailContextAddToCardBook)"/>
+	</menu>
+
+	<!-- <hbox id="quick-filter-bar-collapsible-buttons"> -->
+	<toolbarbutton id="qfb-cardbook"
+					type="checkbox"
+					class="toolbarbutton-1"
+					orient="horizontal"
+					crop="none"
+					style="min-width:16px;"
+					label="__CARDBOOKMSG_cardbookQFBButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookQFBButtonTooltip__"
+					insertafter="qfb-starred"/>
+
+	<!-- <vbox id="quick-filter-bar"> -->
+	<hbox id="quick-filter-bar-expando-cardbook" insertafter="quick-filter-bar-expando">
+		<arrowscrollbox id="quick-filter-bar-cardbook-bar"
+						orient="horizontal"
+						collapsed="true"
+						flex="2"
+						insertafter="quick-filter-bar-tab-bar">
+			<menulist id="qfb-cardbook-boolean-mode"
+						tooltiptext="__CARDBOOKMSG_quickFilterBar.booleanMode.tooltip__"
+						persist="value">
+				<menupopup id="qfb-cardbook-boolean-mode-popup">
+					<menuitem id="qfb-cardbook-boolean-mode-or" value="OR"
+								label="__CARDBOOKMSG_quickFilterBar.booleanModeAny.label__"
+								tooltiptext="__CARDBOOKMSG_quickFilterBar.booleanModeAny.tooltip__"/>
+					<menuitem id="qfb-cardbook-boolean-mode-and" value="AND"
+								label="__CARDBOOKMSG_quickFilterBar.booleanModeAll.label__"
+								tooltiptext="__CARDBOOKMSG_quickFilterBar.booleanModeAll.tooltip__"/>
+				</menupopup>
+			</menulist>
+		</arrowscrollbox>
+	</hbox>
+
+	<!-- <menupopup id="attachmentSaveAllMultipleMenu" > -->
+	<menu id="attachments1CardBookImport" label="__CARDBOOKMSG_addAllAttachementsToCardBookMenuLabel__" insertafter="button-saveAllAttachments">
+		<menupopup id="attachments1CardBookImportPopup"/>
+	</menu>
+
+	<!-- <menupopup id="attachmentSaveAllSingleMenu" > -->
+	<menu id="attachment1CardBookImport" label="__CARDBOOKMSG_addAttachementToCardBookMenuLabel__" insertafter="button-saveAttachment">
+		<menupopup id="attachment1CardBookImportPopup"/>
+	</menu>
+
+	<!-- <menupopup id="attachmentListContext" > -->
+	<menu id="attachments2CardBookImport" label="__CARDBOOKMSG_addAllAttachementsToCardBookMenuLabel__" insertafter="context-saveAllAttachments">
+		<menupopup id="attachments2CardBookImportPopup"/>
+	</menu>
+
+	<!-- <menupopup id="attachmentItemContext" > -->
+	<menu id="attachment2CardBookImport" label="__CARDBOOKMSG_addAttachementToCardBookMenuLabel__" insertafter="context-saveAttachment">
+		<menupopup id="attachment2CardBookImportPopup"/>
+	</menu>
+
+	<vbox id="cardbookTabPanel" flex="1" appendto="tabpanelcontainer" onkeypress="wdw_cardbook.chooseActionForKey(event);">
+		<popupset id="cardbook-popupset">
+			<menupopup id="cardbook-toolbar-context" onpopupshowing="wdw_cardbook.onViewToolbarsPopupShowing(event, ['navigation-toolbox', 'cardbook-toolbox']);">
+				<menuseparator id="customizeCardBookToolbarMenuSeparator"/>
+				<menuitem id="CustomizeCardBookToolbar"
+					label="__CARDBOOKMSG_CustomizeCardBookToolbarLabel__"
+					accesskey="__CARDBOOKMSG_CustomizeCardBookToolbarAccesskey__"
+					oncommand="CustomizeMailToolbar('cardbook-toolbox', 'CustomizeCardBookToolbar')"/>
+			</menupopup>
+		</popupset>
+
+		<toolbox id="cardbook-toolbox"
+			class="mail-toolbox"
+			mode="full"
+			defaultmode="full"
+			labelalign="end"
+			defaultlabelalign="end">
+			<toolbarpalette id="CardBookToolbarPalette">
+				<toolbarbutton id="cardbookToolbarAddServerButton"
+					label="__CARDBOOKMSG_cardbookToolbarAddServerButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarAddServerButtonTooltip__"
+					oncommand="wdw_cardbook.addAddressbook();"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarSyncButton" is="toolbarbutton-menu-button"
+					label="__CARDBOOKMSG_cardbookToolbarSyncButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarSyncButtonTooltip__"
+					oncommand="cardbookRepository.cardbookSynchronization.syncAccounts();"
+					class="toolbarbutton-1"
+					mode="dialog"
+					type="menu-button">
+					<menupopup id="cardbookToolbarSyncMenupopup" onpopupshowing="cardbookElementTools.loadSyncAddressBooks(this);"/>
+				</toolbarbutton>
+				<toolbarbutton id="cardbookToolbarWriteButton" is="toolbarbutton-menu-button" 
+					label="__CARDBOOKMSG_cardbookToolbarWriteButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarWriteButtonTooltip__"
+					oncommand="wdw_cardbook.emailCardsFromWriteButton('2', 'to');"
+					class="toolbarbutton-1"
+					mode="dialog"
+					type="menu-button">
+					<menupopup>
+						<menuitem id="cardbookContactsMenuToEmailCards" label="__CARDBOOKMSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'to');"/>
+						<menuitem id="cardbookContactsMenuCcEmailCards" label="__CARDBOOKMSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'cc');"/>
+						<menuitem id="cardbookContactsMenuBccEmailCards" label="__CARDBOOKMSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'bcc');"/>
+					</menupopup>
+				</toolbarbutton>
+				<toolbarbutton id="cardbookToolbarChatButton"
+					label="__CARDBOOKMSG_cardbookToolbarChatButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarChatButtonTooltip__"
+					oncommand="cardbookWindowUtils.connectCardsFromChatButton(this);"
+					class="toolbarbutton-1"
+					mode="dialog"
+					type="menu-button">
+					<menupopup id="cardbookToolbarChatButtonMenuPopup"/>
+				</toolbarbutton>
+				<toolbarbutton id="cardbookToolbarConfigurationButton"
+					label="__CARDBOOKMSG_cardbookToolbarConfigurationButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarConfigurationButtonTooltip__"
+					oncommand="cardbookWindowUtils.openConfigurationWindow();"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarAddContactButton"
+					label="__CARDBOOKMSG_cardbookToolbarAddContactButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarAddContactButtonTooltip__"
+					oncommand="wdw_cardbook.newKey();"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarAddListButton"
+					label="__CARDBOOKMSG_cardbookToolbarAddListButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarAddListButtonTooltip__"
+					oncommand="wdw_cardbook.createList();"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarEditButton"
+					label="__CARDBOOKMSG_cardbookToolbarEditButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarEditButtonTooltip__"
+					oncommand="wdw_cardbook.editCard();"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarRemoveButton"
+					label="__CARDBOOKMSG_cardbookToolbarRemoveButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarRemoveButtonTooltip__"
+					oncommand="wdw_cardbook.deleteCardsAndValidate();"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarPrintButton"
+					label="__CARDBOOKMSG_cardbookToolbarPrintButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarPrintButtonTooltip__"
+					oncommand="wdw_cardbook.print()"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarBackButton"
+					label="__CARDBOOKMSG_cardbookToolbarBackButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarBackButtonTooltip__"
+					oncommand="cardbookActions.undo()"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarForwardButton"
+					label="__CARDBOOKMSG_cardbookToolbarForwardButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarForwardButtonTooltip__"
+					oncommand="cardbookActions.redo()"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarAppMenuButton"
+					title="__CARDBOOKMSG_cardbookToolbarAppMenuButtonLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarAppMenuButtonTooltip__"
+					class="toolbarbutton-1 button-appmenu"
+					mode="dialog"
+					type="menu">
+					<menupopup id="cardbook-menupopup">
+						<menu id="cardbookAccountMenu" label="__CARDBOOKMSG_cardbookAccountMenuLabel__">
+							<menupopup onpopupshowing="wdw_cardbook.cardbookAccountMenuContextShowing();">
+								<menuitem id="cardbookAccountMenuAddServer" label="__CARDBOOKMSG_cardbookAccountMenuAddServerLabel__" oncommand="wdw_cardbook.addAddressbook();"/>
+								<menuitem id="cardbookAccountMenuEditServer" label="__CARDBOOKMSG_cardbookAccountMenuEditServerLabel__" oncommand="wdw_cardbook.editAddressbook();"/>
+								<menuitem id="cardbookAccountMenuCloseServer" label="__CARDBOOKMSG_cardbookAccountMenuCloseServerLabel__" oncommand="wdw_cardbook.removeAddressbook();"/>
+								<menuseparator/>
+								<menuitem id="cardbookAccountMenuEnableOrDisableAddressbook" oncommand="wdw_cardbook.enableOrDisableAddressbook();"/>
+								<menuseparator/>
+								<menuitem id="cardbookAccountMenuReadOnlyOrReadWriteAddressbook" oncommand="wdw_cardbook.readOnlyOrReadWriteAddressbook();"/>
+								<menuseparator/>
+								<menuitem id="cardbookAccountMenuSync" label="__CARDBOOKMSG_cardbookAccountMenuSyncLabel__" oncommand="wdw_cardbook.syncAccountFromAccountsOrCats();"/>
+								<menuitem id="cardbookAccountMenuSyncs" label="__CARDBOOKMSG_cardbookAccountMenuSyncsLabel__" oncommand="cardbookRepository.cardbookSynchronization.syncAccounts();"/>
+								<menuseparator/>
+								<menuitem id="cardbookAccountMenuPrint" label="__CARDBOOKMSG_cardbookToolbarPrintButtonLabel__" oncommand="wdw_cardbook.printFromAccountsOrCats();"/>
+								<menuseparator/>
+								<menuitem id="cardbookAccountMenuExportToFile" label="__CARDBOOKMSG_exportCardToFileLabel__" oncommand="wdw_cardbook.exportCardsFromAccountsOrCats(this);"/>
+								<menuitem id="cardbookAccountMenuExportToDir" label="__CARDBOOKMSG_exportCardToDirLabel__" oncommand="wdw_cardbook.exportCardsFromAccountsOrCats(this);"/>
+								<menuseparator/>
+								<menuitem id="cardbookAccountMenuImportFromFile" label="__CARDBOOKMSG_importCardFromFileLabel__" oncommand="wdw_cardbook.importCardsFromFile();"/>
+								<menuitem id="cardbookAccountMenuImportFromDir" label="__CARDBOOKMSG_importCardFromDirLabel__" oncommand="wdw_cardbook.importCardsFromDir();"/>
+							</menupopup>
+						</menu>
+						<menu id="cardbookContactsMenu" label="__CARDBOOKMSG_cardbookContactsMenuLabel__">
+							<menupopup onpopupshowing="wdw_cardbook.cardbookContactsMenuContextShowing();">
+								<menuitem id="cardbookContactsMenuAddContact" label="__CARDBOOKMSG_cardbookToolbarAddContactButtonLabel__" oncommand="wdw_cardbook.newKey();"/>
+								<menuitem id="cardbookContactsMenuAddList" label="__CARDBOOKMSG_cardbookToolbarAddListButtonLabel__" oncommand="wdw_cardbook.createList();"/>
+								<menuitem id="cardbookContactsMenuEditContact" label="__CARDBOOKMSG_cardbookToolbarEditButtonLabel__" oncommand="wdw_cardbook.editCard();"/>
+								<menuitem id="cardbookContactsMenuRemoveCard" label="__CARDBOOKMSG_cardbookToolbarRemoveButtonLabel__" oncommand="wdw_cardbook.deleteCardsAndValidate();"/>
+								<menuseparator/>
+								<menu id="cardbookContactsMenuCategories" label="__CARDBOOKMSG_categoryHeader__">
+									<menupopup id="cardbookContactsMenuCategoriesMenuPopup">
+										<menuitem id="cardbookContactsMenuCategoriesNew" label="__CARDBOOKMSG_categoryMenuLabel__" oncommand="wdw_cardbook.addCategory();"/>
+										<menuseparator/>
+									</menupopup>
+								</menu>
+								<menuseparator/>
+								<menuitem id="cardbookContactsMenuToEmailCards" label="__CARDBOOKMSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('to');"/>
+								<menuitem id="cardbookContactsMenuCcEmailCards" label="__CARDBOOKMSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('cc');"/>
+								<menuitem id="cardbookContactsMenuBccEmailCards" label="__CARDBOOKMSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('bcc');"/>
+								<menuseparator/>
+								<menu id="cardbookContactsMenuIMPPCards" label="__CARDBOOKMSG_IMPPMenuLabel__">
+									<menupopup id="cardbookContactsMenuIMPPCardsMenuPopup"/>
+								</menu>
+								<menuseparator/>
+								<menuitem id="cardbookContactsMenuFindEmails" label="__CARDBOOKMSG_findEmailsFromCardsLabel__" oncommand="ovl_cardbookFindEmails.findEmailsFromCards();"/>
+								<menuitem id="cardbookContactsMenuFindEvents" label="__CARDBOOKMSG_findEventsFromCardsLabel__" oncommand="wdw_cardbook.findEventsFromCards();"/>
+								<menuseparator/>
+								<menuitem id="cardbookContactsMenuLocalizeCards" label="__CARDBOOKMSG_localizeCardFromCardsLabel__" oncommand="wdw_cardbook.localizeCardsFromCards();"/>
+								<menuseparator/>
+								<menuitem id="cardbookContactsMenuOpenURL" label="__CARDBOOKMSG_openURLCardFromCardsLabel__" oncommand="wdw_cardbook.openURLFromCards();"/>
+								<menuseparator/>
+								<menuitem id="cardbookContactsMenuCutCards" label="__CARDBOOKMSG_cutCardFromCardsLabel__" oncommand="wdw_cardbook.cutCardsFromCards();"/>
+								<menuitem id="cardbookContactsMenuCopyCards" label="__CARDBOOKMSG_copyCardFromCardsLabel__" oncommand="wdw_cardbook.copyCardsFromCards();"/>
+								<menuitem id="cardbookContactsMenuPasteCards" label="__CARDBOOKMSG_pasteCardFromCardsLabel__" oncommand="wdw_cardbook.pasteCards();"/>
+								<menuitem id="cardbookContactsMenuPasteEntry" label="__CARDBOOKMSG_pasteEntryLabel__" oncommand="wdw_cardbook.pasteFieldValue();"/>
+								<menuseparator/>
+								<menuitem id="cardbookContactsMenuPrint" label="__CARDBOOKMSG_cardbookToolbarPrintButtonLabel__" oncommand="wdw_cardbook.printFromCards();"/>
+								<menuseparator/>
+								<menuitem id="cardbookContactsMenuDuplicateCards" label="__CARDBOOKMSG_duplicateCardFromCardsLabel__" oncommand="wdw_cardbook.duplicateCards();"/>
+								<menuitem id="cardbookContactsMenuMergeCards" label="__CARDBOOKMSG_mergeCardsFromCardsLabel__" oncommand="wdw_cardbook.mergeCards();"/>
+								<menuseparator/>
+								<menuitem id="cardbookContactsMenuExportCardsToFile" label="__CARDBOOKMSG_exportCardToFileLabel__" oncommand="wdw_cardbook.exportCardsFromCards(this);"/>
+								<menuitem id="cardbookContactsMenuExportCardsToDir" label="__CARDBOOKMSG_exportCardToDirLabel__" oncommand="wdw_cardbook.exportCardsFromCards(this);"/>
+							</menupopup>
+						</menu>
+						<menu id="cardbookToolsMenu" label="__CARDBOOKMSG_cardbookToolsMenuLabel__">
+							<menupopup onpopupshowing="wdw_cardbook.cardbookToolsMenuContextShowing();">
+								<menuitem id="cardbookToolsBirthdayList" label="__CARDBOOKMSG_cardbookToolsMenuBirthdayListLabel__" oncommand="wdw_cardbook.displayBirthdayList();"/>
+								<menuitem id="cardbookToolsSyncLightning" label="__CARDBOOKMSG_cardbookToolsMenuSyncLightningLabel__" oncommand="wdw_cardbook.displaySyncList();"/>
+								<menuseparator/>
+								<menuitem id="cardbookToolsMenuFindSingleDuplicates" label="__CARDBOOKMSG_cardbookToolsMenuFindSingleDuplicatesLabel__" oncommand="wdw_cardbook.findDuplicatesFromAccountsOrCats();"/>
+								<menuitem id="cardbookToolsMenuFindDuplicates" label="__CARDBOOKMSG_cardbookToolsMenuFindAllDuplicatesLabel__" oncommand="wdw_cardbook.findDuplicates();"/>
+								<menuseparator/>
+								<menuitem id="cardbookToolsMenuLog" label="__CARDBOOKMSG_wdw_logEditionTitle__" oncommand="wdw_cardbook.openLogEdition();"/>
+								<menuseparator/>
+								<menuitem id="cardbookToolsMenuOptions" label="__CARDBOOKMSG_cardbookToolsMenuPrefsLabel__" oncommand="cardbookWindowUtils.openConfigurationWindow();"/>
+							</menupopup>
+						</menu>
+					</menupopup>
+				</toolbarbutton>
+				<toolbaritem id="cardbookToolbarSearchBox" flex="1"
+					title="__CARDBOOKMSG_cardbookToolbarSearchBoxLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarSearchBoxTooltip__"
+					mode="dialog"
+					class="toolbaritem-noline chromeclass-toolbar-additional">
+					<search-textbox id="cardbookSearchInput"
+						class="searchBox"
+						oncommand="wdw_cardbook.startSearch();"/>
+				</toolbaritem>
+				<toolbarbutton id="cardbookToolbarComplexSearch"
+					label="__CARDBOOKMSG_cardbookToolbarComplexSearchLabel__"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarComplexSearchTooltip__"
+					oncommand="wdw_cardbook.editComplexSearch();"
+					mode="dialog"
+					class="toolbarbutton-1"/>
+				<toolbarbutton id="cardbookToolbarThMenuButton"
+					type="menu"
+					class="toolbarbutton-1 button-appmenu"
+					label="__CARDBOOKMSG_cardbookToolbarThMenuButtonLabel__"
+					mode="dialog"
+					tooltiptext="__CARDBOOKMSG_cardbookToolbarThMenuButtonTooltip__"/>
+			</toolbarpalette>
+	
+			<toolbar is="customizable-toolbar"
+				id="cardbook-toolbar" class="inline-toolbar chromeclass-toolbar"
+				toolbarname="__CARDBOOKMSG_cardbookToolbarLabel__"
+				accesskey="__CARDBOOKMSG_cardbookToolbarAccesskey__"
+				fullscreentoolbar="true" mode="full"
+				toolboxid="cardbook-toolbox"
+				customizable="true"
+				context="cardbook-toolbar-context"
+				defaultset="cardbookToolbarAppMenuButton,cardbookToolbarSyncButton,cardbookToolbarWriteButton,cardbookToolbarConfigurationButton,cardbookToolbarBackButton,cardbookToolbarForwardButton,spring,cardbookToolbarSearchBox,cardbookToolbarAddContactButton,cardbookToolbarAddListButton,cardbookToolbarEditButton,cardbookToolbarRemoveButton,cardbookToolbarThMenuButton"/>
+			<toolbarset id="cardbookToolbars" context="cardbook-toolbar-context"/>
+		</toolbox>
+		
+		<menupopup id="basicFieldContextMenu"/>
+
+		<menupopup id="adrTreeContextMenu" onpopupshowing="wdw_cardbook.adrTreeContextShowing(event);">
+			<menuitem id="localizeadrTree" label="__CARDBOOKMSG_localizeadrTreeLabel__" oncommand="wdw_cardbook.localizeCardFromTree();"/>
+			<menuseparator/>
+			<menuitem id="copyadrTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
+		</menupopup>
+
+		<menupopup id="telTreeContextMenu" onpopupshowing="wdw_cardbook.telTreeContextShowing();">
+			<menuitem id="connecttelTree" label="__CARDBOOKMSG_IMPPMenuLabel__" oncommand="wdw_cardbook.openTelFromTree();"/>
+			<menuseparator/>
+			<menuitem id="copytelTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
+		</menupopup>
+
+		<menupopup id="emailTreeContextMenu" onpopupshowing="wdw_cardbook.emailTreeContextShowing();">
+			<menuitem id="toemailemailTree" label="__CARDBOOKMSG_toEmailEmailTreeLabel__" oncommand="wdw_cardbook.emailCardFromTree('to');"/>
+			<menuitem id="ccemailemailTree" label="__CARDBOOKMSG_ccEmailEmailTreeLabel__" oncommand="wdw_cardbook.emailCardFromTree('cc');"/>
+			<menuitem id="bccemailemailTree" label="__CARDBOOKMSG_bccemailemailTreeLabel__" oncommand="wdw_cardbook.emailCardFromTree('bcc');"/>
+			<menuseparator/>
+			<menuitem id="findemailemailTree" label="__CARDBOOKMSG_findemailemailTreeLabel__" oncommand="wdw_cardbook.findEmailsFromTree();"/>
+			<menuitem id="findeventemailTree" label="__CARDBOOKMSG_findeventemailTreeLabel__" oncommand="wdw_cardbook.findEventsFromTree();"/>
+			<menuseparator/>
+			<menuitem id="copyemailTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
+		</menupopup>
+
+		<menupopup id="imppTreeContextMenu" onpopupshowing="wdw_cardbook.imppTreeContextShowing();">
+			<menuitem id="connectimppTree" label="__CARDBOOKMSG_IMPPMenuLabel__" oncommand="wdw_cardbook.openIMPPFromTree();"/>
+			<menuseparator/>
+			<menuitem id="copyimppTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
+		</menupopup>
+
+		<menupopup id="urlTreeContextMenu" onpopupshowing="wdw_cardbook.urlTreeContextShowing();">
+			<menuitem id="openURLTree" label="__CARDBOOKMSG_openURLTreeLabel__" oncommand="wdw_cardbook.openURLFromTree();"/>
+			<menuseparator/>
+			<menuitem id="copyurlTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
+		</menupopup>
+
+		<menupopup id="eventTreeContextMenu" onpopupshowing="wdw_cardbook.eventTreeContextShowing();">
+			<menuitem id="copyeventTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
+		</menupopup>
+
+		<menupopup id="accountsOrCatsTreeContextMenu" onpopupshowing="wdw_cardbook.accountsOrCatsTreeContextShowing();">
+			<menuitem id="addAccountFromAccountsOrCats" label="__CARDBOOKMSG_cardbookToolbarAddServerButtonLabel__" oncommand="wdw_cardbook.addAddressbook();"/>
+			<menuitem id="editAccountFromAccountsOrCats" label="__CARDBOOKMSG_editAccountFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.editAddressbook();"/>
+			<menuitem id="removeAccountFromAccountsOrCats" label="__CARDBOOKMSG_removeAccountFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.removeAddressbook();"/>
+			<menuseparator/>
+			<menuitem id="enableOrDisableFromAccountsOrCats" oncommand="wdw_cardbook.enableOrDisableAddressbook();"/>
+			<menuseparator/>
+			<menuitem id="readOnlyOrReadWriteFromAccountsOrCats" oncommand="wdw_cardbook.readOnlyOrReadWriteAddressbook();"/>
+			<menuseparator/>
+			<menuitem id="syncAccountFromAccountsOrCats" label="__CARDBOOKMSG_syncAccountFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.syncAccountFromAccountsOrCats();"/>
+			<menuseparator/>
+			<menuitem id="toEmailCardsFromAccountsOrCats" label="__CARDBOOKMSG_toEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAccountsOrCats('to');"/>
+			<menuitem id="ccEmailCardsFromAccountsOrCats" label="__CARDBOOKMSG_ccEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAccountsOrCats('cc');"/>
+			<menuitem id="bccEmailCardsFromAccountsOrCats" label="__CARDBOOKMSG_bccEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAccountsOrCats('bcc');"/>
+			<menuseparator/>
+			<menuitem id="shareCardsByEmailFromAccountsOrCats" label="__CARDBOOKMSG_shareCardByEmailFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.shareCardsByEmailFromAccountsOrCats();"/>
+			<menuseparator/>
+			<menuitem id="cutCardsFromAccountsOrCats" label="__CARDBOOKMSG_cutCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.cutCardsFromAccountsOrCats();"/>
+			<menuitem id="copyCardsFromAccountsOrCats" label="__CARDBOOKMSG_copyCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.copyCardsFromAccountsOrCats();"/>
+			<menuitem id="pasteCardsFromAccountsOrCats" label="__CARDBOOKMSG_pasteCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.pasteCards();"/>
+			<menuseparator/>
+			<menuitem id="editNodeFromAccountsOrCats" oncommand="wdw_cardbook.selectNodeToAction('EDIT');"/>
+			<menuitem id="removeNodeFromAccountsOrCats" oncommand="wdw_cardbook.selectNodeToAction('REMOVE');"/>
+			<menuitem id="convertNodeFromAccountsOrCats" oncommand="wdw_cardbook.selectNodeToAction('CONVERT');"/>
+			<menuseparator/>
+			<menuitem id="findDuplicatesFromAccountsOrCats" label="__CARDBOOKMSG_findDuplicatesFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.findDuplicatesFromAccountsOrCats();"/>
+			<menuseparator/>
+			<menuitem id="generateFnFromAccountsOrCats" label="__CARDBOOKMSG_generateFnFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.generateFnFromAccountsOrCats();"/>
+			<menuseparator/>
+			<menuitem id="printFromAccountsOrCats" label="__CARDBOOKMSG_cardbookToolbarPrintButtonLabel__" oncommand="wdw_cardbook.printFromAccountsOrCats();"/>
+			<menuseparator/>
+			<menuitem id="exportCardsToFileFromAccountsOrCats" label="__CARDBOOKMSG_exportCardToFileLabel__" oncommand="wdw_cardbook.exportCardsFromAccountsOrCats(this);"/>
+			<menuitem id="exportCardsToDirFromAccountsOrCats" label="__CARDBOOKMSG_exportCardToDirLabel__" oncommand="wdw_cardbook.exportCardsFromAccountsOrCats(this);"/>
+			<menuseparator/>
+			<menuitem id="importCardsFromFileFromAccountsOrCats" label="__CARDBOOKMSG_importCardFromFileLabel__" oncommand="wdw_cardbook.importCardsFromFile();"/>
+			<menuitem id="importCardsFromDirFromAccountsOrCats" label="__CARDBOOKMSG_importCardFromDirLabel__" oncommand="wdw_cardbook.importCardsFromDir();"/>
+		</menupopup>
+
+		<menupopup id="cardsTreeContextMenu" onpopupshowing="return wdw_cardbook.cardsTreeContextShowing(event);">
+			<menuitem id="addContactFromCards" label="__CARDBOOKMSG_cardbookToolbarAddContactButtonLabel__" oncommand="wdw_cardbook.newKey();"/>
+			<menuitem id="addListFromCards" label="__CARDBOOKMSG_cardbookToolbarAddListButtonLabel__" oncommand="wdw_cardbook.createList();"/>
+			<menuitem id="editCardFromCards" label="__CARDBOOKMSG_cardbookToolbarEditButtonLabel__" oncommand="wdw_cardbook.editCard();"/>
+			<menuitem id="removeCardFromCards" label="__CARDBOOKMSG_cardbookToolbarRemoveButtonLabel__" oncommand="wdw_cardbook.deleteCardsAndValidate();"/>
+			<menuseparator/>
+			<menu id="categoriesFromCards" label="__CARDBOOKMSG_categoryHeader__">
+				<menupopup id="categoriesFromCardsMenuPopup">
+					<menuitem id="categoriesFromCardsNew" label="__CARDBOOKMSG_categoryMenuLabel__" oncommand="wdw_cardbook.addCategory();"/>
+					<menuseparator/>
+				</menupopup>
+			</menu>
+			<menuseparator/>
+			<menuitem id="toEmailCardsFromCards" label="__CARDBOOKMSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('to');"/>
+			<menuitem id="ccEmailCardsFromCards" label="__CARDBOOKMSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('cc');"/>
+			<menuitem id="bccEmailCardsFromCards" label="__CARDBOOKMSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('bcc');"/>
+			<menuseparator/>
+			<menuitem id="shareCardsByEmailFromCards" label="__CARDBOOKMSG_shareCardByEmailFromCardsLabel__" oncommand="wdw_cardbook.shareCardsByEmailFromCards();"/>
+			<menuseparator/>
+			<menu id="IMPPCardFromCards" label="__CARDBOOKMSG_IMPPMenuLabel__">
+				<menupopup id="IMPPCardFromCardsMenuPopup"/>
+			</menu>
+			<menuseparator/>
+			<menuitem id="findEmailsFromCards" label="__CARDBOOKMSG_findEmailsFromCardsLabel__" oncommand="wdw_cardbook.findEmailsFromCards();"/>
+			<menuitem id="findEventsFromCards" label="__CARDBOOKMSG_findEventsFromCardsLabel__" oncommand="wdw_cardbook.findEventsFromCards();"/>
+			<menuseparator/>
+			<menuitem id="localizeCardsFromCards" label="__CARDBOOKMSG_localizeCardFromCardsLabel__" oncommand="wdw_cardbook.localizeCardsFromCards();"/>
+			<menuseparator/>
+			<menuitem id="openURLFromCards" label="__CARDBOOKMSG_openURLCardFromCardsLabel__" oncommand="wdw_cardbook.openURLFromCards();"/>
+			<menuseparator/>
+			<menuitem id="cutCardsFromCards" label="__CARDBOOKMSG_cutCardFromCardsLabel__" oncommand="wdw_cardbook.cutCardsFromCards();"/>
+			<menuitem id="copyCardsFromCards" label="__CARDBOOKMSG_copyCardFromCardsLabel__" oncommand="wdw_cardbook.copyCardsFromCards();"/>
+			<menuitem id="pasteCardsFromCards" label="__CARDBOOKMSG_pasteCardFromCardsLabel__" oncommand="wdw_cardbook.pasteCards();"/>
+			<menuitem id="pasteEntryFromCards" label="__CARDBOOKMSG_pasteEntryLabel__" oncommand="wdw_cardbook.pasteFieldValue();"/>
+			<menuseparator/>
+			<menuitem id="duplicateCardsFromCards" label="__CARDBOOKMSG_duplicateCardFromCardsLabel__" oncommand="wdw_cardbook.duplicateCards();"/>
+			<menuitem id="mergeCardsFromCards" label="__CARDBOOKMSG_mergeCardsFromCardsLabel__" oncommand="wdw_cardbook.mergeCards();"/>
+			<menuseparator/>
+			<menuitem id="convertListToCategoryFromCards" label="__CARDBOOKMSG_convertListToCategoryFromCardsLabel__" oncommand="wdw_cardbook.convertListToCategory();"/>
+			<menuseparator/>
+			<menuitem id="printFromCards" label="__CARDBOOKMSG_cardbookToolbarPrintButtonLabel__" oncommand="wdw_cardbook.printFromCards();"/>
+			<menuseparator/>
+			<menuitem id="exportCardsToFileFromCards" label="__CARDBOOKMSG_exportCardToFileLabel__" oncommand="wdw_cardbook.exportCardsFromCards(this);"/>
+			<menuitem id="exportCardsToDirFromCards" label="__CARDBOOKMSG_exportCardToDirLabel__" oncommand="wdw_cardbook.exportCardsFromCards(this);"/>
+		</menupopup>
+		
+		<menupopup id="imageCardContextMenu">
+			<menuitem id="saveImageCard" label="__CARDBOOKMSG_saveImageCardLabel__" oncommand="wdw_imageEdition.saveImageCard();"/>
+			<menuitem id="copyImageCard" label="__CARDBOOKMSG_copyImageCardLabel__" oncommand="wdw_imageEdition.copyImageCard();"/>
+			<menuitem id="copyImageLocationCard" label="__CARDBOOKMSG_copyImageLocationCardLabel__" oncommand="wdw_imageEdition.copyImageLocationCard();"/>
+		</menupopup>
+
+		<menupopup id="listsContextMenu">
+			<menuitem id="editCardFromList" label="__CARDBOOKMSG_editCardFromListLabel__" oncommand="wdw_cardbook.editCardFromList();"/>
+		</menupopup>
+		
+		<hbox id="mainHbox" flex="1">
+			<vbox id="leftPaneVbox" persist="width collapsed" style="width:300px;">
+				<vbox id="cardbookFolderPaneToolbox">
+					<hbox id="cardbookFolderPaneToolbar"
+						class="inline-toolbar toolbar"
+						toolboxid="cardbook-toolbox"
+						toolbarname="__CARDBOOKMSG_cardbookABPaneToolbarLabel__"
+						accesskey="__CARDBOOKMSG_cardbookABPaneToolbarAccesskey__"
+						context="cardbook-toolbar-context"
+						collapsed="false">
+						<toolbaritem id="accountsOrCatsTreeToolbaritem" align="center"
+							label="__CARDBOOKMSG_cardbookToolbarABMenuLabel__"
+							tooltiptext="__CARDBOOKMSG_cardbookToolbarABMenuTooltip__">
+							<menulist id="accountsOrCatsTreeMenulist" oncommand="wdw_cardbook.changeAddressbookTreeMenu();" sizetopopup="none" crop="center" flex="1">
+								<menupopup id="accountsOrCatsTreeMenupopup"/>
+							</menulist>
+						</toolbaritem>
+					</hbox>
+				</vbox>
+				<tree id="accountsOrCatsTree"
+					class="cardbookTreeClass cardbookAccountTreeClass"
+					seltype="single"
+					flex="1" editable="true" context="accountsOrCatsTreeContextMenu" enableColumnDrag="false"
+					hidecolumnpicker="true" onkeyup="wdw_cardbook.selectAccountOrCatInNoSearch();" onclick="wdw_cardbook.selectAccountOrCatInNoSearch();">
+					<treecols id="accountsOrCatsTreecols">
+						<treecol id="accountEnabled" type="checkbox" editable="true" width="17" hideheader="true" persist="width ordinal hidden" tooltiptext="__CARDBOOKMSG_enableAccountsTooltip__"/>
+						<treecol id="accountTypeCheckbox" type="checkbox" editable="false" width="20" hideheader="true" persist="width ordinal hidden"/>
+						<treecol id="accountColor" editable="false" width="17" hideheader="true" persist="width ordinal hidden" tooltiptext="__CARDBOOKMSG_colorAccountsTooltip__"/>
+						<treecol id="accountName" flex="1" persist="width ordinal hidden" primary="true" hideheader="true" crop="center"/>
+						<treecol id="accountId" persist="width ordinal hidden" hidden="true" hideheader="true"/>
+						<treecol id="accountType" persist="width ordinal hidden" hidden="true" hideheader="true"/>
+						<treecol id="accountRoot" persist="width ordinal hidden" hidden="true" hideheader="true"/>
+						<treecol id="accountStatusCheckbox" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true" tooltiptext="__CARDBOOKMSG_readonlyAccountsTooltip__"/>
+						<treecol id="dummyForScroll" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true"/>
+					</treecols>
+					<treechildren id="accountsOrCatsTreeChildren" flex="1" ondragstart="wdw_cardbook.startDrag(event);" ondrop="wdw_cardbook.dragCards(event);"
+								 ondblclick="wdw_cardbook.doubleClickAccountOrCat(event);"/>
+				</tree>
+			</vbox>
+
+			<splitter id="dirTreeSplitter" collapse="before" persist="state orient" class="cardbookVerticalSplitterClass"/>
+
+			<box id="cardsBox" flex="1">
+				<vbox id="rightPaneUpHbox" flex="1" persist="width height collapsed" ondragover="wdw_cardbook.canDropOnContactBox(event);" ondrop="wdw_cardbook.dragCards(event);">
+					<vbox id="searchRemoteHbox">
+						<hbox flex="1" class="input-container">
+							<html:input id="searchRemoteTextbox" placeholder="__CARDBOOKMSG_searchRemoteLabel__" onchange="wdw_cardbook.searchRemote();"/>
+						</hbox>
+					</vbox>
+					<tree id="cardsTree" class="cardbookTreeClass cardbookCardsTreeClass" context="cardsTreeContextMenu" flex="1" enableColumnDrag="true" 
+						persist="width sortDirection sortResource" hidecolumnpicker="false"
+						onkeyup="wdw_cardbook.selectCard(event);" onclick="wdw_cardbook.sortTrees(event);">
+						<treecols id="cardsTreecols" is="cards-pane-treecols" pickertooltiptext="__CARDBOOKMSG_columnChooser2.tooltip__"/>
+					   <treechildren id="cardsTreeChildren" ondragstart="wdw_cardbook.startDrag(event);" ondblclick="wdw_cardbook.doubleClickCardsTree(event);"/>
+					</tree>
+				</vbox>
+				
+				<splitter id="resultsSplitter" collapse="after" orient="vertical" persist="state orient" class="cardbookHorizontalSplitterClass"/>
+
+				<hbox id="rightPaneDownHbox" flex="1" context="" persist="width height collapsed" class="cardbookBackgroundColorClass">
+					<vbox flex="1">
+						<tabbox id="cardbookTabbox" flex="1">
+							<tabs>
+								<tab id="generalTab" label="__CARDBOOKMSG_generalTabLabel__"/>
+								<tab id="mailPopularityTab" label="__CARDBOOKMSG_mailPopularityTabLabel__"/>
+								<tab id="technicalTab" label="__CARDBOOKMSG_technicalTabLabel__"/>
+								<tab id="vcardTab" label="__CARDBOOKMSG_vCardTabLabel__"/>
+							</tabs>
+							
+							<tabpanels flex="1">
+								<tabpanel orient="vertical" style="overflow:auto">
+									<hbox flex="1">
+										<vbox flex="1">
+											<hbox align="center" flex="1"  class="input-container">
+												<vbox flex="1">
+													<groupbox id="fnGroupbox">
+														<label id="fnLabel" class="header">__CARDBOOKMSG_fnLabel__</label>
+														<hbox flex="1" class="indent">
+															<html:input id="fnTextBox" fieldName="fn"/>
+														</hbox>
+													</groupbox>
+												</vbox>
+											</hbox>
+											<hbox id="persBox" flex="1">
+												<groupbox id="persGroupbox" flex="1">
+													<label class="header">__CARDBOOKMSG_persTitleLabel__</label>
+													<hbox flex="1" class="indent">
+														<grid align="center" flex="1">
+															<columns>
+																<column/>
+																<column flex="1"/>
+															</columns>
+												
+															<rows id="persRows">
+																<row id="lastnameRow" align="center">
+																	<label id="lastnameLabel" value="__CARDBOOKMSG_lastnameLabel__" control="lastnameTextBox" class="header"/>
+																	<html:input id="lastnameTextBox" fieldName="lastname"/>
+																</row>
+																<row id="firstnameRow" align="center">
+																	<label id="firstnameLabel" value="__CARDBOOKMSG_firstnameLabel__" control="firstnameTextBox" class="header"/>
+																	<html:input id="firstnameTextBox" fieldName="firstname"/>
+																</row>
+																<row id="othernameRow" align="center">
+																	<label id="othernameLabel" value="__CARDBOOKMSG_othernameLabel__" control="othernameTextBox" class="header"/>
+																	<html:input id="othernameTextBox" fieldName="othername"/>
+																</row>
+																<row id="prefixnameRow" align="center">
+																	<label id="prefixnameLabel" value="__CARDBOOKMSG_prefixnameLabel__" control="prefixnameTextBox" class="header"/>
+																	<html:input id="prefixnameTextBox" fieldName="prefixname"/>
+																</row>
+																<row id="suffixnameRow" align="center">
+																	<label id="suffixnameLabel" value="__CARDBOOKMSG_suffixnameLabel__" control="suffixnameTextBox" class="header"/>
+																	<html:input id="suffixnameTextBox" fieldName="suffixname"/>
+																</row>
+																<row id="nicknameRow" align="center">
+																	<label id="nicknameLabel" value="__CARDBOOKMSG_nicknameLabel__" control="nicknameTextBox" class="header"/>
+																	<html:input id="nicknameTextBox" fieldName="nickname"/>
+																</row>
+																<row id="genderRow" align="center">
+																	<label id="genderLabel" value="__CARDBOOKMSG_genderLabel__" control="genderTextBox" class="header"/>
+																	<html:input id="genderTextBox" fieldName="gender"/>
+																</row>
+																<row id="bdayRow" align="center">
+																	<label id="bdayLabel" value="__CARDBOOKMSG_bdayLabel__" control="bdayTextBox" class="header"/>
+																	<html:input id="bdayTextBox" fieldName="bday"/>
+																</row>
+																<row id="birthplaceRow" align="center">
+																	<label id="birthplaceLabel" value="__CARDBOOKMSG_birthplaceLabel__" control="birthplaceTextBox" class="header"/>
+																	<html:input id="birthplaceTextBox" fieldName="birthplace"/>
+																</row>
+																<row id="deathdateRow" align="center">
+																	<label id="deathdateLabel" value="__CARDBOOKMSG_deathdateLabel__" control="deathdateTextBox" class="header"/>
+																	<html:input id="deathdateTextBox" fieldName="deathdate"/>
+																</row>
+																<row id="deathplaceRow" align="center">
+																	<label id="deathplaceLabel" value="__CARDBOOKMSG_deathplaceLabel__" control="deathplaceTextBox" class="header"/>
+																	<html:input id="deathplaceTextBox" fieldName="deathplace"/>
+																</row>
+																<row id="anniversaryRow" align="center">
+																	<label id="anniversaryLabel" value="__CARDBOOKMSG_anniversaryLabel__" control="anniversaryTextBox" class="header"/>
+																	<html:input id="anniversaryTextBox" fieldName="anniversary"/>
+																</row>
+															</rows>
+														</grid>
+													</hbox>
+												</groupbox>
+											</hbox>
+											<hbox id="orgBox" flex="1">
+												<groupbox id="orgGroupbox" flex="1">
+													<label class="header">__CARDBOOKMSG_orgTitleLabel__</label>
+													<hbox flex="1" class="indent">
+														<grid align="center" flex="1">
+															<columns>
+																<column/>
+																<column flex="1"/>
+															</columns>
+												
+															<rows id="orgRows"/>
+														</grid>
+													</hbox>
+												</groupbox>
+											</hbox>
+											<hbox flex="1">
+												<groupbox id="categoriesclassicalGroupbox" flex="1">
+													<label class="header">__CARDBOOKMSG_categoriesHeader__</label>
+													<hbox id="categoriesclassicalHbox" flex="1" class="indent">
+														<vbox id="categoriesclassicalRow" flex="1"/>
+													</hbox>
+												</groupbox>
+											</hbox>
+											<hbox flex="1">
+												<groupbox id="noteclassicalGroupbox" flex="1">
+													<label class="header">__CARDBOOKMSG_noteTabLabel__</label>
+													<hbox flex="1" class="indent">
+														<vbox flex="1">
+															<html:textarea id="noteclassicalTextBox"/>
+														</vbox>
+													</hbox>
+												</groupbox>
+											</hbox>
+										</vbox>
+										<vbox id="imageBox" align="center" width="170px">
+											<hbox align="center" height="170px">
+												<html:img id="imageForSizing" hidden="true"/>
+												<image id="defaultCardImage" context="imageCardContextMenu"/>
+											</hbox>
+										</vbox>
+										<vbox flex="1">
+											<grid align="center" flex="1">
+												<columns>
+													<column/>
+													<column/>
+													<column flex="1"/>
+													<column flex="1"/>
+												</columns>
+												<rows id="classicalRows"/>
+											</grid>
+										</vbox>
+									</hbox>
+									<hbox align="center" flex="1">
+										<vbox flex="1">
+											<groupbox id="categoriesmodernGroupbox" flex="1">
+												<label class="header">__CARDBOOKMSG_categoriesHeader__</label>
+												<hbox id="categoriesmodernHbox" flex="1" class="indent">
+													<vbox id="categoriesmodernRow"/>
+												</hbox>
+											</groupbox>
+										</vbox>
+									</hbox>
+									<hbox flex="1">
+										<vbox flex="1">
+											<grid align="center" flex="1">
+												<columns>
+													<column/>
+													<column/>
+													<column flex="1"/>
+													<column flex="1"/>
+												</columns>
+												<rows id="modernRows"/>
+											</grid>
+										</vbox>
+									</hbox>
+									<hbox id="listGroupbox" flex="1">
+										<vbox flex="1">
+											<grid align="center" flex="1">
+												<columns>
+													<column/>
+													<column flex="1"/>
+												</columns>
+												<rows flex="1">
+													<groupbox id="addedCardsGroupbox" flex="1"/>
+												</rows>
+											</grid>
+										</vbox>
+									</hbox>
+									<hbox flex="1">
+										<groupbox id="notemodernGroupbox" flex="1">
+											<label class="header">__CARDBOOKMSG_noteTabLabel__</label>
+											<vbox flex="1" class="indent">
+												<html:textarea id="notemodernTextBox"/>
+											</vbox>
+										</groupbox>
+									</hbox>
+									<spacer flex="100"/>
+								</tabpanel>
+			
+								<tabpanel orient="vertical" style="overflow:auto">
+									<groupbox id="mailPopularityReadWriteGroupbox" flex="1">
+										<grid>
+											<columns flex="1">
+												<column/>
+												<column flex="1"/>
+											</columns>
+											<rows flex="1">
+												<groupbox id="mailPopularityGroupbox" flex="1"/>
+											</rows>
+										</grid>
+									</groupbox>
+									<spacer flex="100"/>
+								</tabpanel>
+			
+								<tabpanel orient="vertical" style="overflow:auto">
+									<vbox id="miscBox">
+										<groupbox id="miscGroupbox" flex="1">
+											<label class="header">__CARDBOOKMSG_miscGroupboxLabel__</label>
+											<hbox flex="1" align="center">
+												<grid align="center" flex="1">
+													<columns>
+														<column/>
+														<column flex="1"/>
+													</columns>
+										
+													<rows>
+														<row id="mailerRow" align="center">
+															<label id="mailerLabel" value="__CARDBOOKMSG_mailerLabel__" control="mailerTextBox" class="header"/>
+															<html:input id="mailerTextBox"/>
+														</row>
+														<row id="geoRow" align="center">
+															<label id="geoLabel" value="__CARDBOOKMSG_geoLabel__" control="geoTextBox" class="header"/>
+															<html:input id="geoTextBox"/>
+														</row>
+														<row id="sortstringRow" align="center">
+															<label id="sortstringLabel" value="__CARDBOOKMSG_sortstringLabel__" control="sortstringTextBox" class="header"/>
+															<html:input id="sortstringTextBox"/>
+														</row>
+														<row id="class1Row" align="center">
+															<label id="class1Label" value="__CARDBOOKMSG_class1Label__" control="class1TextBox" class="header"/>
+															<html:input id="class1TextBox"/>
+														</row>
+														<row id="tzRow" align="center">
+															<label id="tzLabel" value="__CARDBOOKMSG_tzLabel__" control="tzTextBox" class="header"/>
+															<html:input id="tzTextBox"/>
+														</row>
+														<row id="agentRow" align="center">
+															<label id="agentLabel" value="__CARDBOOKMSG_agentLabel__" control="agentTextBox" class="header"/>
+															<html:input id="agentTextBox"/>
+														</row>
+														<row id="keyRow" align="center">
+															<label id="keyLabel" value="__CARDBOOKMSG_keyLabel__" control="keyTextBox" class="header"/>
+															<html:input id="keyTextBox"/>
+														</row>
+														<row id="photoLocalURIRow" align="center">
+															<label id="photolocalURILabel" value="__CARDBOOKMSG_photolocalURILabel__" control="photolocalURITextBox" class="header"/>
+															<html:input id="photolocalURITextBox"/>
+														</row>
+														<row id="photoURIRow" align="center">
+															<label id="photoURILabel" value="__CARDBOOKMSG_photoURILabel__" control="photoURITextBox" class="header"/>
+															<html:input id="photoURITextBox"/>
+														</row>
+														<row id="logoLocalURIRow" align="center">
+															<label id="logolocalURILabel" value="__CARDBOOKMSG_logolocalURILabel__" control="logolocalURITextBox" class="header"/>
+															<html:input id="logolocalURITextBox"/>
+														</row>
+														<row id="logoURIRow" align="center">
+															<label id="logoURILabel" value="__CARDBOOKMSG_logoURILabel__" control="logoURITextBox" class="header"/>
+															<html:input id="logoURITextBox"/>
+														</row>
+														<row id="soundLocalURIRow" align="center">
+															<label id="soundlocalURILabel" value="__CARDBOOKMSG_soundlocalURILabel__" control="soundlocalURITextBox" class="header"/>
+															<html:input id="soundlocalURITextBox"/>
+														</row>
+														<row id="soundURIRow" align="center">
+															<label id="soundURILabel" value="__CARDBOOKMSG_soundURILabel__" control="soundURITextBox" class="header"/>
+															<html:input id="soundURITextBox"/>
+														</row>
+													</rows>
+												</grid>
+											</hbox>
+										</groupbox>
+									</vbox>
+											
+									<vbox id="techBox">
+										<groupbox id="techGroupbox" flex="1">
+											<label class="header">__CARDBOOKMSG_techGroupboxLabel__</label>
+											<hbox flex="1" align="center">
+												<grid align="center" flex="1">
+													<columns>
+														<column/>
+														<column flex="1"/>
+													</columns>
+										
+													<rows>
+														<row id="dirPrefIdRow" align="center">
+															<label id="dirPrefIdLabel" value="__CARDBOOKMSG_dirPrefIdLabel__" control="dirPrefIdTextBox" class="header"/>
+															<html:input id="dirPrefIdTextBox"/>
+														</row>
+														<row id="versionRow" align="center">
+															<label id="versionLabel" value="__CARDBOOKMSG_versionLabel__" control="versionTextBox" class="header"/>
+															<html:input id="versionTextBox"/>
+														</row>
+														<row id="prodidRow" align="center">
+															<label id="prodidLabel" value="__CARDBOOKMSG_prodidLabel__" control="prodidTextBox" class="header"/>
+															<html:input id="prodidTextBox"/>
+														</row>
+														<row id="uidRow" align="center">
+															<label id="uidLabel" value="__CARDBOOKMSG_uidLabel__" control="uidTextBox" class="header"/>
+															<html:input id="uidTextBox"/>
+														</row>
+														<row id="cardurlRow" align="center">
+															<label id="cardurlLabel" value="__CARDBOOKMSG_cardurlLabel__" control="cardurlTextBox" class="header"/>
+															<html:input id="cardurlTextBox"/>
+														</row>
+														<!-- <row id="cacheuriRow" align="center"> -->
+															<!-- <label id="cacheuriLabel" value="__CARDBOOKMSG_cacheuriLabel__" control="cacheuriTextBox" class="header"/> -->
+															<!-- <html:input id="cacheuriTextBox"/> -->
+														<!-- </row> -->
+														<row id="revRow" align="center">
+															<label id="revLabel" value="__CARDBOOKMSG_revLabel__" control="revTextBox" class="header"/>
+															<html:input id="revTextBox"/>
+														</row>
+														<row id="etagRow" align="center">
+															<label id="etagLabel" value="__CARDBOOKMSG_etagLabel__" control="etagTextBox" class="header"/>
+															<html:input id="etagTextBox"/>
+														</row>
+													</rows>
+												</grid>
+											</hbox>
+										</groupbox>
+									</vbox>
+											
+									<vbox id="othersBox" flex="1">
+										<groupbox id="othersGroupbox" flex="1">
+											<label class="header">__CARDBOOKMSG_othersGroupboxLabel__</label>
+											<hbox flex="1">
+												<html:textarea id="othersTextBox"/>
+											</hbox>
+										</groupbox>
+									</vbox>
+								</tabpanel>
+			
+								<tabpanel id="vcardTabpanel" orient="vertical" style="overflow:auto">
+									<html:textarea id="vcardTextBox"/>
+								</tabpanel>
+							</tabpanels>
+						</tabbox>
+					</vbox>
+				</hbox>
+			</box>
+		</hbox>
+	</vbox>
+
+</overlay>

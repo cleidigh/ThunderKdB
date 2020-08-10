@@ -1,0 +1,21 @@
+.search-value-custom[searchAttribute="cardbook#searchFrom"],
+.search-value-custom[searchAttribute="cardbook#searchTo"],
+.search-value-custom[searchAttribute="cardbook#searchCc"],
+.search-value-custom[searchAttribute="cardbook#searchBcc"],
+.search-value-custom[searchAttribute="cardbook#searchAll"] {
+	-moz-binding: url("chrome://cardbook/content/filters/bindings.xml#abPickerSearch");
+}
+
+.ruleactiontarget[type="cardbook#addFrom"],
+.ruleactiontarget[type="cardbook#addTo"],
+.ruleactiontarget[type="cardbook#addCc"],
+.ruleactiontarget[type="cardbook#addBcc"],
+.ruleactiontarget[type="cardbook#addAll"],
+.ruleactiontarget[type="cardbook#removeFrom"],
+.ruleactiontarget[type="cardbook#removeTo"],
+.ruleactiontarget[type="cardbook#removeCc"],
+.ruleactiontarget[type="cardbook#removeBcc"],
+.ruleactiontarget[type="cardbook#removeAll"] {
+	-moz-binding: url("chrome://cardbook/content/filters/bindings.xml#abPickerAction");
+}
+

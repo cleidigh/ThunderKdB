@@ -1,0 +1,5008 @@
+{
+	"extName": {
+		"message": "CardBook"
+	},
+	"extDesc": {
+		"message": "Adresář vCard"
+	},
+	"browserActionTitle": {
+		"message": "CardBook",
+		"description": "Jít na záložku CardBooku"
+	},
+	"cardbookTitle": {
+		"message": "CardBook"
+	},
+	"cardbookPrefTitle": {
+		"message": "Nastavení CardBooku"
+	},
+	"statusProgressInformationTooltip": {
+		"message": "Klikněte zde pro zobrazení protokolů"
+	},
+	"imageSelectionTitle": {
+		"message": "Výběr obrázku"
+	},
+	"imageSaveTitle": {
+		"message": "Uložit obrázek"
+	},
+	"fileSaveTitle": {
+		"message": "Uložit soubor"
+	},
+	"dirSaveTitle": {
+		"message": "Uložit adresář"
+	},
+	"dirChooseTitle": {
+		"message": "Zvolte adresář"
+	},
+	"fileCreationVCFTitle": {
+		"message": "Vytvořit nový VCF soubor (kódovaný pomocí UTF-8)"
+	},
+	"fileSelectionVCFTitle": {
+		"message": "Otevřít existující VCF soubor (kódovaný pomocí UTF-8)"
+	},
+	"fileImportTitle": {
+		"message": "Importovat VCF soubor (kódovaný pomocí UTF-8)"
+	},
+	"dirImportTitle": {
+		"message": "Importovat z adresáře"
+	},
+	"fileCreationTPLTitle": {
+		"message": "Vytvořit nový TPL soubor"
+	},
+	"fileSelectionTPLTitle": {
+		"message": "Otevřít existující TPL soubor"
+	},
+	"fileSelectionTitle": {
+		"message": "Adresa odkazu"
+	},
+	"uncategorizedCards": {
+		"message": "Nezařazeno"
+	},
+	"collectedCards": {
+		"message": "Sebrané kontakty"
+	},
+	"enableFromAccountsOrCats": {
+		"message": "Povolit adresář"
+	},
+	"disableFromAccountsOrCats": {
+		"message": "Zakázat adresář"
+	},
+	"readWriteFromAccountsOrCats": {
+		"message": "Nastavit adresář jako zapisovatelný"
+	},
+	"readOnlyFromAccountsOrCats": {
+		"message": "Nastavit adresář jako jen pro čtení"
+	},
+	"editCategoryFromAccountsOrCats": {
+		"message": "Upravit kategorii"
+	},
+	"removeCategoryFromAccountsOrCats": {
+		"message": "Odstranit kategorii"
+	},
+	"convertCategoryFromAccountsOrCats": {
+		"message": "Převést kategorii na seznam"
+	},
+	"editNodeFromAccountsOrCats": {
+		"message": "Upravit uzel"
+	},
+	"removeNodeFromAccountsOrCats": {
+		"message": "Odstranit uzel"
+	},
+	"convertNodeFromAccountsOrCats": {
+		"message": "Vytvořit seznam z uzlu"
+	},
+	"viewCardButtonLabel": {
+		"message": "Zobrazit"
+	},
+	"editCardButtonLabel": {
+		"message": "Upravit"
+	},
+	"viewInCardBookMenuLabel": {
+		"message": "Zobrazit v CardBooku"
+	},
+	"mergeCardsLabel": {
+		"message": "Sloučit kontakty"
+	},
+	"forgetCardsLabel": {
+		"message": "Zapomenout"
+	},
+	"deleteCardsLabel": {
+		"message": "Smazat"
+	},
+	"showForgottenLabel": {
+		"message": "Zobrazit zapomenuté duplikáty"
+	},
+	"showForgottenAccesskey": {
+		"message": "Z"
+	},
+	"hideForgottenLabel": {
+		"message": "Skrýt zapomenuté duplikáty"
+	},
+	"hideForgottenAccesskey": {
+		"message": "S"
+	},
+	"noContactsDuplicated": {
+		"message": "Nebyly nalezeny duplicitní kontakty."
+	},
+	"serverWarningGoogleLabel": {
+		"message": "Použití Google je experimentální, protože Google nerespektuje vCard standardy."
+	},
+	"Validating1Label": {
+		"message": "Ověřování ($P1$)…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"Validating2Label": {
+		"message": "Ověřování…"
+	},
+	"ValidatingURLFailedLabel": {
+		"message": "URL má nesprávný tvar"
+	},
+	"ValidationFailedLabel": {
+		"message": "Ověření selhalo"
+	},
+	"ValidationOKLabel": {
+		"message": "Ověření v pořádku"
+	},
+	"customFieldsErrorUPPERCASE": {
+		"message": "Názvy vlastních polí by měly být velkými písmeny : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorX": {
+		"message": "Názvy vlastních polí by měly začínat na X- : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorFIELD": {
+		"message": "$P1$ je rezervované slovo a nemůže být použit jako název vašeho vlastního pole",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorCHAR": {
+		"message": "Názvy vlastních polí nemohou obsahovat escape znaky jako je čárka, středník, dvojtečka, nebo tečka : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorUNIQUE": {
+		"message": "Názvy vlastních polí by měly být unikátní (vlastní pole jsou definována na více záložkách)."
+	},
+	"customFieldsErrorLABEL": {
+		"message": "Popisky vlastních polí nemohou být prázdné."
+	},
+	"allContactsLoadedFromFile": {
+		"message": "$P1$ : Všechny kontakty ze souboru načteny.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"notAllContactsLoadedFromFile": {
+		"message": "$P1$ : Některé kontakty se ze souboru nepodařilo načíst : $P2$ chyb.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroRunning": {
+		"message": "$P1$ : Synchronizace probíhá",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroNotTried": {
+		"message": "$P1$ : Synchronizace neprovedena",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinished": {
+		"message": "$P1$ : Synchronizace dokončena",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinishedResult": {
+		"message": "$P1$ : Synchronizace dokončena, výsledky kontaktů :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroProcessed": {
+		"message": "Zpracováno kontaktů : $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpToDate": {
+		"message": "$P1$ : Aktuální kontakty : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnServer": {
+		"message": "$P1$ : Nové kontakty na serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnServer": {
+		"message": "$P1$ : Aktualizované kontakty na serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnServer": {
+		"message": "$P1$ : Smazané kontakty na serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDisk": {
+		"message": "$P1$ : Smazané kontakty na disku : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Smazané kontakty na disku a aktualizované na serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnDisk": {
+		"message": "$P1$ : Nové kontakty na disku : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDisk": {
+		"message": "$P1$ : Aktualizované kontakty na disku : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnBoth": {
+		"message": "$P1$ : Aktualizované kontakty na disku i na serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Aktualizované kontakty na disku a smazané na serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetOKFromServer": {
+		"message": "$P1$ : Změny úspěšně získané ze serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetKOFromServer": {
+		"message": "$P1$ : Změny neúspěšně získané ze serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutOKToServer": {
+		"message": "$P1$ : Změny úspěšně nahrané na server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutKOToServer": {
+		"message": "$P1$ : Změny neúspěšně nahrané na server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroImpossible": {
+		"message": "$P1$ : Synchronizace se serverem nemožná.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBFinishedResult": {
+		"message": "$P1$ : Místní databáze otevřena, výsledek kontaktů :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBCardsOK": {
+		"message": "$P1$ : Otevřeno kontaktů : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDBCardsKO": {
+		"message": "$P1$ : Počet chyb kontaktů : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirFinishedResult": {
+		"message": "$P1$ : Adresář otevřen, výsledek kontaktů :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDirCardsOK": {
+		"message": "$P1$ : Otevřeno kontaktů : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirCardsKO": {
+		"message": "$P1$ : Počet chyb kontaktů : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileFinishedResult": {
+		"message": "$P1$ : Soubor otevřen, výsledek kontaktů :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFileCardsOK": {
+		"message": "$P1$ : Otevřeno kontaktů : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileCardsKO": {
+		"message": "$P1$ : Počet chyb kontaktů : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroForcedToResync": {
+		"message": "$P1$ : Je nutná resynchronizace tohoto účtu",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroAllFinished": {
+		"message": "Všechny synchronizace dokončeny"
+	},
+	"discoveryRunning": {
+		"message": "$P1$ : Probíhá automatické zjišování adresáøù",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageGetResponse": {
+		"message": "$P1$ : Staženo obrázků : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"imageGetError": {
+		"message": "$P1$ : Počet chyb obrázků : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importFinishedResult": {
+		"message": "$P1$ : Import dokončen, výsledek kontaktů :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importCardsOK": {
+		"message": "$P1$ : Importováno kontaktů : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importCardsKO": {
+		"message": "$P1$ : Počet chyb kontaktů : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importAllFinished": {
+		"message": "Všechny importy dokončeny"
+	},
+	"cardDeletedOnDisk": {
+		"message": "$P1$ : Kontakt $P2$ smazán na disku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDisk": {
+		"message": "$P1$ : Kontakt $P2$ aktualizován na disku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyGetFromCache": {
+		"message": "$P1$ : Kontakt $P2$ již získán z cache",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardGetFromCache": {
+		"message": "$P1$ : Kontakt $P2$ získán z cache",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ smazán na disku a aktualizován na serveru",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnBoth": {
+		"message": "$P1$ : Kontakt $P2$ aktualizován na disku i na serveru",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ aktualizován na serveru (nalezený etag : $P3$, etag v mezipaměti : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"cardNewOnServer": {
+		"message": "$P1$ : Na serveru nalezen nový kontakt",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardLoadedFromCache": {
+		"message": "$P1$ : Kontakt $P2$ načten z cache",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardLoadedFromCacheDB": {
+		"message": "$P1$ : Kontakt $P2$ načten z cache (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardNewOnDisk": {
+		"message": "$P1$ : Kontakt $P2$ nový na disku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ aktualizován na disku a smazán na serveru",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ smazán na serveru",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyExists": {
+		"message": "$P1$ : Kontakt $P2$ již existuje",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"askUserTitle": {
+		"message": "Konfliktní změny kontaktu"
+	},
+	"askUserPersistMessage": {
+		"message": "Použít tuto volbu i při dalších existujících kontaktech"
+	},
+	"keepAskUserLabel": {
+		"message": "Ponechat kontakt"
+	},
+	"overwriteAskUserLabel": {
+		"message": "Přepsat kontakt"
+	},
+	"duplicateAskUserLabel": {
+		"message": "Duplikovat kontakt"
+	},
+	"deleteAskUserLabel": {
+		"message": "Smazat kontakt"
+	},
+	"localAskUserLabel": {
+		"message": "Upřednostnit místní změnu"
+	},
+	"remoteAskUserLabel": {
+		"message": "Upřednostnit vzdálenou změnu"
+	},
+	"mergeAskUserLabel": {
+		"message": "Sloučit rozdíly"
+	},
+	"serverCardDeletedFromServer": {
+		"message": "$P1$ : Kontakt $P2$ smazán ze serveru",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardNotExistServer": {
+		"message": "$P1$ : Kontakt $P2$ na serveru neexistuje",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardDeleteFailed": {
+		"message": "$P1$ : Kontakt $P2$ se nepodařilo smazat ze serveru (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingDeletion": {
+		"message": "$P1$ : Kontakt $P2$ : zasílání požadavků na smazání …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Kontakt $P2$ aktualizován na serveru (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kontakt $P2$ aktualizován na serveru (odpověď neobsahuje etag)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdateFailed": {
+		"message": "$P1$ : Kontakt $P2$ se na serveru nepodařilo aktualizovat (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingUpdate": {
+		"message": "$P1$ : Kontakt $P2$ : zasílání požadavků na aktualizaci …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithEtag": {
+		"message": "$P1$ : Kontakt $P2$ vytvořen na serveru (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kontakt $P2$ vytvořen na serveru (odpověď neobsahuje etag)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreateFailed": {
+		"message": "$P1$ : Kontakt $P2$ se na serveru nepodařilo vytvořit (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingCreate": {
+		"message": "$P1$ : Kontakt $P2$ : zasílání požadavků na vytvoření …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetImageFailed": {
+		"message": "$P1$ : Obrázek pro kontakt $P2$ se nepodařilo stáhnout (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetImageOK": {
+		"message": "$P1$ : Obrázek kontaktu $P2$ úspěšně stažen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingImage": {
+		"message": "$P1$ : Stahování obrázku kontaktu $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetOK": {
+		"message": "$P1$ : Kontakt $P2$ stažen ze serveru",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetFailed": {
+		"message": "$P1$ : Nepodařilo se stáhnout ze serveru (url : $P2$, stav : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"synchronizationFailed": {
+		"message": "$P1$ : Synchronizace selhala (krok : $P2$, url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"synchronizationUnauthorized": {
+		"message": "$P1$: Nelze se přihlásit k serveru. Pravděpodobně chybné nastavení, uživatelské jméno nebo heslo.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationSearchingCards": {
+		"message": "$P1$ : Hledání kontaktů …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery": {
+		"message": "$P1$ : Ověřování bez požadavku na zjišťování na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery4": {
+		"message": "$P1$ : Požadavek zjišťování fáze 4 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery3": {
+		"message": "$P1$ : Požadavek zjišťování fáze 3 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery2": {
+		"message": "$P1$ : Požadavek zjišťování fáze 2 na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery1": {
+		"message": "$P1$ : Požadavek zjišťování fáze 1 na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleAccessTokenOK": {
+		"message": "$P1$ : Požadavek o Google access token v pořádku, access token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRefreshTokenOK": {
+		"message": "$P1$ : Požadavek o Google refresh token v pořádku, refresh token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleGetNewRefreshToken": {
+		"message": "$P1$ : Získávání nového Google refresh tokenu na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleNewRefreshTokenOK": {
+		"message": "$P1$ : Získán autorizační kód : $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestAccessToken": {
+		"message": "$P1$ : Požadavek o Google access token na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestRefreshToken": {
+		"message": "$P1$ : Požadavek o Google refresh token na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooAccessTokenOK": {
+		"message": "$P1$ : Požadavek o Yahoo! access token v pořádku, access token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRefreshTokenOK": {
+		"message": "$P1$ : Požadavek o Yahoo! refresh token v pořádku, refresh token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooGetNewRefreshToken": {
+		"message": "$P1$ : Získávání nového Yahoo! refresh tokenu na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooNewRefreshTokenOK": {
+		"message": "$P1$ : Získán autorizační kód : $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestAccessToken": {
+		"message": "$P1$ : Požadavek o Yahoo! access token na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestRefreshToken": {
+		"message": "$P1$ : Požadavek o Yahoo! refresh token na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncDeleting": {
+		"message": "$P1$ : Mazání procesu opakované synchronizace (id : $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncSetting": {
+		"message": "$P1$ : Nastavování procesu opakované synchronizace (interval : $P2$ ms, id : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"periodicSyncSyncing": {
+		"message": "$P1$ : Synchronizace kvůli opakované synchronizaci …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileEmpty": {
+		"message": "Soubor $P1$ je prázdný",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileAlreadyOpen": {
+		"message": "Soubor $P1$ je již v CardBooku otevřen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryAlreadyOpen": {
+		"message": "Adresář $P1$ je již v CardBooku otevřen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"parsingCardError": {
+		"message": "$P1$ : Chyba při parsování kontaktu : \n$P2$ \n$P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"addressbookOpened": {
+		"message": "$P1$ : Adresář otevřen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookModified": {
+		"message": "$P1$ : Adresář změněn",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDeleted": {
+		"message": "$P1$ : Adresář uzavřen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookCreated": {
+		"message": "$P1$ : Adresář vytvořen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDisabled": {
+		"message": "$P1$ : Adresář zakázán",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadOnly": {
+		"message": "$P1$ : Adresář v režimu jen pro čtení",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadWrite": {
+		"message": "$P1$ : Adresář v režimu pro čtení a zápis",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookEnabled": {
+		"message": "$P1$ : Adresář povolen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreated": {
+		"message": "$P1$ : Kontakt $P2$ vytvořen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdated": {
+		"message": "$P1$ : Kontakt $P2$ aktualizován",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeleted": {
+		"message": "$P1$ : Kontakt $P2$ smazán",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAddedToCategory": {
+		"message": "$P1$ : Kontakt $P2$ přidán do kategorie $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardDeletedFromAllCategory": {
+		"message": "$P1$ : Kontakt $P2$ odstraněn ze všech kategorií",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardsConverted": {
+		"message": "$P1$ : kontakty převedeny do $P2$ : $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardsConvertedUndo": {
+		"message": "Vizitka převedena"
+	},
+	"cardsImportedFromFileUndo": {
+		"message": "Importován soubor $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsImportedFromDirUndo": {
+		"message": "Importován adresář $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"undoActionDoneUndo": {
+		"message": "Zpět hotovo ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"redoActionDoneUndo": {
+		"message": "Vpřed hotovo ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreatedUndo": {
+		"message": "Kontakt $P1$ vytvořen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardUpdatedUndo": {
+		"message": "Kontakt $P1$ aktualizován",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"outgoingEmailCollectedUndo": {
+		"message": "Sebrán odchozí e-mail"
+	},
+	"emailCollectedByFilterUndo": {
+		"message": "E-maily sebrané filtrem"
+	},
+	"emailDeletedByFilterUndo": {
+		"message": "E-maily smazané filtrem"
+	},
+	"cardsMergedUndo": {
+		"message": "Kontakty sloučeny"
+	},
+	"cardsDuplicatedUndo": {
+		"message": "Kontakty duplikovány"
+	},
+	"displayNameGenerated": {
+		"message": "$P1$ : kontaktům byla vygenerována zobrazovaná jména : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"displayNameGeneratedUndo": {
+		"message": "Zobrazovaná jména znovu vytvořena"
+	},
+	"cardModifiedUndo": {
+		"message": "Kontakt $P1$ aktualizován",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted1Undo": {
+		"message": "Kontakt $P1$ smazán",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted2Undo": {
+		"message": "Kontakty smazány"
+	},
+	"cardsPastedUndo": {
+		"message": "Kontakty vloženy"
+	},
+	"cardsDraggedUndo": {
+		"message": "Kontakty přetaženy"
+	},
+	"categoryCreated": {
+		"message": "$P1$ : Kategorie $P2$ vytvořena",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryCreatedUndo": {
+		"message": "Kategorie $P1$ vytvořena",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categorySelectedUndo": {
+		"message": "Zvolena kategorie $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryUnselectedUndo": {
+		"message": "Kategorii $P1$ byl zrušen výběr",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryRenamedUndo": {
+		"message": "Kategorie $P1$ přejmenována",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryDeleted": {
+		"message": "$P1$ : Kategorie $P2$ smazána",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedUndo": {
+		"message": "Kategorie $P1$ smazána",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryConvertedToListUndo": {
+		"message": "Kategorie $P1$ převedena na seznam",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listConvertedToCategoryUndo": {
+		"message": "Seznam $P1$ převeden na kategorii",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"linePastedUndo": {
+		"message": "Řádek vložen"
+	},
+	"nodeRenamedUndo": {
+		"message": "Uzel $P1$ přejmenován",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"nodeDeleted": {
+		"message": "$P1$ : Uzel $P2$ smazán",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletedUndo": {
+		"message": "Uzel $P1$ odstraněn",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listCreatedFromNodeUndo": {
+		"message": "Seznam $P1$ vytvořen z uzlu",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoFile": {
+		"message": "Kontakty exportovány do souboru $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoFile": {
+		"message": "Kontakt exportován do souboru $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoDir": {
+		"message": "Kontakty exportovány do adresáře $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoDir": {
+		"message": "Kontakt exportován do adresáře $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importNotIntoSameFile": {
+		"message": "není dovoleno importovat do stejného souboru"
+	},
+	"importNotIntoSameDir": {
+		"message": "Import ze stejného adresáře není dovolen"
+	},
+	"clipboardWrong": {
+		"message": "Data ve schránce nejsou importovatelná"
+	},
+	"clipboardEmpty": {
+		"message": "Schránka prázdná"
+	},
+	"imageError": {
+		"message": "Obrázek nepřidán kvůli chybě"
+	},
+	"imageErrorWithMessage": {
+		"message": "Obrázek nepřidán : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageSavedToFile": {
+		"message": "Obrázek uložen do souboru : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"contactsCopied": {
+		"message": "Kontakty zkopírovány do schránky"
+	},
+	"contactCopied": {
+		"message": "Kontakt zkopírován do schránky"
+	},
+	"lineCopied": {
+		"message": "Řádek zkopírován do schránky"
+	},
+	"linePastedToCard": {
+		"message": "Řádek vložen ke kontaktu: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFound": {
+		"message": "Počet nalazených kontaktů: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContacts": {
+		"message": "Počet kontaktů: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFoundModified": {
+		"message": "Počet nalezených kontaktů: $P1$ (místně změněno: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberContactsModified": {
+		"message": "Počet kontaktů: $P1$ (místně změněno: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberLines": {
+		"message": "Počet řádků: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbook.searchFrom.name": {
+		"message": "CardBook od"
+	},
+	"cardbook.searchTo.name": {
+		"message": "CardBook komu"
+	},
+	"cardbook.searchCc.name": {
+		"message": "CardBook cc"
+	},
+	"cardbook.searchBcc.name": {
+		"message": "CardBook bcc"
+	},
+	"cardbook.searchAll.name": {
+		"message": "CardBook od, komu, cc, nebo bcc"
+	},
+	"cardbook.searchCorrespondents.name": {
+		"message": "Příjemci v CardBooku"
+	},
+	"cardbook.addFrom.name": {
+		"message": "Přidat od do CardBooku"
+	},
+	"cardbook.addTo.name": {
+		"message": "Přidat komu do CardBooku"
+	},
+	"cardbook.addCc.name": {
+		"message": "Přidat kopii (CC) do CardBooku"
+	},
+	"cardbook.addBcc.name": {
+		"message": "Přidat skrytou kopii (BCC) do CardBooku"
+	},
+	"cardbook.addAll.name": {
+		"message": "Přidat od, komu, kopii nebo skrytou kopii do CardBooku"
+	},
+	"cardbook.removeFrom.name": {
+		"message": "Odstranit od z CardBooku"
+	},
+	"cardbook.removeTo.name": {
+		"message": "Odstranit komu z CardBooku"
+	},
+	"cardbook.removeCc.name": {
+		"message": "Odstranit kopii (CC) z CardBooku"
+	},
+	"cardbook.removeBcc.name": {
+		"message": "Odstranit skrytou kopii (BCC) z CardBooku"
+	},
+	"cardbook.removeAll.name": {
+		"message": "Odstranit od, komu, kopii nebo skrytou kopii z CardBooku"
+	},
+	"urlDownloaded": {
+		"message": "URL stažena : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookHeader": {
+		"message": "Adresář"
+	},
+	"photoLabel": {
+		"message": "Fotka"
+	},
+	"versionLabel": {
+		"message": "Verze"
+	},
+	"revLabel": {
+		"message": "Poslední aktualizace"
+	},
+	"lastnameLabel": {
+		"message": "Příjmení"
+	},
+	"firstnameLabel": {
+		"message": "Křestní méno"
+	},
+	"othernameLabel": {
+		"message": "Další jméno"
+	},
+	"prefixnameLabel": {
+		"message": "Předpona"
+	},
+	"suffixnameLabel": {
+		"message": "Přípona"
+	},
+	"fnLabel": {
+		"message": "Zobrazované jméno"
+	},
+	"nicknameLabel": {
+		"message": "Přezdívka"
+	},
+	"genderLabel": {
+		"message": "Pohlaví"
+	},
+	"bdayLabel": {
+		"message": "Narozeniny"
+	},
+	"birthplaceLabel": {
+		"message": "Místo narození"
+	},
+	"anniversaryLabel": {
+		"message": "Výroèí"
+	},
+	"deathdateLabel": {
+		"message": "Den úmrtí"
+	},
+	"deathplaceLabel": {
+		"message": "Místo úmrtí"
+	},
+	"titleLabel": {
+		"message": "Titul"
+	},
+	"roleLabel": {
+		"message": "Role"
+	},
+	"orgLabel": {
+		"message": "Organizace"
+	},
+	"categoriesLabel": {
+		"message": "Kategorie"
+	},
+	"adrLabel": {
+		"message": "Adresy"
+	},
+	"telLabel": {
+		"message": "Telefon"
+	},
+	"emailLabel": {
+		"message": "E-maily"
+	},
+	"imppLabel": {
+		"message": "IM"
+	},
+	"urlLabel": {
+		"message": "URL"
+	},
+	"eventLabel": {
+		"message": "Události"
+	},
+	"noteLabel": {
+		"message": "Poznámky"
+	},
+	"postOfficeLabel": {
+		"message": "P.O. Box"
+	},
+	"extendedAddrLabel": {
+		"message": "Byt nebo apartmá"
+	},
+	"streetLabel": {
+		"message": "Ulice"
+	},
+	"localityLabel": {
+		"message": "Lokalita (město)"
+	},
+	"regionLabel": {
+		"message": "Oblast (Stát nebo provincie)"
+	},
+	"postalCodeLabel": {
+		"message": "Poštovní směrovací číslo"
+	},
+	"countryLabel": {
+		"message": "Zěmě"
+	},
+	"ageLabel": {
+		"message": "Stáří"
+	},
+	"ABNameLabel": {
+		"message": "Adresář"
+	},
+	"cardIconLabel": {
+		"message": "Ikona"
+	},
+	"nameLabel": {
+		"message": "Název"
+	},
+	"mailerLabel": {
+		"message": "Mailer"
+	},
+	"tzLabel": {
+		"message": "TZ"
+	},
+	"geoLabel": {
+		"message": "Geo"
+	},
+	"prodidLabel": {
+		"message": "Prodid"
+	},
+	"sortstringLabel": {
+		"message": "Řadící řetězec"
+	},
+	"uidLabel": {
+		"message": "Uid"
+	},
+	"cbidLabel": {
+		"message": "CardBook id"
+	},
+	"class1Label": {
+		"message": "Třída"
+	},
+	"dirPrefIdLabel": {
+		"message": "DirPrefId"
+	},
+	"kindLabel": {
+		"message": "Druh"
+	},
+	"etagLabel": {
+		"message": "Etag"
+	},
+	"phoneticfirstnameLabel": {
+		"message": "Křestní méno (Foneticky)"
+	},
+	"phoneticlastnameLabel": {
+		"message": "Příjmení (Foneticky)"
+	},
+	"custom1Label": {
+		"message": "Položka 1"
+	},
+	"custom2Label": {
+		"message": "Položka 2"
+	},
+	"custom3Label": {
+		"message": "Položka 3"
+	},
+	"custom4Label": {
+		"message": "Položka 4"
+	},
+	"warningTitle": {
+		"message": "Varování"
+	},
+	"errorTitle": {
+		"message": "Chyba"
+	},
+	"confirmTitle": {
+		"message": "Potvrzení"
+	},
+	"birthdaysListWindowLabel": {
+		"message": "Seznam narozenin (celkem : $P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"syncListWindowLabelRunning": {
+		"message": "Synchronizace narozenin běží ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelEnded": {
+		"message": "Synchronizace narozenin skončila ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelFailed": {
+		"message": "Synchronizace narozenin selhala"
+	},
+	"syncListExistingEntry": {
+		"message": "$P1$ : Existující událost v Lightningu : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListCreatedEntry": {
+		"message": "$P1$ : Událost v Lightningu vytvořena : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListErrorEntry": {
+		"message": "$P1$ : Chyba v události v Lightningu : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"noBirthdaysFoundMessage": {
+		"message": "Do $P1$ nebyly nalezeny žádné narozeniny",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"noEmailFoundMessage": {
+		"message": "Pro $P1$ nebyl nalezen žádný e-mail",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventEntryTitleMessage": {
+		"message": "Narozeniny %1$S, stáří : %2$S"
+	},
+	"calendarNotFoundTitle": {
+		"message": "BirthdayReminder - Synchronizace s Lightningem zrušena"
+	},
+	"calendarNotFoundMessage": {
+		"message": "Kalendář $P1$ nenalezen. Synchronizace s Lightningem zrušena.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"calendarNotWritableTitle": {
+		"message": "BirthdayReminder - Synchronizace s Lightningem zrušena"
+	},
+	"calendarNotWritableMessage": {
+		"message": "Kalendář $P1$ není zapisovatelný (možná je pouze pro čtení, nebo jste offline?). Synchronizace s Lightningem zrušena.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"errorAttachingFile": {
+		"message": "Attaching vCard : Nelze vytvořit soubor pro přiložení vCard k mailu : $P1$ ($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"errorInfiniteLoopRecursion": {
+		"message": "Seznamy : nekonečná rekurzivní smyčka v seznamech : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"WRONG_VERSION": {
+		"message": "Jsou podporovány pouze vCard verze 3.0 nebo 4.0"
+	},
+	"unableToParseResponse": {
+		"message": "$P1$ : Díky následujícímu řádku se nepodařilo zpracovat odpověď serveru : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"dateEntry1Wrong": {
+		"message": "$P1$ : kontakt $P2$ má hodnotu datumového pole ($P3$), která neodpovídá formátu data v adresáři ($P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"dateEntry2Wrong": {
+		"message": "Hodnota datumového pole ($P1$) neodpovídá formátu data adresáře ($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"validateIntegerMsg": {
+		"message": "Pole $P1$ by mělo být nevyplněné, nebo celé číslo mezi 1 and $P2$ (hodnota : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"eventNameNull": {
+		"message": "Aspoň jedna z událostí má prázdný popis"
+	},
+	"eventDateNull": {
+		"message": "Aspoň jedna z událostí má prázdné datum"
+	},
+	"invalidURL": {
+		"message": "Neplatná URL : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbookSearchInputDefault": {
+		"message": "Hledat…"
+	},
+	"blogtype": {
+		"message": "Blog"
+	},
+	"celltype": {
+		"message": "Mobilní"
+	},
+	"faxtype": {
+		"message": "Fax"
+	},
+	"homefaxtype": {
+		"message": "Fax domů"
+	},
+	"homepagetype": {
+		"message": "Domovská stránka"
+	},
+	"hometype": {
+		"message": "Domů"
+	},
+	"iphonetype": {
+		"message": "iPhone"
+	},
+	"maintype": {
+		"message": "Hlavní"
+	},
+	"othertype": {
+		"message": "Jiné"
+	},
+	"pagertype": {
+		"message": "Pager"
+	},
+	"profiletype": {
+		"message": "Profil"
+	},
+	"workfaxtype": {
+		"message": "Fax do práce"
+	},
+	"worktype": {
+		"message": "Do práce"
+	},
+	"types.gender.f": {
+		"message": "Žena"
+	},
+	"types.gender.m": {
+		"message": "Muž"
+	},
+	"types.gender.n": {
+		"message": "Žádné"
+	},
+	"types.gender.o": {
+		"message": "Jiné"
+	},
+	"types.gender.u": {
+		"message": "Neznámé"
+	},
+	"typesTooltip": {
+		"message": "Pokud chcete změnit dostupné typy, použijte předvolby CardBooku."
+	},
+	"prefLabel": {
+		"message": "Předvolba"
+	},
+	"prefValueLabel": {
+		"message": "Hodnota předvolby"
+	},
+	"prefWeightTooltip": {
+		"message": "Předvolby mohou mít různé hodnoty od 1 do 100. Většinou můžete nechat prázdné."
+	},
+	"impp.skype": {
+		"message": "Skype"
+	},
+	"impp.jabber": {
+		"message": "Jabber"
+	},
+	"impp.googletalk": {
+		"message": "Google Talk"
+	},
+	"impp.qq": {
+		"message": "Tencent QQ"
+	},
+	"addToAddressbook": {
+		"message": "Přidat do tohoto adresáře"
+	},
+	"wdw_cardEditionViewResultTitle": {
+		"message": "Úprava výsledného kontaktu"
+	},
+	"wdw_cardEditionViewResultHideCreateTitle": {
+		"message": "Úprava výsledného kontaktu"
+	},
+	"wdw_cardEditionAddEmailTitle": {
+		"message": "Registrace nové e-mailové adresy"
+	},
+	"wdw_cardEditionCreateContactTitle": {
+		"message": "Vytvoří nový kontakt"
+	},
+	"wdw_cardEditionCreateListTitle": {
+		"message": "Vytvoří novou skupinu"
+	},
+	"wdw_cardEditionEditContactTitle": {
+		"message": "Upravit kontakt"
+	},
+	"wdw_cardEditionEditListTitle": {
+		"message": "Upravit seznam"
+	},
+	"wdw_cardEditionAddLineTitle": {
+		"message": "Upravit kontakt"
+	},
+	"wdw_cardEditionViewContactTitle": {
+		"message": "Nahlédnutí do existujícího kontaktu"
+	},
+	"wdw_cardEditionViewListTitle": {
+		"message": "Zobrazit seznam"
+	},
+	"wdw_cardbookPrintTitleLong": {
+		"message": "Náhled tisku - $P1$ - CardBook - Thunderbird",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookPrintTitle": {
+		"message": "Náhled tisku"
+	},
+	"displayGroupboxLabel": {
+		"message": "Zobrazované jméno"
+	},
+	"personalGroupboxLabel": {
+		"message": "Osobní informace"
+	},
+	"orgGroupboxLabel": {
+		"message": "Profesní informace"
+	},
+	"categoriesHeader": {
+		"message": "Kategorie"
+	},
+	"adrGroupboxLabel": {
+		"message": "Adresy"
+	},
+	"telGroupboxLabel": {
+		"message": "Telefonní čísla"
+	},
+	"emailGroupboxLabel": {
+		"message": "E-mailové adresy"
+	},
+	"urlGroupboxLabel": {
+		"message": "URL"
+	},
+	"eventGroupboxLabel": {
+		"message": "Události"
+	},
+	"noteGroupboxLabel": {
+		"message": "Poznámky"
+	},
+	"searchTermsGroupboxLabel": {
+		"message": "Kritéria vyhledávání"
+	},
+	"addedCardsGroupboxLabel": {
+		"message": "Vybrané položky"
+	},
+	"mailPopularityGroupboxLabel": {
+		"message": "Oblíbenost e-mailů"
+	},
+	"addEntryTooltip": {
+		"message": "Přidat záznam"
+	},
+	"removeEntryTooltip": {
+		"message": "Smazat záznam"
+	},
+	"upEntryTooltip": {
+		"message": "Posunout nahoru"
+	},
+	"downEntryTooltip": {
+		"message": "Posunout dolů"
+	},
+	"validatedEntryTooltip": {
+		"message": "Platný"
+	},
+	"noValidatedEntryTooltip": {
+		"message": "Zkontrolovat platnost"
+	},
+	"notValidatedEntryTooltip": {
+		"message": "Neplatný formát"
+	},
+	"linkEntryTooltip": {
+		"message": "Vytvořit odkaz…"
+	},
+	"selectedCardsDeletionConfirmMessagePF": {
+		"message": "Opravdu si přejete smazat vybraný kontakt?;Opravdu chcete smazat $P1$ vybrané kontakty?;Opravdu chcete smazat $P1$ vybraných kontaktů?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"catDeletionsConfirmMessagePF": {
+		"message": "Opravdu si přejete smazat kategorii $P2$, která obsahuje jeden kontakt?;Opravdu si přejete smazat kategorii $P2$, která obsahuje $P1$ kontakty?;Opravdu si přejete smazat kategorii $P2$, která obsahuje $P1$ kontaktů?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletionsConfirmMessagePF": {
+		"message": "Opravdu si přejete odstranit uzel $P2$, který obsahuje jeden kontakt?;Opravdu si přejete odstranit uzel $P2$, který obsahuje $P1$ kontakty?;Opravdu si přejete odstranit uzel $P2$, který obsahuje $P1$ kontaktů?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"accountDeletionConfirmMessage": {
+		"message": "Jste si jist, že si přejete smazat adresář $P1$ z repozitáře CardBooku?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletionDiscoveryConfirmMessage": {
+		"message": "Vypadá to, že adresáø $P1$ byl z vašeho serveru odstranìn, pøejete si ho odstranit z vašeho CardBook repozitáøe?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentFileMessage": {
+		"message": "smazat soubor $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentDirMessage": {
+		"message": "smazat adresář $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryDeletionConfirmMessage": {
+		"message": "Adresář $P1$ není prázdný. Opravdu si přejete smazat všechny objekty z tohoto adresáře?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"choiceMappingTitle": {
+		"message": "Volba polí"
+	},
+	"choiceavailableColumnsGroupboxLabel": {
+		"message": "Dostupné sloupce"
+	},
+	"choiceaddedColumnsGroupboxLabel": {
+		"message": "Zvolené sloupce"
+	},
+	"exportMappingTitle": {
+		"message": "Výběr exportovaných sloupců"
+	},
+	"exportavailableColumnsGroupboxLabel": {
+		"message": "Dostupné sloupce"
+	},
+	"exportaddedColumnsGroupboxLabel": {
+		"message": "Zvolené sloupce"
+	},
+	"importMappingTitle": {
+		"message": "Tabulka mapování sloupců"
+	},
+	"importavailableColumnsGroupboxLabel": {
+		"message": "Dostupné sloupce"
+	},
+	"importaddedColumnsGroupboxLabel": {
+		"message": "Vybrané sloupce"
+	},
+	"importfoundColumnsGroupboxLabel": {
+		"message": "Sloupec hlavičky"
+	},
+	"importblankColumn": {
+		"message": "Prázdný sloupec"
+	},
+	"importNoTypeLabel": {
+		"message": "žádný typ"
+	},
+	"fieldDelimiterLabel": {
+		"message": "Oddělovač sloupců"
+	},
+	"includePrefLabel": {
+		"message": "Včetně předvoleb"
+	},
+	"lineHeaderLabel": {
+		"message": "První řádek jako hlavička"
+	},
+	"missingColumnsConfirmMessage": {
+		"message": "Počet vybraných sloupců neodpovídá počtu sloupců v souboru, takže chybějící nebo přebývající sloupce nebudou brány v potaz Pokračovat?"
+	},
+	"toUpperCase": {
+		"message": "Převést na velká"
+	},
+	"toLowerCase": {
+		"message": "Převést na malá"
+	},
+	"copyFieldValue": {
+		"message": "Kopírovat ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"pasteFieldValue": {
+		"message": "Vložit ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookRenameFieldEditTypeTitle": {
+		"message": "Přejmenovat typ"
+	},
+	"wdw_cardbookRenameFieldAddTypeTitle": {
+		"message": "Přidat nový typ"
+	},
+	"wdw_cardbookRenameFieldOrgTitle": {
+		"message": "Editor organizace"
+	},
+	"wdw_cardbookRenameFieldEditCatTitle": {
+		"message": "Upravit kategorii"
+	},
+	"wdw_cardbookRenameFieldAddCatTitle": {
+		"message": "Přidat novou kategorii"
+	},
+	"wdw_cardbookRenameFieldEditNodeTitle": {
+		"message": "Upravit uzel"
+	},
+	"wdw_cardbookRenameFieldEditTypeLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldAddTypeLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldOrgLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldEditCatLabel": {
+		"message": "Kategorie:"
+	},
+	"wdw_cardbookRenameFieldAddCatLabel": {
+		"message": "Kategorie:"
+	},
+	"wdw_cardbookRenameFieldEditNodeLabel": {
+		"message": "$P1$:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
+		"message": "Definice omezení e-mailového účtu"
+	},
+	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
+		"message": "Definice kolekce odchozích e-mailů e-mailového účtu"
+	},
+	"ignoreCaseIgnoreDiacriticLabel": {
+		"message": "Ignorovat velikost písmen i diakritiku"
+	},
+	"ignoreCaseMatchDiacriticLabel": {
+		"message": "Ignorovat velikost písmen, hledat shodu v diakritice"
+	},
+	"matchCaseIgnoreDiacriticLabel": {
+		"message": "Shoda velikosti písmen, ignorovat diakritiku"
+	},
+	"matchCaseMatchDiacriticLabel": {
+		"message": "Shoda velikosti písmen i diakritiky"
+	},
+	"allCategories": {
+		"message": "Zobrazit vše"
+	},
+	"onlyCategories": {
+		"message": "Pouze kategorie"
+	},
+	"noCategory": {
+		"message": "Pouze kontakty"
+	},
+	"multipleCategories": {
+		"message": "Více kategorií"
+	},
+	"none": {
+		"message": "Žádná"
+	},
+	"multipleTypes": {
+		"message": "Více typů"
+	},
+	"noType": {
+		"message": "Žádný typ"
+	},
+	"eventContactsWindowLabel": {
+		"message": "Události pro: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fnDuplicatedMessage": {
+		"message": "(kopie)"
+	},
+	"allMailAccounts": {
+		"message": "Všechny e-mailové účty"
+	},
+	"includeLabel": {
+		"message": "Zahrnout"
+	},
+	"excludeLabel": {
+		"message": "Vyloučit"
+	},
+	"sendButtonLabel": {
+		"message": "Vytvoří novou zprávu"
+	},
+	"doNotShowAnymore": {
+		"message": "Již mě neupozorňovat při pokusu o zaslání e-mailu kontaktu bez e-mailové adresy."
+	},
+	"emptyEmailsCardConfirmMessage": {
+		"message": "Tento kontakt nemá e-mail: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"emptyEmailsCardsConfirmMessage": {
+		"message": "Tyto kontakty nemají e-maily: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventInNoteEventPrefix": {
+		"message": "Událost"
+	},
+	"deathSuffix": {
+		"message": "(smrt)"
+	},
+	"dateFormatsDLabel": {
+		"message": "D"
+	},
+	"dateFormatsMLabel": {
+		"message": "M"
+	},
+	"dateFormatsYLabel": {
+		"message": "Y"
+	},
+	"customLabel": {
+		"message": "Položka"
+	},
+	"valueAlreadyExists": {
+		"message": "Hodnota $P1$ již existuje",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"allAccountsLabel": {
+		"message": "Všechny adresáře"
+	},
+	"enabledAccountsLabel": {
+		"message": "Povolené adresáře"
+	},
+	"disabledAccountsLabel": {
+		"message": "Zakázané adresáře"
+	},
+	"localAccountsLabel": {
+		"message": "Místní adresáře"
+	},
+	"remoteAccountsLabel": {
+		"message": "Vzdálené adresáře"
+	},
+	"searchAccountsLabel": {
+		"message": "Uloýrná hledání"
+	},
+	"wdw_passwordMissingTitle": {
+		"message": "Chybí heslo"
+	},
+	"wdw_passwordWrongTitle": {
+		"message": "Neplatné heslo"
+	},
+	"dateDisplayedFormatLong": {
+		"message": "Dlouhý: %P1%"
+	},
+	"dateDisplayedFormatShort": {
+		"message": "Krátký: %P1%"
+	},
+	"addressFormatFormula": {
+		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
+	},
+	"newTokenTitle": {
+		"message": "Přihlaste se ke svému účtu $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"newTokenDescription": {
+		"message": "Aby mohl CardBook získat kontakty, potřebuje přístup k vašemu účtu $P1$. Přístupové údaje a data kontaktů se přenáší pouze mezi vaším počítačem a Googlem, nedostanou je žádné třetí strany.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"invalidEmail": {
+		"message": "$P1$ není platná e-mailová adresa, protože není ve formátu uživatel@server.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"appendEmailLabel": {
+		"message": "Přidat do seznamu: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryAddNew": {
+		"message": "Přidat novou kategorii"
+	},
+	"typeAddNew": {
+		"message": "Přidat nový typ"
+	},
+	"allContacts": {
+		"message": "Všechny kontakty"
+	},
+	"keyDescription": {
+		"message": "Šifrovací klíč"
+	},
+	"encryptionStarted": {
+		"message": "Zahajování šifrování"
+	},
+	"encryptionProcessed": {
+		"message": "Zašifrováno položek: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"encryptionFinished": {
+		"message": "Šifrování dokončeno"
+	},
+	"decryptionStarted": {
+		"message": "Zahajování dešifrování"
+	},
+	"decryptionProcessed": {
+		"message": "Dešifrováno položek: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"decryptionFinished": {
+		"message": "Dešifrování dokončeno"
+	},
+	"menu_undo.long.label": {
+		"message": "Zpět - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_undo.short.label": {
+		"message": "Zpět"
+	},
+	"menu_redo.long.label": {
+		"message": "Znovu - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_redo.short.label": {
+		"message": "Znovu"
+	},
+	"cardbookMenuItemLabel": {
+		"message": "CardBook"
+	},
+	"cardbookMenuItemAccesskey": {
+		"message": "b"
+	},
+	"cardbookMenuItemKey": {
+		"message": "b"
+	},
+	"cardbookMenuItemTooltip": {
+		"message": "Jít na záložku CardBooku"
+	},
+	"cardbookToolbarButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookToolbarButtonTooltip": {
+		"message": "Jít na záložku CardBooku"
+	},
+	"cardbookTabButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookTabButtonTooltip": {
+		"message": "Jít na záložku CardBooku"
+	},
+	"cardbookQFBButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookQFBButtonTooltip": {
+		"message": "Zobrazí pouze zprávy od lidí v kontaktech"
+	},
+	"quickFilterBar.booleanMode.tooltip": {
+		"message": "Režim filtrace dle štítku"
+	},
+	"quickFilterBar.booleanModeAny.label": {
+		"message": "Libovolný z"
+	},
+	"quickFilterBar.booleanModeAny.tooltip": {
+		"message": "Pro splnění kritéria musí být obsažen alespoň jeden ze zvolených štítků"
+	},
+	"quickFilterBar.booleanModeAll.label": {
+		"message": "Všechny z"
+	},
+	"quickFilterBar.booleanModeAll.tooltip": {
+		"message": "Pro splnění kritéria musí být obsaženy všechny ze zvolených štítků"
+	},
+	"newCardBookCardMenuLabel": {
+		"message": "Kontak CardBooku…"
+	},
+	"newCardBookCardMenuAccesskey": {
+		"message": "C"
+	},
+	"newCardBookCardMenuKey": {
+		"message": "N"
+	},
+	"newCardBookSearchMenuLabel": {
+		"message": "Prohledat CardBook…"
+	},
+	"newCardBookSearchMenuAccesskey": {
+		"message": "C"
+	},
+	"addToCardBookMenuLabel": {
+		"message": "Přidat do CardBooku"
+	},
+	"addToCardBookMenuAccesskey": {
+		"message": "P"
+	},
+	"editInCardBookMenuLabel": {
+		"message": "Upravit v CardBooku"
+	},
+	"editInCardBookMenuAccesskey": {
+		"message": "U"
+	},
+	"deleteInCardBookMenuLabel": {
+		"message": "Smazat kontakt v CardBooku"
+	},
+	"deleteInCardBookMenuAccesskey": {
+		"message": "S"
+	},
+	"IMPPMenuLabel": {
+		"message": "Připojit"
+	},
+	"IMPPMenuAccesskey": {
+		"message": "P"
+	},
+	"findAllEmailsFromContactMessengerLabel": {
+		"message": "Najít e-maily kontaktu"
+	},
+	"findAllEmailsFromContactMessengerAccesskey": {
+		"message": "k"
+	},
+	"findEmailsFromEmailMessengerLabel": {
+		"message": "Najít e-maily vztahující se k této e-mailové adrese"
+	},
+	"findEmailsFromEmailMessengerAccesskey": {
+		"message": "a"
+	},
+	"findAllEventsFromContactMessengerLabel": {
+		"message": "Najít v kalendáři události vztahující se k tomuto kontaktu"
+	},
+	"findAllEventsFromContactMessengerAccesskey": {
+		"message": "k"
+	},
+	"findEventsFromEmailMessengerLabel": {
+		"message": "Najít v kalendáři události vztahující se k této e-mailové adrese"
+	},
+	"findEventsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"mailContext-addToCardBookMenuLabel": {
+		"message": "Přidat do CardBooku…"
+	},
+	"mailContext-addToCardBookMenuAccesskey": {
+		"message": "P"
+	},
+	"addAllAttachementsToCardBookMenuLabel": {
+		"message": "Vše do CardBooku…"
+	},
+	"addAttachementToCardBookMenuLabel": {
+		"message": "Do CardBooku…"
+	},
+	"cardbookABPaneItemLabel": {
+		"message": "Panel adresáře"
+	},
+	"cardbookABPaneItemAccesskey": {
+		"message": "A"
+	},
+	"cardbookContactPaneItemLabel": {
+		"message": "Panel kontaktu"
+	},
+	"cardbookContactPaneItemAccesskey": {
+		"message": "K"
+	},
+	"wizard.title": {
+		"message": "Přidání nového adresáře"
+	},
+	"wizard.label": {
+		"message": "Přidání nového adresáře"
+	},
+	"welcomePage.wizard.description": {
+		"message": "Vítejte"
+	},
+	"welcomePage.description": {
+		"message": "Vypadá to, že používáte CardBook poprvé, takže se pokusíme najít kontakty. Nejprve se pokusíme do CardBooku importovat standardní adresář Thunderbirdu, pak se pokusíme nalézt možé vzdálené adresáře."
+	},
+	"initialPage.wizard.description": {
+		"message": "Umístění nového adresáře."
+	},
+	"initialPage.description": {
+		"message": "Je váš adresář místní nebo vzdálený ? :"
+	},
+	"initialPage.computer.label": {
+		"message": "Místní"
+	},
+	"initialPage.network.label": {
+		"message": "Vzdálený"
+	},
+	"initialPage.standard.label": {
+		"message": "Importovat standardní adresáře Thunderbirdu"
+	},
+	"initialPage.search.label": {
+		"message": "Vyhledávání do existujících adresářů"
+	},
+	"initialPage.find.label": {
+		"message": "Hledat vzdálené adresáře"
+	},
+	"localPage.wizard.description": {
+		"message": "Typ a umístění nového místního adresáře."
+	},
+	"localPage.type.description": {
+		"message": "Jaký je typ vašeho místního adresáře ? :"
+	},
+	"localPage.type.label": {
+		"message": "Typ"
+	},
+	"localPage.createDB.label": {
+		"message": "Vytvořit nový adresář"
+	},
+	"localPage.createDirectory.label": {
+		"message": "Vytvořit nový adresář (složka)"
+	},
+	"localPage.createFile.label": {
+		"message": "Vytvořit nový adresář (soubor)"
+	},
+	"localPage.openDirectory.label": {
+		"message": "Otevřít existující adresář (složka)"
+	},
+	"localPage.openFile.label": {
+		"message": "Otevřít existující adresář (soubor)"
+	},
+	"localPage.uri.groupbox": {
+		"message": "Adresa"
+	},
+	"localPage.uri.label": {
+		"message": "Adresář nebo soubor:"
+	},
+	"localPage.uri.description": {
+		"message": "S použitím prohlížeče zvolte umístění pro váš nový místní adresář. Pokud vytváříte nový soubor, jako příponu zadejte .vcf."
+	},
+	"localPage.uributton.label": {
+		"message": "Procházet"
+	},
+	"remotePage.wizard.description": {
+		"message": "Typ a umístění nového vzdáleného adresáře."
+	},
+	"remotePage.description": {
+		"message": "Jaký je typ vašeho vzdáleného adresáře ? : (Upozornění: Google nerespektuje vCard standardy)"
+	},
+	"remotePage.type.label": {
+		"message": "Typ"
+	},
+	"remotePage.carddav.label": {
+		"message": "CardDAV"
+	},
+	"remotePage.google.label": {
+		"message": "Google"
+	},
+	"remotePage.apple.label": {
+		"message": "Apple"
+	},
+	"remotePage.yahoo.label": {
+		"message": "Yahoo!"
+	},
+	"remotePage.connection.label": {
+		"message": "Připojení"
+	},
+	"remotePage.url.description": {
+		"message": "Pro adresář CardDAV zadejte URL vašeho vzdáleného adresáře. Můžete zkusit částečnou URL (příklad : http(s)://carddav.example.org). Pro Google adresář toto pole nevyplňujte"
+	},
+	"remotePage.url.label": {
+		"message": "URL:"
+	},
+	"remotePage.credentials.description": {
+		"message": "Zadejte přihlašovací údaje pro přístup k vašemu vzdálenému adresáři. Pro Google adresář by mělo být uživatelské jméno váš Google e-mail."
+	},
+	"remotePage.user.label": {
+		"message": "Uživatelské jméno:"
+	},
+	"remotePage.password.label": {
+		"message": "Heslo:"
+	},
+	"remotePage.passwordShow.label": {
+		"message": "Zobrazit"
+	},
+	"remotePage.validatebutton.label": {
+		"message": "Ověřit"
+	},
+	"locationSearchPage.wizard.description": {
+		"message": "Definice pokročilého vyhledávání."
+	},
+	"locationSearchPage.label": {
+		"message": "Pokročilé vyhledávání"
+	},
+	"abSearchHeading.label": {
+		"message": "Hledat v:"
+	},
+	"abSearchHeading.accesskey": {
+		"message": "H"
+	},
+	"matchAll.label": {
+		"message": "Odpovídající všem pravidlům"
+	},
+	"matchAll.accesskey": {
+		"message": "O"
+	},
+	"matchAny.label": {
+		"message": "Odpovídající některému pravidlu"
+	},
+	"matchAny.accesskey": {
+		"message": "d"
+	},
+	"googleOauthPage.wizard.description": {
+		"message": "Autentizace Google"
+	},
+	"namePage.wizard.description": {
+		"message": "Vlastnosti adresáře"
+	},
+	"namePage.selected.label": {
+		"message": "Vybraný"
+	},
+	"namePage.name.label": {
+		"message": "Jméno"
+	},
+	"namePage.color.label": {
+		"message": "Barva"
+	},
+	"namePage.urnuuid.label": {
+		"message": "Použít urn:uuid"
+	},
+	"namePage.DBCached.label": {
+		"message": "Pracovat offline"
+	},
+	"namePage.vCardVersion.label": {
+		"message": "vCard"
+	},
+	"namesPage.wizard.description": {
+		"message": "Vlastnosti adresářů"
+	},
+	"namesPage.name.label": {
+		"message": "Jména"
+	},
+	"namesPage.name.description": {
+		"message": "Bylo zjištěno více adresářů. Zvolte, které adresáře se mají otevřít a jejich jména :"
+	},
+	"findPage.wizard.description": {
+		"message": "Hledání vzdálených adresářů"
+	},
+	"findPage.name1.description": {
+		"message": "Nelze přidat žádný adresář."
+	},
+	"findPage.name2.description": {
+		"message": "Je možné přidat jeden adresář. Zvolte, jestli ho chcete přidat :"
+	},
+	"findPage.name3.description": {
+		"message": "Je možné přidat víc adresářů najednou. Vyberte, které chcete přidat :"
+	},
+	"finishPage.wizard.description": {
+		"message": "Nastavení adresářů"
+	},
+	"finishPage.description": {
+		"message": "Váš nový adresář byl úspěšně nastaven."
+	},
+	"finishsPage.description": {
+		"message": "Vaše nové adresáře byly úspěšně nastaveny."
+	},
+	"wdw_addressbooksEditTitle": {
+		"message": "Vlastnosti adresáře"
+	},
+	"colorLabel": {
+		"message": "Barva:"
+	},
+	"name.ABedit.label": {
+		"message": "Jméno:"
+	},
+	"name.ABedit.accesskey": {
+		"message": "J"
+	},
+	"nodesLabel": {
+		"message": "Uzly:"
+	},
+	"categoriesNodeLabel": {
+		"message": "Kategorie"
+	},
+	"orgNodeLabel": {
+		"message": "Organizace"
+	},
+	"typeLabel": {
+		"message": "Typ:"
+	},
+	"username.ABedit.label": {
+		"message": "Uživatelské jméno:"
+	},
+	"vCardVersionLabel": {
+		"message": "vCard:"
+	},
+	"readonlyLabel": {
+		"message": "Režim jen pro čtení"
+	},
+	"readonlyAccesskey": {
+		"message": "R"
+	},
+	"urnuuidLabel": {
+		"message": "Použít urn:uuid"
+	},
+	"DBCachedLabel": {
+		"message": "Pracovat offline"
+	},
+	"autoSyncGroupboxLabel": {
+		"message": "Opakovaná synchronizace"
+	},
+	"autoSyncLabel": {
+		"message": "Povolit opakovanou synchronizaci"
+	},
+	"autoSyncAccesskey": {
+		"message": "P"
+	},
+	"autoSyncIntervalLabel": {
+		"message": "Interval opakované synchronizace (minuty):"
+	},
+	"autoSyncIntervalAccesskey": {
+		"message": "T"
+	},
+	"miscTabLabel": {
+		"message": "Ost."
+	},
+	"fnFormulaCaption": {
+		"message": "Zobrazované jméno"
+	},
+	"fnFormulaLabel": {
+		"message": "Vytvořit zobrazované jméno:"
+	},
+	"fnFormulaAccesskey": {
+		"message": "z"
+	},
+	"resetFnFormulaLabel": {
+		"message": "Obnovit na výchozí hodnotu"
+	},
+	"resetFnFormulaAccesskey": {
+		"message": "h"
+	},
+	"applyToABButtonLabel": {
+		"message": "Použít pro…"
+	},
+	"applyToABButtonAccesskey": {
+		"message": "P"
+	},
+	"wdw_adrEditionTitle": {
+		"message": "Editor adresy"
+	},
+	"adrPostOfficeLabel": {
+		"message": "P.O. Box"
+	},
+	"adrExtendedAddrLabel": {
+		"message": "Byt nebo apartmá"
+	},
+	"adrStreetLabel": {
+		"message": "Ulice"
+	},
+	"adrLocalityLabel": {
+		"message": "Lokalita (město)"
+	},
+	"adrRegionLabel": {
+		"message": "Oblast (Stát nebo provincie)"
+	},
+	"adrPostalCodeLabel": {
+		"message": "Poštovní směrovací číslo"
+	},
+	"adrCountryLabel": {
+		"message": "Zěmě"
+	},
+	"deprecatedLabel": {
+		"message": "Zastaralé"
+	},
+	"daysLeftColumnLabel": {
+		"message": "Zbývá dnů"
+	},
+	"nameColumnLabel": {
+		"message": "Jméno"
+	},
+	"ageColumnLabel": {
+		"message": "Stáří"
+	},
+	"dateOfBirthColumnLabel": {
+		"message": "Datum narození"
+	},
+	"dateOfBirthFoundColumnLabel": {
+		"message": "Datum nalezeno"
+	},
+	"emailColumnLabel": {
+		"message": "E-mail"
+	},
+	"sendEmailLabel": {
+		"message": "Vytvořit novou zprávu"
+	},
+	"sendEmailAccesskey": {
+		"message": "E"
+	},
+	"syncLightningMenuItemLabel": {
+		"message": "Synch. s Lightningem"
+	},
+	"syncLightningMenuAccesskey": {
+		"message": "S"
+	},
+	"calendarNameLabel": {
+		"message": "Kalendář"
+	},
+	"calendarIdLabel": {
+		"message": "Id kalendáře"
+	},
+	"existingLabel": {
+		"message": "Existující"
+	},
+	"failedLabel": {
+		"message": "Selhala"
+	},
+	"succeededLabel": {
+		"message": "Uspěla"
+	},
+	"wdw_bulkOperationTitle": {
+		"message": "Běžící…"
+	},
+	"wdw_cardbookConfigurationAddCustomFieldTitle": {
+		"message": "Editor vlastních polí"
+	},
+	"customFieldCodeLabel": {
+		"message": "Název pole:"
+	},
+	"customFieldLabelLabel": {
+		"message": "Popisek pole:"
+	},
+	"mailAccountLabel": {
+		"message": "E-mailový účet:"
+	},
+	"addressbookLabel": {
+		"message": "Adresář:"
+	},
+	"categoryLabel": {
+		"message": "Kategorie:"
+	},
+	"wdw_cardbookConfigurationAddIMPPTitle": {
+		"message": "IMPP Editor"
+	},
+	"IMPPCodeLabel": {
+		"message": "Kód:"
+	},
+	"IMPPLabelLabel": {
+		"message": "Popisek:"
+	},
+	"IMPPProtocolLabel": {
+		"message": "Protokol:"
+	},
+	"wdw_cardbookConfigurationAddVcardTitle": {
+		"message": "Zvolte vCard kontakt"
+	},
+	"contactLabel": {
+		"message": "Kontakt:"
+	},
+	"filenameLabel": {
+		"message": "Přiložený soubor:"
+	},
+	"vCardLabel": {
+		"message": "vCard"
+	},
+	"CardBookTabLabel": {
+		"message": "Záložka CardBooku"
+	},
+	"IMPPsTabLabel": {
+		"message": "Adresy IM"
+	},
+	"customFieldsTabLabel": {
+		"message": "Vlastní pole"
+	},
+	"listsTabLabel": {
+		"message": "Seznamy"
+	},
+	"syncTabLabel": {
+		"message": "Synchronizace"
+	},
+	"emailTabLabel": {
+		"message": "E-mail"
+	},
+	"birthdaylistTabLabel": {
+		"message": "Narozeniny"
+	},
+	"synclistTabLabel": {
+		"message": "Upozornění na narozeniny"
+	},
+	"integrationGroupboxLabel": {
+		"message": "Integrace do Thunderbirdu"
+	},
+	"autocompletionLabel": {
+		"message": "Doplňování e-mailových adres"
+	},
+	"autocompletionAccesskey": {
+		"message": "A"
+	},
+	"autocompletionTooltip": {
+		"message": "Rozšíří dokončování adres kontaktů Thunderbirdu o adresáře CardBooku"
+	},
+	"autocompleteSortByPopularityLabel": {
+		"message": "Řadit e-mailové adresy podle oblíbenosti"
+	},
+	"autocompleteSortByPopularityAccesskey": {
+		"message": "d"
+	},
+	"autocompleteProposeConcatEmailsLabel": {
+		"message": "Navrhovat pro každý kontakt zvlášť spojené e-maily"
+	},
+	"autocompleteProposeConcatEmailsAccesskey": {
+		"message": "N"
+	},
+	"autocompleteShowAddressbookLabel": {
+		"message": "Zobrazit jméno adresáře"
+	},
+	"autocompleteShowAddressbookAccesskey": {
+		"message": "Z"
+	},
+	"autocompleteWithColorLabel": {
+		"message": "Použít barvu adresáře"
+	},
+	"autocompleteWithColorAccesskey": {
+		"message": "P"
+	},
+	"autocompleteRestrictSearchLabel": {
+		"message": "Omezit prohledávaná pole"
+	},
+	"autocompleteRestrictSearchAccesskey": {
+		"message": "P"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Upravit"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "U"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Obnovit na výchozí hodnotu"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "O"
+	},
+	"useColorLabel": {
+		"message": "Použít barvu adresáře jako:"
+	},
+	"useColorBackgroundLabel": {
+		"message": "Barvu pozadí"
+	},
+	"useColorBackgroundAccesskey": {
+		"message": "i"
+	},
+	"useColorTextLabel": {
+		"message": "Barvu textu"
+	},
+	"useColorTextAccesskey": {
+		"message": "t"
+	},
+	"useColorNothingLabel": {
+		"message": "Nedělejte nic"
+	},
+	"useColorNothingAccesskey": {
+		"message": "N"
+	},
+	"exclusiveLabel": {
+		"message": "Unikátní zdroj pro kontakty"
+	},
+	"exclusiveAccesskey": {
+		"message": "z"
+	},
+	"exclusiveTooltip": {
+		"message": "Pokud je zakázáno, tato možnost dovolí Thunderbirdu získat údaje pro žluté hvězdy, zobrazované jméno e-mailů a dokončování z standardního adresáře."
+	},
+	"accountsRestrictionsLabel": {
+		"message": "Omezení e-mailových účtů"
+	},
+	"accountsRestrictionsEnabledLabel": {
+		"message": "Povolen"
+	},
+	"accountsRestrictionsMailNameLabel": {
+		"message": "E-mailový účet"
+	},
+	"accountsRestrictionsABNameLabel": {
+		"message": "Adresář"
+	},
+	"accountsRestrictionsCatNameLabel": {
+		"message": "Kategorie"
+	},
+	"accountsRestrictionsIncludeNameLabel": {
+		"message": "Typ"
+	},
+	"addRestrictionLabel": {
+		"message": "Přidat"
+	},
+	"addRestrictionAccesskey": {
+		"message": "P"
+	},
+	"renameRestrictionLabel": {
+		"message": "Upravit"
+	},
+	"renameRestrictionAccesskey": {
+		"message": "U"
+	},
+	"deleteRestrictionLabel": {
+		"message": "Smazat"
+	},
+	"deleteRestrictionAccesskey": {
+		"message": "S"
+	},
+	"emailsCollectionLabel": {
+		"message": "Sbírat odchozí e-mail"
+	},
+	"emailsCollectionTooltip": {
+		"message": "Rozšiřuje standardní sběr odchozích adres Thunderbirdu. Pokud je povoleno, e-mailové adresy nevyskytující se v žádném adresáři CardBooku budou přidány do vybraného adresáře(ů)."
+	},
+	"emailsCollectionEnabledLabel": {
+		"message": "Povolen"
+	},
+	"emailsCollectionMailNameLabel": {
+		"message": "E-mailový účet"
+	},
+	"emailsCollectionABNameLabel": {
+		"message": "Adresář"
+	},
+	"emailsCollectionCatNameLabel": {
+		"message": "Kategorie"
+	},
+	"addEmailsCollectionLabel": {
+		"message": "Přidat"
+	},
+	"addEmailsCollectionAccesskey": {
+		"message": "P"
+	},
+	"renameEmailsCollectionLabel": {
+		"message": "Upravit"
+	},
+	"renameEmailsCollectionAccesskey": {
+		"message": "U"
+	},
+	"deleteEmailsCollectionLabel": {
+		"message": "Smazat"
+	},
+	"deleteEmailsCollectionAccesskey": {
+		"message": "S"
+	},
+	"logGroupboxLabel": {
+		"message": "Protokol"
+	},
+	"debugModeLabel": {
+		"message": "Ladící režim"
+	},
+	"debugModeAccesskey": {
+		"message": "L"
+	},
+	"debugModeTooltip": {
+		"message": "Pro rozšířené protokolování povolte ladící režim."
+	},
+	"statusInformationLineNumberLabel": {
+		"message": "Počet řádků uchovávaných v souboru protokolu:"
+	},
+	"statusInformationLineNumberAccesskey": {
+		"message": "v"
+	},
+	"tabsEditingGroupboxLabel": {
+		"message": "Zobrazit záložky"
+	},
+	"listTabLabel": {
+		"message": "Seznam"
+	},
+	"listTabAccesskey": {
+		"message": "S"
+	},
+	"mailPopularityTab.conf.label": {
+		"message": "Oblíbenost e-mailů"
+	},
+	"mailPopularityTab.conf.accesskey": {
+		"message": "E"
+	},
+	"technicalTab.conf.label": {
+		"message": "Technické"
+	},
+	"technicalTab.conf.accesskey": {
+		"message": "T"
+	},
+	"vCardTab.conf.label": {
+		"message": "vCard"
+	},
+	"vCardTab.conf.accesskey": {
+		"message": "C"
+	},
+	"advancedTab1Label": {
+		"message": "Rozšířené"
+	},
+	"advancedTab.conf.label": {
+		"message": "Rozšířené (pouze pro vCard 4.0)"
+	},
+	"advancedTab.conf.accesskey": {
+		"message": "R"
+	},
+	"localizeEditingGroupboxLabel": {
+		"message": "Vyhledat"
+	},
+	"localizeEngineOpenStreetMapLabel": {
+		"message": "OpenStreetMap"
+	},
+	"localizeEngineOpenStreetMapAccesskey": {
+		"message": "O"
+	},
+	"localizeEngineGoogleMapsLabel": {
+		"message": "Mapy Google"
+	},
+	"localizeEngineGoogleMapsAccesskey": {
+		"message": "G"
+	},
+	"localizeEngineBingMapsLabel": {
+		"message": "Mapy Bing"
+	},
+	"localizeEngineBingMapsAccesskey": {
+		"message": "B"
+	},
+	"localizeTargetLabel": {
+		"message": "Otevřít externí odkazy"
+	},
+	"localizeTargetInLabel": {
+		"message": "v Thunderbirdu"
+	},
+	"localizeTargetInAccesskey": {
+		"message": "V"
+	},
+	"localizeTargetOutLabel": {
+		"message": "mimo Thunderbird"
+	},
+	"localizeTargetOutAccesskey": {
+		"message": "M"
+	},
+	"showNameAsLabel": {
+		"message": "Zobrazit jméno jako"
+	},
+	"showNameAsLFLabel": {
+		"message": "Příjmení Křestní jméno"
+	},
+	"showNameAsLFAccesskey": {
+		"message": "P"
+	},
+	"showNameAsLFCommaLabel": {
+		"message": "Příjmení, Křestní jméno"
+	},
+	"showNameAsLFCommaAccesskey": {
+		"message": "j"
+	},
+	"showNameAsFLLabel": {
+		"message": "Křestní jméno Příjmení"
+	},
+	"showNameAsFLAccesskey": {
+		"message": "K"
+	},
+	"showNameAsDSPLabel": {
+		"message": "Zobrazované jméno"
+	},
+	"showNameAsDSPAccesskey": {
+		"message": "Z"
+	},
+	"adrFormulaCaption": {
+		"message": "Adresa"
+	},
+	"adrFormulaLabel": {
+		"message": "Vzorec pro formátování adresy:"
+	},
+	"adrFormulaAccesskey": {
+		"message": "V"
+	},
+	"resetAdrFormulaLabel": {
+		"message": "Obnovit na výchozí hodnotu"
+	},
+	"resetAdrFormulaAccesskey": {
+		"message": "h"
+	},
+	"miscEditingGroupboxLabel": {
+		"message": "Ost."
+	},
+	"preferEmailEditionLabel": {
+		"message": "Dvojklik na kontakt ho upraví namísto odeslání e-mailu"
+	},
+	"preferEmailEditionAccesskey": {
+		"message": "D"
+	},
+	"dateDisplayedFormatLabel": {
+		"message": "Formát data:"
+	},
+	"dateDisplayedFormatAccesskey": {
+		"message": "F"
+	},
+	"defaultRegionLabel": {
+		"message": "Výchozí oblast:"
+	},
+	"defaultRegionAccesskey": {
+		"message": "o"
+	},
+	"defaultRegionTooltip": {
+		"message": "Tato oblast bude výchozí pro adresy, stejně jako bude použit při formátování telefonních čísel."
+	},
+	"preferenceGroupboxLabel": {
+		"message": "Pole PREF"
+	},
+	"usePreferenceValueLabel": {
+		"message": "Použít hodnotu pøedvolby (pouze pro vCard 4.0)"
+	},
+	"usePreferenceValueAccesskey": {
+		"message": "h"
+	},
+	"preferenceValueLabel": {
+		"message": "Popisek hodnotového pole PREF"
+	},
+	"preferenceValueAccesskey": {
+		"message": "k"
+	},
+	"ABtypesGroupboxLabel": {
+		"message": "Adresář"
+	},
+	"typesCategoryGoogleLabel": {
+		"message": "Google"
+	},
+	"typesCategoryGoogleAccesskey": {
+		"message": "G"
+	},
+	"typesCategoryAppleLabel": {
+		"message": "Apple"
+	},
+	"typesCategoryAppleAccesskey": {
+		"message": "A"
+	},
+	"typesCategoryYahooLabel": {
+		"message": "Yahoo!"
+	},
+	"typesCategoryYahooAccesskey": {
+		"message": "Y"
+	},
+	"typesCategoryOthersLabel": {
+		"message": "Ostatní"
+	},
+	"typesCategoryOthersAccesskey": {
+		"message": "O"
+	},
+	"typesGroupboxLabel": {
+		"message": "Typy"
+	},
+	"typesCategoryAdrLabel": {
+		"message": "Adresa"
+	},
+	"typesCategoryAdrAccesskey": {
+		"message": "d"
+	},
+	"typesCategoryEmailLabel": {
+		"message": "E-mail"
+	},
+	"typesCategoryEmailAccesskey": {
+		"message": "E"
+	},
+	"typesCategoryImppLabel": {
+		"message": "IMPP"
+	},
+	"typesCategoryImppAccesskey": {
+		"message": "I"
+	},
+	"typesCategoryTelLabel": {
+		"message": "Telefon"
+	},
+	"typesCategoryTelAccesskey": {
+		"message": "T"
+	},
+	"typesCategoryUrlLabel": {
+		"message": "URL"
+	},
+	"typesCategoryUrlAccesskey": {
+		"message": "L"
+	},
+	"typesLabelLabel": {
+		"message": "Popisek"
+	},
+	"addTypeLabel": {
+		"message": "Přidat"
+	},
+	"addTypeAccesskey": {
+		"message": "P"
+	},
+	"renameTypeLabel": {
+		"message": "Upravit"
+	},
+	"renameTypeAccesskey": {
+		"message": "U"
+	},
+	"deleteTypeLabel": {
+		"message": "Smazat"
+	},
+	"deleteTypeAccesskey": {
+		"message": "S"
+	},
+	"resetTypeLabel": {
+		"message": "Obnovit na výchozí hodnotu"
+	},
+	"resetTypeAccesskey": {
+		"message": "O"
+	},
+	"IMPPGroupboxWarn": {
+		"message": "Toto nastavení umožňuje přímé otevření adresy IM s použitím správného protokolu."
+	},
+	"IMPPGroupboxLabel": {
+		"message": "Adresy IM"
+	},
+	"preferIMPPPrefLabel": {
+		"message": "Upřednostňovat internetovou komunikaci označenou"
+	},
+	"preferIMPPPrefAccesskey": {
+		"message": "i"
+	},
+	"preferIMPPPrefWarn": {
+		"message": "Pokud není žádná adresa označena, je navrženo propojení všech adres kontaktu."
+	},
+	"IMPPCodeHeaderLabel": {
+		"message": "Kód"
+	},
+	"IMPPLabelHeaderLabel": {
+		"message": "Popisek"
+	},
+	"IMPPProtocolHeaderLabel": {
+		"message": "Protokol"
+	},
+	"addIMPPLabel": {
+		"message": "Přidat"
+	},
+	"addIMPPAccesskey": {
+		"message": "P"
+	},
+	"renameIMPPLabel": {
+		"message": "Upravit"
+	},
+	"renameIMPPAccesskey": {
+		"message": "U"
+	},
+	"deleteIMPPLabel": {
+		"message": "Smazat"
+	},
+	"deleteIMPPAccesskey": {
+		"message": "S"
+	},
+	"URLPhoneGroupboxLabel": {
+		"message": "URL, která se má otevřít pro softwarové telefony"
+	},
+	"URLPhoneGroupboxWarn": {
+		"message": "Tato sekce se použije, pokud jste jako protokol u telefonu zvolily url. URL by měla obsahovat $1, což bude nahrazeno telefonním číslem."
+	},
+	"URLPhoneURLLabel": {
+		"message": "URL:"
+	},
+	"URLPhoneURLAccesskey": {
+		"message": "L"
+	},
+	"URLPhoneUserLabel": {
+		"message": "Uživatelské jméno:"
+	},
+	"URLPhoneUserAccesskey": {
+		"message": "j"
+	},
+	"URLPhonePasswordLabel": {
+		"message": "Heslo:"
+	},
+	"URLPhonePasswordAccesskey": {
+		"message": "H"
+	},
+	"URLPhonePasswordShowLabel": {
+		"message": "Zobrazit"
+	},
+	"URLPhonePasswordShowAccesskey": {
+		"message": "Z"
+	},
+	"URLPhoneBackgroundLabel": {
+		"message": "Spustit na pozadí"
+	},
+	"URLPhoneBackgroundAccesskey": {
+		"message": "S"
+	},
+	"encryptionGroupboxLabel": {
+		"message": "Šifrování"
+	},
+	"encryptionExplanation": {
+		"message": "CardBook může šifrovat vaše místní data. K tomuto účelu použije tajný klíč uložený ve správci hesel. Pokud tento klíč ztratíte, obnova vašich místních dat nebude možná. Pokud chcete dosáhnout co možná nejlepší ochrany, je doporučeno aktivovat hlavní heslo Thunderbirdu."
+	},
+	"localDataEncryptionEnabledLabel": {
+		"message": "Šifrovat místně uložené vizitky"
+	},
+	"localDataEncryptionEnabledAccesskey": {
+		"message": "i"
+	},
+	"customFieldRankHeader": {
+		"message": "Pořadí"
+	},
+	"customFieldCodeHeader": {
+		"message": "Název pole"
+	},
+	"customFieldLabelHeader": {
+		"message": "Popisek pole"
+	},
+	"customFieldsPersTitleLabel": {
+		"message": "Osobní informace"
+	},
+	"customFieldsPersTitleAccesskey": {
+		"message": "O"
+	},
+	"customFieldsOrgTitleLabel": {
+		"message": "Profesní informace"
+	},
+	"customFieldsOrgTitleAccesskey": {
+		"message": "P"
+	},
+	"addCustomFieldsLabel": {
+		"message": "Přidat"
+	},
+	"addCustomFieldsAccesskey": {
+		"message": "P"
+	},
+	"renameCustomFieldsLabel": {
+		"message": "Upravit"
+	},
+	"renameCustomFieldsAccesskey": {
+		"message": "U"
+	},
+	"deleteCustomFieldsLabel": {
+		"message": "Smazat"
+	},
+	"deleteCustomFieldsAccesskey": {
+		"message": "S"
+	},
+	"orgWarn": {
+		"message": "Pole ORG může obsahovat strukturovanou textovou hodnotu obsahující komponenty oddělené STŘEDNÍKEM (například : vašespolečnost;vašeslužba;vašeoddělení). Pole níže popisují popisky komponent obsažených v této struktuře."
+	},
+	"orgRankLabel": {
+		"message": "Pořadí"
+	},
+	"orgLabelLabel": {
+		"message": "Popisek pole"
+	},
+	"listPanelLabel": {
+		"message": "Pokud váš server nepodporuje kategorie (jako Google, Apple, Zimbra, atd…), seznamy jsou dobrý způsob, ak posílat e-maily skupinám. vCard 3.0 nativne seznamy nepodporuje, ale to lze obejít pomocí vlastních polí, takže pokud ve vCard 3.0 chcete použít seznamy, musíte definovat tato pole."
+	},
+	"listGroupboxLabel": {
+		"message": "Vlastní pole pro seznamy"
+	},
+	"kindCustomLabel": {
+		"message": "Druh:"
+	},
+	"kindCustomAccesskey": {
+		"message": "D"
+	},
+	"memberCustomLabel": {
+		"message": "Člen:"
+	},
+	"memberCustomAccesskey": {
+		"message": "Č"
+	},
+	"resetListLabel": {
+		"message": "Obnovit na výchozí hodnotu"
+	},
+	"resetListAccesskey": {
+		"message": "O"
+	},
+	"syncGroupboxLabel": {
+		"message": "Synch."
+	},
+	"syncWarn": {
+		"message": "Synchronizace zajistí odeslání vašich úprav na server a úprav na serveru k vám."
+	},
+	"syncAfterChangeLabel": {
+		"message": "Synchronizovat po změnách"
+	},
+	"syncAfterChangeAccesskey": {
+		"message": "c"
+	},
+	"initialSyncLabel": {
+		"message": "Provést prvotní synchronizaci při startu Thunderbirdu"
+	},
+	"initialSyncAccesskey": {
+		"message": "S"
+	},
+	"initialSyncDelayLabel": {
+		"message": "Zpoždění před provedením prvních požadavků (sekundy):"
+	},
+	"initialSyncDelayAccesskey": {
+		"message": "r"
+	},
+	"solveConflictsLabel": {
+		"message": "Pokud byl kontakt upraven jak na serveru, tak místně:"
+	},
+	"solveConflictsLocalLabel": {
+		"message": "Upřednostnit místní změnu"
+	},
+	"solveConflictsLocalAccesskey": {
+		"message": "M"
+	},
+	"solveConflictsRemoteLabel": {
+		"message": "Upřednostnit změnu ze serveru"
+	},
+	"solveConflictsRemoteAccesskey": {
+		"message": "S"
+	},
+	"solveConflictsUserLabel": {
+		"message": "Zeptat se uživatele"
+	},
+	"solveConflictsUserAccesskey": {
+		"message": "Z"
+	},
+	"maxModifsPushedLabel": {
+		"message": "Nejvyšší počet změn nahraných na server při jedné synchronizaci:"
+	},
+	"maxModifsPushedAccesskey": {
+		"message": "N"
+	},
+	"requestsGroupboxLabel": {
+		"message": "Požadavky"
+	},
+	"requestsTimeoutLabel": {
+		"message": "Časový limit (sekundy):"
+	},
+	"requestsTimeoutAccesskey": {
+		"message": "L"
+	},
+	"multigetLabel": {
+		"message": "Velikost skupiny při GET požadavcích:"
+	},
+	"multigetAccesskey": {
+		"message": "V"
+	},
+	"discoveryGroupboxLabel": {
+		"message": "Zjišování adresáøù"
+	},
+	"discoveryWarn": {
+		"message": "Pøi každé synchronizaci bude na níže uvedených URL provedeno hledání nových nebo odstranìných adresáøù."
+	},
+	"discoveryAccountsGroupboxLabel": {
+		"message": "Účty"
+	},
+	"advancedSyncGroupboxLabel": {
+		"message": "Pokročilé vlastnosti"
+	},
+	"decodeReportLabel": {
+		"message": "Dekódovat URL pro REPORT požadavky"
+	},
+	"decodeReportAccesskey": {
+		"message": "D"
+	},
+	"miscEmailGroupboxLabel": {
+		"message": "Posílání e-mailů"
+	},
+	"preferEmailPrefLabel": {
+		"message": "Upřednostnit e-mailové adresy označené jako PREFerované"
+	},
+	"preferEmailPrefAccesskey": {
+		"message": "W"
+	},
+	"preferEmailPrefWarn": {
+		"message": "Pokud není žádná z adres označena jako „PREFerovaná”, zprávaje poslána na všechny adresy kontaktu."
+	},
+	"warnEmptyEmailsLabel": {
+		"message": "Upozornit mě při pokusu o odeslání e-mailu kontaktu bez e-mailové adresy"
+	},
+	"warnEmptyEmailsAccesskey": {
+		"message": "U"
+	},
+	"useOnlyEmailLabel": {
+		"message": "Použít pouze e-mailové adresy"
+	},
+	"useOnlyEmailAccesskey": {
+		"message": "P"
+	},
+	"attachVCardWarn": {
+		"message": "Pokud chcete ke každé zprávě automaticky přiložit svou vizitku, zvolte pro každý e-mailový účet, která se má použít. Pokud je aktivní, CardBook automaticky přiloží vybranou vizitku ke každé odchozí zprávě."
+	},
+	"attachVCardGroupboxLabel": {
+		"message": "Připojit vCard"
+	},
+	"accountsVCardsEnabledLabel": {
+		"message": "Povolen"
+	},
+	"accountsVCardsMailLabel": {
+		"message": "E-mailový účet"
+	},
+	"accountsVCardsABNameLabel": {
+		"message": "Adresář"
+	},
+	"accountsVCardsFileNameLabel": {
+		"message": "Přiložený soubor"
+	},
+	"accountsVCardsFnLabel": {
+		"message": "Kontakt"
+	},
+	"addVCardLabel": {
+		"message": "Přidat"
+	},
+	"addVCardAccesskey": {
+		"message": "P"
+	},
+	"renameVCardLabel": {
+		"message": "Upravit"
+	},
+	"renameVCardAccesskey": {
+		"message": "U"
+	},
+	"deleteVCardLabel": {
+		"message": "Smazat"
+	},
+	"deleteVCardAccesskey": {
+		"message": "S"
+	},
+	"birthdayListWarn": {
+		"message": "Narozeniny jsou hledány pouze v adresářích CardBooku."
+	},
+	"addressbooksGroupboxLabel": {
+		"message": "Adresáře"
+	},
+	"selectAllABsLabel": {
+		"message": "Vybrat vše"
+	},
+	"searchForLabel": {
+		"message": "Hledat:"
+	},
+	"bday.conf.label": {
+		"message": "Narozeniny"
+	},
+	"bday.conf.accesskey": {
+		"message": "N"
+	},
+	"anniversary.conf.label": {
+		"message": "Výroèí (pouze pro vCard 4.0)"
+	},
+	"anniversary.conf.accesskey": {
+		"message": "V"
+	},
+	"deathdate.conf.label": {
+		"message": "Den úmrtí (pouze pro vCard 4.0)"
+	},
+	"deathdate.conf.accesskey": {
+		"message": "D"
+	},
+	"eventsLabel": {
+		"message": "Události"
+	},
+	"eventsAccesskey": {
+		"message": "U"
+	},
+	"calendarsGroupboxLabel": {
+		"message": "Kalendáře"
+	},
+	"selectAllCalendarsLabel": {
+		"message": "Vybrat vše"
+	},
+	"remindersTabLabel": {
+		"message": "Připomínky"
+	},
+	"remindViaPopupWindowGroupboxLabel": {
+		"message": "Připomenout pomocí vyskakovacího okna"
+	},
+	"numberOfDaysForSearchingLabel": {
+		"message": "Počet dnů pro kontrolu narozenin:"
+	},
+	"numberOfDaysForSearchingAccesskey": {
+		"message": "P"
+	},
+	"showPopupOnStartupLabel": {
+		"message": "Zobrazit vyskakovací okno při startu"
+	},
+	"showPopupOnStartupAccesskey": {
+		"message": "Z"
+	},
+	"showPeriodicPopupLabel": {
+		"message": "Zobrazit denní vyskakovací okno"
+	},
+	"showPeriodicPopupAccesskey": {
+		"message": "d"
+	},
+	"periodicPopupTimeLabel": {
+		"message": "Čas zobrazení (hh:mm):"
+	},
+	"periodicPopupTimeAccesskey": {
+		"message": "a"
+	},
+	"showPopupEvenIfNoBirthdayLabel": {
+		"message": "Zobrazovat vyskakovací okno, když je seznam narozenin prázdný"
+	},
+	"showPopupEvenIfNoBirthdayAccesskey": {
+		"message": "o"
+	},
+	"remindViaLightningGroupboxLabel": {
+		"message": "Připomenout pomocí doplňku Thunderbirdu pro kalendář Lightning"
+	},
+	"numberOfDaysForWritingLabel": {
+		"message": "Počet dnů pro zapsání narozenin:"
+	},
+	"numberOfDaysForWritingAccesskey": {
+		"message": "z"
+	},
+	"syncWithLightningOnStartupLabel": {
+		"message": "Synchronizovat s Lightningem při startu"
+	},
+	"syncWithLightningOnStartupAccesskey": {
+		"message": "L"
+	},
+	"calendarEntryTitleLabel": {
+		"message": "Titulek události v kalendáři:"
+	},
+	"calendarEntryTitleTooltip": {
+		"message": "Šablona titulku pro událost v kalendáři. Měla by obsahovat dva zástupné znaky &#37;S, které budou nahrazeny jménem a věkem. Pokud je pole prázdné, použije se standardní zpráva."
+	},
+	"calendarEntryTitleAccesskey": {
+		"message": "T"
+	},
+	"resetCalendarEntryTitleButtonLabel": {
+		"message": "Obnovit na výchozí hodnotu"
+	},
+	"resetCalendarEntryTitleButtonAccesskey": {
+		"message": "h"
+	},
+	"calendarEntryTimeLabel": {
+		"message": "Čas události v kalendáři (hh:mm):"
+	},
+	"calendarEntryTimeAccesskey": {
+		"message": "s"
+	},
+	"calendarEntryWholeDayLabel": {
+		"message": "Událost v kalendáři na celý den"
+	},
+	"calendarEntryWholeDayAccesskey": {
+		"message": "e"
+	},
+	"calendarEntryAlarmLabel": {
+		"message": "Alarm(y) n hodin pro událostí v kalendáři (Příklad: 4,+1):"
+	},
+	"calendarEntryAlarmTooltip": {
+		"message": "Zadejte, kolik dnů před událostí vám má upozornění Lightningu události připomenout. Bez data. Pokud je pole prázdné, nebude žádné upozornění. Pokud chcete vícero alarmů, zadejte je oddělené čárkami."
+	},
+	"calendarEntryAlarmAccesskey": {
+		"message": "p"
+	},
+	"calendarEntryCategoriesLabel": {
+		"message": "Kategorie pro událost v kalendáři:"
+	},
+	"calendarEntryCategoriesTooltip": {
+		"message": "Jedna nebo více kategorií oddělených čárkou. Pokud je pole prázdné, žádné kategorie nebudou nastaveny."
+	},
+	"calendarEntryCategoriesAccesskey": {
+		"message": "g"
+	},
+	"categoriesPicker.label": {
+		"message": "Filtr kategorií:"
+	},
+	"categoriesPicker.accesskey": {
+		"message": "t"
+	},
+	"deleteAddrBookCard.label": {
+		"message": "Smazat"
+	},
+	"deleteAddrBookCard.accesskey": {
+		"message": "m"
+	},
+	"editAddrBookCard.label": {
+		"message": "Upravit"
+	},
+	"editAddrBookCard.accesskey": {
+		"message": "U"
+	},
+	"addressbookPicker.label": {
+		"message": "Kontakty:"
+	},
+	"addressbookPicker.accesskey": {
+		"message": "S"
+	},
+	"searchContacts.label": {
+		"message": "Hledat:"
+	},
+	"searchContacts.accesskey": {
+		"message": "H"
+	},
+	"SearchNameOrEmail.label": {
+		"message": "Jméno nebo e-mail"
+	},
+	"addtoToFieldMenu.label": {
+		"message": "Přidat do Komu"
+	},
+	"addtoToFieldMenu.accesskey": {
+		"message": "K"
+	},
+	"addtoCcFieldMenu.label": {
+		"message": "Přidat do Kopie"
+	},
+	"addtoCcFieldMenu.accesskey": {
+		"message": "p"
+	},
+	"addtoBccFieldMenu.label": {
+		"message": "Přidat do Skrytá kopie"
+	},
+	"addtoBccFieldMenu.accesskey": {
+		"message": "S"
+	},
+	"addtoReplytoFieldMenu.label": {
+		"message": "Přidat do Odpověd"
+	},
+	"addtoReplytoFieldMenu.accesskey": {
+		"message": "O"
+	},
+	"toButton.label": {
+		"message": "Komu"
+	},
+	"toButton.accesskey": {
+		"message": "K"
+	},
+	"ccButton.label": {
+		"message": "Kopie"
+	},
+	"ccButton.accesskey": {
+		"message": "p"
+	},
+	"bccButton.label": {
+		"message": "Skrytá kopie"
+	},
+	"bccButton.accesskey": {
+		"message": "S"
+	},
+	"replytoButton.label": {
+		"message": "Odpověd"
+	},
+	"replytoButton.accesskey": {
+		"message": "O"
+	},
+	"newContactAbContext.label": {
+		"message": "Nový kontakt"
+	},
+	"newContactAbContext.accesskey": {
+		"message": "k"
+	},
+	"newListAbContext.label": {
+		"message": "Nová skupina"
+	},
+	"newListAbContext.accesskey": {
+		"message": "s"
+	},
+	"wdw_cardbookWindowLabel": {
+		"message": "CardBook"
+	},
+	"enableAccountsTooltip": {
+		"message": "Povolit nebo zakázat vyhledávání a synchronizaci adresářů."
+	},
+	"colorAccountsTooltip": {
+		"message": "Obarvit výsledky vyhledáváání (použít když vyhledávání zahrnují více adresářů)."
+	},
+	"readonlyAccountsTooltip": {
+		"message": "Nastavte adresáře jako zapisovatelné, nebo jako jen pro čtení."
+	},
+	"searchRemoteLabel": {
+		"message": "Tato složka kontaktů zobrazuje kontakty pouze po vyhledání"
+	},
+	"columnChooser2.tooltip": {
+		"message": "Vyberte sloupce pro zobrazení"
+	},
+	"cardbookAccountMenuLabel": {
+		"message": "Adresář"
+	},
+	"cardbookAccountMenuAddServerLabel": {
+		"message": "Nové adresář"
+	},
+	"cardbookAccountMenuEditServerLabel": {
+		"message": "Upravit adresář"
+	},
+	"cardbookAccountMenuCloseServerLabel": {
+		"message": "Smazat adresář"
+	},
+	"cardbookAccountMenuSyncLabel": {
+		"message": "Synchronizovat adresář"
+	},
+	"cardbookAccountMenuSyncsLabel": {
+		"message": "Synchronizovat všechny adresáře"
+	},
+	"cardbookContactsMenuLabel": {
+		"message": "Kontakty"
+	},
+	"cardbookToolsMenuLabel": {
+		"message": "Nástroje"
+	},
+	"cardbookToolsMenuBirthdayListLabel": {
+		"message": "Zobrazit seznam narozenin"
+	},
+	"cardbookToolsMenuSyncLightningLabel": {
+		"message": "Přidat narozeniny do kalendáře"
+	},
+	"cardbookToolsMenuFindAllDuplicatesLabel": {
+		"message": "Najít duplicitní kontakty ve všech adresářích"
+	},
+	"cardbookToolsMenuFindSingleDuplicatesLabel": {
+		"message": "Najít duplicitní kontakty v aktuálním adresáři"
+	},
+	"cardbookToolsMenuPrefsLabel": {
+		"message": "Nastavení CardBooku"
+	},
+	"cardbookToolbarLabel": {
+		"message": "Panel nástrojů CardBooku"
+	},
+	"cardbookToolbarAccesskey": {
+		"message": "C"
+	},
+	"cardbookABPaneToolbarLabel": {
+		"message": "Panel nástrojů panelu adresářů CardBooku"
+	},
+	"cardbookABPaneToolbarAccesskey": {
+		"message": "d"
+	},
+	"CustomizeCardBookToolbarLabel": {
+		"message": "Vlastní…"
+	},
+	"CustomizeCardBookToolbarAccesskey": {
+		"message": "V"
+	},
+	"cardbookToolbarAddServerButtonLabel": {
+		"message": "Nové adresář"
+	},
+	"cardbookToolbarAddServerButtonTooltip": {
+		"message": "Přidat místní nebo vzdálený adresář"
+	},
+	"cardbookToolbarSyncButtonLabel": {
+		"message": "Synchronizovat"
+	},
+	"cardbookToolbarSyncButtonTooltip": {
+		"message": "Synchronizovat všechny adresáře"
+	},
+	"cardbookToolbarWriteButtonLabel": {
+		"message": "Napsat zprávu"
+	},
+	"cardbookToolbarWriteButtonTooltip": {
+		"message": "Vytvoří novou zprávu"
+	},
+	"cardbookToolbarChatButtonLabel": {
+		"message": "Připojit"
+	},
+	"cardbookToolbarChatButtonTooltip": {
+		"message": "Pošle krátkou zprávu nebo začne rozhovor"
+	},
+	"cardbookToolbarConfigurationButtonLabel": {
+		"message": "Předvolby"
+	},
+	"cardbookToolbarConfigurationButtonTooltip": {
+		"message": "Nastavení CardBooku"
+	},
+	"cardbookToolbarAddContactButtonLabel": {
+		"message": "Nový kontakt"
+	},
+	"cardbookToolbarAddContactButtonTooltip": {
+		"message": "Vytvoří nový kontakt"
+	},
+	"cardbookToolbarAddListButtonLabel": {
+		"message": "Nová skupina"
+	},
+	"cardbookToolbarAddListButtonTooltip": {
+		"message": "Vytvoří novou skupinu"
+	},
+	"cardbookToolbarEditButtonLabel": {
+		"message": "Upravit"
+	},
+	"cardbookToolbarEditButtonTooltip": {
+		"message": "Dovoluje úpravu kontaktu"
+	},
+	"cardbookToolbarRemoveButtonLabel": {
+		"message": "Smazat"
+	},
+	"cardbookToolbarRemoveButtonTooltip": {
+		"message": "Umožňuje smazání kontaktu"
+	},
+	"cardbookToolbarPrintButtonLabel": {
+		"message": "Náhled tisku"
+	},
+	"cardbookToolbarPrintButtonTooltip": {
+		"message": "Umožňue tisknout výběr"
+	},
+	"cardbookToolbarBackButtonLabel": {
+		"message": "Zpět"
+	},
+	"cardbookToolbarBackButtonTooltip": {
+		"message": "Jít jednu akci zpět"
+	},
+	"cardbookToolbarForwardButtonLabel": {
+		"message": "Znovu"
+	},
+	"cardbookToolbarForwardButtonTooltip": {
+		"message": "Jít jednu akci vpřed"
+	},
+	"cardbookToolbarAppMenuButtonLabel": {
+		"message": "Menu CardBooku"
+	},
+	"cardbookToolbarAppMenuButtonTooltip": {
+		"message": "Menu CardBooku"
+	},
+	"cardbookToolbarSearchBoxLabel": {
+		"message": "Hledání v kontaktech"
+	},
+	"cardbookToolbarSearchBoxTooltip": {
+		"message": "Hledání v kontaktech"
+	},
+	"cardbookToolbarComplexSearchLabel": {
+		"message": "Pokročilé vyhledávání"
+	},
+	"cardbookToolbarComplexSearchTooltip": {
+		"message": "Vyhledávajte pomocí více podmínek"
+	},
+	"cardbookToolbarThMenuButtonLabel": {
+		"message": "Nabídka aplikace"
+	},
+	"cardbookToolbarThMenuButtonTooltip": {
+		"message": "Zobrazí nabídku aplikace Thunderbird"
+	},
+	"cardbookToolbarABMenuLabel": {
+		"message": "Zobrazení adresářů"
+	},
+	"cardbookToolbarABMenuTooltip": {
+		"message": "Zvolte, jak budou adresáře zobrazeny"
+	},
+	"generalTabLabel": {
+		"message": "Obecné"
+	},
+	"mailPopularityTabLabel": {
+		"message": "Oblíbenost e-mailů"
+	},
+	"technicalTabLabel": {
+		"message": "Technické"
+	},
+	"vCardTabLabel": {
+		"message": "vCard"
+	},
+	"noteTabLabel": {
+		"message": "Poznámky"
+	},
+	"advancedTabLabel": {
+		"message": "Rozšířené"
+	},
+	"miscGroupboxLabel": {
+		"message": "Další"
+	},
+	"othersGroupboxLabel": {
+		"message": "Ostatní"
+	},
+	"techGroupboxLabel": {
+		"message": "Technické"
+	},
+	"labelGroupboxLabel": {
+		"message": "Popisky"
+	},
+	"agentLabel": {
+		"message": "Agent"
+	},
+	"keyLabel": {
+		"message": "Klíč"
+	},
+	"photolocalURILabel": {
+		"message": "Místní fotka"
+	},
+	"logolocalURILabel": {
+		"message": "místní logo"
+	},
+	"soundlocalURILabel": {
+		"message": "Místní zvuk"
+	},
+	"photoURILabel": {
+		"message": "Fotka"
+	},
+	"logoURILabel": {
+		"message": "Logo"
+	},
+	"soundURILabel": {
+		"message": "Zvuk"
+	},
+	"cardurlLabel": {
+		"message": "Card URL"
+	},
+	"cacheuriLabel": {
+		"message": "Uložit URI do mezipaměti"
+	},
+	"localizeadrTreeLabel": {
+		"message": "Vyhledat"
+	},
+	"toEmailEmailTreeLabel": {
+		"message": "Vytvořit novou zprávu"
+	},
+	"ccEmailEmailTreeLabel": {
+		"message": "Vytvořit novou zprávu (kopie / cc)"
+	},
+	"bccemailemailTreeLabel": {
+		"message": "Vytvořit novou zprávu (skrytá kopie / bcc)"
+	},
+	"findemailemailTreeLabel": {
+		"message": "Najít e-maily vztahující se k této e-mailové adrese"
+	},
+	"findeventemailTreeLabel": {
+		"message": "Najít v kalendáři události vztahující se k této e-mailové adrese"
+	},
+	"openURLTreeLabel": {
+		"message": "Otevřít URL"
+	},
+	"toEmailCardFromAccountsOrCatsLabel": {
+		"message": "Vytvořit novou zprávu"
+	},
+	"toEmailCardFromCardsLabel": {
+		"message": "Vytvořit novou zprávu"
+	},
+	"ccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Vytvořit novou zprávu (kopie / cc)"
+	},
+	"ccEmailCardFromCardsLabel": {
+		"message": "Vytvořit novou zprávu (kopie / cc)"
+	},
+	"bccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Vytvořit novou zprávu (skrytá kopie / bcc)"
+	},
+	"bccEmailCardFromCardsLabel": {
+		"message": "Vytvořit novou zprávu (skrytá kopie / bcc)"
+	},
+	"shareCardByEmailFromAccountsOrCatsLabel": {
+		"message": "Sdílet e-mailem"
+	},
+	"shareCardByEmailFromCardsLabel": {
+		"message": "Sdílet e-mailem"
+	},
+	"categoryHeader": {
+		"message": "Kategorie"
+	},
+	"findEmailsFromCardsLabel": {
+		"message": "Najít e-maily kontaktu"
+	},
+	"findEventsFromCardsLabel": {
+		"message": "Najít v kalendáři události vztahující se k tomuto kontaktu"
+	},
+	"localizeCardFromCardsLabel": {
+		"message": "Vyhledat"
+	},
+	"openURLCardFromCardsLabel": {
+		"message": "Otevřít URL"
+	},
+	"cutCardFromAccountsOrCatsLabel": {
+		"message": "Vyjmout"
+	},
+	"cutCardFromCardsLabel": {
+		"message": "Vyjmout"
+	},
+	"copyCardFromAccountsOrCatsLabel": {
+		"message": "Kopírovat"
+	},
+	"copyCardFromCardsLabel": {
+		"message": "Kopírovat"
+	},
+	"pasteCardFromAccountsOrCatsLabel": {
+		"message": "Vložit"
+	},
+	"pasteCardFromCardsLabel": {
+		"message": "Vložit"
+	},
+	"pasteEntryLabel": {
+		"message": "Vložit záznam"
+	},
+	"exportCardToFileLabel": {
+		"message": "Exportovat do souboru"
+	},
+	"exportCardToDirLabel": {
+		"message": "Exportovat do adresáře"
+	},
+	"importCardFromFileLabel": {
+		"message": "Importovat kontakty ze souboru"
+	},
+	"importCardFromDirLabel": {
+		"message": "Importovat kontakty z adresáře"
+	},
+	"findDuplicatesFromAccountsOrCatsLabel": {
+		"message": "Najít duplicitní kontakty v aktuálním adresáři"
+	},
+	"generateFnFromAccountsOrCatsLabel": {
+		"message": "Generovat zobrazovaná jména"
+	},
+	"mergeCardsFromCardsLabel": {
+		"message": "Sloučit kontakty"
+	},
+	"duplicateCardFromCardsLabel": {
+		"message": "Duplicitní kontakt"
+	},
+	"convertListToCategoryFromCardsLabel": {
+		"message": "Převést seznam na kategorii"
+	},
+	"editAccountFromAccountsOrCatsLabel": {
+		"message": "Upravit adresář"
+	},
+	"syncAccountFromAccountsOrCatsLabel": {
+		"message": "Synchronizovat adresář"
+	},
+	"removeAccountFromAccountsOrCatsLabel": {
+		"message": "Smazat adresář"
+	},
+	"editEventLabel": {
+		"message": "Upravit událost"
+	},
+	"editEventAccesskey": {
+		"message": "U"
+	},
+	"eventsTree.title.label": {
+		"message": "Název"
+	},
+	"eventsTree.title.tooltip2": {
+		"message": "Seřadíte podle názvu"
+	},
+	"eventsTree.startdate.label": {
+		"message": "Začátek"
+	},
+	"eventsTree.startdate.tooltip2": {
+		"message": "Seřadíte podle začátku"
+	},
+	"eventsTree.enddate.label": {
+		"message": "Konec"
+	},
+	"eventsTree.enddate.tooltip2": {
+		"message": "Seřadíte podle konce"
+	},
+	"eventsTree.categories.label": {
+		"message": "Kategorie"
+	},
+	"eventsTree.categories.tooltip2": {
+		"message": "Seřadíte podle kategorie"
+	},
+	"eventsTree.location.label": {
+		"message": "Místo"
+	},
+	"eventsTree.location.tooltip2": {
+		"message": "Seřadíte podle místa"
+	},
+	"eventsTree.status.label": {
+		"message": "Stav"
+	},
+	"eventsTree.status.tooltip2": {
+		"message": "Seřadíte podle stavu"
+	},
+	"eventsTree.calendarname.label": {
+		"message": "Název kalendáře"
+	},
+	"eventsTree.calendarname.tooltip2": {
+		"message": "Seřadíte podle názvu kalendáře"
+	},
+	"createEventLabel": {
+		"message": "Nová událost"
+	},
+	"createEventAccesskey": {
+		"message": "N"
+	},
+	"adrFormulaExplanation": {
+		"message": "Formátování adres v CardBooku je možné přizpůsobit. Tento vzorec se skládá z bloků uzavřených v “()”. V těchto blocích může být více částí oddělených “|”."
+	},
+	"fnFormulaExplanation": {
+		"message": "Generování zobrazovaného jména v CardBooku je možné přizpůsobit. Tento vzorec se skládá z bloků ohraničených “()”. V těchto blocích může být více částí oddělených “|”."
+	},
+	"formulaExplanation1": {
+		"message": "({{1}}|{{2}}) : Pokud je {{1}} prázdný, potom je blok nahrazen obsahem {{2}}."
+	},
+	"formulaExplanation2": {
+		"message": "({{1}}|{{2}}|{{3}}) : Pokud se {{1}} rovná {{2}}, blok bude nahrazen {{3}}."
+	},
+	"formulaExplanation3": {
+		"message": "({{1}}|{{2}}|{{3}}|{{4}}) : Pokud se {{1}} rovná {{2}}, pak bude blok nahrazen obsahem {{3}}, jinak obsahem {{4}}."
+	},
+	"formulaExplanation4": {
+		"message": "({{1}}|*|{{2}}|{{3}}|{{4}}) : Pokud {{1}} obsahuje {{2}}, potom bude blok nahrazen obsahem {{3}}, jinak obsahem {{4}}."
+	},
+	"formulaExplanation5": {
+		"message": "({{1}}|^|{{2}}|{{3}}|{{4}}) : Pokud {{1}} začíná na {{2}}, potom bude blok nahrazen obsahem {obsahem {3}}, jinak obsahem {{4}}."
+	},
+	"formulaExplanation6": {
+		"message": "({{1}}|$|{{2}}|{{3}}|{{4}}) : Pokud {{1}} končí na {{2}}, potom bude blok nahrazen obsahem {{3}}, jinak obsahem {{4}}."
+	},
+	"settingsTitlelabel": {
+		"message": "Nastavení tisku"
+	},
+	"title.print.label": {
+		"message": "Titulek"
+	},
+	"title.print.accesskey": {
+		"message": "T"
+	},
+	"displayHeadersLabel": {
+		"message": "Zobrazit hlavičky odstavců"
+	},
+	"displayHeadersAccesskey": {
+		"message": "h"
+	},
+	"displayFieldNamesLabel": {
+		"message": "Zobrazit jména polí"
+	},
+	"displayFieldNamesAccesskey": {
+		"message": "j"
+	},
+	"displayTypesLabel": {
+		"message": "Zobrazit typy a předvolby"
+	},
+	"displayTypesAccesskey": {
+		"message": "y"
+	},
+	"fieldsToPrintGroupboxLabel": {
+		"message": "Co tisknout"
+	},
+	"displayLabel": {
+		"message": "Zobrazované jméno"
+	},
+	"displayAccesskey": {
+		"message": "Z"
+	},
+	"personalLabel": {
+		"message": "Osobní informace"
+	},
+	"personalAccesskey": {
+		"message": "O"
+	},
+	"org.print.label": {
+		"message": "Profesní informace"
+	},
+	"org.print.accesskey": {
+		"message": "P"
+	},
+	"categories.print.label": {
+		"message": "Kategorie"
+	},
+	"categories.print.accesskey": {
+		"message": "K"
+	},
+	"adr.print.label": {
+		"message": "Adresy"
+	},
+	"adr.print.accesskey": {
+		"message": "A"
+	},
+	"tel.print.label": {
+		"message": "Telefonní čísla"
+	},
+	"tel.print.accesskey": {
+		"message": "T"
+	},
+	"email.print.label": {
+		"message": "E-mailové adresy"
+	},
+	"email.print.accesskey": {
+		"message": "E"
+	},
+	"impp.print.label": {
+		"message": "Adresy IM"
+	},
+	"impp.print.accesskey": {
+		"message": "I"
+	},
+	"url.print.label": {
+		"message": "URL"
+	},
+	"url.print.ccesskey": {
+		"message": "U"
+	},
+	"note.print.label": {
+		"message": "Poznámky"
+	},
+	"note.print.accesskey": {
+		"message": "z"
+	},
+	"useColorCheckLabel": {
+		"message": "Použít barvu"
+	},
+	"useColorCheckAccesskey": {
+		"message": "P"
+	},
+	"existingDataGroupboxLabel": {
+		"message": "Přidat k tomuto kontaktu"
+	},
+	"cardbookSwitchButtonTooltip": {
+		"message": "Přehodit příjmení a křestní jméno"
+	},
+	"descriptionTextbox": {
+		"message": "Popis"
+	},
+	"categoriesTextboxLabel": {
+		"message": "Přidat novou kategorii"
+	},
+	"typesTextboxLabel": {
+		"message": "Přidat nový typ"
+	},
+	"categoriesListboxLabel": {
+		"message": "Existující kategorie"
+	},
+	"categoryMenuLabel": {
+		"message": "Nová kategorie…"
+	},
+	"viewResultEditionLabel": {
+		"message": "Zobrazit výsledek"
+	},
+	"viewResultEditionAccesskey": {
+		"message": "V"
+	},
+	"createEditionLabel": {
+		"message": "Vytvořit"
+	},
+	"createEditionAccesskey": {
+		"message": "T"
+	},
+	"createAndReplaceEditionLabel": {
+		"message": "Vytvořit a nahradit"
+	},
+	"createAndReplaceEditionAccesskey": {
+		"message": "N"
+	},
+	"saveEditionLabel": {
+		"message": "Uložit"
+	},
+	"saveEditionAccesskey": {
+		"message": "U"
+	},
+	"validateEditionLabel": {
+		"message": "Ověřit"
+	},
+	"validateEditionAccesskey": {
+		"message": "O"
+	},
+	"cancelEditionLabel": {
+		"message": "Zrušit"
+	},
+	"cancelEditionAccesskey": {
+		"message": "Z"
+	},
+	"closeEditionLabel": {
+		"message": "Zavřít"
+	},
+	"closeEditionAccesskey": {
+		"message": "Z"
+	},
+	"buttonAppendToListLabel": {
+		"message": "Přidat"
+	},
+	"buttonAppendToListAccesskey": {
+		"message": "P"
+	},
+	"buttonRemoveFromListLabel": {
+		"message": "Odstranit"
+	},
+	"buttonRemoveFromListAccesskey": {
+		"message": "O"
+	},
+	"buttonGuessFromListLabel": {
+		"message": "Odhadnout"
+	},
+	"buttonGuessFromListAccesskey": {
+		"message": "O"
+	},
+	"loadTemplateLabel": {
+		"message": "Volba šablony"
+	},
+	"loadTemplateAccesskey": {
+		"message": "a"
+	},
+	"saveTemplateLabel": {
+		"message": "Uložit šablonu"
+	},
+	"saveTemplateAccesskey": {
+		"message": "š"
+	},
+	"convertVCardsLabel": {
+		"message": "Převést vizitky"
+	},
+	"convertVCardsTooltip": {
+		"message": "Verze VCard je u některých kontaktů odlišná od verze VCard používané tímto adresářem, toto tlačítko může převést verzi těchto kontaktů."
+	},
+	"convertVCardsAccesskey": {
+		"message": "P"
+	},
+	"wdw_findDuplicatesTitle": {
+		"message": "Duplicitní kontakty"
+	},
+	"addImageCardFromFileLabel": {
+		"message": "Přidat obrázek ze souboru"
+	},
+	"pasteImageCardLabel": {
+		"message": "Vložit obrázek"
+	},
+	"saveImageCardLabel": {
+		"message": "Uložit obrázek jako…"
+	},
+	"copyImageCardLabel": {
+		"message": "Kopírovat obrázek"
+	},
+	"copyImageLocationCardLabel": {
+		"message": "Kopírovat adresu obrázku"
+	},
+	"deleteImageCardLabel": {
+		"message": "Smazat obrázek"
+	},
+	"kind.edit.label": {
+		"message": "Druh"
+	},
+	"kind.edit.accesskey": {
+		"message": "D"
+	},
+	"addEmailGroupboxLabel": {
+		"message": "E-mailová adresa"
+	},
+	"availableCardsGroupboxLabel": {
+		"message": "Dostupné kontakty"
+	},
+	"nameOrEmailLabel": {
+		"message": "Jméno nebo e-mail"
+	},
+	"appendContactLabel": {
+		"message": "Přidat do seznamu"
+	},
+	"deletelistTreeLabel": {
+		"message": "Odstranit ze seznamu"
+	},
+	"editCardFromListLabel": {
+		"message": "Upravit tento kontakt"
+	},
+	"wdw_logEditionTitle": {
+		"message": "Prohlížeč protokolu"
+	},
+	"logEditionValueLabel": {
+		"message": "Čas události"
+	},
+	"refreshLogEditionLabel": {
+		"message": "Obnovit"
+	},
+	"refreshLogEditionAccesskey": {
+		"message": "b"
+	},
+	"flushLogEditionLabel": {
+		"message": "Vyprázdnit"
+	},
+	"flushLogEditionAccesskey": {
+		"message": "V"
+	},
+	"clipboardLogEditionLabel": {
+		"message": "Kopírovat do schránky"
+	},
+	"clipboardLogEditionAccesskey": {
+		"message": "K"
+	},
+	"cancelLogEditionLabel": {
+		"message": "OK"
+	},
+	"cancelLogEditionAccesskey": {
+		"message": "O"
+	},
+	"wdw_mergeCardsTitle": {
+		"message": "Sloučení kontaktů"
+	},
+	"mergeInstructionsLabel": {
+		"message": "Zvolte pole, která chcete u nového kontaktu zachovat"
+	},
+	"persTitleLabel": {
+		"message": "Osobní informace"
+	},
+	"orgTitleLabel": {
+		"message": "Profesní informace"
+	}
+}

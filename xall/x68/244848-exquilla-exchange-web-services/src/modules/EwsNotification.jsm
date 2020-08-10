@@ -18,7 +18,7 @@ var Cu = Components.utils;
 
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { MailServices } = ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "StringArray",
                                "resource://exquilla/StringArray.jsm");
 ChromeUtils.defineModuleGetter(this, "PropertyList",

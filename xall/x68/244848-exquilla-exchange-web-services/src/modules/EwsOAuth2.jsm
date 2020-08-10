@@ -12,7 +12,6 @@
 const EXPORTED_SYMBOLS = ["OAuth2Login", "kOAuth2Password"];
 
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
 Utils.importLocally(this);
 Cu.importGlobalProperties(["fetch", "URL", "URLSearchParams"]);
@@ -359,12 +358,7 @@ class OAuth2Login {
    */
    _findLoginForRefreshToken() {
     let loginURI = this._getLoginURI();
-    let foundLogins;
-    if (Services.logins.findLogins.length == 4) { // COMPAT for TB 60
-      foundLogins = Services.logins.findLogins({}, loginURI, null, loginURI);
-    } else {
-      foundLogins = Services.logins.findLogins(loginURI, null, loginURI);
-    }
+    let foundLogins = Services.logins.findLogins(loginURI, null, loginURI);
     for (let login of foundLogins) {
       if (login.username == this.account.username) {
         return login;
@@ -427,13 +421,7 @@ class OAuth2Login {
     let authCode = await openBrowserWindow({
       startURL,
       onPageChange : function(url, close) {
-        // TB 68 version:
-        // let parameters = Object.fromEntries(...url.searchParams);
-        // TB 60 COMPAT
-        let parameters = {};
-        for (let [key, value] of url.searchParams) {
-          parameters[key] = value;
-        }
+        let parameters = Object.fromEntries(url.searchParams);
         url.hash = url.search = "";
         // Wait for end page
         // The end page URL contains the login result as query string,
@@ -467,7 +455,7 @@ class OAuth2Login {
               triedPassword = true;
             } else {
               pass[0].addEventListener("change", () => {
-                newPassword = pass.value;
+                newPassword = pass[0].value;
               });
             }
           }
@@ -526,19 +514,17 @@ function openBrowserWindow(options) {
       browserWindow.close();
       resolve(result);
     }
-    let browserWindow = Services.ww.openWindow(Services.ww.activeWindow, "chrome://exquilla/content/moreinfo.xul", "", "centerscreen,chrome,location,width=980,height=750", null);
+    let browserWindow = Services.ww.openWindow(Services.ww.activeWindow, "chrome://exquilla/content/moreinfo.xhtml", "", "centerscreen,chrome,location,width=980,height=750", null);
     browserWindow.addEventListener("load", e => {
-      let notificationbox = browserWindow.document.getElementById("notifications");
-      if (!notificationbox.appendNotification) { // COMPAT for TB 60
-        notificationbox = new browserWindow.MozElements.NotificationBox(element => {
-          browserWindow.document.getElementById("notifications").replaceWith(element);
-        });
-      }
+      let notificationbox = new browserWindow.MozElements.NotificationBox(element => {
+        browserWindow.document.documentElement.insertBefore(element, browserWindow.document.getElementById("maincontent"));
+      });
       let browser = browserWindow.document.getElementById("maincontent");
       let label = new URL(startURL);
       label.hash = label.search = "";
       let notification = notificationbox.appendNotification(label, "", "chrome://exquilla/skin/letter-x-icon-16.png", notificationbox.PRIORITY_INFO_LOW);
-      browser.loadURI(startURL);
+      // Not sure why triggeringPrincipal isn't being picked up automatically
+      browser.loadURI(startURL, { triggeringPrincipal: browser.nodePrincipal });
       // This is a property of the window because we don't want it to be
       // garbage collected until the window closes.
       browserWindow.progressListener = {
@@ -567,7 +553,7 @@ function openBrowserWindow(options) {
             }
           }
         },
-        QueryInterface: QIUtils.generateQI([Ci.nsIWebProgressListener, Ci.nsISupportsWeakReference]),
+        QueryInterface: ChromeUtils.generateQI([Ci.nsIWebProgressListener, Ci.nsISupportsWeakReference]),
       };
       browser.addProgressListener(browserWindow.progressListener, Ci.nsIWebProgress.NOTIFY_LOCATION | Ci.nsIWebProgress.NOTIFY_STATE_NETWORK);
     });
@@ -595,13 +581,8 @@ function promptPasswordChanged(aHostname, aUsername, aHadOldPassword, aNewPasswo
   }
 
   // search for existing logins, and remove them if found
-  let logins;
   let loginURI = "https://" + aHostname;
-  if (Services.logins.findLogins.length == 4) { // COMPAT for TB 60
-    logins = Services.logins.findLogins({}, loginURI, "", loginURI);
-  } else {
-    logins = Services.logins.findLogins(loginURI, "", loginURI);
-  }
+  let logins = Services.logins.findLogins(loginURI, "", loginURI);
   for (let login of logins) {
     if (login.username == aUsername) {
       Services.logins.removeLogin(login);

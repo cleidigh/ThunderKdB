@@ -13,9 +13,9 @@ const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, 
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "MailUtils",
-  ChromeUtils.generateQI ? "resource:///modules/MailUtils.jsm" : "resource:///modules/MailUtils.js"); // COMPAT for TB 60
+  "resource:///modules/MailUtils.jsm");
 
 ChromeUtils.defineModuleGetter(this, "JaBaseCompose",
                                "resource://exquilla/JaBaseCompose.jsm");
@@ -143,7 +143,7 @@ EwsCompose.prototype = {
 
     if (!incomingServer && destinationURI)
     {
-      let folder = MailUtils.getExistingFolder ? MailUtils.getExistingFolder(destinationURI) : MailUtils.getFolderForURI(destinationURI); // COMPAT for TB 60
+      let folder = MailUtils.getExistingFolder(destinationURI);
       if (folder)
         incomingServer = folder.server;
     }
@@ -280,3 +280,4 @@ EwsComposeConstructor.prototype = {
 }
 
 var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsComposeConstructor]);
+var EXPORTED_SYMBOLS = ["NSGetFactory"];

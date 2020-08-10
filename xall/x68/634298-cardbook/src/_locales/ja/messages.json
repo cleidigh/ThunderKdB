@@ -1,0 +1,5015 @@
+{
+	"extName": {
+		"message": "連絡先（CardBook）"
+	},
+	"extDesc": {
+		"message": "vCardアドレス帳"
+	},
+	"browserActionTitle": {
+		"message": "連絡先",
+		"description": "連絡先タブに切り替える"
+	},
+	"cardbookTitle": {
+		"message": "連絡先"
+	},
+	"cardbookPrefTitle": {
+		"message": "CardBookの設定"
+	},
+	"statusProgressInformationTooltip": {
+		"message": "ログを表示するにはここをクリック"
+	},
+	"imageSelectionTitle": {
+		"message": "画像選択"
+	},
+	"imageSaveTitle": {
+		"message": "画像を保存"
+	},
+	"fileSaveTitle": {
+		"message": "ファイルを保存"
+	},
+	"dirSaveTitle": {
+		"message": "ディレクトリを保存"
+	},
+	"dirChooseTitle": {
+		"message": "ディレクトリを選択"
+	},
+	"fileCreationVCFTitle": {
+		"message": "新しいVCFファイル(文字コードUTF-8)を作成"
+	},
+	"fileSelectionVCFTitle": {
+		"message": "既存のVCFファイル(文字コードUTF-8)を開く"
+	},
+	"fileImportTitle": {
+		"message": "VCFファイル(文字コードUTF-8)をインポートする"
+	},
+	"dirImportTitle": {
+		"message": "ディレクトリからのインポート"
+	},
+	"fileCreationTPLTitle": {
+		"message": "新しいTPLファイルを作成"
+	},
+	"fileSelectionTPLTitle": {
+		"message": "既存のTPLファイルを開く"
+	},
+	"fileSelectionTitle": {
+		"message": "リンク URL"
+	},
+	"uncategorizedCards": {
+		"message": "未分類"
+	},
+	"collectedCards": {
+		"message": "記録された連絡先"
+	},
+	"enableFromAccountsOrCats": {
+		"message": "アドレス帳を有効にする"
+	},
+	"disableFromAccountsOrCats": {
+		"message": "アドレス帳を無効にする"
+	},
+	"readWriteFromAccountsOrCats": {
+		"message": "アドレス帳を読み書きモードに設定する"
+	},
+	"readOnlyFromAccountsOrCats": {
+		"message": "アドレス帳を読み取り専用モードに設定する"
+	},
+	"editCategoryFromAccountsOrCats": {
+		"message": "カテゴリーを編集"
+	},
+	"removeCategoryFromAccountsOrCats": {
+		"message": "カテゴリーを削除"
+	},
+	"convertCategoryFromAccountsOrCats": {
+		"message": "カテゴリーをリストに変換"
+	},
+	"editNodeFromAccountsOrCats": {
+		"message": "ノードを編集"
+	},
+	"removeNodeFromAccountsOrCats": {
+		"message": "ノードを削除"
+	},
+	"convertNodeFromAccountsOrCats": {
+		"message": "ノードをリストに変換"
+	},
+	"viewCardButtonLabel": {
+		"message": "表示"
+	},
+	"editCardButtonLabel": {
+		"message": "編集"
+	},
+	"viewInCardBookMenuLabel": {
+		"message": "CardBookで表示"
+	},
+	"mergeCardsLabel": {
+		"message": "連絡先をマージする"
+	},
+	"forgetCardsLabel": {
+		"message": "忘れる"
+	},
+	"deleteCardsLabel": {
+		"message": "削除"
+	},
+	"showForgottenLabel": {
+		"message": "忘れた重複を表示する"
+	},
+	"showForgottenAccesskey": {
+		"message": "S"
+	},
+	"hideForgottenLabel": {
+		"message": "忘れた重複を隠す"
+	},
+	"hideForgottenAccesskey": {
+		"message": "H"
+	},
+	"noContactsDuplicated": {
+		"message": "重複した連絡先は見つかりませんでした。"
+	},
+	"serverWarningGoogleLabel": {
+		"message": "Googleは仮想カード標準を尊重していないため、Googleの使用は実験的です。"
+	},
+	"Validating1Label": {
+		"message": "検証中〈$P1$〉…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"Validating2Label": {
+		"message": "検証中…"
+	},
+	"ValidatingURLFailedLabel": {
+		"message": "URLが不正です"
+	},
+	"ValidationFailedLabel": {
+		"message": "検証に失敗しました"
+	},
+	"ValidationOKLabel": {
+		"message": "検証済み"
+	},
+	"customFieldsErrorUPPERCASE": {
+		"message": "カスタムフィールド名は大文字にする必要があります：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorX": {
+		"message": "カスタムフィールド名は「X-」で始まる必要があります：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorFIELD": {
+		"message": "$P1$は予約語で、独自のカスタムフィールド名には使用できません",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorCHAR": {
+		"message": "カスタムフィールド名には、コンマ、セミコロン、コロンまたはドットなどのエスケープ文字を含めることはできません：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorUNIQUE": {
+		"message": "カスタムフィールド名は一意でなければなりません（カスタムフィールドは複数のタブで定義されています）。"
+	},
+	"customFieldsErrorLABEL": {
+		"message": "カスタムフィールドのラベルは空にすることはできません。"
+	},
+	"allContactsLoadedFromFile": {
+		"message": "$P1$：すべての連絡先がファイルから読み込まれました。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"notAllContactsLoadedFromFile": {
+		"message": "$P1$：一部の連絡先のみがファイルから読み込まれました：$P2$件のエラーがあります。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroRunning": {
+		"message": "$P1$：同期の進行中",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroNotTried": {
+		"message": "$P1$：同期は試行されていません",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinished": {
+		"message": "$P1$：同期が完了しました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinishedResult": {
+		"message": "$P1$：同期が完了しました。連絡先の結果：",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroProcessed": {
+		"message": "処理された連絡先：$P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpToDate": {
+		"message": "$P1$：最新の連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnServer": {
+		"message": "$P1$：サーバー上の新しい連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnServer": {
+		"message": "$P1$：サーバー上で更新された連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnServer": {
+		"message": "$P1$：サーバーから削除された連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDisk": {
+		"message": "$P1$：ディスクから削除された連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$：ディスクから削除され、サーバー上で更新された連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnDisk": {
+		"message": "$P1$：ディスク上の新しい連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDisk": {
+		"message": "$P1$：ディスク上で更新された連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnBoth": {
+		"message": "$P1$：ディスクとサーバーの両方で更新された連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$：ディスク上で更新され、サーバーから削除された連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetOKFromServer": {
+		"message": "$P1$：サーバーから正常に取得された変更：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetKOFromServer": {
+		"message": "$P1$：サーバーから正常に取得されなかった変更：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutOKToServer": {
+		"message": "$P1$：サーバーに正常にプッシュされた変更：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutKOToServer": {
+		"message": "$P1$：サーバーに正常にプッシュされなかった変更：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroImpossible": {
+		"message": "$P1$：サーバーとの同期が不可能です。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBFinishedResult": {
+		"message": "$P1$ : ローカルデータベースが開かれました。連絡先の結果 :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBCardsOK": {
+		"message": "$P1$：開いた連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDBCardsKO": {
+		"message": "$P1$：エラー件数：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirFinishedResult": {
+		"message": "$P1$：ディレクトリを開きました。連絡先の結果：",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDirCardsOK": {
+		"message": "$P1$：開いた連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirCardsKO": {
+		"message": "$P1$：エラー件数：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileFinishedResult": {
+		"message": "$P1$：ファイルを開きました。連絡先の結果：",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFileCardsOK": {
+		"message": "$P1$：開いた連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileCardsKO": {
+		"message": "$P1$：エラー件数：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroForcedToResync": {
+		"message": "$P1$：このアカウントを強制的に再同期しました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroAllFinished": {
+		"message": "すべての同期が完了しました"
+	},
+	"discoveryRunning": {
+		"message": "$P1$：アドレス帳の自動検出の実行",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageGetResponse": {
+		"message": "$P1$：ダウンロードした画像：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"imageGetError": {
+		"message": "$P1$：エラーのある画像：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importFinishedResult": {
+		"message": "$P1$：インポートが完了しました。連絡先の結果：",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importCardsOK": {
+		"message": "$P1$：インポートされた連絡先：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importCardsKO": {
+		"message": "$P1$：エラー件数：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importAllFinished": {
+		"message": "すべてのインポートが完了しました"
+	},
+	"cardDeletedOnDisk": {
+		"message": "$P1$：連絡先 $P2$ がディスクから削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDisk": {
+		"message": "$P1$：連絡先 $P2$ がディスク上で更新されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyGetFromCache": {
+		"message": "$P1$：連絡先 $P2$ は既にキャッシュから取得済みです",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardGetFromCache": {
+		"message": "$P1$：連絡先 $P2$ がキャッシュから取得されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$：連絡先 $P2$ がディスクから削除され、サーバー上で更新されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnBoth": {
+		"message": "$P1$：連絡先 $P2$ はディスクとサーバー上で更新されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnServer": {
+		"message": "$P1$：連絡先 $P2$ がサーバー上で更新されました（取得したetag：$P3$、キャッシュ内のetag：$P4$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"cardNewOnServer": {
+		"message": "$P1$：サーバー上に新しい連絡先が見つかりました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardLoadedFromCache": {
+		"message": "$P1$：連絡先 $P2$ がキャッシュからロードされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardLoadedFromCacheDB": {
+		"message": "$P1$：連絡先 $P2$ がキャッシュ（IndexedDB）からロードされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardNewOnDisk": {
+		"message": "$P1$：連絡先 $P2$ がディスク上に新しく追加されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$：連絡先 $P2$ がディスク上で更新され、サーバーから削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnServer": {
+		"message": "$P1$：連絡先 $P2$ がサーバーから削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyExists": {
+		"message": "$P1$：連絡先 $P2$ は既に存在します",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"askUserTitle": {
+		"message": "連絡先の変更の競合"
+	},
+	"askUserPersistMessage": {
+		"message": "他のすべての連絡先にこの選択肢を適用する"
+	},
+	"keepAskUserLabel": {
+		"message": "連絡先を保持する"
+	},
+	"overwriteAskUserLabel": {
+		"message": "連絡先を上書きする"
+	},
+	"duplicateAskUserLabel": {
+		"message": "連絡先を複製する"
+	},
+	"deleteAskUserLabel": {
+		"message": "連絡先を削除する"
+	},
+	"localAskUserLabel": {
+		"message": "ローカル側の更新内容を優先する"
+	},
+	"remoteAskUserLabel": {
+		"message": "サーバー側の更新内容を優先する"
+	},
+	"mergeAskUserLabel": {
+		"message": "差異を統合する"
+	},
+	"serverCardDeletedFromServer": {
+		"message": "$P1$：連絡先 $P2$ がサーバーから削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardNotExistServer": {
+		"message": "$P1$：連絡先 $P2$ はサーバー上に存在しません",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardDeleteFailed": {
+		"message": "$P1$：連絡先 $P2$ をサーバーから削除できませんでした（URL：$P3$、ステータス：$P4$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingDeletion": {
+		"message": "$P1$：連絡先 $P2$：削除要求を送信中…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithEtag": {
+		"message": "$P1$：連絡先 $P2$ がサーバー上で更新されました（etag：$P3$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithoutEtag": {
+		"message": "$P1$：連絡先 $P2$ がサーバー上で更新されました（応答にetagが含まれていません）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdateFailed": {
+		"message": "$P1$：連絡先 $P2$ をサーバー上で更新できませんでした（URL：$P3$、ステータス：$P4$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingUpdate": {
+		"message": "$P1$：連絡先$P2$：更新要求を送信中…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithEtag": {
+		"message": "$P1$：連絡先 $P2$ がサーバー上に作成されました（etag：$P3$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithoutEtag": {
+		"message": "$P1$：連絡先 $P2$ がサーバー上に作成されました（応答にetagが含まれていません）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreateFailed": {
+		"message": "$P1$：連絡先 $P2$ をサーバー上に作成できませんでした（URL：$P3$、ステータス：$P4$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingCreate": {
+		"message": "$P1$：連絡先 $P2$：作成リクエストの送信中…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetImageFailed": {
+		"message": "$P1$：連絡先 $P2$ の画像をダウンロードできませんでした（URL：$P3$、ステータス：$P4$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetImageOK": {
+		"message": "$P1$：連絡先 $P2$ の画像がダウンロードされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingImage": {
+		"message": "$P1$：連絡先 $P2$ の画像のダウンロード中…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetOK": {
+		"message": "$P1$：連絡先 $P2$ がサーバーからダウンロードされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetFailed": {
+		"message": "$P1$：サーバーからのダウンロードに失敗しました（URL：$P2$、ステータス：$P3$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"synchronizationFailed": {
+		"message": "$P1$：同期に失敗しました（ステップ：$P2$、URL：$P3$、ステータス：$P4$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"synchronizationUnauthorized": {
+		"message": "$P1$：サーバーにログインできません。おそらく設定、ユーザー名、またはパスワードが間違っています。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationSearchingCards": {
+		"message": "$P1$：連絡先を検索中…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery": {
+		"message": "$P1$：$P2$のディスカバリリクエストなしで検証中…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery4": {
+		"message": "$P1$：$P2$のフェーズ4リクエストを検出しています…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery3": {
+		"message": "$P1$：$P2$のフェーズ3リクエストを検出しています…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery2": {
+		"message": "$P1$：$P2$のフェーズ2リクエストを検出しています…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery1": {
+		"message": "$P1$：$P2$のフェーズ1リクエストを検出しています…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleAccessTokenOK": {
+		"message": "$P1$：Googleのアクセストークン要求を確認しました。アクセストークン：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRefreshTokenOK": {
+		"message": "$P1$：Googleの更新トークン要求を確認しました。更新トークン：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleGetNewRefreshToken": {
+		"message": "$P1$：$P2$でGoogleの新しい更新トークンを取得しようとしています…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleNewRefreshTokenOK": {
+		"message": "$P1$：受信した承認コード：$P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestAccessToken": {
+		"message": "$P1$：$P2$のGoogle アクセストークン要求…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestRefreshToken": {
+		"message": "$P1$：$P2$のGoogle 更新トークン要求…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooAccessTokenOK": {
+		"message": "$P1$：Yahoo!のアクセストークン要求を確認しました。アクセストークン：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRefreshTokenOK": {
+		"message": "$P1$：Yahoo!の更新トークン要求を確認しました。更新トークン：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooGetNewRefreshToken": {
+		"message": "$P1$：$P2$でYahoo!の新しい更新トークンを取得しようとしています…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooNewRefreshTokenOK": {
+		"message": "$P1$：承認コードを受け取った：$P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestAccessToken": {
+		"message": "$P1$：$P2$のYahoo! アクセストークン要求…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestRefreshToken": {
+		"message": "$P1$：$P2$のYahoo! 更新トークン要求…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncDeleting": {
+		"message": "$P1$：定期的な同期処理の削除（ID：$P2$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncSetting": {
+		"message": "$P1$：定期的な同期処理の設定（時間間隔：$P2$ミリ秒、ID：$P3$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"periodicSyncSyncing": {
+		"message": "$P1$：定期的な同期設定による同期中…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileEmpty": {
+		"message": "ファイル $P1$ は空です",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileAlreadyOpen": {
+		"message": "ファイル $P1$ はすでにCardBookで開かれています",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryAlreadyOpen": {
+		"message": "ディレクトリ $P1$ はすでにCardBookで開かれています",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"parsingCardError": {
+		"message": "$P1$：連絡先の解析時のエラー：\n$P2$ \n$P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"addressbookOpened": {
+		"message": "$P1$：アドレス帳を開いた",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookModified": {
+		"message": "$P1$：アドレス帳が変更された",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDeleted": {
+		"message": "$P1$：アドレス帳が閉じられました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookCreated": {
+		"message": "$P1$：アドレス帳が作成された",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDisabled": {
+		"message": "$P1$：アドレス帳が無効",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadOnly": {
+		"message": "$P1$：読み取り専用モードのアドレス帳",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadWrite": {
+		"message": "$P1$：読み書きモードのアドレス帳",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookEnabled": {
+		"message": "$P1$：アドレス帳を有効にする",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreated": {
+		"message": "$P1$：連絡先 $P2$ が正常に作成されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdated": {
+		"message": "$P1$：連絡先 $P2$ が正常に更新されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeleted": {
+		"message": "$P1$：連絡先 $P2$ が正常に削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAddedToCategory": {
+		"message": "$P1$：連絡先 $P2$ がカテゴリー$P3$に正常に追加されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardDeletedFromAllCategory": {
+		"message": "$P1$：連絡先 $P2$ がすべてのカテゴリーから正常に削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardsConverted": {
+		"message": "$P1$ : 連絡先が $P2$ に変換されました : $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardsConvertedUndo": {
+		"message": "VCardが変換されました"
+	},
+	"cardsImportedFromFileUndo": {
+		"message": "ファイル $P1$ がインポートされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsImportedFromDirUndo": {
+		"message": "ディレクトリ $P1$ がインポートされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"undoActionDoneUndo": {
+		"message": "取り消しを完了しました（$P1$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"redoActionDoneUndo": {
+		"message": "再実行を完了しました（$P1$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreatedUndo": {
+		"message": "連絡先 $P1$ が正常に作成されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardUpdatedUndo": {
+		"message": "連絡先 $P1$ が正常に更新されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"outgoingEmailCollectedUndo": {
+		"message": "送信メールのアドレスを収集しました"
+	},
+	"emailCollectedByFilterUndo": {
+		"message": "フィルターによってメールアドレスが収集されました"
+	},
+	"emailDeletedByFilterUndo": {
+		"message": "フィルターによってメールアドレスが削除されました"
+	},
+	"cardsMergedUndo": {
+		"message": "連絡先が統合されました"
+	},
+	"cardsDuplicatedUndo": {
+		"message": "連絡先が複製されました"
+	},
+	"displayNameGenerated": {
+		"message": "$P1$ : 連絡先の表示名が再生成されました : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"displayNameGeneratedUndo": {
+		"message": "表示名が再生成されました"
+	},
+	"cardModifiedUndo": {
+		"message": "連絡先 $P1$ が更新されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted1Undo": {
+		"message": "連絡先 $P1$ が削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted2Undo": {
+		"message": "連絡先が削除されました"
+	},
+	"cardsPastedUndo": {
+		"message": "連絡先が貼り付けられました"
+	},
+	"cardsDraggedUndo": {
+		"message": "連絡先がドラッグされました"
+	},
+	"categoryCreated": {
+		"message": "$P1$：カテゴリー $P2$ が作成されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryCreatedUndo": {
+		"message": "カテゴリー $P1$ が作成されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categorySelectedUndo": {
+		"message": "カテゴリー $P1$ が選択されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryUnselectedUndo": {
+		"message": "カテゴリー $P1$ 選択から外れました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryRenamedUndo": {
+		"message": "カテゴリー $P1$ の名前が変更されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryDeleted": {
+		"message": "$P1$：カテゴリー $P2$ が削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedUndo": {
+		"message": "カテゴリー $P1$ が削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryConvertedToListUndo": {
+		"message": "カテゴリー $P1$ がリストに変換されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listConvertedToCategoryUndo": {
+		"message": "リスト $P1$ がカテゴリーに変換されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"linePastedUndo": {
+		"message": "行が貼り付けられました"
+	},
+	"nodeRenamedUndo": {
+		"message": "ノード $P1$ の名前が変更されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"nodeDeleted": {
+		"message": "$P1$ : ノード $P2$ が削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletedUndo": {
+		"message": "ノード $P1$ が削除されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listCreatedFromNodeUndo": {
+		"message": "リスト $P1$ がノードに変換されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoFile": {
+		"message": "連絡先がファイル $P1$ にエクスポートされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoFile": {
+		"message": "連絡先がファイル $P1$ にエクスポートされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoDir": {
+		"message": "連絡先がディレクトリ $P1$ にエクスポートされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoDir": {
+		"message": "連絡先がディレクトリ $P1$ にエクスポートされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importNotIntoSameFile": {
+		"message": "同じファイルにインポートすることは禁じられています"
+	},
+	"importNotIntoSameDir": {
+		"message": "同じディレクトリにインポートすることは禁じられています"
+	},
+	"clipboardWrong": {
+		"message": "クリップボードのデータをインポートできません"
+	},
+	"clipboardEmpty": {
+		"message": "クリップボードが空です"
+	},
+	"imageError": {
+		"message": "エラーのため画像は追加されませんでした"
+	},
+	"imageErrorWithMessage": {
+		"message": "追加されなかった画像：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageSavedToFile": {
+		"message": "ファイルに保存された画像：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"contactsCopied": {
+		"message": "連絡先がクリップボードにコピーされました"
+	},
+	"contactCopied": {
+		"message": "連絡先がクリップボードにコピーされました"
+	},
+	"lineCopied": {
+		"message": "行がクリップボードにコピーされました"
+	},
+	"linePastedToCard": {
+		"message": "連絡先に貼り付けられた行：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFound": {
+		"message": "見つかった連絡先の数：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContacts": {
+		"message": "連絡先の数：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFoundModified": {
+		"message": "見つかった連絡先の数：$P1$（ローカルで変更された数：$P2$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberContactsModified": {
+		"message": "連絡先の数：$P1$（ローカルで変更された数：$P2$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberLines": {
+		"message": "行数： $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbook.searchFrom.name": {
+		"message": "CardBook 差出人"
+	},
+	"cardbook.searchTo.name": {
+		"message": "CardBook 宛先"
+	},
+	"cardbook.searchCc.name": {
+		"message": "CardBook Cc"
+	},
+	"cardbook.searchBcc.name": {
+		"message": "CardBook Bcc"
+	},
+	"cardbook.searchAll.name": {
+		"message": "CardBook 差出人、宛先 、CcまたはBcc"
+	},
+	"cardbook.searchCorrespondents.name": {
+		"message": "CardBook 通信相手"
+	},
+	"cardbook.addFrom.name": {
+		"message": "CardBookのアドレス帳へ送信者を追加"
+	},
+	"cardbook.addTo.name": {
+		"message": "CardBookのアドレス帳へ宛先を追加"
+	},
+	"cardbook.addCc.name": {
+		"message": "CardBookのアドレス帳へCcを追加"
+	},
+	"cardbook.addBcc.name": {
+		"message": "CardBookのアドレス帳へBccを追加"
+	},
+	"cardbook.addAll.name": {
+		"message": "CardBookのアドレス帳へ差出人、宛先、CcおよびBCCを追加"
+	},
+	"cardbook.removeFrom.name": {
+		"message": "CardBookのアドレス帳から差出人を削除"
+	},
+	"cardbook.removeTo.name": {
+		"message": "CardBookのアドレス帳から宛先を削除"
+	},
+	"cardbook.removeCc.name": {
+		"message": "CardBookのアドレス帳からCcを削除"
+	},
+	"cardbook.removeBcc.name": {
+		"message": "CardBookのアドレス帳からBccを削除"
+	},
+	"cardbook.removeAll.name": {
+		"message": "CardBookのアドレス帳から差出人、宛先、CcおよびBCCを削除"
+	},
+	"urlDownloaded": {
+		"message": "ダウンロードしたURL：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookHeader": {
+		"message": "アドレス帳"
+	},
+	"photoLabel": {
+		"message": "顔写真"
+	},
+	"versionLabel": {
+		"message": "バージョン"
+	},
+	"revLabel": {
+		"message": "最終更新"
+	},
+	"lastnameLabel": {
+		"message": "姓"
+	},
+	"firstnameLabel": {
+		"message": "名"
+	},
+	"othernameLabel": {
+		"message": "ほかの名前"
+	},
+	"prefixnameLabel": {
+		"message": "接頭敬称"
+	},
+	"suffixnameLabel": {
+		"message": "接尾辞名"
+	},
+	"fnLabel": {
+		"message": "表示名"
+	},
+	"nicknameLabel": {
+		"message": "ニックネーム"
+	},
+	"genderLabel": {
+		"message": "性別"
+	},
+	"bdayLabel": {
+		"message": "誕生日"
+	},
+	"birthplaceLabel": {
+		"message": "出生地"
+	},
+	"anniversaryLabel": {
+		"message": "記念日"
+	},
+	"deathdateLabel": {
+		"message": "死亡日"
+	},
+	"deathplaceLabel": {
+		"message": "死亡場所"
+	},
+	"titleLabel": {
+		"message": "役職"
+	},
+	"roleLabel": {
+		"message": "役割"
+	},
+	"orgLabel": {
+		"message": "組織"
+	},
+	"categoriesLabel": {
+		"message": "カテゴリー"
+	},
+	"adrLabel": {
+		"message": "住所"
+	},
+	"telLabel": {
+		"message": "電話"
+	},
+	"emailLabel": {
+		"message": "メール"
+	},
+	"imppLabel": {
+		"message": "通話"
+	},
+	"urlLabel": {
+		"message": "URL"
+	},
+	"eventLabel": {
+		"message": "予定"
+	},
+	"noteLabel": {
+		"message": "メモ"
+	},
+	"postOfficeLabel": {
+		"message": "私書箱"
+	},
+	"extendedAddrLabel": {
+		"message": "アパートメントまたはスイート"
+	},
+	"streetLabel": {
+		"message": "番地"
+	},
+	"localityLabel": {
+		"message": "市区町村"
+	},
+	"regionLabel": {
+		"message": "都道府県"
+	},
+	"postalCodeLabel": {
+		"message": "郵便番号"
+	},
+	"countryLabel": {
+		"message": "国"
+	},
+	"ageLabel": {
+		"message": "年齢"
+	},
+	"ABNameLabel": {
+		"message": "アドレス帳名"
+	},
+	"cardIconLabel": {
+		"message": "アイコン"
+	},
+	"nameLabel": {
+		"message": "名"
+	},
+	"mailerLabel": {
+		"message": "メーラー"
+	},
+	"tzLabel": {
+		"message": "タイムゾーン"
+	},
+	"geoLabel": {
+		"message": "地理情報"
+	},
+	"prodidLabel": {
+		"message": "製品身元"
+	},
+	"sortstringLabel": {
+		"message": "ソート文字列"
+	},
+	"uidLabel": {
+		"message": "連絡先ID"
+	},
+	"cbidLabel": {
+		"message": "CardBookでの連絡先ID"
+	},
+	"class1Label": {
+		"message": "クラス"
+	},
+	"dirPrefIdLabel": {
+		"message": "アドレス帳ID"
+	},
+	"kindLabel": {
+		"message": "種類"
+	},
+	"etagLabel": {
+		"message": "エタグ"
+	},
+	"phoneticfirstnameLabel": {
+		"message": "名(よみがな)"
+	},
+	"phoneticlastnameLabel": {
+		"message": "姓(よみがな)"
+	},
+	"custom1Label": {
+		"message": "追加情報 1"
+	},
+	"custom2Label": {
+		"message": "追加情報 2"
+	},
+	"custom3Label": {
+		"message": "追加情報 3"
+	},
+	"custom4Label": {
+		"message": "追加情報 4"
+	},
+	"warningTitle": {
+		"message": "警告"
+	},
+	"errorTitle": {
+		"message": "エラー"
+	},
+	"confirmTitle": {
+		"message": "確認"
+	},
+	"birthdaysListWindowLabel": {
+		"message": "記念日のリスト（合計：$P1$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"syncListWindowLabelRunning": {
+		"message": "記念日の同期を実行中（$P1$/$P2$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelEnded": {
+		"message": "記念日の同期が終了しました（$P1$/$P2$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelFailed": {
+		"message": "記念日の同期が失敗しました"
+	},
+	"syncListExistingEntry": {
+		"message": "$P1$：Lightningの既存イベント：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListCreatedEntry": {
+		"message": "$P1$：Lightningで作成されたイベント：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListErrorEntry": {
+		"message": "$P1$：Lightningでエラーが発生したイベント：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"noBirthdaysFoundMessage": {
+		"message": "$P1$まで記念日なし",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"noEmailFoundMessage": {
+		"message": "$P1$のメールは見つかりませんでした",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventEntryTitleMessage": {
+		"message": "%1$S周年、年齢：%2$S"
+	},
+	"calendarNotFoundTitle": {
+		"message": "記念日のリマインダー - Lightningとの同期が中止されました"
+	},
+	"calendarNotFoundMessage": {
+		"message": "カレンダー$P1$が見つかりません。Lightningとの同期が中止されました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"calendarNotWritableTitle": {
+		"message": "記念日のリマインダー - Lightningとの同期が中止されました"
+	},
+	"calendarNotWritableMessage": {
+		"message": "カレンダー$P1$は書き込み可能ではありません。Lightningとの同期が中止されました。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"errorAttachingFile": {
+		"message": "vCard の添付：メールに添付するvCardファイルを生成できません：$P1$($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"errorInfiniteLoopRecursion": {
+		"message": "リスト：リストの無限ループ再帰：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"WRONG_VERSION": {
+		"message": "vCardバージョン3.0または4.0のみサポートされます。"
+	},
+	"unableToParseResponse": {
+		"message": "$P1$：この行のためにサーバーの応答を解析できません：$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"dateEntry1Wrong": {
+		"message": "$P1$ : 連絡先 $P2$ の日付フィールドの値（$P3$）は、アドレス帳の日付フォーマット($P2$) と一致しません",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"dateEntry2Wrong": {
+		"message": "日付フィールドの値 ($P1$) は、アドレス帳の日付フォーマット($P2$) と一致しません",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"validateIntegerMsg": {
+		"message": "フィールド$P1$は、nullまたは1〜$P2$の整数値でなければなりません(値：$P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"eventNameNull": {
+		"message": "少なくとも1つのイベントに説明文が設定されていません"
+	},
+	"eventDateNull": {
+		"message": "少なくとも1つのイベントに日付が設定されていません"
+	},
+	"invalidURL": {
+		"message": "URLが無効です：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbookSearchInputDefault": {
+		"message": "検索…"
+	},
+	"blogtype": {
+		"message": "ブログ"
+	},
+	"celltype": {
+		"message": "携帯電話"
+	},
+	"faxtype": {
+		"message": "FAX"
+	},
+	"homefaxtype": {
+		"message": "FAX（自宅）"
+	},
+	"homepagetype": {
+		"message": "ホームページ"
+	},
+	"hometype": {
+		"message": "自宅"
+	},
+	"iphonetype": {
+		"message": "iPhone"
+	},
+	"maintype": {
+		"message": "メイン"
+	},
+	"othertype": {
+		"message": "その他"
+	},
+	"pagertype": {
+		"message": "ポケベル"
+	},
+	"profiletype": {
+		"message": "プロフィール"
+	},
+	"workfaxtype": {
+		"message": "FAX（仕事）"
+	},
+	"worktype": {
+		"message": "仕事"
+	},
+	"types.gender.f": {
+		"message": "女性"
+	},
+	"types.gender.m": {
+		"message": "男性"
+	},
+	"types.gender.n": {
+		"message": "なし"
+	},
+	"types.gender.o": {
+		"message": "その他"
+	},
+	"types.gender.u": {
+		"message": "未知の"
+	},
+	"typesTooltip": {
+		"message": "使用可能なタイプを変更するには、CardBookの設定を使用します。"
+	},
+	"prefLabel": {
+		"message": "設定"
+	},
+	"prefValueLabel": {
+		"message": "設定値"
+	},
+	"prefWeightTooltip": {
+		"message": "設定は1〜100の異なる値を持つことがあります。通常の使用では空にしておいてください。"
+	},
+	"impp.skype": {
+		"message": "Skype"
+	},
+	"impp.jabber": {
+		"message": "Jabber"
+	},
+	"impp.googletalk": {
+		"message": "Googleトーク"
+	},
+	"impp.qq": {
+		"message": "Tencent QQ"
+	},
+	"addToAddressbook": {
+		"message": "このアドレス帳に追加する"
+	},
+	"wdw_cardEditionViewResultTitle": {
+		"message": "結果の連絡先変更"
+	},
+	"wdw_cardEditionViewResultHideCreateTitle": {
+		"message": "結果の連絡先変更"
+	},
+	"wdw_cardEditionAddEmailTitle": {
+		"message": "新しいメールアドレスを登録する"
+	},
+	"wdw_cardEditionCreateContactTitle": {
+		"message": "新しい連絡先"
+	},
+	"wdw_cardEditionCreateListTitle": {
+		"message": "新しいリスト"
+	},
+	"wdw_cardEditionEditContactTitle": {
+		"message": "編集連絡先"
+	},
+	"wdw_cardEditionEditListTitle": {
+		"message": "編集リスト"
+	},
+	"wdw_cardEditionAddLineTitle": {
+		"message": "編集連絡先"
+	},
+	"wdw_cardEditionViewContactTitle": {
+		"message": "表示連絡先"
+	},
+	"wdw_cardEditionViewListTitle": {
+		"message": "表示リスト"
+	},
+	"wdw_cardbookPrintTitleLong": {
+		"message": "$P1$の印刷プレビュー - CardBook - Thunderbird",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookPrintTitle": {
+		"message": "印刷プレビュー"
+	},
+	"displayGroupboxLabel": {
+		"message": "表示名"
+	},
+	"personalGroupboxLabel": {
+		"message": "個人情報"
+	},
+	"orgGroupboxLabel": {
+		"message": "プロフェッショナル情報"
+	},
+	"categoriesHeader": {
+		"message": "カテゴリー"
+	},
+	"adrGroupboxLabel": {
+		"message": "住所"
+	},
+	"telGroupboxLabel": {
+		"message": "電話番号"
+	},
+	"emailGroupboxLabel": {
+		"message": "メールアドレス"
+	},
+	"urlGroupboxLabel": {
+		"message": "URL"
+	},
+	"eventGroupboxLabel": {
+		"message": "予定"
+	},
+	"noteGroupboxLabel": {
+		"message": "メモ"
+	},
+	"searchTermsGroupboxLabel": {
+		"message": "検索ワード"
+	},
+	"addedCardsGroupboxLabel": {
+		"message": "選択した項目"
+	},
+	"mailPopularityGroupboxLabel": {
+		"message": "メールの送信頻度"
+	},
+	"addEntryTooltip": {
+		"message": "項目を追加"
+	},
+	"removeEntryTooltip": {
+		"message": "項目を削除"
+	},
+	"upEntryTooltip": {
+		"message": "上に移動"
+	},
+	"downEntryTooltip": {
+		"message": "下に移動"
+	},
+	"validatedEntryTooltip": {
+		"message": "有効です"
+	},
+	"noValidatedEntryTooltip": {
+		"message": "フィードを検証"
+	},
+	"notValidatedEntryTooltip": {
+		"message": "不正なフォーマット"
+	},
+	"linkEntryTooltip": {
+		"message": "リンクを作成..."
+	},
+	"selectedCardsDeletionConfirmMessagePF": {
+		"message": "選択した $P1$ 件の連絡先を削除してもよろしいですか？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"catDeletionsConfirmMessagePF": {
+		"message": "$P1$ 件の連絡先を含むカテゴリー $P2$ を削除してもよろしいですか？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletionsConfirmMessagePF": {
+		"message": "$P1$ 件の連絡先を含むノード $P2$ を削除してもよろしいですか？;$P1$ 件の連絡先を含むノード $P2$ を削除してもよろしいですか？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"accountDeletionConfirmMessage": {
+		"message": "CardBookのリポジトリからアドレス帳 $P1$ を削除してもよろしいですか？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletionDiscoveryConfirmMessage": {
+		"message": "アドレス帳 $P1$ はあなたのサーバーから削除されたようですが、あなたのCardBookリポジトリから削除しますか？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentFileMessage": {
+		"message": "ファイル $P1$ を削除",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentDirMessage": {
+		"message": "ディレクトリ $P1$ を削除",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryDeletionConfirmMessage": {
+		"message": "ディレクトリ $P1$ は空ではありません。このディレクトリからすべてのオブジェクトを削除してもよろしいですか？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"choiceMappingTitle": {
+		"message": "フィールドの選択"
+	},
+	"choiceavailableColumnsGroupboxLabel": {
+		"message": "利用可能なフィールド"
+	},
+	"choiceaddedColumnsGroupboxLabel": {
+		"message": "選択されたフィールド"
+	},
+	"exportMappingTitle": {
+		"message": "フィールドマッピングの選択"
+	},
+	"exportavailableColumnsGroupboxLabel": {
+		"message": "使用可能な列"
+	},
+	"exportaddedColumnsGroupboxLabel": {
+		"message": "選択された列"
+	},
+	"importMappingTitle": {
+		"message": "フィールドマッピングの選択"
+	},
+	"importavailableColumnsGroupboxLabel": {
+		"message": "使用可能な列"
+	},
+	"importaddedColumnsGroupboxLabel": {
+		"message": "選択された列"
+	},
+	"importfoundColumnsGroupboxLabel": {
+		"message": "ヘッダー列"
+	},
+	"importblankColumn": {
+		"message": "空の列"
+	},
+	"importNoTypeLabel": {
+		"message": "タイプなし"
+	},
+	"fieldDelimiterLabel": {
+		"message": "フィールド区切り文字"
+	},
+	"includePrefLabel": {
+		"message": "設定を含める"
+	},
+	"lineHeaderLabel": {
+		"message": "最初の行をヘッダーとして扱う"
+	},
+	"missingColumnsConfirmMessage": {
+		"message": "選択された列の数は、ファイル内の列の数とは異なります。選択されていない列または不要な列は無視されます。続行しますか？"
+	},
+	"toUpperCase": {
+		"message": "大文字に変換"
+	},
+	"toLowerCase": {
+		"message": "小文字に変換"
+	},
+	"copyFieldValue": {
+		"message": "コピー ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"pasteFieldValue": {
+		"message": "貼り付け ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookRenameFieldEditTypeTitle": {
+		"message": "タイプの名前を変更"
+	},
+	"wdw_cardbookRenameFieldAddTypeTitle": {
+		"message": "新しいタイプを追加"
+	},
+	"wdw_cardbookRenameFieldOrgTitle": {
+		"message": "組織エディタ"
+	},
+	"wdw_cardbookRenameFieldEditCatTitle": {
+		"message": "カテゴリーを編集"
+	},
+	"wdw_cardbookRenameFieldAddCatTitle": {
+		"message": "新しいカテゴリーを追加する"
+	},
+	"wdw_cardbookRenameFieldEditNodeTitle": {
+		"message": "ノードを編集"
+	},
+	"wdw_cardbookRenameFieldEditTypeLabel": {
+		"message": "タイプ："
+	},
+	"wdw_cardbookRenameFieldAddTypeLabel": {
+		"message": "タイプ："
+	},
+	"wdw_cardbookRenameFieldOrgLabel": {
+		"message": "タイプ："
+	},
+	"wdw_cardbookRenameFieldEditCatLabel": {
+		"message": "カテゴリー："
+	},
+	"wdw_cardbookRenameFieldAddCatLabel": {
+		"message": "カテゴリー："
+	},
+	"wdw_cardbookRenameFieldEditNodeLabel": {
+		"message": "$P1$:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
+		"message": "メールアカウントの制限の定義"
+	},
+	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
+		"message": "メールアカウントごとの宛先メールアドレスの収集ルール"
+	},
+	"ignoreCaseIgnoreDiacriticLabel": {
+		"message": "大文字/小文字、濁点/半濁点を区別しない"
+	},
+	"ignoreCaseMatchDiacriticLabel": {
+		"message": "濁点/半濁点は区別し、大文字/小文字は区別しない"
+	},
+	"matchCaseIgnoreDiacriticLabel": {
+		"message": "大文字/小文字は区別し、濁点/半濁点は区別しない"
+	},
+	"matchCaseMatchDiacriticLabel": {
+		"message": "大文字/小文字、濁点/半濁点を区別する"
+	},
+	"allCategories": {
+		"message": "すべて表示する"
+	},
+	"onlyCategories": {
+		"message": "カテゴリーのみ"
+	},
+	"noCategory": {
+		"message": "連絡先のみ"
+	},
+	"multipleCategories": {
+		"message": "複数のカテゴリー"
+	},
+	"none": {
+		"message": "なし"
+	},
+	"multipleTypes": {
+		"message": "複数のタイプ"
+	},
+	"noType": {
+		"message": "タイプなし"
+	},
+	"eventContactsWindowLabel": {
+		"message": "$P1$ のイベント",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fnDuplicatedMessage": {
+		"message": "（コピー）"
+	},
+	"allMailAccounts": {
+		"message": "すべてのメールアカウント"
+	},
+	"includeLabel": {
+		"message": "含める"
+	},
+	"excludeLabel": {
+		"message": "除外"
+	},
+	"sendButtonLabel": {
+		"message": "新しいメッセージを作成します"
+	},
+	"doNotShowAnymore": {
+		"message": "メールアドレスの無い連絡先にメールを送信しようとした場合に警告しない"
+	},
+	"emptyEmailsCardConfirmMessage": {
+		"message": "この連絡先にはメールアドレスがありません：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"emptyEmailsCardsConfirmMessage": {
+		"message": "これらの連絡先にはメールアドレスがありません：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventInNoteEventPrefix": {
+		"message": "イベント"
+	},
+	"deathSuffix": {
+		"message": "（故人）"
+	},
+	"dateFormatsDLabel": {
+		"message": "日"
+	},
+	"dateFormatsMLabel": {
+		"message": "月"
+	},
+	"dateFormatsYLabel": {
+		"message": "年"
+	},
+	"customLabel": {
+		"message": "その他"
+	},
+	"valueAlreadyExists": {
+		"message": "値 $P1$ は既に存在します",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"allAccountsLabel": {
+		"message": "すべてのアドレス帳"
+	},
+	"enabledAccountsLabel": {
+		"message": "有効なアドレス帳"
+	},
+	"disabledAccountsLabel": {
+		"message": "無効なアドレス帳"
+	},
+	"localAccountsLabel": {
+		"message": "ローカルアドレス帳"
+	},
+	"remoteAccountsLabel": {
+		"message": "リモートアドレス帳"
+	},
+	"searchAccountsLabel": {
+		"message": "検索フオルダー"
+	},
+	"wdw_passwordMissingTitle": {
+		"message": "パスワードがありません"
+	},
+	"wdw_passwordWrongTitle": {
+		"message": "無効なパスワード"
+	},
+	"dateDisplayedFormatLong": {
+		"message": "長い形式：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"dateDisplayedFormatShort": {
+		"message": "短い形式：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressFormatFormula": {
+		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{5}} |)({{6}}|)(\n)({{7}}|)"
+	},
+	"newTokenTitle": {
+		"message": "アカウントにサインインしてください: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"newTokenDescription": {
+		"message": "??CardBook would like to access your $P1$ account to retrieve contacts. Credentials and contact data are only transferred between your computer and Google, no third party sites are involved.??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"invalidEmail": {
+		"message": "$P1$ は user@host 形式になっておらず、有効なメールアドレスではありません。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"appendEmailLabel": {
+		"message": "リストに追加する：$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryAddNew": {
+		"message": "新しいカテゴリーを追加"
+	},
+	"typeAddNew": {
+		"message": "新しいタイプを追加"
+	},
+	"allContacts": {
+		"message": "すべての連絡先"
+	},
+	"keyDescription": {
+		"message": "暗号キー"
+	},
+	"encryptionStarted": {
+		"message": "暗号化を開始しました"
+	},
+	"encryptionProcessed": {
+		"message": "暗号化された項目: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"encryptionFinished": {
+		"message": "暗号化を完了しました"
+	},
+	"decryptionStarted": {
+		"message": "復号を開始しました"
+	},
+	"decryptionProcessed": {
+		"message": "復号された項目: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"decryptionFinished": {
+		"message": "復号を完了しました"
+	},
+	"menu_undo.long.label": {
+		"message": "元に戻す - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_undo.short.label": {
+		"message": "元に戻す"
+	},
+	"menu_redo.long.label": {
+		"message": "やり直し - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_redo.short.label": {
+		"message": "やり直し"
+	},
+	"cardbookMenuItemLabel": {
+		"message": "連絡先"
+	},
+	"cardbookMenuItemAccesskey": {
+		"message": "B"
+	},
+	"cardbookMenuItemKey": {
+		"message": "B"
+	},
+	"cardbookMenuItemTooltip": {
+		"message": "連絡先タブに切り替える"
+	},
+	"cardbookToolbarButtonLabel": {
+		"message": "連絡先"
+	},
+	"cardbookToolbarButtonTooltip": {
+		"message": "連絡先タブに切り替える"
+	},
+	"cardbookTabButtonLabel": {
+		"message": "連絡先"
+	},
+	"cardbookTabButtonTooltip": {
+		"message": "連絡先タブに切り替える"
+	},
+	"cardbookQFBButtonLabel": {
+		"message": "連絡先"
+	},
+	"cardbookQFBButtonTooltip": {
+		"message": "アドレス帳に登録されている人からのメッセージを抽出します"
+	},
+	"quickFilterBar.booleanMode.tooltip": {
+		"message": "タグ絞り込みモード"
+	},
+	"quickFilterBar.booleanModeAny.label": {
+		"message": "いずれかを含む"
+	},
+	"quickFilterBar.booleanModeAny.tooltip": {
+		"message": "選択したいずれかのタグが付いたメッセージが一致します"
+	},
+	"quickFilterBar.booleanModeAll.label": {
+		"message": "すべて含む"
+	},
+	"quickFilterBar.booleanModeAll.tooltip": {
+		"message": "選択したすべてのタグが付いたメッセージが一致します"
+	},
+	"newCardBookCardMenuLabel": {
+		"message": "CardBookの連絡先…"
+	},
+	"newCardBookCardMenuAccesskey": {
+		"message": "C"
+	},
+	"newCardBookCardMenuKey": {
+		"message": "N"
+	},
+	"newCardBookSearchMenuLabel": {
+		"message": "CardBookの検索…"
+	},
+	"newCardBookSearchMenuAccesskey": {
+		"message": "C"
+	},
+	"addToCardBookMenuLabel": {
+		"message": "CardBookの連絡先を追加"
+	},
+	"addToCardBookMenuAccesskey": {
+		"message": "D"
+	},
+	"editInCardBookMenuLabel": {
+		"message": "CardBookの連絡先を編集"
+	},
+	"editInCardBookMenuAccesskey": {
+		"message": "E"
+	},
+	"deleteInCardBookMenuLabel": {
+		"message": "CardBookの連絡先を削除"
+	},
+	"deleteInCardBookMenuAccesskey": {
+		"message": "D"
+	},
+	"IMPPMenuLabel": {
+		"message": "通話を開始"
+	},
+	"IMPPMenuAccesskey": {
+		"message": "O"
+	},
+	"findAllEmailsFromContactMessengerLabel": {
+		"message": "この連絡先に関連する電子メールを検索"
+	},
+	"findAllEmailsFromContactMessengerAccesskey": {
+		"message": "C"
+	},
+	"findEmailsFromEmailMessengerLabel": {
+		"message": "このメールアドレスに関連するメールを検索"
+	},
+	"findEmailsFromEmailMessengerAccesskey": {
+		"message": "E"
+	},
+	"findAllEventsFromContactMessengerLabel": {
+		"message": "この連絡先に関連するカレンダーイベントを検索"
+	},
+	"findAllEventsFromContactMessengerAccesskey": {
+		"message": "C"
+	},
+	"findEventsFromEmailMessengerLabel": {
+		"message": "このメールアドレスに関連するカレンダーイベントを検索"
+	},
+	"findEventsFromEmailMessengerAccesskey": {
+		"message": "E"
+	},
+	"mailContext-addToCardBookMenuLabel": {
+		"message": "CardBookの連絡先を追加"
+	},
+	"mailContext-addToCardBookMenuAccesskey": {
+		"message": "D"
+	},
+	"addAllAttachementsToCardBookMenuLabel": {
+		"message": "すべてCardBookの連絡先に追加…"
+	},
+	"addAttachementToCardBookMenuLabel": {
+		"message": "CardBookの連絡先に追加…"
+	},
+	"cardbookABPaneItemLabel": {
+		"message": "アドレス帳ペイン"
+	},
+	"cardbookABPaneItemAccesskey": {
+		"message": "A"
+	},
+	"cardbookContactPaneItemLabel": {
+		"message": "連絡先ペイン"
+	},
+	"cardbookContactPaneItemAccesskey": {
+		"message": "O"
+	},
+	"wizard.title": {
+		"message": "新しいアドレス帳を追加する"
+	},
+	"wizard.label": {
+		"message": "新しいアドレス帳を追加する"
+	},
+	"welcomePage.wizard.description": {
+		"message": "ようこそ"
+	},
+	"welcomePage.description": {
+		"message": "CardBookを初めて起動した方へ：CardBookはThunderbirdの標準のアドレス帳とリモートアドレス帳から連絡先を収集することができます。"
+	},
+	"initialPage.wizard.description": {
+		"message": "新しいアドレス帳の場所"
+	},
+	"initialPage.description": {
+		"message": "アドレス帳の場所："
+	},
+	"initialPage.computer.label": {
+		"message": "ローカルディスク上"
+	},
+	"initialPage.network.label": {
+		"message": "リモートサーバー上"
+	},
+	"initialPage.standard.label": {
+		"message": "Thunderbirdの標準のアドレス帳をインポートする"
+	},
+	"initialPage.search.label": {
+		"message": "既存のアドレス帳を検索する"
+	},
+	"initialPage.find.label": {
+		"message": "リモートのアドレス帳を検索する"
+	},
+	"localPage.wizard.description": {
+		"message": "新しいローカルアドレス帳の種類と場所"
+	},
+	"localPage.type.description": {
+		"message": "ローカルアドレス帳の種類："
+	},
+	"localPage.type.label": {
+		"message": "種類"
+	},
+	"localPage.createDB.label": {
+		"message": "新しいアドレス帳を作成する"
+	},
+	"localPage.createDirectory.label": {
+		"message": "新しいアドレス帳を作成する（ディレクトリ）"
+	},
+	"localPage.createFile.label": {
+		"message": "新しいアドレス帳を作成する（ファイル）"
+	},
+	"localPage.openDirectory.label": {
+		"message": "既存のアドレス帳を開く（ディレクトリ）"
+	},
+	"localPage.openFile.label": {
+		"message": "既存のアドレス帳を開く（ファイル）"
+	},
+	"localPage.uri.groupbox": {
+		"message": "アドレス"
+	},
+	"localPage.uri.label": {
+		"message": "ディレクトリまたはファイル："
+	},
+	"localPage.uri.description": {
+		"message": "ブラウザを使用して、新しいローカルアドレス帳の場所を選択します。新しいファイルを作成する場合は、ファイル拡張子として.vcfを指定します。"
+	},
+	"localPage.uributton.label": {
+		"message": "参照"
+	},
+	"remotePage.wizard.description": {
+		"message": "新しいリモートアドレス帳の種類と場所"
+	},
+	"remotePage.description": {
+		"message": "どの種類のリモートアドレス帳を使いますか？（注意：Googleアドレス帳はvCardの標準仕様に準拠していません）"
+	},
+	"remotePage.type.label": {
+		"message": "種類"
+	},
+	"remotePage.carddav.label": {
+		"message": "CardDAV"
+	},
+	"remotePage.google.label": {
+		"message": "Google"
+	},
+	"remotePage.apple.label": {
+		"message": "Apple"
+	},
+	"remotePage.yahoo.label": {
+		"message": "Yahoo!"
+	},
+	"remotePage.connection.label": {
+		"message": "接続"
+	},
+	"remotePage.url.description": {
+		"message": "CardDAV形式の場合は、リモートアドレス帳のURLを入力します（例：http(s)://carddav.example.org）。Googleアドレス帳の場合は、この欄を指定しないでください。"
+	},
+	"remotePage.url.label": {
+		"message": "URL："
+	},
+	"remotePage.credentials.description": {
+		"message": "アドレス帳にアクセスするための認証情報を入力します。Googleアドレス帳の場合、ユーザー名はGoogleのメールアドレスにする必要があります。"
+	},
+	"remotePage.user.label": {
+		"message": "ユーザー名："
+	},
+	"remotePage.password.label": {
+		"message": "パスワード："
+	},
+	"remotePage.passwordShow.label": {
+		"message": "表示"
+	},
+	"remotePage.validatebutton.label": {
+		"message": "検証"
+	},
+	"locationSearchPage.wizard.description": {
+		"message": "保存された検索の定義"
+	},
+	"locationSearchPage.label": {
+		"message": "検索フォルダー"
+	},
+	"abSearchHeading.label": {
+		"message": "次の中からカードを検索:"
+	},
+	"abSearchHeading.accesskey": {
+		"message": "h"
+	},
+	"matchAll.label": {
+		"message": "すべての条件に一致"
+	},
+	"matchAll.accesskey": {
+		"message": "A"
+	},
+	"matchAny.label": {
+		"message": "いずれかの条件に一致"
+	},
+	"matchAny.accesskey": {
+		"message": "o"
+	},
+	"googleOauthPage.wizard.description": {
+		"message": "Google認証"
+	},
+	"namePage.wizard.description": {
+		"message": "アドレス帳のプロパティ"
+	},
+	"namePage.selected.label": {
+		"message": "選択"
+	},
+	"namePage.name.label": {
+		"message": "名前"
+	},
+	"namePage.color.label": {
+		"message": "色"
+	},
+	"namePage.urnuuid.label": {
+		"message": "urn：uuidを使う"
+	},
+	"namePage.DBCached.label": {
+		"message": "オフライン作業"
+	},
+	"namePage.vCardVersion.label": {
+		"message": "vCardのバージョン"
+	},
+	"namesPage.wizard.description": {
+		"message": "アドレス帳のプロパティ"
+	},
+	"namesPage.name.label": {
+		"message": "名前"
+	},
+	"namesPage.name.description": {
+		"message": "複数のアドレス帳が発見されました。開くアドレス帳とその名前を選択してください："
+	},
+	"findPage.wizard.description": {
+		"message": "リモートアドレス帳の検索"
+	},
+	"findPage.name1.description": {
+		"message": "リモートアドレス帳が見つかりませんでした。"
+	},
+	"findPage.name2.description": {
+		"message": "リモートアドレス帳が1つ見つかりました。追加するリモートアドレス帳を検証中:"
+	},
+	"findPage.name3.description": {
+		"message": "複数のリモートアドレス帳が見つかりました。追加するリモートアドレス帳を検証中:"
+	},
+	"finishPage.wizard.description": {
+		"message": "アドレス帳の設定"
+	},
+	"finishPage.description": {
+		"message": "新しいアドレス帳が正常に設定されました。"
+	},
+	"finishsPage.description": {
+		"message": "新しいアドレス帳が正常に設定されました。"
+	},
+	"wdw_addressbooksEditTitle": {
+		"message": "アドレス帳のプロパティ"
+	},
+	"colorLabel": {
+		"message": "色："
+	},
+	"name.ABedit.label": {
+		"message": "名："
+	},
+	"name.ABedit.accesskey": {
+		"message": "N"
+	},
+	"nodesLabel": {
+		"message": "ノード:"
+	},
+	"categoriesNodeLabel": {
+		"message": "カテゴリー"
+	},
+	"orgNodeLabel": {
+		"message": "組織"
+	},
+	"typeLabel": {
+		"message": "種類："
+	},
+	"username.ABedit.label": {
+		"message": "ユーザー名："
+	},
+	"vCardVersionLabel": {
+		"message": "vCard："
+	},
+	"readonlyLabel": {
+		"message": "読み取り専用モード"
+	},
+	"readonlyAccesskey": {
+		"message": "R"
+	},
+	"urnuuidLabel": {
+		"message": "urn：uuidを使う"
+	},
+	"DBCachedLabel": {
+		"message": "オフライン作業"
+	},
+	"autoSyncGroupboxLabel": {
+		"message": "定期的な同期"
+	},
+	"autoSyncLabel": {
+		"message": "定期的な同期を有効にする"
+	},
+	"autoSyncAccesskey": {
+		"message": "E"
+	},
+	"autoSyncIntervalLabel": {
+		"message": "定期的な同期の間隔（分）："
+	},
+	"autoSyncIntervalAccesskey": {
+		"message": "I"
+	},
+	"miscTabLabel": {
+		"message": "その他"
+	},
+	"fnFormulaCaption": {
+		"message": "表示名"
+	},
+	"fnFormulaLabel": {
+		"message": "表示名式："
+	},
+	"fnFormulaAccesskey": {
+		"message": "Y"
+	},
+	"resetFnFormulaLabel": {
+		"message": "デフォルトに戻す"
+	},
+	"resetFnFormulaAccesskey": {
+		"message": "R"
+	},
+	"applyToABButtonLabel": {
+		"message": "他のアドレス帳にも反映…"
+	},
+	"applyToABButtonAccesskey": {
+		"message": "A"
+	},
+	"wdw_adrEditionTitle": {
+		"message": "アドレスエディタ"
+	},
+	"adrPostOfficeLabel": {
+		"message": "私書箱"
+	},
+	"adrExtendedAddrLabel": {
+		"message": "アパートメントまたはスイート"
+	},
+	"adrStreetLabel": {
+		"message": "番地"
+	},
+	"adrLocalityLabel": {
+		"message": "市区町村"
+	},
+	"adrRegionLabel": {
+		"message": "都道府県"
+	},
+	"adrPostalCodeLabel": {
+		"message": "郵便番号"
+	},
+	"adrCountryLabel": {
+		"message": "国"
+	},
+	"deprecatedLabel": {
+		"message": "廃止予定"
+	},
+	"daysLeftColumnLabel": {
+		"message": "残りの日数"
+	},
+	"nameColumnLabel": {
+		"message": "名前"
+	},
+	"ageColumnLabel": {
+		"message": "年齢"
+	},
+	"dateOfBirthColumnLabel": {
+		"message": "イベントの日付"
+	},
+	"dateOfBirthFoundColumnLabel": {
+		"message": "見つかった日付"
+	},
+	"emailColumnLabel": {
+		"message": "メール"
+	},
+	"sendEmailLabel": {
+		"message": "新しいメッセージを作成します"
+	},
+	"sendEmailAccesskey": {
+		"message": "E"
+	},
+	"syncLightningMenuItemLabel": {
+		"message": "Lightningと同期"
+	},
+	"syncLightningMenuAccesskey": {
+		"message": "S"
+	},
+	"calendarNameLabel": {
+		"message": "カレンダー"
+	},
+	"calendarIdLabel": {
+		"message": "カレンダーID"
+	},
+	"existingLabel": {
+		"message": "すでに存在"
+	},
+	"failedLabel": {
+		"message": "失敗"
+	},
+	"succeededLabel": {
+		"message": "成功"
+	},
+	"wdw_bulkOperationTitle": {
+		"message": "実行中…"
+	},
+	"wdw_cardbookConfigurationAddCustomFieldTitle": {
+		"message": "追加情報エディタ"
+	},
+	"customFieldCodeLabel": {
+		"message": "フィールド名："
+	},
+	"customFieldLabelLabel": {
+		"message": "フィールドラベル："
+	},
+	"mailAccountLabel": {
+		"message": "メールアカウント："
+	},
+	"addressbookLabel": {
+		"message": "アドレス帳："
+	},
+	"categoryLabel": {
+		"message": "カテゴリー："
+	},
+	"wdw_cardbookConfigurationAddIMPPTitle": {
+		"message": "プロトコルエディタ"
+	},
+	"IMPPCodeLabel": {
+		"message": "コード："
+	},
+	"IMPPLabelLabel": {
+		"message": "ラベル："
+	},
+	"IMPPProtocolLabel": {
+		"message": "プロトコル："
+	},
+	"wdw_cardbookConfigurationAddVcardTitle": {
+		"message": "vCardを選択"
+	},
+	"contactLabel": {
+		"message": "連絡："
+	},
+	"filenameLabel": {
+		"message": "添付ファイル："
+	},
+	"vCardLabel": {
+		"message": "vCard"
+	},
+	"CardBookTabLabel": {
+		"message": "タブ"
+	},
+	"IMPPsTabLabel": {
+		"message": "通話"
+	},
+	"customFieldsTabLabel": {
+		"message": "追加情報"
+	},
+	"listsTabLabel": {
+		"message": "リスト"
+	},
+	"syncTabLabel": {
+		"message": "同期"
+	},
+	"emailTabLabel": {
+		"message": "メール"
+	},
+	"birthdaylistTabLabel": {
+		"message": "記念日"
+	},
+	"synclistTabLabel": {
+		"message": "記念日のリマインダー"
+	},
+	"integrationGroupboxLabel": {
+		"message": "Thunderbirdへの統合"
+	},
+	"autocompletionLabel": {
+		"message": "電子メールアドレスのオートコンプリート"
+	},
+	"autocompletionAccesskey": {
+		"message": "O"
+	},
+	"autocompletionTooltip": {
+		"message": "Thunderbird標準でのアドレス帳の連絡先による自動補完機能を拡張して、CardBookのアドレス帳の連絡先による自動補完機能を行います。"
+	},
+	"autocompleteSortByPopularityLabel": {
+		"message": "送信頻度順にメールアドレスを並べ替える"
+	},
+	"autocompleteSortByPopularityAccesskey": {
+		"message": "P"
+	},
+	"autocompleteProposeConcatEmailsLabel": {
+		"message": "連絡先ごとに連結されたメールアドレスを提案する"
+	},
+	"autocompleteProposeConcatEmailsAccesskey": {
+		"message": "C"
+	},
+	"autocompleteShowAddressbookLabel": {
+		"message": "アドレス帳の名前を表示する"
+	},
+	"autocompleteShowAddressbookAccesskey": {
+		"message": "S"
+	},
+	"autocompleteWithColorLabel": {
+		"message": "アドレス帳の色を使用する"
+	},
+	"autocompleteWithColorAccesskey": {
+		"message": "C"
+	},
+	"autocompleteRestrictSearchLabel": {
+		"message": "検索フィールドを制限する"
+	},
+	"autocompleteRestrictSearchAccesskey": {
+		"message": "R"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "編集"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "E"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "デフォルトに戻す"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "D"
+	},
+	"useColorLabel": {
+		"message": "アドレス帳の色の反映方法："
+	},
+	"useColorBackgroundLabel": {
+		"message": "背景色"
+	},
+	"useColorBackgroundAccesskey": {
+		"message": "B"
+	},
+	"useColorTextLabel": {
+		"message": "テキストの色"
+	},
+	"useColorTextAccesskey": {
+		"message": "T"
+	},
+	"useColorNothingLabel": {
+		"message": "何も"
+	},
+	"useColorNothingAccesskey": {
+		"message": "N"
+	},
+	"exclusiveLabel": {
+		"message": "連絡先のソースをCardBookに限定する"
+	},
+	"exclusiveAccesskey": {
+		"message": "U"
+	},
+	"exclusiveTooltip": {
+		"message": "このオプションを無効にすると、星マークの検出、メールアドレスからの表示名の検出、およびメールアドレスの自動補完において、Thunderbird標準のアドレス帳の連絡先も使われるようになります。"
+	},
+	"accountsRestrictionsLabel": {
+		"message": "メールアカウントの制限"
+	},
+	"accountsRestrictionsEnabledLabel": {
+		"message": "有効"
+	},
+	"accountsRestrictionsMailNameLabel": {
+		"message": "メールアカウント"
+	},
+	"accountsRestrictionsABNameLabel": {
+		"message": "アドレス帳"
+	},
+	"accountsRestrictionsCatNameLabel": {
+		"message": "カテゴリー"
+	},
+	"accountsRestrictionsIncludeNameLabel": {
+		"message": "種類"
+	},
+	"addRestrictionLabel": {
+		"message": "追加"
+	},
+	"addRestrictionAccesskey": {
+		"message": "A"
+	},
+	"renameRestrictionLabel": {
+		"message": "編集"
+	},
+	"renameRestrictionAccesskey": {
+		"message": "E"
+	},
+	"deleteRestrictionLabel": {
+		"message": "削除"
+	},
+	"deleteRestrictionAccesskey": {
+		"message": "D"
+	},
+	"emailsCollectionLabel": {
+		"message": "宛先メールアドレスを収集する"
+	},
+	"emailsCollectionTooltip": {
+		"message": "Thunderbird標準の、送信メールから宛先メールアドレスを収集する機能を拡張します。有効にすると、CardBookのアドレス帳に含まれていないメールアドレスが、選択されたアドレス帳へ自動的に追加されます。"
+	},
+	"emailsCollectionEnabledLabel": {
+		"message": "有効"
+	},
+	"emailsCollectionMailNameLabel": {
+		"message": "メールアカウント"
+	},
+	"emailsCollectionABNameLabel": {
+		"message": "アドレス帳"
+	},
+	"emailsCollectionCatNameLabel": {
+		"message": "カテゴリー"
+	},
+	"addEmailsCollectionLabel": {
+		"message": "追加"
+	},
+	"addEmailsCollectionAccesskey": {
+		"message": "A"
+	},
+	"renameEmailsCollectionLabel": {
+		"message": "編集"
+	},
+	"renameEmailsCollectionAccesskey": {
+		"message": "E"
+	},
+	"deleteEmailsCollectionLabel": {
+		"message": "削除"
+	},
+	"deleteEmailsCollectionAccesskey": {
+		"message": "D"
+	},
+	"logGroupboxLabel": {
+		"message": "ログ"
+	},
+	"debugModeLabel": {
+		"message": "デバッグモード"
+	},
+	"debugModeAccesskey": {
+		"message": "M"
+	},
+	"debugModeTooltip": {
+		"message": "詳細なログ収集のためのデバッグモードを有効にします。"
+	},
+	"statusInformationLineNumberLabel": {
+		"message": "ログファイルに保持する行数："
+	},
+	"statusInformationLineNumberAccesskey": {
+		"message": "K"
+	},
+	"tabsEditingGroupboxLabel": {
+		"message": "表示するタブ"
+	},
+	"listTabLabel": {
+		"message": "リスト"
+	},
+	"listTabAccesskey": {
+		"message": "L"
+	},
+	"mailPopularityTab.conf.label": {
+		"message": "メールの送信頻度"
+	},
+	"mailPopularityTab.conf.accesskey": {
+		"message": "M"
+	},
+	"technicalTab.conf.label": {
+		"message": "技術情報"
+	},
+	"technicalTab.conf.accesskey": {
+		"message": "T"
+	},
+	"vCardTab.conf.label": {
+		"message": "vCard"
+	},
+	"vCardTab.conf.accesskey": {
+		"message": "V"
+	},
+	"advancedTab1Label": {
+		"message": "詳細"
+	},
+	"advancedTab.conf.label": {
+		"message": "詳細（vCard4.0のみ）"
+	},
+	"advancedTab.conf.accesskey": {
+		"message": "A"
+	},
+	"localizeEditingGroupboxLabel": {
+		"message": "マップで表示する"
+	},
+	"localizeEngineOpenStreetMapLabel": {
+		"message": "オープンストリートマップ"
+	},
+	"localizeEngineOpenStreetMapAccesskey": {
+		"message": "O"
+	},
+	"localizeEngineGoogleMapsLabel": {
+		"message": "Googleマップ"
+	},
+	"localizeEngineGoogleMapsAccesskey": {
+		"message": "G"
+	},
+	"localizeEngineBingMapsLabel": {
+		"message": "Bingマップ"
+	},
+	"localizeEngineBingMapsAccesskey": {
+		"message": "B"
+	},
+	"localizeTargetLabel": {
+		"message": "外部リンクの開き方"
+	},
+	"localizeTargetInLabel": {
+		"message": "Thunderbird内で開く"
+	},
+	"localizeTargetInAccesskey": {
+		"message": "I"
+	},
+	"localizeTargetOutLabel": {
+		"message": "Thunderbird外で開く"
+	},
+	"localizeTargetOutAccesskey": {
+		"message": "U"
+	},
+	"showNameAsLabel": {
+		"message": "名前の表示の仕方"
+	},
+	"showNameAsLFLabel": {
+		"message": "姓名"
+	},
+	"showNameAsLFAccesskey": {
+		"message": "F"
+	},
+	"showNameAsLFCommaLabel": {
+		"message": "姓、名"
+	},
+	"showNameAsLFCommaAccesskey": {
+		"message": "I"
+	},
+	"showNameAsFLLabel": {
+		"message": "名姓"
+	},
+	"showNameAsFLAccesskey": {
+		"message": "E"
+	},
+	"showNameAsDSPLabel": {
+		"message": "表示名"
+	},
+	"showNameAsDSPAccesskey": {
+		"message": "D"
+	},
+	"adrFormulaCaption": {
+		"message": "住所"
+	},
+	"adrFormulaLabel": {
+		"message": "アドレス整形式："
+	},
+	"adrFormulaAccesskey": {
+		"message": "R"
+	},
+	"resetAdrFormulaLabel": {
+		"message": "デフォルトに戻す"
+	},
+	"resetAdrFormulaAccesskey": {
+		"message": "R"
+	},
+	"miscEditingGroupboxLabel": {
+		"message": "その他"
+	},
+	"preferEmailEditionLabel": {
+		"message": "連絡先のダブルクリックで、メールを作成する代わりに連絡先を編集する"
+	},
+	"preferEmailEditionAccesskey": {
+		"message": "K"
+	},
+	"dateDisplayedFormatLabel": {
+		"message": "日付テキスト形式："
+	},
+	"dateDisplayedFormatAccesskey": {
+		"message": "X"
+	},
+	"defaultRegionLabel": {
+		"message": "既定の地域"
+	},
+	"defaultRegionAccesskey": {
+		"message": "D"
+	},
+	"defaultRegionTooltip": {
+		"message": "住所と電話番号の表示形式の規定の地域"
+	},
+	"preferenceGroupboxLabel": {
+		"message": "フィールド設定"
+	},
+	"usePreferenceValueLabel": {
+		"message": "PREFの設定値を使用する（vCard4.0のみ）"
+	},
+	"usePreferenceValueAccesskey": {
+		"message": "P"
+	},
+	"preferenceValueLabel": {
+		"message": "PREFの設定値用フィールドのラベル"
+	},
+	"preferenceValueAccesskey": {
+		"message": "V"
+	},
+	"ABtypesGroupboxLabel": {
+		"message": "アドレス帳"
+	},
+	"typesCategoryGoogleLabel": {
+		"message": "Google"
+	},
+	"typesCategoryGoogleAccesskey": {
+		"message": "G"
+	},
+	"typesCategoryAppleLabel": {
+		"message": "Apple"
+	},
+	"typesCategoryAppleAccesskey": {
+		"message": "A"
+	},
+	"typesCategoryYahooLabel": {
+		"message": "Yahoo!"
+	},
+	"typesCategoryYahooAccesskey": {
+		"message": "Y"
+	},
+	"typesCategoryOthersLabel": {
+		"message": "その他"
+	},
+	"typesCategoryOthersAccesskey": {
+		"message": "O"
+	},
+	"typesGroupboxLabel": {
+		"message": "種類"
+	},
+	"typesCategoryAdrLabel": {
+		"message": "住所"
+	},
+	"typesCategoryAdrAccesskey": {
+		"message": "S"
+	},
+	"typesCategoryEmailLabel": {
+		"message": "メール"
+	},
+	"typesCategoryEmailAccesskey": {
+		"message": "M"
+	},
+	"typesCategoryImppLabel": {
+		"message": "IMPP"
+	},
+	"typesCategoryImppAccesskey": {
+		"message": "I"
+	},
+	"typesCategoryTelLabel": {
+		"message": "電話"
+	},
+	"typesCategoryTelAccesskey": {
+		"message": "H"
+	},
+	"typesCategoryUrlLabel": {
+		"message": "URL"
+	},
+	"typesCategoryUrlAccesskey": {
+		"message": "U"
+	},
+	"typesLabelLabel": {
+		"message": "ラベル"
+	},
+	"addTypeLabel": {
+		"message": "追加"
+	},
+	"addTypeAccesskey": {
+		"message": "A"
+	},
+	"renameTypeLabel": {
+		"message": "編集"
+	},
+	"renameTypeAccesskey": {
+		"message": "E"
+	},
+	"deleteTypeLabel": {
+		"message": "削除"
+	},
+	"deleteTypeAccesskey": {
+		"message": "D"
+	},
+	"resetTypeLabel": {
+		"message": "デフォルトに戻す"
+	},
+	"resetTypeAccesskey": {
+		"message": "R"
+	},
+	"IMPPGroupboxWarn": {
+		"message": "この設定により、任意のプロトコルを使用したインターネット経由での通話が可能になります。"
+	},
+	"IMPPGroupboxLabel": {
+		"message": "インターネット経由での通話"
+	},
+	"preferIMPPPrefLabel": {
+		"message": "星印が付いた通話方法を優先する"
+	},
+	"preferIMPPPrefAccesskey": {
+		"message": "P"
+	},
+	"preferIMPPPrefWarn": {
+		"message": "どのアドレスにも星印が付けられていない場合、その連絡先のすべてのアドレスに対して接続が提案されます"
+	},
+	"IMPPCodeHeaderLabel": {
+		"message": "コード"
+	},
+	"IMPPLabelHeaderLabel": {
+		"message": "ラベル"
+	},
+	"IMPPProtocolHeaderLabel": {
+		"message": "プロトコル"
+	},
+	"addIMPPLabel": {
+		"message": "追加"
+	},
+	"addIMPPAccesskey": {
+		"message": "A"
+	},
+	"renameIMPPLabel": {
+		"message": "編集"
+	},
+	"renameIMPPAccesskey": {
+		"message": "E"
+	},
+	"deleteIMPPLabel": {
+		"message": "削除"
+	},
+	"deleteIMPPAccesskey": {
+		"message": "D"
+	},
+	"URLPhoneGroupboxLabel": {
+		"message": "IP電話を開くURL"
+	},
+	"URLPhoneGroupboxWarn": {
+		"message": "このセクションは電話用のプロトコルのURLを選択した場合に使われます。URLは電話番号を埋め込む箇所を示すための「$1」を含む必要があります。"
+	},
+	"URLPhoneURLLabel": {
+		"message": "URL："
+	},
+	"URLPhoneURLAccesskey": {
+		"message": "U"
+	},
+	"URLPhoneUserLabel": {
+		"message": "ユーザー名："
+	},
+	"URLPhoneUserAccesskey": {
+		"message": "t"
+	},
+	"URLPhonePasswordLabel": {
+		"message": "パスワード："
+	},
+	"URLPhonePasswordAccesskey": {
+		"message": "P"
+	},
+	"URLPhonePasswordShowLabel": {
+		"message": "表示"
+	},
+	"URLPhonePasswordShowAccesskey": {
+		"message": "S"
+	},
+	"URLPhoneBackgroundLabel": {
+		"message": "バックグラウンドで実行"
+	},
+	"URLPhoneBackgroundAccesskey": {
+		"message": "S"
+	},
+	"encryptionGroupboxLabel": {
+		"message": "暗号化"
+	},
+	"encryptionExplanation": {
+		"message": "CardBookはローカルに保存されたデータを暗号化することができます。暗号化用の秘密鍵はパスワードマネージャに保存されます。秘密鍵が失われると、ローカルデータの復元は不可能となります。完全な保護のために、Thunderbirdのマスターパスワード機能を有効化する事を推奨します。"
+	},
+	"localDataEncryptionEnabledLabel": {
+		"message": "ローカルにキャッシュされた連絡先を暗号化する"
+	},
+	"localDataEncryptionEnabledAccesskey": {
+		"message": "E"
+	},
+	"customFieldRankHeader": {
+		"message": "ランク"
+	},
+	"customFieldCodeHeader": {
+		"message": "フィールド名"
+	},
+	"customFieldLabelHeader": {
+		"message": "フィールドラベル"
+	},
+	"customFieldsPersTitleLabel": {
+		"message": "個人情報"
+	},
+	"customFieldsPersTitleAccesskey": {
+		"message": "P"
+	},
+	"customFieldsOrgTitleLabel": {
+		"message": "プロフェッショナル情報"
+	},
+	"customFieldsOrgTitleAccesskey": {
+		"message": "R"
+	},
+	"addCustomFieldsLabel": {
+		"message": "追加"
+	},
+	"addCustomFieldsAccesskey": {
+		"message": "A"
+	},
+	"renameCustomFieldsLabel": {
+		"message": "編集"
+	},
+	"renameCustomFieldsAccesskey": {
+		"message": "E"
+	},
+	"deleteCustomFieldsLabel": {
+		"message": "削除"
+	},
+	"deleteCustomFieldsAccesskey": {
+		"message": "D"
+	},
+	"orgWarn": {
+		"message": "ORGフィールドには、各部分がセミコロン文字で区切られた構造化テキスト値を含めることができます（例：あなたの会社;あなたのサービス;あなたの部署）。以下のフィールドは、この構造におけるそれぞれの部分に対するラベルを示します。"
+	},
+	"orgRankLabel": {
+		"message": "ランク"
+	},
+	"orgLabelLabel": {
+		"message": "フィールドラベル"
+	},
+	"listPanelLabel": {
+		"message": "あなたの使用するサーバーが（Google, Apple, Zimbra等のように）カテゴリーをサポートしていない場合、グループ単位でメールを送信するにはリストを使うのがおすすめです。vCard3.0はネイティブでリストをサポートしていませんが、これはカスタムフィールドで実現できるため、vCard3.0でリストを使用する場合は、これらのフィールドを定義する必要があります。"
+	},
+	"listGroupboxLabel": {
+		"message": "リスト用のカスタムフィールド"
+	},
+	"kindCustomLabel": {
+		"message": "種類："
+	},
+	"kindCustomAccesskey": {
+		"message": "K"
+	},
+	"memberCustomLabel": {
+		"message": "メンバー："
+	},
+	"memberCustomAccesskey": {
+		"message": "M"
+	},
+	"resetListLabel": {
+		"message": "デフォルトに戻す"
+	},
+	"resetListAccesskey": {
+		"message": "R"
+	},
+	"syncGroupboxLabel": {
+		"message": "同期"
+	},
+	"syncWarn": {
+		"message": "同期機能は、手元の変更内容をリモートサーバーへ、サーバーの変更内容を手元のデータに反映します。"
+	},
+	"syncAfterChangeLabel": {
+		"message": "??Synchronize after changes??"
+	},
+	"syncAfterChangeAccesskey": {
+		"message": "c"
+	},
+	"initialSyncLabel": {
+		"message": "Thunderbirdの起動時に同期を実行する"
+	},
+	"initialSyncAccesskey": {
+		"message": "R"
+	},
+	"initialSyncDelayLabel": {
+		"message": "起動直後の同期処理を遅延させる時間（秒）："
+	},
+	"initialSyncDelayAccesskey": {
+		"message": "Y"
+	},
+	"solveConflictsLabel": {
+		"message": "連絡先がサーバーとローカルの両方で更新された場合："
+	},
+	"solveConflictsLocalLabel": {
+		"message": "ローカル側の更新内容を優先する"
+	},
+	"solveConflictsLocalAccesskey": {
+		"message": "L"
+	},
+	"solveConflictsRemoteLabel": {
+		"message": "サーバー側の更新内容を優先する"
+	},
+	"solveConflictsRemoteAccesskey": {
+		"message": "S"
+	},
+	"solveConflictsUserLabel": {
+		"message": "ユーザーに尋ねる"
+	},
+	"solveConflictsUserAccesskey": {
+		"message": "A"
+	},
+	"maxModifsPushedLabel": {
+		"message": "同期ごとにプッシュされる変更の最大件数："
+	},
+	"maxModifsPushedAccesskey": {
+		"message": "M"
+	},
+	"requestsGroupboxLabel": {
+		"message": "件"
+	},
+	"requestsTimeoutLabel": {
+		"message": "タイムアウト（秒）："
+	},
+	"requestsTimeoutAccesskey": {
+		"message": "T"
+	},
+	"multigetLabel": {
+		"message": "GETリクエストの場合、連絡先を以下の件数ごとにグループ化する："
+	},
+	"multigetAccesskey": {
+		"message": "G"
+	},
+	"discoveryGroupboxLabel": {
+		"message": "アドレス帳の自動検出"
+	},
+	"discoveryWarn": {
+		"message": "同期のたびに、新規または削除されたアドレス帳を検索するために以下のURLをチェックします。"
+	},
+	"discoveryAccountsGroupboxLabel": {
+		"message": "アカウント"
+	},
+	"advancedSyncGroupboxLabel": {
+		"message": "詳細情報"
+	},
+	"decodeReportLabel": {
+		"message": "REPORTリクエストのURLをデコードする"
+	},
+	"decodeReportAccesskey": {
+		"message": "D"
+	},
+	"miscEmailGroupboxLabel": {
+		"message": "メールの送信"
+	},
+	"preferEmailPrefLabel": {
+		"message": "以下の星印の付いたメールアドレスを優先する"
+	},
+	"preferEmailPrefAccesskey": {
+		"message": "P"
+	},
+	"preferEmailPrefWarn": {
+		"message": "どのアドレスにも星印が付けられていない場合、その連絡先のすべてのアドレスに対してメッセージが送信されます"
+	},
+	"warnEmptyEmailsLabel": {
+		"message": "メールアドレスが設定されていない連絡先宛にメールを送ろうとした場合は警告する"
+	},
+	"warnEmptyEmailsAccesskey": {
+		"message": "W"
+	},
+	"useOnlyEmailLabel": {
+		"message": "表示名を使わず、メールアドレスのみを使う"
+	},
+	"useOnlyEmailAccesskey": {
+		"message": "O"
+	},
+	"attachVCardWarn": {
+		"message": "送信メールにvCardを自動的に添付する場合、メールアカウントごとにvCardを選択して下さい。有効にすると、CardBookはそのアカウントから送信するすべてのメールにvCardを添付します。"
+	},
+	"attachVCardGroupboxLabel": {
+		"message": "vCardの連携"
+	},
+	"accountsVCardsEnabledLabel": {
+		"message": "有効"
+	},
+	"accountsVCardsMailLabel": {
+		"message": "メールアカウント"
+	},
+	"accountsVCardsABNameLabel": {
+		"message": "アドレス帳"
+	},
+	"accountsVCardsFileNameLabel": {
+		"message": "添付ファイル"
+	},
+	"accountsVCardsFnLabel": {
+		"message": "連絡"
+	},
+	"addVCardLabel": {
+		"message": "追加"
+	},
+	"addVCardAccesskey": {
+		"message": "A"
+	},
+	"renameVCardLabel": {
+		"message": "編集"
+	},
+	"renameVCardAccesskey": {
+		"message": "E"
+	},
+	"deleteVCardLabel": {
+		"message": "削除"
+	},
+	"deleteVCardAccesskey": {
+		"message": "D"
+	},
+	"birthdayListWarn": {
+		"message": "記念日はCardBookのアドレス帳内でのみ検索されます。"
+	},
+	"addressbooksGroupboxLabel": {
+		"message": "アドレス帳"
+	},
+	"selectAllABsLabel": {
+		"message": "すべて選択"
+	},
+	"searchForLabel": {
+		"message": "検索対象:"
+	},
+	"bday.conf.label": {
+		"message": "誕生日"
+	},
+	"bday.conf.accesskey": {
+		"message": "B"
+	},
+	"anniversary.conf.label": {
+		"message": "記念日（vCard4.0のみ）"
+	},
+	"anniversary.conf.accesskey": {
+		"message": "A"
+	},
+	"deathdate.conf.label": {
+		"message": "死亡日（vCard4.0のみ）"
+	},
+	"deathdate.conf.accesskey": {
+		"message": "D"
+	},
+	"eventsLabel": {
+		"message": "予定"
+	},
+	"eventsAccesskey": {
+		"message": "E"
+	},
+	"calendarsGroupboxLabel": {
+		"message": "カレンダー"
+	},
+	"selectAllCalendarsLabel": {
+		"message": "すべて選択"
+	},
+	"remindersTabLabel": {
+		"message": "リマインダー"
+	},
+	"remindViaPopupWindowGroupboxLabel": {
+		"message": "ポップアップウィンドウを介して通知"
+	},
+	"numberOfDaysForSearchingLabel": {
+		"message": "記念日を確認する日数："
+	},
+	"numberOfDaysForSearchingAccesskey": {
+		"message": "N"
+	},
+	"showPopupOnStartupLabel": {
+		"message": "起動時にポップアップウィンドウを表示する"
+	},
+	"showPopupOnStartupAccesskey": {
+		"message": "S"
+	},
+	"showPeriodicPopupLabel": {
+		"message": "毎日のポップアップを表示する"
+	},
+	"showPeriodicPopupAccesskey": {
+		"message": "D"
+	},
+	"periodicPopupTimeLabel": {
+		"message": "表示時間（hh:mm）："
+	},
+	"periodicPopupTimeAccesskey": {
+		"message": "I"
+	},
+	"showPopupEvenIfNoBirthdayLabel": {
+		"message": "記念日のリストが空のときにポップアップウィンドウを表示する"
+	},
+	"showPopupEvenIfNoBirthdayAccesskey": {
+		"message": "H"
+	},
+	"remindViaLightningGroupboxLabel": {
+		"message": "Thunderbird Lightningカレンダー拡張機能経由で通知する"
+	},
+	"numberOfDaysForWritingLabel": {
+		"message": "以下の日数に迫ったら記念日を記入する："
+	},
+	"numberOfDaysForWritingAccesskey": {
+		"message": "W"
+	},
+	"syncWithLightningOnStartupLabel": {
+		"message": "起動時にLightningと同期する"
+	},
+	"syncWithLightningOnStartupAccesskey": {
+		"message": "L"
+	},
+	"calendarEntryTitleLabel": {
+		"message": "イベントのタイトル："
+	},
+	"calendarEntryTitleTooltip": {
+		"message": "イベントのテンプレートタイトル。2つのプレースホルダ&#37;Sがそれぞれ名前と年齢に置き換えられます。フィールドが空の場合、標準メッセージが使用されます。"
+	},
+	"calendarEntryTitleAccesskey": {
+		"message": "T"
+	},
+	"resetCalendarEntryTitleButtonLabel": {
+		"message": "デフォルトに戻す"
+	},
+	"resetCalendarEntryTitleButtonAccesskey": {
+		"message": "R"
+	},
+	"calendarEntryTimeLabel": {
+		"message": "イベントの登録時刻（hh:mm）："
+	},
+	"calendarEntryTimeAccesskey": {
+		"message": "M"
+	},
+	"calendarEntryWholeDayLabel": {
+		"message": "1日中のイベントとして登録する"
+	},
+	"calendarEntryWholeDayAccesskey": {
+		"message": "Y"
+	},
+	"calendarEntryAlarmLabel": {
+		"message": "イベントのアラーム設定時刻（例：4,+1 ＝ 4時間前と1時間後）："
+	},
+	"calendarEntryAlarmTooltip": {
+		"message": "何時間前にLightningのアラームで記念日を通知するかを入力します。フィールドが空の場合、アラームは通知されません。複数回通知したい場合は、コンマ区切りのリストを入力して下さい。"
+	},
+	"calendarEntryAlarmAccesskey": {
+		"message": "N"
+	},
+	"calendarEntryCategoriesLabel": {
+		"message": "イベントのカテゴリー："
+	},
+	"calendarEntryCategoriesTooltip": {
+		"message": "カンマ区切りで1つ以上のカテゴリーを設定します。フィールドが空の場合、カテゴリーは設定されません。"
+	},
+	"calendarEntryCategoriesAccesskey": {
+		"message": "G"
+	},
+	"categoriesPicker.label": {
+		"message": "カテゴリーフィルタ："
+	},
+	"categoriesPicker.accesskey": {
+		"message": "T"
+	},
+	"deleteAddrBookCard.label": {
+		"message": "削除"
+	},
+	"deleteAddrBookCard.accesskey": {
+		"message": "D"
+	},
+	"editAddrBookCard.label": {
+		"message": "編集"
+	},
+	"editAddrBookCard.accesskey": {
+		"message": "E"
+	},
+	"addressbookPicker.label": {
+		"message": "アドレス帳:"
+	},
+	"addressbookPicker.accesskey": {
+		"message": "k"
+	},
+	"searchContacts.label": {
+		"message": "検索："
+	},
+	"searchContacts.accesskey": {
+		"message": "O"
+	},
+	"SearchNameOrEmail.label": {
+		"message": "名前またはメールアドレス"
+	},
+	"addtoToFieldMenu.label": {
+		"message": "宛先フィールドに追加"
+	},
+	"addtoToFieldMenu.accesskey": {
+		"message": "A"
+	},
+	"addtoCcFieldMenu.label": {
+		"message": "Cc フィールドに追加"
+	},
+	"addtoCcFieldMenu.accesskey": {
+		"message": "C"
+	},
+	"addtoBccFieldMenu.label": {
+		"message": "Bcc フィールドに追加"
+	},
+	"addtoBccFieldMenu.accesskey": {
+		"message": "B"
+	},
+	"addtoReplytoFieldMenu.label": {
+		"message": "返信先フィールドに追加"
+	},
+	"addtoReplytoFieldMenu.accesskey": {
+		"message": "L"
+	},
+	"toButton.label": {
+		"message": "宛先に追加:"
+	},
+	"toButton.accesskey": {
+		"message": "A"
+	},
+	"ccButton.label": {
+		"message": "Cc に追加:"
+	},
+	"ccButton.accesskey": {
+		"message": "C"
+	},
+	"bccButton.label": {
+		"message": "Bcc に追加:"
+	},
+	"bccButton.accesskey": {
+		"message": "B"
+	},
+	"replytoButton.label": {
+		"message": "返信先に追加："
+	},
+	"replytoButton.accesskey": {
+		"message": "L"
+	},
+	"newContactAbContext.label": {
+		"message": "新しい連絡先"
+	},
+	"newContactAbContext.accesskey": {
+		"message": "C"
+	},
+	"newListAbContext.label": {
+		"message": "新しいアドレスリスト"
+	},
+	"newListAbContext.accesskey": {
+		"message": "L"
+	},
+	"wdw_cardbookWindowLabel": {
+		"message": "連絡先"
+	},
+	"enableAccountsTooltip": {
+		"message": "アドレス帳の検索と同期を有効または無効にします。"
+	},
+	"colorAccountsTooltip": {
+		"message": "アドレス帳の検索結果を色分けします（検索が複数のアドレス帳にまたがる場合に使用）。"
+	},
+	"readonlyAccountsTooltip": {
+		"message": "アドレス帳を読み取り専用または読み取り/書き込みモードに設定します。"
+	},
+	"searchRemoteLabel": {
+		"message": "このアドレス帳には検索後の連絡先のみが表示されます"
+	},
+	"columnChooser2.tooltip": {
+		"message": "表示する列を選択します"
+	},
+	"cardbookAccountMenuLabel": {
+		"message": "アドレス帳"
+	},
+	"cardbookAccountMenuAddServerLabel": {
+		"message": "新しいアドレス帳"
+	},
+	"cardbookAccountMenuEditServerLabel": {
+		"message": "アドレス帳を編集"
+	},
+	"cardbookAccountMenuCloseServerLabel": {
+		"message": "アドレス帳を削除"
+	},
+	"cardbookAccountMenuSyncLabel": {
+		"message": "アドレス帳を同期"
+	},
+	"cardbookAccountMenuSyncsLabel": {
+		"message": "すべてのアドレス帳を同期"
+	},
+	"cardbookContactsMenuLabel": {
+		"message": "連絡先"
+	},
+	"cardbookToolsMenuLabel": {
+		"message": "ツール"
+	},
+	"cardbookToolsMenuBirthdayListLabel": {
+		"message": "記念日リストを見る"
+	},
+	"cardbookToolsMenuSyncLightningLabel": {
+		"message": "カレンダーに記念日を追加"
+	},
+	"cardbookToolsMenuFindAllDuplicatesLabel": {
+		"message": "重複する連絡先をすべてのアドレス帳から検索"
+	},
+	"cardbookToolsMenuFindSingleDuplicatesLabel": {
+		"message": "重複する連絡先を現在のアドレス帳から検索"
+	},
+	"cardbookToolsMenuPrefsLabel": {
+		"message": "CardBookの設定"
+	},
+	"cardbookToolbarLabel": {
+		"message": "CardBookツールバー"
+	},
+	"cardbookToolbarAccesskey": {
+		"message": "A"
+	},
+	"cardbookABPaneToolbarLabel": {
+		"message": "CardBook アドレス帳ペイン ツールバー"
+	},
+	"cardbookABPaneToolbarAccesskey": {
+		"message": "D"
+	},
+	"CustomizeCardBookToolbarLabel": {
+		"message": "カスタマイズ…"
+	},
+	"CustomizeCardBookToolbarAccesskey": {
+		"message": "C"
+	},
+	"cardbookToolbarAddServerButtonLabel": {
+		"message": "新しいアドレス帳"
+	},
+	"cardbookToolbarAddServerButtonTooltip": {
+		"message": "リモートまたはローカルのアドレス帳を追加"
+	},
+	"cardbookToolbarSyncButtonLabel": {
+		"message": "同期"
+	},
+	"cardbookToolbarSyncButtonTooltip": {
+		"message": "すべてのリモートアドレス帳を同期"
+	},
+	"cardbookToolbarWriteButtonLabel": {
+		"message": "作成"
+	},
+	"cardbookToolbarWriteButtonTooltip": {
+		"message": "新しいメッセージを作成します"
+	},
+	"cardbookToolbarChatButtonLabel": {
+		"message": "通話を開始"
+	},
+	"cardbookToolbarChatButtonTooltip": {
+		"message": "インスタントメッセージまたは通話のメッセージを送信します"
+	},
+	"cardbookToolbarConfigurationButtonLabel": {
+		"message": "設定"
+	},
+	"cardbookToolbarConfigurationButtonTooltip": {
+		"message": "CardBookの設定"
+	},
+	"cardbookToolbarAddContactButtonLabel": {
+		"message": "新しい連絡先"
+	},
+	"cardbookToolbarAddContactButtonTooltip": {
+		"message": "アドレス帳に新しい連絡先を作成します"
+	},
+	"cardbookToolbarAddListButtonLabel": {
+		"message": "新しいアドレスリスト"
+	},
+	"cardbookToolbarAddListButtonTooltip": {
+		"message": "新しいアドレスリスト（メーリングリスト）を作成します"
+	},
+	"cardbookToolbarEditButtonLabel": {
+		"message": "編集"
+	},
+	"cardbookToolbarEditButtonTooltip": {
+		"message": "選択した連絡先を編集します"
+	},
+	"cardbookToolbarRemoveButtonLabel": {
+		"message": "削除"
+	},
+	"cardbookToolbarRemoveButtonTooltip": {
+		"message": "選択した連絡先を削除します"
+	},
+	"cardbookToolbarPrintButtonLabel": {
+		"message": "印刷プレビュー"
+	},
+	"cardbookToolbarPrintButtonTooltip": {
+		"message": "選択した項目の印刷プレビューを表示します"
+	},
+	"cardbookToolbarBackButtonLabel": {
+		"message": "元に戻す"
+	},
+	"cardbookToolbarBackButtonTooltip": {
+		"message": "操作を1つ取り消します"
+	},
+	"cardbookToolbarForwardButtonLabel": {
+		"message": "やり直し"
+	},
+	"cardbookToolbarForwardButtonTooltip": {
+		"message": "取り消した操作を1つやり直します"
+	},
+	"cardbookToolbarAppMenuButtonLabel": {
+		"message": "CardBookメニュー"
+	},
+	"cardbookToolbarAppMenuButtonTooltip": {
+		"message": "CardBookメニュー"
+	},
+	"cardbookToolbarSearchBoxLabel": {
+		"message": "連絡先を検索"
+	},
+	"cardbookToolbarSearchBoxTooltip": {
+		"message": "連絡先を検索"
+	},
+	"cardbookToolbarComplexSearchLabel": {
+		"message": "検索フオルダー"
+	},
+	"cardbookToolbarComplexSearchTooltip": {
+		"message": "新しい検索フォルダーを作成します"
+	},
+	"cardbookToolbarThMenuButtonLabel": {
+		"message": "アプリメニュー"
+	},
+	"cardbookToolbarThMenuButtonTooltip": {
+		"message": "Thunderbirdのメニューを表示します"
+	},
+	"cardbookToolbarABMenuLabel": {
+		"message": "アドレス帳の表示"
+	},
+	"cardbookToolbarABMenuTooltip": {
+		"message": "どのアドレス帳を表示するかを選択します"
+	},
+	"generalTabLabel": {
+		"message": "一般"
+	},
+	"mailPopularityTabLabel": {
+		"message": "メールの送信頻度"
+	},
+	"technicalTabLabel": {
+		"message": "技術情報"
+	},
+	"vCardTabLabel": {
+		"message": "vCard"
+	},
+	"noteTabLabel": {
+		"message": "メモ"
+	},
+	"advancedTabLabel": {
+		"message": "詳細"
+	},
+	"miscGroupboxLabel": {
+		"message": "雑多"
+	},
+	"othersGroupboxLabel": {
+		"message": "その他"
+	},
+	"techGroupboxLabel": {
+		"message": "詳細"
+	},
+	"labelGroupboxLabel": {
+		"message": "ラベル"
+	},
+	"agentLabel": {
+		"message": "エージェント"
+	},
+	"keyLabel": {
+		"message": "キー"
+	},
+	"photolocalURILabel": {
+		"message": "顔写真のローカルファイルURI"
+	},
+	"logolocalURILabel": {
+		"message": "ロゴのローカルファイルURI"
+	},
+	"soundlocalURILabel": {
+		"message": "音のローカルファイルURI"
+	},
+	"photoURILabel": {
+		"message": "顔写真"
+	},
+	"logoURILabel": {
+		"message": "ロゴ"
+	},
+	"soundURILabel": {
+		"message": "音"
+	},
+	"cardurlLabel": {
+		"message": "カードのURL"
+	},
+	"cacheuriLabel": {
+		"message": "キャッシュURI"
+	},
+	"localizeadrTreeLabel": {
+		"message": "地図上に表示"
+	},
+	"toEmailEmailTreeLabel": {
+		"message": "新しいメッセージを作成"
+	},
+	"ccEmailEmailTreeLabel": {
+		"message": "新しいメッセージを作成（Cc）"
+	},
+	"bccemailemailTreeLabel": {
+		"message": "新しいメッセージを作成（Bcc）"
+	},
+	"findemailemailTreeLabel": {
+		"message": "このメールアドレスに関連するメールを検索"
+	},
+	"findeventemailTreeLabel": {
+		"message": "このメールアドレスに関連するカレンダーイベントを検索"
+	},
+	"openURLTreeLabel": {
+		"message": "URLを開く"
+	},
+	"toEmailCardFromAccountsOrCatsLabel": {
+		"message": "新しいメッセージを作成"
+	},
+	"toEmailCardFromCardsLabel": {
+		"message": "新しいメッセージを作成"
+	},
+	"ccEmailCardFromAccountsOrCatsLabel": {
+		"message": "新しいメッセージを作成（Cc）"
+	},
+	"ccEmailCardFromCardsLabel": {
+		"message": "新しいメッセージを作成（Cc）"
+	},
+	"bccEmailCardFromAccountsOrCatsLabel": {
+		"message": "新しいメッセージを作成（Bcc）"
+	},
+	"bccEmailCardFromCardsLabel": {
+		"message": "新しいメッセージを作成（Bcc）"
+	},
+	"shareCardByEmailFromAccountsOrCatsLabel": {
+		"message": "メールで共有"
+	},
+	"shareCardByEmailFromCardsLabel": {
+		"message": "メールで共有"
+	},
+	"categoryHeader": {
+		"message": "カテゴリー"
+	},
+	"findEmailsFromCardsLabel": {
+		"message": "この連絡先に関連する電子メールを検索"
+	},
+	"findEventsFromCardsLabel": {
+		"message": "この連絡先に関連するカレンダーイベントを検索"
+	},
+	"localizeCardFromCardsLabel": {
+		"message": "地図上に表示"
+	},
+	"openURLCardFromCardsLabel": {
+		"message": "URLを開く"
+	},
+	"cutCardFromAccountsOrCatsLabel": {
+		"message": "切り取り"
+	},
+	"cutCardFromCardsLabel": {
+		"message": "切り取り"
+	},
+	"copyCardFromAccountsOrCatsLabel": {
+		"message": "コピー"
+	},
+	"copyCardFromCardsLabel": {
+		"message": "コピー"
+	},
+	"pasteCardFromAccountsOrCatsLabel": {
+		"message": "貼り付け"
+	},
+	"pasteCardFromCardsLabel": {
+		"message": "貼り付け"
+	},
+	"pasteEntryLabel": {
+		"message": "項目を貼り付け"
+	},
+	"exportCardToFileLabel": {
+		"message": "ファイルにエクスポート"
+	},
+	"exportCardToDirLabel": {
+		"message": "ディレクトリにエクスポート"
+	},
+	"importCardFromFileLabel": {
+		"message": "ファイルから連絡先をインポート"
+	},
+	"importCardFromDirLabel": {
+		"message": "ディレクトリから連絡先をインポート"
+	},
+	"findDuplicatesFromAccountsOrCatsLabel": {
+		"message": "重複する連絡先を現在のアドレス帳から検索"
+	},
+	"generateFnFromAccountsOrCatsLabel": {
+		"message": "表示名を生成"
+	},
+	"mergeCardsFromCardsLabel": {
+		"message": "連絡先を統合"
+	},
+	"duplicateCardFromCardsLabel": {
+		"message": "連絡先を複製"
+	},
+	"convertListToCategoryFromCardsLabel": {
+		"message": "リストをカテゴリーに変換"
+	},
+	"editAccountFromAccountsOrCatsLabel": {
+		"message": "アドレス帳を編集"
+	},
+	"syncAccountFromAccountsOrCatsLabel": {
+		"message": "アドレス帳を同期"
+	},
+	"removeAccountFromAccountsOrCatsLabel": {
+		"message": "アドレス帳を削除"
+	},
+	"editEventLabel": {
+		"message": "イベントの編集"
+	},
+	"editEventAccesskey": {
+		"message": "E"
+	},
+	"eventsTree.title.label": {
+		"message": "件名"
+	},
+	"eventsTree.title.tooltip2": {
+		"message": "件名で並べ替えます"
+	},
+	"eventsTree.startdate.label": {
+		"message": "開始日時"
+	},
+	"eventsTree.startdate.tooltip2": {
+		"message": "開始日時で並べ替えます"
+	},
+	"eventsTree.enddate.label": {
+		"message": "終了日時"
+	},
+	"eventsTree.enddate.tooltip2": {
+		"message": "終了日時で並べ替えます"
+	},
+	"eventsTree.categories.label": {
+		"message": "カテゴリー"
+	},
+	"eventsTree.categories.tooltip2": {
+		"message": "カテゴリー名で並べ替えます"
+	},
+	"eventsTree.location.label": {
+		"message": "場所"
+	},
+	"eventsTree.location.tooltip2": {
+		"message": "場所で並べ替えます"
+	},
+	"eventsTree.status.label": {
+		"message": "状態"
+	},
+	"eventsTree.status.tooltip2": {
+		"message": "状態で並べ替えます"
+	},
+	"eventsTree.calendarname.label": {
+		"message": "カレンダー名"
+	},
+	"eventsTree.calendarname.tooltip2": {
+		"message": "カレンダー名で並べ替えます"
+	},
+	"createEventLabel": {
+		"message": "新しいイベント"
+	},
+	"createEventAccesskey": {
+		"message": "N"
+	},
+	"adrFormulaExplanation": {
+		"message": "CardBookがアドレスを表示するときの表示形式をカスタマイズできます。この式は 「()」で囲まれ、「 |」で区切られたブロックで構成されます。"
+	},
+	"fnFormulaExplanation": {
+		"message": "CardBookが表示名を生成する方法をカスタマイズすることができます。この式は 「()」で囲まれ、「 |」で区切られたブロックで構成されています。"
+	},
+	"formulaExplanation1": {
+		"message": "({{1}}|{{2}}) : もし {{1}} が空であれば、ブロックは {{2}} で置き換えられます。"
+	},
+	"formulaExplanation2": {
+		"message": "({{1}}|{{2}}|{{3}}) : もし {{1}} が {{2}} と等しければ、ブロックは {{3}} で置き換えられます。"
+	},
+	"formulaExplanation3": {
+		"message": "({{1}}|{{2}}|{{3}}|{{4}}) : もし {{1}} が {{2}} と等しければ、ブロックは {{3}} で置き換えられ、そうでない場合は {{4}} に置き換えられます。"
+	},
+	"formulaExplanation4": {
+		"message": "({{1}}|*|{{2}}|{{3}}|{{4}}) : もし {{1}} が {{2}} を含んでいれば、ブロックは {{3}} で置き換えられ、そうでない場合は {{4}} に置き換えられます。"
+	},
+	"formulaExplanation5": {
+		"message": "({{1}}|^|{{2}}|{{3}}|{{4}}) : もし {{1}} が {{2}} で始まっていれば、ブロックは {{3}} で置き換えられ、そうでない場合は {{4}} に置き換えられます。"
+	},
+	"formulaExplanation6": {
+		"message": "({{1}}|$|{{2}}|{{3}}|{{4}}) : もし {{1}} が {{2}} で終わっていれば、ブロックは {{3}} で置き換えられ、そうでない場合は {{4}} に置き換えられます。"
+	},
+	"settingsTitlelabel": {
+		"message": "印刷設定"
+	},
+	"title.print.label": {
+		"message": "見出し："
+	},
+	"title.print.accesskey": {
+		"message": "T"
+	},
+	"displayHeadersLabel": {
+		"message": "段落ヘッダを表示する"
+	},
+	"displayHeadersAccesskey": {
+		"message": "H"
+	},
+	"displayFieldNamesLabel": {
+		"message": "フィールド名"
+	},
+	"displayFieldNamesAccesskey": {
+		"message": "F"
+	},
+	"displayTypesLabel": {
+		"message": "タイプと環境設定"
+	},
+	"displayTypesAccesskey": {
+		"message": "Y"
+	},
+	"fieldsToPrintGroupboxLabel": {
+		"message": "印刷するフィールド"
+	},
+	"displayLabel": {
+		"message": "表示名"
+	},
+	"displayAccesskey": {
+		"message": "D"
+	},
+	"personalLabel": {
+		"message": "個人情報"
+	},
+	"personalAccesskey": {
+		"message": "P"
+	},
+	"org.print.label": {
+		"message": "プロフェッショナル情報"
+	},
+	"org.print.accesskey": {
+		"message": "O"
+	},
+	"categories.print.label": {
+		"message": "カテゴリー"
+	},
+	"categories.print.accesskey": {
+		"message": "C"
+	},
+	"adr.print.label": {
+		"message": "アドレス"
+	},
+	"adr.print.accesskey": {
+		"message": "A"
+	},
+	"tel.print.label": {
+		"message": "電話番号"
+	},
+	"tel.print.accesskey": {
+		"message": "T"
+	},
+	"email.print.label": {
+		"message": "メールアドレス"
+	},
+	"email.print.accesskey": {
+		"message": "E"
+	},
+	"impp.print.label": {
+		"message": "インターネット通話"
+	},
+	"impp.print.accesskey": {
+		"message": "I"
+	},
+	"url.print.label": {
+		"message": "URL"
+	},
+	"url.print.ccesskey": {
+		"message": "U"
+	},
+	"note.print.label": {
+		"message": "メモ"
+	},
+	"note.print.accesskey": {
+		"message": "N"
+	},
+	"useColorCheckLabel": {
+		"message": "色を設定する"
+	},
+	"useColorCheckAccesskey": {
+		"message": "U"
+	},
+	"existingDataGroupboxLabel": {
+		"message": "この連絡先に追加"
+	},
+	"cardbookSwitchButtonTooltip": {
+		"message": "姓と名を入れ替える"
+	},
+	"descriptionTextbox": {
+		"message": "説明"
+	},
+	"categoriesTextboxLabel": {
+		"message": "新しいカテゴリーを追加"
+	},
+	"typesTextboxLabel": {
+		"message": "新しいタイプを追加"
+	},
+	"categoriesListboxLabel": {
+		"message": "既存のカテゴリー"
+	},
+	"categoryMenuLabel": {
+		"message": "新たなカテゴリー…"
+	},
+	"viewResultEditionLabel": {
+		"message": "結果を表示"
+	},
+	"viewResultEditionAccesskey": {
+		"message": "V"
+	},
+	"createEditionLabel": {
+		"message": "作成"
+	},
+	"createEditionAccesskey": {
+		"message": "T"
+	},
+	"createAndReplaceEditionLabel": {
+		"message": "作成と置換"
+	},
+	"createAndReplaceEditionAccesskey": {
+		"message": "R"
+	},
+	"saveEditionLabel": {
+		"message": "保存"
+	},
+	"saveEditionAccesskey": {
+		"message": "S"
+	},
+	"validateEditionLabel": {
+		"message": "検証"
+	},
+	"validateEditionAccesskey": {
+		"message": "V"
+	},
+	"cancelEditionLabel": {
+		"message": "キャンセル"
+	},
+	"cancelEditionAccesskey": {
+		"message": "C"
+	},
+	"closeEditionLabel": {
+		"message": "閉じる"
+	},
+	"closeEditionAccesskey": {
+		"message": "C"
+	},
+	"buttonAppendToListLabel": {
+		"message": "追加"
+	},
+	"buttonAppendToListAccesskey": {
+		"message": "A"
+	},
+	"buttonRemoveFromListLabel": {
+		"message": "削除"
+	},
+	"buttonRemoveFromListAccesskey": {
+		"message": "O"
+	},
+	"buttonGuessFromListLabel": {
+		"message": "推測"
+	},
+	"buttonGuessFromListAccesskey": {
+		"message": "G"
+	},
+	"loadTemplateLabel": {
+		"message": "テンプレートを選択"
+	},
+	"loadTemplateAccesskey": {
+		"message": "T"
+	},
+	"saveTemplateLabel": {
+		"message": "テンプレートを保存"
+	},
+	"saveTemplateAccesskey": {
+		"message": "E"
+	},
+	"convertVCardsLabel": {
+		"message": "vCardへ変換"
+	},
+	"convertVCardsTooltip": {
+		"message": "いくつかの連絡先のvCardのバージョンがアドレス帳のvCardのバージョンと異なっています。このボタンはそれらのvCardを変換します。"
+	},
+	"convertVCardsAccesskey": {
+		"message": "C"
+	},
+	"wdw_findDuplicatesTitle": {
+		"message": "重複した連絡先"
+	},
+	"addImageCardFromFileLabel": {
+		"message": "ファイルから画像を追加"
+	},
+	"pasteImageCardLabel": {
+		"message": "画像を貼り付け"
+	},
+	"saveImageCardLabel": {
+		"message": "名前を付けて画像を保存…"
+	},
+	"copyImageCardLabel": {
+		"message": "画像をコピー"
+	},
+	"copyImageLocationCardLabel": {
+		"message": "画像のURLをコピー"
+	},
+	"deleteImageCardLabel": {
+		"message": "画像を削除"
+	},
+	"kind.edit.label": {
+		"message": "種類"
+	},
+	"kind.edit.accesskey": {
+		"message": "K"
+	},
+	"addEmailGroupboxLabel": {
+		"message": "メールアドレス"
+	},
+	"availableCardsGroupboxLabel": {
+		"message": "利用可能な連絡先"
+	},
+	"nameOrEmailLabel": {
+		"message": "名前またはメールアドレス"
+	},
+	"appendContactLabel": {
+		"message": "リストに追加"
+	},
+	"deletelistTreeLabel": {
+		"message": "リストから削除"
+	},
+	"editCardFromListLabel": {
+		"message": "この連絡先を編集"
+	},
+	"wdw_logEditionTitle": {
+		"message": "ログビューア"
+	},
+	"logEditionValueLabel": {
+		"message": "時系列のイベント"
+	},
+	"refreshLogEditionLabel": {
+		"message": "リロード"
+	},
+	"refreshLogEditionAccesskey": {
+		"message": "R"
+	},
+	"flushLogEditionLabel": {
+		"message": "口グを消去"
+	},
+	"flushLogEditionAccesskey": {
+		"message": "C"
+	},
+	"clipboardLogEditionLabel": {
+		"message": "クリップボードにコピー"
+	},
+	"clipboardLogEditionAccesskey": {
+		"message": "O"
+	},
+	"cancelLogEditionLabel": {
+		"message": "OK"
+	},
+	"cancelLogEditionAccesskey": {
+		"message": "O"
+	},
+	"wdw_mergeCardsTitle": {
+		"message": "連絡先を統合する"
+	},
+	"mergeInstructionsLabel": {
+		"message": "新しい連絡先に保持するフィールドを選択してください"
+	},
+	"persTitleLabel": {
+		"message": "個人情報"
+	},
+	"orgTitleLabel": {
+		"message": "プロフェッショナル情報"
+	}
+}

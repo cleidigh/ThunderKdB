@@ -1,0 +1,5013 @@
+{
+	"extName": {
+		"message": "CardBook"
+	},
+	"extDesc": {
+		"message": "Адресная книга vCard"
+	},
+	"browserActionTitle": {
+		"message": "CardBook",
+		"description": "Переключиться на вкладку CardBook"
+	},
+	"cardbookTitle": {
+		"message": "CardBook"
+	},
+	"cardbookPrefTitle": {
+		"message": "Параметры CardBook"
+	},
+	"statusProgressInformationTooltip": {
+		"message": "Нажмите здесь для просмотра журналов"
+	},
+	"imageSelectionTitle": {
+		"message": "Выбор изображения"
+	},
+	"imageSaveTitle": {
+		"message": "Сохранить изображение"
+	},
+	"fileSaveTitle": {
+		"message": "Сохранить файл"
+	},
+	"dirSaveTitle": {
+		"message": "Сохранить каталог"
+	},
+	"dirChooseTitle": {
+		"message": "Выбор каталога"
+	},
+	"fileCreationVCFTitle": {
+		"message": "Создать файл VCF (кодировка UTF-8)"
+	},
+	"fileSelectionVCFTitle": {
+		"message": "Открыть существующий файл VCF (кодировка UTF-8)"
+	},
+	"fileImportTitle": {
+		"message": "Импортировать файл VCF (кодировка UTF-8)"
+	},
+	"dirImportTitle": {
+		"message": "Импортировать из каталога"
+	},
+	"fileCreationTPLTitle": {
+		"message": "Создать файл TPL"
+	},
+	"fileSelectionTPLTitle": {
+		"message": "Открыть существующий файл TPL"
+	},
+	"fileSelectionTitle": {
+		"message": "Адрес объекта ссылки"
+	},
+	"uncategorizedCards": {
+		"message": "Без категории"
+	},
+	"collectedCards": {
+		"message": "Собранные контакты"
+	},
+	"enableFromAccountsOrCats": {
+		"message": "Включить адресную книгу"
+	},
+	"disableFromAccountsOrCats": {
+		"message": "Отключить адресную книгу"
+	},
+	"readWriteFromAccountsOrCats": {
+		"message": "Установить для адресной книги режим «запись и чтение»"
+	},
+	"readOnlyFromAccountsOrCats": {
+		"message": "Установить для адресной книги режим «только чтение»"
+	},
+	"editCategoryFromAccountsOrCats": {
+		"message": "Изменить категорию"
+	},
+	"removeCategoryFromAccountsOrCats": {
+		"message": "Удалить категорию"
+	},
+	"convertCategoryFromAccountsOrCats": {
+		"message": "Преобразовать категорию в список"
+	},
+	"editNodeFromAccountsOrCats": {
+		"message": "Редактировать категорию"
+	},
+	"removeNodeFromAccountsOrCats": {
+		"message": "Удалить категорию"
+	},
+	"convertNodeFromAccountsOrCats": {
+		"message": "Создать список из категории"
+	},
+	"viewCardButtonLabel": {
+		"message": "Просмотреть"
+	},
+	"editCardButtonLabel": {
+		"message": "Редактировать"
+	},
+	"viewInCardBookMenuLabel": {
+		"message": "Просмотреть в CardBook"
+	},
+	"mergeCardsLabel": {
+		"message": "Объединить контакты"
+	},
+	"forgetCardsLabel": {
+		"message": "Исключить"
+	},
+	"deleteCardsLabel": {
+		"message": "Удалить"
+	},
+	"showForgottenLabel": {
+		"message": "Показать исключённые копии контактов"
+	},
+	"showForgottenAccesskey": {
+		"message": "П"
+	},
+	"hideForgottenLabel": {
+		"message": "Скрыть исключённые копии контактов"
+	},
+	"hideForgottenAccesskey": {
+		"message": "С"
+	},
+	"noContactsDuplicated": {
+		"message": "Дублирющихся контактов не найдено."
+	},
+	"serverWarningGoogleLabel": {
+		"message": "Использование Google в экспериментальной стадии, т.к. Google не руководствуется стандартами vCard."
+	},
+	"Validating1Label": {
+		"message": "Проверка ($P1$)…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"Validating2Label": {
+		"message": "Проверка…"
+	},
+	"ValidatingURLFailedLabel": {
+		"message": "URL не верен"
+	},
+	"ValidationFailedLabel": {
+		"message": "Ошибка при проверке"
+	},
+	"ValidationOKLabel": {
+		"message": "Проверка прошла успешна"
+	},
+	"customFieldsErrorUPPERCASE": {
+		"message": "Названия пользовательских полей должны быть в верхнем регистре: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorX": {
+		"message": "Названия пользовательских полей должны начинаться с «X-»: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorFIELD": {
+		"message": "«$P1$» — это зарезервированное слово и не может быть использовано как название пользовательского поля",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorCHAR": {
+		"message": "Названия пользовательских полей не должны содержать экранируемых символов: запятая, точка с запятой, двоеточие или точку: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorUNIQUE": {
+		"message": "Названия пользовательских полей должны быть уникальными (пользовательские поля определяются на нескольких вкладках)."
+	},
+	"customFieldsErrorLABEL": {
+		"message": "Метки пользовательских полей не могут быть пустыми."
+	},
+	"allContactsLoadedFromFile": {
+		"message": "$P1$ : Все контакты были загружены из файла.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"notAllContactsLoadedFromFile": {
+		"message": "$P1$ : Не все контакты удалось загрузить из файла: $P2$ с ошибкой.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroRunning": {
+		"message": "$P1$ : Синхронизация выполняется",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroNotTried": {
+		"message": "$P1$ : Синхронизация не начиналась",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinished": {
+		"message": "$P1$ : Синхронизация завершена",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinishedResult": {
+		"message": "$P1$ : Синхронизация завершена, результат :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroProcessed": {
+		"message": "Контактов обработано: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpToDate": {
+		"message": "$P1$ : Контактов обновлено: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnServer": {
+		"message": "$P1$ : Контактов создано на сервере : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnServer": {
+		"message": "$P1$ : Контактов изменено на сервере : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnServer": {
+		"message": "$P1$ : Контактов удалено на сервере : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDisk": {
+		"message": "$P1$ : Контактов удалено на диске : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Контактов удалено на диске и обновлено на сервере : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnDisk": {
+		"message": "$P1$ : Контактов создано на диске : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDisk": {
+		"message": "$P1$ : Контактов обновлено на диске : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnBoth": {
+		"message": "$P1$ : Контактов обновлено на диске и на сервере : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Контактов обновлено на диске и удалено на сервере : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetOKFromServer": {
+		"message": "$P1$ : Изменений успешно получено с сервера : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetKOFromServer": {
+		"message": "$P1$ : Изменений с ошибками получено с сервера : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutOKToServer": {
+		"message": "$P1$ : Изменений успешно отправлено на сервер : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutKOToServer": {
+		"message": "$P1$ : Изменений с ошибками отправлено на сервер : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroImpossible": {
+		"message": "$P1$ : Синхронизация с сервером невозможна.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBFinishedResult": {
+		"message": "$P1$: Локальная база данных открыта, результаты:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBCardsOK": {
+		"message": "$P1$ : Контактов открыто : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDBCardsKO": {
+		"message": "$P1$ : Контактов с ошибками : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirFinishedResult": {
+		"message": "$P1$ : Каталог открыт, результаты:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDirCardsOK": {
+		"message": "$P1$ : Контактов открыто : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirCardsKO": {
+		"message": "$P1$ : Контактов с ошибками : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileFinishedResult": {
+		"message": "$P1$ : Файл открыт, результаты:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFileCardsOK": {
+		"message": "$P1$ : Контактов открыто : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileCardsKO": {
+		"message": "$P1$ : Контактов с ошибками : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroForcedToResync": {
+		"message": "$P1$ : Поступил запрос на повторную синхронизацию этого аккаунта",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroAllFinished": {
+		"message": "Все синхронизации завершены"
+	},
+	"discoveryRunning": {
+		"message": "$P1$ : Выполняется проверка изменения набора адресных книг",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageGetResponse": {
+		"message": "$P1$ : Изображений загружено : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"imageGetError": {
+		"message": "$P1$ : Изображений с ошибками : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importFinishedResult": {
+		"message": "$P1$ : Импорт завершен, результат :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importCardsOK": {
+		"message": "$P1$ : Контактов импортировано : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importCardsKO": {
+		"message": "$P1$ : Контактов с ошибками : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importAllFinished": {
+		"message": "Импорт завершен"
+	},
+	"cardDeletedOnDisk": {
+		"message": "$P1$ : Контакт «$P2$» удалён с диска",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDisk": {
+		"message": "$P1$ : Контакт «$P2$» обновлён на диске",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyGetFromCache": {
+		"message": "$P1$ : Контакт «$P2$» уже получен из кэша",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardGetFromCache": {
+		"message": "$P1$ : Контакт «$P2$» получен из кэша",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Контакт «$P2$» удалён с диска и обновлён на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnBoth": {
+		"message": "$P1$ : Контакт $P2$ обновлён на диске и на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnServer": {
+		"message": "$P1$ : Контакт «$P2$» обновлён на сервере (найден etag : $P3$, etag в кеше : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"cardNewOnServer": {
+		"message": "$P1$ : На сервере найден новый контакт",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardLoadedFromCache": {
+		"message": "$P1$ : Контакт «$P2$» загружен из кеша",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardLoadedFromCacheDB": {
+		"message": "$P1$ : Контакт «$P2$» загружен из кеша (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardNewOnDisk": {
+		"message": "$P1$ : Контакт «$P2$» создан на диске",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Контакт «$P2$» обновлён на диске и удалён на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnServer": {
+		"message": "$P1$ : Контакт «$P2$» удалён на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyExists": {
+		"message": "$P1$ : Контакт «$P2$» уже существует",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"askUserTitle": {
+		"message": "Конфликт изменения контакта"
+	},
+	"askUserPersistMessage": {
+		"message": "Применить это решение для других существующих контактов:"
+	},
+	"keepAskUserLabel": {
+		"message": "Сохранить контакт"
+	},
+	"overwriteAskUserLabel": {
+		"message": "Переписать контакт"
+	},
+	"duplicateAskUserLabel": {
+		"message": "Скопировать контакт"
+	},
+	"deleteAskUserLabel": {
+		"message": "Удалить контакт"
+	},
+	"localAskUserLabel": {
+		"message": "Приоритет локального изменения"
+	},
+	"remoteAskUserLabel": {
+		"message": "Приоритет изменения на сервере"
+	},
+	"mergeAskUserLabel": {
+		"message": "Объединить расхождения"
+	},
+	"serverCardDeletedFromServer": {
+		"message": "$P1$ : Контакт «$P2$» удалён с сервера",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardNotExistServer": {
+		"message": "$P1$ : Контакт «$P2$» не существует на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardDeleteFailed": {
+		"message": "$P1$ : Контакт «$P2$» не удалось удалить с сервера (url : $P3$, статус : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingDeletion": {
+		"message": "$P1$ : Контакт «$P2$» : отправляется запрос на удаление…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Контакт «$P2$» обновлён на сервере (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Контакт «$P2$» обновлён на сервере (etag не получен)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdateFailed": {
+		"message": "$P1$ : Контакт «$P2$» не удалось обновить на сервере (url : $P3$, статус : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingUpdate": {
+		"message": "$P1$ : Контакт «$P2$» : отправляется запрос на обновление…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithEtag": {
+		"message": "$P1$ : Контакт $P2$ создан на сервере (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Контакт $P2$ создан на сервере (etag не получен)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreateFailed": {
+		"message": "$P1$ : Контакт $P2$ не удалось создать на сервере (url : $P3$, статус : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingCreate": {
+		"message": "$P1$ : Контакт $P2$ : отправляется запрос на создание…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetImageFailed": {
+		"message": "$P1$ : Не удалось загрузить изображение для контакта $P2$ (url : $P3$, статус : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetImageOK": {
+		"message": "$P1$ : Загружено изображение для контакта $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingImage": {
+		"message": "$P1$ : Загружается изображение для контакта $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetOK": {
+		"message": "$P1$ : Контакт $P2$ загружен с сервера",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetFailed": {
+		"message": "$P1$ : Не удалось загрузить контакт с сервера (url : $P2$, статус : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"synchronizationFailed": {
+		"message": "$P1$ : Ошибка синхронизации (шаг : $P2$, url : $P3$, статус : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"synchronizationUnauthorized": {
+		"message": "$P1$ : Не могу войти на сервер. Возможно, имеется ошибка в конфигурации, имени пользователя или пароле.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationSearchingCards": {
+		"message": "$P1$ : Поиск контактов…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery": {
+		"message": "$P1$ : Проверяется без обнаружения запрос $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery4": {
+		"message": "$P1$ : Этап обнаружения 4 запрос $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery3": {
+		"message": "$P1$ : Этап обнаружения 3 запрос $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery2": {
+		"message": "$P1$ : Этап обнаружения 2 запрос $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery1": {
+		"message": "$P1$ : Этап обнаружения 1 запрос $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleAccessTokenOK": {
+		"message": "$P1$ : Запрос получения токена доступа к Google выполнен успешно, токен доступа : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRefreshTokenOK": {
+		"message": "$P1$ : Запрос обновления токена доступа к Google выполнен успешно, токен доступа : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleGetNewRefreshToken": {
+		"message": "$P1$ : Выполняется попытка получить новый токен Google для обновления $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleNewRefreshTokenOK": {
+		"message": "$P1$ : Получен код авторизации : $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestAccessToken": {
+		"message": "$P1$ : Запрос токена доступа к Google $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestRefreshToken": {
+		"message": "$P1$ : Запрос токена обновления Google $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooAccessTokenOK": {
+		"message": "$P1$ : Запрос получения токена доступа к Yahoo! выполнен успешно, токен доступа : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRefreshTokenOK": {
+		"message": "$P1$ : Запрос обновления токена доступа к Yahoo! выполнен успешно, токен доступа : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooGetNewRefreshToken": {
+		"message": "$P1$ : Выполняется попытка получить новый токен Yahoo! для обновления $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooNewRefreshTokenOK": {
+		"message": "$P1$ : Получен код авторизации : $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestAccessToken": {
+		"message": "$P1$ : Запрос токена доступа к Yahoo! $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestRefreshToken": {
+		"message": "$P1$ : Запрос токена обновления Yahoo! $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncDeleting": {
+		"message": "$P1$ : Удаляется процесс синхронизации по таймеру (id : $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncSetting": {
+		"message": "$P1$ : Установка процесса синхронизации по таймеру (интервал : $P2$ ms, id : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"periodicSyncSyncing": {
+		"message": "$P1$ : Синхронизация по расписанию…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileEmpty": {
+		"message": "Файл «$P1$» пустой",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileAlreadyOpen": {
+		"message": "Файл «$P1$» уже открыт в CardBook",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryAlreadyOpen": {
+		"message": "Каталог «$P1$» уже открыт в CardBook",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"parsingCardError": {
+		"message": "$P1$ : Ошибка разбора контакта : \n$P2$ \n$P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"addressbookOpened": {
+		"message": "$P1$ : Адресная книга открыта",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookModified": {
+		"message": "$P1$ : Адресная книга изменена",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDeleted": {
+		"message": "$P1$ : Адресная книга закрыта",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookCreated": {
+		"message": "$P1$ : Адресная книга создана",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDisabled": {
+		"message": "$P1$ : Адресная книга отключена",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadOnly": {
+		"message": "$P1$ : Адресная книга в режиме «только чтение»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadWrite": {
+		"message": "$P1$ : Адресная книга в режиме «чтение и запись»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookEnabled": {
+		"message": "$P1$ : Адресная книга включена",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreated": {
+		"message": "$P1$ : Контакт «$P2$» создан",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdated": {
+		"message": "$P1$ : Контакт «$P2$» обновлён",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeleted": {
+		"message": "$P1$ : Контакт «$P2$» удалён",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAddedToCategory": {
+		"message": "$P1$ : Контакт «$P2$» добавлен к категории «$P3$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardDeletedFromAllCategory": {
+		"message": "$P1$ : Контакт «$P2$» удалён из всех категорий",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardsConverted": {
+		"message": "$P1$: контакты преобразованы в $P2$: $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardsConvertedUndo": {
+		"message": "VCards преобразованы"
+	},
+	"cardsImportedFromFileUndo": {
+		"message": "Файл «$P1$» импортирован",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsImportedFromDirUndo": {
+		"message": "Папка «$P1$» импортирована",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"undoActionDoneUndo": {
+		"message": "Отменено ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"redoActionDoneUndo": {
+		"message": "Повтор выполнен ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreatedUndo": {
+		"message": "Контакт «$P1$» создан",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardUpdatedUndo": {
+		"message": "Контакт «$P1$» обновлён",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"outgoingEmailCollectedUndo": {
+		"message": "Сбор адресов получателей"
+	},
+	"emailCollectedByFilterUndo": {
+		"message": "Адреса, собранные фильтром"
+	},
+	"emailDeletedByFilterUndo": {
+		"message": "Письма, удаленные фильтром"
+	},
+	"cardsMergedUndo": {
+		"message": "Контакты объединены"
+	},
+	"cardsDuplicatedUndo": {
+		"message": "Контакты дублируются"
+	},
+	"displayNameGenerated": {
+		"message": "$P1$: выполнено обновление поля «отображаемое имя» для количества контактов: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"displayNameGeneratedUndo": {
+		"message": "Отображаемые имена обновлены"
+	},
+	"cardModifiedUndo": {
+		"message": "Контакт «$P1$» обновлён",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted1Undo": {
+		"message": "Контакт «$P1$» удалён",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted2Undo": {
+		"message": "Контакты удалены"
+	},
+	"cardsPastedUndo": {
+		"message": "Контакты вставлены из буфера обмена"
+	},
+	"cardsDraggedUndo": {
+		"message": "Контакты перетащены"
+	},
+	"categoryCreated": {
+		"message": "$P1$ : Категория «$P2$» создана",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryCreatedUndo": {
+		"message": "Категория «$P1$» создана",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categorySelectedUndo": {
+		"message": "Выбрана категория $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryUnselectedUndo": {
+		"message": "С категории $P1$ снят выбор",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryRenamedUndo": {
+		"message": "Категория $P1$ переименована",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryDeleted": {
+		"message": "$P1$ : Категория «$P2$» удалена",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedUndo": {
+		"message": "Категория «$P1$» удалена",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryConvertedToListUndo": {
+		"message": "Категория $P1$ преобразована в список",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listConvertedToCategoryUndo": {
+		"message": "Список $P1$ преобразован в категорию",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"linePastedUndo": {
+		"message": "Строка вставлена"
+	},
+	"nodeRenamedUndo": {
+		"message": "Категория «$P1$» переименована",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"nodeDeleted": {
+		"message": "$P1$: Удалена категория «$P2$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletedUndo": {
+		"message": "Категория «$P1$» удалена",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listCreatedFromNodeUndo": {
+		"message": "Список «$P1$» создан из категории",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoFile": {
+		"message": "Контакты экспортированы в файл «$P1$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoFile": {
+		"message": "Контакт экспортирован в файл «$P1$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoDir": {
+		"message": "Контакты экспортированы в каталог «$P1$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoDir": {
+		"message": "Контакт экспортирован в каталог «$P1$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importNotIntoSameFile": {
+		"message": "Импорт в тот же файл запрещён"
+	},
+	"importNotIntoSameDir": {
+		"message": "Импорт в тот же каталог запрещён"
+	},
+	"clipboardWrong": {
+		"message": "Данные в буфере обмена не пригодны для импорта"
+	},
+	"clipboardEmpty": {
+		"message": "Буфер обмена пуст"
+	},
+	"imageError": {
+		"message": "Изображение не добавлено из–за ошибки"
+	},
+	"imageErrorWithMessage": {
+		"message": "Изображение не добавлено : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageSavedToFile": {
+		"message": "Изображение сохранено в файл : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"contactsCopied": {
+		"message": "Контакты скопированы в буфер обмена"
+	},
+	"contactCopied": {
+		"message": "Контакт скопирован в буфер обмена"
+	},
+	"lineCopied": {
+		"message": "Строка скопирована в буфер обмена"
+	},
+	"linePastedToCard": {
+		"message": "Строка вставлена в контакт «$P1$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFound": {
+		"message": "Количество найденных контактов: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContacts": {
+		"message": "Количество контактов: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFoundModified": {
+		"message": "Количество найденных изменений контактов: $P1$ (в т.ч. локально: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberContactsModified": {
+		"message": "Количество изменённых контактов: $P1$ (в т.ч. локально : $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberLines": {
+		"message": "Количество строк: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbook.searchFrom.name": {
+		"message": "Искать в CardBook по полю «От»"
+	},
+	"cardbook.searchTo.name": {
+		"message": "Искать в CardBook по полю «Кому»"
+	},
+	"cardbook.searchCc.name": {
+		"message": "Искать в CardBook по полю «Копия»"
+	},
+	"cardbook.searchBcc.name": {
+		"message": "Искать в CardBook по полю «Скрытая копия»"
+	},
+	"cardbook.searchAll.name": {
+		"message": "Искать в CardBook по полю «От», «Кому», «Копия», «Скрытая копия»"
+	},
+	"cardbook.searchCorrespondents.name": {
+		"message": "Корреспонденты CardBook"
+	},
+	"cardbook.addFrom.name": {
+		"message": "Добавить из поля «От» в CardBook"
+	},
+	"cardbook.addTo.name": {
+		"message": "Добавить из поля «Кому» в CardBook"
+	},
+	"cardbook.addCc.name": {
+		"message": "Добавить из поля «Копия» в CardBook"
+	},
+	"cardbook.addBcc.name": {
+		"message": "Добавить из поля «Скрытая копия» в CardBook"
+	},
+	"cardbook.addAll.name": {
+		"message": "Добавить из полей «От», «Кому», «Копия» или «Скрытая копия» в CardBook"
+	},
+	"cardbook.removeFrom.name": {
+		"message": "Удалить из поля «От» в CardBook"
+	},
+	"cardbook.removeTo.name": {
+		"message": "Удалить из поля «Кому» в CardBook"
+	},
+	"cardbook.removeCc.name": {
+		"message": "Удалить из поля «Копия» в CardBook"
+	},
+	"cardbook.removeBcc.name": {
+		"message": "Удалить из поля «Скрытая копия» в CardBook"
+	},
+	"cardbook.removeAll.name": {
+		"message": "Удалить из полей «От», «Кому», «Копия» или «Скрытая копия» в CardBook"
+	},
+	"urlDownloaded": {
+		"message": "URL загружен : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookHeader": {
+		"message": "Адресная книга"
+	},
+	"photoLabel": {
+		"message": "Фотография"
+	},
+	"versionLabel": {
+		"message": "Версия"
+	},
+	"revLabel": {
+		"message": "Последнее обновление"
+	},
+	"lastnameLabel": {
+		"message": "Фамилия"
+	},
+	"firstnameLabel": {
+		"message": "Имя"
+	},
+	"othernameLabel": {
+		"message": "Отчество"
+	},
+	"prefixnameLabel": {
+		"message": "Префикс"
+	},
+	"suffixnameLabel": {
+		"message": "Суффикс"
+	},
+	"fnLabel": {
+		"message": "Отображаемое имя"
+	},
+	"nicknameLabel": {
+		"message": "Прозвище"
+	},
+	"genderLabel": {
+		"message": "Пол"
+	},
+	"bdayLabel": {
+		"message": "Дата рождения"
+	},
+	"birthplaceLabel": {
+		"message": "Место рождения"
+	},
+	"anniversaryLabel": {
+		"message": "Годовщина"
+	},
+	"deathdateLabel": {
+		"message": "Дата смерти"
+	},
+	"deathplaceLabel": {
+		"message": "Место смерти"
+	},
+	"titleLabel": {
+		"message": "Должность"
+	},
+	"roleLabel": {
+		"message": "Роль"
+	},
+	"orgLabel": {
+		"message": "Организация"
+	},
+	"categoriesLabel": {
+		"message": "Категории"
+	},
+	"adrLabel": {
+		"message": "Адреса"
+	},
+	"telLabel": {
+		"message": "Телефон"
+	},
+	"emailLabel": {
+		"message": "Адрес эл.почты"
+	},
+	"imppLabel": {
+		"message": "IM"
+	},
+	"urlLabel": {
+		"message": "URL"
+	},
+	"eventLabel": {
+		"message": "События"
+	},
+	"noteLabel": {
+		"message": "Заметка"
+	},
+	"postOfficeLabel": {
+		"message": "Абонентский ящик"
+	},
+	"extendedAddrLabel": {
+		"message": "Номер квартиры"
+	},
+	"streetLabel": {
+		"message": "Улица"
+	},
+	"localityLabel": {
+		"message": "Населённый пункт (город или посёлок)"
+	},
+	"regionLabel": {
+		"message": "Регион (область или район)"
+	},
+	"postalCodeLabel": {
+		"message": "Почтовый индекс"
+	},
+	"countryLabel": {
+		"message": "Страна"
+	},
+	"ageLabel": {
+		"message": "Возраст"
+	},
+	"ABNameLabel": {
+		"message": "Адресная книга"
+	},
+	"cardIconLabel": {
+		"message": "Значок"
+	},
+	"nameLabel": {
+		"message": "Название"
+	},
+	"mailerLabel": {
+		"message": "Почтовая программа"
+	},
+	"tzLabel": {
+		"message": "Часовой пояс"
+	},
+	"geoLabel": {
+		"message": "Широта и долгота"
+	},
+	"prodidLabel": {
+		"message": "Product ID"
+	},
+	"sortstringLabel": {
+		"message": "Строка для сортировки"
+	},
+	"uidLabel": {
+		"message": "Uid"
+	},
+	"cbidLabel": {
+		"message": "CardBook id"
+	},
+	"class1Label": {
+		"message": "Классификатор доступа"
+	},
+	"dirPrefIdLabel": {
+		"message": "DirPrefId"
+	},
+	"kindLabel": {
+		"message": "Вид"
+	},
+	"etagLabel": {
+		"message": "Etag"
+	},
+	"phoneticfirstnameLabel": {
+		"message": "Имя (Произношение)"
+	},
+	"phoneticlastnameLabel": {
+		"message": "Фамилия (Произношение)"
+	},
+	"custom1Label": {
+		"message": "Прочее 1"
+	},
+	"custom2Label": {
+		"message": "Прочее 2"
+	},
+	"custom3Label": {
+		"message": "Прочее 3"
+	},
+	"custom4Label": {
+		"message": "Прочее 4"
+	},
+	"warningTitle": {
+		"message": "Предупреждение"
+	},
+	"errorTitle": {
+		"message": "Ошибка"
+	},
+	"confirmTitle": {
+		"message": "Подтверждение"
+	},
+	"birthdaysListWindowLabel": {
+		"message": "Список дней рождения (всего : $P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"syncListWindowLabelRunning": {
+		"message": "Выполняется синхронизация дней рождения ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelEnded": {
+		"message": "Синхронизация дней рождения завершена ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelFailed": {
+		"message": "Ошибка синхронизации дней рождения"
+	},
+	"syncListExistingEntry": {
+		"message": "$P1$ : Существующие события в Lightning : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListCreatedEntry": {
+		"message": "$P1$ : Событий создано в Lightning : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListErrorEntry": {
+		"message": "$P1$ : Событий с ошибкой в Lightning : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"noBirthdaysFoundMessage": {
+		"message": "Дней рождения не найдено до $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"noEmailFoundMessage": {
+		"message": "Адрес email не найден для $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventEntryTitleMessage": {
+		"message": "День рождения %1$S, исполняется: %2$S"
+	},
+	"calendarNotFoundTitle": {
+		"message": "Напоминания о днях рождения — Синхронизация с Lightning отменена"
+	},
+	"calendarNotFoundMessage": {
+		"message": "Календарь $P1$ не найден. Синхронизация с Lightning отменена.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"calendarNotWritableTitle": {
+		"message": "Напоминания о днях рождения — Синхронизация с Lightning отменена"
+	},
+	"calendarNotWritableMessage": {
+		"message": "Календарь $P1$ не доступен для записи (возможно, режим «только чтение» или календарь не подключён). Синхронизация с Lightning отменена.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"errorAttachingFile": {
+		"message": "Attaching vCard : Не удалось создать файл–визитку vCard для вложения в сообщение : $P1$ ($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"errorInfiniteLoopRecursion": {
+		"message": "Списки : Обнаружен бесконечный цикл для для списка : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"WRONG_VERSION": {
+		"message": "Поддерживаются vCards только версий 3.0 или 4.0"
+	},
+	"unableToParseResponse": {
+		"message": "$P1$ : Невозможно разобрать эту строку ответа сервера : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"dateEntry1Wrong": {
+		"message": "$P1$ : контакт $P2$ содержит значение поля даты ($P3$), которое не соответствует формату даты адресной книги ($P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"dateEntry2Wrong": {
+		"message": "Значение поля даты ($P1$) не соответствует формату даты адресной книги ($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"validateIntegerMsg": {
+		"message": "Поле «$P1$» должно быть нулём или целым числом между 1 и $P2$ (значение : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"eventNameNull": {
+		"message": "Не указана дата по крайней мере для одного события"
+	},
+	"eventDateNull": {
+		"message": "Не задано описание по крайней мере для одного события"
+	},
+	"invalidURL": {
+		"message": "Неправильный URL : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbookSearchInputDefault": {
+		"message": "Строка для поиска…"
+	},
+	"blogtype": {
+		"message": "Блог"
+	},
+	"celltype": {
+		"message": "Мобильный"
+	},
+	"faxtype": {
+		"message": "факс"
+	},
+	"homefaxtype": {
+		"message": "Домашний факс"
+	},
+	"homepagetype": {
+		"message": "Домашняя страница"
+	},
+	"hometype": {
+		"message": "Домашний"
+	},
+	"iphonetype": {
+		"message": "iPhone"
+	},
+	"maintype": {
+		"message": "Основной"
+	},
+	"othertype": {
+		"message": "Другой"
+	},
+	"pagertype": {
+		"message": "Пейджер"
+	},
+	"profiletype": {
+		"message": "Профиль"
+	},
+	"workfaxtype": {
+		"message": "Рабочий факс"
+	},
+	"worktype": {
+		"message": "Рабочий"
+	},
+	"types.gender.f": {
+		"message": "Женский"
+	},
+	"types.gender.m": {
+		"message": "Мужской"
+	},
+	"types.gender.n": {
+		"message": "Нет"
+	},
+	"types.gender.o": {
+		"message": "Другой"
+	},
+	"types.gender.u": {
+		"message": "Неизвестный"
+	},
+	"typesTooltip": {
+		"message": "Настройка доступных типов может быть произведена в параметрах CardBook."
+	},
+	"prefLabel": {
+		"message": "ПРИОР"
+	},
+	"prefValueLabel": {
+		"message": "Значение приоритета"
+	},
+	"prefWeightTooltip": {
+		"message": "Значение приоритета может варьироваться от 1 до 100. Но, как правило, его следует оставить пустым."
+	},
+	"impp.skype": {
+		"message": "Skype"
+	},
+	"impp.jabber": {
+		"message": "Jabber"
+	},
+	"impp.googletalk": {
+		"message": "Google Talk"
+	},
+	"impp.qq": {
+		"message": "Tencent QQ"
+	},
+	"addToAddressbook": {
+		"message": "Добавить в эту адресную книгу"
+	},
+	"wdw_cardEditionViewResultTitle": {
+		"message": "Итоговое изменение контакта"
+	},
+	"wdw_cardEditionViewResultHideCreateTitle": {
+		"message": "Итоговое изменение контакта"
+	},
+	"wdw_cardEditionAddEmailTitle": {
+		"message": "Регистрация нового адреса email"
+	},
+	"wdw_cardEditionCreateContactTitle": {
+		"message": "Создание нового контакта адресной книги"
+	},
+	"wdw_cardEditionCreateListTitle": {
+		"message": "Создание нового списка рассылки"
+	},
+	"wdw_cardEditionEditContactTitle": {
+		"message": "Изменить контакт"
+	},
+	"wdw_cardEditionEditListTitle": {
+		"message": "Изменить список"
+	},
+	"wdw_cardEditionAddLineTitle": {
+		"message": "Изменить контакт"
+	},
+	"wdw_cardEditionViewContactTitle": {
+		"message": "Просмотр существующего контакта"
+	},
+	"wdw_cardEditionViewListTitle": {
+		"message": "Просмотр списка"
+	},
+	"wdw_cardbookPrintTitleLong": {
+		"message": "Предварительный просмотр печати - $P1$ - CardBook - Thunderbird",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookPrintTitle": {
+		"message": "Предварительный просмотр печати"
+	},
+	"displayGroupboxLabel": {
+		"message": "Отображаемое имя"
+	},
+	"personalGroupboxLabel": {
+		"message": "Личная информация"
+	},
+	"orgGroupboxLabel": {
+		"message": "Профессиональная информация"
+	},
+	"categoriesHeader": {
+		"message": "Категории"
+	},
+	"adrGroupboxLabel": {
+		"message": "Адреса"
+	},
+	"telGroupboxLabel": {
+		"message": "Номера телефонов"
+	},
+	"emailGroupboxLabel": {
+		"message": "Адреса email"
+	},
+	"urlGroupboxLabel": {
+		"message": "URL"
+	},
+	"eventGroupboxLabel": {
+		"message": "События"
+	},
+	"noteGroupboxLabel": {
+		"message": "Заметка"
+	},
+	"searchTermsGroupboxLabel": {
+		"message": "Условия поиска"
+	},
+	"addedCardsGroupboxLabel": {
+		"message": "Выбранные элементы"
+	},
+	"mailPopularityGroupboxLabel": {
+		"message": "Почта"
+	},
+	"addEntryTooltip": {
+		"message": "Добавить запись"
+	},
+	"removeEntryTooltip": {
+		"message": "Удалить запись"
+	},
+	"upEntryTooltip": {
+		"message": "Переместить выше"
+	},
+	"downEntryTooltip": {
+		"message": "Переместить ниже"
+	},
+	"validatedEntryTooltip": {
+		"message": "Действительный"
+	},
+	"noValidatedEntryTooltip": {
+		"message": "Валидация"
+	},
+	"notValidatedEntryTooltip": {
+		"message": "Некорректный формат"
+	},
+	"linkEntryTooltip": {
+		"message": "Создать ссылку…"
+	},
+	"selectedCardsDeletionConfirmMessagePF": {
+		"message": "Удалить выбранный контакт?;Удалить $P1$ выбранных контакта?;Удалить $P1$ выбранных контактов?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"catDeletionsConfirmMessagePF": {
+		"message": "Удалить категорию «$P2$»? Она присвоена одному контакту.;Удалить категорию «$P2$»? Она присвоена $P1$ контактам.;Удалить категорию «$P2$»? Она присвоена $P1$ контактам.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletionsConfirmMessagePF": {
+		"message": "Удалить категорию «$P2$»? Она присвоена одному контакту.;Удалить категорию «$P2$»? Она присвоена $P1$ контактам.;Удалить категорию «$P2$»? Она присвоена $P1$ контактам.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"accountDeletionConfirmMessage": {
+		"message": "Удалить адресную книгу «$P1$» из репозитория CardBook?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletionDiscoveryConfirmMessage": {
+		"message": "Адресная книга «$P1$», вероятно, была удалена на сервере. Удалить её из CardBook?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentFileMessage": {
+		"message": "удалить файл «$P1$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentDirMessage": {
+		"message": "удалить каталог «$P1$»",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryDeletionConfirmMessage": {
+		"message": "Каталог «$P1$» не пустой. Удалить все объекты из этого каталога?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"choiceMappingTitle": {
+		"message": "Выбор полей"
+	},
+	"choiceavailableColumnsGroupboxLabel": {
+		"message": "Доступные столбцы"
+	},
+	"choiceaddedColumnsGroupboxLabel": {
+		"message": "Выбранные столбцы"
+	},
+	"exportMappingTitle": {
+		"message": "Выбор экспортированых столбцов"
+	},
+	"exportavailableColumnsGroupboxLabel": {
+		"message": "Доступные столбцы"
+	},
+	"exportaddedColumnsGroupboxLabel": {
+		"message": "Выбранные столбцы"
+	},
+	"importMappingTitle": {
+		"message": "Таблица привязки столбцов"
+	},
+	"importavailableColumnsGroupboxLabel": {
+		"message": "Доступные столбцы"
+	},
+	"importaddedColumnsGroupboxLabel": {
+		"message": "Выбранные столбцы"
+	},
+	"importfoundColumnsGroupboxLabel": {
+		"message": "Заголовок столбца"
+	},
+	"importblankColumn": {
+		"message": "Пустой столбец"
+	},
+	"importNoTypeLabel": {
+		"message": "без типа"
+	},
+	"fieldDelimiterLabel": {
+		"message": "Разделитель столбцов"
+	},
+	"includePrefLabel": {
+		"message": "Выводить свойства"
+	},
+	"lineHeaderLabel": {
+		"message": "Первая строка как заголовок"
+	},
+	"missingColumnsConfirmMessage": {
+		"message": "Количество выбранных столбцов отличается от общего количества столбцов, присутствующих в файле, т.е. не все данные из файлы будут импортированы в аккаунт. Продолжить?"
+	},
+	"toUpperCase": {
+		"message": "Перевести в верхний регистр"
+	},
+	"toLowerCase": {
+		"message": "Перевести в нижний регистр"
+	},
+	"copyFieldValue": {
+		"message": "Копировать ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"pasteFieldValue": {
+		"message": "Вставить ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookRenameFieldEditTypeTitle": {
+		"message": "Переименовать тип"
+	},
+	"wdw_cardbookRenameFieldAddTypeTitle": {
+		"message": "Создать тип"
+	},
+	"wdw_cardbookRenameFieldOrgTitle": {
+		"message": "Редактирование организации"
+	},
+	"wdw_cardbookRenameFieldEditCatTitle": {
+		"message": "Редактирование категорий"
+	},
+	"wdw_cardbookRenameFieldAddCatTitle": {
+		"message": "Добавить новую категорию"
+	},
+	"wdw_cardbookRenameFieldEditNodeTitle": {
+		"message": "Редактирование категории"
+	},
+	"wdw_cardbookRenameFieldEditTypeLabel": {
+		"message": "Тип:"
+	},
+	"wdw_cardbookRenameFieldAddTypeLabel": {
+		"message": "Тип:"
+	},
+	"wdw_cardbookRenameFieldOrgLabel": {
+		"message": "Тип:"
+	},
+	"wdw_cardbookRenameFieldEditCatLabel": {
+		"message": "Категория:"
+	},
+	"wdw_cardbookRenameFieldAddCatLabel": {
+		"message": "Категория:"
+	},
+	"wdw_cardbookRenameFieldEditNodeLabel": {
+		"message": "$P1$:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
+		"message": "Определение ограничения для учётной записи почты"
+	},
+	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
+		"message": "Определение правила для сохранения адресов из исходящей почты"
+	},
+	"ignoreCaseIgnoreDiacriticLabel": {
+		"message": "Не учитывать регистр и диакритику"
+	},
+	"ignoreCaseMatchDiacriticLabel": {
+		"message": "Не учитывать регистр, учитывать диакритику"
+	},
+	"matchCaseIgnoreDiacriticLabel": {
+		"message": "Учитывать регистр, не учитывать диакритику"
+	},
+	"matchCaseMatchDiacriticLabel": {
+		"message": "Учитывать регистр и диакритику"
+	},
+	"allCategories": {
+		"message": "Показать все"
+	},
+	"onlyCategories": {
+		"message": "Только категории"
+	},
+	"noCategory": {
+		"message": "Только контакты"
+	},
+	"multipleCategories": {
+		"message": "Несколько категорий"
+	},
+	"none": {
+		"message": "Без категории"
+	},
+	"multipleTypes": {
+		"message": "Несколько типов"
+	},
+	"noType": {
+		"message": "Без типа"
+	},
+	"eventContactsWindowLabel": {
+		"message": "События для: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fnDuplicatedMessage": {
+		"message": "(копировать)"
+	},
+	"allMailAccounts": {
+		"message": "Все почтовые аккаунты"
+	},
+	"includeLabel": {
+		"message": "Включая"
+	},
+	"excludeLabel": {
+		"message": "Исключая"
+	},
+	"sendButtonLabel": {
+		"message": "Создание сообщения"
+	},
+	"doNotShowAnymore": {
+		"message": "Не предупреждать при попытке отправить письмо контактам, у которых нет адресов email."
+	},
+	"emptyEmailsCardConfirmMessage": {
+		"message": "У этого контакта нет адреса email: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"emptyEmailsCardsConfirmMessage": {
+		"message": "У этих контактов нет адресов email: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventInNoteEventPrefix": {
+		"message": "Событие"
+	},
+	"deathSuffix": {
+		"message": "(умерший)"
+	},
+	"dateFormatsDLabel": {
+		"message": "D"
+	},
+	"dateFormatsMLabel": {
+		"message": "M"
+	},
+	"dateFormatsYLabel": {
+		"message": "Y"
+	},
+	"customLabel": {
+		"message": "Прочее"
+	},
+	"valueAlreadyExists": {
+		"message": "Это значение уже существует"
+	},
+	"allAccountsLabel": {
+		"message": "Все адресные книги"
+	},
+	"enabledAccountsLabel": {
+		"message": "Активные адресные книги"
+	},
+	"disabledAccountsLabel": {
+		"message": "Неактивные адресные книги"
+	},
+	"localAccountsLabel": {
+		"message": "Локальные адресные книги"
+	},
+	"remoteAccountsLabel": {
+		"message": "Адресные книги, расположенные на серверах"
+	},
+	"searchAccountsLabel": {
+		"message": "Сохранённые поисковые запросы"
+	},
+	"wdw_passwordMissingTitle": {
+		"message": "Отсутствует пароль"
+	},
+	"wdw_passwordWrongTitle": {
+		"message": "Неверный пароль"
+	},
+	"dateDisplayedFormatLong": {
+		"message": "Полный: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"dateDisplayedFormatShort": {
+		"message": "Краткий: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressFormatFormula": {
+		"message": "({{3}}\n|)({{4}}\n|)({{5}}\n|)({{7}}\n|)({{6}})"
+	},
+	"newTokenTitle": {
+		"message": "Войти в свою учётную запись $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"newTokenDescription": {
+		"message": "Для синхронизации контактов требуется доступ к учётной записи $P1$. Данные для входа в учётную запись и сведения о контактах передаются между вашим устройством и серверами Google напрямую, без передачи этой информации третьим сторонам.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"invalidEmail": {
+		"message": "$P1$ не является адресом электронной почты, так как он написан не в форме пользователь@сервер.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"appendEmailLabel": {
+		"message": "Добавить в список: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryAddNew": {
+		"message": "Добавить новую категорию"
+	},
+	"typeAddNew": {
+		"message": "Создать тип"
+	},
+	"allContacts": {
+		"message": "Все контакты"
+	},
+	"keyDescription": {
+		"message": "Ключ шифрования"
+	},
+	"encryptionStarted": {
+		"message": "Шифрование запускается"
+	},
+	"encryptionProcessed": {
+		"message": "Зашифровано $P1$ из $P2$ объектов",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"encryptionFinished": {
+		"message": "Шифрование завершено"
+	},
+	"decryptionStarted": {
+		"message": "Расшифровывание запускается"
+	},
+	"decryptionProcessed": {
+		"message": "Расшифровано $P1$ из $P2$ объектов",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"decryptionFinished": {
+		"message": "Расшифровывание завершено"
+	},
+	"menu_undo.long.label": {
+		"message": "Отменить - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_undo.short.label": {
+		"message": "Отменить"
+	},
+	"menu_redo.long.label": {
+		"message": "Повторить - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_redo.short.label": {
+		"message": "Повторить"
+	},
+	"cardbookMenuItemLabel": {
+		"message": "CardBook"
+	},
+	"cardbookMenuItemAccesskey": {
+		"message": "b"
+	},
+	"cardbookMenuItemKey": {
+		"message": "b"
+	},
+	"cardbookMenuItemTooltip": {
+		"message": "Переключиться на вкладку CardBook"
+	},
+	"cardbookToolbarButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookToolbarButtonTooltip": {
+		"message": "Переключиться на вкладку CardBook"
+	},
+	"cardbookTabButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookTabButtonTooltip": {
+		"message": "Переключиться на вкладку CardBook"
+	},
+	"cardbookQFBButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookQFBButtonTooltip": {
+		"message": "Показывать только сообщения от людей в вашей адресной книге"
+	},
+	"quickFilterBar.booleanMode.tooltip": {
+		"message": "Режим тегов фильтрации"
+	},
+	"quickFilterBar.booleanModeAny.label": {
+		"message": "Любое из"
+	},
+	"quickFilterBar.booleanModeAny.tooltip": {
+		"message": "Должны подходить под хотя бы один из выбранных тегов с критерием"
+	},
+	"quickFilterBar.booleanModeAll.label": {
+		"message": "Все из"
+	},
+	"quickFilterBar.booleanModeAll.tooltip": {
+		"message": "Должны подходить под все выбранные теги с критериями"
+	},
+	"newCardBookCardMenuLabel": {
+		"message": "Контакт CardBook…"
+	},
+	"newCardBookCardMenuAccesskey": {
+		"message": "К"
+	},
+	"newCardBookCardMenuKey": {
+		"message": "N"
+	},
+	"newCardBookSearchMenuLabel": {
+		"message": "Поиск в CardBook…"
+	},
+	"newCardBookSearchMenuAccesskey": {
+		"message": "Н"
+	},
+	"addToCardBookMenuLabel": {
+		"message": "Создать в CardBook"
+	},
+	"addToCardBookMenuAccesskey": {
+		"message": "С"
+	},
+	"editInCardBookMenuLabel": {
+		"message": "Редактировать в CardBook"
+	},
+	"editInCardBookMenuAccesskey": {
+		"message": "П"
+	},
+	"deleteInCardBookMenuLabel": {
+		"message": "Удалить в CardBook"
+	},
+	"deleteInCardBookMenuAccesskey": {
+		"message": "У"
+	},
+	"IMPPMenuLabel": {
+		"message": "Соединиться"
+	},
+	"IMPPMenuAccesskey": {
+		"message": "о"
+	},
+	"findAllEmailsFromContactMessengerLabel": {
+		"message": "Поиск сообщений email, связанных с этим контактом"
+	},
+	"findAllEmailsFromContactMessengerAccesskey": {
+		"message": "к"
+	},
+	"findEmailsFromEmailMessengerLabel": {
+		"message": "Поиск сообщений email, связанных с этим адресом email"
+	},
+	"findEmailsFromEmailMessengerAccesskey": {
+		"message": "а"
+	},
+	"findAllEventsFromContactMessengerLabel": {
+		"message": "Поиск событий календаря, связанных с этим контактом"
+	},
+	"findAllEventsFromContactMessengerAccesskey": {
+		"message": "к"
+	},
+	"findEventsFromEmailMessengerLabel": {
+		"message": "Поиск событий календаря, связанных с этим адресом email"
+	},
+	"findEventsFromEmailMessengerAccesskey": {
+		"message": "а"
+	},
+	"mailContext-addToCardBookMenuLabel": {
+		"message": "Создать в CardBook…"
+	},
+	"mailContext-addToCardBookMenuAccesskey": {
+		"message": "Н"
+	},
+	"addAllAttachementsToCardBookMenuLabel": {
+		"message": "Всё в CardBook…"
+	},
+	"addAttachementToCardBookMenuLabel": {
+		"message": "В CardBook…"
+	},
+	"cardbookABPaneItemLabel": {
+		"message": "Панель адресной книги"
+	},
+	"cardbookABPaneItemAccesskey": {
+		"message": "а"
+	},
+	"cardbookContactPaneItemLabel": {
+		"message": "Панель контактов"
+	},
+	"cardbookContactPaneItemAccesskey": {
+		"message": "к"
+	},
+	"wizard.title": {
+		"message": "Добавьте новую адресную книгу"
+	},
+	"wizard.label": {
+		"message": "Добавьте новую адресную книгу"
+	},
+	"welcomePage.wizard.description": {
+		"message": "Добро пожаловать"
+	},
+	"welcomePage.description": {
+		"message": "Это первый запуск CardBook. Будет выполнена попытка получить данные о контактах из стандарных адресных книг Thunderbird, а также адресных книг, расположенных на серверах в Интернете."
+	},
+	"initialPage.wizard.description": {
+		"message": "Расположение новой адресной книги."
+	},
+	"initialPage.description": {
+		"message": "Ваша адресная книга локальная или удалённая? :"
+	},
+	"initialPage.computer.label": {
+		"message": "Локальная"
+	},
+	"initialPage.network.label": {
+		"message": "В сети"
+	},
+	"initialPage.standard.label": {
+		"message": "Импортировать стандартные адресные книги из Thunderbird"
+	},
+	"initialPage.search.label": {
+		"message": "Поиск в существующих адресных книгах"
+	},
+	"initialPage.find.label": {
+		"message": "Поиск сетевых адресных книг"
+	},
+	"localPage.wizard.description": {
+		"message": "Тип и расположение новой адресной книги."
+	},
+	"localPage.type.description": {
+		"message": "Какой тип новой локальной адресной книги? :"
+	},
+	"localPage.type.label": {
+		"message": "Тип"
+	},
+	"localPage.createDB.label": {
+		"message": "Создать адресную книгу"
+	},
+	"localPage.createDirectory.label": {
+		"message": "Создать адресную книгу (Каталог)"
+	},
+	"localPage.createFile.label": {
+		"message": "Создать адресную книгу (Файл)"
+	},
+	"localPage.openDirectory.label": {
+		"message": "Открыть существующую адресную книгу (Каталог)"
+	},
+	"localPage.openFile.label": {
+		"message": "Открыть существующую адресную книгу (Файл)"
+	},
+	"localPage.uri.groupbox": {
+		"message": "Адрес"
+	},
+	"localPage.uri.label": {
+		"message": "Каталог или файл:"
+	},
+	"localPage.uri.description": {
+		"message": "Используя просмотр, укажите расположение для хранения новых адресных книг. При создании нового файла, укажите расширение «.vcf»"
+	},
+	"localPage.uributton.label": {
+		"message": "Просмотреть"
+	},
+	"remotePage.wizard.description": {
+		"message": "Тип и расположение новой адресной книги в Интрернете."
+	},
+	"remotePage.description": {
+		"message": "Какой тип вашей удалённой адресной книги? : (Внимание: Google НЕ соблюдает стандарт vCard)"
+	},
+	"remotePage.type.label": {
+		"message": "Тип"
+	},
+	"remotePage.carddav.label": {
+		"message": "CardDAV"
+	},
+	"remotePage.google.label": {
+		"message": "Google"
+	},
+	"remotePage.apple.label": {
+		"message": "Apple"
+	},
+	"remotePage.yahoo.label": {
+		"message": "Yahoo!"
+	},
+	"remotePage.connection.label": {
+		"message": "Соединиться"
+	},
+	"remotePage.url.description": {
+		"message": "Для типа CardDAV введите URL адресной книги. Можно попробовать использовать часть URL (например: http(s)://carddav.example.org). Для адресной книги Google, оставьте поле пустым."
+	},
+	"remotePage.url.label": {
+		"message": "URL:"
+	},
+	"remotePage.credentials.description": {
+		"message": "Введите реквизиты доступа для подключения к адресной книге. Для адресной книги Google именем пользователя является адрес email на серверах Google."
+	},
+	"remotePage.user.label": {
+		"message": "Имя пользователя:"
+	},
+	"remotePage.password.label": {
+		"message": "Пароль:"
+	},
+	"remotePage.passwordShow.label": {
+		"message": "Показать"
+	},
+	"remotePage.validatebutton.label": {
+		"message": "Проверить"
+	},
+	"locationSearchPage.wizard.description": {
+		"message": "Параметры расширенного поиска"
+	},
+	"locationSearchPage.label": {
+		"message": "Расширенный поиск"
+	},
+	"abSearchHeading.label": {
+		"message": "Место поиска:"
+	},
+	"abSearchHeading.accesskey": {
+		"message": "c"
+	},
+	"matchAll.label": {
+		"message": "Выполнении всех условий"
+	},
+	"matchAll.accesskey": {
+		"message": "ы"
+	},
+	"matchAny.label": {
+		"message": "Выполнении любого из условий"
+	},
+	"matchAny.accesskey": {
+		"message": "л"
+	},
+	"googleOauthPage.wizard.description": {
+		"message": "Аутентификация Google"
+	},
+	"namePage.wizard.description": {
+		"message": "Свойства адресной книги"
+	},
+	"namePage.selected.label": {
+		"message": "Отмеченное"
+	},
+	"namePage.name.label": {
+		"message": "Имя"
+	},
+	"namePage.color.label": {
+		"message": "Цвет"
+	},
+	"namePage.urnuuid.label": {
+		"message": "Использовать urn:uuid"
+	},
+	"namePage.DBCached.label": {
+		"message": "Работать автономно"
+	},
+	"namePage.vCardVersion.label": {
+		"message": "vCard"
+	},
+	"namesPage.wizard.description": {
+		"message": "Свойства адресных книг"
+	},
+	"namesPage.name.label": {
+		"message": "Имена"
+	},
+	"namesPage.name.description": {
+		"message": "Было обнаружено множество адресных книг. Выберете нужные для открытия и их имена :"
+	},
+	"findPage.wizard.description": {
+		"message": "Поиск сетевых адресных книг"
+	},
+	"findPage.name1.description": {
+		"message": "Не удалось найти сетевые адресные книги."
+	},
+	"findPage.name2.description": {
+		"message": "Найдена одна сетевая адресная книга. Проверьте добавляемый адрес:"
+	},
+	"findPage.name3.description": {
+		"message": "Найдены несколько сетевых адресных книг. Проверьте добавляемые адреса:"
+	},
+	"finishPage.wizard.description": {
+		"message": "Параметры адресной книги"
+	},
+	"finishPage.description": {
+		"message": "Новая адресная книга была успешно настроена."
+	},
+	"finishsPage.description": {
+		"message": "Новые адресные книги были успешно настроены."
+	},
+	"wdw_addressbooksEditTitle": {
+		"message": "Свойства адресной книги"
+	},
+	"colorLabel": {
+		"message": "Цвет:"
+	},
+	"name.ABedit.label": {
+		"message": "Имя:"
+	},
+	"name.ABedit.accesskey": {
+		"message": "И"
+	},
+	"nodesLabel": {
+		"message": "Поле группировки:"
+	},
+	"categoriesNodeLabel": {
+		"message": "Категории"
+	},
+	"orgNodeLabel": {
+		"message": "Организация"
+	},
+	"typeLabel": {
+		"message": "Тип:"
+	},
+	"username.ABedit.label": {
+		"message": "Имя пользователя:"
+	},
+	"vCardVersionLabel": {
+		"message": "vCard:"
+	},
+	"readonlyLabel": {
+		"message": "Режим «только чтение»"
+	},
+	"readonlyAccesskey": {
+		"message": "P"
+	},
+	"urnuuidLabel": {
+		"message": "Использовать urn:uuid"
+	},
+	"DBCachedLabel": {
+		"message": "Работать автономно"
+	},
+	"autoSyncGroupboxLabel": {
+		"message": "Переодическая синхронизация"
+	},
+	"autoSyncLabel": {
+		"message": "Включить периодическую синхронизацию"
+	},
+	"autoSyncAccesskey": {
+		"message": "П"
+	},
+	"autoSyncIntervalLabel": {
+		"message": "Интервал между синхронизациями (минут):"
+	},
+	"autoSyncIntervalAccesskey": {
+		"message": "И"
+	},
+	"miscTabLabel": {
+		"message": "Дополнительные параметры"
+	},
+	"fnFormulaCaption": {
+		"message": "Отображаемое имя"
+	},
+	"fnFormulaLabel": {
+		"message": "Формировать отображаемое имя:"
+	},
+	"fnFormulaAccesskey": {
+		"message": "Ф"
+	},
+	"resetFnFormulaLabel": {
+		"message": "Сбросить до значений по умолчанию"
+	},
+	"resetFnFormulaAccesskey": {
+		"message": "у"
+	},
+	"applyToABButtonLabel": {
+		"message": "Применить к"
+	},
+	"applyToABButtonAccesskey": {
+		"message": "П"
+	},
+	"wdw_adrEditionTitle": {
+		"message": "Редактор адресов"
+	},
+	"adrPostOfficeLabel": {
+		"message": "Абонентский ящик"
+	},
+	"adrExtendedAddrLabel": {
+		"message": "Квартира"
+	},
+	"adrStreetLabel": {
+		"message": "Улица"
+	},
+	"adrLocalityLabel": {
+		"message": "Населённый пункт (Город или посёлок)"
+	},
+	"adrRegionLabel": {
+		"message": "Регион (Край или Район)"
+	},
+	"adrPostalCodeLabel": {
+		"message": "Почтовый индекс"
+	},
+	"adrCountryLabel": {
+		"message": "Страна"
+	},
+	"deprecatedLabel": {
+		"message": "Устарело"
+	},
+	"daysLeftColumnLabel": {
+		"message": "Осталось дней"
+	},
+	"nameColumnLabel": {
+		"message": "Имя"
+	},
+	"ageColumnLabel": {
+		"message": "Возраст"
+	},
+	"dateOfBirthColumnLabel": {
+		"message": "Дата рождения"
+	},
+	"dateOfBirthFoundColumnLabel": {
+		"message": "Найденая дата"
+	},
+	"emailColumnLabel": {
+		"message": "Email"
+	},
+	"sendEmailLabel": {
+		"message": "Создать сообщение"
+	},
+	"sendEmailAccesskey": {
+		"message": "О"
+	},
+	"syncLightningMenuItemLabel": {
+		"message": "Синхронизировать с Lightning"
+	},
+	"syncLightningMenuAccesskey": {
+		"message": "С"
+	},
+	"calendarNameLabel": {
+		"message": "Календарь"
+	},
+	"calendarIdLabel": {
+		"message": "id календаря"
+	},
+	"existingLabel": {
+		"message": "Существующий"
+	},
+	"failedLabel": {
+		"message": "Не удалось"
+	},
+	"succeededLabel": {
+		"message": "Успешно"
+	},
+	"wdw_bulkOperationTitle": {
+		"message": "Выполняется…"
+	},
+	"wdw_cardbookConfigurationAddCustomFieldTitle": {
+		"message": "Редактор пользовательских полей"
+	},
+	"customFieldCodeLabel": {
+		"message": "Открывать внешние ссылки:"
+	},
+	"customFieldLabelLabel": {
+		"message": "Метка поля:"
+	},
+	"mailAccountLabel": {
+		"message": "Почтовый аккаунт:"
+	},
+	"addressbookLabel": {
+		"message": "Адресная книга:"
+	},
+	"categoryLabel": {
+		"message": "Категория:"
+	},
+	"wdw_cardbookConfigurationAddIMPPTitle": {
+		"message": "Редактор протокола"
+	},
+	"IMPPCodeLabel": {
+		"message": "Код:"
+	},
+	"IMPPLabelLabel": {
+		"message": "Метка:"
+	},
+	"IMPPProtocolLabel": {
+		"message": "Протокол:"
+	},
+	"wdw_cardbookConfigurationAddVcardTitle": {
+		"message": "Выберите vCard"
+	},
+	"contactLabel": {
+		"message": "Контакт:"
+	},
+	"filenameLabel": {
+		"message": "Вложенный файл:"
+	},
+	"vCardLabel": {
+		"message": "vCard"
+	},
+	"CardBookTabLabel": {
+		"message": "Вкладка CardBook"
+	},
+	"IMPPsTabLabel": {
+		"message": "Интернет–вызовы"
+	},
+	"customFieldsTabLabel": {
+		"message": "Пользовательсткие поля"
+	},
+	"listsTabLabel": {
+		"message": "Списки"
+	},
+	"syncTabLabel": {
+		"message": "Синхронизация"
+	},
+	"emailTabLabel": {
+		"message": "Email"
+	},
+	"birthdaylistTabLabel": {
+		"message": "Дни рождения"
+	},
+	"synclistTabLabel": {
+		"message": "Напоминания о днях рождения"
+	},
+	"integrationGroupboxLabel": {
+		"message": "Интеграция в Thunderbird"
+	},
+	"autocompletionLabel": {
+		"message": "Автозавершение адресов эл. почты"
+	},
+	"autocompletionAccesskey": {
+		"message": "А"
+	},
+	"autocompletionTooltip": {
+		"message": "Расширяет стандартное автоматическое завершение ввода для контактов из адресной книги Thunderbird добавлением контактов из CardBook."
+	},
+	"autocompleteSortByPopularityLabel": {
+		"message": "Сортировка адресов эл. почты по популярности"
+	},
+	"autocompleteSortByPopularityAccesskey": {
+		"message": "п"
+	},
+	"autocompleteProposeConcatEmailsLabel": {
+		"message": "Предлагать объединённые адреса эл.почты"
+	},
+	"autocompleteProposeConcatEmailsAccesskey": {
+		"message": "ъ"
+	},
+	"autocompleteShowAddressbookLabel": {
+		"message": "Показывать название адресной книги"
+	},
+	"autocompleteShowAddressbookAccesskey": {
+		"message": "н"
+	},
+	"autocompleteWithColorLabel": {
+		"message": "Использовать цвет адресной книги"
+	},
+	"autocompleteWithColorAccesskey": {
+		"message": "ц"
+	},
+	"autocompleteRestrictSearchLabel": {
+		"message": "Ограничить поиск заданными полями"
+	},
+	"autocompleteRestrictSearchAccesskey": {
+		"message": "О"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Редактировать"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "е"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Сбросить до значений по умолчанию"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "у"
+	},
+	"useColorLabel": {
+		"message": "Использовать цвет адресной книги для:"
+	},
+	"useColorBackgroundLabel": {
+		"message": "Фона"
+	},
+	"useColorBackgroundAccesskey": {
+		"message": "Ф"
+	},
+	"useColorTextLabel": {
+		"message": "Текста"
+	},
+	"useColorTextAccesskey": {
+		"message": "Т"
+	},
+	"useColorNothingLabel": {
+		"message": "ничего"
+	},
+	"useColorNothingAccesskey": {
+		"message": "н"
+	},
+	"exclusiveLabel": {
+		"message": "Единственный источник контактов"
+	},
+	"exclusiveAccesskey": {
+		"message": "Е"
+	},
+	"exclusiveTooltip": {
+		"message": "Отключение этого параметра позволяет Thunderbird запрашивать контакты из стандартной адресной книги для жёлтых звёздочек, отображаемого имени в сообщениях и автоматического завершения адресов email."
+	},
+	"accountsRestrictionsLabel": {
+		"message": "Ограничения для учётных записей"
+	},
+	"accountsRestrictionsEnabledLabel": {
+		"message": "Включено"
+	},
+	"accountsRestrictionsMailNameLabel": {
+		"message": "Почтовый аккаунт"
+	},
+	"accountsRestrictionsABNameLabel": {
+		"message": "Адресная книга"
+	},
+	"accountsRestrictionsCatNameLabel": {
+		"message": "Категория"
+	},
+	"accountsRestrictionsIncludeNameLabel": {
+		"message": "Тип"
+	},
+	"addRestrictionLabel": {
+		"message": "Добавить"
+	},
+	"addRestrictionAccesskey": {
+		"message": "Д"
+	},
+	"renameRestrictionLabel": {
+		"message": "Редактировать"
+	},
+	"renameRestrictionAccesskey": {
+		"message": "Р"
+	},
+	"deleteRestrictionLabel": {
+		"message": "Удалить"
+	},
+	"deleteRestrictionAccesskey": {
+		"message": "У"
+	},
+	"emailsCollectionLabel": {
+		"message": "Сохранять адреса из исходящей почты"
+	},
+	"emailsCollectionTooltip": {
+		"message": "Дополняет стандартный для Thunderbird сбор адресов получателей из исходящий сообщений. При включении, адреса email, не присутствующие ни в одной из адресных книг, будут добавлены в выбранную адресную книгу (книги)."
+	},
+	"emailsCollectionEnabledLabel": {
+		"message": "Включено"
+	},
+	"emailsCollectionMailNameLabel": {
+		"message": "Почтовый аккаунт"
+	},
+	"emailsCollectionABNameLabel": {
+		"message": "Адресная книга"
+	},
+	"emailsCollectionCatNameLabel": {
+		"message": "Категория"
+	},
+	"addEmailsCollectionLabel": {
+		"message": "Добавить"
+	},
+	"addEmailsCollectionAccesskey": {
+		"message": "Д"
+	},
+	"renameEmailsCollectionLabel": {
+		"message": "Редактировать"
+	},
+	"renameEmailsCollectionAccesskey": {
+		"message": "Р"
+	},
+	"deleteEmailsCollectionLabel": {
+		"message": "Удалить"
+	},
+	"deleteEmailsCollectionAccesskey": {
+		"message": "У"
+	},
+	"logGroupboxLabel": {
+		"message": "Журнал"
+	},
+	"debugModeLabel": {
+		"message": "Режим отладки"
+	},
+	"debugModeAccesskey": {
+		"message": "о"
+	},
+	"debugModeTooltip": {
+		"message": "Включает режим отладки для расширенного протоколирования."
+	},
+	"statusInformationLineNumberLabel": {
+		"message": "Максимальное количество строк для файла журнала:"
+	},
+	"statusInformationLineNumberAccesskey": {
+		"message": "к"
+	},
+	"tabsEditingGroupboxLabel": {
+		"message": "Показывать вкладки"
+	},
+	"listTabLabel": {
+		"message": "Список"
+	},
+	"listTabAccesskey": {
+		"message": "С"
+	},
+	"mailPopularityTab.conf.label": {
+		"message": "Рейтинг email"
+	},
+	"mailPopularityTab.conf.accesskey": {
+		"message": "Р"
+	},
+	"technicalTab.conf.label": {
+		"message": "Тех.данные"
+	},
+	"technicalTab.conf.accesskey": {
+		"message": "Т"
+	},
+	"vCardTab.conf.label": {
+		"message": "vCard"
+	},
+	"vCardTab.conf.accesskey": {
+		"message": "V"
+	},
+	"advancedTab1Label": {
+		"message": "Дополнительно"
+	},
+	"advancedTab.conf.label": {
+		"message": "Дополнительно (только для vCard 4.0)"
+	},
+	"advancedTab.conf.accesskey": {
+		"message": "Д"
+	},
+	"localizeEditingGroupboxLabel": {
+		"message": "Использовать для показа местополжения"
+	},
+	"localizeEngineOpenStreetMapLabel": {
+		"message": "OpenStreetMap"
+	},
+	"localizeEngineOpenStreetMapAccesskey": {
+		"message": "O"
+	},
+	"localizeEngineGoogleMapsLabel": {
+		"message": "Карты Google"
+	},
+	"localizeEngineGoogleMapsAccesskey": {
+		"message": "G"
+	},
+	"localizeEngineBingMapsLabel": {
+		"message": "Карты Bing"
+	},
+	"localizeEngineBingMapsAccesskey": {
+		"message": "B"
+	},
+	"localizeTargetLabel": {
+		"message": "Открывать внешние ссылки"
+	},
+	"localizeTargetInLabel": {
+		"message": "Внутри Thunderbird"
+	},
+	"localizeTargetInAccesskey": {
+		"message": "у"
+	},
+	"localizeTargetOutLabel": {
+		"message": "Вне Thunderbird"
+	},
+	"localizeTargetOutAccesskey": {
+		"message": "е"
+	},
+	"showNameAsLabel": {
+		"message": "Показывать имя как"
+	},
+	"showNameAsLFLabel": {
+		"message": "Фамилия Имя"
+	},
+	"showNameAsLFAccesskey": {
+		"message": "Ф"
+	},
+	"showNameAsLFCommaLabel": {
+		"message": "Фамилия, Имя"
+	},
+	"showNameAsLFCommaAccesskey": {
+		"message": "я"
+	},
+	"showNameAsFLLabel": {
+		"message": "Имя Фамилия"
+	},
+	"showNameAsFLAccesskey": {
+		"message": "И"
+	},
+	"showNameAsDSPLabel": {
+		"message": "Отображаемое имя"
+	},
+	"showNameAsDSPAccesskey": {
+		"message": "О"
+	},
+	"adrFormulaCaption": {
+		"message": "Адрес"
+	},
+	"adrFormulaLabel": {
+		"message": "Формула заполнения адреса:"
+	},
+	"adrFormulaAccesskey": {
+		"message": "д"
+	},
+	"resetAdrFormulaLabel": {
+		"message": "Сбросить до значений по умолчанию"
+	},
+	"resetAdrFormulaAccesskey": {
+		"message": "y"
+	},
+	"miscEditingGroupboxLabel": {
+		"message": "Дополнительные настройки"
+	},
+	"preferEmailEditionLabel": {
+		"message": "Редактирование контакта двойным щелчком мыши"
+	},
+	"preferEmailEditionAccesskey": {
+		"message": "Р"
+	},
+	"dateDisplayedFormatLabel": {
+		"message": "Формат даты:"
+	},
+	"dateDisplayedFormatAccesskey": {
+		"message": "д"
+	},
+	"defaultRegionLabel": {
+		"message": "Регион по умолчанию:"
+	},
+	"defaultRegionAccesskey": {
+		"message": "Р"
+	},
+	"defaultRegionTooltip": {
+		"message": "Регион по умолчанию, используемый для форматирования адресов и номеров телефона."
+	},
+	"preferenceGroupboxLabel": {
+		"message": "Поле ПРИОРитет"
+	},
+	"usePreferenceValueLabel": {
+		"message": "Использовать предпочитаемое значение (только для vCard 4.0)"
+	},
+	"usePreferenceValueAccesskey": {
+		"message": "п"
+	},
+	"preferenceValueLabel": {
+		"message": "Метка для значения поля ПРИОРитет"
+	},
+	"preferenceValueAccesskey": {
+		"message": "з"
+	},
+	"ABtypesGroupboxLabel": {
+		"message": "Адресная книга"
+	},
+	"typesCategoryGoogleLabel": {
+		"message": "Google"
+	},
+	"typesCategoryGoogleAccesskey": {
+		"message": "G"
+	},
+	"typesCategoryAppleLabel": {
+		"message": "Apple"
+	},
+	"typesCategoryAppleAccesskey": {
+		"message": "A"
+	},
+	"typesCategoryYahooLabel": {
+		"message": "Yahoo!"
+	},
+	"typesCategoryYahooAccesskey": {
+		"message": "Y"
+	},
+	"typesCategoryOthersLabel": {
+		"message": "Другое"
+	},
+	"typesCategoryOthersAccesskey": {
+		"message": "Д"
+	},
+	"typesGroupboxLabel": {
+		"message": "Типы"
+	},
+	"typesCategoryAdrLabel": {
+		"message": "Адрес"
+	},
+	"typesCategoryAdrAccesskey": {
+		"message": "А"
+	},
+	"typesCategoryEmailLabel": {
+		"message": "Email"
+	},
+	"typesCategoryEmailAccesskey": {
+		"message": "E"
+	},
+	"typesCategoryImppLabel": {
+		"message": "IMPP"
+	},
+	"typesCategoryImppAccesskey": {
+		"message": "I"
+	},
+	"typesCategoryTelLabel": {
+		"message": "Телефон"
+	},
+	"typesCategoryTelAccesskey": {
+		"message": "Т"
+	},
+	"typesCategoryUrlLabel": {
+		"message": "URL"
+	},
+	"typesCategoryUrlAccesskey": {
+		"message": "U"
+	},
+	"typesLabelLabel": {
+		"message": "Метка"
+	},
+	"addTypeLabel": {
+		"message": "Добавить"
+	},
+	"addTypeAccesskey": {
+		"message": "Д"
+	},
+	"renameTypeLabel": {
+		"message": "Редактировать"
+	},
+	"renameTypeAccesskey": {
+		"message": "Р"
+	},
+	"deleteTypeLabel": {
+		"message": "Удалить"
+	},
+	"deleteTypeAccesskey": {
+		"message": "У"
+	},
+	"resetTypeLabel": {
+		"message": "Сбросить до значений по умолчанию"
+	},
+	"resetTypeAccesskey": {
+		"message": "у"
+	},
+	"IMPPGroupboxWarn": {
+		"message": "Эти настройки позволяют осуществлять связь через Интернет, используя указанный протокол."
+	},
+	"IMPPGroupboxLabel": {
+		"message": "Интернет–связь"
+	},
+	"preferIMPPPrefLabel": {
+		"message": "Предпочитать способы интернет-связи, помеченные"
+	},
+	"preferIMPPPrefAccesskey": {
+		"message": "и"
+	},
+	"preferIMPPPrefWarn": {
+		"message": "Если ни один из способов связи не помечен, будет предложено установление соединения со всеми доступными адресами контакта."
+	},
+	"IMPPCodeHeaderLabel": {
+		"message": "Код"
+	},
+	"IMPPLabelHeaderLabel": {
+		"message": "Метка"
+	},
+	"IMPPProtocolHeaderLabel": {
+		"message": "Протокол"
+	},
+	"addIMPPLabel": {
+		"message": "Добавить"
+	},
+	"addIMPPAccesskey": {
+		"message": "Д"
+	},
+	"renameIMPPLabel": {
+		"message": "Редактировать"
+	},
+	"renameIMPPAccesskey": {
+		"message": "Р"
+	},
+	"deleteIMPPLabel": {
+		"message": "Удалить"
+	},
+	"deleteIMPPAccesskey": {
+		"message": "У"
+	},
+	"URLPhoneGroupboxLabel": {
+		"message": "URL для программных телефонов"
+	},
+	"URLPhoneGroupboxWarn": {
+		"message": "Параметры этого раздела применяются в случае, если в качестве протокола телефона выбран URL. URL должен содержать переменную «$1», которая будет заменена на номер телефона."
+	},
+	"URLPhoneURLLabel": {
+		"message": "URL:"
+	},
+	"URLPhoneURLAccesskey": {
+		"message": "U"
+	},
+	"URLPhoneUserLabel": {
+		"message": "Имя пользователя:"
+	},
+	"URLPhoneUserAccesskey": {
+		"message": "И"
+	},
+	"URLPhonePasswordLabel": {
+		"message": "Пароль:"
+	},
+	"URLPhonePasswordAccesskey": {
+		"message": "П"
+	},
+	"URLPhonePasswordShowLabel": {
+		"message": "Показать"
+	},
+	"URLPhonePasswordShowAccesskey": {
+		"message": "o"
+	},
+	"URLPhoneBackgroundLabel": {
+		"message": "Выполнять в воновом режиме"
+	},
+	"URLPhoneBackgroundAccesskey": {
+		"message": "В"
+	},
+	"encryptionGroupboxLabel": {
+		"message": "Шифрование"
+	},
+	"encryptionExplanation": {
+		"message": "Приложение может хранить локальные данные в зашифрованном виде, используя для этого закрытый ключ, сохраняемый в менеджере паролей Thunderbird. Для обеспечения комплексной безопасности рекомендуется использовать мастер-пароль Thunderbird."
+	},
+	"localDataEncryptionEnabledLabel": {
+		"message": "Шифровать карточки контактов"
+	},
+	"localDataEncryptionEnabledAccesskey": {
+		"message": "Ш"
+	},
+	"customFieldRankHeader": {
+		"message": "Ранг"
+	},
+	"customFieldCodeHeader": {
+		"message": "Открывать внешние ссылки"
+	},
+	"customFieldLabelHeader": {
+		"message": "Метка поля"
+	},
+	"customFieldsPersTitleLabel": {
+		"message": "Персональная информация"
+	},
+	"customFieldsPersTitleAccesskey": {
+		"message": "П"
+	},
+	"customFieldsOrgTitleLabel": {
+		"message": "Профессиональная информация"
+	},
+	"customFieldsOrgTitleAccesskey": {
+		"message": "и"
+	},
+	"addCustomFieldsLabel": {
+		"message": "Добавить"
+	},
+	"addCustomFieldsAccesskey": {
+		"message": "Д"
+	},
+	"renameCustomFieldsLabel": {
+		"message": "Редактировать"
+	},
+	"renameCustomFieldsAccesskey": {
+		"message": "Р"
+	},
+	"deleteCustomFieldsLabel": {
+		"message": "Удалить"
+	},
+	"deleteCustomFieldsAccesskey": {
+		"message": "У"
+	},
+	"orgWarn": {
+		"message": "Поле ORG может содержать структурированное текстовое значение, состоящее из компонентов, разделённых символом «;» (например: компания;служба;отделение). Поля ниже описывают метки компонентов этой этой структуры."
+	},
+	"orgRankLabel": {
+		"message": "Ранг"
+	},
+	"orgLabelLabel": {
+		"message": "Метка поля"
+	},
+	"listPanelLabel": {
+		"message": "Если ваш сервер не поддерживает категории (как, например, Google, Apple, Zimbra, и т.д.…), то списки — это хороший способ для отправки email группам получателей. Протокол vCard версии 3.0 не поддерживает списки, но этого можно добиться используя пользовательские поля. Поэтому, для использования списков в vCard версии 3.0, необходимо определить эти поля."
+	},
+	"listGroupboxLabel": {
+		"message": "Пользовательские поля для списков"
+	},
+	"kindCustomLabel": {
+		"message": "Тип:"
+	},
+	"kindCustomAccesskey": {
+		"message": "Т"
+	},
+	"memberCustomLabel": {
+		"message": "Участник:"
+	},
+	"memberCustomAccesskey": {
+		"message": "У"
+	},
+	"resetListLabel": {
+		"message": "Сбросить до значений по умолчанию"
+	},
+	"resetListAccesskey": {
+		"message": "у"
+	},
+	"syncGroupboxLabel": {
+		"message": "Синхронизация"
+	},
+	"syncWarn": {
+		"message": "Синхронизация переносит локальные изменения на удалённый сервер и изменения с сервера на диск."
+	},
+	"syncAfterChangeLabel": {
+		"message": "Синхронизировать изменения"
+	},
+	"syncAfterChangeAccesskey": {
+		"message": "и"
+	},
+	"initialSyncLabel": {
+		"message": "Выполнять синхронизацию при запуске Thunderbird"
+	},
+	"initialSyncAccesskey": {
+		"message": "з"
+	},
+	"initialSyncDelayLabel": {
+		"message": "Задержка перед выполнением первого запроса (сек.):"
+	},
+	"initialSyncDelayAccesskey": {
+		"message": "З"
+	},
+	"solveConflictsLabel": {
+		"message": "Если контакт был изменён и на сервере и локально:"
+	},
+	"solveConflictsLocalLabel": {
+		"message": "Предпочитать локальное изменение"
+	},
+	"solveConflictsLocalAccesskey": {
+		"message": "л"
+	},
+	"solveConflictsRemoteLabel": {
+		"message": "Предпочитать изменение с сервера"
+	},
+	"solveConflictsRemoteAccesskey": {
+		"message": "с"
+	},
+	"solveConflictsUserLabel": {
+		"message": "Спрашивать"
+	},
+	"solveConflictsUserAccesskey": {
+		"message": "С"
+	},
+	"maxModifsPushedLabel": {
+		"message": "Максимальное количество изменений за сеанс синхронизации:"
+	},
+	"maxModifsPushedAccesskey": {
+		"message": "з"
+	},
+	"requestsGroupboxLabel": {
+		"message": "Запросы к серверу"
+	},
+	"requestsTimeoutLabel": {
+		"message": "Таймаут (секунд):"
+	},
+	"requestsTimeoutAccesskey": {
+		"message": "Т"
+	},
+	"multigetLabel": {
+		"message": "Для запросов типа GET, группировать контакты по:"
+	},
+	"multigetAccesskey": {
+		"message": "G"
+	},
+	"discoveryGroupboxLabel": {
+		"message": "Проверять изменение набора адресных книг"
+	},
+	"discoveryWarn": {
+		"message": "Для URL, отмеченных ниже, при каждом запуске будет производится проверка появления новых или удаления существующих адресных книг."
+	},
+	"discoveryAccountsGroupboxLabel": {
+		"message": "Учётные записи"
+	},
+	"advancedSyncGroupboxLabel": {
+		"message": "Расширенные настройки"
+	},
+	"decodeReportLabel": {
+		"message": "Декодировать URL для запросов REPORT"
+	},
+	"decodeReportAccesskey": {
+		"message": "Д"
+	},
+	"miscEmailGroupboxLabel": {
+		"message": "Отправка эл.почты"
+	},
+	"preferEmailPrefLabel": {
+		"message": "Предпочитать ПРИОРитетный адрес эл почты"
+	},
+	"preferEmailPrefAccesskey": {
+		"message": "П"
+	},
+	"preferEmailPrefWarn": {
+		"message": "Если адреса, отмеченные как ПРИОРитетные, отсутствуют, отправлять сообщения на все адреса эл.почты контакта."
+	},
+	"warnEmptyEmailsLabel": {
+		"message": "Предупреждать при попытке отправить письма контактам, у которых нет адреса эл. почты"
+	},
+	"warnEmptyEmailsAccesskey": {
+		"message": "W"
+	},
+	"useOnlyEmailLabel": {
+		"message": "Не использовать отображаемое имя, а только адрес эл. почты"
+	},
+	"useOnlyEmailAccesskey": {
+		"message": "е"
+	},
+	"attachVCardWarn": {
+		"message": "Добавлять визитку vCard к отправляемым писмам. Выберите карточку для каждого из аккаунтов. Если эта настройка включена, CardBook будет вкладывать указанную визитку vCard к каждому исходящему email аккаунта."
+	},
+	"attachVCardGroupboxLabel": {
+		"message": "Добавлять визитку vCard"
+	},
+	"accountsVCardsEnabledLabel": {
+		"message": "Включено"
+	},
+	"accountsVCardsMailLabel": {
+		"message": "Почтовый аккаунт"
+	},
+	"accountsVCardsABNameLabel": {
+		"message": "Адресная книга"
+	},
+	"accountsVCardsFileNameLabel": {
+		"message": "Вложенный файл"
+	},
+	"accountsVCardsFnLabel": {
+		"message": "Контакт"
+	},
+	"addVCardLabel": {
+		"message": "Добавить"
+	},
+	"addVCardAccesskey": {
+		"message": "Д"
+	},
+	"renameVCardLabel": {
+		"message": "Редактировать"
+	},
+	"renameVCardAccesskey": {
+		"message": "Р"
+	},
+	"deleteVCardLabel": {
+		"message": "Удалить"
+	},
+	"deleteVCardAccesskey": {
+		"message": "У"
+	},
+	"birthdayListWarn": {
+		"message": "Поиск дней рождения производиться только по адресным книгам CardBook."
+	},
+	"addressbooksGroupboxLabel": {
+		"message": "Контакты"
+	},
+	"selectAllABsLabel": {
+		"message": "Выделить всё"
+	},
+	"searchForLabel": {
+		"message": "Искать:"
+	},
+	"bday.conf.label": {
+		"message": "День рождения"
+	},
+	"bday.conf.accesskey": {
+		"message": "р"
+	},
+	"anniversary.conf.label": {
+		"message": "Годовщина (только для vCard 4.0)"
+	},
+	"anniversary.conf.accesskey": {
+		"message": "Г"
+	},
+	"deathdate.conf.label": {
+		"message": "Дата смерти (только для vCard 4.0)"
+	},
+	"deathdate.conf.accesskey": {
+		"message": "а"
+	},
+	"eventsLabel": {
+		"message": "События"
+	},
+	"eventsAccesskey": {
+		"message": "C"
+	},
+	"calendarsGroupboxLabel": {
+		"message": "Календари"
+	},
+	"selectAllCalendarsLabel": {
+		"message": "Выделить всё"
+	},
+	"remindersTabLabel": {
+		"message": "Напоминания"
+	},
+	"remindViaPopupWindowGroupboxLabel": {
+		"message": "Открывать всплывающее окно для напоминаний"
+	},
+	"numberOfDaysForSearchingLabel": {
+		"message": "Количество дней до дня рождения:"
+	},
+	"numberOfDaysForSearchingAccesskey": {
+		"message": "К"
+	},
+	"showPopupOnStartupLabel": {
+		"message": "Показывать всплывающее окно при запуске"
+	},
+	"showPopupOnStartupAccesskey": {
+		"message": "з"
+	},
+	"showPeriodicPopupLabel": {
+		"message": "Показывать всплывающее окно ежедневно"
+	},
+	"showPeriodicPopupAccesskey": {
+		"message": "е"
+	},
+	"periodicPopupTimeLabel": {
+		"message": "В указанное время (чч:мм):"
+	},
+	"periodicPopupTimeAccesskey": {
+		"message": "в"
+	},
+	"showPopupEvenIfNoBirthdayLabel": {
+		"message": "Показывать всплывающее окно при пустом списке дней рождения"
+	},
+	"showPopupEvenIfNoBirthdayAccesskey": {
+		"message": "п"
+	},
+	"remindViaLightningGroupboxLabel": {
+		"message": "Вывод напоминаний при помощи расширения Lightning"
+	},
+	"numberOfDaysForWritingLabel": {
+		"message": "Количество дней для записи дня рождения:"
+	},
+	"numberOfDaysForWritingAccesskey": {
+		"message": "д"
+	},
+	"syncWithLightningOnStartupLabel": {
+		"message": "Синхронизация с Lightning при запуске"
+	},
+	"syncWithLightningOnStartupAccesskey": {
+		"message": "L"
+	},
+	"calendarEntryTitleLabel": {
+		"message": "Название события календаря:"
+	},
+	"calendarEntryTitleTooltip": {
+		"message": "Шаблон названия события в календаре. Он должен содержать две переменные «&#37;S», которые будут заменены, соответственно, именем и возрастом. Если поле пустое, будет использовано стандартное сообщение."
+	},
+	"calendarEntryTitleAccesskey": {
+		"message": "Н"
+	},
+	"resetCalendarEntryTitleButtonLabel": {
+		"message": "Сбросить до значений по умолчанию"
+	},
+	"resetCalendarEntryTitleButtonAccesskey": {
+		"message": "у"
+	},
+	"calendarEntryTimeLabel": {
+		"message": "Время для события календаря (чч:мм):"
+	},
+	"calendarEntryTimeAccesskey": {
+		"message": "В"
+	},
+	"calendarEntryWholeDayLabel": {
+		"message": "Событие на весь день"
+	},
+	"calendarEntryWholeDayAccesskey": {
+		"message": "д"
+	},
+	"calendarEntryAlarmLabel": {
+		"message": "Уведомлять за заданное количество часов до начала события (Пример: 4,+1):"
+	},
+	"calendarEntryAlarmTooltip": {
+		"message": "Укажите, за сколько дней до дня рождения Lightning должен показать оповещение. Без даты. Если поле пустое, то оповещения не будет. Что бы задать нескольно напоминаний — разделите числа запятой."
+	},
+	"calendarEntryAlarmAccesskey": {
+		"message": "д"
+	},
+	"calendarEntryCategoriesLabel": {
+		"message": "Категория (категории) для событий календаря:"
+	},
+	"calendarEntryCategoriesTooltip": {
+		"message": "Одна или больше категорий, разделённые запятыми. Если поле пустое, то категория не назначается."
+	},
+	"calendarEntryCategoriesAccesskey": {
+		"message": "к"
+	},
+	"categoriesPicker.label": {
+		"message": "Фильтр категорий:"
+	},
+	"categoriesPicker.accesskey": {
+		"message": "Ф"
+	},
+	"deleteAddrBookCard.label": {
+		"message": "Удалить"
+	},
+	"deleteAddrBookCard.accesskey": {
+		"message": "л"
+	},
+	"editAddrBookCard.label": {
+		"message": "Правка"
+	},
+	"editAddrBookCard.accesskey": {
+		"message": "П"
+	},
+	"addressbookPicker.label": {
+		"message": "Адресная книга:"
+	},
+	"addressbookPicker.accesskey": {
+		"message": "е"
+	},
+	"searchContacts.label": {
+		"message": "Искать:"
+	},
+	"searchContacts.accesskey": {
+		"message": "И"
+	},
+	"SearchNameOrEmail.label": {
+		"message": "Имя или e-mail адрес"
+	},
+	"addtoToFieldMenu.label": {
+		"message": "Кому"
+	},
+	"addtoToFieldMenu.accesskey": {
+		"message": "о"
+	},
+	"addtoCcFieldMenu.label": {
+		"message": "Копия"
+	},
+	"addtoCcFieldMenu.accesskey": {
+		"message": "я"
+	},
+	"addtoBccFieldMenu.label": {
+		"message": "Скрытая копия"
+	},
+	"addtoBccFieldMenu.accesskey": {
+		"message": "ы"
+	},
+	"addtoReplytoFieldMenu.label": {
+		"message": "Добавить в поле «Адрес для ответа»"
+	},
+	"addtoReplytoFieldMenu.accesskey": {
+		"message": "Д"
+	},
+	"toButton.label": {
+		"message": "Кому:"
+	},
+	"toButton.accesskey": {
+		"message": "о"
+	},
+	"ccButton.label": {
+		"message": "Копия:"
+	},
+	"ccButton.accesskey": {
+		"message": "п"
+	},
+	"bccButton.label": {
+		"message": "Скрытая копия:"
+	},
+	"bccButton.accesskey": {
+		"message": "ы"
+	},
+	"replytoButton.label": {
+		"message": "Адрес для ответа:"
+	},
+	"replytoButton.accesskey": {
+		"message": "А"
+	},
+	"newContactAbContext.label": {
+		"message": "Новый контакт"
+	},
+	"newContactAbContext.accesskey": {
+		"message": "к"
+	},
+	"newListAbContext.label": {
+		"message": "Новый список"
+	},
+	"newListAbContext.accesskey": {
+		"message": "с"
+	},
+	"wdw_cardbookWindowLabel": {
+		"message": "CardBook"
+	},
+	"enableAccountsTooltip": {
+		"message": "Включение и отключение поиска и синхронизации адресных книг."
+	},
+	"colorAccountsTooltip": {
+		"message": "Выделять цветом адресные книги в результатах поиска (используется при сквозном поиске в нескольких адресных книгах)."
+	},
+	"readonlyAccountsTooltip": {
+		"message": "Выбор режим доступа к адресной книги: «только чтение» или «чтение и запись»."
+	},
+	"searchRemoteLabel": {
+		"message": "Это адресная книга покажет контакты только после поиска"
+	},
+	"columnChooser2.tooltip": {
+		"message": "Выбрать колонки для отображения"
+	},
+	"cardbookAccountMenuLabel": {
+		"message": "Адресная книга"
+	},
+	"cardbookAccountMenuAddServerLabel": {
+		"message": "Добавить адресную книгу"
+	},
+	"cardbookAccountMenuEditServerLabel": {
+		"message": "Редактировать адресную книгу"
+	},
+	"cardbookAccountMenuCloseServerLabel": {
+		"message": "Удалить адресную книгу"
+	},
+	"cardbookAccountMenuSyncLabel": {
+		"message": "Синхронизировать адресную книгу"
+	},
+	"cardbookAccountMenuSyncsLabel": {
+		"message": "Синхронизировать все адресные книги"
+	},
+	"cardbookContactsMenuLabel": {
+		"message": "Контакты"
+	},
+	"cardbookToolsMenuLabel": {
+		"message": "Инструменты"
+	},
+	"cardbookToolsMenuBirthdayListLabel": {
+		"message": "Открыть список дней рождения"
+	},
+	"cardbookToolsMenuSyncLightningLabel": {
+		"message": "Добавить дни рождения в календарь"
+	},
+	"cardbookToolsMenuFindAllDuplicatesLabel": {
+		"message": "Искать повторяющиеся контакты во всех адресных книгах"
+	},
+	"cardbookToolsMenuFindSingleDuplicatesLabel": {
+		"message": "Искать повторяющиеся контакты во текущей адресной книге"
+	},
+	"cardbookToolsMenuPrefsLabel": {
+		"message": "Настроить CardBook…"
+	},
+	"cardbookToolbarLabel": {
+		"message": "Панель инструментов CardBook"
+	},
+	"cardbookToolbarAccesskey": {
+		"message": "П"
+	},
+	"cardbookABPaneToolbarLabel": {
+		"message": "Панель адресных книг CardBook"
+	},
+	"cardbookABPaneToolbarAccesskey": {
+		"message": "д"
+	},
+	"CustomizeCardBookToolbarLabel": {
+		"message": "Настроить…"
+	},
+	"CustomizeCardBookToolbarAccesskey": {
+		"message": "Н"
+	},
+	"cardbookToolbarAddServerButtonLabel": {
+		"message": "Добавить адресную книгу"
+	},
+	"cardbookToolbarAddServerButtonTooltip": {
+		"message": "Добавление адресной книги, расположенной локально или на сервере"
+	},
+	"cardbookToolbarSyncButtonLabel": {
+		"message": "Синхронизация"
+	},
+	"cardbookToolbarSyncButtonTooltip": {
+		"message": "Синхронизация всех адресных книг"
+	},
+	"cardbookToolbarWriteButtonLabel": {
+		"message": "Создать сообщение"
+	},
+	"cardbookToolbarWriteButtonTooltip": {
+		"message": "Создание сообщения"
+	},
+	"cardbookToolbarChatButtonLabel": {
+		"message": "Соединиться"
+	},
+	"cardbookToolbarChatButtonTooltip": {
+		"message": "Отправить мгновенное сообщение или начать беседу"
+	},
+	"cardbookToolbarConfigurationButtonLabel": {
+		"message": "Параметры"
+	},
+	"cardbookToolbarConfigurationButtonTooltip": {
+		"message": "Настроить параметры CardBook"
+	},
+	"cardbookToolbarAddContactButtonLabel": {
+		"message": "Создать контакт"
+	},
+	"cardbookToolbarAddContactButtonTooltip": {
+		"message": "Создание нового контакта адресной книги"
+	},
+	"cardbookToolbarAddListButtonLabel": {
+		"message": "Создать список"
+	},
+	"cardbookToolbarAddListButtonTooltip": {
+		"message": "Создание нового списка рассылки"
+	},
+	"cardbookToolbarEditButtonLabel": {
+		"message": "Редактировать"
+	},
+	"cardbookToolbarEditButtonTooltip": {
+		"message": "Редактирование существующего контакта"
+	},
+	"cardbookToolbarRemoveButtonLabel": {
+		"message": "Удалить"
+	},
+	"cardbookToolbarRemoveButtonTooltip": {
+		"message": "Удаление существующего контакта"
+	},
+	"cardbookToolbarPrintButtonLabel": {
+		"message": "Предварительный просмор печати"
+	},
+	"cardbookToolbarPrintButtonTooltip": {
+		"message": "Разрешить печатать выделение"
+	},
+	"cardbookToolbarBackButtonLabel": {
+		"message": "Отменить"
+	},
+	"cardbookToolbarBackButtonTooltip": {
+		"message": "Отменить последнее действие"
+	},
+	"cardbookToolbarForwardButtonLabel": {
+		"message": "Повторить"
+	},
+	"cardbookToolbarForwardButtonTooltip": {
+		"message": "Повторить последнее действие"
+	},
+	"cardbookToolbarAppMenuButtonLabel": {
+		"message": "Меню CardBook"
+	},
+	"cardbookToolbarAppMenuButtonTooltip": {
+		"message": "Меню CardBook"
+	},
+	"cardbookToolbarSearchBoxLabel": {
+		"message": "Поиск контактов"
+	},
+	"cardbookToolbarSearchBoxTooltip": {
+		"message": "Поиск контактов"
+	},
+	"cardbookToolbarComplexSearchLabel": {
+		"message": "Расширеный поиск"
+	},
+	"cardbookToolbarComplexSearchTooltip": {
+		"message": "Поиск с использованием нескольких условий"
+	},
+	"cardbookToolbarThMenuButtonLabel": {
+		"message": "Меню приложения"
+	},
+	"cardbookToolbarThMenuButtonTooltip": {
+		"message": "Показать меню Thunderbird"
+	},
+	"cardbookToolbarABMenuLabel": {
+		"message": "Режим просмотра адресных книг"
+	},
+	"cardbookToolbarABMenuTooltip": {
+		"message": "Настройка режимов просмотра адресных книг"
+	},
+	"generalTabLabel": {
+		"message": "Основные"
+	},
+	"mailPopularityTabLabel": {
+		"message": "Рейтинг email"
+	},
+	"technicalTabLabel": {
+		"message": "Технические данные"
+	},
+	"vCardTabLabel": {
+		"message": "vCard"
+	},
+	"noteTabLabel": {
+		"message": "Заметка"
+	},
+	"advancedTabLabel": {
+		"message": "Дополнительно"
+	},
+	"miscGroupboxLabel": {
+		"message": "Разное"
+	},
+	"othersGroupboxLabel": {
+		"message": "Другое"
+	},
+	"techGroupboxLabel": {
+		"message": "Тех.данные"
+	},
+	"labelGroupboxLabel": {
+		"message": "Метки"
+	},
+	"agentLabel": {
+		"message": "Агент"
+	},
+	"keyLabel": {
+		"message": "Ключ"
+	},
+	"photolocalURILabel": {
+		"message": "Локальное фото"
+	},
+	"logolocalURILabel": {
+		"message": "Локальный логотип"
+	},
+	"soundlocalURILabel": {
+		"message": "Локальный звук"
+	},
+	"photoURILabel": {
+		"message": "Фотография"
+	},
+	"logoURILabel": {
+		"message": "Логотип"
+	},
+	"soundURILabel": {
+		"message": "Звук"
+	},
+	"cardurlLabel": {
+		"message": "URL карточки"
+	},
+	"cacheuriLabel": {
+		"message": "URI в кеше"
+	},
+	"localizeadrTreeLabel": {
+		"message": "Показать на карте"
+	},
+	"toEmailEmailTreeLabel": {
+		"message": "Создать сообщение"
+	},
+	"ccEmailEmailTreeLabel": {
+		"message": "Создать сообщение (копию)"
+	},
+	"bccemailemailTreeLabel": {
+		"message": "Создать сообщение (скрытую копию)"
+	},
+	"findemailemailTreeLabel": {
+		"message": "Искать сообщения, связанные с этим адресом"
+	},
+	"findeventemailTreeLabel": {
+		"message": "Искать события календаря, связанные с этим адресом"
+	},
+	"openURLTreeLabel": {
+		"message": "Открыть URL"
+	},
+	"toEmailCardFromAccountsOrCatsLabel": {
+		"message": "Создать сообщение"
+	},
+	"toEmailCardFromCardsLabel": {
+		"message": "Создать сообщение"
+	},
+	"ccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Создать сообщение (копию)"
+	},
+	"ccEmailCardFromCardsLabel": {
+		"message": "Создать сообщение (копию)"
+	},
+	"bccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Создать сообщение (скрытую копию)"
+	},
+	"bccEmailCardFromCardsLabel": {
+		"message": "Создать сообщение (скрытую копию)"
+	},
+	"shareCardByEmailFromAccountsOrCatsLabel": {
+		"message": "Поделиться по email"
+	},
+	"shareCardByEmailFromCardsLabel": {
+		"message": "Поделиться по email"
+	},
+	"categoryHeader": {
+		"message": "Категория"
+	},
+	"findEmailsFromCardsLabel": {
+		"message": "Искать сообщения, связанные с этим контактом"
+	},
+	"findEventsFromCardsLabel": {
+		"message": "Искать события календаря, связанные с этим контактом"
+	},
+	"localizeCardFromCardsLabel": {
+		"message": "Показать на карте"
+	},
+	"openURLCardFromCardsLabel": {
+		"message": "Открыть URL"
+	},
+	"cutCardFromAccountsOrCatsLabel": {
+		"message": "Вырезать"
+	},
+	"cutCardFromCardsLabel": {
+		"message": "Вырезать"
+	},
+	"copyCardFromAccountsOrCatsLabel": {
+		"message": "Копировать"
+	},
+	"copyCardFromCardsLabel": {
+		"message": "Копировать"
+	},
+	"pasteCardFromAccountsOrCatsLabel": {
+		"message": "Вставить"
+	},
+	"pasteCardFromCardsLabel": {
+		"message": "Вставить"
+	},
+	"pasteEntryLabel": {
+		"message": "Вставить значение"
+	},
+	"exportCardToFileLabel": {
+		"message": "Экспортировать в файл"
+	},
+	"exportCardToDirLabel": {
+		"message": "Экспортировать в каталог"
+	},
+	"importCardFromFileLabel": {
+		"message": "Импортировать контакт из файла"
+	},
+	"importCardFromDirLabel": {
+		"message": "Импортировать контакт из каталога"
+	},
+	"findDuplicatesFromAccountsOrCatsLabel": {
+		"message": "Искать повторяющиеся контакты во текущей адресной книге"
+	},
+	"generateFnFromAccountsOrCatsLabel": {
+		"message": "Формировать поле «Отображаемое имя»"
+	},
+	"mergeCardsFromCardsLabel": {
+		"message": "Объединить контакты"
+	},
+	"duplicateCardFromCardsLabel": {
+		"message": "Скопировать контакт"
+	},
+	"convertListToCategoryFromCardsLabel": {
+		"message": "Преобразовать список в категорию"
+	},
+	"editAccountFromAccountsOrCatsLabel": {
+		"message": "Редактировать адресную книгу"
+	},
+	"syncAccountFromAccountsOrCatsLabel": {
+		"message": "Синхронизировать адресную книку"
+	},
+	"removeAccountFromAccountsOrCatsLabel": {
+		"message": "Удалить адресную книгу"
+	},
+	"editEventLabel": {
+		"message": "Редактировать событие"
+	},
+	"editEventAccesskey": {
+		"message": "П"
+	},
+	"eventsTree.title.label": {
+		"message": "Название"
+	},
+	"eventsTree.title.tooltip2": {
+		"message": "Сортировка по названию"
+	},
+	"eventsTree.startdate.label": {
+		"message": "Начало"
+	},
+	"eventsTree.startdate.tooltip2": {
+		"message": "Сортировка по дате начала"
+	},
+	"eventsTree.enddate.label": {
+		"message": "Окончание"
+	},
+	"eventsTree.enddate.tooltip2": {
+		"message": "Сортировка по дате окончания"
+	},
+	"eventsTree.categories.label": {
+		"message": "Категория"
+	},
+	"eventsTree.categories.tooltip2": {
+		"message": "Сортировка по категории"
+	},
+	"eventsTree.location.label": {
+		"message": "Место"
+	},
+	"eventsTree.location.tooltip2": {
+		"message": "Сортировка по месту"
+	},
+	"eventsTree.status.label": {
+		"message": "Состояние"
+	},
+	"eventsTree.status.tooltip2": {
+		"message": "Сортировка по состоянию"
+	},
+	"eventsTree.calendarname.label": {
+		"message": "Календарь"
+	},
+	"eventsTree.calendarname.tooltip2": {
+		"message": "Сортировка по названию календаря"
+	},
+	"createEventLabel": {
+		"message": "Новое событие"
+	},
+	"createEventAccesskey": {
+		"message": "Н"
+	},
+	"adrFormulaExplanation": {
+		"message": "Возможно задать правило заполнения адресной информации. Формула состоит из блоков, ограниченных «()». В каждом из блоков может присутствовать множество частей, разделяемых «|»."
+	},
+	"fnFormulaExplanation": {
+		"message": "Возможно задать правило формирования поля «Отображаемое имя». Формула состоит из блоков, ограниченных «()». В каждом из блоков может присутствовать множество частей, разделяемых «|»."
+	},
+	"formulaExplanation1": {
+		"message": "({{1}}|{{2}}): Если {{1}} является пустым значением, то будет использоваться {{2}}."
+	},
+	"formulaExplanation2": {
+		"message": "({{1}}|{{2}}|{{3}}) : Если {{1}} равно{{2}}, то будет использоваться {{3}}."
+	},
+	"formulaExplanation3": {
+		"message": "({{1}}|{{2}}|{{3}}|{{4}}) : Если {{1}} равно {{2}}, то будет использоваться {{3}}, если не равно, то {{4}}."
+	},
+	"formulaExplanation4": {
+		"message": "({{1}}|*|{{2}}|{{3}}|{{4}}) : Если {{1}} содержит {{2}}, то будет использоваться {{3}}, если не равно, то {{4}}."
+	},
+	"formulaExplanation5": {
+		"message": "({{1}}|^|{{2}}|{{3}}|{{4}}) : Если {{1}} начинается с {{2}}, то будет использоваться {{3}}, если не начинается, то {{4}}."
+	},
+	"formulaExplanation6": {
+		"message": "({{1}}|$|{{2}}|{{3}}|{{4}}) : Если {{1}} заканчивается на {{2}}, то будет использоваться {{3}}, если не заканчивается, то {{4}}."
+	},
+	"settingsTitlelabel": {
+		"message": "Настройки печати"
+	},
+	"title.print.label": {
+		"message": "Заголовок:"
+	},
+	"title.print.accesskey": {
+		"message": "З"
+	},
+	"displayHeadersLabel": {
+		"message": "Выводить заголовки разделов"
+	},
+	"displayHeadersAccesskey": {
+		"message": "р"
+	},
+	"displayFieldNamesLabel": {
+		"message": "Имена полей"
+	},
+	"displayFieldNamesAccesskey": {
+		"message": "И"
+	},
+	"displayTypesLabel": {
+		"message": "Типы и настройки"
+	},
+	"displayTypesAccesskey": {
+		"message": "н"
+	},
+	"fieldsToPrintGroupboxLabel": {
+		"message": "Что печатать"
+	},
+	"displayLabel": {
+		"message": "Отображаемое имя"
+	},
+	"displayAccesskey": {
+		"message": "О"
+	},
+	"personalLabel": {
+		"message": "Персональная информация"
+	},
+	"personalAccesskey": {
+		"message": "П"
+	},
+	"org.print.label": {
+		"message": "Профессиональная информация"
+	},
+	"org.print.accesskey": {
+		"message": "о"
+	},
+	"categories.print.label": {
+		"message": "Категории"
+	},
+	"categories.print.accesskey": {
+		"message": "К"
+	},
+	"adr.print.label": {
+		"message": "Адреса"
+	},
+	"adr.print.accesskey": {
+		"message": "А"
+	},
+	"tel.print.label": {
+		"message": "Номера телефонов"
+	},
+	"tel.print.accesskey": {
+		"message": "Н"
+	},
+	"email.print.label": {
+		"message": "Адреса email"
+	},
+	"email.print.accesskey": {
+		"message": "e"
+	},
+	"impp.print.label": {
+		"message": "Интернет связь"
+	},
+	"impp.print.accesskey": {
+		"message": "И"
+	},
+	"url.print.label": {
+		"message": "URL"
+	},
+	"url.print.ccesskey": {
+		"message": "U"
+	},
+	"note.print.label": {
+		"message": "Заметка"
+	},
+	"note.print.accesskey": {
+		"message": "З"
+	},
+	"useColorCheckLabel": {
+		"message": "Использовать цвет"
+	},
+	"useColorCheckAccesskey": {
+		"message": "И"
+	},
+	"existingDataGroupboxLabel": {
+		"message": "Добавить к этому контакту"
+	},
+	"cardbookSwitchButtonTooltip": {
+		"message": "Поменять местами фамилию и имя"
+	},
+	"descriptionTextbox": {
+		"message": "Описание"
+	},
+	"categoriesTextboxLabel": {
+		"message": "Добавить новую категорию"
+	},
+	"typesTextboxLabel": {
+		"message": "Создать тип"
+	},
+	"categoriesListboxLabel": {
+		"message": "Существующие категории"
+	},
+	"categoryMenuLabel": {
+		"message": "Новая категория…"
+	},
+	"viewResultEditionLabel": {
+		"message": "Посмотреть результат"
+	},
+	"viewResultEditionAccesskey": {
+		"message": "р"
+	},
+	"createEditionLabel": {
+		"message": "Создать"
+	},
+	"createEditionAccesskey": {
+		"message": "С"
+	},
+	"createAndReplaceEditionLabel": {
+		"message": "Создать и заменить"
+	},
+	"createAndReplaceEditionAccesskey": {
+		"message": "з"
+	},
+	"saveEditionLabel": {
+		"message": "Сохранить"
+	},
+	"saveEditionAccesskey": {
+		"message": "х"
+	},
+	"validateEditionLabel": {
+		"message": "Проверить"
+	},
+	"validateEditionAccesskey": {
+		"message": "в"
+	},
+	"cancelEditionLabel": {
+		"message": "Отменить"
+	},
+	"cancelEditionAccesskey": {
+		"message": "О"
+	},
+	"closeEditionLabel": {
+		"message": "Закрыть"
+	},
+	"closeEditionAccesskey": {
+		"message": "З"
+	},
+	"buttonAppendToListLabel": {
+		"message": "Добавить"
+	},
+	"buttonAppendToListAccesskey": {
+		"message": "Д"
+	},
+	"buttonRemoveFromListLabel": {
+		"message": "Удалить"
+	},
+	"buttonRemoveFromListAccesskey": {
+		"message": "У"
+	},
+	"buttonGuessFromListLabel": {
+		"message": "Предположить"
+	},
+	"buttonGuessFromListAccesskey": {
+		"message": "П"
+	},
+	"loadTemplateLabel": {
+		"message": "Выбрать шаблон"
+	},
+	"loadTemplateAccesskey": {
+		"message": "ш"
+	},
+	"saveTemplateLabel": {
+		"message": "Сохранить шаблон"
+	},
+	"saveTemplateAccesskey": {
+		"message": "х"
+	},
+	"convertVCardsLabel": {
+		"message": "Преобразовать формат vCard"
+	},
+	"convertVCardsTooltip": {
+		"message": "Некоторые контакты сохранены в версии vCard, отличной от заданной для адресной книги. Эта кнопка служит для их преобразования в формат адресной книги."
+	},
+	"convertVCardsAccesskey": {
+		"message": "ф"
+	},
+	"wdw_findDuplicatesTitle": {
+		"message": "Дублирующиеся контакты"
+	},
+	"addImageCardFromFileLabel": {
+		"message": "Добавить изображение из файла"
+	},
+	"pasteImageCardLabel": {
+		"message": "Вставить изображение"
+	},
+	"saveImageCardLabel": {
+		"message": "Сохранить изображение как…"
+	},
+	"copyImageCardLabel": {
+		"message": "Копировать изображение"
+	},
+	"copyImageLocationCardLabel": {
+		"message": "Копировать ссылку на изображение"
+	},
+	"deleteImageCardLabel": {
+		"message": "Удалить изображение"
+	},
+	"kind.edit.label": {
+		"message": "Тип"
+	},
+	"kind.edit.accesskey": {
+		"message": "Т"
+	},
+	"addEmailGroupboxLabel": {
+		"message": "Адрес электронной почты"
+	},
+	"availableCardsGroupboxLabel": {
+		"message": "Доступные контакты"
+	},
+	"nameOrEmailLabel": {
+		"message": "Имя или e-mail адрес"
+	},
+	"appendContactLabel": {
+		"message": "Добавить в список"
+	},
+	"deletelistTreeLabel": {
+		"message": "Удалить из списка"
+	},
+	"editCardFromListLabel": {
+		"message": "Редактировать этот контакт"
+	},
+	"wdw_logEditionTitle": {
+		"message": "Просмотр журнала"
+	},
+	"logEditionValueLabel": {
+		"message": "Временная метка события"
+	},
+	"refreshLogEditionLabel": {
+		"message": "Обновить"
+	},
+	"refreshLogEditionAccesskey": {
+		"message": "б"
+	},
+	"flushLogEditionLabel": {
+		"message": "Очистить"
+	},
+	"flushLogEditionAccesskey": {
+		"message": "О"
+	},
+	"clipboardLogEditionLabel": {
+		"message": "Копировать в буфер обмена"
+	},
+	"clipboardLogEditionAccesskey": {
+		"message": "К"
+	},
+	"cancelLogEditionLabel": {
+		"message": "OK"
+	},
+	"cancelLogEditionAccesskey": {
+		"message": "O"
+	},
+	"wdw_mergeCardsTitle": {
+		"message": "Объедение контактов"
+	},
+	"mergeInstructionsLabel": {
+		"message": "Выберите поля для сохранения в новом контакте"
+	},
+	"persTitleLabel": {
+		"message": "Персональная информация"
+	},
+	"orgTitleLabel": {
+		"message": "Профессиональная информация"
+	}
+}

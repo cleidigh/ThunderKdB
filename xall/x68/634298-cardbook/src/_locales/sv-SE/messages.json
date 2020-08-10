@@ -1,0 +1,5018 @@
+{
+	"extName": {
+		"message": "Kontakter (CardBook)"
+	},
+	"extDesc": {
+		"message": "vCard Adressbok"
+	},
+	"browserActionTitle": {
+		"message": "CardBook",
+		"description": "Växla till CardBook fliken"
+	},
+	"cardbookTitle": {
+		"message": "CardBook"
+	},
+	"cardbookPrefTitle": {
+		"message": "CardBook-inställningar"
+	},
+	"statusProgressInformationTooltip": {
+		"message": "Klicka här för att se loggar"
+	},
+	"imageSelectionTitle": {
+		"message": "Bildval"
+	},
+	"imageSaveTitle": {
+		"message": "Spara bild"
+	},
+	"fileSaveTitle": {
+		"message": "Spara fil"
+	},
+	"dirSaveTitle": {
+		"message": "Spara katalog"
+	},
+	"dirChooseTitle": {
+		"message": "Välj katalog"
+	},
+	"fileCreationVCFTitle": {
+		"message": "Skapa ny VCF-fil (UTF-8-kodad)"
+	},
+	"fileSelectionVCFTitle": {
+		"message": "Öppna en befintlig VCF-fil (UTF-8-kodad)"
+	},
+	"fileImportTitle": {
+		"message": "Importera VCF-fil (UTF-8-kodad)"
+	},
+	"dirImportTitle": {
+		"message": "Importera från en katalog"
+	},
+	"fileCreationTPLTitle": {
+		"message": "Skapa ny TPL-fil"
+	},
+	"fileSelectionTPLTitle": {
+		"message": "Öppna en befintlig TPL-fil"
+	},
+	"fileSelectionTitle": {
+		"message": "Länkadress"
+	},
+	"uncategorizedCards": {
+		"message": "Ogrupperad"
+	},
+	"collectedCards": {
+		"message": "Insamlad kontakt"
+	},
+	"enableFromAccountsOrCats": {
+		"message": "Aktivera adressbok"
+	},
+	"disableFromAccountsOrCats": {
+		"message": "Inaktivera adressbok"
+	},
+	"readWriteFromAccountsOrCats": {
+		"message": "Öppna adressbok för skrivning"
+	},
+	"readOnlyFromAccountsOrCats": {
+		"message": "Skrivskydda adressbok"
+	},
+	"editCategoryFromAccountsOrCats": {
+		"message": "Redigera kategori"
+	},
+	"removeCategoryFromAccountsOrCats": {
+		"message": "Ta bort grupp"
+	},
+	"convertCategoryFromAccountsOrCats": {
+		"message": "Konvertera grupp till lista"
+	},
+	"editNodeFromAccountsOrCats": {
+		"message": "??Edit Node??"
+	},
+	"removeNodeFromAccountsOrCats": {
+		"message": "??Remove Node??"
+	},
+	"convertNodeFromAccountsOrCats": {
+		"message": "??Create List from Node??"
+	},
+	"viewCardButtonLabel": {
+		"message": "Visa"
+	},
+	"editCardButtonLabel": {
+		"message": "Redigera"
+	},
+	"viewInCardBookMenuLabel": {
+		"message": "Visa med CardBook"
+	},
+	"mergeCardsLabel": {
+		"message": "Slå i hop kontakter"
+	},
+	"forgetCardsLabel": {
+		"message": "Glömma"
+	},
+	"deleteCardsLabel": {
+		"message": "Ta bort"
+	},
+	"showForgottenLabel": {
+		"message": "Visa borttagna dubbletter"
+	},
+	"showForgottenAccesskey": {
+		"message": "V"
+	},
+	"hideForgottenLabel": {
+		"message": "Dölj glömda dubbletter"
+	},
+	"hideForgottenAccesskey": {
+		"message": "D"
+	},
+	"noContactsDuplicated": {
+		"message": "Inga dubbletter av kontakter har hitats."
+	},
+	"serverWarningGoogleLabel": {
+		"message": "Google-funktionerna är experimentella, eftersom Google inte stödjer vCard-standarden korrekt."
+	},
+	"Validating1Label": {
+		"message": "Validerar ($P1$)…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"Validating2Label": {
+		"message": "Validerar…"
+	},
+	"ValidatingURLFailedLabel": {
+		"message": "Webbadress är felformaterad"
+	},
+	"ValidationFailedLabel": {
+		"message": "Validering misslyckades"
+	},
+	"ValidationOKLabel": {
+		"message": "Validering OK"
+	},
+	"customFieldsErrorUPPERCASE": {
+		"message": "Anpassat fält namn skall vara med VERSALER: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorX": {
+		"message": "Anpassat fältnamn skall börja med X-: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorFIELD": {
+		"message": "$P1$ är ett reserverat ord och kan inte användas som ett eget anpassat fältnamn",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorCHAR": {
+		"message": "Anpassat fältnamn kan inte innehålla brytande specialtecken som komma, semikolon, kolon eller punkt: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorUNIQUE": {
+		"message": "Anpassade fältnamn skall vara unika (anpassade fält definieras i flera flikar)."
+	},
+	"customFieldsErrorLABEL": {
+		"message": "Det visade namnet kan inte vara tomt."
+	},
+	"allContactsLoadedFromFile": {
+		"message": "$P1$ : Alla kontakter laddade från fil.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"notAllContactsLoadedFromFile": {
+		"message": "$P1$ : alla kontakter laddades inte från fil: $P2$ fel uppstod.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroRunning": {
+		"message": "$P1$ : Synkronisering körs",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroNotTried": {
+		"message": "$P1$ : Synkronisering ej försökt",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinished": {
+		"message": "$P1$ : Synkronisering klar",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinishedResult": {
+		"message": "$P1$ : Synkronisering klar, resultat:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroProcessed": {
+		"message": "Kontakter genomgångna: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpToDate": {
+		"message": "$P1$ : Kontakter uppdaterade : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnServer": {
+		"message": "$P1$ : Nya kontakter på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnServer": {
+		"message": "$P1$ : Kontakter uppdaterade på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnServer": {
+		"message": "$P1$ : Kontakter raderade på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDisk": {
+		"message": "$P1$ : Kontakter raderade från disk : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kontakter raderade på disk och uppdaterade på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnDisk": {
+		"message": "$P1$ : Nya kontakter på disk : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDisk": {
+		"message": "$P1$ : Kontakter uppdaterade på disk : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnBoth": {
+		"message": "$P1$ : Kontakter uppdaterade på disk och server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kontakter uppdaterade på disk och raderade från server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetOKFromServer": {
+		"message": "$P1$ : Ändringar mottogs från server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetKOFromServer": {
+		"message": "$P1$ : Ändringar misslyckades från server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutOKToServer": {
+		"message": "$P1$ : Ändringar utfördes på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutKOToServer": {
+		"message": "$P1$ : Ändringar misslyckades på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroImpossible": {
+		"message": "$P1$ : Synkroniserong omöjlig med server.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBFinishedResult": {
+		"message": "??$P1$ : Local database opened, contacts result :??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBCardsOK": {
+		"message": "$P1$ : Kontakter öppnade : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDBCardsKO": {
+		"message": "$P1$ : Kontakter med fel : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirFinishedResult": {
+		"message": "$P1$ : Kontaktkatalog öppnad, Resultat :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDirCardsOK": {
+		"message": "$P1$ : Kontakter öppnade : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirCardsKO": {
+		"message": "$P1$ : Kontakter med fel : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileFinishedResult": {
+		"message": "$P1$ : Kontakter öppnades från fil, Resultat :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFileCardsOK": {
+		"message": "$P1$ : Kontakter öppnade : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileCardsKO": {
+		"message": "$P1$ : Kontakter med fel : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroForcedToResync": {
+		"message": "$P1$ : Vi är tvingade att synka om det här kontot",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroAllFinished": {
+		"message": "All synckronisering är klar"
+	},
+	"discoveryRunning": {
+		"message": "$P1$ : Adressbok automatisk upptäckt körning",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageGetResponse": {
+		"message": "$P1$ : Bilder hämtade : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"imageGetError": {
+		"message": "$P1$ : Bilder med fel : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importFinishedResult": {
+		"message": "$P1$ : Kontakt importering klar, resultat :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importCardsOK": {
+		"message": "$P1$ : Kontakter importerade : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importCardsKO": {
+		"message": "$P1$ : Kontakter med fel : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importAllFinished": {
+		"message": "All importering klar"
+	},
+	"cardDeletedOnDisk": {
+		"message": "$P1$ : Kontakter $P2$ raderade från disk",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDisk": {
+		"message": "$P1$ : Kontakter $P2$ uppdaterade på disk",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyGetFromCache": {
+		"message": "$P1$ : Kontakten $P2$ fanns redan i cache",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardGetFromCache": {
+		"message": "$P1$ : Kontakten $P2$ hämtad från cache",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kontakten $P2$ raderad från disk och uppdaterad på server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnBoth": {
+		"message": "$P1$ : Kontakten $P2$ uppdaterad på disk och server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnServer": {
+		"message": "$P1$ : Kontakten $P2$ uppdaterad på server (etag hittad : $P3$, etag i cache : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"cardNewOnServer": {
+		"message": "$P1$ : Hittade en ny kontakt på servern",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardLoadedFromCache": {
+		"message": "$P1$ : Kontakten $P2$ laddad från cache",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardLoadedFromCacheDB": {
+		"message": "$P1$ : Kontakten $P2$ laddad från cache (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardNewOnDisk": {
+		"message": "$P1$ : Kontakten $P2$ ny på disk",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kontakten $P2$ uppdaterad på disk och raderad från server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ raderad på server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyExists": {
+		"message": "$P1$ : Kontakt $P2$ finns redan",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"askUserTitle": {
+		"message": "Konflikterande kontakt"
+	},
+	"askUserPersistMessage": {
+		"message": "Välj det här svaret för ytterligare konflikter"
+	},
+	"keepAskUserLabel": {
+		"message": "Behåll kontakten"
+	},
+	"overwriteAskUserLabel": {
+		"message": "Skriv över kontakten"
+	},
+	"duplicateAskUserLabel": {
+		"message": "Skapa nya kopia av kontakten"
+	},
+	"deleteAskUserLabel": {
+		"message": "Ta bort kontakten"
+	},
+	"localAskUserLabel": {
+		"message": "Föredra den lokala ändringen"
+	},
+	"remoteAskUserLabel": {
+		"message": "Föredra ändringen från servern"
+	},
+	"mergeAskUserLabel": {
+		"message": "Slå ihop skilnaderna"
+	},
+	"serverCardDeletedFromServer": {
+		"message": "$P1$ : Kontakten $P2$ raderades fån server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardNotExistServer": {
+		"message": "$P1$ : Kontakten $P2$ finns inte på servern",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardDeleteFailed": {
+		"message": "$P1$ : Kontakten $P2$ kunde inte raderas från server (webbadress : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingDeletion": {
+		"message": "$P1$ : Kontakt $P2$ : begär radering …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Kontakten $P2$ uppdaterad på servern (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kontakten $P2$ uppdaterad på servern (no etag in response)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdateFailed": {
+		"message": "$P1$ : Kontakten $P2$ misslyckades med att uppdateras på servern (webbadress : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingUpdate": {
+		"message": "$P1$ : Kontakten $P2$ : skicka uppdateringsförfrågningar …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithEtag": {
+		"message": "$P1$ : Kontakten $P2$ skapad på servern (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kontakten $P2$ skapad på servern (ingen etag som svar)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreateFailed": {
+		"message": "$P1$ : Kontakten $P2$ misslyckades med att skapas på servern (webbadress : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingCreate": {
+		"message": "$P1$ : Kontakten $P2$ : skicka skapa önskemål …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetImageFailed": {
+		"message": "$P1$ : Bilden hämtades inte för kontakt $P2$ (webbadress : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetImageOK": {
+		"message": "$P1$ : Bilden laddades ner för kontakt $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingImage": {
+		"message": "$P1$ : Bildnedladdning för kontakt $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetOK": {
+		"message": "$P1$ : Kontakten $P2$ laddade ner från servern",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetFailed": {
+		"message": "$P1$ : Det gick inte att ladda ner från servern (webbadress : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"synchronizationFailed": {
+		"message": "$P1$ : Synkroniseringen misslyckades (steg : $P2$, webbadress : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"synchronizationUnauthorized": {
+		"message": "$P1$: Det gick inte att logga in på servern. Förmodligen fel konfiguration, användarnamn eller lösenord.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationSearchingCards": {
+		"message": "$P1$ : söker kontakter …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery": {
+		"message": "$P1$ : Validering utan upptäcktsförfrågan på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery4": {
+		"message": "$P1$ : Upptäck fas 4 begäran på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery3": {
+		"message": "$P1$ : Upptäck fas 3 begäran på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery2": {
+		"message": "$P1$ : Upptäck fas 2 begäran på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery1": {
+		"message": "$P1$ : Upptäck fas 1 begäran på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleAccessTokenOK": {
+		"message": "$P1$ : Googles access token-förfrågan okej, access token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRefreshTokenOK": {
+		"message": "$P1$ : Google uppdatera tokenförfrågan okej, uppdatera token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleGetNewRefreshToken": {
+		"message": "$P1$ : Försöker att få en ny Google-uppdateringstoken på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleNewRefreshTokenOK": {
+		"message": "$P1$ : Mottagde en behörighetskod : $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestAccessToken": {
+		"message": "$P1$ : Googles access token-förfrågan på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestRefreshToken": {
+		"message": "$P1$ : Google uppdatera token-förfrågan på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooAccessTokenOK": {
+		"message": "$P1$ : Yahoo!s access token-förfrågan okej, access token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRefreshTokenOK": {
+		"message": "$P1$ : Yahoo! uppdatera tokenförfrågan okej, uppdatera token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooGetNewRefreshToken": {
+		"message": "$P1$ : Försöker att få en ny Yahoo!-uppdateringstoken på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooNewRefreshTokenOK": {
+		"message": "$P1$ : Mottagde en behörighetskod : $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestAccessToken": {
+		"message": "$P1$ : Yahoo!s access token-förfrågan på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestRefreshToken": {
+		"message": "$P1$ : Yahoo! uppdatera token-förfrågan på $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncDeleting": {
+		"message": "$P1$ : Radera periodisk synkroniseringsprocess (identifiering : $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncSetting": {
+		"message": "$P1$ : Ställ in periodisk synkroniseringsprocess (intervall : $P2$ ms, identifiering : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"periodicSyncSyncing": {
+		"message": "$P1$ : Synkronisering på grund av periodisk synkronisering …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileEmpty": {
+		"message": "Filen $P1$ är tom",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileAlreadyOpen": {
+		"message": "Filen $P1$ är redan öppen i Kontakter",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryAlreadyOpen": {
+		"message": "Katalog $P1$ är redan öppet i Kontakter",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"parsingCardError": {
+		"message": "$P1$ : Fel vid analysering av kontakt : \n$P2$ \n$P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"addressbookOpened": {
+		"message": "$P1$ : Adressbok öppnad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookModified": {
+		"message": "$P1$ : Adressbok ändrad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDeleted": {
+		"message": "$P1$ : Adressbok stängd",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookCreated": {
+		"message": "$P1$ : Adressbok skapad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDisabled": {
+		"message": "$P1$ : Adressbok avaktiverad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadOnly": {
+		"message": "$P1$ : Adressbok i skrivskyddat läge",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadWrite": {
+		"message": "$P1$ : Adressbok i skrivbart läge",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookEnabled": {
+		"message": "$P1$ : Adressbok aktiverad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreated": {
+		"message": "$P1$ : Kontakten $P2$ skapad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdated": {
+		"message": "$P1$ : Kontakten $P2$ uppdaterad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeleted": {
+		"message": "$P1$ : Kontakten $P2$ raderad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAddedToCategory": {
+		"message": "$P1$ : Kontakten $P2$ lagts till i kategorin $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardDeletedFromAllCategory": {
+		"message": "$P1$ : Kontakten $P2$ borttagen från alla kategorier",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardsConverted": {
+		"message": "??$P1$ : contacts converted into $P2$ : $P3$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardsConvertedUndo": {
+		"message": "??VCards converted??"
+	},
+	"cardsImportedFromFileUndo": {
+		"message": "??File $P1$ imported??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsImportedFromDirUndo": {
+		"message": "??Directory $P1$ imported??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"undoActionDoneUndo": {
+		"message": "??Undo done ($P1$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"redoActionDoneUndo": {
+		"message": "??Redo done ($P1$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreatedUndo": {
+		"message": "Kontakten $P1$ skapad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardUpdatedUndo": {
+		"message": "Kontakten $P1$ uppdaterad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"outgoingEmailCollectedUndo": {
+		"message": "??Outgoing email collected??"
+	},
+	"emailCollectedByFilterUndo": {
+		"message": "??Emails collected by filter??"
+	},
+	"emailDeletedByFilterUndo": {
+		"message": "??Emails deleted by filter??"
+	},
+	"cardsMergedUndo": {
+		"message": "??Contacts merged??"
+	},
+	"cardsDuplicatedUndo": {
+		"message": "??Contacts duplicated??"
+	},
+	"displayNameGenerated": {
+		"message": "??$P1$ : contacts having their display names regenerated : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"displayNameGeneratedUndo": {
+		"message": "??Display names regenerated??"
+	},
+	"cardModifiedUndo": {
+		"message": "Kontakten $P1$ uppdaterad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted1Undo": {
+		"message": "Kontakten $P1$ raderad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted2Undo": {
+		"message": "??Contacts deleted??"
+	},
+	"cardsPastedUndo": {
+		"message": "??Contacts pasted??"
+	},
+	"cardsDraggedUndo": {
+		"message": "??Contacts dragged??"
+	},
+	"categoryCreated": {
+		"message": "$P1$ : Kategori $P2$ skapad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryCreatedUndo": {
+		"message": "Kategori $P1$ skapad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categorySelectedUndo": {
+		"message": "??Category $P1$ selected??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryUnselectedUndo": {
+		"message": "??Category $P1$ unselected??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryRenamedUndo": {
+		"message": "??Category $P1$ renamed??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryDeleted": {
+		"message": "$P1$ : Kategori $P2$ raderad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedUndo": {
+		"message": "Kategori $P1$ raderad",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryConvertedToListUndo": {
+		"message": "??Category $P1$ converted to list??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listConvertedToCategoryUndo": {
+		"message": "??List $P1$ converted to category??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"linePastedUndo": {
+		"message": "??Line pasted??"
+	},
+	"nodeRenamedUndo": {
+		"message": "??Node $P1$ renamed??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"nodeDeleted": {
+		"message": "??$P1$ : Node $P2$ deleted??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletedUndo": {
+		"message": "??Node $P1$ deleted??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listCreatedFromNodeUndo": {
+		"message": "??List $P1$ created from node??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoFile": {
+		"message": "Kontakter som exporteras till filen $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoFile": {
+		"message": "Kontakt exporterad till filen $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoDir": {
+		"message": "Kontakter som exporteras till katalogen $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoDir": {
+		"message": "Kontakt exporterad till katalogen $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importNotIntoSameFile": {
+		"message": "Det är förbjudet att importera till samma fil"
+	},
+	"importNotIntoSameDir": {
+		"message": "Det är förbjudet att importera till samma katalog"
+	},
+	"clipboardWrong": {
+		"message": "Data i urklippet är inte importerbart"
+	},
+	"clipboardEmpty": {
+		"message": "Urklippet är tomt"
+	},
+	"imageError": {
+		"message": "Bild lades inte till på grund av ett fel"
+	},
+	"imageErrorWithMessage": {
+		"message": "Bild inte tillagd : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageSavedToFile": {
+		"message": "Bild sparad till filen : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"contactsCopied": {
+		"message": "Kontakter kopierades till Urklipp"
+	},
+	"contactCopied": {
+		"message": "Kontakten kopierades till Urklipp"
+	},
+	"lineCopied": {
+		"message": "Raden kopierad till Urklipp"
+	},
+	"linePastedToCard": {
+		"message": "Linje klistrad till kontakten: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFound": {
+		"message": "Antal kontakter hittade: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContacts": {
+		"message": "Antal kontakter: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFoundModified": {
+		"message": "Antal kontakter hittade: $P1$ (Lokalt modifierad: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberContactsModified": {
+		"message": "Antal kontakter: $P1$ (Lokalt modifierad: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberLines": {
+		"message": "Antal rader: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbook.searchFrom.name": {
+		"message": "Kontakter Från"
+	},
+	"cardbook.searchTo.name": {
+		"message": "Kontakter Till"
+	},
+	"cardbook.searchCc.name": {
+		"message": "Kontakter Cc"
+	},
+	"cardbook.searchBcc.name": {
+		"message": "Kontakter Bcc"
+	},
+	"cardbook.searchAll.name": {
+		"message": "Kontakter Från, Till, Cc eller Bcc"
+	},
+	"cardbook.searchCorrespondents.name": {
+		"message": "??CardBook Correspondents??"
+	},
+	"cardbook.addFrom.name": {
+		"message": "Lägg till Från i CardBook"
+	},
+	"cardbook.addTo.name": {
+		"message": "Lägg till Till i CardBook"
+	},
+	"cardbook.addCc.name": {
+		"message": "Lägg till Cc i CardBook"
+	},
+	"cardbook.addBcc.name": {
+		"message": "Lägg till Bcc i CardBook"
+	},
+	"cardbook.addAll.name": {
+		"message": "Lägg till Från, Till, Cc eller Bcc i CardBook"
+	},
+	"cardbook.removeFrom.name": {
+		"message": "Ta bort Från från CardBook"
+	},
+	"cardbook.removeTo.name": {
+		"message": "Ta bort Till från CardBook"
+	},
+	"cardbook.removeCc.name": {
+		"message": "Ta bort Cc från CardBook"
+	},
+	"cardbook.removeBcc.name": {
+		"message": "Ta bort Bcc från CardBook"
+	},
+	"cardbook.removeAll.name": {
+		"message": "Ta bort Från, Till, Cc eller Bcc från CardBook"
+	},
+	"urlDownloaded": {
+		"message": "Webbadress hämtad : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookHeader": {
+		"message": "Adressbok"
+	},
+	"photoLabel": {
+		"message": "Foto"
+	},
+	"versionLabel": {
+		"message": "Version"
+	},
+	"revLabel": {
+		"message": "Senast uppdaterad"
+	},
+	"lastnameLabel": {
+		"message": "Efternamn"
+	},
+	"firstnameLabel": {
+		"message": "Förnamn"
+	},
+	"othernameLabel": {
+		"message": "Annat namn"
+	},
+	"prefixnameLabel": {
+		"message": "Prefix"
+	},
+	"suffixnameLabel": {
+		"message": "Suffix"
+	},
+	"fnLabel": {
+		"message": "Visningsnamn"
+	},
+	"nicknameLabel": {
+		"message": "Smeknamn"
+	},
+	"genderLabel": {
+		"message": "Kön"
+	},
+	"bdayLabel": {
+		"message": "Födelsedag"
+	},
+	"birthplaceLabel": {
+		"message": "Födelseort"
+	},
+	"anniversaryLabel": {
+		"message": "Årsdag"
+	},
+	"deathdateLabel": {
+		"message": "Dödsdatum"
+	},
+	"deathplaceLabel": {
+		"message": "Dödsplats"
+	},
+	"titleLabel": {
+		"message": "Titel"
+	},
+	"roleLabel": {
+		"message": "Roll"
+	},
+	"orgLabel": {
+		"message": "Organisation"
+	},
+	"categoriesLabel": {
+		"message": "Grupper"
+	},
+	"adrLabel": {
+		"message": "Adresser"
+	},
+	"telLabel": {
+		"message": "Telefon"
+	},
+	"emailLabel": {
+		"message": "Mejl"
+	},
+	"imppLabel": {
+		"message": "IM"
+	},
+	"urlLabel": {
+		"message": "Webbadress"
+	},
+	"eventLabel": {
+		"message": "Händelser"
+	},
+	"noteLabel": {
+		"message": "Anteckningar"
+	},
+	"postOfficeLabel": {
+		"message": "Postbox"
+	},
+	"extendedAddrLabel": {
+		"message": "Lägenhet"
+	},
+	"streetLabel": {
+		"message": "Gata"
+	},
+	"localityLabel": {
+		"message": "Stad / Ort"
+	},
+	"regionLabel": {
+		"message": "Delstat/Region"
+	},
+	"postalCodeLabel": {
+		"message": "Postnummer"
+	},
+	"countryLabel": {
+		"message": "Land"
+	},
+	"ageLabel": {
+		"message": "Ålder"
+	},
+	"ABNameLabel": {
+		"message": "Adressbok"
+	},
+	"cardIconLabel": {
+		"message": "Ikon"
+	},
+	"nameLabel": {
+		"message": "Namn"
+	},
+	"mailerLabel": {
+		"message": "Mailer"
+	},
+	"tzLabel": {
+		"message": "TZ"
+	},
+	"geoLabel": {
+		"message": "Geo"
+	},
+	"prodidLabel": {
+		"message": "Prodid"
+	},
+	"sortstringLabel": {
+		"message": "Sorterings-sträng"
+	},
+	"uidLabel": {
+		"message": "Uid"
+	},
+	"cbidLabel": {
+		"message": "CardBook id"
+	},
+	"class1Label": {
+		"message": "Class"
+	},
+	"dirPrefIdLabel": {
+		"message": "DirPrefId"
+	},
+	"kindLabel": {
+		"message": "Kind"
+	},
+	"etagLabel": {
+		"message": "Etag"
+	},
+	"phoneticfirstnameLabel": {
+		"message": "Förnamn (Fonetisk)"
+	},
+	"phoneticlastnameLabel": {
+		"message": "Efternamn (Fonetisk)"
+	},
+	"custom1Label": {
+		"message": "Anpassad 1"
+	},
+	"custom2Label": {
+		"message": "Anpassad 2"
+	},
+	"custom3Label": {
+		"message": "Anpassad 3"
+	},
+	"custom4Label": {
+		"message": "Anpassad 4"
+	},
+	"warningTitle": {
+		"message": "Varning"
+	},
+	"errorTitle": {
+		"message": "Fel"
+	},
+	"confirmTitle": {
+		"message": "Bekräfta"
+	},
+	"birthdaysListWindowLabel": {
+		"message": "Lista över årsdagar (total : $P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"syncListWindowLabelRunning": {
+		"message": "Synkronisering av årsdagar som körs ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelEnded": {
+		"message": "Synkronisering av årsdagar slutade ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelFailed": {
+		"message": "Synkronisering av årsdagar misslyckades"
+	},
+	"syncListExistingEntry": {
+		"message": "$P1$ : Befintlig händelse i Lightning : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListCreatedEntry": {
+		"message": "$P1$ : Händelse skapad i Lightning : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListErrorEntry": {
+		"message": "$P1$ : Händelse vid fel i Lightning : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"noBirthdaysFoundMessage": {
+		"message": "Ingen årsdag hittades tills $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"noEmailFoundMessage": {
+		"message": "Ingen e-post hittades för $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventEntryTitleMessage": {
+		"message": "Årsdagen av %1$S, Ålder : %2$S"
+	},
+	"calendarNotFoundTitle": {
+		"message": "Årsdag påminnelse - Synkronisering med Lightning avbröts"
+	},
+	"calendarNotFoundMessage": {
+		"message": "Kalender $P1$ hittades inte. Synkronisering med Lightning avbröts.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"calendarNotWritableTitle": {
+		"message": "Årsdag påminnelse - Synkronisering med Lightning avbröts"
+	},
+	"calendarNotWritableMessage": {
+		"message": "Kalender $P1$ är inte skrivbar (kanske läs bara eller offline?). Synkronisering med Lightning avbröts.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"errorAttachingFile": {
+		"message": "Bifoga vCard : Kan inte generera filen för att fästa vCard till posten : $P1$ ($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"errorInfiniteLoopRecursion": {
+		"message": "Listor : oändlig loop recursion för listor : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"WRONG_VERSION": {
+		"message": "Endast vCards version 3,0 eller 4,0 stöds"
+	},
+	"unableToParseResponse": {
+		"message": "$P1$ : Omöjligt att analysera serverns svar på grund av den här raden : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"dateEntry1Wrong": {
+		"message": "??$P1$ : Contact $P2$ has a date field value ($P3$) that does not match the date format of the address book ($P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"dateEntry2Wrong": {
+		"message": "??Date field value ($P1$) does not match the date format of the address book ($P2$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"validateIntegerMsg": {
+		"message": "Fältet $P1$ bör vara null eller ett heltal mellan 1 och $P2$ (värde : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"eventNameNull": {
+		"message": "??At least one event has an empty description??"
+	},
+	"eventDateNull": {
+		"message": "??At least one event has an empty date??"
+	},
+	"invalidURL": {
+		"message": "Ogiltig webbadress : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbookSearchInputDefault": {
+		"message": "Sök…"
+	},
+	"blogtype": {
+		"message": "Blogg"
+	},
+	"celltype": {
+		"message": "Mobil"
+	},
+	"faxtype": {
+		"message": "Fax"
+	},
+	"homefaxtype": {
+		"message": "Hemfax"
+	},
+	"homepagetype": {
+		"message": "Startsida"
+	},
+	"hometype": {
+		"message": "Hem"
+	},
+	"iphonetype": {
+		"message": "iPhone"
+	},
+	"maintype": {
+		"message": "Huvudsakligt"
+	},
+	"othertype": {
+		"message": "Annan"
+	},
+	"pagertype": {
+		"message": "Personsökare"
+	},
+	"profiletype": {
+		"message": "Profil"
+	},
+	"workfaxtype": {
+		"message": "Arbetsfax"
+	},
+	"worktype": {
+		"message": "Arbete"
+	},
+	"types.gender.f": {
+		"message": "Kvinna"
+	},
+	"types.gender.m": {
+		"message": "Manlig"
+	},
+	"types.gender.n": {
+		"message": "Ingen"
+	},
+	"types.gender.o": {
+		"message": "Andra"
+	},
+	"types.gender.u": {
+		"message": "Okänd"
+	},
+	"typesTooltip": {
+		"message": "För att ändra tillgängliga typer, använd Kontakter-inställningar."
+	},
+	"prefLabel": {
+		"message": "Preferens"
+	},
+	"prefValueLabel": {
+		"message": "Preferensvärde"
+	},
+	"prefWeightTooltip": {
+		"message": "Inställningar kan ha olika värden mellan 1 och 100. För normal användning, behöll den tom."
+	},
+	"impp.skype": {
+		"message": "Skype"
+	},
+	"impp.jabber": {
+		"message": "Jabber"
+	},
+	"impp.googletalk": {
+		"message": "Google Talk"
+	},
+	"impp.qq": {
+		"message": "Tencent QQ"
+	},
+	"addToAddressbook": {
+		"message": "Lägg till i den här adressboken"
+	},
+	"wdw_cardEditionViewResultTitle": {
+		"message": "Resultatändring av kontakt"
+	},
+	"wdw_cardEditionViewResultHideCreateTitle": {
+		"message": "Resultatändring av kontakt"
+	},
+	"wdw_cardEditionAddEmailTitle": {
+		"message": "Registrera en ny e-postadress"
+	},
+	"wdw_cardEditionCreateContactTitle": {
+		"message": "Ny kontakt"
+	},
+	"wdw_cardEditionCreateListTitle": {
+		"message": "Ny lista"
+	},
+	"wdw_cardEditionEditContactTitle": {
+		"message": "Redigera kontakt"
+	},
+	"wdw_cardEditionEditListTitle": {
+		"message": "Redigera lista"
+	},
+	"wdw_cardEditionAddLineTitle": {
+		"message": "Redigera kontakt"
+	},
+	"wdw_cardEditionViewContactTitle": {
+		"message": "Visa kontakt"
+	},
+	"wdw_cardEditionViewListTitle": {
+		"message": "Visa lista"
+	},
+	"wdw_cardbookPrintTitleLong": {
+		"message": "Förhandsgranska $P1$ - Kontakter - Thunderbird",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookPrintTitle": {
+		"message": "Förhandsgranska"
+	},
+	"displayGroupboxLabel": {
+		"message": "Visningsnamn"
+	},
+	"personalGroupboxLabel": {
+		"message": "Personlig information"
+	},
+	"orgGroupboxLabel": {
+		"message": "Professionell information"
+	},
+	"categoriesHeader": {
+		"message": "Grupper"
+	},
+	"adrGroupboxLabel": {
+		"message": "Adresser"
+	},
+	"telGroupboxLabel": {
+		"message": "Telefonnummer"
+	},
+	"emailGroupboxLabel": {
+		"message": "Mejl adresser"
+	},
+	"urlGroupboxLabel": {
+		"message": "Webbadresser"
+	},
+	"eventGroupboxLabel": {
+		"message": "Händelser"
+	},
+	"noteGroupboxLabel": {
+		"message": "Anteckningar"
+	},
+	"searchTermsGroupboxLabel": {
+		"message": "Sök termer"
+	},
+	"addedCardsGroupboxLabel": {
+		"message": "Markerade objekt"
+	},
+	"mailPopularityGroupboxLabel": {
+		"message": "Mejlanvändning"
+	},
+	"addEntryTooltip": {
+		"message": "Ny fält"
+	},
+	"removeEntryTooltip": {
+		"message": "Ta bort fältet"
+	},
+	"upEntryTooltip": {
+		"message": "Flytta upp"
+	},
+	"downEntryTooltip": {
+		"message": "Flytta ner"
+	},
+	"validatedEntryTooltip": {
+		"message": "Giltigt"
+	},
+	"noValidatedEntryTooltip": {
+		"message": "Validera"
+	},
+	"notValidatedEntryTooltip": {
+		"message": "Ogiltigt format"
+	},
+	"linkEntryTooltip": {
+		"message": "Skapa länk..."
+	},
+	"selectedCardsDeletionConfirmMessagePF": {
+		"message": "Är du säker på att du vill radera den valda kontakten?;Är du säker på att du vill radera de $P1$ valda kontakterna?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"catDeletionsConfirmMessagePF": {
+		"message": "Är du säker på att du vill ta bort kategorin $P2$ som innehåller en kontakt?;Är du säker på att du vill ta bort kategorin $P2$ som innehåller $P1$ kontakter?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletionsConfirmMessagePF": {
+		"message": "??Are you sure you want to delete the node $P2$ which contains one contact?;Are you sure you want to delete the node $P2$ which contains $P1$ contacts???",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"accountDeletionConfirmMessage": {
+		"message": "Är du säker på att du vill radera adressboken $P1$ från Kontakter repository?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletionDiscoveryConfirmMessage": {
+		"message": "Adressboken $P1$ verkar ha tagits bort från din server, vill du ta bort den från ditt Kontoförteckning?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentFileMessage": {
+		"message": "ta bort fil $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentDirMessage": {
+		"message": "ta bort katalog $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryDeletionConfirmMessage": {
+		"message": "Katalog $P1$ är inte tomt. Är du säker på att du vill radera alla objekt från den här katalogen?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"choiceMappingTitle": {
+		"message": "Fältval"
+	},
+	"choiceavailableColumnsGroupboxLabel": {
+		"message": "Tillgängliga kolumner"
+	},
+	"choiceaddedColumnsGroupboxLabel": {
+		"message": "Valda kolumner"
+	},
+	"exportMappingTitle": {
+		"message": "Val av exporterade kolumner"
+	},
+	"exportavailableColumnsGroupboxLabel": {
+		"message": "Tillgängliga kolumner"
+	},
+	"exportaddedColumnsGroupboxLabel": {
+		"message": "Valda kolumner"
+	},
+	"importMappingTitle": {
+		"message": "Kolumner kartläggningstabell"
+	},
+	"importavailableColumnsGroupboxLabel": {
+		"message": "Tillgängliga kolumner"
+	},
+	"importaddedColumnsGroupboxLabel": {
+		"message": "Valda kolumner"
+	},
+	"importfoundColumnsGroupboxLabel": {
+		"message": "Rubrikkolumn"
+	},
+	"importblankColumn": {
+		"message": "Tom kolumn"
+	},
+	"importNoTypeLabel": {
+		"message": "ingen typ"
+	},
+	"fieldDelimiterLabel": {
+		"message": "Kolonner separator"
+	},
+	"includePrefLabel": {
+		"message": "??Include preferences??"
+	},
+	"lineHeaderLabel": {
+		"message": "Första raden som rubrik"
+	},
+	"missingColumnsConfirmMessage": {
+		"message": "Sammanställda kolumner totalt skiljer sig från filkolumnerna totalt, så saknas eller onödiga kolumner beaktas inte. Fortsätta?"
+	},
+	"toUpperCase": {
+		"message": "Konvertera till stor bokstav"
+	},
+	"toLowerCase": {
+		"message": "Konvertera till små bokstäver"
+	},
+	"copyFieldValue": {
+		"message": "Kopiera ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"pasteFieldValue": {
+		"message": "Klistra in ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookRenameFieldEditTypeTitle": {
+		"message": "Byt namn på en typ"
+	},
+	"wdw_cardbookRenameFieldAddTypeTitle": {
+		"message": "Lägg till en ny typ"
+	},
+	"wdw_cardbookRenameFieldOrgTitle": {
+		"message": "Organisationsredaktör"
+	},
+	"wdw_cardbookRenameFieldEditCatTitle": {
+		"message": "Kategorier redaktör"
+	},
+	"wdw_cardbookRenameFieldAddCatTitle": {
+		"message": "Lägg till en ny kategori"
+	},
+	"wdw_cardbookRenameFieldEditNodeTitle": {
+		"message": "??Edit Node??"
+	},
+	"wdw_cardbookRenameFieldEditTypeLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldAddTypeLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldOrgLabel": {
+		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldEditCatLabel": {
+		"message": "Kategori:"
+	},
+	"wdw_cardbookRenameFieldAddCatLabel": {
+		"message": "Kategori:"
+	},
+	"wdw_cardbookRenameFieldEditNodeLabel": {
+		"message": "$P1$:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
+		"message": "Definition av postkontobegränsning"
+	},
+	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
+		"message": "Postkonto utgående e-post samling definition"
+	},
+	"ignoreCaseIgnoreDiacriticLabel": {
+		"message": "Ignorera fallet och diakritikerna"
+	},
+	"ignoreCaseMatchDiacriticLabel": {
+		"message": "Ignorera fallet, respektera diakritikerna"
+	},
+	"matchCaseIgnoreDiacriticLabel": {
+		"message": "Respektera fallet, ignorera diakritikerna"
+	},
+	"matchCaseMatchDiacriticLabel": {
+		"message": "Respektera fallet och diacritiken"
+	},
+	"allCategories": {
+		"message": "Visa alla"
+	},
+	"onlyCategories": {
+		"message": "Endast grupperna"
+	},
+	"noCategory": {
+		"message": "Endast kontakter"
+	},
+	"multipleCategories": {
+		"message": "Flera grupper"
+	},
+	"none": {
+		"message": "Inga"
+	},
+	"multipleTypes": {
+		"message": "Flera sorter"
+	},
+	"noType": {
+		"message": "Inga sorter"
+	},
+	"eventContactsWindowLabel": {
+		"message": "Händelser för: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fnDuplicatedMessage": {
+		"message": "(kopia)"
+	},
+	"allMailAccounts": {
+		"message": "Alla Mejl konton"
+	},
+	"includeLabel": {
+		"message": "Inkludera"
+	},
+	"excludeLabel": {
+		"message": "Exkludera"
+	},
+	"sendButtonLabel": {
+		"message": "Skapa ett nytt meddelande"
+	},
+	"doNotShowAnymore": {
+		"message": "Varna mig inte när jag försöker skicka till kontakter utan mejladress."
+	},
+	"emptyEmailsCardConfirmMessage": {
+		"message": "Den här kontakten har inte någon mejladress: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"emptyEmailsCardsConfirmMessage": {
+		"message": "De här kontakterna har ingen mejladress: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventInNoteEventPrefix": {
+		"message": "Evenemang"
+	},
+	"deathSuffix": {
+		"message": "(avled)"
+	},
+	"dateFormatsDLabel": {
+		"message": "D"
+	},
+	"dateFormatsMLabel": {
+		"message": "M"
+	},
+	"dateFormatsYLabel": {
+		"message": "Å"
+	},
+	"customLabel": {
+		"message": "Anpassat"
+	},
+	"valueAlreadyExists": {
+		"message": "Värdet $P1$ existerar redan",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"allAccountsLabel": {
+		"message": "Alla Adressböcker"
+	},
+	"enabledAccountsLabel": {
+		"message": "Aktiva Adressböcker"
+	},
+	"disabledAccountsLabel": {
+		"message": "InAktiva Adressböcker"
+	},
+	"localAccountsLabel": {
+		"message": "Lokala Adressböcker"
+	},
+	"remoteAccountsLabel": {
+		"message": "Online Adressböcker"
+	},
+	"searchAccountsLabel": {
+		"message": "Sparad sökning"
+	},
+	"wdw_passwordMissingTitle": {
+		"message": "Lösenordet saknas"
+	},
+	"wdw_passwordWrongTitle": {
+		"message": "Felaktigt lösenord"
+	},
+	"dateDisplayedFormatLong": {
+		"message": "Lång: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"dateDisplayedFormatShort": {
+		"message": "Kort: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressFormatFormula": {
+		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
+	},
+	"newTokenTitle": {
+		"message": "Logga in på ditt konto $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"newTokenDescription": {
+		"message": "??CardBook would like to access your $P1$ account to retrieve contacts. Credentials and contact data are only transferred between your computer and Google, no third party sites are involved.??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"invalidEmail": {
+		"message": "$P1$ är inte en giltig e-postadress eftersom den inte har formen användare@värd.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"appendEmailLabel": {
+		"message": "Lägg till i lista: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryAddNew": {
+		"message": "Lägg till en ny kategori"
+	},
+	"typeAddNew": {
+		"message": "Lägg till en ny typ"
+	},
+	"allContacts": {
+		"message": "Alla kontakter"
+	},
+	"keyDescription": {
+		"message": "??Encryption key??"
+	},
+	"encryptionStarted": {
+		"message": "??Starting encryption??"
+	},
+	"encryptionProcessed": {
+		"message": "??Items encrypted: $P1$/$P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"encryptionFinished": {
+		"message": "??Encryption finished??"
+	},
+	"decryptionStarted": {
+		"message": "??Starting decryption??"
+	},
+	"decryptionProcessed": {
+		"message": "??Items decrypted: $P1$/$P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"decryptionFinished": {
+		"message": "??Decryption finished??"
+	},
+	"menu_undo.long.label": {
+		"message": "Ångra - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_undo.short.label": {
+		"message": "Ångra"
+	},
+	"menu_redo.long.label": {
+		"message": "Gör om - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_redo.short.label": {
+		"message": "Gör om"
+	},
+	"cardbookMenuItemLabel": {
+		"message": "CardBook"
+	},
+	"cardbookMenuItemAccesskey": {
+		"message": "b"
+	},
+	"cardbookMenuItemKey": {
+		"message": "b"
+	},
+	"cardbookMenuItemTooltip": {
+		"message": "Växla till CardBook fliken"
+	},
+	"cardbookToolbarButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookToolbarButtonTooltip": {
+		"message": "Växla till CardBook fliken"
+	},
+	"cardbookTabButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookTabButtonTooltip": {
+		"message": "Växla till CardBook fliken"
+	},
+	"cardbookQFBButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookQFBButtonTooltip": {
+		"message": "Visar endast meddelanden från personer i adressboken"
+	},
+	"quickFilterBar.booleanMode.tooltip": {
+		"message": "Etikettfilteringsläge"
+	},
+	"quickFilterBar.booleanModeAny.label": {
+		"message": "Någon av"
+	},
+	"quickFilterBar.booleanModeAny.tooltip": {
+		"message": "Minst en av de markerade kriterierna ska matcha etiketten"
+	},
+	"quickFilterBar.booleanModeAll.label": {
+		"message": "Alla"
+	},
+	"quickFilterBar.booleanModeAll.tooltip": {
+		"message": "Alla de markerade kriterierna måste matcha etiketten"
+	},
+	"newCardBookCardMenuLabel": {
+		"message": "CardBook kontakt…"
+	},
+	"newCardBookCardMenuAccesskey": {
+		"message": "C"
+	},
+	"newCardBookCardMenuKey": {
+		"message": "N"
+	},
+	"newCardBookSearchMenuLabel": {
+		"message": "Sök CardBook…"
+	},
+	"newCardBookSearchMenuAccesskey": {
+		"message": "C"
+	},
+	"addToCardBookMenuLabel": {
+		"message": "Lägg till CardBook kontakt"
+	},
+	"addToCardBookMenuAccesskey": {
+		"message": "d"
+	},
+	"editInCardBookMenuLabel": {
+		"message": "Redigera med CardBook"
+	},
+	"editInCardBookMenuAccesskey": {
+		"message": "e"
+	},
+	"deleteInCardBookMenuLabel": {
+		"message": "Ta bort CardBook kontakt"
+	},
+	"deleteInCardBookMenuAccesskey": {
+		"message": "T"
+	},
+	"IMPPMenuLabel": {
+		"message": "Anslut till"
+	},
+	"IMPPMenuAccesskey": {
+		"message": "o"
+	},
+	"findAllEmailsFromContactMessengerLabel": {
+		"message": "Hitta mejl relaterade till den här kontakten"
+	},
+	"findAllEmailsFromContactMessengerAccesskey": {
+		"message": "k"
+	},
+	"findEmailsFromEmailMessengerLabel": {
+		"message": "Hitta mejl relaterade till den här mejladressen"
+	},
+	"findEmailsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"findAllEventsFromContactMessengerLabel": {
+		"message": "Hitta kalender händelser relaterade till den här kontakten"
+	},
+	"findAllEventsFromContactMessengerAccesskey": {
+		"message": "k"
+	},
+	"findEventsFromEmailMessengerLabel": {
+		"message": "Hitta kalender händelser relaterade till den här mejladressen"
+	},
+	"findEventsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"mailContext-addToCardBookMenuLabel": {
+		"message": "Lägg till CardBook kontakt…"
+	},
+	"mailContext-addToCardBookMenuAccesskey": {
+		"message": "d"
+	},
+	"addAllAttachementsToCardBookMenuLabel": {
+		"message": "Till CardBook alla…"
+	},
+	"addAttachementToCardBookMenuLabel": {
+		"message": "Till CardBook…"
+	},
+	"cardbookABPaneItemLabel": {
+		"message": "Adressbok Pane"
+	},
+	"cardbookABPaneItemAccesskey": {
+		"message": "A"
+	},
+	"cardbookContactPaneItemLabel": {
+		"message": "Kontakt Pane"
+	},
+	"cardbookContactPaneItemAccesskey": {
+		"message": "O"
+	},
+	"wizard.title": {
+		"message": "Lägg till ny adressbok"
+	},
+	"wizard.label": {
+		"message": "Lägg till ny adressbok"
+	},
+	"welcomePage.wizard.description": {
+		"message": "Välkommen"
+	},
+	"welcomePage.description": {
+		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
+	},
+	"initialPage.wizard.description": {
+		"message": "Plats för ny adressbok."
+	},
+	"initialPage.description": {
+		"message": "Är adressboken lokal eller online ? :"
+	},
+	"initialPage.computer.label": {
+		"message": "Lokal"
+	},
+	"initialPage.network.label": {
+		"message": "Online"
+	},
+	"initialPage.standard.label": {
+		"message": "Importera Thunderbird's standard adressböcker"
+	},
+	"initialPage.search.label": {
+		"message": "Söker i befintliga adressböcker"
+	},
+	"initialPage.find.label": {
+		"message": "??Search for remote address books??"
+	},
+	"localPage.wizard.description": {
+		"message": "Typ och plats för din nya lokala adressbok."
+	},
+	"localPage.type.description": {
+		"message": "Vad är det för typ av lokal adressbok ? :"
+	},
+	"localPage.type.label": {
+		"message": "Typ"
+	},
+	"localPage.createDB.label": {
+		"message": "Skapa en ny adressbok"
+	},
+	"localPage.createDirectory.label": {
+		"message": "Skapa en ny adressbok (Katalog)"
+	},
+	"localPage.createFile.label": {
+		"message": "Skapa en ny adressbok (Fil)"
+	},
+	"localPage.openDirectory.label": {
+		"message": "Öppna en befintlig adressbok (Katalog)"
+	},
+	"localPage.openFile.label": {
+		"message": "Öppna en befintlig adressbok (Fil)"
+	},
+	"localPage.uri.groupbox": {
+		"message": "Adress"
+	},
+	"localPage.uri.label": {
+		"message": "Katalog eller fil:"
+	},
+	"localPage.uri.description": {
+		"message": "Bläddra fram var du vill skapa din nya adressbok, om du vill använda en fil, välj .vcf som filändelse"
+	},
+	"localPage.uributton.label": {
+		"message": "Bläddra"
+	},
+	"remotePage.wizard.description": {
+		"message": "Typ och plats för din nya online adressbok."
+	},
+	"remotePage.description": {
+		"message": "Vad är det för typ av online adressbok ? : (Varning: Google följer inte standarden för vCard)"
+	},
+	"remotePage.type.label": {
+		"message": "Typ"
+	},
+	"remotePage.carddav.label": {
+		"message": "CardDAV"
+	},
+	"remotePage.google.label": {
+		"message": "Google"
+	},
+	"remotePage.apple.label": {
+		"message": "Apple"
+	},
+	"remotePage.yahoo.label": {
+		"message": "Yahoo!"
+	},
+	"remotePage.connection.label": {
+		"message": "Anslutning"
+	},
+	"remotePage.url.description": {
+		"message": "För CardDAV, ange URL'en till din online adressbok. Du kan prova att ange en del av URL'n (t.ex : http(s)://carddav.example.org). Lämna tomt om du ansluter till en Google adressbok."
+	},
+	"remotePage.url.label": {
+		"message": "URL:"
+	},
+	"remotePage.credentials.description": {
+		"message": "Ange dina inloggningsuppgifter för adressboken. För en Google adressbok, ange din Google mejladress."
+	},
+	"remotePage.user.label": {
+		"message": "Användarnamn:"
+	},
+	"remotePage.password.label": {
+		"message": "Lösenord:"
+	},
+	"remotePage.passwordShow.label": {
+		"message": "Visa"
+	},
+	"remotePage.validatebutton.label": {
+		"message": "Validera/Testa"
+	},
+	"locationSearchPage.wizard.description": {
+		"message": "Definition av den sparade sökningen."
+	},
+	"locationSearchPage.label": {
+		"message": "Sparad sökning"
+	},
+	"abSearchHeading.label": {
+		"message": "Sök i:"
+	},
+	"abSearchHeading.accesskey": {
+		"message": "ö"
+	},
+	"matchAll.label": {
+		"message": "Matcha alla följande"
+	},
+	"matchAll.accesskey": {
+		"message": "t"
+	},
+	"matchAny.label": {
+		"message": "Matcha någon av följande"
+	},
+	"matchAny.accesskey": {
+		"message": "h"
+	},
+	"googleOauthPage.wizard.description": {
+		"message": "Google Autentisering"
+	},
+	"namePage.wizard.description": {
+		"message": "Adressboks inställningar"
+	},
+	"namePage.selected.label": {
+		"message": "Välj"
+	},
+	"namePage.name.label": {
+		"message": "Namn"
+	},
+	"namePage.color.label": {
+		"message": "Färg"
+	},
+	"namePage.urnuuid.label": {
+		"message": "Använd urn:uuid"
+	},
+	"namePage.DBCached.label": {
+		"message": "Arbeta nedkopplad"
+	},
+	"namePage.vCardVersion.label": {
+		"message": "vCard"
+	},
+	"namesPage.wizard.description": {
+		"message": "Adressboks inställningar"
+	},
+	"namesPage.name.label": {
+		"message": "Namn"
+	},
+	"namesPage.name.description": {
+		"message": "Flera adressböker hittades. Välj vilka du vill använda och namnge dem :"
+	},
+	"findPage.wizard.description": {
+		"message": "??Remote address book search??"
+	},
+	"findPage.name1.description": {
+		"message": "??No remote address books found.??"
+	},
+	"findPage.name2.description": {
+		"message": "??One remote address book found. Validate remote address book to add:??"
+	},
+	"findPage.name3.description": {
+		"message": "??Multiple remote address books found. Validate remote address books to add:??"
+	},
+	"finishPage.wizard.description": {
+		"message": "??Address books configuration??"
+	},
+	"finishPage.description": {
+		"message": "Din nya adressbok är nu klar för användning."
+	},
+	"finishsPage.description": {
+		"message": "Dina nya adressböcker är nu klara för användning."
+	},
+	"wdw_addressbooksEditTitle": {
+		"message": "Adressboks inställningar"
+	},
+	"colorLabel": {
+		"message": "Färg:"
+	},
+	"name.ABedit.label": {
+		"message": "Namn:"
+	},
+	"name.ABedit.accesskey": {
+		"message": "N"
+	},
+	"nodesLabel": {
+		"message": "??Nodes:??"
+	},
+	"categoriesNodeLabel": {
+		"message": "Grupper"
+	},
+	"orgNodeLabel": {
+		"message": "Organisation"
+	},
+	"typeLabel": {
+		"message": "Typ:"
+	},
+	"username.ABedit.label": {
+		"message": "Användarnamn:"
+	},
+	"vCardVersionLabel": {
+		"message": "vCard:"
+	},
+	"readonlyLabel": {
+		"message": "Skrivskyddat läge"
+	},
+	"readonlyAccesskey": {
+		"message": "S"
+	},
+	"urnuuidLabel": {
+		"message": "Använd urn:uuid"
+	},
+	"DBCachedLabel": {
+		"message": "Arbeta nedkopplad"
+	},
+	"autoSyncGroupboxLabel": {
+		"message": "Periodisk synkning"
+	},
+	"autoSyncLabel": {
+		"message": "Aktivera periodisk synkning"
+	},
+	"autoSyncAccesskey": {
+		"message": "p"
+	},
+	"autoSyncIntervalLabel": {
+		"message": "Intervall för periodisk synkning (minuter):"
+	},
+	"autoSyncIntervalAccesskey": {
+		"message": "I"
+	},
+	"miscTabLabel": {
+		"message": "Övrigt"
+	},
+	"fnFormulaCaption": {
+		"message": "Visningsnamn"
+	},
+	"fnFormulaLabel": {
+		"message": "Generera Visningsnamn:"
+	},
+	"fnFormulaAccesskey": {
+		"message": "G"
+	},
+	"resetFnFormulaLabel": {
+		"message": "Återställ till standard"
+	},
+	"resetFnFormulaAccesskey": {
+		"message": "i"
+	},
+	"applyToABButtonLabel": {
+		"message": "??Apply to…??"
+	},
+	"applyToABButtonAccesskey": {
+		"message": "A"
+	},
+	"wdw_adrEditionTitle": {
+		"message": "Adressredigerare"
+	},
+	"adrPostOfficeLabel": {
+		"message": "Postbox"
+	},
+	"adrExtendedAddrLabel": {
+		"message": "Lägenhet"
+	},
+	"adrStreetLabel": {
+		"message": "Gata"
+	},
+	"adrLocalityLabel": {
+		"message": "Stad"
+	},
+	"adrRegionLabel": {
+		"message": "Län"
+	},
+	"adrPostalCodeLabel": {
+		"message": "Postnummer"
+	},
+	"adrCountryLabel": {
+		"message": "Land"
+	},
+	"deprecatedLabel": {
+		"message": "Föråldrad"
+	},
+	"daysLeftColumnLabel": {
+		"message": "Dagar kvar"
+	},
+	"nameColumnLabel": {
+		"message": "Namn"
+	},
+	"ageColumnLabel": {
+		"message": "Ålder"
+	},
+	"dateOfBirthColumnLabel": {
+		"message": "Födelsedatum"
+	},
+	"dateOfBirthFoundColumnLabel": {
+		"message": "Datum hittat"
+	},
+	"emailColumnLabel": {
+		"message": "Mejl"
+	},
+	"sendEmailLabel": {
+		"message": "Skicka ett mejl"
+	},
+	"sendEmailAccesskey": {
+		"message": "m"
+	},
+	"syncLightningMenuItemLabel": {
+		"message": "Synkronisera med kalender"
+	},
+	"syncLightningMenuAccesskey": {
+		"message": "S"
+	},
+	"calendarNameLabel": {
+		"message": "Kalender"
+	},
+	"calendarIdLabel": {
+		"message": "Kalender id"
+	},
+	"existingLabel": {
+		"message": "Existerande"
+	},
+	"failedLabel": {
+		"message": "Misslyckades"
+	},
+	"succeededLabel": {
+		"message": "Lyckades"
+	},
+	"wdw_bulkOperationTitle": {
+		"message": "Körs…"
+	},
+	"wdw_cardbookConfigurationAddCustomFieldTitle": {
+		"message": "Custom Fields redigerare"
+	},
+	"customFieldCodeLabel": {
+		"message": "Fältnamn:"
+	},
+	"customFieldLabelLabel": {
+		"message": "Visa som:"
+	},
+	"mailAccountLabel": {
+		"message": "Mejlkonto:"
+	},
+	"addressbookLabel": {
+		"message": "Adressboken:"
+	},
+	"categoryLabel": {
+		"message": "Grupp:"
+	},
+	"wdw_cardbookConfigurationAddIMPPTitle": {
+		"message": "Protokollredigerare"
+	},
+	"IMPPCodeLabel": {
+		"message": "Kod:"
+	},
+	"IMPPLabelLabel": {
+		"message": "Etikett:"
+	},
+	"IMPPProtocolLabel": {
+		"message": "Protokoll:"
+	},
+	"wdw_cardbookConfigurationAddVcardTitle": {
+		"message": "Välj ett vCard"
+	},
+	"contactLabel": {
+		"message": "Kontakta:"
+	},
+	"filenameLabel": {
+		"message": "Bifogad fil:"
+	},
+	"vCardLabel": {
+		"message": "vCard"
+	},
+	"CardBookTabLabel": {
+		"message": "Kontakter"
+	},
+	"IMPPsTabLabel": {
+		"message": "Internet Chatt"
+	},
+	"customFieldsTabLabel": {
+		"message": "Anpassade fält"
+	},
+	"listsTabLabel": {
+		"message": "Grupper"
+	},
+	"syncTabLabel": {
+		"message": "Synk."
+	},
+	"emailTabLabel": {
+		"message": "Mejl"
+	},
+	"birthdaylistTabLabel": {
+		"message": "Födelsedag"
+	},
+	"synclistTabLabel": {
+		"message": "Födelsedags påminnelse"
+	},
+	"integrationGroupboxLabel": {
+		"message": "Integration i Thunderbird"
+	},
+	"autocompletionLabel": {
+		"message": "Autofyll meljadress"
+	},
+	"autocompletionAccesskey": {
+		"message": "A"
+	},
+	"autocompletionTooltip": {
+		"message": "Utöka Autofyll kontaker från andra adressböcker än Kontakter."
+	},
+	"autocompleteSortByPopularityLabel": {
+		"message": "Sortera mejladresser efter användning"
+	},
+	"autocompleteSortByPopularityAccesskey": {
+		"message": "S"
+	},
+	"autocompleteProposeConcatEmailsLabel": {
+		"message": "Föreslå sammanlänka mailadresser den per kontakt"
+	},
+	"autocompleteProposeConcatEmailsAccesskey": {
+		"message": "s"
+	},
+	"autocompleteShowAddressbookLabel": {
+		"message": "Visa adressboksnamnet"
+	},
+	"autocompleteShowAddressbookAccesskey": {
+		"message": "d"
+	},
+	"autocompleteWithColorLabel": {
+		"message": "Använd Adressboksfärg"
+	},
+	"autocompleteWithColorAccesskey": {
+		"message": "f"
+	},
+	"autocompleteRestrictSearchLabel": {
+		"message": "Begränsa sökfälten"
+	},
+	"autocompleteRestrictSearchAccesskey": {
+		"message": "P"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Redigera"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "R"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Återställ till standard"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "s"
+	},
+	"useColorLabel": {
+		"message": "Använd adressboksfärgen som"
+	},
+	"useColorBackgroundLabel": {
+		"message": "Bakgrundsfärg"
+	},
+	"useColorBackgroundAccesskey": {
+		"message": "B"
+	},
+	"useColorTextLabel": {
+		"message": "Textfärg"
+	},
+	"useColorTextAccesskey": {
+		"message": "x"
+	},
+	"useColorNothingLabel": {
+		"message": "Ingenting"
+	},
+	"useColorNothingAccesskey": {
+		"message": "I"
+	},
+	"exclusiveLabel": {
+		"message": "Unik källa för kontakter"
+	},
+	"exclusiveAccesskey": {
+		"message": "U"
+	},
+	"exclusiveTooltip": {
+		"message": "Om den här är inaktiverad, så hämtas kontakter från Thunderbird standard adressböcker för de gula stjärnorna, visningsnamn och autoifyllnad av mejladresser"
+	},
+	"accountsRestrictionsLabel": {
+		"message": "Mejlkonto restriktioner"
+	},
+	"accountsRestrictionsEnabledLabel": {
+		"message": "Aktiverad"
+	},
+	"accountsRestrictionsMailNameLabel": {
+		"message": "Mejlkonto"
+	},
+	"accountsRestrictionsABNameLabel": {
+		"message": "Adressbok"
+	},
+	"accountsRestrictionsCatNameLabel": {
+		"message": "Grupp"
+	},
+	"accountsRestrictionsIncludeNameLabel": {
+		"message": "Typ"
+	},
+	"addRestrictionLabel": {
+		"message": "Lägg till"
+	},
+	"addRestrictionAccesskey": {
+		"message": "L"
+	},
+	"renameRestrictionLabel": {
+		"message": "Redigera"
+	},
+	"renameRestrictionAccesskey": {
+		"message": "R"
+	},
+	"deleteRestrictionLabel": {
+		"message": "Ta bort"
+	},
+	"deleteRestrictionAccesskey": {
+		"message": "T"
+	},
+	"emailsCollectionLabel": {
+		"message": "Spara utgående mejladress"
+	},
+	"emailsCollectionTooltip": {
+		"message": "Utökar funktionen att samla in mejadresser på utgående mejl i Thunderbird. När aktiverad, sparar mejladress som inte redan finns i någon Kontakter adressbok, till valda adressböcker."
+	},
+	"emailsCollectionEnabledLabel": {
+		"message": "Aktiverad"
+	},
+	"emailsCollectionMailNameLabel": {
+		"message": "Mejlkonto"
+	},
+	"emailsCollectionABNameLabel": {
+		"message": "Adressbok"
+	},
+	"emailsCollectionCatNameLabel": {
+		"message": "Grupp"
+	},
+	"addEmailsCollectionLabel": {
+		"message": "Lägg till"
+	},
+	"addEmailsCollectionAccesskey": {
+		"message": "L"
+	},
+	"renameEmailsCollectionLabel": {
+		"message": "Redigera"
+	},
+	"renameEmailsCollectionAccesskey": {
+		"message": "R"
+	},
+	"deleteEmailsCollectionLabel": {
+		"message": "Ta bort"
+	},
+	"deleteEmailsCollectionAccesskey": {
+		"message": "T"
+	},
+	"logGroupboxLabel": {
+		"message": "Logg"
+	},
+	"debugModeLabel": {
+		"message": "Debugläge"
+	},
+	"debugModeAccesskey": {
+		"message": "D"
+	},
+	"debugModeTooltip": {
+		"message": "Akteviera debug mode för utökad logging."
+	},
+	"statusInformationLineNumberLabel": {
+		"message": "Antal rader i loggfilen:"
+	},
+	"statusInformationLineNumberAccesskey": {
+		"message": "g"
+	},
+	"tabsEditingGroupboxLabel": {
+		"message": "Visa flikar"
+	},
+	"listTabLabel": {
+		"message": "Lista"
+	},
+	"listTabAccesskey": {
+		"message": "L"
+	},
+	"mailPopularityTab.conf.label": {
+		"message": "Mejl räknare"
+	},
+	"mailPopularityTab.conf.accesskey": {
+		"message": "M"
+	},
+	"technicalTab.conf.label": {
+		"message": "Teknisk"
+	},
+	"technicalTab.conf.accesskey": {
+		"message": "T"
+	},
+	"vCardTab.conf.label": {
+		"message": "vCard"
+	},
+	"vCardTab.conf.accesskey": {
+		"message": "V"
+	},
+	"advancedTab1Label": {
+		"message": "Avancerad"
+	},
+	"advancedTab.conf.label": {
+		"message": "Avancerad (endast för vCard 4.0)"
+	},
+	"advancedTab.conf.accesskey": {
+		"message": "A"
+	},
+	"localizeEditingGroupboxLabel": {
+		"message": "Hitta med"
+	},
+	"localizeEngineOpenStreetMapLabel": {
+		"message": "OpenStreetMap"
+	},
+	"localizeEngineOpenStreetMapAccesskey": {
+		"message": "O"
+	},
+	"localizeEngineGoogleMapsLabel": {
+		"message": "Google Maps"
+	},
+	"localizeEngineGoogleMapsAccesskey": {
+		"message": "G"
+	},
+	"localizeEngineBingMapsLabel": {
+		"message": "Bing Maps"
+	},
+	"localizeEngineBingMapsAccesskey": {
+		"message": "B"
+	},
+	"localizeTargetLabel": {
+		"message": "Öppna externa länkar"
+	},
+	"localizeTargetInLabel": {
+		"message": "I Thunderbird"
+	},
+	"localizeTargetInAccesskey": {
+		"message": "I"
+	},
+	"localizeTargetOutLabel": {
+		"message": "Utanför Thunderbird"
+	},
+	"localizeTargetOutAccesskey": {
+		"message": "U"
+	},
+	"showNameAsLabel": {
+		"message": "Visa namn som"
+	},
+	"showNameAsLFLabel": {
+		"message": "Efternamn Förnamn"
+	},
+	"showNameAsLFAccesskey": {
+		"message": "F"
+	},
+	"showNameAsLFCommaLabel": {
+		"message": "Efternamn, Förnamn"
+	},
+	"showNameAsLFCommaAccesskey": {
+		"message": "E"
+	},
+	"showNameAsFLLabel": {
+		"message": "Förnamn Efternamn"
+	},
+	"showNameAsFLAccesskey": {
+		"message": "m"
+	},
+	"showNameAsDSPLabel": {
+		"message": "Visningsnamn"
+	},
+	"showNameAsDSPAccesskey": {
+		"message": "s"
+	},
+	"adrFormulaCaption": {
+		"message": "Adress"
+	},
+	"adrFormulaLabel": {
+		"message": "Adressformat:"
+	},
+	"adrFormulaAccesskey": {
+		"message": "r"
+	},
+	"resetAdrFormulaLabel": {
+		"message": "Återställ till standard"
+	},
+	"resetAdrFormulaAccesskey": {
+		"message": "i"
+	},
+	"miscEditingGroupboxLabel": {
+		"message": "Övrigt"
+	},
+	"preferEmailEditionLabel": {
+		"message": "Redigera istället för att skriva e-post vid dubbelklick på en kontakt"
+	},
+	"preferEmailEditionAccesskey": {
+		"message": "D"
+	},
+	"dateDisplayedFormatLabel": {
+		"message": "Datumformat:"
+	},
+	"dateDisplayedFormatAccesskey": {
+		"message": "x"
+	},
+	"defaultRegionLabel": {
+		"message": "??Default Region:??"
+	},
+	"defaultRegionAccesskey": {
+		"message": "D"
+	},
+	"defaultRegionTooltip": {
+		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"preferenceGroupboxLabel": {
+		"message": "Fält PREF"
+	},
+	"usePreferenceValueLabel": {
+		"message": "Använd ett preferensvärde (endast för vCard 4.0)"
+	},
+	"usePreferenceValueAccesskey": {
+		"message": "v"
+	},
+	"preferenceValueLabel": {
+		"message": "Namn på värdet för preferensvärdesfält"
+	},
+	"preferenceValueAccesskey": {
+		"message": "N"
+	},
+	"ABtypesGroupboxLabel": {
+		"message": "Adressbok"
+	},
+	"typesCategoryGoogleLabel": {
+		"message": "Google"
+	},
+	"typesCategoryGoogleAccesskey": {
+		"message": "G"
+	},
+	"typesCategoryAppleLabel": {
+		"message": "Apple"
+	},
+	"typesCategoryAppleAccesskey": {
+		"message": "A"
+	},
+	"typesCategoryYahooLabel": {
+		"message": "Yahoo!"
+	},
+	"typesCategoryYahooAccesskey": {
+		"message": "Y"
+	},
+	"typesCategoryOthersLabel": {
+		"message": "Annat"
+	},
+	"typesCategoryOthersAccesskey": {
+		"message": "n"
+	},
+	"typesGroupboxLabel": {
+		"message": "Typer"
+	},
+	"typesCategoryAdrLabel": {
+		"message": "Adress"
+	},
+	"typesCategoryAdrAccesskey": {
+		"message": "d"
+	},
+	"typesCategoryEmailLabel": {
+		"message": "Mejl"
+	},
+	"typesCategoryEmailAccesskey": {
+		"message": "M"
+	},
+	"typesCategoryImppLabel": {
+		"message": "IMPP"
+	},
+	"typesCategoryImppAccesskey": {
+		"message": "I"
+	},
+	"typesCategoryTelLabel": {
+		"message": "Telefon"
+	},
+	"typesCategoryTelAccesskey": {
+		"message": "T"
+	},
+	"typesCategoryUrlLabel": {
+		"message": "Webbadress"
+	},
+	"typesCategoryUrlAccesskey": {
+		"message": "W"
+	},
+	"typesLabelLabel": {
+		"message": "Etikett"
+	},
+	"addTypeLabel": {
+		"message": "Lägg till"
+	},
+	"addTypeAccesskey": {
+		"message": "L"
+	},
+	"renameTypeLabel": {
+		"message": "Redigera"
+	},
+	"renameTypeAccesskey": {
+		"message": "R"
+	},
+	"deleteTypeLabel": {
+		"message": "Ta bort"
+	},
+	"deleteTypeAccesskey": {
+		"message": "T"
+	},
+	"resetTypeLabel": {
+		"message": "Återställ till standard"
+	},
+	"resetTypeAccesskey": {
+		"message": "i"
+	},
+	"IMPPGroupboxWarn": {
+		"message": "De här inställningarna tillåter att chattprogrammen använder det avsedda protokollet"
+	},
+	"IMPPGroupboxLabel": {
+		"message": "Internetchatt"
+	},
+	"preferIMPPPrefLabel": {
+		"message": "Föredra chattprogram märkta med"
+	},
+	"preferIMPPPrefAccesskey": {
+		"message": "F"
+	},
+	"preferIMPPPrefWarn": {
+		"message": "Om ingen adress är markerad, så kommer alla adresser att användas"
+	},
+	"IMPPCodeHeaderLabel": {
+		"message": "Kod"
+	},
+	"IMPPLabelHeaderLabel": {
+		"message": "Etikett"
+	},
+	"IMPPProtocolHeaderLabel": {
+		"message": "Protokoll"
+	},
+	"addIMPPLabel": {
+		"message": "Lägg till"
+	},
+	"addIMPPAccesskey": {
+		"message": "L"
+	},
+	"renameIMPPLabel": {
+		"message": "Redigera"
+	},
+	"renameIMPPAccesskey": {
+		"message": "R"
+	},
+	"deleteIMPPLabel": {
+		"message": "Ta bort"
+	},
+	"deleteIMPPAccesskey": {
+		"message": "T"
+	},
+	"URLPhoneGroupboxLabel": {
+		"message": "??URL opening for soft phones??"
+	},
+	"URLPhoneGroupboxWarn": {
+		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain $1, referring to the phone number.??"
+	},
+	"URLPhoneURLLabel": {
+		"message": "Webbadress:"
+	},
+	"URLPhoneURLAccesskey": {
+		"message": "W"
+	},
+	"URLPhoneUserLabel": {
+		"message": "Användarnamn:"
+	},
+	"URLPhoneUserAccesskey": {
+		"message": "A"
+	},
+	"URLPhonePasswordLabel": {
+		"message": "Lösenord:"
+	},
+	"URLPhonePasswordAccesskey": {
+		"message": "s"
+	},
+	"URLPhonePasswordShowLabel": {
+		"message": "Visa"
+	},
+	"URLPhonePasswordShowAccesskey": {
+		"message": "V"
+	},
+	"URLPhoneBackgroundLabel": {
+		"message": "??Run in background??"
+	},
+	"URLPhoneBackgroundAccesskey": {
+		"message": "S"
+	},
+	"encryptionGroupboxLabel": {
+		"message": "Kryptering"
+	},
+	"encryptionExplanation": {
+		"message": "??CardBook may encrypt your local data. For this purpose, it will use a secret key stored in the Password Manager. If you loose this key, the recovery of your local data is impossible. For a complete protection, activating the Thunderbird master password feature is recommended.??"
+	},
+	"localDataEncryptionEnabledLabel": {
+		"message": "??Encrypt locally cached cards??"
+	},
+	"localDataEncryptionEnabledAccesskey": {
+		"message": "E"
+	},
+	"customFieldRankHeader": {
+		"message": "Rankning"
+	},
+	"customFieldCodeHeader": {
+		"message": "Fält namn"
+	},
+	"customFieldLabelHeader": {
+		"message": "Fält märkning"
+	},
+	"customFieldsPersTitleLabel": {
+		"message": "Personinformation"
+	},
+	"customFieldsPersTitleAccesskey": {
+		"message": "P"
+	},
+	"customFieldsOrgTitleLabel": {
+		"message": "Arbetsinformation"
+	},
+	"customFieldsOrgTitleAccesskey": {
+		"message": "A"
+	},
+	"addCustomFieldsLabel": {
+		"message": "Lägg till"
+	},
+	"addCustomFieldsAccesskey": {
+		"message": "L"
+	},
+	"renameCustomFieldsLabel": {
+		"message": "Redigera"
+	},
+	"renameCustomFieldsAccesskey": {
+		"message": "R"
+	},
+	"deleteCustomFieldsLabel": {
+		"message": "Ta bort"
+	},
+	"deleteCustomFieldsAccesskey": {
+		"message": "T"
+	},
+	"orgWarn": {
+		"message": "Fältet ORG kan innehålla en strukturerad organisation separerad med ett semikolon (till exempel: dittbolag;dintjänst;dinavdelning). Fälten nedan beskriver de olika märkningarna."
+	},
+	"orgRankLabel": {
+		"message": "Rankning"
+	},
+	"orgLabelLabel": {
+		"message": "Fält märkning"
+	},
+	"listPanelLabel": {
+		"message": "Om din server inte har stöd för grupper (som till exempel Google, Apple, Zimbra, med flera), så kan listor vara ett bra sätt att skicka mejl till grupper. vCard 3.0 har inte som standard stöd för grupper, men det kan åstadkommas med anpassade fält, så om du vill använda grupper med vCard 3.0 behöver du definiera de här värdena."
+	},
+	"listGroupboxLabel": {
+		"message": "Anpassade fält för grupper"
+	},
+	"kindCustomLabel": {
+		"message": "Sortera:"
+	},
+	"kindCustomAccesskey": {
+		"message": "S"
+	},
+	"memberCustomLabel": {
+		"message": "Medlem:"
+	},
+	"memberCustomAccesskey": {
+		"message": "M"
+	},
+	"resetListLabel": {
+		"message": "Återställ till standard"
+	},
+	"resetListAccesskey": {
+		"message": "t"
+	},
+	"syncGroupboxLabel": {
+		"message": "Synk."
+	},
+	"syncWarn": {
+		"message": "Synkronisering överför dina ändringar till servern, och tvärt om"
+	},
+	"syncAfterChangeLabel": {
+		"message": "??Synchronize after changes??"
+	},
+	"syncAfterChangeAccesskey": {
+		"message": "c"
+	},
+	"initialSyncLabel": {
+		"message": "Kör ssynkronisering när Thunderbird startar"
+	},
+	"initialSyncAccesskey": {
+		"message": "K"
+	},
+	"initialSyncDelayLabel": {
+		"message": "Inledande synkroniseringsfördröjning (andra):"
+	},
+	"initialSyncDelayAccesskey": {
+		"message": "y"
+	},
+	"solveConflictsLabel": {
+		"message": "Om en kontakt är ändrad både på servern och lokalt:"
+	},
+	"solveConflictsLocalLabel": {
+		"message": "Föredra den lokala ändringen"
+	},
+	"solveConflictsLocalAccesskey": {
+		"message": "l"
+	},
+	"solveConflictsRemoteLabel": {
+		"message": "Föredra serverns ändring"
+	},
+	"solveConflictsRemoteAccesskey": {
+		"message": "s"
+	},
+	"solveConflictsUserLabel": {
+		"message": "Fråga användaren"
+	},
+	"solveConflictsUserAccesskey": {
+		"message": "a"
+	},
+	"maxModifsPushedLabel": {
+		"message": "Maximalt antal ändringar som tryckts per synkronisering:"
+	},
+	"maxModifsPushedAccesskey": {
+		"message": "M"
+	},
+	"requestsGroupboxLabel": {
+		"message": "Förfrågningar"
+	},
+	"requestsTimeoutLabel": {
+		"message": "Avbrott (sekunder):"
+	},
+	"requestsTimeoutAccesskey": {
+		"message": "A"
+	},
+	"multigetLabel": {
+		"message": "För GET-förfrågningar, gruppkontakter av:"
+	},
+	"multigetAccesskey": {
+		"message": "G"
+	},
+	"discoveryGroupboxLabel": {
+		"message": "Adressböcker upptäckt"
+	},
+	"discoveryWarn": {
+		"message": "Vid varje synkronisering körs en kontroll på webbadresserna nedan för att söka efter nya eller borttagna adressböcker."
+	},
+	"discoveryAccountsGroupboxLabel": {
+		"message": "Konton"
+	},
+	"advancedSyncGroupboxLabel": {
+		"message": "Avancerade egenskaper"
+	},
+	"decodeReportLabel": {
+		"message": "Dekoda webbadresser för rapportförfrågningar"
+	},
+	"decodeReportAccesskey": {
+		"message": "D"
+	},
+	"miscEmailGroupboxLabel": {
+		"message": "Skicka Mejl"
+	},
+	"preferEmailPrefLabel": {
+		"message": "Föredra mejladresser markerade med"
+	},
+	"preferEmailPrefAccesskey": {
+		"message": "P"
+	},
+	"preferEmailPrefWarn": {
+		"message": "Om ingen adress är markerad, skicka till kontaktens alla adresser."
+	},
+	"warnEmptyEmailsLabel": {
+		"message": "Varna mig om jag försöker skicka till en kontakt utan mejladress"
+	},
+	"warnEmptyEmailsAccesskey": {
+		"message": "W"
+	},
+	"useOnlyEmailLabel": {
+		"message": "Använd bara mejladressen, utan Visningsnamn"
+	},
+	"useOnlyEmailAccesskey": {
+		"message": "O"
+	},
+	"attachVCardWarn": {
+		"message": "För att automatiskt lägga till ett vCard i dina e-postmeddelanden, välj ett vCard för varje e-postkonto. Om det är aktiverat, kopplar Kontakter detta vCard till varje utgående e-post från det här kontot."
+	},
+	"attachVCardGroupboxLabel": {
+		"message": "Bifoga vCard"
+	},
+	"accountsVCardsEnabledLabel": {
+		"message": "Aktiverad"
+	},
+	"accountsVCardsMailLabel": {
+		"message": "Postkonto"
+	},
+	"accountsVCardsABNameLabel": {
+		"message": "Adressbok"
+	},
+	"accountsVCardsFileNameLabel": {
+		"message": "Bifogad fil"
+	},
+	"accountsVCardsFnLabel": {
+		"message": "Kontakta"
+	},
+	"addVCardLabel": {
+		"message": "Ny"
+	},
+	"addVCardAccesskey": {
+		"message": "N"
+	},
+	"renameVCardLabel": {
+		"message": "Redigera"
+	},
+	"renameVCardAccesskey": {
+		"message": "R"
+	},
+	"deleteVCardLabel": {
+		"message": "Ta bort"
+	},
+	"deleteVCardAccesskey": {
+		"message": "T"
+	},
+	"birthdayListWarn": {
+		"message": "Årsdagen söks endast i Kontakter adressböcker."
+	},
+	"addressbooksGroupboxLabel": {
+		"message": "Adressböcker"
+	},
+	"selectAllABsLabel": {
+		"message": "Markera allt"
+	},
+	"searchForLabel": {
+		"message": "Sök efter:"
+	},
+	"bday.conf.label": {
+		"message": "Födelsedag"
+	},
+	"bday.conf.accesskey": {
+		"message": "F"
+	},
+	"anniversary.conf.label": {
+		"message": "Årsdag (endast för vCard 4.0)"
+	},
+	"anniversary.conf.accesskey": {
+		"message": "r"
+	},
+	"deathdate.conf.label": {
+		"message": "Dödsdatum (endast för vCard 4.0)"
+	},
+	"deathdate.conf.accesskey": {
+		"message": "D"
+	},
+	"eventsLabel": {
+		"message": "Händelser"
+	},
+	"eventsAccesskey": {
+		"message": "H"
+	},
+	"calendarsGroupboxLabel": {
+		"message": "Kalendrar"
+	},
+	"selectAllCalendarsLabel": {
+		"message": "Markera allt"
+	},
+	"remindersTabLabel": {
+		"message": "Påminnelser"
+	},
+	"remindViaPopupWindowGroupboxLabel": {
+		"message": "Påminn via popup-fönster"
+	},
+	"numberOfDaysForSearchingLabel": {
+		"message": "Siffra dagar för att kontrollera årsdagar för:"
+	},
+	"numberOfDaysForSearchingAccesskey": {
+		"message": "S"
+	},
+	"showPopupOnStartupLabel": {
+		"message": "Visa popup-fönster vid uppstart"
+	},
+	"showPopupOnStartupAccesskey": {
+		"message": "V"
+	},
+	"showPeriodicPopupLabel": {
+		"message": "Visa daglig popup"
+	},
+	"showPeriodicPopupAccesskey": {
+		"message": "d"
+	},
+	"periodicPopupTimeLabel": {
+		"message": "Visningstid (tt:mm):"
+	},
+	"periodicPopupTimeAccesskey": {
+		"message": "i"
+	},
+	"showPopupEvenIfNoBirthdayLabel": {
+		"message": "Visa popup-fönster när födelsedagslistan är tomt"
+	},
+	"showPopupEvenIfNoBirthdayAccesskey": {
+		"message": "a"
+	},
+	"remindViaLightningGroupboxLabel": {
+		"message": "Påminn dig via Thunderbird Lightning-kalendertillägget"
+	},
+	"numberOfDaysForWritingLabel": {
+		"message": "Antal dagar att skriva årsdagar:"
+	},
+	"numberOfDaysForWritingAccesskey": {
+		"message": "v"
+	},
+	"syncWithLightningOnStartupLabel": {
+		"message": "Synkronisera med Lightning vid uppstart"
+	},
+	"syncWithLightningOnStartupAccesskey": {
+		"message": "L"
+	},
+	"calendarEntryTitleLabel": {
+		"message": "Titel för kalenderhändelse:"
+	},
+	"calendarEntryTitleTooltip": {
+		"message": "Mall titel för kalenderhändelsen. Den ska innehålla två platshållare &#37;S, respektive ersatt med namn och ålder. Om fältet är tomt används ett standardmeddelande."
+	},
+	"calendarEntryTitleAccesskey": {
+		"message": "T"
+	},
+	"resetCalendarEntryTitleButtonLabel": {
+		"message": "Återställ till standard"
+	},
+	"resetCalendarEntryTitleButtonAccesskey": {
+		"message": "t"
+	},
+	"calendarEntryTimeLabel": {
+		"message": "Tid för kalenderhändelse (tt:mm):"
+	},
+	"calendarEntryTimeAccesskey": {
+		"message": "m"
+	},
+	"calendarEntryWholeDayLabel": {
+		"message": "Kalenderhändelse hela dagen"
+	},
+	"calendarEntryWholeDayAccesskey": {
+		"message": "y"
+	},
+	"calendarEntryAlarmLabel": {
+		"message": "Larm till s dagar före kalenderhändelse (till exempel: 4,+1):"
+	},
+	"calendarEntryAlarmTooltip": {
+		"message": "Ange hur många dagar före årsdagen Lightning larm ska påminna dig. Utan datum. Om fältet är tomt skulle det inte vara något alarm."
+	},
+	"calendarEntryAlarmAccesskey": {
+		"message": "s"
+	},
+	"calendarEntryCategoriesLabel": {
+		"message": "kategori(er) för kalenderhändelse:"
+	},
+	"calendarEntryCategoriesTooltip": {
+		"message": "En eller flera kategorier, kommaseparerade. Om fältet är tomt skulle det inte finnas någon kategori."
+	},
+	"calendarEntryCategoriesAccesskey": {
+		"message": "g"
+	},
+	"categoriesPicker.label": {
+		"message": "Grupp Filter:"
+	},
+	"categoriesPicker.accesskey": {
+		"message": "G"
+	},
+	"deleteAddrBookCard.label": {
+		"message": "Ta bort"
+	},
+	"deleteAddrBookCard.accesskey": {
+		"message": "b"
+	},
+	"editAddrBookCard.label": {
+		"message": "Redigera"
+	},
+	"editAddrBookCard.accesskey": {
+		"message": "R"
+	},
+	"addressbookPicker.label": {
+		"message": "Adressbok:"
+	},
+	"addressbookPicker.accesskey": {
+		"message": "r"
+	},
+	"searchContacts.label": {
+		"message": "Sök efter:"
+	},
+	"searchContacts.accesskey": {
+		"message": "S"
+	},
+	"SearchNameOrEmail.label": {
+		"message": "Namn eller e-post"
+	},
+	"addtoToFieldMenu.label": {
+		"message": "Lägg till i Till-fältet"
+	},
+	"addtoToFieldMenu.accesskey": {
+		"message": "T"
+	},
+	"addtoCcFieldMenu.label": {
+		"message": "Lägg till i Kopia-fältet"
+	},
+	"addtoCcFieldMenu.accesskey": {
+		"message": "K"
+	},
+	"addtoBccFieldMenu.label": {
+		"message": "Lägg till i Dold kopia-fältet"
+	},
+	"addtoBccFieldMenu.accesskey": {
+		"message": "D"
+	},
+	"addtoReplytoFieldMenu.label": {
+		"message": "Lägg till i Svara-Till fältet"
+	},
+	"addtoReplytoFieldMenu.accesskey": {
+		"message": "l"
+	},
+	"toButton.label": {
+		"message": ">> Till:"
+	},
+	"toButton.accesskey": {
+		"message": "T"
+	},
+	"ccButton.label": {
+		"message": ">> Kopia:"
+	},
+	"ccButton.accesskey": {
+		"message": "K"
+	},
+	"bccButton.label": {
+		"message": ">> Dold kopia:"
+	},
+	"bccButton.accesskey": {
+		"message": "D"
+	},
+	"replytoButton.label": {
+		"message": ">> Svara-Till:"
+	},
+	"replytoButton.accesskey": {
+		"message": "l"
+	},
+	"newContactAbContext.label": {
+		"message": "Ny kontakt"
+	},
+	"newContactAbContext.accesskey": {
+		"message": "k"
+	},
+	"newListAbContext.label": {
+		"message": "Ny lista"
+	},
+	"newListAbContext.accesskey": {
+		"message": "l"
+	},
+	"wdw_cardbookWindowLabel": {
+		"message": "CardBook"
+	},
+	"enableAccountsTooltip": {
+		"message": "Aktivera eller Avaktivera synkronisering och sökning av adressböcker."
+	},
+	"colorAccountsTooltip": {
+		"message": "Färga adressbokssökresultat (använd när du har flera adressböcker)."
+	},
+	"readonlyAccountsTooltip": {
+		"message": "Ställ in om adressboken skall vara skrivskyddad eller inte."
+	},
+	"searchRemoteLabel": {
+		"message": "Denna adressbok visar kontakter endast efter en sökning"
+	},
+	"columnChooser2.tooltip": {
+		"message": "Välj kolumner att visa"
+	},
+	"cardbookAccountMenuLabel": {
+		"message": "Adressbok"
+	},
+	"cardbookAccountMenuAddServerLabel": {
+		"message": "Lägg till adressbok"
+	},
+	"cardbookAccountMenuEditServerLabel": {
+		"message": "Redigera adressbok"
+	},
+	"cardbookAccountMenuCloseServerLabel": {
+		"message": "Avregistrera adressbok"
+	},
+	"cardbookAccountMenuSyncLabel": {
+		"message": "Synkronisera denna adressbok"
+	},
+	"cardbookAccountMenuSyncsLabel": {
+		"message": "Synkronisera alla adressböcker"
+	},
+	"cardbookContactsMenuLabel": {
+		"message": "Kontakter"
+	},
+	"cardbookToolsMenuLabel": {
+		"message": "Verktyg"
+	},
+	"cardbookToolsMenuBirthdayListLabel": {
+		"message": "Visa Födelsedagslista"
+	},
+	"cardbookToolsMenuSyncLightningLabel": {
+		"message": "Lägg till födelsedag i kalender"
+	},
+	"cardbookToolsMenuFindAllDuplicatesLabel": {
+		"message": "Hitta dubbletter i alla adressböcker"
+	},
+	"cardbookToolsMenuFindSingleDuplicatesLabel": {
+		"message": "Hitta dubbletter i denna adressbok"
+	},
+	"cardbookToolsMenuPrefsLabel": {
+		"message": "CardBook Inställningar"
+	},
+	"cardbookToolbarLabel": {
+		"message": "CardBook Verktygsfält"
+	},
+	"cardbookToolbarAccesskey": {
+		"message": "a"
+	},
+	"cardbookABPaneToolbarLabel": {
+		"message": "CardBook adressbokskolumn meny"
+	},
+	"cardbookABPaneToolbarAccesskey": {
+		"message": "d"
+	},
+	"CustomizeCardBookToolbarLabel": {
+		"message": "Anpassa…"
+	},
+	"CustomizeCardBookToolbarAccesskey": {
+		"message": "A"
+	},
+	"cardbookToolbarAddServerButtonLabel": {
+		"message": "Lägg till adressbok"
+	},
+	"cardbookToolbarAddServerButtonTooltip": {
+		"message": "Lägg till en lokal eller online adressbok"
+	},
+	"cardbookToolbarSyncButtonLabel": {
+		"message": "Synkronisera"
+	},
+	"cardbookToolbarSyncButtonTooltip": {
+		"message": "Synkronisera alla online adressböcker"
+	},
+	"cardbookToolbarWriteButtonLabel": {
+		"message": "Skriv"
+	},
+	"cardbookToolbarWriteButtonTooltip": {
+		"message": "Skapa ett nytt meddelande"
+	},
+	"cardbookToolbarChatButtonLabel": {
+		"message": "Anslut till"
+	},
+	"cardbookToolbarChatButtonTooltip": {
+		"message": "Skicka ett snabbmeddelande eller chatta"
+	},
+	"cardbookToolbarConfigurationButtonLabel": {
+		"message": "Inställningar"
+	},
+	"cardbookToolbarConfigurationButtonTooltip": {
+		"message": "CardBook Inställningar"
+	},
+	"cardbookToolbarAddContactButtonLabel": {
+		"message": "Lägg till kontakt"
+	},
+	"cardbookToolbarAddContactButtonTooltip": {
+		"message": "Tillåt att kontakten skapas"
+	},
+	"cardbookToolbarAddListButtonLabel": {
+		"message": "Ny lista"
+	},
+	"cardbookToolbarAddListButtonTooltip": {
+		"message": "Ny Mejlinglista"
+	},
+	"cardbookToolbarEditButtonLabel": {
+		"message": "Redigera"
+	},
+	"cardbookToolbarEditButtonTooltip": {
+		"message": "Tillåt att kontakten ändras"
+	},
+	"cardbookToolbarRemoveButtonLabel": {
+		"message": "Ta bort"
+	},
+	"cardbookToolbarRemoveButtonTooltip": {
+		"message": "Tillåt att kontakten raderas"
+	},
+	"cardbookToolbarPrintButtonLabel": {
+		"message": "Förhandsgranska utskrift"
+	},
+	"cardbookToolbarPrintButtonTooltip": {
+		"message": "Tillåt att skriva ut valda"
+	},
+	"cardbookToolbarBackButtonLabel": {
+		"message": "Ångra"
+	},
+	"cardbookToolbarBackButtonTooltip": {
+		"message": "??Go back one action??"
+	},
+	"cardbookToolbarForwardButtonLabel": {
+		"message": "Gör om"
+	},
+	"cardbookToolbarForwardButtonTooltip": {
+		"message": "??Go forward one action??"
+	},
+	"cardbookToolbarAppMenuButtonLabel": {
+		"message": "CardBook meny"
+	},
+	"cardbookToolbarAppMenuButtonTooltip": {
+		"message": "CardBook meny"
+	},
+	"cardbookToolbarSearchBoxLabel": {
+		"message": "Kontakt sök"
+	},
+	"cardbookToolbarSearchBoxTooltip": {
+		"message": "Kontakt sök"
+	},
+	"cardbookToolbarComplexSearchLabel": {
+		"message": "Avancerad sökning"
+	},
+	"cardbookToolbarComplexSearchTooltip": {
+		"message": "Flervalssökning"
+	},
+	"cardbookToolbarThMenuButtonLabel": {
+		"message": "AppMenu"
+	},
+	"cardbookToolbarThMenuButtonTooltip": {
+		"message": "Visa Thunderbird Menyn"
+	},
+	"cardbookToolbarABMenuLabel": {
+		"message": "??Address Books View??"
+	},
+	"cardbookToolbarABMenuTooltip": {
+		"message": "??Filter how address books are displayed??"
+	},
+	"generalTabLabel": {
+		"message": "Allmänt"
+	},
+	"mailPopularityTabLabel": {
+		"message": "Mejl räknare"
+	},
+	"technicalTabLabel": {
+		"message": "Teknisk"
+	},
+	"vCardTabLabel": {
+		"message": "vCard"
+	},
+	"noteTabLabel": {
+		"message": "Anteckningar"
+	},
+	"advancedTabLabel": {
+		"message": "Avancerad"
+	},
+	"miscGroupboxLabel": {
+		"message": "Övrigt"
+	},
+	"othersGroupboxLabel": {
+		"message": "Annat"
+	},
+	"techGroupboxLabel": {
+		"message": "Tekniskt"
+	},
+	"labelGroupboxLabel": {
+		"message": "Märkning"
+	},
+	"agentLabel": {
+		"message": "Agent"
+	},
+	"keyLabel": {
+		"message": "Key"
+	},
+	"photolocalURILabel": {
+		"message": "Local foto"
+	},
+	"logolocalURILabel": {
+		"message": "Local logo"
+	},
+	"soundlocalURILabel": {
+		"message": "Local sound"
+	},
+	"photoURILabel": {
+		"message": "Foto"
+	},
+	"logoURILabel": {
+		"message": "Logo"
+	},
+	"soundURILabel": {
+		"message": "Sound"
+	},
+	"cardurlLabel": {
+		"message": "Card URL"
+	},
+	"cacheuriLabel": {
+		"message": "Cache URI"
+	},
+	"localizeadrTreeLabel": {
+		"message": "Lokaliserad"
+	},
+	"toEmailEmailTreeLabel": {
+		"message": "Mejla kontakter"
+	},
+	"ccEmailEmailTreeLabel": {
+		"message": "Mejla kontakter (Kopia / cc)"
+	},
+	"bccemailemailTreeLabel": {
+		"message": "Mejla kontakter (Dold kopia / bcc)"
+	},
+	"findemailemailTreeLabel": {
+		"message": "Hitta mejlmeddelande relaterade till den här mejladressen"
+	},
+	"findeventemailTreeLabel": {
+		"message": "Hitta kalenderhändelser relaterade till den här mejladressen"
+	},
+	"openURLTreeLabel": {
+		"message": "Öppna URL"
+	},
+	"toEmailCardFromAccountsOrCatsLabel": {
+		"message": "Mejla kontakter"
+	},
+	"toEmailCardFromCardsLabel": {
+		"message": "Mejla kontakter"
+	},
+	"ccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Mejla kontakter (Kopia / cc)"
+	},
+	"ccEmailCardFromCardsLabel": {
+		"message": "Mejla kontakter (Kopia / cc)"
+	},
+	"bccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Mejla kontakter (Dold kopia / bcc)"
+	},
+	"bccEmailCardFromCardsLabel": {
+		"message": "Mejla kontakter (Dold kopia / bcc)"
+	},
+	"shareCardByEmailFromAccountsOrCatsLabel": {
+		"message": "Dela med mejl"
+	},
+	"shareCardByEmailFromCardsLabel": {
+		"message": "Dela med mejl"
+	},
+	"categoryHeader": {
+		"message": "Grupp"
+	},
+	"findEmailsFromCardsLabel": {
+		"message": "Hitta Mejl relaterade till den här kontakten"
+	},
+	"findEventsFromCardsLabel": {
+		"message": "Hitta kalenderhändelse relaterade till den här kontakten"
+	},
+	"localizeCardFromCardsLabel": {
+		"message": "Lokalisera kontakt"
+	},
+	"openURLCardFromCardsLabel": {
+		"message": "Öppna URLs från kontakt"
+	},
+	"cutCardFromAccountsOrCatsLabel": {
+		"message": "Klipp ut"
+	},
+	"cutCardFromCardsLabel": {
+		"message": "Klipp ut"
+	},
+	"copyCardFromAccountsOrCatsLabel": {
+		"message": "Kopiera"
+	},
+	"copyCardFromCardsLabel": {
+		"message": "Kopiera"
+	},
+	"pasteCardFromAccountsOrCatsLabel": {
+		"message": "Klistra in"
+	},
+	"pasteCardFromCardsLabel": {
+		"message": "Klistra in"
+	},
+	"pasteEntryLabel": {
+		"message": "Klistra in fältet"
+	},
+	"exportCardToFileLabel": {
+		"message": "Exportera kontakter till fil"
+	},
+	"exportCardToDirLabel": {
+		"message": "Exportera kontakter till katalog"
+	},
+	"importCardFromFileLabel": {
+		"message": "Importera kontakter från fil"
+	},
+	"importCardFromDirLabel": {
+		"message": "Importera kontakter från katalog"
+	},
+	"findDuplicatesFromAccountsOrCatsLabel": {
+		"message": "Hitta dubblettkontakt i aktuell adressbok"
+	},
+	"generateFnFromAccountsOrCatsLabel": {
+		"message": "Generera visningsnamn"
+	},
+	"mergeCardsFromCardsLabel": {
+		"message": "Slå ihop kontakter"
+	},
+	"duplicateCardFromCardsLabel": {
+		"message": "Duplisera kontakt"
+	},
+	"convertListToCategoryFromCardsLabel": {
+		"message": "Konvertera lista till grupp"
+	},
+	"editAccountFromAccountsOrCatsLabel": {
+		"message": "Redigera adressbok"
+	},
+	"syncAccountFromAccountsOrCatsLabel": {
+		"message": "Synkronisera adressbok"
+	},
+	"removeAccountFromAccountsOrCatsLabel": {
+		"message": "Avregistrera adressbok"
+	},
+	"editEventLabel": {
+		"message": "Redigera händelse"
+	},
+	"editEventAccesskey": {
+		"message": "R"
+	},
+	"eventsTree.title.label": {
+		"message": "Titel"
+	},
+	"eventsTree.title.tooltip2": {
+		"message": "Sortera på titel"
+	},
+	"eventsTree.startdate.label": {
+		"message": "Start"
+	},
+	"eventsTree.startdate.tooltip2": {
+		"message": "Sortera på startdatum"
+	},
+	"eventsTree.enddate.label": {
+		"message": "Slut"
+	},
+	"eventsTree.enddate.tooltip2": {
+		"message": "Sortera på slutdatum"
+	},
+	"eventsTree.categories.label": {
+		"message": "Kategori"
+	},
+	"eventsTree.categories.tooltip2": {
+		"message": "Sortera på kategori"
+	},
+	"eventsTree.location.label": {
+		"message": "Plats"
+	},
+	"eventsTree.location.tooltip2": {
+		"message": "Sortera på plats"
+	},
+	"eventsTree.status.label": {
+		"message": "Status"
+	},
+	"eventsTree.status.tooltip2": {
+		"message": "Sortera på status"
+	},
+	"eventsTree.calendarname.label": {
+		"message": "Kalender namn"
+	},
+	"eventsTree.calendarname.tooltip2": {
+		"message": "Sortera på kalendernamn"
+	},
+	"createEventLabel": {
+		"message": "Ny Händelse"
+	},
+	"createEventAccesskey": {
+		"message": "N"
+	},
+	"adrFormulaExplanation": {
+		"message": "Det är möjligt att anpassa hur Kontakter formaterar adresserna. Detta görs med block som innesluts innom “()”. ??In these blocks there might be many parts delimited by “|”.??"
+	},
+	"fnFormulaExplanation": {
+		"message": "Man kan få CardBook till att generera Visningsnamn. Detta görs med block som innesluts innom “()”. ??In these blocks there might be many parts delimited by “|”.??"
+	},
+	"formulaExplanation1": {
+		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
+	},
+	"formulaExplanation2": {
+		"message": "??({{1}}|{{2}}|{{3}}) : If {{1}} equals {{2}}, then the block will be replaced by {{3}}.??"
+	},
+	"formulaExplanation3": {
+		"message": "??({{1}}|{{2}}|{{3}}|{{4}}) : If {{1}} equals {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation4": {
+		"message": "??({{1}}|*|{{2}}|{{3}}|{{4}}) : If {{1}} includes {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation5": {
+		"message": "??({{1}}|^|{{2}}|{{3}}|{{4}}) : If {{1}} starts with {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation6": {
+		"message": "??({{1}}|$|{{2}}|{{3}}|{{4}}) : If {{1}} ends with {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"settingsTitlelabel": {
+		"message": "Layout"
+	},
+	"title.print.label": {
+		"message": "Överskrift:"
+	},
+	"title.print.accesskey": {
+		"message": "T"
+	},
+	"displayHeadersLabel": {
+		"message": "Organisera rubriker"
+	},
+	"displayHeadersAccesskey": {
+		"message": "O"
+	},
+	"displayFieldNamesLabel": {
+		"message": "Fältnamn"
+	},
+	"displayFieldNamesAccesskey": {
+		"message": "F"
+	},
+	"displayTypesLabel": {
+		"message": "Typer och förval"
+	},
+	"displayTypesAccesskey": {
+		"message": "y"
+	},
+	"fieldsToPrintGroupboxLabel": {
+		"message": "Vad som skrivs ut"
+	},
+	"displayLabel": {
+		"message": "Visningsnamn"
+	},
+	"displayAccesskey": {
+		"message": "V"
+	},
+	"personalLabel": {
+		"message": "Person Information"
+	},
+	"personalAccesskey": {
+		"message": "P"
+	},
+	"org.print.label": {
+		"message": "Arbetsrelaterad Information"
+	},
+	"org.print.accesskey": {
+		"message": "A"
+	},
+	"categories.print.label": {
+		"message": "Grupper"
+	},
+	"categories.print.accesskey": {
+		"message": "G"
+	},
+	"adr.print.label": {
+		"message": "Adresser"
+	},
+	"adr.print.accesskey": {
+		"message": "d"
+	},
+	"tel.print.label": {
+		"message": "Telefonnummer"
+	},
+	"tel.print.accesskey": {
+		"message": "f"
+	},
+	"email.print.label": {
+		"message": "Mejladresser"
+	},
+	"email.print.accesskey": {
+		"message": "M"
+	},
+	"impp.print.label": {
+		"message": "Chattprogram"
+	},
+	"impp.print.accesskey": {
+		"message": "C"
+	},
+	"url.print.label": {
+		"message": "Länkar"
+	},
+	"url.print.ccesskey": {
+		"message": "L"
+	},
+	"note.print.label": {
+		"message": "Anteckningar"
+	},
+	"note.print.accesskey": {
+		"message": "k"
+	},
+	"useColorCheckLabel": {
+		"message": "Använd färg"
+	},
+	"useColorCheckAccesskey": {
+		"message": "A"
+	},
+	"existingDataGroupboxLabel": {
+		"message": "Lägg till den här kontakten"
+	},
+	"cardbookSwitchButtonTooltip": {
+		"message": "Växla Efternamn och Förnamn"
+	},
+	"descriptionTextbox": {
+		"message": "Beskrivning"
+	},
+	"categoriesTextboxLabel": {
+		"message": "Lägg till en ny kategori"
+	},
+	"typesTextboxLabel": {
+		"message": "Lägg till en ny typ"
+	},
+	"categoriesListboxLabel": {
+		"message": "Tillgängliga Grupper"
+	},
+	"categoryMenuLabel": {
+		"message": "Ny Grupp…"
+	},
+	"viewResultEditionLabel": {
+		"message": "Visa resultat"
+	},
+	"viewResultEditionAccesskey": {
+		"message": "V"
+	},
+	"createEditionLabel": {
+		"message": "Skapa"
+	},
+	"createEditionAccesskey": {
+		"message": "k"
+	},
+	"createAndReplaceEditionLabel": {
+		"message": "Skapa och ersätt"
+	},
+	"createAndReplaceEditionAccesskey": {
+		"message": "e"
+	},
+	"saveEditionLabel": {
+		"message": "Spara"
+	},
+	"saveEditionAccesskey": {
+		"message": "S"
+	},
+	"validateEditionLabel": {
+		"message": "Verifiera"
+	},
+	"validateEditionAccesskey": {
+		"message": "V"
+	},
+	"cancelEditionLabel": {
+		"message": "Avbryt"
+	},
+	"cancelEditionAccesskey": {
+		"message": "A"
+	},
+	"closeEditionLabel": {
+		"message": "Stäng"
+	},
+	"closeEditionAccesskey": {
+		"message": "t"
+	},
+	"buttonAppendToListLabel": {
+		"message": "Lägg till"
+	},
+	"buttonAppendToListAccesskey": {
+		"message": "L"
+	},
+	"buttonRemoveFromListLabel": {
+		"message": "Ta bort"
+	},
+	"buttonRemoveFromListAccesskey": {
+		"message": "b"
+	},
+	"buttonGuessFromListLabel": {
+		"message": "Gissa"
+	},
+	"buttonGuessFromListAccesskey": {
+		"message": "G"
+	},
+	"loadTemplateLabel": {
+		"message": "Välj mall"
+	},
+	"loadTemplateAccesskey": {
+		"message": "m"
+	},
+	"saveTemplateLabel": {
+		"message": "Spara mall"
+	},
+	"saveTemplateAccesskey": {
+		"message": "a"
+	},
+	"convertVCardsLabel": {
+		"message": "??Convert vCards??"
+	},
+	"convertVCardsTooltip": {
+		"message": "??The vCard version of some contacts is different from the vCard version of your address book, this button may convert these vCards??"
+	},
+	"convertVCardsAccesskey": {
+		"message": "C"
+	},
+	"wdw_findDuplicatesTitle": {
+		"message": "Dubblett kontakter"
+	},
+	"addImageCardFromFileLabel": {
+		"message": "Lägg till bild från fil"
+	},
+	"pasteImageCardLabel": {
+		"message": "Klistra in bild"
+	},
+	"saveImageCardLabel": {
+		"message": "Spara bild som…"
+	},
+	"copyImageCardLabel": {
+		"message": "Kopiera bild"
+	},
+	"copyImageLocationCardLabel": {
+		"message": "Kopiera bildadress"
+	},
+	"deleteImageCardLabel": {
+		"message": "Ta bort bild"
+	},
+	"kind.edit.label": {
+		"message": "Sort"
+	},
+	"kind.edit.accesskey": {
+		"message": "S"
+	},
+	"addEmailGroupboxLabel": {
+		"message": "E-postadress"
+	},
+	"availableCardsGroupboxLabel": {
+		"message": "Tillgängliga kontakter"
+	},
+	"nameOrEmailLabel": {
+		"message": "Namn eller e-post"
+	},
+	"appendContactLabel": {
+		"message": "Lägg till i lista"
+	},
+	"deletelistTreeLabel": {
+		"message": "Tabort från lista"
+	},
+	"editCardFromListLabel": {
+		"message": "Redigera den här kontakten"
+	},
+	"wdw_logEditionTitle": {
+		"message": "Loggbok"
+	},
+	"logEditionValueLabel": {
+		"message": "Tidsstämpla händelse"
+	},
+	"refreshLogEditionLabel": {
+		"message": "Uppdatera"
+	},
+	"refreshLogEditionAccesskey": {
+		"message": "U"
+	},
+	"flushLogEditionLabel": {
+		"message": "Rensa logg"
+	},
+	"flushLogEditionAccesskey": {
+		"message": "R"
+	},
+	"clipboardLogEditionLabel": {
+		"message": "Kopiera till Urklipp"
+	},
+	"clipboardLogEditionAccesskey": {
+		"message": "K"
+	},
+	"cancelLogEditionLabel": {
+		"message": "OK"
+	},
+	"cancelLogEditionAccesskey": {
+		"message": "O"
+	},
+	"wdw_mergeCardsTitle": {
+		"message": "Kontaktihopslagning"
+	},
+	"mergeInstructionsLabel": {
+		"message": "Välj fälten som du vill behålla för den nya kontakten"
+	},
+	"persTitleLabel": {
+		"message": "Personlig information"
+	},
+	"orgTitleLabel": {
+		"message": "Arbetsrelaterad information"
+	}
+}

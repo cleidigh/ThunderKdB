@@ -98,9 +98,14 @@ class MessageIFrame extends React.Component {
     this.div.appendChild(this.iframe);
     const docShell = this.iframe.contentWindow.docShell;
     docShell.appType = Ci.nsIDocShell.APP_TYPE_MAIL;
+    docShell.charset = "UTF-8";
     const cv = docShell.contentViewer;
-    cv.hintCharacterSet = "UTF-8";
-    cv.forceCharacterSet = "UTF-8";
+    cv.hintCharacterSet = "UTF-8"; // Support Thunderbird 68.
+
+    if ("forceCharacterSet" in cv) {
+      cv.forceCharacterSet = "UTF-8";
+    }
+
     cv.hintCharacterSetSource = kCharsetFromChannel;
     this.registerListeners();
 
@@ -159,8 +164,10 @@ class MessageIFrame extends React.Component {
     // the frame just doesn't quite scroll properly. In this case,
     // getComputedStyle(body).height is .2px greater than the scrollHeight.
     // Hence we try to work around that here.
+    // In #1517 made it +3 as occasional issues were still being seen with
+    // some messages.
 
-    const scrollHeight = iframeDoc.body.scrollHeight + 1;
+    const scrollHeight = iframeDoc.body.scrollHeight + 3;
     this.iframe.style.height = scrollHeight + "px"; // So now we might overflow horizontally, which causes a horizontal
     // scrollbar to appear, which narrows the vertical height available,
     // which causes a vertical scrollbar to appear.

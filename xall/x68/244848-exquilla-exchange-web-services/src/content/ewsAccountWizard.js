@@ -43,7 +43,7 @@ var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
 Utils.importLocally(this);
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { MailServices } = ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "EwsNativeService",
                                "resource://exquilla/EwsNativeService.jsm");
 var _log = null;
@@ -73,14 +73,14 @@ exquilla.AW = (function exquillaAW()
     setPageData(pageData, "accounttype", "otheraccount", true);
   }
 
-  function alertAutodiscover(aFoundAutodiscover)
+  function alertAutodiscover(aFoundAutodiscover, aServerErrorMsg)
   {
     let alertText = aFoundAutodiscover ? exquillaStrings.GetStringFromName("adFound")
                                        : exquillaStrings.GetStringFromName("adNotFound");
     title = exquillaStrings.GetStringFromName("adFailed");
     let promptService = Cc["@mozilla.org/embedcomp/prompt-service;1"]
                           .getService(Ci.nsIPromptService);
-    promptService.alert(window, title, alertText);
+    promptService.alert(window, title, alertText + (aServerErrorMsg ? "\n\n" + aServerErrorMsg : ""));
   }
 
   function doNothing()
@@ -89,9 +89,8 @@ exquilla.AW = (function exquillaAW()
 
   function ewsOnAccountWizardLoad()
   { try {
-    // The TB 68 account manager tries to install most of the event listeners.
+    // The account manager tries to install most of the event listeners.
     // Override them with our functionality before it loads.
-    // COMPAT for TB 60 we rely on the inline event handlers instead.
     window.acctTypePageUnload = doNothing;
     window.identityPageInit = ewsIdentityPageValidate;
     window.identityPageUnload = ewsIdentityPageUnload;
@@ -102,7 +101,7 @@ exquilla.AW = (function exquillaAW()
     window.acctNamePageInit = doNothing;
     window.acctNamePageUnload = doNothing;
     window.donePageInit = ewsDonePageInit;
-    // Add our own custom event listeners. These work in both TB 60 and TB 68.
+    // Add our own custom event listeners.
     _e("exquillaServerPage").addEventListener("pageshow", serverPageInit);
     _e("exquillaServerPage").addEventListener("pageadvanced", serverPageUnload);
     onAccountWizardLoad();
@@ -216,7 +215,7 @@ exquilla.AW = (function exquillaAW()
         domainElement.disabled = false;
     }
     // this seems to generate error messages with no perceived value
-    try { document.documentElement.canAdvance = canAdvance; }
+    try { document.querySelector("wizard").canAdvance = canAdvance; }
     catch (e) {}
   } catch (e) {log.warn(re(e));}}
 
@@ -350,7 +349,7 @@ exquilla.AW = (function exquillaAW()
 
       // copy identity info
       var destIdentity = account.identities.length ?
-                         account.identities.queryElementAt(0, nsIMsgIdentity) :
+                         /* COMPAT for TB 68 */toArray(account.identities, Ci.nsIMsgIdentity)[0] :
                          null;
 
       if (destIdentity) // does this account have an identity?
@@ -474,7 +473,7 @@ exquilla.AW = (function exquillaAW()
       exquilla.AW.didAutodiscover = true;
       autodiscover(function() {
         if (validFullName()) {
-          document.documentElement.advance();
+          document.querySelector("wizard").advance();
         } else {
           _e("fullName").focus();
         }
@@ -679,7 +678,7 @@ exquilla.AW = (function exquillaAW()
           resultString = "HTML# ";
         resultString += aStatus + " " + exquillaStrings.GetStringFromName("exquilla.Failure");
         _e("exquillaserverurl").value = "";
-        alertAutodiscover(aFoundSite);
+        alertAutodiscover(aFoundSite, null);
       }
       _e("exquillaadresult").value = resultString;
     } catch (e) {log.warn(re(e));}}
@@ -715,6 +714,7 @@ exquilla.AW = (function exquillaAW()
       ewsUrl: "",
       mailbox: null,
       addedNtlmSpec: false,
+      lastErrorMessage: "",
       onEvent: function _onEvent(aItem, aEvent, aData, aResult)
       {
         if (aEvent == "PasswordChanged")
@@ -746,7 +746,7 @@ exquilla.AW = (function exquillaAW()
             }
             _e("exquillaUrlResult").value = exquillaStrings.GetStringFromName("UrlTestSuccess");
             _e("exquillaManualURL").setAttribute("status", "success");
-            document.documentElement.canAdvance = true;
+            document.querySelector("wizard").canAdvance = true;
             gCurrentAccountData.incomingServer.authMethod = authMethod;
             if (successCallback) {
               successCallback();
@@ -764,7 +764,7 @@ exquilla.AW = (function exquillaAW()
 
       nextUrl: async function _nextUrl()
       {
-        document.documentElement.canAdvance = false;
+        document.querySelector("wizard").canAdvance = false;
         while ( (this.ewsUrl = aUrls.shift()) && this.ewsUrl)
         {
           if (!this.ewsUrl.length)
@@ -807,6 +807,7 @@ exquilla.AW = (function exquillaAW()
                 }
               } catch (ex) {
                 log.warn(ex);
+                this.lastErrorMessage = ex.message;
                 return this.onEvent(null, "StopMachine", null, ex.result || Cr.NS_ERROR_FAILURE);
               }
             } else {
@@ -825,7 +826,7 @@ exquilla.AW = (function exquillaAW()
         {
           // all URLs failed while testing autodiscover
           _e("exquillaAutoURL").setAttribute("status", "failure");
-          alertAutodiscover(true);
+          alertAutodiscover(true, this.lastErrorMessage);
         }
       },
 

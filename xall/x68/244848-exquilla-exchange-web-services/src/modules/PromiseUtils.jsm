@@ -24,10 +24,9 @@ const Cr = Components.results;
 const CE = Components.Exception;
 
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { NetUtil } = ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
-var { MailServices } = ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "StringArray",
                                "resource://exquilla/StringArray.jsm");
 ChromeUtils.defineModuleGetter(this, "PropertyList",
@@ -160,8 +159,8 @@ PromiseUtils.RequestObserver = function(aWrapped) {
   this.wrapped = aWrapped;
 }
 PromiseUtils.RequestObserver.prototype = {
-  QueryInterface: QIUtils.generateQI([Ci.nsIStreamListener,
-                                      Ci.nsIRequestObserver]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIStreamListener,
+                                          Ci.nsIRequestObserver]),
 
   onStartRequest(aRequest) {
     if (this.wrapped && this.wrapped.onStartRequest)
@@ -169,17 +168,14 @@ PromiseUtils.RequestObserver.prototype = {
   },
 
   // you really SHOULD wrap onDataAvailable for this to make sense
-  onDataAvailable(aRequest, aInputStream, aOffset, aCount, aCountTB60) {
+  onDataAvailable(aRequest, aInputStream, aOffset, aCount) {
     if (this.wrapped && this.wrapped.onDataAvailable)
-      this.wrapped.onDataAvailable(aRequest, aInputStream, aOffset, aCount, aCountTB60);
+      this.wrapped.onDataAvailable(aRequest, aInputStream, aOffset, aCount);
   },
 
-  onStopRequest(aRequest, aStatusCode, aStatusCodeTB60) {
+  onStopRequest(aRequest, aStatusCode) {
     if (this.wrapped && this.wrapped.onStopRequest)
-      this.wrapped.onStopRequest(aRequest, aStatusCode, aStatusCodeTB60);
-    if (typeof aStatusCodeTB60 == "number") { // COMPAT for TB 60
-      aStatusCode = aStatusCodeTB60;
-    }
+      this.wrapped.onStopRequest(aRequest, aStatusCode);
     if (aStatusCode == Cr.NS_OK)
       this._resolve();
     else
@@ -523,7 +519,7 @@ PromiseUtils.CopyListener = function(aWrapped) {
 };
 
 PromiseUtils.CopyListener.prototype = {
-  QueryInterface: QIUtils.generateQI([Ci.nsIMsgCopyServiceListener]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgCopyServiceListener]),
   OnStartCopy: function() {
     if (this.wrapped && this.wrapped.OnStartCopy)
       this.wrapped.OnStartCopy();
@@ -582,7 +578,7 @@ var nsIMFNService = Ci.nsIMsgFolderNotificationService;
 PromiseUtils.promiseFolderEvents = function promiseFolderEvents(folder, events) {
   return new Promise( (resolve, reject) => {
     let folderListener = {
-      QueryInterface: QIUtils.generateQI([Ci.nsIFolderListener]),
+      QueryInterface: ChromeUtils.generateQI([Ci.nsIFolderListener]),
       OnItemEvent: function onItemEvent(aEventFolder, aEvent) {
         if (folder.folderURL == aEventFolder.folderURL && events.includes(aEvent.toString())) {
           MailServices.mailSession.RemoveFolderListener(folderListener);

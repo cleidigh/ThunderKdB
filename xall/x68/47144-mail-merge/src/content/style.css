@@ -1,61 +1,84 @@
-#mailmerge-content * {
-	box-sizing: border-box;
-	border: 0;
-	margin: 0;
-	padding: 0;
-	outline: 0;
+
+#mailmerge-content {
+	overflow: auto;
+}
+
+#mailmerge-content.dialog {
+	width: 512px;
+}
+
+#mailmerge-content.preview {
+	width: 768px;
+}
+
+#mailmerge-content.progress {
+	width: 512px;
 }
 
 #mailmerge-content fieldset {
-	border: 1px solid;
-	margin: 5px;
+	margin: 2px 0px;
 }
 
 #mailmerge-content legend {
 	font-weight: bold;
-	margin-left: 5px;
 }
 
 #mailmerge-content div {
-	margin: 5px;
+	margin: 2px 0px;
 }
 
 #mailmerge-content span {
-	display: inline-block;
 	position: relative;
-	vertical-align: top;
+	display: inline-block;
+	vertical-align: middle;
 }
 
 #mailmerge-content span:nth-child(1) {
-	width: 150px;
+	width: 128px;
 }
 
 #mailmerge-content span:nth-child(2) {
-	width: 50px;
+	width: 32px;
 }
 
 #mailmerge-content span:nth-child(3) {
-	width: 250px;
+	width: 256px;
 }
 
-#mailmerge-content option {
-	padding-left: 5px;
-	padding-right: 5px;
+#mailmerge-content.preview span:nth-child(3) {
+	white-space: pre-wrap;
+	width: 512px;
 }
 
-#mailmerge-content progress {
+#mailmerge-content span:nth-child(3) input,
+#mailmerge-content span:nth-child(3) select,
+#mailmerge-content span:nth-child(3) textarea,
+#mailmerge-content span:nth-child(3) progress {
+	box-sizing: border-box;
 	width: 100%;
+	height: 32px;
+	margin: 2px 0px;
 }
 
-#mailmerge-content select {
-	border: 1px solid;
-	vertical-align: top;
-	width: 100%;
-	height: 30px;
+#mailmerge-content span:nth-child(3) input[type="number"] {
+	width: 50%;
 }
 
-#mailmerge-content select[multiple="true"] {
+#mailmerge-content span:nth-child(3) input[type="button"] {
+	width: auto;
+}
+
+#mailmerge-content span:nth-child(3) select[multiple="true"] {
 	height: auto;
+}
+
+#mailmerge-content span:nth-child(3) textarea {
+	white-space: pre;
+	height: 96px;
+}
+
+#mailmerge-content span:nth-child(3) progress {
+	height: 16px;
 }
 
 #mailmerge-content table {
@@ -67,44 +90,18 @@
 }
 
 #mailmerge-content table td {
-	border: 1px solid;
-	padding: 10px;
 	white-space: pre;
-}
-
-#mailmerge-content textarea {
 	border: 1px solid;
-	resize: none;
-	vertical-align: top;
-	white-space: pre;
-	width: 100%;
-	padding: 5px;
+	padding: 4px 4px;
 }
 
-#mailmerge-content input {
-	border: 1px solid;
-	vertical-align: top;
-	width: 100%;
-	height: 30px;
-}
-
-#mailmerge-content input[type="button"] {
-	margin-top: 5px;
-	padding: 5px;
-	width: auto;
-}
-
-#mailmerge-content input[type="checkbox"] {
-	width: auto;
-	height: auto;
-}
-
-#mailmerge-content input[type="number"] {
-	text-align: right;
-	width: 75px;
-}
-
-#mailmerge-content input[type="text"] {
-	padding-left: 5px;
-	padding-right: 5px;
+#mailmerge-content #mailmerge-csv-characterset {
+	position: absolute;
+	top: 4px;
+	left: 2px;
+	width: 224px;
+	height: 28px;
+	border: transparent;
+	margin: 0px 0px;
+	padding: 0px 4px;
 }

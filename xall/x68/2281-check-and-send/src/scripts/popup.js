@@ -79,34 +79,52 @@ function applyUserChanges() {
     let checkbox = document.getElementById("dupReplyTo" + key);
     warnings.dupReplyTo[key].merge = checkbox.checked;
   }
-  
+
   //Address check
   for (let i = 0; i < warnings.addrCheckTo.length; i++) {
     let checkbox = document.getElementById("addrCheckTo" + i);
     warnings.addrCheckTo[i].send = checkbox.checked;
   }
-  
+
   for (let i = 0; i < warnings.addrCheckCc.length; i++) {
     let checkbox = document.getElementById("addrCheckCc" + i);
     warnings.addrCheckCc[i].send = checkbox.checked;
   }
-  
+
   for (let i = 0; i < warnings.addrCheckBcc.length; i++) {
     let checkbox = document.getElementById("addrCheckBcc" + i);
     warnings.addrCheckBcc[i].send = checkbox.checked;
   }
-  
+
   for (let i = 0; i < warnings.addrCheckReplyTo.length; i++) {
     let checkbox = document.getElementById("addrCheckReplyTo" + i);
     warnings.addrCheckReplyTo[i].send = checkbox.checked;
   }
 }
 
-browser.runtime.onMessage.addListener(message => {
+browser.runtime.onMessage.addListener(async (message) => {
   switch (message.message) {
     case "SEND_WARNINGS":
       warnings = message.warnings;
-      updateWarnings(message.session);
+      if (Object.keys(warnings).length > 0) {
+        updateWarnings(message.session);
+      } else {
+        //no error and popup is not needed
+        let tabs = await browser.tabs.query({
+          active: true,
+          currentWindow: true
+        });
+        let tabId = tabs[0].id;
+        await browser.runtime.sendMessage({
+          message: "USER_CHECKED",
+          tabId: tabId,
+          confirmed: true,
+          warnings: []
+        });
+
+        //close popup automatically
+        window.close();
+      }
       break;
     default:
       break;
@@ -118,7 +136,7 @@ function updateWarnings(inSession) {
   document.getElementById("warningArea").setAttribute("class", "box-visible");
 
   let errOccurred = false;
-  
+
   errOccurred |= updateRecTypeWarnings();
   errOccurred |= updateDupRecWarnings();
   errOccurred |= updateAddrCheckWarnings();
@@ -127,12 +145,12 @@ function updateWarnings(inSession) {
   } else {
     document.getElementById("recArea").setAttribute("class", "box-collapse");
   }
-  
+
   errOccurred |= updateIdentityWarnings();
   errOccurred |= updateAttachWarnings();
   errOccurred |= updateWordsWarnings();
   errOccurred |= updateRecNameWarnings();
-  
+
   errOccurred |= updateDayDateWarnings();
 
 
@@ -156,9 +174,9 @@ function updateIdentityWarnings() {
     document.getElementById("identityName").textContent = warnings.identity;
     errCnt = 1;
   } else {
-    document.getElementById("identityArea").setAttribute("class", "box-collapse"); 
+    document.getElementById("identityArea").setAttribute("class", "box-collapse");
   }
-  
+
   return errCnt;
 }
 
@@ -394,7 +412,7 @@ function updateDupRecWarnings() {
     if (!warnings.suppressDupAddrWarn) {
       document.getElementById("dupToLi").setAttribute("class", "dia_list box-visible");
     } else {
-      document.getElementById("dupToLi").setAttribute("class", "dia_list box-collapse"); 
+      document.getElementById("dupToLi").setAttribute("class", "dia_list box-collapse");
     }
     let box = document.getElementById("dupTo");
     for (let key in warnings.dupTo) {
@@ -415,7 +433,7 @@ function updateDupRecWarnings() {
     if (!warnings.suppressDupAddrWarn) {
       document.getElementById("dupCcLi").setAttribute("class", "dia_list box-visible");
     } else {
-      document.getElementById("dupCcLi").setAttribute("class", "dia_list box-collapse"); 
+      document.getElementById("dupCcLi").setAttribute("class", "dia_list box-collapse");
     }
 
     let box = document.getElementById("dupCc");
@@ -437,7 +455,7 @@ function updateDupRecWarnings() {
     if (!warnings.suppressDupAddrWarn) {
       document.getElementById("dupBccLi").setAttribute("class", "dia_list box-visible");
     } else {
-      document.getElementById("dupBccLi").setAttribute("class", "dia_list box-collapse"); 
+      document.getElementById("dupBccLi").setAttribute("class", "dia_list box-collapse");
     }
 
     let box = document.getElementById("dupBcc");
@@ -459,7 +477,7 @@ function updateDupRecWarnings() {
     if (!warnings.suppressDupAddrWarn) {
       document.getElementById("dupReplyToLi").setAttribute("class", "dia_list box-visible");
     } else {
-      document.getElementById("dupReplyToLi").setAttribute("class", "dia_list box-collapse"); 
+      document.getElementById("dupReplyToLi").setAttribute("class", "dia_list box-collapse");
     }
 
     let box = document.getElementById("dupReplyTo");
@@ -499,7 +517,7 @@ function updateAddrCheckWarnings() {
   } else {
     document.getElementById("addrCheckToLi").setAttribute("class", "dia_list box-collapse");
   }
-  
+
   warn = warnings.addrCheckCc;
   if (warn.length > 0) {
     errOccurred = true;
@@ -517,7 +535,7 @@ function updateAddrCheckWarnings() {
   } else {
     document.getElementById("addrCheckCcLi").setAttribute("class", "dia_list box-collapse");
   }
-  
+
   warn = warnings.addrCheckBcc;
   if (warn.length > 0) {
     errOccurred = true;
@@ -535,7 +553,7 @@ function updateAddrCheckWarnings() {
   } else {
     document.getElementById("addrCheckBccLi").setAttribute("class", "dia_list box-collapse");
   }
-  
+
   warn = warnings.addrCheckReplyTo;
   if (warn.length > 0) {
     errOccurred = true;
@@ -553,7 +571,7 @@ function updateAddrCheckWarnings() {
   } else {
     document.getElementById("addrCheckReplyToLi").setAttribute("class", "dia_list box-collapse");
   }
-  
+
   return errOccurred;
 }
 
@@ -575,7 +593,7 @@ function updateDayDateWarnings() {
   } else {
     document.getElementById("wrongDayLi").setAttribute("class", "dia_list box-collapse");
   }
-  
+
   warn = warnings.noteDay;
   if (Object.keys(warn).length > 0) {
     errOccurred = true;
@@ -587,7 +605,7 @@ function updateDayDateWarnings() {
   } else {
     document.getElementById("noteDayLi").setAttribute("class", "dia_list box-collapse");
   }
-  
+
   warn = warnings.invalidDate;
   if (Object.keys(warn).length > 0) {
     errOccurred = true;
@@ -599,13 +617,13 @@ function updateDayDateWarnings() {
   } else {
     document.getElementById("invalidDateLi").setAttribute("class", "dia_list box-collapse");
   }
-  
+
   if (errOccurred) {
     document.getElementById("dayDateArea").setAttribute("class", "box-visible");
   } else {
     document.getElementById("dayDateArea").setAttribute("class", "box-collapse");
   }
-  
+
   return errOccurred;
 }
 
@@ -614,12 +632,12 @@ function addDayDateTableRow(tbody, date, dayNum, localeDate, arr, candidate) {
   let td = document.createElement("td");
   td.textContent = date;
   tr.appendChild(td);
-  
+
   td = document.createElement("td");
   td.innerHTML = arr;
   td.setAttribute("class", "wfix");
   tr.appendChild(td);
-  
+
   let dayStr = dayNum === null ? localeDate : getFullDayString(dayNum) + " (" + localeDate + ")";
   if (candidate) dayStr += " ?";
   td = document.createElement("td");

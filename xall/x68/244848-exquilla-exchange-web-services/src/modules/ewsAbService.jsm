@@ -18,9 +18,8 @@ Utils.importLocally(this);
 // Ews-related address book methods.
 
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { MailServices } = ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "StringArray",
                                "resource://exquilla/StringArray.jsm");
 ChromeUtils.defineModuleGetter(this, "PropertyList",
@@ -37,7 +36,7 @@ XPCOMUtils.defineLazyGetter(this, "log", () => {
 function serverFromSpec(spec)
 {
   let allServers = MailServices.accounts.allServers;
-  for (let server of fixIterator(allServers, Ci.nsIMsgIncomingServer))
+  for (let server of /* COMPAT for TB 68 */toArray(allServers, Ci.nsIMsgIncomingServer))
   {
     if (server.serverURI == spec)
       return server;
@@ -76,7 +75,7 @@ LoadServerListener.prototype =
 
       let directories = MailServices.ab.directories;
       let serverURI = this.server.serverURI;
-      for (let directory of fixIterator(directories, Ci.nsIAbDirectory))
+      for (let directory of /* COMPAT for TB 68 */toArray(directories, Ci.nsIAbDirectory))
       {
         log.debug("Should we load directory " + directory.URI + " name " + directory.dirName);
         let jsDirectory;
@@ -127,7 +126,7 @@ var EwsAbService =
       msgWindow =  MailServices.mailSession.topmostMsgWindow;
     } catch (e) {}
 
-    for (let server of fixIterator(allServers, Ci.nsIMsgIncomingServer))
+    for (let server of /* COMPAT for TB 68 */toArray(allServers, Ci.nsIMsgIncomingServer))
     {
       if (server.localStoreType == "exquilla")
       {

@@ -39,15 +39,15 @@ menu, menuitem, menucaption {
 
 #phb_pretab-toolbar toolbarbutton-1,
 #phb_pretab-toolbar .toolbarbutton-menubutton-button {
-	padding-inline-start: 4px !important;
-	padding-inline-end: 4px !important;
+  padding-inline-start: 4px !important;
+  padding-inline-end: 4px !important;
 }
 
 #phb_pretab-toolbar menulist,
 #phb_pretab-toolbar .toolbarbutton-1,
 #phb_pretab-toolbar .toolbarbutton-1[type="menu-button"] {
-	margin-top: 3px;
-	margin-bottom: 3px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 
 #phb_pretab-toolbar:not([currentset="__empty"]) ~ tabs .tabmail-tab:first-child::before,
@@ -99,6 +99,9 @@ menu, menuitem, menucaption {
 #phb_twistyBox {
   float: left;
   -moz-appearance: none;
+  margin-inline-end: -4px;
+  z-index: 1;
+  position: relative;
 }
 
 #phb_twistyBox > button {
@@ -169,18 +172,6 @@ menu, menuitem, menucaption {
 }
 
 /* Phoenity Buttons */
-
-.phoenitybutton {
-  opacity:0.85;
-}
-
-.phoenitybutton:hover {
-  opacity:1;
-}
-
-.phoenitybutton[disabled="true"] {
-  opacity:0.5;
-}
 
 #mail-toolbox > toolbar .toolbarbutton-1.phoenitybutton,
 #navigation-toolbox > toolbar .toolbarbutton-1.phoenitybutton,

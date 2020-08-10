@@ -47,7 +47,8 @@ var default_prefs = {
   dateDef: [],
   dayDef: [],
   checkDay: [],
-  checkInvalidDate: false
+  checkInvalidDate: false,
+  alwaysPopup: true
 };
 
 var currentIdentity = "common";

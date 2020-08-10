@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookMain.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooks.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookEmpty.css" type="text/css"?>
+<!-- for the icons of the CardBook menus -->
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookMenuIcons.css" type="text/css"?>
+<!-- for notificationbox.xml -->
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<!-- for the small-button class -->
+<?xml-stylesheet href="chrome://messenger/skin/searchDialog.css" type="text/css"?>
+<!-- for the datepicker class -->
+<?xml-stylesheet type="text/css" href="chrome://calendar/skin/shared/widgets/minimonth.css"?>
+<?xml-stylesheet type="text/css" href="chrome://calendar/skin/shared/datetimepickers.css"?>
+<!-- for the preference star -->
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookPrefStar.css" type="text/css"?>
+<!-- for the calendar button -->
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookCalendarButton.css" type="text/css"?>
+<!-- for notificationbox.xml and the datepicker binding -->
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/notification.css" type="text/css"?>
+<!-- for the groupbox -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<!-- for the textbox -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="wdw_cardEdition.load();" resizable="true"
+	onclose="wdw_cardEdition.cancel();"
+	id="wdw_cardEdition"
+	persist="screenX screenY width height sizemode" class="cardbookBackgroundColorClass dialog-content-box"
+	windowtype="CardBook:contactEditionWindow"
+	style="min-width:500px;min-height:600px;">
+	
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserverRepository.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookEditionPrefObserver.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookClipboard.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookNotifications.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookElementTools.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookWindowUtils.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookEncryptor.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookIndexedDB.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_imageEdition.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_cardEdition.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_cardEditionEvents.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<!-- for the datepicker class -->
+	<script type="application/x-javascript" src="chrome://calendar/content/calendar-ui-utils.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookDatePicker.js"/>
+	<script type="application/x-javascript" src="chrome://messenger/content/customElements.js"/>
+	<script type="application/x-javascript" src="chrome://calendar/content/widgets/calendar-minimonth.js"/>
+	<!-- for the textbox -->
+	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
+
+	<keyset id="wdw_cardEdition-keys">
+		<key id="returnKey" keycode="VK_RETURN" oncommand="wdw_cardEdition.returnKey();"/>
+		<key id="escapeKey" keycode="VK_ESCAPE" oncommand="wdw_cardEdition.cancel();" />
+	</keyset>
+
+	<menupopup id="imageCardContextMenu" onpopupshowing="wdw_imageEdition.imageCardContextShowing();">
+		<menuitem id="addImageCardFromFile" label="__CARDBOOKMSG_addImageCardFromFileLabel__" oncommand="wdw_imageEdition.addImageCardFromFile();"/>
+		<menuitem id="pasteImageCard" label="__CARDBOOKMSG_pasteImageCardLabel__" oncommand="wdw_imageEdition.pasteImageCard();"/>
+		<menuitem id="saveImageCard" label="__CARDBOOKMSG_saveImageCardLabel__" oncommand="wdw_imageEdition.saveImageCard();"/>
+		<menuitem id="copyImageCard" label="__CARDBOOKMSG_copyImageCardLabel__" oncommand="wdw_imageEdition.copyImageCard();"/>
+		<menuitem id="deleteImageCard" label="__CARDBOOKMSG_deleteImageCardLabel__" oncommand="wdw_imageEdition.deleteImageCard();"/>
+	</menupopup>
+
+	<menupopup id="adrCardContextMenu">
+		<menuitem id="copyAdr" label="__CARDBOOKMSG_copyCardFromCardsLabel__" oncommand="wdw_cardEdition.copyAdr();"/>
+		<menuitem id="pasteAdr" label="__CARDBOOKMSG_pasteCardFromCardsLabel__" oncommand="wdw_cardEdition.pasteAdr();"/>
+	</menupopup>
+
+	<menupopup id="availableCardsTreeContextMenu" onpopupshowing="wdw_cardEdition.availableCardsTreeContextShowing(event);">
+		<menuitem id="appendlistavailableCardsTreeMenu" label="__CARDBOOKMSG_appendContactLabel__" oncommand="wdw_cardEdition.modifyLists(this);"/>
+	</menupopup>
+
+	<menupopup id="addedCardsTreeContextMenu" onpopupshowing="return cardbookWindowUtils.displayColumnsPicker();">
+		<menuitem id="deletelistaddedCardsTreeMenu" label="__CARDBOOKMSG_deletelistTreeLabel__" oncommand="wdw_cardEdition.modifyLists(this);"/>
+	</menupopup>
+
+	<tabbox id="wdw_cardEditionTabbox" flex="1">
+		
+		<tabs>
+			<tab id="generalTab" label="__CARDBOOKMSG_generalTabLabel__"/>
+			<tab id="noteTab" label="__CARDBOOKMSG_noteTabLabel__"/>
+			<tab id="advancedTab" label="__CARDBOOKMSG_advancedTabLabel__"/>
+			<tab id="mailPopularityTab" label="__CARDBOOKMSG_mailPopularityTabLabel__"/>
+		</tabs>
+
+		<tabpanels id="mainEditionBox" flex="1">
+			<tabpanel orient="vertical" style="overflow:auto">
+				<hbox>
+					<vbox flex="1">
+						<hbox flex="1">
+							<vbox flex="1">
+								<groupbox id="addressbookMenulistReadOnlyGroupbox">
+									<vbox>
+										<label id="addressbookHeader" class="header"/>
+										<hbox flex="1" class="input-container">
+											<html:input id="addressbookTextBox" style="min-height:36px;" readonly="true" class="indent"/>
+										</hbox>
+									</vbox>
+								</groupbox>
+								<groupbox id="addressbookMenulistReadWriteGroupbox" flex="1">
+									<label id="addressbookMenulistLabel" class="header"/>
+									<hbox align="center" flex="1" style="min-height:36px;">
+										<menulist id="addressbookMenulist" flex="1" oncommand="wdw_cardEdition.changeAddressbook();">
+											<menupopup id="addressbookMenupopup" flex="1"/>
+										</menulist>
+									</hbox>
+								</groupbox>
+								<groupbox id="categoriesReadOnlyGroupbox">
+									<vbox>
+										<label id="categoriesLabel" class="header">__CARDBOOKMSG_categoriesHeader__</label>
+										<hbox flex="1" class="input-container">
+											<html:input id="categoriesTextBox" style="min-height:36px;" readonly="true" class="indent"/>
+										</hbox>
+									</vbox>
+								</groupbox>
+								<groupbox id="categoriesReadWriteGroupbox" flex="1">
+									<label class="header">__CARDBOOKMSG_categoriesHeader__</label>
+									<hbox align="center" flex="1" style="min-height:36px;">
+										<menulist id="categoriesMenulist" flex="1" onkeydown="cardbookWindowUtils.panelMenulistKeydown(event, 'category', 'categoriesMenupopup');"
+											onkeyup="cardbookWindowUtils.panelMenulistKeyup(event, 'category', 'categoriesMenupopup');">
+											<menupopup id="categoriesMenupopup"
+												onpopuphiding="return cardbookWindowUtils.panelMenupopupHiding(event, 'category', this.id);" ignorekeys="true">
+													<html:input id="categoriesTextbox"
+														placeholder="__CARDBOOKMSG_categoriesTextboxLabel__"
+														onkeydown="cardbookWindowUtils.panelTextboxKeydown(event, 'category', 'categoriesMenupopup');"/>
+												<menuseparator/>
+											</menupopup>
+										</menulist>
+									</hbox>
+								</groupbox>
+								<groupbox id="existingDataGroupbox" flex="1">
+									<label class="header">__CARDBOOKMSG_existingDataGroupboxLabel__</label>
+									<hbox align="center" flex="1">
+										<menulist id="contactMenulist" flex="1" oncommand="wdw_cardEdition.changeContact();">
+											<menupopup id="contactMenupopup" flex="1" onpopupshowing="wdw_cardEdition.loadContacts();"/>
+										</menulist>
+									</hbox>
+								</groupbox>
+							</vbox>
+						</hbox>
+						<groupbox id="fnGroupbox">
+							<vbox>
+								<label id="fnLabel" class="header">__CARDBOOKMSG_fnLabel__</label>
+								<hbox flex="1" class="input-container">
+									<html:input id="fnTextBox"/>
+								</hbox>
+							</vbox>
+						</groupbox>
+						<spacer flex="100"/>
+					</vbox>
+					<vbox align="center" width="170px">
+						<hbox id="imageBox" align="center" height="170px">
+							<html:img id="imageForSizing" hidden="true"/>
+							<image id="defaultCardImage" context="imageCardContextMenu" ondblclick="wdw_imageEdition.addImageCardFromFile();" 
+								ondrop="wdw_imageEdition.dragImageCard(event);" ondragenter="wdw_imageEdition.checkDragImageCard(event);"
+								ondragover="wdw_imageEdition.checkDragImageCard(event);"/>
+						</hbox>
+					</vbox>
+				</hbox>
+				<hbox>
+					<groupbox id="persGroupbox" flex="1">
+						<hbox align="center">
+							<image id="expandPersImage" class="cardbookExpandedClass" expanded="true" onclick="wdw_cardEdition.expandButton(this);"/>
+							<label class="header">__CARDBOOKMSG_persTitleLabel__</label>
+						</hbox>
+						<grid id="persGrid" align="center" flex="1">
+							<columns>
+								<column/>
+								<column flex="1"/>
+							</columns>
+							<rows id="persRows">
+								<row align="center">
+									<hbox flex="1" align="center">
+										<label id="lastnameLabel" value="__CARDBOOKMSG_lastnameLabel__" control="lastnameTextBox" class="header"/>
+										<spacer flex="1"/>
+										<button id="cardbookSwitchButtonDown" class="small-button" label="↓" tooltiptext="__CARDBOOKMSG_cardbookSwitchButtonTooltip__" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
+									</hbox>
+									<html:input id="lastnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+								</row>
+								<row align="center">
+									<hbox flex="1" align="center">
+										<label id="firstnameLabel" value="__CARDBOOKMSG_firstnameLabel__" control="firstnameTextBox" class="header"/>
+										<spacer flex="1"/>
+										<button id="cardbookSwitchButtonUp" class="small-button" label="↑" tooltiptext="__CARDBOOKMSG_cardbookSwitchButtonTooltip__" oncommand="wdw_cardEdition.switchLastnameAndFirstname();"/>
+									</hbox>
+									<html:input id="firstnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+								</row>
+								<row align="center">
+									<label id="othernameLabel" value="__CARDBOOKMSG_othernameLabel__" control="othernameTextBox" class="header"/>
+									<html:input id="othernameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+								</row>
+								<row align="center">
+									<label id="prefixnameLabel" value="__CARDBOOKMSG_prefixnameLabel__" control="prefixnameTextBox" class="header"/>
+									<html:input id="prefixnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+								</row>
+								<row align="center">
+									<label id="suffixnameLabel" value="__CARDBOOKMSG_suffixnameLabel__" control="suffixnameTextBox" class="header"/>
+									<html:input id="suffixnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+								</row>
+								<row align="center">
+									<label id="nicknameLabel" value="__CARDBOOKMSG_nicknameLabel__" control="nicknameTextBox" class="header"/>
+									<html:input id="nicknameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
+								</row>
+								<row id="bdayRow1" align="center">
+									<label id="bdayDatepickerLabel" value="__CARDBOOKMSG_bdayLabel__" control="bdayDatepicker" class="header"/>
+									<cardbookdatepicker id="bdayDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+								</row>
+								<row id="bdayRow2" align="center">
+									<label id="bdayLabel" value="__CARDBOOKMSG_bdayLabel__" control="bdayTextBox" class="header"/>
+									<html:input id="bdayTextBox"/>
+								</row>
+								<row id="genderRow1" align="center">
+									<label id="genderLabel1" value="__CARDBOOKMSG_genderLabel__" control="genderMenulist" class="header"/>
+									<hbox align="center" style="min-height:36px;">
+										<menulist id="genderMenulist">
+											<menupopup id="genderMenupopup"/>
+										</menulist>
+									</hbox>
+								</row>
+								<row id="genderRow2" align="center">
+									<label id="genderLabel2" value="__CARDBOOKMSG_genderLabel__" control="genderTextBox" class="header"/>
+									<html:input id="genderTextBox"/>
+								</row>
+								<row align="center">
+									<html:input id="othersTextBox" hidden="true"/>
+								</row>
+								<row align="center">
+									<html:input id="photolocalURITextBox" hidden="true"/>
+								</row>
+								<row align="center">
+									<html:input id="photoURITextBox" hidden="true"/>
+								</row>
+								<row align="center">
+									<html:input id="photoExtensionTextBox" hidden="true"/>
+								</row>
+								<row align="center">
+									<html:input id="dirPrefIdTextBox" hidden="true"/>
+								</row>
+								<row align="center">
+									<html:input id="uidTextBox" hidden="true"/>
+								</row>
+								<row align="center">
+									<html:input id="versionTextBox" hidden="true"/>
+								</row>
+							</rows>
+						</grid>
+					</groupbox>
+					<groupbox id="orgGroupbox" flex="1">
+						<hbox align="center">
+							<image id="expandOrgImage" class="cardbookExpandedClass" expanded="true" onclick="wdw_cardEdition.expandButton(this);"/>
+							<label class="header">__CARDBOOKMSG_orgTitleLabel__</label>
+						</hbox>
+						<grid id="orgGrid" align="center" flex="1">
+							<columns>
+								<column/>
+								<column flex="1"/>
+							</columns>
+							<rows id="orgRows"/>
+						</grid>
+					</groupbox>
+				</hbox>
+				<vbox id="contactGroupbox" flex="1">
+					<vbox id="classicalRows" flex="1"/>
+					<vbox id="modernRows" flex="1"/>
+					<vbox id="readWriteVbox" flex="1">
+						<groupbox id="emailGroupbox" flex="1"/>
+						<groupbox id="telGroupbox" flex="1"/>
+						<groupbox id="adrGroupbox" flex="1"/>
+						<groupbox id="imppGroupbox" flex="1"/>
+						<groupbox id="urlGroupbox" flex="1"/>
+						<groupbox id="eventGroupbox" flex="1"/>
+					</vbox>
+					<panel id="adrPanel">
+						<hbox flex="1">
+							<vbox flex="1">
+								<grid align="center" flex="1">
+									<columns>
+										<column/>
+										<column flex="1"/>
+									</columns>
+						
+									<rows>
+										<row align="center">
+											<label value="__CARDBOOKMSG_adrPostOfficeLabel__" control="adrPostOfficeTextBox" class="header"/>
+											<html:input id="adrPostOfficeTextBox" placeholder="__CARDBOOKMSG_deprecatedLabel__"/>
+										</row>
+										<row align="center">
+											<label value="__CARDBOOKMSG_adrExtendedAddrLabel__" control="adrExtendedAddrTextBox" class="header"/>
+											<html:input id="adrExtendedAddrTextBox" placeholder="__CARDBOOKMSG_deprecatedLabel__"/>
+										</row>
+										<row align="center">
+											<label value="__CARDBOOKMSG_adrStreetLabel__" control="adrStreetTextBox" class="header"/>
+											<html:textarea id="adrStreetTextBox"/>
+										</row>
+										<row align="center">
+											<label value="__CARDBOOKMSG_adrLocalityLabel__" control="adrLocalityTextBox" class="header"/>
+											<html:input id="adrLocalityTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrLocalityTextBox" class="padded"/>
+										</row>
+										<row align="center">
+											<label value="__CARDBOOKMSG_adrRegionLabel__" control="adrRegionTextBox" class="header"/>
+											<html:input id="adrRegionTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrRegionTextBox" class="padded"/>
+										</row>
+										<row align="center">
+											<label value="__CARDBOOKMSG_adrPostalCodeLabel__" control="adrPostalCodeTextBox" class="header"/>
+											<html:input id="adrPostalCodeTextBox" type="autocomplete" autocompletesearch="form-history" autocompletesearchparam="adrPostalCodeTextBox" class="padded"/>
+										</row>
+										<row align="center">
+											<label value="__CARDBOOKMSG_adrCountryLabel__" control="adrCountryMenulist" class="header"/>
+											<menulist id="adrCountryMenulist" is="menulist-editable" editable="true" onpopupshowing="wdw_cardEdition.loadCountries();">
+												<menupopup id="adrCountryMenupopup"/>
+											</menulist>
+										</row>
+									</rows>
+								</grid>
+							</vbox>
+						</hbox>
+						<hbox>
+							<spacer flex="1"/>
+							<button id="validateEditionLabel" label="__CARDBOOKMSG_validateEditionLabel__" accesskey="__CARDBOOKMSG_validateEditionAccesskey__" oncommand="cardbookWindowUtils.closeAdrPanel();"/>
+						</hbox>
+					</panel>
+				</vbox>
+				<vbox id="listGroupbox" flex="1">
+					<vbox id="listReadOnlyGroupbox" flex="1">
+						<grid align="center" flex="1">
+							<columns>
+								<column/>
+								<column flex="1"/>
+							</columns>
+							<rows>
+								<groupbox id="addedCardsGroupbox" flex="1"/>
+							</rows>
+						</grid>
+						<spacer flex="100"/>
+					</vbox>
+					<vbox id="listReadWriteGroupbox" flex="1">
+						<hbox align="center" hidden="true">
+							<label value="__CARDBOOKMSG_kind.edit.label__" accesskey="__CARDBOOKMSG_kind.edit.accesskey__" control="kindTextBox" class="header"/>
+							<html:input id="kindTextBox"/>
+						</hbox>
+						<hbox flex="1">
+							<vbox flex="1">
+								<groupbox id="addEmailGroupbox">
+									<label class="header">__CARDBOOKMSG_addEmailGroupboxLabel__</label>
+									<html:input id="addEmailGroupboxInput"/>
+								</groupbox>
+								<groupbox id="availableCardsGroupbox" flex="1">
+									<label class="header">__CARDBOOKMSG_availableCardsGroupboxLabel__</label>
+									<vbox>
+										<search-textbox id="searchAvailableCardsInput"
+											class="searchBox"
+											flex="1"
+											oncommand="wdw_cardEdition.searchAvailableCards(null);"/>
+									</vbox>
+									<hbox flex="1" ondragover="event.preventDefault();" ondrop="wdw_cardEdition.dragCards(event, 'availableCardsTree');">
+										<tree id="availableCardsTree" context="availableCardsTreeContextMenu" class="cardbookTreeClass cardbookAccountTreeClass" flex="1" enableColumnDrag="true"
+											hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="availableCardsName"
+											onclick="wdw_cardEdition.sortTrees(event, 'availableCards');">
+											<treecols id="availableCardsTreeCols">
+												<treecol id="availableCardsName" label="__CARDBOOKMSG_nameLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="availableCardsUid" label="__CARDBOOKMSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="availableCardsFn" label="__CARDBOOKMSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="availableCardsLastname" label="__CARDBOOKMSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="availableCardsFirstname" label="__CARDBOOKMSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+											</treecols>
+											<treechildren id="availableCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);" ondragstart="wdw_cardEdition.startDrag(event, this);"/>
+										</tree>
+									</hbox>
+								</groupbox>
+							</vbox>
+							<vbox flex="1" align="center">
+								<hbox flex="1" align="center">
+									<vbox flex="1" align="center">
+										<button id="appendlistavailableCardsTreeButton" label="__CARDBOOKMSG_buttonAppendToListLabel__"
+												accesskey="__CARDBOOKMSG_buttonAppendToListAccesskey__" oncommand="wdw_cardEdition.modifyLists(this);"/>
+										<button id="deletelistaddedCardsTreeButton" label="__CARDBOOKMSG_buttonRemoveFromListLabel__"
+												accesskey="__CARDBOOKMSG_buttonRemoveFromListAccesskey__" oncommand="wdw_cardEdition.modifyLists(this);"/>
+									</vbox>
+								</hbox>
+							</vbox>
+							<vbox flex="1">
+								<groupbox id="addedCardsGroupbox2" flex="1">
+									<label class="header">__CARDBOOKMSG_addedCardsGroupboxLabel__</label>
+									<hbox flex="1" ondragover="event.preventDefault();" ondrop="wdw_cardEdition.dragCards(event, 'addedCardsTree');">
+										<tree id="addedCardsTree" context="addedCardsTreeContextMenu" class="cardbookTreeClass cardbookAccountTreeClass" flex="1" enableColumnDrag="true"
+											hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="addedCardsName"
+											onclick="wdw_cardEdition.sortTrees(event, 'addedCards');">
+											<treecols id="addedCardsTreeCols">
+												<treecol id="addedCardsName" label="__CARDBOOKMSG_nameOrEmailLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="addedCardsUid" label="__CARDBOOKMSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="addedCardsFn" label="__CARDBOOKMSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="addedCardsLastname" label="__CARDBOOKMSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="addedCardsFirstname" label="__CARDBOOKMSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+											</treecols>
+											<treechildren id="addedCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);" ondragstart="wdw_cardEdition.startDrag(event, this);"/>
+										</tree>
+									</hbox>
+								</groupbox>
+							</vbox>
+						</hbox>
+					</vbox>
+				</vbox>
+				<spacer id="firstTabSpacer" flex="100"/>
+			</tabpanel>
+
+			<tabpanel id="noteTabpanel" orient="vertical" style="overflow:auto">
+				<html:textarea id="noteTextBox"/>
+			</tabpanel>
+
+			<tabpanel orient="vertical" style="overflow:auto">
+				<groupbox flex="1">
+					<grid align="center" flex="1">
+						<columns>
+							<column/>
+							<column flex="1"/>
+						</columns>
+			
+						<rows>
+							<row align="center">
+								<label id="birthplaceLabel" value="__CARDBOOKMSG_birthplaceLabel__" control="birthplaceTextBox" class="header"/>
+								<html:input id="birthplaceTextBox"/>
+							</row>
+							<row id="anniversaryRow1" align="center">
+								<label id="anniversaryDatepickerLabel" value="__CARDBOOKMSG_anniversaryLabel__" control="anniversaryDatepicker" class="header"/>
+								<cardbookdatepicker id="anniversaryDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+							</row>
+							<row id="anniversaryRow2" align="center">
+								<label id="anniversaryLabel" value="__CARDBOOKMSG_anniversaryLabel__" control="anniversaryTextBox" class="header"/>
+								<html:input id="anniversaryTextBox"/>
+							</row>
+							<row id="deathdateRow1" align="center">
+								<label id="deathdateDatepickerLabel" value="__CARDBOOKMSG_deathdateLabel__" control="deathdateDatepicker" class="header"/>
+								<cardbookdatepicker id="deathdateDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+							</row>
+							<row id="deathdateRow2" align="center">
+								<label id="deathdateLabel" value="__CARDBOOKMSG_deathdateLabel__" control="deathdateTextBox" class="header"/>
+								<html:input id="deathdateTextBox"/>
+							</row>
+							<row align="center">
+								<label id="deathplaceLabel" value="__CARDBOOKMSG_deathplaceLabel__" control="deathplaceTextBox" class="header"/>
+								<html:input id="deathplaceTextBox"/>
+							</row>
+						</rows>
+					</grid>
+				</groupbox>
+				<spacer flex="100"/>
+			</tabpanel>
+
+			<tabpanel orient="vertical" style="overflow:auto">
+				<groupbox id="mailPopularityReadWriteGroupbox" flex="1">
+					<grid>
+						<columns flex="1">
+							<column/>
+							<column flex="1"/>
+						</columns>
+						<rows id="mailPopularityGroupbox"/>
+					</grid>
+				</groupbox>
+				<spacer flex="100"/>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+
+	<hbox>
+		<vbox id="errorNotificationsHbox" class="notification-inline">
+			<!-- notificationbox will be added here lazily. -->
+		</vbox>
+		<spacer flex="1"/>
+		<button id="createEditionLabel" label="__CARDBOOKMSG_createEditionLabel__" accesskey="__CARDBOOKMSG_createEditionAccesskey__" oncommand="wdw_cardEdition.create();"/>
+		<button id="createAndReplaceEditionLabel" label="__CARDBOOKMSG_createAndReplaceEditionLabel__" accesskey="__CARDBOOKMSG_createAndReplaceEditionAccesskey__" oncommand="wdw_cardEdition.createAndReplace();"/>
+		<button id="saveEditionLabel" label="__CARDBOOKMSG_saveEditionLabel__" accesskey="__CARDBOOKMSG_saveEditionAccesskey__" oncommand="wdw_cardEdition.save();"/>
+		<button id="cancelEditionLabel" label="__CARDBOOKMSG_cancelEditionLabel__" accesskey="__CARDBOOKMSG_cancelEditionAccesskey__" oncommand="wdw_cardEdition.cancel();"/>
+	</hbox>
+</window>

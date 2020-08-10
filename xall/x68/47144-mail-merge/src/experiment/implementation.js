@@ -84,9 +84,9 @@ var mailmerge = class extends ExtensionCommon.ExtensionAPI {
 					prefs.setStringPref("json", '');
 					prefs.setStringPref("xlsx", '');
 					prefs.setStringPref("sheetname", '');
+					prefs.setStringPref("pause", '');
 					prefs.setStringPref("start", '');
 					prefs.setStringPref("stop", '');
-					prefs.setStringPref("pause", '');
 					prefs.setStringPref("at", '');
 					prefs.setStringPref("recur", '');
 					prefs.setStringPref("every", '');

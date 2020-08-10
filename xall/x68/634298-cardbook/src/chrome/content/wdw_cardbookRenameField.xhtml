@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!-- for notificationbox.xml -->
+<?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/notification.css" type="text/css"?>
+<!-- for the textbox -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="wdw_cardbookRenameField.load();" resizable="true"
+	onclose="wdw_cardbookRenameField.cancel();"
+	id="wdw_cardbookRenameField"
+	persist="screenX screenY width height"
+	style="min-width:200px;min-height:50px;">
+	
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookNotifications.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/wdw_cardbookRenameField.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<!-- for the textbox -->
+	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
+
+	<keyset id="wdw_cardbookRenameField-keys">
+		<key keycode="VK_ESCAPE" oncommand="wdw_cardbookRenameField.cancel();"/>
+	</keyset>
+
+	<hbox flex="1">
+		<vbox flex="1">
+			<grid align="center" flex="1">
+				<columns>
+					<column/>
+					<column flex="1"/>
+				</columns>
+	
+				<rows>
+					<row align="center">
+						<label id="typeLabel" control="typeTextBox"/>
+						<html:input id="typeTextBox" oninput="wdw_cardbookRenameField.validate();"/>
+					</row>
+					<row align="center" id="colorRow">
+						<label value="__CARDBOOKMSG_colorLabel__" control="useColorCheck"/>
+						<hbox align="center">
+							<checkbox id="useColorCheck" label="__CARDBOOKMSG_useColorCheckLabel__"/>
+							<html:input id="colorInput" type="color" palettename="standard"/>
+						</hbox>
+					</row>
+				</rows>
+			</grid>
+		</vbox>
+	</hbox>
+	<hbox id="errorNotificationsHbox" class="notification-inline">
+		<!-- notificationbox will be added here lazily. -->
+	</hbox>
+
+	<hbox>
+		<spacer flex="1"/>
+		<button id="saveEditionLabel" label="__CARDBOOKMSG_saveEditionLabel__" accesskey="__CARDBOOKMSG_saveEditionAccesskey__" oncommand="wdw_cardbookRenameField.save();"/>
+		<button id="cancelEditionLabel" label="__CARDBOOKMSG_cancelEditionLabel__" accesskey="__CARDBOOKMSG_cancelEditionAccesskey__" oncommand="wdw_cardbookRenameField.cancel();"/>
+	</hbox>
+</window>

@@ -1,6 +1,7 @@
 var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 var {FetchTicket, CheckLicense, AddTicketFromString, OpenPurchasePage, OpenManualAccountCreation, GetLicensedEmail} = ChromeUtils.import("resource://exquilla/License.jsm");
+var {Utils} = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
 
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
@@ -37,7 +38,7 @@ this.exquillaSettings = class extends ExtensionAPI {
     return {
       exquillaSettings: {
         getLicensedEmail: wrapExceptions(GetLicensedEmail),
-        openManualAccountCreation: wrapExceptions(OpenManualAccountCreation),
+        openManualAccountCreation: wrapExceptions(Utils.openAccountWizard),
         openPurchasePage: wrapExceptions(OpenPurchasePage),
         addTicketFromString: wrapExceptions(AddTicketFromString),
         checkLicense: wrapExceptions(CheckLicense),

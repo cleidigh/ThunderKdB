@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAutocomplete.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookComposeMsg.css" type="text/css"?>
+
+<overlay id="ovl_cardbookComposeMsg"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+
+	<script type="application/x-javascript" src="chrome://cardbook/content/autocomplete/cardbookAutocompleteSearch.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/autocomplete/cardbookAutocomplete.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/ovl_cardbookComposeMsg.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookWindowUtils.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserverRepository.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookComposeMsgObserver.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserver.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/ovl_cardbook.js"/>
+
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookEncryptor.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookIndexedDB.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
+	<!-- <script type="application/x-javascript" src="chrome://cardbook/content/standalone/ovl_winTaskBar.js"/> -->
+	<script type="application/x-javascript" src="chrome://cardbook/content/ovl_init.js"/>
+
+	<!-- horrible hack to have the CardBookKey defined -->
+	<!-- <keyset id="viewZoomKeys"> -->
+	<key id="CardBookKey" key="__CARDBOOKMSG_cardbookMenuItemAccesskey__" modifiers="accel, shift" oncommand="ovl_cardbook.open();" insertafter="key_fullZoomReduce"/>
+
+	<!-- <menupopup id="taskPopup"> -->
+	<menuitem id="cardbookMenuItem"
+		label="__CARDBOOKMSG_cardbookMenuItemLabel__" accesskey="__CARDBOOKMSG_cardbookMenuItemAccesskey__"
+		key="CardBookKey"
+		tooltiptext="__CARDBOOKMSG_cardbookMenuItemTooltip__"
+		oncommand="ovl_cardbook.open();"
+		insertafter="tasksMenuAddressBook"/>
+
+	<!-- <toolbarpalette id="MsgComposeToolbarPalette"> -->
+	<toolbarbutton id="cardbookComposeToolbarButton"
+		insertafter="button-save"
+		label="__CARDBOOKMSG_cardbookToolbarButtonLabel__"
+		tooltiptext="__CARDBOOKMSG_cardbookToolbarButtonTooltip__"
+		removable="true"
+		oncommand="ovl_cardbook.open();"
+		class="toolbarbutton-1"/>
+</overlay>

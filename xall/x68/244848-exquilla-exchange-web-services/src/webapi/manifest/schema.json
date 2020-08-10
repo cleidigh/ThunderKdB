@@ -1,0 +1,100 @@
+[{
+  "namespace": "manifestLoader",
+  "functions": [{
+    "name": "needsRestart",
+    "type": "function",
+    "description": "Checks to see whether the application needs to restart",
+    "async": true,
+    "parameters": [{
+      "name": "root",
+      "type": "string",
+      "description": "The resource:// root"
+    }]
+  }, {
+    "name": "registerResourceMapping",
+    "type": "function",
+    "description": "Registers a resource:// mapping",
+    "async": true,
+    "parameters": [{
+      "name": "root",
+      "type": "string",
+      "description": "The resource:// root"
+    }, {
+      "name": "path",
+      "type": "string",
+      "optional": true,
+      "description": "The relative path to map the resource root to, ending in /"
+    }]
+  }, {
+    "name": "registerComponent",
+    "type": "function",
+    "description": "Registers an XPCOM component",
+    "async": true,
+    "parameters": [{
+      "name": "classID",
+      "type": "string",
+      "description": "The component's class ID"
+    }, {
+      "name": "contractID",
+      "type": "string",
+      "description": "The component's contract ID"
+    }, {
+      "name": "path",
+      "type": "string",
+      "optional": true,
+      "description": "The relative path to the component"
+    }]
+  }, {
+    "name": "registerCategory",
+    "type": "function",
+    "description": "Registers a category entry, typically for a component",
+    "async": true,
+    "parameters": [{
+      "name": "category",
+      "type": "string",
+      "description": "The category to register"
+    }, {
+      "name": "entry",
+      "type": "string",
+      "description": "The name of the category entry"
+    }, {
+      "name": "value",
+      "type": "string",
+      "description": "The value of the entry, typically the component's contract ID"
+    }]
+  }, {
+    "name": "registerPreference",
+    "type": "function",
+    "description": "Registers a default preference",
+    "async": true,
+    "parameters": [{
+      "name": "preference",
+      "type": "string",
+      "description": "The preference name"
+    }, {
+      "name": "default",
+      "type": "any",
+      "description": "The default value"
+    }]
+  }, {
+    "name": "loadChromeManifest",
+    "type": "function",
+    "description": "Loads chrome.manifest for content",
+    "async": "true",
+    "parameters": []
+  }, {
+    "name": "registerOverlay",
+    "type": "function",
+    "description": "Registers an overlay for a chrome document",
+    "async": true,
+    "parameters": [{
+      "name": "documentURI",
+      "type": "string",
+      "description": "The document to overlay"
+    }, {
+      "name": "overlayURI",
+      "type": "string",
+      "description": "The overlay document"
+    }]
+  }]
+}]

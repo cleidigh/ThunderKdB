@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<!--
+/*
+ ***** BEGIN LICENSE BLOCK *****
+ * This file is part of ExQuilla by Mesquilla.
+ *
+ * Copyright 2010 R. Kent James. All Rights Reserved
+ *
+ * ***** END LICENSE BLOCK *****
+ */
+-->
+
+<?xml-stylesheet href="chrome://messenger/skin/accountManage.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/content/am-server.css" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % trashDTD SYSTEM "chrome://messenger/locale/am-server-top.dtd">%trashDTD;
+<!ENTITY % amExquillaServerDTD SYSTEM "chrome://exquilla/locale/am-exquillaserver.dtd"> %amExquillaServerDTD;
+]>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="&serverSettings.label;"
+        onload="parent.onPanelLoaded('am-exquillaserver.xhtml');">
+
+  <script type="application/javascript" src="chrome://messenger/content/AccountManager.js"/>
+  <script type="application/javascript" src="chrome://exquilla/content/am-exquillaserver.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/am-prefs.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/amUtils.js"/>
+  <script type="application/javascript" src="chrome://messenger/content/widgetglue.js"/>
+  <stringbundle id="bundle_messenger" src="chrome://messenger/locale/messenger.properties"/>
+
+  <label hidden="true" wsm_persist="true" id="server.type"/>
+
+  <vbox flex="1" style="overflow: auto;">
+    <vbox id="containerBox">
+      <hbox class="dialogheader">
+        <label class="dialogheader-title" value="&serverSettings.label;"/>
+      </hbox>
+
+      <grid>
+        <columns>
+          <column/>
+          <column flex="4"/>
+        </columns>
+        <rows>
+          <row align="center">
+                <label id="ewsUrl" value="&ews.ewsURL.label;"
+                       control="server.ewsURL" accesskey="&ews.ewsURL.accesskey;"/>
+                <input xmlns="http://www.w3.org/1999/xhtml" id="server.ewsURL" class="uri-element"/>
+          </row>
+          <row align="center">
+                <label value="&userName.label;"
+                       accesskey="&userName.accesskey;"
+                       control="server.realUsername"/>
+                <input xmlns="http://www.w3.org/1999/xhtml"
+                       wsm_persist="true" id="server.realUsername"
+                       prefstring="mail.server.%serverkey%.realusername"/>
+          </row>
+          <row align="center">
+                <label value="&ews.domain;"
+                       accesskey="&ews.domain.accesskey;"
+                       control="server.domain"/>
+                <input xmlns="http://www.w3.org/1999/xhtml"
+                       wsm_persist="true" id="server.domain"
+                       prefstring="mail.server.%serverkey%.domain"/>
+          </row>
+          <row align="center">
+                <label value="&authMethod.label;"
+                       accesskey="&authMethod.accesskey;"
+                       control="server.authMethod"/>
+                <menulist id="server.authMethod"
+                          wsm_persist="true"
+                          preftype="int"
+                          prefstring="mail.server.%serverkey%.authMethod">
+                  <menupopup id="server.authMethodPopup">
+                    <menuitem value="3" label="&ews.authMethod3;"/>
+                    <menuitem value="25" label="&ews.authMethod25;"/>
+                    <menuitem value="10" label="&ews.authMethod10;"/>
+                  </menupopup>
+                </menulist>
+          </row>
+        </rows>
+      </grid>
+
+      <separator class="thin"/>
+
+      <fieldset xmlns="http://www.w3.org/1999/xhtml">
+        <legend>&serverSettings.label;</legend>
+        <xul:vbox align="start">
+          <xul:checkbox wsm_persist="true"
+                        id="server.loginAtStartUp"
+                        label="&loginAtStartup.label;"
+                        accesskey="&loginAtStartup.accesskey;"
+                        prefattribute="value"
+                        prefstring="mail.server.%serverkey%.login_at_startup"/>
+          <xul:hbox align="center">
+            <xul:checkbox wsm_persist="true" id="server.doBiff" label="&biffStart.label;"
+                          accesskey="&biffStart.accesskey;"
+                          oncommand="onCheckItem('server.biffMinutes', ['server.doBiff']);"
+                          prefattribute="value"
+                          prefstring="mail.server.%serverkey%.check_new_mail"/>
+            <input wsm_persist="true" id="server.biffMinutes" class="size3"
+                   aria-labelledby="server.doBiff server.biffMinutes biffEnd"
+                   preftype="int" type="number"
+                   onchange="onBiffMinChange(this.value);"
+                   prefstring="mail.server.%serverkey%.check_time"/>
+            <xul:label id="biffEnd" control="server.biffMinutes" value="&biffEnd.label;"/>
+          </xul:hbox>
+
+          <xul:hbox align="center">
+            <xul:checkbox wsm_persist="true" id="server.logEws"
+                          label="&ews.logEws;"
+                          prefattribute="value"
+                          prefstring="mail.server.%serverkey%.logEws"
+                          genericattr="true"
+                          preftype="bool"
+                          accesskey="&ews.logEws.accesskey;"/>
+            <xul:button id="ewsOpenLog" label="&ews.openLog.label;" accesskey="&ews.openLog.accesskey;"
+                    oncommand="onOpenLog();" />
+          </xul:hbox>
+
+          <xul:checkbox wsm_persist="true" id="server.check_all_folders_for_new"
+                        label="&ews.check_all_folders_for_new;"
+                        prefattribute="value"
+                        prefstring="mail.server.%serverkey%.check_all_folders_for_new"
+                        genericattr="true"
+                        preftype="bool"
+                        accesskey="&ews.check_all_folders_for_new.accesskey;"/>
+
+          <xul:checkbox wsm_persist="true" id="server.useMail"
+                        label="&ews.useMail;"
+                        prefattribute="value"
+                        prefstring="mail.server.%serverkey%.useMail"
+                        genericattr="true"
+                        preftype="bool"
+                        accesskey="&ews.useMail.accesskey;"/>
+
+          <xul:checkbox wsm_persist="true" id="server.useAB"
+                        label="&ews.useAB;"
+                        prefattribute="value"
+                        prefstring="mail.server.%serverkey%.useAB"
+                        genericattr="true"
+                        preftype="bool"
+                        accesskey="&ews.useAB.accesskey;"/>
+
+          <xul:checkbox wsm_persist="true" id="server.useCalendar"
+                        hidden="true"
+                        label="&ews.useCalendar;"
+                        prefattribute="value"
+                        prefstring="mail.server.%serverkey%.useCalendar"
+                        genericattr="true"
+                        preftype="bool"
+                        accesskey="&ews.useCalendar.accesskey;"/>
+
+        </xul:vbox>
+      </fieldset>
+
+      <separator class="thin"/>
+      <hbox align="center">
+        <label value="&localPath1.label;" control="server.localPath"/>
+        <hbox class="input-container" flex="1">
+          <input xmlns="http://www.w3.org/1999/xhtml"
+                 readonly="true" wsm_persist="true" flex="1" id="server.localPath" datatype="nsIFile"
+                 prefstring="mail.server.%serverkey%.directory" class="uri-element input-inline"/>
+        </hbox>
+        <button id="browseForLocalFolder" label="&browseFolder.label;" filepickertitle="&localFolderPicker.label;"
+                accesskey="&browseFolder.accesskey;" oncommand="BrowseForLocalFolders()"/>
+      </hbox>
+
+      <!-- dummy value so that newHost returns something in AccountManager checkUserServerChanges-->
+      <textbox wsm_persist="true"
+               hidden="true"
+               value=""
+               id="server.realHostName"
+               prefstring="mail.server.%serverkey%.realhostname"
+               class="uri-element"/>
+
+    </vbox>
+  </vbox>
+</window>

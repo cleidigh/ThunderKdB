@@ -49,21 +49,25 @@ exquilla.overrideAccountManager = function _overrideAccountManager()
           {
             let row = nodeChildren[j];
             let pageTag = row.getAttribute('PageTag');
-            if (pageTag == 'am-exquillaserver.xul')
+            if (pageTag == 'am-exquillaserver.xhtml'/* COMPAT for TB 68 */ || pageTag == 'am-exquillaserver.xul')
             {
               ewsServerNode = row;
             }
-            else if (pageTag == 'am-server.xul')
+            else if (pageTag == 'am-server.xhtml'/* COMPAT for TB 68 */ || pageTag == 'am-server.xul')
             {
               if (ewsServerNode)
               {
                 treeChildrenNode.replaceChild(ewsServerNode, row);
               }
             }
-            else if (pageTag == 'am-offline.xul' ||
-                     //pageTag == 'am-junk.xul' ||
-                     pageTag == 'am-mdn.xul' ||
-                     pageTag == 'am-smime.xul')
+            else if (pageTag == 'am-offline.xhtml' ||
+                     pageTag == 'am-offline.xul' || // COMPAT for TB 68
+                     //pageTag == 'am-junk.xhtml' ||
+                     //pageTag == 'am-junk.xul' || // COMPAT for TB 68
+                     pageTag == 'am-mdn.xhtml' ||
+                     pageTag == 'am-mdn.xul' || // COMPAT for TB 68
+                     pageTag == 'am-e2e.xhtml' ||
+                     pageTag == 'am-smime.xul') // COMPAT for TB 68
             {
               treeChildrenNode.removeChild(row);
             }
@@ -93,8 +97,7 @@ exquilla.msgOpenAccountWizard = function _msgOpenAccountWizard()
 {
   gNewAccountToLoad = null;
 
-  window.openDialog("chrome://exquilla/content/ewsAccountWizard.xul", "AccountWizard",
-                    "chrome,modal,titlebar,centerscreen", {});
+  ChromeUtils.import("resource://exquilla/ewsUtils.jsm").Utils.openAccountWizard();
 
   // If we started with no servers at all and "smtp servers" list selected,
   // refresh display somehow. Bug 58506.

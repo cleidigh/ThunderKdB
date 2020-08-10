@@ -1,0 +1,46 @@
+.cardbookTreeClass treechildren::-moz-tree-checkbox(dummyForScroll) {
+	list-style-image: url("chrome://cardbook/content/skin/checkbox-images.png");
+	-moz-image-region: rect(0 65px 13px 52px);
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountEnabled) {
+	list-style-image: url("chrome://cardbook/content/skin/checkbox-images.png");
+	-moz-image-region: rect(0 65px 13px 52px);
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountEnabled, level0) {
+	list-style-image: url("chrome://cardbook/content/skin/checkbox-images.png");
+	-moz-image-region: rect(0 13px 13px 0);
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountEnabled, level0, checked) {
+	list-style-image: url("chrome://cardbook/content/skin/checkbox-images.png");
+	-moz-image-region: rect(0 26px 13px 13px);
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, local) {
+	list-style-image: url("chrome://messenger/skin/icons/folder.svg");
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, remote) {
+	list-style-image: url("chrome://messenger/skin/icons/globe.svg");
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, search) {
+	list-style-image: url("chrome://messenger/skin/icons/search-glass.svg");
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountStatusCheckbox) {
+	list-style-image: url("chrome://cardbook/content/skin/checkbox-images.png");
+	-moz-image-region: rect(0 65px 13px 52px);
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountStatusCheckbox, readonly) {
+	list-style-image: url("chrome://cardbook/content/skin/addressbook-status.png");
+	-moz-image-region: rect(0px 14px 14px 0px);
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountStatusCheckbox, syncing) {
+	list-style-image: url("chrome://cardbook/content/skin/addressbook-status.png");
+	-moz-image-region: rect(0px 28px 14px 14px);
+}
+
+.cardbookTreeChildrenConfigClass treechildren::-moz-tree-checkbox() {
+	list-style-image: url("chrome://cardbook/content/skin/checkbox-images.png");
+	-moz-image-region: rect(0 13px 13px 0);
+}
+.cardbookTreeChildrenConfigClass treechildren::-moz-tree-checkbox(checked) {
+	list-style-image: url("chrome://cardbook/content/skin/checkbox-images.png");
+	-moz-image-region: rect(0 26px 13px 13px);
+}

@@ -1,0 +1,5018 @@
+{
+	"extName": {
+		"message": "Kontakti (CardBook)"
+	},
+	"extDesc": {
+		"message": "vCard kontakti"
+	},
+	"browserActionTitle": {
+		"message": "Kontakti",
+		"description": "Prebaci u CardBook tab"
+	},
+	"cardbookTitle": {
+		"message": "Kontakti"
+	},
+	"cardbookPrefTitle": {
+		"message": "Kontakti postavke"
+	},
+	"statusProgressInformationTooltip": {
+		"message": "Kliknite ovdje da biste vidjeli zapise"
+	},
+	"imageSelectionTitle": {
+		"message": "Odabir slike"
+	},
+	"imageSaveTitle": {
+		"message": "Spremiti sliku"
+	},
+	"fileSaveTitle": {
+		"message": "Spremiti datoteku"
+	},
+	"dirSaveTitle": {
+		"message": "Spremi imenik"
+	},
+	"dirChooseTitle": {
+		"message": "Izabrati imenik"
+	},
+	"fileCreationVCFTitle": {
+		"message": "Izradite novu VCF datoteku (UTF-8 šifrovan)"
+	},
+	"fileSelectionVCFTitle": {
+		"message": "Otvorite postojeću VCF datoteku (UTF-8 šifrovan)"
+	},
+	"fileImportTitle": {
+		"message": "Uvoz VCF datoteke (UTF-8 šifrovan)"
+	},
+	"dirImportTitle": {
+		"message": "Uvoz iz imenik"
+	},
+	"fileCreationTPLTitle": {
+		"message": "Izradite novu TPL datoteku"
+	},
+	"fileSelectionTPLTitle": {
+		"message": "Otvorite postojeću TPL datoteku"
+	},
+	"fileSelectionTitle": {
+		"message": "Lokacija poveznice"
+	},
+	"uncategorizedCards": {
+		"message": "Nekategorizirane"
+	},
+	"collectedCards": {
+		"message": "Prikupljene kontakti"
+	},
+	"enableFromAccountsOrCats": {
+		"message": "Omogući adresar"
+	},
+	"disableFromAccountsOrCats": {
+		"message": "Onemogućite adresar"
+	},
+	"readWriteFromAccountsOrCats": {
+		"message": "Postavite adresar u načinu rada čitanja i pisanja"
+	},
+	"readOnlyFromAccountsOrCats": {
+		"message": "Postavite adresar u načinu rada samo za čitanje"
+	},
+	"editCategoryFromAccountsOrCats": {
+		"message": "Uredi kategoriju"
+	},
+	"removeCategoryFromAccountsOrCats": {
+		"message": "Obriši kategoriju"
+	},
+	"convertCategoryFromAccountsOrCats": {
+		"message": "Promijeni kategoriju u popis"
+	},
+	"editNodeFromAccountsOrCats": {
+		"message": "??Edit Node??"
+	},
+	"removeNodeFromAccountsOrCats": {
+		"message": "??Remove Node??"
+	},
+	"convertNodeFromAccountsOrCats": {
+		"message": "??Create List from Node??"
+	},
+	"viewCardButtonLabel": {
+		"message": "Pogled"
+	},
+	"editCardButtonLabel": {
+		"message": "Uredi"
+	},
+	"viewInCardBookMenuLabel": {
+		"message": "Prikaz s kontaktima"
+	},
+	"mergeCardsLabel": {
+		"message": "Spoji kontakte"
+	},
+	"forgetCardsLabel": {
+		"message": "Zaboraviti"
+	},
+	"deleteCardsLabel": {
+		"message": "Obriši"
+	},
+	"showForgottenLabel": {
+		"message": "Prikaži zaboravljene duplikate"
+	},
+	"showForgottenAccesskey": {
+		"message": "P"
+	},
+	"hideForgottenLabel": {
+		"message": "Sakrij zaboravljene duplikate"
+	},
+	"hideForgottenAccesskey": {
+		"message": "S"
+	},
+	"noContactsDuplicated": {
+		"message": "Nisu pronađeni ponovljeni kontakti."
+	},
+	"serverWarningGoogleLabel": {
+		"message": "Googleova upotreba eksperimentalna je jer Google ne poštuje vCard standarde."
+	},
+	"Validating1Label": {
+		"message": "Provjera valjanosti ($P1$)…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"Validating2Label": {
+		"message": "Provjera valjanosti…"
+	},
+	"ValidatingURLFailedLabel": {
+		"message": "URL je neispravan"
+	},
+	"ValidationFailedLabel": {
+		"message": "Provjera valjanosti nije uspjela"
+	},
+	"ValidationOKLabel": {
+		"message": "Validacija je u redu"
+	},
+	"customFieldsErrorUPPERCASE": {
+		"message": "Nazivi prilagođenih polja trebaju biti velikim slovima : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorX": {
+		"message": "Nazivi prilagođenih polja trebaju početi s X- : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorFIELD": {
+		"message": "$P1$ je rezervirana riječ i ne može se koristiti za vlastiti naziv prilagođenog polja",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorCHAR": {
+		"message": "Nazivi prilagođenih polja ne smiju sadržavati izbjegavanje znakova kao što su zarez, točka-zarez, dvotočka ili točka : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorUNIQUE": {
+		"message": "Nazivi prilagođenih polja trebaju biti jedinstveni (carinska polja su definirana u više kartica)."
+	},
+	"customFieldsErrorLABEL": {
+		"message": "Oznake prilagođenog polja ne smiju biti nulte."
+	},
+	"allContactsLoadedFromFile": {
+		"message": "$P1$ : Svi kontakti učitani iz datoteke.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"notAllContactsLoadedFromFile": {
+		"message": "$P1$ : Nisu svi kontakti učitani iz datoteke: $P2$ pogrešno.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroRunning": {
+		"message": "$P1$ : Sinkronizacija se izvodi",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroNotTried": {
+		"message": "$P1$ : Sinkronizacija nije pokušana",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinished": {
+		"message": "$P1$ : Sinkronizacija je završena",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinishedResult": {
+		"message": "$P1$ : Sinkronizacija je završena, rezultat kontakata :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroProcessed": {
+		"message": "Obrađeni su kontakti : $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpToDate": {
+		"message": "$P1$ : Kontakti su ažurirani : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnServer": {
+		"message": "$P1$ : Novi kontakti na poslužitelju : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnServer": {
+		"message": "$P1$ : Kontakti su ažurirani na poslužitelju: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnServer": {
+		"message": "$P1$ : Kontakti su izbrisani na poslužitelju : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDisk": {
+		"message": "$P1$ : Kontakti su izbrisani na disku : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kontakti su izbrisani na disku i ažurirani na poslužitelju : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnDisk": {
+		"message": "$P1$ : Kontakti su novi na disku : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDisk": {
+		"message": "$P1$ : Kontakti ažurirani na disku : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnBoth": {
+		"message": "$P1$ : Kontakti ažurirani na disku i poslužitelju : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kontakti ažurirani na disku i izbrisani na poslužitelju : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetOKFromServer": {
+		"message": "$P1$ : Izmjene uspješno preuzimane s poslužitelja: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetKOFromServer": {
+		"message": "$P1$ : Izmjene neuspješno dohvaćene s poslužitelja : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutOKToServer": {
+		"message": "$P1$ : Promjene su uspješno gurnute na poslužitelj : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutKOToServer": {
+		"message": "$P1$ : Promjene su neuspješno prebačene na poslužitelj : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroImpossible": {
+		"message": "$P1$ : Sinkronizacija je nemoguća s poslužiteljem.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBFinishedResult": {
+		"message": "??$P1$ : Local database opened, contacts result :??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBCardsOK": {
+		"message": "$P1$ : Otvori se kontakti : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDBCardsKO": {
+		"message": "$P1$ : Kontakti su pogrešno : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirFinishedResult": {
+		"message": "$P1$ : Otvoren je imenik, rezultat kontakata :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDirCardsOK": {
+		"message": "$P1$ : Otvori se kontakti : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirCardsKO": {
+		"message": "$P1$ : Kontakti su pogrešno : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileFinishedResult": {
+		"message": "$P1$ : Datoteka je otvorena, rezultat kontakata :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFileCardsOK": {
+		"message": "$P1$ : Otvori se kontakti : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileCardsKO": {
+		"message": "$P1$ : Kontakti su pogrešno : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroForcedToResync": {
+		"message": "$P1$ : Prisiljeni smo resyncirati ovaj račun",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroAllFinished": {
+		"message": "Sve su sinkronizacije završene"
+	},
+	"discoveryRunning": {
+		"message": "$P1$ : Pokretanje automatskog otkrivanja adresara",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageGetResponse": {
+		"message": "$P1$ : Preuzete slike : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"imageGetError": {
+		"message": "$P1$ : Slike u pogrešci : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importFinishedResult": {
+		"message": "$P1$ : Uvoz je dovršen, rezultat kontakata :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importCardsOK": {
+		"message": "$P1$ : Uvezeni kontakti : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importCardsKO": {
+		"message": "$P1$ : Kontakti su pogrešno : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importAllFinished": {
+		"message": "Sve je uvoz završio"
+	},
+	"cardDeletedOnDisk": {
+		"message": "$P1$ : Kontakt $P2$ izbrisati na disku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDisk": {
+		"message": "$P1$ : Kontakt $P2$ ažurirana na disku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyGetFromCache": {
+		"message": "$P1$ : Kontakt $P2$ već je preuzeta iz predmemorije",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardGetFromCache": {
+		"message": "$P1$ : Kontakt $P2$ preuzeto iz predmemorije",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ izbrisati na disku i ažurirati na poslužitelju",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnBoth": {
+		"message": "$P1$ : Kontakt $P2$ ažurirani na disku i na poslužitelju",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ ažurirana na poslužitelju (Pronašao je etag : $P3$, etag u cacheu : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"cardNewOnServer": {
+		"message": "$P1$ : Pronađen novi kontakt na poslužitelju",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardLoadedFromCache": {
+		"message": "$P1$ : Kontakt $P2$ učitava se iz predmemorije",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardLoadedFromCacheDB": {
+		"message": "$P1$ : Kontakt $P2$ učitava se iz predmemorije (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardNewOnDisk": {
+		"message": "$P1$ : Kontakt $P2$ novo na disku",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ ažurirana na disku i izbrisana na poslužitelju",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnServer": {
+		"message": "$P1$ : Kontakt $P2$ izbrisana na poslužitelju",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyExists": {
+		"message": "$P1$ : Kontakt $P2$ već postoji",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"askUserTitle": {
+		"message": "Konfliktiranje izmjena kontakata"
+	},
+	"askUserPersistMessage": {
+		"message": "Primijenite ovaj izbor za ostale postojeće kontakte"
+	},
+	"keepAskUserLabel": {
+		"message": "Zadržite kontakt"
+	},
+	"overwriteAskUserLabel": {
+		"message": "Prekini kontakt"
+	},
+	"duplicateAskUserLabel": {
+		"message": "Duplikirajte kontakt"
+	},
+	"deleteAskUserLabel": {
+		"message": "Izbrišite kontakt"
+	},
+	"localAskUserLabel": {
+		"message": "Preporučujemo lokalnu izmjenu"
+	},
+	"remoteAskUserLabel": {
+		"message": "Preferirajte daljinsku izmjenu"
+	},
+	"mergeAskUserLabel": {
+		"message": "Spoji razlike"
+	},
+	"serverCardDeletedFromServer": {
+		"message": "$P1$ : Kontakt $P2$ izbrisati s poslužitelja",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardNotExistServer": {
+		"message": "$P1$ : Kontakt $P2$ ne postoji na poslužitelju",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardDeleteFailed": {
+		"message": "$P1$ : Kontakt $P2$ nije uspjelo izbrisati s poslužitelja (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingDeletion": {
+		"message": "$P1$ : Kontakt $P2$ : slanje zahtjeva za brisanjem …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Kontakt $P2$ ažurirana na poslužitelju (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kontakt $P2$ ažurirana na poslužitelju (nema etag kao odgovor)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdateFailed": {
+		"message": "$P1$ : Kontakt $P2$ nije uspio ažurirati na poslužitelju (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingUpdate": {
+		"message": "$P1$ : Kontakt $P2$ : slanje zahtjeva za ažuriranjem …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithEtag": {
+		"message": "$P1$ : Kontakt $P2$ stvoren na poslužitelju (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kontakt $P2$ stvoren na poslužitelju (nema etag kao odgovor)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreateFailed": {
+		"message": "$P1$ : Kontakt $P2$ nije uspio stvoriti na poslužitelju (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingCreate": {
+		"message": "$P1$ : Kontakt $P2$ : slanje zahtjeva za kreiranje …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetImageFailed": {
+		"message": "$P1$ : Slika nije uspjela preuzeti za kontakt $P2$ (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetImageOK": {
+		"message": "$P1$ : Preuzeta slika za kontakt $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingImage": {
+		"message": "$P1$ : Skidanje slika za kontakt $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetOK": {
+		"message": "$P1$ : Kontakt $P2$ preuzeto s poslužitelja",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetFailed": {
+		"message": "$P1$ : Preuzimanje s poslužitelja nije uspjelo (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"synchronizationFailed": {
+		"message": "$P1$ : Sinkronizacija nije uspjela (korak : $P2$, url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"synchronizationUnauthorized": {
+		"message": "$P1$: Nije moguće prijaviti se na poslužitelju. Vjerojatno pogrešna konfiguracija, korisničko ime ili zaporka.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationSearchingCards": {
+		"message": "$P1$ : Pretraživanje kontakata …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery": {
+		"message": "$P1$ : Provjera bez traženja otkrića na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery4": {
+		"message": "$P1$ : Otkrivanje zahtjeva faze 4 na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery3": {
+		"message": "$P1$ : Otkrivanje zahtjeva faze 3 na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery2": {
+		"message": "$P1$ : Otkrivanje zahtjeva faze 2 na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery1": {
+		"message": "$P1$ : Otkrivanje zahtjeva faze 1 na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleAccessTokenOK": {
+		"message": "$P1$ : Zahtjev za pristup Googleovom pristupnom toku je u redu, pristupni token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRefreshTokenOK": {
+		"message": "$P1$ : Googleov zahtjev za osvježavanje tokena je u redu, osvježi token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleGetNewRefreshToken": {
+		"message": "$P1$ : Pokušavajući dobiti $P2$ novi token za osvježavanje Googlea …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleNewRefreshTokenOK": {
+		"message": "$P1$ : Primio je kod za autorizaciju : $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestAccessToken": {
+		"message": "$P1$ : Googleov zahtjev za pristupni tok na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestRefreshToken": {
+		"message": "$P1$ : Google osvježava zahtjev za znak na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooAccessTokenOK": {
+		"message": "$P1$ : Zahtjev za pristup Yahoo!ovom pristupnom toku je u redu, pristupni token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRefreshTokenOK": {
+		"message": "$P1$ : Yahoo!ov zahtjev za osvježavanje tokena je u redu, osvježi token : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooGetNewRefreshToken": {
+		"message": "$P1$ : Pokušavajući dobiti $P2$ novi token za osvježavanje Yahoo!a …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooNewRefreshTokenOK": {
+		"message": "$P1$ : Primio je kod za autorizaciju : $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestAccessToken": {
+		"message": "$P1$ : Yahoo!ov zahtjev za pristupni tok na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestRefreshToken": {
+		"message": "$P1$ : Yahoo! osvježava zahtjev za znak na $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncDeleting": {
+		"message": "$P1$ : Brisanje periodičnog postupka sinkronizacije (iskaznica : $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncSetting": {
+		"message": "$P1$ : Postavljanje periodičnog postupka sinkronizacije (interval vremena : $P2$ ms, iskaznica : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"periodicSyncSyncing": {
+		"message": "$P1$ : Sinkronizacija zbog periodičnog sinkronizacije …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileEmpty": {
+		"message": "Datoteka $P1$ prazno je",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileAlreadyOpen": {
+		"message": "Datoteka $P1$ već je otvoren u Kontaktima",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryAlreadyOpen": {
+		"message": "Imenik $P1$ već je otvoren u Kontaktima",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"parsingCardError": {
+		"message": "$P1$ : Pogreška prilikom raščlanjivanja kontakta : \n$P2$ \n$P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"addressbookOpened": {
+		"message": "$P1$ : Otvorena je adresar",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookModified": {
+		"message": "$P1$ : Izmijenjena adresara",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDeleted": {
+		"message": "$P1$ : Adresar je zatvoren",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookCreated": {
+		"message": "$P1$ : Izrađen je adresar",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDisabled": {
+		"message": "$P1$ : Adresar je onemogućen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadOnly": {
+		"message": "$P1$ : Adresar u načinu rada samo za čitanje",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadWrite": {
+		"message": "$P1$ : Adresar u načinu čitanja pisanja",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookEnabled": {
+		"message": "$P1$ : Omogućeno je adresar",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreated": {
+		"message": "$P1$ : Kontakt $P2$ stvoren",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdated": {
+		"message": "$P1$ : Kontakt $P2$ preimenovana",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeleted": {
+		"message": "$P1$ : Kontakt $P2$ je izbrisan",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAddedToCategory": {
+		"message": "$P1$ : Kontakt $P2$ dodan u kategoriju $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardDeletedFromAllCategory": {
+		"message": "$P1$ : Kontakt $P2$ uklonjeno iz svih kategorija",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardsConverted": {
+		"message": "??$P1$ : contacts converted into $P2$ : $P3$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardsConvertedUndo": {
+		"message": "??VCards converted??"
+	},
+	"cardsImportedFromFileUndo": {
+		"message": "??File $P1$ imported??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsImportedFromDirUndo": {
+		"message": "??Directory $P1$ imported??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"undoActionDoneUndo": {
+		"message": "??Undo done ($P1$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"redoActionDoneUndo": {
+		"message": "??Redo done ($P1$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreatedUndo": {
+		"message": "Kontakt $P1$ stvoren",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardUpdatedUndo": {
+		"message": "Kontakt $P1$ preimenovana",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"outgoingEmailCollectedUndo": {
+		"message": "??Outgoing email collected??"
+	},
+	"emailCollectedByFilterUndo": {
+		"message": "??Emails collected by filter??"
+	},
+	"emailDeletedByFilterUndo": {
+		"message": "??Emails deleted by filter??"
+	},
+	"cardsMergedUndo": {
+		"message": "??Contacts merged??"
+	},
+	"cardsDuplicatedUndo": {
+		"message": "??Contacts duplicated??"
+	},
+	"displayNameGenerated": {
+		"message": "??$P1$ : contacts having their display names regenerated : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"displayNameGeneratedUndo": {
+		"message": "??Display names regenerated??"
+	},
+	"cardModifiedUndo": {
+		"message": "Kontakt $P1$ preimenovana",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted1Undo": {
+		"message": "Kontakt $P1$ je izbrisan",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted2Undo": {
+		"message": "??Contacts deleted??"
+	},
+	"cardsPastedUndo": {
+		"message": "??Contacts pasted??"
+	},
+	"cardsDraggedUndo": {
+		"message": "??Contacts dragged??"
+	},
+	"categoryCreated": {
+		"message": "$P1$ : Kategorija $P2$ stvoren",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryCreatedUndo": {
+		"message": "Categoría $P1$ creada",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categorySelectedUndo": {
+		"message": "??Category $P1$ selected??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryUnselectedUndo": {
+		"message": "??Category $P1$ unselected??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryRenamedUndo": {
+		"message": "??Category $P1$ renamed??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryDeleted": {
+		"message": "$P1$ : Kategorija $P2$ je izbrisan",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedUndo": {
+		"message": "Kategorija $P1$ je izbrisan",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryConvertedToListUndo": {
+		"message": "??Category $P1$ converted to list??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listConvertedToCategoryUndo": {
+		"message": "??List $P1$ converted to category??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"linePastedUndo": {
+		"message": "??Line pasted??"
+	},
+	"nodeRenamedUndo": {
+		"message": "??Node $P1$ renamed??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"nodeDeleted": {
+		"message": "??$P1$ : Node $P2$ deleted??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletedUndo": {
+		"message": "??Node $P1$ deleted??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listCreatedFromNodeUndo": {
+		"message": "??List $P1$ created from node??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoFile": {
+		"message": "Kontakti su izvezeni u datoteku $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoFile": {
+		"message": "Kontakt izvezen u datoteku $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoDir": {
+		"message": "Kontakti su izvezeni u imenik $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoDir": {
+		"message": "Kontakti su izvezeni u imenik $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importNotIntoSameFile": {
+		"message": "Zabranjeno je uvoziti u istu datoteku"
+	},
+	"importNotIntoSameDir": {
+		"message": "Zabranjeno je uvoziti u isti katalog imenik"
+	},
+	"clipboardWrong": {
+		"message": "Podaci u međuspremniku nisu važni"
+	},
+	"clipboardEmpty": {
+		"message": "Međuspremnik je prazan"
+	},
+	"imageError": {
+		"message": "Slika nije dodana zbog pogreške"
+	},
+	"imageErrorWithMessage": {
+		"message": "Slika nije dodana : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageSavedToFile": {
+		"message": "Slika je spremljena u datoteku : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"contactsCopied": {
+		"message": "Kontakti su kopirani u međuspremnik"
+	},
+	"contactCopied": {
+		"message": "Kontakt je kopiran u međuspremnik"
+	},
+	"lineCopied": {
+		"message": "Redak je kopiran u međuspremnik"
+	},
+	"linePastedToCard": {
+		"message": "Linija je zalijepljena kontaktu: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFound": {
+		"message": "Broj pronađenih kontakata: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContacts": {
+		"message": "Broj kontakata: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFoundModified": {
+		"message": "Broj pronađenih kontakata: $P1$ (lokalno modificirana: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberContactsModified": {
+		"message": "Broj kontakata: $P1$ (lokalno modificirana: $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberLines": {
+		"message": "Broj redaka: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbook.searchFrom.name": {
+		"message": "Kontakti Šalje"
+	},
+	"cardbook.searchTo.name": {
+		"message": "Kontakti Prima"
+	},
+	"cardbook.searchCc.name": {
+		"message": "Kontakti Cc"
+	},
+	"cardbook.searchBcc.name": {
+		"message": "Kontakti Bcc"
+	},
+	"cardbook.searchAll.name": {
+		"message": "Kontakti Šalje, Prima, Cc ili Bcc"
+	},
+	"cardbook.searchCorrespondents.name": {
+		"message": "??CardBook Correspondents??"
+	},
+	"cardbook.addFrom.name": {
+		"message": "Dodaj Šalje na Kontakti"
+	},
+	"cardbook.addTo.name": {
+		"message": "Dodaj Prima na Kontakti"
+	},
+	"cardbook.addCc.name": {
+		"message": "Dodaj Cc na Kontakti"
+	},
+	"cardbook.addBcc.name": {
+		"message": "Dodaj Bcc na Kontakti"
+	},
+	"cardbook.addAll.name": {
+		"message": "Dodaj Šalje, Prima, Cc ili Bcc na Kontakti"
+	},
+	"cardbook.removeFrom.name": {
+		"message": "Ukloni Šalje iz Kontakti"
+	},
+	"cardbook.removeTo.name": {
+		"message": "Ukloni Prima iz Kontakti"
+	},
+	"cardbook.removeCc.name": {
+		"message": "Ukloni Cc iz Kontakti"
+	},
+	"cardbook.removeBcc.name": {
+		"message": "Ukloni Bcc iz Kontakti"
+	},
+	"cardbook.removeAll.name": {
+		"message": "Ukloni Šalje, Prima, Cc ili Bcc iz Kontakti"
+	},
+	"urlDownloaded": {
+		"message": "Preuzeto URL : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookHeader": {
+		"message": "Adresar"
+	},
+	"photoLabel": {
+		"message": "Foto"
+	},
+	"versionLabel": {
+		"message": "Verzija"
+	},
+	"revLabel": {
+		"message": "Posljednje ažuriranje"
+	},
+	"lastnameLabel": {
+		"message": "Prezime"
+	},
+	"firstnameLabel": {
+		"message": "Ime"
+	},
+	"othernameLabel": {
+		"message": "Ostala imena"
+	},
+	"prefixnameLabel": {
+		"message": "Titula"
+	},
+	"suffixnameLabel": {
+		"message": "Nastavak"
+	},
+	"fnLabel": {
+		"message": "Prikaži ime"
+	},
+	"nicknameLabel": {
+		"message": "Nickname"
+	},
+	"genderLabel": {
+		"message": "Spol"
+	},
+	"bdayLabel": {
+		"message": "Rođendan"
+	},
+	"birthplaceLabel": {
+		"message": "Rodno mjesto"
+	},
+	"anniversaryLabel": {
+		"message": "Godišnjica"
+	},
+	"deathdateLabel": {
+		"message": "Datum smrti"
+	},
+	"deathplaceLabel": {
+		"message": "Mjesto smrti"
+	},
+	"titleLabel": {
+		"message": "Titula"
+	},
+	"roleLabel": {
+		"message": "Uloga"
+	},
+	"orgLabel": {
+		"message": "Organizacija"
+	},
+	"categoriesLabel": {
+		"message": "Kategorije"
+	},
+	"adrLabel": {
+		"message": "Adrese"
+	},
+	"telLabel": {
+		"message": "Telefon"
+	},
+	"emailLabel": {
+		"message": "E-pošta"
+	},
+	"imppLabel": {
+		"message": "IM"
+	},
+	"urlLabel": {
+		"message": "URL"
+	},
+	"eventLabel": {
+		"message": "Događaje"
+	},
+	"noteLabel": {
+		"message": "Bilješke"
+	},
+	"postOfficeLabel": {
+		"message": "Poštanski sandučić"
+	},
+	"extendedAddrLabel": {
+		"message": "Apartman"
+	},
+	"streetLabel": {
+		"message": "Ulica"
+	},
+	"localityLabel": {
+		"message": "Mjesto (mjesto ili grad)"
+	},
+	"regionLabel": {
+		"message": "Regija (država ili teritorija)"
+	},
+	"postalCodeLabel": {
+		"message": "Poštanski broj"
+	},
+	"countryLabel": {
+		"message": "Zemlja"
+	},
+	"ageLabel": {
+		"message": "Starost"
+	},
+	"ABNameLabel": {
+		"message": "Adresar"
+	},
+	"cardIconLabel": {
+		"message": "Ikona"
+	},
+	"nameLabel": {
+		"message": "Ime"
+	},
+	"mailerLabel": {
+		"message": "Pošiljatelj"
+	},
+	"tzLabel": {
+		"message": "TZ"
+	},
+	"geoLabel": {
+		"message": "Geo"
+	},
+	"prodidLabel": {
+		"message": "Prodid"
+	},
+	"sortstringLabel": {
+		"message": "Poredaj niz"
+	},
+	"uidLabel": {
+		"message": "Uid"
+	},
+	"cbidLabel": {
+		"message": "CardBook id"
+	},
+	"class1Label": {
+		"message": "Klasa"
+	},
+	"dirPrefIdLabel": {
+		"message": "DirPrefId"
+	},
+	"kindLabel": {
+		"message": "Kind"
+	},
+	"etagLabel": {
+		"message": "Etag"
+	},
+	"phoneticfirstnameLabel": {
+		"message": "Ime (Fonetski)"
+	},
+	"phoneticlastnameLabel": {
+		"message": "Prezime (Fonetski)"
+	},
+	"custom1Label": {
+		"message": "Korisničko polje 1"
+	},
+	"custom2Label": {
+		"message": "Korisničko polje 2"
+	},
+	"custom3Label": {
+		"message": "Korisničko polje 3"
+	},
+	"custom4Label": {
+		"message": "Korisničko polje 4"
+	},
+	"warningTitle": {
+		"message": "Upozorenje"
+	},
+	"errorTitle": {
+		"message": "Greška"
+	},
+	"confirmTitle": {
+		"message": "Potvrditi"
+	},
+	"birthdaysListWindowLabel": {
+		"message": "Popis obljetnica (ukupno : $P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"syncListWindowLabelRunning": {
+		"message": "Sinkronizacija godišnjice u tijeku ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelEnded": {
+		"message": "Završena sinkronizacija obljetnica ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelFailed": {
+		"message": "Sinkronizacija obljetnica nije uspjela"
+	},
+	"syncListExistingEntry": {
+		"message": "$P1$ : Postojeći događaj u Lightningu : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListCreatedEntry": {
+		"message": "$P1$ : Događaj stvoren u Lightning : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListErrorEntry": {
+		"message": "$P1$ : Događaj je pogrešan u Lightningu : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"noBirthdaysFoundMessage": {
+		"message": "Nije pronađena godišnjica do $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"noEmailFoundMessage": {
+		"message": "Nije pronađena poruka e-pošte za $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventEntryTitleMessage": {
+		"message": "Obljetnica %1$S, Dob : %2$S"
+	},
+	"calendarNotFoundTitle": {
+		"message": "Podsjetnik za obljetnicu - Sinkronizacija s Lightningom prekinuta"
+	},
+	"calendarNotFoundMessage": {
+		"message": "Kalendar $P1$ nije pronađen. Sinkronizacija s Lightningom prekinuta.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"calendarNotWritableTitle": {
+		"message": "Podsjetnik za obljetnicu - Sinkronizacija s Lightningom prekinuta"
+	},
+	"calendarNotWritableMessage": {
+		"message": "Kalendar $P1$ nije moguće pisati (možda samo za čitanje ili izvanmrežno?). Sinkronizacija s Lightningom prekinuta.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"errorAttachingFile": {
+		"message": "Priključivanje vCard: Nije moguće generirati datoteku za spajanje vCard na poštu : $P1$ ($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"errorInfiniteLoopRecursion": {
+		"message": "Popise : rekonstrukcija beskonačne petlje za popise : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"WRONG_VERSION": {
+		"message": "Podržane su samo vCards inačice 3.0 ili 4.0"
+	},
+	"unableToParseResponse": {
+		"message": "$P1$ : Nemoguće je analizirati odgovor poslužitelja zbog ove linije : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"dateEntry1Wrong": {
+		"message": "??$P1$ : Contact $P2$ has a date field value ($P3$) that does not match the date format of the address book ($P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"dateEntry2Wrong": {
+		"message": "??Date field value ($P1$) does not match the date format of the address book ($P2$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"validateIntegerMsg": {
+		"message": "Polje $P1$ bi trebao biti null ili cijeli broj između 1 i $P2$ (vrijednost : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"eventNameNull": {
+		"message": "??At least one event has an empty description??"
+	},
+	"eventDateNull": {
+		"message": "??At least one event has an empty date??"
+	},
+	"invalidURL": {
+		"message": "Nevažeći URL : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbookSearchInputDefault": {
+		"message": "Traži…"
+	},
+	"blogtype": {
+		"message": "Blog"
+	},
+	"celltype": {
+		"message": "Mobilni uređaji"
+	},
+	"faxtype": {
+		"message": "Faks"
+	},
+	"homefaxtype": {
+		"message": "Faks kod kuće"
+	},
+	"homepagetype": {
+		"message": "Početna stranica"
+	},
+	"hometype": {
+		"message": "Kuća"
+	},
+	"iphonetype": {
+		"message": "iPhone"
+	},
+	"maintype": {
+		"message": "Broj centrale"
+	},
+	"othertype": {
+		"message": "Ostalo"
+	},
+	"pagertype": {
+		"message": "Dojavljivač"
+	},
+	"profiletype": {
+		"message": "Profil"
+	},
+	"workfaxtype": {
+		"message": "Faks u uredu"
+	},
+	"worktype": {
+		"message": "Posao"
+	},
+	"types.gender.f": {
+		"message": "Žena"
+	},
+	"types.gender.m": {
+		"message": "Muški"
+	},
+	"types.gender.n": {
+		"message": "Nijedan"
+	},
+	"types.gender.o": {
+		"message": "Drugo"
+	},
+	"types.gender.u": {
+		"message": "Nepoznat"
+	},
+	"typesTooltip": {
+		"message": "Da biste promijenili dostupne vrste, koristite postavke kontakti."
+	},
+	"prefLabel": {
+		"message": "Prednost"
+	},
+	"prefValueLabel": {
+		"message": "Preferencijalna vrijednost"
+	},
+	"prefWeightTooltip": {
+		"message": "Postavke mogu imati različite vrijednosti između 1 i 100. Za normalnu uporabu, zadržao je prazan."
+	},
+	"impp.skype": {
+		"message": "Skype"
+	},
+	"impp.jabber": {
+		"message": "Jabber"
+	},
+	"impp.googletalk": {
+		"message": "Google Talk"
+	},
+	"impp.qq": {
+		"message": "Tencent QQ"
+	},
+	"addToAddressbook": {
+		"message": "Dodaj u ovaj adresar"
+	},
+	"wdw_cardEditionViewResultTitle": {
+		"message": "Posljedica izmjene kontakta"
+	},
+	"wdw_cardEditionViewResultHideCreateTitle": {
+		"message": "Posljedica izmjene kontakta"
+	},
+	"wdw_cardEditionAddEmailTitle": {
+		"message": "Registrirajte novu adresu e-pošte"
+	},
+	"wdw_cardEditionCreateContactTitle": {
+		"message": "Novi kontakt"
+	},
+	"wdw_cardEditionCreateListTitle": {
+		"message": "Novi popis"
+	},
+	"wdw_cardEditionEditContactTitle": {
+		"message": "Uredi kontakt"
+	},
+	"wdw_cardEditionEditListTitle": {
+		"message": "Uredi popis"
+	},
+	"wdw_cardEditionAddLineTitle": {
+		"message": "Uredi kontakt"
+	},
+	"wdw_cardEditionViewContactTitle": {
+		"message": "Pogledaj kontakt"
+	},
+	"wdw_cardEditionViewListTitle": {
+		"message": "Prikaži popis"
+	},
+	"wdw_cardbookPrintTitleLong": {
+		"message": "Pregled ispisa $P1$ - Kontakti - Thunderbird",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookPrintTitle": {
+		"message": "Pregled ispisa"
+	},
+	"displayGroupboxLabel": {
+		"message": "Prikaži ime"
+	},
+	"personalGroupboxLabel": {
+		"message": "Osobni podaci"
+	},
+	"orgGroupboxLabel": {
+		"message": "Profesionalne informacije"
+	},
+	"categoriesHeader": {
+		"message": "Kategorije"
+	},
+	"adrGroupboxLabel": {
+		"message": "Adrese"
+	},
+	"telGroupboxLabel": {
+		"message": "Telefonski brojevi"
+	},
+	"emailGroupboxLabel": {
+		"message": "E-pošta adrese"
+	},
+	"urlGroupboxLabel": {
+		"message": "URL-ovi"
+	},
+	"eventGroupboxLabel": {
+		"message": "Događaje"
+	},
+	"noteGroupboxLabel": {
+		"message": "Bilješke"
+	},
+	"searchTermsGroupboxLabel": {
+		"message": "Pojmovi za pretraživanje"
+	},
+	"addedCardsGroupboxLabel": {
+		"message": "Odabrane stavke"
+	},
+	"mailPopularityGroupboxLabel": {
+		"message": "Popularnost pošte"
+	},
+	"addEntryTooltip": {
+		"message": "Dodaj unos"
+	},
+	"removeEntryTooltip": {
+		"message": "Brisanje unosa"
+	},
+	"upEntryTooltip": {
+		"message": "Pomakni gore"
+	},
+	"downEntryTooltip": {
+		"message": "Pomicati prema dolje"
+	},
+	"validatedEntryTooltip": {
+		"message": "Važeći"
+	},
+	"noValidatedEntryTooltip": {
+		"message": "Provjeri ispravnost"
+	},
+	"notValidatedEntryTooltip": {
+		"message": "Neispravan format"
+	},
+	"linkEntryTooltip": {
+		"message": "Create Link…"
+	},
+	"selectedCardsDeletionConfirmMessagePF": {
+		"message": "Jeste li sigurni da želite izbrisati $P1$ odabrani kontakt?;Jeste li sigurni da želite izbrisati $P1$ odabrana kontakta?;Jeste li sigurni da želite izbrisati $P1$ odabranih kontakata?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"catDeletionsConfirmMessagePF": {
+		"message": "Jeste li sigurni da želite izbrisati kategoriju $P2$ koja sadrži $P1$ kontakt?;Jeste li sigurni da želite izbrisati kategoriju $P2$ koja sadrži $P1$ kontakta?;Jeste li sigurni da želite izbrisati kategoriju $P2$ koja sadrži $P1$ kontakata?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletionsConfirmMessagePF": {
+		"message": "??Are you sure you want to delete the node $P2$ which contains one contact?;Are you sure you want to delete the node $P2$ which contains $P1$ contacts???",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"accountDeletionConfirmMessage": {
+		"message": "Jeste li sigurni da želite izbrisati adresaru $P1$ iz spremišta kontakti?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletionDiscoveryConfirmMessage": {
+		"message": "Čini se da je adresar $P1$ uklonjen s vašeg poslužitelja, želite li ga ukloniti iz pohranjenih kontakata?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentFileMessage": {
+		"message": "izbriši datoteku $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentDirMessage": {
+		"message": "izbriši imenik $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryDeletionConfirmMessage": {
+		"message": "Imenik $P1$ nije prazan. Jeste li sigurni da želite izbrisati sve objekte iz ovog u imeniku?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"choiceMappingTitle": {
+		"message": "Izbor Polja"
+	},
+	"choiceavailableColumnsGroupboxLabel": {
+		"message": "Dostupni stupci"
+	},
+	"choiceaddedColumnsGroupboxLabel": {
+		"message": "Odabrani stupci"
+	},
+	"exportMappingTitle": {
+		"message": "Izvezi odabrane stupce"
+	},
+	"exportavailableColumnsGroupboxLabel": {
+		"message": "Dostupni stupci"
+	},
+	"exportaddedColumnsGroupboxLabel": {
+		"message": "Odabrani stupci"
+	},
+	"importMappingTitle": {
+		"message": "Tablica mapiranja stupaca"
+	},
+	"importavailableColumnsGroupboxLabel": {
+		"message": "Dostupni stupci"
+	},
+	"importaddedColumnsGroupboxLabel": {
+		"message": "Odabrani stupci"
+	},
+	"importfoundColumnsGroupboxLabel": {
+		"message": "Stupac zaglavlja"
+	},
+	"importblankColumn": {
+		"message": "Isprazni stupac"
+	},
+	"importNoTypeLabel": {
+		"message": "bez tipa"
+	},
+	"fieldDelimiterLabel": {
+		"message": "Separator stupaca"
+	},
+	"includePrefLabel": {
+		"message": "??Include preferences??"
+	},
+	"lineHeaderLabel": {
+		"message": "Prva crta kao zaglavlje"
+	},
+	"missingColumnsConfirmMessage": {
+		"message": "Ukupni odabrani stupci razlikuju se od ukupnog broja stupaca, tako da se ne uzima u obzir nedostajući ili nepotrebni stupci. Nastaviti?"
+	},
+	"toUpperCase": {
+		"message": "Pretvoriti u velika slova"
+	},
+	"toLowerCase": {
+		"message": "Pretvoriti u mala slova"
+	},
+	"copyFieldValue": {
+		"message": "Kopiraj ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"pasteFieldValue": {
+		"message": "Zalijepi ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookRenameFieldEditTypeTitle": {
+		"message": "Preimenuj vrsta"
+	},
+	"wdw_cardbookRenameFieldAddTypeTitle": {
+		"message": "Dodaj novu tipa"
+	},
+	"wdw_cardbookRenameFieldOrgTitle": {
+		"message": "Uređivač organizacije"
+	},
+	"wdw_cardbookRenameFieldEditCatTitle": {
+		"message": "Uredi kategoriju"
+	},
+	"wdw_cardbookRenameFieldAddCatTitle": {
+		"message": "Dodajte novu kategoriju"
+	},
+	"wdw_cardbookRenameFieldEditNodeTitle": {
+		"message": "??Edit Node??"
+	},
+	"wdw_cardbookRenameFieldEditTypeLabel": {
+		"message": "Tip:"
+	},
+	"wdw_cardbookRenameFieldAddTypeLabel": {
+		"message": "Tip:"
+	},
+	"wdw_cardbookRenameFieldOrgLabel": {
+		"message": "Tip:"
+	},
+	"wdw_cardbookRenameFieldEditCatLabel": {
+		"message": "Kategorija:"
+	},
+	"wdw_cardbookRenameFieldAddCatLabel": {
+		"message": "Kategorija:"
+	},
+	"wdw_cardbookRenameFieldEditNodeLabel": {
+		"message": "$P1$:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
+		"message": "Definicija ograničenja računa za poštu"
+	},
+	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
+		"message": "Definicija zbirke pošte za odlazne poruke e-pošte"
+	},
+	"ignoreCaseIgnoreDiacriticLabel": {
+		"message": "Zanemariti slučaj, zanemariti dijakritički"
+	},
+	"ignoreCaseMatchDiacriticLabel": {
+		"message": "Zanemariti slučaj, dijakritički podudaranja"
+	},
+	"matchCaseIgnoreDiacriticLabel": {
+		"message": "Slučaj podudaranja, zanemariti dijakritički"
+	},
+	"matchCaseMatchDiacriticLabel": {
+		"message": "Slučaj podudaranja, dijakritički podudaranja"
+	},
+	"allCategories": {
+		"message": "Pokaži sve"
+	},
+	"onlyCategories": {
+		"message": "Samo kategorije"
+	},
+	"noCategory": {
+		"message": "Samo kontakti"
+	},
+	"multipleCategories": {
+		"message": "Više kategorija"
+	},
+	"none": {
+		"message": "Nijedan"
+	},
+	"multipleTypes": {
+		"message": "Više vrsta"
+	},
+	"noType": {
+		"message": "Bez tipa"
+	},
+	"eventContactsWindowLabel": {
+		"message": "Događaji za: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fnDuplicatedMessage": {
+		"message": "(kopirati)"
+	},
+	"allMailAccounts": {
+		"message": "Svi računi pošte"
+	},
+	"includeLabel": {
+		"message": "Uključiti"
+	},
+	"excludeLabel": {
+		"message": "Isključiti"
+	},
+	"sendButtonLabel": {
+		"message": "Napravite novu poruku"
+	},
+	"doNotShowAnymore": {
+		"message": "Nemojte me upozoriti kada pokušam poslati e-poštu kontaktima bez adrese e-pošte."
+	},
+	"emptyEmailsCardConfirmMessage": {
+		"message": "Ovaj kontakt nema adrese e-pošte: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"emptyEmailsCardsConfirmMessage": {
+		"message": "Ti kontakti nemaju adrese e-pošte: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventInNoteEventPrefix": {
+		"message": "Događaj"
+	},
+	"deathSuffix": {
+		"message": "(umro je)"
+	},
+	"dateFormatsDLabel": {
+		"message": "D"
+	},
+	"dateFormatsMLabel": {
+		"message": "M"
+	},
+	"dateFormatsYLabel": {
+		"message": "G"
+	},
+	"customLabel": {
+		"message": "Običaj"
+	},
+	"valueAlreadyExists": {
+		"message": "Vrijednost $P1$ već postoji",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"allAccountsLabel": {
+		"message": "Sve adresne knjige"
+	},
+	"enabledAccountsLabel": {
+		"message": "Omogućene adresne knjige"
+	},
+	"disabledAccountsLabel": {
+		"message": "Onemogućene adresne knjige"
+	},
+	"localAccountsLabel": {
+		"message": "Lokalne adresne knjige"
+	},
+	"remoteAccountsLabel": {
+		"message": "Udaljeni adresni kôdovi"
+	},
+	"searchAccountsLabel": {
+		"message": "Spremljene pretrage"
+	},
+	"wdw_passwordMissingTitle": {
+		"message": "Nedostaje lozinka"
+	},
+	"wdw_passwordWrongTitle": {
+		"message": "Netočna zaporka"
+	},
+	"dateDisplayedFormatLong": {
+		"message": "Dugi: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"dateDisplayedFormatShort": {
+		"message": "Kratki: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressFormatFormula": {
+		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
+	},
+	"newTokenTitle": {
+		"message": "Prijavite se u svoj račun $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"newTokenDescription": {
+		"message": "??CardBook would like to access your $P1$ account to retrieve contacts. Credentials and contact data are only transferred between your computer and Google, no third party sites are involved.??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"invalidEmail": {
+		"message": "$P1$ nije ispravna adresa e-pošte jer nije u obliku korisnik@poslužitelj.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"appendEmailLabel": {
+		"message": "Dodaj na popis: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryAddNew": {
+		"message": "Dodaj novu kategoriju"
+	},
+	"typeAddNew": {
+		"message": "Dodaj novu tipa"
+	},
+	"allContacts": {
+		"message": "Svi kontakti"
+	},
+	"keyDescription": {
+		"message": "??Encryption key??"
+	},
+	"encryptionStarted": {
+		"message": "??Starting encryption??"
+	},
+	"encryptionProcessed": {
+		"message": "??Items encrypted: $P1$/$P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"encryptionFinished": {
+		"message": "??Encryption finished??"
+	},
+	"decryptionStarted": {
+		"message": "??Starting decryption??"
+	},
+	"decryptionProcessed": {
+		"message": "??Items decrypted: $P1$/$P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"decryptionFinished": {
+		"message": "??Decryption finished??"
+	},
+	"menu_undo.long.label": {
+		"message": "Vrati - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_undo.short.label": {
+		"message": "Vrati"
+	},
+	"menu_redo.long.label": {
+		"message": "Ponovi - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_redo.short.label": {
+		"message": "Ponovi"
+	},
+	"cardbookMenuItemLabel": {
+		"message": "Kontakti"
+	},
+	"cardbookMenuItemAccesskey": {
+		"message": "b"
+	},
+	"cardbookMenuItemKey": {
+		"message": "b"
+	},
+	"cardbookMenuItemTooltip": {
+		"message": "Prebaci u CardBook tab"
+	},
+	"cardbookToolbarButtonLabel": {
+		"message": "Kontakti"
+	},
+	"cardbookToolbarButtonTooltip": {
+		"message": "Prebaci u CardBook tab"
+	},
+	"cardbookTabButtonLabel": {
+		"message": "Kontakti"
+	},
+	"cardbookTabButtonTooltip": {
+		"message": "Prebaci u CardBook tab"
+	},
+	"cardbookQFBButtonLabel": {
+		"message": "Kontakti"
+	},
+	"cardbookQFBButtonTooltip": {
+		"message": "Prikaži samo poruke od ljudi iz vašeg adresara"
+	},
+	"quickFilterBar.booleanMode.tooltip": {
+		"message": "Način filtriranja oznaka"
+	},
+	"quickFilterBar.booleanModeAny.label": {
+		"message": "Bilo koji od"
+	},
+	"quickFilterBar.booleanModeAny.tooltip": {
+		"message": "Barem jedan od odabranih kriterija oznaka treba odgovarati"
+	},
+	"quickFilterBar.booleanModeAll.label": {
+		"message": "Svi od"
+	},
+	"quickFilterBar.booleanModeAll.tooltip": {
+		"message": "Svi odabrani kriteriji oznaka moraju odgovarati"
+	},
+	"newCardBookCardMenuLabel": {
+		"message": "CardBook kontakt…"
+	},
+	"newCardBookCardMenuAccesskey": {
+		"message": "C"
+	},
+	"newCardBookCardMenuKey": {
+		"message": "N"
+	},
+	"newCardBookSearchMenuLabel": {
+		"message": "Pretraži kontakte…"
+	},
+	"newCardBookSearchMenuAccesskey": {
+		"message": "C"
+	},
+	"addToCardBookMenuLabel": {
+		"message": "Dodaj CardBook kontakt"
+	},
+	"addToCardBookMenuAccesskey": {
+		"message": "d"
+	},
+	"editInCardBookMenuLabel": {
+		"message": "Uredi kontakte"
+	},
+	"editInCardBookMenuAccesskey": {
+		"message": "e"
+	},
+	"deleteInCardBookMenuLabel": {
+		"message": "Izbriši kontakte"
+	},
+	"deleteInCardBookMenuAccesskey": {
+		"message": "O"
+	},
+	"IMPPMenuLabel": {
+		"message": "Poveži s"
+	},
+	"IMPPMenuAccesskey": {
+		"message": "o"
+	},
+	"findAllEmailsFromContactMessengerLabel": {
+		"message": "Nađi e-poštae povezane uz ovaj kontakt"
+	},
+	"findAllEmailsFromContactMessengerAccesskey": {
+		"message": "c"
+	},
+	"findEmailsFromEmailMessengerLabel": {
+		"message": "Nađi e-poštae povezane s ovom e-mail adresom"
+	},
+	"findEmailsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"findAllEventsFromContactMessengerLabel": {
+		"message": "Nađi događaje u kalendaru vezane uz ovaj kontakt"
+	},
+	"findAllEventsFromContactMessengerAccesskey": {
+		"message": "c"
+	},
+	"findEventsFromEmailMessengerLabel": {
+		"message": "Nađi događaje u kalendaru vezane uz ovu e-poštae adresu"
+	},
+	"findEventsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"mailContext-addToCardBookMenuLabel": {
+		"message": "Dodaj CardBook kontakt…"
+	},
+	"mailContext-addToCardBookMenuAccesskey": {
+		"message": "d"
+	},
+	"addAllAttachementsToCardBookMenuLabel": {
+		"message": "U CardBook All…"
+	},
+	"addAttachementToCardBookMenuLabel": {
+		"message": "U CardBook…"
+	},
+	"cardbookABPaneItemLabel": {
+		"message": "Okno mape"
+	},
+	"cardbookABPaneItemAccesskey": {
+		"message": "m"
+	},
+	"cardbookContactPaneItemLabel": {
+		"message": "Okno kontakta"
+	},
+	"cardbookContactPaneItemAccesskey": {
+		"message": "O"
+	},
+	"wizard.title": {
+		"message": "Unesite novu adresu"
+	},
+	"wizard.label": {
+		"message": "Unesite novi adresar"
+	},
+	"welcomePage.wizard.description": {
+		"message": "Dobro došli"
+	},
+	"welcomePage.description": {
+		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
+	},
+	"initialPage.wizard.description": {
+		"message": "Lokacija za novi adresar"
+	},
+	"initialPage.description": {
+		"message": "Je li Vaš adresar mjesni ili daleko? :"
+	},
+	"initialPage.computer.label": {
+		"message": "Mjesni"
+	},
+	"initialPage.network.label": {
+		"message": "Udaljen"
+	},
+	"initialPage.standard.label": {
+		"message": "Prenesi Thunderbirdov standardni adresar."
+	},
+	"initialPage.search.label": {
+		"message": "Traži među postojećim adresarima"
+	},
+	"initialPage.find.label": {
+		"message": "??Search for remote address books??"
+	},
+	"localPage.wizard.description": {
+		"message": "Vrsta i mjesto novog lokalnog adresara."
+	},
+	"localPage.type.description": {
+		"message": "Koje vrsta je Vaš novi lokalni adresar? :"
+	},
+	"localPage.type.label": {
+		"message": "Vrsta"
+	},
+	"localPage.createDB.label": {
+		"message": "Kreiraj novi adresar."
+	},
+	"localPage.createDirectory.label": {
+		"message": "Kreiraj novi adresar (Imenik)"
+	},
+	"localPage.createFile.label": {
+		"message": "Kreiraj novi adresar (Dosje)"
+	},
+	"localPage.openDirectory.label": {
+		"message": "Otvori postojeći adresar(Imenik)"
+	},
+	"localPage.openFile.label": {
+		"message": "Otvori postojeći adresar (Dosje)"
+	},
+	"localPage.uri.groupbox": {
+		"message": "Lokacija"
+	},
+	"localPage.uri.label": {
+		"message": "Imenik ili dosje:"
+	},
+	"localPage.uri.description": {
+		"message": "Pomoću čitača, odaberite novu lokaciju za svoj novi mjesni adresar. Ako otvarate novi dosje unesite .vcf kao nastavak."
+	},
+	"localPage.uributton.label": {
+		"message": "Traži"
+	},
+	"remotePage.wizard.description": {
+		"message": "Vrsta i lokacija novog udaljenog adresara."
+	},
+	"remotePage.description": {
+		"message": "Koje vrste je Vaš udaljeni adresar? : (Caution: Google does NOT conform to vCard standards)"
+	},
+	"remotePage.type.label": {
+		"message": "Vrsta"
+	},
+	"remotePage.carddav.label": {
+		"message": "CardDAV"
+	},
+	"remotePage.google.label": {
+		"message": "Google"
+	},
+	"remotePage.apple.label": {
+		"message": "Apple"
+	},
+	"remotePage.yahoo.label": {
+		"message": "Yahoo!"
+	},
+	"remotePage.connection.label": {
+		"message": "Veza"
+	},
+	"remotePage.url.description": {
+		"message": "Za vrstu CardDAV, unesite URL za svoj udaljeni adresar. Možete pokušati djelomični URL (na primjer : http(s)://carddav.example.org). za Googleov adresar, nemojte odrediti ovo polje."
+	},
+	"remotePage.url.label": {
+		"message": "URL:"
+	},
+	"remotePage.credentials.description": {
+		"message": "Unesite vjerodajnicu kako biste otvorili svoj adresar. Za Googleov adresar, pod ime korisnika treba biti Vaša e-pošta adresa za Google."
+	},
+	"remotePage.user.label": {
+		"message": "Korisnik:"
+	},
+	"remotePage.password.label": {
+		"message": "Lozinka:"
+	},
+	"remotePage.passwordShow.label": {
+		"message": "Pokaži"
+	},
+	"remotePage.validatebutton.label": {
+		"message": "Potvrdi"
+	},
+	"locationSearchPage.wizard.description": {
+		"message": "Definicija: sačuvano traži."
+	},
+	"locationSearchPage.label": {
+		"message": "Sačuvano Traži"
+	},
+	"abSearchHeading.label": {
+		"message": "Traži u:"
+	},
+	"abSearchHeading.accesskey": {
+		"message": "i"
+	},
+	"matchAll.label": {
+		"message": "Podudara sa svime od sljedećeg"
+	},
+	"matchAll.accesskey": {
+		"message": "s"
+	},
+	"matchAny.label": {
+		"message": "Podudara s bilo čime od sljedećeg"
+	},
+	"matchAny.accesskey": {
+		"message": "o"
+	},
+	"googleOauthPage.wizard.description": {
+		"message": "Googleova ovjera"
+	},
+	"namePage.wizard.description": {
+		"message": "Svojstva adresara"
+	},
+	"namePage.selected.label": {
+		"message": "Odabrano"
+	},
+	"namePage.name.label": {
+		"message": "Naziv"
+	},
+	"namePage.color.label": {
+		"message": "Boja"
+	},
+	"namePage.urnuuid.label": {
+		"message": "Koristite urn:uuid"
+	},
+	"namePage.DBCached.label": {
+		"message": "Izvanmrežni rad"
+	},
+	"namePage.vCardVersion.label": {
+		"message": "vCard"
+	},
+	"namesPage.wizard.description": {
+		"message": "Svojstva adresara"
+	},
+	"namesPage.name.label": {
+		"message": "Nazivi"
+	},
+	"namesPage.name.description": {
+		"message": "Otkrili smo nekoliko adresara. Odaberite koji adresar želite otvoriti i njegovo ime.:"
+	},
+	"findPage.wizard.description": {
+		"message": "??Remote address book search??"
+	},
+	"findPage.name1.description": {
+		"message": "??No remote address books found.??"
+	},
+	"findPage.name2.description": {
+		"message": "??One remote address book found. Validate remote address book to add:??"
+	},
+	"findPage.name3.description": {
+		"message": "??Multiple remote address books found. Validate remote address books to add:??"
+	},
+	"finishPage.wizard.description": {
+		"message": "??Address books configuration??"
+	},
+	"finishPage.description": {
+		"message": "Vaš novi adresar je uspješno oblikovan."
+	},
+	"finishsPage.description": {
+		"message": "Vaši novi adresari su uspješno oblikovani."
+	},
+	"wdw_addressbooksEditTitle": {
+		"message": "Svojstva adresara"
+	},
+	"colorLabel": {
+		"message": "Boja:"
+	},
+	"name.ABedit.label": {
+		"message": "Naziv:"
+	},
+	"name.ABedit.accesskey": {
+		"message": "N"
+	},
+	"nodesLabel": {
+		"message": "??Nodes:??"
+	},
+	"categoriesNodeLabel": {
+		"message": "Kategorije"
+	},
+	"orgNodeLabel": {
+		"message": "Organizacija"
+	},
+	"typeLabel": {
+		"message": "Vrsta:"
+	},
+	"username.ABedit.label": {
+		"message": "Korisnik:"
+	},
+	"vCardVersionLabel": {
+		"message": "vCard:"
+	},
+	"readonlyLabel": {
+		"message": "Moguće je samo čitati"
+	},
+	"readonlyAccesskey": {
+		"message": "M"
+	},
+	"urnuuidLabel": {
+		"message": "Koristite urn:uuid"
+	},
+	"DBCachedLabel": {
+		"message": "Izvanmrežni rad"
+	},
+	"autoSyncGroupboxLabel": {
+		"message": "Periodic Syncing"
+	},
+	"autoSyncLabel": {
+		"message": "Omogući povremeno usklađivanje"
+	},
+	"autoSyncAccesskey": {
+		"message": "E"
+	},
+	"autoSyncIntervalLabel": {
+		"message": "Interval za povremeno usklađivanje (minuta):"
+	},
+	"autoSyncIntervalAccesskey": {
+		"message": "I"
+	},
+	"miscTabLabel": {
+		"message": "Sve i svašta"
+	},
+	"fnFormulaCaption": {
+		"message": "Pokaži ime"
+	},
+	"fnFormulaLabel": {
+		"message": "Stvori pokaži naziv:"
+	},
+	"fnFormulaAccesskey": {
+		"message": "y"
+	},
+	"resetFnFormulaLabel": {
+		"message": "Vrati na uobičajeno"
+	},
+	"resetFnFormulaAccesskey": {
+		"message": "j"
+	},
+	"applyToABButtonLabel": {
+		"message": "??Apply to…??"
+	},
+	"applyToABButtonAccesskey": {
+		"message": "A"
+	},
+	"wdw_adrEditionTitle": {
+		"message": "Uređivač adresa"
+	},
+	"adrPostOfficeLabel": {
+		"message": "Poštanski sandučić"
+	},
+	"adrExtendedAddrLabel": {
+		"message": "Apartman"
+	},
+	"adrStreetLabel": {
+		"message": "Ulica"
+	},
+	"adrLocalityLabel": {
+		"message": "Mjesto (mjesto ili grad)"
+	},
+	"adrRegionLabel": {
+		"message": "Regija (država ili teritorija)"
+	},
+	"adrPostalCodeLabel": {
+		"message": "Poštanski broj"
+	},
+	"adrCountryLabel": {
+		"message": "Zemlja"
+	},
+	"deprecatedLabel": {
+		"message": "Obustavljeno"
+	},
+	"daysLeftColumnLabel": {
+		"message": "Preostali dani"
+	},
+	"nameColumnLabel": {
+		"message": "Ime"
+	},
+	"ageColumnLabel": {
+		"message": "Starost"
+	},
+	"dateOfBirthColumnLabel": {
+		"message": "Datum događaja"
+	},
+	"dateOfBirthFoundColumnLabel": {
+		"message": "Pronađen datum"
+	},
+	"emailColumnLabel": {
+		"message": "E-pošta"
+	},
+	"sendEmailLabel": {
+		"message": "Napiši novu poruku"
+	},
+	"sendEmailAccesskey": {
+		"message": "E"
+	},
+	"syncLightningMenuItemLabel": {
+		"message": "Sinhroniziraj s Lightning-om"
+	},
+	"syncLightningMenuAccesskey": {
+		"message": "S"
+	},
+	"calendarNameLabel": {
+		"message": "Kalendar"
+	},
+	"calendarIdLabel": {
+		"message": "Kalendar oznaka"
+	},
+	"existingLabel": {
+		"message": "Postojeći"
+	},
+	"failedLabel": {
+		"message": "Neuspješan"
+	},
+	"succeededLabel": {
+		"message": "Uspješan"
+	},
+	"wdw_bulkOperationTitle": {
+		"message": "Tekući…"
+	},
+	"wdw_cardbookConfigurationAddCustomFieldTitle": {
+		"message": "Uređivač prilagođenih polja"
+	},
+	"customFieldCodeLabel": {
+		"message": "Ime polja:"
+	},
+	"customFieldLabelLabel": {
+		"message": "Naziv polja:"
+	},
+	"mailAccountLabel": {
+		"message": "Poštanski račun:"
+	},
+	"addressbookLabel": {
+		"message": "Adresar:"
+	},
+	"categoryLabel": {
+		"message": "Kategorija:"
+	},
+	"wdw_cardbookConfigurationAddIMPPTitle": {
+		"message": "Uređivač protokola"
+	},
+	"IMPPCodeLabel": {
+		"message": "Kod:"
+	},
+	"IMPPLabelLabel": {
+		"message": "Označiti:"
+	},
+	"IMPPProtocolLabel": {
+		"message": "Protokol:"
+	},
+	"wdw_cardbookConfigurationAddVcardTitle": {
+		"message": "Odaberi vCard"
+	},
+	"contactLabel": {
+		"message": "Kontakt:"
+	},
+	"filenameLabel": {
+		"message": "Priložite datoteku:"
+	},
+	"vCardLabel": {
+		"message": "vCard"
+	},
+	"CardBookTabLabel": {
+		"message": "Kontakti karticu"
+	},
+	"IMPPsTabLabel": {
+		"message": "Internet komunikacija"
+	},
+	"customFieldsTabLabel": {
+		"message": "Prilagodi polja"
+	},
+	"listsTabLabel": {
+		"message": "Popisi"
+	},
+	"syncTabLabel": {
+		"message": "Sync."
+	},
+	"emailTabLabel": {
+		"message": "E-pošta"
+	},
+	"birthdaylistTabLabel": {
+		"message": "Godišnjica"
+	},
+	"synclistTabLabel": {
+		"message": "Podsjetnik o godišnjicama"
+	},
+	"integrationGroupboxLabel": {
+		"message": "Uključenje Thunderbird-a"
+	},
+	"autocompletionLabel": {
+		"message": "Automatsko okončanje e-pošta adresa"
+	},
+	"autocompletionAccesskey": {
+		"message": "o"
+	},
+	"autocompletionTooltip": {
+		"message": "Produžava standardno automatsko okončanje kontakata iz adresara iz Thunderbird-a s automatskim okončanjem kontakata iz adresara u Kontakti-u."
+	},
+	"autocompleteSortByPopularityLabel": {
+		"message": "Sortiraj e-pošta adrese prema popularnosti"
+	},
+	"autocompleteSortByPopularityAccesskey": {
+		"message": "p"
+	},
+	"autocompleteProposeConcatEmailsLabel": {
+		"message": "Predložite povezane poruke e-pošte po kontaktu"
+	},
+	"autocompleteProposeConcatEmailsAccesskey": {
+		"message": "c"
+	},
+	"autocompleteShowAddressbookLabel": {
+		"message": "Pokaži naziv adresara"
+	},
+	"autocompleteShowAddressbookAccesskey": {
+		"message": "S"
+	},
+	"autocompleteWithColorLabel": {
+		"message": "Upotrijebi boju adresara"
+	},
+	"autocompleteWithColorAccesskey": {
+		"message": "c"
+	},
+	"autocompleteRestrictSearchLabel": {
+		"message": "Ograničite polja za pretraživanje"
+	},
+	"autocompleteRestrictSearchAccesskey": {
+		"message": "P"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Uredi"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "U"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Vrati na uobičajeno"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "V"
+	},
+	"useColorLabel": {
+		"message": "Upotrijebi boju adresara za:"
+	},
+	"useColorBackgroundLabel": {
+		"message": "Boja pozadine"
+	},
+	"useColorBackgroundAccesskey": {
+		"message": "B"
+	},
+	"useColorTextLabel": {
+		"message": "Boja teksta"
+	},
+	"useColorTextAccesskey": {
+		"message": "T"
+	},
+	"useColorNothingLabel": {
+		"message": "Ne radi ništa"
+	},
+	"useColorNothingAccesskey": {
+		"message": "N"
+	},
+	"exclusiveLabel": {
+		"message": "Jedinstven izvor za kontakte"
+	},
+	"exclusiveAccesskey": {
+		"message": "U"
+	},
+	"exclusiveTooltip": {
+		"message": "Ako onemogućena ova opcija omogućava povrat kontakata u Thunderbird standardni adresar za žute zvjezdice, za prikaz naziva e-pošta i automatsko okončanje e-pošta."
+	},
+	"accountsRestrictionsLabel": {
+		"message": "Ograničenja poštanskog računa"
+	},
+	"accountsRestrictionsEnabledLabel": {
+		"message": "Omogućen"
+	},
+	"accountsRestrictionsMailNameLabel": {
+		"message": "Poštanksi račun"
+	},
+	"accountsRestrictionsABNameLabel": {
+		"message": "Adresar"
+	},
+	"accountsRestrictionsCatNameLabel": {
+		"message": "Kategorija"
+	},
+	"accountsRestrictionsIncludeNameLabel": {
+		"message": "Vrsta"
+	},
+	"addRestrictionLabel": {
+		"message": "Dodaj"
+	},
+	"addRestrictionAccesskey": {
+		"message": "A"
+	},
+	"renameRestrictionLabel": {
+		"message": "Uredi"
+	},
+	"renameRestrictionAccesskey": {
+		"message": "E"
+	},
+	"deleteRestrictionLabel": {
+		"message": "Izbriši"
+	},
+	"deleteRestrictionAccesskey": {
+		"message": "b"
+	},
+	"emailsCollectionLabel": {
+		"message": "Pokupi izlaznu e-pošta"
+	},
+	"emailsCollectionTooltip": {
+		"message": "Produžava prikupljanje standardnih izlaznih e-pošta adresa u Thunderbird-u. Ako omogućen, e-pošta adrese nisu prisutne ni u jednom adresaru Kontakti-a adresar će biti dodat odabranom adresaru il adresarima."
+	},
+	"emailsCollectionEnabledLabel": {
+		"message": "Omogućen"
+	},
+	"emailsCollectionMailNameLabel": {
+		"message": "Poštanski račun"
+	},
+	"emailsCollectionABNameLabel": {
+		"message": "Adresar"
+	},
+	"emailsCollectionCatNameLabel": {
+		"message": "Kategorija"
+	},
+	"addEmailsCollectionLabel": {
+		"message": "Dodaj"
+	},
+	"addEmailsCollectionAccesskey": {
+		"message": "A"
+	},
+	"renameEmailsCollectionLabel": {
+		"message": "Uredi"
+	},
+	"renameEmailsCollectionAccesskey": {
+		"message": "E"
+	},
+	"deleteEmailsCollectionLabel": {
+		"message": "Izbriši"
+	},
+	"deleteEmailsCollectionAccesskey": {
+		"message": "b"
+	},
+	"logGroupboxLabel": {
+		"message": "Log - unesi"
+	},
+	"debugModeLabel": {
+		"message": "Način Uklanjanja"
+	},
+	"debugModeAccesskey": {
+		"message": "m"
+	},
+	"debugModeTooltip": {
+		"message": "Omogući način uklanjanja za duži unos."
+	},
+	"statusInformationLineNumberLabel": {
+		"message": "Broj linija čuvanih u dosjeu sa zapisima:"
+	},
+	"statusInformationLineNumberAccesskey": {
+		"message": "k"
+	},
+	"tabsEditingGroupboxLabel": {
+		"message": "Pokaži Tabs trake"
+	},
+	"listTabLabel": {
+		"message": "Popis"
+	},
+	"listTabAccesskey": {
+		"message": "L"
+	},
+	"mailPopularityTab.conf.label": {
+		"message": "Popularnost pošte"
+	},
+	"mailPopularityTab.conf.accesskey": {
+		"message": "M"
+	},
+	"technicalTab.conf.label": {
+		"message": "Tehnički"
+	},
+	"technicalTab.conf.accesskey": {
+		"message": "T"
+	},
+	"vCardTab.conf.label": {
+		"message": "vCard"
+	},
+	"vCardTab.conf.accesskey": {
+		"message": "V"
+	},
+	"advancedTab1Label": {
+		"message": "Napredan"
+	},
+	"advancedTab.conf.label": {
+		"message": "Napredan (samo za vCard 4.0)"
+	},
+	"advancedTab.conf.accesskey": {
+		"message": "N"
+	},
+	"localizeEditingGroupboxLabel": {
+		"message": "Lociraj s"
+	},
+	"localizeEngineOpenStreetMapLabel": {
+		"message": "Otvori StreetMap"
+	},
+	"localizeEngineOpenStreetMapAccesskey": {
+		"message": "O"
+	},
+	"localizeEngineGoogleMapsLabel": {
+		"message": "Google mape"
+	},
+	"localizeEngineGoogleMapsAccesskey": {
+		"message": "G"
+	},
+	"localizeEngineBingMapsLabel": {
+		"message": "Bing mape"
+	},
+	"localizeEngineBingMapsAccesskey": {
+		"message": "B"
+	},
+	"localizeTargetLabel": {
+		"message": "Otvori vanjske veze"
+	},
+	"localizeTargetInLabel": {
+		"message": "Unutar Thunderbird-a"
+	},
+	"localizeTargetInAccesskey": {
+		"message": "I"
+	},
+	"localizeTargetOutLabel": {
+		"message": "Izvan Thunderbird-a"
+	},
+	"localizeTargetOutAccesskey": {
+		"message": "U"
+	},
+	"showNameAsLabel": {
+		"message": "Pokaži imena kao"
+	},
+	"showNameAsLFLabel": {
+		"message": "Prezime i ime"
+	},
+	"showNameAsLFAccesskey": {
+		"message": "F"
+	},
+	"showNameAsLFCommaLabel": {
+		"message": "Prezime, ime"
+	},
+	"showNameAsLFCommaAccesskey": {
+		"message": "i"
+	},
+	"showNameAsFLLabel": {
+		"message": "Ime i prezime"
+	},
+	"showNameAsFLAccesskey": {
+		"message": "e"
+	},
+	"showNameAsDSPLabel": {
+		"message": "Pokaži ime"
+	},
+	"showNameAsDSPAccesskey": {
+		"message": "D"
+	},
+	"adrFormulaCaption": {
+		"message": "Adresa"
+	},
+	"adrFormulaLabel": {
+		"message": "Formula formata adrese:"
+	},
+	"adrFormulaAccesskey": {
+		"message": "r"
+	},
+	"resetAdrFormulaLabel": {
+		"message": "Vrati na uobičajeno"
+	},
+	"resetAdrFormulaAccesskey": {
+		"message": "j"
+	},
+	"miscEditingGroupboxLabel": {
+		"message": "Sve i svašta"
+	},
+	"preferEmailEditionLabel": {
+		"message": "Dvaput kliknite uredi kontakte umjesto pošalji"
+	},
+	"preferEmailEditionAccesskey": {
+		"message": "k"
+	},
+	"dateDisplayedFormatLabel": {
+		"message": "Tekstualni oblik datuma:"
+	},
+	"dateDisplayedFormatAccesskey": {
+		"message": "d"
+	},
+	"defaultRegionLabel": {
+		"message": "??Default Region:??"
+	},
+	"defaultRegionAccesskey": {
+		"message": "D"
+	},
+	"defaultRegionTooltip": {
+		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"preferenceGroupboxLabel": {
+		"message": "Polje PREF"
+	},
+	"usePreferenceValueLabel": {
+		"message": "Koristite željenu vrijednost (samo za vCard 4.0)"
+	},
+	"usePreferenceValueAccesskey": {
+		"message": "ž"
+	},
+	"preferenceValueLabel": {
+		"message": "Naziv vrijednosti polja PREF (samo za vCard 4.0)"
+	},
+	"preferenceValueAccesskey": {
+		"message": "V"
+	},
+	"ABtypesGroupboxLabel": {
+		"message": "Adresar"
+	},
+	"typesCategoryGoogleLabel": {
+		"message": "Google"
+	},
+	"typesCategoryGoogleAccesskey": {
+		"message": "G"
+	},
+	"typesCategoryAppleLabel": {
+		"message": "Apple"
+	},
+	"typesCategoryAppleAccesskey": {
+		"message": "A"
+	},
+	"typesCategoryYahooLabel": {
+		"message": "Yahoo!"
+	},
+	"typesCategoryYahooAccesskey": {
+		"message": "Y"
+	},
+	"typesCategoryOthersLabel": {
+		"message": "Drugi"
+	},
+	"typesCategoryOthersAccesskey": {
+		"message": "D"
+	},
+	"typesGroupboxLabel": {
+		"message": "Vrste"
+	},
+	"typesCategoryAdrLabel": {
+		"message": "Adresa"
+	},
+	"typesCategoryAdrAccesskey": {
+		"message": "S"
+	},
+	"typesCategoryEmailLabel": {
+		"message": "E-pošta"
+	},
+	"typesCategoryEmailAccesskey": {
+		"message": "m"
+	},
+	"typesCategoryImppLabel": {
+		"message": "IMPP"
+	},
+	"typesCategoryImppAccesskey": {
+		"message": "I"
+	},
+	"typesCategoryTelLabel": {
+		"message": "Telefon"
+	},
+	"typesCategoryTelAccesskey": {
+		"message": "H"
+	},
+	"typesCategoryUrlLabel": {
+		"message": "URL"
+	},
+	"typesCategoryUrlAccesskey": {
+		"message": "U"
+	},
+	"typesLabelLabel": {
+		"message": "Oznaka"
+	},
+	"addTypeLabel": {
+		"message": "Dodaj"
+	},
+	"addTypeAccesskey": {
+		"message": "A"
+	},
+	"renameTypeLabel": {
+		"message": "Uredi"
+	},
+	"renameTypeAccesskey": {
+		"message": "E"
+	},
+	"deleteTypeLabel": {
+		"message": "Izbriši"
+	},
+	"deleteTypeAccesskey": {
+		"message": "b"
+	},
+	"resetTypeLabel": {
+		"message": "Vrati na uobičajeno"
+	},
+	"resetTypeAccesskey": {
+		"message": "j"
+	},
+	"IMPPGroupboxWarn": {
+		"message": "Ovako programirano omogućava komunikaciju putem Interneta koristeći željeni protokol."
+	},
+	"IMPPGroupboxLabel": {
+		"message": "Internet komunikacije"
+	},
+	"preferIMPPPrefLabel": {
+		"message": "Više volim Internet komunikacije označene s"
+	},
+	"preferIMPPPrefAccesskey": {
+		"message": "P"
+	},
+	"preferIMPPPrefWarn": {
+		"message": "Ako nije označena adresa, veza je ponuđena za sve adrese tog kontakta."
+	},
+	"IMPPCodeHeaderLabel": {
+		"message": "Kod"
+	},
+	"IMPPLabelHeaderLabel": {
+		"message": "Naziv"
+	},
+	"IMPPProtocolHeaderLabel": {
+		"message": "Protokol"
+	},
+	"addIMPPLabel": {
+		"message": "Dodaj"
+	},
+	"addIMPPAccesskey": {
+		"message": "A"
+	},
+	"renameIMPPLabel": {
+		"message": "Uredi"
+	},
+	"renameIMPPAccesskey": {
+		"message": "E"
+	},
+	"deleteIMPPLabel": {
+		"message": "Izbriši"
+	},
+	"deleteIMPPAccesskey": {
+		"message": "b"
+	},
+	"URLPhoneGroupboxLabel": {
+		"message": "??URL opening for soft phones??"
+	},
+	"URLPhoneGroupboxWarn": {
+		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain $1, referring to the phone number.??"
+	},
+	"URLPhoneURLLabel": {
+		"message": "URL:"
+	},
+	"URLPhoneURLAccesskey": {
+		"message": "U"
+	},
+	"URLPhoneUserLabel": {
+		"message": "Korisnik:"
+	},
+	"URLPhoneUserAccesskey": {
+		"message": "K"
+	},
+	"URLPhonePasswordLabel": {
+		"message": "Lozinka:"
+	},
+	"URLPhonePasswordAccesskey": {
+		"message": "L"
+	},
+	"URLPhonePasswordShowLabel": {
+		"message": "Pokaži"
+	},
+	"URLPhonePasswordShowAccesskey": {
+		"message": "P"
+	},
+	"URLPhoneBackgroundLabel": {
+		"message": "??Run in background??"
+	},
+	"URLPhoneBackgroundAccesskey": {
+		"message": "S"
+	},
+	"encryptionGroupboxLabel": {
+		"message": "Kriptiranje"
+	},
+	"encryptionExplanation": {
+		"message": "??CardBook may encrypt your local data. For this purpose, it will use a secret key stored in the Password Manager. If you loose this key, the recovery of your local data is impossible. For a complete protection, activating the Thunderbird master password feature is recommended.??"
+	},
+	"localDataEncryptionEnabledLabel": {
+		"message": "??Encrypt locally cached cards??"
+	},
+	"localDataEncryptionEnabledAccesskey": {
+		"message": "E"
+	},
+	"customFieldRankHeader": {
+		"message": "Rangiranje"
+	},
+	"customFieldCodeHeader": {
+		"message": "Ime polja"
+	},
+	"customFieldLabelHeader": {
+		"message": "Naziv polja"
+	},
+	"customFieldsPersTitleLabel": {
+		"message": "Osobne informacije"
+	},
+	"customFieldsPersTitleAccesskey": {
+		"message": "P"
+	},
+	"customFieldsOrgTitleLabel": {
+		"message": "??Professional Information??"
+	},
+	"customFieldsOrgTitleAccesskey": {
+		"message": "r"
+	},
+	"addCustomFieldsLabel": {
+		"message": "Dodaj"
+	},
+	"addCustomFieldsAccesskey": {
+		"message": "A"
+	},
+	"renameCustomFieldsLabel": {
+		"message": "Uredi"
+	},
+	"renameCustomFieldsAccesskey": {
+		"message": "E"
+	},
+	"deleteCustomFieldsLabel": {
+		"message": "Izbriši"
+	},
+	"deleteCustomFieldsAccesskey": {
+		"message": "b"
+	},
+	"orgWarn": {
+		"message": "Polje ORG može imati vrijednost organiziranog teksta sastavljenog od dijelova odvojenih znakom TOČKA SA ZAREZOM(npr. : vaša kompanija;vaša usluga;vaš odjel). Polja niže opisuju dijelove naziva ove strukture."
+	},
+	"orgRankLabel": {
+		"message": "Rangiranje"
+	},
+	"orgLabelLabel": {
+		"message": "Naziv polja"
+	},
+	"listPanelLabel": {
+		"message": "Ako vaš poslužitelj ne podržava kategorije (kao Google, Apple, Zimbra, itd…), dobar način za slanje e-pošta skupinama jest putem liste. vCard 3.0 normalno ne podržava liste, no to se može postići pomoću prilagođenih polja, pa ako se želite koristiti popisima u vCard 3.0, morate definirati ta polja."
+	},
+	"listGroupboxLabel": {
+		"message": "Prilagođena polja za popise"
+	},
+	"kindCustomLabel": {
+		"message": "Vrsta:"
+	},
+	"kindCustomAccesskey": {
+		"message": "K"
+	},
+	"memberCustomLabel": {
+		"message": "Član:"
+	},
+	"memberCustomAccesskey": {
+		"message": "M"
+	},
+	"resetListLabel": {
+		"message": "Vrati na uobičajeno"
+	},
+	"resetListAccesskey": {
+		"message": "j"
+	},
+	"syncGroupboxLabel": {
+		"message": "Sinkronizirati"
+	},
+	"syncWarn": {
+		"message": "Sinhroniziranje raznosi vaše preinake udaljenom poslužitelju i poslužiteljeve preinake vama."
+	},
+	"syncAfterChangeLabel": {
+		"message": "??Synchronize after changes??"
+	},
+	"syncAfterChangeAccesskey": {
+		"message": "c"
+	},
+	"initialSyncLabel": {
+		"message": "Pokreni početnu sinhronizaciju kad počne Thunderbird"
+	},
+	"initialSyncAccesskey": {
+		"message": "R"
+	},
+	"initialSyncDelayLabel": {
+		"message": "Početno kašnjenje sinkronizacije (sekundi):"
+	},
+	"initialSyncDelayAccesskey": {
+		"message": "P"
+	},
+	"solveConflictsLabel": {
+		"message": "??If a contact was updated both on server and locally:??"
+	},
+	"solveConflictsLocalLabel": {
+		"message": "Draža mi je lokalna preinaka"
+	},
+	"solveConflictsLocalAccesskey": {
+		"message": "L"
+	},
+	"solveConflictsRemoteLabel": {
+		"message": "??Prefer the server modification??"
+	},
+	"solveConflictsRemoteAccesskey": {
+		"message": "S"
+	},
+	"solveConflictsUserLabel": {
+		"message": "??Ask user??"
+	},
+	"solveConflictsUserAccesskey": {
+		"message": "A"
+	},
+	"maxModifsPushedLabel": {
+		"message": "Maksimalni broj promjena potisnutih po sinkronizaciji:"
+	},
+	"maxModifsPushedAccesskey": {
+		"message": "M"
+	},
+	"requestsGroupboxLabel": {
+		"message": "Zahtjevi"
+	},
+	"requestsTimeoutLabel": {
+		"message": "Pauza (sekundi):"
+	},
+	"requestsTimeoutAccesskey": {
+		"message": "T"
+	},
+	"multigetLabel": {
+		"message": "Za zahtjeve GET, skupni kontakti preko:"
+	},
+	"multigetAccesskey": {
+		"message": "G"
+	},
+	"discoveryGroupboxLabel": {
+		"message": "Otkriće adresara"
+	},
+	"discoveryWarn": {
+		"message": "Na svakoj sinkronizaciji, potraga za URL-ovima u nastavku bit će pokrenuta da biste tražili nove ili obrisane adresare."
+	},
+	"discoveryAccountsGroupboxLabel": {
+		"message": "Računi"
+	},
+	"advancedSyncGroupboxLabel": {
+		"message": "Napredna svojstva"
+	},
+	"decodeReportLabel": {
+		"message": "Dekodiraj URLs za REPORT zahtjeve"
+	},
+	"decodeReportAccesskey": {
+		"message": "D"
+	},
+	"miscEmailGroupboxLabel": {
+		"message": "Šalje e-poštae"
+	},
+	"preferEmailPrefLabel": {
+		"message": "Najdraže e-pošta adrese označene s"
+	},
+	"preferEmailPrefAccesskey": {
+		"message": "P"
+	},
+	"preferEmailPrefWarn": {
+		"message": "Ako nijedna adresa nije označena, poruka se šalje na sve adrese tog kontakta."
+	},
+	"warnEmptyEmailsLabel": {
+		"message": "Upozori me ako pokušavam poslati e-pošta kontaktima bez e-pošta adrese."
+	},
+	"warnEmptyEmailsAccesskey": {
+		"message": "W"
+	},
+	"useOnlyEmailLabel": {
+		"message": "Koristite samo adrese e-pošte, bez njihovih naziva zaslona"
+	},
+	"useOnlyEmailAccesskey": {
+		"message": "O"
+	},
+	"attachVCardWarn": {
+		"message": "Da automatski dodate vCard uz svoje e-poštae, odaberite za svaki e-pošta račun.Ako je aktivirana, Kontakti će dodati tu vCard svakoj izlaznoj pošti s ovog računa."
+	},
+	"attachVCardGroupboxLabel": {
+		"message": "Priključi se u vCard"
+	},
+	"accountsVCardsEnabledLabel": {
+		"message": "Omogućen"
+	},
+	"accountsVCardsMailLabel": {
+		"message": "Naziv računa"
+	},
+	"accountsVCardsABNameLabel": {
+		"message": "Adresar"
+	},
+	"accountsVCardsFileNameLabel": {
+		"message": "Priložite datoteku"
+	},
+	"accountsVCardsFnLabel": {
+		"message": "Kontakt"
+	},
+	"addVCardLabel": {
+		"message": "Dodaj"
+	},
+	"addVCardAccesskey": {
+		"message": "A"
+	},
+	"renameVCardLabel": {
+		"message": "Uredi"
+	},
+	"renameVCardAccesskey": {
+		"message": "E"
+	},
+	"deleteVCardLabel": {
+		"message": "Izbriši"
+	},
+	"deleteVCardAccesskey": {
+		"message": "b"
+	},
+	"birthdayListWarn": {
+		"message": "Traži samo godišnjice unutar Kontakti adresara."
+	},
+	"addressbooksGroupboxLabel": {
+		"message": "Adresar"
+	},
+	"selectAllABsLabel": {
+		"message": "Odaberi sve"
+	},
+	"searchForLabel": {
+		"message": "Traži:"
+	},
+	"bday.conf.label": {
+		"message": "Rođendan"
+	},
+	"bday.conf.accesskey": {
+		"message": "R"
+	},
+	"anniversary.conf.label": {
+		"message": "Godišnjica (samo za vCard 4.0)"
+	},
+	"anniversary.conf.accesskey": {
+		"message": "G"
+	},
+	"deathdate.conf.label": {
+		"message": "Datum smrti (samo za vCard 4.0)"
+	},
+	"deathdate.conf.accesskey": {
+		"message": "s"
+	},
+	"eventsLabel": {
+		"message": "Događaje"
+	},
+	"eventsAccesskey": {
+		"message": "D"
+	},
+	"calendarsGroupboxLabel": {
+		"message": "Kalendari"
+	},
+	"selectAllCalendarsLabel": {
+		"message": "Odaberi sve"
+	},
+	"remindersTabLabel": {
+		"message": "Podsjetnici"
+	},
+	"remindViaPopupWindowGroupboxLabel": {
+		"message": "??Remind via Popup Window??"
+	},
+	"numberOfDaysForSearchingLabel": {
+		"message": "Broj dana do provjere godišnjice za:"
+	},
+	"numberOfDaysForSearchingAccesskey": {
+		"message": "N"
+	},
+	"showPopupOnStartupLabel": {
+		"message": "Pokaži okno popup pri uključenju"
+	},
+	"showPopupOnStartupAccesskey": {
+		"message": "S"
+	},
+	"showPeriodicPopupLabel": {
+		"message": "Pokaži dnevne popup poruke"
+	},
+	"showPeriodicPopupAccesskey": {
+		"message": "d"
+	},
+	"periodicPopupTimeLabel": {
+		"message": "Pokaži vrijeme (hh:mm):"
+	},
+	"periodicPopupTimeAccesskey": {
+		"message": "i"
+	},
+	"showPopupEvenIfNoBirthdayLabel": {
+		"message": "Pokaži okno popup kad je popis godišnjica prazan"
+	},
+	"showPopupEvenIfNoBirthdayAccesskey": {
+		"message": "h"
+	},
+	"remindViaLightningGroupboxLabel": {
+		"message": "Podsjeti preko Thunderbird Lightning Calendar Extension"
+	},
+	"numberOfDaysForWritingLabel": {
+		"message": "Broj dana do pisanja godišnjica:"
+	},
+	"numberOfDaysForWritingAccesskey": {
+		"message": "w"
+	},
+	"syncWithLightningOnStartupLabel": {
+		"message": "Sinhroniziraj s Lightning kod uključenja"
+	},
+	"syncWithLightningOnStartupAccesskey": {
+		"message": "L"
+	},
+	"calendarEntryTitleLabel": {
+		"message": "Naslov za kalendarski događaj:"
+	},
+	"calendarEntryTitleTooltip": {
+		"message": "Naslov predloška za kalendarski događaj. Treba sadržavati dva rezervirana mjesta &#37;S zamijenjena imenom i dobi. Ako je polje prazno, koristi se standardna poruka."
+	},
+	"calendarEntryTitleAccesskey": {
+		"message": "T"
+	},
+	"resetCalendarEntryTitleButtonLabel": {
+		"message": "Vrati na uobičajeno"
+	},
+	"resetCalendarEntryTitleButtonAccesskey": {
+		"message": "V"
+	},
+	"calendarEntryTimeLabel": {
+		"message": "Vrijeme za kalendarski događaj (ss:mm):"
+	},
+	"calendarEntryTimeAccesskey": {
+		"message": "m"
+	},
+	"calendarEntryWholeDayLabel": {
+		"message": "Cijeli dan događaj iz kalendara"
+	},
+	"calendarEntryWholeDayAccesskey": {
+		"message": "y"
+	},
+	"calendarEntryAlarmLabel": {
+		"message": "Alarmi do b sati za kalendarske događaje (Primjer: 4,+1):"
+	},
+	"calendarEntryAlarmTooltip": {
+		"message": "Unesi koliko dana ranije da te Lightning upozori na godišnjicu na koju te treba podsjetiti. Ako je polje prazno, neće biti nikakvih alarma. Ako želite više alarma, unesite alarme u popis odvojene zarezima."
+	},
+	"calendarEntryAlarmAccesskey": {
+		"message": "n"
+	},
+	"calendarEntryCategoriesLabel": {
+		"message": "Kategorija(-e) za događaj u kalendaru:"
+	},
+	"calendarEntryCategoriesTooltip": {
+		"message": "Jedna ili više kategorija, odvojene zarezom. Ako je polje prazno, ne bi bilo kategorije."
+	},
+	"calendarEntryCategoriesAccesskey": {
+		"message": "g"
+	},
+	"categoriesPicker.label": {
+		"message": "Filter kategorija:"
+	},
+	"categoriesPicker.accesskey": {
+		"message": "t"
+	},
+	"deleteAddrBookCard.label": {
+		"message": "Obriši"
+	},
+	"deleteAddrBookCard.accesskey": {
+		"message": "O"
+	},
+	"editAddrBookCard.label": {
+		"message": "Uredi"
+	},
+	"editAddrBookCard.accesskey": {
+		"message": "E"
+	},
+	"addressbookPicker.label": {
+		"message": "Adresar:"
+	},
+	"addressbookPicker.accesskey": {
+		"message": "r"
+	},
+	"searchContacts.label": {
+		"message": "Pretraži kontakte:"
+	},
+	"searchContacts.accesskey": {
+		"message": "o"
+	},
+	"SearchNameOrEmail.label": {
+		"message": "Ime ili e-pošta"
+	},
+	"addtoToFieldMenu.label": {
+		"message": "Dodaj u polje Prima"
+	},
+	"addtoToFieldMenu.accesskey": {
+		"message": "D"
+	},
+	"addtoCcFieldMenu.label": {
+		"message": "Dodaj u polje Cc"
+	},
+	"addtoCcFieldMenu.accesskey": {
+		"message": "C"
+	},
+	"addtoBccFieldMenu.label": {
+		"message": "Dodaj u polje Bcc"
+	},
+	"addtoBccFieldMenu.accesskey": {
+		"message": "B"
+	},
+	"addtoReplytoFieldMenu.label": {
+		"message": "Dodaj u polje Odgovor na:"
+	},
+	"addtoReplytoFieldMenu.accesskey": {
+		"message": "l"
+	},
+	"toButton.label": {
+		"message": "Dodaj u Prima:"
+	},
+	"toButton.accesskey": {
+		"message": "D"
+	},
+	"ccButton.label": {
+		"message": "Dodaj u Cc:"
+	},
+	"ccButton.accesskey": {
+		"message": "C"
+	},
+	"bccButton.label": {
+		"message": "Dodaj u Bcc:"
+	},
+	"bccButton.accesskey": {
+		"message": "B"
+	},
+	"replytoButton.label": {
+		"message": "Dodaj u Odgovor na:"
+	},
+	"replytoButton.accesskey": {
+		"message": "l"
+	},
+	"newContactAbContext.label": {
+		"message": "Novi kontakt"
+	},
+	"newContactAbContext.accesskey": {
+		"message": "k"
+	},
+	"newListAbContext.label": {
+		"message": "Novi popis"
+	},
+	"newListAbContext.accesskey": {
+		"message": "p"
+	},
+	"wdw_cardbookWindowLabel": {
+		"message": "Kontakti"
+	},
+	"enableAccountsTooltip": {
+		"message": "Omogući ili spriječi potragu i sinhronizaciju adresara."
+	},
+	"colorAccountsTooltip": {
+		"message": "oboji rezultat potrage za adresarom (upotrijebi kad se potragom nađe nekoliko adresara)."
+	},
+	"readonlyAccountsTooltip": {
+		"message": "Stavi adresar u moguće je samo-za-čitanje ili čitanje i pisanje."
+	},
+	"searchRemoteLabel": {
+		"message": "Ovaj adresar prikazuje kontakte samo nakon pretrage"
+	},
+	"columnChooser2.tooltip": {
+		"message": "Odaberite stupce za prikaz"
+	},
+	"cardbookAccountMenuLabel": {
+		"message": "Adresar"
+	},
+	"cardbookAccountMenuAddServerLabel": {
+		"message": "Novi Adresar"
+	},
+	"cardbookAccountMenuEditServerLabel": {
+		"message": "Uredi adresar"
+	},
+	"cardbookAccountMenuCloseServerLabel": {
+		"message": "Poništi adresar"
+	},
+	"cardbookAccountMenuSyncLabel": {
+		"message": "Sinhroniziraj adresar"
+	},
+	"cardbookAccountMenuSyncsLabel": {
+		"message": "Sinhroniziraj sve adresare"
+	},
+	"cardbookContactsMenuLabel": {
+		"message": "Kontakti"
+	},
+	"cardbookToolsMenuLabel": {
+		"message": "Sredstva"
+	},
+	"cardbookToolsMenuBirthdayListLabel": {
+		"message": "Pogledaj listu godišnjica"
+	},
+	"cardbookToolsMenuSyncLightningLabel": {
+		"message": "Dodaj godišnjice u kalendar"
+	},
+	"cardbookToolsMenuFindAllDuplicatesLabel": {
+		"message": "Nađi duplikate kontakata u svim adresarima"
+	},
+	"cardbookToolsMenuFindSingleDuplicatesLabel": {
+		"message": "Nađi duplikate kontakata u postojećem adresaru"
+	},
+	"cardbookToolsMenuPrefsLabel": {
+		"message": "Postavke kontakti"
+	},
+	"cardbookToolbarLabel": {
+		"message": "Alatna traka kontakti"
+	},
+	"cardbookToolbarAccesskey": {
+		"message": "a"
+	},
+	"cardbookABPaneToolbarLabel": {
+		"message": "Kontakti adresar okno alatne trake"
+	},
+	"cardbookABPaneToolbarAccesskey": {
+		"message": "d"
+	},
+	"CustomizeCardBookToolbarLabel": {
+		"message": "Prilagodi…"
+	},
+	"CustomizeCardBookToolbarAccesskey": {
+		"message": "C"
+	},
+	"cardbookToolbarAddServerButtonLabel": {
+		"message": "Novi adresar"
+	},
+	"cardbookToolbarAddServerButtonTooltip": {
+		"message": "Dodaj ili obriši udaljeni ili mjesni adresar"
+	},
+	"cardbookToolbarSyncButtonLabel": {
+		"message": "Sihroniziraj"
+	},
+	"cardbookToolbarSyncButtonTooltip": {
+		"message": "Sihroniziraj sve udaljene adresare"
+	},
+	"cardbookToolbarWriteButtonLabel": {
+		"message": "Piši"
+	},
+	"cardbookToolbarWriteButtonTooltip": {
+		"message": "Kreiraj novu poruku"
+	},
+	"cardbookToolbarChatButtonLabel": {
+		"message": "Poveži s"
+	},
+	"cardbookToolbarChatButtonTooltip": {
+		"message": "Pošalji smjesta poruku ili chat-razgovor"
+	},
+	"cardbookToolbarConfigurationButtonLabel": {
+		"message": "Postavke"
+	},
+	"cardbookToolbarConfigurationButtonTooltip": {
+		"message": "Alatna traka kontakti"
+	},
+	"cardbookToolbarAddContactButtonLabel": {
+		"message": "Novi kontakt"
+	},
+	"cardbookToolbarAddContactButtonTooltip": {
+		"message": "Kreiraj novi adresar kontakata"
+	},
+	"cardbookToolbarAddListButtonLabel": {
+		"message": "Novi popis"
+	},
+	"cardbookToolbarAddListButtonTooltip": {
+		"message": "Novi popis za poštu"
+	},
+	"cardbookToolbarEditButtonLabel": {
+		"message": "Uredi"
+	},
+	"cardbookToolbarEditButtonTooltip": {
+		"message": "Uredi odabrane kontakte"
+	},
+	"cardbookToolbarRemoveButtonLabel": {
+		"message": "Obriši"
+	},
+	"cardbookToolbarRemoveButtonTooltip": {
+		"message": "Obriši odabrane kontakte"
+	},
+	"cardbookToolbarPrintButtonLabel": {
+		"message": "Pregled ispisa"
+	},
+	"cardbookToolbarPrintButtonTooltip": {
+		"message": "Pregled ispisa odabranog teksta"
+	},
+	"cardbookToolbarBackButtonLabel": {
+		"message": "Vrati"
+	},
+	"cardbookToolbarBackButtonTooltip": {
+		"message": "??Go back one action??"
+	},
+	"cardbookToolbarForwardButtonLabel": {
+		"message": "Ponovi"
+	},
+	"cardbookToolbarForwardButtonTooltip": {
+		"message": "??Go forward one action??"
+	},
+	"cardbookToolbarAppMenuButtonLabel": {
+		"message": "Kontakti meni"
+	},
+	"cardbookToolbarAppMenuButtonTooltip": {
+		"message": "Kontakti meni"
+	},
+	"cardbookToolbarSearchBoxLabel": {
+		"message": "Potraga kontakata"
+	},
+	"cardbookToolbarSearchBoxTooltip": {
+		"message": "Potraga kontakata"
+	},
+	"cardbookToolbarComplexSearchLabel": {
+		"message": "Spremljene pretrage"
+	},
+	"cardbookToolbarComplexSearchTooltip": {
+		"message": "Kreiraj novu dosje sačuvane potrage"
+	},
+	"cardbookToolbarThMenuButtonLabel": {
+		"message": "AppMenu"
+	},
+	"cardbookToolbarThMenuButtonTooltip": {
+		"message": "Pokaži Thunderbird meni"
+	},
+	"cardbookToolbarABMenuLabel": {
+		"message": "??Address Books View??"
+	},
+	"cardbookToolbarABMenuTooltip": {
+		"message": "??Filter how address books are displayed??"
+	},
+	"generalTabLabel": {
+		"message": "Općenito"
+	},
+	"mailPopularityTabLabel": {
+		"message": "Popularnost pošte"
+	},
+	"technicalTabLabel": {
+		"message": "Tehnički"
+	},
+	"vCardTabLabel": {
+		"message": "vCard-kartica"
+	},
+	"noteTabLabel": {
+		"message": "Bilješke"
+	},
+	"advancedTabLabel": {
+		"message": "Napredan"
+	},
+	"miscGroupboxLabel": {
+		"message": "Sve i svašta"
+	},
+	"othersGroupboxLabel": {
+		"message": "Drugi"
+	},
+	"techGroupboxLabel": {
+		"message": "Tehnički"
+	},
+	"labelGroupboxLabel": {
+		"message": "Oznake"
+	},
+	"agentLabel": {
+		"message": "Agent"
+	},
+	"keyLabel": {
+		"message": "Ključ"
+	},
+	"photolocalURILabel": {
+		"message": "Lokalna fotografija"
+	},
+	"logolocalURILabel": {
+		"message": "Lokalni logo"
+	},
+	"soundlocalURILabel": {
+		"message": "Local sound"
+	},
+	"photoURILabel": {
+		"message": "Fotografija"
+	},
+	"logoURILabel": {
+		"message": "Logo"
+	},
+	"soundURILabel": {
+		"message": "Zvuk"
+	},
+	"cardurlLabel": {
+		"message": "URL kartica"
+	},
+	"cacheuriLabel": {
+		"message": "Cache URI"
+	},
+	"localizeadrTreeLabel": {
+		"message": "Lokaliziraj"
+	},
+	"toEmailEmailTreeLabel": {
+		"message": "Napiši novu poruku"
+	},
+	"ccEmailEmailTreeLabel": {
+		"message": "Napiši novu poruku (kopiraj / cc)"
+	},
+	"bccemailemailTreeLabel": {
+		"message": "Napiši novu poruku (nevidljiva kopija / bcc)"
+	},
+	"findemailemailTreeLabel": {
+		"message": "Nađi e-poštae vezane uz ovu e-pošta adresu"
+	},
+	"findeventemailTreeLabel": {
+		"message": "Nađi događaje u kalendaru vezane uz ovu e-pošta adresu"
+	},
+	"openURLTreeLabel": {
+		"message": "Otvori URL"
+	},
+	"toEmailCardFromAccountsOrCatsLabel": {
+		"message": "Napiši novu poruku"
+	},
+	"toEmailCardFromCardsLabel": {
+		"message": "Napiši novu poruku"
+	},
+	"ccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Napiši novu poruku(kopiraj / cc)"
+	},
+	"ccEmailCardFromCardsLabel": {
+		"message": "Napiši novu poruku (Kopiraj / cc)"
+	},
+	"bccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Napiši novu poruku (nevidljiva kopija / bcc)"
+	},
+	"bccEmailCardFromCardsLabel": {
+		"message": "Napiši novu poruku (nevidljiva kopija / bcc)"
+	},
+	"shareCardByEmailFromAccountsOrCatsLabel": {
+		"message": "Podijeli putem e-pošta"
+	},
+	"shareCardByEmailFromCardsLabel": {
+		"message": "Podijeli putem e-pošta"
+	},
+	"categoryHeader": {
+		"message": "Kategorija"
+	},
+	"findEmailsFromCardsLabel": {
+		"message": "Nađi e-poštae vezane uz ovaj kontakt"
+	},
+	"findEventsFromCardsLabel": {
+		"message": "Nađi događaje u kalendaru vezane uz ovaj kontakt"
+	},
+	"localizeCardFromCardsLabel": {
+		"message": "Lokaliziraj"
+	},
+	"openURLCardFromCardsLabel": {
+		"message": "Otvori URLs"
+	},
+	"cutCardFromAccountsOrCatsLabel": {
+		"message": "Izreži"
+	},
+	"cutCardFromCardsLabel": {
+		"message": "Izreži"
+	},
+	"copyCardFromAccountsOrCatsLabel": {
+		"message": "Kopiraj"
+	},
+	"copyCardFromCardsLabel": {
+		"message": "Kopiraj"
+	},
+	"pasteCardFromAccountsOrCatsLabel": {
+		"message": "Dodaj"
+	},
+	"pasteCardFromCardsLabel": {
+		"message": "Dodaj"
+	},
+	"pasteEntryLabel": {
+		"message": "Zalijepi unos"
+	},
+	"exportCardToFileLabel": {
+		"message": "Izvezi u dosje"
+	},
+	"exportCardToDirLabel": {
+		"message": "Prebaci u imenik"
+	},
+	"importCardFromFileLabel": {
+		"message": "Unesi kontakte iz dosjea"
+	},
+	"importCardFromDirLabel": {
+		"message": "Unesi kontakte iz imenika"
+	},
+	"findDuplicatesFromAccountsOrCatsLabel": {
+		"message": "Pronađi duplikate kontakata u postojećem adresaru"
+	},
+	"generateFnFromAccountsOrCatsLabel": {
+		"message": "Stvori nazive za pokaz"
+	},
+	"mergeCardsFromCardsLabel": {
+		"message": "Poveži kontakte"
+	},
+	"duplicateCardFromCardsLabel": {
+		"message": "Duplicirani kontakti"
+	},
+	"convertListToCategoryFromCardsLabel": {
+		"message": "Pretvori popis u kategoriju"
+	},
+	"editAccountFromAccountsOrCatsLabel": {
+		"message": "Uredi adresar"
+	},
+	"syncAccountFromAccountsOrCatsLabel": {
+		"message": "Sihroniziraj adresar"
+	},
+	"removeAccountFromAccountsOrCatsLabel": {
+		"message": "Obriši adresar"
+	},
+	"editEventLabel": {
+		"message": "Uredi događaj"
+	},
+	"editEventAccesskey": {
+		"message": "E"
+	},
+	"eventsTree.title.label": {
+		"message": "Naslov"
+	},
+	"eventsTree.title.tooltip2": {
+		"message": "Sortiraj prema naslovu"
+	},
+	"eventsTree.startdate.label": {
+		"message": "Počinje"
+	},
+	"eventsTree.startdate.tooltip2": {
+		"message": "Sortiraj prema datumu početka"
+	},
+	"eventsTree.enddate.label": {
+		"message": "Završava"
+	},
+	"eventsTree.enddate.tooltip2": {
+		"message": "Sortiraj prema datumu završetka"
+	},
+	"eventsTree.categories.label": {
+		"message": "Kategorija"
+	},
+	"eventsTree.categories.tooltip2": {
+		"message": "Sortiraj prema kategoriji"
+	},
+	"eventsTree.location.label": {
+		"message": "Lokacija"
+	},
+	"eventsTree.location.tooltip2": {
+		"message": "Sortiraj prema lokaciji"
+	},
+	"eventsTree.status.label": {
+		"message": "Status"
+	},
+	"eventsTree.status.tooltip2": {
+		"message": "Sortiraj prema statusu"
+	},
+	"eventsTree.calendarname.label": {
+		"message": "Naziv kalendara"
+	},
+	"eventsTree.calendarname.tooltip2": {
+		"message": "Sortiraj prema nazivu kalendara"
+	},
+	"createEventLabel": {
+		"message": "Novi događaj"
+	},
+	"createEventAccesskey": {
+		"message": "N"
+	},
+	"adrFormulaExplanation": {
+		"message": "Moguće je prilagoditi način na koji Kontakti oblikuje svoje adrese. Formula se satoji od blokova unutar znaka „()”. ??In these blocks there might be many parts delimited by „|”.??"
+	},
+	"fnFormulaExplanation": {
+		"message": "Moguće je prilagoditi način na koji Kontakti stvara svoj prikaz imena. Formula se satoji od blokova unutar znaka „()”. ??In these blocks there might be many parts delimited by „|”.??"
+	},
+	"formulaExplanation1": {
+		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
+	},
+	"formulaExplanation2": {
+		"message": "??({{1}}|{{2}}|{{3}}) : If {{1}} equals {{2}}, then the block will be replaced by {{3}}.??"
+	},
+	"formulaExplanation3": {
+		"message": "??({{1}}|{{2}}|{{3}}|{{4}}) : If {{1}} equals {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation4": {
+		"message": "??({{1}}|*|{{2}}|{{3}}|{{4}}) : If {{1}} includes {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation5": {
+		"message": "??({{1}}|^|{{2}}|{{3}}|{{4}}) : If {{1}} starts with {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"formulaExplanation6": {
+		"message": "??({{1}}|$|{{2}}|{{3}}|{{4}}) : If {{1}} ends with {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+	},
+	"settingsTitlelabel": {
+		"message": "Tiskaj pozadinu"
+	},
+	"title.print.label": {
+		"message": "Naslov:"
+	},
+	"title.print.accesskey": {
+		"message": "T"
+	},
+	"displayHeadersLabel": {
+		"message": "Prikaži naslovne paragrafe"
+	},
+	"displayHeadersAccesskey": {
+		"message": "H"
+	},
+	"displayFieldNamesLabel": {
+		"message": "Nazivi polja"
+	},
+	"displayFieldNamesAccesskey": {
+		"message": "F"
+	},
+	"displayTypesLabel": {
+		"message": "Vrste i pripriteti"
+	},
+	"displayTypesAccesskey": {
+		"message": "y"
+	},
+	"fieldsToPrintGroupboxLabel": {
+		"message": "Što otiskati"
+	},
+	"displayLabel": {
+		"message": "Prikaži ime"
+	},
+	"displayAccesskey": {
+		"message": "D"
+	},
+	"personalLabel": {
+		"message": "Osobni podaci"
+	},
+	"personalAccesskey": {
+		"message": "P"
+	},
+	"org.print.label": {
+		"message": "Podaci o zanimanju"
+	},
+	"org.print.accesskey": {
+		"message": "o"
+	},
+	"categories.print.label": {
+		"message": "Kategorije"
+	},
+	"categories.print.accesskey": {
+		"message": "C"
+	},
+	"adr.print.label": {
+		"message": "Adrese"
+	},
+	"adr.print.accesskey": {
+		"message": "A"
+	},
+	"tel.print.label": {
+		"message": "Telefonski brojevi"
+	},
+	"tel.print.accesskey": {
+		"message": "T"
+	},
+	"email.print.label": {
+		"message": "E-pošta adrese"
+	},
+	"email.print.accesskey": {
+		"message": "E"
+	},
+	"impp.print.label": {
+		"message": "Internet komunikacija"
+	},
+	"impp.print.accesskey": {
+		"message": "I"
+	},
+	"url.print.label": {
+		"message": "URLs"
+	},
+	"url.print.ccesskey": {
+		"message": "U"
+	},
+	"note.print.label": {
+		"message": "Napomene"
+	},
+	"note.print.accesskey": {
+		"message": "N"
+	},
+	"useColorCheckLabel": {
+		"message": "Koristi boju"
+	},
+	"useColorCheckAccesskey": {
+		"message": "K"
+	},
+	"existingDataGroupboxLabel": {
+		"message": "Dodaj ovom kontaktu"
+	},
+	"cardbookSwitchButtonTooltip": {
+		"message": "Zamijeni prezime i ime"
+	},
+	"descriptionTextbox": {
+		"message": "Opis"
+	},
+	"categoriesTextboxLabel": {
+		"message": "Dodaj novu kategoriju"
+	},
+	"typesTextboxLabel": {
+		"message": "Dodaj novu tipa"
+	},
+	"categoriesListboxLabel": {
+		"message": "Postojeće kategorije"
+	},
+	"categoryMenuLabel": {
+		"message": "Nova kategorija…"
+	},
+	"viewResultEditionLabel": {
+		"message": "Provjeri rezultat"
+	},
+	"viewResultEditionAccesskey": {
+		"message": "V"
+	},
+	"createEditionLabel": {
+		"message": "Kreiraj"
+	},
+	"createEditionAccesskey": {
+		"message": "T"
+	},
+	"createAndReplaceEditionLabel": {
+		"message": "kreiraj i zamijeni"
+	},
+	"createAndReplaceEditionAccesskey": {
+		"message": "R"
+	},
+	"saveEditionLabel": {
+		"message": "Sačuvaj"
+	},
+	"saveEditionAccesskey": {
+		"message": "S"
+	},
+	"validateEditionLabel": {
+		"message": "Potvrdi"
+	},
+	"validateEditionAccesskey": {
+		"message": "V"
+	},
+	"cancelEditionLabel": {
+		"message": "Poništi"
+	},
+	"cancelEditionAccesskey": {
+		"message": "C"
+	},
+	"closeEditionLabel": {
+		"message": "Zatvori"
+	},
+	"closeEditionAccesskey": {
+		"message": "C"
+	},
+	"buttonAppendToListLabel": {
+		"message": "Dodaj"
+	},
+	"buttonAppendToListAccesskey": {
+		"message": "A"
+	},
+	"buttonRemoveFromListLabel": {
+		"message": "Obriši"
+	},
+	"buttonRemoveFromListAccesskey": {
+		"message": "O"
+	},
+	"buttonGuessFromListLabel": {
+		"message": "Nagađati"
+	},
+	"buttonGuessFromListAccesskey": {
+		"message": "N"
+	},
+	"loadTemplateLabel": {
+		"message": "Odaberi predložak"
+	},
+	"loadTemplateAccesskey": {
+		"message": "O"
+	},
+	"saveTemplateLabel": {
+		"message": "Spremi predložak"
+	},
+	"saveTemplateAccesskey": {
+		"message": "k"
+	},
+	"convertVCardsLabel": {
+		"message": "??Convert vCards??"
+	},
+	"convertVCardsTooltip": {
+		"message": "??The vCard version of some contacts is different from the vCard version of your address book, this button may convert these vCards??"
+	},
+	"convertVCardsAccesskey": {
+		"message": "C"
+	},
+	"wdw_findDuplicatesTitle": {
+		"message": "Duplirani kontakti"
+	},
+	"addImageCardFromFileLabel": {
+		"message": "Dodaj sliku iz dosjea"
+	},
+	"pasteImageCardLabel": {
+		"message": "Zalijepite sliku"
+	},
+	"saveImageCardLabel": {
+		"message": "Spremi sliku kao…"
+	},
+	"copyImageCardLabel": {
+		"message": "Kopiraj sliku"
+	},
+	"copyImageLocationCardLabel": {
+		"message": "Kopiraj lokaciju slike"
+	},
+	"deleteImageCardLabel": {
+		"message": "Izbriši sliku"
+	},
+	"kind.edit.label": {
+		"message": "Vrsta"
+	},
+	"kind.edit.accesskey": {
+		"message": "K"
+	},
+	"addEmailGroupboxLabel": {
+		"message": "Adresa e-pošte"
+	},
+	"availableCardsGroupboxLabel": {
+		"message": "Dostupni kontakti"
+	},
+	"nameOrEmailLabel": {
+		"message": "Ime ili adresa e-pošte"
+	},
+	"appendContactLabel": {
+		"message": "Dodaj na popis"
+	},
+	"deletelistTreeLabel": {
+		"message": "Izbaci s popisa"
+	},
+	"editCardFromListLabel": {
+		"message": "Uredi ovaj kontakt"
+	},
+	"wdw_logEditionTitle": {
+		"message": "Preglednik dnevnika"
+	},
+	"logEditionValueLabel": {
+		"message": "Događaj vremenske oznake"
+	},
+	"refreshLogEditionLabel": {
+		"message": "Osvježi"
+	},
+	"refreshLogEditionAccesskey": {
+		"message": "O"
+	},
+	"flushLogEditionLabel": {
+		"message": "Čista lista"
+	},
+	"flushLogEditionAccesskey": {
+		"message": "Č"
+	},
+	"clipboardLogEditionLabel": {
+		"message": "Kopiraj u međuspremnik"
+	},
+	"clipboardLogEditionAccesskey": {
+		"message": "o"
+	},
+	"cancelLogEditionLabel": {
+		"message": "U redu"
+	},
+	"cancelLogEditionAccesskey": {
+		"message": "U"
+	},
+	"wdw_mergeCardsTitle": {
+		"message": "Svi kontakti"
+	},
+	"mergeInstructionsLabel": {
+		"message": "Odaberi polja koja želiš sačuvati za nove kontakte"
+	},
+	"persTitleLabel": {
+		"message": "Osobni podaci"
+	},
+	"orgTitleLabel": {
+		"message": "Profesionalne informacije"
+	}
+}

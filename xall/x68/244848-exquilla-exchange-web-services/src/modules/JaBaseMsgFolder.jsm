@@ -8,8 +8,6 @@ const EXPORTED_SYMBOLS = ["JaBaseMsgFolder"];
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm"); // COMPAT for TB 60
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 
 // A partial JavaScript implementation of the base server methods.
@@ -37,12 +35,12 @@ JaBaseMsgFolder.Properties = {
                         Ci.msgIOverride,
                         Ci.nsISupports,
                         Ci.nsIInterfaceRequestor,
-                        Ci.nsIRDFResource,
+                        Ci.nsIRDFResource, // COMPAT for TB 68
                         Ci.nsIDBChangeListener,
                         Ci.nsIUrlListener,
                         Ci.nsIJunkMailClassificationListener,
                         Ci.nsIMsgTraitClassificationListener,
-                        ],
+                        ]/* COMPAT for TB 68 */.filter(i => i),
 
 
   // We don't typically define this as a creatable component, but if we do use
@@ -60,7 +58,7 @@ JaBaseMsgFolder.prototype = {
   _JsPrototypeToDelegate: true,
 
   // QI to the interfaces.
-  QueryInterface: QIUtils.generateQI(JaBaseMsgFolder.Properties.baseInterfaces),
+  QueryInterface: ChromeUtils.generateQI(JaBaseMsgFolder.Properties.baseInterfaces),
 
   // Used to access an instance as JS, bypassing XPCOM.
   get wrappedJSObject() {

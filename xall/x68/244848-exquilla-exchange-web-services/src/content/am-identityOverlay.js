@@ -13,13 +13,10 @@ if (typeof(exquilla) == 'undefined')
   var exquilla = {};
 
 if (typeof(MailServices) == 'undefined')
-  var { MailServices } = ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 if (typeof (exquilla.Utils) == "undefined")
   Object.assign(exquilla, ChromeUtils.import("resource://exquilla/ewsUtils.jsm"));
-
-if (typeof (fixIterator) == "undefined")
-  var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
 
 exquilla.amiOverlay = (function _amiOverlay()
 {
@@ -32,7 +29,7 @@ exquilla.amiOverlay = (function _amiOverlay()
     let servers = MailServices.accounts.allServers;
     let smtpPopup = document.getElementById("smtpPopup");
 
-    for (let server of fixIterator(servers, Components.interfaces.nsIMsgIncomingServer))
+    for (let server of /* COMPAT for TB 68 */exquilla.Utils.toArray(servers, Components.interfaces.nsIMsgIncomingServer))
     {
       if (server.type == "exquilla")
         smtpServerList.appendItem(server.prettyName, server.key);

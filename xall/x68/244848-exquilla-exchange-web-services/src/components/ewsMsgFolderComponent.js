@@ -12,7 +12,6 @@
 'use strict';
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "EnsureLicensed",
@@ -20,7 +19,7 @@ ChromeUtils.defineModuleGetter(this, "EnsureLicensed",
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("base");
@@ -78,10 +77,8 @@ ChromeUtils.defineModuleGetter(this, "PromiseUtils",
  *
  */
 function changeFilterURIs(oldURI, newURI) {
-  let servers = MailServices.accounts.allServers;
-  for (let i = 0; i < servers.length; i++) {
+  for (let server of /* COMPAT for TB 68 */toArray(MailServices.accounts.allServers, Ci.nsIMsgIncomingServer)) {
     try { // continue with next server if failure
-      let server = servers.queryElementAt(i, Ci.nsIMsgIncomingServer);
       if (!server.canHaveFilters)
         continue;
       let filterList = server.getFilterList(null);
@@ -137,8 +134,8 @@ function stringLineStreamFactory(aString) {
   let stringStream = inputStreamFromString(aString);
   let lineStream = Object.create(stringStream);
   Object.defineProperty(lineStream, 'QueryInterface', {
-    value: QIUtils.generateQI([Ci.nsIInputStream,
-                               Ci.nsILineInputStream]),
+    value: ChromeUtils.generateQI([Ci.nsIInputStream,
+                                   Ci.nsILineInputStream]),
     writable: false,
     configurable: true,
     enumerable: true
@@ -231,7 +228,7 @@ function DualListener(copyServiceListener) {
   this._copyServiceListener = copyServiceListener;
 }
 DualListener.prototype = {
-  QueryInterface: QIUtils.generateQI([Ci.nsICopyServiceListener]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsICopyServiceListener]),
   onEvent(item, eventName, data, result) {
     if (eventName == "StopCopy" && !this._resolved) {
       this._resolved = true;
@@ -297,7 +294,7 @@ function EwsMsgFolder(aDelegator, aBaseInterfaces) {
 EwsMsgFolder.Properties = {
   __proto__: JaBaseMsgFolder.Properties,
 
-  contractID: "@mozilla.org/rdf/resource-factory;1?name=exquilla",
+  contractID: /* COMPAT for TB 68 */"@mozilla.org/rdf/rdf-service;1" in Cc ? "@mozilla.org/rdf/resource-factory;1?name=exquilla" : "@mozilla.org/mail/folder-factory;1?name=exquilla",
   classID: Components.ID("{CF5ABC99-F459-42E8-85A1-10B4D6590D33}"),
 
 // Add an additional interface only needed by this custom class.
@@ -1240,7 +1237,7 @@ EwsMsgFolder.prototype = {
         if (extraHdrs.length)
         {
           log.info("Message DB had messages with no corresponding server entry, deleting. Count: " + extraHdrs.length);
-          notifier.notifyMsgsDeleted(extraHdrs);
+          notifier.notifyMsgsDeleted(/* COMPAT for TB 68 */database.deleteMessages.length == 3 ? extraHdrs : toArray(extraHdrs, Ci.nsIMsgDBHdr));
           for (let index = 0; index < extraHdrs.length; index++)
           {
             let hdr = extraHdrs.queryElementAt(index, Ci.nsIMsgDBHdr);
@@ -1717,8 +1714,13 @@ EwsMsgFolder.prototype = {
               this.changeNumPendingTotalMessages(hdrsToDelete.length);
               let notifier = Cc["@mozilla.org/messenger/msgnotificationservice;1"]
                                .getService(Ci.nsIMsgFolderNotificationService);
-              notifier.notifyMsgsDeleted(hdrsToDelete);
-              database.deleteMessages(keysToDelete.length, keysToDelete, null);
+              if (database.deleteMessages.length == 3) { /* COMPAT for TB 68 */
+                notifier.notifyMsgsDeleted(hdrsToDelete);
+                database.deleteMessages(keysToDelete.length, keysToDelete, null);
+              } else { /* COMPAT for TB 68 */
+                notifier.notifyMsgsDeleted(toArray(hdrsToDelete, Ci.nsIMsgDBHdr));
+                database.deleteMessages(keysToDelete, null);
+              } // COMPAT for TB 68
             }
           }
 
@@ -2138,26 +2140,25 @@ EwsMsgFolder.prototype = {
             return result;
           }
 
-          let mFolders;
+          let folders;
           // check for preference check_all_folders_for_new
           // let checkAll = this.server.getBoolValue("check_all_folders_for_new");
           // This is now handled using notifications
           let checkAll = false;
           if (checkAll)
           {
-            mFolders = rootFolder.descendants.QueryInterface(Ci.nsIMutableArray);
+            folders = rootFolder.descendants;
           }
           else
           {
-            mFolders = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
             let inbox = rootFolder.getFolderWithFlags(Ci.nsMsgFolderFlags.Inbox);
             if (inbox)
               inbox.setFlag(Ci.nsMsgFolderFlags.CheckNew);
 
-            rootFolder.listFoldersWithFlags(Ci.nsMsgFolderFlags.CheckNew, mFolders);
+            folders = rootFolder.getFoldersWithFlags(Ci.nsMsgFolderFlags.CheckNew);
           }
 
-          if (!mFolders.length)
+          if (!folders.length)
             log.debug("No folders found for GetNewMessages");
 
           if (urlListener)
@@ -2169,11 +2170,9 @@ EwsMsgFolder.prototype = {
             throw CE(bundle.GetStringFromName("noLicenseFound"));
           }
 
-          while (mFolders.length)
+          for (let folder of toArray(folders, Ci.nsIMsgFolder))
           {
-            let folder = mFolders.queryElementAt(0, Ci.nsIMsgFolder);
             let ewsFolder = safeGetJS(folder, "EwsMsgFolder");
-            mFolders.removeElementAt(0);
 
             let listener = new PromiseUtils.UrlListener();
             ewsFolder.updateFolderWithListener(aWindow, listener);
@@ -2546,7 +2545,7 @@ EwsMsgFolder.prototype = {
 
     // tell the base folder to do it, which will mark them read in the db.
     this.cppBase.markMessagesRead(messages, markRead);
-    this._markServerMessagesRead(messages, markRead);
+    this._markServerMessagesRead(toArray(messages, Ci.nsIMsgDBHdr), markRead);
     this.msgDatabase.Commit(Ci.nsMsgDBCommitType.kLargeCommit);
   },
 
@@ -2554,23 +2553,21 @@ EwsMsgFolder.prototype = {
   {
     let database = this.msgDatabase;
 
-    let thoseMarkedObject = {};
     this.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, false, true );
-    database.MarkAllRead({}, thoseMarkedObject);
+    let thoseMarked;
+    if (database.MarkAllRead) { /* COMPAT for TB 68 */
+      let thoseMarkedObject = {};
+      database.MarkAllRead({}, thoseMarkedObject);
+      thoseMarked = thoseMarkedObject.value;
+    } else { /* COMPAT for TB 68 */
+      thoseMarked = database.markAllRead();
+    } // COMPAT for TB 68
     this.enableNotifications(Ci.nsIMsgFolder.allMessageCountNotifications, true, true);
-    let thoseMarked = thoseMarkedObject.value;
 
     if (thoseMarked.length)
     {
-      let messages = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-      for (let key of thoseMarked)
-      {
-        let message = database.GetMsgHdrForKey(key);
-        if (message)
-          messages.appendElement(message, false);
-      }
-      if (messages.length)
-        this._markServerMessagesRead(messages, true);
+      let messages = thoseMarked.map(key => database.GetMsgHdrForKey(key));
+      this._markServerMessagesRead(messages, true);
       database.Commit(Ci.nsMsgDBCommitType.kLargeCommit);
     }
   },
@@ -2581,21 +2578,13 @@ EwsMsgFolder.prototype = {
     log.debug("ewsMsgFolder.markThreadRead");
     let database = this.msgDatabase;
 
-    let thoseMarkedObject = {};
-    database.MarkThreadRead(aThread, null, {}, thoseMarkedObject);
-    let thoseMarked = thoseMarkedObject.value;
+    let thoseMarkedObject = {}; // COMPAT for TB 68
+    let thoseMarked = database.MarkThreadRead(aThread, null, /* COMPAT for TB 68 */{}, thoseMarkedObject) || thoseMarkedObject.value;
 
     if (thoseMarked.length)
     {
-      let messages = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-      for (let key of thoseMarked)
-      {
-        let message = database.GetMsgHdrForKey(key);
-        if (message)
-          messages.appendElement(message, false);
-      }
-      if (messages.length)
-        this._markServerMessagesRead(messages, true);
+      let messages = thoseMarked.map(key => database.GetMsgHdrForKey(key));
+      this._markServerMessagesRead(messages, true);
       database.Commit(Ci.nsMsgDBCommitType.kLargeCommit);
     }
   },
@@ -2606,7 +2595,7 @@ EwsMsgFolder.prototype = {
 
     // tell the base folder to do it, which will mark them flagged in the db.
     this.cppBase.markMessagesFlagged(messages, markRead);
-    this._markServerMessagesFlagged(messages, markRead);
+    this._markServerMessagesFlagged(toArray(messages, Ci.nsIMsgDBHdr), markRead);
     database.Commit(Ci.nsMsgDBCommitType.kLargeCommit);
   },
 
@@ -2621,7 +2610,7 @@ EwsMsgFolder.prototype = {
     }
   },
 
-  fetchMsgPreviewText(aKeysToFetch, aNumKeys, aLocalOnly, aUrlListener)
+  fetchMsgPreviewText(aKeysToFetch, /* aNumKeysTB68,*/ aLocalOnly, aUrlListener)
   {
     const MAXIMUM_SNIPPET_LENGTH = 255;
     if (!this._useMail)
@@ -2864,10 +2853,7 @@ EwsMsgFolder.prototype = {
             throw CE("createStorageIfMissing for folder with no URI or parent");
 
           let parentURI = folderURI.substring(0, lastSlashIndex);
-          let rdf = Cc["@mozilla.org/rdf/rdf-service;1"]
-                      .getService(Ci.nsIRDFService);
-          let parentResource = rdf.GetResource(parentURI);
-          this.parent = parentResource.QueryInterface(Ci.nsIMsgFolder);
+          this.parent = MailServices.folderLookup.getFolderForURL(parentURI);
         }
 
         // Make sure that the parent also has storage
@@ -3089,7 +3075,7 @@ EwsMsgFolder.prototype = {
           // Notify on delete from trash and shift-delete.
           let trashFolder = this.trashFolder
           if (!isMove && (deleteStorage || isTrashFolder)) {
-            MailServices.mfn.notifyMsgsDeleted(messages);
+            MailServices.mfn.notifyMsgsDeleted(/* COMPAT for TB 68 */this.msgDatabase.deleteMessages.length == 3 ? messages : toArray(messages, Ci.nsIMsgDBHdr));
           }
 
           if (trashFolder && !deleteStorage && !isTrashFolder) {
@@ -3256,23 +3242,16 @@ EwsMsgFolder.prototype = {
         this._message = "";
       }
       PromiseStreamListener.prototype = {
-        QueryInterface: QIUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]),
+        QueryInterface: ChromeUtils.generateQI([Ci.nsIStreamListener, Ci.nsIRequestObserver]),
         onStartRequest(aRequest) {},
-        onStopRequest(aRequest, aStatusCode, aStatusCodeTB60) {
-          if (typeof aStatusCodeTB60 == "number") { // COMPAT for TB 60
-            aStatusCode = aStatusCodeTB60;
-          }
+        onStopRequest(aRequest, aStatusCode) {
           if (CS(aStatusCode)) {
             this._resolve(Cr.NS_OK);
           }
           else
             this._reject(CE("StreamListener failed in message copy", aStatusCode));
         },
-        onDataAvailable(aRequest, aInputStream, aInputStreamTB60/* aOffset */, aCount, aCountTB60) {
-          if (typeof aCountTB60 == "number") { // COMPAT for TB 60
-            aInputStream = aInputStreamTB60;
-            aCount = aCountTB60;
-          }
+        onDataAvailable(aRequest, aInputStream, aOffset, aCount) {
           // This method takes a string from a saved Skink message, and processes
           // the headers to be compatible with an EWS mimeContent. See
           // nsImapMailFolder::CopyDataToOutputStreamForAppend for s similar Skink case.
@@ -3495,7 +3474,8 @@ EwsMsgFolder.prototype = {
       this.updateSummaryTotals(false);
       // xxx todo - why are we doing a folder loaded here?
       this._notifyFolderLoaded();
-      MailServices.mfn.notifyMsgsMoveCopyCompleted(isMove, srcMessages, this.delegator, destMessages);
+      let isTB68 = this.msgDatabase.deleteMessages.length == 3; // COMPAT for TB 68
+      MailServices.mfn.notifyMsgsMoveCopyCompleted(isMove, isTB68 ? srcMessages : toArray(srcMessages, Ci.nsIMsgDBHdr), this.delegator, isTB68 ? destMessages : toArray(destMessages, Ci.nsIMsgDBHdr));
       if (isMove)
         srcFolder.NotifyFolderEvent("DeleteOrMoveMsgCompleted");
     }
@@ -3554,10 +3534,8 @@ EwsMsgFolder.prototype = {
     let items = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
     let didChange = false;
 
-    for (let i = 0; i < messages.length; i++)
+    for (let message of messages)
     {
-      let message = messages.queryElementAt(i, Ci.nsIMsgDBHdr);
-
       let itemId = message.getProperty("ewsItemId");
       if (!itemId)
       {
@@ -3601,10 +3579,8 @@ EwsMsgFolder.prototype = {
     let items = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
     let didChange = false;
 
-    for (let i = 0; i < messages.length; i++)
+    for (let message of messages)
     {
-      let message = messages.queryElementAt(i, Ci.nsIMsgDBHdr);
-
       let itemId = message.getProperty("ewsItemId");
       if (!itemId)
       {
@@ -3728,9 +3704,7 @@ EwsMsgFolder.prototype = {
             changeFilterURIs(oldURI, newURI);
 
             // For all identities, locate and replace any occurances of the old URI
-            let identities = MailServices.accounts.allIdentities;
-            for (let i = 0; i < identities.length; i++) {
-              let identity = identities.queryElementAt(i, Ci.nsIMsgIdentity);
+            for (let identity of /* COMPAT for TB 68 */toArray(MailServices.accounts.allIdentities, Ci.nsIMsgIdentity)) {
               for (let attribute of ["draftFolder", "stationeryFolder", "archiveFolder", "fccFolder"]) {
                 let folderURI = identity[attribute];
                 log.config("Checking folderURI " + folderURI + " for identity attribute " + attribute);
@@ -4045,9 +4019,12 @@ EwsMsgFolder.prototype = {
 
             // In core, we have notifyHdrsNotBeingClassified() but that is not accessible
             // via XPCOM. No matter, we know the key.
-            let msgHdrsNotBeingClassified =
-              Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-            msgHdrsNotBeingClassified.appendElement(hdr, false);
+            let msgHdrsNotBeingClassified = [hdr];
+            if (database.deleteMessages.length == 3) { /* COMPAT for TB 68 */
+              msgHdrsNotBeingClassified =
+                Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+              msgHdrsNotBeingClassified.appendElement(hdr, false);
+            } /* COMPAT for TB 68 */
             notifier.notifyMsgsClassified(msgHdrsNotBeingClassified, false, false);
           }
           break;
@@ -4249,3 +4226,4 @@ EwsMsgFolderConstructor.prototype = {
 }
 
 var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsMsgFolderConstructor]);
+var EXPORTED_SYMBOLS = ["NSGetFactory"];

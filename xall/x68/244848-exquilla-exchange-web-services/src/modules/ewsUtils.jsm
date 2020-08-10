@@ -16,7 +16,6 @@ const Cr = Components.results;
 const CE = Components.Exception;
 
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var { Log } = ChromeUtils.import("resource://gre/modules/Log.jsm");
 var { Preferences } = ChromeUtils.import("resource://gre/modules/Preferences.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
@@ -24,7 +23,7 @@ Cu.importGlobalProperties(["fetch"]);
 ChromeUtils.defineModuleGetter(this, "Base64", "resource://exquilla/Base64.jsm");
 //ChromeUtils.defineModuleGetter(this, "TextEncoder", "resource://exquilla/TextEncoder.jsm");
 ChromeUtils.defineModuleGetter(this, "jsmime", "resource:///modules/jsmime.jsm");
-ChromeUtils.defineModuleGetter(this, "MailServices", ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+ChromeUtils.defineModuleGetter(this, "MailServices", "resource:///modules/MailServices.jsm");
 ChromeUtils.defineModuleGetter(this, "AddonManager",
                                "resource://gre/modules/AddonManager.jsm");
 ChromeUtils.defineModuleGetter(this, "PropertyList",
@@ -32,20 +31,7 @@ ChromeUtils.defineModuleGetter(this, "PropertyList",
 ChromeUtils.defineModuleGetter(this, "StringArray",
                                "resource://exquilla/StringArray.jsm");
 ChromeUtils.defineModuleGetter(this, "OS", "resource://gre/modules/osfile.jsm");
-if ("@mozilla.org/xmlextras/xmlserializer;1" in Cc) {
-  this.XMLSerializer = Components.Constructor("@mozilla.org/xmlextras/xmlserializer;1", Ci.nsIDOMSerializer); // COMPAT for TB 60
-} else {
-  Cu.importGlobalProperties(["XMLSerializer"]);
-}
-if (Ci.nsIDOMElement) {
-  this.Element = {
-    isInstance: function(aElement) { // COMPAT for TB 60
-      return aElement instanceof Ci.nsIDOMElement;
-    },
-  };
-} else {
-  Cu.importGlobalProperties(["Element"]);
-}
+Cu.importGlobalProperties(["Element", "XMLSerializer"]);
 
 let versionComparator = Cc["@mozilla.org/xpcom/version-comparator;1"]
                           .getService(Ci.nsIVersionComparator);
@@ -505,7 +491,7 @@ function CopyServiceListener(asyncDriver)
 
 CopyServiceListener.prototype =
 {
-  QueryInterface: QIUtils.generateQI([Ci.nsIMsgCopyServiceListener]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIMsgCopyServiceListener]),
   OnStartCopy: function() {},
   OnProgress: function(aProgress, aProgressMax) {},
   SetMessageKey: function(aKey) { },
@@ -524,7 +510,7 @@ function UrlListener(asyncDriver)
 
 UrlListener.prototype =
 {
-  QueryInterface: QIUtils.generateQI([Ci.nsIUrlListener]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIUrlListener]),
   OnStartRunningUrl: function(aUri) {},
   OnStopRunningUrl: function(aUri, aResult) {
     this.asyncDriver.nextStep({uri: aUri, result: aResult});
@@ -542,6 +528,10 @@ function ArrayEnumerator(aItems) {
 
 ArrayEnumerator.prototype = {
   _index: 0,
+
+  [Symbol.iterator]() {
+    return this._contents.values();
+  },
 
   hasMoreElements: function _hasMoreElements() {
     return this._index < this._contents.length;
@@ -1088,14 +1078,49 @@ async function getExtensionVersion()
 }
 
 /**
+ * Converts an nsIArray into an Array.
+ *
+ * @param aIArray {nsIArray}
+ * @param aUUID   {nsIIDRef} The type of XPCOM elements of the array
+ * @returns       {Array}
+ *
+ * If the parameter is not an nsIArray then it is simply returned.
+ * This is useful for functions that need to be backward compatible.
+ */
+function toArray(aIArray, aUUID) {
+  if (aIArray instanceof Ci.nsIArray) {
+    let array = [];
+    for (let i = 0; i < aIArray.length; i++) {
+      array.push(aIArray.queryElementAt(i, aUUID));
+    }
+    return array;
+  }
+  return aIArray;
+}
+Utils.toArray = toArray;
+
+/**
+ * Opens the ExQuilla account creation wizard.
+ */
+function openAccountWizard(window) {
+  try { /* COMPAT for TB 68 */
+    Services.catMan.getCategoryEntry("Gecko-Content-Viewers", "mozilla.application/cached-xul");
+    Services.ww.openWindow(null, "chrome://exquilla/content/ewsAccountWizard.xul",
+                "AccountWizard", "chrome,modal,titlebar,centerscreen", null);
+  } catch (ex) { /* COMPAT for TB 68 */
+    Services.ww.openWindow(null, "chrome://exquilla/content/ewsAccountWizard.xhtml",
+                "AccountWizard", "chrome,modal,titlebar,centerscreen", null);
+  } // COMPAT for TB 68
+}
+Utils.openAccountWizard = openAccountWizard;
+
+/**
  * Returns the email address of the first ExQuilla account,
  * or failing that, the primary email address in TB
  */
 function getEmailAddressForUser() {
   try {
-    let allAccounts = MailServices.accounts.accounts;
-    for (let i = 0; i < allAccounts.length; i++) {
-      let account = allAccounts.queryElementAt(i, Ci.nsIMsgAccount);
+    for (let account of /* COMPAT for TB 68 */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       if (account.incomingServer.type == "exquilla") {
         return account.defaultIdentity.email;
       }
@@ -1116,9 +1141,7 @@ function getEmailAddressForUser() {
  */
 function getLoginURLForUser() {
   try {
-    let allAccounts = MailServices.accounts.accounts;
-    for (let i = 0; i < allAccounts.length; i++) {
-      let account = allAccounts.queryElementAt(i, Ci.nsIMsgAccount);
+    for (let account of /* COMPAT for TB 68 */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       if (account.incomingServer.type == "exquilla") {
         let server = safeGetJS(account.incomingServer, "EwsIncomingServer");
         return server.ewsURL;

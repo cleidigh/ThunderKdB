@@ -13,19 +13,14 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 
-if ("@mozilla.org/xmlextras/domparser;1" in Cc) {
-  this.DOMParser = Components.Constructor("@mozilla.org/xmlextras/domparser;1", Ci.nsIDOMParser); // COMPAT for TB 60
-} else {
-  Cu.importGlobalProperties(["DOMParser"]);
-}
+Cu.importGlobalProperties(["DOMParser"]);
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("base");
@@ -104,7 +99,6 @@ function EwsProtocol() {
   this._loadGroup = null;
   this._loadFlags = 0;
   this._channelListener = null;
-  this._channelContext = []; // COMPAT for TB 60
   this._originalURI = null;
   this._notificationCallbacks = null;
   this._owner = null;
@@ -132,7 +126,7 @@ EwsProtocol.prototype = {
   get wrappedJSObject() {
     return this;
   },
-  QueryInterface: QIUtils.generateQI(EwsProtocol.Properties.baseInterfaces),
+  QueryInterface: ChromeUtils.generateQI(EwsProtocol.Properties.baseInterfaces),
   classID:        Components.ID("{27554DDD-EB22-45fd-B836-F8B8F5E9D61B}"),
 
   // Used to access an instance as JS, bypassing XPCOM.
@@ -151,13 +145,15 @@ EwsProtocol.prototype = {
   },
   isPending() { return !!this._channelListener;},
   get status() { return Cr.NS_OK;},
-  cancel(a) { return Cr.NS_OK;}, // called by nsMessengerContentHandler
+  cancel(a) { this._canceled = true; return Cr.NS_OK;}, // called by nsMessengerContentHandler
   suspend() { return Cr.NS_ERROR_NOT_IMPLEMENTED;},
   resume() { return Cr.NS_ERROR_NOT_IMPLEMENTED;},
   get loadGroup() { return this._loadGroup;},
   set loadGroup(a) { this._loadGroup = a;},
   get loadFlags() { return this._loadFlags;},
   set loadFlags(a) { this._loadFlags = a;},
+  getTRRMode() { return Ci.nsIRequest.TRR_DEFAULT_MODE;},
+  setTRRMode() { throw Cr.NS_ERROR_NOT_IMPLEMENTED;},
 
   // nsIChannel
 
@@ -202,14 +198,9 @@ EwsProtocol.prototype = {
     let n = stream.available;
     return stream;
   },
-  open2() { // COMPAT for TB 60
-    let streamListener = Cc["@mozilla.org/network/sync-stream-listener;1"]
-                           .createInstance(Ci.nsISyncStreamListener);
-    let stream = streamListener.inputStream;
-    this.asyncOpen2(streamListener);
-    let n = stream.available;
-    return stream;
-  },
+
+  _canceled: false,
+  get canceled() { return this._canceled;},
 
   get contentDisposition() { return this._contentDisposition;},
   set contentDisposition(a) { this._contentDisposition = a;},
@@ -421,7 +412,7 @@ EwsProtocol.prototype = {
               this.contentType = "text/plain; charset=UTF-8";
             }
 
-            this.onStartRequest(this, ...this._channelContext);
+            this.onStartRequest(this);
             haveStartRequest = true;
 
             let properties = this._item.properties;
@@ -504,7 +495,7 @@ EwsProtocol.prototype = {
             }
 
             let inputStream = inputStreamFromString(fakeHeaders);
-            this.onDataAvailable(this, ...this._channelContext, inputStream, 0, inputStream.available());
+            this.onDataAvailable(this, inputStream, 0, inputStream.available());
             inputStream.close();
             break;
           }
@@ -533,7 +524,7 @@ EwsProtocol.prototype = {
             // This is the kickoff to a message copy. A failed copy init only rears its ugly head as an error return here.
             let isOk = true;
             try {
-              this.onStartRequest(this, ...this._channelContext);
+              this.onStartRequest(this);
             } catch (e) {log.warn(e); isOk = false;}
             haveStartRequest = true;
             if (!isOk) {
@@ -553,7 +544,7 @@ EwsProtocol.prototype = {
               case EPT_MIMEATTACHMENT:
               {
                 let inputStream = inputStreamFromString(mimeContent);
-                this.onDataAvailable(this, ...this._channelContext, inputStream, 0, inputStream.available());
+                this.onDataAvailable(this, inputStream, 0, inputStream.available());
                 inputStream.close();
                 break; // from switch
               }
@@ -632,7 +623,7 @@ EwsProtocol.prototype = {
             //  we do this. Got attachments though we could do it earlier if we wanted
             //
             if (!haveStartRequest) {
-              this.onStartRequest(this, ...this._channelContext);
+              this.onStartRequest(this);
               haveStartRequest = true;
             }
 
@@ -640,7 +631,7 @@ EwsProtocol.prototype = {
                             .createInstance(Ci.nsIFileInputStream);
             fstream.init(attachmentFile, -1, 0, 0);
 
-            this.onDataAvailable(this, ...this._channelContext, fstream, 0, fstream.available());
+            this.onDataAvailable(this, fstream, 0, fstream.available());
             fstream.close();
 
             break;
@@ -650,8 +641,8 @@ EwsProtocol.prototype = {
 
       // Only get here if all done (possibly with an error)
       if (!haveStartRequest)
-        this.onStartRequest(this, ...this._channelContext);
-      this.onStopRequest(this, ...this._channelContext, resultText ? Cr.NS_ERROR_FAILURE : Cr.NS_OK);
+        this.onStartRequest(this);
+      this.onStopRequest(this, resultText ? Cr.NS_ERROR_FAILURE : Cr.NS_OK);
     } // end of StopMachine state
 
     return;
@@ -666,8 +657,8 @@ EwsProtocol.prototype = {
     if (resultText)
       log.warn(resultText);
     if (!haveStartRequest)
-      this.onStartRequest(this, ...this._channelContext);
-    this.onStopRequest(this, ...this._channelContext, resultText ? Cr.NS_ERROR_FAILURE : Cr.NS_OK);
+      this.onStartRequest(this);
+    this.onStopRequest(this, resultText ? Cr.NS_ERROR_FAILURE : Cr.NS_OK);
     return;
 
   },
@@ -753,14 +744,14 @@ EwsProtocol.prototype = {
 
   // nsIStreamListener
 
-  onDataAvailable(aRequest, aInputStream, aOffset, aCount, aCountTB60) {
+  onDataAvailable(aRequest, aInputStream, aOffset, aCount) {
     if (this._channelListener)
-      this._channelListener.onDataAvailable(aRequest, aInputStream, aOffset, aCount, aCountTB60);
+      this._channelListener.onDataAvailable(aRequest, aInputStream, aOffset, aCount);
   },
 
   // nsIRequestObserver
 
-  onStartRequest(aRequest, aContextTB60)
+  onStartRequest(aRequest)
   {
     if (this._URI instanceof Ci.nsIMsgMailNewsUrl) {
       this._URI.SetUrlState(true, Cr.NS_OK);
@@ -771,20 +762,17 @@ EwsProtocol.prototype = {
     // failed copies result in an error rv from nsCopyMessageStreamListener::OnStopRequest so propogate
     if (this._channelListener) {
       try { // we are seeing this throw, trying to understand.
-        this._channelListener.onStartRequest(aRequest, aContextTB60);
+        this._channelListener.onStartRequest(aRequest);
       } catch (e) {
         log.warn("Error in onStartRequest: " + e);
       }
     }
   },
 
-  onStopRequest(aRequest, aStatusCode, aStatusCodeTB60)
+  onStopRequest(aRequest, aStatusCode)
   {
     if (this._channelListener)
-      this._channelListener.onStopRequest(aRequest, aStatusCode, aStatusCodeTB60);
-    if (!ChromeUtils.generateQI) { // COMPAT for TB 60
-      aStatusCode = aStatusCodeTB60;
-    }
+      this._channelListener.onStopRequest(aRequest, aStatusCode);
     if (this._URI instanceof Ci.nsIMsgMailNewsUrl)
     {
       this._URI.SetUrlState(false, aStatusCode);
@@ -811,13 +799,8 @@ EwsProtocol.prototype = {
   // nsITimerCallback,
   notify(a) { return this.onEvent(null, "Notify", null, Cr.NS_OK);},
 
-  asyncOpen2(aListener) { // COMPAT for TB 60
-    this.asyncOpen(aListener, null);
-    return;
-  },
-
 // void asyncOpen (in nsIStreamListener aListener);
-  asyncOpen(aListener, aContextTB60) {
+  asyncOpen(aListener) {
     let contentSecManager = Cc["@mozilla.org/contentsecuritymanager;1"]
                               .getService(Ci.nsIContentSecurityManager);
     let listener = this._loadInfo ? contentSecManager.performSecurityCheck(this, aListener) : aListener;
@@ -953,10 +936,6 @@ EwsProtocol.prototype = {
       url.msgHeaderSink = this;
     }
 
-    if (!ChromeUtils.generateQI) {
-      this._channelContext = [aContextTB60]; // COMPAT for TB 60
-    }
-
     // Now implement the request. We do this all in the event listener, both to
     //  avoid code duplication as well as subtle bugs from implementing callbacks
     //  before the initial return from this method.
@@ -1019,9 +998,7 @@ EwsProtocol.prototype = {
     {
       log.debug("elementRewriteCid changed something");
       // html serializer
-      let serializer = Cu.createDocumentEncoder ? Cu.createDocumentEncoder("text/html") :
-                       Cc["@mozilla.org/layout/documentEncoder;1?type=text/html"] // COMPAT for TB 60
-                         .createInstance(Ci.nsIDocumentEncoder);
+      let serializer = Cu.createDocumentEncoder("text/html");
       serializer.init(parsedDocument, "text/html", Ci.nsIDocumentEncoder.OutputRaw);
       rewrite = serializer.encodeToString();
     }
@@ -1243,3 +1220,4 @@ EwsProtocol.prototype = {
 };
 
 var NSGetFactory = XPCOMUtils.generateNSGetFactory([EwsProtocol]);
+var EXPORTED_SYMBOLS = ["NSGetFactory"];

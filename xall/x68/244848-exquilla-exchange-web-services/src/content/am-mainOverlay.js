@@ -21,9 +21,9 @@ exquilla.ammOverlay = (function _ammOverlay()
     let type = account.incomingServer.type;
     // hide the Organization row
     if (type == "exquilla")
-      document.getElementById("identity.organization").parentElement.hidden = true;
+      document.getElementById("identity.organization").parentElement.parentElement.hidden = true;
     else
-      document.getElementById("identity.organization").parentElement.hidden = false;
+      document.getElementById("identity.organization").parentElement.parentElement.hidden = false;
   }
 
   function onLoad()

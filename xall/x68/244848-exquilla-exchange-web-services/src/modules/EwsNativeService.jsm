@@ -13,7 +13,6 @@ const EXPORTED_SYMBOLS = ["EwsNativeService"];
 
 var Cu = Components.utils;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
 Utils.importLocally(this);
 var _log = null;
@@ -34,7 +33,7 @@ function EwsNativeService() {
 }
 
 EwsNativeService.prototype = {
-  QueryInterface: QIUtils.generateQI([Ci.nsIObserver]),
+  QueryInterface: ChromeUtils.generateQI([Ci.nsIObserver]),
 
   getExistingMailbox(aServerURI) {
     for (let mailbox of gMailboxes) {
@@ -78,7 +77,14 @@ EwsNativeService.prototype = {
 
     let cdStringBundle = stringService.createBundle("chrome://global/locale/commonDialogs.properties");
     // "Authentication Required"
-    let authenticationRequired = cdStringBundle.GetStringFromName("PromptUsernameAndPassword2");
+    let authenticationRequired;
+    try { // COMPAT for TB 68
+      let brandStringBundle = stringService.createBundle("chrome://branding/locale/brand.properties");
+      let brandFullName = brandStringBundle.GetStringFromName("brandFullName");
+      authenticationRequired = cdStringBundle.formatStringFromName("PromptUsernameAndPassword3", [brandFullName]);
+    } catch (ex) { /* COMPAT for TB 68 */
+      authenticationRequired = cdStringBundle.GetStringFromName("PromptUsernameAndPassword2");
+    } /* COMPAT for TB 68 */
     // "Enter Password For"
     let enterPasswordFor = cdStringBundle.formatStringFromName("EnterPasswordFor", [username, hostname], 2);
 
@@ -118,12 +124,7 @@ EwsNativeService.prototype = {
         aLoginInfo.passwordField = "";
 
         // search for existing logins, and remove them if found
-        let logins;
-        if (Services.logins.findLogins.length == 4) { // COMPAT for TB 60
-          logins = Services.logins.findLogins({}, hostname, "", hostname);
-        } else {
-          logins = Services.logins.findLogins(hostname, "", hostname);
-        }
+        let logins = Services.logins.findLogins(hostname, "", hostname);
         for (let login of logins) {
           if (login.username == aLoginInfo.username) {
             log.config("Removing existing saved login for hostname " + hostname +

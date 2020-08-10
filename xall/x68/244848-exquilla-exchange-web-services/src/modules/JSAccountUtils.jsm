@@ -40,8 +40,6 @@ var Cr = Components.results;
 
 var { Log } = ChromeUtils.import("resource://gre/modules/Log.jsm");
 var { Preferences } = ChromeUtils.import("resource://gre/modules/Preferences.jsm");
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm"); // COMPAT for TB 60
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 
 // Logger definitions.
 const LOGGER_NAME = "JsAccount";
@@ -89,7 +87,7 @@ var log = configureLogging();
 JSAccountUtils.jaFactory = function (aProperties, aJsDelegateConstructor)
 {
   let factory = {};
-  factory.ChromeInterface = QIUtils.generateQI([Ci.nsIFactory]);
+  factory.ChromeInterface = ChromeUtils.generateQI([Ci.nsIFactory]);
   factory.lockFactory = function() {};
 
   factory.createInstance = function(outer, iid)

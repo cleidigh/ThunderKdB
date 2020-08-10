@@ -50,8 +50,6 @@
 ]>
 
 <wizard id="AccountWizard" title="&ews.addExchangeAccount;"
-        onwizardcancel="return onCancel();"
-        onwizardfinish="return FinishAccount();"
         onload="exquilla.AW.onAccountWizardLoad();"
         style="&ews.accountWizard.size;"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -66,7 +64,7 @@
   <script type="application/javascript" src="chrome://exquilla/content/ewsAccountWizard.js"/>
   <script type="application/javascript" src="chrome://messenger/content/aw-done.js"/>
 
-  <!-- These elements exist because the TB68 account wizard code
+  <!-- These elements exist because the core account wizard code
        expects to be able to attach event handlers to them. -->
   <dummy id="accounttype" hidden="true"/>
   <dummy id="incomingpage" hidden="true"/>
@@ -77,9 +75,7 @@
 
   <!-- Identity page : Collects user's login and email address -->
   <wizardpage id="identitypage" pageid="identitypage"
-              label="&identityTitle.label;"
-              onpageshow="exquilla.AW.identityPageValidate();"
-              onpageadvanced="return exquilla.AW.identityPageUnload();">
+              label="&identityTitle.label;">
     <vbox flex="1">
       <grid>
         <columns>
@@ -209,8 +205,7 @@
 
   <!-- Done page : this page summarizes information collected to create a mail/news account -->
   <wizardpage id="done" pageid="done" 
-              label="&completionTitle.label;"
-              onpageshow="return exquilla.AW.donePageInit();">
+              label="&completionTitle.label;">
     <vbox flex="1">
       <description>&completionText.label;</description>
       <separator class="thin"/>

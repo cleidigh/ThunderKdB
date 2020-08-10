@@ -95,7 +95,7 @@ EwsNativeMachine.prototype = {
       this.stopMachine(aListener, result);
     } catch (e) {
       this.machineErrorResponse(aListener, "CheckOnlineMachineReject", null, se(e));
-      result = {status: Cr.NS_ERROR_FAILURE};
+      let result = {status: Cr.NS_ERROR_FAILURE};
       this.stopMachine(aListener, result);
     }
   },

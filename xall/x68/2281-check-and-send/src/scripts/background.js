@@ -50,7 +50,8 @@ var default_prefs = {
   dateDef: [],
   dayDef: [],
   checkDay: [],
-  checkInvalidDate: false
+  checkInvalidDate: false,
+  alwaysPopup: true
 };
 
 async function init() {
@@ -199,12 +200,14 @@ browser.runtime.onMessage.addListener(async message => {
       errCnt += checkDuplicatedRecipients(details);
       errCnt += await checkAddress(details);
       errCnt += await checkDayDate(details);
+      
+      let warnParam = (errCnt > 0 || prefs["alwaysPopup"]) ? warnings : [];
 
       let inSendSession = promiseMap.get(message.tabId) ? true : false;
 
       browser.runtime.sendMessage({
         message: "SEND_WARNINGS",
-        warnings: warnings,
+        warnings: warnParam,
         session: inSendSession
       });
       break;
@@ -215,10 +218,13 @@ browser.runtime.onMessage.addListener(async message => {
       }
 
       if (message.confirmed) {
-        warnings = message.warnings; //update warning info by user changes
+        let newDetails = [];
+        if (Object.keys(message.warnings).length > 0) { //length == 0 means no warning and no popup
+          warnings = message.warnings; //update warning info by user changes
+          newDetails = await applyRecipientChanges(message.tabId);
+        }
+        
         browser.composeAction.disable(message.tabId);
-
-        let newDetails = await applyRecipientChanges(message.tabId);
 
         resolve({
           cancel: false,

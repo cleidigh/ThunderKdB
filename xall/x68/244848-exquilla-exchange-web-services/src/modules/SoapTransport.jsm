@@ -13,23 +13,13 @@
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "Utils",
   "resource://exquilla/ewsUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
-if ("@mozilla.org/xmlextras/domparser;1" in Cc) {
-  this.DOMParser = Components.Constructor("@mozilla.org/xmlextras/domparser;1", Ci.nsIDOMParser); // COMPAT for TB 60
-} else {
-  Cu.importGlobalProperties(["DOMParser"]);
-}
-if ("@mozilla.org/xmlextras/xmlserializer;1" in Cc) {
-  this.XMLSerializer = Components.Constructor("@mozilla.org/xmlextras/xmlserializer;1", Ci.nsIDOMSerializer); // COMPAT for TB 60
-} else {
-  Cu.importGlobalProperties(["XMLSerializer"]);
-}
+  "resource:///modules/MailServices.jsm");
+Cu.importGlobalProperties(["DOMParser", "XMLSerializer"]);
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("soap");
@@ -96,7 +86,7 @@ SoapTransport.prototype =
   classDescription: "http transport for SOAP messages",
   classID:          Components.ID("{F2F908D5-3B7F-4a17-A33C-36949CDC2D59}"),
   flags:            0,
-  QueryInterface:   QIUtils.generateQI(SoapTransportInterfaces),
+  QueryInterface:   ChromeUtils.generateQI(SoapTransportInterfaces),
 
   // SOAPTransport implementation
 

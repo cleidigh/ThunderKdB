@@ -13,6 +13,7 @@ async function onInit() {
 
       document.title = title.textContent = gBundle.get(AppConstants.XP_UNIX ? "windowTitle" : "windowTitleWin");
     } else {
+      window.browser = window.browser.extension.getBackgroundPage().browser; // XXX Hack for Thunderbird 78
       title.remove();
     }
 

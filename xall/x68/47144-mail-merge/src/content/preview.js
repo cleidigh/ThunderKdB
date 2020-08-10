@@ -23,14 +23,14 @@ var mailmerge = {
 			
 			document.getElementById("mailmerge-file").hidden = false;
 			
-			var json = window.arguments[0].json;
-			var table = document.getElementById("mailmerge-file-table");
-			for(var i = 0; i < json.length; i++) {
+			let json = window.arguments[0].json;
+			let table = document.getElementById("mailmerge-file-table");
+			for(let i = 0; i < json.length; i++) {
 				
-				var row = table.insertRow(i);
-				for(var j = 0; j < json[i].length; j++) {
+				let row = table.insertRow(i);
+				for(let j = 0; j < json[i].length; j++) {
 					
-					var cell = row.insertCell(j);
+					let cell = row.insertCell(j);
 					cell.textContent = json[i][j];
 					
 				}
@@ -91,7 +91,7 @@ var mailmerge = {
 	
 	update: function() {
 		
-		var compose = mailmergeutils.compose(mailmerge.index);
+		let compose = mailmergeutils.compose(mailmerge.index);
 		if(compose) {
 			
 			document.getElementById("mailmerge-message-index").textContent = mailmerge.index;
@@ -105,12 +105,12 @@ var mailmerge = {
 			document.getElementById("mailmerge-message-attachments").textContent = "";
 			document.getElementById("mailmerge-message-sendlater").textContent = "";
 			
-			var attachments = compose.compFields.attachments;
+			let attachments = compose.compFields.attachments;
 			while(attachments.hasMoreElements()) {
 				
 				try {
 					
-					var attachment = attachments.getNext();
+					let attachment = attachments.getNext();
 					attachment.QueryInterface(Ci.nsIMsgAttachment);
 					
 					document.getElementById("mailmerge-message-attachments").textContent += attachment.name + " : " + attachment.size + " : " + decodeURI(attachment.url) + "\n";

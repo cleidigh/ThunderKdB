@@ -11,7 +11,7 @@
 
 if (typeof exquilla == 'undefined')
   var exquilla = {};
-var { MailServices } = ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 exquilla.messengerComposeOverlay = (function ews_messengerComposeOverlay() {
 
@@ -34,10 +34,14 @@ exquilla.messengerComposeOverlay = (function ews_messengerComposeOverlay() {
     window.removeEventListener("load", exquilla.messengerComposeOverlay.onLoad, false);
 
     // Add the exQuilla autocomplete type
-    let awText = document.getElementById("addressCol2#1");
-    let autocompletesearch = awText.getAttribute("autocompletesearch");
-    if (autocompletesearch.indexOf("exquilla-ab") == -1)
-      awText.setAttribute("autocompletesearch", autocompletesearch + " exquilla-ab");
+    for (let id of [/* COMPAT for TB 68 */"addressCol2#1", "toAddrInput", "ccAddrInput", "bccAddrInput", "replyAddrInput"]) {
+      let awText = document.getElementById(id);
+      if (/* COMPAT for TB 68 */awText) {
+        let autocompletesearch = awText.getAttribute("autocompletesearch");
+        if (!autocompletesearch.includes("exquilla-ab"))
+          awText.setAttribute("autocompletesearch", autocompletesearch + " exquilla-ab");
+      }
+    }
 
     // override FillIdentityList so that we can hide EWS identities when mail is disabled
     this.oldFillIdentityList = FillIdentityList;
@@ -98,7 +102,8 @@ exquilla.messengerComposeOverlay = (function ews_messengerComposeOverlay() {
       // We will setup a call to get all attachments with the ews server
       if (gMsgCompose.type == Ci.nsIMsgCompType.ForwardInline ||
           gMsgCompose.type == Ci.nsIMsgCompType.Draft ||
-          gMsgCompose.type == Ci.nsIMsgCompType.Template // edit message as new
+          gMsgCompose.type == Ci.nsIMsgCompType.Template ||
+          gMsgCompose.type == Ci.nsIMsgCompType.EditAsNew
          )
       {
         let ewsServer = safeGetJS(hdr.folder.server, "EwsIncomingServer");
@@ -117,7 +122,7 @@ exquilla.messengerComposeOverlay = (function ews_messengerComposeOverlay() {
     attachment.url = url;
     attachment.temporary = false;
     attachment.contentType = contentType;
-    AddAttachments([attachment]);
+    AddAttachments([attachment], null, gContentChanged);
   }
 
   function onEndAllAttachments()

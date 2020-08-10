@@ -1,0 +1,5018 @@
+{
+	"extName": {
+		"message": "CardBook"
+	},
+	"extDesc": {
+		"message": "vCard通讯录"
+	},
+	"browserActionTitle": {
+		"message": "CardBook",
+		"description": "切换到 CardBook 标签页"
+	},
+	"cardbookTitle": {
+		"message": "CardBook"
+	},
+	"cardbookPrefTitle": {
+		"message": "CardBook 偏好设置"
+	},
+	"statusProgressInformationTooltip": {
+		"message": "点击查看日志"
+	},
+	"imageSelectionTitle": {
+		"message": "图像选择"
+	},
+	"imageSaveTitle": {
+		"message": "保存图像"
+	},
+	"fileSaveTitle": {
+		"message": "保存文件"
+	},
+	"dirSaveTitle": {
+		"message": "保存目录"
+	},
+	"dirChooseTitle": {
+		"message": "选择目录"
+	},
+	"fileCreationVCFTitle": {
+		"message": "新建VCF文件(UTF-8编码)"
+	},
+	"fileSelectionVCFTitle": {
+		"message": "打开VCF文件(UTF-8编码)"
+	},
+	"fileImportTitle": {
+		"message": "导入VCF文件(UTF-8编码)"
+	},
+	"dirImportTitle": {
+		"message": "从目录导入"
+	},
+	"fileCreationTPLTitle": {
+		"message": "新建TPL文件"
+	},
+	"fileSelectionTPLTitle": {
+		"message": "打开TPL文件"
+	},
+	"fileSelectionTitle": {
+		"message": "链接地址"
+	},
+	"uncategorizedCards": {
+		"message": "未分类"
+	},
+	"collectedCards": {
+		"message": "已整理的联系人"
+	},
+	"enableFromAccountsOrCats": {
+		"message": "启用通讯录"
+	},
+	"disableFromAccountsOrCats": {
+		"message": "禁用通讯录"
+	},
+	"readWriteFromAccountsOrCats": {
+		"message": "将通讯录设为可读写"
+	},
+	"readOnlyFromAccountsOrCats": {
+		"message": "将通讯录设为只读模式"
+	},
+	"editCategoryFromAccountsOrCats": {
+		"message": "编辑类别"
+	},
+	"removeCategoryFromAccountsOrCats": {
+		"message": "删除类别"
+	},
+	"convertCategoryFromAccountsOrCats": {
+		"message": "转换类别为列表"
+	},
+	"editNodeFromAccountsOrCats": {
+		"message": "编辑节点"
+	},
+	"removeNodeFromAccountsOrCats": {
+		"message": "移除节点"
+	},
+	"convertNodeFromAccountsOrCats": {
+		"message": "从节点创建列表"
+	},
+	"viewCardButtonLabel": {
+		"message": "查看"
+	},
+	"editCardButtonLabel": {
+		"message": "编辑"
+	},
+	"viewInCardBookMenuLabel": {
+		"message": "使用CardBook查看"
+	},
+	"mergeCardsLabel": {
+		"message": "合并联系人"
+	},
+	"forgetCardsLabel": {
+		"message": "忘记"
+	},
+	"deleteCardsLabel": {
+		"message": "删除"
+	},
+	"showForgottenLabel": {
+		"message": "显示已忘记的重复"
+	},
+	"showForgottenAccesskey": {
+		"message": "S"
+	},
+	"hideForgottenLabel": {
+		"message": "隐藏已忘记的重复"
+	},
+	"hideForgottenAccesskey": {
+		"message": "H"
+	},
+	"noContactsDuplicated": {
+		"message": "未找到重复联系人"
+	},
+	"serverWarningGoogleLabel": {
+		"message": "Google 的使用是实验性的，因为 Google 不遵守 vCard 标准。"
+	},
+	"Validating1Label": {
+		"message": "正在验证($P1$)…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"Validating2Label": {
+		"message": "正在验证…"
+	},
+	"ValidatingURLFailedLabel": {
+		"message": "URL 异常"
+	},
+	"ValidationFailedLabel": {
+		"message": "验证失败"
+	},
+	"ValidationOKLabel": {
+		"message": "验证成功"
+	},
+	"customFieldsErrorUPPERCASE": {
+		"message": "自定义字段名称应为大写: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorX": {
+		"message": "自定义字段名称应以X-开头: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorFIELD": {
+		"message": "$P1$ 是保留词，不能作为自定义字段名称",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorCHAR": {
+		"message": "自定义字段名称不能含有逗号、分号、冒号或点等转义字符 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"customFieldsErrorUNIQUE": {
+		"message": "自定义字段名称应是唯一的（自定义字段在多个标签页定义）"
+	},
+	"customFieldsErrorLABEL": {
+		"message": "自定义字段标签不能为空"
+	},
+	"allContactsLoadedFromFile": {
+		"message": "$P1$: 全部联系人已从文件加载",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"notAllContactsLoadedFromFile": {
+		"message": "$P1$: 非全部联系人已从文件加载: $P2$ 出错",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroRunning": {
+		"message": "$P1$ : 正在同步",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroNotTried": {
+		"message": "$P1$ : 未尝试同步",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinished": {
+		"message": "$P1$ : 同步完成",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFinishedResult": {
+		"message": "$P1$ : 同步完成，联系人结果:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroProcessed": {
+		"message": "联系人已处理: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpToDate": {
+		"message": "$P1$ : 联系人已是更新: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnServer": {
+		"message": "$P1$ : 服务器的新联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnServer": {
+		"message": "$P1$ : 已在服务器更新的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnServer": {
+		"message": "$P1$ : 已从服务器删除的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDisk": {
+		"message": "$P1$ : 已从磁盘删除的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : 已从磁盘删除和服务器更新的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsNewOnDisk": {
+		"message": "$P1$ : 磁盘的新联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDisk": {
+		"message": "$P1$ : 已在磁盘更新的磁盘 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnBoth": {
+		"message": "$P1$ : 已在磁盘和服务器更新的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCardsUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : 已从磁盘更新和服务器删除的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetOKFromServer": {
+		"message": "$P1$ : 从服务器检索修改成功 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifGetKOFromServer": {
+		"message": "$P1$ : 从服务器检索修改失败 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutOKToServer": {
+		"message": "$P1$ : 向服务器推送修改成功 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroModifPutKOToServer": {
+		"message": "$P1$ : 向服务器推送修改失败 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroImpossible": {
+		"message": "$P1$ : 无法与服务器同步",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBFinishedResult": {
+		"message": "$P1$ : 已打开的本地数据库，联系人结果 :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDBCardsOK": {
+		"message": "$P1$ : 已打开的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDBCardsKO": {
+		"message": "$P1$ : 出错的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirFinishedResult": {
+		"message": "$P1$ : 已打开的目录，联系人结果 :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroDirCardsOK": {
+		"message": "$P1$ : 已打开的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroDirCardsKO": {
+		"message": "$P1$ : 出错的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileFinishedResult": {
+		"message": "$P1$ : 已打开的文件，联系人结果 :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroFileCardsOK": {
+		"message": "$P1$ : 已打开的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroFileCardsKO": {
+		"message": "$P1$ : 出错的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroForcedToResync": {
+		"message": "$P1$ : 我们正在强行重新同步此账户",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchroAllFinished": {
+		"message": "已完成所有同步"
+	},
+	"discoveryRunning": {
+		"message": "$P1$ : 正运行通讯录自动发现",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageGetResponse": {
+		"message": "$P1$ : 已下载的图像 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"imageGetError": {
+		"message": "$P1$ : 出错的图像 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importFinishedResult": {
+		"message": "$P1$ : 已完成导入，联系人结果 :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importCardsOK": {
+		"message": "$P1$ : 已导入的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importCardsKO": {
+		"message": "$P1$ : 出错的联系人 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"importAllFinished": {
+		"message": "已完成全部导入"
+	},
+	"cardDeletedOnDisk": {
+		"message": "$P1$ : 已从磁盘删除联系人 $P2$ ",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDisk": {
+		"message": "$P1$ : 已在磁盘更新联系人 $P2$ ",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyGetFromCache": {
+		"message": "$P1$ : 已从缓存检索联系人 $P2$ ",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardGetFromCache": {
+		"message": "$P1$ : 已从缓存检索联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : 从磁盘删除和服务器更新联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnBoth": {
+		"message": "$P1$ : 在磁盘和服务器更新联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnServer": {
+		"message": "$P1$ : 在服务器更新联系人 $P2$ (已发现标签 : $P3$, 缓存中的标签 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"cardNewOnServer": {
+		"message": "$P1$ : 已在服务器找到一个新联系人",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardLoadedFromCache": {
+		"message": "$P1$ : 从缓存加载的联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardLoadedFromCacheDB": {
+		"message": "$P1$ : 从缓存加载的联系人 $P2$ (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardNewOnDisk": {
+		"message": "$P1$ : 磁盘上的新联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : 在磁盘更新和服务器删除的联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeletedOnServer": {
+		"message": "$P1$ : 在服务器删除的联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAlreadyExists": {
+		"message": "$P1$ : 已存在联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"askUserTitle": {
+		"message": "联系人修改冲突"
+	},
+	"askUserPersistMessage": {
+		"message": "对其他已存在的联系人应用此选择"
+	},
+	"keepAskUserLabel": {
+		"message": "保留联系人"
+	},
+	"overwriteAskUserLabel": {
+		"message": "覆盖联系人"
+	},
+	"duplicateAskUserLabel": {
+		"message": "复制联系人"
+	},
+	"deleteAskUserLabel": {
+		"message": "删除联系人"
+	},
+	"localAskUserLabel": {
+		"message": "优先本地修改"
+	},
+	"remoteAskUserLabel": {
+		"message": "优先远程修改"
+	},
+	"mergeAskUserLabel": {
+		"message": "合并修改"
+	},
+	"serverCardDeletedFromServer": {
+		"message": "$P1$ : 在服务器删除的联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardNotExistServer": {
+		"message": "$P1$ : 服务器上不存在联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardDeleteFailed": {
+		"message": "$P1$ : 从服务器删除联系人 $P2$ 失败 (url : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingDeletion": {
+		"message": "$P1$ : 联系人 $P2$ : 发送删除请求 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithEtag": {
+		"message": "$P1$ : 服务器更新的联系人 $P2$ (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : 服务器更新的联系人 $P2$ (无响应的标签)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardUpdateFailed": {
+		"message": "$P1$ : 从服务器更新联系人 $P2$ 失败 (url : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingUpdate": {
+		"message": "$P1$ : 联系人 $P2$ : 发送更新请求 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithEtag": {
+		"message": "$P1$ : 在服务器创建联系人 $P2$ (标签 : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCardCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : 在服务器创建联系人 $P2$ (无响应的标签)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardCreateFailed": {
+		"message": "$P1$ : 在服务器创建联系人 $P2$ 失败 (url : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardSendingCreate": {
+		"message": "$P1$ : 联系人 $P2$ : 发送创建请求 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetImageFailed": {
+		"message": "$P1$ : 为联系人 $P2$ 下载图像失败 (url : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetImageOK": {
+		"message": "$P1$ : 已为联系人 $P2$ 下载图像",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingImage": {
+		"message": "$P1$ : 正为联系人 $P2$ 下载图像",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetOK": {
+		"message": "$P1$ : 已从服务器下载联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetFailed": {
+		"message": "$P1$ : 从服务器下载失败 (url : $P2$, 状态 : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"synchronizationFailed": {
+		"message": "$P1$ : 同步失败 (步骤 : $P2$, url : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"synchronizationUnauthorized": {
+		"message": "$P1$: 无法登录服务器配置，用户名或密码可能是错误的",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationSearchingCards": {
+		"message": "$P1$ : 搜索联系人中 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery": {
+		"message": "$P1$ : 在没有发现请求的情况下验证 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery4": {
+		"message": "$P1$ : 发现阶段 4 请求 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery3": {
+		"message": "$P1$ : 发现阶段 3 请求 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery2": {
+		"message": "$P1$ : 发现阶段 2 请求 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationRequestDiscovery1": {
+		"message": "$P1$ : 发现阶段 1 请求 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleAccessTokenOK": {
+		"message": "$P1$ : Google 访问令牌请求通过, 访问令牌 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRefreshTokenOK": {
+		"message": "$P1$ : Google 刷新令牌请求通过, 刷新令牌 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleGetNewRefreshToken": {
+		"message": "$P1$ : 尝试获取新的 Google 刷新令牌 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleNewRefreshTokenOK": {
+		"message": "$P1$ : 获取认证码 : $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestAccessToken": {
+		"message": "$P1$ : Google 访问令牌请求 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"googleRequestRefreshToken": {
+		"message": "$P1$ : Google 刷新令牌请求 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooAccessTokenOK": {
+		"message": "$P1$ : Yahoo!访问令牌请求通过, 访问令牌 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRefreshTokenOK": {
+		"message": "$P1$ : Yahoo!刷新令牌请求通过, 刷新令牌 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooGetNewRefreshToken": {
+		"message": "$P1$ : 尝试获取新的 Yahoo!刷新令牌 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooNewRefreshTokenOK": {
+		"message": "$P1$ : 获取认证码 : $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestAccessToken": {
+		"message": "$P1$ : Yahoo!访问令牌请求 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"yahooRequestRefreshToken": {
+		"message": "$P1$ : Yahoo!刷新令牌请求 $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncDeleting": {
+		"message": "$P1$ : 删除定期同步过程 (ID : $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"periodicSyncSetting": {
+		"message": "$P1$ : 设置定期同步过程 (间隔 : $P2$ ms, ID : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"periodicSyncSyncing": {
+		"message": "$P1$ : 定期同步设置的同步…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileEmpty": {
+		"message": "文件 $P1$ 是空的",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fileAlreadyOpen": {
+		"message": "已在 CardBook 打开文件 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryAlreadyOpen": {
+		"message": "已在 CardBook 打开目录 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"parsingCardError": {
+		"message": "$P1$ : 解析联系人时出错 : \n$P2$ \n$P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"addressbookOpened": {
+		"message": "$P1$ : 已打开通讯录",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookModified": {
+		"message": "$P1$ : 已修改通讯录",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDeleted": {
+		"message": "$P1$ : 已关闭通讯录",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookCreated": {
+		"message": "$P1$ : 已创建通讯录",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookDisabled": {
+		"message": "$P1$ : 已禁用通讯录",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadOnly": {
+		"message": "$P1$ : 通讯录处于只读模式",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookReadWrite": {
+		"message": "$P1$ : 通讯录处于读写模式",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookEnabled": {
+		"message": "$P1$ : 已启用通讯录",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreated": {
+		"message": "$P1$ : 创建联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardUpdated": {
+		"message": "$P1$ : 更新联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardDeleted": {
+		"message": "$P1$ : 删除联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardAddedToCategory": {
+		"message": "$P1$ : 添加联系人 $P2$ 到类别 $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardDeletedFromAllCategory": {
+		"message": "$P1$ : 从全部类别删除联系人 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"cardsConverted": {
+		"message": "$P1$ : 联系人转换为 $P2$ : $P3$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"cardsConvertedUndo": {
+		"message": "VCards 已转换"
+	},
+	"cardsImportedFromFileUndo": {
+		"message": "已导入文件 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsImportedFromDirUndo": {
+		"message": "已导入目录 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"undoActionDoneUndo": {
+		"message": "完成撤销 ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"redoActionDoneUndo": {
+		"message": "完成重做 ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardCreatedUndo": {
+		"message": "创建联系人 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardUpdatedUndo": {
+		"message": "更新联系人 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"outgoingEmailCollectedUndo": {
+		"message": "已收藏外发邮件"
+	},
+	"emailCollectedByFilterUndo": {
+		"message": "依过滤器收藏的邮件"
+	},
+	"emailDeletedByFilterUndo": {
+		"message": "依过滤器删除的邮件"
+	},
+	"cardsMergedUndo": {
+		"message": "已合并联系人"
+	},
+	"cardsDuplicatedUndo": {
+		"message": "已复制联系人"
+	},
+	"displayNameGenerated": {
+		"message": "$P1$ : 联系人的显示名称已重新生成 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"displayNameGeneratedUndo": {
+		"message": "显示名称已重新生成"
+	},
+	"cardModifiedUndo": {
+		"message": "更新联系人 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted1Undo": {
+		"message": "删除联系人 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardsDeleted2Undo": {
+		"message": "已删除联系人"
+	},
+	"cardsPastedUndo": {
+		"message": "已粘贴联系人"
+	},
+	"cardsDraggedUndo": {
+		"message": "已拖移联系人"
+	},
+	"categoryCreated": {
+		"message": "$P1$ : 创建类别 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryCreatedUndo": {
+		"message": "创建类别 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categorySelectedUndo": {
+		"message": "已选择目录 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryUnselectedUndo": {
+		"message": "未选目录 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryRenamedUndo": {
+		"message": "已重命名目录 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryDeleted": {
+		"message": "$P1$ : 删除类别 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedUndo": {
+		"message": "删除类别 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryConvertedToListUndo": {
+		"message": "已转换类别 $P1$ 为列表",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listConvertedToCategoryUndo": {
+		"message": "已转换列表 $P1$ 为类别",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"linePastedUndo": {
+		"message": "已粘贴行"
+	},
+	"nodeRenamedUndo": {
+		"message": "节点$P1$ 已重命名",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"nodeDeleted": {
+		"message": "$P1$ : 节点 $P2$ 已删除",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletedUndo": {
+		"message": "节点$P1$ 已删除",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"listCreatedFromNodeUndo": {
+		"message": "从节点创建列表$P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoFile": {
+		"message": "已导出联系人到文件 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoFile": {
+		"message": "已导出联系人到文件 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportsOKIntoDir": {
+		"message": "已导出联系人到目录 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"exportOKIntoDir": {
+		"message": "已导出联系人到目录 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"importNotIntoSameFile": {
+		"message": "禁止导入到相同文件"
+	},
+	"importNotIntoSameDir": {
+		"message": "禁止导入到相同目录"
+	},
+	"clipboardWrong": {
+		"message": "无法导入剪贴板数据"
+	},
+	"clipboardEmpty": {
+		"message": "剪贴板是空的"
+	},
+	"imageError": {
+		"message": "图像添加失败"
+	},
+	"imageErrorWithMessage": {
+		"message": "图像添加失败 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"imageSavedToFile": {
+		"message": "图像保存到文件 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"contactsCopied": {
+		"message": "已复制联系人到剪贴板"
+	},
+	"contactCopied": {
+		"message": "已复制联系人到剪贴板"
+	},
+	"lineCopied": {
+		"message": "已复制行到剪贴板"
+	},
+	"linePastedToCard": {
+		"message": "已粘贴行到联系人 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFound": {
+		"message": "已找到联系人数: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContacts": {
+		"message": "联系人数: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"numberContactsFoundModified": {
+		"message": "已找到联系人数 : $P1$ (本地修改 : $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberContactsModified": {
+		"message": "联系人数 : $P1$ (本地修改 : $P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"numberLines": {
+		"message": "行数 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbook.searchFrom.name": {
+		"message": "CardBook 来自"
+	},
+	"cardbook.searchTo.name": {
+		"message": "CardBook 发至"
+	},
+	"cardbook.searchCc.name": {
+		"message": "CardBook 抄送"
+	},
+	"cardbook.searchBcc.name": {
+		"message": "CardBook 密送"
+	},
+	"cardbook.searchAll.name": {
+		"message": "CardBook 来自，发至，抄送，密送"
+	},
+	"cardbook.searchCorrespondents.name": {
+		"message": "CardBook 通讯者"
+	},
+	"cardbook.addFrom.name": {
+		"message": "添加来自到 CardBook"
+	},
+	"cardbook.addTo.name": {
+		"message": "添加发至到 CardBook"
+	},
+	"cardbook.addCc.name": {
+		"message": "添加抄送到 CardBook"
+	},
+	"cardbook.addBcc.name": {
+		"message": "添加密送到 CardBook"
+	},
+	"cardbook.addAll.name": {
+		"message": "添加来自，发至，抄送，密送到 CardBook"
+	},
+	"cardbook.removeFrom.name": {
+		"message": "从 CardBook 删除来自"
+	},
+	"cardbook.removeTo.name": {
+		"message": "从 CardBook 删除除发至"
+	},
+	"cardbook.removeCc.name": {
+		"message": "从 CardBook 删除除抄送"
+	},
+	"cardbook.removeBcc.name": {
+		"message": "从 CardBook 删除除密送"
+	},
+	"cardbook.removeAll.name": {
+		"message": "从 CardBook 删除除来自，发至，抄送，密送"
+	},
+	"urlDownloaded": {
+		"message": "URL 下载 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressbookHeader": {
+		"message": "地址簿"
+	},
+	"photoLabel": {
+		"message": "照片"
+	},
+	"versionLabel": {
+		"message": "版本"
+	},
+	"revLabel": {
+		"message": "最近更新"
+	},
+	"lastnameLabel": {
+		"message": "姓"
+	},
+	"firstnameLabel": {
+		"message": "名"
+	},
+	"othernameLabel": {
+		"message": "其他名"
+	},
+	"prefixnameLabel": {
+		"message": "前缀"
+	},
+	"suffixnameLabel": {
+		"message": "后缀"
+	},
+	"fnLabel": {
+		"message": "姓名"
+	},
+	"nicknameLabel": {
+		"message": "昵称"
+	},
+	"genderLabel": {
+		"message": "性别"
+	},
+	"bdayLabel": {
+		"message": "生日"
+	},
+	"birthplaceLabel": {
+		"message": "出生地"
+	},
+	"anniversaryLabel": {
+		"message": "周年纪念日"
+	},
+	"deathdateLabel": {
+		"message": "忌日"
+	},
+	"deathplaceLabel": {
+		"message": "去世地"
+	},
+	"titleLabel": {
+		"message": "头衔"
+	},
+	"roleLabel": {
+		"message": "角色"
+	},
+	"orgLabel": {
+		"message": "组织"
+	},
+	"categoriesLabel": {
+		"message": "类别"
+	},
+	"adrLabel": {
+		"message": "地址"
+	},
+	"telLabel": {
+		"message": "电话"
+	},
+	"emailLabel": {
+		"message": "电子邮箱"
+	},
+	"imppLabel": {
+		"message": "即时通讯"
+	},
+	"urlLabel": {
+		"message": "网址"
+	},
+	"eventLabel": {
+		"message": "事件"
+	},
+	"noteLabel": {
+		"message": "备注"
+	},
+	"postOfficeLabel": {
+		"message": "邮箱"
+	},
+	"extendedAddrLabel": {
+		"message": "公寓"
+	},
+	"streetLabel": {
+		"message": "街道"
+	},
+	"localityLabel": {
+		"message": "城市"
+	},
+	"regionLabel": {
+		"message": "省份"
+	},
+	"postalCodeLabel": {
+		"message": "邮编"
+	},
+	"countryLabel": {
+		"message": "国家"
+	},
+	"ageLabel": {
+		"message": "年龄"
+	},
+	"ABNameLabel": {
+		"message": "通讯录"
+	},
+	"cardIconLabel": {
+		"message": "图标"
+	},
+	"nameLabel": {
+		"message": "姓名"
+	},
+	"mailerLabel": {
+		"message": "邮件"
+	},
+	"tzLabel": {
+		"message": "时区"
+	},
+	"geoLabel": {
+		"message": "地理位置"
+	},
+	"prodidLabel": {
+		"message": "Prodid"
+	},
+	"sortstringLabel": {
+		"message": "排序字符串"
+	},
+	"uidLabel": {
+		"message": "联系人 ID"
+	},
+	"cbidLabel": {
+		"message": "CardBoook ID"
+	},
+	"class1Label": {
+		"message": "类"
+	},
+	"dirPrefIdLabel": {
+		"message": "通讯录 ID"
+	},
+	"kindLabel": {
+		"message": "类别"
+	},
+	"etagLabel": {
+		"message": "Etag"
+	},
+	"phoneticfirstnameLabel": {
+		"message": "名(拼音)"
+	},
+	"phoneticlastnameLabel": {
+		"message": "姓(拼音)"
+	},
+	"custom1Label": {
+		"message": "自定义 1"
+	},
+	"custom2Label": {
+		"message": "自定义 2"
+	},
+	"custom3Label": {
+		"message": "自定义 3"
+	},
+	"custom4Label": {
+		"message": "自定义 4"
+	},
+	"warningTitle": {
+		"message": "警告"
+	},
+	"errorTitle": {
+		"message": "错误"
+	},
+	"confirmTitle": {
+		"message": "确认"
+	},
+	"birthdaysListWindowLabel": {
+		"message": "周年纪念日列表 (总计 : $P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"syncListWindowLabelRunning": {
+		"message": "正在同步周年纪念日 ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelEnded": {
+		"message": "同步周年纪念日结束 ($P1$/$P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListWindowLabelFailed": {
+		"message": "同步周年纪念日失败"
+	},
+	"syncListExistingEntry": {
+		"message": "$P1$ : 在 Lightning 已存在事件 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListCreatedEntry": {
+		"message": "$P1$ : 在 Lightning 已创建事件 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"syncListErrorEntry": {
+		"message": "$P1$ : 在 Lightning 出错的事件 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"noBirthdaysFoundMessage": {
+		"message": "在 $P1$ 前没有周年纪念日",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"noEmailFoundMessage": {
+		"message": "没有 $P1$ 的邮件",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventEntryTitleMessage": {
+		"message": "%1$S 的周年纪念日, 年龄 : %2$S"
+	},
+	"calendarNotFoundTitle": {
+		"message": "周年纪念日提醒 - 已取消同步 Lightning"
+	},
+	"calendarNotFoundMessage": {
+		"message": "未找到日历 $P1$已取消同步 Lightning",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"calendarNotWritableTitle": {
+		"message": "周年纪念日提醒 - 已取消同步 Lightning"
+	},
+	"calendarNotWritableMessage": {
+		"message": "日历 $P1$ 不可写 (可能是只读或离线？)已取消同步 Lightning",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"errorAttachingFile": {
+		"message": "附加 vCard : 无法生成将 vCard 附加到邮件的文件 : $P1$ ($P2$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"errorInfiniteLoopRecursion": {
+		"message": "列表 : 列表的无限循环递归 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"WRONG_VERSION": {
+		"message": "仅支持 vCards 版本 3.0 或 4.0"
+	},
+	"unableToParseResponse": {
+		"message": "$P1$ : 无法解析服务器响应，因为此行 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"dateEntry1Wrong": {
+		"message": "$P1$ : 联系人 $P2$ 有一个不符合通讯录 ($P4$) 日期格式的日期值 ($P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"dateEntry2Wrong": {
+		"message": "日期值 ($P1$) 不符合通讯录 ($P2$) 日期格式",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"validateIntegerMsg": {
+		"message": "字段 $P1$ 应为空或介于 1 和 $P2$ 的整数 (值 : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"eventNameNull": {
+		"message": "至少一个事件没有描述"
+	},
+	"eventDateNull": {
+		"message": "至少一个事件没有日期"
+	},
+	"invalidURL": {
+		"message": "无效的 URL : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"cardbookSearchInputDefault": {
+		"message": "搜索…"
+	},
+	"blogtype": {
+		"message": "博客"
+	},
+	"celltype": {
+		"message": "手机"
+	},
+	"faxtype": {
+		"message": "传真"
+	},
+	"homefaxtype": {
+		"message": "家庭传真"
+	},
+	"homepagetype": {
+		"message": "主页"
+	},
+	"hometype": {
+		"message": "家"
+	},
+	"iphonetype": {
+		"message": "iPhone"
+	},
+	"maintype": {
+		"message": "主要"
+	},
+	"othertype": {
+		"message": "其他"
+	},
+	"pagertype": {
+		"message": "传呼机"
+	},
+	"profiletype": {
+		"message": "简介"
+	},
+	"workfaxtype": {
+		"message": "工作传真"
+	},
+	"worktype": {
+		"message": "工作"
+	},
+	"types.gender.f": {
+		"message": "女性"
+	},
+	"types.gender.m": {
+		"message": "男性"
+	},
+	"types.gender.n": {
+		"message": "无"
+	},
+	"types.gender.o": {
+		"message": "其他"
+	},
+	"types.gender.u": {
+		"message": "未知"
+	},
+	"typesTooltip": {
+		"message": "要改变可用的类型，使用 CardBook 偏好设置"
+	},
+	"prefLabel": {
+		"message": "偏好设置"
+	},
+	"prefValueLabel": {
+		"message": "偏好值"
+	},
+	"prefWeightTooltip": {
+		"message": "偏好值可有介于 1 和 100 的不同值普通使用请留空"
+	},
+	"impp.skype": {
+		"message": "Skype"
+	},
+	"impp.jabber": {
+		"message": "Jabber"
+	},
+	"impp.googletalk": {
+		"message": "Google Talk"
+	},
+	"impp.qq": {
+		"message": "腾讯 QQ"
+	},
+	"addToAddressbook": {
+		"message": "添加到通讯录"
+	},
+	"wdw_cardEditionViewResultTitle": {
+		"message": "修改联系人结果"
+	},
+	"wdw_cardEditionViewResultHideCreateTitle": {
+		"message": "修改联系人结果"
+	},
+	"wdw_cardEditionAddEmailTitle": {
+		"message": "注册新邮件地址"
+	},
+	"wdw_cardEditionCreateContactTitle": {
+		"message": "新建联系人"
+	},
+	"wdw_cardEditionCreateListTitle": {
+		"message": "新建邮件列表"
+	},
+	"wdw_cardEditionEditContactTitle": {
+		"message": "编辑联系人"
+	},
+	"wdw_cardEditionEditListTitle": {
+		"message": "编辑列表"
+	},
+	"wdw_cardEditionAddLineTitle": {
+		"message": "编辑联系人"
+	},
+	"wdw_cardEditionViewContactTitle": {
+		"message": "查看联系人"
+	},
+	"wdw_cardEditionViewListTitle": {
+		"message": "查看列表"
+	},
+	"wdw_cardbookPrintTitleLong": {
+		"message": "打印预览 $P1$ - CardBook - Thunderbird",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookPrintTitle": {
+		"message": "打印预览"
+	},
+	"displayGroupboxLabel": {
+		"message": "姓名"
+	},
+	"personalGroupboxLabel": {
+		"message": "个人信息"
+	},
+	"orgGroupboxLabel": {
+		"message": "专业信息"
+	},
+	"categoriesHeader": {
+		"message": "类别"
+	},
+	"adrGroupboxLabel": {
+		"message": "地址"
+	},
+	"telGroupboxLabel": {
+		"message": "电话号码"
+	},
+	"emailGroupboxLabel": {
+		"message": "电子邮件地址"
+	},
+	"urlGroupboxLabel": {
+		"message": "URLs"
+	},
+	"eventGroupboxLabel": {
+		"message": "事件"
+	},
+	"noteGroupboxLabel": {
+		"message": "备注"
+	},
+	"searchTermsGroupboxLabel": {
+		"message": "搜索词"
+	},
+	"addedCardsGroupboxLabel": {
+		"message": "所选项"
+	},
+	"mailPopularityGroupboxLabel": {
+		"message": "邮件优先级"
+	},
+	"addEntryTooltip": {
+		"message": "添加条目"
+	},
+	"removeEntryTooltip": {
+		"message": "删除条目"
+	},
+	"upEntryTooltip": {
+		"message": "上移"
+	},
+	"downEntryTooltip": {
+		"message": "下移"
+	},
+	"validatedEntryTooltip": {
+		"message": "有效"
+	},
+	"noValidatedEntryTooltip": {
+		"message": "验证"
+	},
+	"notValidatedEntryTooltip": {
+		"message": "无效格式"
+	},
+	"linkEntryTooltip": {
+		"message": "创建链接…"
+	},
+	"selectedCardsDeletionConfirmMessagePF": {
+		"message": "确定要删除所选联系人？;确定要删除所选 $P1$ 个联系人？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"catDeletionsConfirmMessagePF": {
+		"message": "确定要删除包含一个联系人的类 $P2$？;确定要删除包含 $P1$ 个联系人的类 $P2$？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"nodeDeletionsConfirmMessagePF": {
+		"message": "确定要删除包含一个联系人的节点 $P2$？;确定要删除包含 $P1$ 个联系人的节点 $P2$？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"accountDeletionConfirmMessage": {
+		"message": "确定要从 CardBook 库删除通讯录 $P1$?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletionDiscoveryConfirmMessage": {
+		"message": "通讯录 $P1$ 貌似已经从你的服务器移除， 你想从你的 CardBook 库也移除吗？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentFileMessage": {
+		"message": "删除文件 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"accountDeletiondeleteContentDirMessage": {
+		"message": "删除目录 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"directoryDeletionConfirmMessage": {
+		"message": "目录 $P1$ 不是空的确定要删除此目录下的所有对象？",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"choiceMappingTitle": {
+		"message": "字段选项"
+	},
+	"choiceavailableColumnsGroupboxLabel": {
+		"message": "可用字段"
+	},
+	"choiceaddedColumnsGroupboxLabel": {
+		"message": "已选字段"
+	},
+	"exportMappingTitle": {
+		"message": "字段映射选项"
+	},
+	"exportavailableColumnsGroupboxLabel": {
+		"message": "可用列"
+	},
+	"exportaddedColumnsGroupboxLabel": {
+		"message": "已选列"
+	},
+	"importMappingTitle": {
+		"message": "字段映射选项"
+	},
+	"importavailableColumnsGroupboxLabel": {
+		"message": "可用列"
+	},
+	"importaddedColumnsGroupboxLabel": {
+		"message": "已选列"
+	},
+	"importfoundColumnsGroupboxLabel": {
+		"message": "标题列"
+	},
+	"importblankColumn": {
+		"message": "空列"
+	},
+	"importNoTypeLabel": {
+		"message": "没有类型"
+	},
+	"fieldDelimiterLabel": {
+		"message": "字段分隔符"
+	},
+	"includePrefLabel": {
+		"message": "包含偏好设置"
+	},
+	"lineHeaderLabel": {
+		"message": "首行是标题"
+	},
+	"missingColumnsConfirmMessage": {
+		"message": "已选的列数不同于文件的列数未选择的列或不必要的列将被忽略继续？"
+	},
+	"toUpperCase": {
+		"message": "转换为大写"
+	},
+	"toLowerCase": {
+		"message": "转换为小写"
+	},
+	"copyFieldValue": {
+		"message": "复制 ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"pasteFieldValue": {
+		"message": "粘贴 ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookRenameFieldEditTypeTitle": {
+		"message": "重命名类型"
+	},
+	"wdw_cardbookRenameFieldAddTypeTitle": {
+		"message": "添加新类型"
+	},
+	"wdw_cardbookRenameFieldOrgTitle": {
+		"message": "组织编辑"
+	},
+	"wdw_cardbookRenameFieldEditCatTitle": {
+		"message": "编辑类别"
+	},
+	"wdw_cardbookRenameFieldAddCatTitle": {
+		"message": "添加新类别"
+	},
+	"wdw_cardbookRenameFieldEditNodeTitle": {
+		"message": "编辑节点"
+	},
+	"wdw_cardbookRenameFieldEditTypeLabel": {
+		"message": "类型:"
+	},
+	"wdw_cardbookRenameFieldAddTypeLabel": {
+		"message": "类型:"
+	},
+	"wdw_cardbookRenameFieldOrgLabel": {
+		"message": "类型:"
+	},
+	"wdw_cardbookRenameFieldEditCatLabel": {
+		"message": "类别:"
+	},
+	"wdw_cardbookRenameFieldAddCatLabel": {
+		"message": "类别:"
+	},
+	"wdw_cardbookRenameFieldEditNodeLabel": {
+		"message": "$P1$:",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
+		"message": "邮件账户限制定义"
+	},
+	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
+		"message": "邮件账户传出电子邮件集合定义"
+	},
+	"ignoreCaseIgnoreDiacriticLabel": {
+		"message": "忽略大小写和音调"
+	},
+	"ignoreCaseMatchDiacriticLabel": {
+		"message": "忽略大小写，匹配音调"
+	},
+	"matchCaseIgnoreDiacriticLabel": {
+		"message": "匹配大小写，忽略音调"
+	},
+	"matchCaseMatchDiacriticLabel": {
+		"message": "匹配大小写和音调"
+	},
+	"allCategories": {
+		"message": "显示全部"
+	},
+	"onlyCategories": {
+		"message": "仅类别"
+	},
+	"noCategory": {
+		"message": "仅联系人"
+	},
+	"multipleCategories": {
+		"message": "多个类别"
+	},
+	"none": {
+		"message": "无"
+	},
+	"multipleTypes": {
+		"message": "多个类型"
+	},
+	"noType": {
+		"message": "无类型"
+	},
+	"eventContactsWindowLabel": {
+		"message": "事件: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"fnDuplicatedMessage": {
+		"message": "(拷贝)"
+	},
+	"allMailAccounts": {
+		"message": "全部邮件账户"
+	},
+	"includeLabel": {
+		"message": "包含"
+	},
+	"excludeLabel": {
+		"message": "排除"
+	},
+	"sendButtonLabel": {
+		"message": "新建消息"
+	},
+	"doNotShowAnymore": {
+		"message": "当我试图通过邮件发送联系人而没有填写邮件地址时不要警告我"
+	},
+	"emptyEmailsCardConfirmMessage": {
+		"message": "此联系人没有邮件地址 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"emptyEmailsCardsConfirmMessage": {
+		"message": "这些联系人没有邮件地址 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"eventInNoteEventPrefix": {
+		"message": "事件"
+	},
+	"deathSuffix": {
+		"message": "(去世)"
+	},
+	"dateFormatsDLabel": {
+		"message": "D"
+	},
+	"dateFormatsMLabel": {
+		"message": "M"
+	},
+	"dateFormatsYLabel": {
+		"message": "Y"
+	},
+	"customLabel": {
+		"message": "自定义"
+	},
+	"valueAlreadyExists": {
+		"message": "值 $P1$ 已存在",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"allAccountsLabel": {
+		"message": "全部通讯录"
+	},
+	"enabledAccountsLabel": {
+		"message": "启用的通讯录"
+	},
+	"disabledAccountsLabel": {
+		"message": "禁用的通讯录"
+	},
+	"localAccountsLabel": {
+		"message": "本地通讯录"
+	},
+	"remoteAccountsLabel": {
+		"message": "远程通讯录"
+	},
+	"searchAccountsLabel": {
+		"message": "保存的搜索"
+	},
+	"wdw_passwordMissingTitle": {
+		"message": "缺失密码"
+	},
+	"wdw_passwordWrongTitle": {
+		"message": "无效的密码"
+	},
+	"dateDisplayedFormatLong": {
+		"message": "长: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"dateDisplayedFormatShort": {
+		"message": "短: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"addressFormatFormula": {
+		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
+	},
+	"newTokenTitle": {
+		"message": "登录您的账号 $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"newTokenDescription": {
+		"message": "CardBook 想访问你的 $P1$ 账号以获取联系人。认证信息和联系人数据仅在你的电脑和 Google 之间传输，第三方站点无法获取。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"invalidEmail": {
+		"message": "$P1$ 不是有效的邮件地址，因为不是 user@host 的形式",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"appendEmailLabel": {
+		"message": "添加到列表 : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryAddNew": {
+		"message": "添加新类别"
+	},
+	"typeAddNew": {
+		"message": "添加新类型"
+	},
+	"allContacts": {
+		"message": "所有联系人"
+	},
+	"keyDescription": {
+		"message": "加密密钥"
+	},
+	"encryptionStarted": {
+		"message": "开始加密"
+	},
+	"encryptionProcessed": {
+		"message": "加密项目: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"encryptionFinished": {
+		"message": "已完成加密"
+	},
+	"decryptionStarted": {
+		"message": "开始解密"
+	},
+	"decryptionProcessed": {
+		"message": "已解密项目: $P1$/$P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"decryptionFinished": {
+		"message": "完成解密"
+	},
+	"menu_undo.long.label": {
+		"message": "撤销 - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_undo.short.label": {
+		"message": "撤销"
+	},
+	"menu_redo.long.label": {
+		"message": "重做 - $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"menu_redo.short.label": {
+		"message": "重做"
+	},
+	"cardbookMenuItemLabel": {
+		"message": "CardBook"
+	},
+	"cardbookMenuItemAccesskey": {
+		"message": "b"
+	},
+	"cardbookMenuItemKey": {
+		"message": "b"
+	},
+	"cardbookMenuItemTooltip": {
+		"message": "切换到 CardBook 标签页"
+	},
+	"cardbookToolbarButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookToolbarButtonTooltip": {
+		"message": "切换到 CardBook 标签页"
+	},
+	"cardbookTabButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookTabButtonTooltip": {
+		"message": "切换到 CardBook 标签页"
+	},
+	"cardbookQFBButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookQFBButtonTooltip": {
+		"message": "仅显示来自地址簿中联系人的消息"
+	},
+	"quickFilterBar.booleanMode.tooltip": {
+		"message": "标签筛选模式"
+	},
+	"quickFilterBar.booleanModeAny.label": {
+		"message": "任何"
+	},
+	"quickFilterBar.booleanModeAny.tooltip": {
+		"message": "匹配任一选定的标签标准"
+	},
+	"quickFilterBar.booleanModeAll.label": {
+		"message": "完全"
+	},
+	"quickFilterBar.booleanModeAll.tooltip": {
+		"message": "完全匹配选定的标签标准"
+	},
+	"newCardBookCardMenuLabel": {
+		"message": "CardBook 联系人…"
+	},
+	"newCardBookCardMenuAccesskey": {
+		"message": "C"
+	},
+	"newCardBookCardMenuKey": {
+		"message": "N"
+	},
+	"newCardBookSearchMenuLabel": {
+		"message": "搜索 CardBook…"
+	},
+	"newCardBookSearchMenuAccesskey": {
+		"message": "C"
+	},
+	"addToCardBookMenuLabel": {
+		"message": "新增 CardBook 联系人"
+	},
+	"addToCardBookMenuAccesskey": {
+		"message": "d"
+	},
+	"editInCardBookMenuLabel": {
+		"message": "编辑 CardBook 联系人"
+	},
+	"editInCardBookMenuAccesskey": {
+		"message": "E"
+	},
+	"deleteInCardBookMenuLabel": {
+		"message": "删除 Cardbook 联系人"
+	},
+	"deleteInCardBookMenuAccesskey": {
+		"message": "D"
+	},
+	"IMPPMenuLabel": {
+		"message": "连接到"
+	},
+	"IMPPMenuAccesskey": {
+		"message": "o"
+	},
+	"findAllEmailsFromContactMessengerLabel": {
+		"message": "查找关联此联系人的邮件"
+	},
+	"findAllEmailsFromContactMessengerAccesskey": {
+		"message": "c"
+	},
+	"findEmailsFromEmailMessengerLabel": {
+		"message": "查找关联此邮件地址的邮件"
+	},
+	"findEmailsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"findAllEventsFromContactMessengerLabel": {
+		"message": "查找关联此联系人的日历事件"
+	},
+	"findAllEventsFromContactMessengerAccesskey": {
+		"message": "c"
+	},
+	"findEventsFromEmailMessengerLabel": {
+		"message": "查找关联此邮件地址的日历事件"
+	},
+	"findEventsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"mailContext-addToCardBookMenuLabel": {
+		"message": "新增 CardBook 联系人…"
+	},
+	"mailContext-addToCardBookMenuAccesskey": {
+		"message": "d"
+	},
+	"addAllAttachementsToCardBookMenuLabel": {
+		"message": "至 CardBook 全部…"
+	},
+	"addAttachementToCardBookMenuLabel": {
+		"message": "至 CardBook…"
+	},
+	"cardbookABPaneItemLabel": {
+		"message": "通讯录面板"
+	},
+	"cardbookABPaneItemAccesskey": {
+		"message": "A"
+	},
+	"cardbookContactPaneItemLabel": {
+		"message": "联系人面板"
+	},
+	"cardbookContactPaneItemAccesskey": {
+		"message": "O"
+	},
+	"wizard.title": {
+		"message": "添加通讯录"
+	},
+	"wizard.label": {
+		"message": "添加通讯录"
+	},
+	"welcomePage.wizard.description": {
+		"message": "欢迎"
+	},
+	"welcomePage.description": {
+		"message": "这貌似是你第一次使用 CardBook, 所以我们将试着收集联系人。首先我们将试着导入 Thunderbird 的标准通讯录到 CardBook，在寻找可能的远程通讯录。"
+	},
+	"initialPage.wizard.description": {
+		"message": "新通讯录的路径"
+	},
+	"initialPage.description": {
+		"message": "通讯录路径:"
+	},
+	"initialPage.computer.label": {
+		"message": "本地"
+	},
+	"initialPage.network.label": {
+		"message": "远程"
+	},
+	"initialPage.standard.label": {
+		"message": "导入 Thunderbird 的标准通讯录"
+	},
+	"initialPage.search.label": {
+		"message": "在已有的通讯录中搜索"
+	},
+	"initialPage.find.label": {
+		"message": "查找远程通讯录"
+	},
+	"localPage.wizard.description": {
+		"message": "类型和新本地通讯录的路径"
+	},
+	"localPage.type.description": {
+		"message": "本地通讯录的类型"
+	},
+	"localPage.type.label": {
+		"message": "类型"
+	},
+	"localPage.createDB.label": {
+		"message": "新建通讯录"
+	},
+	"localPage.createDirectory.label": {
+		"message": "新建通讯录(目录)"
+	},
+	"localPage.createFile.label": {
+		"message": "新建通讯录(文件)"
+	},
+	"localPage.openDirectory.label": {
+		"message": "打开已有的通讯录(目录)"
+	},
+	"localPage.openFile.label": {
+		"message": "打开已有的通讯录(文件)"
+	},
+	"localPage.uri.groupbox": {
+		"message": "位置"
+	},
+	"localPage.uri.label": {
+		"message": "目录或文件:"
+	},
+	"localPage.uri.description": {
+		"message": "使用浏览器，选择您的新本地通讯录的路径如果你要创建一个新文件，指定文件名后缀为 .vcf"
+	},
+	"localPage.uributton.label": {
+		"message": "浏览"
+	},
+	"remotePage.wizard.description": {
+		"message": "类型和新远程通讯录的路径"
+	},
+	"remotePage.description": {
+		"message": "你的远程通讯录的类型是什么(注意:Google 不遵守 vCard 标准)？"
+	},
+	"remotePage.type.label": {
+		"message": "类型"
+	},
+	"remotePage.carddav.label": {
+		"message": "CardDAV"
+	},
+	"remotePage.google.label": {
+		"message": "Google"
+	},
+	"remotePage.apple.label": {
+		"message": "Apple"
+	},
+	"remotePage.yahoo.label": {
+		"message": "Yahoo!"
+	},
+	"remotePage.connection.label": {
+		"message": "连接"
+	},
+	"remotePage.url.description": {
+		"message": "针对 CardDAV 类型，输入你的远程通讯录的 URL你可尝试使用不完整的 URL (例如 : http(s)://carddav.example.org)针对 Google 通讯录，不要指定此字段"
+	},
+	"remotePage.url.label": {
+		"message": "网址:"
+	},
+	"remotePage.credentials.description": {
+		"message": "输入认证信息以访问你的通讯录针对 Google 通讯录，用户名应是 Google 邮件地址"
+	},
+	"remotePage.user.label": {
+		"message": "用户名:"
+	},
+	"remotePage.password.label": {
+		"message": "密码:"
+	},
+	"remotePage.passwordShow.label": {
+		"message": "显示"
+	},
+	"remotePage.validatebutton.label": {
+		"message": "验证"
+	},
+	"locationSearchPage.wizard.description": {
+		"message": "保存的搜索结果的定义"
+	},
+	"locationSearchPage.label": {
+		"message": "保存的搜索结果"
+	},
+	"abSearchHeading.label": {
+		"message": "搜索在:"
+	},
+	"abSearchHeading.accesskey": {
+		"message": "h"
+	},
+	"matchAll.label": {
+		"message": "满足所有以下条件"
+	},
+	"matchAll.accesskey": {
+		"message": "A"
+	},
+	"matchAny.label": {
+		"message": "满足以下任一条件"
+	},
+	"matchAny.accesskey": {
+		"message": "o"
+	},
+	"googleOauthPage.wizard.description": {
+		"message": "Google 身份验证"
+	},
+	"namePage.wizard.description": {
+		"message": "通讯录属性"
+	},
+	"namePage.selected.label": {
+		"message": "已选"
+	},
+	"namePage.name.label": {
+		"message": "姓名"
+	},
+	"namePage.color.label": {
+		"message": "颜色"
+	},
+	"namePage.urnuuid.label": {
+		"message": "使用 urn:uuid"
+	},
+	"namePage.DBCached.label": {
+		"message": "脱机工作"
+	},
+	"namePage.vCardVersion.label": {
+		"message": "vCard"
+	},
+	"namesPage.wizard.description": {
+		"message": "通讯录属性"
+	},
+	"namesPage.name.label": {
+		"message": "姓名"
+	},
+	"namesPage.name.description": {
+		"message": "已发现多个通讯录选择要打开的通讯录的名称"
+	},
+	"findPage.wizard.description": {
+		"message": "查找远程通讯录"
+	},
+	"findPage.name1.description": {
+		"message": "不会添加通讯录"
+	},
+	"findPage.name2.description": {
+		"message": "将添加一个通讯录。选择你要添加的通讯录:"
+	},
+	"findPage.name3.description": {
+		"message": "将添加多个通讯录。选择你要添加的通讯录:"
+	},
+	"finishPage.wizard.description": {
+		"message": "通讯录配置"
+	},
+	"finishPage.description": {
+		"message": "已成功配置你的新通讯录"
+	},
+	"finishsPage.description": {
+		"message": "已成功配置你的新通讯录"
+	},
+	"wdw_addressbooksEditTitle": {
+		"message": "通讯录属性"
+	},
+	"colorLabel": {
+		"message": "颜色:"
+	},
+	"name.ABedit.label": {
+		"message": "姓名:"
+	},
+	"name.ABedit.accesskey": {
+		"message": "N"
+	},
+	"nodesLabel": {
+		"message": "节点："
+	},
+	"categoriesNodeLabel": {
+		"message": "类别"
+	},
+	"orgNodeLabel": {
+		"message": "组织"
+	},
+	"typeLabel": {
+		"message": "类型:"
+	},
+	"username.ABedit.label": {
+		"message": "用户名:"
+	},
+	"vCardVersionLabel": {
+		"message": "vCard:"
+	},
+	"readonlyLabel": {
+		"message": "只读模式"
+	},
+	"readonlyAccesskey": {
+		"message": "R"
+	},
+	"urnuuidLabel": {
+		"message": "使用 urn:uuid"
+	},
+	"DBCachedLabel": {
+		"message": "脱机工作"
+	},
+	"autoSyncGroupboxLabel": {
+		"message": "定期同步"
+	},
+	"autoSyncLabel": {
+		"message": "启用定期同步"
+	},
+	"autoSyncAccesskey": {
+		"message": "E"
+	},
+	"autoSyncIntervalLabel": {
+		"message": "定期同步的间隔(分钟):"
+	},
+	"autoSyncIntervalAccesskey": {
+		"message": "I"
+	},
+	"miscTabLabel": {
+		"message": "杂项"
+	},
+	"fnFormulaCaption": {
+		"message": "姓名"
+	},
+	"fnFormulaLabel": {
+		"message": "显示名称公式:"
+	},
+	"fnFormulaAccesskey": {
+		"message": "y"
+	},
+	"resetFnFormulaLabel": {
+		"message": "恢复默认"
+	},
+	"resetFnFormulaAccesskey": {
+		"message": "R"
+	},
+	"applyToABButtonLabel": {
+		"message": "应用到…"
+	},
+	"applyToABButtonAccesskey": {
+		"message": "A"
+	},
+	"wdw_adrEditionTitle": {
+		"message": "地址编辑器"
+	},
+	"adrPostOfficeLabel": {
+		"message": "邮箱"
+	},
+	"adrExtendedAddrLabel": {
+		"message": "公寓"
+	},
+	"adrStreetLabel": {
+		"message": "街道"
+	},
+	"adrLocalityLabel": {
+		"message": "城市"
+	},
+	"adrRegionLabel": {
+		"message": "省份"
+	},
+	"adrPostalCodeLabel": {
+		"message": "邮编"
+	},
+	"adrCountryLabel": {
+		"message": "国家"
+	},
+	"deprecatedLabel": {
+		"message": "已不赞成使用"
+	},
+	"daysLeftColumnLabel": {
+		"message": "剩余天数"
+	},
+	"nameColumnLabel": {
+		"message": "姓名"
+	},
+	"ageColumnLabel": {
+		"message": "年龄"
+	},
+	"dateOfBirthColumnLabel": {
+		"message": "事件日期"
+	},
+	"dateOfBirthFoundColumnLabel": {
+		"message": "已找到的日期"
+	},
+	"emailColumnLabel": {
+		"message": "电子邮件"
+	},
+	"sendEmailLabel": {
+		"message": "编写新消息"
+	},
+	"sendEmailAccesskey": {
+		"message": "E"
+	},
+	"syncLightningMenuItemLabel": {
+		"message": "同步 Lightning"
+	},
+	"syncLightningMenuAccesskey": {
+		"message": "S"
+	},
+	"calendarNameLabel": {
+		"message": "日历"
+	},
+	"calendarIdLabel": {
+		"message": "日历ID"
+	},
+	"existingLabel": {
+		"message": "已存在"
+	},
+	"failedLabel": {
+		"message": "失败"
+	},
+	"succeededLabel": {
+		"message": "成功"
+	},
+	"wdw_bulkOperationTitle": {
+		"message": "正在运行…"
+	},
+	"wdw_cardbookConfigurationAddCustomFieldTitle": {
+		"message": "自定义字段编辑器"
+	},
+	"customFieldCodeLabel": {
+		"message": "字段名称:"
+	},
+	"customFieldLabelLabel": {
+		"message": "字段标签:"
+	},
+	"mailAccountLabel": {
+		"message": "邮件帐户:"
+	},
+	"addressbookLabel": {
+		"message": "通讯录:"
+	},
+	"categoryLabel": {
+		"message": "类别:"
+	},
+	"wdw_cardbookConfigurationAddIMPPTitle": {
+		"message": "协议编辑器"
+	},
+	"IMPPCodeLabel": {
+		"message": "代码:"
+	},
+	"IMPPLabelLabel": {
+		"message": "标签:"
+	},
+	"IMPPProtocolLabel": {
+		"message": "协议:"
+	},
+	"wdw_cardbookConfigurationAddVcardTitle": {
+		"message": "选择 vCard"
+	},
+	"contactLabel": {
+		"message": "联系人:"
+	},
+	"filenameLabel": {
+		"message": "附加文件:"
+	},
+	"vCardLabel": {
+		"message": "vCard"
+	},
+	"CardBookTabLabel": {
+		"message": "标签页"
+	},
+	"IMPPsTabLabel": {
+		"message": "通讯"
+	},
+	"customFieldsTabLabel": {
+		"message": "自定义字段"
+	},
+	"listsTabLabel": {
+		"message": "列表"
+	},
+	"syncTabLabel": {
+		"message": "同步"
+	},
+	"emailTabLabel": {
+		"message": "电子邮件"
+	},
+	"birthdaylistTabLabel": {
+		"message": "周年纪念日"
+	},
+	"synclistTabLabel": {
+		"message": "周年纪念日提醒"
+	},
+	"integrationGroupboxLabel": {
+		"message": "与 Thunderbird 集成"
+	},
+	"autocompletionLabel": {
+		"message": "电子邮件地址自动补全"
+	},
+	"autocompletionAccesskey": {
+		"message": "o"
+	},
+	"autocompletionTooltip": {
+		"message": "使用 CardBook 的通讯录中的联系人自动补全以扩展 Thunderbird 的标准的通讯录中的联系人自动补全"
+	},
+	"autocompleteSortByPopularityLabel": {
+		"message": "根据热门程度排序电子邮件地址"
+	},
+	"autocompleteSortByPopularityAccesskey": {
+		"message": "p"
+	},
+	"autocompleteProposeConcatEmailsLabel": {
+		"message": "建议连接每个联系人的电子邮件"
+	},
+	"autocompleteProposeConcatEmailsAccesskey": {
+		"message": "c"
+	},
+	"autocompleteShowAddressbookLabel": {
+		"message": "显示通讯录名称"
+	},
+	"autocompleteShowAddressbookAccesskey": {
+		"message": "S"
+	},
+	"autocompleteWithColorLabel": {
+		"message": "使用通讯录颜色"
+	},
+	"autocompleteWithColorAccesskey": {
+		"message": "c"
+	},
+	"autocompleteRestrictSearchLabel": {
+		"message": "限制搜索字段"
+	},
+	"autocompleteRestrictSearchAccesskey": {
+		"message": "R"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "编辑"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "E"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "恢复默认"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "D"
+	},
+	"useColorLabel": {
+		"message": "使用通讯录颜色:"
+	},
+	"useColorBackgroundLabel": {
+		"message": "背景色"
+	},
+	"useColorBackgroundAccesskey": {
+		"message": "B"
+	},
+	"useColorTextLabel": {
+		"message": "文本颜色"
+	},
+	"useColorTextAccesskey": {
+		"message": "T"
+	},
+	"useColorNothingLabel": {
+		"message": "什么也不做"
+	},
+	"useColorNothingAccesskey": {
+		"message": "N"
+	},
+	"exclusiveLabel": {
+		"message": "联系人的唯一来源"
+	},
+	"exclusiveAccesskey": {
+		"message": "U"
+	},
+	"exclusiveTooltip": {
+		"message": "如果禁用，该选项允许检索 Thunderbird 的标准通讯录联系人为黄色星标，用于电子邮件显示名称和电子邮件自动补全"
+	},
+	"accountsRestrictionsLabel": {
+		"message": "邮件帐户限制"
+	},
+	"accountsRestrictionsEnabledLabel": {
+		"message": "启用"
+	},
+	"accountsRestrictionsMailNameLabel": {
+		"message": "邮件帐户"
+	},
+	"accountsRestrictionsABNameLabel": {
+		"message": "通讯录"
+	},
+	"accountsRestrictionsCatNameLabel": {
+		"message": "类别"
+	},
+	"accountsRestrictionsIncludeNameLabel": {
+		"message": "类型"
+	},
+	"addRestrictionLabel": {
+		"message": "添加"
+	},
+	"addRestrictionAccesskey": {
+		"message": "A"
+	},
+	"renameRestrictionLabel": {
+		"message": "编辑"
+	},
+	"renameRestrictionAccesskey": {
+		"message": "E"
+	},
+	"deleteRestrictionLabel": {
+		"message": "删除"
+	},
+	"deleteRestrictionAccesskey": {
+		"message": "D"
+	},
+	"emailsCollectionLabel": {
+		"message": "收藏已发送的电子邮件"
+	},
+	"emailsCollectionTooltip": {
+		"message": "扩展 Thunderbird 的标准已发送的电子邮件收藏如果启用，不在 CardBook 通讯录中显示的电子邮件地址将被添加到已选的通讯录"
+	},
+	"emailsCollectionEnabledLabel": {
+		"message": "启用"
+	},
+	"emailsCollectionMailNameLabel": {
+		"message": "邮件帐户"
+	},
+	"emailsCollectionABNameLabel": {
+		"message": "通讯录"
+	},
+	"emailsCollectionCatNameLabel": {
+		"message": "类别"
+	},
+	"addEmailsCollectionLabel": {
+		"message": "添加"
+	},
+	"addEmailsCollectionAccesskey": {
+		"message": "A"
+	},
+	"renameEmailsCollectionLabel": {
+		"message": "编辑"
+	},
+	"renameEmailsCollectionAccesskey": {
+		"message": "E"
+	},
+	"deleteEmailsCollectionLabel": {
+		"message": "删除"
+	},
+	"deleteEmailsCollectionAccesskey": {
+		"message": "D"
+	},
+	"logGroupboxLabel": {
+		"message": "日志"
+	},
+	"debugModeLabel": {
+		"message": "调试模式"
+	},
+	"debugModeAccesskey": {
+		"message": "m"
+	},
+	"debugModeTooltip": {
+		"message": "为扩展的日志启用调试模式"
+	},
+	"statusInformationLineNumberLabel": {
+		"message": "在日志文件中保留的行数:"
+	},
+	"statusInformationLineNumberAccesskey": {
+		"message": "k"
+	},
+	"tabsEditingGroupboxLabel": {
+		"message": "显示标签页"
+	},
+	"listTabLabel": {
+		"message": "列表"
+	},
+	"listTabAccesskey": {
+		"message": "L"
+	},
+	"mailPopularityTab.conf.label": {
+		"message": "邮件优先级"
+	},
+	"mailPopularityTab.conf.accesskey": {
+		"message": "M"
+	},
+	"technicalTab.conf.label": {
+		"message": "技术的"
+	},
+	"technicalTab.conf.accesskey": {
+		"message": "T"
+	},
+	"vCardTab.conf.label": {
+		"message": "vCard"
+	},
+	"vCardTab.conf.accesskey": {
+		"message": "V"
+	},
+	"advancedTab1Label": {
+		"message": "高级"
+	},
+	"advancedTab.conf.label": {
+		"message": "高级 (仅适用于 vCard 4.0)"
+	},
+	"advancedTab.conf.accesskey": {
+		"message": "A"
+	},
+	"localizeEditingGroupboxLabel": {
+		"message": "在地图显示"
+	},
+	"localizeEngineOpenStreetMapLabel": {
+		"message": "OpenStreetMap"
+	},
+	"localizeEngineOpenStreetMapAccesskey": {
+		"message": "O"
+	},
+	"localizeEngineGoogleMapsLabel": {
+		"message": "Google 地图"
+	},
+	"localizeEngineGoogleMapsAccesskey": {
+		"message": "G"
+	},
+	"localizeEngineBingMapsLabel": {
+		"message": "必应地图"
+	},
+	"localizeEngineBingMapsAccesskey": {
+		"message": "B"
+	},
+	"localizeTargetLabel": {
+		"message": "打开外部链接"
+	},
+	"localizeTargetInLabel": {
+		"message": "在 Thunderbird 内"
+	},
+	"localizeTargetInAccesskey": {
+		"message": "I"
+	},
+	"localizeTargetOutLabel": {
+		"message": "在 Thunderbird 外"
+	},
+	"localizeTargetOutAccesskey": {
+		"message": "U"
+	},
+	"showNameAsLabel": {
+		"message": "显示名称为"
+	},
+	"showNameAsLFLabel": {
+		"message": "姓名"
+	},
+	"showNameAsLFAccesskey": {
+		"message": "F"
+	},
+	"showNameAsLFCommaLabel": {
+		"message": "姓, 名"
+	},
+	"showNameAsLFCommaAccesskey": {
+		"message": "i"
+	},
+	"showNameAsFLLabel": {
+		"message": "名姓"
+	},
+	"showNameAsFLAccesskey": {
+		"message": "e"
+	},
+	"showNameAsDSPLabel": {
+		"message": "姓名"
+	},
+	"showNameAsDSPAccesskey": {
+		"message": "D"
+	},
+	"adrFormulaCaption": {
+		"message": "网址"
+	},
+	"adrFormulaLabel": {
+		"message": "地址格式公式:"
+	},
+	"adrFormulaAccesskey": {
+		"message": "R"
+	},
+	"resetAdrFormulaLabel": {
+		"message": "恢复默认"
+	},
+	"resetAdrFormulaAccesskey": {
+		"message": "R"
+	},
+	"miscEditingGroupboxLabel": {
+		"message": "杂项"
+	},
+	"preferEmailEditionLabel": {
+		"message": "双击联系人编辑联系人而非向其发送电子邮件"
+	},
+	"preferEmailEditionAccesskey": {
+		"message": "k"
+	},
+	"dateDisplayedFormatLabel": {
+		"message": "日期文本格式:"
+	},
+	"dateDisplayedFormatAccesskey": {
+		"message": "x"
+	},
+	"defaultRegionLabel": {
+		"message": "默认区域:"
+	},
+	"defaultRegionAccesskey": {
+		"message": "D"
+	},
+	"defaultRegionTooltip": {
+		"message": "地址和电话号码格式的默认区域"
+	},
+	"preferenceGroupboxLabel": {
+		"message": "字段 PREF"
+	},
+	"usePreferenceValueLabel": {
+		"message": "使用偏好值 (仅适用于 vCard 4.0)"
+	},
+	"usePreferenceValueAccesskey": {
+		"message": "p"
+	},
+	"preferenceValueLabel": {
+		"message": "PREF 值字段的标签"
+	},
+	"preferenceValueAccesskey": {
+		"message": "V"
+	},
+	"ABtypesGroupboxLabel": {
+		"message": "地址簿"
+	},
+	"typesCategoryGoogleLabel": {
+		"message": "Google"
+	},
+	"typesCategoryGoogleAccesskey": {
+		"message": "G"
+	},
+	"typesCategoryAppleLabel": {
+		"message": "Apple"
+	},
+	"typesCategoryAppleAccesskey": {
+		"message": "p"
+	},
+	"typesCategoryYahooLabel": {
+		"message": "Yahoo!"
+	},
+	"typesCategoryYahooAccesskey": {
+		"message": "Y"
+	},
+	"typesCategoryOthersLabel": {
+		"message": "其他"
+	},
+	"typesCategoryOthersAccesskey": {
+		"message": "O"
+	},
+	"typesGroupboxLabel": {
+		"message": "类型"
+	},
+	"typesCategoryAdrLabel": {
+		"message": "地址"
+	},
+	"typesCategoryAdrAccesskey": {
+		"message": "S"
+	},
+	"typesCategoryEmailLabel": {
+		"message": "电子邮件"
+	},
+	"typesCategoryEmailAccesskey": {
+		"message": "m"
+	},
+	"typesCategoryImppLabel": {
+		"message": "IMPP"
+	},
+	"typesCategoryImppAccesskey": {
+		"message": "I"
+	},
+	"typesCategoryTelLabel": {
+		"message": "电话"
+	},
+	"typesCategoryTelAccesskey": {
+		"message": "H"
+	},
+	"typesCategoryUrlLabel": {
+		"message": "网址"
+	},
+	"typesCategoryUrlAccesskey": {
+		"message": "U"
+	},
+	"typesLabelLabel": {
+		"message": "标签"
+	},
+	"addTypeLabel": {
+		"message": "添加"
+	},
+	"addTypeAccesskey": {
+		"message": "A"
+	},
+	"renameTypeLabel": {
+		"message": "编辑"
+	},
+	"renameTypeAccesskey": {
+		"message": "E"
+	},
+	"deleteTypeLabel": {
+		"message": "删除"
+	},
+	"deleteTypeAccesskey": {
+		"message": "D"
+	},
+	"resetTypeLabel": {
+		"message": "恢复默认"
+	},
+	"resetTypeAccesskey": {
+		"message": "R"
+	},
+	"IMPPGroupboxWarn": {
+		"message": "此安装程序允许使用预期协议进行互联网通讯"
+	},
+	"IMPPGroupboxLabel": {
+		"message": "互联网通讯"
+	},
+	"preferIMPPPrefLabel": {
+		"message": "偏好标记了的互联网通讯 "
+	},
+	"preferIMPPPrefAccesskey": {
+		"message": "P"
+	},
+	"preferIMPPPrefWarn": {
+		"message": "如果没有标记地址，对所有联系人地址发起连接"
+	},
+	"IMPPCodeHeaderLabel": {
+		"message": "代码"
+	},
+	"IMPPLabelHeaderLabel": {
+		"message": "标签"
+	},
+	"IMPPProtocolHeaderLabel": {
+		"message": "协议"
+	},
+	"addIMPPLabel": {
+		"message": "添加"
+	},
+	"addIMPPAccesskey": {
+		"message": "A"
+	},
+	"renameIMPPLabel": {
+		"message": "编辑"
+	},
+	"renameIMPPAccesskey": {
+		"message": "E"
+	},
+	"deleteIMPPLabel": {
+		"message": "删除"
+	},
+	"deleteIMPPAccesskey": {
+		"message": "D"
+	},
+	"URLPhoneGroupboxLabel": {
+		"message": "打开软电话的 URL"
+	},
+	"URLPhoneGroupboxWarn": {
+		"message": "若选择电话的 URL 协议，将应用此选择。URL 应包含指向电话号码的 $1。"
+	},
+	"URLPhoneURLLabel": {
+		"message": "网址:"
+	},
+	"URLPhoneURLAccesskey": {
+		"message": "U"
+	},
+	"URLPhoneUserLabel": {
+		"message": "用户名:"
+	},
+	"URLPhoneUserAccesskey": {
+		"message": "t"
+	},
+	"URLPhonePasswordLabel": {
+		"message": "密码:"
+	},
+	"URLPhonePasswordAccesskey": {
+		"message": "P"
+	},
+	"URLPhonePasswordShowLabel": {
+		"message": "显示"
+	},
+	"URLPhonePasswordShowAccesskey": {
+		"message": "S"
+	},
+	"URLPhoneBackgroundLabel": {
+		"message": "在后台运行"
+	},
+	"URLPhoneBackgroundAccesskey": {
+		"message": "S"
+	},
+	"encryptionGroupboxLabel": {
+		"message": "加密"
+	},
+	"encryptionExplanation": {
+		"message": "CardBook 可能会加密您的本地数据。为此, 它将使用存储在密码管理器中的密钥。如果您丢失了此密钥, 则无法恢复本地数据。为了提供全面的保护, 建议激活 Thunderbird 主密码功能。"
+	},
+	"localDataEncryptionEnabledLabel": {
+		"message": "Encrypt locally cached cards"
+	},
+	"localDataEncryptionEnabledAccesskey": {
+		"message": "E"
+	},
+	"customFieldRankHeader": {
+		"message": "设置级别"
+	},
+	"customFieldCodeHeader": {
+		"message": "字段名称"
+	},
+	"customFieldLabelHeader": {
+		"message": "字段标签"
+	},
+	"customFieldsPersTitleLabel": {
+		"message": "个人信息"
+	},
+	"customFieldsPersTitleAccesskey": {
+		"message": "P"
+	},
+	"customFieldsOrgTitleLabel": {
+		"message": "专业信息"
+	},
+	"customFieldsOrgTitleAccesskey": {
+		"message": "r"
+	},
+	"addCustomFieldsLabel": {
+		"message": "添加"
+	},
+	"addCustomFieldsAccesskey": {
+		"message": "A"
+	},
+	"renameCustomFieldsLabel": {
+		"message": "编辑"
+	},
+	"renameCustomFieldsAccesskey": {
+		"message": "E"
+	},
+	"deleteCustomFieldsLabel": {
+		"message": "删除"
+	},
+	"deleteCustomFieldsAccesskey": {
+		"message": "D"
+	},
+	"orgWarn": {
+		"message": "字段 ORG 可以包含结构化的文本值，该值由分号分隔的组件组成 (例如: yourcompany;yourservice;yourdepartment)以下字段描述了此结构的组件标签"
+	},
+	"orgRankLabel": {
+		"message": "设置级别"
+	},
+	"orgLabelLabel": {
+		"message": "字段标签"
+	},
+	"listPanelLabel": {
+		"message": "如果你的服务器不支持类别 (例如 Google, Apple, Zimbra 等), 列表是一个发送邮件给群组的好方式vCard 3.0 不能原生支持列表，但是可通过自定义字段实现，所以如果你要在 vCard 3.0 使用列表，你必须定义这些字段"
+	},
+	"listGroupboxLabel": {
+		"message": "用于列表的自定义字段"
+	},
+	"kindCustomLabel": {
+		"message": "类别:"
+	},
+	"kindCustomAccesskey": {
+		"message": "K"
+	},
+	"memberCustomLabel": {
+		"message": "成员:"
+	},
+	"memberCustomAccesskey": {
+		"message": "M"
+	},
+	"resetListLabel": {
+		"message": "恢复默认"
+	},
+	"resetListAccesskey": {
+		"message": "R"
+	},
+	"syncGroupboxLabel": {
+		"message": "同步"
+	},
+	"syncWarn": {
+		"message": "同步将你的修改传到服务器和将服务器的修改传给你"
+	},
+	"syncAfterChangeLabel": {
+		"message": "更改后同步"
+	},
+	"syncAfterChangeAccesskey": {
+		"message": "c"
+	},
+	"initialSyncLabel": {
+		"message": "在 Thunderbird 启动时运行同步"
+	},
+	"initialSyncAccesskey": {
+		"message": "R"
+	},
+	"initialSyncDelayLabel": {
+		"message": "初次同步延迟（秒）:"
+	},
+	"initialSyncDelayAccesskey": {
+		"message": "y"
+	},
+	"solveConflictsLabel": {
+		"message": "如果联系人在服务器和本地都更新"
+	},
+	"solveConflictsLocalLabel": {
+		"message": "优先本地修改"
+	},
+	"solveConflictsLocalAccesskey": {
+		"message": "L"
+	},
+	"solveConflictsRemoteLabel": {
+		"message": "偏好服务器修改"
+	},
+	"solveConflictsRemoteAccesskey": {
+		"message": "S"
+	},
+	"solveConflictsUserLabel": {
+		"message": "询问用户"
+	},
+	"solveConflictsUserAccesskey": {
+		"message": "A"
+	},
+	"maxModifsPushedLabel": {
+		"message": "每次同步推送的最大修改数:"
+	},
+	"maxModifsPushedAccesskey": {
+		"message": "M"
+	},
+	"requestsGroupboxLabel": {
+		"message": "请求"
+	},
+	"requestsTimeoutLabel": {
+		"message": "超时（秒）:"
+	},
+	"requestsTimeoutAccesskey": {
+		"message": "T"
+	},
+	"multigetLabel": {
+		"message": "对于 GET 请求，联系人分组以:"
+	},
+	"multigetAccesskey": {
+		"message": "G"
+	},
+	"discoveryGroupboxLabel": {
+		"message": "通讯录发现"
+	},
+	"discoveryWarn": {
+		"message": "每次同步时，将会运行检查以下 URL 以搜索新建的或删除的通讯录"
+	},
+	"discoveryAccountsGroupboxLabel": {
+		"message": "帐户"
+	},
+	"advancedSyncGroupboxLabel": {
+		"message": "高级属性"
+	},
+	"decodeReportLabel": {
+		"message": "为 REPORT 请求解码 URL"
+	},
+	"decodeReportAccesskey": {
+		"message": "D"
+	},
+	"miscEmailGroupboxLabel": {
+		"message": "发送电子邮件"
+	},
+	"preferEmailPrefLabel": {
+		"message": "偏好标记了的电子邮件 "
+	},
+	"preferEmailPrefAccesskey": {
+		"message": "P"
+	},
+	"preferEmailPrefWarn": {
+		"message": "如果没有标记地址，将发送消息到全部联系人的地址"
+	},
+	"warnEmptyEmailsLabel": {
+		"message": "当我试图向没有电子邮件地址的联系人发送邮件时警告我"
+	},
+	"warnEmptyEmailsAccesskey": {
+		"message": "W"
+	},
+	"useOnlyEmailLabel": {
+		"message": "仅使用电子邮件地址，无显示名称"
+	},
+	"useOnlyEmailAccesskey": {
+		"message": "O"
+	},
+	"attachVCardWarn": {
+		"message": "为每个电子邮件账户选择一个 vCard，以自动添加 vCard 到你的电子邮件如果激活，CardBook 将附加此 vCard 到每封从此账户发送的电子邮件"
+	},
+	"attachVCardGroupboxLabel": {
+		"message": "加入 vCard"
+	},
+	"accountsVCardsEnabledLabel": {
+		"message": "启用"
+	},
+	"accountsVCardsMailLabel": {
+		"message": "邮件帐户"
+	},
+	"accountsVCardsABNameLabel": {
+		"message": "通讯录"
+	},
+	"accountsVCardsFileNameLabel": {
+		"message": "附加文件"
+	},
+	"accountsVCardsFnLabel": {
+		"message": "联系人"
+	},
+	"addVCardLabel": {
+		"message": "添加"
+	},
+	"addVCardAccesskey": {
+		"message": "A"
+	},
+	"renameVCardLabel": {
+		"message": "编辑"
+	},
+	"renameVCardAccesskey": {
+		"message": "E"
+	},
+	"deleteVCardLabel": {
+		"message": "删除"
+	},
+	"deleteVCardAccesskey": {
+		"message": "D"
+	},
+	"birthdayListWarn": {
+		"message": "周年纪念日仅在 CardBook 通讯录中"
+	},
+	"addressbooksGroupboxLabel": {
+		"message": "通讯录"
+	},
+	"selectAllABsLabel": {
+		"message": "全选"
+	},
+	"searchForLabel": {
+		"message": "搜索："
+	},
+	"bday.conf.label": {
+		"message": "生日"
+	},
+	"bday.conf.accesskey": {
+		"message": "B"
+	},
+	"anniversary.conf.label": {
+		"message": "周年纪念日 (仅适用于 vCard 4.0)"
+	},
+	"anniversary.conf.accesskey": {
+		"message": "A"
+	},
+	"deathdate.conf.label": {
+		"message": "忌日 (仅适用于 vCard 4.0)"
+	},
+	"deathdate.conf.accesskey": {
+		"message": "D"
+	},
+	"eventsLabel": {
+		"message": "事件"
+	},
+	"eventsAccesskey": {
+		"message": "E"
+	},
+	"calendarsGroupboxLabel": {
+		"message": "日历"
+	},
+	"selectAllCalendarsLabel": {
+		"message": "全选"
+	},
+	"remindersTabLabel": {
+		"message": "提醒"
+	},
+	"remindViaPopupWindowGroupboxLabel": {
+		"message": "使用弹窗提醒"
+	},
+	"numberOfDaysForSearchingLabel": {
+		"message": "检查周年纪念日的天数:"
+	},
+	"numberOfDaysForSearchingAccesskey": {
+		"message": "N"
+	},
+	"showPopupOnStartupLabel": {
+		"message": "启动时显示弹窗"
+	},
+	"showPopupOnStartupAccesskey": {
+		"message": "S"
+	},
+	"showPeriodicPopupLabel": {
+		"message": "显示每日弹窗"
+	},
+	"showPeriodicPopupAccesskey": {
+		"message": "d"
+	},
+	"periodicPopupTimeLabel": {
+		"message": "显示时间 (hh:mm):"
+	},
+	"periodicPopupTimeAccesskey": {
+		"message": "i"
+	},
+	"showPopupEvenIfNoBirthdayLabel": {
+		"message": "当周年纪念日列表为空时显示弹窗"
+	},
+	"showPopupEvenIfNoBirthdayAccesskey": {
+		"message": "h"
+	},
+	"remindViaLightningGroupboxLabel": {
+		"message": "使用 Thunderbird Lightning 日历扩展提醒"
+	},
+	"numberOfDaysForWritingLabel": {
+		"message": "写入周年纪念日的天数:"
+	},
+	"numberOfDaysForWritingAccesskey": {
+		"message": "w"
+	},
+	"syncWithLightningOnStartupLabel": {
+		"message": "启动时同步 Lightning"
+	},
+	"syncWithLightningOnStartupAccesskey": {
+		"message": "L"
+	},
+	"calendarEntryTitleLabel": {
+		"message": "日历事件的标题:"
+	},
+	"calendarEntryTitleTooltip": {
+		"message": "日历事件的模板标题应包含两个占位符 &#37;S, 分别替换为名称和年龄如果字段为空，使用标准消息"
+	},
+	"calendarEntryTitleAccesskey": {
+		"message": "T"
+	},
+	"resetCalendarEntryTitleButtonLabel": {
+		"message": "恢复默认"
+	},
+	"resetCalendarEntryTitleButtonAccesskey": {
+		"message": "R"
+	},
+	"calendarEntryTimeLabel": {
+		"message": "日历事件的事件 (hh:mm):"
+	},
+	"calendarEntryTimeAccesskey": {
+		"message": "m"
+	},
+	"calendarEntryWholeDayLabel": {
+		"message": "全天的日历事件"
+	},
+	"calendarEntryWholeDayAccesskey": {
+		"message": "y"
+	},
+	"calendarEntryAlarmLabel": {
+		"message": "日历事件的闹钟小时（例如:4,+1）:"
+	},
+	"calendarEntryAlarmTooltip": {
+		"message": "输入在周年纪念日多少小时前，Lightning 的闹钟应该提醒你如果字段为空，将没有闹钟如果你想要有多个闹钟，输入闹钟于逗号分隔的列表"
+	},
+	"calendarEntryAlarmAccesskey": {
+		"message": "n"
+	},
+	"calendarEntryCategoriesLabel": {
+		"message": "日历事件的类别:"
+	},
+	"calendarEntryCategoriesTooltip": {
+		"message": "一个或多个类别，以逗号分隔如果字段为空，将没有列表"
+	},
+	"calendarEntryCategoriesAccesskey": {
+		"message": "g"
+	},
+	"categoriesPicker.label": {
+		"message": "类别筛选器"
+	},
+	"categoriesPicker.accesskey": {
+		"message": "t"
+	},
+	"deleteAddrBookCard.label": {
+		"message": "删除"
+	},
+	"deleteAddrBookCard.accesskey": {
+		"message": "D"
+	},
+	"editAddrBookCard.label": {
+		"message": "编辑"
+	},
+	"editAddrBookCard.accesskey": {
+		"message": "E"
+	},
+	"addressbookPicker.label": {
+		"message": "通讯录："
+	},
+	"addressbookPicker.accesskey": {
+		"message": "k"
+	},
+	"searchContacts.label": {
+		"message": "搜索…"
+	},
+	"searchContacts.accesskey": {
+		"message": "o"
+	},
+	"SearchNameOrEmail.label": {
+		"message": "名称或者电子邮件"
+	},
+	"addtoToFieldMenu.label": {
+		"message": "添加至收件人栏"
+	},
+	"addtoToFieldMenu.accesskey": {
+		"message": "A"
+	},
+	"addtoCcFieldMenu.label": {
+		"message": "添加至抄送栏"
+	},
+	"addtoCcFieldMenu.accesskey": {
+		"message": "C"
+	},
+	"addtoBccFieldMenu.label": {
+		"message": "添加至密件抄送栏"
+	},
+	"addtoBccFieldMenu.accesskey": {
+		"message": "B"
+	},
+	"addtoReplytoFieldMenu.label": {
+		"message": "添加到回复字段"
+	},
+	"addtoReplytoFieldMenu.accesskey": {
+		"message": "l"
+	},
+	"toButton.label": {
+		"message": "添加至收件人："
+	},
+	"toButton.accesskey": {
+		"message": "A"
+	},
+	"ccButton.label": {
+		"message": "添加至抄送："
+	},
+	"ccButton.accesskey": {
+		"message": "C"
+	},
+	"bccButton.label": {
+		"message": "添加至密件抄送:"
+	},
+	"bccButton.accesskey": {
+		"message": "B"
+	},
+	"replytoButton.label": {
+		"message": "添加到回复:"
+	},
+	"replytoButton.accesskey": {
+		"message": "l"
+	},
+	"newContactAbContext.label": {
+		"message": "新建联系人"
+	},
+	"newContactAbContext.accesskey": {
+		"message": "C"
+	},
+	"newListAbContext.label": {
+		"message": "新建列表"
+	},
+	"newListAbContext.accesskey": {
+		"message": "L"
+	},
+	"wdw_cardbookWindowLabel": {
+		"message": "CardBook"
+	},
+	"enableAccountsTooltip": {
+		"message": "启用或禁用通讯录搜索和同步"
+	},
+	"colorAccountsTooltip": {
+		"message": "显示通讯录搜索结果的颜色(当跨多个通讯录搜索时)"
+	},
+	"readonlyAccountsTooltip": {
+		"message": "设置通讯录为只读或读写模式"
+	},
+	"searchRemoteLabel": {
+		"message": "进行搜索后才会显示此通讯录的联系人"
+	},
+	"columnChooser2.tooltip": {
+		"message": "选择要显示的列"
+	},
+	"cardbookAccountMenuLabel": {
+		"message": "通讯录"
+	},
+	"cardbookAccountMenuAddServerLabel": {
+		"message": "新建通讯录"
+	},
+	"cardbookAccountMenuEditServerLabel": {
+		"message": "编辑通讯录"
+	},
+	"cardbookAccountMenuCloseServerLabel": {
+		"message": "删除通讯录"
+	},
+	"cardbookAccountMenuSyncLabel": {
+		"message": "同步通讯录"
+	},
+	"cardbookAccountMenuSyncsLabel": {
+		"message": "同步全部通讯录"
+	},
+	"cardbookContactsMenuLabel": {
+		"message": "联系人"
+	},
+	"cardbookToolsMenuLabel": {
+		"message": "工具"
+	},
+	"cardbookToolsMenuBirthdayListLabel": {
+		"message": "查看周年纪念日列表"
+	},
+	"cardbookToolsMenuSyncLightningLabel": {
+		"message": "添加周年纪念日到日历"
+	},
+	"cardbookToolsMenuFindAllDuplicatesLabel": {
+		"message": "在全部通讯录中查找重复联系人"
+	},
+	"cardbookToolsMenuFindSingleDuplicatesLabel": {
+		"message": "在当前通讯录中查找重复联系人"
+	},
+	"cardbookToolsMenuPrefsLabel": {
+		"message": "CardBook 偏好设置"
+	},
+	"cardbookToolbarLabel": {
+		"message": "CardBook 工具栏"
+	},
+	"cardbookToolbarAccesskey": {
+		"message": "a"
+	},
+	"cardbookABPaneToolbarLabel": {
+		"message": "CardBook 通讯录面板工具栏"
+	},
+	"cardbookABPaneToolbarAccesskey": {
+		"message": "d"
+	},
+	"CustomizeCardBookToolbarLabel": {
+		"message": "自定义…"
+	},
+	"CustomizeCardBookToolbarAccesskey": {
+		"message": "C"
+	},
+	"cardbookToolbarAddServerButtonLabel": {
+		"message": "新建通讯录"
+	},
+	"cardbookToolbarAddServerButtonTooltip": {
+		"message": "添加远程或本地通讯录"
+	},
+	"cardbookToolbarSyncButtonLabel": {
+		"message": "同步"
+	},
+	"cardbookToolbarSyncButtonTooltip": {
+		"message": "同步全部远程通讯录"
+	},
+	"cardbookToolbarWriteButtonLabel": {
+		"message": "编写"
+	},
+	"cardbookToolbarWriteButtonTooltip": {
+		"message": "新建消息"
+	},
+	"cardbookToolbarChatButtonLabel": {
+		"message": "连接到"
+	},
+	"cardbookToolbarChatButtonTooltip": {
+		"message": "发送即时消息或聊天"
+	},
+	"cardbookToolbarConfigurationButtonLabel": {
+		"message": "偏好设置"
+	},
+	"cardbookToolbarConfigurationButtonTooltip": {
+		"message": "CardBook 偏好设置"
+	},
+	"cardbookToolbarAddContactButtonLabel": {
+		"message": "新建联系人"
+	},
+	"cardbookToolbarAddContactButtonTooltip": {
+		"message": "新建通讯录联系人"
+	},
+	"cardbookToolbarAddListButtonLabel": {
+		"message": "新建列表"
+	},
+	"cardbookToolbarAddListButtonTooltip": {
+		"message": "新建邮件列表"
+	},
+	"cardbookToolbarEditButtonLabel": {
+		"message": "编辑"
+	},
+	"cardbookToolbarEditButtonTooltip": {
+		"message": "编辑已选联系人"
+	},
+	"cardbookToolbarRemoveButtonLabel": {
+		"message": "删除"
+	},
+	"cardbookToolbarRemoveButtonTooltip": {
+		"message": "删除已选联系人"
+	},
+	"cardbookToolbarPrintButtonLabel": {
+		"message": "打印预览"
+	},
+	"cardbookToolbarPrintButtonTooltip": {
+		"message": "已选的打印预览"
+	},
+	"cardbookToolbarBackButtonLabel": {
+		"message": "撤销"
+	},
+	"cardbookToolbarBackButtonTooltip": {
+		"message": "向后一个操作"
+	},
+	"cardbookToolbarForwardButtonLabel": {
+		"message": "重做"
+	},
+	"cardbookToolbarForwardButtonTooltip": {
+		"message": "向前一个操作"
+	},
+	"cardbookToolbarAppMenuButtonLabel": {
+		"message": "CardBook 菜单"
+	},
+	"cardbookToolbarAppMenuButtonTooltip": {
+		"message": "CardBook 菜单"
+	},
+	"cardbookToolbarSearchBoxLabel": {
+		"message": "联系人搜索结果"
+	},
+	"cardbookToolbarSearchBoxTooltip": {
+		"message": "联系人搜索结果"
+	},
+	"cardbookToolbarComplexSearchLabel": {
+		"message": "保存的搜索结果"
+	},
+	"cardbookToolbarComplexSearchTooltip": {
+		"message": "新建新保存的搜索文件夹"
+	},
+	"cardbookToolbarThMenuButtonLabel": {
+		"message": "应用菜单"
+	},
+	"cardbookToolbarThMenuButtonTooltip": {
+		"message": "显示缩写菜单"
+	},
+	"cardbookToolbarABMenuLabel": {
+		"message": "通讯录视图"
+	},
+	"cardbookToolbarABMenuTooltip": {
+		"message": "筛选通讯录显示方式"
+	},
+	"generalTabLabel": {
+		"message": "常规"
+	},
+	"mailPopularityTabLabel": {
+		"message": "邮件优先级"
+	},
+	"technicalTabLabel": {
+		"message": "技术的"
+	},
+	"vCardTabLabel": {
+		"message": "vCard"
+	},
+	"noteTabLabel": {
+		"message": "备注"
+	},
+	"advancedTabLabel": {
+		"message": "高级"
+	},
+	"miscGroupboxLabel": {
+		"message": "杂项"
+	},
+	"othersGroupboxLabel": {
+		"message": "其他"
+	},
+	"techGroupboxLabel": {
+		"message": "技术的"
+	},
+	"labelGroupboxLabel": {
+		"message": "标签"
+	},
+	"agentLabel": {
+		"message": "代理"
+	},
+	"keyLabel": {
+		"message": "键"
+	},
+	"photolocalURILabel": {
+		"message": "本地照片"
+	},
+	"logolocalURILabel": {
+		"message": "本地徽标"
+	},
+	"soundlocalURILabel": {
+		"message": "本地声音"
+	},
+	"photoURILabel": {
+		"message": "照片"
+	},
+	"logoURILabel": {
+		"message": "徽标"
+	},
+	"soundURILabel": {
+		"message": "声音"
+	},
+	"cardurlLabel": {
+		"message": "Card URL"
+	},
+	"cacheuriLabel": {
+		"message": "缓存 URI"
+	},
+	"localizeadrTreeLabel": {
+		"message": "在地图显示"
+	},
+	"toEmailEmailTreeLabel": {
+		"message": "编写新消息"
+	},
+	"ccEmailEmailTreeLabel": {
+		"message": "编写新消息 (复制 / 抄送)"
+	},
+	"bccemailemailTreeLabel": {
+		"message": "编写新消息 (复制 / 密送)"
+	},
+	"findemailemailTreeLabel": {
+		"message": "查找关联此邮件地址的邮件"
+	},
+	"findeventemailTreeLabel": {
+		"message": "查找关联此邮件地址的日历事件"
+	},
+	"openURLTreeLabel": {
+		"message": "打开 URL"
+	},
+	"toEmailCardFromAccountsOrCatsLabel": {
+		"message": "编写新消息"
+	},
+	"toEmailCardFromCardsLabel": {
+		"message": "编写新消息"
+	},
+	"ccEmailCardFromAccountsOrCatsLabel": {
+		"message": "编写新消息 (复制 / 抄送)"
+	},
+	"ccEmailCardFromCardsLabel": {
+		"message": "编写新消息 (复制 / 抄送)"
+	},
+	"bccEmailCardFromAccountsOrCatsLabel": {
+		"message": "编写新消息 (复制 / 密送)"
+	},
+	"bccEmailCardFromCardsLabel": {
+		"message": "编写新消息 (复制 / 密送)"
+	},
+	"shareCardByEmailFromAccountsOrCatsLabel": {
+		"message": "以电子邮件分享"
+	},
+	"shareCardByEmailFromCardsLabel": {
+		"message": "以电子邮件分享"
+	},
+	"categoryHeader": {
+		"message": "类别"
+	},
+	"findEmailsFromCardsLabel": {
+		"message": "查找关联此联系人的邮件"
+	},
+	"findEventsFromCardsLabel": {
+		"message": "查找关联此联系人的日历事件"
+	},
+	"localizeCardFromCardsLabel": {
+		"message": "在地图显示"
+	},
+	"openURLCardFromCardsLabel": {
+		"message": "打开 URL"
+	},
+	"cutCardFromAccountsOrCatsLabel": {
+		"message": "剪切"
+	},
+	"cutCardFromCardsLabel": {
+		"message": "剪切"
+	},
+	"copyCardFromAccountsOrCatsLabel": {
+		"message": "复制"
+	},
+	"copyCardFromCardsLabel": {
+		"message": "复制"
+	},
+	"pasteCardFromAccountsOrCatsLabel": {
+		"message": "粘贴"
+	},
+	"pasteCardFromCardsLabel": {
+		"message": "粘贴"
+	},
+	"pasteEntryLabel": {
+		"message": "粘贴项"
+	},
+	"exportCardToFileLabel": {
+		"message": "导出到文件"
+	},
+	"exportCardToDirLabel": {
+		"message": "导出到目录"
+	},
+	"importCardFromFileLabel": {
+		"message": "从文件导入联系人"
+	},
+	"importCardFromDirLabel": {
+		"message": "从目录导入联系人"
+	},
+	"findDuplicatesFromAccountsOrCatsLabel": {
+		"message": "在当前通讯录中查找重复联系人"
+	},
+	"generateFnFromAccountsOrCatsLabel": {
+		"message": "生成显示名称"
+	},
+	"mergeCardsFromCardsLabel": {
+		"message": "合并联系人"
+	},
+	"duplicateCardFromCardsLabel": {
+		"message": "复制联系人"
+	},
+	"convertListToCategoryFromCardsLabel": {
+		"message": "转换列表为类别"
+	},
+	"editAccountFromAccountsOrCatsLabel": {
+		"message": "编辑通讯录"
+	},
+	"syncAccountFromAccountsOrCatsLabel": {
+		"message": "同步通讯录"
+	},
+	"removeAccountFromAccountsOrCatsLabel": {
+		"message": "删除通讯录"
+	},
+	"editEventLabel": {
+		"message": "编辑事件"
+	},
+	"editEventAccesskey": {
+		"message": "E"
+	},
+	"eventsTree.title.label": {
+		"message": "标题"
+	},
+	"eventsTree.title.tooltip2": {
+		"message": "按标题排序"
+	},
+	"eventsTree.startdate.label": {
+		"message": "开始"
+	},
+	"eventsTree.startdate.tooltip2": {
+		"message": "按开始日期排序"
+	},
+	"eventsTree.enddate.label": {
+		"message": "结束"
+	},
+	"eventsTree.enddate.tooltip2": {
+		"message": "按结束日期排序"
+	},
+	"eventsTree.categories.label": {
+		"message": "类别"
+	},
+	"eventsTree.categories.tooltip2": {
+		"message": "按分类排序"
+	},
+	"eventsTree.location.label": {
+		"message": "位置"
+	},
+	"eventsTree.location.tooltip2": {
+		"message": "按位置排序"
+	},
+	"eventsTree.status.label": {
+		"message": "状态"
+	},
+	"eventsTree.status.tooltip2": {
+		"message": "按状态排序"
+	},
+	"eventsTree.calendarname.label": {
+		"message": "日历名称"
+	},
+	"eventsTree.calendarname.tooltip2": {
+		"message": "按日历名称排序"
+	},
+	"createEventLabel": {
+		"message": "新建事件"
+	},
+	"createEventAccesskey": {
+		"message": "N"
+	},
+	"adrFormulaExplanation": {
+		"message": "你可以自定义 CardBook 格式化地址的方式。公式包含在“()”中，其中不同部分以“|”隔开。"
+	},
+	"fnFormulaExplanation": {
+		"message": "你可以自定义 CardBook 生成显示姓名的方式。公式包含在“()”中，其中不同部分以“|”隔开。"
+	},
+	"formulaExplanation1": {
+		"message": "({{1}}|{{2}}) : 若 {{1}} 为空，则块会被 {{2}} 替换。"
+	},
+	"formulaExplanation2": {
+		"message": "({{1}}|{{2}}|{{3}}) : 若 {{1}} 等于 {{2}}，则块会被 {{3}} 替换。"
+	},
+	"formulaExplanation3": {
+		"message": "({{1}}|{{2}}|{{3}}|{{4}}) : 若 {{1}} 等于 {{2}}，则块会被 {{3}} 替换，否则被 {{4}} 替换。"
+	},
+	"formulaExplanation4": {
+		"message": "({{1}}|*|{{2}}|{{3}}|{{4}}) : 若 {{1}} 包含 {{2}}，则块会被 {{3}} 替换，否则被 {{4}} 替换。"
+	},
+	"formulaExplanation5": {
+		"message": "({{1}}|^|{{2}}|{{3}}|{{4}}) : 若 {{1}} 开头是 {{2}}，则块会被 {{3}} 替换，否则被 {{4}} 替换。"
+	},
+	"formulaExplanation6": {
+		"message": "({{1}}|$|{{2}}|{{3}}|{{4}}) : 若 {{1}} 结尾是 {{2}}，则块会被 {{3}} 替换，否则被 {{4}} 替换。"
+	},
+	"settingsTitlelabel": {
+		"message": "打印设置"
+	},
+	"title.print.label": {
+		"message": "标题:"
+	},
+	"title.print.accesskey": {
+		"message": "T"
+	},
+	"displayHeadersLabel": {
+		"message": "显示段落标题"
+	},
+	"displayHeadersAccesskey": {
+		"message": "H"
+	},
+	"displayFieldNamesLabel": {
+		"message": "字段名称"
+	},
+	"displayFieldNamesAccesskey": {
+		"message": "F"
+	},
+	"displayTypesLabel": {
+		"message": "类型和偏好设置"
+	},
+	"displayTypesAccesskey": {
+		"message": "y"
+	},
+	"fieldsToPrintGroupboxLabel": {
+		"message": "要打印的字段"
+	},
+	"displayLabel": {
+		"message": "姓名"
+	},
+	"displayAccesskey": {
+		"message": "D"
+	},
+	"personalLabel": {
+		"message": "个人信息"
+	},
+	"personalAccesskey": {
+		"message": "P"
+	},
+	"org.print.label": {
+		"message": "专业信息"
+	},
+	"org.print.accesskey": {
+		"message": "o"
+	},
+	"categories.print.label": {
+		"message": "类别"
+	},
+	"categories.print.accesskey": {
+		"message": "C"
+	},
+	"adr.print.label": {
+		"message": "地址"
+	},
+	"adr.print.accesskey": {
+		"message": "A"
+	},
+	"tel.print.label": {
+		"message": "电话号码"
+	},
+	"tel.print.accesskey": {
+		"message": "T"
+	},
+	"email.print.label": {
+		"message": "电子邮件地址"
+	},
+	"email.print.accesskey": {
+		"message": "E"
+	},
+	"impp.print.label": {
+		"message": "互联网通讯"
+	},
+	"impp.print.accesskey": {
+		"message": "I"
+	},
+	"url.print.label": {
+		"message": "网址"
+	},
+	"url.print.ccesskey": {
+		"message": "U"
+	},
+	"note.print.label": {
+		"message": "备注"
+	},
+	"note.print.accesskey": {
+		"message": "N"
+	},
+	"useColorCheckLabel": {
+		"message": "使用颜色"
+	},
+	"useColorCheckAccesskey": {
+		"message": "U"
+	},
+	"existingDataGroupboxLabel": {
+		"message": "添加到此联系人"
+	},
+	"cardbookSwitchButtonTooltip": {
+		"message": "交换姓和名"
+	},
+	"descriptionTextbox": {
+		"message": "描述"
+	},
+	"categoriesTextboxLabel": {
+		"message": "添加新类别"
+	},
+	"typesTextboxLabel": {
+		"message": "添加新类型"
+	},
+	"categoriesListboxLabel": {
+		"message": "已存在的类别"
+	},
+	"categoryMenuLabel": {
+		"message": "新建类别…"
+	},
+	"viewResultEditionLabel": {
+		"message": "显示结果"
+	},
+	"viewResultEditionAccesskey": {
+		"message": "V"
+	},
+	"createEditionLabel": {
+		"message": "创建"
+	},
+	"createEditionAccesskey": {
+		"message": "T"
+	},
+	"createAndReplaceEditionLabel": {
+		"message": "创建和替换"
+	},
+	"createAndReplaceEditionAccesskey": {
+		"message": "R"
+	},
+	"saveEditionLabel": {
+		"message": "保存"
+	},
+	"saveEditionAccesskey": {
+		"message": "S"
+	},
+	"validateEditionLabel": {
+		"message": "验证"
+	},
+	"validateEditionAccesskey": {
+		"message": "V"
+	},
+	"cancelEditionLabel": {
+		"message": "取消"
+	},
+	"cancelEditionAccesskey": {
+		"message": "C"
+	},
+	"closeEditionLabel": {
+		"message": "关闭"
+	},
+	"closeEditionAccesskey": {
+		"message": "C"
+	},
+	"buttonAppendToListLabel": {
+		"message": "添加"
+	},
+	"buttonAppendToListAccesskey": {
+		"message": "A"
+	},
+	"buttonRemoveFromListLabel": {
+		"message": "删除"
+	},
+	"buttonRemoveFromListAccesskey": {
+		"message": "O"
+	},
+	"buttonGuessFromListLabel": {
+		"message": "推测"
+	},
+	"buttonGuessFromListAccesskey": {
+		"message": "G"
+	},
+	"loadTemplateLabel": {
+		"message": "选择模板"
+	},
+	"loadTemplateAccesskey": {
+		"message": "t"
+	},
+	"saveTemplateLabel": {
+		"message": "保存模板"
+	},
+	"saveTemplateAccesskey": {
+		"message": "e"
+	},
+	"convertVCardsLabel": {
+		"message": "转换 vCard"
+	},
+	"convertVCardsTooltip": {
+		"message": "一些联系人的 vCard 版本不同于你的通讯录 vCard 版本，此按钮会转换这些联系人"
+	},
+	"convertVCardsAccesskey": {
+		"message": "o"
+	},
+	"wdw_findDuplicatesTitle": {
+		"message": "复制联系人"
+	},
+	"addImageCardFromFileLabel": {
+		"message": "从文件添加图像"
+	},
+	"pasteImageCardLabel": {
+		"message": "粘贴图像"
+	},
+	"saveImageCardLabel": {
+		"message": "保存图像为…"
+	},
+	"copyImageCardLabel": {
+		"message": "复制图像"
+	},
+	"copyImageLocationCardLabel": {
+		"message": "复制图像路径"
+	},
+	"deleteImageCardLabel": {
+		"message": "删除图像"
+	},
+	"kind.edit.label": {
+		"message": "类别"
+	},
+	"kind.edit.accesskey": {
+		"message": "K"
+	},
+	"addEmailGroupboxLabel": {
+		"message": "电子邮件地址"
+	},
+	"availableCardsGroupboxLabel": {
+		"message": "可用的联系人"
+	},
+	"nameOrEmailLabel": {
+		"message": "姓名或电子邮件"
+	},
+	"appendContactLabel": {
+		"message": "添加到列表"
+	},
+	"deletelistTreeLabel": {
+		"message": "从列表删除"
+	},
+	"editCardFromListLabel": {
+		"message": "编辑此联系人"
+	},
+	"wdw_logEditionTitle": {
+		"message": "日志查看器"
+	},
+	"logEditionValueLabel": {
+		"message": "时间戳事件"
+	},
+	"refreshLogEditionLabel": {
+		"message": "刷新"
+	},
+	"refreshLogEditionAccesskey": {
+		"message": "R"
+	},
+	"flushLogEditionLabel": {
+		"message": "清除列表"
+	},
+	"flushLogEditionAccesskey": {
+		"message": "C"
+	},
+	"clipboardLogEditionLabel": {
+		"message": "复制到剪贴板"
+	},
+	"clipboardLogEditionAccesskey": {
+		"message": "p"
+	},
+	"cancelLogEditionLabel": {
+		"message": "确定"
+	},
+	"cancelLogEditionAccesskey": {
+		"message": "O"
+	},
+	"wdw_mergeCardsTitle": {
+		"message": "合并联系人"
+	},
+	"mergeInstructionsLabel": {
+		"message": "选择你要为新联系人保留的字段"
+	},
+	"persTitleLabel": {
+		"message": "个人信息"
+	},
+	"orgTitleLabel": {
+		"message": "专业信息"
+	}
+}

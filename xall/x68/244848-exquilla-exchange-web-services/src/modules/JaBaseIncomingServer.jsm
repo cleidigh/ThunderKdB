@@ -11,8 +11,6 @@ var Ci = Components.interfaces;
 var Cr = Components.results;
 var Cu = Components.utils;
 
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm"); // COMPAT for TB 60
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 
 // A partial JavaScript implementation of the base server methods.
@@ -56,7 +54,7 @@ JaBaseIncomingServer.prototype = {
   _JsPrototypeToDelegate: true,
 
   // QI to the interfaces.
-  QueryInterface: QIUtils.generateQI(JaBaseIncomingServer.Properties.baseInterfaces),
+  QueryInterface: ChromeUtils.generateQI(JaBaseIncomingServer.Properties.baseInterfaces),
 
   // Used to access an instance as JS, bypassing XPCOM.
   get wrappedJSObject() {

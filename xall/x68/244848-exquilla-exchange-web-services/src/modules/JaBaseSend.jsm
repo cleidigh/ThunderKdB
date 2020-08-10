@@ -8,8 +8,6 @@ const EXPORTED_SYMBOLS = ["JaBaseSend"];
 
 const { classes: Cc, Constructor: CC, interfaces: Ci, utils: Cu, Exception: CE, results: Cr, } = Components;
 
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm"); // COMPAT for TB 60
-var QIUtils = ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils; // COMPAT for TB 60
 ChromeUtils.defineModuleGetter(this, "JSAccountUtils", "resource://exquilla/JSAccountUtils.jsm");
 
 // A partial JavaScript implementation of the base composer methods.
@@ -54,7 +52,7 @@ JaBaseSend.prototype = {
   _JsPrototypeToDelegate: true,
 
   // QI to the interfaces.
-  QueryInterface: QIUtils.generateQI(JaBaseSend.Properties.baseInterfaces),
+  QueryInterface: ChromeUtils.generateQI(JaBaseSend.Properties.baseInterfaces),
 
   // Used to access an instance as JS, bypassing XPCOM.
   get wrappedJSObject() {

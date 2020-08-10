@@ -23,12 +23,13 @@
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { setTimeout, setInterval, clearInterval } = ChromeUtils.import("resource://gre/modules/Timer.jsm");
-var { MailServices } = ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { Utils } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm");
+Utils.importLocally(this);
 
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) {
-    let { configureLogging } = ChromeUtils.import("resource://exquilla/ewsUtils.jsm").Utils;
     _log = configureLogging("license");
   }
   return _log;
@@ -36,7 +37,7 @@ XPCOMUtils.defineLazyGetter(this, "log", () => {
 
 Cu.importGlobalProperties(["crypto", "fetch", "URLSearchParams"]);
 
-var EXPORTED_SYMBOLS = ["EnsureLicensed", "FetchTicket", "CheckLicense", "AddTicketFromString", "OpenPurchasePage", "OpenManualAccountCreation", "GetLicensedEmail", "exquillaSettings"];
+var EXPORTED_SYMBOLS = ["EnsureLicensed", "FetchTicket", "CheckLicense", "AddTicketFromString", "OpenPurchasePage", "GetLicensedEmail", "exquillaSettings"];
 
 const kSoonExpiringPollInterval = 24 * 60 * 60 * 1000; // 1 day
 const kSoonExpiring = 14 * 24 * 60 * 60 * 1000; // 2 weeks
@@ -120,9 +121,7 @@ function getGlobalPrimaryIdentity() {
   } catch (ex) {
   }
   try {
-    let identities = MailServices.accounts.allIdentities;
-    for (let i = 0; i < identities.length; i++) {
-      let identity = identities.queryElementAt(i, Ci.nsIMsgIdentity);
+    for (let identity of /* COMPAT for TB 68 */toArray(MailServices.accounts.allIdentities, Ci.nsIMsgIdentity)) {
       if (identity.email) {
         return identity;
       }
@@ -130,16 +129,14 @@ function getGlobalPrimaryIdentity() {
   } catch (ex) {
   }
   let identity = { email: "", fullName: "" };
-  if ("@mozilla.org/userinfo;1" in Cc) { // COMPAT for TB 60
-    let userInfo = Cc["@mozilla.org/userinfo;1"].getService(Ci.nsIUserInfo);
-    try {
-      identity.email = userInfo.emailAddress;
-    } catch (ex) {
-    }
-    try {
-      identity.fullName = userInfo.fullname;
-    } catch (ex) {
-    }
+  let userInfo = Cc["@mozilla.org/userinfo;1"].getService(Ci.nsIUserInfo);
+  try {
+    identity.email = userInfo.emailAddress;
+  } catch (ex) {
+  }
+  try {
+    identity.fullName = userInfo.fullname;
+  } catch (ex) {
   }
   return identity;
 }
@@ -168,9 +165,7 @@ async function FetchTicketUnqueued()
 {
   try {
     let servers = [];
-    let accounts = MailServices.accounts.accounts;
-    for (let i = 0; i < accounts.length; i++) {
-      let account = accounts.queryElementAt(i, Ci.nsIMsgAccount);
+    for (let account of /* COMPAT for TB 68 */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
       if (account.incomingServer.type == "exquilla") {
         servers.push(account.incomingServer);
       }
@@ -186,9 +181,8 @@ async function FetchTicketUnqueued()
 
     let aliasesSet = new Set();
     for (let server of servers) {
-      let identities = MailServices.accounts.getIdentitiesForServer(server);
-      for (let i = 0; i < identities.length; i++) {
-        aliasesSet.add(identities.queryElementAt(i, Ci.nsIMsgIdentity).email);
+      for (let identity of /* COMPAT for TB 68 */toArray(MailServices.accounts.getIdentitiesForServer(server), Ci.nsIMsgIdentity)) {
+        aliasesSet.add(identity.email);
       }
     }
     aliasesSet.delete(email);
@@ -363,7 +357,7 @@ async function OpenPurchasePage() {
   let uri = Services.io.newURI(kGetLicenseURL + new URLSearchParams({
     email: identity.email,
     name: identity.fullName,
-    lang: Services.locale.getAppLocaleAsLangTag ? Services.locale.getAppLocaleAsLangTag() : Services.locale.appLocaleAsLangTag, // COMPAT for TB 60
+    lang: Services.locale.appLocaleAsLangTag,
   }) + "#purchase");
   Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService).loadURI(uri);
 
@@ -379,18 +373,11 @@ async function OpenPurchasePage() {
   }, kPurchasePollFor);
 }
 
-function OpenManualAccountCreation() {
-  Services.ww.openWindow(null, "chrome://exquilla/content/ewsAccountWizard.xul",
-              "AccountWizard", "chrome,modal,titlebar,centerscreen", null);
-}
-
 function GetLicensedEmail()
 {
-  let accounts = MailServices.accounts.accounts;
-  for (let i = 0; i < accounts.length; i++) {
-    let account = accounts.queryElementAt(i, Ci.nsIMsgAccount);
+  for (let account of /* COMPAT for TB 68 */toArray(MailServices.accounts.accounts, Ci.nsIMsgAccount)) {
     if (account.incomingServer.type == "exquilla") {
-      return account.identities.queryElementAt(0, Ci.nsIMsgIdentity).email;
+      return /* COMPAT for TB 68 */toArray(account.identities, Ci.nsIMsgIdentity)[0].email;
     }
   }
   return "";
@@ -425,7 +412,7 @@ var exquillaSettings = {
   checkLicense: wrapExceptions(CheckLicense),
   addTicketFromString: wrapExceptions(AddTicketFromString),
   openPurchasePage: wrapExceptions(OpenPurchasePage),
-  openManualAccountCreation: wrapExceptions(OpenManualAccountCreation),
+  openManualAccountCreation: wrapExceptions(openAccountWizard),
   getLicensedEmail: wrapExceptions(GetLicensedEmail),
   onLicenseChecked: {
     addListener: function(aListener) {

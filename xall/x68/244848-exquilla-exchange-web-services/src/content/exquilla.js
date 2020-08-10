@@ -12,8 +12,7 @@
 if (typeof(Services) == 'undefined')
   var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 if (typeof(MailServices) == 'undefined')
-  var { MailServices } = ChromeUtils.import(ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
-var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
+  var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 var exquilla = Object.create(
 (function _exquilla()
@@ -243,7 +242,7 @@ var exquilla = Object.create(
 
     // Make a backup copy of server and identity for all loaded exquilla accounts
     let allAccounts = MailServices.accounts.accounts;
-    for (let account of fixIterator(allAccounts, Ci.nsIMsgAccount))
+    for (let account of /* COMPAT for TB 68 */exquilla.Utils.toArray(allAccounts, Ci.nsIMsgAccount))
     {
       if (safeGetJS(account.incomingServer, "EwsIncomingServer"))
       { try {
@@ -603,8 +602,13 @@ var exquilla = Object.create(
 
     // gloda only indexes local and imap mail folders (though I hope to fix that in
     // bug 781650). We have to override shouldIndexFolder to get around this.
-    Object.assign(exquilla, ChromeUtils.import("resource:///modules/gloda/index_msg.js"));
-    Object.assign(exquilla, ChromeUtils.import("resource:///modules/gloda/datastore.js"));
+    try { // COMPAT for TB 68
+      Object.assign(exquilla, ChromeUtils.import("resource:///modules/gloda/IndexMsg.jsm"));
+      Object.assign(exquilla, ChromeUtils.import("resource:///modules/gloda/GlodaDatastore.jsm"));
+    } catch (ex) { /* COMPAT for TB 68 */
+      Object.assign(exquilla, ChromeUtils.import("resource:///modules/gloda/index_msg.js"));
+      Object.assign(exquilla, ChromeUtils.import("resource:///modules/gloda/datastore.js"));
+    } /* COMPAT for TB 68 */
 
     function ewsShouldIndexFolder(aMsgFolder)
     {
@@ -668,7 +672,7 @@ var exquilla = Object.create(
     // We want to detect requests to rebuild folder, and force those to reindex.
     MailServices.mfn.addListener(this, Ci.nsIMsgFolderNotificationService.itemEvent);
 
-    if ((window.SessionStoreManager || window.sessionStoreManager)._restored) {
+    if (SessionStoreManager._restored) {
       exquilla.EwsAbService.loadEwsServers();
     } else {
       Services.obs.addObserver(this, "mail-tabs-session-restored", false);
@@ -709,13 +713,6 @@ var exquilla = Object.create(
     session.RemoveFolderListener(this);
     MailServices.accounts.removeIncomingServerListener(serverListener);
     MailServices.mfn.removeListener(this);
-  }
-
-  function msgOpenAccountWizard()
-  {
-    window.openDialog("chrome://exquilla/content/ewsAccountWizard.xul", "AccountWizard",
-                      "chrome,modal,titlebar,centerscreen", {});
-
   }
 
   function observe(aSubject, aTopic, aData)

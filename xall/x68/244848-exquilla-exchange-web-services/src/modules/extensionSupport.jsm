@@ -13,7 +13,11 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { NetUtil } = ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
 
 var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
+try { // COMPAT for TB 68
+var { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
+} catch (ex) { /* COMPAT for TB 68 */
 var { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.js");
+} /* COMPAT for TB 68 */
 
 /**
  * Reads preferences from addon provided locations (defaults/preferences/*.js)

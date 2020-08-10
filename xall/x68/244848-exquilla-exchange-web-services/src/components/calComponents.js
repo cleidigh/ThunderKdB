@@ -19,7 +19,7 @@ ChromeUtils.defineModuleGetter(this, "Utils",
 ChromeUtils.defineModuleGetter(this, "Services",
   "resource://gre/modules/Services.jsm");
 ChromeUtils.defineModuleGetter(this, "MailServices",
-  ChromeUtils.generateQI ? "resource:///modules/MailServices.jsm" : "resource:///modules/mailServices.js"); // COMPAT for TB 60
+  "resource:///modules/MailServices.jsm");
 var _log = null;
 XPCOMUtils.defineLazyGetter(this, "log", () => {
   if (!_log) _log = Utils.configureLogging("calendar");
@@ -42,7 +42,5 @@ Calendar.prototype = {
 }
 
 var components = [Calendar];
-if (XPCOMUtils.generateNSGetFactory)
-  var NSGetFactory = XPCOMUtils.generateNSGetFactory(components);
-else
-  var NSGetModule = XPCOMUtils.generateNSGetModule(components);
+var NSGetFactory = XPCOMUtils.generateNSGetFactory(components);
+var EXPORTED_SYMBOLS = ["NSGetFactory"];

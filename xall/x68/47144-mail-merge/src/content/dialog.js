@@ -94,7 +94,7 @@ var mailmerge = {
 	
 	init: function() {
 		
-		var prefs = Services.prefs.getBranch("extensions.mailmerge.");
+		let prefs = Services.prefs.getBranch("extensions.mailmerge.");
 		
 		document.getElementById("mailmerge-general-source").value = prefs.getStringPref("source");
 		document.getElementById("mailmerge-general-delivermode").value = prefs.getStringPref("delivermode");
@@ -108,9 +108,9 @@ var mailmerge = {
 		document.getElementById("mailmerge-json-file").value = prefs.getStringPref("json");
 		document.getElementById("mailmerge-xlsx-file").value = prefs.getStringPref("xlsx");
 		document.getElementById("mailmerge-xlsx-sheetname").value = prefs.getStringPref("sheetname");
+		document.getElementById("mailmerge-batch-pause").value = prefs.getStringPref("pause");
 		document.getElementById("mailmerge-batch-start").value = prefs.getStringPref("start");
 		document.getElementById("mailmerge-batch-stop").value = prefs.getStringPref("stop");
-		document.getElementById("mailmerge-batch-pause").value = prefs.getStringPref("pause");
 		document.getElementById("mailmerge-sendlater-at").value = prefs.getStringPref("at");
 		document.getElementById("mailmerge-sendlater-recur").value = prefs.getStringPref("recur");
 		document.getElementById("mailmerge-sendlater-every").value = prefs.getStringPref("every");
@@ -121,9 +121,9 @@ var mailmerge = {
 		
 		document.getElementById("mailmerge-general-attachments-checkbox").checked = prefs.getStringPref("attachments");
 		document.getElementById("mailmerge-xlsx-sheetname-checkbox").checked = prefs.getStringPref("sheetname");
+		document.getElementById("mailmerge-batch-pause-checkbox").checked = prefs.getStringPref("pause");
 		document.getElementById("mailmerge-batch-start-checkbox").checked = prefs.getStringPref("start");
 		document.getElementById("mailmerge-batch-stop-checkbox").checked = prefs.getStringPref("stop");
-		document.getElementById("mailmerge-batch-pause-checkbox").checked = prefs.getStringPref("pause");
 		document.getElementById("mailmerge-sendlater-at-checkbox").checked = prefs.getStringPref("at");
 		document.getElementById("mailmerge-sendlater-recur-checkbox").checked = prefs.getStringPref("recur");
 		document.getElementById("mailmerge-sendlater-every-checkbox").checked = prefs.getStringPref("every");
@@ -132,7 +132,7 @@ var mailmerge = {
 		
 		mailmerge.checkbox();
 		
-		for(var i = 0; i < 7; i++) {
+		for(let i = 0; i < 7; i++) {
 			
 			document.getElementById("mailmerge-sendlater-only").options[i].selected = prefs.getStringPref("only").includes(i);
 			
@@ -145,8 +145,8 @@ var mailmerge = {
 		/* delivermodewarning start */
 		if(document.getElementById("mailmerge-general-delivermode").value == "Now") {
 			
-			var flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
-			var check = { value : false };
+			let flags = (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_0) + (Services.prompt.BUTTON_TITLE_IS_STRING * Services.prompt.BUTTON_POS_1);
+			let check = { value : false };
 			
 			switch(Services.prompt.confirmEx(
 				window,
@@ -181,7 +181,7 @@ var mailmerge = {
 		
 		if(mailmergeutils.init(mailmerge.prefs())) {
 			
-			var prefs = Services.prefs.getBranch("extensions.mailmerge.");
+			let prefs = Services.prefs.getBranch("extensions.mailmerge.");
 			
 			prefs.setStringPref("source", mailmergeutils.prefs.source);
 			prefs.setStringPref("delivermode", mailmergeutils.prefs.delivermode);
@@ -195,9 +195,9 @@ var mailmerge = {
 			prefs.setStringPref("json", mailmergeutils.prefs.json);
 			prefs.setStringPref("xlsx", mailmergeutils.prefs.xlsx);
 			prefs.setStringPref("sheetname", mailmergeutils.prefs.sheetname);
+			prefs.setStringPref("pause", mailmergeutils.prefs.pause);
 			prefs.setStringPref("start", mailmergeutils.prefs.start);
 			prefs.setStringPref("stop", mailmergeutils.prefs.stop);
-			prefs.setStringPref("pause", mailmergeutils.prefs.pause);
 			prefs.setStringPref("at", mailmergeutils.prefs.at);
 			prefs.setStringPref("recur", mailmergeutils.prefs.recur);
 			prefs.setStringPref("every", mailmergeutils.prefs.every);
@@ -228,7 +228,7 @@ var mailmerge = {
 	
 	option: function(text, value) {
 		
-		var option = document.createElementNS('http://www.w3.org/1999/xhtml', 'option');
+		let option = document.createElementNS('http://www.w3.org/1999/xhtml', 'option');
 		
 		option.text = text;
 		option.value = value;
@@ -239,10 +239,10 @@ var mailmerge = {
 	
 	cardbook: function() {
 		
-		var accounts = window.opener.cardbookRepository.cardbookAccounts;
-		for(var j = 0; j < accounts.length; j++) {
+		let accounts = window.opener.cardbookRepository.cardbookAccounts;
+		for(let j = 0; j < accounts.length; j++) {
 			
-			var account = accounts[j];
+			let account = accounts[j];
 			if(account[1] && account[5] && account[6] != "SEARCH") {
 				
 				document.getElementById("mailmerge-cardbook-addressbook").add(mailmerge.option(account[0], account[4]));
@@ -255,12 +255,12 @@ var mailmerge = {
 	
 	addressbook: function() {
 		
-		var addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
+		let addressbooks = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager).directories;
 		while(addressbooks.hasMoreElements()) {
 			
 			try {
 				
-				var addressbook = addressbooks.getNext();
+				let addressbook = addressbooks.getNext();
 				addressbook.QueryInterface(Ci.nsIAbDirectory);
 				
 				addressbook.getCardFromProperty("PrimaryEmail", "", false);
@@ -277,7 +277,7 @@ var mailmerge = {
 		
 		if(target == "CSV") {
 			
-			var filePicker = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+			let filePicker = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
 			filePicker.init(window, "Mail Merge", Ci.nsIFilePicker.modeOpen);
 			filePicker.appendFilter("CSV", "*.csv");
 			filePicker.appendFilter("*", "*.*");
@@ -294,7 +294,7 @@ var mailmerge = {
 		
 		if(target == "JSON") {
 			
-			var filePicker = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+			let filePicker = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
 			filePicker.init(window, "Mail Merge", Ci.nsIFilePicker.modeOpen);
 			filePicker.appendFilter("JSON", "*.json");
 			filePicker.appendFilter("*", "*.*");
@@ -311,7 +311,7 @@ var mailmerge = {
 		
 		if(target == "XLSX") {
 			
-			var filePicker = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
+			let filePicker = Cc["@mozilla.org/filepicker;1"].createInstance(Ci.nsIFilePicker);
 			filePicker.init(window, "Mail Merge", Ci.nsIFilePicker.modeOpen);
 			filePicker.appendFilter("Spreadsheet", "*.xlsx; *.xlsm; *.xlsb; *.xls; *.ods; *.fods; *.csv");
 			filePicker.appendFilter("Microsoft Office", "*.xlsx; *.xlsm; *.xlsb; *.xls");
@@ -335,7 +335,7 @@ var mailmerge = {
 		
 		if(target == "CSV") {
 			
-			var params = {
+			let params = {
 				
 				file: document.getElementById("mailmerge-csv-file").value,
 				characterset: document.getElementById("mailmerge-csv-characterset").value,
@@ -344,10 +344,10 @@ var mailmerge = {
 				
 			}
 			
-			var json = mailmergeutils.csv(params);
+			let json = mailmergeutils.csv(params);
 			if(Array.isArray(json)) {
 				
-				var params = { type: "FILE", json: json }
+				let params = { type: "FILE", json: json }
 				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 				
 			}
@@ -356,16 +356,16 @@ var mailmerge = {
 		
 		if(target == "JSON") {
 			
-			var params = {
+			let params = {
 				
 				file: document.getElementById("mailmerge-json-file").value
 				
 			}
 			
-			var json = mailmergeutils.json(params);
+			let json = mailmergeutils.json(params);
 			if(Array.isArray(json)) {
 				
-				var params = { type: "FILE", json: json }
+				let params = { type: "FILE", json: json }
 				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 				
 			}
@@ -374,17 +374,17 @@ var mailmerge = {
 		
 		if(target == "XLSX") {
 			
-			var params = {
+			let params = {
 				
 				file: document.getElementById("mailmerge-xlsx-file").value,
 				sheetname: document.getElementById("mailmerge-xlsx-sheetname").value
 				
 			}
 			
-			var json = mailmergeutils.xlsx(params);
+			let json = mailmergeutils.xlsx(params);
 			if(Array.isArray(json)) {
 				
-				var params = { type: "FILE", json: json }
+				let params = { type: "FILE", json: json }
 				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 				
 			}
@@ -395,7 +395,7 @@ var mailmerge = {
 			
 			if(mailmergeutils.init(mailmerge.prefs())) {
 				
-				var params = { type: "MESSAGE" }
+				let params = { type: "MESSAGE" }
 				window.openDialog("chrome://mailmerge/content/preview.xhtml", "_blank", "chrome,dialog,modal,centerscreen", params);
 				
 			}
@@ -406,7 +406,7 @@ var mailmerge = {
 	
 	reset: function() {
 		
-		var prefs = Services.prefs.getBranch("extensions.mailmerge.");
+		let prefs = Services.prefs.getBranch("extensions.mailmerge.");
 		
 		prefs.clearUserPref("source");
 		prefs.clearUserPref("delivermode");
@@ -420,9 +420,9 @@ var mailmerge = {
 		prefs.clearUserPref("json");
 		prefs.clearUserPref("xlsx");
 		prefs.clearUserPref("sheetname");
+		prefs.clearUserPref("pause");
 		prefs.clearUserPref("start");
 		prefs.clearUserPref("stop");
-		prefs.clearUserPref("pause");
 		prefs.clearUserPref("at");
 		prefs.clearUserPref("recur");
 		prefs.clearUserPref("every");
@@ -455,9 +455,9 @@ var mailmerge = {
 		
 		document.getElementById('mailmerge-general-attachments').disabled = !(document.getElementById('mailmerge-general-attachments-checkbox').checked);
 		document.getElementById('mailmerge-xlsx-sheetname').disabled = !(document.getElementById('mailmerge-xlsx-sheetname-checkbox').checked);
+		document.getElementById('mailmerge-batch-pause').disabled = !(document.getElementById('mailmerge-batch-pause-checkbox').checked);
 		document.getElementById('mailmerge-batch-start').disabled = !(document.getElementById('mailmerge-batch-start-checkbox').checked);
 		document.getElementById('mailmerge-batch-stop').disabled = !(document.getElementById('mailmerge-batch-stop-checkbox').checked);
-		document.getElementById('mailmerge-batch-pause').disabled = !(document.getElementById('mailmerge-batch-pause-checkbox').checked);
 		document.getElementById('mailmerge-sendlater-at').disabled = !(document.getElementById('mailmerge-sendlater-at-checkbox').checked);
 		document.getElementById('mailmerge-sendlater-recur').disabled = !(document.getElementById('mailmerge-sendlater-recur-checkbox').checked);
 		document.getElementById('mailmerge-sendlater-every').disabled = !(document.getElementById('mailmerge-sendlater-every-checkbox').checked);
@@ -468,7 +468,7 @@ var mailmerge = {
 	
 	prefs: function() {
 		
-		var prefs = {};
+		let prefs = {};
 		
 		prefs.source = document.getElementById("mailmerge-general-source").value;
 		prefs.delivermode = document.getElementById("mailmerge-general-delivermode").value;
@@ -482,19 +482,19 @@ var mailmerge = {
 		prefs.json = document.getElementById("mailmerge-json-file").value;
 		prefs.xlsx = document.getElementById("mailmerge-xlsx-file").value;
 		prefs.sheetname = (document.getElementById("mailmerge-xlsx-sheetname-checkbox").checked) ? document.getElementById("mailmerge-xlsx-sheetname").value : "";
+		prefs.pause = (document.getElementById("mailmerge-batch-pause-checkbox").checked) ? document.getElementById("mailmerge-batch-pause").value : "";
 		prefs.start = (document.getElementById("mailmerge-batch-start-checkbox").checked) ? document.getElementById("mailmerge-batch-start").value : "";
 		prefs.stop = (document.getElementById("mailmerge-batch-stop-checkbox").checked) ? document.getElementById("mailmerge-batch-stop").value : "";
-		prefs.pause = (document.getElementById("mailmerge-batch-pause-checkbox").checked) ? document.getElementById("mailmerge-batch-pause").value : "";
 		prefs.at = (document.getElementById("mailmerge-sendlater-at-checkbox").checked) ? document.getElementById("mailmerge-sendlater-at").value : "";
 		prefs.recur = (document.getElementById("mailmerge-sendlater-recur-checkbox").checked) ? document.getElementById("mailmerge-sendlater-recur").value : "";
 		prefs.every = (document.getElementById("mailmerge-sendlater-every-checkbox").checked) ? document.getElementById("mailmerge-sendlater-every").value : "";
 		prefs.between = (document.getElementById("mailmerge-sendlater-between-checkbox").checked) ? document.getElementById("mailmerge-sendlater-between").value : "";
 		//prefs.only = (document.getElementById("mailmerge-sendlater-only-checkbox").checked) ? document.getElementById("mailmerge-sendlater-only").value : "";
 		
-		var only = [];
+		let only = [];
 		if(document.getElementById("mailmerge-sendlater-only-checkbox").checked) {
 			
-			for(var i = 0; i < 7; i++) {
+			for(let i = 0; i < 7; i++) {
 				
 				if(document.getElementById("mailmerge-sendlater-only").options[i].selected) {
 					only.push(i);

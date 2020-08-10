@@ -1,0 +1,22 @@
+menuitem[ABtype="local"] {
+	list-style-image: url("chrome://messenger/skin/icons/folder.svg");
+}
+menuitem[ABtype="remote"] {
+	list-style-image: url("chrome://messenger/skin/icons/globe.svg");
+}
+/* as the file Search-glass.png disappeared in Th 55 */
+/* and as before Th 55 it is not possible to display svg file */
+/* need to package one png file */
+menuitem[ABtype="search"] {
+	list-style-image: url("chrome://messenger/skin/icons/search-glass.svg");
+}
+menuitem[ABtype="standard-abook"] {
+	list-style-image: url("chrome://messenger/skin/icons/address.svg");
+}
+
+#VCardRow > #VCardTextbox {
+	width: 100%;
+	box-sizing: border-box;
+	min-height: 15em;
+	margin: 2px 4px;
+}

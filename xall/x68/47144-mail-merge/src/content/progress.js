@@ -15,7 +15,7 @@ var gProgressListener = {
 	onStatusChange: function(aWebProgress, aRequest, aStatus, aMessage) {
 		
 		document.getElementById("mailmerge-progress-status").textContent = aMessage;
-		var string = window.opener.document.getElementById("bundle_composeMsgs").getString("copyMessageComplete");
+		let string = window.opener.document.getElementById("bundle_composeMsgs").getString("copyMessageComplete");
 		if(string == aMessage) { window.setTimeout(function() { mailmerge.compose(); }, 50); }
 		
 	},
@@ -50,7 +50,7 @@ var mailmerge = {
 		/* index end */
 		
 		/* time start */
-		var time = new Date();
+		let time = new Date();
 		mailmerge.time(time, time);
 		window.setInterval(function() { mailmerge.time(time, new Date()); }, 1000);
 		/* time end */
@@ -61,15 +61,15 @@ var mailmerge = {
 	
 	time: function(start, stop) {
 		
-		var time = Math.round((stop - start) / 1000);
+		let time = Math.round((stop - start) / 1000);
 		
-		var hours = Math.floor(time / 3600);
+		let hours = Math.floor(time / 3600);
 		if(hours < 10) { hours = "0" + hours; }
 		
-		var minutes = Math.floor(time % 3600 / 60);
+		let minutes = Math.floor(time % 3600 / 60);
 		if(minutes < 10) { minutes = "0" + minutes; }
 		
-		var seconds = Math.floor(time % 3600 % 60);
+		let seconds = Math.floor(time % 3600 % 60);
 		if(seconds < 10) { seconds = "0" + seconds; }
 		
 		document.getElementById("mailmerge-progress-time").textContent = hours + ":" + minutes + ":" + seconds;
@@ -78,16 +78,16 @@ var mailmerge = {
 	
 	update: function() {
 		
-		var index = mailmerge.index;
+		let index = mailmerge.index;
 		document.getElementById("mailmerge-progress-index").textContent = index;
 		
-		var total = mailmergeutils.objects.length;
+		let total = mailmergeutils.objects.length;
 		document.getElementById("mailmerge-progress-total").textContent = total;
 		
-		var progress = index / total;
+		let progress = index / total;
 		document.getElementById("mailmerge-progress-progress").value = (progress || 0);
 		
-		var status = "";
+		let status = "";
 		document.getElementById("mailmerge-progress-status").textContent = status;
 		
 	},
@@ -103,12 +103,12 @@ var mailmerge = {
 		/* update end */
 		
 		/* compose start */
-		var compose = mailmergeutils.compose(mailmerge.index);
+		let compose = mailmergeutils.compose(mailmerge.index);
 		if(!compose) { window.setTimeout(function() { window.close(); }, 1000); return; }
 		/* compose end */
 		
 		/* pause start */
-		var pause = mailmergeutils.pause(mailmerge.index);
+		let pause = mailmergeutils.pause(mailmerge.index);
 		if(!pause) { window.setTimeout(function() { window.close(); }, 1000); return; }
 		/* pause end */
 		
@@ -138,7 +138,7 @@ var mailmerge = {
 		try {
 			
 			/* delivermode start */
-			var delivermode;
+			let delivermode;
 			switch(mailmergeutils.prefs.delivermode) {
 				
 				case "SaveAsDraft":
@@ -162,7 +162,7 @@ var mailmerge = {
 			/* delivermode end */
 			
 			/* progress start */
-			var progress = Cc["@mozilla.org/messenger/progress;1"].createInstance(Ci.nsIMsgProgress);
+			let progress = Cc["@mozilla.org/messenger/progress;1"].createInstance(Ci.nsIMsgProgress);
 			progress.registerListener(gProgressListener);
 			/* progress end */
 			
