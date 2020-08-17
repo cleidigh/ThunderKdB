@@ -19,10 +19,7 @@ function xpunge_doSingle() {
 	var selectedFolders = GetSelectedMsgFolders();
 
 	if (selectedFolders.length == 1) {
-		var selectedFolder = selectedFolders[0];
-		var resource = selectedFolder.QueryInterface(Components.interfaces.nsIRDFResource);
-
-		xpunge_si_selectedFolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
+		var xpunge_si_selectedFolder = selectedFolders[0];
 
 		var confirmAction = xpunge_si_prefBranch.getBoolPref("extensions.xpunge.settings.single.confirm");
 
@@ -35,7 +32,7 @@ function xpunge_doSingle() {
 		}
 
 		// Check if the Trash folder is selected
-		if (selectedFolder.server.type != "imap") {
+		if (xpunge_si_selectedFolder.server.type != "imap") {
 			try {
 				if ((!xpunge_si_selectedFolder.isServer) && (xpunge_si_selectedFolder.prettyName == "Trash")
 						&& (xpunge_si_selectedFolder.parent.URI == xpunge_si_selectedFolder.server.serverURI)) {
@@ -296,7 +293,7 @@ function xpunge_si_proceedWith(selectedFolder) {
 	var dialogTitle = stringBundle.GetStringFromName("xpunge_single_str_confirm_dialog_title");
 
 	var dialogMsg = stringBundle.formatStringFromName("xpunge_single_str_confirm_msg_body", 
-			[ selectedFolder.server.prettyName, empty_trash_str, empty_junk_str, compact_folders_str ], 4);
+			[ selectedFolder.server.prettyName, empty_trash_str, empty_junk_str, compact_folders_str ]);
 
 	// Show a confirmation dialog. For the first argument, supply the parent window. The second
 	// argument is the dialog title and the third argument is the message to display.

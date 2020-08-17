@@ -35,12 +35,23 @@ function notifyNeedsRestart(aRoot) {
     });
   }
   let brand = Services.strings.createBundle("chrome://branding/locale/brand.properties").GetStringFromName("brandShortName");
-  let bundle = Services.strings.createBundle("chrome://exquilla/locale/exquilla.properties");
-  let label = bundle.formatStringFromName("needsRestart", [brand], 1);
-  notificationBox.appendNotification(label, "exquilla_needs_restart",
+  let needsRestart, restartNow;
+  try {
+    // For an in-place upgrade, the existing chrome registration may actually
+    // point to our new locale file. So just in case, let's flush the bundles.
+    Services.strings.flushBundles();
+    let bundle = Services.strings.createBundle("chrome://exquilla/locale/exquilla.properties");
+    needsRestart = bundle.formatStringFromName("needsRestart", [brand], 1);
+    restartNow = bundle.GetStringFromName("restartNow");
+  } catch (ex) {
+    let bundle = Services.strings.createBundle("chrome://messenger/locale/addons.properties");
+    needsRestart = bundle.formatStringFromName("addonPostInstall.restartRequired.message", [brand], 1);
+    restartNow = bundle.GetStringFromName("addonPostInstall.restart.label");
+  }
+  notificationBox.appendNotification(needsRestart, "exquilla_needs_restart",
     "chrome://exquilla/skin/letter-x-icon-16.png",
     notificationBox.PRIORITY_WARNING_LOW, [{
-      label: bundle.GetStringFromName("restartNow"),
+      label: restartNow,
       value: "exquilla_restart_now",
       callback() {
         let cancelQuit = Cc["@mozilla.org/supports-PRBool;1"].createInstance(Ci.nsISupportsPRBool);

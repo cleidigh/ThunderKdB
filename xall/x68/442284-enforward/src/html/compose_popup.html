@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" media="screen" href="compose_popup.css">
+  <script src="../scripts/compose_popup.js" defer></script>
+</head>
+
+<body>
+  <div class="popup-page">
+    <div id="confArea">
+      <div id="entable" class="box-visible">
+        <h2 class="titleline-simple">Note Information</h2>
+        <p>Fill fields based on the selected message: <input type="button" value="Fill fields" id="fillButton">
+        </p>
+
+        <table class="conftable" align="left">
+          <tbody id="noteTable" align="left">
+            <tr>
+              <td>Service</td>
+              <td>
+                <select id="service">
+                  <option id="evernote" value="evernote">Evernote</option>
+                  <option id="onenote" value="onenote">OneNote</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>To</td>
+              <td><input type="text" id="email" size="50"></td>
+            </tr>
+            <tr>
+              <td>Note Title</td>
+              <td><input type="text" id="title" size="50"></td>
+            </tr>
+            <tr>
+              <td>Append</td>
+              <td><input type="checkbox" id="append"></td>
+            </tr>
+            <tr>
+              <td>Notebook</td>
+              <td><input type="text" id="notebook" size="50"></td>
+            </tr>
+            <tr>
+              <td>Reminder</td>
+              <td><input type="checkbox" id="reminder"></td>
+            </tr>
+            <tr>
+              <td>Notification</td>
+              <td><input type="text" id="notification" placeholder="yyyy/mm/dd" size="50"></td>
+            </tr>
+            <tr>
+              <td>Tags</td>
+              <td><input type="text" id="tags" , placeholder="Tag1, Tags, ..." size="50"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br><br>
+      <div id="submitArea" align="left">
+        <p>
+          <input type="button" id="okButton" value="Update">
+          <input type="button" id="cancelButton" value="Cancel">
+        </p>
+      </div>
+    </div>
+  </div>
+</body>

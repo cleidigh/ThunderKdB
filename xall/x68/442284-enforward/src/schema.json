@@ -1,0 +1,259 @@
+[
+  {
+    "namespace": "enForwardApi",
+    "functions": [
+      {
+        "name": "init",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+
+      {
+        "name": "forwardMessages",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "isOnenote",
+            "type": "boolean"
+          },
+          {
+            "name": "isReminder",
+            "type": "boolean"
+          }
+        ]
+      },
+
+      {
+        "name": "abortForward",
+        "type": "function",
+        "async": true,
+        "parameters": [
+        ]
+      },
+
+      {
+        "name": "updateNoteInfo",
+        "type": "function",
+        "description": "Update NoteInfo and resume forwarding",
+        "parameters": [
+          {
+            "name": "noteInfoConf",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "notebook": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "append": {
+                  "type": "boolean"
+                },
+                "reminder": {
+                  "type": "boolean"
+                },
+                "reminderDate": {
+                  "type": "string"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "onenote": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          {
+            "name": "index",
+            "type": "integer"
+          }
+        ]
+      },
+      
+      {
+        "name": "getNoteInfoForSelectedMessages",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "isOnenote",
+            "type": "boolean"
+          }
+        ]
+      },
+      
+
+      {
+        "name": "setIntPref",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "prefstr",
+            "type": "string"
+          },
+          {
+            "name": "valuer",
+            "type": "integer"
+          }
+        ]
+      },
+
+      {
+        "name": "setBoolPref",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "prefstr",
+            "type": "string"
+          },
+          {
+            "name": "valuer",
+            "type": "boolean"
+          }
+        ]
+      },
+
+      {
+        "name": "setCharPref",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "prefstr",
+            "type": "string"
+          },
+          {
+            "name": "valuer",
+            "type": "string"
+          }
+        ]
+      },
+
+      {
+        "name": "setMonitoredPrefs",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "monitoredPrefs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    ],
+
+    "events": [
+      {
+        "name": "onBeforeSend",
+        "type": "function",
+        "description": "Fires before sending messages",
+        "parameters": [
+          {
+            "name": "noteInfoConf",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string"
+                },
+                "notebook": {
+                  "type": "string"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "append": {
+                  "type": "boolean"
+                },
+                "reminder": {
+                  "type": "boolean"
+                },
+                "reminderDate": {
+                  "type": "string"
+                },
+                "canceled": {
+                  "type": "boolean"
+                },
+                "onenote": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          {
+            "name": "index",
+            "type": "integer"
+          }
+        ]
+      },
+
+      {
+        "name": "onSendComplete",
+        "type": "function",
+        "description": "Fires when sending a message is completed",
+        "parameters": [
+          {
+            "name": "succeeded",
+            "type": "boolean"
+          },
+          {
+            "name": "sentNum",
+            "type": "integer"
+          },
+          {
+            "name": "totalNum",
+            "type": "integer"
+          }
+        ]
+      },
+
+      {
+        "name": "onPrefChanged",
+        "type": "function",
+        "description": "Fires when preference is changed in Experiments scope",
+        "parameters": [
+          {
+            "name": "prefstr",
+            "type": "string"
+          },
+          {
+            "name": "preftype",
+            "type": "string"
+          },
+          {
+            "name": "intValue",
+            "type": "integer"
+          },
+          {
+            "name": "boolValue",
+            "type": "boolean"
+          },
+          {
+            "name": "charValue",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+]

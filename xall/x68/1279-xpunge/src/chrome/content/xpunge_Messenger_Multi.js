@@ -1,8 +1,14 @@
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 var xpunge_mu_consoleService = Components.classes['@mozilla.org/consoleservice;1']
 		.getService(Components.interfaces.nsIConsoleService);
 
 var xpunge_mu_prefBranch = Components.classes["@mozilla.org/preferences-service;1"]
 		.getService(Components.interfaces.nsIPrefBranch);
+
+var xpunge_mu_window = Services.wm.getMostRecentWindow("mail:3pane");
+var xpunge_mu_fixIterator = xpunge_mu_window.fixIterator;
+var xpunge_mu_gFolderTreeController = xpunge_mu_window.gFolderTreeController;
 
 var xpunge_mu_TRASH_SEPARATOR_REGEXP = /   /;
 var xpunge_mu_JUNK_SEPARATOR_REGEXP = /   /;
@@ -11,9 +17,23 @@ var xpunge_mu_COMPACT_SEPARATOR_REGEXP = /   /;
 function xpunge_doMultiple() {
 	var msg = "xpunge - xpunge_doMultiple: " + new Date() + "\n\n";
 
-	if (!messenger) {
+	if (!xpunge_mu_window) {
 		xpunge_mu_consoleService.logStringMessage("xpunge - xpunge_doMultiple:" + "\n\n"
-				+ "ERROR - No Messenger Object!" + "\n");
+				+ "ERROR - No window Object!" + "\n");
+
+		return;
+	}
+
+	if (!xpunge_mu_fixIterator) {
+		xpunge_mu_consoleService.logStringMessage("xpunge - xpunge_doMultiple:" + "\n\n"
+				+ "ERROR - No fixIterator Object!" + "\n");
+
+		return;
+	}
+
+	if (!xpunge_mu_gFolderTreeController) {
+		xpunge_mu_consoleService.logStringMessage("xpunge - xpunge_doMultiple:" + "\n\n"
+				+ "ERROR - No gFolderTreeController Object!" + "\n");
 
 		return;
 	}
@@ -80,7 +100,7 @@ function xpunge_mu_processTrash() {
 				if (xpunge_canEmptyTrashMulti(msgfolder)) {
 					returnedMsg = returnedMsg + "Emptying Trash For Account: " + msgfolder.prettyName + "\n";
 
-					gFolderTreeController.emptyTrash(msgfolder);
+					xpunge_mu_gFolderTreeController.emptyTrash(msgfolder);
 				}
 			} catch (e) {
 				xpunge_mu_consoleService.logStringMessage("xpunge - xpunge_doMultiple EXCEPTION 1 ["
@@ -153,12 +173,12 @@ function xpunge_emptyJunkMulti(folder) {
 	// chooses to send emails marked as spam there.
 	var junkFolders = folder.rootFolder.getFoldersWithFlags(Components.interfaces.nsMsgFolderFlags.Junk);
 
-	for (var junkFolder of fixIterator(junkFolders, Components.interfaces.nsIMsgFolder)) {
+	for (var junkFolder of xpunge_mu_fixIterator(junkFolders, Components.interfaces.nsIMsgFolder)) {
 		try {
 			if (junkFolder.getTotalMessages(true) > 0) {
 				returnedMsg = returnedMsg + "Emptying Junk Folder (" + junkFolder.prettyName + ") For Account: "
 						+ folder.prettyName + "\n";
-				gFolderTreeController.emptyJunk(junkFolder);
+				xpunge_mu_gFolderTreeController.emptyJunk(junkFolder);
 			} else {
 				xpunge_mu_consoleService.logStringMessage("xpunge - xpunge_doMultiple: " + new Date() + "\n\n"
 						+ "Avoiding To Empty Already " 
@@ -215,12 +235,12 @@ function xpunge_mu_processCompact() {
 						returnedMsg = returnedMsg + "Compacting All Folders For Account: "
 								+ msgfolder.prettyName + "\n";
 
-						gFolderTreeController.compactAllFoldersForAccount(foldersToCompact);
+						xpunge_mu_gFolderTreeController.compactAllFoldersForAccount(foldersToCompact);
 					} else {
 						returnedMsg = returnedMsg + "Compacting Folder (" + msgfolder.name + ") on "
 								+ msgfolder.server.prettyName + "\n";
 
-						gFolderTreeController.compactFolders(foldersToCompact);
+						xpunge_mu_gFolderTreeController.compactFolders(foldersToCompact);
 					}
 				}
 			} catch (e) {
@@ -367,11 +387,11 @@ function xpunge_mu_proceedWith() {
 	var dialogTitle = stringBundle.GetStringFromName("xpunge_multi_str_confirm_dialog_title");
 
 	var dialogMsg = stringBundle.formatStringFromName("xpunge_multi_str_confirm_msg_body", [ trashSettings,
-			junkSettings, compactSettings ], 3);
+			junkSettings, compactSettings ]);
 
 	// Show a confirmation dialog. For the first argument, supply the parent window. The second
 	// argument is the dialog title and the third argument is the message to display.
-	return promptService.confirm(window, dialogTitle, dialogMsg);
+	return promptService.confirm(xpunge_mu_window, dialogTitle, dialogMsg);
 }
 
 function xpunge_mu_calculateTrashSettings() {

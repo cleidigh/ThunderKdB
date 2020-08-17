@@ -1,13 +1,10 @@
-window.addEventListener("load", xpunge_ti_onWindowLoad, false);
-window.addEventListener("unload", xpunge_ti_onWindowUnLoad, false);
+var xpunge_ti_WindowCounterModule = ChromeUtils.import("chrome://xpunge/content/components/XpungeWindowCounter.js");
 
 var xpunge_ti_consoleService = Components.classes['@mozilla.org/consoleservice;1']
 		.getService(Components.interfaces.nsIConsoleService);
 
 var xpunge_ti_prefBranch = Components.classes["@mozilla.org/preferences-service;1"]
 		.getService(Components.interfaces.nsIPrefBranch);
-
-var xpunge_ti_WindowCounterModule = ChromeUtils.import("chrome://xpunge/content/components/XpungeWindowCounter.js");
 
 var xpunge_ti_listenerIntervalID = null;
 var xpunge_ti_timerIntervalID = null;
@@ -23,17 +20,29 @@ var xpunge_ti_window_counter = -1;
 var xpunge_ti_log_loop_zero = 0;
 var xpunge_ti_log_loop_unchecked = 0;
 
-function xpunge_ti_onWindowLoad() {
+function xpunge_ti_onWindowLoad(activatedWhileWindowOpen) {
+  xpunge_ti_consoleService.logStringMessage("xpunge - xpunge_ti_onWindowLoad - Params Before: " + JSON.stringify({
+    activatedWhileWindowOpen: activatedWhileWindowOpen,
+    xpunge_ti_window_counter: xpunge_ti_window_counter,
+    getWindowCounter: xpunge_ti_WindowCounterModule.XpungeWindowCounter.getWindowCounter(),
+  }));
+
 	var window_counter = xpunge_ti_WindowCounterModule.XpungeWindowCounter.getWindowCounter();
 
 	xpunge_ti_window_counter = window_counter + 1;
+
+	xpunge_ti_WindowCounterModule.XpungeWindowCounter.setWindowCounter(xpunge_ti_window_counter);
+
+  xpunge_ti_consoleService.logStringMessage("xpunge - xpunge_ti_onWindowLoad - Params After: " + JSON.stringify({
+    activatedWhileWindowOpen: activatedWhileWindowOpen,
+    xpunge_ti_window_counter: xpunge_ti_window_counter,
+    getWindowCounter: xpunge_ti_WindowCounterModule.XpungeWindowCounter.getWindowCounter(),
+  }));
 
 	var msg = "xpunge - xpunge_ti_onWindowLoad (on Window #" + xpunge_ti_window_counter + "): " + new Date()
 			+ "\n\n";
 
 	msg = msg + "Opened Window #" + xpunge_ti_window_counter + "\n\n";
-
-	xpunge_ti_WindowCounterModule.XpungeWindowCounter.setWindowCounter(xpunge_ti_window_counter);
 
 	var singleton_pref = xpunge_ti_prefBranch.getBoolPref("extensions.xpunge.timer.singleton");
 
@@ -63,7 +72,13 @@ function xpunge_ti_onWindowLoad() {
 	}
 }
 
-function xpunge_ti_onWindowUnLoad() {
+function xpunge_ti_onWindowUnLoad(deactivatedWhileWindowOpen) {
+  xpunge_ti_consoleService.logStringMessage("xpunge - xpunge_ti_onWindowUnLoad - Params: " + JSON.stringify({
+    deactivatedWhileWindowOpen: deactivatedWhileWindowOpen,
+    xpunge_ti_window_counter: xpunge_ti_window_counter,
+    getWindowCounter: xpunge_ti_WindowCounterModule.XpungeWindowCounter.getWindowCounter(),
+  }));
+
 	var msg = "xpunge - xpunge_ti_onWindowUnLoad (on Window #" + xpunge_ti_window_counter + "): "
 			+ new Date() + "\n\n";
 

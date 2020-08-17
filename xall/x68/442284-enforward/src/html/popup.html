@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
+  <script src="../scripts/popup.js" defer></script>
+</head>
+
+<body>
+  <div class="popup-page">
+    <div id="confArea">
+      <h2 class="titleline-simple" id="serviceName"></h2>
+      <div id="entable" class="box-visible">
+        <table class="conftable" align="center">
+          <thead>
+            <tr>
+              <th>Fwd</th>
+              <th>Title</th>
+              <th>Append</th>
+              <th>Notebook</th>
+              <th>Reminder</th>
+              <th>Notification</th>
+              <th>Tags</th>
+            </tr>
+          </thead>
+          <tbody id="noteTable" align="center">
+          </tbody>
+        </table>
+      </div>
+      <div id="ontable" class="box-collapse">
+        <table class="conftable" align="center">
+          <thead>
+            <tr>
+              <th>Fwd</th>
+              <th>Title</th>
+            </tr>
+          </thead>
+          <tbody id="noteTableOn" align="center">
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <div id="submitArea" align="left">
+        <input type="button" id="fwdButton" value="Forward">
+        <input type="button" id="cancelButton" value="Cancel">
+      </div>
+    </div>
+    <div id="cancelArea" class="box-none">
+      <p>Are you sure you want to cancel forwarding?</p>
+      <br>
+      <div id="submitArea2" align="left">
+        <input type="button" id="yesCancelButton" value="Yes">
+        <input type="button" id="noCancelButton" value="No">
+      </div>
+    </div>
+  </div>
+</body>

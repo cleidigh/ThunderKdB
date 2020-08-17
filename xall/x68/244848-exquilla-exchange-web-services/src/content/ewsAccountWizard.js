@@ -120,6 +120,20 @@ exquilla.AW = (function exquillaAW()
     return true;
   } catch (e) {log.warn(re(e));}}
 
+  function ewsOnAccountWizardUnload() {
+    let mail3Pane = Services.wm.getMostRecentWindow("mail:3pane");
+    if (!mail3Pane) {
+      return;
+    }
+    // Nothing to update since folder pane is already visible or no account has been created.
+    if (mail3Pane.gFolderDisplay.folderPaneVisible || MailServices.accounts.accounts.length == 0) {
+      return;
+    }
+
+    mail3Pane.MsgToggleFolderPane();
+    mail3Pane.gFolderDisplay.folderPaneVisible = true;
+  }
+
   var ewsData =
   {
     'incomingServer':
@@ -880,6 +894,7 @@ exquilla.AW = (function exquillaAW()
   pub.overrideAccountWizard = overrideAccountWizard;
   pub.autodiscover = autodiscover;
   pub.onAccountWizardLoad = ewsOnAccountWizardLoad;
+  pub.onAccountWizardUnload = ewsOnAccountWizardUnload;
   pub.identityPageValidate = ewsIdentityPageValidate;
   pub.onUseAutodiscovery = ewsOnUseAutodiscovery;
   pub.donePageInit = ewsDonePageInit;

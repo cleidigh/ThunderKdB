@@ -1,25 +1,37 @@
 {
   "manifest_version": 2,
-  "name": "__MSG_extName__",
-  "description": "__MSG_extDesc__",
-  "version": "3.8",
-  "author": "Dillinger",
-  "default_locale": "en-US",
+  "name": "Phoenity Buttons",
+  "description": "Adds Config Editor, Developer Tools, Preferences, Search Messages and Restart buttons",
   "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-buttons/",
-  "legacy" : {
-    "options" : {
-      "page" : "chrome://phoenityButtons/content/aboutButtons.xul",
-      "open_in_tab" : false
+  "version": "4.0b2",
+  "experiment_apis": {
+    "phoenityButtonsApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "phoenityButtonsApi"
+          ]
+        ],
+        "script": "phoenityButtonsApi.js"
+      }
     }
+  },
+  "background": {
+    "scripts": [
+      "phoenityButtons.js"
+    ]
   },
   "applications": {
     "gecko": {
       "id": "buttons@dillinger",
-      "strict_min_version": "68.0",
-      "strict_max_version": "72.*"
+      "strict_min_version": "78.0"
     }
   },
   "icons": {
-    "32": "skin/icons/phoenityButtons.png"
+    "32": "icons/phoenityButtons.png"
   }
 }

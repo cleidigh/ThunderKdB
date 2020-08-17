@@ -212,7 +212,7 @@ function xpunge_timer_SaveOtherOptions() {
 
 		var eltType = element.localName;
 
-		if (eltType == "textbox") {
+		if (eltType == "input") {
 			prefBranch.setCharPref(element.getAttribute("prefstring"), element.value);
 		} else if (eltType == "checkbox") {
 			prefBranch.setBoolPref(element.getAttribute("prefstring"), element.checked);
@@ -425,7 +425,7 @@ function xpunge_timer_constructEmptiedAccountsTreeView() {
     var index = 0;
 
     for (var i = 0; i < allServers.length; i++) {
-        var currentServer = allServers.queryElementAt(i, Components.interfaces.nsIMsgIncomingServer);
+        var currentServer = allServers[i];
 
         if ("nntp" === currentServer.type) {
             continue;
@@ -706,7 +706,7 @@ function xpunge_timer_doAddCompactAllAccounts() {
     var allServers = accountManager.allServers;
 
     for (var i = 0; i < allServers.length; ++i) {
-        var currentServer = allServers.queryElementAt(i, Components.interfaces.nsIMsgIncomingServer);
+        var currentServer = allServers[i];
 
         uri = currentServer.serverURI;
 
@@ -1112,13 +1112,18 @@ function xpunge_timer_isValidCompactAccountEntry(index, uri, caller) {
 	var msgfolder = xpunge_GetMsgFolderFromUri(uri, true);
 
 	if (!msgfolder) {
-		if (!msgfolder.isServer) {
-			xpunge_timer_consoleService.logStringMessage("xpunge - xpunge_timer_isValidCompactAccountEntry("
-					+ caller + "):" + "\n\n" + "WARNING - Entry Is Not A Server Or A Folder: " + uri + "\n");
+    xpunge_timer_consoleService.logStringMessage("xpunge - xpunge_timer_isValidCompactAccountEntry("
+        + caller + "):" + "\n\n" + "WARNING - Entry Is Not A Folder: " + uri + "\n");
 
-			return false;
-		}
+    return false;
 	}
+
+  if (!msgfolder.isServer) {
+    xpunge_timer_consoleService.logStringMessage("xpunge - xpunge_timer_isValidCompactAccountEntry("
+        + caller + "):" + "\n\n" + "WARNING - Entry Is Not A Server: " + uri + "\n");
+
+    return false;
+  }
 
 	if (msgfolder.name === "") {
 		xpunge_timer_consoleService.logStringMessage("xpunge - xpunge_timer_isValidCompactAccountEntry("

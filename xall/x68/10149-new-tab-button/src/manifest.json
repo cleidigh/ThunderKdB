@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "2.0.4",
+  "version": "2.0.6",
   "author": "H.Ogi",
   "homepage_url": "__MSG_extensionHomepage_url__",
   "experiment_apis": {
@@ -21,22 +21,23 @@
       }
     }
   },
-  
+
   "browser_action": {
     "default_title": "__MSG_extensionDefault_title__",
     "default_icon": "images/tab24.gif"
   },
-  
+
   "message_display_action": {
     "default_title": "__MSG_extensionDefault_title__",
     "default_icon": "images/tab24.gif"
   },
-  
+
   "permissions": [
       "activeTab",
       "tabs",
-      "storage"
-    ],
+      "storage",
+      "menus"
+  ],
 
   "background": {
     "scripts": [
@@ -48,13 +49,13 @@
     "page": "html/options.html",
     "open_in_tab": false
   },
-  
+
   "icons": {
     "24": "images/tab24.gif"
   },
-  
+
   "default_locale": "en",
-  
+
   "applications": {
     "gecko": {
       "id": "{3AB03506-4329-483F-BA03-EA5493232260}",

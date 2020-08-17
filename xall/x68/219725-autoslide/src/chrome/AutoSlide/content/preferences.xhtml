@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet type="text/css" href="chrome://communicator/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://AutoSlide/content/skin/preferences.css"?>
+
+<!DOCTYPE dialog [
+<!ENTITY % CompactHeaderDTD SYSTEM "chrome://AutoSlide/locale/preferences.dtd">
+%CompactHeaderDTD;
+<!ENTITY % msgHdrDTD SYSTEM "chrome://messenger/locale/msgHdrViewOverlay.dtd">
+%msgHdrDTD;
+<!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd">
+%messengerDTD;
+]>
+
+<dialog id="ASPreferences"
+        title="&dialog.title;"
+        windowtype="ext:options"
+        buttons="accept"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+>
+
+  <vbox id="cohePreferences-pane">
+    <label id="maxthreadpanepercentagelabel"
+           value="&numberbox.maxthreadpanepercentage;"
+           control="maxthreadpanepercentage"/>
+    <html:input id="maxthreadpanepercentage"
+                type="number"
+                min="1"
+                max="100"
+                preference="extensions.AutoSlide.maxThreadPanePercentage"/>
+  </vbox>
+
+  <script
+     src="chrome://global/content/preferencesBindings.js"
+     type="application/javascript"/>
+  <script
+     src="chrome://AutoSlide/content/preferences.js"
+     type="application/javascript"/>
+
+</dialog>

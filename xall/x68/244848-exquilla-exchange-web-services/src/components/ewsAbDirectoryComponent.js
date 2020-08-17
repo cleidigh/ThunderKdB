@@ -325,6 +325,7 @@ EwsAbDirectory.prototype = {
     this.updatePropertiesFromCard(aCard, properties, false);
     let newCard = Cc['@mozilla.org/addressbook/cardproperty;1']
                     .createInstance(Ci.nsIAbCard);
+    newCard.directoryId = this.uuid;
     let newNativeContact = this.mailbox.createItem(null, "IPM.Contact", this.nativeFolder);
     newNativeContact.properties = properties;
     this.updateCardFromItem(newNativeContact, newCard);
@@ -417,6 +418,7 @@ EwsAbDirectory.prototype = {
   addCardFromItem: function _addCardFromItem(aItem)
   {
     let card = Cc['@mozilla.org/addressbook/cardproperty;1'].createInstance(Ci.nsIAbCard);
+    card.directoryId = this.uuid;
     this.updateCardFromItem(aItem, card);
     return card;
   },
@@ -1027,6 +1029,7 @@ EwsAbDirectory.prototype = {
           }
         } catch (e) {continue;}
         let card = Cc['@mozilla.org/addressbook/cardproperty;1'].createInstance(Ci.nsIAbCard);
+        card.directoryId = this.uuid;
 
         card.displayName = itemMailbox.getAString('Name');
         card.primaryEmail = itemMailbox.getAString('EmailAddress');

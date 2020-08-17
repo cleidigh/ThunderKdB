@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>EnForward Options</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="options.css">
+  <script src="../modules/utils.jsm" defer></script>
+  <script src="../scripts/options.js" defer></script>
+</head>
+
+<body class="option-page">
+  <form name="enf_form">
+    <!-- Common -->
+    <h2 class="titleline-simple">Common</h2>
+    <div class="indent">
+      <p>
+        <label>Toolbar command:</label>
+      </p>
+      <div class="indent2">
+        <p>
+          <input type="radio" name="default_service" id="default_service_en" value="0"><label for="default_service_en">Evernote</label>
+          <input type="radio" name="default_service" id="default_service_en_rem" value="1"><label for="default_service_en">Evernote with Reminder</label>
+          <input type="radio" name="default_service" id="default_service_on" value="2"><label for="default_service_on">Other Note Service</label>
+        </p>
+        <p>Evernote with Reminder always shows confirmation popup regardless the "Confirm before forwarding notes" option in order to ask you notification date.</p>
+      </div>
+      <p>Preview mode:</p>
+      <div class="indent2">
+        <p>
+          <input type="checkbox" id="preview_mode"><label for="preview_mode">Enable Preview mode</label>
+        </p>
+        <p>
+          <label>In Preview mode, a note is saved in the Unsent folder. Send it manually by Send Unsent functionality of Thunderbird after you check the content.</label>
+        </p>
+
+      </div>
+    </div>
+    <!-- Evernote -->
+    <h2 class="titleline-simple">Evernote</h2>
+    <h3>Forwarding</h3>
+    <div class="indent">
+      <p>
+        <label>Evernote Email Address: </label>
+        <input size="30" type="text" id="email">
+      </p>
+      <p>
+        <label>Mode: </label>
+        <input type="radio" name="forward_mode" id="forward_mode0" value="0">
+        <label for="forward_mode0">Attachment</label>
+        <input type="radio" name="forward_mode" id="forward_mode1" value="1">
+        <label for="forward_mode1">Inline</label>
+      </p>
+      <div class="indent2">
+        <p>
+          <label>Attachment mode is recommended. Use Inline mode if your server does not allow .eml and .html attachments. Please note Inline mode has the following limitations:</label>
+        </p>
+        <ul>
+          <li>Memo settings are ignored</li>
+          <li>Always forward whole message</li>
+        </ul>
+      </div>
+      <p>
+        <label>Identity: </label>
+        <select name="forward_id" id="forward_id">
+          <option value="auto">Auto</option>
+        </select>
+      </p>
+      <p>
+        <label>Interval between sending notes: </label>
+        <input type="number" min="0" style="width: 4em" id="send_interval">
+        <label> seconds</label>
+      </p>
+      <p>
+        <input type="checkbox" id="save_sent">
+        <label for="save_sent">Save note in sent folder</label>
+      </p>
+      <p>
+        <input type="checkbox" id="mark_as_forwarded">
+        <label for="mark_as_forwarded">Mark original message as forwarded</label>
+      </p>
+      <p>
+        <input type="checkbox" id="del_org_msg">
+        <label for="del_org_msg">Move original message into Trash</label>
+      </p>
+      <p>
+        <input type="checkbox" id="show_conf_dialog">
+        <label for="show_conf_dialog">Confirm before forwarding notes</label>
+      </p>
+      <p>
+        <label>Add following tags to the original message:</label>
+      </p>
+      <div class="tagselect indent2" id="post_tags">
+      </div>
+      <p>
+        <label>Remove following tags from the original message:</label>
+      </p>
+      <div class="tagselect indent2" id="post_tags_rm">
+      </div>
+
+    </div>
+    <h3>Limitations</h3>
+    <div class="indent">
+      <p>
+        <label>Account: </label>
+        <select name="account_type" id="account_type">
+          <option value="premium">Premium/Business</option>
+          <option value="plus">Plus</option>
+        </select>
+      </p>
+      <div class="indent2">
+        <p>
+          <label>Max note size: </label><label id="note_size_info"></label><label> MB</label>
+        </p>
+        <p>
+          <label>Sent today: </label><label id="sent_today_info"></label><label> notes</label>
+        </p>
+      </div>
+      <p>
+        <input type="checkbox" id="alert_limit">
+        <label for="alert_limit">Enable limitation check</label>
+      </p>
+      <ul>
+        <li>The sent today only counts messages forwarded by EnForward. Use it as information.</li>
+        <li>The count will be reset at 0:00 (California local time)</li>
+      </ul>
+    </div>
+    <h3>Note</h3>
+    <div class="indent">
+      <p>
+        <label>Note title: </label>
+        <input size="30" type="text" id="title">
+      </p>
+      <div class="indent2">
+        <p>
+          <input type="checkbox" id="rm_re_fwd">
+          <label for="rm_re_fwd">Remove Re:, Fwd: and Fw: in front of the subject</label>
+        </p>
+        <p>
+          <input type="checkbox" id="rm_mltag">
+          <label for="rm_mltag">Remove [...] and (...) in front of the subject</label>
+        </p>
+      </div>
+      <p>
+        <label>Notebook: </label>
+        <input size="30" type="text" alue="%S" id="notebook">
+      </p>
+      <p>
+        <label>Tags: </label>
+        <input size="30" type="text" size="30" id="tags" placeholder="Tag1, Tag2, ...">
+      </p>
+      <div class="indent2">
+        <p>
+          <input type="checkbox" id="add_msg_tags">
+          <label for="add_msg_tags">Add message tags to a note. Following tags are excluded:</label>
+        </p>
+      </div>
+      <div class="tagselect indent3" id="ignored_tags">
+      </div>
+      <p>
+        <label>NOTE: @, # and ! in title, notebook and tags are replaced by _.</label>
+      </p>
+    </div>
+
+    <h3>Memo</h3>
+    <div class="indent">
+      <p>
+        <input type="checkbox" id="add_header">
+        <label for="add_header">Add header text</label>
+      </p>
+      <div class="indent2">
+        <p>
+          <input type="checkbox" id="header_use_html">
+          <label for="header_use_html">Use HTML tags</label>
+        </p>
+        <textarea id="header_text" rows="5" cols="40"></textarea>
+      </div>
+      <p>
+        <input type="checkbox" id="add_footer">
+        <label for="add_footer">Add footer text</label>
+      </p>
+      <div class="indent2">
+        <p>
+          <input type="checkbox" id="footer_use_html">
+          <label for="footer_use_html">Use HTML tags</label>
+        </p>
+        <textarea id="footer_text" rows="5" cols="40"></textarea>
+      </div>
+      <p>
+        <input type="checkbox" id="mailto_link">
+        <label for="mailto_link">Provide mailto link to email address</label>
+      </p>
+    </div>
+
+    <h3>Attachments</h3>
+    <div class="indent">
+      <p>
+        <label>When a message has attachments:</label>
+      </p>
+      <div class="indent2">
+        <p>
+          <input name="attachments_forward_mode" type="radio" id="attachments_forward_mode0" value="0"><label for="attachments_forward_mode0">Forward all</label>
+        </p>
+        <p>
+          <input name="attachments_forward_mode" type="radio" id="attachments_forward_mode1" value="1"><label for="attachments_forward_mode1">Remove all</label>
+        </p>
+        <!-- Ask me option is disabled -->
+        <p class="box-collapse">
+          <input name="attachments_forward_mode" type="radio" id="attachments_forward_mode2" value="2"><label for="attachments_forward_mode2">Ask me</label>
+        </p>
+        <p>
+          <input name="attachments_forward_mode" type="radio" id="attachments_forward_mode3" value="3"><label for="attachments_forward_mode3">Remove ones matched with at least one of the following filter conditions</label>
+        </p>
+        <p>
+          <input name="attachments_forward_mode" type="radio" id="attachments_forward_mode4" value="4"><label for="attachments_forward_mode4">Remove ones matched with all of the following filter conditions</label>
+        </p>
+      </div>
+      <p>Filter conditions:</p>
+      <div class="indent2">
+        <p>
+          <label>Extensions: </label>
+          <input type="text" id="attachments_ext_filter" size="30" placeholder="exe, avi, ...">
+        </p>
+        <p>
+          <label>Size: </label>
+          <input type="number" id="attachments_size_filter" min="0" style="width: 4em">
+          <label>MB (0 MB means disabled)</label>
+        </p>
+        <p>
+          <label>NOTE: Detached attachments are not forwarded.</label>
+        </p>
+      </div>
+    </div>
+
+    <h2 class="titleline-simple">Other Note Service</h2>
+    <h3>Forwarding</h3>
+    <div class="indent">
+      <p>
+        <label>Service name: </label>
+        <input type="text" id="onenote_service_name" size="30">
+      </p>
+      <p>
+        <label>Address: </label>
+        <input size="30" type="text" id="onenote_email">
+      </p>
+      <p>
+        <label>Identity: </label>
+        <select name="onenote_forward_id" id="onenote_forward_id">
+          <option value="">(Choose identity)</option>
+        </select>
+      </p>
+      <p>
+        <label>Interval between sending notes: </label>
+        <input type="number" min="0" style="width: 4em" id="onenote_send_interval">
+        <label> seconds</label>
+      </p>
+      <p>
+        <input type="checkbox" id="onenote_save_sent">
+        <label for="onenote_save_sent">Save note in sent folder</label>
+      </p>
+      <p>
+        <input type="checkbox" id="onenote_mark_as_forwarded">
+        <label for="onenote_mark_as_forwarded">Mark original message as forwarded</label>
+      </p>
+      <p>
+        <input type="checkbox" id="onenote_del_org_msg">
+        <label for="onenote_del_org_msg">Move original message into Trash</label>
+      </p>
+      <p>
+        <input type="checkbox" id="onenote_show_conf_dialog">
+        <label for="onenote_show_conf_dialog">Confirm before forwarding notes</label>
+      </p>
+      <p>
+        <label>Add following tags to the original message:</label>
+      </p>
+      <div class="tagselect indent2" id="onenote_post_tags">
+      </div>
+      <p>
+        <label>Remove following tags from the original message:</label>
+      </p>
+      <div class="tagselect indent2" id="onenote_post_tags_rm">
+      </div>
+    </div>
+
+    <h3>Note</h3>
+    <div class="indent">
+      <p>
+        <label>Note title: </label>
+        <input size="30" type="text" id="onenote_title">
+      </p>
+      <div class="indent2">
+        <p>
+          <input type="checkbox" id="onenote_rm_re_fwd">
+          <label for="onenote_rm_re_fwd">Remove Re:, Fwd: and Fw: in front of the subject</label>
+        </p>
+        <p>
+          <input type="checkbox" id="onenote_rm_mltag">
+          <label for="onenote_rm_mltag">Remove [...] and (...) in front of the subject</label>
+        </p>
+      </div>
+    </div>
+
+    <h3>Attachments</h3>
+    <div class="indent">
+      <p>
+        <label>When a message has attachments:</label>
+      </p>
+      <div class="indent2">
+        <p>
+          <input name="onenote_attachments_forward_mode" type="radio" id="onenote_attachments_forward_mode0" value="0"><label for="onenote_attachments_forward_mode0">Forward all</label>
+        </p>
+        <p>
+          <input name="onenote_attachments_forward_mode" type="radio" id="onenote_attachments_forward_mode1" value="1"><label for="onenote_attachments_forward_mode1">Remove all</label>
+        </p>
+        <!-- Ask me option is disabled -->
+        <p class="box-collapse">
+          <input name="onenote_attachments_forward_mode" type="radio" id="onenote_attachments_forward_mode2" value="2"><label for="onenote_attachments_forward_mode2">Ask me</label>
+        </p>
+        <p>
+          <input name="onenote_attachments_forward_mode" type="radio" id="onenote_attachments_forward_mode3" value="3"><label for="onenote_attachments_forward_mode3">Remove ones matched with at least one of the following filter conditions</label>
+        </p>
+        <p>
+          <input name="onenote_attachments_forward_mode" type="radio" id="onenote_attachments_forward_mode4" value="4"><label for="onenote_attachments_forward_mode4">Remove ones matched with all of the following filter conditions</label>
+        </p>
+      </div>
+      <p>Filter conditions:</p>
+      <div class="indent2">
+        <p>
+          <label>Extensions: </label>
+          <input type="text" id="onenote_attachments_ext_filter" size="30" placeholder="exe, avi, ...">
+        </p>
+        <p>
+          <label>Size: </label>
+          <input type="number" id="onenote_attachments_size_filter" min="0" style="width: 4em">
+          <label>MB (0 MB means disabled</label>
+        </p>
+        <p>
+          <label>NOTE: Detached attachments are not forwarded.</label>
+        </p>
+      </div>
+    </div>
+    <h2 class="titleline-simple">Tips</h2>
+    <h3>Meta characters</h3>
+    <div class="indent">
+      <p>
+        <label>Following meta characters are available for note title, notebook, tags and memo.</label>
+      </p>
+      <table class="conftable">
+        <thead align="left">
+          <tr>
+            <th>Character</th>
+            <th>Description</th>
+            <th>Character</th>
+            <th>Description</th>
+            <th>Character</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>%S</td>
+            <td>Subject</td>
+            <td>%F</td>
+            <td>Folder name</td>
+            <td>%N</td>
+            <td>Account name</td>
+          </tr>
+          <tr>
+            <td>%A</td>
+            <td>Sender</td>
+            <td>%T</td>
+            <td>To</td>
+            <td>%C</td>
+            <td>Cc</td>
+          </tr>
+          <tr>
+            <td>%a</td>
+            <td>Sender name</td>
+            <td>%t</td>
+            <td>To names</td>
+            <td>%c</td>
+            <td>Cc names</td>
+          </tr>
+          <tr>
+            <td>%Y</td>
+            <td>Sent year</td>
+            <td>%M</td>
+            <td>Sent month</td>
+            <td>%D</td>
+            <td>Sent date</td>
+          </tr>
+          <tr>
+            <td>%h</td>
+            <td>Sent hours</td>
+            <td>%m</td>
+            <td>Sent minutes</td>
+            <td>%s</td>
+            <td>Sent seconds</td>
+          </tr>
+          <tr>
+            <td>%R</td>
+            <td>Removed attachments</td>
+            <td>%r</td>
+            <td>Forwarded attachments</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</body></html>

@@ -2,16 +2,107 @@
   "manifest_version": 2,
   "name": "EnForward",
   "description": "Forward email to Evernote and OneNote",
-  "version": "0.5.1",
+  "version": "2.0.1",
   "author": "H.Ogi",
   "homepage_url": "http://hogi.sakura.ne.jp/en/",
-  "legacy": {
-    "type": "xul",
-    "options" : {
-      "page" : "chrome://enforward/content/settings.xul",
-      "open_in_tab" : false
+
+  "experiment_apis": {
+    "enForwardApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+            "addon_parent"
+          ],
+        "paths": [
+            [
+              "enForwardApi"
+            ]
+          ],
+        "script": "scripts/implementation.js"
+      }
     }
   },
+
+  "browser_action": {
+    "default_title": "EnForward",
+    "default_icon": "images/forward-black.svg",
+    "theme_icons": [
+      {
+        "dark": "images/forward-black.svg",
+        "light": "images/forward-white.svg",
+        "size": 16
+      },
+      {
+        "dark": "images/forward-black.svg",
+        "light": "images/forward-white.svg",
+        "size": 32
+      }
+    ]
+  },
+  
+  "compose_action": {
+    "default_title": "EnForward",
+    "default_popup": "html/compose_popup.html",
+    "default_icon": "images/note-black.svg",
+    "theme_icons": [
+      {
+        "dark": "images/note-black.svg",
+        "light": "images/note-white.svg",
+        "size": 16
+      },
+      {
+        "dark": "images/note-black.svg",
+        "light": "images/note-white.svg",
+        "size": 32
+      }
+    ]
+  },
+
+  "commands": {
+    "cmd_evernote": {
+      "suggested_key": {
+      },
+      "description": "Forward to Evernote"
+    },
+    
+    "cmd_evernote_rem": {
+      "suggested_key": {
+      },
+      "description": "Forward to Evernote with reminder"
+    },
+
+    "cmd_onenote": {
+      "suggested_key": {
+      },
+      "description": "Forward to Other note service"
+    }
+  },
+
+  "permissions": [
+    "messagesRead",
+    "tabs",
+    "storage",
+    "accountsRead",
+    "menus",
+    "compose"
+  ],
+
+  "background": {
+    "scripts": [
+      "modules/utils.jsm",
+      "scripts/background.js"
+    ]
+  },
+
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
+  },
+  
+  "icons": {
+    "32": "images/forward-black.svg"
+  },
+  
   "applications": {
     "gecko": {
       "id": "{C83FDE78-4980-4a97-B91A-47A4B98761A7}",
