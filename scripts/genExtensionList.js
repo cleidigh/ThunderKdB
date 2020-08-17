@@ -455,8 +455,9 @@ function createExtMDTableRow(extJson) {
 			cBadge_webexp_setup.bLink = manifestPath;
 			cBadge_webexp_setup.bTooltip = "Click for manifest.json&#010;SchemaNames:&#010;";
 
-			if (extJson.xpilib.ext_comp.webexpSchemaNames.includes("WindowsListener")) {
-				cBadge_webexp_setup.bLeftText = "WinLAPI"
+			cBadge_webexp_setup.bLeftText = "WebExp";
+			if (extJson.xpilib.ext_comp.webexpSchemaNames.includes("WindowListener")) {
+				cBadge_webexp_setup.bLeftText = "WindowListener API"
 			}
 
 			var	schema = extJson.xpilib.ext_comp.webexpSchemaNames;
