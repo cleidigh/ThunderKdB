@@ -91,6 +91,26 @@ label[disabled="true"] {
 /* DeepDark custom CSS - end */
 }
 
+#PreviousButton,
+#NextButton {
+/* DeepDark custom CSS */
+  -moz-context-properties: fill;
+  fill: currentColor !important;
+/* DeepDark custom CSS - end */
+}
+
+#PreviousButton {
+/* DeepDark custom CSS */
+  list-style-image: url('chrome://DeepdarkOverlay/skin/arrow/arrow-lft.svg') !important;
+/* DeepDark custom CSS - end */
+}
+
+#NextButton {
+/* DeepDark custom CSS */
+  list-style-image: url('chrome://DeepdarkOverlay/skin/arrow/arrow-rit.svg') !important;
+/* DeepDark custom CSS - end */
+}
+
 #quotaPercentageBar {
 /* DeepDark custom CSS */
   -moz-appearance: none !important;

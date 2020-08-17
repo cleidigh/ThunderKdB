@@ -7,27 +7,32 @@
                     }
              },
 	"name": "OppositeTodaySubpane",
-	"version": "7.7",
+	"version": "8.6",
 	"description": "When today pane is hidden for wide view, it is to remain Today subpane on folder pane and calendar mini-month or subscription pane.",
              "icons": {
-               "32": "icons/oppositetodaysubpane32.png"
+               "32": "ots32.png"
                  },
              "browser_action": {
-                 "default_icon": "icons/oppositetodaysubpane32.png",
+                 "default_icon": "ots32.png",
                  "default_title": "OppositeTodaySubpane",
                 "default_popup": "popup.html"
                },
-             "content_scripts": [
-                 {
-                 "matches": ["https://www.thunderbird.net/en-US/"],
-                 "js": ["form1.js", "form2.js", "form3.js", "form4.js"]
-                  }
-              ],
              "permissions": [
-  "webRequest", "webNavigation", "tabs", "nativeMessaging", "activeTab", "tabHide", "*://developer.mozilla.org/*", "<all_urls>", 
-"https://www.thunderbird.net/*", "https://start/thunderbird.net/*"
               ],
-              "background": {
-              "scripts": ["background1.js", "background2.js", "background3.js", "background4.js"]
-              }
+ "experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "myapi"
+          ]
+        ],
+       "script": "implementation.js"
+      }
+  }
+  }
 }

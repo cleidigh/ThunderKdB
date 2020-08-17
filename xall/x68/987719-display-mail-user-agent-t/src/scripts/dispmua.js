@@ -1,3 +1,5 @@
+const iId = "dispMUAicon";
+
 browser.messageDisplayAction.onClicked.addListener((tabId) => {
   if (dispMUA.Info["ICON"] != "empty.png") {
    //promiseを返すけどthenで処理すると2回に1回エラーになるので普通に
@@ -48,17 +50,24 @@ browser.messageDisplay.onMessageDisplayed.addListener((tabId, message) => {
     browser.messageDisplayAction.setTitle({title: str.length > len ? str.substr(0, len) + '...' : str});
     
     browser.storage.local.get().then((s) => {
-      const id = "dispMUAicon";
       if (s.showIcon) {
         browser.messageDisplayAction.setTitle({title: " "});
         let target = s.iconPosition ? "expandedHeaders2" : "otherActionsBox";
         //browser.dispmuaApi.remove(id);
-        browser.dispmuaApi.insertBefore(browser.extension.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], id, target);
-        browser.dispmuaApi.move(id, target);
+        browser.dispmuaApi.insertBefore(browser.extension.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, target);
+        browser.dispmuaApi.move(iId, target);
       }
-      else browser.dispmuaApi.remove(id);
+      else browser.dispmuaApi.remove(iId);
     });
   });
+});
+
+browser.windows.onCreated.addListener((window) => {
+  if (window.type == "messageDisplay") {
+    //browser.dispmuaApi.create(iId, "otherActionsBox");
+    //browser.dispmuaApi.insertBefore(browser.extension.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, "otherActionsBox");
+    console.log("new messageDisplay created.")
+  }
 });
 
 var port;
@@ -101,7 +110,8 @@ var joinObj = function(obj, fDelimiter, sDelimiter) {
 };
 
 function disconnected(p) {
-  browser.dispmuaApi.remove("dispMUAicon");
+  //browser.dispmuaApi.remove("dispMUAicon");
+  browser.dispmuaApi.remove(iId);
 }
 // onDisconnect not implemented...
-browser.runtime.onDisconnect.addListener(disconnected);
+//browser.runtime.onDisconnect.addListener(disconnected);

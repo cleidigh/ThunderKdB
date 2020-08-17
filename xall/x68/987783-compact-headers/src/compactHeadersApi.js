@@ -5,18 +5,50 @@ var xulAppInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Co
 
 var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
-    context.callOnClose(this);
     return {
       compactHeadersApi: {
         async compactHeaders() {
           ExtensionSupport.registerWindowListener("compactHeadersListener", {
             chromeURLs: [
               "chrome://messenger/content/messenger.xhtml",
-              "chrome://messenger/content/messenger.xul",
+              "chrome://messenger/content/messageWindow.xhtml",
             ],
             onLoadWindow(window) {
-              let targetHeaderViewDeck = window.document.getElementById("msgHeaderViewDeck");
-              if (targetHeaderViewDeck) {
+              let msgHeaderViewDeck = window.document.getElementById("msgHeaderViewDeck");
+              if (msgHeaderViewDeck) {
+
+                let expandedHeadersBox = window.document.getElementById("expandedHeadersBox");
+                let expandedHeadersTopBox = window.document.getElementById("expandedHeadersTopBox");
+                let expandedHeadersBottomBox = window.document.getElementById("expandedHeadersBottomBox");
+                let headerViewToolbox = window.document.getElementById("header-view-toolbox");
+                let headerViewToolbar = window.document.getElementById("header-view-toolbar");
+                let expandedBoxSpacer = window.document.getElementById("expandedBoxSpacer");
+                let expandedHeaders2 = window.document.getElementById("expandedHeaders2");
+                let otherActionsBox = window.document.getElementById("otherActionsBox");
+
+                let compactHeadersPopup = window.document.createXULElement("menupopup");
+                compactHeadersPopup.id = "compactHeadersPopup";
+
+                let compactHeadersSingleLine = window.document.createXULElement("menuitem");
+                compactHeadersSingleLine.id = "compactHeadersSingleLine";
+                compactHeadersSingleLine.setAttribute("type", "checkbox");
+                compactHeadersSingleLine.setAttribute("label", "Single Line Headers");
+                compactHeadersSingleLine.addEventListener("command", () => setLines());
+
+                let compactHeadersViewAll = window.document.createXULElement("menuitem");
+                compactHeadersViewAll.id = "compactHeadersViewAll";
+                compactHeadersViewAll.setAttribute("type", "radio");
+                compactHeadersViewAll.setAttribute("label", "View All Headers");
+                compactHeadersViewAll.setAttribute("name", "compactHeaderViewGroup");
+                compactHeadersViewAll.addEventListener("command", () => markHeaders());
+
+                let compactHeadersViewNormal = window.document.createXULElement("menuitem");
+                compactHeadersViewNormal.id = "compactHeadersViewNormal";
+                compactHeadersViewNormal.setAttribute("type", "radio");
+                compactHeadersViewNormal.setAttribute("label", "View Normal Headers");
+                compactHeadersViewNormal.setAttribute("name", "compactHeaderViewGroup");
+                compactHeadersViewNormal.addEventListener("command", () => markHeaders());
+
                 let compactHeadersBox = window.document.createXULElement("vbox");
                 let compactHeadersButton = window.document.createXULElement("button");
                 compactHeadersBox.id = "compactHeadersBox";
@@ -24,51 +56,142 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                 compactHeadersButton.id = "compactHeadersButton";
                 compactHeadersButton.setAttribute("accesskey", "D");
                 compactHeadersButton.setAttribute("style","-moz-user-focus: ignore;\
-                  border: 4px solid transparent; background: transparent; margin: 2px 0px;\
+                  border: 4px solid transparent; background: transparent; margin: 0px;\
                   box-shadow: none; min-width: 0px; min-height: 0px; padding: 0px !important;\
                   -moz-appearance: none; color: currentColor; -moz-context-properties: fill; fill: currentColor;");
-                if (xulAppInfo.version >= "71.0") {
-                  var myExpandedHeaders = window.document.getElementById("expandedHeaders2");
-                } else {
-                  var myExpandedHeaders = window.document.getElementById("expandedHeader2Rows");
-                }
-                if (myExpandedHeaders.getAttribute("compact") == "compact") {
-                  compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
-                  compactHeadersButton.setAttribute("tooltiptext", "Show Details");
-                  let myExpandedRows = myExpandedHeaders.children;
-                  var i;
-                  for (i = 1; i < myExpandedRows.length; i++) {
-                    myExpandedRows[i].setAttribute("persist", "style");
-                    myExpandedRows[i].setAttribute("style", "display: none;");
-                  }
-                } else {
-                  compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
-                  compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
-                }
+
+                let compactHeadersSeparator = window.document.createXULElement("menuseparator");
+
+                let msgHeaderView = window.document.getElementById("msgHeaderView");
+                msgHeaderView.setAttribute("context", "compactHeadersPopup");
+                headerViewToolbar.setAttribute("style", "margin: 4px 0 0;");
+
+                checkHeaders();
+                checkLines();
+
+                compactHeadersPopup.append(compactHeadersSingleLine);
+                compactHeadersPopup.append(compactHeadersSeparator);
+                compactHeadersPopup.append(compactHeadersViewAll);
+                compactHeadersPopup.append(compactHeadersViewNormal);
+                window.mainPopupSet.append(compactHeadersPopup);
+
                 compactHeadersButton.addEventListener("command", () => toggleHeaders());
                 compactHeadersBox.append(compactHeadersButton);
-                targetHeaderViewDeck.parentNode.insertBefore(compactHeadersBox, targetHeaderViewDeck);
+                msgHeaderViewDeck.parentNode.insertBefore(compactHeadersBox, msgHeaderViewDeck);
 
-                function toggleHeaders() {
-                  var myExpandedRows = myExpandedHeaders.children;
-                  window.gDBView.reloadMessage();
-                  myExpandedHeaders.setAttribute("persist", "compact");
-                  switch(myExpandedHeaders.getAttribute("compact")) {
-                  case "compact": myExpandedHeaders.removeAttribute("compact");
-                    compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
-                    compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
-                    var i;
-                    for (i = 1; i < myExpandedRows.length; i++) {
-                      myExpandedRows[i].setAttribute("persist", "style");
-                      myExpandedRows[i].removeAttribute("style");
-                    }
-                  break;
-                  default: myExpandedHeaders.setAttribute("compact", "compact");
+                function singleLine() {
+                  expandedHeadersTopBox.setAttribute("style", "padding: 8px 0px 2px; height: 0px; min-width: -moz-fit-content;");
+                  expandedHeadersBottomBox.setAttribute("style", "padding: 8px 0px 2px; height: 0px; width: -moz-available;");
+                  if (xulAppInfo.OS == "WINNT") {
+                    expandedHeadersTopBox.setAttribute("style", "padding: 6px 0px 2px; height: 0px; min-width: -moz-fit-content;");
+                    expandedHeadersBottomBox.setAttribute("style", "padding: 6px 0px 2px; height: 0px; width: -moz-available;");
+                  }
+                  expandedBoxSpacer.setAttribute("style", "display: none;");
+                  headerViewToolbox.setAttribute("style", "display: none;");
+                  expandedHeadersBox.setAttribute("style", "-moz-box-orient: horizontal; display: flex;");
+                }
+
+                function doubleLine() {
+                  expandedHeadersTopBox.removeAttribute("style");
+                  expandedHeadersBottomBox.removeAttribute("style");
+                  expandedBoxSpacer.setAttribute("style", "height: 8px;");
+                  if (xulAppInfo.OS == "WINNT") {
+                    expandedBoxSpacer.setAttribute("style", "height: 6px;");
+                    expandedHeadersBottomBox.setAttribute("style", "margin-top: -3px;");
+                  }
+                  headerViewToolbox.removeAttribute("style");
+                  expandedHeadersBox.removeAttribute("style");
+                }
+
+                function setLines() {
+                  if (expandedHeaders2.getAttribute("singleline") == "singleline") {
+                    expandedHeaders2.setAttribute("singleline", "");
+                  } else {
+                    expandedHeaders2.setAttribute("singleline", "singleline");
+                  }
+                  toggleHeaders();
+                  toggleHeaders();
+                }
+
+                function checkLines() {
+                  if (expandedHeaders2.getAttribute("singleline") == "singleline") {
+                    compactHeadersSingleLine.setAttribute("checked",true);
+                  } else {
+                    compactHeadersSingleLine.setAttribute("checked",false);
+                  }
+                }
+
+                function checkHeaders() {
+                  expandedHeaders2.setAttribute("persist", "compact; showall; singleline");
+                  if (expandedHeaders2.getAttribute("showall") == "showall") {
+                    compactHeadersViewAll.setAttribute("checked", true);
+                  } else {
+                    compactHeadersViewNormal.setAttribute("checked", true);
+                  }
+                  if (expandedHeaders2.getAttribute("compact") == "compact") {
                     compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
                     compactHeadersButton.setAttribute("tooltiptext", "Show Details");
-                    for (i = 1; i < myExpandedRows.length; i++) {
-                      myExpandedRows[i].setAttribute("persist", "style");
-                      myExpandedRows[i].setAttribute("style", "display: none;");
+                    msgHeaderViewDeck.setAttribute("style", "margin-block: -4px -2px;");
+                    var i;
+                    for (i = 1; i < expandedHeaders2.childElementCount; i++) {
+                      expandedHeaders2.children[i].setAttribute("persist", "style");
+                      expandedHeaders2.children[i].setAttribute("style", "display: none;");
+                      if (expandedHeaders2.getAttribute("singleline") == "singleline") singleLine();
+                    }
+                  } else {
+                    compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
+                    compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
+                    msgHeaderViewDeck.setAttribute("style", "margin-block: -4px 0px;");
+                    var i;
+                    for (i = 1; i < expandedHeaders2.childElementCount; i++) {
+                      expandedHeaders2.children[i].setAttribute("persist", "style");
+                      expandedHeaders2.children[i].removeAttribute("style");
+                      doubleLine();
+                    }
+                  }
+                }
+
+                function markHeaders() {
+                  window.gDBView.reloadMessage();
+                  if (compactHeadersViewAll.getAttribute("checked") == "true") {
+                    expandedHeaders2.setAttribute("showall", "showall");
+                    if (expandedHeaders2.getAttribute("compact") != "compact") window.MsgViewAllHeaders();
+                  } else {
+                    expandedHeaders2.removeAttribute("showall");
+                    if (expandedHeaders2.getAttribute("compact") != "compact") window.MsgViewNormalHeaders();
+                  }
+                }
+
+                function toggleHeaders() {
+                  window.gDBView.reloadMessage();
+                  if (compactHeadersViewAll.getAttribute("checked") == "true") {
+                    window.MsgViewAllHeaders();
+                    expandedHeaders2.setAttribute("showall", "showall");
+                  } else {
+                    expandedHeaders2.removeAttribute("showall");
+                  }
+                  switch(expandedHeaders2.getAttribute("compact")) {
+                  case "compact": expandedHeaders2.removeAttribute("compact");
+                    compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
+                    compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
+                    msgHeaderViewDeck.setAttribute("style", "margin-block: -4px 0px;");
+                    var i;
+                    for (i = 1; i < expandedHeaders2.childElementCount; i++) {
+                      expandedHeaders2.children[i].setAttribute("persist", "style");
+                      expandedHeaders2.children[i].removeAttribute("style");
+                      doubleLine();
+                    }
+                  break;
+                  default: expandedHeaders2.setAttribute("compact", "compact");
+                    compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
+                    compactHeadersButton.setAttribute("tooltiptext", "Show Details");
+                    window.MsgViewNormalHeaders();
+                    msgHeaderViewDeck.setAttribute("style", "margin-block: -4px -2px;");
+                    var i;
+                    for (i = 1; i < expandedHeaders2.childElementCount; i++) {
+                      expandedHeaders2.children[i].setAttribute("persist", "style");
+                      expandedHeaders2.children[i].setAttribute("style", "display: none;");
+                      if (expandedHeaders2.getAttribute("singleline") == "singleline") singleLine();
                     }
                   }
                 }
@@ -80,31 +203,71 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
     };
   }
 
-  close() {
-    for (let window of Services.wm.getEnumerator("mail:3pane")) {
-      let compactHeadersButton = window.document.getElementById("compactHeadersButton");
-      if (compactHeadersButton) {
-        compactHeadersButton.remove();
-      }
-      let compactHeadersBox = window.document.getElementById("compactHeadersBox");
-      if (compactHeadersBox) {
-        compactHeadersBox.remove();
-      }
-      if (xulAppInfo.version >= "71.0") {
-        var myExpandedHeaders = window.document.getElementById("expandedHeaders2");
-      } else {
-        var myExpandedHeaders = window.document.getElementById("expandedHeader2Rows");
-      }
-      if (myExpandedHeaders) {
-        let myExpandedRows = myExpandedHeaders.children;
-        var i;
-        for (i = 1; i < myExpandedRows.length; i++) {
-          myExpandedRows[i].setAttribute("persist", "style");
-          myExpandedRows[i].removeAttribute("style");
-        }
-      }
-      console.log("Compact Headers disabled");
+  onShutdown(isAppShutdown) {
+  if (isAppShutdown) return;
+
+  for (let window of Services.wm.getEnumerator("mail:3pane")) {
+    let compactHeadersViewAll = window.document.getElementById("compactHeadersViewAll");
+    if (compactHeadersViewAll) {
+      compactHeadersViewAll.remove();
     }
-    ExtensionSupport.unregisterWindowListener("compactHeadersListener");
+    let compactHeadersViewNormal = window.document.getElementById("compactHeadersViewNormal");
+    if (compactHeadersViewNormal) {
+      compactHeadersViewNormal.remove();
+    }
+    let compactHeadersPopup = window.document.getElementById("compactHeadersPopup");
+    if (compactHeadersPopup) {
+      compactHeadersPopup.remove();
+    }
+    let compactHeadersButton = window.document.getElementById("compactHeadersButton");
+    if (compactHeadersButton) {
+      compactHeadersButton.remove();
+    }
+    let compactHeadersBox = window.document.getElementById("compactHeadersBox");
+    if (compactHeadersBox) {
+      compactHeadersBox.remove();
+    }
+    let expandedHeaders2 = window.document.getElementById("expandedHeaders2");
+    if (expandedHeaders2) {
+      var i;
+      for (i = 1; i < expandedHeaders2.childElementCount; i++) {
+        expandedHeaders2.children[i].setAttribute("persist", "style");
+        expandedHeaders2.children[i].removeAttribute("style");
+      }
+    }
+  }
+
+  for (let window of Services.wm.getEnumerator("mail:messageWindow")) {
+    let compactHeadersViewAll = window.document.getElementById("compactHeadersViewAll");
+    if (compactHeadersViewAll) {
+      compactHeadersViewAll.remove();
+    }
+    let compactHeadersViewNormal = window.document.getElementById("compactHeadersViewNormal");
+    if (compactHeadersViewNormal) {
+      compactHeadersViewNormal.remove();
+    }
+    let compactHeadersPopup = window.document.getElementById("compactHeadersPopup");
+    if (compactHeadersPopup) {
+      compactHeadersPopup.remove();
+    }
+    let compactHeadersButton = window.document.getElementById("compactHeadersButton");
+    if (compactHeadersButton) {
+      compactHeadersButton.remove();
+    }
+    let compactHeadersBox = window.document.getElementById("compactHeadersBox");
+    if (compactHeadersBox) {
+      compactHeadersBox.remove();
+    }
+    let expandedHeaders2 = window.document.getElementById("expandedHeaders2");
+    if (expandedHeaders2) {
+      var i;
+      for (i = 1; i < expandedHeaders2.childElementCount; i++) {
+        expandedHeaders2.children[i].setAttribute("persist", "style");
+        expandedHeaders2.children[i].removeAttribute("style");
+      }
+    }
+  }
+  ExtensionSupport.unregisterWindowListener("compactHeadersListener");
+  console.log("Compact Headers disabled");
   }
 };

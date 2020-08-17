@@ -1,0 +1,1 @@
+browser.toggleMessagePaneApi.toggleMessagePane();

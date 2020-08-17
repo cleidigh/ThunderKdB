@@ -7,16 +7,25 @@
                     }
              },
 	"name": "TaskDescriptions",
-	"version": "1.8",
+	"version": "2.6",
 	"description": "This is buttons to switch task descriptions colors and font styles.",
              "icons": {
-               "32": "icons/desc.png"
+              "16": "desc16.png",
+               "32": "desc32.png"
                  },
-             "legacy" : {
-               "type": "xul",
-               "options" : {
-               "page" : "chrome://taskdescriptions/content/desc.xul",
-               "open_in_tab": true
-               }
-             }
+"background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+"experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["myapi"]],
+        "script": "implementation.js"
+      }
+    }
+  }
 }

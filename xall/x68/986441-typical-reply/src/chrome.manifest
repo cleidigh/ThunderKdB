@@ -1,0 +1,14 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+content	typical-reply	content/
+locale	typical-reply	en-US	locale/en-US/
+locale	typical-reply	ja	locale/ja/
+
+overlay	chrome://messenger/content/messenger.xul	chrome://typical-reply/content/columnOverlay.xul
+
+overlay	chrome://messenger/content/messenger.xul	chrome://typical-reply/content/typicalReplyButtons.xul
+overlay	chrome://messenger/content/messengercompose/messengercompose.xul	chrome://typical-reply/content/typicalReplyCompose.xul
+
+resource typical-reply-modules modules/

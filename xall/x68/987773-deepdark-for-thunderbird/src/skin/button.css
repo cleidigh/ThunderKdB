@@ -139,14 +139,14 @@ toolbarbutton {
 /* DeepDark custom CSS - end */
 }
 
-toolbarbutton:hover {
+toolbarbutton:not([disabled="true"]):hover {
 /* DeepDark custom CSS */
   color: var(--deepdark-brightest-color);
 /* DeepDark custom CSS - end */
 }
 
-toolbarbutton:active,
-toolbarbutton:active:hover {
+toolbarbutton:not([disabled="true"]):active,
+toolbarbutton:not([disabled="true"]):active:hover {
 /* DeepDark custom CSS */
   color: var(--deepdark-accent-color) !important;
 /* DeepDark custom CSS - end */
