@@ -43,8 +43,10 @@ torpedo.prefs = function () {
 					if (addon.id == torpedo.installName) {
 						// It will be automatically removed if the default value is set
 						torpedo.prefs.resetPrefs(true);
+						torpedo.prefs.resetBlacklistPrefs();
+						torpedo.dialogmanager.deleteDB();
 					}
-					
+
 				}
 			};
 			try {
@@ -72,7 +74,7 @@ torpedo.prefs = function () {
 			catch (ex) {
 			}
 		},
-		resetReferrer: function(){
+		resetReferrer: function () {
 			var accounts = acctMgr.accounts;
 			for (var i = 0; i < accounts.length; i++) {
 				var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
@@ -81,34 +83,36 @@ torpedo.prefs = function () {
 				account.incomingServer.setCharValue("torpedo.adv_redirectUrls3", "redirectUrl=,redirectUrl=,q=,url=,");
 			}
 		},
+
+		resetBlacklistPrefs: function () {
+			prefManager.clearUserPref("lastCtcBlacklistRequest");
+			prefManager.clearUserPref("blacklistWasUpdated");
+			prefManager.clearUserPref("blacklistIsReady");
+			prefManager.clearUserPref("currentCtcBlacklistVersion");
+
+		},
 		resetPrefs: function (all) {
 			// reset all prefs manually
 			if (all) {
 				prefManager.clearUserPref("URLSecondList");
-				prefManager.clearUserPref("URLFirstList");
-				prefManager.clearUserPref("URLRequestList");
-				prefManager.clearUserPref("URLAnswerList");
-				prefManager.clearUserPref("CloudDomainList");
-				prefManager.clearUserPref("RedirectionList");
-				prefManager.clearUserPref("redirectUrls");
-				prefManager.clearUserPref("redirectUrls2");
-				prefManager.clearUserPref("redirectUrls3");
 			}
+			prefManager.clearUserPref("URLFirstList");
+			prefManager.clearUserPref("URLRequestList");
+			prefManager.clearUserPref("URLAnswerList");
+			prefManager.clearUserPref("CloudDomainList");
+			prefManager.clearUserPref("RedirectionList");
 			prefManager.clearUserPref("firstrun");
 			prefManager.clearUserPref("language");
 			prefManager.clearUserPref("textsize");
 			prefManager.clearUserPref("checkedTimer");
 			prefManager.clearUserPref("blockingTimer");
-			prefManager.clearUserPref("checkedGreenList");
 			prefManager.clearUserPref("activatedGreenList");
-			prefManager.clearUserPref("activatedOrangeList");
-			prefManager.clearUserPref("redirection0");
-			prefManager.clearUserPref("redirection1");
-			prefManager.clearUserPref("redirection2");
-			prefManager.clearUserPref("URLDefaultList");
-			prefManager.clearUserPref("config");
+			prefManager.clearUserPref("blacklistActivated");
+			prefManager.clearUserPref("greenListDelayActivated");
+			prefManager.clearUserPref("blueListDelayActivated");
+			prefManager.clearUserPref("redirectMode");
+			prefManager.clearUserPref("blueListDelayActivated");
 			//prefManager.clearUserPref("CloudDomainList");
 		},
-
 	};
 }();

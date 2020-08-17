@@ -59,7 +59,7 @@ if ("undefined" == typeof(cardbookListConversion)) {
 					}
 				// for Mail Merge compatibility
 				} else if (fullAddress.includes("{{") && fullAddress.includes("}}")) {
-					this.emailResult.push(fullAddresses);
+					this.emailResult.push(fullAddress);
 				} else {
 					var found = false;
 					for (j in cardbookRepository.cardbookCards) {
@@ -105,7 +105,7 @@ if ("undefined" == typeof(cardbookListConversion)) {
 						}
 					}
 					if (!found) {
-						this.emailResult.push(fullAddresses);
+						this.emailResult.push(fullAddress);
 					}
 				}
 			}

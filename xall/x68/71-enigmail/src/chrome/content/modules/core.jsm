@@ -25,6 +25,9 @@ const getEnigmailWindows = EnigmailLazy.loader("enigmail/windows.jsm", "Enigmail
 const getEnigmailApp = EnigmailLazy.loader("enigmail/app.jsm", "EnigmailApp");
 const getEnigmailOverlays = EnigmailLazy.loader("enigmail/enigmailOverlays.jsm", "EnigmailOverlays");
 const Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
+var {
+  MailConstants
+} = ChromeUtils.import("resource:///modules/MailConstants.jsm");
 
 var EXPORTED_SYMBOLS = ["EnigmailCore"];
 
@@ -68,6 +71,7 @@ var EnigmailCore = {
 
     function initService() {
       if (observerFired > 0) return;
+      if (!MailConstants.MOZ_OPENPGP) return;
 
       ++observerFired;
       const configuredVersion = getEnigmailPrefs().getPref("configuredVersion");

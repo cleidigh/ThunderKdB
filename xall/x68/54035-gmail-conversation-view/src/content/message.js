@@ -322,6 +322,7 @@ class Message extends React.PureComponent {
       dispatch: this.props.dispatch,
       attachments: this.props.message.attachments,
       attachmentsPlural: this.props.message.attachmentsPlural,
+      hasBuiltInPdf: this.props.hasBuiltInPdf,
       messageKey: this.props.message.messageKey,
       msgUri: this.props.message.msgUri
     })), this.props.message.expanded && /*#__PURE__*/React.createElement(MessageFooter, {
@@ -346,6 +347,7 @@ Message.propTypes = {
   iframesLoading: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   isLastMessage: PropTypes.bool.isRequired,
+  hasBuiltInPdf: PropTypes.bool.isRequired,
   message: PropTypes.object.isRequired,
   tenPxFactor: PropTypes.number.isRequired,
   prefs: PropTypes.object.isRequired,

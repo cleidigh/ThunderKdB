@@ -105,7 +105,7 @@ if ("undefined" == typeof(ovl_synchro)) {
 			prefs.setCharPref("accountShown", "");
 			prefs.setCharPref("uncategorizedCards", "");
 			prefs.setCharPref("categoryColors", "");
-			prefs.setCharPref("addonVersion", "51.3");
+			prefs.setCharPref("addonVersion", "51.4");
 			prefs.setCharPref("defaultRegion", "NOTSET");
 
 			prefs.setBoolPref("localDataEncryption", false);

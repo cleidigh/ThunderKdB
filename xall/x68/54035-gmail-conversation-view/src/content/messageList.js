@@ -37,6 +37,7 @@ function _MessageList(props) {
     defaultFontSize: props.summary.defaultFontSize,
     dispatch: props.dispatch,
     displayingMultipleMsgs: !!props.messages.length,
+    hasBuiltInPdf: props.summary.hasBuiltInPdf,
     iframesLoading: props.summary.iframesLoading,
     index: index,
     isLastMessage: index == props.messages.msgData.length - 1,

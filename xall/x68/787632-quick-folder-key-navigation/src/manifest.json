@@ -3,19 +3,42 @@
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "author": "Andrew Hart",
-  "version": "2.0",
+  "version": "3.0",
+"homepage_url": "https://github.com/hartag/keynav",
   "default_locale": "en",
+
   "applications": {
     "gecko": {
       "id": "keynav@andrew.hart",
-      "strict_min_version": "68.0"
+      "strict_min_version": "68.0a1"
     }
   },
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://keynav/content/options.xul",
-      "open_in_tab": false
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
+  },
+
+  "permissions": ["storage", "menus"],
+
+  "experiment_apis": {
+    "KeyNavigationAPI": {
+      "schema": "api/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "KeyNavigationAPI"
+          ]
+        ],
+        "script": "api/api.js"
+      }
     }
   }
 }

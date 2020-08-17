@@ -5,7 +5,8 @@ var prefs = {
   use_msghdr: true,
   bgcolor_en: true,
   lightness: 75,
-  fg_mode: 0
+  fg_mode: 0,
+  ignore_black: false
 };
 
 //keyboard shortcut
@@ -143,7 +144,7 @@ async function init() {
 
 async function registerCSS() {
   if (prefs.bgcolor_en) {
-    let css = await CSSManager.makeCSS();
+    let css = await CSSManager.makeCSS(prefs.ignore_black);
     browser.tagPopupApi.insertCSS(css);
   }
 }

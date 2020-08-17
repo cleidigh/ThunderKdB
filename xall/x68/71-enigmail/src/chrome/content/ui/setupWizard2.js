@@ -15,6 +15,7 @@ var E2TBLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.js
 var E2TBDialog = ChromeUtils.import("chrome://enigmail/content/modules/dialog.jsm").EnigmailDialog;
 var E2TBWindows = ChromeUtils.import("chrome://enigmail/content/modules/windows.jsm").EnigmailWindows;
 var E2TBFiles = ChromeUtils.import("chrome://enigmail/content/modules/files.jsm").EnigmailFiles;
+var E2TBTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm").EnigmailTimer;
 var E2TBKeyRing = ChromeUtils.import("chrome://enigmail/content/modules/keyRing.jsm").EnigmailKeyRing;
 var E2TBCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 var E2TBPrefs = ChromeUtils.import("chrome://enigmail/content/modules/prefs.jsm").EnigmailPrefs;
@@ -27,16 +28,20 @@ var uidHelper = ChromeUtils.import("chrome://openpgp/content/modules/uidHelper.j
 var PgpSqliteDb2 = ChromeUtils.import("chrome://openpgp/content/modules/sqliteDb.jsm").PgpSqliteDb2;
 var EnigmailCryptoAPI = ChromeUtils.import("chrome://openpgp/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 var RNP = ChromeUtils.import("chrome://openpgp/content/modules/RNP.jsm").RNP;
+const EnigmailLazy = ChromeUtils.import("chrome://openpgp/content/modules/lazy.jsm").EnigmailLazy;
+const getBondOpenPGP = EnigmailLazy.loader("../BondOpenPGP.jsm", "BondOpenPGP");
 
 var gSelectedPrivateKeys = null,
   gPublicKeys = [],
   gAcceptButton = null,
   gCancelButton = null,
   gDialogCancelled = false,
-  gProcessing = false;
+  gProcessing = false,
+  gRestartNeeded = false;
 
 function onLoad() {
   E2TBLog.DEBUG(`setupWizard2.js: onLoad()\n`);
+
   let dlg = document.getElementById("setupWizardDlg");
   gAcceptButton = dlg.getButton("accept");
   gAcceptButton.setAttribute("disabled", "true");
@@ -53,6 +58,7 @@ function onLoad() {
 }
 
 function onAccept() {
+  if (gRestartNeeded) restartApplication();
   return true;
 }
 
@@ -81,14 +87,32 @@ function selectPrivateKeys() {
   E2TBLog.DEBUG(`setupWizard2.js: selectPrivateKeys: selKey: ${gSelectedPrivateKeys.join(", ")}\n`);
 }
 
+function enableOpenPGPPref() {
+  E2TBPrefs.getPrefRoot().setBoolPref("mail.openpgp.enable", true);
+
+  return new Promise((resolve, reject) => {
+    E2TBTimer.setTimeout(function _f() {
+      resolve(true);
+    }, 1000);
+  });
+}
+
 async function startMigration() {
   for (let btn of ["btnSelectPrivateKeys", "btnStartMigration"]) {
     document.getElementById(btn).setAttribute("disabled", "true");
   }
 
   // enable OpenPGP functionality unconditionally
-  E2TBPrefs.getPrefRoot().setBoolPref("mail.openpgp.enable", true);
-  RNP.init();
+  if (!E2TBPrefs.getPrefRoot().getBoolPref("mail.openpgp.enable")) {
+    await enableOpenPGPPref();
+    gRestartNeeded = true;
+  }
+  if (!getBondOpenPGP().allDependenciesLoaded()) {
+    gRestartNeeded = false;
+    E2TBDialog.alert(window, E2TBLocale.getString("openpgpInitError"));
+    window.close();
+    return;
+  }
 
   gProcessing = true;
   let tmpDir = E2TBFiles.createTempSubDir("enig-exp", true);
@@ -97,7 +121,10 @@ async function startMigration() {
 
   // temprarily disable saving keys
   let origSaveKeyRing = RNP.saveKeyRings;
+
   RNP.saveKeyRings = function() {};
+  RNP.init();
+  await PgpSqliteDb2.checkDatabaseStructure();
 
   try {
     await importKeys(tmpDir);
@@ -122,7 +149,12 @@ async function startMigration() {
   applyAccountSettings();
   if (gDialogCancelled) return;
 
-  document.getElementById("migrationComplete").style.visibility = "visible";
+  if (gRestartNeeded) {
+    document.getElementById("restartNeeded").style.visibility = "visible";
+  }
+  else {
+    document.getElementById("migrationComplete").style.visibility = "visible";
+  }
   gAcceptButton.removeAttribute("disabled");
   gCancelButton.setAttribute("disabled", "true");
 
@@ -426,4 +458,10 @@ function passphrasePromptCallback(win, keyId, resultFlags) {
 
   resultFlags.canceled = false;
   return p.value;
+}
+
+function restartApplication() {
+  let oAppStartup = Cc["@mozilla.org/toolkit/app-startup;1"].getService(Ci.nsIAppStartup);
+  if (!oAppStartup.eRestart) throw ("Restart is not supported");
+  oAppStartup.quit(oAppStartup.eAttemptQuit | oAppStartup.eRestart);
 }

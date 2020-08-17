@@ -65,7 +65,7 @@ var CSSManager = {
     return ret;
   },
 
-  makeCSS: async function () {
+  makeCSS: async function (ignore_black) {
     let newCSS = "data:text/css,@namespace url(http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);\n";
 
     for (let selector in this.bgColors) {
@@ -81,6 +81,9 @@ var CSSManager = {
       let r = parseInt(rgb[0], 16);
       let g = parseInt(rgb[1], 16);
       let b = parseInt(rgb[2], 16);
+      
+      if (ignore_black && (r + g + b == 0)) continue; //do not color for black tags
+      
       let bgColor = this.calcBgColorBySaturation(r, g, b, this.bgColorLightness);
       let fgColor = this.getFgColor(r, g, b, bgColor[0], bgColor[1], bgColor[2], this.bgColorLightness);
 

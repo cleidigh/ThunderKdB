@@ -1,13 +1,196 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 1:
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
-var AutoarchiveReloaded;
-(function (AutoarchiveReloaded) {
-    let GlobalStates;
-    (function (GlobalStates) {
-        GlobalStates[GlobalStates["UNINITIALZED"] = 0] = "UNINITIALZED";
-        GlobalStates[GlobalStates["READY_FOR_WORK"] = 1] = "READY_FOR_WORK";
-        GlobalStates[GlobalStates["IN_PROGRESS"] = 2] = "IN_PROGRESS";
-    })(GlobalStates = AutoarchiveReloaded.GlobalStates || (AutoarchiveReloaded.GlobalStates = {}));
-})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
+
+/*!
+Copyright 2019 Brummolix (new version AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
+
+ This file is part of AutoarchiveReloaded.
+
+    AutoarchiveReloaded is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    AutoarchiveReloaded is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
+*/
+Object.defineProperty(exports, "__esModule", { value: true });
+const Logger_1 = __webpack_require__(2);
+class LogLevelInfoWebExtension {
+    static setGlobaleEnableInfoLogging(value) {
+        browser.extension.getBackgroundPage()[LogLevelInfoWebExtension.ENABLE_INFO_LOGGING_NAME] = value;
+        browser.autoarchive.setInfoLogging(value);
+    }
+    static getGlobalEnableInfoLogging() {
+        return browser.extension.getBackgroundPage()[LogLevelInfoWebExtension.ENABLE_INFO_LOGGING_NAME];
+    }
+    get enableInfoLogging() {
+        return LogLevelInfoWebExtension.getGlobalEnableInfoLogging();
+    }
+}
+exports.LogLevelInfoWebExtension = LogLevelInfoWebExtension;
+LogLevelInfoWebExtension.ENABLE_INFO_LOGGING_NAME = "WebExtensionLoggerHelper_enableInfoLogging";
+exports.log = new Logger_1.Logger(new LogLevelInfoWebExtension());
+
+
+/***/ }),
+
+/***/ 14:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const GlobalStates_1 = __webpack_require__(8);
+const Logger_1 = __webpack_require__(1);
+async function initialize() {
+    const message = { message: "getArchiveStatus" };
+    const response = await browser.runtime.sendMessage(message);
+    const status = response.status;
+    switch (status) {
+        case GlobalStates_1.GlobalStates.UNINITIALZED:
+            {
+                Logger_1.log.info("not initialized, cancel");
+                $("#text").text(browser.i18n.getMessage("waitForInit"));
+                $("#button").hide();
+                break;
+            }
+        case GlobalStates_1.GlobalStates.IN_PROGRESS:
+            {
+                Logger_1.log.info("busy with other archive..., cancel");
+                $("#text").text(browser.i18n.getMessage("waitForArchive"));
+                $("#button").hide();
+                break;
+            }
+        case GlobalStates_1.GlobalStates.READY_FOR_WORK:
+            {
+                Logger_1.log.info("user can start archiving");
+                $("#text").text(browser.i18n.getMessage("dialogStartManualText"));
+                $("#button").show();
+                break;
+            }
+    }
+}
+function onManualArchive() {
+    const message = { message: "archiveManually" };
+    browser.runtime.sendMessage(message);
+    window.close();
+}
+async function onLoad() {
+    try {
+        await initialize();
+        $("#button").click(onManualArchive);
+    }
+    catch (e) {
+        Logger_1.log.errorException(e);
+        throw e;
+    }
+}
+$(onLoad);
+
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 /*!
 Copyright 2018-2019 Brummolix (AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
 
@@ -26,6 +209,7 @@ Copyright 2018-2019 Brummolix (AutoarchiveReloaded, https://github.com/Brummolix
     You should have received a copy of the GNU General Public License
     along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
 */
+Object.defineProperty(exports, "__esModule", { value: true });
 var LogLevel;
 (function (LogLevel) {
     LogLevel[LogLevel["LEVEL_INFO"] = 0] = "LEVEL_INFO";
@@ -78,369 +262,25 @@ class Logger {
         console.log(value);
     }
 }
-/*!
-Copyright 2013-2019 Brummolix (new version AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
-Copyright 2012 Alexey Egorov (original version Autoarchive, http://code.google.com/p/autoarchive/ )
+exports.Logger = Logger;
 
- This file is part of AutoarchiveReloaded.
 
-    AutoarchiveReloaded is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+/***/ }),
 
-    AutoarchiveReloaded is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+/***/ 8:
+/***/ (function(module, exports, __webpack_require__) {
 
-    You should have received a copy of the GNU General Public License
-    along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
-*/
-var AutoarchiveReloaded;
-(function (AutoarchiveReloaded) {
-    class AccountInfo {
-        static isMailType(account) {
-            return (account.type === "pop3" || account.type === "imap" || account.type === "exquilla");
-        }
-        static findAccountInfo(accountSettings, id) {
-            for (const accountSetting of accountSettings) {
-                if (accountSetting.accountId === id) {
-                    return accountSetting;
-                }
-            }
-            return null;
-        }
-        static async askForAccounts() {
-            try {
-                const nsAccounts = [];
-                await AutoarchiveReloaded.AccountIterator.forEachAccount((account, isAccountArchivable) => {
-                    if (isAccountArchivable) {
-                        nsAccounts.push(account);
-                    }
-                });
-                nsAccounts.sort((a, b) => {
-                    const mailTypeA = AccountInfo.isMailType(a);
-                    const mailTypeB = AccountInfo.isMailType(b);
-                    if (mailTypeA === mailTypeB) {
-                        return a.name.localeCompare(b.name);
-                    }
-                    if (mailTypeA) {
-                        return -1;
-                    }
-                    return 1;
-                });
-                const accounts = [];
-                let currentOrder = 0;
-                nsAccounts.forEach((account) => {
-                    accounts.push({
-                        accountId: account.id,
-                        accountName: account.name,
-                        order: currentOrder++,
-                    });
-                });
-                return accounts;
-            }
-            catch (e) {
-                AutoarchiveReloaded.log.errorException(e);
-                throw e;
-            }
-        }
-    }
-    AutoarchiveReloaded.AccountInfo = AccountInfo;
-})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
-/*!
-Copyright 2013-2019 Brummolix (new version AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
-Copyright 2012 Alexey Egorov (original version Autoarchive, http://code.google.com/p/autoarchive/ )
+"use strict";
 
- This file is part of AutoarchiveReloaded.
+Object.defineProperty(exports, "__esModule", { value: true });
+var GlobalStates;
+(function (GlobalStates) {
+    GlobalStates[GlobalStates["UNINITIALZED"] = 0] = "UNINITIALZED";
+    GlobalStates[GlobalStates["READY_FOR_WORK"] = 1] = "READY_FOR_WORK";
+    GlobalStates[GlobalStates["IN_PROGRESS"] = 2] = "IN_PROGRESS";
+})(GlobalStates = exports.GlobalStates || (exports.GlobalStates = {}));
 
-    AutoarchiveReloaded is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
 
-    AutoarchiveReloaded is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+/***/ })
 
-    You should have received a copy of the GNU General Public License
-    along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
-*/
-var AutoarchiveReloaded;
-(function (AutoarchiveReloaded) {
-    class AccountIterator {
-        static async forEachAccount(forEachDo) {
-            const accounts = await browser.accounts.list();
-            for (const account of accounts) {
-                await forEachDo(account, this.isAccountArchivable(account));
-            }
-        }
-        static isAccountArchivable(account) {
-            return (account.type === "pop3" || account.type === "imap" || account.type === "rss" || account.type === "nntp" || account.type === "exquilla" || account.type === "none");
-        }
-    }
-    AutoarchiveReloaded.AccountIterator = AccountIterator;
-})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
-/*!
-Copyright 2018-2019 Brummolix (AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
-
- This file is part of AutoarchiveReloaded.
-
-    AutoarchiveReloaded is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    AutoarchiveReloaded is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
-*/
-var AutoarchiveReloaded;
-(function (AutoarchiveReloaded) {
-    class DefaultSettings {
-        getDefaultAccountSettings() {
-            return {
-                bArchiveOther: false,
-                daysOther: 360,
-                bArchiveMarked: false,
-                daysMarked: 360,
-                bArchiveTagged: false,
-                daysTagged: 360,
-                bArchiveUnread: false,
-                daysUnread: 360,
-            };
-        }
-        convertPartialSettings(partialSettings) {
-            const defaultSettings = this.getDefaultSettings();
-            const concatedSettings = this.deepMerge(defaultSettings, partialSettings);
-            for (const accountId in concatedSettings.accountSettings) {
-                if (concatedSettings.accountSettings.hasOwnProperty(accountId)) {
-                    const accountSetting = concatedSettings.accountSettings[accountId];
-                    concatedSettings.accountSettings[accountId] = this.deepMerge(this.getDefaultAccountSettings(), accountSetting);
-                }
-            }
-            return concatedSettings;
-        }
-        deepMerge(defaultValues, valuesToMerge) {
-            if (valuesToMerge === undefined || valuesToMerge === null) {
-                return defaultValues;
-            }
-            const clone = Object.assign({}, defaultValues);
-            for (const key in valuesToMerge) {
-                if (valuesToMerge.hasOwnProperty(key)) {
-                    const elem = valuesToMerge[key];
-                    if ((elem !== undefined) && (elem !== null)) {
-                        if (typeof elem !== "object") {
-                            clone[key] = elem;
-                        }
-                        else {
-                            clone[key] = this.deepMerge(clone[key], elem);
-                        }
-                    }
-                }
-            }
-            return clone;
-        }
-        getDefaultSettings() {
-            return {
-                globalSettings: this.getDefaultGlobalSettings(),
-                accountSettings: {},
-            };
-        }
-        getDefaultGlobalSettings() {
-            return {
-                archiveType: "manual",
-                enableInfoLogging: false,
-            };
-        }
-    }
-    AutoarchiveReloaded.DefaultSettings = DefaultSettings;
-})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
-/*!
-Copyright 2019 Brummolix (new version AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
-
- This file is part of AutoarchiveReloaded.
-
-    AutoarchiveReloaded is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    AutoarchiveReloaded is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
-*/
-var AutoarchiveReloaded;
-(function (AutoarchiveReloaded) {
-    class LogLevelInfo {
-        static setGlobaleEnableInfoLogging(value) {
-            browser.extension.getBackgroundPage()[LogLevelInfo.ENABLE_INFO_LOGGING_NAME] = value;
-            browser.autoarchive.setInfoLogging(value);
-        }
-        static getGlobalEnableInfoLogging() {
-            return browser.extension.getBackgroundPage()[LogLevelInfo.ENABLE_INFO_LOGGING_NAME];
-        }
-        get enableInfoLogging() {
-            return LogLevelInfo.getGlobalEnableInfoLogging();
-        }
-    }
-    LogLevelInfo.ENABLE_INFO_LOGGING_NAME = "WebExtensionLoggerHelper_enableInfoLogging";
-    AutoarchiveReloaded.LogLevelInfo = LogLevelInfo;
-    AutoarchiveReloaded.log = new Logger(new LogLevelInfo());
-})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
-/*!
-Copyright 2018-2019 Brummolix (AutoarchiveReloaded, https://github.com/Brummolix/AutoarchiveReloaded )
-
- This file is part of AutoarchiveReloaded.
-
-    AutoarchiveReloaded is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    AutoarchiveReloaded is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with AutoarchiveReloaded.  If not, see <http://www.gnu.org/licenses/>.
-*/
-var AutoarchiveReloaded;
-(function (AutoarchiveReloaded) {
-    class OptionHelper {
-        async loadCurrentSettings() {
-            AutoarchiveReloaded.log.info("start to load current settings");
-            const accounts = await AutoarchiveReloaded.AccountInfo.askForAccounts();
-            try {
-                AutoarchiveReloaded.log.info("got info about accounts");
-                const result = await browser.storage.local.get("settings");
-                AutoarchiveReloaded.log.info("loaded settings from storage");
-                const oHandling = new AutoarchiveReloaded.DefaultSettings();
-                const settings = oHandling.convertPartialSettings(result.settings);
-                this.ensureEveryExistingAccountHaveSettings(accounts, settings, oHandling);
-                this.removeOutdatedAccountsFromSettings(settings, accounts);
-                AutoarchiveReloaded.log.info("settings mixed with default settings");
-                return settings;
-            }
-            catch (e) {
-                AutoarchiveReloaded.log.errorException(e);
-                throw e;
-            }
-        }
-        removeOutdatedAccountsFromSettings(settings, accounts) {
-            for (const accountId in settings.accountSettings) {
-                if (AutoarchiveReloaded.AccountInfo.findAccountInfo(accounts, accountId) === null) {
-                    delete settings.accountSettings[accountId];
-                }
-            }
-        }
-        ensureEveryExistingAccountHaveSettings(accounts, settings, oHandling) {
-            accounts.forEach((account) => {
-                const accountSetting = settings.accountSettings[account.accountId];
-                if (accountSetting === undefined) {
-                    settings.accountSettings[account.accountId] = oHandling.getDefaultAccountSettings();
-                }
-            });
-        }
-        async initializePreferencesAtStartup() {
-            AutoarchiveReloaded.log.info("start conversion of legacy preferences (if any)");
-            const accounts = await AutoarchiveReloaded.AccountInfo.askForAccounts();
-            const settings = await browser.autoarchive.askForLegacyPreferences(accounts);
-            try {
-                if (settings) {
-                    AutoarchiveReloaded.log.info("got legacy preferences to convert");
-                    await this.savePreferencesAndPublishForLogging(settings);
-                    AutoarchiveReloaded.log.info("legacy preferences converted");
-                }
-                else {
-                    AutoarchiveReloaded.log.info("no legacy preferences to convert");
-                    await this.publishCurrentPreferencesForLogging();
-                    AutoarchiveReloaded.log.info("publishCurrentPreferencesForLogging done");
-                }
-            }
-            catch (e) {
-                AutoarchiveReloaded.log.errorException(e);
-                throw e;
-            }
-        }
-        async savePreferencesAndPublishForLogging(settings) {
-            AutoarchiveReloaded.log.info("going to save settings");
-            try {
-                await browser.storage.local.set({ settings: settings });
-                AutoarchiveReloaded.log.info("settings saved");
-                await this.publishCurrentPreferencesForLogging();
-            }
-            catch (e) {
-                AutoarchiveReloaded.log.errorException(e);
-                throw e;
-            }
-        }
-        async publishCurrentPreferencesForLogging() {
-            const settings = await this.loadCurrentSettings();
-            AutoarchiveReloaded.log.info("loadCurrentSettings done, publish for logging");
-            try {
-                AutoarchiveReloaded.LogLevelInfo.setGlobaleEnableInfoLogging(settings.globalSettings.enableInfoLogging);
-            }
-            catch (e) {
-                AutoarchiveReloaded.log.errorException(e);
-                throw e;
-            }
-        }
-    }
-    AutoarchiveReloaded.OptionHelper = OptionHelper;
-})(AutoarchiveReloaded || (AutoarchiveReloaded = {}));
-async function initialize() {
-    const message = { message: "getArchiveStatus" };
-    const response = await browser.runtime.sendMessage(message);
-    const status = response.status;
-    switch (status) {
-        case AutoarchiveReloaded.GlobalStates.UNINITIALZED:
-            {
-                AutoarchiveReloaded.log.info("not initialized, cancel");
-                $("#text").text(browser.i18n.getMessage("waitForInit"));
-                $("#button").hide();
-                break;
-            }
-        case AutoarchiveReloaded.GlobalStates.IN_PROGRESS:
-            {
-                AutoarchiveReloaded.log.info("busy with other archive..., cancel");
-                $("#text").text(browser.i18n.getMessage("waitForArchive"));
-                $("#button").hide();
-                break;
-            }
-        case AutoarchiveReloaded.GlobalStates.READY_FOR_WORK:
-            {
-                AutoarchiveReloaded.log.info("user can start archiving");
-                $("#text").text(browser.i18n.getMessage("dialogStartManualText"));
-                $("#button").show();
-                break;
-            }
-    }
-}
-async function onManualArchive() {
-    const message = { message: "archiveManually" };
-    browser.runtime.sendMessage(message);
-    window.close();
-}
-async function onLoad() {
-    try {
-        await initialize();
-        $("#button").click(onManualArchive);
-    }
-    catch (e) {
-        AutoarchiveReloaded.log.errorException(e);
-        throw e;
-    }
-}
-$(onLoad);
+/******/ });
