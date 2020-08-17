@@ -1,0 +1,161 @@
+{
+    "id": 986441,
+    "authors": [
+        {
+            "id": 182999,
+            "name": "ClearCode Inc.",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/clearcode-inc/",
+            "username": "clearcode-inc",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1261,
+    "categories": {
+        "thunderbird": [
+            "appearance",
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2018-12-26T09:00:21Z",
+    "current_version": {
+        "id": 2474043,
+        "compatibility": {
+            "thunderbird": {
+                "max": "73.0",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/typical-reply/versions/2474043",
+        "files": [
+            {
+                "id": 1017205,
+                "created": "2020-08-06T00:52:26Z",
+                "hash": "sha256:4d81ccd7767a894b2e304daa93184e884594051ac66cac956ff8673daee47fbc",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 64881,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017205/typical_reply-0.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Supports Thunderbird 68.",
+            "ja": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/typical-reply/versions/0.6",
+        "version": "0.6"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "For example, if you are reading a mail like:\n\n    Subject:\n      How about this?\n    \n    Body:\n      Hi.\n      I've wrote a plan. How about this?\n      http://...\n\nThen you can send a typical reply quickly.\nIf you click the \"Like!\" button (or choose \"Like!\" item from the context menu on the thread pane), a reply like follogin will be sent:\n\n    Subject:\n      [[Like!]]: Re: How about this?\n    \n    Body:\n      Like!\n      \n      &gt; Hi.\n      &gt; I've wrote a plan. How about this?\n      &gt; http://...\n\nOn the other hand, when the receiver downloads typical reply mails, those replies are shown with special icon for the type.\nMoreover the receiver can see all received typical replies via a virtual folder created by this addon automatically.\n\nThere are three types of \"typical reply\" are defined by default: \"accept\", \"reject\", and \"like\".\nOf course you can add new types of typical replies as you like.\n\n\n## How to add a new typical reply type?\n\nFor example, assume that you are going to add a new \"Awesome!\" button.\n\n 1. Define the internal type name. Now I use `awesome`.\n 2. Define name of the reply type. It must be defined as a string preference, like:\n    \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.label\",     \"Awesome!\");\n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.accesskey\", \"A\");\n    \n    The part `extensions.typical-reply@clear-code.com.reply.` is the common prefix.\n    The `label` is used for the custom button or the menu item of the \"Tipycal Reply\" button.\n    The `accesskey` is used for the menu item in the menu of the \"Tipycal Reply\" button.\n 3. Define subject of typical replies from the button.\n    \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.subjectPrefix\", \"[[Awesome!]]\");\n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.subject\",       \"\");\n    \n    If you set any string for the `subjectPrefix`, it will be inserted to the start of the subject.\n    It will be used to detect the type of the reply.\n    If a receiver gets a mail with a subject like \"[[Awesome!]]: Re: How about this?\", its reply type will be detected as \"awesome\".\n    \n    If you use another option `subject`, the subject of the reply will be completely replaced to the value of `subject`.\n 4. Define body of typical replies from the button.\n    \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.body\", \"Awesome!!\");\n    \n    It will be inserted to the body of the reply automatically.\n 5. Define recipients of the typical reply.\n    There are some choices:\n    \n    * `all`: Same to \"Reply to All\". The reply inherits To, Cc, and Bcc from the original mail.\n    * `sender`: Same to \"Reply to Sender\". The reply will be sent to the author of the original mail.\n    * `blank`: The list of recipients will become blank completely.\n    * Comma-separated E-mail addresses\n    \n    For example:\n     \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.recipients\", \"all\");\n    \n 6. Define forwarding behavior.\n     \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.forwardType\", \"attachment\");\n    \n    Acceptable values are `\"attachment\"` (always forward as an attachment) or `\"inline\"` (always forward inline). In these cases you need to specify E-mail addresses via the `recipients` parameter previously described, in other words both `all` and `sender` are ignored.\n    \n    If you want to send a reply from the button, don't specify any value for this parameter.\n 7. Define quotation behavior.\n     \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.quoteType\", \"yes\");\n    \n    Acceptable values are `\"yes\"` (always quote body) or `\"no\"` (never qupte body). Otherwise the button for the type will have two choices: \"reply without quote\" and \"reply with quote\".\n 8. Define the priority.\n    Possible values are `Highest`, `High`, `Normal`, `Low` and `Lowest`.\n     \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.priority\", \"Highest\");\n    \n 9. Define button type.\n    \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.separate\", false);\n    \n    If you choose `true`, a new toolbar button for the reply type is generated in the header area.\n    Otherwise menu items for the reply type is generated in the menu item of the \"Tipycal Reply\" button.\n 10. Define behavior of the virtual folder.\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.searchFolder\",  true);\n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.searchTargets\", \"all\");\n    \n     If you set `searchFolder` to `true`, this addon automatically generates a virutal folder for the type, in all accounts.\n     You can customize list of folders which via the preference item `searchTargets`.\n     \n     * `all`: Finds all typical reply messages from all folders of the account.\n     * `inbox`: Finxs typical reply messges only from the inbox.\n     \n 11. Define allowed recipient domains.\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.allowedDomains\", \"*\");\n     \n     If you set `allowedDomains` to `*` or a blank string, then typical replies can be sent\n     for any recipient.\n     Otherwise - if you write a comma-separated list of domains, then you can send typical replies\n     only when all recipients are included in the list. For example:\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.allowedDomains\", \"<a href=\"http://example.com\" rel=\"nofollow\">example.com</a>, <a href=\"http://example.jp\" rel=\"nofollow\">example.jp</a>\");\n     \n 12. Define behaviour of auto-send.\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.autoSend\", \"noquote\");\n     \n     If you set `autoSend` to `always`, then typical replies are sent to recipients automatically\n     without confirmation. If you set it to `noquote`, then typical replies are sent automatically\n     only when there is no quotation in the body. Otherwise, you have to click the \"Send\" button\n     manually.\n 13. Define images for the type.\n     You can specify images as an URI.\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.icon\",      \"data:image/png,...\");\n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.bodyImage\", \"data:image/png,...\");\n     \n     The `icon` is used for the button and menu items of the \"Tipycal Reply\" button.\n     If you set any URI fo the `bodyImage`, it will be embedded to the message, as an attachment.\n\nFinally you'll get a configurations for the new button, like following:\n\n```javascript\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.label\",         \"Awesome!\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.accesskey\",     \"L\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.subjectPrefix\", \"[[!Awesome]]\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.subject\",       \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.body\",          \"Awesome!\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.recipients\",    \"all\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.forwardType\",   \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.quoteType\",     \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.priority\",      \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.separate\",      false);\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.searchFolder\",  true);\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.searchTargets\", \"all\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.allowedDomains\", \"*\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.autoSend\",      \"noquote\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.icon\",          \"data:image/png,...(awesome.png)...\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.bodyImage\",     \"data:image/png,...(awesome.png)...\");\n```\n\nThe you have to add the internal name of the type you defined, like:\n\n```javascript\npref(\"extensions.typical-reply@clear-code.com.buttons\", \"accept,reject,like,awesome\");\n```\n\n## More examples\n\n### \"Report as abuse\" button\n\n```javascript\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.label\",          \"Report as Abuse Mail\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.accesskey\",      \"R\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.subjectPrefix\",  \"[[Abuse]]\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.subject\",        \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.body\",           \"This is an abuse mail.\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.recipients\",     \"report-abuse@example.com\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.quoteType\",      \"no\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.forwardType\",    \"attachment\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.separate\",       true);\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.allowedDomains\", \"*\");\n```",
+        "ja": "For example, if you are reading a mail like:\n\n    Subject:\n      How about this?\n    \n    Body:\n      Hi.\n      I've wrote a plan. How about this?\n      http://...\n\nThen you can send a typical reply quickly.\nIf you click the \"Like!\" button (or choose \"Like!\" item from the context menu on the thread pane), a reply like follogin will be sent:\n\n    Subject:\n      [[Like!]]: Re: How about this?\n    \n    Body:\n      Like!\n      \n      &gt; Hi.\n      &gt; I've wrote a plan. How about this?\n      &gt; http://...\n\nOn the other hand, when the receiver downloads typical reply mails, those replies are shown with special icon for the type.\nMoreover the receiver can see all received typical replies via a virtual folder created by this addon automatically.\n\nThere are three types of \"typical reply\" are defined by default: \"accept\", \"reject\", and \"like\".\nOf course you can add new types of typical replies as you like.\n\n\n## How to add a new typical reply type?\n\nFor example, assume that you are going to add a new \"Awesome!\" button.\n\n 1. Define the internal type name. Now I use `awesome`.\n 2. Define name of the reply type. It must be defined as a string preference, like:\n    \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.label\",     \"Awesome!\");\n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.accesskey\", \"A\");\n    \n    The part `extensions.typical-reply@clear-code.com.reply.` is the common prefix.\n    The `label` is used for the custom button or the menu item of the \"Tipycal Reply\" button.\n    The `accesskey` is used for the menu item in the menu of the \"Tipycal Reply\" button.\n 3. Define subject of typical replies from the button.\n    \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.subjectPrefix\", \"[[Awesome!]]\");\n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.subject\",       \"\");\n    \n    If you set any string for the `subjectPrefix`, it will be inserted to the start of the subject.\n    It will be used to detect the type of the reply.\n    If a receiver gets a mail with a subject like \"[[Awesome!]]: Re: How about this?\", its reply type will be detected as \"awesome\".\n    \n    If you use another option `subject`, the subject of the reply will be completely replaced to the value of `subject`.\n 4. Define body of typical replies from the button.\n    \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.body\", \"Awesome!!\");\n    \n    It will be inserted to the body of the reply automatically.\n 5. Define recipients of the typical reply.\n    There are some choices:\n    \n    * `all`: Same to \"Reply to All\". The reply inherits To, Cc, and Bcc from the original mail.\n    * `sender`: Same to \"Reply to Sender\". The reply will be sent to the author of the original mail.\n    * `blank`: The list of recipients will become blank completely.\n    * Comma-separated E-mail addresses\n    \n    For example:\n     \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.recipients\", \"all\");\n    \n 6. Define forwarding behavior.\n     \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.forwardType\", \"attachment\");\n    \n    Acceptable values are `\"attachment\"` (always forward as an attachment) or `\"inline\"` (always forward inline). In these cases you need to specify E-mail addresses via the `recipients` parameter previously described, in other words both `all` and `sender` are ignored.\n    \n    If you want to send a reply from the button, don't specify any value for this parameter.\n 7. Define quotation behavior.\n     \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.quoteType\", \"yes\");\n    \n    Acceptable values are `\"yes\"` (always quote body) or `\"no\"` (never qupte body). Otherwise the button for the type will have two choices: \"reply without quote\" and \"reply with quote\".\n 8. Define the priority.\n    Possible values are `Highest`, `High`, `Normal`, `Low` and `Lowest`.\n     \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.priority\", \"Highest\");\n    \n 9. Define button type.\n    \n        pref(\"extensions.typical-reply@clear-code.com.reply.awesome.separate\", false);\n    \n    If you choose `true`, a new toolbar button for the reply type is generated in the header area.\n    Otherwise menu items for the reply type is generated in the menu item of the \"Tipycal Reply\" button.\n 10. Define behavior of the virtual folder.\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.searchFolder\",  true);\n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.searchTargets\", \"all\");\n    \n     If you set `searchFolder` to `true`, this addon automatically generates a virutal folder for the type, in all accounts.\n     You can customize list of folders which via the preference item `searchTargets`.\n     \n     * `all`: Finds all typical reply messages from all folders of the account.\n     * `inbox`: Finxs typical reply messges only from the inbox.\n     \n 11. Define allowed recipient domains.\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.allowedDomains\", \"*\");\n     \n     If you set `allowedDomains` to `*` or a blank string, then typical replies can be sent\n     for any recipient.\n     Otherwise - if you write a comma-separated list of domains, then you can send typical replies\n     only when all recipients are included in the list. For example:\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.allowedDomains\", \"<a href=\"http://example.com\" rel=\"nofollow\">example.com</a>, <a href=\"http://example.jp\" rel=\"nofollow\">example.jp</a>\");\n     \n 12. Define behaviour of auto-send.\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.autoSend\", \"noquote\");\n     \n     If you set `autoSend` to `always`, then typical replies are sent to recipients automatically\n     without confirmation. If you set it to `noquote`, then typical replies are sent automatically\n     only when there is no quotation in the body. Otherwise, you have to click the \"Send\" button\n     manually.\n 13. Define images for the type.\n     You can specify images as an URI.\n     \n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.icon\",      \"data:image/png,...\");\n         pref(\"extensions.typical-reply@clear-code.com.reply.awesome.bodyImage\", \"data:image/png,...\");\n     \n     The `icon` is used for the button and menu items of the \"Tipycal Reply\" button.\n     If you set any URI fo the `bodyImage`, it will be embedded to the message, as an attachment.\n\nFinally you'll get a configurations for the new button, like following:\n\n```javascript\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.label\",         \"Awesome!\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.accesskey\",     \"L\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.subjectPrefix\", \"[[!Awesome]]\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.subject\",       \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.body\",          \"Awesome!\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.recipients\",    \"all\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.forwardType\",   \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.quoteType\",     \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.priority\",      \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.separate\",      false);\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.searchFolder\",  true);\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.searchTargets\", \"all\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.allowedDomains\", \"*\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.autoSend\",      \"noquote\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.icon\",          \"data:image/png,...(awesome.png)...\");\npref(\"extensions.typical-reply@clear-code.com.reply.awesome.bodyImage\",     \"data:image/png,...(awesome.png)...\");\n```\n\nThe you have to add the internal name of the type you defined, like:\n\n```javascript\npref(\"extensions.typical-reply@clear-code.com.buttons\", \"accept,reject,like,awesome\");\n```\n\n## More examples\n\n### \"Report as abuse\" button\n\n```javascript\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.label\",          \"Report as Abuse Mail\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.accesskey\",      \"R\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.subjectPrefix\",  \"[[Abuse]]\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.subject\",        \"\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.body\",           \"This is an abuse mail.\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.recipients\",     \"report-abuse@example.com\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.quoteType\",      \"no\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.forwardType\",    \"attachment\");\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.separate\",       true);\npref(\"extensions.typical-reply@clear-code.com.reply.abuse.allowedDomains\", \"*\");\n```"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/typical-reply/edit",
+    "guid": "typical-reply@clear-code.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "http://www.clear-code.com/",
+        "ja": "http://www.clear-code.com/"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-08-11T08:46:43Z",
+    "name": {
+        "en-US": "Typical Reply",
+        "ja": "Typical Reply"
+    },
+    "previews": [
+        {
+            "id": 205532,
+            "caption": {
+                "en-US": "Added \"Like\" button",
+                "ja": "Added \"Like\" button"
+            },
+            "image_size": [
+                549,
+                233
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205532.png?modified=1545815376",
+            "thumbnail_size": [
+                320,
+                136
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205532.png?modified=1545815376"
+        },
+        {
+            "id": 205533,
+            "caption": {
+                "en-US": "Added \"Typical Reply\" button with submenu",
+                "ja": "Added \"Typical Reply\" button with submenu"
+            },
+            "image_size": [
+                275,
+                153
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205533.png?modified=1545815376",
+            "thumbnail_size": [
+                275,
+                153
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205533.png?modified=1545815376"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/typical-reply/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/986441",
+    "slug": "typical-reply",
+    "status": "public",
+    "summary": {
+        "en-US": "Provides ability to send/receive typical replies in a team.Provides ability to send/receive typical replies in a team.",
+        "ja": "チーム内で定型的なメッセージの送受信を行えるようにします。"
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "firefox57",
+        "forward",
+        "reply"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/typical-reply/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp69plus": true,
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2019-06-20T02:58:06Z"
+        }
+    }
+}

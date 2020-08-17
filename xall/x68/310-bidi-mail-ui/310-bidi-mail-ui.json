@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/9/9020.png?modified=1479819670"
         }
     ],
-    "average_daily_users": 2442,
+    "average_daily_users": 2437,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -25,26 +25,26 @@
     "contributions_url": null,
     "created": "2004-10-06T10:38:55Z",
     "current_version": {
-        "id": 2473926,
+        "id": 2474049,
         "compatibility": {
             "thunderbird": {
                 "max": "73.0",
                 "min": "65.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/versions/2473926",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/versions/2474049",
         "files": [
             {
-                "id": 1017088,
-                "created": "2020-07-15T19:37:22Z",
-                "hash": "sha256:d78101c8b425d5bc6a645c2a3b369f4c7eb93367d8f38ee1a5ca75176d78bcd0",
+                "id": 1017211,
+                "created": "2020-08-07T15:11:50Z",
+                "hash": "sha256:2065e397290f30a4d4a090a2b405d875d2a50a2970c052e765bad6d509ba8a10",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 81349,
+                "size": 81314,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017088/bidi_mail_ui-0.10.1b2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017211/bidi_mail_ui-0.10.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -82,11 +82,11 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "* Fix: A bug in the message composition code which has some either surfaced just recently or has somehow started manifesting more frequently.\n* Website switched to <a href=\"https://github.com/eyalroz/bidimailui/\" rel=\"nofollow\">https://github.com/eyalroz/bidimailui/</a>  - since MozDev is going to be taken down soon."
+            "en-US": "* **Fix:** Was using an identifier instead of a string, messing up some of HTML message composition support\n* **Fix:** Was missing an XHTML sub-namespace for the preferences/\n* Extension homepage link now points to the GitHub repository.\n\nThis is probably the last version to support Seamonkey 1.x, Seamonkey 2.x (suiterunner) and Thunderbird versions below 68."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/versions/0.10.1b2",
-        "version": "0.10.1b2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/versions/0.10.1",
+        "version": "0.10.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -114,7 +114,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-07-15T20:45:45Z",
+    "last_updated": "2020-08-13T11:22:42Z",
     "name": {
         "en-US": "BiDi Mail UI"
     },

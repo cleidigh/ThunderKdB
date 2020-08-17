@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14188/14188397.png?modified=1589573079"
         }
     ],
-    "average_daily_users": 190,
+    "average_daily_users": 208,
     "categories": {
         "thunderbird": [
             "calendar"
@@ -85,6 +85,7 @@
     },
     "default_locale": "en-US",
     "description": {
+        "fr": "<strong>Comment ça marche ?</strong>\nUne fois que l'extension est installée, une nouvelle icône apparaît dans la barre d'outils courrier de Thunderbird. Cliquez dessus pour voir le menu de GCalTab.\n\nCliquez sur \"Open\" pour ouvrir l'onglet Google Agenda. Vous pouvez activer / désactiver DarkReader sur l'onglet Google Agenda grâce au bouton \"Dark\". \n\n<strong>Il y a d'autres extensions qui permettent d'ouvrir un onglet Google Agenda. Qu'est-ce que GCalTab apporte ?</strong>\nGCalTab apporte deux choses qui n'existent souvent pas dans les autres extensions :  \n<ul><li>La possibilité d'utiliser un mode sombre. Protégez vos yeux !</li><li>La possibilité de vous déconnecter - reconnecter et de passer facilement d'un compte à un autre depuis le menu de GCalTab.</li></ul>\n<strong>Quelles permissions sont demandées ?</strong>\nGCalTab a besoin de votre permission pour accéder aux données pour :  \n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>De plus, GCalTab nécessite un accès aux onglets du navigateur pour maintenir un onglet unique.\n\n<strong>Cela signifie-t-il que GCalTab collecte mes données ?</strong>\n\nNon, GCalTab ouvre simplement un onglet dans Thunderbird, exactement comme cela serait le cas avec un navigateur web.\nIl ne collecte aucune donnée.\nCes permissions sont nécessaires pour \"gérer\" les onglets sur ces trois domaines. \n\"Gérer\" signifiant :\n<ul><li>ouvrir un onglet</li><li>exécuter un script sur cet onglet</li></ul>\nL'onglet doit être ouvert pour une raison évidente : c'est le but de l'extension. \nLe seul script qui soit potentiellement exécuté sur cet onglet est l'algorithme de DarkReader, qui a un politique de confidentialité rigoureuse.\n\nBien évidemment, Google Agenda fonctionne comme il le ferait dans votre navigateur web, y compris en ce qui concerne la collecte de données.\n\n<strong>Donc GCalTab ne collectera jamais mes données ?</strong>\nJamais.\n\n<strong>Comment puis-je rester connecté lorsque je rouvre Thunderbird ?</strong>\nSi vous souhaitez rester connecté à Google Agenda, vous devez autoriser des cookies. \nVous trouverez le menu des cookies dans les menus suivants de Thunderbird :\nGNU/Linux : \"Édition\" &gt; \"Préférences\" &gt; \"Vie privée\" ou \"Vie privée et sécurité\" &gt; section \"Contenu web\".\nmacOS : \"Thunderbird\" &gt; \"Préférences\" &gt; \"Vie privée\" ou \"Vie privée et sécurité\" &gt; section \"Contenu web\".\nWindows : \"Outils\" &gt; \"Options\" &gt; \"Vie privée\" ou \"Vie privée et sécurité\" &gt; section \"Contenu web\".\nVous devrez autoriser et conserver les cookies pour ces trois domaines :\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>\n<strong>Comment puis-je me déconnecter de mon compte Google Agenda ?</strong>\nSi vous utilisez le bouton \"Se déconnecter\" de Google Agenda, le lien s'ouvrira dans votre navigateur web et ne déconnectera pas Thunderbird mais la session de votre navigateur web.  \n<strong>Depuis la version 0.5</strong>, il est possible de se déconnecter depuis le menu de GCalTab en cliquant sur le bouton \"Sign out\".\n\n<strong>Comment puis-je passer à un autre compte Google Agenda ?</strong>\nSi vous utilisez le bouton \"Ajouter un compte\" ou \"Gérer votre compte Google\", le lien s'ouvrira dans votre navigateur web et ne changera pas votre session Thunderbird.  \n<strong>Depuis la version 0.7</strong>\nSi vous vous êtes déjà connecté au compte auquel vous souhaitez passer, vous pouvez utiliser le bouton \"Switch account\" de GCalTab.\nSi vous souhaitez vous connecter à un nouveau compte, vous pouvez cliquer sur le bouton \"Add account\".",
         "en-US": "<strong>How does it work ?</strong>\nOnce the add-on is installed, a new icon appears in Thunderbird Mail toolbar. Click on it to see GCalTab menu.\n\nClick on \"Open\" to open the Google Calendar tab. You can switch on/off the \"Dark\" button to activate DarkReader on the Google Calendar tab.\n\n<strong>There are plenty of add-ons that open a Google Calendar tab in Thunderbird. What does GCalTab bring ?</strong>\nGCalTab brings two things that are often missed in other add-ons:  \n<ul><li>The possibility to switch to a dark mode. Save your eyes !</li><li>The possibility to simply disconnect - reconnect and switch between several accounts from GCalTab menu.</li></ul>\n<strong>What permissions are needed ?</strong>\nGCalTab will need to access your data for:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>In addition, GCalTab will need to access Thunderbird tabs to maintain a unique tab.\n\n<strong>Does it means that GCalTab collects my data ?</strong>\n\nNo, GCalTab simply opens tabs in Thunderbird, exactly as it would be done in a web browser.\nIt does not collect any data.\nThese permissions are needed to allow GCalTab to \"manage\" tabs for these three domains in Thunderbird. \"Manage\" means:\n<ul><li>opening tabs</li><li>execute scripts on these tabs</li></ul>\nTabs are open for obvious reason: that's the aim of the add-on.\nThe only script that can be executed on these tabs is the DarkReader algorithm, that has a strict privacy policy.\n\nOf course, Google Calendar works as it would do in your web browser, including regarding data collection.\n\n<strong>So GCalTab will never collect my data ?</strong>\nNever.\n\n<strong>How do I stay connected when I re-open Thunderbird ?</strong>\nIf you wish to stay connected to Google Calendar, you will have to allow cookies.\nThe cookies menu can be access as follow in Thunderbird:\nGNU/Linux : \"Edit\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nmacOS : \"Thunderbird\" &gt; \"Preferences\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nWindows : \"Tools\" &gt; \"Options\" &gt; \"Privacy\" or \"Privacy and Security\" &gt; \"Web Content\" section.\nYou will have to allow and keep cookies for these three domains:\n<ul><li><a href=\"http://accounts.google.com\" rel=\"nofollow\">accounts.google.com</a></li><li><a href=\"http://calendar.google.com\" rel=\"nofollow\">calendar.google.com</a></li><li><a href=\"http://google.com\" rel=\"nofollow\">google.com</a></li></ul>\n<strong>How do I disconnect from a Google Calendar account ?</strong>\nIf you use the Google Calendar \"Sign out\" button, the link will open in your web browser and will not disconnect Thunderbird but your web browser session.\n<strong>Since version 0.5</strong>, it is possible to sign out from GCalTab menu by pushing the \"Sign out\" button\n\n<strong>How do I switch to another Google Calendar account ?</strong>\nIf you use the Google Calendar \"Add account\" or \"Manage your Google Account\" button, the link will open in your web browser and will not change your Thunderbird session.\n<strong>Since version 0.7</strong>\nIf you have ever connected to the account you wish to switch to, you can click the \"Switch account\" button.\nIf you wish to connect to a new account, this can be done by clicking the \"Add account\" button."
     },
     "developer_comments": null,
@@ -93,6 +94,7 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
+        "fr": "https://github.com/ftassy/GCalTab",
         "en-US": "https://github.com/ftassy/GCalTab"
     },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987833-64.png?modified=3f119100",
@@ -106,6 +108,7 @@
     "is_source_public": true,
     "last_updated": "2020-06-04T18:05:03Z",
     "name": {
+        "fr": "GCalTab",
         "en-US": "GCalTab"
     },
     "previews": [
@@ -163,10 +166,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 0,
-        "count": 0,
-        "average": 0,
-        "text_count": 0
+        "bayesian_average": 3.85693,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gcaltab/reviews/",
     "requires_payment": false,
@@ -174,6 +177,7 @@
     "slug": "gcaltab",
     "status": "public",
     "summary": {
+        "fr": "GCalTab est une extension pour Thunderbird qui ouvre le site web de Google Agenda dans un onglet de Thunderbird. Il permet d'utiliser un magnifique mode sombre grâce à l'algorithme de DarkReader.",
         "en-US": "GCalTab is a Thunderbird add-on that opens Google Calendar website in a Thunderbird tab. It features a beautiful dark mode thanks to the DarkReader algorithm."
     },
     "support_email": {

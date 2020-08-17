@@ -1,5 +1,49 @@
 [
     {
+        "id": 2474082,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2474082",
+        "files": [
+            {
+                "id": 1017244,
+                "created": "2020-08-13T19:45:26Z",
+                "hash": "sha256:9a5ee99cb6ad5d7c6ed5b98d77bc759714b0aa3269a22208bb27add1c9a933c0",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 898725,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017244/cardbook-51.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "fr": "",
+            "en-US": "- fix for lists conversion (big thanks to Alexander Bergmann)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/51.4",
+        "version": "51.4"
+    },
+    {
         "id": 2474047,
         "channel": "listed",
         "compatibility": {
@@ -2151,49 +2195,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/36.1",
         "version": "36.1"
-    },
-    {
-        "id": 2469725,
-        "channel": "listed",
-        "compatibility": {
-            "thunderbird": {
-                "max": "60.*",
-                "min": "51.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2469725",
-        "files": [
-            {
-                "id": 1012781,
-                "created": "2019-05-08T11:24:28Z",
-                "hash": "sha256:a98ad2aa4637586d71fd54689389321744b61f6fd2f5610fe3c501262d7dc769",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 1064884,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012781/cardbook-36.0-tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "fr": "",
-            "en-US": "- fix for tel calls\n- fix for 3.0 dates (YYYYMMDD is now admitted) (big thanks to Michael Roland)\n- fix for 3.0 partial dates (compliance with Apple) (big thanks to Michael Roland)\n- date pickers defaulted with values (big thanks to Michael Roland)"
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/36.0",
-        "version": "36.0"
     }
 ]

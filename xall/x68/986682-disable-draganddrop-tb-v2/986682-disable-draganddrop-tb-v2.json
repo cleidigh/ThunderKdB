@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14168/14168427.png?modified=1562424735"
         }
     ],
-    "average_daily_users": 906,
+    "average_daily_users": 857,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,43 +18,43 @@
     "contributions_url": "",
     "created": "2019-07-06T15:47:23Z",
     "current_version": {
-        "id": 2472781,
+        "id": 2474080,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/disable-draganddrop-tb-v2/versions/2472781",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/disable-draganddrop-tb-v2/versions/2474080",
         "files": [
             {
-                "id": 1015883,
-                "created": "2019-10-25T23:49:35Z",
-                "hash": "sha256:d3154dc773844f42994e3da56cb8b1cb14b35c3880bd6e1815f0216eedc64835",
-                "is_restart_required": true,
+                "id": 1017242,
+                "created": "2020-08-13T01:43:35Z",
+                "hash": "sha256:4b53965cbb45f04a4d534ed9f7934637927c5aa55eb7bfd48b825e981b45f064",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1015,
+                "size": 1817,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015883/disable_draganddrop_thunderbird-4.3.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017242/disable_draganddrop_for_thunderbird_68-4.4.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 7341,
             "name": {
                 "en-US": "Public Domain"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-draganddrop-tb-v2/license/4.3.0"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-draganddrop-tb-v2/license/4.4.0"
         },
         "release_notes": {
-            "en-US": "- Updated home page URL."
+            "en-US": "Supported Thunderbird 78."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-draganddrop-tb-v2/versions/4.3.0",
-        "version": "4.3.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/disable-draganddrop-tb-v2/versions/4.4.0",
+        "version": "4.4.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -77,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-30T01:12:15Z",
+    "last_updated": "2020-08-13T11:19:34Z",
     "name": {
         "en-US": "Disable DragAndDrop (for Thunderbird 68+)"
     },
@@ -126,10 +126,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

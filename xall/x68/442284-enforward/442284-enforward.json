@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1252,
+    "average_daily_users": 1187,
     "categories": {
         "thunderbird": [
             "composition",
@@ -19,30 +19,37 @@
     "contributions_url": null,
     "created": "2013-05-29T07:32:37Z",
     "current_version": {
-        "id": 2473224,
+        "id": 2474073,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enforward/versions/2473224",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enforward/versions/2474073",
         "files": [
             {
-                "id": 1016336,
-                "created": "2020-01-16T14:35:15Z",
-                "hash": "sha256:7b5fc5d2e67ffcdee9fd965c1fc2d7cf3c5004bd7c81cbefb4571ac54352aa3e",
-                "is_restart_required": true,
+                "id": 1017235,
+                "created": "2020-08-11T21:56:21Z",
+                "hash": "sha256:333bfb59acd2008d75a734434d02bfa33f43f686fde663ca8e0244909a64a076",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 30986,
+                "size": 32151,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016336/enforward-0.5.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017235/enforward-2.0.1-tb.xpi?src=",
+                "permissions": [
+                    "messagesRead",
+                    "tabs",
+                    "storage",
+                    "accountsRead",
+                    "menus",
+                    "compose"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -51,16 +58,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fixed: Fail to send a message if memo option is enabled\nFixed: Account name meta character (%N) is not replaced correctly\nChanged: Package structure is changed. No jar is used.",
-            "ja": ""
+            "en-US": "* Rewrite in MailExtensions\n* Add toolbar button to main toolbar\n* Add toolbar button to message compose window. I helps to write a mail to be sent to Evernote manually, not forwarding\n* Remove activeTab permission request"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enforward/versions/0.5.1",
-        "version": "0.5.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enforward/versions/2.0.1",
+        "version": "2.0.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>MailExtensions EnForward is under developing. I'll announce it on my blog when it is available. Please check.</b>\n<a href=\"https://hogiblog.blogspot.com/2020/07/enforward-for-thunderbird-78-is-coming.html\" rel=\"nofollow\">https://hogiblog.blogspot.com/2020/07/enforward-for-thunderbird-78-is-coming.html</a>\n\n\nSave your email into Evernote by forwarding it to Evernote email address.\nAnd this extension has the following features:\n1) Check message size and counts messages sent a day. Alert if you over the limitation.\n2) Specify note title, notebook and tags based on a message information such as subject, sender, sent time. For details, see the Tips tab in setting.\n3) Add text to top and end of a message. It supports some HTML tags. And, same as the 2) setting, you can include a message information\n4) Remove attachments automatically. By default, this option is disabled and forward all attachments.\n5) Add reminder and notification date\n6) Add \"Forward to Evernote\" to Message Filter\n\nAnd, from v0.3.00, forwarding to OneNote is also supported.\n\nIf you have requests or find bugs, please feel free to file tickets to the following: Issue Tracking System.\n<a href=\"http://hogi.sakura.ne.jp/hiki/?IssueTrackingSystem\" rel=\"nofollow\">http://hogi.sakura.ne.jp/hiki/?IssueTrackingSystem</a>\n\nBefore you file a ticket, please read the Note section, especially about Internal Server Error. <em>Please don't multi-post if you see the error.</em>"
+        "en-US": "Save your email into Evernote by forwarding it to Evernote email address.\nAnd this extension has the following features:\n1) Check message size and counts messages sent a day. Alert if you over the limitation.\n2) Specify note title, notebook and tags based on a message information such as subject, sender, sent time. For details, see the Tips tab in setting.\n3) Add text to top and end of a message. It supports some HTML tags. And, same as the 2) setting, you can include a message information\n4) Remove attachments automatically. By default, this option is disabled and forward all attachments.\n5) Add reminder and notification date\n6) Add \"Forward to Evernote\" to Message Filter\n\nAnd, from v0.3.00, forwarding to OneNote is also supported.\n\nIf you have requests or find bugs, please feel free to file tickets to the following: Issue Tracking System.\n<a href=\"http://hogi.sakura.ne.jp/hiki/?IssueTrackingSystem\" rel=\"nofollow\">http://hogi.sakura.ne.jp/hiki/?IssueTrackingSystem</a>\n\nBefore you file a ticket, please read the Note section, especially about Internal Server Error. <em>Please don't multi-post if you see the error.</em>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enforward/edit",
@@ -80,7 +86,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-01-20T18:58:08Z",
+    "last_updated": "2020-08-13T11:15:26Z",
     "name": {
         "en-US": "EnForward"
     },
@@ -183,10 +189,10 @@
     "weekly_downloads": 63,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-25T17:32:15Z"
         }

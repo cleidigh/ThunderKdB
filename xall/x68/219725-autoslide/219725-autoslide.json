@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 178,
+    "average_daily_users": 175,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,30 +18,30 @@
     "contributions_url": null,
     "created": "2010-08-19T16:59:42Z",
     "current_version": {
-        "id": 2472951,
+        "id": 2474098,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoslide/versions/2472951",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoslide/versions/2474098",
         "files": [
             {
-                "id": 1016058,
-                "created": "2019-11-30T15:00:27Z",
-                "hash": "sha256:7994b3a9a26b75e9156c921f7d94e72a5f418d2238c11b2cc8e141dba056b25b",
-                "is_restart_required": true,
+                "id": 1017260,
+                "created": "2020-08-16T23:50:58Z",
+                "hash": "sha256:6426d9c340993baf6d84f694aad66de6b56f2707eb750ac54e87dae06a35e709",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 17421,
+                "size": 20388,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016058/autoslide-0.0.17beta1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017260/autoslide-0.0.19beta1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -75,15 +75,15 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Update for Thunderbird 68.0"
+            "en-US": "First beta release for Thunderbird 78"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoslide/versions/0.0.17beta1",
-        "version": "0.0.17beta1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autoslide/versions/0.0.19beta1",
+        "version": "0.0.19beta1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Work only for Thunderbird 68.0 and older. Currently, there are no plans to update this for newer versions.\n\nThe AutoSlide addon automatically moves the splitter between the thread and the message pane in Thundbird. The position of the splitter is adjusted in a way that all messages are displayed in the thread pane if possible. At the same time the splitter is moved so that the height of the thread pane is as small as possible.\n\nDouble click on the thread pane splitter causes it to automatically slide in to optimal position.\n\nRight click on the thread pane splitter toggles the autosplit feature (dark color means no autosplit).\n\nThe maximal size of the thread pane can be set in the addon preferences.\n\nFor new versions also see the beta channel: <a href=\"https://addons.mozilla.org/thunderbird/addon/autoslide/#beta-channel\" rel=\"nofollow\">https://addons.mozilla.org/thunderbird/addon/autoslide/#beta-channel</a>"
+        "en-US": "The AutoSlide addon automatically moves the splitter between the thread and the message pane in Thundbird. The position of the splitter is adjusted in a way that all messages are displayed in the thread pane if possible. At the same time the splitter is moved so that the height of the thread pane is as small as possible.\n\nDouble click on the thread pane splitter causes it to automatically slide in to optimal position.\n\nRight click on the thread pane splitter toggles the autosplit feature (dark color means no autosplit).\n\nThe maximal size of the thread pane can be set in the addon preferences.\n\nFor new versions also see the beta channel: <a href=\"https://addons.mozilla.org/thunderbird/addon/autoslide/#beta-channel\" rel=\"nofollow\">https://addons.mozilla.org/thunderbird/addon/autoslide/#beta-channel</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autoslide/edit",
@@ -91,18 +91,18 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
-        "en-US": "http://autoslide.mozdev.org/"
+        "en-US": "https://github.com/jmozmoz/autoslide"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/219/219725-64.png?modified=1593951531",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/219/219725-64.png?modified=1597621911",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/219/219725-32.png?modified=1593951531",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/219/219725-64.png?modified=1593951531"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/219/219725-32.png?modified=1597621911",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/219/219725-64.png?modified=1597621911"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-12-11T05:39:16Z",
+    "last_updated": "2020-08-17T06:09:17Z",
     "name": {
         "en-US": "AutoSlide"
     },
@@ -141,7 +141,7 @@
     },
     "support_email": null,
     "support_url": {
-        "en-US": "http://forums.mozillazine.org/viewtopic.php?uid=667645&f=48&t=1972877&start=0"
+        "en-US": "https://github.com/jmozmoz/autoslide"
     },
     "tags": [
         "firefox57"
@@ -151,10 +151,10 @@
     "weekly_downloads": 23,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2017-11-15T00:26:20Z"
         }

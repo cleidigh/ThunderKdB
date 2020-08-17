@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 479,
+    "average_daily_users": 541,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-02-15T03:17:57Z",
     "current_version": {
-        "id": 2473567,
+        "id": 2474079,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "68.0"
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/compact-headers/versions/2473567",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/compact-headers/versions/2474079",
         "files": [
             {
-                "id": 1016711,
-                "created": "2020-03-24T06:34:58Z",
-                "hash": "sha256:d56197d007fca46bdd583c51f1a11478dde9090bf66ea6835789675b14d08a68",
+                "id": 1017241,
+                "created": "2020-08-13T01:33:21Z",
+                "hash": "sha256:5ee2f00e847234f0435000392de44b904c74360fd2649b813d7d1ae6ef1424f8",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4460,
+                "size": 5468,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016711/compact_headers-2.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017241/compact_headers-2.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -72,15 +72,15 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Added twisty.\nRemoved toolbarbutton.\nFixed uninstall &amp; disable.\nAdded shortcut key [Alt-D]."
+            "en-US": "Added option (in context menu) to display headers on a single line."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/compact-headers/versions/2.1",
-        "version": "2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/compact-headers/versions/2.3",
+        "version": "2.3"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Adds a twisty to the header area which toggles between compact and expanded headers.\n\nVersion 2.2 will add a context menu to the header area where you can choose between all and normal headers.\n\nPlease use the provided support email address for bug reports."
+        "en-US": "Adds a twisty to the header area which toggles between compact and expanded headers.\n\nAdds a context menu to the header area with options for the extension: \n- Display compact headers on a single line.\n- View all or normal expanded headers.\n\nPlease use the provided support email address for bug reports."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/compact-headers/edit",
@@ -99,58 +99,90 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-22T10:37:56Z",
+    "last_updated": "2020-08-13T08:45:46Z",
     "name": {
         "en-US": "Compact Headers"
     },
     "previews": [
         {
-            "id": 205929,
+            "id": 206096,
             "caption": {
                 "en-US": "Compact Headers"
             },
             "image_size": [
-                480,
-                240
+                466,
+                220
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205929.png?modified=1596663036",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206096.png?modified=1597318772",
             "thumbnail_size": [
                 320,
-                160
+                151
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205929.png?modified=1596663036"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206096.png?modified=1597318772"
         },
         {
-            "id": 205930,
+            "id": 206097,
             "caption": {
                 "en-US": "Normal Headers"
             },
             "image_size": [
-                480,
-                240
+                466,
+                220
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205930.png?modified=1596663036",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206097.png?modified=1597318772",
             "thumbnail_size": [
                 320,
-                160
+                151
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205930.png?modified=1596663036"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206097.png?modified=1597318772"
         },
         {
-            "id": 206082,
+            "id": 206104,
             "caption": {
-                "en-US": "Version 2.2: All Headers (with context menu)"
+                "en-US": "Single Line Headers"
             },
             "image_size": [
-                480,
-                240
+                466,
+                220
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206082.png?modified=1596663036",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206104.png?modified=1597318772",
             "thumbnail_size": [
                 320,
-                160
+                151
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206082.png?modified=1596663036"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206104.png?modified=1597318772"
+        },
+        {
+            "id": 206099,
+            "caption": {
+                "en-US": "All Headers (with context menu)"
+            },
+            "image_size": [
+                466,
+                220
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206099.png?modified=1597318772",
+            "thumbnail_size": [
+                320,
+                151
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206099.png?modified=1597318772"
+        },
+        {
+            "id": 206103,
+            "caption": {
+                "en-US": "Single Line Headers (with context menu)"
+            },
+            "image_size": [
+                466,
+                220
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206103.png?modified=1597318772",
+            "thumbnail_size": [
+                320,
+                151
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206103.png?modified=1597318772"
         }
     ],
     "public_stats": false,
@@ -166,7 +198,7 @@
     "slug": "compact-headers",
     "status": "public",
     "summary": {
-        "en-US": "Limits displayed headers to 2 lines.\nAdds a twisty to the header area."
+        "en-US": "Limits displayed headers to 1 or 2 lines.\nAdds a twisty to the header area."
     },
     "support_email": {
         "en-US": "dillinger@kpnmail.nl"
@@ -182,7 +214,13 @@
         "ext_comp": {
             "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-08-03T01:58:30Z",
+            "comp78pv_version": "2.2",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }
