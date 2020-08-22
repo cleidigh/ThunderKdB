@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1577083620"
         }
     ],
-    "average_daily_users": 111,
+    "average_daily_users": 94,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2019-06-18T10:15:19Z",
     "current_version": {
-        "id": 2473137,
+        "id": 2474117,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "71.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastemarkdownsyntax/versions/2473137",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastemarkdownsyntax/versions/2474117",
         "files": [
             {
-                "id": 1016248,
-                "created": "2020-01-02T03:34:05Z",
-                "hash": "sha256:06f9868c6c801382fb4b75991ccab46a7d487b0134e5f7be5de0146683350e0d",
-                "is_restart_required": true,
+                "id": 1017279,
+                "created": "2020-08-20T19:20:56Z",
+                "hash": "sha256:7b5bd1e64469099df9c35ee225c3907a62011ba46bd9bdd6ed893ae611543617",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 2961,
+                "size": 3534,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016248/pastemarkdownsyntax-46.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017279/pastemarkdownsyntax-47.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,15 +50,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "README version 1.8\n\nTitle: PasteMarkdownSyntax\nMain source: install.rdf, chrome.manifest, paste_arr.xul.\nRequired addons: Lightning, AdvancedTasks.\nDescription: \nThis is buttons to paste Markdown syntax texts on event and task dialog descriptions.\nItems are:\n'**', '~~', '```', '###', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\n\nJanuary 1 2020.\n\nFrom Sungho Hwang."
+            "en-US": "README version 1.9\n\nTitle: PasteMarkdownSyntax\nMain source: install.rdf, chrome.manifest, paste_arr.xul.\nRequired addons: Lightning, AdvancedTasks.\nDescription: \nThis is buttons to paste Markdown syntax texts on event and task dialog descriptions.\nItems are:\n'**', '~~', '###', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\n\nAnd,\n[--] Text align justify, -][- Text align center, [-- Text align left, --] Text align right.\n[S] Font small, [M] Font medium, [L] Font large both dialog and taskview descriptions.\n\nAugust 20 2020.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastemarkdownsyntax/versions/46.6",
-        "version": "46.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastemarkdownsyntax/versions/47.1",
+        "version": "47.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Paste Markdown syntax on event and task dialog descriptions.\nItems are:\n'**', '```', '###',  '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\npraise Cardinal Soo-Hwan, Kim.\n\n[Some requests to users]\nPlease, let me know whether you have item which you wish to add in this menu, and what that is.",
+        "en-US": "Paste Markdown syntax on event and task dialog descriptions.\nItems are:\n'**', '###',  '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\npraise Stephen Kim Sou-hwan.\n\n[Some requests to users]\nPlease, let me know whether you have item which you wish to add in this menu, and what that is.",
         "ko": "이벤트와 태스크 다이알로그 디스크립션에 마크다운 구문을 붙이는 메뉴입니다:\n**  Bold, ```  Fence, ###  Heading, ![alt text]( ) Image, ----- Horizon and\n|---- Right-align, |---|  Center, ----|  Left-align.\n\n김수환 추기경님을 기리며.\n\n2019년 7월 20일\n\n개발자 황성호."
     },
     "developer_comments": null,
@@ -76,7 +76,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-03T17:18:44Z",
+    "last_updated": "2020-08-20T20:02:20Z",
     "name": {
         "en-US": "PasteMarkdownSyntax",
         "ko": "마크다운 구문 붙이다"
@@ -101,10 +101,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 0,
-        "count": 0,
-        "average": 0,
-        "text_count": 0
+        "bayesian_average": 0.91,
+        "count": 2,
+        "average": 1,
+        "text_count": 2
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastemarkdownsyntax/reviews/",
     "requires_payment": false,
@@ -112,7 +112,7 @@
     "slug": "pastemarkdownsyntax",
     "status": "public",
     "summary": {
-        "en-US": "Paste Markdown syntax on event and task dialog descriptions.\nItems are:\n'**', '```', '###',  '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\npraise Cardinal Soo-Hwan, Kim.",
+        "en-US": "Paste Markdown syntax on event and task dialog descriptions.\nItems are:\n'**', '###',  '~~', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\npraise Stephen Kim Sou-hwan.\n\nExecuted well as of 2020-08-21.",
         "ko": "이벤트와 태스크 다이알로그 디스크립션에 마크다운 구문을 붙이는 메뉴입니다:\n**  Bold, ```  Fence, ###  Heading, ![alt text]( ) Image, ----- Horizon and\n|---- Right-align, |---|  Center, ----|  Left-align.\n\n김수환 추기경님을 기리며.\n\n2019년 7월 20일\n\n개발자 황성호."
     },
     "support_email": {

@@ -1,10 +1,53 @@
 [
     {
-        "id": 2473137,
+        "id": 2474117,
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
                 "max": "*",
+                "min": "71.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/pastemarkdownsyntax/versions/2474117",
+        "files": [
+            {
+                "id": 1017279,
+                "created": "2020-08-20T19:20:56Z",
+                "hash": "sha256:7b5bd1e64469099df9c35ee225c3907a62011ba46bd9bdd6ed893ae611543617",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 3534,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017279/pastemarkdownsyntax-47.1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "README version 1.9\n\nTitle: PasteMarkdownSyntax\nMain source: install.rdf, chrome.manifest, paste_arr.xul.\nRequired addons: Lightning, AdvancedTasks.\nDescription: \nThis is buttons to paste Markdown syntax texts on event and task dialog descriptions.\nItems are:\n'**', '~~', '###', '----', '|---', '|---|', '---|', '|:---|', '|:---:|', '|---:|', '![alt text]( )'\n\nAnd,\n[--] Text align justify, -][- Text align center, [-- Text align left, --] Text align right.\n[S] Font small, [M] Font medium, [L] Font large both dialog and taskview descriptions.\n\nAugust 20 2020.\n\nFrom Sungho Hwang."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/pastemarkdownsyntax/versions/47.1",
+        "version": "47.1"
+    },
+    {
+        "id": 2473137,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "73.0",
                 "min": "71.0"
             }
         },
@@ -47,7 +90,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "73.0",
                 "min": "71.0"
             }
         },
@@ -91,7 +134,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "73.0",
                 "min": "68.0"
             }
         },

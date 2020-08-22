@@ -18,26 +18,26 @@
     "contributions_url": null,
     "created": "2017-04-26T07:28:02Z",
     "current_version": {
-        "id": 2473986,
+        "id": 2474109,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/grammalecte-fr-thunderbird/versions/2473986",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/grammalecte-fr-thunderbird/versions/2474109",
         "files": [
             {
-                "id": 1017148,
-                "created": "2020-07-23T09:41:10Z",
-                "hash": "sha256:e73409a379533b43096c413d8d684c2c4924ed1e3fcbe22f0fc1fd87223189eb",
+                "id": 1017271,
+                "created": "2020-08-18T15:22:43Z",
+                "hash": "sha256:0d8df475983f28db29378eeab4634c65416a2301f13e984fc9f7fb6a61c47909",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4987589,
+                "size": 4982509,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017148/grammalecte_fr_for_thunderbird-1.11.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017271/grammalecte_fr_for_thunderbird-1.12.0-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "downloads",
@@ -75,12 +75,12 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "fr": "[Mise à jour] Correcteur grammatical.\n[Mise à jour] Dictionnaires orthographiques.\n[Compatibilité] MailExtension pour Thunderbird 78+",
-            "en-US": "[Update] Grammar checker.\n[Update] Spell checking dictionaries.\n[Compatibility] MailExtension for Thunderbird 78+"
+            "fr": "[Mise à jour] Correcteur grammatical.\n[Mise à jour] Dictionnaires orthographiques.\n[Corrigé] Bug altérant certains mails en HTML.",
+            "en-US": "[Update] Grammar checker.\n[Update] Spelling dictionaries.\n[Fixed] Bug altering some HTML mails."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/grammalecte-fr-thunderbird/versions/1.11.0",
-        "version": "1.11.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/grammalecte-fr-thunderbird/versions/1.12.0",
+        "version": "1.12.0"
     },
     "default_locale": "fr",
     "description": {
@@ -105,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-23T09:45:03Z",
+    "last_updated": "2020-08-18T15:25:03Z",
     "name": {
         "fr": "Grammalecte [fr] (for Thunderbird)",
         "en-US": "Grammalecte [fr] (for Thunderbird)"
@@ -268,6 +268,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-07-23T09:41:10Z",
+            "comp78pv_version": "1.11.0",
+            "comp78pv_vmin": "78.0a1",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-08-07T13:28:56Z"
         }
