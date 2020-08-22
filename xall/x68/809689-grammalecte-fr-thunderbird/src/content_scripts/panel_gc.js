@@ -142,13 +142,21 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
         this.clear();
         this.hideMessage();
         this.resetTimer();
-        if (typeof(what) === "string" && what === "__ThunderbirdComposeWindow__") {
-            // Thunderbird compose window
-            this.oTextControl = new HTMLPageEditor(document);
+        if (typeof(what) === "string") {
+            if (what === "__ThunderbirdComposeWindow__") {
+                // Thunderbird compose window
+                this.oTextControl = new HTMLPageEditor(document);
+            } else {
+                this.oTextControl = new TextNodeEditor(what, xResultNode);
+            }
         }
-        else if (typeof(what) === "string" || (what.nodeType && what.nodeType === 1)) {
-            // Text or node
-            this.oTextControl = new TextNodeEditor(what, xResultNode);
+        else if (what.nodeType && what.nodeType === 1) {
+            if (what.tagName == "IFRAME") {
+                this.oTextControl = new HTMLPageEditor(what, xResultNode);
+            }
+            else {
+                this.oTextControl = new TextNodeEditor(what, xResultNode);
+            }
         }
         else {
             // error

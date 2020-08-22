@@ -94,7 +94,7 @@ class GrammalectePanel {
     }
 
     _createCopyButton () {
-        let xButton = oGrammalecte.createNode("div", {id: "grammalecte_clipboard_button", className: "grammalecte_panel_button grammalecte_copy_button", textContent: "📋", title: "Copier le contenu de l’éditeur dans le presse-papiers"});
+        let xButton = oGrammalecte.createNode("div", {id: "grammalecte_clipboard_button", className: "grammalecte_panel_button grammalecte_clipboard_button", textContent: "📋", title: "Copier le contenu de l’éditeur dans le presse-papiers"});
         xButton.onclick = () => { this.copyTextToClipboard(); };
         return xButton;
     }
@@ -252,6 +252,13 @@ class GrammalectePanel {
     stopWaitIcon () {
         this.bWorking = false;
         this.xWaitIcon.style.visibility = "hidden";
+    }
+
+    highlightClipboardButton () {
+        console.log("$$");
+        this.xClipboardButton.classList.remove("grammalecte_clipboard_animation");
+        this.xClipboardButton.classList.add("grammalecte_clipboard_animation");
+        console.log("$$");
     }
 
     showMessage (sMessage, sActionMessage="", sActionName="") {

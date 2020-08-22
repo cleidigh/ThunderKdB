@@ -8,50 +8,37 @@
     }
   },
   "name": "Quicktext",
-  "version": "3.1",
+  "version": "3.2",
   "author": "John Bieling",
   "homepage_url": "https://github.com/jobisoft/quicktext",
   "default_locale": "en-US",
   "description": "__MSG_extensionDescription__",  
   "icons": {
-    "32": "content/skin/icon.png"
+    "32": "chrome/skin/icon.png"
   },
-  "permissions": ["storage"],
+  "permissions" : ["storage"],
   "background": {
-    "scripts": ["content/scripts/preferences.js", "background.js"]
+    "scripts": [
+      "/chrome/content/scripts/preferences.js", 
+      "background.js"
+    ]
   },
   "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
+    },
     "LegacyPrefs": {
-      "schema": "content/api/LegacyPrefs/schema.json",
+      "schema": "api/LegacyPrefs/schema.json",
       "parent": {
         "scopes": ["addon_parent"],
         "paths": [["LegacyPrefs"]],
-        "script": "content/api/LegacyPrefs/implementation.js"
+        "script": "api/LegacyPrefs/implementation.js"
       }
-    },
-    "ChromeURL": {
-      "schema": "content/api/ChromeURL/schema.json",
-      "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["ChromeURL"]],
-        "script": "content/api/ChromeURL/implementation.js"
-      }
-    },
-    "ConversionHelper": {
-      "schema": "content/api/ConversionHelper/schema.json",
-      "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["ConversionHelper"]],
-        "script": "content/api/ConversionHelper/implementation.js"
-      }
-    },
-    "OverlayManager": {
-        "schema": "content/api/OverlayManager/schema.json",
-        "parent": {
-            "scopes": ["addon_parent"],
-            "paths": [ ["OverlayManager"] ],
-            "script": "content/api/OverlayManager/implementation.js"
-        }
     }    
   }
 }

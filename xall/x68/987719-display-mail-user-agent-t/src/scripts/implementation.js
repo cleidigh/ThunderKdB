@@ -60,8 +60,8 @@ var dispmuaApi = class extends ExtensionCommon.ExtensionAPI {
                 if (wd.document.getElementById(id)) wd.document.getElementById(id).remove();
             },
             async insertBefore(basePath, iconPath, iconText, id, target) {
-                console.log(win);
-                console.log(win.window.document.documentElement.getAttribute("windowtype"));
+                //console.log(win);
+                //console.log(win.window.document.documentElement.getAttribute("windowtype"));
                 this.insert(win, basePath, iconPath, iconText, id, target);
                 if (win2) {
                     console.log(win2.window.document.documentElement.getAttribute("windowtype"));

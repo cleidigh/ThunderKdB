@@ -7,16 +7,25 @@
                     }
              },
 	"name": "PasteMarkdownSyntax",
-	"version": "46.6",
+	"version": "47.1",
 	"description": "This is buttons to paste Markdown syntax texts on event and task dialog descriptions.",
              "icons": {
-               "32": "icons/newSquare32.png"
+               "16": "pms16.png",
+               "32": "pms32.png"
                  },
-             "legacy" : {
-               "type": "xul",
-               "options" : {
-               "page" : "chrome://pastemarkdownsyntax/content/paste_arr.xul",
-               "open_in_tab": true
-               }
-             }
+"background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+"experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["myapi"]],
+        "script": "implementation.js"
+      }
+    }
+  }
 }

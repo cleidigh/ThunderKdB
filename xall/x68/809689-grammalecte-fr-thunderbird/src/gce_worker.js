@@ -35,7 +35,7 @@
 importScripts("grammalecte/graphspell/helpers.js");
 importScripts("grammalecte/graphspell/str_transform.js");
 importScripts("grammalecte/graphspell/char_player.js");
-importScripts("grammalecte/graphspell/suggest.js");
+importScripts("grammalecte/graphspell/lexgraph_fr.js");
 importScripts("grammalecte/graphspell/ibdawg.js");
 importScripts("grammalecte/graphspell/spellchecker.js");
 importScripts("grammalecte/text.js");
@@ -48,7 +48,6 @@ importScripts("grammalecte/fr/gc_options.js");
 importScripts("grammalecte/fr/gc_rules.js");
 importScripts("grammalecte/fr/gc_rules_graph.js");
 importScripts("grammalecte/fr/gc_engine.js");
-importScripts("grammalecte/fr/lexicographe.js");
 importScripts("grammalecte/tests.js");
 /*
     Warning.
@@ -154,7 +153,6 @@ let bInitDone = false;
 
 let oSpellChecker = null;
 let oTokenizer = null;
-let oLxg = null;
 let oTest = null;
 let oLocution = null;
 
@@ -181,7 +179,7 @@ function init (sExtensionPath, dOptions=null, sContext="JavaScript", oInfo={}) {
             oTest = new TestGrammarChecking(gc_engine, sExtensionPath+"/grammalecte/fr/tests_data.json");
             oTokenizer = new Tokenizer("fr");
             oLocution =  helpers.loadFile(sExtensionPath + "/grammalecte/fr/locutions_data.json");
-            oLxg = new Lexicographe(oSpellChecker, oTokenizer, oLocution);
+            lexgraph_fr.load(oSpellChecker, oTokenizer, oLocution);
             if (dOptions !== null) {
                 if (!(dOptions instanceof Map)) {
                     dOptions = helpers.objectToMap(dOptions);
@@ -250,7 +248,7 @@ function getListOfTokens (sText, oInfo={}) {
         sText = sText.replace(/­/g, "").normalize("NFC");
         for (let sParagraph of text.getParagraph(sText)) {
             if (sParagraph.trim() !== "") {
-                postMessage(createResponse("getListOfTokens", oLxg.getListOfTokensReduc(sParagraph, true), oInfo, false));
+                postMessage(createResponse("getListOfTokens", lexgraph_fr.getListOfTokensReduc(sParagraph, true), oInfo, false));
             }
         }
         postMessage(createResponse("getListOfTokens", null, oInfo, true));

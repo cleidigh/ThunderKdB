@@ -150,10 +150,6 @@ const oGrammalecte = {
         return sPageText;
     },
 
-    purgeText: function (sText) {
-        return sText.replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&");
-    },
-
     createNode: function (sType, oAttr, oDataset=null) {
         try {
             let xNode = document.createElement(sType);
@@ -510,7 +506,7 @@ const oGrammalecteBackgroundPort = {
                     Commands received from the keyboard (shortcuts)
                 */
                 case "shortcutGrammarChecker":
-                    if (xActiveNode && (xActiveNode.tagName == "TEXTAREA" || xActiveNode.tagName == "INPUT" || xActiveNode.isContentEditable)) {
+                    if (xActiveNode && (xActiveNode.tagName == "TEXTAREA" || xActiveNode.tagName == "INPUT" || xActiveNode.tagName == "IFRAME" || xActiveNode.isContentEditable)) {
                         oGrammalecte.startGCPanel(xActiveNode);
                     } else {
                         oGrammalecte.startGCPanel(oGrammalecte.getPageText());

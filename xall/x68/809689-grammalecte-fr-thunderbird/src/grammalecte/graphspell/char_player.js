@@ -65,18 +65,6 @@ if (Map.prototype.grammalecte === undefined) {
 
 var char_player = {
 
-    _xTransCharsForSpelling: new Map([
-        ['ſ', 's'],  ['ﬃ', 'ffi'],  ['ﬄ', 'ffl'],  ['ﬀ', 'ff'],  ['ﬅ', 'ft'],  ['ﬁ', 'fi'],  ['ﬂ', 'fl'],  ['ﬆ', 'st']
-    ]),
-
-    spellingNormalization: function (sWord) {
-        let sNewWord = "";
-        for (let c of sWord) {
-            sNewWord += this._xTransCharsForSpelling.gl_get(c, c);
-        }
-        return sNewWord.normalize("NFC");
-    },
-
     oDistanceBetweenChars: {
         "a": {},
         "e": {"é": 0.5},
@@ -117,45 +105,6 @@ var char_player = {
         return 1;
     },
 
-    _xTransCharsForSimplification: new Map([
-        ['à', 'a'],  ['é', 'é'],  ['î', 'i'],  ['ô', 'o'],  ['û', 'u'],  ['ÿ', 'y'],
-        ['â', 'a'],  ['è', 'é'],  ['ï', 'i'],  ['ö', 'o'],  ['ù', 'u'],  ['ŷ', 'y'],
-        ['ä', 'a'],  ['ê', 'é'],  ['í', 'i'],  ['ó', 'o'],  ['ü', 'u'],  ['ý', 'y'],
-        ['á', 'a'],  ['ë', 'é'],  ['ì', 'i'],  ['ò', 'o'],  ['ú', 'u'],  ['ỳ', 'y'],
-        ['ā', 'a'],  ['ē', 'é'],  ['ī', 'i'],  ['ō', 'o'],  ['ū', 'u'],  ['ȳ', 'y'],
-        ['ç', 'c'],  ['ñ', 'n'],
-        ['œ', 'oe'], ['æ', 'ae'],
-        ['ſ', 's'],  ['ﬃ', 'ffi'],  ['ﬄ', 'ffl'],  ['ﬀ', 'ff'],  ['ﬅ', 'ft'],  ['ﬁ', 'fi'],  ['ﬂ', 'fl'],  ['ﬆ', 'st'],
-        ["⁰", "0"], ["¹", "1"], ["²", "2"], ["³", "3"], ["⁴", "4"], ["⁵", "5"], ["⁶", "6"], ["⁷", "7"], ["⁸", "8"], ["⁹", "9"],
-        ["₀", "0"], ["₁", "1"], ["₂", "2"], ["₃", "3"], ["₄", "4"], ["₅", "5"], ["₆", "6"], ["₇", "7"], ["₈", "8"], ["₉", "9"]
-    ]),
-
-    simplifyWord: function (sWord) {
-        // word simplication before calculating distance between words
-        sWord = sWord.toLowerCase();
-        sWord = [...sWord].map(c => this._xTransCharsForSimplification.gl_get(c, c)).join('');
-        let sNewWord = "";
-        let i = 1;
-        for (let c of sWord) {
-            if (c == 'e' || c != sWord.slice(i, i+1)) {  // exception for <e> to avoid confusion between crée / créai
-                sNewWord += c;
-            }
-            i++;
-        }
-        return sNewWord.replace(/eau/g, "o").replace(/au/g, "o").replace(/ai/g, "é").replace(/ei/g, "é").replace(/ph/g, "f");
-    },
-
-    _xTransNumbersToExponent: new Map([
-        ["0", "⁰"], ["1", "¹"], ["2", "²"], ["3", "³"], ["4", "⁴"], ["5", "⁵"], ["6", "⁶"], ["7", "⁷"], ["8", "⁸"], ["9", "⁹"]
-    ]),
-
-    numbersToExponent: function (sWord) {
-        let sNewWord = "";
-        for (let c of sWord) {
-            sNewWord += this._xTransNumbersToExponent.gl_get(c, c);
-        }
-        return sNewWord;
-    },
 
     aVowel: new Set("aáàâäāeéèêëēiíìîïīoóòôöōuúùûüūyýỳŷÿȳœæAÁÀÂÄĀEÉÈÊËĒIÍÌÎÏĪOÓÒÔÖŌUÚÙÛÜŪYÝỲŶŸȲŒÆ"),
     aConsonant: new Set("bcçdfghjklmnñpqrstvwxzBCÇDFGHJKLMNÑPQRSTVWXZ"),
@@ -474,50 +423,11 @@ var char_player = {
         ["ON", ["ONS", "ONT"]],
         ["oi", ["ois", "oit", "oix"]],
         ["OI", ["OIS", "OIT", "OIX"]],
-    ]),
-
-
-    // Préfixes et suffixes
-    aPfx1: new Set([
-        "anti", "archi", "contre", "hyper", "mé", "méta", "im", "in", "ir", "par", "proto",
-        "pseudo", "pré", "re", "ré", "sans", "sous", "supra", "sur", "ultra"
-    ]),
-
-    aPfx2: new Set([
-        "belgo", "franco", "génito", "gynéco", "médico", "russo"
-    ]),
-
-
-    cut: function (sWord) {
-        // returns an arry of strings (prefix, trimed_word, suffix)
-        let sPrefix = "";
-        let sSuffix = "";
-        let m = /^([ldmtsnjcç]|lorsqu|presqu|jusqu|puisqu|quoiqu|quelqu|qu)[’'‘`ʼ]([a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯﬁ-ﬆ-]+)/i.exec(sWord);
-        if (m) {
-            sPrefix = m[1] + "’";
-            sWord = m[2];
-        }
-        m = /^([a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯﬁ-ﬆ]+)(-(?:t-|)(?:ils?|elles?|on|je|tu|nous|vous|ce)$)/i.exec(sWord);
-        if (m) {
-            sWord = m[1];
-            sSuffix = m[2];
-        }
-        return [sPrefix, sWord, sSuffix];
-    },
-
-    // Other functions
-    filterSugg: function (aSugg) {
-        return aSugg.filter((sSugg) => { return !sSugg.endsWith("è") && !sSugg.endsWith("È"); });
-    }
-
+    ])
 };
 
 
 if (typeof(exports) !== 'undefined') {
-    exports._xTransCharsForSpelling = char_player._xTransCharsForSpelling;
-    exports.spellingNormalization = char_player.spellingNormalization;
-    exports._xTransCharsForSimplification = char_player._xTransCharsForSimplification;
-    exports.simplifyWord = char_player.simplifyWord;
     exports.aVowel = char_player.aVowel;
     exports.aConsonant = char_player.aConsonant;
     exports.aDouble = char_player.aDouble;
@@ -529,6 +439,4 @@ if (typeof(exports) !== 'undefined') {
     exports.dFinal2 = char_player.dFinal2;
     exports.aPfx1 = char_player.aPfx1;
     exports.aPfx2 = char_player.aPfx2;
-    exports.cut = char_player.cut;
-    exports.filterSugg = char_player.filterSugg;
 }

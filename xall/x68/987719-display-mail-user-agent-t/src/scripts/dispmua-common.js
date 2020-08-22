@@ -1,8 +1,10 @@
 var dispMUA =
 {
   loaded: null,
+  //olLoaded: null,
   Info: {},
-  //arDispMUAOverlay: new Array(),
+  arDispMUAOverlay: new Array(),
+  //strOverlayFilename: "dispMuaOverlay.csv",
   arDispMUAAllocation: {},
   identityId: null
 }
@@ -116,7 +118,6 @@ dispMUA.searchIcon = (strUserAgent) =>
     var lower = strUserAgent.toLowerCase().replace(/^webservice\/[0-9\. ]+/, "");
 
     //user overlay array
-    /*
     for (let key in dispMUA.arDispMUAOverlay)
     {
       if (lower.indexOf(key) > -1)
@@ -133,7 +134,6 @@ dispMUA.searchIcon = (strUserAgent) =>
         break ;
       }
     }
-    */
 
     if (!dispMUA.Info["FOUND"])
     {
@@ -400,6 +400,81 @@ dispMUA.loadJSON = (fname) =>
   req.send(null);
 }
 
+/*
+*  loads the user agent overlay file in which users can define their own icons
+*
+*  The overlay file has a semi-csv format.
+*  - On every line, there have to be two strings, split by a comma ","
+*  - The first string is the *lowercase* search string which shall match the user agent
+*  - The second is the absolute path to the icon
+*  If the search string shall include a comma itself, you can quote it.
+*    So >"money,inc",/data/icons/money.png< would match the user agent
+*    >Mail by Money,Inc. at Cayman Islands< but not >Moneymaker mailer<
+*  There is no check for a third (or higher) column, so everything
+*    behind the comma is used as the filename.
+*  The filename may be quoted as well.
+*/
+dispMUA.loadMUAOverlayFile = (data) =>
+{
+  var strLine, nEndQuote, nCommaPos;
+  var strKey, strValue;
+  let i = 0;
+
+  do
+  {
+    strLine = data[i++];
+
+    if (strLine.substr(0, 1) == "#")
+    {
+      //comment
+      continue;
+    }
+
+    if (strLine.substr(0, 1) == "\"")
+    {
+      //with quotes
+      //find end quote
+      nEndQuote = strLine.indexOf("\"", 2);
+
+      if (nEndQuote == -1)
+      {
+        //no endquote? Bad line!
+        continue;
+      }
+
+      nCommaPos = strLine.indexOf(",", nEndQuote);
+    }
+    else
+    {
+      //no quote
+      nCommaPos = strLine.indexOf(",");
+    }
+
+    if (nCommaPos == -1)
+    {
+      //no comma? Bad line!
+      continue;
+    }
+
+    strKey = dispMUA.stripSurroundingQuotes(strLine.substr(0, nCommaPos));
+    strValue = dispMUA.stripSurroundingQuotes(strLine.substr(nCommaPos + 1));
+    dispMUA.arDispMUAOverlay[strKey] = strValue;
+  }
+  while(i < data.length)
+}
+
+dispMUA.getOverlay = () => {
+  const skey = "overlay";
+  browser.storage.local.get(skey).then( s => {
+    data = s[skey];
+    //console.log("data:", data);
+    data = data.replace(/\r\n/g, "\n").split("\n");
+    dispMUA.loadMUAOverlayFile(data);
+  }, e => {
+    console.log("read error:", e);
+  });
+}
+
 dispMUA.stripSurroundingQuotes = (string) =>
 {
   if (string.substr(0, 1) == "\"" && string.substr(string.length - 1) == "\"")
@@ -408,7 +483,7 @@ dispMUA.stripSurroundingQuotes = (string) =>
     string = string.substr(0, string.length - 1);
   }
 
-  return(string);
+  return(string.trim());
 }
 
 dispMUA.checktext = () =>

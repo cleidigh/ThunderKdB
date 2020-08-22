@@ -51,6 +51,10 @@ function setupUI(win) {
   win.ThunderHTMLedit_.SourceEditor.initFind(win);
 
   win.ThunderHTMLedit_.extension = extension;
+
+  // Monkey patch SetMsgBodyFrameFocus();
+  win.ThunderHTMLedit_.SetMsgBodyFrameFocus = win.SetMsgBodyFrameFocus;
+  win.SetMsgBodyFrameFocus = () => win.document.getElementById("content-frame").focus();
 }
 
 function tearDownUI(win) {
@@ -62,6 +66,8 @@ function tearDownUI(win) {
   if (tabbox) tabbox.remove();
   let sourcebox = win.document.getElementById("thunderHTMLedit-content-source-box");
   if (sourcebox) sourcebox.remove();
+
+  win.SetMsgBodyFrameFocus = win.ThunderHTMLedit_.SetMsgBodyFrameFocus;
 
   delete win.ThunderHTMLedit_;
 

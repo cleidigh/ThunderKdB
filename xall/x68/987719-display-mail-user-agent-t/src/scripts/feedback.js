@@ -4,9 +4,9 @@ port.postMessage({command: "request MUA info"});
 var info;
 port.onMessage.addListener(function(s) {
   info = s;
-  console.log("In content script, received message from background script: ");
-  console.log(s.cmd + ": " + s.str);
-  console.log("setContent from Message");
+  //console.log("In content script, received message from background script: ");
+  //console.log(s.cmd + ": " + s.str);
+  //console.log("setContent from Message");
   if (s.str == "") {
     alert(browser.i18n.getMessage("dispMUA.NoUserAgent"));
   } else if (s.icon == "empty.png") {
@@ -26,7 +26,7 @@ function setContent(s) {
   let pos = MUAstring1.indexOf("\n");
   if (pos != -1)
   {
-    MUAstring2 = MUAstring1.substr(pos + 1);
+    MUAstring2 = MUAstring1.substr(pos + 1).replace(/\n/g, " ");
     MUAstring1 = MUAstring1.substr(0, pos);
   }
   document.getElementById("feedback-MUA1").value = MUAstring1;
@@ -39,8 +39,14 @@ function setContent(s) {
   document.getElementById("feedback-supported").textContent = supported;
   let icon = document.createElement("img");
   icon.id = "feedback-icon";
-  icon.setAttribute("src", s.eid + s.path + s.icon);
+  if (s.path == "") {
+    icon.setAttribute("src", s.icon);
+  } else {
+    icon.setAttribute("src", s.eid + s.path + s.icon);
+  }
   icon.setAttribute("title", s.url);
+  icon.setAttribute("width", 48);
+  icon.setAttribute("height", 48);
   icon.addEventListener("click", () => { doOpenURL(info.url); }, false);
   let parentDiv = document.getElementById("feedback-icon0").parentNode;
   let targetDiv = document.getElementById("feedback-icon0");

@@ -13,14 +13,13 @@
 
 "use strict";
 
-if(typeof(process) !== 'undefined') {
+if (typeof(process) !== 'undefined') {
     var ibdawg = require("./ibdawg.js");
     var tokenizer = require("./tokenizer.js");
-    var suggest = require("./suggest.js");
-} else if (typeof(require) !== 'undefined') {
+}
+else if (typeof(require) !== 'undefined') {
     var ibdawg = require("resource://grammalecte/graphspell/ibdawg.js");
     var tokenizer = require("resource://grammalecte/graphspell/tokenizer.js");
-    var suggest = require("resource://grammalecte/graphspell/suggest.js");
 }
 
 
@@ -102,9 +101,9 @@ class SpellChecker {
         this.bCommunityDic = Boolean(this.oCommunityDic);
         this.bPersonalDic = Boolean(this.oPersonalDic);
         this.oTokenizer = null;
-        // Default suggestions
-        this.dDefaultSugg = null;
-        this.loadSuggestions(sLangCode)
+        // Lexicographer
+        this.lexicographer = null;
+        this.loadLexicographer(sLangCode)
         // storage
         this.bStorage = false;
         this._dMorphologies = new Map();            // key: flexion, value: list of morphologies
@@ -187,18 +186,15 @@ class SpellChecker {
     }
 
 
-    // Default suggestions
+    // Lexicographer
 
-    loadSuggestions (sLangCode) {
+    loadLexicographer (sLangCode) {
         // load default suggestion module for <sLangCode>
-        // When “import” works everywhere, do like with Python
-        try {
-            if (typeof(suggest) !== 'undefined') {
-                this.dDefaultSugg = suggest[sLangCode];
-            }
+        if (typeof(process) !== 'undefined') {
+            this.lexicographer = require(`./lexgraph_${sLangCode}.js`);
         }
-        catch (e) {
-            console.error(e);
+        else if (typeof(require) !== 'undefined') {
+            this.lexicographer = require(`resource://grammalecte/graphspell/lexgraph_${sLangCode}.js`);
         }
     }
 
@@ -311,11 +307,11 @@ class SpellChecker {
 
     * suggest (sWord, nSuggLimit=10) {
         // generator: returns 1, 2 or 3 lists of suggestions
-        if (this.dDefaultSugg) {
-            if (this.dDefaultSugg.has(sWord)) {
-                yield this.dDefaultSugg.get(sWord).split("|");
-            } else if (sWord.gl_isTitle() && this.dDefaultSugg.has(sWord.toLowerCase())) {
-                let lRes = this.dDefaultSugg.get(sWord.toLowerCase()).split("|");
+        if (this.lexicographer) {
+            if (this.lexicographer.dSugg.has(sWord)) {
+                yield this.lexicographer.dSugg.get(sWord).split("|");
+            } else if (sWord.gl_isTitle() && this.lexicographer.dSugg.has(sWord.toLowerCase())) {
+                let lRes = this.lexicographer.dSugg.get(sWord.toLowerCase()).split("|");
                 yield lRes.map((sSugg) => { return sSugg.slice(0,1).toUpperCase() + sSugg.slice(1); });
             } else {
                 yield this.oMainDic.suggest(sWord, nSuggLimit, true);

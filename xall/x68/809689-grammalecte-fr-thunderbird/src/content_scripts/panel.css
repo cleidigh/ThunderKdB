@@ -71,12 +71,12 @@ div.grammalecte_panel_button {
     text-align: center;
     cursor: pointer;
 }
-div.grammalecte_copy_button {
+div.grammalecte_clipboard_button {
     border-radius: 2px;
     color: hsla(210, 0%, 100%, .4);
     margin-right: 10px;
 }
-div.grammalecte_copy_button:hover {
+div.grammalecte_clipboard_button:hover {
     background-color: hsl(210, 50%, 55%);
     color: hsla(210, 0%, 100%, 1);
 }
@@ -215,7 +215,22 @@ div.grammalecte_panel_flow_message {
 }
 
 
+/*
+    Clipboard animation
+*/
+div.grammalecte_clipboard_animation {
+    animation: grammalecte-clipboard-animation 7s 1;
+}
 
+@keyframes grammalecte-clipboard-animation {
+    0%      { color: hsla(210, 0%, 100%, .4); background-color: hsla(210, 100%, 80%, .1); }
+    10%     { color: hsla(210, 0%, 100%, 1); background-color: hsla(210, 100%, 80%, .9); }
+    30%     { color: hsla(210, 0%, 100%, 1); background-color: hsla(210, 100%, 80%, .1); }
+    50%     { color: hsla(210, 0%, 100%, 1); background-color: hsla(210, 100%, 80%, .9); }
+    70%     { color: hsla(210, 0%, 100%, 1); background-color: hsla(210, 100%, 80%, .1); }
+    90%     { color: hsla(210, 0%, 100%, 1); background-color: hsla(210, 100%, 80%, .9); }
+    100%    { color: hsla(210, 0%, 100%, .4); background-color: hsla(210, 100%, 80%, 0); }
+}
 
 
 /*

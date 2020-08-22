@@ -25,6 +25,58 @@ var str_transform = {
         return lNgrams;
     },
 
+    _xTransCharsForSpelling: new Map([
+        ['ſ', 's'],  ['ﬃ', 'ffi'],  ['ﬄ', 'ffl'],  ['ﬀ', 'ff'],  ['ﬅ', 'ft'],  ['ﬁ', 'fi'],  ['ﬂ', 'fl'],  ['ﬆ', 'st']
+    ]),
+
+    spellingNormalization: function (sWord) {
+        let sNewWord = "";
+        for (let c of sWord) {
+            sNewWord += this._xTransCharsForSpelling.gl_get(c, c);
+        }
+        return sNewWord.normalize("NFC");
+    },
+
+    _xTransCharsForSimplification: new Map([
+        ['à', 'a'],  ['é', 'é'],  ['î', 'i'],  ['ô', 'o'],  ['û', 'u'],  ['ÿ', 'y'],
+        ['â', 'a'],  ['è', 'é'],  ['ï', 'i'],  ['ö', 'o'],  ['ù', 'u'],  ['ŷ', 'y'],
+        ['ä', 'a'],  ['ê', 'é'],  ['í', 'i'],  ['ó', 'o'],  ['ü', 'u'],  ['ý', 'y'],
+        ['á', 'a'],  ['ë', 'é'],  ['ì', 'i'],  ['ò', 'o'],  ['ú', 'u'],  ['ỳ', 'y'],
+        ['ā', 'a'],  ['ē', 'é'],  ['ī', 'i'],  ['ō', 'o'],  ['ū', 'u'],  ['ȳ', 'y'],
+        ['ç', 'c'],  ['ñ', 'n'],
+        ['œ', 'oe'], ['æ', 'ae'],
+        ['ſ', 's'],  ['ﬃ', 'ffi'],  ['ﬄ', 'ffl'],  ['ﬀ', 'ff'],  ['ﬅ', 'ft'],  ['ﬁ', 'fi'],  ['ﬂ', 'fl'],  ['ﬆ', 'st'],
+        ["⁰", "0"], ["¹", "1"], ["²", "2"], ["³", "3"], ["⁴", "4"], ["⁵", "5"], ["⁶", "6"], ["⁷", "7"], ["⁸", "8"], ["⁹", "9"],
+        ["₀", "0"], ["₁", "1"], ["₂", "2"], ["₃", "3"], ["₄", "4"], ["₅", "5"], ["₆", "6"], ["₇", "7"], ["₈", "8"], ["₉", "9"]
+    ]),
+
+    simplifyWord: function (sWord) {
+        // word simplication before calculating distance between words
+        sWord = sWord.toLowerCase();
+        sWord = [...sWord].map(c => this._xTransCharsForSimplification.gl_get(c, c)).join('');
+        let sNewWord = "";
+        let i = 1;
+        for (let c of sWord) {
+            if (c != sWord.slice(i, i+1) || (c == 'e' && sWord.slice(i, i+2) != "ee")) {  // exception for <e> to avoid confusion between crée / créai
+                sNewWord += c;
+            }
+            i++;
+        }
+        return sNewWord.replace(/eau/g, "o").replace(/au/g, "o").replace(/ai/g, "éi").replace(/ei/g, "é").replace(/ph/g, "f");
+    },
+
+    _xTransNumbersToExponent: new Map([
+        ["0", "⁰"], ["1", "¹"], ["2", "²"], ["3", "³"], ["4", "⁴"], ["5", "⁵"], ["6", "⁶"], ["7", "⁷"], ["8", "⁸"], ["9", "⁹"]
+    ]),
+
+    numbersToExponent: function (sWord) {
+        let sNewWord = "";
+        for (let c of sWord) {
+            sNewWord += this._xTransNumbersToExponent.gl_get(c, c);
+        }
+        return sNewWord;
+    },
+
     longestCommonSubstring: function (string1, string2) {
         // https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Longest_common_substring
         // untested
@@ -184,6 +236,9 @@ var str_transform = {
 
 
 if (typeof(exports) !== 'undefined') {
+    exports.simplifyWord = str_transform.simplifyWord;
+    exports.numbersToExponent = str_transform.numbersToExponent;
+    exports.spellingNormalization = str_transform.spellingNormalization;
     exports.longestCommonSubstring = str_transform.longestCommonSubstring;
     exports.distanceDamerauLevenshtein = str_transform.distanceDamerauLevenshtein;
     exports.distanceDamerauLevenshtein2 = str_transform.distanceDamerauLevenshtein2;

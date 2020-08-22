@@ -648,10 +648,8 @@ function useFontPreview() {
 
 function onComposeBodyReady(win) {
   try {
-    // Note that this is NOT called with using:
-    // Thunderbird.exe -compose "to='xx@yy.com',subject='My Subject',format='1',body='This is the HTML body'"
-    this.onComposeBodyReadyCalled = true;
-    this.PrepareHTMLtab();
+    onComposeBodyReadyCalled = true;
+    PrepareHTMLtab();
 
     win.setTimeout(() => {
       win.document.getElementById("FontFaceSelect").setAttribute("maxwidth", 250);

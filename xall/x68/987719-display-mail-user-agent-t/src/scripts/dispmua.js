@@ -9,14 +9,30 @@ browser.messageDisplayAction.onClicked.addListener((tabId) => {
 });
 
 browser.messageDisplay.onMessageDisplayed.addListener((tabId, message) => {
-  console.log(`Message displayed in tab ${tabId}: ${message.subject}`);
-  //browser.browserAction.setTitle({title: null});
-  //browser.browserAction.setIcon({path: "images/logo.png"});
-
+  //console.log(`Message displayed in tab ${tabId}: ${message.subject}`);
   if (!dispMUA.loaded) {
     dispMUA.loadJSON("dispmua-database.json");
     dispMUA.loaded = true;
   }
+  if (Object.keys(dispMUA.arDispMUAOverlay).length == 0) {
+    const skey = "overlay";
+    browser.storage.local.get(skey).then( s => {
+      if (s[skey]) {
+        if (s[skey].length > 0) {
+          dispMUA.getOverlay();
+          dispMUA.olLoaded = true;
+        }
+      }
+    });
+  }
+  browser.storage.local.get("overlayChanged").then( s => {
+  //browser.storage.local.get().then( s => {
+    if (s["overlayChanged"]) {
+      //console.log("overlay data:", s["overlay"]);
+      dispMUA.getOverlay();
+      browser.storage.local.set({overlayChanged: false});
+    }
+  });
 
   browser.accounts.get(message.folder.accountId).then((MailAccount) => {
     dispMUA.identityId = MailAccount.identities[0].id;
@@ -46,15 +62,31 @@ browser.messageDisplay.onMessageDisplayed.addListener((tabId, message) => {
     let pos = dispMUA.Info["STRING"].indexOf("\n");
     let str = dispMUA.Info["STRING"];
     if (pos != -1) { str = str.substr(0, pos); }
-    browser.messageDisplayAction.setIcon({path: dispMUA.Info["PATH"]+dispMUA.Info["ICON"]});
+    if (dispMUA.Info["PATH"] == "") { // overlay
+      if (dispMUA.Info["ICON"].startsWith("file:///")) {
+        //There is no way to read local file icons here
+        browser.messageDisplayAction.setIcon({path: "empty.png"});
+        browser.messageDisplayAction.setTitle({title: "!?"});
+      } else {
+        browser.messageDisplayAction.setIcon({path: dispMUA.Info["ICON"]});
+      }
+    } else {
+      browser.messageDisplayAction.setIcon({path: dispMUA.Info["PATH"]+dispMUA.Info["ICON"]});
+    }
     browser.messageDisplayAction.setTitle({title: str.length > len ? str.substr(0, len) + '...' : str});
-    
     browser.storage.local.get().then((s) => {
       if (s.showIcon) {
         browser.messageDisplayAction.setTitle({title: " "});
         let target = s.iconPosition ? "expandedHeaders2" : "otherActionsBox";
         //browser.dispmuaApi.remove(id);
-        browser.dispmuaApi.insertBefore(browser.extension.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, target);
+        if (dispMUA.Info["PATH"] == "") { // overlay
+          if (dispMUA.Info["ICON"].startsWith("file:///")) {
+            browser.messageDisplayAction.setTitle({title: "!?"});
+          }
+          browser.dispmuaApi.insertBefore("", dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, target);
+        } else {
+          browser.dispmuaApi.insertBefore(browser.extension.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, target);
+        }
         browser.dispmuaApi.move(iId, target);
       }
       else browser.dispmuaApi.remove(iId);
@@ -74,7 +106,7 @@ var port;
 function connected(p) {
   port = p;
   port.onMessage.addListener(function(m) {
-    console.log("In background script, received message from content script")
+    //console.log("In background script, received message from content script")
     //console.log(m.greeting);
     switch (m.command) {
       case 'request MUA info':
@@ -91,6 +123,9 @@ function connected(p) {
           "found" : dispMUA.Info["FOUND"]
         });
         break;
+      /*case 'request getOverlay':
+        dispMUA.getOverlay();
+        break;*/
     }
   });
 }
@@ -109,9 +144,9 @@ var joinObj = function(obj, fDelimiter, sDelimiter) {
   return tmpArr.join(sDelimiter);
 };
 
-function disconnected(p) {
+/*function disconnected(p) {
   //browser.dispmuaApi.remove("dispMUAicon");
   browser.dispmuaApi.remove(iId);
-}
+}*/
 // onDisconnect not implemented...
 //browser.runtime.onDisconnect.addListener(disconnected);
