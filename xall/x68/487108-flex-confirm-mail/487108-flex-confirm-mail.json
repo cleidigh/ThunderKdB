@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 19378,
+    "average_daily_users": 10353,
     "categories": {
         "thunderbird": [
             "composition",
@@ -17,27 +17,28 @@
         ]
     },
     "contributions_url": null,
+    "created": "2014-02-18T00:17:30Z",
     "current_version": {
-        "id": 2472964,
+        "id": 2474133,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "68.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2472964",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2474133",
         "files": [
             {
-                "id": 1016071,
-                "created": "2019-12-03T09:15:05Z",
-                "hash": "sha256:19e2f135672297ab05fedf5de5127c1afaedfbb310814b0f13b9cd844ae3eb1a",
+                "id": 1017295,
+                "created": "2020-08-24T12:35:11Z",
+                "hash": "sha256:83e3d2ecd723db32a887c3c136d1b2eb53e86b9f39108908f68aeb56fd2e833f",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 149229,
+                "size": 149265,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016071/flex_confirm_mail-2.2.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017295/flex_confirm_mail-2.2.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -47,20 +48,20 @@
             "name": {
                 "en-US": "MPL1.1"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/2.2.1"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/2.2.3"
         },
         "release_notes": {
-            "en-US": "* Resize boxes correctly when both subject and body checks are disabled.\n* Add ability to emphasize recipient types (To/Cc/Bcc).\n* Add ability to confirm when there are multiple foreign recipient domains in To/Cc.\n* Show confirmation as \"recipients are modified\" when the composition window is opened for a draft.",
+            "en-US": "No change from 2.2.1. This is released just to show 2.x as the latest version instead of 1.x.",
             "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/2.2.1",
-        "version": "2.2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/2.2.3",
+        "version": "2.2.3"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "# Flex Confirm Mail\n\nThis is an extended version of the addon \"Confirm Mail\". You can define \"exceptions\" for confirmation.\n\n## Exceptional Domains\n\nYou can define exceptions of \"foreign\" domains, via the configuration dialog or the preference `net.nyail.tanabec.confirm-mail.exceptional-domains`. If you put some domains to the list and you try to send a mail to an address listed in the exceptional domains list, then an extra confirmation dialog will be shown. The message of the confirmation dialog can be customized via two preferences: `net.nyail.tanabec.confirm-mail.exceptionalDomain.title` and `net.nyail.tanabec.confirm-mail.exceptionalDomain.message`. It will be useful in a case like: your SMTP server always encrypts your mail automatically but there are some exceptions.\n\n## Exceptional Suffixes\n\nYou can define exceptions of attachments, via the configuration dialog or the preference `net.nyail.tanabec.confirm-mail.exceptional-suffixes`. If you put some \"extension\"s to the list and you try to send a mail with an attachment including a suffix listed in the preference, then an extra confirmation dialog will be shown. The message of the confirmation dialog can be customized via two preferences: `net.nyail.tanabec.confirm-mail.exceptionalSuffix.title` and `net.nyail.tanabec.confirm-mail.exceptionalSuffix.message`. It will be useful in a case like: your SMTP server always encrypts attachments but there are some exceptions.",
-        "ja": "# Flex Confirm Mail\n\nこのアドオンは「Confirm Mail」の改造版です。メール送信時の確認の「例外」を定義する事ができます。\n\n## 例外のドメイン\n\n設定ダイアログ、もしくは設定項目の `net.nyail.tanabec.confirm-mail.exceptional-domains` を使って組織外のドメインの例外を定義する事ができます。\nこのリストにドメインを登録しておくと、そのリストに含まれる例外のドメイン宛のメールを送ろうとした場合に、追加の確認ダイアログが表示されるようになります。\n確認のメッセージは文字列型の設定 `net.nyail.tanabec.confirm-mail.exceptionalDomain.title` と `net.nyail.tanabec.confirm-mail.exceptionalDomain.message` で変更できます。\nこれは、SMTPサーバが常に外部ドメイン宛のメールを暗号化するが、希に暗号化せずに送らなければならない例外のドメインがある、といった場合に利用できます。\n\n## 例外の拡張子\n\n設定ダイアログ、もしくは設定項目の `net.nyail.tanabec.confirm-mail.exceptional-suffixes` を使って添付ファイルの拡張子の例外を定義する事ができます。\nこのリストに拡張子を登録しておくと、そのリストに含まれる拡張子のファイルを添付したメールを送ろうとした場合に、追加の確認ダイアログが表示されるようになります。\n確認のメッセージは文字列型の設定 `net.nyail.tanabec.confirm-mail.exceptionalSuffix.title` と `net.nyail.tanabec.confirm-mail.exceptionalSuffix.message` で変更できます。\nこれは、SMTPサーバが常に添付ファイルを暗号化するが、希に暗号化せずに送らなければならない例外のドメインがある、といった場合に利用できます。"
+        "en-US": "# For Thunderbird 68 users\n\nDue to restrictions of Thunderbird Add-ons website, the most recently uploaded version is downloadable on this front page. Currently it is the version 1.17.1 for Thunderbird 60 instead of the version 2.2.1 for Thunderbird 68, because 1.17.1 was released after 2.2.1. Please download 2.2.1 via the link \"View other versions\" if you use Thunderbird 68.\n\n# Flex Confirm Mail\n\nThis is an extended version of the addon \"Confirm Mail\". You can define \"exceptions\" for confirmation.\n\n## Exceptional Domains\n\nYou can define exceptions of \"foreign\" domains, via the configuration dialog or the preference `net.nyail.tanabec.confirm-mail.exceptional-domains`. If you put some domains to the list and you try to send a mail to an address listed in the exceptional domains list, then an extra confirmation dialog will be shown. The message of the confirmation dialog can be customized via two preferences: `net.nyail.tanabec.confirm-mail.exceptionalDomain.title` and `net.nyail.tanabec.confirm-mail.exceptionalDomain.message`. It will be useful in a case like: your SMTP server always encrypts your mail automatically but there are some exceptions.\n\n## Exceptional Suffixes\n\nYou can define exceptions of attachments, via the configuration dialog or the preference `net.nyail.tanabec.confirm-mail.exceptional-suffixes`. If you put some \"extension\"s to the list and you try to send a mail with an attachment including a suffix listed in the preference, then an extra confirmation dialog will be shown. The message of the confirmation dialog can be customized via two preferences: `net.nyail.tanabec.confirm-mail.exceptionalSuffix.title` and `net.nyail.tanabec.confirm-mail.exceptionalSuffix.message`. It will be useful in a case like: your SMTP server always encrypts attachments but there are some exceptions.",
+        "ja": "# Thunderbird 68をお使いの方へ\n\nThunderbird Add-onsの仕様上、フロントページでは常に、最後にアップロードされたバージョンがダウンロード対象となる模様です。\n現在、Thundebrird 68向けの最新版（2.2.1）リリース後にThunderbrid 60向けの修正版（1.17.1）をリリースしたことから、この画面からダウンロードされるバージョンは1.17.1となっております。\nご不便をおかけしますが、Thunderbird 68ユーザーの方は「他のバージョンを見る」からバージョン2.2.1をダウンロードしていただけますようお願い致します。\n\n# Flex Confirm Mail\n\nこのアドオンは「Confirm Mail」の改造版です。メール送信時の確認の「例外」を定義する事ができます。\n\n## 例外のドメイン\n\n設定ダイアログ、もしくは設定項目の `net.nyail.tanabec.confirm-mail.exceptional-domains` を使って組織外のドメインの例外を定義する事ができます。\nこのリストにドメインを登録しておくと、そのリストに含まれる例外のドメイン宛のメールを送ろうとした場合に、追加の確認ダイアログが表示されるようになります。\n確認のメッセージは文字列型の設定 `net.nyail.tanabec.confirm-mail.exceptionalDomain.title` と `net.nyail.tanabec.confirm-mail.exceptionalDomain.message` で変更できます。\nこれは、SMTPサーバが常に外部ドメイン宛のメールを暗号化するが、希に暗号化せずに送らなければならない例外のドメインがある、といった場合に利用できます。\n\n## 例外の拡張子\n\n設定ダイアログ、もしくは設定項目の `net.nyail.tanabec.confirm-mail.exceptional-suffixes` を使って添付ファイルの拡張子の例外を定義する事ができます。\nこのリストに拡張子を登録しておくと、そのリストに含まれる拡張子のファイルを添付したメールを送ろうとした場合に、追加の確認ダイアログが表示されるようになります。\n確認のメッセージは文字列型の設定 `net.nyail.tanabec.confirm-mail.exceptionalSuffix.title` と `net.nyail.tanabec.confirm-mail.exceptionalSuffix.message` で変更できます。\nこれは、SMTPサーバが常に添付ファイルを暗号化するが、希に暗号化せずに送らなければならない例外のドメインがある、といった場合に利用できます。"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/edit",
@@ -80,7 +81,7 @@
     "is_experimental": true,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-12-11T05:37:23Z",
+    "last_updated": "2020-08-24T13:19:02Z",
     "name": {
         "en-US": "Flex Confirm Mail",
         "ja": "Flex Confirm Mail"
@@ -105,10 +106,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.70311,
-        "count": 7,
-        "average": 3.8571,
-        "text_count": 7
+        "bayesian_average": 3.73705,
+        "count": 8,
+        "average": 3.875,
+        "text_count": 8
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/reviews/",
     "requires_payment": false,
@@ -133,9 +134,9 @@
     "weekly_downloads": 243,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-08T08:33:36Z"
         }

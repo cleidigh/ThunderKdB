@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 30,
+    "average_daily_users": 41,
     "categories": {
         "thunderbird": [
             "folders-and-filters"
@@ -18,30 +18,30 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=EKGQCEFC898J6&currency_code=USD&source=url",
     "created": "2020-05-27T23:37:33Z",
     "current_version": {
-        "id": 2473754,
+        "id": 2474121,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sender-domain/versions/2473754",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/sender-domain/versions/2474121",
         "files": [
             {
-                "id": 1016916,
-                "created": "2020-05-27T23:37:34Z",
-                "hash": "sha256:f4b467a1905fca6c0a1708be74aa53e82943fc7e3a204ea6ddde8aec4cfc506a",
-                "is_restart_required": true,
+                "id": 1017283,
+                "created": "2020-08-21T22:55:52Z",
+                "hash": "sha256:234daac17e6aa70cd2f034b3d3b0304b68cb8a8e3ff880881fd8d028c6983e41",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4947,
+                "size": 3064,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016916/sender_domain-0.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017283/sender_domain-0.0.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -70,10 +70,12 @@
             },
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
-        "release_notes": null,
-        "reviewed": "2020-07-16T17:03:20Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-domain/versions/0.0.1",
-        "version": "0.0.1"
+        "release_notes": {
+            "en-US": "updated to be compatible with thunderbird 68+"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/sender-domain/versions/0.0.2",
+        "version": "0.0.2"
     },
     "default_locale": "en-US",
     "description": null,
@@ -92,7 +94,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-16T17:03:20Z",
+    "last_updated": "2020-08-24T11:05:48Z",
     "name": {
         "en-US": "Sender Domain"
     },
@@ -122,10 +124,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

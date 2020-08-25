@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/85/85036.png?modified=1509020086"
         }
     ],
-    "average_daily_users": 4666,
+    "average_daily_users": 4618,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,32 +18,32 @@
     "contributions_url": "https://paypal.me/kewisch",
     "created": "2009-05-20T00:20:15Z",
     "current_version": {
-        "id": 2473242,
+        "id": 2474132,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quick-folder-move/versions/2473242",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quick-folder-move/versions/2474132",
         "files": [
             {
-                "id": 1016354,
-                "created": "2020-01-19T13:06:39Z",
-                "hash": "sha256:00642fbf3256d0aa49de99f14489c83ba317461bb4894324f02d0475bd244546",
-                "is_restart_required": true,
+                "id": 1017294,
+                "created": "2020-08-24T11:45:47Z",
+                "hash": "sha256:60ec0d3e83672e2d4d4ad95ef5605d1c0e8efcbc0f276a597e678dfe01667ccd",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 15678,
+                "size": 16649,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016354/quick_folder_move-1.7.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017294/quick_folder_move-1.8.2-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -52,11 +52,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Fixes for Thunderbird 72 to load in xhtml windows."
+            "en-US": "* Be more resilient when the file popup is missing ([b091dcd](<a href=\"https://github.com/kewisch/quickmove/commit/b091dcd3d1d0b668202e640abb9da35ed158ef7d\" rel=\"nofollow\">https://github.com/kewisch/quickmove/commit/b091dcd3d1d0b668202e640abb9da35ed158ef7d</a>))\n* Improve applying textbox CSS ([6217289](<a href=\"https://github.com/kewisch/quickmove/commit/6217289aa53fc4e985c0106e455425e1926acc20\" rel=\"nofollow\">https://github.com/kewisch/quickmove/commit/6217289aa53fc4e985c0106e455425e1926acc20</a>))"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quick-folder-move/versions/1.7.1",
-        "version": "1.7.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quick-folder-move/versions/1.8.2",
+        "version": "1.8.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,7 +78,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-20T18:54:48Z",
+    "last_updated": "2020-08-24T11:59:58Z",
     "name": {
         "en-US": "Quick Folder Move",
         "de": "Schnelles Nachrichtenverschieben"
@@ -135,10 +135,10 @@
     "weekly_downloads": 137,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-12-02T13:40:06Z"
         }
