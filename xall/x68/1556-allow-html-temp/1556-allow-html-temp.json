@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 9056,
+    "average_daily_users": 9287,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
@@ -19,30 +19,30 @@
     "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "created": "2005-11-30T18:50:39Z",
     "current_version": {
-        "id": 2473991,
+        "id": 2474148,
         "compatibility": {
             "thunderbird": {
-                "max": "72.0a1",
-                "min": "68.0"
+                "max": "80.0",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-html-temp/versions/2473991",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-html-temp/versions/2474148",
         "files": [
             {
-                "id": 1017153,
-                "created": "2020-07-24T17:15:20Z",
-                "hash": "sha256:35a8e8c0b9dac6b55cef8f379285eaa7b3496cc4d1d04b2833ca87101f796c27",
-                "is_restart_required": true,
+                "id": 1017310,
+                "created": "2020-08-28T22:46:07Z",
+                "hash": "sha256:18c67498be065a06b529c41a6fd76c26f2d9f66357b5abcb38e2fad67df90527",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 96227,
+                "size": 82868,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017153/allow_html_temp-5.7.8-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017310/allow_html_temp-6.0.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,18 +50,15 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": {
-            "en-US": "Hotfix update: Go back to the complete code from version 5.7.4.\nVersion 5.7.7 brought unwanted changes to the locales, which leads to XUL errors.\nVersion 5.7.8 is now identical to 5.7.4 again, but has the intended entry \"strict_max_version\": \"72.0a1\" to prevent installation in Thunderbird 78.",
-            "de": "Hotfix-Update: Gehe zurück zum kompletten Code von Version 5.7.4.\nVersion 5.7.7 brachte ungewollte Änderungen an den locales, was zu XUL-Fehlern führt.\nVersion 5.7.8 ist jetzt wieder identisch zu 5.7.4, hat aber die gewollte Angabe \"strict_max_version\": \"72.0a1\", um die Installation in Thunderbird 78 zu verhindern."
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/allow-html-temp/versions/5.7.8",
-        "version": "5.7.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/allow-html-temp/versions/6.0.0",
+        "version": "6.0.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>\nFrom version 78, Thunderbird only supports the necessary interfaces for this add-on via \"WebExtension Experiments\". A lot of program code of the add-on would have to be rewritten for this. It is not expected that the necessary interfaces will be permanently implemented in Thunderbird (as MailExtension API), and the \"WebExtension Experiments\" will also be removed in the future, which is why the effort is no longer worthwhile. Therefore, this add-on will no longer receive an update and it will not be available for Thunderbird 78.\n\nThe source code of the add-on is open source and is available at <a href=\"https://gitlab.com/ThunderbirdMailDE/allow-html-temp\" rel=\"nofollow\"> GitLab </a>.\n\nThe translations available so far can be found on the <a href=\"https://crowdin.com/project/allow-html-temp\" rel=\"nofollow\"> CrowdIn </a> platform.\n</strong>",
-        "de": "<strong>Thunderbird unterstützt ab Version 78 nur noch per \"WebExtension Experiments\" die notwendigen Schnittstellen für dieses Add-on. Dafür müsste sehr viel Programm-Code des Add-ons neu geschrieben werden. Es ist nicht zu erwarten, dass die notwendigen Schnittstellen auf Dauer in Thunderbird fest implementiert werden (als MailExtension API), und die \"WebExtension Experiments\" werden in Zukunft auch entfernt werden, weshalb sich der Aufwand nicht mehr lohnt. Deshalb wird dieses Add-on kein Update mehr erhalten und es wird nicht für Thunderbird 78 verfügbar sein.\n\nDer Quellcode des Add-ons ist Open-Source und steht auf <a href=\"https://gitlab.com/ThunderbirdMailDE/allow-html-temp\" rel=\"nofollow\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a href=\"https://crowdin.com/project/allow-html-temp\" rel=\"nofollow\">CrowdIn</a>.</strong>"
+        "en-US": "Allows to have HTML temporarily enabled (and displayed) in the currently selected message by only one click. When switching to another message, it'll be shown automatically again in plain text or simple html mode (according to your settings).\n\nThe source code of the add-on is open source and is available at <a href=\"https://gitlab.com/ThunderbirdMailDE/allow-html-temp\" rel=\"nofollow\"> GitLab </a>.\n\nThe translations available so far can be found on the <a href=\"https://crowdin.com/project/allow-html-temp\" rel=\"nofollow\"> CrowdIn </a> platform.",
+        "de": "Mit einem Klick auf die Schaltfläche \"HTML zeigen\" der Erweiterung \"Allow HTML Temp\" wird eine gerade angezeigte Nachricht sofort einmalig formatiert angezeigt (wenn HTML-Code enthalten ist). Direkt danach ist der HTML-Modus wieder deaktiviert.\n\nDer Quellcode des Add-ons ist Open-Source und steht auf <a href=\"https://gitlab.com/ThunderbirdMailDE/allow-html-temp\" rel=\"nofollow\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a href=\"https://crowdin.com/project/allow-html-temp\" rel=\"nofollow\">CrowdIn</a>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-html-temp/edit",
@@ -72,16 +69,16 @@
         "en-US": "https://www.thunderbird-mail.de/lexicon/entry/226-allow-html-temp-add-on-to-allow-html-only-temporarily/",
         "de": "https://www.thunderbird-mail.de/lexicon/entry/14-allow-html-temp/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-64.png?modified=1590435260",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-64.png?modified=1598655356",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-32.png?modified=1590435260",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-64.png?modified=1590435260"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-32.png?modified=1598655356",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-64.png?modified=1598655356"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-24T18:44:56Z",
+    "last_updated": "2020-08-29T08:10:47Z",
     "name": {
         "en-US": "Allow HTML Temp",
         "de": "Allow HTML Temp"
@@ -345,10 +342,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.27778,
-        "count": 71,
-        "average": 4.2958,
-        "text_count": 71
+        "bayesian_average": 4.29746,
+        "count": 73,
+        "average": 4.3151,
+        "text_count": 73
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/allow-html-temp/reviews/",
     "requires_payment": false,
@@ -375,9 +372,11 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
             "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2020-07-24T17:15:20Z",
             "comp60pv": true,
             "comp60pv_date": "2019-01-04T14:57:07Z"
         }

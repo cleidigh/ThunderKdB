@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 3614,
+    "average_daily_users": 3803,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2019-08-19T02:41:05Z",
     "current_version": {
-        "id": 2473623,
+        "id": 2474160,
         "compatibility": {
             "thunderbird": {
-                "max": "71.*",
-                "min": "68.0"
+                "max": "78.*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicates/versions/2473623",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicates/versions/2474160",
         "files": [
             {
-                "id": 1016772,
-                "created": "2020-04-22T03:49:34Z",
-                "hash": "sha256:8bb983ca48e397a42737a8af4589966d445b618920493930d2d25a31677b03f4",
-                "is_restart_required": true,
+                "id": 1017322,
+                "created": "2020-08-30T19:19:26Z",
+                "hash": "sha256:763302bb3844bd3c78a38ee4b88b8a019650d5aee020bbf80ac534135e152db4",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 53044,
+                "size": 5156,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016772/remove_duplicates-1.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017322/remove_duplicates-3.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,15 +50,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fixed de-DE and fr-FR locales.\nAdded option to ignore subfolders.\nMoved debug info from alerts to the console log.\nAdded option to ignore archive folders."
+            "en-US": "This Add-on has been discontinued."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/versions/1.7",
-        "version": "1.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/versions/3.2",
+        "version": "3.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This is the abandoned <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicate-messages/\" rel=\"nofollow\">Remove Duplicate Messages</a> add-on, rewritten for Thunderbird 68 and higher.\n\nIf you have duplicate messages (e.g. from merging folders or downloading messages several times) you can use this tool to find and remove them by choosing \"Remove Duplicate Messages\" from the context menu.\n\nIt allows you to configure what you want to compare (Sender, Message-ID, Subject etc.).\n\nFeatures :\n* Check subfolders.\n* Examine duplicates before deleting them.\n* Manually adjust the selection of messages to be deleted.\n* Supported Languages: en-US, de-DE, de-LU, es-ES, fr-FR, it-IT, ja-JP, nl-NL, pt-BR, ru-RU, uk-UA\n* Easy to use and fast (1000 messages per second).\n* Optional automatic deletion (without the dialog showing the duplicates, use with care!).\n* Optionally keep either the bigger, smaller, unread or first or last found message.\n\nBugs:\n* Comparing messages by source or line count is still buggy, could mark messages falsely as duplicates.\nDon't use automatic deletion when comparing only by source or line count!\n* When selecting both a subfolder and its parent, all messages in the subfolder will be marked as duplicates.\nDon't select both a subfolder and its parent!"
+        "en-US": "This is the abandoned <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicate-messages/\" rel=\"nofollow\">Remove Duplicate Messages</a> add-on, rewritten for Thunderbird 68 .\n\nThere will be no version for Thunderbird 78, please use \n<a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicate-messages-alte/\" rel=\"nofollow\">Remove Duplicate Messages (Alternate)</a>  instead.\n\nIf you have duplicate messages (e.g. from merging folders or downloading messages several times) you can use this tool to find and remove them by choosing \"Remove Duplicate Messages\" from the context menu.\n\nIt allows you to configure what you want to compare (Sender, Message-ID, Subject etc.).\n\nFeatures :\n* Check subfolders.\n* Examine duplicates before deleting them.\n* Manually adjust the selection of messages to be deleted.\n* Supported Languages: en-US, de-DE, de-LU, es-ES, fr-FR, it-IT, ja-JP, nl-NL, pt-BR, ru-RU, uk-UA\n* Easy to use and fast (1000 messages per second).\n* Optional automatic deletion (without the dialog showing the duplicates, use with care!).\n* Optionally keep either the bigger, smaller, unread or first or last found message.\n\nBugs:\n* Comparing messages by source or line count is still buggy, could mark messages falsely as duplicates.\nDon't use automatic deletion when comparing only by source or line count!\n* When selecting both a subfolder and its parent, all messages in the subfolder will be marked as duplicates.\nDon't select both a subfolder and its parent!"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/remove-duplicates/edit",
@@ -77,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-30T23:56:00Z",
+    "last_updated": "2020-08-30T22:12:33Z",
     "name": {
         "en-US": "Remove Duplicates"
     },
@@ -133,10 +133,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.13586,
-        "count": 13,
-        "average": 4.2308,
-        "text_count": 13
+        "bayesian_average": 3.98672,
+        "count": 14,
+        "average": 4.0714,
+        "text_count": 14
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/reviews/",
     "requires_payment": false,
@@ -160,9 +160,16 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
             "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-08-30T12:04:04Z",
+            "comp78pv_version": "3.1",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*",
+            "comp68pv": true,
+            "comp68pv_date": "2019-10-04T01:52:47Z"
         }
     }
 }

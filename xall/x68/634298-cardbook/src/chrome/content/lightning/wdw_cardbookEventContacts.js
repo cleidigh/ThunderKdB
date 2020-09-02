@@ -1,6 +1,5 @@
 if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { setTimeout } = ChromeUtils.import("resource://gre/modules/Timer.jsm");
 	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");

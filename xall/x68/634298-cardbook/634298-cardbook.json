@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 47229,
+    "average_daily_users": 49564,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -19,26 +19,26 @@
     "contributions_url": "https://www.paypal.me/CardBook/10eur",
     "created": "2015-07-21T05:46:14Z",
     "current_version": {
-        "id": 2474082,
+        "id": 2474162,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "79.0",
                 "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2474082",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2474162",
         "files": [
             {
-                "id": 1017244,
-                "created": "2020-08-13T19:45:26Z",
-                "hash": "sha256:9a5ee99cb6ad5d7c6ed5b98d77bc759714b0aa3269a22208bb27add1c9a933c0",
+                "id": 1017324,
+                "created": "2020-08-31T05:17:53Z",
+                "hash": "sha256:f0b41072af3682abccdda853f039828cefbf95311f91ba71895fe3a3b7055330",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 898725,
+                "size": 913416,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017244/cardbook-51.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017324/cardbook-51.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -52,11 +52,11 @@
         },
         "release_notes": {
             "fr": "",
-            "en-US": "- fix for lists conversion (big thanks to Alexander Bergmann)"
+            "en-US": "- fix for writing an email to a category from the contact sidebar\n- fix for drag and drop contact from the contact sidebar\n- fix for excessive throbber activity\n- fix for today pane infinite loop\n- fix for messages marked as read\n- improvments in the korean translation (big thanks to Sangjun Song)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/51.4",
-        "version": "51.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/51.5",
+        "version": "51.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -123,7 +123,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2020-08-13T22:23:01Z",
+    "last_updated": "2020-08-31T05:53:29Z",
     "name": {
         "el": "Επαφές (CardBook)",
         "vi": "CardBook",
@@ -728,17 +728,19 @@
     "weekly_downloads": 3717,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-06-18T13:26:42Z",
             "comp78pv": true,
             "comp78pv_date": "2020-07-25T14:44:00Z",
             "comp78pv_version": "51.1",
             "comp78pv_vmin": "78.0a1",
             "comp78pv_vmax": "*",
             "comp60pv": true,
-            "comp60pv_date": "2019-05-15T10:38:30Z"
+            "comp60pv_date": "2019-05-17T17:42:02Z"
         }
     }
 }

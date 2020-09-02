@@ -76,12 +76,10 @@ var EnigmailCore = {
       ++observerFired;
       const configuredVersion = getEnigmailPrefs().getPref("configuredVersion");
 
-      if (configuredVersion && configuredVersion.length > 0) {
-        self.createInstance();
-        if (!gEnigmailService.initialized) {
-          // try to initialize Enigmail
-          gEnigmailService.initialize(null, getEnigmailApp().getVersion());
-        }
+      self.createInstance();
+      if (!gEnigmailService.initialized) {
+        // try to initialize Enigmail
+        gEnigmailService.initialize(null, getEnigmailApp().getVersion());
       }
 
 

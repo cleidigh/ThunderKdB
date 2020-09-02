@@ -36,6 +36,10 @@ var {
 //It is needed to new XMLSerializer in this Experiments scope
 Components.utils.importGlobalProperties(["XMLSerializer"]);
 
+var {
+  ExtensionSupport
+} = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
+
 
 //Define API
 var enForwardApi = class extends ExtensionCommon.ExtensionAPI {
@@ -52,6 +56,22 @@ var enForwardApi = class extends ExtensionCommon.ExtensionAPI {
           } else {
             console.log("[ENF] Cannot init gENForward.");
           }
+        },
+        
+        checkToolbarButton: async function() {
+          let rw = Services.wm.getMostRecentWindow("mail:3pane");
+          let buttonExists = null;
+          if (rw) {
+            let toolbar = rw.document.getElementById("mail-bar3");
+            if (toolbar) {
+              let button = toolbar.querySelector('[label="EnForward"]');
+              buttonExists = button ? true : false;
+            } else {
+              console.log("mail-bar3 is not available yet");
+            }
+          }
+          
+          return buttonExists;
         },
 
         forwardMessages: async function (isOnenote, isReminder) {
@@ -91,6 +111,10 @@ var enForwardApi = class extends ExtensionCommon.ExtensionAPI {
           gENFPreferences.setMonitoredPrefs(monitoredPrefs);
         },
 
+        saveSentDone: async function () {
+          gENForward.saveSentDone();
+        },
+
         onBeforeSend: new ExtensionCommon.EventManager({
           context,
           name: "enForwardApi.onBeforeSend",
@@ -125,6 +149,21 @@ var enForwardApi = class extends ExtensionCommon.ExtensionAPI {
               gENFPreferences.removeListener("prefchanged");
             };
           }
+        }).api(),
+
+        afterToolbarCustomization: new ExtensionCommon.EventManager({
+          context,
+          name: "enForwardApi.afterToolbarCustomization",
+          register(fire) {
+            function callback(event, id, enfButtonExists) {
+              return fire.async(id, enfButtonExists);
+            }
+            enForwardWindowListener.add(callback);
+
+            return function () {
+              enForwardWindowListener.remove(callback);
+            };
+          }
         }).api()
       }
     };
@@ -137,6 +176,56 @@ var enForwardApi = class extends ExtensionCommon.ExtensionAPI {
   }
 };
 
+var enForwardWindowListener = new class extends ExtensionCommon.EventEmitter {
+  constructor() {
+    super();
+    this.callbackCount = 0;
+  }
+
+  handleEvent(event) {
+    let toolbar = event.target.querySelector("toolbar");
+    let enfButton = event.target.querySelector('[label="EnForward"]');
+    if (enfButton) {
+      enForwardWindowListener.emit("enf-toolbar-customized", toolbar.id, true);
+    } else {
+      enForwardWindowListener.emit("enf-toolbar-customized", toolbar.id, false);
+    }
+  }
+
+  add(callback) {
+    this.on("enf-toolbar-customized", callback);
+    this.callbackCount++;
+
+    if (this.callbackCount == 1) {
+      ExtensionSupport.registerWindowListener("enf-experimentListener", {
+        chromeURLs: [
+          "chrome://messenger/content/messenger.xhtml",
+          "chrome://messenger/content/messenger.xul",
+        ],
+        onLoadWindow: function (window) {
+          window.addEventListener("aftercustomization", enForwardWindowListener.handleEvent);
+        },
+      });
+    }
+  }
+
+  remove(callback) {
+    this.off("enf-toolbar-customized", callback);
+    this.callbackCount--;
+
+    if (this.callbackCount == 0) {
+      for (let window of ExtensionSupport.openWindows) {
+        if ([
+          "chrome://messenger/content/messenger.xhtml",
+          "chrome://messenger/content/messenger.xul",
+        ].includes(window.location.href)) {
+          window.removeEventListener("aftercustomization", this.handleEvent);
+        }
+      }
+      ExtensionSupport.unregisterWindowListener("enf-experimentListener");
+    }
+  }
+};
 
 var gENForward = {
   email: null,
@@ -364,8 +453,6 @@ var gENForward = {
   confirmENEmail: function () {
     this.email = gENFPreferences.copyUnicharPref("email", "");
     if (!this.email) {
-      this.window.alert("Please input your Evernote email address in EnForward settings.");
-      
       //Notify error to MX.
       this.window.document.getElementById("statusText").setAttribute("value", "No Evernote email address. Canceled.");
       this.fireSendCompleteEvent(false, 0, 0);
@@ -392,7 +479,7 @@ var gENForward = {
 
     if (!this.fillAccountInfo(msgs[0].folder.rootFolder.server, req, onenote)) {
       //Nnotify error to MX.
-      this.fireSendCompleteEvent(false, 0, 0);
+      //this.fireSendCompleteEvent(false, 0, 0);
       return;
     }
 
@@ -523,13 +610,14 @@ var gENForward = {
             this.id = req.id;
             this.forwardMsg(info);
           } else {
-            console.log("Goto next\n")
+            console.log("[ENF]Cannot prrepare account info.");
+            console.log("Goto next");
             this.forwardNextMsg();
           }
         } catch (e) {
-          console.log("[ENF]Error in forwarding:\n")
-          console.log(e + "\n");
-          console.log("Goto next\n")
+          console.log("[ENF]Error in forwarding:");
+          console.log(e);
+          console.log("Goto next");
           this.forwardNextMsg();
         }
       }
@@ -652,7 +740,7 @@ var gENForward = {
         tagName = this.tagService.getTagForKey(key);
       } catch (e) {
         tagName = null;
-        console.log("Unknow tag key: " + key + "\n");
+        console.log("Unknow tag key: " + key);
       }
       if (tagName && ignoredTags.indexOf(key) < 0) {
         tags.push(tagName);
@@ -789,8 +877,8 @@ var gENForward = {
         messageStream.close();
         inputStream.close();
         os.close();
-        alert("Cannot load message file.");
-        return;
+        console.log("Cannot load message file.");
+        return null;
       }
 
       this.initFilterAttachWS();
@@ -855,10 +943,19 @@ var gENForward = {
     createInstance().QueryInterface(Components.interfaces.nsIScriptableInputStream);
     inputStream.init(messageStream);
     messageService.streamMessage(uri, messageStream, this.window.msgWindow, null, false, null);
+
+    if (!inputStream.available()) {
+      messageStream.close();
+      inputStream.close();
+      os.close();
+      console.log("Cannot load message file.");
+      return null;
+    }
+    
     var os = Components.classes['@mozilla.org/network/file-output-stream;1'].
     createInstance(Components.interfaces.nsIFileOutputStream);
     os.init(msgFile, 2, 0x200, false); // open as "write only"
-
+    
     var data = "";
     var eohInfo = null;
 
@@ -987,10 +1084,10 @@ var gENForward = {
     var msgFile = null;
     var appName = info.onenote ? "OneNote" : "Evernote";
     if (!info.onenote && gENFPreferences.getIntPref("forward_mode", 0) == 0) {
-      console.log("[ENF] Forward by Attachment mode\n");
+      console.log("[ENF] Forward by Attachment mode");
       msgFile = this.composeAsAttachment(info);
     } else {
-      console.log("[ENF] Forward by Inline mode\n");
+      console.log("[ENF] Forward by Inline mode");
       msgFile = this.composeAsInline(info);
     }
 
@@ -1036,7 +1133,7 @@ var gENForward = {
 
         //Notify to MX script
         that.fireSendCompleteEvent(succeeded, that.sentMsgs, that.totalMsgs);
-        
+
         //Add/remove tag
         var postTagsPref = info.onenote ? "onenote_post_tags" : "post_tags"
         var tags = gENFPreferences.copyUnicharPref(postTagsPref, "");
@@ -1123,11 +1220,12 @@ var gENForward = {
       this.msgSend.nsMsgQueueForLater :
       this.msgSend.nsMsgDeliverNow;
 
-    if (!gENForwardUtils.checkMsgSize(msgFile)) { //file size error
+    if (msgFile && !gENForwardUtils.checkMsgSize(msgFile)) { //file size error
       this.sentMsgs += 1;
-      alert("Note size exceeds the limit. Canceled.");
+      console.log("Note size exceeds the limit. Canceled.");
+      this.window.document.getElementById("statusText").setAttribute("value", "Note size exceeds the limit. Canceled.");
       sendListener.onStopSending(null, "FILESIZE_ERROR", "", null);
-    } else {
+    } else if (msgFile) {
       this.locked = true;
       this.msgSend.sendMessageFile(
         this.id, // in nsIMsgIdentity       aUserIdentity,

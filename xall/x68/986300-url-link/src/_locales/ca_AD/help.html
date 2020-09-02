@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html401/loose.dtd">
+<!-- ca_AD help.html -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ajuda de l'URL Link</title>
+  </head>
+  <body>
+    <h2><img src="../../icons/urllink-48.png" alt="logotip">&nbsp;&nbsp;URL Link</h2>
+
+    <h3>Ús</h3>
+    <p>
+    Seleccioneu un fragment de text d'una pàgina web, d'un camp d'entrada de text (formulari web) o d'un correu electrònic i
+    feu clic amb el botó dret.
+    <ul>
+      <li>
+      Si el text sembla que sigui una adreça URL, podreu obrir-la directament (o en
+      una pestanya) mitjançant l'opció “Obre la selecció”.
+      </li>
+      <li>
+      Si el text <i>no</i> sembla que sigui cap enllaç, veureu un submenú
+      que us permetrà tractar-lo igualment com un enllaç, o bé realitzar-hi primer
+      una conversió que podeu personalitzar (per exemple, afegir-hi “www.” i “.com”).
+      </li>
+      <li>
+      A les preferències, on podeu personalitzar el submenú que es mostra,
+      podeu afegir-hi separadors en forma d'entrades formades únicament per guions,
+      com per exemple: <tt>"--"</tt>.
+      </li>
+      <li>
+      Les entrades del menú personalitzades poden contenir qualsevol adreça URL, tan llarga com vulgueu,
+      i el primer '*' es substituirà per la selecció. Podeu afegir-hi un nom
+      abans de la barra '|' de l'entrada per a escurçar el text que es mostra al menú:<br>
+      <tt>"Nom curt|http://www.nomllarg.com/q=*"</tt>.
+      </li>
+      <li>
+      Al Firefox, premeu &lt;Majúscules&gt; quan seleccioneu 'Obre' per a obrir l'enllaç en
+      una finestra nova enlloc d'utilitzar la finestra actual.
+      </li>
+      <li>
+      A les preferències de l'URL Link, podeu escollir si voleu que l'URL Link col·loqui l'opció al principi o al final
+      del menú contextual estàndard.
+      </li>
+    </ul>
+
+    <h3>Funcionalitat</h3>
+    <ul>
+      <li>
+      L'URL Link és un petit complement del Firefox i del Thunderbird que us permet
+      seleccionar un text que no sigui cap adreça URL, en un missatge de correu o de notícies o en una pàgina web, i obrir-lo
+      en una finestra del navegador.
+      </li>
+
+      <li>
+      Als missatges de correu electrònic, l'URL Link arregla els enllaços que s'han partit
+      en diverses línies i també substitueix els espais pel codi de caràcter d'URL %20,
+      per tal que pugueu obrir els enllaços de xarxa de tipus 'file:' enviats per correu electrònic (que l'URL Link
+      detecta automàticament a partir de les referències de xarxa X: o UNC del Windows).
+      </li>
+
+      <li>
+      A les pàgines web, també us permet seleccionar enllaços/adreces URL textuals de les pàgines web o dels camps d'edició
+      i obrir-los com si fossin enllaços reals.
+      També analitza els enllaços de tipus 'mailto:'.
+      </li>
+
+      <li>
+      També descompon els enllaços 'mailto:' (per exemple, converteix
+      mailto:usuari@lloc.com en http://www.lloc.com), per tal que pugueu visitar
+      un lloc web relacionat.
+      </li>
+
+      <li>
+      També pot obrir enllaços de tipus 'javascript:' que normalment s'obririen en finestres emergents
+      (per exemple, http://www.kelkoo.co.uk/ - encara que recentment han fet alguns canvis als enllaços
+      per tal que l'URL Link no funcioni :-( Està previst que se solucioni en versions posteriors a la
+      2.0).
+      </li>
+    </ul>
+
+    <h3>Cerca i reemplaçament personalitzats</h3>
+    <p>
+    Podeu aplicar cerques i reemplaçaments a la selecció.
+    Els paràmetres per defecte són dos valors que ja existien en versions anteriors de l'URL Link
+    (per al Thunderbird) i que ara podeu afegir o reemplaçar. El reemplaçament
+    es realitza després d'eliminar el caràcter &amp; del davant, i després de convertir totes les
+    barres inverses (\) en barres inclinades (/).
+    <p>
+    El format de les entrades de la pestanya de preferències és
+    “cercaExpReg||Reemplaçamet||indicadorsExpReg”. Els caràcters “||” del final i els indicadors
+    són opcionals; segurament, l'indicador (JavaScript) més habitual que utilitzareu és 'g' (que vol dir
+    “global” o “reemplaça-ho tot”). El reemplaçament pot contenir les referències de patró de cerca “$n”
+    habituals.
+    <p>
+    <i>Per exemple</i>, suposeu que rebeu un correu electrònic que conté enllaços a un fitxer del Windows com ara
+    “\\servidor\recurs_compartit\fitxer”. Però esteu en un sistema Linux i el recurs compartit del Windows
+    està mapat com a “/mnt/smb/nom_usuari/recurs_compartit”. Per tant, caldria que afegíssiu una entrada
+    al final de la llista (tingueu en compte que les barres inverses ja s'han convertit i que les entrades
+    per defecte converteixen “//servidor/recurs_compartit” en “file:///servidor/recurs_conpartit”) amb aquest format:
+    “file:///servidor/recurs_compartit||file:///mnt/smb/nom_usuari/recurs_compartit”.
+    <p>
+    Si us cal depurar les expressions, afegiu l'indicador d'expressió regular especial (per a l'URL Link)
+    “D”, per exemple: ‘from||to||D’. Així, l'URL Link obrirà una finestra d'alerta
+    que us indicarà quina és la vostra expressió (“Conversió:”), quina és la selecció en aquest
+    moment (“From:”) i què ha fet l'expressió a la selecció (“To:”).
+
+    <h3>Canvis previstos</h3>
+    <ul>
+      <li>
+      Ampliar la cerca i reemplaçament personalitzats quan sigui estable per permetre també executar codi
+      JavaScript arbitrari a la selecció.
+      </li>
+    </ul>
+
+    <h3>Contacte</h3>
+    <ul>
+      <li>
+      <a href="https://addons.mozilla.org/en-GB/firefox/addon/url-link/">Pàgina oficial del complement</a> de l'URL Link.
+      </li>
+      <li>
+      <a href="mailto:mozilla@fnxweb.com">Envieu un correu electrònic a l'autor</a>.
+      </li>
+    </ul>
+
+    <h3>Llicència</h3>
+    <p>
+    Aquest codi font, tal com el codi font del Mozilla, té una llicència triple disjuntiva
+    i us dóna l'opció d'escollir un dels conjunts següents de termes de llicència
+    de programari lliure i de codi obert:
+    </p>
+    <ul>
+      <li><a href="MPL-1.1.html">Mozilla Public License, versió 1.1</a> o posterior</li>
+      <li><a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License, versió 2.0</a> o posterior</li>
+      <li><a href="http://www.gnu.org/licenses/lgpl-2.1.html">GNU Lesser General Public License, versió 2.1</a> o posterior</li>
+    </ul>
+
+    <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01
+      Transitional" height="31" width="88"></a>
+    </p>
+  </body>
+</html>

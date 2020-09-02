@@ -1,0 +1,9 @@
+/* 
+ * Don't display the lightweight-theme images
+ * because of overlaying the whole dialog.
+ * On the other hand we need the lightweight=true
+ * to have the dark and light mode ability
+ */
+#allowhtmltempPrefs:not([lwt-tree]):-moz-lwtheme {
+  background-image: none !important;
+}

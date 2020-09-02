@@ -2,23 +2,38 @@
   "manifest_version": 2,
   "name": "Remove Duplicates",
   "description": "Removes duplicate messages",
-  "version": "1.7",
+  "version": "3.2",
   "author": "Dillinger",
   "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/remove-duplicates/",
-  "legacy" : {
-    "options" : {
-      "page" : "chrome://removedupes/content/removedupesprefs.xul",
-      "open_in_tab" : false
-    }
+  "experiment_apis": {
+      "ReplacementAddonNotification": {
+        "schema": "api/ReplacementAddonNotification/schema.json",
+        "parent": {
+          "scopes": [
+            "addon_parent"
+          ],
+          "paths": [
+            [
+              "ReplacementAddonNotification"
+            ]
+          ],
+          "script": "api/ReplacementAddonNotification/implementation.js"
+        }
+      }
+    },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
   },
   "applications": {
     "gecko": {
       "id": "removedupes@dillinger",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0",
+      "strict_max_version": "78.*"
     }
   },
   "icons": {
-    "32": "content/removedupes.svg",
-    "64": "content/removedupes.svg"
+    "32": "removedupes.svg"
   }
 }

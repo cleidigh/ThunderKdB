@@ -31,13 +31,21 @@ var E2TB = {
     E2TBTimer.setTimeout(() => {
       let keyList = E2TBKeyRing.getAllSecretKeys(false);
 
-      if (keyList.length > 0) {
-        E2TBLog.DEBUG("enigmailMessengerOverlay.js: messengerStartup: displaying menu\n");
-        let mnu = document.getElementById("enigmailUpgradeMenu");
-        if (mnu) mnu.removeAttribute("collapsed");
-      }
+      E2TBLog.DEBUG("enigmailMessengerOverlay.js: messengerStartup: displaying menu\n");
+      let mnu = document.getElementById("enigmailUpgradeMenu");
+      if (mnu) mnu.removeAttribute("collapsed");
 
-      if (vc.compare(lastVersion, "2.2a1") >= 0) {
+      // add Hamburger menu
+      let panelMenu = document.getElementById("appmenu_devtoolsMenu").parentElement;
+      let mnu2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "toolbarbutton");
+      panelMenu.appendChild(mnu2);
+      mnu2.setAttribute("id", "appmenu_enigmailUpgradeMenu");
+      mnu2.setAttribute("class", "subviewbutton subviewbutton-iconic");
+      mnu2.setAttribute("closemenu", "none");
+      mnu2.setAttribute("oncommand", "E2TBWindows.openUpdateInfo()");
+      mnu2.setAttribute("label", mnu.getAttribute("label"));
+
+      if ((!lastVersion) || vc.compare(lastVersion, "2.2a1") >= 0) {
         return;
       }
 

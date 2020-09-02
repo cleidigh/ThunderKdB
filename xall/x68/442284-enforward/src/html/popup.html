@@ -5,24 +5,25 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
+  <script src="../scripts/l10n.js" defer></script>
   <script src="../scripts/popup.js" defer></script>
 </head>
 
 <body>
   <div class="popup-page">
     <div id="confArea">
-      <h2 class="titleline-simple" id="serviceName"></h2>
+      <h2 class="titleline-simple" id="serviceName" l10n-tag="enfPopupCaption"></h2>
       <div id="entable" class="box-visible">
         <table class="conftable" align="center">
           <thead>
             <tr>
-              <th>Fwd</th>
-              <th>Title</th>
-              <th>Append</th>
-              <th>Notebook</th>
-              <th>Reminder</th>
-              <th>Notification</th>
-              <th>Tags</th>
+              <th l10n-tag="enfPopupFwd">Fwd</th>
+              <th l10n-tag="enfPopupTitle">Title</th>
+              <th l10n-tag="enfPopupAppend">Append</th>
+              <th l10n-tag="enfPopupNotebook">Notebook</th>
+              <th l10n-tag="enfPopupReminder">Reminder</th>
+              <th l10n-tag="enfPopupNotification">Notification</th>
+              <th l10n-tag="enfPopupTags">Tags</th>
             </tr>
           </thead>
           <tbody id="noteTable" align="center">
@@ -33,8 +34,8 @@
         <table class="conftable" align="center">
           <thead>
             <tr>
-              <th>Fwd</th>
-              <th>Title</th>
+              <th l10n-tag="enfPopupFwd">Fwd</th>
+              <th l10n-tag="enfPopupTitle">Title</th>
             </tr>
           </thead>
           <tbody id="noteTableOn" align="center">
@@ -43,16 +44,16 @@
       </div>
       <br>
       <div id="submitArea" align="left">
-        <input type="button" id="fwdButton" value="Forward">
-        <input type="button" id="cancelButton" value="Cancel">
+        <input type="button" id="fwdButton" value="Forward" l10n-val-tag="enfPopupForward">
+        <input type="button" id="cancelButton" value="Cancel" l10n-val-tag="enfPopupCancel">
       </div>
     </div>
     <div id="cancelArea" class="box-none">
-      <p>Are you sure you want to cancel forwarding?</p>
+      <p l10n-tag="enfPopupCancelMsg">Are you sure you want to cancel forwarding?</p>
       <br>
       <div id="submitArea2" align="left">
-        <input type="button" id="yesCancelButton" value="Yes">
-        <input type="button" id="noCancelButton" value="No">
+        <input type="button" id="yesCancelButton" value="Yes" l10n-val-tag="enfPopupYes">
+        <input type="button" id="noCancelButton" value="No" l10n-val-tag="enfPopupNo">
       </div>
     </div>
   </div>

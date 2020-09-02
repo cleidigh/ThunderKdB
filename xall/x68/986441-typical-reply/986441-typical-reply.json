@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1530,
+    "average_daily_users": 2006,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2018-12-26T09:00:21Z",
     "current_version": {
-        "id": 2474043,
+        "id": 2474171,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "68.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/typical-reply/versions/2474043",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/typical-reply/versions/2474171",
         "files": [
             {
-                "id": 1017205,
-                "created": "2020-08-06T00:52:26Z",
-                "hash": "sha256:4d81ccd7767a894b2e304daa93184e884594051ac66cac956ff8673daee47fbc",
+                "id": 1017333,
+                "created": "2020-09-01T09:09:50Z",
+                "hash": "sha256:cc535ca750ae0c65e13fcae39c0ddfc97d8b09fe4db7b0d9a63249699e50cac8",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 64881,
+                "size": 93155,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017205/typical_reply-0.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017333/typical_reply-0.6.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,12 +51,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Supports Thunderbird 68.",
+            "en-US": "Fix a regression: the header toolbar became blank accidentally.",
             "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/typical-reply/versions/0.6",
-        "version": "0.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/typical-reply/versions/0.6.2",
+        "version": "0.6.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -81,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-08-11T08:46:43Z",
+    "last_updated": "2020-09-01T13:09:41Z",
     "name": {
         "en-US": "Typical Reply",
         "ja": "Typical Reply"
@@ -152,7 +152,6 @@
         "ext_comp": {
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
             "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2019-06-20T02:58:06Z"

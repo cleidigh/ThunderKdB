@@ -322,9 +322,9 @@ async function applyRecipientChanges(tabId) {
   let workReplyTo = replyTo.slice(0, replyTo.length);
 
   let changed = false;
-  changed |= correctRecipientNames(workTo, warnings.correctNameTo);
-  changed |= removeDuplicatedRecipients(workTo, warnings.dupTo);
-  changed |= removeAddrCheckErrorRecipients(workTo, warnings.addrCheckTo);
+  changed = correctRecipientNames(workTo, warnings.correctNameTo) || changed;
+  changed = removeDuplicatedRecipients(workTo, warnings.dupTo) || changed;
+  changed = removeAddrCheckErrorRecipients(workTo, warnings.addrCheckTo) || changed;
 
   if (changed) {
     newDetails.to = [];
@@ -336,9 +336,9 @@ async function applyRecipientChanges(tabId) {
   }
 
   changed = false;
-  changed |= correctRecipientNames(workCc, warnings.correctNameCc);
-  changed |= removeDuplicatedRecipients(workCc, warnings.dupCc);
-  changed |= removeAddrCheckErrorRecipients(workCc, warnings.addrCheckCc);
+  changed = correctRecipientNames(workCc, warnings.correctNameCc) || changed;
+  changed = removeDuplicatedRecipients(workCc, warnings.dupCc) || changed;
+  changed = removeAddrCheckErrorRecipients(workCc, warnings.addrCheckCc) || changed;
 
   if (changed) {
     newDetails.cc = [];
@@ -350,8 +350,8 @@ async function applyRecipientChanges(tabId) {
   }
 
   changed = false;
-  changed |= removeDuplicatedRecipients(workBcc, warnings.dupBcc);
-  changed |= removeAddrCheckErrorRecipients(workBcc, warnings.addrCheckBcc);
+  changed = removeDuplicatedRecipients(workBcc, warnings.dupBcc) || changed;
+  changed = removeAddrCheckErrorRecipients(workBcc, warnings.addrCheckBcc) || changed;
 
   if (changed) {
     newDetails.bcc = [];
@@ -363,9 +363,9 @@ async function applyRecipientChanges(tabId) {
   }
 
   changed = false;
-  changed |= correctRecipientNames(workReplyTo, warnings.correctNameReplyTo);
-  changed |= removeDuplicatedRecipients(workReplyTo, warnings.dupReplyTo);
-  changed |= removeAddrCheckErrorRecipients(workReplyTo, warnings.addrCheckReplyTo);
+  changed = correctRecipientNames(workReplyTo, warnings.correctNameReplyTo) || changed;
+  changed = removeDuplicatedRecipients(workReplyTo, warnings.dupReplyTo) || changed;
+  changed = removeAddrCheckErrorRecipients(workReplyTo, warnings.addrCheckReplyTo) || changed;
 
   if (changed) {
     newDetails.replyTo = [];

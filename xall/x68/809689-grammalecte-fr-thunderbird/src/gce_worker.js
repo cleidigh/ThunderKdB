@@ -45,6 +45,7 @@ importScripts("grammalecte/fr/mfsp.js");
 importScripts("grammalecte/fr/phonet.js");
 importScripts("grammalecte/fr/cregex.js");
 importScripts("grammalecte/fr/gc_options.js");
+importScripts("grammalecte/fr/gc_functions.js");
 importScripts("grammalecte/fr/gc_rules.js");
 importScripts("grammalecte/fr/gc_rules_graph.js");
 importScripts("grammalecte/fr/gc_engine.js");

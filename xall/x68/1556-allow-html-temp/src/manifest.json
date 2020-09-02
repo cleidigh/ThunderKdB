@@ -2,25 +2,34 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "5.7.8",
+  "version": "6.0.0",
   "author": "Alexander Ihrig",
-  "homepage_url": "https://www.thunderbird-mail.de/lexicon/entry/14-allow-html-temp/",
+  "homepage_url": "https://addons.thunderbird.net/thunderbird/addon/allow-html-temp/",
   "applications": {
     "gecko": {
       "id": "{532269cf-a10e-4396-8613-b5d9a9a516d4}",
-      "strict_min_version": "66.0",
-      "strict_max_version": "72.0a1"
+      "strict_min_version": "78.0",
+      "strict_max_version": "80.0"
     }
   },
   "default_locale": "en",
   "icons": {
-    "32": "chrome/skin/quantum/icon_32.png",
-    "64": "chrome/skin/quantum/icon_64.png"
+    "32": "chrome/skin/icon_32.png",
+    "64": "chrome/skin/icon_64.png"
   },
-  "legacy": {
-    "options": {
-      "open_in_tab": false,
-	  "page": "chrome://allowhtmltemp/content/AHTprefs.xul"
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
     }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
   }
 }

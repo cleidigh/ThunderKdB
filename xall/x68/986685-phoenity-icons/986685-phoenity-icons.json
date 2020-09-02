@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 4196,
+    "average_daily_users": 4356,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2019-07-12T01:56:00Z",
     "current_version": {
-        "id": 2473927,
+        "id": 2474169,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/versions/2473927",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/versions/2474169",
         "files": [
             {
-                "id": 1017089,
-                "created": "2020-07-16T01:53:14Z",
-                "hash": "sha256:685c77e2d9d33722ea54b701e66757696bedd355f013f6df4511a9524be9e6f3",
-                "is_restart_required": true,
+                "id": 1017331,
+                "created": "2020-08-31T19:05:33Z",
+                "hash": "sha256:9922f95e033ca3bc16dbe05295d46aa6663a1ce277a69784415b3001c5650a0e",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 443902,
+                "size": 157335,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017089/phoenity_icons-2.9-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017331/phoenity_icons-3.0b1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,15 +50,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Tweaked the numberbox appearance.\nFixed WebExtension icon size when using large icons.\nRemoved \"chrome:\" from most internal css links."
+            "en-US": "First release for Thunderbird 78.\nIcons for the main toolbars only, icon resizing doesn't work (yet)."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/versions/2.9",
-        "version": "2.9"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/versions/3.0b1",
+        "version": "3.0b1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This is a (limited) replacement for the <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-shredder/\" rel=\"nofollow\">Phoenity Shredder</a> theme.\nFull themes are no longer supported on Thunderbird 68."
+        "en-US": "This is a (limited) replacement for the <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-shredder/\" rel=\"nofollow\">Phoenity Shredder</a> theme.\nFull themes are no longer supported on Thunderbird 68 and higher.\n\nFor Thunderbird 78 the add-on is limited to icons for the main toolbars only.\nIcon resizing doesn't work (yet), for large icons add the following to userChrome.css:\n\n#mail-bar3 .toolbarbutton-1 .toolbarbutton-icon,\n#compose-toolbox .toolbarbutton-1 .toolbarbutton-icon {\n  min-width: 26px;\n  min-height: 26px;\n}"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/edit",
@@ -77,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-16T12:10:12Z",
+    "last_updated": "2020-08-31T21:02:42Z",
     "name": {
         "en-US": "Phoenity Icons"
     },
@@ -126,10 +126,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true
         }
     }
 }

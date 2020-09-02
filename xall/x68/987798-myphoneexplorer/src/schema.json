@@ -1,0 +1,30 @@
+[
+  {
+    "namespace": "MyPhoneExplorer",
+    "functions": [
+	  {
+        "name": "HandleCommand",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "command",
+            "type": "string"
+          }        
+		]
+      }
+	],
+    "events": [
+	  {
+        "name": "onCommandResult",
+        "type": "function",
+        "description": "Fires when command was handled",
+        "parameters": [
+          {
+            "name": "resultdata",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+]

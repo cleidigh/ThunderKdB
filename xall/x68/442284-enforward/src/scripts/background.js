@@ -4,6 +4,7 @@ var noteInfoConfLocal = null;
 var isOnenote = false;
 var showPopup = false;
 var isReminder = false;
+var buttonExists = false;
 
 /*
 Prefs changed in experiments.
@@ -17,10 +18,23 @@ async function init() {
   gENFPreferences.init();
   prefs = gENFPreferences.getDefaultPrefs();
   await loadAlllPrefs();
-  await browser.enForwardApi.init();
   createMenus();
+  await browser.enForwardApi.init();
 }
 init();
+
+/* 
+Listener to check toolbar button on tab created. 
+Remove it when the check completed.
+After that, it is monitored by toolbar customization event from experiments scope.
+*/
+var initialListener = async (tab) => {
+  if (tab.mailTab) {
+    buttonExists = await browser.enForwardApi.checkToolbarButton();
+    browser.tabs.onCreated.removeListener(initialListener);
+  }
+}
+browser.tabs.onCreated.addListener(initialListener);
 
 async function loadAlllPrefs() {
   for (let key in prefs) {
@@ -143,15 +157,19 @@ function openPopup() {
     showPopup = prefs["show_conf_dialog"];
   }
 
+  if (buttonExists) {
+    browser.browserAction.setBadgeText({
+      text: null
+    });
 
-  browser.browserAction.setBadgeText({
-    text: null
-  });
-
-  //popup is set even if no warning option to show cancel popup
-  browser.browserAction.setPopup({
-    popup: "html/popup.html"
-  });
+    //popup is set even if no warning option to show cancel popup
+    browser.browserAction.setPopup({
+      popup: "html/popup.html"
+    });
+  } else { //toobar button is not available. so cannot show popup and badge.
+    console.log("Toolbarbutton does not exist. Suppress popup and badge.")
+    showPopup = false;
+  }
 
   if (showPopup) {
     browser.browserAction.openPopup();
@@ -165,9 +183,11 @@ function openPopup() {
 }
 
 function startForwarding() {
-  browser.browserAction.setBadgeText({
-    text: null
-  });
+  if (buttonExists) {
+    browser.browserAction.setBadgeText({
+      text: null
+    });
+  }
   browser.enForwardApi.forwardMessages(isOnenote, isReminder);
   progress = 1;
 }
@@ -177,14 +197,16 @@ function cancelForwarding() {
   progress = 0;
   console.log("User canceled.")
 
-  //remove popup
-  browser.browserAction.setPopup({
-    popup: null
-  });
-  
-  browser.browserAction.setBadgeText({
-    text: null
-  });
+  if (buttonExists) {
+    //remove popup
+    browser.browserAction.setPopup({
+      popup: null
+    });
+
+    browser.browserAction.setBadgeText({
+      text: null
+    });
+  }
 }
 
 browser.runtime.onMessage.addListener(async (message) => {
@@ -213,7 +235,7 @@ browser.runtime.onMessage.addListener(async (message) => {
       cancelForwarding();
       break;
 
-    //From options
+      //From options
     case "GET_TAGS":
       let tags = await browser.messages.listTags();
       sendTags(tags);
@@ -222,8 +244,8 @@ browser.runtime.onMessage.addListener(async (message) => {
       let ids = await getIdentities();
       sendIdentities(ids);
       break;
-      
-    //From compose
+
+      //From compose
     case "GET_NOTEINFO_COMPOSE":
       let noteInfo = await browser.enForwardApi.getNoteInfoForSelectedMessages(message.onenote);
       noteInfoToCompose(noteInfo);
@@ -280,7 +302,7 @@ function sendIdentities(ids) {
 
 function sendNoteInfoToPopup(noteInfoConf, index) {
   let showPopup = isOnenote ? prefs["onenote_show_conf_dialog"] : prefs["show_conf_dialog"];
-  if (showPopup) {
+  if (showPopup && buttonExists) {
     let serviceName = isOnenote ? prefs["onenote_service_name"] : "Evernote";
     browser.runtime.sendMessage({
       message: "SEND_NOTEINFO",
@@ -294,9 +316,11 @@ function sendNoteInfoToPopup(noteInfoConf, index) {
 }
 
 function updateNoteInfo(noteInfoConf, index, sendNum) {
-  browser.browserAction.setBadgeText({
-    text: sendNum.toString()
-  });
+  if (buttonExists) {
+    browser.browserAction.setBadgeText({
+      text: sendNum.toString()
+    });
+  }
 
   browser.enForwardApi.updateNoteInfo(noteInfoConf, index);
   progress = 3;
@@ -339,32 +363,69 @@ browser.enForwardApi.onBeforeSend.addListener((noteInfoConf, index) => {
 browser.enForwardApi.onSendComplete.addListener((succeeded, sentNum, totalNum) => {
   if (progress > 2) { //other cases are ones from filter functionality
     let rest = totalNum - sentNum;
-    if (succeeded) {
-      browser.browserAction.setBadgeText({
-        text: rest.toString()
-      });
-    } else {
-      browser.browserAction.setBadgeText({
-        text: "!"
-      });
+    if (buttonExists) {
+      if (succeeded) {
+        browser.browserAction.setBadgeText({
+          text: rest.toString()
+        });
+      } else {
+        browser.browserAction.setBadgeText({
+          text: "!"
+        });
+      }
     }
 
     if (rest > 0) {
       progress = 3;
     } else {
       progress = 0;
-
-      //remove popup
-      browser.browserAction.setPopup({
-        popup: null
-      });
-
-      //remove badge after a few seconds
-      setTimeout(() => {
-        browser.browserAction.setBadgeText({
-          text: null
+      if (buttonExists) {
+        //remove popup
+        browser.browserAction.setPopup({
+          popup: null
         });
-      }, 3000);
+
+        //remove badge after a few seconds
+        setTimeout(() => {
+          browser.browserAction.setBadgeText({
+            text: null
+          });
+        }, 3000);
+      }
     }
   }
 });
+
+browser.enForwardApi.afterToolbarCustomization.addListener((id, enfButtonExists) => {
+  if (id === "mail-bar3") {
+    buttonExists = enfButtonExists;
+  }
+});
+
+browser.compose.onBeforeSend.addListener((tab, details) => {
+  let found = isEnAddressIncluded(details.to, prefs["email"]);
+  found = found || isEnAddressIncluded(details.cc, prefs["email"]);
+  found = found || isEnAddressIncluded(details.bcc, prefs["email"]);
+
+  if (found) {
+    browser.enForwardApi.saveSentDone();
+  }
+});
+
+function isEnAddressIncluded(addrList, enAddress) {
+  let found = false;
+  for (let i = 0; i < addrList.length; i++) {
+    let contact = addrList[i];
+    if (contact.indexOf("@") < 0) { //maybe maillist
+      continue;
+    }
+    let re = contact.match(/.+ <(\S+)>/);
+    let addr = re ? re[1] : contact;
+    if (addr === enAddress) {
+      found = true;
+      break;
+    }
+  }
+
+  return found;
+}

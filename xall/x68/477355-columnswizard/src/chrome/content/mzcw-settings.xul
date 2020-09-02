@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+<!-- <?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?> -->
+<?xml-stylesheet href="mzcw-settings.css" type="text/css"?>
+
+<!DOCTYPE dialog [ 
+<!ENTITY % mainDTD SYSTEM "chrome://columnswizard/locale/settings.dtd">
+%mainDTD;
+]>
+
+<!-- <!DOCTYPE overlay SYSTEM "chrome://columnswizard/locale/settings.dtd"> -->
+<!-- <prefwindow id="ColumnsWizard_Settings" -->
+  <!-- onload="miczColumnsWizardPref.onLoad(window);"> -->
+
+
+<dialog id="ColumnsWizard_Settings"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  title="&ColumnsWizard.SettingsTitle;">
+  
+  <prefpane id="ColumnsWizard_PrefPane">
+    <preferences>
+    <!-- Columns in Conversation Tab -->
+      <preference id="ColumnsWizard.ShowLocation"
+        name="extensions.ColumnsWizard.ShowLocation"
+        type="bool" />
+      <preference id="ColumnsWizard.ShowAccount"
+        name="extensions.ColumnsWizard.ShowAccount"
+        type="bool" />
+      <preference id="ColumnsWizard.ShowAttachment"
+        name="extensions.ColumnsWizard.ShowAttachment"
+        type="bool" />
+      <preference id="ColumnsWizard.ShowRecipient"
+        name="extensions.ColumnsWizard.ShowRecipient"
+        type="bool" />
+	<!-- Default Columns for New Folder -->
+      <preference id="ColumnsWizard.DefaultColsList.active"
+        name="extensions.ColumnsWizard.DefaultColsList.active"
+        type="bool" />
+      <preference id="ColumnsWizard.DefaultColsList"
+        name="extensions.ColumnsWizard.DefaultColsList"
+        type="string" />
+      <preference id="ColumnsWizard.DefaultColsList.SortOrder"
+        name="mailnews.default_sort_order"
+        type="int" />
+    <!-- Headers Editing -->
+	  <preference id="ColumnsWizard.CustCols.mod_active"
+        name="extensions.ColumnsWizard.CustCols.mod_active"
+        type="bool" />
+      <preference id="ColumnsWizard.MailHeader.use_imap_fix"
+        name="extensions.ColumnsWizard.MailHeader.use_imap_fix"
+        type="bool" />
+      <preference id="ColumnsWizard.MailHeader.put_original_in_trash"
+        name="extensions.ColumnsWizard.MailHeader.put_original_in_trash"
+        type="bool" />
+      <preference id="ColumnsWizard.debug"
+        name="extensions.ColumnsWizard.debug"
+        type="bool"/>
+    <!-- Custom Columns no pref needed here, all is managed directly by javascript code -->
+    </preferences>
+    <tabbox id="cw_tabbox">
+      <tabs>
+		<tab label="&ColumnsWizard.TabNewFolderDefault.label;"/>
+        <tab label="&ColumnsWizard.TabCustomCols.label;"/>
+        <tab label="&ColumnsWizard.TabConversation.label;"/>
+        <tab label="&ColumnsWizard.TabAdvanced.label;"/>
+        <tab label="&ColumnsWizard.TabInfo.label;"/>
+      </tabs>
+      <tabpanels>
+        <tabpanel id="tab_newfoldercols" orient="vertical">
+			<!-- New Folder Columns -->
+	  <grid height="280px">
+		<columns>
+		  <column flex="1"/>
+		</columns>
+		<rows>
+      <row>
+		  <description class="mzcw-desc">&ColumnsWizard.NewFolderCols.Desc;</description>
+	  </row>
+		  <row>
+          <checkbox id="ColumnsWizard.DefaultColsList.active_checkbox" label="&ColumnsWizard.NewFolderCols.label;"
+            preference="ColumnsWizard.DefaultColsList.active"/>
+          </row>
+          <row>
+            <separator class="thin"/>
+           </row>
+         <row height="260px">
+		<vbox style="overflow:auto;" height="260px">
+			<radiogroup id="cw_sortby"/>
+          <grid id="ColumnsWizard.GridUI">
+		  <columns>
+			<column/><column/><column flex="2"/><column flex="1"/><column/><column/>
+		  </columns>
+		  <rows id='ColumnsWizard.DefaultColsGrid' preference='ColumnsWizard.DefaultColsList' preference-editable="true" onsynctopreference='return miczColumnsWizardPref.saveDefaultColRows(window);'>
+		  </rows>
+		 </grid>
+		 </vbox>
+		</row>
+	    <row>
+           <separator class="thin"/>
+        </row>
+		<row>
+		 <hbox id="ColumnsWizard.SortOrderUI"><label control="symbol" value="&ColumnsWizard.NewFolderColsSortOrder.label;"/> <radiogroup id="cw_sortorder" orient="horizontal" preference="ColumnsWizard.DefaultColsList.SortOrder"><radio id="cw_sort_asc" label="&ColumnsWizard.NewFolderColsSortOrder.ASC.label;"  value="1"/> <radio id="cw_sort_desc" label="&ColumnsWizard.NewFolderColsSortOrder.DESC.label;" value="2"/></radiogroup></hbox>
+		 </row>
+		 </rows>
+		 </grid>
+        </tabpanel>
+        <tabpanel id="custcols" orient="vertical">
+			<!-- Custom Columns -->
+  <grid height="300px">
+    <columns>
+      <column flex="1"/>
+    </columns>
+    <rows>
+      <row>
+        <separator class="thin"/>
+      </row>
+      <row>
+          <label control="symbol" value="&ColumnsWizard.GlobalDescCustCols;"/>
+      </row>
+      <row height="200px">
+        <hbox>
+          <listbox id="ColumnsWizard.CustColsList" flex="1" height="201px" onselect="miczColumnsWizardPref.updateButtons(window);" seltype="single">
+			 <listcols>
+				<listcol maxwidth="32px"/>
+				<listcol maxwidth="32px"/>
+				<listcol flex="1"/>
+				<listcol flex="1"/>
+				<listcol flex="1"/>
+				<listcol flex="1"/>
+			</listcols>
+            <listhead>
+              <listheader id="activeColumn" class="icon_enabled" tooltiptext="&ColumnsWizard.CustColsList.Enabled.tooltip;"/>
+              <listheader id="searchableColumn" class="icon_searchable" tooltiptext="&ColumnsWizard.CustColsList.Searchable.tooltip;"/>
+              <listheader id="idColumn" label="&ColumnsWizard.CustColsList.ID;"/>
+              <listheader id="mailheaderColumn" label="&ColumnsWizard.CustColsList.mailheader;"/>
+              <listheader id="titleColumn" label="&ColumnsWizard.CustColsList.title;"/>
+              <listheader id="tooltipColumn" label="&ColumnsWizard.CustColsList.tooltip;"/>
+            </listhead>
+          </listbox>
+        </hbox>
+        </row>
+		<row>
+        <hbox>
+          <button id="newButton"
+                  label="&ColumnsWizard.newButton.label;"
+                  oncommand="miczColumnsWizardPref.onNewCustomCol(window);"/>
+          <button id="editButton" label="&ColumnsWizard.editButton.label;"
+                  oncommand="miczColumnsWizardPref.onEditCustomCol(window);" disabled="true"/>
+          <button id="deleteButton"
+                  label="&ColumnsWizard.deleteButton.label;"
+                  oncommand="miczColumnsWizardPref.onDeleteCustomCol(window);" disabled="true"/>
+        </hbox>
+      </row>
+      <row>
+        <separator class="thin"/>
+      </row>
+      <row>
+		  <description class="mzcw-desc">&ColumnsWizard.CustomHeadersDescCustCols;</description>
+	  </row>
+      <row>
+        <separator class="thin"/>
+      </row>
+	  <row>
+      <vbox class="mzcw-warn">
+	    <description style="word-wrap:normal;max-width:550px;">&ColumnsWizard.WarnDescCustCols;</description>
+          </vbox>
+      </row>
+    </rows>
+  </grid>
+         </tabpanel>
+        <tabpanel id="convtab" orient="vertical">
+			 <!-- Columns in Conversation Tab -->
+          <label control="symbol" class="mzcw-desc" value="&ColumnsWizard.GlobalDescConvTab;"/>
+          <label control="symbol" value=" "/>
+          <checkbox id="ColumnsWizard.ShowLocation_checkbox" label="&ColumnsWizard.ShowLocation.label;"
+            preference="ColumnsWizard.ShowLocation" />
+          <checkbox id="ColumnsWizard.ShowAccount_checkbox" label="&ColumnsWizard.ShowAccount.label;"
+            preference="ColumnsWizard.ShowAccount" />
+          <checkbox id="ColumnsWizard.ShowAttachment_checkbox" label="&ColumnsWizard.ShowAttachment.label;"
+            preference="ColumnsWizard.ShowAttachment" />
+          <checkbox id="ColumnsWizard.ShowRecipient_checkbox" label="&ColumnsWizard.ShowRecipient.label;"
+            preference="ColumnsWizard.ShowRecipient" />
+        </tabpanel>
+        <tabpanel id="advancedtab" orient="vertical">
+			 <!-- Advanced Tab -->
+          <groupbox>
+  			<caption label="&ColumnsWizard.MailHeaderGroupbox.label;"/>
+			<checkbox id="ColumnsWizard.CustCols.mod_active_checkbox" label="&ColumnsWizard.CustCols.mod_active_checkbox.label;"
+				preference="ColumnsWizard.CustCols.mod_active" />
+			<description class="mzcw-desc">&ColumnsWizard.CustCols.mod_active_checkbox.desc;</description>
+			<separator class="thin"/>
+			<checkbox id="ColumnsWizard.MailHeader.use_imap_fix_checkbox" label="&ColumnsWizard.MailHeader.use_imap_fix_checkbox.label;"
+				preference="ColumnsWizard.MailHeader.use_imap_fix" />
+			<description class="mzcw-desc">&ColumnsWizard.CustCols.use_imap_fix_checkbox.desc;</description>
+			<separator class="thin"/>
+			<checkbox id="ColumnsWizard.MailHeader.put_original_in_trash_checkbox" label="&ColumnsWizard.MailHeader.put_original_in_trash_checkbox.label;"
+				preference="ColumnsWizard.MailHeader.put_original_in_trash" />
+			<description class="mzcw-desc">&ColumnsWizard.CustCols.put_original_in_trash_checkbox.desc;</description>
+          </groupbox>
+          <checkbox id="ColumnsWizard.debug_checkbox" label="&ColumnsWizard.ActivateDebug;" preference="ColumnsWizard.debug" />
+        </tabpanel>
+
+        <tabpanel id="tab_info" orient="vertical">
+	         <!-- Info Tab -->
+ 	  <grid>
+		<columns>
+		  <column flex="1"/>
+		</columns>
+		<rows>
+	    <row>
+           <separator class="thin"/>
+        </row>
+      <row>
+		  <description class="mzcw-desc-big">&ColumnsWizard.InfoMainDesc;</description>
+	  </row>
+	    <row>
+           <separator class="thin"/>
+        </row>
+		<row>
+           <label value="&ColumnsWizard.DonateLink;" class="text-link mzcw-donate" href="http://micz.it/thunderdbird-addon-columnswizard/donate/"/>
+        </row>
+         <row>
+           <separator class="thin"/>
+        </row>
+        </rows>
+        </grid>
+		<hbox align="right"><button label="Release notes" oncommand="miczColumnsWizardPref.loadInfoFile('release_notes');" type="radio" group="btn_info_tab" checked="true"/> <button label="License" oncommand="miczColumnsWizardPref.loadInfoFile('license');" type="radio" group="btn_info_tab"/></hbox>
+        <textbox id="mzcw-release-notes" class="release-notes-text" value="Loading..." multiline="true" readonly="true" flex="7"/>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+  </prefpane>
+  <script type="application/x-javascript" src="chrome://columnswizard/content/mzcw-customcolumns.js" />
+  <script type="application/x-javascript" src="chrome://columnswizard/content/mzcw-settings.js" />
+</dialog>

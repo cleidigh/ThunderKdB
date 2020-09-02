@@ -1,26 +1,49 @@
 {
     "manifest_version": 2,
-    "name": "URL Link",
-    "version": "2.6.2",
-    "description": "Allow navigation to broken/unlinked URLs",
+    "name": "__MSG_extensionName__",
+    "version": "3.5beta1",
+    "description": "__MSG_extensionDescription__",
     "author": "Neil Bird",
-    "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/url-link/",
+    "homepage_url": "https://addons.mozilla.org/en-GB/firefox/addon/url-link/",
+    "default_locale": "en_US",
+
+    "applications": {
+        "gecko": {
+            "id": "{139a120b-c2ea-41d2-bf70-542d9f063dfd}",
+            "strict_min_version": "72.0"
+        }
+    },
+
     "icons": {
         "48": "icons/urllink-48.png",
         "96": "icons/urllink-96.png"
     },
 
-    "applications": {
-        "gecko": {
-            "id": "{139a120b-c2ea-41d2-bf70-542d9f063dfd}",
-            "strict_min_version": "68.0"
+    "background": {
+        "scripts": [ "common.js", "background.js" ]
+    },
+
+    "options_ui": {
+        "browser_style": true,
+        "page": "preferences.html",
+        "open_in_tab": true
+    },
+
+    "experiment_apis": {
+        "UrlLinkShellApi": {
+            "schema":"UrlLinkShellApi.json",
+            "parent" : {
+                "scopes" : ["addon_parent"],
+                "script" : "UrlLinkShellApi.js",
+                "paths" : [["urllink", "shell"]]
+            }
         }
     },
 
-    "legacy": {
-        "type": "xul",
-        "options": {
-            "page": "chrome://urllink/content/urllinkPrefs.xul"
-        }
-    }
+    "permissions": [
+        "clipboardWrite",
+        "menus",
+        "storage",
+        "tabs"
+        ]
 }

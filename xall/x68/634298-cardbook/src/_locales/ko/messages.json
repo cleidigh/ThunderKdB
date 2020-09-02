@@ -10,7 +10,7 @@
 		"description": "연락처 탭으로 전환하십시오"
 	},
 	"cardbookTitle": {
-		"message": "연락처"
+		"message": "CardBook"
 	},
 	"cardbookPrefTitle": {
 		"message": "연락처 환경 설정"
@@ -82,13 +82,13 @@
 		"message": "카테고리를 목록으로 변환"
 	},
 	"editNodeFromAccountsOrCats": {
-		"message": "??Edit Node??"
+		"message": "노드 수정"
 	},
 	"removeNodeFromAccountsOrCats": {
-		"message": "??Remove Node??"
+		"message": "노드 제거"
 	},
 	"convertNodeFromAccountsOrCats": {
-		"message": "??Create List from Node??"
+		"message": "노드에서 목록 생성"
 	},
 	"viewCardButtonLabel": {
 		"message": "보기"
@@ -409,7 +409,7 @@
         }
 	},
 	"synchroDBFinishedResult": {
-		"message": "??$P1$ : Local database opened, contacts result :??",
+		"message": "$P1$ : 로컬 데이터베이스 열림, 연락처 결과 :",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1390,7 +1390,7 @@
         }
 	},
 	"cardsConverted": {
-		"message": "??$P1$ : contacts converted into $P2$ : $P3$??",
+		"message": "$P1$ : $P2$로 연락처 변환 : $P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1404,7 +1404,7 @@
         }
 	},
 	"cardsConvertedUndo": {
-		"message": "??VCards converted??"
+		"message": "변환된 vCard"
 	},
 	"cardsImportedFromFileUndo": {
 		"message": "??File $P1$ imported??",
@@ -1455,19 +1455,19 @@
         }
 	},
 	"outgoingEmailCollectedUndo": {
-		"message": "??Outgoing email collected??"
+		"message": "수집된 발송 이메일"
 	},
 	"emailCollectedByFilterUndo": {
-		"message": "??Emails collected by filter??"
+		"message": "필터가 수집한 이메일"
 	},
 	"emailDeletedByFilterUndo": {
-		"message": "??Emails deleted by filter??"
+		"message": "필터가 삭제한 이메일"
 	},
 	"cardsMergedUndo": {
-		"message": "??Contacts merged??"
+		"message": "병합된 연락처"
 	},
 	"cardsDuplicatedUndo": {
-		"message": "??Contacts duplicated??"
+		"message": "중복된 연락처"
 	},
 	"displayNameGenerated": {
 		"message": "??$P1$ : contacts having their display names regenerated : $P2$??",
@@ -1481,7 +1481,7 @@
         }
 	},
 	"displayNameGeneratedUndo": {
-		"message": "??Display names regenerated??"
+		"message": "재생성된 표시 이름"
 	},
 	"cardModifiedUndo": {
 		"message": "연락처 $P1$가 업데이트 됨",
@@ -1500,13 +1500,13 @@
         }
 	},
 	"cardsDeleted2Undo": {
-		"message": "??Contacts deleted??"
+		"message": "삭제된 연락처"
 	},
 	"cardsPastedUndo": {
-		"message": "??Contacts pasted??"
+		"message": "붙여넣기된 연락처"
 	},
 	"cardsDraggedUndo": {
-		"message": "??Contacts dragged??"
+		"message": "이동된 연락처"
 	},
 	"categoryCreated": {
 		"message": "$P1$: 카테고리 $P2$가 생성됨",
@@ -2141,7 +2141,7 @@
         }
 	},
 	"dateEntry2Wrong": {
-		"message": "??Date field value ($P1$) does not match the date format of the address book ($P2$)??",
+		"message": "날짜 필드 값 ($P1$)이 주소록 ($P2$)의 날짜 포맷과 일치하지 않습니다",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2166,10 +2166,10 @@
         }
 	},
 	"eventNameNull": {
-		"message": "??At least one event has an empty description??"
+		"message": "최소 하나의 이벤트의 설명이 비어있습니다."
 	},
 	"eventDateNull": {
-		"message": "??At least one event has an empty date??"
+		"message": "최소 하나의 이벤트의 날짜가 비어있습니다."
 	},
 	"invalidURL": {
 		"message": "잘못된 URL: $P1$",
@@ -2387,7 +2387,7 @@
         }
 	},
 	"nodeDeletionsConfirmMessagePF": {
-		"message": "??Are you sure you want to delete the node $P2$ which contains one contact?;Are you sure you want to delete the node $P2$ which contains $P1$ contacts???",
+		"message": "$P1$개의 연락처를 포함한 노드 $P2$를 삭제하려는 것이 맞습니까?;$P1$개의 연락처를 포함한 노드 $P2$를 삭제하려는 것이 맞습니까?",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2477,7 +2477,7 @@
 		"message": "필드 구분 기호"
 	},
 	"includePrefLabel": {
-		"message": "??Include preferences??"
+		"message": "환경 설정 포함"
 	},
 	"lineHeaderLabel": {
 		"message": "헤더로 첫 행"
@@ -2523,7 +2523,7 @@
 		"message": "새 카테고리 추가"
 	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
-		"message": "??Edit Node??"
+		"message": "노드 수정"
 	},
 	"wdw_cardbookRenameFieldEditTypeLabel": {
 		"message": "종류:"
@@ -2740,13 +2740,13 @@
 		"message": "모든 연락처"
 	},
 	"keyDescription": {
-		"message": "??Encryption key??"
+		"message": "암호화 키"
 	},
 	"encryptionStarted": {
-		"message": "??Starting encryption??"
+		"message": "암호화 시작"
 	},
 	"encryptionProcessed": {
-		"message": "??Items encrypted: $P1$/$P2$??",
+		"message": "암호화된 항목: $P1$/$P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2757,13 +2757,13 @@
         }
 	},
 	"encryptionFinished": {
-		"message": "??Encryption finished??"
+		"message": "암호화 완료"
 	},
 	"decryptionStarted": {
-		"message": "??Starting decryption??"
+		"message": "암호화 시작"
 	},
 	"decryptionProcessed": {
-		"message": "??Items decrypted: $P1$/$P2$??",
+		"message": "복호화된 항목: $P1$/$P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2774,7 +2774,7 @@
         }
 	},
 	"decryptionFinished": {
-		"message": "??Decryption finished??"
+		"message": "복호화 완료"
 	},
 	"menu_undo.long.label": {
 		"message": "실행 취소 - $P1$",
@@ -2799,7 +2799,7 @@
 		"message": "실행 반복"
 	},
 	"cardbookMenuItemLabel": {
-		"message": "연락처"
+		"message": "CardBook"
 	},
 	"cardbookMenuItemAccesskey": {
 		"message": "b"
@@ -2808,22 +2808,22 @@
 		"message": "b"
 	},
 	"cardbookMenuItemTooltip": {
-		"message": "연락처 탭으로 전환하십시오"
+		"message": "CardBook 탭으로 전환"
 	},
 	"cardbookToolbarButtonLabel": {
-		"message": "연락처"
+		"message": "CardBook"
 	},
 	"cardbookToolbarButtonTooltip": {
-		"message": "연락처 탭으로 전환하십시오"
+		"message": "CardBook 탭으로 전환하십시오"
 	},
 	"cardbookTabButtonLabel": {
-		"message": "연락처"
+		"message": "CardBook"
 	},
 	"cardbookTabButtonTooltip": {
-		"message": "연락처 탭으로 전환하십시오"
+		"message": "CardBook 탭으로 전환하십시오"
 	},
 	"cardbookQFBButtonLabel": {
-		"message": "연락처"
+		"message": "CardBook"
 	},
 	"cardbookQFBButtonTooltip": {
 		"message": "연락처에 있는 사람들 메시지만 보기"
@@ -2844,7 +2844,7 @@
 		"message": "선택한 태그 제한조건이 모두 맞음"
 	},
 	"newCardBookCardMenuLabel": {
-		"message": "연락처…"
+		"message": "CardBook 연락처…"
 	},
 	"newCardBookCardMenuAccesskey": {
 		"message": "C"
@@ -2853,43 +2853,43 @@
 		"message": "N"
 	},
 	"newCardBookSearchMenuLabel": {
-		"message": "연락처 검색…"
+		"message": "CardBook 검색…"
 	},
 	"newCardBookSearchMenuAccesskey": {
 		"message": "C"
 	},
 	"addToCardBookMenuLabel": {
-		"message": "주소록에 추가"
+		"message": "CardBook 연락처에 추가"
 	},
 	"addToCardBookMenuAccesskey": {
 		"message": "d"
 	},
 	"editInCardBookMenuLabel": {
-		"message": "연락처 편집"
+		"message": "CardBook 연락처 편집"
 	},
 	"editInCardBookMenuAccesskey": {
 		"message": "E"
 	},
 	"deleteInCardBookMenuLabel": {
-		"message": "연락처 삭제"
+		"message": "CardBook 연락처 삭제"
 	},
 	"deleteInCardBookMenuAccesskey": {
 		"message": "D"
 	},
 	"IMPPMenuLabel": {
-		"message": "~에 연결하다"
+		"message": "다음에 연결"
 	},
 	"IMPPMenuAccesskey": {
 		"message": "o"
 	},
 	"findAllEmailsFromContactMessengerLabel": {
-		"message": "이 연락처와 관련된 이메일을 찾으십시오"
+		"message": "이 연락처와 관련된 이메일 찾기"
 	},
 	"findAllEmailsFromContactMessengerAccesskey": {
 		"message": "c"
 	},
 	"findEmailsFromEmailMessengerLabel": {
-		"message": "이 이메일 주소와 관련된 이메일을 찾으십시오"
+		"message": "이 이메일 주소와 관련된 이메일 찾기"
 	},
 	"findEmailsFromEmailMessengerAccesskey": {
 		"message": "e"
@@ -2907,7 +2907,7 @@
 		"message": "e"
 	},
 	"mailContext-addToCardBookMenuLabel": {
-		"message": "주소록에 추가…"
+		"message": "CardBook 주소록에 추가…"
 	},
 	"mailContext-addToCardBookMenuAccesskey": {
 		"message": "d"
@@ -2937,13 +2937,13 @@
 		"message": "새 주소록 추가"
 	},
 	"welcomePage.wizard.description": {
-		"message": "환영"
+		"message": "환영합니다"
 	},
 	"welcomePage.description": {
-		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
+		"message": "CardBook이 최초로 실행된 것 같습니다. CardBook은 Thunderbird의 기본 주소록과 원격 주소록에서 연락처 수집을 시도할 것입니다."
 	},
 	"initialPage.wizard.description": {
-		"message": "새 주소록의 위치."
+		"message": "새 주소록 위치."
 	},
 	"initialPage.description": {
 		"message": "주소록 위치:"
@@ -2955,22 +2955,22 @@
 		"message": "원격"
 	},
 	"initialPage.standard.label": {
-		"message": "썬더 버드의 표준 주소록 가져 오기"
+		"message": "썬더버드의 표준 주소록 가져 오기"
 	},
 	"initialPage.search.label": {
 		"message": "기존 주소록 검색"
 	},
 	"initialPage.find.label": {
-		"message": "??Search for remote address books??"
+		"message": "원격 주소록 검색"
 	},
 	"localPage.wizard.description": {
-		"message": "새 로컬 주소록의 유형 및 위치"
+		"message": "새 로컬 주소록의 종류 및 위치"
 	},
 	"localPage.type.description": {
-		"message": "로컬 주소록 유형:"
+		"message": "로컬 주소록 종류:"
 	},
 	"localPage.type.label": {
-		"message": "종류"
+		"message": "유형"
 	},
 	"localPage.createDB.label": {
 		"message": "새 주소록 만들기"
@@ -3003,22 +3003,22 @@
 		"message": "새 원격 주소록의 유형과 위치."
 	},
 	"remotePage.description": {
-		"message": "원격 주소록의 유형은 무엇입니까? 주의 : 구글은 가상 카드 표준을 준수하지 않습니다."
+		"message": "원격 주소록의 유형은 무엇입니까? (주의 : Google은 vCard 표준을 준수하지 않습니다.)"
 	},
 	"remotePage.type.label": {
-		"message": "종류"
+		"message": "유형"
 	},
 	"remotePage.carddav.label": {
-		"message": "카드 분산 저작 및 버전 관리"
+		"message": "CardDAV"
 	},
 	"remotePage.google.label": {
-		"message": "구글"
+		"message": "Google"
 	},
 	"remotePage.apple.label": {
-		"message": "사과"
+		"message": "Apple"
 	},
 	"remotePage.yahoo.label": {
-		"message": "야후!"
+		"message": "Yahoo!"
 	},
 	"remotePage.connection.label": {
 		"message": "연결"
@@ -3048,7 +3048,7 @@
 		"message": "저장된 검색의 정의."
 	},
 	"locationSearchPage.label": {
-		"message": "저장된 검색"
+		"message": "이전 검색"
 	},
 	"abSearchHeading.label": {
 		"message": "검색:"
@@ -3102,19 +3102,19 @@
 		"message": "여러 주소록이 발견되었습니다. 열려는 주소록과 이름을 선택하십시오:"
 	},
 	"findPage.wizard.description": {
-		"message": "??Remote address book search??"
+		"message": "원격 주소록 검색"
 	},
 	"findPage.name1.description": {
-		"message": "??No remote address books found.??"
+		"message": "검색된 원격 주소록이 없습니다."
 	},
 	"findPage.name2.description": {
-		"message": "??One remote address book found. Validate remote address book to add:??"
+		"message": "1개의 원격 주소록이 검색되었습니다. 추가하기 위해 유효성을 확인하십시오:"
 	},
 	"findPage.name3.description": {
-		"message": "??Multiple remote address books found. Validate remote address books to add:??"
+		"message": "다수의 원격 주소록이 검색되었습니다. 추가하기 위해 유효성을 확인하십시오:"
 	},
 	"finishPage.wizard.description": {
-		"message": "??Address books configuration??"
+		"message": "주소록 설정"
 	},
 	"finishPage.description": {
 		"message": "새 주소록이 성공적으로 구성되었습니다."
@@ -3126,7 +3126,7 @@
 		"message": "주소록 속성"
 	},
 	"colorLabel": {
-		"message": "색깔:"
+		"message": "색상:"
 	},
 	"name.ABedit.label": {
 		"message": "이름:"
@@ -3135,7 +3135,7 @@
 		"message": "N"
 	},
 	"nodesLabel": {
-		"message": "??Nodes:??"
+		"message": "노드:"
 	},
 	"categoriesNodeLabel": {
 		"message": "카테고리"
@@ -3150,7 +3150,7 @@
 		"message": "사용자 이름:"
 	},
 	"vCardVersionLabel": {
-		"message": "가상 카드:"
+		"message": "vCard:"
 	},
 	"readonlyLabel": {
 		"message": "읽기 전용 모드"
@@ -3180,13 +3180,13 @@
 		"message": "I"
 	},
 	"miscTabLabel": {
-		"message": "여러 가지 잡다한"
+		"message": "기타"
 	},
 	"fnFormulaCaption": {
 		"message": "표시 이름"
 	},
 	"fnFormulaLabel": {
-		"message": "표시 이름 생성:"
+		"message": "표시 이름 공식:"
 	},
 	"fnFormulaAccesskey": {
 		"message": "y"
@@ -3198,7 +3198,7 @@
 		"message": "R"
 	},
 	"applyToABButtonLabel": {
-		"message": "??Apply to…??"
+		"message": "다음에 적용…"
 	},
 	"applyToABButtonAccesskey": {
 		"message": "A"
@@ -3207,10 +3207,10 @@
 		"message": "주소 편집기"
 	},
 	"adrPostOfficeLabel": {
-		"message": "포스트오피스박스"
+		"message": "사서함"
 	},
 	"adrExtendedAddrLabel": {
-		"message": "아파트와 동 호수"
+		"message": "아파트 및 동 호수"
 	},
 	"adrStreetLabel": {
 		"message": "도로명"
@@ -3231,7 +3231,7 @@
 		"message": "더 이상 사용되지 않습니다"
 	},
 	"daysLeftColumnLabel": {
-		"message": "남은 일"
+		"message": "남은 일 수"
 	},
 	"nameColumnLabel": {
 		"message": "이름"
@@ -3240,7 +3240,7 @@
 		"message": "나이"
 	},
 	"dateOfBirthColumnLabel": {
-		"message": "행사 날짜"
+		"message": "이벤트 날짜"
 	},
 	"dateOfBirthFoundColumnLabel": {
 		"message": "발견 된 날짜"
@@ -3255,28 +3255,28 @@
 		"message": "E"
 	},
 	"syncLightningMenuItemLabel": {
-		"message": "번개(Lightning)와 동기화"
+		"message": "Lightning과 동기화"
 	},
 	"syncLightningMenuAccesskey": {
 		"message": "S"
 	},
 	"calendarNameLabel": {
-		"message": "달력"
+		"message": "캘린더"
 	},
 	"calendarIdLabel": {
-		"message": "캘린더 신분증"
+		"message": "캘린더 id"
 	},
 	"existingLabel": {
 		"message": "기존"
 	},
 	"failedLabel": {
-		"message": "실패한"
+		"message": "실패"
 	},
 	"succeededLabel": {
 		"message": "성공"
 	},
 	"wdw_bulkOperationTitle": {
-		"message": "실행중…"
+		"message": "실행 중…"
 	},
 	"wdw_cardbookConfigurationAddCustomFieldTitle": {
 		"message": "사용자 정의 필드 편집기"
@@ -3303,13 +3303,13 @@
 		"message": "코드:"
 	},
 	"IMPPLabelLabel": {
-		"message": "태그:"
+		"message": "레이블:"
 	},
 	"IMPPProtocolLabel": {
 		"message": "프로토콜:"
 	},
 	"wdw_cardbookConfigurationAddVcardTitle": {
-		"message": "가상 카드 선택"
+		"message": "vCard 선택"
 	},
 	"contactLabel": {
 		"message": "연락처:"
@@ -3318,7 +3318,7 @@
 		"message": "첨부 파일:"
 	},
 	"vCardLabel": {
-		"message": "가상 카드"
+		"message": "vCard"
 	},
 	"CardBookTabLabel": {
 		"message": "연락처 탭"
@@ -3333,7 +3333,7 @@
 		"message": "목록"
 	},
 	"syncTabLabel": {
-		"message": "동기화하다"
+		"message": "동기화"
 	},
 	"emailTabLabel": {
 		"message": "이메일"
@@ -3345,7 +3345,7 @@
 		"message": "기념일 알림"
 	},
 	"integrationGroupboxLabel": {
-		"message": "썬더 버드 통합"
+		"message": "Thunderbird에 통합"
 	},
 	"autocompletionLabel": {
 		"message": "이메일 주소 자동 완성"
@@ -3354,7 +3354,7 @@
 		"message": "o"
 	},
 	"autocompletionTooltip": {
-		"message": "연락처 주소록에 자동 완성 기능을 추가하여 썬더 버드 주소록의 연락처 자동 완성 기능을 확장합니다."
+		"message": "연락처 주소록에 자동 완성 기능을 추가하여 Thunderbird 주소록의 연락처 자동 완성 기능을 확장합니다."
 	},
 	"autocompleteSortByPopularityLabel": {
 		"message": "인기도에 따라 전자 메일 주소 정렬"
@@ -3393,13 +3393,13 @@
 		"message": "E"
 	},
 	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
-		"message": "초기 설정"
+		"message": "초기 설정으로 복구"
 	},
 	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
 		"message": "D"
 	},
 	"useColorLabel": {
-		"message": "주소록 색상을 다음 용도로 사용하십시오:"
+		"message": "주소록 색상을 다음으로 지정:"
 	},
 	"useColorBackgroundLabel": {
 		"message": "배경색"
@@ -3414,7 +3414,7 @@
 		"message": "T"
 	},
 	"useColorNothingLabel": {
-		"message": "무"
+		"message": "색상 없음"
 	},
 	"useColorNothingAccesskey": {
 		"message": "N"
@@ -3432,7 +3432,7 @@
 		"message": "메일 계정 제한 사항"
 	},
 	"accountsRestrictionsEnabledLabel": {
-		"message": "켜다"
+		"message": "사용 중"
 	},
 	"accountsRestrictionsMailNameLabel": {
 		"message": "메일 계정"
@@ -3648,13 +3648,13 @@
 		"message": "x"
 	},
 	"defaultRegionLabel": {
-		"message": "??Default Region:??"
+		"message": "기본 지역:"
 	},
 	"defaultRegionAccesskey": {
 		"message": "D"
 	},
 	"defaultRegionTooltip": {
-		"message": "??Default region for addresses and formatting phone numbers.??"
+		"message": "주소 및 전화번호 포맷에 사용할 기본 지역"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "필드 환경 설정"
@@ -3831,7 +3831,7 @@
 		"message": "S"
 	},
 	"URLPhoneBackgroundLabel": {
-		"message": "??Run in background??"
+		"message": "배경에서 실행"
 	},
 	"URLPhoneBackgroundAccesskey": {
 		"message": "S"
@@ -3840,10 +3840,10 @@
 		"message": "암호화"
 	},
 	"encryptionExplanation": {
-		"message": "??CardBook may encrypt your local data. For this purpose, it will use a secret key stored in the Password Manager. If you loose this key, the recovery of your local data is impossible. For a complete protection, activating the Thunderbird master password feature is recommended.??"
+		"message": "CardBook은 로컬 데이터를 암호화 할 수도 있습니다. 이를 위해 암호 관리자에 저장된 비밀 키를 사용합니다. 만약 이 키를 분실하면 로컬 데이터를 복구하는 것은 불가능합니다. 완벽한 보호를 위해 Thunderbird 마스터 암호 기능을 활성화하는 것을 추천합니다."
 	},
 	"localDataEncryptionEnabledLabel": {
-		"message": "??Encrypt locally cached cards??"
+		"message": "로컬에 캐시된 연락처 암호화"
 	},
 	"localDataEncryptionEnabledAccesskey": {
 		"message": "E"
@@ -3927,7 +3927,7 @@
 		"message": "동기화는 수정 내용을 원격 서버에 전달하고 서버가 수정 한 내용을 사용자에게 전파합니다."
 	},
 	"syncAfterChangeLabel": {
-		"message": "??Synchronize after changes??"
+		"message": "변경 이후 동기화"
 	},
 	"syncAfterChangeAccesskey": {
 		"message": "c"
@@ -4257,7 +4257,7 @@
 		"message": "B"
 	},
 	"addtoReplytoFieldMenu.label": {
-		"message": "회신 주소에 추가"
+		"message": "회신 주소 필드에 추가"
 	},
 	"addtoReplytoFieldMenu.accesskey": {
 		"message": "l"
@@ -4299,7 +4299,7 @@
 		"message": "L"
 	},
 	"wdw_cardbookWindowLabel": {
-		"message": "연락처"
+		"message": "CardBook"
 	},
 	"enableAccountsTooltip": {
 		"message": "주소록 검색 및 동기화 사용 또는 사용 안 함."
@@ -4344,13 +4344,13 @@
 		"message": "기념일 목록보기"
 	},
 	"cardbookToolsMenuSyncLightningLabel": {
-		"message": "캘린더에 기념일을 추가하십시오"
+		"message": "캘린더에 기념일 추가"
 	},
 	"cardbookToolsMenuFindAllDuplicatesLabel": {
-		"message": "모든 주소록에서 연락처 중복 찾기"
+		"message": "모든 주소록에서 중복된 연락처 찾기"
 	},
 	"cardbookToolsMenuFindSingleDuplicatesLabel": {
-		"message": "현재 주소록에서 연락처 중복 찾기"
+		"message": "현재 주소록에서 중복된 연락처 찾기"
 	},
 	"cardbookToolsMenuPrefsLabel": {
 		"message": "연락처 환경 설정"
@@ -4380,7 +4380,7 @@
 		"message": "원격 또는 로컬 주소록 추가"
 	},
 	"cardbookToolbarSyncButtonLabel": {
-		"message": "동기화하다"
+		"message": "동기화"
 	},
 	"cardbookToolbarSyncButtonTooltip": {
 		"message": "모든 원격 주소록 동기화"
@@ -4401,7 +4401,7 @@
 		"message": "환경 설정"
 	},
 	"cardbookToolbarConfigurationButtonTooltip": {
-		"message": "연락처 환경 설정"
+		"message": "CardBook 환경 설정"
 	},
 	"cardbookToolbarAddContactButtonLabel": {
 		"message": "새 연락처"
@@ -4413,7 +4413,7 @@
 		"message": "새 목록"
 	},
 	"cardbookToolbarAddListButtonTooltip": {
-		"message": "새 메일 링리스트"
+		"message": "새 메일링 리스트"
 	},
 	"cardbookToolbarEditButtonLabel": {
 		"message": "수정"
@@ -4437,13 +4437,13 @@
 		"message": "실행 취소"
 	},
 	"cardbookToolbarBackButtonTooltip": {
-		"message": "??Go back one action??"
+		"message": "한 단계 이전으로"
 	},
 	"cardbookToolbarForwardButtonLabel": {
-		"message": "재실행"
+		"message": "다시 실행"
 	},
 	"cardbookToolbarForwardButtonTooltip": {
-		"message": "??Go forward one action??"
+		"message": "한 단계 다시 실행"
 	},
 	"cardbookToolbarAppMenuButtonLabel": {
 		"message": "연락처 메뉴"
@@ -4470,10 +4470,10 @@
 		"message": "Thunderbird 메뉴 표시"
 	},
 	"cardbookToolbarABMenuLabel": {
-		"message": "??Address Books View??"
+		"message": "주소록 보기"
 	},
 	"cardbookToolbarABMenuTooltip": {
-		"message": "??Filter how address books are displayed??"
+		"message": "주소록 표시 필터"
 	},
 	"generalTabLabel": {
 		"message": "일반"
@@ -4707,28 +4707,28 @@
 		"message": "N"
 	},
 	"adrFormulaExplanation": {
-		"message": "주소 형식의 주소 형식을 사용자 정의 할 수 있습니다. 이 수식은 『()』로 묶인 블록으로 구성됩니다. ??In these blocks there might be many parts delimited by «|».??"
+		"message": "CardBook 주소 포맷을 사용자화 할 수 있습니다. 이 공식은 «()»으로 닫힌 블록들로 구성됩니다. 이 블록 안에는 구분자 «|»로 나뉜 다수 집합이 있을 수 있습니다."
 	},
 	"fnFormulaExplanation": {
-		"message": "연락처가 이름표시를생성하는 방식을 사용자 정의 할 수 있습니다. 이 수식은 『()』로 묶인 블록으로 구성됩니다. ??In these blocks there might be many parts delimited by «|».??"
+		"message": "CardBook 에서 생성하는 표시 이름을 사용자화 할 수 있습니다. 이 공식은 «()»으로 닫힌 블록들로 구성됩니다. 이 블록 안에는 구분자 «|»로 나뉜 다수 집합이 있을 수 있습니다."
 	},
 	"formulaExplanation1": {
-		"message": "??({{1}}|{{2}}) : If {{1}} is empty, then the block will be replaced by {{2}}.??"
+		"message": "({{1}}|{{2}}) : 만약 {{1}}이 비어 있다면, 해당 블록은 {{2}}로 대체됩니다."
 	},
 	"formulaExplanation2": {
-		"message": "??({{1}}|{{2}}|{{3}}) : If {{1}} equals {{2}}, then the block will be replaced by {{3}}.??"
+		"message": "({{1}}|{{2}}|{{3}}) : 만약 {{1}}이 {{2}}와 동일하다면, 해당 블록은 {{3}}으로 대체됩니다."
 	},
 	"formulaExplanation3": {
-		"message": "??({{1}}|{{2}}|{{3}}|{{4}}) : If {{1}} equals {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+		"message": "({{1}}|{{2}}|{{3}}|{{4}}) : 만약 {{1}}이 {{2}}와 동일하다면, 해당 블록은 {{3}}으로 교체되고, 그렇지 않다면 {{4}}로 교체됩니다."
 	},
 	"formulaExplanation4": {
-		"message": "??({{1}}|*|{{2}}|{{3}}|{{4}}) : If {{1}} includes {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+		"message": "({{1}}|*|{{2}}|{{3}}|{{4}}) : 만약 {{1}}이 {{2}}를 포함한다면, 해당 블록은 {{3}}으로 대체되고, 그렇지 않다면 {{4}}로 대체됩니다."
 	},
 	"formulaExplanation5": {
-		"message": "??({{1}}|^|{{2}}|{{3}}|{{4}}) : If {{1}} starts with {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+		"message": "({{1}}|^|{{2}}|{{3}}|{{4}}) : 만약 {{1}}이 {{2}}로 시작한다면, 해당 블록은 {{3}}으로 대체되고, 그렇지 않다면 {{4}}로 대체됩니다."
 	},
 	"formulaExplanation6": {
-		"message": "??({{1}}|$|{{2}}|{{3}}|{{4}}) : If {{1}} ends with {{2}}, then the block will be replaced by {{3}}, else by {{4}}.??"
+		"message": "({{1}}|$|{{2}}|{{3}}|{{4}}) : 만약 {{1}}가 {{2}}로 끝난다면, 해당 블록은 {{3}}으로 대체되고, 그렇지 않다면 {{4}}로 대체됩니다."
 	},
 	"settingsTitlelabel": {
 		"message": "인쇄 설정"
@@ -4752,13 +4752,13 @@
 		"message": "F"
 	},
 	"displayTypesLabel": {
-		"message": "유형 및 환경 설정"
+		"message": "종류 및 환경 설정"
 	},
 	"displayTypesAccesskey": {
 		"message": "y"
 	},
 	"fieldsToPrintGroupboxLabel": {
-		"message": "인쇄 할 필드"
+		"message": "인쇄할 필드"
 	},
 	"displayLabel": {
 		"message": "표시 이름"
@@ -4839,7 +4839,7 @@
 		"message": "새 카테고리 추가"
 	},
 	"typesTextboxLabel": {
-		"message": "새 유형 추가"
+		"message": "새 종류 추가"
 	},
 	"categoriesListboxLabel": {
 		"message": "기존 카테고리"
@@ -4854,13 +4854,13 @@
 		"message": "V"
 	},
 	"createEditionLabel": {
-		"message": "새로 만들기"
+		"message": "생성"
 	},
 	"createEditionAccesskey": {
 		"message": "T"
 	},
 	"createAndReplaceEditionLabel": {
-		"message": "새로 만들기 및 교체"
+		"message": "생성 및 교체"
 	},
 	"createAndReplaceEditionAccesskey": {
 		"message": "R"
@@ -4872,7 +4872,7 @@
 		"message": "S"
 	},
 	"validateEditionLabel": {
-		"message": "유효성을 검사하다"
+		"message": "유효성 확인"
 	},
 	"validateEditionAccesskey": {
 		"message": "V"
@@ -4920,19 +4920,19 @@
 		"message": "e"
 	},
 	"convertVCardsLabel": {
-		"message": "??Convert vCards??"
+		"message": "vCard 변환"
 	},
 	"convertVCardsTooltip": {
-		"message": "??The vCard version of some contacts is different from the vCard version of your address book, this button may convert these vCards??"
+		"message": "일부 연락처의 vCard 버전이 연락처의 vCard 버전과 다릅니다. 이 버튼은 그러한 vCard를 변환시킬 수 있습니다."
 	},
 	"convertVCardsAccesskey": {
 		"message": "C"
 	},
 	"wdw_findDuplicatesTitle": {
-		"message": "연락처 복제"
+		"message": "중복된 연락처"
 	},
 	"addImageCardFromFileLabel": {
-		"message": "파일머지 연락처에서 이미지 추가"
+		"message": "파일에서 이미지 추가"
 	},
 	"pasteImageCardLabel": {
 		"message": "이미지 붙여 넣기"
@@ -4956,19 +4956,19 @@
 		"message": "K"
 	},
 	"addEmailGroupboxLabel": {
-		"message": "메일 주소"
+		"message": "이메일 주소"
 	},
 	"availableCardsGroupboxLabel": {
 		"message": "사용 가능한 연락처"
 	},
 	"nameOrEmailLabel": {
-		"message": "이름 및 메일 포함"
+		"message": "이름 및 이메일"
 	},
 	"appendContactLabel": {
 		"message": "목록에 추가"
 	},
 	"deletelistTreeLabel": {
-		"message": "목록에서 제거하다"
+		"message": "목록에서 제거"
 	},
 	"editCardFromListLabel": {
 		"message": "이 연락처 수정"

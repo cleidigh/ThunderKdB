@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1470,
+    "average_daily_users": 1556,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2020-01-22T07:22:13Z",
     "current_version": {
-        "id": 2473593,
+        "id": 2474161,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "78.*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/editemailsubject/versions/2473593",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/editemailsubject/versions/2474161",
         "files": [
             {
-                "id": 1016739,
-                "created": "2020-04-07T13:51:05Z",
-                "hash": "sha256:759d19104f58536a1b6a37567462afdcc7c775dc43e0fffa86dacf52123f1cc1",
-                "is_restart_required": true,
+                "id": 1017323,
+                "created": "2020-08-30T19:20:00Z",
+                "hash": "sha256:0304dd5f9027e866799643f5474a119ec615b934f26b3bb4e6bc73241ba6c98c",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 12918,
+                "size": 4107,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016739/edit_email_subject-2.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017323/edit_email_subject-3.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,15 +71,15 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Added Hungarian locale, thanks to Óvári."
+            "en-US": "This Add-on has been discontinued."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/editemailsubject/versions/2.5",
-        "version": "2.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/editemailsubject/versions/3.3",
+        "version": "3.3"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This is a legacy WebExtension version of <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/edit-email-subject/\" rel=\"nofollow\">EditEmailSubject (Edit email Subject)</a> by jisse44.\nThe bug which caused the Message-ID and References headers to be overwritten with &lt;undefined&gt; was fixed.\n\nThis add-on allows you to change email subjects.\n\nChanges can be made to the local message database only, or to the message header as well.\nIt is imap compatible, changes to the header are propagated to the server.\n\nHow to use the Add-on:\n1- Right click on a message in the message list and select \"Edit Message Subject\".\n2- Use hotkey \"E\"."
+        "en-US": "This is a legacy WebExtension version of <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/edit-email-subject/\" rel=\"nofollow\">EditEmailSubject (Edit email Subject)</a> by jisse44.\n\nDevelopment for this add-on has been discontinued, the <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/edit-email-subject/\" rel=\"nofollow\">original version</a> has been revived and updated, please use that for Thunderbird 78 and higher.\n\nThe bug which caused the Message-ID and References headers to be overwritten with &lt;undefined&gt; was fixed.\n\nThis add-on allows you to change email subjects.\n\nChanges can be made to the local message database only, or to the message header as well.\nIt is imap compatible, changes to the header are propagated to the server.\n\nHow to use the Add-on:\n1- Right click on a message in the message list and select \"Edit Message Subject\".\n2- Use hotkey \"E\"."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/editemailsubject/edit",
@@ -98,7 +98,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-09T00:27:50Z",
+    "last_updated": "2020-08-30T22:13:15Z",
     "name": {
         "en-US": "Edit Email Subject"
     },
@@ -180,8 +180,16 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
-            "comp61plus": true
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-08-29T18:16:51Z",
+            "comp78pv_version": "3.2",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*",
+            "comp68pv": true,
+            "comp68pv_date": "2020-01-23T05:16:13Z"
         }
     }
 }

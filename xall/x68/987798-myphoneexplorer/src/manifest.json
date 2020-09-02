@@ -1,25 +1,50 @@
 {
-    "name": "MyPhoneExplorer",
-    "version": "2.0.25",
-    "description": "Required for the sync with your smartphone",
-    "author": "Franz Josef Wechselberger",
-    "default_locale": "en-US",
-    "homepage_url": "https://www.fjsoft.at",
-    "legacy": {
-	"type" : "xul",
-        "options": {
-            "page": "chrome://myphoneexplorer/content/mpeOptions.xul",
-            "open_in_tab": true
-        }
-    },
-    "applications": {
-        "gecko": {
-            "id": "myphoneexplorer@fjsoft.at",
-            "strict_min_version": "68.0"
-        }
-    },
-    "icons": {
-        "32": "icon.png"
-    },
-    "manifest_version": 2
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "3.0.6",
+  "applications": {
+    "gecko": {
+      "id": "myphoneexplorer@fjsoft.at",
+      "strict_min_version": "78.0"
+    }
+  },
+  "icons": {
+	  "16": "icon16.png",
+      "32": "icon.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "experiment_apis": {
+    "MyPhoneExplorer": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "MyPhoneExplorer"
+          ]
+        ],
+        "script": "implementation.js"
+      }
+    }
+  },
+  "permissions": [
+    "addressBooks",
+	"nativeMessaging"
+  ],
+  "browser_action": {
+    "default_title": "__MSG_extensionName__",
+	"default_popup": "popup.html",
+	"default_icon": {
+      "16": "icon16.png",
+	  "32": "icon.png"
+    }
+  },
+  "default_locale": "en",
+  "manifest_version": 2
 }

@@ -1,0 +1,18 @@
+{
+  "name": "gcaltab",
+  "version": "1.0.0",
+  "description": "Google Calendar one tab away!",
+  "main": "gcaltab.js",
+  "scripts": {
+    "test": "mkdir lib lib/spectre.css/ lib/spectre.css/dist/ lib/darkreader/ && cp node_modules/spectre.css/dist/spectre.min.css lib/spectre.css/dist/ && cp node_modules/spectre.css/LICENSE lib/spectre.css/ && cp node_modules/darkreader/* lib/darkreader/ && web-ext lint --ignore-files='package.json package-lock.json images README.md' && rm -r lib",
+    "build": "mkdir lib lib/spectre.css/ lib/spectre.css/dist/ lib/darkreader/ && cp node_modules/spectre.css/dist/spectre.min.css lib/spectre.css/dist/ && cp node_modules/spectre.css/LICENSE lib/spectre.css/ && cp node_modules/darkreader/* lib/darkreader/ && web-ext build --ignore-files='package.json package-lock.json images README.md' --overwrite-dest && rm -r lib",
+    "check-lib": "npm outdated"
+  },
+  "author": "Florent Tassy",
+  "license": "MIT",
+  "dependencies": {
+    "darkreader": "^4.9.16",
+    "spectre.css": "^0.5.9"
+  },
+  "homepage": "https://github.com/ftassy/GCalTab"
+}

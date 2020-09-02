@@ -19,6 +19,7 @@ var E2TBTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm"
 var E2TBKeyRing = ChromeUtils.import("chrome://enigmail/content/modules/keyRing.jsm").EnigmailKeyRing;
 var E2TBCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 var E2TBPrefs = ChromeUtils.import("chrome://enigmail/content/modules/prefs.jsm").EnigmailPrefs;
+var E2TBCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
 var Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
 
 // OpenPGP implementation in TB
@@ -28,8 +29,6 @@ var uidHelper = ChromeUtils.import("chrome://openpgp/content/modules/uidHelper.j
 var PgpSqliteDb2 = ChromeUtils.import("chrome://openpgp/content/modules/sqliteDb.jsm").PgpSqliteDb2;
 var EnigmailCryptoAPI = ChromeUtils.import("chrome://openpgp/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 var RNP = ChromeUtils.import("chrome://openpgp/content/modules/RNP.jsm").RNP;
-const EnigmailLazy = ChromeUtils.import("chrome://openpgp/content/modules/lazy.jsm").EnigmailLazy;
-const getBondOpenPGP = EnigmailLazy.loader("../BondOpenPGP.jsm", "BondOpenPGP");
 
 var gSelectedPrivateKeys = null,
   gPublicKeys = [],
@@ -41,6 +40,12 @@ var gSelectedPrivateKeys = null,
 
 function onLoad() {
   E2TBLog.DEBUG(`setupWizard2.js: onLoad()\n`);
+
+  if (!E2TBCore.getService(window, false)) {
+    E2TBDialog.alert(window, E2TBLocale.getString("gpgNotInPath"));
+    window.close();
+    return;
+  }
 
   let dlg = document.getElementById("setupWizardDlg");
   gAcceptButton = dlg.getButton("accept");
@@ -107,7 +112,9 @@ async function startMigration() {
     await enableOpenPGPPref();
     gRestartNeeded = true;
   }
-  if (!getBondOpenPGP().allDependenciesLoaded()) {
+
+  let BondOpenPGP = ChromeUtils.import("chrome://openpgp/content/BondOpenPGP.jsm").BondOpenPGP;
+  if (!BondOpenPGP.allDependenciesLoaded()) {
     gRestartNeeded = false;
     E2TBDialog.alert(window, E2TBLocale.getString("openpgpInitError"));
     window.close();

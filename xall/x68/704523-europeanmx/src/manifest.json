@@ -1,0 +1,37 @@
+{
+    "manifest_version": 2,
+    "name": "EuropeanMX",
+    "description": "Help training our filters by reporting spam to EuropeanMX!",
+    "version": "2.0",
+    "author": "Eunetic GmbH",
+    "applications": {
+        "gecko": {
+            "id": "plugins@europeanmx.eu",
+            "strict_min_version": "74.0a1",
+            "strict_max_version": "80.0"
+        }
+    },
+    "message_display_action": {
+        "default_icon": "images/eunetic-16px.png",
+        "default_title": "__MSG_labelReportSpam__"
+    },
+    "permissions": [
+        "messagesRead",
+        "messagesMove",
+        "storage"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "options_ui": {
+        "page": "options.html"
+    },
+    "icons": {
+        "64": "images/eunetic.png",
+        "32": "images/eunetic-32px.png",
+        "16": "images/eunetic-16px.png"
+    },
+    "default_locale": "en"
+}

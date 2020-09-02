@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!-- preferences.html -->
+
+<!--
+// URL Link preference editing
+//
+// Copyright (C) Neil Bird
+//
+// This library is free software; you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public
+// License as published by the Free Software Foundation; either
+// version 2.1 of the License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<html>
+  <head>
+  <title data-i18n="prefs-title">[prefs-title]</title>
+  <meta charset="utf-8">
+  <script src="preferences.js"></script>
+  <link type="text/css" rel="stylesheet" href="extension.css">
+  <style type="text/css">
+
+
+
+/* While showing as separate page */
+h1,
+h2,
+div.tabs
+{
+  margin-left: 1em;
+}
+
+ul.urllink-list
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  transition: 0.25s;
+}
+.urllink-list li.li-data
+{
+  display: block;
+  word-break: break-all;
+  width: calc(100% - 2em);
+  background-color: #fbfbfb;
+  border: 1px solid #b1b1b1;
+  color: #0c0c0d;
+  border-radius: 4px;
+  padding-top: 0.5ex;
+  padding-bottom: 0.5ex;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+.urllink-list li:hover.li-data
+{
+  background-color: #ebebeb;
+  transition: 0.3s;
+}
+.urllink-list li.li-data span.editing
+{
+  background-color: white;
+}
+.urllink-list li.li-data.dragging,
+.urllink-list li.li-data.dragging span.delete-button,
+.urllink-list li.li-data.dragging:hover span.delete-button,
+.urllink-list li.li-data.dragging span.for-delete-button,
+.urllink-list li.li-data.dragging span.thumb
+{
+  background-color: #d7d7db;
+}
+.urllink-list li.li-data.dragging span.for-delete-button
+{
+  color: #d7d7db;
+}
+
+span.entry
+{
+  display: inline-block;
+  position: relative;
+  padding-left: 0.25em;
+  padding-right: 0.25em;
+  left: 0;
+  width: calc(100% - 4em);
+  min-height: 1.8ex;
+}
+span.entry:before
+{
+  content: " ";  /* Fudge due to caret moving off to left when text empty! */
+}
+span.delete-button,
+span.for-delete-button
+{
+  display: inline-block;
+  float: left;
+  background-color: #fbfbfb;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 4px;
+}
+span.delete-button
+{
+  cursor: pointer;
+}
+span.for-delete-button
+{
+  color: #fbfbfb;
+  cursor: default;
+}
+.urllink-list li.li-data:hover span.delete-button,
+.urllink-list li.li-data:hover span.for-delete-button
+{
+  background-color: #ebebeb;
+  transition: 0.3s;
+}
+.urllink-list li.li-data:hover span.delete-button:hover
+{
+  background-color: #737373;
+  color: white;
+  transition: 0.3s;
+}
+.urllink-list li.li-data:hover span.for-delete-button
+{
+  color: #ebebeb;
+}
+
+.urllink-list li.li-sep
+{
+  display: block;
+  height: 1.5ex;
+  width: calc(100% - 1em - 4px);
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.urllink-list li.li-sep div
+{
+  display: block;
+  width: 100%;
+  padding-top: 0.5ex;
+  padding-bottom: 0.5ex;
+}
+.urllink-list li.li-sep span
+{
+  display: block;
+  height: 0.5ex;
+  width: 100%;
+  border-radius: 4px;
+}
+.urllink-list li.li-sep.dragging span,
+.urllink-list li.li-sep div.dragging span,
+.urllink-list li.li-sep span.dragging
+{
+  background-color: #b1b1b3;
+}
+
+span.thumb
+{
+  display: inline-block;
+  float: right;
+  height: 1ex;
+  cursor: grab;
+}
+span.thumb svg
+{
+  margin-top: -0.2ex;
+  width: 3ex;
+  height: 3ex;
+}
+span.thumb path
+{
+  fill: #4a4a4f;
+}
+span.thumb:hover path
+{
+  fill: #45a1ff;
+}
+span.thumb:hover
+{
+  transition: 0.3s;
+}
+span.thumb:active:after
+{
+  cursor: grabbing;
+}
+
+div.tab
+{
+  float: left;
+  width: 15em;
+  height: 4ex;
+}
+div.tab button
+{
+  z-index: 1;
+  display: block;
+  background-color: #b1b1b3;
+  border-radius: 4px;
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: left;
+  margin-top: 2ex;
+}
+div.tab button:hover
+{
+  background-color: #737373;
+  color: white;
+}
+div.tab button.active
+{
+  background-color: #4a4a4f; // #d7d7db;
+  color: white;
+  cursor: inherit;
+}
+
+.tab-content
+{
+  position: relative;
+  z-index: 2;
+  border: 8px solid #4a4a4f;
+  border-radius: 4px;
+  padding: 1em;
+  width: calc(100% - 18em);
+  min-height: 15ex;
+  margin-left: calc(15em - 4px);
+  background: inherit;
+}
+
+dt
+{
+  margin-left: 15em;
+  clear: both;
+  float: left;
+  min-width: 18em;
+}
+dd
+{
+  float: left;
+}
+
+form.buttons
+{
+  margin-left: 15em;
+}
+form.buttons button
+{
+  float: left;
+  min-width: 10em;
+  text-align: center;
+  margin-right: 2em;
+  color: #222426;  /* from extension.css ?? */
+}
+  </style>
+  </head>
+  <body>
+
+    <h1 data-i18n="prefs-title">[prefs-title]</h1>
+
+    <div class="tabs">
+
+      <div class="tab">
+        <button id="menu-tab-button"  class="tab-link" data-i18n="prefs-editmenu">[prefs-editmenu]</button>
+        <button id="sandr-tab-button" class="tab-link" data-i18n="prefs-editsandr">[prefs-editsandr]</button>
+      </div>
+
+      <div id="menu-tab" class="tab-content" data-title-i18n="prefs-list-tip" title="">
+        <ul class="urllink-list"></ul>
+      </div>
+
+      <div id="sandr-tab" class="tab-content" data-title-i18n="prefs-sandr-list-tip" title="">
+        <ul class="urllink-list"></ul>
+      </div>
+
+    </div>
+
+    <div style="clear:both"></div><br>
+
+    <dl>
+      <dt data-title-i18n="prefs-newwindow-tip" title=""><span data-i18n="prefs-newwindow">[prefs-newwindow]</span>:</dt><dd data-title-i18n="prefs-newwindow-tip" title=""><input id="option-new-window" type="checkbox"></dd>
+      <dt data-title-i18n="prefs-forcesubmenu-tip" title=""><span data-i18n="prefs-forcesubmenu">[prefs-forcesubmenu]</span>:</dt><dd data-title-i18n="prefs-forcesubmenu-tip" title=""><input id="option-force-sub-menu" type="checkbox"></dd>
+      <dt data-title-i18n="prefs-background-tabs-tip" title=""><span data-i18n="prefs-background-tabs">[prefs-background-tabs]</span>:</dt><dd data-title-i18n="prefs-background-tabs-tip" title=""><input id="option-background-tabs" type="checkbox"></dd>
+      <dt><span data-i18n="debug-logging">[debug-logging]</span>:</dt><dd><input id="option-debug" type="checkbox"></dd>
+      <dt>&nbsp;</dt><dd>&nbsp;</dd>
+      <dt><span data-i18n="prefs-menu-control">[prefs-menu-control]</span>:</dt><dd>
+        <input id="option-both-options" class="menu-options" name="menu-control" type="radio">&nbsp;<span data-i18n="prefs-bothoptions">[prefs-bothoptions]</span><br>
+        <input id="option-hide-tab"     class="menu-options" name="menu-control" type="radio">&nbsp;<span data-i18n="prefs-hidetab">[prefs-hidetab]</span><br>
+        <input id="option-hide-open"    class="menu-options" name="menu-control" type="radio">&nbsp;<span data-i18n="prefs-hideopen">[prefs-hideopen]</span>
+      </dd>
+    </dl>
+
+    <div style="clear:both"></div><br>
+
+    <form class="buttons">
+      <button type="submit" class="browser-style" id="prefs-save" data-i18n="prefs-apply">[prefs-apply]</button>
+      <button type="submit" class="browser-style" id="prefs-defaults" data-i18n="prefs-defaults">[prefs-defaults]</button>
+      <button type="submit" class="browser-style" id="prefs-cancel" data-i18n="prefs-cancel">[prefs-cancel]</button>
+    </form>
+
+    <div style="clear:both"></div><br>
+
+  </body>
+</html>

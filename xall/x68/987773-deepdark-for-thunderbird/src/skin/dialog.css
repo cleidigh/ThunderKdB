@@ -91,6 +91,43 @@ label[disabled="true"] {
 /* DeepDark custom CSS - end */
 }
 
+window#calendar-alarm-dialog .button-menu-dropmarker {
+/* DeepDark custom CSS */
+  display: inline-block !important;
+/* DeepDark custom CSS - end */
+}
+
+.snooze-options-box {
+/* DeepDark custom CSS */
+  padding: 5px !important;
+/* DeepDark custom CSS - end */
+}
+
+.snooze-popup-button {
+/* DeepDark custom CSS */
+  -moz-appearance: none !important;
+  background-color: transparent !important;
+  border-radius: var(--deepdark-border-radius) !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+/* DeepDark custom CSS - end */
+}
+
+.snooze-popup-button:not([disabled="true"]):hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-btn-hover-color) !important;
+/* DeepDark custom CSS - end */
+}
+
+.snooze-popup-button:not([disabled="true"]):active,
+.snooze-popup-button:not([disabled="true"]):active:hover,
+.snooze-popup-button[open="true"],
+.snooze-popup-button[open="true"]:hover {
+/* DeepDark custom CSS */
+  background-color: var(--deepdark-darkest-color) !important;
+/* DeepDark custom CSS - end */
+}
+
 #PreviousButton,
 #NextButton {
 /* DeepDark custom CSS */

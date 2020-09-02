@@ -1,0 +1,50 @@
+[
+  {
+    "namespace": "exp_logout",
+    "functions": [
+      {
+        "name": "exp_logout",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "identities",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "accountId": {
+                  "optional": true,
+                  "type": "string"
+                },
+                "email": {
+                  "optional": true,
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "label": {
+                  "optional": true,
+                  "type": "string"
+                },
+                "name": {
+                  "optional": true,
+                  "type": "string"
+                },
+                "organization": {
+                  "optional": true,
+                  "type": "string"
+                },
+                "replyTo": {
+                  "optional": true,
+                  "type": "string"
+                }
+              }
+            }
+          }
+		]
+      }
+    ]
+  }
+]

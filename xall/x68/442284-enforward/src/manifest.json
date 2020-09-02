@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "EnForward",
-  "description": "Forward email to Evernote and OneNote",
-  "version": "2.0.1",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.0.5",
   "author": "H.Ogi",
-  "homepage_url": "http://hogi.sakura.ne.jp/en/",
+  "homepage_url": "__MSG_extensionHomepage_url__",
 
   "experiment_apis": {
     "enForwardApi": {
@@ -24,7 +24,7 @@
   },
 
   "browser_action": {
-    "default_title": "EnForward",
+    "default_title": "__MSG_extensionDefault_title__",
     "default_icon": "images/forward-black.svg",
     "theme_icons": [
       {
@@ -41,7 +41,7 @@
   },
   
   "compose_action": {
-    "default_title": "EnForward",
+    "default_title": "__MSG_extensionDefault_title__",
     "default_popup": "html/compose_popup.html",
     "default_icon": "images/note-black.svg",
     "theme_icons": [
@@ -62,19 +62,19 @@
     "cmd_evernote": {
       "suggested_key": {
       },
-      "description": "Forward to Evernote"
+      "description": "__MSG_extensionCmd_evernote__"
     },
     
     "cmd_evernote_rem": {
       "suggested_key": {
       },
-      "description": "Forward to Evernote with reminder"
+      "description": "__MSG_extensionCmd_evernote_rem__"
     },
 
     "cmd_onenote": {
       "suggested_key": {
       },
-      "description": "Forward to Other note service"
+      "description": "__MSG_extensionCmd_onenote__"
     }
   },
 
@@ -103,10 +103,12 @@
     "32": "images/forward-black.svg"
   },
   
+  "default_locale": "en",
+  
   "applications": {
     "gecko": {
       "id": "{C83FDE78-4980-4a97-B91A-47A4B98761A7}",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   }
 }

@@ -6,10 +6,6 @@ if (typeof(process) !== 'undefined') {
     var dawg = require("./dawg.js");
     var ibdawg = require("./ibdawg.js");
 }
-else if (typeof(require) !== 'undefined') {
-    var dawg = require("resource://grammalecte/graphspell/dawg.js");
-    var ibdawg = require("resource://grammalecte/graphspell/ibdawg.js");
-}
 
 
 const dic_merger = {
@@ -51,5 +47,4 @@ const dic_merger = {
             return null;
         }
     }
-
 }

@@ -424,22 +424,22 @@ var gc_rules = {
   ]],
   ["@@@@", [
     ['graphe0', '#1758s'],
-    ['ocr', '#2715s'],
-    ['graphe1', '#3631s'],
-    ['purge_passe2', '#16953s'],
-    ['purge_passe3', '#17328s'],
+    ['ocr', '#2734s'],
+    ['graphe1', '#3650s'],
+    ['purge_passe2', '#17031s'],
+    ['purge_passe3', '#17406s'],
   ]],
   ["redon2", [
-    [/([a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ][a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ-][a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ-]+[a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ])[ ,].* (\1)(?![a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ–-])/gi, true, "#17826s", "redondances_phrase", 4, [["_c_redondances_phrase_1", "-", "_", 2, "Dans cette phrase, répétition de “\\1” (à gauche).", ""], ["_c_redondances_phrase_2", "-", "_", 1, "Dans cette phrase, répétition de “\\1” (à droite).", ""]], [0, "$"], ["[a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ.,–-]$"]],
+    [/([a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ][a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ-][a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ-]+[a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ])[ ,].* (\1)(?![a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ–-])/gi, true, "#17922s", "redondances_phrase", 4, [["_c_redondances_phrase_1", "-", "_", 2, "Dans cette phrase, répétition de “\\1” (à gauche).", ""], ["_c_redondances_phrase_2", "-", "_", 1, "Dans cette phrase, répétition de “\\1” (à droite).", ""]], [0, "$"], ["[a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ.,–-]$"]],
   ]],
   ["mc", [
-    [/([a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ][a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ]+)-([a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ][a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ]+)(?![a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ–-])/gi, true, "#17840s", "mc_mot_composé", 4, [["_c_mc_mot_composé_1", "-", "\\1\\2", 0, "Vous pouvez ôter le trait d’union.", ""], ["_c_mc_mot_composé_2", "-", "_", 0, "Mot inconnu du dictionnaire.", "https://grammalecte.net/dictionary.php?prj=fr&unknownword=on"]], [0, "$"], ["[a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ.,–-]$"]],
+    [/([a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ][a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ]+)-([a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ][a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ]+)(?![a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ–-])/gi, true, "#17936s", "mc_mot_composé", 4, [["_c_mc_mot_composé_1", "-", "\\1\\2", 0, "Vous pouvez ôter le trait d’union.", ""], ["_c_mc_mot_composé_2", "-", "_", 0, "Mot inconnu du dictionnaire.", "https://grammalecte.net/dictionary.php?prj=fr&unknownword=on"]], [0, "$"], ["[a-zA-Zà-öÀ-Ö0-9_ø-ÿØ-ßĀ-ʯ.,–-]$"]],
   ]],
   ["@@@@", [
-    ['graphe2', '#17858s'],
-    ['purge_ponctuations2', '#24477s'],
-    ['verbes1', '#24570s'],
-    ['verbes2', '#27896s'],
+    ['graphe2', '#17954s'],
+    ['purge_ponctuations2', '#24591s'],
+    ['verbes1', '#24687s'],
+    ['verbes2', '#28021s'],
   ]],
 ]
 };

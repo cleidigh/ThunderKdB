@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title></title>
   <link rel="stylesheet" type="text/css" media="screen" href="compose_popup.css">
+  <script src="../scripts/l10n.js" defer></script>
   <script src="../scripts/compose_popup.js" defer></script>
 </head>
 
@@ -12,47 +13,47 @@
   <div class="popup-page">
     <div id="confArea">
       <div id="entable" class="box-visible">
-        <h2 class="titleline-simple">Note Information</h2>
-        <p>Fill fields based on the selected message: <input type="button" value="Fill fields" id="fillButton">
+        <h2 class="titleline-simple" l10n-tag="enfCmpPopupNoteInfo">Note Information</h2>
+        <p><label l10n-tag="enfCmpPopupFillFld">Fill fields based on the selected message: </label><input type="button" value="Fill fields" id="fillButton" l10n-val-tag="enfCmpPopupFillFldBtn">
         </p>
 
         <table class="conftable" align="left">
           <tbody id="noteTable" align="left">
             <tr>
-              <td>Service</td>
+              <td><label l10n-tag="enfCmpPopupService">Service</label></td>
               <td>
                 <select id="service">
-                  <option id="evernote" value="evernote">Evernote</option>
-                  <option id="onenote" value="onenote">OneNote</option>
+                  <option id="evernote" value="evernote" l10n-tag="enfCmpPopupServiceEn">Evernote</option>
+                  <option id="onenote" value="onenote" l10n-tag="enfCmpPopupServiceOn">OneNote</option>
                 </select>
               </td>
             </tr>
             <tr>
-              <td>To</td>
+              <td><label l10n-tag="enfCmpPopupTo">To</label></td>
               <td><input type="text" id="email" size="50"></td>
             </tr>
             <tr>
-              <td>Note Title</td>
+              <td><label l10n-tag="enfCmpPopupNoteTitle">Note Title</label></td>
               <td><input type="text" id="title" size="50"></td>
             </tr>
             <tr>
-              <td>Append</td>
+              <td><label l10n-tag="enfCmpPopupAppend">Append</label></td>
               <td><input type="checkbox" id="append"></td>
             </tr>
             <tr>
-              <td>Notebook</td>
+              <td><label l10n-tag="enfCmpPopupNotebook">Notebook</label></td>
               <td><input type="text" id="notebook" size="50"></td>
             </tr>
             <tr>
-              <td>Reminder</td>
+              <td><label l10n-tag="enfCmpPopupReminder">Reminder</label></td>
               <td><input type="checkbox" id="reminder"></td>
             </tr>
             <tr>
-              <td>Notification</td>
+              <td><label l10n-tag="enfCmpPopupNotification">Notification</label></td>
               <td><input type="text" id="notification" placeholder="yyyy/mm/dd" size="50"></td>
             </tr>
             <tr>
-              <td>Tags</td>
+              <td><label l10n-tag="enfCmpPopupTags">Tags</label></td>
               <td><input type="text" id="tags" , placeholder="Tag1, Tags, ..." size="50"></td>
             </tr>
           </tbody>
@@ -61,8 +62,8 @@
       <br><br>
       <div id="submitArea" align="left">
         <p>
-          <input type="button" id="okButton" value="Update">
-          <input type="button" id="cancelButton" value="Cancel">
+          <input type="button" id="okButton" value="Update" l10n-val-tag="enfCmpPopupUpdate">
+          <input type="button" id="cancelButton" value="Cancel" l10n-val-tag="enfCmpPopupCancel">
         </p>
       </div>
     </div>

@@ -1,19 +1,33 @@
 {
-    "manifest_version": 2,
-    "applications": {
-        "gecko": {
-            "id": "senderdomain@rcruzs00",
-            "strict_min_version": "68.0"
-        }
-    },
-    "name": "Sender Domain",
-    "description": "Adds sender domain column to display.",
-    "version": "0.0.1",
-    "author": "rcruzs00",
-    "icons": {
-        "32": "chrome/skin/rcruzs00_sender_domain.png"
-    },
-    "legacy": {
-    "type": "xul"
+  "manifest_version": 2,
+  "name": "Sender Domain",
+  "description": "Sender Domain",
+  "version": "0.0.2",
+  "author": "Rafael Cruz - rcruzs00",
+  "applications": {
+    "gecko": {
+      "id": "senderdomain@rcruzs00",
+      "strict_min_version": "68.0a1"
+    }
+  },
+ "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "experiment_apis": {
+    "SenderDomain": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          ["SenderDomain"]
+        ],
+        "script": "experiments.js",
+        "events": ["startup"]
+      }
+    }
   }
 }

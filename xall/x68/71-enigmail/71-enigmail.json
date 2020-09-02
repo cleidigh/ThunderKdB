@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/53.png?modified=1431246631"
         }
     ],
-    "average_daily_users": 95197,
+    "average_daily_users": 97533,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2004-06-14T18:46:43Z",
     "current_version": {
-        "id": 2474095,
+        "id": 2474158,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "78.0"
+                "min": "77.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enigmail/versions/2474095",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enigmail/versions/2474158",
         "files": [
             {
-                "id": 1017257,
-                "created": "2020-08-16T09:35:36Z",
-                "hash": "sha256:d411fac4dce77f6f1d9c3a6b3126efbbe9e8561abcf43b9d1ed8052a9cccde0d",
+                "id": 1017320,
+                "created": "2020-08-30T15:51:45Z",
+                "hash": "sha256:ed5b7bc728bbe80473a3fc43468055d7c9ac3182b62f48cec5f681cbfb341254",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 434028,
+                "size": 434132,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017257/enigmail-2.2.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017320/enigmail-2.2.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,11 +50,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "As of Thunderbird version 78, OpenPGP is directly integrated in the mail client. Enigmail is not required anymore.\n\nThis version of Enigmail serves solely for migrating your keys and settings from Enigmail/GnuPG to Thunderbird. If you did not use Enigmail in Thunderbird 68 or earlier, then this version of Enigmail will not do anything."
+            "en-US": "This release makes Enigmail compatible with a change in Thunderbird 782.1."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/versions/2.2.1",
-        "version": "2.2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/versions/2.2.2",
+        "version": "2.2.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -99,7 +99,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2020-08-16T19:36:03Z",
+    "last_updated": "2020-08-30T17:02:28Z",
     "name": {
         "ru": "Enigmail",
         "fr": "Enigmail",
@@ -178,7 +178,11 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-08-16T09:35:36Z",
+            "comp78pv_version": "2.2.1",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-03-25T16:20:13Z"
         }

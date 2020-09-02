@@ -114,7 +114,7 @@
 				<treecol id="Emails" label="__CARDBOOKMSG_emailLabel__" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
 				<splitter class="tree-splitter"/>
 			</treecols>
-			<treechildren id="abResultsTreeChildren" ondblclick="wdw_cardbookContactsSidebar.doubleClickCardsTree(event);" ondragstart="nsDragAndDrop.startDrag(event, CardBookResultsPaneObserver);"/>
+			<treechildren id="abResultsTreeChildren" ondblclick="wdw_cardbookContactsSidebar.doubleClickCardsTree(event);" ondragstart="CardBookResultsPaneObserver.onDragStart(event);"/>
 		</tree>
 		
 		<separator class="thin"/>

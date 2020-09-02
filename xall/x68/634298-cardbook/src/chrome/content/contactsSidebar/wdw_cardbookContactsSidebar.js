@@ -6,19 +6,15 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
 	var CardBookResultsPaneObserver = {
-		onDragStart: function (aEvent, aXferData, aDragAction) {
-			var listOfEmails = wdw_cardbookContactsSidebar.getSelectedEmails();
-			aXferData.data = new TransferData();
-			aXferData.data.addDataForFlavour("text/x-moz-address", listOfEmails.join(", "));
-			aXferData.data.addDataForFlavour("text/unicode", listOfEmails.join(", "));
-			aDragAction.action = Components.interfaces.nsIDragService.DRAGDROP_ACTION_COPY;
-		},
-	
-		onDrop: function (aEvent, aXferData, aDragSession) {},
-		onDragExit: function (aEvent, aDragSession) {},
-		onDragOver: function (aEvent, aFlavour, aDragSession) {},
-		getSupportedFlavours: function () {
-			return null;
+		onDragStart: function (aEvent) {
+			let listOfEmails = wdw_cardbookContactsSidebar.getSelectedEmails().join(", ");
+			aEvent.dataTransfer.setData("moz/abcard", listOfEmails);
+			aEvent.dataTransfer.setData("moz/abcard", listOfEmails);
+			aEvent.dataTransfer.setData("text/x-moz-address", listOfEmails);
+			aEvent.dataTransfer.setData("text/unicode", listOfEmails);
+			aEvent.dataTransfer.effectAllowed = "copyMove";
+			aEvent.dataTransfer.addElement(event.originalTarget);
+			aEvent.stopPropagation();
 		}
 	};
 	
@@ -412,9 +408,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 
 		addEmails: function (aType) {
 			var listOfEmails = wdw_cardbookContactsSidebar.getSelectedEmails();
-			for (var i = 0; i < listOfEmails.length; i++) {
-				parent.awAddRecipientsArray(aType, listOfEmails[i]);
-			}
+			parent.awAddRecipientsArray(aType, listOfEmails);
 		},
 
 		startDrag: function (aEvent) {

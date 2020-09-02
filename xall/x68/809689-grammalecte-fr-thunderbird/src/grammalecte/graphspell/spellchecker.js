@@ -13,15 +13,6 @@
 
 "use strict";
 
-if (typeof(process) !== 'undefined') {
-    var ibdawg = require("./ibdawg.js");
-    var tokenizer = require("./tokenizer.js");
-}
-else if (typeof(require) !== 'undefined') {
-    var ibdawg = require("resource://grammalecte/graphspell/ibdawg.js");
-    var tokenizer = require("resource://grammalecte/graphspell/tokenizer.js");
-}
-
 
 // Map
 /*jslint esversion: 6*/
@@ -79,6 +70,12 @@ if (Map.prototype.grammalecte === undefined) {
     Map.prototype.grammalecte = true;
 }
 
+
+
+if (typeof(process) !== 'undefined') {
+    var ibdawg = require("./ibdawg.js");
+    var tokenizer = require("./tokenizer.js");
+}
 
 
 const dDefaultDictionaries = new Map([

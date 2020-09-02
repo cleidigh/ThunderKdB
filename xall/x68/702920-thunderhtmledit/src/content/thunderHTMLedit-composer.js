@@ -290,13 +290,8 @@ var SourceEditor = {
       this.getEditor(win).focus();
     } catch (e) { ThunderHTMLedit.handleException(e); }
   },
-  foldDataUrls(win) {
-    try {
-      this.foldAllDataUrls(this.getEditor(win));
-    } catch (e) { ThunderHTMLedit.handleException(e); }
-  },
 
-  foldAllDataUrls(editor, startRow, endRow) {
+  foldAllDataUrls(editor) {
     // todo use "tokenizerUpdate" event to  update after chanegs (paste, edits, etc)
     // todo instead calling "foldAllDataUrls", the "tokenizerUpdate" may be enough :-)
 
@@ -339,8 +334,9 @@ var SourceEditor = {
 
     const session = editor.getSession();
     if (!session.foldWidgets) return; // mode doesn't support folding
-    endRow = endRow || session.getLength();
-    startRow = startRow || 0;
+
+    let startRow = 0;  // used to be function parameters.
+    let endRow = session.getLength();
 
     const iterator = new this.TokenIterator(session, startRow, 0);
 
@@ -392,7 +388,6 @@ var ResetTheme;
 var Undo;
 var Redo;
 var thisWin;
-var AceInitialised = false;
 
 function CheckLicense() {
   const numNoNags = 25;
@@ -467,6 +462,8 @@ function PrepareHTMLtab() {
     // Like this, users will understand that there is really no plain text editor.
     // It's all HTML ;-)
     thisWin.document.getElementById("thunderHTMLedit-content-tab").removeAttribute("collapsed");
+
+    initIframe(thisWin);
   } catch (e) { ThunderHTMLedit.handleException(e); }
 }
 
@@ -533,11 +530,6 @@ function SelectEditMode(mode, syncOnly) {
 
     // Copy content from WYSIWYG to HTML tab, only when WYSIWYG is changed.
     if (mode == 1) {
-      if (!AceInitialised) {
-        initIframe(thisWin);
-        AceInitialised = true;
-      }
-
       // When using the HTML tab, check the license.
       CheckLicense();
 

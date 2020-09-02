@@ -93,7 +93,6 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 
 window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", function(e) {
-	var { setTimeout } = ChromeUtils.import("resource://gre/modules/Timer.jsm");
     setTimeout(toggleAddressPicker, 0, false);
     setTimeout(toggleAddressPicker, 0, false);
 }, false);

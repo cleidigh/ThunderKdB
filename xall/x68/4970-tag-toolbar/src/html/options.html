@@ -12,10 +12,28 @@
 
 <body class="option-page">
   <form name="tpup_form">
+    <h2 class="titleline-simple" l10n-tag="tpupOptGeneral"></h2>
+    <p>
+      <label l10n-tag="tpupOptRecentNum"></label>
+      <input type="number" name="recent_num" id="recent_num" min="0" size="4">
+      &nbsp;
+      <input type="button" id="reset_recent" l10n-val-tag="tpupOptRecentClear">
+    </p>
+    <p>
+      <input type="checkbox" name="refresh_cats" id="refresh_cats">
+      <label for="refresh_cats" l10n-tag="tpupOptRefreshCats"></label>
+      &nbsp;
+      <input type="button" id="refresh_cats_now" l10n-val-tag="tpupOptRefreshCatsNow">
+    </p>   
     <p>
       <input type="checkbox" name="use_msghdr" id="use_msghdr">
       <label for="use_msghdr" l10n-tag="tpupOptMsgHdr"></label>
     </p>
+    <div class="indent">
+      <label l10n-tag="tpupOptHdrCat"></label>
+      <select id="hdr_category">
+      </select>
+    </div>
     <p>
       <input type="checkbox" id="bgcolor_en">
       <label for="bgcolor_en" l10n-tag="tpupOptBgColorEn"></label>
@@ -37,14 +55,69 @@
         <input type="checkbox" id="ignore_black"><label l10n-tag="tpupOptIgnoreBlack" for="ignore_black"></label>
       </p>
       <p>
-      <label l10n-tag="tpupOptPreview"></label>
-      <br>
-      <select size="10" style="width: 200px; background-color:white !important;"
-              class="indent" id="colorSample" disabled>
-      </select>
+        <label l10n-tag="tpupOptPreview"></label>
+        <br>
+        <select size="10" style="width: 200px; background-color:white !important;" class="indent" id="colorSample" disabled>
+        </select>
       </p>
     </div>
-  </form>
-</body>
 
-</html>
+    <h2 class="titleline-simple" l10n-tag="tpupOptCatEditor"></h2>
+    <h3 l10n-tag="tpupOptCategories"></h3>
+    <div class="indent wrapper-category">
+      <select size="6" style="width: 420px" id="categories">
+      </select>
+      <div>
+        <input class="button-fix-side" type="button" l10n-val-tag="tpupOptUp" id="catUp">
+        <input class="button-fix-side" type="button" l10n-val-tag="tpupOptDown" id="catDown">
+        <input class="button-fix-side" type="button" l10n-val-tag="tpupOptNew" id="catNew">
+        <input class="button-fix-side" type="button" l10n-val-tag="tpupOptDel" id="catDel">
+      </div>
+
+    </div>
+    <h3 l10n-tag="tpupOptEditCat"></h3>
+    <p id="noteditable" class="box-collapse">
+    <label class="indent" l10n-tag="tpupOptCatNotEdit"></label>
+    </p>
+    <div class="indent" id="categoryArea">
+      <p>
+        <input type="text" style="width: 350px" id="categoryNameInput" l10n-ph-tag="tpupOptCatNameInput">
+        <input class="button-fix-bottom" type="button" l10n-val-tag="tpupOptUpdate" id="catUpdate">
+      </p>
+      <p>
+        <input type="checkbox" id="editSavedSearch">
+        <label for="editSavedSearch" l10n-tag="tpupOptSavedSearchCat"></label>
+      </p>
+    </div>
+    <div class="indent" id="savedSearchArea">
+      <p>
+        <input type="text" id="queryInput" l10n-ph-tag="tpupOptSearchQuery">
+        <input type="checkbox" id="queryCaseSense"><label for="queryCaseSense" l10n-tag="tpupOptCaseSense"></label>
+        <input type="checkbox" id="queryRegExp"><label for="queryRegExp" l10n-tag="tpupOptRegExp"></label>
+      </p>
+      <div style="margin-bottom: 5px;">
+        <label l10n-tag="tpupOptMatchedTags"></label><br>
+      </div>
+      <select class="tagsearch-left" size="15" id="search_cat">
+      </select>
+    </div>
+    <div class="indent wrapper-cateditor" id="editorArea">
+      <div><label l10n-tag="tpupOptInCategory"></label></div>
+      <div><label></label></div>
+      <div><label style="margin-left: 10px;"　 l10n-tag="tpupOptInAvailableTags"></label></div>
+      <select class="tagselect-left" size="10" id="in_cat" multiple>
+      </select>
+      <div id="button_field">
+        <input class="button-fix-center-top" type="button" l10n-val-tag="tpupOptBtnLeft" id="tagsAdd">
+        <input class="button-fix-center" type="button" l10n-val-tag="tpupOptBtnRight" id="tagsRemove">
+        <input class="button-fix-center" type="button"  l10n-val-tag="tpupOptUp" id="tagsUp">
+        <input class="button-fix-center" type="button"  l10n-val-tag="tpupOptDown" id="tagsDown">
+      </div>
+      <select class="tagselect-right" size="10" id="out_cat" multiple>
+      </select>
+      <input class="tagselect-left" type="text" id="filterInCat" l10n-ph-tag="tpupOptFilterTags">
+      <div><label></label></div>
+      <input class="tagselect-right" type="text" id="filterOutCat" l10n-ph-tag="tpupOptFilterTags">
+    </div>
+  </form>
+</body></html>

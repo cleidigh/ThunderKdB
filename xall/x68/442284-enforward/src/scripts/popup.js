@@ -1,7 +1,7 @@
 var noteInfo = null;
 var serviceName = "Evernote";
 
-function init() {
+async function init() {
   document.getElementById("fwdButton").addEventListener("click", (event) => {
     sendResult(true);
   });
@@ -35,12 +35,16 @@ function init() {
   browser.runtime.sendMessage({
     message: "START_FORWARDING"
   });
+  
+  await translate();
 }
 
 init();
 
 function showCancelForm() {
-  document.getElementById("serviceName").textContent = "Forward to " + serviceName;
+  let caption = document.getElementById("serviceName");
+  caption.textContent = caption.textContent.replace("%s", serviceName);
+//  document.getElementById("serviceName").textContent = "Forward to " + serviceName;
   document.getElementById("confArea").setAttribute("class", "box-none");
   document.getElementById("cancelArea").setAttribute("class", "box-visible");
 }
@@ -56,8 +60,11 @@ async function fillNoteTable() {
     document.getElementById("entable").setAttribute("class", "box-visible");
     tbody = document.getElementById("noteTable");
   }
+  
+  let caption = document.getElementById("serviceName");
+  caption.textContent = caption.textContent.replace("%s", serviceName);
 
-  document.getElementById("serviceName").textContent = "Forward to " + serviceName;
+//  document.getElementById("serviceName").textContent = "Forward to " + serviceName;
 
   for (let i = 0; i < noteInfo.length; i++) {
     let info = noteInfo[i];

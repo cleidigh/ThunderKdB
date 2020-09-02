@@ -2,23 +2,37 @@
   "manifest_version": 2,
   "name": "Phoenity Icons",
   "description": "Phoenity Icons for Thunderbird",
-  "version": "2.9",
-  "author": "Dillinger",
   "homepage_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/",
-  "legacy" : {
-    "options" : {
-      "page" : "chrome://phoenityIcons/content/aboutIcons.xul",
-      "open_in_tab" : false
+  "version": "3.0b1",
+  "experiment_apis": {
+    "phoenityIconsApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "phoenityIconsApi"
+          ]
+        ],
+        "script": "phoenityIconsApi.js"
+      }
     }
+  },
+  "background": {
+    "scripts": [
+      "phoenityIcons.js"
+    ]
   },
   "applications": {
     "gecko": {
       "id": "icons@dillinger",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   },
   "icons": {
-    "32": "skin/icons/phoenityIcons32.png",
-    "64": "skin/icons/phoenityIcons64.png"
+    "32": "phoenityIcons32.png",
+    "64": "phoenityIcons64.png"
   }
 }

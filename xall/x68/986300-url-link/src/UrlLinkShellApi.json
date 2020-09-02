@@ -1,0 +1,19 @@
+[
+  {
+    "namespace": "urllink.shell",
+    "description": "UYRL link external link loading - from: Sieve Account Management",
+    "functions": [
+      {
+        "name": "openExternal",
+        "type": "function",
+        "description": "Open the url with the desktop's default handler",
+        "async": true,
+        "parameters": [{
+            "name": "url",
+            "type": "string",
+            "description": "The server's id"
+        }]
+      }
+    ]
+  }
+]

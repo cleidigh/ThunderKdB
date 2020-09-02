@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://iOSNotes/locale/iOSNotes.dtd">
+
+<overlay id="iOSNotesMain" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<script type="application/x-javascript" src="chrome://iOSNotes/content/iOSNotes.js"/>
+<script type="application/x-javascript" src="chrome://iOSNotes/content/keysets.js"/>
+
+<keyset id="mailKeys">
+	<keyset id="iOSIMAPNotesKeyset"/>
+</keyset>
+
+<commandset id="mailCommands">
+	<command id="iOSIMAPNotesModifyContent" observes="button_reply"  oncommand="iOSNotesObj.startEditNote();" />
+</commandset>
+
+<menupopup id="messageMenuPopup">
+	<menuseparator />
+	<menuitem id="iOSIMAPNotesModify1" label="&iOSimapNotes;" command="iOSIMAPNotesModifyContent">		 
+	</menuitem>
+	<menuseparator />
+</menupopup>
+
+<menupopup id="mailContext">
+	<menuseparator />
+	<menuitem id="iOSIMAPNotesModify2" label="&iOSimapNotes;" command="iOSIMAPNotesModifyContent">		 
+	</menuitem>
+
+	<menuseparator />
+</menupopup>
+
+</overlay>

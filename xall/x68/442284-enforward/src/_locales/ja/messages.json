@@ -1,0 +1,426 @@
+{
+  //manifest.json
+  "extensionName": {
+    "message": "EnForward"
+  },
+  "extensionDescription": {
+    "message": "EvernoteやOneNoteにメッセージを転送します"
+  },
+  "extensionHomepage_url": {
+    "message": "https://hogi.sakura.ne.jp/ja/"
+  },
+  "extensionDefault_title": {
+    "message": "EnForward"
+  },
+  "extensionCmd_evernote": {
+    "message": "Evernoteへ転送"
+  },
+  "extensionCmd_evernote_rem": {
+    "message": "Evernoteへ転送（リマインダ付き）"
+  },
+  "extensionCmd_onenote": {
+    "message": "その他のノートサービスへ転送"
+  },
+  
+  //popup
+  "enfPopupCaption": {
+    "message": "%s へ転送"
+  },
+  "enfPopupFwd": {
+    "message": "転送"
+  },
+  "enfPopupTitle": {
+    "message": "タイトル"
+  },
+  "enfPopupAppend": {
+    "message": "追記"
+  },
+  "enfPopupNotebook": {
+    "message": "ノートブック"
+  },
+  "enfPopupReminder": {
+    "message": "リマインダ"
+  },
+  "enfPopupNotification": {
+    "message": "通知"
+  },
+  "enfPopupTags": {
+    "message": "タグ"
+  },
+  "enfPopupForward": {
+    "message": "転送"
+  },
+  "enfPopupCancel": {
+    "message": "キャンセル"
+  },
+  "enfPopupCancelMsg": {
+    "message": "本当に転送をキャンセルしてもよいですか？"
+  },
+  "enfPopupYes": {
+    "message": "Yes"
+  },
+  "enfPopupNo": {
+    "message": "No"
+  },
+  
+    //option
+  "enfOptCommon": {
+    "message": "共通"
+  },
+  "enfOptToolbarCommand": {
+    "message": "ツールバーコマンド:"
+  },
+  "enfOptEvernote": {
+    "message": "Evernote"
+  },
+  "enfOptEvernoteRem": {
+    "message": "Evernote（リマインダ付き）"
+  },
+  "enfOptOtherService": {
+    "message": "その他のノートサービス"
+  },
+  "enfOptToolbarCmdRemark": {
+    "message": "Evernote（リマインダ付き）は、通知日入力のため、「ノートを転送する前に確認する」の設定にかかわらずポップアップを表示します。"
+  },
+  "enfOptPreviewMode": {
+    "message": "プレビューモード:"
+  },
+  "enfOptPreviewModeEn": {
+    "message": "プレビューモードを有効にする"
+  },
+  "enfOptPreviewModeRemark": {
+    "message": "プレビューモードでは、ノートは送信トレイに保存されます。内容を確認した後、Thunderbirdの「未送信メッセージを送信」機能を使って、手動で送信してください。"
+  },
+    "enfOptForwarding": {
+    "message": "転送"
+  },
+  "enfOptEnAddress": {
+    "message": "Evernoteのメールアドレス: "
+  },
+  "enfOptMode": {
+    "message": "モード： "
+  },
+  "enfOptAttach": {
+    "message": "添付"
+  },
+  "enfOptInline": {
+    "message": "インライン"
+  },
+  "enfOptFwdRemark": {
+    "message": "推奨は添付モードです。お使いのメールサーバが.emlや.htmlの添付を禁止している場合は、インラインモードに設定してください。インラインモードには、以下の機能制限があります。"
+  },
+  "enfOptFwdRemark0": {
+    "message": "メモ設定は無視されます。"
+  },
+  "enfOptFwdRemark1": {
+    "message": "必ずメッセージ全体を転送します。選択部分のみ転送はできません。"
+  },
+  "enfOptIdentity": {
+    "message": "差出人： "
+  },
+  "enfOptAuto": {
+    "message": "自動"
+  },
+  "enfOptInterval": {
+    "message": "ノートの送信間隔： "
+  },
+  "enfOptSec": {
+    "message": "秒"
+  },
+  "enfOptSaveSent": {
+    "message": "ノートを送信済みフォルダに保存する"
+  },
+  "enfOptMarkFwd": {
+    "message": "元のメッセージを転送済みとしてマークする"
+  },
+  "enfOptMoveTrash": {
+    "message": "元のメッセージをゴミ箱に移動する"
+  },
+  "enfOptConfirm": {
+    "message": "ノートを送信する前に確認する"
+  },
+  "enfOptAddTagsOrg": {
+    "message": "以下のタグを元のメッセージに追加する："
+  },
+  "enfOptRemoveTagsOrg": {
+    "message": "以下のタグを元のメッセージから削除する："
+  },
+  "enfOptLimit": {
+    "message": "制限"
+  },
+  "enfOptAccountType": {
+    "message": "アカウントの種類： "
+  },
+  "enfOptPremium": {
+    "message": "プレミアム/ビジネス"
+  },
+  "enfOptPlus": {
+    "message": "プラス"
+  },
+  "enfOptMaxNoteSize": {
+    "message": "最大ノートサイズ： "
+  },
+  "enfOptMaxNoteSizeMB": {
+    "message": " MB"
+  },
+  "enfOptSentToday": {
+    "message": "送信数： "
+  },
+  "enfOptSentTodayNotes": {
+    "message": " ノート"
+  },
+  "enfOptAlartLimit": {
+    "message": "制限チェックを有効にする"
+  },
+  "enfOptLimitRemark0": {
+    "message": "送信数は、Thunderbirdによって、Evernoteメールアドレスへ送信されたメッセージをカウントしています。参考値として使ってください。"
+  },
+  "enfOptLimitRemark1": {
+    "message": "送信数はカリフォルニア現地時間の0:00にリセットされます。"
+  },
+  "enfOptNote": {
+    "message": "ノート"
+  },
+  "enfOptNoteTitle": {
+    "message": "ノートタイトル： "
+  },
+  "enfOptRemiveRe": {
+    "message": "件名の先頭にあるRe:、Fwd:、Fw:を削除する"
+  },
+  "enfOptRemoveMLTag": {
+    "message": "件名の先頭にある[...]、(...)を削除する"
+  },
+  "enfOptNotebook": {
+    "message": "ノートブック： "
+  },
+  "enfOptTags": {
+    "message": "タグ： "
+  },
+  "enfOptAddMsgTag": {
+    "message": "メッセージのタグをノートに追加する。以下のタグは除外する。"
+  },
+  "enfOptMetaRemark": {
+    "message": "注意：ノートタイトル、ノートブック、タグに含まれる@、#、!は_に置き換えられます。"
+  },
+  "enfOptMemo": {
+    "message": "メモ"
+  },
+  "enfOptAddHeader": {
+    "message": "ヘッダテキストを追加する"
+  },
+  "enfOptUseHTML": {
+    "message": "HTMLタグを使用する"
+  },
+  "enfOptAddFooter": {
+    "message": "フッタテキストを追加する"
+  },
+  "enfOptMailLink": {
+    "message": "メールアドレスにmailtoリンクをつける"
+  },
+  "enfOptAttachTitle": {
+    "message": "添付"
+  },
+  "enfOptHasAttach": {
+    "message": "メッセージに添付ファイルがあったら："
+  },
+  "enfOptFwdAll": {
+    "message": "すべて転送する"
+  },
+  "enfOptRemoveAll": {
+    "message": "すべて削除する"
+  },
+  "enfOptRemoveOr": {
+    "message": "以下のフィルタ条件の少なくとも一つに合致したものを削除する"
+  },
+  "enfOptRemoveAnd": {
+    "message": "以下のフィルタ条件のすべてに合致したものを削除する"
+  },
+  "enfOptFilterCond": {
+    "message": "フィルタ条件："
+  },
+  "enfOptAttachExt": {
+    "message": "拡張子： "
+  },
+  "enfOptAttachSize": {
+    "message": "サイズ："
+  },
+  "enfOptAttachSizeMB": {
+    "message": "MB (0 MB設定時はサイズチェック無効)"
+  },
+  "enfOptAttachRemark": {
+    "message": "注意：Thunderbird上で削除された添付ファイルは転送されません。"
+  },
+  "enfOptServiceName": {
+    "message": "サービス名： "
+  },
+  "enfOptAddress": {
+    "message": "メールアドレス： "
+  },
+  "enfOptChooseIdentity": {
+    "message": "(差出人を選択)"
+  },
+  "enfOptTips": {
+    "message": "Tips"
+  },
+  "enfOptMetaChar": {
+    "message": "メタ文字"
+  },
+  "enfOptMetaDesc": {
+    "message": "以下のメタ文字を、ノートタイトル、ノートブック、タグ、メモに使用できます。"
+  },
+  "enfOptChar": {
+    "message": "文字"
+  },
+  "enfOptDesc": {
+    "message": "説明"
+  },
+  "enfOptMeta_LS": {
+    "message": "%S"
+  },
+  "enfOptSubject": {
+    "message": "件名"
+  },
+  "enfOptMeta_LF": {
+    "message": "%F"
+  },
+  "enfOptFolderName": {
+    "message": "フォルダ名"
+  },
+  "enfOptMeta_LN": {
+    "message": "%N"
+  },
+  "enfOptAccountName": {
+    "message": "アカウント名"
+  },
+  "enfOptMeta_LA": {
+    "message": "%A"
+  },
+  "enfOptSender": {
+    "message": "送信者"
+  },
+  "enfOptMeta_LT": {
+    "message": "%T"
+  },
+  "enfOptTo": {
+    "message": "To"
+  },
+  "enfOptMeta_LC": {
+    "message": "%C"
+  },
+  "enfOptCc": {
+    "message": "Cc"
+  },
+  "enfOptMeta_a": {
+    "message": "%a"
+  },
+  "enfOptSenderName": {
+    "message": "送信者名"
+  },
+  "enfOptMeta_t": {
+    "message": "%t"
+  },
+  "enfOptToNames": {
+    "message": "宛名(To)"
+  },
+  "enfOptMeta_c": {
+    "message": "%c"
+  },
+  "enfOptCcNames": {
+    "message": "宛名(Cc)"
+  },
+  "enfOptMeta_LY": {
+    "message": "%Y"
+  },
+  "enfOptSentYear": {
+    "message": "送信日(年)"
+  },
+  "enfOptMeta_LM": {
+    "message": "%M"
+  },
+  "enfOptSentMonth": {
+    "message": "送信日(月)"
+  },
+  "enfOptMeta_LD": {
+    "message": "%D"
+  },
+  "enfOptSentDate": {
+    "message": "送信日(日)"
+  },
+  "enfOptMeta_h": {
+    "message": "%h"
+  },
+  "enfOptSentHours": {
+    "message": "送信時間(時)"
+  },
+  "enfOptMeta_m": {
+    "message": "%m"
+  },
+  "enfOptSentMin": {
+    "message": "送信時間(分)"
+  },
+  "enfOptMeta_s": {
+    "message": "%s"
+  },
+  "enfOptSentSec": {
+    "message": "送信時間(秒)"
+  },
+  "enfOptMeta_LR": {
+    "message": "%R"
+  },
+  "enfOptRemovedAttach": {
+    "message": "削除された添付ファイル名"
+  },
+  "enfOptMeta_r": {
+    "message": "%r"
+  },
+  "enfOptFwdAttach": {
+    "message": "転送された添付ファイル名"
+  },
+  
+  //compose popup
+  "enfCmpPopupNoteInfo": {
+    "message": "ノート情報"
+  },
+  "enfCmpPopupFillFld": {
+    "message": "選択中のメッセージから項目を埋める： "
+  },
+  "enfCmpPopupFillFldBtn": {
+    "message": "取得"
+  },
+  "enfCmpPopupService": {
+    "message": "サービス"
+  },
+  "enfCmpPopupServiceEn": {
+    "message": "Evernote"
+  },
+  "enfCmpPopupServiceOn": {
+    "message": "OneNote"
+  },
+  "enfCmpPopupTo": {
+    "message": "To"
+  },
+  "enfCmpPopupNoteTitle": {
+    "message": "ノートタイトル"
+  },
+  "enfCmpPopupAppend": {
+    "message": "追記"
+  },
+  "enfCmpPopupNotebook": {
+    "message": "ノートブック"
+  },
+  "enfCmpPopupReminder": {
+    "message": "リマインダ"
+  },
+  "enfCmpPopupNotification": {
+    "message": "通知"
+  },
+  "enfCmpPopupTags": {
+    "message": "タグ"
+  },
+  "enfCmpPopupUpdate": {
+    "message": "更新"
+  },
+  "enfCmpPopupCancel": {
+    "message": "キャンセル"
+  }
+}

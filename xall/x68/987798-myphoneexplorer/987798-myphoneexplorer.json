@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 10682,
+    "average_daily_users": 10954,
     "categories": {
         "thunderbird": [
             "importexport"
@@ -18,30 +18,33 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HY9EFDS4MPVQ2",
     "created": "2020-03-16T20:53:40Z",
     "current_version": {
-        "id": 2473537,
+        "id": 2474167,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/myphoneexplorer/versions/2473537",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/myphoneexplorer/versions/2474167",
         "files": [
             {
-                "id": 1016681,
-                "created": "2020-03-16T20:53:40Z",
-                "hash": "sha256:c87fc2278ee3381365bdce3904941bb26a3c9f92735a42ebad8cf7323c5318ef",
-                "is_restart_required": true,
+                "id": 1017329,
+                "created": "2020-08-31T17:58:24Z",
+                "hash": "sha256:fc3707ea296123290a3f886434980cefd53c81994d6b23a3a110cb651e7047b5",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
-                "platform": "windows",
-                "size": 44903,
+                "platform": "all",
+                "size": 20029,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016681/myphoneexplorer-2.0.25-tb-windows.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017329/myphoneexplorer-3.0.6-tb.xpi?src=",
+                "permissions": [
+                    "addressBooks",
+                    "nativeMessaging"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 7057,
             "name": {
@@ -50,9 +53,9 @@
             "url": null
         },
         "release_notes": null,
-        "reviewed": "2020-05-19T23:36:09Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/myphoneexplorer/versions/2.0.25",
-        "version": "2.0.25"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/myphoneexplorer/versions/3.0.6",
+        "version": "3.0.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -76,7 +79,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-05-19T23:36:09Z",
+    "last_updated": "2020-08-31T18:24:18Z",
     "name": {
         "en-US": "MyPhoneExplorer",
         "de": "MyPhoneExplorer"
@@ -115,10 +118,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true
         }
     }
 }

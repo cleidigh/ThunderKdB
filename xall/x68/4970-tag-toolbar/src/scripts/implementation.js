@@ -85,7 +85,7 @@ var tagPopupApi = class extends ExtensionCommon.ExtensionAPI {
             TTBCSSManager.registerCSS(css);
           }
         },
-        
+
         removeCSS: async function () {
           let rw = Services.wm.getMostRecentWindow("mail:3pane");
           if (rw) {
@@ -125,7 +125,7 @@ var tagPopupWindowListener = new class extends ExtensionCommon.EventEmitter {
     let label = event.originalTarget;
 
     if (event.which != 1) return; //left-click only
-    
+
     if (label.getAttribute("class") == "tagvalue") {
       let tagService = Components.classes["@mozilla.org/messenger/tagservice;1"]
         .getService(Components.interfaces.nsIMsgTagService);

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://iOSNotes/locale/iOSNotes.dtd">
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://iOSNotes/content/iOSNotes.css"?>
+
+<dialog xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="iOSNotesObj.initDialog();" 
+     	title="&extName; - &editNote;"
+		orient="vertical"
+		flex="1"
+		id="HTLdialog2"
+		persist="screenX screenY width height">
+
+<spacer height="10px" />
+
+<!-- <vbox id="editNote" style="overflow: auto; min-width:500px; min-height:400px" flex="1"> -->
+
+<vbox id="editNote" flex="1">
+    <html:textarea id="editNoteArea" flex="1" />
+</vbox>
+
+<script type="application/x-javascript" src="chrome://iOSNotes/content/iOSNotes.js"/>
+
+</dialog>
+

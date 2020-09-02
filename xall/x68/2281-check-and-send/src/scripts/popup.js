@@ -137,21 +137,21 @@ function updateWarnings(inSession) {
 
   let errOccurred = false;
 
-  errOccurred |= updateRecTypeWarnings();
-  errOccurred |= updateDupRecWarnings();
-  errOccurred |= updateAddrCheckWarnings();
+  errOccurred = updateRecTypeWarnings() || errOccurred;
+  errOccurred = updateDupRecWarnings() || errOccurred;
+  errOccurred = updateAddrCheckWarnings() || errOccurred;
   if (errOccurred) {
     document.getElementById("recArea").setAttribute("class", "box-visible");
   } else {
     document.getElementById("recArea").setAttribute("class", "box-collapse");
   }
 
-  errOccurred |= updateIdentityWarnings();
-  errOccurred |= updateAttachWarnings();
-  errOccurred |= updateWordsWarnings();
-  errOccurred |= updateRecNameWarnings();
+  errOccurred = updateIdentityWarnings() || errOccurred;
+  errOccurred = updateAttachWarnings() || errOccurred;
+  errOccurred = updateWordsWarnings() || errOccurred;
+  errOccurred = updateRecNameWarnings() || errOccurred;
 
-  errOccurred |= updateDayDateWarnings();
+  errOccurred = updateDayDateWarnings() || errOccurred;
 
 
   if (errOccurred) {

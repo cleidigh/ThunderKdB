@@ -8,6 +8,13 @@
         "async": true,
         "parameters": []
       },
+      
+      {
+        "name": "checkToolbarButton",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
 
       {
         "name": "forwardMessages",
@@ -155,6 +162,14 @@
             }
           }
         ]
+      },
+
+      {
+        "name": "saveSentDone",
+        "type": "function",
+        "async": true,
+        "parameters": [
+        ]
       }
     ],
 
@@ -251,6 +266,22 @@
           {
             "name": "charValue",
             "type": "string"
+          }
+        ]
+      },
+
+      {
+        "name": "afterToolbarCustomization",
+        "type": "function",
+        "description": "Fires when user close toolbar panel",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "enfButtonExists",
+            "type": "boolean"
           }
         ]
       }

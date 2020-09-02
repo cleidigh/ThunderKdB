@@ -1,0 +1,426 @@
+{
+  //manifest.json
+  "extensionName": {
+    "message": "EnForward"
+  },
+  "extensionDescription": {
+    "message": "Forward email to Evernote and OneNote."
+  },
+  "extensionHomepage_url": {
+    "message": "https://hogi.sakura.ne.jp/en/"
+  },
+  "extensionDefault_title": {
+    "message": "EnForward"
+  },
+  "extensionCmd_evernote": {
+    "message": "Forward to Evernote"
+  },
+  "extensionCmd_evernote_rem": {
+    "message": "Forward to Evernote with Reminder"
+  },
+  "extensionCmd_onenote": {
+    "message": "Forward to Other note service"
+  },
+  
+  //popup
+  "enfPopupCaption": {
+    "message": "Forward to %s"
+  },
+  "enfPopupFwd": {
+    "message": "Fwd"
+  },
+  "enfPopupTitle": {
+    "message": "Title"
+  },
+  "enfPopupAppend": {
+    "message": "Append"
+  },
+  "enfPopupNotebook": {
+    "message": "Notebook"
+  },
+  "enfPopupReminder": {
+    "message": "Reminder"
+  },
+  "enfPopupNotification": {
+    "message": "Notification"
+  },
+  "enfPopupTags": {
+    "message": "Tags"
+  },
+  "enfPopupForward": {
+    "message": "Forward"
+  },
+  "enfPopupCancel": {
+    "message": "Cancel"
+  },
+  "enfPopupCancelMsg": {
+    "message": "Are you sure you want to cancel forwarding?"
+  },
+  "enfPopupYes": {
+    "message": "Yes"
+  },
+  "enfPopupNo": {
+    "message": "No"
+  },
+  
+  //option
+  "enfOptCommon": {
+    "message": "Common"
+  },
+  "enfOptToolbarCommand": {
+    "message": "Toolbar command:"
+  },
+  "enfOptEvernote": {
+    "message": "Evernote"
+  },
+  "enfOptEvernoteRem": {
+    "message": "Evernote with Reminder"
+  },
+  "enfOptOtherService": {
+    "message": "Other Note Service"
+  },
+  "enfOptToolbarCmdRemark": {
+    "message": "Evernote with Reminder always shows confirmation popup regardless the \"Confirm before forwarding notes\" option in order to ask you notification date."
+  },
+  "enfOptPreviewMode": {
+    "message": "Preview mode:"
+  },
+  "enfOptPreviewModeEn": {
+    "message": "Enable Preview mode"
+  },
+  "enfOptPreviewModeRemark": {
+    "message": "In Preview mode, a note is saved in the Unsent folder. Send it manually by Send Unsent functionality of Thunderbird after you check the content."
+  },
+  "enfOptForwarding": {
+    "message": "Forwarding"
+  },
+  "enfOptEnAddress": {
+    "message": "Evernote Email Address: "
+  },
+  "enfOptMode": {
+    "message": "Mode: "
+  },
+  "enfOptAttach": {
+    "message": "Attachment"
+  },
+  "enfOptInline": {
+    "message": "Inline"
+  },
+  "enfOptFwdRemark": {
+    "message": "Attachment mode is recommended. Use Inline mode if your server does not allow .eml and .html attachments. Please note Inline mode has the following limitations:"
+  },
+  "enfOptFwdRemark0": {
+    "message": "Memo settings are ignored"
+  },
+  "enfOptFwdRemark1": {
+    "message": "Always forward whole message. Forwarding selected text is not available."
+  },
+  "enfOptIdentity": {
+    "message": "Identity: "
+  },
+  "enfOptAuto": {
+    "message": "Auto"
+  },
+  "enfOptInterval": {
+    "message": "Interval between sending notes: "
+  },
+  "enfOptSec": {
+    "message": "seconds"
+  },
+  "enfOptSaveSent": {
+    "message": "Save note in sent folder"
+  },
+  "enfOptMarkFwd": {
+    "message": "Mark original message as forwarded"
+  },
+  "enfOptMoveTrash": {
+    "message": "Move original message into Trash"
+  },
+  "enfOptConfirm": {
+    "message": "Confirm before forwarding notes"
+  },
+  "enfOptAddTagsOrg": {
+    "message": "Add following tags to the original message:"
+  },
+  "enfOptRemoveTagsOrg": {
+    "message": "Remove following tags from the original message:"
+  },
+  "enfOptLimit": {
+    "message": "Limitations"
+  },
+  "enfOptAccountType": {
+    "message": "Account type: "
+  },
+  "enfOptPremium": {
+    "message": "Premium/Business"
+  },
+  "enfOptPlus": {
+    "message": "Plus"
+  },
+  "enfOptMaxNoteSize": {
+    "message": "Max note size: "
+  },
+  "enfOptMaxNoteSizeMB": {
+    "message": " MB"
+  },
+  "enfOptSentToday": {
+    "message": "Sent today: "
+  },
+  "enfOptSentTodayNotes": {
+    "message": " notes"
+  },
+  "enfOptAlartLimit": {
+    "message": "Enable limitation check"
+  },
+  "enfOptLimitRemark0": {
+    "message": "The sent today only counts messages sent to the Evernote email address by Thunderbird. Use it as information."
+  },
+  "enfOptLimitRemark1": {
+    "message": "The count will be reset at 0:00 (California local time)"
+  },
+  "enfOptNote": {
+    "message": "Note"
+  },
+  "enfOptNoteTitle": {
+    "message": "Note title: "
+  },
+  "enfOptRemiveRe": {
+    "message": "Remove Re:, Fwd: and Fw: in front of the subject"
+  },
+  "enfOptRemoveMLTag": {
+    "message": "Remove [...] and (...) in front of the subject"
+  },
+  "enfOptNotebook": {
+    "message": "Note book: "
+  },
+  "enfOptTags": {
+    "message": "Tags: "
+  },
+  "enfOptAddMsgTag": {
+    "message": "Add message tags to a note. Following tags are excluded:"
+  },
+  "enfOptMetaRemark": {
+    "message": "NOTE: @, # and ! in title, notebook and tags are replaced by _."
+  },
+  "enfOptMemo": {
+    "message": "Memo"
+  },
+  "enfOptAddHeader": {
+    "message": "Add header text"
+  },
+  "enfOptUseHTML": {
+    "message": "Use HTML tags"
+  },
+  "enfOptAddFooter": {
+    "message": "Add footer text"
+  },
+  "enfOptMailLink": {
+    "message": "Provide mailto link to email address"
+  },
+  "enfOptAttachTitle": {
+    "message": "Attachments"
+  },
+  "enfOptHasAttach": {
+    "message": "When a message has attachments:"
+  },
+  "enfOptFwdAll": {
+    "message": "Forward all"
+  },
+  "enfOptRemoveAll": {
+    "message": "Remove all"
+  },
+  "enfOptRemoveOr": {
+    "message": "Remove ones matched with at least one of the following filter conditions"
+  },
+  "enfOptRemoveAnd": {
+    "message": "Remove ones matched with all of the following filter conditions"
+  },
+  "enfOptFilterCond": {
+    "message": "Filter conditions:"
+  },
+  "enfOptAttachExt": {
+    "message": "Extensions: "
+  },
+  "enfOptAttachSize": {
+    "message": "Size: "
+  },
+  "enfOptAttachSizeMB": {
+    "message": "MB (0 MB means disabled)"
+  },
+  "enfOptAttachRemark": {
+    "message": "NOTE: Detached attachments are not forwarded."
+  },
+  "enfOptServiceName": {
+    "message": "Service name: "
+  },
+  "enfOptAddress": {
+    "message": "Address: "
+  },
+  "enfOptChooseIdentity": {
+    "message": "(Choose identity)"
+  },
+  "enfOptTips": {
+    "message": "Tips"
+  },
+  "enfOptMetaChar": {
+    "message": "Meta characters"
+  },
+  "enfOptMetaDesc": {
+    "message": "Following meta characters are available for note title, notebook, tags and memo."
+  },
+  "enfOptChar": {
+    "message": "Character"
+  },
+  "enfOptDesc": {
+    "message": "Description"
+  },
+  "enfOptMeta_LS": {
+    "message": "%S"
+  },
+  "enfOptSubject": {
+    "message": "Subject"
+  },
+  "enfOptMeta_LF": {
+    "message": "%F"
+  },
+  "enfOptFolderName": {
+    "message": "Folder name"
+  },
+  "enfOptMeta_LN": {
+    "message": "%N"
+  },
+  "enfOptAccountName": {
+    "message": "Account name"
+  },
+  "enfOptMeta_LA": {
+    "message": "%A"
+  },
+  "enfOptSender": {
+    "message": "Sender"
+  },
+  "enfOptMeta_LT": {
+    "message": "%T"
+  },
+  "enfOptTo": {
+    "message": "To"
+  },
+  "enfOptMeta_LC": {
+    "message": "%C"
+  },
+  "enfOptCc": {
+    "message": "Cc"
+  },
+  "enfOptMeta_a": {
+    "message": "%a"
+  },
+  "enfOptSenderName": {
+    "message": "Sender name"
+  },
+  "enfOptMeta_t": {
+    "message": "%t"
+  },
+  "enfOptToNames": {
+    "message": "To names"
+  },
+  "enfOptMeta_c": {
+    "message": "%c"
+  },
+  "enfOptCcNames": {
+    "message": "Cc names"
+  },
+  "enfOptMeta_LY": {
+    "message": "%Y"
+  },
+  "enfOptSentYear": {
+    "message": "Sent year"
+  },
+  "enfOptMeta_LM": {
+    "message": "%M"
+  },
+  "enfOptSentMonth": {
+    "message": "Sent month"
+  },
+  "enfOptMeta_LD": {
+    "message": "%D"
+  },
+  "enfOptSentDate": {
+    "message": "Sent date"
+  },
+  "enfOptMeta_h": {
+    "message": "%h"
+  },
+  "enfOptSentHours": {
+    "message": "Sent hours"
+  },
+  "enfOptMeta_m": {
+    "message": "%m"
+  },
+  "enfOptSentMin": {
+    "message": "Sent minutes"
+  },
+  "enfOptMeta_s": {
+    "message": "%s"
+  },
+  "enfOptSentSec": {
+    "message": "Sent seconds"
+  },
+  "enfOptMeta_LR": {
+    "message": "%R"
+  },
+  "enfOptRemovedAttach": {
+    "message": "Removed attachments"
+  },
+  "enfOptMeta_r": {
+    "message": "%r"
+  },
+  "enfOptFwdAttach": {
+    "message": "Forwarded attachments"
+  },
+  
+  //compose popup
+  "enfCmpPopupNoteInfo": {
+    "message": "Note Information"
+  },
+  "enfCmpPopupFillFld": {
+    "message": "Fill fields based on the selected message: "
+  },
+  "enfCmpPopupFillFldBtn": {
+    "message": "Fill"
+  },
+  "enfCmpPopupService": {
+    "message": "Service"
+  },
+  "enfCmpPopupServiceEn": {
+    "message": "Evernote"
+  },
+  "enfCmpPopupServiceOn": {
+    "message": "OneNote"
+  },
+  "enfCmpPopupTo": {
+    "message": "To"
+  },
+  "enfCmpPopupNoteTitle": {
+    "message": "Note Title"
+  },
+  "enfCmpPopupAppend": {
+    "message": "Append"
+  },
+  "enfCmpPopupNotebook": {
+    "message": "Notebook"
+  },
+  "enfCmpPopupReminder": {
+    "message": "Reminder"
+  },
+  "enfCmpPopupNotification": {
+    "message": "Notification"
+  },
+  "enfCmpPopupTags": {
+    "message": "Tags"
+  },
+  "enfCmpPopupUpdate": {
+    "message": "Update"
+  },
+  "enfCmpPopupCancel": {
+    "message": "Cancel"
+  }
+}

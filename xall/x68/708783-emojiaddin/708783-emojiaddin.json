@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12353/12353367.png?modified=1525268440"
         }
     ],
-    "average_daily_users": 16735,
+    "average_daily_users": 17360,
     "categories": {
         "thunderbird": [
             "chat",
@@ -19,30 +19,32 @@
     "contributions_url": null,
     "created": "2016-06-10T14:12:09Z",
     "current_version": {
-        "id": 2473911,
+        "id": 2474137,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/emojiaddin/versions/2473911",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/emojiaddin/versions/2474137",
         "files": [
             {
-                "id": 1017073,
-                "created": "2020-07-10T16:58:25Z",
-                "hash": "sha256:65c672251d5f2cc483e00393770fcb1b5111dd6ed5ae883e83ce722a29077200",
-                "is_restart_required": true,
+                "id": 1017299,
+                "created": "2020-08-25T14:33:01Z",
+                "hash": "sha256:04f17e31cddee43a1ba8f981a4738f4ea47847be64678e8239c0eff2f28975da",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 14464187,
+                "size": 14576828,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017073/emoji-1.68.4-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017299/emoji-1.78.5-tb.xpi?src=",
+                "permissions": [
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 22,
             "name": {
@@ -74,11 +76,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "- Add emoji sidebar to chat"
+            "en-US": "Updated for Thunderbird 78 and Unicode 13.0"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/emojiaddin/versions/1.68.4",
-        "version": "1.68.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/emojiaddin/versions/1.78.5",
+        "version": "1.78.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -103,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-16T12:44:34Z",
+    "last_updated": "2020-08-26T15:30:56Z",
     "name": {
         "en-US": "Emoji",
         "de": "Emoji"
@@ -126,7 +128,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.28127,
+        "bayesian_average": 4.28125,
         "count": 31,
         "average": 4.3226,
         "text_count": 31
@@ -154,10 +156,10 @@
     "weekly_downloads": 488,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-02T11:11:48Z"
         }

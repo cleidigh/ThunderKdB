@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/REC-html401/loose.dtd">
+<!-- sv_SE help.html -->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Hjälp med URL Link</title>
+  </head>
+  <body>
+    <h2><img src="../../icons/urllink-48.png" alt="logo">&nbsp;&nbsp;URL Link</h2>
+
+    <h3>Användning</h3>
+    <p>
+    Markera ett litet stycke text på en webbsida, i en textruta (webbformulär) eller e-brev, och
+    högerklicka.
+    <ul>
+      <li>
+      Om texten ser ut som en URL, kan du öppna den direkt i samma fönster eller i
+      en flik via alternativet “Öppna markering”.
+      </li>
+      <li>
+      Om texten <i>inte</i> ser ut som en länk, kommer du att få en undermeny som
+      låter den behandlas som en länk i alla fall, eller som först utför någon
+      anpassningsbar konvertering (<i>t.ex.</i> lägger till “www.” och “.se”).
+      </li>
+      <li>
+      Under Inställningar kan du anpassa undermenyn som dyker upp. Du kan
+      till exempel lägga till egna avskiljare med poster som endast består av
+      bindestreck: <tt>"--"</tt>.
+      </li>
+      <li>
+      Anpassade menyposter kan innehålla vilken URL som helst, oavsett längd,
+      där den första asterisken '*' ersätts av markeringen.  Du kan ange ett namn
+      på posten före ett vertikalstreck '|' för att korta ner det som syns i menyn:<br>
+      <tt>"Kort namn|http://www.ettmycketlångtnamn.se/q=*"</tt>.
+      </li>
+      <li>
+      I Firefox kan du trycka på &lt;Skift&gt; när du väljer 'Öppna' för att öppna länken
+      i ett nytt fönster istället för att använda det aktuella fönstret.
+      </li>
+      <li>
+      Du kan genom en inställning välja om URL Link skall placera sina
+      alternativ nära toppen eller botten av standardsnabbmenyn.
+      </li>
+    </ul>
+
+    <h3>Funktioner</h3>
+    <ul>
+      <li>
+      URL Link är ett litet Firefox- och Thunderbird-tillägg som låter dig
+      markera en icke-URL i ett e-brev/RSS-meddelande eller på en webbsida,
+      och öppna den i ett webbläsarfönster.
+      </li>
+
+      <li>
+      I e-brev fogar det samman länkar som har brutits sönder på flera
+      ställen, och det ersätter också mellanslag med URL-teckenkoden %20
+      så att du kan följa e-postade `file:'-nätverkslänkar (vilka auto-
+      matiskt identifieras från Windows X:- eller UNC-nätverksreferenser).
+      </li>
+
+      <li>
+      Också på webbplatser låter tillägget dig markera textuella länkar/URL:er på webbsidor
+      eller i redigeringsrutor, och följa dem som om de var riktiga länkar.  Det kommer
+      alltid att låta dig följa länkar, men även analysera mailto:-länkar.
+      </li>
+
+      <li>
+      URL Link plockar isär `mailto:'-länkar (exempelvis kan den konvertera
+      mailto:vemsomhelst@enwebbplats.se till http://www.enwebbplats.se),
+      så att du kan besöka en närbesläktad webbplats.
+      </li>
+
+      <li>
+      Tillägget kan `följa' javascript:-länkar som annars skulle ge upphov till ett
+      popup-fönster (t.ex. http://www.kelkoo.co.uk/ - fast de har precis ändrat på några
+      av sina länkar så att URL Link misslyckas :-(.  Jag hoppas att kunna ta itu med det
+      efter att version 2.0 har släppts).
+      </li>
+    </ul>
+
+    <h3>Anpassningsbara sök och ersätt-funktioner</h3>
+    <p>
+    Anpassade sök och ersätt-funktioner kan tillämpas på markeringen.  Standard-
+    inställningarna är två värden som fanns i tidigare versioner av URL Link
+    (för Thunderbird) och som nu kan utökas eller ersättas.  Ersättningen
+    utförs efter att de inledande &amp; avslutande skräptecknen har blivit
+    borttagna, och efter att alla omvända snedstreck har konverterats till
+    vanliga snedstreck.
+    <p>
+    Formatet för posterna under fliken “Redigera Sök &amp; Ersätt-strängar” är
+    “sökningsRegExp||Ersättning||RegExpFlaggor” (RegExp står för reguljära uttryck).
+    Det sista “||” med efterföljande flaggor är valfritt;  den (JavaScript-)flagga
+    som troligast kan vilja använda är 'g' för “global” (eller “ersätt alla”).
+    Ersättningen kan innehålla de vanliga “$n”-sökmönsterreferenserna.
+    <p>
+    <i>Exempel</i>: Du får regelbundet e-brev med Windows-fillänkar som
+    “\\server\deladefiler\fil”.  Men du sitter vid en Linux-dator med Windows
+    delade filer mappade till “/mnt/smb/användarnamn/deladefiler”.  Då lägger
+    du till en post i slutet av listan (märk att omvända snedstreck redan har
+    konverterats och att standardposterna konverterar “//server/deladefiler”
+    till “file:///server/deladefiler”) i formatet:
+    “file:///server/deladefiler||file:///mnt/smb/användarnamn/deladefiler”.
+    <p>
+    Om du behöver felsöka dina uttryck, lägg till URL Links särskilda RegExp-
+    flagga “D”, som i: ‘från||till||D’.  Då kommer URL Link att öppna en ruta
+    som talar om vad ditt uttryck är (“Konvertering:”), vad markeringen är för
+    tillfället (“Från:”) och vad uttrycket har gjort med markeringen (“Till:”).
+
+    <h3>Framtida förändringar</h3>
+    <ul>
+      <li>
+      Utöka de anpassningsbara sök och ersätt-funktionerna när tillägget är
+      stadigt nog att också tillåta slumpmässiga JavaScript-koder att köras
+	  över markeringen.
+      </li>
+    </ul>
+
+    <h3>Kontaktuppgifter</h3>
+    <ul>
+      <li>
+      URL Links <a href="https://addons.mozilla.org/en-GB/firefox/addon/url-link/">officiella tilläggssida</a>.
+      </li>
+      <li>
+      <a href="mailto:mozilla@fnxweb.com">E-posta författaren</a>.
+      </li>
+    </ul>
+
+    <h3>Licens</h3>
+    <p>
+    Den här källkoden är, liksom Mozilla-källkoden, licensierad under en
+    disjunktiv trippellicens som låter dig välja en av de följande tre
+    uppsättningarna av licensvillkor för fri programvara/öppen källkod:
+    </p>
+    <ul>
+      <li><a href="MPL-1.1.html">Mozilla Public License (MPL), version 1.1</a> eller senare</li>
+      <li><a href="http://www.gnu.org/licenses/gpl-2.0.html">GNU General Public License (GPL), version 2.0</a> eller senare</li>
+      <li><a href="http://www.gnu.org/licenses/lgpl-2.1.html">GNU Lesser General Public License (LGPL), version 2.1</a> eller senare</li>
+    </ul>
+
+    <p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+      src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01
+      Transitional" height="31" width="88"></a>
+    </p>
+  </body>
+</html>

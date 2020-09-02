@@ -12,14 +12,29 @@
 
 <body>
   <div class="popup-page">
-    <form id="taglist" name="taglist">
+    <form id="taglist" name="taglist" class="checkbox-hidden">
       <label id="nomsg" l10n-tag="tpupNoMessage"></label>
       <div id="tagsArea">
-        <input type="text" name="search" l10n-ph-tag="tpupSearchTags"><br>
-        <input type="checkbox" name="selall">
-        <label l10n-tag="tpupSelectAll"></label>
-        <br>
+        <table>
+          <tbody>
+            <tr>
+              <td><label l10n-tag="tpupCategory"></label></td>
+              <td><select name="categories" id="categories" class="input-area">
+                </select></td>
+            </tr>
+            <tr>
+              <td><label l10n-tag="tpupSearch"></label></td>
+              <td><input type="text" name="search" l10n-ph-tag="tpupSearchTags" class="input-area"></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <input type="checkbox" name="selall">
+          <label l10n-tag="tpupSelectAll"></label>
+        </p>
         <hr color="silver">
+        <div id="taglistBody">
+        </div>
       </div>
     </form>
   </div>

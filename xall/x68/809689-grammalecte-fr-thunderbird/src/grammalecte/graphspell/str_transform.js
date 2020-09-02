@@ -6,10 +6,9 @@
 
 "use strict";
 
+
 if (typeof(process) !== 'undefined') {
     var char_player = require("./char_player.js");
-} else if (typeof(require) !== 'undefined') {
-    var char_player = require("resource://grammalecte/graphspell/char_player.js");
 }
 
 

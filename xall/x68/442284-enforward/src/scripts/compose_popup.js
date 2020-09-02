@@ -1,4 +1,5 @@
 async function init() {
+  translate();
   document.getElementById("service").addEventListener("change", ()=>{switchService(false);});
   document.getElementById("append").addEventListener("change", appendSwitched);
   document.getElementById("okButton").addEventListener("click", updateCompFields);

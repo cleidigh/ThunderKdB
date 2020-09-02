@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 129,
+    "average_daily_users": 135,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,30 +18,34 @@
     "contributions_url": null,
     "created": "2016-10-30T22:15:15Z",
     "current_version": {
-        "id": 2472181,
+        "id": 2474147,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/logout/versions/2472181",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/logout/versions/2474147",
         "files": [
             {
-                "id": 1015249,
-                "created": "2019-08-30T12:00:29Z",
-                "hash": "sha256:4dd502242a95799e99576227ef336c78134be1c2f068ae6a5ede0facc76fd032",
-                "is_restart_required": true,
+                "id": 1017309,
+                "created": "2020-08-27T20:36:02Z",
+                "hash": "sha256:2af479319d70cfc689022aee75c67909a755d6ac9a3d99ebc5ccbbf7e5172bec",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 2594,
+                "size": 14151,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015249/logout-2.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017309/logout-2.1-tb.xpi?src=",
+                "permissions": [
+                    "menus",
+                    "accountsFolders",
+                    "accountsRead"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -72,8 +76,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/logout/versions/2.0",
-        "version": "2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/logout/versions/2.1",
+        "version": "2.1"
     },
     "default_locale": "de",
     "description": {
@@ -84,7 +88,9 @@
     "guid": "logout@heilbit.de",
     "has_eula": false,
     "has_privacy_policy": false,
-    "homepage": null,
+    "homepage": {
+        "de": "https://github.com/oheil/logout"
+    },
     "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
     "icons": {
         "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
@@ -94,7 +100,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-08-30T19:07:42Z",
+    "last_updated": "2020-08-28T06:45:32Z",
     "name": {
         "de": "Logout"
     },
@@ -146,7 +152,9 @@
     "support_email": {
         "de": "thunderbird-logout@heilbit.de"
     },
-    "support_url": null,
+    "support_url": {
+        "de": "https://github.com/oheil/logout"
+    },
     "tags": [
         "firefox57",
         "log off",
@@ -159,10 +167,10 @@
     "weekly_downloads": 16,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-26T08:31:58Z"
         }

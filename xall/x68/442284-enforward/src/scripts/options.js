@@ -4,6 +4,7 @@ var tagListsDone = false;
 var idListsDone = false;
 
 function init() {
+  translate();
   gENFPreferences.init();
   defaultPrefs = gENFPreferences.getDefaultPrefs();
   loadPrefs();

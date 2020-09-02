@@ -70,11 +70,13 @@ function buildAddressBooksBox(boxId, addressbooks) {
   for (let id in addressbooks) {
     let name = addressbooks[id];
     let checkbox = document.createElement("input");
-    checkbox.setAttribute("id", id);
+    checkbox.setAttribute("id", boxId+":"+id);
     checkbox.setAttribute("name", boxId);
     checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("abId", id);
     let label = document.createElement("label");
     label.textContent = name;
+    label.setAttribute("for", boxId+":"+id);
     let br = document.createElement("br");
     box.appendChild(checkbox);
     box.appendChild(label);
@@ -260,7 +262,7 @@ async function initPrefs() {
   let checks = document.cas_form.addrCheckAbs;
   for (let i=0; i<checks.length; i++) {
     let check = checks[i];
-    check.checked = (prefs["addrCheckAbs"].indexOf(check.id) != -1);
+    check.checked = (prefs["addrCheckAbs"].indexOf(check.getAttribute("abId")) != -1);
     check.addEventListener("change", savePrefs);
   }
 
@@ -268,7 +270,7 @@ async function initPrefs() {
   checks = document.cas_form.recNameAbs;
   for (let i=0; i<checks.length; i++) {
     let check = checks[i];
-    check.checked = (prefs["recNameAbs"].indexOf(check.id) != -1);
+    check.checked = (prefs["recNameAbs"].indexOf(check.getAttribute("abId")) != -1);
     check.addEventListener("change", savePrefs);
   }
 }
@@ -382,7 +384,7 @@ async function savePrefs() {
   for (let i=0; i<checks.length; i++) {
     let check = checks[i];
     if (check.checked) {
-      prefs["addrCheckAbs"].push(check.id);
+      prefs["addrCheckAbs"].push(check.getAttribute("abId"));
     }
   }
 
@@ -392,7 +394,7 @@ async function savePrefs() {
   for (let i=0; i<checks.length; i++) {
     let check = checks[i];
     if (check.checked) {
-      prefs["recNameAbs"].push(check.id);
+      prefs["recNameAbs"].push(check.getAttribute("abId"));
     }
   }
 

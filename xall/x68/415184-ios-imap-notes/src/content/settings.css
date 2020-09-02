@@ -1,0 +1,23 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+html|input[type="number"]#maxFSchars {
+  width: 6.4em;
+  margin: 2px;
+}
+
+html|input[type="number"]::-moz-number-spin-box {
+  margin: -3px -7px -5px 5px;
+}
+
+@media (-moz-os-version: windows-win7),
+       (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win10) {
+  html|input[type="number"]::-moz-number-spin-box {
+    margin: -2px -2px -2px 2px;
+  }
+  html|input[type="number"]::-moz-number-spin-up,
+  html|input[type="number"]::-moz-number-spin-down {
+    min-height: 10px;
+  }
+}

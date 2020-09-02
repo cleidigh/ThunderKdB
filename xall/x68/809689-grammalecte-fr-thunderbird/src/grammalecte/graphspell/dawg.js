@@ -14,12 +14,6 @@
 
 "use strict";
 
-if(typeof(process) !== 'undefined') {
-    var str_transform = require("./str_transform.js");
-} else if (typeof(require) !== 'undefined') {
-    var str_transform = require("resource://grammalecte/graphspell/str_transform.js");
-}
-
 
 // Map
 /*jslint esversion: 6*/
@@ -77,6 +71,11 @@ if (Map.prototype.grammalecte === undefined) {
     Map.prototype.grammalecte = true;
 }
 
+
+
+if (typeof(process) !== 'undefined') {
+    var str_transform = require("./str_transform.js");
+}
 
 
 class DAWG {

@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/244.png?modified=1510640146"
         }
     ],
-    "average_daily_users": 2252,
+    "average_daily_users": 2317,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,56 +18,35 @@
     "contributions_url": "",
     "created": "2018-09-23T14:53:14Z",
     "current_version": {
-        "id": 2472817,
+        "id": 2474164,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "68.9.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/url-link/versions/2472817",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/url-link/versions/2474164",
         "files": [
             {
-                "id": 1015921,
-                "created": "2019-11-02T17:22:24Z",
-                "hash": "sha256:632c9348742b3c28e91e06a136a562dfea62430b6af0de0b72abe5fa0ef0a17c",
-                "is_restart_required": true,
+                "id": 1017326,
+                "created": "2020-08-31T10:14:33Z",
+                "hash": "sha256:6800200f5e3035ed775d528c246a9d1241891a9ef69a95c3c473ced7e0b4e4a4",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
-                "platform": "linux",
-                "size": 140837,
+                "platform": "all",
+                "size": 109364,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015921/url_link-2.6.2-tb-linux.xpi?src=",
-                "permissions": []
-            },
-            {
-                "id": 1015922,
-                "created": "2019-11-02T17:22:24Z",
-                "hash": "sha256:632c9348742b3c28e91e06a136a562dfea62430b6af0de0b72abe5fa0ef0a17c",
-                "is_restart_required": true,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "mac",
-                "size": 140837,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015922/url_link-2.6.2-tb-mac.xpi?src=",
-                "permissions": []
-            },
-            {
-                "id": 1015923,
-                "created": "2019-11-02T17:22:24Z",
-                "hash": "sha256:632c9348742b3c28e91e06a136a562dfea62430b6af0de0b72abe5fa0ef0a17c",
-                "is_restart_required": true,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "windows",
-                "size": 140837,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015923/url_link-2.6.2-tb-windows.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017326/url_link-3.5beta1-tb.xpi?src=",
+                "permissions": [
+                    "clipboardWrite",
+                    "menus",
+                    "storage",
+                    "tabs"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -77,12 +56,12 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/url-link/versions/2.6.2",
-        "version": "2.6.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/url-link/versions/3.5beta1",
+        "version": "3.5beta1"
     },
     "default_locale": "en-GB",
     "description": {
-        "en-GB": "<b>NOTE</b> - I have produced an emergency interim release (<i>2.6+</i>) to try to support Thundebird 68+, which has broken support for a number of add-ons, including URL Link.  Localisation may not be working, but 2.6.1 should now allow preference editing again. I'm looking into trying a better long-term solution, but this could take a while, I'm afraid <i>[27-Oct-2019]</i>.\n\nThis is the Thunderbird fork now that the latest Firefox version (<a href=\"https://addons.mozilla.org/en-GB/firefox/addon/url-link/\" rel=\"nofollow\">https://addons.mozilla.org/en-GB/firefox/addon/url-link/</a>) has been converted to WebExtensions — please report any issues to me or via a bug on GitHub.\n\n\nFor emails, it reconnects links in emails which have been broken across several lines, and also replaces spaces with the URL character code %20 so that you may follow emailed network 'file:' links (which it auto-detects from Windows \"X:\" or \\\\servdir references).\n\nFor web pages, it also allows you to select textual links/URLs in web pages or edit boxes, and follow them as if they were real links.  It will also let you use actual links, and analyses mailto: links as well.\n\nIt analyses 'mailto:' links (converts, e.g., <a href=\"mailto:someone@somesite.com\">mailto:someone@somesite.com</a> to <a href=\"http://www.somesite.com\" rel=\"nofollow\">http://www.somesite.com</a>) and can also 'follow' javascript: links that would otherwise generate a pop-up (e.g., <a href=\"http://www.kelkoo.co.uk/)\" rel=\"nofollow\">http://www.kelkoo.co.uk/)</a>.\n\nThere are currently more translations than I care to keep listing here (thanks to the guys at <a href=\"http://www.babelzilla.org/)!\" rel=\"nofollow\">http://www.babelzilla.org/)!</a>  Unfortunately, Babelzilla has retired due to the new format of Firefox add-ons. If you would like to provide new translations, or fix existing ones, please email me, add them to a feature-request issue on GitHub, or add them in a GitHub fork for me to pull in.\n\n\nURL Link has a preferences dialogue allowing customisation of the 'not a proper URL' sub-menu which converts, e.g., \"sometext\" to \"<a href=\"http://www.sometext.com\" rel=\"nofollow\">www.sometext.com</a>\", so that locale-specific conversions can be added (like 'www.*.co.uk').\n\nNicknames can be applied to the entries (such that the nickname appears in the menu, not the conversion string) by using a bar '|', e.g.:\n\n\"In Google|<a href=\"http://www.google.com/search?q=*&amp;source-id=Mozilla%20Firefox&amp;start=0\" rel=\"nofollow\">http://www.google.com/search?q=*&amp;source-id=Mozilla%20Firefox&amp;start=0</a>\"\n\nIt also allows separators to be added to the custom menu by using entries made up of hyphens, e.g. \"--\".\n\nHold down <b>Shift</b> when opening a link in the current window to instead open in a new window.\n\nEither hold down <b>Control</b> when opening a link, or add <b>|p</b> to the end of a custom menu entry to make that entry always open in  a private window.\n\nYou can also set up custom search and replace strings (e.g., convert Windows driver letter to some file:///mnt/smb/ path for Linux users).\n\nIf you have problems with file: or network (\\\\server\\share) links, especially in Thunderbird emails, see the following page:\n\n<a href=\"http://kb.mozillazine.org/Links_to_local_pages_do_not_work#Firefox_1.5.2C_SeaMonkey_1.0_and_newer\" rel=\"nofollow\">http://kb.mozillazine.org/Links_to_local_pages_do_not_work#Firefox_1.5.2C_SeaMonkey_1.0_and_newer</a>"
+        "en-GB": "<b>NOTE</b> - I have released a preliminary WebExtentions version to support Thundebird 78+ (also works with 68.10+);  I'm afraid I couldn't migrate preferences from the legacy implementation, so you'll have to set those up again if you had anything custom set up (I also recommend setting <i>prefer new window</i>).  You should find the old values under your Thunderbird profile in <b>prefs.js</b> by searching for <b>urllink</b>. <i>[27-Oct-2019]</i>.\n\nPlease report any issues to me or via a bug on GitHub (preferably <a href=\"https://github.com/fnxweb/urllink/issues/17\" rel=\"nofollow\">https://github.com/fnxweb/urllink/issues/17</a> for this new release).\n\n\nFor emails, it reconnects links in emails which have been broken across several lines, and also replaces spaces with the URL character code %20 so that you may follow emailed network 'file:' links (which it auto-detects from Windows \"X:\" or \\\\servdir references).\n\nFor web pages, it also allows you to select textual links/URLs in web pages or edit boxes, and follow them as if they were real links.  It will also let you use actual links, and analyses mailto: links as well.\n\nIt analyses 'mailto:' links (converts, e.g., <a href=\"mailto:someone@somesite.com\">mailto:someone@somesite.com</a> to <a href=\"http://www.somesite.com\" rel=\"nofollow\">http://www.somesite.com</a>) and can also 'follow' javascript: links that would otherwise generate a pop-up (e.g., <a href=\"http://www.kelkoo.co.uk/\" rel=\"nofollow\">http://www.kelkoo.co.uk/</a>).\n\nThere are currently more translations than I care to keep listing here (thanks to the guys at <a href=\"http://www.babelzilla.org/)!\" rel=\"nofollow\">http://www.babelzilla.org/)!</a>  Unfortunately, Babelzilla has retired due to the new format of Firefox add-ons. If you would like to provide new translations, or fix existing ones, please email me, add them to a feature-request issue on GitHub, or add them in a GitHub fork for me to pull in.\n\n\nURL Link has a preferences dialogue allowing customisation of the 'not a proper URL' sub-menu which converts, e.g., \"sometext\" to \"<a href=\"http://www.sometext.com\" rel=\"nofollow\">www.sometext.com</a>\", so that locale-specific conversions can be added (like 'www.*.co.uk').\n\nNicknames can be applied to the entries (such that the nickname appears in the menu, not the conversion string) by using a bar '|', e.g.:\n\n\"In Google|<a href=\"http://www.google.com/search?q=*\" rel=\"nofollow\">http://www.google.com/search?q=*</a>&amp;source-id=Mozilla%20Firefox&amp;start=0\"\n\nIt also allows separators to be added to the custom menu by using entries made up of hyphens, e.g. \"--\".\n\nHold down <b>Shift</b> when opening a link in the current window to instead open in a new window.\n\nEither hold down <b>Control</b> when opening a link, or add <b>|p</b> to the end of a custom menu entry to make that entry always open in  a private window.\n\nYou can also set up custom search and replace strings (e.g., convert Windows driver letter to some file:///mnt/smb/ path for Linux users).\n\nIf you have problems with file: or network (\\\\server\\share) links, especially in Thunderbird emails, see the following page:\n\n<a href=\"http://kb.mozillazine.org/Links_to_local_pages_do_not_work#Firefox_1.5.2C_SeaMonkey_1.0_and_newer\" rel=\"nofollow\">http://kb.mozillazine.org/Links_to_local_pages_do_not_work#Firefox_1.5.2C_SeaMonkey_1.0_and_newer</a>"
     },
     "developer_comments": {
         "en-GB": "PLEASE if you have a problem, or wish for a new feature, contact me directly or via GitHub, as I rarely remember to visit this page to check on the comments, so it may take me a while to respond!"
@@ -94,16 +73,16 @@
     "homepage": {
         "en-GB": "https://github.com/fnxweb/urllink"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/986/986300-64.png?modified=3c8e4fc9",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/986/986300-64.png?modified=8d6db138",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/986/986300-32.png?modified=3c8e4fc9",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/986/986300-64.png?modified=3c8e4fc9"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/986/986300-32.png?modified=8d6db138",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/986/986300-64.png?modified=8d6db138"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-08T22:27:06Z",
+    "last_updated": "2020-08-31T20:29:06Z",
     "name": {
         "en-GB": "URL Link"
     },
@@ -141,10 +120,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-09-23T14:53:14Z"
         }

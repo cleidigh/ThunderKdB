@@ -7,10 +7,86 @@
   margin-left: 1.5em;
 }
 
-.box-visible{
+.box-visible {
   visibility: visible;
 }
 
-.box-collapse{
-  display: none;
+.box-collapse {
+  display: none !important;
 }
+
+.box-hidden {
+  visibility: hidden;
+}
+
+.titleline-simple {
+  border-style: solid;
+  border-color: silver;
+  border-width: 0px 0px 2px 0px;
+  /*
+  margin: 10px 10px 7px 0px;
+  padding: 3px 10px;
+  */
+}
+
+div.tagselect {
+  border: solid thin gray;
+  background-color: white;
+/*  height: 9.5em; */
+/*  width: 15em; */
+  overflow: auto;
+}
+
+.tagsearch-left {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  width: 175px;
+  height: 250px;
+}
+
+.tagselect-left {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.tagselect-right {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+input.tagfilter {
+  width: 15em;
+}
+
+.wrapper-category {
+  display: grid;
+  grid-template-columns: 430px 60px;
+  grid-template-rows: 120px;
+}
+
+.wrapper-cateditor {
+  display: grid;
+  grid-template-columns: 175px 70px 175px;
+  grid-template-rows: 25px 250px;
+}
+
+.button-fix-side {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.button-fix-bottom {
+  width: 5em;
+  margin-top: 5px;
+}
+
+.button-fix-center {
+  width: 90%;
+  margin: 0px 5px 5px 5px;
+}
+
+.button-fix-center-top {
+  width: 90%;
+  margin: 95px 5px 5px 5px;
+}
+
