@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Priority Switcher</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
+  <script src="../scripts/l10n.js" defer></script>
+  <script src="../scripts/popup.js" defer></script>
+</head>
+
+<body>
+  <div class="popup-page">
+    <form id="priolist" name="priolist">
+      <p>
+        <input type="radio" name="priority" value="1" id="highest"><label for="highest" l10n-tag="pswHighest">Highest</label>
+      </p>
+      <p>
+        <input type="radio" name="priority" value="2" id="high"><label for="high" l10n-tag="pswHigh">High</label>
+      </p>
+      <p>
+        <input type="radio" name="priority" value="3" id="normal"><label for="normal" l10n-tag="pswNormal">Normal</label>
+      </p>
+      <p>
+        <input type="radio" name="priority" value="4" id="low"><label for="low" l10n-tag="pswLow">Low</label>
+      </p>
+      <p>
+        <input type="radio" name="priority" value="5" id="lowest"><label for="lowest" l10n-tag="pswLowest">Lowest</label>
+      </p>
+      <hr color="silver">
+      <p>
+        <input type="radio" name="priority" value="6" id="reset"><label for="reset" l10n-tag="pswReset">Reset</label>
+      </p>
+      <p>
+        <input type="radio" name="priority" value="7" id="rewrite"><label for="rewrite" l10n-tag="pswRewrite">Rewrite Source</label>
+      </p>
+      <div id="deleteArea" class="box-collapse">
+        <hr color="silver">
+        <p>
+          <input type="radio" name="priority" value="8" id="delete"><label for="delete" l10n-tag="pswDelete">Delete with Priority Check</label>
+        </p>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

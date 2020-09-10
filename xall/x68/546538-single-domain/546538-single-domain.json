@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 263,
+    "average_daily_users": 278,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,28 +18,31 @@
     "contributions_url": "",
     "created": "2014-09-26T09:27:08Z",
     "current_version": {
-        "id": 2473629,
+        "id": 2474212,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "66.0"
+                "min": "76.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/single-domain/versions/2473629",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/single-domain/versions/2474212",
         "files": [
             {
-                "id": 1016778,
-                "created": "2020-04-23T08:15:28Z",
-                "hash": "sha256:8d322527b0ce3d43b86c45f71ebc47311400d66c27f314a626d689e3e1768f2c",
+                "id": 1017374,
+                "created": "2020-09-08T11:29:27Z",
+                "hash": "sha256:7c87d615f7e692dfa66e3b3c6a3bfc0c1be474394d238e480321ac7be945018d",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 39689,
+                "size": 23676,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016778/single_domain-3.3.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017374/single_domain-3.8-tb.xpi?src=",
                 "permissions": [
-                    "storage"
+                    "storage",
+                    "compose",
+                    "addressBooks",
+                    "accountsRead"
                 ]
             }
         ],
@@ -52,11 +55,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This is to fix the bug on the last one when dealing with commas or semicolons in the name of recipients"
+            "en-US": "This version takes account of past user requests:\n\n1. Now if users put in multiple domains separated by spaces then these domains will be taken together.\nIf the Domain preference were \"<a href=\"http://gmail.com\" rel=\"nofollow\">gmail.com</a> <a href=\"http://protonmail.com\" rel=\"nofollow\">protonmail.com</a>\" (without speech marks) then any emails with only these domains would not be subject to a warning but any email with either or both and a third domain would give rise to a warning.\n\n2. If users put a @at the beginning of the Domain preference such as @gmail.com then emails sent to admin@lists.gmail.com would give rise to a warning whereas in the past this email would have gone without warning."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/single-domain/versions/3.3.1",
-        "version": "3.3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/single-domain/versions/3.8",
+        "version": "3.8"
     },
     "default_locale": "en-US",
     "description": {
@@ -69,16 +72,16 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": null,
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/546/546538-64.png?modified=1586267459",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/546/546538-64.png?modified=1599228484",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/546/546538-32.png?modified=1586267459",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/546/546538-64.png?modified=1586267459"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/546/546538-32.png?modified=1599228484",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/546/546538-64.png?modified=1599228484"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-23T15:10:17Z",
+    "last_updated": "2020-09-08T13:26:31Z",
     "name": {
         "fr": "Single Domain",
         "en-US": "Single Domain"
@@ -93,12 +96,28 @@
                 382,
                 166
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/200/200896.png?modified=1530209171",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/200/200896.png?modified=1599228484",
             "thumbnail_size": [
                 320,
                 139
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/200/200896.png?modified=1530209171"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/200/200896.png?modified=1599228484"
+        },
+        {
+            "id": 206132,
+            "caption": {
+                "en-US": "The dialog that will appear on version 3.7"
+            },
+            "image_size": [
+                610,
+                381
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206132.png?modified=1599228485",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206132.png?modified=1599228485"
         }
     ],
     "public_stats": false,

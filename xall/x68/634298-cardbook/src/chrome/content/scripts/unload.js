@@ -43,7 +43,7 @@ let JSMs = [
 	"chrome://cardbook/content/cardbookWebDAV.js",
 	"chrome://cardbook/content/cardbookWindowUtils.js",
 	"chrome://cardbook/content/collected/ovl_collected.js",
-	"chrome://cardbook/content/commandLine/cmd-line-handler.js",
+	// "chrome://cardbook/content/commandLine/cmd-line-handler.js",
 	"chrome://cardbook/content/complexSearch/cardbookComplexSearch.js",
 	"chrome://cardbook/content/configuration/wdw_cardbookConfiguration.js",
 	"chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddCustomField.js",

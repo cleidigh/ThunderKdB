@@ -36,7 +36,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (toolbox) {
 				toolbox.customizeDone = function(aEvent) {
 					MailToolboxCustomizeDone(aEvent, "CustomizeCardBookToolbar");
-					wdw_cardbook.setAccountsTreeMenulist();
+					cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.cardbookToolbar.currentset", document.getElementById("cardbook-toolbar").getAttribute("currentset"));
+        			wdw_cardbook.setAccountsTreeMenulist();
 				};
 				toolbox.setAttribute('toolbarHighlight','true');
 			}
@@ -212,16 +213,18 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 		
 		setSearchRemoteHboxOnSyncFinished: function (aDirPrefId) {
-			var myTree = document.getElementById('accountsOrCatsTree');
-			var mySelectedIndex = myTree.currentIndex;
-			if (mySelectedIndex != -1) {
-				var mySelectedDirPrefId = myTree.view.getCellText(mySelectedIndex, myTree.columns.getNamedColumn('accountRoot'));
-			} else {
-				return;
-			}
-			if (mySelectedDirPrefId == aDirPrefId) {
-				if (cardbookRepository.cardbookDisplayCards[aDirPrefId].cards.length != 0) {
-					document.getElementById('searchRemoteTextbox').value = cardbookRepository.cardbookPreferences.getLastSearch(aDirPrefId);
+			if (document.getElementById('accountsOrCatsTree')) {
+				var myTree = document.getElementById('accountsOrCatsTree');
+				var mySelectedIndex = myTree.currentIndex;
+				if (mySelectedIndex != -1) {
+					var mySelectedDirPrefId = myTree.view.getCellText(mySelectedIndex, myTree.columns.getNamedColumn('accountRoot'));
+				} else {
+					return;
+				}
+				if (mySelectedDirPrefId == aDirPrefId) {
+					if (cardbookRepository.cardbookDisplayCards[aDirPrefId].cards.length != 0) {
+						document.getElementById('searchRemoteTextbox').value = cardbookRepository.cardbookPreferences.getLastSearch(aDirPrefId);
+					}
 				}
 			}
 		},
@@ -1752,7 +1755,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		setSyncControl: function () {
 			if (wdw_cardbook.nIntervId == 0) {
-				
 				wdw_cardbook.nIntervId = setInterval(() => {
                     wdw_cardbook.windowControlShowing();
                 }, 1000);
@@ -2588,7 +2590,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		copyFieldValue: function (aFieldName, aFieldLabel, aFieldIndex, aFieldValue, aFieldAllValue) {
 			var card = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
-			var dateFormat = cardbookRepository.cardbookPreferences.getDateFormat(card.dirPrefId, card.version);
+			var dateFormat = cardbookRepository.getDateFormat(card.dirPrefId, card.version);
 			cardbookRepository.currentCopiedEntryName = aFieldName;
 			cardbookRepository.currentCopiedEntryLabel = aFieldLabel;
 			// events 
@@ -3290,7 +3292,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 	
 		windowControlShowing: function () {
-			if (cardbookRepository.cardbookUtils.getAvailableAccountNumber() === 0) {
+			if (!document.getElementById('accountsOrCatsTree')) {
+				clearInterval(wdw_cardbook.nIntervId);
+				wdw_cardbook.nIntervId=0;
+			} else if (cardbookRepository.cardbookUtils.getAvailableAccountNumber() === 0) {
 				wdw_cardbook.enableOrDisableElement(['cardbookToolbarSyncButton', 'cardbookAccountMenuSyncs'], true);
 				wdw_cardbook.disableCardCreation();
 				wdw_cardbook.disableCardModification();
@@ -3363,8 +3368,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		refreshWindow: function (aParams) {
+			if (!document.getElementById('accountsOrCatsTree')) {
+				return;
 			// no need to refresh cards for others syncing dirprefid
-			if (cardbookRepository.cardbookSearchMode == "SEARCH") {
+			} else if (cardbookRepository.cardbookSearchMode == "SEARCH") {
 				var mySyncCondition = false;
 			} else if (cardbookRepository.cardbookComplexSearchMode == "SEARCH") {
 				var mySyncCondition = true;

@@ -114,6 +114,10 @@ exquilla.messengerComposeOverlay = (function ews_messengerComposeOverlay() {
 
   function handleAttachment(contentType, url, displayName, uri, aIsExternalAttachment)
   {
+    if (!gMessenger) {
+      // compose was closed, so just ignore this attachment.
+      return;
+    }
     log.debug("messengerComposeOverlay.handleAttachment " + displayName);
     UpdateAttachmentBucket(true);
     let attachment = Cc["@mozilla.org/messengercompose/attachment;1"]

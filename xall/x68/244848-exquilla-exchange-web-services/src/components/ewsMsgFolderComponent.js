@@ -1539,7 +1539,6 @@ EwsMsgFolder.prototype = {
             if (this.folderId)
               break; // Success!
             log.warn("Empty folder id, trying to find from parent");
-            nsCOMPtr<nsIMsgFolder> parent;
             let ewsParent = safeGetJS(this.parent, "EwsMsgFolder");
             if (!ewsParent)
               break;
@@ -2388,11 +2387,7 @@ EwsMsgFolder.prototype = {
   getDBFolderInfoAndDB(folderInfoObject)
   {
     let notOpen = !this.databaseOpen;
-    let database;
-    try {
-      database = this.msgDatabase.QueryInterface(Ci.nsIDBChangeAnnouncer);
-      // What to do with out of date database?
-    } catch (e) { log.warn("Error opening database: " + e);}
+    let database = this.msgDatabase.QueryInterface(Ci.nsIDBChangeAnnouncer);
     if (notOpen)
       database.AddListener(this.delegator);
     folderInfoObject.value = database.dBFolderInfo;

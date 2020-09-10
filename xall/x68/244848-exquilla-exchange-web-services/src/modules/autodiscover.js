@@ -603,7 +603,14 @@ EventListener.prototype =
                       .getService(Ci.nsIStringBundleService);
     let cdBundle = bundleSvc.createBundle("chrome://global/locale/commonDialogs.properties");
     let pmBundle = bundleSvc.createBundle("chrome://passwordmgr/locale/passwordmgr.properties");
-    let authenticationRequired = cdBundle.GetStringFromName("PromptPassword2");
+    let brandBundle = bundleSvc.createBundle("chrome://branding/locale/brand.properties");
+    let authenticationRequired;
+    try { // COMPAT for TB 68
+      let brandFullName = brandBundle.GetStringFromName("brandFullName");
+      authenticationRequired = cdBundle.formatStringFromName("PromptPassword3", [brandFullName]);
+    } catch (ex) { // COMPAT for TB 68
+      authenticationRequired = cdBundle.GetStringFromName("PromptPassword2"); // COMPAT for TB 68
+    } // COMPAT for TB 68
     let enterPasswordFor = cdBundle.formatStringFromName("EnterPasswordFor", [domainAndUser, aHostname], 2);
     let rememberPassword = pmBundle.GetStringFromName("rememberPassword");
 
@@ -622,8 +629,15 @@ EventListener.prototype =
       ok: false
     }
     let propBag = objectToPropBag(args);
-    let dialog = Services.ww.openWindow(Services.ww.activeWindow, "chrome://global/content/commonDialog.xul",
+    let dialog;
+    try { /* COMPAT for TB 68 */
+      Services.catMan.getCategoryEntry("Gecko-Content-Viewers", "mozilla.application/cached-xul");
+      dialog = Services.ww.openWindow(Services.ww.activeWindow, "chrome://global/content/commonDialog.xul",
                            "_blank", "centerscreen,chrome,titlebar", propBag);
+    } catch (ex) { /* COMPAT for TB 68 */
+      dialog = Services.ww.openWindow(Services.ww.activeWindow, "chrome://global/content/commonDialog.xhtml",
+                           "_blank", "centerscreen,chrome,titlebar", propBag);
+    } // COMPAT for TB 68
     let self = this;
     dialog.addEventListener("unload", function onUnload(event) {self.onCommonDialogUnload(event);}, false);
     return cancelable;

@@ -1,27 +1,56 @@
 {
   "manifest_version": 2,
-  "name": "Copy Sent to Current",
-  "description": "Allows to (additionally) save a copy of sent messages to the current folder or choose folder on send",
-  "version": "2.0.3",
+  "name": "__MSG_extensionname__",
+  "short_name": "CS2C",
+  "description": "__MSG_extensiondescription__",
+  "version": "3.0",
   "author": "Günter Gersdorf",
   "homepage_url": "https://www.ggbs.de/extensions/CopySent2Current.html",
   "applications": {
     "gecko": {
       
       "id": "copysent2current@ggbs.de",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   },
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://copysent2current/content/options.xul",
-      "open_in_tab": false
+  // also see https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html
+  "experiment_apis": {
+    "cs2c": {
+      "schema": "schema.json",
+      "child": {
+        "scopes": [ "addon_child" ],
+        "paths": [ [ "cs2c" ] ],
+        "script": "cs2c_implementation.js"
+      }
     }
+  },
+  "background": {
+    "scripts": ["cs2c_background.js"]
   },
   "icons": {
     "32": "skin/copyMailIcon.png",
     "48": "skin/copyMailIcon48.png"
-  }
-}
+  },
+  "options_ui": {
+    "page": "cs2c_options.html",
+    //"browser_style": true,
+    "open_in_tab": true
+  },
+  "permissions": [
+    "compose",
+    "tabs",
+    "activeTab",
+    "storage",
+    "accountsRead"
+  ],
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": {
+			"16": "skin/copyMailIcon.png",
+			"48": "skin/copyMailIcon48.png"
+    },
+    "default_title": "__MSG_extensionname__"
+  },
+  "default_locale": "en"
 
+}

@@ -6,22 +6,6 @@ var { MsgHdrToMimeMessage } = ChromeUtils.import(
   "resource:///modules/gloda/MimeMessage.jsm"
 );
 
-/*
-window.addEventListener("load", function(e) {
-  ahtButtonSetIcon.startup();
-}, false);
-window.addEventListener("unload", function(e) {
-  ahtButtonSetIcon.shutdown();
-}, false);
-
-window.addEventListener("load", function(e) {
-  ahtButtonStatus.startup();
-}, false);
-window.addEventListener("unload", function(e) {
-  ahtButtonStatus.shutdown();
-}, false);
-*/
-
 var ahtButtonSetIcon = {
 
   startup: function() {
@@ -145,8 +129,7 @@ var ahtButtonStatus = {
   },
 
   enableButtons: function() {
-    // console.log("AHT ----------------");
-    // console.log("AHT enableButtons");
+    // console.log("AHT: enableButtons");
 
     // we MUST use removeAttribute("disabled")
     // setAttribute to false leads to problems in tabbar-toolbar
@@ -165,8 +148,7 @@ var ahtButtonStatus = {
   },
 
   disableButtons: function() {
-    // console.log("AHT ----------------");
-    // console.log("AHT disableButtons");
+    // console.log("AHT: disableButtons");
 
     let ahtHdrButton = document.getElementById("hdrAHTButton");
     if (ahtHdrButton)
@@ -182,7 +164,7 @@ var ahtButtonStatus = {
   },
 
   changeRemoteContentPopupmenuItem: function() {
-    // console.log("AHT changeRemoteContentPopupmenuItem");
+    // console.log("AHT: changeRemoteContentPopupmenuItem");
 
     // Tb 31, 38, 45, 52, ... popupmenu item has ID "remoteContentOptionAllowForMsg"
 
@@ -202,7 +184,7 @@ var ahtButtonStatus = {
   },
 
   resetRemoteContentPopupmenuItem: function() {
-    // console.log("AHT resetRemoteContentPopupmenuItem");
+    // console.log("AHT: resetRemoteContentPopupmenuItem");
 
     // Tb 31, 38, 45, 52, ... popupmenu item has ID "remoteContentOptionAllowForMsg"
 
@@ -222,10 +204,10 @@ var ahtButtonStatus = {
   },
 
   checkMailForHtmlpart: function() {
-    // console.log("AHT run checkMailForHtmlpart ----------------");
+    // console.log("AHT: run checkMailForHtmlpart ----------------");
     try {
       if (gFolderDisplay.selectedCount != 1) {
-        // console.log("AHT selectedCount != 1");
+        // console.log("AHT: selectedCount != 1");
         ahtButtonStatus.disableButtons();
       } else {
         // get the msg header (to ask for junk status and 'Body: text/html')
@@ -236,7 +218,7 @@ var ahtButtonStatus = {
 
         // if msg is junk or feed or multiple messages are selected disable the ahtButtons
         if ((ahtMsgIsJunk) || (gFolderDisplay.selectedMessageIsFeed)) {
-          // console.log("AHT message is Junk or Feed");
+          // console.log("AHT: message is Junk or Feed");
           ahtButtonStatus.disableButtons();
         } else {
           // First check MsgHdr without decrypting to prevent an additional passphrase dialog in case of PGP/MIME
@@ -244,24 +226,24 @@ var ahtButtonStatus = {
             // multipart/encrypted enables the button for encrypted PGP/MIME messages
             // in this case we don't check for HTML, because the check seems not to be possible for PGP/MIME
             if (aMimeMsg.prettyString().search("multipart/encrypted") != -1) {
-              // console.log("AHT message is PGP/MIME multipart/encrypted");
+              // console.log("AHT: message is PGP/MIME multipart/encrypted");
               ahtButtonStatus.enableButtons();
             } else {
               // search for 'Body: text/html' in MIME parts,
               // it seems this is only working if messages are downloaded for offline reading?
               MsgHdrToMimeMessage(ahtMsgHdr, null, function(aMsgHdr, aMimeMsg) {
-                // console.log("AHT Check for html part ----------------");
-                // console.log("Body: text/html " + aMimeMsg.prettyString().search("Body: text/html"));
-                // console.log("text/html " + aMimeMsg.prettyString().search("text/html"));
-                // console.log("Body: plain/html " + aMimeMsg.prettyString().search("Body: plain/html"));
-                // console.log("plain/html " + aMimeMsg.prettyString().search("plain/html"));
-                // console.log("multipart/alternative " + aMimeMsg.prettyString().search("multipart/alternative"));
-                // console.log("multipart/signed " + aMimeMsg.prettyString().search("multipart/signed"));
-                // console.log("multipart/encrypted " + aMimeMsg.prettyString().search("multipart/encrypted"));
+                // console.log("AHT: Check for html part ----------------");
+                // console.log("AHT: Body: text/html " + aMimeMsg.prettyString().search("Body: text/html"));
+                // console.log("AHT: text/html " + aMimeMsg.prettyString().search("text/html"));
+                // console.log("AHT: Body: plain/html " + aMimeMsg.prettyString().search("Body: plain/html"));
+                // console.log("AHT: plain/html " + aMimeMsg.prettyString().search("plain/html"));
+                // console.log("AHT: multipart/alternative " + aMimeMsg.prettyString().search("multipart/alternative"));
+                // console.log("AHT: multipart/signed " + aMimeMsg.prettyString().search("multipart/signed"));
+                // console.log("AHT: multipart/encrypted " + aMimeMsg.prettyString().search("multipart/encrypted"));
 
                 // 'Body: text/html' is found, enable ahtButtons
                 if (aMimeMsg.prettyString().search("Body: text/html") != -1) {
-                  // console.log("AHT message contains HTML body part");
+                  // console.log("AHT: message contains HTML body part");
                   ahtButtonStatus.enableButtons();
                 }
                 // no 'Body: text/html', disable ahtButtons
@@ -278,8 +260,24 @@ var ahtButtonStatus = {
         }
       }
     } catch (e) {
-      // console.log("AHT catch error");
+      // console.log("AHT: catch error in checkMailForHtmlpart");
       ahtButtonStatus.disableButtons();
     }
   }
 }
+
+/* eventListeners are now called from WindowListener API *
+window.addEventListener("load", function(e) {
+  ahtButtonSetIcon.startup();
+}, false);
+window.addEventListener("unload", function(e) {
+  ahtButtonSetIcon.shutdown();
+}, false);
+
+window.addEventListener("load", function(e) {
+  ahtButtonStatus.startup();
+}, false);
+window.addEventListener("unload", function(e) {
+  ahtButtonStatus.shutdown();
+}, false);
+**********************************************************/

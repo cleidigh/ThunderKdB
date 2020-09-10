@@ -36,7 +36,7 @@ var lastComms = -1;
 var isThunderbird = (typeof messenger !== "undefined");
 
 // Functionality checks
-var mozillaVersion = 78;  // min release
+var mozillaVersion = 68;  // min release
 
 // Menus being deleted (need to waiut for them all to go before recreating so as to not dup. IDs)
 var menusDeleting = 0;
@@ -121,7 +121,8 @@ function onContextMenuCreated( menuId, useAsParent )
     let text = removeAccess( browser.i18n.getMessage("unaltered") );
     browserMenusCreate( parentId, {
         id: menuId + "-unaltered",
-        title: text
+        title: text,
+        contexts: ["selection","link"]
     });
 
     // Now create prefs menus
@@ -130,7 +131,8 @@ function onContextMenuCreated( menuId, useAsParent )
         // Separator
         browserMenusCreate( parentId, {
             id: menuId + "-separator",
-            type: "separator"
+            type: "separator",
+            contexts: ["selection","link"]
         });
 
         // Prefs.
@@ -144,7 +146,8 @@ function onContextMenuCreated( menuId, useAsParent )
                 // Sep.
                 browserMenusCreate( parentId, {
                     id: menuId + "-pref-" + n,
-                    type: "separator"
+                    type: "separator",
+                    contexts: ["selection","link"]
                 });
             }
             else
@@ -152,7 +155,8 @@ function onContextMenuCreated( menuId, useAsParent )
                 // Menu item
                 browserMenusCreate( parentId, {
                     id: menuId + "-pref-" + n,
-                    title: getMenuText( formatstr )
+                    title: getMenuText( formatstr ),
+                    contexts: ["selection","link"]
                 });
             }
         }
@@ -310,17 +314,20 @@ function createContextMenus()
     // Help
     browser.menus.create({
         id: "main-menu-help",
-        title: browser.i18n.getMessage("help")
+        title: browser.i18n.getMessage("help"),
+        contexts: ["selection","link"]
     });
     // Changelog
     browser.menus.create({
         id: "main-menu-changelog",
-        title: browser.i18n.getMessage("prefs-changelog")
+        title: browser.i18n.getMessage("prefs-changelog"),
+        contexts: ["selection","link"]
     });
     // Prefs
     browser.menus.create({
         id: "main-menu-prefs",
-        title: browser.i18n.getMessage("prefs")
+        title: browser.i18n.getMessage("prefs"),
+        contexts: ["selection","link"]
     });
 }
 
@@ -533,7 +540,7 @@ function openLink( selection, menuItemId, tabId, mods )
     let force_active = false;
     if (lnk.search("file:") == 0)
     {
-        // TBD we can't open file links at the moment.  Put in into the clipboard and get the user to use it.
+        // TBD we can't open file links at the moment.  Put it into the clipboard and get the user to use it.
         navigator.clipboard.writeText( lnk );
         lnk = browser.extension.getURL( "manual.html");
         force_active = true;
@@ -561,7 +568,7 @@ function openLink( selection, menuItemId, tabId, mods )
                 "url": lnk
             };
             // No openerTabId in TB [yet]?
-            if (!isThunderbird)
+            if (!isThunderbird  &&  tabId != -1)
                 props["openerTabId"] = tabId;
             browser.tabs.create( props );
         }
@@ -590,10 +597,15 @@ function openLink( selection, menuItemId, tabId, mods )
             else
             {
                 // Follow link
-                browser.tabs.update(
-                    tabId,
-                    { "url": lnk }
-                );
+                if (tabId != -1)
+                    browser.tabs.update(
+                        tabId,
+                        { "url": lnk }
+                    );
+                else
+                    browser.tabs.update(
+                        { "url": lnk }
+                    );
             }
         }
     }
@@ -601,7 +613,7 @@ function openLink( selection, menuItemId, tabId, mods )
 
 
 // Open correct help window
-function openHelpWindow()
+function openHelpWindow( tabId )
 {
     // Useful trick to determine which of our locales is actually in use ...
     let currentLocale = browser.i18n.getMessage( "__locale" );
@@ -613,7 +625,7 @@ function openHelpWindow()
         "url": lnk
     };
     // No openerTabId in TB [yet]?
-    if (!isThunderbird)
+    if (!isThunderbird  &&  tabId != -1)
         props["openerTabId"] = tabId;
     browser.tabs.create( props );
 }
@@ -741,14 +753,16 @@ browser.menus.onClicked.addListener( (info, tab) => {
     let withShift = (info.modifiers.includes("Shift"));
     let withCtrl  = (info.modifiers.includes("Ctrl"));
 
-    // On tab?
-    let tabId = tab.id;
+    // On tab?  (tab is undefined pre TB 72 (68, at least)
+    let tabId = -1;
+    if (typeof tab !== "undefined")
+        tabId = tab.id;
 
     // Help?
     if (info.menuItemId === "main-menu-help")
     {
         // Help window
-        openHelpWindow();
+        openHelpWindow( tabId );
     }
     else if (info.menuItemId === "main-menu-changelog")
     {
@@ -761,14 +775,31 @@ browser.menus.onClicked.addListener( (info, tab) => {
             "url": lnk
         };
         // No openerTabId in TB [yet]?
-        if (!isThunderbird)
+        if (!isThunderbird  &&  tabId != -1)
             props["openerTabId"] = tabId;
         browser.tabs.create( props );
     }
     else if (info.menuItemId === "main-menu-prefs")
     {
         // Prefs window
-        browser.runtime.openOptionsPage();
+        if (mozillaVersion >= 78)
+        {
+            // Not there at least as of 68, but is in 78
+            browser.runtime.openOptionsPage();
+        }
+        else
+        {
+            // Tab
+            let lnk = browser.extension.getURL( "preferences.html" );
+            let props = {
+                "active": !prefs.inbackground || force_active,
+                "url": lnk
+            };
+            // No openerTabId in TB [yet]?
+            if (!isThunderbird  &&  tabId != -1)
+                props["openerTabId"] = tabId;
+            browser.tabs.create( props );
+        }
     }
     else
     {

@@ -26,7 +26,6 @@
   <title data-i18n="prefs-title">[prefs-title]</title>
   <meta charset="utf-8">
   <script src="preferences.js"></script>
-  <link type="text/css" rel="stylesheet" href="extension.css">
   <style type="text/css">
 
 
@@ -263,7 +262,6 @@ form.buttons button
   min-width: 10em;
   text-align: center;
   margin-right: 2em;
-  color: #222426;  /* from extension.css ?? */
 }
   </style>
   </head>
@@ -290,7 +288,7 @@ form.buttons button
 
     <div style="clear:both"></div><br>
 
-    <dl>
+    <dl class="browser-style">
       <dt data-title-i18n="prefs-newwindow-tip" title=""><span data-i18n="prefs-newwindow">[prefs-newwindow]</span>:</dt><dd data-title-i18n="prefs-newwindow-tip" title=""><input id="option-new-window" type="checkbox"></dd>
       <dt data-title-i18n="prefs-forcesubmenu-tip" title=""><span data-i18n="prefs-forcesubmenu">[prefs-forcesubmenu]</span>:</dt><dd data-title-i18n="prefs-forcesubmenu-tip" title=""><input id="option-force-sub-menu" type="checkbox"></dd>
       <dt data-title-i18n="prefs-background-tabs-tip" title=""><span data-i18n="prefs-background-tabs">[prefs-background-tabs]</span>:</dt><dd data-title-i18n="prefs-background-tabs-tip" title=""><input id="option-background-tabs" type="checkbox"></dd>

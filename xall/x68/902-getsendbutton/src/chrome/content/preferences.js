@@ -1,4 +1,5 @@
-Preferences.addAll([{
+Preferences.addAll([
+  {
     id: "extensions.getsendbutton.GetSendButton_SendYes",
     type: "bool"
   },

@@ -43,4 +43,39 @@
               oncommand="exquilla.Utils.openAccountWizard();"/>
   </menupopup>
 
+  <toolbarbutton id="appmenu_exquillaMenu" insertbefore="appmenu_sanitizeHistory"
+                 class="subviewbutton subviewbutton-iconic subviewbutton-nav"
+                 image="chrome://exquilla/skin/letter-x-icon-16.png"
+                 label="&exquilla.menu;" closemenu="none"
+                 oncommand="PanelUI.showSubView('appMenu-exquillaView', this);"/>
+
+  <panelmultiview id="appMenu-multiView">
+    <panelview id="appMenu-exquillaView" title="&exquilla.menu;" class="PanelUI-subView">
+      <vbox class="panel-subview-body">
+        <toolbarbutton id="appmenu_exquilla_openSettingsTab"
+                       class="subviewbutton"
+                       oncommand="exquilla.openSettingsTab();"/>
+        <toolbarbutton id="appmenu_exquilla_addExchangeAccount"
+                       class="subviewbutton"
+                       label="&exquilla.addExchangeAccount;"
+                       oncommand="exquilla.Utils.openAccountWizard();"/>
+        <toolbarbutton id="appmenu_exquilla_openHelp"
+                       class="subviewbutton"
+                       label="&exquilla.openHelp;"
+                       oncommand="exquilla.openHelpTab();"/>
+        <toolbarbutton id="appmenu_exquilla_openLog"
+                       class="subviewbutton"
+                       label="&exquilla.openLog;"
+                       oncommand="exquilla.openLog();"/>
+      </vbox>
+    </panelview>
+  </panelmultiview>
+
+  <toolbarbutton id="appmenu_exquillaNewAccount"
+                 insertbefore="appmenu_newAccountMenuItem"
+                 class="subviewbutton subviewbutton-iconic"
+                 image="chrome://exquilla/skin/letter-x-icon-16.png"
+                 label="&exquilla.addExchangeAccount;"
+                 oncommand="exquilla.Utils.openAccountWizard();"/>
+
 </overlay>

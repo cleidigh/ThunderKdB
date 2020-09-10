@@ -1899,7 +1899,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBox').setAttribute('hidden', 'true');
 			}
 			
-			var dateFormat = cardbookRepository.cardbookPreferences.getDateFormat(aDirPrefId, aVersion);
+			var dateFormat = cardbookRepository.getDateFormat(aDirPrefId, aVersion);
 			var myFormattedDate = cardbookRepository.cardbookDates.getFormattedDateForDateString(aEventType[0], dateFormat, cardbookRepository.dateDisplayedFormat);
 			var myDate = cardbookRepository.cardbookDates.convertDateStringToDate(aEventType[0], dateFormat);
 			var myDateString = cardbookRepository.cardbookDates.convertDateToDateString(myDate, "4.0");

@@ -1,0 +1,92 @@
+/* *******************************************************************************
+	folder menulist
+*/
+ /* Remove default bullets */
+/*
+ul, #syncimapPicker {
+  list-style-type: none;
+}
+*/
+
+/* Remove margins and padding from the parent ul */
+#syncimapPicker {
+  margin: 0;
+  padding: 0;
+	max-height: 15em;
+	overflow: auto;
+}
+
+/* Style the caret/arrow */
+#syncimapPicker li {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+	list-style-position: inside;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}
+
+.account {
+	list-style-image: url("../skin/account.png");
+}
+.folder {
+	list-style-image: url("../skin/folder.png");
+}
+
+.inbox {
+  list-style-image: url("../skin/inbox.png");
+}
+.sent {
+  list-style-image: url("../skin/sent.png");
+}
+
+.outbox {
+  list-style-image: url("../skin/outbox.png");
+}
+
+.drafts {
+  list-style-image: url("../skin/drafts.png");
+}
+
+.templates {
+  list-style-image: url("../skin/templates.png");
+}
+
+.junk {
+  list-style-image: url("../skin/junk.png");
+}
+
+.trash {
+  list-style-image: url("../skin/trash.png");
+}
+
+/*
+.virtual {
+  list-style-image: url("../skin/folder.png");
+}
+*/
+.menulist-icon, .menulist-label {
+    margin-top: -1px !important;
+    margin-bottom: -1px !important;
+}
+

@@ -7,7 +7,8 @@ var gDefaultPrefs = Services.prefs.getDefaultBranch("");
 var gRegisteredDocuments = new Map();
 var gRegisteredOverlays = new Map();
 
-function notifyNeedsRestart(aRoot) {
+function notifyNeedsRestart() {
+  Services.obs.notifyObservers(null, "startupcache-invalidate");
   let window = Services.wm.getMostRecentWindow("mail:3pane");
   if (!window) {
     return;

@@ -1,0 +1,31 @@
+/* since different paragraphs or other block elements within a blockquote
+   may have different directions, we need the delimiting bar on both sides
+   of the blockquote
+ */
+   
+blockquote[type="cite"][bidimailui-direction-uniformity="rtl"] {
+  padding-right: 1em !important;
+  border-right-style: solid !important;
+  border-right-width: thin !important;
+  padding-left: 0 !important;
+  border-left: 0 !important;
+}
+
+blockquote[type="cite"][bidimailui-direction-uniformity="ltr"] {
+  padding-right: 0 !important;
+  border-right: 0 !important;
+  padding-left: 1em !important;
+  border-left-style: solid !important;
+  border-left-width: thin !important;
+}
+
+blockquote[type="cite"] {
+  padding-right: 1em !important;
+  padding-left: 1em !important;
+  border-right-style: solid !important;
+  border-left-style: solid !important;
+  border-right-width: 1px !important;
+  border-left-width: 1px !important;
+}
+
+

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 14358,
+    "average_daily_users": 14929,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "created": "2016-04-28T07:04:50Z",
     "current_version": {
-        "id": 2473873,
+        "id": 2474226,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-button/versions/2473873",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-button/versions/2474226",
         "files": [
             {
-                "id": 1017035,
-                "created": "2020-07-05T20:42:04Z",
-                "hash": "sha256:0fd66952dae8fff00d31ad5aa0e200099aa4dfaef2326f21673ee1115a429e37",
+                "id": 1017388,
+                "created": "2020-09-09T17:22:58Z",
+                "hash": "sha256:ae2c37eed19b38c0705abc00fb69e31bec28771a5cc30f0fcbccf676134ea22a",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 25734,
+                "size": 25758,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017035/spater_senden_schaltflache-2.0b1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017388/spater_senden_schaltflache-2.0b2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,18 +50,15 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": {
-            "en-US": "Makes the add-ons simmple button compatible with Thunderbird 78 by using an experimtent_api. Unfortunately, the button in Thunderbird 78 now always remains active, even if the button, just like the primary send button, is actually supposed to be inactive.",
-            "de": "Macht das Add-on mit der simplen Schaltfläche kompatibel zu Thunderbird 78, indem eine experimtent_api genutzt wird. Leider bleibt die Schaltfläche in Thunderbird 78 jetzt immer aktiv, auch wenn die Schaltfläche genauso wie die primäre Senden-Schaltfläche eigentlich gerade inaktiv sein sollte."
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-button/versions/2.0b1",
-        "version": "2.0b1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-button/versions/2.0b2",
+        "version": "2.0b2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>\nFrom version 78, Thunderbird only supports the necessary interfaces for this add-on via \"WebExtension Experiments\". A lot of program code of the add-on would have to be rewritten for this. It is not expected that the necessary interfaces will be permanently implemented in Thunderbird (as MailExtension API), and the \"WebExtension Experiments\" will also be removed in the future, which is why the effort is no longer worthwhile. Therefore, this add-on will no longer receive an update and it will not be available for Thunderbird 78.\n\nThe source code of the add-on is open source and is available at <a href=\"https://gitlab.com/ThunderbirdMailDE/send-later-button\" rel=\"nofollow\"> GitLab </a>.\n\nThe translations available so far can be found on the <a href=\"https://crowdin.com/project/send-later-button\" rel=\"nofollow\"> CrowdIn </a> platform.</strong>\n\n--------------------------------------\n\n<strong>General information:</strong>\nThis add-on adds a simple \"Send later\" button to the compose window toolbar.\n\nThere are no new/own functions. The button is just a simple way to always have the send later option visible and reachable by just one click.\n\nYou can use the \"Send later\" button with standard Thunderbird to save your new mail in the \"Outbox\". In case you're using the additional add-on \"Send Later\" (by jikamens), the button is completely compatible with this add-on and invokes its dialog.",
-        "de": "<strong>Thunderbird unterstützt ab Version 78 nur noch per \"WebExtension Experiments\" die notwendigen Schnittstellen für dieses Add-on. Dafür müsste sehr viel Programm-Code des Add-ons neu geschrieben werden. Es ist nicht zu erwarten, dass die notwendigen Schnittstellen auf Dauer in Thunderbird fest implementiert werden (als MailExtension API), und die \"WebExtension Experiments\" werden in Zukunft auch entfernt werden, weshalb sich der Aufwand nicht mehr lohnt. Deshalb wird dieses Add-on kein Update mehr erhalten und es wird nicht für Thunderbird 78 verfügbar sein.\n\nDer Quellcode des Add-ons ist Open-Source und steht auf <a href=\"https://gitlab.com/ThunderbirdMailDE/send-later-button\" rel=\"nofollow\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a href=\"https://crowdin.com/project/send-later-button\" rel=\"nofollow\">CrowdIn</a>.</strong>\n\n--------------------------------------\n\n<strong>Allgemeine Information:</strong>\nDieses Add-on bietet eine eigenständige Schaltfläche \"Später senden\" im Verfassen-Fenster. \n\nDas Add-on hat keine neuen bzw. eigenen Funktionen. Die Schaltfläche ist nur eine jederzeit einfach erreichbare Möglichkeit zum späteren Senden.\n\nSie können die Schaltfläche \"Später senden\" mit dem standardmäßigen Thunderbird verwenden. Dann werden Ihre Nachrichten im \"Postausgang\" gespeichert, um diese später zu versenden. Wenn Sie zusätzlich das Add-on \"Später senden\" (von jikamens) verwenden, wird mit der Schaltfläche dessen Dialogfeld mit den Optionen zum späteren Senden aufgerufen."
+        "en-US": "The source code of the add-on is open source and is available at <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/send-later-button\"> GitLab </a>.\n\nThe translations available so far can be found on the <a rel=\"nofollow\" href=\"https://crowdin.com/project/send-later-button\"> CrowdIn </a> platform.\n\n--------------------------------------\n\n<strong>General information:</strong>\nThis add-on adds a simple \"Send later\" button to the compose window toolbar.\n\nThere are no new/own functions. The button is just a simple way to always have the send later option visible and reachable by just one click.\n\nYou can use the \"Send later\" button with standard Thunderbird to save your new mail in the \"Outbox\". In case you're using the additional add-on \"Send Later\" (by jikamens), the button is completely compatible with this add-on and invokes its dialog.",
+        "de": "Der Quellcode des Add-ons ist Open-Source und steht auf <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/send-later-button\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a rel=\"nofollow\" href=\"https://crowdin.com/project/send-later-button\">CrowdIn</a>.\n\n--------------------------------------\n\n<strong>Allgemeine Information:</strong>\nDieses Add-on bietet eine eigenständige Schaltfläche \"Später senden\" im Verfassen-Fenster. \n\nDas Add-on hat keine neuen bzw. eigenen Funktionen. Die Schaltfläche ist nur eine jederzeit einfach erreichbare Möglichkeit zum späteren Senden.\n\nSie können die Schaltfläche \"Später senden\" mit dem standardmäßigen Thunderbird verwenden. Dann werden Ihre Nachrichten im \"Postausgang\" gespeichert, um diese später zu versenden. Wenn Sie zusätzlich das Add-on \"Später senden\" (von jikamens) verwenden, wird mit der Schaltfläche dessen Dialogfeld mit den Optionen zum späteren Senden aufgerufen."
     },
     "developer_comments": {
         "en-US": "This add-on is compatible with jikamens \"Send later\" add-on.",
@@ -84,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-10T15:29:22Z",
+    "last_updated": "2020-09-09T17:24:32Z",
     "name": {
         "en-US": "Send Later Button",
         "de": "Später senden-Schaltfläche"
@@ -192,6 +189,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-07-05T20:42:04Z",
+            "comp78pv_version": "2.0b1",
+            "comp78pv_vmin": "78.0a1",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-04-11T14:24:42Z"
         }

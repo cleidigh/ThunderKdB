@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/themeableDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://getsendbutton/content/options/getsendbutton_options.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://getsendbutton/locale/getsendbutton-pref.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  id="getsendbuttonPrefs" 
+  title="&getsendbutton.pref.title;" 
+  lightweightthemes="true"
+  buttons="accept">
+
+  <vbox id="getsendbuttonPrefs-pane">
+    <tabbox>
+      <tabs>
+        <tab label="&getsendbutton.pref.tab.buttons;"/>
+        <tab label="&getsendbutton.pref.tab.passwords;"/>
+      </tabs>
+      <tabpanels>
+        <tabpanel orient="vertical">
+          <html:fieldset>
+            <html:legend>&getsendbutton.pref.header2;</html:legend>
+            <vbox>
+              <separator class="thin"/>
+
+              <label value="&getsendbutton.pref.textGetSendButtonSend;"/>
+              <radiogroup id="GetSendButtonSend" 
+                preference="extensions.getsendbutton.GetSendButton_SendYes">
+                <radio value="true" 
+                  label="&getsendbutton.pref.radioGetSendButtonSendYes;"/>
+                <radio value="false" 
+                  label="&getsendbutton.pref.radioGetSendButtonSendNo;"/>
+              </radiogroup>
+              <separator class="thin"/>
+
+              <label value="&getsendbutton.pref.textGetSendButtonGetAllOrSingle;"/>
+              <radiogroup id="getsendbuttonGetSendButton_RadioGetAllOrSingle" 
+                preference="extensions.getsendbutton.GetSendButton_OnlySingleAccount">
+                <radio id="getsendbuttonGetSendButton_RadioSingle" 
+                  value="true" 
+                  label="&getsendbutton.pref.radioGetSendButtonGetOnlySingleAccount;"/>
+                <radio id="getsendbuttonGetSendButton_RadioAllAcc" 
+                  value="false" 
+                  label="&getsendbutton.pref.radioGetSendButtonGetAllAccounts;"/>
+                <hbox class="indent">
+                  <checkbox id="getsendbuttonGetSendButton_AskPasswords" 
+                    label="&getsendbutton.pref.checkGetSendButtonAskPasswords;" 
+                    preference="extensions.getsendbutton.GetSendButton_AskPasswords"/>
+                </hbox>
+              </radiogroup>
+            </vbox>
+          </html:fieldset>
+        </tabpanel>
+
+        <tabpanel orient="vertical">
+          <html:fieldset>
+            <html:legend>&getsendbutton.pref.header4;</html:legend>
+            <vbox>
+              <separator class="thin"/>
+              <description style="white-space: normal; width: 33em">&getsendbutton.pref.textPasswords;</description>
+              <checkbox id="getsendbuttonSignonRememberSignons" 
+                label="&getsendbutton.pref.signonRememberSignons.label;" 
+                preference="signon.rememberSignons"/>
+              <separator class="thin"/>
+            </vbox>
+          </html:fieldset>
+        </tabpanel>
+
+      </tabpanels>
+    </tabbox>
+  </vbox>
+
+  <script src="chrome://getsendbutton/content/getsendbutton_functions.js" 
+    type="application/javascript"/>
+  <script src="chrome://global/content/preferencesBindings.js" 
+    type="application/javascript"/>
+  <script src="chrome://getsendbutton/content/preferences.js" 
+    type="application/javascript"/>
+  <script src="chrome://messenger/content/dialogShadowDom.js"
+    type="application/x-javascript"/>
+
+</dialog>

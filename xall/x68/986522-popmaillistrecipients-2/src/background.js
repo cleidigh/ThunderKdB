@@ -85,8 +85,14 @@ if (AddressesBCC.length > 0) {
   // Collect the contacts from the list for later weeding of duplicates
   //                    // console.log("Mailing list node: " + JSON.stringify(list));
                     list.contacts.forEach(contact => { //1
-                      listcontactsarray.push(contact.properties.PrimaryEmail);
+                      if (contact.properties.DisplayName == contact.properties.PrimaryEmail) {
+                          listcontactsarray.push(contact.properties.PrimaryEmail);
+                      } else {
+                          listcontactsarray.push(contact.properties.DisplayName + "<" + contact.properties.PrimaryEmail + ">");
+                      }
+
                       // console.log("Added contact: " + contact.properties.PrimaryEmail );
+                      console.log(JSON.stringify(contact.properties));
                     }) //1
                   }; //2
                 //}); //3
@@ -102,9 +108,15 @@ if (AddressesBCC.length > 0) {
     let listcontacts  = await listcontactspromise ;
     //console.log("List " + listcontacts);
     for (var i = 0; i < listcontacts.length; i++) {
+      if (listcontacts[i].indexOf(",") != -1) {
+        listcontacts[i] = '"' + listcontacts[i] + '"'// To deal with mishandling of commas in setComposeDetails
+      }
       NewAddressArray.push(listcontacts[i]);
         }
     } else {
+      if (OldAddressArray[k].indexOf(",")!= -1) {
+        OldAddressArray[k] = '"' + OldAddressArray[k] + '"'// To deal with mishandling of commas in setComposeDetails
+      }
       NewAddressArray.push(OldAddressArray[k]);
     }
   }

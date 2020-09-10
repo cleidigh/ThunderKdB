@@ -1530,12 +1530,12 @@ var cardbookUtils = {
 
 	updateRev: function(aCard) {
 		var sysdate = new Date();
-		var year = sysdate.getFullYear();
-		var month = ("0" + (sysdate.getMonth() + 1)).slice(-2);
-		var day = ("0" + sysdate.getDate()).slice(-2);
-		var hour = ("0" + sysdate.getHours()).slice(-2);
-		var min = ("0" + sysdate.getMinutes()).slice(-2);
-		var sec = ("0" + sysdate.getSeconds()).slice(-2);
+		var year = sysdate.getUTCFullYear();
+		var month = ("0" + (sysdate.getUTCMonth() + 1)).slice(-2);
+		var day = ("0" + sysdate.getUTCDate()).slice(-2);
+		var hour = ("0" + sysdate.getUTCHours()).slice(-2);
+		var min = ("0" + sysdate.getUTCMinutes()).slice(-2);
+		var sec = ("0" + sysdate.getUTCSeconds()).slice(-2);
 		if (aCard.version == "4.0") {
 			aCard.rev = year + month + day + "T" + hour + min + sec + "Z";
 		} else {

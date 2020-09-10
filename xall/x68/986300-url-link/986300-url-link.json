@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/244.png?modified=1510640146"
         }
     ],
-    "average_daily_users": 2317,
+    "average_daily_users": 2379,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2018-09-23T14:53:14Z",
     "current_version": {
-        "id": 2474164,
+        "id": 2474209,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.9.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/url-link/versions/2474164",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/url-link/versions/2474209",
         "files": [
             {
-                "id": 1017326,
-                "created": "2020-08-31T10:14:33Z",
-                "hash": "sha256:6800200f5e3035ed775d528c246a9d1241891a9ef69a95c3c473ced7e0b4e4a4",
+                "id": 1017371,
+                "created": "2020-09-07T13:02:18Z",
+                "hash": "sha256:6632907a7c007c3b5e41a8a5b1d964d3ba1f0331518a36d4380baf2a6a71f4eb",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 109364,
+                "size": 107186,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017326/url_link-3.5beta1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017371/url_link-3.5.1-tb.xpi?src=",
                 "permissions": [
                     "clipboardWrite",
                     "menus",
@@ -56,12 +56,12 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/url-link/versions/3.5beta1",
-        "version": "3.5beta1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/url-link/versions/3.5.1",
+        "version": "3.5.1"
     },
     "default_locale": "en-GB",
     "description": {
-        "en-GB": "<b>NOTE</b> - I have released a preliminary WebExtentions version to support Thundebird 78+ (also works with 68.10+);  I'm afraid I couldn't migrate preferences from the legacy implementation, so you'll have to set those up again if you had anything custom set up (I also recommend setting <i>prefer new window</i>).  You should find the old values under your Thunderbird profile in <b>prefs.js</b> by searching for <b>urllink</b>. <i>[27-Oct-2019]</i>.\n\nPlease report any issues to me or via a bug on GitHub (preferably <a href=\"https://github.com/fnxweb/urllink/issues/17\" rel=\"nofollow\">https://github.com/fnxweb/urllink/issues/17</a> for this new release).\n\n\nFor emails, it reconnects links in emails which have been broken across several lines, and also replaces spaces with the URL character code %20 so that you may follow emailed network 'file:' links (which it auto-detects from Windows \"X:\" or \\\\servdir references).\n\nFor web pages, it also allows you to select textual links/URLs in web pages or edit boxes, and follow them as if they were real links.  It will also let you use actual links, and analyses mailto: links as well.\n\nIt analyses 'mailto:' links (converts, e.g., <a href=\"mailto:someone@somesite.com\">mailto:someone@somesite.com</a> to <a href=\"http://www.somesite.com\" rel=\"nofollow\">http://www.somesite.com</a>) and can also 'follow' javascript: links that would otherwise generate a pop-up (e.g., <a href=\"http://www.kelkoo.co.uk/\" rel=\"nofollow\">http://www.kelkoo.co.uk/</a>).\n\nThere are currently more translations than I care to keep listing here (thanks to the guys at <a href=\"http://www.babelzilla.org/)!\" rel=\"nofollow\">http://www.babelzilla.org/)!</a>  Unfortunately, Babelzilla has retired due to the new format of Firefox add-ons. If you would like to provide new translations, or fix existing ones, please email me, add them to a feature-request issue on GitHub, or add them in a GitHub fork for me to pull in.\n\n\nURL Link has a preferences dialogue allowing customisation of the 'not a proper URL' sub-menu which converts, e.g., \"sometext\" to \"<a href=\"http://www.sometext.com\" rel=\"nofollow\">www.sometext.com</a>\", so that locale-specific conversions can be added (like 'www.*.co.uk').\n\nNicknames can be applied to the entries (such that the nickname appears in the menu, not the conversion string) by using a bar '|', e.g.:\n\n\"In Google|<a href=\"http://www.google.com/search?q=*\" rel=\"nofollow\">http://www.google.com/search?q=*</a>&amp;source-id=Mozilla%20Firefox&amp;start=0\"\n\nIt also allows separators to be added to the custom menu by using entries made up of hyphens, e.g. \"--\".\n\nHold down <b>Shift</b> when opening a link in the current window to instead open in a new window.\n\nEither hold down <b>Control</b> when opening a link, or add <b>|p</b> to the end of a custom menu entry to make that entry always open in  a private window.\n\nYou can also set up custom search and replace strings (e.g., convert Windows driver letter to some file:///mnt/smb/ path for Linux users).\n\nIf you have problems with file: or network (\\\\server\\share) links, especially in Thunderbird emails, see the following page:\n\n<a href=\"http://kb.mozillazine.org/Links_to_local_pages_do_not_work#Firefox_1.5.2C_SeaMonkey_1.0_and_newer\" rel=\"nofollow\">http://kb.mozillazine.org/Links_to_local_pages_do_not_work#Firefox_1.5.2C_SeaMonkey_1.0_and_newer</a>"
+        "en-GB": "<b>NOTE</b> - I have released a preliminary WebExtentions version to support Thundebird 78+ (also works with 68.10+);  I'm afraid I couldn't migrate preferences from the legacy implementation, so you'll have to set those up again if you had anything custom set up (I also recommend setting <i>prefer new window</i>).  You should find the old values under your Thunderbird profile in <b>prefs.js</b> by searching for <b>urllink</b>. <i>[31-Aug-2020]</i>.\n\nPlease report any issues to me or via a bug on GitHub (preferably <a href=\"https://github.com/fnxweb/urllink/issues/17\" rel=\"nofollow\">https://github.com/fnxweb/urllink/issues/17</a> for this new release).\n\n\nFor emails, it reconnects links in emails which have been broken across several lines, and also replaces spaces with the URL character code %20 so that you may follow emailed network 'file:' links (which it auto-detects from Windows \"X:\" or \\\\servdir references).\n\nFor web pages, it also allows you to select textual links/URLs in web pages or edit boxes, and follow them as if they were real links.  It will also let you use actual links, and analyses mailto: links as well.\n\nIt analyses 'mailto:' links (converts, e.g., <a href=\"mailto:someone@somesite.com\">mailto:someone@somesite.com</a> to <a href=\"http://www.somesite.com\" rel=\"nofollow\">http://www.somesite.com</a>) and can also 'follow' javascript: links that would otherwise generate a pop-up (e.g., <a href=\"http://www.kelkoo.co.uk/\" rel=\"nofollow\">http://www.kelkoo.co.uk/</a>).\n\nThere are currently more translations than I care to keep listing here (thanks to the guys at <a href=\"http://www.babelzilla.org/)!\" rel=\"nofollow\">http://www.babelzilla.org/)!</a>  Unfortunately, Babelzilla has retired due to the new format of Firefox add-ons. If you would like to provide new translations, or fix existing ones, please email me, add them to a feature-request issue on GitHub, or add them in a GitHub fork for me to pull in.\n\n\nURL Link has a preferences dialogue allowing customisation of the 'not a proper URL' sub-menu which converts, e.g., \"sometext\" to \"<a href=\"http://www.sometext.com\" rel=\"nofollow\">www.sometext.com</a>\", so that locale-specific conversions can be added (like 'www.*.co.uk').\n\nNicknames can be applied to the entries (such that the nickname appears in the menu, not the conversion string) by using a bar '|', e.g.:\n\n\"In Google|<a href=\"http://www.google.com/search?q=*\" rel=\"nofollow\">http://www.google.com/search?q=*</a>&amp;source-id=Mozilla%20Firefox&amp;start=0\"\n\nIt also allows separators to be added to the custom menu by using entries made up of hyphens, e.g. \"--\".\n\nHold down <b>Shift</b> when opening a link in the current window to instead open in a new window.\n\nEither hold down <b>Control</b> when opening a link, or add <b>|p</b> to the end of a custom menu entry to make that entry always open in  a private window.\n\nYou can also set up custom search and replace strings (e.g., convert Windows driver letter to some file:///mnt/smb/ path for Linux users).\n\nIf you have problems with file: or network (\\\\server\\share) links, especially in Thunderbird emails, see the following page:\n\n<a href=\"http://kb.mozillazine.org/Links_to_local_pages_do_not_work#Firefox_1.5.2C_SeaMonkey_1.0_and_newer\" rel=\"nofollow\">http://kb.mozillazine.org/Links_to_local_pages_do_not_work#Firefox_1.5.2C_SeaMonkey_1.0_and_newer</a>"
     },
     "developer_comments": {
         "en-GB": "PLEASE if you have a problem, or wish for a new feature, contact me directly or via GitHub, as I rarely remember to visit this page to check on the comments, so it may take me a while to respond!"
@@ -82,7 +82,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-08-31T20:29:06Z",
+    "last_updated": "2020-09-07T14:34:38Z",
     "name": {
         "en-GB": "URL Link"
     },

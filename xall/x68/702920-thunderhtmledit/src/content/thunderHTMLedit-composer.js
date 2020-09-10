@@ -176,6 +176,19 @@ var SourceEditor = {
       enableSnippets: true,
       enableLiveAutocompletion: false,
     });
+    // Set additional options.
+    let optionsJSON;
+    try {
+      optionsJSON = ThunderHTMLeditPrefs.getPref("OptionsJSON", "String");
+      let options = JSON.parse(optionsJSON);
+      editor.setOptions(options);
+    } catch (ex) {
+      Services.prompt.alert(
+        null,
+        "extensions.thunderHTMLedit.OptionsJSON invalid",
+        optionsJSON,
+      );
+    }
   },
 
   initFind(win) {
@@ -641,9 +654,10 @@ function useFontPreview() {
 function onComposeBodyReady(win) {
   try {
     onComposeBodyReadyCalled = true;
-    PrepareHTMLtab();
 
     win.setTimeout(() => {
+      PrepareHTMLtab();
+
       win.document.getElementById("FontFaceSelect").setAttribute("maxwidth", 250);
       let FontFacePopup = win.document.getElementById("FontFacePopup");
       let nodes = FontFacePopup.childNodes;

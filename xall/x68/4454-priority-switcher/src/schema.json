@@ -1,0 +1,50 @@
+[
+  {
+    "namespace": "prioritySwitcherApi",
+    "functions": [
+      {
+        "name": "switchPriority",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer"
+          },
+          {
+            "name": "priority",
+            "type": "integer"
+          }
+        ]
+      },
+
+      {
+        "name": "getDBPriorityForMessage",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer"
+          }
+        ]
+      },
+      
+      {
+        "name": "rewritePriority",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "integer"
+          },
+          {
+            "name": "src",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+]

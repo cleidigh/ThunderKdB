@@ -2,25 +2,34 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "5.7.5",
+  "version": "6.0.2",
   "author": "Alexander Ihrig",
-  "homepage_url": "https://www.thunderbird-mail.de/lexicon/entry/15-abrufen-senden-schaltfl%C3%A4che/",
+  "homepage_url": "https://addons.thunderbird.net/thunderbird/addon/getsendbutton/",
   "applications": {
     "gecko": {
       "id": "{6e071e83-d8d6-8ca9-6129-eb8e8144596f}",
-      "strict_min_version": "68.0",
-      "strict_max_version": "72.0a1"
+      "strict_min_version": "78.0",
+      "strict_max_version": "80.0"
     }
   },
   "default_locale": "en",
   "icons": {
-    "32": "chrome/skin/quantum/getallmsg_32.png",
-    "64": "chrome/skin/quantum/getallmsg_64.png"
+    "32": "chrome/skin/getallmsg_32.png",
+    "64": "chrome/skin/getallmsg_64.png"
   },
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://getsendbutton/content/getsendbuttonPrefs.xul"
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
     }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
   }
 }

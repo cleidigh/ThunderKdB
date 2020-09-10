@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>__MSG_extensionName__</title>
+  <script src="cs2c_options.js" type="application/javascript"></script>
+  <script src="l10n.js" type="application/javascript"></script>
+  <link rel="stylesheet" href="cs2c_options.css" type="text/css"></link>
+</head>
+<body>
+	<h1>__MSG_extensionName__</h1>
+	<fieldset>
+		<legend>__MSG_enabledfor__</legend>
+		<div id="accounts">
+			<div id="_account" class="account">
+				<label class="label">
+					<input type="checkbox" id="_account_id" value="_account" data-type="none"/>
+					<span id="_account_name">account</span>
+				</label>
+				<div id="_account_opts" class="opts">
+					<label><input name="_account_vorgabe" type="radio" value="current" data-pref="_account_curorsent"/>__MSG_DefIsCur_label__</label>
+					<label><input name="_account_vorgabe" type="radio" value="sent" data-pref="_account_curorsent"/>__MSG_DefIsSent_label__</label>
+					<label><input type="checkbox" data-pref="_account_sentalso" />__MSG_SentAlso_label__</label>
+					<label><input type="checkbox" data-pref="_account_totrash"/>__MSG_NoCopyIsTrash_label__</label>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset id="xyz"><legend></legend>
+<!--
+    <checkbox id="i_choosebehind" label="&chooseBehind.label;" preference="extensions.copysent2current.choosebehind"/>
+-->
+    <label>__MSG_moveoriginal_default__ <input type="checkbox" data-pref="movemessage"/></label>
+	</fieldset>
+	<fieldset id="accesskeys"><legend>__MSG_accesskey_label__</legend>
+    <label>
+      <input type="text" id="i_accesskey_default" size="1" maxlength="1" data-pref="accesskey_default" />
+      __MSG_accesskey_default_label__
+    </label>
+    <label>
+      <input type="text" id="i_accesskey_sent" size="1" maxlength="1" data-pref="accesskey_sent" />
+      __MSG_accesskey_sent_label__
+    </label>
+    <label>
+      <input type="text" id="i_accesskey_nocopy" size="1" maxlength="1" data-pref="accesskey_nocopy" />
+      __MSG_accesskey_nocopy_label__
+    </label>
+	</fieldset>
+
+	<fieldset id="hiddenprefs" style="display: none;"><legend>Hidden preferences</legend>
+			<label><input type="checkbox" id="debug" data-pref="debug"/>Debug</label>
+			<label><input type="checkbox" id="test" data-pref="test"/>Test</label>
+	</fieldset>
+
+	<div id="headers-box"></div>
+</body>
+</html>

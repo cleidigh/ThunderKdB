@@ -1,0 +1,34 @@
+/* messenger window additional button 'Send all' */
+#GetSendButton_S_all,
+#tabbar-toolbar #GetSendButton_S_all {
+  /*  list-style-image: url("resource://messenger/skin/icons/send.svg"); */
+  list-style-image: url("resource://getsendbutton/skin/send_fill_context.svg");
+}
+
+#GetSendButton_messenger_menupopup_sendUnsent {
+  list-style-image: url("resource://getsendbutton/skin/send_fill_black.svg"); /* black icon */
+}
+#GetSendButton_messenger_menupopup_sendUnsent[disabled="true"] {
+  list-style-image: url("resource://getsendbutton/skin/send_fill_grey.svg"); /* grey icon - opacity .5 in SVG */
+}
+
+#GetSendButton_messenger_menupopup_SyncFlagged image.menu-iconic-icon {
+  width: 14px !important;
+  height: 14px !important;
+}
+#GetSendButton_messenger_menupopup_SyncFlagged {
+  list-style-image: url("resource://getsendbutton/skin/star_fill_black.svg"); /* black icon */
+}
+#GetSendButton_messenger_menupopup_SyncFlagged[disabled="true"] {
+  list-style-image: url("resource://getsendbutton/skin/star_fill_grey.svg"); /* grey icon - opacity .5 in SVG */
+}
+
+/* Get all / auth messages */
+#GetSendButton_messenger_menupopup_ReceiveAll,
+#GetSendButton_messenger_menupopup_ReceiveAuth {
+  list-style-image: url("resource://getsendbutton/skin/getallmsg_fill_black.svg");
+}
+
+#button-getsendbutton {
+  list-style-image: url("resource://getsendbutton/skin/getallmsg_fill_context.svg");
+}

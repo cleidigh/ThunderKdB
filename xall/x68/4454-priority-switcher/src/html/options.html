@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Priority Switcher Options</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="options.css">
+  <script src="../scripts/l10n.js" defer></script>
+  <script src="../scripts/options.js" defer></script>
+
+</head>
+
+<body class="option-page">
+  <form name="psw_form">
+    <h3 l10n-tag="pswOptToolbarCmd">Toolbar Commands</h3>
+    <p>
+      <input type="checkbox" id="priorityButtonEn"><label for="priorityButtonEn" l10n-tag="pswOptChangePriority">Change priority</label>
+    </p>
+    <p>
+      <input type="checkbox" id="deleteButtonEn"><label for="deleteButtonEn" l10n-tag="pswOptDelete">Delete messages with priority check</label>
+    </p>
+
+    <h3 l10n-tag="pswOptHeaders">Priority Headers</h3>
+    <p>
+      <input type="checkbox" id="readOtherHeaders"><label for="readOtherHeaders" l10n-tag="pswOptIntOther">Interpret Importance, Priority and X-MSMail-Priority headers too</label>
+    </p>
+
+    <h3 l10n-tag="pswOptRewrite">Rewriting of Messages</h3>
+    <p l10n-tag="pswOptRewriteMode">When priority is changed</p>
+    <div class="indent">
+      <p>
+        <input type="radio" name="autoRewriteMode" value="0" id="autoRewriteMode0"><label for="autoRewriteMode0" l10n-tag="pswOptRewriteMode0">Update only Thunderbird database</label>
+      </p>
+      <p>
+        <input type="radio" name="autoRewriteMode" value="1" id="autoRewriteMode1"><label for="autoRewriteMode1" l10n-tag="pswOptRewriteMode1">Rewrite message source for all servers</label>
+      </p>
+      <p>
+        <input type="radio" name="autoRewriteMode" value="2" id="autoRewriteMode2"><label for="autoRewriteMode2" l10n-tag="pswOptRewriteMode2">Rewrite message source only for IMAP servers</label>
+      </p>
+    </div>
+    <p>
+      <input type="checkbox" id="trashOnRewrite"><label for="trashOnRewrite" l10n-tag="pswOptSaveTrash">Save original message in Trash on rewriting</label>
+    </p>
+
+    <h3 l10n-tag="pswOptDeleteTitle">Delete Messages with Priority Check</h3>
+    <p>
+      <label l10n-tag="pswOptConfirm">Confirm if a message  has</label>
+      <select id="delCheckPriority">
+        <option value="1" l10n-tag="pswHighest">Highest</option>
+        <option value="2" l10n-tag="pswHigh">High</option>
+        <option value="3" l10n-tag="pswNormal">Normal</option>
+        <option value="4" l10n-tag="pswLow">Low</option>
+        <option value="5" l10n-tag="pswLowest">Lower</option>
+        <option value="0">--</option>
+      </select>
+      <label l10n-tag="pswOptConfirm1">priority or over</label>
+    </p>
+    <p>
+      <input type="checkbox" id="delCheckStar"><label for="delCheckStar" l10n-tag="pswOptConfirmStar">Confirm if a message are starred</label>
+    </p>
+    <p>
+      <input type="checkbox" id="delCheckIgnoreJunk"><label for="delCheckIgnoreJunk" l10n-tag="pswOptConfirmJunk">Dont't confirm for a junk message</label>
+    </p>
+  </form>
+</body></html>

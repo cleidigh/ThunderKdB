@@ -259,7 +259,7 @@ function doFbaCollapsed(aUsername, aPassword, aUrl, aCallback)
   let window = Services.wm.getMostRecentWindow("mail:3pane");
   if (!window)
     window = Services.ww.activeWindow;
-  browser = window.document.createElement("browser");
+  browser = window.document.createXULElement("browser");
   browser.setAttribute("type", "content");
   browser.setAttribute("disablehistory", "true");
   browser.setAttribute("src", "about:blank");

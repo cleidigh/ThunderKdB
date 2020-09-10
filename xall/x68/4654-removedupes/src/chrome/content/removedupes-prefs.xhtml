@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+
+<!DOCTYPE page SYSTEM "chrome://removedupes/locale/removedupes-prefs.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            id="removeDupesPrefsDialogTitle"
+            title="&prefs_dialog_title;"
+            dlgbuttons="accept,cancel">
+  <vbox id="removeDupesPrefPane"
+            helpURI="&guide-url;"
+            onpaneload="RemoveDupes.PrefPane.init();">
+
+    <script type="application/javascript" src="chrome://removedupes/content/removedupes-prefs.js"/>
+    <script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
+    <script type="application/javascript" src="chrome://removedupes/content/removedupes-set-preference-types.js" />
+
+    <tabbox id="prefsTabBox" flex="1" persist="selectedIndex">
+
+      <tabs id="prefsTabs">
+        <tab id="general_settings_tab"
+             label="&general_settings.tab_title;" />
+        <tab id="message_comparison_tab"
+             label="&message_comparison.tab_title;" />
+      </tabs>
+
+      <tabpanels flex="1">
+        <tabpanel id="general_settings_panel">
+          <vbox flex="1">
+            <checkbox preference="extensions.removedupes.skip_special_folders"
+              prefstring="extensions.removedupes.skip_special_folders"
+              id="extensions.removedupes.skip_special_folders"
+              label="&message_comparison.skip_special_folders.label;"
+              accesskey="&message_comparison.skip_special_folders.access_key;"
+              autostretch="never"/>
+            <checkbox preference="extensions.removedupes.skip_imap_deleted_messages"
+              prefstring="extensions.removedupes.skip_imap_deleted_messages"
+              id="extensions.removedupes.skip_imap_deleted_messages"
+              label="&message_comparison.skip_imap_deleted_messages.label;"
+              accesskey="&message_comparison.skip_imap_deleted_messages.access_key;"
+              autostretch="never"/>
+            <checkbox preference="extensions.removedupes.search_subfolders"
+              prefstring="extensions.removedupes.search_subfolders"
+              id="extensions.removedupes.search_subfolders"
+              label="&general_settings.search_subfolders.label;"
+              accesskey="&general_settings.search_subfolders.access_key;"
+              autostretch="never"/>
+            <checkbox preference="extensions.removedupes.use_dialog_before_removal"
+              prefstring="extensions.removedupes.use_dialog_before_removal"
+              id="extensions.removedupes.use_dialog_before_removal"
+              label="&general_settings.use_dialog_before_removal.label;"
+              accesskey="&general_settings.use_dialog_before_removal.access_key;"
+              autostretch="never"/>
+            <spacer/>
+            <groupbox>
+              <hbox class="groupbox-title"><label class="header">&general_settings.default_action.description; </label></hbox>
+              <radiogroup preference="extensions.removedupes.default_action"
+                prefstring="extensions.removedupes.default_action"
+                id="extensions.removedupes.default_action">
+                <radio value="move"
+                  label="&general_settings.default_action.move.label;"
+                  accesskey="&general_settings.default_action.move.accesskey;"/>
+                <!-- add here: folder picker! -->
+                <radio value="delete_permanently"
+                  label="&general_settings.default_action.delete_permanently.label;"
+                  accesskey="&general_settings.default_action.delete_permanently.accesskey;"/>
+              </radiogroup>
+            </groupbox>
+          </vbox>
+        </tabpanel>
+
+        <tabpanel id="comparison_criteria_panel" flex="1">
+          <vbox flex="1">
+            <checkbox preference="extensions.removedupes.compare_stripped_and_sorted_addresses"
+              prefstring="extensions.removedupes.compare_stripped_and_sorted_addresses"
+              id="extensions.removedupes.compare_stripped_and_sorted_addresses"
+              label="&message_comparison.compare_stripped_and_sorted_addresses.label;"
+              accesskey="&message_comparison.compare_stripped_and_sorted_addresses.access_key;"
+              autostretch="never"/>
+            <groupbox>
+              <hbox class="groupbox-title"><label class="header">&message_comparison.criteria_box.label; </label></hbox>
+              <vbox flex="1">
+                <checkbox preference="extensions.removedupes.comparison_criteria.author"
+                  prefstring="extensions.removedupes.comparison_criteria.author"
+                  id="extensions.removedupes.comparison_criteria.author"
+                  label="&message_comparison.author.label;"
+                  accesskey="&message_comparison.author.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.recipients"
+                  prefstring="extensions.removedupes.comparison_criteria.recipients"
+                  id="extensions.removedupes.comparison_criteria.recipients"
+                  label="&message_comparison.recipients.label;"
+                  accesskey="&message_comparison.recipients.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.cc_list"
+                  prefstring="extensions.removedupes.comparison_criteria.cc_list"
+                  id="extensions.removedupes.comparison_criteria.cc_list"
+                  label="&message_comparison.cc_list.label;"
+                  accesskey="&message_comparison.cc_list.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.flags"
+                  prefstring="extensions.removedupes.comparison_criteria.flags"
+                  id="extensions.removedupes.comparison_criteria.flags"
+                  label="&message_comparison.flags.label;"
+                  accesskey="&message_comparison.flags.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.message_id"
+                   prefstring="extensions.removedupes.comparison_criteria.message_id"
+                  id="extensions.removedupes.comparison_criteria.message_id"
+                  label="&message_comparison.message_id.label;"
+                  accesskey="&message_comparison.message_id.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.num_lines"
+                  prefstring="extensions.removedupes.comparison_criteria.num_lines"
+                  id="extensions.removedupes.comparison_criteria.num_lines"
+                  label="&message_comparison.num_lines.label;"
+                   accesskey="&message_comparison.num_lines.access_key;"
+                  autostretch="never"/>
+                 <checkbox preference="extensions.removedupes.comparison_criteria.send_time"
+                  prefstring="extensions.removedupes.comparison_criteria.send_time"
+                  id="extensions.removedupes.comparison_criteria.send_time"
+                  label="&message_comparison.send_time.label;"
+                  accesskey="&message_comparison.send_time.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.size"
+                  prefstring="extensions.removedupes.comparison_criteria.size"
+                  id="extensions.removedupes.comparison_criteria.size"
+                  label="&message_comparison.size.label;"
+                   accesskey="&message_comparison.size.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.subject"
+                  prefstring="extensions.removedupes.comparison_criteria.subject"
+                   id="extensions.removedupes.comparison_criteria.subject"
+                  label="&message_comparison.subject.label;"
+                  accesskey="&message_comparison.subject.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.folder"
+                   prefstring="extensions.removedupes.comparison_criteria.folder"
+                  id="extensions.removedupes.comparison_criteria.folder"
+                  label="&message_comparison.folder.label;"
+                  accesskey="&message_comparison.folder.access_key;"
+                  autostretch="never"/>
+                <checkbox preference="extensions.removedupes.comparison_criteria.body"
+                  prefstring="extensions.removedupes.comparison_criteria.body"
+                  id="extensions.removedupes.comparison_criteria.body"
+                  label="&message_comparison.body.label;"
+                  accesskey="&message_comparison.body.access_key;"
+                  autostretch="never"/>
+              </vbox>
+            </groupbox>
+            <hbox align="baseline">
+              <label value="&message_comparison.time_comparison_resolution.description;"/>
+              <menulist preference="extensions.removedupes.time_comparison_resolution"
+                prefstring="extensions.removedupes.time_comparison_resolution"
+                id="extensions.removedupes.time_comparison_resolution">
+                <menupopup>
+                <menuitem value="seconds"
+                 label="&message_comparison.time_comparison_resolution.seconds.label;"/>
+                <menuitem value="minutes"
+                 label="&message_comparison.time_comparison_resolution.minutes.label;"/>
+                <menuitem value="hours"
+                 label="&message_comparison.time_comparison_resolution.hours.label;"/>
+                <menuitem value="day"
+                 label="&message_comparison.time_comparison_resolution.day.label;"/>
+                <menuitem value="month"
+                 label="&message_comparison.time_comparison_resolution.month.label;"/>
+                <menuitem value="year"
+                 label="&message_comparison.time_comparison_resolution.year.label;"/>
+                </menupopup>
+              </menulist>
+            </hbox>
+          </vbox>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+  </vbox>
+</dialog>
+

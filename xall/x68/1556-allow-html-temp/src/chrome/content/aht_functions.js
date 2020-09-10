@@ -2,15 +2,6 @@ var { Services } = ChromeUtils.import(
   "resource://gre/modules/Services.jsm"
 );
 
-/*
-window.addEventListener("load", function(e) {
-  ahtFunctions.startup();
-}, false);
-window.addEventListener("unload", function(e) {
-  ahtFunctions.shutdown();
-}, false);
-*/
-
 var ahtFunctions = {
 
   // 5 variables for the original settings
@@ -26,7 +17,7 @@ var ahtFunctions = {
   block: false,
 
   startup: function() {
-    // console.log("AHT startup");
+    // console.log("AHT: startup");
 
     this.observerService = Components.classes[
         "@mozilla.org/observer-service;1"]
@@ -37,47 +28,47 @@ var ahtFunctions = {
     try {
       if (Services.prefs.getIntPref(
           "extensions.allowhtmltemp.ButtonFunction")) {
-        // console.log("AHT default setting ButtonFunction existing:");
+        // console.log("AHT: default setting ButtonFunction existing:");
         // console.log(Services.prefs.getIntPref("extensions.allowhtmltemp.ButtonFunction"));
       }
     } catch (e) {
-      // console.log("AHT default setting ButtonFunction doesn't exist");
+      // console.log("AHT: default setting ButtonFunction doesn't exist");
       Services.prefs.setIntPref(
         "extensions.allowhtmltemp.ButtonFunction", 0)
     }
     try {
       if (Services.prefs.getBoolPref(
           "extensions.allowhtmltemp.ForceRemoteContent")) {
-        // console.log("AHT default setting ForceRemoteContent existing and true");
+        // console.log("AHT: default setting ForceRemoteContent existing and true");
       } else {
-        // console.log("AHT default setting ForceRemoteContent existing but false");
+        // console.log("AHT: default setting ForceRemoteContent existing but false");
       }
     } catch (e) {
-      // console.log("AHT default setting ForceRemoteContent doesn't exist");
+      // console.log("AHT: default setting ForceRemoteContent doesn't exist");
       Services.prefs.setBoolPref(
         "extensions.allowhtmltemp.ForceRemoteContent", false)
     }
     try {
       if (Services.prefs.getBoolPref(
           "extensions.allowhtmltemp.JavaScriptTemp")) {
-        // console.log("AHT default setting JavaScriptTemp existing and true");
+        // console.log("AHT: default setting JavaScriptTemp existing and true");
       } else {
-        // console.log("AHT default setting JavaScriptTemp existing but false");
+        // console.log("AHT: default setting JavaScriptTemp existing but false");
       }
     } catch (e) {
-      // console.log("AHT default setting JavaScriptTemp doesn't exist");
+      // console.log("AHT: default setting JavaScriptTemp doesn't exist");
       Services.prefs.setBoolPref(
         "extensions.allowhtmltemp.JavaScriptTemp", false)
     }
     try {
       if (Services.prefs.getBoolPref(
           "extensions.allowhtmltemp.InlineAttachmentsTemp")) {
-        // console.log("AHT default setting InlineAttachmentsTemp existing and true");
+        // console.log("AHT: default setting InlineAttachmentsTemp existing and true");
       } else {
-        // console.log("AHT default setting InlineAttachmentsTemp existing but false");
+        // console.log("AHT: default setting InlineAttachmentsTemp existing but false");
       }
     } catch (e) {
-      // console.log("AHT default setting InlineAttachmentsTemp doesn't exist");
+      // console.log("AHT: default setting InlineAttachmentsTemp doesn't exist");
       Services.prefs.setBoolPref(
         "extensions.allowhtmltemp.InlineAttachmentsTemp", false)
     }
@@ -90,7 +81,7 @@ var ahtFunctions = {
   observe: function(subject, topic, data) {
     switch (topic) {
       case "MsgMsgDisplayed":
-        // console.log("AHT MsgMsgDisplayed");
+        // console.log("AHT: MsgMsgDisplayed");
         if (this.block) {
           // Revert to the users default settings
           // after the message is reloaded.
@@ -101,9 +92,9 @@ var ahtFunctions = {
   },
 
   AllowHTMLtemp: function(ahtKeyboardEvent, ahtTriggeredBy) {
-    // console.log("AHT fired");
-    // console.log(ahtKeyboardEvent);
-    // console.log(ahtTriggeredBy);
+    // console.log("AHT: fired");
+    // console.log("AHT: ahtKeyboardEvent: " + ahtKeyboardEvent);
+    // console.log("AHT: ahtTriggeredBy: " + ahtTriggeredBy);
 
     // ahtButtons should be disabled, if no msg or multiple msgs are selected,
     // but sometimes we nevertheless could land here.
@@ -190,27 +181,27 @@ var ahtFunctions = {
   },
 
   ShowPlaintext: function() {
-    // console.log("AHT ShowPlaintext");
+    // console.log("AHT: ShowPlaintext");
     try {
       // reload message in plaintext:
       MsgBodyAsPlaintext();
     } catch (e) {
-      // console.log("AHT Plaintext error");
+      // console.log("AHT: Plaintext error");
     }
   },
 
   ShowSanitizedHTML: function() {
-    // console.log("AHT ShowSanitizedHTML");
+    // console.log("AHT: ShowSanitizedHTML");
     try {
       // reload message in sanitized HTML:
       MsgBodySanitized();
     } catch (e) {
-      // console.log("AHT ShowSanitizedHTML error");
+      // console.log("AHT: ShowSanitizedHTML error");
     }
   },
 
   ShowOriginalHTML: function() {
-    // console.log("AHT ShowOriginalHTML");
+    // console.log("AHT: ShowOriginalHTML");
     try {
       // enable temporarily JavaScript if temp option is set
       if (Services.prefs.getBoolPref(
@@ -226,12 +217,12 @@ var ahtFunctions = {
       // show own RemoteContentPopupmenuItem to allow HTML again in case of event
       ahtButtonStatus.changeRemoteContentPopupmenuItem();
     } catch (e) {
-      // console.log("AHT ShowOriginalHTML error");
+      // console.log("AHT: ShowOriginalHTML error");
     }
   },
 
   ShowRemote: function() {
-    // console.log("AHT ShowRemote");
+    // console.log("AHT: ShowRemote");
     try {
       // enable temporarily HTML
       Services.prefs.setBoolPref("mailnews.display.prefer_plaintext",
@@ -252,12 +243,12 @@ var ahtFunctions = {
       // now HTML is allowed, so we can reload the message with remote content:
       LoadMsgWithRemoteContent();
     } catch (e) {
-      // console.log("AHT ShowRemote error");
+      // console.log("AHT: ShowRemote error");
     }
   },
 
   SaveHTMLcontentPrefs: function() {
-    // console.log("AHT SaveHTMLcontentPrefs");
+    // console.log("AHT: SaveHTMLcontentPrefs");
     if (!this.block) // we need this block to prevent from
     // starting AHT again before the return
     // to the original settings! Otherwise we would loose
@@ -278,7 +269,7 @@ var ahtFunctions = {
   },
 
   RestoreHTMLcontentPrefs: function() {
-    // console.log("AHT RestoreHTMLcontentPrefs");
+    // console.log("AHT: RestoreHTMLcontentPrefs");
     if (this.block) {
       Services.prefs.setBoolPref("mailnews.display.prefer_plaintext", this
         .prefer_plaintext);
@@ -295,7 +286,7 @@ var ahtFunctions = {
   },
 
   InitPrefs: function() {
-    // console.log("AHT InitPrefs");
+    // console.log("AHT: InitPrefs");
     let html_as = Services.prefs.getIntPref("mailnews.display.html_as");
     let prefer_plaintext = Services.prefs.getBoolPref(
       "mailnews.display.prefer_plaintext");
@@ -386,3 +377,12 @@ var ahtFunctions = {
   }
 
 }
+
+/* eventListeners are now called from WindowListener API *
+window.addEventListener("load", function(e) {
+  ahtFunctions.startup();
+}, false);
+window.addEventListener("unload", function(e) {
+  ahtFunctions.shutdown();
+}, false);
+**********************************************************/

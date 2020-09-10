@@ -104,13 +104,16 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                 }
 
                 function setLines() {
+                  window.gDBView.reloadMessage();
                   if (expandedHeaders2.getAttribute("singleline") == "singleline") {
                     expandedHeaders2.setAttribute("singleline", "");
+                    doubleLine();
+                    checkHeaders();
                   } else {
                     expandedHeaders2.setAttribute("singleline", "singleline");
+                    singleLine();
+                    checkHeaders();
                   }
-                  toggleHeaders();
-                  toggleHeaders();
                 }
 
                 function checkLines() {
@@ -152,7 +155,6 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                 }
 
                 function markHeaders() {
-                  window.gDBView.reloadMessage();
                   if (compactHeadersViewAll.getAttribute("checked") == "true") {
                     expandedHeaders2.setAttribute("showall", "showall");
                     if (expandedHeaders2.getAttribute("compact") != "compact") window.MsgViewAllHeaders();
@@ -163,17 +165,12 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                 }
 
                 function toggleHeaders() {
-                  window.gDBView.reloadMessage();
-                  if (compactHeadersViewAll.getAttribute("checked") == "true") {
-                    window.MsgViewAllHeaders();
-                    expandedHeaders2.setAttribute("showall", "showall");
-                  } else {
-                    expandedHeaders2.removeAttribute("showall");
-                  }
                   switch(expandedHeaders2.getAttribute("compact")) {
                   case "compact": expandedHeaders2.removeAttribute("compact");
                     compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
                     compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
+                    if (expandedHeaders2.getAttribute("showall") == "showall") window.MsgViewAllHeaders();
+                    else window.MsgViewNormalHeaders();
                     msgHeaderViewDeck.setAttribute("style", "margin-block: -4px 0px;");
                     var i;
                     for (i = 1; i < expandedHeaders2.childElementCount; i++) {
@@ -195,6 +192,12 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                     }
                   }
                 }
+
+                let signedHdrIcon = window.document.getElementById("signedHdrIcon");
+                if (signedHdrIcon) signedHdrIcon.setAttribute("style", "max-width: 16px;");
+                let encryptedHdrIcon = window.document.getElementById("encryptedHdrIcon");
+                if (encryptedHdrIcon) encryptedHdrIcon.setAttribute("style", "max-width: 16px;");
+
               }
             },
           });

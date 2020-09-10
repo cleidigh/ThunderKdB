@@ -7,7 +7,6 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 	var wdw_addressbooksEdit = {
 		
 		initialVCardVersion: "",
-		initialDateFormat: "",
 		initialNodeType: "",
 
 		convertNodes: function () {
@@ -35,7 +34,7 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 				for (let card of cardbookRepository.cardbookDisplayCards[window.arguments[0].dirPrefId].cards) {
 					let myTempCard = new cardbookCardParser();
 					cardbookRepository.cardbookUtils.cloneCard(card, myTempCard);
-					if (cardbookRepository.cardbookUtils.convertVCard(myTempCard, myTargetName, myTargetVersion, wdw_addressbooksEdit.initialDateFormat, myNewDateFormat)) {
+					if (cardbookRepository.cardbookUtils.convertVCard(myTempCard, myTargetName, myTargetVersion, myNewDateFormat, myNewDateFormat)) {
 						cardbookRepository.saveCard(card, myTempCard, myActionId, false);
 						counter++;
 					}
@@ -117,7 +116,6 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 
 		load: function () {
 			wdw_addressbooksEdit.initialVCardVersion = cardbookRepository.cardbookPreferences.getVCardVersion(window.arguments[0].dirPrefId)
-			wdw_addressbooksEdit.initialDateFormat = cardbookRepository.cardbookPreferences.getDateFormat(window.arguments[0].dirPrefId, wdw_addressbooksEdit.initialVCardVersion);
 			wdw_addressbooksEdit.initialNodeType = cardbookRepository.cardbookPreferences.getNode(window.arguments[0].dirPrefId);
 
 			document.getElementById("nameTextBox").value = cardbookRepository.cardbookPreferences.getName(window.arguments[0].dirPrefId);
@@ -156,20 +154,14 @@ if ("undefined" == typeof(wdw_addressbooksEdit)) {
 
 		searchForWrongCards: function () {
 			Services.tm.currentThread.dispatch({ run: function() {
-				// the date format is no longer stored
-				let myNewDateFormat = cardbookRepository.getDateFormat(window.arguments[0].dirPrefId, wdw_addressbooksEdit.initialVCardVersion);
-				if (wdw_addressbooksEdit.initialDateFormat != myNewDateFormat) {
-					document.getElementById("convertVCardsLabel").removeAttribute('hidden');
-				} else {
-					let myVersion = cardbookRepository.cardbookPreferences.getVCardVersion(window.arguments[0].dirPrefId);
-					for (let card of cardbookRepository.cardbookDisplayCards[window.arguments[0].dirPrefId].cards) {
-						if (card.version != myVersion) {
-							document.getElementById("convertVCardsLabel").removeAttribute('hidden');
-							break;
-						}
+				let myVersion = cardbookRepository.cardbookPreferences.getVCardVersion(window.arguments[0].dirPrefId);
+				for (let card of cardbookRepository.cardbookDisplayCards[window.arguments[0].dirPrefId].cards) {
+					if (card.version != myVersion) {
+						document.getElementById("convertVCardsLabel").removeAttribute('hidden');
+						break;
 					}
-					wdw_addressbooksEdit.deleteOldDateFormat();
 				}
+				wdw_addressbooksEdit.deleteOldDateFormat();
 			}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 		},
 

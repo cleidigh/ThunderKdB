@@ -160,9 +160,7 @@ EwsNativeMailbox.prototype = {
 
     let login = Cc["@mozilla.org/login-manager/loginInfo;1"]
                   .createInstance(Ci.nsILoginInfo);
-    login.hostname = "https://" + uri.host;
-    login.password = this.password;
-    login.username = domainAndUser;
+    login.init("https://" + uri.host, null, "https://" + uri.host, domainAndUser, this.password, "", "");
 
     let nativeService = new EwsNativeService();
     let aOK = nativeService.promptUsernameAndPassword(domWindow, login);

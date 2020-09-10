@@ -1,24 +1,85 @@
 {
   "manifest_version": 2,
-  "name": "Priority Switcher",
-  "description": "Change priority of the message.",
-  "version": "0.8.1",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.0.2",
   "author": "H.Ogi",
-  "homepage_url": "http://hogi.sakura.ne.jp/en/",
-  "legacy": {
-  	"type": "xul",
-    "options" : {
-      "page" : "chrome://priosw/content/settings.xul",
-      "open_in_tab" : false
+  "homepage_url": "__MSG_extensionHomepage_url__",
+  "experiment_apis": {
+    "prioritySwitcherApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+            "addon_parent"
+          ],
+        "paths": [
+            [
+              "prioritySwitcherApi"
+            ]
+          ],
+        "script": "scripts/implementation.js"
+      }
     }
   },
+
+  "permissions": [
+    "storage",
+    "messagesRead",
+    "messagesMove",
+    "accountsRead",
+    "menus"
+  ],
+
+  "background": {
+    "scripts": [
+        "scripts/background.js"
+    ]
+  },
+
+  "icons": {
+    "24": "images/title.png"
+  },
+
+  "browser_action": {
+    "default_title": "Priority",
+    "default_icon": "images/delete-black.svg",
+    "theme_icons": [
+      {
+        "dark": "images/delete-black.svg",
+        "light": "images/delete-white.svg",
+        "size": 16
+      },
+      {
+        "dark": "images/delete-black.svg",
+        "light": "images/delete-white.svg",
+        "size": 32
+      }
+    ]
+  },
+
+  "commands": {
+    "cmd_delete": {
+      "suggested_key": {},
+      "description": "__MSG_extensionCmd_delete__"
+    },
+
+    "cmd_delete_skip_trash": {
+      "suggested_key": {},
+      "description": "__MSG_extensionCmd_delete_skipTrash__"
+    }
+  },
+
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": false
+  },
+
+  "default_locale": "en",
+
   "applications": {
     "gecko": {
       "id": "{0D2172E4-C5AE-465A-B80D-53A840275B5E}",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
-  },
-  "icons": {
-    "32": "title.png"
   }
 }

@@ -1,0 +1,188 @@
+{
+    "id": 4654,
+    "authors": [
+        {
+            "id": 9020,
+            "name": "Eyal Rozenberg",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/eyalroz/",
+            "username": "eyalroz",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/9/9020.png?modified=1479819670"
+        }
+    ],
+    "average_daily_users": 76954,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "https://paypal.me/eyalroz",
+    "created": "2007-03-13T14:38:31Z",
+    "current_version": {
+        "id": 2474207,
+        "compatibility": {
+            "thunderbird": {
+                "max": "78.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/removedupes/versions/2474207",
+        "files": [
+            {
+                "id": 1017369,
+                "created": "2020-09-07T09:54:29Z",
+                "hash": "sha256:ef62942eb9ba30fae86d318b78b013462fe9594184e1ff1466739295e48ec8cd",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 130298,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017369/remove_duplicate_messages_alternate-0.5rc1-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 5,
+            "name": {
+                "el": "Mozilla Public License, έκδοση 1.1",
+                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
+                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
+                "it": "Licenza Mozilla Public License, versione 1.1",
+                "cs": "Mozilla Public License, verze 1.1",
+                "eu": "Mozilla Public License, 1.1 bertsioa",
+                "id": "Mozilla Public License, versi 1.1",
+                "es": "Licencia pública Mozilla, versión 1.1",
+                "ru": "Mozilla Public License, версия 1.1",
+                "nl": "Mozilla Public License, versie 1.1",
+                "en-US": "Mozilla Public License Version 1.1",
+                "pl": "Mozilla Public License, wersja 1.1",
+                "fr": "Mozilla Public License Version 1.1",
+                "bg": "Mozilla Публичен лиценз, версия 1.1",
+                "de": "Mozilla Public License Version 1.1",
+                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
+                "pt-BR": "Licença personalizada",
+                "ja": "Mozilla Public License バージョン 1.1",
+                "pt-PT": "Mozilla Public License, versão 1.1",
+                "sr": "Мозилина јава лиценца, верзија 1.1",
+                "sq": "Leje Publike Mozilla, version 1.1",
+                "ko": "GPL/LGPL/MPL",
+                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
+                "sk": "Mozilla Public License, verzia 1.1",
+                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
+                "zh-TW": "Mozilla Public License，版本 1.1"
+            },
+            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+        },
+        "release_notes": {
+            "en-US": "* Dropped the \"(Alternate)\" suffix from the name. From now on this extension will be known as \"Remove Duplicate Messages\".\n* Logic change: Missing values are now assumed to have (unknown) unique values, so they are not considered to be duplicates of other missing values in the same field ; a (hidden) preference controls this behavior.\n* **Compatibility**: Compatible with Thunderbird 68, 78 and probably all beta versions in-between.\n* **Compatibility**: No longer compatible with Seamonkey 1.x, Toolkitized Seamonkey (2.x)\n* **Compatibility**: No longer compatible with Thunderbird 30...67.\n* **Fix**: Status flag comparison criteria was present only on the menubutton but not in the preferences dialog - now it appears in both.\n\nInternal changes (no user visibility):\n\n* No longer using JARs\n* Reworked the directory structure\n* Dropped some files only in use by previous TB versions (but not all files for now)\n* Using John Bieling's \"WindowListener\"  from [here](<a href=\"https://github.com/thundernest/addon-developer-support/\" rel=\"nofollow\">https://github.com/thundernest/addon-developer-support/</a>), as an extension loader; see [this guide](<a href=\"https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78\" rel=\"nofollow\">https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78</a>) regarding how to use it.\n* Now using service getters provided by `Services.jsm` and `MailServices.jsm` whenever possible.\n* Now logging using a plain and simple `console.log()`/`console.error()`.\n* **Fix:** Corrected the default value of the hidden preference for allowing MD5 substitutes for Message ID (no effect on behavior)."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/versions/0.5rc1",
+        "version": "0.5rc1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "de": "(Locale troubles? Try the <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/4654/#install-beta\" rel=\"nofollow\">beta version</a>. Found a bug? <a href=\"http://removedupes.mozdev.org\" rel=\"nofollow\">Report it</a> or <a href=\"mailto:eyalroz@technion.ac.il\">write me</a>. There's also a <a href=\"http://removedupes.mozdev.org/installation.html\" rel=\"nofollow\">Seamonkey version</a>.)\n\nEine völlige GPL-LGPL-MPL-Neuentwicklung des nunmehr veralteten 'Remove Duplicate Messages'. Fähigkeiten und Geschwindigkeit übertreffen den Vorgänger um ein Vielfaches, unter anderem:\n\n- Auswahl der Vergleichskriterien (Betreff, Verfasser, Datum usw.)\n- Vergleich der Nachrichtentexte\n- Ausführung in mehreren Verzeichnissen\n- Vorschaudialog zur zusätzlichen Kontrolle der Änderungen\n- Gute Geschwindigkeit in lokalen Ordnern mit einer hohen Zahl an Nachrichten; annehmbare Geschwindigkeit in IMAP- und RSS-Konten.",
+        "nl": "(Een bug gevonden? <a href=\"https://outgoing.prod.mozaws.net/v1/58d6c9d7844d50987d9743931d76ee7477fe1cbcc5c5bccaea6cb52a0aa958fe/http%3A//removedupes.mozdev.org\" rel=\"nofollow\">Meld deze</a> of <a href=\"https://addons.mozilla.org/\" rel=\"nofollow\">schrijf me</a>. Er is ook een <a href=\"https://outgoing.prod.mozaws.net/v1/0966423f6a77986e66eba6dbd1b6da7241e78def24c94f1a4163b7cb94d7ab7a/http%3A//removedupes.mozdev.org/installation.html\" rel=\"nofollow\">SeaMonkey-versie</a>)\n\nHet oorspronkelijke ‘Remove Duplicate Messages’ mist belangrijke functies en heeft geen licentie voor vrije software. Dit is een volledige herschrijving met een GPL-LGPL-MPL-licentie. De prestaties zijn verbeterd en er zijn vele functies en mogelijkheden toegevoegd, waaronder:\n\n- Keuze van vergelijkingscriteria (onderwerp, schrijver, datum, etc.)\n- Vergelijking van berichtteksten\n- Actie binnen meerdere mappen\n- Dialoogvenster om te controleren wat u wilt weggooien en wat u wilt behouden\n- Goede prestaties bij lokale mappen met grote aantallen berichten; redelijke prestaties bij IMAP- en RSS-accounts\n- Elegant(e) werkbalkknop en -menu.",
+        "en-US": "(As Thunderbird is undergoing massive changes under the hood, always check out the <a href=\"https://github.com/eyalroz/bidimailui/releases/\" rel=\"nofollow\">releases page on the website's homepage for a beta supporting the latest Thunderbird version. You are also welcome to </a><a href=\"https://github.com/eyalroz/bidimailui/issues\" rel=\"nofollow\">report issues</a>.)\n\nThis add-on lets you search messages in one or several folders to locate <i>duplicates</i>: Messages which are identical - according to some comparison criteria you chose.\n\nFeatures:\n\n- Wide choice of comparison criteria (subject, author, send time, CC list, flags, etc).\n- Review dialog for double-checking which duplicates to delete and which to keep.\n- Relatively fast; should easily be able to handle 100K emails and more\n- Supports comparison of message bodies as a comparison criteria (but this slows thing  down of course).\n- Good performance on local folders with large number of messages; reasonable performance with IMAP and RSS accounts.\n- Spiffy toolbar button+menu for quick access.\n- Free (GPL/LGPL/MPL license)\n\nThere's also a <a href=\"http://removedupes.mozdev.org/installation.html\" rel=\"nofollow\">SeaMonkey version</a>, though not as frequently tested.",
+        "it": "(Locale troubles? Try the <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/4654/#install-beta\" rel=\"nofollow\">beta version</a>. Found a bug? <a href=\"http://removedupes.mozdev.org\" rel=\"nofollow\">Report it</a> or <a href=\"mailto:eyalroz@technion.ac.il\">write me</a>. There's also a <a href=\"http://removedupes.mozdev.org/installation.html\" rel=\"nofollow\">Seamonkey version</a>.)\n\nQuesta estensione (rilasciata su licenza GPL-LGPL-MPL) si basa sulla precedente 'Remove Duplicate Messages', attualmente non più sviluppata, superando quest'ultima in funzionalità e prestazioni:\n\n- possibilità di scelta dei criteri di confronto (oggetto, autore, data, ecc. ecc.)\n- confronto basato sul corpo del messaggio\n- ricerca su cartelle multiple\n- finestra di riepilogo finale per poter scegliere che cosa cancellare definitivamente\n- buone prestazioni per cartelle locali con un gran numero di messaggi; prestazioni accettabili per account IMAP e RSS",
+        "da": "(Locale troubles? Try the <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/4654/#install-beta\" rel=\"nofollow\">beta version</a>. Found a bug? <a href=\"http://removedupes.mozdev.org\" rel=\"nofollow\">Report it</a> or <a href=\"mailto:eyalroz@technion.ac.il\">write me</a>. There's also a <a href=\"http://removedupes.mozdev.org/installation.html\" rel=\"nofollow\">Seamonkey version</a>.)\n\nEn GPL-LGPL-MPL fuld omskrivning af den nu-zombie-iske 'Remove Duplicate Messages'. Muligheder og ydelse overgår dem fra den oprindelige udvidelse, inklusive:\n\n- Valg af sammenligningskriterier (emne, afsender, dato, osv.)\n- Sammenligning af meddelelsestekst\n- Handling på flere mapper\n- Gennemgå-dialog for doublecheck af hvad der skal slettes og hvad der skal beholdes\n- God ydelse på lokale mapper med et stort antal meddelelser; fornuftig ydelse med IMAP og RSS konti.\n- Smart værktøjslinjeknap+menu.",
+        "sk": "(Locale troubles? Try the <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/4654/#install-beta\" rel=\"nofollow\">beta version</a>. Found a bug? <a href=\"http://removedupes.mozdev.org\" rel=\"nofollow\">Report it</a> or <a href=\"mailto:eyalroz@technion.ac.il\">write me</a>. There's also a <a href=\"http://removedupes.mozdev.org/installation.html\" rel=\"nofollow\">Seamonkey version</a>.)\n\nV súlade s licenciou GPL-LGPL-MPL úplne prepracované rozšírenie, vychádzajúce z pôvodného rozšírenia \"Remove Duplicate Messages\". Výkonom a schopnosťami prekonáva možnosti pôvodného rozšírenia, zahŕňa:\n\n- výber kritéria pre porovnávanie (predmet, autor, dátum atď.)\n- porovnávanie obsahu správ (telo správy)\n- prehľadávanie v rámci viacerých priečinkov\n- kontrolné okno, v ktorom môžete dvojitým kliknutím vybrať, ktoré správy chcete odstrániť a ktoré ponechať\n- dobrý výkon aj pri lokálnych priečinkoch s veľkým množstvom správ; primeraný výkon pri účtoch typu IMAP a RSS",
+        "he": "(מצאת באג או בעיה? <a href=\"http://removedupes.mozdev.org\" rel=\"nofollow\">דווח/י עליו</a> או <a href=\"mailto:eyalroz@technion.ac.il\">. ויש גם </a><a href=\"http://removedupes.mozdev.org/installation.html\" rel=\"nofollow\">גרסת SeaMonkey</a> של ההרחבה)\n\nשכתוב מלא, ברישיון GPL-LGPL-MPL, של ההרחבה 'Remove Duplicate Messages' - אשר הינה כרגע מעין זומבי ללא השגחה. דיווחי באגים, בקשות הרחבת יכולת וכו' יתקבלו בברכה, כפי שיתקבלו גם מפתחים/ות המבקשים/ות לעבוד על ההרחבה עם המפתח הבודד כרגע..."
+    },
+    "developer_comments": {
+        "en-US": "I had tried contacting the author of the original 'Remove Duplicate Messages' several times, without success. I would have liked to join forces and have just one extension, but that doesn't seem to work out.\n\nAlso, some locales are incomplete - help with them would be appreciated. Visit the <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/7375cb579006df3492ab7e2a7f6e78802750aad4932aec162d9886d332bf6b86/http%3A//www.babelzilla.org/\">BabelZilla</a> translation website."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/removedupes/edit",
+    "guid": "{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/eyalroz/removedupes/",
+        "nl": "https://removedupes.mozdev.org/",
+        "he": "https://removedupes.mozdev.org/"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4654-64.png?modified=1599477850",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4654-32.png?modified=1599477850",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4654-64.png?modified=1599477850"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-09-07T10:03:08Z",
+    "name": {
+        "fr": "Supprimer les messages en double (Alternatif)",
+        "de": "Entfernung doppelter Nachrichten (Alternative)",
+        "en-US": "Remove Duplicate Messages",
+        "it": "Remove Duplicate Messages (Alternate)",
+        "pt-BR": "Remover Mensagens Duplicadas (Alternativo)",
+        "he": "הסר הודעות כפולות"
+    },
+    "previews": [
+        {
+            "id": 18277,
+            "caption": null,
+            "image_size": [
+                700,
+                479
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/18/18277.png?modified=1530208311",
+            "thumbnail_size": [
+                292,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/18/18277.png?modified=1530208311"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 4.20938,
+        "count": 228,
+        "average": 4.2149,
+        "text_count": 228
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/4654",
+    "slug": "removedupes",
+    "status": "public",
+    "summary": {
+        "de": "Suchen und entfernen Sie mehrfach vorhandene Nachrichten in Ihren Mailordnern (auch als \"Duplikate\" bekannt).",
+        "nl": "Zoek en verwijder berichten die identiek zijn aan andere berichten in uw mailmappen (ook wel duplicaten genoemd)",
+        "en-US": "Search and remove messages which are the same as other messages in your mail folders (referred to as duplicates or dupes).",
+        "it": "Estensione per identificare e rimuovere i messaggi e-mail duplicati nelle cartelle di posta.",
+        "da": "Søg og fjern meddelelser, som er magen til andre meddelelser i dine mail-mapper (omtalt som 'dubletter').",
+        "sk": "Vyhľadáva a odstraňuje správy, ktoré sú totožné s inými správami vo vašom poštovom priečinku (takzvané duplicity).",
+        "he": "מחפש ומסיר הודעות אשר הינן כפילויות של הודעות אחרות בתיקיות הדואר שלך."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/eyalroz/removedupes/issues/"
+    },
+    "tags": [
+        "clean",
+        "clean up",
+        "dupes",
+        "duplicate",
+        "duplicate messages",
+        "firefox57",
+        "remove"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/",
+    "weekly_downloads": 1433,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2018-04-04T11:52:43Z"
+        }
+    }
+}

@@ -16,39 +16,39 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/9/9020.png?modified=1479819670"
         }
     ],
-    "average_daily_users": 2435,
+    "average_daily_users": 2444,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "https://paypal.me/eyalroz",
     "created": "2004-10-06T10:38:55Z",
     "current_version": {
-        "id": 2474049,
+        "id": 2474208,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "78.*",
                 "min": "65.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/versions/2474049",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/versions/2474208",
         "files": [
             {
-                "id": 1017211,
-                "created": "2020-08-07T15:11:50Z",
-                "hash": "sha256:2065e397290f30a4d4a090a2b405d875d2a50a2970c052e765bad6d509ba8a10",
-                "is_restart_required": true,
+                "id": 1017370,
+                "created": "2020-09-07T10:13:15Z",
+                "hash": "sha256:5750a7789e6e9b5ba210a8c0349901fd2c3dac7a8c0d0ea8395163c822105d41",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 81314,
+                "size": 112029,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017211/bidi_mail_ui-0.10.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017370/bidi_mail_ui-0.11rc1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -82,39 +82,39 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "* **Fix:** Was using an identifier instead of a string, messing up some of HTML message composition support\n* **Fix:** Was missing an XHTML sub-namespace for the preferences/\n* Extension homepage link now points to the GitHub repository.\n\nThis is probably the last version to support Seamonkey 1.x, Seamonkey 2.x (suiterunner) and Thunderbird versions below 68."
+            "en-US": "* **Compatibility**: Compatible with Thunderbird 68, 78 and probably all beta versions in-between.\n* **Compatibility**: No longer compatible with Seamonkey 1.x, Toolkitized Seamonkey (2.x)\n* **Compatibility**: No longer compatible with Thunderbird 30...67.\n* **Fix:** Was using an identifier instead of a string, messing up some of HTML message composition support\n* **Fix:** Was missing an XHTML sub-namespace for the preferences/\n* **Fix:** Issues mostly (wholly) resolved the issues with setting the direction on new paragraphs.\n\nInternal changes (no user visibility):\n\n* No longer using JARs within the XPI\n* Reworked the directory structure\n* Dropped some files only in use by previous TB versions (but not all files for now)\n* Using John Bieling's \"WindowListener\"  from [here](<a href=\"https://github.com/thundernest/addon-developer-support/\" rel=\"nofollow\">https://github.com/thundernest/addon-developer-support/</a>), as an extension loader; see [this guide](<a href=\"https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78\" rel=\"nofollow\">https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78</a>) regarding how to use it.\n* Now using service getters provided by `Services.jsm` and `MailServices.jsm` whenever possible.\n* Now logging using a plain and simple `console.log()`.\n* **Fix:** Was adding stylesheets to documents as children of the root element rather than the head element.\n* **Fix:** Now creating non-XUL for style elements for appending rules without a link.\n* **Fix:** Passing correct parameters to reply-body direction detection.\n* **Fix:** No longer using editor.setParagraphFormat().\n* **Fix:** No longer using the now-gone interface nsIEditorStyleSheets to append stylesheets."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/versions/0.10.1",
-        "version": "0.10.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/bidi-mail-ui/versions/0.11rc1",
+        "version": "0.11rc1"
     },
     "default_locale": "en-US",
     "description": {
         "en-US": "<b>BiDi Mail UI</b> adds functionality both for reading and composing mail and news messages.\n\n<b>Reading</b>:\n<ul><li> Detects many cases in which Mozilla mis-decodes a message in one of the bidirectional language charsets, and chooses the proper encoding</li><li> Decodes Bidirectional language text in mixed-charset messages (UTF-8 and windows-1255/6)</li><li> Detects the intended directions of mail messages and displays them in this direction</li><li> Detects the intended directions of individual paragraphs within mail messages and lays out the message accordingly</li></ul>\n<b>Composition</b>:\n<ul><li> Allows setting the direction of the entire message</li><li> Allows setting the direction of individual paragraphs in HTML mail</li><li> Allows insertion of LRM/RLM marks, via menus or using Ctrl+Shift+L/Ctrl+Shift+R</li></ul>",
-        "he": "(מצאת באג? חסרה לך יכולה כלשהיא? נסה/י את <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/310/#install-beta\">גרסת הבטא</a>.)\n\nBiDi Mail UI מוסיף יכולות לקריאה ולכתיבת הודעות דואר אלקטרוני והודעות לקבוצות דיון.\n\nקריאה:\n- זיהוי של מקרים רבים בהם מוזילה שוגה בזיהוי הקידוד באחת מן השפות הנכתבות מימין-לשמאל, ובחירה מחודשת של קידוד נכון\n- פענוח מלל בשפות הנכתבות מימין-לשמאל בהודעות הכוללות מלל בשני קידודים שונים (UTF-8 ו-windows-1255/6)\n- זיהוי הכיוון הרצוי של תוכן בהודעות מלל פשוט והצגת המלל בכיוון המתאים\n- זיהוי הכיוון הרצוי של אלמנטים בתוך הודעות HTML והצגת ההודעות בכיווניות המתאימה לאלמנטים השונים\n\nכתיבה:\n- אפשרות קביעת כיוון להודעה כולה\n- אפשרות קביעת כיוון לפסקאות בודדות בהודעות HTML"
+        "he": "(מצאת באג? חסרה לך יכולה כלשהיא? נסה/י את <a href=\"https://addons.mozilla.org/en-US/thunderbird/addon/310/#install-beta\" rel=\"nofollow\">גרסת הבטא</a>.)\n\nBiDi Mail UI מוסיף יכולות לקריאה ולכתיבת הודעות דואר אלקטרוני והודעות לקבוצות דיון.\n\nקריאה:\n- זיהוי של מקרים רבים בהם מוזילה שוגה בזיהוי הקידוד באחת מן השפות הנכתבות מימין-לשמאל, ובחירה מחודשת של קידוד נכון\n- פענוח מלל בשפות הנכתבות מימין-לשמאל בהודעות הכוללות מלל בשני קידודים שונים (UTF-8 ו-windows-1255/6)\n- זיהוי הכיוון הרצוי של תוכן בהודעות מלל פשוט והצגת המלל בכיוון המתאים\n- זיהוי הכיוון הרצוי של אלמנטים בתוך הודעות HTML והצגת ההודעות בכיווניות המתאימה לאלמנטים השונים\n\nכתיבה:\n- אפשרות קביעת כיוון להודעה כולה\n- אפשרות קביעת כיוון לפסקאות בודדות בהודעות HTML"
     },
     "developer_comments": {
-        "en-US": "<ul><li>Support for Farsi and Urdu could be improved. Users getting mail in these languages in which directions are not properly detected or the charset is mangled - please contact the developer and/or file a bug on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e6e945b817356c073d8090ad1c521a73408d9e427bea49672e49a0c4631df6a/http%3A//www.mozdev.org/bugs\">http://www.mozdev.org/bugs</a>.</li></ul>",
-        "ar": "Support for Farsi and Urdu could be improved. Users getting mail in these languages in which directions are not properly detected or the charset is mangled - please contact the developer and/or file a bug on <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e6e945b817356c073d8090ad1c521a73408d9e427bea49672e49a0c4631df6a/http%3A//www.mozdev.org/bugs\">http://www.mozdev.org/bugs</a>.\n\nنحن دائما مهتمون بمساعدة في ال-support اللغة العربية. أكتب لنا... eyalroz@technion.ac.il"
+        "en-US": "<ul><li>Support for Farsi and Urdu could be improved. Users getting mail in these languages in which directions are not properly detected or the charset is mangled - please contact the developer and/or file a bug on <a href=\"https://github.com/eyalroz/bidimailui/issues/\" rel=\"nofollow\">https://github.com/eyalroz/bidimailui/issues/</a>.</li></ul>",
+        "ar": "Support for Farsi and Urdu could be improved. Users getting mail in these languages in which directions are not properly detected or the charset is mangled - please contact the developer and/or file a bug on <a href=\"http://www.mozdev.org/bugs\" rel=\"nofollow\">http://www.mozdev.org/bugs</a>.\n\nنحن دائما مهتمون بمساعدة في ال-support اللغة العربية. أكتب لنا... eyalroz@technion.ac.il"
     },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/bidi-mail-ui/edit",
     "guid": "{54e72d7b-ed31-4736-854f-f517358f21ee}",
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
-        "en-US": "http://bidiui.mozdev.org/mail/",
+        "en-US": "https://github.com/eyalroz/bidimailui/",
         "he": "http://bidiui.mozdev.org/mail/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/310-64.png?modified=1510328678",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/310-64.png?modified=1599477213",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/310-32.png?modified=1510328678",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/310-64.png?modified=1510328678"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/310-32.png?modified=1599477213",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/310-64.png?modified=1599477213"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-08-13T11:22:42Z",
+    "last_updated": "2020-09-07T12:34:04Z",
     "name": {
         "en-US": "BiDi Mail UI"
     },
@@ -154,7 +154,7 @@
         "en-US": "eyalroz@technion.ac.il"
     },
     "support_url": {
-        "en-US": "http://bidiui.mozdev.org/bugs.html"
+        "en-US": "https://github.com/eyalroz/bidimailui/issues/"
     },
     "tags": [
         "arabic",
@@ -187,6 +187,7 @@
             "mext": true,
             "comp68": true,
             "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-19T22:43:27Z"

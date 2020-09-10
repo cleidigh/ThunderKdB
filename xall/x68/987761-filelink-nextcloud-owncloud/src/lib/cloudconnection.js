@@ -345,11 +345,13 @@ class CloudConnection {
         const existingShare = shareinfo.find(share =>
             /// ... and if it's a public share ...
             (share.share_type === 3) &&
-            // ownCloud doesn't tell us the password, so ignore their shares with passwords
-            !share.share_with &&
-            // ... with the same password (if any) ...
-            // CAUTION: If no password is set Nextcloud has password===null, ownCloud has password===undefined
-            (this.useDlPassword ? share.password === this.downloadPassword : !share.password) &&
+            /* If a password is set, share_with is not empty in both cloud
+            flavors. Since we have no chance to retreive the share password, we
+            use this to ignore shares with passwords. But Nextcloud might "fix"
+            this, so we also check for password to make sure we are still fine
+            if that happens.*/
+            // ... and it has no password ...
+            !share.share_with && !share.password
             // ... and the same expiration date
             (
                 (!this.useExpiry && share.expiration === null) ||

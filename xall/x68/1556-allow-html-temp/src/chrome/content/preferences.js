@@ -1,4 +1,5 @@
-Preferences.addAll([{
+Preferences.addAll([
+  {
     id: "extensions.allowhtmltemp.ButtonFunction",
     type: "int"
   },

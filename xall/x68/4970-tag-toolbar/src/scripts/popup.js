@@ -119,8 +119,6 @@ async function init() {
 
 async function switchCategory() {
   let catList = document.getElementById("categories");
-//  let selectedIndex = catList.selectedIndex;
-//  let cat = categories[selectedIndex];
   let opt = catList.selectedOptions[0];
   let index = opt.getAttribute("catIndex");
   let cat = categories[parseInt(index)];

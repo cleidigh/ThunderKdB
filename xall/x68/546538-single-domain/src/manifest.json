@@ -1,15 +1,16 @@
 {
   "manifest_version": 2,
-  "version": "3.3.1",
+  "version": "3.8",
   "name": "Single Domain",
   "description": "Warns you if you send mail to outside or into a specified domain.",
+  "default_locale":"en",
   "developer": {
     "name": "Graeme"
   },
   "applications": {
     "gecko": {
       "id": "singledomain@graeme.henry",
-      "strict_min_version": "66.0"
+      "strict_min_version": "76.0"
     }
   },
   "experiment_apis": {
@@ -19,31 +20,24 @@
         "scopes":["addon_parent"],
         "paths": [["myapi"]],
         "script": "myapi/implementation.js"
-      }
-    },
-    "oldPrefs": {
-      "schema": "oldPrefs/schema.json",
-      "parent": {
-        "scopes":["addon_parent"],
-        "paths": [["oldPrefs"]],
-        "script": "oldPrefs/implementation.js"
-      }
     }
+   }
   },
-
   "background": {
     "scripts": [
-      "ui/util/utils.js",
-      "ui/util/stringbundle.js",
-      "singledomain.js"
+      "background.js"
     ]
   },
   "icons": {
      "48": "icons/icon.png"
   },
-  "options_ui": {
-    "page": "ui/settings/settings.html",
-    "browser_style": false
+  "compose_action": {
+    "default_title": "Expand Addresses"
   },
-  "permissions": ["storage"]
+
+  "options_ui": {
+    "page": "settings/settings.html",
+    "browser_style": true
+  },
+  "permissions": [ "storage", "compose", "addressBooks","accountsRead"]
 }

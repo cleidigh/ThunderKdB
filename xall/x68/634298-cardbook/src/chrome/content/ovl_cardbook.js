@@ -1,10 +1,10 @@
-if ("undefined" == typeof(cardbookTabType)) {
-	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { QuickFilterManager } = ChromeUtils.import("resource:///modules/QuickFilterManager.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { QuickFilterManager } = ChromeUtils.import("resource:///modules/QuickFilterManager.jsm");
+var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
+var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
+if ("undefined" == typeof(cardbookTabType)) {
 	var cardbookTabMonitor = {
 		monitorName: "cardbook",
 		onTabTitleChanged: function() {},
@@ -15,7 +15,9 @@ if ("undefined" == typeof(cardbookTabType)) {
 		},
 		onTabClosing: function(aTab) {
 			if (aTab.mode.name == "cardbook") {
-				document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "mail");
+				if (document.getElementById("cardboookModeBroadcasterTab")) {
+					document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "mail");
+				}
 				document.getElementById("unreadMessageCount").hidden=false;
 			}
 		},
@@ -23,12 +25,15 @@ if ("undefined" == typeof(cardbookTabType)) {
 		onTabRestored: function() {},
 		onTabSwitched: function(aNewTab, aOldTab) {
 			if (aNewTab.mode.name == "cardbook") {
-				document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "cardbook");
+				if (document.getElementById("cardboookModeBroadcasterTab")) {
+					document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "cardbook");
+				}
 				document.getElementById("totalMessageCount").setAttribute("tooltiptext", ConversionHelper.i18n.getMessage("statusProgressInformationTooltip"));
 			} else {
-				document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "mail");
+				if (document.getElementById("cardboookModeBroadcasterTab")) {
+					document.getElementById("cardboookModeBroadcasterTab").setAttribute("mode", "mail");
+				}
 				document.getElementById("totalMessageCount").removeAttribute("tooltiptext");
-				wdw_cardbook.setElementLabel(document.getElementById('statusText'), "");
 				document.getElementById("unreadMessageCount").hidden=false;
 			}
 		}
@@ -236,6 +241,13 @@ window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", f
 	if (tabmail) {
 		tabmail.registerTabType(cardbookTabType);
 		tabmail.registerTabMonitor(cardbookTabMonitor);
+	}
+
+	// the currentset is lost by the overlay loader
+	var currentSet = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.cardbookToolbar.currentset");
+	if (currentSet) {
+		var toolbar = document.getElementById("cardbook-toolbar");
+		toolbar.currentSet = currentSet;
 	}
 
 	var firstRun = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.firstRun");

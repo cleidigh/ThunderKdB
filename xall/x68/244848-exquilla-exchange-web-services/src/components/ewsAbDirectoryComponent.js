@@ -336,7 +336,7 @@ EwsAbDirectory.prototype = {
 
   deleteCards: function _deleteCards(aCards)
   {
-    return this.deleteCardsWithListener(aCards, null);
+    return this.deleteCardsWithListener(/* COMPAT for TB 68 */toArray(aCards, Ci.nsIAbCard), null);
   },
 
   dropCard: function _dropCard(aCard, aNeedToCopyCard)
@@ -1331,7 +1331,6 @@ EwsAbDirectory.prototype = {
     return new ArrayEnumerator(cardArray);
   } catch(e) {re(e);}},
 
-  // aCards is an nsIArray
   deleteCardsWithListener: function _deleteCardsWithListener(aCards, aListener)
   {
     try {
@@ -1341,9 +1340,7 @@ EwsAbDirectory.prototype = {
     }
     // We delete immediately, then store in EWS
     let itemIds = new StringArray();
-    for (let i = 0; (i < aCards.length) && !this.wrap.mIsGAL; i++)
-    {
-      let card = aCards.queryElementAt(i, Ci.nsIAbCard);
+    for (let card of this.wrap.mIsGAL ? [] : aCards) {
       let itemId = card.getProperty('itemId', '');
       if (itemId.length)
       {

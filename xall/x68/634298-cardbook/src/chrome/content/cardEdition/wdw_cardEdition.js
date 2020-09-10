@@ -1220,6 +1220,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 };
 
 // translations
-window.addEventListener("DOMContentLoaded", function(e) {
+window.addEventListener("load", function(e) {
 	cardbookLocales.updateDocument();
 }, false);

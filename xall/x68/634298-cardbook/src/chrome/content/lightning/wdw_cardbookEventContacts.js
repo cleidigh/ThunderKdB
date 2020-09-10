@@ -288,7 +288,6 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 		},
 
 		load: function () {
-			var { calUtils } = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm");
 			wdw_cardbookEventContacts.emailArray = window.arguments[0].listOfEmail;
 			wdw_cardbookEventContacts.attendeeId = window.arguments[0].attendeeId;
 			wdw_cardbookEventContacts.attendeeName = window.arguments[0].attendeeName;

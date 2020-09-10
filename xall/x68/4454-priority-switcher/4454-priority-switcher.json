@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1085,
+    "average_daily_users": 1118,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,36 @@
     "contributions_url": null,
     "created": "2007-02-03T02:56:18Z",
     "current_version": {
-        "id": 2472962,
+        "id": 2474205,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/priority-switcher/versions/2472962",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/priority-switcher/versions/2474205",
         "files": [
             {
-                "id": 1016069,
-                "created": "2019-12-02T08:45:07Z",
-                "hash": "sha256:ed49535747c2826348bc75f61b70923d0abf5c36d198b355eeeb062303031f81",
-                "is_restart_required": true,
+                "id": 1017367,
+                "created": "2020-09-07T07:19:20Z",
+                "hash": "sha256:f90909ef7e58be5c4990277290d4cecbfbc565b46f45980c337a3f486c4115f3",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 44453,
+                "size": 24427,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016069/priority_switcher-0.8.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017367/priority_switcher-2.0.2-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "messagesRead",
+                    "messagesMove",
+                    "accountsRead",
+                    "menus"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -76,22 +82,18 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "- Support Thunderbird 68\n- Fix wrong image file extension",
-            "ja": ""
+            "en-US": "Convert to MailExtensions to support Thunderbird 78"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/priority-switcher/versions/0.8.1",
-        "version": "0.8.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/priority-switcher/versions/2.0.2",
+        "version": "2.0.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Beta version for Thunderbird 68 is available. Please download it from my homepage.</b>\n<a href=\"http://hogi.sakura.ne.jp/en/\" rel=\"nofollow\">http://hogi.sakura.ne.jp/en/</a>\n\nChange priority of the received messages from the toolbar button and the context menus.\nNotice that this extension changes priority in the *msf files. So, if you reconstruct the files, all changes will be gone.\n\n* From 0.4.10, you can commit the change of priority to X-Priority. This rewrites original message so the change  will not be gone if you commit. Moreover, you can share the changes on all environments if you use IMAP.\n\nPlease refer to the following link for supported locales:\n<a href=\"http://hogiblog.blogspot.com/2007/11/call-for-translation.html\" rel=\"nofollow\">http://hogiblog.blogspot.com/2007/11/call-for-translation.html</a>",
-        "ja": "<b>Thunderbird 68向けに、ベータテストを実施しています。ホームページから、最新のベータ版を入手してください。</b>\n<a href=\"http://hogi.sakura.ne.jp/ja/\" rel=\"nofollow\">http://hogi.sakura.ne.jp/ja/</a>\n\n受信したメッセージの重要度(Priority)を変更する機能を追加します。この拡張機能は、要約ファイル(msfファイル)を変更します。これを削除、または再構築すると、元の重要度に戻るので注意してください。\n\n※0.4.10からX-Priorityを書き換える機能が追加されました。X-Priorityを書き換えると、要約ファイルの再構築をしても、重要度は変更されません。また、IMAPをご使用の方は、環境が変わっても同じ重要度にすることができます。"
+        "en-US": "v2.x supports Thunderbird 78. For details of v2.x, please refer to the following blog post.\n<a href=\"https://hogiblog.blogspot.com/2020/09/mailextensions-priority-switcher.html\" rel=\"nofollow\">https://hogiblog.blogspot.com/2020/09/mailextensions-priority-switcher.html</a>\n\nChange priority of the received messages from the toolbar button and the context menus.\nNotice that this extension changes priority in the *msf files. So, if you reconstruct the files, all changes will be gone.\n\n* From 0.4.10, you can commit the change of priority to X-Priority. This rewrites original message so the change  will not be gone if you commit. Moreover, you can share the changes on all environments if you use IMAP.",
+        "ja": "v2.xがThunderbird 78に対応しています。旧バージョンから、いくつか変更点があるので、以下のブログ投稿を確認してください。\n<a href=\"https://hogi-ja.blogspot.com/2020/09/mailextensions-priority-switcher.html\" rel=\"nofollow\">https://hogi-ja.blogspot.com/2020/09/mailextensions-priority-switcher.html</a>\n\n受信したメッセージの重要度(Priority)を変更する機能を追加します。この拡張機能は、要約ファイル(msfファイル)を変更します。これを削除、または再構築すると、元の重要度に戻るので注意してください。\n\n※0.4.10からX-Priorityを書き換える機能が追加されました。X-Priorityを書き換えると、要約ファイルの再構築をしても、重要度は変更されません。また、IMAPをご使用の方は、環境が変わっても同じ重要度にすることができます。"
     },
-    "developer_comments": {
-        "en-US": "If you use Thunderbird 1.5, download 0.1.50 from previous release page.",
-        "ja": "Thunderbird1.5をお使いの場合は、過去のバージョンから0.1.50をダウンロードしてください。"
-    },
+    "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/priority-switcher/edit",
     "guid": "{0D2172E4-C5AE-465A-B80D-53A840275B5E}",
     "has_eula": false,
@@ -100,16 +102,16 @@
         "en-US": "http://hogi.sakura.ne.jp/en/",
         "ja": "http://hogi.sakura.ne.jp/ja/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4454-64.png?modified=1566853860",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4454-64.png?modified=e2a90c80",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4454-32.png?modified=1566853860",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4454-64.png?modified=1566853860"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4454-32.png?modified=e2a90c80",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4454-64.png?modified=e2a90c80"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-12-04T12:22:03Z",
+    "last_updated": "2020-09-07T09:43:39Z",
     "name": {
         "en-US": "Priority Switcher",
         "ja": "Priority Switcher"
@@ -125,12 +127,12 @@
                 157,
                 39
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13319.png?modified=1530208309",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13319.png?modified=1599390946",
             "thumbnail_size": [
                 157,
                 39
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13319.png?modified=1530208309"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13319.png?modified=1599390946"
         },
         {
             "id": 13328,
@@ -142,12 +144,12 @@
                 497,
                 213
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13328.png?modified=1530208310",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13328.png?modified=1599390946",
             "thumbnail_size": [
                 320,
                 137
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13328.png?modified=1530208310"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13328.png?modified=1599390946"
         },
         {
             "id": 13329,
@@ -159,12 +161,12 @@
                 386,
                 334
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13329.png?modified=1530208310",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13329.png?modified=1599390946",
             "thumbnail_size": [
                 231,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13329.png?modified=1530208310"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13329.png?modified=1599390946"
         },
         {
             "id": 13330,
@@ -176,12 +178,63 @@
                 484,
                 135
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13330.png?modified=1530208310",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/13/13330.png?modified=1599390946",
             "thumbnail_size": [
                 320,
                 89
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13330.png?modified=1530208310"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/13/13330.png?modified=1599390946"
+        },
+        {
+            "id": 206133,
+            "caption": {
+                "en-US": "Show priority as toolbar button icon (v2.x)",
+                "ja": ""
+            },
+            "image_size": [
+                282,
+                48
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206133.png?modified=1599390905",
+            "thumbnail_size": [
+                282,
+                48
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206133.png?modified=1599390905"
+        },
+        {
+            "id": 206134,
+            "caption": {
+                "en-US": "Change priority by toolbar popup (v2.x)",
+                "ja": ""
+            },
+            "image_size": [
+                266,
+                451
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206134.png?modified=1599390948",
+            "thumbnail_size": [
+                118,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206134.png?modified=1599390948"
+        },
+        {
+            "id": 206135,
+            "caption": {
+                "en-US": "Confirm when the message with higher priority is deleted (v2.x)",
+                "ja": ""
+            },
+            "image_size": [
+                484,
+                242
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206135.png?modified=1599390905",
+            "thumbnail_size": [
+                320,
+                160
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206135.png?modified=1599390905"
         }
     ],
     "public_stats": false,
@@ -201,11 +254,12 @@
         "ja": "受信したメッセージの重要度(Priority)を変更する機能を追加します。"
     },
     "support_email": {
-        "en-US": "azarasister@gmail.com"
+        "en-US": "azarasister@gmail.com",
+        "ja": "azarasister@gmail.com"
     },
     "support_url": {
-        "en-US": "http://hogiblog.blogspot.com/2008/04/feature-request-and-support-thread.html",
-        "ja": "http://hogi-ja.blogspot.com/2008/11/blog-post_30.html"
+        "en-US": "https://hogiblog.blogspot.com/2020/08/feature-request-and-support-thread-2.html",
+        "ja": "https://hogi-ja.blogspot.com/2020/08/3.html"
     },
     "tags": [
         "firefox57"
@@ -215,10 +269,10 @@
     "weekly_downloads": 46,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-25T17:38:02Z"
         }

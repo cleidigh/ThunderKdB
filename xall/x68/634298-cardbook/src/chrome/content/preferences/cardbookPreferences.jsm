@@ -554,16 +554,6 @@ var cardbookPreferences = {
 		this.setStringPref(this.prefCardBookData + aDirPrefId + "." + "lastSearch", name);
 	},
 
-	// deprecated (here for cards migration)
-	getDateFormat: function (aDirPrefId, aVersion) {
-		let dateFormat = this.getStringPref(this.prefCardBookData + aDirPrefId + "." + "dateFormat");
-		if (dateFormat) {
-			return dateFormat;
-		} else {
-			return cardbookRepository.getDateFormat(aDirPrefId, aVersion);
-		}
-	},
-
 	getUrnuuid: function (aDirPrefId) {
 		return this.getBoolPref(this.prefCardBookData + aDirPrefId + "." + "urnuuid", false);
 	},

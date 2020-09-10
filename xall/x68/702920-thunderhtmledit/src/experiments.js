@@ -19,6 +19,7 @@ function setupUI(win) {
 
   // All our stuff lives inside this object, so create it now.
   win.ThunderHTMLedit_ = { pleaseDonate: l10nObj.pleaseDonate };
+  win.ThunderHTMLedit_.extension = extension;
 
   Services.scriptloader.loadSubScript(extension.getURL("content/thunderHTMLedit-composer.js"), win.ThunderHTMLedit_);
   win.ThunderHTMLedit_.init(win);
@@ -49,8 +50,6 @@ function setupUI(win) {
 
   // The former SourceEditor module can now be accessed via ThunderHTMLedit_.
   win.ThunderHTMLedit_.SourceEditor.initFind(win);
-
-  win.ThunderHTMLedit_.extension = extension;
 
   // Monkey patch SetMsgBodyFrameFocus();
   win.ThunderHTMLedit_.SetMsgBodyFrameFocus = win.SetMsgBodyFrameFocus;
@@ -100,6 +99,8 @@ var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
           defaultsBranch.setIntPref("FontSize", 13);
           defaultsBranch.setStringPref("FontFamily", "monospace");
           defaultsBranch.setBoolPref("DarkTheme", false);
+          // eslint-disable-next-line quotes
+          defaultsBranch.setStringPref("OptionsJSON", '{"behavioursEnabled":true}');
 
           let os = Services.appinfo.OS;
           let dir = (os == "WINNT" ? "win" : (os == "Darwin" ? "mac" : "linux"));

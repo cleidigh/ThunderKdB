@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2481,
+    "average_daily_users": 2602,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -21,30 +21,36 @@
     "contributions_url": null,
     "created": "2006-05-13T07:32:43Z",
     "current_version": {
-        "id": 2472702,
+        "id": 2474237,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-sent-to-current/versions/2472702",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-sent-to-current/versions/2474237",
         "files": [
             {
-                "id": 1015793,
-                "created": "2019-10-02T06:12:13Z",
-                "hash": "sha256:ad80081d5c5cda35f45d73f05b050ac46df2a633ed58c5ad7a5fb75d9b8242eb",
-                "is_restart_required": true,
+                "id": 1017399,
+                "created": "2020-09-10T09:53:32Z",
+                "hash": "sha256:b5c2161da816dbe378ed951ce6cc2df42ee01c2537c14c38afebcc99e8d30689",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 61265,
+                "size": 39818,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015793/copy_sent_to_current-2.0.3-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017399/copy_sent_to_current-3.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "tabs",
+                    "activeTab",
+                    "storage",
+                    "accountsRead"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -79,8 +85,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/versions/2.0.3",
-        "version": "2.0.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/versions/3.0",
+        "version": "3.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -106,7 +112,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-10-25T12:43:04Z",
+    "last_updated": "2020-09-10T15:41:44Z",
     "name": {
         "en-US": "Copy Sent to Current"
     },
@@ -162,10 +168,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.25909,
-        "count": 80,
-        "average": 4.275,
-        "text_count": 80
+        "bayesian_average": 4.26822,
+        "count": 81,
+        "average": 4.284,
+        "text_count": 81
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/reviews/",
     "requires_payment": false,
@@ -190,10 +196,10 @@
     "weekly_downloads": 53,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-27T08:11:47Z"
         }

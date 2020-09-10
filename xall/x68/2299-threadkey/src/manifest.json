@@ -9,45 +9,25 @@
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "author": "Onno Ekker",
-  "version": "2.0a2",
+  "version": "2.0",
   "background": {
     "scripts": [
       "background.js"
     ]
   },
   "experiment_apis": {
-    "myapi": {
+    "threadkeyApi": {
       "schema": "schema.json",
       "parent": {
         "scopes": ["addon_parent"],
-        "paths": [["myapi"]],
-        "script": "threadkey.js"
-      }
-    }
-  },
-  "commands": {
-    "cmd_threadSort": {
-      "description" : "View > Sort By > Threaded.",
-      "suggested_key": {
-        "default": "Alt+Shift+T"
-      }
-    },
-    "cmd_unthreadSort": {
-      "description" : "View > Sort By > Unthreaded.",
-      "suggested_key": {
-        "default": "Alt+Shift+U"
-      }
-    },
-    "cmd_groupBySort": {
-      "description" : "View > Sort By > Grouped By Sort.",
-      "suggested_key": {
-        "default": "Alt+Shift+G"
+        "paths": [["threadkeyApi"]],
+        "script": "content/threadkey.js"
       }
     }
   },
   "homepage_url": "https://threadkey.sourceforge.io/",
   "default_locale": "en",
   "icons": {
-    "32": "icon.png"
+    "32": "skin/icon.png"
   }
 }

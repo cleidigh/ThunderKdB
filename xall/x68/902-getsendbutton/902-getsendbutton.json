@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 6799,
+    "average_daily_users": 6982,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,30 @@
     "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "created": "2005-06-23T16:53:22Z",
     "current_version": {
-        "id": 2472881,
+        "id": 2474225,
         "compatibility": {
             "thunderbird": {
-                "max": "72.0a1",
-                "min": "68.0"
+                "max": "80.0",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/getsendbutton/versions/2472881",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/getsendbutton/versions/2474225",
         "files": [
             {
-                "id": 1015987,
-                "created": "2019-11-17T00:04:53Z",
-                "hash": "sha256:22a71aa97a630b5d75a69ce96442b90a2072ad00ce47572145f1e2955b523fb8",
-                "is_restart_required": true,
+                "id": 1017387,
+                "created": "2020-09-09T17:22:25Z",
+                "hash": "sha256:44f8817f531c86fec3c6a602919133ba1df109b1c0660127925445cef32e27ef",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 82260,
+                "size": 83175,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015987/abrufensenden_schaltflache-5.7.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017387/abrufensenden_schaltflache-6.0.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -51,17 +51,17 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "- Bugfix: Permanent disabled popup menu items\n- Improvement: Opacity for disabled popup menu items (to \"light\" grey)\n- Addon localization was migrated to the \"Crowdin\" platform",
-            "de": "- Fehlerbehebung: Popup-Menü-Elemente waren teilweise dauerhaft deaktiviert\n- Verbesserung: Deaktivierte Popup-Menü-Elemente waren zu hell \"ausgegraut\"\n- Alle Übersetzungen wurden auf die Plattform \"Crowdin\" migriert und angepasst"
+            "en-US": "Internal changes to improve locale mapping with crowdin.\n\n<strong>Be advised that as of version 6.0, the add-on no longer changes the original \"Get messages\" button. Instead, the addon now has a completely independent button that you have to drag from the \"Customize\" dialog into the toolbar.</strong>",
+            "de": "Interne Änderung, um die Übersetzung mit Crowdin zu erleichtern.\n\n<strong>Beachten Sie, dass das Addon ab Version 6.0 die originale \"Abrufen\"-Schaltfläche nicht mehr verändert. Statt dessen bringt das Addon jetzt einen komplett eigenständigen Button, den Sie aus dem \"Anpassen\"-Dialog in die Toolbar (\"Haupt-Symbolleiste\") ziehen müssen.</strong>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/getsendbutton/versions/5.7.5",
-        "version": "5.7.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/getsendbutton/versions/6.0.2",
+        "version": "6.0.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>\nFrom version 78, Thunderbird only supports the necessary interfaces for this add-on via \"WebExtension Experiments\". A lot of program code of the add-on would have to be rewritten for this. It is not expected that the necessary interfaces will be permanently implemented in Thunderbird (as MailExtension API), and the \"WebExtension Experiments\" will also be removed in the future, which is why the effort is no longer worthwhile. Therefore, this add-on will no longer receive an update and it will not be available for Thunderbird 78.\n\nThe source code of the add-on is open source and is available at <a href=\"https://gitlab.com/ThunderbirdMailDE/get-send-button\" rel=\"nofollow\"> GitLab </a>.\n\nThe translations available so far can be found on the <a href=\"https://crowdin.com/project/get-send-button\" rel=\"nofollow\"> CrowdIn </a> platform.</strong>",
-        "de": "<strong>Thunderbird unterstützt ab Version 78 nur noch per \"WebExtension Experiments\" die notwendigen Schnittstellen für dieses Add-on. Dafür müsste sehr viel Programm-Code des Add-ons neu geschrieben werden. Es ist nicht zu erwarten, dass die notwendigen Schnittstellen auf Dauer in Thunderbird fest implementiert werden (als MailExtension API), und die \"WebExtension Experiments\" werden in Zukunft auch entfernt werden, weshalb sich der Aufwand nicht mehr lohnt. Deshalb wird dieses Add-on kein Update mehr erhalten und es wird nicht für Thunderbird 78 verfügbar sein.\n\nDer Quellcode des Add-ons ist Open-Source und steht auf <a href=\"https://gitlab.com/ThunderbirdMailDE/get-send-button\" rel=\"nofollow\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a href=\"https://crowdin.com/project/get-send-button\" rel=\"nofollow\">CrowdIn</a>.</strong>"
+        "en-US": "The add-on provides a combined Get and Send button with a context menu with additional features.\n\n<strong>Be advised that as of version 6.0, the add-on no longer changes the original \"Get messages\" button. Instead, the addon now has a completely independent button that you have to drag from the \"Customize\" dialog into the toolbar.</strong>\n\nThe source code of the add-on is open source and is available at <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/get-send-button\"> GitLab </a>.\n\nThe translations available so far can be found on the <a rel=\"nofollow\" href=\"https://crowdin.com/project/get-send-button\"> CrowdIn </a> platform.",
+        "de": "Das Add-on bietet eine kombinierte Abrufen/Senden-Schaltfläche mit einem Kontextmenü mit zusätzlichen Funktionen.\n\nDer Quellcode des Add-ons ist Open-Source und steht auf <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/get-send-button\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a rel=\"nofollow\" href=\"https://crowdin.com/project/get-send-button\">CrowdIn</a>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/getsendbutton/edit",
@@ -81,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-18T16:26:25Z",
+    "last_updated": "2020-09-10T07:09:32Z",
     "name": {
         "en-US": "Get/Send Button",
         "de": "Abrufen/Senden-Schaltfläche"
@@ -192,10 +192,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.72743,
-        "count": 48,
-        "average": 3.75,
-        "text_count": 48
+        "bayesian_average": 3.78467,
+        "count": 47,
+        "average": 3.8085,
+        "text_count": 47
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/getsendbutton/reviews/",
     "requires_payment": false,
@@ -203,8 +203,8 @@
     "slug": "getsendbutton",
     "status": "public",
     "summary": {
-        "en-US": "Extends the original \"Get\" button (optionally) to \"Get/Send\" and adds a popup menu with additional functions.\n\nYou may want to use it together with the following Add-ons:\n* Send Later Button (by me / Alexander Ihrig)\n* Send Later (by jikamens)",
-        "de": "Das Add-on erweitert (optional) die Abrufen-Schaltfläche zu \"Abrufen/Senden\" plus Kontextmenü mit weiteren Funktionen.\n\nZusätzlich empfohlene Add-ons:\n* Später senden-Schaltfläche (von mir / Alexander Ihrig)\n* Später senden (von jikamens)"
+        "en-US": "The add-on provides a combined Get and Send button with a context menu with additional features.\n\nYou may want to use it together with the following Add-ons:\n* Send Later Button (by me / Alexander Ihrig)\n* Send Later (by jikamens)",
+        "de": "Das Add-on bietet eine kombinierte Abrufen/Senden-Schaltfläche mit einem Kontextmenü mit zusätzlichen Funktionen.\n\nZusätzlich empfohlene Add-ons:\n* Später senden-Schaltfläche (von mir / Alexander Ihrig)\n* Später senden (von jikamens)"
     },
     "support_email": null,
     "support_url": {
@@ -220,9 +220,16 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
             "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-06T23:56:41Z",
+            "comp78pv_version": "6.0.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "80.0",
+            "comp68pv": true,
+            "comp68pv_date": "2019-11-17T00:04:53Z",
             "comp60pv": true,
             "comp60pv_date": "2018-04-11T14:26:34Z"
         }

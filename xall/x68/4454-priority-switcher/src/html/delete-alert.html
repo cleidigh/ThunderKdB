@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Priority Switcher</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
+  <script src="../scripts/l10n.js" defer></script>
+  <script src="../scripts/delete-alert.js" defer></script>
+</head>
+
+<body>
+  <div class="popup-page">
+    <p l10n-tag="pswAlertDesc">Are you sure you want to delete high priority messages?</p>
+    <p>
+      <input type="checkbox" id="skipPriority"><label for="skipPriority" l10n-tag="pswAlertExclude">Exclude high priority messages</label>
+    </p>
+
+    <div style="position:absolute; bottom:1ex; right:1ex;">
+        <input type="button" id="buttonDelete" value="Delete" l10n-val-tag="pswAlertDelete">
+        <input type="button" id="buttonCancel" value="Cancel" l10n-val-tag="pswAlertCancel">
+    </div>
+  </div>
+</body>
+
+</html>

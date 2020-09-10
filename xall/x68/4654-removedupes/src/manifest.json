@@ -1,0 +1,34 @@
+{
+	"manifest_version": 2,
+	"applications": {
+		"gecko": {
+		"id": "{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}",
+			"strict_min_version": "68.0",
+			"strict_max_version": "78.*"
+		}
+	},
+	"author": "Eyal Rozenberg",
+	"name": "Remove Duplicate Messages",
+	"description": "Searches mail folders for duplicate messages and lets the user remove them",
+	"icons": {
+		"32": "chrome/content/removedupes.png",
+		"16": "chrome/content/removedupes-button-16x16.png"
+	},
+	"version": "0.5rc1",
+	"experiment_apis": {
+		"WindowListener": {
+			"schema": "api/WindowListener/schema.json",
+			"parent": {
+				"scopes": ["addon_parent"],
+				"paths": [["WindowListener"]],
+				"script": "api/WindowListener/implementation.js"
+			}
+		}
+	},
+	"background": {
+        "scripts": [
+            "background.js"
+        ]
+    }
+}
+

@@ -2,22 +2,6 @@ var { Services } = ChromeUtils.import(
   "resource://gre/modules/Services.jsm"
 );
 
-/*
-window.addEventListener("load", function(e) {
-  ahtStatusbarSetLabelIcon.startup();
-}, false);
-window.addEventListener("unload", function(e) {
-  ahtStatusbarSetLabelIcon.shutdown();
-}, false);
-
-window.addEventListener("load", function(e) {
-  ahtHideAndShowStatusbarElements.startup();
-}, false);
-window.addEventListener("unload", function(e) {
-  ahtHideAndShowStatusbarElements.shutdown();
-}, false);
-*/
-
 var ahtStatusbarSetLabelIcon = {
 
   startup: function() {
@@ -174,3 +158,19 @@ var ahtHideAndShowStatusbarElements = {
     }
   }
 }
+
+/* eventListeners are now called from WindowListener API *
+window.addEventListener("load", function(e) {
+  ahtStatusbarSetLabelIcon.startup();
+}, false);
+window.addEventListener("unload", function(e) {
+  ahtStatusbarSetLabelIcon.shutdown();
+}, false);
+
+window.addEventListener("load", function(e) {
+  ahtHideAndShowStatusbarElements.startup();
+}, false);
+window.addEventListener("unload", function(e) {
+  ahtHideAndShowStatusbarElements.shutdown();
+}, false);
+**********************************************************/

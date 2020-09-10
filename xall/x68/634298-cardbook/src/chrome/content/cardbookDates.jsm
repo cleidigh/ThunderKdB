@@ -32,7 +32,7 @@ var cardbookDates = {
 
 					// dates
 					default:
-						var dateFormat = cardbookRepository.cardbookPreferences.getDateFormat(aCard.dirPrefId, aCard.version);
+						var dateFormat = cardbookRepository.getDateFormat(aCard.dirPrefId, aCard.version);
 						var myDate = cardbookDates.convertDateStringToDate(myFieldValue, dateFormat);
 						if (myDate == "WRONGDATE") {
 							return new Date(Date.UTC(cardbookDates.defaultYear, '6', '6'));
@@ -68,7 +68,7 @@ var cardbookDates = {
 
 					// dates
 					default:
-						var dateFormat = cardbookRepository.cardbookPreferences.getDateFormat(aCard.dirPrefId, aCard.version);
+						var dateFormat = cardbookRepository.getDateFormat(aCard.dirPrefId, aCard.version);
 						return cardbookDates.getFormattedDateForDateString(myFieldValue, dateFormat, cardbookRepository.dateDisplayedFormat);
 				}
 			}

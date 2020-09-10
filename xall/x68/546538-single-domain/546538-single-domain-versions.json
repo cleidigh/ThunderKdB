@@ -1,5 +1,101 @@
 [
     {
+        "id": 2474212,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "76.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/single-domain/versions/2474212",
+        "files": [
+            {
+                "id": 1017374,
+                "created": "2020-09-08T11:29:27Z",
+                "hash": "sha256:7c87d615f7e692dfa66e3b3c6a3bfc0c1be474394d238e480321ac7be945018d",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 23676,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017374/single_domain-3.8-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "compose",
+                    "addressBooks",
+                    "accountsRead"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "This version takes account of past user requests:\n\n1. Now if users put in multiple domains separated by spaces then these domains will be taken together.\nIf the Domain preference were \"<a href=\"http://gmail.com\" rel=\"nofollow\">gmail.com</a> <a href=\"http://protonmail.com\" rel=\"nofollow\">protonmail.com</a>\" (without speech marks) then any emails with only these domains would not be subject to a warning but any email with either or both and a third domain would give rise to a warning.\n\n2. If users put a @at the beginning of the Domain preference such as @gmail.com then emails sent to admin@lists.gmail.com would give rise to a warning whereas in the past this email would have gone without warning."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/single-domain/versions/3.8",
+        "version": "3.8"
+    },
+    {
+        "id": 2474192,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "76.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/single-domain/versions/2474192",
+        "files": [
+            {
+                "id": 1017354,
+                "created": "2020-09-04T13:54:10Z",
+                "hash": "sha256:6d2a05ea418d54aa6fbcdc32805a7635770c4d5bdc9c31a8321930ab9bce7dbf",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 23487,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017354/single_domain-3.7-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "compose",
+                    "addressBooks",
+                    "accountsRead"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "This version takes care of the error in handling commas in the names of people in mailing lists and also now expands mailing lists to show the name where applicable as well as the email address both in the compose email page and in the dialog box in the case of needing to check an address."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/single-domain/versions/3.7",
+        "version": "3.7"
+    },
+    {
         "id": 2473629,
         "channel": "listed",
         "compatibility": {

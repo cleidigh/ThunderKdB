@@ -401,13 +401,14 @@ var exquilla = Object.create(
     // track additional changes
     rootBranch.addObserver("mail.identity.", this, false);
 
-    document.getElementById("exquilla.openSettingsTab")
-            .setAttribute("label", Services.strings
-            .createBundle("chrome://exquilla/locale/settings.properties")
-            .GetStringFromName(AppConstants.XP_UNIX ? "windowTitle" : "windowTitleWin") + "…");
-    // email context menu
-    let emailContextMenu = document.getElementById("emailAddressPopup");
-    emailContextMenu.addEventListener("popupshowing", this.onEmailAddressPopup, false);
+    try {
+      let windowTitle = Services.strings.createBundle("chrome://exquilla/locale/settings.properties").GetStringFromName(AppConstants.XP_UNIX ? "windowTitle" : "windowTitleWin") + "…";
+      document.getElementById("exquilla.openSettingsTab").setAttribute("label", windowTitle);
+      document.getElementById("appmenu_exquilla_openSettingsTab").setAttribute("label", windowTitle);
+      // email context menu
+      let emailContextMenu = document.getElementById("emailAddressPopup");
+      emailContextMenu.addEventListener("popupshowing", this.onEmailAddressPopup, false);
+    } catch (e) { log.error(e + "\n"); }
 
     // We communicate the status text label to the ewsActivity module
     try  {
@@ -786,7 +787,7 @@ var exquilla = Object.create(
 
             if (!abItem && !existingCard)
             {
-              abItem = document.createElement('menuitem');
+              abItem = document.createXULElement('menuitem');
               abItem.setAttribute('id', id);
               let addToAddressBook = exquillaStrings.GetStringFromName('addToAddressBook');
               abItem.setAttribute('label', addToAddressBook + ' ' + directory.dirName);

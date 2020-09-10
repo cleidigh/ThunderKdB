@@ -8,7 +8,7 @@ if ("undefined" == typeof(ovl_collected)) {
 	var ovl_collected = {
 		
 		addCollectedContact: function (aIdentity, aEmailsCollections, aDisplayName, aEmail) {
-			cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : start of emails identitiy : " + aIdentity);
+			cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : start of emails identity : " + aIdentity);
 			cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : start of emails collection : " + aEmailsCollections.toSource());
 			if (!aEmail) {
 				return;
@@ -22,7 +22,7 @@ if ("undefined" == typeof(ovl_collected)) {
 			}
 			var myTopic = "outgoingEmailCollected";
 			var myActionId = cardbookActions.startAction(myTopic);
-			if (!cardbookRepository.isEmailRegistered(aEmail, aIdentity)) {
+			if (!cardbookRepository.isEmailRegistered(aEmail)) {
 				for (var i = 0; i < aEmailsCollections.length; i++) {
 					var dirPrefId = aEmailsCollections[i][2];
 					if (!cardbookRepository.cardbookPreferences.getReadOnly(dirPrefId)) {

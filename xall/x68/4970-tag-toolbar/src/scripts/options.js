@@ -752,7 +752,7 @@ function generateNewCatKey() {
   let i = 0;
 
   while (findCategory(key)) {
-    key = "cat" + (i + 1);
+    key = "cat" + (++i);
   }
 
   return key;

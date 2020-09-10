@@ -1,5 +1,7 @@
 // Import any needed modules.
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { Services } = ChromeUtils.import(
+  "resource://gre/modules/Services.jsm"
+);
 
 // Load an additional JavaScript file.
 Services.scriptloader.loadSubScript("chrome://allowhtmltemp/content/aht_functions.js", window, "UTF-8");

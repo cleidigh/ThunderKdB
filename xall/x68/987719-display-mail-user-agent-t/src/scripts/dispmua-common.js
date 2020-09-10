@@ -469,6 +469,8 @@ dispMUA.getOverlay = () => {
     data = s[skey];
     //console.log("data:", data);
     data = data.replace(/\r\n/g, "\n").split("\n");
+    //dispMUA.arDispMUAOverlay = new Array();
+    dispMUA.arDispMUAOverlay.length = 0;
     dispMUA.loadMUAOverlayFile(data);
   }, e => {
     console.log("read error:", e);

@@ -1,3 +1,7 @@
+window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", function(e) {
+	cardbookLocales.updateDocument();
+}, false);
+
 // for displaying the labels
 // onLoad
 (function() {

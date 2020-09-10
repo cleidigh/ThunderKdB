@@ -1,5 +1,6 @@
 if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+	var { cal } = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm");
 	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
@@ -176,10 +177,16 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			
 			iCalString += "TRANSP:TRANSPARENT\n";
 			
+			var dtstart = "DTSTART:";
+			var dtend = "DTEND:";
+			if (cal.dtz.defaultTimezone.tzid) {
+				dtstart = "DTSTART;TZID=" + cal.dtz.defaultTimezone.tzid + ":";
+				dtend = "DTEND;TZID=" + cal.dtz.defaultTimezone.tzid + ":";
+			}
 			var eventEntryWholeDay = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.eventEntryWholeDay");
 			if (eventEntryWholeDay) {
-				iCalString += "DTSTART:" + aDate + "\n";
-				iCalString += "DTEND:" + aNextDate + "\n";
+				iCalString += dtstart + aDate + "\n";
+				iCalString += dtend + aNextDate + "\n";
 			} else {
 				var eventEntryTime = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTime");
 				var EmptyParamRegExp1 = new RegExp("(.*)([^0-9])(.*)", "ig");
@@ -196,8 +203,8 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				} else {
 					var lBirthdayTimeString = "000000";
 				}
-				iCalString += "DTSTART:" + aDate + "T" + lBirthdayTimeString + "\n";
-				iCalString += "DTEND:" + aDate + "T" + lBirthdayTimeString + "\n";
+				iCalString += dtstart + aDate + "T" + lBirthdayTimeString + "\n";
+				iCalString += dtend + aDate + "T" + lBirthdayTimeString + "\n";
 			}
 
 			// set Alarms

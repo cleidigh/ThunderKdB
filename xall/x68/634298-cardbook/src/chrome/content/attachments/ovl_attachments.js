@@ -167,8 +167,3 @@ if ("undefined" == typeof(ovl_attachments)) {
 	};
 
 })();
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

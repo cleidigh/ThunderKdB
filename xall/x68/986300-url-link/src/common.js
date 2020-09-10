@@ -281,7 +281,7 @@ function processSelection( info )
     let lnk = info.selectionText;
 
     if (prefs.debug)
-        console.log( `URL Link: processSelection called with = '${lnk}'` );
+        console.log( `URL Link: processSelection called with '${lnk}'` );
 
     // ID target of click
     let isLink = (typeof info.linkUrl !== "undefined"  &&  info.linkUrl.length > 0);

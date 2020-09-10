@@ -3,29 +3,15 @@
     "namespace": "myapi",
     "functions": [
       {
-        "name": "myExpandRecipients",
+        "name": "SetVersionHeader",
         "type": "function",
-        "description": "Expand lists of addresses",
+        "description": "Add the versionHeader",
         "async": true,
-        "parameters": []
-        }, {
-        "name": "setWindowListener",
-        "type": "function",
-        "description": "Adds a listener to all opening windows",
-        "async": false,
         "parameters": [
           {
-            "name": "domain",
-            "type": "string",
-            "description": "The domain to be excluded"
-          }, {
-            "name": "Version",
-            "type": "string",
-            "description": "Version info that can be added to header"
-          }, {
-            "name": "titles",
-            "type": "string",
-            "description": "List of all the titles for the messagebox."
+            "name":"Version",
+            "type":"string",
+            "description": "Info that might need to be added"
           }
         ]
       }

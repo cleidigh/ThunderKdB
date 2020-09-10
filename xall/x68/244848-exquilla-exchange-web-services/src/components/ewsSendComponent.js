@@ -128,6 +128,9 @@ EwsSend.prototype = {
 
   async gatherMimeAttachments()
   {
+    // Keep a local reference to the delegator to prevent it from
+    // getting garbage collected when we yield to the event loop.
+    let delegator = this.delegator;
     log.config("EwsSend gatherMimeAttachments() deliveryMode " + this.deliveryMode);
     if (this.recall)
     {
@@ -661,7 +664,7 @@ function addAddresses(aList, aName, aProperties)
   if (!aList.length)
     return;
 
-  let addresses = MailServices.headerParser.parseEncodedHeader(aList);
+  let addresses = MailServices.headerParser.parseEncodedHeader(aList, /* COMPAT for TB 68 */"UTF-8");
 
   let toPL = oPL({});
   for (let address of addresses)
