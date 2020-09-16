@@ -10,6 +10,15 @@ const {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm"
 
 let sb4f=Services.strings.createBundle("chrome://messenger/locale/folderWidgets.properties");
 
+let strings={
+  "copysent2choose_label": '',
+  "copysent2choose_accesskey": '',
+  "moveoriginal_label": '',
+  "moveoriginal_accesskey": '',
+  "copysent2current_nocopy": '',
+  "NoTrashFolder": '',
+};
+
 //
 //------------------------------------------
 //
@@ -44,19 +53,39 @@ var gPreSelected='';  //TODO: used with toolbar icons
 */
 
 var prefs;
-var strings;
 
 var cs2c = class extends ExtensionCommon.ExtensionAPI {
+  onStartup() {   //not called it add-on not loaded from .xpi
+debug('onStartup');
+  }
+
+  onShutdown(isAppShutdown) {
+debug('onShutdown isAppShutdown='+isAppShutdown);
+      if (isAppShutdown) return;
+      // Looks like we got uninstalled. Maybe a new version will be installed
+      // now. Due to new versions not taking effect
+      // (https://bugzilla.mozilla.org/show_bug.cgi?id=1634348)
+      // we invalidate the startup cache. That's the same effect as starting
+      // with -purgecaches (or deleting the startupCache directory from the
+      // profile).
+      //gg: also called on 'disable add-on' but add-on is still active!
+      //  with addCols repeatedly called
+      //  and after reenable, addCols is NOT called
+      Services.obs.notifyObservers(null, "startupcache-invalidate");
+  }
   getAPI(context) {
     // To be notified of the extension going away, call callOnClose with any object that has a
     // close function, such as this one.
     context.callOnClose(this);
+    Object.keys(strings).forEach(key=>{
+      let msg=context.extension.localeData.localizeMessage(key);
+      strings[key]=msg;
+    });
 		this.getAddon();
 
     return {
       cs2c: {
-        migratePrefs: async function(i18strings) {
-					strings=i18strings;
+        migratePrefs: async function() {
           let mig=new Object;
           let b=Services.prefs.getBranch("extensions.copysent2current.");
           let prefs=b.getChildList("");
@@ -161,11 +190,14 @@ debug('from window identity='+identity.key+' '+' account='+caccount);
           //check currently selected identity
           let identity=MailServices.accounts.getIdentity(identityKey);
 debug(' selected identity is '+identityKey+' '+identity.identityName);
+          //identity might have been changed by user
           if (!identity.doFcc) debug(' -- doFcc disabled!');
 
           let moveToURI='';
           let picker=win.document.getElementById('fccFolderPicker');
-          let account=picker.getAttribute('account'); // account whe compose window was opened
+          if (picker===null) return true;   // account not enabled for cs2c, send message
+          let account=picker.getAttribute('account'); 
+//TODO: this the account the compose window was opened with, this might have been changed by user
 debug('use account '+account);
           if (prefs[account]) {
             let fcc=picker.getAttribute('uri');

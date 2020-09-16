@@ -13,12 +13,13 @@
 
   "use strict";
 
-  /* global $ */
+  /* global bootstrap */
   /* global SieveEditorController */
   /* global SieveTextEditorUI */
   /* global SieveGraphicalEditorUI */
-  /* global SieveTemplateLoader */
+  /* global SieveTemplate */
 
+  const EDITOR_OFFSET_PX = 40;
   /**
    * Implements a editor UI which contains a graphical as well as a text editor.
    */
@@ -36,16 +37,22 @@
     }
 
     /**
-     *
+     * Resizes the widget editors iframe to fill all of the available screen.
      */
     resize() {
-      const offset = $("#sieve-widget-editor").offset().top;
+      const topOffset = document
+        .querySelector("#sieve-widget-editor")
+        .getBoundingClientRect()
+        .top + document.body.scrollTop;
 
-      if (offset === 0)
-        return;
+      const screen = document.documentElement.clientHeight;
 
-      $("#sieve-widget-editor").height(
-        $(window).height() - offset - 40);
+      // the visible screen size minus the top and bottom offset
+      const size = screen - topOffset - EDITOR_OFFSET_PX;
+
+      document
+        .querySelector("#sieve-widget-editor")
+        .style.height = `${size}px`;
     }
 
     /**
@@ -57,55 +64,81 @@
 
     /**
      * Renders the editor to screen.
+     *
+     * @returns {SieveEditorUI}
+     *   a self reference.
      */
     async render() {
+
+      document.querySelector("#sieve-editor").appendChild(
+        await (new SieveTemplate()).load("./editor/editor.tpl"));
 
       await this.getTextEditor().render();
       await this.getGraphicalEditor().render();
 
       await this.loadSettings();
 
-      $("#sieve-editor-settings .sieve-editor-settings-show").click(() => {
-        $("#sieve-tab-settings").tab('show');
-      });
+      document
+        .querySelector("#sieve-editor-settings .sieve-editor-settings-show")
+        .addEventListener("click", () => {
+          (new bootstrap.Tab(document.querySelector("#sieve-tab-settings"))).show();
+        });
 
-      $("#sieve-editor-settings .sieve-editor-import").click(() => {
-        this.importScript();
-      });
+      document
+        .querySelector("#sieve-editor-settings .sieve-editor-import")
+        .addEventListener("click", () => {
+          this.importScript();
+        });
 
-      $("#sieve-editor-settings .sieve-editor-export").click(() => {
-        this.exportScript();
-      });
+      document
+        .querySelector("#sieve-editor-settings .sieve-editor-export")
+        .addEventListener("click", () => {
+          this.exportScript();
+        });
 
-      $("#sieve-editor-save").click(() => {
-        this.save();
-      });
+      document
+        .querySelector("#sieve-editor-save")
+        .addEventListener("click", async () => {
+          document
+            .querySelector("#sieve-editor-saving").classList.remove("d-none");
 
-      $('.nav-item > a[href="#sieve-widget-editor"]').on('show.bs.tab', async (e) => {
+          await this.save();
 
-        if (!this.isTextEditor())
-          return;
+          document
+            .querySelector("#sieve-editor-saving").classList.add("d-none");
+        });
 
-        e.preventDefault();
+      document
+        .querySelector('.nav-item > a[href="#sieve-widget-editor"]')
+        .addEventListener('show.bs.tab', async (e) => {
 
-        if (await this.switchToGraphicalEditor()) {
-          $('.nav-item > a[href="#sieve-widget-editor"]').tab("show");
-        }
-      });
+          if (!this.isTextEditor())
+            return;
 
-      $('.nav-item > a[href="#sieve-widget-editor"]').on('shown.bs.tab', () => {
-        $("#sieve-widget-editor").height(
-          $(window).height() - $("#sieve-widget-editor").offset().top - 40);
-      });
+          e.preventDefault();
 
-      $(window).on("resize", () => {
+          if (await this.switchToGraphicalEditor()) {
+            (new bootstrap.Tab(document.querySelector('.nav-item > a[href="#sieve-widget-editor"]'))).show();
+          }
+        });
+
+      document
+        .querySelector('.nav-item > a[href="#sieve-widget-editor"]')
+        .addEventListener('shown.bs.tab', () => {
+          this.resize();
+        });
+
+      window.addEventListener("resize", () => {
         this.resize();
       });
 
+      document
+        .querySelector('.nav-item > a[href="#sieve-plaintext-editor"]')
+        .addEventListener('shown.bs.tab', () => { this.switchToTextEditor(); });
 
-      $('.nav-item > a[href="#sieve-plaintext-editor"]').on('shown.bs.tab', () => {
-        this.switchToTextEditor();
-      });
+      document
+        .querySelector('.nav-item > a[href="#sieve-content-settings"]')
+        .addEventListener('shown.bs.tab', () => { this.switchToSettings(); });
 
       return this;
     }
@@ -114,7 +147,9 @@
      * Hides/Dismisses any error messages.
      */
     hideErrorMessage() {
-      $("#sieve-editor-error").remove();
+      const elm = document.querySelector("#sieve-editor-error");
+      if (elm !== null)
+        elm.parentNode.removeChild(elm);
     }
 
     /**
@@ -125,17 +160,16 @@
      */
     async showErrorMessage(message) {
 
-      const content = await (new SieveTemplateLoader()).load("./editor/editor.error.save.tpl");
+      const content = await (new SieveTemplate()).load("./editor/editor.error.save.html");
 
-      content
-        .find(".sieve-editor-error-msg")
-        .text(message);
+      content.querySelector(".sieve-editor-error-msg").textContent = message;
 
       this.hideErrorMessage();
 
-      $("#sieve-editor-toolbar").append(content);
+      document.querySelector("#sieve-editor-errors").appendChild(content);
 
-      content.alert();
+      // eslint-disable-next-line no-new
+      new bootstrap.Alert(content);
 
       this.resize();
     }
@@ -253,6 +287,10 @@
      */
     async switchToTextEditor() {
 
+      document.querySelector("#sieve-editor-save").classList.remove("d-none");
+      document.querySelector("#sieve-editor-toolbar").classList.remove("d-none");
+      document.querySelector("#sieve-plaintext-editor-toolbar").classList.remove("d-none");
+
       if (this.isTextEditor()) {
         this.getTextEditor().focus();
         return true;
@@ -281,6 +319,10 @@
      */
     async switchToGraphicalEditor() {
 
+      document.querySelector("#sieve-editor-save").classList.remove("d-none");
+      document.querySelector("#sieve-editor-toolbar").classList.add("d-none");
+      document.querySelector("#sieve-plaintext-editor-toolbar").classList.add("d-none");
+
       if (!this.isTextEditor())
         return true;
 
@@ -288,13 +330,21 @@
         await this.getGraphicalEditor().setScript(
           await this.getTextEditor().getScript());
       } catch (ex) {
-        console.log(ex);
+        await this.switchToTextEditor();
         this.showErrorMessage(`Switching to Graphical editor failed ${ex}`);
         return false;
       }
 
       this.isTextEditor(false);
       return true;
+    }
+
+    /**
+     * Switches to the settings tab.
+     */
+    switchToSettings() {
+      document.querySelector("#sieve-editor-toolbar").classList.add("d-none");
+      document.querySelector("#sieve-editor-save").classList.add("d-none");
     }
 
     /**
@@ -311,10 +361,12 @@
      */
     isTextEditor(value) {
 
-      if (value === true || value === false)
-        $('.nav-item > a[href="#sieve-widget-editor"]').attr("data-current-editor", (!value).toString());
+      const elm = document.querySelector('.nav-item > a[href="#sieve-widget-editor"]');
 
-      return !($('.nav-item > a[href="#sieve-widget-editor"]').attr("data-current-editor") === "true");
+      if (value === true || value === false)
+        elm.dataset.currentEditor = (!value).toString();
+
+      return !(elm.dataset.currentEditor === "true");
     }
 
     /**
@@ -357,22 +409,25 @@
      */
     async renderSettings() {
 
-      $("#sieve-content-settings").empty();
+      const parent = document.querySelector("#sieve-content-settings");
+      while (parent.firstChild)
+        parent.removeChild(parent.firstChild);
 
       await this.getTextEditor().renderSettings();
       // this.getGraphicalEditor().renderSettings();
 
-      const settings = await (new SieveTemplateLoader()).load("./editor/editor.settings.defaults.tpl");
+      parent.appendChild(
+        await (new SieveTemplate()).load("./editor/editor.settings.defaults.tpl"));
 
-      $("#sieve-content-settings").append(settings);
+      document.querySelector("#editor-settings-save-defaults")
+        .addEventListener("click", async () => {
+          await this.saveDefaultSettings();
+        });
 
-      $("#editor-settings-save-defaults").click(async () => {
-        await this.saveDefaultSettings();
-      });
-
-      $("#editor-settings-load-defaults").click(async () => {
-        await this.loadDefaultSettings();
-      });
+      document.querySelector("#editor-settings-load-defaults")
+        .addEventListener("click", async () => {
+          await this.loadDefaultSettings();
+        });
     }
 
     /**

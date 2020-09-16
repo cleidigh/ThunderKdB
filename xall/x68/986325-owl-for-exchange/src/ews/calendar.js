@@ -526,7 +526,7 @@ EWSAccount.ConvertToEWS = function(aFolder, aEvent) {
  *   itemid {String} The id of the new item
  */
 EWSAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
-  let invitation = await this.FindInvitationToRespond(aEvent);
+  let invitation = await this.FindInvitationToRespond(aFolder, aEvent);
   if (invitation) {
     return invitation;
   }
@@ -573,10 +573,11 @@ EWSAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
  * Look for an invitation for a given meeting, to avoid creating a duplicate.
  * This can happen if the event hasn't been synchronised yet.
  *
- * @param aEvent {Object}  The meeting
- * @returns      {Object?} The invitation
+ * @param aFolder {String}  The distinguished folder id
+ * @param aEvent  {Object}  The meeting
+ * @returns       {Object?} The invitation
  */
-EWSAccount.prototype.FindInvitationToRespond = async function(aEvent) {
+EWSAccount.prototype.FindInvitationToRespond = async function(aFolder, aEvent) {
   let responseTag = kResponseMap[aEvent.participation];
   if (!responseTag) {
     return null;

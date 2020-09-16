@@ -20,6 +20,10 @@
   const Cc = Components.classes;
   const Ci = Components.interfaces;
 
+  const logger = undefined;
+  // // eslint-disable-next-line no-console
+  // const logger = function(msg) { console.log(msg); };
+
   /**
    * Implements a webextension api for sieve session and connection management.
    */
@@ -42,14 +46,11 @@
 
       const { Modules } = ChromeUtils.import(requireUrl);
       const modules = new Modules(
-        `${url}/libs/libManageSieve/`,
-        // eslint-disable-next-line no-console
-        function(msg) { console.log(msg); });
+        `${url}/libs/libManageSieve/`, logger);
 
       const sessions = new Map();
 
       context.callOnClose({ close: () => {
-        console.log("Unloading Sieve Session API");
 
         // First ensure we exit all active sessions.
         for (const item of sessions.values())

@@ -1,0 +1,51 @@
+@import url(chrome://MonterailOverlay/content/skin/root.css);
+
+#main-column, .message, .results-message-header {
+    background: var(--thread-background-color);
+}
+
+.message, .message-body, .message-meta, .message-recipients, .explanation-fulltext-term, .results-message-header, .results-message-count, .bar:hover > .bar-link {
+    color: var(--message-list-text-color);
+}
+
+.message-body-fulltext-match {
+    background-color: rgb(205, 214, 224);
+}
+
+.facets-sidebar {
+    background-color: var(--background-color);
+}
+
+.facets-sidebar h1,
+.facets-sidebar h2,
+.facets-sidebar h3,
+.facets-sidebar h4,
+.bar > .bar-count,
+.facet-checkbox-label, 
+.facet-checkbox-count,
+.bar > .bar-link,
+.bar:hover > .bar-link {
+    color: #fff !important;
+}
+
+.bar:hover > .bar-link {
+    background: rgba(255,255,255,.1);
+}
+
+.bar:focus, 
+.bar[selected="true"] > .bar-link {
+    background: var(--tree-background-color-selected);
+    border: 0;
+}
+
+facet-popup-menu.popup-menu {
+    background: var(--background-color-light);
+}
+
+.popup-menuitem:hover, 
+.popup-menuitem:focus,
+facet-boolean:not([disabled]):hover > .facet-checkbox-bubble, 
+facet-boolean-filtered:not([disabled]):hover > .facet-checkbox-bubble {
+    color: #fff !important;
+    background: var(--tree-background-color-selected) !important;
+}

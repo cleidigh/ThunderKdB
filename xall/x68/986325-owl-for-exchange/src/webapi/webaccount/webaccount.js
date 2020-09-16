@@ -809,14 +809,12 @@ this.webAccount = class extends ExtensionAPI {
             if (!hdr) {
               return;
             }
-            let hdrArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-            hdrArray.appendElement(hdr);
             if (isMove) {
               // We don't have a good way of telling the module that
               // this is really a move, not a delete, so just silence it.
               MailServices.mfn.removeListener(moveCopyModule);
             }
-            deleteFromDatabase(msgFolder, hdrArray, [hdr.messageKey], true);
+            deleteFromDatabase(msgFolder, [hdr], [hdr.messageKey], true);
             if (isMove) {
               moveCopyModule.init();
             }

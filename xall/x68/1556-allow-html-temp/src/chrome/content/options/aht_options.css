@@ -7,3 +7,11 @@
 #allowhtmltempPrefs:not([lwt-tree]):-moz-lwtheme {
   background-image: none !important;
 }
+#allowhtmltempPrefs:not([lwt-tree]):-moz-lwtheme-darktext {
+  background: -moz-Dialog !important;
+  color: -moz-DialogText;
+  text-shadow: none;
+}
+legend:-moz-lwtheme {
+  background-color: unset;
+}

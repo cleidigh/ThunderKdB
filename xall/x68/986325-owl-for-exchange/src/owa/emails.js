@@ -90,14 +90,30 @@ OWAAccount.prototype.FindSharedFolders = async function(aMailbox) {
       Traversal: "Deep",
     },
   };
-  let result = await this.CallService("FindFolder", query); // owa.js
+  let folders, rootFolderId;
+  try {
+    let result = await this.CallService("FindFolder", query); // owa.js
+    folders = result.RootFolder.Folders;
+    rootFolderId = result.RootFolder.ParentFolder.FolderId.Id;
+  } catch (ex) {
+    if (ex.type != "ErrorItemNotFound") {
+      throw ex;
+    }
+    // We don't have visibility of the shared folder root.
+    // Maybe the user only shared their Inbox. OWA tries this.
+    query.Body.ParentFolderIds[0].Id = "inbox";
+    let result = await this.CallService("FindFolder", query); // owa.js
+    folders = result.RootFolder.Folders;
+    folders.unshift(result.RootFolder.ParentFolder);
+    rootFolderId = result.RootFolder.ParentFolder.ParentFolderId.Id;
+  }
   return {
-    id: result.RootFolder.ParentFolder.FolderId.Id,
+    id: rootFolderId,
     name: aMailbox.DisplayName,
     type: "ImapOtherUser",
     total: 0,
     unread: 0,
-    children: ConvertFolderList(result.RootFolder.Folders.filter(folder => folder.__type == "Folder:#Exchange"), result.RootFolder.ParentFolder.FolderId.Id),
+    children: ConvertFolderList(folders.filter(folder => folder.__type == "Folder:#Exchange"), rootFolderId),
   };
 }
 

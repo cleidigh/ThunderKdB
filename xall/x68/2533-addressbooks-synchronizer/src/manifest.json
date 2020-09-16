@@ -1,26 +1,58 @@
 {
   "manifest_version": 2,
-  "name": "Addressbooks Synchronizer",
-  "description": "Synchronize addressbooks with files stored locally, in IMAP folders or via FTP/WebDAV",
-  "version": "2.0.1",
+  "name": "__MSG_extensionname__",
+  "short_name": "ABS",
+  "description": "__MSG_extensiondescription__",
+  "version": "3.1",
   "author": "Günter Gersdorf",
   "homepage_url": "https://www.ggbs.de/extensions/AddressbooksSynchronizer.html",
   "applications": {
     "gecko": {
       
       "id": "addressbookssync@ggbs.de",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   },
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://addressbookssync/content/options.xul",
-      "open_in_tab": false
+  // also see https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html
+  "experiment_apis": {
+    "abs": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [ "addon_parent" ],
+        "paths": [ [ "abs" ] ],
+        "script": "abs_implementation.js",
+        "events": ["startup"]
+      }
     }
+  },
+  "background": {
+    "scripts": ["abs_background.js"]
   },
   "icons": {
     "32": "skin/icon.png",
     "48": "skin/icon48.png"
-  }
+  },
+  "options_ui": {
+    "page": "abs_options.html",
+    "browser_style": true,
+    "open_in_tab": true
+  },
+  "permissions": [
+    "storage",
+    "accountsRead",
+		"accountsFolders",
+		"addressBooks"
+  ],
+  "browser_action": {
+    "browser_style": true,
+    //"default_area": "navbar", //firefox only: navbar, menupanel, tabstrip, personaltoolbar
+    "default_icon": {
+			"32": "skin/icon.png",
+			"48": "skin/icon48.png"
+    },
+    "default_popup": "abs_actions.html",
+    "default_title": "__MSG_extensionname__"
+  },
+ "default_locale": "en"
+
 }

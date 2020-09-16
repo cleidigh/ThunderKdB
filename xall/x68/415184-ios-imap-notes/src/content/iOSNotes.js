@@ -248,7 +248,13 @@ var iOSNotesObj = {
 			header = iOSNotesObj.changeDate(header, date);
 			// get first line for note subject, note subject is always first line of text			
 			var subject = data.match(/(.*?)<div>/);			
-			header = header.replace(/Subject: *.*\r\n/, "Subject: "+subject[1]+"\r\n");			
+			header = header.replace(/Subject: *.*\r\n/, "Subject: "+subject[1]+"\r\n");		
+			// let's remove all additonal paragraphs at the end of the string
+			// they seem to be introduced by html textfield with every edit			
+			while (data.endsWith("<div><br></div>"))
+			{
+				data = data.substring(0, data.length-15);
+			}
 			// combine header and html data
 			data = header+data+"\r\n";
 			

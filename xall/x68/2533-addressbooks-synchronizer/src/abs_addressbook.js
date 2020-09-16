@@ -1,0 +1,1 @@
+console.log('ABS: addressbook: content_script started');

@@ -974,13 +974,15 @@ Folder.prototype = {
     let strongThis = this.delegator.get();
     try {
       let folder = aFolders.queryElementAt(0, Ci.nsIMsgFolder);
+      if (folder.flags & Ci.nsMsgFolderFlags.Virtual) {
+        this.cppBase.deleteSubFolders(aFolders, aMsgWindow);
+        return;
+      }
       let message = this.cppBase.isSpecialFolder(Ci.nsMsgFolderFlags.Trash) ? "imapDeleteNoTrash" : "imapMoveFolderToTrash";
       if (!aMsgWindow.promptDialog.confirmEx(gStringBundle.GetStringFromName("imapDeleteFolderDialogTitle"), gStringBundle.formatStringFromName(message, [folder.name], 1), Ci.nsIPrompt.BUTTON_TITLE_IS_STRING * Ci.nsIPrompt.BUTTON_POS_0 + Ci.nsIPrompt.BUTTON_TITLE_CANCEL * Ci.nsIPrompt.BUTTON_POS_1, gStringBundle.GetStringFromName("imapDeleteFolderButtonLabel"), null, null, null, {})) { // COMPAT for TB 68 (bug 1557793)
         // If we're already a child of Trash then this is a real delete.
         if (this.cppBase.isSpecialFolder(Ci.nsMsgFolderFlags.Trash, true)) {
-          if (folder.flags & Ci.nsMsgFolderFlags.Virtual) {
-            this.cppBase.deleteSubFolders(aFolders, aMsgWindow);
-          } else if (!this.cppBase.matchOrChangeFilterDestination(null, false) || this.cppBase.confirmFolderDeletionForFilter(aMsgWindow)) {
+          if (!this.cppBase.matchOrChangeFilterDestination(null, false) || this.cppBase.confirmFolderDeletionForFilter(aMsgWindow)) {
             await CallExtension(this.cppBase.server, "DeleteFolder", { folder: folder.getStringProperty("FolderId"), parent: this.cppBase.getStringProperty("FolderId"), permanent: true }, aMsgWindow);
             this.cppBase.deleteSubFolders(aFolders, aMsgWindow);
           }
@@ -1255,9 +1257,13 @@ Folder.prototype = {
         }
       }
       // Rather than performing a full resync, we just fake out the counts.
-      this.cppBase.changeNumPendingTotalMessages(hdrs.length);
-      this.cppBase.changeNumPendingUnread(numUnread);
-      MailServices.mfn.notifyMsgsMoveCopyCompleted(aIsMove, aMessages, strongThis, null);
+      cppBase.changeNumPendingTotalMessages(hdrs.length);
+      cppBase.changeNumPendingUnread(numUnread);
+      if (cppBase.msgDatabase.deleteMessages.length == 3) { // COMPAT for TB 68 (bug 1612239)
+        MailServices.mfn.notifyMsgsMoveCopyCompleted(aIsMove, aMessages, strongThis, null); // COMPAT for TB 68 (bug 1612239)
+      } else { // COMPAT for TB 68 (bug 1612239)
+        MailServices.mfn.notifyMsgsMoveCopyCompleted(aIsMove, hdrs, strongThis, []);
+      } // COMPAT for TB 68 (bug 1612239)
       if (aIsMove) {
         if (aSrcFolder.server == cppBase.server) {
           // The messages were moved so delete their headers.

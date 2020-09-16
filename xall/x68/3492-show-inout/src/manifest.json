@@ -1,28 +1,54 @@
 {
   "manifest_version": 2,
-  "name": "Show InOut",
-  "description": "Adds columns to ThreadPane indicating if a mail is incoming or outgoing",
-  "version": "2.0.1",
+  "name": "__MSG_extensionname__",
+  "short_name": "SIO",
+  "description": "__MSG_extensiondescription__",
+  "version": "3.1",
   "author": "Günter Gersdorf",
   "homepage_url": "https://www.ggbs.de/extensions/ShowInOut.html",
   "applications": {
     "gecko": {
       
       "id": "showInOut@ggbs.de",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   },
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://showInOut/content/options.xul",
-      "open_in_tab": false
+  // also see https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html
+  "experiment_apis": {
+    "sio": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [ "addon_parent" ],
+        "paths": [ [ "sio" ] ],
+        "script": "sio_implementation.js",
+        "events": ["startup"]
+      }
     }
+  },
+  "background": {
+    "scripts": ["sio_background.js"]
   },
   "icons": {
     "16": "skin/inout-col.png",
     "48": "skin/inout-col48.png"
-  }
+  },
+  "options_ui": {
+    "page": "sio_options.html",
+    "browser_style": true,
+    "open_in_tab": true
+  },
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": {
+			"16": "skin/inout-col.png",
+			"48": "skin/inout-col48.png"
+    },
+    "default_title": "__MSG_extensionname__"
+  },
+  "permissions": [
+    "storage",
+    "accountsRead"
+  ],
+ "default_locale": "en"
 
 }
-

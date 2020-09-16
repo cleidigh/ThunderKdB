@@ -135,6 +135,7 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                     compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
                     compactHeadersButton.setAttribute("tooltiptext", "Show Details");
                     msgHeaderViewDeck.setAttribute("style", "margin-block: -4px -2px;");
+                    hideCryptoBox();
                     var i;
                     for (i = 1; i < expandedHeaders2.childElementCount; i++) {
                       expandedHeaders2.children[i].setAttribute("persist", "style");
@@ -145,6 +146,7 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                     compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
                     compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
                     msgHeaderViewDeck.setAttribute("style", "margin-block: -4px 0px;");
+                    showCryptoBox();
                     var i;
                     for (i = 1; i < expandedHeaders2.childElementCount; i++) {
                       expandedHeaders2.children[i].setAttribute("persist", "style");
@@ -172,6 +174,7 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                     if (expandedHeaders2.getAttribute("showall") == "showall") window.MsgViewAllHeaders();
                     else window.MsgViewNormalHeaders();
                     msgHeaderViewDeck.setAttribute("style", "margin-block: -4px 0px;");
+                    showCryptoBox();
                     var i;
                     for (i = 1; i < expandedHeaders2.childElementCount; i++) {
                       expandedHeaders2.children[i].setAttribute("persist", "style");
@@ -184,6 +187,7 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                     compactHeadersButton.setAttribute("tooltiptext", "Show Details");
                     window.MsgViewNormalHeaders();
                     msgHeaderViewDeck.setAttribute("style", "margin-block: -4px -2px;");
+                    hideCryptoBox();
                     var i;
                     for (i = 1; i < expandedHeaders2.childElementCount; i++) {
                       expandedHeaders2.children[i].setAttribute("persist", "style");
@@ -193,10 +197,15 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                   }
                 }
 
-                let signedHdrIcon = window.document.getElementById("signedHdrIcon");
-                if (signedHdrIcon) signedHdrIcon.setAttribute("style", "max-width: 16px;");
-                let encryptedHdrIcon = window.document.getElementById("encryptedHdrIcon");
-                if (encryptedHdrIcon) encryptedHdrIcon.setAttribute("style", "max-width: 16px;");
+                function hideCryptoBox() {
+                  let cryptoBox = window.document.getElementById("cryptoBox");
+                  if (cryptoBox) cryptoBox.setAttribute("style", "display: none;")
+                }
+
+                function showCryptoBox() {
+                  let cryptoBox = window.document.getElementById("cryptoBox");
+                  if (cryptoBox) cryptoBox.removeAttribute("style")
+                }
 
               }
             },

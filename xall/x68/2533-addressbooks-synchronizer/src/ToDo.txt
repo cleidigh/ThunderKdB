@@ -1,0 +1,49 @@
+TODO
+	aus addressbooksync.js
+downloadThis	((context)menu von Adressbüchern)
+uploadThis		((context)menu von Adressbüchern)
+
+TODOs/TESTs:
+icons in mail:3pane, icon+menuentries in addressbook
+uploadDone und downloadDone brauchen some kind of ok/fail
+
+check use of gForce, 'notimecheck' und askOverwrite
+	gForce=true: kein timecheck, aber ask
+	notimecheck=true: kein 'skipped'
+:
+askOverwrite	(asks, if target changed since appstart (depends on pref downloadpolicy='keep' or 'ask'))
+	utils.js						loadMab													1
+	download.js					local, not singlebook						2
+											local, not singlebook (2x??)		3	???
+											remote, not singlebook					4
+	imap.js							not singlebook									5
+											after timecheck									6	???
+	NetworkService.js		after timecheck									7	???
+
+'Jetzt downloaden':
+	AB ungeändert
+		askO(2) called,	no ask
+		askO(3) not called
+	AB geändert
+		askO(2) called, asked, answer ok
+		askO(3) not called
+
+'Ein Adressbuch laden' (only here is alwaysask=true)
+	askO(1) called, asked, answer ok
+
+'Ein Adressbuch herunterladen'
+	local, addressbuch ex, not changed
+		askO(2)	called, no ask
+		askO(3) not called
+	local, addressbuch ex, changed
+		askO(2)	called, asked, answer ok
+		askO(3) not called
+	remote, addressbuch ex, not changed
+		askO(4), called, not asked
+	remote, addressbuch ex, changed
+		askO(4), called, asked, answer ok
+	imap, addressbuch ex, not changed
+		askO(5), called, not asked
+	imap, addressbuch ex, changed
+		askO(5), called, asked, answer ok
+TODO: Nicht nach jedem laden wird das Addressbuch als geändert interpretiert!

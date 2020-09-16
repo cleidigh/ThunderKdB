@@ -622,7 +622,15 @@ function MoveContentFromSourceToWYSIWYG() {
 function MoveContentFromWYSIWYGtoSource(resetUndo) {
   try {
     // Services.console.logStringMessage("ThunderHTMLedit - setting HTML");
-    let html = thisWin.GetCurrentEditor().outputToString("text/html", 2 + 134217728 /* OutputFormatted + OutputDisallowLineBreaking */);
+    // Was this:
+    // let html = thisWin.GetCurrentEditor().outputToString("text/html", 2 + 134217728 /* OutputFormatted + OutputDisallowLineBreaking */);
+
+    let encoder = Cu.createDocumentEncoder("text/html");
+    encoder.init(thisWin.GetCurrentEditor().document, "text/html", 2 + 134217728 /* OutputFormatted + OutputDisallowLineBreaking */);
+    let width = ThunderHTMLeditPrefs.getPref("WrapWidth", "Int");
+    encoder.setWrapColumn(width > 72 ? width : 72);
+    let html = encoder.encodeToString();
+
     html = html.replace(/\t/g, "&#x09;"); // Make tabs visible, Ace already shows NBSP.
     // eslint-disable-next-line prefer-template
     SourceEditor.setHTML(thisWin, "<!DOCTYPE html>" + html, resetUndo);

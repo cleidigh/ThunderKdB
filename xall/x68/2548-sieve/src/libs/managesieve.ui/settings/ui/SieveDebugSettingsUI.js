@@ -13,8 +13,8 @@
 
   "use strict";
 
-  /* global $ */
-  /* global SieveTemplateLoader */
+  /* global bootstrap */
+  /* global SieveTemplate */
 
   // eslint-disable-next-line no-magic-numbers
   const LOG_ACCOUNT_REQUEST = (1 << 0);
@@ -33,6 +33,8 @@
   const LOG_GLOBAL_ACTION = (1 << 1);
   // eslint-disable-next-line no-magic-numbers
   const LOG_GLOBAL_WIDGET = (1 << 2);
+  // eslint-disable-next-line no-magic-numbers
+  const LOG_GLOBAL_I18N = (1 << 3);
 
   /**
    * A UI renderer for the sieve debug settings dialog
@@ -49,11 +51,56 @@
     }
 
     /**
+     * Renders the UI element into the dom.
+     */
+    async render() {
+      const dialog = this.getDialog();
+
+      const levels = await this.account.send("account-settings-get-debug");
+
+      this.setAccountLogLevel(levels.account);
+      this.setGlobalLogLevel(levels.global);
+
+      dialog.querySelector(".siv-settings-show-advanced")
+        .addEventListener("click", () => { this.showAdvanced(); });
+      dialog.querySelector(".siv-settings-hide-advanced")
+        .addEventListener("click", () => { this.hideAdvanced(); });
+
+      this.hideAdvanced();
+
+    }
+
+    /**
      * Shows the settings dialog
      */
-    show() {
-      this.render();
-      this.getDialog().modal('show');
+    async show() {
+
+      document.querySelector("#ctx").appendChild(
+        await (new SieveTemplate()).load("./settings/ui/settings.debug.tpl"));
+
+      await this.render();
+
+      const dialog = this.getDialog();
+      const modal = new bootstrap.Modal(dialog);
+
+      modal.show();
+
+      dialog.querySelector(".sieve-settings-apply")
+        .addEventListener("click", () => {
+          this.save();
+          modal.hide();
+        });
+
+      await new Promise((resolve) => {
+
+        dialog.addEventListener("hidden.bs.modal", () => {
+          modal.dispose();
+          dialog.parentNode.removeChild(dialog);
+
+          resolve();
+        });
+      });
+
     }
 
     /**
@@ -65,19 +112,19 @@
     getAccountLogLevel() {
       let level = 0x00;
 
-      if ($("#debugClientServer").prop("checked"))
+      if (document.querySelector("#debugClientServer").checked === true)
         level |= LOG_ACCOUNT_REQUEST;
 
-      if ($("#debugServerClient").prop("checked"))
+      if (document.querySelector("#debugServerClient").checked === true)
         level |= LOG_ACCOUNT_RESPONSE;
 
-      if ($("#debugSessionManagement").prop("checked"))
+      if (document.querySelector("#debugSessionManagement").checked === true)
         level |= LOG_ACCOUNT_SESSION_INFO;
 
-      if ($("#debugStateMachine").prop("checked"))
+      if (document.querySelector("#debugStateMachine").checked === true)
         level |= LOG_ACCOUNT_STATE;
 
-      if ($("#debugRawDump").prop("checked"))
+      if (document.querySelector("#debugRawDump").checked === true)
         level |= LOG_ACCOUNT_STREAM;
 
       return level;
@@ -91,11 +138,11 @@
      */
     setAccountLogLevel(level) {
 
-      $("#debugClientServer").prop( "checked", (level & LOG_ACCOUNT_REQUEST) );
-      $("#debugServerClient").prop( "checked", (level & LOG_ACCOUNT_RESPONSE) );
-      $("#debugSessionManagement").prop( "checked", (level & LOG_ACCOUNT_SESSION_INFO) );
-      $("#debugStateMachine").prop( "checked", (level & LOG_ACCOUNT_STATE) );
-      $("#debugRawDump").prop( "checked", (level & LOG_ACCOUNT_STREAM) );
+      document.querySelector("#debugClientServer").checked = (level & LOG_ACCOUNT_REQUEST);
+      document.querySelector("#debugServerClient").checked = (level & LOG_ACCOUNT_RESPONSE);
+      document.querySelector("#debugSessionManagement").checked = (level & LOG_ACCOUNT_SESSION_INFO);
+      document.querySelector("#debugStateMachine").checked = (level & LOG_ACCOUNT_STATE);
+      document.querySelector("#debugRawDump").checked = (level & LOG_ACCOUNT_STREAM);
     }
 
     /**
@@ -107,14 +154,17 @@
     getGlobalLogLevel() {
       let level = 0x00;
 
-      if ($("#debugActions").prop( "checked"))
+      if (document.querySelector("#debugActions").checked)
         level |= LOG_GLOBAL_ACTION;
 
-      if ($("#debugIpcMessages").prop( "checked"))
+      if (document.querySelector("#debugIpcMessages").checked)
         level |= LOG_GLOBAL_IPC_MESSAGES;
 
-      if ($("#debugWidgets").prop( "checked"))
+      if (document.querySelector("#debugWidgets").checked)
         level |= LOG_GLOBAL_WIDGET;
+
+      if (document.querySelector("#debugI18n").checked)
+        level |= LOG_GLOBAL_I18N;
 
       return level;
     }
@@ -126,9 +176,10 @@
      *   the global log level as integer
      */
     setGlobalLogLevel(level) {
-      $("#debugActions").prop( "checked", (level & LOG_GLOBAL_ACTION) );
-      $("#debugIpcMessages").prop( "checked", (level & LOG_GLOBAL_IPC_MESSAGES) );
-      $("#debugWidgets").prop( "checked", (level & LOG_GLOBAL_WIDGET) );
+      document.querySelector("#debugActions").checked = (level & LOG_GLOBAL_ACTION);
+      document.querySelector("#debugIpcMessages").checked = (level & LOG_GLOBAL_IPC_MESSAGES);
+      document.querySelector("#debugWidgets").checked = (level & LOG_GLOBAL_WIDGET);
+      document.querySelector("#debugI18n").checked = (level & LOG_GLOBAL_I18N);
     }
 
     /**
@@ -138,72 +189,45 @@
     async save() {
 
       const levels = {
-        account  : this.getAccountLogLevel(),
-        global : this.getGlobalLogLevel()
+        account: this.getAccountLogLevel(),
+        global: this.getGlobalLogLevel()
       };
 
-      await this.account.send("account-settings-set-debug", {"levels" : levels});
-
-      // Validate and close
-      $('#sieve-dialog-settings').modal('hide');
+      await this.account.send("account-settings-set-debug", { "levels": levels });
     }
 
     /**
      * Returns the currents dialogs UI Element.
      *
-     * @returns {object}
+     * @returns {HTMLElement}
      *   the dialogs UI elements.
      */
     getDialog() {
-      return $("#sieve-dialog-settings");
+      return document.querySelector("#dialog-settings-debug");
     }
 
     /**
      * Shows the advanced setting
-     *
      */
     showAdvanced() {
       const parent = this.getDialog();
 
-      parent.find(".siv-settings-advanced").show();
-      parent.find(".siv-settings-show-advanced").hide();
-      parent.find(".siv-settings-hide-advanced").show();
+      parent.querySelector(".siv-settings-advanced").style.display = "";
+      parent.querySelector(".siv-settings-show-advanced").style.display = "none";
+      parent.querySelector(".siv-settings-hide-advanced").style.display = "";
     }
 
     /**
      * Hides the advanced settings
-     *
      */
     hideAdvanced() {
       const parent = this.getDialog();
 
-      parent.find(".siv-settings-advanced").hide();
-      parent.find(".siv-settings-show-advanced").show();
-      parent.find(".siv-settings-hide-advanced").hide();
+      parent.querySelector(".siv-settings-advanced").style.display = "none";
+      parent.querySelector(".siv-settings-show-advanced").style.display = "";
+      parent.querySelector(".siv-settings-hide-advanced").style.display = "none";
     }
 
-    /**
-     * Renders the UI element into the dom.
-     *
-     */
-    async render() {
-      const parent = this.getDialog();
-
-      parent.find(".modal-body").empty()
-        .append(await (new SieveTemplateLoader().load("./settings/ui/settings.debug.tpl")));
-
-      const levels = await this.account.send("account-settings-get-debug");
-
-      this.setAccountLogLevel(levels.account);
-      this.setGlobalLogLevel(levels.global);
-
-      parent.find(".sieve-settings-apply").off().click(() => { this.save(); });
-
-      parent.find(".siv-settings-show-advanced").off().click(() => { this.showAdvanced(); });
-      parent.find(".siv-settings-hide-advanced").off().click(() => { this.hideAdvanced(); });
-
-      this.hideAdvanced();
-    }
   }
   if (typeof (module) !== "undefined" && module !== null && module.exports)
     module.exports = SieveDebugSettingsUI;

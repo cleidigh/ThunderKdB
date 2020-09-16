@@ -1,19 +1,20 @@
 {
   "name": "Sieve",
   "description": "Manages Sieve Message Filters",
-  "version": "0.4.2",
+  "version": "0.5.2",
   "icons": {
     "64": "libs/icons/linux.png"
-  },
-  "applications": {
-    "gecko": {
-      "id": "sieve@mozdev.org"
-    }
   },
   "background": {
     "page": "background.html"
   },
   "manifest_version": 2,
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "sieve@mozdev.org",
+      "strict_min_version": "68.0a1"
+    }
+  },
   "permissions": [
     "accountsRead",
     "tabs",

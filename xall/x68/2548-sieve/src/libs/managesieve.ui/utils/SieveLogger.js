@@ -15,6 +15,7 @@
 
   const TWO_CHARS = 2;
   const THREE_CHARS = 3;
+  const BASE_10 = 10;
 
   // eslint-disable-next-line no-magic-numbers
   const LOG_IPC_MESSAGES = (1 << 0);
@@ -22,6 +23,8 @@
   const LOG_ACTION = (1 << 1);
   // eslint-disable-next-line no-magic-numbers
   const LOG_UI = (1 << 2);
+  // eslint-disable-next-line no-magic-numbers
+  const LOG_I18N = (1 << 3);
 
   const DEFAULT_LEVEL = 0x00;
 
@@ -45,7 +48,7 @@
      */
     constructor(level) {
 
-      if (typeof(level) === "undefined")
+      if (typeof (level) === "undefined")
         level = DEFAULT_LEVEL;
 
       this._level = level;
@@ -103,6 +106,18 @@
     }
 
     /**
+     * Logs a i18n related message.
+     *
+     * @param {string} message
+     *   the log message.
+     * @returns {SieveLogger}
+     *   a self reference.
+     */
+    logI18n(message) {
+      return this.log(message, "I18n", LOG_I18N);
+    }
+
+    /**
      * Logs the given message to the browser console.
      *
      * @param {string} message
@@ -119,7 +134,7 @@
       if (!this.isLoggable(level))
         return this;
 
-      if ((typeof(prefix) === "undefined") || prefix === null)
+      if ((typeof (prefix) === "undefined") || prefix === null)
         prefix = "";
 
       // eslint-disable-next-line no-console
@@ -181,7 +196,7 @@
       let str = n;
 
       for (let i = 0; i < m; i++)
-        if (n < Math.pow(10, i))
+        if (n < Math.pow(BASE_10, i))
           str = '0' + str;
 
       return str;

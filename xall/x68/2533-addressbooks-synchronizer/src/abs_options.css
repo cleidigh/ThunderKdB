@@ -1,0 +1,254 @@
+body { background: whitesmoke; }
+.block { display: block; width: max-content; }
+.thin { border:0; border-top: 1px solid silver; }
+select { background: lightgrey; min-width: 20em; height: 2em; }
+option { height: 1.8em; }
+button { cursor: pointer; }
+.selfolder { color: #f44; }
+
+/* Upload */
+#de-ggbs-abs-UploadIcon {
+	list-style-image: url("chrome://addressbookssync/skin/upload.svg");
+}
+
+/* Download */
+#de-ggbs-abs-DownloadIcon {
+	list-style-image: url("chrome://addressbookssync/skin/download.svg");
+}
+
+/* *******************************************************************************
+	Tabs mit radio-Buttons
+*/
+#maintabs > figure > div {
+	height: 35em;
+}
+
+.tabbed figure { 
+	display: block; 
+	margin-left: 0; 
+	/*border-bottom: 1px solid silver;*/
+	clear: both;
+}
+
+.tabbed > input,
+.tabbed figure > div { display: none; }
+
+.tabbed figure>div {
+  padding: 20px;
+  width: 100%;
+  border: 1px solid silver;
+  background: #fff;
+  line-height: 1.5em;
+  letter-spacing: 0.3px;
+  color: #444;
+}
+
+#tab_sync:checked ~ figure .tab_sync,
+#tab_imex:checked ~ figure .tab_imex,
+#tab_einst:checked ~ figure .tab_einst { display: block; min-height: 30em; }
+#tab_local:checked ~ figure .tab_local,
+#tab_remote:checked ~ figure .tab_remote,
+#tab_imap:checked ~ figure .tab_imap { display: block; min-height: 15em; }
+
+nav label {
+   float: left;
+   padding: 5px 15px;
+   border-top: 1px solid silver;
+   border-right: 1px solid silver;
+   background: hsl(210,50%,50%);
+   color: #eee;
+}
+
+nav label:nth-child(1) { border-left: 1px solid silver; }
+nav label:hover { background: hsl(210,50%,40%); }
+nav label:active { background: #ffffff; }
+
+#tab_sync:checked ~ nav label[for="tab_sync"],
+#tab_imex:checked ~ nav label[for="tab_imex"],
+#tab_einst:checked ~ nav label[for="tab_einst"] {
+  background: white;
+  color: #111;
+  position: relative;
+  border-bottom: none;
+}
+#tab_local:checked ~ nav label[for="tab_local"],
+#tab_remote:checked ~ nav label[for="tab_remote"],
+#tab_imap:checked ~ nav label[for="tab_imap"] {
+  background: white;
+  color: #111;
+  position: relative;
+  border-bottom: none;
+}
+
+#tab_sync:checked ~ nav label[for="tab_sync"]:after,
+#tab_imex:checked ~ nav label[for="tab_imex"]:after,
+#tab_einst:checked ~ nav label[for="tab_einst"]:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: white;
+  left: 0;
+  bottom: -1px;
+}
+#tab_local:checked ~ nav label[for="tab_local"]:after,
+#tab_remote:checked ~ nav label[for="tab_remote"]:after,
+#tab_imap:checked ~ nav label[for="tab_imap"]:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: white;
+  left: 0;
+  bottom: -1px;
+}
+
+.tab_imex button {
+	float: right;
+	width: 10em;
+}
+.tab_einst fieldset label {
+	display: block;
+}
+
+/* *******************************************************************************
+	folder menulist
+*/
+ /* Remove default bullets */
+/*
+ul, #syncimapPicker {
+  list-style-type: none;
+}
+*/
+
+/* Remove margins and padding from the parent ul */
+#syncimapPicker {
+  margin: 0;
+  padding: 0;
+	max-height: 15em;
+	overflow: auto;
+}
+
+/* Style the caret/arrow */
+#syncimapPicker li {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+	list-style-position: inside;
+}
+
+/* Create the caret/arrow with a unicode, and style it */
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+/* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+.caret-down::before {
+  transform: rotate(90deg);
+}
+
+/* Hide the nested list */
+.nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.active {
+  display: block;
+}
+
+.account {
+	list-style-image: url("../skin/account.png");
+}
+.folder {
+	list-style-image: url("../skin/folder.png");
+}
+
+.inbox {
+  list-style-image: url("../skin/inbox.png");
+}
+.sent {
+  list-style-image: url("../skin/sent.png");
+}
+
+.outbox {
+  list-style-image: url("../skin/outbox.png");
+}
+
+.drafts {
+  list-style-image: url("../skin/drafts.png");
+}
+
+.templates {
+  list-style-image: url("../skin/templates.png");
+}
+
+.junk {
+  list-style-image: url("../skin/junk.png");
+}
+
+.trash {
+  list-style-image: url("../skin/trash.png");
+}
+
+/*
+.virtual {
+  list-style-image: url("../skin/folder.png");
+}
+*/
+.menulist-icon, .menulist-label {
+    margin-top: -1px !important;
+    margin-bottom: -1px !important;
+}
+
+#ef { 	/* external filename popup */
+	display: none;
+	position: fixed;
+	background: #eee;
+	padding: 10px;
+	z-index: 1;
+	border: 2px solid black;
+	border-radius: 20px;
+}
+#ef img {
+	border: 2px outset;
+	margin: 5px;
+	padding: 3px;
+}
+#ef-undo:hover + span::after {
+	content: '__MSG_undoCmd_label__';
+	position: relative;
+	left: -30px;
+	top: 10px;
+	width: 0px;
+	display: inline-block;
+}
+#ef-close:hover + span::after {
+	content: '__MSG_closeCmd_label__';
+	position: relative;
+	left: -30px;
+	top: 10px;
+	width: 0px;
+	display: inline-block;
+}
+#ef-save:hover + span::after {
+	content: '__MSG_saveCmd_label__';
+	position: relative;
+	left: -30px;
+	top: 10px;
+	width: 0px;
+	display: inline-block;
+}
+
+#upgrade {
+	display: none;
+	border: 1px solid silver;
+	margin: 20px;
+	text-align: center;
+	color: red;
+  white-space: pre;
+}

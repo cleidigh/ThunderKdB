@@ -882,10 +882,9 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       let event = {};
       let folder = this.getItemFolder(aEvent, event);
       // Check whether we accepted or declined an invitation.
-      for (let newAttendee of aEvent.getAttendees(/* COMPAT for TB 68 (bug 1557504) */{})) {
-        if (newAttendee.participationStatus) {
-          event.participation = newAttendee.participationStatus;
-        }
+      let newAttendee = this.getInvitedAttendee(aEvent);
+      if (newAttendee) {
+        event.participation = newAttendee.participationStatus;
       }
       let notify = getNotificationStatus(aEvent);
       let { uid, itemid } = await this.callExtension("CreateEvent", { folder, event, notify } );

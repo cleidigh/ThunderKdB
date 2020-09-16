@@ -44,11 +44,7 @@ Channel.prototype = {
   open: function() {
     gContentSecManager.performSecurityCheck(this, null);
     let listener = Cc["@mozilla.org/network/sync-stream-listener;1"].createInstance(Ci.nsISyncStreamListener);
-    if (this.loadInfo && this.loadInfo.securityMode) {
-      this.asyncOpen2(listener);
-    } else {
-      this.asyncOpen(listener, null);
-    }
+    this.asyncOpen(listener);
     let stream = listener.inputStream;
     stream.available(); // throws if the channel could not be opened
     if (this.status != Cr.NS_OK) { // COMPAT for TB 68 (bug 1531708)

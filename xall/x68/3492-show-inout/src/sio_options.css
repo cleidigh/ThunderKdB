@@ -1,0 +1,17 @@
+body { background: whitesmoke; }
+#addaddr_list input { display: block; }
+#io { height: 200px; overflow: auto; }
+.block { display: block; width: max-content; }
+
+.folderMenuItem {
+  list-style-image: url("chrome://messenger/skin/icons/server.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+.folderMenuItem[type="imap"],
+.folderMenuItem[type="pop3"] {
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+/* Local folders */
+.folderMenuItem[type="none"] {
+  -moz-image-region: rect(0 48px 16px 32px);
+}

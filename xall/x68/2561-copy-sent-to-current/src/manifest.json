@@ -3,7 +3,7 @@
   "name": "__MSG_extensionname__",
   "short_name": "CS2C",
   "description": "__MSG_extensiondescription__",
-  "version": "3.0",
+  "version": "3.1",
   "author": "Günter Gersdorf",
   "homepage_url": "https://www.ggbs.de/extensions/CopySent2Current.html",
   "applications": {
@@ -17,10 +17,11 @@
   "experiment_apis": {
     "cs2c": {
       "schema": "schema.json",
-      "child": {
-        "scopes": [ "addon_child" ],
+      "parent": {
+        "scopes": [ "addon_parent" ],
         "paths": [ [ "cs2c" ] ],
-        "script": "cs2c_implementation.js"
+        "script": "cs2c_implementation.js",
+        "events": ["startup"]
       }
     }
   },
@@ -46,7 +47,7 @@
   "browser_action": {
     "browser_style": true,
     "default_icon": {
-			"16": "skin/copyMailIcon.png",
+			"32": "skin/copyMailIcon.png",
 			"48": "skin/copyMailIcon48.png"
     },
     "default_title": "__MSG_extensionname__"

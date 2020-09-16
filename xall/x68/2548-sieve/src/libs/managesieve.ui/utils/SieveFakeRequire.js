@@ -61,7 +61,8 @@
 
   globals.set("./SieveAbstractIpcClient.js", "SieveAbstractIpcClient");
 
-  globals.set("./../utils/SieveTemplateLoader.js", "SieveTemplateLoader");
+  globals.set("./../utils/SieveTemplate.js", "SieveTemplate");
+  globals.set("./SieveI18n.js", "SieveI18n");
 
   globals.set("./SieveAbstractAccounts.js", "SieveAbstractAccounts");
   globals.set("./SieveAbstractAccount.js", "SieveAbstractAccount");
@@ -73,6 +74,7 @@
   globals.set("./SieveAccountSettings.js", "SieveAccountSettings");
   globals.set("./SieveEditorSettings.js", "SieveEditorSettings");
 
+  globals.set("./../../utils/SieveLogger.js", "SieveLogger");
   globals.set("./SieveLogger.js", "SieveLogger");
 
   globals.set("libs/managesieve.ui/settings/SieveAbstractMechanism.js", "SieveAbstractMechanism");
@@ -115,7 +117,7 @@
 
 
   // In case there is no require in our scope we add our fake.
-  if (typeof(exports.require) !== "undefined" && exports.require !== null) {
+  if (typeof (exports.require) !== "undefined" && exports.require !== null) {
     exports.require = fakeRequire();
   }
 

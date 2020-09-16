@@ -1,20 +1,7 @@
 //console.log('CopySent2Current Version 2.2b4');
 let dodebug=false;
 
-let strings={
-  "copysent2choose_label": '',
-  "copysent2choose_accesskey": '',
-  "moveoriginal_label": '',
-  "moveoriginal_accesskey": '',
-  "copysent2current_nocopy": '',
-  "NoTrashFolder": '',
-};
-Object.keys(strings).forEach(key=>{
-  let msg=messenger.i18n.getMessage(key);
-  strings[key]=msg;
-});
-
-messenger.cs2c.migratePrefs(strings).then((prefs) => {
+messenger.cs2c.migratePrefs().then((prefs) => {
   let count=Object.entries(prefs).length;
   if (count) {  //migrated
 		messenger.storage.local.clear();//.then(function() {

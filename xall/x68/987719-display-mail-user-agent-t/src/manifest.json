@@ -2,45 +2,19 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "2.1.2",
-  "default_locale": "en-US",
+  "version": "1.8.14.18",
+  "default_locale": "en_US",
   "author": "Jürgen Ernst, Dipl.-Ing.(FH)/Toshi_",
-  "homepage_url": "https://addons.thunderbird.net/ja/thunderbird/addon/display-mail-user-agent-t/",
+  "homepage_url": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
+  "legacy": true,
   "applications": {
     "gecko": {
       "id": "DisplayMailUserAgent-T@Toshi_",
-      "strict_min_version": "74.0a1"
+      "strict_min_version": "68.0"
     }
-  },
-  "experiment_apis": {
-    "dispmuaApi": {
-      "schema": "schema.json",
-      "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["dispmuaApi"]],
-        "script": "scripts/implementation.js"
-      }
-    }
-  },
-  "permissions": [
-    "messagesRead", "storage", "accountsRead", "downloads"
-  ],
-  "background": {
-    "scripts": ["scripts/dispmua.js", "scripts/dispmua-common.js"]
-  },
-  "options_ui" : {
-    "page": "content/options.html",
-    "open_in_tab": true
-  },
-  "web_accessible_resources": [
-    "images/*.png",
-    "content/dispmua-database.json",
-    "content/48x48/*.png"
-  ],
-  "message_display_action": {
-  },
+  }, 
   "icons": {
-    "32": "images/logo.png",
-    "64": "images/logo64.png"
+    "32": "chrome/skin/classic/logo.png",
+    "64": "chrome/skin/classic/logo64.png"
   }
 }

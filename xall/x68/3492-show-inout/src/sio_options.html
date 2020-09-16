@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Show InOut</title>
+  <script src="sio_options.js" type="application/javascript"></script>
+  <script src="l10n.js" type="application/javascript"></script>
+  <link rel="stylesheet" href="sio_options.css" type="text/css"></link>
+</head>
+<body>
+    <fieldset>
+      <legend>__MSG_addaddr__</legend>
+	    <div>
+	      <label align="baseline">__MSG_accnameTitle_label__</label>
+        <select id="accounts">
+        </select>
+	    </div>
+      <div id="addTo_box">
+        <label><input type="checkbox" id="addTo"></input> __MSG_addEmailTo_label__</label>
+        <div id="addTo_group" style="margin-left: 2em;">
+          <label>
+            <input type="radio" name="addTo" id="addTo_lf" value="1"></input>
+                    <span id="lfn">Local Folders</span></label>
+          <label>
+             <input type="radio" name="addTo" id="addTo_aa" value="2"></input> __MSG_viewAll_label__ __MSG_accountsSectionHdr_label__</label>
+        </div>
+      </div>
+      __MSG_additionalEmails__<div id="additionalEmails"></div>
+      <div id="addaddr_list">
+        <!-- input felder via .js -->
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>__MSG_inoutaddressCol_label__ Prefix</legend>
+      <label id="incoming_label">
+        <input id="InTextPrefix" size="10"></input> __MSG_incoming_label__</label>
+      <br/><label id="outgoing_label">
+        <input id="OutTextPrefix" size="10"></input> __MSG_outgoing_label__</label>
+    </fieldset>
+    <fieldset id="io">
+      <legend>__MSG_columns__</legend>
+      <div id="columns_list">
+        <!-- checkboxen via .js -->
+      </div>
+    </fieldset>
+	<fieldset id="hiddenprefs" style="display: none;"><legend>Hidden preferences</legend>
+			<label><input type="checkbox" id="debug" data-pref="debug"/>Debug</label>
+	</fieldset>
+
+</body>
+</html>

@@ -86,12 +86,12 @@ EWSAccount.prototype.GetFolder = async function(aMsgWindow, aFolder) {
     },
   };
   let result = await this.CallService(aMsgWindow, request); // ews.js
-  let folder = result.Folders.Folder;
+  let folder = EWSAccount.GetItem(result.Folders);
   return {
     id: folder.FolderId.Id,
     name: folder.DisplayName,
     total: Number(folder.TotalCount),
-    unread: Number(folder.UnreadCount),
+    unread: Number(folder.UnreadCount) || 0,
   };
 }
 

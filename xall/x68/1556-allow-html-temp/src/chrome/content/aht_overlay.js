@@ -34,7 +34,7 @@ function onLoad(activatedWhileWindowOpen) {
       </toolbarbutton>
     </toolbarpalette>
 
-    <toolbarpalette id="header-view-toolbar-palette">
+    <hbox id="header-view-toolbar">
       <toolbarbutton id="hdrAHTButton"
           class="hdrAHTButton toolbarbutton-1 msgHeaderView-button customize-header-toolbar-button"
           label="&allowhtmltemp.button.label;"
@@ -43,9 +43,10 @@ function onLoad(activatedWhileWindowOpen) {
           labelAHT-htmlStatusOriginal="&allowhtmltemp.button.label;"
           labelAHT-htmlStatusSanitized="&allowhtmltemp.button.label;"
           labelAHT-htmlStatusPlaintext="&bodyAsPlaintext.label;"
+          insertafter="hdrJunkButton"
           oncommand="ahtFunctions.AllowHTMLtemp(event, 'button');RestoreFocusAfterHdrButton();">
       </toolbarbutton>
-    </toolbarpalette>
+    </hbox>
 
     <menupopup id="remoteContentOptions">
       <menuitem id="aht_remoteContentOptionAllowForMsg"
@@ -66,7 +67,7 @@ function onLoad(activatedWhileWindowOpen) {
           onload="view_init();">
         <hbox class="aht-statusbarpanel" align="center">
           <image id="AHT-statusbarpanel-icon" class="aht-menu-iconic-icon"/>
-          <label id="AHT-statusbarpanel-text" class="aht-menu-iconic-text" flex="1" crop="right"
+          <label id="AHT-statusbarpanel-text" class="aht-menu-iconic-text statusbarpanel" flex="1" crop="right"
               value="HTML-Status"
               labelAHT-htmlStatusOriginal="&bodyAllowHTML.label;"
               labelAHT-htmlStatusSanitized="&bodySanitized.label;"
@@ -110,7 +111,7 @@ function onLoad(activatedWhileWindowOpen) {
 
         <hbox class="aht-statusbarpanel" align="center">
           <image id="AHT-feed-statusbarpanel-icon" class="aht-menu-iconic-icon"/>
-          <label id="AHT-feed-statusbarpanel-text" class="aht-menu-iconic-text" flex="1" crop="right"
+          <label id="AHT-feed-statusbarpanel-text" class="aht-menu-iconic-text statusbarpanel" flex="1" crop="right"
               value="Feed-HTML-Status"
               labelAHT-viewFeedWebPage="&viewFeedWebPage.label;"
               labelAHT-viewFeedSummary="&viewFeedSummary.label;"

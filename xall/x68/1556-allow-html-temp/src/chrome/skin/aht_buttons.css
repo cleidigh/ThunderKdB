@@ -12,14 +12,11 @@
   min-height: unset;
 }
 
-#AllowHTMLtemp[disabled="true"] .toolbarbutton-icon {
-  opacity: .4;
-}
-
 #AllowHTMLtemp,
 #hdrAHTButton,
 #AllowHTMLtemp[AHT-htmlStatus="Original"],
 #tabbar-toolbar #AllowHTMLtemp[AHT-htmlStatus="Original"],
+toolbar #AllowHTMLtemp[AHT-htmlStatus="Original"],
 #hdrAHTButton[AHT-htmlStatus="Original"],
 [place="palette"]>#hdrAHTButton {
   list-style-image: url("resource://allowhtmltemp/skin/aht_button_color.svg");
@@ -31,24 +28,16 @@
   list-style-image: url("resource://allowhtmltemp/skin/aht_button_color_plus.svg");
 }
 
-toolbar[brighttext] #AllowHTMLtemp[AHT-htmlStatus="Plus"],
-#tabbar-toolbar[brighttext] #AllowHTMLtemp[AHT-htmlStatus="Plus"] {
-  list-style-image: url("resource://allowhtmltemp/skin/aht_button_color_plus_inverted.svg") !important;
-}
-
 #AllowHTMLtemp[AHT-htmlStatus="Sanitized"],
 #tabbar-toolbar #AllowHTMLtemp[AHT-htmlStatus="Sanitized"],
+toolbar #AllowHTMLtemp[AHT-htmlStatus="Sanitized"],
 #hdrAHTButton[AHT-htmlStatus="Sanitized"] {
   list-style-image: url("resource://allowhtmltemp/skin/aht_button_sanitized.svg");
 }
 
-toolbar[brighttext] #AllowHTMLtemp[AHT-htmlStatus="Sanitized"],
-#tabbar-toolbar[brighttext] #AllowHTMLtemp[AHT-htmlStatus="Sanitized"] {
-  list-style-image: url("resource://allowhtmltemp/skin/aht_button_sanitized_inverted.svg") !important;
-}
-
 #AllowHTMLtemp[AHT-htmlStatus="Plaintext"],
 #tabbar-toolbar #AllowHTMLtemp[AHT-htmlStatus="Plaintext"],
+toolbar #AllowHTMLtemp[AHT-htmlStatus="Plaintext"],
 #hdrAHTButton[AHT-htmlStatus="Plaintext"] {
   list-style-image: url("resource://allowhtmltemp/skin/aht_button_plaintext.svg");
 }

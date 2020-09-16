@@ -1,17 +1,12 @@
 <div>
-  <h5>Syntax check</h5>
+  <h5 data-i18n="editor.syntax.title"></h5>
 
   <p class="form-text text-muted">
-    <small>
-      While editing script they can be checked for validity. The syntax check
-      is performed by the server. In order to keep network traffic low, syntax
-      check are grouped.
-    </small>
+    <small data-i18n="editor.syntax.description"></small>
   </p>
 
-  <div class="custom-control custom-switch">
-    <input type="checkbox" class="custom-control-input" id="sieve-editor-settings-synatxcheck">
-    <label class="custom-control-label" for="sieve-editor-settings-synatxcheck">Checks scripts while editing</label>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="sieve-editor-settings-synatxcheck">
+    <label class="form-check-label" data-i18n="editor.syntax.switch" for="sieve-editor-settings-synatxcheck"></label>
   </div>
-
 </div>

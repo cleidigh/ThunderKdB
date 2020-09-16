@@ -97,6 +97,7 @@ var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
           defaultsBranch.setStringPref("License", "unlicensed");
           defaultsBranch.setIntPref("UseCount", 0);
           defaultsBranch.setIntPref("FontSize", 13);
+          defaultsBranch.setIntPref("WrapWidth", 120);
           defaultsBranch.setStringPref("FontFamily", "monospace");
           defaultsBranch.setBoolPref("DarkTheme", false);
           // eslint-disable-next-line quotes

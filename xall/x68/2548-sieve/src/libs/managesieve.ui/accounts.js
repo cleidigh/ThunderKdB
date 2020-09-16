@@ -13,7 +13,7 @@
 
   "use strict";
 
-  /* global SieveAccountsUI */
+  /* global SieveAccounts */
   /* global SieveIpcClient */
   /* global SieveRenameScriptDialog */
   /* global SieveCreateScriptDialog */
@@ -21,6 +21,7 @@
   /* global SieveScriptBusyDialog */
   /* global SieveFingerprintDialog */
   /* global SieveLogger */
+  /* global SieveI18n */
 
   /**
    * Shows a prompt which asks the user for the new script name.
@@ -97,14 +98,21 @@
     SieveLogger.getInstance().level(
       await SieveIpcClient.sendMessage("core", "settings-get-loglevel"));
 
-    const accounts = new SieveAccountsUI();
+    await (SieveI18n.getInstance()).load();
+
+    const accounts = new SieveAccounts();
     accounts.render();
 
-    SieveIpcClient.setRequestHandler("accounts", "script-show-create", async () => { return await onCreateScript(); });
-    SieveIpcClient.setRequestHandler("accounts", "script-show-delete", async (msg) => { return await onDeleteScript(msg.payload); });
-    SieveIpcClient.setRequestHandler("accounts", "script-show-rename", async (msg) => { return await onRenameScript(msg.payload); });
-    SieveIpcClient.setRequestHandler("accounts", "script-show-busy", async (msg) => { await onBusy(msg.payload); });
-    SieveIpcClient.setRequestHandler("accounts", "script-show-certerror", async (msg) => { return await onCertError(msg.payload); });
+    SieveIpcClient.setRequestHandler("accounts", "script-show-create",
+      async () => { return await onCreateScript(); });
+    SieveIpcClient.setRequestHandler("accounts", "script-show-delete",
+      async (msg) => { return await onDeleteScript(msg.payload); });
+    SieveIpcClient.setRequestHandler("accounts", "script-show-rename",
+      async (msg) => { return await onRenameScript(msg.payload); });
+    SieveIpcClient.setRequestHandler("accounts", "script-show-busy",
+      async (msg) => { await onBusy(msg.payload); });
+    SieveIpcClient.setRequestHandler("accounts", "account-show-certerror",
+      async (msg) => { return await onCertError(msg.payload); });
   }
 
   if (document.readyState !== 'loading')

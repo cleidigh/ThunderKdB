@@ -4,16 +4,16 @@
 
 ### Features
 
-* Allows to have HTML temporarily allowed in the currently displayed message by only one click. When switching to another message, it'll be shown automatically again in plain text or simple html mode (if this is your default mode).
+* Allows to have HTML temporarily allowed in the currently displayed message by only one click. When switching to another message, it'll be shown automatically again in plain text or simple html mode (according to your default mode).
 
 ### Known issues
 
-* 
+* It's not possible to use the provided functions to easily print, forward or answer with HTML temporarily allowed. It seems there is no possibility to implement these repeatedly requested features by an addon. It would be necessary to change Thunderbird core functions, to get these things working. If you are interested in getting the whole functionality build in Thunderbirds core, then contribute to the RFE [Bug 1598857](https://bugzilla.mozilla.org/show_bug.cgi?id=1598857).
 
 ### Installation
 
 1. [Download Allow HTML Temp from the official Thunderbird add-on page](https://addons.thunderbird.net/addon/allow-html-temp/)
-2. [Installing an Add-on in Thunderbird](https://support.mozilla.org/en-US/kb/installing-addon-thunderbird)
+2. [Installing an Add-on in Thunderbird](https://support.mozilla.org/kb/installing-addon-thunderbird)
 
 
 ### Contribution

@@ -1,0 +1,205 @@
+[
+  {
+    "namespace": "abs",
+    "functions": [
+      {
+        "name": "migratePrefs",
+        "description": "Migrate preferences from preferences system to browser.storage",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "uids2ids",
+        "description": "uids to ids",
+        "type": "function",
+        "async": true,
+        "parameters": [ ]
+      },
+      {
+        "name": "setPrefs",
+        "description": "set prefs for local use",
+        "type": "function",
+        "async": false,
+        "parameters": [
+          {
+            "name": "theprefs",
+            "type": "any",
+            "description": "the preferences"
+          },
+          {
+            "name": "changedPrefs",
+            "type": "string",
+            "description": "the changed preference if any"
+          }
+ 				]
+      },
+      {
+        "name": "filePicker",
+        "description": "Use filepicker to select path",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "prompt",
+            "type": "string",
+            "description": "localized prompt"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "'file', 'path', 'save'"
+          },
+          {
+            "name": "filter",
+            "type": "any",
+            "description": "object with filters"
+          },
+          {
+            "name": "defaultpath",
+            "type": "string",
+            "description": "default pathname"
+          }
+        ]
+      },
+      {
+        "name": "saveMabFile",
+        "description": "save mabFile to disk",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "mabName",
+            "type": "string",
+            "description": "Addressbookname"
+          },
+          {
+            "name": "file",
+            "type": "string",
+            "description": "Path of new file"
+          }
+				]
+      },
+      {
+        "name": "loadMab",
+        "description": "load a mabFile from disk",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "mabName",
+            "type": "string",
+            "description": "To be used addressbookname"
+          },
+          {
+            "name": "filename",
+            "type": "string",
+            "description": "Path of file"
+          }
+				]
+      },
+      {
+        "name": "splitURI",
+        "description": "split uri",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "uri",
+            "type": "string",
+            "description": "the uri to split"
+          }
+        ]
+      },
+      {
+        "name": "abspassword",
+        "description": "get or set password",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "protocol",
+            "type": "string",
+            "description": "protocol"
+          },
+          {
+            "name": "host",
+            "type": "string",
+            "description": "host"
+          },
+          {
+            "name": "user",
+            "type": "string",
+            "description": "user"
+          },
+          {
+            "name": "pwd",
+            "type": "string",
+            "description": "password"
+          }
+				]
+      },
+			{
+        "name": "showPopup",
+        "description": "show popup and start up- or download",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "direction",
+            "type": "string",
+            "description": "either 'upload' or 'download'"
+          },
+          {
+            "name": "singlebook",
+            "type": "string",
+            "description": "empty for all selected books or id or bookname for a single book"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "one of start, final, auto, manual"
+          },
+          {
+            "name": "force",
+            "type": "boolean",
+            "description": "true to overwrite exiting books"
+          }
+				]
+      },
+      {
+        "name": "debug",
+        "description": "debug",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "txt",
+            "type": "string",
+            "description": "the debug text"
+          },
+          {
+            "name": "ln",
+            "type": "string",
+            "description": "line number of debug"
+          }
+				]
+      },
+      {
+        "name": "doATest",
+        "description": "do a test",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "test",
+            "type": "any",
+            "description": "test parameter"
+          }
+				]
+      }
+
+
+    ]
+  }
+]

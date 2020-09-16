@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>__MSG_extensionName__</title>
+  <script src="abs_options.js" type="application/javascript"></script>
+  <script src="l10n.js" type="application/javascript"></script>
+  <link rel="stylesheet" href="abs_options.css" type="text/css"></link>
+</head>
+<body>
+<h1>__MSG_extensionName__</h1>
+  <div id="ef" style="">
+		<fieldset>
+			<legend id="ef-l">book name</legend>
+      <label>__MSG_saveAsFileCmd_label__</label><br/>
+      <input id="ef-t" size="40" data-pref="dummy"/>
+      <div>
+        <img id="ef-undo" src="skin/arrow-lft.gif" width="18" height="18"/><span></span>
+        <img id="ef-close" src="skin/close.gif" width="18" height="18"/><span></span>
+        <img id="ef-save" src="skin/check.gif" width="18" height="18"/><span></span>
+      </div>
+		</fieldset>
+  </div>
+
+<div id="upgrade"></div>
+<div class="tabbed" id="maintabs">
+   <input id="tab_sync" type="radio" name="tabs" checked="checked"/>
+   <input id="tab_imex" type="radio" name="tabs" />
+   <input id="tab_einst" type="radio" name="tabs" />
+
+   <nav>
+      <label for="tab_sync">__MSG_remotetab_label__</label>
+      <label for="tab_imex">__MSG_localtab_label__</label>
+      <label for="tab_einst">__MSG_settingstab_label__</label>
+   </nav>
+   
+   <figure>
+      <div class="tab_sync">
+			<!-- synchronize tab -->
+				<fieldset id="SyncList" style="width:28%; float: left;">
+					<legend>__MSG_syncbooks_label__</legend>
+					<label id="SyncListDesc">Up-   Download</label>
+					<div id="SyncListCheck" height="150px">
+					</div>
+				</fieldset>
+        <div style="width:65%; float: right; border: 1px solid silver; margin-left: 5px;">
+					<div class="tabbed">
+						 <input id="tab_local" type="radio" name="stabs"  checked="checked"/>
+						 <input id="tab_remote" type="radio" name="stabs" />
+						 <input id="tab_imap" type="radio" name="stabs" />
+
+						 <nav>
+								<label for="tab_local">__MSG_tab_local__</label>
+								<label for="tab_remote">__MSG_tab_remote__</label>
+								<label for="tab_imap">__MSG_tab_imap__</label>
+						 </nav>
+						 <figure>
+					<!-- -----------------	-->
+								<div id="absTabLocal" class="tab_local">
+								<fieldset>
+                  <legend><input type="radio" id="synclocal" name="synctype" value="local" data-pref="synctype" />__MSG_synclocal_label__</legend>
+									<div style="display: flex;">
+										<button id="ChoosePath">__MSG_synclocal_choosepath__</button>
+										<input id="localpath" readonly="readonly" style="width:100%; margin-left: 2px;" data-pref="localpath"/>
+										<input type="file" webkitdirectory="true" id="localpathpicker" style="display: none;"/>
+									</div>
+								</fieldset>
+								</div>
+					<!-- -----------------	-->
+								<div id="absTabRemote" class="tab_remote">
+								<fieldset>
+                  <legend><input type="radio" id="syncremote"  name="synctype" value="remote" data-pref="synctype"/>__MSG_syncremote_label__</legend>
+									<table width="100%">
+										<tr>
+												<td width="15%">__MSG_host_label__/__MSG_path_label__</td>
+												<td><input id="remote" style="width: 100%" data-pref="remote"/></td>
+										</tr>
+										<tr>
+												<td>__MSG_user_label__</td>
+												<td><input id="username" style="width: 100%" data-pref="user"/></td>
+										</tr>
+										<tr>
+												<td>__MSG_password_label__</td>
+												<td><input id="password" type="password" style="width: 100%"/></td>
+										</tr>
+									</table>
+								</fieldset>
+								</div>
+					<!-- -----------------	-->
+								<div id="absTabIMAP" class="tab_imap">
+								<fieldset>
+                  <legend><input type="radio" id="syncimap"  name="synctype" value="imap" data-pref="synctype"/>__MSG_syncimap_label__</legend>
+									<input id="selectedIMAP" style="font-size: 1em; width: 100%;" readonly="true" />
+									<label>__MSG_syncimap_choosefolder__</label>
+									<ul id="syncimapPicker">
+									</ul> 
+								</fieldset>
+								</div>
+						 </figure>
+					</div>
+			<!-- -----------------	-->
+					<!--hr class="thin" /-->
+					<table>
+						<tr>
+							<td>
+								<label><input type="checkbox" id="autodownload" data-pref="autodownload"/>__MSG_autodownload_label__</label>
+							</td>
+							<td style="border-left: 1px solid silver;">
+								<label><input type="checkbox" "id="timeddownload" data-pref="timeddownload"/>__MSG_timeddownload_label__</label>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<label><input type="checkbox" id="autoupload" data-pref="autoupload"/>__MSG_autoupload_label__</label>
+							</td>
+							<td style="border-left: 1px solid silver;">
+								<label><input type="checkbox" id="timedupload" data-pref="timedupload"/>__MSG_timedupload_label__</label>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td style="border-left: 1px solid silver;">
+								<div align="center">
+									<label>__MSG_loadtimer_label__ <input id="loadtimer" size="3" data-pref="loadtimer"/></label>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<hr class="thin" />
+					<div>
+						<button id="autodownloadnow">__MSG_addressbookssync_download__</button>
+						<button id="autouploadnow">__MSG_addressbookssync_upload__</button>
+            <button id="doatest"style="display:none;">Do a test</button>
+					</div>
+				</div>
+			</div>
+<!-- --------------------------------------	-->
+      <div class="tab_imex">
+			<!-- import/export tab -->
+
+				<div>
+					<fieldset>
+						<legend>__MSG_save_saveAddressBook__</legend>
+							<select id="MabList"></select>
+							<button id="SaveMab" style="margin-right: 2px;">__MSG_save_save__</button>
+					</fieldset>
+
+					<fieldset>
+						<legend>__MSG_load_loadAddressBook__</legend>
+            <table>
+                <tr>
+									<td style="width: 15%;">__MSG_load_file__</td>
+									<td style="width: 70%;">
+										<input id="MabFilePath" readonly="readonly" style="width: 95%; margin: auto 5px;"/></td>
+									<td style="width: 15%;"><button id="ChooseFile">__MSG_load_browse__</button></td>
+                </tr>
+                <tr>
+									<td>__MSG_load_loadName__</td>
+									<td><input id="MabName" style="width: 95%; margin: auto 5px;"/></td>
+									<td><button id="LoadMab">__MSG_load_load__</button></td>
+                </tr>
+            </table>
+					</fieldset>
+
+					<fieldset>
+						<legend>__MSG_load_uploadAddressBook__*)</legend>
+						<div>
+							<select id="MabList1"></select>
+							<button id="UploadMab" style="margin-right: 2px;">__MSG_save_save__</button>
+						</div>
+					</fieldset>
+
+					<fieldset>
+						<legend>__MSG_load_downloadAddressBook__*)</legend>
+            <table>
+                <tr>
+									<td style="width: 15%;">__MSG_load_loadName__</td>
+									<td style="width: 70%;">
+										<input id="DownloadMabName" style="width: 95%; margin: auto 5px;"/></td>
+									<td style="width: 15%;"><button id="DownloadMab">__MSG_load_load__</button></td>
+                </tr>
+            </table>
+					</fieldset>
+          <label>*) __MSG_load_downloadAddressBookInfo__</label>
+				</div>
+
+			</div>
+<!-- --------------------------------------	-->
+      <div class="tab_einst">
+			<!-- options tab -->
+				<fieldset>
+					<label><input type="checkbox" id="hidepopups"  data-pref="hidepopups"/>__MSG_hidepopups_label__</label>
+					<label><input type="checkbox" id="hideallpopups"  data-pref="hideallpopups"/>__MSG_hideallpopups_label__</label>
+					<label><input type="checkbox" id="usepost"  data-pref="usepost"/>__MSG_usepost_label__</label>
+					<label><input type="checkbox" id="separateupdown"  data-pref="separateupdown"/>__MSG_separateupdown_label__</label>
+					<label><input type="checkbox" id="noupload"  data-pref="noupload"/>__MSG_noupload_label__</label>
+					<label><input type="checkbox" id="notimecheck"  data-pref="notimecheck"/>__MSG_notimecheck_label__</label>
+				</fieldset>
+
+<!--
+				<fieldset><legend>__MSG_syncpolicy_label__</legend>
+						<label>__MSG_syncpolicy_desc__</label>
+						<label><input type="radio" id="syncpolicyentry" name="syncpolicy" value="entry" data-pref="syncpolicy"/>__MSG_syncpolicy_entry__</label>
+						<label><input type="radio" id="syncpolicyfile" name="syncpolicy" value="file" data-pref="syncpolicy"/>__MSG_syncpolicy_file__</label>
+				</fieldset>
+-->
+
+        <div>
+					<fieldset id="imappolicy"><legend>__MSG_imappolicy_label__</legend>
+								<label><input type="radio" id="imappolicydraft" name="imapuploadpolicy" value="draft" data-pref="imapuploadpolicy"/>__MSG_imappolicy_draft__</label>
+								<label><input type="radio" id="imappolicyfile" name="imapuploadpolicy" value="tmpfile" data-pref="imapuploadpolicy"/>__MSG_imappolicy_file__</label>
+					</fieldset>
+
+					<fieldset><legend>__MSG_downloadpolicy_label__</legend>
+								<label><input type="radio" id="downloadpolicyask" name="downloadpolicy" value="ask" data-pref="downloadpolicy"/>__MSG_downloadpolicy_ask__</label>
+								<label><input type="radio" id="downloadpolicyoverwrite" name="downloadpolicy" value="overwrite" data-pref="downloadpolicy"/>__MSG_downloadpolicy_overwrite__</label>
+								<label><input type="radio" id="downloadpolicykeep" name="downloadpolicy" value="keep" data-pref="downloadpolicy"/>__MSG_downloadpolicy_keep__</label>
+					</fieldset>
+
+					<fieldset id="hiddenprefs" style="display: none;"><legend>Hidden preferences</legend>
+							<label>Delay autodownload at startup (seconds) <input id="delayautodownload" size="3" data-pref="delayautodownload"/></label>
+							<label><input type="checkbox" id="noexternalappset" data-pref="noexternalappset"/>Don't change externalapp preferences</label>
+							<label><input type="checkbox" id="debug" data-pref="debug"/>Debug</label>
+					</fieldset>
+
+        </div>
+			</div>
+   </figure>
+</div>
+
+</body>
+</html>

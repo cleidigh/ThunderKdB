@@ -1,17 +1,3 @@
-/*** Trennlinie fehlt sonst am rechten Rand der hbox im Gegensatz zu statusbarpanel ****/
-#AHT-statusbarpanel,
-#AHT-feed-statusbarpanel {
-  -moz-appearance: none;
-  border-inline-end: 1px solid ThreeDLightShadow;
-}
-
-#status-bar:-moz-lwtheme>#AHT-statusbarpanel,
-#status-bar:-moz-lwtheme>#AHT-feed-statusbarpanel {
-  border-inline-end-color: var(--tabs-border-color);
-}
-
-/*** Ende der Anpassung für Trennlinie ***/
-
 #AHT-statusbarpanel-icon[AHT-htmlStatus="Original"] {
   list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_color.svg");
 }
@@ -19,20 +5,15 @@
 #AHT-statusbarpanel-icon[AHT-htmlStatus="Sanitized"] {
   list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_sanitized.svg");
 }
-
-/*
-#status-bar:-moz-lwtheme #AHT-statusbarpanel-icon[AHT-htmlStatus="Sanitized"] {
-  list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_sanitized_inverted.svg") !important;
-}
-*/
-
 :-moz-lwtheme-brighttext #AHT-statusbarpanel-icon[AHT-htmlStatus="Sanitized"] {
   list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_sanitized_inverted.svg") !important;
 }
 
-
 #AHT-statusbarpanel-icon[AHT-htmlStatus="Plaintext"] {
   list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_plaintext.svg");
+}
+:-moz-lwtheme-brighttext #AHT-statusbarpanel-icon[AHT-htmlStatus="Plaintext"] {
+  list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_plaintext_inverted.svg") !important;
 }
 
 #AHT-feed-statusbarpanel-icon {
@@ -42,4 +23,8 @@
 .aht-statusbarpanel {
   padding-left: 4px;
   padding-right: 4px;
+}
+
+.aht-menu-iconic-text {
+  margin-left: 0;
 }

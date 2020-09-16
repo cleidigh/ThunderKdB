@@ -1,0 +1,55 @@
+[
+  {
+    "namespace": "sio",
+    "functions": [
+      {
+        "name": "init",
+        "description": "initialize",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "prefs",
+            "type": "any",
+            "description": "The current preference"
+          }
+        ]
+      },
+      {
+        "name": "cols",
+        "description": "Get thread pane cols",
+        "type": "function",
+        "async": true,
+        "parameters": [ ]
+      },
+      {
+        "name": "localfolder",
+        "description": "Get local folder info",
+        "type": "function",
+        "async": true,
+        "parameters": [ ]
+      },
+      {
+        "name": "prefChanged",
+        "description": "Notify of preferences changed",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "prefs",
+            "type": "any",
+            "description": "The current preference"
+          }
+        ]
+      },
+      {
+        "name": "migratePrefs",
+        "description": "Migrate preferences from preferences system to browser.storage",
+        "type": "function",
+        "async": true,
+        "parameters": [ ]
+      }
+
+    ]
+  }
+]

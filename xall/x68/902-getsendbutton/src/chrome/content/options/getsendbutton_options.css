@@ -5,5 +5,13 @@
  * to have the dark and light mode ability
  */
 #getsendbuttonPrefs:not([lwt-tree]):-moz-lwtheme {
-  background-image: none !important;
+    background-image: none !important;
+}
+#getsendbuttonPrefs:not([lwt-tree]):-moz-lwtheme-darktext {
+  background: -moz-Dialog !important;
+  color: -moz-DialogText;
+  text-shadow: none;
+}
+legend:-moz-lwtheme {
+  background-color: unset;
 }

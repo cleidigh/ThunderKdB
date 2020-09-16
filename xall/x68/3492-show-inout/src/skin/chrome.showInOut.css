@@ -1,0 +1,138 @@
+/* put this in the 'chrome' subdirectory of the thunderbird profile folder */
+
+/* revert to old icons:
+treechildren::-moz-tree-image(sio_inoutCol) {
+  list-style-image: url("inout.png");
+}
+*/
+/* ---------------------------------------------------------- */
+/* ex. userChrome.css */
+
+/* set the background only for the 'correspondent' cell for incoming mails
+treechildren::-moz-tree-cell(sio_inoutaddressCol, in) {
+  background-color: red;
+}
+*/
+/* set the background for all cells for outgoing mails (but see below for rows)
+treechildren::-moz-tree-cell(out) {
+  background-color: green;
+}
+treechildren::-moz-tree-cell(out, selected) {
+  background-color: inherit;
+}
+*/
+
+/* set the font style only for the 'correspondent' cell for incoming mails
+treechildren::-moz-tree-cell-text(sio_inoutaddressCol, in) {
+  font-style: italic;
+}
+*/
+/* set the font style for all cells for outgoing mails (must be done this way, not with rows) */
+treechildren::-moz-tree-cell-text(out) {
+  /* font: -moz-info; this is the default == Microsoft Sans Serif */
+  font-style: italic;
+}
+
+/* for the keyword (aka tags) approach. currently not implemented
+treechildren::-moz-tree-cell-text(kw-out) {
+  font-style: italic;
+}
+treechildren::-moz-tree-cell-text(kw-in) {
+  text-decoration: underline;
+}
+*/
+
+/* set the background for all rows with incoming mails
+treechildren::-moz-tree-row(in) {
+  background-color: #ffffe0 !important;
+}
+
+/* but set the background for selected rows back to normal
+    does not work as expected :-(
+treechildren::-moz-tree-row(in, selected) {
+  background-color: inherit !important;
+}
+*/
+
+/* set the background for all rows with outgoings mails
+treechildren::-moz-tree-row(out) {
+}
+*/
+
+/* change the icons, be sure to use !important */
+/* config "mailnews.message_display.disable_remote_image" must be 'false' !!! */
+
+/* see Mail from Harold E Austin jr */
+/*
+treecol.inoutColumnHeader {
+/*
+  list-style-image: url(chrome://messenger/skin/messengercompose/compose-toolbar-small.png) !important;
+      seit TB 3.0 gibt dies gibt in der Fehlerkonsole
+    Sicherheitsfehler: Inhalt auf file:///C:/gg/INI/Thunderbird_3.0/chrome/userChrome.css darf
+    chrome://messenger/skin/messengercompose/compose-toolbar-small.png nicht laden oder verlinken.
+* /
+    /* Briefumschlag mit Pfeil (grau) * /
+/* funktioniert leider nicht
+  list-style-image: url(jar:resource://gre/chrome/classic.jar!/skin/classic/messenger/messengercompose/compose-toolbar-small.png) !important;
+  -moz-image-region: rect(0px 16px 16px 0px) !important;
+* /
+/* funktioniert leider auch nicht
+  list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YGARc5KB0XV+IAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAF1JREFUGNO9zL0NglAAxPEfdLTs4BZM4DIO4C7OwQg2JoQ9LE1exdlYvBBeZ7jqch9//q1uH4TLzw4d6+ErXMMcXuHWxId3KOETnnXXV6MJpcq2MLaI97CER3N0vr4MkhoXe0rZigAAAABJRU5ErkJggg==) !important;
+* /
+   list-style-image: url(compose-toolbar-small.png) !important;
+   -moz-image-region: rect(32px 16px 48px 0px) !important;
+}
+*/
+
+/* * /
+treechildren::-moz-tree-image(sio_inoutCol, out) {
+/*
+  list-style-image: url(out.png) !important;
+  -moz-image-region: auto !important;
+* /
+    /* Briefumschlag mit Pfeil (farbig) * /
+/* does not work any longer:
+   list-style-image: url("chrome://messenger/skin/messengercompose/compose-toolbar-small.png") !important;
+* /
+   list-style-image: url(compose-toolbar-small.png) !important;
+   -moz-image-region: rect(0px 16px 16px 0px) !important;
+}
+/* * /
+treechildren::-moz-tree-image(sio_inoutCol, in) {
+/*
+  list-style-image: url(in.png) !important;
+  -moz-image-region: auto !important;
+* /
+    /* Nur ein grauer Punkt * /
+/* does not work any longer:
+   list-style-image: url("chrome://messenger/skin/icons/readmail.png") !important;
+* /
+   list-style-image: url(readmail.png) !important;
+}
+*/
+
+/*
+treechildren::-moz-tree-cell-text(to_list) {
+  background-color: silver;
+}
+*/
+/* end indicators*/
+/* revert to pre V0.7 icons */
+/*
+treechildren::-moz-tree-image(sio_inoutCol) {
+  list-style-image: url("chrome://showinout/skin/inout.png");
+}
+*/
+
+#threadTree treechildren::-moz-tree-row(out) {
+   background-image: url("row-sent.png") !important;
+   background-position: bottom !important;
+   background-repeat: repeat-x !important;
+}
+#threadTree treechildren::-moz-tree-row(odd,out) {
+   background-image: url("row-odd-sent.png") !important;
+   background-position: bottom !important;
+   background-repeat: repeat-x !important;
+}
+
+
