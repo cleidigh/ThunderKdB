@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2602,
+    "average_daily_users": 2623,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -21,26 +21,26 @@
     "contributions_url": null,
     "created": "2006-05-13T07:32:43Z",
     "current_version": {
-        "id": 2474237,
+        "id": 2474274,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-sent-to-current/versions/2474237",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-sent-to-current/versions/2474274",
         "files": [
             {
-                "id": 1017399,
-                "created": "2020-09-10T09:53:32Z",
-                "hash": "sha256:b5c2161da816dbe378ed951ce6cc2df42ee01c2537c14c38afebcc99e8d30689",
+                "id": 1017436,
+                "created": "2020-09-14T20:59:43Z",
+                "hash": "sha256:37db61736ddbe48026cd723a5c29e99978ea72044d68456f58407601a0cadb04",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 39818,
+                "size": 39448,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017399/copy_sent_to_current-3.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017436/copy_sent_to_current-3.1-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "tabs",
@@ -83,10 +83,13 @@
             },
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Fixed bug where messages are not sent if addon is not activated for the account",
+            "de": ""
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/versions/3.0",
-        "version": "3.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/versions/3.1",
+        "version": "3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -112,7 +115,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-09-10T15:41:44Z",
+    "last_updated": "2020-09-14T22:49:42Z",
     "name": {
         "en-US": "Copy Sent to Current"
     },
@@ -168,10 +171,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.26822,
-        "count": 81,
-        "average": 4.284,
-        "text_count": 81
+        "bayesian_average": 4.24062,
+        "count": 82,
+        "average": 4.2561,
+        "text_count": 82
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/reviews/",
     "requires_payment": false,
@@ -200,6 +203,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-10T09:53:32Z",
+            "comp78pv_version": "3.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-04-27T08:11:47Z"
         }

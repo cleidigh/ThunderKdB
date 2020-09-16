@@ -9,36 +9,36 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 0,
+    "average_daily_users": 28,
     "categories": {
         "thunderbird": [
             "appearance",
             "message-and-news-reading"
         ]
     },
-    "contributions_url": "",
+    "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "created": "2020-09-09T17:28:17Z",
     "current_version": {
-        "id": 2474232,
+        "id": 2474275,
         "compatibility": {
             "thunderbird": {
                 "max": "80.0",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quotecolors/versions/2474232",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quotecolors/versions/2474275",
         "files": [
             {
-                "id": 1017394,
-                "created": "2020-09-10T05:35:56Z",
-                "hash": "sha256:63b84b1ddb0df03e69a55905985479fd400c63abfd0c35d77853a66c321d9681",
+                "id": 1017437,
+                "created": "2020-09-14T22:23:36Z",
+                "hash": "sha256:3664b98d466f5667ada4867c808f7e21d1eba8d7376048ae615f186543697c18",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 67450,
+                "size": 67503,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017394/quote_colors-2.0.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017437/quote_colors_tb_68_78-2.0.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,15 +50,18 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Fix issue in options dialog (dark text on dark background) with some lightweight themes (may be the related issue is a Thunderbird bug)",
+            "de": "Behebt ein Anzeigeproblem im Optionen-Dialog (dunkle Schrift auf dunklem Hintergrund) bei einigen Lightweight-Themes. Verantworlich könnte ein Bug in Thunderbird sein."
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quotecolors/versions/2.0.3",
-        "version": "2.0.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quotecolors/versions/2.0.5",
+        "version": "2.0.5"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This is a completely revised sequel to the original \"Quote Colors\" by Malte Rücker. The program code has been updated to work completely with Thunderbird 68 and then also with Thunderbird 78. The options dialog also works here again and successfully saves the options to be used.\n\nPlease uninstall any other, older variants of the add-on (the old one from \"Malte Rücker\" or the variant from \"Intika\", which can also be found here on <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a>. Unfortunately, it was not possible for formal reasons to combine the old variants with this newly revised add-on in one project, which is why the update from the other variants to this new add-on does not work directly either.\n\nThe source code of the add-on is open source and is available at <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/quote-colors\"> GitLab </a>.\n\nThe translations available so far can be found on the <a rel=\"nofollow\" href=\"https://crowdin.com/project/quote-colors\"> CrowdIn </a> platform.",
-        "de": "Dies ist eine komplett überarbeitete Fortsetzung des originalen \"Quote Colors\" von Malte Rücker. Der Programm-Code wurde erneuert, um komplett mit Thunderbird 68 und dann auch mit Thunderbird 78 zu funktionieren. Auch der Optionen-Dialog funktioniert hier wieder inklusive speichern der Optionen, sodass diese dann auch wirklich angewendet werden.\n\nBitte deinstallieren Sie eventuelle andere, ältere Varianten des Add-ons (das alte von \"Malte Rücker\" oder auch die Variante von \"Intika\", die man ebenfalls hier auf <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a> finden kann. Es war aus formellen Gründen leider nicht möglich, die alten Varianten mit diesem neu überarbeiteten Add-on hier in einem Projekt zusammen zu fassen. Deshalb funktioniert auch das Update von den anderen Varianten nicht direkt auf dieses neue Add-on.\n\nDer Quellcode des Add-ons ist Open-Source und steht auf <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/quote-colors\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a rel=\"nofollow\" href=\"https://crowdin.com/project/quote-colors\">CrowdIn</a>."
+        "en-US": "This is a completely revised sequel to the original \"Quote Colors\" by Malte Rücker. The program code has been updated to work completely with Thunderbird 68 and then also with Thunderbird 78. The options dialog also works here again and successfully saves the options to be used.\n\n<strong>Important</strong>\nPlease uninstall any other, older variants of the add-on (the old one from \"Malte Rücker\" or the variant from \"Intika\", which can also be found here on <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a>. Unfortunately, it was not possible for formal reasons to combine the old variants with this newly revised add-on in one project, which is why the update from the other variants to this new add-on does not work directly either.\n\n<strong>Features</strong>\nQuote Colors allows you to assign text and background colors to different quote levels which are applied when reading or printing mail or news messages. Five quote levels can be configured with distinct colors.\n\nYou can choose between two quoting display modes: graphical quoting with colored bars around quoted paragraphs (default), and traditional plain text quoting where each quoted line starts with one or more \"&gt;\" characters. In graphical quoting, the color, position and style of the bars is adjustable.\n\nAdditionally, this add-on enables you to set up some basic message display options such as text, background, link and signature colors.\n\n<strong>Development</strong>\nThe source code of the add-on is open source and is available at <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/quote-colors\">GitLab</a>.\n\nThe translations available so far can be found on the <a rel=\"nofollow\" href=\"https://crowdin.com/project/quote-colors\">CrowdIn</a> platform.",
+        "de": "Dies ist eine komplett überarbeitete Fortsetzung des originalen \"Quote Colors\" von Malte Rücker. Der Programm-Code wurde erneuert, um komplett mit Thunderbird 68 und dann auch mit Thunderbird 78 zu funktionieren. Auch der Optionen-Dialog funktioniert hier wieder inklusive speichern der Optionen, sodass diese dann auch wirklich angewendet werden.\n\n<strong>Wichtig</strong>\nBitte deinstallieren Sie eventuelle andere, ältere Varianten des Add-ons (das alte von \"Malte Rücker\" oder auch die Variante von \"Intika\", die man ebenfalls hier auf <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a> finden kann. Es war aus formellen Gründen leider nicht möglich, die alten Varianten mit diesem neu überarbeiteten Add-on hier in einem Projekt zusammen zu fassen. Deshalb funktioniert auch das Update von den anderen Varianten nicht direkt auf dieses neue Add-on.\n\n<strong>Funktionen</strong>\nQuote Colors ermöglicht Ihnen, unterschiedlichen Zitatebenen in E-Mails und Newsgruppenbeiträgen verschiedene Text- und Hintergrundfarben zuzuweisen, welche beim lesen oder drucken angewendet werden. Fünf Zitatebenen können hierbei mit individuellen Farben belegt werden.\n\nWeiterhin können Sie zwischen zwei Anzeigemodi für Zitate wählen: grafischer Zitiermodus mit gefärbten Balken um die zitierten Absätze (Standard) und dem traditionellen Zitieren im Reintextmodus, in welchem jede zitierte Zeile mit einem oder mehreren „&gt;“ Zeichen eingeleitet wird. Im grafischen Zitiermodus sind die Farbe, Position und Stil der Balken einstellbar.\n\nZusätzlich bietet dieses Add-on einige grundlegende Einstellungen zur Darstellung von Nachrichten wie Text-, Hintergrund-, Link- und Signaturfarben.\n\n<strong>Entwicklung</strong>\nDer Quellcode des Add-ons ist Open-Source und steht auf <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/quote-colors\">GitLab</a> zur Verfügung. \n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a rel=\"nofollow\" href=\"https://crowdin.com/project/quote-colors\">CrowdIn</a>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quotecolors/edit",
@@ -86,7 +89,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-10T07:02:24Z",
+    "last_updated": "2020-09-15T06:43:39Z",
     "name": {
         "ru": "Quote Colors",
         "fr": "Quote Colors",
@@ -223,6 +226,11 @@
             "comp69plus": true,
             "comp78plus": true,
             "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-10T05:35:56Z",
+            "comp78pv_version": "2.0.3",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "80.0",
             "comp68pv": true,
             "comp68pv_date": "2020-09-09T17:46:01Z"
         }

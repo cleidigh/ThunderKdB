@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 32074,
+    "average_daily_users": 32397,
     "categories": {
         "thunderbird": [
             "contacts"
@@ -18,30 +18,35 @@
     "contributions_url": null,
     "created": "2006-05-09T07:28:27Z",
     "current_version": {
-        "id": 2472686,
+        "id": 2474256,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addressbooks-synchronizer/versions/2472686",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/addressbooks-synchronizer/versions/2474256",
         "files": [
             {
-                "id": 1015771,
-                "created": "2019-09-29T12:11:13Z",
-                "hash": "sha256:18011421dcb8189286d6a1ad73fc3941840ddcd19b7e53ac5cd27563a7205b0d",
-                "is_restart_required": true,
+                "id": 1017418,
+                "created": "2020-09-13T12:26:30Z",
+                "hash": "sha256:60b163c27942987f4e355399af73962f76adb69b1091a0c37b95dd46145bb6eb",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 138724,
+                "size": 144717,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015771/addressbooks_synchronizer-2.0.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017418/addressbooks_synchronizer-3.1-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead",
+                    "accountsFolders",
+                    "addressBooks"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -74,10 +79,13 @@
             },
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "- Show a warning if user uses an insecure protocol (ftp or http) for remote synchronization",
+            "de": ""
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addressbooks-synchronizer/versions/2.0.1",
-        "version": "2.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/addressbooks-synchronizer/versions/3.1",
+        "version": "3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -102,7 +110,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-10-24T03:30:56Z",
+    "last_updated": "2020-09-14T13:22:52Z",
     "name": {
         "en-US": "Addressbooks Synchronizer"
     },
@@ -151,10 +159,10 @@
     "weekly_downloads": 482,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-27T08:08:18Z"
         }

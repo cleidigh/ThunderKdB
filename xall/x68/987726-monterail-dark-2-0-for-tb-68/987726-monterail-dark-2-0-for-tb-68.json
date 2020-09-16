@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14152/14152877.png?modified=1541065983"
         }
     ],
-    "average_daily_users": 1785,
+    "average_daily_users": 1795,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2019-11-18T19:42:34Z",
     "current_version": {
-        "id": 2473055,
+        "id": 2474246,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/monterail-dark-2-0-for-tb-68/versions/2473055",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/monterail-dark-2-0-for-tb-68/versions/2474246",
         "files": [
             {
-                "id": 1016166,
-                "created": "2019-12-22T11:48:02Z",
-                "hash": "sha256:473891db2a84865dbcfc05c19f0319b74cfa9b3f673f0727735c4b7b00a884a1",
-                "is_restart_required": true,
+                "id": 1017408,
+                "created": "2020-09-11T17:10:56Z",
+                "hash": "sha256:d93a9caa4c204d628873bd6c13f29bd02a3efb07e05e907f980344537cd0728c",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 627430,
+                "size": 625697,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016166/monterail_dark_20_for_tb68-2.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017408/monterail_dark_2_for_tb68-3.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,16 +50,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "- Tag colors fixed (issue 30 monterail fulldark)\n- Fix colors for default theme (os, dark, light)\n- Active/inactive for compose\n- Search window fix",
-            "it": ""
+            "en-US": "Compatibility with Thunderbird 78.x"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-dark-2-0-for-tb-68/versions/2.1",
-        "version": "2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-dark-2-0-for-tb-68/versions/3.0",
+        "version": "3.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>Thunderbird &gt;v68</strong>\nThis version is compatible only with Thunderbird version &gt;68.x. You can find the old version <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-dark/\" rel=\"nofollow\">here</a>.\n\n-------------------------------------------------------------------------------------------------------\n\nThis is a full theme for the Thunderbird e-mail client, inspired by Monterail mockup and by spymastermatt's dark theme. As opposed to the spymastermatt's version, this theme can be installed easily and quickly with an addon and it's <strong>fully compatible with Thunderbird 60.x</strong>.\n\n<strong><i>Another version:  <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-full-dark-2/\" rel=\"nofollow\">Monterail FullDark</a></i></strong>\n\n<strong>If you encounter a bug, do not write it only in the theme review, but report it in the <a href=\"https://github.com/conema/monterail-dark/issues\" rel=\"nofollow\">support website</a>.</strong>\n\n<strong>FAQ</strong>\n<ul>  <li>Installation fail/Theme didn't change in Thunderbird 60</li>This seems a know issue of Thunderbird 60 <a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1484393\" rel=\"nofollow\">[1]</a> <a href=\"http://forums.mozillazine.org/viewtopic.php?f=39&amp;t=3041219\" rel=\"nofollow\">[2]</a>. With this workaround it'll work:<ol>  <li>Go where your application data are stored, they usually can be found in:\n  <ul>     <li>Windows: `C:\\Users\\[your windows user]\\AppData\\Roaming\\Thunderbird\\Profiles\\[(literally) random letters and numbers].default/`</li>      <li>Linux: `/home/[your linux user]/.thunderbird/[(literally) random letters and numbers].default/`</li>      <li>MacOS: `/home/[your macos user]/Library/Thunderbird/Profiles/[(literally) random letters and numbers].default/`</li></ul>  </li><li> Go to the \"extensions\" folder, here there should be a file named \"MonterailDark@conema.me.xpi\"</li>  <li> While Thunderbird is opened in background, delete the \"MonterailDark@conema.me.xpi\" file.</li>  <li> Restart Thunderbird and reinstall the theme</li> <li> Restart Thunderbird again, the theme now should work</li></ol>    <li>The Light version will be released?</li>Yes, but for the moment it is better to completely finish the dark version, after that, the creation of others version will fast as a snap of fingers.\n\n    <li>The original Monterail version will be released?</li>Nope, it already exists: Monterail by Paenglab.\n\n    <li>This theme should work with Windows/Linux/MacOS?</li>Yes and no. Currently the theme have been tested only on Windows 10 and OpenSuse (Plasma). In theory there should not be problems, otherwise you are free to open an issue here on GitHub.\n\n    <li>With which versions of Thunderbird can I use this theme?</li>For now only 60.x and 52.9 are been tested, in the future, backward compatibility to the most requested versions will be added.</ul>"
+        "en-US": "<strong>WARNING Thunderbird &gt;v68</strong>\nThe last version (3.0) is only compatible with Thunderbird 78.x.\nFor TB = 68: <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-dark-2-0-for-tb-68/versions/?page=1#version-2.1\">here</a>. \nFor TB &lt; 68: <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-dark/\">here</a>.\n\n-------------------------------------------------------------------------------------------------------\n\nThis is a full theme for the Thunderbird e-mail client, inspired by Monterail mockup and by spymastermatt's dark theme. As opposed to the spymastermatt's version, this theme can be installed easily and quickly with an addon and it's <strong>fully compatible with the new versions of Thunderbird</strong>.\n\n<strong><i>Another version:  <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-full-dark-2/\">Monterail FullDark</a></i></strong>\n\n<strong>If you encounter a bug, do not write it only in the theme review, but report it in the <a rel=\"nofollow\" href=\"https://github.com/conema/monterail-dark/issues\">support website</a>.</strong>\n\n<strong>FAQ</strong>\n<ul>  <li>Installation fail/Theme didn't change in Thunderbird 60</li>This seems a know issue of Thunderbird 60 <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1484393\">[1]</a> <a rel=\"nofollow\" href=\"http://forums.mozillazine.org/viewtopic.php?f=39&amp;t=3041219\">[2]</a>. With this workaround it'll work:<ol>  <li>Go where your application data are stored, they usually can be found in:\n  <ul>     <li>Windows: `C:\\Users\\[your windows user]\\AppData\\Roaming\\Thunderbird\\Profiles\\[(literally) random letters and numbers].default/`</li>      <li>Linux: `/home/[your linux user]/.thunderbird/[(literally) random letters and numbers].default/`</li>      <li>MacOS: `/home/[your macos user]/Library/Thunderbird/Profiles/[(literally) random letters and numbers].default/`</li></ul>  </li><li> Go to the \"extensions\" folder, here there should be a file named \"MonterailDark@conema.me.xpi\"</li>  <li> While Thunderbird is opened in background, delete the \"MonterailDark@conema.me.xpi\" file.</li>  <li> Restart Thunderbird and reinstall the theme</li> <li> Restart Thunderbird again, the theme now should work</li></ol>    <li>The Light version will be released?</li>Yes, but for the moment it is better to completely finish the dark version, after that, the creation of others version will fast as a snap of fingers.\n\n    <li>The original Monterail version will be released?</li>Nope, it already exists: Monterail by Paenglab.\n\n    <li>This theme should work with Windows/Linux/MacOS?</li>Yes and no. Currently the theme have been tested only on Windows 10 and Fedora (native, Gnome). In theory there should not be problems, otherwise you are free to open an issue here on GitHub.\n\n    <li>With which versions of Thunderbird can I use this theme?</li>The last version (3.0) can be used only with Thunderbird 78. The previous version (2.1) can be used with Thunderbird 68.</ul>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/monterail-dark-2-0-for-tb-68/edit",
@@ -78,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-12-25T06:38:41Z",
+    "last_updated": "2020-09-12T09:27:09Z",
     "name": {
         "en-US": "Monterail Dark 2 for TB>68"
     },
@@ -150,17 +149,19 @@
         "firefox57",
         "modern",
         "monterail",
-        "monterail dark"
+        "monterail dark",
+        "thunderbird 68",
+        "thunderbird 78"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-dark-2-0-for-tb-68/",
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true
         }
     }
 }

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 0,
+    "average_daily_users": 28,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-09-07T16:13:00Z",
     "current_version": {
-        "id": 2474211,
+        "id": 2474266,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/msghdr-toolbar-customize/versions/2474211",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/msghdr-toolbar-customize/versions/2474266",
         "files": [
             {
-                "id": 1017373,
-                "created": "2020-09-07T16:13:01Z",
-                "hash": "sha256:4b75e368f05b5de9c8b775307c9f9731736dadb9dac5df414a0b54298ecd51d1",
+                "id": 1017428,
+                "created": "2020-09-14T13:11:53Z",
+                "hash": "sha256:ac79e19ff5b81e858d02812a8b9893b9d0bcceb9095194af520fb5a7761a6367",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5313,
+                "size": 9882,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017373/message_header_toolbar_customize-2.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017428/message_header_toolbar_customize-2.0.4-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
@@ -51,10 +51,12 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
-        "reviewed": "2020-09-07T17:57:08Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/versions/2.0.0",
-        "version": "2.0.0"
+        "release_notes": {
+            "en-US": "* Space and separator can be added to the toolbar\n* Apply configuration to the multi-messages header toolbar (default: OFF)\n* Fixed: other newly installed add-on buttons are not shown"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/versions/2.0.4",
+        "version": "2.0.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -81,7 +83,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-09-07T17:57:08Z",
+    "last_updated": "2020-09-14T13:29:07Z",
     "name": {
         "en-US": "Message Header Toolbar Customize",
         "ja": "Message Header Toolbar Customize"
@@ -97,69 +99,105 @@
                 793,
                 45
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206136.png?modified=1599578304",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206136.png?modified=1600089847",
             "thumbnail_size": [
                 320,
                 18
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206136.png?modified=1599578304"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206136.png?modified=1600089847"
         },
         {
-            "id": 206137,
+            "id": 206146,
             "caption": {
-                "en-US": "Configure the toolbar by the add-on's option",
-                "ja": "アドオンのオプションからツールバーをカスタマイズしてください"
+                "en-US": "Customize  the toolbar from right-click menu on the toolbar",
+                "ja": "ツールバーの右クリックメニューからカスタマイズ"
             },
             "image_size": [
-                530,
-                501
+                324,
+                99
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206137.png?modified=1599578304",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206146.png?modified=1600089847",
             "thumbnail_size": [
-                212,
-                200
+                320,
+                98
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206137.png?modified=1599578304"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206146.png?modified=1600089847"
         },
         {
             "id": 206138,
             "caption": {
-                "en-US": "From v2.0.1, you can customize  the toolbar from \"More\" button too"
+                "en-US": "Customize  the toolbar from \"More\" button",
+                "ja": "ツールバーの「その他」ボタンのメニューからカスタマイズ"
             },
             "image_size": [
                 295,
                 317
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206138.png?modified=1599578304",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206138.png?modified=1600089847",
             "thumbnail_size": [
                 186,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206138.png?modified=1599578304"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206138.png?modified=1600089847"
         },
         {
-            "id": 206139,
+            "id": 206152,
             "caption": {
-                "en-US": "Popup window opened by \"More\" button's menu item (v2.0.1)"
+                "en-US": "Customize window",
+                "ja": "カスタマイズウィンドウ"
             },
             "image_size": [
-                522,
-                492
+                472,
+                555
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206139.png?modified=1599578309",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206152.png?modified=1600089847",
             "thumbnail_size": [
-                212,
+                170,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206139.png?modified=1599578309"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206152.png?modified=1600089847"
+        },
+        {
+            "id": 206150,
+            "caption": {
+                "en-US": "Space and separator can be added to the toolbar",
+                "ja": "空白、区切り線を追加"
+            },
+            "image_size": [
+                347,
+                66
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206150.png?modified=1600089847",
+            "thumbnail_size": [
+                320,
+                61
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206150.png?modified=1600089847"
+        },
+        {
+            "id": 206151,
+            "caption": {
+                "en-US": "Make icon only and hide archive button for the multi-messages header",
+                "ja": "複数選択時のツールバーにも反映（アイコンのみ、アーカイブボタン非表示）"
+            },
+            "image_size": [
+                1101,
+                67
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206151.png?modified=1600089847",
+            "thumbnail_size": [
+                320,
+                19
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206151.png?modified=1600089847"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.85641,
-        "count": 1,
+        "bayesian_average": 4.54389,
+        "count": 3,
         "average": 5,
-        "text_count": 1
+        "text_count": 3
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/reviews/",
     "requires_payment": false,
@@ -189,7 +227,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-07T16:13:01Z",
+            "comp78pv_version": "2.0.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

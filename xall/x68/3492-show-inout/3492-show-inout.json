@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1386,
+    "average_daily_users": 1406,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,30 +18,33 @@
     "contributions_url": null,
     "created": "2006-10-03T08:36:57Z",
     "current_version": {
-        "id": 2472685,
+        "id": 2474257,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/show-inout/versions/2472685",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/show-inout/versions/2474257",
         "files": [
             {
-                "id": 1015770,
-                "created": "2019-09-29T07:15:09Z",
-                "hash": "sha256:2fb8c7d0f7068d52952a40c8ee3c43bc2684930c7b802789e25aa26da1fdc89a",
-                "is_restart_required": true,
+                "id": 1017419,
+                "created": "2020-09-13T12:28:46Z",
+                "hash": "sha256:2f3c7f0b2e578991aaaeb089a4eb99e1558214428524adc12b1b9b31172c6239",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 84696,
+                "size": 47836,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015770/show_inout-2.0.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017419/show_inout-3.1-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -74,10 +77,13 @@
             },
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Removed unused premission",
+            "de": ""
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/show-inout/versions/2.0.1",
-        "version": "2.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/show-inout/versions/3.1",
+        "version": "3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -102,7 +108,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-10-24T03:16:53Z",
+    "last_updated": "2020-09-14T13:26:21Z",
     "name": {
         "en-US": "Show InOut"
     },
@@ -151,10 +157,10 @@
     "weekly_downloads": 40,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-27T08:11:05Z"
         }

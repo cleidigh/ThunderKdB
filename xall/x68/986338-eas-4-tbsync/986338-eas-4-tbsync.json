@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 20928,
+    "average_daily_users": 21439,
     "categories": {
         "thunderbird": [
             "calendar",
@@ -19,26 +19,26 @@
     "contributions_url": "https://www.paypal.me/johnbieling",
     "created": "2018-11-05T09:06:44Z",
     "current_version": {
-        "id": 2473951,
+        "id": 2474243,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "78.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eas-4-tbsync/versions/2473951",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eas-4-tbsync/versions/2474243",
         "files": [
             {
-                "id": 1017113,
-                "created": "2020-07-18T21:48:55Z",
-                "hash": "sha256:f89ab2541824975bba4d52c67d4cf253e9cb0444372dc82f1016a493dbb6815c",
+                "id": 1017405,
+                "created": "2020-09-11T15:19:18Z",
+                "hash": "sha256:8477aeeb1a9bc07db72f2a9b94a72b83f0155349bbc2032d387d75f273ae015f",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 242131,
+                "size": 242723,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017113/provider_fur_exchange_activesync-1.16-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017405/provider_fur_exchange_activesync-1.18-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -52,8 +52,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eas-4-tbsync/versions/1.16",
-        "version": "1.16"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eas-4-tbsync/versions/1.18",
+        "version": "1.18"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,7 +78,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-20T10:48:16Z",
+    "last_updated": "2020-09-13T00:43:52Z",
     "name": {
         "en-US": "Provider for Exchange ActiveSync",
         "de": "Provider für Exchange ActiveSync"
@@ -173,10 +173,17 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-07-18T21:48:55Z",
+            "comp78pv_version": "1.16",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*",
+            "comp68pv": true,
+            "comp68pv_date": "2019-08-22T16:11:16Z",
             "comp60pv": true,
             "comp60pv_date": "2019-01-30T22:01:22Z"
         }
