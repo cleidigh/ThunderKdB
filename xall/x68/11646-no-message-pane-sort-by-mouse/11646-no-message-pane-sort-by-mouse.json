@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1680/1680847.png?modified=1598201903"
         }
     ],
-    "average_daily_users": 2521,
+    "average_daily_users": 2515,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,33 @@
     "contributions_url": "",
     "created": "2009-04-24T14:20:55Z",
     "current_version": {
-        "id": 2472624,
+        "id": 2474311,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/no-message-pane-sort-by-mouse/versions/2472624",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/no-message-pane-sort-by-mouse/versions/2474311",
         "files": [
             {
-                "id": 1015696,
-                "created": "2019-09-15T09:57:35Z",
-                "hash": "sha256:30c64e53ae8d59e98aea913a457e3d79559140c42220f769314501d338831fcb",
-                "is_restart_required": true,
+                "id": 1017473,
+                "created": "2020-09-19T11:17:46Z",
+                "hash": "sha256:dfa11bb1e6015f0ce562a6f95b18ea30896f811bdc22aa3625c7787a0d13d689",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5951,
+                "size": 11488,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015696/no_message_pane_sort_by_mouse-1.5-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017473/no_message_pane_sort-2.0-tb.xpi?src=",
+                "permissions": [
+                    "tabs",
+                    "activeTab"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 13,
             "name": {
@@ -72,11 +75,11 @@
             "url": "http://www.gnu.org/licenses/gpl-2.0.html"
         },
         "release_notes": {
-            "en-US": "NEW: Ported to Thunderbird 68"
+            "en-US": "NEW: Ported to Mailextensions for Thunderbird 78."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-message-pane-sort-by-mouse/versions/1.5",
-        "version": "1.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/no-message-pane-sort-by-mouse/versions/2.0",
+        "version": "2.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -102,8 +105,8 @@
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
-    "is_source_public": false,
-    "last_updated": "2019-09-16T13:36:02Z",
+    "is_source_public": true,
+    "last_updated": "2020-09-22T13:29:28Z",
     "name": {
         "en-US": "No Message Pane Sort",
         "de": "No Message Pane Sort by Mouse"
@@ -118,28 +121,12 @@
                 559,
                 508
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31839.png?modified=1530208535",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31839.png?modified=1600724645",
             "thumbnail_size": [
                 220,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31839.png?modified=1530208535"
-        },
-        {
-            "id": 31840,
-            "caption": {
-                "en-US": "Activate and deactivate the addon with a click of a button."
-            },
-            "image_size": [
-                460,
-                525
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/31/31840.png?modified=1530208535",
-            "thumbnail_size": [
-                175,
-                200
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31840.png?modified=1530208535"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/31/31839.png?modified=1600724645"
         }
     ],
     "public_stats": false,
@@ -174,10 +161,10 @@
     "weekly_downloads": 66,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-06-23T14:21:59Z"
         }

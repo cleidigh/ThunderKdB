@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 17,
+    "average_daily_users": 26,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-02-05T14:36:27Z",
     "current_version": {
-        "id": 2473608,
+        "id": 2474326,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "75.0"
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/limit-non-bcc-recipients/versions/2473608",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/limit-non-bcc-recipients/versions/2474326",
         "files": [
             {
-                "id": 1016756,
-                "created": "2020-04-13T13:04:01Z",
-                "hash": "sha256:5b68b0f3c42d21fba72b128067bd8989324491fd72fab00f499d914da5fc415a",
+                "id": 1017488,
+                "created": "2020-09-22T15:41:51Z",
+                "hash": "sha256:4da6bfc66df84972a17139c0568bb5653b3fe5e9c532aa524e29731238c9ac93",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 29709,
+                "size": 31551,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016756/limit_non_bcc_recipients-1.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017488/limit_non_bcc_recipients-1.0.2-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "compose",
@@ -54,11 +54,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fix for TB bug 1619057"
+            "en-GB": "",
+            "en-US": "Add extension name to popup title (dependent on bug 1647768).\nHungarian localisation."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/limit-non-bcc-recipients/versions/1.0.1",
-        "version": "1.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/limit-non-bcc-recipients/versions/1.0.2",
+        "version": "1.0.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -69,6 +70,7 @@
         "pt-PT": "Ajuda a impedir que você revele acidentalmente os endereços de e-mail de outros destinatários, talvez inserindo uma lista de correio no CC e não no BCC.\n\nVocê especifica um número máximo de destinatários não BCC (TO e CC) e, se esse número for excedido, você receberá um aviso quando enviar o email. Você pode continuar ou cancelar. Você também pode mover todos os destinatários para o BCC e enviar o email.\n\nO complemento complementar, Expandir listas de correio, converterá todas as listas de correio em seus destinatários constituintes, removendo duplicatas.",
         "en-US": "Helps prevent you accidentally revealing other recipients' email addresses, perhaps by inserting a mailing list in CC rather than BCC.\n\nYou specify a maximum number of non-BCC (TO and CC) recipients and if this number is exceeded you will receive a warning when you send the email. You can continue or cancel. You can also move all recipients into BCC and send the email.\n\nThe companion addon, Expand mailing lists, will convert all mailing lists into their constituent recipients, removing duplicates.",
         "it": "Ti aiuta a non rivelare accidentalmente gli indirizzi e-mail degli altri destinatari, magari inserendo una liste di distribuzione in Cc anziché in Cnn.\n\nSi specifica un numero massimo di destinatari non Cnn (A e Cc) e se questo numero viene superato, si riceverà un avviso quando si invia l'e-mail. Puoi continuare o cancellare. Puoi anche spostare tutti i destinatari in Cnn e inviare l'e-mail.\n\nIl componente aggiuntivo associato, Espandi le liste di distribuzione, convertirà tutte le mailing list nei rispettivi destinatari, rimuovendo i duplicati.",
+        "hu": "Ez a bővítmény segít Önnek, hogy a nagyobb közösségeknek küld levelet, a címzettek ne lássák egymás e-mail címét. Ez különösen hasznos, ha mondjuk címlistára küld ki levelet, és véletlenül a Másolat mezőbe írja a címlistát a Titkos másolat helyett.\n\nMindössze meg kell adnia, hogy mennyi olyan címzettje lehet egy levélnek legfeljebb, akik láthatják egymás címét. Amennyiben egy levélnek több címzettje van (beleértve a másolatot kapó személyeket is), mint az Ön által beállított érték, a levél elküldése előtt figyelmeztetést fog kapni. Ilyenkor dönthet a kiküldés mellett, visszavonhatja a küldést, vagy átmozgathat minden címzettet a titkos másolatot kapók közé.\n\nVan tovább egy kapcsolódó kiegészítő, az \"Expand mailing lists\", amely a címlistákat kicseréli a bennük szereplő címekre, és eltávolítja az ismétlődő címzetteket.",
         "pl": "Pomaga zapobiegać przypadkowemu ujawnieniu adresów e-mail innych odbiorców, być może poprzez wstawienie listy dystrybuvyjna w kopia zamiast w ukryta kopia.\n\nPodajesz maksymalną liczbę odbiorców nie ukryta (Do i Kopia), a jeśli liczba ta zostanie przekroczona, otrzymasz ostrzeżenie podczas wysyłania wiadomości e-mail. Możesz kontynuować lub anulować. Możesz także przenieść wszystkich odbiorców do ukryta kopia i wysłać wiadomość e-mail.\n\nDodatek towarzyszący, Rozwiń listy dystrybuvyjna, przekształci wszystkie listy dystrybuvyjna w swoich adresatów, usuwając duplikaty.",
         "ja": "他の受信者の電子メールアドレスを誤って公開するのを防ぐのに役立ちます。\n\n非BCC（TOおよびCC）受信者の最大数を指定する必要があります。この数を超えると、メールを送信するときに警告が表示されます。 続行またはキャンセルできます。 メールを送信する前に、すべての受信者をBCCに変更することもできます。\n\nコンパニオンアドオン「アドレスリストを全部展開する」は、すべてのメーリングリストを構成する受信者に変換し、重複を削除します。",
         "es": "Ayuda a evitar que reveles accidentalmente las direcciones de correo electrónico de otros destinatarios, quizás insertando una lista de correo en CC en lugar de BCC.\n\nUsted especifica un número máximo de destinatarios que no son BCC (TO y CC) y si se excede este número, recibirá una advertencia cuando envíe el correo electrónico. Puedes continuar o cancelar. También puede mover a todos los destinatarios a BCC y enviar el correo electrónico.\n\nEl complemento complementario, Expandir listas de correo, convertirá todas las listas de correo en sus destinatarios constitutivos, eliminando duplicados."
@@ -88,7 +90,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-13T13:05:03Z",
+    "last_updated": "2020-09-22T15:45:02Z",
     "name": {
         "el": "Περιορίστε τους μη κρυφή παραλήπτες",
         "fr": "Limiter les destinataires non cachés",
@@ -177,7 +179,8 @@
         "ext_comp": {
             "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp78plus": true
         }
     }
 }

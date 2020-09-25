@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5458,
+    "average_daily_users": 5568,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,35 @@
     "contributions_url": "",
     "created": "2019-11-02T15:38:43Z",
     "current_version": {
-        "id": 2474278,
+        "id": 2474338,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "74.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2474278",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2474338",
         "files": [
             {
-                "id": 1017440,
-                "created": "2020-09-15T15:37:41Z",
-                "hash": "sha256:c7cc8d6dda8b067ad08be1f6bc33bd9630811210e5ab9ca9ac73bc431016c001",
-                "is_restart_required": true,
+                "id": 1017500,
+                "created": "2020-09-24T18:59:06Z",
+                "hash": "sha256:efa40b762837f611edeccebaa429150a2b05d9fd4e6e51a23b36987c01d393f3",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4337683,
+                "size": 4308293,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017440/display_mail_user_agent_t-1.8.14.18-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017500/display_mail_user_agent_t-2.1.9-tb.xpi?src=",
+                "permissions": [
+                    "messagesRead",
+                    "storage",
+                    "accountsRead",
+                    "downloads"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,16 +76,16 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Some more icon(2061 now)",
-            "ja": "アイコンの追加(全2061個)"
+            "en-US": "Some more icon(2066 now)",
+            "ja": "アイコンの追加(全2066個)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/1.8.14.18",
-        "version": "1.8.14.18"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/2.1.9",
+        "version": "2.1.9"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This addon is fork of Display Mail User Agent(DispMUA).\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.html\">http://www.juergen-ernst.de/addons/dispmua.html</a>\n\nSupport for Thunderbird 68 will end soon.\nThere is no explanation from the Thunderbird Team, but in order to realize \"Display the icon as an image.\" for Thunderbird 78, I had to use WebExtensions Experiments that I do not want to use, which caused \"Have full, unrestricted access to Thunderbird, and your computer\", but only \"Display the icon as an image.\" is achieved using WebExtensions Experiments.\nThere are four permissions to use as Thunderbird Web Extension: \"messagesRead\", \"storage\", \"accountsRead\", \"downloads\".",
+        "en-US": "This addon is fork of Display Mail User Agent(DispMUA).\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.html\">http://www.juergen-ernst.de/addons/dispmua.html</a>\n\nSupport for Thunderbird 68 will end soon.\nThere is no explanation from the Thunderbird Team, but in order to realize \"Display the icon as an image.\" for Thunderbird 78, I had to use WebExtensions Experiments that I do not want to use, which caused \"Have full, unrestricted access to Thunderbird, and your computer\", but only \"Display the icon as an image.\" is achieved using WebExtensions Experiments.\nThere are four permissions to use as Thunderbird Web Extension: \"messagesRead\", \"storage\", \"accountsRead\", \"downloads\".\n\nFrequently Asked Questions\nQ: I don't see the icon. The character string such as Message-ID or DKIM-Signature is displayed.\nA: This happens if the email does not have an X-Mailer or User-Agent header. Since Display Mail User Agent T identifies the MUA based on X-Mailer or User-Agent in principle, it cannot handle emails that do not have these email headers. Display the message source (☰ → View → Message Source or Ctrl + U) and check it.",
         "ja": "このアドオンはDisplay Mail User Agent(DispMUA)のフォークです。\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.htm\">http://www.juergen-ernst.de/addons/dispmua.htm</a>\n\nThunderbird 68向けの対応はもうすぐ終了します。\nThunderbird Teamからは何の説明もありませんがThunderbird 78向けに「アイコンを画像として表示」を実現するためには私は使いたくないWebExtensions Experimentsを使わざるを得ず、それが原因で「Thunderbirdとコンピューターへの完全に無制限なアクセス」を要求されますが、WebExtensions Experimentsを使用して実現しているのは「アイコンを画像として表示」するのみです。\nThunderbird WebExtensionとして使用する権限は\"messagesRead\", \"storage\", \"accountsRead\", \"downloads\"の4つです。",
         "hu": ""
     },
@@ -114,7 +119,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2020-09-15T16:37:48Z",
+    "last_updated": "2020-09-24T19:23:03Z",
     "name": {
         "fr": "Display Mail User Agent T",
         "de": "Display Mail User Agent T",
@@ -249,10 +254,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

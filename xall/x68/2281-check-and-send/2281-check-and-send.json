@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 21704,
+    "average_daily_users": 22384,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -22,32 +22,30 @@
     "contributions_url": null,
     "created": "2006-03-25T00:40:57Z",
     "current_version": {
-        "id": 2474124,
+        "id": 2474288,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/check-and-send/versions/2474124",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/check-and-send/versions/2474288",
         "files": [
             {
-                "id": 1017286,
-                "created": "2020-08-23T11:10:51Z",
-                "hash": "sha256:3ba4f5aac1e9db2db4b26055d401f5e681aa2d9cf01af5a5c4cbff2d5d664bbf",
+                "id": 1017450,
+                "created": "2020-09-16T14:39:57Z",
+                "hash": "sha256:49a5bb923f8603c54c170f60947a62a945330b34fb0d0f2ffe2fbf5fe26539bd",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 26652,
+                "size": 26694,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017286/check_and_send-2.0.12-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017450/check_and_send-2.0.13-tb.xpi?src=",
                 "permissions": [
                     "addressBooks",
                     "accountsRead",
                     "compose",
-                    "tabs",
-                    "activeTab",
                     "storage"
                 ]
             }
@@ -86,11 +84,11 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "- Improve accessibility of option UI\n- Fix bugs in applying user changes"
+            "en-US": "* tabs and activeTab permissions are removed.\n* Fixed: sending is stopped if the outgoing message is composed by \"Forward as attachment\""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-and-send/versions/2.0.12",
-        "version": "2.0.12"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-and-send/versions/2.0.13",
+        "version": "2.0.13"
     },
     "default_locale": "en-US",
     "description": {
@@ -117,7 +115,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-08-23T11:15:03Z",
+    "last_updated": "2020-09-16T14:40:03Z",
     "name": {
         "en-US": "Check and Send",
         "ja": "Check and Send",
@@ -229,10 +227,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.12203,
-        "count": 31,
-        "average": 4.1613,
-        "text_count": 31
+        "bayesian_average": 4.14427,
+        "count": 33,
+        "average": 4.1818,
+        "text_count": 33
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/check-and-send/reviews/",
     "requires_payment": false,

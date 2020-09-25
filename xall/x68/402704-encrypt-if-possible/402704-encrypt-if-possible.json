@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6583/6583050.png?modified=1555684209"
         }
     ],
-    "average_daily_users": 1250,
+    "average_daily_users": 1233,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -83,8 +83,8 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This add-on sets S/MIME message security option \"encrypt message\", if valid X509 certificates are found for all of the recipients and for the sender himself. If these criteria are not matched, the option is not set.\n\nYou can disable confirmation message in the extension's options.\n\nChange the default security/encryption setting in your account settings from \"Required\" to \"Never (do not use encryption)\" to let this add-on decide and encrypt only if possible.\n\nFor the list of available certificates see menu Tools -&gt; Options -&gt; Advanced -&gt; Certificates -&gt; View Certificates -&gt; People.\n\n<strong>Note: this add-on relies on Thunberbird's built in encryption functionality. You have to set it up first before using this add-on, see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/22042cd07a96295a465372c276a1ebecbdeb9ef36390f6639dd1f2226eda1ed0/http%3A//kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> for details.</strong>",
-        "de": "Dieses Add-on aktiviert die Sicherheitsoption \"Nachricht verschlüsseln\" (S/MIME) der Nachricht, wenn für alle Empfänger und auch für den Sender der Nachricht ein gültiges X509 Zertifikat gefunden wird. Trifft dies nicht zu, wird die Option nicht angewählt bzw. auch abgewählt.\n\nDie Nachfrage kann in den Optionen deaktiviert werden.\n\nIn den Konten-Einstellungen unter S/MIME-Sicherheit sollte man bei Verschlüsselung \"Nie (keine Verschlüsselung verwenden)\" wählen, um die Aktivierung der Verschlüsselung dem Add-On zu überlassen.\n\nEine Liste der vorhandenen Zertifikate findet sich im Menü Extras -&gt; Einstellungen -&gt; Erweitert -&gt; Zertifikate -&gt; Zertifikate -&gt; Personen.\n\n<strong>Wichtiger Hinweis: dieses Add-On verwendet den Standard-Verschlüsselungsmechanismus in Thunderbird. Bevor Sie dieses Add-On sinnvoll nutzen können, müssen Sie diesen konfigurieren, siehe dazu <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24d3f968af40b32409924fded96910deaba2a70c988f93bfb07c8c1536219536/http%3A//www.thunderbird-mail.de/wiki/Mailverschl%25C3%25BCsselung_mit_S/MIME\">http://www.thunderbird-mail.de/wiki/Mailverschl%C3%BCsselung_mit_S/MIME</a> oder <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/22042cd07a96295a465372c276a1ebecbdeb9ef36390f6639dd1f2226eda1ed0/http%3A//kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a>(Englisch)</strong>"
+        "en-US": "<strong>Note: this add-on will not work in Thunderbird 78 and newer and no upgrade is possible. Due to removed API functionality in TB 78, the add-on has no access to the internal functions for querying certificates and setting s/mime options on the mail anymore. </strong>\n\nThis add-on sets S/MIME message security option \"encrypt message\", if valid X509 certificates are found for all of the recipients and for the sender himself. If these criteria are not matched, the option is not set.\n\nYou can disable confirmation message in the extension's options.\n\nChange the default security/encryption setting in your account settings from \"Required\" to \"Never (do not use encryption)\" to let this add-on decide and encrypt only if possible.\n\nFor the list of available certificates see menu Tools -&gt; Options -&gt; Advanced -&gt; Certificates -&gt; View Certificates -&gt; People.\n\n<strong>Note: this add-on relies on Thunberbird's built in encryption functionality. You have to set it up first before using this add-on, see <a rel=\"nofollow\" href=\"http://kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> for details.</strong>",
+        "de": "<strong>Wichtiger Hinweis: das Add-On unterstützt keine Thunderbird-Version ab 78, ab dieser Version wurden die API Zugriffe für die Zertifikatsabfrage und das Setzen der S/MIME Optionen in Thunderbird entfernt, das Add-On kann daher nicht auf diese neue Version aktualisiert werden.</strong>\n\nDieses Add-on aktiviert die Sicherheitsoption \"Nachricht verschlüsseln\" (S/MIME) der Nachricht, wenn für alle Empfänger und auch für den Sender der Nachricht ein gültiges X509 Zertifikat gefunden wird. Trifft dies nicht zu, wird die Option nicht angewählt bzw. auch abgewählt.\n\nDie Nachfrage kann in den Optionen deaktiviert werden.\n\nIn den Konten-Einstellungen unter S/MIME-Sicherheit sollte man bei Verschlüsselung \"Nie (keine Verschlüsselung verwenden)\" wählen, um die Aktivierung der Verschlüsselung dem Add-On zu überlassen.\n\nEine Liste der vorhandenen Zertifikate findet sich im Menü Extras -&gt; Einstellungen -&gt; Erweitert -&gt; Zertifikate -&gt; Zertifikate -&gt; Personen.\n\n<strong>Wichtiger Hinweis: dieses Add-On verwendet den Standard-Verschlüsselungsmechanismus in Thunderbird. Bevor Sie dieses Add-On sinnvoll nutzen können, müssen Sie diesen konfigurieren, siehe dazu <a rel=\"nofollow\" href=\"http://www.thunderbird-mail.de/wiki/Mailverschl%C3%BCsselung_mit_S/MIME\">http://www.thunderbird-mail.de/wiki/Mailverschl%C3%BCsselung_mit_S/MIME</a> oder <a rel=\"nofollow\" href=\"http://kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a>(Englisch)</strong>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/encrypt-if-possible/edit",
@@ -95,10 +95,10 @@
         "en-US": "https://addons.mozilla.org/thunderbird/addon/encrypt-if-possible/",
         "de": "https://addons.mozilla.org/thunderbird/addon/encrypt-if-possible/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-64.png?modified=1366359625",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-64.png?modified=1600797329",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-32.png?modified=1366359625",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-64.png?modified=1366359625"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-32.png?modified=1600797329",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/402/402704-64.png?modified=1600797329"
     },
     "is_disabled": false,
     "is_experimental": false,

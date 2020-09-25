@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 9955,
+    "average_daily_users": 9985,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "created": "2005-11-30T18:50:39Z",
     "current_version": {
-        "id": 2474271,
+        "id": 2474339,
         "compatibility": {
             "thunderbird": {
-                "max": "80.0",
+                "max": "82.0",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-html-temp/versions/2474271",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-html-temp/versions/2474339",
         "files": [
             {
-                "id": 1017433,
-                "created": "2020-09-14T20:50:17Z",
-                "hash": "sha256:0588a0255f7962d9dfea958aa09a092eea498213cf6747712a723f0301fc29c8",
+                "id": 1017501,
+                "created": "2020-09-24T21:28:48Z",
+                "hash": "sha256:7eea15cc8c09a6992d696ec22ac6d25e9e144e01ffd3d525ab45b960fe2d08ef",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 79758,
+                "size": 96298,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017433/allow_html_temp-6.1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017501/allow_html_temp-6.3.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,12 +51,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fix issue in options dialog (dark text on dark background) with some lightweight themes (may be the related issue is a Thunderbird bug)",
-            "de": "Behebt ein Anzeigeproblem im Optionen-Dialog (dunkle Schrift auf dunklem Hintergrund) bei einigen Lightweight-Themes. Verantwortlich könnte ein Bug in Thunderbird sein."
+            "en-US": "Remove the option to disable JavaScript because of possible failures. The pref will be reset to Thunderbirds default and a prompt with information text will be shown.",
+            "de": "Die Option zum Deaktivieren von JavaScript wurde entfernt und die zugehörige versteckte Pref wieder auf den Standardwert zurückgesetzt. Ein Hinweis-Dialog informiert darüber. Zusätzlich wurde die Icon-Darstellung unten in der Statusleiste im Zusammenspiel mit dem dunklen Theme-Addon \"Monterail\" verbessert."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/allow-html-temp/versions/6.1.1",
-        "version": "6.1.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/allow-html-temp/versions/6.3.0",
+        "version": "6.3.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -81,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-15T06:51:07Z",
+    "last_updated": "2020-09-25T07:50:33Z",
     "name": {
         "en-US": "Allow HTML Temp",
         "de": "Allow HTML Temp"

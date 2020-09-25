@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6583/6583050.png?modified=1555684209"
         }
     ],
-    "average_daily_users": 333,
+    "average_daily_users": 330,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -84,8 +84,8 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Reads S/MIME message security settings (sign/encrypt) from recipients' address book entry's field \"Custom1\":\n\nIf \"Custom1\" contains either \"sign\" or \"encrypt\" or both, the corresponding message security option is set. The setting is done when saving or sending the message.\n\nYou can also disable signing or encrypting for a contact by setting \"Custom1\" to either \"nosign\" or \"noencrypt\" or both (useful when signing or encrypting by default and you want to exclude only some contacts).\n\n<strong>Note: this add-on relies on Thunberbird's built in encryption and signing functionality. You have to set this up first before using this add-on, see <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/22042cd07a96295a465372c276a1ebecbdeb9ef36390f6639dd1f2226eda1ed0/http%3A//kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> for details.</strong>",
-        "de": "Setzt Sicherheitsoptionen (S/MIME) an Hand der Adressbucheinträge der Empfänger:\n\nWenn das Feld \"Benutzerdef. 1\" im Adressbucheintrag des Empfängers den Wert \"sign\" bzw. \"encrypt\" enthält, wird beim Speichern und Senden einer Nachricht die entsprechende Sicherheitsoption aktiviert: bei \"sign\" wird \"Nachricht unterschreiben\" und bei \"encrypt\" wird \"Nachricht verschlüsseln\" aktiviert.\n\nEs gibt auch die Möglichkeit mittels \"nosign\" bzw. \"noencrypt\" entsprechend zu Deaktivieren, was bei einer Konton-Einstellung \"Immer Verschlüsseln/Signieren\" nützlich sein kann, wenn nur einzelne Empfänger keine Signatur/Verschlüsselung erhalten sollen.\n\n<strong>Wichtiger Hinweis: dieses Add-On verwendet die Standard-Sicherheitsmechanismen in Thunderbird. Bevor Sie dieses Add-On sinnvoll nutzen können, müssen Sie diese konfigurieren, siehe dazu <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/24d3f968af40b32409924fded96910deaba2a70c988f93bfb07c8c1536219536/http%3A//www.thunderbird-mail.de/wiki/Mailverschl%25C3%25BCsselung_mit_S/MIME\">http://www.thunderbird-mail.de/wiki/Mailverschl%C3%BCsselung_mit_S/MIME</a> oder <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/22042cd07a96295a465372c276a1ebecbdeb9ef36390f6639dd1f2226eda1ed0/http%3A//kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> (Englisch)</strong>"
+        "en-US": "<strong>Note: this add-on will not work in Thunderbird 78 and newer and no upgrade is possible. Due to removed API functionality in TB 78, the add-on has no access to the internal functions for querying certificates and setting s/mime options on the mail anymore. </strong>\n\nReads S/MIME message security settings (sign/encrypt) from recipients' address book entry's field \"Custom1\":\n\nIf \"Custom1\" contains either \"sign\" or \"encrypt\" or both, the corresponding message security option is set. The setting is done when saving or sending the message.\n\nYou can also disable signing or encrypting for a contact by setting \"Custom1\" to either \"nosign\" or \"noencrypt\" or both (useful when signing or encrypting by default and you want to exclude only some contacts).\n\n<strong>Note: this add-on relies on Thunberbird's built in encryption and signing functionality. You have to set this up first before using this add-on, see <a rel=\"nofollow\" href=\"http://kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> for details.</strong>",
+        "de": "<strong>Wichtiger Hinweis: das Add-On unterstützt keine Thunderbird-Version ab 78, ab dieser Version wurden die API Zugriffe für die Zertifikatsabfrage und das Setzen der S/MIME Optionen in Thunderbird entfernt, das Add-On kann daher nicht auf diese neue Version aktualisiert werden.</strong>\n\nSetzt Sicherheitsoptionen (S/MIME) an Hand der Adressbucheinträge der Empfänger:\n\nWenn das Feld \"Benutzerdef. 1\" im Adressbucheintrag des Empfängers den Wert \"sign\" bzw. \"encrypt\" enthält, wird beim Speichern und Senden einer Nachricht die entsprechende Sicherheitsoption aktiviert: bei \"sign\" wird \"Nachricht unterschreiben\" und bei \"encrypt\" wird \"Nachricht verschlüsseln\" aktiviert.\n\nEs gibt auch die Möglichkeit mittels \"nosign\" bzw. \"noencrypt\" entsprechend zu Deaktivieren, was bei einer Konton-Einstellung \"Immer Verschlüsseln/Signieren\" nützlich sein kann, wenn nur einzelne Empfänger keine Signatur/Verschlüsselung erhalten sollen.\n\n<strong>Wichtiger Hinweis: dieses Add-On verwendet die Standard-Sicherheitsmechanismen in Thunderbird. Bevor Sie dieses Add-On sinnvoll nutzen können, müssen Sie diese konfigurieren, siehe dazu <a rel=\"nofollow\" href=\"http://www.thunderbird-mail.de/wiki/Mailverschl%C3%BCsselung_mit_S/MIME\">http://www.thunderbird-mail.de/wiki/Mailverschl%C3%BCsselung_mit_S/MIME</a> oder <a rel=\"nofollow\" href=\"http://kb.mozillazine.org/Message_security\">http://kb.mozillazine.org/Message_security</a> (Englisch)</strong>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/security-settings-from-addr/edit",
@@ -96,10 +96,10 @@
         "en-US": "https://addons.mozilla.org/thunderbird/addon/security-settings-from-addr/",
         "de": "https://addons.mozilla.org/thunderbird/addon/security-settings-from-addr/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-64.png?modified=1366359625",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-64.png?modified=1600797311",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-32.png?modified=1366359625",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-64.png?modified=1366359625"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-32.png?modified=1600797311",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/401/401970-64.png?modified=1600797311"
     },
     "is_disabled": false,
     "is_experimental": false,

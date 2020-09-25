@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 4104,
+    "average_daily_users": 4083,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,30 @@
     "contributions_url": null,
     "created": "2016-11-05T17:41:42Z",
     "current_version": {
-        "id": 2472262,
+        "id": 2474304,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderkeepplus/versions/2472262",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderkeepplus/versions/2474304",
         "files": [
             {
-                "id": 1015332,
-                "created": "2019-09-06T11:26:35Z",
-                "hash": "sha256:aa37029ddfcd464d2b241c7f95bb0954f50167ebfe2f780b70226f69ad450b9f",
-                "is_restart_required": true,
+                "id": 1017466,
+                "created": "2020-09-18T10:36:23Z",
+                "hash": "sha256:ea9cd289d414ced735c50dd5a7152e66b95c4d876ab58ce2e001405205b95915",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 29167,
+                "size": 18801,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015332/thunderkeepplus-0.10.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017466/thunderkeepplus-0.10.7-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -72,14 +72,14 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderkeepplus/versions/0.10.4",
-        "version": "0.10.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thunderkeepplus/versions/0.10.7",
+        "version": "0.10.7"
     },
     "default_locale": "en-GB",
     "description": {
-        "en-GB": "Installs a button for Google Keep at the Thunderbird toolbar. Through clicking on this button Thunderbird will open Google Keep in a new tab.",
-        "de": "ThunderKeepPlus fügt einen Google Keep Button zur Werzeugleiste von Thunderbird hinzu.",
-        "es": "ThunderKeepPlus añade un botón a la barra de herramientas que puedes usar para abrir una pestaña con Google Keep dentro de Thunderbird."
+        "en-GB": "Installs a button for Google Keep at the Thunderbird toolbar. Through clicking on this button Thunderbird will open Google Keep in a new tab.\n\n<b>In order to make the addon work with Thunderbird 78 a complete rewrite was needed. This reintroduced the bug of not being able to log out or switch accounts from the Google Keep tab. The work around for this is to close the tab, go to tools -&gt; clear recent history, clear the cookies and open the tab again.</b>",
+        "de": "ThunderKeepPlus fügt einen Google Keep Button zur Werzeugleiste von Thunderbird hinzu.\n\n<b>Damit das Addon mit Thunderbird 78 funktioniert, musste es komplett neu geschrieben werden. Dadurch wurde der Fehler wieder eingeführt, dass es nicht möglich war, sich abzumelden oder Konten über den Google Keep-Tab zu wechseln. Die Abhilfe hierfür besteht darin, die Registerkarte zu schließen, zu Tools -&gt; Kürzlichen Verlauf löschen zu gehen, die Cookies zu löschen und die Registerkarte erneut zu öffnen.</b>",
+        "es": "ThunderKeepPlus añade un botón a la barra de herramientas que puedes usar para abrir una pestaña con Google Keep dentro de Thunderbird.\n\n<b> El addon tuvo que ser re-programado por completo para hacerlo funcionar con Thunderbird 78. Lamentablemente, esto reintrodujo el fallo de no poder cerrar sesión o cambiar de cuenta desde la pestaña de Google Keep. La solución temporal consiste en  cerrar la pestaña, ir a herramientas -&gt; limpiar el historial reciente, limpiar las cookies y abrir la pestaña de nuevo.</b>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thunderkeepplus/edit",
@@ -91,16 +91,16 @@
         "de": "https://github.com/Garoe/ThunderKeepPlus",
         "es": "https://github.com/Garoe/ThunderKeepPlus"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/747/747286-64.png?modified=1550928099",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/747/747286-64.png?modified=1600504674",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/747/747286-32.png?modified=1550928099",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/747/747286-64.png?modified=1550928099"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/747/747286-32.png?modified=1600504674",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/747/747286-64.png?modified=1600504674"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-07T07:15:56Z",
+    "last_updated": "2020-09-18T10:40:03Z",
     "name": {
         "en-GB": "ThunderKeepPlus",
         "de": "ThunderKeepPlus",
@@ -138,7 +138,7 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.66337,
+        "bayesian_average": 4.66333,
         "count": 22,
         "average": 4.7273,
         "text_count": 22
@@ -168,10 +168,10 @@
     "weekly_downloads": 139,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-30T23:23:49Z"
         }
