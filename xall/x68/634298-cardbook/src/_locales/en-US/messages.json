@@ -2680,20 +2680,10 @@
 		"message": "Invalid password"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Long: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Long: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Short: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Short: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Tab"
 	},
+	"editionTabLabel": {
+		"message": "Edition"
+	},
 	"IMPPsTabLabel": {
 		"message": "Communicate"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Advanced"
 	},
-	"advancedTab.conf.label": {
-		"message": "Advanced (only for vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Show on Map with"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Default region for addresses and formatting phone numbers."
+	},
+	"editionGroupboxLabel": {
+		"message": "Fields selector"
+	},
+	"editionWarn": {
+		"message": "When editing a contact, CardBook will display by default only those selected fields."
+	},
+	"fieldsButtonLabel": {
+		"message": "Set as Default"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Select All"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Field PREF"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "E"
 	},
+	"gender.conf.label": {
+		"message": "Gender (only for vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Birth Place (only for vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Death Place (only for vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Calendars"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Notes"
-	},
-	"advancedTabLabel": {
-		"message": "Advanced"
 	},
 	"miscGroupboxLabel": {
 		"message": "Miscellaneous"

@@ -170,7 +170,6 @@ async function initPrefs() {
     prefs = result[prop];
   }
 
-  //for (let key in prefs) {
   for (let key in default_prefs) { //use default_prefs in case pref is added in the future version
     let elem = document.getElementById(key);
 
@@ -322,7 +321,6 @@ function fillDayDateOptions(val) {
 
 async function savePrefs() {
   let prop = "cas_" + currentIdentity;
-  //for (let key in prefs) {
   for (let key in default_prefs) { //use default_prefs in case pref is added in the future version
     let elem = document.getElementById(key);
 

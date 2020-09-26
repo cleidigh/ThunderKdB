@@ -145,11 +145,21 @@ var ahtHideAndShowStatusbarElements = {
       document.getElementById("AHT-feed-statusbarpanel");
 
     try {
-      if (gFolderDisplay.selectedMessageIsFeed) {
-        ahtStatusbarMessage.setAttribute("hidden", true);
-        ahtStatusbarFeed.setAttribute("hidden", false);
+      // call InitViewBodyMenu() to set the checked attribute in the popupmenu
+      InitViewBodyMenu();
+      if (gFolderDisplay && (FeedMessageHandler.isFeedFolder(gFolderDisplay.displayedFolder) ||
+        gFolderDisplay.selectedMessageIsFeed)) {
+        // if feed mode = website, then disable the AHT html mode statusbar element to prevent user confusion
+        let feed_summary = 0;
+        feed_summary = Services.prefs.getIntPref("rss.show.summary");
+        if (feed_summary == 0) {
+          ahtStatusbarMessage.setAttribute("hidden", true);
+        } else {
+          ahtStatusbarMessage.removeAttribute("hidden");
+        }
+        ahtStatusbarFeed.removeAttribute("hidden");
       } else {
-        ahtStatusbarMessage.setAttribute("hidden", false);
+        ahtStatusbarMessage.removeAttribute("hidden");
         ahtStatusbarFeed.setAttribute("hidden", true);
       }
     } catch (e) {

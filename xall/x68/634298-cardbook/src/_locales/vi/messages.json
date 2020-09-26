@@ -2680,20 +2680,10 @@
 		"message": "Mật khẩu Không hợp lệ"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Dài: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Dài: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Ngắn: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Ngắn: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Thẻ"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Giao tiếp"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Nâng cao"
 	},
-	"advancedTab.conf.label": {
-		"message": "Nâng cao (chỉ dành cho Thẻ Ảo 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "N"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Hiển thị trên bản đồ với"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Đặt làm mặc định"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Chọn tất cả"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Sở thích trường"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "i"
 	},
+	"gender.conf.label": {
+		"message": "Giới tính (chỉ dành cho Thẻ Ảo 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Nơi Sinh (chỉ dành cho Thẻ Ảo 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Nơi Chết (chỉ dành cho Thẻ Ảo 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Lịch"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Lưu ý"
-	},
-	"advancedTabLabel": {
-		"message": "Nâng cao"
 	},
 	"miscGroupboxLabel": {
 		"message": "Khác"

@@ -55,6 +55,8 @@ if ("undefined" == typeof(cardbookTabType)) {
 				},
 
 				closeTab: function(aTab) {
+					cardBookWindowPrefObserver.unregister();
+					cardBookWindowObserver.unregister();
 				},
 				
 				persistTab: function(aTab) {
@@ -214,6 +216,21 @@ if ("undefined" == typeof(ovl_cardbook)) {
 			}
 		},
 
+		unload: function() {
+			cardBookObserver.unregister();
+			myFormatObserver.unregister();
+			let tabmail = document.getElementById("tabmail");
+			let cardbookMode = tabmail.tabModes.cardbook;
+			if (cardbookMode.tabs.length == 1) {
+				tabmail.closeTab(cardbookMode.tabs[0]);
+			}
+			for (let i = tabmail.tabModes.contentTab.tabs.length - 1; i >= 0; i--) {
+				if (tabmail.tabModes.contentTab.tabs[i].title == ConversionHelper.i18n.getMessage("cardbookPrefTitle") + " (" + cardbookRepository.addonVersion + ")") {
+					tabmail.closeTab(tabmail.tabModes.contentTab.tabs[i]);
+				}
+			}
+		},
+
 		open: function() {
 			var tabmail = document.getElementById("tabmail");
 			if (!tabmail) {
@@ -249,7 +266,7 @@ window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", f
 		var toolbar = document.getElementById("cardbook-toolbar");
 		toolbar.currentSet = currentSet;
 	}
-
+	
 	var firstRun = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.firstRun");
 	if (firstRun) {
 		wdw_cardbook.addAddressbook("first");

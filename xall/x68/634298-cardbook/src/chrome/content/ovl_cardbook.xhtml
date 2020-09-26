@@ -23,7 +23,8 @@
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
 
 <overlay id="ovl_cardbook"
-	xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onremove="ovl_cardbook.unload();">
 	
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookEncryptor.js"/>
@@ -64,8 +65,6 @@
 	<!-- for the textbox -->
 	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
 	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
-	<!-- for customizing the toolbar -->
-	<script type="application/x-javascript" src="chrome://messenger/content/customizable-toolbar.js"/>
 
 	<broadcasterset id="cardbookBroadcasters" appendto="messengerWindow">
 		<broadcaster id="cardboookModeBroadcasterTab" mode="mail"/>
@@ -114,20 +113,19 @@
 		oncommand="ovl_cardbook.open()"
 		insertafter="appmenu_addressBook"/>
 
-	<!-- <toolbarpalette id="MailToolbarPalette"> -->
-	<toolbarbutton id="cardbookToolbarButton"
-		insertafter="button-chat"
-		label="__CARDBOOKMSG_cardbookToolbarButtonLabel__"
-		tooltiptext="__CARDBOOKMSG_cardbookToolbarButtonTooltip__"
-		removable="true"
-		is="toolbarbutton-badge-button"
-		oncommand="ovl_cardbook.open();"
-		class="toolbarbutton-1"/>
-
 	<commandset id="cardbook_commands" appendto="messengerWindow">
 		<command id="cardbookTabButtonOpen"
 			oncommand="ovl_cardbook.open();"/>
 	</commandset>
+
+	<!-- <toolbarpalette id="MailToolbarPalette"> -->
+	<toolbarbutton id="cardbookToolbarButton"
+		insertafter="button-address"
+		removable="true"
+		label="__CARDBOOKMSG_cardbookToolbarButtonLabel__"
+		tooltiptext="__CARDBOOKMSG_cardbookToolbarButtonTooltip__"
+		command="cardbookTabButtonOpen"
+		class="toolbarbutton-1"/>
 
 	<!-- <toolbar id="tabbar-toolbar"> -->
 	<toolbarbutton id="cardbookTabButton"
@@ -619,7 +617,7 @@
 			<splitter id="dirTreeSplitter" collapse="before" persist="state orient" class="cardbookVerticalSplitterClass"/>
 
 			<box id="cardsBox" flex="1">
-				<vbox id="rightPaneUpHbox" flex="1" persist="width height collapsed" ondragover="wdw_cardbook.canDropOnContactBox(event);" ondrop="wdw_cardbook.dragCards(event);">
+				<vbox id="rightPaneUpHbox" persist="width height collapsed" ondragover="wdw_cardbook.canDropOnContactBox(event);" ondrop="wdw_cardbook.dragCards(event);">
 					<vbox id="searchRemoteHbox">
 						<hbox flex="1" class="input-container">
 							<html:input id="searchRemoteTextbox" placeholder="__CARDBOOKMSG_searchRemoteLabel__" onchange="wdw_cardbook.searchRemote();"/>
@@ -649,15 +647,23 @@
 								<tabpanel orient="vertical" style="overflow:auto">
 									<hbox flex="1">
 										<vbox flex="1">
-											<hbox align="center" flex="1"  class="input-container">
-												<vbox flex="1">
-													<groupbox id="fnGroupbox">
-														<label id="fnLabel" class="header">__CARDBOOKMSG_fnLabel__</label>
-														<hbox flex="1" class="indent">
-															<html:input id="fnTextBox" fieldName="fn"/>
-														</hbox>
-													</groupbox>
-												</vbox>
+											<hbox align="center" flex="1">
+												<groupbox id="fnGroupbox" flex="1">
+													<label class="header">__CARDBOOKMSG_fnLabel__</label>
+													<hbox flex="1" class="indent">
+														<grid align="center" flex="1">
+															<columns>
+																<column flex="1"/>
+															</columns>
+												
+															<rows id="fnRows">
+																<row id="fnRow" align="center">
+																	<html:input id="fnTextBox" fieldName="fn"/>
+																</row>
+															</rows>
+														</grid>
+													</hbox>
+												</groupbox>
 											</hbox>
 											<hbox id="persBox" flex="1">
 												<groupbox id="persGroupbox" flex="1">
@@ -766,9 +772,6 @@
 										<vbox flex="1">
 											<grid align="center" flex="1">
 												<columns>
-													<column/>
-													<column/>
-													<column flex="1"/>
 													<column flex="1"/>
 												</columns>
 												<rows id="classicalRows"/>
@@ -785,13 +788,10 @@
 											</groupbox>
 										</vbox>
 									</hbox>
-									<hbox flex="1">
+									<hbox flex="1" class="input-container">
 										<vbox flex="1">
 											<grid align="center" flex="1">
 												<columns>
-													<column/>
-													<column/>
-													<column flex="1"/>
 													<column flex="1"/>
 												</columns>
 												<rows id="modernRows"/>

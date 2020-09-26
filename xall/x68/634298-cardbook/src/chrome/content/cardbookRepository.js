@@ -1321,7 +1321,7 @@ var cardbookRepository = {
 			ABExclRestrictions = {};
 			catInclRestrictions = {};
 			catExclRestrictions = {};
-			if (aIdentityKey == "") {
+			if (!aIdentityKey) {
 				ABInclRestrictions["length"] = 0;
 				return;
 			}
@@ -1744,11 +1744,10 @@ var cardbookRepository = {
 			return false;
 		}
 		let author = aMsgHdr.mime2DecodedAuthor;
-		let isSentFolder = aMsgHdr.folder && aMsgHdr.folder.flags && Components.interfaces.nsMsgFolderFlags.SentMail;
-		if (author && isSentFolder) {
+		if (author) {
 			let accounts = MailServices.accounts;
 			for (let identity of accounts.allIdentities) {
-				if (author.includes(identity.email) && !identity.fccReplyFollowsParent) {
+				if (author.includes(identity.email)) {
 					return true;
 				}
 			}

@@ -2680,20 +2680,10 @@
 		"message": "Senha inválida"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Longo: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Longo: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Curto: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Curto: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "CardBook"
 	},
+	"editionTabLabel": {
+		"message": "Edição"
+	},
 	"IMPPsTabLabel": {
 		"message": "Comunicar"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Avançado"
 	},
-	"advancedTab.conf.label": {
-		"message": "Avançado (só para vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Localizar"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Região padrão para formatação de números de telefone e endereços."
+	},
+	"editionGroupboxLabel": {
+		"message": "Seletor de campos"
+	},
+	"editionWarn": {
+		"message": "Ao editar um contato, o CardBook mostrará como padrão somente os campos selecionados."
+	},
+	"fieldsButtonLabel": {
+		"message": "Definir como Padrão"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Selecionar tudo"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Campo PREFerido"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "E"
 	},
+	"gender.conf.label": {
+		"message": "Gênero (só para vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Local de nascimento (só para vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Local de falecimento (só para vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Calendários"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Notas"
-	},
-	"advancedTabLabel": {
-		"message": "Avançado"
 	},
 	"miscGroupboxLabel": {
 		"message": "Diversos"

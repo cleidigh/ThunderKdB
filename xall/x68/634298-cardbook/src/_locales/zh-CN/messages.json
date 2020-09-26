@@ -2680,20 +2680,10 @@
 		"message": "无效的密码"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "长: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "长: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "短: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "短: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "标签页"
 	},
+	"editionTabLabel": {
+		"message": "编辑"
+	},
 	"IMPPsTabLabel": {
 		"message": "通讯"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "高级"
 	},
-	"advancedTab.conf.label": {
-		"message": "高级 (仅适用于 vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "在地图显示"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "地址和电话号码格式的默认区域"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "设为默认"
+	},
+	"selectAllFieldsLabel": {
+		"message": "全选"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "字段 PREF"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "E"
 	},
+	"gender.conf.label": {
+		"message": "性别 (仅适用于 vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "出生地 (仅适用于 vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "去世地 (仅适用于 vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "日历"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "备注"
-	},
-	"advancedTabLabel": {
-		"message": "高级"
 	},
 	"miscGroupboxLabel": {
 		"message": "杂项"

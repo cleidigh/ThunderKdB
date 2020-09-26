@@ -3,17 +3,17 @@
 }
 
 #AHT-statusbarpanel-icon[AHT-htmlStatus="Sanitized"] {
-  list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_sanitized.svg");
-}
-:-moz-lwtheme-brighttext #AHT-statusbarpanel-icon[AHT-htmlStatus="Sanitized"] {
-  list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_sanitized_inverted.svg") !important;
+  list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_sanitized_contextcolor.svg");
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
 }
 
 #AHT-statusbarpanel-icon[AHT-htmlStatus="Plaintext"] {
-  list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_plaintext.svg");
-}
-:-moz-lwtheme-brighttext #AHT-statusbarpanel-icon[AHT-htmlStatus="Plaintext"] {
-  list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_plaintext_inverted.svg") !important;
+  list-style-image: url("resource://allowhtmltemp/skin/aht_statusbar_plaintext_contextcolor.svg");
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
 }
 
 #AHT-feed-statusbarpanel-icon {

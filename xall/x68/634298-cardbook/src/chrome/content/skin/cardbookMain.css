@@ -1,7 +1,7 @@
 .cardbookBackgroundColorClass groupbox {
-	-moz-appearance: none !important;
 	background-color: transparent !important;
 	border: 0px !important;
+	padding-bottom:7px !important;
 }
 
 /* for Linux Mint otherwise gmail is not entirely seen in mail edition */
@@ -9,21 +9,29 @@
 	min-height:16px !important;
 }
 .cardbookBackgroundColorClass input[readonly="true"] {
-	-moz-appearance: none !important;
-	min-height:16px !important;
+	min-height:20px !important;
 	background-color: transparent !important;
 	border: 0px !important;
 	padding-left: 0px !important;
 }
 .cardbookBackgroundColorClass input[link="true"] {
-	-moz-appearance: none !important;
-	min-height:16px !important;
+	min-height:20px !important;
 	background-color: transparent !important;
 	border: 0px !important;
 	cursor: pointer !important;
 	color: -moz-hyperlinktext;
 }
 .cardbookBackgroundColorClass input[link="true"]:hover {
+	color: -moz-activehyperlinktext;
+}
+.cardbookBackgroundColorClass label[link="true"] {
+	min-height:20px !important;
+	background-color: transparent !important;
+	border: 0px !important;
+	cursor: pointer !important;
+	color: -moz-hyperlinktext;
+}
+.cardbookBackgroundColorClass label[link="true"]:hover {
 	color: -moz-activehyperlinktext;
 }
 

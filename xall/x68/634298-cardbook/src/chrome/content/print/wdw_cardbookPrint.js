@@ -9,12 +9,6 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 		myHTML: "",
 		
 		refreshHTML: function () {
-			var iframeDoc = document.getElementById("content").contentDocument;
-			cardbookRepository.reloadCss("chrome://cardbook/content/skin/cardbookDataPrint.css");
-			if (this.lastCategoriesStyleSheetUri) {
-				cardbookRepository.unregisterCss(this.lastCategoriesStyleSheetUri);
-				delete this.lastCategoriesStyleSheetUri;
-			}
 			wdw_cardbookPrint.myHTML = cardbookPrint.buildHTML(window.arguments[0].listOfCards, document.getElementById("titleTextBox").value,
 																		{ display: document.getElementById("displayCheckBox").checked,
 																			headers: document.getElementById("displayHeadersCheckBox").checked,
@@ -29,32 +23,7 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 																			impp: document.getElementById("imppCheckBox").checked,
 																			url: document.getElementById("urlCheckBox").checked,
 																			note: document.getElementById("noteCheckBox").checked } );
-			var html = document.implementation.createDocument("http://www.w3.org/1999/xhtml", "html", null);
-			var body = document.createElementNS("http://www.w3.org/1999/xhtml", "body");
-			html.documentElement.appendChild(body);
-			var parserUtils = Components.classes["@mozilla.org/parserutils;1"].getService(Components.interfaces.nsIParserUtils);
-			body.appendChild(parserUtils.parseFragment(wdw_cardbookPrint.myHTML, Components.interfaces.nsIParserUtils.SanitizerDropForms | Components.interfaces.nsIParserUtils.SanitizerAllowStyle,
-														false, null, body));
-			iframeDoc.body = body;
-			if (document.getElementById("titleTextBox").value != "") {
-				iframeDoc.title = document.getElementById("titleTextBox").value;
-			} else {
-				iframeDoc.title = "CardBook";
-			}
-			if (PrintUtils.getPrintSettings().printBGColors) {
-				var styles = [];
-				for (let category in cardbookRepository.cardbookNodeColors) {
-					var categoryCleanName = cardbookRepository.cardbookUtils.formatCategoryForCss(category);
-					var color = cardbookRepository.cardbookNodeColors[category];
-					if (!color) {
-						continue;
-					}
-					var oppositeColor = cardbookRepository.getTextColorFromBackgroundColor(color);
-					styles.push(".print_preview_category_" + categoryCleanName + "{ color: " + oppositeColor + "; background-color: " + color + "}");
-				}
-				this.lastCategoriesStyleSheetUri = 'data:text/css,' + encodeURIComponent(styles.join('\n'));
-				cardbookRepository.reloadCss(this.lastCategoriesStyleSheetUri);
-			}
+			document.getElementById("content").src = "data:text/html," + encodeURIComponent(wdw_cardbookPrint.myHTML);
 		},
 
 		setWindowTitle: function () {
@@ -91,7 +60,6 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 		}
 		
 	};
-
 };
 
 // translations
@@ -107,7 +75,7 @@ document.addEventListener("dialogaccept", event => {
 	// we don't do anything with statusFeedback, msgPrintEngine requires it
 	let statusFeedback = Components.classes["@mozilla.org/messenger/statusfeedback;1"].createInstance();
 	statusFeedback = statusFeedback.QueryInterface(Components.interfaces.nsIMsgStatusFeedback);
-	
+
 	let printWindow = window.openDialog(
 		"chrome://messenger/content/msgPrintEngine.xhtml",
 		"",

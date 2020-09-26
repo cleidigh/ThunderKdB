@@ -3,7 +3,8 @@
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookComposeMsg.css" type="text/css"?>
 
 <overlay id="ovl_cardbookComposeMsg"
-	xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onremove="ovl_cardbookComposeMsg.unloadMsg();">
 
 	<script type="application/x-javascript" src="chrome://cardbook/content/autocomplete/cardbookAutocompleteSearch.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/autocomplete/cardbookAutocomplete.js"/>
@@ -11,7 +12,6 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookWindowUtils.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserverRepository.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookComposeMsgObserver.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserver.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/ovl_cardbook.js"/>
 

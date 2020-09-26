@@ -2124,7 +2124,7 @@
         }
 	},
 	"dateEntry1Wrong": {
-		"message": "$P1$ : 連絡先 $P2$ の日付フィールドの値（$P3$）は、アドレス帳の日付フォーマット($P2$) と一致しません",
+		"message": "$P1$ : 連絡先 $P2$ の日付フィールドの値（$P3$）は、アドレス帳の日付フォーマット($P4$) と一致しません",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2134,6 +2134,9 @@
             },
             "P3": {
                 "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
             }
         }
 	},
@@ -2677,20 +2680,10 @@
 		"message": "無効なパスワード"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "長い形式：$P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "長い形式：%P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "短い形式：$P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "短い形式：%P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{5}} |)({{6}}|)(\n)({{7}}|)"
@@ -3320,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "タブ"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "通話"
 	},
@@ -3545,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "詳細"
 	},
-	"advancedTab.conf.label": {
-		"message": "詳細（vCard4.0のみ）"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "マップで表示する"
 	},
@@ -3652,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "住所と電話番号の表示形式の規定の地域"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "既定のブラウザーに設定する"
+	},
+	"selectAllFieldsLabel": {
+		"message": "すべて選択"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "フィールド設定"
@@ -4100,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "E"
 	},
+	"gender.conf.label": {
+		"message": "性別 (vCard4.0のみ)"
+	},
+	"birthplace.conf.label": {
+		"message": "出生地 (vCard4.0のみ)"
+	},
+	"deathplace.conf.label": {
+		"message": "死亡場所 (vCard4.0のみ)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "カレンダー"
 	},
@@ -4486,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "メモ"
-	},
-	"advancedTabLabel": {
-		"message": "詳細"
 	},
 	"miscGroupboxLabel": {
 		"message": "雑多"

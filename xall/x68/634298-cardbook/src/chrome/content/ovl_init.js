@@ -33,7 +33,6 @@ var ovl_synchro = {
 		prefs.setBoolPref("mailPopularityTabView", false);
 		prefs.setBoolPref("technicalTabView", false);
 		prefs.setBoolPref("vcardTabView", false);
-		prefs.setBoolPref("advancedTabView", false);
 		
 		prefs.setCharPref("panesView", "modern");
 		prefs.setBoolPref("syncAfterChange", true);
@@ -50,6 +49,8 @@ var ovl_synchro = {
 		prefs.setBoolPref("warnEmptyEmails", true);
 		prefs.setBoolPref("useOnlyEmail", false);
 		
+		prefs.setCharPref("fieldsNameList", "allFields");
+
 		prefs.setBoolPref("usePreferenceValue", false);
 		prefs.setCharPref("preferenceValueLabel", "");
 		
@@ -104,7 +105,7 @@ var ovl_synchro = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "51.7");
+		prefs.setCharPref("addonVersion", "52.1");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);

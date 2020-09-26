@@ -458,7 +458,9 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 			let label = "";
 			let itemsList = myMenupopup.querySelectorAll("menuitem.cardbook-item[checked]");
-			if (itemsList.length > 1) {
+			if (aType == "fields") {
+				label = ConversionHelper.i18n.getMessage("editionGroupboxLabel");
+			} else if (itemsList.length > 1) {
 				if (aType == "category") {
 					label = ConversionHelper.i18n.getMessage("multipleCategories");
 				} else if (aType == "type") {
@@ -1255,12 +1257,13 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 		},
 
 		display40: function (aCardVersion, aReadOnly) {
+			function isElementInPref(element) {
+				return (wdw_cardEdition.editionFields.includes(element) || wdw_cardEdition.editionFields[0] == "allFields");
+			}
 			if (aCardVersion == "4.0") {
-				document.getElementById('birthplaceLabel').removeAttribute('hidden');
-				document.getElementById('birthplaceTextBox').removeAttribute('hidden');
-				document.getElementById('deathplaceLabel').removeAttribute('hidden');
-				document.getElementById('deathplaceTextBox').removeAttribute('hidden');
 				if (aReadOnly) {
+					document.getElementById('birthplaceRow').removeAttribute('hidden');
+					document.getElementById('deathplaceRow').removeAttribute('hidden');
 					if (document.getElementById('genderRow1')) {
 						document.getElementById('genderRow1').setAttribute('hidden', 'true');
 						if (document.getElementById('genderTextBox').value) {
@@ -1275,14 +1278,29 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					document.getElementById('birthplaceTextBox').setAttribute('readonly', 'true');
 					document.getElementById('deathplaceTextBox').setAttribute('readonly', 'true');
 				} else {
+					// edition
 					if (document.getElementById('genderRow1')) {
-						document.getElementById('genderRow1').removeAttribute('hidden');
+						if (isElementInPref('gender') || wdw_cardEdition.workingCard.gender) {
+							document.getElementById('genderRow1').removeAttribute('hidden');
+						} else {
+							document.getElementById('genderRow1').setAttribute('hidden', 'true');
+						}
 						document.getElementById('genderRow2').setAttribute('hidden', 'true');
 					} else if (document.getElementById('genderRow')) {
 						document.getElementById('genderTextBox').setAttribute('readonly', 'true');
 					}
-					document.getElementById('birthplaceTextBox').removeAttribute('readonly');
-					document.getElementById('deathplaceTextBox').removeAttribute('readonly');
+					if (isElementInPref('birthplace') || wdw_cardEdition.workingCard.birthplace) {
+						document.getElementById('birthplaceRow').removeAttribute('hidden');
+						document.getElementById('birthplaceTextBox').removeAttribute('readonly');
+					} else {
+						document.getElementById('birthplaceRow').setAttribute('hidden', 'true');
+					}
+					if (isElementInPref('deathplace') || wdw_cardEdition.workingCard.deathplace) {
+						document.getElementById('deathplaceRow').removeAttribute('hidden');
+						document.getElementById('deathplaceTextBox').removeAttribute('readonly');
+					} else {
+						document.getElementById('deathplaceRow').setAttribute('hidden', 'true');
+					}
 				}
 			} else {
 				if (document.getElementById('genderRow1')) {
@@ -1291,14 +1309,15 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				} else if (document.getElementById('genderRow')) {
 					document.getElementById('genderRow').setAttribute('hidden', 'true');
 				}
-				document.getElementById('birthplaceLabel').setAttribute('hidden', 'true');
-				document.getElementById('birthplaceTextBox').setAttribute('hidden', 'true');
-				document.getElementById('deathplaceLabel').setAttribute('hidden', 'true');
-				document.getElementById('deathplaceTextBox').setAttribute('hidden', 'true');
+				document.getElementById('birthplaceRow').setAttribute('hidden', 'true');
+				document.getElementById('deathplaceRow').setAttribute('hidden', 'true');
 			}
 		},
 
 		displayDates: function (aCardVersion, aReadOnly) {
+			function isElementInPref(element) {
+				return (wdw_cardEdition.editionFields.includes(element) || wdw_cardEdition.editionFields[0] == "allFields");
+			}
 			if (aCardVersion == "4.0") {
 				if (aReadOnly) {
 					if (document.getElementById('bdayRow1')) {
@@ -1329,23 +1348,30 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 						document.getElementById('deathdateTextBox').setAttribute('readonly', 'true');
 					}
 				} else {
+					// edition
 					if (document.getElementById('bdayRow1')) {
-						document.getElementById('bdayRow1').removeAttribute('hidden');
-						document.getElementById('bdayRow2').setAttribute('hidden', 'true');
-						document.getElementById('anniversaryRow1').removeAttribute('hidden');
-						document.getElementById('anniversaryRow2').setAttribute('hidden', 'true');
-						document.getElementById('deathdateRow1').removeAttribute('hidden');
-						document.getElementById('deathdateRow2').setAttribute('hidden', 'true');
+						for (var field of cardbookRepository.dateFields) {
+							if (isElementInPref(field) || wdw_cardEdition.workingCard[field]) {
+								document.getElementById(field + 'Row1').removeAttribute('hidden');
+							} else {
+								document.getElementById(field + 'Row1').setAttribute('hidden', 'true');
+							}
+							document.getElementById(field + 'Row2').setAttribute('hidden', 'true');
+						}
 					} else if (document.getElementById('bdayRow')) {
-						document.getElementById('bdayTextBox').setAttribute('readonly', 'true');
-						document.getElementById('anniversaryTextBox').setAttribute('readonly', 'true');
-						document.getElementById('deathdateTextBox').setAttribute('readonly', 'true');
+						for (var field of cardbookRepository.dateFields) {
+							document.getElementById(field + 'TextBox').setAttribute('readonly', 'true');
+						}
 					}
 				}
 			} else {
 				if (document.getElementById('bdayRow1')) {
 					if (!aReadOnly) {
-						document.getElementById('bdayRow1').removeAttribute('hidden');
+						if (isElementInPref('bday') || wdw_cardEdition.workingCard.bday) {
+							document.getElementById('bdayRow1').removeAttribute('hidden');
+						} else {
+							document.getElementById('bdayRow1').setAttribute('hidden', 'true');
+						}
 						document.getElementById('bdayRow2').setAttribute('hidden', 'true');
 					} else {
 						document.getElementById('bdayRow1').setAttribute('hidden', 'true');
@@ -1804,12 +1830,12 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookRepository.cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
 						var myRegexp = new RegExp("^" + serviceLine[2] + ":");
 						myValue = myValue.replace(myRegexp, "");
-						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {});
+						myValueTextbox = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_valueBox', myValue, null, {});
 						myValueTextbox.setAttribute('link', 'true');
 					} else {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceCode);
 						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookRepository.cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
-						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {});
+						myValueTextbox = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_valueBox', myValue, null, {});
 						myValueTextbox.setAttribute('readonly', 'true');
 					}
 				} else if (serviceProtocol != "") {
@@ -1820,17 +1846,17 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookRepository.cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
 						var myRegexp = new RegExp("^" + serviceLine[2] + ":");
 						myValue = myValue.replace(myRegexp, "");
-						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {});
+						myValueTextbox = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_valueBox', myValue, null, {});
 						myValueTextbox.setAttribute('link', 'true');
 					} else {
 						myDisplayedTypes = myDisplayedTypes.concat(serviceCode);
 						cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookRepository.cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
-						myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {});
+						myValueTextbox = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_valueBox', myValue, null, {});
 						myValueTextbox.setAttribute('readonly', 'true');
 					}
 				} else {
 					cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', cardbookRepository.cardbookUtils.formatTypesForDisplay(myDisplayedTypes), {readonly: 'true'});
-					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', myValue, {});
+					myValueTextbox = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_valueBox', myValue, null, {});
 					myValueTextbox.setAttribute('readonly', 'true');
 				}
 			} else {
@@ -1842,16 +1868,18 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					var myAdrResultArray = myAdrResult.split(re);
 					myValueTextbox = cardbookElementTools.addTextarea(aRow, aType + '_' + aIndex + '_valueBox', myAdrResult, {rows: myAdrResultArray.length});
 				} else {
-					myValueTextbox = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', cardbookRepository.cardbookUtils.cleanArray(aCardValue).join(" "), {});
+					myValueTextbox = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_valueBox', cardbookRepository.cardbookUtils.cleanArray(aCardValue).join(" "), null, {});
 				}
 				
-				if (aType == "url" || aType == "email" || aType == "adr") {
+				if (aType == "adr") {
 					myValueTextbox.setAttribute('link', 'true');
+				} else if (aType == "url" || aType == "email") {
+					myValueTextbox.setAttribute('class', 'text-link');
 				} else if (aType == "tel") {
 					var telProtocol = "";
 					try {
 						var telProtocol = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.tels.0");
-						myValueTextbox.setAttribute('link', 'true');
+						myValueTextbox.setAttribute('class', 'text-link');
 					}
 					catch(e) {
 						myValueTextbox.setAttribute('readonly', 'true');
@@ -1903,10 +1931,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			var myFormattedDate = cardbookRepository.cardbookDates.getFormattedDateForDateString(aEventType[0], dateFormat, cardbookRepository.dateDisplayedFormat);
 			var myDate = cardbookRepository.cardbookDates.convertDateStringToDate(aEventType[0], dateFormat);
 			var myDateString = cardbookRepository.cardbookDates.convertDateToDateString(myDate, "4.0");
-			var myValueTextbox1 = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_typeBox', myFormattedDate, {readonly: 'true',
+			var myValueTextbox1 = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_typeBox', myFormattedDate, null, {readonly: 'true',
 												fieldValue: myDateString + "::" + aEventType[1] + "::" + aEventType[2]});
 	
-			var myValueTextbox2 = cardbookElementTools.addTextbox(aRow, aType + '_' + aIndex + '_valueBox', aEventType[1],
+			var myValueTextbox2 = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_valueBox', aEventType[1], null,
 											{readonly: 'true', flex: '1',
 												fieldValue: myDateString + "::" + aEventType[1] + "::" + aEventType[2]});
 
@@ -2030,14 +2058,14 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				aImage.setAttribute('id', 'dummyListPrefBox_' + i);
 				aImage.setAttribute('class', 'cardbookNoPrefStarClass');
 
-				cardbookElementTools.addTextbox(aRow, 'email_' + addedCards[i][2] + '_valueBox', addedCards[i][1].join(" "), {readonly: 'true'});
+				cardbookElementTools.addLabel(aRow, 'email_' + addedCards[i][2] + '_valueBox', addedCards[i][1].join(" "), null, {readonly: 'true'});
 
-				var myCardTextbox = cardbookElementTools.addTextbox(aRow, 'fn_' + addedCards[i][2] + '_valueBox', addedCards[i][0], {readonly: 'true'});
+				var myCardTextbox = cardbookElementTools.addLabel(aRow, 'fn_' + addedCards[i][2] + '_valueBox', addedCards[i][0], null, {readonly: 'true'});
 
 				myCardTextbox.addEventListener("contextmenu", cardbookRichContext.fireListContext, false);
 				
 				if (aFollowLink) {
-					myCardTextbox.setAttribute('link', 'true');
+					myCardTextbox.setAttribute('class', 'text-link');
 					function fireClick(event) {
 						if (wdw_cardbook) {
 							wdw_cardbook.chooseActionTreeForClick(event)

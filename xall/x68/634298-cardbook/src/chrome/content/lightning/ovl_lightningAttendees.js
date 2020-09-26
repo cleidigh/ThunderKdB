@@ -1,5 +1,9 @@
 if ("undefined" == typeof(ovl_lightningAttendees)) {
 	var ovl_lightningAttendees = {
+		onRemove: function() {
+			ovl_lightningAttendees.unregister();
+		},
+
 		onLoad: function() {
 			var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 			cardBookLightningObserver.register();

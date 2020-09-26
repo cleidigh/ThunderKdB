@@ -52,6 +52,24 @@ if ("undefined" == typeof(cardbookPrint)) {
 			return myDisplayedTypes;
 		},
 
+		addStyle: function () {
+			cardbookPrint.openTag("style", 'type="text/css" id="sheet"', "");
+			cardbookPrint.result = cardbookPrint.result + "\r\n";
+			cardbookPrint.indentation = cardbookPrint.indentation + "   ";
+			var styles = [];
+			for (let category in cardbookRepository.cardbookNodeColors) {
+				var categoryCleanName = cardbookRepository.cardbookUtils.formatCategoryForCss(category);
+				var color = cardbookRepository.cardbookNodeColors[category];
+				if (!color) {
+					continue;
+				}
+				var oppositeColor = cardbookRepository.getTextColorFromBackgroundColor(color);
+				cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".print_preview_category_" + categoryCleanName + "{ color: " + oppositeColor + "; background-color: " + color + "}";
+			}
+			cardbookPrint.indentation = cardbookPrint.indentation.replace("   ", "");
+			cardbookPrint.closeTag("style", true);
+		},
+
 		openTag: function (aTag, aParameters, aValue) {
 			cardbookPrint.indentation = cardbookPrint.indentation + "   ";
 			cardbookPrint.result = cardbookPrint.result + "\r\n";
@@ -72,13 +90,16 @@ if ("undefined" == typeof(cardbookPrint)) {
 		},
 
 		buildHTML: function (aListOfCards, aTitle, aColumnChoice) {
-   			cardbookPrint.result = '';
-   			// cardbookPrint.openTag("html", '', "");
-   			// cardbookPrint.openTag("head", '', "");
-   			// cardbookPrint.openTag("title", '', aTitle);
-   			// cardbookPrint.closeTag("title", '', true);
-   			// cardbookPrint.closeTag("head", '', true);
-   			// cardbookPrint.openTag("body", '', "");
+   			cardbookPrint.result = '<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">';
+   			cardbookPrint.openTag("html", 'xmlns="http://www.w3.org/1999/xhtml"', "");
+   			cardbookPrint.openTag("head", '', "");
+   			cardbookPrint.openTag("title", '', aTitle);
+   			cardbookPrint.closeTag("title", false);
+   			cardbookPrint.openTag("meta", 'http-equiv="Content-Type" content="text/html; charset=UTF-8"', aTitle);
+   			cardbookPrint.closeTag("meta", false);
+   			cardbookPrint.addStyle();
+   			cardbookPrint.closeTag("head", true);
+   			cardbookPrint.openTag("body", '', "");
 			for (var i = 0; i < aListOfCards.length; i++) {
 				cardbookPrint.openTag("div", 'class="vCard"', "");
 				cardbookPrint.openTag("table", 'class="table"', "");
@@ -270,8 +291,8 @@ if ("undefined" == typeof(cardbookPrint)) {
 				cardbookPrint.closeTag("table", true);
 				cardbookPrint.closeTag("div", true);
 			}
-			// cardbookPrint.closeTag("body", true);
-			// cardbookPrint.closeTag("html", true);
+			cardbookPrint.closeTag("body", true);
+			cardbookPrint.closeTag("html", true);
 
 			return cardbookPrint.result;
 		}

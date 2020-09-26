@@ -2680,20 +2680,10 @@
 		"message": "Ugyldig adgangskode"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Langt: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Langt: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Kort: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Kort: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "CardBook-fane"
 	},
+	"editionTabLabel": {
+		"message": "Redigering"
+	},
 	"IMPPsTabLabel": {
 		"message": "Internetkommunikation"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Avanceret"
 	},
-	"advancedTab.conf.label": {
-		"message": "Avanceret (kun for vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Lokaliser med"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Standardregion for adresser og formatering af telefonnumre."
+	},
+	"editionGroupboxLabel": {
+		"message": "Feltvælger"
+	},
+	"editionWarn": {
+		"message": "Når en kontakt redigeres, viser CardBook som standard kun de valgte felter."
+	},
+	"fieldsButtonLabel": {
+		"message": "Sæt som standard"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Marker alt"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "PREF-felt"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "B"
 	},
+	"gender.conf.label": {
+		"message": "Køn (kun for vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Fødselssted (kun for vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Død sted (kun for vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Kalendre"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Noter"
-	},
-	"advancedTabLabel": {
-		"message": "Avanceret"
 	},
 	"miscGroupboxLabel": {
 		"message": "Diverse"

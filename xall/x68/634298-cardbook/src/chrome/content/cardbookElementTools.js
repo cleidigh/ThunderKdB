@@ -140,6 +140,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			for (var prop in aParameters) {
 				aLabel.setAttribute(prop, aParameters[prop]);
 			}
+			return aLabel;
 		},
 
 		addKeyTextbox: function (aParent, aId, aValue, aParameters, aIndex) {

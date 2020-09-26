@@ -12,9 +12,10 @@ if ("undefined" == typeof(cardBookEditionPrefObserver)) {
 		
 		observe: function(aSubject, aTopic, aData) {
 			switch (aData) {
-				case "mailPopularityTabView":
-				case "advancedTabView":
-					wdw_cardEdition.showCorrectTabs();
+				case "fieldsNameList":
+					wdw_cardEdition.setEditionFields();
+					wdw_cardEdition.loadEditionFields();
+					wdw_cardEdition.loadFieldSelector();
 					break;
 			}
 		}

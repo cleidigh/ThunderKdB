@@ -43,7 +43,7 @@
 		"message": "VCF-Datei importieren (UTF-8 codiert)"
 	},
 	"dirImportTitle": {
-		"message": "Verzeichnis importieren"
+		"message": "Aus Verzeichnis importieren"
 	},
 	"fileCreationTPLTitle": {
 		"message": "Neue TPL-Datei erstellen"
@@ -58,7 +58,7 @@
 		"message": "Ohne Kategorie"
 	},
 	"collectedCards": {
-		"message": "Gesammelte Karten"
+		"message": "Gesammelte Kontakte"
 	},
 	"enableFromAccountsOrCats": {
 		"message": "Adressbuch aktivieren"
@@ -79,7 +79,7 @@
 		"message": "Kategorie entfernen"
 	},
 	"convertCategoryFromAccountsOrCats": {
-		"message": "Konvertiere die Kategorie zu einer Liste"
+		"message": "Kategorie zu einer Liste umwandeln"
 	},
 	"editNodeFromAccountsOrCats": {
 		"message": "Knoten bearbeiten"
@@ -171,7 +171,7 @@
         }
 	},
 	"customFieldsErrorCHAR": {
-		"message": "Namen Benutzerdefinierter Felder dürfen keine Zeichen wie Komma, Strichpunkt, Doppelpunkt oder Punkt enthalten: $P1$",
+		"message": "Namen benutzerdefinierter Felder dürfen keine Zeichen wie Komma, Strichpunkt, Doppelpunkt oder Punkt enthalten: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -179,10 +179,10 @@
         }
 	},
 	"customFieldsErrorUNIQUE": {
-		"message": "Namen Benutzerdefinierter Felder müssen eindeutig sein (Benutzerdefinierte Felder werden in mehreren Tabs definiert)."
+		"message": "Namen benutzerdefinierter Felder müssen eindeutig sein (Benutzerdefinierte Felder werden in mehreren Tabs definiert)."
 	},
 	"customFieldsErrorLABEL": {
-		"message": "Bezeichnungen Benutzerdefinierter Felder dürfen nicht leer sein."
+		"message": "Bezeichnungen benutzerdefinierter Felder dürfen nicht leer sein."
 	},
 	"allContactsLoadedFromFile": {
 		"message": "$P1$: Alle Kontakte aus der Datei geladen.",
@@ -754,7 +754,7 @@
 		"message": "Bevorzuge die serverseitige Änderung"
 	},
 	"mergeAskUserLabel": {
-		"message": "Vereinheitliche die Änderungen"
+		"message": "Führe die Änderungen zusammen"
 	},
 	"serverCardDeletedFromServer": {
 		"message": "$P1$: Kontakt $P2$ vom Server gelöscht",
@@ -1087,7 +1087,7 @@
         }
 	},
 	"googleGetNewRefreshToken": {
-		"message": "$P1$: Trying to get a new Google refresh token on $P2$ …",
+		"message": "$P1$: Versuche, ein neues Google Token zu erhalten für $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1120,7 +1120,7 @@
         }
 	},
 	"googleRequestRefreshToken": {
-		"message": "$P1$: Google refresh token request on $P2$ …",
+		"message": "$P1$: Fordere neues Google Token an für $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1153,7 +1153,7 @@
         }
 	},
 	"yahooGetNewRefreshToken": {
-		"message": "$P1$: Trying to get a new Yahoo! refresh token on $P2$ …",
+		"message": "$P1$: Versuche ein neues Yahoo! Token zu erhalten für $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1186,7 +1186,7 @@
         }
 	},
 	"yahooRequestRefreshToken": {
-		"message": "$P1$: Yahoo! refresh token request on $P2$ …",
+		"message": "$P1$: Yahoo! Erneuerungs-Token angefordert für $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1404,7 +1404,7 @@
         }
 	},
 	"cardsConvertedUndo": {
-		"message": "Kontakte konvertiert"
+		"message": "VCards konvertiert"
 	},
 	"cardsImportedFromFileUndo": {
 		"message": "Datei $P1$ importiert",
@@ -1467,10 +1467,10 @@
 		"message": "Kontakte zusammengeführt"
 	},
 	"cardsDuplicatedUndo": {
-		"message": "Kontakte verdoppelt"
+		"message": "Kontakte dupliziert"
 	},
 	"displayNameGenerated": {
-		"message": "$P1$ : Kontakte, deren Anzeigenamen erstellt worden ist : $P2$",
+		"message": "$P1$ : Kontakte, deren Anzeigenamen wiederhergestellt worden ist : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1481,7 +1481,7 @@
         }
 	},
 	"displayNameGeneratedUndo": {
-		"message": "Anzeigenamen erstellt"
+		"message": "Anzeigenamen wiederhergestellt"
 	},
 	"cardModifiedUndo": {
 		"message": "Kontakt $P1$ aktualisiert",
@@ -2058,7 +2058,12 @@
         }
 	},
 	"noEmailFoundMessage": {
-		"message": "Keine Email-Adresse gefunden"
+		"message": "Keine Email-Adresse gefunden ($P1$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"eventEntryTitleMessage": {
 		"message": "Geburtstag von %1$S, Alter %2$S"
@@ -2675,20 +2680,10 @@
 		"message": "Falsches Passwort"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Lang: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Lang: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Kurz: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Kurz: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -2803,19 +2798,19 @@
 		"message": "b"
 	},
 	"cardbookMenuItemTooltip": {
-		"message": "Zum Tab von CardBook"
+		"message": "Zum Tab von CardBook wechseln"
 	},
 	"cardbookToolbarButtonLabel": {
 		"message": "CardBook"
 	},
 	"cardbookToolbarButtonTooltip": {
-		"message": "Zum Tab von CardBook"
+		"message": "Zum Tab von CardBook wechseln"
 	},
 	"cardbookTabButtonLabel": {
 		"message": "CardBook"
 	},
 	"cardbookTabButtonTooltip": {
-		"message": "Zum Tab von CardBook"
+		"message": "Zum Tab von CardBook wechseln"
 	},
 	"cardbookQFBButtonLabel": {
 		"message": "CardBook"
@@ -2866,7 +2861,7 @@
 		"message": "M"
 	},
 	"deleteInCardBookMenuLabel": {
-		"message": "Lösche CardBook Kontakt"
+		"message": "CardBook Kontakt löschen"
 	},
 	"deleteInCardBookMenuAccesskey": {
 		"message": "L"
@@ -3040,10 +3035,10 @@
 		"message": "Überprüfen"
 	},
 	"locationSearchPage.wizard.description": {
-		"message": "Die erweiterte Suche definieren."
+		"message": "Die gespeichterte Suche definieren."
 	},
 	"locationSearchPage.label": {
-		"message": "Erweiterte Suche"
+		"message": "Gespeichterte Suche"
 	},
 	"abSearchHeading.label": {
 		"message": "Suchen in:"
@@ -3100,7 +3095,7 @@
 		"message": "Suche nach Netzwerk-Adressbüchern"
 	},
 	"findPage.name1.description": {
-		"message": "Kein Adressbuch kann hinzufügt werden."
+		"message": "Kein Netzwerk-Adressbuch gefunden."
 	},
 	"findPage.name2.description": {
 		"message": "Ein Adressbuch kann hinzugefügt werden. Wählen Sie aus, ob Sie das Adressbuch hinzufügen möchten:"
@@ -3250,7 +3245,7 @@
 		"message": "m"
 	},
 	"syncLightningMenuItemLabel": {
-		"message": "Synchronisieren mit Lightning"
+		"message": "Mit Lightning synchronisieren"
 	},
 	"syncLightningMenuAccesskey": {
 		"message": "L"
@@ -3317,6 +3312,9 @@
 	},
 	"CardBookTabLabel": {
 		"message": "CardBook Tab"
+	},
+	"editionTabLabel": {
+		"message": "Edition"
 	},
 	"IMPPsTabLabel": {
 		"message": "IM Adressen"
@@ -3543,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Erweitert"
 	},
-	"advancedTab.conf.label": {
-		"message": "Erweitert (vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "E"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Lokalisieren"
 	},
@@ -3650,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Diese Region wird als Standardregion für Adressen sowie als Format für Telefonnummern verwendet."
+	},
+	"editionGroupboxLabel": {
+		"message": "Auswahl der Felder"
+	},
+	"editionWarn": {
+		"message": "Bei der Bearbeitung eines Kontakts wird CardBook defaultmäßig nur die ausgewählten Felder anzeigen."
+	},
+	"fieldsButtonLabel": {
+		"message": "Als Standard festlegen"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Alles auswählen"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Feld PREF"
@@ -4081,13 +4085,13 @@
 		"message": "G"
 	},
 	"anniversary.conf.label": {
-		"message": "Jahrestag (vCard 4.0)"
+		"message": "Jahrestag (nur in vCard 4.0)"
 	},
 	"anniversary.conf.accesskey": {
 		"message": "J"
 	},
 	"deathdate.conf.label": {
-		"message": "Todestag (vCard 4.0)"
+		"message": "Todestag (nur in vCard 4.0)"
 	},
 	"deathdate.conf.accesskey": {
 		"message": "T"
@@ -4097,6 +4101,15 @@
 	},
 	"eventsAccesskey": {
 		"message": "e"
+	},
+	"gender.conf.label": {
+		"message": "Geschlecht (nur in vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Geburtsort (nur in vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Sterbeort (nur in vCard 4.0)"
 	},
 	"calendarsGroupboxLabel": {
 		"message": "Kalender"
@@ -4484,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Notizen"
-	},
-	"advancedTabLabel": {
-		"message": "Erweitert"
 	},
 	"miscGroupboxLabel": {
 		"message": "Sonstiges"

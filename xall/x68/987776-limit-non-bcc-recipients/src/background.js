@@ -1,6 +1,8 @@
 // Intercepts send and checks number of To + CC recipients against prefs
 // If limit exceeded consults user
 
+extensionName = browser.i18n.getMessage("extensionName");
+
 // Retrieve the stored prefs, or initialise them
 // Same code here and in prefs.js
 var prefs = new Object() ;
@@ -156,6 +158,7 @@ function onGot(item) {
 
 // Non-BCC count exceeded. Open a dialogue popup
       createData={allowScriptsToClose: true,
+      titlePreface: extensionName,      
       width : 600,
       height : 300,
       type : "popup",

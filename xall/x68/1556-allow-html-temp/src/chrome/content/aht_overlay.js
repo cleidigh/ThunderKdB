@@ -7,6 +7,7 @@ var { Services } = ChromeUtils.import(
 Services.scriptloader.loadSubScript("chrome://allowhtmltemp/content/aht_functions.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://allowhtmltemp/content/aht_buttonsListeners.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://allowhtmltemp/content/aht_statusbarListeners.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://messenger/content/mailWindowOverlay.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
   
@@ -61,74 +62,75 @@ function onLoad(activatedWhileWindowOpen) {
 
     <hbox id="status-bar">
 
-      <hbox id="AHT-statusbarpanel"
-          context="AHT-statusbarpanel-menu"
-          insertafter="statusTextBox"
-          onload="view_init();">
-        <hbox class="aht-statusbarpanel" align="center">
-          <image id="AHT-statusbarpanel-icon" class="aht-menu-iconic-icon"/>
-          <label id="AHT-statusbarpanel-text" class="aht-menu-iconic-text statusbarpanel" flex="1" crop="right"
-              value="HTML-Status"
-              labelAHT-htmlStatusOriginal="&bodyAllowHTML.label;"
-              labelAHT-htmlStatusSanitized="&bodySanitized.label;"
-              labelAHT-htmlStatusPlaintext="&bodyAsPlaintext.label;"
-          />
+      <hbox insertafter="statusTextBox">
+
+        <hbox id="AHT-feed-statusbarpanel"
+            context="AHT-feed-statusbarpanel-menu">
+          <hbox class="aht-statusbarpanel" align="center">
+            <image id="AHT-feed-statusbarpanel-icon" class="aht-menu-iconic-icon"/>
+            <label id="AHT-feed-statusbarpanel-text" class="aht-menu-iconic-text statusbarpanel" flex="1" crop="right"
+                value="Feed-HTML-Status"
+                labelAHT-viewFeedWebPage="&viewFeedWebPage.label;"
+                labelAHT-viewFeedSummary="&viewFeedSummary.label;"
+                labelAHT-viewFeedSummaryFeedPropsPref="&viewFeedSummaryFeedPropsPref.label;"
+            />
+          </hbox>
         </hbox>
-      </hbox>
-      <popupset>
-        <menupopup id="AHT-statusbarpanel-menu"
-              onpopupshowing="InitViewBodyMenu();">
-          <menuitem id="AHTbodyAllowHTML"
-              type="radio"
-              name="AHTbodyPlaintextVsHTMLPref"
-              label="&bodyAllowHTML.label;"
-              accesskey="&bodyAllowHTML.accesskey;"
-              oncommand="MsgBodyAllowHTML()">
-            <observes element="bodyAllowHTML" attribute="checked"/>
-          </menuitem>
-          <menuitem id="AHTbodySanitized"
-              type="radio"
-              name="AHTbodyPlaintextVsHTMLPref"
-              label="&bodySanitized.label;"
-              accesskey="&bodySanitized.accesskey;"
-              oncommand="MsgBodySanitized()">
-            <observes element="bodySanitized" attribute="checked"/>
-          </menuitem>
-          <menuitem id="AHTbodyAsPlaintext"
-              type="radio"
-              name="AHTbodyPlaintextVsHTMLPref"
-              label="&bodyAsPlaintext.label;"
-              accesskey="&bodyAsPlaintext.accesskey;"
-              oncommand="MsgBodyAsPlaintext()">
-            <observes element="bodyAsPlaintext" attribute="checked"/>
-          </menuitem>
-        </menupopup>
-      </popupset>
 
-      <hbox id="AHT-feed-statusbarpanel"
-          context="AHT-feed-statusbarpanel-menu"
-          insertbefore="unreadMessageCount">
-
-        <hbox class="aht-statusbarpanel" align="center">
-          <image id="AHT-feed-statusbarpanel-icon" class="aht-menu-iconic-icon"/>
-          <label id="AHT-feed-statusbarpanel-text" class="aht-menu-iconic-text statusbarpanel" flex="1" crop="right"
-              value="Feed-HTML-Status"
-              labelAHT-viewFeedWebPage="&viewFeedWebPage.label;"
-              labelAHT-viewFeedSummary="&viewFeedSummary.label;"
-              labelAHT-viewFeedSummaryFeedPropsPref="&viewFeedSummaryFeedPropsPref.label;"
-          />
+        <hbox id="AHT-statusbarpanel"
+            context="AHT-statusbarpanel-menu"
+            onload="view_init();">
+          <hbox class="aht-statusbarpanel" align="center">
+            <image id="AHT-statusbarpanel-icon" class="aht-menu-iconic-icon"/>
+            <label id="AHT-statusbarpanel-text" class="aht-menu-iconic-text statusbarpanel" flex="1" crop="right"
+                value="HTML-Status"
+                labelAHT-htmlStatusOriginal="&bodyAllowHTML.label;"
+                labelAHT-htmlStatusSanitized="&bodySanitized.label;"
+                labelAHT-htmlStatusPlaintext="&bodyAsPlaintext.label;"
+            />
+          </hbox>
         </hbox>
-      </hbox>
+        <popupset>
+          <menupopup id="AHT-statusbarpanel-menu"
+                onpopupshowing="InitViewBodyMenu();">
+            <menuitem id="AHTbodyAllowHTML"
+                type="radio"
+                name="AHTbodyPlaintextVsHTMLPref"
+                label="&bodyAllowHTML.label;"
+                accesskey="&bodyAllowHTML.accesskey;"
+                oncommand="MsgBodyAllowHTML()">
+              <observes element="bodyAllowHTML" attribute="checked"/>
+            </menuitem>
+            <menuitem id="AHTbodySanitized"
+                type="radio"
+                name="AHTbodyPlaintextVsHTMLPref"
+                label="&bodySanitized.label;"
+                accesskey="&bodySanitized.accesskey;"
+                oncommand="MsgBodySanitized()">
+              <observes element="bodySanitized" attribute="checked"/>
+            </menuitem>
+            <menuitem id="AHTbodyAsPlaintext"
+                type="radio"
+                name="AHTbodyPlaintextVsHTMLPref"
+                label="&bodyAsPlaintext.label;"
+                accesskey="&bodyAsPlaintext.accesskey;"
+                oncommand="MsgBodyAsPlaintext()">
+              <observes element="bodyAsPlaintext" attribute="checked"/>
+            </menuitem>
+          </menupopup>
+        </popupset>
 
-    </hbox>`,
+        </hbox>
+
+      </hbox>`,
   ["chrome://allowhtmltemp/locale/allowhtmltemp.dtd","chrome://messenger/locale/messenger.dtd"]);
 
+  window.ahtFunctions.ahtResetJavaScriptToDefaultOnce();
   window.ahtFunctions.startup();
   window.ahtStatusbarSetLabelIcon.startup();
   window.ahtHideAndShowStatusbarElements.startup();
   window.ahtButtonSetIcon.startup();
   window.ahtButtonStatus.startup();
-
 }
 
 function onUnload(deactivatedWhileWindowOpen) {

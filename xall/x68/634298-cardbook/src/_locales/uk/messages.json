@@ -401,7 +401,12 @@
         }
 	},
 	"synchroImpossible": {
-		"message": "$S : Синхронізація неможлива з сервером."
+		"message": "$P1$ : Синхронізація неможлива з сервером.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"synchroDBFinishedResult": {
 		"message": "??$P1$ : Local database opened, contacts result :??",
@@ -434,7 +439,12 @@
         }
 	},
 	"synchroDirFinishedResult": {
-		"message": "$S : Каталог відкрив, результат контактів :"
+		"message": "$P1$ : Каталог відкрив, результат контактів :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"synchroDirCardsOK": {
 		"message": "$P1$ : Контакти відкриті : $P2$",
@@ -2670,20 +2680,10 @@
 		"message": "Невірний пароль"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Довго: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Довго: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Короткий: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Короткий: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3313,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Вкладка"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Спілкуватися"
 	},
@@ -3538,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Додатково"
 	},
-	"advancedTab.conf.label": {
-		"message": "Додатково (тільки для vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "Д"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Показати на карті з"
 	},
@@ -3645,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Встановити типовим"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Вибрати все"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Поле PREF"
@@ -4093,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "П"
 	},
+	"gender.conf.label": {
+		"message": "Стать (тільки для vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Місце народження (тільки для vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Місце смерті (тільки для vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Календарі"
 	},
@@ -4479,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Примітки"
-	},
-	"advancedTabLabel": {
-		"message": "Додатково"
 	},
 	"miscGroupboxLabel": {
 		"message": "Різне"

@@ -4,13 +4,11 @@ var { Services } = ChromeUtils.import(
 
 var ahtFunctions = {
 
-  // 5 variables for the original settings
+  // 4 variables for the original settings
   // html and remote content settings
   prefer_plaintext: false,
   html_as: 0,
   disallow_classes: 0,
-  // javascript setting
-  javascript_enabled: false,
   // inline attachment setting
   mail_inline_attachments: false,
 
@@ -47,18 +45,6 @@ var ahtFunctions = {
       // console.log("AHT: default setting ForceRemoteContent doesn't exist");
       Services.prefs.setBoolPref(
         "extensions.allowhtmltemp.ForceRemoteContent", false)
-    }
-    try {
-      if (Services.prefs.getBoolPref(
-          "extensions.allowhtmltemp.JavaScriptTemp")) {
-        // console.log("AHT: default setting JavaScriptTemp existing and true");
-      } else {
-        // console.log("AHT: default setting JavaScriptTemp existing but false");
-      }
-    } catch (e) {
-      // console.log("AHT: default setting JavaScriptTemp doesn't exist");
-      Services.prefs.setBoolPref(
-        "extensions.allowhtmltemp.JavaScriptTemp", false)
     }
     try {
       if (Services.prefs.getBoolPref(
@@ -203,10 +189,6 @@ var ahtFunctions = {
   ShowOriginalHTML: function() {
     // console.log("AHT: ShowOriginalHTML");
     try {
-      // enable temporarily JavaScript if temp option is set
-      if (Services.prefs.getBoolPref(
-          "extensions.allowhtmltemp.JavaScriptTemp") == true)
-        Services.prefs.setBoolPref("javascript.enabled", true);
       // enable temporarily InlineAttachments if temp option is set
       if (Services.prefs.getBoolPref(
           "extensions.allowhtmltemp.InlineAttachmentsTemp") == true)
@@ -231,10 +213,6 @@ var ahtFunctions = {
       Services.prefs.setIntPref("mailnews.display.disallow_mime_handlers",
         0);
 
-      // enable temporarily JavaScript if temp option is set
-      if (Services.prefs.getBoolPref(
-          "extensions.allowhtmltemp.JavaScriptTemp") == true)
-        Services.prefs.setBoolPref("javascript.enabled", true);
       // enable temporarily InlineAttachments if temp option is set
       if (Services.prefs.getBoolPref(
           "extensions.allowhtmltemp.InlineAttachmentsTemp") == true)
@@ -261,8 +239,6 @@ var ahtFunctions = {
       this.html_as = Services.prefs.getIntPref("mailnews.display.html_as");
       this.disallow_classes = Services.prefs.getIntPref(
         "mailnews.display.disallow_mime_handlers");
-      this.javascript_enabled = Services.prefs.getBoolPref(
-        "javascript.enabled");
       this.mail_inline_attachments = Services.prefs.getBoolPref(
         "mail.inline_attachments");
     }
@@ -276,8 +252,6 @@ var ahtFunctions = {
       Services.prefs.setIntPref("mailnews.display.html_as", this.html_as);
       Services.prefs.setIntPref("mailnews.display.disallow_mime_handlers",
         this.disallow_classes);
-      Services.prefs.setBoolPref("javascript.enabled", this
-        .javascript_enabled);
       Services.prefs.setBoolPref("mail.inline_attachments", this
         .mail_inline_attachments);
 
@@ -330,8 +304,6 @@ var ahtFunctions = {
     document.getElementById("ahtForceRemoteContentPrefCheckbox")
       .disabled = !Services.prefs.getBoolPref(
         "mailnews.message_display.disable_remote_image");
-    document.getElementById("ahtJavaScriptTempPrefCheckbox").disabled =
-      Services.prefs.getBoolPref("javascript.enabled");
     document.getElementById("ahtInlineAttachmentsTempPrefCheckbox")
       .disabled =
       Services.prefs.getBoolPref("mail.inline_attachments");
@@ -341,9 +313,6 @@ var ahtFunctions = {
     document.getElementById("ahtForceRemoteContentPrefCheckbox").disabled =
       (document.getElementById("ahtRemoteContentPrefCheckbox").checked ==
         true);
-    document.getElementById("ahtJavaScriptTempPrefCheckbox").disabled =
-      (document.getElementById("ahtJavaScriptPrefCheckbox").checked ==
-      true);
     document.getElementById("ahtInlineAttachmentsTempPrefCheckbox")
       .disabled =
       (document.getElementById("ahtInlineAttachmentsPrefCheckbox")
@@ -374,6 +343,64 @@ var ahtFunctions = {
     Services.prefs.setBoolPref("mailnews.display.prefer_plaintext", false);
     Services.prefs.setIntPref("mailnews.display.html_as", 4);
     Services.prefs.setIntPref("mailnews.display.disallow_mime_handlers", 0);
+  },
+
+  // The following function re-enables JavaScript and shows a prompt to inform the user about this.
+  // This will be only done once.
+  // If the user changes the pref in future again by about:config, it will not be reset again.
+  ahtResetJavaScriptToDefaultOnce: function() {
+    // console.log("AHT: ahtResetJavaScriptToDefaultOnce");
+
+    // Reset javascript.enabled to true (default) only once
+    try {
+      if (!Services.prefs.getBoolPref(
+        "extensions.allowhtmltemp.reset_javascript_default_done_once")) {
+        console.log("AHT: JS Reset pref is false or not yet existing");
+
+        // Remove the AHT temp option for JavaScript
+        if (!Services.prefs.getBoolPref(
+          "extensions.allowhtmltemp.JavaScriptTemp")) {
+          console.log("AHT: default setting JavaScriptTemp is false or not existing");
+        } else {
+          console.log("AHT: default setting JavaScriptTemp existing and true - will be set to false");
+          Services.prefs.setBoolPref(
+            "extensions.allowhtmltemp.JavaScriptTemp", false);
+        }
+
+        // Re-enable JavaScript default pref
+        if (!Services.prefs.getBoolPref(
+          "javascript.enabled")) {
+
+          console.log("AHT: javascript.enabled is false - will be reset to true");
+          Services.prefs.setBoolPref(
+            "javascript.enabled", true);
+
+          // get title and message for the prompt
+          var aht_bundle = Services.strings.createBundle("chrome://allowhtmltemp/locale/allowhtmltemp.properties");
+
+          // get a reference to the prompt service component.
+          var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
+            .getService(Components.interfaces.nsIPromptService);
+          // show an alert. For the first argument, supply the parent window. The second
+          // argument is the dialog title and the third argument is the message
+          // to display.
+          promptService.alert(window, 
+            aht_bundle.GetStringFromName("reset_javascript_to_default.title"), 
+            aht_bundle.GetStringFromName("reset_javascript_to_default.message"));
+
+          // Indicate the one time reset by a pref, to prevent future run
+          Services.prefs.setBoolPref(
+            "extensions.allowhtmltemp.reset_javascript_default_done_once", true);
+  
+        } else {
+          console.log("AHT: javascript.enabled is true (default)");
+        }
+
+      } else {
+        // console.log("AHT: JS Reset done in the past - pref is true");
+      }
+    } catch (e) {
+    }
   }
 
 }

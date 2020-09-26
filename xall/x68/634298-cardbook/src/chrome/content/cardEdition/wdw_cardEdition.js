@@ -18,6 +18,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 	var wdw_cardEdition = {
 
 		contactNotLoaded: true,
+		editionFields: [],
 		currentAdrId: [],
 		emailToAdd: [],
 		cardbookeditlists: {},
@@ -233,7 +234,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			var myTreeName = aTree.id.replace("Tree", "");
 			for (let i = 0; i < aTree.view.rowCount; i++) {
 				for (let j = 0; j < aListOfUid.length; j++) {
-					if (aTree.view.getCellText(i, aTree.columns.getNamedColumn(myTreeName + 'Id')) == aListOfUid[j]) {
+					if (aTree.view.getCellText(i, aTree.columns.getNamedColumn(myTreeName + 'Uid')) == aListOfUid[j]) {
 						aTree.view.selection.rangedSelect(i,i,true);
 						break;
 					}
@@ -521,6 +522,178 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			document.getElementById('addressbookMenulistLabel').scrollIntoView();
 		},
 
+		setFieldsAsDefault: function () {
+			let tmpArray = [];
+			for (var i = 0; i < wdw_cardEdition.editionFields.length; i++) {
+				tmpArray.push(cardbookRepository.cardbookUtils.escapeStringSemiColon(wdw_cardEdition.editionFields[i]));
+			}
+			cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.fieldsNameList", cardbookRepository.cardbookUtils.unescapeStringSemiColon(tmpArray.join(";")));
+			document.getElementById('fieldsMenupopup').hidePopup();
+		},
+
+		loadFieldSelector: function () {
+			let fieldList = [];
+			fieldList = cardbookRepository.cardbookUtils.getEditionFields();
+
+			let separator = document.getElementById('fieldsSeparator');
+			let listRows = document.getElementById('fieldsMenupopup');
+			for (let i = listRows.childNodes.length -1; i >= 0; i--) {
+				let child = listRows.childNodes[i];
+				if (child.tagName == "menuseparator" || child.tagName == "button") {
+					continue;
+				}
+				listRows.removeChild(child);
+			}
+
+			for (let field of fieldList) {
+				let item = document.createXULElement("menuitem");
+				item.setAttribute("class", "menuitem-iconic cardbook-item cardbookCategoryMenuClass");
+				item.setAttribute("label", field[0]);
+				item.setAttribute("value", field[1]);
+				item.setAttribute("type", "checkbox");
+				if (wdw_cardEdition.editionFields.includes(field[1]) || wdw_cardEdition.editionFields[0] == "allFields") {
+					item.setAttribute("checked", "true");
+				}
+				listRows.insertBefore(item, separator);
+			}
+
+			cardbookWindowUtils.updateComplexMenulist('fields', 'fieldsMenupopup');
+		},
+
+		changeEditionFields: function () {
+			wdw_cardEdition.editionFields = [];
+			let myMenupopup = document.getElementById('fieldsMenupopup');
+			let itemsList = myMenupopup.querySelectorAll("menuitem.cardbook-item[checked]");
+
+			let listRows = document.getElementById('fieldsMenupopup');
+			for (let item of itemsList) {
+				wdw_cardEdition.editionFields.push(item.getAttribute("value"));
+			}
+			let readonly = cardbookRepository.cardbookPreferences.getReadOnly(wdw_cardEdition.workingCard.dirPrefId);
+			cardbookWindowUtils.display40(wdw_cardEdition.workingCard.version, readonly);
+			cardbookWindowUtils.displayDates(wdw_cardEdition.workingCard.version, readonly);
+			wdw_cardEdition.loadEditionFields();
+		},
+
+		loadEditionFields: function () {
+			switch(window.arguments[0].editionMode) {
+				case "ViewResult":
+				case "ViewResultHideCreate":
+				case "ViewContact":
+				case "ViewList":
+					return;
+			}
+
+			function isElementInPref(element) {
+				return (wdw_cardEdition.editionFields.includes(element) || wdw_cardEdition.editionFields[0] == "allFields");
+			}
+			if (isElementInPref("addressbook")) {
+				document.getElementById('addressbookMenulistReadWriteGroupbox').removeAttribute('hidden');
+			} else {
+				document.getElementById('addressbookMenulistReadWriteGroupbox').setAttribute('hidden', 'true');
+			}
+			if (isElementInPref("categories") || wdw_cardEdition.workingCard.categories.length != 0) {
+				document.getElementById('categoriesReadWriteGroupbox').removeAttribute('hidden');
+			} else {
+				document.getElementById('categoriesReadWriteGroupbox').setAttribute('hidden', 'true');
+			}
+			if (isElementInPref("note") || wdw_cardEdition.workingCard.note) {
+				document.getElementById('noteTab').setAttribute("collapsed", false);
+			} else {
+				document.getElementById('noteTab').setAttribute("collapsed", true);
+			}
+			if (isElementInPref("mailpop")) {
+				document.getElementById('mailPopularityTab').setAttribute("collapsed", false);
+			} else {
+				document.getElementById('mailPopularityTab').setAttribute("collapsed", true);
+			}
+			if (isElementInPref("fn") || wdw_cardEdition.workingCard.fn) {
+				document.getElementById('fnGroupbox').removeAttribute('hidden');
+			} else {
+				document.getElementById('fnGroupbox').setAttribute('hidden', 'true');
+			}
+
+			for (let field of cardbookRepository.allColumns.personal) {
+				if (cardbookRepository.dateFields.includes(field) || cardbookRepository.newFields.includes(field)) {
+					// already done
+					continue;
+				}
+				if (isElementInPref(field) || wdw_cardEdition.workingCard[field]) {
+					document.getElementById(field + 'Row').removeAttribute('hidden');
+				} else {
+					document.getElementById(field + 'Row').setAttribute('hidden', 'true');
+				}
+			}
+			if (document.getElementById("firstnameRow").hasAttribute('hidden') ||
+				document.getElementById("firstnameTextBox").hasAttribute('hidden'))	{
+				document.getElementById('cardbookSwitchButtonUp').setAttribute('hidden', 'true');
+				document.getElementById('cardbookSwitchButtonDown').setAttribute('hidden', 'true');
+			} else {
+				document.getElementById('cardbookSwitchButtonUp').removeAttribute('hidden');
+				document.getElementById('cardbookSwitchButtonDown').removeAttribute('hidden');
+			}
+			if (!wdw_cardEdition.workingCard.isAList) {
+				for (let field of cardbookRepository.multilineFields) {
+					if (isElementInPref(field) || document.getElementById(field + '_0_valueBox').value) {
+						document.getElementById(field + 'Groupbox').removeAttribute('hidden');
+					} else {
+						document.getElementById(field + 'Groupbox').setAttribute('hidden', 'true');
+					}
+				}
+				for (let field of ['event']) {
+					if (isElementInPref(field) || document.getElementById(field + '_0_valueBox').value || document.getElementById(field + '_0_valueDateBox').value) {
+						document.getElementById(field + 'Groupbox').removeAttribute('hidden');
+					} else {
+						document.getElementById(field + 'Groupbox').setAttribute('hidden', 'true');
+					}
+				}
+			}
+			for (let type of ['pers', 'org']) {
+				for (let i = 0; i < cardbookRepository.customFields[type].length; i++) {
+					if (isElementInPref(cardbookRepository.customFields[type][i][0]) || document.getElementById('customField' + i + type + 'TextBox').value) {
+						document.getElementById('customField' + i + type + 'Row').removeAttribute('hidden');
+					} else {
+						document.getElementById('customField' + i + type + 'Row').setAttribute('hidden', 'true');
+					}
+				}
+			}
+			var orgStructure = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
+			if (orgStructure) {
+				let myOrgStructure = cardbookRepository.cardbookUtils.unescapeArray(cardbookRepository.cardbookUtils.escapeString(orgStructure).split(";"));
+				for (let i = 0; i < myOrgStructure.length; i++) {
+					if (isElementInPref('org.' + myOrgStructure[i]) || document.getElementById('orgTextBox_' + i).value) {
+						document.getElementById('orgRow_' + i).removeAttribute('hidden');
+					} else {
+						document.getElementById('orgRow_' + i).setAttribute('hidden', 'true');
+					}
+				}
+			} else {
+				if (isElementInPref('org') || document.getElementById('orgTextBox_0').value) {
+					document.getElementById('orgRow_0').removeAttribute('hidden');
+				} else {
+					document.getElementById('orgRow_0').setAttribute('hidden', 'true');
+				}
+			}
+			for (let field of ['title', 'role']) {
+				if (isElementInPref(field) || wdw_cardEdition.workingCard[field]) {
+					document.getElementById(field + 'Row').removeAttribute('hidden');
+				} else {
+					document.getElementById(field + 'Row').setAttribute('hidden', 'true');
+				}
+			}
+			
+			cardbookWindowUtils.updateComplexMenulist('fields', 'fieldsMenupopup');
+		},
+
+		setEditionFields: function () {
+			let fields = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.fieldsNameList");
+			if (fields) {
+				wdw_cardEdition.editionFields = cardbookRepository.cardbookUtils.unescapeArray(cardbookRepository.cardbookUtils.escapeString(fields).split(";"));
+			} else {
+				wdw_cardEdition.editionFields = ["allFields"];
+			}
+		},
+
 		loadDefaultVersion: function () {
 			if (wdw_cardEdition.workingCard.version == "") {
 				var myDirPrefId = document.getElementById('addressbookMenulist').value;
@@ -593,7 +766,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			myOutCard = null;
 			wdw_cardEdition.workingCard.dirPrefId = document.getElementById('addressbookMenulist').value;
 
-			wdw_cardEdition.showCorrectTabs();
 			wdw_cardEdition.loadDateFormatLabels();
 			wdw_cardEdition.displayCard(wdw_cardEdition.workingCard);
 		},
@@ -858,15 +1030,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			cardbookElementTools.loadCountries(countryPopup, countryList, countryList.value, true, false);
 		},
 
-		showCorrectTabs: function () {
-			if (wdw_cardEdition.workingCard.version == "3.0") {
-				document.getElementById('advancedTab').setAttribute("collapsed", "true");
-			} else {
-				document.getElementById('advancedTab').setAttribute("collapsed", !cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.advancedTabView"));
-			}
-			document.getElementById('mailPopularityTab').setAttribute("collapsed", !cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.mailPopularityTabView"));
-		},
-
 		cloneCard: function (aSourceCard, aTargetCard) {
 			// we need to keep the list flag as the normal cloneCard function may not find this information
 			// for new cards
@@ -941,6 +1104,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		load: function () {
 			cardBookEditionPrefObserver.register();
+			wdw_cardEdition.setEditionFields();
 
 			wdw_cardEdition.workingCard = new cardbookCardParser();
 			wdw_cardEdition.cloneCard(window.arguments[0].cardIn, wdw_cardEdition.workingCard);
@@ -954,10 +1118,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			
 			wdw_cardEdition.loadCssRules();
 			wdw_cardEdition.loadDefaultVersion();
-			wdw_cardEdition.showCorrectTabs();
 			wdw_cardEdition.displayCard(wdw_cardEdition.workingCard);
 			wdw_cardEdition.loadDateFormatLabels();
 			wdw_cardEdition.loadEditionMode();
+			wdw_cardEdition.loadEditionFields();
+			wdw_cardEdition.loadFieldSelector();
+			
 			wdw_cardEdition.cardRegion = cardbookRepository.cardbookUtils.getCardRegion(wdw_cardEdition.workingCard);
 			
 			// address panel behaviour

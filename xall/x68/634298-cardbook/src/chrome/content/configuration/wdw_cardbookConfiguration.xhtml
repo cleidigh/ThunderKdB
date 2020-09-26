@@ -45,6 +45,7 @@
 				<radiogroup id="cardbook-selector" orient="vertical" class="paneSelector chromeclass-toolbar" role="listbox" flex="1"> <!-- Expose to accessibility APIs as a listbox -->
 					<radio pane="cardbook-generalPane" value="cardbook-generalPane" label="__CARDBOOKMSG_generalTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-generalPane");'/>
 					<radio pane="cardbook-CardBookPane" value="cardbook-CardBookPane" label="__CARDBOOKMSG_CardBookTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-CardBookPane");'/>
+					<radio pane="cardbook-EditionPane" value="cardbook-EditionPane" label="__CARDBOOKMSG_editionTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-EditionPane");'/>
 					<radio pane="cardbook-advancedPane" value="cardbook-advancedPane" label="__CARDBOOKMSG_advancedTab1Label__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-advancedPane");'/>
 					<radio pane="cardbook-IMPPPane" value="cardbook-IMPPPane" label="__CARDBOOKMSG_IMPPsTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-IMPPPane");'/>
 					<radio pane="cardbook-customFieldsPane" value="cardbook-customFieldsPane" label="__CARDBOOKMSG_customFieldsTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-customFieldsPane");'/>
@@ -192,9 +193,6 @@
 									<checkbox id="vcardTabCheckBox" label="__CARDBOOKMSG_vCardTab.conf.label__"
 										accesskey="__CARDBOOKMSG_vCardTab.conf.accesskey__"
 										preference="extensions.cardbook.vcardTabView" type="bool" instantApply="true"/>
-									<checkbox id="advancedTabCheckBox" label="__CARDBOOKMSG_advancedTab.conf.label__"
-										accesskey="__CARDBOOKMSG_advancedTab.conf.accesskey__"
-										preference="extensions.cardbook.advancedTabView" type="bool" instantApply="true"/>
 								</vbox>
 							</groupbox>
 							<separator class="thin"/>					
@@ -294,7 +292,28 @@
 								</hbox>
 							</groupbox>
 						</prefpane>
-					
+
+						<prefpane id="cardbook-EditionPane" label="__CARDBOOKMSG_editionTabLabel__">
+							<groupbox>
+								<label><html:h2>__CARDBOOKMSG_editionGroupboxLabel__</html:h2></label>
+								<description>__CARDBOOKMSG_editionWarn__</description>
+								<vbox flex="1">
+									<checkbox id="fieldsCheckbox" oncommand="wdw_cardbookConfiguration.changedFieldsMainCheckbox();" label="__CARDBOOKMSG_selectAllFieldsLabel__"/>
+									<hbox flex="1">
+										<tree id="fieldsTree" class="cardbookTreeChildrenConfigClass" hidecolumnpicker="true" flex="1" rows="20" seltype="single" enableColumnDrag="false" editable="true" sortDirection="ascending" sortResource="fieldsName"
+											onkeyup="wdw_cardbookConfiguration.fieldsKeyup(event);">
+											<treecols id="fieldsTreeCols">
+												<treecol id="fieldsSelect" type="checkbox" editable="true" width="17" persist="width ordinal hidden" hideheader="true"/>
+												<splitter class="tree-splitter"/>
+												<treecol id="fieldsName" flex="1" persist="width ordinal hidden" style="text-align:left" hideheader="true"/>
+											</treecols>
+											<treechildren id="fieldsTreeChildren"/>
+										</tree>
+									</hbox>
+								</vbox>
+							</groupbox>
+						</prefpane>
+
 						<prefpane id="cardbook-advancedPane" label="__CARDBOOKMSG_advancedTab1Label__">
 							<groupbox>
 								<label><html:h2>__CARDBOOKMSG_typesGroupboxLabel__</html:h2></label>

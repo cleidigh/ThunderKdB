@@ -2680,20 +2680,10 @@
 		"message": "Nieprawidłowe hasło"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "długi: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "długi: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "krótki: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "krótki: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Karta CardBook"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Komunikatory internetowe"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Zaawansowane"
 	},
-	"advancedTab.conf.label": {
-		"message": "Zaawansowane (tylko vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "Z"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Lokalizuj przy pomocy"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Ustaw jako domyślną"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Zaznacz wszystko"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Oznaczenie Podstawowy"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "W"
 	},
+	"gender.conf.label": {
+		"message": "Płeć (tylko vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Miejsce urodzin (tylko vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Miejsce śmierci (tylko vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Kalendarze"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Notatki"
-	},
-	"advancedTabLabel": {
-		"message": "Zaawansowane"
 	},
 	"miscGroupboxLabel": {
 		"message": "Różne"

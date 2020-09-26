@@ -216,10 +216,13 @@ var ahtButtonStatus = {
         let ahtMsgJunkScore = ahtMsgHdr.getStringProperty("junkscore");
         let ahtMsgIsJunk = (ahtMsgJunkScore == Components.interfaces.nsIJunkMailPlugin.IS_SPAM_SCORE);
 
-        // if msg is junk or feed or multiple messages are selected disable the ahtButtons
-        if ((ahtMsgIsJunk) || (gFolderDisplay.selectedMessageIsFeed)) {
-          // console.log("AHT: message is Junk or Feed");
+        // if msg is junk disable the ahtButtons
+        if (ahtMsgIsJunk) {
+          // console.log("AHT: message is Junk");
           ahtButtonStatus.disableButtons();
+        } else if (gFolderDisplay.selectedMessageIsFeed) { 
+          // console.log("AHT: message is Feed");
+          ahtButtonStatus.enableButtons();
         } else {
           // First check MsgHdr without decrypting to prevent an additional passphrase dialog in case of PGP/MIME
           MsgHdrToMimeMessage(ahtMsgHdr, null, function(aMsgHdr, aMimeMsg) {

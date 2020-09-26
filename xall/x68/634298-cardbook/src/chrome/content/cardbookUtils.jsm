@@ -1390,6 +1390,46 @@ var cardbookUtils = {
 		return {result: myResult, remainingNote: myRemainingNote, remainingOthers: myRemainingOthers};
 	},
 
+	getEditionFields: function() {
+		let tmpArray = [];
+		tmpArray.push([ConversionHelper.i18n.getMessage("addressbookHeader"), "addressbook"]);
+		tmpArray.push([ConversionHelper.i18n.getMessage("categoriesHeader"), "categories"]);
+		tmpArray.push([ConversionHelper.i18n.getMessage("fnLabel"), "fn"]);
+		tmpArray.push([ConversionHelper.i18n.getMessage("noteLabel"), "note"]);
+
+		for (let field of cardbookRepository.allColumns.personal) {
+			if (cardbookRepository.newFields.includes(field)) {
+				tmpArray.push([ConversionHelper.i18n.getMessage(field + ".conf.label"), field]);
+			} else {
+				tmpArray.push([ConversionHelper.i18n.getMessage(field + "Label"), field]);
+			}
+		}
+		for (let field of cardbookRepository.multilineFields) {
+			tmpArray.push([ConversionHelper.i18n.getMessage(field + "GroupboxLabel"), field]);
+		}
+		for (let field of ["event"]) {
+			tmpArray.push([ConversionHelper.i18n.getMessage(field + "GroupboxLabel"), field]);
+		}
+		for (let field of cardbookRepository.allColumns.org) {
+			tmpArray.push([ConversionHelper.i18n.getMessage(field + "Label"), field]);
+		}
+		for (let type of ["pers", "org"]) {
+			for (let field of cardbookRepository.customFields[type]) {
+				tmpArray.push([field[1], field[0]]);
+			}
+		}
+		let orgStructure = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
+		if (orgStructure) {
+			let myOrgStructure = cardbookRepository.cardbookUtils.unescapeArray(cardbookRepository.cardbookUtils.escapeString(orgStructure).split(";"));
+			for (let field of myOrgStructure) {
+				tmpArray.push([field, "org." + field]);
+			}
+		}
+		tmpArray.push([ConversionHelper.i18n.getMessage("mailPopularityTabLabel"), "mailpop"]);
+		cardbookRepository.cardbookUtils.sortMultipleArrayByString(tmpArray,0,1);
+		return tmpArray;
+	},
+
 	getDataForUpdatingFile: function(aList, aMediaConversion) {
 		var dataForExport = "";
 		var k = 0;

@@ -2680,20 +2680,10 @@
 		"message": "Felaktigt lösenord"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Lång: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Lång: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Kort: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Kort: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Kontakter"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Internet Chatt"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Avancerad"
 	},
-	"advancedTab.conf.label": {
-		"message": "Avancerad (endast för vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Hitta med"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Ange som standard"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Markera allt"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Fält PREF"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "H"
 	},
+	"gender.conf.label": {
+		"message": "Kön (endast för vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Födelseort (endast för vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Dödsplats (endast för vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Kalendrar"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Anteckningar"
-	},
-	"advancedTabLabel": {
-		"message": "Avancerad"
 	},
 	"miscGroupboxLabel": {
 		"message": "Övrigt"

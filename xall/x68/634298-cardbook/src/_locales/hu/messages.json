@@ -2680,20 +2680,10 @@
 		"message": "Helytelen jelszó"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Hosszú: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Hosszú: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Rövid: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Rövid: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{6}} |)({{4}}|)(\n)({{3}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Névjegyzék lap"
 	},
+	"editionTabLabel": {
+		"message": "Kiadás"
+	},
 	"IMPPsTabLabel": {
 		"message": "Internetes kommunikáció"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Speciális"
 	},
-	"advancedTab.conf.label": {
-		"message": "Speciális (csak vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "S"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Térkép"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Címek és telefonszámok alapértelmezett területe."
+	},
+	"editionGroupboxLabel": {
+		"message": "Mezőválasztó"
+	},
+	"editionWarn": {
+		"message": "Névjegyek szerkesztésekor a Névjegyzék alapértelmezés szerint csak a kiválasztott mezőket jeleníti meg."
+	},
+	"fieldsButtonLabel": {
+		"message": "Legyen ez az alapértelmezett"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Minden kijelölése"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Preferenciális mező"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "E"
 	},
+	"gender.conf.label": {
+		"message": "Nem (csak vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Születési hely (csak vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Haláleset helye (csak vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Naptár"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Jegyzetek"
-	},
-	"advancedTabLabel": {
-		"message": "Speciális"
 	},
 	"miscGroupboxLabel": {
 		"message": "Különféle"

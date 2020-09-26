@@ -430,6 +430,10 @@ async function checkAttachments(tabId) {
   let exts = prefs.attachExts;
   let sizeLimit = prefs.attachSizeLimit; //Mega Bytes
   let blacklistCheck = prefs.attachBlacklistCheck;
+  
+  if (sizeLimit == 0 && !prefs.attachExtCheckEnable) {
+    return 0;
+  }
 
   let attachments = await browser.compose.listAttachments(tabId);
   let errCnt = 0;
@@ -457,8 +461,13 @@ async function checkAttachments(tabId) {
         break;
       }
     }
-    let file = await attachments[i].getFile();
-    sumFileSize += file.size;
+
+    try {
+      let file = await attachments[i].getFile();
+      sumFileSize += file.size;
+    } catch (e) {
+      console.error("Cannot get a file object. Ignore file size.");
+    }
   }
 
   //discard result since exts check is disabled

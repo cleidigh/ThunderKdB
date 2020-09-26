@@ -94,6 +94,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			cardBookWindowPrefObserver.register();
 			cardBookWindowMutationObserver.register();
 			leftPaneVboxMutationObserver.register();
+			rightPaneUpHboxMutationObserver.register();
 			cardsTreeMutationObserver.register();
 			wdw_cardbook.setSyncControl();
 			wdw_cardbook.setAppMenu(false);

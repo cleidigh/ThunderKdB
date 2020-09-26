@@ -5,7 +5,8 @@ XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook
 
 var ovl_cardbookComposeMsg = {
 	LoadIdentity: function() {
-		var outerID = GetCurrentEditorElement().outerWindowID;
+		var mailWindow = Services.wm.getMostRecentWindow("msgcompose");
+		var outerID = mailWindow.windowUtils.outerWindowID;
 		cardbookRepository.composeMsgIdentity[outerID] = document.getElementById("msgIdentity").selectedItem.getAttribute("identitykey");
 	},
 
@@ -42,6 +43,10 @@ var ovl_cardbookComposeMsg = {
 		myMenuItem.setAttribute("label", ConversionHelper.i18n.getMessage("newCardBookCardMenuLabel"));
 		myMenuItem.setAttribute("accesskey", ConversionHelper.i18n.getMessage("newCardBookCardMenuAccesskey"));
 		myPopup.appendChild(myMenuItem);
+	},
+
+	unloadMsg: function () {
+		cardBookComposeMsgObserver.unregister();
 	},
 
 	loadMsg: function () {

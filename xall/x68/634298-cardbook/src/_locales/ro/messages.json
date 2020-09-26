@@ -2680,20 +2680,10 @@
 		"message": "Parolă invalidă"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Lung: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Lung: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Scurt: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Scurt: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Filă CardBook"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Comunicații"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Avansat"
 	},
-	"advancedTab.conf.label": {
-		"message": "Avansat (numai pentru vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Afișează pe harta cu"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Regiunea implicită pentru adrese și formatul numerelor de telefon."
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Setează ca implicit"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Selectează tot"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Preferința câmpului"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "E"
 	},
+	"gender.conf.label": {
+		"message": "Gen (numai pentru vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Loc naștere (numai pentru vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Loc deces (numai pentru vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Calendare"
 	},
@@ -4490,9 +4498,6 @@
 	"noteTabLabel": {
 		"message": "Notițe"
 	},
-	"advancedTabLabel": {
-		"message": "Avansat"
-	},
 	"miscGroupboxLabel": {
 		"message": "Diverse"
 	},
@@ -4802,7 +4807,10 @@
 	"email.print.accesskey": {
 		"message": "e"
 	},
-	"imppAccesskey": {
+	"impp.print.label": {
+		"message": "Mesaje instant"
+	},
+	"impp.print.accesskey": {
 		"message": "I"
 	},
 	"url.print.label": {

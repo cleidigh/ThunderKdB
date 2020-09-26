@@ -2680,20 +2680,10 @@
 		"message": "Neveljavno geslo"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Dolga: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Dolga: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Kratka: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Kratka: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Zavihek CardBook"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Int. komunikacija"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Napredno"
 	},
-	"advancedTab.conf.label": {
-		"message": "Napredno (samo za vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "N"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Za iskanje uporabi"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Nastavi kot privzeto"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Izberi vse"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Polje PREF"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "g"
 	},
+	"gender.conf.label": {
+		"message": "Spol (samo za vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Kraj rojstva (samo za vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Kraj smrti (samo za vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Koledarji"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Opombe"
-	},
-	"advancedTabLabel": {
-		"message": "Napredno"
 	},
 	"miscGroupboxLabel": {
 		"message": "Razno"

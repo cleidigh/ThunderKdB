@@ -191,32 +191,30 @@ cardbookCorrespondentHandler.prototype = {
 	}
 };
 
-window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", function(e) {
-	var myFormatObserver = {
-		register: function() {
-			Services.obs.addObserver(this, "MsgCreateDBView", false);
-		},
-		
-		unregister: function() {
-			Services.obs.removeObserver(this, "MsgCreateDBView");
-		},
-		
-		observe: function(aSubject, aTopic, aData) {
-			switch (aTopic) {
-				case "MsgCreateDBView":
-					if (gDBView) {
-						gDBView.addColumnHandler("senderCol", new cardbookSenderHandler());
-						gDBView.addColumnHandler("recipientCol", new cardbookRecipientsHandler());
-						gDBView.addColumnHandler("correspondentCol", new cardbookCorrespondentHandler());
-					}
-					break;
-			}
+var myFormatObserver = {
+	register: function() {
+		Services.obs.addObserver(this, "MsgCreateDBView", false);
+	},
+	
+	unregister: function() {
+		Services.obs.removeObserver(this, "MsgCreateDBView");
+	},
+	
+	observe: function(aSubject, aTopic, aData) {
+		switch (aTopic) {
+			case "MsgCreateDBView":
+				if (gDBView) {
+					gDBView.addColumnHandler("senderCol", new cardbookSenderHandler());
+					gDBView.addColumnHandler("recipientCol", new cardbookRecipientsHandler());
+					gDBView.addColumnHandler("correspondentCol", new cardbookCorrespondentHandler());
+				}
+				break;
 		}
-	};
-	
+	}
+};
+
+window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", function(e) {
 	myFormatObserver.register();
-	
-	window.document.removeEventListener('DOMOverlayLoaded_cardbook@vigneau.philippe', arguments.callee, true);
 }, false);
 
 // for displaying the undo and redo

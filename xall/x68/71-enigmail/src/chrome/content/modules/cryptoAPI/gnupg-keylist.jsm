@@ -37,6 +37,7 @@ const OWNERTRUST_ID = 8;
 const USERID_ID = 9;
 const SIG_TYPE_ID = 10;
 const KEY_USE_FOR_ID = 11;
+const KEY_TOKEN = 14;
 
 const ALGO_SYMBOL = {
   1: "RSA",
@@ -139,12 +140,14 @@ function appendKeyItems(keyListString, keyList) {
         keyObj = keyList.index[listRow[KEY_ID]];
         if (keyObj) {
           keyObj.secretAvailable = true;
+          keyObj.token = listRow[KEY_TOKEN];
           // create a dummy object that is not added to the list since we already have the key
           keyObj = createKeyObj(listRow);
         } else {
           appendUnkownSecretKey(listRow[KEY_ID], keyListString, i, keyList);
           keyObj = keyList.index[listRow[KEY_ID]];
           keyObj.secretAvailable = true;
+          keyObj.token = listRow[KEY_TOKEN];
         }
         break;
       case "fpr":

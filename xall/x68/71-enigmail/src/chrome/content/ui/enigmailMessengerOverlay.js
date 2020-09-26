@@ -42,7 +42,7 @@ var E2TB = {
       mnu2.setAttribute("id", "appmenu_enigmailUpgradeMenu");
       mnu2.setAttribute("class", "subviewbutton subviewbutton-iconic");
       mnu2.setAttribute("closemenu", "none");
-      mnu2.setAttribute("oncommand", "E2TBWindows.openUpdateInfo()");
+      mnu2.setAttribute("oncommand", "E2TBWindows.openUpdateInfo(true)");
       mnu2.setAttribute("label", mnu.getAttribute("label"));
 
       if ((!lastVersion) || vc.compare(lastVersion, "2.2a1") >= 0) {

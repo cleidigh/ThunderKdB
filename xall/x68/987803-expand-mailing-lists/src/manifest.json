@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
@@ -19,14 +19,18 @@
     ]
   },
   "compose_action": {
-    "default_icon": {
-      "48": "icons/expand_48.png"
+    "default_icon": { 
+      "32": "icons/expand_32.png", 
+      "48": "icons/expand_48.png",     
+      "64": "icons/expand_64.png"    
     },
     "default_title": "__MSG_extensionButton__"
   },
   "permissions": 
     ["compose", "addressBooks"],
   "icons": {
-    "48": "icons/expand_48.png"
+    "32": "icons/expand_32.png",     
+    "48": "icons/expand_48.png",     
+    "64": "icons/expand_64.png"
   }
 }

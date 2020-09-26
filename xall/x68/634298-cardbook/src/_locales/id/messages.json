@@ -2368,7 +2368,12 @@
 		"message": "Buat Tautan…"
 	},
 	"selectedCardsDeletionConfirmMessagePF": {
-		"message": "Yakin ingin menghapus kontak yang dipilih?"
+		"message": "Yakin ingin menghapus kontak yang dipilih?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"catDeletionsConfirmMessagePF": {
 		"message": "Yakin ingin menghapus kategori $P2$ yang berisi $P1$ kontak?",
@@ -2675,20 +2680,10 @@
 		"message": "Kata sandi salah"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Panjang: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Panjang: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Pendek: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Pendek: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{5}} |)(\n)({{6}}\n|)({{7}}|)"
@@ -3318,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Tab Kontak"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Komunikasi Internet"
 	},
@@ -3543,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Canggih"
 	},
-	"advancedTab.conf.label": {
-		"message": "Canggih (hanya untuk vKartu 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "C"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Cari dengan"
 	},
@@ -3650,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Setel menjadi Baku"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Pilih Semua"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Lapangan PREFERENSI"
@@ -4098,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "A"
 	},
+	"gender.conf.label": {
+		"message": "Jenis Kelamin (hanya untuk vKartu 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Tempat Lahir (hanya untuk vKartu 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Tempat Meninggal (hanya untuk vKartu 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Kalender"
 	},
@@ -4484,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Catatan"
-	},
-	"advancedTabLabel": {
-		"message": "Canggih"
 	},
 	"miscGroupboxLabel": {
 		"message": "Serba Aneka"

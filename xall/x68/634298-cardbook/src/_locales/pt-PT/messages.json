@@ -2680,20 +2680,10 @@
 		"message": "Senha inválida"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Longo: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Longo: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Curto: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Curto: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Separador"
 	},
+	"editionTabLabel": {
+		"message": "Edição"
+	},
 	"IMPPsTabLabel": {
 		"message": "Comunicar"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Avançado"
 	},
-	"advancedTab.conf.label": {
-		"message": "Avançado (só para vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Localizar no Mapa com"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Região predefinida para moradas e formatação de números de telefone."
+	},
+	"editionGroupboxLabel": {
+		"message": "Seletor de Campos"
+	},
+	"editionWarn": {
+		"message": "Ao editar um contacto, o CardBook mostrará por defeito apenas esses campos selecionados."
+	},
+	"fieldsButtonLabel": {
+		"message": "Definir como predefinido"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Selecionar tudo"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Campo PREF"
@@ -4086,13 +4085,13 @@
 		"message": "N"
 	},
 	"anniversary.conf.label": {
-		"message": "Aniversário (só para vCard 4.0)"
+		"message": "Aniversário (apenas para vCard 4.0)"
 	},
 	"anniversary.conf.accesskey": {
 		"message": "A"
 	},
 	"deathdate.conf.label": {
-		"message": "Dia de Falecimento (só para vCard 4.0)"
+		"message": "Data de Falecimento (apenas para vCard 4.0)"
 	},
 	"deathdate.conf.accesskey": {
 		"message": "D"
@@ -4102,6 +4101,15 @@
 	},
 	"eventsAccesskey": {
 		"message": "E"
+	},
+	"gender.conf.label": {
+		"message": "Género (apenas para vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Local de Nascimento (apenas para vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Local de Falecimento (apenas para vCard 4.0)"
 	},
 	"calendarsGroupboxLabel": {
 		"message": "Calendarios"
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Notas"
-	},
-	"advancedTabLabel": {
-		"message": "Avançado"
 	},
 	"miscGroupboxLabel": {
 		"message": "Diversos"

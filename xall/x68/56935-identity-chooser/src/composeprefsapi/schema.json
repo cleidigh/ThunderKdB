@@ -1,0 +1,27 @@
+[
+  {
+    "namespace": "composePrefsApi",
+    "functions": [
+      {
+        "name": "getMessageFormat",
+        "description": "get compose prefs for an identity",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "identityId",
+            "description": "identity id",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "getForwardType",
+        "description": "get forward type",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      }
+    ]
+  }
+]

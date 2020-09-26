@@ -2680,20 +2680,10 @@
 		"message": "유효하지 않은 비밀번호"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "긴 형식: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "긴 형식: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "짧은 형식: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "짧은 형식: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "탭"
 	},
+	"editionTabLabel": {
+		"message": "편집"
+	},
 	"IMPPsTabLabel": {
 		"message": "인터넷 통신"
 	},
@@ -3387,7 +3380,7 @@
 		"message": "R"
 	},
 	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
-		"message": "수정"
+		"message": "편집"
 	},
 	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
 		"message": "E"
@@ -3453,7 +3446,7 @@
 		"message": "A"
 	},
 	"renameRestrictionLabel": {
-		"message": "수정"
+		"message": "편집"
 	},
 	"renameRestrictionAccesskey": {
 		"message": "E"
@@ -3489,7 +3482,7 @@
 		"message": "A"
 	},
 	"renameEmailsCollectionLabel": {
-		"message": "수정"
+		"message": "편집"
 	},
 	"renameEmailsCollectionAccesskey": {
 		"message": "E"
@@ -3547,12 +3540,6 @@
 	},
 	"advancedTab1Label": {
 		"message": "고급"
-	},
-	"advancedTab.conf.label": {
-		"message": "고급 (가상 카드 전용 4점0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
 	},
 	"localizeEditingGroupboxLabel": {
 		"message": "지도에 표시"
@@ -3656,6 +3643,18 @@
 	"defaultRegionTooltip": {
 		"message": "주소 및 전화번호 포맷에 사용할 기본 지역"
 	},
+	"editionGroupboxLabel": {
+		"message": "필드 선택기"
+	},
+	"editionWarn": {
+		"message": "연락처 편집 시 CardBook은 기본적으로 선택된 필드만 표시합니다."
+	},
+	"fieldsButtonLabel": {
+		"message": "기본값으로 설정"
+	},
+	"selectAllFieldsLabel": {
+		"message": "모두 선택"
+	},
 	"preferenceGroupboxLabel": {
 		"message": "필드 환경 설정"
 	},
@@ -3741,7 +3740,7 @@
 		"message": "A"
 	},
 	"renameTypeLabel": {
-		"message": "수정"
+		"message": "편집"
 	},
 	"renameTypeAccesskey": {
 		"message": "E"
@@ -3789,7 +3788,7 @@
 		"message": "A"
 	},
 	"renameIMPPLabel": {
-		"message": "수정"
+		"message": "편집"
 	},
 	"renameIMPPAccesskey": {
 		"message": "E"
@@ -3876,7 +3875,7 @@
 		"message": "A"
 	},
 	"renameCustomFieldsLabel": {
-		"message": "수정"
+		"message": "편집"
 	},
 	"renameCustomFieldsAccesskey": {
 		"message": "E"
@@ -4056,7 +4055,7 @@
 		"message": "A"
 	},
 	"renameVCardLabel": {
-		"message": "수정"
+		"message": "편집"
 	},
 	"renameVCardAccesskey": {
 		"message": "E"
@@ -4086,13 +4085,13 @@
 		"message": "B"
 	},
 	"anniversary.conf.label": {
-		"message": "기념일 (가상 카드 전용 4점0)"
+		"message": "기념일 (vCard 4.0 전용)"
 	},
 	"anniversary.conf.accesskey": {
 		"message": "A"
 	},
 	"deathdate.conf.label": {
-		"message": "사망일 (가상 카드 전용 4점0)"
+		"message": "사망일 (vCard 4.0 전용)"
 	},
 	"deathdate.conf.accesskey": {
 		"message": "D"
@@ -4102,6 +4101,15 @@
 	},
 	"eventsAccesskey": {
 		"message": "E"
+	},
+	"gender.conf.label": {
+		"message": "성별 (vCard 4.0 전용)"
+	},
+	"birthplace.conf.label": {
+		"message": "출생지 (vCard 4.0 전용)"
+	},
+	"deathplace.conf.label": {
+		"message": "사망 장소 (vCard 4.0 전용)"
 	},
 	"calendarsGroupboxLabel": {
 		"message": "캘린더"
@@ -4490,9 +4498,6 @@
 	"noteTabLabel": {
 		"message": "메모"
 	},
-	"advancedTabLabel": {
-		"message": "고급"
-	},
 	"miscGroupboxLabel": {
 		"message": "기타"
 	},
@@ -4629,7 +4634,7 @@
 		"message": "디렉토리에서 연락처 가져 오기"
 	},
 	"findDuplicatesFromAccountsOrCatsLabel": {
-		"message": "현재 주소록에서 연락처 중복 찾기"
+		"message": "현재 주소록에서 중복된 연락처 찾기"
 	},
 	"generateFnFromAccountsOrCatsLabel": {
 		"message": "표시 이름 생성"

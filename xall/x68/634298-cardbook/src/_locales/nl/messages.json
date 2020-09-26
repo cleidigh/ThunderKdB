@@ -2680,20 +2680,10 @@
 		"message": "Ongeldig wachtwoord"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Lang: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Lang: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Kort: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Kort: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "CardBook tabblad"
 	},
+	"editionTabLabel": {
+		"message": "Versie"
+	},
 	"IMPPsTabLabel": {
 		"message": "Instant Messenger adressen"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Geavanceerd"
 	},
-	"advancedTab.conf.label": {
-		"message": "Geavanceerd (uitsluitend voor vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "G"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Locatie bepalen"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Default regio voor adres- en telefoonnummer-formaten"
+	},
+	"editionGroupboxLabel": {
+		"message": "Rubrieken selecteren"
+	},
+	"editionWarn": {
+		"message": "Bij het wijzigen van de gegevens van een contactpersoon, worden standaard alleen de geselecteerde rubrieken getoond."
+	},
+	"fieldsButtonLabel": {
+		"message": "Als standaard instellen"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Alles selecteren"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Rubriek „Voorkeur”"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "n"
 	},
+	"gender.conf.label": {
+		"message": "Geslacht (uitsluitend voor vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Geboorteplaats (uitsluitend voor vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Overlijdensplaats (uitsluitend voor vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Agenda's"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Notities"
-	},
-	"advancedTabLabel": {
-		"message": "Geavanceerd"
 	},
 	"miscGroupboxLabel": {
 		"message": "Overig"

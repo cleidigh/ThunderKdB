@@ -3,22 +3,26 @@
   "applications": {
     "gecko": {
       "id": "thunderkeepplus@gmail.com",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   },
   "name": "ThunderKeepPlus",
   "description": "__MSG_extensionDescription__",
-  "developer": {
-    "name": "Garoe Dorta",
-    "url": "https://github.com/Garoe/ThunderKeepPlus/"
-  },
+  "author": "[Garoe Dorta]",
+  "homepage_url": "https://github.com/Garoe/ThunderKeepPlus/",
+  "version": "0.10.7",
   "default_locale": "en",
-  "version": "0.10.4",
   "icons": {
-    "16": "skin/google_keep_logo_small.png",
-    "24": "skin/google_keep_logo_large.png"
+    "48": "skin/google_keep_icon.svg",
+    "96": "skin/google_keep_icon.svg"
   },
-  "legacy": {
-    "type" : "bootstrap"
+  "browser_action": {
+    "default_title": "Google Keep",
+    "default_icon": "skin/google_keep_icon.svg"
+  },
+  "background": {
+    "scripts": [
+      "src/background.js"
+    ]
   }
 }

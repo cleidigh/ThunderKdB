@@ -2680,20 +2680,10 @@
 		"message": "Netočna zaporka"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Dugi: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Dugi: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Kratki: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Kratki: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Kontakti karticu"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Internet komunikacija"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Napredan"
 	},
-	"advancedTab.conf.label": {
-		"message": "Napredan (samo za vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "N"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Lociraj s"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "??Set as Default??"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Odaberi sve"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Polje PREF"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "D"
 	},
+	"gender.conf.label": {
+		"message": "Spol (samo za vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Rodno mjesto (samo za vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Mjesto smrti (samo za vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Kalendari"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Bilješke"
-	},
-	"advancedTabLabel": {
-		"message": "Napredan"
 	},
 	"miscGroupboxLabel": {
 		"message": "Sve i svašta"

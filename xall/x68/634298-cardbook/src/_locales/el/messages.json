@@ -401,7 +401,12 @@
         }
 	},
 	"synchroImpossible": {
-		"message": "$S : Συγχρονισμός είναι αδύνατος με το διακομιστή."
+		"message": "$P1$ : Συγχρονισμός είναι αδύνατος με το διακομιστή.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"synchroDBFinishedResult": {
 		"message": "??$P1$ : Local database opened, contacts result :??",
@@ -434,7 +439,12 @@
         }
 	},
 	"synchroDirFinishedResult": {
-		"message": "$S : Κατάλογος άνοιξε, επαφές αποτέλεσμα :"
+		"message": "$P1$ : Κατάλογος άνοιξε, επαφές αποτέλεσμα :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"synchroDirCardsOK": {
 		"message": "$P1$ : Επαφές άνοιξαν : $P2$",
@@ -459,7 +469,12 @@
         }
 	},
 	"synchroFileFinishedResult": {
-		"message": "$S : Αρχείο άνοιξε, επαφές αποτέλεσμα :"
+		"message": "$P1$ : Αρχείο άνοιξε, επαφές αποτέλεσμα :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"synchroFileCardsOK": {
 		"message": "$P1$ : Επαφές άνοιξαν : $P2$",
@@ -484,13 +499,23 @@
         }
 	},
 	"synchroForcedToResync": {
-		"message": "$S : Είμαστε αναγκασμένοι να ανασυγκροτήσουμε αυτόν τον λογαριασμό"
+		"message": "$P1$ : Είμαστε αναγκασμένοι να ανασυγκροτήσουμε αυτόν τον λογαριασμό",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"synchroAllFinished": {
 		"message": "Όλοι οι συγχρονισμοί τελειώθηκαν"
 	},
 	"discoveryRunning": {
-		"message": "$S : Αυτόματη ανακάλυψη βιβλίου διευθύνσεων σε εξέλιξη"
+		"message": "$P1$ : Αυτόματη ανακάλυψη βιβλίου διευθύνσεων σε εξέλιξη",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"imageGetResponse": {
 		"message": "$P1$ : Εικόνες κατέβηκαν : $P2$",
@@ -515,7 +540,12 @@
         }
 	},
 	"importFinishedResult": {
-		"message": "$S : Εισαγωγή ολοκληρώθηκε, επαφές αποτέλεσμα :"
+		"message": "$P1$ : Εισαγωγή ολοκληρώθηκε, επαφές αποτέλεσμα :",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"importCardsOK": {
 		"message": "$P1$ : Επαφές εισαχθεί : $P2$",
@@ -964,10 +994,20 @@
         }
 	},
 	"synchronizationUnauthorized": {
-		"message": "$S : Δεν είναι δυνατή η σύνδεση στο διακομιστή. Πιθανώς λάθος διαμόρφωση, όνομα χρήστη ή κωδικό πρόσβασης."
+		"message": "$P1$ : Δεν είναι δυνατή η σύνδεση στο διακομιστή. Πιθανώς λάθος διαμόρφωση, όνομα χρήστη ή κωδικό πρόσβασης.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"synchronizationSearchingCards": {
-		"message": "$S : Αναζήτηση επαφών …"
+		"message": "$P1$ : Αναζήτηση επαφών …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"synchronizationRequestDiscovery": {
 		"message": "$P1$ : Επικύρωση χωρίς αίτημα ανακάλυψης στο $P2$ …",
@@ -1182,7 +1222,12 @@
         }
 	},
 	"periodicSyncSyncing": {
-		"message": "$S : Συγχρονισμός λόγω περιοδικών ρυθμίσεων συγχρονισμού…"
+		"message": "$P1$ : Συγχρονισμός λόγω περιοδικών ρυθμίσεων συγχρονισμού…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"fileEmpty": {
 		"message": "Αρχείο $P1$ είναι άδειο",
@@ -1223,28 +1268,68 @@
         }
 	},
 	"addressbookOpened": {
-		"message": "$S : Βιβλίο διευθύνσεων άνοιξε"
+		"message": "$P1$ : Βιβλίο διευθύνσεων άνοιξε",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"addressbookModified": {
-		"message": "$S : Βιβλίο διευθύνσεων τροποποιήθηκε"
+		"message": "$P1$ : Βιβλίο διευθύνσεων τροποποιήθηκε",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"addressbookDeleted": {
-		"message": "$S : Βιβλίο διευθύνσεων έκλεισε"
+		"message": "$P1$ : Βιβλίο διευθύνσεων έκλεισε",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"addressbookCreated": {
-		"message": "$S : Βιβλίο διευθύνσεων δημιουργήθηκε"
+		"message": "$P1$ : Βιβλίο διευθύνσεων δημιουργήθηκε",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"addressbookDisabled": {
-		"message": "$S : Βιβλίο διευθύνσεων απενεργοποιήθηκε"
+		"message": "$P1$ : Βιβλίο διευθύνσεων απενεργοποιήθηκε",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"addressbookReadOnly": {
-		"message": "$S : Βιβλίο διευθύνσεων σε λειτουργία μόνο για ανάγνωση"
+		"message": "$P1$ : Βιβλίο διευθύνσεων σε λειτουργία μόνο για ανάγνωση",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"addressbookReadWrite": {
-		"message": "$S : Βιβλίο διευθύνσεων σε κατάσταση ανάγνωσης-εγγραφής"
+		"message": "$P1$ : Βιβλίο διευθύνσεων σε κατάσταση ανάγνωσης-εγγραφής",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"addressbookEnabled": {
-		"message": "$S : Βιβλίο διευθύνσεων ενεργοποιημένο"
+		"message": "$P1$ : Βιβλίο διευθύνσεων ενεργοποιημένο",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"cardCreated": {
 		"message": "$P1$ : Επαφή $P2$ δημιουργήθηκε",
@@ -1799,11 +1884,11 @@
 	"urlLabel": {
 		"message": "Παγκόσμιο εντοπισμό πόρων"
 	},
-	"noteLabel": {
-		"message": "Σημειώσεις"
-	},
 	"eventLabel": {
 		"message": "Συμβάντα"
+	},
+	"noteLabel": {
+		"message": "Σημειώσεις"
 	},
 	"postOfficeLabel": {
 		"message": "Ταχυδρομική θυρίδα"
@@ -2595,20 +2680,10 @@
 		"message": "Λανθασμένος κωδικός"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Μακρύς: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Μακρύς: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Μικρός: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Μικρός: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{5}} |)({{6}}|)(\n)({{7}}|)"
@@ -3238,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Καρτέλας"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Επικοινωνω"
 	},
@@ -3463,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Προχωρημένος"
 	},
-	"advancedTab.conf.label": {
-		"message": "Προχωρημένος (vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "Π"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Εμφάνιση στο χάρτη με"
 	},
@@ -3570,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Ορισμός ως προεπιλογή"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Επιλογή όλων"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Πεδίο προτιμήσεων"
@@ -4018,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "Σ"
 	},
+	"gender.conf.label": {
+		"message": "Γένος (vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Τόπος γέννησης (vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Τόπος θανάτου (vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Ημερολόγια"
 	},
@@ -4404,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Σημειώσεις"
-	},
-	"advancedTabLabel": {
-		"message": "Προχωρημένος"
 	},
 	"miscGroupboxLabel": {
 		"message": "Διάφορα"

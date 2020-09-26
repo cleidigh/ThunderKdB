@@ -1,4 +1,4 @@
-const MPE_ADDON_VERSION = "3.0.6";
+const MPE_ADDON_VERSION = "3.0.9";
 
 Components.utils.import("resource://gre/modules/FileUtils.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
@@ -1113,22 +1113,18 @@ function LineToItem(Item,Line)
 	else
 		Item.deleteProperty('location');
 
-	if(itype == "TODO")
-		Item.isCompleted = (Value("CMPLT",vs) == "YES");
-
 	Item.priority = Value("PRIOR",vs);
 	Item.privacy  = Value("PRVCY",vs);
 	Item.status   = Value("STATS",vs);
 
-	if(itype == "EVENT")
-		Item.startDate = String2Date(Value("SDATE",vs));
-	else 
+	if(itype == "TODO"){
+		Item.isCompleted = (Value("CMPLT",vs) == "YES");
 		Item.entryDate = String2Date(Value("SDATE",vs));
-
-	if(itype == "EVENT")
-		Item.endDate = String2Date(Value("EDATE",vs));
-	else 
 		Item.dueDate = String2Date(Value("EDATE",vs));
+	}else{
+		Item.startDate = String2Date(Value("SDATE",vs));
+		Item.endDate = String2Date(Value("EDATE",vs));
+	}
 
 	if(Value("ALTYP",vs) != null && Value("ALOFF",vs) != null) {
 		try {
@@ -1529,11 +1525,11 @@ var mpe = {
 	
 	AddItem: function(data){	
 		var lines = data.split("\r\n");
-		var c = GetCalendar(GetV('CALID',lines[1]));
+		var cal = GetCalendar(GetV('CALID',lines[1]));
 		var itype = GetV('ITYPE',lines[1]);
 		var item = null;
 		
-		if (c == null){
+		if (cal == null){
 			throw new Error("Calendar not found!");
 		}
 		
@@ -1546,12 +1542,24 @@ var mpe = {
 		else throw new Error("Missing or unknown item type");
 		
 		LineToItem(item,lines[1]);
-		var pcal = cal.async.promisifyCalendar(c);
-		pcal.addItem(item).then(function(item){
-			obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result add-item\r\n" + ItemToLine(item));
-		}, function(error){
-			obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result add-item error\r\n" + error);
-		});
+		cal.addItem(item, {
+			onGetResult: function() {},
+			onOperationComplete: function (c,status,t,id,detail) {
+			  if (Components.isSuccessCode(status)) {
+				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result add-item\r\n" + ItemToLine(detail));
+			  } else {
+				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result add-item error\r\n" + status);
+			  }
+			}
+      	});
+		
+		//hat bei einem User mit Thunderbird 78.1.1 folgenden Fehler ausgeloest: proxy must report the same value for the non-writable, non-configurable property '"addItem"'
+		//var pcal = cal.async.promisifyCalendar(cal);
+		//pcal.addItem(item).then(function(item){
+		//	obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result add-item\r\n" + ItemToLine(item));
+		//}, function(error){
+		//	obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result add-item error\r\n" + error);
+		//});
 			
 	},
 	
@@ -1560,28 +1568,57 @@ var mpe = {
 		var c = GetCalendar(GetV('CALID',lines[1]));
 		var itmid = GetV('ITMID',lines[1]);
 		var itype = GetV('ITYPE',lines[1]);
+		var oldItem;
 
 		if (c == null){
 			throw new Error("Calendar not found!");
 		}
 		
-		var pcal = cal.async.promisifyCalendar(c);
-		pcal.getItem(itmid).then(function(items){
-			if (items[0] == null){
-				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\nItem " + itmid + " does not exist!");
-				return;
+		c.getItem(itmid, {
+			onGetResult: function(aCalendar, aStatus, aItemType, aDetail, aItems) {
+				oldItem = aItems[0];
+			},
+			onOperationComplete: function (c,status,t,id,detail) {
+			  if (Components.isSuccessCode(status)) {
+			  	if (oldItem == null){
+					obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item error\r\nItem " + itmid + " does not exist!");
+				}
+				else{
+					var newItem = oldItem.clone();
+					LineToItem(newItem,lines[1]);
+					c.modifyItem(newItem, oldItem, {
+						onGetResult: function() {},
+						onOperationComplete: function (c,status,t,id,detail) {
+						  if (Components.isSuccessCode(status)) {
+							obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item\r\n" + ItemToLine(detail));
+						  } else {
+							obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item error\r\n" + status);
+						  }
+						}
+					});
+				}
+			  } else {
+				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item error\r\n" + status);
+			  }
 			}
-			var newitem = items[0].clone();
-			LineToItem(newitem,lines[1]);
-			pcal.modifyItem(newitem, items[0]).then(function(mitem){
-				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item\r\n" + ItemToLine(mitem));
-			}, function(error){
-				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item error\r\n" + error);
-			});
-		}, function(error){
-			obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item error\r\n" + error);
 		});
-			
+		
+		//var pcal = cal.async.promisifyCalendar(c);
+		//pcal.getItem(itmid).then(function(items){
+		//	if (items[0] == null){
+		//		obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\nItem " + itmid + " does not exist!");
+		//		return;
+		//	}
+		//	var newitem = items[0].clone();
+		//	LineToItem(newitem,lines[1]);
+		//	pcal.modifyItem(newitem, items[0]).then(function(mitem){
+		//		obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item\r\n" + ItemToLine(mitem));
+		//	}, function(error){
+		//		obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item error\r\n" + error);
+		//	});
+		//}, function(error){
+		//	obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result edit-item error\r\n" + error);
+		//});
 	},
 	
 	DeleteItem: function(data){	
@@ -1590,25 +1627,53 @@ var mpe = {
 		var c = GetCalendar(GetV('CALID',lines[1]));
 		var itmid = GetV('ITMID',lines[1]);
 		var itype = GetV('ITYPE',lines[1]);
+		var oldItem;
 
 		if (c == null){
 			throw new Error("Calendar not found!");
 		}
 		
-		var pcal = cal.async.promisifyCalendar(c);
-		pcal.getItem(itmid).then(function(items){
-		    if (items[0] == null){
-				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\nItem " + itmid + " does not exist!");
-				return;
+		c.getItem(itmid, {
+			onGetResult: function(aCalendar, aStatus, aItemType, aDetail, aItems) {
+				oldItem = aItems[0];
+			},
+			onOperationComplete: function (c,status,t,id,detail) {
+			  if (Components.isSuccessCode(status)) {
+			  	if (oldItem == null){
+					obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\nItem " + itmid + " does not exist!");
+				}
+				else{
+					c.deleteItem(oldItem, {
+						onGetResult: function() {},
+						onOperationComplete: function (c,status,t,id,detail) {
+						  if (Components.isSuccessCode(status)) {
+							obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item\r\nDELETED");
+						  } else {
+							obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\n" + status);
+						  }
+						}
+					});
+				}
+			  } else {
+				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\n" + status);
+			  }
 			}
-			pcal.deleteItem(items[0]).then(function(operation){
-				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item\r\nDELETED");
-			}, function(error){
-				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\n" + error);
-			});
-		}, function(error){
-			obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\n" + error);
 		});
+		
+		//var pcal = cal.async.promisifyCalendar(c);
+		//pcal.getItem(itmid).then(function(items){
+		//    if (items[0] == null){
+		//		obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\nItem " + itmid + " does not exist!");
+		//		return;
+		//	}
+		//	pcal.deleteItem(items[0]).then(function(operation){
+		//		obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item\r\nDELETED");
+		//	}, function(error){
+		//		obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\n" + error);
+		//	});
+		//}, function(error){
+		//	obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result delete-item error\r\n" + error);
+		//});
 			
 	},
 	

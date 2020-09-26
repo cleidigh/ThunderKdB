@@ -21,6 +21,10 @@ Preferences.addAll([
     type: "bool"
   },
   {
+    id: "extensions.allowhtmltemp.reset_javascript_default_done_once",
+    type: "bool"
+  },
+  {
     id: "mail.inline_attachments",
     type: "bool"
   },

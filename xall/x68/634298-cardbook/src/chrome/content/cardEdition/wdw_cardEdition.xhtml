@@ -88,7 +88,6 @@
 		<tabs>
 			<tab id="generalTab" label="__CARDBOOKMSG_generalTabLabel__"/>
 			<tab id="noteTab" label="__CARDBOOKMSG_noteTabLabel__"/>
-			<tab id="advancedTab" label="__CARDBOOKMSG_advancedTabLabel__"/>
 			<tab id="mailPopularityTab" label="__CARDBOOKMSG_mailPopularityTabLabel__"/>
 		</tabs>
 
@@ -129,9 +128,9 @@
 											onkeyup="cardbookWindowUtils.panelMenulistKeyup(event, 'category', 'categoriesMenupopup');">
 											<menupopup id="categoriesMenupopup"
 												onpopuphiding="return cardbookWindowUtils.panelMenupopupHiding(event, 'category', this.id);" ignorekeys="true">
-													<html:input id="categoriesTextbox"
-														placeholder="__CARDBOOKMSG_categoriesTextboxLabel__"
-														onkeydown="cardbookWindowUtils.panelTextboxKeydown(event, 'category', 'categoriesMenupopup');"/>
+												<html:input id="categoriesTextbox"
+													placeholder="__CARDBOOKMSG_categoriesTextboxLabel__"
+													onkeydown="cardbookWindowUtils.panelTextboxKeydown(event, 'category', 'categoriesMenupopup');"/>
 												<menuseparator/>
 											</menupopup>
 										</menulist>
@@ -178,7 +177,7 @@
 								<column flex="1"/>
 							</columns>
 							<rows id="persRows">
-								<row align="center">
+								<row id="lastnameRow" align="center">
 									<hbox flex="1" align="center">
 										<label id="lastnameLabel" value="__CARDBOOKMSG_lastnameLabel__" control="lastnameTextBox" class="header"/>
 										<spacer flex="1"/>
@@ -186,7 +185,7 @@
 									</hbox>
 									<html:input id="lastnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
-								<row align="center">
+								<row id="firstnameRow" align="center">
 									<hbox flex="1" align="center">
 										<label id="firstnameLabel" value="__CARDBOOKMSG_firstnameLabel__" control="firstnameTextBox" class="header"/>
 										<spacer flex="1"/>
@@ -194,29 +193,21 @@
 									</hbox>
 									<html:input id="firstnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
-								<row align="center">
+								<row id="othernameRow" align="center">
 									<label id="othernameLabel" value="__CARDBOOKMSG_othernameLabel__" control="othernameTextBox" class="header"/>
 									<html:input id="othernameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
-								<row align="center">
+								<row id="prefixnameRow" align="center">
 									<label id="prefixnameLabel" value="__CARDBOOKMSG_prefixnameLabel__" control="prefixnameTextBox" class="header"/>
 									<html:input id="prefixnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
-								<row align="center">
+								<row id="suffixnameRow" align="center">
 									<label id="suffixnameLabel" value="__CARDBOOKMSG_suffixnameLabel__" control="suffixnameTextBox" class="header"/>
 									<html:input id="suffixnameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
 								</row>
-								<row align="center">
+								<row id="nicknameRow" align="center">
 									<label id="nicknameLabel" value="__CARDBOOKMSG_nicknameLabel__" control="nicknameTextBox" class="header"/>
 									<html:input id="nicknameTextBox" oninput="wdw_cardEdition.setDisplayName();"/>
-								</row>
-								<row id="bdayRow1" align="center">
-									<label id="bdayDatepickerLabel" value="__CARDBOOKMSG_bdayLabel__" control="bdayDatepicker" class="header"/>
-									<cardbookdatepicker id="bdayDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
-								</row>
-								<row id="bdayRow2" align="center">
-									<label id="bdayLabel" value="__CARDBOOKMSG_bdayLabel__" control="bdayTextBox" class="header"/>
-									<html:input id="bdayTextBox"/>
 								</row>
 								<row id="genderRow1" align="center">
 									<label id="genderLabel1" value="__CARDBOOKMSG_genderLabel__" control="genderMenulist" class="header"/>
@@ -229,6 +220,38 @@
 								<row id="genderRow2" align="center">
 									<label id="genderLabel2" value="__CARDBOOKMSG_genderLabel__" control="genderTextBox" class="header"/>
 									<html:input id="genderTextBox"/>
+								</row>
+								<row id="bdayRow1" align="center">
+									<label id="bdayDatepickerLabel" value="__CARDBOOKMSG_bdayLabel__" control="bdayDatepicker" class="header"/>
+									<cardbookdatepicker id="bdayDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+								</row>
+								<row id="bdayRow2" align="center">
+									<label id="bdayLabel" value="__CARDBOOKMSG_bdayLabel__" control="bdayTextBox" class="header"/>
+									<html:input id="bdayTextBox"/>
+								</row>
+								<row id="birthplaceRow" align="center">
+									<label id="birthplaceLabel" value="__CARDBOOKMSG_birthplaceLabel__" control="birthplaceTextBox" class="header"/>
+									<html:input id="birthplaceTextBox"/>
+								</row>
+								<row id="deathdateRow1" align="center">
+									<label id="deathdateDatepickerLabel" value="__CARDBOOKMSG_deathdateLabel__" control="deathdateDatepicker" class="header"/>
+									<cardbookdatepicker id="deathdateDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+								</row>
+								<row id="deathdateRow2" align="center">
+									<label id="deathdateLabel" value="__CARDBOOKMSG_deathdateLabel__" control="deathdateTextBox" class="header"/>
+									<html:input id="deathdateTextBox"/>
+								</row>
+								<row id="deathplaceRow" align="center">
+									<label id="deathplaceLabel" value="__CARDBOOKMSG_deathplaceLabel__" control="deathplaceTextBox" class="header"/>
+									<html:input id="deathplaceTextBox"/>
+								</row>
+								<row id="anniversaryRow1" align="center">
+									<label id="anniversaryDatepickerLabel" value="__CARDBOOKMSG_anniversaryLabel__" control="anniversaryDatepicker" class="header"/>
+									<cardbookdatepicker id="anniversaryDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
+								</row>
+								<row id="anniversaryRow2" align="center">
+									<label id="anniversaryLabel" value="__CARDBOOKMSG_anniversaryLabel__" control="anniversaryTextBox" class="header"/>
+									<html:input id="anniversaryTextBox"/>
 								</row>
 								<row align="center">
 									<html:input id="othersTextBox" hidden="true"/>
@@ -425,45 +448,6 @@
 			</tabpanel>
 
 			<tabpanel orient="vertical" style="overflow:auto">
-				<groupbox flex="1">
-					<grid align="center" flex="1">
-						<columns>
-							<column/>
-							<column flex="1"/>
-						</columns>
-			
-						<rows>
-							<row align="center">
-								<label id="birthplaceLabel" value="__CARDBOOKMSG_birthplaceLabel__" control="birthplaceTextBox" class="header"/>
-								<html:input id="birthplaceTextBox"/>
-							</row>
-							<row id="anniversaryRow1" align="center">
-								<label id="anniversaryDatepickerLabel" value="__CARDBOOKMSG_anniversaryLabel__" control="anniversaryDatepicker" class="header"/>
-								<cardbookdatepicker id="anniversaryDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
-							</row>
-							<row id="anniversaryRow2" align="center">
-								<label id="anniversaryLabel" value="__CARDBOOKMSG_anniversaryLabel__" control="anniversaryTextBox" class="header"/>
-								<html:input id="anniversaryTextBox"/>
-							</row>
-							<row id="deathdateRow1" align="center">
-								<label id="deathdateDatepickerLabel" value="__CARDBOOKMSG_deathdateLabel__" control="deathdateDatepicker" class="header"/>
-								<cardbookdatepicker id="deathdateDatepicker" oninput="wdw_cardEdition.unsetWrongValidation();"/>
-							</row>
-							<row id="deathdateRow2" align="center">
-								<label id="deathdateLabel" value="__CARDBOOKMSG_deathdateLabel__" control="deathdateTextBox" class="header"/>
-								<html:input id="deathdateTextBox"/>
-							</row>
-							<row align="center">
-								<label id="deathplaceLabel" value="__CARDBOOKMSG_deathplaceLabel__" control="deathplaceTextBox" class="header"/>
-								<html:input id="deathplaceTextBox"/>
-							</row>
-						</rows>
-					</grid>
-				</groupbox>
-				<spacer flex="100"/>
-			</tabpanel>
-
-			<tabpanel orient="vertical" style="overflow:auto">
 				<groupbox id="mailPopularityReadWriteGroupbox" flex="1">
 					<grid>
 						<columns flex="1">
@@ -483,6 +467,15 @@
 			<!-- notificationbox will be added here lazily. -->
 		</vbox>
 		<spacer flex="1"/>
+		<menulist id="fieldsMenulist" flex="1">
+			<menupopup id="fieldsMenupopup"
+				onpopuphiding="wdw_cardEdition.changeEditionFields();return event.explicitOriginalTarget.localName != 'menuitem'" ignorekeys="true">
+				<menuseparator id="fieldsSeparator"/>
+				<button id="fieldsButton"
+					oncommand="wdw_cardEdition.setFieldsAsDefault();"
+					label="__CARDBOOKMSG_fieldsButtonLabel__"/>
+			</menupopup>
+		</menulist>
 		<button id="createEditionLabel" label="__CARDBOOKMSG_createEditionLabel__" accesskey="__CARDBOOKMSG_createEditionAccesskey__" oncommand="wdw_cardEdition.create();"/>
 		<button id="createAndReplaceEditionLabel" label="__CARDBOOKMSG_createAndReplaceEditionLabel__" accesskey="__CARDBOOKMSG_createAndReplaceEditionAccesskey__" oncommand="wdw_cardEdition.createAndReplace();"/>
 		<button id="saveEditionLabel" label="__CARDBOOKMSG_saveEditionLabel__" accesskey="__CARDBOOKMSG_saveEditionAccesskey__" oncommand="wdw_cardEdition.save();"/>

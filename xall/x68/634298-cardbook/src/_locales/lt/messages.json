@@ -1672,7 +1672,12 @@
 		"message": "Vaizdas nebuvo pridėtas dėl klaidos"
 	},
 	"imageErrorWithMessage": {
-		"message": "Vaizdas neįtrauktas"
+		"message": "Vaizdas neįtrauktas : $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"imageSavedToFile": {
 		"message": "Vaizdas išsaugotas faile : $P1$",
@@ -2363,7 +2368,12 @@
 		"message": "Įterpti saitą…"
 	},
 	"selectedCardsDeletionConfirmMessagePF": {
-		"message": "Ar tikrai norite ištrinti pasirinktą kontaktą?;Ar tikrai norite ištrinti 10 pasirinktų kontaktų?;Ar tikrai norite ištrinti 2 pasirinktus kontaktus?"
+		"message": "Ar tikrai norite ištrinti pasirinktą kontaktą?;Ar tikrai norite ištrinti 10 pasirinktų kontaktų?;Ar tikrai norite ištrinti 2 pasirinktus kontaktus?",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
 	},
 	"catDeletionsConfirmMessagePF": {
 		"message": "Ar tikrai norite ištrinti $P2$ kategoriją, kurioje yra vienas kontaktas?;Ar tikrai norite ištrinti $P2$ kategoriją, kurioje yra $P1$ kontaktų?;Ar tikrai norite ištrinti $P2$ kategoriją, kurioje yra $P1$ kontakti?",
@@ -2670,20 +2680,10 @@
 		"message": "Neteisingas slaptažodis"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "ilgasis: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "ilgasis: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "trumpasis: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "trumpasis: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3313,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Kontaktų kortelė"
 	},
+	"editionTabLabel": {
+		"message": "??Edition??"
+	},
 	"IMPPsTabLabel": {
 		"message": "Interneto pokalbiai"
 	},
@@ -3538,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Išplėstinė"
 	},
-	"advancedTab.conf.label": {
-		"message": "Išplėstinė (tik „vCard 4.0“)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "š"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Rasti naudojant"
 	},
@@ -3645,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "??Default region for addresses and formatting phone numbers.??"
+	},
+	"editionGroupboxLabel": {
+		"message": "??Fields selector??"
+	},
+	"editionWarn": {
+		"message": "??When editing a contact, CardBook will display by default only those selected fields.??"
+	},
+	"fieldsButtonLabel": {
+		"message": "Skirti numatytąja"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Pažymėti viską"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Laukas „PREF“"
@@ -4093,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "Į"
 	},
+	"gender.conf.label": {
+		"message": "Lytis (tik „vCard 4.0“)"
+	},
+	"birthplace.conf.label": {
+		"message": "Gimimo vieta (tik „vCard 4.0“)"
+	},
+	"deathplace.conf.label": {
+		"message": "Mirties vieta (tik „vCard 4.0“)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Kalendoriai"
 	},
@@ -4479,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Pastabos"
-	},
-	"advancedTabLabel": {
-		"message": "Išplėstinė"
 	},
 	"miscGroupboxLabel": {
 		"message": "Įvairūs"

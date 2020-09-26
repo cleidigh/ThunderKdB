@@ -54,7 +54,7 @@ sortTypeToColumnID[Ci.nsMsgViewSortType.bySubject] = "Subject";
 sortTypeToColumnID[Ci.nsMsgViewSortType.byAuthor] = "Author";
 sortTypeToColumnID[Ci.nsMsgViewSortType.byId] = "Id";
 sortTypeToColumnID[Ci.nsMsgViewSortType.byThread] = "Thread";
-sortTypeToColumnID[Ci.nsMsgViewSortType.byPriorit] = "Priority";
+sortTypeToColumnID[Ci.nsMsgViewSortType.byPriority] = "Priority";
 sortTypeToColumnID[Ci.nsMsgViewSortType.byStatus] = "Status";
 sortTypeToColumnID[Ci.nsMsgViewSortType.bySize] = "Size";
 sortTypeToColumnID[Ci.nsMsgViewSortType.byFlagged] = "Flagged";
@@ -71,6 +71,7 @@ sortTypeToColumnID[Ci.nsMsgViewSortType.byCorrespondent] = "Correspondent";
 
 let threadkey = {
   debug: false,
+  attributesSaved: false,
 
   key_threadSort: { command: "", oncommand: "goDoCommand('cmd_threadSort');" },
   key_unthreadSort: { command: "", oncommand: "goDoCommand('cmd_unthreadSort');" },
@@ -185,34 +186,16 @@ var threadkeyApi = class extends ExtensionCommon.ExtensionAPI {
           getMessages(threadkey.extension.localeData, "overrideKey3", originalAttrs);
 
           let win = Services.wm.getMostRecentWindow("mail:3pane");
-          if (win.document.readyState !== "complete") {
-            if (threadkey.debug) console.log("await readyState complete");
-            await windowIsReady(win);
+          if (win === null) {
+            console.log("no mail:3pane window found")
+          } else {
+            if (win.document.readyState !== "complete") {
+              if (threadkey.debug) console.log("await readyState complete");
+              await windowIsReady(win);
+            }
+            let doc = win.document;
+            saveOriginalAttributes(doc);
           }
-          let doc = win.document;
-
-          // Save original attributes if keys are overridden
-          if (threadkey.overrideKey1.id !== "") {
-            saveOriginalAttributes(doc, threadkey.overrideKey1.id, originalAttrs);
-          }
-          if (threadkey.overrideKey2.id !== "") {
-            saveOriginalAttributes(doc, threadkey.overrideKey2.id, originalAttrs);
-          }
-          if (threadkey.overrideKey3.id !== "") {
-            saveOriginalAttributes(doc, threadkey.overrideKey3.id, originalAttrs);
-          }
-
-          saveOriginalAttributes(doc, "key_threadSort", saveAttrs);
-          saveOriginalAttributes(doc, "sortThreaded", saveKey);
-          saveOriginalAttributes(doc, "appmenu_sortThreaded", saveKey);
-
-          saveOriginalAttributes(doc, "key_unthreadSort", saveAttrs);
-          saveOriginalAttributes(doc, "sortUnthreaded", saveKey);
-          saveOriginalAttributes(doc, "appmenu_sortUnthreaded", saveKey);
-
-          saveOriginalAttributes(doc, "key_groupBySort", saveAttrs);
-          saveOriginalAttributes(doc, "groupBySort", saveKey);
-          saveOriginalAttributes(doc, "appmenu_groupBySort", saveKey);
 
           ExtensionSupport.registerWindowListener("threadkeyWindowListener", {
             chromeURLs: [
@@ -254,6 +237,7 @@ async function loadIntoWindow(win) {
   let doc = win.document, newNode;
   let windowType = doc.documentElement.getAttribute("windowtype")
   if (threadkey.debug) console.log("loadIntoWindow " + windowType);
+  if (!threadkey.attributesSaved) saveOriginalAttributes(doc);
 
   if (windowType === "mail:3pane") {
     // Override keys as specified in (localized) messages.json
@@ -299,7 +283,37 @@ async function loadIntoWindow(win) {
   if (threadkey.debug) console.log("appendController " + windowType);
   win.controllers.appendController(threadkey.threadkeyController);
 
-  if (threadkey.debug) { console.log("loadIntoWindow " + windowType + " ready"); }
+  if (threadkey.debug) console.log("loadIntoWindow " + windowType + " ready");
+}
+
+function saveOriginalAttributes(doc) {
+  if (threadkey.debug) console.log("saveOriginalAttributes");
+
+  // Save original attributes if keys are overridden
+  if (threadkey.overrideKey1.id !== "") {
+    saveAttributes(doc, threadkey.overrideKey1.id, originalAttrs);
+  }
+  if (threadkey.overrideKey2.id !== "") {
+    saveAttributes(doc, threadkey.overrideKey2.id, originalAttrs);
+  }
+  if (threadkey.overrideKey3.id !== "") {
+    saveAttributes(doc, threadkey.overrideKey3.id, originalAttrs);
+  }
+
+  saveAttributes(doc, "key_threadSort", saveAttrs);
+  saveAttributes(doc, "sortThreaded", saveKey);
+  saveAttributes(doc, "appmenu_sortThreaded", saveKey);
+
+  saveAttributes(doc, "key_unthreadSort", saveAttrs);
+  saveAttributes(doc, "sortUnthreaded", saveKey);
+  saveAttributes(doc, "appmenu_sortUnthreaded", saveKey);
+
+  saveAttributes(doc, "key_groupBySort", saveAttrs);
+  saveAttributes(doc, "groupBySort", saveKey);
+  saveAttributes(doc, "appmenu_groupBySort", saveKey);
+
+  threadkey.attributesSaved = true;
+  if (threadkey.debug) console.log("saveOriginalAttributes ready");
 }
 
 function forEachOpenWindow(todo) {
@@ -324,19 +338,19 @@ function unloadFromWindow(win) {
   win.controllers.removeController(threadkey.threadkeyController);
 
   if (windowType === "mail:3pane") {
-    restoreOriginalAttributes(doc, "sortThreaded");
-    restoreOriginalAttributes(doc, "appmenu_sortThreaded");
+    restoreAttributes(doc, "sortThreaded");
+    restoreAttributes(doc, "appmenu_sortThreaded");
 
-    restoreOriginalAttributes(doc, "sortUnthreaded");
-    restoreOriginalAttributes(doc, "appmenu_sortUnthreaded");
+    restoreAttributes(doc, "sortUnthreaded");
+    restoreAttributes(doc, "appmenu_sortUnthreaded");
 
-    restoreOriginalAttributes(doc, "groupBySort");
-    restoreOriginalAttributes(doc, "appmenu_groupBySort");
+    restoreAttributes(doc, "groupBySort");
+    restoreAttributes(doc, "appmenu_groupBySort");
   }
 
-  restoreOriginalAttributes(doc, "key_threadSort");
-  restoreOriginalAttributes(doc, "key_unthreadSort");
-  restoreOriginalAttributes(doc, "key_groupBySort");
+  restoreAttributes(doc, "key_threadSort");
+  restoreAttributes(doc, "key_unthreadSort");
+  restoreAttributes(doc, "key_groupBySort");
 
   defineCommand(doc, "cmd_threadSort", null);
   defineCommand(doc, "cmd_unthreadSort", null);
@@ -347,19 +361,19 @@ function unloadFromWindow(win) {
     if (threadkey.overrideKey1.id !== "") {
       let nodes = Array.prototype.filter.call(doc.getElementsByTagName("*"), function(node) { return node.getAttribute("key") === threadkey.overrideKey1.id; });
       nodes.forEach(node => node.removeAttribute("key"));
-      restoreOriginalAttributes(doc, threadkey.overrideKey1.id);
+      restoreAttributes(doc, threadkey.overrideKey1.id);
       nodes.forEach(node => node.setAttribute("key", threadkey.overrideKey1.id));
     }
     if (threadkey.overrideKey2.id !== "") {
       let nodes = Array.prototype.filter.call(doc.getElementsByTagName("*"), function(node) { return node.getAttribute("key") === threadkey.overrideKey2.id; });
       nodes.forEach(node => node.removeAttribute("key"));
-      restoreOriginalAttributes(doc, threadkey.overrideKey2.id);
+      restoreAttributes(doc, threadkey.overrideKey2.id);
       nodes.forEach(node => node.setAttribute("key", threadkey.overrideKey2.id));
     }
     if (threadkey.overrideKey3.id !== "") {
       let nodes = Array.prototype.filter.call(doc.getElementsByTagName("*"), function(node) { return node.getAttribute("key") === threadkey.overrideKey3.id; });
       nodes.forEach(node => node.removeAttribute("key"));
-      restoreOriginalAttributes(doc, threadkey.overrideKey3.id);
+      restoreAttributes(doc, threadkey.overrideKey3.id);
       nodes.forEach(node => node.setAttribute("key", threadkey.overrideKey3.id));
     }
   }
@@ -378,7 +392,7 @@ function getMessages(localeData, obj, attrs) {
   });
 }
 
-function saveOriginalAttributes(doc, id, attrs) {
+function saveAttributes(doc, id, attrs) {
   if (!threadkey[id]) { threadkey[id] = {}; }
   let schema = threadkey[id];
   if (!schema["originalAttributes"]) { schema["originalAttributes"] = {}; }
@@ -386,17 +400,21 @@ function saveOriginalAttributes(doc, id, attrs) {
   let node = doc.getElementById(id);
   if (node !== null) {
     attrs.forEach(attr => originalAttributes[attr] = node.getAttribute(attr));
+    if (threadkey.debug) {
+      console.log("saveAttributes(" + id + ")");
+      console.log(originalAttributes);
+    }
   }
 }
 
-function restoreOriginalAttributes(doc, id) {
+function restoreAttributes(doc, id) {
   let schema = threadkey[id];
   let originalAttributes = Object.entries(schema["originalAttributes"]);
   let node = doc.getElementById(id);
   if (originalAttributes.length > 0) {
     originalAttributes.forEach(([name, value]) => setAttribute(node, name, value));
     if (threadkey.debug) {
-      console.log("restoreOriginalAttributes(" + id + ")");
+      console.log("restoreAttributes(" + id + ")");
       console.log(node);
     }
   } else {

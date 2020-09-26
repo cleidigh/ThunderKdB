@@ -2,7 +2,8 @@
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAutocomplete.css" type="text/css"?>
 
 <overlay id="ovl_lightningAttendees"
-	xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	onremove="ovl_lightningAttendees.onRemove();">
 
 	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserverRepository.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookLightningObserver.js"/>

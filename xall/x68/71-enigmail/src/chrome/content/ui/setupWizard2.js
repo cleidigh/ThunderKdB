@@ -20,6 +20,7 @@ var E2TBKeyRing = ChromeUtils.import("chrome://enigmail/content/modules/keyRing.
 var E2TBCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 var E2TBPrefs = ChromeUtils.import("chrome://enigmail/content/modules/prefs.jsm").EnigmailPrefs;
 var E2TBCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
+var E2TBApp = ChromeUtils.import("chrome://enigmail/content/modules/app.jsm").EnigmailApp;
 var Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
 
 // OpenPGP implementation in TB
@@ -29,14 +30,17 @@ var uidHelper = ChromeUtils.import("chrome://openpgp/content/modules/uidHelper.j
 var PgpSqliteDb2 = ChromeUtils.import("chrome://openpgp/content/modules/sqliteDb.jsm").PgpSqliteDb2;
 var EnigmailCryptoAPI = ChromeUtils.import("chrome://openpgp/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 var RNP = ChromeUtils.import("chrome://openpgp/content/modules/RNP.jsm").RNP;
+var EnigmailFuncs = ChromeUtils.import("chrome://openpgp/content/modules/funcs.jsm").EnigmailFuncs;
 
 var gSelectedPrivateKeys = null,
   gPublicKeys = [],
+  gGpgmeFpr = [],
   gAcceptButton = null,
   gCancelButton = null,
   gDialogCancelled = false,
   gProcessing = false,
-  gRestartNeeded = false;
+  gRestartNeeded = false,
+  gRequireGpgme = false;
 
 function onLoad() {
   E2TBLog.DEBUG(`setupWizard2.js: onLoad()\n`);
@@ -140,7 +144,17 @@ async function startMigration() {
   finally {
     // restore saving function
     RNP.saveKeyRings = origSaveKeyRing;
+  }
+
+  try {
     RNP.saveKeyRings();
+  }
+  catch (ex) {
+    let profD = E2TBApp.getProfileDirectory();
+    profD.append("pubring.asc");
+    E2TBDialog.alert(window, E2TBLocale.getString("fileWriteFailed", profD.path));
+    window.close();
+    return;
   }
 
   if (gDialogCancelled) return;
@@ -191,21 +205,32 @@ function exportKeys(tmpDir) {
     numKeysProcessed = 0;
 
   for (let fpr of gSelectedPrivateKeys) {
-    if (gDialogCancelled) return closeAfterCancel();
+    let secKeyObj = E2TBKeyRing.getKeyById(fpr);
+    if (secKeyObj.token && secKeyObj.token !== "+") {
+      E2TBLog.DEBUG(`setupWizard2.js: exportKeys: found offline/smartcard key ${fpr}\n`);
+      gRequireGpgme = true;
+      gGpgmeFpr.push(fpr);
+    }
+    else {
+      if (gDialogCancelled) return closeAfterCancel();
 
-    let secKeyFile = tmpDir.clone();
-    secKeyFile.append(fpr + ".sec");
+      let secKeyFile = tmpDir.clone();
+      secKeyFile.append(fpr + ".sec");
 
-    E2TBLog.DEBUG("setupWizard2.js: exportKeys: secFile: " + secKeyFile.path + "\n");
-    E2TBKeyRing.extractKey(true, fpr, secKeyFile, exitCodeObj, errorMsgObj);
+      E2TBLog.DEBUG("setupWizard2.js: exportKeys: secFile: " + secKeyFile.path + "\n");
+      E2TBKeyRing.extractKey(true, fpr, secKeyFile, exitCodeObj, errorMsgObj);
 
-    ++numKeysProcessed;
-    setExportProgress(numKeysProcessed / totalNumKeys * 100);
+      ++numKeysProcessed;
+      setExportProgress(numKeysProcessed / totalNumKeys * 100);
 
-    if (exitCodeObj.value !== 0) {
-      E2TBLog.DEBUG(`importExportWizard: error while exporting secret key ${fpr}\n`);
-      E2TBDialog.alert(window, E2TBLocale.getString("dataExportError"));
-      return false;
+      if (exitCodeObj.value !== 0) {
+        E2TBLog.DEBUG(`importExportWizard: error while exporting secret key ${fpr}\n`);
+        E2TBDialog.alert(window, E2TBLocale.getString("dataExportError"));
+        return false;
+      }
+
+      numKeysProcessed += gSelectedPrivateKeys.length;
+      setExportProgress(numKeysProcessed / totalNumKeys * 100);
     }
   }
 
@@ -247,20 +272,22 @@ async function importKeys(tmpDir) {
   document.getElementById("importingKeys").style.visibility = "visible";
 
   let numKeysProcessed = 0;
-  const totalNumKeys = gSelectedPrivateKeys.length + gPublicKeys.length;
+  const totalNumKeys = gPublicKeys.length + gSelectedPrivateKeys.length;
 
   for (let fpr of gSelectedPrivateKeys) {
     if (gDialogCancelled) return closeAfterCancel();
 
-    let secKeyFile = tmpDir.clone();
-    secKeyFile.append(fpr + ".sec");
+    if (gGpgmeFpr.indexOf(fpr) < 0) {
+      let secKeyFile = tmpDir.clone();
+      secKeyFile.append(fpr + ".sec");
 
-    E2TBLog.DEBUG("setupWizard2.js: importKeys: secFile: " + secKeyFile.path + "\n");
-    if (!(await importKeyFile(fpr, secKeyFile, true))) {
-      secKeysFailed.push(fpr);
+      E2TBLog.DEBUG("setupWizard2.js: importKeys: secFile: " + secKeyFile.path + "\n");
+      if (!(await importKeyFile(fpr, secKeyFile, true))) {
+        secKeysFailed.push(fpr);
+      }
+      ++numKeysProcessed;
+      setImportProgress(numKeysProcessed / totalNumKeys * 100);
     }
-    ++numKeysProcessed;
-    setImportProgress(numKeysProcessed / totalNumKeys * 100);
   }
 
   if (secKeysFailed.length > 0) {
@@ -268,6 +295,15 @@ async function importKeys(tmpDir) {
       window,
       E2TBLocale.getString("importSecKeysFailed", secKeysFailed.join("\n"))
     );
+  }
+
+  if (gRequireGpgme) {
+    E2TBPrefs.getPrefRoot().setBoolPref("mail.openpgp.allow_external_gnupg", true);
+    let gpgPath = E2TBPrefs.getPref("agentPath");
+    if (gpgPath.length > 0) {
+      E2TBPrefs.getPrefRoot().setCharPref("mail.openpgp.alternative_gpg_path", gpgPath);
+    }
+    gRestartNeeded = true;
   }
 
   for (let fpr of gPublicKeys) {
@@ -389,6 +425,10 @@ function applyIdentitySettings(identity) {
     identity.setCharAttribute("openpgp_key_id", keyObj.keyId);
     identity.setIntAttribute("encryptionpolicy", identity.getIntAttribute("defaultEncryptionPolicy") > 0 ? 2 : 0);
     identity.setBoolAttribute("sign_mail", (identity.getIntAttribute("defaultSigningPolicy") > 0));
+    if (gGpgmeFpr.indexOf("0x" + keyObj.fpr) >= 0) {
+      identity.setCharAttribute("last_entered_external_gnupg_key_id", keyObj.keyId);
+      identity.setBoolAttribute("is_gnupg_key_id", true);
+    }
   }
 }
 
@@ -404,7 +444,23 @@ function handleClick(event) {
 
 async function applyPersonalKey(fpr) {
   try {
-    await PgpSqliteDb2.acceptAsPersonalKey(fpr);
+    if (gGpgmeFpr.indexOf("0x" + fpr) < 0) {
+      // key imported in TB
+      await PgpSqliteDb2.acceptAsPersonalKey(fpr);
+    }
+    else {
+      // key for GpgME
+      let secKeyObj = E2TBKeyRing.getKeyById(fpr);
+      let emailArray = [];
+      for (let uid of secKeyObj.userIds) {
+        if (uid.type == "uid" && uid.keyTrust === "u") {
+          emailArray.push(EnigmailFuncs.stripEmail(uid.userId));
+        }
+      }
+
+      E2TBLog.DEBUG(`updating acceptance for ${fpr} / ${emailArray.join(", ")}`);
+      await PgpSqliteDb2.updateAcceptance(fpr, emailArray, "verified");
+    }
   }
   catch (x) {}
 }

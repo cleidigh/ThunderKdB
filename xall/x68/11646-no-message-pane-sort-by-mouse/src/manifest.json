@@ -1,19 +1,28 @@
 {
   "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.0",
+  "author": "Janek Schwarz",
+  "default_locale": "en",
   "applications": {
     "gecko": {
       "id": "nomessagepanesort@janek.org",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0"
     }
   },
-  "name": "No Message Pane Sorting by Mouse",
-  "description": "This extension prevents accidental sorting of the message pane by disabling the mouse button clicks on the column headers. You can still sort the message pane easily by ctrl-clicking the header.",
-  "version": "1.5",
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://nomessagepanesort/content/preferences.xul",
-      "open_in_tab": false
+  "permissions": [ "tabs", "activeTab" ],
+  "background": {
+    "page": "background.html"
+  },
+ "experiment_apis": {
+    "nompsApi": {
+      "schema": "nompsapi/schema.json",
+      "parent": {
+        "scopes": [ "addon_parent" ],
+        "paths": [[ "nompsApi" ]],
+        "script": "nompsapi/implementation.js"
+      }
     }
   }
 }

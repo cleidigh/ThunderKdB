@@ -27,6 +27,9 @@ var EXPORTED_SYMBOLS = ["newEnigmailKeyObj"];
   - secretAvailable - [Boolean] true if secret key is available
   - algoSym         - public key algorithm type (String, e.g. RSA)
   - keySize         - size of public key
+  - token           - S/N of card for keys on smartcard
+                      # for offline public keys
+                      + for regular secret keys
   - type            - "pub" or "grp"
   - userIds  - [Array]: - Contains ALL UIDs (including the primary UID)
                     * userId     - User ID
@@ -93,6 +96,7 @@ class EnigmailKeyObj {
     this.minimalKeyBlock = [];
     this.photoAvailable = false;
     this.secretAvailable = false;
+    this.token = "";
     this._sigList = null;
 
     this.type = keyData.type;
@@ -104,7 +108,7 @@ class EnigmailKeyObj {
 
     const ATTRS = [
       "created", "keyCreated", "keyTrust", "keyUseFor", "ownerTrust", "algoSym", "keySize",
-      "userIds", "subKeys", "fpr", "secretAvailable", "photoAvailable", "userId"
+      "userIds", "subKeys", "fpr", "secretAvailable", "photoAvailable", "userId", "token"
     ];
     for (let i of ATTRS) {
       if (i in keyData) {

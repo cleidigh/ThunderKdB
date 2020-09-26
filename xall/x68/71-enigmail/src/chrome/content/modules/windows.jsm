@@ -109,9 +109,11 @@ var EnigmailWindows = {
   /**
    * Display the "About Enigmail" window
    *
+   * @param {Boolean} displayWizard: display the Migration wizard, regardless of pEp settings
+   *
    * no return value
    */
-  openUpdateInfo: function() {
+  openUpdateInfo: function(displayWizard = false) {
     let appShellSvc = Cc["@mozilla.org/appshell/appShellService;1"].getService(Ci.nsIAppShellService);
     let platform = appShellSvc.hiddenDOMWindow.navigator.platform.replace(/[ \t].*$/, "");
     let locale = Cc["@mozilla.org/intl/localeservice;1"].getService(Ci.mozILocaleService).appLocalesAsBCP47;
@@ -122,7 +124,7 @@ var EnigmailWindows = {
       locale = "en";
     }
 
-    if (EnigmailPrefs.getPref("juniorMode") === 2) {
+    if ((!displayWizard) && (EnigmailPrefs.getPref("juniorMode") === 2)) {
       const URL="https://pep.software/thunderbird/%p?lang=%l";
 
       let url = URL.replace("%p", platform).replace("%l", locale);

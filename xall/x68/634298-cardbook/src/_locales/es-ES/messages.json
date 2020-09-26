@@ -2680,20 +2680,10 @@
 		"message": "Contraseña incorrecta"
 	},
 	"dateDisplayedFormatLong": {
-		"message": "Largo: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Largo: %P1%"
 	},
 	"dateDisplayedFormatShort": {
-		"message": "Corto: $P1$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            }
-        }
+		"message": "Corto: %P1%"
 	},
 	"addressFormatFormula": {
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
@@ -3323,6 +3313,9 @@
 	"CardBookTabLabel": {
 		"message": "Pestaña"
 	},
+	"editionTabLabel": {
+		"message": "Edición"
+	},
 	"IMPPsTabLabel": {
 		"message": "Comunicaciones"
 	},
@@ -3548,12 +3541,6 @@
 	"advancedTab1Label": {
 		"message": "Avanzado"
 	},
-	"advancedTab.conf.label": {
-		"message": "Avanzado (solamente para vCard 4.0)"
-	},
-	"advancedTab.conf.accesskey": {
-		"message": "A"
-	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Ubicar con"
 	},
@@ -3655,6 +3642,18 @@
 	},
 	"defaultRegionTooltip": {
 		"message": "Esta región será la región por defecto para las direcciones y será usada para formatear los números de teléfono."
+	},
+	"editionGroupboxLabel": {
+		"message": "Selector de campos"
+	},
+	"editionWarn": {
+		"message": "Al editar un contacto, CardBook solo mostrará estos campos seleccionados."
+	},
+	"fieldsButtonLabel": {
+		"message": "Establecer como predeterminado"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Seleccionar todo"
 	},
 	"preferenceGroupboxLabel": {
 		"message": "Campo PREF"
@@ -4103,6 +4102,15 @@
 	"eventsAccesskey": {
 		"message": "E"
 	},
+	"gender.conf.label": {
+		"message": "Género (solamente para vCard 4.0)"
+	},
+	"birthplace.conf.label": {
+		"message": "Lugar de nacimiento (solamente para vCard 4.0)"
+	},
+	"deathplace.conf.label": {
+		"message": "Lugar de deceso (solamente para vCard 4.0)"
+	},
 	"calendarsGroupboxLabel": {
 		"message": "Calendarios"
 	},
@@ -4489,9 +4497,6 @@
 	},
 	"noteTabLabel": {
 		"message": "Notas"
-	},
-	"advancedTabLabel": {
-		"message": "Avanzado"
 	},
 	"miscGroupboxLabel": {
 		"message": "Diverso"
