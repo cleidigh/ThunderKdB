@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 129895,
+    "average_daily_users": 117684,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,30 +19,30 @@
     "contributions_url": "http://paypal.me/cleidigh",
     "created": "2019-07-15T04:15:54Z",
     "current_version": {
-        "id": 2473655,
+        "id": 2474344,
         "compatibility": {
             "thunderbird": {
-                "max": "72.*",
-                "min": "60.0"
+                "max": "78.*",
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/importexporttools-ng/versions/2473655",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/importexporttools-ng/versions/2474344",
         "files": [
             {
-                "id": 1016810,
-                "created": "2020-04-30T22:31:40Z",
-                "hash": "sha256:51a4e5c5996169beea61f461f11a295c619c6acee9b3889d6448b39a3641ba93",
-                "is_restart_required": true,
+                "id": 1017506,
+                "created": "2020-09-27T01:40:30Z",
+                "hash": "sha256:0e59070fca959436dec68c5dd94374fc2210cb31bd6e7aed18de5165084412a9",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 421456,
+                "size": 445911,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016810/importexporttools_ng-4.1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017506/importexporttools_ng-10.0.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -72,11 +72,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Version 4.1.0 : New Features\n\n\t\t- Help/User guide : Fully localized\n\t\t- Suffix option for filenames\n\t\t- Custom date option for filenames allowing strftime() like full date and time formatting\n\t\t- Use custom file naming for both attachments and embedded attachments\n\t\t- Custom date option for index filenames\n\t\t- Option to use 'Received Date' for filename and index\n\t\t- User configurable Hotkeys (Keyboard shortcuts)\n\t\t- PDF output now uses the global print options\n\t\t- Improved HTML index file layout\n\t\t\n\tBug Issues Fixed:\n\t- #68 fix for index attachment flag\n\t- #74 fix for in-line image attachments not exported\n\t- Fix #56 handle cancel on import dialog\n\t- #77 use preferences for PDF output\n\t- UI cleanup tweaks (#80, #81, #82 ) OS variations - @ovari\n\t- German translation fix #93 - @dipgithub\n\t- Hungarian translation fixes - @ovari\n\t- Add missing license file #96"
+            "en-US": "Version 10.0.0 : New Features - September 26, 2020\n\n- New locales: el\n- Index custom date format\n- new tokens for filenames : sender/recipient e-mail\n- Use `%d` in print settings header/footer for custom date\n\nBug Issues Fixed:\n- #118, #63 Fixed conversion for plaintext\n- #57 Use ForceDBClose to Close open files (fixes folders and messages)\n- #77 Use global settings for PDF\n- #130 scheduled backups\n- #134 Correctly handle read, forwarded, replied flags"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools-ng/versions/4.1.0",
-        "version": "4.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools-ng/versions/10.0.0",
+        "version": "10.0.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -99,7 +99,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-02T15:00:59Z",
+    "last_updated": "2020-09-28T07:01:18Z",
     "name": {
         "ru": "ImportExportTools NG",
         "fr": "ImportExportTools NG",
@@ -196,7 +196,7 @@
     "summary": {
         "ru": "Добавляет инструменты для импорта и экспорта сообщений и папок (NextGen)",
         "fr": "Permet d'importer et d'exporter les fichiers au format MBox (NextGen)",
-        "en-US": "Adds tools to import/export messages and folders (NextGen)\n\nNEW BETA:\nTrack, Test, Try :\nDownload highest v10.0.0-bx\n\n<a href=\"https://github.com/thundernest/import-export-tools-ng/blob/v10.0.0/xpi/\" rel=\"nofollow\">https://github.com/thundernest/import-export-tools-ng/blob/v10.0.0/xpi/</a>",
+        "en-US": "Adds tools to import/export messages and folders (NextGen)\n\nNEW 78/68 Compatible version !\n\nSee Changes below",
         "nl": "Voegt enkele hulpmiddelen toe om berichten en mappen te importeren en exporteren (NextGen)",
         "pt-PT": "Adicionas algumas ferramentas para importar e exportar mensagens e pastas (NextGen)",
         "ca": "Afegeix algunes eines per importar i exportar missatges i carpetes (NextGen)",
@@ -223,8 +223,10 @@
             "mext": true,
             "comp68": true,
             "comp69plus": true,
-            "comp60": true,
-            "comp61plus": true
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2019-07-15T04:15:54Z"
         }
     }
 }

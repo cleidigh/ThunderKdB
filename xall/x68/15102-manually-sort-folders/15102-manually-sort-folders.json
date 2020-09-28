@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/343.png?modified=1505246946"
         }
     ],
-    "average_daily_users": 186363,
+    "average_daily_users": 181877,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,30 +18,30 @@
     "contributions_url": "https://paypal.me/protzenko",
     "created": "2009-10-20T07:31:08Z",
     "current_version": {
-        "id": 2472672,
+        "id": 2474354,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/manually-sort-folders/versions/2472672",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/manually-sort-folders/versions/2474354",
         "files": [
             {
-                "id": 1015755,
-                "created": "2019-09-26T20:28:21Z",
-                "hash": "sha256:e30a4bbe14370001608844cb46bd6322ff4a0bfdab7a162bc3069b1e26b841ae",
-                "is_restart_required": true,
+                "id": 1017516,
+                "created": "2020-09-28T13:44:24Z",
+                "hash": "sha256:345b36a0bc38deacb215cd1f98741454335ec712a099c5203a43503bf5fa5455",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 76342,
+                "size": 82883,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015755/manually_sort_folders-2.0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017516/manually_sort_folders-2.0.4-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 13,
             "name": {
@@ -71,11 +71,11 @@
             "url": "http://www.gnu.org/licenses/gpl-2.0.html"
         },
         "release_notes": {
-            "en-US": "This is an updated version for compatibility with Thunderbird 68. A huge thanks to Maxime Rijnders who contributed most of the changes for this release. Version 2.0.1 contains a fix for the startup folder feature that was also broken in 2.0.0\n\n- In some cases, it appears that restarting Thunderbird a couple times may help if the dialog doesn't work on first try. If you experience this issue and have a way to reproduce, please file a bug report.\n- The ability to pick Local Accounts as the default account to force it to appear first seems to have disappeared a couple Thunderbird releases ago.\n\nNote that this is not backwards-compatible for Thunderbird 60 (please use the previous version reachable via the \"all versions\" link somewhere near the bottom of this page)."
+            "en-US": "New version compatible with Thunderbird 78 *and* Thunderbird 68.\n\nNotable changes:\n- Add an entry into the tools menu for easier discovery.\n\nThanks to Itagaki Fumihiko for contributing many of these fixes."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/manually-sort-folders/versions/2.0.2",
-        "version": "2.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/manually-sort-folders/versions/2.0.4",
+        "version": "2.0.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -103,7 +103,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-01T19:26:45Z",
+    "last_updated": "2020-09-28T14:15:42Z",
     "name": {
         "sv-SE": "Manually sort folders",
         "fr": "Trier manuellement les dossiers",
@@ -182,10 +182,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.65418,
-        "count": 486,
-        "average": 3.6564,
-        "text_count": 486
+        "bayesian_average": 3.65968,
+        "count": 488,
+        "average": 3.6619,
+        "text_count": 488
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/manually-sort-folders/reviews/",
     "requires_payment": false,
@@ -222,10 +222,14 @@
     "weekly_downloads": 3364,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-27T22:53:35Z",
+            "comp78pv_version": "2.0.3",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2016-05-01T21:09:15Z"
         }

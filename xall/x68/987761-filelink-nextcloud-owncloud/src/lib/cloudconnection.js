@@ -332,17 +332,33 @@ class CloudConnection {
      * Get a share link for the file, reusing an existing one with the same
      * parameters
      * @param {string} fileName The name of the file to share
+     * @param {number} fileId The of this upload as assigned by Thunderbird
      * @returns {string} The share link
      */
     async _getShareLink(fileName, fileId) {
         const path_to_share = encodepath(this.storageFolder + "/" + fileName);
+        const expireDate = this.useExpiry ? daysFromTodayIso(this.expiryDays) : undefined;
 
-        let expireDate = this.useExpiry ? daysFromTodayIso(this.expiryDays) : undefined;
+        if (!this.useDlPassword) {
+            //  Check if the file is already shared ...
+            const existingShare = await this._findExistingShare(path_to_share, expireDate);
+            if (existingShare && existingShare.url) {
+                return punycode.toUnicode(existingShare.url);
+            }
+        }
+        return this._makeNewShare(path_to_share, expireDate, fileId);
+    }
 
-        //  Check if the file is already shared ...
+    /**
+     * Check if the file is already shared with the same parameters
+     * @param {string} path_to_share The encoded path of the file
+     * @param {string} expireDate The expiry date, encoded as ISO
+     * @returns {*} The existing share or undefined
+     */
+    async _findExistingShare(path_to_share, expireDate) {
         const shareinfo = await this._doApiCall(apiUrlShares + "?path=" + path_to_share);
 
-        const existingShare = shareinfo.find(share =>
+        return shareinfo.find(share =>
             /// ... and if it's a public share ...
             (share.share_type === 3) &&
             /* If a password is set, share_with is not empty in both cloud
@@ -351,44 +367,47 @@ class CloudConnection {
             this, so we also check for password to make sure we are still fine
             if that happens.*/
             // ... and it has no password ...
-            !share.share_with && !share.password
+            !share.share_with && !share.password &&
             // ... and the same expiration date
             (
                 (!this.useExpiry && share.expiration === null) ||
                 (this.useExpiry && share.expiration !== null && share.expiration.startsWith(expireDate))
             ));
+    }
 
-        if (existingShare && existingShare.url) {
-            return punycode.toUnicode(existingShare.url);
+    /**
+     * Share the file
+     * @param {string} path_to_share The encoded path of the file
+     * @param {string} expireDate The expiry date, encoded as ISO
+     * @param {number} fileId The of this upload as assigned by Thunderbird
+     * @returns {string} The new share url or null
+     */
+    async _makeNewShare(path_to_share, expireDate, fileId) {
+        let shareFormData = "path=" + path_to_share;
+        shareFormData += "&shareType=3"; // 3 = public share
+
+        if (this.useDlPassword) {
+            if (this.useGeneratedDlPassword) {
+                this.downloadPassword = await this.generateDLPassword();
+            }
+            shareFormData += "&password=" + encodeURIComponent(this.downloadPassword);
+        }
+
+        if (this.useExpiry) {
+            shareFormData += "&expireDate=" + expireDate;
+        }
+
+        const data = await this._doApiCall(apiUrlShares, 'POST', { "Content-Type": "application/x-www-form-urlencoded", }, shareFormData);
+
+        if (data && data.url) {
+            if (this.useDlPassword && this.useGeneratedDlPassword) {
+                const status = attachmentStatus.get(fileId);
+                status.password = this.downloadPassword;
+                status.set_status('generatedpassword');
+            }
+            return punycode.toUnicode(data.url);
         } else {
-            let shareFormData = "path=" + path_to_share;
-            shareFormData += "&shareType=3"; // 3 = public share
-
-            if (this.useDlPassword) {
-                if (this.useGeneratedDlPassword) {
-                    this.downloadPassword = await this.generateDLPassword();
-                }
-                shareFormData += "&password=" + encodeURIComponent(this.downloadPassword);
-            }
-
-            if (this.useExpiry) {
-                shareFormData += "&expireDate=" + expireDate;
-            }
-
-            const data = await this._doApiCall(apiUrlShares, 'POST', { "Content-Type": "application/x-www-form-urlencoded", }, shareFormData);
-
-            if (data && data.url) {
-                if (this.useDlPassword && this.useGeneratedDlPassword) {
-                    const status = attachmentStatus.get(fileId);
-                    status.password = this.downloadPassword;
-                    status.set_status('generatedpassword');
-                }
-
-                return punycode.toUnicode(data.url);
-            }
-            else {
-                return null;
-            }
+            return null;
         }
     }
     //#endregion

@@ -50,3 +50,23 @@
 #thunderHTMLedit-content-source-findbar {
   background-color: -moz-dialog;
 }
+
+@media (prefers-color-scheme: dark) {
+  #thunderHTMLedit-tabbox-box {
+    border-bottom-color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(128, 128, 128, 0.2);
+  }
+
+  #thunderHTMLedit-content-tab > radiogroup > radio {
+    color: #f9f9fa;
+    border-color: rgba(128, 128, 128, 0.5);
+  }
+
+  #thunderHTMLedit-content-tab > radiogroup > radio:hover {
+    background-color: rgba(255,255,255,.2);
+  }
+
+  #thunderHTMLedit-content-tab > radiogroup > radio[selected="true"] {
+    background-color: #2a2a2e;
+  }
+}

@@ -16,10 +16,11 @@
     </p>
     <pre>
 \documentclass{article}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[active,displaymath,textmath]{preview}
 \pagestyle{empty}
 \begin{document}
-__REPLACEME__ %this is where your LaTeX expression goes
+__REPLACE_ME__ %this is where your LaTeX expression goes
 \end{document}
     </pre>
    <p>
@@ -29,12 +30,12 @@ __REPLACEME__ %this is where your LaTeX expression goes
     extra output such as page numbers, which is why cropping works.
     </p>
     <p>
-    The <tt>__REPLACEME__</tt> word will be replaced with the LaTeX expression
+    The <tt>__REPLACE_ME__</tt> word will be replaced with the LaTeX expression
     you specified. Therefore, it is important you put it in the right place.
     </p>
     <p>
     The file is written as UTF-8 (always) so please do not remove the
-    <tt>utf8x</tt> encoding.
+    <tt>utf8</tt> encoding.
     </p>
     <h1>Alternative templates</h1>
     <p>
@@ -45,14 +46,15 @@ __REPLACEME__ %this is where your LaTeX expression goes
     </p>
     <pre>
 \documentclass{article}
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[active,displaymath,textmath]{preview}
 \usepackage{amsmath,amssymb,amsopn}
 \usepackage{mathrsfs}
 \usepackage{palatino}
 \usepackage{mathpazo}
 \pagestyle{empty}
 \begin{document}
-__REPLACEME__ %this is where your LaTeX expression goes
+__REPLACE_ME__ %this is where your LaTeX expression goes
 \end{document}
     </pre>
  

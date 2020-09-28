@@ -402,6 +402,21 @@ var Undo;
 var Redo;
 var thisWin;
 
+function hasLicense() {
+  let license = ThunderHTMLeditPrefs.getPref("License", "String");
+  if (license != "unlicensed") {
+    for (let identity of fixIterator(ThunderHTMLedit.accounts.allIdentities,
+      Ci.nsIMsgIdentity)) {
+      if (!identity.email) continue;
+      if (license == thisWin.btoa(identity.email.toLowerCase())) {
+        // Services.console.logStringMessage("ThunderHTMLedit - "+identity.email+" - license: "+license);
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 function CheckLicense() {
   const numNoNags = 25;
   const numNags = 5;
@@ -428,20 +443,12 @@ function CheckLicense() {
   }
 
   // Now really check the license.
-  let license = ThunderHTMLeditPrefs.getPref("License", "String");
-  if (license != "unlicensed") {
-    for (let identity of fixIterator(ThunderHTMLedit.accounts.allIdentities,
-      Ci.nsIMsgIdentity)) {
-      if (!identity.email) continue;
-      if (license == thisWin.btoa(identity.email.toLowerCase())) {
-        // Services.console.logStringMessage("ThunderHTMLedit - "+identity.email+" - license: "+license);
-        if (ResetTheme) {
-          SourceEditor.getEditor(thisWin).setTheme(licensedTheme);
-          ResetTheme = false;
-        }
-        return;
-      }
+  if (hasLicense()) {
+    if (ResetTheme) {
+      SourceEditor.getEditor(thisWin).setTheme(licensedTheme);
+      ResetTheme = false;
     }
+    return;
   }
 
   ClearStatusText = true;
@@ -750,4 +757,9 @@ function destroy(win) {
   if (win.gMsgCompose) {
     win.gMsgCompose.UnregisterStateListener(stateListener);
   }
+}
+
+function launchOptions() {
+  thisWin.openDialog("chrome://ThunderHTMLedit/content/options.xhtml",
+    "_blank", "chrome,centerscreen,titlebar,modal,resizable", null);
 }

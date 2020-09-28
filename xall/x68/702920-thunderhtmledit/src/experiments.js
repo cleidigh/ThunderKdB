@@ -54,6 +54,16 @@ function setupUI(win) {
   // Monkey patch SetMsgBodyFrameFocus();
   win.ThunderHTMLedit_.SetMsgBodyFrameFocus = win.SetMsgBodyFrameFocus;
   win.SetMsgBodyFrameFocus = () => win.document.getElementById("content-frame").focus();
+
+  xul = win.MozXULElement.parseXULToFragment(`
+    <menuitem id="menu_ThunderHTMLedit_options"
+              class="menuitem-iconic"
+              label="ThunderHTMLedit Options"
+              oncommand="window.ThunderHTMLedit_.launchOptions()"/>
+  `);
+  /* eslint-enable max-len */
+  let taskPopup = win.document.getElementById("taskPopup");
+  taskPopup.insertBefore(xul, null);
 }
 
 function tearDownUI(win) {
@@ -65,6 +75,8 @@ function tearDownUI(win) {
   if (tabbox) tabbox.remove();
   let sourcebox = win.document.getElementById("thunderHTMLedit-content-source-box");
   if (sourcebox) sourcebox.remove();
+  let menuitem = win.document.getElementById("menu_ThunderHTMLedit_options");
+  if (menuitem) menuitem.remove();
 
   win.SetMsgBodyFrameFocus = win.ThunderHTMLedit_.SetMsgBodyFrameFocus;
 
@@ -76,10 +88,17 @@ function tearDownUI(win) {
 
 // Implements the functions defined in the experiments section of schema.json.
 var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
-  onStartup() {}
+  onStartup() {
+    const aomStartup = Cc["@mozilla.org/addons/addon-manager-startup;1"]
+      .getService(Ci.amIAddonManagerStartup);
+    const manifestURI = Services.io.newURI("manifest.json", null, this.extension.rootURI);
+    this.chromeHandle = aomStartup.registerChrome(manifestURI, [["content", "ThunderHTMLedit", "content/"]]);
+  }
 
   onShutdown(isAppShutdown) {
     if (isAppShutdown) return;
+    this.chromeHandle.destruct();
+    this.chromeHandle = null;
     // Looks like we got uninstalled. Maybe a new version will be installed now.
     // Due to new versions not taking effect (https://bugzilla.mozilla.org/show_bug.cgi?id=1634348)
     // we invalidate the startup cache. That's the same effect as starting with -purgecaches

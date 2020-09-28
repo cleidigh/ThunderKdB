@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
+<!-- Not in 68 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/shared/grid-layout.css"?> -->
+<?xml-stylesheet type="text/css" href="chrome://ThunderHTMLedit/content/options.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+
+<window id="ThunderHTMLeditOptions"
+        windowtype="ThunderHTMLedit:options"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        title="ThunderHTMLedit Options"
+        style="padding: 5px;">
+  <script src="chrome://global/content/preferencesBindings.js"/>
+  <script src="chrome://ThunderHTMLedit/content/options.js"/>
+
+  <vbox>
+    <html:div class="grid-two-column">
+      <html:div>
+        <label control="WrapWidth">Wrap Width</label>
+      </html:div>
+      <html:div>
+        <html:input id="WrapWidth"
+                    preference="extensions.thunderHTMLedit.WrapWidth"
+                    type="number" class="size3 input-inline" max="500"/>
+      </html:div>
+      <html:div>
+        <label control="FontSize">Font Size</label>
+      </html:div>
+      <html:div>
+        <html:input id="FontSize"
+                    preference="extensions.thunderHTMLedit.FontSize"
+                    type="number" class="size2 input-inline" max="72"/>
+      </html:div>
+      <html:div>
+        <label control="FontFamily">Font Family</label>
+      </html:div>
+      <html:div>
+        <html:input id="FontFamily"
+                    preference="extensions.thunderHTMLedit.FontFamily"
+                    type="text"/>
+      </html:div>
+      <html:div>
+        <label control="DarkTheme">Dark Theme</label>
+      </html:div>
+      <html:div>
+        <checkbox id="DarkTheme"
+                    preference="extensions.thunderHTMLedit.DarkTheme"/>
+      </html:div>
+      <html:div>
+        <label control="OptionsJSON">Ace Options</label>
+      </html:div>
+      <html:div>
+        <html:input id="OptionsJSON"
+                    preference="extensions.thunderHTMLedit.OptionsJSON"
+                    readonly="readonly"
+                    style="color: grey"
+                    type="text"/>
+      </html:div>
+      <html:div>
+        <label control="License">License</label>
+      </html:div>
+      <html:div>
+        <html:input id="License"
+                    preference="extensions.thunderHTMLedit.License"
+                    oninput="window.licenseColour()"
+                    type="text"/>
+      </html:div>
+    </html:div>
+    <html:button onclick="self.close()">Done</html:button>
+  </vbox>
+</window>

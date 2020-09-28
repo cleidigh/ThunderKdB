@@ -2,10 +2,9 @@
   "manifest_version": 2,
   "name": "Manually sort folders",
   "description": "An extension that allows you to change the way Thunderbird sorts folders in the folder pane.",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "author": "Jonathan Protzenko",
   "homepage_url": "http://wiki.github.com/protz/Manually-Sort-Folders/",
-  "legacy": true,
   "applications": {
     "gecko": {
       "id": "tbsortfolders@xulforum.org",
@@ -14,5 +13,20 @@
   },
   "icons": {
     "32": "content/icon.png"
-  }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
+    }
+  }  
 }
