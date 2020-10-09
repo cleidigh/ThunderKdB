@@ -1,19 +1,69 @@
 {
   "manifest_version": 2,
-  "name": "NestedQuote Remover",
-  "description": "Remove nested quotes when replying to a mail.",
-  "version": "0.9.2",
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.0.0",
+  "default_locale": "en",
   "author": "Achim Seufert",
-  "legacy": true,
+  "homepage_url": "http://mozext.achimonline.de",
   "applications": {
     "gecko": {
       "id": "{12a1584b-2123-473d-8752-e82e74e3cb1b}",
-      "strict_min_version": "61.0"
+      "strict_min_version": "78.0"
     }
   },
+  "compose_action": {
+    "default_title": "__MSG_extensionName__",
+    "default_icon": "_images/nestedquoteremover-32px-black.png",
+    "theme_icons": [
+      {
+        "dark": "_images/nestedquoteremover-32px-white.png",
+        "light": "_images/nestedquoteremover-32px-black.png",
+        "size": 32
+      }
+    ]
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "options/page.html"
+  },
+  "commands": {
+    "removeNestedQuotes": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+N"
+      },
+      "description": "__MSG_commandRemoveDescription__"
+    }
+  },
+  "permissions": [
+    "compose",
+    "storage",
+    "menus"
+  ],
   "icons": {
-    "16": "icons/nestedquoteremover16.png",
-    "24": "icons/nestedquoteremover24.png",
-    "32": "icons/nestedquoteremover32.png"
-  }
+    "64": "_images/nestedquoteremover-64px-black.png",
+    "32": "_images/nestedquoteremover-32px-black.png",
+    "16": "_images/nestedquoteremover-16px-black.png"
+  },
+  "theme_icons": [
+    {
+      "dark": "_images/nestedquoteremover-64px-white.png",
+      "light": "_images/nestedquoteremover-64px-black.png",
+      "size": 64
+    },
+    {
+      "dark": "_images/nestedquoteremover-32px-white.png",
+      "light": "_images/nestedquoteremover-32px-black.png",
+      "size": 32
+    },
+    {
+      "dark": "_images/nestedquoteremover-16px-white.png",
+      "light": "_images/nestedquoteremover-16px-black.png",
+      "size": 16
+    }
+  ]
 }

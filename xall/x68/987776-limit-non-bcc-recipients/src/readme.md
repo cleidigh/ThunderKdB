@@ -16,4 +16,4 @@ It does not offer these features of Use BCC Instead:
 
 ## Requirements
 
-Requires Thunderbird version 75+
+Requires Thunderbird version 78+

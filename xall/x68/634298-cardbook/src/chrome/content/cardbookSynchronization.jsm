@@ -701,7 +701,7 @@ var cardbookSynchronization = {
 					}
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, myCard.fn]);
 					var myArgs = {cardsIn: [myCard, aCacheCard], cardsOut: [], hideCreate: true, action: ""};
-					var myWindow = window.openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
+					var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
 					if (myArgs.action == "CREATEANDREPLACE") {
 						myArgs.cardsOut[0].uid = aCacheCard.uid;
 						cardbookRepository.cardbookUtils.addEtag(myArgs.cardsOut[0], aEtag);
@@ -1804,7 +1804,7 @@ var cardbookSynchronization = {
 		  prefetchCert: true,
 		  location: aUrl
 		};
-		window.openDialog("chrome://pippki/content/exceptionDialog.xhtml", "", "chrome,centerscreen,modal", params);
+		Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://pippki/content/exceptionDialog.xhtml", "", "chrome,centerscreen,modal", params);
 		return params.exceptionAdded;
 	},
 
@@ -1874,7 +1874,7 @@ var cardbookSynchronization = {
 
 	syncAccount: function (aPrefId, aMode, aFirstSync = true) {
 		try {
-			if (cardbookRepository.cardbookUtils.isMyAccountSyncing(aPrefId)) {
+			if (cardbookRepository.cardbookUtils.isMyAccountSyncing(aPrefId) && aMode != "INITIAL") {
 				return;
 			}
 			
@@ -2051,8 +2051,6 @@ var cardbookSynchronization = {
 					var response = cardbookSynchronization.getResponse(aPrefId, aPrefName) + cardbookSynchronization.getDone(aPrefId, aPrefName);
 					if (request == response) {
 						var myPrefIdType = cardbookRepository.cardbookPreferences.getType(aPrefId);
-						cardbookSynchronization.finishSync(aPrefId, aPrefName, myPrefIdType);
-						cardbookSynchronization.finishMultipleOperations(aPrefId);
 						if (aSync && aSync === true) {
 							if (aMode == "INITIAL") {
 								// Web requests are delayed for a preference value
@@ -2065,6 +2063,9 @@ var cardbookSynchronization = {
 								if (initialSyncDelayMs == 0) {
 									cardbookSynchronization.syncAccount(aPrefId, aMode);
 								} else {
+									if ("undefined" == typeof(setTimeout)) {
+										var { setTimeout } = ChromeUtils.import("resource://gre/modules/Timer.jsm");
+									}
 									setTimeout(function() {
 										cardbookSynchronization.syncAccount(aPrefId, aMode);
 									}, initialSyncDelayMs);
@@ -2072,14 +2073,17 @@ var cardbookSynchronization = {
 							} else {
 								cardbookSynchronization.syncAccount(aPrefId, aMode);
 							}
+						} else {
+							cardbookSynchronization.finishSync(aPrefId, aPrefName, myPrefIdType);
+							cardbookSynchronization.finishMultipleOperations(aPrefId);
 						}
-							if (aRunBirthdaysAfterLoad) {
-								var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
-								// all load are finished
-								if (total === 0) {
-									ovl_birthdays.onLoad();
-								}
+						if (aRunBirthdaysAfterLoad) {
+							var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
+							// all load are finished
+							if (total === 0) {
+								ovl_birthdays.onLoad();
 							}
+						}
 						lTimerDir.cancel();
 					}
 				}
@@ -2565,7 +2569,7 @@ var cardbookSynchronization = {
 				
 				var myArgs = {template: [], headers: myHeader, includePref: false, lineHeader: true, columnSeparator: myDelimiter, mode: "import",
 								filename: aParams.aFile.leafName, action: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
+				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.action == "SAVE") {
 					var result = cardbookRepository.cardbookUtils.CSVToArray(aContent, myArgs.columnSeparator);
 					var fileContentArray = result.result;
@@ -2706,7 +2710,7 @@ var cardbookSynchronization = {
 				case "merge":
 					var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
 					var myArgs = {cardsIn: [myTargetCard, aNewCard], cardsOut: [], hideCreate: false, action: ""};
-					var myWindow = window.openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
+					var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
 					if (myArgs.action == "CREATE") {
 						cardbookRepository.saveCard({}, myArgs.cardsOut[0], aActionId, true);
 					} else if (myArgs.action == "CREATEANDREPLACE") {

@@ -1,8 +1,14 @@
-menuitem[ABtype="local"] {
-	list-style-image: url("chrome://messenger/skin/icons/folder.svg");
+menuitem[ABtype="localdb"] {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/localdb.svg");
+}
+menuitem[ABtype="file"] {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/file.svg");
+}
+menuitem[ABtype="directory"] {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/directory.svg");
 }
 menuitem[ABtype="remote"] {
-	list-style-image: url("chrome://messenger/skin/icons/globe.svg");
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/remote.svg");
 }
 /* as the file Search-glass.png disappeared in Th 55 */
 /* and as before Th 55 it is not possible to display svg file */

@@ -1,0 +1,52 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ::::: message column icons ::::: */
+
+treecol.treecol-image {
+  padding: 0px !important;
+}
+
+:root[lwt-tree] treecol.treecol-image:not([hideheader="true"]) {
+  padding: 4px !important;
+}
+
+:root[lwt-tree] treecolpicker:not([hideheader="true"]) {
+  padding-inline-start: 5px;
+  padding-inline-end: 5px;
+}
+
+/* ..... attachment column ..... */
+
+treechildren::-moz-tree-image(attachmentCol, attach) {
+  margin-inline-start: -5px;
+}
+
+/* ..... correspondent column ..... */
+
+#correspondentCol {
+  padding-inline-start: 19px;
+}
+
+:root[lwt-tree] #correspondentCol {
+  padding-inline-start: 23px;
+}
+
+/* ..... subject column ..... */
+
+#subjectCol {
+  padding-inline-start: 18px;
+}
+
+#subjectCol[primary="true"] {
+  padding-inline-start: 34px;
+}
+
+:root[lwt-tree] #subjectCol {
+  padding-inline-start: 22px;
+}
+
+:root[lwt-tree] #subjectCol[primary="true"] {
+  padding-inline-start: 38px;
+}

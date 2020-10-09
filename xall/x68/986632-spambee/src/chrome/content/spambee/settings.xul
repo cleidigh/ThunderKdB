@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
+<?xml-stylesheet href="chrome://spambee/skin/prefPanels.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://spambee/locale/settings.dtd">
+            <!--
+            ondialogaccept="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return validPrefs(true);"
+            ondialogcancel="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return cancelPrefs(true);"
+            height="650"
+            width="900"
+            ondialogaccept="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return validPrefs(true);"
+            ondialogcancel="arguments[0].stopImmediatePropagation(); arguments[0].stopPropagation(); arguments[0].preventDefault(); return cancelPrefs(true);"
+            onload="window.sizeToContent();"
+            -->
+<dialog id="spambee-preferences"
+            instantApply="true"
+            title="&spambee.options.title;"
+            buttons="accept,cancel"
+            defaultButton=""
+            image="chrome://spambee/skin/icon48.png"
+            xmlns:html="http://www.w3.org/1999/xhtml"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+            style="overflow: auto;">
+
+
+    <!--<prefpane id="spambee-pref-pane"
+              image="chrome://spambee/skin/icon48.png"
+              label="&spambee.options.title;"
+              style="overflow: auto;">-->
+
+        <!--<preferences>
+
+            <preference id="spambee_pref_oneclick"
+                        instantApply="false"
+                        name="extensions.spambee.oneclick"
+                        type="bool"
+                        defaultValue="false"
+                        hidden="true"/>
+            <preference id="spambee_pref_urldetect"
+                        instantApply="false"
+                        name="extensions.spambee.urldetect"
+                        type="bool"
+                        defaultValue="true"/>
+            <preference id="spambee_pref_movereport"
+                        instantApply="false"
+                        name="extensions.spambee.movereport"
+                        type="bool"
+                        defaultValue="true"/>
+            <preference id="spambee_pref_spambtonactive"
+                        instantApply="false"
+                        name="extensions.spambee.spambtonactive"
+                        type="bool"
+                        defaultValue="true"/>
+            <preference id="spambee_pref_userauthentified"
+                        instantApply="false"
+                        name="extensions.spambee.userauthentified"
+                        type="bool"
+                        defaultValue="true"
+                        hidden="true"/>
+            <preference id="spambee_pref_firsttime"
+                        instantApply="false"
+                        name="extensions.spambee.firsttime"
+                        type="bool"
+                        defaultValue="false"
+                        hidden="true"/>
+            <preference id="spambee_pref_lastversion"
+                        instantApply="false"
+                        name="extensions.spambee.lastversion"
+                        type="string"
+                        defaultValue=""
+                        hidden="true"/>
+            <preference id="spambee_pref_notification"
+                        instantApply="false"
+                        name="extensions.spambee.notification"
+                        type="bool"
+                        defaultValue="true"
+                        hidden="true"/>
+            <preference id="spambee_pref_privacy"
+                        instantApply="false"
+                        name="extensions.spambee.privacy"
+                        type="bool"
+                        defaultValue="false"
+                        hidden="true"/>
+        </preferences> -->
+        <tooltip id="oneclicktooltip" orient="vertical" style="background-color: #33DD00;">
+            <label value="&spambee.options.oneclickDescription.label;"/>
+        </tooltip>
+        <tooltip id="urldetecttooltip" orient="vertical" style="background-color: #33DD00;">
+            <label value="&spambee.urldetect.tooltip;"/>
+        </tooltip>
+        <tooltip id="movereporttooltip" orient="vertical" style="background-color: #33DD00;">
+            <label value="&spambee.movereport.tooltip;"/>
+        </tooltip>
+        <tooltip id="spambtonactivetooltip" orient="vertical" style="background-color: #33DD00;">
+            <label value="&spambee.spambtonactive.tooltip;"/>
+        </tooltip>
+
+        <!--<notificationbox>
+            <notification id="notify-invalidcredentials" type="critical" priority="10"
+                          label="&spambee-invalidcredentials;" hidden="true"/>
+            <notification id="notify-invaliduserid" type="warning" priority="10" label="&spambee.options.invalidUserId;"
+                          hidden="true"/>
+            <notification id="notify-notauthentified" type="warning" priority="10"
+                          label="&spambee.options.invalidCredentials;" hidden="true"/>
+        </notificationbox>-->
+        <vbox pack="start" style="height:90vh; width:95vw;">
+            <hbox align="center" pack="center">
+                <image id="logo" src='chrome://spambee/skin/icon48.png' width='48' height='48'/>
+                <!--<caption id="title" label="&spambee.options.title;"/>-->
+                <label id="title" class="header">&spambee.options.title;</label>
+            </hbox>
+            <spacer flex="1"></spacer>
+            <separator class="thin"/>
+            <hbox hidden="false">
+                <checkbox preference="spambee_pref_privacy"
+                          id="dataprivacy"
+                          tabindex="1"/>
+                <label control="dataprivacy">&spambee.options.dataprivacy.label;</label>
+            </hbox>
+            <description class="desc" style="max-width:95vw;" hidden="false">&spambee.options.dataprivacy.disclaimer;</description>
+            <description class="desc" style="text-align: right;">
+                <label tabindex="6" value="&spambee.options.dataprivacypolicy.label;" id="dataprivacypolicy" class="text-link"/>
+            </description>
+            <separator class="thin"/>
+            <hbox hidden="false">
+                <checkbox preference="spambee_pref_notification"
+                          id="notification"
+                          tabindex="2"/>
+                <label control="notification" value="&spambee.options.notifications.label;"/>
+            </hbox>
+            <description class="desc" style="max-width:95vw;" hidden="false">&spambee.options.notifications.description;</description>
+            <separator class="thin"/>
+            <hbox hidden="true">
+                <checkbox preference="spambee_pref_oneclick"
+                          id="oneclick"
+                          tooltip="oneclicktooltip"
+                          tabindex="3"/>
+                <label control="oneclick" value="&spambee.oneclick.label;"/>
+            </hbox>
+            <description class="desc" hidden="true">&spambee.oneclick.desc;</description>
+            <separator class="thin"/>
+            <hbox>
+                <checkbox preference="spambee_pref_urldetect"
+                          id="urldetect"
+                          tooltip="urldetecttooltip"
+                          tabindex="4"/>
+                <label control="urldetect" value="&spambee.urldetect.label;"/>
+            </hbox>
+            <description class="desc">&spambee.urldetect.desc;</description>
+            <separator class="thin"/>
+            <hbox>
+                <checkbox preference="spambee_pref_movereport"
+                          id="movereport"
+                          tooltip="movereporttooltip"
+                          tabindex="5"/>
+                <label control="movereport" value="&spambee.movereport.label;"/>
+            </hbox>
+            <description class="desc">&spambee.movereport.desc;
+                <label tabindex="6" value="&spambee-thunderbirdpreferences;" id="thunderbirdpreferences" class="text-link"/>
+            </description>
+            <description class="desc" hidden="true" id="manualMarkFalse"
+                         style="color:red;">&spambee.manualMarkFalse.desc;
+            </description>
+            <separator class="thin"/>
+            <hbox>
+                <image src='&spambee.junkbutton.src;' style="height:2em;"/>
+                <label control="spambtonactive" value="&spambee.spambtonactive.label;"/>
+                <checkbox preference="spambee_pref_spambtonactive" id="spambtonactive"
+                          tooltip="spambtonactivetooltip"
+                          tabindex="7"/>
+            </hbox>
+            <description class="desc">&spambee.spambtonactive.desc;</description>
+            <spacer flex="1"></spacer>
+        </vbox>
+
+    <!-- mandatory to recreate the functionality of the preference attribute -->
+    <script type="application/javascript" src="chrome://spambee/content/spambee/extensionConfig.js"/>
+    <script type="application/javascript" src="chrome://spambee/content/spambee/include/verifrom_api.js"/>
+    <script src="chrome://global/content/preferencesBindings.js"
+            type="application/javascript"/>
+    <script type="application/javascript" src="chrome://spambee/content/spambee/settings.js"/>
+<!--</prefpane>-->
+</dialog>

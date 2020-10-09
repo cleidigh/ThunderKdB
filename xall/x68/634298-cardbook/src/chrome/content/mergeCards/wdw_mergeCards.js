@@ -643,7 +643,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			} else {
 				var myViewResultArgs = {cardIn: myOutCard, cardOut: {}, editionMode: "ViewResult", cardEditionAction: ""};
 			}
-			var myWindow = window.openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xhtml", "", cardbookRepository.modalWindowParams, myViewResultArgs);
+			var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xhtml", "", cardbookRepository.modalWindowParams, myViewResultArgs);
 			if (myViewResultArgs.cardEditionAction == "CREATE" || myViewResultArgs.cardEditionAction == "CREATEANDREPLACE") {
 				window.arguments[0].action = myViewResultArgs.cardEditionAction;
 				window.arguments[0].cardsOut = [myViewResultArgs.cardOut];

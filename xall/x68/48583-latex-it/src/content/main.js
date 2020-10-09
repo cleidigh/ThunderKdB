@@ -94,6 +94,7 @@ var tblatex = {
     var st = 0;
     var temp_file;
     try {
+      var deletetempfiles = !prefs.getBoolPref("keeptempfiles");
       var debug = prefs.getBoolPref("debug");
       if (debug) {
         var env = Components.classes["@mozilla.org/process/environment;1"]
@@ -104,8 +105,25 @@ var tblatex = {
 
       if (g_image_cache[latex_expr+font_px]) {
         if (debug)
-          log += "Found a cached image file "+g_image_cache[latex_expr+font_px]+", returning\n";
-        return [0, g_image_cache[latex_expr+font_px], 0, log+"Image was already generated\n"];
+          log += "Found a cached image file "+g_image_cache[latex_expr+font_px].png+" (depth="+g_image_cache[latex_expr+font_px].depth+"), returning\n";
+        return [0, g_image_cache[latex_expr+font_px].png, g_image_cache[latex_expr+font_px].depth, log+"Image was already generated\n"];
+      }
+
+      // Check if the LaTeX expression (that is, the whole file) contains the required packages.
+      // At the moment, it checks for the minimum of
+      // - \usepackage[active]{preview}
+      // which must not be commented out.
+      //
+      // The 'preview' package is needed for the baseline alignment with the surrounding text
+      // introduced in v0.7.x.
+      //
+      // If the package(s) cannot be found, an alert message window is shown, informing the user.
+      var re = /^[^%]*\\usepackage\[(.*,\s*)?active(,.*)?\]{(.*,\s*)?preview(,.*)?}/;
+      var package_match = latex_expr.match(re);
+      if (!package_match) {
+        alert("Latex It! Error - Nothing added!\n\nThe package 'preview' cannot be found in the LaTeX file.\nThe inclusion of the LaTeX package 'preview' (with option 'active') is mandatory for the generated pictures to be aligned with the surrounding text!\n\nSolution:\n\tInsert a line with\n\t\t\\usepackage[active,displaymath,textmath]{preview}\n\tin the preamble of your LaTeX template or complex expression.");
+        log += "!!! The package 'preview' cannot be found in the LaTeX file.\n";
+        return [2, "", 0, log];
       }
 
       var init_file = function(path) {
@@ -114,8 +132,9 @@ var tblatex = {
           f.initWithPath(path);
           return f;
         } catch (e) {
+          alert("Latex It! Error\n\nThis path is malformed:\n\t"+path+"\n\nSolution:\n\tSet the path properly in the add-on's options dialog (☰>Add-ons>Latex It!)");
           log += "!!! This path is malformed: "+path+".\n"+
-            "Possible reasons include: you didn't setup the paths properly in the addon's options.\n";
+            "Possible reasons include: you didn't setup the paths properly in the add-on's options.\n";
           return {
             exists: function () { return false; }
           };
@@ -129,12 +148,14 @@ var tblatex = {
 
       var latex_bin = init_file(prefs.getCharPref("latex_path"));
       if (!latex_bin.exists()) {
-        log += "!!! Wrong path for latex bin. Please set the right path in the options dialog first.\n";
+        alert("Latex It! Error\n\nThe 'latex' executable cannot be found.\n\nSolution:\n\tSet the right path in the add-on's options dialog (☰>Add-ons>Latex It!)");
+        log += "!!! Wrong path for 'latex' executable. Please set the right path in the options dialog first.\n";
         return [2, "", 0, log];
       }
       var dvipng_bin = init_file(prefs.getCharPref("dvipng_path"));
       if (!dvipng_bin.exists()) {
-        log += "!!! Wrong path for dvipng bin. Please set the right path in the options dialog first.\n";
+        alert("Latex It! Error\n\nThe 'dvipng' executable cannot be found.\n\nSolution:\n\tSet the right path in the add-on's options dialog (☰>Add-ons>Latex It!)");
+        log += "!!! Wrong path for 'dvipng' executable. Please set the right path in the options dialog first.\n";
         return [2, "", 0, log];
       }
       // Since version 0.7.1 we support the alignment of the inserted pictures
@@ -219,12 +240,13 @@ var tblatex = {
       ["log", "aux"].forEach(function (ext) {
           var file = init_file(temp_dir);
           file.append(temp_file_noext+"."+ext);
-          file.remove(false);
+          if (deletetempfiles) file.remove(false);
         });
 
       var dvi_file = init_file(temp_dir);
       dvi_file.append(temp_file_noext+".dvi");
       if (!dvi_file.exists()) {
+        // alert("Latex It! Error\n\nLaTeX did not output a .dvi file.\n\nSolution:\n\tWe left the .tex file there:\n\t\t"+temp_file.path+"\n\tTry to run 'latex' on it by yourself...");
         log += "!!! LaTeX did not output a .dvi file, something definitely went wrong. Aborting.\n";
         return [2, "", 0, log];
       }
@@ -275,14 +297,14 @@ var tblatex = {
       var shell_process = init_process(shell_bin);
       var dvipng_args = [dvipng_bin.path, "--depth", "-T", "tight", "-D", dpi, "-o", png_file.path, dvi_file.path, ">", depth_file.path];
       shell_process.run(true, [shell_option, dvipng_args.join(" ")], 2);
-      dvi_file.remove(false);
+      if (deletetempfiles) dvi_file.remove(false);
       if (debug)
         log += "I ran "+shell_bin.path+" -c '"+dvipng_args.join(" ")+"'\n";
       if (shell_process.exitValue) {
+        // alert("Latex It! Error\n\nWhen converting the .dvi to a .png bitmap, 'dvipng' failed (Error code: "+shell_process.exitValue+")\n\nSolution:\n\tWe left the .dvi file there:\n\t\t"+temp_file.path+"\n\tTry to run 'dvipng --depth' on it by yourself...");
         log += "!!! dvipng failed with error code "+shell_process.exitValue+". Aborting.\n";
         return [2, "", 0, log];
       }
-      g_image_cache[latex_expr+font_px] = png_file.path;
 
       if (debug) {
         log += ("*** Status is "+st+"\n");
@@ -299,7 +321,8 @@ var tblatex = {
 
       // Read the depth (distance between base of image and baseline) from the depth file
       if (!depth_file.exists()) {
-        log += "dvipng did not put out a depth file. Continuing without alignment.\n";
+        log += "dvipng did not output a depth file. Continuing without alignment.\n";
+        g_image_cache[latex_expr+font_px] = {png: png_file.path, depth: 0};
         return [st, png_file.path, 0, log];
       }
 
@@ -330,18 +353,20 @@ var tblatex = {
       // Close input stream
       istream.close();
       
-      depth_file.remove(false);
+      if (deletetempfiles) depth_file.remove(false);
 
       // Only delete the temporary file at this point, so that it's left on disk
       //  in case of error.
-      temp_file.remove(false);
+      if (deletetempfiles) temp_file.remove(false);
 
+      g_image_cache[latex_expr+font_px] = {png: png_file.path, depth: depth};
       return [st, png_file.path, depth, log];
     } catch (e) {
+      // alert("Latex It! Error\n\nSevere error. Missing package?\n\nSolution:\n\tWe left the .tex file there:\n\t\t"+temp_file.path+"\n\tTry to run 'latex' and 'dvipng --depth' on it by yourself...");
       dump(e+"\n");
       dump(e.stack+"\n");
       log += "!!! Severe error. Missing package?\n";
-      log += "We left the .tex file there: "+temp_file.path+", try to run latex on it by yourself...\n";
+      log += "We left the .tex file there: "+temp_file.path+", try to run 'latex' and 'dvipng --depth' on it by yourself...\n";
       return [2, "", 0, log];
     }
   }
@@ -421,7 +446,7 @@ var tblatex = {
     var write_log = function(str) { if (!write_log_func) write_log_func = open_log(); return write_log_func(str); };
     var editor = GetCurrentEditor();
     if (!nodes.length && !silent)
-      write_log("No LaTeX $$ expressions found\n");
+      write_log("No unconverted LaTeX $$ expression was found\n");
     for (var i = 0; i < nodes.length; ++i) (function (i) { /* Need a real scope here and there is no let-binding available in Thunderbird 2 */
       var elt = nodes[i];
       if (!silent)
@@ -477,7 +502,7 @@ var tblatex = {
     if (event.button == 2) return;
     var editor_elt = document.getElementById("content-frame");
     if (editor_elt.editortype != "htmlmail") {
-      alert("Cannot Latexify plain text emails. Start again by opening the message composer window while holding the 'Shift' key.");
+      alert("Latex It! Error\n\nCannot Latexify plain text emails.\n\nSolution:\n\tStart again by opening the message composer window in HTML mode, this can be achieved by holding the 'Shift' key while pressing the button.");
       return;
     }
 
@@ -686,13 +711,15 @@ var tblatex = {
   window.addEventListener("unload",
     // Remove all cached images on closing the composer window
     function() {
-      for (var key in g_image_cache) {
-        var f = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
-        try {
-          f.initWithPath(g_image_cache[key]);
-          f.remove(false);
-          delete g_image_cache[key];
-        } catch (e) { }
+      if (!prefs.getBoolPref("keeptempfiles")) {
+        for (var key in g_image_cache) {
+          var f = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
+          try {
+            f.initWithPath(g_image_cache[key]);
+            f.remove(false);
+            delete g_image_cache[key];
+          } catch (e) { }
+        }
       }
     }, false);
 })()

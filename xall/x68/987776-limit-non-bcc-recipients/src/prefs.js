@@ -2,30 +2,24 @@ window.onload = function() {
 
 //Localisation
   document.getElementById("prefsNonBCCLimit").textContent = browser.i18n.getMessage("prefsNonBCCLimit");
-
+  document.getElementById("prefsStrictLimit").textContent = browser.i18n.getMessage("prefsStrictLimit"); 
 
 // Retrieve the stored prefs
-// Same code here and in background.js in case this runs first if addon page open
+// Prefs are set up in background.js which always seems to run first
   var prefs = new Object() ;
   let gettingItem = browser.storage.local.get('prefs');
   gettingItem.then(onGot, onError);
 
   function onGot(item) {
-
-    if (item['prefs']!=null) {
       prefs = item['prefs'] ;
-    }
-    else {
-// Set up defaults if prefs absent
-      prefs['maxNonBCC'] = 10 ;
 
-      browser.storage.local.set({'prefs': prefs})
-        .then( null, onError);
-      }
- // Populate prefs on page
+// Populate prefs on page
       var maxNonBCCParam = document.querySelector('#maxNonBCC');
       maxNonBCCParam.value = prefs['maxNonBCC'] ;
-  }
+
+      var strictLimit = document.querySelector('#strictLimit');
+      strictLimit.checked = prefs['strictLimit'] ;
+    }
 
   function onError(error) {
     console.log("Limit non-BCC recipients: "+ error)
@@ -35,8 +29,20 @@ window.onload = function() {
   const inputMaxNonBCC = document.getElementById('maxNonBCC');
   inputMaxNonBCC.addEventListener('change', updateValue);
 
+  const inputStrictLimit = document.getElementById('strictLimit');
+  inputStrictLimit.addEventListener('change', updateStrict);
+
+// Update to max non-BCC number
   function updateValue(e) {
     prefs['maxNonBCC'] = e.srcElement.value;
+    browser.storage.local.set({'prefs': prefs}, onCompletion ) ;
+// Send new prefs to background
+    browser.runtime.sendMessage(prefs).catch();
+  }
+
+// Update to strict limit checkbox
+  function updateStrict(e) {
+    prefs['strictLimit'] = e.srcElement.checked;
     browser.storage.local.set({'prefs': prefs}, onCompletion ) ;
 // Send new prefs to background
     browser.runtime.sendMessage(prefs).catch();

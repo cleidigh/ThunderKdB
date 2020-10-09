@@ -146,15 +146,6 @@
 								</groupbox>
 							</vbox>
 						</hbox>
-						<groupbox id="fnGroupbox">
-							<vbox>
-								<label id="fnLabel" class="header">__CARDBOOKMSG_fnLabel__</label>
-								<hbox flex="1" class="input-container">
-									<html:input id="fnTextBox"/>
-								</hbox>
-							</vbox>
-						</groupbox>
-						<spacer flex="100"/>
 					</vbox>
 					<vbox align="center" width="170px">
 						<hbox id="imageBox" align="center" height="170px">
@@ -165,6 +156,13 @@
 						</hbox>
 					</vbox>
 				</hbox>
+				<groupbox id="fnGroupbox">
+					<label id="fnLabel" class="header">__CARDBOOKMSG_fnLabel__</label>
+					<hbox flex="1" class="input-container">
+						<html:input id="fnTextBox" flex="1"/>
+						<checkbox id="preferDisplayNameCheckBox" label="__CARDBOOKMSG_preferDisplayNameCheckBoxLabel__" checked="true"/>
+					</hbox>
+				</groupbox>
 				<hbox>
 					<groupbox id="persGroupbox" flex="1">
 						<hbox align="center">
@@ -254,7 +252,7 @@
 									<html:input id="anniversaryTextBox"/>
 								</row>
 								<row align="center">
-									<html:input id="othersTextBox" hidden="true"/>
+									<html:textarea id="othersTextBox" hidden="true"/>
 								</row>
 								<row align="center">
 									<html:input id="photolocalURITextBox" hidden="true"/>
@@ -389,15 +387,15 @@
 											hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="availableCardsName"
 											onclick="wdw_cardEdition.sortTrees(event, 'availableCards');">
 											<treecols id="availableCardsTreeCols">
-												<treecol id="availableCardsName" label="__CARDBOOKMSG_nameLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="availableCardsName" label="__CARDBOOKMSG_nameLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 												<splitter class="tree-splitter"/>
-												<treecol id="availableCardsUid" label="__CARDBOOKMSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="availableCardsUid" label="__CARDBOOKMSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 												<splitter class="tree-splitter"/>
-												<treecol id="availableCardsFn" label="__CARDBOOKMSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="availableCardsFn" label="__CARDBOOKMSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 												<splitter class="tree-splitter"/>
-												<treecol id="availableCardsLastname" label="__CARDBOOKMSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="availableCardsLastname" label="__CARDBOOKMSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 												<splitter class="tree-splitter"/>
-												<treecol id="availableCardsFirstname" label="__CARDBOOKMSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="availableCardsFirstname" label="__CARDBOOKMSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 											</treecols>
 											<treechildren id="availableCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);" ondragstart="wdw_cardEdition.startDrag(event, this);"/>
 										</tree>
@@ -422,15 +420,15 @@
 											hidecolumnpicker="false" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="addedCardsName"
 											onclick="wdw_cardEdition.sortTrees(event, 'addedCards');">
 											<treecols id="addedCardsTreeCols">
-												<treecol id="addedCardsName" label="__CARDBOOKMSG_nameOrEmailLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="addedCardsName" label="__CARDBOOKMSG_nameOrEmailLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 												<splitter class="tree-splitter"/>
-												<treecol id="addedCardsUid" label="__CARDBOOKMSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="addedCardsUid" label="__CARDBOOKMSG_uidLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 												<splitter class="tree-splitter"/>
-												<treecol id="addedCardsFn" label="__CARDBOOKMSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="addedCardsFn" label="__CARDBOOKMSG_fnLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 												<splitter class="tree-splitter"/>
-												<treecol id="addedCardsLastname" label="__CARDBOOKMSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="addedCardsLastname" label="__CARDBOOKMSG_lastnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 												<splitter class="tree-splitter"/>
-												<treecol id="addedCardsFirstname" label="__CARDBOOKMSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" class="sortDirectionIndicator" sortDirection="ascending" closemenu="none"/>
+												<treecol id="addedCardsFirstname" label="__CARDBOOKMSG_firstnameLabel__" flex="1" persist="width ordinal hidden" hidden="true" style="text-align:left" sortDirection="ascending" closemenu="none"/>
 											</treecols>
 											<treechildren id="addedCardsTreeChildren" ondblclick="wdw_cardEdition.modifyLists(this);" ondragstart="wdw_cardEdition.startDrag(event, this);"/>
 										</tree>

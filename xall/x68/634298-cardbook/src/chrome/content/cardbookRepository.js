@@ -18,6 +18,19 @@ var cardbookRepository = {
 	// in linux when opened from modal dialog
 	colorPickableDialogParams : (AppConstants.platform == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen",
 	colorPickableModalDialogParams : (AppConstants.platform == 'Linux') ? "chrome,titlebar,resizable,minimizable=no" : "modal,chrome,titlebar,resizable,minimizable=no",
+	countriesList : ["ad","ae","af","ag","ai","al","am","ao","aq","ar","as","at","au","aw","az","ba","bb","bd","be","bf","bg",
+						"bh","bi","bj","bl","bm","bn","bo","bq","br","bs","bt","bv","bw","by","bz","ca","cc","cd","cf","cg","ch",
+						"ci","ck","cl","cm","cn","co","cp","cr","cu","cv","cw","cx","cy","cz","de","dg","dj","dk","dm","do","dz",
+						"ec","ee","eg","eh","er","es","et","fi","fj","fk","fm","fo","fr","ga","gb","gd","ge","gf","gg","gh","gi",
+						"gl","gm","gn","gp","gq","gr","gs","gt","gu","gw","gy","hk","hm","hn","hr","ht","hu","id","ie","il","im",
+						"in","io","iq","ir","is","it","je","jm","jo","jp","ke","kg","kh","ki","km","kn","kp","kr","kw","ky","kz",
+						"la","lb","lc","li","lk","lr","ls","lt","lu","lv","ly","ma","mc","md","me","mf","mg","mh","mk","ml","mm",
+						"mn","mo","mp","mq","mr","ms","mt","mu","mv","mw","mx","my","mz","na","nc","ne","nf","ng","ni","nl","no",
+						"np","nr","nu","nz","om","pa","pe","pf","pg","ph","pk","pl","pm","pn","pr","pt","pw","py","qa","qm","qs",
+						"qu","qw","qx","qz","re","ro","rs","ru","rw","sa","sb","sc","sd","se","sg","sh","si","sk","sl","sm","sn",
+						"so","sr","ss","st","sv","sx","sy","sz","tc","td","tf","tg","th","tj","tk","tl","tm","tn","to","tr","tt",
+						"tv","tw","tz","ua","ug","us","uy","uz","va","vc","ve","vg","vi","vn","vu","wf","ws","xa","xb","xc","xd",
+						"xe","xg","xh","xj","xk","xl","xm","xp","xq","xr","xs","xt","xu","xv","xw","ye","yt","za","zm","zw"],
 	
 	allColumns : { "display": ["fn"],
 					"personal": ["prefixname", "firstname", "othername", "lastname", "suffixname", "nickname", "gender", "bday",
@@ -114,6 +127,7 @@ var cardbookRepository = {
 	cardbookComplexSearch : {},
 
 	cardbookMailPopularityIndex : {},
+	cardbookPreferDisplayNameIndex : {},
 	cardbookDuplicateIndex : {},
 
 	cardbookDirRequest : {},
@@ -231,6 +245,7 @@ var cardbookRepository = {
 	cardbookUncategorizedCards : "",
 	
 	cardbookMailPopularityFile : "mailPopularityIndex.txt",
+	cardbookPreferDisplayNameFile : "mailPreferDisplayName.txt",
 	cardbookDuplicateFile : "duplicateIndex.txt",
 
 	customFields : {},
@@ -1617,7 +1632,7 @@ var cardbookRepository = {
 					if (oldCats.indexOf(aNewCard.categories[i]) == -1) {
 						cardbookRepository.cardbookUtils.formatStringForOutput("categoryCreated", [myDirPrefIdName, aNewCard.categories[i]]);
 						if (aCheckCategory) {
-							cardbookActions.addActivity("categoryCreated", [myDirPrefIdName, aNewCard.categories[i]], "addItem");
+							cardbookRepository.cardbookActions.addActivity("categoryCreated", [myDirPrefIdName, aNewCard.categories[i]], "addItem");
 						}
 					}
 				}
@@ -1627,7 +1642,7 @@ var cardbookRepository = {
 					if (cardbookRepository.cardbookAccountsCategories[aNewCard.dirPrefId].indexOf(aOldCard.categories[i]) == -1) {
 						cardbookRepository.cardbookUtils.formatStringForOutput("categoryDeleted", [myDirPrefIdName, aOldCard.categories[i]]);
 						if (aCheckCategory) {
-							cardbookActions.addActivity("categoryDeleted", [myDirPrefIdName, aOldCard.categories[i]], "deleteMail");
+							cardbookRepository.cardbookActions.addActivity("categoryDeleted", [myDirPrefIdName, aOldCard.categories[i]], "deleteMail");
 						}
 					}
 				}
@@ -1674,7 +1689,7 @@ var cardbookRepository = {
 				for (var j = 0; j < myCardCategories.length; j++) {
 					if (cardbookRepository.cardbookAccountsCategories[myDirPrefId].indexOf(myCardCategories[j]) == -1) {
 						cardbookRepository.cardbookUtils.formatStringForOutput("categoryDeleted", [myDirPrefIdName, myCardCategories[j]]);
-						cardbookActions.addActivity("categoryDeleted", [myDirPrefIdName, myCardCategories[j]], "deleteMail");
+						cardbookRepository.cardbookActions.addActivity("categoryDeleted", [myDirPrefIdName, myCardCategories[j]], "deleteMail");
 					}
 				}
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
@@ -1724,7 +1739,7 @@ var cardbookRepository = {
 						for (var j = 0; j < myCardCategories.length; j++) {
 							if (cardbookRepository.cardbookAccountsCategories[myDirPrefId].indexOf(myCardCategories[j]) == -1) {
 								cardbookRepository.cardbookUtils.formatStringForOutput("categoryDeleted", [myDirPrefIdName, myCardCategories[j]]);
-								cardbookActions.addActivity("categoryDeleted", [myDirPrefIdName, myCardCategories[j]], "deleteMail");
+								cardbookRepository.cardbookActions.addActivity("categoryDeleted", [myDirPrefIdName, myCardCategories[j]], "deleteMail");
 							}
 						}
 						if (aActionId && cardbookRepository.currentAction[aActionId]) {
@@ -1876,9 +1891,13 @@ var cardbookRepository = {
 	getABIconType: function (aType) {
 		switch(aType) {
 			case "DIRECTORY":
+				return "directory";
+				break;
 			case "FILE":
+				return "file";
+				break;
 			case "LOCALDB":
-				return "local";
+				return "localdb";
 				break;
 			case "APPLE":
 			case "CARDDAV":
@@ -1890,7 +1909,7 @@ var cardbookRepository = {
 				return "search";
 				break;
 			case "ALL":
-				return [ "local", "remote", "search" ];
+				return [ "directory", "file", "localdb", "remote", "search" ];
 				break;
 		};
 		return aType.toLowerCase();
@@ -1932,5 +1951,6 @@ loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.jsm", ca
 loader.loadSubScript("chrome://cardbook/content/cardbookTypes.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookDiscovery.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookMailPopularity.jsm", cardbookRepository);
+loader.loadSubScript("chrome://cardbook/content/cardbookPreferDisplayName.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookDates.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookIndexedDB.js", this); //doesn't work with cardbookRepository instead of this

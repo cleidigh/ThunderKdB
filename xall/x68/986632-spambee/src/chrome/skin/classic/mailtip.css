@@ -1,0 +1,50 @@
+[spambee-tip] {
+    position: relative;
+    cursor: no-drop;
+    border-bottom: 2px dotted #BE0044;
+    z-index: 2147483647;
+}
+/*
+[spambee-tip]:after {
+    content:"";
+    background-image: url('chrome://spambee/skin/icon48.png');
+    background-size: 25px 25px;
+    width:25px;
+    height:25px;
+    position: absolute;
+    top: 0;
+    left: 105%;
+    z-index: 2147483647;
+}
+
+[spambee-tip]:before {
+    content: "⬅︎";
+    position: absolute;
+    top: 5px;
+    left: 101%;
+    font-size: 1em;
+    color: #BE0044;
+    z-index: 2147483647;
+}*/
+
+[spambee-tip]:after {
+    position: absolute;
+    top: 5px;
+    left: 107%;
+    font-size: 1em;
+    color: #BE0044;
+    z-index: 2147483647;
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAACVklEQVQ4jY2U30tTYRjH/RO88SZ2UUFQ0cUgoqAIk6AhZUl1ETUZC1Gp1cC8UIbO9cOWelMD3SwbDGbBiTnIPKlZ5I515RyLGC6yHYN5MfHAYd1+umnHc86Oo+/le57zeb7Py/N+6+osBLiABLDOjtLAS6DR6h8ryCUTAIBUOkdclPRHHwF7LZDfDNErLkrcfjypP9oGXLuNZZCilgkLCzh9IZy+EFOixP4LdxgX5s2ldj3Ibv6azcs4fSEKxZJh1GM3+mjxDpvLt4H6Cmy6cjqztAKgjVMolggLC2TzstakqSNgdQv+CkxTX+gVgYhANi8TFyVOtPk40HKXPee6NJdu/5gVbL0KViiWcNwaIpuXic0scfqmn4amdo5e79XcBaNJKxiAvQr28EWCmaUVvv/8zZn2AA1N7bgGdtzUgDUaYKl0DnF5lUKxhKKWCUaTxN5+RlHLWo1pPTTF36X6LWG7KZuXq5zFRYlgNEkqnaMKpt90vSNFLeP0hVDUMopaZuofRL8+BhjARe8w779kGBfmSaVzWpOznQ9o9jwhGE0SFyUDpNLMsGcA13qfceRqD63do7R2j3LKPcDhKz3YHB72nfcSfvMBeXMLeXPLAJtILMqGF/B67ituf4RZKYO8ucVyZo1ZKYN3JMbB1nvYHB4OXe6pcjWRWNzouD/RbHiby5m1qkuv6OnUHCddg9gcHoYmpxkX5glGk3Q9ep6ob+zc+9+poah/6B8TON7Wj83hqTRVsEoNU579sgJ++7GB2x/BOxID+EStPLOIpGkTeBWIUiNp/wL1eCe7YviSUQAAAABJRU5ErkJggg==);
+}
+
+/* on génère un second élément en :before*/
+
+[spambee-tip]:before {
+    position: absolute;
+    top: 5px;
+    left: 101%;
+    font-size: 1em;
+    color: #BE0044;
+    z-index: 2147483647;
+    content: "⬅";
+}

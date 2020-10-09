@@ -1,0 +1,229 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/* ..... thread column ..... */
+
+treecol.threadColumnHeader {
+/*
+  list-style-image: url(chrome://messenger/skin/icons/thread-col.svg);
+*/
+  list-style-image: url("./icons/thread-col.svg");
+}
+
+treechildren::-moz-tree-image(threadCol, container) {
+  list-style-image: url("./icons/thread.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(threadCol, container, new) {
+  list-style-image: url("./icons/thread.png");
+  -moz-image-region: rect(16px 16px 32px 0);
+}
+
+treechildren::-moz-tree-image(threadCol, watch) {
+  list-style-image: url("./icons/thread.png");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+treechildren::-moz-tree-image(threadCol, watch, new) {
+  list-style-image: url("./icons/thread.png");
+  -moz-image-region: rect(16px 32px 32px 16px);
+}
+
+treechildren::-moz-tree-image(threadCol, ignoreSubthread) {
+  list-style-image: url("./icons/thread.png");
+  -moz-image-region: rect(16px 48px 32px 32px);
+}
+
+treechildren::-moz-tree-image(threadCol, ignore) {
+  list-style-image: url("./icons/thread.png");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+/* ..... read column ..... */
+
+treecol.readColumnHeader {
+/*
+  list-style-image: url(chrome://messenger/skin/icons/readcol.svg);
+*/
+  list-style-image: url("./icons/readcol.svg");
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader) {
+  list-style-image: url("./icons/readmail.png");
+  margin-inline-start: -1px;
+}
+
+treechildren::-moz-tree-image(unreadButtonColHeader, unread) {
+  list-style-image: url("./icons/unreadmail.png");
+}
+
+/* ..... attachment column ..... */
+
+treecol.attachmentColumnHeader {
+/*
+  list-style-image: url(chrome://messenger/skin/icons/attachment-col.svg);
+*/
+  list-style-image: url("./icons/attachment-col.svg");
+}
+
+treechildren::-moz-tree-image(attachmentCol, attach) {
+  list-style-image: url("./icons/attachment.svg");
+}
+
+/*
+treechildren::-moz-tree-image(attachmentCol, attach, selected, focus) {
+  fill: currentColor;
+}
+*/
+
+/* ..... flag column ..... */
+
+treecol.flagColumnHeader {
+/*
+  list-style-image: url(chrome://messenger/skin/icons/star-col.svg);
+*/
+  list-style-image: url("./icons/star-col.svg");
+}
+
+treechildren::-moz-tree-image(flaggedCol) {
+  list-style-image: none;
+}
+
+treechildren::-moz-tree-image(flaggedCol, flagged) {
+  list-style-image: url("./icons/star.png");
+  margin-inline-start: 1px;
+}
+
+/* ..... junkStatus column ..... */
+
+treecol.junkStatusHeader {
+/*
+  list-style-image: url(chrome://messenger/skin/icons/junk-col.svg);
+*/
+  list-style-image: url("./icons/junk-col.svg");
+}
+
+treechildren::-moz-tree-image(junkStatusCol) {
+  list-style-image: url("./icons/readmail.png");
+  margin-inline-start: -1px;
+}
+
+treechildren::-moz-tree-image(junkStatusCol, junk) {
+  list-style-image: url("./icons/junk.png");
+}
+
+treechildren::-moz-tree-image(junkStatusCol, notjunk) {
+  list-style-image: url("./icons/notjunk.png");
+}
+
+/* ..... correspondent column ..... */
+
+treechildren::-moz-tree-image(correspondentCol, incoming) {
+  list-style-image: url("./icons/message-incoming.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(correspondentCol, outgoing) {
+  list-style-image: url("./icons/message-outgoing.png") !important;
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+/* ..... subject column ..... */
+
+treechildren::-moz-tree-image(subjectCol) {
+  -moz-margin-end: 4px;
+  list-style-image: url("./icons/message.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(subjectCol, read) {
+  -moz-image-region: rect(16px 16px 32px 0);
+}
+
+treechildren::-moz-tree-image(subjectCol, forwarded) {
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+treechildren::-moz-tree-image(subjectCol, read, forwarded) {
+  -moz-image-region: rect(16px 48px 32px 32px);
+}
+
+treechildren::-moz-tree-image(subjectCol, replied) {
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+treechildren::-moz-tree-image(subjectCol, read, replied) {
+  -moz-image-region: rect(16px 32px 32px 16px);
+}
+
+treechildren::-moz-tree-image(subjectCol, replied, forwarded) {
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+treechildren::-moz-tree-image(subjectCol, read, replied, forwarded) {
+  -moz-image-region: rect(16px 64px 32px 48px);
+}
+
+treechildren::-moz-tree-image(subjectCol, new) {
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+treechildren::-moz-tree-image(subjectCol, news) {
+  -moz-image-region: rect(32px 16px 48px 0);
+}
+
+treechildren::-moz-tree-image(subjectCol, news, forwarded) {
+  -moz-image-region: rect(32px 48px 48px 32px);
+}
+
+treechildren::-moz-tree-image(subjectCol, news, replied) {
+  -moz-image-region: rect(32px 32px 48px 16px);
+}
+
+treechildren::-moz-tree-image(subjectCol, news, replied, forwarded) {
+  -moz-image-region: rect(32px 64px 48px 48px);
+}
+
+treechildren::-moz-tree-image(subjectCol, news, new) {
+  -moz-image-region: rect(32px 96px 48px 80px);
+}
+
+treechildren::-moz-tree-image(subjectCol, rss) {
+  list-style-image: url("./icons/rss-feed.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+treechildren::-moz-tree-image(subjectCol, rss, forwarded) {
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+treechildren::-moz-tree-image(subjectCol, rss, new) {
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+/* IMPORTANT: make sure the imap-deleted column always comes after the replied/forwarded style rules.
+   This ensures that we show that the message is marked as deleted over status information. */
+
+treechildren::-moz-tree-image(subjectCol, imapdeleted) {
+  list-style-image: url("./icons/message.png");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+#sizeCol,
+#unreadCol,
+#totalCol {
+  text-align: right;
+}
+
+/* Make sure the min height is small so we can resize the pane vertically. */
+
+#messagepanebox {
+  min-height: 10px;
+  height: 0px;
+}
+

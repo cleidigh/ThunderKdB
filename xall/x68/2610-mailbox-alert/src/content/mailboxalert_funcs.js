@@ -449,7 +449,7 @@ MailboxAlert.showMessage = function (alert_data, show_icon, icon_file, subject_p
         // use some unique value to identify the alert window, so they do not interfere
         // with each other
         var date = Date.now();
-        window.openDialog('chrome://mailboxalert/content/newmailalert.xul', date, "chrome,titlebar=no,popup=yes,modal=no", subject_pref, message_text, show_icon, icon_file, alert_data.orig_mailbox, alert_data.last_unread, position, duration, effect, onclick, custom_position_x, custom_position_y, custom_position_anchor);
+        window.openDialog('chrome://mailboxalert/content/newmailalert.xhtml', date, "chrome,titlebar=no,popup=yes,modal=no", subject_pref, message_text, show_icon, icon_file, alert_data.orig_mailbox, alert_data.last_unread, position, duration, effect, onclick, custom_position_x, custom_position_y, custom_position_anchor);
     } catch (e) {
         alert(e);
     }
@@ -499,6 +499,9 @@ MailboxAlert.replaceCommandPart = function (alert_data, command, escape_html, al
     command = MailboxAlert.replaceEscape(already_quoted, command, "%sendername", MailboxAlert.escapeHTML(escape_html, alert_data.sender_name));
     //alert("6 is now: '" + command + "'");
     command = MailboxAlert.replaceEscape(already_quoted, command, "%sender", MailboxAlert.escapeHTML(escape_html, alert_data.sender));
+    command = MailboxAlert.replaceEscape(already_quoted, command, "%recipientaddress", MailboxAlert.escapeHTML(escape_html, alert_data.recipient_address));
+    command = MailboxAlert.replaceEscape(already_quoted, command, "%recipientname", MailboxAlert.escapeHTML(escape_html, alert_data.recipient_name));
+    command = MailboxAlert.replaceEscape(already_quoted, command, "%recipient", MailboxAlert.escapeHTML(escape_html, alert_data.recipient));
     command = MailboxAlert.replaceEscape(already_quoted, command, "%charset", MailboxAlert.escapeHTML(escape_html, alert_data.charset));
     command = MailboxAlert.replace(command, "%messagebytes", alert_data.message_bytes);
     command = MailboxAlert.replace(command, "%messagesize", alert_data.messageSize);
@@ -533,7 +536,7 @@ MailboxAlert.finalizeCommandPart = function (command_part, alert_data, escape_ht
 }
 
 
-MailboxAlert.executeCommand = function (alert_data, command, escape_html) {
+MailboxAlert.executeCommand = function (alert_data, command, escape_html, escape_windows_quotes) {
     var date_obj = new Date();
     date_obj.setTime(alert_data.date);
     var date_str = date_obj.toLocaleDateString()
@@ -571,12 +574,19 @@ MailboxAlert.executeCommand = function (alert_data, command, escape_html) {
                     var command_part_part = command_part_parts[j];
                     if (command_part_part.length > 0) {
                         command_part_part = MailboxAlert.finalizeCommandPart(command_part_part, alert_data, escape_html, in_quote, date_str, time_str);
-                        // finalize; put back original markers, and to conversion
+                        // If 'escape windows quotes' was selected, escape the single quotes again
+                        if (escape_windows_quotes) {
+                            command_part_part = MailboxAlert.replace(command_part_part, '"', '""')
+                        }
                         args.push(command_part_part);
                     }
                 }
             } else {
                 command_part = MailboxAlert.finalizeCommandPart(command_part, alert_data, escape_html, in_quote, date_str, time_str);
+                // If 'escape windows quotes' was selected, escape the single quotes again
+                if (escape_windows_quotes) {
+                    command_part = MailboxAlert.replace(command_part, '"', '""')
+                }
                 args.push(command_part);
             }
         }
@@ -649,7 +659,7 @@ MailboxAlert.executeCommand = function (alert_data, command, escape_html) {
 // Function to create one menu item as used in fillFolderMenu
 MailboxAlert.createMenuItem = function (label, value, checkbox) {
     const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-    var item = document.createElementNS(XUL_NS, "menuitem"); // create a new XUL menuitem
+    var item = document.createXULElement("menuitem"); // create a new XUL menuitem
     item.setAttribute("label", label);
     if (value) {
         item.setAttribute("value", value);
@@ -664,7 +674,7 @@ MailboxAlert.createMenuItem = function (label, value, checkbox) {
 
 MailboxAlert.createMenuSeparator = function () {
     const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-    var item = document.createElementNS(XUL_NS, "menuseparator"); // create a new XUL menuitem
+    var item = document.createXULElement("menuseparator"); // create a new XUL menuitem
     return item;
 }
 
@@ -741,7 +751,7 @@ MailboxAlert.fillFolderMenu = function(alert_menu, folder) {
 
     alert_menuitem = MailboxAlert.createMenuItem(stringsBundle.GetStringFromName('mailboxalert.menu.editalerts'), null, false);
     alert_menuitem.addEventListener("command",
-        function(){window.openDialog('chrome://mailboxalert/content/alert_list.xul',
+        function(){window.openDialog('chrome://mailboxalert/content/alert_list.xhtml',
                                      'mailboxalert_prefs', 'chrome');},
         false);
     alert_menu.appendChild(alert_menuitem);

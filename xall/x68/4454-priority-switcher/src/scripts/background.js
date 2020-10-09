@@ -36,7 +36,7 @@ var locales = {};
 async function init() {
   browser.browserAction.disable();
 
-  for (let key of Object.keys(prefs)) {
+  for (let key in prefs) {
     let result = await browser.storage.local.get(key);
     if (result[key] !== undefined) {
       prefs[key] = result[key];
@@ -60,8 +60,7 @@ async function init() {
 init();
 
 browser.storage.onChanged.addListener((changes, area) => {
-  let changedItems = Object.keys(changes);
-  for (let item of changedItems) {
+  for (let item in changes) {
     prefs[item] = changes[item].newValue;
     if (item == "deleteButtonEn" || item == "priorityButtonEn") {
       currentMsg = {}; //force icon switch
@@ -410,6 +409,9 @@ browser.runtime.onMessage.addListener(async (message) => {
         delMsgs = messageToBeDeleted.non_priority.concat(messageToBeDeleted.priority);
       }
       await browser.messages.delete(delMsgs, messageToBeDeleted.skipTrash);
+      break;
+    case "CLOSE_REQ":
+      await browser.windows.remove(message.windowId);
       break;
     default:
       break;

@@ -173,10 +173,10 @@ var threadkeyApi = class extends ExtensionCommon.ExtensionAPI {
           } catch(ex) {}
           if (threadkey.debug) console.log("init");
 
-          let locale = Services.locale.appLocaleAsBCP47.toLowerCase();
+          let locale = Services.locale.appLocaleAsBCP47;
           let locales = await threadkey.extension.promiseLocales();
           locale = locales.get(locale) || threadkey.extension.defaultLocale;
-          if (threadkey.debug) console.log("locale " + locale);
+          if (threadkey.debug) console.log("locale", locale);
 
           getMessages(threadkey.extension.localeData, "key_threadSort", messageAttrs);
           getMessages(threadkey.extension.localeData, "key_unthreadSort", messageAttrs);
@@ -187,7 +187,7 @@ var threadkeyApi = class extends ExtensionCommon.ExtensionAPI {
 
           let win = Services.wm.getMostRecentWindow("mail:3pane");
           if (win === null) {
-            console.log("no mail:3pane window found")
+            console.log("mail:3pane window not found")
           } else {
             if (win.document.readyState !== "complete") {
               if (threadkey.debug) console.log("await readyState complete");
@@ -401,8 +401,7 @@ function saveAttributes(doc, id, attrs) {
   if (node !== null) {
     attrs.forEach(attr => originalAttributes[attr] = node.getAttribute(attr));
     if (threadkey.debug) {
-      console.log("saveAttributes(" + id + ")");
-      console.log(originalAttributes);
+      console.log("saveAttributes(" + id + ")", originalAttributes);
     }
   }
 }
@@ -414,8 +413,7 @@ function restoreAttributes(doc, id) {
   if (originalAttributes.length > 0) {
     originalAttributes.forEach(([name, value]) => setAttribute(node, name, value));
     if (threadkey.debug) {
-      console.log("restoreAttributes(" + id + ")");
-      console.log(node);
+      console.log("restoreAttributes(" + id + ")", node);
     }
   } else {
     if (threadkey.debug) console.log("remove " + id);
@@ -429,8 +427,9 @@ function defineCommand(doc, command, oncommand) {
     if (threadkey.debug) console.log("remove " + command);
     node.parentNode.removeChild(node);
   } else {
+    let action = "";
     if (node === null) {
-      if (threadkey.debug) console.log("create " + command);
+      action = "create";
       let commandset = doc.getElementById("mailCommands") || doc.getElementById("commands");
       if (commandset === null) {
         let windowType = doc.documentElement.getAttribute("windowtype");
@@ -442,10 +441,10 @@ function defineCommand(doc, command, oncommand) {
       node.setAttribute("id", command);
       commandset.appendChild(node);
     } else {
-      if (threadkey.debug) console.log("change " + command);
+      action = "change";
     }
     setAttribute(node, "oncommand", oncommand);
-    if (threadkey.debug) console.log(node);
+    if (threadkey.debug) console.log(action, command, node);
   }
 }
 
@@ -455,43 +454,44 @@ function defineKey(doc, key, obj) {
     if (threadkey.debug) console.log("remove " + key);
     node.parentNode.removeChild(node);
   } else {
+    let action = "";
     let schema = threadkey[obj];
     if (node === null) {
-      if (threadkey.debug) console.log("create " + key);
+      action = "create";
       let keyset = doc.getElementById("mailKeys");
       if (keyset === null) {
         let windowType = doc.documentElement.getAttribute("windowtype");
-        if (threadkey.debug) console.log("mailKeys not found in " + windowType);
         keyset = doc.getElementsByTagName("keyset")[0];
-        if (threadkey.debug) console.log("keyset " + keyset);
+        if (threadkey.debug) console.log("mailKeys not found in " + windowType + ", using keyset " + keyset);
       }
       node = doc.createXULElement("key");
       node.setAttribute("id", key);
       keyset.appendChild(node);
     } else {
-      if (threadkey.debug) console.log("change " + key);
+      action = "change";
     }
     for (const [attr, value] of Object.entries(schema)) {
       if (attr !== "originalAttributes") {
         setAttribute(node, attr, value);
       }
     }
-    if (threadkey.debug) console.log(node);
+    if (threadkey.debug) console.log(action, key, node);
   }
 }
 
 function setKeyAttribute(doc, id, key) {
   let node = doc.getElementById(id);
   if (node !== null) {
+    let action = "";
     if (threadkey.debug) {
       if (key !== undefined && key !== "") {
-        console.log(id + ".setAttribute(\"key\", \"" + key + "\")");
+        action = "setAttribute(\"key\", \"" + key + "\");";
       } else {
-        console.log(id + ".removeAttribute(\"key\")");
+        action = "removeAttribute(\"key\");";
       }
     }
     setAttribute(node, "key", key);
-    if (threadkey.debug) console.log(node);
+    if (threadkey.debug) console.log(id + "." + action, node);
   } else {
     if (threadkey.debug) console.log("node " + id + " does not exist");
   }

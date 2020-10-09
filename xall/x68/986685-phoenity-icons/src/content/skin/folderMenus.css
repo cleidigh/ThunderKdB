@@ -1,0 +1,116 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== folderMenus.css ================================================
+  == Icons for menus which represent mail folder.
+  ======================================================================= */
+
+@namespace xhtml "http://www.w3.org/1999/xhtml";
+
+/* ::::: folder icons for menus ::::: */
+
+.folderMenuItem {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+.folderMenuItem[open="true"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+/* Newsgroup */
+.folderMenuItem[ServerType="nntp"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 160px 16px 144px);
+}
+
+/* Feed */
+.folderMenuItem[ServerType="rss"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 192px 16px 176px);
+}
+
+/* ..... special folders ..... */
+
+.folderMenuItem[SpecialFolder="Inbox"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+.folderMenuItem[SpecialFolder="Sent"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+.folderMenuItem[SpecialFolder="Outbox"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+.folderMenuItem[SpecialFolder="Drafts"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+.folderMenuItem[SpecialFolder="Templates"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 112px 16px 96px);
+}
+
+.folderMenuItem[SpecialFolder="Archive"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(16px 64px 32px 48px);
+}
+
+.folderMenuItem[SpecialFolder="Junk"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 128px 16px 112px);
+}
+
+.folderMenuItem[SpecialFolder="Trash"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 144px 16px 128px);
+}
+
+.folderMenuItem[SpecialFolder="Virtual"] {
+  list-style-image: url("./icons/folder.png");
+  -moz-image-region: rect(0 176px 16px 160px);
+}
+
+/* ..... servers ..... */
+
+.folderMenuItem[IsServer="true"] {
+  list-style-image: url("./icons/server.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+.folderMenuItem[IsServer="true"][ServerType="imap"][IsSecure="true"],
+.folderMenuItem[IsServer="true"][ServerType="pop3"][IsSecure="true"] {
+  list-style-image: url("./icons/server.png");
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+/* Local folders */
+.folderMenuItem[IsServer="true"][ServerType="none"] {
+  list-style-image: url("./icons/server.png");
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+/* News server */
+.folderMenuItem[IsServer="true"][ServerType="nntp"] {
+  list-style-image: url("./icons/server.png");
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+.folderMenuItem[IsServer="true"][ServerType="nntp"][IsSecure="true"] {
+  list-style-image: url("./icons/server.png");
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+/* Feed server */
+.folderMenuItem[IsServer="true"][ServerType="rss"] {
+  list-style-image: url("./icons/server.png");
+  -moz-image-region: rect(0 96px 16px 80px);
+}

@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+	"applications": {
+		"gecko": {
+			"id": "spambee@verifrom.com",
+			"strict_min_version": "68.0",
+			"strict_max_version": "73.*"
+		}
+	},
+	"icons": {
+		"16": "chrome/content/spambee/logo/16x16.png",
+		"32": "chrome/content/spambee/logo/32x32.png",
+		"48": "chrome/content/spambee/logo/48x48.png",
+		"96": "chrome/content/spambee/logo/96x96.png",
+		"128": "chrome/content/spambee/logo/128x128.png",
+		"256": "chrome/content/spambee/logo/256x256.png"
+	},
+	"name": "spambee",
+	"description": "SPAMBEE Mail Report Extension",
+	"version": "2.2.4",
+	"author": "VERIFROM for SPAMBEE",
+	"legacy": {
+		"type": "xul",
+		"options": {
+			"page": "chrome://spambee/content/spambee/settings.xul",
+			"open_in_tab": true
+		}
+	}
+}

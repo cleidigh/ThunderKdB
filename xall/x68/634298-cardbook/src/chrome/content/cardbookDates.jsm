@@ -371,7 +371,9 @@ var cardbookDates = {
 	},
 
 	getDateStringFromVCardDate: function (aValue, aDateFormat) {
-		if (aDateFormat == "4.0") {
+		if (!aValue) {
+			return "";
+		} else if (aDateFormat == "4.0") {
 			return aValue.replace(/^--/, "");
 		} else {
 			var myRegexp = new RegExp("^" + cardbookDates.defaultYear + "-?");

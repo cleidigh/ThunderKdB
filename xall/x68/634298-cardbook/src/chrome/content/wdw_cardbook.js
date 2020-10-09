@@ -77,7 +77,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 														class: 'treecol-image cardIconHeader', ordinal: myOrdinal++, closemenu: 'none'});
 					} else {
 						cardbookElementTools.addTreecol(myTreecols, myCode, myLabel, {flex: '1', persist: 'width ordinal hidden', style: 'text-align:left', hidden: 'true',
-														class: 'sortDirectionIndicator', sortDirection: 'ascending', ordinal: myOrdinal++, closemenu: 'none'});
+														sortDirection: 'ascending', ordinal: myOrdinal++, closemenu: 'none'});
 					}
 				}
 			}
@@ -491,7 +491,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				listOfSelectedCard = cardbookWindowUtils.getCardsFromCards();
 
 				var myArgs = {cardsIn: listOfSelectedCard, cardsOut: [], hideCreate: false, action: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
+				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
 				var myTopic = "cardsMerged";
 				var myActionId = cardbookActions.startAction(myTopic);
 				switch (myArgs.action) {
@@ -546,7 +546,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		findDuplicates: function (aDirPrefId) {
 			try {
 				var myArgs = {dirPrefId: aDirPrefId};
-				var myWindow = window.openDialog("chrome://cardbook/content/findDuplicates/wdw_findDuplicates.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
+				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/findDuplicates/wdw_findDuplicates.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_cardbook.findDuplicates error : " + e, "Error");
@@ -715,7 +715,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				var output = "";
 				var myArgs = {template: [], mode: "export", includePref: false, lineHeader: true, columnSeparator: ";",
 								filename: aFileLeafName, action: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
+				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/csvTranslator/wdw_csvTranslator.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
 				if (myArgs.action == "SAVE") {
 					var k = 0;
 					for (var i = 0; i < myArgs.template.length; i++) {
@@ -1745,13 +1745,13 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		displayBirthdayList: function() {
 			if (cardbookRepository.cardbookBirthdayPopup == 0) {
 				cardbookRepository.cardbookBirthdayPopup++;
-				var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdayList.xhtml", "", cardbookRepository.modalWindowParams);
+				var MyWindows = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/birthdays/wdw_birthdayList.xhtml", "", cardbookRepository.modalWindowParams);
 				cardbookRepository.cardbookBirthdayPopup--;
 			}
 		},
 	
 		displaySyncList: function() {
-			var MyWindows = window.openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xhtml", "", cardbookRepository.modalWindowParams);
+			var MyWindows = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/birthdays/wdw_birthdaySync.xhtml", "", cardbookRepository.modalWindowParams);
 		},
 
 		setSyncControl: function () {
@@ -1807,7 +1807,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					break;
 				}
 				if (!found) {
-					var myWindow = window.openDialog("chrome://cardbook/content/wdw_logEdition.xhtml", "", cardbookRepository.windowParams);
+					var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/wdw_logEdition.xhtml", "", cardbookRepository.windowParams);
 				}
 			}
 		},
@@ -1816,12 +1816,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var statusFeedback = Components.classes["@mozilla.org/messenger/statusfeedback;1"].createInstance();
 			statusFeedback = statusFeedback.QueryInterface(Components.interfaces.nsIMsgStatusFeedback);
 			var myArgs = {listOfCards: aListOfCards, title: aTitle, feedback: statusFeedback, doPrintPreview: true};
-			var printEngineWindow = window.openDialog("chrome://cardbook/content/print/wdw_cardbookPrint.xhtml", "", cardbookRepository.windowParams, myArgs);
+			var printEngineWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/print/wdw_cardbookPrint.xhtml", "", cardbookRepository.windowParams, myArgs);
 		},
 
 		addAddressbook: function (aAction, aDirPrefId) {
 			var myArgs = {action: aAction, dirPrefId: aDirPrefId, rootWindow: window};
-			var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xhtml", "", cardbookRepository.windowParams, myArgs);
+			var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xhtml", "", cardbookRepository.windowParams, myArgs);
 		},
 		
 		editAddressbook: function () {
@@ -1837,7 +1837,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					}
 					cardbookRepository.cardbookSynchronization.initMultipleOperations(myPrefId);
 					var myArgs = {dirPrefId: myPrefId, serverCallback: wdw_cardbook.modifyAddressbook};
-					var myWindow = window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksEdit.xhtml", "",
+					var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksEdit.xhtml", "",
 													   cardbookRepository.colorPickableDialogParams, myArgs);
 				}
 			}
@@ -2241,7 +2241,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					}
 				};
 				var myArgs = {type: "", context: "AddCat", typeAction: "", validationList: myValidationList, color: "", onSaved};
-				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xhtml", "", cardbookRepository.colorPickableModalDialogParams, myArgs);
+				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xhtml", "", cardbookRepository.colorPickableModalDialogParams, myArgs);
 			}
 		},
 
@@ -2362,7 +2362,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				var myArgs = {type: aNodeName, id: aNodeId, context: myContext, typeAction: "", validationList: myValidationList, 
 								color: cardbookRepository.cardbookNodeColors[aNodeName], oldColor: cardbookRepository.cardbookNodeColors[aNodeName],
 								onSaved};
-				var myWindow = window.openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xhtml", "", cardbookRepository.colorPickableModalDialogParams, myArgs);
+				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/wdw_cardbookRenameField.xhtml", "", cardbookRepository.colorPickableModalDialogParams, myArgs);
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_cardbook.renameNode error : " + e, "Error");

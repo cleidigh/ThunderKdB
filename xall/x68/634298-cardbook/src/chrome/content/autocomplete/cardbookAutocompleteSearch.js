@@ -45,10 +45,14 @@ cardbookAutocompleteResult.prototype = {
 	},
 
 	getImageAt: function getImageAt(aIndex) {
-		if (this._searchResults[aIndex].style.startsWith("local_")) {
-			return "chrome://messenger/skin/icons/folder.svg";
+		if (this._searchResults[aIndex].style.startsWith("localdb_")) {
+			return "chrome://cardbook/content/skin/icons/addressbooks/localdb.svg";
+		} else if (this._searchResults[aIndex].style.startsWith("file_")) {
+			return "chrome://cardbook/content/skin/icons/addressbooks/file.svg";
+		} else if (this._searchResults[aIndex].style.startsWith("directory_")) {
+			return "chrome://cardbook/content/skin/icons/addressbooks/directory.svg";
 		} else if (this._searchResults[aIndex].style.startsWith("remote_")) {
-			return "chrome://messenger/skin/icons/globe.svg";
+			return "chrome://cardbook/content/skin/icons/addressbooks/remote.svg";
 		} else {
 			return "chrome://messenger/skin/icons/address.svg";
 		}
@@ -136,11 +140,13 @@ cardbookAutocompleteSearch.prototype = {
 	addResult: function addResult(aResult, aEmailValue, aComment, aPopularity, aType, aStyle, aLowerFn, aDirPrefId, aEmail) {
 		if (aEmailValue) {
 			var myComment = "";
-			if (aComment) {
-				myComment = aComment;
-			}
-			if (cardbookRepository.debugMode) {
-				myComment += " [" + aType + ":" + aPopularity + "]";
+			if (cardbookRepository.cardbookPreferences.getStringPref("mail.autoComplete.commentColumn") == "1") {
+				if (aComment) {
+					myComment = aComment;
+				}
+				if (cardbookRepository.debugMode) {
+					myComment += " [" + aType + ":" + aPopularity + "]";
+				}
 			}
 
 			if (aResult._searchResults.length === 0) {
@@ -765,9 +771,11 @@ function NSGetFactory(cid) {
 }
 
 var CardBookAutocompleteSearchRegistrar = Components.manager.QueryInterface(Components.interfaces.nsIComponentRegistrar);
-CardBookAutocompleteSearchRegistrar.registerFactory(
-	cardbookAutocompleteSearch.prototype.classID,
-	cardbookAutocompleteSearch.prototype.description,
-	cardbookAutocompleteSearch.prototype.contractID,
-	NSGetFactory(cardbookAutocompleteSearch.prototype.classID)
-);
+if (!CardBookAutocompleteSearchRegistrar.isContractIDRegistered(cardbookAutocompleteSearch.prototype.contractID)) {
+	CardBookAutocompleteSearchRegistrar.registerFactory(
+		cardbookAutocompleteSearch.prototype.classID,
+		cardbookAutocompleteSearch.prototype.description,
+		cardbookAutocompleteSearch.prototype.contractID,
+		NSGetFactory(cardbookAutocompleteSearch.prototype.classID)
+	);
+}

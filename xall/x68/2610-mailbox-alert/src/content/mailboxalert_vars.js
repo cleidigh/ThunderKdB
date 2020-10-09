@@ -173,7 +173,7 @@ MailboxAlert.getGlobalPreferences14 = function() {
 MailboxAlert.folderPrefDefs14 = {
 "show_message": [ "bool", false],
 "show_message_icon": [ "bool", true ],
-"icon_file": [ "string", "chrome://mailboxalert/skin/mailboxalert.png" ],
+"icon_file": [ "string", "resource://mailboxalert-skin/mailboxalert.png" ],
 "subject": [ "string", "" ],
 "message": [ "string", "" ],
 "play_sound": [ "bool", false ],
@@ -195,7 +195,7 @@ MailboxAlert.folderPrefDefs14 = {
 MailboxAlert.alertPrefDefs = {
 "show_message": [ "bool", false],
 "show_message_icon": [ "bool", true ],
-"show_message_icon_file": [ "string", "chrome://mailboxalert/skin/mailboxalert.png" ],
+"show_message_icon_file": [ "string", "resource://mailboxalert-skin/mailboxalert.png" ],
 "show_message_subject": [ "string", "" ],
 "show_message_message": [ "string", "" ],
 "play_sound": [ "bool", false ],
@@ -204,6 +204,7 @@ MailboxAlert.alertPrefDefs = {
 "execute_command": [ "bool", false ],
 "command": [ "string", "" ],
 "command_escape": [ "bool", false ],
+"command_escape_windows_quotes": [ "bool", false ],
 "name": [ "string", "" ],
 "show_message_duration": [ "integer", 5 ],
 "show_message_position": [ "string", "top-left" ],
@@ -500,7 +501,8 @@ MailboxAlert.getAlertPreferences = function (index) {
         if (this.get("execute_command")) {
             MailboxAlert.executeCommand(alert_data,
                                         this.get("command"),
-                                        this.get("command_escape"));
+                                        this.get("command_escape"),
+                                        this.get("command_escape_windows_quotes"));
         }
     }
 
@@ -688,7 +690,7 @@ MailboxAlert.getAllFolders = function () {
     var all_folders = [];
 
     for (var i = 0; i < all_servers.length; ++i) {
-        var server = all_servers.queryElementAt(i, Components.interfaces.nsIMsgIncomingServer);
+        var server = all_servers[i];
         var root_folder = server.rootFolder;
         if (root_folder) {
             MailboxAlert.getChildFolders(root_folder, all_folders);
@@ -716,7 +718,8 @@ MailboxAlert.getAllFolderURIs = function () {
     var all_folder_uris = [];
 
     for (var i = 0; i < all_servers.length; ++i) {
-        var server = all_servers.queryElementAt(i, Components.interfaces.nsIMsgIncomingServer);
+        //var server = all_servers.queryElementAt(i, Components.interfaces.nsIMsgIncomingServer);
+        var server = all_servers[i];
         var root_folder = server.rootFolder;
         if (root_folder) {
             MailboxAlert.getChildFolderURIs(root_folder, all_folder_uris);

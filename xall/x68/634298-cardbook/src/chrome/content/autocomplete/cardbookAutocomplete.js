@@ -9,12 +9,6 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 		celltextRuleStrings: {},
 		textRuleStrings: {},
 		
-		createCssMsgIconsRules: function (aStyleSheet, aOSName) {
-			var ruleIndex1 = aStyleSheet.insertRule(cardbookAutocomplete.iconRuleStrings["local"][aOSName], aStyleSheet.cssRules.length);
-			var ruleIndex2 = aStyleSheet.insertRule(cardbookAutocomplete.iconRuleStrings["remote"][aOSName], aStyleSheet.cssRules.length);
-			var ruleIndex3 = aStyleSheet.insertRule(cardbookAutocomplete.iconRuleStrings["standard-abook"][aOSName], aStyleSheet.cssRules.length);
-		},
-
 		createCssMsgBaseRules: function (aStyleSheet, aStyle, aOSName) {
 			cardbookAutocomplete.celltextRuleStrings["LINUX"] = "treechildren::-moz-tree-cell-text(" + aStyle + ") {\
 				}";
@@ -124,7 +118,6 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 									}
 								}
 							}
-							cardbookAutocomplete.createCssMsgIconsRules(styleSheet, OSName);
 							cardbookRepository.reloadCss(myStyleSheet);
 							return;
 						}
@@ -134,12 +127,17 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 			catch (e) {}
 		},
 
-		setCompletion: function(aWindow) {
+		setCompletion: function(aWindow, aIsLightning) {
 			try {
 				var nodes = aWindow.querySelectorAll("input");
-				for (var i = 0; i < nodes.length; i++) {
-					if (nodes[i].getAttribute('autocompletesearch')) {
-						let attrArray = nodes[i].getAttribute('autocompletesearch').split(" ");
+				for (let node of nodes) {
+					if (node.getAttribute('autocompletesearch')) {
+						if (aIsLightning) {
+							node.addEventListener("change", function() {
+									cardbookAutocomplete.setLightningCompletion();
+								}, false);
+						}
+						let attrArray = node.getAttribute('autocompletesearch').split(" ");
 						if (cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompletion")) {
 							let index1 = attrArray.indexOf('addrbook');
 							if (index1 > -1) {
@@ -153,7 +151,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 								attrArray.push('addrbook-cardbook');
 							}
 							let resultArray = cardbookRepository.cardbookUtils.cleanArray(attrArray);
-							nodes[i].setAttribute('autocompletesearch', resultArray.join(' '));
+							node.setAttribute('autocompletesearch', resultArray.join(' '));
 						} else {
 							let index1 = attrArray.indexOf('addrbook-cardbook');
 							if (index1 > -1) {
@@ -166,12 +164,7 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 								attrArray.push('ldap');
 							}
 							let resultArray = cardbookRepository.cardbookUtils.cleanArray(attrArray);
-							nodes[i].setAttribute('autocompletesearch', resultArray.join(' '));
-						}
-						if (cardbookRepository.debugMode || cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook")) {
-							nodes[i].showCommentColumn = true;
-						} else {
-							nodes[i].showCommentColumn = false;
+							node.setAttribute('autocompletesearch', resultArray.join(' '));
 						}
 					}
 				}
@@ -181,11 +174,11 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 		},
 
 		setLightningCompletion: function() {
-			cardbookAutocomplete.setCompletion(document.getElementById("calendar-event-dialog-attendees-v2"));
+			cardbookAutocomplete.setCompletion(document.getElementById("calendar-event-dialog-attendees-v2"), true);
 		},
 
 		setMsgCompletion: function() {
-			cardbookAutocomplete.setCompletion(document.getElementById("msgcomposeWindow"));
+			cardbookAutocomplete.setCompletion(document.getElementById("msgcomposeWindow"), false);
 		}
 
 	};

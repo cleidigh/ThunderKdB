@@ -219,21 +219,19 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		// Execute some action afterwards.
 		var exclusive = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
 		var showCondensedAddresses = cardbookRepository.cardbookPreferences.getBoolPref("mail.showCondensedAddresses");
-		var myDisplayname = arguments[1].getAttribute("displayName");
 		var myEmailAddress = arguments[1].getAttribute("emailAddress");
-		var myCardBookResult = {};
-		myCardBookResult = ovl_formatEmailCorrespondents.getCardBookDisplayNameFromEmail(myEmailAddress, myDisplayname);
+		var isEmailRegistered = ovl_cardbookMailContacts.isEmailRegistered(myEmailAddress);
 		if (showCondensedAddresses) {
 			if (exclusive) {
-				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
-			} else if (myCardBookResult.found) {
-				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
+				arguments[1].setAttribute("hascard", isEmailRegistered.toString());
+			} else if (isEmailRegistered) {
+				arguments[1].setAttribute("hascard",isEmailRegistered.toString());
 			}
 		} else {
 			if (exclusive) {
-				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
-			} else if (myCardBookResult.found) {
-				arguments[1].setAttribute("hascard", myCardBookResult.found.toString());
+				arguments[1].setAttribute("hascard", isEmailRegistered.toString());
+			} else if (isEmailRegistered) {
+				arguments[1].setAttribute("hascard", isEmailRegistered.toString());
 			}
 		}
 		return rv;

@@ -201,13 +201,14 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 
 		loadCountries: function (aPopup, aMenu, aDefaultValue, aAddEmptyCountries, aUseCodeValues) {
+			const loc = new Localization(["toolkit/intl/regionNames.ftl"], true);
 			var myResult = [];
-			var regionStrBundle = Services.strings.createBundle("resource://gre/localization/" + cardbookRepository.getLang() + "/toolkit/intl/regionNames.ftl")
-			for (let string of regionStrBundle.getSimpleEnumeration()) {
+			for (let code of cardbookRepository.countriesList) {
+				let country = loc.formatValueSync("region-name-" + code);
 				if (aUseCodeValues) {
-					myResult.push([string.key.replace(/^region-name-/, '').toUpperCase(), string.value]);
+					myResult.push([code.toUpperCase(), country]);
 				} else {
-					myResult.push([string.value, string.value]);
+					myResult.push([country, country]);
 				}
 			}
 			cardbookRepository.cardbookUtils.sortMultipleArrayByString(myResult,1,1);

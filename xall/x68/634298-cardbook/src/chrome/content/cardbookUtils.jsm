@@ -101,19 +101,17 @@ var cardbookUtils = {
 			if (aCard.adr[i] && aCard.adr[i][0]) {
 				var country = aCard.adr[i][0][6].toUpperCase();
 				if (country != "") {
+					const loc = new Localization(["toolkit/intl/regionNames.ftl"], true);
 					var regionStrBundle = Services.strings.createBundle("resource://gre/localization/" + cardbookRepository.getLang() + "/toolkit/intl/regionNames.ftl")
 					var lcRegionCode = country.toLowerCase();
 					// maybe a country code
-					if (country.length == 2) {
-						try {
-							var regionName = regionStrBundle.GetStringFromName("region-name-" + lcRegionCode);
-							return country;
-						} catch (e) {}
+					if (cardbookRepository.countriesList.includes(lcRegionCode)) {
+						return country;
 					}
 					// let's try to find a known country
-					for (let string of regionStrBundle.getSimpleEnumeration()) {
-						if (country == string.value.toUpperCase()) {
-							return string.key.replace(/^region-name-/, '').toUpperCase();
+					for (let code of cardbookRepository.countriesList) {
+						if (lcRegionCode == loc.formatValueSync("region-name-" + code).toLowerCase()) {
+							return code.toUpperCase();
 						}
 					}
 				}
@@ -122,6 +120,7 @@ var cardbookUtils = {
 				return cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.defaultRegion");
 			}
 		}
+		return "";
 	},
 
 	sumElements: function (aObject) {

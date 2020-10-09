@@ -82,6 +82,10 @@ debug('splitURI: '+value+' -> '+JSON.stringify(uri));
         p['host']=uri.host;
         prefs['path']=uri.path;
         p['path']=uri.path;
+
+        prefs['synctype']='remote';
+        p['synctype']='remote';
+				document.getElementById('syncremote').checked=true;
       }
     } else {
       prefs[pref]=value;
@@ -271,13 +275,19 @@ debug('upgraded='+prefs['upgraded']);
 		p['imapfolderAccount']=account;
 		p['imapfolderPath']=path;
 		p['imapfolderName']=name;
+
+		prefs['synctype']='imap';
+		p['synctype']='imap';
+		document.getElementById('syncimap').checked=true;
+
 		messenger.storage.local.set(p);
     messenger.abs.setPrefs(prefs, 'imapfolder');
-		selfolder.className="";
+
+		if (selfolder) selfolder.className="";
 		target.className="selfolder";
 		selfolder=target;
 	}
-	function sipClick(event) {
+	function folderClick(event) {
 		let t=event.target;
 		t.parentElement.querySelector(".nested").classList.toggle("active");
 		t.classList.toggle("caret-down");
@@ -303,9 +313,9 @@ debug('upgraded='+prefs['upgraded']);
 				let s=document.createElement('span');
 					s.className="caret";
 					s.textContent=folder.name;
-					s.addEventListener("click", sipClick);
-					//s.addEventListener("mouseover", sipClick);
-					//s.addEventListener("mouseout", sipClick);
+					s.addEventListener("click", folderClick);
+					//s.addEventListener("mouseover", folderClick);
+					//s.addEventListener("mouseout", folderClick);
 				let ul=document.createElement('ul');
 					ul.className="nested";
 				li.appendChild(s);
@@ -329,9 +339,9 @@ debug('upgraded='+prefs['upgraded']);
 		let s=document.createElement('span');
 			s.className="caret";
 			s.textContent=account.name;
-			s.addEventListener("click", sipClick);
-			//s.addEventListener("mouseover", sipClick);
-			//s.addEventListener("mouseout", sipClick);
+			s.addEventListener("click", folderClick);
+			//s.addEventListener("mouseover", folderClick);
+			//s.addEventListener("mouseout", folderClick);
 		li.appendChild(s);
 		let ul=document.createElement('ul');
 			ul.className="nested";
@@ -502,7 +512,6 @@ debug('loaded');
 			document.getElementById( "MabName" ).value='';
 //TODO			refreshAddressbook();  // refresh addressbook window
 			alert(messenger.i18n.getMessage('loaded'));
-			window.location.reload();
 		} else {
 			let msg=messenger.i18n.getMessage(ret);
 			if (!msg) msg=ret;

@@ -1,0 +1,9 @@
+pref("extensions.spambee.oneclick", false);
+pref('extensions.spambee.urldetect', true);
+pref('extensions.spambee.movereport', true);
+pref('extensions.spambee.spambtonactive', true);
+pref("extensions.spambee.userAuthentified", true);
+pref('extensions.spambee.firsttime', true);
+pref('extensions.spambee.lastversion', '0.0.1');
+pref("extensions.spambee.notification", true);
+pref("extensions.spambee.privacy", false);

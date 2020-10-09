@@ -617,8 +617,8 @@
 			<splitter id="dirTreeSplitter" collapse="before" persist="state orient" class="cardbookVerticalSplitterClass"/>
 
 			<box id="cardsBox" flex="1">
-				<vbox id="rightPaneUpHbox" persist="width height collapsed" ondragover="wdw_cardbook.canDropOnContactBox(event);" ondrop="wdw_cardbook.dragCards(event);">
-					<vbox id="searchRemoteHbox">
+				<vbox id="rightPaneUpHbox" flex="1" persist="width height collapsed" ondragover="wdw_cardbook.canDropOnContactBox(event);" ondrop="wdw_cardbook.dragCards(event);">
+					<vbox id="searchRemoteHbox" flex="1">
 						<hbox flex="1" class="input-container">
 							<html:input id="searchRemoteTextbox" placeholder="__CARDBOOKMSG_searchRemoteLabel__" onchange="wdw_cardbook.searchRemote();"/>
 						</hbox>
@@ -645,7 +645,7 @@
 							
 							<tabpanels flex="1">
 								<tabpanel orient="vertical" style="overflow:auto">
-									<hbox flex="1">
+									<hbox>
 										<vbox flex="1">
 											<hbox align="center" flex="1">
 												<groupbox id="fnGroupbox" flex="1">
@@ -754,12 +754,8 @@
 											</hbox>
 											<hbox flex="1">
 												<groupbox id="noteclassicalGroupbox" flex="1">
-													<label class="header">__CARDBOOKMSG_noteTabLabel__</label>
-													<hbox flex="1" class="indent">
-														<vbox flex="1">
-															<html:textarea id="noteclassicalTextBox"/>
-														</vbox>
-													</hbox>
+													<label id="noteclassicalLabel" class="header">__CARDBOOKMSG_noteTabLabel__</label>
+													<html:textarea id="noteclassicalTextBox" class="indent"/>
 												</groupbox>
 											</hbox>
 										</vbox>
@@ -778,7 +774,7 @@
 											</grid>
 										</vbox>
 									</hbox>
-									<hbox align="center" flex="1">
+									<hbox align="center">
 										<vbox flex="1">
 											<groupbox id="categoriesmodernGroupbox" flex="1">
 												<label class="header">__CARDBOOKMSG_categoriesHeader__</label>
@@ -788,17 +784,15 @@
 											</groupbox>
 										</vbox>
 									</hbox>
-									<hbox flex="1" class="input-container">
-										<vbox flex="1">
-											<grid align="center" flex="1">
-												<columns>
-													<column flex="1"/>
-												</columns>
-												<rows id="modernRows"/>
-											</grid>
-										</vbox>
+									<hbox>
+										<grid align="center">
+											<columns>
+												<column flex="1"/>
+											</columns>
+											<rows id="modernRows"/>
+										</grid>
 									</hbox>
-									<hbox id="listGroupbox" flex="1">
+									<hbox id="listGroupbox">
 										<vbox flex="1">
 											<grid align="center" flex="1">
 												<columns>
@@ -813,13 +807,10 @@
 									</hbox>
 									<hbox flex="1">
 										<groupbox id="notemodernGroupbox" flex="1">
-											<label class="header">__CARDBOOKMSG_noteTabLabel__</label>
-											<vbox flex="1" class="indent">
-												<html:textarea id="notemodernTextBox"/>
-											</vbox>
+											<label id="notemodernLabel" class="header">__CARDBOOKMSG_noteTabLabel__</label>
+											<html:textarea id="notemodernTextBox" class="indent"/>
 										</groupbox>
 									</hbox>
-									<spacer flex="100"/>
 								</tabpanel>
 			
 								<tabpanel orient="vertical" style="overflow:auto">
@@ -959,9 +950,7 @@
 									<vbox id="othersBox" flex="1">
 										<groupbox id="othersGroupbox" flex="1">
 											<label class="header">__CARDBOOKMSG_othersGroupboxLabel__</label>
-											<hbox flex="1">
-												<html:textarea id="othersTextBox"/>
-											</hbox>
+											<html:textarea id="othersTextBox"/>
 										</groupbox>
 									</vbox>
 								</tabpanel>

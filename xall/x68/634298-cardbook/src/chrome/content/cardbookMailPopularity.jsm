@@ -65,7 +65,7 @@ var cardbookMailPopularity = {
 				}
 			}
 			cardbookRepository.cardbookSynchronization.writeFileDataAsync(cacheDir.path, writable.join("\r\n"), function () {
-			cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : Mail popularity file written to : " + cacheDir.path);
+				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : Mail popularity file written to : " + cacheDir.path);
 			});
 		}
 	},

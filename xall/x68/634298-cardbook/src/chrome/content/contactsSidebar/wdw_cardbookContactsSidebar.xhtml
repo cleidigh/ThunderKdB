@@ -8,11 +8,10 @@
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
 
-<page id="abContactsPanel"
+<window id="abContactsPanel"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	onload="wdw_cardbookContactsSidebar.loadPanel();"
-	onunload="wdw_cardbookContactsSidebar.unloadPanel();"
-	selectedaddresses="true">
+	onunload="wdw_cardbookContactsSidebar.unloadPanel();">
 
 	<stringbundleset id="stringbundleset">
 		<stringbundle id="bundle_addressBook" src="chrome://messenger/locale/addressbook/addressBook.properties"/>
@@ -145,4 +144,4 @@
 		
 		<separator class="thin"/>
 	</vbox>
-</page>
+</window>

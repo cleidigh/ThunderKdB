@@ -31,17 +31,19 @@ function NSGetFactory(cid) {
 }
 
 var CardBookCmdLineHandlerRegistrar = Components.manager.QueryInterface(Components.interfaces.nsIComponentRegistrar);
-CardBookCmdLineHandlerRegistrar.registerFactory(
-	CardBookCmdLineHandler.prototype.classID,
-	CardBookCmdLineHandler.prototype.description,
-	CardBookCmdLineHandler.prototype.contractID,
-	NSGetFactory(CardBookCmdLineHandler.prototype.classID)
-);
+if (!CardBookCmdLineHandlerRegistrar.isContractIDRegistered(CardBookCmdLineHandler.prototype.contractID)) {
+	CardBookCmdLineHandlerRegistrar.registerFactory(
+		CardBookCmdLineHandler.prototype.classID,
+		CardBookCmdLineHandler.prototype.description,
+		CardBookCmdLineHandler.prototype.contractID,
+		NSGetFactory(CardBookCmdLineHandler.prototype.classID)
+	);
 
-Services.catMan.addCategoryEntry(
-	"command-line-handler",
-	"m-cardbook",
-	CardBookCmdLineHandler.prototype.contractID,
-	false,
-	false
-);
+	Services.catMan.addCategoryEntry(
+		"command-line-handler",
+		"m-cardbook",
+		CardBookCmdLineHandler.prototype.contractID,
+		false,
+		false
+	);
+}

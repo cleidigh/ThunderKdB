@@ -107,83 +107,32 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 }
 
 /* textarea */
-#noteTabpanel {
-	display: flex;
-}
-#noteTabpanel > #noteTextBox {
-	width: 100%;
-	box-sizing: border-box;
-	min-height: 7em;
-	margin: 2px 4px;
-}
-#noteTabpanel > #noteTextBox[readonly="true"] {
-	width: 100%;
-	box-sizing: border-box;
-	border: 0px;
-	min-height: 7em;
-	margin: 2px 4px;
-}
-
-#adrStreetTextBox {
-	width: 100%;
-	box-sizing: border-box;
-	min-height: 5em;
-	margin: 2px 4px;
-}
-
-#othersTextBox,
-#noteclassicalTextBox,
-#notemodernTextBox {
-	width: 100%;
-	box-sizing: border-box;
-	border: 0px;
-	min-height: 7em;
-	margin: 2px 4px;
-}
-
+#notemodernGroupbox,
+#noteclassicalGroupbox,
+#noteTabpanel,
+#othersGroupbox,
 #vcardTabpanel {
-	display: flex;
-}
-#vcardTabpanel > #vcardTextBox {
-	width: 100%;
-	box-sizing: border-box;
-	border: 0px;
-	min-height: 7em;
-	margin: 2px 4px;
+    display: flex;
 }
 
-/* for the addresses */
-.cardbookBackgroundColorClass textarea {
-	/* the percentage is badly computed, so I have to fix it */
-	width: 400px !important;
-	min-height:16px !important;
-	padding-bottom: 3px !important;
-	padding-inline-start: 4px !important;
-	padding-left: 4px !important;
-	padding-right: 2px !important;
-	padding-top: 2px !important;
-}	/* width: 500px; */
-
+#notemodernTextBox,
+#noteclassicalTextBox,
+#noteTextBox,
+#othersGroupbox > #othersTextBox,
+#vcardTextBox {
+    width: 100%;
+    box-sizing: border-box;
+}
+    
 .cardbookBackgroundColorClass textarea[readonly="true"] {
-	-moz-appearance: none !important;
-	/* the percentage is badly computed, so I have to fix it */
-	width: 400px !important;
-	min-height:16px !important;
 	background-color: transparent !important;
 	border: 0px !important;
-	padding-left: 0px !important;
-	margin: 2px 4px !important;
 }
 .cardbookBackgroundColorClass textarea[link="true"] {
-	-moz-appearance: none !important;
-	/* the percentage is badly computed, so I have to fix it */
-	width: 400px !important;
-	min-height:16px !important;
 	background-color: transparent !important;
 	border: 0px !important;
 	cursor: pointer !important;
 	color: -moz-hyperlinktext;
-	margin: 2px 4px !important;
 }
 .cardbookBackgroundColorClass textarea[link="true"]:hover {
 	color: -moz-activehyperlinktext;

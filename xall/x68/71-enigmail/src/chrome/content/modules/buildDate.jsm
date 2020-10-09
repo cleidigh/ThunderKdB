@@ -1,3 +1,3 @@
 "use strict";
 var EXPORTED_SYMBOLS = ["EnigmailBuildDate"];
-var EnigmailBuildDate = { built: "20200921-1724" };
+var EnigmailBuildDate = { built: "20201001-1334" };

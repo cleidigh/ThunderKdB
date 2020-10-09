@@ -14,14 +14,28 @@ function onGot(item) {
 
   if (item['prefs']!=null) {
     prefs = item['prefs'] ;
+// Add any prefs added since version 1 & set them to default or special values
+    prefsAdded = false ;
+
+    if (typeof prefs['strictLimit'] == "undefined") {
+      prefs['strictLimit'] = false ;
+      prefsAdded = true ;
+    }
+    
+    if (prefsAdded) {
+    browser.storage.local.set({'prefs': prefs})
+      .then( null, onError);    
+    }
   }
   else {
 // Set up defaults if prefs absent
     prefs['maxNonBCC'] = 10 ;
-    browser.storage.local.set({'prefsStr': prefs})
+    prefs['strictLimit'] = false ; 
+
+    browser.storage.local.set({'prefs': prefs})
       .then( null, onError);
   }
-  // console.log("Limit non-BCC recipients: limit: " + prefs['maxNonBCC'])
+// console.log("Limit non-BCC recipients: limit: " + prefs['maxNonBCC'])
 
 // Listen for about-to-be-sent messsage
   async function listenforsend(tabid, details) { //15
@@ -157,12 +171,15 @@ function onGot(item) {
     if ( nonbcc > prefs['maxNonBCC']) {
 
 // Non-BCC count exceeded. Open a dialogue popup
+      if (prefs['strictLimit']) {SL = 1} else {SL = 0}
+//console.log("dialogue.html?" + nonbcc + "&m" + prefs['maxNonBCC'] + "&s" + SL);
+
       createData={allowScriptsToClose: true,
       titlePreface: extensionName,      
       width : 600,
       height : 300,
       type : "popup",
-      url : "dialogue.html?" + nonbcc + "&" + prefs['maxNonBCC']
+      url : "dialogue.html?" + nonbcc + "&m" + prefs['maxNonBCC'] + "&s" + SL
       };
 
       var wid=null;

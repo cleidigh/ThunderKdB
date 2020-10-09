@@ -1,0 +1,21 @@
+content spambee chrome/content/
+locale spambee en-US chrome/locale/en-US/
+locale spambee en-GB chrome/locale/en-US/
+locale spambee en-CA chrome/locale/en-US/
+locale spambee en-IE chrome/locale/en-US/
+locale spambee en-NZ chrome/locale/en-US/
+locale spambee fr-FR chrome/locale/fr-FR/
+locale spambee fr-LU chrome/locale/fr-FR/
+locale spambee fr-CH chrome/locale/fr-FR/
+locale spambee fr-CA chrome/locale/fr-FR/
+locale spambee fr-BE chrome/locale/fr-FR/
+locale spambee de-DE chrome/locale/de-DE/
+locale spambee de-LU chrome/locale/de-LU/
+locale spambee de-LI chrome/locale/de-DE/
+locale spambee de-AT chrome/locale/de-DE/
+locale spambee de-CH chrome/locale/de-DE/
+skin spambee classic/1.0 chrome/skin/classic/
+style chrome://global/content/customizeToolbar.xul  chrome://spambee/skin/sspam.css appversion<59.0a1
+style chrome://messenger/content/customizeToolbar.xul  chrome://spambee/skin/sspam.css appversion>=59.0a1
+overlay chrome://messenger/content/messenger.xul chrome://spambee/content/spambee/spambee-messenger.xul
+overlay chrome://messenger/content/messageWindow.xul chrome://spambee/content/spambee/spambee-messageWindow.xul

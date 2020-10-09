@@ -8,7 +8,7 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 	var ovl_formatEmailCorrespondents = {
 		getIdentityForEmail: function(aEmail) {
 			let emailAddress = aEmail.toLowerCase();
-			for (let identity of fixIterator(MailServices.accounts.allIdentities, Components.interfaces.nsIMsgIdentity)) {
+			for (let identity of MailServices.accounts.allIdentities) {
 				if (!identity.email) {
 					continue;
 				}
@@ -24,30 +24,35 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 			var myResult = "";
 			if (aEmail) {
 				var myTestString = aEmail.toLowerCase();
-				for (let account of cardbookRepository.cardbookAccounts) {
-					if (account[1] && account[5] && account[6] != "SEARCH") {
-						var myDirPrefId = account[4];
-						if (cardbookRepository.cardbookCardEmails[myDirPrefId]) {
-							if (cardbookRepository.cardbookCardEmails[myDirPrefId][myTestString]) {
-								myResult = cardbookRepository.cardbookCardEmails[myDirPrefId][myTestString][0].fn;
-								found = true;
-								break;
+				if (cardbookRepository.cardbookPreferDisplayNameIndex[myTestString]) {
+					myResult = aDefaultDisplay;
+					found = true;
+				} else {
+					for (let account of cardbookRepository.cardbookAccounts) {
+						if (account[1] && account[5] && account[6] != "SEARCH") {
+							var myDirPrefId = account[4];
+							if (cardbookRepository.cardbookCardEmails[myDirPrefId]) {
+								if (cardbookRepository.cardbookCardEmails[myDirPrefId][myTestString]) {
+									myResult = cardbookRepository.cardbookCardEmails[myDirPrefId][myTestString][0].fn;
+									found = true;
+									break;
+								}
 							}
 						}
 					}
 				}
-			}
-			if (found) {
-				if (myResult) {
-					return {found: found, result: myResult};
+				if (found) {
+					if (myResult) {
+						return {found: found, result: myResult};
+					} else {
+						return {found: found, result: aEmail};
+					}
 				} else {
-					return {found: found, result: aEmail};
-				}
-			} else {
-				if (aDefaultDisplay) {
-					return {found: found, result: aDefaultDisplay};
-				} else {
-					return {found: found, result: aEmail};
+					if (aDefaultDisplay) {
+						return {found: found, result: aDefaultDisplay};
+					} else {
+						return {found: found, result: aEmail};
+					}
 				}
 			}
 		},
@@ -59,12 +64,12 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 			let addresses = MailServices.headerParser.parseEncodedHeader(aEmails);
 			for (let address of addresses) {
 				var identity = ovl_formatEmailCorrespondents.getIdentityForEmail(address.email);
-				if (identity) {
-					results.push(identity.fullName);
-				} else if (showCondensedAddresses) {
+				if (showCondensedAddresses) {
 					var myCardBookResult = {};
 					myCardBookResult = ovl_formatEmailCorrespondents.getCardBookDisplayNameFromEmail(address.email, address.name);
-					if (exclusive) {
+					if (identity) {
+						results.push(address.name);
+					} else if (exclusive) {
 						results.push(myCardBookResult.result);
 					} else {
 						if (!myCardBookResult.found) {
@@ -95,9 +100,6 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 					}
 				}
 			}
-
-			
-			
 			return results.join(", ");
 		}
 	};

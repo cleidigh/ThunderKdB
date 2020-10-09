@@ -513,10 +513,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				wdw_cardEdition.expandButton(document.getElementById('expandPersImage'));
 				wdw_cardEdition.expandButton(document.getElementById('expandOrgImage'));
 				document.getElementById('firstTabSpacer').setAttribute('hidden', 'true');
+				document.getElementById('preferDisplayNameCheckBox').setAttribute('hidden', 'true');
 			} else {
 				document.getElementById('contactGroupbox').removeAttribute('hidden');
 				document.getElementById('listGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('firstTabSpacer').removeAttribute('hidden');
+				document.getElementById('preferDisplayNameCheckBox').removeAttribute('hidden');
 			}
 			document.getElementById('lastnameTextBox').focus();
 			document.getElementById('addressbookMenulistLabel').scrollIntoView();
@@ -951,6 +953,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('photoURITextBox').setAttribute('hidden', 'true');
 				document.getElementById('photoExtensionTextBox').setAttribute('hidden', 'true');
 			}
+			for (let email of wdw_cardEdition.workingCard.emails) {
+				if (cardbookRepository.cardbookPreferDisplayNameIndex[email]) {
+					document.getElementById('preferDisplayNameCheckBox').setAttribute('checked', 'false');
+					break;
+				}
+			}
 		},
 
 		clearCard: function () {
@@ -1177,6 +1185,31 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			}
 		},
 
+		savePreferDisplayName: function () {
+			var i = 0;
+			var save = false;
+			while (true) {
+				if (document.getElementById('mailPopularity_' + i + '_row')) {
+					var email = document.getElementById('email_' + i + '_Textbox').value;
+					if (document.getElementById("preferDisplayNameCheckBox").getAttribute("checked") == "true") {
+						if (cardbookRepository.cardbookPreferDisplayNameIndex[email]) {
+							delete cardbookRepository.cardbookPreferDisplayNameIndex[email];
+							save = true;
+						}
+					} else {
+						cardbookRepository.cardbookPreferDisplayNameIndex[email] = 1;
+						save = true;
+					}
+					i++;
+				} else {
+					break;
+				}
+			}
+			if (save) {
+				cardbookRepository.cardbookPreferDisplayName.writePreferDisplayName();
+			}
+		},
+
 		updateFormHistory: function (aField) {
 			var myValue = document.getElementById(aField).value;
 			if (myValue == "") {
@@ -1329,6 +1362,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 					myOutCard.uid = "urn:uuid:" + myOutCard.uid;
 				}
 				wdw_cardEdition.saveMailPopularity();
+				wdw_cardEdition.savePreferDisplayName();
 				window.arguments[0].cardOut = myOutCard;
 				wdw_cardEdition.workingCard = null;
 				wdw_cardEdition.updateFormFields();

@@ -1,0 +1,37 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#signedHdrIcon {
+  margin-top: 2px;
+  margin-inline-end: 2px;
+}
+
+#signedHdrIcon[signed="ok"] {
+  list-style-image: url("./icons/SignOk.png");
+}
+
+#signedHdrIcon[signed="unknown"] {
+  list-style-image: url("./icons/SignUnknown.png");
+}
+
+#signedHdrIcon[signed="mismatch"] {
+  list-style-image: url("./icons/SignUnknown.png");
+}
+
+#signedHdrIcon[signed="notok"] {
+  list-style-image: url("./icons/SignNotOk.png");
+}
+
+#encryptedHdrIcon {
+  margin-top: 2px;
+  margin-inline-end: 2px;
+}
+
+#encryptedHdrIcon[encrypted="ok"] {
+  list-style-image: url("./icons/CryptoOk.png");
+}
+
+#encryptedHdrIcon[encrypted="notok"] {
+  list-style-image: url("./icons/CryptoNotOk.png");
+}

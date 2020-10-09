@@ -356,9 +356,6 @@ MailboxAlert.FolderListener.prototype =
 
 MailboxAlert.onLoad = function ()
 {
-    // remove to avoid duplicate initialization
-    removeEventListener("load", MailboxAlert.onLoad, true);
-
     Components.classes["@mozilla.org/messenger/services/session;1"]
     .getService(Components.interfaces.nsIMsgMailSession)
     .AddFolderListener(new MailboxAlert.FolderListener(),
@@ -374,11 +371,20 @@ MailboxAlert.onLoad = function ()
     MailboxAlert.setAlertDelayFromPrefs();
 
     // And finally, add our shiny custom filter action
+    // Because the add-on can now be re-loaded, we need to check that we
+    // did not do this before
     var filterService = Components.classes["@mozilla.org/messenger/services/filters;1"]
                         .getService(Components.interfaces.nsIMsgFilterService);
-
-    filterService.addCustomAction(MailboxAlert.filter_action);
+    try {
+        if (!filterService.getCustomAction("mailboxalert@tjeb.nl#mailboxalertfilter")) {
+            MailboxAlertUtil.logMessage(1, "Adding custom action for filters");
+            filterService.addCustomAction(MailboxAlert.filter_action);
+        } else {
+            MailboxAlertUtil.logMessage(1, "Custom action for filters already exists, not setting");
+        }
+    } catch (error) {
+        // At startup (not reload) the get() can raise an error, add the action in that case too
+        filterService.addCustomAction(MailboxAlert.filter_action);
+    }
     //MailboxAlertUtil.logMessage(1, "Mailbox Alert Loaded\n");
 }
-
-addEventListener("load", MailboxAlert.onLoad, true);

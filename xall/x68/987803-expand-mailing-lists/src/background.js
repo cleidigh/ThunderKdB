@@ -1,9 +1,11 @@
 // Listen for button click and expand all mailing lists
 
+// v1.0.2 keep unmatched lists
+
 // console.log ("Expand mailing lists addon active");
 
 function buttonlistener(args) { //15
-  // console.log("Clicked. args: " + JSON.stringify(args) ) ;
+// console.log("Clicked. args: " + JSON.stringify(args) ) ;
   tabid = args.id
 
 // Build an array of mailing lists (MailingListNode objects) from the address book
@@ -12,14 +14,14 @@ function buttonlistener(args) { //15
     let listarray = [];
     browser.addressBooks.list(true)
     .then(function(books) {  //7
-      // console.log("Address books: " + JSON.stringify(books));
+// console.log("Address books: " + JSON.stringify(books));
       books.forEach(book => {  //6
         if (book.mailingLists) {  //5
           book.mailingLists.forEach(list => {  //4
-          // console.log("Mailing list name: " + list.name);
+// console.log("Mailing list name: " + list.name);
 // Add the mailing list node to listarray
             listarray.push(list)
-            // console.log("Mailing list node: " + JSON.stringify(list));
+// console.log("Mailing list node: " + JSON.stringify(list));
           }); //4
         }; //5
       }); //6   
@@ -28,11 +30,12 @@ function buttonlistener(args) { //15
   }); //8
 
   listarray.then(function (listarray) {  //10
-    // console.log("listarray: " + listarray);
-    // console.log("listarray[0]: " + JSON.stringify(listarray[0]) );    
+// console.log("listarray: " + listarray);
+// console.log("listarray[0]: " + JSON.stringify(listarray[0]) );    
 
 // This regex defines any string with one @ followed by a string containing 1 or more dots and no spaces as an email address
-// Anything else might be a list
+// A match indicates that it's probably an email address, not a list.
+// It's possible for a list to match this regex: if so it won't be expanded.
     var re = /[^@]*@[^@\. ]*\.[^@ ]*$/;
 
 // For an array of ComposeRecipient replace mailing lists with contacts 
@@ -54,23 +57,35 @@ function buttonlistener(args) { //15
               break;
             };
           };
-          if (!dup) { listsfound.push(recipient) }; //no indent
+          if (!dup) { 
+            listsfound.push(recipient) 
+          };
 // Look for list in the listarray
+          listmatched = false ;
+
           for (let i = 0; i < listarray.length; i++) { //6
 // List recipients are of the form "name <name>" - extract the name
             possname = recipient.replace(/ <.*>$/,"");
             if (possname == listarray[i].name ) { //5
-              // console.log("Matched list: " + possname + " Number of contacts: " + listarray[i].contacts.length);
+// Matched list - expand it into expandedarray
+// console.log("Matched list: " + possname + " Number of contacts: " + listarray[i].contacts.length);
               listarray[i].contacts.forEach(contactobj => {  //4
+                listmatched = true ;
                 expandedarray1.push(contactobj.properties.PrimaryEmail);
               }); //4
             }; //5          
           }; //6
+
+// if no match, or matched list was empty, then leave it in expanded array
+          if (!listmatched) {
+            expandedarray1.push(recipient) ;
+          }     
+
         };  //7
       }); //8   
-      // console.log("Expanded before weeding: " + expandedarray1);
+// console.log("Expanded before weeding: " + expandedarray1);
    
-  // Weed out exact duplicates from expanded array    
+// Weed out exact duplicates from expanded array    
       expandedarray2 = [];
       expandedarray1.forEach(element => {
         dup = false;        
@@ -83,32 +98,32 @@ function buttonlistener(args) { //15
         if ( !dup ) { expandedarray2.push(element); };        
        }); 
 
-    // console.log( "Weeded: " +  expandedarray2);
+// console.log( "Weeded: " +  expandedarray2);
     return expandedarray2;
     }; //9
 
 // Expand the three recipient arrays (To, CC, BCC)
     browser.compose.getComposeDetails(tabid)
     .then(details => {
-      // console.log("Compose details: "+JSON.stringify(details));
+// console.log("Compose details: "+JSON.stringify(details));
       expandedto = [];
       expandedcc = [];
       expandedbcc = [];
   
       if (details.to.length != 0) {
-        // console.log("Recipients To: "+JSON.stringify(details.to)) ;
+// console.log("Recipients To: "+JSON.stringify(details.to)) ;
         expandedto = convertrecipientarray(details.to);
-        // console.log("Expanded recips To: "+JSON.stringify(expandedto)) ; 
+// console.log("Expanded recips To: "+JSON.stringify(expandedto)) ; 
       }
       if (details.cc.length != 0) {    
-        // console.log("Recipients CC: "+JSON.stringify(details.cc)) ;
+// console.log("Recipients CC: "+JSON.stringify(details.cc)) ;
         expandedcc = convertrecipientarray(details.cc);
-        // console.log("Expanded recips CC: "+JSON.stringify(expandedcc)) ; 
+// console.log("Expanded recips CC: "+JSON.stringify(expandedcc)) ; 
       }
       if (details.bcc.length != 0) {    
-        // console.log("Recipients BCC: "+JSON.stringify(details.bcc)) ;
+// console.log("Recipients BCC: "+JSON.stringify(details.bcc)) ;
         expandedbcc = convertrecipientarray(details.bcc);
-        // console.log("Expanded recips BCC: "+JSON.stringify(expandedbcc)) ; 
+// console.log("Expanded recips BCC: "+JSON.stringify(expandedbcc)) ; 
       }  
   
 // Set the compose details to include the new recipients

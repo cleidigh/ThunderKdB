@@ -88,11 +88,12 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	};
 
 })();
-	
-
 
 
 window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", function(e) {
-    setTimeout(toggleAddressPicker, 0, false);
-    setTimeout(toggleAddressPicker, 0, false);
+	// usefull at startup if the contact sidebar is already open
+	if (!document.getElementById("sidebar-box").hidden) {
+		setTimeout(toggleAddressPicker, 0, false);
+		setTimeout(toggleAddressPicker, 0, false);
+	}
 }, false);

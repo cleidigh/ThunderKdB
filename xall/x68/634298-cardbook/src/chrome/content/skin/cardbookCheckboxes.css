@@ -14,11 +14,17 @@
 	list-style-image: url("chrome://cardbook/content/skin/checkbox-images.png");
 	-moz-image-region: rect(0 26px 13px 13px);
 }
-.cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, local) {
-	list-style-image: url("chrome://messenger/skin/icons/folder.svg");
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, localdb) {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/localdb.svg");
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, file) {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/file.svg");
+}
+.cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, directory) {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/directory.svg");
 }
 .cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, remote) {
-	list-style-image: url("chrome://messenger/skin/icons/globe.svg");
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/remote.svg");
 }
 .cardbookTreeClass treechildren::-moz-tree-checkbox(accountTypeCheckbox, search) {
 	list-style-image: url("chrome://messenger/skin/icons/search-glass.svg");

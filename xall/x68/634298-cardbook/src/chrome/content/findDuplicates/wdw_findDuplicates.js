@@ -206,7 +206,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			function fireButton(event) {
 				var myId = this.id.replace(/Merge$/, "");
 				var myArgs = {cardsIn: wdw_findDuplicates.gResults[myId], cardsOut: [], hideCreate: false, action: ""};
-				var myWindow = window.openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
+				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
 				var myTopic = "cardsMerged";
 				var myActionId = cardbookActions.startAction(myTopic);
 				switch (myArgs.action) {

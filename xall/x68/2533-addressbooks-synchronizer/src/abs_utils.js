@@ -155,7 +155,7 @@ debug('create '+mabName+' from '+uri);
 debug('created new book '+dir.dirName+' '+dir.fileName+' '+dir.URI);
 	}
 
-  removeListener();
+  removeCardListObserver(); //remove observers for cards and lists
 
 debug('clear addressbook');
   let ret=clearAddressBook(dir);
@@ -170,7 +170,7 @@ debug('fill addressbook returns: '+ret);
 debug('Replace done');
 
 //TODO:  dir.lastModifiedDate=appstarttime; //is 0 == 'not modified'
-	addListener();
+	addCardListObserver();	// add observers for cards and lists
   return '';
 }
 
@@ -362,6 +362,7 @@ debug('perform without popup');
 			else                       upload(singlebook, force);
 //		}
 	} else {	//usesPopup
+/*
 		let args = Cc["@mozilla.org/array;1"]
 										.createInstance(Ci.nsIMutableArray);
 		let s=Cc["@mozilla.org/supports-string;1"]
@@ -372,15 +373,18 @@ debug('perform without popup');
 				.createInstance(Ci.nsISupportsString);
 		f.data=strings['cancel_label'];
 		args.appendElement(f, false);
-
+*/
 		let off=(exiting && prefs['hideallpopups'])?',left=-10000':'';
 		statusWin=Services.ww.openWindow(null, statusURI,
-			'_blank', 'chrome,resizable,titlebar=yes'+off, args);
+			'_blank', 'chrome,resizable,titlebar=yes'+off, /*args*/null);
 debug('opened '+statusWin+' '+statusWin.document);
 		//we have a document but it doesn't contains elements
 
 //TODO: probably listen for 'dom-window-destroyed' (see implementation.js)
 		statusWinTimer.initWithCallback(()=>{
+			statusWin.document.title=strings[direction+'_title'];
+			statusWin.document.getElementById('cancel').textContent=strings['cancel_label'];
+
 			let ta=statusWin.document.getElementById('status');	//the textarea
 			if (!ta) {
 debug('waiting for window to load');
@@ -445,10 +449,7 @@ debug('returning');
 function getAddressBook(name)
 {
 //debug(name);
-	let cn = MailServices.ab.directories;
-	while( cn.hasMoreElements() )
-	{
-		let dir = cn.getNext().QueryInterface(Ci.nsIAbDirectory);
+	for (let dir of MailServices.ab.directories) {
 //debug('compare "'+name+'" to "'+dir.dirPrefId+'" and "'+dir.fileName+'"');
 		if (dir.dirName==name)
 			return dir;
@@ -571,11 +572,8 @@ debug(direction+' "'+singleBook+'"');
 	let mabs=new Object();
 	let dirs=new Array();
 
-	let cn = MailServices.ab.directories;
 	let found=false;
-	while( cn.hasMoreElements() )
-	{
-		let dir = cn.getNext().QueryInterface(Ci.nsIAbDirectory);
+	for (let dir of MailServices.ab.directories) {
 		if (dir.dirType!=kPABDirectory) continue;    // ignore nonMAB/nonSQLITE
 			//  LDAP=0, HTML=1, MAB=2, MAPI(Outlook,OSX)=3,JS=101
 		let sync=false;
@@ -1215,17 +1213,14 @@ function initialize() {
 	if (initialized) return;
 debug('entered');
 	initialized=true;
-	addListener();
+	addCardListObserver();	// add observers for cards and lists
 	startTimer();
 	if (prefs['synctype'] && prefs['autodownload']) {
 debug('call download on start');
     let delay = prefs['delayautodownload'];
-		if (!delay) delay=1;	// at least 1 sec
-		if (delay)
-			lifetimeTimer.initWithCallback(()=>{showPopup('download', null, 'start', false);},
+		lifetimeTimer.initWithCallback(()=>{showPopup('download', null, 'start', false);},
 									delay*1000, Ci.nsITimer.TYPE_ONE_SHOT);
-		else
-			showPopup('download', null, 'start', false);
+		//if !delay: 			showPopup('download', null, 'start', false);
 	}
 	theHiddenWin(prefs['autoupload'] && prefs['synctype']=='imap');
 }
@@ -1233,7 +1228,7 @@ function finalize(type) {
 	exiting=type;
 debug('=================== Exiting type='+type);	//type=quit or close
 	usesPopup=true;
-	removeListener();  // remove the listener
+	removeCardListObserver();  // remove observers for cards and lists
 
   let windowsEnum = Services.wm.getEnumerator(null);
   while (windowsEnum.hasMoreElements()) {
@@ -1379,7 +1374,7 @@ function debug(txt, ln) {
 	}
 
 	//if (inconsole) this.console.logStringMessage('AddressbooksSynchronizer: '+txt);
-	if (debugcache.size) {
+	if (debugcache && debugcache.size) {
 console.log('ABS: debug: debugcache.size='+debugcache.size);
 		for (let [s, t] of debugcache) {
 			if (s.match(':fail-'))

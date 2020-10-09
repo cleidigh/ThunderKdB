@@ -9,6 +9,13 @@ if ("undefined" == typeof(cardbookTabType)) {
 		monitorName: "cardbook",
 		onTabTitleChanged: function() {},
 		onTabOpened: function(aTab) {
+			// the currentset is lost by the overlay loader
+			var currentSet = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.cardbookToolbar.currentset");
+			if (currentSet) {
+				var toolbar = document.getElementById("cardbook-toolbar");
+				toolbar.currentSet = currentSet;
+			}
+
 			if (aTab.mode.name == "cardbook") {
 				wdw_cardbook.loadFirstWindow();
 			}
@@ -260,13 +267,6 @@ window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", f
 		tabmail.registerTabMonitor(cardbookTabMonitor);
 	}
 
-	// the currentset is lost by the overlay loader
-	var currentSet = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.cardbookToolbar.currentset");
-	if (currentSet) {
-		var toolbar = document.getElementById("cardbook-toolbar");
-		toolbar.currentSet = currentSet;
-	}
-	
 	var firstRun = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.firstRun");
 	if (firstRun) {
 		wdw_cardbook.addAddressbook("first");

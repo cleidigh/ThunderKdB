@@ -58,8 +58,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 								  ["WebPage2", ["TYPE=HOME"], "url"] ];
 				for (var i = 0; i < myListMap.length; i++) {
 					var myMapData = aABCard.getProperty(myListMap[i][0],"");
+					var myPreferDisplayName = aABCard.getProperty("PreferDisplayName","1");
 					if (myMapData != "") {
 						myCard[myListMap[i][2]].push([[myMapData], myListMap[i][1], "", []]);
+						if (myListMap[i][2] == "email" && myPreferDisplayName == "0") {
+							cardbookRepository.cardbookPreferDisplayNameIndex[myMapData.toLowerCase()] = 1
+						}
 					}
 				}
 
@@ -121,17 +125,13 @@ if ("undefined" == typeof(wdw_migrate)) {
 					myCard.categories = JSON.parse(JSON.stringify(finalcatArray));
 				} catch (e) {}
 				
-				// for nested lists within the same address book, the standard address book creates
-				// one unusefull card for the nested lists
-				if (myCard.emails == "" || myCard.emails.join("").includes("@")) {
-					cardbookRepository.addCardToRepository(myCard, aMode);
-					cardbookRepository.cardbookUtils.formatStringForOutput("cardCreated", [aDirPrefIdTargetName, myCard.fn]);
-	
-					var email = aABCard.getProperty("PrimaryEmail", "");
-					var emailValue = aABCard.getProperty("PopularityIndex", "0");
-					if (email != "" && emailValue != "0" && emailValue != " ") {
-						cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
-					}
+				cardbookRepository.addCardToRepository(myCard, aMode);
+				cardbookRepository.cardbookUtils.formatStringForOutput("cardCreated", [aDirPrefIdTargetName, myCard.fn]);
+
+				var email = aABCard.getProperty("PrimaryEmail", "");
+				var emailValue = aABCard.getProperty("PopularityIndex", "0");
+				if (email != "" && emailValue != "0" && emailValue != " ") {
+					cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
 				}
 
 				cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
@@ -155,8 +155,8 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 		mayTheListBeResolved: function (aABList) {
 			try {
-				for (var i = 0; i < aABList.addressLists.length; i++) {
-					var myABCard = aABList.addressLists.queryElementAt(i, Components.interfaces.nsIAbCard);
+				for (let card of aABList.childCards) {
+					var myABCard = card.QueryInterface(Components.interfaces.nsIAbCard);
 					var myEmail = myABCard.primaryEmail;
 					var myName = myABCard.getProperty("DisplayName","");
 					if ((myName == myEmail) && wdw_migrate.allLists[myName]) {
@@ -191,8 +191,8 @@ if ("undefined" == typeof(wdw_migrate)) {
 								myCard[myMap[i][1]] = myList[myMap[i][0]];
 							}
 							var myTargetMembers = [];
-							for (var i = 0; i < myList.addressLists.length; i++) {
-								var myABCard = myList.addressLists.queryElementAt(i, Components.interfaces.nsIAbCard);
+							for (let card of myList.childCards) {
+								var myABCard = card.QueryInterface(Components.interfaces.nsIAbCard);
 								var myEmail = myABCard.primaryEmail;
 								var myLowerEmail = myEmail.toLowerCase();
 								var myName = myABCard.getProperty("DisplayName","");
@@ -275,12 +275,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 							}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 						}
 					}
-					var abCardsEnumerator = book.childCards;
+    				var abCardsEnumerator = book.childCards;
 					while (abCardsEnumerator.hasMoreElements()) {
 						var myABCard = abCardsEnumerator.getNext();
 						myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
 						if (myABCard.isMailList) {
-							var myABList = contactManager.getDirectory(myABCard.mailListURI);
+							var myABList = MailServices.ab.getDirectory(myABCard.mailListURI);
 							wdw_migrate.allLists[myABList.dirName] = {};
 							wdw_migrate.allLists[myABList.dirName].solved = false;
 							wdw_migrate.allLists[myABList.dirName].list = myABList;
@@ -292,6 +292,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 				}
 			}
 			cardbookRepository.cardbookMailPopularity.writeMailPopularity();
+			cardbookRepository.cardbookPreferDisplayName.writePreferDisplayName();
 			cardbookRepository.writePossibleCustomFields();
 			cardbookRepository.cardbookDirResponse[aDirPrefIdTarget]++;
 		}

@@ -1,0 +1,292 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://spambee/skin/sspam.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://spambee/skin/xsidebar.css" type="text/css"?>
+<?xml-stylesheet href="chrome://spambee/skin/sidebarViews.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<!-- messenger.css is required for groupbox -->
+
+<!DOCTYPE overlay SYSTEM "chrome://spambee/locale/spambee.dtd" >
+
+<overlay id="spambee"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script type="application/x-javascript" src="chrome://spambee/content/spambee/extensionConfig.js"/>
+<!--    <script type="application/x-javascript" src="chrome://spambee/content/spambee/include/URLCanonicalization.js"/>
+    <script type="application/x-javascript" src="chrome://spambee/content/spambee/include/xxhash.js"/>
+    <script type="application/x-javascript" src="chrome://spambee/content/spambee/include/uint64.js"/>
+    <script type="application/x-javascript" src="chrome://spambee/content/spambee/include/xxhash64.js"/>
+    <script type="application/x-javascript" src="chrome://spambee/content/spambee/include/socket.io.min.js"/> -->
+    <script type="application/x-javascript" src="chrome://spambee/content/spambee/include/verifrom_api.js"/>
+<!--    <script type="application/x-javascript" src="chrome://spambee/content/spambee/worker/verifromSafeBrowsing.js"/> -->
+    <script type="application/x-javascript" src="chrome://spambee/content/spambee/spambee-common.js"/>
+    <script type="application/x-javascript" src="chrome://spambee/content/spambee/spambee-messageWindow.js"/>
+
+    <commandset>
+        <command id="cmd_spambeeReport" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_spambeePreferences" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_spambeeSelfcare" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_spambeeFalsePositive" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_opensidebar" oncommand="goDoCommand(this.id);"/>
+        <command id="cmd_closeSidebar" oncommand="goDoCommand(this.id);"/>
+    </commandset>
+
+    <!-- <statusbar id="status-bar">
+        <statusbarpanel id="spambee-statusbar"
+                        tooltipText="&spambee.contentScript.sidebar.sendingsinglereport;"
+                        hidden="true">
+            <image src='chrome://spambee/skin/icon48.png' width='20' height='20'/>
+            <html:progress mode="undetermined"/>
+        </statusbarpanel>
+    </statusbar> -->
+
+    <hbox id="status-bar">
+        <hbox class="spambee_statusbar" id="spambee-statusbar">
+            <label
+                   class="statusbarpanel"
+                   context="..."
+                   popup="..."
+                   value="" />
+            <image src='chrome://spambee/skin/icon48.png' width='20' height='20'/>
+            <html:progress mode="undetermined"/>
+        </hbox>
+    </hbox>
+
+    <popup id="mailContext">
+        <menuitem id="spambee-ctx" label="&spambee.brand; - &spambee.buttonlabel;" accesskey="&spambee.accesskey;"
+                  command="cmd_spambeeReport">
+            <image src='chrome://spambee/skin/icon48.png' width='18' height='18'/>
+            <label>&spambee.buttonlabel;</label>
+        </menuitem>
+        <menuseparator id="spambee-ctx-separator"/>
+    </popup>
+
+    <toolbar id="header-view-toolbar">
+        <toolbarbutton removable="true" id="spambee-button-hdr"
+                       class="toolbarbutton-1 msgHeaderView-button hdrReplyToSenderButton"
+                       label="&spambee.buttonlabel;"
+                       tooltiptext="&spambee.actionButton;" command="cmd_spambeeReport"/>
+    </toolbar>
+
+    <!--<hbox id="messenger-notification-bottom">
+        <stack xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" class="notificationbox-stack" flex="1">
+            <spacer/>
+            <notification
+                    id="spambee-alert-notification"
+                    label="&spambee.contentScript.sidebar.phishingtitle;"
+                    value="VFPhishingNotification"
+                    image="chrome://spambee/skin/icon48.png"
+                    priority="10"
+                    type="critical"
+                    hidden="true">
+                <hbox class="notification-inner" flex="1" type="critical" hidden="false">
+                    <hbox anonid="details" align="center" flex="1"
+                          oncommand="this.parentNode.parentNode._doButtonCommand(event);">
+                        <description anonid="messageText"
+                                     class="messageText"
+                                     flex="1">
+                            &spambee.contentScript.sidebar.phishingdetected;
+                        </description>
+                        <toolbarbutton id="spambee-button-alert" class="toolbarbutton-1 spambee-report-phishing"
+                                       tooltiptext="&spambee.contentScript.sidebar.buttonlabel;" type="menu-button"
+                                       label="&spambee.contentScript.sidebar.buttonlabel;" command="cmd_spambeeReport">
+                            <menupopup id="VFPhishingButtonMenuPopup">
+                                <menuitem label="&spambee.contentScript.sidebar.buttonlabel;" command="cmd_spambeeReport"
+                                          tooltiptext="&spambee.contentScript.sidebar.buttonlabel;"/>
+                                <menuitem label="&spambee.contentScript.sidebar.phishingfalseposbutton;" command="cmd_spambeeFalsePositive"
+                                          tooltiptext="&spambee.phishingAlert.false1;"/>
+                            </menupopup>
+                        </toolbarbutton>
+                    </hbox>
+                </hbox>
+            </notification>
+        </stack>
+    </hbox>-->
+
+    <hbox id="messagepaneboxwrapper">
+        <vbox id="sidebar-box"
+              width="330"
+              insertafter="messagepanebox"/>
+        <splitter id="sidebar-splitter"
+                  insertafter="messagepanebox"
+                  hidden="false"/>
+    </hbox>
+
+    <!--<command id="spambee_closeSidebar" oncommand="spambee_closeSidebar();"/>-->
+
+    <vbox id="sidebar-box"
+          width="330"
+          style="overflow: auto;"
+          persist="width"
+          hidden="false"
+          class = "SPSideBar">
+        <splitter id="sidebar-panels-splitter" hidden="true"/>
+        <vbox id="sidebar-panels-splitter-box" class="SPSideBar">
+            <sidebarheader class="spambee-sidebarheader" id="sidebar-title-box"
+                           align="center">
+                <hbox flex="1">
+                    <image id="logo"
+                           src="chrome://spambee/skin/icon48.png" width="22" height="22"/>
+                    <description class="spambee-sidebarTitle" crop="end" flex="1"
+                                 value="&spambee.contentScript.sidebar.title;"/>
+                    <spacer id="sidebarheader-spacer"
+                            flex="2" position="2"/>
+                    <toolbarbutton id="sidebar-close-button" style=""
+                                   insertafter="sidebar-panel-picker,xsidebar-panel-config"
+                                   oncommand="spambee_closeSidebar();"/>
+                </hbox>
+            </sidebarheader>
+            <groupbox id="spambeeSingleReport">
+                <vbox flex="1" pack="center" class="spambeeOriginalEmail">
+                    <description label="" class="SPsectionOK SPsectionTitle">&spambee.contentScript.sidebar.emailreport;
+                    </description>
+                    <separator class="thick"/>
+                    <description class="SPsectionOK">&spambee.contentScript.sidebar.calltoactionsingle;</description>
+                    <description class="SPsectionOK" style="font-weight: bold;">&spambee.contentScript.sidebar.emailfrom;
+                    </description>
+                    <description crop="end" flex="1"
+                                 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" id="fromvalue"
+                                 class="SPsectionOK" value="from value from value from value from value from value"/>
+                    <description class="SPsectionOK" style="font-weight: bold;">&spambee.contentScript.sidebar.emailsubject;
+                    </description>
+                    <description crop="end" flex="1"
+                                 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" id="emailsubject"
+                                 class="SPsectionOK"
+                                 value="emailsubject value emailsubject value emailsubject value emailsubject value emailsubject value"/>
+                    <separator class="thin"/>
+                    <!--removeIf(!spambee)-->
+                    <checkbox class="SPsectionOK SPsectionInputs" id="dataprivacy"
+                              label="&spambee.contentScript.sidebar.dataprivacy;" flex="1" crop="end" oncommand=""/>
+                    <checkbox class="SPsectionOK SPsectionInputs" id="feedback" label="&spambee.contentScript.sidebar.feedback;"
+                              flex="1" crop="end" oncommand=""/>
+                    <!--endRemoveIf(!spambee)-->
+                    <spacer flex="1"/>
+                    <button flex="1" class="SPOKBox" label="&spambee.contentScript.sidebar.buttonlabel;"/>
+                    <description class="SPoriginalDesc">&spambee.contentScript.sidebar.disclosureSingle;</description>
+                    <description class="SPoriginalDesc" id="zoomOriginalEmail">&spambee.contentScript.sidebar.zoom;</description>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeViewSingleMail" hidden="true">
+                <vbox flex="1" class="spambeeViewSingleMail">
+                    <description></description>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeSendingSingleReport" hidden="true">
+                <vbox flex="1"  pack="center" class="spambeeSendingSingleReportBox">
+                    <spacer flex="1"/>
+                    <description flex="1" class="SPsectionOK reportTransmissionLabel">&spambee.contentScript.sidebar.sendingsinglereport;</description>
+                    <spacer flex="2"/>
+                    <!--<html:progress flex="1" mode="undetermined"/>-->
+                    <html:progress mode="undetermined" flex="1"/>
+                    <spacer flex="1"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeSingleReportSent" hidden="true">
+                <vbox flex="1" pack="center" class="spambeeSingleReportSentBox">
+                    <spacer flex="3"/>
+                    <description class="SPsectionOK" style="text-align: center;font-weight: bold;font-size: 1.2em;">&spambee.contentScript.sidebar.singlereportok;</description>
+                    <description id="SigSpamOKBox" style="margin-top:2em; margin-bottom:2em; text-align: center;font-weight: bold;font-size: 1.2em;">&spambee.contentScript.sidebar.buttonlabelReported;</description>
+                    <spacer flex="2"/>
+                    <description class="SPoriginalDesc">&spambee.contentScript.sidebar.disclosureSingle;</description>
+                    <!--removeIf(!spambee)-->
+                    <description class="SPoriginalDesc">&spambee.contentScript.sidebar.dataprivacyonreport;</description>
+                    <description class="SPoriginalDesc" id="spambeeWillNotify">&spambee.contentScript.sidebar.feedbackinfo;</description>
+                    <!--endRemoveIf(!spambee)-->
+                    <spacer flex="3"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeSingleReportFailed" hidden="true">
+                <vbox flex="1" pack="center" class="spambeeSingleReportSentBox">
+                    <spacer flex="2"/>
+                    <description class="spambeeReportFailure">&spambee.contentScript.sidebar.multiplereportsfailed;</description>
+                    <spacer flex="1"/>
+                    <hbox pack="center">
+                        <description>&spambee.contentScript.sidebar.failureReason;</description>
+                        <description id="spambeeFailureReason" value=""></description>
+                    </hbox>
+                    <spacer flex="2"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeReportMultipleEmails" hidden="true">
+                <vbox flex="1" pack="center" class="spambeeMultipleReportsBox">
+                    <spacer flex="1"/>
+                    <description class="SPsectionTitle">&spambee.contentScript.sidebar.calltoaction;</description>
+                    <description id="spambeeReportsNumber">&spambee.contentScript.sidebar.numbering;</description>
+                    <description id="spambeeReportsNumber2" hidden="true">&spambee.contentScript.sidebar.numbering;</description>
+                    <spacer flex="1"/>
+                    <!--removeIf(!spambee)-->
+                    <checkbox class="SPsectionOK SPsectionInputs" id="dataprivacy2"
+                              label="&spambee.contentScript.sidebar.dataprivacy;" flex="1" crop="end" oncommand=""/>
+                    <checkbox class="SPsectionOK SPsectionInputs" id="feedback2" label="&spambee.contentScript.sidebar.feedback;"
+                              flex="1" crop="end" oncommand=""/>
+                    <spacer flex="1"/>
+                    <!--endRemoveIf(!spambee)-->
+                    <button flex="1" class="SPOKBox" label="&spambee.contentScript.sidebar.buttonlabel;"/>
+                    <description class="SPoriginalDesc">&spambee.contentScript.sidebar.disclosure;</description>
+                    <description class="SPoriginalDesc" id="zoomOriginalEmail">&spambee.contentScript.sidebar.zoom;</description>
+                    <spacer flex="1"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeViewMultipleMails" hidden="true">
+                <hbox>
+                    <spacer></spacer>
+                    <description id="spambeePrevEml" style="-moz-appearance:button; color:initial;" value="&lt;"></description>
+                    <description id="spambeeNDisplay" value="1"></description>
+                    <description>/</description>
+                    <description id="spambeeNEmls" value="1"></description>
+                    <description id="spambeeNextEml" style="-moz-appearance:button; color:initial;" value="&gt;"></description>
+                    <spacer flex="2" position="2"></spacer>
+                </hbox>
+                <vbox flex="1" class="spambeeViewSingleMail">
+                    <description id="spambeeEmlContent"></description>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeSendingReports" hidden="true">
+                <vbox flex="1" pack="center" class="spambeeMultipleReportsBox">
+                    <spacer flex="4"/>
+                    <description flex="1" class="SPsectionTitle reportTransmissionLabel">&spambee.contentScript.sidebar.sendingmultiplereports;</description>
+                    <spacer flex="2"/>
+                    <!--<html:progress flex="1" mode="determined" id="spambeeReportsProgress"/>-->
+                    <html:progress flex="1" mode="determined" id="spambeeReportsProgress"/>
+                    <spacer flex="4"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeMultipleReportsSent" hidden="true">
+                <vbox flex="1" pack="center" class="spambeeMultipleReportsBox">
+                    <spacer flex="3"/>
+                    <description class="SPsectionTitle" id="calltoaction">&spambee.contentScript.sidebar.multiplereportsok;</description>
+                    <description class="SPsectionOK" id="SigSpamOKBox" style="margin-top:2em; margin-bottom:2em; text-align: center;font-weight: bold;font-size: 1.2em;">&spambee.contentScript.sidebar.buttonlabelReported;</description>
+                    <spacer flex="2"/>
+                    <description class="SPoriginalDesc">&spambee.contentScript.sidebar.disclosureSingle;</description>
+                    <!--removeIf(!spambee)-->
+                    <description class="SPoriginalDesc">&spambee.contentScript.sidebar.dataprivacyonreport;</description>
+                    <description class="SPoriginalDesc" id="spambeeWillNotifyMultiple">&spambee.contentScript.sidebar.feedbackinfo;</description>
+                    <!--endRemoveIf(!spambee)-->
+                    <spacer flex="3"/>
+                </vbox>
+            </groupbox>
+            <groupbox id="spambeeMultipleReportsFailed" hidden="true">
+                <vbox flex="1" pack="center" class="spambeeMultipleReportsBox">
+                    <spacer flex="2"/>
+                    <description class="SPsectionTitle" id="calltoaction">&spambee.contentScript.sidebar.multiplereportsfailed;</description>
+                    <spacer flex="1"/>
+                    <hbox flex="1">
+                        <description>&spambee.contentScript.sidebar.successNumber;</description>
+                        <description id="successNumber" value="0"></description>
+                    </hbox>
+                    <hbox flex="1">
+                        <description>&spambee.contentScript.sidebar.failureNumber;</description>
+                        <description id="failureNumber" value="0"></description>
+                    </hbox>
+                    <spacer flex="3"/>
+                    <hbox pack="center">
+                        <description>&spambee.contentScript.sidebar.failureReason;</description>
+                        <description id="spambeeFailureReason" value=""></description>
+                    </hbox>
+                    <spacer flex="2"/>
+                </vbox>
+            </groupbox>
+        </vbox>
+    </vbox>
+</overlay>

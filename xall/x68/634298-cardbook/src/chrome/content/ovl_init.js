@@ -105,7 +105,7 @@ var ovl_synchro = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "52.1");
+		prefs.setCharPref("addonVersion", "52.4");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);
@@ -207,5 +207,6 @@ if (cookieBehavior == 2) {
 ovl_synchro.initPrefs();
 
 cardbookRepository.cardbookMailPopularity.loadMailPopularity();
+cardbookRepository.cardbookPreferDisplayName.loadPreferDisplayName();
 
 ovl_synchro.runBackgroundSync();

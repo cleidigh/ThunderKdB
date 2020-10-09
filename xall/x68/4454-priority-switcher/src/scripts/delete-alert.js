@@ -1,6 +1,5 @@
 document.getElementById("buttonCancel").addEventListener("click", async () => {
-  let windowId = (await browser.windows.getCurrent()).id;
-  await browser.windows.remove(windowId);
+  await closeWindow();
 });
 
 document.getElementById("buttonDelete").addEventListener("click", async () => {
@@ -9,8 +8,15 @@ document.getElementById("buttonDelete").addEventListener("click", async () => {
     message: "DELETE_CONFIRMED",
     skipPriority: skip
   });
-  let windowId = (await browser.windows.getCurrent()).id;
-  await browser.windows.remove(windowId);
+  await closeWindow();
 });
+
+async function closeWindow() {
+  let windowId = (await browser.windows.getCurrent()).id;
+  await browser.runtime.sendMessage({
+    message: "CLOSE_REQ",
+    windowId: windowId
+  });
+}
 
 translate();

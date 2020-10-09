@@ -219,16 +219,14 @@ debug('entered prefs='+prefs);
 try {
 					let u2i=new Object;
 					let u2f=new Object;
-					let cn = MailServices.ab.directories;
-					while( cn.hasMoreElements() )
-					{
-						let dir = cn.getNext().QueryInterface(Ci.nsIAbDirectory);
+					for (let dir of MailServices.ab.directories) {
+debug('uids2ids: '+dir.UID+' -> '+dir.dirPrefId);
 						u2i[dir.UID]=dir.dirPrefId;
 						if (typeof prefs!=='undefined') u2f[dir.UID]=getExternalFilename(dir);
 								//if called from background we have no prefs yet, but we don't need u2f there
 					}
 					return [u2i, u2f];
-} catch(e) {debug('throws: '+e, e);}
+} catch(e) {console.log('throws: '+e, e);}
 				},
 				setPrefs: function(theprefs, changedPref) {
 debug('prefs');
@@ -316,13 +314,12 @@ debug(uristring+' -> '+uri.scheme+' '+uri.host+' '+uri.filePath);
 debug(e);
           }
 debug(uristring+' -> illegal uri');
-              let sb=Services.strings.createBundle(
-                "chrome://messenger/locale/accountCreationUtil.properties"
-              );
-              let msg=sb.GetStringFromName('url_parsing.error');
-              Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
-              return null;
-            return null;
+          let sb=Services.strings.createBundle(
+            "chrome://messenger/locale/accountCreationUtil.properties"
+          );
+          let msg=sb.GetStringFromName('url_parsing.error');
+          Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
+          return null;
         },
 				abspassword: async function(protocol, host, user, pwd) {
 					return abspassword(protocol, host, user, pwd);

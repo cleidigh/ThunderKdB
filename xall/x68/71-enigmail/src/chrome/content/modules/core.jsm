@@ -24,6 +24,7 @@ const getEnigmailPrefs = EnigmailLazy.loader("enigmail/prefs.jsm", "EnigmailPref
 const getEnigmailWindows = EnigmailLazy.loader("enigmail/windows.jsm", "EnigmailWindows");
 const getEnigmailApp = EnigmailLazy.loader("enigmail/app.jsm", "EnigmailApp");
 const getEnigmailOverlays = EnigmailLazy.loader("enigmail/enigmailOverlays.jsm", "EnigmailOverlays");
+const getEnigmailTimer = EnigmailLazy.loader("enigmail/timer.jsm", "EnigmailTimer");
 const Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
 var {
   MailConstants
@@ -33,7 +34,6 @@ var EXPORTED_SYMBOLS = ["EnigmailCore"];
 
 // Interfaces
 const nsIEnvironment = Ci.nsIEnvironment;
-const APP_STARTUP = 1;
 
 var gPreferredGpgPath = null;
 var gOverwriteEnvVar = [];
@@ -81,35 +81,15 @@ var EnigmailCore = {
         // try to initialize Enigmail
         gEnigmailService.initialize(null, getEnigmailApp().getVersion());
       }
-
-
     }
 
-    function continueStartup(type) {
-      logger.DEBUG(`core.jsm: startup.continueStartup(${type})\n`);
+    // if TB starts up, observe "mail-tabs-session-restored"
+    Services.obs.addObserver(initService, "mail-tabs-session-restored", false);
 
-      try {
-        if (isPostbox() || reason !== APP_STARTUP) {
-          // Postbox or while not starting up
-          initService();
-        }
+    // in any case (for example if Enigmail is updated or re-enabled), wait 10 seconds then initialize
+    getEnigmailTimer().setTimeout(initService, 10000);
 
-      }
-      catch (ex) {
-        gEnigmailService = null;
-        logger.DEBUG("core.jsm: startup.continueStartup: error " + ex.message + "\n" + ex.stack + "\n");
-      }
-
-      getEnigmailOverlays().startup();
-    }
-
-    if ((!isPostbox()) && reason === APP_STARTUP) {
-      // if TB starts up, observe "mail-tabs-session-restored"
-      Services.obs.addObserver(initService, "mail-tabs-session-restored", false);
-    }
-
-    continueStartup(0);
-
+    getEnigmailOverlays().startup();
   },
 
   shutdown: function(reason) {
@@ -409,11 +389,4 @@ class Factory {
   unregister() {
     Cm.unregisterFactory(this.component.prototype.classID, this);
   }
-}
-
-function isPostbox() {
-  const POSTBOX_ID = "postbox@postbox-inc.com";
-  const XPCOM_APPINFO = "@mozilla.org/xre/app-info;1";
-
-  return Cc[XPCOM_APPINFO].getService(Ci.nsIXULAppInfo).ID == POSTBOX_ID;
 }

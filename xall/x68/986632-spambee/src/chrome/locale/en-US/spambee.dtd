@@ -1,0 +1,139 @@
+<!ENTITY spambee.language "en">
+<!ENTITY spambee.brand "SPAMBEE">
+<!ENTITY spambee.extensionDescription "">
+<!ENTITY spambee.actionButton "SPAMBEE - Click here to report to SPAMBEE">
+<!ENTITY spambee.actionButtonWhenReportsUpdated "SPAMBEE - Click here to report to SpamBeeTo view the result of your reports analysis, right-click on this button and select menu “Your last reports to SPAMBEE”">
+<!ENTITY spambee.documents.htmloptions.html "SPAMBEE Options">
+<!ENTITY spambee.documents.htmlphishingAlert.html "Phishing Alert">
+<!ENTITY spambee.notlistening1 "This site is not a webmail compatible with SPAMBEE extension. No report is possible.">
+<!ENTITY spambee.notlistening2 "However, if the webmail is loading, please wait.">
+<!ENTITY spambee.notready "SPAMBEE is starting, please wait.">
+<!ENTITY spambee.notauthentified "">
+<!ENTITY spambee.notavailable "SPAMBEE is temporarly not available for this webmail. We are working to make this webmail compatible as soon as possible.">
+<!ENTITY spambee.options.yes "Yes">
+<!ENTITY spambee.options.no "No">
+<!ENTITY spambee.options.title "SPAMBEE extension settings">
+<!ENTITY spambee.options.title2 "Thanks for using the SPAMBEE">
+<!ENTITY spambee.options.dataprivacy.title "Data Privacy Protection">
+<!ENTITY spambee.options.dataprivacy.disclaimer "Your reports are strictly anonymous and do not require any user registration or email address registration. All recipients' email addresses will be deleted before transmission of the reporting. .Without your agreement, any reported email will be  conserved only for the duration of its content analysis.However, you can give your agreement to SPAMBEE to keep reported datas for a period of 3 months for further investigations, if required.">
+<!ENTITY spambee.options.dataprivacy.label "I accept that SPAMBEE keeps a copy of my reported emails (anonymized) for further investigation by SPAMBEE. Otherwise, the reported email(s) will be immediately deleted after analysis.">
+<!ENTITY spambee.options.dataprivacypolicy.label "Privacy Policy">
+<!ENTITY spambee.options.notifications.label "to be notified when the result of the analysis of my report is available">
+<!ENTITY spambee.options.notifications.description "Activating this option, you will be notified (by your browser) when the analysis of a reported email has been completed, so you can check it.">
+<!ENTITY spambee.options.preferences.title "Your Preferences">
+<!ENTITY spambee.options.oneclick.description "Option to report emails by 1 click">
+<!ENTITY spambee.options.oneclick.label "to report emails by 1 click">
+<!ENTITY spambee.options.oneclickDescription.description "Option to report emails by 1 click">
+<!ENTITY spambee.options.oneclickDescription.label "Select YES if you wish to report email(s) by only one click on the SPAMBEE button in your browser toolbar. After opening an email or selecting emails, the report will be transmitted to SPAMBEE at once when you click on the SPAMBEE button in your browser toolbar.">
+<!ENTITY spambee.options.URLDETECT.title "Detection of fraudulent sites (URLs) when opening a new browser tab or window (outside a webmail)">
+<!ENTITY spambee.options.URLDETECT.description "Activating this feature (setting option above to Yes), you will be alerted if you reach a site identified as a fraudulent site. We strongly recommend you keep this feature activated (setting option to Yes).">
+<!ENTITY spambee.options.URLDETECT.label "to allow fraudulent URL detection during your web navigation">
+<!ENTITY spambee.options.REMINDER.title "Reminder for how to use SPAMBEE in webmails:">
+<!ENTITY spambee.options.REMINDER.label "Reminder frequency every _X_ days:">
+<!ENTITY spambee.options.save "Save">
+<!ENTITY spambee.options.saved "Parameters saved...">
+<!ENTITY spambee.options.invalidCredentials "">
+<!ENTITY spambee.options.noConnection "">
+<!ENTITY spambee.options.missingPassword "">
+<!ENTITY spambee.options.invalidUserId "">
+<!ENTITY spambee.options.validateAgreement ".">
+<!ENTITY spambee.options.errorVerifyingCredentials "">
+<!ENTITY spambee.options.error1 "">
+<!ENTITY spambee.options.error2 "">
+<!ENTITY spambee.contentScript.notificationMessage.title "SPAMBEE">
+<!ENTITY spambee.contentScript.notificationMessage.nomail1 "To report unsollicited email, select emails or open an email in your webmail and click on the SPAMBEE button in the browser toolbar.">
+<!ENTITY spambee.contentScript.notificationMessage.nomail2 "To report unsollicited email, select emails or open an email in your webmail and click on the SPAMBEE button in the browser toolbar. Standard mode is activated in your webmail, you cannot select a conversation (thread of emails). We recommend you deactivate Standard Mode in your webmail preferences.">
+<!ENTITY spambee.contentScript.notificationMessage.nomail3 "To report unsollicited email, open an email in your webmail and click on the extension button in the browser toolbar.">
+<!ENTITY spambee.contentScript.notificationMessage.error1 "SPAMBEE extension encountered an error. Parameters not loaded. Please refresh the current page in your browser.">
+<!ENTITY spambee.contentScript.notificationMessage.error2 "SPAMBEE extension encountered an error while retrieving emails for report. Please retry or request assistance from SPAMBEE support if this problem remains.">
+<!ENTITY spambee.contentScript.sidebar.title "Emails reporting and protection against Phishing">
+<!ENTITY spambee.contentScript.sidebar.copyright "">
+<!ENTITY spambee.contentScript.sidebar.calltoactionsingle "If you wish to report the selected or displayed email as spam or unsollicited email, click on the button below">
+<!ENTITY spambee.contentScript.sidebar.calltoaction "If you wish to report the selected emails as spam or unsollicited emails,  click on the button below">
+<!ENTITY spambee.contentScript.sidebar.disclosure "By reporting email(s), the(ir) content will be transmitted to our services for analysis purposes and deployment of appropriate counter-measures.">
+<!ENTITY spambee.contentScript.sidebar.disclosureSingle "By reporting email, its content will be transmitted to our services for analysis purposes and deployment of appropriate counter-measures.">
+<!ENTITY spambee.contentScript.sidebar.numbering "You have selected __VFSELECTEDMAILS__ emails to report">
+<!ENTITY spambee.contentScript.sidebar.buttonlabel "REPORT">
+<!ENTITY spambee.contentScript.sidebar.phishingtitle "Fraudulent links detected">
+<!ENTITY spambee.contentScript.sidebar.phishingdetected "Links to fraudulent sites have been detected in the mail(s) displayed in your webmail">
+<!ENTITY spambee.contentScript.sidebar.phishinglinks "Each concerned link is marked with the SPAMBEE logo. We strongly recommend you to not click such marked link and proceed with caution.">
+<!ENTITY spambee.contentScript.sidebar.phishingreport "By reporting email, its content will be transmitted to our services for analysis purposes and deployment of appropriate counter-measures.">
+<!ENTITY spambee.contentScript.sidebar.phishingfalsepos "If you consider this email as legitimate and none of the links is fraudulent, report this to SPAMBEE : ">
+<!ENTITY spambee.contentScript.sidebar.phishingfalseposbutton "False-Positive">
+<!ENTITY spambee.contentScript.sidebar.zoom "Click here to view all the data transmitted with your report to SPAMBEE.">
+<!ENTITY spambee.contentScript.sidebar.reportOnGoing "Please wait...">
+<!ENTITY spambee.contentScript.sidebar.reportTransmission "Thank you for your report, transmission is ongoing.">
+<!ENTITY spambee.contentScript.sidebar.buttonlabelReported "THANKS">
+<!ENTITY spambee.contentScript.sidebar.singlereportok "The reported email has been transmitted to SPAMBEE">
+<!ENTITY spambee.contentScript.sidebar.multiplereportsok "The reported emails have been transmitted to SPAMBEE">
+<!ENTITY spambee.contentScript.sidebar.sendingsinglereport "Transmitting report... please wait">
+<!ENTITY spambee.contentScript.sidebar.sendingmultiplereports "Transmitting reports... please wait">
+<!ENTITY spambee.contentScript.sidebar.reportsNumber "Number of reports to transmit: ">
+<!ENTITY spambee.contentScript.sidebar.multiplereportsfailed "An error occured while transmitting one of the reports.">
+<!ENTITY spambee.contentScript.sidebar.successNumber "Number of transmitted reports: ">
+<!ENTITY spambee.contentScript.sidebar.failureNumber "Number of failed transmissions: ">
+<!ENTITY spambee.contentScript.sidebar.failureReason "Error code: ">
+<!ENTITY spambee.contentScript.sidebar.newversionavailable "A new version of SPAMBEE is available.">
+<!ENTITY spambee.contentScript.sidebar.newversionnumber "New version: __VERSIONNUMBER__">
+<!ENTITY spambee.contentScript.sidebar.currentversionnumber "Current version: __CURRENTVERSIONNUMBER__">
+<!ENTITY spambee.contentScript.sidebar.calltoupdate "You should update SPAMBEE to take benefits of new features.">
+<!ENTITY spambee.contentScript.sidebar.howtoupdate "To proceed to update, open the Add-Ons tab in your browser (about:addons), click on the button  in the right-upper corner and select the search updates menu.">
+<!ENTITY spambee.contentScript.sidebar.support "If the proble remains, you may submit a support request to Signal : click here.">
+<!ENTITY spambee.contentScript.sidebar.emailreport "Email Report">
+<!ENTITY spambee.contentScript.sidebar.dataprivacy "I accept that SPAMBEE keeps a copy of my reported emails (anonymized) for further investigation by SPAMBEE. Otherwise, the reported email(s) will be immediately deleted once it has been analysed.">
+<!ENTITY spambee.contentScript.sidebar.feedback "I want to be notified once my reported email has been analysed">
+<!ENTITY spambee.contentScript.sidebar.dataprivacyonreport "The data related to your email report will be deleted in our database once it has been analysed.">
+<!ENTITY spambee.contentScript.sidebar.feedbackinfo "As requested, you will be notified once your report has been analysed.">
+<!ENTITY spambee.contentScript.reminder.title "SPAMBEE - How to use the extension">
+<!ENTITY spambee.contentScript.reminder.message1 "To report a spam or phishing email, open or select the email(s) in your Webmail, then click on the SPAMBEE button in the browser toolbar.">
+<!ENTITY spambee.contentScript.reminder.message2 "See this reminder periodically?">
+<!ENTITY spambee.contentScript.reminder.message3 "click here to modify this reminder in options, or set your preferences below">
+<!ENTITY spambee.contentScript.reminder.message4 "Every __frequencyDisplayed__ day">
+<!ENTITY spambee.contentScript.reportStatus.success "Thank You">
+<!ENTITY spambee.contentScript.reportStatus.error "Unexpected error">
+<!ENTITY spambee.contentScript.reportStatus.invalidpassword "User ID or password is invalid">
+<!ENTITY spambee.phishingAlert.warning "WARNING">
+<!ENTITY spambee.phishingAlert.message1 "The page, referenced by the URL below, being opened in your browser has been identified as fraudulent.">
+<!ENTITY spambee.phishingAlert.message2 "We strongly recommend you to not continue your navigation on this site.">
+<!ENTITY spambee.phishingAlert.message3 "">
+<!ENTITY spambee.phishingAlert.return "Go back to previous page">
+<!ENTITY spambee.phishingAlert.buttonlabel "⚠ I understood risks, however I still want to visit this site">
+<!ENTITY spambee.phishingAlert.false1 "If you consider this alert as a “false positive” phishing detection,">
+<!ENTITY spambee.phishingAlert.false2 " and this URL is not fraudulent: ">
+<!ENTITY spambee.phishingAlert.false3 "for letting us know and investigate on its status.">
+<!ENTITY spambee.phishingAlert.buttonlabel2 "click here">
+<!ENTITY spambee.phishingAlert.falsePositiveOK "Thanks for this information, we'll check this site">
+<!ENTITY spambee.reportUrl.message1 "If you wish to report the current page as a fraudulent website, click on the REPORT button below.">
+<!ENTITY spambee.reportUrl.message2 "The address (URL) of this web site will be analyzed, and appropriate counter-measures will be taken if a fraud attempt is detected.">
+<!ENTITY spambee.reportUrl.buttonlabel "REPORT">
+<!ENTITY spambee.update.updated "The extension has been updated">
+<!ENTITY spambee.update.more "More details">
+<!ENTITY spambee.critical.noparams "Extension could not start">
+<!ENTITY spambee.reports.title "Your last reports to SPAMBEE">
+<!ENTITY spambee.reports.subTitle "List of your last reports to SPAMBEE in the last 10 days">
+<!ENTITY spambee.reports.deleteRowsInfo "Cancel and delete selected reports (this will also delete all data stored by SPAMBEE)">
+<!ENTITY spambee.reports.col1 "🗑">
+<!ENTITY spambee.reports.col2 "Report time">
+<!ENTITY spambee.reports.col3 "Email sender / Site">
+<!ENTITY spambee.reports.col4 "Email subject  / URL">
+<!ENTITY spambee.reports.col5 "Status time">
+<!ENTITY spambee.reports.col6 "Status">
+<!ENTITY spambee.reports.pager.page "Page ">
+<!ENTITY spambee.reports.pager.onpages "/">
+<!ENTITY spambee.reports.status.phishing "phishing">
+<!ENTITY spambee.reports.status.suspect "suspect">
+<!ENTITY spambee.reports.status.unknown "unknown">
+<!ENTITY spambee.reports.status.legit "legit">
+<!ENTITY spambee.reports.status.pending "pending...">
+<!ENTITY spambee.reports.status.phishingDescription "We have detected phishing links in this email, you must proceed with caution and should not click on any link in this email, nor reply to this email or open an attached document.">
+<!ENTITY spambee.reports.status.suspectDescription "Some elements in this email may be fraudulent, pleaseproceed with caution.">
+<!ENTITY spambee.reports.status.unknownDescription "The automatic analysis of your report dit not allow to identify any fraudulent attempt in this email.">
+<!ENTITY spambee.reports.status.legitDescription "This email is not fraudulent and will be considered as a reported spam email.">
+<!ENTITY spambee.reports.status.pendingDescription "The analysis of this report is not yet finished - please wait.">
+<!ENTITY spambee.notification.title "Report Analysis">
+<!ENTITY spambee.notification.message "Status updated for your report: click here to check status">
+<!ENTITY spambee.buttonlabel "REPORT">
+<!ENTITY spambee.accesskey "">
+<!ENTITY spambee.toolbarbutton.tooltip-badge "">
+<!ENTITY spambee.contentScript.sidebar.emailfrom "From:">
+<!ENTITY spambee.contentScript.sidebar.emailsubject "Subject:">

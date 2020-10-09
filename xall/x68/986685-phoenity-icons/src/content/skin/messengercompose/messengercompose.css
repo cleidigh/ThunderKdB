@@ -1,0 +1,314 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+/* ::::: primary toolbar buttons ::::: */
+
+#button-send {
+  list-style-image: url("button-send.png");
+}
+
+#button-contacts {
+  list-style-image: url("button-contacts.png") !important;
+}
+
+#spellingButton {
+  list-style-image: url("spellingButton.png");
+}
+
+#button-attach {
+  list-style-image: url("button-attach.png");
+}
+
+#button-security {
+  list-style-image: url("button-security.png");
+}
+
+#button-save {
+  list-style-image: url("button-save.png") !important;
+}
+
+#quoteButton {
+  list-style-image: url("quoteButton.png");
+}
+
+#cut-button {
+  list-style-image: url("cut-button.png");
+}
+
+#copy-button {
+  list-style-image: url("copy-button.png");
+}
+
+#paste-button {
+  list-style-image: url("paste-button.png");
+}
+
+#button-returnReceipt {
+  list-style-image: url("button-returnReceipt.png");
+}
+
+/* :::: autocomplete icons :::: */
+
+.autocomplete-richlistitem[type="local-abook"] > .ac-site-icon {
+  list-style-image: url("../addressbook/icons/addrbook.png");
+}
+
+.autocomplete-richlistitem[type="remote-abook"] > .ac-site-icon {
+  list-style-image: url("../addressbook/icons/remote-addrbook.png");
+}
+
+.autocomplete-richlistitem[type="remote-err"] > .ac-site-icon {
+  list-style-image: url("../addressbook/icons/remote-addrbook-error.png");
+}
+
+/* ::::: addressing widget ::::: */
+
+.person-icon {
+  margin: 3px;
+  list-style-image: url("../addressbook/icons/abcard.png");
+}
+
+/* ::::: format toolbar ::::: */
+
+#FormatToolbar > toolbarbutton {
+  list-style-image: url("format-buttons.png");
+  opacity: .85;
+}
+
+#AbsoluteFontSizeButton {
+  -moz-image-region: rect(0px 320px 16px 304px);
+}
+
+#DecreaseFontSizeButton {
+  -moz-image-region: rect(0px 16px 16px 0px);
+}
+
+#IncreaseFontSizeButton {
+  -moz-image-region: rect(0px 32px 16px 16px);
+}
+
+#boldButton {
+  -moz-image-region: rect(0px 48px 16px 32px);
+}
+
+#italicButton {
+  -moz-image-region: rect(0px 64px 16px 48px);
+}
+
+#underlineButton {
+  -moz-image-region: rect(0px 80px 16px 64px);
+}
+
+#ulButton {
+  -moz-image-region: rect(0px 96px 16px 80px);
+}
+
+#olButton {
+  -moz-image-region: rect(0px 112px 16px 96px);
+}
+
+#outdentButton {
+  -moz-image-region: rect(0px 144px 16px 128px);
+}
+
+#indentButton {
+  -moz-image-region: rect(0px 128px 16px 112px);
+}
+
+#AlignPopupButton {
+  -moz-image-region: rect(0px 176px 16px 160px);
+}
+
+#InsertPopupButton {
+  -moz-image-region: rect(0px 256px 16px 240px);
+}
+
+#smileButtonMenu {
+  -moz-image-region: rect(0px 304px 16px 288px);
+}
+
+/* ..... align menu ..... */
+
+#AlignPopup > menuitem {
+  list-style-image: url("format-buttons.png");
+}
+
+#AlignLeftItem {
+  -moz-image-region: rect(0px 160px 16px 144px);
+}
+
+#AlignCenterItem {
+  -moz-image-region: rect(0px 176px 16px 160px);
+}
+
+#AlignRightItem {
+  -moz-image-region: rect(0px 192px 16px 176px);
+}
+
+#AlignJustifyItem {
+  -moz-image-region: rect(0px 208px 16px 192px);
+}
+
+/* ..... insert menu ..... */
+
+#InsertPopup > menuitem {
+  list-style-image: url("format-buttons.png");
+}
+
+#InsertLinkItem {
+  -moz-image-region: rect(0px 224px 16px 208px);
+}
+
+#InsertAnchorItem {
+  -moz-image-region: rect(0px 240px 16px 224px);
+}
+
+#InsertImageItem {
+  -moz-image-region: rect(0px 256px 16px 240px);
+}
+
+#InsertHRuleItem {
+  -moz-image-region: rect(0px 272px 16px 256px);
+}
+
+#InsertTableItem {
+  -moz-image-region: rect(0px 288px 16px 272px);
+}
+
+/* ..... smiley menu ..... */
+
+#smileySmile > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-smile.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyFrown > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-frown.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyWink > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-wink.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyTongue > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-tongue-out.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyLaughing > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-laughing.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyEmbarassed > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-embarassed.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyUndecided > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-undecided.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileySurprise > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-surprised.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyKiss > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-kiss.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyYell > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-yell.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyCool > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-cool.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyMoney > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-money-mouth.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyFoot > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-foot-in-mouth.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyInnocent > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-innocent.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileyCry > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-cry.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+#smileySealed > .menu-iconic-left {
+  list-style-image: url("chrome://communicator/skin/icons/smileys/smiley-sealed.png");
+  -moz-image-region: auto; /* cut off inheritance */
+}
+
+/* ..... fg/bg color picker ..... */
+
+.color-button {
+  border: 1px solid rgba(24, 24, 24, .32);
+  padding: 0px;
+  width: 14px;
+  height: 12px;
+  margin: 2px;
+}
+
+.color-button:hover {
+  border: 1px solid ThreeDDarkShadow;
+}
+
+.color-button[disabled="true"],
+.color-button[disabled="true"]:hover {
+  border: 1px solid rgba(24, 24, 24, .32);
+  outline: 1px solid rgba(255,255,255,.4);
+  outline-offset: -1px;
+  box-shadow: inset 0 0 4em rgba(255,255,255,.5);
+}
+
+#TextColorButton {
+  margin-top: 2px;
+  margin-bottom: 9px;
+  margin-inline-start: 2px;
+  margin-inline-end: 9px;
+}
+
+#BackgroundColorButton {
+  margin-top: 9px;
+  margin-bottom: 2px;
+  margin-inline-start: 9px;
+  margin-inline-end: 2px;
+}
+
+/* ..... thunderHTMLedit ..... */
+
+#thunderHTMLedit-content-tab > radiogroup > radio {
+  text-shadow: none;
+}
+
+/* ..... CardBook ..... */
+
+toolbar[brighttext] #cardbookComposeToolbarButton.toolbarbutton-1,
+#cardbookComposeToolbarButton.toolbarbutton-1 {
+  list-style-image: url("../cardbook/cardbook_24.png");
+}
+toolbar[iconsize="small"] #cardbookComposeToolbarButton.toolbarbutton-1 {
+  list-style-image: url("../cardbook/cardbook_16.png");
+}

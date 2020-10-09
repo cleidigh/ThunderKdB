@@ -45,10 +45,10 @@ debug('page='+page);
 		let count=Object.entries(prefs).length;
 		if (count>0) {
 debug('preferences migrated');
-			if (!prefs['syncpolicy']) prefs['syncpolicy']='entry';
 			if (!prefs['imapusedraft']) prefs['imapuploadpolicy']='tmpfile';
 			else 												prefs['imapuploadpolicy']='draft';
 			delete prefs['imapusedraft'];
+			delete prefs['syncpolicy'];
 			if (!prefs['downloadpolicy']) prefs['downloadpolicy']='ask';
 			if (!prefs['synctype']) prefs['synctype']='none';
 			for (let [key, val] of Object.entries(prefs)) {
@@ -63,9 +63,14 @@ debug('prefs stored');
 			} catch(e) {
 				debug('storing prefs throws: '+e, e);
 			}
-		} else {
+		} else {	//already migrated or fresh install
 debug('no preferences to migrate');
-			messenger.storage.local.remove('upgraded');
+			if (!prefs['imapusedraft']) prefs['imapuploadpolicy']='draft';
+			if (!prefs['downloadpolicy']) prefs['downloadpolicy']='ask';
+			if (!prefs['delayautodownload'] || prefs['delayautodownload']<2) prefs['delayautodownload']=2;
+			delete prefs['syncpolicy'];
+			delete prefs['upgraded'];
+			await messenger.storage.local.set(prefs);
 		}
 
     prefs=await messenger.storage.local.get(null); //.then(function(prefs) {
@@ -94,7 +99,6 @@ debug('ABS: background: u2i='+u2i);
         }
       }
     }
-    if (!prefs['delayautodownload']) prefs['delayautodownload']=1;
 for (let [key, val] of Object.entries(prefs)) {debug('background pref: '+key+'->'+val); }
     messenger.abs.setPrefs(prefs, '');
 

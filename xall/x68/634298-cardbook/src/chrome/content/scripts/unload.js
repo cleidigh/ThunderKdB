@@ -27,6 +27,7 @@ let JSMs = [
 	"chrome://cardbook/content/cardbookLocales.js",
 	"chrome://cardbook/content/cardbookLog.jsm",
 	"chrome://cardbook/content/cardbookMailPopularity.jsm",
+	"chrome://cardbook/content/cardbookPreferDisplayName.jsm",
 	"chrome://cardbook/content/cardbookNotifications.js",
 	"chrome://cardbook/content/cardbookPasswordManager.jsm",
 	"chrome://cardbook/content/cardbookRepository.js",

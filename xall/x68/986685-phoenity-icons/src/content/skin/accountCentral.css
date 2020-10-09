@@ -1,0 +1,170 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* ===== accountCentral.css ==========================================
+  == Styles for the Messenger Account Central panel.
+  ======================================================================= */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+.acctCentralText {
+  min-height: 32px;
+  margin-bottom: 6px;
+}
+
+#CreateAccounts,
+#createAccounts {
+  margin-top: -18px;
+  margin-bottom: -9px;
+}
+
+#CreateAccountsList,
+#createAccountsList {
+  padding-inline-start: 3.9em;
+}
+
+#acctCentralRows spacer.big {
+  max-height: 2em
+}
+
+#acctCentralRows row:last-child {
+  margin-bottom: 6px;
+}
+
+#ReadMessages label,
+#readMessages label {
+  background: url("accountcentral/read-messages.png") no-repeat !important;
+}
+
+#ReadMessages label:-moz-locale-dir(rtl),
+#readMessages label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/read-messages.png") right no-repeat !important;
+}
+
+#ComposeMessage label,
+#composeMessage label {
+  background: url("accountcentral/write-message.png") no-repeat !important;
+}
+
+#ComposeMessage label:-moz-locale-dir(rtl),
+#composeMessage label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/write-message.png") right no-repeat !important;
+}
+
+#AccountSettings label,
+#accountSettings label {
+  background: url("accountcentral/account-settings.png") no-repeat !important;
+}
+
+#AccountSettings label:-moz-locale-dir(rtl),
+#accountSettings label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/account-settings.png") right no-repeat !important;
+}
+
+#CreateAccount label,
+#createAccount label {
+  background: url("accountcentral/create-account.png") no-repeat !important;
+}
+
+#CreateAccount label:-moz-locale-dir(rtl),
+#createAccount label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/create-account.png") right no-repeat !important;
+}
+
+#SearchMessages label,
+#searchMessages label {
+  background: url("accountcentral/search-messages.png") no-repeat !important;
+}
+
+#SearchMessages label:-moz-locale-dir(rtl),
+#searchMessages label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/search-messages.png") right no-repeat !important;
+}
+
+#CreateFilters label,
+#createFilters label {
+  background: url("accountcentral/manage-filters.png") no-repeat !important;
+}
+
+#CreateFilters label:-moz-locale-dir(rtl),
+#createFilters label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/manage-filters.png") right no-repeat !important;
+}
+
+#OfflineSettings label,
+#offlineSettings label {
+  background: url("accountcentral/offline-settings.png") no-repeat !important;
+}
+
+#OfflineSettings label:-moz-locale-dir(rtl),
+#offlineSettings label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/offline-settings.png") right no-repeat !important;
+}
+
+#CreateAccountMail,
+#CreateAccountMovemail,
+#createAccountMail,
+#createAccountMovemail {
+  background: url("./icons/message-small.png") no-repeat;
+}
+
+#CreateAccountChat,
+#createAccountChat {
+  background: url("chat/chat-16.png") no-repeat;
+}
+
+#CreateAccountNewsgroups,
+#createAccountNewsgroups {
+  background: url("./icons/message-news.png") no-repeat;
+}
+
+#CreateAccountRSS,
+#createAccountRSS {
+  background-image: -moz-image-rect(url("./icons/rss-feed.png"), 0, 16, 16, 0);
+  background-repeat: no-repeat;
+}
+
+#CreateAccountMail:-moz-locale-dir(rtl),
+#CreateAccountMovemail:-moz-locale-dir(rtl),
+#CreateAccountChat:-moz-locale-dir(rtl),
+#CreateAccountNewsgroups:-moz-locale-dir(rtl),
+#CreateAccountRSS:-moz-locale-dir(rtl),
+#createAccountMail:-moz-locale-dir(rtl),
+#createAccountMovemail:-moz-locale-dir(rtl),
+#createAccountChat:-moz-locale-dir(rtl),
+#createAccountNewsgroups:-moz-locale-dir(rtl),
+#createAccountRSS:-moz-locale-dir(rtl) {
+  background-position: right center;
+}
+
+#SubscribeImapFolders label,
+#subscribeImapFolders label {
+  background: url("accountcentral/manage-imap.png") no-repeat !important;
+}
+
+#SubscribeImapFolders label:-moz-locale-dir(rtl),
+#subscribeImapFolders label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/manage-imap.png") right no-repeat !important;
+}
+
+#SubscribeNewsgroups label,
+#subscribeNewsgroups label {
+  background: url("accountcentral/manage-newsgroups.png") no-repeat !important;
+}
+
+#SubscribeNewsgroups label:-moz-locale-dir(rtl),
+#subscribeNewsgroups label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/manage-newsgroups.png") right no-repeat !important;
+}
+
+#SubscribeRSS label,
+#subscribeRSS label {
+  background: url("accountcentral/manage-rss.png") no-repeat !important;
+}
+
+#SubscribeRSS label:-moz-locale-dir(rtl),
+#subscribeRSS label:-moz-locale-dir(rtl) {
+  background: url("accountcentral/manage-rss.png") right no-repeat !important;
+}

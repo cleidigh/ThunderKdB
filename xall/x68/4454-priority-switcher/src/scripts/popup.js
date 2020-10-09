@@ -18,20 +18,22 @@ browser.runtime.sendMessage({
 browser.runtime.onMessage.addListener(async (message) => {
   switch (message.message) {
     case "SEND_CURRENT_MSG_PRIORITY":
-      init(message.priority);
+      initSelection(message.priority);
       break;
     default:
   }
 });
 
-async function init(priority) {
+async function init() {
   translate();
-
   let result = await browser.storage.local.get("deleteButtonEn");
   if (result.deleteButtonEn) {
     document.getElementById("deleteArea").setAttribute("class", "box-visible");
-  }
-  
+  }  
+}
+init();
+
+async function initSelection(priority) {
   let selectedMessages = await getCurrentMessages();
   if (selectedMessages.length > 0) {
     priority = priority ? priorityTable["p_" + priority.toLowerCase()] : null;

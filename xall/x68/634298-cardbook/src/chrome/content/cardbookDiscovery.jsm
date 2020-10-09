@@ -9,9 +9,9 @@ var cardbookDiscovery = {
 		// especially after having added an address book, a new discovery does not reask for adding 
 		let window = Services.wm.getMostRecentWindow("mail:3pane");
 		if (window) {
-			if (window.openDialog && aAccountsToAdd.length != 0) {
+			if (Services.wm.getMostRecentWindow("mail:3pane").openDialog && aAccountsToAdd.length != 0) {
 				var myArgs = {action: "discovery", accountsToAdd: aAccountsToAdd};
-				window.openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xhtml", "", cardbookRepository.windowParams, myArgs);
+				Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksAdd.xhtml", "", cardbookRepository.windowParams, myArgs);
 			}
 		}
 	},

@@ -91,11 +91,11 @@ MailboxAlertAlertSettings.doClick = function (element_name) {
 MailboxAlertAlertSettings.setUIShowMessage = function (show_message) {
   MailboxAlertAlertSettings.setUIElementList([
     "show_message_tab",
-    "show_message_subject_textbox",
-    "show_message_content_textbox",
+    "show_message_subject_html:input",
+    "show_message_content_html:input",
     "show_message_icon_checkbox",
     "show_message_duration_label",
-    "show_message_duration_textbox",
+    "show_message_duration_html:input",
     "show_message_duration_time_unit_label",
     "show_message_position_label",
     "show_message_position_menulist",
@@ -143,7 +143,7 @@ MailboxAlertAlertSettings.setUIPlaySound = function (play_sound) {
     "play_sound_radio",
     "play_sound_radio_default",
     "play_sound_radio_file",
-    "play_sound_file_textbox",
+    "play_sound_file_html:input",
     "play_sound_browse_button"
   ], play_sound);
 }
@@ -162,9 +162,10 @@ MailboxAlertAlertSettings.checkUIPlaySound = function (do_click) {
 MailboxAlertAlertSettings.setUIExecuteCommand = function (execute_command) {
   MailboxAlertAlertSettings.setUIElementList([
     "execute_command_tab",
-    "execute_command_textbox",
+    "execute_command_html:input",
     "execute_command_browse_button",
-    "execute_command_escape_html_checkbox"
+    "execute_command_escape_html_checkbox",
+    "execute_command_escape_windows_quotes_checkbox"
   ], execute_command);
 }
 
@@ -210,7 +211,7 @@ MailboxAlertAlertSettings.setUIOkButton = function (enabled) {
 }
 
 MailboxAlertAlertSettings.checkUIOkButton = function () {
-  var name = document.getElementById("alert_name_textbox");
+  var name = document.getElementById("alert_name_html:input");
   MailboxAlertAlertSettings.setUIOkButton(name.value && name.value != "");
 }
 
@@ -261,20 +262,20 @@ MailboxAlertAlertSettings.readPrefs = function (alert_id) {
   try {
     alert_prefs = MailboxAlert.getAlertPreferences(alert_id);
 
-    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "name", "alert_name_textbox");
+    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "name", "alert_name_html:input");
 
     MailboxAlertAlertSettings.setUIPrefCheckbox(alert_prefs, "show_message", "show_message_checkbox");
     MailboxAlertAlertSettings.setUIPrefCheckbox(alert_prefs, "play_sound", "play_sound_checkbox");
     MailboxAlertAlertSettings.setUIPrefCheckbox(alert_prefs, "execute_command", "execute_command_checkbox");
 
-    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "show_message_subject", "show_message_subject_textbox");
-    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "show_message_message", "show_message_content_textbox");
+    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "show_message_subject", "show_message_subject_html:input");
+    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "show_message_message", "show_message_content_html:input");
 
     MailboxAlertAlertSettings.setUIPrefCheckbox(alert_prefs, "show_message_icon", "show_message_icon_checkbox");
 
     MailboxAlertAlertSettings.setUIPrefAttribute(alert_prefs, "show_message_icon_file", "show_message_icon_image", "src");
-    MailboxAlertAlertSettings.setUIPrefInt(alert_prefs, "show_message_duration", "show_message_duration_textbox");
-    MailboxAlertAlertSettings.setUIPrefInt(alert_prefs, "show_message_duration", "show_message_duration_textbox");
+    MailboxAlertAlertSettings.setUIPrefInt(alert_prefs, "show_message_duration", "show_message_duration_html:input");
+    MailboxAlertAlertSettings.setUIPrefInt(alert_prefs, "show_message_duration", "show_message_duration_html:input");
     MailboxAlertAlertSettings.setUIPrefInt(alert_prefs, "show_message_custom_position_x", "show_message_custom_position_x_val_label");
     MailboxAlertAlertSettings.setUIPrefInt(alert_prefs, "show_message_custom_position_y", "show_message_custom_position_y_val_label");
     MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "show_message_custom_position_anchor", "show_message_custom_position_anchor_label");
@@ -323,10 +324,11 @@ MailboxAlertAlertSettings.readPrefs = function (alert_id) {
       element_file.removeAttribute("selected");
     }
 
-    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "play_sound_wav_file", "play_sound_file_textbox");
+    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "play_sound_wav_file", "play_sound_file_html:input");
 
-    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "command", "execute_command_textbox");
+    MailboxAlertAlertSettings.setUIPrefTextbox(alert_prefs, "command", "execute_command_html:input");
     MailboxAlertAlertSettings.setUIPrefCheckbox(alert_prefs, "command_escape", "execute_command_escape_html_checkbox", false);
+    MailboxAlertAlertSettings.setUIPrefCheckbox(alert_prefs, "command_escape_windows_quotes", "execute_command_escape_windows_quotes_checkbox", false);
 
   } catch (e) {
     alert(e);
@@ -372,19 +374,19 @@ MailboxAlertAlertSettings.storeUIPrefAttribute = function (alert_prefs, name, el
 MailboxAlertAlertSettings.getPrefsFromWindow = function (alert_id) {
   try {
     alert_prefs = MailboxAlert.getAlertPreferences(alert_id);
-    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "name", "alert_name_textbox");
+    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "name", "alert_name_html:input");
 
     MailboxAlertAlertSettings.storeUIPrefCheckbox(alert_prefs, "show_message", "show_message_checkbox");
     MailboxAlertAlertSettings.storeUIPrefCheckbox(alert_prefs, "play_sound", "play_sound_checkbox");
     MailboxAlertAlertSettings.storeUIPrefCheckbox(alert_prefs, "execute_command", "execute_command_checkbox");
 
-    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "show_message_subject", "show_message_subject_textbox");
-    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "show_message_message", "show_message_content_textbox");
+    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "show_message_subject", "show_message_subject_html:input");
+    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "show_message_message", "show_message_content_html:input");
 
     MailboxAlertAlertSettings.storeUIPrefCheckbox(alert_prefs, "show_message_icon", "show_message_icon_checkbox");
 
     MailboxAlertAlertSettings.storeUIPrefAttribute(alert_prefs, "show_message_icon_file", "show_message_icon_image", "src");
-    MailboxAlertAlertSettings.storeUIPrefInt(alert_prefs, "show_message_duration", "show_message_duration_textbox");
+    MailboxAlertAlertSettings.storeUIPrefInt(alert_prefs, "show_message_duration", "show_message_duration_html:input");
 
     MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "show_message_position", "show_message_position_menulist");
     MailboxAlertAlertSettings.storeUIPrefInt(alert_prefs, "show_message_custom_position_x", "show_message_custom_position_x_val_label");
@@ -395,10 +397,11 @@ MailboxAlertAlertSettings.getPrefsFromWindow = function (alert_id) {
 
     var element_file = document.getElementById("play_sound_radio_file");
     alert_prefs.set("play_sound_wav", element_file.selected);
-    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "play_sound_wav_file", "play_sound_file_textbox");
+    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "play_sound_wav_file", "play_sound_file_html:input");
 
-    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "command", "execute_command_textbox");
+    MailboxAlertAlertSettings.storeUIPrefTextbox(alert_prefs, "command", "execute_command_html:input");
     MailboxAlertAlertSettings.storeUIPrefCheckbox(alert_prefs, "command_escape", "execute_command_escape_html_checkbox");
+    MailboxAlertAlertSettings.storeUIPrefCheckbox(alert_prefs, "command_escape_windows_quotes", "execute_command_escape_windows_quotes_checkbox");
 
     return alert_prefs;
   } catch (e) {
@@ -481,15 +484,15 @@ MailboxAlertAlertSettings.chooseIconFile = function () {
 
 MailboxAlertAlertSettings.setDefaultIconFile = function () {
     var icon_image_element = document.getElementById("show_message_icon_image");
-    if (icon_image_element.src != "chrome://mailboxalert/skin/mailboxalert.png") {
-        icon_image_element.src = "chrome://mailboxalert/skin/mailboxalert.png";
+    if (icon_image_element.src != "resource://mailboxalert-skin/mailboxalert.png") {
+        icon_image_element.src = "resource://mailboxalert-skin/mailboxalert.png";
         //alert("changed");
         MailboxAlertAlertSettings.resize();
     }
 }
 
 MailboxAlertAlertSettings.chooseWavFile = function () {
-  var wav_file_element = document.getElementById("play_sound_file_textbox");
+  var wav_file_element = document.getElementById("play_sound_file_html:input");
   try {
     var wav_file = wav_file_element.value;
     var FileUtils = Components.utils.import("resource://gre/modules/FileUtils.jsm").FileUtils
@@ -516,7 +519,7 @@ MailboxAlertAlertSettings.chooseWavFile = function () {
 }
 
 MailboxAlertAlertSettings.chooseExecFile = function () {
-  var exec_file_element = document.getElementById("execute_command_textbox");
+  var exec_file_element = document.getElementById("execute_command_html:input");
   try {
     var exec_file = exec_file_element.value;
     var index = exec_file.indexOf(" ");
@@ -552,7 +555,7 @@ MailboxAlertAlertSettings.selectPosition = function () {
   dialog_positions.y = y_pos_label.value;
   dialog_positions.anchor = anchor_label.value;
   dialog_positions.changed = false;
-  window.openDialog('chrome://mailboxalert/content/alert_settings_position.xul', "_blank", "chrome,titlebar=yes,modal=yes", dialog_positions);
+  window.openDialog('chrome://mailboxalert/content/alert_settings_position.xhtml', "_blank", "chrome,titlebar=yes,modal=yes", dialog_positions);
   if (dialog_positions.changed) {
     x_pos_label.value = dialog_positions.x;
     y_pos_label.value = dialog_positions.y;

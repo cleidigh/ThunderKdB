@@ -1,0 +1,61 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+@namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+@namespace html "http://www.w3.org/1999/xhtml";
+
+#gContactSyncStatusText {
+  background-image: url("chrome://gcontactsync/skin/logo_main_16.png");
+  background-repeat: no-repeat;
+  background-position: 4px center;
+  margin-top: -1px;
+  padding-inline-start: 20px;
+}
+
+#gContactSyncStatusText .toolbarbutton-text {
+  padding-inline-start: 4px;
+}
+
+#gContactSyncStatusText .toolbarbutton-text[value=""] {
+  display: none;
+}
+
+#button-sync.gContactSync-Button {
+  list-style-image: url("chrome://gcontactsync/skin/logo_main_24.png");
+}
+
+[iconsize="small"] #button-sync.gContactSync-Button {
+  list-style-image: url("chrome://gcontactsync/skin/logo_main_16.png");
+}
+
+#gContactSyncAccounts .treesplitter {
+  margin-inline-start: -2px;
+  margin-inline-end: -2px;
+}
+
+/* Preference tabs */
+
+#gContactSyncPrefs tab {
+  min-width: 60px !important;
+  margin: 0px 1px 0px 0px;
+  padding: 2px 4px;
+}
+#gContactSyncPrefs tab:hover {
+  background: #E0E8F6 !important;
+  color: black !important;
+}
+#gContactSyncPrefs tab[selected="true"] {
+  background: #C1D2EE !important;
+  color: black !important;
+}
+
+#gContactSyncPrefs #main_tab {
+  list-style-image: url("preferences.png") !important;
+}
+#gContactSyncPrefs #interface_tab {
+  list-style-image: url("interface.png") !important;
+}
+#gContactSyncPrefs #advanced_tab {
+  list-style-image: url("advanced.png") !important;
+}

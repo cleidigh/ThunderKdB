@@ -2,17 +2,29 @@
   "manifest_version": 2,
   "name": "AlertSwitch",
   "description": "Turn on/off the new message alert.",
-  "version": "0.9.4",
+  "version": "0.9.8",
   "author": "Tomasz Krajewski",
   "homepage_url": "https://github.com/tomaszkrajewski/",
-  "legacy":  {
-    "type": "xul"
-  },
   "applications": {
     "gecko": {
       "id": "{25156018-d27b-497e-9777-886502ac65ad}",
-      "strict_min_version": "68.2.0",
-      "strict_max_version": "70.*"
+      "strict_min_version": "78.0",
+      "strict_max_version": "78.*"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
     }
   }
 }

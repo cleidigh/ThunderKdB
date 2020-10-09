@@ -1,0 +1,81 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+#hdrMailredirectButton,
+#mailredirect-toolbarbutton,
+#mailredirect-toolbarbutton:hover,
+#mailredirect-toolbarbutton[disabled="true"]{
+  list-style-image: url("mailredirect-large.png") !important;
+  -moz-image-region: rect(0 24px 24px 0) !important;
+}
+
+toolbar[iconsize="small"] #hdrMailredirectButton,
+toolbar[iconsize="small"] #mailredirect-toolbarbutton,
+toolbar[iconsize="small"] #mailredirect-toolbarbutton:hover,
+toolbar[iconsize="small"] #mailredirect-toolbarbutton[disabled="true"] {
+  list-style-image: url("mailredirect-small.png") !important;
+  -moz-image-region: rect(0 16px 16px 0) !important;
+}
+
+#bounceMailsLabel {
+  color: WindowText;
+  text-shadow: none;
+}
+
+#threadTree {
+  text-shadow: none;
+}
+
+/* ..... subject column, mail ..... */
+
+tree > treechildren::-moz-tree-image(subjectCol, kw-redirected) {
+  list-style-image: url("mailredirect-icons.png");
+  -moz-image-region: rect(0 16px 16px 0);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, read, kw-redirected) {
+  -moz-image-region: rect(16px 16px 32px 0);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, forwarded, kw-redirected) {
+  -moz-image-region: rect(0 32px 16px 16px);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, forwarded, read, kw-redirected) {
+  -moz-image-region: rect(16px 32px 32px 16px);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, replied, kw-redirected) {
+  -moz-image-region: rect(0 48px 16px 32px);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, replied, read, kw-redirected) {
+  -moz-image-region: rect(16px 48px 32px 32px);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, replied, forwarded, kw-redirected) {
+  -moz-image-region: rect(0 64px 16px 48px);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, replied, forwarded, read, kw-redirected) {
+  -moz-image-region: rect(16px 64px 32px 48px);
+}
+
+/* ..... subject column, news ..... */
+
+tree > treechildren::-moz-tree-image(subjectCol, news, kw-redirected) {
+  -moz-image-region: rect(0 80px 16px 64px);
+}
+
+reechildren::-moz-tree-image(subjectCol, news, forwarded, kw-redirected) {
+  -moz-image-region: rect(16px 80px 32px 64px);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, news, replied, kw-redirected) {
+  -moz-image-region: rect(0 96px 16px 80px);
+}
+
+tree > treechildren::-moz-tree-image(subjectCol, news, replied, forwarded, kw-redirected) {
+  -moz-image-region: rect(16px 96px 32px 80px);
+}

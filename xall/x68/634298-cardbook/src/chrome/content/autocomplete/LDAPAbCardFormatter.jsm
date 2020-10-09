@@ -47,7 +47,7 @@ var LDAPAbCardFormatter = {
 
 	_LDAPAttrNamesFromFormat: function LDAPAttrNamesFromFormat(aFormat) {
 		var placeHolders = aFormat.match(/\[[^\]]+\]|\{[^\}]+\}/g);
-		var attributes = Array.map(placeHolders, function(aPlaceHolder) {
+		var attributes = Array.from(placeHolders).map(function(aPlaceHolder) {
 				return aPlaceHolder.slice(1, -1);
 		});
 		return attributes;
