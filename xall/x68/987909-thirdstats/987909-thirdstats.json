@@ -9,36 +9,35 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14196/14196754.png?modified=1600788309"
         }
     ],
-    "average_daily_users": 0,
+    "average_daily_users": 27,
     "categories": {
         "thunderbird": [
-            "appearance",
-            "folders-and-filters"
+            "miscellaneous"
         ]
     },
     "contributions_url": "https://paypal.me/devmount",
     "created": "2020-09-28T12:23:48Z",
     "current_version": {
-        "id": 2474353,
+        "id": 2474396,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474353",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474396",
         "files": [
             {
-                "id": 1017515,
-                "created": "2020-09-28T12:23:48Z",
-                "hash": "sha256:6d10dbd678a15c7512165ee492f43da3f61bf07fd9cd5c6822af7ac6d0e66a74",
+                "id": 1017558,
+                "created": "2020-10-04T11:48:55Z",
+                "hash": "sha256:48e24a920f2667b2cde5f7228aab56b4cd1890ba5f866b30f2898ee446197298",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 205736,
+                "size": 225103,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017515/thirdstats-0.3.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017558/thirdstats-0.4.0-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "messagesRead",
@@ -77,14 +76,16 @@
             },
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
-        "release_notes": null,
-        "reviewed": "2020-09-28T12:35:03Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/0.3.3",
-        "version": "0.3.3"
+        "release_notes": {
+            "en-US": "Changelog\n\n- add translations for Czech, Hindi, French, Russian, Spanish, Portuguese, Italian, Galician, Catalan, Polish, Thai\n- add chart: emails per months of year\n- add loading indication for chart area\n- fix: include local accounts in accounts list\n- fix: translate month and weekday names\n- fix: don't show charts for empty accounts\n- add support for ultra-wide screens and small screens\n- add development hint"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/0.4.0",
+        "version": "0.4.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>Features</strong>\n<ul><li>Total numbers of emails and folders for all of your Thunderbird accounts- Sum of received and sent emails per year and per month</li><li>Sum of received and sent emails per daytime and per weekday</li><li>Temporal distribution of received and sent emails per weekday per hour</li><li>Switch between all Thunderbird accounts</li></ul>\n<strong>Additional hints</strong>\nTo properly recognize emails as sent, make sure to configure all email addresses you write from as identities for your email account. You can do so under account settings &gt; select your account &gt; click button more identities at the bottom and add or modify identities as you need.\n\nAlso keep in mind, that the processing of large mailboxes can take a lot of time."
+        "en-US": "<strong>Features</strong>\n<ul><li>Total numbers of emails and folders for all of your Thunderbird accounts</li><li>Sum of received and sent emails per year and per month</li><li>Sum of received and sent emails per daytime and per weekday</li><li>Temporal distribution of received and sent emails per weekday per hour</li><li>Switch between all Thunderbird accounts</li></ul>\n<strong>Additional hints</strong>\nTo properly recognize emails as sent, make sure to configure all email addresses you write from as identities for your email account. You can do so under account settings &gt; select your account &gt; click button more identities at the bottom and add or modify identities as you need.\n\nAlso keep in mind, that the processing of large mailboxes can take a lot of time."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/edit",
@@ -104,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-28T12:35:03Z",
+    "last_updated": "2020-10-04T11:50:03Z",
     "name": {
         "en-US": "ThirdStats",
         "de": "ThirdStats"
@@ -129,10 +130,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 0,
-        "count": 0,
-        "average": 0,
-        "text_count": 0
+        "bayesian_average": 3.85484,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/reviews/",
     "requires_payment": false,
@@ -164,7 +165,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-28T12:23:48Z",
+            "comp78pv_version": "0.3.3",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

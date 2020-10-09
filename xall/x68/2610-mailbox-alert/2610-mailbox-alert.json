@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 13666,
+    "average_daily_users": 13727,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,30 +18,30 @@
     "contributions_url": null,
     "created": "2006-05-24T00:24:20Z",
     "current_version": {
-        "id": 2473245,
+        "id": 2474363,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2473245",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2474363",
         "files": [
             {
-                "id": 1016357,
-                "created": "2020-01-19T21:36:38Z",
-                "hash": "sha256:1269b8119b0dcf4f06cce2b7cefe9b206b03e186c0ce6426d2e25a359b422c07",
-                "is_restart_required": true,
+                "id": 1017525,
+                "created": "2020-09-29T08:18:31Z",
+                "hash": "sha256:54f3bb5f67bf0b49c3c10353a9d1b2b5ff8605aca5c624aea7766fe48ed2f3c8",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 211975,
+                "size": 222049,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016357/mailbox_alert-0.24-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017525/mailbox_alert-0.25.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 18,
             "name": {
@@ -73,11 +73,11 @@
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
         "release_notes": {
-            "en-US": "- The Mailbox Alert action for Message Filters now works with Thunderbird 68\n- Unfortunately, the changed APIs do mean that it now no longer works with older\n    versions (Thunderbird 60 and before), so from now on, older versions of TB\n    are no longer supported by new versions of Mailbox Alert. From now on, the\n    minimum TB version is 68, and I will start removing legacy code in the future.\n- The %folder macro no longer adds a trailing / to the final folder (thanks to <a href=\"https://github.com/rnc\" rel=\"nofollow\">https://github.com/rnc</a>)"
+            "en-US": "- Fixed the issue 'undefined entity' when using a language setting other than en-US"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.24",
-        "version": "0.24"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.25.1",
+        "version": "0.25.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -100,7 +100,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-01-20T18:45:56Z",
+    "last_updated": "2020-09-29T10:13:52Z",
     "name": {
         "en-US": "Mailbox Alert"
     },
@@ -124,10 +124,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.88516,
-        "count": 132,
-        "average": 3.8939,
-        "text_count": 132
+        "bayesian_average": 3.90988,
+        "count": 135,
+        "average": 3.9185,
+        "text_count": 135
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/reviews/",
     "requires_payment": false,
@@ -153,10 +153,15 @@
     "weekly_downloads": 230,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-28T19:36:56Z",
+            "comp78pv_version": "0.25",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-02-12T19:15:58Z"
         }

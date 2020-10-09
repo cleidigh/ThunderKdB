@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 40,
+    "average_daily_users": 55,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-02-05T14:36:27Z",
     "current_version": {
-        "id": 2474326,
+        "id": 2474372,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/limit-non-bcc-recipients/versions/2474326",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/limit-non-bcc-recipients/versions/2474372",
         "files": [
             {
-                "id": 1017488,
-                "created": "2020-09-22T15:41:51Z",
-                "hash": "sha256:4da6bfc66df84972a17139c0568bb5653b3fe5e9c532aa524e29731238c9ac93",
+                "id": 1017534,
+                "created": "2020-09-30T14:07:00Z",
+                "hash": "sha256:a598ff7695f6ec546f0423027eda8364547a3be6186e2f67804547307b8ca3fb",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 31551,
+                "size": 33126,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017488/limit_non_bcc_recipients-1.0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017534/limit_non_bcc_recipients-2.0.0-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "compose",
@@ -55,11 +55,11 @@
         },
         "release_notes": {
             "en-GB": "",
-            "en-US": "Add extension name to popup title (dependent on bug 1647768).\nHungarian localisation."
+            "en-US": "New preference 'Strict Limit' makes it harder to accidentally send an email which exceeds the limit."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/limit-non-bcc-recipients/versions/1.0.2",
-        "version": "1.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/limit-non-bcc-recipients/versions/2.0.0",
+        "version": "2.0.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -90,7 +90,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-22T15:45:02Z",
+    "last_updated": "2020-09-30T14:10:03Z",
     "name": {
         "el": "Περιορίστε τους μη κρυφή παραλήπτες",
         "fr": "Limiter les destinataires non cachés",
@@ -180,7 +180,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-22T15:41:51Z",
+            "comp78pv_version": "1.0.2",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

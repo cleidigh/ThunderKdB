@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1574,
+    "average_daily_users": 1492,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -18,33 +18,37 @@
             "composition"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "https://paypal.me/AchimSeufert",
     "created": "2005-04-24T04:40:48Z",
     "current_version": {
-        "id": 2472231,
+        "id": 2474366,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "61.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nestedquote-remover/versions/2472231",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nestedquote-remover/versions/2474366",
         "files": [
             {
-                "id": 1015299,
-                "created": "2019-09-03T20:32:38Z",
-                "hash": "sha256:24663f1f1b778b00e8d5ce51836c9a84adc2983bd042319c578ea484749f3d29",
-                "is_restart_required": true,
+                "id": 1017528,
+                "created": "2020-09-29T14:53:56Z",
+                "hash": "sha256:9ac52225303bc0054a8524fba84fe906169f023e8638421897c7a30da23d3971",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 33551,
+                "size": 14085,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015299/nestedquote_remover-0.9.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017528/nestedquote_remover-1.0.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage",
+                    "menus"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -54,8 +58,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nestedquote-remover/versions/0.9.2",
-        "version": "0.9.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nestedquote-remover/versions/1.0.0",
+        "version": "1.0.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -69,16 +73,16 @@
     "homepage": {
         "en-US": "http://mozext.achimonline.de"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/612-64.png?modified=1533677976",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/612-64.png?modified=79a89bdc",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/612-32.png?modified=1533677976",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/612-64.png?modified=1533677976"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/612-32.png?modified=79a89bdc",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/612-64.png?modified=79a89bdc"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
-    "is_source_public": false,
-    "last_updated": "2019-09-03T20:43:57Z",
+    "is_source_public": true,
+    "last_updated": "2020-09-29T14:55:03Z",
     "name": {
         "en-US": "NestedQuote Remover"
     },
@@ -90,20 +94,20 @@
                 200,
                 150
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/1/1197.png?modified=1530208021",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/1/1197.png?modified=1601391142",
             "thumbnail_size": [
                 200,
                 150
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/1/1197.png?modified=1530208021"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/1/1197.png?modified=1601391142"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.15458,
-        "count": 16,
-        "average": 3.3125,
-        "text_count": 16
+        "bayesian_average": 4.15949,
+        "count": 11,
+        "average": 4.2727,
+        "text_count": 11
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nestedquote-remover/reviews/",
     "requires_payment": false,
@@ -113,8 +117,12 @@
     "summary": {
         "en-US": "Remove nested quotes when replying to a mail."
     },
-    "support_email": null,
-    "support_url": null,
+    "support_email": {
+        "en-US": "mozext@achimonline.de"
+    },
+    "support_url": {
+        "en-US": "http://mozext.achimonline.de"
+    },
     "tags": [
         "firefox57"
     ],
@@ -123,10 +131,10 @@
     "weekly_downloads": 25,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-07T21:38:10Z"
         }

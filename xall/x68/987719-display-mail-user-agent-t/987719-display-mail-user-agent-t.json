@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5493,
+    "average_daily_users": 5730,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,35 @@
     "contributions_url": "",
     "created": "2019-11-02T15:38:43Z",
     "current_version": {
-        "id": 2474341,
+        "id": 2474432,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "74.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2474341",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2474432",
         "files": [
             {
-                "id": 1017503,
-                "created": "2020-09-25T16:03:59Z",
-                "hash": "sha256:0b17214642e18b31c70b3c7b2bea17821aabe1c4c7ca5930cb99f451878e6051",
-                "is_restart_required": true,
+                "id": 1017594,
+                "created": "2020-10-08T17:05:27Z",
+                "hash": "sha256:7f003620353dc5811e87c6e14b0b4c0aabb9cbaf2c85b4bb65f4de36abfdba8d",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4349002,
+                "size": 4322572,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017503/display_mail_user_agent_t-1.8.14.23-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017594/display_mail_user_agent_t-2.1.15-tb.xpi?src=",
+                "permissions": [
+                    "messagesRead",
+                    "storage",
+                    "accountsRead",
+                    "downloads"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,12 +76,12 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Some more icon(2067 now)",
-            "ja": "アイコンの追加(全2067個)"
+            "en-US": "Some more icon(2072 now)",
+            "ja": "アイコンの追加(全2072個)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/1.8.14.23",
-        "version": "1.8.14.23"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/2.1.15",
+        "version": "2.1.15"
     },
     "default_locale": "en-US",
     "description": {
@@ -114,7 +119,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2020-09-28T07:35:09Z",
+    "last_updated": "2020-10-08T17:14:14Z",
     "name": {
         "fr": "Display Mail User Agent T",
         "de": "Display Mail User Agent T",
@@ -249,10 +254,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

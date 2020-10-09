@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/343.png?modified=1505246946"
         }
     ],
-    "average_daily_users": 2033,
+    "average_daily_users": 1969,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "https://paypal.me/protzenko",
     "created": "2009-11-10T13:11:53Z",
     "current_version": {
-        "id": 2474355,
+        "id": 2474385,
         "compatibility": {
             "thunderbird": {
                 "max": "73.*",
                 "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/latex-it/versions/2474355",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/latex-it/versions/2474385",
         "files": [
             {
-                "id": 1017517,
-                "created": "2020-09-28T13:45:49Z",
-                "hash": "sha256:7fac85ddacd5e6043e7d8a401dc258e61341228bd6209a32375c9e1cc109dfc8",
+                "id": 1017547,
+                "created": "2020-10-02T14:09:36Z",
+                "hash": "sha256:004be6e91c702d1f440fc50464567d6ce29065a9aca56986026574e504b4d84a",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 28394,
+                "size": 29513,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017517/latex_it-0.7.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017547/latex_it-0.7.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -71,11 +71,11 @@
             "url": "http://www.gnu.org/licenses/gpl-2.0.html"
         },
         "release_notes": {
-            "en-US": "An update for Thunderbird 68. Many thanks to Stephan Helma for fixing many of the outstanding issues."
+            "en-US": "This new version essentially tries to provide more helpful error messages, especially regarding alignment. Update now if your LaTeX images have been unreasonably big.\n\nChangelog:\n- Fixed baseline alignment on multiple runs (Bug #64).\n- Check for inclusion of \"preview\" package in LaTeX template (Bug #63).\n- Added a do-not-delete note to the template regarding \"\\usepackage[active]{preview}\".\n- Added more aggressive error messages for some severe errors.\n- Tiny improvements in error messages.\n- Added option to keep the temporary files, even after successful LaTeX runs.\n- Fix typo in the \"Insert Complex Latex\" dialog that prevented it from working."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/latex-it/versions/0.7.2",
-        "version": "0.7.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/latex-it/versions/0.7.3",
+        "version": "0.7.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -91,16 +91,16 @@
     "homepage": {
         "en-US": "https://github.com/protz/LatexIt/wiki"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/48/48583-64.png?modified=1594051873",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/48/48583-64.png?modified=1601648314",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/48/48583-32.png?modified=1594051873",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/48/48583-64.png?modified=1594051873"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/48/48583-32.png?modified=1601648314",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/48/48583-64.png?modified=1601648314"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-28T13:54:56Z",
+    "last_updated": "2020-10-02T15:03:41Z",
     "name": {
         "en-US": "LaTeX It!"
     },
@@ -215,7 +215,7 @@
     "slug": "latex-it",
     "status": "public",
     "summary": {
-        "en-US": "This addons allows you to write LaTeX expressions in your emails such as $x^2$ or $$\\sum_{x=0}\\infty$$ and have them all replaced by a PNG image with the corresponding formula inside.\n\n*Note: this addon is not compatible with Thunderbird 68+*"
+        "en-US": "This addons allows you to write LaTeX expressions in your emails such as $x^2$ or $$\\sum_{x=0}\\infty$$ and have them all replaced by a PNG image with the corresponding formula inside.\n\n*Note: this addon is not compatible with Thunderbird 78+*"
     },
     "support_email": {
         "en-US": "jonathan.protzenko@gmail.com"

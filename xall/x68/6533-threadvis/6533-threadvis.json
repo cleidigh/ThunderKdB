@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/799/799943.png?modified=1400588196"
         }
     ],
-    "average_daily_users": 4494,
+    "average_daily_users": 4267,
     "categories": {
         "seamonkey": [
             "interface-customizations",
@@ -22,30 +22,30 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A44TMJW5H8MC6&source=url",
     "created": "2008-02-17T08:00:10Z",
     "current_version": {
-        "id": 2472693,
+        "id": 2474417,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/threadvis/versions/2472693",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/threadvis/versions/2474417",
         "files": [
             {
-                "id": 1015782,
-                "created": "2019-09-30T20:18:53Z",
-                "hash": "sha256:a4e722b3e2e1be85cf57684361411337a7b0c47039e868a9741d834ff079f09e",
-                "is_restart_required": true,
+                "id": 1017579,
+                "created": "2020-10-07T08:39:25Z",
+                "hash": "sha256:8919829c0dd86ccb98bc2d81514aefc808fad06a4024a69b72fe84de4be17be6",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 134334,
+                "size": 119565,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015782/threadvis-3.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017579/threadvis-3.1.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -75,12 +75,12 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Updated to support Thunderbird 68.*.",
+            "en-US": "Updated to support Thunderbird 78, dropping support for previous releases.",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/threadvis/versions/3.0.1",
-        "version": "3.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/threadvis/versions/3.1.1",
+        "version": "3.1.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -105,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-10-07T12:33:02Z",
+    "last_updated": "2020-10-07T12:35:20Z",
     "name": {
         "en-US": "ThreadVis",
         "de": "ThreadVis"
@@ -128,7 +128,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.38902,
+        "bayesian_average": 4.389,
         "count": 120,
         "average": 4.4,
         "text_count": 120
@@ -158,10 +158,10 @@
     "weekly_downloads": 123,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-21T15:56:02Z"
         }

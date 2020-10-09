@@ -1,0 +1,154 @@
+{
+    "id": 987911,
+    "authors": [
+        {
+            "id": 14197229,
+            "name": "Christian Zaenker",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/friedPotato/",
+            "username": "friedPotato",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 10,
+    "categories": {
+        "thunderbird": [
+            "appearance",
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2020-09-29T13:55:58Z",
+    "current_version": {
+        "id": 2474430,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0a1"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/spam-scores/versions/2474430",
+        "files": [
+            {
+                "id": 1017592,
+                "created": "2020-10-08T10:26:42Z",
+                "hash": "sha256:0f69a23751d7a3f07571ee92d6679bfb25f5ee4c6d59b194891c644a133cc194",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 407969,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017592/spam_scores-1.1.2-tb.xpi?src=",
+                "permissions": [
+                    "messagesRead",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7350,
+            "name": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spam-scores/license/1.1.2"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spam-scores/versions/1.1.2",
+        "version": "1.1.2"
+    },
+    "default_locale": "en-GB",
+    "description": {
+        "en-GB": "To display the spam score column, right-click on the title bar of the columns in the list view and select \"Spam score\". If the column is empty, you must first restart Thunderbird and then right-click on any folder and select \"Properties\" and \"Repair Folder\". This will scan the mail headers of all mails in this folder so that the spam score column can be displayed correctly. Repair all folders like this in which you want to display this column.\n\nThe total score of each mail with an existing spam header will be displayed along with a red, yellow or green icon depending on the score. The colours are by default calculated as follows:\n<ul><li>Red: Score greater than 2</li><li>Yellow: Score between -2 and 2 (both inclusive)</li><li>Green: Score less than -2</li></ul>\nThe score icon color ranges can be adjusted in the add-on settings.\n\nFurthermore, a button is displayed in the action bar of any opened mail with the respective total score of the mail. Clicking on the button opens a popup with detailed information on all individual rules. In addition to the name and the partial score, a description and, if available in the mail header, the value on the basis of which the score was calculated is displayed.",
+        "de": "Um die Spalte mit der Spambewertung anzuzeigen, klicken Sie mit der rechten Maustaste auf die Titelleiste der Spalten in der Listenansicht und wählen Sie \"Spam score\". Wenn die Spalte leer sein sollte, starten Sie zunächst Thunderbird neu. Klicken Sie anschließend mit der rechten Maustaste auf einen Ordner und wählen Sie \\\"Eigenschaften\\\". Klicken Sie dann auf \\\"Reparieren\\\". Dadurch werden die Mail-Header aller Mails in diesem Ordner gescannt, damit die Spam-Score-Spalte korrekt angezeigt werden kann. Reparieren Sie alle Ordner, in denen Sie die Spalte anzeigen möchten.\n\nEs wird die Gesamtpunktzahl jeder Mail mit vorhandenem Spam-Header angezeigt und ein rotes, gelbes oder grünes Icon je nach Punktzahl. Die Farben ergeben sich wie folgt:\n<ul><li>Rot: Punktzahl größer 2</li><li>Gelb: Punktzahl zwischen -2 und 2 (inklusiv)</li><li>Grün: Punktzahl kleiner -2</li></ul>\nDie Bereiche der Iconfarben können in den Add-On-Einstellungen angepasst werden.\n\nDes Weiteren wird in der Aktionsleiste einer geöffneten Mail ein Button mit der jeweiligen Gesamtpunktzahl der Mail angezeigt. Bei Klick auf den Button öffnet sich ein Popup mit detailierten Informationen zu allen Einzelregeln. Hier wird neben dem Namen und der Teilbewertung auch eine Erläuterung und, wenn im Mailheader vorhanden, der Wert, auf dessen Grundlage die Bewertung erfolgt ist, angezeigt."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/spam-scores/edit",
+    "guid": "spamscores@czaenker",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-GB": "https://github.com/friedPotat0/Spam-Scores",
+        "de": "https://github.com/friedPotat0/Spam-Scores"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987911-64.png?modified=5515d2cb",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987911-32.png?modified=5515d2cb",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987911-64.png?modified=5515d2cb"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-10-08T16:58:41Z",
+    "name": {
+        "en-GB": "Spam Scores",
+        "de": "Spam Scores"
+    },
+    "previews": [
+        {
+            "id": 206159,
+            "caption": null,
+            "image_size": [
+                1280,
+                604
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206159.png?modified=1601980536",
+            "thumbnail_size": [
+                320,
+                151
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206159.png?modified=1601980536"
+        },
+        {
+            "id": 206174,
+            "caption": null,
+            "image_size": [
+                915,
+                503
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206174.png?modified=1601980538",
+            "thumbnail_size": [
+                320,
+                176
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206174.png?modified=1601980538"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 4.18638,
+        "count": 4,
+        "average": 4.5,
+        "text_count": 4
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spam-scores/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987911",
+    "slug": "spam-scores",
+    "status": "public",
+    "summary": {
+        "en-GB": "Displays spam scores according to mail headers. Supports spam/ham score headers of Rspamd and SpamAssassin. The add-on adds a column with the overall spam score to the mail list view and shows details of any matched spam/ham rule.",
+        "de": "Zeigt die Spam-Bewertungen entsprechend der Mail-Header an. Unterstützt Spam/Ham Score-Header von Rspamd und SpamAssassin. Das Add-On fügt der E-Mail-Listenansicht eine Spalte mit der Gesamtpunktzahl hinzu und zeigt Details aller Einzelregeln an."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spam-scores/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-29T13:55:58Z",
+            "comp78pv_version": "1.0.0",
+            "comp78pv_vmin": "78.0a1",
+            "comp78pv_vmax": "*"
+        }
+    }
+}

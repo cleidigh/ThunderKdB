@@ -9,39 +9,46 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 60525,
+    "average_daily_users": 58258,
     "categories": {
         "thunderbird": [
             "composition"
         ]
     },
-    "contributions_url": "",
+    "contributions_url": "https://paypal.me/AchimSeufert",
     "created": "2005-04-24T04:38:46Z",
     "current_version": {
-        "id": 2472230,
+        "id": 2474392,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "61.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-switch/versions/2472230",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-switch/versions/2474392",
         "files": [
             {
-                "id": 1015298,
-                "created": "2019-09-03T20:32:16Z",
-                "hash": "sha256:1b76c1f067a7e6a0fd3e8f258b1f7f78cd2509202bb7d12d9c8802f147ce4628",
-                "is_restart_required": true,
+                "id": 1017554,
+                "created": "2020-10-03T08:31:37Z",
+                "hash": "sha256:b72120ec7227a334d18cec423a3f016ddb0502b47da171bc12e4ec74e9a5be1f",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 91271,
+                "size": 954049,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015298/signature_switch-1.8.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017554/signature_switch-2.0.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage",
+                    "unlimitedStorage",
+                    "tabs",
+                    "menus",
+                    "clipboardWrite"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -51,16 +58,14 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-switch/versions/1.8.2",
-        "version": "1.8.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-switch/versions/2.0.0",
+        "version": "2.0.0"
     },
     "default_locale": "en-US",
     "description": {
         "en-US": "Switch the signature on/off or choose a new one from your predefined set.\nAdditional features include the support of fortune-cookie-files and automatic switching based on recipients."
     },
-    "developer_comments": {
-        "en-US": "=============================================================\nPlease visit my website before posting any support-related issues here!\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/f30e35296e39ad1320ac1b38525989e1b73d88699311c282f99a958ef80a13f7/http%3A//mozext.achimonline.de/signatureswitch_about.php\">http://mozext.achimonline.de/signatureswitch_about.php</a>\nThere you'll find FAQs, in-depth instructions and a changelog.\n============================================================="
-    },
+    "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-switch/edit",
     "guid": "{2ab1b709-ba03-4361-abf9-c50b964ff75d}",
     "has_eula": false,
@@ -68,41 +73,97 @@
     "homepage": {
         "en-US": "http://mozext.achimonline.de"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/611-64.png?modified=1533678238",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/0/611-64.png?modified=50734552",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/611-32.png?modified=1533678238",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/611-64.png?modified=1533678238"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/0/611-32.png?modified=50734552",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/0/611-64.png?modified=50734552"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
-    "is_source_public": false,
-    "last_updated": "2019-09-03T20:43:32Z",
+    "is_source_public": true,
+    "last_updated": "2020-10-03T08:35:03Z",
     "name": {
         "en-US": "Signature Switch"
     },
     "previews": [
         {
-            "id": 1196,
+            "id": 206163,
             "caption": null,
             "image_size": [
-                200,
-                150
+                896,
+                486
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/1/1196.png?modified=1530208020",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206163.png?modified=1601714174",
             "thumbnail_size": [
-                200,
-                150
+                320,
+                174
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/1/1196.png?modified=1530208020"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206163.png?modified=1601714174"
+        },
+        {
+            "id": 206164,
+            "caption": null,
+            "image_size": [
+                1113,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206164.png?modified=1601714124",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206164.png?modified=1601714124"
+        },
+        {
+            "id": 206165,
+            "caption": null,
+            "image_size": [
+                1113,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206165.png?modified=1601714174",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206165.png?modified=1601714174"
+        },
+        {
+            "id": 206166,
+            "caption": null,
+            "image_size": [
+                1113,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206166.png?modified=1601714126",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206166.png?modified=1601714126"
+        },
+        {
+            "id": 206167,
+            "caption": null,
+            "image_size": [
+                1113,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206167.png?modified=1601714176",
+            "thumbnail_size": [
+                278,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206167.png?modified=1601714176"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.59711,
-        "count": 226,
-        "average": 3.6018,
-        "text_count": 226
+        "bayesian_average": 3.61276,
+        "count": 230,
+        "average": 3.6174,
+        "text_count": 230
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-switch/reviews/",
     "requires_payment": false,
@@ -112,20 +173,25 @@
     "summary": {
         "en-US": "Switch the signature on/off or choose a new one from your predefined set."
     },
-    "support_email": null,
-    "support_url": null,
+    "support_email": {
+        "en-US": "mozext@achimonline.de"
+    },
+    "support_url": {
+        "en-US": "http://mozext.achimonline.de"
+    },
     "tags": [
-        "firefox57"
+        "firefox57",
+        "signature"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-switch/",
     "weekly_downloads": 802,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-31T12:45:59Z"
         }

@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11603/11603440.png?modified=1495126381"
         }
     ],
-    "average_daily_users": 6615,
+    "average_daily_users": 6457,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,56 +18,30 @@
     "contributions_url": "",
     "created": "2015-04-20T13:13:29Z",
     "current_version": {
-        "id": 2473498,
+        "id": 2474407,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/replywithheader/versions/2473498",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/replywithheader/versions/2474407",
         "files": [
             {
-                "id": 1016638,
-                "created": "2020-03-02T01:29:12Z",
-                "hash": "sha256:3ffc0e5edd3d141f610e1e644d9dfa49ff6fc71454bcc0d41ab9868ae443987d",
-                "is_restart_required": true,
+                "id": 1017569,
+                "created": "2020-10-06T06:45:38Z",
+                "hash": "sha256:2a9d19ab11d7931ef8ffbb885d2ecba8bba1e18f0a0209f8836f70bf027acd6e",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
-                "platform": "linux",
-                "size": 65050,
+                "platform": "all",
+                "size": 74149,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016638/replywithheader-2.2.1-tb-linux.xpi?src=",
-                "permissions": []
-            },
-            {
-                "id": 1016639,
-                "created": "2020-03-02T01:29:12Z",
-                "hash": "sha256:3ffc0e5edd3d141f610e1e644d9dfa49ff6fc71454bcc0d41ab9868ae443987d",
-                "is_restart_required": true,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "mac",
-                "size": 65050,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016639/replywithheader-2.2.1-tb-mac.xpi?src=",
-                "permissions": []
-            },
-            {
-                "id": 1016640,
-                "created": "2020-03-02T01:29:12Z",
-                "hash": "sha256:3ffc0e5edd3d141f610e1e644d9dfa49ff6fc71454bcc0d41ab9868ae443987d",
-                "is_restart_required": true,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "windows",
-                "size": 65050,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016640/replywithheader-2.2.1-tb-windows.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017569/replywithheader-2.3.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -76,15 +50,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Added support for TB 68+\n\nKnown Issues/Limitations:\n\n* Options may not work properly on macOS, it seems TB has an issues.\n* This release is good until TB 78 comes out, long-term solution is to convert the addon into MailExtension."
+            "en-US": "* Added support for TB 78, just made it work.\n\nUpcoming Plan:\n\n* Will be working to convert add-on to Mail Extension."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replywithheader/versions/2.2.1",
-        "version": "2.2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replywithheader/versions/2.3.0",
+        "version": "2.3.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>Please Note: RWH MailExtension <a rel=\"nofollow\" href=\"https://github.com/jeevatkm/ReplyWithHeaderMozilla/issues/99\">development</a> is in-progress - a complete rewrite from scratch to support TB 78+ roadmap. I appreciate your patience, thanks.</strong>\n\nCompletely manages and enables the feature of ‘Message Attribution’ for Reply, Reply All &amp; Forward in the Thunderbird and Postbox.\n<ul><li>Cleans up special internal email headers from Message Attribution</li><li>Provides special/meaningful email message separate of thin blue color line</li><li>Clean handling of header attribution [From, Subject, Date, To &amp; Cc], rest are suppressed</li><li>Typography feature for message attribution (Headers) in-terms of Font Face, Font Size and Color</li><li>Message attribution sequence in-terms of From:, Sent:, To:, Cc: and Subject</li><li>First Name and Last Name used instead of quoted email address</li><li>Date &amp; Time format in 12 or 24 hours</li><li>Provides optional prefix transformation for Re: -&gt; RE: and  Fwd: -&gt; FW:</li><li>Header line spaces option like before header, after header and before separator. Also line size and color</li></ul>"
+        "en-US": "Completely manages and enables the feature of ‘Message Attribution’ for Reply, Reply All &amp; Forward in the Thunderbird and Postbox.\n<ul><li>Cleans up special internal email headers from Message Attribution</li><li>Provides special/meaningful email message separate of thin blue color line</li><li>Clean handling of header attribution [From, Subject, Date, To &amp; Cc], rest are suppressed</li><li>Typography feature for message attribution (Headers) in-terms of Font Face, Font Size and Color</li><li>Message attribution sequence in-terms of From:, Sent:, To:, Cc: and Subject</li><li>First Name and Last Name used instead of quoted email address</li><li>Date &amp; Time format in 12 or 24 hours</li><li>Provides optional prefix transformation for Re: -&gt; RE: and  Fwd: -&gt; FW:</li><li>Header line spaces option like before header, after header and before separator. Also line size and color</li></ul>"
     },
     "developer_comments": {
         "en-US": "Note: Quick reply mode in Postbox is not supported."
@@ -96,75 +70,75 @@
     "homepage": {
         "en-US": "https://myjeeva.com/replywithheader-mozilla"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/605/605874-64.png?modified=1600219050",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/605/605874-64.png?modified=1601972142",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/605/605874-32.png?modified=1600219050",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/605/605874-64.png?modified=1600219050"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/605/605874-32.png?modified=1601972142",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/605/605874-64.png?modified=1601972142"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-03-04T04:45:38Z",
+    "last_updated": "2020-10-06T08:11:33Z",
     "name": {
         "en-US": "ReplyWithHeader"
     },
     "previews": [
         {
-            "id": 205578,
+            "id": 206171,
             "caption": {
                 "en-US": "ReplyWithHeader - Mac - Manage Headers Tab"
             },
             "image_size": [
-                797,
+                644,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205578.png?modified=1550739111",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206171.png?modified=1601972069",
             "thumbnail_size": [
-                199,
+                161,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205578.png?modified=1550739111"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206171.png?modified=1601972069"
         },
         {
-            "id": 205579,
+            "id": 206172,
             "caption": {
                 "en-US": "ReplyWithHeader - Mac - Misc Tab"
             },
             "image_size": [
-                803,
+                638,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205579.png?modified=1550739111",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206172.png?modified=1601972121",
             "thumbnail_size": [
-                201,
+                159,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205579.png?modified=1550739111"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206172.png?modified=1601972121"
         },
         {
-            "id": 205580,
+            "id": 206173,
             "caption": {
                 "en-US": "ReplyWithHeader - Mac - About Tab"
             },
             "image_size": [
-                833,
+                640,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205580.png?modified=1550739111",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206173.png?modified=1601972069",
             "thumbnail_size": [
-                208,
+                160,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205580.png?modified=1550739111"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206173.png?modified=1601972069"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.50375,
-        "count": 39,
-        "average": 4.5385,
-        "text_count": 39
+        "bayesian_average": 4.52768,
+        "count": 41,
+        "average": 4.561,
+        "text_count": 41
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replywithheader/reviews/",
     "requires_payment": false,
@@ -190,10 +164,10 @@
     "weekly_downloads": 162,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-09T04:03:24Z"
         }

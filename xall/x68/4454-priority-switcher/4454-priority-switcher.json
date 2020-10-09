@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1104,
+    "average_daily_users": 1105,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": null,
     "created": "2007-02-03T02:56:18Z",
     "current_version": {
-        "id": 2474205,
+        "id": 2474370,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/priority-switcher/versions/2474205",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/priority-switcher/versions/2474370",
         "files": [
             {
-                "id": 1017367,
-                "created": "2020-09-07T07:19:20Z",
-                "hash": "sha256:f90909ef7e58be5c4990277290d4cecbfbc565b46f45980c337a3f486c4115f3",
+                "id": 1017532,
+                "created": "2020-09-30T09:23:39Z",
+                "hash": "sha256:b5ca94a16caaa65593af68779388d2d2bc73cb92e19bcceddfb148a5d360291b",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 24427,
+                "size": 24481,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017367/priority_switcher-2.0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017532/priority_switcher-2.0.3-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "messagesRead",
@@ -82,11 +82,12 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Convert to MailExtensions to support Thunderbird 78"
+            "en-US": "* Suppress error messages on closing dialog\n* Improve response time of the popup",
+            "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/priority-switcher/versions/2.0.2",
-        "version": "2.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/priority-switcher/versions/2.0.3",
+        "version": "2.0.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -111,7 +112,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-09-07T09:43:39Z",
+    "last_updated": "2020-09-30T13:45:36Z",
     "name": {
         "en-US": "Priority Switcher",
         "ja": "Priority Switcher"
@@ -273,6 +274,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-07T07:19:20Z",
+            "comp78pv_version": "2.0.2",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-08-25T17:38:02Z"
         }
