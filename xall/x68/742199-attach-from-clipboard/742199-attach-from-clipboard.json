@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12353/12353367.png?modified=1525268440"
         }
     ],
-    "average_daily_users": 3428,
+    "average_daily_users": 2965,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,30 +18,32 @@
     "contributions_url": null,
     "created": "2016-10-17T14:05:20Z",
     "current_version": {
-        "id": 2473522,
+        "id": 2474498,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attach-from-clipboard/versions/2473522",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attach-from-clipboard/versions/2474498",
         "files": [
             {
-                "id": 1016666,
-                "created": "2020-03-09T16:11:11Z",
-                "hash": "sha256:20b3f71162878ba12fdc5441d2d622691944d985b2eedbab2c0afd3a369dfa02",
-                "is_restart_required": true,
+                "id": 1017660,
+                "created": "2020-10-22T09:38:51Z",
+                "hash": "sha256:6d344a86540a0346a236ec89c63ef0d17afef54f64c13695bfef9aa579c44fd0",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5842,
+                "size": 14167,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016666/attach_from_clipboard-1.3.68-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017660/attach_from_clipboard-1.78.1-tb.xpi?src=",
+                "permissions": [
+                    "clipboardRead"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 22,
             "name": {
@@ -73,11 +75,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "Change keyboard shortcut to Ctrl+Alt+V"
+            "en-US": "Update for Thunderbird 78."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attach-from-clipboard/versions/1.3.68",
-        "version": "1.3.68"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attach-from-clipboard/versions/1.78.1",
+        "version": "1.78.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -102,7 +104,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-03-14T07:23:47Z",
+    "last_updated": "2020-10-22T09:59:24Z",
     "name": {
         "en-US": "Attach from Clipboard",
         "de": "Anhang aus Zwischenablage"
@@ -153,10 +155,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.16204,
-        "count": 17,
-        "average": 4.2353,
-        "text_count": 17
+        "bayesian_average": 4.20766,
+        "count": 18,
+        "average": 4.2778,
+        "text_count": 18
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attach-from-clipboard/reviews/",
     "requires_payment": false,
@@ -182,10 +184,10 @@
     "weekly_downloads": 124,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-02T13:21:49Z"
         }

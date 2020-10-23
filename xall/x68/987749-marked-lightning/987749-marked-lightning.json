@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 76,
+    "average_daily_users": 75,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,30 @@
     "contributions_url": "",
     "created": "2020-01-01T14:04:39Z",
     "current_version": {
-        "id": 2473141,
+        "id": 2474455,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/marked-lightning/versions/2473141",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/marked-lightning/versions/2474455",
         "files": [
             {
-                "id": 1016252,
-                "created": "2020-01-02T10:56:54Z",
-                "hash": "sha256:ac2e9d018ff22479f63a7a09f4c1b533f834b4305d9a72a7b524bca2315300bd",
-                "is_restart_required": true,
+                "id": 1017617,
+                "created": "2020-10-13T18:57:15Z",
+                "hash": "sha256:568ac5061071eab798820e9c10be9351541e1c511e761d230c762f1d2c430097",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 13297,
+                "size": 16276,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016252/marked_lightning-0.1.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017617/marked_lightning-0.1.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,10 +50,13 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
-        "reviewed": "2020-07-09T19:59:35Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/marked-lightning/versions/0.1.2",
-        "version": "0.1.2"
+        "release_notes": {
+            "en-US": "Migrated Add-On to work with new Thunderbird ESR 78.",
+            "de": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/marked-lightning/versions/0.1.3",
+        "version": "0.1.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-09T19:59:35Z",
+    "last_updated": "2020-10-15T13:05:15Z",
     "name": {
         "en-US": "marked-lightning",
         "de": "marked-lightning"
@@ -115,10 +118,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

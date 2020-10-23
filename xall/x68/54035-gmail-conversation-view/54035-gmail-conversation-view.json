@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 23020,
+    "average_daily_users": 23212,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -25,26 +25,26 @@
     "contributions_url": "https://paypal.me/standard8",
     "created": "2009-12-10T03:34:09Z",
     "current_version": {
-        "id": 2474408,
+        "id": 2474500,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "68.0a1"
+                "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmail-conversation-view/versions/2474408",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/gmail-conversation-view/versions/2474500",
         "files": [
             {
-                "id": 1017570,
-                "created": "2020-10-06T07:49:02Z",
-                "hash": "sha256:23374b6e9e62c91a46595a4d0cfa71e9fa1ee22debed18795c1a7d5870c391fa",
+                "id": 1017662,
+                "created": "2020-10-22T14:21:34Z",
+                "hash": "sha256:e182d5d6ba58c17d98b3173e4750fd47cb4847bef6b6fb270cf6531c401bb9ce",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 959915,
+                "size": 883547,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017570/thunderbird_conversations-3.1.24-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017662/thunderbird_conversations-3.2.3-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "addressBooks",
@@ -64,11 +64,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Fixes automatic collapsing of blockquotes."
+            "en-US": "* Fixes decoding of subject lines for encrypted messages.\n\nOther 3.2.x changes:\n\n* Drops support for Thunderbird 68 due to the complexity of supporting both.\n* Fixes Enigmail / OpenPGP support in Thunderbird 78+.\n* Fixes displaying conversations in a case that can sometimes happen when a draft is updated.\n* Fixes display of non-ASCII characters in messages in Thunderbird 78."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/versions/3.1.24",
-        "version": "3.1.24"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/gmail-conversation-view/versions/3.2.3",
+        "version": "3.2.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -111,7 +111,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2020-10-08T09:41:58Z",
+    "last_updated": "2020-10-22T16:23:07Z",
     "name": {
         "fr": "Thunderbird Conversations",
         "en-US": "Thunderbird Conversations",
@@ -234,6 +234,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-10-21T20:23:04Z",
+            "comp78pv_version": "3.2.2",
+            "comp78pv_vmin": "78.0a1",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-07-28T11:19:12Z"
         }

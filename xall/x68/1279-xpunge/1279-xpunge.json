@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/6/6199.png?modified=1403764529"
         }
     ],
-    "average_daily_users": 10947,
+    "average_daily_users": 10957,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=YGMX9DPFMNBHE&source=url",
     "created": "2005-09-23T23:09:18Z",
     "current_version": {
-        "id": 2474081,
+        "id": 2474502,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
+                "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xpunge/versions/2474081",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xpunge/versions/2474502",
         "files": [
             {
-                "id": 1017243,
-                "created": "2020-08-13T02:35:19Z",
-                "hash": "sha256:e32735929c69e2b7a83d45280f3c111476cad83f6bc214212fe8a2f48cdff67e",
+                "id": 1017664,
+                "created": "2020-10-22T22:28:13Z",
+                "hash": "sha256:236f83998941659dc38b8feb39350883d401d5ee99ab0862df8c8d686537ecb8",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 74998,
+                "size": 76728,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017243/xpunge-2.1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017664/xpunge-2.1.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -75,15 +75,15 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Xpunge 2.1.0 is an attempt to quickly get Xpunge running in Thunderbird 78. Support for legacy extensions like Xpunge was removed in Thunderbird 78, which means that Xpunge has to be re-written as a MailExtension. While I am working on this re-write, I have made version 2.1.0 available so users can continue to work with Xpunge.\n\nDue to limitations imposed by MailExtensions, Xpunge can only add one button in Thunderbird. So one of the two buttons provided by Xpunge in previous versions (called \"Xpunge\") is not available in version 2.1.0. You can invoke the functionality that used to be offered by that button through a menu entry: Tools --&gt; Xpunge --&gt; Xpunge --&gt; Call Xpunge Now. The \"MultiXpunge\" button is still available.\n\nPlease note that in this version, the options (preferences) page of Xpunge is available through the \"Tools --&gt; Add-on Options --&gt; Xpunge\" menu entry.\n\nTranslations included: Danish (da), French (fr-FR), German (de), Greek (el), Japanese (ja) and Russian (ru).\n\nPlease take a look at the release notes for more information:\n\n<a href=\"http://www.theodoretegos.net/mozilla/tb/releases/xpunge/index.html\" rel=\"nofollow\">http://www.theodoretegos.net/mozilla/tb/releases/xpunge/index.html</a>"
+            "en-US": "Xpunge 2.1.1 fixes a bug in the options page that prevented individual folders from being set up to be compacted.\n\nPlease note that in this version, the options (preferences) page of Xpunge is available through the \"Tools --&gt; Add-on Options --&gt; Xpunge\" Menu Bar entry.\n\nTranslations included: Danish (da), French (fr-FR), German (de), Greek (el), Japanese (ja) and Russian (ru).\n\nPlease take a look at the release notes for more information:\n\n<a rel=\"nofollow\" href=\"http://www.theodoretegos.net/mozilla/tb/releases/xpunge/index.html\">http://www.theodoretegos.net/mozilla/tb/releases/xpunge/index.html</a>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xpunge/versions/2.1.0",
-        "version": "2.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xpunge/versions/2.1.1",
+        "version": "2.1.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>ATTENTION:</b> Xpunge has been updated to be compatible with Thunderbird 78 since version 2.1.0. If you do not see this version available on this page, please have a look at the <a href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/1279/versions/\" rel=\"nofollow\">other versions page</a>. Support for legacy extensions like Xpunge was removed in Thunderbird 78, which means that Xpunge has to be ported to a MailExtension. As this is a complex undertaking, Xpunge 2.1.0 is an attempt to quickly get Xpunge running in Thunderbird 78 using the WindowListener wrapper API. Due to limitations imposed by MailExtensions, Xpunge can only add one button in Thunderbird. So one of the two buttons provided by Xpunge in previous versions (called \"Xpunge\") is not available in version 2.1.0. You can invoke the functionality that used to be offered by that button through the sub-menu called \"Xpunge\" under Thunderbird's \"Tools\" menu (Tools --&gt; Xpunge --&gt; Xpunge --&gt; Call Xpunge Now). The \"MultiXpunge\" button is still available. Also, note that in this version, the options (preferences) page of Xpunge is available through the \"Tools --&gt; Add-on Options --&gt; Xpunge\" menu entry.\n\nXpunge is an extension that combines the functionality of emptying certain folders (trash and junk) and also compacting user-specified folders in a single action and for multiple accounts. This can be done with a single mouse click on a toolbar button or through a sub-menu under Thunderbird's \"Tools\" menu. Its functionality can be invoked either on the currently selected account only (\"Xpunge\") or on a configurable list of multiple Thunderbird accounts (\"MultiXpunge\"). There is also a separately configurable timer feature that allows the functionality offered by \"MultiXpunge\" to be automatically applied at regular intervals and at a specific time every day.\n\nXpunge works on all types of Thunderbird accounts.\n\n<b>ATTENTION:</b> Compacting folders means that all the messages you have previously deleted from those folders are permanently deleted from the hard disk and cannot be retrieved again.\n\n<b>ATTENTION:</b> Be careful when you use the new functionality for emptying the junk folders. It is not the same as emptying the trash folder, in the sense that messages are deleted on purpose, whereas your spam filter may put useful (non-spam) emails in the junk folder, so emptying this folder will cause you to lose those emails. Xpunge has all the new junk features turned off by default to avoid accidents. Please enable and use the junk functionality at your own risk.\n\n<b>ATTENTION:</b> When you select to empty the Junk of an account, all the folders of that account that are known to Thunderbird to be \"junk\" folders will be emptied. For example, if you set up a Gmail IMAP account, where the junk folder is called \"Spam\", and you also change the settings of that account in Thunderbird to move new junk messages to a folder called \"Junk\", both folders will be emptied if you enable emptying the Junk for that account in Xpunge.",
+        "en-US": "Xpunge has been updated to be compatible with Thunderbird 78 since version 2.1.0. Support for legacy extensions like Xpunge was removed in Thunderbird 78, which means that Xpunge has to be ported to a MailExtension. This is an ongoing process.\n\nDue to limitations imposed by MailExtensions, Xpunge can add only one button in Thunderbird. So one of the two buttons provided by Xpunge in previous versions (called \"Xpunge\") is not available from version 2.1.0 onwards. You can invoke the functionality that used to be offered by that button through the sub-menu called \"Xpunge\" under Thunderbird's \"Tools\" menu (Tools --&gt; Xpunge --&gt; Xpunge --&gt; Call Xpunge Now). The \"MultiXpunge\" button is still available.\n\nNote that there is a <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1598190\">known bug</a> in Thunderbird that might cause the \"MultiXpunge\" button to \"disappear\" after restart (go back to the Customize Toolbar) if the button has been added to a different toolbar than the Mail Toolbar.\n\nAlso note that the options (preferences) page of Xpunge is now available through the \"Tools --&gt; Add-on Options --&gt; Xpunge\" Menu Bar entry.\n\nXpunge is an extension that combines the functionality of emptying certain folders (trash and junk) and also compacting user-specified folders in a single action and for multiple accounts. This can be done with a single mouse click on a toolbar button or through a sub-menu under Thunderbird's \"Tools\" menu. Its functionality can be invoked either on the currently selected account only (\"Xpunge\") or on a configurable list of multiple Thunderbird accounts (\"MultiXpunge\"). There is also a separately configurable timer feature that allows the functionality offered by \"MultiXpunge\" to be automatically applied at regular intervals and at a specific time every day.\n\nXpunge works on all types of Thunderbird accounts.\n\n<b>ATTENTION:</b> Compacting folders means that all the messages you have previously deleted from those folders are permanently deleted from the hard disk and cannot be retrieved again.\n\n<b>ATTENTION:</b> Be careful when you use the new functionality for emptying the junk folders. It is not the same as emptying the trash folder, in the sense that messages are deleted on purpose, whereas your spam filter may put useful (non-spam) emails in the junk folder, so emptying this folder will cause you to lose those emails. Xpunge has all the new junk features turned off by default to avoid accidents. Please enable and use the junk functionality at your own risk.\n\n<b>ATTENTION:</b> When you select to empty the Junk of an account, all the folders of that account that are known to Thunderbird to be \"junk\" folders will be emptied. For example, if you set up a Gmail IMAP account, where the junk folder is called \"Spam\", and you also change the settings of that account in Thunderbird to move new junk messages to a folder called \"Junk\", both folders will be emptied if you enable emptying the Junk for that account in Xpunge.",
         "es": "Xpunge es una extensión que combina las funcionalidades de vaciar la papelera y compactar las carpetas en una única acción. Puede realizar esta tarea con un único click del ratón en el botón de la barra de herramientas, o usando el submenú correspondiente en el menú \"Herramientas\" de Thunderbird.\n\nXpunge puede actuar tanto en una única cuenta seleccionada (botón \"Xpunge\") o en una lista configurable con varias cuentas (botón \"MultiXpunge\"). Existe también una opción configurable de programador, que permite aplicar automáticamente la funcionalidad de \"MultiXpunge\" en intervalos regulares y a una hora concreta cada día.\n\nXpunge funciona con todos los tipos de cuentas de Thunderbird.",
         "da": "Xpunge er en udvidelse, som i én handling kombinerer funktionerne tøm papirkurv og optimer mapper. Dette kan gøres med et enkelt klik på en knap på værktøjslinjen eller ved at vælge en undermenu til menuen Funktioner i Thunderbird.\n\nXpunge kan udføres på den pågældende konto (knappen \"Xpunge\") eller på en brugerdefineret liste over flere Thunderbird-konti (knappen \"Mulitxpunge\"). Der er også en selvstændig brugerdefineret timer-funktion, som lader funktionen fra \"MultiXpunge\" udføre automatisk med regelmæssige intervaller og på et bestemt tidspunkt hver dag.\n\nXpunge virker på alle slags Thunderbird-konti."
     },
@@ -97,16 +97,16 @@
     "homepage": {
         "en-US": "http://www.theodoretegos.net/mozilla/tb/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-64.png?modified=1597335971",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-64.png?modified=1603466861",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-32.png?modified=1597335971",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-64.png?modified=1597335971"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-32.png?modified=1603466861",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1279-64.png?modified=1603466861"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-08-13T08:40:49Z",
+    "last_updated": "2020-10-23T08:21:45Z",
     "name": {
         "en-US": "Xpunge"
     },
@@ -162,10 +162,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.48189,
-        "count": 47,
-        "average": 4.5106,
-        "text_count": 47
+        "bayesian_average": 4.47191,
+        "count": 48,
+        "average": 4.5,
+        "text_count": 48
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xpunge/reviews/",
     "requires_payment": false,
@@ -191,12 +191,15 @@
     "weekly_downloads": 166,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp69plus": true,
+            "comp68": true,
             "comp78plus": true,
-            "comp61plus": true,
-            "comp68pv": true,
-            "comp68pv_date": "2019-09-13T22:17:08Z",
+            "comp78pv": true,
+            "comp78pv_date": "2020-08-13T02:35:19Z",
+            "comp78pv_version": "2.1.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*",
             "comp60pv": true,
             "comp60pv_date": "2018-08-18T21:33:30Z"
         }

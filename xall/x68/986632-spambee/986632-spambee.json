@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 0,
+    "average_daily_users": 3,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,30 +18,42 @@
     "contributions_url": "",
     "created": "2019-05-16T19:27:42Z",
     "current_version": {
-        "id": 2474384,
+        "id": 2474453,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "77.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/spambee/versions/2474384",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/spambee/versions/2474453",
         "files": [
             {
-                "id": 1017546,
-                "created": "2020-10-02T13:23:21Z",
-                "hash": "sha256:f1755797e365d1929163bc348dbb2e51c9d9db273f81c5cfd9a4a1ec7df0586b",
-                "is_restart_required": true,
+                "id": 1017615,
+                "created": "2020-10-13T08:48:55Z",
+                "hash": "sha256:db11570b974b9da1a3845d2062964cb896df0b6e74aa3cfb6bc90100549863de",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 350838,
+                "size": 372981,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017546/spambee-2.2.4-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017615/spambee-3.0.3-tb.xpi?src=",
+                "permissions": [
+                    "notifications",
+                    "messagesRead",
+                    "storage",
+                    "activeTab",
+                    "tabs",
+                    "tabHide",
+                    "menus",
+                    "accountsRead",
+                    "messagesMove",
+                    "https://*.verifrom.com/*",
+                    "https://spambee.c-3.lu/*"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 7057,
             "name": {
@@ -50,9 +62,9 @@
             "url": null
         },
         "release_notes": null,
-        "reviewed": "2020-10-02T14:51:36Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spambee/versions/2.2.4",
-        "version": "2.2.4"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spambee/versions/3.0.3",
+        "version": "3.0.3"
     },
     "default_locale": "fr",
     "description": {
@@ -77,7 +89,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-02T14:51:36Z",
+    "last_updated": "2020-10-13T09:20:35Z",
     "name": {
         "fr": "SPAMBEE",
         "en-US": "SPAMBEE"
@@ -114,10 +126,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

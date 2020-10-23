@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14196/14196754.png?modified=1600788309"
         }
     ],
-    "average_daily_users": 27,
+    "average_daily_users": 91,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "https://paypal.me/devmount",
     "created": "2020-09-28T12:23:48Z",
     "current_version": {
-        "id": 2474396,
+        "id": 2474435,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474396",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474435",
         "files": [
             {
-                "id": 1017558,
-                "created": "2020-10-04T11:48:55Z",
-                "hash": "sha256:48e24a920f2667b2cde5f7228aab56b4cd1890ba5f866b30f2898ee446197298",
+                "id": 1017597,
+                "created": "2020-10-09T15:10:47Z",
+                "hash": "sha256:42d585344c7e9460c44c01645dfd698141dadcf96e10c7366b237df0030f3767",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 225103,
+                "size": 226603,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017558/thirdstats-0.4.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017597/thirdstats-0.5.0-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "messagesRead",
@@ -77,11 +77,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "Changelog\n\n- add translations for Czech, Hindi, French, Russian, Spanish, Portuguese, Italian, Galician, Catalan, Polish, Thai\n- add chart: emails per months of year\n- add loading indication for chart area\n- fix: include local accounts in accounts list\n- fix: translate month and weekday names\n- fix: don't show charts for empty accounts\n- add support for ultra-wide screens and small screens\n- add development hint"
+            "en-US": "- improve documentation\n- new chart: most received from\n- new chart: most sent to\n- new translation: traditional chinese\n- rearrange chart layout and improve responsiveness\n- always start axis at zero\n- center featured numbers\n- fix heatmaps alignment issue"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/0.4.0",
-        "version": "0.4.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/0.5.0",
+        "version": "0.5.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -105,32 +105,112 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-04T11:50:03Z",
+    "last_updated": "2020-10-09T15:15:02Z",
     "name": {
         "en-US": "ThirdStats",
         "de": "ThirdStats"
     },
     "previews": [
         {
-            "id": 206158,
+            "id": 206188,
             "caption": {
                 "en-US": "ThirdStats on the Thunderbird default dark theme"
             },
             "image_size": [
-                844,
+                814,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206158.png?modified=1601296582",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206188.png?modified=1602338653",
             "thumbnail_size": [
-                211,
+                204,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206158.png?modified=1601296582"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206188.png?modified=1602338653"
+        },
+        {
+            "id": 206182,
+            "caption": {
+                "en-US": "Featured numbers section of ThirdStats"
+            },
+            "image_size": [
+                1067,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206182.png?modified=1602338648",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206182.png?modified=1602338648"
+        },
+        {
+            "id": 206183,
+            "caption": {
+                "en-US": "Line charts showing total amount of emails per year and per month over the whole time"
+            },
+            "image_size": [
+                1067,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206183.png?modified=1602338648",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206183.png?modified=1602338648"
+        },
+        {
+            "id": 206184,
+            "caption": {
+                "en-US": "Bar charts showing the sum of all emails per month, daytime and weekday"
+            },
+            "image_size": [
+                1067,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206184.png?modified=1602338648",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206184.png?modified=1602338648"
+        },
+        {
+            "id": 206185,
+            "caption": {
+                "en-US": "Heatmaps showing the temporal distribution of emails"
+            },
+            "image_size": [
+                1067,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206185.png?modified=1602338648",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206185.png?modified=1602338648"
+        },
+        {
+            "id": 206186,
+            "caption": {
+                "en-US": "Leaderboards showing the most contacted email addresses"
+            },
+            "image_size": [
+                1067,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206186.png?modified=1602338648",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206186.png?modified=1602338648"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.85484,
+        "bayesian_average": 3.85406,
         "count": 1,
         "average": 5,
         "text_count": 1

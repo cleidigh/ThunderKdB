@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1398,
+    "average_daily_users": 1335,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,29 +18,30 @@
     "contributions_url": null,
     "created": "2006-10-03T08:36:57Z",
     "current_version": {
-        "id": 2474257,
+        "id": 2474479,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/show-inout/versions/2474257",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/show-inout/versions/2474479",
         "files": [
             {
-                "id": 1017419,
-                "created": "2020-09-13T12:28:46Z",
-                "hash": "sha256:2f3c7f0b2e578991aaaeb089a4eb99e1558214428524adc12b1b9b31172c6239",
+                "id": 1017641,
+                "created": "2020-10-18T15:35:35Z",
+                "hash": "sha256:61b29aa2e471b49b2d378a1d20b1074bdb3150c0a6d8d743a467998096868e62",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 47836,
+                "size": 49876,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017419/show_inout-3.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017641/show_inout-3.2-tb.xpi?src=",
                 "permissions": [
                     "storage",
-                    "accountsRead"
+                    "accountsRead",
+                    "management"
                 ]
             }
         ],
@@ -78,12 +79,12 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Removed unused premission",
+            "en-US": "- Fixed incompatibilities with other addons (e.g. 'Full address column') which \t\talso creates custom columns\n- Remove GUI elements when addon disabled/removed",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/show-inout/versions/3.1",
-        "version": "3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/show-inout/versions/3.2",
+        "version": "3.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -108,7 +109,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-09-14T13:26:21Z",
+    "last_updated": "2020-10-19T08:41:08Z",
     "name": {
         "en-US": "Show InOut"
     },
@@ -161,6 +162,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-13T12:28:46Z",
+            "comp78pv_version": "3.1",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-04-27T08:11:05Z"
         }

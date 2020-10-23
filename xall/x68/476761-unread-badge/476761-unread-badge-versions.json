@@ -1,5 +1,50 @@
 [
     {
+        "id": 2474439,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unread-badge/versions/2474439",
+        "files": [
+            {
+                "id": 1017601,
+                "created": "2020-10-10T20:47:18Z",
+                "hash": "sha256:2ec5606309633ea365c877042eb5b3923b9a0f206c2c7459966351c4a003b96f",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 19689,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017601/windows_taskbar_unread_badge-3.0.0-tb.xpi?src=",
+                "permissions": [
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "- Converted to a WebExtension for Thunderbird 78 compatibility, as Thunderbird has dropped support for legacy bootstrap extensions. Thanks @homo-programmatis for navigating some of the underlying API changes.\n- Change to use WebExtension local storage APIs instead of the legacy preferences system.\n- New \"modern\" icon style to match with current Windows design conventions."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unread-badge/versions/3.0.0",
+        "version": "3.0.0"
+    },
+    {
         "id": 2472623,
         "channel": "listed",
         "compatibility": {

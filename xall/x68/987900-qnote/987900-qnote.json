@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 306,
+    "average_daily_users": 611,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CCFL84AMQKV4S&source=url",
     "created": "2020-09-15T23:42:12Z",
     "current_version": {
-        "id": 2474423,
+        "id": 2474484,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/qnote/versions/2474423",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/qnote/versions/2474484",
         "files": [
             {
-                "id": 1017585,
-                "created": "2020-10-07T19:23:19Z",
-                "hash": "sha256:ec6a879974f6d933522361cbc4cfcca0ac1b72c2d42295e1232d7166bac859ae",
+                "id": 1017646,
+                "created": "2020-10-19T15:08:09Z",
+                "hash": "sha256:18ba76ee7139980f1450dd0f6974a8241eedea0caeeebaeba0280112bc0409c4",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 50714,
+                "size": 55204,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017585/qnote-0.6.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017646/qnote-0.6.3-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "storage",
@@ -78,18 +78,18 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "-Added Alt+Q keyboard shortcut\n-Better overall keyboard handling\n-Note to grab focus when explicitly click on QNote button or context menu\n-Minor bug fixes"
+            "en-US": "-Added main toolbar button\n-Attach note to window that opened it instead to main window\n-Updated icons\n-Force note text color to black\n-Minor bug fixes"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/qnote/versions/0.6.1",
-        "version": "0.6.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/qnote/versions/0.6.3",
+        "version": "0.6.3"
     },
     "default_locale": "en-US",
     "description": {
         "en-US": "<b>Export data before removing extension if you are using internal storage.</b>\n\n-Use mouse right click context menu to delete note or reset note window\n\n-Use ESC to close note without saving\n\n-Use Alt+Q to toggle note\n\n-Window popup positions currently can't be set due to API limitations. Use floating panel instead.\n\n-Usage with TB older than 78 is somewhat cumbersome but should work\n\n-Version 0.4 introduce storage option - either internal extension or XNote folder (same as with original extension)\n\n-Version 0.5 introduce back QNote column and two options for popup window style - floating panel or using TB new windows API\n\n-Version 0.6 introduce saving notes using JSON file format instead of XNote++ format when opt for folder storage"
     },
     "developer_comments": {
-        "en-US": "This is beta quality, please do not use in production. Please send bug reports or issues to support email. Backup your XNote folder."
+        "en-US": "Please send bug reports or issues to support email. Backup your XNote folder."
     },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/qnote/edit",
     "guid": "qnote@dqdp.net",
@@ -105,17 +105,17 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-08T09:34:21Z",
+    "last_updated": "2020-10-21T07:12:59Z",
     "name": {
         "en-US": "QNote"
     },
     "previews": [],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.50734,
-        "count": 19,
-        "average": 4.5789,
-        "text_count": 19
+        "bayesian_average": 4.4853,
+        "count": 24,
+        "average": 4.5417,
+        "text_count": 24
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/qnote/reviews/",
     "requires_payment": false,

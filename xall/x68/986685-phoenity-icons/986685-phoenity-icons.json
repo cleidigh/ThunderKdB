@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5438,
+    "average_daily_users": 5657,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -58,7 +58,7 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This is a (limited) replacement for the <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-shredder/\">Phoenity Shredder</a> theme.\nFull themes are no longer supported on Thunderbird 68 and higher.\n\nIcon resizing doesn't work (yet) on Thunderbird 78.\nFor small icons add the following to userChrome.css:\n\n#mail-bar3 .toolbarbutton-1 .toolbarbutton-icon {\n  min-width: 18px !important;\n  min-height: 18px !important;\n  width: 18px !important;\n  height: 18px !important;\n}\n\nFor large icons change 18px to 26px."
+        "en-US": "This is a (limited) replacement for the <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-shredder/\">Phoenity Shredder</a> theme.\nFull themes are no longer supported on Thunderbird 68 and higher.\n\nIcon resizing doesn't work (yet) on Thunderbird 78.\nFor small icons add the following to userChrome.css:\n\n#mail-bar3 .toolbarbutton-1 .toolbarbutton-icon,\n#compose-toolbox .toolbarbutton-1 .toolbarbutton-icon {\n  min-width: 18px !important;\n  min-height: 18px !important;\n  width: 18px !important;\n  height: 18px !important;\n} \n\nFor large icons change 18px to 26px."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/edit",
@@ -117,10 +117,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.81086,
-        "count": 13,
-        "average": 4.9231,
-        "text_count": 13
+        "bayesian_average": 4.90678,
+        "count": 16,
+        "average": 5,
+        "text_count": 16
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/reviews/",
     "requires_payment": false,

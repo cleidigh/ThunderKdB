@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14152/14152877.png?modified=1541065983"
         }
     ],
-    "average_daily_users": 2084,
+    "average_daily_users": 2133,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,27 +18,29 @@
     "contributions_url": "",
     "created": "2019-11-18T19:51:25Z",
     "current_version": {
-        "id": 2474251,
+        "id": 2474445,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/monterail-full-dark-2/versions/2474251",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/monterail-full-dark-2/versions/2474445",
         "files": [
             {
-                "id": 1017413,
-                "created": "2020-09-12T11:10:19Z",
-                "hash": "sha256:66ed80329a7b37112c36f3ca3dcc9f7915d7f52d0e2dbc17d8347d61e7e4b682",
+                "id": 1017607,
+                "created": "2020-10-12T08:40:01Z",
+                "hash": "sha256:dfeff2463523f6911ff9c981889e0a90f1dc8e5902ab0854a471280ccc71bc4a",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 614901,
+                "size": 628716,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017413/monterail_full_dark_2_for_tb68-3.0.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017607/monterail_full_dark_2_for_tb68-3.1-tb.xpi?src=",
+                "permissions": [
+                    "storage"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -50,11 +52,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Compatibility with Thunderbird 78.x"
+            "en-US": "Options page to change the message list height and the folder tree height",
+            "it": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-full-dark-2/versions/3.0.0",
-        "version": "3.0.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-full-dark-2/versions/3.1",
+        "version": "3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -77,7 +80,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-12T12:46:33Z",
+    "last_updated": "2020-10-12T13:36:22Z",
     "name": {
         "en-US": "Monterail Full Dark 2 for TB>68"
     },
@@ -127,10 +130,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.69105,
-        "count": 10,
-        "average": 3.8,
-        "text_count": 10
+        "bayesian_average": 3.82202,
+        "count": 12,
+        "average": 3.9167,
+        "text_count": 12
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/monterail-full-dark-2/reviews/",
     "requires_payment": false,
@@ -161,7 +164,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-12T11:10:19Z",
+            "comp78pv_version": "3.0.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

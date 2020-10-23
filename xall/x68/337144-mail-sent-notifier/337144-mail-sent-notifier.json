@@ -9,39 +9,44 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5850/5850439.png?modified=1469820457"
         }
     ],
-    "average_daily_users": 64,
+    "average_daily_users": 46,
     "categories": {
         "thunderbird": [
             "miscellaneous"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "",
     "created": "2011-08-26T15:38:02Z",
     "current_version": {
-        "id": 2472242,
+        "id": 2474468,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mail-sent-notifier/versions/2472242",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mail-sent-notifier/versions/2474468",
         "files": [
             {
-                "id": 1015310,
-                "created": "2019-09-05T09:45:43Z",
-                "hash": "sha256:7bd88e930126471b47b725b61aa2466cf137e320956e5df352e96b3ed62cd19d",
-                "is_restart_required": true,
+                "id": 1017630,
+                "created": "2020-10-16T13:52:52Z",
+                "hash": "sha256:237bb00266a7d7accecb2b95a1de2bbe727e2477e2c1cbf30446eeceb44b06e8",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 19601,
+                "size": 8820,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015310/mail_sent_notifier-0.7.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017630/mail_sent_notifier-1.0.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "compose",
+                    "menus",
+                    "accountsRead"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -76,8 +81,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mail-sent-notifier/versions/0.7.0",
-        "version": "0.7.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mail-sent-notifier/versions/1.0.0",
+        "version": "1.0.0"
     },
     "default_locale": "de",
     "description": {
@@ -102,7 +107,7 @@
     "is_experimental": true,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-05T11:52:31Z",
+    "last_updated": "2020-10-16T13:55:03Z",
     "name": {
         "de": "Mail Sent Notifier"
     },
@@ -135,11 +140,10 @@
     "weekly_downloads": 21,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
             "comp78plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2015-06-25T08:16:04Z"
         }

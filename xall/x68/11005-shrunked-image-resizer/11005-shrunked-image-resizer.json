@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 9165,
+    "average_daily_users": 9284,
     "categories": {
         "thunderbird": [
             "composition"
@@ -27,30 +27,33 @@
     "contributions_url": "",
     "created": "2009-03-08T01:43:49Z",
     "current_version": {
-        "id": 2473234,
+        "id": 2474440,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
-                "min": "68.0a1"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/2473234",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/2474440",
         "files": [
             {
-                "id": 1016346,
-                "created": "2020-01-18T02:49:23Z",
-                "hash": "sha256:23b3d7ecf8abca8faa904ddbd8b2a5f9bc771851d3ddc8589efed6b5f842ff4c",
-                "is_restart_required": true,
+                "id": 1017602,
+                "created": "2020-10-11T10:06:34Z",
+                "hash": "sha256:52585cced5a149e3a7e49132b88fb2e0d9e9289589a2d8172be77532e18f2d5d",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 48838,
+                "size": 38956,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016346/shrunked_image_resizer-4.5.5-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017602/shrunked_image_resizer-5.0.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -59,11 +62,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This version fixes some visual glitches in dialogs, and the image quality option which apparently has been broken since 2011(!). There's also some small updates to the French translation.\n\n<a href=\"https://github.com/darktrojan/shrunked/compare/VERSION_4.5.4...VERSION_4.5.5\" rel=\"nofollow\">https://github.com/darktrojan/shrunked/compare/VERSION_4.5.4...VERSION_4.5.5</a>"
+            "en-US": "The Shrunked user interface has been completely rewritten for Thunderbird's new extension system."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/versions/4.5.5",
-        "version": "4.5.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/versions/5.0.0",
+        "version": "5.0.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -98,7 +101,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-01-19T12:22:37Z",
+    "last_updated": "2020-10-11T12:35:05Z",
     "name": {
         "pt-PT": "Shrunked Image Resizer",
         "en-US": "Shrunked Image Resizer"
@@ -139,10 +142,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.32837,
-        "count": 61,
-        "average": 3.3443,
-        "text_count": 60
+        "bayesian_average": 3.36941,
+        "count": 65,
+        "average": 3.3846,
+        "text_count": 64
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/reviews/",
     "requires_payment": false,
@@ -169,10 +172,10 @@
     "weekly_downloads": 170,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2017-09-08T00:32:53Z"
         }
