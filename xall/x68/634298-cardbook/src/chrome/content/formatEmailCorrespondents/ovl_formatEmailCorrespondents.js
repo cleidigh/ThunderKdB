@@ -68,7 +68,11 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 					var myCardBookResult = {};
 					myCardBookResult = ovl_formatEmailCorrespondents.getCardBookDisplayNameFromEmail(address.email, address.name);
 					if (identity) {
-						results.push(address.name);
+						if (address.name) {
+							results.push(address.name);
+						} else {
+							results.push(identity.fullName);
+						}
 					} else if (exclusive) {
 						results.push(myCardBookResult.result);
 					} else {

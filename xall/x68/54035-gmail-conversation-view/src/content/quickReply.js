@@ -9,7 +9,7 @@ function QuickReply() {
   return /*#__PURE__*/React.createElement("div", {
     className: "quickReply disabled",
     dir: "ltr"
-  }, /*#__PURE__*/React.createElement("small", null, /*#__PURE__*/React.createElement("i", null, "Quick Reply is temporarily disabled due to needing rewriting for Thunderbird 68+.")));
+  }, /*#__PURE__*/React.createElement("small", null, /*#__PURE__*/React.createElement("i", null, "Quick Reply is temporarily disabled due to needing rewriting for Thunderbird 78+.")));
 }
 
 QuickReply.propTypes = {}; // These are the templates originally from stub.xhtml for quickReply. Moved here

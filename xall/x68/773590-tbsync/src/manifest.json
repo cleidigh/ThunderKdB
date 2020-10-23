@@ -2,12 +2,13 @@
   "applications": {
     "gecko": {
       "id": "tbsync@jobisoft.de",
-      "strict_min_version": "78.0"
+      "strict_min_version": "78.0",
+      "strict_max_version": "78.*"
     }
   },
   "manifest_version": 2,
   "name": "TbSync",
-  "version": "2.16",
+  "version": "2.18",
   "author": "John Bieling",
   "homepage_url": "https://github.com/jobisoft/TbSync",
   "default_locale": "en-US",
@@ -19,12 +20,12 @@
     "scripts": ["background.js"]
   },
   "experiment_apis": {
-    "LegacyBootstrap": {
-      "schema": "content/api/LegacyBootstrap/schema.json",
+    "BootstrapLoader": {
+      "schema": "content/api/BootstrapLoader/schema.json",
       "parent": {
         "scopes": ["addon_parent"],
-        "paths": [["LegacyBootstrap"]],
-        "script": "content/api/LegacyBootstrap/implementation.js"
+        "paths": [["BootstrapLoader"]],
+        "script": "content/api/BootstrapLoader/implementation.js"
       }
     }
   }

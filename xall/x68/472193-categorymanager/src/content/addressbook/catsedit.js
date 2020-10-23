@@ -1,11 +1,27 @@
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+Services.scriptloader.loadSubScript("chrome://sendtocategory/content/scripts/i18n.js");
+
 var jbCatMan = window.opener.jbCatMan;
 var jbCatManCatsEdit = {}
 
+jbCatManCatsEdit.initLocales = function (acceptLabel, cancelLabel) {
+  let extension = jbCatMan.extension
+  i18n.updateDocument({ extension });
+  
+  if (document.documentElement.getButton("accept") && acceptLabel) {
+    document.documentElement.getButton("accept").label = extension.localeData.localizeMessage(acceptLabel);
+  }
+  
+  if (document.documentElement.getButton("cancel") && cancelLabel) {
+    document.documentElement.getButton("cancel").label = extension.localeData.localizeMessage(cancelLabel);
+  }
+}
+
 jbCatManCatsEdit.createItem = function (label, UID, isMember) {
-    let newListItem = document.createElement("richlistitem");
+    let newListItem = document.createXULElement("richlistitem");
     newListItem.setAttribute("value", UID);
     newListItem.wasMember = isMember;
-    let item = document.createElement("label");
+    let item = document.createXULElement("label");
     item.setAttribute("value", label);
     newListItem.appendChild(item);
     return newListItem;
@@ -16,6 +32,8 @@ jbCatManCatsEdit.init = function () {
   this.categoryName = window.arguments[0];
   this.localTimeout = null;
   this.locked = false;
+  
+  this.initLocales("sendtocategory.ok.button", "sendtocategory.cancel.button");
   
   // update label and description
   let xulLabel = document.getElementById("CatsEditLabel").textContent;
@@ -57,8 +75,8 @@ jbCatManCatsEdit.init = function () {
   }
   
   // scroll to top 
-  this.inbox.scrollToIndex(0);
-  this.outbox.scrollToIndex(0);
+  this.inbox.scrollIntoView(true);
+  this.outbox.scrollIntoView(true);
   
   // add CTRL + A event listeners to listboxes
   this.inbox.addEventListener("keydown", function(e) {
@@ -91,7 +109,7 @@ jbCatManCatsEdit.init = function () {
 
     
   document.addEventListener("dialogaccept", function(event) {
-    jbCatManCatsEdit.onAccept();
+    /* */ jbCatManCatsEdit.onAccept();
     event.preventDefault(); // Prevent the dialog closing.
   });
   

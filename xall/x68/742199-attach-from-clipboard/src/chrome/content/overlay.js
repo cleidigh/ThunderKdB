@@ -1,4 +1,4 @@
-var clipboardAttachment = (function () {
+window.clipboardAttachment = (function () {
     var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
 
     Cu.import('resource://gre/modules/Services.jsm');
@@ -56,7 +56,7 @@ var clipboardAttachment = (function () {
             trans.addDataFlavor(flavors[i]);
         }
 
-        Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+        window.Services.clipboard.getData(trans, window.Services.clipboard.kGlobalClipboard);
 
         var flavor = {};
         var data = {};
@@ -75,7 +75,7 @@ var clipboardAttachment = (function () {
             trans.init(null);
             trans.addDataFlavor("text/unicode");
 
-            Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+            window.Services.clipboard.getData(trans, window.Services.clipboard.kGlobalClipboard);
 
             trans.getAnyTransferData(flavor, data, len);
 
@@ -86,35 +86,34 @@ var clipboardAttachment = (function () {
     }
 
     function createFile(name) {
-        var file = FileUtils.getFile("TmpD", [name]);
-        file.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, FileUtils.PERMS_FILE);
+        var file = window.FileUtils.getFile("TmpD", [name]);
+        file.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, window.FileUtils.PERMS_FILE);
         return file;
     }
 
     function writeString(data, name, callback) {
         var file = createFile(name);
-        var ostream = FileUtils.openSafeFileOutputStream(file);
+        var ostream = window.FileUtils.openSafeFileOutputStream(file);
         var converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
         converter.charset = "UTF-8";
         var istream = converter.convertToInputStream(data);
 
-        NetUtil.asyncCopy(istream, ostream, function () {
+        window.NetUtil.asyncCopy(istream, ostream, function () {
             callback(file);
         });
     }
 
     function showException(ex) {
-        var stringBundle = document.getElementById("stringBundle");
         var promptService = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-        var title = stringBundle.getString("errorTitle");
-        var msg = stringBundle.getString("errorMessage") + ": " + ex;
+        var title = WL.messenger.i18n.getMessage("errorTitle");
+        var msg = WL.messenger.i18n.getMessage("errorMessage") + ": " + ex;
         promptService.alert(window, title, msg);
     }
 
     function addFileAttachment(file) {
         try {
-            var attachment = FileToAttachment(file);
-            AddAttachments([attachment]);
+            var attachment = window.FileToAttachment(file);
+            window.AddAttachments([attachment]);
             createdFiles.push(file);
         } catch (ex) {
             showException(ex);
@@ -125,9 +124,9 @@ var clipboardAttachment = (function () {
 
     var my = {
         canAttach: function () {
-            var clipboard = Services.clipboard;
+            var clipboard = window.Services.clipboard;
             var flavors = getOrderedFlavors();
-            var hasFlavors = clipboard.hasDataMatchingFlavors(flavors, flavors.length, clipboard.kGlobalClipboard);
+            var hasFlavors = clipboard.hasDataMatchingFlavors(flavors, clipboard.kGlobalClipboard);
             return hasFlavors;
         },
         attachFromClipboard: function () {
@@ -138,8 +137,8 @@ var clipboardAttachment = (function () {
                     if (data.flavor.indexOf("image/") === 0) {
                         var extension = data.flavor === "image/png" ? "png" : (data.flavor === "image/gif" ? "gif" : "jpg");
                         var file = createFile("image." + extension);
-                        var output = FileUtils.openSafeFileOutputStream(file);
-                        NetUtil.asyncCopy(data.data, output, function () {
+                        var output = window.FileUtils.openSafeFileOutputStream(file);
+                        window.NetUtil.asyncCopy(data.data, output, function () {
                             addFileAttachment(file);
                         });
                     } else if (data.flavor === "text/html") {
@@ -154,7 +153,7 @@ var clipboardAttachment = (function () {
                         attachment.url = lines[0];
                         if (lines.length > 1) attachment.name = lines[1];
                         if (lines.length > 2) attachment.size = lines[2];
-                        AddAttachments([attachment]);
+                        window.AddAttachments([attachment]);
                     } else if (data.flavor === "text/uri-list") {
                         var text = data.data.QueryInterface(Ci.nsISupportsString).data;
                         var lines = text.split('\n');
@@ -163,12 +162,12 @@ var clipboardAttachment = (function () {
                             var attachment = Cc["@mozilla.org/messengercompose/attachment;1"].createInstance(Ci.nsIMsgAttachment);
                             var fileUri = lines[i];
                             if (!fileUri.startsWith("file:///")) {
-                                fileUri = OS.Path.toFileURI(fileUri);
+                                fileUri = window.OS.Path.toFileURI(fileUri);
                             }
                             attachment.url = fileUri;
                             attachments.push(attachment);
                         }
-                        AddAttachments(attachments);
+                        window.AddAttachments(attachments);
                     } else if (data.flavor === "text/unicode" || data.flavor === "text/plain") {
                         var text = data.data.QueryInterface(Ci.nsISupportsString).data;
                         writeString(data.data, "document.txt", function (file) {
@@ -176,8 +175,8 @@ var clipboardAttachment = (function () {
                         });
                     } else if (data.flavor === "application/x-moz-file") {
                         var file = data.data.QueryInterface(Ci.nsIFile);
-                        var attachment = FileToAttachment(file);
-                        AddAttachments([attachment]);
+                        var attachment = window.FileToAttachment(file);
+                        window.AddAttachments([attachment]);
                     }
                 }
             } catch (ex) {
@@ -186,26 +185,22 @@ var clipboardAttachment = (function () {
         },
         updateCommand: function () {
             var canAttach = my.canAttach();
-            goSetCommandEnabled("attachFromClipboardCmd", canAttach);
+            window.goSetCommandEnabled("attachFromClipboardCmd", canAttach);
+        },
+        unload: function () {
+            for (i = 0; i < createdFiles.length; i++) {
+                createdFiles[i].remove(false);
+            }
+            createdFiles = [];
         }
     };
 
-    function unload() {
-        for (i = 0; i < createdFiles.length; i++) {
-            createdFiles[i].remove(false);
-        }
-        createdFiles = [];
-    }
+    var menuEditPopup = document.getElementById("menu_EditPopup");
+    menuEditPopup.addEventListener("popupshowing", my.updateCommand);
 
-    window.addEventListener("load", function () {
-        var menuEditPopup = document.getElementById("menu_EditPopup");
-        menuEditPopup.addEventListener("popupshowing", my.updateCommand);
-
-        var msgComposeWindow = document.getElementById("msgcomposeWindow");
-        msgComposeWindow.addEventListener("compose-window-close", unload);
-        msgComposeWindow.addEventListener("compose-window-unload", unload);
-    });
-    window.addEventListener("unload", unload);
+    var msgComposeWindow = document.getElementById("msgcomposeWindow");
+    msgComposeWindow.addEventListener("compose-window-close", my.unload);
+    msgComposeWindow.addEventListener("compose-window-unload", my.unload);
 
     return my;
 }());

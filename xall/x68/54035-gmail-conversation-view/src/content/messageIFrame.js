@@ -6,8 +6,8 @@
 
 /* exported MessageIFrame */
 let index = 0; // From https://searchfox.org/mozilla-central/rev/ec806131cb7bcd1c26c254d25cd5ab8a61b2aeb6/parser/nsCharsetSource.h
+// const kCharsetFromChannel = 11;
 
-const kCharsetFromChannel = 11;
 const kCharsetFromUserForced = 13;
 /**
  * This class exists because we need to manually manage the iframe - we don't
@@ -76,6 +76,14 @@ class MessageIFrame extends React.Component {
     }
 
     if (startLoad) {
+      const docShell = this.iframe.contentWindow.docShell;
+      docShell.appType = Ci.nsIDocShell.APP_TYPE_MAIL;
+      docShell.charset = "UTF-8";
+      const cv = docShell.contentViewer;
+      cv.hintCharacterSet = "UTF-8"; // This used to be kCharsetFromChannel = 11, however in 79/80 the code changed.
+      // This still needs to be forced, because bug 829543 isn't fixed yet.
+
+      cv.hintCharacterSetSource = kCharsetFromUserForced;
       this.loading = true;
       this.currentUrl = this.props.msgUri;
       this.props.dispatch({
@@ -101,17 +109,10 @@ class MessageIFrame extends React.Component {
     docShell.appType = Ci.nsIDocShell.APP_TYPE_MAIL;
     docShell.charset = "UTF-8";
     const cv = docShell.contentViewer;
-    cv.hintCharacterSet = "UTF-8"; // Support Thunderbird 68.
+    cv.hintCharacterSet = "UTF-8"; // This used to be kCharsetFromChannel = 11, however in 79/80 the code changed.
+    // This still needs to be forced, because bug 829543 isn't fixed yet.
 
-    if ("forceCharacterSet" in cv) {
-      cv.forceCharacterSet = "UTF-8";
-      cv.hintCharacterSetSource = kCharsetFromChannel;
-    } else {
-      // This used to be kCharsetFromChannel = 11, however in 79/80 the code changed.
-      // This still needs to be forced, because bug 829543 isn't fixed yet.
-      cv.hintCharacterSetSource = kCharsetFromUserForced;
-    }
-
+    cv.hintCharacterSetSource = kCharsetFromUserForced;
     this.registerListeners();
 
     if (this.props.expanded) {

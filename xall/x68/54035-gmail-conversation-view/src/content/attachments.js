@@ -70,55 +70,31 @@ class Attachment extends React.PureComponent {
 
   downloadAttachment() {
     this.props.dispatch(attachmentActions.downloadAttachment({
-      msgUri: this.props.msgUri,
-      attachment: {
-        contentType: this.props.contentType,
-        isExternal: this.props.isExternal,
-        name: this.props.name,
-        size: this.props.size,
-        url: this.props.url
-      }
+      id: this.props.id,
+      attachmentUrl: this.props.url
     }));
   }
 
   openAttachment() {
     this.props.dispatch(attachmentActions.openAttachment({
-      msgUri: this.props.msgUri,
-      attachment: {
-        contentType: this.props.contentType,
-        isExternal: this.props.isExternal,
-        name: this.props.name,
-        size: this.props.size,
-        url: this.props.url
-      }
+      id: this.props.id,
+      attachmentUrl: this.props.url
     }));
   }
 
   detachAttachment() {
     this.props.dispatch(attachmentActions.detachAttachment({
-      msgUri: this.props.msgUri,
-      shouldSave: true,
-      attachment: {
-        contentType: this.props.contentType,
-        isExternal: this.props.isExternal,
-        name: this.props.name,
-        size: this.props.size,
-        url: this.props.url
-      }
+      id: this.props.id,
+      attachmentUrl: this.props.url,
+      shouldSave: true
     }));
   }
 
   deleteAttachment() {
     this.props.dispatch(attachmentActions.detachAttachment({
-      msgUri: this.props.msgUri,
-      shouldSave: false,
-      attachment: {
-        contentType: this.props.contentType,
-        isExternal: this.props.isExternal,
-        name: this.props.name,
-        size: this.props.size,
-        url: this.props.url
-      }
+      id: this.props.id,
+      attachmentUrl: this.props.url,
+      shouldSave: false
     }));
   }
 
@@ -223,12 +199,11 @@ Attachment.propTypes = {
   contentType: PropTypes.string.isRequired,
   formattedSize: PropTypes.string.isRequired,
   hasBuiltInPdf: PropTypes.bool.isRequired,
-  isExternal: PropTypes.bool.isRequired,
   messageKey: PropTypes.number.isRequired,
-  msgUri: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 class Attachments extends React.PureComponent {
@@ -241,20 +216,13 @@ class Attachments extends React.PureComponent {
   showGalleryView() {
     this.props.dispatch(attachmentActions.showGalleryView({
       type: "SHOW_GALLERY_VIEW",
-      msgUri: this.props.msgUri
+      id: this.props.id
     }));
   }
 
   downloadAll() {
     this.props.dispatch(attachmentActions.downloadAll({
-      msgUri: this.props.msgUri,
-      attachmentDetails: this.props.attachments.map(attachment => ({
-        contentType: attachment.contentType,
-        isExternal: attachment.isExternal,
-        name: attachment.name,
-        size: attachment.size,
-        url: attachment.url
-      }))
+      id: this.props.id
     }));
   }
 
@@ -281,11 +249,10 @@ class Attachments extends React.PureComponent {
       dispatch: this.props.dispatch,
       key: attachment.anchor,
       contentType: attachment.contentType,
-      isExternal: attachment.isExternal,
       formattedSize: attachment.formattedSize,
       hasBuiltInPdf: this.props.hasBuiltInPdf,
       messageKey: this.props.messageKey,
-      msgUri: this.props.msgUri,
+      id: this.props.id,
       name: attachment.name,
       size: attachment.size,
       url: attachment.url
@@ -300,5 +267,5 @@ Attachments.propTypes = {
   attachmentsPlural: PropTypes.string.isRequired,
   hasBuiltInPdf: PropTypes.bool.isRequired,
   messageKey: PropTypes.number.isRequired,
-  msgUri: PropTypes.string.isRequired
+  id: PropTypes.number.isRequired
 };

@@ -401,7 +401,7 @@ var cardbookDates = {
 		// events 
 		var eventsChanged = false;
 		var myNoteArray = aCard.note.split("\n");
-		var myEvents = cardbookRepository.cardbookUtils.getCardEvents(myNoteArray, aCard.others);
+		var myEvents = cardbookRepository.cardbookUtils.getEventsFromCard(myNoteArray, aCard.others);
 		if (myEvents.result.length != 0) {
 			for (var i = 0; i < myEvents.result.length; i++) {
 				var myFieldValue = myEvents.result[i][0];

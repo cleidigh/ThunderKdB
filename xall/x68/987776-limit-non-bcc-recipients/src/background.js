@@ -1,6 +1,8 @@
 // Intercepts send and checks number of To + CC recipients against prefs
 // If limit exceeded consults user
 
+// v2.1.0 Process nested mailing lists
+
 extensionName = browser.i18n.getMessage("extensionName");
 
 // Retrieve the stored prefs, or initialise them
@@ -40,12 +42,12 @@ function onGot(item) {
 // Listen for about-to-be-sent messsage
   async function listenforsend(tabid, details) { //15
 
-    // console.log("Details: "+JSON.stringify(details))
+// console.log("Details: "+JSON.stringify(details))
 
 // Check recipients of a message
-    // console.log("To: "+ details['to'] )
-    // console.log("CC: "+  details['cc'] )
-    // console.log("BCC: "+  details['bcc'] )
+// console.log("To: "+ details['to'] )
+// console.log("CC: "+  details['cc'] )
+// console.log("BCC: "+  details['bcc'] )
 
 // Build an array of To and CC recipients and remove exact duplicates
     nonbccrecip = details['to'].concat(details['cc'])
@@ -60,29 +62,47 @@ function onGot(item) {
       };
       if ( !dup ) { nonbccweeded.push(element) };
     });
-    // console.log( "Weeded: " + nonbccweeded );
+// console.log( "Weeded: " + nonbccweeded );
 
 // Separate email addresses and lists (or posssible lists)
-
-// This regex defines any string with one @ followed by a string containing 1 or more dots and no spaces as an email address
-// Anything else might be a list
-// TODO Check how TB defines an email address
-    var re = /[^@]*@[^@\. ]*\.[^@ ]*$/;
 
     validaddresses = [];
     possiblelists = [];
 
     nonbccweeded.forEach(element => {
-      isaddress = re.test(element) ;
-      if (isaddress) {
+
+// A mailing list will be in the address-book format: xxxx <xxxx> where x is anything non-blank
+// Treat anything else as an email address 
+// None of this _validates_ an email address.
+      var re1 = /^[^ ].* <.*>$/ ;
+      if (!re1.test(element)) {
         validaddresses.push(element);
       } else {
-        possiblelists.push(element);
+
+// If it ends with <yyyy@yyyy> where y is not space or @ treat it as an email address
+// Note that it could still be a mailing list; if so we won't expand and count it
+// except for special case below
+        var re2 = /<[^@ ][^@ ]*@[^@ ][^@ ]*>$/ ;
+        isaddress = re2.test(element) ;
+        if (isaddress) {
+          validaddresses.push(element);
+// If the address ends with yyyy@zzzz where y is as above and z is not space or @ or . 
+// then treat it as a possible list as well. e.g friends@club
+// If there is such a list then we will overcount by one, which is better than undercounting.
+// A list with a period such as friends@sailing.club will not be expanded.
+          var re3 = /<[^@ ][^@ ]*@[^@ \.][^@ \.]*>$/ ;
+          if (re3.test(element)) {
+            possiblelists.push(element);
+          }
+        } else {
+          possiblelists.push(element);
+        }
       }
+
     });
 
-    // console.log("Valid email addresses: " + validaddresses);
-    // console.log("Possible lists: " + possiblelists);
+// console.log("Valid email addresses: " + validaddresses);
+// console.log("Possible lists: " + possiblelists);
 
     addresscount = validaddresses.length ;
 
@@ -93,41 +113,90 @@ function onGot(item) {
       if ( possiblelists.length == 0) { //7.5
         resolve(listcontactsarray);
       } else {
-        browser.addressBooks.list(true)
-        .then(function(books) {  //7
-          contactcount = 0 ;
-          books.forEach(book => {  //6
-            if (book.mailingLists) {  //5
-              // console.log("Mailing list node: " + JSON.stringify(book));
-              book.mailingLists.forEach(list => {  //4
-                // console.log("Mailing list name: " + list.name);
+
+// This section executed when a list has been found
+
+// This function find addresses and nested lists with possiblelists
+        function processLists(possiblelists) {        //7.4
+          listlistsarray = [];
+
+          return new Promise(resolve => { //7.2
+
+            browser.addressBooks.list(true)
+            .then(function(books) {  //7
+              books.forEach(book => {  //6
+                if (book.mailingLists) {  //5
+// console.log("Mailing list node: " + JSON.stringify(book));
+                  book.mailingLists.forEach(list => {  //4
+// console.log("Mailing list name: " + list.name);
 // Check each possible list for match on name
-                possiblelists.forEach(posslist => { //3
+                    possiblelists.forEach(posslist => { //3
 // List recipients are of the form "name <name>" - extract the name
-                  possname = posslist.replace(/ <.*>$/,"");
-//                  // console.log("Possible list name: " + possname );
-//                  // console.log("This list name:  " + list.name);
-//                  // console.log("This list contacts:  " + JSON.stringify(list.contacts) );
-
-                  if (possname == list.name) {  //2
+                      possname = posslist.replace(/ <.*>$/,"");
+// console.log("Possible list name: " + possname );
+// console.log("This list name:  " + list.name);
+// console.log("This list contacts:  " + JSON.stringify(list.contacts) );
+    
+                      if (possname == list.name) {  //2
 // Matches a list
-                    // console.log("Matched list: " + possname + " Contacts: " + list.contacts.length);
-                    // confirmedlists.push(possname);
-
+// console.log("Matched list: " + possname + " Contacts: " + list.contacts.length);
+    
 // Collect the contacts from the list for later weeding of duplicates
-//                    // console.log("Mailing list node: " + JSON.stringify(list));
-                    list.contacts.forEach(contact => { //1
-                      listcontactsarray.push(contact.properties.PrimaryEmail);
-                      // console.log("Added contact: " + contact.properties.PrimaryEmail );
-                    }) //1
-                  }; //2
-                }); //3
-              }); //4
-            }; //5
-            resolve(listcontactsarray);
-          }); //6
-        }); //7
-      }; //7.5
+// console.log("Mailing list node: " + JSON.stringify(list));
+                        list.contacts.forEach(contact => { //1
+  
+// A contact may be a mailing list
+// If it is in form yyy@yyy where y is not space or @ then treat it as an email address
+                          primaryEmail = contact.properties.PrimaryEmail ;
+                          var re4 = /[^@ ][^@ ]*@[^@ ][^@ ]*/ ;
+                          isaddress = re4.test(primaryEmail) ;
+                          if (isaddress) {
+                            listcontactsarray.push(primaryEmail);
+// console.log("Added contact: " + primaryEmail );
+                          } else {
+                            listlistsarray.push(primaryEmail);
+// console.log("Added list-list " + primaryEmail );
+                          }
+  
+                        }) //1
+                      }; //2
+                    }); //3
+                  }); //4
+                }; //5
+              }); //6
+
+// console.log("listlistsarray: " + listlistsarray );
+// console.log("listcontactsarray: " + listcontactsarray );
+              resolve(listlistsarray);
+
+            }); //7
+          }); //7.2
+        }; //7.4
+
+// async function to call  processLists and await result
+        async function asyncCall() {
+// Loop until processLists returns empty listlists = any nested lists expanded
+          continueLoop = true ;
+          while (continueLoop){   
+
+// console.log('calling processLists');
+            const listlists = await processLists(possiblelists) ;
+// console.log("listlists 2: " + listlists);
+// console.log("listcontactsarray 2: " + listcontactsarray );       
+            if (listlists.length == 0) {
+              continueLoop = false ;
+            } else {
+               possiblelists = listlists ;
+            }
+          }
+// console.log("listcontactsarray 3: " + listcontactsarray ); 
+          resolve(listcontactsarray);
+        }
+
+        asyncCall();
+
+// End of list processing section
+      }; //7.5   
     }); //8
 
 // Wait for all that
@@ -137,7 +206,7 @@ function onGot(item) {
 // Note: Could count all the contacts in one go.
 // But might report counts separately in future.
 
-    // console.log("List contacts: " + listcontacts );
+// console.log("List contacts: " + listcontacts );
     listcontactsweeded = [] ;
     listcontacts.forEach(element => {
       dup = false;
@@ -152,7 +221,7 @@ function onGot(item) {
       for (let i = 0; i < validaddresses.length; i++) {
         emailpart = validaddresses[i].replace(/^.*</, "") ;
         emailpart = emailpart.replace(/>.*$/, "") ;
-        // console.log("Email part: " + emailpart ) ;
+// console.log("Email part: " + emailpart ) ;
         if (element == emailpart) {
           dup = true;
           break;
@@ -160,13 +229,13 @@ function onGot(item) {
       };
       if ( !dup ) { listcontactsweeded.push(element) };
     });
-    // console.log( "Weeded list contacts: " + listcontactsweeded );
+// console.log( "Weeded list contacts: " + listcontactsweeded );
 
 // count the number of non-duplicates
     listcount = listcontactsweeded.length ;
 
- // Check if non-BCC count exceeds pref
-    // console.log("Addresses: " + addresscount + "  Lists: " + listcount + "  Limit: " + prefs['maxNonBCC']) ;
+// Check if non-BCC count exceeds pref
+// console.log("Addresses: " + addresscount + "  Lists: " + listcount + "  Limit: " + prefs['maxNonBCC']) ;
     nonbcc =  addresscount + listcount ;
     if ( nonbcc > prefs['maxNonBCC']) {
 
@@ -190,8 +259,8 @@ function onGot(item) {
 // Wait for response from popup
       let response = new Promise((resolve) => {
           async function gotmessage(msg, sender) {
-            // console.log("Message: "+JSON.stringify(msg));
-            // console.log("Sender: " +JSON.stringify(sender));
+// console.log("Message: "+JSON.stringify(msg));
+// console.log("Sender: " +JSON.stringify(sender));
 // Only resolve responses from the dialogue window which will have frameID zero
             if (sender.frameId == 0 ) {
               browser.windows.remove(wid);
@@ -206,7 +275,7 @@ function onGot(item) {
 
       msgobj = await response ;
       mess = msgobj['msg']
-      // console.log("Response: "+mess) ;
+// console.log("Response: "+mess) ;
 
 // Action according to response
 
@@ -229,7 +298,7 @@ function onGot(item) {
       returnobj['details']['to'] = []
       returnobj['details']['cc'] = []
 
-      // console.log("Returned compose object:" + JSON.stringify(returnobj))
+// console.log("Returned compose object:" + JSON.stringify(returnobj))
 
 //TESTING - Change to true to stop sending
       returnobj['cancel'] = false ;
@@ -252,13 +321,13 @@ function onGot(item) {
 
 // Listener for changed prefs - 2nd listener for messages
   function gotmessage2(msg, sender) {
-    // console.log("Message2: "+JSON.stringify(msg));
-    // console.log("Sender2: " +JSON.stringify(sender));
+// console.log("Message2: "+JSON.stringify(msg));
+// console.log("Sender2: " +JSON.stringify(sender));
 // Only resolve responses from the prefs window which will have frameID non-zero
     if (sender.frameId != 0 ) {
       if (msg.maxNonBCC !== "undefined"){
         prefs = msg ;
-        // console.log("Limit non-BCC recipients: limit changed to: " + prefs['maxNonBCC'])
+// console.log("Limit non-BCC recipients: limit changed to: " + prefs['maxNonBCC'])
       }
     }
   }
@@ -269,5 +338,5 @@ function onGot(item) {
 
 // Error getting prefs
 function onError(error) {
-  // console.log("Limit non-BCC recipients: "+ error)
+  console.log("Limit non-BCC recipients: "+ error)
 }

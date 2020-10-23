@@ -1,0 +1,290 @@
+
+body {
+    font-family: sans-serif;
+}
+
+.logo {
+    content: "";
+    background-image: url(../img/icon96.png);
+    background-size: 100% 100%;
+    position: absolute;
+    max-width: 96px;
+    max-height: 96px;
+    height: 4vw;
+    width: 4vw;
+    float: left;
+    top: calc(1.5 * 4vw);
+}
+
+/* The alert message box */
+.alert {
+    padding: 12px;
+    color: white;
+    margin-top: 6%;
+    margin-left: 9%;
+    position: fixed;
+    top: 0%;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.notvisible {
+    display: none;
+    opacity: 0;
+}
+
+.visible {
+    display: block;
+    opacity: 1;
+}
+
+.visible.success {
+    background-color: #4CAF50;
+}
+
+.visible.info {
+    background-color: #2196F3;
+}
+
+.visible.warning {
+    background-color: #ff9800;
+}
+
+.visible.error {
+    background-color: #f44336;
+}
+
+/* The close button */
+.closebtn {
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+.mainDiv {
+    margin-bottom: 5%;
+    margin-top: 5%;
+    border-color: #0c486b;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-width: 2px;
+}
+
+.footer {
+    background: #1e64a3 url(/img/bg-footer.png) repeat-x 0 0;
+    height: 80px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.description {
+    font: 12px/1.0 Arial, sans-serif;
+    text-align: justify;
+    display: inline-block;
+    line-height: normal;
+    color: #011a27;
+}
+
+.label {
+    font-weight: bold;
+    width: 110px;
+    font: bold 12px/1.5 Arial, sans-serif;
+    font-weight: bold;
+    color: black;
+    text-align: right;
+    display: inline-block;
+}
+
+.button {
+    background-color: rgb(16, 81, 115);
+    color: rgb(255, 255, 255);
+    font-weight: normal;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    text-align: center;
+    padding: 7px;
+    display: inline-block;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: 200;
+    letter-spacing: 1px;
+    line-height: normal;
+    border-radius: 2px;
+    margin-left: 33%;
+    margin-right: 33%;
+    cursor: pointer;
+    width: 33%;
+    min-width: 6em;
+}
+
+.button:hover {
+    color: rgb(16, 81, 115);
+    background-color: rgb(255, 255, 255);
+}
+
+.ReportButton {
+    width: 109px;
+    height: 33px;
+    border: none;
+    text-transform: uppercase;
+    font: bold 12px/1.0 Arial, sans-serif;
+    background: greenyellow;
+    padding: 3px 3px 3px;
+    font-weight: bold;
+    color: green;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+.onoffswitch {
+    position: relative;
+    width: 69px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    display: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #999999;
+    border-radius: 9px;
+}
+
+.onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 18px;
+    padding: 0;
+    line-height: 18px;
+    font-size: 13px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: attr(yes);
+    padding-left: 9px;
+    background-color: #04486c;
+    color: #FFFFFF;
+}
+
+.onoffswitch-inner:after {
+    content: attr(no);
+    padding-right: 9px;
+    background-color: #EEEEEE;
+    color: #999999;
+    text-align: right;
+}
+
+.onoffswitch-switch {
+    display: block;
+    width: 22px;
+    margin: -2px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 47px;
+    border: 2px solid #999999;
+    border-radius: 9px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
+
+#frequencyRange {
+    position: relative;
+    top: 2px;
+}
+
+#frequencyRange:after,
+#frequencyRange:before {
+    position: absolute;
+    top: 1em;
+    color: #aaa;
+}
+
+#frequencyRange:before {
+    left: 0em;
+    content: attr(min);
+}
+
+#frequencyRange:after {
+    right: 0em;
+    content: attr(max);
+}
+
+.optionsTitle {
+	text-align:center;
+	font-size: 2em;
+	font-weight: bold;
+    color: #0b486b;
+}
+
+.optionsSubTitle {
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #467691;
+}
+
+.optionsTable {
+    margin-left: 13%;
+    margin-right: 13%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 74%;
+}
+
+.optionsTable>tr {
+	margin-bottom: 2em;
+}
+
+.optionsTable>tr {
+	margin-bottom: 2em;
+}
+
+.filler {
+	padding-bottom:2em;
+}
+

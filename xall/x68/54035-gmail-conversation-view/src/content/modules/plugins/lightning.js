@@ -16,15 +16,9 @@ XPCOMUtils.defineLazyModuleGetters(this, {
 let hasLightning = false;
 let cal;
 try {
-  // Thunderbird 68
-  cal = ChromeUtils.import("resource://calendar/modules/calUtils.jsm").cal;
+  cal = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm").cal;
   hasLightning = true;
-} catch (e) {
-  try {
-    cal = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm").cal;
-    hasLightning = true;
-  } catch (ex) {}
-}
+} catch (ex) {}
 
 // This is a version of setupOptions suitable for Conversations
 // see http://mxr.mozilla.org/comm-central/source/calendar/lightning/content/imip-bar.js#186
@@ -122,10 +116,10 @@ function imipOptions(msgWindow, msg, itipItem, rc, actionFunc, foundItems) {
 }
 
 let lightningHook = {
-  onMessageStreamed(msgHdr, unused, msgWindow, msg) {
+  onMessageStreamed(msgHdr, unused, mainWindow, msg) {
     let itipItem = null;
     try {
-      let sinkProps = msgWindow.msgHeaderSink.properties;
+      let sinkProps = mainWindow.msgWindow.msgHeaderSink.properties;
       itipItem = sinkProps.getPropertyAsInterface("itipItem", Ci.calIItipItem);
     } catch (e) {}
 
@@ -147,7 +141,7 @@ let lightningHook = {
 
       cal.itip.processItipItem(
         itipItem,
-        imipOptions.bind(null, msgWindow, msg)
+        imipOptions.bind(null, mainWindow.msgWindow, msg)
       );
     }
   },

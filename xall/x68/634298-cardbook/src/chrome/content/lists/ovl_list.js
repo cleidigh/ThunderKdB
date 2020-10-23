@@ -1,4 +1,6 @@
 if ("undefined" == typeof(ovl_list)) {
+	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 	var ovl_list = {
 		expandRecipientsFromCardBook: function () {
 			var myFields = window.gMsgCompose.compFields;

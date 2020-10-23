@@ -2185,7 +2185,7 @@ var cardbookSynchronization = {
 	
 	loadCards: function (aComplexSearchDirPrefId) {
 		if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId]) {
-			for (j in cardbookRepository.cardbookCards) {
+			for (let j in cardbookRepository.cardbookCards) {
 				let myCard = cardbookRepository.cardbookCards[j];
 				if (cardbookRepository.isMyCardFound(myCard, aComplexSearchDirPrefId)) {
 					cardbookRepository.addCardToDisplayAndCat(myCard, aComplexSearchDirPrefId);

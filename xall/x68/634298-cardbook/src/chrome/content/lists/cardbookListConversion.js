@@ -62,44 +62,17 @@ if ("undefined" == typeof(cardbookListConversion)) {
 					this.emailResult.push(fullAddress);
 				} else {
 					var found = false;
-					for (j in cardbookRepository.cardbookCards) {
+					for (let j in cardbookRepository.cardbookCards) {
 						var myCard = cardbookRepository.cardbookCards[j];
 						if (myCard.isAList && myCard.fn == address.name) {
 							found = true;
 							this.recursiveList.push(address.name);
-							if (myCard.version == "4.0") {
-								for (var k = 0; k < myCard.member.length; k++) {
-									if (myCard.member[k].startsWith("mailto:")) {
-										var email = myCard.member[k].replace("mailto:", "");
-										this.emailResult.push([email.toLowerCase()]);
-									} else {
-										var uid = myCard.member[k].replace("urn:uuid:", "");
-										if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+uid]) {
-											var myTargetCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+uid];
-											this._getEmails(myTargetCard, useOnlyEmail);
-										}
-									}
-								}
-							} else if (myCard.version == "3.0") {
-								for (var k = 0; k < myCard.others.length; k++) {
-									var localDelim1 = myCard.others[k].indexOf(":",0);
-									if (localDelim1 >= 0) {
-										var header = myCard.others[k].substr(0,localDelim1);
-										var trailer = myCard.others[k].substr(localDelim1+1,myCard.others[k].length);
-										if (header == memberCustom) {
-											if (trailer.startsWith("mailto:")) {
-												var email = trailer.replace("mailto:", "");
-												this.emailResult.push([email.toLowerCase()]);
-											} else {
-												var uid = trailer.replace("urn:uuid:", "");
-												if (cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+uid]) {
-													var myTargetCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+uid];
-													this._getEmails(myTargetCard, useOnlyEmail);
-												}
-											}
-										}
-									}
-								}
+							let myMembers = cardbookRepository.cardbookUtils.getMembersFromCard(myCard);
+							for (let email of myMembers.mails) {
+								this.emailResult.push([email.toLowerCase()]);
+							}
+							for (let card of myMembers.uids) {
+								this._getEmails(card, useOnlyEmail);
 							}
 							break;
 						}

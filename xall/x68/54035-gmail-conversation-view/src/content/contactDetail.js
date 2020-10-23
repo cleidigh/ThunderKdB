@@ -35,10 +35,9 @@ class _ContactDetail extends React.PureComponent {
   createFilter(event) {
     event.stopPropagation();
     event.preventDefault();
-    this.props.dispatch({
-      type: "CREATE_FILTER",
+    this.props.dispatch(summaryActions.createFilter({
       email: this.props.realEmail
-    });
+    }));
   }
 
   copyEmail(event) {

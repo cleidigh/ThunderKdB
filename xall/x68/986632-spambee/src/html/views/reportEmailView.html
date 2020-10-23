@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script defer src="/js/popup.js"></script>
+    <link href="/css/sidebar.css" rel="stylesheet" type="text/css">
+    <link href="/css/sidebarViews.css" rel="stylesheet" type="text/css">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta content="width=device-width" name="viewport">
+    <title></title>
+</head>
+<body style="width:350px; max-width:350px;" class="sidebarBody-Grey">
+<table class="SPsection SPsectionLogo" id="SigSpamsectionLogo">
+    <tbody>
+    <tr>
+        <td rowspan="2" style="max-width:9vmin;width: 15%;">
+            <div class="SPlogo"></div>
+        </td>
+        <td rowspan="2">
+            <div class="SPlogoTitle" data-verifromlocalize="contentScript.sidebar.title">
+                Extension de signalement et de protection contre le Phishing
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table class="SPsection SPsectionOK">
+    <tbody>
+    <tr>
+        <td>
+            <div class="SPsectionOK" data-verifromlocalize="contentScript.sidebar.emailreport" id="calltoaction"
+                 style="font-weight: bold;text-align: center;">Signalement d'un e-mail
+            </div>
+            <div class="SPsectionOK" data-verifromlocalize="contentScript.sidebar.calltoactionsingle" id="calltoaction">
+                Si vous souhaitez signaler l'e-mail ci-contre en tant que spam ou une tentative de fraude, cliquez sur
+                le bouton ci-dessous
+            </div>
+            <div><span class="SPsectionOK" data-verifromlocalize="contentScript.sidebar.emailfrom" id="calltoaction"
+                       style="font-weight: bold;">De:</span>
+                <p class="SPsectionOK" id="fromvalue"
+                   style="margin:0px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Lorem ipsum dolor
+                    sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div>
+                <span class="SPsectionOK" data-verifromlocalize="contentScript.sidebar.emailsubject" id="calltoaction"
+                      style="font-weight: bold;">Objet:</span>
+                <p class="SPsectionOK" id="emailsubject"
+                   style="margin:0px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">Lorem ipsum dolor
+                    sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <input class="SPsectionOK SPsectionInputs" id="dataprivacy" type="checkbox">
+            <label data-verifromlocalize="contentScript.sidebar.dataprivacy"
+                   for="dataprivacy"
+                   id="dataprivacylabel"
+                   style="font-weight: bold;">J'accepte
+                que SpamBee conserve une copie des données (anonymisées) issues des e-mails signalés pour une
+                investigation ultérieure. Sinon, l'e-mail signalé sera supprimé après analyse.
+            </label>
+            <br>
+            <input
+                    class="SPsectionOK SPsectionInputs"
+                    id="feedback"
+                    type="checkbox">
+            <label
+                    data-verifromlocalize="contentScript.sidebar.feedback" for="feedback" id="feedbacklabel"
+                    style="font-weight: bold;">Je veux être notifié du résultat après l'analyse de mon
+                signalement</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="SPOKBox" data-verifromlocalize="contentScript.sidebar.buttonlabel" id="SigSpamOKBox">SIGNALER
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="SPoriginalDesc">
+                <span data-verifromlocalize="contentScript.sidebar.disclosureSingle">Le contenu des emails signalés va être analysé afin de déployer si nécessaire les contre-mesures adaptées.</span>
+            </p>
+            <p class="SPoriginalDesc">
+                <span data-verifromlocalize="contentScript.sidebar.zoom" id="zoomOriginalEmail">Cliquer ici pour voir le détail des informations transmises à SPAMBEE dans ce signalement.</span>
+            </p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<html>

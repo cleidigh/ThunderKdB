@@ -17,7 +17,6 @@ XPCOMUtils.defineLazyModuleGetters(this, {
   MailServices: "resource:///modules/MailServices.jsm",
   MessageFromDbHdr: "chrome://conversations/content/modules/message.js",
   MessageFromGloda: "chrome://conversations/content/modules/message.js",
-  MessageUtils: "chrome://conversations/content/modules/message.js",
   msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
   msgUriToMsgHdr: "chrome://conversations/content/modules/misc.js",
   Prefs: "chrome://conversations/content/modules/prefs.js",
@@ -46,8 +45,6 @@ XPCOMUtils.defineLazyGetter(this, "Gloda", () => {
 
 const kMsgDbHdr = 0;
 const kMsgGloda = 1;
-
-const kHeadersShowAll = 2;
 
 const nsMsgViewIndex_None = 0xffffffff;
 
@@ -691,21 +688,31 @@ Conversation.prototype = {
       let oldMsg = i > 0 ? this.messages[i - 1].message : null;
       msg.updateTmplData(oldMsg);
     }
-    const shouldShowHeaders =
-      Services.prefs.getIntPref("mail.show_headers") == kHeadersShowAll;
 
-    const reactMsgData = [];
+    let reactMsgData = [];
+    let skippedMessages = 0;
     for (let [i, m] of this.messages.entries()) {
-      const msgData = await m.message.toReactData();
+      let msgData;
+      try {
+        msgData = await m.message.toReactData();
+      } catch (ex) {
+        if (ex.message != "Message no longer exists") {
+          throw ex;
+        }
+        // Sometimes the message might have gone away before we get to render
+        // it, or the API is confused and is trying to give us a dead message.
+        reactMsgData.push(null);
+        skippedMessages++;
+        continue;
+      }
       // inView indicates if the message is currently in the message list
       // view or not. If it isn't we don't show the folder name.
       msgData.inView = this.viewWrapper.isInView(m);
-      msgData.initialPosition = i;
-      // This is a new display of a conversation, so ensure we don't display
-      // the detailed view of the header unless the user wants us to.
-      msgData.detailsShowing = shouldShowHeaders;
+      msgData.initialPosition = i - skippedMessages;
       reactMsgData.push(msgData);
     }
+    this.messages = this.messages.filter((m, i) => !!reactMsgData[i]);
+    reactMsgData = reactMsgData.filter((m) => m);
 
     // Move on to the next step
     this._expandAndScroll(this.messages, reactMsgData);
@@ -722,36 +729,27 @@ Conversation.prototype = {
       return;
     }
 
-    // If we're showing message hdr details, then get them here so we're ready
-    // when we first display.
-    if (shouldShowHeaders) {
-      for (const msg of reactMsgData) {
-        Services.tm.dispatchToMainThread(() => {
-          MessageUtils.getMsgHdrDetails(this._htmlPane, msg.msgUri);
-        });
-      }
-    }
-
-    this.dispatch({
-      type: "REPLACE_CONVERSATION_DETAILS",
-      summary: {
-        conversation: { getMessage: (uri) => this.getMessage(uri) },
-        subject: this.messages[this.messages.length - 1].message.subject,
-        loading: false,
-        prefs: {
-          hideSigs: Prefs.hide_sigs,
-          hideQuoteLength: Prefs.hide_quote_length,
-          tweakBodies: Prefs.tweak_bodies,
-          tweakChrome: Prefs.tweak_chrome,
+    this.dispatch(
+      this._htmlPane.summaryActions.replaceConversation({
+        summary: {
+          conversation: { getMessage: (uri) => this.getMessage(uri) },
+          subject: this.messages[this.messages.length - 1].message.subject,
+          loading: false,
+          prefs: {
+            hideSigs: Prefs.hide_sigs,
+            hideQuoteLength: Prefs.hide_quote_length,
+            tweakBodies: Prefs.tweak_bodies,
+            tweakChrome: Prefs.tweak_chrome,
+          },
+          autoMarkAsRead:
+            Services.prefs.getBoolPref("mailnews.mark_message_read.auto") &&
+            !Services.prefs.getBoolPref("mailnews.mark_message_read.delay"),
         },
-        autoMarkAsRead:
-          Services.prefs.getBoolPref("mailnews.mark_message_read.auto") &&
-          !Services.prefs.getBoolPref("mailnews.mark_message_read.delay"),
-      },
-      messages: {
-        msgData: reactMsgData,
-      },
-    });
+        messages: {
+          msgData: reactMsgData,
+        },
+      })
+    );
     // Invalidate the composition session so that compose-ui.js can setup the
     //  fields next time.
     this._htmlPane.gComposeSession = null;

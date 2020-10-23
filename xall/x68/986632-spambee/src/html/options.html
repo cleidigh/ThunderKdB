@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <link href="/css/options.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="/logo/96x96.png"/>
+    <title  data-VerifromLocalize="options.title">SPAMBEE - Options</title>
+</head>
+<body>
+<div class='mainDiv'>
+    <div class='optionsPageHeader'>
+        <div class='optionsTitle' data-VerifromLocalize="options.title">Options</div>
+        <!--<div class='optionsSubTitle' data-verifromlocalize="options.title2"></div>-->
+        <div class='logo'></div>
+    </div>
+    <table class="optionsTable">
+    	<tr>
+    		<th class="filler" colspan=2>
+    			<span class="optionsSubTitle" data-VerifromLocalize="options.dataprivacy.title">Protection de vos données personnelles</span>
+    		</th>
+    	</tr>
+    	<tr>
+    		<td colspan=2>
+    			<span class="description"  data-VerifromLocalize="options.dataprivacy.disclaimer">
+    			Les signalements sont strictement anonymes et ne requièrent aucune inscription ou adresse email. L'adresse email des destinataires des emails signalés sont supprimés dans les signalements transmis.<BR>
+    			Sauf volonté de votre part, les emails signalés ne sont conservés que le temps nécessaire pour leur analyse.<BR>
+    			Vous pouvez toutefois autoriser Bee Secure à conserver les données transmises pour une période de 3 mois afin que les emails puissent être analysés de manière plus approfondie par un analyse lorsque cela s'avère nécessaire.
+    			</span>
+                <div>
+                    <p style="text-align:right;"><a href="https://services.verifrom.com/spambee/privacypolicy/SPAMBEE-PrivacyPolicy.html" data-VerifromLocalize="options.privacypolicy" target="_spambee">Politique de Confidentialité</a></p>
+                </div>
+    		</td>
+        <tr>
+            <td style="width: 75px;">
+                <div class="onoffswitch">
+                    <input type="checkbox" name="acceptdataconservation" extensionOption="privacy" class="onoffswitch-checkbox" id="acceptdataconservation" checked>
+                    <label class="onoffswitch-label" for="acceptdataconservation">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+            <td>
+                <span class="description"><strong data-VerifromLocalize="options.dataprivacy.label">J'accepte que Bee Secure conserve une copie des données (anonymisées) issues des e-mails signalés pour une investigation ultérieure. Sinon, l'e-mail signalé sera supprimé après analyse.</strong></span>
+            </td>
+        </tr>
+    </table>
+    <table class="optionsTable">
+    	<tr>
+    		<th class="filler" colspan=2>
+   			    <span class="optionsSubTitle" data-VerifromLocalize="options.preferences.title">Vos préférences pour les signalements</span>
+    		</th>
+    	</tr>
+    	        <tr>
+            <td style="width: 75px;">
+                <div class="onoffswitch">
+                    <input type="checkbox" extensionOption="FEEDBACK" name="notifications" class="onoffswitch-checkbox" id="notifications" checked>
+                    <label class="onoffswitch-label" for="notifications">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+            <td >
+                <span class="description"><strong data-VerifromLocalize="options.notifications.label">pour être notifié du résultat après l'analyse de mon signalement</strong></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"  class="filler">
+                <span class='description' data-VerifromLocalize="options.notifications.description">En activant cette option, vous serez averti dès que l'analyse de l'email signalé sera achevée afin que vous puissiez consulter le résultat de celle-ci.</span>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <div class="onoffswitch">
+                    <input type="checkbox" extensionOption="oneClickOption" name="onoffswitch" class="onoffswitch-checkbox" id="oneClickOption" checked>
+                    <label class="onoffswitch-label" for="oneClickOption">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+            <td >
+                <span class="description"><strong data-VerifromLocalize="options.oneclick.label">pour procéder aux signalements en un seul clic</strong></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"  class="filler">
+                <span class='description' data-VerifromLocalize="options.oneclickDescription.label">En cochant cette option vous n'aurez plus à confirmer les signalements après un clic sur le bouton Bee Secure dans la barre d'outils du navigateur.</span>
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <div class="onoffswitch">
+                    <input type="checkbox" extensionOption="URLDETECT" name="onoffswitch" class="onoffswitch-checkbox" id="URLDETECT" checked>
+                    <label class="onoffswitch-label" for="URLDETECT">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+            <td >
+                <span class="description"><strong data-VerifromLocalize="options.URLDETECT.label">pour activer la détection des URLs frauduleuses (hors webmails) </strong></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="filler">
+                <span class='description' data-VerifromLocalize="options.URLDETECT.description">En désactivant cette fonctionnalité (option ci-dessous cochée), vous ne serez plus alerté lorsque votre navigateur ouvre une page présentant un risque de fraude. Vous pourrez réactiver cette option en cochant la fonctionnalité à nouveau.</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="onoffswitch">
+                    <input name="movereport" class="onoffswitch-checkbox" id="movereport" extensionOption="movereport" checked type="checkbox">
+                    <label class="onoffswitch-label" for="movereport">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+            <td>
+                <span class='description'><strong data-VerifromLocalize="options.movereport.title">pour archiver les e-mails signalés</strong></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <span class='description' data-VerifromLocalize="options.movereport.description">Les e-mails signalés seront automatiquement déplacés dans le dossier des courriers indésirables (spam), ou supprimés, en fonction des paramètres de sécurité de Thunderbird. Si cette option n'est pas sélectionnée les e-mails ne seront pas déplacés ou supprimés lors d'un signalement à Signal Spam, quels que soient les paramètres choisis dans les préférences de Thunderbird.</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="onoffswitch">
+                    <input name="markread" class="onoffswitch-checkbox" id="markread" extensionOption="markread" checked type="checkbox">
+                    <label class="onoffswitch-label" for="markread">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+            <td>
+                <span class='description'><strong data-VerifromLocalize="options.markread.title">pour marquer comme lu les e-mails signalés</strong></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <span class='description' data-VerifromLocalize="options.markread.description">Les e-mails signalés seront automatiquement marqués comme lus.</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="onoffswitch">
+                    <input name="markspam" class="onoffswitch-checkbox" id="markspam" extensionOption="markspam" checked type="checkbox">
+                    <label class="onoffswitch-label" for="markspam">
+                        <span class="onoffswitch-inner" yes="Oui" no="Non"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </td>
+            <td>
+                <span class='description'><strong data-VerifromLocalize="options.markspam.title">pour marquer les e-mails signalés comme SPAM</strong></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>
+                    <span class='description' data-VerifromLocalize="options.markspam.description">Les e-mails signalés seront automatiquement marqués comme SPAM.</span>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <button class='button' id="save" data-VerifromLocalize="options.save">Enregistrer</button>
+    <BR>
+    <table style="width:100%;">
+        <tr>
+            <td style="width: 50%; text-align:left;">
+                <a href="" id="reportslist" class='description' data-VerifromLocalize="reports.title">Vos précédents signalements à SPAMBEE.</a>
+            </td>
+            <td style="width: 50%; text-align:right;">
+                <a href="" id="moreinfo" class='description' data-VerifromLocalize="update.more">Plus d'information</a>
+            </td>
+        </tr>
+    </table>
+    <div class="alert notvisible" id="statusBox">
+        <span class="closebtn">&times;</span>
+        <strong id="statusMessage">Status message</strong>
+    </div>
+    <script type="text/javascript" src="/specific/options.js" defer></script>
+</div>
+</body>
+</html>

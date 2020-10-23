@@ -1,231 +1,222 @@
-var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-var { Shrunked } = ChromeUtils.import('resource://shrunked/Shrunked.jsm');
-var { ShrunkedImage } = ChromeUtils.import('resource://shrunked/ShrunkedImage.jsm');
+/* eslint-env webextensions */
 
-var returnValues = window.arguments[0];
-var imageURLs = window.arguments[1];
-var imageNames = window.arguments[2] || [];
-var imageData = [];
-var imageIndex = 0;
+/* globals rg_size, r_noresize, r_small, r_medium, r_large, r_custom, l_width, tb_width, l_height, tb_height, l_measure
+   b_previewarrows, b_previous, b_next, l_previewarrows, i_previewthumb, l_previewfilename, l_previeworiginalsize,
+   l_previeworiginalfilesize, l_previewresized, l_previewresizedfilesize, cb_savedefault,
+   b_ok, b_cancel */
+
+var params = new URL(location.href).searchParams;
+var tabId = parseInt(params.get("tabId"), 10);
+var count = parseInt(params.get("count"), 10);
+
+var images = [];
+var currentIndex = 0;
 var maxWidth, maxHeight;
 
-/* globals rg_size, r_noresize, r_custom, l_width, tb_width, l_height, tb_height, l_measure
-   b_previewarrows, l_previewarrows, i_previewthumb, l_previewfilename, l_previeworiginalsize,
-   l_previeworiginalfilesize, l_previewresized, l_previewresizedfilesize, cb_savedefault */
-for (let element of document.querySelectorAll('[id]')) {
-	window[element.id] = element;
+for (let element of document.querySelectorAll("[id]")) {
+  window[element.id] = element;
 }
+for (let element of document.querySelectorAll("[data-l10n-content]")) {
+  element.textContent = browser.i18n.getMessage(element.getAttribute("data-l10n-content"));
+}
+for (let element of document.querySelectorAll("[data-l10n-title]")) {
+  element.title = browser.i18n.getMessage(element.getAttribute("data-l10n-title"));
+}
+
+browser.runtime.getPlatformInfo().then(({ os }) => {
+  if (os != "win") {
+    b_ok.style.order = 1;
+  }
+});
 
 /* exported load */
-function load() {
-	let width = l_measure.getBoundingClientRect().right;
-	let element = l_measure;
-	do {
-		let style = getComputedStyle(element);
-		width += parseInt(style.paddingRight, 10);
-		width += parseInt(style.borderRightWidth, 10);
-		width += parseInt(style.marginRight, 10);
-		element = element.parentNode;
-	} while (element && element != document);
-	document.documentElement.style.minWidth = `${width}px`;
+addEventListener("load", async () => {
+  let prefs = await browser.storage.local.get({
+    "default.maxWidth": 500,
+    "default.maxHeight": 500,
+    "default.saveDefault": true,
+  });
 
-	maxWidth = Shrunked.prefs.getIntPref('default.maxWidth');
-	maxHeight = Shrunked.prefs.getIntPref('default.maxHeight');
+  maxWidth = prefs["default.maxWidth"];
+  maxHeight = prefs["default.maxHeight"];
 
-	if (maxWidth == -1 && maxHeight == -1) {
-		rg_size.selectedIndex = 0;
-	} else if (maxWidth == 500 && maxHeight == 500) {
-		rg_size.selectedIndex = 1;
-	} else if (maxWidth == 800 && maxHeight == 800) {
-		rg_size.selectedIndex = 2;
-	} else if (maxWidth == 1200 && maxHeight == 1200) {
-		rg_size.selectedIndex = 3;
-	} else {
-		rg_size.selectedIndex = 4;
-		tb_width.value = maxWidth;
-		tb_height.value = maxHeight;
-	}
+  if (maxWidth == -1 && maxHeight == -1) {
+    r_noresize.checked = true;
+  } else if (maxWidth == 500 && maxHeight == 500) {
+    r_small.checked = true;
+  } else if (maxWidth == 800 && maxHeight == 800) {
+    r_medium.checked = true;
+  } else if (maxWidth == 1200 && maxHeight == 1200) {
+    r_large.checked = true;
+  } else {
+    r_custom.checked = true;
+    tb_width.value = maxWidth;
+    tb_height.value = maxHeight;
+  }
 
-	cb_savedefault.checked = Shrunked.prefs.getBoolPref('default.saveDefault');
+  cb_savedefault.checked = prefs["default.saveDefault"];
 
-	if (!returnValues.isAttachment) {
-		r_noresize.collapsed = true;
-		if (r_noresize.selected) {
-			rg_size.selectedIndex = 1;
-		}
-	}
+  setSize();
+  loadImage(0);
+});
 
-	setSize();
+r_noresize.addEventListener("change", setSize);
+r_small.addEventListener("change", setSize);
+r_medium.addEventListener("change", setSize);
+r_large.addEventListener("change", setSize);
+r_custom.addEventListener("change", setSize);
+tb_height.addEventListener("change", setSize);
+tb_width.addEventListener("change", setSize);
 
-	i_previewthumb.src = imageURLs[0];
-	if (imageURLs.length < 2) {
-		b_previewarrows.setAttribute('hidden', 'true');
-	} else {
-		l_previewarrows.setAttribute('value', '1/' + imageURLs.length);
-	}
-}
-
-/* exported setSize */
 function setSize() {
-	switch (rg_size.selectedIndex) {
-	case 0:
-		maxWidth = -1;
-		maxHeight = -1;
-		break;
-	case 1:
-		maxWidth = 500;
-		maxHeight = 500;
-		break;
-	case 2:
-		maxWidth = 800;
-		maxHeight = 800;
-		break;
-	case 3:
-		maxWidth = 1200;
-		maxHeight = 1200;
-		break;
-	case 4:
-		maxWidth = tb_width.value;
-		maxHeight = tb_height.value;
-		break;
-	}
+  let checked = rg_size.querySelector("input:checked");
+  switch (checked) {
+    case r_noresize:
+      maxWidth = -1;
+      maxHeight = -1;
+      break;
+    case r_small:
+      maxWidth = 500;
+      maxHeight = 500;
+      break;
+    case r_medium:
+      maxWidth = 800;
+      maxHeight = 800;
+      break;
+    case r_large:
+      maxWidth = 1200;
+      maxHeight = 1200;
+      break;
+    case r_custom:
+      maxWidth = parseInt(tb_width.value, 10);
+      maxHeight = parseInt(tb_height.value, 10);
+      break;
+  }
 
-	l_width.disabled = tb_width.disabled =
-		l_height.disabled = tb_height.disabled = !r_custom.selected;
+  l_width.disabled = tb_width.disabled = l_height.disabled = tb_height.disabled =
+    checked != r_custom;
 
-	imageLoad();
-}
-
-/* exported advancePreview */
-function advancePreview(delta) {
-	imageIndex = (imageIndex + delta + imageURLs.length) % imageURLs.length;
-	l_previewarrows.setAttribute('value', (imageIndex + 1) + '/' + imageURLs.length);
-	i_previewthumb.src = imageURLs[imageIndex];
+  updateEstimate();
 }
 
 function humanSize(size) {
-	let unit = 'bytes';
-	if (size >= 1000000) {
-		size = size / 1000000;
-		unit = 'megabytes';
-	} else if (size >= 1000) {
-		size = size / 1000;
-		unit = 'kilobytes';
-	}
+  let unit = "bytes";
+  if (size >= 1048576) {
+    size = size / 1048576;
+    unit = "megabytes";
+  } else if (size >= 1024) {
+    size = size / 1024;
+    unit = "kilobytes";
+  }
 
-	return size.toFixed(size >= 9.95 ? 0 : 1) + '\u2006' + Shrunked.strings.GetStringFromName('unit_' + unit);
+  return size.toFixed(size >= 9.95 ? 0 : 1) + "\u2006" + browser.i18n.getMessage(`unit.${unit}`);
 }
 
-/* exported imageLoad */
-function imageLoad() {
-	let img = new Image();
-	img.onload = function() {
-		let {width, height, src} = img;
-		let scale = 1;
+async function loadImage(index) {
+  if (index < 0) {
+    index += count;
+  } else if (index >= count) {
+    index -= count;
+  }
+  currentIndex = index;
+  l_previewarrows.textContent = `${index + 1} / ${count}`;
 
-		let data = imageData[imageIndex];
-		if (!data) {
-			data = imageData[imageIndex] = {};
-		}
+  if (!images[index]) {
+    let file = await browser.runtime.sendMessage({
+      type: "fetchFile",
+      tabId,
+      index,
+    });
 
-		if (data.originalSize === undefined) {
-			let uri = Services.io.newURI(src, null, null);
-			if (uri.schemeIs('file')) {
-				let file = uri.QueryInterface(Ci.nsIFileURL).file;
-				data.filename = file.leafName;
-				data.originalSize = humanSize(file.fileSize);
-			} else if (uri.schemeIs('data')) {
-				let srcSize = (src.length - src.indexOf(',') - 1) * 3 / 4;
-				if (src.substr(-1) == '=') {
-					srcSize--;
-					if (src.substr(-2, 1) == '=') {
-						srcSize--;
-					}
-				}
-				data.originalSize = humanSize(srcSize);
-			}
-		}
-		if (data.filename === undefined) {
-			if (imageNames[imageIndex]) {
-				data.filename = imageNames[imageIndex];
-			} else {
-				let i = src.indexOf('filename=');
-				if (i > -1) {
-					i += 9;
-					let j = src.indexOf('&', i);
-					if (j > i) {
-						data.filename = decodeURIComponent(src.substring(i, j));
-					} else {
-						data.filename = decodeURIComponent(src.substring(i));
-					}
-				} else {
-					data.filename = src.substring(src.lastIndexOf('/') + 1);
-				}
-			}
-		}
+    images[index] = { file, url: URL.createObjectURL(file), previewCache: new Map() };
+  }
 
-		setValue(l_previewfilename, data.filename);
-		setValueFromString(l_previeworiginalsize, 'preview_originalsize', width, height);
-		if (data.originalSize) {
-			setValueFromString(l_previeworiginalfilesize, 'preview_originalfilesize', data.originalSize);
-		} else {
-			setValue(l_previeworiginalfilesize, '');
-		}
-
-		if (maxWidth > 0 && maxHeight > 0) {
-			scale = Math.min(1, Math.min(maxWidth / width, maxHeight / height));
-		}
-		if (scale == 1) {
-			setValueFromString(l_previewresized, 'preview_notresized');
-			setValue(l_previewresizedfilesize, '');
-		} else {
-			let newWidth = Math.floor(width * scale);
-			let newHeight = Math.floor(height * scale);
-			let quality = Shrunked.prefs.getIntPref('default.quality');
-			let cacheKey = newWidth + 'x' + newHeight + 'x' + quality;
-
-			setValueFromString(l_previewresized, 'preview_resized', newWidth, newHeight);
-			if (data[cacheKey] === undefined) {
-				setValueFromString(l_previewresizedfilesize, 'preview_resizedfilesize_estimating');
-				new ShrunkedImage(src, newWidth, newHeight, quality).estimateSize().then(size => {
-					data[cacheKey] = humanSize(size);
-					setValueFromString(l_previewresizedfilesize, 'preview_resizedfilesize', data[cacheKey]);
-				});
-			} else {
-				setValueFromString(l_previewresizedfilesize, 'preview_resizedfilesize', data[cacheKey]);
-			}
-		}
-	};
-	img.src = i_previewthumb.src;
+  i_previewthumb.src = images[index].url;
+  l_previewfilename.textContent = images[index].file.name;
+  l_previeworiginalfilesize.textContent = browser.i18n.getMessage("preview.originalfilesize", [
+    humanSize(images[index].file.size),
+  ]);
 }
 
-document.addEventListener('dialogaccept', function() {
-	returnValues.cancelDialog = false;
+i_previewthumb.addEventListener("load", updateEstimate);
 
-	returnValues.maxWidth = maxWidth;
-	returnValues.maxHeight = maxHeight;
+async function updateEstimate() {
+  l_previeworiginalsize.textContent = browser.i18n.getMessage("preview.originalsize", [
+    i_previewthumb.naturalWidth,
+    i_previewthumb.naturalHeight,
+  ]);
 
-	if (cb_savedefault.checked) {
-		Shrunked.prefs.setIntPref('default.maxWidth', returnValues.maxWidth);
-		Shrunked.prefs.setIntPref('default.maxHeight', returnValues.maxHeight);
-	}
-	Shrunked.prefs.setBoolPref('default.saveDefault', cb_savedefault.checked);
+  let scale = 1;
+  if (maxWidth > 0 && maxHeight > 0) {
+    scale = Math.min(
+      1,
+      Math.min(maxWidth / i_previewthumb.naturalWidth, maxHeight / i_previewthumb.naturalHeight)
+    );
+  }
+  if (scale == 1) {
+    l_previewresized.textContent = browser.i18n.getMessage("preview.notresized");
+    l_previewresizedfilesize.textContent = "";
+  } else {
+    let newWidth = Math.floor(i_previewthumb.naturalWidth * scale + 0.01);
+    let newHeight = Math.floor(i_previewthumb.naturalHeight * scale + 0.01);
+    let { "default.quality": quality } = await browser.storage.local.get({
+      "default.quality": 75,
+    });
+    let cacheKey = `${newWidth}x${newHeight}x${quality}`;
+
+    let estimate;
+    if (images[currentIndex].previewCache.has(cacheKey)) {
+      estimate = images[currentIndex].previewCache.get(cacheKey);
+    } else {
+      l_previewresizedfilesize.textContent = browser.i18n.getMessage(
+        "preview.resizedfilesize.estimating"
+      );
+      estimate = await browser.shrunked.estimateSize(
+        images[currentIndex].file,
+        maxWidth,
+        maxHeight,
+        quality
+      );
+      images[currentIndex].previewCache.set(cacheKey, estimate);
+    }
+    l_previewresized.textContent = browser.i18n.getMessage("preview.resized", [
+      newWidth,
+      newHeight,
+    ]);
+    l_previewresizedfilesize.textContent = browser.i18n.getMessage("preview.resizedfilesize", [
+      humanSize(estimate),
+    ]);
+  }
+}
+
+b_previous.addEventListener("click", () => loadImage(currentIndex - 1));
+b_next.addEventListener("click", () => loadImage(currentIndex + 1));
+
+b_ok.addEventListener("click", async () => {
+  let prefsToStore = {};
+  if (cb_savedefault.checked) {
+    prefsToStore["default.maxWidth"] = maxWidth;
+    prefsToStore["default.maxHeight"] = maxHeight;
+  }
+  prefsToStore["default.saveDefault"] = cb_savedefault.checked;
+  await browser.storage.local.set(prefsToStore);
+
+  let { "default.quality": quality } = await browser.storage.local.get({
+    "default.quality": 75,
+  });
+  await browser.runtime.sendMessage({
+    type: "doResize",
+    tabId,
+    maxWidth,
+    maxHeight,
+    quality,
+  });
+
+  let thisWindow = await browser.windows.getCurrent();
+  browser.windows.remove(thisWindow.id);
 });
 
-document.addEventListener('dialogcancel', function() {
-	returnValues.cancelDialog = true;
+b_cancel.addEventListener("click", async () => {
+  let thisWindow = await browser.windows.getCurrent();
+  browser.windows.remove(thisWindow.id);
 });
-
-function setValue(element, value) {
-	element.setAttribute('value', value);
-}
-
-function setValueFromString(element, name, ...values) {
-	let value;
-	if (values.length === 0) {
-		value = Shrunked.strings.GetStringFromName(name);
-	} else {
-		value = Shrunked.strings.formatStringFromName(name, values, values.length);
-	}
-	setValue(element, value);
-}

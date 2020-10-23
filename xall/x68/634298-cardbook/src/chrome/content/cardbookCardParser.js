@@ -208,7 +208,11 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								if (!(myPGToBeParsed[myPGName] != null && myPGToBeParsed[myPGName] !== undefined && myPGToBeParsed[myPGName] != "")) {
 									myPGToBeParsed[myPGName] = [];
 								}
-								myPGToBeParsed[myPGName].push(myPGField + ":" + vCardDataArrayTrailer);
+								if (vCardDataArrayHeaderOption) {
+									myPGToBeParsed[myPGName].push(myPGField + ";" + vCardDataArrayHeaderOption + ":" + vCardDataArrayTrailer);
+								} else {
+									myPGToBeParsed[myPGName].push(myPGField + ":" + vCardDataArrayTrailer);
+								}
 								continue;
 							}
 						} else {

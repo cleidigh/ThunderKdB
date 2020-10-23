@@ -874,18 +874,22 @@
 										accesskey="__CARDBOOKMSG_syncWithLightningOnStartupAccesskey__"
 										preference="extensions.cardbook.syncWithLightningOnStartup" type="bool" instantApply="true"/>
 								</hbox>
-								<hbox align="center" flex="1" class="input-container">
-									<label value="__CARDBOOKMSG_calendarEntryTitleLabel__"
-										accesskey="__CARDBOOKMSG_calendarEntryTitleAccesskey__"
-										control="calendarEntryTitleTextBox"
-										tooltiptext="__CARDBOOKMSG_calendarEntryTitleTooltip__"
-										id="calendarEntryTitleLabel"/>
-									<html:input id="calendarEntryTitleTextBox" flex="1" onchange="wdw_cardbookConfiguration.preferenceChanged('eventEntryTitle');"
-										preference="extensions.cardbook.eventEntryTitle" type="string"/>
-									<button id="resetCalendarEntryTitleButton" label="__CARDBOOKMSG_resetCalendarEntryTitleButtonLabel__" accesskey="__CARDBOOKMSG_resetCalendarEntryTitleButtonAccesskey__"
-										oncommand="wdw_cardbookConfiguration.resetCalendarEntryTitle();"/>
-									<splitter flex="1"/>
-								</hbox>
+								<vbox>
+									<hbox align="center" flex="1" class="input-container">
+										<label value="__CARDBOOKMSG_calendarEntryTitleLabel__"
+											accesskey="__CARDBOOKMSG_calendarEntryTitleAccesskey__"
+											control="calendarEntryTitleTextBox"
+											tooltiptext="__CARDBOOKMSG_calendarEntryTitleTooltip__"
+											id="calendarEntryTitleLabel"/>
+										<html:input id="calendarEntryTitleTextBox" flex="1" onchange="wdw_cardbookConfiguration.preferenceChanged('eventEntryTitle');"
+											preference="extensions.cardbook.eventEntryTitle" type="string"/>
+										<button id="resetCalendarEntryTitleButton" label="__CARDBOOKMSG_resetCalendarEntryTitleButtonLabel__" accesskey="__CARDBOOKMSG_resetCalendarEntryTitleButtonAccesskey__"
+											oncommand="wdw_cardbookConfiguration.resetCalendarEntryTitle();"/>
+										<splitter flex="1"/>
+									</hbox>
+									<description id="eventEntryTimeDesc" class="indent"/>
+								</vbox>
+								<separator class="thin"/>
 								<hbox align="center">
 									<checkbox id="calendarEntryWholeDayCheckBox" label="__CARDBOOKMSG_calendarEntryWholeDayLabel__"
 										accesskey="__CARDBOOKMSG_calendarEntryWholeDayAccesskey__"

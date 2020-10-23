@@ -1,4 +1,4 @@
-const MPE_ADDON_VERSION = "3.0.9";
+const MPE_ADDON_VERSION = "3.0.10";
 
 Components.utils.import("resource://gre/modules/FileUtils.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
@@ -788,8 +788,7 @@ function GetAddressBook(abook)
 	var SubDirs;
 
 	let directories = MailServices.ab.directories;
-	while (directories.hasMoreElements()) {
-	  let directory = directories.getNext();
+	for (let directory of directories){
 	  if (directory instanceof Components.interfaces.nsIAbDirectory) {
 		if (!directory.isMailList) {
 			abName = directory.URI;
@@ -1259,8 +1258,7 @@ var mpe = {
 	{
 		var folderlist = new Array();
 		let directories = MailServices.ab.directories;
-		while (directories.hasMoreElements()) {
-		  let directory = directories.getNext();
+		for (let directory of directories){
 		  if (directory instanceof Components.interfaces.nsIAbDirectory) {
 			if (!directory.isMailList) {
 				folderlist.push(directory.dirName + "\t" + directory.UID + "\t" + directory.URI + "\r\n");

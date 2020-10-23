@@ -1,0 +1,68 @@
+
+.sidebarBody-Grey {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: rgb(236, 236, 236);
+    width: 350px !important;;
+    max-width: 350px !important;
+    text-wrap: normal;
+    margin: 0px 0px 0px 0px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 400px !important;
+}
+
+.sidebarBody-OriginalMessage {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: rgb(236, 236, 236);
+    width: 350px !important;;
+    max-width: 350px !important;
+    text-wrap: normal;
+    margin: 0px 0px 0px 0px;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    overflow-y: auto;
+    min-height: 400px !important;
+}
+
+.popupMenu {
+    margin: 0px;
+    background-color: Menu;
+    color: MenuText;
+    text-wrap: normal;
+    padding: 2px 2px 2px 2px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font: menu;
+}
+
+.popupSubMenu {
+    cursor: pointer;
+    padding: 2px 2px 2px 2px;
+    color: MenuText;
+    background-color: Menu;
+    border-bottom-color: rgba(130, 130, 130, 0.51);
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+}
+
+.popupSubMenu:hover {
+    color: HighlightText;
+    background-color: Highlight;
+}
+
+.popupTooltip {
+    color: MenuText;
+    font-weight: lighter;
+    font-size: 0.85em;
+    padding-top: 2px;
+}
+
+#updatedReportsNumber {
+    padding-left:0.5em;
+    padding-right:0.5em;
+    margin-left:1em;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}

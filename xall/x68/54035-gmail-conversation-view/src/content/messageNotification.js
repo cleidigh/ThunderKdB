@@ -179,10 +179,9 @@ class PhishingNotification extends React.PureComponent {
   }
 
   onClick() {
-    this.props.dispatch({
-      type: "MSG_IGNORE_PHISHING",
-      msgUri: this.props.msgUri
-    });
+    this.props.dispatch(messageActions.ignorePhishing({
+      id: this.props.id
+    }));
   }
 
   render() {
@@ -200,7 +199,7 @@ class PhishingNotification extends React.PureComponent {
 
 PhishingNotification.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  msgUri: PropTypes.string.isRequired
+  id: PropTypes.number.isRequired
 };
 
 class MessageNotification extends React.PureComponent {
@@ -208,7 +207,7 @@ class MessageNotification extends React.PureComponent {
     if (this.props.isPhishing) {
       return /*#__PURE__*/React.createElement(PhishingNotification, {
         dispatch: this.props.dispatch,
-        msgUri: this.props.msgUri
+        id: this.props.id
       });
     }
 

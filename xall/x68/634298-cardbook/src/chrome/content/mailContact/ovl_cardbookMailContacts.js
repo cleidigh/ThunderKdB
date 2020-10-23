@@ -11,14 +11,25 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 			var result = "";
 			if (gFolderDisplay && gFolderDisplay.selectedCount == 1) {
 				var accountManager = Components.classes["@mozilla.org/messenger/account-manager;1"].getService(Components.interfaces.nsIMsgAccountManager);
-				var identity = accountManager.getFirstIdentityForServer(gFolderDisplay.selectedMessage.folder.server);
-				if (identity) {
-					result = identity.key;
+				if (gFolderDisplay && gFolderDisplay.selectedMessage && gFolderDisplay.selectedMessage.folder && gFolderDisplay.selectedMessage.folder.server) {
+					var identity = accountManager.getFirstIdentityForServer(gFolderDisplay.selectedMessage.folder.server);
+					if (identity) {
+						result = identity.key;
+					}
 				}
 			}
 			return result;
 		},
 
+		refreshBlueStars: function() {
+			var nodes = document.querySelectorAll("mail-emailaddress");
+			for (let node of nodes) {
+				if (node.getAttribute('emailAddress')) {
+					UpdateEmailNodeDetails(node.getAttribute('emailAddress'), node);
+				}
+			}
+		},
+		
 		addToCardBookMenuSubMenu: function(aMenuName, aCallbackFunction) {
 			cardbookWindowUtils.addToCardBookMenuSubMenu(aMenuName, ovl_cardbookMailContacts.getIdentityKey(), aCallbackFunction);
 		},
@@ -194,6 +205,20 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		}
 		var emailAddressPlaceHolder = document.getElementById("emailAddressPlaceHolder");
 		emailAddressPlaceHolder.setAttribute("label", MailServices.headerParser.makeMimeAddress(myEmailNode.getAttribute("displayName"), myEmailNode.getAttribute('emailAddress')));
+
+		if (document.documentElement.getAttribute("windowtype") == "mail:messageWindow") {
+			document.getElementById('findEmailsFromEmailMessenger').setAttribute('hidden', 'true');
+			document.getElementById('findAllEmailsFromContactMessenger').setAttribute('hidden', 'true');
+			document.getElementById('findEventsFromEmailMessenger').setAttribute('hidden', 'true');
+			document.getElementById('findAllEventsFromContactMessenger').setAttribute('hidden', 'true');
+			document.getElementById('findCardBookSeparator2').setAttribute('hidden', 'true');
+		} else {
+			document.getElementById('findEmailsFromEmailMessenger').removeAttribute('hidden');
+			document.getElementById('findAllEmailsFromContactMessenger').removeAttribute('hidden');
+			document.getElementById('findEventsFromEmailMessenger').removeAttribute('hidden');
+			document.getElementById('findAllEventsFromContactMessenger').removeAttribute('hidden');
+			document.getElementById('findCardBookSeparator2').removeAttribute('hidden');
+		}
 		
 		// return the original result
 		return rv;

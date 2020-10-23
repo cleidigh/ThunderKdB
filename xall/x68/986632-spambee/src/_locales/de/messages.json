@@ -1,0 +1,719 @@
+{
+  "description": {
+    "message": "Melden Sie an SpamBee eine betrügerische Website oder eine Spam- oder Phishing-E-Mail von Ihrer Yahoo! -, Google Mail-, Outlook-, AOL-, OVH-.",
+    "description": "Description of the extension in page chrome://extensions"
+  },
+  "report": {
+    "message": "MELDEN",
+    "description": "Report label"
+  },
+  "actionButton": {
+    "message": "Klicken Sie hier um eine Meldung zu machen",
+    "description": "Message displyed when the mouse is over the extension button"
+  },
+
+  "language":{
+    "message":"de",
+    "description":""
+  },
+
+  "actionButtonWhenReportsUpdated":{
+    "message":"SPAMBEE - Klicken Sie hier um eine Meldung zu machen\n Um das Resultat der Analyse zu sehen, Rechtsklick auf den Button und dann auf das Menü \"Ihre letzte Meldungen an SPAMBEE\"",
+    "description":""
+  },
+
+  "documents./html/options.html":{
+    "message":"SPAMBEE Optionen",
+    "description":""
+  },
+
+  "documents./html/phishingAlert.html":{
+    "message":"Phishing Alarm",
+    "description":""
+  },
+
+  "notlistening1":{
+    "message":"Dieser Webmail ist nicht kompatibel mit SPAMBEE. Keine Meldung möglich.",
+    "description":""
+  },
+
+  "notlistening2":{
+    "message":"Falls Webmail am Laden ist, bitte warten.",
+    "description":""
+  },
+
+  "notready":{
+    "message":"SPAMBEE wird gestartet, bitte warten.",
+    "description":""
+  },
+
+  "notauthentified":{
+    "message":"",
+    "description":""
+  },
+
+  "notavailable":{
+    "message":"SPAMBEE ist für diesen Webmail vorübergehend nicht verfügbar. Wir arbeiten dran, dass dieser Webmail so schnell wie möglich kompatibel wird.",
+    "description":""
+  },
+
+  "options.yes":{
+    "message":"Ja",
+    "description":""
+  },
+
+  "options.no":{
+    "message":"Nein",
+    "description":""
+  },
+
+  "options.title":{
+    "message":"SPAMBEE Einstellungen",
+    "description":""
+  },
+
+  "options.title2":{
+    "message":"Vielen Dank dafür, dass Sie SPAMBEE nutzen",
+    "description":""
+  },
+
+  "options.dataprivacy.title":{
+    "message":"Datenschutz",
+    "description":""
+  },
+
+  "options.dataprivacy.disclaimer":{
+    "message":"Ihre Meldungen sind strikt anonym und verlangen keine Benutzer- oder Absender-Registrierung. Jede Empfänger-Adresse wird vor der Übermittlung der E-Mail gelöscht. <BR>Jede gemeldete E-Mail wird nur für die Dauer der Analyse aufbewahrt.<BR>Sie können jedoch SPAMBEE Ihre Einverständnis geben, die gemeldeten Daten für 3 Monate zu speicheren,falls weitere Untersuchungen nötig wären.",
+    "description":""
+  },
+
+  "options.dataprivacy.label":{
+    "message":"Ich akzeptiere, dass SPAMBEE eine Kopie der von mir gemeldeten E-Mails (anonymisiert) bewahrt, um weitere Untersuchungen durchführen zu können. Anderenfalls, werden die gemeldeten E-Mails sofort nach der Analyse gelöscht.",
+    "description":""
+  },
+
+  "options.notifications.label":{
+    "message":"informiert zu werden wenn die Analyse abgeschlossen ist",
+    "description":""
+  },
+
+  "options.notifications.description":{
+    "message":"Wenn Sie diese Option aktivieren, werden Sie informiert (von Ihrem Browser) sobald die Analyse abgeschlossen und einsehbar ist. ",
+    "description":""
+  },
+
+  "options.preferences.title":{
+    "message":"Ihre Voreinstellungen",
+    "description":""
+  },
+
+  "options.oneclick.description":{
+    "message":"Option E-Mails mit 1 Klick melden",
+    "description":""
+  },
+
+  "options.oneclick.label":{
+    "message":"E-Mails mit 1 Klick melden",
+    "description":""
+  },
+
+  "options.oneclickDescription.description":{
+    "message":"Option E-Mails mit 1 Klick melden",
+    "description":""
+  },
+
+  "options.oneclickDescription.label":{
+    "message":"Wählen Sie JA, wenn Sie Ihre E-Mail(s) mit nur 1 Klick auf den SPAMBEE Button in Ihrer Browser Toolbar melden wollen. Nachdem die E-Mail(s) geöffnet oder ausgewählt wurde(n), werden sie mit nur 1 Klick in der Browser Toolbar an SPAMBEE übermittlet.",
+    "description":""
+  },
+
+  "options.URLDETECT.title":{
+    "message":"Erkennung von gefährlichen Seiten (URLs) beim Öffnen eines neuen Browser Tabs or Fenster (ausserhalb eines Webmails)",
+    "description":""
+  },
+
+  "options.URLDETECT.description":{
+    "message":"Wenn Sie diese Funktion aktivieren (obige Option auf JA geschaltet), werden Sie gewarnt wenn Sie auf eine gefährliche Seite treffen. Wir raten Ihnen dringend diese Funktion aktiviert zu lassen. (obige Option auf JA geschaltet)",
+    "description":""
+  },
+
+  "options.URLDETECT.label":{
+    "message":"Erkennung von gefährlchen Seiten während des Surfens erlauben",
+    "description":""
+  },
+
+  "options.REMINDER.title":{
+    "message":"Reminder zur Anwendung von SPAMBEE in Webmails",
+    "description":""
+  },
+
+  "options.REMINDER.label":{
+    "message":"Reminder Frequenz jeden <span id='frequency'>X</span> Tag:",
+    "description":""
+  },
+
+  "options.movereport.title":{
+    "message":"Archivieren Sie alle gemeldeten E-Mails",
+    "description":""
+  },
+
+  "options.movereport.description":{
+    "message":"Gemeldete E-Mails werden automatisch in den Spam-Ordner verschoben.",
+    "description":""
+  },
+
+  "options.markspam.title":{
+    "message":"Als SPAM markierte E-Mails markieren",
+    "description":""
+  },
+
+  "options.markspam.description":{
+    "message":"Gemeldete E-Mails werden nach der Meldung automatisch als SPAM markiert.",
+    "description":""
+  },
+
+  "options.markread.title":{
+    "message":"Als gelesen markierte E-Mails markieren",
+    "description":""
+  },
+
+  "options.markread.description":{
+    "message":"Gemeldete E-Mails werden nach der Meldung automatisch als gelesen markiert.",
+    "description":""
+  },
+
+  "options.save":{
+    "message":"Speichern",
+    "description":""
+  },
+
+  "options.saved":{
+    "message":"Einstellungen gespeichert...",
+    "description":""
+  },
+
+  "options.invalidCredentials":{
+    "message":"",
+    "description":""
+  },
+
+  "options.noConnection":{
+    "message":"",
+    "description":""
+  },
+
+  "options.missingPassword":{
+    "message":"",
+    "description":""
+  },
+
+  "options.invalidUserId":{
+    "message":"",
+    "description":""
+  },
+
+  "options.validateAgreement":{
+    "message":".",
+    "description":""
+  },
+
+  "options.errorVerifyingCredentials":{
+    "message":"",
+    "description":""
+  },
+
+  "options.error1":{
+    "message":"",
+    "description":""
+  },
+
+  "options.error2":{
+    "message":"",
+    "description":""
+  },
+
+  "options.privacypolicy":{
+    "message":"SPAMBEE Privacy Policy",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.title":{
+    "message":"SPAMBEE",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.nomail1":{
+    "message":"Um unerwünschte E-Mails zu melden, wählen Sie die betreffenden E-Mails aus oder öffnen sie in Ihrem Webmail und klicken Sie auf den SPAMBEE button in der Browser Toolbar.",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.nomail2":{
+    "message":"Um unerwünschte E-Mails zu melden, wählen Sie die betreffenden E-Mails aus oder öffnen sie in Ihrem Webmail und klicken Sie auf den SPAMBEE button in der Browser Toolbar. Der Standard Modus in Ihrem Webmail ist aktiviert, you cannot select a conversation (thread of emails). Wir raten Ihnen den Standard Modus in Ihren Webmail Voreinstellungen zu deaktivieren.",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.nomail3":{
+    "message":"Um unerwünschte E-Mails zu melden, wählen Sie die betreffenden E-Mails aus oder öffnen sie in Ihrem Webmail und klicken Sie auf den SPAMBEE button in der Browser Toolbar.",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.error1":{
+    "message":"SPAMBEE ist auf einen Fehler gestoßen. Die Einstellungen wurden nicht geladen. Bitte aktualisieren Sie die Seite in Ihrem Browser.",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.error2":{
+    "message":"SPAMBEE ist beim Wiederherstellen von der/den E-Mail(s) auf einen Fehler gestoßen. Bitte versuchen Sie es noch einmal oder wenden Sie sich an den SPAMBEE Hilfsdienst, wenn das Problem weiterhin besteht.",
+    "description":""
+  },
+
+  "contentScript.sidebar.title":{
+    "message":"E-Mails melden und sich gegen Phishing schützen",
+    "description":""
+  },
+
+  "contentScript.sidebar.copyright":{
+    "message":"",
+    "description":""
+  },
+
+  "contentScript.sidebar.calltoactionsingle":{
+    "message":"Wenn Sie (eine) verdächtige E-Mail(s) melden wollen, klicken Sie auf den Button unten.",
+    "description":""
+  },
+
+  "contentScript.sidebar.calltoaction":{
+    "message":"Wenn Sie die verdächtigen E-Mails melden wollen, klicken Sie auf den Button unten.",
+    "description":""
+  },
+
+  "contentScript.sidebar.disclosure":{
+    "message":"Der Inhalt der gemeldeten E-Mail(s) wird an unsere Dienste übermittelt, zwecks Analyse und angebrachte Gegenmaßnahmen.<br>",
+    "description":""
+  },
+
+  "contentScript.sidebar.disclosureSingle":{
+    "message":"Der Inhalt der gemeldeten E-Mail wird an unsere Dienste übermittelt, zwecks Analyse und angebrachte Gegenmaßnahmen.",
+    "description":""
+  },
+
+  "contentScript.sidebar.numbering":{
+    "message":"Sie wollen die ausgewählten  <span id='VFSELECTEDMAILS'></span> E-Mails melden",
+    "description":""
+  },
+
+  "contentScript.sidebar.buttonlabel":{
+    "message":"Melden",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingtitle":{
+    "message":"Betrügerische Links wurden entdeckt",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingdetected":{
+    "message":"Es wurden Links zu betrügerischen Seiten in der/den ausgewählten E-Mail(s) entdeckt",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishinglinks":{
+    "message":"Jeder betroffene Link ist mit dem SPAMBEE Logo markiert. Wir raten Ihnen dringend NICHT auf die markierten Links zu klicken und mit äusserster Vorsicht vorzugehen.",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingreport":{
+    "message":"Der Inhalt der gemeldeten E-Mail wird an unsere Dienste übermittelt, zwecks Analyse und angebrachte Gegenmaßnahmen.",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingfalsepos":{
+    "message":"Wenn Sie erwägen, dass diese E-Mail legitim ist und keiner der Links betrügerisch ist, teilen Sie es bitte SPAMBEE mit: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingfalseposbutton":{
+    "message":"False-Positive",
+    "description":""
+  },
+
+  "contentScript.sidebar.zoom":{
+    "message":"Klicken Sie hier zur Übersicht der übermittelten Daten an SPAMBEE.",
+    "description":""
+  },
+
+  "contentScript.sidebar.reportOnGoing":{
+    "message":"Bitte warten...",
+    "description":""
+  },
+
+  "contentScript.sidebar.reportTransmission":{
+    "message":"Vielen Dank für Ihre Meldung. Die Daten werden übermittelt.",
+    "description":""
+  },
+
+  "contentScript.sidebar.buttonlabelReported":{
+    "message":"Vielen Dank",
+    "description":""
+  },
+
+  "contentScript.sidebar.singlereportok":{
+    "message":"Die gemeldete E-Mail wurde an SPAMBEE übermittelt.",
+    "description":""
+  },
+
+  "contentScript.sidebar.multiplereportsok":{
+    "message":"Die gemeldeten E-Mails wurden an SPAMBEE übermittelt.",
+    "description":""
+  },
+
+  "contentScript.sidebar.sendingsinglereport":{
+    "message":"Die Meldung wird übermittelt ... Bitte warten",
+    "description":""
+  },
+
+  "contentScript.sidebar.sendingmultiplereports":{
+    "message":"Die Meldungen werden übermittelt ... Bitte warten",
+    "description":""
+  },
+
+  "contentScript.sidebar.reportsNumber":{
+    "message":"Anzahl der Meldungen die übermittelt werden: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.multiplereportsfailed":{
+    "message":"Fehler bei der Übermittlung der Meldungen.",
+    "description":""
+  },
+
+  "contentScript.sidebar.successNumber":{
+    "message":"Anzahl der übermittelten Meldungen: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.failureNumber":{
+    "message":"Anzahl der gescheiterten Übermittlungen: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.failureReason":{
+    "message":"Fehler Code: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.newversionavailable":{
+    "message":"Eine neue Version von SPAMBEE ist verfügbar.",
+    "description":""
+  },
+
+  "contentScript.sidebar.newversionnumber":{
+    "message":"Neue Version: <span id='VERSIONNUMBER'></span>",
+    "description":""
+  },
+
+  "contentScript.sidebar.currentversionnumber":{
+    "message":"Aktuelle Version: <span id='CURRENTVERSIONNUMBER'></span>",
+    "description":""
+  },
+
+  "contentScript.sidebar.calltoupdate":{
+    "message":"Neue Funktionen sind verfügbar. SPAMBEE erfordert eine Aktualisierung Sie SPAMBEE.",
+    "description":""
+  },
+
+  "contentScript.sidebar.howtoupdate":{
+    "message":"Aktualisierung: öffnen Sie den Add-Ons Tab in Ihrem Browser (about:addons), klicken Sie auf den Button  <img src='/img/updatebutton.png'>  rechts oben und wählen Sie the search updates menu.",
+    "description":""
+  },
+
+  "contentScript.sidebar.support":{
+    "message":"Wenn das Problem weiterhin besteht, wenden Sie sich an den SPAMBEE Hilfsdienst  : <a href='https://assistance.signal-spam.fr/index.php' class='externallink'>click here</a>.",
+    "description":""
+  },
+
+  "contentScript.sidebar.emailreport":{
+    "message":"E-Mail(s)",
+    "description":""
+  },
+
+  "contentScript.sidebar.dataprivacy":{
+    "message":"Ich akzeptiere, dass SPAMBEE eine Kopie der von mir gemeldeten E-Mails (anonymisiert) bewahrt, um weitere Untersuchungen durchführen zu können. Anderenfalls, werden die gemeldeten E-Mails sofort nach der Analyse gelöscht.",
+    "description":""
+  },
+
+  "contentScript.sidebar.feedback":{
+    "message":"Ich möchte informiert werden wenn die Analyse abgeschlossen ist",
+    "description":""
+  },
+
+  "contentScript.sidebar.dataprivacyonreport":{
+    "message":"Die Daten werden sofort nach der Analyse gelöscht.",
+    "description":""
+  },
+
+  "contentScript.sidebar.feedbackinfo":{
+    "message":"Sie werden informiert, sobald die Analyse abgeschlossen ist.",
+    "description":""
+  },
+
+  "contentScript.sidebar.emailfrom":{
+    "message":"Von:",
+    "description":""
+  },
+
+  "contentScript.sidebar.emailsubject":{
+    "message":"Betreff:",
+    "description":""
+  },
+
+  "contentScript.reminder.title":{
+    "message":"SPAMBEE - Gebrauchsanweisung",
+    "description":""
+  },
+
+  "contentScript.reminder.message1":{
+    "message":"Um eine SPAM- oder Phishing-E-Mail zu melden, öffnen Sie oder wählen Sie die E-Mail(s) in Ihrem Webmail aus, klicken Sie dann auf den SPAMBEE Button in der Browser Toolbar.",
+    "description":""
+  },
+
+  "contentScript.reminder.message2":{
+    "message":"<p>Diesen Reminder regelmässig anzeigen??</p>",
+    "description":""
+  },
+
+  "contentScript.reminder.message3":{
+    "message":"Hier klicken um den Reminder in den Optionen zu ändern oder stellen Sie die Frequenz hier unten ein",
+    "description":""
+  },
+
+  "contentScript.reminder.message4":{
+    "message":"Jeden <span id=\"frequencyDisplayed\"></span> Tag",
+    "description":""
+  },
+
+  "contentScript.reportStatus.success":{
+    "message":"Vielen Dank",
+    "description":""
+  },
+
+  "contentScript.reportStatus.error":{
+    "message":"Unerwarteter Fehler",
+    "description":""
+  },
+
+  "contentScript.reportStatus.invalidpassword":{
+    "message":"Benutzername oder Passwort falsch",
+    "description":""
+  },
+
+  "phishingAlert.warning":{
+    "message":"WARNUNG",
+    "description":""
+  },
+
+  "phishingAlert.message1":{
+    "message":"Diese URL wurde als betrügerische Seite identifiziert .",
+    "description":""
+  },
+
+  "phishingAlert.message2":{
+    "message":"Wir raten Ihnen dringend diese Seite zu verlassen.",
+    "description":""
+  },
+
+  "phishingAlert.message3":{
+    "message":"",
+    "description":""
+  },
+
+  "phishingAlert.return":{
+    "message":"Zurück zur vorigen Seite",
+    "description":""
+  },
+
+  "phishingAlert.buttonlabel":{
+    "message":"&#9888; Ich bin mir den Risiken bewusst; ich werde diese Seite jedoch weiter besuchen",
+    "description":""
+  },
+
+  "phishingAlert.false1":{
+    "message":"Wenn Sie erwägen, dass diese Phishing Warnung falsch ist \"false positive\",",
+    "description":""
+  },
+
+  "phishingAlert.false2":{
+    "message":" und diese URL nicht betrügerisch ist: ",
+    "description":""
+  },
+
+  "phishingAlert.false3":{
+    "message":"lassen Sie es uns wissen und wir werden diese Seite erneut untersuchen.",
+    "description":""
+  },
+
+  "phishingAlert.buttonlabel2":{
+    "message":"Hier klicken",
+    "description":""
+  },
+
+  "phishingAlert.falsePositiveOK":{
+    "message":"Vielen Dank. Wir untersuchen diese Seite",
+    "description":""
+  },
+
+  "reportUrl.message1":{
+    "message":"Wenn Sie diese Seite als betrügerisch melden wollen, klicken Sie auf MELDEN Button unten.",
+    "description":""
+  },
+
+  "reportUrl.message2":{
+    "message":"Die URL dieser Website wird analysiert und ggf. werden angebrachte Gegenmassnahmen eingesetzt.",
+    "description":""
+  },
+
+  "reportUrl.buttonlabel":{
+    "message":"MELDEN",
+    "description":""
+  },
+
+  "update.updated":{
+    "message":"SPAMBEE wurde aktualisiert",
+    "description":""
+  },
+
+  "update.more":{
+    "message":"Mehr Info",
+    "description":""
+  },
+
+  "critical.noparams":{
+    "message":"SPAMBEE konnte nicht gestartet werden",
+    "description":""
+  },
+
+  "reports.title":{
+    "message":"Ihre letzten Meldungen an SPAMBEE",
+    "description":""
+  },
+
+  "reports.subTitle":{
+    "message":"Liste Ihrer letzten Meldungn an SPAMBEE in den vergangenen 10 Tagen",
+    "description":""
+  },
+
+  "reports.deleteRowsInfo":{
+    "message":"Annulieren und Löschen der ausgewählten Meldungen.(Alle in SPAMBEE gespeicherten Daten werden gelöscht.)",
+    "description":""
+  },
+
+  "reports.col1":{
+    "message":"🗑",
+    "description":""
+  },
+
+  "reports.col2":{
+    "message":"Uhrzeit",
+    "description":""
+  },
+
+  "reports.col3":{
+    "message":"E-mail Sender / Seite",
+    "description":""
+  },
+
+  "reports.col4":{
+    "message":"E-mail subject  / URL",
+    "description":""
+  },
+
+  "reports.col5":{
+    "message":"Status time",
+    "description":""
+  },
+
+  "reports.col6":{
+    "message":"Phishing Status",
+    "description":""
+  },
+
+  "reports.pager.page":{
+    "message":"Seite ",
+    "description":""
+  },
+
+  "reports.pager.onpages":{
+    "message":"/",
+    "description":""
+  },
+
+  "reports.status.phishing":{
+    "message":"Phishing",
+    "description":""
+  },
+
+  "reports.status.suspect":{
+    "message":"verdächtig",
+    "description":""
+  },
+
+  "reports.status.unknown":{
+    "message":"SPAM / missbräuchlich",
+    "description":""
+  },
+
+  "reports.status.legit":{
+    "message":"legitim",
+    "description":""
+  },
+
+  "reports.status.pending":{
+    "message":"unerledigt...",
+    "description":""
+  },
+
+  "reports.status.phishingDescription":{
+    "message":"Wir haben Phishing Links in dieser E-Mail entdeckt, Sie müssen mit äusserster Vorsicht vorgehen. Sie sollten weder auf einen Link in dieser E-Mail klicken, noch auf die E-Mail antworten oder ein Attachement öffnen.",
+    "description":""
+  },
+
+  "reports.status.suspectDescription":{
+    "message":"Einige Bestandteile in dieser E-Mail könnten gefährlich sein. Bitte seien Sie vorsichtig.",
+    "description":""
+  },
+
+  "reports.status.unknownDescription":{
+    "message":"Die automatische Analyse Ihre Meldung konntThe automatic analysis of your report dit not allow to identify any fraudulent attempt in this email.",
+    "description":""
+  },
+
+  "reports.status.legitDescription":{
+    "message":"Diese E-Mail ist nicht betrügerisch und wird als SPAM E-Mail gemeldet.",
+    "description":""
+  },
+
+  "reports.status.pendingDescription":{
+    "message":"Die Analyse ist noch nicht abgeschlossen - bitte warten.",
+    "description":""
+  },
+
+  "notification.title":{
+    "message":"Bericht Analyse",
+    "description":""
+  },
+
+  "notification.message":{
+    "message":"Aktualisierter Status für Ihren Bericht: Klicken Sie hier, um den Status zu überprüfen",
+    "description":""
+  },
+
+  "buttonlabel":{
+    "message":"REPORT",
+    "description":""
+  },
+
+  "popupmenu.tooltip":{
+    "message":"Halten Sie die Umschalt-Taste gedrückt und klicken Sie <BR>auf die Erweiterungs-Schaltfläche, um dieses Menü anzuzeigen",
+    "description":""
+  }
+}

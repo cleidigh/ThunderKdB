@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Mail Sent Notifier",
-  "version": "0.7.0",
+  "version": "1.0.0",
   "description": "Allows to notify a HTTP-GET based webservice after successfully sent an email, e.g. for time registration / time tracking systems",
   "author": "Glarotech GmbH",
   "homepage_url": "https://gitlab.office.glarotech.ch:4443/glarotech/mail-sent-notifier",
@@ -14,11 +14,19 @@
       "strict_min_version": "68.0"
     }
   },
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://mail_sent_notifier/content/preferences.xul",
-      "open_in_tab": true
+  "options_ui": {
+    "page": "content/preferences.html"
+  },
+  
+  "permissions": ["storage", "compose", "menus", "accountsRead"],
+  "background": {
+    "scripts": ["scripts/events.js", "scripts/contextMenu.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "mail_sent_notifier@phpeppershop.com",
+      "strict_min_version": "78.0"
     }
-  }
+  },
+  "default_locale": "en"
 }

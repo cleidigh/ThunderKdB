@@ -152,8 +152,13 @@ debug('doInit');
 
   // get labels for columns and create checkbox
   gColumns=await messenger.sio.cols();
+	createColumnList();
+  return true;
+}
+function createColumnList() {
   let cl=document.getElementById("columns_list");
-  for (let [id, label] of Object.entries(gColumns)) {
+	while (cl.firstChild) cl.removeChild(cl.lastChild);
+	gColumns.forEach((label, id) => {
     let cb=document.createElement('input');
     cb.setAttribute('id', 'col_'+id);
     cb.setAttribute('type', 'checkbox');
@@ -165,25 +170,34 @@ debug('doInit');
     let lt=document.createTextNode(label);
     l.appendChild(lt);
     cl.appendChild(l);
-  }
-  let aa=prefs.Columns||'';  //was ??, but bad for ATN
-  aa=aa.split(',');
-  for (let i=0; i<aa.length; i++) {
-    let col=aa[i].trim();
-    if (col) document.getElementById("col_"+col).checked=true;
-  }
-
-  return true;
+  });
+  let setCols=prefs.Columns||'';  //was ??, but bad for ATN
+  let cols=setCols.split(/\s*,\s*/);
+	let nCols=new Array();
+	cols.forEach(col=>{
+    if (col && gColumns.has(col)) {
+			document.getElementById("col_"+col).checked=true;
+			nCols.push(col);
+//TODO: if no element, remove from cols and later save pref
+		}
+	});
+	let newCols=nCols.join(',');
+	if (newCols!=setCols) {
+debug('columns has changed from '+setCols+' to '+newCols);
+		prefs.Columns=newCols;
+		messenger.storage.local.set({Columns: newCols});
+	}
 }
-function prefChanged() {
-debug('prefChanged');
+
+function prefChanged(ev) {
+debug('prefChanged for '+ev.target.id+' data='+ev.target.getAttribute('data')+' value='+ev.target.value+' checked='+ev.target.checked);
 
   setEmails();
 
   let liste='';
-//    for (let col in gColumns) if (document.getElementById("col_"+col).checked) liste+=col+',';
-  for (let [col, label] of Object.entries(gColumns))
+	gColumns.forEach((label, col) => {
     if (document.getElementById("col_"+col).checked) liste+=col+',';
+	});
   prefs.Columns=liste.substr(0,liste.length-1);
 
   let itp=document.getElementById('InTextPrefix').value;
@@ -194,7 +208,15 @@ debug('prefChanged');
   prefs.debug=document.getElementById('debug').checked;
 
   messenger.storage.local.set(prefs);
-  messenger.sio.prefChanged(prefs);    // call webexperiment api (in implementation.js)
+
+	let col='';
+	let state=false;
+	let data=ev.target.getAttribute('data');
+	if (data) {
+		col=data;
+		state=ev.target.checked;
+	}
+  messenger.sio.prefChanged(prefs, col, state); 
 
 // in console: JavaScript error: undefined, line 0: Error: An unexpected error occurred
 // aber alles funktioniert und auch mit try/catch nicht fetzustellen
@@ -213,19 +235,42 @@ debug('addEmailInputField');
     t.onchange=function(event) {
       if (!event.target.nextSibling) addEmailInputField();
       setEmails();
-      prefChanged();
+      prefChanged(event);
     };
   }
   return true;
 }
 
-function accountChange(event) {
+async function accountChange(event) {
 debug('accountChange');
   setEmails();
-  prefChanged();
+  prefChanged(event);
   gKey=event.target.value;
   getEmails();
 }
+
+let listener=(async (info)=> {
+debug('some addon changed');
+	let changed=await messenger.sio.addonChanged('options');
+	if (changed===null) {
+debug(' implementation says: "options window does the work" but i am the options window!');
+		return;
+	}
+	changed.forEach((label, col) => {
+debug(' changed '+col+'->'+(label?label:'(removed)'));
+		if (!label) {
+			gColumns.delete(col)
+		} else {
+			gColumns.set(col, label);
+		}
+	});
+	//probably changed preference 'Columns' is set in createColumnList
+	createColumnList();
+});
+messenger.management.onInstalled.addListener(listener);
+messenger.management.onUninstalled.addListener(listener);
+messenger.management.onEnabled.addListener(listener);
+messenger.management.onDisabled.addListener(listener);
 
 let cache='';
 function debug(txt) {

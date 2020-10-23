@@ -1,88 +1,163 @@
-/* globals Preferences */
-Preferences.addAll([
-	{ id: "extensions.shrunked.fileSizeMinimum", type: "int" },
-	{ id: "extensions.shrunked.default.maxWidth", type: "int" },
-	{ id: "extensions.shrunked.default.maxHeight", type: "int" },
-	{ id: "extensions.shrunked.default.quality", type: "int" },
-	{ id: "extensions.shrunked.options.resample", type: "bool" },
-	{ id: "extensions.shrunked.options.exif", type: "bool" },
-	{ id: "extensions.shrunked.options.orientation", type: "bool" },
-	{ id: "extensions.shrunked.options.gps", type: "bool" },
-	{ id: "extensions.shrunked.log.enabled", type: "bool" },
-	{ id: "extensions.shrunked.resizeAttachmentsOnSend", type: "bool" },
-]);
+/* globals tp_defaults, tb_minsize, r_noresize, r_small, r_medium, r_large, r_custom, l_width,
+   tb_width, l_height, tb_height, l_measure, s_quality, tp_advanced, cb_resample, cb_exif,
+   cb_orient, cb_gps, cb_logenabled, b_resizeonsend, s_resizeonsend */
 
-var p_minsize = Preferences.get("extensions.shrunked.fileSizeMinimum");
-var p_maxwidth = Preferences.get("extensions.shrunked.default.maxWidth");
-var p_maxheight = Preferences.get("extensions.shrunked.default.maxHeight");
-var p_quality = Preferences.get("extensions.shrunked.default.quality");
-
-/* globals tb_minsize, rg_size, r_noresize,
-   r_small, r_medium, r_large, r_custom, l_width, tb_width, l_height, tb_height, l_measure, s_quality,
-   cb_exif, cb_orient, cb_gps */
-for (let element of document.querySelectorAll('[id]')) {
-	window[element.id] = element;
+for (let element of document.querySelectorAll("[id]")) {
+  window[element.id] = element;
+}
+for (let element of document.querySelectorAll("[data-l10n-content]")) {
+  element.textContent = browser.i18n.getMessage(element.getAttribute("data-l10n-content"));
+}
+for (let element of document.querySelectorAll("[data-l10n-title]")) {
+  element.title = browser.i18n.getMessage(element.getAttribute("data-l10n-title"));
+}
+for (let element of document.querySelectorAll("[data-l10n-label]")) {
+  element.label = browser.i18n.getMessage(element.getAttribute("data-l10n-label"));
 }
 
-/* exported load */
-function load() {
-	let width = l_measure.getBoundingClientRect().right;
-	let element = l_measure;
-	do {
-		let style = getComputedStyle(element);
-		width += parseInt(style.paddingRight, 10);
-		width += parseInt(style.borderRightWidth, 10);
-		width += parseInt(style.marginRight, 10);
-		element = element.parentNode;
-	} while (element && element != document);
-	document.documentElement.style.minWidth = `${width}px`;
+var settingFromThisPage = false;
 
-	tb_minsize.value = p_minsize.value;
-	let maxWidth = p_maxwidth.value;
-	let maxHeight = p_maxheight.value;
-	if (maxWidth == -1 && maxHeight == -1) {
-		rg_size.selectedIndex = 0;
-	} else if (maxWidth == 500 && maxHeight == 500) {
-		rg_size.selectedIndex = 1;
-	} else if (maxWidth == 800 && maxHeight == 800) {
-		rg_size.selectedIndex = 2;
-	} else if (maxWidth == 1200 && maxHeight == 1200) {
-		rg_size.selectedIndex = 3;
-	} else {
-		rg_size.selectedIndex = 4;
-		tb_width.value = maxWidth;
-		tb_height.value = maxHeight;
-	}
-	setSize();
+async function getAll() {
+  let prefs = await browser.storage.local.get({
+    "default.maxWidth": 500,
+    "default.maxHeight": 500,
+    "default.quality": 75,
+    "default.saveDefault": true,
+    fileSizeMinimum: 100,
+    // "log.enabled": false,
+    "options.exif": true,
+    "options.orientation": true,
+    "options.gps": true,
+    "options.resample": true,
+    resizeAttachmentsOnSend: false,
+  });
 
-	s_quality.value = p_quality.value;
+  tb_minsize.value = prefs.fileSizeMinimum;
+  if (prefs["default.maxWidth"] == prefs["default.maxHeight"]) {
+    switch (prefs["default.maxWidth"]) {
+      case -1:
+        r_noresize.checked = true;
+        break;
+      case 500:
+        r_small.checked = true;
+        break;
+      case 800:
+        r_medium.checked = true;
+        break;
+      case 1200:
+        r_large.checked = true;
+        break;
+      default:
+        r_custom.checked = true;
+        tb_width.value = prefs["default.maxWidth"];
+        tb_height.value = prefs["default.maxHeight"];
+        break;
+    }
+  } else {
+    r_custom.checked = true;
+    tb_width.value = prefs["default.maxWidth"];
+    tb_height.value = prefs["default.maxHeight"];
+  }
+  s_quality.value = prefs["default.quality"];
+  cb_resample.checked = prefs["options.resample"];
+  cb_exif.checked = prefs["options.exif"];
+  cb_orient.checked = prefs["options.orient"];
+  cb_gps.checked = prefs["options.gps"];
+  // cb_logenabled.checked = prefs["log.enabled"];
+  s_resizeonsend.value = prefs.resizeAttachmentsOnSend;
 
-	enableExif();
+  l_width.disabled = tb_width.disabled = l_height.disabled = tb_height.disabled = !r_custom.checked;
+  cb_orient.disabled = cb_gps.disabled = !cb_exif.checked;
 }
 
-/* exported setSize */
-function setSize() {
-	l_width.disabled = tb_width.disabled =
-		l_height.disabled = tb_height.disabled = !r_custom.selected;
-	if (r_noresize.selected) {
-		p_maxwidth.value = -1;
-		p_maxheight.value = -1;
-	} else if (r_small.selected) {
-		p_maxwidth.value = 500;
-		p_maxheight.value = 500;
-	} else if (r_medium.selected) {
-		p_maxwidth.value = 800;
-		p_maxheight.value = 800;
-	} else if (r_large.selected) {
-		p_maxwidth.value = 1200;
-		p_maxheight.value = 1200;
-	} else {
-		p_maxwidth.value = tb_width.value;
-		p_maxheight.value = tb_height.value;
-	}
+addEventListener("load", async () => {
+  window.browser = window.browser.extension.getBackgroundPage().browser;
+
+  await getAll();
+
+  r_noresize.addEventListener("change", setSize);
+  r_small.addEventListener("change", setSize);
+  r_medium.addEventListener("change", setSize);
+  r_large.addEventListener("change", setSize);
+  r_custom.addEventListener("change", setSize);
+  tb_height.addEventListener("change", setSize);
+  tb_width.addEventListener("change", setSize);
+
+  s_quality.addEventListener("change", setQuality);
+
+  cb_resample.addEventListener("change", setCheckbox);
+  cb_exif.addEventListener("change", event => {
+    cb_orient.disabled = cb_gps.disabled = !cb_exif.checked;
+    setCheckbox(event);
+  });
+  cb_orient.addEventListener("change", setCheckbox);
+  cb_gps.addEventListener("change", setCheckbox);
+  // cb_logenabled.addEventListener("change", setCheckbox);
+
+  s_resizeonsend.addEventListener("change", setSendOption);
+
+  browser.storage.onChanged.addListener(() => {
+    if (!settingFromThisPage) {
+      getAll();
+    }
+  });
+});
+
+async function setSize() {
+  let maxWidth, maxHeight;
+  let checked = document.querySelector('input[name="rg_size"]:checked');
+  switch (checked) {
+    case r_noresize:
+      maxWidth = -1;
+      maxHeight = -1;
+      break;
+    case r_small:
+      maxWidth = 500;
+      maxHeight = 500;
+      break;
+    case r_medium:
+      maxWidth = 800;
+      maxHeight = 800;
+      break;
+    case r_large:
+      maxWidth = 1200;
+      maxHeight = 1200;
+      break;
+    case r_custom:
+      maxWidth = parseInt(tb_width.value, 10);
+      maxHeight = parseInt(tb_height.value, 10);
+      break;
+  }
+
+  l_width.disabled = tb_width.disabled = l_height.disabled = tb_height.disabled =
+    checked != r_custom;
+
+  settingFromThisPage = true;
+  await browser.storage.local.set({
+    "default.maxWidth": maxWidth,
+    "default.maxHeight": maxHeight,
+  });
+  settingFromThisPage = false;
 }
 
-/* exported enableExif */
-function enableExif() {
-	cb_orient.disabled = cb_gps.disabled = !cb_exif.checked;
+async function setQuality() {
+  settingFromThisPage = true;
+  await browser.storage.local.set({
+    "default.quality": parseInt(s_quality.value, 10),
+  });
+  settingFromThisPage = false;
+}
+
+async function setCheckbox({ target }) {
+  settingFromThisPage = true;
+  await browser.storage.local.set({ [target.name]: target.checked });
+  settingFromThisPage = false;
+}
+
+async function setSendOption() {
+  settingFromThisPage = true;
+  await browser.storage.local.set({
+    resizeAttachmentsOnSend: s_resizeonsend.value == "true",
+  });
+  settingFromThisPage = false;
 }

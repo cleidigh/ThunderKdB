@@ -150,10 +150,11 @@ var quicktext = {
         if (textLength)
         {
           //Add first level element, this will be either a menu or a button (if only one text in this group)
-          var toolbarbuttonGroup = toolbar.appendChild(document.createXULElement("toolbarbutton"));
-
+          var toolbarbuttonGroup;
+          let t = document.createXULElement("button");
           if (textLength == 1 && gQuicktext.collapseGroup)
           {
+            toolbarbuttonGroup = toolbar.appendChild(t);
             toolbarbuttonGroup.setAttribute("label", gQuicktext.getText(i, 0, false).name);
             toolbarbuttonGroup.setAttribute("i", i);
             toolbarbuttonGroup.setAttribute("j", 0);
@@ -161,7 +162,8 @@ var quicktext = {
           }
           else
           {
-            toolbarbuttonGroup.setAttribute("type", "menu");
+            t.setAttribute("type", "menu");
+            toolbarbuttonGroup = toolbar.appendChild(t);
             toolbarbuttonGroup.setAttribute("label", gQuicktext.getGroup(i, false).name);
             var menupopup = toolbarbuttonGroup.appendChild(document.createXULElement("menupopup"));
 
@@ -331,19 +333,22 @@ var quicktext = {
       gQuicktextVar.cleanTagData();
 
       var text = gQuicktext.getText(aGroupIndex, aTextIndex, false);
+      text.removeHeaders();
+      gQuicktext.mCurrentTemplate = text;
+
+      // this parsing of the header informations isn't able to parse something like: [[HEADER=to|[[SCRIPT=getReciepients]]]]
+
+      // // Parse text for HEADER tags and move them to the header object
+      // let headers = text.text.match(/\[\[header=[^\]]*\]\]/ig);
+      // if (headers && Array.isArray(headers)) {
+      //   for (let header of headers) {
+      //     let parts = header.split(/=|\]\]|\|/);
+      //     if (parts.length==4) {
+      //       text.addHeader(parts[1], parts[2]);
+      //     }
+      //   }
+      // }
       
-      // Parse text for HEADER tags and move them to the header object
-      let headers = text.text.match(/\[\[header=[^\]]*\]\]/ig);
-      if (headers && Array.isArray(headers)) {
-        for (let header of headers) {
-          let parts = header.split(/=|\]\]|\|/);
-          if (parts.length==4) {
-            text.addHeader(parts[1], parts[2]);
-          }
-        }
-      }
-      
-      this.insertHeaders(text);
       this.insertSubject(text.subject);
       this.insertAttachments(text.attachments);
 
@@ -355,6 +360,9 @@ var quicktext = {
       }
 
       await this.insertBody(text.text, text.type, aHandleTransaction);
+
+      // has to be inserted below "insertBody" as "insertBody" gathers the header data from the header tags
+      this.insertHeaders(text);
 
       // If we insert any headers we maybe needs to return the placement of the focus
       setTimeout(function () {quicktext.moveFocus();}, 1);

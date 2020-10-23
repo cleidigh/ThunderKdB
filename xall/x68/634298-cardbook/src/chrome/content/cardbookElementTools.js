@@ -623,18 +623,24 @@ if ("undefined" == typeof(cardbookElementTools)) {
 
 			function firePrefCheckBox(event) {
 				var myIdArray = this.id.split('_');
-				var myPrefWeightBoxLabel = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBoxLabel');
-				var myPrefWeightBox = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox');
+				if (document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBoxLabel') &&
+					document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox')) { 
+					var myPrefWeightBoxLabel = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBoxLabel');
+					var myPrefWeightBox = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox');
+					if (this.getAttribute('haspref')) {
+						myPrefWeightBoxLabel.disabled = true;
+						myPrefWeightBox.disabled = true;
+					} else {
+						myPrefWeightBoxLabel.disabled = false;
+						myPrefWeightBox.disabled = false;
+					}
+					myPrefWeightBox.value = "";
+				}
 				if (this.getAttribute('haspref')) {
 					this.removeAttribute('haspref');
-					myPrefWeightBoxLabel.disabled = true;
-					myPrefWeightBox.disabled = true;
 				} else {
 					this.setAttribute('haspref', 'true');
-					myPrefWeightBoxLabel.disabled = false;
-					myPrefWeightBox.disabled = false;
 				}
-				myPrefWeightBox.value = "";
 			};
 			aPrefButton.addEventListener("command", firePrefCheckBox, false);
 			return aPrefButton;

@@ -8,6 +8,7 @@ XPCOMUtils.defineLazyModuleGetters(this, {
   ExtensionCommon: "resource://gre/modules/ExtensionCommon.jsm",
   GlodaAttrProviders:
     "chrome://conversations/content/modules/plugins/glodaAttrProviders.js",
+  msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
   msgUriToMsgHdr: "chrome://conversations/content/modules/misc.js",
   NetUtil: "resource://gre/modules/NetUtil.jsm",
   PluralForm: "resource://gre/modules/PluralForm.jsm",
@@ -207,6 +208,21 @@ function apiMonkeyPatchAllWindows(windowManager, callback) {
   }
 }
 
+function getAttachmentInfo(win, msgUri, attachment) {
+  const attInfo = new win.AttachmentInfo(
+    attachment.contentType,
+    attachment.url,
+    attachment.name,
+    msgUri,
+    attachment.isExternal
+  );
+  attInfo.size = attachment.size;
+  if (attInfo.size != -1) {
+    attInfo.sizeResolved = true;
+  }
+  return attInfo;
+}
+
 let apiWindowObserver;
 
 /* exported conversations */
@@ -301,8 +317,10 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
               case "mail.showCondensedAddresses":
                 return Services.prefs.getBoolPref(name);
               case "font.size.variable.x-western":
-              case "mailnews.mark_message_read.delay.interval":
+              case "mail.forward_message_mode":
               case "mail.openMessageBehavior":
+              case "mailnews.mark_message_read.delay.interval":
+              case "mail.show_headers":
                 return Services.prefs.getIntPref(name);
               case "browser.display.foreground_color":
               case "browser.display.background_color":
@@ -448,12 +466,8 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
             .document.getElementById("tabmail")
             .openTab(createTabProperties.type, params);
         },
-        async getIsJunk(id) {
-          const msgHdr = context.extension.messageManager.get(id);
-          return (
-            msgHdr.getStringProperty("junkscore") ==
-            Ci.nsIJunkMailPlugin.IS_SPAM_SCORE
-          );
+        async createFilter(email, windowId) {
+          getWindowFromId(windowId).MsgFilters(email, null);
         },
         async resetMessagePane() {
           for (const win of Services.wm.getEnumerator("mail:3pane")) {
@@ -566,6 +580,142 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
           } else {
             Services.perms.add(uri, "image", Services.perms.ALLOW_ACTION);
           }
+        },
+        async beginReply(id, type) {
+          let msgHdr = context.extension.messageManager.get(id);
+          let compType;
+          switch (type) {
+            case "replyToSender":
+              compType = Ci.nsIMsgCompType.ReplyToSender;
+              break;
+            case "replyToAll":
+              compType = Ci.nsIMsgCompType.ReplyAll;
+              break;
+            case "replyToList":
+              compType = Ci.nsIMsgCompType.ReplyToList;
+              break;
+          }
+          Services.wm
+            .getMostRecentWindow("mail:3pane")
+            .ComposeMessage(
+              compType,
+              Ci.nsIMsgCompFormat.Default,
+              msgHdr.folder,
+              [msgHdr.folder.getUriForMsg(msgHdr)]
+            );
+        },
+        async beginForward(id, type) {
+          let msgHdr = context.extension.messageManager.get(id);
+          let compType =
+            type == "forwardAsAttachment"
+              ? Ci.nsIMsgCompType.ForwardAsAttachment
+              : Ci.nsIMsgCompType.ForwardInline;
+          Services.wm
+            .getMostRecentWindow("mail:3pane")
+            .ComposeMessage(
+              compType,
+              Ci.nsIMsgCompFormat.Default,
+              msgHdr.folder,
+              [msgHdr.folder.getUriForMsg(msgHdr)]
+            );
+        },
+        async beginEdit(id, type) {
+          let msgHdr = context.extension.messageManager.get(id);
+          let compType =
+            type == "editAsNew"
+              ? Ci.nsIMsgCompType.Template
+              : Ci.nsIMsgCompType.Draft;
+          Services.wm
+            .getMostRecentWindow("mail:3pane")
+            .ComposeMessage(
+              compType,
+              Ci.nsIMsgCompFormat.Default,
+              msgHdr.folder,
+              [msgHdr.folder.getUriForMsg(msgHdr)]
+            );
+        },
+        async ignorePhishing(id) {
+          let msgHdr = context.extension.messageManager.get(id);
+          msgHdr.setUint32Property("notAPhishMessage", 1);
+          // Force a commit of the underlying msgDatabase.
+          msgHdr.folder.msgDatabase = null;
+        },
+        async getFolderName(id) {
+          let msgHdr = context.extension.messageManager.get(id);
+          let folderStr = msgHdr.folder.prettyName;
+          let folder = msgHdr.folder;
+          while (folder.parent) {
+            folder = folder.parent;
+            folderStr = folder.name + "/" + folderStr;
+          }
+          return folderStr;
+        },
+        async downloadAllAttachments(id) {
+          let msgHdr = context.extension.messageManager.get(id);
+          let attachments = await new Promise((resolve) => {
+            MsgHdrToMimeMessage(msgHdr, null, async (aMsgHdr, aMimeMsg) => {
+              if (!aMimeMsg) {
+                return;
+              }
+              resolve(
+                aMimeMsg.allUserAttachments.filter((x) => x.isRealAttachment)
+              );
+            });
+          });
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
+          let msgUri = msgHdrGetUri(msgHdr);
+          win.HandleMultipleAttachments(
+            attachments.map((att) => getAttachmentInfo(win, msgUri, att)),
+            "save"
+          );
+        },
+        async downloadAttachment(id, attachmentUrl) {
+          let msgHdr = context.extension.messageManager.get(id);
+          let attachment = await new Promise((resolve) => {
+            MsgHdrToMimeMessage(msgHdr, null, async (aMsgHdr, aMimeMsg) => {
+              if (!aMimeMsg) {
+                return;
+              }
+              resolve(
+                aMimeMsg.allUserAttachments.find((x) => x.url == attachmentUrl)
+              );
+            });
+          });
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
+          let msgUri = msgHdrGetUri(msgHdr);
+          getAttachmentInfo(win, msgUri, attachment).save();
+        },
+        async openAttachment(id, attachmentUrl) {
+          let msgHdr = context.extension.messageManager.get(id);
+          let attachment = await new Promise((resolve) => {
+            MsgHdrToMimeMessage(msgHdr, null, async (aMsgHdr, aMimeMsg) => {
+              if (!aMimeMsg) {
+                return;
+              }
+              resolve(
+                aMimeMsg.allUserAttachments.find((x) => x.url == attachmentUrl)
+              );
+            });
+          });
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
+          let msgUri = msgHdrGetUri(msgHdr);
+          getAttachmentInfo(win, msgUri, attachment).open();
+        },
+        async detachAttachment(id, attachmentUrl, shouldSave) {
+          let msgHdr = context.extension.messageManager.get(id);
+          let attachment = await new Promise((resolve) => {
+            MsgHdrToMimeMessage(msgHdr, null, async (aMsgHdr, aMimeMsg) => {
+              if (!aMimeMsg) {
+                return;
+              }
+              resolve(
+                aMimeMsg.allUserAttachments.find((x) => x.url == attachmentUrl)
+              );
+            });
+          });
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
+          let msgUri = msgHdrGetUri(msgHdr);
+          getAttachmentInfo(win, msgUri, attachment).detach(shouldSave);
         },
         onCallAPI: new ExtensionCommon.EventManager({
           context,

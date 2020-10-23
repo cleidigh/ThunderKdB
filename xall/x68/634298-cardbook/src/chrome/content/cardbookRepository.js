@@ -1342,7 +1342,7 @@ var cardbookRepository = {
 			}
 			for (var i = 0; i < result.length; i++) {
 				var resultArray = result[i];
-				if ((resultArray[0] == "true") && ((resultArray[2] == aIdentityKey) || (resultArray[2] == "allMailAccounts"))) {
+				if ((resultArray[0] == "true") && (resultArray[3] != "") && ((resultArray[2] == aIdentityKey) || (resultArray[2] == "allMailAccounts"))) {
 					if (resultArray[1] == "include") {
 						ABInclRestrictions[resultArray[3]] = 1;
 						if (resultArray[4]) {

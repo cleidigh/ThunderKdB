@@ -1,0 +1,48 @@
+[
+  {
+    "namespace": "legacyprefs",
+    "functions": [
+      {
+        "name": "getPref",
+        "type": "function",
+        "description": "Gets a preference.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "The preference name"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "The preference type"
+          },
+          {
+            "name": "base",
+            "type": "string",
+            "description": "The preference base"
+          }
+        ]
+      },
+      {
+        "name": "getPassword",
+        "type": "function",
+        "description": "Gets password from credentials.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "userid",
+            "type": "string",
+            "description": "The userid"
+          },
+          {
+            "name": "hostname",
+            "type": "string",
+            "description": "The hostname name"
+          }
+        ]
+      }
+    ]
+  }
+]

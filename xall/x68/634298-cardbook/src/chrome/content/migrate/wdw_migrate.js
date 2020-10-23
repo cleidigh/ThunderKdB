@@ -15,7 +15,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 		allLists : {},
 
-		translateStandardCards: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABCard, aVersion, aDateFormat, aMode) {
+		translateStandardCards: function (aDirPrefIdTarget, aDirPrefIdTargetName, aABCard, aVersion, aDateFormat) {
 			try {
 				var myCard = new cardbookCardParser();
 				myCard.dirPrefId = aDirPrefIdTarget;
@@ -110,8 +110,6 @@ if ("undefined" == typeof(wdw_migrate)) {
 				}
 				wdw_migrate.getNotNullFn(myCard, aABCard);
 				
-				cardbookRepository.cardbookUtils.setCalculatedFields(myCard);
-				
 				// import categories
 				try {
 					let catsArray = [];
@@ -125,8 +123,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 					myCard.categories = JSON.parse(JSON.stringify(finalcatArray));
 				} catch (e) {}
 				
-				cardbookRepository.addCardToRepository(myCard, aMode);
-				cardbookRepository.cardbookUtils.formatStringForOutput("cardCreated", [aDirPrefIdTargetName, myCard.fn]);
+				cardbookRepository.saveCard({}, myCard, "", true);
 
 				var email = aABCard.getProperty("PrimaryEmail", "");
 				var emailValue = aABCard.getProperty("PopularityIndex", "0");
@@ -145,7 +142,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 		getSolvedListNumber: function () {
 			var result = 0;
-			for (i in wdw_migrate.allLists) {
+			for (let i in wdw_migrate.allLists) {
 				if (wdw_migrate.allLists[i].solved) {
 					result++;
 				}
@@ -173,7 +170,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 		},
 
-		translateStandardLists: function (aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aMode) {
+		translateStandardLists: function (aDirPrefIdTarget, aDirPrefIdTargetName, aVersion) {
 			try {
 				var myBeforeNumber = wdw_migrate.getSolvedListNumber();
 				var myAfterNumber = 0;
@@ -208,11 +205,9 @@ if ("undefined" == typeof(wdw_migrate)) {
 								catch (e) {}
 							}
 
-							cardbookRepository.cardbookUtils.parseLists(myCard, myTargetMembers, "group");
-							cardbookRepository.cardbookUtils.setCalculatedFields(myCard);
+							cardbookRepository.cardbookUtils.addMemberstoCard(myCard, myTargetMembers, "group");
 							
-							cardbookRepository.addCardToRepository(myCard, aMode);
-							cardbookRepository.cardbookUtils.formatStringForOutput("cardCreated", [aDirPrefIdTargetName, myCard.fn]);
+							cardbookRepository.saveCard({}, myCard, "", true);
 							cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
 
 							wdw_migrate.allLists[listName].solved = true;
@@ -260,7 +255,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 		},
 
-		importCards: function (aDirPrefIdSource, aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aMode) {
+		importCards: function (aDirPrefIdSource, aDirPrefIdTarget, aDirPrefIdTargetName, aVersion) {
 			for (let book of MailServices.ab.directories) {
 				if (book.dirPrefId == aDirPrefIdSource) {
 					var abCardsEnumerator = book.childCards;
@@ -271,7 +266,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
 							let myDateFormat = cardbookRepository.getDateFormat(aDirPrefIdTarget, aVersion);
 							Services.tm.currentThread.dispatch({ run: function() {
-								wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aVersion, myDateFormat, aMode);
+								wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aVersion, myDateFormat);
 							}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 						}
 					}
@@ -287,7 +282,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
 						}
 					}
-					wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, aVersion, aMode);
+					wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, aVersion);
 					break;
 				}
 			}

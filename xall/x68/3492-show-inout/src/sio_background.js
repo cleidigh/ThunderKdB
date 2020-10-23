@@ -58,6 +58,34 @@ debug('no preferences to migrate: '+JSON.stringify(prefs));
 messenger.browserAction.onClicked.addListener(() => {
   messenger.runtime.openOptionsPage();
 });
+
+let listener=(async (info)=> {
+debug('some addon changed');
+	let changed=await messenger.sio.addonChanged('background');
+	if (changed===null) {
+debug(' options window does the work');
+		return;
+	}
+	let colsObj=await messenger.storage.local.get('Columns');
+debug('Columns='+colsObj.Columns);
+	let cols=colsObj.Columns.split(/\s*,\s*/);
+	changed.forEach((label, id) => {
+debug(' changed '+id+'->'+(label?label:'(removed)'));
+		if (!label) {	//remove from prefs
+			let i=cols.indexOf(id);
+			if (i>=0) cols.splice(i, 1);
+		}
+	});
+	colsObj.Columns=cols.join(',');
+debug('Columns now '+colsObj.Columns);
+  messenger.storage.local.set(colsObj);
+});
+
+messenger.management.onInstalled.addListener(listener);
+messenger.management.onUninstalled.addListener(listener);
+messenger.management.onEnabled.addListener(listener);
+messenger.management.onDisabled.addListener(listener);
+
 function debug(txt) {
 	if (dodebug) console.log('SIO: '+txt);
 }

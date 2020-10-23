@@ -35,11 +35,21 @@
         "type": "function",
         "async": true,
         "parameters": [
-          {
-            "name": "prefs",
-            "type": "any",
-            "description": "The current preference"
-          }
+					{
+						"name": "prefs",
+						"type": "any",
+						"description": "The current preference"
+					},
+					{
+						"name": "col",
+						"type": "string",
+						"description": "Name of columns to change (if any)"
+					},
+					{
+						"name": "state",
+						"type": "boolean",
+						"description": "The state of the col"
+					}
         ]
       },
       {
@@ -48,6 +58,19 @@
         "type": "function",
         "async": true,
         "parameters": [ ]
+      },
+      {
+        "name": "addonChanged",
+        "description": "Some addon changed, recheck custom columns",
+        "type": "function",
+        "async": true,
+        "parameters": [ 
+					{
+						"name": "who",
+						"type": "string",
+						"description": "Who is calling"
+					}
+				]
       }
 
     ]

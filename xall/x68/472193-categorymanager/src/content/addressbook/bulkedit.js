@@ -1,11 +1,30 @@
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
+Services.scriptloader.loadSubScript("chrome://sendtocategory/content/scripts/i18n.js");
 
 var jbCatMan = window.opener.jbCatMan;
 var jbCatManBulkEdit = {}
 
-jbCatManBulkEdit.getCardsFromEmail = function (email) {
-  let abURI = jbCatMan.getWorkAbUri(MailServices.ab.getDirectory(jbCatMan.bulk.selectedDirectory));
+function initLocales(acceptLabel, cancelLabel) {
+  let extension = jbCatMan.extension
+  i18n.updateDocument({ extension });
+  // Historically, a few locales are mapped to javascrip variables
+  jbCatMan.locale.descriptionNoPrimaryEmail = extension.localeData.localizeMessage("sendtocategory.bulkedit.membersWithoutPrimaryEmail");
+  jbCatMan.locale.bulkEditNoName = extension.localeData.localizeMessage("sendtocategory.bulkedit.noname");
+  jbCatMan.locale.bulkEditChoose = extension.localeData.localizeMessage("sendtocategory.bulkedit.choose");
   
+  if (document.documentElement.getButton("accept") && acceptLabel) {
+    document.documentElement.getButton("accept").label = extension.localeData.localizeMessage(acceptLabel);
+  }
+  
+  if (document.documentElement.getButton("cancel") && cancelLabel) {
+    document.documentElement.getButton("cancel").label = extension.localeData.localizeMessage(cancelLabel);
+  }
+}
+
+
+jbCatManBulkEdit.getCardsFromEmail = async function (email) { 
   let EmailQuery = "(PrimaryEmail,bw,@V)(SecondEmail,bw,@V)";
   let searchQuery = EmailQuery.replace(/@V/g, encodeURIComponent(email));
 
@@ -15,14 +34,15 @@ jbCatManBulkEdit.getCardsFromEmail = function (email) {
   } else if (email.indexOf("googlemail.com")>0) {
     searchQuery = searchQuery + EmailQuery.replace(/@V/g, encodeURIComponent(email.replace("googlemail.com","gmail.com")));
   }
-  return MailServices.ab.getDirectory(abURI + "?" + "(or" + searchQuery + ")").childCards;
+  return await jbCatMan.searchDirectory(jbCatMan.bulk.selectedDirectory + "?" + "(or" + searchQuery + ")");
 }
 
 
 
-jbCatManBulkEdit.loadBulkList = function () {
+jbCatManBulkEdit.loadBulkList = async function () {
   document.title = window.arguments[1];
   let abURI = window.opener.GetSelectedDirectory();
+  initLocales("sendtocategory.bulkedit.validate.button", "sendtocategory.cancel.button");
 
   let emails = [];
   let cardsWithoutEmails = 0;
@@ -30,11 +50,9 @@ jbCatManBulkEdit.loadBulkList = function () {
   jbCatMan.bulk.categoryFilter = window.arguments[0];
 
   let searchstring =  jbCatMan.getCategorySearchString(abURI, jbCatMan.bulk.categoryFilter);
-  let cards = MailServices.ab.getDirectory(searchstring).childCards;
+  let cards = await jbCatMan.searchDirectory(searchstring);
   
-  while (cards.hasMoreElements()) {
-    let card = cards.getNext().QueryInterface(Components.interfaces.nsIAbCard);
-
+  for (let card of cards) {
     jbCatMan.bulk.originalMembers.push(jbCatMan.getUIDFromCard(card));
     let email = jbCatMan.getEmailFromCard(card);
     if (email) {
@@ -46,7 +64,7 @@ jbCatManBulkEdit.loadBulkList = function () {
   emails.sort();
 
   //Update Label
-  document.getElementById("CatManBulkTextBoxLabel").value = jbCatMan.locale.bulkTextBoxLabel.replace("##name##","["+ jbCatMan.bulk.categoryFilter[jbCatMan.bulk.categoryFilter.length - 1] +"]");
+  document.getElementById("CatManBulkTextBoxLabel").value = jbCatMan.getLocalizedMessage("sendtocategory.bulkedit.edit.title").replace("##name##","["+ jbCatMan.bulk.categoryFilter[jbCatMan.bulk.categoryFilter.length - 1] +"]");
   document.getElementById("CatManBulkTextBox").value = emails.join("\n");
   
   //give feedback to users about possible category members without any email address, 
@@ -97,6 +115,7 @@ jbCatManBulkEdit.stopme = function (e) {
 
 jbCatManBulkEdit.loadValidateList = function() {
   document.title = window.arguments[1];
+  initLocales("sendtocategory.bulkedit.save.button", "sendtocategory.cancel.button");
 
   jbCatMan.bulk.validatorFields = [];
   jbCatMan.bulk.toBeValidated = [];
@@ -139,7 +158,7 @@ jbCatManBulkEdit.loadValidateList = function() {
 
 
 
-jbCatManBulkEdit.validateEmailList = function (i) {
+jbCatManBulkEdit.validateEmailList = async function (i) {
   if (i < jbCatMan.bulk.toBeValidated.length) {
     let validatorList = document.getElementById("CatManValidatorList");
     let entry = jbCatMan.bulk.toBeValidated[i];
@@ -149,12 +168,7 @@ jbCatManBulkEdit.validateEmailList = function (i) {
     if (entry.email != "") {
       let memberIdx = -1;
 
-      let cardsIterator = jbCatManBulkEdit.getCardsFromEmail(entry.email);
-      let cards = [];
-      while (cardsIterator.hasMoreElements()) {
-              cards.push(cardsIterator.getNext().QueryInterface(Components.interfaces.nsIAbCard));
-      }
-
+      let cards = await jbCatManBulkEdit.getCardsFromEmail(entry.email);
       let newtemplate = null;
 
       switch(cards.length)
@@ -214,15 +228,15 @@ jbCatManBulkEdit.validateEmailList = function (i) {
           newtemplate.removeAttribute("selected");
 
           //add category menu items via DOM manipulation
-          let menuList = document.createElement("menulist");
-          let menuPopup = document.createElement("menupopup");
-          let menuItem = document.createElement("menuitem");
+          let menuList = document.createXULElement("menulist");
+          let menuPopup = document.createXULElement("menupopup");
+          let menuItem = document.createXULElement("menuitem");
           menuItem.setAttribute("label", jbCatMan.locale.bulkEditChoose);
           menuPopup.appendChild(menuItem);
 
           let selectedUID = null;
           for (let j=0;j<cards.length;j++) {
-            let menuItem = document.createElement("menuitem");
+            let menuItem = document.createXULElement("menuitem");
             let value = jbCatMan.getUIDFromCard(cards[j]);
             
             if (memberIdx == j) {
@@ -273,9 +287,10 @@ jbCatManBulkEdit.validateEmailList = function (i) {
 
 jbCatManBulkEdit.saveList = function (){
   document.title = window.arguments[1];
+  initLocales("sendtocategory.bulkedit.close.button");
 
   //Update Label
-  document.getElementById("CatManBulkTextBoxLabel").value = jbCatMan.locale.bulkTextBoxLabel.replace("##name##","["+ jbCatMan.bulk.categoryFilter[jbCatMan.bulk.categoryFilter.length - 1] +"]");
+  document.getElementById("CatManBulkTextBoxLabel").value = jbCatMan.getLocalizedMessage("sendtocategory.bulkedit.save.title").replace("##name##","["+ jbCatMan.bulk.categoryFilter[jbCatMan.bulk.categoryFilter.length - 1] +"]");
 
   //walk recursively through the saveList (DOM richlist) and process item by item
   jbCatMan.bulk.processedUIDs = [];
@@ -284,7 +299,7 @@ jbCatManBulkEdit.saveList = function (){
 
 
 
-jbCatManBulkEdit.saveList_AddCards = function (i) {
+jbCatManBulkEdit.saveList_AddCards = async function (i) {
   let CatManSaverList = document.getElementById("CatManSaverList");
   let category = jbCatMan.bulk.categoryFilter[jbCatMan.bulk.categoryFilter.length - 1];
 
@@ -299,23 +314,23 @@ jbCatManBulkEdit.saveList_AddCards = function (i) {
 
         //OK, DOUBLE, or DOUBLEOK
         let name = UID;
-        let card = jbCatMan.getCardFromUID(UID, jbCatMan.getWorkAbUri(MailServices.ab.getDirectory(jbCatMan.bulk.selectedDirectory)));
+        let card = await jbCatMan.getCardFromUID(UID, jbCatMan.bulk.selectedDirectory);
         let idx = jbCatMan.bulk.originalMembers.indexOf(UID);
 
         //Has this UID been processed already? Do not add the same contact twice
         if (jbCatMan.bulk.processedUIDs.indexOf(UID)!=-1)  {
           //Ignore double contact
           name  = jbCatMan.getUserNamefromCard(card);
-          let row = document.createElement('richlistitem');
-          let cell = document.createElement('label');
+          let row = document.createXULElement('richlistitem');
+          let cell = document.createXULElement('label');
           cell.setAttribute('value',  "skipping contact [" + name + "], because he is already part of ["+ category +"]" );
           row.appendChild(cell);
           CatManSaverList.appendChild(row);
         } else {
           if (card==null) {
               //ERROR
-              let row = document.createElement('richlistitem');
-              let cell = document.createElement('label');
+              let row = document.createXULElement('richlistitem');
+              let cell = document.createXULElement('label');
               cell.setAttribute('value',  "Error: ValidatorList contains unknown UID [" + UID+ "], something is wrong." );
               row.appendChild(cell);
               CatManSaverList.appendChild(row);
@@ -329,8 +344,8 @@ jbCatManBulkEdit.saveList_AddCards = function (i) {
               jbCatMan.setCategoriesforCard(card, cats);
               jbCatMan.modifyCard(card);
               //Log
-              let row = document.createElement('richlistitem');
-              let cell = document.createElement('label');
+              let row = document.createXULElement('richlistitem');
+              let cell = document.createXULElement('label');
               cell.setAttribute('value',  "add contact [" + name+ "] to ["+ category +"]" );
               row.appendChild(cell);
               CatManSaverList.appendChild(row);
@@ -338,8 +353,8 @@ jbCatManBulkEdit.saveList_AddCards = function (i) {
               //Selected card is already part of this category, KEEP IT (remove it from the removelist)
               jbCatMan.bulk.originalMembers.splice(idx, 1);
               //Log
-              let row = document.createElement('richlistitem');
-              let cell = document.createElement('label');
+              let row = document.createXULElement('richlistitem');
+              let cell = document.createXULElement('label');
               cell.setAttribute('value',  "keep contact [" + name + "] in ["+ category +"]" );
               row.appendChild(cell);
               CatManSaverList.appendChild(row);
@@ -360,12 +375,12 @@ jbCatManBulkEdit.saveList_AddCards = function (i) {
         cats.push(category);
         jbCatMan.setCategoriesforCard(card, cats);
 
-        //add the new card to the book and then call modify, which inits sysnc
-        jbCatMan.modifyCard(card);
+        //add the new card to the book
+        MailServices.ab.getDirectory(jbCatMan.bulk.selectedDirectory).addCard(card);
 
         //Log
-        let row = document.createElement('richlistitem');
-        let cell = document.createElement('label');
+        let row = document.createXULElement('richlistitem');
+        let cell = document.createXULElement('label');
         cell.setAttribute('value',  "create new contact [" + jbCatMan.bulk.saveList.childNodes[i].childNodes[1].childNodes[0].getAttribute("value") + " " + jbCatMan.bulk.saveList.childNodes[i].childNodes[1].childNodes[1].getAttribute("value") + " <" + jbCatMan.bulk.saveList.childNodes[i].childNodes[0].childNodes[0].getAttribute("value") +">] and add it to ["+ category +"]" );
         row.appendChild(cell);
         CatManSaverList.appendChild(row);
@@ -384,7 +399,7 @@ jbCatManBulkEdit.saveList_AddCards = function (i) {
 
 
 
-jbCatManBulkEdit.saveList_RemoveCards = function (i) {    
+jbCatManBulkEdit.saveList_RemoveCards = async function (i) {    
   let CatManSaverList = document.getElementById("CatManSaverList");
   let category =  jbCatMan.bulk.categoryFilter[jbCatMan.bulk.categoryFilter.length - 1];
   
@@ -393,19 +408,19 @@ jbCatManBulkEdit.saveList_RemoveCards = function (i) {
 
     let UID = jbCatMan.bulk.originalMembers[i];
     let name = UID;
-    let card = jbCatMan.getCardFromUID(UID, jbCatMan.bulk.selectedDirectory);
+    let card = await jbCatMan.getCardFromUID(UID, jbCatMan.bulk.selectedDirectory);
     if (card==null) {
       // ERROR
-      let row = document.createElement('richlistitem');
-      let cell = document.createElement('label');
+      let row = document.createXULElement('richlistitem');
+      let cell = document.createXULElement('label');
       cell.setAttribute('value',  "Error: RemoveList contains unknown UID [" + UID + "], something is wrong." );
       row.appendChild(cell);
       CatManSaverList.appendChild(row);
     } else if (jbCatMan.getEmailFromCard(card) == false) {
       // This card has no defined email and must not be removed.
       name  = jbCatMan.getUserNamefromCard(card);
-      let row = document.createElement('richlistitem');
-      let cell = document.createElement('label');
+      let row = document.createXULElement('richlistitem');
+      let cell = document.createXULElement('label');
       cell.setAttribute('value',  "keep contact [" + name  + "] in [" + category + "]" );
       row.appendChild(cell);
       CatManSaverList.appendChild(row);
@@ -421,8 +436,8 @@ jbCatManBulkEdit.saveList_RemoveCards = function (i) {
       }
 
       // Log
-      let row = document.createElement('richlistitem');
-      let cell = document.createElement('label');
+      let row = document.createXULElement('richlistitem');
+      let cell = document.createXULElement('label');
       cell.setAttribute('value',  "remove contact [" + name  + "] from [" + category + "]" );
       row.appendChild(cell);
       CatManSaverList.appendChild(row);

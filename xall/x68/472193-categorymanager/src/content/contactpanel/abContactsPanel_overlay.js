@@ -1,39 +1,8 @@
-let loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-loader.loadSubScript("chrome://sendtocategory/content/category_tools.js");
+// Import any needed modules.
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-//###################################################
-// overriding a core thunderbird function
-//###################################################
-
-// The function 'GenerateAddressFromCard' is defined at: https://dxr.mozilla.org/comm-central/source/mail/components/addrbook/content/abCommon.js#596 
-// Overiding this function to fix bugs:
-// 1: Also check for secondary email, if primary not present.
-// 2: Do not return anything (not even the name), if no email present, so that addSelectedAddresses (https://dxr.mozilla.org/comm-central/source/mail/components/addrbook/content/abContactsPanel.js#56) does not add contacts without email.
-function GenerateAddressFromCard(card)
-{
-  if (!card)
-    return "";
-
-  var email;
-
-  if (card.isMailList)
-  {
-    var directory = GetDirectoryFromURI(card.mailListURI);
-    email = directory.description || card.displayName;
-  } else {
-    email = card.primaryEmail 
-    if (email == "") try {email = card.getPropertyAsAString("SecondEmail");} catch (ex) {}
-  }
-
-  if (email) {
-    return MailServices.headerParser.makeMimeAddress(card.displayName, email); //DEPRECATED - check how searchfox fixed it, after they fixed it.
-  } else {
-    return ""
-  }
-}
-
-
-
+// Load an additional JavaScript file.
+Services.scriptloader.loadSubScript("chrome://sendtocategory/content/category_tools.js");
 
 //###################################################
 //adding additional functions to the local jbCatMan Object
@@ -50,6 +19,10 @@ jbCatMan.contactPanelCategoryMenuInit = function () {
   let currentlySelectedAddressbook = document.getElementById('addressbookList').value;
   if (currentlySelectedAddressbook != "") {
     
+    // Reset search. 
+    jbCatMan.updatePeopleSearchInput([]);
+    SetAbView(GetSelectedDirectory());
+  
     jbCatMan.scanCategories(GetSelectedDirectory());
 
     let menulist = document.getElementById("CatManCategoryFilterList");
@@ -58,13 +31,13 @@ jbCatMan.contactPanelCategoryMenuInit = function () {
     for(let i = (itemCount-1); i >= 0; i-- ) menulist.getItemAtIndex(i).remove();
     
     let menupopup = document.getElementById("CatManCategoryFilterListPopup");
-    let newItem = document.createElement("menuitem");
+    let newItem = document.createXULElement("menuitem");
     newItem.setAttribute("label", jbCatMan.locale.placeholderText);
     newItem.setAttribute("value", "");
     menupopup.appendChild( newItem );
     
     for (let i = 0; i < jbCatMan.data.categoryList.length; i++) {
-      let newItem = document.createElement("menuitem");
+      let newItem = document.createXULElement("menuitem");
       newItem.setAttribute("label", "- " + jbCatMan.data.categoryList[i]);
       newItem.setAttribute("value", jbCatMan.data.categoryList[i]);
       menupopup.appendChild( newItem );

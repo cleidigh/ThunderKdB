@@ -806,42 +806,6 @@ var cardbookUtils = {
 		return cardbookUtils.unescapeString1(finalResult);
 	},
 
-	parseLists: function(aCard, aMemberLines, aKindValue) {
-		if (aCard.version == "4.0") {
-			aCard.member = JSON.parse(JSON.stringify(aMemberLines));
-			if (aKindValue) {
-				aCard.kind = aKindValue;
-			} else {
-				aCard.kind = "group";
-			}
-		} else if (aCard.version == "3.0") {
-			var kindCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.kindCustom");
-			var memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
-			for (var i = 0; i < aCard.others.length; i++) {
-				localDelim1 = aCard.others[i].indexOf(":",0);
-				if (localDelim1 >= 0) {
-					var header = aCard.others[i].substr(0,localDelim1);
-					var trailer = aCard.others[i].substr(localDelim1+1,aCard.others[i].length);
-					if (header == kindCustom || header == memberCustom) {
-						aCard.others.splice(i, 1);
-						i--;
-						continue;
-					}
-				}
-			}
-			for (var i = 0; i < aMemberLines.length; i++) {
-				if (i === 0) {
-					if (aKindValue) {
-						aCard.others.push(kindCustom + ":" + aKindValue);
-					} else {
-						aCard.others.push(kindCustom + ":group");
-					}
-				}
-				aCard.others.push(memberCustom + ":" + aMemberLines[i]);
-			}
-		}
-	},
-
 	setCalculatedFieldsWithoutRev: function(aCard) {
 		aCard.isAList = cardbookUtils.isMyCardAList(aCard);
 		if (!aCard.isAList) {
@@ -893,7 +857,7 @@ var cardbookUtils = {
 			let memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
 			if (aCard.isAList) {
 				if (aTargetVersion == "3.0") {
-					cardbookUtils.parseLists(aCard, aCard.member, aCard.kind);
+					cardbookUtils.addMemberstoCard(aCard, aCard.member, aCard.kind);
 					aCard.member = "";
 					aCard.kind = "";
 				} else if (aTargetVersion == "4.0") {
@@ -912,7 +876,7 @@ var cardbookUtils = {
 							j--;
 						}
 					}
-					cardbookUtils.parseLists(aCard, myMembers, myGroup);
+					cardbookUtils.addMemberstoCard(aCard, myMembers, myGroup);
 				}
 			}
 		}
@@ -922,7 +886,6 @@ var cardbookUtils = {
 				converted = true;
 			}
 		}
-		cardbookUtils.setCalculatedFields(aCard);
 		return converted;
 	},
 
@@ -948,6 +911,7 @@ var cardbookUtils = {
 		targetCard.adr = JSON.parse(JSON.stringify(sourceCard.adr));
 		targetCard.tel = JSON.parse(JSON.stringify(sourceCard.tel));
 		targetCard.email = JSON.parse(JSON.stringify(sourceCard.email));
+		targetCard.emails = JSON.parse(JSON.stringify(sourceCard.emails));
 		targetCard.url = JSON.parse(JSON.stringify(sourceCard.url));
 		targetCard.impp = JSON.parse(JSON.stringify(sourceCard.impp));
 		targetCard.categories = JSON.parse(JSON.stringify(sourceCard.categories));
@@ -981,7 +945,10 @@ var cardbookUtils = {
 
 		targetCard.others = JSON.parse(JSON.stringify(sourceCard.others));
 		
-		cardbookUtils.setCalculatedFields(targetCard);
+		targetCard.isAList = sourceCard.isAList;
+		targetCard.cbid = sourceCard.cbid;
+		targetCard.prodid = sourceCard.prodid;
+		targetCard.rev = sourceCard.rev;
 	},
 
 	// not possible to include prefs for ADR field
@@ -1300,7 +1267,7 @@ var cardbookUtils = {
 		aCard.others = myEventsArray.concat(aCard.others);
 	},
 
-	getCardEvents: function(aCardNoteArray, aCardOthers) {
+	getEventsFromCard: function(aCardNoteArray, aCardOthers) {
 		var myResult = [];
 		var myRemainingNote = [];
 		var myRemainingOthers = [];
@@ -1333,57 +1300,41 @@ var cardbookUtils = {
 		while (myRemainingNote[0] == "") {
 			myRemainingNote.shift();
 		}
+		// should parse this, may in wrong order, maybe in lowercase
+		// ITEM1.X-ABDATE;TYPE=PREF:20200910
+		// ITEM1.X-ABLABEL:fiesta
 		var myPGToBeParsed = {};
 		for (var i = 0; i < aCardOthers.length; i++) {
-			var localDelim1 = aCardOthers[i].indexOf(":",0);
-			if (localDelim1 >= 0) {
-				var vCardDataArrayHeader = aCardOthers[i].substr(0, localDelim1).trim();
-				var vCardDataArrayTrailer = aCardOthers[i].substr(localDelim1+1, aCardOthers[i].length).trim();
-				var localDelim2 = vCardDataArrayHeader.indexOf(";",0);
-				if (localDelim2 >= 0) {
-					var vCardDataArrayHeaderKey = vCardDataArrayHeader.substr(0,localDelim2).toUpperCase();
-					var vCardDataArrayHeaderOption = vCardDataArrayHeader.substr(localDelim2+1,vCardDataArrayHeader.length);
-				} else {
-					var vCardDataArrayHeaderKey = vCardDataArrayHeader.toUpperCase();
-					var vCardDataArrayHeaderOption = "";
+			var relative = []
+			relative = aCardOthers[i].match(/^ITEM([0-9]*)\.(.*)\:(.*)/i);
+			if (relative && relative[1] && relative[2] && relative[3]) {
+				var myPGName = "ITEM" + relative[1];
+				var relativeKey = relative[2].match(/^([^\;]*)/i);
+				var key = relativeKey[1].toUpperCase();
+				if (!myPGToBeParsed[myPGName]) {
+					myPGToBeParsed[myPGName] = ["", "", "", ""];
 				}
-				if (vCardDataArrayHeaderKey.endsWith(".X-ABDATE")) {
-					var myPGName = vCardDataArrayHeaderKey.replace(".X-ABDATE", "").toUpperCase();
-					if (!myPGToBeParsed[myPGName]) {
-						myPGToBeParsed[myPGName] = ["", "", false];
-					}
-					myPGToBeParsed[myPGName][0] = vCardDataArrayTrailer;
-					if (cardbookUtils.getPrefBooleanFromTypes([vCardDataArrayHeaderOption])) {
-						myPGToBeParsed[myPGName][2] = true;
-					}
-				} else if (vCardDataArrayHeader.endsWith(".X-ABLABEL")) {
-					var myPGName = vCardDataArrayHeader.replace(".X-ABLABEL", "").toUpperCase();
-					if (!myPGToBeParsed[myPGName]) {
-						myPGToBeParsed[myPGName] = ["", "", false];
-					}
-					myPGToBeParsed[myPGName][1] = vCardDataArrayTrailer;
+				if (relative[2].toUpperCase().startsWith("X-ABLABEL")) {
+					myPGToBeParsed[myPGName][1] = relative[3];
 				} else {
-					myRemainingOthers.push(aCardOthers[i]);
+					myPGToBeParsed[myPGName][0] = relative[3];
+					myPGToBeParsed[myPGName][2] = relative[2].replace(key, "");
+					myPGToBeParsed[myPGName][3] = key;
 				}
 			} else {
 				myRemainingOthers.push(aCardOthers[i]);
 			}
 		}
 		for (var i in myPGToBeParsed) {
-			if (myPGToBeParsed[i][0] != "" && myPGToBeParsed[i][1] != "") {
+			if (myPGToBeParsed[i][3] == "X-ABDATE") {
 				myResult.push([myPGToBeParsed[i][0], myPGToBeParsed[i][1], myPGToBeParsed[i][2]]);
-			} else if (myPGToBeParsed[i][0] != "") {
+			} else {
 				if (myPGToBeParsed[i][2]) {
-					myRemainingOthers.push(i + ".X-ABLABEL;TYPE=PREF:" + myPGToBeParsed[i][1]);
+					myRemainingOthers.push(i + "." + myPGToBeParsed[i][3] + myPGToBeParsed[i][2] + ":" + myPGToBeParsed[i][0]);
 				} else {
-					myRemainingOthers.push(i + ".X-ABLABEL:" + myPGToBeParsed[i][1]);
+					myRemainingOthers.push(i + "." + myPGToBeParsed[i][3] + ":" + myPGToBeParsed[i][0]);
 				}
-			} else if (myPGToBeParsed[i][1] != "") {
-				if (myPGToBeParsed[i][2]) {
-					myRemainingOthers.push(i + ".X-ABDATE;TYPE=PREF:" + myPGToBeParsed[i][0]);
-				} else {
-					myRemainingOthers.push(i + ".X-ABDATE:" + myPGToBeParsed[i][0]);
-				}
+				myRemainingOthers.push(i + ".X-ABLABEL:" + myPGToBeParsed[i][1]);
 			}
 		}
 		return {result: myResult, remainingNote: myRemainingNote, remainingOthers: myRemainingOthers};
@@ -1884,42 +1835,90 @@ var cardbookUtils = {
 				
 		function _convert(aList) {
 			recursiveList.push(aList.cbid);
-			if (aList.version == "4.0") {
-				for (let member of aList.member) {
-					if (member.startsWith("mailto:")) {
-						continue;
-					} else {
-						var uid = member.replace("urn:uuid:", "");
-						if (cardbookRepository.cardbookCards[aList.dirPrefId+"::"+uid]) {
-							var myTargetCard = cardbookRepository.cardbookCards[aList.dirPrefId+"::"+uid];
-							_getEmails(myTargetCard);
-						}
+			let myMembers = cardbookRepository.cardbookUtils.getMembersFromCard(aList);
+			for (let card of myMembers.uids) {
+				_getEmails(card);
+			}
+		};
+		_convert(aList);
+		return uidResult;
+	},
+
+	getMembersFromCard: function (aCard) {
+		let result = { mails: [], uids: [], kind: "" };
+		if (aCard.version == "4.0") {
+			result.kind = aCard.kind;
+			for (let member of aCard.member) {
+				if (member.startsWith("mailto:")) {
+					result.mails.push(member.replace("mailto:", ""));
+				} else {
+					let uid = member.replace("urn:uuid:", "");
+					if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid]) {
+						result.uids.push(cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid]);
 					}
 				}
-			} else if (aList.version == "3.0") {
-				var memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
-				for (let other of aList.others) {
-					var localDelim1 = other.indexOf(":",0);
-					if (localDelim1 >= 0) {
-						var header = other.substr(0,localDelim1);
-						var trailer = other.substr(localDelim1+1,other.length);
-						if (header == memberCustom) {
-							if (trailer.startsWith("mailto:")) {
-								continue;
-							} else {
-								var uid = trailer.replace("urn:uuid:", "");
-								if (cardbookRepository.cardbookCards[aList.dirPrefId+"::"+uid]) {
-									var myTargetCard = cardbookRepository.cardbookCards[aList.dirPrefId+"::"+uid];
-									_getEmails(myTargetCard);
-								}
+			}
+		} else if (aCard.version == "3.0") {
+			var kindCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.kindCustom");
+			var memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
+			result.kind = aCard.kind;
+			for (let other of aCard.others) {
+				var localDelim1 = other.indexOf(":",0);
+				if (localDelim1 >= 0) {
+					var header = other.substr(0,localDelim1);
+					var trailer = other.substr(localDelim1+1,other.length);
+					if (header == kindCustom) {
+						result.kind = trailer;
+					} else if (header == memberCustom) {
+						if (trailer.startsWith("mailto:")) {
+							result.mails.push(trailer.replace("mailto:", ""));
+						} else {
+							let uid = trailer.replace("urn:uuid:", "");
+							if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid]) {
+								result.uids.push(cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid]);
 							}
 						}
 					}
 				}
 			}
-		};
-		_convert(aList);
-		return uidResult;
+		}
+		return result;
+	},
+
+	addMemberstoCard: function(aCard, aMemberLines, aKindValue) {
+		if (aCard.version == "4.0") {
+			aCard.member = JSON.parse(JSON.stringify(aMemberLines));
+			if (aKindValue) {
+				aCard.kind = aKindValue;
+			} else {
+				aCard.kind = "group";
+			}
+		} else if (aCard.version == "3.0") {
+			var kindCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.kindCustom");
+			var memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
+			for (var i = 0; i < aCard.others.length; i++) {
+				localDelim1 = aCard.others[i].indexOf(":",0);
+				if (localDelim1 >= 0) {
+					var header = aCard.others[i].substr(0,localDelim1);
+					var trailer = aCard.others[i].substr(localDelim1+1,aCard.others[i].length);
+					if (header == kindCustom || header == memberCustom) {
+						aCard.others.splice(i, 1);
+						i--;
+						continue;
+					}
+				}
+			}
+			for (var i = 0; i < aMemberLines.length; i++) {
+				if (i === 0) {
+					if (aKindValue) {
+						aCard.others.push(kindCustom + ":" + aKindValue);
+					} else {
+						aCard.others.push(kindCustom + ":group");
+					}
+				}
+				aCard.others.push(memberCustom + ":" + aMemberLines[i]);
+			}
+		}
 	},
 
 	getMimeEmailsFromCards: function (aListOfCards, aOnlyEmail) {

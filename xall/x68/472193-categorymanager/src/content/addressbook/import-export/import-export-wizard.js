@@ -1,22 +1,23 @@
+// Import any needed modules.
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
 var jbCatMan = window.opener.jbCatMan;
 var jbCatManWizard = {};
 
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
-
-let loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-loader.loadSubScript("chrome://sendtocategory/content/parser/csv/csv.js");
-//loader.loadSubScript("chrome://sendtocategory/content/parser/vcf/vcard.js");
-//loader.loadSubScript("chrome://sendtocategory/content/parser/vcf/vcf.js");
+Services.scriptloader.loadSubScript("chrome://sendtocategory/content/parser/csv/csv.js");
+Services.scriptloader.loadSubScript("chrome://sendtocategory/content/scripts/i18n.js");
+//Services.scriptloader.loadSubScript("chrome://sendtocategory/content/parser/vcf/vcard.js");
+//Services.scriptloader.loadSubScript("chrome://sendtocategory/content/parser/vcf/vcf.js");
 
 /* TODO 
   - do not export empty cols?
 */
 
-
-
-
-
-jbCatManWizard.Init = function () {
+jbCatManWizard.Init = async function () {
+  i18n.updateDocument({ extension: window.opener.jbCatMan.extension });
+  // bug https://bugzilla.mozilla.org/show_bug.cgi?id=1618252
+  document.getElementById('CatManWizard')._adjustWizardHeader();
   
   // Get the passed filter.
   jbCatManWizard.categoryFilter = window.arguments[0];
@@ -24,8 +25,8 @@ jbCatManWizard.Init = function () {
   // Define all allowed file extensions. The XUL wizard MUST contain an landing page for import
   // and export for each extension: CatManWizardImport_EXT and CatManWizardExport_EXT
   jbCatManWizard.filetypes = {};
-  jbCatManWizard.filetypes.csv = document.getElementById('sendtocategory.wizard.types.csv').value;
-  //jbCatManWizard.filetypes.vcf = document.getElementById('sendtocategory.wizard.types.vcf').value;
+  jbCatManWizard.filetypes.csv = jbCatMan.getLocalizedMessage('sendtocategory.wizard.types.csv');
+  //jbCatManWizard.filetypes.vcf = jbCatMan.getLocalizedMessage('sendtocategory.wizard.types.vcf');
 
   // Define all fields, which are not allowed to be imported/exported, because they are managed by TB itself.
   jbCatManWizard.forbiddenFields = ["DbRowID","RecordKey","LastRecordKey","UID"];
@@ -83,7 +84,8 @@ jbCatManWizard.Init = function () {
     ];
     
     
-  jbCatManWizard.currentAddressBook = MailServices.ab.getDirectory(window.opener.GetSelectedDirectory()); //GetSelectedDirectory() returns an URI, but we need the directory itself
+  jbCatManWizard.currentAddressBookUri = window.opener.GetSelectedDirectory();
+  jbCatManWizard.currentAddressBook = MailServices.ab.getDirectory(jbCatManWizard.currentAddressBookUri); //GetSelectedDirectory() returns an URI, but we need the directory itself
   jbCatManWizard.timestamp = "Import_" + (new Date()).toISOString().substring(0, 19);
     
   // Show option to export only the categories of the passed categoryFilter, if that is provided.
@@ -93,7 +95,7 @@ jbCatManWizard.Init = function () {
   
   if (hasSelectedCategories) {
     // user selected a category
-    jbCatManWizard.exportsize = jbCatMan.getNumberOfFilteredCards(jbCatManWizard.currentAddressBook.URI, jbCatManWizard.categoryFilter);
+    jbCatManWizard.exportsize = await jbCatMan.getNumberOfFilteredCards(jbCatManWizard.currentAddressBook.URI, jbCatManWizard.categoryFilter);
   } else if (jbCatManWizard.categoryFilter == "uncategorized") {
     jbCatManWizard.exportsize = jbCatMan.data.cardsWithoutCategories.length;    
   } else { // all
@@ -173,8 +175,8 @@ jbCatManWizard.Init = function () {
 
 /* Disable back button on last page */
 jbCatManWizard.finishWizard = function () {
-  document.documentElement.getButton("back").hidden=true;
-  document.documentElement.getButton("cancel").hidden=true;
+  document.getElementById('CatManWizard').getButton("back").hidden=true;
+  document.getElementById('CatManWizard').getButton("cancel").hidden=true;
 }
 
 
@@ -201,7 +203,7 @@ jbCatManWizard.onpageadvanced = function (curPage) {
   if (typeof typeFunction === 'function') {
       this.advance = true;
       this.more = true;
-      window.openDialog("chrome://sendtocategory/content/addressbook/import-export/progress.xul", "progress-window", "modal,dialog,centerscreen,chrome,resizable=no,width=300, height=20", type);
+      window.openDialog("chrome://sendtocategory/content/addressbook/import-export/progress.xhtml", "progress-window", "modal,dialog,centerscreen,chrome,resizable=no,width=300, height=20", type);
       if (!this.advance) return false;
   }
   
@@ -211,8 +213,8 @@ jbCatManWizard.onpageadvanced = function (curPage) {
     case "CatManWizardMode":
       let nsIFilePicker = Components.interfaces.nsIFilePicker;
       let fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-      if (document.getElementById('CatManWizardMode').value == "Export") fp.init(window, document.getElementById('sendtocategory.wizard.mode.export.selectfile').value , nsIFilePicker.modeSave);
-      else fp.init(window, document.getElementById('sendtocategory.wizard.mode.import.selectfile').value, nsIFilePicker.modeOpen);
+      if (document.getElementById('CatManWizardMode').value == "Export") fp.init(window, jbCatMan.getLocalizedMessage('sendtocategory.wizard.mode.export.selectfile') , nsIFilePicker.modeSave);
+      else fp.init(window, jbCatMan.getLocalizedMessage('sendtocategory.wizard.mode.import.selectfile'), nsIFilePicker.modeOpen);
 
       // add all allowed file types
       let extAtIndex = [];
@@ -258,7 +260,7 @@ jbCatManWizard.onpageadvanced = function (curPage) {
   if (typeof typeFunction === 'function') {
       this.advance = true;
       this.more = true;
-      window.openDialog("chrome://sendtocategory/content/addressbook/import-export/progress.xul", "progress-window", "modal,dialog,centerscreen,chrome,resizable=no,width=300, height=20", type);
+      window.openDialog("chrome://sendtocategory/content/addressbook/import-export/progress.xhtml", "progress-window", "modal,dialog,centerscreen,chrome,resizable=no,width=300, height=20", type);
       if (!this.advance) return false;
   }
 
@@ -359,7 +361,7 @@ jbCatManWizard.ProgressBefore_Import_Mapping_CSV = function (dialog, step = 0) {
       //re-read file with selected encoding
       jbCatManWizard.fileContent = jbCatManWizard.readFile(jbCatManWizard.fileObj, document.getElementById("CatManWizardImportCsvCharset").value);
       if (jbCatManWizard.fileContent.trim().length == 0) {
-        alert(document.getElementById('sendtocategory.wizard.import.error.empty').value);
+        alert(jbCatMan.getLocalizedMessage('sendtocategory.wizard.import.error.empty'));
         dialog.done(false);
       }
     break;
@@ -367,7 +369,7 @@ jbCatManWizard.ProgressBefore_Import_Mapping_CSV = function (dialog, step = 0) {
     case 2:
       //parse file with selected options
       jbCatManWizard.csv = new CSVParser(jbCatManWizard.fileContent, {textIdentifier : jbCatManWizard.csvTextIdentifier[document.getElementById('CatManWizardImportCsvTextIdentifier').selectedIndex], fieldSeparator : jbCatManWizard.csvDelimiter[document.getElementById('CatManWizardImportCsvDelimiter').selectedIndex], strict : true,  ignoreEmpty: true});
-      try {jbCatManWizard.csv.parse();} catch (e) {alert (document.getElementById('sendtocategory.wizard.import.error.csv').value); dialog.done(false);}
+      try {jbCatManWizard.csv.parse();} catch (e) {alert (jbCatMan.getLocalizedMessage('sendtocategory.wizard.import.error.csv')); dialog.done(false);}
     break;
 
     case 3:
@@ -392,21 +394,21 @@ jbCatManWizard.ProgressBefore_Import_Mapping_CSV = function (dialog, step = 0) {
       {
         let mappingList = document.getElementById("CatManWizardImport_Mapping_CSV");
         for (let x=0; x<jbCatManWizard.datafields.length; x++) {
-          let newListEntry = document.createElement("richlistitem");
+          let newListEntry = document.createXULElement("richlistitem");
           
-          let labelBox = document.createElement("hbox");
+          let labelBox = document.createXULElement("hbox");
           labelBox.setAttribute("align", "center");
           labelBox.setAttribute("style", "width:210px");
-            let label = document.createElement("label");
+            let label = document.createXULElement("label");
             label.setAttribute("crop", "end");
             label.setAttribute("value", jbCatManWizard.datafields[x]);
             labelBox.appendChild(label);
           newListEntry.appendChild(labelBox);
           
-          let menupopup = document.createElement("menupopup");
+          let menupopup = document.createXULElement("menupopup");
           //append standardFields
           for (let i=0; i <  jbCatManWizard.standardFields.length; i++) {
-            let menuitem = document.createElement("menuitem");
+            let menuitem = document.createXULElement("menuitem");
             menuitem.setAttribute("value",  jbCatManWizard.standardFields[i]);
             menuitem.setAttribute("label",  jbCatManWizard.standardFields[i]);
             menupopup.appendChild(menuitem);
@@ -414,7 +416,7 @@ jbCatManWizard.ProgressBefore_Import_Mapping_CSV = function (dialog, step = 0) {
           //append selected field, if not in standardFields
           let itemIndex = jbCatManWizard.standardFields.indexOf(jbCatManWizard.datafields[x]);
           if (itemIndex == -1){
-            let menuitem = document.createElement("menuitem");
+            let menuitem = document.createXULElement("menuitem");
             menuitem.setAttribute("value", jbCatManWizard.datafields[x]);
             menuitem.setAttribute("label", jbCatManWizard.datafields[x]);
             menuitem.setAttribute("selected", "true");
@@ -425,9 +427,9 @@ jbCatManWizard.ProgressBefore_Import_Mapping_CSV = function (dialog, step = 0) {
             menupopup.childNodes[itemIndex].setAttribute("style", "font-weight:bold;");
           }
           
-          let menulistBox = document.createElement("hbox");
+          let menulistBox = document.createXULElement("hbox");
           menulistBox.setAttribute("style", "width:210px");
-            let menulist = document.createElement("menulist", { is : "menulist-editable"});
+            let menulist = document.createXULElement("menulist", { is : "menulist-editable"});
             menulist.setAttribute("is", "menulist-editable");
             menulist.setAttribute("editable", "true");
             menulist.setAttribute("flex", "1");
@@ -435,7 +437,7 @@ jbCatManWizard.ProgressBefore_Import_Mapping_CSV = function (dialog, step = 0) {
             menulistBox.appendChild(menulist);
           newListEntry.appendChild(menulistBox);
 
-          let checkbox = document.createElement("checkbox");
+          let checkbox = document.createXULElement("checkbox");
           checkbox.setAttribute("pack", "end");
           checkbox.setAttribute("checked", "true");
           newListEntry.appendChild(checkbox);
@@ -471,7 +473,7 @@ jbCatManWizard.SilentAfter_Import_Mapping_CSV = function () {
     let c = mappingList.getItemAtIndex(i).getElementsByTagName("checkbox")[0].checked;
     if (c && jbCatManWizard.forbiddenFields.indexOf(v) != -1)
     {
-      alert(document.getElementById('sendtocategory.wizard.import.error.reserved').value.replace("##fieldname##",v));
+      alert(jbCatMan.getLocalizedMessage('sendtocategory.wizard.import.error.reserved').replace("##fieldname##",v));
       return false;
     }
     //add fields to header for import - mapout the used fields
@@ -511,8 +513,8 @@ jbCatManWizard.ProgressAfter_Import_Control_CSV = function (dialog, step = 0) {
         //do not add empty properties
         if (value.trim() !=  "") card.setProperty(prop, value);
       }
-      //add the new card to the book and then call modify, which inits sysnc
-      jbCatMan.modifyCard(card);
+      //add the new card to the book
+      MailServices.ab.getDirectory(jbCatManWizard.currentAddressBookUri).addCard(card);
     }
 
     dialog.window.setTimeout(function() { jbCatManWizard.ProgressAfter_Import_Control_CSV(dialog, step); }, 20);
@@ -527,70 +529,63 @@ jbCatManWizard.ProgressAfter_Import_Control_CSV = function (dialog, step = 0) {
  * CSV EXPORT FUNCTIONS 
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-jbCatManWizard.ProgressBefore_Export_CSV = function (dialog, step = 0) {
+jbCatManWizard.ProgressBefore_Export_CSV = async function (dialog) {
   //scan to-be-exported contacts and extract all possible properties for csv header
 
-  if (step == 0) {
-    //get all to-be-exported contatcs
-    let searchstring =  jbCatMan.getCategorySearchString(jbCatManWizard.currentAddressBook.URI, jbCatManWizard.categoryFilter);
-    jbCatManWizard.exportCards = MailServices.ab.getDirectory(searchstring).childCards;
+  //get all to-be-exported contatcs
+  let searchstring =  jbCatMan.getCategorySearchString(jbCatManWizard.currentAddressBook.URI, jbCatManWizard.categoryFilter);
+  let exportCards = await jbCatMan.searchDirectory(searchstring);
 
-    //get all standard thunderbird fields (defined at csv import wizard page)
-    //we no longer do that, but define them in JS
-
-    //reset list of found props with standard fields
-    jbCatManWizard.resetThunderbirdProperties("CatManWizardExport_CSV", jbCatManWizard.standardFields);
-  }
+  //reset list of found props with standard fields
+  jbCatManWizard.resetThunderbirdProperties("CatManWizardExport_CSV", jbCatManWizard.standardFields);
   
-  step = step + 1;
-  if (jbCatManWizard.exportCards.hasMoreElements()) {
-    dialog.setProgressBar(100*step/jbCatManWizard.exportsize);
+  for(let step = 0; step < exportCards.length; step++) {
+    dialog.setProgressBar(100*step/exportCards.length); //jbCatManWizard.exportsize
+    await jbCatMan.sleep(5);
 
     //scan next found card
-    jbCatManWizard.searchThunderbirdProperties(jbCatManWizard.exportCards.getNext().QueryInterface(Components.interfaces.nsIAbCard).properties);
-    dialog.window.setTimeout(function() { jbCatManWizard.ProgressBefore_Export_CSV(dialog, step); }, 20);
-  } else {
-    jbCatManWizard.xuladdThunderbirdProperties("CatManWizardExport_CSV", "CatManExportDataFieldListTemplate", jbCatManWizard.standardFields);
-    dialog.done(true);
+    jbCatManWizard.searchThunderbirdProperties(exportCards[step].properties);
+    dialog.setProgressBar(100*(step+1)/exportCards.length); //jbCatManWizard.exportsize
+    await jbCatMan.sleep(5);
   }
+  jbCatManWizard.xuladdThunderbirdProperties("CatManWizardExport_CSV", "CatManExportDataFieldListTemplate", jbCatManWizard.standardFields);
+  dialog.done(true);
 }
 
 
-jbCatManWizard.ProgressAfter_Export_CSV = function (dialog, step = 0) {
+jbCatManWizard.ProgressAfter_Export_CSV =async function (dialog) {
   //do export
   let delim = document.getElementById("CatManWizardExportCsvDelimiter").value;
   let textident = document.getElementById("CatManWizardExportCsvTextIdentifier").value;
   let linebreak = document.getElementById("CatManWizardExportCsvLinebreak").value.replace("LF","\n").replace("CR","\r");
   let charset = document.getElementById("CatManWizardExportCsvCharset").value;
   
-  if (step == 0) {
-    //init export file
-    jbCatManWizard.initFile(jbCatManWizard.fileObj);
-    //get cards to be exported
-    let searchstring = jbCatMan.getCategorySearchString(jbCatManWizard.currentAddressBook.URI, jbCatManWizard.categoryFilter);
-    jbCatManWizard.exportCards = MailServices.ab.getDirectory(searchstring).childCards;
-    //escape header of all fields which need to be exported
-    let header = [];
-    jbCatManWizard.props2export = [];
-    let exportList = document.getElementById("CatManWizardExport_CSV");
-    for (var i=0; i<exportList.getRowCount(); i++) {
-      let v = exportList.getItemAtIndex(i).childNodes[0].childNodes[0].value;
-      let c = exportList.getItemAtIndex(i).childNodes[1].childNodes[0].checked;
-      
-      //export property if checked or if CatManWizardExport_Categories_CSV is checked
-      if (c || (v==jbCatMan.getCategoryField() && document.getElementById("CatManWizardExport_Categories_CSV").checked)) {
-        jbCatManWizard.props2export.push(v);
-        header.push(jbCatManWizard.csvEscape(v, delim, textident));
-      }
+  //init export file
+  jbCatManWizard.initFile(jbCatManWizard.fileObj);
+  //get cards to be exported
+  let searchstring = jbCatMan.getCategorySearchString(jbCatManWizard.currentAddressBook.URI, jbCatManWizard.categoryFilter);
+  let exportCards = await jbCatMan.searchDirectory(searchstring);
+  //escape header of all fields which need to be exported
+  let header = [];
+  jbCatManWizard.props2export = [];
+  let exportList = document.getElementById("CatManWizardExport_CSV");
+  for (var i=0; i<exportList.getRowCount(); i++) {
+    let v = exportList.getItemAtIndex(i).childNodes[0].childNodes[0].value;
+    let c = exportList.getItemAtIndex(i).childNodes[1].childNodes[0].checked;
+    
+    //export property if checked or if CatManWizardExport_Categories_CSV is checked
+    if (c || (v==jbCatMan.getCategoryField() && document.getElementById("CatManWizardExport_Categories_CSV").checked)) {
+      jbCatManWizard.props2export.push(v);
+      header.push(jbCatManWizard.csvEscape(v, delim, textident));
     }
-
-    jbCatManWizard.appendFile(header.join(delim)+linebreak, charset);
   }
 
-  step = step + 1;
-  if (jbCatManWizard.exportCards.hasMoreElements()) {
-    dialog.setProgressBar(100*step/jbCatManWizard.exportsize);
-    let card = jbCatManWizard.exportCards.getNext().QueryInterface(Components.interfaces.nsIAbCard);
+  jbCatManWizard.appendFile(header.join(delim)+linebreak, charset);
+
+  for(let step = 0; step < exportCards.length; step++) {
+    dialog.setProgressBar(100*step/exportCards.length); //jbCatManWizard.exportsize
+    await jbCatMan.sleep(5);    
+    let card = exportCards[step];
     //get all properties of card and write it to csv file
     let data = [];
     for (let h=0; h<jbCatManWizard.props2export.length; h++) {
@@ -605,14 +600,15 @@ jbCatManWizard.ProgressAfter_Export_CSV = function (dialog, step = 0) {
       data.push(jbCatManWizard.csvEscape(field, delim, textident));
     }
     jbCatManWizard.appendFile(data.join(delim)+linebreak, charset);
-    dialog.window.setTimeout(function() { jbCatManWizard.ProgressAfter_Export_CSV(dialog, step); }, 20);
-  } else {
-    //close csv file
-    jbCatManWizard.closeFile();
-    //update number of exported contacts
-    document.getElementById('CatManWizardExportDesc').textContent = document.getElementById('CatManWizardExportDesc').textContent.replace("##EXPORTNUM##",step-1);
-    dialog.done(true);
+    dialog.setProgressBar(100*(step+1)/exportCards.length); //jbCatManWizard.exportsize
+    await jbCatMan.sleep(5);    
   }
+
+  //close csv file
+  jbCatManWizard.closeFile();
+  //update number of exported contacts
+  document.getElementById('CatManWizardExportDesc').textContent = document.getElementById('CatManWizardExportDesc').textContent.replace("##EXPORTNUM##", exportCards.length);
+  dialog.done(true);
 }
 
 
@@ -876,8 +872,6 @@ jbCatManWizard.importControlView = {
   map: null,
 
   init: function(id, importData, importMap) {
-    const XUL_NS = "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
-
     this.columns = importData[0].slice();
     this.data = importData.slice();
     this.map = importMap;
@@ -909,7 +903,7 @@ jbCatManWizard.importControlView = {
       }
       if (isEmpty) continue;
       
-      let newListEntry = document.createElementNS(XUL_NS, "treecol");
+      let newListEntry = document.createXULElement("treecol");
       newListEntry.setAttribute("id", "CatManimportControlViewCol_" + col); 
       newListEntry.setAttribute("label", this.map[col]);
       newListEntry.setAttribute("width", "160");

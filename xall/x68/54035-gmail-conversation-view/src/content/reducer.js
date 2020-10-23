@@ -16,8 +16,6 @@ const { XPCOMUtils } = ChromeUtils.import(
 XPCOMUtils.defineLazyModuleGetters(this, {
   BrowserSim: "chrome://conversations/content/modules/browserSim.js",
   Conversation: "chrome://conversations/content/modules/conversation.js",
-  MessageUtils: "chrome://conversations/content/modules/message.js",
-  Prefs: "chrome://conversations/content/modules/prefs.js",
   topMail3Pane: "chrome://conversations/content/modules/misc.js",
 });
 
@@ -59,6 +57,7 @@ const initialSummary = {
   tenPxFactor: 0.7,
   subject: "",
   windowId: null,
+  defaultDetailsShowing: false,
 };
 
 function modifyOnlyMsg(currentState, msgUri, modifier) {
@@ -89,6 +88,15 @@ function modifyOnlyMsgId(currentState, id, modifier) {
   return newState;
 }
 
+async function getPreference(name, defaultValue) {
+  const prefs = await browser.storage.local.get("preferences");
+  let value = prefs && prefs.preferences && prefs.preferences[name];
+  if (value === undefined) {
+    return defaultValue;
+  }
+  return value;
+}
+
 const attachmentActions = {
   previewAttachment({ name, url, isPdf, maybeViewable }) {
     return async (dispatch, getState) => {
@@ -114,38 +122,34 @@ const attachmentActions = {
       }
     };
   },
-  downloadAll({ msgUri, attachmentDetails }) {
+  downloadAll({ id }) {
     return async () => {
-      MessageUtils.downloadAllAttachments(
-        topMail3Pane(window),
-        msgUri,
-        attachmentDetails
-      );
+      await browser.conversations.downloadAllAttachments(id);
     };
   },
-  downloadAttachment({ msgUri, attachment }) {
+  downloadAttachment({ id, attachmentUrl }) {
     return async () => {
-      MessageUtils.downloadAttachment(topMail3Pane(window), msgUri, attachment);
+      await browser.conversations.downloadAttachment(id, attachmentUrl);
     };
   },
-  openAttachment({ msgUri, attachment }) {
+  openAttachment({ id, attachmentUrl }) {
     return async () => {
-      MessageUtils.openAttachment(topMail3Pane(window), msgUri, attachment);
+      await browser.conversations.openAttachment(id, attachmentUrl);
     };
   },
-  detachAttachment({ msgUri, attachment, shouldSave }) {
+  detachAttachment({ id, attachmentUrl, shouldSave }) {
     return async () => {
-      MessageUtils.detachAttachment(
-        topMail3Pane(window),
-        msgUri,
-        attachment,
+      await browser.conversations.detachAttachment(
+        id,
+        attachmentUrl,
         shouldSave
       );
     };
   },
-  showGalleryView({ msgUri }) {
+  showGalleryView({ id }) {
     return async (dispatch, getState) => {
-      browser.tabs.create({
+      let msgUri = await browser.conversations.getMessageUriForId(id);
+      await browser.tabs.create({
         url: "/gallery/index.html?uri=" + encodeURI(msgUri),
         windowId: getState().summary.windowId,
       });
@@ -272,10 +276,14 @@ const messageActions = {
       const browserBackgroundColor = await browser.conversations.getCorePref(
         "browser.display.background_color"
       );
+      const defaultDetailsShowing =
+        (await browser.conversations.getCorePref("mail.show_headers")) == 2;
+
       await dispatch({
         type: "SET_SYSTEM_OPTIONS",
         browserForegroundColor,
         browserBackgroundColor,
+        defaultDetailsShowing,
         defaultFontSize,
         OS: platformInfo.os,
         browserVersion: browserInfo.version,
@@ -362,35 +370,46 @@ const messageActions = {
     };
   },
 
-  editDraft({ msgUri, shiftKey }) {
+  editDraft({ id, shiftKey }) {
     return async () => {
-      MessageUtils.editDraft(topMail3Pane(window), msgUri, shiftKey);
+      browser.conversations.beginEdit(id, "editDraft").catch(console.error);
     };
   },
 
-  editAsNew({ msgUri, shiftKey }) {
+  editAsNew({ id, shiftKey }) {
     return async () => {
-      MessageUtils.editAsNew(topMail3Pane(window), msgUri, shiftKey);
+      browser.conversations.beginEdit(id, "editAsNew").catch(console.error);
     };
   },
-  reply({ msgUri, shiftKey }) {
+  reply({ id, shiftKey }) {
     return async () => {
-      MessageUtils.reply(topMail3Pane(window), msgUri, shiftKey);
+      browser.conversations
+        .beginReply(id, "replyToSender")
+        .catch(console.error);
     };
   },
-  replyAll({ msgUri, shiftKey }) {
+  replyAll({ id, shiftKey }) {
     return async () => {
-      MessageUtils.replyAll(topMail3Pane(window), msgUri, shiftKey);
+      browser.conversations.beginReply(id, "replyToAll").catch(console.error);
     };
   },
-  replyList({ msgUri, shiftKey }) {
+  replyList({ id, shiftKey }) {
     return async () => {
-      MessageUtils.replyList(topMail3Pane(window), msgUri, shiftKey);
+      browser.conversations.beginReply(id, "replyToList").catch(console.error);
     };
   },
-  forward({ msgUri, shiftKey }) {
+  forward({ id, shiftKey }) {
     return async () => {
-      MessageUtils.forward(topMail3Pane(window), msgUri, shiftKey);
+      let value = await browser.conversations.getCorePref(
+        "mail.forward_message_mode"
+      );
+      let forwardMode = value === undefined ? 0 : value;
+      browser.conversations
+        .beginForward(
+          id,
+          forwardMode == 0 ? "forwardAsAttachment" : "forwardInline"
+        )
+        .catch(console.error);
     };
   },
   archive({ id }) {
@@ -486,7 +505,10 @@ const messageActions = {
     return async (dispatch, getState) => {
       const state = getState();
       let msgs;
-      if (state.summary.isInTab || Prefs.operate_on_conversations) {
+      if (
+        state.summary.isInTab ||
+        (await getPreference("operate_on_conversations", false))
+      ) {
         msgs = state.messages.msgData.map((msg) => msg.id);
       } else {
         if ("getDisplayedMessages" in browser.messageDisplay) {
@@ -507,7 +529,10 @@ const messageActions = {
     return async (dispatch, getState) => {
       const state = getState();
       let msgs;
-      if (state.summary.isInTab || Prefs.operate_on_conversations) {
+      if (
+        state.summary.isInTab ||
+        (await getPreference("operate_on_conversations", false))
+      ) {
         msgs = state.messages.msgData.map((msg) => msg.id);
       } else {
         if ("getDisplayedMessages" in browser.messageDisplay) {
@@ -556,7 +581,6 @@ const messageActions = {
       const msg = Conversations.currentConversation.getMessageByApiId(id);
       // Turn remote content message "off", as although it has it, it can be loaded.
       msg.hasRemoteContent = false;
-      // We can't turn dispatch back straight away, so give it a moment.
       const msgData = await msg.toReactData();
       dispatch({
         type: "MSG_UPDATE_DATA",
@@ -621,6 +645,82 @@ const messageActions = {
       browser.conversations.sendUnsent().catch(console.error);
     };
   },
+  ignorePhishing({ id }) {
+    return async (dispatch) => {
+      await browser.conversations.ignorePhishing(id);
+      await dispatch({
+        type: "MSG_UPDATE_DATA_ID",
+        msgData: {
+          isPhishing: false,
+        },
+      });
+    };
+  },
+  showMsgDetails({ id, detailsShowing }) {
+    return async (dispatch, getState) => {
+      if (!detailsShowing) {
+        await dispatch({
+          type: "MSG_HDR_DETAILS",
+          detailsShowing: false,
+          id,
+        });
+        return;
+      }
+      let currentMsg = getState().messages.msgData.find((msg) => msg.id == id);
+      // If we already have header information, don't get it again.
+      if (currentMsg && currentMsg.extraLines && currentMsg.extraLines.length) {
+        await dispatch({
+          type: "MSG_HDR_DETAILS",
+          detailsShowing: true,
+          id,
+        });
+        return;
+      }
+      let msg = await browser.messages.getFull(id);
+      try {
+        let extraLines = [
+          {
+            key: browser.i18n.getMessage("message.headerFolder"),
+            value: currentMsg.folderName,
+          },
+        ];
+        const interestingHeaders = [
+          "mailed-by",
+          "x-mailer",
+          "mailer",
+          "date",
+          "user-agent",
+          "reply-to",
+        ];
+        for (const h of interestingHeaders) {
+          if (h in msg.headers) {
+            let key = h;
+            // Not all the header names are translated.
+            if (h == "date") {
+              key = browser.i18n.getMessage("message.headerDate");
+            }
+            extraLines.push({
+              key,
+              value: msg.headers[h],
+            });
+          }
+        }
+        extraLines.push({
+          key: browser.i18n.getMessage("message.headerSubject"),
+          value: currentMsg && currentMsg.subject,
+        });
+
+        dispatch({
+          type: "MSG_HDR_DETAILS",
+          extraLines,
+          detailsShowing: true,
+          id,
+        });
+      } catch (ex) {
+        console.error(ex);
+      }
+    };
+  },
 };
 
 function messages(state = initialMessages, action) {
@@ -671,6 +771,9 @@ function messages(state = initialMessages, action) {
     }
     case "MSG_REMOVE_SPECIAL_TAG": {
       return modifyOnlyMsg(state, action.uri, (msg) => {
+        if (!msg.specialTags) {
+          return msg;
+        }
         const newSpecialTags = [...msg.specialTags];
         return {
           ...msg,
@@ -698,48 +801,15 @@ function messages(state = initialMessages, action) {
       }
       return state;
     }
-    case "MSG_IGNORE_PHISHING": {
-      MessageUtils.ignorePhishing(action.msgUri);
-      return modifyOnlyMsg(state, action.msgUri, (msg) => {
+    case "MSG_HDR_DETAILS": {
+      return modifyOnlyMsgId(state, action.id, (msg) => {
         const newMsg = { ...msg };
-        newMsg.isPhishing = false;
+        newMsg.detailsShowing = action.detailsShowing;
+        if ("extraLines" in action) {
+          newMsg.extraLines = action.extraLines;
+        }
         return newMsg;
       });
-    }
-    case "MSG_SHOW_DETAILS": {
-      const newState = { ...state };
-      const newMsgData = [];
-      for (let i = 0; i < state.msgData.length; i++) {
-        if (state.msgData[i].msgUri == action.msgUri) {
-          newMsgData.push({ ...state.msgData[i], detailsShowing: action.show });
-          if (!newMsgData.hdrDetails) {
-            // Let this exit before we start the function.
-            setTimeout(() => {
-              MessageUtils.getMsgHdrDetails(window, action.msgUri);
-            }, 0);
-          }
-        } else {
-          newMsgData.push(state.msgData[i]);
-        }
-      }
-      newState.msgData = newMsgData;
-      return newState;
-    }
-    case "MSG_HDR_DETAILS": {
-      const newState = { ...state };
-      const newMsgData = [];
-      for (let i = 0; i < state.msgData.length; i++) {
-        if (state.msgData[i].msgUri == action.msgUri) {
-          newMsgData.push({
-            ...state.msgData[i],
-            extraLines: action.extraLines,
-          });
-        } else {
-          newMsgData.push(state.msgData[i]);
-        }
-      }
-      newState.msgData = newMsgData;
-      return newState;
     }
     case "REMOVE_MESSAGE_FROM_CONVERSATION": {
       const newState = { ...state };
@@ -785,7 +855,31 @@ function messages(state = initialMessages, action) {
   }
 }
 
-const summaryActions = {
+var summaryActions = {
+  replaceConversation({ summary, messages }) {
+    return async (dispatch, getState) => {
+      let defaultShowing = getState().summary.defaultDetailsShowing;
+      for (let msg of messages.msgData) {
+        msg.detailsShowing = defaultShowing;
+      }
+      await dispatch({
+        type: "REPLACE_CONVERSATION_DETAILS",
+        summary,
+        messages,
+      });
+
+      if (defaultShowing) {
+        for (let msg of getState().messages.msgData) {
+          await dispatch(
+            messageActions.showMsgDetails({
+              id: msg.id,
+              detailsShowing: true,
+            })
+          );
+        }
+      }
+    };
+  },
   showMessagesInvolving({ name, email }) {
     return async (dispatch, getState) => {
       await browser.convContacts
@@ -801,6 +895,13 @@ const summaryActions = {
     return async () => {
       const dest = await browser.convContacts.makeMimeAddress({ name, email });
       await browser.convContacts.composeNew({ to: dest }).catch(console.error);
+    };
+  },
+  createFilter({ email }) {
+    return async (dispatch, getState) => {
+      browser.conversations
+        .createFilter(email, getState().summary.windowId)
+        .catch(console.error);
     };
   },
 };
@@ -831,6 +932,7 @@ function summary(state = initialSummary, action) {
         browserForegroundColor: action.browserForegroundColor,
         browserBackgroundColor: action.browserBackgroundColor,
         defaultFontSize: action.defaultFontSize,
+        defaultDetailsShowing: action.defaultDetailsShowing,
         // Thunderbird 81 has built-in PDF viewer.
         hasBuiltInPdf: mainVersion >= 81,
         OS: action.OS,
@@ -860,10 +962,6 @@ function summary(state = initialSummary, action) {
     }
     case "COPY_EMAIL": {
       navigator.clipboard.writeText(action.email);
-      return state;
-    }
-    case "CREATE_FILTER": {
-      topMail3Pane(window).MsgFilters(action.email, null);
       return state;
     }
     case "EDIT_CONTACT": {
@@ -914,7 +1012,7 @@ function summary(state = initialSummary, action) {
       if (state.conversation && state.conversation.getMessage) {
         const msg = state.conversation.getMessage(action.msgUri);
         if (msg) {
-          msg.postStreamMessage(topMail3Pane(window).msgWindow, action.iframe);
+          msg.postStreamMessage(topMail3Pane(window), action.iframe);
         }
       }
       return newState;

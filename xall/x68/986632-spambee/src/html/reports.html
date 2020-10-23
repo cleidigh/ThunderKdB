@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title data-VerifromLocalize="reports.title">SPAMBEE</title>
+    <link rel="icon" type="image/png" href="/logo/96x96.png"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/css/reports.css" rel="stylesheet" type="text/css">
+    <script src="/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+  <div class='reportsPageHeader'>
+      <div class='reportsTitle' data-VerifromLocalize="reports.title">Reports to SPAMBEE</div>
+      <div class='reportsSubTitle' data-verifromlocalize="reports.subTitle">List of your last reports to SPAMBEE in the last 30 days</div>
+      <div class='logo'></div>
+  </div>
+  <div id="spinner">
+    <div class="cssspinner-container">
+      <div class="cssspinner-shaft1"></div>
+      <div class="cssspinner-shaft2"></div>
+      <div class="cssspinner-shaft3"></div>
+      <div class="cssspinner-shaft4"></div>
+      <div class="cssspinner-shaft5"></div>
+      <div class="cssspinner-shaft6"></div>
+      <div class="cssspinner-shaft7"></div>
+      <div class="cssspinner-shaft8"></div>
+      <div class="cssspinner-shaft9"></div>                <!--<div class="cssspinner-shaft10"></div>-->
+    </div>
+  </div>
+  <div class="TableAndStatus">
+    <table class="minimalistBlack">
+    <thead>
+      <tr>
+        <th>
+          <div class="deleteRows" >
+            <span data-verifromlocalize="reports.col1">🗑</span>
+            <div class="deleteRowsInfo" data-verifromlocalize="reports.deleteRowsInfo">
+              Cancel and delete selected reports (this will also delete all data stored by SPAMBEE)
+            </div>
+          </div>
+        </th>
+        <th data-verifromlocalize="reports.col2">Report time</th>
+        <th data-verifromlocalize="reports.col3">Email Sender</th>
+        <th data-verifromlocalize="reports.col4">Email Subject</th>
+        <th data-verifromlocalize="reports.col5">Status time</th>
+        <th data-verifromlocalize="reports.col6">Status</th>
+      </tr>
+    </thead>
+    <tfoot> 
+      <tr>
+        <td>
+          <div class="deleteRows">🗑
+            <div class="deleteRowsInfo" data-verifromlocalize="reports.deleteRowsInfo">
+              Cancel and delete selected reports (this will also delete all data stored by SPAMBEE)
+            </div>
+          </div>
+        </td>
+        <td class="paging" colspan=2>
+          <span data-verifromlocalize="reports.pager.page">Page </span>
+          <input type=text size=3 id="pageNumber"/>
+          <span data-verifromlocalize="reports.pager.onpages">/</span>
+          <span id="numberPages">3</span>
+        </td>
+        <td class="pager" colspan=3>
+          <span class="firstPage"></span>
+          <span class="prevPage"></span>
+          <span class="nextPage"></span>
+          <span class="lastPage"></span>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td><br></td>
+          <td></td>
+          <td><BR></td>
+          <td class="phishing reportStatus">
+            <span data-VerifromLocalize="reports.status.phishing"></span>
+            <div for="phishing" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.phishingDescription"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type=checkbox></td>    
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td><BR></td>
+          <td class="phishingSuspect reportStatus">
+            <span data-VerifromLocalize="reports.status.suspect"></span>
+            <div for="suspect" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.suspectDescription"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td><BR></td>
+          <td class="phishingNone reportStatus">
+            <span data-VerifromLocalize="reports.status.unknown"></span>
+            <div for="unknown" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.unknownDescription"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td><BR></td>
+          <td class="legit reportStatus">
+            <span data-VerifromLocalize="reports.status.legit"></span>
+            <div for="legit" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.legitDescription"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pending reportStatus">
+            <span data-VerifromLocalize="reports.status.pending"></span>
+            <div for="legit" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.pendingDescription"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pending reportStatus">
+            <span data-VerifromLocalize="reports.status.pending"></span>
+            <div for="legit" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.pendingDescription"></span>
+            </div>
+          </td>
+        </tr>
+          <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pending reportStatus">
+            <span data-VerifromLocalize="reports.status.pending"></span>
+            <div for="legit" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.pendingDescription"></span>
+            </div>
+          </td>
+        </tr>
+        </tr>
+          <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pending reportStatus">
+            <span data-VerifromLocalize="reports.status.pending"></span>
+            <div for="pending" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.pendingDescription"></span>
+            </div>
+          </td>
+        </tr>
+        </tr>
+          <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pending reportStatus">
+            <span data-VerifromLocalize="reports.status.pending"></span>
+            <div for="pending" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.pendingDescription"></span>
+            </div>
+          </td>
+        </tr>
+        </tr>
+          <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pending reportStatus">
+            <span data-VerifromLocalize="reports.status.pending"></span>
+            <div for="pending" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.pendingDescription"></span>
+            </div>
+          </td>
+        </tr>
+        </tr>
+          <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pending reportStatus">
+            <span data-VerifromLocalize="reports.status.pending"></span>
+            <div for="pending" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.pendingDescription"></span>
+            </div>
+          </td>
+        </tr>
+        </tr>
+          <tr>
+          <td><input type=checkbox></td>
+          <td><BR></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pending reportStatus">
+            <span data-VerifromLocalize="reports.status.pending"></span>
+            <div for="pending" class="statusDesc">
+              <span data-VerifromLocalize="reports.status.pendingDescription"></span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="height:20px;"></div>
+  </div>
+  <script src="/specific/extensionConfig.js" type="text/javascript" defer></script>
+  <script src="/js/verifrom_api.js" type="text/javascript" defer></script>
+  <script src="/js/verifrom-localize.js" type="text/javascript" defer></script></div>
+  <script src="/js/localizeGUI.js" type="text/javascript" defer></script></div>
+  <script src="/specific/reports.js" type="text/javascript" defer></script></div>
+</body>
+</html>

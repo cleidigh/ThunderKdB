@@ -1,5 +1,23 @@
+async function waitForLoad() {
+	let windows = await browser.windows.getAll({windowTypes:["normal"]});
+	if (windows.length > 0) {
+		return false;
+	}
+	
+	return new Promise(function(resolve, reject) {
+		function listener() {
+			browser.windows.onCreated.removeListener(listener);
+			resolve(true);
+		}
+		browser.windows.onCreated.addListener(listener);
+	});
+}
+
+
 (async () => { 
-  
+  await waitForLoad();
+  await messenger.WindowListener.waitForMasterPassword();
+
   // Define default prefs.
   let defaultPrefs = {
       "counter": 0,
@@ -15,15 +33,23 @@
   }; 
   await preferences.init(defaultPrefs);
   
-  // Legacy pref migration using the LegacyPrefs API.
+  // Migrate legacy prefs using the LegacyPrefs API.
   const legacyPrefBranch = "extensions.quicktext.";
   const prefNames = Object.keys(defaultPrefs);
+
   for (let prefName of prefNames) {
-    let legacyValue = await messenger.LegacyPrefs.getUserPref(legacyPrefBranch + prefName);    
+    let legacyValue = await messenger.LegacyPrefs.getUserPref(`${legacyPrefBranch}${prefName}`);    
     if (legacyValue !== null) {
-      console.log("Migrating legacy preference <" + legacyPrefBranch + prefName + "> = <" + legacyValue + ">.");
+      console.log(`Migrating legacy preference <${legacyPrefBranch}${prefName}> = <${legacyValue}>.`);
+      
+      // Store the migrated value in local storage.
+      // Check out the MDN documentation at
+      // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage
+      // or use preference.js bundled with this API
       preferences.setPref(prefName, legacyValue);
-      messenger.LegacyPrefs.clearUserPref(legacyPrefBranch + prefName);
+      
+      // Clear the legacy value.
+      messenger.LegacyPrefs.clearUserPref(`${legacyPrefBranch}${prefName}`);
     }
   }
   

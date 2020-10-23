@@ -272,7 +272,7 @@ cardbookAutocompleteSearch.prototype = {
 			return;
 		}
 		for (let result of resultArray) {
-			if ((result[0] == "true") && ((result[2] == aMsgIdentity) || (result[2] == "allMailAccounts"))) {
+			if ((result[0] == "true") && (result[3] != "") && ((result[2] == aMsgIdentity) || (result[2] == "allMailAccounts"))) {
 				if (result[1] == "include") {
 					this.ABInclRestrictions[result[3]] = 1;
 					if (result[4]) {

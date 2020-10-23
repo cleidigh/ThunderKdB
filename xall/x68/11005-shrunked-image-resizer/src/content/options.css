@@ -1,46 +1,141 @@
 @namespace html url(http://www.w3.org/1999/xhtml);
 
-html|input[type="number"] {
-	width: 0 !important;
-	box-shadow: none;
+html {
+  height: 100%;
 }
-html|input[type="number"]::-moz-number-wrapper {
-	width: 10ch !important;
+
+body {
+  height: 100%;
+  font: message-box;
+}
+
+body#config {
+  line-height: 2em;
+}
+
+body#options {
+  margin: 0;
+  padding: 1em;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  font-size: 1em;
+  margin: 0 0 0.25em;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  vertical-align: text-bottom;
+  margin-block: 0;
+  margin-inline: 0 0.5em;
+}
+input[type="number"] {
+  width: 5em;
+  box-shadow: none;
+  margin-block: 0;
+  margin-inline: 0.5em 0;
+}
+input[type="range"] {
+  margin-inline: 1em;
+  vertical-align: middle;
+}
+input[type="range"]::-moz-range-track {
+  background-color: ThreeDLightShadow;
+}
+
+.hbox {
+  display: flex;
+}
+
+.vbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.indent {
+  margin-inline-start: 2em;
+}
+
+#d_content {
+  flex: 1;
+  margin-bottom: 1em;
+  justify-content: space-between;
+}
+
+#rg_size {
+  flex: 1;
+  justify-content: space-around;
+}
+
+#l_width,
+#l_height {
+  margin-inline-start: 1em;
 }
 
 #l_previewheader {
-	margin-top: 1em;
+  margin-top: 1em;
 }
 
 #b_previewbox {
-	height: 130px;
-	margin: 0 5px 1em;
-	padding: 10px 5px;
-	background-color: rgba(0, 0, 0, 0.1);
-	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
+  height: 130px;
+  margin-bottom: 1em;
+  padding: 0 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset;
 }
-
 #b_previewarrows {
-	min-width: 3em;
+  min-width: 3em;
+  align-items: center;
+  justify-content: space-evenly;
 }
-#b_previewarrows > toolbarbutton {
-	-moz-appearance: none;
-	border: none;
-	list-style-image: url("chrome://shrunked/content/arrow.svg");
+#b_previewarrows > button {
+  appearance: none;
+  border: none;
+  background: transparent url("arrow.svg") center center / cover no-repeat;
+  width: 24px;
+  height: 24px;
 }
-#b_previewarrows > toolbarbutton:first-child > .toolbarbutton-icon {
-	transform: rotate(90deg);
+#b_previewarrows > button:first-child {
+  transform: rotate(90deg);
 }
-#b_previewarrows > toolbarbutton:last-child > .toolbarbutton-icon {
-	transform: rotate(-90deg);
+#b_previewarrows > button:last-child {
+  transform: rotate(-90deg);
 }
 
+#d_preview {
+  width: 130px;
+  justify-content: center;
+  align-items: center;
+}
+#i_previewthumb {
+  max-width: 110px;
+  max-height: 110px;
+}
+
+#d_info {
+  flex: 1;
+  justify-content: center;
+}
+#l_previewfilename {
+  font-weight: bold;
+}
 #l_previeworiginalsize,
 #l_previewresized {
-	margin-top: 0.25em;
+  margin-top: 0.25em;
 }
 
 #l_previeworiginalfilesize[value=""],
 #l_previewresizedfilesize[value=""] {
-	display: none;
+  display: none;
+}
+
+#d_buttons {
+  justify-content: end;
+}
+#b_ok,
+#b_cancel {
+  margin-inline-start: 0.75em;
+  min-width: 6em;
 }

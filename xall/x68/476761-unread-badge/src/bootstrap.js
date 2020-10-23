@@ -20,22 +20,20 @@ var unreadbadge = function ()
     */
    const nsMsgFolderFlags = Ci.nsMsgFolderFlags;
 
-   const prefsPrefix = "extensions.unreadbadge.";
-   const defaultPrefs =
+   const DEFAULT_PREFERENCES =
    {
-      "badgeColor" : "#FF0000",
-      "textColor" : "#FFFFFF",
-      "ignoreJunk" : true,
-      "ignoreDrafts" : true,
-      "ignoreTrash" : true,
-      "ignoreSent" : true,
+      "badgeStyle" : "modern",
+      "includeJunk" : false,
+      "includeDrafts" : false,
+      "includeTrash" : false,
+      "includeSent" : false,
       "inboxOnly" : false
    };
 
    Components.utils.import("resource://gre/modules/Services.jsm");
    Components.utils.import("resource://gre/modules/XPCOMUtils.jsm");
    Components.utils.import("resource://gre/modules/NetUtil.jsm");
-   
+
    var xpc = {};
 
    XPCOMUtils.defineLazyServiceGetter(xpc, "imgTools", "@mozilla.org/image/tools;1", "imgITools");
@@ -44,38 +42,35 @@ var unreadbadge = function ()
    XPCOMUtils.defineLazyServiceGetter(xpc, "mailSession", "@mozilla.org/messenger/services/session;1", "nsIMsgMailSession");
    XPCOMUtils.defineLazyServiceGetter(xpc, "notificationService", "@mozilla.org/messenger/msgnotificationservice;1", "nsIMsgFolderNotificationService");
 
-   var setDefaultPreferences = function ()
+   var setDefaultPreferences = async function()
    {
-      let prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
-      let branch = prefs.getDefaultBranch(prefsPrefix);
-      for (let key in defaultPrefs) {
-         if (defaultPrefs.hasOwnProperty(key)) {
-            let value = defaultPrefs[key];
-            if (typeof value == "boolean")
-               branch.setBoolPref(key, value);
-            else if (typeof value == "number")
-               branch.setIntPref(key, value);
-            else if (typeof value == "string")
-               branch.setCharPref(key, value);
+      const SCHEMA_VERSION = 1;
+      const results = await messenger.storage.local.get("preferences");
+      const currentSchema = (results.preferences && results.preferences.schema ? results.preferences.schema : 0);
+
+      if (currentSchema >= SCHEMA_VERSION)
+         return;
+
+      let newPrefsObj = results.preferences || {};
+
+      for (let key in DEFAULT_PREFERENCES) {
+         if (DEFAULT_PREFERENCES.hasOwnProperty(key)) {
+            if (!newPrefsObj.hasOwnProperty(key)) {
+               newPrefsObj[key] = DEFAULT_PREFERENCES[key];
+            }
          }
       }
+
+      newPrefsObj.version = SCHEMA_VERSION;
+      await messenger.storage.local.set({ preferences: newPrefsObj });
    }
 
    var decodeImageToPng = function (imgEncoder)
    {
-      if (xpc.imgTools.decodeImage)
-      {
-         /* Thunderbird < 60 */
-         return xpc.imgTools.decodeImage(imgEncoder, "image/png");
-      }
-      else
-      {
-         /* Thunderbird 60+ */
-         let imgBuffer = NetUtil.readInputStreamToString(imgEncoder, imgEncoder.available());
-         return xpc.imgTools.decodeImageFromBuffer(imgBuffer, imgBuffer.length, "image/png");
-      }
+      let imgBuffer = NetUtil.readInputStreamToString(imgEncoder, imgEncoder.available());
+      return xpc.imgTools.decodeImageFromBuffer(imgBuffer, imgBuffer.length, "image/png");
    }
-   
+
    var getCanvasAsImgContainer = function (canvas, width, height)
    {
       var imageData = canvas.getContext('2d').getImageData(
@@ -100,36 +95,147 @@ var unreadbadge = function ()
       return iconImage;
    }
 
-   var forceImgIContainerDecode = function (imgIContainer)
+   var isDecodedImgIContainer = function (imgIContainer)
    {
-      xpc.imgTools.encodeImage(imgIContainer, "image/png");
+      try {
+        /* Result is not needed, only whether it throws exception */
+        imgIContainer.animated;
+      } catch (err) {
+        if (err.result == 2147746065) {
+          /* 0x80040111 (NS_ERROR_NOT_AVAILABLE) */
+          return false;
+        }
+      }
+
+      return true;
    }
 
-   var createCircularBadgeStyle = function (imageWidth, imageHeight, canvas, text)
+   var sleep = function (ms)
+   {
+     return new Promise(resolve => gActiveWindow.setTimeout(resolve, ms));
+   }
+
+   /*
+    * When setOverlayIcon() receives an image that is not decoded yet,
+    * it throws NS_ERROR_NOT_AVAILABLE when trying to check whether
+    * image is animated, see these in Thunderbird sources:
+    * TaskbarWindowPreview::SetOverlayIcon()
+    * RasterImage::GetAnimated()
+    */
+   var forceImgIContainerDecode = async function (imgIContainer)
+   {
+      /* Purge image from cache to force encodeImage() to not be lazy */
+      imgIContainer.requestDiscard();
+
+      /* Side effect of encodeImage() is that it decodes original image */
+      xpc.imgTools.encodeImage(imgIContainer, "image/png");
+
+      /* To make it worse, .encode() uses 'FLAG_ASYNC_NOTIFY' which causes
+       * 'mHasBeenDecoded' to be lazily updated on the thread that runs this
+       * script. In order to make it happen, pause the script a bit. Wait
+       * until '.animated' stops returning 'NS_ERROR_NOT_AVAILABLE'.
+       */
+      await sleep(0);
+      if (isDecodedImgIContainer())
+        return;
+
+      /* No luck, wait longer */
+      for (i = 0; i < 32; i++) {
+        await sleep(32);
+        if (isDecodedImgIContainer()) {
+          console.log("unread-badge: forceImgIContainerDecode() took " + i + " sleep iterations");
+          return;
+        }
+      }
+
+      console.log("unread-badge: forceImgIContainerDecode() is broken again");
+   }
+
+   /* Draw text centered in the middle of a CanvasRenderingContext2D */
+   var drawUnreadCountText = function (cxt, text)
+   {
+      cxt.save();
+
+      const imageSize = cxt.canvas.width;
+
+      // Use smaller fonts for longer text to try and squeeze it in.
+      const fontSize = (imageSize * (0.95 - (0.15 * text.length)));
+
+      cxt.shadowOffsetX = 0;
+      cxt.shadowOffsetY = 0;
+      cxt.shadowColor = "rgba(0,0,0,0.7)";
+      cxt.shadowBlur = imageSize / 10;
+      cxt.font = "600 " + fontSize + "px Calibri";
+      cxt.fillStyle = '#FAFAFA';
+      cxt.textAlign = "center";
+
+      // TODO: There isn't a textBaseline for accurate vertical centering ('middle' is the
+      // middle of the 'em block', and digits extend higher than 'm'), and the Mozilla core
+      // does not currently support computation of ascenders and descenters in measureText().
+      // So, we just assume that the font is 70% of the 'px' height we requested, then
+      // compute where the baseline ought to be located.
+      const approximateHeight = fontSize * 0.70;
+
+      cxt.textBaseline = "alphabetic";
+      cxt.fillText(text, imageSize / 2, imageSize - (imageSize - approximateHeight) / 2);
+
+      cxt.restore();
+   }
+
+   /* Create a "dot" badge, akin to Discord. */
+   var createDotBadgeStyle = function (canvas, text)
    {
       var cxt = canvas.getContext("2d");
+      const iconSize = canvas.width;
 
       // Draw the background.
       cxt.save();
       // Solid color first.
-      cxt.fillStyle = Services.prefs.getCharPref(prefsPrefix + "badgeColor");
+      cxt.fillStyle = '#EF5858';
       cxt.beginPath();
-      cxt.arc(imageWidth / 2, imageHeight / 2, imageWidth / 2.15, 0, Math.PI * 2, true);
+      cxt.arc(iconSize / 2, iconSize / 2, iconSize / 2.25, 0, Math.PI * 2, true);
+      cxt.fill();
+      cxt.clip();
+      cxt.closePath();
+      cxt.restore();
+
+      // Draw the dot.
+      cxt.save();
+      cxt.fillStyle = '#FAFAFA';
+      cxt.beginPath();
+      cxt.arc(iconSize / 2, iconSize / 2, iconSize / 5, 0, Math.PI * 2, true);
+      cxt.fill();
+      cxt.closePath();
+      cxt.restore();
+   }
+
+   /* Create a circular badge with a frame, akin to OS X prior to Yosemite. */
+   var createFruityBadgeStyle = function (canvas, text)
+   {
+      var cxt = canvas.getContext("2d");
+      const iconSize = canvas.width;
+
+      // Draw the background.
+      cxt.save();
+      // Solid color first.
+      cxt.fillStyle = '#FF0000';
+      cxt.beginPath();
+      cxt.arc(iconSize / 2, iconSize / 2, iconSize / 2.15, 0, Math.PI * 2, true);
       cxt.fill();
       cxt.clip();
       cxt.closePath();
 
       // Create a gradient to blend on top of it.
       var gradient = cxt.createRadialGradient(
-            imageWidth / 2, imageHeight / 2.5, 0,
-            imageWidth / 2, imageHeight / 2, imageWidth / 2);
+            iconSize / 2, iconSize / 2.5, 0,
+            iconSize / 2, iconSize / 2, iconSize / 2);
       gradient.addColorStop(0, "rgba(255,255,255,0)");
       gradient.addColorStop(1, "rgba(0,0,0,0.5)");
       cxt.fillStyle = gradient;
 
       // Blend it.
       cxt.beginPath();
-      cxt.arc(imageWidth / 2, imageHeight / 2, imageWidth / 2.15, 0, Math.PI * 2, true);
+      cxt.arc(iconSize / 2, iconSize / 2, iconSize / 2.15, 0, Math.PI * 2, true);
       cxt.fill();
       cxt.clip();
       cxt.closePath();
@@ -138,7 +244,7 @@ var unreadbadge = function ()
       cxt.fillStyle = "rgba(255,255,255,0.2)";
       cxt.scale(1, 0.5);
       cxt.beginPath();
-      cxt.arc(imageWidth / 2, imageHeight / 2, imageWidth / 2.15, 0, Math.PI * 2, true);
+      cxt.arc(iconSize / 2, iconSize / 2, iconSize / 2.15, 0, Math.PI * 2, true);
       cxt.fill();
       cxt.closePath();
       cxt.restore();
@@ -148,85 +254,99 @@ var unreadbadge = function ()
       cxt.shadowOffsetX = 0;
       cxt.shadowOffsetY = 0;
       cxt.shadowColor = "rgba(0,0,0,0.7)";
-      cxt.shadowBlur = imageWidth / 10;
-      cxt.strokeStyle = Services.prefs.getCharPref(prefsPrefix + "textColor");
-      cxt.lineWidth = imageWidth / 10;
+      cxt.shadowBlur = iconSize / 10;
+      cxt.strokeStyle = '#FAFAFA';
+      cxt.lineWidth = iconSize / 10;
       cxt.beginPath();
-      cxt.arc(imageWidth / 2, imageHeight / 2, imageWidth / 2.15, 0, Math.PI * 2, true);
+      cxt.arc(iconSize / 2, iconSize / 2, iconSize / 2.15, 0, Math.PI * 2, true);
       cxt.stroke();
       cxt.closePath();
       cxt.restore();
 
+      drawUnreadCountText(cxt, text);
+   }
+
+   /* Create a flat badge, as is the Windows 8/10 style. */
+   var createModernBadgeStyle = function (canvas, text)
+   {
+      var cxt = canvas.getContext("2d");
+      const iconSize = canvas.width;
+
+      // Draw the background.
+      cxt.save();
+      // Solid color first.
+      cxt.fillStyle = '#D01536';
       cxt.shadowOffsetX = 0;
       cxt.shadowOffsetY = 0;
-      cxt.shadowColor = "rgba(0,0,0,0.7)";
-      cxt.shadowBlur = imageWidth / 10;
-      cxt.font = (imageHeight * 0.7) + "px Calibri bold";
-      cxt.textAlign = "center";
-      cxt.textBaseline = "middle";
-      cxt.fillStyle = "white";
-      cxt.fillText(text, imageWidth / 2, imageHeight / 2);
+      cxt.shadowColor = "rgba(0,0,0,0.8)";
+      cxt.shadowBlur = iconSize / 10;
+      cxt.beginPath();
+      cxt.arc(iconSize / 2, iconSize / 2, iconSize / 2.25, 0, Math.PI * 2, true);
+      cxt.fill();
+      cxt.clip();
+      cxt.closePath();
+      cxt.restore();
+
+      drawUnreadCountText(cxt, text);
    }
 
-   /* Returns the size of the icon overlay.
-    *
-    * The Mozilla framework will scale any icon we supply to the right size (handled
-    * in nsWindowGfx::CreateIcon), but the scaling looks pretty crappy. If we know
-    * what size we need, we can generate something that looks a lot nicer.
-    *
-    * If this were native code, GetSystemMetrics(SM_CXSMICON) would be exactly what
-    * we would do. Even within the Mozilla framework, nsWindowGfx::GetIconMetrics(
-    * nsWindowGfx::kSmallIcon) would also work, but it's not exposed via XPCOM.
-    *
-    * So instead we have to do it the hard way, and try to figure out what Windows
-    * is going to do based on registry entries. Yuck.
-    *
-    * Relevant entries are:
-    * - HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics, "Shell Small Icon Size"
-    *   (might not exist, if not then move on to:)
-    * - HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics, "Shell Icon Size"
-    *   (if exists and the small one doesn't, then take it and divide by two)
-    * - HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics, "AppliedDPI".
-    *   Default is 96. Scales up based on magnification setting. (125% is 120, 150% is 144, etc).
-    *
-    * The resulting icon size is (AppliedDPI / 96) * SmallIconSize.
-    *
-    * We memoize this, because Windows requires a logoff/logon when changing these
-    * settings, which means there's no need for us to requery every time during the
-    * lifetime of a single Thunderbird process.
-    */
-   var overlayIconSize = (function ()
+   /* Create an "envelope" badge, as is Outlook's style. */
+   var createEnvelopeBadgeStyle = function (canvas, text)
    {
-      var smallIconSize = 16;
-      var appliedDpi = 96;
+      var cxt = canvas.getContext("2d");
+      const iconSize = canvas.width;
 
-      let nsIWindowsRegKey = Components.classes["@mozilla.org/windows-registry-key;1"].getService(Components.interfaces.nsIWindowsRegKey);
-      nsIWindowsRegKey.open(
-         nsIWindowsRegKey.ROOT_KEY_CURRENT_USER,
-         "Control Panel\\Desktop\\WindowMetrics",
-         nsIWindowsRegKey.ACCESS_READ);
+      const envelopeWidth = 0.9375 * iconSize;
+      const envelopeHeight = 0.6875 * iconSize;
+      const lineWidth = 0.09375 * iconSize;
+      const foldTop = 0.09375 * iconSize;
+      const foldBottom = 0.4375 * iconSize;
+      const startX = iconSize - envelopeWidth;
+      const startY = iconSize - envelopeHeight;
 
-      if (nsIWindowsRegKey.hasValue("Shell Small Icon Size") && nsIWindowsRegKey.getValueType("Shell Small Icon Size") == nsIWindowsRegKey.TYPE_INT)
-         smallIconSize = nsIWindowsRegKey.readIntValue("Shell Small Icon Size");
-      else if (nsIWindowsRegKey.hasValue("Shell Icon Size") && nsIWindowsRegKey.getValueType("Shell Icon Size") == nsIWindowsRegKey.TYPE_INT)
-         smallIconSize = Math.floor(nsIWindowsRegKey.readIntValue("Shell Icon Size") / 2);
+      // Draw the background.
+      cxt.save();
+      cxt.fillStyle = '#E9B471';
+      cxt.fillRect(startX, startY, envelopeWidth, envelopeHeight);
+      cxt.restore();
 
-      if (nsIWindowsRegKey.hasValue("AppliedDPI") && nsIWindowsRegKey.getValueType("AppliedDPI") == nsIWindowsRegKey.TYPE_INT)
-         appliedDpi = nsIWindowsRegKey.readIntValue("AppliedDPI");
+      // Draw the strokes for the fold.
+      cxt.save();
+      cxt.strokeStyle = '#FFFFFF';
+      cxt.lineWidth = lineWidth;
+      cxt.beginPath();
+      cxt.moveTo(startX, startY + foldTop);
+      cxt.lineTo(startX + envelopeWidth / 2, startY + foldBottom);
+      cxt.lineTo(startX + envelopeWidth, startY + foldTop);
+      cxt.stroke();
+      cxt.restore();
+   }
 
-      nsIWindowsRegKey.close();
+   /* Returns the size of the icon overlay. */
+   var overlayIconSize = function (window)
+   {
+      var smallIconSize = Cc["@mozilla.org/windows-ui-utils;1"].getService(Ci.nsIWindowsUIUtils).systemSmallIconSize;
+      var appliedDpi = window.windowUtils.displayDPI;
 
       return (Math.floor(appliedDpi / 96 * smallIconSize));
-   }
-   )();
+   };
+
+   var iconStyles =
+   {
+      "dot": createDotBadgeStyle,
+      "envelope": createEnvelopeBadgeStyle,
+      "fruity": createFruityBadgeStyle,
+      "modern": createModernBadgeStyle,
+   };
 
    /* Make a badge icon for an unread message count of 'msgCount'.
     *
     * Returns an imgIContainer.
     */
-   var createBadgeIcon = function (msgCount)
+   var createBadgeIcon = async function (window, msgCount)
    {
-      const iconSize = overlayIconSize;
+      const iconSize = overlayIconSize(window);
+      const iconSize4X = iconSize * 4;
 
       if (msgCount < 0)
          msgCount == 0;
@@ -237,62 +357,118 @@ var unreadbadge = function ()
       else
          msgText = "99+";
 
+      let prefsResult = await messenger.storage.local.get("preferences");
+      let prefs = prefsResult.preferences;
+      let badgeStyle = prefs.badgeStyle;
+      if (badgeStyle === undefined || !iconStyles.hasOwnProperty(badgeStyle))
+         badgeStyle = "modern";
+
       let badge = gActiveWindow.document.createElementNS("http://www.w3.org/1999/xhtml", "canvas");
-      badge.width = badge.height = iconSize;
-      badge.style.width = badge.style.height = iconSize + "px";
-      createCircularBadgeStyle(iconSize, iconSize, badge, msgText);
+      badge.width = badge.height = iconSize4X;
+      badge.style.width = badge.style.height = badge.width + "px";
+
+      iconStyles[badgeStyle](badge, msgText);
+
+      badge = downsampleBy4X(badge);
 
       return getCanvasAsImgContainer(badge, iconSize, iconSize);
    }
 
+   /* Downsample by 4X with simple averaging.
+    *
+    * Drawing at 4X and then downscaling like this gives us better results than
+    * using either CanvasRenderingContext2D.drawImage() to resize or letting
+    * the Windows taskbar service handle the resize, both of which seem to just
+    * give us a simple point resize.
+    *
+    * Returns a new <canvas> element.
+    */
+   var downsampleBy4X = function (canvas)
+   {
+      let resizedCanvas = gActiveWindow.document.createElementNS("http://www.w3.org/1999/xhtml", "canvas");
+      resizedCanvas.width = resizedCanvas.height = canvas.width / 4;
+      resizedCanvas.style.width = resizedCanvas.style.height = resizedCanvas.width + "px";
+
+      let source = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height);
+      let downsampled = resizedCanvas.getContext("2d").createImageData(resizedCanvas.width, resizedCanvas.height);
+
+      for (let y = 0; y < resizedCanvas.height; ++y) {
+         for (let x = 0; x < resizedCanvas.width; ++x) {
+            let r = 0, g = 0, b = 0, a = 0;
+            let index;
+
+            for (let i = 0; i < 4; ++i) {
+               for (let j = 0; j < 4; ++j) {
+                  index = (((y*4)+i) * source.width + ((x*4)+j)) * 4;
+                  r += source.data[index];
+                  g += source.data[index + 1];
+                  b += source.data[index + 2];
+                  a += source.data[index + 3];
+               }
+            }
+
+            index = (y * downsampled.width + x) * 4;
+            downsampled.data[index] = Math.round(r / 16);
+            downsampled.data[index+1] = Math.round(g / 16);
+            downsampled.data[index+2] = Math.round(b / 16);
+            downsampled.data[index+3] = Math.round(a / 16);
+         }
+      }
+
+      resizedCanvas.getContext("2d").putImageData(downsampled, 0, 0);
+
+      return resizedCanvas;
+   }
+
    /* Get the first window. */
-   var findActiveWindow = function ()
+   var findActiveWindow = async function ()
    {
       let windows = Services.wm.getEnumerator(null);
-      let win = windows.hasMoreElements() ? windows.getNext().QueryInterface(Ci.nsIDOMWindow) : null;
-      setActiveWindow(win);
+      let win = windows.hasMoreElements() ? windows.getNext() : null;
+      await setActiveWindow(win);
    }
 
    var gActiveWindow = null;
-   var setActiveWindow = function (aWin)
+   var setActiveWindow = async function (aWin)
    {
       // We're assuming that if gActiveWindow is non-null, we only get called when
       // it's closed.
       gActiveWindow = aWin;
       if (gActiveWindow)
-         updateOverlayIcon();
+         await updateOverlayIcon();
    }
 
    var gWindowObserver =
    {
-      observe : function (aSubject, aTopic, aData)
+      observe : async function (aSubject, aTopic, aData)
       {
          // Look for domwindowopened and domwindowclosed messages
-         let win = aSubject.QueryInterface(Ci.nsIDOMWindow);
          if (aTopic == "domwindowopened")
          {
             if (!gActiveWindow)
-               setActiveWindow(win);
+               await setActiveWindow(aSubject);
          }
          else if (aTopic == "domwindowclosed")
          {
-            if (win == gActiveWindow)
-               findActiveWindow();
+            if (aSubject == gActiveWindow)
+               await findActiveWindow();
          }
       }
    };
 
    /* Enumerate all accounts and get the combined unread count. */
-   var getUnreadCountForAllAccounts = function ()
+   var getUnreadCountForAllAccounts = async function ()
    {
       let accounts = xpc.acctMgr.accounts;
       let totalCount = 0;
-      let accountEnumerator = accounts.enumerate();
       let ignoreMask = 0;
       let acceptMask = -1;
 
       /* Only look at primary inbox? */
-      if (Services.prefs.getBoolPref(prefsPrefix + "inboxOnly"))
+      let prefsResult = await messenger.storage.local.get("preferences");
+      let prefs = prefsResult.preferences;
+
+      if (prefs.inboxOnly)
          acceptMask = nsMsgFolderFlags.Inbox;
 
       ignoreMask |= nsMsgFolderFlags.Newsgroup;
@@ -300,18 +476,17 @@ var unreadbadge = function ()
       ignoreMask |= nsMsgFolderFlags.Virtual;
       ignoreMask |= nsMsgFolderFlags.Subscribed;
 
-      if (Services.prefs.getBoolPref(prefsPrefix + "ignoreJunk"))
+      if (!prefs.includeJunk)
          ignoreMask |= nsMsgFolderFlags.Junk;
-      if (Services.prefs.getBoolPref(prefsPrefix + "ignoreDrafts"))
+      if (!prefs.includeDrafts)
          ignoreMask |= nsMsgFolderFlags.Drafts;
-      if (Services.prefs.getBoolPref(prefsPrefix + "ignoreTrash"))
+      if (!prefs.includeTrash)
          ignoreMask |= nsMsgFolderFlags.Trash;
-      if (Services.prefs.getBoolPref(prefsPrefix + "ignoreSent"))
+      if (!prefs.includeSent)
          ignoreMask |= nsMsgFolderFlags.SentMail;
 
-      while (accountEnumerator.hasMoreElements())
+      for (const account of accounts)
       {
-         let account = accountEnumerator.getNext().QueryInterface(Ci.nsIMsgAccount);
          let rootFolder = account.incomingServer.rootMsgFolder;
          /* nsIMsgFolder */
 
@@ -346,27 +521,27 @@ var unreadbadge = function ()
 
    var getActiveWindowOverlayIconController = function ()
    {
-      let docshell = gActiveWindow.QueryInterface(Ci.nsIInterfaceRequestor)
-         .getInterface(Ci.nsIWebNavigation).QueryInterface(Ci.nsIDocShellTreeItem)
-         .treeOwner.QueryInterface(Ci.nsIInterfaceRequestor)
-         .getInterface(Ci.nsIXULWindow).docShell;
+      let docshell = Cc["@mozilla.org/appshell/window-mediator;1"]
+        .getService(Ci.nsIWindowMediator)
+        .getMostRecentBrowserWindow()
+        .docShell;
 
       return xpc.taskbar.getOverlayIconController(docshell);
    }
 
    var updateTimerId = null;
 
-   var updateOverlayIcon = function ()
+   var updateOverlayIcon = async function ()
    {
       if (gActiveWindow)
       {
          let controller = getActiveWindowOverlayIconController();
 
-         var messageCount = getUnreadCountForAllAccounts();
+         var messageCount = await getUnreadCountForAllAccounts();
          if (messageCount > 0)
          {
-            var icon = createBadgeIcon(messageCount);
-            forceImgIContainerDecode(icon);
+            var icon = await createBadgeIcon(gActiveWindow, messageCount);
+            await forceImgIContainerDecode(icon);
             controller.setOverlayIcon(icon, "Message Count");
          }
          else
@@ -451,14 +626,6 @@ var unreadbadge = function ()
       },
    };
 
-   var prefsObserver =
-   {
-      observe : function (aSubject, aTopic, aData)
-      {
-         queueOverlayIconUpdate();
-      }
-   };
-
    /* The exported interface */
    var exportedInterface =
    {
@@ -466,23 +633,22 @@ var unreadbadge = function ()
       {
          /* nothing to do */
       },
-      startup : function (aData, aReason)
+      startup : async function (aData, aReason)
       {
-         setDefaultPreferences();
+         await setDefaultPreferences();
          if (!xpc.taskbar.available)
             return;
          Services.ww.registerNotification(gWindowObserver);
          xpc.mailSession.AddFolderListener(folderListener, Ci.nsIFolderListener.propertyFlagChanged | Ci.nsIFolderListener.event);
          xpc.notificationService.addListener(msgFolderListener, xpc.notificationService.msgAdded | xpc.notificationService.msgsDeleted | xpc.notificationService.folderDeleted | xpc.notificationService.itemEvent);
-         Services.prefs.addObserver(prefsPrefix, prefsObserver, false);
-         findActiveWindow();
+         await findActiveWindow();
+         messenger.storage.onChanged.addListener(queueOverlayIconUpdate);
       },
       shutdown : function (aData, aReason)
       {
          xpc.notificationService.removeListener(msgFolderListener);
          xpc.mailSession.RemoveFolderListener(folderListener);
          Services.ww.unregisterNotification(gWindowObserver);
-         Services.prefs.removeObserver(prefsPrefix, prefsObserver);
          clearOverlayIcon();
       },
       uninstall : function ()

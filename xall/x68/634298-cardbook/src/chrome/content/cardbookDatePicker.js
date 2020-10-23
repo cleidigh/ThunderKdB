@@ -54,7 +54,9 @@ customElements.whenDefined("menulist-editable").then(() => {
 			}
 		
 			disconnectedCallback() {
-				super.disconnectedCallback();
+				if (super.disconnectedCallback) {
+					super.disconnectedCallback();
+				}
 				
 				this._attributeObserver.disconnect();
 				

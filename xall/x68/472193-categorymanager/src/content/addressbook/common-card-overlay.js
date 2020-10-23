@@ -1,19 +1,15 @@
+// Import any needed modules.
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 var jbCatManEditDialog = {};
 
 // we need to be independent from the main addressbook here
-let loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-loader.loadSubScript("chrome://sendtocategory/content/category_tools.js");
+Services.scriptloader.loadSubScript("chrome://sendtocategory/content/category_tools.js");
 
 
 jbCatManEditDialog.Init = function () {
   //hide SOGo Category Tab
   if (window.document.getElementById("categoriesTabButton")) window.document.getElementById("categoriesTabButton").style.display = 'none';
-
-  if (jbCatMan.isMFFABInstalled) {
-    window.document.getElementById('abCatManCategoriesDescription').textContent = jbCatMan.getLocalizedMessage("category_description", "Category Manager")
-    window.document.getElementById('abCatManCategoriesDescription').hidden = false;
-  }
   
   /* Bugfix "andre jutisz"
   The original idea was to remove the SOGo code, which was run after the OK button of the
@@ -30,7 +26,7 @@ jbCatManEditDialog.Init = function () {
   window.document.getElementById('abCatManAddMainCategoryButton').addEventListener("command", jbCatManEditDialog.insertNewCategoryEntry, false);
   window.document.getElementById('abCatManAddSubCategoryButton').addEventListener("command", jbCatManEditDialog.insertNewCategoryEntry, false);
 
-  if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xul") {
+  if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xhtml") {
     // if this is the new card dialog, manually trigger onLoadCard to init category tab
     jbCatManEditDialog.onLoadCard(null, window.document);
     if (window.document.getElementById("abPopup")) {
@@ -43,7 +39,7 @@ jbCatManEditDialog.Init = function () {
 jbCatManEditDialog.getSelectedAb = function (window) {
   let abURI = "";
 
-  if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xul") {
+  if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xhtml") {
     abURI = window.document.getElementById("abPopup").value;
   } else if (window.arguments[0].hasOwnProperty("abURI")) {
     abURI = window.arguments[0].abURI;
@@ -165,20 +161,20 @@ jbCatManEditDialog.addItemToList = function (categoryName, checked = true) {
   let level = levels.length-1;
   let color = (255 - (level * 16)).toString(16);
   
-  let hbox = window.document.createElement("hbox");
+  let hbox = window.document.createXULElement("hbox");
   
-  let checkbox = window.document.createElement("checkbox");
+  let checkbox = window.document.createXULElement("checkbox");
   checkbox.setAttribute("checked", checked ? "true" : "false");
   checkbox.style["margin-left"] = (level*16) + "px";
   checkbox.addEventListener("command", jbCatManEditDialog.onCheckBoxes); 
   hbox.appendChild(checkbox);
 
-  let categoryLabel = window.document.createElement("label");
+  let categoryLabel = window.document.createXULElement("label");
   categoryLabel.setAttribute("flex", "1");
   categoryLabel.setAttribute("value", levels[level]);
   hbox.appendChild(categoryLabel);
 
-  let newListItem = window.document.createElement("richlistitem");
+  let newListItem = window.document.createXULElement("richlistitem");
   newListItem.setAttribute("custom-color", "true");
   newListItem.style.setProperty("--custom-color", "#" + color + color + color);
   newListItem.categoryName = categoryName;
@@ -207,6 +203,7 @@ jbCatManEditDialog.onLoadCard = function (aCard, aDocument) {
   for (let subCat of reducedCategories) {
     jbCatManEditDialog.appendCategoryEntries(subCat, jbCatManEditDialog.catsArray.filter(cat => (cat == subCat || cat.startsWith(subCat + " / "))).length > 0);
   }
+  list.style.height = "230px";
 }
 
 
@@ -273,15 +270,3 @@ jbCatManEditDialog.onItemSelected = function (event) {
 
 
 
-//Init on load
-window.addEventListener("load", function() { 
-  jbCatManEditDialog.Init(); 
-}, false);
-
-//register load and save listeners
-if (window.location.href=="chrome://messenger/content/addressbook/abNewCardDialog.xul") {
-  window.RegisterSaveListener(jbCatManEditDialog.onSaveCard);        
-} else {            
-    window.RegisterLoadListener(jbCatManEditDialog.onLoadCard);
-    window.RegisterSaveListener(jbCatManEditDialog.onSaveCard);	
-}

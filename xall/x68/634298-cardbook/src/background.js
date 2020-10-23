@@ -41,7 +41,7 @@ async function main() {
 	await browser.ConversionHelper.registerOverlay("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome://cardbook/content/lists/ovl_list.xhtml");
 	
 	// support for the message window
-	await browser.ConversionHelper.registerOverlay("chrome://messenger/content/messageWindow.xhtml", "chrome://cardbook/content/ovl_cardbookContexts.xhtml");
+	await browser.ConversionHelper.registerOverlay("chrome://messenger/content/messageWindow.xhtml", "chrome://cardbook/content/ovl_cardbook.xhtml");
 	
 	await browser.ConversionHelper.activateOverlays();
 	

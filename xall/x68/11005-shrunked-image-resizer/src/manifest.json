@@ -1,26 +1,42 @@
 {
-	"manifest_version": 2,
-	"name": "__MSG_extensionName__",
-	"description": "__MSG_extensionDescription__",
-	"version": "4.5.5",
-	"applications": {
-		"gecko": {
-			"id": "shrunked@darktrojan.net",
-			"strict_min_version": "68.0a1",
-			"strict_max_version": "73.*"
-		}
-	},
-	"author": "Geoff Lankow",
-	"homepage_url": "https://github.com/darktrojan/shrunked",
-	"icons": {
-		"16": "content/icon16.png",
-		"32": "content/icon32.png",
-		"64": "content/icon64.png"
-	},
-	"default_locale": "en",
-	"legacy": {
-		"options": {
-			"page": "chrome://shrunked/content/config.xul"
-		}
-	}
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "5.0.0",
+  "applications": {
+    "gecko": {
+      "id": "shrunked@darktrojan.net",
+      "strict_min_version": "78.0"
+    }
+  },
+  "author": "Geoff Lankow",
+  "homepage_url": "https://github.com/darktrojan/shrunked",
+  "icons": {
+    "16": "content/icon16.png",
+    "32": "content/icon32.png",
+    "64": "content/icon64.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "permissions": [
+    "compose",
+    "storage"
+  ],
+  "options_ui": {
+    "page": "content/config.xhtml"
+  },
+  "experiment_apis": {
+    "shrunked": {
+      "schema": "api/shrunked.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["shrunked"]],
+        "script": "api/shrunked.js"
+      }
+    }
+  }
 }

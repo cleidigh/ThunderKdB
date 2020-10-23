@@ -105,7 +105,7 @@ var ovl_synchro = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "52.4");
+		prefs.setCharPref("addonVersion", "52.5");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);
@@ -175,6 +175,7 @@ var ovl_synchro = {
 			// observers are needed not only UI but also for synchro
 			// there is no unregister launched
 			cardBookObserver.register();
+			cardboookModeMutationObserver.register();
 			
 			// add Cardbook into taskbar
 			// test ovl_winTaskBar.add();

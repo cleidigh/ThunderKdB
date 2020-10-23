@@ -1,0 +1,716 @@
+{
+"description": {
+	"message": "Signaler à SpamBee un e-mail de spam (non sollcité) ou de phishing.",
+	"description": "Description de l'extension dans la page chrome://extensions"},
+"report": {
+	"message": "SIGNALER",
+	"description": "Report label"},
+"actionButton": {
+	"message":"Cliquez ici pour procéder à un signalement",
+	"description":"Affiché lorsque l'utilisateur positionne le curseur de la souris sur le bouton de l'extension"},
+
+	"language":{
+		"message":"fr",
+		"description":""
+	},
+
+	"actionButtonWhenReportsUpdated":{
+		"message":"SPAMBEE : Cliquez ici pour procéder à un signalement\nPour consulter le résultat d'analyse de vos signalements, effectuez un clic droit puis ouvrez le menu \"Vos signalements à SPAMBEE\"",
+		"description":""
+	},
+
+	"documents./html/options.html":{
+		"message":"Options SPAMBEE",
+		"description":""
+	},
+
+	"documents./html/phishingAlert.html":{
+		"message":"Alerte site fraduleux",
+		"description":""
+	},
+
+	"notlistening1":{
+		"message":"Ce webmail n'est pas compatible avec SPAMBEE. Aucun signalement n'est possible.",
+		"description":""
+	},
+
+	"notlistening2":{
+		"message":"Si la page est en cours de chargement, veuillez patientez.",
+		"description":""
+	},
+
+	"notready":{
+		"message":"SPAMBEE est en cours de démarrage, veuillez patienter.",
+		"description":""
+	},
+
+	"notauthentified":{
+		"message":"",
+		"description":""
+	},
+
+	"notavailable":{
+		"message":"Cette messagerie n'est temporairement plus compatible avec SPAMBEE. Nous travaillons pour rendre le service compatible dans les meilleurs délais.",
+		"description":""
+	},
+
+	"options.yes":{
+		"message":"Oui",
+		"description":""
+	},
+
+	"options.no":{
+		"message":"Non",
+		"description":""
+	},
+
+	"options.title":{
+		"message":"Options SPAMBEE",
+		"description":""
+	},
+
+	"options.title2":{
+		"message":"Merci d'avoir installé SPAMBEE",
+		"description":""
+	},
+
+	"options.dataprivacy.title":{
+		"message":" Protection de vos données personnelles ",
+		"description":""
+	},
+
+	"options.dataprivacy.disclaimer":{
+		"message":"Les signalements sont strictement anonymes et ne requièrent aucune inscription ou adresse email. Les adresses des destinataires sont supprimées avant la transmission du signalement.<BR>Sauf volonté de votre part, les emails signalés ne sont conservés que le temps nécessaire pour leur analyse.<BR>Vous pouvez toutefois autoriser SPAMBEE à conserver les données transmises pour une période de 3 mois afin que les emails puissent être analysés de manière plus approfondie lorsque cela s'avère nécessaire. ",
+		"description":""
+	},
+
+	"options.dataprivacy.label":{
+		"message":"J'accepte que SPAMBEE conserve une copie des données (anonymisées) issues des e-mails signalés pour une investigation ultérieure. Sinon, l'e-mail signalé sera supprimé après analyse.",
+		"description":""
+	},
+
+	"options.notifications.label":{
+		"message":"Être notifié du résultat après l'analyse de mon signalement",
+		"description":""
+	},
+
+	"options.notifications.description":{
+		"message":"En activant cette option, vous serez averti dès que l'analyse de l'email signalé sera achevée afin que vous puissiez la consulter.",
+		"description":""
+	},
+
+	"options.preferences.title":{
+		"message":" Vos préférences pour les signalements",
+		"description":""
+	},
+
+	"options.oneclick.description":{
+		"message":"Option de signalement en 1 clic",
+		"description":""
+	},
+
+	"options.oneclick.label":{
+		"message":"Signaler en un seul clic",
+		"description":""
+	},
+
+	"options.oneclickDescription.description":{
+		"message":"Option de signalement en 1 clic",
+		"description":""
+	},
+
+	"options.oneclickDescription.label":{
+		"message":"En cochant cette option vous n'aurez plus à confirmer les signalements après un clic sur le bouton SPAMBEE dans la barre d'outils de votre navigateur.",
+		"description":""
+	},
+
+	"options.URLDETECT.title":{
+		"message":"Détection des sites (URLs) frauduleux lors de l'ouverture d'une nouvelle fenêtre ou d'un nouvel onglet (hors de votre webmail)",
+		"description":""
+	},
+
+	"options.URLDETECT.description":{
+		"message":"En désactivant cette fonctionnalité (option à Non), vous ne serez plus alerté (hors webmail) si vous consultez un site identifié comme frauduleux. Nous vous recommandons de ne pas modifier cette option (Garder le paramètre à Non).",
+		"description":""
+	},
+
+	"options.URLDETECT.label":{
+		"message":"Activer la détection durant la navigation Web dans votre navigateur",
+		"description":""
+	},
+
+	"options.REMINDER.title":{
+		"message":"Rappel du fonctionnement de l'extension dans votre webmail :",
+		"description":""
+	},
+
+	"options.REMINDER.label":{
+		"message":"Tous les <span id='frequency'>X</span> jours : ",
+		"description":""
+	},
+
+	"options.movereport.title":{
+		"message":"Archiver les e-mails signalés",
+		"description":""
+	},
+
+	"options.movereport.description":{
+		"message":"Les e-mails signalés seront automatiquement déplacés dans le dossier des courriers indésirables (spam) après le signalement. Si cette option n'est pas sélectionnée les e-mails ne seront pas déplacés.",
+		"description":""
+	},
+
+	"options.markspam.title":{
+		"message":"Marquer les e-mails signalés comme SPAM",
+		"description":""
+	},
+
+	"options.markspam.description":{
+		"message":"Les e-mails signalés seront automatiquement marqués comme SPAM après le signalement.",
+		"description":""
+	},
+
+	"options.markread.title":{
+		"message":"Marquer les e-mails signalés comme lus",
+		"description":""
+	},
+
+	"options.markread.description":{
+		"message":"Les e-mails signalés seront automatiquement marqués comme lus après le signalement.",
+		"description":""
+	},
+
+	"options.save":{
+		"message":"Enregistrer",
+		"description":""
+	},
+
+	"options.saved":{
+		"message":"Paramètres enregistrés...",
+		"description":""
+	},
+
+	"options.invalidCredentials":{
+		"message":"",
+		"description":""
+	},
+
+	"options.noConnection":{
+		"message":"",
+		"description":""
+	},
+
+	"options.missingPassword":{
+		"message":"",
+		"description":""
+	},
+
+	"options.invalidUserId":{
+		"message":"",
+		"description":""
+	},
+
+	"options.validateAgreement":{
+		"message":"",
+		"description":""
+	},
+
+	"options.errorVerifyingCredentials":{
+		"message":"",
+		"description":""
+	},
+
+	"options.error1":{
+		"message":"",
+		"description":""
+	},
+
+	"options.error2":{
+		"message":"",
+		"description":""
+	},
+
+	"options.privacypolicy":{
+		"message":"Consulter la Politique de Confidentialité",
+		"description":""
+	},
+
+	"contentScript.notificationMessage.title":{
+		"message":"Extension SPAMBEE",
+		"description":""
+	},
+
+	"contentScript.notificationMessage.nomail1":{
+		"message":"Pour faire un signalement, sélectionnez les e-mails à signaler ou ouvrez un e-mail puis cliquez sur SPAMBEE",
+		"description":""
+	},
+
+	"contentScript.notificationMessage.nomail2":{
+		"message":"Pour faire un signalement, sélectionnez les e-mails à signaler ou ouvrez un e-mail puis cliquez sur SPAMBEE. Le mode Standard est activé dans votre webmail, vous ne pouvez donc pas sélectionner une conversation (plusieurs e-mails regroupés). Nous vous recommandons d'activer le mode évolué dans les Préférences.",
+		"description":""
+	},
+
+	"contentScript.notificationMessage.nomail3":{
+		"message":"Ouvrez un e-mail pour faire un signalement.",
+		"description":""
+	},
+
+	"contentScript.notificationMessage.error1":{
+		"message":"SPAMBEE inopérent. Impossible de charger les paramètres. Veuillez recharger la page.",
+		"description":""
+	},
+
+	"contentScript.notificationMessage.error2":{
+		"message":"SPAMBEE inopérent. Une erreur est survenue lors de la collecte des signalements. Merci de réessayer ou de solliciter l'assistance de SPAMBEE si le problème persiste.",
+		"description":""
+	},
+
+	"contentScript.sidebar.title":{
+		"message":"Extension de signalement et de protection contre le Phishing",
+		"description":""
+	},
+
+	"contentScript.sidebar.copyright":{
+		"message":"",
+		"description":""
+	},
+
+	"contentScript.sidebar.calltoactionsingle":{
+		"message":"Si vous souhaitez signaler l'e-mail ci-contre en tant que spam ou tentative de fraude, cliquez sur le bouton ci-dessous",
+		"description":""
+	},
+
+	"contentScript.sidebar.calltoaction":{
+		"message":"Si vous considérez que les e-mails sélectionnés ci-contre sont du spam (pourriel), cliquez sur le bouton ci-dessous",
+		"description":""
+	},
+
+	"contentScript.sidebar.disclosure":{
+		"message":"En signalant ces emails, leurs contenus seront transmis à nos services pour analyse afin de déployer les contre-mesures adaptées.",
+		"description":""
+	},
+
+	"contentScript.sidebar.disclosureSingle":{
+		"message":"Le contenu des emails signalés va être analysé afin de déployer si nécessaire les contre-mesures adaptées.",
+		"description":""
+	},
+
+	"contentScript.sidebar.numbering":{
+		"message":"Vous avez sélectionné <span id='VFSELECTEDMAILS'></span> e-mails à nous transmettre.",
+		"description":""
+	},
+
+	"contentScript.sidebar.buttonlabel":{
+		"message":"SIGNALER",
+		"description":""
+	},
+
+	"contentScript.sidebar.phishingtitle":{
+		"message":"Attention Phishing",
+		"description":""
+	},
+
+	"contentScript.sidebar.phishingdetected":{
+		"message":"Des liens vers des sites de Phishing ont été détectés dans le(s) mail(s) affiché(s) ci-contre.",
+		"description":""
+	},
+
+	"contentScript.sidebar.phishinglinks":{
+		"message":"Chaque lien identifié a été marqué avec le logo SPAMBEE. Nous vous recommandons de ne pas cliquer sur ces liens et d'agir avec la plus grande prudence.",
+		"description":""
+	},
+
+	"contentScript.sidebar.phishingreport":{
+		"message":"Si vous signalez cet e-mail, son contenu sera transmis à nos services pour analyse afin de déployer les contre-mesures adaptées.",
+		"description":""
+	},
+
+	"contentScript.sidebar.phishingfalsepos":{
+		"message":"Si vous jugez cet e-mail est légitime et qu'aucun des liens signalés n'est frauduleux, vous pouvez prévenir SPAMBEE : ",
+		"description":""
+	},
+
+	"contentScript.sidebar.phishingfalseposbutton":{
+		"message":"Faux-Positif",
+		"description":""
+	},
+
+	"contentScript.sidebar.zoom":{
+		"message":"Cliquer ici pour voir le détail des informations transmises à SPAMBEE dans ce signalement.",
+		"description":""
+	},
+
+	"contentScript.sidebar.reportOnGoing":{
+		"message":"Patientez...",
+		"description":""
+	},
+
+	"contentScript.sidebar.reportTransmission":{
+		"message":"Votre signalement a été pris en compte et transmis à SPAMBEE.",
+		"description":""
+	},
+
+	"contentScript.sidebar.buttonlabelReported":{
+		"message":"MERCI",
+		"description":""
+	},
+
+	"contentScript.sidebar.singlereportok":{
+		"message":"L'e-mail signalé a été correctement transmsis à SPAMBEE",
+		"description":""
+	},
+
+	"contentScript.sidebar.multiplereportsok":{
+		"message":"Les e-mails signalés ont été correctement transmis à SPAMBEE",
+		"description":""
+	},
+
+	"contentScript.sidebar.sendingsinglereport":{
+		"message":"Transmission du signalement en cours<br>Veuillez patienter",
+		"description":""
+	},
+
+	"contentScript.sidebar.sendingmultiplereports":{
+		"message":"Transmission des signalements en cours... merci de patienter",
+		"description":""
+	},
+
+	"contentScript.sidebar.reportsNumber":{
+		"message":"Nombre de signalements restant à transmettre : ",
+		"description":""
+	},
+
+	"contentScript.sidebar.multiplereportsfailed":{
+		"message":"Une erreur est survenue lors de la transmission des signalements.",
+		"description":""
+	},
+
+	"contentScript.sidebar.successNumber":{
+		"message":"Nombre de signalements transmis : ",
+		"description":""
+	},
+
+	"contentScript.sidebar.failureNumber":{
+		"message":"Nombre de signalements en erreur : ",
+		"description":""
+	},
+
+	"contentScript.sidebar.failureReason":{
+		"message":"Code erreur : ",
+		"description":""
+	},
+
+	"contentScript.sidebar.newversionavailable":{
+		"message":"Une nouvelle version de SPAMBEE est disponible.",
+		"description":""
+	},
+
+	"contentScript.sidebar.newversionnumber":{
+		"message":"Version : <span id='VERSIONNUMBER'></span>",
+		"description":""
+	},
+
+	"contentScript.sidebar.currentversionnumber":{
+		"message":"Version actuelle : <span id='CURRENTVERSIONNUMBER'></span>",
+		"description":""
+	},
+
+	"contentScript.sidebar.calltoupdate":{
+		"message":"Veuillez mettre à jour votre extension dans votre navigateur afin de pouvoir bénéficier de toutes les nouvelles fonctionnalités.",
+		"description":""
+	},
+
+	"contentScript.sidebar.howtoupdate":{
+		"message":"Pour procéder à la mise à jour, ouvrez l'onglet des extensions dans votre navigateur (about:addons) puis cliquez sur le bouton <img src='/img/updatebutton.png'> des paramètres comme indiqué ci-dessous, puis Rechercher les mises à jour.",
+		"description":""
+	},
+
+	"contentScript.sidebar.support":{
+		"message":"Si le problème persiste, vous pouvez soumettre une demande d'assistance au support SPAMBEE : <a href='https://assistance.signal-spam.fr/index.php' class='externallink'>cliquez ici</a>.",
+		"description":""
+	},
+
+	"contentScript.sidebar.emailreport":{
+		"message":"Signalement d'un e-mail",
+		"description":""
+	},
+
+	"contentScript.sidebar.dataprivacy":{
+		"message":"J'accepte que SPAMBEE conserve une copie des données (anonymisées) issues des e-mails signalés pour une investigation ultérieure. Sinon, l'e-mail signalé sera supprimé après analyse.",
+		"description":""
+	},
+
+	"contentScript.sidebar.feedback":{
+		"message":"Je veux être notifié du résultat après l'analyse de mon signalement",
+		"description":""
+	},
+
+	"contentScript.sidebar.dataprivacyonreport":{
+		"message":"Les données de l'e-mail signalé seront supprimées après analyse de celui-ci.",
+		"description":""
+	},
+
+	"contentScript.sidebar.feedbackinfo":{
+		"message":"Comme souhaité, vous serez notifié dès que le résultat de l'analyse sera disponible.",
+		"description":""
+	},
+
+	"contentScript.sidebar.emailfrom":{
+		"message":"De:",
+		"description":""
+	},
+
+	"contentScript.sidebar.emailsubject":{
+		"message":"Objet:",
+		"description":""
+	},
+
+	"contentScript.reminder.title":{
+		"message":"Extension SPAMBEE - Rappel",
+		"description":""
+	},
+
+	"contentScript.reminder.message1":{
+		"message":"Pour signaler un spam ou un e-mail de Phishing, ouvrez l'e-mail ou sélectionnez les e-mails à signaler dans votre Webmail, puis cliquez sur l'icône située dans la barre d'outils de votre navigateur.",
+		"description":""
+	},
+
+	"contentScript.reminder.message2":{
+		"message":"<p>Revoir ce rappel régulièrement ?</p>",
+		"description":""
+	},
+
+	"contentScript.reminder.message3":{
+		"message":"modifiable dans les options",
+		"description":""
+	},
+
+	"contentScript.reminder.message4":{
+		"message":"Tous les <span id=\"frequencyDisplayed\"></span> jours",
+		"description":""
+	},
+
+	"contentScript.reportStatus.success":{
+		"message":"MERCI",
+		"description":""
+	},
+
+	"contentScript.reportStatus.error":{
+		"message":"ERREUR INATTENDUE",
+		"description":""
+	},
+
+	"contentScript.reportStatus.invalidpassword":{
+		"message":"Identifiant utilisateur ou mot de passe incorrect",
+		"description":""
+	},
+
+	"phishingAlert.warning":{
+		"message":"ATTENTION",
+		"description":""
+	},
+
+	"phishingAlert.message1":{
+		"message":"La page correspondant à l'URL qui tente de s'ouvrir dans votre navigateur a été répertoriée comme frauduleuse.",
+		"description":""
+	},
+
+	"phishingAlert.message2":{
+		"message":"Nous vous conseillons de ne pas poursuivre votre navigation vers ce site.",
+		"description":""
+	},
+
+	"phishingAlert.message3":{
+		"message":"",
+		"description":""
+	},
+
+	"phishingAlert.return":{
+		"message":"Revenir à la page précédente",
+		"description":""
+	},
+
+	"phishingAlert.buttonlabel":{
+		"message":"&#9888; J'ai compris, mais je souhaite consulter ce site dangereux",
+		"description":""
+	},
+
+	"phishingAlert.false1":{
+		"message":"Si vous pensez qu'il s'agit d'une \"fausse alerte\",",
+		"description":""
+	},
+
+	"phishingAlert.false2":{
+		"message":" et que le site n'est pas frauduleux : ",
+		"description":""
+	},
+
+	"phishingAlert.false3":{
+		"message":"pour nous le signaler et poursuivre vers ce site.",
+		"description":""
+	},
+
+	"phishingAlert.buttonlabel2":{
+		"message":"cliquez ici",
+		"description":""
+	},
+
+	"phishingAlert.falsePositiveOK":{
+		"message":"Merci pour cette information, nous allons vérifier cette fausse alerte",
+		"description":""
+	},
+
+	"reportUrl.message1":{
+		"message":"Si vous considérez que ce site internet est une tentative de fraude, cliquez sur le bouton SIGNALER ci-dessous.",
+		"description":""
+	},
+
+	"reportUrl.message2":{
+		"message":"L'adresse (URL) de ce site sera transmise à nos services pour analyse afin de déployer les contre-mesures adaptées.",
+		"description":""
+	},
+
+	"reportUrl.buttonlabel":{
+		"message":"SIGNALER",
+		"description":""
+	},
+
+	"update.updated":{
+		"message":"L'extension a été mise à jour",
+		"description":""
+	},
+
+	"update.more":{
+		"message":"En savoir plus",
+		"description":""
+	},
+
+	"critical.noparams":{
+		"message":"L'extension est inopérante",
+		"description":""
+	},
+
+	"reports.title":{
+		"message":"Vos signalements à SPAMBEE",
+		"description":""
+	},
+
+	"reports.subTitle":{
+		"message":"Liste de vos signalements à SPAMBEE durant les 10 derniers jours",
+		"description":""
+	},
+
+	"reports.deleteRowsInfo":{
+		"message":"Annuler et effacer les signalements sélectionnés (ceci effacera les données reçues par SPAMBEE)",
+		"description":""
+	},
+
+	"reports.col1":{
+		"message":"🗑",
+		"description":""
+	},
+
+	"reports.col2":{
+		"message":"Date signalement",
+		"description":""
+	},
+
+	"reports.col3":{
+		"message":"Email émetteur / Site",
+		"description":""
+	},
+
+	"reports.col4":{
+		"message":"Sujet email / URL",
+		"description":""
+	},
+
+	"reports.col5":{
+		"message":"Date statut",
+		"description":""
+	},
+
+	"reports.col6":{
+		"message":"Statut Phishing",
+		"description":""
+	},
+
+	"reports.pager.page":{
+		"message":"Page ",
+		"description":""
+	},
+
+	"reports.pager.onpages":{
+		"message":"/",
+		"description":""
+	},
+
+	"reports.status.phishing":{
+		"message":"phishing",
+		"description":""
+	},
+
+	"reports.status.suspect":{
+		"message":"suspect",
+		"description":""
+	},
+
+	"reports.status.unknown":{
+		"message":"SPAM ou abusif",
+		"description":""
+	},
+
+	"reports.status.legit":{
+		"message":"légitime",
+		"description":""
+	},
+
+	"reports.status.pending":{
+		"message":"en&nbsp;cours ...",
+		"description":""
+	},
+
+	"reports.status.phishingDescription":{
+		"message":"Nous avons identifié dans cet email des liens de Phishing, agissez avec précaution vis à vis de cet email. Ne cliquez sur aucun lien, ne répondez pas, et n'ouvrez aucun document inclus dans cet email.",
+		"description":""
+	},
+
+	"reports.status.suspectDescription":{
+		"message":"Certains éléments de cet email sont suspects, il pourrait s'agir de Phishing. Agissez avec précautions vis à vis de cet email.",
+		"description":""
+	},
+
+	"reports.status.unknownDescription":{
+		"message":"L'analyse automatique de cet email n'a pas permis d'identifier de tentative de fraude.",
+		"description":""
+	},
+
+	"reports.status.legitDescription":{
+		"message":"Cet email n'est pas frauduleux et peut être considéré comme légitime ou comme SPAM.",
+		"description":""
+	},
+
+	"reports.status.pendingDescription":{
+		"message":"L'analyse de cet email est en cours. Veuillez patienter...",
+		"description":""
+	},
+
+	"notification.title":{
+		"message":"Analyse de signalement",
+		"description":""
+	},
+
+	"notification.message":{
+		"message":"Résultat d'analyse disponible: cliquez ici pour voir le résultat.",
+		"description":""
+	},
+
+	"buttonlabel":{
+		"message":"SIGNALER",
+		"description":""
+	},
+
+	"popupmenu.tooltip":{
+		"message":"Maintenez la touche Shift et cliquez<BR>sur le bouton Signaler pour afficher ce menu",
+		"description":""
+	}
+}

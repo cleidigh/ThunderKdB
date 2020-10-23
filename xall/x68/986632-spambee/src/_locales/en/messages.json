@@ -1,0 +1,719 @@
+{
+  "description": {
+    "message": "Report to SpamBee a spam or phishing e-mail",
+    "description": "Description of the extension in page chrome://extensions"
+  },
+  "report": {
+    "message": "REPORT",
+    "description": "Report label"
+  },
+  "actionButton": {
+    "message": "Click here to report to SpamBee",
+    "description": "Message displyed when the mouse is over the extension button"
+  },
+
+  "language":{
+    "message":"en",
+    "description":""
+  },
+
+  "actionButtonWhenReportsUpdated":{
+    "message":"SPAMBEE - Click here to report to SPAMBEE\nTo view the result of your reports analysis, right-click on this button and select menu \"Your last reports to SPAMBEE\"",
+    "description":""
+  },
+
+  "documents./html/options.html":{
+    "message":"SPAMBEE Options",
+    "description":""
+  },
+
+  "documents./html/phishingAlert.html":{
+    "message":"Phishing Alert",
+    "description":""
+  },
+
+  "notlistening1":{
+    "message":"This site is not a webmail compatible with SPAMBEE extension. No report is possible.",
+    "description":""
+  },
+
+  "notlistening2":{
+    "message":"However, if the webmail is loading, please wait.",
+    "description":""
+  },
+
+  "notready":{
+    "message":"SPAMBEE is starting, please wait.",
+    "description":""
+  },
+
+  "notauthentified":{
+    "message":"",
+    "description":""
+  },
+
+  "notavailable":{
+    "message":"SPAMBEE is temporarly not available for this webmail. We are working to make this webmail compatible as soon as possible.",
+    "description":""
+  },
+
+  "options.yes":{
+    "message":"Yes",
+    "description":""
+  },
+
+  "options.no":{
+    "message":"No",
+    "description":""
+  },
+
+  "options.title":{
+    "message":"SPAMBEE extension settings",
+    "description":""
+  },
+
+  "options.title2":{
+    "message":"Thanks for using the SPAMBEE",
+    "description":""
+  },
+
+  "options.dataprivacy.title":{
+    "message":"Data Privacy Protection",
+    "description":""
+  },
+
+  "options.dataprivacy.disclaimer":{
+    "message":"Your reports are strictly anonymous and do not require any user registration or email address registration. All recipients' email addresses will be deleted before transmission of the reporting. .<BR>Without your agreement, any reported email will be  conserved only for the duration of its content analysis.<BR>However, you can give your agreement to SPAMBEE to keep reported datas for a period of 3 months for further investigations, if required.",
+    "description":""
+  },
+
+  "options.dataprivacy.label":{
+    "message":"I accept that SPAMBEE keeps a copy of my reported emails (anonymized) for further investigation by SPAMBEE. Otherwise, the reported email(s) will be immediately deleted after analysis.",
+    "description":""
+  },
+
+  "options.notifications.label":{
+    "message":"to be notified when the result of the analysis of my report is available",
+    "description":""
+  },
+
+  "options.notifications.description":{
+    "message":"Activating this option, you will be notified (by your browser) when the analysis of a reported email has been completed, so you can check it.",
+    "description":""
+  },
+
+  "options.preferences.title":{
+    "message":"Your Preferences",
+    "description":""
+  },
+
+  "options.oneclick.description":{
+    "message":"Option to report emails by 1 click",
+    "description":""
+  },
+
+  "options.oneclick.label":{
+    "message":"to report emails by 1 click",
+    "description":""
+  },
+
+  "options.oneclickDescription.description":{
+    "message":"Option to report emails by 1 click",
+    "description":""
+  },
+
+  "options.oneclickDescription.label":{
+    "message":"Select YES if you wish to report email(s) by only one click on the SPAMBEE button in your browser toolbar. After opening an email or selecting emails, the report will be transmitted to SPAMBEE at once when you click on the SPAMBEE button in your browser toolbar.",
+    "description":""
+  },
+
+  "options.URLDETECT.title":{
+    "message":"Detection of fraudulent sites (URLs) when opening a new browser tab or window (outside a webmail)",
+    "description":""
+  },
+
+  "options.URLDETECT.description":{
+    "message":"Activating this feature (setting option above to Yes), you will be alerted if you reach a site identified as a fraudulent site. We strongly recommend you keep this feature activated (setting option to Yes).",
+    "description":""
+  },
+
+  "options.URLDETECT.label":{
+    "message":"to allow fraudulent URL detection during your web navigation",
+    "description":""
+  },
+
+  "options.REMINDER.title":{
+    "message":"Reminder for how to use SPAMBEE in webmails:",
+    "description":""
+  },
+
+  "options.REMINDER.label":{
+    "message":"Reminder frequency every <span id='frequency'>X</span> days:",
+    "description":""
+  },
+
+  "options.movereport.title":{
+    "message":"Archive all reported e-mails",
+    "description":""
+  },
+
+  "options.movereport.description":{
+    "message":"Reported e-mails will be automatically moved to the Spam folder.",
+    "description":""
+  },
+
+  "options.markspam.title":{
+    "message":"Mark e-mails flagged as SPAM",
+    "description":""
+  },
+
+  "options.markspam.description":{
+    "message":"Reported e-mails will automatically be marked as SPAM after reporting.",
+    "description":""
+  },
+
+  "options.markread.title":{
+    "message":"Mark e-mails flagged as read",
+    "description":""
+  },
+
+  "options.markread.description":{
+    "message":"Reported e-mails will automatically be marked as read after reporting.",
+    "description":""
+  },
+
+  "options.save":{
+    "message":"Save",
+    "description":""
+  },
+
+  "options.saved":{
+    "message":"Parameters saved...",
+    "description":""
+  },
+
+  "options.invalidCredentials":{
+    "message":"",
+    "description":""
+  },
+
+  "options.noConnection":{
+    "message":"",
+    "description":""
+  },
+
+  "options.missingPassword":{
+    "message":"",
+    "description":""
+  },
+
+  "options.invalidUserId":{
+    "message":"",
+    "description":""
+  },
+
+  "options.validateAgreement":{
+    "message":".",
+    "description":""
+  },
+
+  "options.errorVerifyingCredentials":{
+    "message":"",
+    "description":""
+  },
+
+  "options.error1":{
+    "message":"",
+    "description":""
+  },
+
+  "options.error2":{
+    "message":"",
+    "description":""
+  },
+
+  "options.privacypolicy":{
+    "message":"SPAMBEE Privacy Policy",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.title":{
+    "message":"SPAMBEE",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.nomail1":{
+    "message":"To report unsollicited email, select emails or open an email in your webmail and click on the SPAMBEE button in the browser toolbar.",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.nomail2":{
+    "message":"To report unsollicited email, select emails or open an email in your webmail and click on the SPAMBEE button in the browser toolbar. Standard mode is activated in your webmail, you cannot select a conversation (thread of emails). We recommend you deactivate Standard Mode in your webmail preferences.",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.nomail3":{
+    "message":"To report unsollicited email, open an email in your webmail and click on the extension button in the browser toolbar.",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.error1":{
+    "message":"SPAMBEE extension encountered an error. Parameters not loaded. Please refresh the current page in your browser.",
+    "description":""
+  },
+
+  "contentScript.notificationMessage.error2":{
+    "message":"SPAMBEE extension encountered an error while retrieving emails for report. Please retry or request assistance from SPAMBEE support if this problem remains.",
+    "description":""
+  },
+
+  "contentScript.sidebar.title":{
+    "message":"Emails reporting and protection against Phishing",
+    "description":""
+  },
+
+  "contentScript.sidebar.copyright":{
+    "message":"",
+    "description":""
+  },
+
+  "contentScript.sidebar.calltoactionsingle":{
+    "message":"If you wish to report the selected or displayed email as spam or unsollicited email, click on the button below",
+    "description":""
+  },
+
+  "contentScript.sidebar.calltoaction":{
+    "message":"If you wish to report the selected emails as spam or unsollicited emails,  click on the button below",
+    "description":""
+  },
+
+  "contentScript.sidebar.disclosure":{
+    "message":"By reporting email(s), the(ir) content will be transmitted to our services for analysis purposes and deployment of appropriate counter-measures.<br>",
+    "description":""
+  },
+
+  "contentScript.sidebar.disclosureSingle":{
+    "message":"By reporting email, its content will be transmitted to our services for analysis purposes and deployment of appropriate counter-measures.",
+    "description":""
+  },
+
+  "contentScript.sidebar.numbering":{
+    "message":"You have selected <span id='VFSELECTEDMAILS'></span> emails to report",
+    "description":""
+  },
+
+  "contentScript.sidebar.buttonlabel":{
+    "message":"REPORT",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingtitle":{
+    "message":"Fraudulent links detected",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingdetected":{
+    "message":"Links to fraudulent sites have been detected in the mail(s) displayed in your webmail",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishinglinks":{
+    "message":"Each concerned link is marked with the SPAMBEE logo. We strongly recommend you to not click such marked link and proceed with caution.",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingreport":{
+    "message":"By reporting email, its content will be transmitted to our services for analysis purposes and deployment of appropriate counter-measures.",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingfalsepos":{
+    "message":"If you consider this email as legitimate and none of the links is fraudulent, report this to SPAMBEE : ",
+    "description":""
+  },
+
+  "contentScript.sidebar.phishingfalseposbutton":{
+    "message":"False-Positive",
+    "description":""
+  },
+
+  "contentScript.sidebar.zoom":{
+    "message":"Click here to view all the data transmitted with your report to SPAMBEE.",
+    "description":""
+  },
+
+  "contentScript.sidebar.reportOnGoing":{
+    "message":"Please wait...",
+    "description":""
+  },
+
+  "contentScript.sidebar.reportTransmission":{
+    "message":"Thank you for your report, transmission is ongoing.",
+    "description":""
+  },
+
+  "contentScript.sidebar.buttonlabelReported":{
+    "message":"THANKS",
+    "description":""
+  },
+
+  "contentScript.sidebar.singlereportok":{
+    "message":"The reported email has been transmitted to SPAMBEE",
+    "description":""
+  },
+
+  "contentScript.sidebar.multiplereportsok":{
+    "message":"The reported emails have been transmitted to SPAMBEE",
+    "description":""
+  },
+
+  "contentScript.sidebar.sendingsinglereport":{
+    "message":"Transmitting report... please wait",
+    "description":""
+  },
+
+  "contentScript.sidebar.sendingmultiplereports":{
+    "message":"Transmitting reports... please wait",
+    "description":""
+  },
+
+  "contentScript.sidebar.reportsNumber":{
+    "message":"Number of reports to transmit: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.multiplereportsfailed":{
+    "message":"An error occured while transmitting one of the reports.",
+    "description":""
+  },
+
+  "contentScript.sidebar.successNumber":{
+    "message":"Number of transmitted reports: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.failureNumber":{
+    "message":"Number of failed transmissions: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.failureReason":{
+    "message":"Error code: ",
+    "description":""
+  },
+
+  "contentScript.sidebar.newversionavailable":{
+    "message":"A new version of SPAMBEE is available.",
+    "description":""
+  },
+
+  "contentScript.sidebar.newversionnumber":{
+    "message":"New version: <span id='VERSIONNUMBER'></span>",
+    "description":""
+  },
+
+  "contentScript.sidebar.currentversionnumber":{
+    "message":"Current version: <span id='CURRENTVERSIONNUMBER'></span>",
+    "description":""
+  },
+
+  "contentScript.sidebar.calltoupdate":{
+    "message":"You should update SPAMBEE to take benefits of new features.",
+    "description":""
+  },
+
+  "contentScript.sidebar.howtoupdate":{
+    "message":"To proceed to update, open the Add-Ons tab in your browser (about:addons), click on the button <img src='/img/updatebutton.png'> in the right-upper corner and select the search updates menu.",
+    "description":""
+  },
+
+  "contentScript.sidebar.support":{
+    "message":"If the proble remains, you may submit a support request to Signal : <a href='https://assistance.signal-spam.fr/index.php' class='externallink'>click here</a>.",
+    "description":""
+  },
+
+  "contentScript.sidebar.emailreport":{
+    "message":"Email Report",
+    "description":""
+  },
+
+  "contentScript.sidebar.dataprivacy":{
+    "message":"I accept that SPAMBEE keeps a copy of my reported emails (anonymized) for further investigation by SPAMBEE. Otherwise, the reported email(s) will be immediately deleted once it has been analysed.",
+    "description":""
+  },
+
+  "contentScript.sidebar.feedback":{
+    "message":"I want to be notified once my reported email has been analysed",
+    "description":""
+  },
+
+  "contentScript.sidebar.dataprivacyonreport":{
+    "message":"The data related to your email report will be deleted in our database once it has been analysed.",
+    "description":""
+  },
+
+  "contentScript.sidebar.feedbackinfo":{
+    "message":"As requested, you will be notified once your report has been analysed.",
+    "description":""
+  },
+
+  "contentScript.sidebar.emailfrom":{
+    "message":"From:",
+    "description":""
+  },
+
+  "contentScript.sidebar.emailsubject":{
+    "message":"Subject:",
+    "description":""
+  },
+
+  "contentScript.reminder.title":{
+    "message":"SPAMBEE - How to use the extension",
+    "description":""
+  },
+
+  "contentScript.reminder.message1":{
+    "message":"To report a spam or phishing email, open or select the email(s) in your Webmail, then click on the SPAMBEE button in the browser toolbar.",
+    "description":""
+  },
+
+  "contentScript.reminder.message2":{
+    "message":"<p>See this reminder periodically?</p>",
+    "description":""
+  },
+
+  "contentScript.reminder.message3":{
+    "message":"click here to modify this reminder in options, or set your preferences below",
+    "description":""
+  },
+
+  "contentScript.reminder.message4":{
+    "message":"Every <span id=\"frequencyDisplayed\"></span> day",
+    "description":""
+  },
+
+  "contentScript.reportStatus.success":{
+    "message":"Thank You",
+    "description":""
+  },
+
+  "contentScript.reportStatus.error":{
+    "message":"Unexpected error",
+    "description":""
+  },
+
+  "contentScript.reportStatus.invalidpassword":{
+    "message":"User ID or password is invalid",
+    "description":""
+  },
+
+  "phishingAlert.warning":{
+    "message":"WARNING",
+    "description":""
+  },
+
+  "phishingAlert.message1":{
+    "message":"The page, referenced by the URL below, being opened in your browser has been identified as fraudulent.",
+    "description":""
+  },
+
+  "phishingAlert.message2":{
+    "message":"We strongly recommend you to not continue your navigation on this site.",
+    "description":""
+  },
+
+  "phishingAlert.message3":{
+    "message":"",
+    "description":""
+  },
+
+  "phishingAlert.return":{
+    "message":"Go back to previous page",
+    "description":""
+  },
+
+  "phishingAlert.buttonlabel":{
+    "message":"&#9888; I understood risks, however I still want to visit this site",
+    "description":""
+  },
+
+  "phishingAlert.false1":{
+    "message":"If you consider this alert as a \"false positive\" phishing detection,",
+    "description":""
+  },
+
+  "phishingAlert.false2":{
+    "message":" and this URL is not fraudulent: ",
+    "description":""
+  },
+
+  "phishingAlert.false3":{
+    "message":"for letting us know and investigate on its status.",
+    "description":""
+  },
+
+  "phishingAlert.buttonlabel2":{
+    "message":"click here",
+    "description":""
+  },
+
+  "phishingAlert.falsePositiveOK":{
+    "message":"Thanks for this information, we'll check this site",
+    "description":""
+  },
+
+  "reportUrl.message1":{
+    "message":"If you wish to report the current page as a fraudulent website, click on the REPORT button below.",
+    "description":""
+  },
+
+  "reportUrl.message2":{
+    "message":"The address (URL) of this web site will be analyzed, and appropriate counter-measures will be taken if a fraud attempt is detected.",
+    "description":""
+  },
+
+  "reportUrl.buttonlabel":{
+    "message":"REPORT",
+    "description":""
+  },
+
+  "update.updated":{
+    "message":"The extension has been updated",
+    "description":""
+  },
+
+  "update.more":{
+    "message":"More details",
+    "description":""
+  },
+
+  "critical.noparams":{
+    "message":"Extension could not start",
+    "description":""
+  },
+
+  "reports.title":{
+    "message":"Your last reports to SPAMBEE",
+    "description":""
+  },
+
+  "reports.subTitle":{
+    "message":"List of your last reports to SPAMBEE in the last 10 days",
+    "description":""
+  },
+
+  "reports.deleteRowsInfo":{
+    "message":"Cancel and delete selected reports (this will also delete all data stored by SPAMBEE)",
+    "description":""
+  },
+
+  "reports.col1":{
+    "message":"🗑",
+    "description":""
+  },
+
+  "reports.col2":{
+    "message":"Report time",
+    "description":""
+  },
+
+  "reports.col3":{
+    "message":"Email sender / Site",
+    "description":""
+  },
+
+  "reports.col4":{
+    "message":"Email subject  / URL",
+    "description":""
+  },
+
+  "reports.col5":{
+    "message":"Status time",
+    "description":""
+  },
+
+  "reports.col6":{
+    "message":"Phishing Status",
+    "description":""
+  },
+
+  "reports.pager.page":{
+    "message":"Page ",
+    "description":""
+  },
+
+  "reports.pager.onpages":{
+    "message":"/",
+    "description":""
+  },
+
+  "reports.status.phishing":{
+    "message":"phishing",
+    "description":""
+  },
+
+  "reports.status.suspect":{
+    "message":"suspect",
+    "description":""
+  },
+
+  "reports.status.unknown":{
+    "message":"SPAM or Abusive",
+    "description":""
+  },
+
+  "reports.status.legit":{
+    "message":"legit",
+    "description":""
+  },
+
+  "reports.status.pending":{
+    "message":"pending...",
+    "description":""
+  },
+
+  "reports.status.phishingDescription":{
+    "message":"We have detected phishing links in this email, you must proceed with caution and should not click on any link in this email, nor reply to this email or open an attached document.",
+    "description":""
+  },
+
+  "reports.status.suspectDescription":{
+    "message":"Some elements in this email may be fraudulent, pleaseproceed with caution.",
+    "description":""
+  },
+
+  "reports.status.unknownDescription":{
+    "message":"The automatic analysis of your report dit not allow to identify any fraudulent attempt in this email.",
+    "description":""
+  },
+
+  "reports.status.legitDescription":{
+    "message":"This email is not fraudulent and will be considered as a reported spam email",
+    "description":""
+  },
+
+  "reports.status.pendingDescription":{
+    "message":"The analysis of this report is not yet finished - please wait.",
+    "description":""
+  },
+
+  "notification.title":{
+    "message":"Report Analysis",
+    "description":""
+  },
+
+  "notification.message":{
+    "message":"Status updated for your report: click here to check status",
+    "description":""
+  },
+
+  "buttonlabel":{
+    "message":"REPORT",
+    "description":""
+  },
+
+  "popupmenu.tooltip":{
+    "message":"Hold down the Shift key and click<BR>on the extension button to display this menu",
+    "description":""
+  }
+}

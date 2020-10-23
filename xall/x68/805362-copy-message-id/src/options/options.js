@@ -5,6 +5,17 @@ const urlEncodeInput = document.querySelector("#urlEncode");
 const rawInput = document.querySelector("#raw");
 
 /*
+Set text boxes to automatically resize.
+*/
+function autoResize() {
+  this.style.height = "5px";
+  this.style.height = this.scrollHeight + "px";
+}
+
+prefixInput.addEventListener("input", autoResize, false);
+suffixInput.addEventListener("input", autoResize, false);
+
+/*
 Store the currently selected settings using browser.storage.local.
 */
 function storeSettings() {

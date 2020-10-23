@@ -268,12 +268,17 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				}
 			}
 			wdw_cardbook.setSearchRemoteHbox(myDirPrefId);
-			wdw_cardbook.currentAccountId = myAccountId;
+			wdw_cardbook.setCurrentAccountId(myAccountId);
 			wdw_cardbook.clearAccountOrCat();
 			wdw_cardbook.clearCard();
-			cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.accountShown", myDirPrefId);
 			cardbookTreeUtils.setColumnsStateForAccount(myDirPrefId);
 			wdw_cardbook.refreshWindow(myAccountId);
+		},
+
+		setCurrentAccountId: function (aAccountOrCat) {
+			wdw_cardbook.currentAccountId = aAccountOrCat;
+			var myDirPrefId = cardbookRepository.cardbookUtils.getAccountId(aAccountOrCat);
+			cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.accountShown", myDirPrefId);
 		},
 
 		selectAccountOrCat: function (aAccountOrCat, aListOfCards) {
@@ -299,8 +304,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			if (wdw_cardbook.currentAccountId == aAccountOrCat) {
 				return;
 			}
-			wdw_cardbook.currentAccountId = aAccountOrCat;
-			cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.accountShown", myCurrentDirPrefId);
+			wdw_cardbook.setCurrentAccountId(aAccountOrCat);
 			cardbookTreeUtils.setColumnsStateForAccount(myCurrentDirPrefId);
 		},
 
@@ -488,7 +492,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		mergeCards: function () {
 			try {
 				var listOfSelectedCard = [];
-				listOfSelectedCard = cardbookWindowUtils.getCardsFromCards();
+				listOfSelectedCard = wdw_cardbook.findMergeableContacts();
 
 				var myArgs = {cardsIn: listOfSelectedCard, cardsOut: [], hideCreate: false, action: ""};
 				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
@@ -2474,7 +2478,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				}
 
 				for (var i in myDirPrefIds) {
-					cardbookRepository.cardbookUtils.parseLists(myDirPrefIds[i].list, myDirPrefIds[i].members, "group");
+					cardbookRepository.cardbookUtils.addMemberstoCard(myDirPrefIds[i].list, myDirPrefIds[i].members, "group");
 					cardbookRepository.saveCard({}, myDirPrefIds[i].list, myActionId, true);
 				}
 				cardbookActions.endAction(myActionId);
@@ -2521,7 +2525,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					cardbookRepository.saveCard(myCard, myOutCard, myActionId, true);
 				}
 				for (var i in myDirPrefIds) {
-					cardbookRepository.cardbookUtils.parseLists(myDirPrefIds[i].list, myDirPrefIds[i].members, "group");
+					cardbookRepository.cardbookUtils.addMemberstoCard(myDirPrefIds[i].list, myDirPrefIds[i].members, "group");
 					cardbookRepository.saveCard({}, myDirPrefIds[i].list, myActionId, true);
 				}
 				cardbookActions.endAction(myActionId);
@@ -2724,6 +2728,31 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 		},
 
+		findMergeableContacts: function () {
+			let listOfSelectedCard = [];
+			listOfSelectedCard = cardbookWindowUtils.getSelectedCards();
+			let contacts = 0;
+			let lists = 0;
+			let ABid = [];
+			for (let contact of listOfSelectedCard) {
+				if (contact.isAList) {
+					lists++;
+					ABid.push(contact.dirPrefId);
+				} else {
+					contacts++;
+				}
+			}
+			if (contacts >= 2) {
+				return listOfSelectedCard.filter(card => card.isAList == false);
+			} else if (contacts == 1) {
+				return [];
+			} else if (lists >= 2 && cardbookRepository.arrayUnique(ABid).length == 1) {
+				return listOfSelectedCard;
+			} else {
+				return [];
+			}
+		},
+
 		setElementAttribute: function (aElement, aAttribute, aValue) {
 			if (document.getElementById(aElement)) {
 				document.getElementById(aElement).setAttribute(aAttribute, aValue);
@@ -2871,7 +2900,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuToEmailCards', 'cardbookContactsMenuCcEmailCards', 'cardbookContactsMenuBccEmailCards', 'cardbookContactsMenuLocalizeCards',
 														'cardbookContactsMenuOpenURL', 'cardbookContactsMenuCutCards', 'cardbookContactsMenuCopyCards', 'cardbookContactsMenuPasteCards',
 														'cardbookContactsMenuPrint', 'cardbookContactsMenuExportCardsToFile',
-														'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuMergeCards', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuCategories'], false);
+														'cardbookContactsMenuExportCardsToDir', 'cardbookContactsMenuDuplicateCards', 'cardbookContactsMenuCategories'], false);
 					if (cardbookRepository.currentCopiedEntryLabel) {
 						wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteEntry'], false);
 						wdw_cardbook.setElementIdLabelWithBundleArray('cardbookContactsMenuPasteEntry', 'pasteFieldValue', [ cardbookRepository.currentCopiedEntryLabel ] );
@@ -2879,6 +2908,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteEntry'], true);
 					}
 					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuFindEmails'], true);
+					if (wdw_cardbook.findMergeableContacts().length == 0) {
+						wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuMergeCards'], true);
+					} else {
+						wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuMergeCards'], false);
+					}
 				}
 				if (cardbookRepository.cardbookSearchMode === "SEARCH" || cardbookRepository.cardbookComplexSearchMode === "SEARCH") {
 					wdw_cardbook.enableOrDisableElement(['cardbookContactsMenuPasteCards'], true);
@@ -3081,13 +3115,18 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				} else {
 					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'localizeCardsFromCards',
 														'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
-														'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'printFromCards'], false);
+														'exportCardsToDirFromCards', 'duplicateCardsFromCards', 'printFromCards'], false);
 					wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards', 'findEmailsFromCards', 'findEventsFromCards'], true);
 					if (cardbookRepository.currentCopiedEntryLabel) {
 						wdw_cardbook.enableOrDisableElement(['pasteEntryFromCards'], false);
 						wdw_cardbook.setElementIdLabelWithBundleArray('pasteEntryFromCards', 'pasteFieldValue', [ cardbookRepository.currentCopiedEntryLabel ] );
 					} else {
 						wdw_cardbook.enableOrDisableElement(['pasteEntryFromCards'], true);
+					}
+					if (wdw_cardbook.findMergeableContacts().length == 0) {
+						wdw_cardbook.enableOrDisableElement(['mergeCardsFromCards'], true);
+					} else {
+						wdw_cardbook.enableOrDisableElement(['mergeCardsFromCards'], false);
 					}
 				}
 				var myTree = document.getElementById('accountsOrCatsTree');

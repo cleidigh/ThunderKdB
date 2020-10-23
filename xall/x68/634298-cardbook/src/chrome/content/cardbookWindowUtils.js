@@ -228,7 +228,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				}
 				if (!found) {
 					var myArgs = {cardIn: aCard, cardOut: {}, editionMode: aMode, cardEditionAction: "", editionCallback: cardbookWindowUtils.openEditionWindowSave};
-					var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xhtml", "", cardbookRepository.windowParams, myArgs);
+					Services.wm.getMostRecentWindow(null).openDialog("chrome://cardbook/content/cardEdition/wdw_cardEdition.xhtml", "", cardbookRepository.windowParams, myArgs);
 				}
 			}
 			catch (e) {
@@ -494,13 +494,13 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					ABExclRestrictions = {};
 					catInclRestrictions = {};
 					catExclRestrictions = {};
-					if (aIdentityKey == "") {
+					if (!aIdentityKey) {
 						ABInclRestrictions["length"] = 0;
 						return;
 					}
 					for (var i = 0; i < result.length; i++) {
 						var resultArray = result[i];
-						if ((resultArray[0] == "true") && ((resultArray[2] == aIdentityKey) || (resultArray[2] == "allMailAccounts"))) {
+						if ((resultArray[0] == "true") && (resultArray[3] != "") && ((resultArray[2] == aIdentityKey) || (resultArray[2] == "allMailAccounts"))) {
 							if (resultArray[1] == "include") {
 								ABInclRestrictions[resultArray[3]] = 1;
 								if (resultArray[4]) {
@@ -804,7 +804,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			cardbookWindowUtils.displayDates(aCard.version, aReadOnly);
 
 			var myNoteArray = aCard.note.split("\n");
-			var myEvents = cardbookRepository.cardbookUtils.getCardEvents(myNoteArray, myRemainingOthers);
+			var myEvents = cardbookRepository.cardbookUtils.getEventsFromCard(myNoteArray, myRemainingOthers);
 			if (aCard.isAList) {
 				if (aReadOnly) {
 					cardbookWindowUtils.loadStaticList(aCard, aFollowLink);
@@ -1082,7 +1082,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					}
 				}
 			} else {
-				var myLineTypeValue = [document.getElementById(aType + '_' + aIndex + '_valueBox').value.trim()];
+				var myLineTypeValue = [ "" ];
+				if (document.getElementById(aType + '_' + aIndex + '_valueBox').value) {
+					myLineTypeValue = [document.getElementById(aType + '_' + aIndex + '_valueBox').value.trim()];
+				}
 			}
 			
 			if (aType == "impp" && document.getElementById(aType + '_' + aIndex + '_menulistIMPP').selectedItem) {
@@ -1584,6 +1587,20 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					}
 				};
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("input", fireInputTel, false);
+			} else if (aType == "email") {
+				function fireInputEmail(event) {
+					var myValidationButton = document.getElementById(aType + '_' + aIndex + '_validateButton');
+					var emailLower = this.value.toLowerCase();
+					var atPos = this.value.lastIndexOf("@");
+					if (this.value == emailLower && atPos > 0 && atPos + 1 < this.value.length) {
+						myValidationButton.setAttribute('label', '✔');
+						myValidationButton.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("validatedEntryTooltip"));
+					} else {
+						myValidationButton.setAttribute('label', '!');
+						myValidationButton.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("notValidatedEntryTooltip"));
+					}
+				};
+				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("input", fireInputEmail, false);
 			}
 		
 			if (aType == "tel") {
@@ -1591,7 +1608,6 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					if (document.getElementById(this.id).disabled) {
 						return;
 					}
-					var myIdArray = this.id.split('_');
 					var myTelTextBox = document.getElementById(aType + '_' + aIndex + '_valueBox');
 					var tel = PhoneNumber.Parse(myTelTextBox.value, wdw_cardEdition.cardRegion);
 					if (tel && tel.internationalFormat) {
@@ -1612,6 +1628,35 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 						cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'validated', 'validate', fireValidateTelButton);
 					} else {
 						cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'notValidated', 'validate', fireValidateTelButton);
+					}
+				}
+			} else if (aType == "email") {
+				function fireValidateEmailButton(event) {
+					if (document.getElementById(this.id).disabled) {
+						return;
+					}
+					var myEmailTextBox = document.getElementById(aType + '_' + aIndex + '_valueBox');
+					var emailLower = myEmailTextBox.value.toLowerCase();
+					var atPos = myEmailTextBox.value.lastIndexOf("@");
+					if (atPos > 0 && atPos + 1 < myEmailTextBox.value.length) {
+						myEmailTextBox.value = emailLower;
+						this.setAttribute('label', '✔');
+						this.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("validatedEntryTooltip"));
+					} else {
+						this.setAttribute('label', '!');
+						this.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("notValidatedEntryTooltip"));
+					}
+				};
+				var myEmailTextBoxValue = document.getElementById(aType + '_' + aIndex + '_valueBox').value;
+				if (myEmailTextBoxValue == "") {
+					cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'noValidated', 'validate', fireValidateEmailButton);
+				} else {
+					var emailLower = myEmailTextBoxValue.toLowerCase();
+					var atPos = myEmailTextBoxValue.lastIndexOf("@");
+					if (myEmailTextBoxValue == emailLower && atPos > 0 && atPos + 1 < myEmailTextBoxValue.length) {
+						cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'validated', 'validate', fireValidateEmailButton);
+					} else {
+						cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'notValidated', 'validate', fireValidateEmailButton);
 					}
 				}
 			} else if (aType == "url") {
@@ -2010,47 +2055,15 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 		loadStaticList: function (aCard, aFollowLink) {
 			var addedCards = [];
-			if (aCard.version == "4.0") {
-				for (var i = 0; i < aCard.member.length; i++) {
-					if (aCard.member[i].startsWith("mailto:")) {
-						var email = aCard.member[i].replace("mailto:", "");
-						addedCards.push(["", [email.toLowerCase()], ""]);
-					} else {
-						var uid = aCard.member[i].replace("urn:uuid:", "");
-						if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid]) {
-							var cardFound = cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+uid];
-							if (cardFound.isAList) {
-								addedCards.push([cardbookRepository.cardbookUtils.getName(cardFound), [""], cardFound.dirPrefId+"::"+cardFound.uid]);
-							} else {
-								addedCards.push([cardbookRepository.cardbookUtils.getName(cardFound), cardFound.emails, cardFound.dirPrefId+"::"+cardFound.uid]);
-							}
-						}
-					}
-				}
-			} else if (aCard.version == "3.0") {
-				var kindCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.kindCustom");
-				var memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
-				for (var i = 0; i < aCard.others.length; i++) {
-					var localDelim1 = aCard.others[i].indexOf(":",0);
-					if (localDelim1 >= 0) {
-						var header = aCard.others[i].substr(0,localDelim1);
-						var trailer = aCard.others[i].substr(localDelim1+1,aCard.others[i].length);
-						if (header == memberCustom) {
-							if (trailer.startsWith("mailto:")) {
-								var email = trailer.replace("mailto:", "");
-								addedCards.push(["", [email.toLowerCase()], ""]);
-							} else {
-								if (cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")]) {
-									var cardFound = cardbookRepository.cardbookCards[aCard.dirPrefId+"::"+trailer.replace("urn:uuid:", "")];
-									if (cardFound.isAList) {
-										addedCards.push([cardbookRepository.cardbookUtils.getName(cardFound), [""], cardFound.dirPrefId+"::"+cardFound.uid]);
-									} else {
-										addedCards.push([cardbookRepository.cardbookUtils.getName(cardFound), cardFound.emails, cardFound.dirPrefId+"::"+cardFound.uid]);
-									}
-								}
-							}
-						}
-					}
+			var myMembers = cardbookRepository.cardbookUtils.getMembersFromCard(aCard);
+			for (let email of myMembers.mails) {
+				addedCards.push(["", [email.toLowerCase()], ""]);
+			}
+			for (let card of myMembers.uids) {
+				if (card.isAList) {
+					addedCards.push([cardbookRepository.cardbookUtils.getName(card), [""], card.cbid]);
+				} else {
+					addedCards.push([cardbookRepository.cardbookUtils.getName(card), card.emails, card.cbid]);
 				}
 			}
 

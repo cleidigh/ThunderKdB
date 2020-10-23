@@ -98,7 +98,7 @@ if ("undefined" == typeof(cardbookClipboard)) {
 		clipboardGetData: function(aType) {
 			var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
 			var flavors = cardbookClipboard.clipboardGetSupportedFlavors(aType);
-			for (i = 0; i < flavors.length; i++) {
+			for (let i = 0; i < flavors.length; i++) {
 				trans.addDataFlavor(flavors[i]);
 			}
 			Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);

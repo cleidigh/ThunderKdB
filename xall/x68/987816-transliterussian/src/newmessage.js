@@ -1,6 +1,6 @@
 ﻿// * Software:	Thunderbird Add-on "TRANSLITERUSSIAN"
-// * Version:	0.3 beta
-// * Date:		2020-07-25
+// * Version:	0.4 beta
+// * Date:		2020-10-21
 // * Author:	Vlad Koutsenok (www.koutsenok.de)
 // * File:		newmessage.js
 
@@ -25,82 +25,115 @@ function translate(e){
 
 	switch(latinchar) {
 		
-		// Cases [a, ja, h, ch, sh, zh]
+		// Cases [a, ja, ya]
 		case "A":
 			if(vorlastchar == String.fromCharCode(1081)){ 			// "j"
-				translatechar = String.fromCharCode(1103);
+				translatechar = String.fromCharCode(1103);			// "я"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
-				translatechar = String.fromCharCode(1071);
+				translatechar = String.fromCharCode(1071);			// "Я"
+				is2char = true;
+			}
+			else if(vorlastchar == String.fromCharCode(1099)){		// "y"
+				translatechar = String.fromCharCode(1103);			// "я"
 				is2char = true;
 			} 
-			else translatechar = String.fromCharCode(1040);
+			else if(vorlastchar == String.fromCharCode(1067)){		// "Y"
+				translatechar = String.fromCharCode(1071);			// "Я"
+				is2char = true;
+			} 
+			else translatechar = String.fromCharCode(1040);			// "A"
 			break;
 		case "a":
 			if(vorlastchar == String.fromCharCode(1081)){			// "j"
-				translatechar = String.fromCharCode(1103);
+				translatechar = String.fromCharCode(1103);			// "я"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
-				translatechar = String.fromCharCode(1071);
+				translatechar = String.fromCharCode(1071);			// "Я"
+				is2char = true;
+			}
+			else if(vorlastchar == String.fromCharCode(1099)){		// "y"
+				translatechar = String.fromCharCode(1103);			// "я"
 				is2char = true;
 			} 
-			else translatechar = String.fromCharCode(1072);
+			else if(vorlastchar == String.fromCharCode(1067)){		// "Y"
+				translatechar = String.fromCharCode(1071);			// "Я"
+				is2char = true;
+			} 			
+			else translatechar = String.fromCharCode(1072);			// "a"
 			break;
+		// Cases [h, zh, ch, sh, shh]
 		case "h":
 			if(vorlastchar == String.fromCharCode(1079)){			// "c"
-				translatechar = String.fromCharCode(1095);
+				translatechar = String.fromCharCode(1095);			// "ч"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1047)){		// "C"
-				translatechar = String.fromCharCode(1063);
+				translatechar = String.fromCharCode(1063);			// "Ч"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1089)){		// "s"
-				translatechar = String.fromCharCode(1096);
+				translatechar = String.fromCharCode(1096);			// "ш"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1057)){		// "S"
-				translatechar = String.fromCharCode(1064);
+				translatechar = String.fromCharCode(1064);			// "Ш"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1094)){		// "z"
-				translatechar = String.fromCharCode(1078);
+				translatechar = String.fromCharCode(1078);			// "ж"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1062)){		// "Z"
-				translatechar = String.fromCharCode(1046);
+				translatechar = String.fromCharCode(1046);			// "Ж"
 				is2char = true;
 			}
-			else translatechar = String.fromCharCode(1093);
+			else if(vorlastchar == String.fromCharCode(1096)){		// "ш"
+				translatechar = String.fromCharCode(1097);			// "щ"
+				is2char = true;
+			}
+			else if(vorlastchar == String.fromCharCode(1064)){		// "Ш"
+				translatechar = String.fromCharCode(1065);			// "Щ"
+				is2char = true;
+			}
+			else translatechar = String.fromCharCode(1093);			// "x"
 			break;
 		case "H":
 			if(vorlastchar == String.fromCharCode(1079)){			// "c"
-				translatechar = String.fromCharCode(1095);
+				translatechar = String.fromCharCode(1095);			// "ч"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1047)){		// "C"
-				translatechar = String.fromCharCode(1063);
+				translatechar = String.fromCharCode(1063);			// "Ч"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1089)){		// "s"
-				translatechar = String.fromCharCode(1096);
+				translatechar = String.fromCharCode(1096);			// "ш"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1057)){		// "S"
-				translatechar = String.fromCharCode(1064);
+				translatechar = String.fromCharCode(1064);			// "Ш"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1094)){		// "z"
-				translatechar = String.fromCharCode(1078);
+				translatechar = String.fromCharCode(1078);			// "ж"
 				is2char = true;
 			} 
 			else if(vorlastchar == String.fromCharCode(1062)){		// "Z"
-				translatechar = String.fromCharCode(1046);
+				translatechar = String.fromCharCode(1046);			// "Ж"
 				is2char = true;
 			}
-			else translatechar = String.fromCharCode(1061);
+			else if(vorlastchar == String.fromCharCode(1096)){		// "ш"
+				translatechar = String.fromCharCode(1097);			// "щ"
+				is2char = true;
+			}
+			else if(vorlastchar == String.fromCharCode(1064)){		// "Ш"
+				translatechar = String.fromCharCode(1065);			// "Щ"
+				is2char = true;
+			}
+			else translatechar = String.fromCharCode(1061);			// "X"
 			break;
 		case "B":
 			translatechar = String.fromCharCode(1041);
@@ -120,11 +153,28 @@ function translate(e){
 		case "d":
 			translatechar = String.fromCharCode(1076);
 			break;
+		// Cases [e, je]
 		case "E":
-			translatechar = String.fromCharCode(1045);
+			if(vorlastchar == String.fromCharCode(1081)){			// "j"
+				translatechar = String.fromCharCode(1101);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
+				translatechar = String.fromCharCode(1069);
+				is2char = true;
+			} 
+			else translatechar = String.fromCharCode(1045);
 			break;			
 		case "e":
-			translatechar = String.fromCharCode(1077);
+			if(vorlastchar == String.fromCharCode(1081)){			// "j"
+				translatechar = String.fromCharCode(1101);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
+				translatechar = String.fromCharCode(1069);
+				is2char = true;
+			} 
+			else translatechar = String.fromCharCode(1077);
 			break;
 		case "F":
 			translatechar = String.fromCharCode(1060);
@@ -174,11 +224,44 @@ function translate(e){
 		case "n":
 			translatechar = String.fromCharCode(1085);
 			break;
+		// Cases [o, jo, yo]
 		case "O":
-			translatechar = String.fromCharCode(1054);
+			if(vorlastchar == String.fromCharCode(1081)){ 			// "j"
+				translatechar = String.fromCharCode(1105);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
+				translatechar = String.fromCharCode(1025);
+				is2char = true;
+			}
+			else if(vorlastchar == String.fromCharCode(1099)){		// "y"
+				translatechar = String.fromCharCode(1105);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1067)){		// "Y"
+				translatechar = String.fromCharCode(1025);	
+				is2char = true;
+			} 
+			else translatechar = String.fromCharCode(1054);
 			break;
 		case "o":
-			translatechar = String.fromCharCode(1086);
+			if(vorlastchar == String.fromCharCode(1081)){ 			// "j"
+				translatechar = String.fromCharCode(1105);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
+				translatechar = String.fromCharCode(1025);
+				is2char = true;
+			}
+			else if(vorlastchar == String.fromCharCode(1099)){		// "y"
+				translatechar = String.fromCharCode(1105);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1067)){		// "Y"
+				translatechar = String.fromCharCode(1025);	
+				is2char = true;
+			} 
+			else translatechar = String.fromCharCode(1086);
 			break;
 		case "P":
 			translatechar = String.fromCharCode(1055);
@@ -204,11 +287,44 @@ function translate(e){
 		case "t":
 			translatechar = String.fromCharCode(1090);
 			break;
+		// Cases [u, ju, yu]
 		case "U":
-			translatechar = String.fromCharCode(1059);
+			if(vorlastchar == String.fromCharCode(1081)){ 			// "j"
+				translatechar = String.fromCharCode(1102);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
+				translatechar = String.fromCharCode(1070);
+				is2char = true;
+			}
+			else if(vorlastchar == String.fromCharCode(1099)){		// "y"
+				translatechar = String.fromCharCode(1102);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1067)){		// "Y"
+				translatechar = String.fromCharCode(1070);	
+				is2char = true;
+			} 
+			else translatechar = String.fromCharCode(1059);
 			break;			
 		case "u":
-			translatechar = String.fromCharCode(1091);
+			if(vorlastchar == String.fromCharCode(1081)){ 			// "j"
+				translatechar = String.fromCharCode(1102);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1049)){		// "J"
+				translatechar = String.fromCharCode(1070);
+				is2char = true;
+			}
+			else if(vorlastchar == String.fromCharCode(1099)){		// "y"
+				translatechar = String.fromCharCode(1102);
+				is2char = true;
+			} 
+			else if(vorlastchar == String.fromCharCode(1067)){		// "Y"
+				translatechar = String.fromCharCode(1070);	
+				is2char = true;
+			} 
+			else translatechar = String.fromCharCode(1091);
 			break;
 		case "V":
 			translatechar = String.fromCharCode(1042);
@@ -259,10 +375,18 @@ function translate(e){
 			translatechar = String.fromCharCode(1102);
 			break;
 		case "#":
-			translatechar = String.fromCharCode(1098);
+			if(vorlastchar == String.fromCharCode(1098)){ 			// "#"
+				translatechar = String.fromCharCode(1066);
+				is2char = true;
+			}
+			else translatechar = String.fromCharCode(1098);
 			break;
 		case "'":
-			translatechar = String.fromCharCode(1100);
+			if(vorlastchar == String.fromCharCode(1100)){ 			// "'"
+				translatechar = String.fromCharCode(1068);
+				is2char = true;
+			}
+			else translatechar = String.fromCharCode(1100);
 			break;
 		default:
 			if(latinchar == null){

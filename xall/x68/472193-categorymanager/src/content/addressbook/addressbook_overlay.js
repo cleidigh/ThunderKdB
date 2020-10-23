@@ -1,8 +1,7 @@
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-let loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);
-loader.loadSubScript("chrome://sendtocategory/content/category_tools.js");
+Services.scriptloader.loadSubScript("chrome://sendtocategory/content/category_tools.js");
 
 
 /* stuff
@@ -50,25 +49,33 @@ jbCatMan.dragdrop = {
     switch (event.type) {
       case "dragenter":
       case "dragover":
-        event.preventDefault();
-        event.currentTarget.style["background-color"] = "#555555"; 
+        if (event.dataTransfer.getData("categoryName")) {
+          event.preventDefault();
+          event.currentTarget.style["background-color"] = "#555555";
+        }
         break;
+
       case "dragleave":
-        event.currentTarget.style["background-color"] = ""; 
-        break;
-      
+        if (event.dataTransfer.getData("categoryName")) {
+          event.currentTarget.style["background-color"] = ""; 
+        }
+        break;      
 
       case "drop":
-        event.preventDefault();
-        let destination = event.currentTarget.categoryName;
-        let originalName = event.dataTransfer.getData("categoryName");
-        let newName = destination + " / " + originalName.split(" / ").slice(-1);
-        jbCatMan.updateCategories("rename", originalName, newName); 
+        if (event.dataTransfer.getData("categoryName")) {
+          event.preventDefault();
+          let destination = event.currentTarget.categoryName;
+          let originalName = event.dataTransfer.getData("categoryName");
+          let newName = destination + " / " + originalName.split(" / ").slice(-1);
+          /* */ jbCatMan.updateCategories("rename", originalName, newName); 
+        }
         break;
 
       
       case "dragstart": 
-        event.dataTransfer.setData("categoryName", event.currentTarget.categoryName);
+        if (GetSelectedDirectory() != "moz-abdirectory://?") {
+          event.dataTransfer.setData("categoryName", event.currentTarget.categoryName);
+        }
         break;
           
       case "dragend": 
@@ -81,7 +88,7 @@ jbCatMan.dragdrop = {
 };
 
 jbCatMan.addCategoryListEntry = function (abURI, newCategoryName) {
-  let newListItem = document.createElement("richlistitem");
+  let newListItem = document.createXULElement("richlistitem");
   newListItem.categoryName = newCategoryName;
   newListItem.subCategories = jbCatMan.getSubCategories(newCategoryName);
   newListItem.categoryFilter = newListItem.subCategories.concat(newCategoryName); // to filter the view
@@ -100,7 +107,7 @@ jbCatMan.addCategoryListEntry = function (abURI, newCategoryName) {
   newListItem.setAttribute("class", levels.join(" "));
   newListItem.setAttribute("isOpen", "false");
 
-  let categoryMore = document.createElement("hbox");
+  let categoryMore = document.createXULElement("hbox");
   if (newListItem.subCategories.length > 0) {
     categoryMore.setAttribute("class", "twisty");
     categoryMore.addEventListener("click", function(e) { jbCatMan.onClickCategoryList(e); }, false);
@@ -109,12 +116,12 @@ jbCatMan.addCategoryListEntry = function (abURI, newCategoryName) {
   categoryMore.style["margin-left"] = ((categoryLevels.length-1) * 16) + "px";
   newListItem.appendChild(categoryMore);
   
-  let categoryName = document.createElement("label");
+  let categoryName = document.createXULElement("label");
   categoryName.setAttribute("flex", "1");
   categoryName.setAttribute("value", categoryLevels[categoryLevels.length-1]);
   newListItem.appendChild(categoryName);
   
-  let categorySize = document.createElement("label");
+  let categorySize = document.createXULElement("label");
   categorySize.setAttribute("flex", "0");
   categorySize.setAttribute("value", newListItem.categorySize);
   newListItem.appendChild(categorySize);
@@ -150,8 +157,8 @@ jbCatMan.toggleCategoryListEntry = function (abURI, element) {
 }
 
 jbCatMan.updateCategoryList = function () {
-  jbCatMan.scanCategories(GetSelectedDirectory());
   let abURI = GetSelectedDirectory();
+  jbCatMan.scanCategories(abURI);
   
   // Save current open-states.
   let categoriesList = document.getElementById("CatManCategoriesList");
@@ -167,17 +174,22 @@ jbCatMan.updateCategoryList = function () {
     categoriesList.getItemAtIndex(i-1).remove();
   }
 
+  let isGlobal = (abURI == "moz-abdirectory://?");
+  let isRemote = (!isGlobal && abURI) 
+    ? MailServices.ab.getDirectory(abURI).isRemote
+    : false;
+  
   // Disable "all" element if global book and global book empty or if remote book.
-  if (!(MailServices.ab.getDirectory(abURI).isRemote)) {// || (abURI == "moz-abdirectory://?" && jbCatMan.data.abSize == 0))) {
-    let newListItem = document.createElement("richlistitem");
+  if (!isRemote && !(isGlobal && jbCatMan.data.abSize == 0)) {
+    let newListItem = document.createXULElement("richlistitem");
     newListItem.categoryFilter = "none";
     newListItem.id = btoa("Default:" + newListItem.categoryFilter).split("=").join("");
-    let categoryName = document.createElement("label");
+    let categoryName = document.createXULElement("label");
     categoryName.setAttribute("flex", "1");
     categoryName.setAttribute("value", jbCatMan.locale.viewAllCategories);
     categoryName.setAttribute("style", "font-style:italic;");
     newListItem.appendChild(categoryName);
-    let categorySize = document.createElement("label");
+    let categorySize = document.createXULElement("label");
     categorySize.setAttribute("flex", "0");
     categorySize.setAttribute("value", jbCatMan.data.abSize);
     categorySize.setAttribute("style", "font-style:italic;");
@@ -201,21 +213,21 @@ jbCatMan.updateCategoryList = function () {
   }
   
   // Disable "cardsWithoutCategories" element if global book and global book empty or if remote book
-  if (!(MailServices.ab.getDirectory(abURI).isRemote)) {// || (abURI == "moz-abdirectory://?" && jbCatMan.data.cardsWithoutCategories.length == 0))) {
-    let newListItem = document.createElement("richlistitem");
+  if (!isRemote && !(isGlobal && jbCatMan.data.cardsWithoutCategories.length == 0)) {
+    let newListItem = document.createXULElement("richlistitem");
     newListItem.categoryFilter = "uncategorized";
     newListItem.id = btoa("Default:" + newListItem.categoryFilter).split("=").join("");
 
-    let categoryMore = document.createElement("hbox");
+    let categoryMore = document.createXULElement("hbox");
     categoryMore.setAttribute("flex", "0");
     newListItem.appendChild(categoryMore);
     
-    let categoryName = document.createElement("label");
+    let categoryName = document.createXULElement("label");
     categoryName.setAttribute("flex", "1");
     categoryName.setAttribute("value", jbCatMan.getLocalizedMessage("viewWithoutCategories"));
     categoryName.setAttribute("style", "font-style:italic;");
     newListItem.appendChild(categoryName);
-    let categorySize = document.createElement("label");
+    let categorySize = document.createXULElement("label");
     categorySize.setAttribute("flex", "0");
     categorySize.setAttribute("value", jbCatMan.data.cardsWithoutCategories.length);
     categorySize.setAttribute("style", "font-style:italic;");
@@ -249,19 +261,18 @@ jbCatMan.updateCategoryList = function () {
 jbCatMan.updateContextMenu = function () {
     let categoriesList = document.getElementById("CatManCategoriesList");
 
-    let isRemote = true;
-    let isGlobal = false;
     let isAll = (categoriesList.querySelector("#" + jbCatMan.data.selectedCategory).categoryFilter == "none");
     let isUncategorized = (categoriesList.querySelector("#" + jbCatMan.data.selectedCategory).categoryFilter == "uncategorized");
     let selectedBook = GetSelectedDirectory();
 
-    if (selectedBook) isRemote = MailServices.ab.getDirectory(selectedBook).isRemote;
-    if (selectedBook == "moz-abdirectory://?") isGlobal = true;
-
+    let isGlobal = (selectedBook == "moz-abdirectory://?");
+    let isRemote = (!isGlobal && selectedBook) 
+      ? MailServices.ab.getDirectory(selectedBook).isRemote
+      : false;
+  
     document.getElementById("CatManContextMenuRemove").disabled = (isAll || isRemote || isGlobal || isUncategorized);
     document.getElementById("CatManContextMenuRename").disabled = (isAll || isRemote || isGlobal || isUncategorized);
     document.getElementById("CatManContextMenuBulk").disabled = isAll || isRemote || isGlobal || isUncategorized;
-    document.getElementById("CatManContextMenuMFFABConvert").disabled = (isUncategorized || isRemote || isGlobal || jbCatMan.data.categoryList.length == 0);
 
     document.getElementById("CatManContextMenuSend").disabled = (isAll || isRemote || isUncategorized); 
 
@@ -274,47 +285,30 @@ jbCatMan.updateContextMenu = function () {
         document.getElementById("CatManContextMenuImportExport").label = jbCatMan.locale.menuExport;
     }
   
-    //Special MFFAB entries
     let all = isAll ? "_all_" : "_";
-    
-    if (jbCatMan.isMFFABCategoryMode()) {
-        document.getElementById("CatManContextMenuMFFABConvert").label = jbCatMan.getLocalizedMessage("convert"+all+"to_standard_category");
-    } else {
-        document.getElementById("CatManContextMenuMFFABConvert").label = jbCatMan.getLocalizedMessage("convert"+all+"to_MFFAB_category");
-    }
 }
 
 jbCatMan.updateButtons = function () {
-    let isRemote = true;
-    let isGlobal = false;
-    let isAll = (jbCatMan.data.selectedCategory == null);
     let selectedBook = GetSelectedDirectory();
-    if (selectedBook) isRemote = MailServices.ab.getDirectory(selectedBook).isRemote;
-    if (selectedBook == "moz-abdirectory://?") isGlobal = true;
-
-    if (jbCatMan.isMFFABCategoryMode()) {
-        document.getElementById("CatManBoxLabel").value = jbCatMan.getLocalizedMessage("found_categories", "(MFFAB) ");
-        document.getElementById("CatManModeSlider").src = "chrome://sendtocategory/skin/slider-on.png";
-    } else {
-        document.getElementById("CatManBoxLabel").value = jbCatMan.getLocalizedMessage("found_categories", "");
-        document.getElementById("CatManModeSlider").src = "chrome://sendtocategory/skin/slider-off.png";
-    }
-    document.getElementById("CatManModeSlider").hidden = !jbCatMan.isMFFABInstalled;
+    let isGlobal = (selectedBook == "moz-abdirectory://?");
+    let isAll = (jbCatMan.data.selectedCategory == null);
+    let isRemote = (!isGlobal && selectedBook) 
+      ? MailServices.ab.getDirectory(selectedBook).isRemote
+      : false;
+    document.getElementById("CatManBoxLabel").value = jbCatMan.getLocalizedMessage("found_categories", "");
 }
 
 
-jbCatMan.writeToCategory = function () {
+jbCatMan.writeToCategory = async function () {
   let categoriesList = document.getElementById("CatManCategoriesList");
 
   let searchstring = jbCatMan.getCategorySearchString(GetSelectedDirectory(), categoriesList.querySelector("#" + jbCatMan.data.selectedCategory).categoryFilter);
   let searches = jbCatMan.getSearchesFromSearchString(searchstring);
-
   let bcc = [];
   for (let search of searches) {
-    let cards = MailServices.ab.getDirectory(search).childCards;
+    let cards = await jbCatMan.searchDirectory(search);
     
-    while (cards.hasMoreElements()) {
-      let card = cards.getNext().QueryInterface(Components.interfaces.nsIAbCard);
+    for (let card of cards) {
       let email = jbCatMan.getEmailFromCard(card);
       if (email) {
         let entry = card.displayName 
@@ -357,7 +351,7 @@ jbCatMan.writeToCategory = function () {
 jbCatMan.onImportExport = function () {
   let categoriesList = document.getElementById("CatManCategoriesList");
   let categoryFilter = categoriesList.querySelector("#" + jbCatMan.data.selectedCategory).categoryFilter;
-  window.openDialog("chrome://sendtocategory/content/addressbook/import-export/import-export-wizard.xul", "import-export-wizard", "modal,dialog,centerscreen,chrome,resizable=no", categoryFilter);
+  window.openDialog("chrome://sendtocategory/content/addressbook/import-export/import-export-wizard.xhtml", "import-export-wizard", "modal,dialog,centerscreen,chrome,resizable=no", categoryFilter);
 }
 
 
@@ -381,20 +375,6 @@ jbCatMan.onToggleDisplay = function (show) {
   }
 }
 
-
-jbCatMan.booksHaveContactsWithProperty = function (field) {
-    let allAddressBooks = MailServices.ab.directories;
-    while (allAddressBooks.hasMoreElements()) {
-        let abook = allAddressBooks.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
-        if (abook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
-            let searchstring = abook.URI + "?(or("+field+",!=,))";
-            let cards = MailServices.ab.getDirectory(searchstring).childCards;
-            if (cards && cards.hasMoreElements()) return true;
-        }
-    }
-    return false;
-}
-
 jbCatMan.onSelectAddressbook = function () {
   let selectedBook = GetSelectedDirectory();
   
@@ -415,7 +395,7 @@ jbCatMan.onClickCategoryList = function (event) {
   let abURI = GetSelectedDirectory();
 
   if (categoriesList.selectedIndex != -1 && categoriesList.selectedItem.subCategories.length > 0) {
-    jbCatMan.toggleCategoryListEntry(abURI, categoriesList.selectedItem);
+    /* */ jbCatMan.toggleCategoryListEntry(abURI, categoriesList.selectedItem);
   }
 }
 
@@ -435,32 +415,6 @@ jbCatMan.onPeopleSearchClick = function () {
   document.getElementById("CatManCategoriesList").clearSelection();
 }
 
-jbCatMan.onConvertCategory = function () {
-    let categoriesList = document.getElementById("CatManCategoriesList");
-    let category = categoriesList.selectedItem.categoryName;
-    if (category) {
-      jbCatMan.convertCategory(GetSelectedDirectory(), category);
-      // Remove the deleted category from the list
-      jbCatMan.data.selectedCategory = jbCatMan.data.selectedCategory.filter( x => x != category) //TODO
-      if ( jbCatMan.data.selectedCategory.length == 0)  jbCatMan.data.selectedCategory = "";
-      jbCatMan.updateCategoryList();
-    }
-}
-
-jbCatMan.onSwitchCategoryMode = function () {
-    let prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-    prefs.setBoolPref("extensions.sendtocategory.mffab_mode",!prefs.getBoolPref("extensions.sendtocategory.mffab_mode"));
-
-    //updateList
-    jbCatMan.data.selectedCategory = null;
-    jbCatMan.updateCategoryList();
-    
-    //check selected card after update
-    let cards = GetSelectedAbCards();
-    if (cards.length == 1 && cards[0].isMailList == false) DisplayCardViewPane(cards[0]);
-}
-
-
 jbCatMan.onBulkEdit = function () {
   //initializing bulkedit-members
   jbCatMan.bulk.needToValidateBulkList = false;
@@ -473,12 +427,12 @@ jbCatMan.onBulkEdit = function () {
   //all 3 dialogs are called in sequence. Skipped, if canceled.
   let categoriesList = document.getElementById("CatManCategoriesList");
   let categoryFilter = categoriesList.querySelector("#" + jbCatMan.data.selectedCategory).categoryFilter;
-  window.openDialog("chrome://sendtocategory/content/addressbook/bulkedit_editAddresses.xul", "bulkeditCategory", "modal,centerscreen,chrome,resizable=no", categoryFilter, jbCatMan.locale.bulkTitle);
+  window.openDialog("chrome://sendtocategory/content/addressbook/bulkedit_editAddresses.xhtml", "bulkeditCategory", "modal,centerscreen,chrome,resizable=no", categoryFilter, jbCatMan.locale.bulkTitle);
   if (jbCatMan.bulk.needToValidateBulkList) {
-    window.openDialog("chrome://sendtocategory/content/addressbook/bulkedit_validateAddresses.xul", "bulkeditCategory", "modal,centerscreen,chrome,width=595,height=600,resizable=yes", categoryFilter, jbCatMan.locale.bulkTitle);
+    window.openDialog("chrome://sendtocategory/content/addressbook/bulkedit_validateAddresses.xhtml", "bulkeditCategory", "modal,centerscreen,chrome,width=595,height=600,resizable=yes", categoryFilter, jbCatMan.locale.bulkTitle);
   }
   if (jbCatMan.bulk.needToSaveBulkList) {
-    window.openDialog("chrome://sendtocategory/content/addressbook/bulkedit_saveAddresses.xul", "bulkeditCategory", "modal,centerscreen,chrome,resizable=yes", categoryFilter, jbCatMan.locale.bulkTitle);
+    window.openDialog("chrome://sendtocategory/content/addressbook/bulkedit_saveAddresses.xhtml", "bulkeditCategory", "modal,centerscreen,chrome,resizable=yes", categoryFilter, jbCatMan.locale.bulkTitle);
   }
 }
 
@@ -487,7 +441,7 @@ jbCatMan.onBulkEdit = function () {
 jbCatMan.onAddCategory = function (event) {
   let parentCategory = event.target.categoryName;
   event.stopPropagation(); 
-  window.openDialog("chrome://sendtocategory/content/addressbook/edit_category.xul", "addCategory", "modal,centerscreen,chrome,resizable=no", parentCategory, jbCatMan.locale.addTitle, "add");
+  window.openDialog("chrome://sendtocategory/content/addressbook/edit_category.xhtml", "addCategory", "modal,centerscreen,chrome,resizable=no", parentCategory, jbCatMan.locale.addTitle, "add");
 }
 
 
@@ -495,7 +449,7 @@ jbCatMan.onAddCategory = function (event) {
 jbCatMan.onRenameCategory = function () {
   let categoriesList = document.getElementById("CatManCategoriesList");
   if (categoriesList.selectedItem.categoryName) {
-    window.openDialog("chrome://sendtocategory/content/addressbook/edit_category.xul", "editCategory", "modal,centerscreen,chrome,resizable=no", categoriesList.selectedItem.categoryName, jbCatMan.locale.editTitle, "rename");
+    window.openDialog("chrome://sendtocategory/content/addressbook/edit_category.xhtml", "editCategory", "modal,centerscreen,chrome,resizable=no", categoriesList.selectedItem.categoryName, jbCatMan.locale.editTitle, "rename");
   }
 }
 
@@ -506,14 +460,14 @@ jbCatMan.onDeleteCategory = function () {
   let category = categoriesList.selectedItem.categoryName;
   if (category) {
     // Go through all contacts and remove that category.
-    jbCatMan.updateCategories("remove", category);
+    /* */ jbCatMan.updateCategories("remove", category);
   }
 }
 
 jbCatMan.addCategoryPopupEntry = function (newCategoryName, cards) {
   let categoryLevels = newCategoryName.split(" / ");
   let itemType = "menu"
-  let newItem = document.createElement(itemType);
+  let newItem = document.createXULElement(itemType);
   newItem.setAttribute("class", itemType + "-iconic");
   newItem.setAttribute("label", categoryLevels[categoryLevels.length - 1]);
   newItem.setAttribute("value", newCategoryName);
@@ -540,21 +494,21 @@ jbCatMan.addCategoryPopupEntry = function (newCategoryName, cards) {
     newItem.setAttribute("disabled","true")
   } else if (countIn == 0 ) {
     // all out
-    newItem.setAttribute("image", "chrome://sendtocategory/skin/checkbox-none.png");
+    newItem.setAttribute("image", "chrome://sendtocategory/content/skin/checkbox-none.png");
     newItem.addEventListener("click", jbCatMan.onCategoriesContextMenuItemCommand, false);
   } else if (countOut == 0) {
     // all in
-    newItem.setAttribute("image", "chrome://sendtocategory/skin/checkbox-all.png");
+    newItem.setAttribute("image", "chrome://sendtocategory/content/skin/checkbox-all.png");
     newItem.addEventListener("click", jbCatMan.onCategoriesContextMenuItemCommand, false);
   } else {
     // mixed
-    newItem.setAttribute("image", "chrome://sendtocategory/skin/checkbox-some.png");
+    newItem.setAttribute("image", "chrome://sendtocategory/content/skin/checkbox-some.png");
     newItem.addEventListener("click", jbCatMan.onCategoriesContextMenuItemCommand, false);
     newItem.setAttribute("label", categoryLevels[categoryLevels.length - 1] + " (" + countIn + "/" + (countIn + countOut) + ")");    
   }
 
   // Add popup for subcategories
-  let newPopup = document.createElement("menupopup");
+  let newPopup = document.createXULElement("menupopup");
   newPopup.categoryName = newCategoryName;
   newItem.appendChild(newPopup);
   
@@ -585,7 +539,7 @@ jbCatMan.onResultsTreeContextMenuPopup = function (event) {
     }
     
     // Add "new" entry.
-    let newItem = document.createElement("menuitem");
+    let newItem = document.createXULElement("menuitem");
     newItem.setAttribute("label", jbCatMan.getLocalizedMessage("createNewCategory"));
     newItem.style["font-style"] = "italic";
     newItem.addEventListener("click", jbCatMan.onAddCategory, false);
@@ -599,7 +553,7 @@ jbCatMan.onCategoriesContextMenuItemCommand = function (event) {
   document.getElementById("abResultsTreeContext").hidePopup(); 
   event.stopPropagation(); 
 
-  window.openDialog("chrome://sendtocategory/content/addressbook/catsedit.xul", "editCategory", "modal,centerscreen,chrome,resizable=no",  event.target.getAttribute("value"));
+  window.openDialog("chrome://sendtocategory/content/addressbook/catsedit.xhtml", "editCategory", "modal,centerscreen,chrome,resizable=no",  event.target.getAttribute("value"));
 }
 
 
@@ -618,22 +572,22 @@ jbCatMan.onCategoriesContextMenuItemCommand = function (event) {
  jbCatMan.AbListenerToUpdateCategoryList = {
   onItemAdded: function AbListenerToUpdateCategoryList_onItemAdded(aParentDir, aItem) {
     if (aItem instanceof Components.interfaces.nsIAbCard) {
-      window.clearTimeout(jbCatMan.eventUpdateTimeout);
-      jbCatMan.eventUpdateTimeout = window.setTimeout(function() { jbCatMan.updateCategoryList(); }, 500);
+      jbCatMan.eventUpdateTimeout.cancel();
+      jbCatMan.eventUpdateTimeout.initWithCallback({ notify: function(timer) {jbCatMan.updateCategoryList(); }}, 500, 0);
     }
   },
 
   onItemPropertyChanged: function AbListenerToUpdateCategoryList_onItemPropertyChanged(aItem, aProperty, aOldValue, aNewValue) {
     if (aItem instanceof Components.interfaces.nsIAbCard) {
-      window.clearTimeout(jbCatMan.eventUpdateTimeout);
-      jbCatMan.eventUpdateTimeout = window.setTimeout(function() { jbCatMan.updateCategoryList(); }, 500);
+      jbCatMan.eventUpdateTimeout.cancel();
+      jbCatMan.eventUpdateTimeout.initWithCallback({ notify: function(timer) {jbCatMan.updateCategoryList(); }}, 500, 0);
     }
   },
 
   onItemRemoved: function AbListenerToUpdateCategoryList_onItemRemoved(aParentDir, aItem) {
     if (aItem instanceof Components.interfaces.nsIAbCard) {
-      window.clearTimeout(jbCatMan.eventUpdateTimeout);
-      jbCatMan.eventUpdateTimeout = window.setTimeout(function() { jbCatMan.updateCategoryList(); }, 500);
+      jbCatMan.eventUpdateTimeout.cancel();
+      jbCatMan.eventUpdateTimeout.initWithCallback({ notify: function(timer) {jbCatMan.updateCategoryList(); }}, 500, 0);
     }
   },
 
@@ -657,21 +611,22 @@ jbCatMan.onCategoriesContextMenuItemCommand = function (event) {
 // init
 //###################################################
 
-jbCatMan.initAddressbook = function() {
+jbCatMan.paintAddressbook = function() {
   //add categories field to details view
-  let CatManCategoriesHeader = document.createElement("description");
+  let CatManCategoriesHeader = document.createXULElement("description");
   CatManCategoriesHeader.id = "CatManCategoriesHeader";
   CatManCategoriesHeader.setAttribute("class", "CardViewHeading");
   CatManCategoriesHeader.textContent = jbCatMan.locale.categories;
 
-  let CatManCategoriesLabel = document.createElement("description");
+  let CatManCategoriesLabel = document.createXULElement("description");
   CatManCategoriesLabel.id= "CatManCategoriesLabel";
   CatManCategoriesLabel.setAttribute("class", "CardViewText");
   CatManCategoriesLabel.CatManCategoriesLabelText = "";
   
-  let cvbCategories = document.createElement("vbox");
+  let cvbCategories = document.createXULElement("vbox");
   cvbCategories.id = "cvbCategories";
   cvbCategories.setAttribute("class", "cardViewGroup");
+  cvbCategories.setAttribute("CatManUI", "true");
   cvbCategories.appendChild(CatManCategoriesHeader);
   cvbCategories.appendChild(CatManCategoriesLabel);
 
@@ -680,10 +635,6 @@ jbCatMan.initAddressbook = function() {
   
   // Add listener for card changes to update CategoryList
   jbCatMan.AbListenerToUpdateCategoryList.add();
-  window.addEventListener("unload", function unloadListener(e) {
-        window.removeEventListener("unload", unloadListener, false);
-        jbCatMan.AbListenerToUpdateCategoryList.remove();
-      }, false);
 
   // Add listener for action in search input field
   document.getElementById("peopleSearchInput").addEventListener('command', jbCatMan.onPeopleSearchClick , true);
@@ -700,17 +651,6 @@ jbCatMan.initAddressbook = function() {
   //Add listener for changed selection in results pane, to update CardViewPane
   document.getElementById("abResultsTree").addEventListener("select", jbCatMan.onAbResultsPaneSelectionChanged, false);
 
-  //show/hide special MFFAB context menu entries
-  document.getElementById("CatManContextMenuMFFABSplitter").hidden = !jbCatMan.isMFFABInstalled;
-  document.getElementById("CatManContextMenuMFFABConvert").hidden = !jbCatMan.isMFFABInstalled;
-  
-  //if MFFAB is installed and default category mode, check if it might be better to silently switch to MFFAB mode
-  if (jbCatMan.isMFFABInstalled && !jbCatMan.isMFFABCategoryMode()) {
-    let hasCategories = jbCatMan.booksHaveContactsWithProperty("Categories");
-    let hasCategory = jbCatMan.booksHaveContactsWithProperty("Category");
-    if (hasCategory && !hasCategories) jbCatMan.onSwitchCategoryMode();
-  }
-
   //hide SOGo Categories ContextMenu
   if (document.getElementById("sc-categories-contextmenu")) document.getElementById("sc-categories-contextmenu").style.display = 'none';
 
@@ -720,6 +660,15 @@ jbCatMan.initAddressbook = function() {
   document.getElementById("CatManCategoriesList").addEventListener("dblclick", jbCatMan.writeToCategory, false);
   document.getElementById("CatManCategoriesList").addEventListener("select", jbCatMan.onSelectCategoryList, false);
 }
+
+jbCatMan.unpaintAddressbook = function() {
+  jbCatMan.AbListenerToUpdateCategoryList.remove();
+  document.getElementById("peopleSearchInput").removeEventListener('command', jbCatMan.onPeopleSearchClick , true);
+  document.getElementById("dirTree").removeEventListener('select', jbCatMan.onSelectAddressbook, true);
+  document.getElementById("abResultsTreeContext").removeEventListener("popupshowing", jbCatMan.onResultsTreeContextMenuPopup, false);
+  document.getElementById("abResultsTree").removeEventListener("select", jbCatMan.onAbResultsPaneSelectionChanged, false);
+}  
+
 
 
 jbCatMan.onAbResultsPaneSelectionChanged = function () {
@@ -734,8 +683,3 @@ jbCatMan.onAbResultsPaneSelectionChanged = function () {
   }
 
 }
-  
-
-
-// run init function after window has been loaded
-window.addEventListener("load", jbCatMan.initAddressbook, false);

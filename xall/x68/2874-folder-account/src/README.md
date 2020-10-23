@@ -1,9 +1,17 @@
-Folder-Account
-==============
+# Folder Account
 
-A Thunderbird extension to make managing multiple return addresses easier
+Originally developed by Christopher Eykamp, updated by Welpy-cw
 
-<a href="https://github.com/eykamp/Folder-Account">GitHub page</a>
+A Thunderbird extension to make managing multiple return addresses easier.
 
+Lets you associate user accounts and identities with specific folders. Great for multiple users who share TB, or for managing mailing lists.
 
-Adaption for Thunderbird 57+ sponsored by Feddersen Architekten, Berlin Germany
+This extension adds two very simple options.
+
+First, you can select which of your accounts or identities will be used when composing, replying, or forwarding mail based on which folder is currently selected. An example where this could be useful is when two people share a set of folders. You could configure TB to set a different return address for you when you are working with your folders, and for the other user when they are using theirs. Alternatively, if you use a different mailing address for a mailing list, you can use this extension to set your return address appropriately when you working with the list’s folder.
+
+The second thing this extension does is allow you to set a default To address for newly composed messages based on which folder you are working in. This could be very useful for mailing lists – when you create a new message in the mailing list folder, your message would automatically be correctly addressed.
+
+In both cases, if the current folder has no From address or To address specified, the extension will check the parent folder, so you can control the settings for an entire branch of your folder tree at one time.
+
+ Please submit issues at the project's [GitHub page](https://github.com/Welpy-cw/Folder-Account)

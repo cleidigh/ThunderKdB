@@ -324,7 +324,7 @@ class Message extends React.PureComponent {
       attachmentsPlural: this.props.message.attachmentsPlural,
       hasBuiltInPdf: this.props.hasBuiltInPdf,
       messageKey: this.props.message.messageKey,
-      msgUri: this.props.message.msgUri
+      id: this.props.message.id
     })), this.props.message.expanded && /*#__PURE__*/React.createElement(MessageFooter, {
       dispatch: this.props.dispatch,
       id: this.props.message.id,

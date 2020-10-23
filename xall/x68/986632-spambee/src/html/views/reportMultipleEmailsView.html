@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="/js/popup.js" defer></script>
+    <link href="../../css/sidebar.css" rel="stylesheet" type="text/css">
+    <link href="../../css/sidebarViews.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body class="sidebarBody-Grey">
+<table class="SPsection SPsectionLogo" id="SigSpamsectionLogo">
+    <tbody>
+    <tr>
+        <td rowspan="2" style="max-width:9vmin;width: 15%;">
+            <div class="SPlogo"></div>
+        </td>
+        <td rowspan="2">
+            <div class="SPlogoTitle" data-verifromlocalize="contentScript.sidebar.title">
+                Extension de signalement et de protection contre le Phishing
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<table class="SPsection SPsectionOK">
+    <tbody>
+    <tr>
+        <td style="width: 100%;">
+            <p id="calltoaction" data-verifromlocalize="contentScript.sidebar.calltoaction">Si vous considérez que les
+                e-mails séléctionnés ci-contre sont du spam (pourriel), cliquez sur le bouton ci-dessous</p>
+            <p data-verifromlocalize="contentScript.sidebar.numbering">Vous avez sélectionné <span
+                    id="VFSELECTEDMAILS"></span> e-mails à nous transmettre.</p>
+            <input class="SPsectionOK SPsectionInputs" id="dataprivacy" type="checkbox">
+            <label data-verifromlocalize="contentScript.sidebar.dataprivacy"
+                   for="dataprivacy"
+                   id="dataprivacylabel"
+                   style="font-weight: bold; text-align:left;">J'accepte
+                que SpamBee conserve une copie des données (anonymisées) issues des e-mails signalés pour une
+                investigation ultérieure. Sinon, l'e-mail signalé sera supprimé après analyse.
+            </label>
+            <br>
+            <input
+                    class="SPsectionOK SPsectionInputs"
+                    id="feedback"
+                    type="checkbox">
+            <label
+                    data-verifromlocalize="contentScript.sidebar.feedback" for="feedback" id="feedbacklabel"
+                    style="font-weight: bold; text-align:left;">Je veux être notifié du résultat après l'analyse de mon
+                signalement</label>
+            <div class="SPOKBox" id="SigSpamOKBox" data-verifromlocalize="contentScript.sidebar.buttonlabel">SIGNALER
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+    </tr>
+    <tr>
+        <td>
+            <p class="SPoriginalDesc">
+                <span data-verifromlocalize="contentScript.sidebar.disclosure">En signalant ces emails, leurs contenus seront transmis à nos services pour analyse afin de déployer, avec les acteurs appropriés les contre-mesures adaptées.</span>
+            </p>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p class="SPoriginalDesc">
+                <span data-verifromlocalize="contentScript.sidebar.zoom" id="zoomOriginalEmail">Cliquer ici pour voir le détail des informations transmises à Bee Secure dans ce signalement.</span>
+            </p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+<html>

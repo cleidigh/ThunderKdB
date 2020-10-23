@@ -1,3 +1,7 @@
+const COMMAND_SEPARATOR = "+";
+const NEW_LINE = "\n";
+const FORTUNE_COOKIE_SEPARATOR =  NEW_LINE + "%" + NEW_LINE;
+
 // document ready
 $(function() {
     // init UI; listen for storage changes
@@ -12,6 +16,9 @@ $(function() {
     });
     $(".imagesAdd").click(() => {
         addImage();
+    });
+    $(".fortuneCookiesAdd").click(() => {
+        addFortuneCookies();
     });
     // --------------------------------------------------
     $("#defaultActionNothing").click(() => {
@@ -95,6 +102,15 @@ function newImage() {
     };
 }
 
+function newFortuneCookies() {
+    return {
+        id: uuidv4(),
+        name: "",
+        tag: "",
+        cookies: []
+    };
+}
+
 /* =====================================================================================================================
    UI operations ...
  */
@@ -136,6 +152,13 @@ async function initUI(localStorage) {
             });
         }
 
+        // build fortune cookies (tablerows + modals) ...
+        if (localStorage.fortuneCookies) {
+            localStorage.fortuneCookies.forEach(fortuneCookies => {
+                addFortuneCookies(fortuneCookies);
+            });
+        }
+
         // default action ...
         if (localStorage.defaultAction) {
             switch (localStorage.defaultAction) {
@@ -164,6 +187,25 @@ async function initUI(localStorage) {
             addOrUpdateStoredValue("repliesNoDefaultAction", repliesNoDefaultAction.prop("checked"));
         });
 
+        // forwardings ...
+        let forwardingsDisableAutoSwitch = $("#forwardingsDisableAutoSwitch");
+        forwardingsDisableAutoSwitch.prop("checked", localStorage.forwardingsDisableAutoSwitch ? localStorage.forwardingsDisableAutoSwitch : false);
+        forwardingsDisableAutoSwitch.click(() => {
+            addOrUpdateStoredValue("forwardingsDisableAutoSwitch", forwardingsDisableAutoSwitch.prop("checked"));
+        });
+        let forwardingsNoDefaultAction = $("#forwardingsNoDefaultAction");
+        forwardingsNoDefaultAction.prop("checked", localStorage.forwardingsNoDefaultAction ? localStorage.forwardingsNoDefaultAction : false);
+        forwardingsNoDefaultAction.click(() => {
+            addOrUpdateStoredValue("forwardingsNoDefaultAction", forwardingsNoDefaultAction.prop("checked"));
+        });
+
+        // signature separator ...
+        let signatureSeparatorHtml = $("#signatureSeparatorHtml");
+        signatureSeparatorHtml.prop("checked", localStorage.signatureSeparatorHtml ? localStorage.signatureSeparatorHtml : false);
+        signatureSeparatorHtml.click(() => {
+            addOrUpdateStoredValue("signatureSeparatorHtml", signatureSeparatorHtml.prop("checked"));
+        });
+
         // init tooltips ...
         initTooltips();
     }
@@ -187,11 +229,11 @@ async function initUI(localStorage) {
                     label = i18n("optionsNextCommandLabel");
                     break;
                 case "previous":
-                    label = i18n("optionsCommandReset");
+                    label = i18n("optionsPreviousCommandLabel");
                     break;
             }
 
-            let commandValues = command.shortcut.split("+");
+            let commandValues = command.shortcut.split(COMMAND_SEPARATOR);
 
             let commandValueCheck = (commandValuesArray, commandValue) => {
                 if (typeof commandValuesArray !== "undefined" && commandValuesArray.length > 0 && commandValuesArray[0] === commandValue) {
@@ -229,9 +271,25 @@ async function initUI(localStorage) {
             for (let i = 1; i <= 12; i++) {
                 keyOptions += createOptionElement("F" + i, commandValueCheck(commandValues, "F" + i), "F" + i);
             }
-            // the rest ...
+            /*
+                the rest ...
+
+                    - optionsCommandKeyComma
+                    - optionsCommandKeyDelete
+                    - optionsCommandKeyDown
+                    - optionsCommandKeyEnd
+                    - optionsCommandKeyHome
+                    - optionsCommandKeyInsert
+                    - optionsCommandKeyLeft
+                    - optionsCommandKeyPageDown
+                    - optionsCommandKeyPageUp
+                    - optionsCommandKeyPeriod
+                    - optionsCommandKeyRight
+                    - optionsCommandKeySpace
+                    - optionsCommandKeyUp
+            */
             for (let key of ["Comma", "Period", "Home", "End", "PageUp", "PageDown", "Space", "Insert", "Delete", "Up", "Down", "Left", "Right"]) {
-                keyOptions += createOptionElement(key, commandValueCheck(commandValues, key), key);
+                keyOptions += createOptionElement(key, commandValueCheck(commandValues, key), i18n("optionsCommandKey" + key));
             }
 
             commandsContainer.append(Mustache.render(COMMAND_ROW, {
@@ -267,7 +325,7 @@ async function initUI(localStorage) {
                         elements.push(selectedKey.val());
                     }
 
-                    updateCommand(command.name, elements.join("+")).then(() => {
+                    updateCommand(command.name, elements.join(COMMAND_SEPARATOR)).then(() => {
                         successIcon.removeClass("d-none");
                         failIcon.addClass("d-none");
                     }, () => {
@@ -336,9 +394,9 @@ function addSignature(signature) {
         contentLabel: i18n("optionsSignatureEditModalContent"),
         contentTooltip: i18n("optionsSignatureEditModalContentTooltip"),
         textHeading: i18n("optionsSignatureEditModalPlaintext"),
-        textPlaceholder: i18n("optionsSignatureEditModalTextHtmlPlaceholderEg") + "\n" + "Moe Zilla\nemail: moe@zilla.org\nphone: (666) 12345",
+        textPlaceholder: i18n("optionsSignatureEditModalTextPlaceholder"),
         htmlHeading: i18n("optionsSignatureEditModalHtml"),
-        htmlPlaceholder: i18n("optionsSignatureEditModalTextHtmlPlaceholderEg") + "\n" + "<b>Moe Zilla<b><br>\nemail: <a href=\"mailto:moe@zilla.org\">moe@zilla.org</a><br>\nphone: (666) 12345",
+        htmlPlaceholder: i18n("optionsSignatureEditModalHtmlPlaceholder"),
         autoSwitchLabel: i18n("optionsSignatureEditModalAutoSwitch"),
         autoSwitchTooltip: i18n("optionsSignatureEditModalAutoSwitchTooltip"),
         autoSwitchPlaceholder: i18n("optionsSignatureEditModalAutoSwitchPlaceholder"),
@@ -358,7 +416,9 @@ function addSignature(signature) {
     initTooltips();
 
     // remove modal ...
-    signatureModals.append(Mustache.render(SIGNATURE_REMOVE_MODAL, {
+    signatureModals.append(Mustache.render(GENERIC_REMOVE_MODAL, {
+        modalId: "signatureRemoveModal-" + signature.id,
+        modalYesButtonId: "signatureRemoveModalYes-" + signature.id,
         id: signature.id,
         title: i18n("optionsSignatureRemoveModalTitle"),
         question: i18n("optionsSignatureRemoveModalQuestion"),
@@ -441,7 +501,9 @@ function addImage(image) {
     }));
 
     // modals ...
-    $("#imageModals").append(Mustache.render(IMAGE_REMOVE_MODAL, {
+    $("#imageModals").append(Mustache.render(GENERIC_REMOVE_MODAL, {
+        modalId: "imageRemoveModal-" + image.id,
+        modalYesButtonId: "imageRemoveModalYes-" + image.id,
         id: image.id,
         title: i18n("optionsImageRemoveModalTitle"),
         question: i18n("optionsImageRemoveModalQuestion"),
@@ -471,6 +533,82 @@ function addImage(image) {
     $("#imageFileInput-" + image.id).change(async (e) => {
         $("#imageDisplay-" + image.id).attr("src", await toBase64(e.target.files[0]));
         addOrUpdateItemInStoredArray(updatedImage(), "images")
+    });
+}
+
+function addFortuneCookies(fortuneCookies) {
+    if (!fortuneCookies) {
+        fortuneCookies = newFortuneCookies();
+    }
+
+    $("#fortuneCookiesTableBody").append(Mustache.render(FORTUNE_COOKIES_ROW, {
+        id: fortuneCookies.id,
+        name: fortuneCookies.name,
+        namePlaceholder: i18n("optionsTableColumnFortuneCookiesNamePlaceholder"),
+        tag: fortuneCookies.tag,
+        tagPlaceholder: i18n("optionsTableColumnFortuneCookiesTagPlaceholder"),
+        cookies: fortuneCookies.cookies.join(FORTUNE_COOKIE_SEPARATOR)
+    }));
+
+    let fortuneCookiesModals = $("#fortuneCookiesModals");
+    let fortuneCookiesTableRowTextarea = $("#fortuneCookiesCookies-" + fortuneCookies.id);
+
+    // edit modal ...
+    fortuneCookiesModals.append(Mustache.render(FORTUNE_COOKIES_EDIT_MODAL, {
+        id: fortuneCookies.id,
+        title: i18n("optionsFortuneCookiesEditModalTitle"),
+        cookiesLabel: i18n("optionsFortuneCookiesEditModalLabel"),
+        cookiesTooltip: i18n("optionsFortuneCookiesEditModalTooltip"),
+        cookiesPlaceholder: i18n("optionsFortuneCookiesEditModalPlaceholder"),
+        cookies: fortuneCookies.cookies.join(FORTUNE_COOKIE_SEPARATOR),
+        fileImportLabel: i18n("optionsFortuneCookiesEditModalFileImport"),
+        close: i18n("optionsFortuneCookiesEditModalClose"),
+        save: i18n("optionsFortuneCookiesEditModalSave")
+    }));
+    let fortuneCookiesEditModal = $("#fortuneCookiesEditModal-" + fortuneCookies.id);
+    let fortuneCookiesEditModalTextarea = $("#fortuneCookiesEditModalCookies-" + fortuneCookies.id);
+    fortuneCookiesTableRowTextarea.on("click keydown", () => {
+        fortuneCookiesEditModal.modal("show");
+    });
+    $("#fortuneCookiesEditModalSave-" + fortuneCookies.id).click(() => {
+        fortuneCookiesTableRowTextarea.val(fortuneCookiesEditModalTextarea.val());
+        fortuneCookiesTableRowTextarea.change();
+        fortuneCookiesEditModal.modal("hide");
+    });
+    initTooltips();
+
+    // remove modal ...
+    fortuneCookiesModals.append(Mustache.render(GENERIC_REMOVE_MODAL, {
+        modalId: "fortuneCookiesRemoveModal-" + fortuneCookies.id,
+        modalYesButtonId: "fortuneCookiesRemoveModalYes-" + fortuneCookies.id,
+        id: fortuneCookies.id,
+        title: i18n("optionsFortuneCookiesRemoveModalTitle"),
+        question: i18n("optionsFortuneCookiesRemoveModalQuestion"),
+        no: i18n("optionsFortuneCookiesRemoveModalNo"),
+        yes: i18n("optionsFortuneCookiesRemoveModalYes")
+    }));
+    $("#fortuneCookiesRemoveModalYes-" + fortuneCookies.id).click(() => {
+        deleteItemFromStoredArrayViaId(fortuneCookies.id, "fortuneCookies", function () {
+            $("#fortuneCookiesRemoveModal-" + fortuneCookies.id).modal("hide");
+            $(`tr[data-fortunecookies-id="${fortuneCookies.id}"]`).remove();
+        });
+    });
+
+    let updatedFortuneCookies = () => {
+        return {
+            id: fortuneCookies.id,
+            name: $("#fortuneCookiesName-" + fortuneCookies.id).val(),
+            tag: $("#fortuneCookiesTag-" + fortuneCookies.id).val(),
+            cookies: $("#fortuneCookiesCookies-" + fortuneCookies.id).val().split(FORTUNE_COOKIE_SEPARATOR)
+        };
+    };
+
+    // input-/change-listeners ...
+    $(`#fortuneCookiesName-${fortuneCookies.id}, #fortuneCookiesTag-${fortuneCookies.id}, #fortuneCookiesCookies-${fortuneCookies.id}`).on("change keyup", () => {
+        addOrUpdateItemInStoredArray(updatedFortuneCookies(), "fortuneCookies")
+    });
+    $("#fortuneCookiesFileInput-" + fortuneCookies.id).change(async (e) => {
+        fortuneCookiesEditModalTextarea.val(await toText(e.target.files[0]));
     });
 }
 
@@ -504,9 +642,9 @@ function validateImportExportData() {
 
         if (signatures.length > 0) {
             for (let signature of signatures) {
-                if (! ( signature.hasOwnProperty("id")    &&
-                    signature.hasOwnProperty("name")  &&
-                    (signature.hasOwnProperty("text") || signature.hasOwnProperty("html")))) {
+                if ( !( signature.hasOwnProperty("id")    &&
+                        signature.hasOwnProperty("name")  &&
+                        (signature.hasOwnProperty("text") || signature.hasOwnProperty("html"))) ) {
                     throw "missing signature-attributes!"
                 }
             }
@@ -534,7 +672,7 @@ async function resetCommand(name) {
         for (let command of commands) {
             if (command.name === name) {
                 // TODO refactor - this will only work if the default command consists of three values
-                let commandValues = command.shortcut.split("+");
+                let commandValues = command.shortcut.split(COMMAND_SEPARATOR);
                 $(`#command-${command.name}-modifier1`).val(commandValues[0]);
                 $(`#command-${command.name}-modifier2`).val(commandValues[1]);
                 $(`#command-${command.name}-key`).val(commandValues[2]);

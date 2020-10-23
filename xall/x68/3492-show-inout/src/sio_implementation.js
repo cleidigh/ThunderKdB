@@ -1,9 +1,7 @@
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 const Ci = Components.interfaces;
-
 
 var state='';
 var prefs;
@@ -16,6 +14,28 @@ let strings={
   "inoutthissideCol_label": '',
   "inoutthissideCol_tooltip": ''
 };
+
+var gW;
+var gD;
+var gDBView;
+var options=null;
+var gMyAddr;
+var gMyAddrArr;
+var gLocalFolder;
+var gColumns=new Map;	//id->label
+var otherCCH=new Map;	//save custom column handlers from other add-ons
+var gHeaderParser = MailServices.headerParser;
+
+var gMessenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
+    QueryInterface(Ci.nsIMessenger);
+var gAccountMgr=MailServices.accounts;
+
+var gInTextPrefix='';
+var gOutTextPrefix='';
+
+const MSG_FOLDER_FLAG_TRASH = 0x0100;
+const MSG_FOLDER_FLAG_JUNK = 0x40000000;
+
 
 var sio = class extends ExtensionCommon.ExtensionAPI {
   onStartup() {   //not called it add-on not loaded from .xpi
@@ -31,9 +51,18 @@ debug('onShutdown isAppShutdown='+isAppShutdown+' state='+state);
       // we invalidate the startup cache. That's the same effect as starting
       // with -purgecaches (or deleting the startupCache directory from the
       // profile).
-      //gg: also called on 'disable add-on' but add-on is still active!
-      //  with addCols repeatedly called
-      //  and after reenable, addCols is NOT called
+      //gg: also called on 'disable add-on'
+      observer.addHandlersToCols('*', false);	// remove all columnHandlers to other columns
+debug('remove our own columns');
+			gD.getElementById('sio_inoutCol').remove();
+			gD.getElementById('sio_inoutaddressCol').remove();
+			gD.getElementById('sio_inoutthissideCol').remove();
+			gD.getElementById('sortBySioCorrespondentMenuItem').remove();
+			gD.getElementById('sortBySioThisSideMenuItem').remove();
+			gD.getElementById('sortBySioInOutMenuItem').remove();
+			gD.getElementById('qfb-qs-sio-correspondent').remove();
+			gD.getElementById('qfb-qs-sio-thisside').remove();
+			Services.obs.removeObserver(observer, "MsgCreateDBView");
       Services.obs.notifyObservers(null, "startupcache-invalidate");
   }
 
@@ -52,28 +81,25 @@ debug('sio.init state='+state);
 try {
             prefs=prefsP;
             init();
-} catch(e) { console.log('SIO: init '+e); }
+} catch(e) { debug('init '+e); }
           }
         },
-        prefChanged: async function(prefsP) {
+        prefChanged: async function(prefsP, col, state) {
           prefs=prefsP;
-debug('prefChanged');
-          config.getMyEmails();
-          gInTextPrefix=prefs.InTextPrefix || '';  //was ??, but bad for ATN
-          gOutTextPrefix=prefs.OutTextPrefix || '';  //was ??, but bad for ATN
-          observer.addHandlersToCols();               //uses prefs.Columns
+debug('prefChanged '+col+' '+state);
+					if (col) {
+						// add or remove a generic columnHandler to another column
+						observer.addHandlersToCols(col, state); 
+					} else {
+						config.getMyEmails();
+						gInTextPrefix=prefs.InTextPrefix || '';  //was ??, but bad for ATN
+						gOutTextPrefix=prefs.OutTextPrefix || '';  //was ??, but bad for ATN
+					}
         },
         cols: async function() {
 debug('cols');
-          let w=Services.wm.getMostRecentWindow("mail:3pane");
-          let col=w.document.getElementById('threadCols').childNodes;
-          let columns=new Object({});
-          for (var i=0; i<col.length; i++) {
-            if (col[i].id && !col[i].getAttribute('fixed') && !(col[i].id).includes('sio_')) {
-              columns[col[i].id]=col[i].getAttribute('label');
-            }
-          }
-          return columns;
+if (gColumns.size==0) debug('gColumns array is not filled yet!');
+					return gColumns;
         },
         localfolder: async function() {
 debug('localfolder');
@@ -88,8 +114,7 @@ debug('migratePrefs');
           let mig=new Object;
           let b=Services.prefs.getBranch("extensions.showInOut.");
           let prefs=b.getChildList("");
-          let count=prefs.length;
-          if (count) {  // else: fresh install or already migrated
+          if (prefs.length) {  // else: fresh install or already migrated
             prefs.forEach(pref=>{
               let t=b.getPrefType(pref);
               let v;
@@ -103,6 +128,12 @@ debug('migratePrefs');
             b.deleteBranch("");     // migrated!
           }
           return mig;
+        },
+        addonChanged: async function(who) {
+debug('addonChanged called from '+who);
+					if (who=='background' && options) return null;	//let options window do the work
+//check for new or removed custom columns
+					return changedCols();
         }
       },
 
@@ -112,6 +143,7 @@ debug('migratePrefs');
     // This function is called if the extension is disabled or removed, or Thunderbird closes.
     // We registered it with callOnClose, above.
     // gg: also called if options window closes
+		options=null;
     debug("close");
   }
 };
@@ -130,9 +162,10 @@ debug('init state='+state);
   config.getMyEmails();
   gInTextPrefix=prefs.InTextPrefix || '';  //was ??, but bad for ATN
   gOutTextPrefix=prefs.OutTextPrefix || '';  //was ??, but bad for ATN
-  let ObserverService = Services.obs;
-  ObserverService.addObserver(observer, "MsgCreateDBView", false);
   state='init';
+  Services.obs.addObserver(observer, "MsgCreateDBView", false);
+  Services.obs.addObserver(observer, "dom-window-destroyed", false);
+	observer.observe(null, "MsgCreateDBView", null);	// after enabling the addon there is no notification
 }
 
 async function getAddon() {
@@ -142,27 +175,6 @@ async function getAddon() {
   let app = Services.appinfo;
   console.logStringMessage('ShowInOut: '+addOn.version+' on '+app.name+' '+app.version);
 }
-
-var gW;
-var gD;
-var gDBView;
-var gsio_tree_view;
-var gMyAddr;
-var gMyAddrArr;
-var gLocalFolder;
-var gColumns=[];
-var gHeaderParser = MailServices.headerParser;
-
-var gMessenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
-    QueryInterface(Ci.nsIMessenger);
-var gAccountMgr=MailServices.accounts;
-
-var gInTextPrefix='';
-var gOutTextPrefix='';
-
-const MSG_FOLDER_FLAG_TRASH = 0x0100;
-const MSG_FOLDER_FLAG_JUNK = 0x40000000;
-
 
 function searchTerm(text, aTermCreator, searchTerms, tag) {
   let folders = gW.GetSelectedMsgFolders();
@@ -197,7 +209,7 @@ function searchTerm(text, aTermCreator, searchTerms, tag) {
       },
     getAvailable: function(scope, op)
       {
-//console.log('SIO: available? '+op+': '+r+'\n');
+//debug('available? '+op+': '+r+'\n');
         return (//scope == Ci.nsMsgSearchScope.offlineMail &&
                (op == Ci.nsMsgSearchOp.Is) ||
                (op == Ci.nsMsgSearchOp.Isnt));
@@ -209,9 +221,9 @@ function searchTerm(text, aTermCreator, searchTerms, tag) {
       },
     match: function(msgHdr, searchValue, searchOp)
       {
-//console.log('SIO: search for '+searchValue+' with op '+searchOp+'\n');
-//console.log('SIO:  sender: '+msgHdr.mime2DecodedAuthor+'\n');
-//console.log('SIO:  recip : '+msgHdr.mime2DecodedRecipients+'\n');
+//debug('search for '+searchValue+' with op '+searchOp+'\n');
+//debug(' sender: '+msgHdr.mime2DecodedAuthor+'\n');
+//debug(' recip : '+msgHdr.mime2DecodedRecipients+'\n');
         let outgoing=false;
         let sender=msgHdr.mime2DecodedAuthor;
         for (let email in gMyAddrArr[key]) {
@@ -361,7 +373,7 @@ var config =
 let t=''; for (let key in gMyAddrArr) {
 let name=gAccountMgr.getAccount(key).incomingServer.prettyName;
 t+=name+'\n  '; for (let email in gMyAddrArr[key]) t+=email+'\n  '; t+='\n'; }
-console.log(t);
+debug(t);
 */
   }
 
@@ -373,7 +385,6 @@ function concatNames(corr) {
   // We would use __count__ here, but JS keeps raising a strict
   // warning about its deprecated use
   // see https://ubiquity.mozilla.com/hg/ubiquity-firefox/rev/e0760cfc2ac0
-  //let count = [ name for (name in corr) if (corr.hasOwnProperty(name)) ].length;
   let count=0;
   for (let name in corr) if (corr.hasOwnProperty(name)) count++;
 
@@ -385,7 +396,7 @@ function concatNames(corr) {
     if (corrs) corrs+=', ';
     corrs+=name;
   }
-//console.log('SIO: count='+count+' corrs='+corrs+'\n');
+//debugu('count='+count+' corrs='+corrs+'\n');
   return corrs;
 }
 
@@ -411,7 +422,7 @@ var cache = {
   indicator_cache: null,
   length: 0,
   clear: function(folder) {
-//console.log('SIO: cache: clear');
+//debug('cache: clear');
     this.data_cache = new Object;
     this.addr_cache = new Object;
     this.side_cache = new Object;
@@ -421,12 +432,12 @@ var cache = {
     this.key=null;
   },
   cache: function(messageURI, msgHdr) {
-//console.log('SIO: cache: cache');
+//debug('cache: cache');
     if (this.data_cache[messageURI] !== undefined) return;  //already cached
 
     if (!msgHdr)
       msgHdr=gMessenger.msgHdrFromURI(messageURI);
-//console.log('SIO: cache: '+messageURI+'=>'+msgHdr.folder.URI);
+//debug('cache: '+messageURI+'=>'+msgHdr.folder.URI);
 
     let folder=msgHdr.folder;
     if (!folder || !folder.server)              //paranoia!
@@ -524,28 +535,28 @@ var cache = {
     let charset='ISO-8859-1';  //TB: Umlaute ok, SM: Umlaute ok, cyrillic falsch
     //let charset=msgHdr.Charset;
     let corr=new Object;
-//console.log('SIO: 0: author:     '+msgHdr.author)
-//console.log('SIO: 0: recipients: '+msgHdr.recipients)
+//debug('0: author:     '+msgHdr.author)
+//debug('0: recipients: '+msgHdr.recipients)
     let emailsA = received=='in' || newsgroup ?
         msgHdr.author: msgHdr.recipients;
-//console.log('SIO: 1: Gegenseite: '+emailsA)
+//debug('1: Gegenseite: '+emailsA)
     let allAddressesA = gHeaderParser.parseEncodedHeader(emailsA, charset, false);
     if (emailsA.trim() == "") allAddressesA = [];
     for (let address of allAddressesA) {
       corr[address.email]=isJunk?address.toString():(address.name?address.name:address.email);
-//console.log('SIO:   => '+corr[address.email]);
+//debug('  => '+corr[address.email]);
     }
     this.addr_cache[messageURI]=(received=='in'||newsgroup?gInTextPrefix:gOutTextPrefix)+concatNames(corr);
 
     let side=new Object;
     let emailsR = received=='in' || newsgroup ?
         msgHdr.recipients: msgHdr.author;
-//console.log('SIO: 1: Diese Seite: '+emailsR)
+//debug('1: Diese Seite: '+emailsR)
     let allAddressesR = gHeaderParser.parseEncodedHeader(emailsR, charset, false);
     if (emailsR.trim() == "") allAddressesR = [];
     for (let address of allAddressesR) {
       side[address.email]=isJunk?address.toString():(address.name?address.name:address.email);
-//console.log('SIO:   => '+side[address.email]);
+//debug('  => '+side[address.email]);
     }
     this.side_cache[messageURI]=concatNames(side);
 
@@ -558,7 +569,7 @@ var cache = {
   indicator: function(messageURI){ return this.indicator_cache[messageURI]; },
 
   OnItemEvent: function(folder, event) { // ( nsIMsgFolder item , nsIAtom event )
-//console.log('SIO: cache: OnItemEvent');
+//debug('cache: OnItemEvent');
     //z.B. 'FolderLoaded', 'DeleteOrMoveMsgCompleted', 'CompactCompleted'
     if (event=='CompactCompleted' || event=='FolderLoaded' && folder.getFlag(MSG_FOLDER_FLAG_TRASH)) {
       // there is no event, when the Trash is emptied => clear cache, when trash folder gets loaded
@@ -600,7 +611,7 @@ function haveProperty(properties, property) {
 //--------------------------------------
 var columnHandler_inoutcol = {
   getCellText:         function(row, col) {
-//console.log('SIO: Get cell text for inoutcol '+row+'\n');
+//debug('Get cell text for inoutcol '+row+'\n');
 /*
     let messageURI = gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
@@ -610,7 +621,7 @@ var columnHandler_inoutcol = {
     return '';
   },
   getCellProperties:   function(row, col, properties) {
-//console.log('SIO: Get cell inoutcol, isContainer='+gDBView.isContainer(row)+'\n');
+//debug('Get cell inoutcol, isContainer='+gDBView.isContainer(row)+'\n');
 //dumpProps(row, col, properties);
     //probably should use:
     //let key = gDBView.getKeyAt(row);
@@ -644,12 +655,12 @@ var columnHandler_inoutcol = {
   },
 
   getSortStringForRow: function(hdr) {
-//console.log('SIO: get sort string for inoutcol\n');
+//debug('get sort string for inoutcol\n');
     return '';
   },
   getSortLongForRow:   function(hdr) {
     let messageURI=hdr.folder.getUriForMsg(hdr);
-//console.log('SIO: get sort long for inoutcol '+messageURI+'\n');
+//debug('get sort long for inoutcol '+messageURI+'\n');
     cache.cache(messageURI, hdr);
     if (cache.received(messageURI)=='out') return 0;
     else if (cache.indicator(messageURI)=='to_me') return 1;
@@ -668,11 +679,11 @@ var columnHandler_inoutaddresscol = {
     cache.cache(messageURI);
   //should probably use: FetchAuthor(msgHdr);
   //should probably use: FetchRecipients(msgHdr);
-  //console.log('SIO: Get cell inoutaddresscol row='+row+' URI= '+messageURI+' returned '+cache.addr(messageURI)+'\n');
+  //debug('Get cell inoutaddresscol row='+row+' URI= '+messageURI+' returned '+cache.addr(messageURI)+'\n');
     return cache.addr(messageURI);
   },
   getCellProperties:   function(row, col, properties) {
-//console.log('SIO: Get cell inoutaddresscol row='+row+'\n');
+//debug('Get cell inoutaddresscol row='+row+'\n');
 //dumpProps(row, col, properties);
     let messageURI = gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
@@ -689,7 +700,7 @@ var columnHandler_inoutaddresscol = {
     return props;
   },
   getRowProperties:    function(row, properties) {
-//console.log('SIO: Get row inoutaddresscol index='+row+'\n');
+//debug('Get row inoutaddresscol index='+row+'\n');
 //dumpProps(row, null, properties);
     let messageURI = gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
@@ -724,14 +735,14 @@ var columnHandler_inoutaddresscol = {
 
   getSortStringForRow: function(hdr) {
     let messageURI=hdr.folder.getUriForMsg(hdr);
-//console.log('SIO: get sort string for inoutaddresscol '+messageURI+'\n');
+//debug('get sort string for inoutaddresscol '+messageURI+'\n');
     cache.cache(messageURI, hdr);
     let s=cache.addr(messageURI);
     if (s.substr(0,1)=='"') s=s.substr(1);
     return s;
   },
   getSortLongForRow:   function(hdr) {
-//console.log('SIO: called sort long in inoutaddresscol\n');
+//debug('called sort long in inoutaddresscol\n');
   },
   isString:            function() {
     return true;
@@ -746,7 +757,7 @@ var columnHandler_inoutthissidecol = {
     cache.cache(messageURI);
   //should probably use: FetchAuthor(msgHdr);
   //should probably use: FetchRecipients(msgHdr);
-  //console.log('SIO: Get cell inoutaddresscol row='+row+' URI= '+messageURI+' returned '+cache.addr(messageURI)+'\n');
+  //debug('Get cell inoutaddresscol row='+row+' URI= '+messageURI+' returned '+cache.addr(messageURI)+'\n');
 //TODO
     return cache.side(messageURI);
   },
@@ -768,7 +779,7 @@ var columnHandler_inoutthissidecol = {
     return props;
   },
   getRowProperties:    function(row, properties) {
-//console.log('SIO: Get row inoutaddresscol index='+row+'\n');
+//debug('Get row inoutaddresscol index='+row+'\n');
 //dumpProps(row, null, properties);
     let messageURI = gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
@@ -803,7 +814,7 @@ var columnHandler_inoutthissidecol = {
 
   getSortStringForRow: function(hdr) {
     let messageURI=hdr.folder.getUriForMsg(hdr);
-//console.log('SIO: get sort string for inoutaddresscol '+messageURI+'\n');
+//debug('get sort string for inoutaddresscol '+messageURI+'\n');
     cache.cache(messageURI, hdr);
 //TODO
     let s=cache.side(messageURI);
@@ -811,7 +822,7 @@ var columnHandler_inoutthissidecol = {
     return s;
   },
   getSortLongForRow:   function(hdr) {
-//console.log('SIO: called sort long in inoutaddresscol\n');
+//debug('called sort long in inoutaddresscol\n');
   },
   isString:            function() {
     return true;
@@ -829,44 +840,95 @@ var columnHandler_inoutthissidecol = {
     // All this only to set the in/out property in getCellProperties()!
     /// The original code is in mailnews/base/src/nsMsgDBView.cpp
 var sio_columnHandler = {
+	otherCCH: null,
   getCellText: function(row, col) {
     gDBView.removeColumnHandler(col.id);
-    let val=gDBView.getCellText(row, col);
+		let val;
+		if (this.otherCCH) {
+			val=this.otherCCH.getCellText(row, col);
+		} else {
+			val=gDBView.getCellText(row, col);
+		}
     gDBView.addColumnHandler(col.id, this);
     return val;
   },
   getCellProperties: function(row, col, properties) {
+		if (this.otherCCH) {
+			let props=this.otherCCH.getCellProperties(row, col, properties);
+			if (props) properties=props;
+		}
 //original function already had set standard properties, just add our property
-    let messageURI = gDBView.getURIForViewIndex(row);
-    cache.cache(messageURI);
-    let received=cache.received(messageURI);
-    let indicator=cache.indicator(messageURI);
-    if (properties) {
-      if (received!==null)
-        properties.AppendElement(received);
-      if (indicator!==null)
-        properties.AppendElement(indicator);
-      return "";
-    } else {
-      let ret="";
-      if (received!==null) ret=received;
-      if (indicator!==null) ret+=" "+indicator;
-      return ret;
-    }
+		let messageURI = gDBView.getURIForViewIndex(row);
+		cache.cache(messageURI);
+		let received=cache.received(messageURI);
+		let indicator=cache.indicator(messageURI);
+		if (properties) {
+			if (received!==null)
+				properties.AppendElement(received);
+			if (indicator!==null)
+				properties.AppendElement(indicator);
+			return "";
+		} else {
+			let ret="";
+			if (received!==null) ret=received;
+			if (indicator!==null) ret+=" "+indicator;
+			return ret;
+		}
   },
   getRowProperties: function(row, properties) {
+		if (this.otherCCH) {
+			let props=this.otherCCH.getRowProperties(row, properties);
+			if (props) return props;
+		} else {
 //original function already had set standard properties
+		}
   },
   getImageSrc: function(row, col) {
+		if (this.otherCCH) {
+			return this.otherCCH.getImageSrc(row, col);
+		} else {
 //original function never returns something
+		}
     return;
   },
   isEditable: function(row, col) {
+		if (this.otherCCH) {
+			return this.otherCCH.isEditable(row, col);
+		} else {
 //original function always returns false!
+		}
     return false;
   },
   cycleCell: function(row, col) {
+		if (this.otherCCH) {
+			return this.otherCCH.cycleCell(row, col);
+		} else {
 //original function does nothing for cells, containing text
+		}
+    return ;
+  },
+  getSortStringForRow: function(hdr) {
+		if (this.otherCCH) {
+			return this.otherCCH.getSortStringForRow(hdr);
+		} else {
+//not called
+		}
+    return ;
+  },
+  getSortLongForRow: function(hdr) {
+		if (this.otherCCH) {
+			return this.otherCCH.getSortLongForRow(hdr);
+		} else {
+//not called
+		}
+    return ;
+  },
+  isString: function(dummy) {
+		if (this.otherCCH) {
+			return this.otherCCH.isString();
+		} else {
+//not called
+		}
     return ;
   }
 };
@@ -877,67 +939,90 @@ var sio_columnHandler = {
 
 var observer = {
   // Ci.nsIObserver
-  addHandlersToCols: function() {
-//console.log('SIO: observer: addHandlersToCols');
+  addHandlersToCols: function(col, state) {
+debug('observer: addHandlersToCols for col='+col+' on='+state);
     // define column_handlers for some other columns. This allows me to set the in/out property
     // ONLY define _standard_ columns with _string_ content!!!
     // column Names: subjectCol dateCol senderCol recipientCol sizeCol locationCol accountCol
-    gColumns.forEach(col => {
-      // remove old handlers, only our handlers
-      try {
-        gDBView.removeColumnHandler(col);
-      } catch(e) { /* this is expected if no handler registered */ }
-    });
-    try {
-      let cols = (prefs.Columns || '').split(',');  //was ??, but bad for ATN
-      cols.forEach(col => {
-        col=col.trim();
-        if (gColumns.includes(col)) {
-          gDBView.addColumnHandler(col, sio_columnHandler);
-        }
-      });
-    } catch(e) { console.log('ShowInOut: addHandlersToCols: '+col+' add handler Error: '+e+'\n'); }
+		if (col!='*') {		// work with specific column
+			if (state) {		// add handler to specific column
+				if (gColumns.has(col)) {
+debug('add handler to '+col);
+					let ch=Object.assign({}, sio_columnHandler);
+					ch.otherCCH=otherCCH.has(col)?otherCCH.get(col):null;
+					gDBView.addColumnHandler(col, ch);
+				}
+			} else {				// remove handler from specific column
+debug('remove handler from '+col);
+				gDBView.removeColumnHandler(col);
+				if (otherCCH.has(col)) {		// reset column handler for foreign columns
+					gDBView.addColumnHandler(col, otherCCH.get(col));
+debug('reset original handler for '+col);
+				}
+			}
+		} else if (state) {	// add handlers to all selected columns (after change of folder)
+			try {
+				let cols = (prefs.Columns || '').split(',');  //was ??, but bad for ATN
+				cols.forEach(col => {
+					col=col.trim();
+					if (gColumns.has(col)) {
+debug('add initial handler to '+col);
+try { let d=gDBView.getColumnHandler(col); debug('col '+col+' already has a handler'); } catch(e) {}
+						let ch=Object.assign({}, sio_columnHandler);	// clone the handler
+						ch.otherCCH=otherCCH.has(col)?otherCCH.get(col):null;
+						gDBView.addColumnHandler(col, ch);
+					}
+				});
+			} catch(e) { console.log('ShowInOut: addHandlersToCols: '+col+' add handler Error: '+e+'\n'); }
+		} else {	// remove all column handlers
+			let cols = (prefs.Columns || '').split(',');  //was ??, but bad for ATN
+			cols.forEach(col => {
+				col=col.trim();
+				if (gColumns.has(col)) {
+debug('finally remove handler from '+col);
+					try { gDBView.removeColumnHandler(col); } catch(e) {}
+					if (otherCCH.has(col)) {		// reset column handler for foreign columns
+debug('reset original handler for '+col);
+						gDBView.addColumnHandler(col, otherCCH.get(col));
+					}
+				}
+			});
+		}
   },
 
   observe: function(aSubject, aTopic, aData)
   {
-//console.log('SIO: observer: observe topic='+aTopic);
+//debug('observer: observe topic='+aTopic);
     if (aTopic=='MsgCreateDBView') {
-debug('observer MsgCreateDBView state='+state);
-      if (state!='cols')   // only on first call!
-        addCols();
+debug('observer MsgCreateDBView state='+state+' aData='+aData+' aSubject='+aSubject);
+			if (!aSubject) return;	//normally a nsIMsgFolder
+					//but not on first call (when gDBView does not exists yet) or when an addon is loaded
+			gW=Services.wm.getMostRecentWindow("mail:3pane");
+			gD=gW.document;
       gDBView=gW.gDBView;
       if (typeof gDBView!='undefined' && gDBView) { //check mit typeof, da gelegentlich undefined!
+				if (state!='cols')   // fill gColumns and add our own columns, only on first call!
+					addCols();
         //Must be set on every folder
+debug('add columnsHandlers for our own columns');
         gDBView.addColumnHandler("sio_inoutCol", columnHandler_inoutcol);
         gDBView.addColumnHandler("sio_inoutaddressCol", columnHandler_inoutaddresscol);
         gDBView.addColumnHandler("sio_inoutthissideCol", columnHandler_inoutthissidecol);
 
-        observer.addHandlersToCols();
+        observer.addHandlersToCols('*', true);	// initially add generic columnHandlers to other columns
       }
-      else console.log('SIO: observer: MsgCreateDBView: no gDBView :-(');
-    }
+      else debug('observer: MsgCreateDBView: no gDBView yet');
+    } else if (aTopic=="dom-window-destroyed") {
+				//despite the name, this also fires on load with the window as aSubject
+//dom-window-destroyed file:///D:/sourcen/Mozilla/thunderbird/Extensions/AddressbooksSync_wee/abs_status.html
+//dom-window-destroyed moz-extension://1eb49a87-7593-4a1f-b05a-aa4abc1c7bc8/abs_options.html
+			if (aSubject && aSubject.location.pathname.includes('/sio_options.html')) {
+debug(aTopic+' '+aSubject.location);
+				options=aSubject;	//we have an options window
+			}
+		}
   }
 }
-
-// debug functions
-/*
-function dumpTree() {
-  let tree=document.getElementById('threadTree');
-//  console.log('DOM: '+tree.tagName+'\n');
-  let rows=tree.firstChild.nextSibling; //treechildren, nicht xul:treerows!!!
-  //rows.firstChild: ex. nicht!
-  //rows.childNodes.length=0 !!!
-}
-
-function dumpProps(row, col, properties) {
-  for (let i=0; i<properties.Count(); i++) {
-    let prop;
-    prop=properties.GetElementAt(i).QueryInterface(Ci.nsIAtom);
-    console.log('prop ('+row+','+(col?col.id:'')+'): '+prop.toString()+"\n");
-  }
-}
-*/
 
 function setFilters() {
   try {
@@ -951,7 +1036,7 @@ function setFilters() {
       // aFilterValue is always 'true'!
       if (gD.getElementById(this.domId).checked) {
         let text=gD.getElementById('qfb-qs-textbox').value;
-//console.log('SIO:  search for '+text+'\n');
+//debug(' search for '+text+'\n');
         if (text) searchTerm(text, aTermCreator, aTerms, this.name);
       }
     }
@@ -974,7 +1059,7 @@ function setFilters() {
       // aFilterValue is always 'true'!
       if (gD.getElementById(this.domId).checked) {
         let text=gD.getElementById('qfb-qs-textbox').value;
-//console.log('SIO:  search for '+text+'\n');
+//debug(' search for '+text+'\n');
         if (text) searchTerm(text, aTermCreator, aTerms, this.name);
       }
     }
@@ -992,7 +1077,7 @@ function setFilters() {
       );
       gW.QuickFilterBarMuxer.deferredUpdateSearch();
     } catch (e) {
-      console.log('SIO: search handler throws: '+e);
+      debug('search handler throws: '+e);
     }
   };
   domNodeC.addEventListener("command", handlerC);
@@ -1007,7 +1092,7 @@ function setFilters() {
       );
       gW.QuickFilterBarMuxer.deferredUpdateSearch();
     } catch (e) {
-      console.log('SIO: search handler throws: '+e);
+      debug('search handler throws: '+e);
     }
   };
   domNodeT.addEventListener("command", handlerT);
@@ -1036,24 +1121,32 @@ function MsgSortByInOut()
 
 function addCols() {
 debug('addCols');
-  gW=Services.wm.getMostRecentWindow("mail:3pane");
-  gD=gW.document;
   let tc=gD.getElementById("threadCols");
   if (!tc) {
 debug("no threadCols yet");
     return;
   }
 
+	// fill gColumns with [id->label] for all columns which can be styled
   let cols=gD.getElementById('threadCols').childNodes;
-  for (let i=0; i<cols.length; i++) {
-    if (cols[i].id && !cols[i].getAttribute('fixed') && !(cols[i].id).includes('sio_')) {
-      gColumns.push(cols[i].id);
+  cols.forEach(col=>{
+    if (col.id && !col.getAttribute('fixed') && !(col.id).includes('sio_')) {
+			try {
+				let ch=gDBView.getColumnHandler(col.id);
+debug('col='+col.id+' already has a columnHandler, saved');
+				otherCCH.set(col.id, ch);		// save for later user
+			} catch(e) {
+debug('col='+col.id+' added to gColumns');
+//        gColumns.set(col.id, col.getAttribute('label'));
+			}
+      gColumns.set(col.id, col.getAttribute('label'));
     }
-  }
+  });
 
 /*
 *  add custom columns
 */
+debug('add our own columns');
   let lc=tc.lastElementChild;                 // should be the <treecolpicker>
 
   let fc=gD.getElementById('flaggedCol');
@@ -1103,19 +1196,6 @@ debug("no threadCols yet");
 /*
 *  add menu entries to 'View/Sort by'
 */
-/*
-<menupopup id="menu_viewSortPopup">
-  <menuitem id="sortByCorrespondentMenuItem" type="radio" name="sortby"
-    label="&sio_inoutaddressCol.label;" oncommand="MsgSortByCorrespondent()"
-    insertbefore="sortAfterAttachmentSeparator" />
-  <menuitem id="sortByThisSideMenuItem" type="radio" name="sortby"
-    label="Diese Seite" oncommand="MsgSortByThisSide()"
-    insertbefore="sortAfterAttachmentSeparator" />
-  <menuitem id="sortByInOutMenuItem" type="radio" name="sortby"
-    label="&sio_inoutColumn.label;" oncommand="MsgSortByInOut()"
-    insertbefore="sortAfterAttachmentSeparator" />
-</menupopup>
-*/
   let sm=gD.getElementById("menu_viewSortPopup");
   let sbc=gD.getElementById("sortByCorrespondentMenuitem");
 
@@ -1148,23 +1228,6 @@ debug("no threadCols yet");
 */
   let qfb=gD.getElementById("quick-filter-bar-filter-text-bar");
   let sb=gD.getElementById("qfb-qs-sender");
-/*
-  let cb=gD.importNode(sb, true);
-  cb.setAttribute('id','qfb-qs-sio-correspondent');
-  cb.setAttribute('label',strings.inoutaddressCol_label);
-  cb.querySelector("label[class='toolbarbutton-text']").setAttribute('value',strings.inoutaddressCol_label);
-  cb.querySelector("label[class='toolbarbutton-multiline-text']").textContent=strings.inoutaddressCol_label;
-  cb.querySelector("dropmarker").setAttribute('label',strings.inoutaddressCol_label);
-  qfb.insertBefore(cb, sb);
-
-  cb=gD.importNode(sb, true);
-  cb.setAttribute('id','qfb-qs-sio-thisside');
-  cb.setAttribute('label',strings.inoutthissideCol_label);
-  cb.querySelector("label[class='toolbarbutton-text']").setAttribute('value',strings.inoutthissideCol_label);
-  cb.querySelector("label[class='toolbarbutton-multiline-text']").textContent=strings.inoutthissideCol_label;
-  cb.querySelector("dropmarker").setAttribute('label',strings.inoutthissideCol_label);
-  qfb.insertBefore(cb, sb);
-*/
 
   let b=gD.createXULElement('toolbarbutton');
   b.setAttribute('id','qfb-qs-sio-correspondent');
@@ -1202,7 +1265,45 @@ debug("no threadCols yet");
     styleSheetService.loadAndRegisterSheet(uri, styleSheetService.USER_SHEET);
   }
 
-  state='cols';
+  state='cols';		// columns added
+}
+
+function changedCols() {
+debug('changedCols');
+	let changed=new Map;
+  let cols=gD.getElementById('threadCols').childNodes;
+  cols.forEach(col=>{
+    if (col.id && !col.getAttribute('fixed') && !(col.id).includes('sio_')) {
+			if (gColumns.has(col.id)) return;
+			try {
+				let ch=gDBView.getColumnHandler(col.id);
+debug('new col '+col.id+' found, already has a columnHandler, saved');
+				otherCCH.set(col.id, ch);		// save for later user
+			} catch(e) {}
+debug('new col '+col.id+' found, added to gColumns');
+      gColumns.set(col.id, col.getAttribute('label'));
+			changed.set(col.id, col.getAttribute('label'));
+    }
+  });
+	let colsArray=Array.from(cols);
+  gColumns.forEach((label, col) => {
+		if (colsArray.some(item=>item.id==col)) return;
+debug('obsolete col '+col+' found, remove');
+		changed.set(col, '');
+		gColumns.delete(col);
+		if (otherCCH.has(col)) otherCCH.delete(col);
+		try {
+			let ch=gDBView.getColumnHandler(col); 
+debug('obsolete col '+col+' still had column handler (not removed)');
+//Probably i shouldn't do this in case other addons also try to remove the handler
+//but fires after sio and does not catch the exception!
+//			gDBView.removeColumnHandler(col); 
+		} 
+		catch(e) { /*debug('get or remove columnHandler throws '+e);*/ }
+		//remove from prefs is done in background
+	});
+debug('changedCols done');
+	return changed;
 }
 
 var debugcache='';
@@ -1213,13 +1314,32 @@ function debug(txt) {
 //  filecache+=txt+'\n';
 //  OS.File.writeAtomic(pth, filecache, { tmpPath: pth+'.tmp'});
 
-    if (prefs) {
-      if (prefs.debug) {
-        if (debugcache) console.log(debugcache); debugcache='';
-        console.log('SIO: '+txt);
-      }
-    } else {
-      debugcache+='SIO: (cached) '+txt+'\n';
-    }
+	if (prefs) {
+		if (prefs.debug) {
+			if (debugcache) console.log(debugcache); debugcache='';
+			console.log('SIO: '+txt);
+		}
+	} else {
+		debugcache+='SIO: (cached) '+txt+'\n';
+	}
+}
+
+// debug functions
+/*
+function dumpTree() {
+  let tree=document.getElementById('threadTree');
+//  console.log('DOM: '+tree.tagName+'\n');
+  let rows=tree.firstChild.nextSibling; //treechildren, nicht xul:treerows!!!
+  //rows.firstChild: ex. nicht!
+  //rows.childNodes.length=0 !!!
+}
+
+function dumpProps(row, col, properties) {
+  for (let i=0; i<properties.Count(); i++) {
+    let prop;
+    prop=properties.GetElementAt(i).QueryInterface(Ci.nsIAtom);
+    console.log('prop ('+row+','+(col?col.id:'')+'): '+prop.toString()+"\n");
   }
+}
+*/
 

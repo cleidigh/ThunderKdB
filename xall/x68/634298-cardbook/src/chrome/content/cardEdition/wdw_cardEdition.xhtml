@@ -35,7 +35,7 @@
 	
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookObserverRepository.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookEditionPrefObserver.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookEditionObserver.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookClipboard.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookElementTools.js"/>
@@ -465,6 +465,8 @@
 			<!-- notificationbox will be added here lazily. -->
 		</vbox>
 		<spacer flex="1"/>
+		<button id="previousEditionLabel" label="__CARDBOOKMSG_previousEditionLabel__" accesskey="__CARDBOOKMSG_previousEditionAccesskey__" oncommand="wdw_cardEdition.changeContact('previous');"/>
+		<button id="nextEditionLabel" label="__CARDBOOKMSG_nextEditionLabel__" accesskey="__CARDBOOKMSG_nextEditionAccesskey__" oncommand="wdw_cardEdition.changeContact('next');"/>
 		<menulist id="fieldsMenulist" flex="1">
 			<menupopup id="fieldsMenupopup"
 				onpopuphiding="wdw_cardEdition.changeEditionFields();return event.explicitOriginalTarget.localName != 'menuitem'" ignorekeys="true">

@@ -136,7 +136,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 						}
 					}
 				} else {
-					for (i in cardbookRepository.cardbookCards) {
+					for (let i in cardbookRepository.cardbookCards) {
 						var myCard = cardbookRepository.cardbookCards[i];
 						if (!myCard.isAList) {
 							myCardArray.push([wdw_findDuplicates.generateCardArray(myCard), myCard, true]);

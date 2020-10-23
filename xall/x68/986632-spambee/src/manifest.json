@@ -3,27 +3,123 @@
 	"applications": {
 		"gecko": {
 			"id": "spambee@verifrom.com",
-			"strict_min_version": "68.0",
-			"strict_max_version": "73.*"
+			"strict_min_version": "77.0"
 		}
 	},
-	"icons": {
-		"16": "chrome/content/spambee/logo/16x16.png",
-		"32": "chrome/content/spambee/logo/32x32.png",
-		"48": "chrome/content/spambee/logo/48x48.png",
-		"96": "chrome/content/spambee/logo/96x96.png",
-		"128": "chrome/content/spambee/logo/128x128.png",
-		"256": "chrome/content/spambee/logo/256x256.png"
-	},
-	"name": "spambee",
-	"description": "SPAMBEE Mail Report Extension",
-	"version": "2.2.4",
+	"name": "SPAMBEE",
 	"author": "VERIFROM for SPAMBEE",
-	"legacy": {
-		"type": "xul",
-		"options": {
-			"page": "chrome://spambee/content/spambee/settings.xul",
-			"open_in_tab": true
+	"description": "__MSG_description__",
+	"version": "3.0.3",
+	"icons": {
+		"16": "logo/16x16.png",
+		"32": "logo/32x32.png",
+		"48": "logo/48x48.png",
+		"96": "logo/96x96.png",
+		"128": "logo/128x128.png",
+		"256": "logo/256x256.png"
+	},
+	"default_locale": "en",
+	"options_ui": {
+		"page": "html/options.html",
+		"open_in_tab": true
+	},
+	"permissions": [
+		"notifications",
+		"messagesRead",
+		"storage",
+		"activeTab",
+		"tabs",
+		"tabHide",
+		"menus",
+		"accountsRead",
+		"messagesMove",
+		"https://*.verifrom.com/*",
+		"https://spambee.c-3.lu/*"
+	],
+	"experiment_apis": {
+		"notification": {
+			"schema": "experiments/notification/schema.json",
+			"parent": {
+				"scopes": [
+					"addon_parent"
+				],
+				"paths": [
+					[
+						"notification"
+					]
+				],
+				"script": "experiments/notification/notification.js"
+			}
+		},
+		"legacyprefs": {
+			"schema": "experiments/legacyprefs/schema.json",
+			"parent": {
+				"scopes": [
+					"addon_parent"
+				],
+				"paths": [
+					[
+						"legacyprefs"
+					]
+				],
+				"script": "experiments/legacyprefs/legacyprefs.js"
+			}
 		}
-	}
+	},
+	"content_security_policy": "script-src 'self' 'sha256-Le3UjCT7ZQcJphS9E7Z53Jlvx8+rC2zKNv2shRMlptk='; object-src 'self'; ",
+	"background": {
+		"scripts": [
+			"js/purify.min.js",
+			"js/xxhash.js",
+			"js/uint64.js",
+			"js/xxhash64.js",
+			"js/URLCanonicalization.js",
+			"js/socket.io.js",
+			"specific/extensionConfig.js",
+			"js/verifrom_api.js",
+			"js/verifrom-localize.js",
+			"background.js"
+		]
+	},
+	"browser_action": {
+		"browser_style": true,
+		"default_title": "__MSG_report__",
+		"default_icon": {
+			"19": "logo/icon25.png",
+			"38": "logo/icon48.png"
+		},
+		"theme_icons": [
+			{
+				"light": "logo/icon25.png",
+				"dark": "logo/icon48.png",
+				"size": 16
+			},
+			{
+				"light": "logo/icon25.png",
+				"dark": "logo/icon48.png",
+				"size": 32
+			}
+		]
+	},
+	"message_display_action": {
+		"browser_style": true,
+		"default_title": "__MSG_report__",
+		"default_icon": {
+			"19": "logo/icon25.png",
+			"38": "logo/icon48.png"
+		},
+		"theme_icons": [
+			{
+				"light": "logo/icon25.png",
+				"dark": "logo/icon48.png",
+				"size": 16
+			},
+			{
+				"light": "logo/icon25.png",
+				"dark": "logo/icon48.png",
+				"size": 32
+			}
+		]
+	},
+	"web_accessible_resources": []
 }

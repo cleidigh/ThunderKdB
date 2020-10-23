@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8"/>
+    <title data-l10n-content="options.title"></title>
+    <link rel="stylesheet" href="options.css" type="text/css"/>
+    <script src="options.js" defer=""></script>
+  </head>
+  <body id="options" class="vbox">
+    <div id="d_content" class="vbox">
+      <h1 data-l10n-content="maxsize.label"></h1>
+      <div id="rg_size" class="vbox">
+        <label><input type="radio" name="rg_size" id="r_noresize" /><span data-l10n-content="noresize.label"></span></label>
+        <label><input type="radio" name="rg_size" id="r_small" /><span data-l10n-content="small.label"></span></label>
+        <label><input type="radio" name="rg_size" id="r_medium" /><span data-l10n-content="medium.label"></span></label>
+        <label><input type="radio" name="rg_size" id="r_large" /><span data-l10n-content="large.label"></span></label>
+        <div>
+          <label><input type="radio" name="rg_size" id="r_custom" /><span data-l10n-content="custom.label"></span></label>
+          <label id="l_width">
+            <span data-l10n-content="width.label"></span>
+            <input id="tb_width" type="number" value="1500" step="50" min="100" max="2500" />
+            <label data-l10n-content="custom.pixels"></label>
+          </label>
+          <label id="l_height">
+            <span data-l10n-content="height.label"></span>
+            <input id="tb_height" type="number" value="1500" step="50" min="100" max="2500" />
+            <label id="l_measure" data-l10n-content="custom.pixels"></label>
+          </label>
+        </div>
+      </div>
+      <h1 id="l_previewheader" data-l10n-content="preview.label"></h1>
+      <div id="b_previewbox" class="hbox">
+        <div id="b_previewarrows" class="vbox">
+          <button id="b_previous" tabindex="0" data-l10n-title="preview.previous.tooltip"></button>
+          <label id="l_previewarrows" />
+          <button id="b_next" tabindex="0" data-l10n-title="preview.next.tooltip"></button>
+        </div>
+        <div id="d_preview" class="vbox">
+          <img id="i_previewthumb" class="vbox"/>
+        </div>
+        <div id="d_info" class="vbox">
+          <label id="l_previewfilename"/>
+          <label id="l_previeworiginalsize"/>
+          <label id="l_previeworiginalfilesize"/>
+          <label id="l_previewresized"/>
+          <label id="l_previewresizedfilesize"/>
+        </div>
+      </div>
+      <label><input type="checkbox" id="cb_savedefault" /><span data-l10n-content="options.savedefault.label"></span></label>
+    </div>
+    <div id="d_buttons" class="hbox">
+      <button id="b_ok" type="button" data-l10n-content="ok"></button>
+      <button id="b_cancel" type="button" data-l10n-content="cancel"></button>
+    </div>
+  </body>
+</html>

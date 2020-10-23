@@ -1113,17 +1113,10 @@ function xpunge_timer_isValidCompactAccountEntry(index, uri, caller) {
 
 	if (!msgfolder) {
     xpunge_timer_consoleService.logStringMessage("xpunge - xpunge_timer_isValidCompactAccountEntry("
-        + caller + "):" + "\n\n" + "WARNING - Entry Is Not A Folder: " + uri + "\n");
+        + caller + "):" + "\n\n" + "WARNING - Entry Is Not A Server Or A Folder: " + uri + "\n");
 
     return false;
 	}
-
-  if (!msgfolder.isServer) {
-    xpunge_timer_consoleService.logStringMessage("xpunge - xpunge_timer_isValidCompactAccountEntry("
-        + caller + "):" + "\n\n" + "WARNING - Entry Is Not A Server: " + uri + "\n");
-
-    return false;
-  }
 
 	if (msgfolder.name === "") {
 		xpunge_timer_consoleService.logStringMessage("xpunge - xpunge_timer_isValidCompactAccountEntry("

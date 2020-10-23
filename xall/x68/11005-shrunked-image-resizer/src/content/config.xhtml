@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8"/>
+    <title data-l10n-content="config.title"></title>
+    <link rel="stylesheet" href="options.css" type="text/css"/>
+    <script src="config.js" defer=""></script>
+  </head>
+  <body id="config">
+    <div id="tp_defaults" class="vbox">
+      <div>
+        <label data-l10n-content="minsize.label" />
+        <input id="tb_minsize" type="number" step="10" min="0" />
+        <label data-l10n-content="unit.kilobytes" />
+      </div>
+
+      <h1 data-l10n-content="defaults.label"></h1>
+      <label data-l10n-content="maxsize.label" />
+      <label class="indent"><input type="radio" name="rg_size" id="r_noresize" /><span data-l10n-content="noresize.label"></span></label>
+      <label class="indent"><input type="radio" name="rg_size" id="r_small" /><span data-l10n-content="small.label"></span></label>
+      <label class="indent"><input type="radio" name="rg_size" id="r_medium" /><span data-l10n-content="medium.label"></span></label>
+      <label class="indent"><input type="radio" name="rg_size" id="r_large" /><span data-l10n-content="large.label"></span></label>
+      <div class="indent">
+        <label><input type="radio" name="rg_size" id="r_custom" /><span data-l10n-content="custom.label"></span></label>
+        <label id="l_width" control="customvalue1">
+          <span data-l10n-content="width.label"></span>
+          <input id="tb_width" type="number" value="1500" step="50" min="100" max="2500" />
+          <label data-l10n-content="custom.pixels"></label>
+        </label>
+        <label id="l_height" control="customvalue2">
+          <span data-l10n-content="height.label"></span>
+          <input id="tb_height" type="number" value="1500" step="50" min="100" max="2500" />
+          <label id="l_measure" data-l10n-content="custom.pixels"></label>
+        </label>
+      </div>
+
+      <label data-l10n-content="defaults.quality.label" />
+      <div class="hbox indent">
+        <label data-l10n-content="defaults.quality.smaller" />
+        <input
+          id="s_quality"
+          type="range"
+          min="30"
+          max="100"
+          step="5" />
+        <label data-l10n-content="defaults.quality.better" />
+      </div>
+    </div>
+    <div id="tp_advanced" class="vbox">
+      <h1 data-l10n-content="advanced.label"></h1>
+      <label><input type="checkbox" id="cb_resample" name="options.resample" /><span data-l10n-content="advanced.resample.label"></span></label>
+      <label><input type="checkbox" id="cb_exif" name="options.exif" oncommand="enableExif()" /><span data-l10n-content="advanced.exif.label"></span></label>
+      <div class="vbox indent">
+        <label><input type="checkbox" id="cb_orient" name="options.orient" /><span data-l10n-content="advanced.orient.label"></span></label>
+        <label><input type="checkbox" id="cb_gps" name="options.gps" /><span data-l10n-content="advanced.gps.label" ></span></label>
+      </div>
+      <!-- <label><input type="checkbox" id="cb_logenabled" name="log.enabled" /><span data-l10n-content="advanced.logenabled.label"></span></label> -->
+      <div id="b_resizeonsend">
+        <label data-l10n-content="advanced.resizeonsend.label" />
+        <select id="s_resizeonsend">
+          <option value="false" data-l10n-label="advanced.resizeonsend.false" />
+          <option value="true" data-l10n-label="advanced.resizeonsend.true" />
+        </select>
+      </div>
+    </div>
+  </body>
+</html>

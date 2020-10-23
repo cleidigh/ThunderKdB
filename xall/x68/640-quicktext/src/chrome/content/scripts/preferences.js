@@ -4,12 +4,15 @@
  *
  * This file is intended to be used in the WebExtension background page,
  * in popup pages, option pages, content pages as well as in legacy chrome
- * windows.
+ * windows (together with the WindowListener API).
  * The preferences will be loaded asynchronously from the WebExtension
  * storage and stored in a local pref obj, so all further access can be done
  * synchronously.
  * If preferences are changed elsewhere, the local pref obj will be updated.
  * 
+ * Version: 1.1
+ * - Bugfix: use messenger.storage instead of browser.storage
+ *
  * Version: 1.0
  *
  * Author: John Bieling (john@thunderbird.net)
@@ -120,7 +123,7 @@ var preferences = {
       }      
       // Push new defaults into storage.local.
       for (let key of Object.keys(defaults)) {
-        browser.storage.local.set({ [defaultPrefPrefix + key] : defaults[key] });
+        messenger.storage.local.set({ [defaultPrefPrefix + key] : defaults[key] });
         this._prefs[ defaultPrefPrefix + key] = defaults[key];
       }
       
@@ -135,37 +138,4 @@ var preferences = {
     }    
   },
 
-   
-  /*
-  load: async function(document) {
-    for (let node of document.querySelectorAll("[preference]")) {
-      if (node.getAttribute("instantApply") == "true") {
-        node.addEventListener("change", function(event) {this.savePref(event.target);});
-      }
-    this.loadPref(node);    
-    }
-  },
-
-  save: async function(document) {
-    for (let node of document.querySelectorAll("[preference]")) {
-      this.savePref(node);    
-    }
-  },
-
-  loadPref: async function(node) {
-    switch (node.tagName.toLowerCase()) {
-      case "input":
-        node.setAttribute("value", await this.getPref(node.getAttribute("preference")));
-        break;
-    }
-  },
-
-  savePref: async function(node) {
-    switch (node.tagName.toLowerCase()) {
-      case "input":
-        await this.setPref(node.getAttribute("preference"), node.value);
-        break;
-    }
-  }
-  */
 }

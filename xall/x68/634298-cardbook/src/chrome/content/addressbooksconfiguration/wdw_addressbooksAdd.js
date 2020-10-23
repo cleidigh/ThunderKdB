@@ -1220,8 +1220,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 																	myAccount.DBcached, true, "60", true);
 						cardbookRepository.cardbookSynchronization.initMultipleOperations(myAccount.dirPrefId);
 						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;
-						var myMode = "WINDOW";
-						wdw_migrate.importCards(myAccount.sourceDirPrefId, myAccount.dirPrefId, myAccount.name, myAccount.vcard, myMode);
+						wdw_migrate.importCards(myAccount.sourceDirPrefId, myAccount.dirPrefId, myAccount.name, myAccount.vcard);
 						cardbookRepository.cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode, false, true);
 						// if the first proposed import of standard address books is finished OK
 						// then set CardBook as exclusive

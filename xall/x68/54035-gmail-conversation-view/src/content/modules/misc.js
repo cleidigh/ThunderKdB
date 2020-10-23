@@ -6,7 +6,6 @@ var EXPORTED_SYMBOLS = [
   "setupLogging",
   "groupArray",
   "topMail3Pane",
-  "folderName",
   "escapeHtml",
   "parseMimeLine",
   "htmlToPlainText",
@@ -93,16 +92,6 @@ function topMail3Pane(aObj) {
   return aObj.top.opener || moveOut(aObj) || aObj.top;
 }
 
-function folderName(aFolder) {
-  let folderStr = aFolder.prettyName;
-  let folder = aFolder;
-  while (folder.parent) {
-    folder = folder.parent;
-    folderStr = folder.name + "/" + folderStr;
-  }
-  return [aFolder.prettyName, folderStr];
-}
-
 /**
  * Helper function to escape some XML chars, so they display properly in
  *  innerHTML.
@@ -140,8 +129,7 @@ function parseMimeLine(mimeLine, dontFix) {
     console.debug("Empty aMimeLine?!!");
     return [];
   }
-  // The null here copes with pre-Thunderbird 71 compatibility.
-  let addresses = MailServices.headerParser.parseEncodedHeader(mimeLine, null);
+  let addresses = MailServices.headerParser.parseEncodedHeader(mimeLine);
   if (addresses.length) {
     return addresses.map((addr) => {
       return {

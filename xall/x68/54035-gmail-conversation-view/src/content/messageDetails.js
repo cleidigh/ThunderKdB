@@ -44,10 +44,10 @@ class MessageDetails extends React.PureComponent {
       contacts: this.props.cc
     })), !!this.props.bcc.length && /*#__PURE__*/React.createElement("div", {
       className: "detailsLine bccLine"
-    }, /*#__PURE__*/React.createElement("u", null, browser.i18n.getMessage("message.bccHeader")), " ", /*#__PURE__*/React.createElement(ContactLine, {
+    }, /*#__PURE__*/React.createElement("u", null, browser.i18n.getMessage("compose.fieldBcc")), " ", /*#__PURE__*/React.createElement(ContactLine, {
       className: "bcc",
       contacts: this.props.bcc
-    })), this.props.extraLines && !!this.props.extraLines.length && this.props.extraLines.map((line, i) => {
+    })), !!this.props.extraLines && !!this.props.extraLines.length && this.props.extraLines.map((line, i) => {
       return /*#__PURE__*/React.createElement("div", {
         className: "detailsLine",
         key: i
@@ -60,7 +60,7 @@ class MessageDetails extends React.PureComponent {
 MessageDetails.propTypes = {
   bcc: PropTypes.array.isRequired,
   cc: PropTypes.array.isRequired,
-  extraLines: PropTypes.array.isRequired,
+  extraLines: PropTypes.array,
   from: PropTypes.object.isRequired,
   to: PropTypes.array.isRequired
 };
