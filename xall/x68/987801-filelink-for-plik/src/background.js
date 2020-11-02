@@ -24,7 +24,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
 (() => {
 
     /* Whenever TB starts, all the providers are in state configured:false */
-    browser.cloudFile.getAllAccounts()
+    messenger.cloudFile.getAllAccounts()
         .then(allAccounts =>
             allAccounts.forEach(async function (account) {
                 const pc = new PlikConnection(account.id);
@@ -34,16 +34,16 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
                 pc.updateConfigured();
             }));
 
-    browser.cloudFile.onAccountAdded.addListener((account) => (new PlikConnection(account.id)).updateConfigured());
+    messenger.cloudFile.onAccountAdded.addListener((account) => (new PlikConnection(account.id)).updateConfigured());
 
-    browser.cloudFile.onFileUpload.addListener((account, fileInfo) =>
+    messenger.cloudFile.onFileUpload.addListener((account, fileInfo) =>
         (new PlikConnection(account.id)).load().then(pc => pc.uploadFile(fileInfo)));
 
-    browser.cloudFile.onFileDeleted.addListener((account, fileId) =>
+    messenger.cloudFile.onFileDeleted.addListener((account, fileId) =>
         (new PlikConnection(account.id)).load().then(pc => pc.deleteFile(fileId)));
 
-    browser.cloudFile.onFileUploadAbort.addListener(PlikConnection.abortUpload);
+    messenger.cloudFile.onFileUploadAbort.addListener(PlikConnection.abortUpload);
 
-    browser.cloudFile.onAccountDeleted.addListener(PlikConnection.deleteAccount);
+    messenger.cloudFile.onAccountDeleted.addListener(PlikConnection.deleteAccount);
 
 })();

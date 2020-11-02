@@ -5,21 +5,24 @@
 /* Below are hacks^W heuristics for finding quoted parts in a given email */
 
 /* exported Quoting */
-
 class _Quoting {
   canInclude(aNode) {
-    let v =
-      (aNode.tagName && aNode.tagName.toLowerCase() == "br") ||
-      (aNode.nodeType == aNode.TEXT_NODE && aNode.textContent.trim() === "");
-    // if (v) dump("Including "+aNode+"\n");
+    var _aNode$tagName;
+
+    let v = ((_aNode$tagName = aNode.tagName) === null || _aNode$tagName === void 0 ? void 0 : _aNode$tagName.toLowerCase()) == "br" || aNode.nodeType == aNode.TEXT_NODE && aNode.textContent.trim() === ""; // if (v) dump("Including "+aNode+"\n");
+
     return v;
   }
 
   isBody(aNode) {
-    if (aNode.tagName && aNode.tagName.toLowerCase() == "body") {
+    var _aNode$tagName2;
+
+    if (((_aNode$tagName2 = aNode.tagName) === null || _aNode$tagName2 === void 0 ? void 0 : _aNode$tagName2.toLowerCase()) == "body") {
       return true;
     }
+
     let count = 0;
+
     for (let node of aNode.parentNode.childNodes) {
       // dump(node+" "+node.nodeType+"\n");
       switch (node.nodeType) {
@@ -27,36 +30,36 @@ class _Quoting {
           if (node.textContent.trim().length) {
             count++;
           }
+
           break;
+
         case node.ELEMENT_NODE:
           count++;
           break;
       }
-    }
-    // dump(count+"\n");
+    } // dump(count+"\n");
+
+
     return count == 1 && this.isBody(aNode.parentNode);
   }
 
   implies(a, b) {
-    return !a || (a && b);
+    return !a || a && b;
   }
-
   /* Create a blockquote that encloses everything relevant, starting from marker.
    * Marker is included by default, remove it later if you need to. */
+
+
   encloseInBlockquote(aDoc, marker) {
     if (marker.previousSibling && this.canInclude(marker.previousSibling)) {
       this.encloseInBlockquote(aDoc, marker.previousSibling);
     } else if (!marker.previousSibling && !this.isBody(marker.parentNode)) {
       this.encloseInBlockquote(aDoc, marker.parentNode);
-    } else if (
-      this.implies(
-        marker == marker.parentNode.firstChild,
-        !this.isBody(marker.parentNode)
-      )
-    ) {
+    } else if (this.implies(marker == marker.parentNode.firstChild, !this.isBody(marker.parentNode))) {
       let blockquote = aDoc.createElement("blockquote");
       blockquote.setAttribute("type", "cite");
       marker.parentNode.insertBefore(blockquote, marker);
+
       while (blockquote.nextSibling) {
         blockquote.appendChild(blockquote.nextSibling);
       }
@@ -65,73 +68,66 @@ class _Quoting {
 
   trySel(aDoc, sel, remove) {
     let marker = aDoc.querySelector(sel);
+
     if (marker) {
       this.encloseInBlockquote(aDoc, marker);
+
       if (remove) {
         marker.remove();
       }
     }
+
     return marker != null;
   }
-
   /* Hotmails use a <hr> to mark the start of the quoted part. */
+
+
   convertHotmailQuotingToBlockquote1(aDoc) {
     /* We make the assumption that no one uses a <hr> in their emails except for
      * separating a quoted message from the rest */
-    this.trySel(
-      aDoc,
-      "body > hr, \
+    this.trySel(aDoc, "body > hr, \
        body > div > hr, \
        body > pre > hr, \
        body > div > div > hr, \
-       hr#stopSpelling",
-      true
-    );
+       hr#stopSpelling", true);
   }
 
   convertMiscQuotingToBlockquote(aDoc) {
     this.trySel(aDoc, ".yahoo_quoted");
   }
-
   /* There's a special message header for that. */
+
+
   convertOutlookQuotingToBlockquote(aWin, aDoc) {
     /* Outlook uses a special thing for that */
     this.trySel(aDoc, ".OutlookMessageHeader");
+
     for (let div of aDoc.getElementsByTagName("div")) {
       let style = aWin.getComputedStyle(div);
-      if (
-        (style.borderTopColor == "rgb(181, 196, 223)" ||
-          style.borderTopColor == "rgb(225, 225, 225)") &&
-        style.borderTopStyle == "solid" &&
-        style.borderLeftWidth == "0px" &&
-        style.borderRightWidth == "0px" &&
-        style.borderBottomWidth == "0px"
-      ) {
+
+      if ((style.borderTopColor == "rgb(181, 196, 223)" || style.borderTopColor == "rgb(225, 225, 225)") && style.borderTopStyle == "solid" && style.borderLeftWidth == "0px" && style.borderRightWidth == "0px" && style.borderBottomWidth == "0px") {
         this.encloseInBlockquote(aDoc, div);
         div.style.borderTopWidth = 0;
         break;
       }
     }
   }
-
   /* Stupid regexp that matches:
    * ----- Something that supposedly says the text below is quoted -----
    * Fails 9 times out of 10. */
+
+
   convertForwardedToBlockquote(aDoc) {
     const re = /^\s*(-{5,15})(?:\s*)(?:[^ \f\n\r\t\v\u00A0\u2028\u2029-]+\s+)*[^ \f\n\r\t\v\u00A0\u2028\u2029-]+(\s*)\1\s*/gm;
-    const walk = (aNode) => {
+
+    const walk = aNode => {
       for (const child of aNode.childNodes) {
         const txt = child.textContent;
         const m = txt.match(re);
-        if (
-          child.nodeType == child.TEXT_NODE &&
-          !txt.includes("-----BEGIN PGP") &&
-          !txt.includes("----END PGP") &&
-          m &&
-          m.length
-        ) {
-          const marker = m[0];
-          // dump("Found matching text "+marker+"\n");
+
+        if (child.nodeType == child.TEXT_NODE && !txt.includes("-----BEGIN PGP") && !txt.includes("----END PGP") && m && m.length) {
+          const marker = m[0]; // dump("Found matching text "+marker+"\n");
+
           const i = txt.indexOf(marker);
           const t1 = txt.substring(0, i);
           const t2 = txt.substring(i + 1, child.textContent.length);
@@ -144,7 +140,7 @@ class _Quoting {
           let ex = new Error();
           ex.found = true;
           throw ex;
-        } else if (m && m.length) {
+        } else if (m === null || m === void 0 ? void 0 : m.length) {
           // We only move on if we found the matching text in the parent's text
           // content, otherwise, there's no chance we'll find it in the child's
           // content.
@@ -152,6 +148,7 @@ class _Quoting {
         }
       }
     };
+
     try {
       walk(aDoc.body);
     } catch (ex) {
@@ -160,39 +157,43 @@ class _Quoting {
       }
     }
   }
-
   /* If [b1] is a blockquote followed by [ns] whitespace nodes followed by [b2],
    * append [ns] to [b1], then append all the child nodes of [b2] to [b1],
    * effectively merging the two blockquotes together. */
+
+
   fusionBlockquotes(aDoc) {
     let blockquotes = new Set(aDoc.getElementsByTagName("blockquote"));
+
     for (let blockquote of blockquotes) {
       let isWhitespace = function (n) {
-        return (
-          n &&
-          ((n.tagName && n.tagName.toLowerCase() == "br") ||
-            (n.nodeType == n.TEXT_NODE && n.textContent.match(/^\s*$/)))
-        );
+        var _n$tagName;
+
+        return n && (((_n$tagName = n.tagName) === null || _n$tagName === void 0 ? void 0 : _n$tagName.toLowerCase()) == "br" || n.nodeType == n.TEXT_NODE && n.textContent.match(/^\s*$/));
       };
+
       let isBlockquote = function (b) {
-        return b && b.tagName && b.tagName.toLowerCase() == "blockquote";
+        var _b$tagName;
+
+        return (b === null || b === void 0 ? void 0 : (_b$tagName = b.tagName) === null || _b$tagName === void 0 ? void 0 : _b$tagName.toLowerCase()) == "blockquote";
       };
+
       let blockquoteFollows = function (n) {
-        return (
-          n &&
-          (isBlockquote(n) ||
-            (isWhitespace(n) && blockquoteFollows(n.nextSibling)))
-        );
+        return n && (isBlockquote(n) || isWhitespace(n) && blockquoteFollows(n.nextSibling));
       };
+
       while (blockquoteFollows(blockquote.nextSibling)) {
         while (isWhitespace(blockquote.nextSibling)) {
           blockquote.appendChild(blockquote.nextSibling);
         }
+
         if (isBlockquote(blockquote.nextSibling)) {
           let next = blockquote.nextSibling;
+
           while (next.firstChild) {
             blockquote.appendChild(next.firstChild);
           }
+
           blockquote.parentNode.removeChild(next);
           blockquotes.delete(next);
         } else {
@@ -201,6 +202,7 @@ class _Quoting {
       }
     }
   }
+
 }
 
 var Quoting = new _Quoting();

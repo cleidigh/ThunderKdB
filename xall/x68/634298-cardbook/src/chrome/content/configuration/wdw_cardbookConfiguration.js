@@ -387,6 +387,7 @@ if ("undefined" == typeof(wdw_cardbookConfiguration)) {
 				cardbookRepository.autocompleteRestrictSearch = document.getElementById('autocompleteRestrictSearchCheckBox').checked;
 				cardbookRepository.cardbookCardShortSearch = {};
 			}
+			cardbookRepository.cardbookPreferences.setBoolPref("extensions.cardbook.autocompleteRestrictSearch", document.getElementById('autocompleteRestrictSearchCheckBox').checked);
 			wdw_cardbookConfiguration.autocompleteRestrictSearch();
 		},
 

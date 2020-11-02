@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2281,
+    "average_daily_users": 2919,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-02-15T03:17:57Z",
     "current_version": {
-        "id": 2474477,
+        "id": 2474521,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/compact-headers/versions/2474477",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/compact-headers/versions/2474521",
         "files": [
             {
-                "id": 1017639,
-                "created": "2020-10-17T08:08:30Z",
-                "hash": "sha256:acd7eba8cb16eeed2202be6cfcc2d1103a752f7067a0ad4886baf5b5d42299e6",
+                "id": 1017683,
+                "created": "2020-10-25T19:33:30Z",
+                "hash": "sha256:e3c18ab1a13c7c2f2b0b4a435569ccc2bd046cdbba5ae7b90a475faeccfbda8b",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 6816,
+                "size": 6963,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017639/compact_headers-2.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017683/compact_headers-2.8-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -72,11 +72,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Double clicking the header area toggles compact mode.\nFixed a bug which made Replace Header Toolbar sometimes fail."
+            "en-US": "Fixed some bugs with double clicking the header area:\n- Double clicking was not disabled on uninstall or disable.\n- Non-ASCII characters were rendered garbled after reinstall.\nThunderbird may have to be restarted to clean up all errors."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/compact-headers/versions/2.7",
-        "version": "2.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/compact-headers/versions/2.8",
+        "version": "2.8"
     },
     "default_locale": "en-US",
     "description": {
@@ -99,7 +99,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-18T15:53:02Z",
+    "last_updated": "2020-10-25T23:07:10Z",
     "name": {
         "en-US": "Compact Headers"
     },
@@ -203,10 +203,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.4168,
-        "count": 16,
-        "average": 4.5,
-        "text_count": 16
+        "bayesian_average": 4.26212,
+        "count": 18,
+        "average": 4.3333,
+        "text_count": 18
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/compact-headers/reviews/",
     "requires_payment": false,

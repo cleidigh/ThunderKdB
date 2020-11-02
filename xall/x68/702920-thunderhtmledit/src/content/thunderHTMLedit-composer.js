@@ -1,3 +1,6 @@
+// Copyright (c) 2016, Jörg Knobloch. All rights reserved.
+// Ace Editor: Copyright (c) 2010, Ajax.org B.V. All rights reserved.
+
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");

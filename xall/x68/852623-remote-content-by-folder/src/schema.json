@@ -1,0 +1,168 @@
+[
+    {
+        "namespace":"rcmbf_optAPI",
+        "functions":[
+            {
+                "name":"LoadPrefs",
+                "type":"function",
+                "desription":"load the pref settings",
+                "async":true,
+                "parameters":[]
+            },
+            {
+                "name":"getIntPref",
+                "type":"function",
+                "desription":"get the IntPref value",
+                "async":true,
+                "parameters":
+                [
+                    {
+                        "name":"pref",
+                        "type":"string",
+                        "Description":"value"
+                    }
+
+                ]
+            },
+            {
+                "name":"getBoolPref",
+                "type":"function",
+                "desription":"get the BoolPref value",
+                "async":true,
+                "parameters":
+                [
+                    {
+                        "name":"pref",
+                        "type":"string",
+                        "Description":"value"
+                    }
+
+                ]
+            },
+            {
+                "name":"getStringPref",
+                "type":"function",
+                "desription":"get the StringPref value",
+                "async":true,
+                "parameters":
+                [
+                    {
+                        "name":"pref",
+                        "type":"string",
+                        "Description":"value"
+                    }
+        
+                ]
+            },
+            {
+                "name":"getCharPref",
+                "type":"function",
+                "desription":"get the CharPref value",
+                "async":true,
+                "parameters":
+                [
+                    {
+                        "name":"pref",
+                        "type":"string",
+                        "Description":"value"
+                    }
+
+                ]
+            },
+            {
+                "name":"setIntPref",
+                "type":"function",
+                "desription":"set the IntPref value",
+                "async":true,
+                "parameters":
+                [
+                    {
+                        "name":"pref",
+                        "type":"integer",
+                        "Description":"value"
+                    },
+                    {
+                        "name":"elt_value",
+                        "type":"integer",
+                        "Description":"value"
+                    }
+
+                ]
+            },
+            {
+                "name":"setBoolPref",
+                "type":"function",
+                "desription":"set the BoolPref value",
+                "async":true,
+                "parameters":
+                [
+                    {
+                        "name":"pref",
+                        "type":"string",
+                        "Description":"value"
+                    },
+                    {
+                        "name":"elt_value",
+                        "type":"boolean",
+                        "Description":"value"
+                    }
+
+                ]
+            },
+            {
+                "name":"setStringPref",
+                "type":"function",
+                "desription":"set the StringPref value",
+                "async":true,
+                "parameters":
+                [
+                    {
+                        "name":"pref",
+                        "type":"string",
+                        "Description":"value"
+                    },
+                    {
+                        "name":"elt_value",
+                        "type":"string",
+                        "Description":"value"
+                    }
+
+                ]
+            },
+            {
+                "name":"setCharPref",
+                "type":"function",
+                "desription":"set the CharPref value",
+                "async":true,
+                "parameters":
+                [
+                    {
+                        "name":"pref",
+                        "type":"string",
+                        "Description":"value"
+                    },
+                    {
+                        "name":"elt_value",
+                        "type":"string",
+                        "Description":"value"
+                    }
+        
+                ]
+            }
+
+        ]
+            },
+            {
+                "namespace":"rcmbf_bgrndAPI",
+                "functions":[
+                    {
+                        "name":"onLoad",
+                        "type":"function",
+                        "desription":"load and set all the things up",
+                        "async":true,
+                        "parameters":[]
+                    }
+
+                ]
+            }
+]

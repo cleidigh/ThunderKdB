@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/5/5389/5389259.png?modified=1579925536"
         }
     ],
-    "average_daily_users": 5112,
+    "average_daily_users": 4971,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,30 +19,32 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Folder%20Pane%20View%20Switcher%20add%2don&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted",
     "created": "2011-07-27T21:53:27Z",
     "current_version": {
-        "id": 2473547,
+        "id": 2474584,
         "compatibility": {
             "thunderbird": {
-                "max": "71.*",
-                "min": "68.0a1"
+                "max": "*",
+                "min": "69.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-pane-view-switcher/versions/2473547",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-pane-view-switcher/versions/2474584",
         "files": [
             {
-                "id": 1016691,
-                "created": "2020-03-17T14:22:02Z",
-                "hash": "sha256:7a5d1cfbfc7ce85c933e6d6b5ad13a4fd385be471381938c5608cbc219bb1db3",
-                "is_restart_required": true,
+                "id": 1017746,
+                "created": "2020-10-28T14:41:23Z",
+                "hash": "sha256:0d2b5c1c8bc9bf879cb98914bd8f6bc0883dfac00e7b755b87e052b5f3d757bd",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 40735,
+                "size": 25764,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016691/folder_pane_view_switcher-3.1.4-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017746/folder_pane_view_switcher-4.0.1-tb.xpi?src=",
+                "permissions": [
+                    "management"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -76,16 +78,16 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Remove Kickstarter campaign pop-up, since the campaign has succeeded and is almost over."
+            "en-US": "Remove obsolete files and code.\nRemove unneeded permissions."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-pane-view-switcher/versions/3.1.4",
-        "version": "3.1.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-pane-view-switcher/versions/4.0.1",
+        "version": "4.0.1"
     },
     "default_locale": "en-US",
     "description": {
-        "fr": "<strong>Ce module complémentaire ne sera plus pris en charge lorsque Thunderbird 78 sortira d'ici quelques mois, à moins qu'un nombre suffisant de personnes s'engage pour soutenir la poursuite de la maintenance du module et la rende possible. Pour montrer votre soutien, rendez-vous sur la page <a href=\"https://www.kickstarter.com/projects/jik/rewritten-add-ons-for-mozilla-thunderbirds-next-release\" rel=\"nofollow\">https://www.kickstarter.com/projects/jik/rewritten-add-ons-for-mozilla-thunderbirds-next-release</a> et contribuez. En bonus, les contributeurs Kickstarter de ce module et de mes autres modules complémentaires bénéficieront de ristournes significatives sur les licences des modules complémentaires.</strong>\n\nThis add-on adds arrow buttons at the top of the folder pane which rotate back and forth through the various available folder views\n\nThis add-on also causes Thunderbird to automatically switch to the \"All Folders\" view when you hover over the title above the folder tree for several seconds during a message drag &amp; drop operation, and switch back automatically after the drop. In the add-on preferences, you can set the delay before the view is switched.\n\nFinally, in the add-on preferences, you can select which views are accessible in the pop-up menu at the top of the folder list, and of those, which show up when you rotate through the views using the arrow buttons.\n\n<strong>Compatibility notes:</strong>\n\nIf you want to use this add-on with versions of Thunderbird prior to 49, you will need to download <a href=\"https://addons.mozilla.org/thunderbird/addon/folder-pane-view-switcher/versions/1.14\" rel=\"nofollow\">version 1.14</a>. This older version does not have the ability to control which views are enabled.\n\nThis add-on is incompatible with the \"Maximize Message Pane\" add-on.",
-        "en-US": "<strong>This add-on will no longer be supported when Thunderbird 78 is released in a few months, unless enough people commit to supporting continued maintenance of the add-on to make it feasible. To show your commitment, please visit <a href=\"https://www.kickstarter.com/projects/jik/rewritten-add-ons-for-mozilla-thunderbirds-next-release\" rel=\"nofollow\">https://www.kickstarter.com/projects/jik/rewritten-add-ons-for-mozilla-thunderbirds-next-release</a> and make a pledge. As a bonus, Kickstarter supporters of this and my other add-ons will receive significant discounts on add-on licenses.</strong>\n\nThis add-on adds arrow buttons at the top of the folder pane which rotate back and forth through the various available folder views\n\nThis add-on also causes Thunderbird to automatically switch to the \"All Folders\" view when you hover over the title above the folder tree for several seconds during a message drag &amp; drop operation, and switch back automatically after the drop. In the add-on preferences, you can set the delay before the view is switched.\n\nFinally, in the add-on preferences, you can select which views are accessible in the pop-up menu at the top of the folder list, and of those, which show up when you rotate through the views using the arrow buttons.\n\n<strong>Compatibility notes:</strong>\n\nIf you want to use this add-on with versions of Thunderbird prior to 49, you will need to download <a href=\"https://addons.mozilla.org/thunderbird/addon/folder-pane-view-switcher/versions/1.14\" rel=\"nofollow\">version 1.14</a>. This older version does not have the ability to control which views are enabled.\n\nThis add-on is incompatible with the \"Maximize Message Pane\" add-on."
+        "fr": "Current outstanding issues with workarounds are documented <a rel=\"nofollow\" href=\"https://github.com/Extended-Thunder/folder-pane-view-switcher/issues\">on Github</a>.\n\nThis add-on adds arrow buttons at the top of the folder pane which rotate back and forth through the various available folder views\n\nThis add-on also causes Thunderbird to automatically switch to the \"All Folders\" view when you hover over the title above the folder tree for several seconds during a message drag &amp; drop operation, and switch back automatically after the drop. In the add-on preferences, you can set the delay before the view is switched.\n\nFinally, in the add-on preferences, you can select which views are accessible in the pop-up menu at the top of the folder list, and of those, which show up when you rotate through the views using the arrow buttons.\n\n<strong>Compatibility notes:</strong>\n\nIf you want to use this add-on with versions of Thunderbird prior to 49, you will need to download <a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/folder-pane-view-switcher/versions/1.14\">version 1.14</a>. This older version does not have the ability to control which views are enabled.\n\nThis add-on is incompatible with the \"Maximize Message Pane\" add-on.",
+        "en-US": "Current outstanding issues for Thunderbird 78 with workarounds are documented <a rel=\"nofollow\" href=\"https://github.com/Extended-Thunder/folder-pane-view-switcher/issues\">on Github</a>.\n\nThis add-on adds arrow buttons at the top of the folder pane which rotate back and forth through the various available folder views\n\nThis add-on also causes Thunderbird to automatically switch to the \"All Folders\" view when you hover over the title above the folder tree for several seconds during a message drag &amp; drop operation, and switch back automatically after the drop. In the add-on preferences, you can set the delay before the view is switched.\n\nFinally, in the add-on preferences, you can select which views are accessible in the pop-up menu at the top of the folder list, and of those, which show up when you rotate through the views using the arrow buttons.\n\n<strong>Compatibility notes:</strong>\n\nIf you want to use this add-on with versions of Thunderbird prior to 49, you will need to download <a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/folder-pane-view-switcher/versions/1.14\">version 1.14</a>. This older version does not have the ability to control which views are enabled.\n\nThis add-on is incompatible with the \"Maximize Message Pane\" add-on."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-pane-view-switcher/edit",
@@ -93,16 +95,16 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": null,
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/331/331319-64.png?modified=1580419568",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/331/331319-64.png?modified=1604062394",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/331/331319-32.png?modified=1580419568",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/331/331319-64.png?modified=1580419568"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/331/331319-32.png?modified=1604062394",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/331/331319-64.png?modified=1604062394"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-03-17T14:36:07Z",
+    "last_updated": "2020-10-29T15:20:18Z",
     "name": {
         "en-US": "Folder Pane View Switcher"
     },
@@ -142,10 +144,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.75136,
-        "count": 50,
-        "average": 4.78,
-        "text_count": 50
+        "bayesian_average": 4.64604,
+        "count": 52,
+        "average": 4.6731,
+        "text_count": 52
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-pane-view-switcher/reviews/",
     "requires_payment": false,
@@ -167,10 +169,9 @@
     "weekly_downloads": 139,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2017-05-16T22:46:41Z"
         }

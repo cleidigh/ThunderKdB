@@ -195,11 +195,13 @@ class ListBox {
 var internalDomains;
 var exceptionalDomains;
 var exceptionalSuffixes;
+var exceptionalTerms;
 
 function startup() {
 	internalDomains = new ListBox(document.getElementById('group-list'), CA_CONST.INTERNAL_DOMAINS);
 	exceptionalDomains = new ListBox(document.getElementById('exceptional-domains'), CA_CONST.EXCEPTIONAL_DOMAINS);
 	exceptionalSuffixes = new ListBox(document.getElementById('exceptional-suffixes'), CA_CONST.EXCEPTIONAL_SUFFIXES);
+	exceptionalTerms = new ListBox(document.getElementById('exceptional-terms'), CA_CONST.EXCEPTIONAL_TERMS);
 
 	for (const element of document.querySelectorAll('[preference]')) {
 		const key = element.getAttribute('preference');

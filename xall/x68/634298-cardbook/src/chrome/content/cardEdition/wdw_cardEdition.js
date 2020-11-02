@@ -605,7 +605,9 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				}
 			}
 			if (document.getElementById("firstnameRow").hasAttribute('hidden') ||
-				document.getElementById("firstnameTextBox").hasAttribute('hidden'))	{
+				document.getElementById("firstnameTextBox").hasAttribute('hidden') ||
+				document.getElementById("lastnameRow").hasAttribute('hidden') ||
+				document.getElementById("lastnameTextBox").hasAttribute('hidden'))	{
 				document.getElementById('cardbookSwitchButtonUp').setAttribute('hidden', 'true');
 				document.getElementById('cardbookSwitchButtonDown').setAttribute('hidden', 'true');
 			} else {

@@ -1,6 +1,7 @@
 "use strict";
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { AddonManager } = ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
 var { jsmime } = ChromeUtils.import("resource:///modules/jsmime.jsm");
 
 function load(win) {
@@ -42,6 +43,14 @@ function template() {
 		} catch(e) { console.warn(e); }
 		
 	}
+	
+	AddonManager.getAddonByID("cardbook@vigneau.philippe").then(addon => {
+		win.mailmergeutils.template.cardbook = (addon && addon.isActive) ? true : false;
+	});
+	
+	AddonManager.getAddonByID("sendlater3@kamens.us").then(addon => {
+		win.mailmergeutils.template.sendlater = (addon && addon.isActive) ? true : false;
+	});
 	
 }
 
@@ -823,19 +832,21 @@ function compose(index) {
 		
 		let at = win.mailmergeutils.prefs.at;
 		at = win.mailmergeutils.substitute(at, object);
-		if(win.mailmergeutils.prefs.delivermode == "SaveAsDraft" && win.Sendlater3Util && at) {
+		if(win.mailmergeutils.prefs.delivermode == "SaveAsDraft" && win.mailmergeutils.template.sendlater && at) {
 			
 			try {
+				
+				let date = new Date(at);
 				
 				let recur = win.mailmergeutils.prefs.recur;
 				if(recur == "") {
 					recur = "none";
 				}
 				if(recur == "monthly") {
-					recur = "monthly" + " " + sl3dateparse.DateParse(at).getDate();
+					recur = "monthly" + " " + date.getDate();
 				}
 				if(recur == "yearly") {
-					recur = "yearly" + " " + sl3dateparse.DateParse(at).getMonth() + " " + sl3dateparse.DateParse(at).getDate();
+					recur = "yearly" + " " + date.getMonth() + " " + date.getDate();
 				}
 				
 				let every = win.mailmergeutils.prefs.every;
@@ -855,8 +866,7 @@ function compose(index) {
 				
 				try {
 					
-					compFields.setHeader("X-Send-Later-Uuid", win.Sendlater3Util.getInstanceUuid());
-					compFields.setHeader("X-Send-Later-At", win.Sendlater3Util.FormatDateTime(sl3dateparse.DateParse(at), true));
+					compFields.setHeader("X-Send-Later-At", date.toUTCString());
 					compFields.setHeader("X-Send-Later-Recur", recur + every + between + only);
 					
 				} catch(e) { console.warn(e); }

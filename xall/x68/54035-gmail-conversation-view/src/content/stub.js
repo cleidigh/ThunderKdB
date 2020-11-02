@@ -3,8 +3,8 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 /* import-globals-from reducer.js */
-/* global RTK, ReactDOM, React, ReactRedux, ConversationWrapper */
 
+/* global RTK, ReactDOM, React, ReactRedux, ConversationWrapper */
 const store = RTK.configureStore({
   reducer: conversationApp,
   // XXX bug #1461. Remove this code when that bug is resolved.
@@ -18,42 +18,27 @@ const store = RTK.configureStore({
   // checks.
   middleware: RTK.getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: [
-        "MSG_STREAM_MSG",
-        "MSG_STREAM_LOAD_FINISHED",
-        "REPLACE_CONVERSATION_DETAILS",
-      ],
-      ignoredPaths: ["summary.conversation"],
-    },
-  }),
+      ignoredActions: ["MSG_STREAM_MSG", "MSG_STREAM_LOAD_FINISHED", "REPLACE_CONVERSATION_DETAILS"],
+      ignoredPaths: ["summary.conversation"]
+    }
+  })
 });
-
 /* exported conversationDispatch */
+
 function conversationDispatch(...args) {
   store.dispatch(...args);
 }
 
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
-    // Call initalize to set up the `browser` variable before we do anything.
-    // Once we can potentially load in a WebExtension scope, then we should
-    // be able to remove this.
-    initialize()
-      .then(() => {
-        const conversationContainer = document.getElementById(
-          "conversationWrapper"
-        );
-        ReactDOM.render(
-          React.createElement(
-            ReactRedux.Provider,
-            { store },
-            React.createElement(ConversationWrapper)
-          ),
-          conversationContainer
-        );
-      })
-      .catch(console.error);
-  },
-  { once: true }
-);
+document.addEventListener("DOMContentLoaded", () => {
+  // Call initalize to set up the `browser` variable before we do anything.
+  // Once we can potentially load in a WebExtension scope, then we should
+  // be able to remove this.
+  initialize().then(() => {
+    const conversationContainer = document.getElementById("conversationWrapper");
+    ReactDOM.render(React.createElement(ReactRedux.Provider, {
+      store
+    }, React.createElement(ConversationWrapper)), conversationContainer);
+  }).catch(console.error);
+}, {
+  once: true
+});

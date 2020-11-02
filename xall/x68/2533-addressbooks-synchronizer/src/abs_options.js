@@ -44,7 +44,8 @@ debug('entered');
 	try {
 		prefs=await messenger.storage.local.get(null);
 debug('prefs loaded');
-for (let [key, val] of Object.entries(prefs)) {debug('pref: '+key+'->'+val+'\n'); }
+//for (let [key, val] of Object.entries(prefs)) {debug('pref: '+key+'->'+val+'\n'); }
+debug('prefs='+JSON.stringify(prefs));
 	} catch(e) {
 		// if options tab is visible on startup, getting prefs fails
 debug('failed to load prefs, wait...');
@@ -120,7 +121,7 @@ debug('splitURI: '+value+' -> '+JSON.stringify(uri));
 				p['timedupload']=false;
 			}
 		}
-
+debug('store '+JSON.stringify(p));
 		await messenger.storage.local.set(p);
     messenger.abs.setPrefs(prefs, pref);
 

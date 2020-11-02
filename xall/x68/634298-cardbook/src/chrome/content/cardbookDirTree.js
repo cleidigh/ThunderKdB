@@ -28,8 +28,8 @@ if ("undefined" == typeof(cardbookDirTree)) {
 				else if (column.id == "accountType") return this.visibleData[idx][this.COL_TYPE];
 				else if (column.id == "accountEnabled") return this.visibleData[idx][this.COL_ENABLED];
 				else if (column.id == "accountRoot") return this.visibleData[idx][this.COL_ROOT];
-				else if (column.id == "accountStatusCheckbox") return true;
-				else if (column.id == "accountTypeCheckbox") return true;
+				else if (column.id == "accountStatusCheckbox") return "";
+				else if (column.id == "accountTypeCheckbox") return "";
 				else if (column.id == "dummyForScroll") return true;
 			} else {
 				return false;
@@ -37,8 +37,8 @@ if ("undefined" == typeof(cardbookDirTree)) {
 		},
 		getCellValue: function(idx, column) {
 			if (column.id == "accountEnabled") return this.visibleData[idx][this.COL_ENABLED];
-			else if (column.id == "accountStatusCheckbox") return true;
-			else if (column.id == "accountTypeCheckbox") return true;
+			else if (column.id == "accountStatusCheckbox") return "";
+			else if (column.id == "accountTypeCheckbox") return "";
 			else if (column.id == "dummyForScroll") return true;
 		},
 		setCellValue: function(idx, column) {

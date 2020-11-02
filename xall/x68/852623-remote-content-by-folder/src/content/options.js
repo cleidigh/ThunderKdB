@@ -5,15 +5,16 @@ var RCBFOptions = {
         ["rcbf-block-box", "extensions.remote-content-by-folder.block_regexp", "string"],
         ["rcbf-block-first-pref", "extensions.remote-content-by-folder.block_first", "bool"],
     ],
-        
-    LoadPrefs: function() {
-        if (! RCBFOptions.prefBranch) {
+
+    LoadPrefs: async function() {
+      /*  if (! RCBFOptions.prefBranch) {
             RCBFOptions.prefBranch =
                 Components.classes["@mozilla.org/preferences-service;1"]
                 .getService(Components.interfaces.nsIPrefBranch);
-        }
+        }   */
 
-        RCBFOptions.mapping.forEach(function(mapping) {
+        browser.rcmbf_optAPI.LoadPrefs();
+        RCBFOptions.mapping.forEach(async function(mapping) {
             var elt_id = mapping[0];
             var elt = document.getElementById(elt_id);
             var pref = mapping[1];
@@ -21,16 +22,16 @@ var RCBFOptions = {
             var pref_func;
             switch (pref_type) {
             case "int":
-                elt.value = RCBFOptions.prefBranch.getIntPref(pref);
+                elt.value = await browser.rcmbf_optAPI.getIntPref(pref);
                 break;
             case "bool":
-                elt.checked = RCBFOptions.prefBranch.getBoolPref(pref);
+                elt.checked = await browser.rcmbf_optAPI.getBoolPref(pref);
                 break;
             case "string":
-                elt.value = RCBFOptions.prefBranch.getStringPref(pref);
+                elt.value = await browser.rcmbf_optAPI.getStringPref(pref);
                 break;
             case "char":
-                elt.value = RCBFOptions.prefBranch.getCharPref(pref);
+                elt.value = await browser.rcmbf_optAPI.getCharPref(pref);
                 break;
             default:
                 throw new Error("Unrecognized pref type: " + pref_type);
@@ -47,16 +48,16 @@ var RCBFOptions = {
             var pref_func;
             switch (pref_type) {
             case "int":
-                RCBFOptions.prefBranch.setIntPref(pref, elt.value);
+                browser.rcmbf_optAPI.setIntPref(pref, elt.value);
                 break;
             case "bool":
-                RCBFOptions.prefBranch.setBoolPref(pref, elt.checked);
+                browser.rcmbf_optAPI.setBoolPref(pref, elt.checked);
                 break;
             case "string":
-                RCBFOptions.prefBranch.setStringPref(pref, elt.value);
+                browser.rcmbf_optAPI.setStringPref(pref, elt.value);
                 break;
             case "char":
-                RCBFOptions.prefBranch.setCharPref(pref, elt.value);
+                browser.rcmbf_optAPI.setCharPref(pref, elt.value);
                 break;
             default:
                 throw new Error("Unrecognized pref type: " + pref_type);
@@ -66,11 +67,14 @@ var RCBFOptions = {
     },
 
     SetOnLoad: function() {
+
+        var btn_save = document.getElementById("btn_save");
+        var btn_cancel= document.getElementById("btn_cancel");
         window.removeEventListener("load", RCBFOptions.SetOnLoad, false);
-        document.addEventListener("dialogextra1", function(event) {
+        btn_cancel.addEventListener("click", function(event) {
             RCBFOptions.LoadPrefs();
         });
-        document.addEventListener("dialogaccept", function(event) {
+        btn_save.addEventListener("click", function(event) {
             if (! RCBFOptions.ValidatePrefs())
                 event.preventDefault();
         });

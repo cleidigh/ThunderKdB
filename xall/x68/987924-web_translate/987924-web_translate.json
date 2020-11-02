@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12626/12626983.png?modified=1599932965"
         }
     ],
-    "average_daily_users": 56,
+    "average_daily_users": 283,
     "categories": {
         "thunderbird": [
             "language-support",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/fastaddons/8.88",
     "created": "2020-10-11T14:25:19Z",
     "current_version": {
-        "id": 2474497,
+        "id": 2474526,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2474497",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2474526",
         "files": [
             {
-                "id": 1017659,
-                "created": "2020-10-22T09:30:56Z",
-                "hash": "sha256:3fc51a6a1f72538765f59cc71348caea37c4271bc7c7d905db5ef552caa88dc4",
+                "id": 1017688,
+                "created": "2020-10-26T13:12:34Z",
+                "hash": "sha256:5a6de3fa56bc7d99424ff0afbe3ca385da40038e356ba48d40e6837219a5092e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5070246,
+                "size": 5120958,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017659/web_translate-2.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017688/web_translate-2.2-tb.xpi?src=",
                 "permissions": [
                     "messagesModify",
                     "webRequest",
@@ -51,6 +51,12 @@
                     "https://translate.google.cn/*",
                     "https://bing.com/*",
                     "https://www.bing.com/*",
+                    "https://deepl.com/*",
+                    "https://www.deepl.com/*",
+                    "https://translate.yandex.ru/*",
+                    "https://translate.yandex.com/*",
+                    "https://www.translate.yandex.ru/*",
+                    "https://www.translate.yandex.com/*",
                     "https://fanyi.baidu.com/*"
                 ]
             }
@@ -64,15 +70,15 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "- fixed modal window being displayed outside of visible area (if was moved and window size changed)\n- fixed visual issues (padding around translator and links color)\n- addon is now translated into MANY languages, please report translation issues! Thank you :)\n- optimized build for smaller and faster speed!\n- added link to GitHub to report issues\n- toolbar icon title in Thunderbird can be now customized (or set to empty)"
+            "en-US": "- added Yandex translate\n- added DeepL translator\n- sidebar size can be now changed\n- fixed translations and added more translations\n- fixed settings page (many small issues)\n- fixed Firefox Fission bug for non-dark more (dark mode is still broken)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/2.1",
-        "version": "2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/2.2",
+        "version": "2.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Translator for your Email!</b>\nAvailable also for your <a rel=\"nofollow\" href=\"https://addons.mozilla.org/addon/web_translate/\">Firefox web browser</a>.\n\n\n<b>Top features:</b>\n<ul>    <li>selected text translation (with context menu)</li>    <li>whole page translation</li>    <li>dark mode!</li>    <li>supports Google Translate / Microsoft Bing Translator / Baidu Translator</li>    <li>No Ads!</li></ul>\n\n<b>Privacy and permissions:</b>\n<ul>    <li>permission \"Access your data for all websites\" in only used to block headers for Google / Microsoft / Bing domains to allow showing them in iframe (pop-up window)</li></ul>\n\n<b>Support independent developer:</b>\n<ul>    <li>        I'm full-time add-on developer and your donations is my only income. There are no ads in my add-ons!\n        <strong>Please support my work by:\n            <ul>                <li><a rel=\"nofollow\" href=\"https://ko-fi.com/fastaddons\">Buy me a coffee</a></li>                <li><a rel=\"nofollow\" href=\"https://paypal.me/fastaddons/8.88\">PayPal donation</a></li>                <li><a rel=\"nofollow\" href=\"https://liberapay.com/juraj.masiar/\">Be my Patron</a></li>            </ul>        </strong>\n        <b>Thank you! :)</b>\n        Your donation will help me keep this add-on working in future versions of Firefox!\n    </li></ul>\n\n<b>Recently added features:</b>\n<ul>    <li><a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/web_translate/versions/\">The list of changes in last versions is available here</a></li></ul>\n\nTags: baidu, bing, dark, email, google, lang, language, microsoft, page, preklad, prekladač, s3, selection, text, traducteur, translate, translator, übersetzer, 翻译"
+        "en-US": "<b>Translator for your Email!</b>\nAvailable also for your <a rel=\"nofollow\" href=\"https://addons.mozilla.org/addon/web_translate/\">Firefox web browser</a>.\n\n\n<b>Top features:</b>\n<ul>    <li>selected text translation (with context menu)</li>    <li>whole page translation</li>    <li>dark mode!</li>    <li>No Ads!</li></ul>\n\n<b>Supported translation providers:</b>\n<ul>    <li>Google Translate</li>    <li>Microsoft Translator</li>    <li>DeepL Translator</li>    <li>Yandex Translate</li>    <li>Яндекс Переводчик</li>    <li>Google 翻译</li>    <li>百度翻译 (Baidu Translator)</li></ul>\n\n<b>Privacy and permissions:</b>\n<ul>    <li>permission \"Access your data for all websites\" in only used to block headers for Google / Microsoft / Bing domains to allow showing them in iframe (pop-up window)</li></ul>\n\n<b>Support independent developer:</b>\n<ul>    <li>        I'm full-time add-on developer and your donations is my only income. There are no ads in my add-ons!\n        <strong>Please support my work by:\n            <ul>                <li><a rel=\"nofollow\" href=\"https://ko-fi.com/fastaddons\">Buy me a coffee</a></li>                <li><a rel=\"nofollow\" href=\"https://paypal.me/fastaddons/8.88\">PayPal donation</a></li>                <li><a rel=\"nofollow\" href=\"https://liberapay.com/juraj.masiar/\">Be my Patron</a></li>            </ul>        </strong>\n        <b>Thank you! :)</b>\n        Your donation will help me keep this add-on working in future versions of Firefox!\n    </li></ul>\n\n<b>Recently added features:</b>\n<ul>    <li><a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/web_translate/versions/\">The list of changes in last versions is available here</a></li></ul>\n\nTags: baidu, bing, dark, email, google, lang, language, microsoft, page, preklad, prekladač, s3, selection, text, traducteur, translate, translator, übersetzer, 翻译"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/edit",
@@ -91,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-10-22T09:35:03Z",
+    "last_updated": "2020-10-26T13:15:03Z",
     "name": {
         "el": "Web Translate",
         "fr": "Web Translate",

@@ -1,25 +1,15 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
-
 export class UIHandler {
   init() {
     browser.commands.onCommand.addListener(this.onKeyCommand.bind(this));
-    browser.convContacts.onColumnHandler.addListener(
-      () => {},
-      browser.i18n.getMessage("between.columnName"),
-      browser.i18n.getMessage("between.columnTooltip"),
-      browser.i18n.getMessage("message.meBetweenMeAndSomeone"),
-      browser.i18n.getMessage("message.meBetweenSomeoneAndMe"),
-      browser.i18n.getMessage("header.commaSeparator"),
-      browser.i18n.getMessage("header.andSeparator")
-    );
+    browser.convContacts.onColumnHandler.addListener(() => {}, browser.i18n.getMessage("between.columnName"), browser.i18n.getMessage("between.columnTooltip"), browser.i18n.getMessage("message.meBetweenMeAndSomeone"), browser.i18n.getMessage("message.meBetweenSomeoneAndMe"), browser.i18n.getMessage("header.commaSeparator"), browser.i18n.getMessage("header.andSeparator"));
   }
 
   onKeyCommand(command) {
     if (command == "quick_compose") {
-      console.warn("Quick Compose is currently disabled");
-      // The title/description for this pref is really confusing, we should
+      console.warn("Quick Compose is currently disabled"); // The title/description for this pref is really confusing, we should
       // reconsider it when we re-enable.
       // if (Prefs.compose_in_tab) {
       //   window.openTab("chromeTab", {
@@ -35,4 +25,5 @@ export class UIHandler {
       // }
     }
   }
+
 }

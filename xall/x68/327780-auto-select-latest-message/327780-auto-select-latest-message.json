@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/630/630411.png?modified=1512001982"
         }
     ],
-    "average_daily_users": 821,
+    "average_daily_users": 875,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2011-07-09T18:53:41Z",
     "current_version": {
-        "id": 2472763,
+        "id": 2474576,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "70.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-select-latest-message/versions/2472763",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-select-latest-message/versions/2474576",
         "files": [
             {
-                "id": 1015861,
-                "created": "2019-10-20T04:01:26Z",
-                "hash": "sha256:a156682cb464c0f350f4b0f97028f0b1cc4e52692b0e8dc12db79db9ba4b9be4",
-                "is_restart_required": true,
+                "id": 1017738,
+                "created": "2020-10-27T04:00:59Z",
+                "hash": "sha256:fc18ce2a2fd6417905eddd8b22338a1826124759e2ae1ec80460af46f2ca8ad9",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 9069,
+                "size": 10080,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015861/auto_select_latest_message_restartless-2.3.0b1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017738/auto_select_latest_message-3.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,19 +71,17 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "+ TB68 support"
+            "en-US": "! options are not properly disabled\n! incomplete clean up when addon gets disabled"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-select-latest-message/versions/2.3.0b1",
-        "version": "2.3.0b1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-select-latest-message/versions/3.0.1",
+        "version": "3.0.1"
     },
     "default_locale": "en-US",
     "description": {
         "en-US": "Basically this extension brings OutlookExpress-like feature that selects and displays latest received message on startup.\nWhen messages sorted by date and sorted ascendantly (oldest on top), it will scroll to the bottom and display the last message. In all other sortings first message on top will be showed.\n\nThis feature was once available in Thunderbird v1, but for some reason was removed, leaving useless \"startup page\" or blank page feature."
     },
-    "developer_comments": {
-        "en-US": "Suggestions and bug reports please send to the provided email on the right."
-    },
+    "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/auto-select-latest-message/edit",
     "guid": "autoselectlatestmessage@vano",
     "has_eula": false,
@@ -98,17 +96,17 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-20T10:21:17Z",
+    "last_updated": "2020-10-28T11:03:24Z",
     "name": {
         "en-US": "Auto Select Latest Message"
     },
     "previews": [],
-    "public_stats": false,
+    "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.15642,
-        "count": 24,
-        "average": 4.2083,
-        "text_count": 24
+        "bayesian_average": 4.22046,
+        "count": 26,
+        "average": 4.2692,
+        "text_count": 26
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/auto-select-latest-message/reviews/",
     "requires_payment": false,
@@ -121,7 +119,9 @@
     "support_email": {
         "en-US": "support.auto-select-latest-message.uniqueid0dfa3@vano.org"
     },
-    "support_url": null,
+    "support_url": {
+        "en-US": "https://github.com/vanowm/TB-Auto-Select-Latest-Message"
+    },
     "tags": [
         "firefox57"
     ],
@@ -130,10 +130,14 @@
     "weekly_downloads": 34,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-10-25T21:11:54Z",
+            "comp78pv_version": "3.0.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-08-03T04:20:42Z"
         }

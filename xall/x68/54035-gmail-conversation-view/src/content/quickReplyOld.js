@@ -6,15 +6,15 @@
             registerQuickReplyDocumentCommands */
 
 /* global $, isQuickCompose, scrollNodeIntoView, Log:true, newComposeSessionByClick */
-
-const { isAccel } = ChromeUtils.import(
-  "chrome://conversations/content/modules/stdlib/misc.js"
-);
+const {
+  isAccel
+} = ChromeUtils.import("chrome://conversations/content/modules/stdlib/misc.js");
 
 function makeEditable(aIframe, aMakeEditable) {
   // Setup the iframe to be editable in htmlmail mode (for blockquotes)
   let contentWin = aIframe.contentWindow;
   let session = contentWin.docShell.editingSession;
+
   if (aMakeEditable) {
     session.makeWindowEditable(contentWin, "htmlmail", false, true, false);
   } else {
@@ -27,6 +27,7 @@ function showQuickReply() {
   $(this).addClass("selected");
   $(this).siblings().addClass("invisible");
   $(this).closest(".messageFooter").find(".footerActions").hide();
+
   if (isQuickCompose) {
     $(".replyHeader, .replyFooter").show();
   } else {
@@ -52,7 +53,6 @@ function hideQuickReply() {
     $("ul.inputs li").removeClass("selected");
     $("ul.inputs li").removeClass("invisible");
     $(".quickReply").closest(".messageFooter").find(".footerActions").show();
-
     var textarea = $(".textarea.selected");
     makeEditable(textarea.get(0), false);
     textarea.addClass("ease");
@@ -69,8 +69,10 @@ function registerQuickReplyEventListeners() {
     if ($(this).hasClass("selected")) {
       return;
     }
+
     showQuickReply.call(this);
     let type;
+
     if ($(this).hasClass("reply")) {
       type = "reply";
     } else if ($(this).hasClass("replyAll")) {
@@ -78,46 +80,49 @@ function registerQuickReplyEventListeners() {
     } else {
       Log.assert(false, "There's only two type of textareas");
     }
+
     Log.debug("New quick reply (event listener) →", type);
     newComposeSessionByClick(type);
-  });
+  }); // Autoresize sorta-thingy.
 
-  // Autoresize sorta-thingy.
   let textarea = document.querySelector(".textarea");
   let lineHeight = parseInt(window.getComputedStyle(textarea).lineHeight);
-  let getHeight = (x) => parseInt(window.getComputedStyle(x).height);
+
+  let getHeight = x => parseInt(window.getComputedStyle(x).height);
+
   $(".quickReply .textarea").keypress(function (event) {
     if (event.which == KeyEvent.DOM_VK_RETURN) {
-      let scrollHeight = textarea.contentDocument.body.scrollHeight;
-      // Only grow if the contents of the reply don't fit into the viewport.
+      let scrollHeight = textarea.contentDocument.body.scrollHeight; // Only grow if the contents of the reply don't fit into the viewport.
+
       Log.debug(scrollHeight, getHeight(textarea));
+
       if (scrollHeight > getHeight(textarea)) {
         // The resulting height if we do perform the resizing (12px is for the
         // margins).
-        let totalTargetHeight = getHeight(textarea) + 12 + lineHeight;
-        // The total available vertical height (44px is for the top header, 5px
+        let totalTargetHeight = getHeight(textarea) + 12 + lineHeight; // The total available vertical height (44px is for the top header, 5px
         // is for good measure)
+
         let availableHeight = window.innerHeight - 49;
-        Log.debug(totalTargetHeight, lineHeight, availableHeight);
-        // We only grow the textarea if it doesn't exceed half of the available
+        Log.debug(totalTargetHeight, lineHeight, availableHeight); // We only grow the textarea if it doesn't exceed half of the available
         // vertical height.
+
         if (totalTargetHeight <= availableHeight / 2) {
           Log.debug("Growing to", getHeight(textarea) + lineHeight + "px");
-          textarea.style.height = getHeight(textarea) + lineHeight + "px";
+          textarea.style.height = getHeight(textarea) + lineHeight + "px"; // Scroll if we grew the reply area into overflow
 
-          // Scroll if we grew the reply area into overflow
           let pageTop = window.pageYOffset;
           let pageBottom = pageTop + window.innerHeight;
-          let textareaBottom =
-            $(".textarea").offset().top + $(".textarea").outerHeight();
-          // 20px for good measure...
+          let textareaBottom = $(".textarea").offset().top + $(".textarea").outerHeight(); // 20px for good measure...
+
           let diff = pageBottom - textareaBottom - 20;
           Log.debug(pageBottom, textareaBottom, diff);
+
           if (diff < 0) {
             window.scrollTo(0, pageTop - diff);
           }
         }
       }
+
       Log.debug("---");
     }
   });
@@ -131,9 +136,11 @@ function registerQuickReplyDocumentCommands() {
       if (isAccel(event) && event.which == "b".charCodeAt(0)) {
         doc.execCommand("bold");
       }
+
       if (isAccel(event) && event.which == "i".charCodeAt(0)) {
         doc.execCommand("italic");
       }
+
       if (isAccel(event) && event.which == "u".charCodeAt(0)) {
         doc.execCommand("underline");
       }

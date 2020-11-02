@@ -39,7 +39,7 @@ class PlikConnection {
      * Set the account's configured state
      */
     async updateConfigured() {
-        browser.cloudFile.updateAccount(this.accountId, {
+        messenger.cloudFile.updateAccount(this.accountId, {
             configured: true,
         });
         return this;
@@ -52,7 +52,7 @@ class PlikConnection {
         const conf = await this._parseJsonResponse(await this._talkToPlik(this.serverUrl + 'config'));
 
         if (conf.maxFileSize) {
-            browser.cloudFile.updateAccount(this.accountId, { uploadSizeLimit: conf.maxFileSize, });
+            messenger.cloudFile.updateAccount(this.accountId, { uploadSizeLimit: conf.maxFileSize, });
         }
 
         ['maxTTL', 'oneShot', 'protectedByPassword', 'removable',].forEach(
@@ -131,6 +131,7 @@ class PlikConnection {
 
         const fetchInfo = {
             method: "POST",
+            headers: this.ULToken ? { "X-PlikToken": this.ULToken, } : {},
             body: JSON.stringify(body),
         };
 

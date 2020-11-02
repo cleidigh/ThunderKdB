@@ -1,7 +1,6 @@
 const {classes: Cc, interfaces: Ci, utils: Cu} = Components,
 			PREF_BRANCH = "extensions.autoselectlatestmessage.";
-Cu.import("resource://gre/modules/Services.jsm");
-Cu.import("resource://gre/modules/AddonManager.jsm");
+
 var self = this,
 		width = 0,
 		height = 0,
@@ -10,7 +9,7 @@ var self = this,
 			sel: 1,
 			focus: true
 		},
-		log = console.log;
+		log = console.log.bind(console);
 
 function include(path)
 {
@@ -19,21 +18,24 @@ function include(path)
 
 function main(window)
 {
+
 	if (!"FolderDisplayListenerManager" in window)
 		return;
 
 	let document = window.document,
-			func = {
-		selectMessageDelayed: function()
+			FolderDisplayListenerManager_listener = {
+
+		selectMessageDelayed: function FolderDisplayListenerManager_listener_selectMessageDelayed()
 		{
 			//the timer needed to allow time to restore previous selection if any
-			Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer).init({observe: function()
+			Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer).init({observe: function timer_observer()
 				{
-					func.selectMessage();
+					FolderDisplayListenerManager_listener.selectMessage();
 				}
 			}, 100, Ci.nsITimer.TYPE_ONE_SHOT);
 		},
-		selectMessage: function()
+
+		selectMessage: function FolderDisplayListenerManager_listener_selectMessage()
 		{
 			var sel = pref.getIntPref("sel");
 			if (!sel)
@@ -62,7 +64,7 @@ function main(window)
 			}
 		},
 
-		isTextbox: function(el)
+		isTextbox: function FolderDisplayListenerManager_listener_isTextbox(el)
 		{
 			if (!el)
 				return false;
@@ -73,27 +75,31 @@ function main(window)
 			return this.isTextbox(el.parentNode);
 		},
 
-		onMessagesLoaded: function(aAll)
+		onMessagesLoaded: function FolderDisplayListenerManager_listener_onMessagesLoaded(aAll)
 		{
-			func.selectMessageDelayed();
+			FolderDisplayListenerManager_listener.selectMessageDelayed();
 		},
 
-		onMakeActive: function()
+		onMakeActive: function FolderDisplayListenerManager_listener_onMakeActive()
 		{
-			func.selectMessageDelayed();
+			FolderDisplayListenerManager_listener.selectMessageDelayed();
 		},
-	};
-	window.FolderDisplayListenerManager.registerListener(func);
-	listen(window, window, "unload", unload(function(){
+	}; //FolderDisplayListenerManager_listener
+
+	window.FolderDisplayListenerManager.registerListener(FolderDisplayListenerManager_listener);
+
+	listen(window, window, "unload", unload(function()
+	{
 		if ("FolderDisplayListenerManager" in window)
-			window.FolderDisplayListenerManager.unregisterListener(func)
-		}), false);
-	func.selectMessage();
+			window.FolderDisplayListenerManager.unregisterListener(FolderDisplayListenerManager_listener)
+	}), false);
 
-	let tabMon = {
+	FolderDisplayListenerManager_listener.selectMessage();
+
+	let tabmail = document.getElementById("tabmail"),
+			tabMon = {
 		monitorName: "aslmTabmon",
-		onTabTitleChanged(){},
-		onTabOpened(tab, aFirstTab, aOldTab)
+		onTabOpened: function tabMan_onTabOpened(tab, aFirstTab, aOldTab)
 		{
 			if (tab.mode.name != "preferencesTab")
 				return;
@@ -101,7 +107,6 @@ function main(window)
 			if (tab.browser.contentWindow.___autoSLM)
 				return;
 
-//log("onTabOpened", arguments);
 			tab.browser.addEventListener("paneSelected", function runOnce (event)
 			{
 				tab.browser.removeEventListener("paneSelected", runOnce, false);
@@ -114,19 +119,13 @@ function main(window)
 			});
 
 		},
-		onTabPersist()
-		{
-		},
-		onTabRestored()
-		{
-		},
-		onTabClosing() {
-		},
-		onTabSwitched(tab)
-		{},
+		onTabTitleChanged: function tabMan_onTabTitleChanged(){},
+		onTabPersist: function tabMan_onTabPersist(){},
+		onTabRestored: function tabMan_onTabRestored(){},
+		onTabClosing: function tabMan_onTabClosing(){},
+		onTabSwitched: function tabMan_onTabSwitched(tab){},
 	};
 
-	let tabmail = document.getElementById("tabmail");
 	if (tabmail)
 	{
 		if (tabmail.tabTypes.preferencesTab)
@@ -143,15 +142,15 @@ function main(window)
 		});
 	}
 
-}
+} //main()
 
 function disableAll(obj, r, s)
 {
+	if (obj.hasAttribute && obj.hasAttribute("autoSLM"))
+		return true;
+
 	if (!s && obj.hasAttribute && obj.hasAttribute("autoSLM"))
 		s = true;
-
-	if (obj.tagName == "button" || (obj.hasAttribute && obj.hasAttribute("autoSLM")))
-		return true;
 
 	if (s || typeof(r) == "undefined")
 	{
@@ -305,7 +304,6 @@ function setDefaultPrefs(prefs, prefix)
 	}
 	return prefs;
 }
-
 function fixpref(window, r, s)
 {
 	let doc = window.document;
@@ -319,7 +317,7 @@ function fixpref(window, r, s)
 	{
 		function addElement(el, parent, type)
 		{
-			el.setAttribute("autoSLM", "");
+			el.setAttribute("autoSLM", '');
 			type = type || "appendChild";
 
 			if (type == "insertBefore")
@@ -332,81 +330,65 @@ function fixpref(window, r, s)
 				el.parentNode.removeChild(el);
 			}), false);
 		}
+
+		function prefChange(e, val)
+		{
+			if (e && (e.target.id != "autoSLM" || e.attrName != "value"))
+				return;
+
+			if (e && "newValue" in e)
+				val = ~~e.newValue;
+			else
+				val = pref.getIntPref("sel");
+
+			disableAll(startBox.parentNode.parentNode, val ? true : false);
+			try
+			{
+				doc.getElementById("autoSLM_checkbox").disabled = !val;
+			}
+			catch (e){}
+		}
+
 		if (!r && !doc.getElementById("autoSLM_box"))
 		{
 			let h = startBox.parentNode.parentNode.clientHeight,
 					w = startBox.parentNode.parentNode.clientWidth,
-					checkbox = doc.createElement("checkbox"),
-					menupopup = doc.createElement("menupopup"),
-					menulist = doc.createElement("menulist"),
-					box = doc.createElement("hbox"),
-					menuitem = doc.createElement("menuitem"),
-					p = doc.createElement("preference");
+					checkbox = doc.createXULElement("checkbox"),
+					menupopup = doc.createXULElement("menupopup"),
+					menulist = doc.createXULElement("menulist"),
+					box = doc.createXULElement("hbox"),
+					menuitem = doc.createXULElement("menuitem");
 
-			function prefChange()
-			{
-				disableAll(startBox.parentNode.parentNode, pref.getIntPref("sel") ? true : false);
-			}
 			menulist.id = "autoSLM";
 			menulist.setAttribute("label", "Select first unread message only");
 			menulist.setAttribute("preference", PREF_BRANCH + "sel");
-			menulist.addEventListener("command", prefChange, true);
-			window.prefChange = prefChange;
-			menulist.setAttribute("onsyncfrompreference", "prefChange(event)");
+			menulist.addEventListener("DOMAttrModified", prefChange, false);
+			menulist.value = pref.getIntPref("sel");
 			box.setAttribute("flex", false);
 			box.id = "autoSLM_box";
 			menuitem.setAttribute("value", 0);
 			menuitem.setAttribute("label", "Default");
 			menupopup.appendChild(menuitem);
-			menuitem = doc.createElement("menuitem");
+			menuitem = doc.createXULElement("menuitem");
 			menuitem.setAttribute("value", 1);
 			menuitem.setAttribute("label", "Newest message");
 			menupopup.appendChild(menuitem);
-			menuitem = doc.createElement("menuitem");
+			menuitem = doc.createXULElement("menuitem");
 			menuitem.setAttribute("value", 2);
 			menuitem.setAttribute("label", "First unread message");
 			menupopup.appendChild(menuitem);
 			menulist.appendChild(menupopup);
 			box.appendChild(menulist);
 
-			addElement(box, startBox.parentNode, "insertBefore");
-
 			checkbox.id = "autoSLM_checkbox";
 			checkbox.setAttribute("label", "Auto focus on messages list");
 			checkbox.setAttribute("preference", PREF_BRANCH + "focus");
-			addElement(checkbox, box);
+			box.appendChild(checkbox);
 
-			let ps = doc.getElementsByTagName("preferences");
-			if (ps.length)
-			{
-				ps = ps[0];
-			}
-			else
-			{
-				ps = doc.createElement("prefrences");
-				startBox.appendChild(ps);
-			}
-			addElement(p, ps);
-
-			p.id = PREF_BRANCH + "sel";
-			p.setAttribute("type", "int");
-			p.setAttribute("name", p.id);
-			addElement(p, ps);
-
-			p = doc.createElement("preference");
-			p.id = PREF_BRANCH + "focus";
-			p.setAttribute("type", "bool");
-			p.setAttribute("name", p.id);
-			addElement(p, ps);
+			addElement(box, startBox.parentNode, "insertBefore");
 
 			width = startBox.parentNode.parentNode.clientWidth - w;
 			height = startBox.parentNode.parentNode.clientHeight - h;
-//			window.resizeBy(width, height);
-			try
-			{
-				doc.getElementById("MailPreferences").showPane(doc.getElementById("MailPreferences").currentPane);
-			}
-			catch(e){}
 			try
 			{
 				let p = [
@@ -424,14 +406,15 @@ function fixpref(window, r, s)
 		}
 		prefChange()
 		if (!r)
-			listen(window, window, "unload", unload(function(){
+			listen(window, window, "unload", unload(function()
+			{
 				disableAll(startBox.parentNode.parentNode);
-//				window.resizeBy(-width, -height);
 			}), false);
 	}
 	else if (!s && doc.getElementById("paneGeneral"))
 		listen(window, doc.getElementById("paneGeneral"), "paneload", function() {fixpref(window, r, true)}, true);
-}
+
+} //fixpref()
 
 function startup(data, reason)
 {

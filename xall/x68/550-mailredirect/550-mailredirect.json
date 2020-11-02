@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 27940,
+    "average_daily_users": 26213,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -73,9 +73,9 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "The Mailredirect extension for Mozilla Thunderbird and Mozilla SeaMonkey adds the ability to redirect one or more email messages to one or more recipients.\nThe feature of email redirecting is also known as remailing or resending.\nThe extension is an answer for <a href=\"https://bugzil.la/12916\" title=\"Bug 12916 - Allow bounce/redirect of mail messages\" rel=\"nofollow\">bug 12916</a>\n\nNot all email providers support redirection of messages. Most notably Microsoft does not support it at the moment, probably as a measure against SPAM. I think they do this in error, and also reported this to Microsoft, but unfortunately they haven't changed their policy yet.\n\nIf you run into issues with an email provider not supporting redirection of messages, please contact them and see if you can make them change their policy. You can point them to this add-on, <a href=\"https://bugzil.la/12916\" title=\"Bug 12916 - Allow bounce/redirect of mail messages\" rel=\"nofollow\">bug 12916</a>, or <a href=\"https://www.ietf.org/rfc/rfc2822.txt\" rel=\"nofollow\">RFC2822</a> section 3.6.6.\n\nAs a workaround you can also redirect your messages through another email provider, e.g. Gmail, but this isn't always desirable, because then that email provider gains access to the messages you redirect, and those messages might contain sensitive information.",
-        "nl": "De Mailredirect-extensie voor Mozilla Thunderbird en Mozilla SeaMonkey voegt de mogelijkheid om een of meerdere berichten te heradresseren naar een of meerdere ontvangers toe.\nDe functie van e-mail heradresseren wordt ook wel remailen genoemd.\nDe extensie is een antwoord op <a href=\"https://bugzil.la/12916\" title=\"Bug 12916 - Allow bounce/redirect of mail messages\" rel=\"nofollow\">bug 12916</a>.",
-        "hu": "Üzenet átirányítás (Mail Redirect) kiegészítő növeli a képes séget a Mozilla Thunderbird és a Mozilla SeaMonkey, hogy irányítsa át egy vagy több üzeneteket egy vagy több címzetteknek.\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=12916\" rel=\"nofollow\">Hibaszám 12916</a> megoldás."
+        "en-US": "At the moment Mail Redirect is not yet compatible with Thunderbird 78.*. I'm still working on a new version that works with Thunderbird 78.*. If you depend on this functionality, please don't upgrade to Thunderbird 68, but stay on version 68 and disable updates, until a compatible version of Mail Redirect is released.\n\nThe Mailredirect extension for Mozilla Thunderbird and Mozilla SeaMonkey adds the ability to redirect one or more email messages to one or more recipients.\nThe feature of email redirecting is also known as remailing or resending.\nThe extension is an answer for <a title=\"Bug 12916 - Allow bounce/redirect of mail messages\" rel=\"nofollow\" href=\"https://bugzil.la/12916\">bug 12916</a>\n\nNot all email providers support redirection of messages. Most notably Microsoft does not support it at the moment, probably as a measure against SPAM. I think they do this in error, and also reported this to Microsoft, but unfortunately they haven't changed their policy yet.\n\nIf you run into issues with an email provider not supporting redirection of messages, please contact them and see if you can make them change their policy. You can point them to this add-on, <a title=\"Bug 12916 - Allow bounce/redirect of mail messages\" rel=\"nofollow\" href=\"https://bugzil.la/12916\">bug 12916</a>, or <a rel=\"nofollow\" href=\"https://www.ietf.org/rfc/rfc2822.txt\">RFC2822</a> section 3.6.6.\n\nAs a workaround you can also redirect your messages through another email provider, e.g. Gmail, but this isn't always desirable, because then that email provider gains access to the messages you redirect, and those messages might contain sensitive information.",
+        "nl": "De Mailredirect-extensie voor Mozilla Thunderbird en Mozilla SeaMonkey voegt de mogelijkheid om een of meerdere berichten te heradresseren naar een of meerdere ontvangers toe.\nDe functie van e-mail heradresseren wordt ook wel remailen genoemd.\nDe extensie is een antwoord op <a title=\"Bug 12916 - Allow bounce/redirect of mail messages\" rel=\"nofollow\" href=\"https://bugzil.la/12916\">bug 12916</a>.",
+        "hu": "Üzenet átirányítás (Mail Redirect) kiegészítő növeli a képes séget a Mozilla Thunderbird és a Mozilla SeaMonkey, hogy irányítsa át egy vagy több üzeneteket egy vagy több címzetteknek.\n<a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=12916\">Hibaszám 12916</a> megoldás."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailredirect/edit",
@@ -335,10 +335,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.38738,
-        "count": 136,
-        "average": 4.3971,
-        "text_count": 136
+        "bayesian_average": 4.39184,
+        "count": 137,
+        "average": 4.4015,
+        "text_count": 137
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailredirect/reviews/",
     "requires_payment": false,

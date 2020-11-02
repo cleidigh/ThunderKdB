@@ -1,5 +1,11 @@
 Changelog for Compact Headers
 
+2.8
+Fixed some bugs with double clicking the header area:
+- Double clicking was not disabled on uninstall or disable.
+- Non-ASCII characters were rendered garbled after reinstall.
+Thunderbird may have to be restarted to clean up all errors.
+
 2.7
 Double clicking the header area toggles compact mode.
 Fixed a bug which made Replace Header Toolbar sometimes fail.

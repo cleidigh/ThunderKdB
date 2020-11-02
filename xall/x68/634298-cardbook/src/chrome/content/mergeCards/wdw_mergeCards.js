@@ -574,7 +574,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 								var aPrefImage = document.createXULElement('image');
 								aHbox.appendChild(aPrefImage);
 								aPrefImage.setAttribute('id', i + '_' + j + '_' + k + '_PrefImage');
-								if (cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(arrayOfValues[k][j][2].split(";"))) {
+								if (arrayOfValues[k][j][2] && cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(arrayOfValues[k][j][2].split(";"))) {
 									aPrefImage.setAttribute('class', 'cardbookPrefStarClass');
 									aPrefImage.setAttribute('haspref', 'true');
 								} else {

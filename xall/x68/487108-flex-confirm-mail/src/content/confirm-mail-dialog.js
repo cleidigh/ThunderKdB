@@ -234,7 +234,8 @@ function startup() {
 				requireReinput: requireReinputFilename
 			});
 			attachmentFileItem.addEventListener("click", function() { updateCheckAllCheckBox(fileNamesList); }, false);
-			if (ExceptionManager.fileHasExceptionalSuffix(fileName)) {
+			if (ExceptionManager.fileHasExceptionalSuffix(fileName) ||
+				ExceptionManager.fileHasExceptionalTerm(fileName)) {
 				attachmentFileItem.setAttribute("data-exceptional", "true");
 				exceptionalItems.push(attachmentFileItem);
 			} else {
@@ -480,6 +481,34 @@ var ExceptionManager = {
 
 	fileHasExceptionalSuffix: function (fileName) {
 		return this.isExceptionalSuffix(FilenameUtil.extractSuffix(fileName));
+	},
+
+	// Exceptional Term
+
+	get terms () {
+		delete this.terms;
+		let terms;
+		if (this.getPref(CA_CONST.EXCEPTIONAL_TERMS_SOURCE) == "file") {
+			try {
+				terms = this.readFile(this.getPref(CA_CONST.EXCEPTIONAL_TERMS_FILE), "UTF-8") || "";
+			}
+			catch(e) {
+				terms = "";
+			}
+		}
+		else {
+			terms = this.getPref(CA_CONST.EXCEPTIONAL_TERMS) || "";
+		}
+		return this.terms = this._splitToItems(terms.toLowerCase()).map(function(term) {
+			return term.replace(/^\*?\./g, '');
+		});
+	},
+
+	fileHasExceptionalTerm: function (fileName) {
+		fileName = fileName.toLowerCase();
+		return this.terms.some(function (term) {
+			return fileName.indexOf(term) > -1;
+		});
 	}
 };
 
@@ -642,15 +671,26 @@ var ConfirmMailDialog = {
 			.map(address => address.address || address);
 	},
 
-	getExceptionalAttachments: function () {
+	getExceptionalSuffixAttachments: function () {
 		if (!this.getPref(CA_CONST.EXCEPTIONAL_SUFFIXES_CONFIRM) ||
 			!AttachmentManager.hasAttachments())
 			return [];
 
 		return AttachmentManager.getAttachmentList()
 			.filter(function (attachment) {
-				var suffix = FilenameUtil.extractSuffix(attachment);
+				const suffix = FilenameUtil.extractSuffix(attachment);
 				return ExceptionManager.isExceptionalSuffix(suffix);
+			});
+	},
+
+	getExceptionalTermAttachments: function () {
+		if (!this.getPref(CA_CONST.EXCEPTIONAL_TERMS_CONFIRM) ||
+			!AttachmentManager.hasAttachments())
+			return [];
+
+		return AttachmentManager.getAttachmentList()
+			.filter(function (attachment) {
+				return ExceptionManager.fileHasExceptionalTerm(attachment);
 			});
 	},
 
@@ -700,6 +740,10 @@ var ConfirmMailDialog = {
 
 	confirmExceptionalSuffixes: function (exceptions) {
 		return this.confirm("exceptionalSuffix", exceptions);
+	},
+
+	confirmExceptionalTerms: function (exceptions) {
+		return this.confirm("exceptionalTerm", exceptions);
 	},
 
 	confirmMultipleRecipientDomains: function () {
@@ -772,9 +816,16 @@ function doOK(){
 		}
 	}
 
-	let attachments = ConfirmMailDialog.getExceptionalAttachments();
+	let attachments = ConfirmMailDialog.getExceptionalSuffixAttachments();
 	if (attachments.length > 0) {
 		if (!ConfirmMailDialog.confirmExceptionalSuffixes(attachments.join('\n'))) {
+			return false;
+		}
+	}
+
+	attachments = ConfirmMailDialog.getExceptionalTermAttachments();
+	if (attachments.length > 0) {
+		if (!ConfirmMailDialog.confirmExceptionalTerms(attachments.join('\n'))) {
 			return false;
 		}
 	}

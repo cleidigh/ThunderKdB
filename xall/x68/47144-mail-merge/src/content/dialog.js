@@ -443,7 +443,7 @@ var mailmerge = {
 		document.getElementById("mailmerge-json").hidden = !(document.getElementById("mailmerge-general-source").value == "JSON");
 		document.getElementById("mailmerge-xlsx").hidden = !(document.getElementById("mailmerge-general-source").value == "XLSX");
 		
-		document.getElementById("mailmerge-sendlater").hidden = !(document.getElementById("mailmerge-general-delivermode").value == "SaveAsDraft" && window.opener.Sendlater3Util);
+		document.getElementById("mailmerge-sendlater").hidden = !(document.getElementById("mailmerge-general-delivermode").value == "SaveAsDraft" && mailmergeutils.template.sendlater);
 		
 		window.sizeToContent();
 		document.getElementById('mailmerge-content').style.height = Math.min(Math.max(150, document.getElementById('mailmerge-content').clientHeight), screen.availHeight - 150) + "px";

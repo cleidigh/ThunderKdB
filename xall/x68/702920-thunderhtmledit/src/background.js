@@ -1,3 +1,6 @@
+// Copyright (c) 2016, Jörg Knobloch. All rights reserved.
+// Ace Editor: Copyright (c) 2010, Ajax.org B.V. All rights reserved.
+
 /* globals browser */
 
 var init = async () => {

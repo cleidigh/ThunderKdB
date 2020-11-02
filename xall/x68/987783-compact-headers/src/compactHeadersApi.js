@@ -3,6 +3,8 @@ var { ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupp
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var xulAppInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
 
+let doToggle = undefined; //declare it here to make removeEventlistener work
+
 var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
     return {
@@ -98,7 +100,9 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                 compactHeadersButton.addEventListener("command", () => toggleHeaders());
                 compactHeadersBox.append(compactHeadersButton);
                 msgHeaderViewDeck.parentNode.insertBefore(compactHeadersBox, msgHeaderViewDeck);
-                msgHeaderViewDeck.addEventListener("dblclick", () => toggleHeaders());
+
+                doToggle = () => toggleHeaders();
+                msgHeaderViewDeck.addEventListener("dblclick", doToggle);
 
                 function singleLine() {
                   expandedHeadersTopBox.setAttribute("style", "padding: 8px 0px 2px; height: 0px; min-width: -moz-fit-content;");
@@ -336,6 +340,7 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
   for (let window of Services.wm.getEnumerator("mail:3pane")) {
     let msgHeaderViewDeck = window.document.getElementById("msgHeaderViewDeck");
     if (msgHeaderViewDeck) msgHeaderViewDeck.removeAttribute("style");
+    if (msgHeaderViewDeck) msgHeaderViewDeck.removeEventListener("dblclick", doToggle);
 
     let headerViewToolbar = window.document.getElementById("header-view-toolbar");
     if (headerViewToolbar) headerViewToolbar.removeAttribute("style");
@@ -415,6 +420,7 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
   for (let window of Services.wm.getEnumerator("mail:messageWindow")) {
     let msgHeaderViewDeck = window.document.getElementById("msgHeaderViewDeck");
     if (msgHeaderViewDeck) msgHeaderViewDeck.removeAttribute("style");
+    if (msgHeaderViewDeck) msgHeaderViewDeck.removeEventListener("dblclick", doToggle);
 
     let headerViewToolbar = window.document.getElementById("header-view-toolbar");
     if (headerViewToolbar) headerViewToolbar.removeAttribute("style");

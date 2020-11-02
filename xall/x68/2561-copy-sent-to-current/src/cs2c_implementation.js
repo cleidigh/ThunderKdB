@@ -311,12 +311,6 @@ debug("addMenu started wid="+wid);
     // This function is called if the extension is disabled or removed, or Thunderbird closes.
     // We registered it with callOnClose, above.
     debug("closing");
-
-    // Unload the JSM we imported above. This will cause Thunderbird to forget about the JSM, and
-    // load it afresh next time `import` is called. (If you don't call `unload`, Thunderbird will
-    // remember this version of the module and continue to use it, even if your extension receives
-    // an update.) You should *always* unload JSMs provided by your extension.
-    //Cu.unload(extension.getURL("modules/myModule.jsm"));
   }
   async getAddon() {
     let addOn=await AddonManager.getAddonByID("copysent2current@ggbs.de");
@@ -540,6 +534,7 @@ function sipMenu(cw) {
 	let tbox=doc.createElement('toolbox');
 	tbox.id='cs2c-box';
 	tbox.setAttribute('mode','icons');
+  tbox.style.display='-moz-box';
 	let tbar=doc.createElement('toolbar');
 	tbar.id='cs2c-bar';
 	tbar.setAttribute('class','chromeclass-toolbar');
@@ -549,12 +544,15 @@ function sipMenu(cw) {
 	tbar.setAttribute('nowindowdrag','true');
 	tbar.style.display='ruby';
 
+  let ti=doc.createElement('toolbaritem');
 	let label=doc.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'label');
 	label.value=strings['copysent2choose_label'];
 	label.setAttribute('accessKey', strings['copysent2choose_accesskey']);
 	label.setAttribute('control','fccFolderPicker');  //TODO: working?
-	tbar.appendChild(label);
+	ti.appendChild(label);
+	tbar.appendChild(ti);
 
+  ti=doc.createElement('toolbaritem');
 	let ml=doc.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul',
     'menulist');
 	ml.id='fccFolderPicker';
@@ -645,7 +643,8 @@ function sipMenu(cw) {
       ev.target.firstChild.openPopup();
 	} );
 	ml.appendChild(menu);
-	tbar.appendChild(ml);
+	ti.appendChild(ml);
+	tbar.appendChild(ti);
 
 	if (gAllowMove) {
 		let cb=doc.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'checkbox');

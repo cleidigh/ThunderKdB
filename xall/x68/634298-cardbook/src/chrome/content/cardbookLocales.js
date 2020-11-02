@@ -1,6 +1,7 @@
 if ("undefined" == typeof(cardbookLocales)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+	var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
 	var cardbookLocales = {
@@ -12,10 +13,11 @@ if ("undefined" == typeof(cardbookLocales)) {
 			let re = new RegExp(this.keyPrefix + "(.+?)__", "g");
 			return string.replace(re, matched => {
 				const key = matched.slice(this.keyPrefix.length, -2);
-				return this.i18n.getMessage(key) || matched;
+				return ExtensionParent.GlobalManager.getExtension("cardbook@vigneau.philippe").localeData.localizeMessage(key) || matched;
+				// test return this.i18n.getMessage(key) || matched;
 			});
 		},
-		
+
 		updateSubtree(node) {
 			const texts = document.evaluate(
 				'descendant::text()[contains(self::text(), "' + this.keyPrefix + '")]',
@@ -28,7 +30,7 @@ if ("undefined" == typeof(cardbookLocales)) {
 				const text = texts.snapshotItem(i);
 				if (text.nodeValue.includes(this.keyPrefix)) text.nodeValue = this.updateString(text.nodeValue);
 			}
-			
+
 			const attributes = document.evaluate(
 				'descendant::*/attribute::*[contains(., "' + this.keyPrefix + '")]',
 				node,
@@ -41,7 +43,7 @@ if ("undefined" == typeof(cardbookLocales)) {
 				if (attribute.value.includes(this.keyPrefix)) attribute.value = this.updateString(attribute.value);
 			}
 		},
-		
+
 		async updateDocument() {
 			// do we need to load the ConversionHelper?
 			try {

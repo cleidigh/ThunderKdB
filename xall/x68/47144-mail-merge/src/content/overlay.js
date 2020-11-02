@@ -116,23 +116,9 @@ function init() {
 	} catch(e) { console.warn(e); }
 	/* spellcheck end */
 	
-	/* enigmail start */
-	if(win.Enigmail) {
-		
-		let identity = win.getCurrentIdentity();
-		let autoencryptdrafts = identity.getBoolAttribute("autoEncryptDrafts");
-		
-		identity.setBoolAttribute("autoEncryptDrafts", false);
-		win.SaveAsTemplate();
-		identity.setBoolAttribute("autoEncryptDrafts", autoencryptdrafts);
-		
-	}
-	else {
-		
-		win.SaveAsTemplate();
-		
-	}
-	/* enigmail end */
+	/* template start */
+	win.SaveAsTemplate();
+	/* template end */
 	
 	win.setTimeout(function() { win.mailmerge.dialog(); }, 50);
 	
@@ -145,6 +131,10 @@ function dialog() {
 	/* mailinglists start */
 	win.expandRecipients();
 	/* mailinglists end */
+	
+	/* subject start */
+	win.gMsgCompose.compFields.subject = win.document.getElementById("msgSubject").value;
+	/* subject end */
 	
 	/* body start */
 	win.gMsgCompose.compFields.body = win.gMsgCompose.editor.outputToString("text/html", 4);

@@ -1,5 +1,6 @@
 const NEW_LINE = "\n";
-const PLAINTEXT_SIGNATURE_SEPARATOR = "-- " + NEW_LINE;
+const DOUBLE_DASH = "--";
+const PLAINTEXT_SIGNATURE_SEPARATOR = DOUBLE_DASH + " " + NEW_LINE;
 const HTML_SIGNATURE_CLASS = "moz-signature";
 const WINDOW_TYPE_MESSAGE_COMPOSE = "messageCompose";
 const CUSTOM_SIGNATURE_ID_ATTRIBUTE = "signature-switch-id";
@@ -365,7 +366,7 @@ async function searchSignatureInComposer(tabId = composeActionTabId) {
                 let plainTextBody = await normalizePlainTextBody(details.plainTextBody);
 
                 // check if the signature contains a fortune-cookie placeholder
-                if (new RegExp(".*\\[\\[.*\\]\\].*").test(signature.text)) {
+                if (new RegExp("\\[\\[.*?\\]\\]").test(signature.text)) {
                     if (localStorage.fortuneCookies) {
                         // TODO
                         // refactor me! pretty wonky implementation/concept!
@@ -458,16 +459,15 @@ async function createHtmlSignature(document, html, signatureId, elementType = "d
 
     // prepend the sig-separator if activated in options
     if ((await browser.storage.local.get()).signatureSeparatorHtml) {
-        let separator = document.createElement("pre");
-        separator.innerText = PLAINTEXT_SIGNATURE_SEPARATOR;
-        element.prepend(separator);
+        element.prepend(document.createElement("br"));
+        element.prepend(DOUBLE_DASH + " ");
     }
 
     return element;
 }
 
 async function searchAndReplaceImagePlaceholder(content) {
-    if (new RegExp(".*{{.*}}.*").test(content)) {
+    if (new RegExp("\\{{.*?}}").test(content)) {
         await browser.storage.local.get().then(localStorage => {
             if (localStorage.images) {
                 for (let image of localStorage.images) {
@@ -481,7 +481,7 @@ async function searchAndReplaceImagePlaceholder(content) {
 }
 
 async function searchAndReplaceFortuneCookiePlaceholder(content) {
-    if (new RegExp(".*\\[\\[.*\\]\\].*").test(content)) {
+    if (new RegExp("\\[\\[.*?\\]\\]").test(content)) {
         await browser.storage.local.get().then(localStorage => {
             if (localStorage.fortuneCookies) {
                 for (let fortuneCookies of localStorage.fortuneCookies) {
@@ -503,7 +503,7 @@ async function getBodyWithoutSignature(composeDetails) {
         let body = await normalizePlainTextBody(composeDetails.plainTextBody);
         let signatureIndex = body.lastIndexOf(NEW_LINE + PLAINTEXT_SIGNATURE_SEPARATOR);
 
-        return signatureIndex > -1 ? body.substring(0, body.lastIndexOf(NEW_LINE + PLAINTEXT_SIGNATURE_SEPARATOR)) : body;
+        return signatureIndex > -1 ? body.substring(0, signatureIndex) : body;
     } else {
         let document = domParser.parseFromString(composeDetails.body, "text/html");
         let signatures = document.getElementsByClassName(HTML_SIGNATURE_CLASS);

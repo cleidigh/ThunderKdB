@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="chrome://global/skin/" type="text/css">
+    <link href="chrome://messenger/skin/preferences/preferences.css" type="text/css">
+ <!--   <link href="options.css" type="text/css">  -->
+  <!-- <script src="chrome://global/content/globalOverlay.js"> </script>
+  <script src="chrome://global/content/editMenuOverlay.js"></script> -->
+    <script src="options.js"></script>
+    <!--<script src="utils.jsm"></script> -->
+</head>
+<body>
+
+<div style="width:100%;">
+
+<div>
+    <input type="checkbox" id="FolderPaneSwitcher-arrows-checkbox" >
+    <label id="lblckbx_showFPA" for="ckbx_showFPA">Show Folder Pane Arrows</label>
+</div>
+<div>
+    <label id="lbl_FPV-delay-textbox" for="nmbr_delayBFVS">Delay (Milliseconds) before folder view switch</label>
+    <input type="number" id="FolderPaneSwitcher-delay-textbox" min="1000" >
+</div>
+<div>
+    <label id="lbl_EnblDsbl" style="font-weight: bold;" >Enable / Disable Views</label>
+</div>
+<div>
+    <table id="tbl_enbldsblViews">
+        <tr>
+            <th >
+                Menu
+            </th>
+            <th >
+                Arrows
+            </th>
+            <th  style="text-align: left;">
+                View
+            </th>
+        </tr>
+    </table>
+
+</div>
+
+
+</div>
+<footer>
+    <div style="width:100%">
+        <input  style ="width: 60px;text-align: center;" type="button" id="btn_accept" value="OK">
+        <input  style ="width: 60px;text-align: center;"  type="button" id="btn_extra1" value="Cancel">
+        <input  style ="width: 60px;text-align: center;"  type="button" id="btn_reset" value="Reset">
+    </div>
+</footer>
+
+
+</body>
+
+
+</html>

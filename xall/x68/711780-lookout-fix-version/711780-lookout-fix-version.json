@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14152/14152435.png?modified=1533716853"
         }
     ],
-    "average_daily_users": 129294,
+    "average_daily_users": 135078,
     "categories": {
         "seamonkey": [
             "downloading-and-file-management",
@@ -30,30 +30,30 @@
     "contributions_url": "",
     "created": "2016-06-24T12:39:06Z",
     "current_version": {
-        "id": 2473931,
+        "id": 2474525,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "78.*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lookout-fix-version/versions/2473931",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lookout-fix-version/versions/2474525",
         "files": [
             {
-                "id": 1017093,
-                "created": "2020-07-17T03:59:15Z",
-                "hash": "sha256:16da5849501174ac247ea67759881fbe422b2913362ceb1fe70847d866d6cc0a",
-                "is_restart_required": true,
+                "id": 1017687,
+                "created": "2020-10-26T07:32:42Z",
+                "hash": "sha256:826ec6e663c658a9b8f0a2ab3313bc3f0fa42874841a6176ae550b3f6a9165f3",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 176711,
+                "size": 207025,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017093/lookout_fix_version-2.0.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017687/lookout_fix_version-3.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -62,11 +62,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Added max version of 68.* as addon is incompatible with Thunderbird 78"
+            "en-US": "Initial Thunderbird 78 support has been added via the Experiment wrapper API\n* Calendar integration has still not been fully tested.\n\nPlease report any issues to <a rel=\"nofollow\" href=\"https://github.com/TB-throwback/LookOut-fix-version/issues\">https://github.com/TB-throwback/LookOut-fix-version/issues</a>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout-fix-version/versions/2.0.4",
-        "version": "2.0.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout-fix-version/versions/3.0.1",
+        "version": "3.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -89,7 +89,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-17T04:48:26Z",
+    "last_updated": "2020-10-26T07:57:14Z",
     "name": {
         "en-US": "LookOut (fix version)",
         "hu": "MutasdMeg! (LookOut)"
@@ -149,10 +149,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.99709,
-        "count": 67,
-        "average": 4.0149,
-        "text_count": 67
+        "bayesian_average": 4.01177,
+        "count": 68,
+        "average": 4.0294,
+        "text_count": 68
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout-fix-version/reviews/",
     "requires_payment": false,
@@ -178,8 +178,11 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-08-30T07:50:32Z",
             "comp60pv": true,
             "comp60pv_date": "2017-11-29T10:10:57Z"
         }

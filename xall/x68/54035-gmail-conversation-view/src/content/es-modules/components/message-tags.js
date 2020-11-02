@@ -13,19 +13,25 @@
  */
 
 /* globals require */
-
 // Make sure all the libraries that need to be in global scope are in global scope.
 import { React, ReactDOM, Redux, ReactRedux, RTK, PropTypes } from "../ui.js";
-Object.assign(window, { React, ReactDOM, Redux, ReactRedux, RTK, PropTypes });
+Object.assign(window, {
+  React,
+  ReactDOM,
+  Redux,
+  ReactRedux,
+  RTK,
+  PropTypes
+});
 import { SvgIcon } from "./svg-icon.js";
-Object.assign(window, { SvgIcon });
+Object.assign(window, {
+  SvgIcon
+}); // Set up an object for the make-shift module emulation
 
-// Set up an object for the make-shift module emulation
-window.esExports = {};
-
-// The node.js `esm` loader won't share globals. Since this is only used
+window.esExports = {}; // The node.js `esm` loader won't share globals. Since this is only used
 // by tests at the moment, which are run by node.js, use the `require`
 // function as a fallback
+
 require("../../messageTags.js");
 
 export const MessageTag = window.esExports.MessageTag;

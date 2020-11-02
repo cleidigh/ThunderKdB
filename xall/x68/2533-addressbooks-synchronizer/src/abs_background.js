@@ -64,17 +64,16 @@ debug('prefs stored');
 				debug('storing prefs throws: '+e, e);
 			}
 		} else {	//already migrated or fresh install
-debug('no preferences to migrate');
-			if (!prefs['imapusedraft']) prefs['imapuploadpolicy']='draft';
+debug('no preferences to migrate, read from storage');
+      prefs=await messenger.storage.local.get(null); //.then(function(prefs) {
+			if (!prefs['imapuploadpolicy']) prefs['imapuploadpolicy']='draft';
 			if (!prefs['downloadpolicy']) prefs['downloadpolicy']='ask';
 			if (!prefs['delayautodownload'] || prefs['delayautodownload']<2) prefs['delayautodownload']=2;
-			delete prefs['syncpolicy'];
 			delete prefs['upgraded'];
 			await messenger.storage.local.set(prefs);
 		}
 
-    prefs=await messenger.storage.local.get(null); //.then(function(prefs) {
-debug('ABS: background: prefs='+prefs);
+debug('ABS: background: prefs='+JSON.stringify(prefs));
     let [ u2i, u2f ]=await messenger.abs.uids2ids();
 debug('ABS: background: u2i='+u2i);
     //remove
@@ -99,7 +98,8 @@ debug('ABS: background: u2i='+u2i);
         }
       }
     }
-for (let [key, val] of Object.entries(prefs)) {debug('background pref: '+key+'->'+val); }
+//for (let [key, val] of Object.entries(prefs)) {debug('background pref: '+key+'->'+val); }
+debug('prefs='+JSON.stringify(prefs));
     messenger.abs.setPrefs(prefs, '');
 
 		if (count>0) {    // abs was upgraded

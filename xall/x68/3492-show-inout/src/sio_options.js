@@ -249,15 +249,11 @@ debug('accountChange');
   getEmails();
 }
 
-let listener=(async (info)=> {
-debug('some addon changed');
-	let changed=await messenger.sio.addonChanged('options');
-	if (changed===null) {
-debug(' implementation says: "options window does the work" but i am the options window!');
-		return;
-	}
+function colsChanged(changed) {
+debug('colsChanged changed='+JSON.stringify(Array.from(changed)));
 	changed.forEach((label, col) => {
 debug(' changed '+col+'->'+(label?label:'(removed)'));
+    //change local version of gColumns
 		if (!label) {
 			gColumns.delete(col)
 		} else {
@@ -266,24 +262,18 @@ debug(' changed '+col+'->'+(label?label:'(removed)'));
 	});
 	//probably changed preference 'Columns' is set in createColumnList
 	createColumnList();
-});
-messenger.management.onInstalled.addListener(listener);
-messenger.management.onUninstalled.addListener(listener);
-messenger.management.onEnabled.addListener(listener);
-messenger.management.onDisabled.addListener(listener);
-
-let cache='';
-function debug(txt) {
-  if (prefs) {
-    if (prefs.debug) {
-      if (cache) console.log(cache); cache='';
-      console.log('SIO: '+txt);
-    }
-  } else {
-    cache+='SIO: '+txt+'\n';
-  }
 }
 
+messenger.runtime.onMessage.addListener((request, sender, sendResponse)=>{
+debug('Got message from background');
+  colsChanged(request.changed);
+});
+
+messenger.sio.onColumnsAdded.addListener(changed => {
+debug('onColumnsAdded changed='+JSON.stringify(Array.from(changed)));
+   colsChanged(changed);
+
+});
 /*
 messenger.tabs.onRemoved.addListener(function () {
   debug('close');
@@ -302,15 +292,14 @@ function keys(event) {
 }
 document.addEventListener("keyup", keys);
 
-//try: (see https://thunderbird.topicbox.com/groups/addons/T1d816a2309bc41ce)
-/*
-window.addEventListener('beforeunload', function (e) {
-  e.preventDefault();
-	// shows standard Mozilla Firefox prompt 
-	// "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
-	// but only if something changed!
-});
-*/
+function debug(txt, e) {
+	ex=typeof e!=='undefined';
+	if (!ex) e = new Error();
+	let stack = e.stack.toString().split(/\r\n|\n/);
+	let ln=stack[ex?0:1].replace(/moz-extension:\/\/.*\/(.*:\d+):\d+/, '$1');	//getExternalFilename@file:///D:/sourcen/Mozilla/thunderbird/Extensions/AddressbooksSync_wee/sio_utils.js:1289:6
+	if (!ln) ln='?';
+	messenger.sio.debug(txt, ln);
+}
 
 debug('options');
 doInit();

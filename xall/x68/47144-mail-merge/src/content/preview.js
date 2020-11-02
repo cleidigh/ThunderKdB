@@ -41,7 +41,7 @@ var mailmerge = {
 		
 		if(window.arguments[0].type == "MESSAGE") {
 			
-			document.getElementById("mailmerge-message-sendlater").parentElement.style.display = (window.opener.opener.Sendlater3Util) ? "block" : "none";
+			document.getElementById("mailmerge-message-sendlater").parentElement.style.display = (mailmergeutils.template.sendlater) ? "block" : "none";
 			
 			document.getElementById("mailmerge-message").hidden = false;
 			document.getElementById("mailmerge-begin").hidden = false;
@@ -120,11 +120,15 @@ var mailmerge = {
 			}
 			
 			if(compose.compFields.hasHeader("X-Send-Later-Uuid")) {
-				
 				document.getElementById("mailmerge-message-sendlater").textContent += "X-Send-Later-Uuid" + " : " + compose.compFields.getHeader("X-Send-Later-Uuid") + "\n";
+			}
+			
+			if(compose.compFields.hasHeader("X-Send-Later-At")) {
 				document.getElementById("mailmerge-message-sendlater").textContent += "X-Send-Later-At" + " : " + compose.compFields.getHeader("X-Send-Later-At") + "\n";
+			}
+			
+			if(compose.compFields.hasHeader("X-Send-Later-Recur")) {
 				document.getElementById("mailmerge-message-sendlater").textContent += "X-Send-Later-Recur" + " : " + compose.compFields.getHeader("X-Send-Later-Recur") + "\n";
-				
 			}
 			
 		}

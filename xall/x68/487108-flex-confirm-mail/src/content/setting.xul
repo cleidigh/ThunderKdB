@@ -165,6 +165,36 @@
 						oncommand="chooseFile(this);"/>
 				</hbox>
 			</radiogroup>
+			<label value="&setting.dialog.exceptionalTerms.label;" control="exceptional-terms"/>
+			<checkbox id="exceptional-terms-confirm" label="&setting.dialog.exceptionalTerms.confirm;"
+				preference="net.nyail.tanabec.confirm-mail.exceptional-terms.confirm"/>
+			<radiogroup id="exceptional-terms-source" orient="vertical"
+				preference="net.nyail.tanabec.confirm-mail.exceptional-terms.source">
+				<radio label="&setting.dialog.exceptionalTerms.source.pref.label;" value="pref"/>
+				<vbox style="margin-left: 1em">
+					<richlistbox id="exceptional-terms"
+						style="height: 6em; max-height: 6em">
+					</richlistbox>
+					<hbox>
+						<button label="&setting.dialog.button.add.label;"
+							control="exceptional-terms"
+							oncommand="exceptionalTerms.add(event)"/>
+						<button label="&setting.dialog.button.edit.label;"
+							control="exceptional-terms"
+							oncommand="exceptionalTerms.edit(event)"/>
+						<spacer flex="1"/>
+					</hbox>
+				</vbox>
+				<hbox align="center">
+					<radio label="&setting.dialog.exceptionalTerms.source.file.label;" value="file"/>
+					<textbox id="exceptional-terms-file"
+						preference="net.nyail.tanabec.confirm-mail.exceptional-terms.file"
+						flex="1"/>
+					<button label="&setting.dialog.exceptionalTerms.source.file.button.label;"
+						chooser-title="&setting.dialog.exceptionalTerms.source.file.button.choose;"
+						oncommand="chooseFile(this);"/>
+				</hbox>
+			</radiogroup>
 			<checkbox id="requireReinputAttachmentNames" label="&setting.dialog.checkbox.requireReinputAttachmentNames;"
 				preference="net.nyail.tanabec.confirm-mail.requireReinputAttachmentNames"/>
 			<separator/>

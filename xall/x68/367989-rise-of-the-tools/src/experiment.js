@@ -54,7 +54,11 @@ this.ex_raisetoolbar = class extends ExtensionCommon.ExtensionAPI {
           + '.mail-toolbox::after { border-bottom: 0 !important; } '
           + '#navigation-toolbox::after {-moz-box-ordinal-group: 40;'
           + 'content: "";display: -moz-box;height:1px;'
-          + 'border-bottom: 1px solid var(--chrome-content-separator-color);}';
+          + 'border-bottom: 1px solid var(--chrome-content-separator-color);}'
+          + '#mail-toolbox:not([labelalign="end"]) .toolbarbutton-1,'
+          + '#mail-toolbox:not([labelalign="end"]) '
+          + '.toolbarbutton-1[type="menu-button"] > '
+          + '.toolbarbutton-menubutton-button {-moz-box-orient: vertical;}';
       css.appendChild(document.createTextNode(csstext));
 
       // Disallow tabs in the titlebar, which will break as the tabbar is no

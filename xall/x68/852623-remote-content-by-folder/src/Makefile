@@ -1,7 +1,18 @@
-FILES := LICENSE README.md bootstrap.js chrome.manifest \
-         content/defaultPreferencesLoader.jsm content/options.xul \
-         content/options.js content/prefs.js manifest.json icon48.png \
-         icon96.png
+FILES := \
+	LICENSE \
+	README.md \
+	background-implementation.js \
+	background.js \
+	content/defaultPreferencesLoader.jsm \
+	content/options-implementation.js \
+	content/options.html \
+	content/options.js \
+	content/prefs.js \
+	icon48.png \
+	icon96.png \
+	manifest.json \
+	schema.json \
+	$(nothing)
 
 all: remote-content-by-folder.xpi
 

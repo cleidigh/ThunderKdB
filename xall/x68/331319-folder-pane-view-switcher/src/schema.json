@@ -1,0 +1,298 @@
+[
+{
+   "namespace":"fpvs_api",
+   "functions":[
+       {
+        "name":"on_start",
+        "type":"function",
+        "desription":"Initiate the background with event listner",
+        "async":true,
+        "parameters":[]
+       },
+       {
+        "name":"loadIntoWindow",
+        "type":"function",
+        "desription":"Initiate the background with event listner",
+        "async":true,
+        "parameters":[]
+       },
+
+       {
+        "name":"onLoad",
+        "type":"function",
+        "desription":"Initiate the background with event listner",
+        "async":true,
+        "parameters":[]
+       },
+       {
+        "name":"goBackView",
+        "type":"function",
+        "desription":"Initiate the background with event listner",
+        "async":true,
+        "parameters":[]
+       },
+       {
+        "name":"goForwardView",
+        "type":"function",
+        "desription":"Initiate the background with event listner",
+        "async":true,
+        "parameters":[]
+       },
+
+       {
+        "name":"observe",
+        "type":"function",
+        "desription":"Initiate the background with event listner",
+        "async":true,
+        "parameters":[
+
+            {
+
+                    "name":"aSubject",
+                    "type":"string",
+                    "Description":"value"
+
+            },
+            
+            {
+
+                "name":"aTopic",
+                "type":"string",
+                "Description":"value"
+
+        },
+        {
+
+            "name":"aData",
+            "type":"string",
+            "Description":"value"
+
+        }
+
+        ]
+       },
+       {
+        "name":"unLoad",
+        "type":"function",
+        "desription":"Unload",
+        "async":true,
+        "parameters":[]
+       }
+
+
+   ]
+},
+{
+    "namespace":"fpvs_optionsAPI",
+    "functions":[
+        {
+            "name":"init",
+            "type":"function",
+            "description":"Initiate the background with event listner",
+            "async":true,
+            "parameters":[]
+
+        },
+        {
+            "name":"getViews",
+            "type":"function",
+            "description":"Get The Views",
+            "async":true,
+            "parameters":[]
+        },
+        {
+            "name":"addEventListener",
+            "type":"function",
+            "description":"Add the event listner",
+            "async":true,
+            "parameters":[{
+                "name":"target",
+                "type":"any",
+                "Description":"The element id"
+            },
+            {
+                "name":"type",
+                "type":"string",
+                "Description":"The event type"
+            },
+            {
+                "name":"listener",
+                "type":"any",
+                "Description":"callback"
+            },
+
+            {
+                "name":"useCapture",
+                "type":"boolean",
+                "Description":"usecapture"
+            }
+        ]
+        },
+        {
+            "name":"getStringPref",
+            "type":"function",
+            "description":"Get the string Preference",
+            "async":true,
+            "parameters":[
+            {
+                "name":"value",
+                "type":"string",
+                "Description":"value"
+            }
+        ]
+        },
+        {
+            "name":"viewsBranch",
+            "type":"function",
+            "description":"Get t views branch",
+            "async":true,
+            "parameters":[]
+        },
+        {
+            "name":"getIntPref",
+            "type":"function",
+            "description":"Get t views branch",
+            "async":true,
+            "parameters":[{
+                "name":"pref",
+                "type":"string",
+                "async":true,
+                "Description":"Get the int pref"
+            }]
+        },
+
+        {
+            "name":"getBoolPref",
+            "type":"function",
+            "description":"Get the int views branch",
+            "async":true,
+            "parameters":[{
+                "name":"pref",
+                "type":"string",
+                "Description":"Get the Bool pref"
+
+            }]
+        },
+
+        {
+            "name":"getStringVPref",
+            "type":"function",
+            "description":"Get string views branch",
+            "async":true,
+            "parameters":[{
+                "name":"pref",
+                "type":"string",
+                "asyn":true,
+                "Description":"Get the string pref"
+
+            }]
+        },
+
+        {
+            "name":"getCharPref",
+            "type":"function",
+            "description":"Get string views branch",
+            "async":true,
+            "parameters":[{
+                "name":"pref",
+                "type":"string",
+                "asyn":true,
+                "Description":"Get the char pref"
+
+            }]
+        },
+        {
+            "name":"setIntPref",
+            "type":"function",
+            "description":"Get the int views branch",
+            "async":true,
+            "parameters":[{
+                "name":"pref",
+                "type":"string",
+                "Description":"Get the Bool pref"
+            },
+            {
+                "name":"elt_value",
+                "type":"string",
+                "Description":"Get the Bool pref"
+
+            }
+        ]
+        },
+
+        {
+            "name":"setBoolPref",
+            "type":"function",
+            "description":"Get the int views branch",
+            "async":true,
+            "parameters":[{
+                "name":"pref",
+                "type":"string",
+                "Description":"Get the Bool pref"
+            },
+            {
+                "name":"elt_value",
+                "type":"boolean",
+                "Description":"Get the Bool pref"
+
+            }
+        ]
+        },
+        {
+            "name":"setStringPref",
+            "type":"function",
+            "description":"Get the int views branch",
+            "async":true,
+            "parameters":[{
+                "name":"pref",
+                "type":"string",
+                "Description":"Get the Bool pref"
+            },
+            {
+                "name":"elt_value",
+                "type":"string",
+                "Description":"Get the Bool pref"
+
+            }
+        ]
+        },
+
+        {
+            "name":"setCharPref",
+            "type":"function",
+            "description":"Get the int views branch",
+            "async":true,
+            "parameters":[{
+                "name":"pref",
+                "type":"string",
+                "Description":"Get the Bool pref"
+            },
+            {
+                "name":"elt_value",
+                "type":"string",
+                "Description":"Get the Bool pref"
+
+            }
+        ]
+        }
+
+    ],
+   "events":[
+    {
+       "name":"onOptionsPageload",
+       "type":"function",
+       "description":"Fires when the Page load",
+       "parameters":[
+        {
+           "name":"id",
+           "type":"string",
+           "Description":"The window id"
+        }
+       ]
+    }
+   ]
+
+}
+
+
+]

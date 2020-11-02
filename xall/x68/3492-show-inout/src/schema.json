@@ -66,13 +66,45 @@
         "async": true,
         "parameters": [ 
 					{
-						"name": "who",
+						"name": "type",
 						"type": "string",
-						"description": "Who is calling"
+						"description": "install/uninstall/enable/disable"
 					}
+				]
+      },
+      {
+        "name": "debug",
+        "description": "debug",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "txt",
+            "type": "string",
+            "description": "the debug text"
+          },
+          {
+            "name": "ln",
+            "type": "string",
+            "description": "line number of debug"
+          }
 				]
       }
 
+    ],
+    "events": [
+      {
+        "name": "onColumnsAdded",
+        "type": "function",
+        "description": "Fires when the addon added custom columns",
+        "parameters": [
+          {
+            "name": "changed",
+            "type": "any",
+            "description": "Map with added columns"
+          }
+        ]
+      }
     ]
   }
 ]

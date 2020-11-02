@@ -26,6 +26,8 @@ ContactLine.propTypes = {
 
 class MessageDetails extends React.PureComponent {
   render() {
+    var _this$props$extraLine;
+
     return /*#__PURE__*/React.createElement("div", null, !!this.props.from && /*#__PURE__*/React.createElement("div", {
       className: "detailsLine fromLine"
     }, /*#__PURE__*/React.createElement("u", null, browser.i18n.getMessage("message.fromHeader")), " ", /*#__PURE__*/React.createElement(ContactLabel, {
@@ -47,7 +49,7 @@ class MessageDetails extends React.PureComponent {
     }, /*#__PURE__*/React.createElement("u", null, browser.i18n.getMessage("compose.fieldBcc")), " ", /*#__PURE__*/React.createElement(ContactLine, {
       className: "bcc",
       contacts: this.props.bcc
-    })), !!this.props.extraLines && !!this.props.extraLines.length && this.props.extraLines.map((line, i) => {
+    })), !!((_this$props$extraLine = this.props.extraLines) === null || _this$props$extraLine === void 0 ? void 0 : _this$props$extraLine.length) && this.props.extraLines.map((line, i) => {
       return /*#__PURE__*/React.createElement("div", {
         className: "detailsLine",
         key: i

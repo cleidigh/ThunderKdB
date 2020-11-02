@@ -1,5 +1,97 @@
 [
     {
+        "id": 2474579,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.4.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/colored-diffs/versions/2474579",
+        "files": [
+            {
+                "id": 1017741,
+                "created": "2020-10-27T09:17:14Z",
+                "hash": "sha256:a805ccb4dd2e716976f1a6e22f88cb765573a0903151e39254c69220669976de",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 121984,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017741/colored_diffs-2.0.1-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "messagesModify"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Fix the minimal version number required for using the add-on, now that 78.4.0 can be used [0].\n\n[0] <a rel=\"nofollow\" href=\"https://github.com/thundernest/addons-server/issues/153\">https://github.com/thundernest/addons-server/issues/153</a>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/colored-diffs/versions/2.0.1",
+        "version": "2.0.1"
+    },
+    {
+        "id": 2474524,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/colored-diffs/versions/2474524",
+        "files": [
+            {
+                "id": 1017686,
+                "created": "2020-10-26T01:21:33Z",
+                "hash": "sha256:afb9cd06116bb055d2e0811f5bef5aaff3eae25a02d0d0a7df0e55a4b1b95e94",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 121983,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017686/colored_diffs-2.0.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "messagesModify"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "v2: Port to TB 78.4+/82+, rewrite add-on from scratch, use highlight.js\n\nThe new version of the add-on is a pure MailExtension that should be compatible with new Thunderbird versions. It relies on the messagesModify API that appeared in Thunderbird 82, but has since been backported to version 78.4 [0].\n\nThe add-on was entirely rewritten from scratch, and with a different approach. We no longer parse and reformat the diffs: Instead, we embed and inject the highlight.js library that takes care of coloring the diff [1].\n\nConsequences and main changes:\n\n- We loose some accuracy, because we do not rely on \"what part of the diff we are in\". Concretely, all lines starting with \"+\" or \"-\" will be colored, even if in the commit log.\n\n- We gain in stability, with less parsing susceptible to break.\n\n- We loose the different modes, unified / context / side-by-side. The diffs are not rewritten, we simply add colors.\n\n- We keep the ability to replace tabs and spaces, but loose the line numbers.\n\n- It is not possible at this time to specify custom colors for the diffs, but we can pick a style amongst the hundred or so that are supported by highlight.js.\n\n[0] <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1504475\">https://bugzilla.mozilla.org/show_bug.cgi?id=1504475</a>\n[1] <a rel=\"nofollow\" href=\"https://highlightjs.org/\">https://highlightjs.org/</a>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/colored-diffs/versions/2.0.0",
+        "version": "2.0.0"
+    },
+    {
         "id": 2472914,
         "channel": "listed",
         "compatibility": {

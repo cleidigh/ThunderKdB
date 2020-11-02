@@ -5,6 +5,7 @@ const Ci = Components.interfaces;
 
 var state='';
 var prefs;
+var num=0;
 
 let strings={
   "inoutColumn_label": '',
@@ -18,14 +19,15 @@ let strings={
 var gW;
 var gD;
 var gDBView;
-var options=null;
 var gMyAddr;
 var gMyAddrArr;
 var gLocalFolder;
 var gColumns=new Map;	//id->label
 var otherCCH=new Map;	//save custom column handlers from other add-ons
-var gHeaderParser = MailServices.headerParser;
+var addonType='';
+var gFire=null;
 
+var gHeaderParser = MailServices.headerParser;
 var gMessenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
     QueryInterface(Ci.nsIMessenger);
 var gAccountMgr=MailServices.accounts;
@@ -78,10 +80,8 @@ debug('remove our own columns');
         init: async function(prefsP) {
 debug('sio.init state='+state);
           if (state=='') {
-try {
             prefs=prefsP;
             init();
-} catch(e) { debug('init '+e); }
           }
         },
         prefChanged: async function(prefsP, col, state) {
@@ -99,6 +99,7 @@ debug('prefChanged '+col+' '+state);
         cols: async function() {
 debug('cols');
 if (gColumns.size==0) debug('gColumns array is not filled yet!');
+          findCols(); //just in case
 					return gColumns;
         },
         localfolder: async function() {
@@ -129,12 +130,35 @@ debug('migratePrefs');
           }
           return mig;
         },
-        addonChanged: async function(who) {
-debug('addonChanged called from '+who);
-					if (who=='background' && options) return null;	//let options window do the work
-//check for new or removed custom columns
-					return changedCols();
-        }
+        addonChanged: async function(type) {
+debug('addonChanged called type='+type+' state='+state);
+          if (state!='cols') return null;  //probably that myself which gets enabled
+          if (type=='install') {
+            //no foreigns columns are installed yet, MsgCreateDBView must do the work
+            addonType=type;
+            return null;
+          } else {
+            //check for new or removed custom columns
+            return changedCols();
+          }
+        },
+        // An event. Most of this is boilerplate you don't need to worry about, just copy it.
+        onColumnsAdded: new ExtensionCommon.EventManager({
+          context,
+          name: "sio.onColumnsAdded",
+          register(fire) {
+debug('onColumnsAdded register');
+            gFire=fire;
+//use: gFire.async(changed);
+            return function() {
+              gFire=null;
+debug('onColumnsAdded unregister');
+            };
+          },
+        }).api(),
+        debug: async function(txt, ln) {
+					debug(txt, ln);
+				}
       },
 
     };
@@ -143,7 +167,6 @@ debug('addonChanged called from '+who);
     // This function is called if the extension is disabled or removed, or Thunderbird closes.
     // We registered it with callOnClose, above.
     // gg: also called if options window closes
-		options=null;
     debug("close");
   }
 };
@@ -164,8 +187,7 @@ debug('init state='+state);
   gOutTextPrefix=prefs.OutTextPrefix || '';  //was ??, but bad for ATN
   state='init';
   Services.obs.addObserver(observer, "MsgCreateDBView", false);
-  Services.obs.addObserver(observer, "dom-window-destroyed", false);
-	observer.observe(null, "MsgCreateDBView", null);	// after enabling the addon there is no notification
+	observer.observe(null, "MsgCreateDBView", 'force');	// after enabling the addon there is other notification
 }
 
 async function getAddon() {
@@ -992,17 +1014,37 @@ debug('reset original handler for '+col);
 
   observe: function(aSubject, aTopic, aData)
   {
-//debug('observer: observe topic='+aTopic);
     if (aTopic=='MsgCreateDBView') {
 debug('observer MsgCreateDBView state='+state+' aData='+aData+' aSubject='+aSubject);
-			if (!aSubject) return;	//normally a nsIMsgFolder
-					//but not on first call (when gDBView does not exists yet) or when an addon is loaded
 			gW=Services.wm.getMostRecentWindow("mail:3pane");
 			gD=gW.document;
+			if (!aSubject && !aData) {
+          //aSubject is normally a nsIMsgFolder
+					//but not on first call (when gDBView does not exists yet)
+          //or when an addon is installed or enabled
+          //gData is normally null except we call it explicitly with 'force'
+        if (addonType=='install') { //need a small time delay
+          gW.setTimeout(()=>{
+            let changed=findCols();
+            if (gFire) {
+  debug('install: Notify options window');
+              gFire.async(changed);
+            } else {
+  debug('install: No options window to notify');
+            }
+          }, 100);
+        } else {
+debug('observer nothing to do');
+        }
+        addonType='';
+        return;
+      }
       gDBView=gW.gDBView;
       if (typeof gDBView!='undefined' && gDBView) { //check mit typeof, da gelegentlich undefined!
-				if (state!='cols')   // fill gColumns and add our own columns, only on first call!
+				if (state!='cols') {  // fill gColumns and add our own columns, only on first call!
+          state='cols';
 					addCols();
+        }
         //Must be set on every folder
 debug('add columnsHandlers for our own columns');
         gDBView.addColumnHandler("sio_inoutCol", columnHandler_inoutcol);
@@ -1012,14 +1054,6 @@ debug('add columnsHandlers for our own columns');
         observer.addHandlersToCols('*', true);	// initially add generic columnHandlers to other columns
       }
       else debug('observer: MsgCreateDBView: no gDBView yet');
-    } else if (aTopic=="dom-window-destroyed") {
-				//despite the name, this also fires on load with the window as aSubject
-//dom-window-destroyed file:///D:/sourcen/Mozilla/thunderbird/Extensions/AddressbooksSync_wee/abs_status.html
-//dom-window-destroyed moz-extension://1eb49a87-7593-4a1f-b05a-aa4abc1c7bc8/abs_options.html
-			if (aSubject && aSubject.location.pathname.includes('/sio_options.html')) {
-debug(aTopic+' '+aSubject.location);
-				options=aSubject;	//we have an options window
-			}
 		}
   }
 }
@@ -1119,18 +1153,19 @@ function MsgSortByInOut()
   gW.MsgSortThreadPane('byCustom');
 }
 
-function addCols() {
-debug('addCols');
+function findCols() {
+debug('findCols');
   let tc=gD.getElementById("threadCols");
-  if (!tc) {
-debug("no threadCols yet");
-    return;
-  }
+  let changed=new Map();
 
 	// fill gColumns with [id->label] for all columns which can be styled
-  let cols=gD.getElementById('threadCols').childNodes;
+  let cols=tc.childNodes;
   cols.forEach(col=>{
     if (col.id && !col.getAttribute('fixed') && !(col.id).includes('sio_')) {
+			if (gColumns.has(col.id)) {
+debug('gColumn already has '+col.id);
+        return;
+      }
 			try {
 				let ch=gDBView.getColumnHandler(col.id);
 debug('col='+col.id+' already has a columnHandler, saved');
@@ -1140,9 +1175,20 @@ debug('col='+col.id+' added to gColumns');
 //        gColumns.set(col.id, col.getAttribute('label'));
 			}
       gColumns.set(col.id, col.getAttribute('label'));
+      changed.set(col.id, col.getAttribute('label'));
     }
   });
+  return changed;
+}
 
+function addCols() {
+debug('addCols');
+  let tc=gD.getElementById("threadCols");
+  if (!tc) {
+debug("no threadCols yet");
+    return null;
+  }
+  findCols();      //fill gColumns
 /*
 *  add custom columns
 */
@@ -1192,6 +1238,25 @@ debug('add our own columns');
   s.setAttribute('added','gg');
   lc.insertAdjacentElement('beforebegin', s);
   lc.insertAdjacentElement('beforebegin', c);
+
+/*
+ *  Restore persisted attributes. (Thanks to full_address_column addon!)
+ */
+  ['sio_inoutCol', 'sio_inoutaddressCol', 'sio_inoutthissideCol'].forEach(id=>{
+debug('persist of '+id);
+    let c=gD.getElementById(id);
+    let attributes = Services.xulStore.getAttributeEnumerator(gD.URL, id);
+    for (let attribute of attributes) {
+      let value = Services.xulStore.getValue(gD.URL, id, attribute);
+debug('  attr='+attribute+' value='+value);
+      // See Thunderbird bug 1607575 and bug 1612055.
+      if (attribute != "ordinal" || parseInt(AppConstants.MOZ_APP_VERSION, 10) < 74) {
+        c.setAttribute(attribute, value);
+      } else {
+        c.ordinal = value;
+      }
+    }
+  });
 
 /*
 *  add menu entries to 'View/Sort by'
@@ -1264,13 +1329,11 @@ debug('add our own columns');
     let uri = Services.io.newURI(url, null, null);
     styleSheetService.loadAndRegisterSheet(uri, styleSheetService.USER_SHEET);
   }
-
-  state='cols';		// columns added
 }
 
 function changedCols() {
 debug('changedCols');
-	let changed=new Map;
+	var changed=new Map;
   let cols=gD.getElementById('threadCols').childNodes;
   cols.forEach(col=>{
     if (col.id && !col.getAttribute('fixed') && !(col.id).includes('sio_')) {
@@ -1285,7 +1348,7 @@ debug('new col '+col.id+' found, added to gColumns');
 			changed.set(col.id, col.getAttribute('label'));
     }
   });
-	let colsArray=Array.from(cols);
+	var colsArray=Array.from(cols);
   gColumns.forEach((label, col) => {
 		if (colsArray.some(item=>item.id==col)) return;
 debug('obsolete col '+col+' found, remove');
@@ -1302,44 +1365,49 @@ debug('obsolete col '+col+' still had column handler (not removed)');
 		catch(e) { /*debug('get or remove columnHandler throws '+e);*/ }
 		//remove from prefs is done in background
 	});
-debug('changedCols done');
+debug('changedCols done, changed='+JSON.stringify(Array.from(changed)));
 	return changed;
 }
 
-var debugcache='';
-//var filecache='';
-//var { OS } = ChromeUtils.import("resource://gre/modules/osfile.jsm");
-//var pth = OS.Path.join('T:', 'Temp', 'showInOut.log');
-function debug(txt) {
-//  filecache+=txt+'\n';
-//  OS.File.writeAtomic(pth, filecache, { tmpPath: pth+'.tmp'});
-
-	if (prefs) {
-		if (prefs.debug) {
-			if (debugcache) console.log(debugcache); debugcache='';
-			console.log('SIO: '+txt);
-		}
+var debugcache=new Map();
+function debug(txt, ln) {
+	//if from background or options via messenger.sio.debug: (string, string)
+	//else	(string, undefined) or (string, exception)
+	let ex;
+	if (typeof ln==='string') {
+		ex=txt.match('throws:');
 	} else {
-		debugcache+='SIO: (cached) '+txt+'\n';
+		ex=typeof ln!=='undefined';
+		let e;
+		if (ex) e=ln;
+		else e = new Error();
+		let stack = e.stack.toString().split(/\r\n|\n/);
+		ln=stack[ex?0:1].replace(/file:\/\/.*\/(.*:\d+):\d+/, '$1');  //localfolder@file:///D:/sourcen/Mozilla/thunderbird/Extensions/ShowInOut_wee/sio_implementation.js:106:6
 	}
-}
-
-// debug functions
-/*
-function dumpTree() {
-  let tree=document.getElementById('threadTree');
-//  console.log('DOM: '+tree.tagName+'\n');
-  let rows=tree.firstChild.nextSibling; //treechildren, nicht xul:treerows!!!
-  //rows.firstChild: ex. nicht!
-  //rows.childNodes.length=0 !!!
-}
-
-function dumpProps(row, col, properties) {
-  for (let i=0; i<properties.Count(); i++) {
-    let prop;
-    prop=properties.GetElementAt(i).QueryInterface(Ci.nsIAtom);
-    console.log('prop ('+row+','+(col?col.id:'')+'): '+prop.toString()+"\n");
+	if (!prefs) {
+		var d=new Date();
+		var s=d.toLocaleString();
+		debugcache.set(debugcache.size+(ex?':fail':'')+'-'+s, '(cached) '+ln+' '+txt);
+		return;
+	}
+	if (!prefs['debug']) {
+    debugcache=null;
+    return;
   }
-}
-*/
 
+	//if (inconsole) this.console.logStringMessage('AddressbooksSynchronizer: '+txt);
+	if (debugcache && debugcache.size) {
+console.log('SIO: debug: debugcache.size='+debugcache.size);
+		for (let [s, t] of debugcache) {
+			if (s.match(':fail-'))
+				console.error('SIO: '+t);
+			else
+				console.debug('SIO: '+t);
+		}
+		debugcache.clear();
+	}
+	if (ex)
+		console.error('SIO: '+ln+' '+txt);
+	else
+		console.debug('SIO: '+ln+' '+txt);
+}

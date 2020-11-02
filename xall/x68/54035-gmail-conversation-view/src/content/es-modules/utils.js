@@ -13,13 +13,11 @@
  */
 
 /* globals require */
-
 // Set up an object for the make-shift module emulation
-window.esExports = {};
-
-// The node.js `esm` loader won't share globals. Since this is only used
+window.esExports = {}; // The node.js `esm` loader won't share globals. Since this is only used
 // by tests at the moment, which are run by node.js, use the `require`
 // function as a fallback
+
 require("../utils.js");
 
 export const getInitials = window.esExports.getInitials;

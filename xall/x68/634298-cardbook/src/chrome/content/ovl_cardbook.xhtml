@@ -600,13 +600,13 @@
 					hidecolumnpicker="true" onkeyup="wdw_cardbook.selectAccountOrCatInNoSearch();" onclick="wdw_cardbook.selectAccountOrCatInNoSearch();">
 					<treecols id="accountsOrCatsTreecols">
 						<treecol id="accountEnabled" type="checkbox" editable="true" width="17" hideheader="true" persist="width ordinal hidden" tooltiptext="__CARDBOOKMSG_enableAccountsTooltip__"/>
-						<treecol id="accountTypeCheckbox" type="checkbox" editable="false" width="20" hideheader="true" persist="width ordinal hidden"/>
+						<treecol id="accountTypeCheckbox" editable="false" width="20" hideheader="true" persist="width ordinal hidden"/>
 						<treecol id="accountColor" editable="false" width="17" hideheader="true" persist="width ordinal hidden" tooltiptext="__CARDBOOKMSG_colorAccountsTooltip__"/>
 						<treecol id="accountName" flex="1" persist="width ordinal hidden" primary="true" hideheader="true" crop="center"/>
 						<treecol id="accountId" persist="width ordinal hidden" hidden="true" hideheader="true"/>
 						<treecol id="accountType" persist="width ordinal hidden" hidden="true" hideheader="true"/>
 						<treecol id="accountRoot" persist="width ordinal hidden" hidden="true" hideheader="true"/>
-						<treecol id="accountStatusCheckbox" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true" tooltiptext="__CARDBOOKMSG_readonlyAccountsTooltip__"/>
+						<treecol id="accountStatusCheckbox" persist="width ordinal hidden" width="20" hideheader="true" tooltiptext="__CARDBOOKMSG_readonlyAccountsTooltip__"/>
 						<treecol id="dummyForScroll" type="checkbox" persist="width ordinal hidden" width="17" hideheader="true"/>
 					</treecols>
 					<treechildren id="accountsOrCatsTreeChildren" flex="1" ondragstart="wdw_cardbook.startDrag(event);" ondrop="wdw_cardbook.dragCards(event);"

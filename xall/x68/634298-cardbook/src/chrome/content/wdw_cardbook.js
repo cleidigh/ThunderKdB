@@ -73,7 +73,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					var myLabel = myColumns[i][1];
 					cardbookElementTools.addTreeSplitter(myTreecols, {ordinal: myOrdinal++});
 					if (myCode == "cardIcon") {
-						cardbookElementTools.addTreecol(myTreecols, myCode, myLabel, {fixed: 'true', persist: 'width ordinal hidden', style: 'text-align:left', hidden: 'true',
+						cardbookElementTools.addTreecol(myTreecols, myCode, myLabel, {fixed: 'true', width: '20', persist: 'width ordinal hidden', style: 'text-align:left', hidden: 'true',
 														class: 'treecol-image cardIconHeader', ordinal: myOrdinal++, closemenu: 'none'});
 					} else {
 						cardbookElementTools.addTreecol(myTreecols, myCode, myLabel, {flex: '1', persist: 'width ordinal hidden', style: 'text-align:left', hidden: 'true',
@@ -90,6 +90,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		loadFirstWindow: function () {
+			cardbookLocales.updateDocument();
 			cardBookWindowObserver.register();
 			cardBookWindowPrefObserver.register();
 			cardBookWindowMutationObserver.register();

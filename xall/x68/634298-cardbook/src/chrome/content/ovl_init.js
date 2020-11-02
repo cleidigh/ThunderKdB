@@ -105,7 +105,7 @@ var ovl_synchro = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "52.5");
+		prefs.setCharPref("addonVersion", "52.6");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);
