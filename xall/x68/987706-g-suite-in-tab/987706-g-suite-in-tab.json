@@ -19,30 +19,30 @@
     "contributions_url": "",
     "created": "2019-10-13T20:40:43Z",
     "current_version": {
-        "id": 2472752,
+        "id": 2474616,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "66.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/g-suite-in-tab/versions/2472752",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/g-suite-in-tab/versions/2474616",
         "files": [
             {
-                "id": 1015850,
-                "created": "2019-10-15T21:37:05Z",
-                "hash": "sha256:20f1b6f923fbd6882a969894ef161ec98dc3c914be8b05f497da7512f4c91f3d",
-                "is_restart_required": true,
+                "id": 1017778,
+                "created": "2020-11-02T13:03:01Z",
+                "hash": "sha256:66fe577a497b2ad7ac69995b1e4bc89599daa55a5d699a849ac674b0c28b3f23",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 104713,
+                "size": 108795,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015850/g_suite_in_tab-0.2.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017778/g_suite_in_tab-0.3.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 12,
             "name": {
@@ -72,9 +72,9 @@
             "url": "http://www.gnu.org/licenses/lgpl-3.0.html"
         },
         "release_notes": null,
-        "reviewed": "2019-11-06T13:02:42Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/g-suite-in-tab/versions/0.2.0",
-        "version": "0.2.0"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/g-suite-in-tab/versions/0.3.0",
+        "version": "0.3.0"
     },
     "default_locale": "es",
     "description": {
@@ -97,38 +97,66 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-06T13:02:42Z",
+    "last_updated": "2020-11-02T13:05:03Z",
     "name": {
         "es": "G Suite in tab"
     },
     "previews": [
         {
-            "id": 205814,
+            "id": 206230,
             "caption": null,
             "image_size": [
-                792,
-                800
+                370,
+                309
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205814.png?modified=1571001987",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206230.png?modified=1604326538",
             "thumbnail_size": [
-                198,
+                239,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205814.png?modified=1571001987"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206230.png?modified=1604326538"
         },
         {
-            "id": 205815,
+            "id": 206233,
             "caption": null,
             "image_size": [
-                1019,
-                800
+                408,
+                395
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205815.png?modified=1571001987",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206233.png?modified=1604326540",
             "thumbnail_size": [
-                255,
+                207,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205815.png?modified=1571001987"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206233.png?modified=1604326540"
+        },
+        {
+            "id": 206231,
+            "caption": null,
+            "image_size": [
+                896,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206231.png?modified=1604326538",
+            "thumbnail_size": [
+                224,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206231.png?modified=1604326538"
+        },
+        {
+            "id": 206232,
+            "caption": null,
+            "image_size": [
+                960,
+                675
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206232.png?modified=1604326538",
+            "thumbnail_size": [
+                284,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206232.png?modified=1604326538"
         }
     ],
     "public_stats": false,
@@ -157,6 +185,7 @@
         "firefox57",
         "g suite",
         "google calendar",
+        "google contacts",
         "google keep",
         "keep"
     ],
@@ -165,10 +194,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true
         }
     }
 }

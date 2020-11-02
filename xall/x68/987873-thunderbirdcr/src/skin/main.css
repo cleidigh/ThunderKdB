@@ -1,0 +1,199 @@
+/* --Rules for entire layout-- */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+/* !-- Rules for entire layout-- */
+
+
+/* --Rules for the search form -- */
+#exchange-lang {
+  transition: transform 0.5s;
+}
+
+#exchange-lang:focus {
+  outline: none;
+}
+
+#exchange-lang:hover {
+  transform: rotate(-220deg);
+}
+
+#search-text {
+  border: none;
+  outline: 0 !important;
+  min-height: 23px;
+  max-height: 152px;
+  line-height: 23px;
+  padding: 6px 3px;
+  resize: none;
+  border-radius: 3px 0 0 3px;
+  opacity: 1;
+  color: #32485f;
+  font-size: 14px;
+  position: relative;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+form div.mdc-text-field {
+  border-radius: 4px;
+  padding: 0 0 0 2px;
+  width: 100%;
+}
+
+form .mdc-text-field:not(.mdc-ripple-upgraded--background-focused) {
+  background-color: #F8F8F8;
+}
+
+form .mdc-text-field.mdc-ripple-upgraded--background-focused {
+  background-color: white;
+}
+
+form .mdc-text-field__input::placeholder {
+  opacity: 0.6
+}
+
+form .mdc-line-ripple::after {
+  border-color: #0000FF;
+}
+
+form button.mdc-button {
+  background-color: #dfeaf0 !important;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+button.mdc-button {
+  min-width: 55px;
+}
+
+button.mdc-button i {
+  color: whitesmoke;
+}
+
+button:disabled i {
+  color: #0970ac;
+  cursor: initial;
+}
+/* !--Rules for the search form -- */
+
+
+/* --Rules for the result space -- */
+#dictionary-entries .flex-column {
+  float: left;
+}
+
+.rr-button {
+  margin: 3px;
+  background-color: #eef8ff !important;
+  border: 1px solid #9bbbcd;
+  box-shadow: none !important;
+  text-transform: none;
+  height: 28px;
+  line-height: 28px;
+  white-space: nowrap;
+  padding: 0 5px 0 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: none;
+  font-size: 14px;
+}
+
+.rr-button:hover {
+  background-color: white !important;
+}
+
+.rr-button.selected {
+  font-weight: bold;
+}
+
+#translate-result .mdc-list-item {
+  cursor: initial;
+}
+
+#translate-result {
+  margin-block-start: 0;
+  padding-top: 0;
+}
+
+#translate-result .mdc-list-item__text {
+  font-size: 12px;
+}
+
+#translate-result li {
+  padding: 15px;
+}
+
+#translate-result li:nth-child(odd) {
+  background: #ecf7ff;
+}
+
+#translate-result li:nth-child(even) {
+  background: white;
+}
+
+#translate-result li span.context-source {
+  display: block;
+  font-size: 95%;
+  color: #0970ac;
+}
+
+#translate-result li span.context-target {
+  line-height: 2.5em;
+}
+
+#translate-result li span.context-target::before {
+  display: inline;
+  font-family: "Material Icons";
+  font-size: 80%;
+  content: "\e5da \00a0";
+}
+
+#translate-result li span em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+#translate-result div.error-comment {
+  color: red;
+  margin-top: 30px;
+  text-align: center;
+}
+/* !--Rules for the result space -- */
+
+
+/* --Rules for the loading mask -- */
+div.loading {
+  text-align: center;
+}
+
+div.loading .mask {
+  background-color: #fff;
+  opacity: 0.3;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  outline: none;
+}
+
+div.loading img {
+  position: absolute;
+  top: 40%;
+}
+/* !--Rules for the loading mask -- */
+
+/* --Rules for the menu -- */
+#thunderbirdcr-menu-item {
+  list-style-image: url('/skin/icon16.png');
+}
+/* !--Rules for the menu -- */

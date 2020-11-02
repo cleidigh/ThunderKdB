@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/skin/material-icons.css">
+    <link rel="stylesheet" href="/skin/material-components-web.min.css">
+    <link rel="stylesheet" type="text/css"  href="/skin/main.css" />
+    <script src="jquery.min.js"></script>
+    <script src="material-components-web.js"></script>
+    <script src="/locale/l10n.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <div class="loading">
+      <div class="mask"></div>
+      <img src="/skin/loading-spinner.gif" />
+    </div>
+    <div class="flex-column" style="background-color: #0970ac;">
+      <div class="flex-row" style="margin: 2px 0 3px;">
+        <div class="mdc-text-field">
+          <select id="source-lang" class="mdc-text-field__input" onchange="changedSourceLang(this.value);" style="color: white;">
+          </select>
+        </div>
+        <input id="exchange-lang" type="image" src="/skin/icon32.png" onclick="exchangeLang();">
+        <div class="mdc-text-field">
+          <select id="target-lang" class="mdc-text-field__input" onchange="changedTargetLang();" style="color: white;">
+          </select>
+        </div>
+      </div>
+      <div class="flex-row" style="margin: 2px 0 4px;">
+        <button id="history-back" class="mdc-button" onclick="historyBack();" disabled="disabled">
+          <i class="material-icons">chevron_left</i>
+        </button>
+        <form action="javascript:void(0);" id="search" style="width: calc(100% - 100px);">
+          <div class="mdc-text-field">
+            <input id="search-text" class="mdc-text-field__input" type="text" />
+            <label class="mdc-floating-label mdc-floating-label--float-above" for="search-text"></label>
+            <div class="mdc-line-ripple"></div>
+            <button id="search-button" class="mdc-button" onclick="newSearch( function() { $('#search-text').val($('#search-text').val().trim()); return $('#search-text').val(); }());" style="min-width: 40px;"><i class="material-icons">search</i></button>
+          </div>
+        </form>
+        <button id="history-forward" class="mdc-button" onclick="historyForward();" disabled="disabled">
+          <i class="material-icons">chevron_right</i>
+        </button>
+      </div>
+    </div>
+    <div class="flex-row" style="padding-top: 0px; padding-bottom: 0px;">
+      <div id="dictionary-entries">
+      </div>
+    </div>
+    <ul id="translate-result" class="mdc-list  mdc-list--two-line">
+    </ul>
+  </body>
+</html>

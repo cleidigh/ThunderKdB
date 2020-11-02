@@ -1,0 +1,35 @@
+<?xml-stylesheet href="chrome://thunderbirdcr/skin/overlay.css" type="text/css" ?>  
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css ?>
+
+<overlay id="messengerWindow" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/javascript" src="chrome://thunderbirdcr/locale/l10n.js"></script>
+  <script type="application/javascript" src="chrome://thunderbirdcr/content/overlay.js"></script>
+
+  <vbox id="messengerBox" persist="collapsed width height">
+    <splitter
+	  id="thunderbirdcr-splitter"
+	  collapse="after"
+	  orient="horizontal"
+	  persist="state hidden"
+	/>
+    <vbox
+	  id="thunderbirdcrPane"
+	  width="400"
+      minwidth="350"
+	  persist="width height hidden"
+	>
+      <browser src="chrome://thunderbirdcr/content/main.html" flex="1"/>
+    </vbox>
+  </vbox>
+  <keyset>
+	<key id="quick-search" modifiers="shift" keycode="VK_F1" oncommand="quickSearch();"/>
+  </keyset>
+
+  <menupopup id="mailContext" onpopupshown="toggleMenuItem();">
+    <menuseparator id="thunderbirdcr-menu-splitter"/>
+    <menuitem id="thunderbirdcr-menu-item" class="menuitem-iconic"
+        image="chrome://thunderbirdcr/skin/icon16.png" key="quick-search" oncommand="quickSearch();"/>
+  </menupopup>
+
+</overlay>
