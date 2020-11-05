@@ -30,26 +30,26 @@
     "contributions_url": "",
     "created": "2016-06-24T12:39:06Z",
     "current_version": {
-        "id": 2474525,
+        "id": 2474637,
         "compatibility": {
             "thunderbird": {
                 "max": "78.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lookout-fix-version/versions/2474525",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lookout-fix-version/versions/2474637",
         "files": [
             {
-                "id": 1017687,
-                "created": "2020-10-26T07:32:42Z",
-                "hash": "sha256:826ec6e663c658a9b8f0a2ab3313bc3f0fa42874841a6176ae550b3f6a9165f3",
+                "id": 1017799,
+                "created": "2020-11-05T08:35:55Z",
+                "hash": "sha256:50bb6d35a2ecbf045ba46dcb727038ebaa8ef486b558c902efec56ebcca37e1b",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 207025,
+                "size": 206827,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017687/lookout_fix_version-3.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017799/lookout_fix_version-3.0.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -62,11 +62,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Initial Thunderbird 78 support has been added via the Experiment wrapper API\n* Calendar integration has still not been fully tested.\n\nPlease report any issues to <a rel=\"nofollow\" href=\"https://github.com/TB-throwback/LookOut-fix-version/issues\">https://github.com/TB-throwback/LookOut-fix-version/issues</a>"
+            "en-US": "Fixes calendar integration after receiving sample email"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout-fix-version/versions/3.0.1",
-        "version": "3.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lookout-fix-version/versions/3.0.2",
+        "version": "3.0.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -89,7 +89,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-26T07:57:14Z",
+    "last_updated": "2020-11-05T08:54:08Z",
     "name": {
         "en-US": "LookOut (fix version)",
         "hu": "MutasdMeg! (LookOut)"
@@ -181,6 +181,11 @@
             "comp69plus": true,
             "comp78plus": true,
             "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-10-26T07:32:42Z",
+            "comp78pv_version": "3.0.1",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*",
             "comp68pv": true,
             "comp68pv_date": "2019-08-30T07:50:32Z",
             "comp60pv": true,

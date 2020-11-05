@@ -18,30 +18,33 @@
     "contributions_url": "",
     "created": "2018-12-06T07:22:46Z",
     "current_version": {
-        "id": 2472878,
+        "id": 2474629,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/stripimages/versions/2472878",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/stripimages/versions/2474629",
         "files": [
             {
-                "id": 1015984,
-                "created": "2019-11-14T18:28:37Z",
-                "hash": "sha256:18fe93fa5e0455b91996cff7244cb5996f61eaf26675b141d516676d15b1d5dd",
-                "is_restart_required": true,
+                "id": 1017791,
+                "created": "2020-11-03T19:43:50Z",
+                "hash": "sha256:0ada195ffe83118d22408b3489a2a592c668e6d7cfe59c3992251d42fcd7ac65",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 3248,
+                "size": 2485,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015984/stripimages-1.0.7-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017791/stripimages-1.0.9-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "menus"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 22,
             "name": {
@@ -73,9 +76,9 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": null,
-        "reviewed": "2019-11-20T11:48:01Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/stripimages/versions/1.0.7",
-        "version": "1.0.7"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/stripimages/versions/1.0.9",
+        "version": "1.0.9"
     },
     "default_locale": "da",
     "description": null,
@@ -94,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-20T11:48:01Z",
+    "last_updated": "2020-11-03T19:45:03Z",
     "name": {
         "da": "stripImages"
     },
@@ -124,10 +127,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

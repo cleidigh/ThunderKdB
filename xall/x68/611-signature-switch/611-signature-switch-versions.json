@@ -1,5 +1,54 @@
 [
     {
+        "id": 2474627,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-switch/versions/2474627",
+        "files": [
+            {
+                "id": 1017789,
+                "created": "2020-11-03T17:20:01Z",
+                "hash": "sha256:4a94e7e82d3c99d0c289b2129325fbdec2540fc200a5027c402a8058dd8af3cf",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 960681,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017789/signature_switch-2.3.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage",
+                    "unlimitedStorage",
+                    "tabs",
+                    "menus",
+                    "clipboardWrite",
+                    "accountsRead"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-switch/versions/2.3.0",
+        "version": "2.3.0"
+    },
+    {
         "id": 2474610,
         "channel": "listed",
         "compatibility": {
@@ -1721,39 +1770,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-switch/versions/0.6",
         "version": "0.6"
-    },
-    {
-        "id": 2463,
-        "channel": "listed",
-        "compatibility": {
-            "thunderbird": {
-                "max": "1.0.2",
-                "min": "0.7"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-switch/versions/2463",
-        "files": [
-            {
-                "id": 2954,
-                "created": "2007-03-05T13:12:18Z",
-                "hash": "sha256:7ff9e8e8d7f0190f2d1af70104b55634cf215c8b396c7353be3c6b827ff50679",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 11264,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/2954/signature_switch-0.5.1-tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": null,
-        "release_notes": {
-            "en-US": "hotfix: some users had problems with the previous release causing the composer-window to freeze;\ncorrected the overlay-sequence (hopefully that solves the problem)"
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-switch/versions/0.5.1",
-        "version": "0.5.1"
     }
 ]

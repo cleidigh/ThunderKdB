@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CCFL84AMQKV4S&source=url",
     "created": "2020-09-15T23:42:12Z",
     "current_version": {
-        "id": 2474484,
+        "id": 2474639,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/qnote/versions/2474484",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/qnote/versions/2474639",
         "files": [
             {
-                "id": 1017646,
-                "created": "2020-10-19T15:08:09Z",
-                "hash": "sha256:18ba76ee7139980f1450dd0f6974a8241eedea0caeeebaeba0280112bc0409c4",
+                "id": 1017801,
+                "created": "2020-11-05T12:14:49Z",
+                "hash": "sha256:b1a79033ff8a9db8f048ece2d8b28c3a6953cab8415c1137c74e1ec207304847",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 55204,
+                "size": 59482,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017646/qnote-0.6.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017801/qnote-0.7.0-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "storage",
@@ -78,15 +78,15 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "-Added main toolbar button\n-Attach note to window that opened it instead to main window\n-Updated icons\n-Force note text color to black\n-Minor bug fixes"
+            "en-US": "-Add QucikFilter support for filtering notes by contents\n-Various bug fixes"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/qnote/versions/0.6.3",
-        "version": "0.6.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/qnote/versions/0.7.0",
+        "version": "0.7.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Export data before removing extension if you are using internal storage.</b>\n\n-Use mouse right click context menu to delete note or reset note window\n\n-Use ESC to close note without saving\n\n-Use Alt+Q to toggle note\n\n-Window popup positions currently can't be set due to API limitations. Use floating panel instead.\n\n-Usage with TB older than 78 is somewhat cumbersome but should work\n\n-Version 0.4 introduce storage option - either internal extension or XNote folder (same as with original extension)\n\n-Version 0.5 introduce back QNote column and two options for popup window style - floating panel or using TB new windows API\n\n-Version 0.6 introduce saving notes using JSON file format instead of XNote++ format when opt for folder storage"
+        "en-US": "QNote was started because XNote++ developer dropped support for it. It aims to be XNote++ drop-in replacement. For issues please do not use reviews section but send them to support email.\n\n<b>Export data before removing extension if you are using internal storage!</b>\n\n<b>Usage:</b>\n-Use mouse right click context menu to delete note or reset note window.\n\n-Use ESC to close note without saving.\n\n-Use Alt+Q to toggle note.\n\n-Window popup positions currently can't be set due to API limitations. Use floating panel instead.\n\n<b>History:</b>\n-Version 0.7 will introduce note search feature using QuickFilter.\n\n-Version 0.6 introduce saving notes using JSON file format instead of XNote++ format when opt for folder storage.\n\n-Version 0.5 introduce back QNote column and two options for popup window style: floating panel or windows using TB new API.\n\n-Version 0.4 introduce storage option:  internal extension or XNote++ local folder (compatible with original extension)."
     },
     "developer_comments": {
         "en-US": "Please send bug reports or issues to support email. Backup your XNote folder."
@@ -105,11 +105,92 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-21T07:12:59Z",
+    "last_updated": "2020-11-05T17:13:41Z",
     "name": {
         "en-US": "QNote"
     },
-    "previews": [],
+    "previews": [
+        {
+            "id": 206240,
+            "caption": {
+                "en-US": "Note popup overlay"
+            },
+            "image_size": [
+                1040,
+                780
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206240.png?modified=1604600035",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206240.png?modified=1604600035"
+        },
+        {
+            "id": 206241,
+            "caption": {
+                "en-US": "UTF8 support"
+            },
+            "image_size": [
+                1040,
+                780
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206241.png?modified=1604600035",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206241.png?modified=1604600035"
+        },
+        {
+            "id": 206242,
+            "caption": {
+                "en-US": "Custom column"
+            },
+            "image_size": [
+                1040,
+                780
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206242.png?modified=1604600035",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206242.png?modified=1604600035"
+        },
+        {
+            "id": 206243,
+            "caption": {
+                "en-US": "QucikFilter support for filtering notes by contents"
+            },
+            "image_size": [
+                1040,
+                780
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206243.png?modified=1604600035",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206243.png?modified=1604600035"
+        },
+        {
+            "id": 206244,
+            "caption": {
+                "en-US": "Right-mouse context menu"
+            },
+            "image_size": [
+                1040,
+                780
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206244.png?modified=1604599983",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206244.png?modified=1604599983"
+        }
+    ],
     "public_stats": true,
     "ratings": {
         "bayesian_average": 4.50521,

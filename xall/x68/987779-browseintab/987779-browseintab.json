@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-02-10T20:15:47Z",
     "current_version": {
-        "id": 2473594,
+        "id": 2474619,
         "compatibility": {
             "thunderbird": {
-                "max": "77.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/versions/2473594",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/versions/2474619",
         "files": [
             {
-                "id": 1016740,
-                "created": "2020-04-07T17:29:17Z",
-                "hash": "sha256:23eb8e6270da8c5582e35def236a898f1f4e2c92f9e63c2964e4dae39b099e29",
+                "id": 1017781,
+                "created": "2020-11-02T20:26:31Z",
+                "hash": "sha256:69a664bc094ad3f9e1f14a449f0b58490d77d9f64fb8bd944896571f558a5102",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 17106,
+                "size": 46872,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016740/browseintab-1.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017781/browseintab-2.4-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
@@ -73,17 +73,17 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "<b>Version 1.7 changes</b>\n\n<li>New: improve link contextmenu options in about pages.</li><li>Fix: make content tab url visible in dark themes.</li><li>Update: use localization substitution for options html instead of code generation.</li>"
+            "en-US": "<b>Version 2.4 changes</b>\n\n<li>Udate: refactor storage.local options changes notification.</li>\n<b>Version 2.3 changes</b>\n\n<li>Fix: Issue #5: Context menu: Undo/Redo is showing on messages list (thanks Kris Kelvin).</li><li>New: Issue #3: Add feature to open a new blank tab; allow edit of url in urlbar (thanks atErik).</li><li>New: Zoom applies to chrome as well as messages and web content.</li>\n<b>Version 2.2 changes</b>\n\n<li>New: implement browser_style in Options.</li>\n<b>Version 2.1 changes</b>\n\n<li>Fix: urlBar system url icon is not displayed.</li><li>Fix: handle zoom in tabs without a browser.</li><li>Fix: make urlBar zoom UI update work in multimessage browser, and glodaFacet tab name, chat tab type, chromeTab tab type browsers.</li><li>Fix: handle too large branding icon on startup.</li><li>Fix: ensure all listeners and traces cleaned up on extension disable.</li>\n<b>Version 2.0 changes</b>\n\n<li>New: make the urlBar look like someone cares.</li><li>New: add reload button in the urlBar and ctrl+F5/ctrl+shift+F5 for reload/reload skip cache.</li><li>New: add zoom level button in the urlBar, like Firefox; persist per tab setting across restarts.</li><li>New: fix url display in the urlBar for internationalization (IDN and localized paths).</li><li>New: options to display mail toolbar and url toolbar on all tabs.</li><li>Udate: updates and refactorings for Tb 78.</li>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/versions/1.7",
-        "version": "1.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/versions/2.4",
+        "version": "2.4"
     },
     "default_locale": "en-US",
-    "description": null,
-    "developer_comments": {
-        "en-US": "See the <a rel=\"nofollow\" href=\"https://bitbucket.org/alta8888/browseintab\">homepage</a> for the latest BrowseInTab v2.4 and compatibility with Thunderbird 78+. The addon validator on ATN has not been updated for new javascript syntax and rejects uploads of new versions with such valid new syntax."
+    "description": {
+        "en-US": "More details on the <a rel=\"nofollow\" href=\"https://bitbucket.org/alta8888/browseintab\">BrowseInTab homepage</a>."
     },
+    "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/edit",
     "guid": "browseintab@mozdev.org",
     "has_eula": false,
@@ -100,7 +100,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-04-08T16:33:08Z",
+    "last_updated": "2020-11-03T13:09:57Z",
     "name": {
         "en-US": "BrowseInTab"
     },
@@ -186,10 +186,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true
         }
     }
 }

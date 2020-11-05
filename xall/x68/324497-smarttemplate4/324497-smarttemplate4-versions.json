@@ -1,5 +1,48 @@
 [
     {
+        "id": 2474631,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "78.*",
+                "min": "74.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2474631",
+        "files": [
+            {
+                "id": 1017793,
+                "created": "2020-11-04T15:05:41Z",
+                "hash": "sha256:dc41aa9864f995d022bb6b7041b730f6304e873af14a3032f9abccea44b8c21b",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1067257,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017793/smarttemplates-3.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7344,
+            "name": {
+                "en-US": "CC BY-ND 4.0"
+            },
+            "text": {
+                "en-US": "LICENSE\n\n\nSmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the SmartTemplate4 Add-on (distributed as a XPI file) and all files contained within it\nPremium Feature - a feature or function of the software which is protected by the mechanism outlined below\nSmartTemplate4 Pro - Refers to the registered version of SmartTemplate4\n\n\nAll contents of The Program are subject to the GNU General Public License Version 3\n(the \"License\"); you may not use the file except in compliance with\nthe License. You may obtain a copy of the complete License at\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/legalcode\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a>\nFor a  human-readable summary thereof please refer\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by \na paid registration scheme. Registration keys can be obtained via various licensing links\nfrom within the software (Settings &gt; Advanced &gt; SmartTemplate4 Pro tab, SmartTemplate4 context menu, \npremium notification messages). The profits from Registration are used to develop\nand distribute the program further and to feed the author, as he would like to spend\nmore time developing open source software. Some Premium features may be available in \nthe free software, but they may be restricted (e.g. through a notification to the \nregistration). Premium features are not essential to the core functionality of \nthe Program, but are there to provide an incentive for financially supporting the \nenhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys.\nRegistration keys are personal, non-transferrable and usually restricted to a time period\n(typically one year). To protect their personal nature they are tied to the user's \nEmail address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused \nin order to avoid our monetisation by giving this away for free or cheaper than us \nthus disincentivising the current developers from putting a lot of time into \ndevelopment and support.\n\n\nIf plan to you use large portions of the code please contact the author\n(Axel Grude)\nAnd Support (Marky Mark DE)\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nCreative Commons (CC BY-ND 4.0) License for more details.\n\n\nATTRIBUTIONS\n\nSmartTemplate4 includes work by\n\nCurrent developer: \nAxel Grude\nMarky Mark DE\n\nContributors: \nAris - style support\ntool8 - development, Version 0.7.2 - 0.8.0\n\nTranslations: \nThe current list of translators is listed in the install.rdf (Add-ons Manager / About) and\ndisplayed on the \"about\" Tab.\n\nNOIA ICON SET:\nThis Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE \n-&gt; see:Noia_KDE_0.95.tar_4.tgz / lesser.txt\n\t\t       \nMade by Carlitus (Carles Carbonell Bernado)\n &lt;mail@carlitus.net&gt;"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.0"
+        },
+        "release_notes": {
+            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.0\">can be found here</a>\n\nYou can also find there a discounted sale for Pro and Standard licenses for 2 weeks in November.\n\n<b>Latest News</b>\n\nWe had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a Pro license</a>\n\nMigration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.\n\n<b>Changes / Bug Fixes</b>\n<ul>    <li> Use the new mail extension with experiment APIs method (WindowLoader). This loads the overlay dynamically -  the advantage being that the Add-ons now works without restarting. You can also disable / uninstall without having to  restart Thunderbird.</li>    <li>Removed Shim Code - this was code for backwards compatibilty with older Thundebrird versions as well as SeaMonkey and Postbox    </li>    <li>Removed support for SeaMonkey</li>    <li>Removed Stationery references &amp; configuration</li>    <li>Rewrote filling in variables and focus method to work with new address widgets</li>    <li>Rewrite all template dropdowns. This is based on a hack supplied by John Bieling, thanks very much for all the help.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.0",
+        "version": "3.0"
+    },
+    {
         "id": 2473909,
         "channel": "listed",
         "compatibility": {

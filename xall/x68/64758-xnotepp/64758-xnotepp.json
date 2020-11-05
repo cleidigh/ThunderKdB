@@ -28,30 +28,34 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2AKE2G2B9J3ZS",
     "created": "2010-01-25T14:05:29Z",
     "current_version": {
-        "id": 2472162,
+        "id": 2474599,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "78.*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xnotepp/versions/2472162",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xnotepp/versions/2474599",
         "files": [
             {
-                "id": 1015230,
-                "created": "2019-08-28T22:07:59Z",
-                "hash": "sha256:b037a73155648df23ad5bd8147b6f3620e8146d13a2b70446c20dce4344eea1f",
-                "is_restart_required": true,
+                "id": 1017761,
+                "created": "2020-10-29T21:58:46Z",
+                "hash": "sha256:105c5e1cf43b63c87c77d0191ec5bda73376bd20c6604511db939784396761ab",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 79557,
+                "size": 120019,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015230/xnote-2.3.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017761/xnote-3.0.0-tb.xpi?src=",
+                "permissions": [
+                    "activeTab",
+                    "tabs",
+                    "messagesRead"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 16,
             "name": {
@@ -81,16 +85,16 @@
             "url": "http://www.gnu.org/licenses/lgpl-2.1.html"
         },
         "release_notes": {
-            "en-US": "<ul><li>Fixed issue that tag colours are not shown.</li><li>XNote column header shows icon again instead of label.</li></ul>"
+            "en-US": "<ul><li>Compatibility with Thunderbird 78: Please restart your Thunderbird after installing this version as the XNote++ column is only working after a restart.</li><li><b>Preview notes on mouseover:</b> If you display the XNote column and widen it, so that the three dots are shown for a note,   but no text: then, on mouseover/hover, a little window will show the note text. The message does not need to be selected.  This can be used to get a fast overview over all notes indicated in the message list.  The number of characters shown can be chosen in the settings (Tools-&gt;Add-on settings-&gt; XNote++).</li><li><b>Keyboard operation:</b> New note: Shift+F10 - x - c, Modify note: Shift+F10 - x -m, Delete note: Shift+F10 - x - d  (varies by TB language). Some keyboards have a  'context menu' key, which can be used instead of shift+F10 </li><li><b>Set note position on screen:</b> XNote++ now allows to set the standard screen position for notes in the settings. It is even possible to  choose a position outside of the main TB window. So the note will no longer cover parts of the TB window.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/versions/2.3.1",
-        "version": "2.3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/versions/3.0.0",
+        "version": "3.0.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>The update of xnote++ for TB 78 is under way and currently in review by the Thunderbird add-ons review team. There are some new features: you can pre-set the note position on the screen. Also, creating notes by keyboard, without mouse useage, is now possible.\n\nThe transfer to TB 78 involves a lot of work. I (opto) appreciate if you can support this by a donation.\n</b>\n\n<b>Upgrade to / installation on Thunderbird 78</b>\n<ul><li>Version 3.0.0 is compatible with Thunderbird 78, but please restart Thunderbird after XNote++ is installed / updated as the XNote++ column is only working after a restart.</li></ul>\n\nXNote allows you to create a note for each mail. Thus, you can add for example the phone number of that contact or when you have to contact the sender back.\n\n<b>Features:</b>\n<ul><li>Add notes to messages</li><li>Custom column to mark messages with notes.</li><li>Highlight messages with notes.</li><li>Resizeable notes</li><li>Preset standard note position of screen, even outside of TB main window.</li><li>Create notes by keyboard only (no mouse needed).</li><li>Translated into Dutch, English, French, Galician, German, Italian, Japanese, and Polish.</li></ul>Some notes on <b>usage</b>:\n<ul><li><i>XNote toolbar button:</i> XNote comes with a button to add a note to a message. To enable this button, right click on the toolbar (the bar with the icons below the menu bar) and select \"Customize...\". Locate the \"XNote\" button and drag it onto your toolbar. Then select \"Done\" in the customization window.</li><li><i>XNote column:</i> If you want to see the \"Notes\" column, you have to add it via a (left-)click on the rightmost icon in the column headers of the e-mail list (above the scrollbar).</li></ul>See <a rel=\"nofollow\" href=\"https://github.com/xnotepp/xnote/wiki\">https://github.com/xnotepp/xnote/wiki</a> for FAQs and open issues - and please do not use the review functionality below (Mozilla add-ons page) for bug reports.\n\n<b>Kown major issues:</b>\n<ul><li>Notes window disappears if moved too quickly. This was introduced by some Thunderbird version &lt; 35 and I assume it to be a bug in Thunderbird's dialog movement handling. If this happens, the note's position can be reset to the default location using the context menu in the message list.</li></ul>\nThis is a port to Thunderbird &gt;= 3 based on XNote 2.1.0 ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/3093\">https://addons.mozilla.org/en-US/thunderbird/addon/3093</a> ) with bugfixes and additional features.",
-        "de": "<b>Das Update für TB 78 ist \"auf dem Weg\" und derzeit im Review durch das Thunderbird Add-ons Team. Auch einige neue Features sind dabei, z.B. kann die Standardposition der Notiz eingestellt sein, sie darf sogar ausserhalb des TB Fensters liegen. Auch das Erzeugen von Notizen ohne Maus, nur mit der Tastatur, ist jetzt möglich.\n\nDas Übertragen nach TB 78 ist viel Arbeit, ich (opto) freue mich über Spenden. \n</b>\n\n<b>Update für / Installation in Thunderbird 78</b>\n<ul><li>Version 3.0.0 ist kompatibel mit TB 78, benötigt nach Installation / Update aber einen Neustart von Thunderbird, damit die XNote++ Spalte funktioniert.</li></ul>\n\nXNote erlaubt es, den einzelnen E-Mail Nachrichten Notizen zuzuordnen. Das ermöglicht es, nachträglich Anmerkungen zu einer E-Mail hinzuzufügen, z.B. ToDos oder Telefonnummer und Uhrzeit für einen Rückruf.\n\n<b>Funktionen:</b>\n<ul><li>Notizen zu E-Mail Nachrichten zuordnen</li><li>Zusätzliche Spalte in der E-Mail Anzeige zur Markierung von Nachrichten mit Notizen</li><li>Markierung (durch Schlagwort) von E-Mails mit Notizen</li><li>Größenveränderbare Notizen</li><li>Position der Notizen kann eingestellt werden, sogar ausserhalb des Hauptfensters (78)</li><li>Bedienung per Tastatur ohne Maus (78)</li><li>Übersetzungen für Deutsch, Englisch, Französisch, Galizisch, Italienisch, Japanisch, Niederländisch und Polnisch.</li></ul>\nAnmerkungen zur <b>Verwendung</b>:\n<ul><li><i>XNote Symbolleisten-Schaltknopf:</i> XNote bietet einen Schaltknopf (Button) zum Hinzufügen einer Notiz zu einer Nachricht. Um diese zu aktivieren, klicken Sie mit der rechten Maus auf die Symbolleiste (die Leiste unterhalb der Menüleiste) und klicken auf \"Anpassen...\". Finden Sie den \"XNote\" Knopf und ziehen Sie ihn auf die Symbolleiste. Klicken Sie dann auf \"Fertig\" im Anpassungsfenster mit den Symbolen der Symbolleiste.</li><li><i>XNote Spalte:</i> Zum Hinzufügen der XNote Spalte klicken Sie mit der linken Maustaste auf das Symbol ganz rechts in der Kopfzeile über der Liste der E-Mail Nachrichten (zeigt ungefähr eine Tabelle) und wählen die \"Notes\" bzw. \"XNote\" Spalte (je nach Version) aus.</li><li><i>Nachrichten-Schlagwort:</i>Ab Version 2.2.3 kann die Schlagwortverwendung von XNotes mittels Optionsfenster (Extras -- Add ons -- XNote -- Einstellungen) aktiviert werden. Vor Version 2.2.3 verwenden Sie bitte die erweiterte Konfiguration (Extras -- Einstellungen -- Erweitert -- Allgemein -- Konfiguration bearbeiten...) um die Eigenschaft \"xnote.usetag\" auf \"true\" zu setzen. Das erzeugt ein XNote Schlagwort, das Nachrichten zugeordnet wird, wenn eine Notiz erstellt wird oder eine Nachricht mit einer Notiz geöffnet wird.</li></ul>Auf <a rel=\"nofollow\" href=\"https://github.com/xnotepp/xnote/wiki\">https://github.com/xnotepp/xnote/wiki</a> gibt es (in Englisch) eine Sammlung von  FAQs, und offenen Punkten. Bitte die Review Funktionalität weiter unten (Mozilla Add-ons Seite) nicht für Bug-Reports verwenden.\n\n<b>Bekannte auffälligere Probleme:</b>\n<ul><li>Wenn Notizen etwas schneller verschoben werden, verschwinden sie vom Schirm. Ich vermute das ist ein Problem im Dialog-Handling, das mit einer früheren Version von Thunderbird (&lt;35) eingeführt wurde. In dem Fall kann Position und Größe der Notiz über das Kontextmenü in der E-Mail Liste wieder zurückgesetzt werden. </li></ul>\nDiese Portierung für Thunderbird &gt;= 3 basiert auf XNote 2.1.0 ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/3093\">https://addons.mozilla.org/en-US/thunderbird/addon/3093</a> ) und enthält einige Fehlerbehebungen und Erweiterungen."
+        "en-US": "<b>The transfer to TB 78 involves a lot of work. I (opto) appreciate if you can support this by a donation.</b>\n\n<b>Upgrade to / installation on Thunderbird 78</b>\n<ul><li>Version 3.0.0 is compatible with Thunderbird 78, but please restart Thunderbird after XNote++ is installed / updated as the XNote++ column is only working after a restart.</li></ul>\n\nXNote allows you to create a note for each mail. Thus, you can add for example the phone number of that contact or when you have to contact the sender back.\n\n<b>Features:</b>\n<ul><li>Add notes to messages</li><li>Custom column to mark messages with notes.</li><li>Highlight messages with notes.</li><li>Resizeable notes</li><li>Preset standard note position of screen, even outside of TB main window.</li><li>Create notes by keyboard only (no mouse needed).</li><li>Translated into Dutch, English, French, Galician, German, Italian, Japanese, and Polish.</li></ul>Some notes on <b>usage</b>:\n<ul><li><i>XNote toolbar button:</i> XNote comes with a button to add a note to a message. To enable this button, right click on the toolbar (the bar with the icons below the menu bar) and select \"Customize...\". Locate the \"XNote\" button and drag it onto your toolbar. Then select \"Done\" in the customization window.</li><li><i>XNote column:</i> If you want to see the \"Notes\" column, you have to add it via a (left-)click on the rightmost icon in the column headers of the e-mail list (above the scrollbar).</li></ul>See <a rel=\"nofollow\" href=\"https://github.com/xnotepp/xnote/wiki\">https://github.com/xnotepp/xnote/wiki</a> for FAQs and open issues - and please do not use the review functionality below (Mozilla add-ons page) for bug reports.\n\n<b>Kown major issues:</b>\n<ul><li>Notes window disappears if moved too quickly. This was introduced by some Thunderbird version &lt; 35 and I assume it to be a bug in Thunderbird's dialog movement handling. If this happens, the note's position can be reset to the default location using the context menu in the message list.</li></ul>\nThis is a port to Thunderbird &gt;= 3 based on XNote 2.1.0 ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/3093\">https://addons.mozilla.org/en-US/thunderbird/addon/3093</a> ) with bugfixes and additional features.",
+        "de": "<b>Das Übertragen nach TB 78 ist viel Arbeit, ich (opto) freue mich über Spenden.</b>\n\n<b>Update für / Installation in Thunderbird 78</b>\n<ul><li>Version 3.0.0 ist kompatibel mit TB 78, benötigt nach Installation / Update aber einen Neustart von Thunderbird, damit die XNote++ Spalte funktioniert.</li></ul>\n\nXNote erlaubt es, den einzelnen E-Mail Nachrichten Notizen zuzuordnen. Das ermöglicht es, nachträglich Anmerkungen zu einer E-Mail hinzuzufügen, z.B. ToDos oder Telefonnummer und Uhrzeit für einen Rückruf.\n\n<b>Funktionen:</b>\n<ul><li>Notizen zu E-Mail Nachrichten zuordnen</li><li>Zusätzliche Spalte in der E-Mail Anzeige zur Markierung von Nachrichten mit Notizen</li><li>Markierung (durch Schlagwort) von E-Mails mit Notizen</li><li>Größenveränderbare Notizen</li><li>Position der Notizen kann eingestellt werden, sogar ausserhalb des Hauptfensters (78)</li><li>Bedienung per Tastatur ohne Maus (78)</li><li>Übersetzungen für Deutsch, Englisch, Französisch, Galizisch, Italienisch, Japanisch, Niederländisch und Polnisch.</li></ul>\nAnmerkungen zur <b>Verwendung</b>:\n<ul><li><i>XNote Symbolleisten-Schaltknopf:</i> XNote bietet einen Schaltknopf (Button) zum Hinzufügen einer Notiz zu einer Nachricht. Um diese zu aktivieren, klicken Sie mit der rechten Maus auf die Symbolleiste (die Leiste unterhalb der Menüleiste) und klicken auf \"Anpassen...\". Finden Sie den \"XNote\" Knopf und ziehen Sie ihn auf die Symbolleiste. Klicken Sie dann auf \"Fertig\" im Anpassungsfenster mit den Symbolen der Symbolleiste.</li><li><i>XNote Spalte:</i> Zum Hinzufügen der XNote Spalte klicken Sie mit der linken Maustaste auf das Symbol ganz rechts in der Kopfzeile über der Liste der E-Mail Nachrichten (zeigt ungefähr eine Tabelle) und wählen die \"Notes\" bzw. \"XNote\" Spalte (je nach Version) aus.</li><li><i>Nachrichten-Schlagwort:</i>Ab Version 2.2.3 kann die Schlagwortverwendung von XNotes mittels Optionsfenster (Extras -- Add ons -- XNote -- Einstellungen) aktiviert werden. Vor Version 2.2.3 verwenden Sie bitte die erweiterte Konfiguration (Extras -- Einstellungen -- Erweitert -- Allgemein -- Konfiguration bearbeiten...) um die Eigenschaft \"xnote.usetag\" auf \"true\" zu setzen. Das erzeugt ein XNote Schlagwort, das Nachrichten zugeordnet wird, wenn eine Notiz erstellt wird oder eine Nachricht mit einer Notiz geöffnet wird.</li></ul>Auf <a rel=\"nofollow\" href=\"https://github.com/xnotepp/xnote/wiki\">https://github.com/xnotepp/xnote/wiki</a> gibt es (in Englisch) eine Sammlung von  FAQs, und offenen Punkten. Bitte die Review Funktionalität weiter unten (Mozilla Add-ons Seite) nicht für Bug-Reports verwenden.\n\n<b>Bekannte auffälligere Probleme:</b>\n<ul><li>Wenn Notizen etwas schneller verschoben werden, verschwinden sie vom Schirm. Ich vermute das ist ein Problem im Dialog-Handling, das mit einer früheren Version von Thunderbird (&lt;35) eingeführt wurde. In dem Fall kann Position und Größe der Notiz über das Kontextmenü in der E-Mail Liste wieder zurückgesetzt werden. </li></ul>\nDiese Portierung für Thunderbird &gt;= 3 basiert auf XNote 2.1.0 ( <a rel=\"nofollow\" href=\"https://addons.mozilla.org/en-US/thunderbird/addon/3093\">https://addons.mozilla.org/en-US/thunderbird/addon/3093</a> ) und enthält einige Fehlerbehebungen und Erweiterungen."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xnotepp/edit",
@@ -101,16 +105,16 @@
         "en-US": "https://github.com/xnotepp/xnote/wiki",
         "de": "https://github.com/xnotepp/xnote/wiki"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-64.png?modified=1604192607",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-64.png?modified=1604527280",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-32.png?modified=1604192607",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-64.png?modified=1604192607"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-32.png?modified=1604527280",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-64.png?modified=1604527280"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2019-08-29T03:15:09Z",
+    "last_updated": "2020-11-03T11:40:57Z",
     "name": {
         "en-US": "XNote++",
         "de": "XNote++"
@@ -133,10 +137,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.59609,
-        "count": 100,
-        "average": 4.61,
-        "text_count": 100
+        "bayesian_average": 4.60785,
+        "count": 103,
+        "average": 4.6214,
+        "text_count": 103
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/reviews/",
     "requires_payment": false,
@@ -162,8 +166,11 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-07-14T21:33:40Z",
             "comp60pv": true,
             "comp60pv_date": "2018-04-25T22:15:29Z"
         }

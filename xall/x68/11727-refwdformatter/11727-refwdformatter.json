@@ -19,30 +19,33 @@
     "contributions_url": "",
     "created": "2009-04-30T14:51:53Z",
     "current_version": {
-        "id": 2472848,
+        "id": 2474590,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/refwdformatter/versions/2472848",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/refwdformatter/versions/2474590",
         "files": [
             {
-                "id": 1015954,
-                "created": "2019-11-07T18:58:46Z",
-                "hash": "sha256:531dfe7e2c5020045eca68ea0f587463cd3be3e220fd3e4f8050d3a32bf7f741",
-                "is_restart_required": true,
+                "id": 1017752,
+                "created": "2020-10-29T05:12:01Z",
+                "hash": "sha256:594754bda383adf9333c90011d92109c536f938b57e0c3d0def3368e73cfa85c",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 10542,
+                "size": 10434,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015954/refwdformatter-2.68.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017752/refwdformatter-2.78.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "compose"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -52,8 +55,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/refwdformatter/versions/2.68.0",
-        "version": "2.68.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/refwdformatter/versions/2.78.0",
+        "version": "2.78.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-10T14:28:54Z",
+    "last_updated": "2020-11-03T10:41:02Z",
     "name": {
         "en-US": "ReFwdFormatter",
         "ja": "ReFwdFormatter"
@@ -121,7 +124,7 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.777,
+        "bayesian_average": 3.77689,
         "count": 14,
         "average": 3.8571,
         "text_count": 14
@@ -147,10 +150,10 @@
     "weekly_downloads": 110,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2017-09-22T04:18:01Z"
         }
