@@ -40,13 +40,11 @@ if (hasDKIMVerifier) {
 }
 
 function displayResult(result, msg) {
-  var _result$dkim$0$warnin;
-
   if (result.dkim[0].result == "none" || result.dkim[0].res_num > 30) {
     return;
   }
 
-  const warningsClassName = ((_result$dkim$0$warnin = result.dkim[0].warnings_str) === null || _result$dkim$0$warnin === void 0 ? void 0 : _result$dkim$0$warnin.length) ? "warnings" : "";
+  const warningsClassName = result.dkim[0].warnings_str?.length ? "warnings" : "";
   msg.addSpecialTag({
     canClick: false,
     classNames: `dkim-signed ${warningsClassName} ${result.dkim[0].result}`,

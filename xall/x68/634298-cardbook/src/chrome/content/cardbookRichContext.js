@@ -1,5 +1,4 @@
 if ("undefined" == typeof(cardbookRichContext)) {
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -38,7 +37,7 @@ if ("undefined" == typeof(cardbookRichContext)) {
 							myTextbox.oninput();
 						}
 					}, false);
-				menuItem.setAttribute("label", ConversionHelper.i18n.getMessage("toUpperCase"));
+				menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("toUpperCase"));
 				menuItem.setAttribute("class", "cardbookMenuItem");
 				menu.appendChild(menuItem);
 				if (aEvent.target.getAttribute("readonly") == "true") {
@@ -68,7 +67,7 @@ if ("undefined" == typeof(cardbookRichContext)) {
 							myTextbox.oninput();
 						}
 					}, false);
-				menuItem.setAttribute("label", ConversionHelper.i18n.getMessage("toLowerCase"));
+				menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("toLowerCase"));
 				menuItem.setAttribute("class", "cardbookMenuItem");
 				menu.appendChild(menuItem);
 				if (aEvent.target.getAttribute("readonly") == "true") {
@@ -98,9 +97,9 @@ if ("undefined" == typeof(cardbookRichContext)) {
 			if (textbox.getAttribute('fieldLabel')) {
 				var fieldLabel = textbox.getAttribute('fieldLabel');
 			} else {
-				var fieldLabel = ConversionHelper.i18n.getMessage(textbox.getAttribute('fieldName') + "Label");
+				var fieldLabel = cardbookRepository.extension.localeData.localizeMessage(textbox.getAttribute('fieldName') + "Label");
 			}
-			var message = ConversionHelper.i18n.getMessage("copyFieldValue", [fieldLabel]);
+			var message = cardbookRepository.extension.localeData.localizeMessage("copyFieldValue", [fieldLabel]);
 			menuItem.addEventListener("command", function(aEvent) {
 					var tmpArray = this.id.split('::');
 					var textbox1 = document.getElementById(tmpArray[1]);

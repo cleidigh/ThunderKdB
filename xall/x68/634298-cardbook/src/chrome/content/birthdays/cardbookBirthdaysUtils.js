@@ -1,7 +1,6 @@
 if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { cal } = ChromeUtils.import("resource:///modules/calendar/calUtils.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -51,16 +50,16 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 			// if calendar is not found, then abort
 			if (aCalendar == 0) {
-				errorTitle = ConversionHelper.i18n.getMessage("calendarNotFoundTitle");
-				errorMsg = ConversionHelper.i18n.getMessage("calendarNotFoundMessage", [aCalendar.name]);
+				errorTitle = cardbookRepository.extension.localeData.localizeMessage("calendarNotFoundTitle");
+				errorMsg = cardbookRepository.extension.localeData.localizeMessage("calendarNotFoundMessage", [aCalendar.name]);
 				Services.prompt.alert(null, errorTitle, errorMsg);
 				return;
 			}
 
 			// check if calendar is writable - if not, abort
 			if (!(cardbookBirthdaysUtils.isCalendarWritable(aCalendar))) {
-				errorTitle = ConversionHelper.i18n.getMessage("calendarNotWritableTitle");
-				errorMsg = ConversionHelper.i18n.getMessage("calendarNotWritableMessage", [aCalendar.name]);
+				errorTitle = cardbookRepository.extension.localeData.localizeMessage("calendarNotWritableTitle");
+				errorMsg = cardbookRepository.extension.localeData.localizeMessage("calendarNotWritableMessage", [aCalendar.name]);
 				Services.prompt.alert(null, errorTitle, errorMsg);
 				return;
 			}
@@ -323,8 +322,8 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				search[field] = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.birthday." + field, true);
 			}
 			search.events = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.birthday.events", true);
-			var eventInNoteEventPrefix = ConversionHelper.i18n.getMessage("eventInNoteEventPrefix");
-			var deathSuffix = ConversionHelper.i18n.getMessage("deathSuffix");
+			var eventInNoteEventPrefix = cardbookRepository.extension.localeData.localizeMessage("eventInNoteEventPrefix");
+			var deathSuffix = cardbookRepository.extension.localeData.localizeMessage("deathSuffix");
 			cardbookBirthdaysUtils.lBirthdayList = [];
 			
 			for (let i in cardbookRepository.cardbookCards) {

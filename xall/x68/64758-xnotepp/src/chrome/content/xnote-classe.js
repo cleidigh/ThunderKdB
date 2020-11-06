@@ -6,6 +6,8 @@
 	# Description : classe Note permettant d'instancier des notes.
 */
 
+var {xnote} = ChromeUtils.import("resource://xnote/modules/xnote.js");
+
 if (!xnote) var xnote={};
 if (!xnote.ns) xnote.ns={};
 
@@ -17,6 +19,9 @@ ChromeUtils.import("resource://xnote/modules/commons.js", xnote.ns);
  * the note. If the file does not exist, the note is initialized with
  * default values, otherwise it is initialized with the contents of the file.
  */
+
+
+xnote.WL = {}; 
 xnote.ns.Note = function (messageId) {
   //~ dump('\n->Note');
 
@@ -38,8 +43,10 @@ xnote.ns.Note = function (messageId) {
   // Default values for a note window
   pub.DEFAULT_XNOTE_WIDTH = xnote.ns.Commons.xnotePrefs.getIntPref("width");
   pub.DEFAULT_XNOTE_HEIGHT = xnote.ns.Commons.xnotePrefs.getIntPref("height");
-  pub.DEFAULT_X = (window.outerWidth-pub.DEFAULT_XNOTE_WIDTH)/2;
-  pub.DEFAULT_Y =(window.outerHeight-pub.DEFAULT_XNOTE_HEIGHT)/2;
+  pub.DEFAULT_X_ORIG = (window.outerWidth-pub.DEFAULT_XNOTE_WIDTH)/2;
+  pub.DEFAULT_Y_ORIG =(window.outerHeight-pub.DEFAULT_XNOTE_HEIGHT)/2;
+  pub.DEFAULT_X = xnote.ns.Commons.xnotePrefs.getIntPref("HorPos");;
+  pub.DEFAULT_Y = xnote.ns.Commons.xnotePrefs.getIntPref("VertPos");;
 
   //--- Intialisation (either from file or defaults) --------------------------
 

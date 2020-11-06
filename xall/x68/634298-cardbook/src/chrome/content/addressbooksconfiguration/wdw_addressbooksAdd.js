@@ -1,7 +1,6 @@
 if ("undefined" == typeof(wdw_addressbooksAdd)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -89,6 +88,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		},
 		
 		loadWizard: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_addressbooksAdd.initWizardEvents();
 
 			if (window.arguments[0].action == "first") {
@@ -640,15 +640,15 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						var myButton = document.getElementById('findPageValidateButton' + aRowId);
 						if (cardbookRepository.cardbookServerDiscoveryError[aDirPrefId] >= 1) {
 							myButton.setAttribute('validated', 'false');
-							myButton.setAttribute('label', ConversionHelper.i18n.getMessage("ValidationFailedLabel"));
+							myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("ValidationFailedLabel"));
 							wdw_addressbooksAdd.checkFindLinesRequired();
 							cardbookRepository.cardbookSynchronization.finishMultipleOperations(aDirPrefId);
 							lTimerDiscovery.cancel();
 						} else if (cardbookRepository.cardbookServerDiscoveryRequest[aDirPrefId] !== cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] || cardbookRepository.cardbookServerDiscoveryResponse[aDirPrefId] === 0) {
-							myButton.setAttribute('label', ConversionHelper.i18n.getMessage("Validating2Label"));
+							myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("Validating2Label"));
 						} else {
 							myButton.setAttribute('validated', 'true');
-							myButton.setAttribute('label', ConversionHelper.i18n.getMessage("ValidationOKLabel"));
+							myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("ValidationOKLabel"));
 							wdw_addressbooksAdd.checkFindLinesRequired();
 							cardbookRepository.cardbookSynchronization.finishMultipleOperations(aDirPrefId);
 							lTimerDiscovery.cancel();
@@ -687,15 +687,15 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						var myButton = document.getElementById('findPageValidateButton' + aRowId);
 						if (cardbookRepository.cardbookRefreshTokenError[aPrefId] >= 1) {
 							myButton.setAttribute('validated', 'false');
-							myButton.setAttribute('label', ConversionHelper.i18n.getMessage("ValidationFailedLabel"));
+							myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("ValidationFailedLabel"));
 							wdw_addressbooksAdd.checkFindLinesRequired();
 							cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
 							lTimerRefreshToken.cancel();
 						} else if (cardbookRepository.cardbookRefreshTokenResponse[aPrefId] !== 1) {
-							myButton.setAttribute('label', ConversionHelper.i18n.getMessage("Validating2Label"));
+							myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("Validating2Label"));
 						} else {
 							myButton.setAttribute('validated', 'true');
-							myButton.setAttribute('label', ConversionHelper.i18n.getMessage("ValidationOKLabel"));
+							myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("ValidationOKLabel"));
 							wdw_addressbooksAdd.checkFindLinesRequired();
 							cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
 							lTimerRefreshToken.cancel();
@@ -904,7 +904,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			aButton.setAttribute('flex', '1');
 			aButton.setAttribute('validationType', aType);
 			aButton.setAttribute('validated', 'false');
-			aButton.setAttribute('label', ConversionHelper.i18n.getMessage("noValidatedEntryTooltip"));
+			aButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("noValidatedEntryTooltip"));
 			aButton.addEventListener("command", function() {
 					var myId = this.id.replace("findPageValidateButton","");
 					wdw_addressbooksAdd.validateFindLine(myId);
@@ -1112,7 +1112,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		prepareSearchAllContactsAddressbook: function () {
 			var dirPrefId = cardbookRepository.cardbookUtils.getUUID();
-			var myName = ConversionHelper.i18n.getMessage("allContacts");
+			var myName = cardbookRepository.extension.localeData.localizeMessage("allContacts");
 			wdw_addressbooksAdd.gFinishParams.push({type: "SEARCH", searchDef:"searchAB:allAddressBooks:searchAll:true:case:dig:field:version:term:IsntEmpty:value:",
 														name: myName, username: "", color: "", vcard: "", enabled: true,
 														dirPrefId: dirPrefId, DBcached: false, firstAction: false});
@@ -1254,8 +1254,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 								var aListOfFileName = [];
 								aListOfFileName = cardbookRepository.cardbookSynchronization.getFilesFromDir(myDir.path);
 								if (aListOfFileName.length > 0) {
-									var confirmTitle = ConversionHelper.i18n.getMessage("confirmTitle");
-									var confirmMsg = ConversionHelper.i18n.getMessage("directoryDeletionConfirmMessage", [myDir.leafName]);
+									var confirmTitle = cardbookRepository.extension.localeData.localizeMessage("confirmTitle");
+									var confirmMsg = cardbookRepository.extension.localeData.localizeMessage("directoryDeletionConfirmMessage", [myDir.leafName]);
 									if (Services.prompt.confirm(window, confirmTitle, confirmMsg)) {
 										myDir.remove(true);
 										try {
@@ -1322,8 +1322,3 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 	};
 
 };
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

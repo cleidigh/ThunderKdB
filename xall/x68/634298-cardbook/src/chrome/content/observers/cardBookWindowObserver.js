@@ -122,35 +122,3 @@ var cardsTreeMutationObserver = {
 		});
 	}
 };
-
-var rightPaneUpHboxMutationObserver = {
-	register: function() {
-		var observer = new MutationObserver(function handleMutations(mutations) {
-			if (cardbookRepository.cardbookReorderMode == "NOREORDER") {
-				Services.xulStore.setValue("chrome://cardbook/content/ovl_cardbook.xhtml", "rightPaneUpHbox", "width", document.getElementById("rightPaneUpHbox").getAttribute("width"));
-				Services.xulStore.setValue("chrome://cardbook/content/ovl_cardbook.xhtml", "rightPaneUpHbox", "height", document.getElementById("rightPaneUpHbox").getAttribute("height"));
-			}
-		});
-		observer.observe(document.getElementById("rightPaneUpHbox"), {
-			attributes: true,
-			subtree: true,
-			attributeFilter: ["width", "height"]
-		});
-	}
-};
-
-var leftPaneVboxMutationObserver = {
-	register: function() {
-		var observer = new MutationObserver(function handleMutations(mutations) {
-			if (cardbookRepository.cardbookReorderMode == "NOREORDER") {
-				Services.xulStore.setValue("chrome://cardbook/content/ovl_cardbook.xhtml", "leftPaneVbox", "width", document.getElementById("leftPaneVbox").getAttribute("width"));
-				Services.xulStore.setValue("chrome://cardbook/content/ovl_cardbook.xhtml", "leftPaneVbox", "height", document.getElementById("leftPaneVbox").getAttribute("height"));
-			}
-		});
-		observer.observe(document.getElementById("leftPaneVbox"), {
-			attributes: true,
-			subtree: true,
-			attributeFilter: ["width", "height"]
-		});
-	}
-};

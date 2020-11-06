@@ -1,7 +1,6 @@
 if ("undefined" == typeof(cardbookElementTools)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -69,7 +68,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var aCaption = document.createXULElement('label');
 			aParent.appendChild(aCaption);
 			aCaption.setAttribute('id', aType + '_caption');
-			aCaption.setAttribute('value', ConversionHelper.i18n.getMessage(aType + "GroupboxLabel"));
+			aCaption.setAttribute('value', cardbookRepository.extension.localeData.localizeMessage(aType + "GroupboxLabel"));
 			aCaption.setAttribute('class', 'header');
 		},
 		
@@ -242,7 +241,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				var j = 0;
 				var typeName = [ 'all', 'enabled', 'disabled', 'local', 'remote', 'search' ];
 				for (var i = 0; i < typeName.length; i++) {
-					var menuItem = document.getElementById(aMenuName).appendItem(ConversionHelper.i18n.getMessage(typeName[i] + "AccountsLabel"), typeName[i]);
+					var menuItem = document.getElementById(aMenuName).appendItem(cardbookRepository.extension.localeData.localizeMessage(typeName[i] + "AccountsLabel"), typeName[i]);
 					menuItem.setAttribute("type", "radio");
 					menuItem.setAttribute("checked", "false");
 					myPopup.appendChild(menuItem);
@@ -264,7 +263,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var typeName = [ 'include', 'exclude' ];
 			for (var i = 0; i < typeName.length; i++) {
 				var menuItem = document.createXULElement("menuitem");
-				menuItem.setAttribute("label", ConversionHelper.i18n.getMessage(typeName[i] + "Label"));
+				menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage(typeName[i] + "Label"));
 				menuItem.setAttribute("value", typeName[i]);
 				menuItem.setAttribute("class", "menuitem-iconic");
 				menuItem.setAttribute("type", "radio");
@@ -310,7 +309,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var j = 0;
 			if (aAddAllMailAccounts) {
 				var menuItem = document.createXULElement("menuitem");
-				menuItem.setAttribute("label", ConversionHelper.i18n.getMessage("allMailAccounts"));
+				menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("allMailAccounts"));
 				menuItem.setAttribute("value", "allMailAccounts");
 				menuItem.setAttribute("class", "menuitem-iconic");
 				menuItem.setAttribute("type", "radio");
@@ -453,7 +452,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			if (!(aInclRestrictionList && aInclRestrictionList[aDefaultPrefId])) {
 				if (aAddAllCats) {
 					var menuItem = document.createXULElement("menuitem");
-					menuItem.setAttribute("label", ConversionHelper.i18n.getMessage("allCategories"));
+					menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("allCategories"));
 					menuItem.setAttribute("value", "allCategories");
 					menuItem.setAttribute("class", "menuitem-iconic");
 					menuItem.setAttribute("type", "radio");
@@ -465,7 +464,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				}
 				if (aAddOnlyCats) {
 					var menuItem = document.createXULElement("menuitem");
-					menuItem.setAttribute("label", ConversionHelper.i18n.getMessage("onlyCategories"));
+					menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("onlyCategories"));
 					menuItem.setAttribute("value", "onlyCategories");
 					menuItem.setAttribute("class", "menuitem-iconic");
 					menuItem.setAttribute("type", "radio");
@@ -477,7 +476,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				}
 				if (aAddNoCats) {
 					var menuItem = document.createXULElement("menuitem");
-					menuItem.setAttribute("label", ConversionHelper.i18n.getMessage("noCategory"));
+					menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("noCategory"));
 					menuItem.setAttribute("value", "noCategory");
 					menuItem.setAttribute("class", "menuitem-iconic");
 					menuItem.setAttribute("type", "radio");
@@ -619,7 +618,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			} else {
 				aPrefButton.removeAttribute('haspref');
 			}
-			aPrefButton.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("prefLabel"));
+			aPrefButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("prefLabel"));
 
 			function firePrefCheckBox(event) {
 				var myIdArray = this.id.split('_');
@@ -673,7 +672,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			if (cardbookRepository.cardbookCoreTypes[ABTypeFormat].addnew == true) {
 				var aTextbox = document.createElementNS("http://www.w3.org/1999/xhtml","html:input");
 				aTextbox.setAttribute('id', aType + '_' + aIndex + '_TextboxType');
-				aTextbox.setAttribute('placeholder', ConversionHelper.i18n.getMessage("typeAddNew"));
+				aTextbox.setAttribute('placeholder', cardbookRepository.extension.localeData.localizeMessage("typeAddNew"));
 				aMenupopup.appendChild(aTextbox);
 				aTextbox.addEventListener("keydown", function(aEvent) {
 					cardbookWindowUtils.panelTextboxKeydown(aEvent, 'type', aType + '_' + aIndex + '_MenupopupType');
@@ -726,7 +725,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			for (var i = 0; i < caseOperators.length; i++) {
 				var menuItem = document.createXULElement("menuitem");
 				menuItem.setAttribute('id', aType + '_' + aIndex + '_menuitemCase_' + i);
-				menuItem.setAttribute("label", ConversionHelper.i18n.getMessage(caseOperators[i][1]));
+				menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage(caseOperators[i][1]));
 				menuItem.setAttribute("value", caseOperators[i][0]);
 				menuItem.setAttribute("class", "menuitem-iconic");
 				menuItem.setAttribute("type", "radio");
@@ -833,7 +832,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				aEditButton.setAttribute('label', '↔');
 			}
 			aEditButton.setAttribute('class', 'small-button');
-			aEditButton.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage(aButtonType + "EntryTooltip"));
+			aEditButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage(aButtonType + "EntryTooltip"));
 			// aEditButton.addEventListener("click", aFunction, false);
 			aEditButton.addEventListener("command", aFunction, false);
 		}

@@ -167,7 +167,7 @@ class Message {
 
 
   updateTmplData(aPrevMsg) {
-    let oldInfos = aPrevMsg === null || aPrevMsg === void 0 ? void 0 : aPrevMsg.bugzillaInfos;
+    let oldInfos = aPrevMsg?.bugzillaInfos;
 
     if (!oldInfos) {
       oldInfos = {};
@@ -184,8 +184,6 @@ class Message {
     };
 
     if (Object.keys(infos).length) {
-      var _infos$changedFields;
-
       let items = [];
 
       for (let k of ["product", "component", "keywords", "severity", "status", "priority", "assigned-to", "target-milestone"]) {
@@ -195,13 +193,13 @@ class Message {
         }
       }
 
-      if ((_infos$changedFields = infos["changed-fields"]) === null || _infos$changedFields === void 0 ? void 0 : _infos$changedFields.trim().length) {
+      if (infos["changed-fields"]?.trim().length) {
         items.push("Changed: " + infos["changed-fields"]);
       }
 
       let m = this._snippet.match(RE_BZ_COMMENT);
 
-      if ((m === null || m === void 0 ? void 0 : m.length) && m[1].trim().length) {
+      if (m?.length && m[1].trim().length) {
         items.push(m[1]);
       }
 
@@ -555,7 +553,7 @@ class Message {
       }
 
       for (let x of node.querySelectorAll("blockquote, div")) {
-        if ((x === null || x === void 0 ? void 0 : x.style.display) == "none") {
+        if (x?.style.display == "none") {
           x.remove();
         }
       }

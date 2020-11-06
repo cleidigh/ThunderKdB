@@ -26,32 +26,24 @@ if ("undefined" == typeof(cardbookDirTree)) {
 				else if (column.id == "accountName") return this.visibleData[idx][this.COL_NAME];
 				else if (column.id == "accountId") return this.visibleData[idx][this.COL_ID];
 				else if (column.id == "accountType") return this.visibleData[idx][this.COL_TYPE];
-				else if (column.id == "accountEnabled") return this.visibleData[idx][this.COL_ENABLED];
 				else if (column.id == "accountRoot") return this.visibleData[idx][this.COL_ROOT];
 				else if (column.id == "accountStatusCheckbox") return "";
 				else if (column.id == "accountTypeCheckbox") return "";
-				else if (column.id == "dummyForScroll") return true;
+				else if (column.id == "dummyForScroll") return "";
 			} else {
 				return false;
 			}
 		},
 		getCellValue: function(idx, column) {
-			if (column.id == "accountEnabled") return this.visibleData[idx][this.COL_ENABLED];
-			else if (column.id == "accountStatusCheckbox") return "";
+			if (column.id == "accountStatusCheckbox") return "";
 			else if (column.id == "accountTypeCheckbox") return "";
-			else if (column.id == "dummyForScroll") return true;
+			else if (column.id == "dummyForScroll") return "";
 		},
-		setCellValue: function(idx, column) {
-			if (column.id == "accountEnabled") {
-				wdw_cardbook.enableOrDisableAddressbook(this.visibleData[idx][this.COL_ID], !this.visibleData[idx][this.COL_ENABLED]);
-			}
-		},
+		setCellValue: function(idx, column) { return false; },
 		getRowProperties: function(idx) { return "" },
 		getColumnProperties: function(column) { return column.id },
 		getCellProperties: function(idx, column) {
-			if (column.id == "accountEnabled") {
-				return "level" + this.getLevel(idx);
-			} else if (column.id == "accountColor" && this.visibleData[idx][this.COL_TYPE] != "SEARCH") {
+			if (column.id == "accountColor" && this.visibleData[idx][this.COL_TYPE] != "SEARCH") {
 				if (this.visibleData[idx][this.COL_TYPE] == "categories") {
 					return "color_category_" + cardbookRepository.cardbookUtils.formatCategoryForCss(this.visibleData[idx][this.COL_NAME]);
 				} else {
@@ -76,10 +68,7 @@ if ("undefined" == typeof(cardbookDirTree)) {
 		cycleHeader: function(idx) { return false },
 		isSeparator: function(idx) { return false; },
 		isSorted: function() { return false; },
-		isEditable: function(idx, column) {
-			if (column.id == "accountEnabled") return true;
-			else return false;
-		},
+		isEditable: function(idx, column) { return false; },
 		getParentIndex: function(idx) {
 			var level = this.getLevel(idx);
 			if (level == 0) return -1;
@@ -144,13 +133,11 @@ if ("undefined" == typeof(cardbookDirTreeUtils)) {
 			} else {
 				var accountsShown = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.accountsShown");
 			}
-			var enabledColumn = document.getElementById('accountEnabled');
 			var typeColumn = document.getElementById('accountTypeCheckbox');
 			var colorColumn = document.getElementById('accountColor');
 			cardbookDirTreeUtils.newArray = JSON.parse(JSON.stringify(cardbookRepository.cardbookAccounts));
 			
 			typeColumn.removeAttribute('hidden');
-			enabledColumn.removeAttribute('hidden');
 			if (cardbookRepository.useColor == "nothing") {
 				colorColumn.setAttribute("hidden", true);
 			} else {
@@ -159,11 +146,9 @@ if ("undefined" == typeof(cardbookDirTreeUtils)) {
 			switch(accountsShown) {
 				case "enabled":
 					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(child => child[cardbookDirTree.COL_ENABLED]);
-					enabledColumn.setAttribute('hidden', 'true');
 					break;
 				case "disabled":
 					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(child => (!child[cardbookDirTree.COL_ENABLED]));
-					enabledColumn.setAttribute('hidden', 'true');
 					break;
 				case "local":
 					cardbookDirTreeUtils.newArray = cardbookDirTreeUtils.newArray.filter(child => child[cardbookDirTree.COL_TYPE] == "LOCALDB" || child[cardbookDirTree.COL_TYPE] == "FILE" || child[cardbookDirTree.COL_TYPE] == "DIRECTORY");

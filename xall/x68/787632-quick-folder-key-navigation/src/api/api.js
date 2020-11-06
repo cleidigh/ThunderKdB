@@ -7,27 +7,33 @@
 "use strict";
 
 var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-var KeyNavigationAPI = class extends ExtensionCommon.ExtensionAPI {
+var FolderUIAPI = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
     return {
-      KeyNavigationAPI: {
-        async enableKeyNavigation(value) {
-          let enumerator = Services.wm.getEnumerator("mail:3pane");
-          while (enumerator.hasMoreElements()) {
-        	  let win = enumerator.getNext();
-        	  if (!win) continue;
-       		  let folder = win.document.getElementById("folderTree");
-       		  if (!folder) return;
-            if (value) {
-              folder.removeAttribute("disableKeyNavigation");
-            } else {
-              folder.setAttribute("disableKeyNavigation", "true");
-            }
-          } // while
+      FolderUI: {
+
+        async enableKeyNavigation(windowId, value) {
+          let win = context.extension.windowManager.get(windowId, context).window;
+          if (!win) {
+            console.debug("keynav.enableKeyNavigation: failed to get window object");
+            return;
+          }
+          let folder = win.document.getElementById("folderTree");
+          if (!folder) {
+            console.debug("keynav.enableKeyNavigation: failed to find a folderTree element");
+            return;
+          }
+          if (value) {
+            folder.removeAttribute("disableKeyNavigation");
+            console.debug("keynav.enableKeyNavigation: successfully enabled key navigation");
+          } else {
+            folder.setAttribute("disableKeyNavigation", "true");
+            console.debug("keynav.enableKeyNavigation: successfully disabled key navigation");
+          }
         } // function
-      } // KeyNavigation namespace
-    } // object
+
+      } // FolderUI namespace
+    } // return object holding experiment namespaces
   } // getAPI
 }; // class

@@ -3,11 +3,25 @@
 /* globals browser */
 
 var init = async () => {
-  // First, init notifyLocaleMessages and notifyStorageLocal, serially.
+  // Notify chrome observer with storage.local data.
+  const notifyStorageLocal = async startup => {
+    await browser.storage.local.get().then(storageLocalData => {
+      browser.messagepreview.notifyStorageLocal(storageLocalData, startup);
+    });
+  };
+
+  // Listener for storage.local changes to notify chrome observer, post startup.
+  const storageChanged = async (changes, area) => {
+    // console.debug(changes);
+    // console.debug(area);
+    if (area == "local") {
+      await notifyStorageLocal(false);
+    }
+  };
+
+  // First, notifyLocaleMessages and notifyStorageLocal, serially.
   browser.messagepreview.notifyLocaleMessages();
-  await browser.storage.local.get().then(storageLocalData => {
-    browser.messagepreview.notifyStorageLocal(storageLocalData, true);
-  });
+  await notifyStorageLocal(true);
 
   // Then, inject the main script.
   browser.messagepreview.injectScriptIntoChromeDocument(
@@ -15,15 +29,14 @@ var init = async () => {
     "mail:3pane"
   );
 
-  // Get options changes and notify chrome code.
-  const handleMessage = (request, sender, response) => {
-    browser.messagepreview.notifyStorageLocal(request.storageLocalData, false);
-    response({ response: "notifyStorageLocal sent" });
-  };
-
-  browser.runtime.onMessage.addListener(handleMessage);
+  // Add storage change listener.
+  browser.storage.onChanged.addListener(storageChanged);
 };
 
 init();
 
-console.info(browser.i18n.getMessage("extensionName"));
+console.info(
+  browser.i18n.getMessage("extensionName") +
+    " " +
+    browser.runtime.getManifest().version
+);

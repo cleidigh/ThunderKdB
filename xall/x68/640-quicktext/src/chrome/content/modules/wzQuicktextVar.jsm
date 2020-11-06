@@ -5,6 +5,10 @@ var { quicktextUtils } = ChromeUtils.import("chrome://quicktext/content/modules/
 var { gQuicktext } = ChromeUtils.import("chrome://quicktext/content/modules/wzQuicktext.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
+try {
+  var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+} catch(e) {}
+
 const kDebug          = true;
 const persistentTags  = ['COUNTER', 'ORGATT', 'ORGHEADER', 'VERSION'];
 const allowedTags     = ['ATT', 'CLIPBOARD', 'COUNTER', 'DATE', 'FILE', 'IMAGE', 'FROM', 'INPUT', 'ORGATT', 'ORGHEADER', 'SCRIPT', 'SUBJECT', 'TEXT', 'TIME', 'TO', 'URL', 'VERSION', 'SELECTION', 'HEADER'];
@@ -153,14 +157,20 @@ wzQuicktextVar.prototype = {
           break;
       }
 
-      if (tags[i].tagName.toLowerCase() == "image" && aType != 1) {
-        // image tag may only be added in html mode
-        value = "";
-      } else if (typeof this["get_"+ tags[i].tagName.toLowerCase()] == "function" && variable_limit >= 0 && tags[i].variables.length >= variable_limit) {
-        // if the method "get_[tagname]" exists and there is enough arguments we call it
-        value = this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables);
+      // if the method "get_[tagname]" exists and there is enough arguments we call it
+      if (typeof this["get_"+ tags[i].tagName.toLowerCase()] == "function" && variable_limit >= 0 && tags[i].variables.length >= variable_limit) {
+	      
+        // these tags need different behaviour if added in "text" or "html" mode
+        if (tags[i].tagName.toLowerCase() == "image" ||
+	    tags[i].tagName.toLowerCase() == "clipboard" ||
+	    tags[i].tagName.toLowerCase() == "selection") {
+        
+          value = this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables, aType);
+        } else {
+          value = this["get_"+ tags[i].tagName.toLowerCase()](tags[i].variables);
+        }
       }
-      
+
       aStr = this.replaceText(tags[i].tag, value, aStr);
     }
 
@@ -281,9 +291,14 @@ wzQuicktextVar.prototype = {
     return this.process_file(aVariables);
   }
 ,
-  get_image: function(aVariables)
+  get_image: function(aVariables, aType)
   {
-    return this.process_image_content(aVariables);
+    if (aType = 1) {
+      // image tag may only be added in html mode
+      return this.process_image_content(aVariables);
+    } else {
+      return "";
+    }
   }
 ,
   get_text: function(aVariables)
@@ -337,14 +352,14 @@ wzQuicktextVar.prototype = {
     return "";
   }
 ,
-  get_clipboard: function(aVariables)
+  get_clipboard: function(aVariables, aType)
   {
-    return TrimString(this.process_clipboard(aVariables));
+    return TrimString(this.process_clipboard(aVariables, aType));
   }
 ,  
-  get_selection: function(aVariables)
+  get_selection: function(aVariables, aType)
   {
-    return this.process_selection(aVariables);
+    return this.process_selection(aVariables, aType);
   }
 ,
   get_from: function(aVariables)
@@ -662,12 +677,18 @@ wzQuicktextVar.prototype = {
     return this.mData['INPUT'].data;
   }
 ,
-  process_selection: function(aVariables)
+  process_selection: function(aVariables, aType)
   {
-    return this.mQuicktext.mSelectionContent;
+    if (aType == 0) {
+      // return selected text as plain text
+      return this.mQuicktext.mSelectionContent;
+    } else {
+      // return selected text as html
+      return this.mQuicktext.mSelectionContentHtml;
+    }
   }
 ,
-  process_clipboard: function(aVariables)
+  process_clipboard: function(aVariables, aType)
   {
     if (this.mData['CLIPBOARD'] && this.mData['CLIPBOARD'].checked)
       return this.mData['CLIPBOARD'].data;
@@ -683,12 +704,24 @@ wzQuicktextVar.prototype = {
       var trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
       if (trans)
       {
-        trans.addDataFlavor("text/unicode");
+        if (aType == 0) {
+          // request clipboard content as plain text
+          trans.addDataFlavor("text/unicode");
+        } else {
+          // request clipboard content as html
+          trans.addDataFlavor("text/html");
+        }
         clip.getData(trans,clip.kGlobalClipboard);
 
         var clipboard = {};
         try {
-          trans.getTransferData("text/unicode", clipboard);
+          if (aType == 0) {
+            // request clipboard content as plain text
+            trans.getTransferData("text/unicode", clipboard);
+          } else {
+            // request clipboard content as html
+            trans.getTransferData("text/html", clipboard);
+          }
           if (clipboard)
           {
             clipboard = clipboard.value.QueryInterface(Components.interfaces.nsISupportsString);
@@ -701,6 +734,52 @@ wzQuicktextVar.prototype = {
     }
 
     return this.mData['CLIPBOARD'].data;
+  }
+,
+  getcarddata_from: function(aData, aIdentity)
+  {
+    let passStandardCheck = false;
+    try {
+      let card = cardbookRepository.cardbookUtils.getCardFromEmail(aIdentity.email.toLowerCase());
+      if (card)
+      {
+        aData['FROM'].data['firstname'] = TrimString(card.firstname);
+        aData['FROM'].data['lastname'] = TrimString(card.lastname);
+        aData['FROM'].data['displayname'] = TrimString(card.fn);
+        aData['FROM'].data['nickname'] = TrimString(card.nickname);
+        aData['FROM'].data['fullname'] = TrimString(cardbookRepository.cardbookUtils.getName(card));
+        aData['FROM'].data['title'] = TrimString(card.title);
+        aData['FROM'].data['workphone'] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "tel.0.worktype", false));
+        aData['FROM'].data['faxnumber'] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "tel.0.faxtype", false));
+        aData['FROM'].data['cellularnumber'] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "tel.0.celltype", false));
+        aData['FROM'].data['custom1'] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "X-CUSTOM1", false));
+        aData['FROM'].data['custom2'] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "X-CUSTOM2", false));
+        aData['FROM'].data['custom3'] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "X-CUSTOM3", false));
+        aData['FROM'].data['custom4'] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "X-CUSTOM4", false));
+        passStandardCheck = true;
+      }
+    } catch(e) {}
+
+    if (!passStandardCheck)
+    {
+      let card = this.getCardForEmail(aIdentity.email.toLowerCase());
+      if (card == null && aIdentity.escapedVCard != null)
+      {
+        const manager = Components.classes["@mozilla.org/abmanager;1"]
+          .getService(Components.interfaces.nsIAbManager);
+        card = manager.escapedVCardToAbCard(aIdentity.escapedVCard);
+      }
+      if (card != null)
+      {
+        var props = this.getPropertiesFromCard(card);
+        for (var p in props)
+          this.mData['FROM'].data[p] = props[p];
+
+        aData['FROM'].data['fullname'] = TrimString(aData['FROM'].data['firstname'] +" "+ aData['FROM'].data['lastname']);
+      }
+    }
+
+    return aData;
   }
 ,
   process_from: function(aVariables)
@@ -719,23 +798,59 @@ wzQuicktextVar.prototype = {
       'lastname': ''
     };
 
-    let card = this.getCardForEmail(identity.email.toLowerCase());
-    if (card == null && identity.escapedVCard != null)
-    {
-      const manager = Components.classes["@mozilla.org/abmanager;1"]
-        .getService(Components.interfaces.nsIAbManager);
-      card = manager.escapedVCardToAbCard(identity.escapedVCard);
-    }
-    if (card != null)
-    {
-      var props = this.getPropertiesFromCard(card);
-      for (var p in props)
-        this.mData['FROM'].data[p] = props[p];
-
-      this.mData['FROM'].data['fullname'] = TrimString(this.mData['FROM'].data['firstname'] +" "+ this.mData['FROM'].data['lastname']);
-    }
+    this.mData = this.getcarddata_from(this.mData, identity);
 
     return this.mData['FROM'].data;
+  }
+,
+  getcarddata_to: function(aData, aIndex)
+  {
+    let passStandardCheck = false;
+    try {
+      let card = cardbookRepository.cardbookUtils.getCardFromEmail(aData['TO'].data['email'][aIndex]);
+      if (card)
+      {
+        aData['TO'].data['firstname'][aIndex] = TrimString(card.firstname);
+        aData['TO'].data['lastname'][aIndex] = TrimString(card.lastname);
+        aData['TO'].data['fullname'][aIndex] = TrimString(cardbookRepository.cardbookUtils.getName(card));
+
+        // others
+        for (let prop of [ 'displayname', 'nickname', 'title', 'workphone', 'faxnumber', 'cellularnumber', 'custom1', 'custom2', 'custom3', 'custom4' ])
+        {
+          if (typeof aData['TO'].data[prop] == 'undefined')
+            aData['TO'].data[prop] = []
+        }
+        aData['TO'].data['displayname'][aIndex] = TrimString(card.fn);
+        aData['TO'].data['nickname'][aIndex] = TrimString(card.nickname);
+        aData['TO'].data['title'][aIndex] = TrimString(card.title);
+        aData['TO'].data['workphone'][aIndex] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "tel.0.worktype", false));
+        aData['TO'].data['faxnumber'][aIndex] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "tel.0.faxtype", false));
+        aData['TO'].data['cellularnumber'][aIndex] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "tel.0.celltype", false));
+        aData['TO'].data['custom1'][aIndex] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "X-CUSTOM1", false));
+        aData['TO'].data['custom2'][aIndex] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "X-CUSTOM2", false));
+        aData['TO'].data['custom3'][aIndex] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "X-CUSTOM3", false));
+        aData['TO'].data['custom4'][aIndex] = TrimString(cardbookRepository.cardbookUtils.getCardValueByField(card, "X-CUSTOM4", false));
+        passStandardCheck = true;
+        }
+    } catch(e) {}
+
+    if (!passStandardCheck)
+    {
+      // take card value, if it exists
+      var card = this.getCardForEmail(aData['TO'].data['email'][aIndex]);
+      if (card != null)
+      {
+        var props = this.getPropertiesFromCard(card);
+        for (var p in props)
+        {
+          if (typeof aData['TO'].data[p] == 'undefined')
+            aData['TO'].data[p] = []
+          if (props[p] != "" || typeof aData['TO'].data[p][aIndex] == 'undefined' || aData['TO'].data[p][aIndex] == "")
+            aData['TO'].data[p][aIndex] = TrimString(props[p]);
+        }
+      }
+    }
+    return aData;
   }
 ,
   process_to: function(aVariables)
@@ -767,19 +882,7 @@ wzQuicktextVar.prototype = {
         this.mData['TO'].data['firstname'][k] = "";
         this.mData['TO'].data['lastname'][k] = "";
 
-        // take card value, if it exists
-        var card = this.getCardForEmail(this.mData['TO'].data['email'][k]);
-        if (card != null)
-        {
-          var props = this.getPropertiesFromCard(card);
-          for (var p in props)
-          {
-            if (typeof this.mData['TO'].data[p] == 'undefined')
-              this.mData['TO'].data[p] = []
-            if (props[p] != "" || typeof this.mData['TO'].data[p][k] == 'undefined' || this.mData['TO'].data[p][k] == "")
-              this.mData['TO'].data[p][k] = TrimString(props[p]);
-          }
-        }
+        this.mData = this.getcarddata_to(this.mData, k);
     
         let validParts = [this.mData['TO'].data['firstname'][k], this.mData['TO'].data['lastname'][k]].filter(e => e.trim() != "");
         if (validParts.length == 0) {

@@ -6,6 +6,7 @@ if ("undefined" == typeof(wdw_logEdition)) {
 	var wdw_logEdition = {
 		
 		load: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			var myLogArray = cardbookRepository.statusInformation;
 			var myTree = document.getElementById('logEditionTree');
 			var myTreeView = {
@@ -67,8 +68,3 @@ if ("undefined" == typeof(wdw_logEdition)) {
 	};
 
 };
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

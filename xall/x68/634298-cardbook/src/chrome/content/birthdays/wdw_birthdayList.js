@@ -1,7 +1,6 @@
 if ("undefined" == typeof(wdw_birthdayList)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -65,6 +64,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		},
 
 		displayAllBirthdays: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_birthdayList.setupWindow();
 			
 			var maxDaysUntilNextBirthday = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.numberOfDaysForSearching");
@@ -76,7 +76,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 			if (cardbookBirthdaysUtils.lBirthdayList.length == 0) {
 				var today = new Date();
 				today = new Date(today.getTime() + maxDaysUntilNextBirthday *24*60*60*1000);
-				var noBirthdaysFoundMessage = ConversionHelper.i18n.getMessage("noBirthdaysFoundMessage", [cardbookRepository.cardbookDates.convertDateToDateString(today, 'YYYYMMDD')]);
+				var noBirthdaysFoundMessage = cardbookRepository.extension.localeData.localizeMessage("noBirthdaysFoundMessage", [cardbookRepository.cardbookDates.convertDateToDateString(today, 'YYYYMMDD')]);
 				var treeView = {
 					rowCount : 1,
 					getCellText : function(row,column){
@@ -106,7 +106,7 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 				}
 			}
 			document.getElementById('birthdayListTree').view = treeView;
-			document.title=ConversionHelper.i18n.getMessage("birthdaysListWindowLabel", [cardbookBirthdaysUtils.lBirthdayList.length.toString()]);
+			document.title=cardbookRepository.extension.localeData.localizeMessage("birthdaysListWindowLabel", [cardbookBirthdaysUtils.lBirthdayList.length.toString()]);
 			wdw_birthdayList.buttonShowing();
 		},
 	
@@ -136,8 +136,8 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 					var myEmail = myTree.view.getCellText(k, myTree.columns.getNamedColumn('email'));
 					var myName = myTree.view.getCellText(k, myTree.columns.getNamedColumn('name'));
 					if (myEmail == "") {
-						var errorTitle = ConversionHelper.i18n.getMessage("warningTitle");
-						var errorMsg = ConversionHelper.i18n.getMessage("noEmailFoundMessage", [myName]);
+						var errorTitle = cardbookRepository.extension.localeData.localizeMessage("warningTitle");
+						var errorMsg = cardbookRepository.extension.localeData.localizeMessage("noEmailFoundMessage", [myName]);
 						Services.prompt.alert(null, errorTitle, errorMsg);
 					} else {
 						var msgComposeType = Components.interfaces.nsIMsgCompType;
@@ -166,8 +166,3 @@ if ("undefined" == typeof(wdw_birthdayList)) {
 		}
 	};
 };
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

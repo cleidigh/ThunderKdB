@@ -12,6 +12,119 @@
     "description": "Message on disable/remove completed."
   },
 
+  "reloadCurrentPageOrMessage": {
+    "message": "Reload current page or message ($1)",
+    "description": "$1 is the keyboard shortcut for reload.",
+    "placeholders": {
+      "1" : {
+        "content" : "$1",
+        "example" : "a string"
+      }
+    }
+  },
+  "stopLoadingCurrentPageOrMessage": {
+    "message": "Stop loading this page or message (Esc)",
+    "description": "Button."
+  },
+
+  "urlbar-placeholder": {
+    "message": "Enter address",
+    "description": "Urlbar."
+  },
+  "urlbar-go-button": {
+    "message": "Go to the address in the Location Bar",
+    "description": "Urlbar."
+  },
+  "pasteAndGo.label": {
+    "message": "Paste & Go",
+    "description": "Urlbar."
+  },
+  "pasteAndGo.accesskey": {
+    "message": "G",
+    "description": "Urlbar."
+  },
+
+
+  "certImminentDistrust.message": {
+    "message": "The security certificate in use on this website will no longer be trusted in a future release. For more information, visit https://wiki.mozilla.org/CA/Upcoming_Distrust_Actions",
+    "description": "Urlbar."
+  },
+  "identity.extension.label": {
+    "message": "Extension ($1)",
+    "description": "$1 is the extension name.",
+    "placeholders": {
+      "1" : {
+        "content" : "$1",
+        "example" : "a string"
+      }
+    }
+  },
+  "identity.identified.verifier": {
+    "message": "Verified by: $1",
+    "description": "$1 is the CA name.",
+    "placeholders": {
+      "1" : {
+        "content" : "$1",
+        "example" : "a string"
+      }
+    }
+  },
+  "identity.notSecure.tooltip": {
+    "message": "Connection is not secure",
+    "description": "Urlbar."
+  },
+  "identity.notSecure.label": {
+    "message": "Not Secure",
+    "description": "Urlbar."
+  },
+  "identity.identified.verified_by_you": {
+    "message": "You have added a security exception for this site.",
+    "description": "Urlbar."
+  },
+  "identity.extension.tooltip": {
+    "message": "Loaded by extension: $1",
+    "description": "$1 is the extension name.",
+    "placeholders": {
+      "1" : {
+        "content" : "$1",
+        "example" : "a string"
+      }
+    }
+  },
+
+  "urlbarZoomButtonLabel": {
+    "message": "$1%",
+    "description": "$1 is an integer, add %.",
+    "placeholders": {
+      "1" : {
+        "content" : "$1",
+        "example" : "integer"
+      }
+    }
+  },
+  "urlbarZoomButtonTooltip": {
+    "message": "Reset zoom level ($1)",
+    "description": "$1 is the keyboard shortcut for resetting the zoom level to 100%.",
+    "placeholders": {
+      "1" : {
+        "content" : "$1",
+        "example" : "a string"
+      }
+    }
+  },
+  "newTabLabel": {
+    "message": "New Tab",
+    "description": "Button."
+  },
+  "newTabTooltip": {
+    "message": "Open a New Tab (Ctrl+T)",
+    "description": "Button."
+  },
+  "newTabKey": {
+    "message": "T",
+    "description": "Key."
+  },
+
   "openLinkInContentTabLabel": {
     "message": "Open Link in New Tab",
     "description": "Context menu."
@@ -21,8 +134,9 @@
     "description": "Context menu."
   },
 
-  "maxContentTabs": {
-    "message": "Maximum number of content tabs: ",
+
+  "tabLabelLinks": {
+    "message": "Links",
     "description": "Options."
   },
   "tabsLoadInBackground": {
@@ -59,7 +173,7 @@
     "description": "Options."
   },
   "showContentBase": {
-    "message": "Include content-base link header in compose forward inline messages",
+    "message": "Include content-base header link in compose forward inline messages",
     "description": "Options."
   },
   "contentBaseLabel": {
@@ -79,9 +193,47 @@
     "description": "Options."
   },
   "systemContentTabOrLinkNote": {
-    "message": "Note: Links in system content tabs such as Preferences/Options or Add-ons Manager or links in other chrome locations are currently not affected by these preferences and will open in a tab or external browser as defined by internal code.",
+    "message": "Note: These preferences apply to links in many system content tabs such as Add-ons Manager or other about: pages. Links in Preferences/Options or links in other chrome locations are currently not affected and will open in a tab or external browser as defined by internal code.",
     "description": "Options."
   },
+
+  "tabLabelTabsToolbars": {
+    "message": "Tabs and Toolbars",
+    "description": "Options."
+  },
+  "maxContentTabs": {
+    "message": "Maximum number of content tabs: ",
+    "description": "Options."
+  },
+  "showMailToolbarOption": {
+    "message": "Show the Mail Toolbar on: ",
+    "description": "Options."
+  },
+  "showMailToolbarDefaultTabs": {
+    "message": "Default tabs",
+    "description": "Options."
+  },
+  "showMailToolbarWebpageTabs": {
+    "message": "Web page content tabs, additionally",
+    "description": "Options."
+  },
+  "showMailToolbarAllTabs": {
+    "message": "All tabs",
+    "description": "Options."
+  },
+  "showUrlToolbarOption": {
+    "message": "Show the Url Toolbar on: ",
+    "description": "Options."
+  },
+  "showUrlToolbarWebpageTabs": {
+    "message": "Web page content tabs only",
+    "description": "Options."
+  },
+  "showUrlToolbarAllTabs": {
+    "message": "All tabs",
+    "description": "Options."
+  },
+
   "restoreDefaults": {
     "message": "Restore Defaults",
     "description": "Options label."

@@ -1,7 +1,6 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { FileUtils } = ChromeUtils.import("resource://gre/modules/FileUtils.jsm");
 var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 var { OS } = ChromeUtils.import("resource://gre/modules/osfile.jsm");
 
 var loader = Services.scriptloader;
@@ -693,7 +692,7 @@ var cardbookSynchronization = {
 						cardbookRepository.cardbookServerGetForMergeResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerGetForMergeError[aConnection.connPrefId]++;
 						if (e.message == "") {
-							cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, ConversionHelper.i18n.getMessage(e.code), response], "Error");
+							cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, cardbookRepository.extension.localeData.localizeMessage(e.code), response], "Error");
 						} else {
 							cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, e.message, response], "Error");
 						}
@@ -737,7 +736,7 @@ var cardbookSynchronization = {
 						cardbookRepository.cardbookServerGetResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerGetError[aConnection.connPrefId]++;
 						if (e.message == "") {
-							cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, ConversionHelper.i18n.getMessage(e.code), response], "Error");
+							cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, cardbookRepository.extension.localeData.localizeMessage(e.code), response], "Error");
 						} else {
 							cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, e.message, response], "Error");
 						}
@@ -806,7 +805,7 @@ var cardbookSynchronization = {
 												cardbookRepository.cardbookServerGetResponse[aConnection.connPrefId]++;
 												cardbookRepository.cardbookServerGetError[aConnection.connPrefId]++;
 												if (e.message == "") {
-													cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, ConversionHelper.i18n.getMessage(e.code), myContent], "Error");
+													cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, cardbookRepository.extension.localeData.localizeMessage(e.code), myContent], "Error");
 												} else {
 													cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, e.message, myContent], "Error");
 												}
@@ -949,7 +948,7 @@ var cardbookSynchronization = {
 				} else if (solveConflicts === "Remote") {
 					var conflictResult = "delete";
 				} else {
-					var message = ConversionHelper.i18n.getMessage("cardUpdatedOnDiskDeletedOnServer", [aParams.aConnection.connDescription, aCard.fn]);
+					var message = cardbookRepository.extension.localeData.localizeMessage("cardUpdatedOnDiskDeletedOnServer", [aParams.aConnection.connDescription, aCard.fn]);
 					var askUserResult = cardbookSynchronization.askUser(message, "keep", "delete");
 					var conflictResult = askUserResult.result;
 				}
@@ -1025,7 +1024,7 @@ var cardbookSynchronization = {
 				} else if (solveConflicts === "Remote") {
 					var conflictResult = "keep";
 				} else {
-					var message = ConversionHelper.i18n.getMessage("cardDeletedOnDiskUpdatedOnServer", [aConnection.connDescription, myCacheCard.fn]);
+					var message = cardbookRepository.extension.localeData.localizeMessage("cardDeletedOnDiskUpdatedOnServer", [aConnection.connDescription, myCacheCard.fn]);
 					var askUserResult = cardbookSynchronization.askUser(message, "keep", "delete");
 					var conflictResult = askUserResult.result;
 				}
@@ -1054,7 +1053,7 @@ var cardbookSynchronization = {
 				} else if (solveConflicts === "Remote") {
 					var conflictResult = "remote";
 				} else {
-					var message = ConversionHelper.i18n.getMessage("cardUpdatedOnBoth", [aConnection.connDescription, myCacheCard.fn]);
+					var message = cardbookRepository.extension.localeData.localizeMessage("cardUpdatedOnBoth", [aConnection.connDescription, myCacheCard.fn]);
 					var askUserResult = cardbookSynchronization.askUser(message, "local", "remote", "merge");
 					var conflictResult = askUserResult.result;
 				}
@@ -1155,7 +1154,7 @@ var cardbookSynchronization = {
 													cardbookRepository.cardbookServerGetResponse[aConnection.connPrefId]++;
 													cardbookRepository.cardbookServerGetError[aConnection.connPrefId]++;
 													if (e.message == "") {
-														cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, ConversionHelper.i18n.getMessage(e.code), myContent], "Error");
+														cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, cardbookRepository.extension.localeData.localizeMessage(e.code), myContent], "Error");
 													} else {
 														cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aConnection.connDescription, e.message, myContent], "Error");
 													}
@@ -2499,7 +2498,7 @@ var cardbookSynchronization = {
 						}
 						catch (e) {
 							if (e.message == "") {
-								cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, ConversionHelper.i18n.getMessage(e.code), cardContent], "Error");
+								cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, cardbookRepository.extension.localeData.localizeMessage(e.code), cardContent], "Error");
 							} else {
 								cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, e.message, cardContent], "Error");
 							}
@@ -2603,7 +2602,7 @@ var cardbookSynchronization = {
 							cardbookRepository.cardbookServerSyncError[aParams.aPrefId]++;
 							cardbookRepository.cardbookServerSyncDone[aParams.aPrefId]++;
 							if (e.message == "") {
-								cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, ConversionHelper.i18n.getMessage(e.code), fileContentArray[i]], "Error");
+								cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, cardbookRepository.extension.localeData.localizeMessage(e.code), fileContentArray[i]], "Error");
 							} else {
 								cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, e.message, fileContentArray[i]], "Error");
 							}
@@ -2671,8 +2670,8 @@ var cardbookSynchronization = {
 			}
 
 			if (aAskUser && !cardbookRepository.importConflictChoicePersist && cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
-				var message = ConversionHelper.i18n.getMessage("cardAlreadyExists", [myTargetPrefIdName, aNewCard.fn]);
-				var confirmMessage = ConversionHelper.i18n.getMessage("askUserPersistMessage");
+				var message = cardbookRepository.extension.localeData.localizeMessage("cardAlreadyExists", [myTargetPrefIdName, aNewCard.fn]);
+				var confirmMessage = cardbookRepository.extension.localeData.localizeMessage("askUserPersistMessage");
 				var askUserResult = cardbookSynchronization.askUser(message, "keep", "overwrite", "duplicate", "merge", confirmMessage, false);
 				cardbookRepository.importConflictChoice = askUserResult.result;
 				cardbookRepository.importConflictChoicePersist = askUserResult.resultConfirm;
@@ -2686,7 +2685,7 @@ var cardbookSynchronization = {
 					break;
 				case "duplicate":
 					aNewCard.cardurl = "";
-					aNewCard.fn = aNewCard.fn + " " + ConversionHelper.i18n.getMessage("fnDuplicatedMessage");
+					aNewCard.fn = aNewCard.fn + " " + cardbookRepository.extension.localeData.localizeMessage("fnDuplicatedMessage");
 					cardbookRepository.cardbookUtils.setCardUUID(aNewCard);
 					cardbookRepository.saveCard({}, aNewCard, aActionId, true);
 					break;

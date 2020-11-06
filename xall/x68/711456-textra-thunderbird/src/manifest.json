@@ -4,20 +4,44 @@
     "gecko": {
       "id": "TexTra_Thunderbird@nict.jp",
       "strict_min_version": "68.0",
-      "strict_max_version": "71.*"
+      "strict_max_version": "84.0"
     }
   },
   "name": "TexTra",
   "description": "「みんなの自動翻訳」を利用した翻訳を行います。",
-  "version": "1.0.17",
+  "version": "1.1.0",
+  "default_locale": "ja",
   "icons": {
-    "32": "skin/icons/TexTra_white032.png"
+    "48": "resources/TexTra_white048.png",
+    "96": "resources/TexTra_white096.png"
   },
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://TexTra/content/xul/property.xul",
-      "open_in_tab": false
-    }
-  }
+
+  "background": {
+    "scripts": [
+      "js/jquery.js",
+      "js/utils.js",
+      "js/api/oauth.js",
+      "js/api/sha1.js",
+      "js/api/aes.js",
+      "js/api/api.js",
+      "js/background.js"
+    ]
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "19": "resources/TexTra_white019.png",
+      "38": "resources/TexTra_white038.png"
+    },
+    "default_title": "TexTra",
+    "default_popup": "popup/Home.html"
+  },
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "menus",
+    "<all_urls>"
+  ]
+
 }

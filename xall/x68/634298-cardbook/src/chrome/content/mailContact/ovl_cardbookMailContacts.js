@@ -190,13 +190,12 @@ if ("undefined" == typeof(ovl_cardbookMailContacts)) {
 		ovl_cardbookMailContacts.hideOrShowNewAddressbook(isEmailRegistered);
 
 		if (isEmailRegistered) {
-			var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 			var myCard = cardbookRepository.cardbookUtils.getCardFromEmail(myEmail);
 			document.getElementById("editInCardBookMenu").setAttribute("cardbookId", myCard.dirPrefId+"::"+myCard.uid);
 			if (cardbookRepository.cardbookPreferences.getReadOnly(myCard.dirPrefId)) {
-				document.getElementById('editInCardBookMenu').label=ConversionHelper.i18n.getMessage("viewInCardBookMenuLabel");
+				document.getElementById('editInCardBookMenu').label=cardbookRepository.extension.localeData.localizeMessage("viewInCardBookMenuLabel");
 			} else {
-				document.getElementById('editInCardBookMenu').label=ConversionHelper.i18n.getMessage("editInCardBookMenuLabel");
+				document.getElementById('editInCardBookMenu').label=cardbookRepository.extension.localeData.localizeMessage("editInCardBookMenuLabel");
 			}
 			
 			cardbookWindowUtils.addCardToIMPPMenuSubMenu(myCard, 'IMPPCardsMenuPopup');

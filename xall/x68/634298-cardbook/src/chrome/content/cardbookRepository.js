@@ -1,7 +1,7 @@
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
+var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 
 var EXPORTED_SYMBOLS = ["cardbookRepository"];
 var cardbookRepository = {
@@ -12,6 +12,8 @@ var cardbookRepository = {
 	cardbookActionsDatabaseVersion : "4",
 	cardbookActionsDatabaseName : "CardBookUndo",
 
+	extension : ExtensionParent.GlobalManager.getExtension("cardbook@vigneau.philippe"),
+	
 	windowParams : "chrome,titlebar,resizable,all,dialog=no",
 	modalWindowParams : "modal,chrome,titlebar,resizable,minimizable=no",
 	// Workaround for Bug 1151440 - the HTML color picker won't work
@@ -31,6 +33,7 @@ var cardbookRepository = {
 						"so","sr","ss","st","sv","sx","sy","sz","tc","td","tf","tg","th","tj","tk","tl","tm","tn","to","tr","tt",
 						"tv","tw","tz","ua","ug","us","uy","uz","va","vc","ve","vg","vi","vn","vu","wf","ws","xa","xb","xc","xd",
 						"xe","xg","xh","xj","xk","xl","xm","xp","xq","xr","xs","xt","xu","xv","xw","ye","yt","za","zm","zw"],
+	defaultCardImage : "chrome://cardbook/content/skin/contact-generic.svg",
 	
 	allColumns : { "display": ["fn"],
 					"personal": ["prefixname", "firstname", "othername", "lastname", "suffixname", "nickname", "gender", "bday",
@@ -331,7 +334,7 @@ var cardbookRepository = {
 
 	loadPossibleCustomFields: function () {
 		for (let myCode in cardbookRepository.possibleCustomFields) {
-			cardbookRepository.possibleCustomFields[myCode].label = ConversionHelper.i18n.getMessage(myCode.replace(/^X-/, "").replace(/-/g, "").toLowerCase() + "Label");
+			cardbookRepository.possibleCustomFields[myCode].label = cardbookRepository.extension.localeData.localizeMessage(myCode.replace(/^X-/, "").replace(/-/g, "").toLowerCase() + "Label");
 			let found = false;
 			for (let j = 0; j < cardbookRepository.customFields.pers.length; j++) {
 				if (cardbookRepository.customFields.pers[j][0] == myCode) {
@@ -365,7 +368,7 @@ var cardbookRepository = {
 
 	setGenderLookup: function() {
 		for (var type in cardbookRepository.cardbookGenderLookup) {
-			cardbookRepository.cardbookGenderLookup[type] = ConversionHelper.i18n.getMessage("types.gender." + type.toLowerCase());
+			cardbookRepository.cardbookGenderLookup[type] = cardbookRepository.extension.localeData.localizeMessage("types.gender." + type.toLowerCase());
 		}
 	},
 

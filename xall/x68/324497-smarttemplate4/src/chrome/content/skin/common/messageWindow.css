@@ -1,0 +1,50 @@
+/** STYLES FOR THE MODELESS message window smarteTemplate-msg.xul ****/
+#titleBox {
+  background-image: url("chrome://content//logo.png") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 320px;
+}
+
+#messageCanvas {
+	background-position: top right;
+	background-repeat: no-repeat;
+	background-image: url("chrome://smartTemplate4/content/skin/icons/large/ST4-icon-128.png");
+	max-width: 850px;
+	min-width: 200px;
+	min-height: 200px;
+	width: 100%;
+}
+
+/* remove default buttons, we add our own */
+.dialog-button-box {
+	display: none;
+}
+
+#ok, #cancel, #yes, #no, #countDown  {
+	font-size: 12pt;
+}
+
+
+#innerMessage {
+	font-size: 12pt;
+	/*! min-height: 5em; */
+	min-width: 300px;
+	height: auto;
+	margin: 1em 3em 1.5em;
+	padding: 1em 2em;
+	width: 80%;
+	-moz-box-orient: vertical;
+}
+
+#innerMessage p, #innerMessage br {
+	display: block;
+	line-height: 1.2em;
+}
+#innerMessage p {
+	text-align: justify;
+	color: rgb(2,2,2) !important;
+	text-shadow: 1px 1px 1px rgba(220, 220, 220, 0.7);
+	margin-bottom: 0.6em;
+	max-width: 850px;
+}

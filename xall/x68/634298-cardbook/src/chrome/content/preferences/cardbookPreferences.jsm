@@ -1,4 +1,3 @@
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 var EXPORTED_SYMBOLS = ["cardbookPreferences"];
@@ -62,10 +61,10 @@ var cardbookPreferences = {
 	},
 
 	insertIMPPsSeed: function () {
-		this.setIMPPs(0,"skype:" + ConversionHelper.i18n.getMessage("impp.skype") + ":skype");
-		this.setIMPPs(1,"jabber:" + ConversionHelper.i18n.getMessage("impp.jabber") + ":xmpp");
-		this.setIMPPs(2,"googletalk:" + ConversionHelper.i18n.getMessage("impp.googletalk") + ":gtalk");
-		this.setIMPPs(3,"qq:" + ConversionHelper.i18n.getMessage("impp.qq") + ":qq");
+		this.setIMPPs(0,"skype:" + cardbookRepository.extension.localeData.localizeMessage("impp.skype") + ":skype");
+		this.setIMPPs(1,"jabber:" + cardbookRepository.extension.localeData.localizeMessage("impp.jabber") + ":xmpp");
+		this.setIMPPs(2,"googletalk:" + cardbookRepository.extension.localeData.localizeMessage("impp.googletalk") + ":gtalk");
+		this.setIMPPs(3,"qq:" + cardbookRepository.extension.localeData.localizeMessage("impp.qq") + ":qq");
 	},
 
 	sortArrayByNumber: function (aArray, aIndex, aInvert) {
@@ -429,7 +428,7 @@ var cardbookPreferences = {
 		if (prefValueLabel) {
 			return prefValueLabel;
 		} else {
-			return ConversionHelper.i18n.getMessage("prefValueLabel");
+			return cardbookRepository.extension.localeData.localizeMessage("prefValueLabel");
 		}
 	},
 

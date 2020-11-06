@@ -1,7 +1,6 @@
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 
 var loader = Services.scriptloader;
 loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js", this);
@@ -1271,7 +1270,7 @@ var cardbookUtils = {
 		var myResult = [];
 		var myRemainingNote = [];
 		var myRemainingOthers = [];
-		var eventInNoteEventPrefix = ConversionHelper.i18n.getMessage("eventInNoteEventPrefix");
+		var eventInNoteEventPrefix = cardbookRepository.extension.localeData.localizeMessage("eventInNoteEventPrefix");
 		var typesList = [ "Birthday" , eventInNoteEventPrefix ];
 		for (var i = 0; i < aCardNoteArray.length; i++) {
 			var found = false;
@@ -1342,26 +1341,26 @@ var cardbookUtils = {
 
 	getEditionFields: function() {
 		let tmpArray = [];
-		tmpArray.push([ConversionHelper.i18n.getMessage("addressbookHeader"), "addressbook"]);
-		tmpArray.push([ConversionHelper.i18n.getMessage("categoriesHeader"), "categories"]);
-		tmpArray.push([ConversionHelper.i18n.getMessage("fnLabel"), "fn"]);
-		tmpArray.push([ConversionHelper.i18n.getMessage("noteLabel"), "note"]);
+		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("addressbookHeader"), "addressbook"]);
+		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("categoriesHeader"), "categories"]);
+		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("fnLabel"), "fn"]);
+		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("noteLabel"), "note"]);
 
 		for (let field of cardbookRepository.allColumns.personal) {
 			if (cardbookRepository.newFields.includes(field)) {
-				tmpArray.push([ConversionHelper.i18n.getMessage(field + ".conf.label"), field]);
+				tmpArray.push([cardbookRepository.extension.localeData.localizeMessage(field + ".conf.label"), field]);
 			} else {
-				tmpArray.push([ConversionHelper.i18n.getMessage(field + "Label"), field]);
+				tmpArray.push([cardbookRepository.extension.localeData.localizeMessage(field + "Label"), field]);
 			}
 		}
 		for (let field of cardbookRepository.multilineFields) {
-			tmpArray.push([ConversionHelper.i18n.getMessage(field + "GroupboxLabel"), field]);
+			tmpArray.push([cardbookRepository.extension.localeData.localizeMessage(field + "GroupboxLabel"), field]);
 		}
 		for (let field of ["event"]) {
-			tmpArray.push([ConversionHelper.i18n.getMessage(field + "GroupboxLabel"), field]);
+			tmpArray.push([cardbookRepository.extension.localeData.localizeMessage(field + "GroupboxLabel"), field]);
 		}
 		for (let field of cardbookRepository.allColumns.org) {
-			tmpArray.push([ConversionHelper.i18n.getMessage(field + "Label"), field]);
+			tmpArray.push([cardbookRepository.extension.localeData.localizeMessage(field + "Label"), field]);
 		}
 		for (let type of ["pers", "org"]) {
 			for (let field of cardbookRepository.customFields[type]) {
@@ -1375,7 +1374,7 @@ var cardbookUtils = {
 				tmpArray.push([field, "org." + field]);
 			}
 		}
-		tmpArray.push([ConversionHelper.i18n.getMessage("mailPopularityTabLabel"), "mailpop"]);
+		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("mailPopularityTabLabel"), "mailpop"]);
 		cardbookRepository.cardbookUtils.sortMultipleArrayByString(tmpArray,0,1);
 		return tmpArray;
 	},
@@ -2026,15 +2025,15 @@ var cardbookUtils = {
 		for (var i in cardbookRepository.allColumns) {
 			for (var j = 0; j < cardbookRepository.allColumns[i].length; j++) {
 				if (i != "arrayColumns" && i != "categories" && i != "calculated" && i != "technicalForTree") {
-					result.push([cardbookRepository.allColumns[i][j], ConversionHelper.i18n.getMessage(cardbookRepository.allColumns[i][j] + "Label")]);
+					result.push([cardbookRepository.allColumns[i][j], cardbookRepository.extension.localeData.localizeMessage(cardbookRepository.allColumns[i][j] + "Label")]);
 				} else if (i == "calculated" && aMode == "search") {
-					result.push([cardbookRepository.allColumns[i][j], ConversionHelper.i18n.getMessage(cardbookRepository.allColumns[i][j] + "Label")]);
+					result.push([cardbookRepository.allColumns[i][j], cardbookRepository.extension.localeData.localizeMessage(cardbookRepository.allColumns[i][j] + "Label")]);
 				} else if (i == "calculated" && aMode == "cardstree") {
-					result.push([cardbookRepository.allColumns[i][j], ConversionHelper.i18n.getMessage(cardbookRepository.allColumns[i][j] + "Label")]);
+					result.push([cardbookRepository.allColumns[i][j], cardbookRepository.extension.localeData.localizeMessage(cardbookRepository.allColumns[i][j] + "Label")]);
 				} else if (i == "technicalForTree" && aMode == "cardstree") {
-					result.push([cardbookRepository.allColumns[i][j], ConversionHelper.i18n.getMessage(cardbookRepository.allColumns[i][j] + "Label")]);
+					result.push([cardbookRepository.allColumns[i][j], cardbookRepository.extension.localeData.localizeMessage(cardbookRepository.allColumns[i][j] + "Label")]);
 				} else if (i == "categories") {
-					result.push([cardbookRepository.allColumns[i][j] + ".0.array", ConversionHelper.i18n.getMessage(cardbookRepository.allColumns[i][j] + "Label")]);
+					result.push([cardbookRepository.allColumns[i][j] + ".0.array", cardbookRepository.extension.localeData.localizeMessage(cardbookRepository.allColumns[i][j] + "Label")]);
 				}
 			}
 		}
@@ -2046,18 +2045,18 @@ var cardbookUtils = {
 		for (var i = 0; i < cardbookRepository.allColumns.arrayColumns.length; i++) {
 			for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
 				result.push([cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".all",
-											ConversionHelper.i18n.getMessage(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label")]);
+											cardbookRepository.extension.localeData.localizeMessage(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label")]);
 			}
 			for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
 				result.push([cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + ".notype",
-											ConversionHelper.i18n.getMessage(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + ConversionHelper.i18n.getMessage("importNoTypeLabel") + ")"]);
+											cardbookRepository.extension.localeData.localizeMessage(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + cardbookRepository.extension.localeData.localizeMessage("importNoTypeLabel") + ")"]);
 			}
 			var myPrefTypes = cardbookRepository.cardbookTypes.getTypesFromDirPrefId(cardbookRepository.allColumns.arrayColumns[i][0]);
 			cardbookUtils.sortMultipleArrayByString(myPrefTypes,0,1)
 			for (var j = 0; j < myPrefTypes.length; j++) {
 				for (var k = 0; k < cardbookRepository.allColumns.arrayColumns[i][1].length; k++) {
 					result.push([cardbookRepository.allColumns.arrayColumns[i][0] + "." + k + "." + myPrefTypes[j][1],
-												ConversionHelper.i18n.getMessage(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][0] + ")"]);
+												cardbookRepository.extension.localeData.localizeMessage(cardbookRepository.allColumns.arrayColumns[i][1][k] + "Label") + " (" + myPrefTypes[j][0] + ")"]);
 				}
 			}
 		}
@@ -2366,15 +2365,15 @@ var cardbookUtils = {
 	formatStringForOutput: function(aStringCode, aValuesArray, aErrorCode) {
 		if (aValuesArray) {
 			if (aErrorCode) {
-				cardbookRepository.cardbookLog.updateStatusProgressInformation(ConversionHelper.i18n.getMessage(aStringCode, aValuesArray), aErrorCode);
+				cardbookRepository.cardbookLog.updateStatusProgressInformation(cardbookRepository.extension.localeData.localizeMessage(aStringCode, aValuesArray), aErrorCode);
 			} else {
-				cardbookRepository.cardbookLog.updateStatusProgressInformation(ConversionHelper.i18n.getMessage(aStringCode, aValuesArray));
+				cardbookRepository.cardbookLog.updateStatusProgressInformation(cardbookRepository.extension.localeData.localizeMessage(aStringCode, aValuesArray));
 			}
 		} else {
 			if (aErrorCode) {
-				cardbookRepository.cardbookLog.updateStatusProgressInformation(ConversionHelper.i18n.getMessage(aStringCode), aErrorCode);
+				cardbookRepository.cardbookLog.updateStatusProgressInformation(cardbookRepository.extension.localeData.localizeMessage(aStringCode), aErrorCode);
 			} else {
-				cardbookRepository.cardbookLog.updateStatusProgressInformation(ConversionHelper.i18n.getMessage(aStringCode));
+				cardbookRepository.cardbookLog.updateStatusProgressInformation(cardbookRepository.extension.localeData.localizeMessage(aStringCode));
 			}
 		}
 	}

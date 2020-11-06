@@ -1,0 +1,56 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body bgcolor="#dbffff">
+    <div style="background-color:#00bb00; color:#ffffff;">
+        <h2 style="margin:5px;">TexTra <span id="span_title">ログイン設定</span></h2>
+    </div>
+    <table width="600">
+        <tr>
+            <td width="20%" nowrap><span id="span_user_name">ユーザ名</span></td>
+            <td width="80%"><input type="text" id="tb_name" style="width:100%" /></td>
+        </tr>
+        <tr>
+            <td nowrap>API Key</td>
+            <td><input type="text" id="tb_key" style="width:100%" /></td>
+        </tr>
+        <tr>
+            <td nowrap>API Secret</td>
+            <td><input type="text" id="tb_secret" style="width:100%" /></td>
+        </tr>
+        <tr>
+            <td nowrap colspan="2"><span id="span_server_settings">サーバ設定</span></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <select id="cmb_api_prot" value="ja">
+                    <option value="https">https</option>
+                    <option value="http">http</option>
+                </select>
+                <input type="text" id="tb_server_url" style="width:70%" value="mt-auto-minhon-mlt.ucri.jgn-x.jp" />
+                <input type="button" id="btn_server_url" value="初期化" />
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="btn_save" value="保存" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="javascript:void(0);" id="create_user"><span id="span_create_user">ユーザ作成</span></a>&nbsp;
+                <span id="span_need_not">（個人情報の入力不要）</span><br />
+                <a href="javascript:void(0);" id="link_top">トップ</a>
+            </td>
+        </tr>
+    </table>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/api/oauth.js"></script>
+    <script src="../js/api/sha1.js"></script>
+    <script src="../js/api/aes.js"></script>
+    <script src="../js/api/api.js"></script>
+    <script src="API_Settings.js"></script>
+</body>
+</html>

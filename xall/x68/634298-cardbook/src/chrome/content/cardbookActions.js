@@ -1,6 +1,5 @@
 if ("undefined" == typeof(cardbookActions)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 
 	var cardbookActions = {
 
@@ -65,7 +64,7 @@ if ("undefined" == typeof(cardbookActions)) {
 		},
 
 		initSyncActivity: function(aDirPrefId, aDirPrefName) {
-			var processName = ConversionHelper.i18n.getMessage("synchroRunning", [aDirPrefName]);
+			var processName = cardbookRepository.extension.localeData.localizeMessage("synchroRunning", [aDirPrefName]);
 			var process = cardbookActions.initProcess(processName, aDirPrefName, aDirPrefId, 'syncMail');
 			if (!cardbookActions.syncActivity[aDirPrefId]) {
 				cardbookActions.syncActivity[aDirPrefId] = {};
@@ -75,7 +74,7 @@ if ("undefined" == typeof(cardbookActions)) {
 
 		fetchSyncActivity: function(aDirPrefId, aCountDone, aCountTotal) {
 			if (cardbookActions.syncActivity[aDirPrefId] && cardbookActions.syncActivity[aDirPrefId].syncProcess) {
-				var processMessage = ConversionHelper.i18n.getMessage("synchroProcessed", [aCountDone, aCountTotal]);
+				var processMessage = cardbookRepository.extension.localeData.localizeMessage("synchroProcessed", [aCountDone, aCountTotal]);
 				cardbookActions.syncActivity[aDirPrefId].syncProcess.setProgress(processMessage, aCountDone, aCountTotal);
 			}
 		},
@@ -94,7 +93,7 @@ if ("undefined" == typeof(cardbookActions)) {
 					gActivityManager.removeActivity(cardbookActions.syncActivity[aDirPrefId].syncEvent.id);
 				}
 			}
-			var eventName = ConversionHelper.i18n.getMessage("synchroFinished", [aDirPrefName]);
+			var eventName = cardbookRepository.extension.localeData.localizeMessage("synchroFinished", [aDirPrefName]);
 			var event = cardbookActions.addEvent(eventName, "syncMail");
 			cardbookActions.syncActivity[aDirPrefId].syncEvent = event;
 		},
@@ -102,8 +101,8 @@ if ("undefined" == typeof(cardbookActions)) {
 		initCryptoActivity: function(aMode) {
 			cardbookActions.cryptoDone = 0;
 			cardbookActions.cryptoCount = 0;
-			var processName = ConversionHelper.i18n.getMessage(aMode + "Started");
-			var processTitle = ConversionHelper.i18n.getMessage("cardbookTitle");
+			var processName = cardbookRepository.extension.localeData.localizeMessage(aMode + "Started");
+			var processTitle = cardbookRepository.extension.localeData.localizeMessage("cardbookTitle");
 			var process = cardbookActions.initProcess(processName, processTitle, cardbookActions.mainContext, "editItem");
 			if (!cardbookActions.cryptoActivity[cardbookActions.mainContext]) {
 				cardbookActions.cryptoActivity[cardbookActions.mainContext] = {};
@@ -118,7 +117,7 @@ if ("undefined" == typeof(cardbookActions)) {
 		fetchCryptoActivity: function(aMode) {
 			cardbookActions.cryptoDone++;
 			if (cardbookActions.cryptoActivity[cardbookActions.mainContext] && cardbookActions.cryptoActivity[cardbookActions.mainContext].syncProcess) {
-				var processMessage = ConversionHelper.i18n.getMessage(aMode + "Processed", [cardbookActions.cryptoDone, cardbookActions.cryptoCount]);
+				var processMessage = cardbookRepository.extension.localeData.localizeMessage(aMode + "Processed", [cardbookActions.cryptoDone, cardbookActions.cryptoCount]);
 				cardbookActions.cryptoActivity[cardbookActions.mainContext].syncProcess.setProgress(processMessage, cardbookActions.cryptoDone, cardbookActions.cryptoCount);
 			}
 			if (cardbookActions.cryptoDone == cardbookActions.cryptoCount) {
@@ -140,13 +139,13 @@ if ("undefined" == typeof(cardbookActions)) {
 					gActivityManager.removeActivity(cardbookActions.cryptoActivity[cardbookActions.mainContext].syncEvent.id);
 				}
 			}
-			var eventName = ConversionHelper.i18n.getMessage(aMode + "Finished");
+			var eventName = cardbookRepository.extension.localeData.localizeMessage(aMode + "Finished");
 			var event = cardbookActions.addEvent(eventName, "syncMail");
 			cardbookActions.cryptoActivity[cardbookActions.mainContext].syncEvent = event;
 		},
 
 		addActivity: function(aMessageCode, aArray, aIcon) {
-			var eventName = ConversionHelper.i18n.getMessage(aMessageCode, aArray);
+			var eventName = cardbookRepository.extension.localeData.localizeMessage(aMessageCode, aArray);
 			cardbookActions.addEvent(eventName, aIcon);
 		},
 			
@@ -211,7 +210,7 @@ if ("undefined" == typeof(cardbookActions)) {
 					case "cardsDragged":
 					case "displayNameGenerated":
 					case "linePasted":
-						cardbookRepository.currentAction[aActionId].message = ConversionHelper.i18n.getMessage(myActionCode + 'Undo');
+						cardbookRepository.currentAction[aActionId].message = cardbookRepository.extension.localeData.localizeMessage(myActionCode + 'Undo');
 						break;
 					case "cardsImportedFromFile":
 					case "cardsImportedFromDir":
@@ -229,13 +228,13 @@ if ("undefined" == typeof(cardbookActions)) {
 					case "nodeRenamed":
 					case "nodeDeleted":
 					case "listCreatedFromNode":
-						cardbookRepository.currentAction[aActionId].message = ConversionHelper.i18n.getMessage(myActionCode + 'Undo', aArray);
+						cardbookRepository.currentAction[aActionId].message = cardbookRepository.extension.localeData.localizeMessage(myActionCode + 'Undo', aArray);
 						break;
 					case "cardsDeleted":
 						if (aArray && aArray.length == 1) {
-							cardbookRepository.currentAction[aActionId].message = ConversionHelper.i18n.getMessage(myActionCode + '1' + 'Undo', [aArray[0].fn]);
+							cardbookRepository.currentAction[aActionId].message = cardbookRepository.extension.localeData.localizeMessage(myActionCode + '1' + 'Undo', [aArray[0].fn]);
 						} else {
-							cardbookRepository.currentAction[aActionId].message = ConversionHelper.i18n.getMessage(myActionCode + '2' + 'Undo');
+							cardbookRepository.currentAction[aActionId].message = cardbookRepository.extension.localeData.localizeMessage(myActionCode + '2' + 'Undo');
 						}
 						break;
 				}

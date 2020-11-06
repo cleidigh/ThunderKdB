@@ -219,9 +219,7 @@ var myFormatObserver = {
 	}
 };
 
-window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", function(e) {
-	myFormatObserver.register();
-}, false);
+myFormatObserver.register();
 
 // for displaying the undo and redo
 // DisplayNameUtils.formatDisplayName

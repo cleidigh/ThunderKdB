@@ -2,7 +2,6 @@ if ("undefined" == typeof(ovl_filters)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { jsmime } = ChromeUtils.import("resource:///modules/jsmime.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -129,7 +128,7 @@ if ("undefined" == typeof(ovl_filters)) {
 		onLoad: function () {
 			var searchFrom = {
 				id: "cardbook#searchFrom",
-				name: ConversionHelper.i18n.getMessage("cardbook.searchFrom.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.searchFrom.name"),
 				getEnabled: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
@@ -153,7 +152,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var searchTo = {
 				id: "cardbook#searchTo",
-				name: ConversionHelper.i18n.getMessage("cardbook.searchTo.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.searchTo.name"),
 				getEnabled: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
@@ -177,7 +176,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var searchCc = {
 				id: "cardbook#searchCc",
-				name: ConversionHelper.i18n.getMessage("cardbook.searchCc.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.searchCc.name"),
 				getEnabled: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
@@ -201,7 +200,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var searchBcc = {
 				id: "cardbook#searchBcc",
-				name: ConversionHelper.i18n.getMessage("cardbook.searchBcc.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.searchBcc.name"),
 				getEnabled: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
@@ -225,7 +224,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var searchAll = {
 				id: "cardbook#searchAll",
-				name: ConversionHelper.i18n.getMessage("cardbook.searchAll.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.searchAll.name"),
 				getEnabled: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
@@ -261,7 +260,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var searchCorrespondents = {
 				id: "cardbook#searchCorrespondents",
-				name: ConversionHelper.i18n.getMessage("cardbook.searchCorrespondents.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.searchCorrespondents.name"),
 				getEnabled: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
@@ -303,7 +302,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var addFrom = {
 				id: "cardbook#addFrom",
-				name: ConversionHelper.i18n.getMessage("cardbook.addFrom.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addFrom.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -316,7 +315,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var addTo = {
 				id: "cardbook#addTo",
-				name: ConversionHelper.i18n.getMessage("cardbook.addTo.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addTo.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -329,7 +328,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var addCc = {
 				id: "cardbook#addCc",
-				name: ConversionHelper.i18n.getMessage("cardbook.addCc.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addCc.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -342,7 +341,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var addBcc = {
 				id: "cardbook#addBcc",
-				name: ConversionHelper.i18n.getMessage("cardbook.addBcc.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addBcc.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -355,7 +354,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var addAll = {
 				id: "cardbook#addAll",
-				name: ConversionHelper.i18n.getMessage("cardbook.addAll.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.addAll.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -371,7 +370,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var removeFrom = {
 				id: "cardbook#removeFrom",
-				name: ConversionHelper.i18n.getMessage("cardbook.removeFrom.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeFrom.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -384,7 +383,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var removeTo = {
 				id: "cardbook#removeTo",
-				name: ConversionHelper.i18n.getMessage("cardbook.removeTo.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeTo.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -397,7 +396,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var removeCc = {
 				id: "cardbook#removeCc",
-				name: ConversionHelper.i18n.getMessage("cardbook.removeCc.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeCc.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -410,7 +409,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var removeBcc = {
 				id: "cardbook#removeBcc",
-				name: ConversionHelper.i18n.getMessage("cardbook.removeBcc.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeBcc.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,
@@ -423,7 +422,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 			var removeAll = {
 				id: "cardbook#removeAll",
-				name: ConversionHelper.i18n.getMessage("cardbook.removeAll.name"),
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.removeAll.name"),
 				isValidForType: function(type, scope) {return true;},
 				validateActionValue: function(value, folder, type) { return null;},
 				allowDuplicates: true,

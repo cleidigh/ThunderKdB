@@ -10,7 +10,7 @@
 function localisePage() {
   for (let el of window.document.querySelectorAll("[data-l10n-id]")) {
     let id = el.getAttribute("data-l10n-id");
-    el.textContent = browser.i18n.getMessage(id);
+    el.textContent = messenger.i18n.getMessage(id);
   }
 }
 

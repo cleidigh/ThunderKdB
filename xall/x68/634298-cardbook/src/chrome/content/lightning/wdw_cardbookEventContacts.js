@@ -1,6 +1,5 @@
 if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -288,10 +287,11 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 		},
 
 		load: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_cardbookEventContacts.emailArray = window.arguments[0].listOfEmail;
 			wdw_cardbookEventContacts.attendeeId = window.arguments[0].attendeeId;
 			wdw_cardbookEventContacts.attendeeName = window.arguments[0].attendeeName;
-			document.title = ConversionHelper.i18n.getMessage("eventContactsWindowLabel", [window.arguments[0].displayName]);
+			document.title = cardbookRepository.extension.localeData.localizeMessage("eventContactsWindowLabel", [window.arguments[0].displayName]);
 
 			wdw_cardbookEventContacts.loadEvents();
 		},
@@ -304,8 +304,3 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 
 function ensureCalendarVisible(aCalendar) {};
 function goUpdateCommand(aCommand) {};
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

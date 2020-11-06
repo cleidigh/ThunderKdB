@@ -89,8 +89,8 @@
     "message": "Fiók ellenőrzése sikertelen: helytelen felhasználónév, nem összeegyeztethetetlen felhő vagy hálózati hiba."
   },
   "error_503": {
-  "message": "Kiszolgáló karbantartási módban van. Próbálkozzon újra később."
-  }, 
+    "message": "Kiszolgáló karbantartási módban van. Próbálkozzon újra később."
+  },
   "warn_unsupported_cloud": {
     "message": "A Nextcloud vagy a ownCloud elavult verziója. Elveszítheti az adatokat. Kérje meg a felhőrendszergazdát, hogy frissítse."
   },
@@ -115,6 +115,9 @@
   },
   "warn_no_config_check": {
     "message": "Fiókellenőrzés sikertelen. Hálózati problémák?"
+  },
+  "warn_insecure_http": {
+    "message": "A bejelentkezési adatokat titkosítatlanul továbbítják a HTTP-kapcsolat használatával. A bejelentkezéshez használja a HTTPS-kapcsolatot. Ha ez nem sikerül, kérje a rendszergazdák segítségét."
   },
   "status_menuname": {
     "description": "Ezt a *cloud logó után helyezzük el, hogy létrejöjjön a gomb az üzenetírási ablakban, amely megnyitja az előrehaladás felbukkanó ablakot",
@@ -143,7 +146,7 @@
     "message": "Megosztás"
   },
   "status_checkingspace": {
-  "message": "Szabad hely ellenőrzése"
+    "message": "Szabad hely ellenőrzése"
   },
   "status_error": {
     "description": "A(z) $1 helyébe a fenti állapotok egyike lép, például „Megosztás sikertelen”. Előtte és utána szöveget is elhelyezhet. Ha ez nem működik az Ön nyelvén, kérlek, mondja meg.",

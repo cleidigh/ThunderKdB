@@ -2,7 +2,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { FormHistory } = ChromeUtils.import("resource://gre/modules/FormHistory.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 	XPCOMUtils.defineLazyModuleGetter(this, "PhoneNumber", "chrome://cardbook/content/formautofill/phonenumberutils/PhoneNumber.jsm");
@@ -328,7 +327,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 					for (var i = 0; i < myCard.email.length; i++) {
 						var menuItem = document.createXULElement("menuitem");
 						menuItem.setAttribute("id", 'appendEmail' + i);
-						menuItem.setAttribute("label", ConversionHelper.i18n.getMessage("appendEmailLabel", [myCard.email[i][0][0]]));
+						menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("appendEmailLabel", [myCard.email[i][0][0]]));
 						menuItem.setAttribute("value", myCard.email[i][0][0]);
 						menuItem.addEventListener("command", function(aEvent) {
 								wdw_cardEdition.addEmailToAdded(this.value.toLowerCase());
@@ -378,11 +377,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		loadEditionMode: function () {
-			document.title = ConversionHelper.i18n.getMessage("wdw_cardEdition" + window.arguments[0].editionMode + "Title");
+			document.title = cardbookRepository.extension.localeData.localizeMessage("wdw_cardEdition" + window.arguments[0].editionMode + "Title");
 			if (window.arguments[0].editionMode == "ViewResult") {
 				document.getElementById('addressbookMenulistReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('addressbookMenulist').disabled = false;
-				document.getElementById('addressbookMenulistLabel').value = ConversionHelper.i18n.getMessage("addToAddressbook");
+				document.getElementById('addressbookMenulistLabel').value = cardbookRepository.extension.localeData.localizeMessage("addToAddressbook");
 				document.getElementById('addressbookMenulistReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
@@ -414,7 +413,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			} else if (window.arguments[0].editionMode == "ViewContact" || window.arguments[0].editionMode == "ViewList") {
 				document.getElementById('addressbookMenulistReadWriteGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('addressbookMenulistReadOnlyGroupbox').removeAttribute('hidden');
-				document.getElementById('addressbookHeader').value = ConversionHelper.i18n.getMessage("addressbookHeader");
+				document.getElementById('addressbookHeader').value = cardbookRepository.extension.localeData.localizeMessage("addressbookHeader");
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadOnlyGroupbox').removeAttribute('hidden');
@@ -439,7 +438,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			} else if (window.arguments[0].editionMode == "EditContact" || window.arguments[0].editionMode == "EditList") {
 				document.getElementById('addressbookMenulistReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('addressbookMenulist').disabled = false;
-				document.getElementById('addressbookMenulistLabel').value = ConversionHelper.i18n.getMessage("addressbookHeader");
+				document.getElementById('addressbookMenulistLabel').value = cardbookRepository.extension.localeData.localizeMessage("addressbookHeader");
 				document.getElementById('addressbookMenulistReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
@@ -454,7 +453,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			} else if (window.arguments[0].editionMode == "CreateContact" || window.arguments[0].editionMode == "CreateList") {
 				document.getElementById('addressbookMenulistReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('addressbookMenulist').disabled = false;
-				document.getElementById('addressbookMenulistLabel').value = ConversionHelper.i18n.getMessage("addToAddressbook");
+				document.getElementById('addressbookMenulistLabel').value = cardbookRepository.extension.localeData.localizeMessage("addToAddressbook");
 				document.getElementById('addressbookMenulistReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
@@ -470,7 +469,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				wdw_cardEdition.emailToAdd = wdw_cardEdition.workingCard.email[0];
 				document.getElementById('addressbookMenulistReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('addressbookMenulist').disabled = false;
-				document.getElementById('addressbookMenulistLabel').value = ConversionHelper.i18n.getMessage("addToAddressbook");
+				document.getElementById('addressbookMenulistLabel').value = cardbookRepository.extension.localeData.localizeMessage("addToAddressbook");
 				document.getElementById('addressbookMenulistReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('existingDataGroupbox').removeAttribute('hidden');
 				document.getElementById('contactMenulist').removeAttribute('hidden');
@@ -515,27 +514,27 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			let fieldList = [];
 			fieldList = cardbookRepository.cardbookUtils.getEditionFields();
 
-			let separator = document.getElementById('fieldsSeparator');
-			let listRows = document.getElementById('fieldsMenupopup');
-			for (let i = listRows.childNodes.length -1; i >= 0; i--) {
-				let child = listRows.childNodes[i];
-				if (child.tagName == "menuseparator" || child.tagName == "button") {
-					continue;
-				}
-				listRows.removeChild(child);
-			}
+			cardbookElementTools.deleteRows('fieldsMenupopup');
 
+			let listRows = document.getElementById('fieldsMenupopup');
 			for (let field of fieldList) {
 				let item = document.createXULElement("menuitem");
-				item.setAttribute("class", "menuitem-iconic cardbook-item cardbookCategoryMenuClass");
+				item.setAttribute("class", "menuitem-iconic cardbook-item");
 				item.setAttribute("label", field[0]);
 				item.setAttribute("value", field[1]);
 				item.setAttribute("type", "checkbox");
 				if (wdw_cardEdition.editionFields.includes(field[1]) || wdw_cardEdition.editionFields[0] == "allFields") {
 					item.setAttribute("checked", "true");
 				}
-				listRows.insertBefore(item, separator);
+				listRows.appendChild(item);
 			}
+			let menuseparator = document.createXULElement("menuseparator");
+			listRows.appendChild(menuseparator);
+			let fieldsButton = document.createXULElement("menuitem");
+			fieldsButton.setAttribute("class", "menuitem-iconic");
+			fieldsButton.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("fieldsButtonLabel"));
+			fieldsButton.addEventListener("command", wdw_cardEdition.setFieldsAsDefault, false);
+			listRows.appendChild(fieldsButton);
 
 			cardbookWindowUtils.updateComplexMenulist('fields', 'fieldsMenupopup');
 		},
@@ -808,7 +807,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			myResult = document.getElementById('fnTextBox').value + "\n" + myResult;
 			cardbookRepository.currentCopiedEntry = [];
 			cardbookRepository.currentCopiedEntry.push(["adr", myAdr]);
-			var myMessage = ConversionHelper.i18n.getMessage("lineCopied");
+			var myMessage = cardbookRepository.extension.localeData.localizeMessage("lineCopied");
 			cardbookClipboard.clipboardSetText('text/unicode', myResult, myMessage);
 		},
 
@@ -1012,12 +1011,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 		loadDateFormatLabels: function () {
 			var dateFormat = cardbookRepository.cardbookDates.getDateFormatLabel(wdw_cardEdition.workingCard.dirPrefId, wdw_cardEdition.workingCard.version);
-			myD = ConversionHelper.i18n.getMessage("dateFormatsDLabel");
-			myM = ConversionHelper.i18n.getMessage("dateFormatsMLabel");
-			myY = ConversionHelper.i18n.getMessage("dateFormatsYLabel");
+			myD = cardbookRepository.extension.localeData.localizeMessage("dateFormatsDLabel");
+			myM = cardbookRepository.extension.localeData.localizeMessage("dateFormatsMLabel");
+			myY = cardbookRepository.extension.localeData.localizeMessage("dateFormatsYLabel");
 			for (var field of cardbookRepository.dateFields) {
 				if (document.getElementById(field + 'DatepickerLabel')) {
-					document.getElementById(field + 'DatepickerLabel').value = ConversionHelper.i18n.getMessage(field + "Label") + " (" + dateFormat.replace(/D/g, myD).replace(/M/g, myM).replace(/Y/g, myY) + ")";
+					document.getElementById(field + 'DatepickerLabel').value = cardbookRepository.extension.localeData.localizeMessage(field + "Label") + " (" + dateFormat.replace(/D/g, myD).replace(/M/g, myM).replace(/Y/g, myY) + ")";
 				}
 			}
 		},
@@ -1101,6 +1100,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		load: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			cardBookEditionObserver.register();
 			cardBookEditionPrefObserver.register();
 
@@ -1504,8 +1504,3 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 	};
 
 };
-
-// translations
-window.addEventListener("load", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

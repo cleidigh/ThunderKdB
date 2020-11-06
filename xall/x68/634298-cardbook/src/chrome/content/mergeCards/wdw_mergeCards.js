@@ -1,6 +1,5 @@
 if ("undefined" == typeof(wdw_mergeCards)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -197,7 +196,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			var aLabel = document.createXULElement('label');
 			aRow.appendChild(aLabel);
 			aLabel.setAttribute('id', aName);
-			aLabel.setAttribute('value', ConversionHelper.i18n.getMessage(aValue));
+			aLabel.setAttribute('value', cardbookRepository.extension.localeData.localizeMessage(aValue));
 		},
 
 		createCustomLabel: function (aRow, aName, aValue) {
@@ -329,6 +328,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 		},
 		
 		load: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_mergeCards.setHideCreate();
 			wdw_mergeCards.setContactOrList();
 			
@@ -872,8 +872,3 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 	};
 
 };
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

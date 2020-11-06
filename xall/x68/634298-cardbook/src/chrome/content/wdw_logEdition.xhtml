@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://cardbook/content/skin/logEdition.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://cardbook/content/skin/logEdition.css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	onload="wdw_logEdition.load();" resizable="true"
 	onclose="wdw_logEdition.cancel();"
-	id="wdw_logEdition" title="__CARDBOOKMSG_wdw_logEditionTitle__"
+	id="wdw_logEdition" title="__MSG_wdw_logEditionTitle__"
 	persist="screenX screenY width height sizemode"
 	windowtype="CardBook:logEditionWindow"
+	lightweightthemes="true"
 	style="min-width:400px;min-height:100px;">
 	
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookClipboard.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/wdw_logEdition.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 
 	<keyset id="wdw_logEdition-keys">
 		<key id="escapeKey" keycode="VK_ESCAPE" oncommand="wdw_logEdition.cancel();"/>
@@ -23,7 +27,7 @@
 	<hbox flex="1">
 		<tree id="logEditionTree" class="cardbookTreeChildrenLogEditionClass" flex="1" hidecolumnpicker="true">
 			<treecols>
-				<treecol id="logEditionValue" label="__CARDBOOKMSG_logEditionValueLabel__" flex="1" persist="width ordinal" style="text-align:left" closemenu="none"/>
+				<treecol id="logEditionValue" label="__MSG_logEditionValueLabel__" flex="1" persist="width ordinal" style="text-align:left" closemenu="none"/>
 				<treecol id="logEditionType" hidden="true" closemenu="none"/>
 			</treecols>
 			<treechildren/>
@@ -32,9 +36,9 @@
 
 	<hbox>
 		<spacer flex="1"/>
-		<button id="refreshLogEditionLabel" label="__CARDBOOKMSG_refreshLogEditionLabel__" accesskey="__CARDBOOKMSG_refreshLogEditionAccesskey__" oncommand="wdw_logEdition.load();"/>
-		<button id="flushLogEditionLabel" label="__CARDBOOKMSG_flushLogEditionLabel__" accesskey="__CARDBOOKMSG_flushLogEditionAccesskey__" oncommand="wdw_logEdition.flush();"/>
-		<button id="clipboardLogEditionLabel" label="__CARDBOOKMSG_clipboardLogEditionLabel__" accesskey="__CARDBOOKMSG_clipboardLogEditionAccesskey__" oncommand="wdw_logEdition.clipboard();"/>
-		<button id="cancelLogEditionLabel" label="__CARDBOOKMSG_cancelLogEditionLabel__" accesskey="__CARDBOOKMSG_cancelLogEditionAccesskey__" oncommand="wdw_logEdition.cancel();"/>
+		<button id="refreshLogEditionLabel" label="__MSG_refreshLogEditionLabel__" accesskey="__MSG_refreshLogEditionAccesskey__" oncommand="wdw_logEdition.load();"/>
+		<button id="flushLogEditionLabel" label="__MSG_flushLogEditionLabel__" accesskey="__MSG_flushLogEditionAccesskey__" oncommand="wdw_logEdition.flush();"/>
+		<button id="clipboardLogEditionLabel" label="__MSG_clipboardLogEditionLabel__" accesskey="__MSG_clipboardLogEditionAccesskey__" oncommand="wdw_logEdition.clipboard();"/>
+		<button id="cancelLogEditionLabel" label="__MSG_cancelLogEditionLabel__" accesskey="__MSG_cancelLogEditionAccesskey__" oncommand="wdw_logEdition.cancel();"/>
 	</hbox>
 </window>

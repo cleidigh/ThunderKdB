@@ -3,6 +3,7 @@
 /* globals browser */
 
 var MessagePreviewOptions = {
+  DEBUG: false,
   // These four are also found in messagePreview.js.
   kPreviewTooltipMaxSize: 4000,
   kPreviewTextMaxSize: 40,
@@ -10,8 +11,9 @@ var MessagePreviewOptions = {
   kPreviewHover: 1,
 
   async onLoad() {
-    // console.log("MessagePreviewOptions.onLoad:");
-    this.initializeElements();
+    this.DEBUG && console.debug("MessagePreviewOptions.onLoad:");
+    this.initializeStrings();
+
     /* eslint-disable */
     this.previewTooltipEnabled = document.getElementById("previewTooltipEnabled");
     this.previewTooltipFieldset = document.getElementById("previewTooltipFieldset");
@@ -19,13 +21,13 @@ var MessagePreviewOptions = {
     this.previewTextEnabled = document.getElementById("previewTextEnabled");
     this.previewTextFieldset = document.getElementById("previewTextFieldset");
     this.previewTextMaxSize = document.getElementById("previewTextMaxSize");
+    this.previewRadioGroup = document.getElementById("previewRadioGroup");
     this.previewRadioFieldset = document.getElementById("previewRadioFieldset");
     this.previewGetRadioForm = document.getElementById("previewGetRadioForm");
     this.imapAllowDownload = document.getElementById("imapAllowDownload");
     this.restoreDefaults = document.getElementById("restoreDefaults");
 
     await this.restoreOptions();
-    this.updateElements();
     document.getElementById("container").removeAttribute("hidden");
 
     this.previewTooltipEnabled.addEventListener("change", e => this.saveOptions(e));
@@ -38,146 +40,120 @@ var MessagePreviewOptions = {
     /* eslint-enable */
   },
 
-  initializeElements() {
-    // NOTE: Adding browser_style to options_ui or class="browser-style" has
-    // no effect.
-    let i18nString = browser.i18n.getMessage;
-    let html = `
-      <div id="grid">
-        <div>
-          <input id="previewTooltipEnabled"
-                 type="checkbox"></input>
-          <label for="previewTooltipEnabled">${i18nString(
-            "previewTooltipEnabled"
-          )}</label>
-        </div>
-
-        <fieldset id="previewTooltipFieldset">
-          <label for="previewTooltipMaxSize">${i18nString(
-            "previewTooltipMaxSize"
-          )}</label>
-          <input id="previewTooltipMaxSize"
-                 class="maxsize"
-                 type="number"
-                 min="0"</input>
-        </fieldset>
-        <br/>
-
-        <div>
-          <input id="previewTextEnabled"
-                 type="checkbox"></input>
-          <label for="previewTextEnabled">${i18nString(
-            "previewTextEnabled"
-          )}</label>
-        </div>
-
-        <fieldset id="previewTextFieldset">
-          <label for="previewTextMaxSize">${i18nString(
-            "previewTextMaxSize"
-          )}</label>
-          <input id="previewTextMaxSize"
-                 class="maxsize"
-                 type="number"
-                 min="0"</input>
-        </fieldset>
-        <br/>
-
-        <fieldset id="previewRadioFieldset">
-          <label for="previewGetRadioForm">${i18nString(
-            "previewGetOption"
-          )}</label>
-          <form id="previewGetRadioForm">
-            <div>
-              <input id="previewAuto" type="radio" name="preview" value="0">
-              <label for="previewAuto">${i18nString("previewGetAuto")}</label>
-            </div>
-            <div>
-              <input id="previewHover" type="radio" name="preview" value="1" checked>
-              <label for="previewHover">${i18nString("previewGetHover")}</label>
-            </div>
-          </form>
-        </fieldset>
-        <br/>
-
-        <div>
-          <input id="imapAllowDownload"
-                 type="checkbox"></input>
-          <label for="imapAllowDownload">${i18nString(
-            "imapAllowDownload"
-          )}</label>
-        </div>
-      </div>
-
-      <br/>
-      <button id="restoreDefaults">${i18nString(
-        "previewRestoreDefaults"
-      )}</button>
-    `;
-
-    let range = document.createRange();
-    let parent = document.getElementById("container");
-    range.selectNode(parent);
-    // eslint-disable-next-line no-unsanitized/method
-    let documentFragment = range.createContextualFragment(html);
-    parent.appendChild(documentFragment);
+  initializeStrings() {
+    document.querySelectorAll("[data-localekey]").forEach(element => {
+      let message = browser.i18n.getMessage(element.dataset.localekey);
+      let localeAttribute = element.dataset.localeattribute;
+      if (localeAttribute) {
+        element.setAttribute(localeAttribute, message);
+      } else {
+        element.textContent = message;
+      }
+    });
   },
 
   updateElements() {
     this.previewTooltipFieldset.disabled = !this.previewTooltipEnabled.checked;
+    this.previewTooltipFieldset.classList.toggle(
+      "disabled",
+      !this.previewTooltipEnabled.checked
+    );
     this.previewTextFieldset.disabled = !this.previewTextEnabled.checked;
+    this.previewTextFieldset.classList.toggle(
+      "disabled",
+      !this.previewTextEnabled.checked
+    );
+    this.previewRadioGroup.classList.toggle(
+      "disabled",
+      !(this.previewTooltipEnabled.checked || this.previewTextEnabled.checked)
+    );
     this.previewRadioFieldset.disabled = !(
       this.previewTooltipEnabled.checked || this.previewTextEnabled.checked
     );
+    this.previewGetRadioForm.classList.toggle(
+      "disabled",
+      !(this.previewTooltipEnabled.checked || this.previewTextEnabled.checked)
+    );
   },
 
-  // Just set all prefs at once, only a few.
   saveOptions(event) {
+    let changeElement = event.target;
+    let storageLocalData;
+    switch (changeElement.id) {
+      case "previewTooltipEnabled":
+        storageLocalData = {
+          previewTooltipEnabled: this.previewTooltipEnabled.checked,
+        };
+        break;
+      case "previewTooltipMaxSize":
+        storageLocalData = {
+          previewTooltipMaxSize: Number(this.previewTooltipMaxSize.value),
+        };
+        break;
+      case "previewTextEnabled":
+        storageLocalData = {
+          previewTextEnabled: this.previewTextEnabled.checked,
+        };
+        break;
+      case "previewTextMaxSize":
+        storageLocalData = {
+          previewTextMaxSize: Number(this.previewTextMaxSize.value),
+        };
+        break;
+      case "previewAuto":
+      case "previewHover":
+        /* eslint-disable */
+        storageLocalData = {
+          previewGetOption: Number(this.previewGetRadioForm.elements.preview.value),
+        };
+        /* eslint-enable */
+        break;
+      case "imapAllowDownload":
+        storageLocalData = {
+          imapAllowDownload: this.imapAllowDownload.checked,
+        };
+        break;
+      default:
+        return;
+    }
+
     this.updateElements();
-    let storageLocalData = {
-      previewTooltipEnabled: this.previewTooltipEnabled.checked,
-      previewTooltipMaxSize: Number(this.previewTooltipMaxSize.value),
-      previewTextEnabled: this.previewTextEnabled.checked,
-      previewTextMaxSize: Number(this.previewTextMaxSize.value),
-      previewGetOption: Number(this.previewGetRadioForm.elements.preview.value),
-      imapAllowDownload: this.imapAllowDownload.checked,
-    };
+    this.setStorageLocal(storageLocalData);
+  },
 
-    browser.storage.local.set(storageLocalData);
+  async setStorageLocal(storageLocalData) {
+    if (storageLocalData) {
+      await browser.storage.local.set(storageLocalData);
+    }
 
-    let response = result => {
-      // console.debug("MessagePreviewOptions.saveOptions: result - ");
-      // console.dir(result);
-    };
-    let onError = error => {
-      console.error(`MessagePreviewOptions.saveOptions: ${error}`);
-    };
-
-    let sending = browser.runtime.sendMessage({ storageLocalData });
-    sending.then(response, onError);
+    this.DEBUG &&
+      console.debug(
+        "MessagePreviewOptions.setStorageLocal: new storage.local ->"
+      );
+    this.DEBUG && console.debug(await browser.storage.local.get());
   },
 
   async restoreOptions() {
     let setCurrentChoice = result => {
       this.previewTooltipEnabled.checked =
-        "previewTooltipEnabled" in result ? result.previewTooltipEnabled : true;
+        result?.previewTooltipEnabled || true;
       this.previewTooltipMaxSize.value =
-        "previewTooltipMaxSize" in result
-          ? result.previewTooltipMaxSize
-          : this.kPreviewTooltipMaxSize;
+        result?.previewTooltipMaxSize || this.kPreviewTooltipMaxSize;
+      /* eslint-disable */
       this.previewTextEnabled.checked =
-        "previewTextEnabled" in result ? result.previewTextEnabled : false;
+        result?.previewTextEnabled || false;
+      /* eslint-enable */
       this.previewTextMaxSize.value =
-        "previewTextMaxSize" in result
-          ? result.previewTextMaxSize
-          : this.kPreviewTextMaxSize;
+        result?.previewTextMaxSize || this.kPreviewTextMaxSize;
       this.previewGetRadioForm.elements.preview.value =
-        "previewGetOption" in result
-          ? result.previewGetOption
-          : this.kPreviewHover;
-      this.imapAllowDownload.checked =
-        "imapAllowDownload" in result ? result.imapAllowDownload : true;
-      // console.log("MessagePreviewOptions.restoreOptions: result - ");
-      // console.dir(result);
+        result?.previewGetOption || this.kPreviewHover;
+      this.imapAllowDownload.checked = result?.imapAllowDownload || true;
+
+      this.updateElements();
+
+      this.DEBUG &&
+        console.debug("MessagePreviewOptions.restoreOptions: result -> ");
+      this.DEBUG && console.debug(result);
     };
 
     let onError = error => {
@@ -185,9 +161,11 @@ var MessagePreviewOptions = {
     };
 
     let getting = browser.storage.local.get([
-      "previewGetOption",
       "previewTooltipEnabled",
+      "previewTooltipMaxSize",
       "previewTextEnabled",
+      "previewTextMaxSize",
+      "previewGetOption",
       "imapAllowDownload",
     ]);
     await getting.then(setCurrentChoice, onError);
@@ -196,14 +174,15 @@ var MessagePreviewOptions = {
   async defaultOptions(event) {
     await browser.storage.local.clear();
     await this.restoreOptions();
-    this.saveOptions(event);
   },
-};
+}; // MessagePreviewOptions
 
-document.addEventListener(
-  "DOMContentLoaded",
-  () => {
-    MessagePreviewOptions.onLoad();
-  },
-  { once: true }
-);
+(async function() {
+  if (!["interactive", "complete"].includes(document.readyState)) {
+    await new Promise(resolve =>
+      document.addEventListener("DOMContentLoaded", resolve, { once: true })
+    );
+  }
+
+  MessagePreviewOptions.onLoad();
+})();

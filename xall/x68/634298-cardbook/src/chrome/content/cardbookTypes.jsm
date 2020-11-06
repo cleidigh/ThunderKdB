@@ -1,5 +1,4 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -145,7 +144,7 @@ var cardbookTypes = {
 		if (prefResult != "") {
 			return prefResult;
 		} else {
-			return ConversionHelper.i18n.getMessage(aTypeCode);
+			return cardbookRepository.extension.localeData.localizeMessage(aTypeCode);
 		}
 		return aTypeCode;
 	},

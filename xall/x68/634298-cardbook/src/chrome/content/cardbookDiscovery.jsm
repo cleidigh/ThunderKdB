@@ -1,5 +1,4 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 
 var EXPORTED_SYMBOLS = ["cardbookDiscovery"];
 var cardbookDiscovery = {
@@ -20,8 +19,8 @@ var cardbookDiscovery = {
 		try {
 			var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(aDirPrefId);
 		
-			var confirmTitle = ConversionHelper.i18n.getMessage("confirmTitle");
-			var confirmMsg = ConversionHelper.i18n.getMessage("accountDeletionDiscoveryConfirmMessage", [myDirPrefIdName]);
+			var confirmTitle = cardbookRepository.extension.localeData.localizeMessage("confirmTitle");
+			var confirmMsg = cardbookRepository.extension.localeData.localizeMessage("accountDeletionDiscoveryConfirmMessage", [myDirPrefIdName]);
 			var returnFlag = false;
 			returnFlag = Services.prompt.confirm(null, confirmTitle, confirmMsg);
 			if (returnFlag) {

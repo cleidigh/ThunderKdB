@@ -1,22 +1,4 @@
-async function waitForLoad() {
-	let windows = await browser.windows.getAll({windowTypes:["normal"]});
-	if (windows.length > 0) {
-		return false;
-	}
-	
-	return new Promise(function(resolve, reject) {
-		function listener() {
-			browser.windows.onCreated.removeListener(listener);
-			resolve(true);
-		}
-		browser.windows.onCreated.addListener(listener);
-	});
-}
-
-
 (async () => { 
-  await waitForLoad();
-  await messenger.WindowListener.waitForMasterPassword();
 
   // Define default prefs.
   let defaultPrefs = {
@@ -78,6 +60,9 @@ async function waitForLoad() {
   messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messenger.xhtml",
     "chrome://quicktext/content/scripts/messenger.js");
-    
+
+  browser.composeAction.onClicked.addListener(tab => { messenger.WindowListener.openOptionsDialog(tab.windowId); });
+  browser.browserAction.onClicked.addListener(tab => { messenger.WindowListener.openOptionsDialog(tab.windowId); });
+
   messenger.WindowListener.startListening();
 })();

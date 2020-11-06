@@ -449,7 +449,7 @@ Conversation.prototype = {
     Services.tm.dispatchToMainThread(async () => {
       try {
         // Beware, some bad things might have happened in the meanwhile...
-        this._initialSet = this._initialSet.filter(msgHdr => msgHdr === null || msgHdr === void 0 ? void 0 : msgHdr.folder.msgDatabase.ContainsKey(msgHdr.messageKey)); // We want at least all messages from the Gloda collection + all
+        this._initialSet = this._initialSet.filter(msgHdr => msgHdr?.folder.msgDatabase.ContainsKey(msgHdr.messageKey)); // We want at least all messages from the Gloda collection + all
         //  messages from the intermediate set (see rationale in the
         //  initialization of this._intermediateResults).
 
@@ -555,7 +555,7 @@ Conversation.prototype = {
    * @param {Message} msg a Message as in modules/message.js
    */
   removeMessage(msg) {
-    Log.debug("Removing message:", msg === null || msg === void 0 ? void 0 : msg._uri); // Move the quick reply to the previous message
+    Log.debug("Removing message:", msg?._uri); // Move the quick reply to the previous message
 
     this.messages = this.messages.filter(x => x.message != msg);
     this._initialSet = this._initialSet.filter(x => x.message != msg); // TODO As everything is synchronous but react doesn't let us dispatch

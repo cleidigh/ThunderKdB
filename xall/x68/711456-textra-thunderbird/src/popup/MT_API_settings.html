@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>TexTra</title>
+</head>
+
+
+<body bgcolor="#dbffff">
+    <div style="background-color:#00bb00; color:#ffffff;">
+        <h2 style="margin:5px;">TexTra <span id="span_title">機械翻訳API設定</span></h2>
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <nobr>
+                    <span id="span_lang1">元言語</span>　<select id="lang1"></select>
+                    <span id="span_lang2">訳言語</span>　<select id="lang2"></select>
+                    <input type="button" id="bt_lang_replace" value="⇔" style="font-size: 1.4em;" />
+                    <br />
+                    <div style="margin: 5px" align="right"><a href='#' id='link_MT_list'>翻訳API一覧を開く</a></div>
+                    <br />
+
+                </nobr>
+            </td>
+        </tr>
+    </table>
+    API URL<br /><input type="text" id="txt_API_URL" size="100" /><br />
+    <input type="button" id="btn_save" value="保存" />
+    <input type="button" id="btn_default" value="デフォルト" /><br /><br />
+
+    <a href="javascript:void(0);" id="link_top">トップ</a>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/api/oauth.js"></script>
+    <script src="../js/api/sha1.js"></script>
+    <script src="../js/api/aes.js"></script>
+    <script src="../js/api/api.js"></script>
+    <script src="MT_API_settings.js"></script>
+
+</body>
+</html>

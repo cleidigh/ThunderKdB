@@ -6,21 +6,13 @@
 
 "use strict";
 
-// Localise page
-function localisePage() {
-  for (let el of document.querySelectorAll("[data-l10n-id]")) {
-    let id = el.getAttribute("data-l10n-id");
-    el.textContent = browser.i18n.getMessage(id);
-  }
-}
-
 // For holding the input fields on the page
 var MailFolderKeyNavInput  = null;
 var MailFolderKeyNavMenuItemInput  = null;
 
-// Save the currently selected settings using browser.storage.local.
+// Save the currently selected settings using storage.local.
 function saveSettings() {
-  browser.storage.local.set({
+  messenger.storage.local.set({
       MailFolderKeyNav: MailFolderKeyNavInput.checked,
       MailFolderKeyNavMenuItem: MailFolderKeyNavMenuItemInput.checked
   });
@@ -48,13 +40,13 @@ function updateUIOnSettingChange(changes, areaName) {
 async function setupListeners() {
   MailFolderKeyNavInput = document.querySelector("#MailFolderKeyNav");
   MailFolderKeyNavMenuItemInput = document.querySelector("#MailFolderKeyNavMenuItem");
-  let settings = await browser.storage.local.get();
+  let settings = await messenger.storage.local.get();
   updateUI(settings);
   MailFolderKeyNavInput.addEventListener("change", saveSettings);
   MailFolderKeyNavMenuItemInput.addEventListener("change", saveSettings);
-  browser.storage.onChanged.addListener(updateUIOnSettingChange);
+  messenger.storage.onChanged.addListener(updateUIOnSettingChange);
   document.addEventListener("unload", (event) => {
-    browser.storage.onChanged.removeListener(updateUIOnSettingChange);
+    messenger.storage.onChanged.removeListener(updateUIOnSettingChange);
   });
   MailFolderKeyNavInput.focus();
 }

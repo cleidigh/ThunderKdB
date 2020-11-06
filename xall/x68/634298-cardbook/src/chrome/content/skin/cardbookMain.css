@@ -62,11 +62,15 @@
 :root[lwt-tree] #cardsTree {
 	-moz-appearance: none;
 }
-#rightPaneDownHbox,
+#rightPaneDownHbox1,
 #cardbookFolderPaneToolbox {
 	-moz-appearance: none !important;
 	color: -moz-DialogText;
 	background-color: -moz-Dialog;
+}
+
+#rightPaneDownHbox1 {
+  overflow: auto;
 }
 
 treecol#cardIcon.cardIconHeader[hidden="true"] .treecol-text {
@@ -96,7 +100,19 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 
 /* edition */
 .cardbookExpandedClass {
+	/* Override button appearance */
+	-moz-appearance: none;
+	min-width: 20px;
+	margin-block: 0;
+	margin-inline: 1px 0;
+	border: 0;
+	background-color: transparent;
+	color: inherit;
+	-moz-user-focus: normal;
 	list-style-image: url("chrome://global/skin/icons/twisty-collapsed.svg");
+	-moz-context-properties: fill, fill-opacity;
+	fill: currentColor;
+	fill-opacity: 1;
 }
 .cardbookExpandedClass[expanded="true"] {
 	list-style-image: url("chrome://global/skin/icons/twisty-expanded.svg");
@@ -107,7 +123,7 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 #noteclassicalGroupbox,
 #noteTabpanel,
 #othersGroupbox,
-#vcardTabpanel {
+#vcardTabGroupbox {
     display: flex;
 }
 
@@ -132,4 +148,44 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 }
 .cardbookBackgroundColorClass textarea[link="true"]:hover {
 	color: -moz-activehyperlinktext;
+}
+
+:root {
+	--box-border-color: ThreeDShadow;
+	--highlight-color: Highlight;
+	--tab-hover-background: hsla(0, 0%, 50%, 0.15);
+	--tab-selected-background: hsla(0, 0%, 50%, 0.25);
+}
+
+:root:-moz-lwtheme {
+	--box-border-color: #adadae;
+}
+
+:root:-moz-lwtheme-brighttext {
+	--box-border-color: rgba(249, 249, 250, 0.2);
+	--highlight-color: #0a84ff;
+	--tab-hover-background: hsla(0, 0%, 50%, 0.3);
+	--tab-selected-background: hsla(0, 0%, 50%, 0.5);
+}
+
+#cardbookContactButtonsBox {
+	border-bottom: 1px solid var(--box-border-color);
+	padding: 6px 10px !important;
+	margin-top: 0;
+	margin-block: 8px 10px;
+	margin-inline: 4px;
+}
+
+.cardbookContactButtons {
+	background-color: transparent;
+	color: inherit !important;
+	border: 0;
+}
+.cardbookContactButtons:hover {
+	background-color: var(--tab-hover-background);
+}
+.cardbookContactButtons[visuallyselected="true"] {
+	margin-block: 0;
+	background-color: var(--tab-selected-background);
+	border-bottom: 2px solid var(--tab-line-color, var(--highlight-color));
 }

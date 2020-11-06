@@ -61,7 +61,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				wdw_imageEdition.resizeImageCard(aCard.photo.localURI, aDisplayDefault);
 			} else {
 				if (aDisplayDefault) {
-					wdw_imageEdition.resizeImageCard("chrome://cardbook/content/skin/missing_photo_200_214.png", aDisplayDefault);
+					wdw_imageEdition.resizeImageCard(cardbookRepository.defaultCardImage, aDisplayDefault);
 				} else {
 					document.getElementById('imageBox').setAttribute('hidden', 'true');
 				}
@@ -101,7 +101,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 					document.getElementById('photoExtensionTextBox').value = "";
 				}
 				if (aDisplayDefault) {
-					wdw_imageEdition.resizeImageCard("chrome://cardbook/content/skin/missing_photo_200_214.png", aDisplayDefault);
+					wdw_imageEdition.resizeImageCard(cardbookRepository.defaultCardImage, aDisplayDefault);
 				}
 			}
 		},
@@ -270,7 +270,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 		deleteImageCard: function () {
 			var myCard = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
-			document.getElementById('defaultCardImage').src = "chrome://cardbook/content/skin/missing_photo_200_214.png";
+			document.getElementById('defaultCardImage').src = cardbookRepository.defaultCardImage;
 			document.getElementById('photolocalURITextBox').value = "";
 			document.getElementById('photoURITextBox').value = "";
 			wdw_cardEdition.workingCard.photo.URI = "";
@@ -280,7 +280,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		},
 
 		imageCardContextShowing: function () {
-			if (document.getElementById('defaultCardImage').src == "chrome://cardbook/content/skin/missing_photo_200_214.png") {
+			if (document.getElementById('defaultCardImage').src == cardbookRepository.defaultCardImage) {
 				document.getElementById('saveImageCard').disabled=true;
 				document.getElementById('copyImageCard').disabled=true;
 				document.getElementById('deleteImageCard').disabled=true;

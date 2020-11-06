@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_extName__",
-	"version": "52.6",
+	"version": "53.6",
 	"description": "__MSG_extDesc__",
 	"author": "Philippe VIGNEAU",
 	"default_locale": "en-US",
@@ -20,12 +20,12 @@
 		"scripts": ["background.js"]
 	},
 	"experiment_apis": {
-		"ConversionHelper": {
-			"schema": "chrome/content/api/ConversionHelper/schema.json",
+		"WindowListener": {
+			"schema": "chrome/content/api/WindowListener/schema.json",
 			"parent": {
 				"scopes": ["addon_parent"],
-				"paths": [["ConversionHelper"]],
-				"script": "chrome/content/api/ConversionHelper/implementation.js"
+				"paths": [["WindowListener"]],
+				"script": "chrome/content/api/WindowListener/implementation.js"
 			}
 		}
 	},

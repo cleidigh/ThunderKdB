@@ -1,6 +1,5 @@
 if ("undefined" == typeof(cardbookEncryptor)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -126,7 +125,7 @@ if ("undefined" == typeof(cardbookEncryptor)) {
 
 		storeKey: function (key, version) {
 			var newLogin = Components.classes["@mozilla.org/login-manager/loginInfo;1"].createInstance(Components.interfaces.nsILoginInfo);
-			newLogin.init(this.getLoginName(version), null, ConversionHelper.i18n.getMessage("keyDescription"), "", key, "", "");
+			newLogin.init(this.getLoginName(version), null, cardbookRepository.extension.localeData.localizeMessage("keyDescription"), "", key, "", "");
 			var modified = false;
 			try {
 				var foundLogin = this.getStoredLogin(version);
@@ -142,7 +141,7 @@ if ("undefined" == typeof(cardbookEncryptor)) {
 		},
 
 		localizeLogin: function (version) {
-			var correctLogins = Services.logins.findLogins(this.getLoginName(version), null, ConversionHelper.i18n.getMessage("keyDescription"));
+			var correctLogins = Services.logins.findLogins(this.getLoginName(version), null, cardbookRepository.extension.localeData.localizeMessage("keyDescription"));
 			if (correctLogins.length > 0) {
 				return;
 			}
@@ -153,7 +152,7 @@ if ("undefined" == typeof(cardbookEncryptor)) {
 				var baseLogin = uncorrectLogins[0];
 			}
 			var newLogin = Components.classes["@mozilla.org/login-manager/loginInfo;1"].createInstance(Components.interfaces.nsILoginInfo);
-			newLogin.init(baseLogin.hostname, null, ConversionHelper.i18n.getMessage("keyDescription"), "", baseLogin.password, "", "");
+			newLogin.init(baseLogin.hostname, null, cardbookRepository.extension.localeData.localizeMessage("keyDescription"), "", baseLogin.password, "", "");
 			Services.logins.modifyLogin(baseLogin, newLogin);
 		},
 

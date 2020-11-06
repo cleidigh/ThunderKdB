@@ -1,5 +1,4 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 
 var EXPORTED_SYMBOLS = ["cardbookDates"];
 var cardbookDates = {
@@ -382,7 +381,7 @@ var cardbookDates = {
 	},
 
 	convertCardDate: function (aCard, aDirPrefName, aSourceDateFormat, aTargetDateFormat) {
-		var eventInNoteEventPrefix = ConversionHelper.i18n.getMessage("eventInNoteEventPrefix");
+		var eventInNoteEventPrefix = cardbookRepository.extension.localeData.localizeMessage("eventInNoteEventPrefix");
 		// date fields
 		var cardChanged = false;
 		for (var field of cardbookRepository.dateFields) {

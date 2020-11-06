@@ -25,7 +25,7 @@ if ("undefined" == typeof(cardbookTreeUtils)) {
 		// the dummy column for the scrollbar is no set in the correct ordinal
 		setAccountColumnsState: function () {
 			var colChildren = document.getElementById("accountsOrCatsTreecols").children;
-			var aColumnStatesArray = ["accountEnabled", "accountTypeCheckbox", "accountColor", "accountName", "accountStatusCheckbox", "dummyForScroll"];
+			var aColumnStatesArray = ["accountTypeCheckbox", "accountColor", "accountName", "accountStatusCheckbox", "dummyForScroll"];
 			var myHiddenOrdinal = aColumnStatesArray.length * 2 - 1;
 			for (let i = 0; i < colChildren.length; i++) {
 				var colChild = colChildren[i];

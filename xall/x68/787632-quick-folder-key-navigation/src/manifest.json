@@ -3,7 +3,7 @@
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "author": "Andrew Hart",
-  "version": "3.0",
+  "version": "3.1",
 "homepage_url": "https://github.com/hartag/keynav",
   "default_locale": "en",
 
@@ -26,7 +26,7 @@
   "permissions": ["storage", "menus"],
 
   "experiment_apis": {
-    "KeyNavigationAPI": {
+    "FolderUIAPI": {
       "schema": "api/schema.json",
       "parent": {
         "scopes": [
@@ -34,7 +34,7 @@
         ],
         "paths": [
           [
-            "KeyNavigationAPI"
+            "FolderUI"
           ]
         ],
         "script": "api/api.js"

@@ -1,5 +1,4 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 // var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 // XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -412,7 +411,7 @@ var cardbookIndexedDB = {
 				return;
 			}
 			myMenu.removeAttribute('disabled');
-			myMenu.setAttribute('label', ConversionHelper.i18n.getMessage(aMenuName + ".long.label", [item.undoMessage]));
+			myMenu.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage(aMenuName + ".long.label", [item.undoMessage]));
 			if (document.getElementById(aButtonName)) {
 				document.getElementById(aButtonName).removeAttribute('disabled');
 			}
@@ -426,7 +425,7 @@ var cardbookIndexedDB = {
 				}
 			} else {
 				myMenu.setAttribute('disabled', 'true');
-				myMenu.setAttribute('label', ConversionHelper.i18n.getMessage(aMenuName + ".short.label"));
+				myMenu.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage(aMenuName + ".short.label"));
 				if (document.getElementById(aButtonName)) {
 					document.getElementById(aButtonName).setAttribute('disabled', 'true');
 				}

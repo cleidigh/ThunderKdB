@@ -80,5 +80,3 @@ if ("undefined" == typeof(ovl_collected)) {
 		}
 	};
 };
-// collect emails
-window.addEventListener("compose-send-message", function(e) { ovl_collected.collectToCardBook(e); }, true);

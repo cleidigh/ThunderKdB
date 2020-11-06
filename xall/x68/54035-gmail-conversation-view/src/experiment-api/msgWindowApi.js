@@ -149,7 +149,7 @@ var convMsgWindow = class extends ExtensionCommon.ExtensionAPI {
                 win.MsgOpenSelectedMessages = async () => {
                   let result = await fire.async(id, msgHdrs).catch(console.error);
 
-                  if (result === null || result === void 0 ? void 0 : result.cancel) {
+                  if (result?.cancel) {
                     return;
                   }
 
@@ -194,7 +194,7 @@ var convMsgWindow = class extends ExtensionCommon.ExtensionAPI {
                 msgHdrs = msgHdrs.map(hdr => messageManager.convert(hdr));
                 let result = await fire.async(id, msgHdrs).catch(console.error);
 
-                if (result === null || result === void 0 ? void 0 : result.cancel) {
+                if (result?.cancel) {
                   return;
                 }
 
@@ -388,10 +388,8 @@ function summarizeThreadHandler(win, id) {
 
     win.gMessageDisplay.singleMessageDisplay = false;
     win.gSummaryFrameManager.loadAndCallback("chrome://conversations/content/stub.xhtml", function (isRefresh) {
-      var _htmlpane$contentDocu;
-
       // See issue #673
-      if ((_htmlpane$contentDocu = htmlpane.contentDocument) === null || _htmlpane$contentDocu === void 0 ? void 0 : _htmlpane$contentDocu.body) {
+      if (htmlpane.contentDocument?.body) {
         htmlpane.contentDocument.body.hidden = false;
       }
 

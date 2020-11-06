@@ -1,5 +1,4 @@
 if ("undefined" == typeof(cardbookWindowUtils)) {
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
@@ -21,7 +20,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 		callFilePicker: function (aTitle, aMode, aType, aDefaultFileName, aDefaultDir, aCallback, aCallbackParam) {
 			try {
-				var myWindowTitle = ConversionHelper.i18n.getMessage(aTitle);
+				var myWindowTitle = cardbookRepository.extension.localeData.localizeMessage(aTitle);
 				var nsIFilePicker = Components.interfaces.nsIFilePicker;
 				var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
 				if (aMode === "SAVE") {
@@ -61,7 +60,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 		callDirPicker: function (aTitle, aCallback, aCallbackParam) {
 			try {
-				var myWindowTitle = ConversionHelper.i18n.getMessage(aTitle);
+				var myWindowTitle = cardbookRepository.extension.localeData.localizeMessage(aTitle);
 				var nsIFilePicker = Components.interfaces.nsIFilePicker;
 				var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
 				fp.init(window, myWindowTitle, nsIFilePicker.modeGetFolder);
@@ -375,11 +374,11 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			let myMenulist = document.getElementById(aMenupopupName.replace("Menupopup", "Menulist"));
 			var myLabel = myMenulist.getAttribute('label');
 			if (aType == "category") {
-				if (myLabel == ConversionHelper.i18n.getMessage("multipleCategories")) {
+				if (myLabel == cardbookRepository.extension.localeData.localizeMessage("multipleCategories")) {
 					return;
 				}
 			} else if (aType == "type") {
-				if (myLabel == ConversionHelper.i18n.getMessage("multipleTypes")) {
+				if (myLabel == cardbookRepository.extension.localeData.localizeMessage("multipleTypes")) {
 					return;
 				}
 			}
@@ -459,20 +458,20 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			let label = "";
 			let itemsList = myMenupopup.querySelectorAll("menuitem.cardbook-item[checked]");
 			if (aType == "fields") {
-				label = ConversionHelper.i18n.getMessage("editionGroupboxLabel");
+				label = cardbookRepository.extension.localeData.localizeMessage("editionGroupboxLabel");
 			} else if (itemsList.length > 1) {
 				if (aType == "category") {
-					label = ConversionHelper.i18n.getMessage("multipleCategories");
+					label = cardbookRepository.extension.localeData.localizeMessage("multipleCategories");
 				} else if (aType == "type") {
-					label = ConversionHelper.i18n.getMessage("multipleTypes");
+					label = cardbookRepository.extension.localeData.localizeMessage("multipleTypes");
 				}
 			} else if (itemsList.length == 1) {
 				label = itemsList[0].getAttribute("label");
 			} else {
 				if (aType == "category") {
-					label = ConversionHelper.i18n.getMessage("none");
+					label = cardbookRepository.extension.localeData.localizeMessage("none");
 				} else if (aType == "type") {
-					// label = ConversionHelper.i18n.getMessage("noType");
+					// label = cardbookRepository.extension.localeData.localizeMessage("noType");
 					// better empty
 					label = "";
 				}
@@ -964,14 +963,14 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				if (aReadOnly) {
 					if (myOrgValue != "") {
 						currentRow = cardbookElementTools.addGridRow(aOrigBox, 'orgRow_0', {align: 'center'});
-						var myLabel = ConversionHelper.i18n.getMessage("orgLabel");
+						var myLabel = cardbookRepository.extension.localeData.localizeMessage("orgLabel");
 						cardbookElementTools.addLabel(currentRow, 'orgLabel', myLabel, 'orgTextBox_0', {class: 'header'});
 						var myTextbox = cardbookElementTools.addTextbox(currentRow, 'orgTextBox_0', myOrgValue, {readonly: 'true', fieldName: 'org', fieldLabel: myLabel});
 						myTextbox.addEventListener("contextmenu", cardbookRichContext.fireBasicFieldContext, true);
 					}
 				} else {
 					currentRow = cardbookElementTools.addGridRow(aOrigBox, 'orgRow_0', {align: 'center'});
-					cardbookElementTools.addLabel(currentRow, 'orgLabel', ConversionHelper.i18n.getMessage("orgLabel"), 'orgTextBox_0', {class: 'header'});
+					cardbookElementTools.addLabel(currentRow, 'orgLabel', cardbookRepository.extension.localeData.localizeMessage("orgLabel"), 'orgTextBox_0', {class: 'header'});
 					var myTextBox = cardbookElementTools.addTextbox(currentRow, 'orgTextBox_0', myOrgValue, {type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'orgTextBox_0', class:'padded'});
 					myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 				}
@@ -979,25 +978,25 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			if (aReadOnly) {
 				if (aTitleValue != "") {
 					currentRow = cardbookElementTools.addGridRow(aOrigBox, 'titleRow', {align: 'center'});
-					var myLabel1 = ConversionHelper.i18n.getMessage("titleLabel");
+					var myLabel1 = cardbookRepository.extension.localeData.localizeMessage("titleLabel");
 					cardbookElementTools.addLabel(currentRow, 'titleLabel', myLabel1, 'titleTextBox', {class: 'header'});
 					var myTextbox1 = cardbookElementTools.addTextbox(currentRow, 'titleTextBox', aTitleValue, {readonly: 'true', fieldName: 'title', fieldLabel: myLabel1});
 					myTextbox1.addEventListener("contextmenu", cardbookRichContext.fireBasicFieldContext, true);
 				}
 				if (aRoleValue != "") {
 					currentRow = cardbookElementTools.addGridRow(aOrigBox, 'roleRow', {align: 'center'});
-					var myLabel2 = ConversionHelper.i18n.getMessage("roleLabel");
+					var myLabel2 = cardbookRepository.extension.localeData.localizeMessage("roleLabel");
 					cardbookElementTools.addLabel(currentRow, 'roleLabel', myLabel2, 'roleTextBox', {class: 'header'});
 					var myTextbox2 = cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {readonly: 'true', fieldName: 'role', fieldLabel: myLabel2});
 					myTextbox2.addEventListener("contextmenu", cardbookRichContext.fireBasicFieldContext, true);
 				}
 			} else {
 				currentRow = cardbookElementTools.addGridRow(aOrigBox, 'titleRow', {align: 'center'});
-				cardbookElementTools.addLabel(currentRow, 'titleLabel', ConversionHelper.i18n.getMessage("titleLabel"), 'titleTextBox', {class: 'header'});
+				cardbookElementTools.addLabel(currentRow, 'titleLabel', cardbookRepository.extension.localeData.localizeMessage("titleLabel"), 'titleTextBox', {class: 'header'});
 				var myTextBox = cardbookElementTools.addTextbox(currentRow, 'titleTextBox', aTitleValue, {type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'titleTextBox', class:'padded'});
 				myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 				currentRow = cardbookElementTools.addGridRow(aOrigBox, 'roleRow', {align: 'center'});
-				cardbookElementTools.addLabel(currentRow, 'roleLabel', ConversionHelper.i18n.getMessage("roleLabel"), 'roleTextBox', {class: 'header'});
+				cardbookElementTools.addLabel(currentRow, 'roleLabel', cardbookRepository.extension.localeData.localizeMessage("roleLabel"), 'roleTextBox', {class: 'header'});
 				var myTextBox = cardbookElementTools.addTextbox(currentRow, 'roleTextBox', aRoleValue, {type: 'autocomplete', autocompletesearch: 'form-history', autocompletesearchparam: 'roleTextBox', class:'padded'});
 				myTextBox.addEventListener("input", wdw_cardEdition.setDisplayName, false);
 			}
@@ -1458,7 +1457,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			
 			var aPrefButton = cardbookElementTools.addPrefStar(aHBox, aType, aIndex, cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(aInputTypes))
 			
-			cardbookElementTools.addLabel(aHBox, aType + '_' + aIndex + '_prefWeightBoxLabel', cardbookRepository.cardbookPreferences.getPrefValueLabel(), aType + '_' + aIndex + '_prefWeightBox', {tooltip: ConversionHelper.i18n.getMessage("prefWeightTooltip")});
+			cardbookElementTools.addLabel(aHBox, aType + '_' + aIndex + '_prefWeightBoxLabel', cardbookRepository.cardbookPreferences.getPrefValueLabel(), aType + '_' + aIndex + '_prefWeightBox', {tooltip: cardbookRepository.extension.localeData.localizeMessage("prefWeightTooltip")});
 			cardbookElementTools.addTextbox(aHBox, aType + '_' + aIndex + '_prefWeightBox', cardbookRepository.cardbookUtils.getPrefValueFromTypes(aInputTypes, document.getElementById('versionTextBox').value), {size: "5"});
 			if (aPrefButton.getAttribute('haspref')) {
 				document.getElementById(aType + '_' + aIndex + '_prefWeightBoxLabel').disabled = false;
@@ -1580,10 +1579,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					var tel = PhoneNumber.Parse(this.value, wdw_cardEdition.cardRegion);
 					if (tel && tel.internationalFormat && this.value == tel.internationalFormat) {
 						myValidationButton.setAttribute('label', '✔');
-						myValidationButton.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("validatedEntryTooltip"));
+						myValidationButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("validatedEntryTooltip"));
 					} else {
 						myValidationButton.setAttribute('label', '!');
-						myValidationButton.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("notValidatedEntryTooltip"));
+						myValidationButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("notValidatedEntryTooltip"));
 					}
 				};
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("input", fireInputTel, false);
@@ -1594,10 +1593,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					var atPos = this.value.lastIndexOf("@");
 					if (this.value == emailLower && atPos > 0 && atPos + 1 < this.value.length) {
 						myValidationButton.setAttribute('label', '✔');
-						myValidationButton.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("validatedEntryTooltip"));
+						myValidationButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("validatedEntryTooltip"));
 					} else {
 						myValidationButton.setAttribute('label', '!');
-						myValidationButton.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("notValidatedEntryTooltip"));
+						myValidationButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("notValidatedEntryTooltip"));
 					}
 				};
 				document.getElementById(aType + '_' + aIndex + '_valueBox').addEventListener("input", fireInputEmail, false);
@@ -1613,10 +1612,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					if (tel && tel.internationalFormat) {
 						myTelTextBox.value = tel.internationalFormat;
 						this.setAttribute('label', '✔');
-						this.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("validatedEntryTooltip"));
+						this.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("validatedEntryTooltip"));
 					} else {
 						this.setAttribute('label', '!');
-						this.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("notValidatedEntryTooltip"));
+						this.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("notValidatedEntryTooltip"));
 					}
 				};
 				var myTelTextBoxValue = document.getElementById(aType + '_' + aIndex + '_valueBox').value;
@@ -1641,10 +1640,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					if (atPos > 0 && atPos + 1 < myEmailTextBox.value.length) {
 						myEmailTextBox.value = emailLower;
 						this.setAttribute('label', '✔');
-						this.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("validatedEntryTooltip"));
+						this.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("validatedEntryTooltip"));
 					} else {
 						this.setAttribute('label', '!');
-						this.setAttribute('tooltiptext', ConversionHelper.i18n.getMessage("notValidatedEntryTooltip"));
+						this.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("notValidatedEntryTooltip"));
 					}
 				};
 				var myEmailTextBoxValue = document.getElementById(aType + '_' + aIndex + '_valueBox').value;

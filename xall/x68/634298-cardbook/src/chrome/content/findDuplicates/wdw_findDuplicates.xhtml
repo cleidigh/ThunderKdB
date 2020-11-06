@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookFindDuplicates.css" type="text/css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	onload="wdw_findDuplicates.preload();" resizable="true"
 	onclose="wdw_findDuplicates.cancel();"
-	id="wdw_findDuplicates" title="__CARDBOOKMSG_wdw_findDuplicatesTitle__"
+	id="wdw_findDuplicates" title="__MSG_wdw_findDuplicatesTitle__"
 	persist="screenX screenY width height sizemode" class="cardbookFindDuplicatesClass"
+	lightweightthemes="true"
 	style="min-width:400px;min-height:100px;">
 
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookEncryptor.js"/>
@@ -20,7 +24,7 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/wdw_cardbook.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/findDuplicates/cardbookDuplicate.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/findDuplicates/wdw_findDuplicates.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 	<!-- for the textbox -->
 	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
 	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
@@ -51,6 +55,6 @@
 		<description id="numberContactsFoundDesc" flex="1"/>
 		<spacer flex="1"/>
 		<button id="hideOrShowForgottenLabel" oncommand="wdw_findDuplicates.hideOrShowForgotten();"/>
-		<button id="cancelEditionLabel" label="__CARDBOOKMSG_cancelEditionLabel__" accesskey="__CARDBOOKMSG_cancelEditionAccesskey__" oncommand="wdw_findDuplicates.cancel();"/>
+		<button id="cancelEditionLabel" label="__MSG_cancelEditionLabel__" accesskey="__MSG_cancelEditionAccesskey__" oncommand="wdw_findDuplicates.cancel();"/>
 	</hbox>
 </window>

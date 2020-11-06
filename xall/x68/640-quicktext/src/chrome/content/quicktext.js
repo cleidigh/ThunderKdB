@@ -231,6 +231,7 @@ var quicktext = {
             let node = toolbar.children[i];
             switch (node.nodeName)
             {
+              case "button":
               case "toolbarbutton":
                 // Check if the group is collapse or not
                 if (node.getAttribute("type") == "menu")
@@ -324,7 +325,10 @@ var quicktext = {
     var editor = GetCurrentEditor();
     var selection = editor.selection;
     if (selection.rangeCount > 0) {
+      // store the selected content as plain text
       gQuicktext.mSelectionContent = selection.toString();
+      // store the selected content as html text
+      gQuicktext.mSelectionContentHtml = editor.outputToString('text/html', 1);
     }
     
     if (gQuicktext.doTextExists(aGroupIndex, aTextIndex, false))

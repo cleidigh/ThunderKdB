@@ -45,5 +45,3 @@ if ("undefined" == typeof(ovl_attachvCard)) {
 		}
 	};
 };
-
-window.addEventListener("compose-send-message", function(e) { ovl_attachvCard.attachvCard(e); }, true);

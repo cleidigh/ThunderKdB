@@ -2,25 +2,51 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "2.3.1",
-  "author": "Lorenz Froihofer: support for TB >= 3.0, since Dec. 2009",
-  "homepage_url": "http://www.froihofer.net/xnote/",
+  "version": "3.0.0",
+  "author": "Lorenz Froihofer: support for TB >= 3.0, since Dec. 2009, Klaus Bücher since TB 78",
+  "homepage_url": "https://github.com/xnotepp/xnote/wiki",
   "applications": {
     "gecko": {
       "id": "xnote@froihofer.net",
-      "strict_min_version": "68.0",
-      "strict_max_version": "68.*"
+      "strict_min_version": "78.0",
+      "strict_max_version": "78.*"
     }
   },
   "default_locale" : "en_US",
-  "legacy": {
-    "type" : "xul",
-    "options": {
-      "page": "chrome://xnote/content/preferences.xul",
-      "open_in_tab": false
-    }
-  },
+
   "icons": {
-    "32": "chrome/skin/icon32.png"
-  }
+    "32": "chrome/content/skin/icon32.png"
+  },
+
+  "options_ui": {
+    "page": "options/options.html"
+  },
+
+  "permissions": ["activeTab", "tabs", "messagesRead"],
+
+  "background": {
+    "scripts": ["xn-background.js"]
+  },
+
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "chrome/content/api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "chrome/content/api/WindowListener/implementation.js"
+      }
+    }
+    ,
+    "Utilities": {
+      "schema": "chrome/content/api/Utilities/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["Utilities"]],
+        "script": "chrome/content/api/Utilities/implementation.js"
+      
+       }
+    }
+  
+}
 }

@@ -36,8 +36,8 @@ const apiUrlShares = "/apps/files_sharing/api/v1/shares";
 const apiUrlGetApppassword = "/core/getapppassword";
 const apiUrlCapabilities = "/cloud/capabilities";
 const davUrlDefault = "remote.php/dav/files/";
-const ncMinimalVersion = 17;
-const ocMinimalVersion = 10;
+const ncMinimalVersion = 18;
+const ocMinimalVersion = 10 * 10000 + 0 * 100 + 10;
 //#endregion
 
 /**
@@ -90,48 +90,46 @@ class CloudConnection {
     async uploadFile(fileId, fileName, fileObject) {
         const upload_status = new Status(fileName);
         attachmentStatus.set(fileId, upload_status);
-        upload_status.set_status('checkingspace');
 
-        // Check for sufficient free space
-        const data = await this.updateFreeSpaceInfo();
-        if (!data ||                // no data in response, try to upload anyway
-            !data.quota ||          // no quota in response, so none set
-            data.quota.free < 0 ||  // quota set but unlimited
-            data.quota.free > fileObject.size) {
-
-            upload_status.set_status('preparing');
-            // Get the server's actual DAV URL
-            if (!this._davUrl) {
-                // Fetch URL from capabilities
-                const data = await this._doApiCall(apiUrlCapabilities);
-                if (data && data.capabilities && data.capabilities.core && data.capabilities.core["webdav-root"]) {
-                    this._davUrl = data.capabilities.core["webdav-root"];
-                } else {
-                    // Use default from docs instead
-                    this._davUrl = davUrlDefault + this.user_id;
-                }
-            }
-
-            const uploader = new DavUploader(
-                this.serverUrl, this.username, this.password, this._davUrl, this.storageFolder);
-
-            const response = await uploader.uploadFile(fileId, fileName, fileObject);
-
-            if (response.aborted) {
-                return response;
-            } else if (response.ok) {
-                upload_status.set_status('sharing');
-                this.updateFreeSpaceInfo();
-                let url = await this._getShareLink(fileName, fileId);
-                if (url) {
-                    if (upload_status.status !== 'generatedpassword') {
-                        Status.remove(fileId);
+        upload_status.set_status('preparing');
+        // Get the server's actual DAV URL
+        if (!this._davUrl) {
+            // Start with default from docs
+            this._davUrl = davUrlDefault + this.userId;
+            // Fetch URL from capabilities
+            const data = await this._doApiCall(apiUrlCapabilities);
+            // Does it contain a value?
+            if (data && data.capabilities && data.capabilities.core && data.capabilities.core["webdav-root"]) {
+                try {
+                    const u = new URL(data.capabilities.core["webdav-root"]);
+                    // Is it a url on the same server
+                    if (u.host === (new URL(this.serverUrl)).host) {
+                        this._davUrl = u.origin + u.pathname;
                     }
-                    url += "/download";
-                    return { url, aborted: false, };
-                }
+                } catch (error) { }
             }
         }
+
+        const uploader = new DavUploader(
+            this.serverUrl, this.username, this.password, this._davUrl, this.storageFolder);
+
+        const response = await uploader.uploadFile(fileId, fileName, fileObject);
+
+        if (response.aborted) {
+            return response;
+        } else if (response.ok) {
+            upload_status.set_status('sharing');
+            this.updateFreeSpaceInfo();
+            let url = await this._getShareLink(fileName, fileId);
+            if (url) {
+                if (upload_status.status !== 'generatedpassword') {
+                    Status.remove(fileId);
+                }
+                url += "/download";
+                return { url, aborted: false, };
+            }
+        }
+
         upload_status.fail();
         throw new Error("Upload failed.");
     }
@@ -154,10 +152,16 @@ class CloudConnection {
         let spaceRemaining = -1;
         let spaceUsed = -1;
 
-        const data = await this._doApiCall(apiUrlUserInfo + this.user_id);
+        const data = await this._doApiCall(apiUrlUserInfo + this.userId);
         if (data && data.quota) {
-            spaceRemaining = data.quota.free >= 0 ? data.quota.free : -1;
-            spaceUsed = data.quota.used >= 0 ? data.quota.used : -1;
+            if (data.quota.free) {
+                const free = parseInt(data.quota.free);
+                spaceRemaining = free >= 0 ? free : -1;
+            }
+            if (data.quota.used) {
+                const used = parseInt(data.quota.used);
+                spaceUsed = used >= 0 ? used : -1;
+            }
         }
         await messenger.cloudFile.updateAccount(this._accountId, { spaceRemaining, spaceUsed, });
 
@@ -181,8 +185,15 @@ class CloudConnection {
         const data = await this._doApiCall(apiUrlCapabilities);
         if (!data._failed && data.capabilities) {
             // Remember the URL to use in WebDAV calls
-            if (data.capabilities.core && data.capabilities.core["webdav-root"]) {
-                this._davUrl = data.capabilities.core["webdav-root"];
+            // Does it contain a value?
+            if (data && data.capabilities && data.capabilities.core && data.capabilities.core["webdav-root"]) {
+                try {
+                    const u = new URL(data.capabilities.core["webdav-root"]);
+                    // Is it a url on the same server
+                    if (u.host === (new URL(this.serverUrl)).host) {
+                        this._davUrl = u.origin + u.pathname;
+                    }
+                } catch (error) { }
             }
 
             // Don't test data.capabilities.files_sharing.api_enabled because the next line contains it all
@@ -193,25 +204,36 @@ class CloudConnection {
                 if (data.capabilities.files_sharing.public.password) {
                     if (data.capabilities.files_sharing.public.password.enforced_for && 'boolean' === typeof data.capabilities.files_sharing.public.password.enforced_for.read_only) {
                         // ownCloud
-                        this.enforce_password = data.capabilities.files_sharing.public.password.enforced_for.read_only;
+                        this.enforce_password = !!data.capabilities.files_sharing.public.password.enforced_for.read_only;
                     } else {
                         //Nextcloud                        
-                        this.enforce_password = data.capabilities.files_sharing.public.password.enforced;
+                        this.enforce_password = !!data.capabilities.files_sharing.public.password.enforced;
                     }
                 }
                 // Remember maximum expiry set on server
-                if (data.capabilities.files_sharing.public.expire_date && data.capabilities.files_sharing.public.expire_date.enforced) {
+                delete this.expiry_max_days;
+                if (data.capabilities.files_sharing.public.expire_date &&
+                    data.capabilities.files_sharing.public.expire_date.enforced &&
+                    isFinite(data.capabilities.files_sharing.public.expire_date.days) &&
+                    data.capabilities.files_sharing.public.expire_date.days > 0) {
                     this.expiry_max_days = parseInt(data.capabilities.files_sharing.public.expire_date.days);
-                    if (!isFinite(this.expiry_max_days) || this.expiry_max_days <= 0) {
-                        delete this.expiry_max_days;
-                    }
                 }
             }
 
             // Remember password policy urls if they are present (AFAIK only in NC 17+)
             if (data.capabilities.password_policy && data.capabilities.password_policy.api) {
-                this._password_validate_url = data.capabilities.password_policy.api.validate;
-                this._password_generate_url = data.capabilities.password_policy.api.generate;
+                try {
+                    const u = new URL(data.capabilities.password_policy.api.validate);
+                    if (u.host === (new URL(this.serverUrl)).host) {
+                        this._password_validate_url = u.origin + u.pathname;
+                    }
+                } catch (error) { }
+                try {
+                    const u = new URL(data.capabilities.password_policy.api.generate);
+                    if (u.host === (new URL(this.serverUrl)).host) {
+                        this._password_generate_url = u.origin + u.pathname;
+                    }
+                } catch (error) { }
             }
 
             // Take version from capabilities
@@ -224,7 +246,9 @@ class CloudConnection {
             } else if (data.capabilities.core.status && data.capabilities.core.status.productname) {
                 this.cloud_productname = data.capabilities.core.status.productname;
                 this.cloud_type = "ownCloud";
-                this.cloud_supported = data.version.major >= ocMinimalVersion;
+                this.cloud_supported = parseInt(data.version.major) * 10000 +
+                    parseInt(data.version.minor) * 100 +
+                    parseInt(data.version.micro) >= ocMinimalVersion;
             } else if (data.version.major >= ncMinimalVersion) {
                 this.cloud_productname = 'Nextcloud';
                 this.cloud_type = "Nextcloud";
@@ -248,7 +272,7 @@ class CloudConnection {
                 this.public_shares_enabled !== false &&
                 Boolean(this.serverUrl) &&
                 Boolean(this.username) &&
-                Boolean(this.user_id) &&
+                Boolean(this.userId) &&
                 Boolean(this.password) &&
                 Boolean(this.storageFolder) &&
                 !(this.enforce_password && !this.useDlPassword) &&
@@ -259,13 +283,14 @@ class CloudConnection {
     }
 
     /**
-     * Get the UserID from the cloud an store it in the objects's internals
+     * Get the UserID from the cloud and store it in the objects's internals
      * @returns An object w/ the data from the response or error information
      */
     async updateUserId() {
         const data = await this._doApiCall(apiUrlUserID);
+        // I don't have the faintest idea if we could/should check the userId against a RE
         if (data.id) {
-            this.user_id = data.id;
+            this.userId = data.id;
         }
         return data;
     }
@@ -297,13 +322,16 @@ class CloudConnection {
      */
     async validateDLPassword() {
         if (this._password_validate_url) {
-            return this._doApiCall(this._password_validate_url, 'POST',
+            const data = this._doApiCall(this._password_validate_url, 'POST',
                 { "Content-Type": "application/x-www-form-urlencoded", },
                 'password=' + encodeURIComponent(this.downloadPassword));
+            data.passed = !!data.passed;
+            return data;
         } else if (!this.downloadPassword) {
             return { passed: false, reason: 'Password must not be empty.', };
         } else {
             return {
+                passed: true,
                 _failed: true, status: 'not_nc',
                 statusText: 'Cloud does not validate passwords, probably not a Nextcloud instance.',
             };
@@ -318,6 +346,7 @@ class CloudConnection {
         if (this._password_generate_url) {
             const data = await this._doApiCall(this._password_generate_url);
             if (data.password) {
+                // This needs no sanitization because it is only displayed, using textContet
                 pw = data.password;
             }
         }
@@ -400,15 +429,19 @@ class CloudConnection {
         const data = await this._doApiCall(apiUrlShares, 'POST', { "Content-Type": "application/x-www-form-urlencoded", }, shareFormData);
 
         if (data && data.url) {
-            if (this.useDlPassword && this.useGeneratedDlPassword) {
-                const status = attachmentStatus.get(fileId);
-                status.password = this.downloadPassword;
-                status.set_status('generatedpassword');
-            }
-            return punycode.toUnicode(data.url);
-        } else {
-            return null;
+            try {
+                const u = new URL(data.url);
+                if (u.host === (new URL(this.serverUrl)).host) {
+                    if (this.useDlPassword && this.useGeneratedDlPassword) {
+                        const status = attachmentStatus.get(fileId);
+                        status.password = this.downloadPassword;
+                        status.set_status('generatedpassword');
+                    }
+                    return punycode.toUnicode(u.origin) + u.pathname;
+                }
+            } catch (error) { }
         }
+        return null;
     }
     //#endregion
 

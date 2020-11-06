@@ -3,18 +3,68 @@
   "manifest_version": 2,
   "name": "stripImages",
   "description": "Remove all images from message with one click",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "developer": {
-	  "name": "mital",
-		"url": "https://dotnector.dk"
-	},
+    "name": "mital",
+    "url": "https://dotnector.dk"
+  },
+  "permissions": [
+    "compose",
+	"menus"
+  ],
+  "background": {
+    "scripts": [
+      "content/compose.js"
+    ]
+  },
+  "compose_action": {
+    "default_title": "Strip images",
+    "default_icon": "content/camera-light.svg"
+  },
   "applications": {
     "gecko": {
       "id": "stripImages@mi.tal",
-       "strict_min_version": "68.0"
+      "strict_min_version": "68.0"
     }
-  },
-  "legacy": {
-    "type": "xul"
   }
 }
+
+
+//{
+//    "manifest_version": 2,
+//    "name": "Hello World",
+//    "description": "A basic Hello World extension!",
+//    "version": "1.0",
+//    "author": "[Your Name Here]",
+//    "applications": {
+//        "gecko": {
+//            "id": "helloworld@yoursite.com",
+//            "strict_min_version": "78.0"
+//        }
+//    },
+//    "icons": {
+//        "64": "images/internet.png",
+//        "32": "images/internet-32px.png",
+//        "16": "images/internet-16px.png"
+//    },
+//    "background": {
+//        "scripts": [
+//            "background.js"
+//        ],
+//    },
+//    "browser_action": {
+//        "default_popup": "browser_popup.html",
+//        "default_title": "Hello World",
+//        "default_icon": "images/internet-32px.png"
+//    },
+//    "compose_action": {
+//        "default_popup": "compose_popup.html",
+//        "default_title": "Hello World",
+//        "default_icon": "images/internet-32px.png"
+//    },
+//    "options_ui": {
+//      "page": "options/options.html"
+//    },
+//    "permissions": [
+//    ]
+//}

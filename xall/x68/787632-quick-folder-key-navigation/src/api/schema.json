@@ -1,6 +1,6 @@
 [
   {
-    "namespace": "KeyNavigationAPI",
+    "namespace": "FolderUI",
     "functions": [
       {
         "name": "enableKeyNavigation",
@@ -8,6 +8,11 @@
         "type": "function",
         "async": true,
         "parameters": [
+          {
+            "name": "windowId",
+            "description": "the window id",
+            "type": "integer"
+          },
           {
             "name": "value",
             "description": "true: enable ; false: disable.",

@@ -1,6 +1,5 @@
 if ("undefined" == typeof(cardbookNotifications)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -17,9 +16,9 @@ if ("undefined" == typeof(cardbookNotifications)) {
 				if (!existingBox) {
 					aNotificationBox.removeAllNotifications();
 					if (aValueArray && aValueArray.length > 0) {
-						var myReason = ConversionHelper.i18n.getMessage(aReasonCode, aValueArray);
+						var myReason = cardbookRepository.extension.localeData.localizeMessage(aReasonCode, aValueArray);
 					} else {
-						var myReason = ConversionHelper.i18n.getMessage(aReasonCode);
+						var myReason = cardbookRepository.extension.localeData.localizeMessage(aReasonCode);
 					}
 					if (aPriority) {
 						var myPriority = aNotificationBox[aPriority];

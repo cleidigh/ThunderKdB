@@ -1,7 +1,63 @@
 /* All platforms */
 
+/* New tab button on the tabbar. */
+#new-tab-button {
+  list-style-image: url("chrome://messenger/skin/icons/new.svg");
+}
+
 /* Make the fake urlbar look like someone cares.. */
-.contentTabAddress > hbox {
+#url-toolbox {
+  visibility: visible;
+  /*
+  opacity: 1;
+  transition-property: opacity, visibility;
+  transition-duration: 2s;
+  transition-delay: 2s;
+  transition-timing-function: ease-in-out, ease-in-out, linear; */
+}
+#url-toolbox[hidden] {
+  display: block;
+  visibility: collapse;
+  /*
+  opacity: 0;
+  transition-property: opacity, visibility;
+  transition-duration: 2s;
+  transition-delay: 2s;
+  transition-timing-function: ease-in-out, ease-in-out, linear;*/
+}
+
+#back-button {
+  list-style-image: url("chrome://messenger/skin/icons/goback.svg");
+}
+
+#forward-button {
+  list-style-image: url("chrome://messenger/skin/icons/goforward.svg");
+}
+
+/* Animations for these buttons are a large copy/paste; skip em. */
+#reload-button {
+  list-style-image: url("chrome://messenger/skin/icons/restore.svg");
+  transform: rotateY(180deg);
+}
+
+#stop-button {
+  list-style-image: url("chrome://messenger/skin/icons/stop.svg");
+}
+
+#reload-button:not([displaystop]) + #stop-button,
+#reload-button[displaystop] {
+  display: none;
+}
+
+/* The reload-button is only disabled temporarily when it becomes visible
+   to prevent users from accidentally clicking it. We don't however need
+   to show this disabled state, as the flicker that it generates is short
+   enough to be visible but not long enough to explain anything to users.
+#reload-button[disabled]:not(:-moz-window-inactive) > .toolbarbutton-icon {
+  opacity: 1 !important;
+}  */
+
+#urlbar-container > #urlbar {
   background-clip: padding-box;
   border: 1px solid;
   border-color: ThreeDShadow; /* browser.css urlbar default theme */
@@ -11,8 +67,192 @@
   text-shadow: none;
 }
 
-.contentTabAddress:-moz-lwtheme > hbox {
+#urlbar-container:-moz-lwtheme > #urlbar {
   border-color: var(--lwt-toolbar-field-border-color, hsla(240,5%,5%,.25));
+}
+
+#urlbar-input-container {
+  -moz-box-align: center;
+}
+
+/* From identity-block.inc.css */
+#identity-box {
+  padding-inline: 6px;
+  margin-inline-end: 2px;
+  fill: currentColor;
+  fill-opacity: .6;
+}
+
+#identity-box.chromeUI > #identity-icon-label,
+.urlbar-label {
+  opacity: .6;
+}
+#identity-icon-label {
+  padding-inline-start: 4px;
+}
+#identity-box.chromeUI,
+#identity-box.extensionPage {
+  padding-inline-end: 8px;
+  margin-inline-end: 8px;
+  /* var(--urlbar-separator-color) */
+  border-inline-end: 1px solid ThreeDShadow;
+  border-image: linear-gradient(transparent 15%, ThreeDShadow 15%,
+                                ThreeDShadow 85%, transparent 85%);
+  border-image-slice: 1;
+}
+#identity-icon {
+  width: 16px;
+  height: 16px;
+  margin-inline-start: 0;
+  -moz-context-properties: fill, fill-opacity;
+}
+#identity-icon {
+  margin-inline-start: 0;
+  list-style-image: url(chrome://global/skin/icons/identity-icon.svg);
+}
+#identity-box[loading="true"] > #identity-icon {
+  background-image: url(chrome://global/skin/icons/loading.png);
+  background-repeat: no-repeat;
+  list-style-image: none;
+}
+X#identity-box[pageproxystate="valid"].unknownIdentity > #identity-icon {
+  list-style-image: url(chrome://global/skin/icons/identity-icon.svg);
+}
+#identity-box[pageproxystate="valid"].chromeUI > #identity-icon {
+  /* list-style-image: url(chrome://branding/content/icon48.png); */
+}
+#identity-box[pageproxystate="valid"].localResource > #identity-icon {
+  /* This is in Fx 79, use file-item.svg for now
+  list-style-image: url(chrome://global/skin/icons/document.svg); */
+  list-style-image: url(chrome://messenger/skin/icons/file-item.svg);
+}
+#identity-box[pageproxystate="valid"].extensionPage > #identity-icon {
+  list-style-image: url(chrome://messenger/content/extension.svg);
+}
+#identity-box[pageproxystate="valid"].verifiedDomain > #identity-icon,
+#identity-box[pageproxystate="valid"].mixedActiveBlocked > #identity-icon {
+  list-style-image: url(chrome://messenger/skin/icons/connection-secure.svg);
+}
+/* connection-mixed-passive-loaded.svg */
+#identity-box[pageproxystate="valid"].weakCipher > #identity-icon,
+#identity-box[pageproxystate="valid"].mixedDisplayContent > #identity-icon,
+#identity-box[pageproxystate="valid"].mixedDisplayContentLoadedActiveBlocked > #identity-icon,
+#identity-box[pageproxystate="valid"].certUserOverridden > #identity-icon,
+#identity-box[pageproxystate="valid"].certErrorPage > #identity-icon {
+  list-style-image: url(chrome://messenger/skin/icons/connection-mixed.svg);
+  fill: unset;
+}
+/* connection-mixed-active-loaded.svg */
+#identity-box[pageproxystate="valid"].notSecure > #identity-icon,
+#identity-box[pageproxystate="valid"].mixedActiveContent > #identity-icon,
+#identity-box[pageproxystate="valid"].httpsOnlyErrorPage > #identity-icon {
+  list-style-image: url(chrome://messenger/skin/icons/connection-insecure.svg);
+}
+
+/* End identity-block.inc.css */
+
+
+/* ::::: location bar ::::: */
+
+#urlbar-input {
+  -moz-box-flex: 1;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+
+  mask-repeat: no-repeat;
+  unicode-bidi: plaintext;
+  text-align: match-parent;
+  cursor: text;
+  line-height: 1em;
+}
+
+#urlbar-input[readonly] {
+  opacity: 0.6;
+}
+
+/* Align URLs to the right in RTL mode. */
+#urlbar-input:-moz-locale-dir(rtl) {
+  text-align: right !important;
+}
+
+/* Make sure that the location bar's alignment changes according
+   to the input box direction if the user switches the text direction using
+   cmd_switchTextDirection (which applies a dir attribute to the <input>). */
+#urlbar-input[dir=ltr]:-moz-locale-dir(rtl) {
+  text-align: left !important;
+}
+
+#urlbar-input[dir=rtl]:-moz-locale-dir(ltr) {
+  text-align: right !important;
+}
+
+/* Go button */
+.urlbar-icon {
+  width: 28px;
+  height: 28px;
+  padding: 6px; /* var(--urlbar-icon-padding); */
+  -moz-context-properties: fill, fill-opacity;
+  fill: currentColor;
+  fill-opacity: 0.6;
+  color: inherit;
+}
+
+#urlbar-go-button,
+.search-go-button {
+  list-style-image: url("chrome://messenger/skin/icons/goforward.svg");
+}
+#urlbar-go-button:-moz-locale-dir(rtl),
+.search-go-button:-moz-locale-dir(rtl) {
+  transform: scaleX(-1);
+}
+#urlbar:not([usertyping]) > #urlbar-input-container > #urlbar-go-button,
+#urlbar:not([focused]) > #urlbar-input-container > #urlbar-go-button {
+  display: none;
+}
+:not(.urlbar-icon-wrapper) > .urlbar-icon:not([disabled]):hover,
+ .urlbar-icon-wrapper:not([disabled]):hover {
+    background-color: hsla(0,0%,70%,.2);
+}
+
+/* Zoom button */
+#urlbar-zoom-button {
+  margin-inline: 6px;
+}
+#urlbar-zoom-button {
+  -moz-appearance: none;
+  color: inherit;
+  font-size: .8em;
+  padding: 0 8px;
+  border-radius: 1em;
+  background-color: hsla(0,0%,0%,.05);
+  border: 1px solid hsla(210,4%,50%,.3);
+}
+#urlbar-zoom-button:hover {
+  background-color: hsla(0,0%,0%,.1);
+}
+#urlbar-zoom-button:hover:active {
+  background-color: hsla(0,0%,0%,.15);
+}
+:root[lwt-toolbar-field-brighttext] #urlbar-zoom-button:hover {
+  background-color: rgba(255,255,255,.2);
+}
+:root[lwt-toolbar-field-brighttext] #urlbar-zoom-button:hover:active {
+  background-color: rgba(255,255,255,.3);
+}
+#urlbar-zoom-button:-moz-focusring {
+  outline: var(--toolbarbutton-focus-outline);
+  outline-offset: unset;
+  -moz-outline-radius: 1em;
+}
+#urlbar-zoom-button > .toolbarbutton-text {
+  display: inline;
+}
+#urlbar-zoom-button > .toolbarbutton-icon {
+  display: none;
 }
 
 #copyUrlPopup[linknode] > menuitem.urlpopup,

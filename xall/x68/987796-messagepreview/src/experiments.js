@@ -8,7 +8,7 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var messagepreview = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
     let { extension } = context;
-    // console.dir(extension);
+    // console.debug(extension);
     return {
       messagepreview: {
         /*

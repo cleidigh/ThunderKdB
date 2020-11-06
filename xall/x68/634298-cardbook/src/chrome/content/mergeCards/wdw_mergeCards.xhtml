@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://cardbook/content/skin/mergeSelected.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardBookMerge.css" type="text/css"?>
 <!-- for the toolbarbutton-icon-fill-attention var -->
 <?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
 <!-- for the preference star -->
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookPrefStar.css" type="text/css"?>
+<!-- for the textbox -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	onload="wdw_mergeCards.load();" resizable="true"
 	onclose="wdw_mergeCards.cancel();"
-	id="wdw_mergeCards" title="__CARDBOOKMSG_wdw_mergeCardsTitle__"
+	id="wdw_mergeCards" title="__MSG_wdw_mergeCardsTitle__"
 	persist="screenX screenY width height sizemode" class="cardbookMergeSelectedClass"
+	lightweightthemes="true"
 	style="min-width:400px;min-height:100px;">
 	
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/mergeCards/wdw_mergeCards.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 
 	<keyset id="wdw_mergeCards-keys">
 		<key keycode="VK_ESCAPE" oncommand="wdw_mergeCards.cancel();"/>
@@ -26,7 +31,7 @@
 		<vbox align="center" flex="1" style="overflow:auto">
 			<hbox align="center" flex="1">
 				<vbox align="center" flex="1">
-					<description style="width:600px;" align="center" flex="1">__CARDBOOKMSG_mergeInstructionsLabel__</description>
+					<description style="width:600px;" align="center" flex="1">__MSG_mergeInstructionsLabel__</description>
 				</vbox>
 			</hbox>
 			<separator class="thin"/>
@@ -41,9 +46,9 @@
 
 	<hbox>
 		<spacer flex="1"/>
-		<button id="viewResultEditionLabel" label="__CARDBOOKMSG_viewResultEditionLabel__" accesskey="__CARDBOOKMSG_viewResultEditionAccesskey__" oncommand="wdw_mergeCards.viewResult();"/>
-		<button id="createEditionLabel" label="__CARDBOOKMSG_createEditionLabel__" accesskey="__CARDBOOKMSG_createEditionAccesskey__" oncommand="wdw_mergeCards.create();"/>
-		<button id="createAndReplaceEditionLabel" label="__CARDBOOKMSG_createAndReplaceEditionLabel__" accesskey="__CARDBOOKMSG_createAndReplaceEditionAccesskey__" oncommand="wdw_mergeCards.createAndReplace();"/>
-		<button id="cancelEditionLabel" label="__CARDBOOKMSG_cancelEditionLabel__" accesskey="__CARDBOOKMSG_cancelEditionAccesskey__" oncommand="wdw_mergeCards.cancel();"/>
+		<button id="viewResultEditionLabel" label="__MSG_viewResultEditionLabel__" accesskey="__MSG_viewResultEditionAccesskey__" oncommand="wdw_mergeCards.viewResult();"/>
+		<button id="createEditionLabel" label="__MSG_createEditionLabel__" accesskey="__MSG_createEditionAccesskey__" oncommand="wdw_mergeCards.create();"/>
+		<button id="createAndReplaceEditionLabel" label="__MSG_createAndReplaceEditionLabel__" accesskey="__MSG_createAndReplaceEditionAccesskey__" oncommand="wdw_mergeCards.createAndReplace();"/>
+		<button id="cancelEditionLabel" label="__MSG_cancelEditionLabel__" accesskey="__MSG_cancelEditionAccesskey__" oncommand="wdw_mergeCards.cancel();"/>
 	</hbox>
 </window>

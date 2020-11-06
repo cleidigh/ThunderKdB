@@ -98,10 +98,8 @@ function modifyOnlyMsgId(currentState, id, modifier) {
 }
 
 async function getPreference(name, defaultValue) {
-  var _prefs$preferences$na, _prefs$preferences;
-
   const prefs = await browser.storage.local.get("preferences");
-  return (_prefs$preferences$na = prefs === null || prefs === void 0 ? void 0 : (_prefs$preferences = prefs.preferences) === null || _prefs$preferences === void 0 ? void 0 : _prefs$preferences[name]) !== null && _prefs$preferences$na !== void 0 ? _prefs$preferences$na : defaultValue;
+  return prefs?.preferences?.[name] ?? defaultValue;
 }
 
 const attachmentActions = {
@@ -424,9 +422,7 @@ const messageActions = {
     shiftKey
   }) {
     return async () => {
-      var _await$browser$conver;
-
-      let forwardMode = (_await$browser$conver = await browser.conversations.getCorePref("mail.forward_message_mode")) !== null && _await$browser$conver !== void 0 ? _await$browser$conver : 0;
+      let forwardMode = (await browser.conversations.getCorePref("mail.forward_message_mode")) ?? 0;
       browser.conversations.beginForward(id, forwardMode == 0 ? "forwardAsAttachment" : "forwardInline").catch(console.error);
     };
   },
@@ -726,8 +722,6 @@ const messageActions = {
     detailsShowing
   }) {
     return async (dispatch, getState) => {
-      var _currentMsg$extraLine;
-
       if (!detailsShowing) {
         await dispatch({
           type: "MSG_HDR_DETAILS",
@@ -739,7 +733,7 @@ const messageActions = {
 
       let currentMsg = getState().messages.msgData.find(msg => msg.id == id); // If we already have header information, don't get it again.
 
-      if (currentMsg === null || currentMsg === void 0 ? void 0 : (_currentMsg$extraLine = currentMsg.extraLines) === null || _currentMsg$extraLine === void 0 ? void 0 : _currentMsg$extraLine.length) {
+      if (currentMsg?.extraLines?.length) {
         await dispatch({
           type: "MSG_HDR_DETAILS",
           detailsShowing: true,
@@ -774,7 +768,7 @@ const messageActions = {
 
         extraLines.push({
           key: browser.i18n.getMessage("message.headerSubject"),
-          value: currentMsg === null || currentMsg === void 0 ? void 0 : currentMsg.subject
+          value: currentMsg?.subject
         });
         dispatch({
           type: "MSG_HDR_DETAILS",
@@ -1045,8 +1039,6 @@ function summary(state = initialSummary, action) {
 
     case "SET_SYSTEM_OPTIONS":
       {
-        var _action$browserVersio;
-
         let tenPxFactor = 0.625;
 
         if (action.OS == "mac") {
@@ -1055,7 +1047,7 @@ function summary(state = initialSummary, action) {
           tenPxFactor = 0.7;
         }
 
-        let mainVersion = (_action$browserVersio = action.browserVersion) === null || _action$browserVersio === void 0 ? void 0 : _action$browserVersio.split(".")[0];
+        let mainVersion = action.browserVersion?.split(".")[0];
         return { ...state,
           browserForegroundColor: action.browserForegroundColor,
           browserBackgroundColor: action.browserBackgroundColor,
@@ -1149,8 +1141,6 @@ function summary(state = initialSummary, action) {
 
     case "MSG_STREAM_LOAD_FINISHED":
       {
-        var _state$conversation;
-
         let newState = { ...state
         };
 
@@ -1165,7 +1155,7 @@ function summary(state = initialSummary, action) {
         // and move on.
 
 
-        if ((_state$conversation = state.conversation) === null || _state$conversation === void 0 ? void 0 : _state$conversation.getMessage) {
+        if (state.conversation?.getMessage) {
           const msg = state.conversation.getMessage(action.msgUri);
 
           if (msg) {

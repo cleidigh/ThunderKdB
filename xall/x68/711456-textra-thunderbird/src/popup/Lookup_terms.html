@@ -1,0 +1,44 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body bgcolor="#dbffff">
+    <div style="background-color:#00bb00; color:#ffffff;">
+        <h2 style="margin:5px;">TexTra <span id="span_title">辞書引き</span> [<span id="label_langs"></span>]</h2>
+    </div>
+
+    <div>
+        <table width="400">
+            <tr>
+                <td style="font-weight:bold; color:#1E90FF; padding:5px; border-style: none;" align="left" width="50%">
+                    <input type="button" id="btn_replace_lang" style="width:50px;" />
+                </td>
+                <td style="font-weight:bold; color:#1E90FF; padding:5px; border-style: none;" align="right" width="50%">
+                    <a href="javascript:void(0);" id="link_top">トップ</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <table width="400">
+        <tr>
+            <td width="70%"><input type="text" style="width:100%" id="textbox_target" /></td>
+            <td><input type="button" id="btn_refer_dic" value="辞書引き" /></td>
+            <td><img id="img_wait" style="display:none" src="../icons/please_wait.gif" /></td>
+        </tr>
+    </table>
+    <div id="div_refer_dic" style="margin:5px; width:300px; display: none; font-size:medium; background-color:#e5ffe5;">
+        <div id="div_text_org" style="margin:5px;"></div>
+        <div id="div_dic_result" style="margin:5px; overflow:scroll; height:200px; width:300px; overflow-x: hidden; font-size:medium;"></div>
+    </div>
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/api/oauth.js"></script>
+    <script src="../js/api/sha1.js"></script>
+    <script src="../js/api/aes.js"></script>
+    <script src="../js/api/api.js"></script>
+    <script src="Lookup_terms.js"></script>
+
+</body>
+</html>

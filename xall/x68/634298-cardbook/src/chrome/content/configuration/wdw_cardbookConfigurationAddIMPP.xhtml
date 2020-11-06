@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/addressbook/abContactsPanel.css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:xhtml="http://www.w3.org/1999/xhtml"
 	xmlns:html="http://www.w3.org/1999/xhtml"
-	onload="wdw_cardbookConfigurationAddIMPP.load();" resizable="true"
-	onclose="wdw_cardbookConfigurationAddIMPP.cancel();"
-	id="wdw_cardbookConfigurationAddIMPP" title="__CARDBOOKMSG_wdw_cardbookConfigurationAddIMPPTitle__"
+	onload="onLoadDialog();" resizable="true"
+	onclose="onCancelDialog();"
+	id="wdw_cardbookConfigurationAddIMPP" title="__MSG_wdw_cardbookConfigurationAddIMPPTitle__"
 	persist="screenX screenY width height"
+	lightweightthemes="true"
 	style="min-width:200px;min-height:50px;">
 	
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookRichContext.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/configuration/wdw_cardbookConfigurationAddIMPP.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 	<!-- for the textbox -->
 	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
 	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
 
-	<keyset id="wdw_cardbookConfigurationAddIMPP-keys">
-		<key keycode="VK_ESCAPE" oncommand="wdw_cardbookConfigurationAddIMPP.cancel();"/>
-	</keyset>
+	<dialog id="wdw_cardbookConfigurationAddVcardsDialog"
+		buttons="accept,cancel">
 
-	<hbox flex="1">
-		<vbox flex="1">
-			<grid align="center" flex="1">
-				<columns>
-					<column/>
-					<column flex="1"/>
-				</columns>
+		<keyset id="wdw_cardbookConfigurationAddIMPP-keys">
+			<key keycode="VK_ESCAPE" oncommand="onCancelDialog();"/>
+		</keyset>
 	
-				<rows>
-					<row align="center">
-						<label id="IMPPCodeLabel" value="__CARDBOOKMSG_IMPPCodeLabel__" control="IMPPCodeTextBox"/>
-						<html:input id="IMPPCodeTextBox"/>
-					</row>
-					<row align="center">
-						<label id="IMPPLabelLabel" value="__CARDBOOKMSG_IMPPLabelLabel__" control="IMPPLabelTextBox"/>
-						<html:input id="IMPPLabelTextBox"/>
-					</row>
-					<row align="center">
-						<label id="IMPPProtocolLabel" value="__CARDBOOKMSG_IMPPProtocolLabel__" control="IMPPProtocolTextBox"/>
-						<html:input id="IMPPProtocolTextBox"/>
-					</row>
-				</rows>
-			</grid>
-		</vbox>
-	</hbox>
-
-	<hbox>
-		<spacer flex="1"/>
-		<button id="saveEditionLabel" label="__CARDBOOKMSG_saveEditionLabel__" accesskey="__CARDBOOKMSG_saveEditionAccesskey__" oncommand="wdw_cardbookConfigurationAddIMPP.save();"/>
-		<button id="cancelEditionLabel" label="__CARDBOOKMSG_cancelEditionLabel__" accesskey="__CARDBOOKMSG_cancelEditionAccesskey__" oncommand="wdw_cardbookConfigurationAddIMPP.cancel();"/>
-	</hbox>
+		<hbox flex="1">
+			<vbox flex="1">
+				<grid align="center" flex="1">
+					<columns>
+						<column/>
+						<column flex="1"/>
+					</columns>
+					<rows>
+						<row align="center">
+							<label id="IMPPCodeLabel" value="__MSG_IMPPCodeLabel__" control="IMPPCodeTextBox"/>
+							<html:input id="IMPPCodeTextBox"/>
+						</row>
+						<row align="center">
+							<label id="IMPPLabelLabel" value="__MSG_IMPPLabelLabel__" control="IMPPLabelTextBox"/>
+							<html:input id="IMPPLabelTextBox"/>
+						</row>
+						<row align="center">
+							<label id="IMPPProtocolLabel" value="__MSG_IMPPProtocolLabel__" control="IMPPProtocolTextBox"/>
+							<html:input id="IMPPProtocolTextBox"/>
+						</row>
+					</rows>
+				</grid>
+			</vbox>
+		</hbox>
+	</dialog>
 </window>

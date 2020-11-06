@@ -8,6 +8,7 @@ if ("undefined" == typeof(wdw_logEdition)) {
 		lTimerBulkOperation: {},
 		
 		load: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_bulkOperation.lTimerBulkOperation[1] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lTimerBulkOperation = wdw_bulkOperation.lTimerBulkOperation[1];
 			lTimerBulkOperation.initWithCallback({ notify: function(lTimerBulkOperation) {
@@ -46,8 +47,3 @@ if ("undefined" == typeof(wdw_logEdition)) {
 	};
 
 };
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

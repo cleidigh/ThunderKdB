@@ -1,5 +1,4 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 
 var EXPORTED_SYMBOLS = ["cardbookPasswordManager"];
 var cardbookPasswordManager = {
@@ -27,7 +26,7 @@ var cardbookPasswordManager = {
 		}
 		var result = cardbookPasswordManager.getPassword(aUsername, myUrl);
 		if (result == "") {
-			var myTitle = ConversionHelper.i18n.getMessage("wdw_passwordMissingTitle");
+			var myTitle = cardbookRepository.extension.localeData.localizeMessage("wdw_passwordMissingTitle");
 			var commonStrBundle = Services.strings.createBundle("chrome://global/locale/commonDialogs.properties");
 			var myText = commonStrBundle.formatStringFromName("EnterPasswordFor", [aUsername, myUrl], 2);
 			var myPassword = {value: ""};
@@ -45,7 +44,7 @@ var cardbookPasswordManager = {
 
 	getChangedPassword: function (aUsername, aPrefId) {
 		var myUrl = cardbookRepository.cardbookPreferences.getUrl(aPrefId);
-		var myTitle = ConversionHelper.i18n.getMessage("wdw_passwordWrongTitle");
+		var myTitle = cardbookRepository.extension.localeData.localizeMessage("wdw_passwordWrongTitle");
 		var commonStrBundle = Services.strings.createBundle("chrome://global/locale/commonDialogs.properties");
 		var myText = commonStrBundle.formatStringFromName("EnterPasswordFor", [aUsername, myUrl], 2);
 		var myPassword = {value: ""};

@@ -1,26 +1,40 @@
 /* All platforms */
 
 /* Options/Preferences */
-#previewTooltipFieldset,
-#previewTextFieldset,
-#previewRadioFieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-#previewTooltipFieldset,
-#previewTextFieldset {
-  margin-top: .4em;
-  margin-inline-start: 2em;
+
+#container {
+  margin: 8px;
+  overflow: hidden;
 }
 
-#previewTooltipFieldset[disabled] label,
-#previewTextFieldset[disabled] label,
-#previewRadioFieldset[disabled] label {
+#container * {
+  user-select: text;
+}
+
+hr,
+fieldset {
+  border: 0;
+}
+
+input[type="radio"] {
+  margin-bottom: 2px;
+}
+
+input[type="radio"]:disabled,
+input[type="checkbox"]:disabled {
   opacity: 0.5;
 }
 
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  vertical-align: bottom;
+}
+
 .maxsize {
- width: 5em;
- text-align: end;
+  width: 5em;
+  text-align: end;
+}
+
+button {
+  width: max-content;
 }

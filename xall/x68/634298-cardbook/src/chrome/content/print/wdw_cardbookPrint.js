@@ -1,6 +1,5 @@
 if ("undefined" == typeof(wdw_cardbookPrint)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -28,9 +27,9 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 
 		setWindowTitle: function () {
 			if (window.arguments[0].title != "") {
-				document.title = ConversionHelper.i18n.getMessage("wdw_cardbookPrintTitleLong", [window.arguments[0].title]);
+				document.title = cardbookRepository.extension.localeData.localizeMessage("wdw_cardbookPrintTitleLong", [window.arguments[0].title]);
 			} else {
-				document.title = ConversionHelper.i18n.getMessage("wdw_cardbookPrintTitle");
+				document.title = cardbookRepository.extension.localeData.localizeMessage("wdw_cardbookPrintTitle");
 			}
 			document.getElementById("titleTextBox").value = window.arguments[0].title;
 		},
@@ -48,6 +47,7 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 		},
 
 		load: function() {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_cardbookPrint.setWindowTitle();
 			wdw_cardbookPrint.loadCheckboxes();
 			wdw_cardbookPrint.refreshHTML();
@@ -61,11 +61,6 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 		
 	};
 };
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);
 
 document.addEventListener("dialogaccept", event => {
 	let printSettings = PrintUtils.getPrintSettings();

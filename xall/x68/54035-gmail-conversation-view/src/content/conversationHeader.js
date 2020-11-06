@@ -106,15 +106,11 @@ class _ConversationHeader extends React.PureComponent {
   }
 
   get areSomeMessagesCollapsed() {
-    var _this$props$msgData;
-
-    return !((_this$props$msgData = this.props.msgData) === null || _this$props$msgData === void 0 ? void 0 : _this$props$msgData.some(msg => msg.expanded));
+    return !this.props.msgData?.some(msg => msg.expanded);
   }
 
   get areSomeMessagesUnread() {
-    var _this$props$msgData2;
-
-    return !((_this$props$msgData2 = this.props.msgData) === null || _this$props$msgData2 === void 0 ? void 0 : _this$props$msgData2.some(msg => !msg.read));
+    return this.props.msgData?.some(msg => !msg.read);
   }
 
   get canJunk() {

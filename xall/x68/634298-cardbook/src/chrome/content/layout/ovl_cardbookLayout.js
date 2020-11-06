@@ -27,16 +27,6 @@ if ("undefined" == typeof(ovl_cardbookLayout)) {
 				} else {
 					document.getElementById("resultsSplitter").setAttribute("state", "collapsed");
 				}
-
-				// workaround because the sizes of the panes were not persistent
-				cardbookRepository.cardbookReorderMode = "REORDER";
-				for (let element of [ "leftPaneVbox", "rightPaneUpHbox" ]) {
-					let width = Services.xulStore.getValue("chrome://cardbook/content/ovl_cardbook.xhtml", element, "width");
-					document.getElementById(element).setAttribute("width", width);
-					let height = Services.xulStore.getValue("chrome://cardbook/content/ovl_cardbook.xhtml", element, "height");
-					document.getElementById(element).setAttribute("height", height);
-				}
-				cardbookRepository.cardbookReorderMode = "NOREORDER";
 			}
 		},
 

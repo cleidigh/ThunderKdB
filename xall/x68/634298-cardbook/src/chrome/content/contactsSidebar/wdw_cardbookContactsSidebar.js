@@ -1,7 +1,6 @@
 if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -159,7 +158,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 		
 		search: function () {
 			if (document.getElementById('cardbookpeopleSearchInput').value == "") {
-				document.getElementById('cardbookpeopleSearchInput').placeholder = ConversionHelper.i18n.getMessage("cardbookSearchInputDefault");
+				document.getElementById('cardbookpeopleSearchInput').placeholder = cardbookRepository.extension.localeData.localizeMessage("cardbookSearchInputDefault");
 			}
 			wdw_cardbookContactsSidebar.searchResults = [];
 			var searchAB = document.getElementById('CardBookABMenulist').value;
@@ -624,6 +623,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 		},
 		
 		loadPanel: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			if (location.search == "?focus") {
 				document.getElementById("cardbookpeopleSearchInput").focus();
 			}
@@ -697,7 +697,7 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 													wdw_cardbookContactsSidebar.ABInclRestrictions, wdw_cardbookContactsSidebar.ABExclRestrictions);
 			wdw_cardbookContactsSidebar.onABChange();
 			
-			document.getElementById('cardbookpeopleSearchInput').placeholder = ConversionHelper.i18n.getMessage("cardbookSearchInputDefault");
+			document.getElementById('cardbookpeopleSearchInput').placeholder = cardbookRepository.extension.localeData.localizeMessage("cardbookSearchInputDefault");
 		},
 		
 		onABChange: function (aParams) {
@@ -788,8 +788,3 @@ if ("undefined" == typeof(wdw_cardbookContactsSidebar)) {
 		
 	}
 };
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

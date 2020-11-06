@@ -1,171 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooks.css" type="text/css"?>
 <!-- for the groupbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
-	onload="wdw_addressbooksEdit.load();" resizable="true"
-	onclose="wdw_addressbooksEdit.cancel();"
-	id="wdw_addressbooksEdit" title="__CARDBOOKMSG_wdw_addressbooksEditTitle__"
+	onload="onLoadDialog();" resizable="true"
+	onclose="onCancelDialog();"
+	id="wdw_addressbooksEdit" title="__MSG_wdw_addressbooksEditTitle__"
 	persist="screenX screenY width height sizemode"
 	windowtype="CardBook:addressbookEditionWindow"
+	lightweightthemes="true"
 	style="max-width:800px;max-height:600px;">
 	
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/addressbooksconfiguration/wdw_addressbooksEdit.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 	<!-- for the textbox -->
 	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
 	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
 
-	<keyset id="wdw_addressbooksEdit-keys">
-		<key keycode="VK_ESCAPE" oncommand="wdw_addressbooksEdit.cancel();"/>
-	</keyset>
+	<dialog id="wdw_addressbooksEditDialog"
+		buttons="accept,cancel">
 
-	<tabbox id="accountPrefs" flex="1">
+		<keyset id="wdw_addressbooksEdit-keys">
+			<key keycode="VK_ESCAPE" oncommand="onCancelDialog();"/>
+		</keyset>
 
-		<tabs>
-			<tab id="generalTab" label="__CARDBOOKMSG_generalTabLabel__"/>
-			<tab id="syncTab" label="__CARDBOOKMSG_syncTabLabel__"/>
-			<tab id="miscTab" label="__CARDBOOKMSG_miscTabLabel__"/>
-		</tabs>
+		<checkbox id="AB-enabled-checkbox" label="__MSG_enableFromAccountsOrCats__" oncommand="setupEnabledCheckbox();"/>
 
-		<tabpanels>
-			<tabpanel orient="vertical" style="overflow:auto">
-				<groupbox>
-					<label class="header">__CARDBOOKMSG_generalTabLabel__</label>
-					<hbox flex="1">
-						<grid align="center" flex="1">
-							<columns>
-								<column/>
-								<column flex="1"/>
-							</columns>
+		<tabbox id="accountPrefs" flex="1">
+	
+			<tabs>
+				<tab id="generalTab" label="__MSG_generalTabLabel__"/>
+				<tab id="syncTab" label="__MSG_syncTabLabel__"/>
+				<tab id="miscTab" label="__MSG_miscTabLabel__"/>
+			</tabs>
+	
+			<tabpanels>
+				<tabpanel orient="vertical" style="overflow:auto">
+					<groupbox>
+						<label class="header">__MSG_generalTabLabel__</label>
+						<hbox flex="1">
+							<grid align="center" flex="1">
+								<columns>
+									<column/>
+									<column flex="1"/>
+								</columns>
+					
+								<rows>
+									<row align="center">
+										<label id="name.ABedit.label" value="__MSG_name.ABedit.label__" accesskey="__MSG_name.ABedit.accesskey__" control="nameTextBox" disable-with-AB="true"/>
+										<html:input id="nameTextBox" disable-with-AB="true"/>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<label value="__MSG_nodesLabel__" control="nodeRadiogroup" id="nodesLabel" disable-with-AB="true"/>
+										<radiogroup id="nodeRadiogroup" orient="horizontal" disable-with-AB="true">
+											<radio value="categories" label="__MSG_categoriesNodeLabel__"/>
+											<radio value="org" label="__MSG_orgNodeLabel__"/>
+										</radiogroup>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<label value="__MSG_colorLabel__" control="colorInput" disable-with-AB="true"/>
+										<hbox align="center">
+											<html:input id="colorInput" type="color" palettename="standard" disable-with-AB="true"/>
+										</hbox>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<label id="typeLabel" value="__MSG_typeLabel__" control="typeTextBox" disable-with-AB="true"/>
+										<html:input id="typeTextBox" class="plain" disable-with-AB="true"/>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<label id="urlLabel" value="__MSG_urlLabel__" control="urlTextBox" disable-with-AB="true"/>
+										<html:input id="urlTextBox" class="plain" disable-with-AB="true"/>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<label id="username.ABedit.label" value="__MSG_username.ABedit.label__" control="usernameTextBox" disable-with-AB="true"/>
+										<html:input id="usernameTextBox" class="plain" disable-with-AB="true"/>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<label value="__MSG_vCardVersionLabel__" control="vCardVersionTextBox" disable-with-AB="true"/>
+										<html:input id="vCardVersionTextBox" class="plain" disable-with-AB="true"/>
+										<button id="convertVCardsLabel" label="__MSG_convertVCardsLabel__" accesskey="__MSG_convertVCardsAccesskey__"
+											tooltiptext="__MSG_convertVCardsTooltip__" hidden="true" oncommand="convertVCards();" disable-with-AB="true"/>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<checkbox id="readonlyCheckBox" label="__MSG_readonlyLabel__" accesskey="__MSG_readonlyAccesskey__" disable-with-AB="true"/>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<checkbox id="urnuuidCheckBox" label="__MSG_urnuuidLabel__" disabled="true" disable-capability="true"/>
+									</row>
+									<separator class="thin"/>
+									<row align="center">
+										<checkbox id="DBCachedCheckBox" label="__MSG_DBCachedLabel__" disabled="true" disable-capability="true"/>
+									</row>
+								</rows>
+							</grid>
+						</hbox>
+					</groupbox>
+				</tabpanel>
+	
+				<tabpanel orient="vertical" style="overflow:auto">
+					<groupbox>
+						<label class="header">__MSG_autoSyncGroupboxLabel__</label>
+						<hbox align="center">
+							<checkbox id="autoSyncCheckBox" label="__MSG_autoSyncLabel__" accesskey="__MSG_autoSyncAccesskey__"
+								oncommand="showAutoSyncInterval();" disable-with-AB="true"/>
+						</hbox>
+						<hbox align="center" class="indent">
+							<label value="__MSG_autoSyncIntervalLabel__" accesskey="__MSG_autoSyncIntervalAccesskey__"
+								control="autoSyncIntervalTextBox"
+								id="autoSyncInterval" disable-with-AB="true"/>
+							<html:input id="autoSyncIntervalTextBox" disable-with-AB="true"/>
+						</hbox>
+					</groupbox>
+				</tabpanel>
+	
+				<tabpanel orient="vertical" style="overflow:auto">
+					<groupbox flex="1">
+						<label class="header">__MSG_fnFormulaCaption__</label>
+						<description>__MSG_fnFormulaExplanation__</description>
+						<description class="indent">__MSG_formulaExplanation1__</description>
+						<description class="indent">__MSG_formulaExplanation2__</description>
+						<description class="indent">__MSG_formulaExplanation3__</description>
+						<description class="indent">__MSG_formulaExplanation4__</description>
+						<description class="indent">__MSG_formulaExplanation5__</description>
+						<description class="indent">__MSG_formulaExplanation6__</description>
+						<description id="fnFormula7" class="indent"/>
+						<description id="fnFormula8" class="indent"/>
+						<hbox flex="1">
+							<grid align="center" flex="1">
+								<columns>
+									<column/>
+									<column flex="1"/>
+									<column/>
+								</columns>
 				
-							<rows>
-								<row align="center">
-									<label id="name.ABedit.label" value="__CARDBOOKMSG_name.ABedit.label__" accesskey="__CARDBOOKMSG_name.ABedit.accesskey__" control="nameTextBox"/>
-									<html:input id="nameTextBox"/>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<label value="__CARDBOOKMSG_nodesLabel__" control="nodeRadiogroup" id="nodesLabel"/>
-									<radiogroup id="nodeRadiogroup" orient="horizontal">
-										<radio value="categories" label="__CARDBOOKMSG_categoriesNodeLabel__"/>
-										<radio value="org" label="__CARDBOOKMSG_orgNodeLabel__"/>
-									</radiogroup>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<label value="__CARDBOOKMSG_colorLabel__" control="colorInput"/>
-									<hbox align="center">
-										<html:input id="colorInput" type="color" palettename="standard"/>
-									</hbox>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<label id="typeLabel" value="__CARDBOOKMSG_typeLabel__" control="typeTextBox"/>
-									<html:input id="typeTextBox" class="plain"/>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<label id="urlLabel" value="__CARDBOOKMSG_urlLabel__" control="urlTextBox"/>
-									<html:input id="urlTextBox" class="plain"/>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<label id="username.ABedit.label" value="__CARDBOOKMSG_username.ABedit.label__" control="usernameTextBox"/>
-									<html:input id="usernameTextBox" class="plain"/>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<label value="__CARDBOOKMSG_vCardVersionLabel__" control="vCardVersionTextBox"/>
-									<html:input id="vCardVersionTextBox" class="plain"/>
-									<button id="convertVCardsLabel" label="__CARDBOOKMSG_convertVCardsLabel__" accesskey="__CARDBOOKMSG_convertVCardsAccesskey__"
-										tooltiptext="__CARDBOOKMSG_convertVCardsTooltip__" hidden="true" oncommand="wdw_addressbooksEdit.convertVCards();"/>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<checkbox id="readonlyCheckBox" label="__CARDBOOKMSG_readonlyLabel__" accesskey="__CARDBOOKMSG_readonlyAccesskey__"/>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<checkbox id="urnuuidCheckBox" label="__CARDBOOKMSG_urnuuidLabel__" disabled="true"/>
-								</row>
-								<separator class="thin"/>
-								<row align="center">
-									<checkbox id="DBCachedCheckBox" label="__CARDBOOKMSG_DBCachedLabel__" disabled="true"/>
-								</row>
-							</rows>
-						</grid>
-					</hbox>
-				</groupbox>
-			</tabpanel>
-
-			<tabpanel orient="vertical" style="overflow:auto">
-				<groupbox>
-					<label class="header">__CARDBOOKMSG_autoSyncGroupboxLabel__</label>
-					<hbox align="center">
-						<checkbox id="autoSyncCheckBox" label="__CARDBOOKMSG_autoSyncLabel__" accesskey="__CARDBOOKMSG_autoSyncAccesskey__"
-							oncommand="wdw_addressbooksEdit.showAutoSyncInterval();"/>
-					</hbox>
-					<hbox align="center" class="indent">
-						<label value="__CARDBOOKMSG_autoSyncIntervalLabel__" accesskey="__CARDBOOKMSG_autoSyncIntervalAccesskey__"
-							control="autoSyncIntervalTextBox"
-							id="autoSyncInterval"/>
-						<html:input id="autoSyncIntervalTextBox"/>
-					</hbox>
-				</groupbox>
-			</tabpanel>
-
-			<tabpanel orient="vertical" style="overflow:auto">
-				<groupbox flex="1">
-					<label class="header">__CARDBOOKMSG_fnFormulaCaption__</label>
-					<description>__CARDBOOKMSG_fnFormulaExplanation__</description>
-					<description class="indent">__CARDBOOKMSG_formulaExplanation1__</description>
-					<description class="indent">__CARDBOOKMSG_formulaExplanation2__</description>
-					<description class="indent">__CARDBOOKMSG_formulaExplanation3__</description>
-					<description class="indent">__CARDBOOKMSG_formulaExplanation4__</description>
-					<description class="indent">__CARDBOOKMSG_formulaExplanation5__</description>
-					<description class="indent">__CARDBOOKMSG_formulaExplanation6__</description>
-					<description id="fnFormula7" class="indent"/>
-					<description id="fnFormula8" class="indent"/>
-					<hbox flex="1">
-						<grid align="center" flex="1">
-							<columns>
-								<column/>
-								<column flex="1"/>
-								<column/>
-							</columns>
-			
-							<rows>
-								<row align="center">
-									<label value="__CARDBOOKMSG_fnFormulaLabel__" accesskey="__CARDBOOKMSG_fnFormulaAccesskey__" control="fnFormulaTextBox"/>
-									<html:input id="fnFormulaTextBox"/>
-									<button id="resetFnFormulaButton" label="__CARDBOOKMSG_resetFnFormulaLabel__" accesskey="__CARDBOOKMSG_resetFnFormulaAccesskey__"
-										oncommand="wdw_addressbooksEdit.resetFnFormula();"/>
-								</row>
-								<row align="center">
-									<label value=""/>
-									<label value=""/>
-									<button id="applyToABButton" type="menu" label="__CARDBOOKMSG_applyToABButtonLabel__" accesskey="__CARDBOOKMSG_applyToABButtonAccesskey__" 
-												sizetopopup="none" crop="center" flex="1" oncommand="wdw_addressbooksEdit.applyApplyToAB(event);">
-										<menupopup id="applyToABMenupopup"/>
-									</button>
-								</row>
-							</rows>
-						</grid>
-					</hbox>
-				</groupbox>
-			</tabpanel>
-		</tabpanels>
-	</tabbox>
-
-	<hbox>
-		<spacer flex="1"/>
-		<button id="saveEditionLabel" label="__CARDBOOKMSG_saveEditionLabel__" accesskey="__CARDBOOKMSG_saveEditionAccesskey__" oncommand="wdw_addressbooksEdit.save();"/>
-		<button id="cancelEditionLabel" label="__CARDBOOKMSG_cancelEditionLabel__" accesskey="__CARDBOOKMSG_cancelEditionAccesskey__" oncommand="wdw_addressbooksEdit.cancel();"/>
-	</hbox>
+								<rows>
+									<row align="center">
+										<label value="__MSG_fnFormulaLabel__" accesskey="__MSG_fnFormulaAccesskey__" control="fnFormulaTextBox" disable-with-AB="true"/>
+										<html:input id="fnFormulaTextBox" disable-with-AB="true"/>
+										<button id="resetFnFormulaButton" label="__MSG_resetFnFormulaLabel__" accesskey="__MSG_resetFnFormulaAccesskey__"
+											oncommand="resetFnFormula();" disable-with-AB="true"/>
+									</row>
+									<row align="center">
+										<label value=""/>
+										<label value=""/>
+										<button id="applyToABButton" type="menu" label="__MSG_applyToABButtonLabel__" accesskey="__MSG_applyToABButtonAccesskey__" 
+													sizetopopup="none" crop="center" flex="1" oncommand="applyApplyToAB(event);" disable-with-AB="true">
+											<menupopup id="applyToABMenupopup" disable-with-AB="true"/>
+										</button>
+									</row>
+								</rows>
+							</grid>
+						</hbox>
+					</groupbox>
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</dialog>
 </window>

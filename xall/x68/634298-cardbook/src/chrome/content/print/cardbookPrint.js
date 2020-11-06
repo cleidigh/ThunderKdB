@@ -1,5 +1,4 @@
 if ("undefined" == typeof(cardbookPrint)) {
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
@@ -112,7 +111,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 							if (aColumnChoice.headers) {
 								cardbookPrint.openTag("tr", '', "");
 								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', ConversionHelper.i18n.getMessage(j + 'GroupboxLabel'));
+									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
 								} else {
 									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
 								}
@@ -131,7 +130,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 							} else {
 								cardbookPrint.openTag("tr", '', "");
 								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'class="titlevalue"', ConversionHelper.i18n.getMessage(j + 'GroupboxLabel'));
+									cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
 								} else {
 									cardbookPrint.openTag("td", 'class="titlevalue"', "");
 								}
@@ -152,7 +151,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 							if (aColumnChoice.headers) {
 								cardbookPrint.openTag("tr", '', "");
 								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', ConversionHelper.i18n.getMessage(j + 'Header'));
+									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'Header'));
 								} else {
 									cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
 								}
@@ -171,7 +170,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 							} else {
 								cardbookPrint.openTag("tr", '', "");
 								if (aColumnChoice.fieldNames) {
-									cardbookPrint.openTag("td", 'class="titlevalue"', ConversionHelper.i18n.getMessage(j + 'Header'));
+									cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'Header'));
 								} else {
 									cardbookPrint.openTag("td", 'class="titlevalue"', "");
 								}
@@ -195,7 +194,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 										if (!found) {
 											cardbookPrint.openTag("tr", '', "");
 											if (aColumnChoice.fieldNames) {
-												cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', ConversionHelper.i18n.getMessage(j + 'GroupboxLabel'));
+												cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(j + 'GroupboxLabel'));
 											} else {
 												cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
 											}
@@ -207,7 +206,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 										cardbookPrint.openTag("td", 'class="dummyvalue"', "");
 										cardbookPrint.closeTag("td", false);
 										if (aColumnChoice.fieldNames) {
-											cardbookPrint.openTag("td", 'class="titlevalue"', ConversionHelper.i18n.getMessage(myField + "Label"));
+											cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + "Label"));
 										} else {
 											cardbookPrint.openTag("td", 'class="titlevalue"', "");
 										}
@@ -217,7 +216,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 									} else {
 										cardbookPrint.openTag("tr", '', "");
 										if (aColumnChoice.fieldNames) {
-											cardbookPrint.openTag("td", 'class="titlevalue"', ConversionHelper.i18n.getMessage(myField + "Label"));
+											cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + "Label"));
 										} else {
 											cardbookPrint.openTag("td", 'class="titlevalue"', "");
 										}
@@ -244,7 +243,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 											if (!found) {
 												cardbookPrint.openTag("tr", '', "");
 												if (aColumnChoice.fieldNames) {
-													cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', ConversionHelper.i18n.getMessage(myField + 'GroupboxLabel'));
+													cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + 'GroupboxLabel'));
 												} else {
 													cardbookPrint.openTag("td", 'colspan="8" class="titlevalue"', "");
 												}
@@ -256,7 +255,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 											cardbookPrint.closeTag("td", false);
 										} else {
 											if (aColumnChoice.fieldNames) {
-												cardbookPrint.openTag("td", 'class="titlevalue"', ConversionHelper.i18n.getMessage(myField + 'Label'));
+												cardbookPrint.openTag("td", 'class="titlevalue"', cardbookRepository.extension.localeData.localizeMessage(myField + 'Label'));
 											} else {
 												cardbookPrint.openTag("td", 'class="titlevalue"', "");
 											}

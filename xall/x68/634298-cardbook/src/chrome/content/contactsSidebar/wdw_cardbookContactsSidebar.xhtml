@@ -7,11 +7,14 @@
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookMenuIcons.css" type="text/css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window id="abContactsPanel"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	onload="wdw_cardbookContactsSidebar.loadPanel();"
-	onunload="wdw_cardbookContactsSidebar.unloadPanel();">
+	onunload="wdw_cardbookContactsSidebar.unloadPanel();"
+	lightweightthemes="true">
 
 	<stringbundleset id="stringbundleset">
 		<stringbundle id="bundle_addressBook" src="chrome://messenger/locale/addressbook/addressBook.properties"/>
@@ -32,7 +35,8 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/observers/cardBookSideBarObserver.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/wdw_cardbook.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/contactsSidebar/wdw_cardbookContactsSidebar.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
+
 	<!-- for the textbox -->
 	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
 	<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
@@ -45,30 +49,30 @@
 	</keyset>
 
 	<menupopup id="sidebarAbContextMenu">
-		<menuitem label="__CARDBOOKMSG_newContactAbContext.label__"
-			accesskey="__CARDBOOKMSG_newContactAbContext.accesskey__"
+		<menuitem label="__MSG_newContactAbContext.label__"
+			accesskey="__MSG_newContactAbContext.accesskey__"
 			oncommand="wdw_cardbookContactsSidebar.newCard();"/>
-		<menuitem label="__CARDBOOKMSG_newListAbContext.label__"
-			accesskey="__CARDBOOKMSG_newListAbContext.accesskey__"
+		<menuitem label="__MSG_newListAbContext.label__"
+			accesskey="__MSG_newListAbContext.accesskey__"
 			oncommand="wdw_cardbookContactsSidebar.newList();"/>
 	</menupopup>
 
 	<menupopup id="cardProperties" onpopupshowing="return wdw_cardbookContactsSidebar.cardPropertiesMenuContextShowing();">
-		<menuitem id="toEmail" label="__CARDBOOKMSG_addtoToFieldMenu.label__" accesskey="__CARDBOOKMSG_addtoToFieldMenu.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_to');"/>
-		<menuitem id="ccEmail" label="__CARDBOOKMSG_addtoCcFieldMenu.label__" accesskey="__CARDBOOKMSG_addtoCcFieldMenu.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_cc');"/>
-		<menuitem id="bccEmail" label="__CARDBOOKMSG_addtoBccFieldMenu.label__" accesskey="__CARDBOOKMSG_addtoBccFieldMenu.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_bcc');"/>
-		<menuitem id="replytoEmail" label="__CARDBOOKMSG_addtoReplytoFieldMenu.label__" accesskey="__CARDBOOKMSG_addtoReplytoFieldMenu.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_reply');"/>
+		<menuitem id="toEmail" label="__MSG_addtoToFieldMenu.label__" accesskey="__MSG_addtoToFieldMenu.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_to');"/>
+		<menuitem id="ccEmail" label="__MSG_addtoCcFieldMenu.label__" accesskey="__MSG_addtoCcFieldMenu.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_cc');"/>
+		<menuitem id="bccEmail" label="__MSG_addtoBccFieldMenu.label__" accesskey="__MSG_addtoBccFieldMenu.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_bcc');"/>
+		<menuitem id="replytoEmail" label="__MSG_addtoReplytoFieldMenu.label__" accesskey="__MSG_addtoReplytoFieldMenu.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_reply');"/>
 		<menuseparator/>
-		<menuitem id="deleteCard" label="__CARDBOOKMSG_deleteAddrBookCard.label__" accesskey="__CARDBOOKMSG_deleteAddrBookCard.accesskey__" key="key_delete" oncommand="wdw_cardbookContactsSidebar.deleteCard();"/>
+		<menuitem id="deleteCard" label="__MSG_deleteAddrBookCard.label__" accesskey="__MSG_deleteAddrBookCard.accesskey__" key="key_delete" oncommand="wdw_cardbookContactsSidebar.deleteCard();"/>
 		<menuseparator/>
-		<menuitem id="editCard" label="__CARDBOOKMSG_editAddrBookCard.label__" accesskey="__CARDBOOKMSG_editAddrBookCard.accesskey__" key="key_properties" oncommand="wdw_cardbookContactsSidebar.editCard();"/>
+		<menuitem id="editCard" label="__MSG_editAddrBookCard.label__" accesskey="__MSG_editAddrBookCard.accesskey__" key="key_properties" oncommand="wdw_cardbookContactsSidebar.editCard();"/>
 	</menupopup>
 	
 	<vbox id="results_box" flex="1">
 		<separator class="thin"/>
 
 		<hbox id="AbPickerHeader" class="toolbar">
-			<label id="addressbookPickerLabel" value="__CARDBOOKMSG_addressbookPicker.label__" accesskey="__CARDBOOKMSG_addressbookPicker.accesskey__" control="CardBookABMenulist"/>
+			<label id="addressbookPickerLabel" value="__MSG_addressbookPicker.label__" accesskey="__MSG_addressbookPicker.accesskey__" control="CardBookABMenulist"/>
 			<spacer flex="1"/>
 			<toolbarbutton id="abContextMenuButton"
 				onclick="document.getElementById('sidebarAbContextMenu').openPopup(event.target, 'after_end');"/>
@@ -81,7 +85,7 @@
 		
 		<separator class="thin"/>
 		
-		<label id="categoriesPickerLabel" value="__CARDBOOKMSG_categoriesPicker.label__" accesskey="__CARDBOOKMSG_categoriesPicker.accesskey__" control="categoriesMenulist"/>
+		<label id="categoriesPickerLabel" value="__MSG_categoriesPicker.label__" accesskey="__MSG_categoriesPicker.accesskey__" control="categoriesMenulist"/>
 		<hbox class="toolbar" align="center">
 			<menulist id="categoriesMenulist" oncommand="wdw_cardbookContactsSidebar.onCategoryChange();" flex="1" persist="value">
 				<menupopup id="categoriesMenupopup"/>
@@ -91,13 +95,13 @@
 		<separator class="thin"/>
 		
 		<vbox>
-			<label value="__CARDBOOKMSG_searchContacts.label__"
-				accesskey="__CARDBOOKMSG_searchContacts.accesskey__"
+			<label value="__MSG_searchContacts.label__"
+				accesskey="__MSG_searchContacts.accesskey__"
 				control="cardbookpeopleSearchInput"/>
 			<search-textbox id="cardbookpeopleSearchInput"
 				class="searchBox"
 				flex="1"
-				placeholder="__CARDBOOKMSG_SearchNameOrEmail.label__"
+				placeholder="__MSG_SearchNameOrEmail.label__"
 				oncommand="wdw_cardbookContactsSidebar.onSearchEntered();"/>
 		</vbox>
 		
@@ -106,11 +110,11 @@
 		<tree id="abResultsTree" class="plain" flex="1" context="cardProperties" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="GeneratedName"
 				 onclick="wdw_cardbookContactsSidebar.sortTrees(event);">
 			<treecols id="abResultsTreeCols">
-				<treecol id="GeneratedName" label="__CARDBOOKMSG_nameLabel__" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+				<treecol id="GeneratedName" label="__MSG_nameLabel__" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
 				<splitter class="tree-splitter"/>
-				<treecol id="AB" label="__CARDBOOKMSG_addressbookHeader__" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
+				<treecol id="AB" label="__MSG_addressbookHeader__" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
 				<splitter class="tree-splitter"/>
-				<treecol id="Emails" label="__CARDBOOKMSG_emailLabel__" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+				<treecol id="Emails" label="__MSG_emailLabel__" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
 				<splitter class="tree-splitter"/>
 			</treecols>
 			<treechildren id="abResultsTreeChildren" ondblclick="wdw_cardbookContactsSidebar.doubleClickCardsTree(event);" ondragstart="CardBookResultsPaneObserver.onDragStart(event);"/>
@@ -126,16 +130,16 @@
 				</columns>
 				<rows>
 					<row id="toButtonBox">
-						<button id="toButton" label="__CARDBOOKMSG_toButton.label__" accesskey="__CARDBOOKMSG_toButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_to')"/>
+						<button id="toButton" label="__MSG_toButton.label__" accesskey="__MSG_toButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_to')"/>
 					</row>
 					<row id="ccButtonBox">
-						<button id="ccButton" label="__CARDBOOKMSG_ccButton.label__" accesskey="__CARDBOOKMSG_ccButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_cc')"/>
+						<button id="ccButton" label="__MSG_ccButton.label__" accesskey="__MSG_ccButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_cc')"/>
 					</row>
 					<row id="bccButtonBox">
-						<button id="bccButton" label="__CARDBOOKMSG_bccButton.label__" accesskey="__CARDBOOKMSG_bccButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_bcc')"/>
+						<button id="bccButton" label="__MSG_bccButton.label__" accesskey="__MSG_bccButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_bcc')"/>
 					</row>
 					<row id="replytoButtonBox">
-						<button id="replytoButton" label="__CARDBOOKMSG_replytoButton.label__" accesskey="__CARDBOOKMSG_replytoButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_reply')"/>
+						<button id="replytoButton" label="__MSG_replytoButton.label__" accesskey="__MSG_replytoButton.accesskey__" oncommand="wdw_cardbookContactsSidebar.addEmails('addr_reply')"/>
 					</row>
 				</rows>
 			</grid>

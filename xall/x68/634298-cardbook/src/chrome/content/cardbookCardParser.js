@@ -1,6 +1,5 @@
 if ("undefined" == typeof(cardbookCardParser)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 
 	function cardbookCardParser(vCardData, vSiteUrl, vEtag, vDirPrefId) {
 		this._init(vDirPrefId);
@@ -358,7 +357,11 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								this.class1 = vCardDataArrayTrailer;
 								break;
 							case "KEY":
-								this.key = vCardDataArrayHeaderOption + ":" + vCardDataArrayTrailer;
+								if (vCardDataArrayHeaderOption) {
+									this.key = vCardDataArrayHeaderOption + ":" + vCardDataArrayTrailer;
+								} else {
+									this.key = vCardDataArrayTrailer;
+								}
 								break;
 							case "REV":
 								this.rev = vCardDataArrayTrailer;
@@ -394,7 +397,11 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								this.geo = vCardDataArrayTrailer;
 								break;
 							case "AGENT":
-								this.agent = vCardDataArrayHeaderOption + ":" + vCardDataArrayTrailer;
+								if (vCardDataArrayHeaderOption) {
+									this.agent = vCardDataArrayHeaderOption + ":" + vCardDataArrayTrailer;
+								} else {
+									this.agent = vCardDataArrayTrailer;
+								}
 								break;
 							case "IMPP":
 								if (vCardDataArrayTrailer) {
@@ -429,7 +436,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								}
 								// for users that shares Thunderbird contacts between profiles, it's good to automatically record Thunderbird custom fields
 								if (vCardDataArrayHeader == "X-CUSTOM1" || vCardDataArrayHeader == "X-CUSTOM2" || vCardDataArrayHeader == "X-CUSTOM3" || vCardDataArrayHeader == "X-CUSTOM4") {
-									var customLabel = ConversionHelper.i18n.getMessage("customLabel");
+									var customLabel = cardbookRepository.extension.localeData.localizeMessage("customLabel");
 									var found = false
 									for (var i = 0; i < cardbookRepository.customFields['pers'].length; i++) {
 										if (cardbookRepository.customFields['pers'][i][0] == vCardDataArrayHeader) {

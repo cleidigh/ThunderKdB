@@ -1,16 +1,20 @@
-if ("undefined" == typeof(ovl_lightningAttendees)) {
-	var ovl_lightningAttendees = {
-		onRemove: function() {
-			ovl_lightningAttendees.unregister();
-		},
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
-		onLoad: function() {
-			var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-			cardBookLightningObserver.register();
+var ovl_lightningAttendees = {
+	unloadAttendees: function () {
+		cardBookLightningObserver.unregister();
+	},
+
+	loadAttendees: function () {
+		cardBookLightningObserver.register();
+		setTimeout(function() {
 			cardbookAutocomplete.setLightningCompletion();
+			}, 50);
+		setTimeout(function() {
 			cardbookAutocomplete.loadCssRules();
-			window.document.removeEventListener('DOMOverlayLoaded_cardbook@vigneau.philippe', arguments.callee, true);
-		}
+			}, 500);
 	}
+
 };
-window.document.addEventListener("DOMOverlayLoaded_cardbook@vigneau.philippe", function(e) { ovl_lightningAttendees.onLoad(e); }, false);

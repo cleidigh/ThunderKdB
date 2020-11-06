@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.2",
+  "version": "2.3",
   "author": "alta88",
   "homepage_url": "https://bitbucket.org/alta8888/messagepreview",
   "default_locale": "en",
@@ -10,7 +10,7 @@
   "applications": {
     "gecko": {
       "id": "messagepreview@mozdev.org",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.0a1"
     }
   },
 
@@ -19,11 +19,12 @@
   ],
 
   "options_ui": {
-    "page": "content/options.html"
+    "page": "content/options.html",
+    "browser_style": true
   },
 
   "icons": {
-    "48": "skin/messagePreview48.png"
+    "64": "skin/mp64.svg"
   },
 
   "background": {

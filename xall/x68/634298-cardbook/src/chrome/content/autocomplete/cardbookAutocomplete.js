@@ -9,34 +9,6 @@ if ("undefined" == typeof(cardbookAutocomplete)) {
 		celltextRuleStrings: {},
 		textRuleStrings: {},
 		
-		createCssMsgBaseRules: function (aStyleSheet, aStyle, aOSName) {
-			cardbookAutocomplete.celltextRuleStrings["LINUX"] = "treechildren::-moz-tree-cell-text(" + aStyle + ") {\
-				}";
-			cardbookAutocomplete.celltextRuleStrings["WIN"] = "treechildren::-moz-tree-cell-text(" + aStyle + ") {\
-				}";
-			cardbookAutocomplete.celltextRuleStrings["OSX"] = "treechildren::-moz-tree-cell-text(" + aStyle + ") {\
-				margin-top: 2px;\
-				margin-bottom: 2px;\
-				margin-inline-start: 15px;\
-				margin-inline-end: -3px;\
-				border: none;\
-				}";
-			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.celltextRuleStrings[aOSName], aStyleSheet.cssRules.length);
-		},
-
-		createCssMsgAccountRules: function (aStyleSheet, aStyle, aColor, aOSName, aTreeCellProperty, aColorProperty) {
-			cardbookAutocomplete.textRuleStrings["LINUX"] = "treechildren::" + aTreeCellProperty + "(" + aStyle + ") {\
-				" + aColorProperty + ": " + aColor + ";\
-				}";
-			cardbookAutocomplete.textRuleStrings["WIN"] = "treechildren::" + aTreeCellProperty + "(" + aStyle + ") {\
-				" + aColorProperty + ": " + aColor + ";\
-				}";
-			cardbookAutocomplete.textRuleStrings["OSX"] = "treechildren::" + aTreeCellProperty + "(" + aStyle + ") {\
-				" + aColorProperty + ": " + aColor + ";\
-				}";
-			var ruleIndex = aStyleSheet.insertRule(cardbookAutocomplete.textRuleStrings[aOSName], aStyleSheet.cssRules.length);
-		},
-
 		createCssMsgAccountRules60: function (aStyleSheet, aStyle, aColor, aOSName, aColorProperty) {
 			cardbookAutocomplete.textRuleStrings["LINUX"] = ".autocomplete-richlistitem[type=\"" + aStyle + "\"]{\
 				" + aColorProperty + ": " + aColor + ";\

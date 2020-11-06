@@ -8,15 +8,18 @@
 <?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window id="cardbook-printwindow"
-		onload="wdw_cardbookPrint.load();"
-		onunload="wdw_cardbookPrint.unload();"
-		persist="screenX screenY width height sizemode"
-		style="min-width:500px;min-height:600px;"
-		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-		xmlns:html="http://www.w3.org/1999/xhtml"
-		windowtype="CardBook:PrintDialog">
+	onload="wdw_cardbookPrint.load();"
+	onunload="wdw_cardbookPrint.unload();"
+	persist="screenX screenY width height sizemode"
+	style="min-width:500px;min-height:600px;"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	lightweightthemes="true"
+	windowtype="CardBook:PrintDialog">
 
 	<dialog id="cardbook-printdialog"
 			buttons="accept,cancel"
@@ -25,7 +28,7 @@
 		<script type="application/x-javascript" src="chrome://global/content/printUtils.js"/>
 		<script type="application/x-javascript" src="chrome://cardbook/content/print/cardbookPrint.js"/>
 		<script type="application/x-javascript" src="chrome://cardbook/content/print/wdw_cardbookPrint.js"/>
-		<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+		<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 		<!-- for the textbox -->
 		<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
 		<script type="application/x-javascript" src="chrome://global/content/editMenuOverlay.js"/>
@@ -38,7 +41,7 @@
 		<hbox flex="1">
 			<vbox>
 				<groupbox>
-					<label class="header">__CARDBOOKMSG_settingsTitlelabel__</label>
+					<label class="header">__MSG_settingsTitlelabel__</label>
 					<grid>
 						<columns>
 							<column/>
@@ -46,8 +49,8 @@
 						</columns>
 						<rows>
 							<row align="center">
-								<label value="__CARDBOOKMSG_title.print.label__"
-									accesskey="__CARDBOOKMSG_title.print.accesskey__"
+								<label value="__MSG_title.print.label__"
+									accesskey="__MSG_title.print.accesskey__"
 									control="titleTextBox"
 									id="title.print.label"/>
 								<html:input id="titleTextBox" oninput="wdw_cardbookPrint.refreshHTML();"/>
@@ -55,37 +58,37 @@
 						</rows>
 					</grid>
 					<separator class="thin"/>
-					<checkbox id="displayHeadersCheckBox" label="__CARDBOOKMSG_displayHeadersLabel__" accesskey="__CARDBOOKMSG_displayHeadersAccesskey__" checked="true" persist="checked"
+					<checkbox id="displayHeadersCheckBox" label="__MSG_displayHeadersLabel__" accesskey="__MSG_displayHeadersAccesskey__" checked="true" persist="checked"
 						oncommand="wdw_cardbookPrint.refreshHTML();"/>
-					<checkbox id="displayFieldNamesCheckBox" label="__CARDBOOKMSG_displayFieldNamesLabel__" accesskey="__CARDBOOKMSG_displayFieldNamesAccesskey__" checked="true" persist="checked"
+					<checkbox id="displayFieldNamesCheckBox" label="__MSG_displayFieldNamesLabel__" accesskey="__MSG_displayFieldNamesAccesskey__" checked="true" persist="checked"
 						oncommand="wdw_cardbookPrint.refreshHTML();"/>
-					<checkbox id="displayTypesCheckBox" label="__CARDBOOKMSG_displayTypesLabel__" accesskey="__CARDBOOKMSG_displayTypesAccesskey__" checked="true" persist="checked"
+					<checkbox id="displayTypesCheckBox" label="__MSG_displayTypesLabel__" accesskey="__MSG_displayTypesAccesskey__" checked="true" persist="checked"
 						oncommand="wdw_cardbookPrint.refreshHTML();"/>
 					<separator class="thin"/>
 				</groupbox>
 		
 				<groupbox>
-					<label class="header">__CARDBOOKMSG_fieldsToPrintGroupboxLabel__</label>
+					<label class="header">__MSG_fieldsToPrintGroupboxLabel__</label>
 					<vbox>
-						<checkbox id="displayCheckBox" label="__CARDBOOKMSG_displayLabel__" accesskey="__CARDBOOKMSG_displayAccesskey__" checked="true" persist="checked"
+						<checkbox id="displayCheckBox" label="__MSG_displayLabel__" accesskey="__MSG_displayAccesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="personalCheckBox" label="__CARDBOOKMSG_personalLabel__" accesskey="__CARDBOOKMSG_personalAccesskey__" checked="true" persist="checked"
+						<checkbox id="personalCheckBox" label="__MSG_personalLabel__" accesskey="__MSG_personalAccesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="orgCheckBox" label="__CARDBOOKMSG_org.print.label__" accesskey="__CARDBOOKMSG_org.print.accesskey__" checked="true" persist="checked"
+						<checkbox id="orgCheckBox" label="__MSG_org.print.label__" accesskey="__MSG_org.print.accesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="categoriesCheckBox" label="__CARDBOOKMSG_categories.print.label__" accesskey="__CARDBOOKMSG_categories.print.accesskey__" checked="true" persist="checked"
+						<checkbox id="categoriesCheckBox" label="__MSG_categories.print.label__" accesskey="__MSG_categories.print.accesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="adrCheckBox" label="__CARDBOOKMSG_adr.print.label__" accesskey="__CARDBOOKMSG_adr.print.accesskey__" checked="true" persist="checked"
+						<checkbox id="adrCheckBox" label="__MSG_adr.print.label__" accesskey="__MSG_adr.print.accesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="telCheckBox" label="__CARDBOOKMSG_tel.print.label__" accesskey="__CARDBOOKMSG_tel.print.accesskey__" checked="true" persist="checked"
+						<checkbox id="telCheckBox" label="__MSG_tel.print.label__" accesskey="__MSG_tel.print.accesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="emailCheckBox" label="__CARDBOOKMSG_email.print.label__" accesskey="__CARDBOOKMSG_email.print.accesskey__" checked="true" persist="checked"
+						<checkbox id="emailCheckBox" label="__MSG_email.print.label__" accesskey="__MSG_email.print.accesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="imppCheckBox" label="__CARDBOOKMSG_impp.print.label__" accesskey="__CARDBOOKMSG_impp.print.accesskey__" checked="true" persist="checked"
+						<checkbox id="imppCheckBox" label="__MSG_impp.print.label__" accesskey="__MSG_impp.print.accesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="urlCheckBox" label="__CARDBOOKMSG_url.print.label__" accesskey="__CARDBOOKMSG_url.print.accesskey__" checked="true" persist="checked"
+						<checkbox id="urlCheckBox" label="__MSG_url.print.label__" accesskey="__MSG_url.print.accesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
-						<checkbox id="noteCheckBox" label="__CARDBOOKMSG_note.print.label__" accesskey="__CARDBOOKMSG_note.print.accesskey__" checked="true" persist="checked"
+						<checkbox id="noteCheckBox" label="__MSG_note.print.label__" accesskey="__MSG_note.print.accesskey__" checked="true" persist="checked"
 							oncommand="wdw_cardbookPrint.refreshHTML();"/>
 					</vbox>
 				</groupbox>

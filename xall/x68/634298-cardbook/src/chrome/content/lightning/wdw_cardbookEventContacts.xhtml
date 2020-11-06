@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
 <!-- for mouseover -->
 <?xml-stylesheet href="chrome://calendar/skin/calendar-views.css" type="text/css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	id="wdw_cardbookEventContacts"
 	persist="width height screenX screenY sizemode"
 	onload="wdw_cardbookEventContacts.load();" resizable="true"
+	lightweightthemes="true"
 	style="min-width:400px;min-height:300px">
 	
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookWindowUtils.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/lightning/wdw_cardbookEventContacts.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 	<!-- for getEventStatusString -->
 	<script type="application/x-javascript" src="chrome://calendar/content/calUtils.js"/>
 	<script type="application/x-javascript" src="chrome://calendar/content/mouseoverPreviews.js"/>
@@ -31,25 +35,25 @@
 	</popupset>
 
 	<menupopup id="eventsTreeContextMenu" onpopupshowing="return wdw_cardbookEventContacts.eventsTreeContextShowing();">
-		<menuitem id="editEvent" label="__CARDBOOKMSG_editEventLabel__" accesskey="__CARDBOOKMSG_editEventAccesskey__" oncommand="wdw_cardbookEventContacts.editEvent();"/>
+		<menuitem id="editEvent" label="__MSG_editEventLabel__" accesskey="__MSG_editEventAccesskey__" oncommand="wdw_cardbookEventContacts.editEvent();"/>
 	</menupopup>
 	
 	<tree id="eventsTree" flex="1" context="eventsTreeContextMenu" seltype="single" persist="height sortDirection sortResource" sortDirection="ascending" sortResource="startDate" enableColumnDrag="true"
 		onkeypress="wdw_cardbookEventContacts.chooseActionForKey(event);" onclick="wdw_cardbookEventContacts.sortTrees(event);">
 		<treecols id="eventsTreeCols">
-			<treecol id="title" label="__CARDBOOKMSG_eventsTree.title.label__" tooltiptext="__CARDBOOKMSG_eventsTree.title.tooltip2__" itemproperty="title" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<treecol id="title" label="__MSG_eventsTree.title.label__" tooltiptext="__MSG_eventsTree.title.tooltip2__" itemproperty="title" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
 			<splitter class="tree-splitter"/>
-			<treecol id="startDate" label="__CARDBOOKMSG_eventsTree.startdate.label__" tooltiptext="__CARDBOOKMSG_eventsTree.startdate.tooltip2__" itemproperty="startDate" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<treecol id="startDate" label="__MSG_eventsTree.startdate.label__" tooltiptext="__MSG_eventsTree.startdate.tooltip2__" itemproperty="startDate" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
 			<splitter class="tree-splitter"/>
-			<treecol id="endDate" label="__CARDBOOKMSG_eventsTree.enddate.label__" tooltiptext="__CARDBOOKMSG_eventsTree.enddate.tooltip2__" itemproperty="endDate" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<treecol id="endDate" label="__MSG_eventsTree.enddate.label__" tooltiptext="__MSG_eventsTree.enddate.tooltip2__" itemproperty="endDate" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
 			<splitter class="tree-splitter"/>
-			<treecol id="categories" label="__CARDBOOKMSG_eventsTree.categories.label__" tooltiptext="__CARDBOOKMSG_eventsTree.categories.tooltip2__" itemproperty="categories" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<treecol id="categories" label="__MSG_eventsTree.categories.label__" tooltiptext="__MSG_eventsTree.categories.tooltip2__" itemproperty="categories" flex="1" persist="width ordinal hidden" editable="false" closemenu="none"/>
 			<splitter class="tree-splitter"/>
-			<treecol id="location" label="__CARDBOOKMSG_eventsTree.location.label__" tooltiptext="__CARDBOOKMSG_eventsTree.location.tooltip2__" itemproperty="location" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<treecol id="location" label="__MSG_eventsTree.location.label__" tooltiptext="__MSG_eventsTree.location.tooltip2__" itemproperty="location" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
 			<splitter class="tree-splitter"/>
-			<treecol id="status" label="__CARDBOOKMSG_eventsTree.status.label__" tooltiptext="__CARDBOOKMSG_eventsTree.status.tooltip2__" itemproperty="status" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<treecol id="status" label="__MSG_eventsTree.status.label__" tooltiptext="__MSG_eventsTree.status.tooltip2__" itemproperty="status" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
 			<splitter class="tree-splitter"/>
-			<treecol id="calendarName" label="__CARDBOOKMSG_eventsTree.calendarname.label__" tooltiptext="__CARDBOOKMSG_eventsTree.calendarname.tooltip2__" itemproperty="calendar" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
+			<treecol id="calendarName" label="__MSG_eventsTree.calendarname.label__" tooltiptext="__MSG_eventsTree.calendarname.tooltip2__" itemproperty="calendar" flex="1" hidden="true" persist="width ordinal hidden" editable="false" closemenu="none"/>
 			<splitter class="tree-splitter"/>
 		</treecols>
 		<treechildren id="eventsTreeChildren" ondblclick="wdw_cardbookEventContacts.doubleClickTree(event);" tooltip="eventTreeTooltip"/>
@@ -57,8 +61,8 @@
 
 	<hbox>
 		<spacer flex="1"/>
-		<button id="createEventLabel" label="__CARDBOOKMSG_createEventLabel__" accesskey="__CARDBOOKMSG_createEventAccesskey__" oncommand="wdw_cardbookEventContacts.createEvent();"/>
-		<button id="editEventLabel" label="__CARDBOOKMSG_editEventLabel__" accesskey="__CARDBOOKMSG_editEventAccesskey__" oncommand="wdw_cardbookEventContacts.editEvent();"/>
-		<button id="closeEditionLabel" label="__CARDBOOKMSG_closeEditionLabel__" accesskey="__CARDBOOKMSG_closeEditionAccesskey__" oncommand="wdw_cardbookEventContacts.do_close();"/>
+		<button id="createEventLabel" label="__MSG_createEventLabel__" accesskey="__MSG_createEventAccesskey__" oncommand="wdw_cardbookEventContacts.createEvent();"/>
+		<button id="editEventLabel" label="__MSG_editEventLabel__" accesskey="__MSG_editEventAccesskey__" oncommand="wdw_cardbookEventContacts.editEvent();"/>
+		<button id="closeEditionLabel" label="__MSG_closeEditionLabel__" accesskey="__MSG_closeEditionAccesskey__" oncommand="wdw_cardbookEventContacts.do_close();"/>
 	</hbox>
 </window>

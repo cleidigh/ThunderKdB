@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookBirthday.css" type="text/css"?>
 <!-- for the small-button class -->
 <?xml-stylesheet href="chrome://messenger/skin/searchDialog.css" type="text/css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	id="wdw_birthdayList"
 	persist="width height screenX screenY sizemode"
 	onload="wdw_birthdayList.displayAllBirthdays();" resizable="true"
+	lightweightthemes="true"
 	style="min-width:400px;min-height:300px">
 	
 	<!-- for MailServices -->
@@ -17,38 +21,38 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookWindowUtils.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/birthdays/wdw_birthdayList.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 
 	<keyset id="wdw_birthdayList-keys">
 		<key keycode="VK_ESCAPE" oncommand="wdw_birthdayList.do_close();" />
 	</keyset>
 
 	<menupopup id="birthdayListTreeContextMenu" onpopupshowing="return wdw_birthdayList.birthdayListTreeContextShowing();">
-		<menuitem id="sendEmail" label="__CARDBOOKMSG_sendEmailLabel__" accesskey="__CARDBOOKMSG_sendEmailAccesskey__" oncommand="wdw_birthdayList.sendEmail();"/>
+		<menuitem id="sendEmail" label="__MSG_sendEmailLabel__" accesskey="__MSG_sendEmailAccesskey__" oncommand="wdw_birthdayList.sendEmail();"/>
 	</menupopup>
 	
 	<tree id="birthdayListTree" flex="1" context="birthdayListTreeContextMenu" enableColumnDrag="true" class="cardbookTreeClass cardbookCardsTreeClass"
 		onkeypress="wdw_birthdayList.chooseActionForKey(event);" onclick="wdw_birthdayList.sortTrees(event);">
 		<treecols>
-			<treecol id="daysleft" label="__CARDBOOKMSG_daysLeftColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:right" closemenu="none"/>
+			<treecol id="daysleft" label="__MSG_daysLeftColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:right" closemenu="none"/>
 			<splitter class="tree-splitter" />
-			<treecol id="name" label="__CARDBOOKMSG_nameColumnLabel__" flex="2" persist="width ordinal hidden" style="text-align:left" closemenu="none"/>
+			<treecol id="name" label="__MSG_nameColumnLabel__" flex="2" persist="width ordinal hidden" style="text-align:left" closemenu="none"/>
 			<splitter class="tree-splitter" />
-			<treecol id="age" label="__CARDBOOKMSG_ageColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:right" closemenu="none"/>
+			<treecol id="age" label="__MSG_ageColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:right" closemenu="none"/>
 			<splitter class="tree-splitter" />
-			<treecol id="dateofbirth" label="__CARDBOOKMSG_dateOfBirthColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" closemenu="none"/>
+			<treecol id="dateofbirth" label="__MSG_dateOfBirthColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" closemenu="none"/>
 			<splitter class="tree-splitter" />
-			<treecol id="dateofbirthfound" label="__CARDBOOKMSG_dateOfBirthFoundColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" closemenu="none"/>
+			<treecol id="dateofbirthfound" label="__MSG_dateOfBirthFoundColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" closemenu="none"/>
 			<splitter class="tree-splitter" />
-			<treecol id="email" label="__CARDBOOKMSG_emailColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" closemenu="none"/>
+			<treecol id="email" label="__MSG_emailColumnLabel__" flex="1" persist="width ordinal hidden" style="text-align:left" hidden="true" closemenu="none"/>
 		</treecols>
 		<treechildren ondblclick="wdw_birthdayList.sendEmail();"/>
 	</tree>
 
 	<hbox>
 		<spacer flex="1"/>
-		<button id="sendEmailLabel" label="__CARDBOOKMSG_sendEmailLabel__" accesskey="__CARDBOOKMSG_sendEmailAccesskey__" oncommand="wdw_birthdayList.sendEmail();"/>
-		<button id="syncLightningMenuItemLabel" label="__CARDBOOKMSG_syncLightningMenuItemLabel__" accesskey="__CARDBOOKMSG_syncLightningMenuAccesskey__" oncommand="wdw_birthdayList.displaySyncList();"/>
-		<button id="closeEditionLabel" label="__CARDBOOKMSG_closeEditionLabel__" accesskey="__CARDBOOKMSG_closeEditionAccesskey__" oncommand="wdw_birthdayList.do_close();"/>
+		<button id="sendEmailLabel" label="__MSG_sendEmailLabel__" accesskey="__MSG_sendEmailAccesskey__" oncommand="wdw_birthdayList.sendEmail();"/>
+		<button id="syncLightningMenuItemLabel" label="__MSG_syncLightningMenuItemLabel__" accesskey="__MSG_syncLightningMenuAccesskey__" oncommand="wdw_birthdayList.displaySyncList();"/>
+		<button id="closeEditionLabel" label="__MSG_closeEditionLabel__" accesskey="__MSG_closeEditionAccesskey__" oncommand="wdw_birthdayList.do_close();"/>
 	</hbox>
 </window>

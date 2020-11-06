@@ -76,7 +76,7 @@ async function updateAccount(accountId) {
             ncc.serverUrl += '/';
         }
 
-        if (!ncc.user_id) {
+        if (!ncc.userId) {
             ncc.updateUserId();
         }
     }

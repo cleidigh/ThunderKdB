@@ -110,7 +110,7 @@ class DavUploader {
                     // Maybe a parallel upload is currently creating the folder, so wait a little and try again
                     // This timout is longer in reality because it adds to the waiting time in the queue
                     if (retry_count < 3) {
-                        await promisedTimeout(5);
+                        await promisedTimeout(500);
                         return await this._recursivelyCreateFolder(folder, retry_count++);
                     }
                     break;
@@ -122,9 +122,8 @@ class DavUploader {
     /**
      * Fetches information about a remote file
      * @param {File} file The file to check on the cloud
-     * @returns {Promise<?{mtime: Date, size: number}} A promise resolving to an object containing mtime and
-     * size or an empty object if the file doesn't exit
-
+     * @returns {Promise<?{mtime: Date, size: number}>} A promise resolving to an object containing mtime and
+     * size or null if the file doesn't exit
      */
     async _getRemoteFileInfo(fileName) {
         const response = await this._doDavCall(this._storageFolder + '/' + fileName, "PROPFIND");
@@ -143,11 +142,12 @@ class DavUploader {
     }
 
     /**
-     * Moves a file to a new destination or name
+     * Moves a file to a new destination folder
      * @param {*} fileId The id of the upload as given by TB
      * @param {string} fileName The file's path and name relative to the storage
      * folder
      * @param {string} newPath The new path and name
+     * @returns {Promise<Response>} A promise that resolves to the Response object of the DAV request
      */
     async _moveFileToDir(fileId, fileName, newPath) {
         attachmentStatus.get(fileId).set_status('moving');
@@ -183,6 +183,19 @@ class DavUploader {
     }
 
     /**
+     * @returns {number} Free space in bytes or -1 if no info available
+     */
+    async _getFreeSpace() {
+        const response = await this._doDavCall(this._storageFolder + "/.", "PROPFIND");
+        let free = -1;
+        if (response.ok && response.status < 300) {
+            const xmlDoc = new DOMParser().parseFromString(await response.text(), 'application/xml');
+            free = parseInt(xmlDoc.getElementsByTagName("d:quota-available-bytes")[0].textContent);
+        }
+        return isNaN(free) ? -1 : free;
+    }
+
+    /**
      *
      * @param {number} fileId Thunderbird's internal file if
      * @param {string} fileName The name in the cloud
@@ -190,6 +203,14 @@ class DavUploader {
      * @returns {Promise<Response>} A Promise that resolves to the http response
      */
     async _doUpload(fileId, fileName, fileObject) {
+        // Check it there is enough free space
+        attachmentStatus.get(fileId).set_status('checkingspace');
+        const free = await this._getFreeSpace();
+        if (free >= 0 && free < fileObject.size) {
+            attachmentStatus.get(fileId).fail();
+            return { ok: false, };
+        }
+
         // Make sure storageFolder exists. Creation implicitly checks for
         // existence of folder, so the extra webservice call for checking first
         // isn't necessary.
@@ -224,8 +245,9 @@ class DavUploader {
      * Calls one function of the WebDAV service
      *
      * @param {string} path the full file path of the object
-     * @param {string} [method=GET] the HTTP METHOD to use, default GET
+     * @param {string} method the HTTP METHOD to use, default GET
      * @param {Array} [body] Body of the request, eg. file contents
+     * @param {*} [additional_headers] Additional headers to include in the request
      * @returns {Promise<Response>}  A Promise that resolves to the Response object
      */
     _doDavCall(path, method, body, additional_headers) {

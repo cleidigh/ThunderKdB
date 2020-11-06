@@ -26,6 +26,7 @@ var gColumns=new Map;	//id->label
 var otherCCH=new Map;	//save custom column handlers from other add-ons
 var addonType='';
 var gFire=null;
+var gCurrentFolder=null;
 
 var gHeaderParser = MailServices.headerParser;
 var gMessenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
@@ -66,6 +67,7 @@ debug('remove our own columns');
 			gD.getElementById('qfb-qs-sio-thisside').remove();
 			Services.obs.removeObserver(observer, "MsgCreateDBView");
       Services.obs.notifyObservers(null, "startupcache-invalidate");
+      gCurrentFolder=null;
   }
 
   getAPI(context) {
@@ -1016,6 +1018,16 @@ debug('reset original handler for '+col);
   {
     if (aTopic=='MsgCreateDBView') {
 debug('observer MsgCreateDBView state='+state+' aData='+aData+' aSubject='+aSubject);
+      if (aSubject) {
+debug('folder='+aSubject.folderURL);
+        if (aSubject!=gCurrentFolder) {
+debug('folder changed');
+          gCurrentFolder=aSubject;
+        } else {  //e.g. after opening a mail in new tab
+debug('folder did not changed, event ignored');
+          return;
+        }
+      }
 			gW=Services.wm.getMostRecentWindow("mail:3pane");
 			gD=gW.document;
 			if (!aSubject && !aData) {

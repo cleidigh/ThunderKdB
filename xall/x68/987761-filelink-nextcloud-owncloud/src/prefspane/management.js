@@ -37,7 +37,6 @@ document.getElementsByName("DLPRadio")
         updateButtons();
     }));
 
-
 linkElementStateToCheckbox(expiryDays, useExpiry);
 
 //#region html element event handlers
@@ -163,6 +162,9 @@ function showErrors() {
         if (false === ncc.cloud_supported) {
             popup.warn('unsupported_cloud');
         }
+        if (serverUrl.value.startsWith("http:")) {
+            popup.warn("insecure_http");
+        }
     }
 }
 
@@ -183,20 +185,17 @@ async function loadFormData() {
     useNoDlPassword.checked = !useDlPassword.checked && !useGeneratedDlPassword.checked;
 
     // Don't allow longer expiry period than the server
-    if (ncc.expiry_max_days) {
-        expiryDays.max = ncc.expiry_max_days;
-    }
+    checkEnforcedExpiry();
 
     // force download password if server requires one
     if (ncc.enforce_password) {
         useNoDlPassword.disabled = true;
         useNoDlPassword.checked = false;
         oneDLPassword.checked = !useGeneratedDlPassword.checked;
+        advanced_options.open = true;
     }
     adjustDLPasswordElementStates();
 
-    expiryDays.disabled = !useExpiry.checked;
-    expiryDays.required = useExpiry.checked;
 }
 //#endregion
 
@@ -248,7 +247,8 @@ async function handleFormData() {
         const shortpath = url.pathname.split('/').filter(e => "" !== e);
 
         // If user pasted complete url of file app, extract cloud base url
-        if (shortpath[shortpath.length - 1] === 'files' && shortpath[shortpath.length - 2] === 'apps') {
+        if (shortpath[shortpath.length - 2] === 'apps' &&
+            (shortpath[shortpath.length - 1] === 'files' || shortpath[shortpath.length - 1] === 'dashboard')) {
             shortpath.pop();
             shortpath.pop();
             if (shortpath[shortpath.length - 1] === 'index.php') {
@@ -344,29 +344,31 @@ async function handleFormData() {
                     useNoDlPassword.checked = false;
                     oneDLPassword.checked = !useGeneratedDlPassword.checked;
                     adjustDLPasswordElementStates();
+                    advanced_options.open = true;
                 } else {
                     useNoDlPassword.disabled = false;
                 }
             }
-
-            /**
-             * Check for maximum expiry on server
-             */
-            function checkEnforcedExpiry() {
-                if (ncc.expiry_max_days) {
-                    expiryDays.max = ncc.expiry_max_days;
-                    if (parseInt(expiryDays.value) > ncc.expiry_max_days) {
-                        expiryDays.value = ncc.expiry_max_days;
-
-                        ncc.expiryDays = ncc.expiry_max_days;
-                        popup.warn('expiry_too_long', ncc.expiry_max_days);
-                    }
-                } else {
-                    expiryDays.removeAttribute('max');
-                }
-            }
         }
     }
+}
+
+/**
+ * Check for maximum expiry on server
+ */
+function checkEnforcedExpiry() {
+    if (ncc.expiry_max_days) {
+        expiryDays.max = ncc.expiry_max_days;
+        ncc.expiryDays = useExpiry.checked ? Math.min(expiryDays.value, ncc.expiry_max_days) : ncc.expiry_max_days;
+        expiryDays.value = ncc.expiryDays;
+        useExpiry.checked = true;
+        useExpiry.disabled = true;
+    } else {
+        expiryDays.removeAttribute('max');
+        useExpiry.disabled = false;
+    }
+    expiryDays.disabled = !useExpiry.checked;
+    expiryDays.required = useExpiry.checked;
 }
 
 /**
@@ -393,7 +395,7 @@ function stopLookingBusy() {
 // Defined in managemet.html as id
 /* globals serverUrl, username, expiryDays */
 /* globals downloadPassword, useDlPassword, useNoDlPassword, useGeneratedDlPassword, oneDLPassword*/
-/* globals useExpiry, saveButton, accountForm, resetButton, service_url */
+/* globals useExpiry, saveButton, accountForm, resetButton, service_url, advanced_options */
 /* globals provider_name, logo, cloud_version, obsolete_string, freespaceGauge */
 /* globals freespacelabel, freespace, password, storageFolder, disableable_fieldset */
 // Defined in ../lib/localize.js

@@ -1,6 +1,5 @@
 if ("undefined" == typeof(wdw_findDuplicates)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { ConversionHelper } = ChromeUtils.import("chrome://cardbook/content/api/ConversionHelper/ConversionHelper.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
 
@@ -299,9 +298,9 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 		displayResults: function () {
 			cardbookElementTools.deleteRows('fieldsVbox');
 			var aListRows = document.getElementById('fieldsVbox');
-			var buttonMergeLabel = ConversionHelper.i18n.getMessage("mergeCardsLabel");
-			var buttonForgetLabel = ConversionHelper.i18n.getMessage("forgetCardsLabel");
-			var buttonDeleteLabel = ConversionHelper.i18n.getMessage("deleteCardsLabel");
+			var buttonMergeLabel = cardbookRepository.extension.localeData.localizeMessage("mergeCardsLabel");
+			var buttonForgetLabel = cardbookRepository.extension.localeData.localizeMessage("forgetCardsLabel");
+			var buttonDeleteLabel = cardbookRepository.extension.localeData.localizeMessage("deleteCardsLabel");
 
 			var myShownCount = 0;
 			for (var i = 0; i < wdw_findDuplicates.gResults.length; i++) {
@@ -337,20 +336,20 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 
 		showLabels: function (aCount) {
 			if (aCount == 0) {
-				document.getElementById('noContactsFoundDesc').value = ConversionHelper.i18n.getMessage("noContactsDuplicated");
+				document.getElementById('noContactsFoundDesc').value = cardbookRepository.extension.localeData.localizeMessage("noContactsDuplicated");
 				document.getElementById('noContactsFoundDesc').hidden = false;
 				document.getElementById('numberContactsFoundDesc').hidden = true;
 			} else {
 				document.getElementById('noContactsFoundDesc').hidden = true;
-				document.getElementById('numberContactsFoundDesc').value = ConversionHelper.i18n.getMessage("numberLines", [aCount]);
+				document.getElementById('numberContactsFoundDesc').value = cardbookRepository.extension.localeData.localizeMessage("numberLines", [aCount]);
 				document.getElementById('numberContactsFoundDesc').hidden = false;
 			}
 			if (wdw_findDuplicates.gHideForgotten) {
-				document.getElementById('hideOrShowForgottenLabel').setAttribute('label', ConversionHelper.i18n.getMessage("showForgottenLabel"));
-				document.getElementById('hideOrShowForgottenLabel').setAttribute('accesskey', ConversionHelper.i18n.getMessage("showForgottenAccesskey"));
+				document.getElementById('hideOrShowForgottenLabel').setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("showForgottenLabel"));
+				document.getElementById('hideOrShowForgottenLabel').setAttribute('accesskey', cardbookRepository.extension.localeData.localizeMessage("showForgottenAccesskey"));
 			} else {
-				document.getElementById('hideOrShowForgottenLabel').setAttribute('label', ConversionHelper.i18n.getMessage("hideForgottenLabel"));
-				document.getElementById('hideOrShowForgottenLabel').setAttribute('accesskey', ConversionHelper.i18n.getMessage("hideForgottenAccesskey"));
+				document.getElementById('hideOrShowForgottenLabel').setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("hideForgottenLabel"));
+				document.getElementById('hideOrShowForgottenLabel').setAttribute('accesskey', cardbookRepository.extension.localeData.localizeMessage("hideForgottenAccesskey"));
 			}				
 		},
 
@@ -382,6 +381,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 		},
 
 		load: function () {
+			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_findDuplicates.compareCards(window.arguments[0].dirPrefId);
 			wdw_findDuplicates.loadCssRules();
 			wdw_findDuplicates.displayResults();
@@ -395,8 +395,3 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 	};
 
 };
-
-// translations
-window.addEventListener("DOMContentLoaded", function(e) {
-	cardbookLocales.updateDocument();
-}, false);

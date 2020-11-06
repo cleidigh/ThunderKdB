@@ -151,7 +151,7 @@ function overrideUpdateSecurity(messagepane, w) {
 
     let encToDetails = "";
 
-    if (extraDetails === null || extraDetails === void 0 ? void 0 : extraDetails.length) {
+    if (extraDetails?.length) {
       let o = JSON.parse(extraDetails);
 
       if ("encryptedTo" in o) {
@@ -248,8 +248,6 @@ function tryEnigmail(aDocument, aMessage, aMsgWindow) {
   };
 
   try {
-    var _blockSeparationObj$v;
-
     // extract text preceeding and/or following armored block
     // strip "- show quoted text -" from body text
     let NodeFilter = window.NodeFilter;
@@ -319,7 +317,7 @@ function tryEnigmail(aDocument, aMessage, aMsgWindow) {
           subText = subText.substr(0, endOffset) + "\n";
           let matches = subText.match(/\nCharset: *(.*) *\n/i);
 
-          if ((matches === null || matches === void 0 ? void 0 : matches.length) > 1) {
+          if (matches?.length > 1) {
             // Override character set
             charset = matches[1];
             Log.debug("OVERRIDING charset=" + charset);
@@ -351,7 +349,7 @@ function tryEnigmail(aDocument, aMessage, aMsgWindow) {
       plainText = EnigmailData.convertFromUnicode(EnigmailData.convertToUnicode(plainText, "UTF-8"), charset);
     }
 
-    if ((_blockSeparationObj$v = blockSeparationObj.value) === null || _blockSeparationObj$v === void 0 ? void 0 : _blockSeparationObj$v.includes(" ")) {
+    if (blockSeparationObj.value?.includes(" ")) {
       let blocks = blockSeparationObj.value.split(/ /);
       let blockInfo = blocks[0].split(/:/);
       plainText = EnigmailData.convertFromUnicode(EnigmailLocale.getString("notePartEncrypted"), charset) + "\n\n" + plainText.substr(0, blockInfo[1]) + "\n\n" + EnigmailLocale.getString("noteCutMessage");
@@ -795,12 +793,10 @@ let enigmailHook = {
         }
       }
     } catch (ex) {
-      var _enigmailSvc;
-
       console.error("Enigmail encrypt error:", errorMsgObj.value, ex);
       let msg = EnigmailLocale.getString("signFailed");
 
-      if ((_enigmailSvc = enigmailSvc) === null || _enigmailSvc === void 0 ? void 0 : _enigmailSvc.initializationError) {
+      if (enigmailSvc?.initializationError) {
         msg += "\n" + enigmailSvc.initializationError;
       }
 
@@ -853,13 +849,11 @@ let enigmailHook = {
       flagsObj); // resulting flags (0/1/2/3 for each type)
 
       if (success) {
-        var _matchedKeysObj$value;
-
         Enigmail.msg.encryptByRules = flagsObj.encrypt;
         Enigmail.msg.signByRules = flagsObj.sign;
         Enigmail.msg.pgpmimeByRules = flagsObj.pgpMime;
 
-        if ((_matchedKeysObj$value = matchedKeysObj.value) === null || _matchedKeysObj$value === void 0 ? void 0 : _matchedKeysObj$value.length) {
+        if (matchedKeysObj.value?.length) {
           // replace addresses with results from rules
           toAddrList = matchedKeysObj.value.split(", ");
         }

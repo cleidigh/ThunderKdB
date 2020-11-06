@@ -45,7 +45,7 @@ xnote.ns.ColumnNote = function() {
       getImageSrc:         function(row, col) {
         let hdr = getHeaderForRow(row);
         if(pub.hasNote(hdr.messageId)){
-          return "chrome://xnote/skin/xnote_context.png";
+          return "chrome://xnote/content/skin/xnote_context.png";
         }
         else {
           return null;
@@ -85,5 +85,5 @@ xnote.ns.ColumnNote = function() {
   return pub;
 }();
 
-window.addEventListener("load", xnote.ns.ColumnNote.doOnceLoaded, false);
+//window.addEventListener("load", xnote.ns.ColumnNote.doOnceLoaded, false);
 //dump("xnote: xnote-columnnote - end: "+JSON.stringify(xnote, null, 2));

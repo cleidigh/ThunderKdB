@@ -3,71 +3,47 @@
 /* globals browser */
 
 var BrowseInTabOptions = {
+  DEBUG: false,
   e(element) {
     return document.getElementById(element);
   },
-
+  defaultPanelId: "linksPanel",
   maxContentTabsDefault: 10,
+  kShowMailToolbarDefault: 0,
+  kShowMailToolbarWebPage: 1,
+  kShowMailToolbarAll: 2,
+  kShowUrlToolbarWebPage: 0,
+  kShowUrlToolbarAll: 1,
   get contentBaseHeaderDefault() {
     return browser.i18n.getMessage("contentBaseHeader");
   },
 
   async onLoad() {
-    // console.debug("BrowseInTabOptions.onLoad:");
+    this.DEBUG && console.debug("BrowseInTabOptions.onLoad:");
     this.initializeStrings();
 
     /* eslint-disable */
-    this.maxContentTabs = this.e("maxContentTabs");
+    this.tabs = this.e("tabs");
+    this.tabButtonLinks = this.e("tabButtonLinks");
     this.tabsLoadInBackground = this.e("tabsLoadInBackground");
     this.linkClickLoadsInTab = this.e("linkClickLoadsInTab");
-    this.linkClickOptions = this.e("linkClickOptions");
+    this.linkClickOptionsFieldset = this.e("linkClickOptionsFieldset");
     this.linkClickLoadsInBackgroundTab = this.e("linkClickLoadsInBackgroundTab");
     this.forceLinkClickLoadsInCurrentTab = this.e("forceLinkClickLoadsInCurrentTab");
     this.showContentBase = this.e("showContentBase");
-    this.contentBaseLabel = this.e("contentBaseLabel");
+    this.contentBaseFieldset = this.e("contentBaseFieldset");
     this.contentBaseHeader = this.e("contentBaseHeader");
     this.useFirefoxCompatUserAgent = this.e("useFirefoxCompatUserAgent");
+    this.tabButtonTabsToolbars = this.e("tabButtonTabsToolbars");
+    this.maxContentTabs = this.e("maxContentTabs");
+    this.mailToolbarRadioForm = this.e("mailToolbarRadioForm");
+    this.urlToolbarRadioForm = this.e("urlToolbarRadioForm");
     this.restoreDefaults = this.e("restoreDefaults");
+    /* eslint-enable */
 
     await this.restoreOptions();
     this.e("container").removeAttribute("hidden");
-
-    this.maxContentTabs.addEventListener(
-      "change",
-      this.saveOptions.bind(this)
-    );
-    this.tabsLoadInBackground.addEventListener(
-      "change",
-      this.saveOptions.bind(this)
-    );
-    this.linkClickLoadsInTab.addEventListener(
-      "change",
-      this.saveOptions.bind(this)
-    );
-    this.linkClickLoadsInBackgroundTab.addEventListener(
-      "change",
-      this.saveOptions.bind(this)
-    );
-    this.forceLinkClickLoadsInCurrentTab.addEventListener(
-      "change",
-      this.saveOptions.bind(this)
-    );
-    this.showContentBase.addEventListener(
-      "change",
-      this.saveOptions.bind(this)
-    );
-    this.contentBaseHeader.addEventListener(
-      "change",
-      this.saveOptions.bind(this)
-    );
-    this.useFirefoxCompatUserAgent.addEventListener(
-      "change",
-      this.saveOptions.bind(this)
-    );
-    this.restoreDefaults.addEventListener(
-      "click",
-      this.defaultOptions.bind(this));
-    /* eslint-enable */
+    this.initPanelEventListeners(document.body, this);
   },
 
   initializeStrings() {
@@ -83,85 +59,284 @@ var BrowseInTabOptions = {
   },
 
   updateElements(element, checked) {
-    if (checked) {
-      element.disabled = false;
-      element.style.color = "";
-    } else {
-      element.disabled = true;
-      element.style.color = "GrayText";
+    element.disabled = !checked;
+    if (element.classList.contains("browser-style")) {
+      element.classList.toggle("disabled", !checked);
     }
   },
 
-  saveOptions() {
-    // Just set them all.
-    /* eslint-disable */
-    let storageLocalData = {
-      maxContentTabs: Number(this.maxContentTabs.value),
-      tabsLoadInBackground: this.tabsLoadInBackground.checked,
-      linkClickLoadsInTab: this.linkClickLoadsInTab.checked,
-      linkClickLoadsInBackgroundTab: this.linkClickLoadsInBackgroundTab.checked,
-      forceLinkClickLoadsInCurrentTab: this.forceLinkClickLoadsInCurrentTab.checked,
-      showContentBase: this.showContentBase.checked,
-      contentBaseHeader: this.contentBaseHeader.value,
-      useFirefoxCompatUserAgent: this.useFirefoxCompatUserAgent.checked,
-    };
+  /**
+   * Generic required initialization for panel pages.
+   *
+   * @param {Document|HTMLElement} parent - The document of the page or a
+   *                                        specific element.
+   * @param {Object} controller           - Object with handleEvent().
+   */
+  initPanelEventListeners(parent, controller) {
+    if (!("querySelectorAll" in parent) || !("handleEvent" in controller)) {
+      return;
+    }
 
-    this.updateElements(this.linkClickOptions, this.linkClickLoadsInTab.checked);
-    this.updateElements(this.contentBaseLabel, this.showContentBase.checked);
-    this.updateElements(this.contentBaseHeader, this.showContentBase.checked);
+    // Add oninput/onchange listeners to <input> and <select> elements.
+    for (let element of parent.querySelectorAll("input, button")) {
+      if (element.localName == "button" || element.type == "button") {
+        element.addEventListener("click", controller);
+        element.addEventListener("keypress", controller);
+        element.addEventListener("focus", controller);
+        element.addEventListener("blur", controller);
+      } else if (
+        element.type == "checkbox" ||
+        element.type == "color" ||
+        element.type == "file" ||
+        element.type == "number" ||
+        element.type == "radio" ||
+        element.type == "select-one" ||
+        element.type == "textarea"
+      ) {
+        element.addEventListener("change", controller);
+      } else {
+        element.addEventListener("input", controller);
+      }
+    }
+
+    // No form submit.
+    for (let formElement of parent.querySelectorAll("form")) {
+      formElement.addEventListener("submit", event => event.preventDefault());
+    }
+  },
+
+  /**
+   * The generic event handler for |this|.
+   */
+  handleEvent(event) {
+    let target = event.target;
+    this.DEBUG &&
+      console.debug(
+        "BrowseInTabOptions.handleEvent: target.id:event.type - " +
+          target.id +
+          ":" +
+          event.type
+      );
+    switch (event.type) {
+      case "input":
+      case "change":
+        this.onChange(event);
+        break;
+      case "click":
+        target.removeAttribute("keyfocus");
+        this.onClick(event);
+        break;
+      case "keypress":
+        // Ensure this comes after a click event also dispatched on keypress.
+        window.setTimeout(() => {
+          target.setAttribute("keyfocus", true);
+        });
+        break;
+      case "focus":
+        target.setAttribute("keyfocus", true);
+        break;
+      case "blur":
+        target.removeAttribute("keyfocus");
+        target.blur();
+        break;
+      default:
+        break;
+    }
+  },
+
+  onClick(event) {
+    let target = event.target;
+    switch (target.id) {
+      case "restoreDefaults":
+        this.defaultOptions();
+        break;
+      case "tabButtonLinks":
+      case "tabButtonTabsToolbars":
+        this.onTabClick(event);
+        break;
+      default:
+        break;
+    }
+  },
+
+  onChange(event) {
+    let target = event.target;
+    this.saveOption(target);
+  },
+
+  onTabClick(event) {
+    if (event.type != "click" || event.button != 0) {
+      return;
+    }
+    let tabToSelect = event.target;
+    this.selectTab(tabToSelect, true);
+  },
+
+  /**
+   * Mouse or key selection of a tab. Supports loading a |panelsrc| attribute
+   * in an iframe, or showing an inline |panelid| attribute element.
+   *
+   * @param {HTMLButtonElement} tabToSelect  - Tab button element.
+   * @param {Boolean} focus                  - If true, focus the tab.
+   *
+   * @returns HTMLButtonElement tabToSelect  - Selected tab element.
+   */
+  async selectTab(tabToSelect, focus) {
+    this.DEBUG &&
+      console.debug(
+        "BrowseInTabOptions.selectTab: panel - " +
+          tabToSelect.getAttribute("panelid")
+      );
+    tabToSelect = tabToSelect || this.tabs.firstElementChild;
+    let panel;
+    // Current selection.
+    let selTab = this.tabs.querySelector("[selected]");
+    if (selTab) {
+      if (tabToSelect.id != selTab.id) {
+        selTab.removeAttribute("selected");
+        selTab.removeAttribute("aria-selected");
+        let selPanelId = selTab.getAttribute("panelid");
+        panel = this.e(selPanelId);
+        if (panel) {
+          panel.hidden = panel.disabled = true;
+        }
+      }
+    }
+
+    tabToSelect.setAttribute("selected", "true");
+    tabToSelect.setAttribute("aria-selected", "true");
+    if (focus) {
+      tabToSelect.focus();
+    }
+
+    let panelIdToSelect = tabToSelect.getAttribute("panelid");
+    panel = this.e(panelIdToSelect);
+    if (panel) {
+      panel.hidden = panel.disabled = false;
+      if (panelIdToSelect != this.defaultPanelId) {
+        this.setStorageLocal({ lastSelectedTabPanelId: panelIdToSelect });
+      } else {
+        await browser.storage.local.remove("lastSelectedTabPanelId");
+        this.setStorageLocal();
+      }
+      this.lastSelectedTabPanelId = panelIdToSelect;
+    }
+  },
+
+  async saveOption(changeElement) {
+    /* eslint-disable */
+    let storageLocalData;
+    switch (changeElement.id) {
+      case "tabsLoadInBackground":
+        storageLocalData = {
+          tabsLoadInBackground: this.tabsLoadInBackground.checked
+        };
+        break;
+      case "linkClickLoadsInTab":
+        storageLocalData = {
+          linkClickLoadsInTab: this.linkClickLoadsInTab.checked
+        };
+        this.updateElements(this.linkClickOptionsFieldset, this.linkClickLoadsInTab.checked);
+        break;
+      case "linkClickLoadsInBackgroundTab":
+        storageLocalData = {
+          linkClickLoadsInBackgroundTab: this.linkClickLoadsInBackgroundTab.checked
+        };
+        break;
+      case "forceLinkClickLoadsInCurrentTab":
+        storageLocalData = {
+          forceLinkClickLoadsInCurrentTab: this.forceLinkClickLoadsInCurrentTab.checked
+        };
+        break;
+      case "showContentBase":
+        storageLocalData = {
+          showContentBase: this.showContentBase.checked
+        };
+        this.updateElements(this.contentBaseFieldset, this.showContentBase.checked);
+        break;
+      case "contentBaseHeader":
+        storageLocalData = {
+          contentBaseHeader: this.contentBaseHeader.value
+        };
+        break;
+      case "useFirefoxCompatUserAgent":
+        storageLocalData = {
+          useFirefoxCompatUserAgent: this.useFirefoxCompatUserAgent.checked
+        };
+        break;
+      case "maxContentTabs":
+        storageLocalData = {
+          maxContentTabs: Number(this.maxContentTabs.value)
+        };
+        break;
+      case "showMailToolbarDefaultTabs":
+        await browser.storage.local.remove("showMailToolbar");
+        break;
+      case "showMailToolbarWebpageTabs":
+      case "showMailToolbarAllTabs":
+        storageLocalData = {
+          showMailToolbar: Number(this.mailToolbarRadioForm.elements.showMailToolbar.value)
+        };
+        break;
+      case "showUrlToolbarWebpageTabs":
+      case "showUrlToolbarAllTabs":
+        storageLocalData = {
+          showUrlToolbar: Number(this.urlToolbarRadioForm.elements.showUrlToolbar.value)
+        };
+        break;
+      default:
+        return;
+    }
     /* eslint-enable */
 
-    browser.storage.local.set(storageLocalData);
+    this.setStorageLocal(storageLocalData);
+  },
 
-    let response = result => {
-      // console.debug("BrowseInTabOptions.saveOptions: result - ");
-      // console.dir(result);
-    };
-    let onError = error => {
-      console.error(`BrowseInTabOptions.saveOptions: ${error}`);
-    };
+  async setStorageLocal(storageLocalData) {
+    if (storageLocalData) {
+      await browser.storage.local.set(storageLocalData);
+    }
 
-    let sending = browser.runtime.sendMessage({ storageLocalData });
-    sending.then(response, onError);
+    this.DEBUG &&
+      console.debug("BrowseInTabOptions.setStorageLocal: new storage.local ->");
+    this.DEBUG && console.debug(await browser.storage.local.get());
   },
 
   async restoreOptions() {
     let setCurrentChoice = result => {
-      this.maxContentTabs.value =
-        "maxContentTabs" in result
-          ? result.maxContentTabs
-          : this.maxContentTabsDefault;
-      this.tabsLoadInBackground.checked =
-        "tabsLoadInBackground" in result ? result.tabsLoadInBackground : true;
-      this.linkClickLoadsInTab.checked =
-        "linkClickLoadsInTab" in result ? result.linkClickLoadsInTab : false;
+      this.tabsLoadInBackground.checked = result?.tabsLoadInBackground || true;
+      this.linkClickLoadsInTab.checked = result?.linkClickLoadsInTab || false;
       this.linkClickLoadsInBackgroundTab.checked =
-        "linkClickLoadsInBackgroundTab" in result
-          ? result.linkClickLoadsInBackgroundTab
-          : false;
+        result?.linkClickLoadsInBackgroundTab || false;
       this.forceLinkClickLoadsInCurrentTab.checked =
-        "forceLinkClickLoadsInCurrentTab" in result
-          ? result.forceLinkClickLoadsInCurrentTab
-          : true;
-      this.showContentBase.checked =
-        "showContentBase" in result ? result.showContentBase : true;
+        result?.forceLinkClickLoadsInCurrentTab || true;
+      this.showContentBase.checked = result?.showContentBase || true;
       this.contentBaseHeader.value =
-        "contentBaseHeader" in result
-          ? result.contentBaseHeader
-          : this.contentBaseHeaderDefault;
+        result?.contentBaseHeader || this.contentBaseHeaderDefault;
       this.useFirefoxCompatUserAgent.checked =
-        "useFirefoxCompatUserAgent" in result
-          ? result.useFirefoxCompatUserAgent
-          : false;
-      // console.debug("BrowseInTabOptions.restoreOptions: result - ");
-      // console.dir(result);
+        result?.useFirefoxCompatUserAgent || false;
+      this.maxContentTabs.value =
+        result?.maxContentTabs || this.maxContentTabsDefault;
+      this.mailToolbarRadioForm.elements.showMailToolbar.value =
+        result?.showMailToolbar || this.kShowMailToolbarDefault;
+      this.urlToolbarRadioForm.elements.showUrlToolbar.value =
+        result?.showUrlToolbar || this.kShowUrlToolbarWebPage;
 
-      this.updateElements(
-        this.linkClickOptions,
-        this.linkClickLoadsInTab.checked
-      );
-      this.updateElements(this.contentBaseLabel, this.showContentBase.checked);
-      this.updateElements(this.contentBaseHeader, this.showContentBase.checked);
+      let panelIdToSelect =
+        result?.lastSelectedTabPanelId ||
+        this.lastSelectedTabPanelId ||
+        this.defaultPanelId;
+      let tab = this.tabs.querySelector(`button[panelid="${panelIdToSelect}"]`);
+      this.selectTab(tab, false);
+
+      /* eslint-disable */
+      this.updateElements(this.linkClickOptionsFieldset, this.linkClickLoadsInTab.checked);
+      this.updateElements(this.contentBaseFieldset, this.showContentBase.checked);
+      /* eslint-enable */
+
+      this.DEBUG &&
+        console.debug("BrowseInTabOptions.restoreOptions: result -> ");
+      this.DEBUG && console.debug(result);
     };
 
     let onError = error => {
@@ -169,7 +344,7 @@ var BrowseInTabOptions = {
     };
 
     let getting = browser.storage.local.get([
-      "maxContentTabs",
+      "lastSelectedTabPanelId",
       "tabsLoadInBackground",
       "linkClickLoadsInTab",
       "linkClickLoadsInBackgroundTab",
@@ -177,6 +352,9 @@ var BrowseInTabOptions = {
       "showContentBase",
       "contentBaseHeader",
       "useFirefoxCompatUserAgent",
+      "maxContentTabs",
+      "showMailToolbar",
+      "showUrlToolbar",
     ]);
     await getting.then(setCurrentChoice, onError);
   },
@@ -184,15 +362,6 @@ var BrowseInTabOptions = {
   async defaultOptions() {
     await browser.storage.local.clear();
     await this.restoreOptions();
-    let response = result => {
-      // console.debug("BrowseInTabOptions.defaultOptions: result - ");
-      // console.dir(result);
-    };
-    let onError = error => {
-      console.error(`BrowseInTabOptions.defaultOptions: ${error}`);
-    };
-    let sending = browser.runtime.sendMessage({ storageLocalData: {} });
-    sending.then(response, onError);
   },
 }; // BrowseInTabOptions
 

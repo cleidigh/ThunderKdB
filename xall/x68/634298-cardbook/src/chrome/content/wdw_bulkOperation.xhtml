@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/logEdition.css" type="text/css"?>
+<!-- for the display -->
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	onload="wdw_bulkOperation.load();" resizable="true"
 	onclose="wdw_bulkOperation.cancel();"
-	id="wdw_bulkOperation" title="__CARDBOOKMSG_wdw_bulkOperationTitle__"
+	id="wdw_bulkOperation" title="__MSG_wdw_bulkOperationTitle__"
 	persist="screenX screenY width height"
+	lightweightthemes="true"
 	style="min-width:100px;min-height:100px;">
 	
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/wdw_bulkOperation.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookLocales.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
 
 	<keyset id="wdw_bulkOperation-keys">
 		<key id="escapeKey" keycode="VK_ESCAPE" oncommand="wdw_bulkOperation.cancel();"/>
@@ -28,6 +32,6 @@
 
 	<hbox>
 		<spacer flex="1"/>
-		<button id="closeEditionLabel" label="__CARDBOOKMSG_closeEditionLabel__" accesskey="__CARDBOOKMSG_closeEditionAccesskey__" oncommand="wdw_bulkOperation.cancel();"/>
+		<button id="closeEditionLabel" label="__MSG_closeEditionLabel__" accesskey="__MSG_closeEditionAccesskey__" oncommand="wdw_bulkOperation.cancel();"/>
 	</hbox>
 </window>
