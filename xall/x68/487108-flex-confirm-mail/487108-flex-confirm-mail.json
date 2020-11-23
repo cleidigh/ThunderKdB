@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 11460,
+    "average_daily_users": 9281,
     "categories": {
         "thunderbird": [
             "composition",
@@ -19,44 +19,53 @@
     "contributions_url": null,
     "created": "2014-02-18T00:17:30Z",
     "current_version": {
-        "id": 2474591,
+        "id": 2474777,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2474591",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2474777",
         "files": [
             {
-                "id": 1017753,
-                "created": "2020-10-29T05:58:03Z",
-                "hash": "sha256:1d6d914f1f67a6a78791b8b9dc58b256dfccbf74d16f0c6193abcee1a1d8c8d0",
-                "is_restart_required": true,
+                "id": 1017939,
+                "created": "2020-11-18T09:39:26Z",
+                "hash": "sha256:a8653eb5d1899689bbbc1a29128b9d44977edd868e125fd501dfd1cd438dadcd",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 156837,
+                "size": 45355,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017753/flex_confirm_mail-2.2.4-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017939/flex_confirm_mail-3.0.4-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "addressBooks",
+                    "compose",
+                    "menus",
+                    "messagesRead",
+                    "nativeMessaging",
+                    "storage",
+                    "tabs"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3996,
             "name": {
                 "en-US": "MPL1.1"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/2.2.4"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/3.0.4"
         },
         "release_notes": {
-            "en-US": "Support reconfirmation with attention terms in attachment names.",
-            "ja": "注意が必要な単語を名前に含む添付ファイルがある場合の再確認機能を追加"
+            "en-US": "Supports Thunderbrid 78.",
+            "ja": "Thunderbird 78に対応"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/2.2.4",
-        "version": "2.2.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/3.0.4",
+        "version": "3.0.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -81,7 +90,7 @@
     "is_experimental": true,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-29T14:51:30Z",
+    "last_updated": "2020-11-18T09:40:03Z",
     "name": {
         "en-US": "Flex Confirm Mail",
         "ja": "Flex Confirm Mail"
@@ -134,9 +143,10 @@
     "weekly_downloads": 243,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-08T08:33:36Z"
         }

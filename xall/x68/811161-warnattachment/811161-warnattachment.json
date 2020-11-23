@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1435,
+    "average_daily_users": 641,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,30 +18,32 @@
     "contributions_url": "",
     "created": "2017-05-01T18:44:30Z",
     "current_version": {
-        "id": 2472846,
+        "id": 2474819,
         "compatibility": {
             "thunderbird": {
-                "max": "71.*",
+                "max": "78.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/warnattachment/versions/2472846",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/warnattachment/versions/2474819",
         "files": [
             {
-                "id": 1015952,
-                "created": "2019-11-07T07:42:45Z",
-                "hash": "sha256:a62564e60b6122399bc0e9d691a4480ef20e98b5a6edc59e745822b5d35b9720",
-                "is_restart_required": true,
+                "id": 1017981,
+                "created": "2020-11-23T12:42:46Z",
+                "hash": "sha256:08c2efcbebe3a128123a7b5b0d532f390389ea451d7ea7711a5afdb12ac7bcc6",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 27303,
+                "size": 27297,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015952/warnattachment-1.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017981/warnattachment-2.1-tb.xpi?src=",
+                "permissions": [
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -72,8 +74,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/warnattachment/versions/1.2",
-        "version": "1.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/warnattachment/versions/2.1",
+        "version": "2.1"
     },
     "default_locale": "de",
     "description": null,
@@ -85,16 +87,16 @@
     "homepage": {
         "de": "https://github.com/jdede/WarnAttachment"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/811/811161-64.png?modified=1573038481",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/811/811161-64.png?modified=1606145488",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/811/811161-32.png?modified=1573038481",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/811/811161-64.png?modified=1573038481"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/811/811161-32.png?modified=1606145488",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/811/811161-64.png?modified=1606145488"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-11-20T10:25:31Z",
+    "last_updated": "2020-11-23T12:58:42Z",
     "name": {
         "en-US": "WarnAttachment",
         "de": "WarnAttachment",
@@ -103,43 +105,60 @@
     },
     "previews": [
         {
-            "id": 205495,
+            "id": 206313,
             "caption": {
-                "en-US": "The German warning message shown to the user. For this type of file, the user can open the file after confirming the dialog (German version, English is also available).",
-                "de": "Die Warnmeldung für einen Anhang, der vom Nutzer nach Bestätigung des Dialoges geöffnet werden kann. (German version)"
-            },
-            "image_size": [
-                682,
-                141
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205495.png?modified=1540163803",
-            "thumbnail_size": [
-                320,
-                66
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205495.png?modified=1540163803"
-        },
-        {
-            "id": 205496,
-            "caption": {
-                "en-US": "The German blocking message shown to the user. This type of file cannot be opened directly from Thunderbird (German version, English is also available).",
+                "en-US": "This message is shown if the attachment can not be opened. (German screenshot)",
                 "de": "Die Warnung über einen Anhang, der nicht geöffnet werden kann. (German version)"
             },
             "image_size": [
-                644,
-                140
+                798,
+                499
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205496.png?modified=1540163803",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206313.png?modified=1606145488",
             "thumbnail_size": [
                 320,
-                70
+                200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205496.png?modified=1540163803"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206313.png?modified=1606145488"
+        },
+        {
+            "id": 206314,
+            "caption": {
+                "en-US": "This message is shown as an additional warning for some file extensions like .doc. (German screenshot)",
+                "de": "Die Warnmeldung für einen Anhang, der vom Nutzer nach Bestätigung des Dialoges geöffnet werden kann. (German version)"
+            },
+            "image_size": [
+                748,
+                468
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206314.png?modified=1606145488",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206314.png?modified=1606145488"
+        },
+        {
+            "id": 206315,
+            "caption": {
+                "en-US": "The settings menu. (German screenshot)",
+                "de": "Der Einstellungsdialog (German version)"
+            },
+            "image_size": [
+                1221,
+                763
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206315.png?modified=1606145488",
+            "thumbnail_size": [
+                320,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206315.png?modified=1606145488"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.51972,
+        "bayesian_average": 4.51887,
         "count": 7,
         "average": 4.7143,
         "text_count": 7
@@ -183,6 +202,7 @@
             "mext": true,
             "comp68": true,
             "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-10-19T16:11:03Z"

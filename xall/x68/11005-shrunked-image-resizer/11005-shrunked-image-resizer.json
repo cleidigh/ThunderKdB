@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 10055,
+    "average_daily_users": 10397,
     "categories": {
         "thunderbird": [
             "composition"
@@ -27,26 +27,26 @@
     "contributions_url": "",
     "created": "2009-03-08T01:43:49Z",
     "current_version": {
-        "id": 2474440,
+        "id": 2474758,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/2474440",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/2474758",
         "files": [
             {
-                "id": 1017602,
-                "created": "2020-10-11T10:06:34Z",
-                "hash": "sha256:52585cced5a149e3a7e49132b88fb2e0d9e9289589a2d8172be77532e18f2d5d",
+                "id": 1017920,
+                "created": "2020-11-16T09:32:59Z",
+                "hash": "sha256:ee23bbf9afab64bd50cb5eb5e4ea054e4e6f0433c9a5ae70856bc74ed9a0d7af",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 38956,
+                "size": 39013,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017602/shrunked_image_resizer-5.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017920/shrunked_image_resizer-5.0.1-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "storage"
@@ -62,11 +62,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "The Shrunked user interface has been completely rewritten for Thunderbird's new extension system."
+            "en-US": "Fixed a bug when resizing on message send.\nFixed a bug with the preferences UI.\n\n<a rel=\"nofollow\" href=\"https://github.com/darktrojan/shrunked/compare/VERSION_5.0.0...VERSION_5.0.1\">https://github.com/darktrojan/shrunked/compare/VERSION_5.0.0...VERSION_5.0.1</a>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/versions/5.0.0",
-        "version": "5.0.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/versions/5.0.1",
+        "version": "5.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -101,7 +101,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-10-11T12:35:05Z",
+    "last_updated": "2020-11-16T10:43:22Z",
     "name": {
         "pt-PT": "Shrunked Image Resizer",
         "en-US": "Shrunked Image Resizer"
@@ -176,6 +176,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-10-11T10:06:34Z",
+            "comp78pv_version": "5.0.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2017-09-08T00:32:53Z"
         }

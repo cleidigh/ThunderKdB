@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
         }
     ],
-    "average_daily_users": 13,
+    "average_daily_users": 25,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -58,7 +58,7 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Usage</b>\n1) First, Single-click a calendar item.\n2) And, click [Attach Eventview] in browserAction to view information of the event.\n3) At the end, click [Detach Eventview] in browserAction.\n4) Please, repeat 1) to 3) to view another event information.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\n<b>Print event</b>\n1) Select a calendar item.\n2) Select Convert To &gt; Message... on right-click menu.\n3) Select File &gt; Print (Preview) on menu options of compose window.\n<b>Printing is good, as it is.^^ I don't want anything more!</b></b></b>",
+        "en-US": "<b>Version 6.2.</b> Upcoming version submitted.\n\n1) Menuitem label was changed from \"Attach Eventview\" to \"Append Eventview after selecting item\".\n2) Menuitem label was changed from \"Detach Eventview\" to \"Remove Eventview as sidebar last child\".\n3) Menuitem \"Remove the old and Append Eventview\" was added.\n4) Loop to calendar items was applied.\nSo, weight of implementation.js was changed from 100 kbs to 10kbs.\n5) Background.js which open browserAction popup automatically was added.\n<b>By doing such things, Numbers of clicks were reduced in least numbers, twice.</b>\n\n<b>If changing calendar order, please, follow nexts.\n1) Remove old Eventview, if it exists.\n2) Single-click any item.\n3) Append Eventview, and then explore items in single-clicking them.\n4) If so, browserAction popup is opened automatically.\n5) To see different item data, click button of \"Remove the old and Append Eventview\".\n</b>\nAs next update, I will change scripts to Calendars APIs.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\n<b>Print event</b>\n1) Select a calendar item.\n2) Select Convert To &gt; Message... on right-click menu.\n3) Select File &gt; Print (Preview) on menu options of compose window.\n<b>Printing is good, as it is.^^ I don't want anything more!</b></b></b>",
         "ko": "<b>Usage</b>\n1) First, Single-click a calendar item.\n2) And, click [Attach Eventview] in browserAction to view information of the event.\n3) At the end, click [Detach Eventview] in browserAction.\n4) Please, repeat 1) to 3) to view another event information.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\n<b>Print event</b>\n1) Select a calendar item.\n2) Select Convert To &gt; Message... on right-click menu.\n3) Select File &gt; Print (Preview) on menu options of compose window.\n<b>Printing is good, as it is.^^ I don't want anything more!</b></b></b>"
     },
     "developer_comments": null,
@@ -83,20 +83,20 @@
     },
     "previews": [
         {
-            "id": 206168,
+            "id": 206309,
             "caption": {
-                "en-US": "Please, see left bottom."
+                "en-US": "Eventview menu on Thunderbird v78."
             },
             "image_size": [
-                1280,
-                694
+                705,
+                210
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206168.png?modified=1601906025",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206309.png?modified=1606081111",
             "thumbnail_size": [
                 320,
-                174
+                95
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206168.png?modified=1601906025"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206309.png?modified=1606081111"
         }
     ],
     "public_stats": false,
@@ -112,7 +112,7 @@
     "slug": "eventview",
     "status": "public",
     "summary": {
-        "en-US": "If clicking [Attach Eventview] in browserAction after mousedown on a calendar item, you can attach  Eventview on bottom of side bar.\nTo view new item, first, detach old Eventview.\nExecuted well as of 2020-10-06.\n\nBe a light.\nI thank God!",
+        "en-US": "It seems like taskview, \nbut it would be enough with a small size because event is different to task.\nOf course, tooltip exists, but it shows information of events formally.\n\nBe a light.\nI thank God!",
         "ko": "1) 일정표의 항목을 선택하세요.\n2) 단추의 팝업창에서 [Attach Eventview]를 누르세요.\n3) 왼쪽 사이드 바 아래에 행사보기가 나타나면 행사를 점검하세요.\n4) 행사를 점검하고서  [Detach Eventview]를 눌러 행사보기를 제거하세요.\n5) 1), 2), 3), 4)를 반복해서 보세요.\n\n빛이 되어라!\n하느님께 감사합니다.\n\n개발자 황성호."
     },
     "support_email": {

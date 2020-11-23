@@ -1,0 +1,205 @@
+{
+    "id": 987941,
+    "authors": [
+        {
+            "id": 11066970,
+            "name": "Qeole",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/Qeole/",
+            "username": "Qeole",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11066/11066970.png?modified=1408630854"
+        }
+    ],
+    "average_daily_users": 2,
+    "categories": {
+        "thunderbird": [
+            "message-and-news-reading"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2020-11-07T11:59:23Z",
+    "current_version": {
+        "id": 2474752,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/seams/versions/2474752",
+        "files": [
+            {
+                "id": 1017914,
+                "created": "2020-11-15T15:49:28Z",
+                "hash": "sha256:0d100fc2c6ce78a48cee128530a57b6f63e83798adf7dadca8214596ad5b42cb",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 13802,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017914/seams-1.1.0-tb.xpi?src=",
+                "permissions": [
+                    "https://patchwork.kernel.org/",
+                    "messagesRead"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "",
+            "en-US": "- Add support for CI checks from Patchwork.\n- Provide visual feedback when clicking a command to copy it to the clipboard.\n- Improve CSS to make the different pop-up sections clearer."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/seams/versions/1.1.0",
+        "version": "1.1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<strong><em>Seams bring you Patchwork!</em></strong>\n\n<strong>Seams</strong> provides some integration with <a rel=\"nofollow\" href=\"http://jk.ozlabs.org/projects/patchwork/\">Patchwork</a>, the patch tracking system. It makes the patch state visible directly from Thunderbird. It also displays useful links to the patch or its series on a Patchwork instance or in mail archives, and ready-to-paste commands that can be used to apply the patch locally.\n\n<strong>Warning</strong>\n\n<strong>At this time the add-on only works for the <a rel=\"nofollow\" href=\"https://patchwork.kernel.org/\">Linux Patchwork instance</a>.</strong> This is simply because it has not been tested on other instances, and could maybe be adapted in the future.\n\n<strong>Usage</strong>\n\nWhenever a patch is displayed, Seams displays an action button above the message. The colored badge on that button indicates the current state of the patch, as retrieved from Patchwork.\n\nOn clicking the button, a panel appears and displays:\n\n<ul><li>The name of the Patchwork project for the patch.</li><li>The state of the patch (for example, <code>new</code>, <code>superseded</code>, <code>accepted</code>).</li><li>The state of CI checks, with expandable details if any. Click to load and\n  expand the details.</li><li>Links to the Patchwork pages for the patch and the series to which it belongs. Clicking the links open the pages in the panel. You can right-click on the links to open them in a browser or to copy the targets.</li><li>Links to the mail archives (for example, <a rel=\"nofollow\" href=\"http://lore.kernel.org\">lore.kernel.org</a>).</li><li>Commands to apply the patch or its full series to a local Git repository. Click on the command to copy it to the clipboard.</li></ul>\nThe button is not displayed when the message is not recognized as a patch, or when the add-on fails to retrieve metadata from Patchwork.\n\n<strong>Internals</strong>\n\nPatch detection currently works as follows:\n\n<ul><li>The message must have a specific substring in one of the recipient addresses (“to” or “cc”), for example <code>@vger.kernel.org</code>.</li><li>The subject of the message must begin with a <code>[</code> character, this is to avoid considering replies to patches as patches.</li><li>The subject of the message must not contain the substring <code> 0/</code>, which is often the marker of a cover letter for a series and not of a patch.</li></ul>\nWhen a message is displayed and recognized as a patch, the add-on sends an API request to the Patchwork instance to retrieve the state of the patch as well as some metadata. On clicking the action button, this information is reused to generate the panel.\n\n<strong>Disclaimer</strong>\n\nThis add-on is <strong>not</strong> an official add-on either developed, supported or otherwise endorsed by the community of the Patchwork project."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/seams/edit",
+    "guid": "se@ms",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/Qeole/seams"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987941-64.png?modified=9de30ea6",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987941-32.png?modified=9de30ea6",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/987/987941-64.png?modified=9de30ea6"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-11-15T15:50:03Z",
+    "name": {
+        "en-US": "Seams"
+    },
+    "previews": [
+        {
+            "id": 206261,
+            "caption": {
+                "en-GB": "",
+                "en-US": "For patches, Seams adds a button in the top-right corner. The colored badge on it indicates the patch state (here: blue for “new”)."
+            },
+            "image_size": [
+                988,
+                718
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206261.png?modified=1605456510",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206261.png?modified=1605456510"
+        },
+        {
+            "id": 206262,
+            "caption": {
+                "en-GB": "",
+                "en-US": "Click the button to open the panel and display useful links to Patchwork and mail archives, as well as commands to paste to a terminal to apply the patch or its whole series at once."
+            },
+            "image_size": [
+                988,
+                718
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206262.png?modified=1605456568",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206262.png?modified=1605456568"
+        },
+        {
+            "id": 206263,
+            "caption": {
+                "en-GB": "",
+                "en-US": "In the panel, click to expand the CI checks section to load and display results for individual checks (if available for the Patchwork project)."
+            },
+            "image_size": [
+                988,
+                718
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206263.png?modified=1605456564",
+            "thumbnail_size": [
+                275,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206263.png?modified=1605456564"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/seams/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987941",
+    "slug": "seams",
+    "status": "public",
+    "summary": {
+        "en-US": "Seams provides some integration with Patchwork, the patch tracking system. It makes the patch state visible directly from Thunderbird. It also displays useful links to a Patchwork instance or to mail archives, and commands to apply the patch locally."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/Qeole/seams/issues"
+    },
+    "tags": [
+        "firefox57",
+        "job",
+        "kernel",
+        "patch"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/seams/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-07T11:59:23Z",
+            "comp78pv_version": "1.0.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
+        }
+    }
+}

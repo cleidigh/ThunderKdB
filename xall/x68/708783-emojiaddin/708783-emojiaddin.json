@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12353/12353367.png?modified=1525268440"
         }
     ],
-    "average_daily_users": 19481,
+    "average_daily_users": 19987,
     "categories": {
         "thunderbird": [
             "chat",
@@ -19,26 +19,26 @@
     "contributions_url": null,
     "created": "2016-06-10T14:12:09Z",
     "current_version": {
-        "id": 2474137,
+        "id": 2474719,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/emojiaddin/versions/2474137",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/emojiaddin/versions/2474719",
         "files": [
             {
-                "id": 1017299,
-                "created": "2020-08-25T14:33:01Z",
-                "hash": "sha256:04f17e31cddee43a1ba8f981a4738f4ea47847be64678e8239c0eff2f28975da",
+                "id": 1017881,
+                "created": "2020-11-12T17:02:36Z",
+                "hash": "sha256:6f5376d2b3a40f7c4ecf8f1e406a9b5cc5b3ef270190081cc704897fef8db429",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 14576828,
+                "size": 14576813,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017299/emoji-1.78.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017881/emoji-1.78.6-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
@@ -76,11 +76,12 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "Updated for Thunderbird 78 and Unicode 13.0"
+            "en-US": "Fixes image too large issue in Outlook Desktop (see <a rel=\"nofollow\" href=\"https://github.com/mganss/EmojiAddIn/issues/5\">https://github.com/mganss/EmojiAddIn/issues/5</a>).",
+            "de": "Behebt zu große Bilddarstellung in Outlook Desktop (s. <a rel=\"nofollow\" href=\"https://github.com/mganss/EmojiAddIn/issues/5\">https://github.com/mganss/EmojiAddIn/issues/5</a>)."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/emojiaddin/versions/1.78.5",
-        "version": "1.78.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/emojiaddin/versions/1.78.6",
+        "version": "1.78.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -105,7 +106,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-08-26T15:30:56Z",
+    "last_updated": "2020-11-12T17:43:42Z",
     "name": {
         "en-US": "Emoji",
         "de": "Emoji"
@@ -160,6 +161,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-08-25T14:33:01Z",
+            "comp78pv_version": "1.78.5",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-05-02T11:11:48Z"
         }

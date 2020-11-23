@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 717,
+    "average_daily_users": 607,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,30 @@
     "contributions_url": "",
     "created": "2019-09-04T20:49:53Z",
     "current_version": {
-        "id": 2473356,
+        "id": 2474747,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/changequote/versions/2473356",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/changequote/versions/2474747",
         "files": [
             {
-                "id": 1016478,
-                "created": "2020-02-01T14:35:11Z",
-                "hash": "sha256:490fdda813f335f64a3eaed592ea5373962dc817f0106ba6a6d3b2da47fd8ca7",
-                "is_restart_required": true,
+                "id": 1017909,
+                "created": "2020-11-14T21:49:56Z",
+                "hash": "sha256:9d5ffa045fd34c8dbd608cbc92430d8266c1157e7ded2b1ba1c6b1c4c2652782",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 64672,
+                "size": 68586,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016478/changequote-1.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017909/changequote-1.5.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -73,16 +73,26 @@
         },
         "release_notes": {
             "fr": "",
-            "en-US": "Fix bug in customized reply header when using several curly braces: the sections included in the curly braces {{ }} are not in reply header even when they should be present."
+            "en-US": "fix bug: am/pm notation for 12:00-12:59 and 00:00-00:59 in reply header\nfeature: add multiples lines customized header for plaintext\nfeature: option close message window after forward"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/changequote/versions/1.4",
-        "version": "1.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/changequote/versions/1.5.1",
+        "version": "1.5.1"
     },
     "default_locale": "en-US",
     "description": {
-        "fr": "Permet de personaliser l'en-tête de réponse.",
-        "en-US": "An extension for Thunderbird that can help to configure the header when reply.\nYou can use a completely personalize header.\nYou can configure all Options in the Add-on Options of changeQuote in Tools menu"
+        "ru": "Позволяет настроить заголовок ответа.\nВы можете выбирать между стандартным заголовком ответа Thunderbird, подробным заголовком ответа или настраиваемым заголовком ответа. Вы можете настроить его в Инструменты -&gt; Настройки надстройки -&gt; changeQuote.",
+        "fr": "Permet de personnaliser l'en-tête de réponse.\nVous pouvez choisir entre l'en-tête de réponse Thunderbird standard, un en-tête de réponse détaillé ou un en-tête de réponse personnalisé. Vous pouvez le configurer dans les Outils -&gt; Préférences du module complémentaire -&gt; changeQuote.",
+        "de": "Ermöglicht das Anpassen des Antwortheaders.\nSie können zwischen dem Standard-Thunderbird-Antwortheader, einem detaillierten Antwortheader oder einem benutzerdefinierten Antwortheader wählen. Sie können es unter Extras -&gt; Add-On-Einstellungen -&gt; changeQuote konfigurieren.",
+        "nl": "Hiermee kunt u de antwoordheader aanpassen.\nU kunt kiezen tussen de standaard Thunderbird-responsheader, een gedetailleerde responsheader of een aangepaste responsheader. U kunt het configureren in Extra -&gt; Add-on-voorkeuren -&gt; changeQuote.",
+        "en-US": "An extension for Thunderbird that can help to configure the header when reply.\nYou can use a completely personalize header.\nYou can configure all Options in the Add-on Options of changeQuote in Tools menu",
+        "it": "Consente di personalizzare l'intestazione della risposta.\nPuoi scegliere tra l'intestazione di risposta standard di Thunderbird, un'intestazione di risposta dettagliata o un'intestazione di risposta personalizzata. Puoi configurarlo in Strumenti -&gt; Preferenze add-on -&gt; changeQuote.",
+        "sk": "Umožňuje vám prispôsobiť hlavičku odpovede.\nMôžete si vybrať medzi štandardnou hlavičkou odpovede Thunderbirdu, podrobnou hlavičkou odpovede alebo hlavičkou vlastnej odpovede. Môžete ich nakonfigurovať v časti Nástroje -&gt; Predvoľby doplnkov -&gt; changeQuote.",
+        "zh-CN": "允许您自定义响应头。\n您可以在标准Thunderbird响应标头，详细响应标头或自定义响应标头之间进行选择。 您可以在工具-&gt;附加程序首选项-&gt; changeQuote中对其进行配置。",
+        "pt-BR": "Permite que você personalize o cabeçalho da resposta.\nVocê pode escolher entre o cabeçalho de resposta padrão do Thunderbird, um cabeçalho de resposta detalhado ou um cabeçalho de resposta personalizado. Você pode configurá-lo em Ferramentas -&gt; Preferências de add-on -&gt; changeQuote.",
+        "sv-SE": "Låter dig anpassa svarsrubriken.\nDu kan välja mellan standard Thunderbird-svarsrubrik, en detaljerad svarsrubrik eller en anpassad svarsrubrik. Du kan konfigurera det i Verktyg -&gt; Tilläggspreferenser -&gt; ändra citat.",
+        "fi": "Voit muokata vastauksen otsikkoa.\nVoit valita tavallisen Thunderbird-vastausotsikon, yksityiskohtaisen vastausotsikon tai mukautetun vastausotsikon. Voit määrittää sen kohdassa Tools -&gt; Add-on Preferences -&gt; changeQuote.",
+        "ja": "応答ヘッダーをカスタマイズできます。\n標準のThunderbird応答ヘッダー、詳細な応答ヘッダー、またはカスタム応答ヘッダーから選択できます。 [ツール]-&gt; [アドオン設定]-&gt; [changeQuote]で構成できます。"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/changequote/edit",
@@ -90,8 +100,18 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
+        "ru": "https://github.com/caligraf/ChangeQuote/wiki",
         "fr": "https://github.com/caligraf/ChangeQuote/wiki",
-        "en-US": "https://github.com/caligraf/ChangeQuote/wiki"
+        "de": "https://github.com/caligraf/ChangeQuote/wiki",
+        "nl": "https://github.com/caligraf/ChangeQuote/wiki",
+        "en-US": "https://github.com/caligraf/ChangeQuote/wiki",
+        "it": "https://github.com/caligraf/ChangeQuote/wiki",
+        "sk": "https://github.com/caligraf/ChangeQuote/wiki",
+        "zh-CN": "https://github.com/caligraf/ChangeQuote/wiki",
+        "pt-BR": "https://github.com/caligraf/ChangeQuote/wiki",
+        "sv-SE": "https://github.com/caligraf/ChangeQuote/wiki",
+        "fi": "https://github.com/caligraf/ChangeQuote/wiki",
+        "ja": "https://github.com/caligraf/ChangeQuote/wiki"
     },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987689-64.png?modified=6e395434",
     "icons": {
@@ -102,10 +122,20 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-02-01T16:17:10Z",
+    "last_updated": "2020-11-16T11:04:36Z",
     "name": {
+        "ru": "changeQuote",
         "fr": "changeQuote",
-        "en-US": "changeQuote"
+        "de": "changeQuote",
+        "nl": "changeQuote",
+        "en-US": "changeQuote",
+        "it": "changeQuote",
+        "sk": "changeQuote",
+        "zh-CN": "changeQuote",
+        "pt-BR": "changeQuote",
+        "sv-SE": "changeQuote",
+        "fi": "changeQuote",
+        "ja": "changeQuote"
     },
     "previews": [
         {
@@ -159,10 +189,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.07151,
-        "count": 11,
-        "average": 4.1818,
-        "text_count": 11
+        "bayesian_average": 4.1353,
+        "count": 13,
+        "average": 4.2308,
+        "text_count": 13
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/changequote/reviews/",
     "requires_payment": false,
@@ -170,8 +200,18 @@
     "slug": "changequote",
     "status": "public",
     "summary": {
+        "ru": "Это расширение, изменяющее формат заголовка ответа. Вы можете выбрать между стандартным заголовком ответа Thunderbird, подробным заголовком ответа или настраиваемым заголовком ответа. Вы можете настроить его в Инструменты &gt; Настройки надстройки.",
         "fr": "C'est une extension pour personnaliser l'en-tête de réponse. Vous pouvez configurer l'en-tête à partir de Outils -&gt; Options des modules -&gt; changeQuote. Vous avez le choix entre l'en-tête par défaut, l'en-tête détaillé ou un en-tête personnalisé.",
-        "en-US": "It's an extension that changes the format of reply header.\nYou can choose between  the standard Thunderbird reply header, a detailed reply header or a  Customized reply header.\nYou can configure it in the Tools -&gt;“Add-on Preferences -&gt; changeQuote."
+        "de": "Es ist eine Erweiterung, die das Format des Antwortheaders ändert. Sie können zwischen dem Standard-Thunderbird-Antwortheader, einem detaillierten Antwortheader oder einem benutzerdefinierten Antwortheader wählen.",
+        "nl": "Het is een extensie die het formaat van de antwoordkop verandert. U kunt kiezen tussen de standaard Thunderbird-antwoordkop, een gedetailleerde antwoordkop of een Aangepaste antwoordkop. U kunt het configureren in de Extra -&gt; Add-on-voorkeuren.",
+        "en-US": "It's an extension that changes the format of reply header.\nYou can choose between  the standard Thunderbird reply header, a detailed reply header or a  Customized reply header.\nYou can configure it in the Tools -&gt;Add-on Preferences -&gt; changeQuote.",
+        "it": "È un'estensione che cambia il formato dell'intestazione della risposta. Puoi scegliere tra l'intestazione di risposta standard di Thunderbird, un'intestazione di risposta dettagliata o un'intestazione di risposta personalizzata.",
+        "sk": "Je to rozšírenie, ktoré mení formát hlavičky odpovede. Môžete si vybrať medzi štandardnou hlavičkou odpovede Thunderbirdu, podrobnou hlavičkou odpovede alebo prispôsobenou hlavičkou odpovede.",
+        "zh-CN": "这是一个扩展，它更改了回复标头的格式。 您可以选择标准的Thunderbird回复标题，详细的回复标题或自定义的回复标题。 您可以在工具-&gt;“附加偏好设置-&gt; changeQuote”中进行配置。",
+        "pt-BR": "É uma extensão que altera o formato do cabeçalho da resposta. Você pode escolher entre o cabeçalho de resposta padrão do Thunderbird, um cabeçalho de resposta detalhado ou um cabeçalho de resposta personalizado.",
+        "sv-SE": "Det är ett tillägg som ändrar formatet på svarsrubriken. Du kan välja mellan det vanliga Thunderbird-svarhuvudet, ett detaljerat svarhuvud eller ett anpassat svarhuvud. Du kan konfigurera det i Verktyg -&gt; Tilläggspreferenser -&gt; ändra citat.",
+        "fi": "Se on laajennus, joka muuttaa vastauksen otsikon muotoa. Voit valita tavallisen Thunderbird-vastausotsikon, yksityiskohtaisen vastauksen otsikon tai mukautetun vastauksen otsikon välillä.Voit määrittää sen kohdassa Tools&gt;Addon Preferences&gt;changeQuote",
+        "ja": "これは、返信ヘッダーの形式を変更する拡張機能です。 標準のThunderbird返信ヘッダー、詳細な返信ヘッダー、またはカスタマイズされた返信ヘッダーから選択できます。 [ツール]-&gt; [アドオン設定]-&gt; [changeQuote]で構成できます。"
     },
     "support_email": {
         "fr": "olivier2042@outlook.fr",
@@ -182,11 +222,11 @@
         "en-US": "https://github.com/caligraf/ChangeQuote/wiki"
     },
     "tags": [
+        "customize",
         "email",
         "firefox57",
         "header",
         "reply",
-        "replywithheader",
         "réponse"
     ],
     "type": "extension",
@@ -194,10 +234,15 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-14T14:29:24Z",
+            "comp78pv_version": "1.5",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

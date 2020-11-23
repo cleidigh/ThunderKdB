@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 273,
+    "average_daily_users": 653,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,69 +19,47 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6K57TUFSNMVSJ&source=url",
     "created": "2019-12-18T06:25:41Z",
     "current_version": {
-        "id": 2473028,
+        "id": 2474694,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nostalgy_ng/versions/2473028",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nostalgy_ng/versions/2474694",
         "files": [
             {
-                "id": 1016135,
-                "created": "2019-12-18T06:25:42Z",
-                "hash": "sha256:044770092124715ce993fa18cee919f2793ec48907b1b76ba0e613fda90349ee",
-                "is_restart_required": true,
+                "id": 1017856,
+                "created": "2020-11-10T09:35:38Z",
+                "hash": "sha256:7c84eac33bc12f611fde0de1b6383df29a10ed3cdff48612b160897e1b218a4e",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 44449,
+                "size": 75837,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016135/nostalgy-1.0.15-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017856/emails_verwalten_nostalgy_fur_tb_78-2.2.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
-            "id": 22,
+            "id": 7352,
             "name": {
-                "el": "Άδεια MIT/X11",
-                "vi": "Giấy phép MIT/X11",
-                "ca": "Llicència MIT/X11",
-                "it": "Licenza MIT/X11",
-                "cs": "MIT/X11 licence",
-                "eu": "MIT/X11 Lizentzia",
-                "sv-SE": "MIT/X11-licens",
-                "id": "Lisensi MIT/X11",
-                "es": "Licencia MIT/X11",
-                "ru": "Лицензия MIT/X11",
-                "nl": "MIT/X11-licentie",
-                "en-US": "MIT/X11 License",
-                "fr": "Licence MIT/X11",
-                "bg": "MIT/X11 Лиценз",
-                "de": "MIT/X11-Lizenz",
-                "da": "MIT/X11-licens",
-                "fa": "مجوز MIT/X11",
-                "hu": "MIT/X11 licenc",
-                "pt-PT": "Licença MIT/X11",
-                "sr": "MIT/X11 лиценца",
-                "sq": "Leje MIT/X11",
-                "ga-IE": "Ceadúnas MIT/X11",
-                "sk": "Licencia MIT/X11",
-                "zh-CN": "MIT/X11 许可协议"
+                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International",
+                "de": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
             },
-            "url": "http://www.opensource.org/licenses/mit-license.php"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/license/2.2.2"
         },
         "release_notes": null,
-        "reviewed": "2020-03-12T16:31:30Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/versions/1.0.15",
-        "version": "1.0.15"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/versions/2.2.2",
+        "version": "2.2.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "S moves an email. After typing a few letters, by autocomplete, a list of possible folder- destinations is shown and can be selected by up/down/enter or by mouse.\n\nRules can be defined, and shift-S moves the email to the predefined folder (which is shown in the status line).\n\nIn a similiar way, emails can be copied, the view shifted to the chosen folder. Folder pane, message list or message display can be selected, so that scrolling or up/down is directly applied in those parts of the main window.\n\nKeys (like S) can be chosen by the user. Consider to change the original choice of Nostalgy (S), because that prevents setting the star tag of emails by S.\n\nWhen composing a message, typing cc before the email address, changes the 'to' to 'cc' (or respectively, 'bcc').\n\nThis is a port of Nostalgy by Alain Frisch to TB 68. Nostalgy has adapted my version for TB 68 as well.\n\nThe update to TB 78 is nearly finished. \nAlso, there will be new features, for example: \n* create new rule from last moving action. \n* quick create a rule from status line/by keyboard \n* direct apply a rule to all messages in its folder",
-        "de": "S verschiebt eine email, der Ordner ist per 'Autocomplete' nach Eingabe einiger Buchstaben wählbar. Wenn eine Regel angelegt wird, verschiebt Shift-S in den angegebenen Ordner. Ähnlich für Kopieren, gehe zu Ordner, und viele zusätzliche Funktionen.\n\nDie Buchstaben der Befehle sind frei wählbar.\n\nTippt man beim Email-Verfassen in der Empfängerzeile cc (oder bcc), dann ändert sich das \"An\" auf cc oder bcc. Man muss also nicht per Maus An/cc/bcc auswählen und bleibt im Fluss, wenn mann mehrere Adressen eingibt.\n\nIch habe Nostalgy von Alain Frisch auf TB68 übertragen, die Version für TB 78 wird im Oktober folgen. Der Code für TB 68 wurde auch ins ursprüngliche Nostalgy Addon übernommen.\n\nNeue Funktionen für TB 78: \n* Regeln aus dem letzten Email-Verschieben erzeugen.\n* Regel aus der Statuszeile mit n erzeugen\n* Regel direkt auf den folder anwenden\n\nAchtung, interne Sprache der Fenster noch Englisch."
+        "en-US": "S moves an email. After typing a few letters, by autocomplete, a list of possible folder- destinations is shown and can be selected by up/down/enter or by mouse.\n\nRules can be defined, and shift-S moves the email to the predefined folder (which is shown in the status line).\n\nIn a similiar way, emails can be copied, the view shifted to the chosen folder. Folder pane, message list or message display can be selected, so that scrolling or up/down is directly applied in those parts of the main window.\n\nKeys (like S) can be chosen by the user. Consider to change the original choice of Nostalgy (S), because that prevents setting the star tag of emails by S.\n\nWhen composing a message, typing cc before the email address, changes the 'to' to 'cc' (or respectively, 'bcc').\n\n<b>This is a port of Nostalgy by Alain Frisch to TB 68 and TB78</b>. Nostalgy has adapted my version for TB 68 as well.\n\n\nThere are new features, for example: \n* create new rule from last moving action. \n* quick create a rule from status line/by keyboard \n* direct apply a rule to all messages in its folder\n* compose dialog: always show cc or bcc line (per option)",
+        "de": "S verschiebt eine email, der Ordner ist per 'Autocomplete' nach Eingabe einiger Buchstaben wählbar. Wenn eine Regel angelegt wird, verschiebt Shift-S in den angegebenen Ordner. Ähnlich für Kopieren, gehe zu Ordner, und viele zusätzliche Funktionen.\n\nDie Buchstaben der Befehle sind frei wählbar.\n\nTippt man beim Email-Verfassen in der Empfängerzeile cc (oder bcc), dann ändert sich das \"An\" auf cc oder bcc. Man muss also nicht per Maus An/cc/bcc auswählen und bleibt im Fluss, wenn mann mehrere Adressen eingibt.\n\n<b>Dies ist die Übertragung von Nostalgy von Alain Frisch auf TB68 und TB 78</b>. Der Code für TB 68 wurde auch ins ursprüngliche Nostalgy Addon übernommen.\n\nNeue Funktionen für TB 78: \n* Regeln aus dem letzten Email-Verschieben erzeugen.\n* Regel aus der Statuszeile mit n erzeugen\n* Regel direkt auf den folder anwenden, ohne emails zu markieren\n* Email verfassen: immer cc oder bcc Zeile anzeigen (Option)\n\nAchtung, interne Sprache der Fenster noch Englisch."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nostalgy_ng/edit",
@@ -98,7 +76,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-03-12T16:31:30Z",
+    "last_updated": "2020-11-10T10:42:49Z",
     "name": {
         "en-US": "Manage emails / Nostalgy++ for TB78",
         "de": "Emails verwalten / Nostalgy++ für TB 78"
@@ -106,10 +84,10 @@
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.30051,
-        "count": 9,
-        "average": 4.4444,
-        "text_count": 9
+        "bayesian_average": 4.76313,
+        "count": 23,
+        "average": 4.8261,
+        "text_count": 23
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/reviews/",
     "requires_payment": false,
@@ -117,15 +95,23 @@
     "slug": "nostalgy_ng",
     "status": "public",
     "summary": {
-        "en-US": "Donations to help to transfer to TB 78 are acknowledged, many hours are needed.\n\nShortcuts to move/copy messages, with folder name completion. Set rules for moving of messages to associated folders.  Port of Nostalgy to TB68. TB 78 coming soon.",
-        "de": "Ich danke für Spenden für das Update nach TB 78.\n\nKopieren/Verschieben von emails per Tastendruck, mit Verzeichnisvorschlägen  nach Eingeben einiger Buchstaben. Regeln für Zielverzeichnisse lt Absender/Betreff für einfaches Verschieben, u.a."
+        "en-US": "Donations to help to transfer to TB 78 are acknowledged, many hours are needed.\n\nShortcuts to move/copy messages, with folder name completion. Set rules for moving of messages to associated folders.  Compose tools. Port of Nostalgy to TB68/78.",
+        "de": "Ich danke für Spenden für das Update nach TB 78.\n\nKopieren/Verschieben von emails per Tastendruck, mit Verzeichnisvorschlägen  nach Eingeben einiger Buchstaben. Regeln für Zielverzeichnisse lt Absender/Betreff. Tools für den Verfassen Dialog/Suche."
     },
-    "support_email": null,
-    "support_url": null,
+    "support_email": {
+        "en-US": "buecher@optosolar.com",
+        "de": "buecher@optosolar.com"
+    },
+    "support_url": {
+        "en-US": "https://github.com/opto/nostalgy-xpi/issues",
+        "de": ""
+    },
     "tags": [
+        "archive",
         "autocomplete",
         "firefox57",
         "keyboard",
+        "search",
         "sort emails"
     ],
     "type": "extension",
@@ -133,10 +119,15 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-08T23:26:28Z",
+            "comp78pv_version": "2.2.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

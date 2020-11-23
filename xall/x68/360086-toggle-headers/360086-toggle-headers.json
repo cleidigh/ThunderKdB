@@ -9,39 +9,39 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 865,
+    "average_daily_users": 997,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "",
     "created": "2012-01-26T20:14:26Z",
     "current_version": {
-        "id": 2472970,
+        "id": 2474687,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-headers/versions/2472970",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-headers/versions/2474687",
         "files": [
             {
-                "id": 1016077,
-                "created": "2019-12-05T20:30:19Z",
-                "hash": "sha256:f3d7e21fbc8cd9d5c8ea2c8201030737ec5dbc289bf093ac2aa2fc91d4656841",
-                "is_restart_required": true,
+                "id": 1017849,
+                "created": "2020-11-10T02:06:30Z",
+                "hash": "sha256:9c5b49ff535bcdd19be3508008e9f8a0cfb50425f9c99feccea98fcbd6cc96ab",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4531,
+                "size": 2568,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016077/toggle_headers-2.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017849/toggle_headers-3.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -75,15 +75,15 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "<ul>  <li>added compatibility for latest Thunderbird versions (68.0+)</li>  <li>migrated to WebExtension</li></ul>"
+            "en-US": "MailExtensions do not allow single key shortcuts anymore. Therefore, starting with this version the shortcut is <strong>Ctrl+H</strong>.\n\n<ul>  <li>added compatibility for latest Thunderbird versions (74.0+)</li>  <li>migrated to full MailExtension</li>  <li>fixed bug where separate message windows where not reloaded when the header were toggled</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-headers/versions/2.0",
-        "version": "2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-headers/versions/3.0",
+        "version": "3.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Thunderbird 68 and later:</b> Use Toggle Headers 2.0.\n<b>Earlier Thunderbird versions:</b> Use Toggle Headers 1.0.\n\nThis extensions allows to switch between the normal header view and viewing all headers when viewing a message by using a keyboard shortcut (H).\n\nIt also contains support to work with the \"CompactHeader\" extension:\n<ul><li>When collapsed and all headers should be shown it will be expanded.</li><li>The previous state will be remembered and switched back to the collapsed header view when toggling back.</li></ul>\n<strong>To report any problems or issues, please do not use the reviews, but the provided support email (see on the right).</strong>\n\n<em>The original idea for this extensions is taken from \"Headers Toggle\" by Pontus Freyhult which unfortunately was not continued for current Thunderbird versions.</em>"
+        "en-US": "<b>Thunderbird 74+:</b> Use Toggle Headers 3.0.\n<b>Thunderbird 68-73:</b> Use Toggle Headers 2.0.\n<b>Earlier Thunderbird versions:</b> Use Toggle Headers 1.0.\n\nThis extensions allows to switch between the normal header view and viewing all headers when viewing a message by using a keyboard shortcut. From version 3.0 the shortcut is <strong>Ctrl+H</strong> (single key shortcuts are not allowed anymore), prior to that it is just <strong>H</strong>.\n\nUp to version 2.0 support to work with the \"CompactHeader\" extension is included:\n<ul><li>When collapsed and all headers should be shown it will be expanded.</li><li>The previous state will be remembered and switched back to the collapsed header view when toggling back.</li></ul>\n<strong>To report any problems or issues, please do not use the reviews, but the provided support email (see on the right).</strong>\n\n<em>The original idea for this extensions is taken from \"Headers Toggle\" by Pontus Freyhult which unfortunately was not continued for current Thunderbird versions.</em>"
     },
     "developer_comments": {
         "en-US": "Please let me know (by email is appreciated) if there is anything that can be improved or added to this add-on or if you encouter any bugs."
@@ -102,17 +102,17 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-12-08T12:23:44Z",
+    "last_updated": "2020-11-10T17:34:15Z",
     "name": {
         "en-US": "Toggle Headers"
     },
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.09703,
-        "count": 8,
-        "average": 4.25,
-        "text_count": 8
+        "bayesian_average": 4.07778,
+        "count": 10,
+        "average": 4.2,
+        "text_count": 10
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-headers/reviews/",
     "requires_payment": false,
@@ -120,7 +120,7 @@
     "slug": "toggle-headers",
     "status": "public",
     "summary": {
-        "en-US": "Allows to switch between the normal header view and viewing all headers when viewing a message by using a keyboard shortcut (H)."
+        "en-US": "Allows to switch between the normal header view and viewing all headers when viewing a message by using a keyboard shortcut (Ctrl+H)."
     },
     "support_email": {
         "en-US": "mozilla@mattsch.com"
@@ -136,10 +136,9 @@
     "weekly_downloads": 23,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2015-11-03T05:35:17Z"
         }

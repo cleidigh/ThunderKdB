@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 784,
+    "average_daily_users": 1671,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-09-07T16:13:00Z",
     "current_version": {
-        "id": 2474411,
+        "id": 2474808,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/msghdr-toolbar-customize/versions/2474411",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/msghdr-toolbar-customize/versions/2474808",
         "files": [
             {
-                "id": 1017573,
-                "created": "2020-10-06T15:59:31Z",
-                "hash": "sha256:2f09e37adb813c39297451c6c6b4fbbd129135b12a46a51945e847d62c2ed885",
+                "id": 1017970,
+                "created": "2020-11-22T14:11:11Z",
+                "hash": "sha256:871d9d4eda478bef925890d9914737e6f8f1bab2f5764406991b8dc0365d92d7",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 12327,
+                "size": 17466,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017573/message_header_toolbar_customize-2.0.8-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017970/message_header_toolbar_customize-2.1.0-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
@@ -52,16 +52,17 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Suppress error messages on startup\n* Add separator before Customize Toolbar menu in the More menu button"
+            "en-US": "New: Icon display can be configured for each button\nNew: Quick search toolbar buttons can be customized\nNew: Button label can be changed for message header and quick search toolbars\nNew: Calendar buttons in the tab toolbar and Today pane button can be hidden\nNew: Star and Print buttons are added to the message header toolbar (hidden by default)",
+            "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/versions/2.0.8",
-        "version": "2.0.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/versions/2.1.0",
+        "version": "2.1.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Thunderbird 78 removes customize functionality of message header view toolbar. This add-on reproduces the feature on Thunderbird 78.\n\nYou can do the followings:\n* Change icon display: Icons beside text, Icons only or Text only\n* Change order of toolbar buttons\n* Hide unnecessary buttons\n* Add spacer and separator\n* Add Conversation, Tag and Forward As buttons, which removed from Thunderbird 78\n\nFor details, refer to my blog post.\n<a rel=\"nofollow\" href=\"https://hogiblog.blogspot.com/2020/09/customize-message-header-toolbar-of.html\">https://hogiblog.blogspot.com/2020/09/customize-message-header-toolbar-of.html</a>\n\nIn addition to that some new features are planned. See the following post too.\n<a rel=\"nofollow\" href=\"https://hogiblog.blogspot.com/2020/10/new-functionalities-of-message-header.html\">https://hogiblog.blogspot.com/2020/10/new-functionalities-of-message-header.html</a>",
-        "ja": "Thunderbird 78では、メッセージヘッダビューのツールバーのカスタマイズができなくなっています。このアドオンは、このカスタマイズを再現します。\n\n以下のカスタマイズができるようになります。\n* アイコン表示を変更: アイコンの横にテキスト、アイコンのみ、テキストのみ\n* ツールバーボタンの順序を変更\n* 不要なツールバーボタンを非表示\n* 空白と区切り線を追加\n* スレッド、タグ、形式を指定して転送ボタンを追加\n\n詳細は以下のブログ投稿を確認してください。\n<a rel=\"nofollow\" href=\"https://hogi-ja.blogspot.com/2020/09/thunderbird-78.html\">https://hogi-ja.blogspot.com/2020/09/thunderbird-78.html</a>\n\n上記以外にも、追加機能を実装中です。\n<a rel=\"nofollow\" href=\"https://hogi-ja.blogspot.com/2020/10/message-header-toolbar-customize-210.html\">https://hogi-ja.blogspot.com/2020/10/message-header-toolbar-customize-210.html</a>"
+        "en-US": "Thunderbird 78 removes customize functionality of message header view toolbar. This add-on reproduces the feature on Thunderbird 78.\n\nYou can do the followings:\n* Change icon display: Icons beside text, Icons only or Text only\n* Change order of toolbar buttons\n* Hide unnecessary buttons\n* Add spacer and separator\n* Add Conversation, Tag and Forward As buttons, which removed from Thunderbird 78\n\nFor details, refer to my blog post.\n<a rel=\"nofollow\" href=\"https://hogiblog.blogspot.com/2020/09/customize-message-header-toolbar-of.html\">https://hogiblog.blogspot.com/2020/09/customize-message-header-toolbar-of.html</a>\n\nFrom v2.1.0 the following features are added:\n* Customize icon display individually (Choose \"Individual\" for the \"Show\" selector)\n* Customize Quick Filter toolbar (right-click on the toolbar and choose Customize Toolbar)\n* Rename toolbar buttons\n* Hide Calendar and Today pane buttons\n* Star and Print buttons are added to the message header toolbar (hidden by default)\n\nSee the following post for details of v2.1.0 features:\n<a rel=\"nofollow\" href=\"https://hogiblog.blogspot.com/2020/10/new-functionalities-of-message-header.html\">https://hogiblog.blogspot.com/2020/10/new-functionalities-of-message-header.html</a>",
+        "ja": "Thunderbird 78では、メッセージヘッダビューのツールバーのカスタマイズができなくなっています。このアドオンは、このカスタマイズを再現します。\n\n以下のカスタマイズができるようになります。\n* アイコン表示を変更: アイコンの横にテキスト、アイコンのみ、テキストのみ\n* ツールバーボタンの順序を変更\n* 不要なツールバーボタンを非表示\n* 空白と区切り線を追加\n* スレッド、タグ、形式を指定して転送ボタンを追加\n\n詳細は以下のブログ投稿を確認してください。\n<a rel=\"nofollow\" href=\"https://hogi-ja.blogspot.com/2020/09/thunderbird-78.html\">https://hogi-ja.blogspot.com/2020/09/thunderbird-78.html</a>\n\nv2.1.0から、以下の新機能が追加されています。\n* アイコン表示を個別に設定\n　(\"表示\"のところで\"個々に設定\"を選択)\n* クイックフィルタツールバーをカスタマイズ\n　(クイックフィルタツールバーの上で右クリックしてツールバーをカスタマイズを選択)\n* ツールバーボタンのラベルを変更\n* カレンダー、ToDo、Todayペインボタンを非表示\n　(メインツールバーのコンテキストメニューでカレンダーボタンをカスタマイズを選択)\n* スター、印刷ボタンを追加 (デフォルトで非表示)\n\nv2.1.0の追加機能の詳細は、以下を確認してください。\n<a rel=\"nofollow\" href=\"https://hogi-ja.blogspot.com/2020/10/message-header-toolbar-customize-210.html\">https://hogi-ja.blogspot.com/2020/10/message-header-toolbar-customize-210.html</a>"
     },
     "developer_comments": {
         "en-US": "This is a workaround for the bug 1556261.\n<a href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1556261\" rel=\"nofollow\">https://bugzilla.mozilla.org/show_bug.cgi?id=1556261</a>"
@@ -83,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-10-08T09:40:40Z",
+    "last_updated": "2020-11-23T12:04:20Z",
     "name": {
         "en-US": "Message Header Toolbar Customize",
         "ja": "Message Header Toolbar Customize"
@@ -99,12 +100,12 @@
                 793,
                 45
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206136.png?modified=1600753052",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206136.png?modified=1606060193",
             "thumbnail_size": [
                 320,
                 18
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206136.png?modified=1600753052"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206136.png?modified=1606060193"
         },
         {
             "id": 206146,
@@ -116,12 +117,12 @@
                 324,
                 99
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206146.png?modified=1600753052",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206146.png?modified=1606060193",
             "thumbnail_size": [
                 320,
                 98
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206146.png?modified=1600753052"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206146.png?modified=1606060193"
         },
         {
             "id": 206138,
@@ -133,12 +134,12 @@
                 295,
                 317
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206138.png?modified=1600753052",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206138.png?modified=1606060193",
             "thumbnail_size": [
                 186,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206138.png?modified=1600753052"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206138.png?modified=1606060193"
         },
         {
             "id": 206153,
@@ -150,12 +151,12 @@
                 472,
                 555
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206153.png?modified=1600753052",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206153.png?modified=1606060193",
             "thumbnail_size": [
                 170,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206153.png?modified=1600753052"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206153.png?modified=1606060193"
         },
         {
             "id": 206150,
@@ -167,12 +168,12 @@
                 347,
                 66
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206150.png?modified=1600753052",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206150.png?modified=1606060193",
             "thumbnail_size": [
                 320,
                 61
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206150.png?modified=1600753052"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206150.png?modified=1606060193"
         },
         {
             "id": 206154,
@@ -184,12 +185,12 @@
                 332,
                 36
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206154.png?modified=1600753052",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206154.png?modified=1606060193",
             "thumbnail_size": [
                 320,
                 35
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206154.png?modified=1600753052"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206154.png?modified=1606060193"
         },
         {
             "id": 206151,
@@ -201,20 +202,88 @@
                 1101,
                 67
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206151.png?modified=1600753052",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206151.png?modified=1606060193",
             "thumbnail_size": [
                 320,
                 19
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206151.png?modified=1600753052"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206151.png?modified=1606060193"
+        },
+        {
+            "id": 206305,
+            "caption": {
+                "en-US": "Customize for each button. Plus, Forward button is rename to Fwd.",
+                "ja": "ボタンごとに個別に設定、ForwardボタンをFwdにリネーム"
+            },
+            "image_size": [
+                412,
+                66
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206305.png?modified=1606060193",
+            "thumbnail_size": [
+                320,
+                51
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206305.png?modified=1606060193"
+        },
+        {
+            "id": 206306,
+            "caption": {
+                "en-US": "Customize Quick Filter toolbar (icon only display)",
+                "ja": "クイックフィルタツールバーをカスタマイズ(アイコンのみ表示)"
+            },
+            "image_size": [
+                593,
+                85
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206306.png?modified=1606060193",
+            "thumbnail_size": [
+                320,
+                46
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206306.png?modified=1606060193"
+        },
+        {
+            "id": 206307,
+            "caption": {
+                "en-US": "Star and Print buttons",
+                "ja": "スター、印刷ボタン"
+            },
+            "image_size": [
+                407,
+                40
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206307.png?modified=1606060193",
+            "thumbnail_size": [
+                320,
+                31
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206307.png?modified=1606060193"
+        },
+        {
+            "id": 206308,
+            "caption": {
+                "en-US": "Hide Calendar and Tasks buttons",
+                "ja": "カレンダー、ToDoボタンを非表示"
+            },
+            "image_size": [
+                342,
+                107
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206308.png?modified=1606060193",
+            "thumbnail_size": [
+                320,
+                100
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206308.png?modified=1606060193"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.83531,
-        "count": 15,
-        "average": 4.9333,
-        "text_count": 15
+        "bayesian_average": 4.85424,
+        "count": 17,
+        "average": 4.9412,
+        "text_count": 17
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/reviews/",
     "requires_payment": false,

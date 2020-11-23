@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 9145,
+    "average_daily_users": 9579,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,43 +28,43 @@
     "contributions_url": "",
     "created": "2011-06-23T15:49:52Z",
     "current_version": {
-        "id": 2474631,
+        "id": 2474765,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
-                "min": "74.0"
+                "max": "69.0",
+                "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2474631",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2474765",
         "files": [
             {
-                "id": 1017793,
-                "created": "2020-11-04T15:05:41Z",
-                "hash": "sha256:dc41aa9864f995d022bb6b7041b730f6304e873af14a3032f9abccea44b8c21b",
-                "is_restart_required": false,
+                "id": 1017927,
+                "created": "2020-11-16T19:05:21Z",
+                "hash": "sha256:bdcce8520c9a6ea99e5ed718fb57b792a73c1a405de0577f0cf5968712672109",
+                "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1067257,
+                "size": 685112,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017793/smarttemplates-3.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017927/smarttemplates-2.12-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 7344,
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.0"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/2.12"
         },
         "release_notes": {
-            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.0\">can be found here</a>\n\nYou can also find there a discounted sale for Pro and Standard licenses for 2 weeks in November.\n\n<b>Latest News</b>\n\nWe had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a Pro license</a>\n\nMigration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.\n\n<b>Changes / Bug Fixes</b>\n<ul>    <li> Use the new mail extension with experiment APIs method (WindowLoader). This loads the overlay dynamically -  the advantage being that the Add-ons now works without restarting. You can also disable / uninstall without having to  restart Thunderbird.</li>    <li>Removed Shim Code - this was code for backwards compatibilty with older Thundebrird versions as well as SeaMonkey and Postbox    </li>    <li>Removed support for SeaMonkey</li>    <li>Removed Stationery references &amp; configuration</li>    <li>Rewrote filling in variables and focus method to work with new address widgets</li>    <li>Rewrite all template dropdowns. This is based on a hack supplied by John Bieling, thanks very much for all the help.</li></ul>"
+            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"http://smarttemplates.quickfolders.org/version.html#2.12\">can be found here</a>\n\n<b>Latest News</b>\n\n<ul>  <li>    I have started to rewrite all mail Add-ons for compatibility with Thunderbird 78. I have hired a developer and am currently thinking of ways to fund raise the development effort - probably several man weeks of rewriting. please do not manually update to Thunderbird78 yet. An automatic update will not happen until September 2020.\n    \n    If you are interested in using a version of SmartTemplate&amp;#8308 that works with Thunderbird 78, consider         \n    <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buying a license</a>\n    to support the project.\n\n    In other news we have just successfully migrated all Add-on support sites away from the free host on &lt;span class=\"emphasis\"&gt;<a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a>, which is now closed&lt;/span&gt;. To keep having support sites and ongoing development, please \n    <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a license</a>\n    (the migration has cost around $650, so there are some expense I hope to recover from the community of users).\n  </li></ul>\n<b>Bug Fixes</b>\n<ul>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/77\">[issue 77]</a> %file()% path truncated at front by 1 letter on Mac OS\n  </li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/94\">[issue 94]</a> SmartTemplates does not insert template when Forwarding inline based on an Email written with ST</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/59\">[issue 58]</a> removed dead links to <a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a></li> </ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.0",
-        "version": "3.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/2.12",
+        "version": "2.12"
     },
     "default_locale": "en-US",
     "description": {
@@ -92,7 +92,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2020-11-05T09:50:07Z",
+    "last_updated": "2020-11-16T21:08:20Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",
@@ -315,10 +315,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.45219,
-        "count": 70,
-        "average": 4.4714,
-        "text_count": 70
+        "bayesian_average": 4.51596,
+        "count": 71,
+        "average": 4.5352,
+        "text_count": 71
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/reviews/",
     "requires_payment": true,
@@ -372,11 +372,10 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
+            "comp68": true,
             "comp69plus": true,
-            "comp78plus": true,
-            "comp61plus": true,
-            "comp60pv": true,
-            "comp60pv_date": "2018-04-26T18:04:54Z"
+            "comp60": true,
+            "comp61plus": true
         }
     }
 }

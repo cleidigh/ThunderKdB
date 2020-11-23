@@ -1,5 +1,147 @@
 [
     {
+        "id": 2474815,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dkim-verifier/versions/2474815",
+        "files": [
+            {
+                "id": 1017977,
+                "created": "2020-11-22T23:28:00Z",
+                "hash": "sha256:c8de1a52ae4ed7e0671f8fb73dce56c23d5e2264722a4eb3bfef4629bc022108",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 901408,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017977/dkim_verifier-4.0.0pre4-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "storage",
+                    "tabs"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "- now requires at least Thunderbird 78\n - fixed incompatibility with Thunderbird 78 (#199)\n - removed option to show DKIM result in the statusbarpanel\n - Authentication-Results header: fixed parsing of version\n - libunbound resolver: Don't provide a default path\n - libunbound resolver: Improve options description\n - added about page in options\n - updated default rules and favicons (#208, #209, #210)\n\nChanges since v4.0.0pre3:\n\n- Don't provide a default libunbound path\n- Sign rules: Special treatment of outgoing messages now supported\n- Fixed relaxed ARH parsing option (#221)\n- Fixed backtracking issues in parsing of from header, resulting in `InternalError: too much recursion`\n- Fixed options page not correctly working if it was already open on start\n- Add about page\n- updated default rules and favicons (#209)\n\nCurrent limitations:\n\n- Storing of DKIM keys not implemented\n- Sign rules: DMARC heuristic not implemented\n- DKIM action in the header not implemented\n\nRemoved:\n\n- Option to show DKIM result in the statusbarpanel"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/versions/4.0.0pre4",
+        "version": "4.0.0pre4"
+    },
+    {
+        "id": 2474672,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dkim-verifier/versions/2474672",
+        "files": [
+            {
+                "id": 1017834,
+                "created": "2020-11-09T00:00:53Z",
+                "hash": "sha256:b48be2a01cdd904957d0614edef0d7c82b375a0c1e22f2af44f38ebd269e44f1",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 879664,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017834/dkim_verifier-4.0.0pre3-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "storage",
+                    "tabs"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "- now requires at least Thunderbird 78\n - fixed incompatibility with Thunderbird 78 (#199)\n - removed option to show DKIM result in the statusbarpanel\n - Authentication-Results header: fixed parsing of version\n\nKnown issues:\n\n- Storing of DKIM keys not implemented\n- Sign rules: DMARC heuristic not implemented\n- Sign rules: Special treatment of outgoing messages not implemented\n- DKIM action in the header not implemented\n\nRemoved:\n\n- Option to show DKIM result in the statusbarpanel"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/versions/4.0.0pre3",
+        "version": "4.0.0pre3"
+    },
+    {
         "id": 2473267,
         "channel": "listed",
         "compatibility": {

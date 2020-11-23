@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/1/1226/1226917.png?modified=1465692041"
         }
     ],
-    "average_daily_users": 1619,
+    "average_daily_users": 1179,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
@@ -19,30 +19,34 @@
     "contributions_url": "",
     "created": "2011-03-01T17:48:12Z",
     "current_version": {
-        "id": 2474052,
+        "id": 2474763,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailhops/versions/2474052",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailhops/versions/2474763",
         "files": [
             {
-                "id": 1017214,
-                "created": "2020-08-07T21:43:41Z",
-                "hash": "sha256:a41a2c2a8eca9c787345eaec9578c868abe9bc593df727b67b6198dd5f8b031e",
-                "is_restart_required": true,
+                "id": 1017925,
+                "created": "2020-11-16T18:24:02Z",
+                "hash": "sha256:bee5cd0b3a55e0abcbc6b21b606d70674c9916126f0d02f59606a297eff8e694",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 274079,
+                "size": 1919419,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017214/mailhops-3.8.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017925/mailhops-4.1.1-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -51,11 +55,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Updated icon for TLS or SSL\nRemoved dev console.log"
+            "en-US": "- Added daily message cache.\n- Added retrieve API key in preferences."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailhops/versions/3.8.1",
-        "version": "3.8.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailhops/versions/4.1.1",
+        "version": "4.1.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -69,49 +73,35 @@
     "homepage": {
         "en-US": "https://www.mailhops.com"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/287/287743-64.png?modified=1577384497",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/287/287743-64.png?modified=1605200311",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/287/287743-32.png?modified=1577384497",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/287/287743-64.png?modified=1577384497"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/287/287743-32.png?modified=1605200311",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/287/287743-64.png?modified=1605200311"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-08-11T08:12:02Z",
+    "last_updated": "2020-11-16T19:28:13Z",
     "name": {
         "en-US": "MailHops"
     },
     "previews": [
         {
-            "id": 205871,
-            "caption": null,
-            "image_size": [
-                1280,
-                518
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205871.png?modified=1577384502",
-            "thumbnail_size": [
-                320,
-                129
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205871.png?modified=1577384502"
-        },
-        {
-            "id": 205665,
+            "id": 206257,
             "caption": {
-                "en-US": "Country Column in messages"
+                "en-US": "Mail Hops list"
             },
             "image_size": [
-                584,
-                192
+                671,
+                800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205665.png?modified=1577384497",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206257.png?modified=1605200258",
             "thumbnail_size": [
-                320,
-                105
+                168,
+                200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205665.png?modified=1577384497"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206257.png?modified=1605200258"
         },
         {
             "id": 159308,
@@ -122,12 +112,12 @@
                 661,
                 525
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/159/159308.png?modified=1577384497",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/159/159308.png?modified=1605200311",
             "thumbnail_size": [
                 252,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/159/159308.png?modified=1577384497"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/159/159308.png?modified=1605200311"
         },
         {
             "id": 191472,
@@ -138,28 +128,28 @@
                 700,
                 443
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/191/191472.png?modified=1577384497",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/191/191472.png?modified=1605200311",
             "thumbnail_size": [
                 316,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/191/191472.png?modified=1577384497"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/191/191472.png?modified=1605200311"
         },
         {
-            "id": 181614,
+            "id": 206256,
             "caption": {
-                "en-US": "Customize the MailHops bar"
+                "en-US": "MailHops Preferences"
             },
             "image_size": [
-                675,
-                525
+                771,
+                800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/181/181614.png?modified=1577384497",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206256.png?modified=1605200316",
             "thumbnail_size": [
-                257,
+                193,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/181/181614.png?modified=1577384497"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206256.png?modified=1605200316"
         }
     ],
     "public_stats": true,
@@ -205,10 +195,9 @@
     "weekly_downloads": 47,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

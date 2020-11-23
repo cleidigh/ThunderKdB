@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8820,
+    "average_daily_users": 8433,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,30 +18,35 @@
     "contributions_url": "",
     "created": "2013-05-13T12:00:13Z",
     "current_version": {
-        "id": 2473267,
+        "id": 2474815,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dkim-verifier/versions/2473267",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dkim-verifier/versions/2474815",
         "files": [
             {
-                "id": 1016379,
-                "created": "2020-01-22T17:51:54Z",
-                "hash": "sha256:d1be8866c1f04a00af3e246907818e18b88ed7e1fdd8d33581b98590c74d42e0",
-                "is_restart_required": true,
+                "id": 1017977,
+                "created": "2020-11-22T23:28:00Z",
+                "hash": "sha256:c8de1a52ae4ed7e0671f8fb73dce56c23d5e2264722a4eb3bfef4629bc022108",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 886041,
+                "size": 901408,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016379/dkim_verifier-3.1.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017977/dkim_verifier-4.0.0pre4-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "storage",
+                    "tabs"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 22,
             "name": {
@@ -73,11 +78,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "- fix default rules and favicons (#197)\n - includes changes from 2.2.0:\n   - Authentication-Results header: fix relaxed parsing option and trailing \";\"\n   - exposed option on how to treat weak keys. Default is now ignore (was warning since 2.1.0) (#174)\n   - fixed default text color for unsigned e-mail in dark theme if highlighting of From header is enabled (#181)\n   - libunbound resolver: add ability to explicitly load dependencies of libunbound (#170, #179)\n   - updated default rules and favicons (#165, #168, #169, #180)"
+            "en-US": "- now requires at least Thunderbird 78\n - fixed incompatibility with Thunderbird 78 (#199)\n - removed option to show DKIM result in the statusbarpanel\n - Authentication-Results header: fixed parsing of version\n - libunbound resolver: Don't provide a default path\n - libunbound resolver: Improve options description\n - added about page in options\n - updated default rules and favicons (#208, #209, #210)\n\nChanges since v4.0.0pre3:\n\n- Don't provide a default libunbound path\n- Sign rules: Special treatment of outgoing messages now supported\n- Fixed relaxed ARH parsing option (#221)\n- Fixed backtracking issues in parsing of from header, resulting in `InternalError: too much recursion`\n- Fixed options page not correctly working if it was already open on start\n- Add about page\n- updated default rules and favicons (#209)\n\nCurrent limitations:\n\n- Storing of DKIM keys not implemented\n- Sign rules: DMARC heuristic not implemented\n- DKIM action in the header not implemented\n\nRemoved:\n\n- Option to show DKIM result in the statusbarpanel"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/versions/3.1.0",
-        "version": "3.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dkim-verifier/versions/4.0.0pre4",
+        "version": "4.0.0pre4"
     },
     "default_locale": "en-US",
     "description": {
@@ -120,7 +125,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2020-01-29T16:17:22Z",
+    "last_updated": "2020-11-23T13:04:23Z",
     "name": {
         "fr": "DKIM Verifier",
         "de": "DKIM Verifier",
@@ -182,7 +187,7 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.99306,
+        "bayesian_average": 3.99304,
         "count": 28,
         "average": 4.0357,
         "text_count": 28
@@ -219,10 +224,15 @@
     "weekly_downloads": 2129,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-09T00:00:53Z",
+            "comp78pv_version": "4.0.0pre3",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-04-19T21:49:43Z"
         }

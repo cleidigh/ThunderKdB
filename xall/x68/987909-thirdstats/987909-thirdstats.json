@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14196/14196754.png?modified=1600788309"
         }
     ],
-    "average_daily_users": 153,
+    "average_daily_users": 413,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,31 @@
     "contributions_url": "https://paypal.me/devmount",
     "created": "2020-09-28T12:23:48Z",
     "current_version": {
-        "id": 2474577,
+        "id": 2474793,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474577",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474793",
         "files": [
             {
-                "id": 1017739,
-                "created": "2020-10-27T06:08:40Z",
-                "hash": "sha256:5749cdb745bb9768d877afa56fc1a61b6a106abb4b896bfdec1757ebb90a8f3b",
+                "id": 1017955,
+                "created": "2020-11-20T17:00:50Z",
+                "hash": "sha256:9643bf68d1a1c824d82d4ac9eb6bddad54078efd571e9886ad6648835b0cad58",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 235047,
+                "size": 260247,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017739/thirdstats-0.6.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017955/thirdstats-0.8.0-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "messagesRead",
-                    "tabs"
+                    "tabs",
+                    "storage"
                 ]
             }
         ],
@@ -77,15 +78,16 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "- improve documentation\n- new translations: Catalan, Swedish, Japanese, simple Chinese\n- user defined start of week (usage of corresponding Thunderbird calendar setting)\n- light theme with manual switch in footer of stats page\n- improve security by codeql analysis\n- improve heatmap visual appearance\n- improve link appearance\n- exclude zero dates for date range calculation"
+            "en-US": "- add translation contributors\n- improve contribution guidelines for new localization management\n- add logo to stats page heading\n- add-on option for start of week\n- remove legacy prefs\n- use more meaningful stats icon and tooltip in popup heading\n- set stats tab title depending on selected account\n- set stats tab favicon\n- make folder processing even more robust"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/0.6.0",
-        "version": "0.6.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/0.8.0",
+        "version": "0.8.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This add-on provides detailed visual statistics of Thunderbird email accounts.\n\n<a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats\">Readme</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=bug_report.md\">Bug report</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=feature_request.md\">Feature request</a>\n\n<strong>Features</strong>\n<ul><li>Total numbers of emails and folders for all of your Thunderbird accounts</li><li>Sum of received and sent emails per year and per month</li><li>Sum of received and sent emails per daytime and per weekday</li><li>Temporal distribution of received and sent emails per weekday per hour</li><li>Leaderboards of most contacted email addresses</li><li>Switch between all Thunderbird accounts (local accounts included)</li><li>Switch between a dark and a light theme</li><li>Language support for Catalan, Chinese, Czech, English, French, Galician, German, Hindi, Italian, Polish, Portuguese, Russian, Spanish, Swedish, and Thai (your language is missing? Create a <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=new_translation.md\">translation request</a>.)</li></ul>\n<strong>Additional hints</strong>\nTo properly recognize emails as sent, make sure to configure all email addresses you write from as identities for your email account. You can do so under account settings &gt; select your account &gt; click button more identities at the bottom and add or modify identities as you need.\n\nAlso keep in mind, that the processing of large mailboxes can take a lot of time."
+        "en-US": "This add-on provides detailed visual statistics of Thunderbird email accounts.\n\n<a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats\">Readme</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=bug_report.md\">Bug report</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=feature_request.md\">Feature request</a>\n\n<strong>Features</strong>\n<ul><li>Total numbers of emails and folders for all of your Thunderbird accounts</li><li>Sum of received and sent emails per year, per quarter, per month and per week</li><li>Sum of received and sent emails per daytime, per weekday and per month of year</li><li>Temporal distribution of received and sent emails per weekday per hour</li><li>Leaderboards of most contacted email addresses</li><li>Switch between all Thunderbird accounts (local accounts included)</li><li>Switch between a dark and a light theme</li><li>Language support for Catalan, Chinese, Czech, English, French, Galician, German, Hindi, Italian, Polish, Portuguese, Russian, Spanish, Swedish, and Thai (your language is missing? Create a <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=new_translation.md\">translation request</a>.)</li></ul>\n<strong>Additional hints</strong>\nTo properly recognize emails as sent, make sure to configure all email addresses you write from as identities for your email account. You can do so under account settings &gt; select your account &gt; click button more identities at the bottom and add or modify identities as you need. Use the add-on options to define identities for local accounts.\n\nAlso keep in mind, that the processing of large mailboxes can take a lot of time.",
+        "de": "Dieses Add-on bietet eine detaillierte Übersicht statistischer Auswertungen der Thunderbird E-Mail Konten.\n\n<a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats\">Dokumentation</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=bug_report.md\">Fehler melden</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=feature_request.md\">Feature-Wunsch</a>\n\n<strong>Funktionen</strong>\n<ul><li>Gesamtanzahl aller E-Mails und Ordner aller Thunderbird Konten</li><li>Zusammenfassung empfangener und gesendeter E-Mails pro Jahr, pro Quartal, pro Monat und pro Woche</li><li>Zusammenfassung empfangener und gesendeter E-Mails pro Uhrzeit, pro Wochentag und pro Kalendermonat</li><li>Zeitliche Verteilung empfangener und gesendeter E-Mails pro Wochentag pro Stunde</li><li>Ranglisten der meist kontaktierten E-Mail-Adressen</li><li>Schnelles Wechseln zwischen allen Thunderbird Kontent (lokale Konten eingeschlossen)</li><li>Wechseln zwischen dunklem und hellem Theme</li><li>Sprachunterstützung für Katalanisch, Chinesisch, Tschechisch, Englisch, Französisch, Galizisch, Deutsch, Hindi, Italienisch, Polnisch, Portugiesisch, Russisch, Spanisch, Schwedisch und Thailändisch (deine Sprache fehlt? Erstelle einen <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=new_translation.md\">Übersetzungs-Wunsch</a>.)</li></ul>\n<strong>Hinweise</strong>\nDamit E-Mails korrekt als gesendet erkannt werden, muss sichergestellt sein, dass alle eigenen E-Mail-Adressen als Identitäten konfiguriert sind. Die Einstellung kann unter Kontoeinstellungen &gt; Konto auswählen &gt; Button \"Mehr Identitäten\" vorgenommen werden. Identitäten für lokale Konten können in den Add-on Optionen eingestellt werden.\n\nBitte beachten, dass die Verarbeitung sehr großer Postfächer sehr lang dauern kann."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/edit",
@@ -105,10 +107,24 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-28T10:58:30Z",
+    "last_updated": "2020-11-20T17:05:02Z",
     "name": {
+        "ru": "ThirdStats",
+        "fr": "ThirdStats",
         "en-US": "ThirdStats",
-        "de": "ThirdStats"
+        "pt-PT": "ThirdStats",
+        "zh-TW": "ThirdStats",
+        "ca": "ThirdStats",
+        "de": "ThirdStats",
+        "tr": "ThirdStats",
+        "it": "ThirdStats",
+        "zh-CN": "ThirdStats",
+        "pl": "ThirdStats",
+        "th": "ThirdStats",
+        "cs": "ThirdStats",
+        "sv-SE": "ThirdStats",
+        "ja": "ThirdStats",
+        "es": "ThirdStats"
     },
     "previews": [
         {
@@ -210,10 +226,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.85406,
-        "count": 1,
+        "bayesian_average": 4.34499,
+        "count": 2,
         "average": 5,
-        "text_count": 1
+        "text_count": 2
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/reviews/",
     "requires_payment": false,
@@ -221,8 +237,22 @@
     "slug": "thirdstats",
     "status": "public",
     "summary": {
+        "ru": "Красиво визуализированная статистика для ваших аккаунтов в Thunderbird Email",
+        "fr": "Statistiques magnifiquement affichées pour vos comptes de courrier Thunderbird",
         "en-US": "Beautifully visualized statistics for your Thunderbird Email Accounts",
-        "de": "Wunderschön visualisierte Statistiken für Thunderbird E-Mail-Konten"
+        "pt-PT": "Visualização elegante de estatísticas para suas contas de e-mail Thunderbird",
+        "zh-TW": "視覺化您 Thunderbird 電子郵件帳號的統計資訊",
+        "ca": "Estadístiques visualment belles per als seus comptes de correu electrònic del Thunderbird",
+        "de": "Wunderschön visualisierte Statistiken für Thunderbird E-Mail-Konten",
+        "tr": "Thunderbird E-posta Hesaplarınız için güzel istatistikler",
+        "it": "Uno splendido modo di visualizzare le statistiche per i tuoi account su Thunderbird",
+        "zh-CN": "精美地呈现您 Thunderbird 邮件账号数据",
+        "pl": "Wspaniale ukazane statystyki dla twoich kont pocztowych w Thunderbirdzie",
+        "th": "สถิติภาพที่สวยงามให้เมล Thunderbird ของคุณ",
+        "cs": "Krásně vizualizované statistiky pro vaše e-mailové účty Thunderbird",
+        "sv-SE": "Vackert visualiserad statistik för dina e-postkonton i Thunderbird",
+        "ja": "Thunderbirdメールアカウントの統計",
+        "es": "Estadísticas visualmente bellas para sus cuentas de correo electrónico de Thunderbird"
     },
     "support_email": {
         "en-US": "thirdstats@devmount.com"
@@ -231,11 +261,18 @@
         "en-US": "https://github.com/devmount/third-stats"
     },
     "tags": [
+        "activity",
         "analytics",
         "charts",
+        "counts",
         "figures",
         "firefox57",
-        "statistics"
+        "leaderboard",
+        "numbers",
+        "progress",
+        "statistics",
+        "stats",
+        "usage"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/",

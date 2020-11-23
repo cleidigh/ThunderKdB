@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 34110,
+    "average_daily_users": 38229,
     "categories": {
         "thunderbird": [
             "calendar",
@@ -19,26 +19,26 @@
     "contributions_url": "https://www.paypal.me/johnbieling",
     "created": "2018-08-20T06:58:40Z",
     "current_version": {
-        "id": 2474471,
+        "id": 2474678,
         "compatibility": {
             "thunderbird": {
                 "max": "78.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dav-4-tbsync/versions/2474471",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dav-4-tbsync/versions/2474678",
         "files": [
             {
-                "id": 1017633,
-                "created": "2020-10-16T14:50:53Z",
-                "hash": "sha256:d18300cf8cda65ea13f9c5a48ecd5b0338dc2fb49f495ffdc038abb030a62b68",
+                "id": 1017840,
+                "created": "2020-11-09T09:16:18Z",
+                "hash": "sha256:57c0a94e37d9fbce3b9d2ca61ebf7d8d44e2422e090c196aa1149e758a17f758",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 291887,
+                "size": 292361,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017633/provider_fur_caldav_carddav-1.21-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017840/provider_fur_caldav_carddav-1.24-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -52,13 +52,13 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dav-4-tbsync/versions/1.21",
-        "version": "1.21"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/dav-4-tbsync/versions/1.24",
+        "version": "1.24"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Supported servers and service providers:\n - <a href=\"https://github.com/jobisoft/DAV-4-TbSync/wiki/Compatibility-list-(DAV)\" rel=\"nofollow\">CalDAV &amp; CardDAV (OwnCloud, Nextcloud, iCloud, Google, ...)</a>\n\nNote for Google:\n\nUnfortunately, Google CalDAV does not support tasks, this was simply not implemented by Google. In addition, Google CardDAV does not support any groups nor categories, the corresponding feature has not been implemented by Google as well.",
-        "de": "Unterstützte Server und Dienstanbieter:\n - <a href=\"https://github.com/jobisoft/DAV-4-TbSync/wiki/Compatibility-list-(DAV)\" rel=\"nofollow\">CalDAV &amp; CardDAV (OwnCloud, Nextcloud, iCloud, Google, ...)</a>\n\nHinweis für Google: \n\nLeider unterstützt Google CalDAV keine Aufgaben, das wurde von Google einfach nicht implementiert. Außerdem unterstützt Google CardDAV keine Gruppe oder Kategorien, auch hier wurde das entsprechende Feature nicht auf Seiten von Google implementiert."
+        "en-US": "Supported servers and service providers:\n - <a rel=\"nofollow\" href=\"https://github.com/jobisoft/DAV-4-TbSync/wiki/Compatibility-list-(DAV)\">CalDAV &amp; CardDAV (OwnCloud, Nextcloud, iCloud, ...)</a>\n\nThis Add-on does not support Goolge. Alternatives:\n- <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/cardbook/\">CardBook</a>\n- <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/provider-for-google-calendar/\">Provider for Google Calendar</a>",
+        "de": "Unterstützte Server und Dienstanbieter:\n - <a rel=\"nofollow\" href=\"https://github.com/jobisoft/DAV-4-TbSync/wiki/Compatibility-list-(DAV)\">CalDAV &amp; CardDAV (OwnCloud, Nextcloud, iCloud, ...)</a>\n\nDieses Add-on bietet keine Unterstützung für Google. Alternativen:\n- <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/cardbook/\">CardBook</a>\n- <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/provider-for-google-calendar/\">Provider for Google Calendar</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/dav-4-tbsync/edit",
@@ -78,7 +78,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-16T21:12:19Z",
+    "last_updated": "2020-11-09T10:34:51Z",
     "name": {
         "en-US": "Provider for CalDAV & CardDAV",
         "de": "Provider für CalDAV & CardDAV"
@@ -155,7 +155,7 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.60713,
+        "bayesian_average": 4.60706,
         "count": 29,
         "average": 4.6552,
         "text_count": 29
@@ -166,8 +166,8 @@
     "slug": "dav-4-tbsync",
     "status": "public",
     "summary": {
-        "en-US": "This extension adds support for CalDAV &amp; CardDAV accounts to the Thunderbird Sync manager \"TbSync\". Including iCloud, Google, ownCloud, Nextcloud, Radicale and many more.",
-        "de": "Erweitert den Thunderbird Sync Manager \"TbSync\" um die Möglichkeit, CalDAV &amp; CardDAV Konten zu verwalten und zu synchronisieren. Einschließlich iCloud, Google, ownCloud, Nextcloud, Radicale und vielen mehr."
+        "en-US": "This extension adds support for CalDAV &amp; CardDAV accounts to the Thunderbird Sync manager \"TbSync\". Including iCloud, ownCloud, Nextcloud, Radicale and many more.",
+        "de": "Erweitert den Thunderbird Sync Manager \"TbSync\" um die Möglichkeit, CalDAV &amp; CardDAV Konten zu verwalten und zu synchronisieren. Einschließlich iCloud, ownCloud, Nextcloud, Radicale und vielen mehr."
     },
     "support_email": {
         "en-US": "john.bieling@gmx.de",
@@ -182,7 +182,6 @@
         "carddav",
         "dav",
         "firefox57",
-        "google",
         "icloud",
         "nextcloud",
         "owncloud",

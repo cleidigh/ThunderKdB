@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 151316,
+    "average_daily_users": 156504,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,26 +19,26 @@
     "contributions_url": "http://paypal.me/cleidigh",
     "created": "2019-07-15T04:15:54Z",
     "current_version": {
-        "id": 2474456,
+        "id": 2474754,
         "compatibility": {
             "thunderbird": {
                 "max": "78.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/importexporttools-ng/versions/2474456",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/importexporttools-ng/versions/2474754",
         "files": [
             {
-                "id": 1017618,
-                "created": "2020-10-13T20:32:15Z",
-                "hash": "sha256:28e4e275846ff4ac4018b6388e8177da0eaecb82e4e8537184e2e56efcdb217f",
+                "id": 1017916,
+                "created": "2020-11-16T00:05:09Z",
+                "hash": "sha256:8042aa3e6f72bf64f9ab7b1fd85ab9f86fc41853074a8ef44b4888e106ad8ff3",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 446184,
+                "size": 453782,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017618/importexporttools_ng-10.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017916/importexporttools_ng-10.0.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -72,15 +72,15 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Version 10.0.1 : Maintenance Release - October 14, 2020\n\nBug Issues Fixed:\n- #163, #158, #153 Fixed UTF-8 conversion for plaintext/csv\n- #161 Fix CSV date format\n\nNotables:\n- Add better header err detection, debug output\n- Allow index date format for CSV\n\nKnown Issues:\n- Backup not working in 78"
+            "en-US": "Version 10.0.2 : Maintenance Release - November 14, 2020\n\nBug Issues Fixed:\n\n- #140 Handle right click on unselected folder\n- #149 EML import fixes\n- #154 Backup does not run if File/Exit used\n- #157, #159 Backups failing\n- #173 Handle no selected folder\n- #174 Sender_email &amp; recipient_email  tokens missing for  attachments\n- #175 Support comma and single quote in filenames\n\nNotables:\n\n- Added Backup on exit option\n- Use `Index, CSV Date Format` option for full custom format (options Misc tab)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools-ng/versions/10.0.1",
-        "version": "10.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools-ng/versions/10.0.2",
+        "version": "10.0.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "ImportExportTools NG adds import and export functions for messages, folders and profiles.\n\nVersion 10.0.0 : New Features - September 26, 2020\n\n- New locales: el\n- Index custom date format\n- new tokens for filenames : sender/recipient e-mail\n- Use `%d` in print settings header/footer for custom date\n\nBug Issues Fixed:\n- #118, #63 Fixed conversion for plaintext\n- #57 Use ForceDBClose to Close open files (fixes folders and messages)\n- #77 Use global settings for PDF\n- #130 scheduled backups\n- #134 Correctly handle read, forwarded, replied flags\n\nThanks to many! : See issues\nThis derivative add-on is the update of the original work of Paolo \"Kaosmos\", ImportExportTools. Original Add-on homepage:\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/importexporttools\">https://addons.thunderbird.net/thunderbird/addon/importexporttools</a>\n\nFeatures:\n\nMenus:\n - Tools (most import and export functions including profiles)\n - Folders (most import and export functions)\n - Search dialog (export search results)\n - Selected messages (export or copy to clipboard)\n\nExport:\n - Individual folder(s), optionally including subfolders (mbox format)\n - All folder messages in the following formats:\n   - EML, HTML, PDF, CSV or plaintext\n   - Export as individual files or a single file\n   - Optionally include attachments\n   - Export indexes as plain text or CSV\n   - Extensive file naming convention options\n   - Export messages from search dialog\n\nImport:\n - Mbox files (including structure)\n - EML &amp; EMLX files\n - Individual or all directory files\n\nProfiles:\n - Export complete profile or just the mail files\n - Import profile\n - Auto profile backup with schedule on shutdown"
+        "en-US": "ImportExportTools NG adds import and export functions for messages, folders and profiles.\n\nVersion 10.0.2 : Maintenance Release - November 14, 2020\n\nBug Issues Fixed:\n\n- #140 Handle right click on unselected folder\n- #149 EML import fixes\n- #154 Backup does not run if File/Exit used\n- #157, #159 Backups failing\n- #173 Handle no selected folder\n- #174 Sender_email &amp; recipient_email  tokens missing for  attachments\n- #175 Support comma and single quote in filenames\n\nNotables:\n\n- Added Backup on exit option\n- Use `Index, CSV Date Format` option for full custom format (options Misc tab)\n\nThanks to many! : See issues\nThis derivative add-on is the update of the original work of Paolo \"Kaosmos\", ImportExportTools. Original Add-on homepage:\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/importexporttools\">https://addons.thunderbird.net/thunderbird/addon/importexporttools</a>\n\nFeatures:\n\nMenus:\n - Tools (most import and export functions including profiles)\n - Folders (most import and export functions)\n - Search dialog (export search results)\n - Selected messages (export or copy to clipboard)\n\nExport:\n - Individual folder(s), optionally including subfolders (mbox format)\n - All folder messages in the following formats:\n   - EML, HTML, PDF, CSV or plaintext\n   - Export as individual files or a single file\n   - Optionally include attachments\n   - Export indexes as plain text or CSV\n   - Extensive file naming convention options\n   - Export messages from search dialog\n\nImport:\n - Mbox files (including structure)\n - EML &amp; EMLX files\n - Individual or all directory files\n\nProfiles:\n - Export complete profile or just the mail files\n - Import profile\n - Auto profile backup with schedule on shutdown"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/importexporttools-ng/edit",
@@ -99,7 +99,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-14T15:51:51Z",
+    "last_updated": "2020-11-16T10:49:45Z",
     "name": {
         "ru": "ImportExportTools NG",
         "fr": "ImportExportTools NG",
@@ -183,10 +183,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.24967,
-        "count": 91,
-        "average": 4.2637,
-        "text_count": 91
+        "bayesian_average": 4.23672,
+        "count": 96,
+        "average": 4.25,
+        "text_count": 96
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/importexporttools-ng/reviews/",
     "requires_payment": false,

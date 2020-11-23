@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 64160,
+    "average_daily_users": 29616,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -29,30 +29,41 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Send%20Later%20add%2don%20%28%245%2e00%20recommended%20donation%2c%20but%20give%20what%20you%27d%20like%21%29&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donat",
     "created": "2010-07-09T19:07:32Z",
     "current_version": {
-        "id": 2473755,
+        "id": 2474800,
         "compatibility": {
             "thunderbird": {
-                "max": "71.*",
-                "min": "68.0a1"
+                "max": "*",
+                "min": "78.2.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2473755",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2474800",
         "files": [
             {
-                "id": 1016917,
-                "created": "2020-05-28T12:29:44Z",
-                "hash": "sha256:383962c29d2725dbbbcaf9f8528ef9a2c156336abb7523e3872dd90ef6f2e0fa",
-                "is_restart_required": true,
+                "id": 1017962,
+                "created": "2020-11-22T01:32:45Z",
+                "hash": "sha256:b72eecb5738c554b6801b6f16c0e0d4a04f3abff79d61e565182bb76d9cc7cd3",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 494640,
+                "size": 554574,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016917/send_later-7.4.4-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017962/send_later-8.2.1-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead",
+                    "accountsFolders",
+                    "menus",
+                    "menus.overrideContext",
+                    "activeTab",
+                    "messagesMove",
+                    "messagesRead",
+                    "compose",
+                    "notifications"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -61,11 +72,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Somehow some Dutch strings ended up in the Danish translation. I have no idea how this happened, but it's fixed now."
+            "en-US": "This update improves reliability of the overlay components like the draft folder column and the compose window button. It also fixes a number of edge-case bugs related to user scheduling functions, and optimizes several behind the scenes functions. Most users will not notice much difference from version 8.1, but things should run more smoothly over all.\n\nAs always, please contact me via email or through GitHub if you are experiencing issues with Send Later."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/7.4.4",
-        "version": "7.4.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.2.1",
+        "version": "8.2.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,7 +89,7 @@
         "es": "There is a beta release of this add-on available for Thunderbird 78. See the message at the top of <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">this page</a> for details.\n\nCambia el comando \"enviar después\" (Ctrl+May+Enter) en la ventana de composición de mensajes, para que en vez de simplemente copiar el mensaje a la bandeja de salida para enviarse la siguiente vez que Vd. se conecte (o ejecute \"procesar mensajes\" no enviados), un diálogo aparezca para permitirle especificar cuándo se enviará el mensaje.\n\nPuede especificar una fecha y hora específicas o hacer click en \"15 minutos más tarde\", \"30 minutos más tarde\" o \"2 horas más tarde\", o, alternativamente, pulsar \"enviar a bandeja de salida\" para tener la funcionalidad nativa de Thunderbird para envío diferido.\n\nPara información adicional, mire la guía de usuario en: <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">Send Later user guide</a>.\n\nApúntese a la ilsta de correo en: <a rel=\"nofollow\" href=\"https://groups.google.com/group/send-later-users\">mailing list</a>!\n\nEnviarDespués (SendeLater) utiliza <a rel=\"nofollow\" href=\"https://sugarjs.com/\">SugarJS</a> por Andrew Plummer. ¡Gracias Andrew!",
         "ru": "There is a beta release of this add-on available for Thunderbird 78. See the message at the top of <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">this page</a> for details.\n\nВызывайте команду \"Send Later\" (Ctrl+Shift+Return) из окна редактирования письма, чтобы взамен простого копирования сообщения в вашу папку «Исходящие» оно было бы отправлено в следующий раз, когда вы будете онлайн или отправите «Неотправленные сообщения». Эту команду возможно изменить в диалоговом окне, позволяющем указать время отправки сообщения.\n\nЧтобы воспользоваться встроенной функцией \"Send Later\" в Thunderbird (например, скопировать в папку «Исходящие»), Вы можете установить определенное время и дату или нажать на клавиши \"15 минут спустя\", или \"30 минут спустя\", или \"2 часа спустя\", или \"Поместить в папку «Исходящие»\".\n\nДля дополнительной информации смотрите <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">Руководство Пользователя</a>.\n\nПодпишитесь на <a rel=\"nofollow\" href=\"https://groups.google.com/group/send-later-users\">рассылку</a>!\n\nSend Later использует <a rel=\"nofollow\" href=\"https://sugarjs.com/\">SugarJS</a> Андрея Пламмера. Спасибо, Андрей!",
         "nl": "There is a beta release of this add-on available for Thunderbird 78. See the message at the top of <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">this page</a> for details.\n\nWijzigt de opdracht ‘Later verzenden’ (Ctrl+Shift+Return) in het berichtopstelvenster, zodat in plaats van alleen het bericht naar uw Postvak UIT te kopiëren en dit de volgende keer dat u online gaat of door ‘Niet-verzonden berichten verzenden’ te kiezen wordt verzonden, een dialoogvenster verschijnt waarmee u kunt opgeven wanneer het bericht wordt verzonden.\n\nU kunt een bepaalde tijd en datum opgeven, of op ‘15 min. later’, ‘30 min. later’ of ‘2 uur later’ klikken, of op ‘In Postvak UIT plaatsen’ klikken voor de ingebouwde functionaliteit voor ‘Later verzenden’ van Thunderbird (m.a.w. kopiëren naar Postvak UIT).\n\nZie de <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">gebruikershandleiding</a> voor aanvullende informatie.\n\nSchrijf u in voor de <a rel=\"nofollow\" href=\"https://groups.google.com/group/send-later-users\">mailinglijst</a>!\n\nSend Later gebruikt <a rel=\"nofollow\" href=\"https://sugarjs.com/\">SugarJS</a> van Andrew Plummer. Bedankt Andrew!",
-        "en-US": "There is a beta release of this add-on available for Thunderbird 78. See the message at the top of <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">this page</a> for details.\n\nChanges the \"Send Later\" command (Ctrl+Shift+Return) in the message composition window, so that instead of merely copying the message into your Outbox so that it is sent the next time you go online or do \"Send Unsent Messages\", a dialog pops up which allows you to specify when the message will be sent.\n\nYou can specify a specific time and date, or click \"15 mins later\", \"30 mins later\" or \"2 hours later\", or define custom shortcuts. You can also schedule a message to send repeatedly using simple rules (every N hours, days, etc.) or customizable functions.\n\nFeedback and bug reports are welcome, and can be submitted via the project's <a rel=\"nofollow\" href=\"https://github.com/Extended-Thunder/send-later\">GitHub page</a>.",
+        "en-US": "This add-on changes the \"Send Later\" command (Ctrl+Shift+Return) in the message composition window, so that instead of merely copying the message into your Outbox so that it is sent the next time you go online or do \"Send Unsent Messages\", a dialog pops up which allows you to specify when the message will be sent.\n\nYou can specify a specific time and date, or click \"15 mins later\", \"30 mins later\" or \"2 hours later\", or define custom shortcuts. You can also schedule a message to send repeatedly using simple rules (every N hours, days, etc.) or customizable functions.\n\nSend Later relies on powerful date input parsing provided by Andrew Plummer's <a rel=\"nofollow\" href=\"https://sugarjs.com/\">Sugar.js library</a>.\n\nFeedback and bug reports are welcome, and can be submitted via the project's <a rel=\"nofollow\" href=\"https://github.com/Extended-Thunder/send-later\">GitHub page</a>.",
         "ro": "There is a beta release of this add-on available for Thunderbird 78. See the message at the top of <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">this page</a> for details.\n\nSchimbă comanda „Trimite mai târziu” (Ctrl+Shift+Return) din fereastra de compunere a mesajului: în loc ca mesajul să fie doar pus în dosarul „De trimis” pentru a fi trimis la următoarea operațiune de trimitere, fie când aplicația revine online fie la „Trimite mesajele neexpediate”, se va deschide o fereastra care permite programarea trimiterii mesajului.\n\nSe poate selecta fie o anumita dată/oră, fie „peste 15 minute”, „peste 30 minute” sau „peste 2 ore”, fie „Pune în „De trimis”” pentru a obține funcționalitatea implicită din Thunderbird pentru „Trimite mai târziu” (adică copiere în „De trimis”).\n\nPentru informații suplimentare, vezi: <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">ghidul utilizatorului</a>.\n\nÎnscrie-te în <a rel=\"nofollow\" href=\"https://groups.google.com/group/send-later-users\">lista de corespondență</a>!\n\nSend Later folosește <a rel=\"nofollow\" href=\"https://sugarjs.com/\">SugarJS</a> de Andrew Plummer. Mulțumesc Andrew!",
         "pl": "There is a beta release of this add-on available for Thunderbird 78. See the message at the top of <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">this page</a> for details.\n\nZmienia wbudowane polecenie \"Wyślij później\" (Ctrl + Shift + Return) w oknie tworzenia wiadomości, tak, że zamiast zwykłego umieszczenia wiadomości w skrzynce nadawczej aby były wysyłane przy następnym przejściu w tryb online lub użycia polecenia \"Wyślij niewysłane wiadomości\", wyskakuje okno dialogowe które pozwala określić, kiedy wiadomość zostanie wysłana.\n\nMożesz podać datę i godzinę wysłania, lub wybrać opóźnienie \"za 15 min.\", \"za 30 min.\", \"za 2 godz.\" albo użyć \"umieść w skrzynce nadawczej\" i pozwolić działać wbudowanej w Thunderibirda funkcjonalności \"Wyślij później\".\n\nPo dodatkowe informacje zajżyj do <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">instrukcji</a>.\n\nDołącz się i zapisz się do <a rel=\"nofollow\" href=\"https://groups.google.com/group/send-later-users\">listy mailingowej</a>!\n\nSend Later używa <a rel=\"nofollow\" href=\"https://sugarjs.com/\">SugarJS</a> autorstwa Andrew Plummer. Dzięki Andrew!",
         "fr": "There is a beta release of this add-on available for Thunderbird 78. See the message at the top of <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\">this page</a> for details.\n\nModifie la commande « Envoyer plus tard » (Ctrl + Maj + Retour) dans la fenêtre de composition de message, de sorte qu’au lieu de simplement envoyer le message, une boîte de dialogue apparaît qui vous permet d’indiquer quand le message sera envoyé. \n\nVous pouvez spécifier une date et heure précise ou cliquer sur « 15 minutes plus tard », « 30 minutes plus tard » ou « 2 heures plus tard » ou cliquer sur « Envoyer plus tard » pour utiliser la fonction native de Thunderbird (copie le message dans la boîte d'envoi).\n\nPour plus d’informations, consultez le <a rel=\"nofollow\" href=\"https://blog.kamens.us/send-later\"> guide de l’utilisateur</a>.\n\nInscrivez-vous sur la <a rel=\"nofollow\" href=\"https://groups.google.com/group/send-later-users\"> liste de diffusion </a>!\n\nEnvoyer plus tard utilise <a rel=\"nofollow\" href=\"https://sugarjs.com/\"> SugarJS</a> par Andrew Plummer. Merci Andrew!",
@@ -147,16 +158,16 @@
         "zh-TW": "http://blog.kamens.us/send-later",
         "zh-CN": "http://blog.kamens.us/send-later"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-64.png?modified=1604062921",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-64.png?modified=1606151125",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-32.png?modified=1604062921",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-64.png?modified=1604062921"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-32.png?modified=1606151125",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/195/195275-64.png?modified=1606151125"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-28T13:46:56Z",
+    "last_updated": "2020-11-23T11:10:22Z",
     "name": {
         "el": "Στείλετε αργότερα",
         "ca": "Enviar més tard",
@@ -237,10 +248,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.6398,
-        "count": 201,
-        "average": 4.6468,
-        "text_count": 201
+        "bayesian_average": 4.63995,
+        "count": 215,
+        "average": 4.6465,
+        "text_count": 215
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/reviews/",
     "requires_payment": false,
@@ -288,10 +299,10 @@
     "weekly_downloads": 2002,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2017-12-14T19:57:28Z"
         }

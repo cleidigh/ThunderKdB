@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 672,
+    "average_daily_users": 833,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2018-10-14T22:42:18Z",
     "current_version": {
-        "id": 2472779,
+        "id": 2474729,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirmbeforedelete/versions/2472779",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirmbeforedelete/versions/2474729",
         "files": [
             {
-                "id": 1015881,
-                "created": "2019-10-25T17:48:51Z",
-                "hash": "sha256:5f0ec6d85492103b744ee340d6cbc7c06dcc14092f0ad17cea1ea6b4b6bb7856",
-                "is_restart_required": true,
+                "id": 1017891,
+                "created": "2020-11-13T21:19:40Z",
+                "hash": "sha256:7e95eea7c1e362f320b6cf38afb3158d8ed9156c837e2666af15d38dab192f66",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 37323,
+                "size": 43975,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015881/confirmbeforedelete-1.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017891/confirmbeforedelete-1.5.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,17 +71,19 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "fr": "New version 1.3\nCorrection bugs \n- affichage de la confirmation lors de la suppression depuis la fenêtre de recherche\n- affichage de la confirmation lors de la suppression depuis une nouvelle fenêtre\n- pas d'affichage de la confirmation lors de la suppression d'un message dans la corbeille si l'option \"Activer la confirmation de suppression pour les messages et les dossiers dans la corbeille\" est décochée et l'option  \"Activer la confirmation de suppression pour le déplacement des messages dans la corbeille\" est cochée\n\nNouveauté: possibilité de protéger les messages avec une étiquette donnée",
-            "en-US": "New version 1.3\nFixed bugs: \n - delete from search window\n- delete from new window\n- if option \"Enable the confirm to delete the messages and the folders from the trash\" is false and option \"Enable the confirm to move the messages in the trash folder\" is enable a confirmation message should not be displayed when deleting a message in trash\n\nA new feature is available: message with a selected tag can be protected from deletion. The tag can be selected in the Add-on options."
+            "fr": "",
+            "en-US": "fix bug: when folder is delete from trash no popup is showed"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirmbeforedelete/versions/1.3",
-        "version": "1.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirmbeforedelete/versions/1.5.3",
+        "version": "1.5.3"
     },
     "default_locale": "en-US",
     "description": {
-        "fr": "Ajoute une confirmation pour:\n- la suppression des messages avec maj+suppr\n- la suppression des contacts du carnet d'adresse\n- la suppression des messages et des dossiers\n- la suppressions des elements du calendrier\n- le vidage de la corbeille\n- le déplacement des messages dans la corbeille\n- la suppressions des messages depuis la fenêtre de recherche\n- la suppression d'un message avec une étiquette définie\nIl y a une option pour bloquer la suppressions des messages et des dossiers\nCette extensions est disponible en anglais, français, italien et allemand\nPar défaut toutes les confirmations sont activées et elles peuvent être modifiées depuis le menu Outils -&gt; Options des modules\nLa confirmation pour la suppression des messages avec maj+suppr existe déjà dans TB, quand l'option est cochée la fenêtre de confirmation de suppression de TB est affichée.",
-        "en-US": "an extension for Thunderbird that introduces a confirm request to:\n- delete directly the mail with shift+del (this function is native on TB)\n- delete the contacts in the addressbook and in the contacts panel\n- delete mails and folders from the trash\n- delete calendar items (if you've Lightning installed)\n- empty the trash (this function is native on TB3)\n- move messages in the trash \n- delete messages from search window\n- delete a message with a choosen tag.\nMoreover it can block deletion of messages and folder\nAll the confirms are active for default, but can be disabled from Add-on Options in Tools menu.\nThe confirmation for delete mails with Shift+Delete is bound to native TB function, when the option \"Enable the confirm to delete the messages with shift+del\" is checked it re-enable the TB default confirmation prompt on Shift+Delete.\nLocalized in english, italian, french, and (thanks to Mark Gerber) german."
+        "en-US": "an extension for Thunderbird that introduces a confirm request to:\n- delete directly the mail with shift+del (this function is native on TB)\n- delete the contacts in the addressbook and in the contacts panel\n- delete mails and folders from the trash\n- delete calendar items (if you've Lightning installed)\n- empty the trash (this function is native on TB3)\n- move messages in the trash \n- delete messages from search window\n- delete a message with a choosen tag.\nMoreover it can block deletion of messages and folders and disable drag and drop on the folder tree in order to prevent unintended folder movement.\nAll the confirms are active for default, but can be disabled from Add-on Options in Tools menu.\nThe confirmation for delete mails with Shift+Delete is bound to native TB function, when the option \"Enable the confirm to delete the messages with shift+del\" is checked it re-enable the TB default confirmation prompt on Shift+Delete.\nLocalized in english, italian, french, and german.",
+        "de": "Bestätigung hinzufügen für:\n- Löschen von Nachrichten mit Umschalt + Entf\n- Löschen von Kontakten aus dem Adressbuch\n- Löschen von Nachrichten und Ordnern\n- Löschen von Elementen aus dem Kalender\n- Papierkorb leeren\n- Verschieben von Nachrichten in den Papierkorb\n- Löschen von Nachrichten aus dem Suchfenster\n- Löschen einer Nachricht mit einer definierten Bezeichnung\nEs besteht die Möglichkeit, das Löschen von Nachrichten und Ordnern zu blockieren\nDiese Erweiterung ist in Englisch, Französisch, Italienisch und Deutsch verfügbar\nStandardmäßig sind alle Bestätigungen aktiviert und können über das Optionsmenü Extras -&gt; Module geändert werden\nDie Bestätigung zum Löschen von Nachrichten mit Umschalt + Entf ist bereits in TB vorhanden. Wenn diese Option aktiviert ist, wird das Bestätigungsfenster zum Löschen von TB angezeigt.",
+        "fr": "Ajoute une confirmation pour:\n- la suppression des messages avec maj+suppr\n- la suppression des contacts du carnet d'adresse\n- la suppression des messages et des dossiers\n- la suppressions des elements du calendrier\n- le vidage de la corbeille\n- le déplacement des messages dans la corbeille\n- la suppressions des messages depuis la fenêtre de recherche\n- la suppression d'un message avec une étiquette définie\nIl y a une option pour bloquer la suppression des messages et des dossiers\nCette extensions est disponible en anglais, français, italien et allemand\nPar défaut toutes les confirmations sont activées et elles peuvent être modifiées depuis le menu Outils -&gt; Options des modules\nLa confirmation pour la suppression des messages avec maj+suppr existe déjà dans TB, quand l'option est cochée la fenêtre de confirmation de suppression de TB est affichée.",
+        "it": "Aggiungi conferma per:\n- eliminazione dei messaggi con shift + del\n- cancellazione dei contatti dalla rubrica\n- cancellazione di messaggi e cartelle\n- cancellazione di elementi dal calendario\n- svuotamento del cestino\n- spostare i messaggi nel cestino\n- cancellazione dei messaggi dalla finestra di ricerca\n- eliminare un messaggio con un'etichetta definita\nC'è un'opzione per bloccare l'eliminazione di messaggi e cartelle\nQuesta estensione è disponibile in inglese, francese, italiano e tedesco\nDi default tutte le conferme sono abilitate e possono essere modificate dal menu Strumenti -&gt; Opzioni Moduli\nLa conferma per l'eliminazione dei messaggi con shift + del esiste già in TB, quando l'opzione è selezionata viene visualizzata la finestra di conferma dell'eliminazione di TB."
     },
     "developer_comments": {
         "en-US": "The source code is available at <a href=\"https://github.com/caligraf/ConfirmBeforeDelete\" rel=\"nofollow\">https://github.com/caligraf/ConfirmBeforeDelete</a>"
@@ -91,8 +93,10 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
+        "en-US": "https://github.com/caligraf/ConfirmBeforeDelete/wiki",
+        "de": "https://github.com/caligraf/ConfirmBeforeDelete/wiki",
         "fr": "https://github.com/caligraf/ConfirmBeforeDelete/blob/0.3.7/README.md",
-        "en-US": "https://github.com/caligraf/ConfirmBeforeDelete/wiki"
+        "it": "https://github.com/caligraf/ConfirmBeforeDelete/wiki"
     },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/986/986323-64.png?modified=bb96a84c",
     "icons": {
@@ -103,10 +107,12 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-30T01:18:45Z",
+    "last_updated": "2020-11-14T00:01:11Z",
     "name": {
+        "en-US": "ConfirmBeforeDelete",
+        "de": "ConfirmBeforeDelete",
         "fr": "ConfirmBeforeDelete",
-        "en-US": "ConfirmBeforeDelete"
+        "it": "ConfirmBeforeDelete"
     },
     "previews": [
         {
@@ -146,7 +152,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.96457,
+        "bayesian_average": 3.96316,
         "count": 5,
         "average": 4.2,
         "text_count": 5
@@ -157,8 +163,10 @@
     "slug": "confirmbeforedelete",
     "status": "public",
     "summary": {
-        "fr": "Affiche un message de confirmation avant suppression d'un message",
-        "en-US": "Ask a confirm before to delete some items"
+        "en-US": "Ask a confirm before to delete some items",
+        "de": "Zeigt eine Bestätigungsnachricht an, bevor eine Nachricht oder ein Ordner gelöscht wird",
+        "fr": "Affiche un message de confirmation avant suppression d'un messages ou d'un dossier",
+        "it": "Visualizza un messaggio di conferma prima di eliminare un messaggio o una cartella"
     },
     "support_email": {
         "fr": "olivier2042@outlook.fr",
@@ -168,7 +176,9 @@
     "tags": [
         "confirmation",
         "confirmation dialog",
+        "delete",
         "firefox57",
+        "lock",
         "prevent delete",
         "supprimer"
     ],
@@ -177,10 +187,15 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-08T00:05:47Z",
+            "comp78pv_version": "1.4",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-10-14T22:42:18Z"
         }

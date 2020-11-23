@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11612/11612952.png?modified=1430013327"
         }
     ],
-    "average_daily_users": 0,
+    "average_daily_users": 84,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,27 +18,29 @@
     "contributions_url": "",
     "created": "2020-11-01T09:43:41Z",
     "current_version": {
-        "id": 2474612,
+        "id": 2474657,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.4.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-line-wrap/versions/2474612",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-line-wrap/versions/2474657",
         "files": [
             {
-                "id": 1017774,
-                "created": "2020-11-01T21:45:29Z",
-                "hash": "sha256:9d4a31e4395fb4869b83b1553e92a84a4d57cceeef4b054f8c956ea6438d6890",
+                "id": 1017819,
+                "created": "2020-11-06T19:11:12Z",
+                "hash": "sha256:1b64c52d939533ae51fab5b823d0c676d3d6554bfe8f882cb4091116d34964f4",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 15890,
+                "size": 17244,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017774/toggle_line_wrap-1.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017819/toggle_line_wrap-1.3-tb.xpi?src=",
+                "permissions": [
+                    "storage"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -50,15 +52,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "- Switch default shortcut back to Ctrl+Shift+W\n- Fix and improve state visualization via toolbar button"
+            "en-US": "- Fix issues of new default wrapping behavior control",
+            "de": ""
         },
-        "reviewed": "2020-11-03T10:11:57Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-line-wrap/versions/1.1",
-        "version": "1.1"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-line-wrap/versions/1.3",
+        "version": "1.3"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Toggle wrapping of long lines in the message composition window when writing plaintext messages. Wrapping can be controlled via a toolbar button and a keyboard shortcut (ALT-W by default). The current state is visualized in the toolbar button. The shortcut can be adjusted via the Add-on Manager (click on the gear).\n\nOn order to use the add-on, turn off HTML composition (per account setting, Composition &amp; Addressing → Composition → Compose messages in HTML format) and also make sure that \"mailnews.send_plaintext_flowed\" is disabled in the configuration (about:config).\n\nNote that this add-on requires an WebExtension Experiment API, thus will requests \"full access\" on installation."
+        "en-US": "Toggle wrapping of long lines in the message composition window when writing plaintext messages. Wrapping can be controlled via a toolbar button and a keyboard shortcut (STRG-SHIFT-W by default). The current state is visualized in the toolbar button. The shortcut can be adjusted via the Add-on Manager (click on the gear).\n\nOn order to use the add-on, turn off HTML composition (per account setting, Composition &amp; Addressing → Composition → Compose messages in HTML format) and also make sure that \"mailnews.send_plaintext_flowed\" is disabled in the configuration (about:config).\n\nNote that this add-on requires an WebExtension Experiment API, thus will requests \"full access\" on installation."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-line-wrap/edit",
@@ -77,17 +80,17 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-03T10:11:57Z",
+    "last_updated": "2020-11-08T14:25:57Z",
     "name": {
         "en-US": "Toggle Line Wrap"
     },
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.85276,
-        "count": 1,
-        "average": 5,
-        "text_count": 1
+        "bayesian_average": 3.94099,
+        "count": 3,
+        "average": 4.3333,
+        "text_count": 3
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-line-wrap/reviews/",
     "requires_payment": false,
@@ -97,7 +100,9 @@
     "summary": {
         "en-US": "Toggle wrapping of long lines in the message composition window when writing plaintext messages. Wrapping can be controlled via a toolbar button and a keyboard shortcut."
     },
-    "support_email": null,
+    "support_email": {
+        "en-US": "jan.kiszka@web.de"
+    },
     "support_url": null,
     "tags": [
         "firefox57"

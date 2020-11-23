@@ -9,40 +9,40 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 499,
+    "average_daily_users": 454,
     "categories": {
         "thunderbird": [
             "composition",
             "tags"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=3ZHGJ9QSHRZNW",
     "created": "2009-11-15T07:15:34Z",
     "current_version": {
-        "id": 2472925,
+        "id": 2474774,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.1.0"
+                "max": "83.0",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/subswitch/versions/2472925",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/subswitch/versions/2474774",
         "files": [
             {
-                "id": 1016032,
-                "created": "2019-11-23T22:13:48Z",
-                "hash": "sha256:e297ec51a53c6df6fb859873c5f1ead532ce580dfc9e603b135074f0e5d61065",
-                "is_restart_required": true,
+                "id": 1017936,
+                "created": "2020-11-17T22:28:38Z",
+                "hash": "sha256:bcd7356179f36b52627b27910c8fbc9dfac9253cc3f6e6936d834f898a8d292b",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 72019,
+                "size": 89792,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016032/subswitch-0.9.39-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017936/subswitch-0.9.44-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -76,11 +76,12 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "few issues fixed (options defects in linux, toolbars integration, opening of hyper-links)\nnew site for reporting issues on github"
+            "en-US": "TB 83 compatibility&amp; bug fixing the adding/removing recipients",
+            "pl": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subswitch/versions/0.9.39",
-        "version": "0.9.39"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/subswitch/versions/0.9.44",
+        "version": "0.9.44"
     },
     "default_locale": "en-US",
     "description": {
@@ -95,16 +96,16 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": null,
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/49/49594-64.png?modified=1453906670",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/49/49594-64.png?modified=1605310567",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/49/49594-32.png?modified=1453906670",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/49/49594-64.png?modified=1453906670"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/49/49594-32.png?modified=1605310567",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/49/49594-64.png?modified=1605310567"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2019-11-24T18:03:58Z",
+    "last_updated": "2020-11-18T08:22:04Z",
     "name": {
         "en-US": "SubSwitch",
         "de": "SubSwitch",
@@ -250,7 +251,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.20706,
+        "bayesian_average": 3.20644,
         "count": 10,
         "average": 3.3,
         "text_count": 10
@@ -299,9 +300,14 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
             "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-13T22:00:51Z",
+            "comp78pv_version": "0.9.42",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*",
             "comp60pv": true,
             "comp60pv_date": "2013-11-11T06:37:56Z"
         }

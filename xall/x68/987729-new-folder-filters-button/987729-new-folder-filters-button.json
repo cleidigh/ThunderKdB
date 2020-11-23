@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 237,
+    "average_daily_users": 179,
     "categories": {
         "thunderbird": [
             "folders-and-filters"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2019-11-19T22:42:19Z",
     "current_version": {
-        "id": 2472895,
+        "id": 2474750,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-folder-filters-button/versions/2472895",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-folder-filters-button/versions/2474750",
         "files": [
             {
-                "id": 1016001,
-                "created": "2019-11-19T22:42:20Z",
-                "hash": "sha256:cbc8a7343092d506137eadd03d3c51790912fb6f6594f8f85b437862a7be1e39",
-                "is_restart_required": true,
+                "id": 1017912,
+                "created": "2020-11-15T12:52:14Z",
+                "hash": "sha256:7fcac47a5e42c85a99708adee91efd453bb2bc551b8072b3cba0c30e68fbac72",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 66036,
+                "size": 26658,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016001/folder_filters_button-1.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017912/folder_filters_button-3.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -50,9 +50,9 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": null,
-        "reviewed": "2019-12-12T23:47:24Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-folder-filters-button/versions/1.5",
-        "version": "1.5"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-folder-filters-button/versions/3.0",
+        "version": "3.0"
     },
     "default_locale": "en-US",
     "description": null,
@@ -71,7 +71,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-12-12T23:47:24Z",
+    "last_updated": "2020-11-16T19:39:18Z",
     "name": {
         "en-US": "New Folder Filters Button",
         "de": "Folder Filters Button"
@@ -90,7 +90,7 @@
     "slug": "new-folder-filters-button",
     "status": "public",
     "summary": {
-        "en-US": "Toolbar button to execute Run Filters on Folders from Tools menu\n(update of Folder Filters Button Add-on  by Chris Malek to Thunderbird 68)",
+        "en-US": "Toolbar button to execute Run Filters on Folders from Tools menu\n(update of Folder Filters Button Add-on  by Chris Malek to Thunderbird 78)",
         "de": "Schaltfläche in der Werkzeugleiste, um Filter auf Ordner anzuwenden"
     },
     "support_email": null,
@@ -106,10 +106,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true
         }
     }
 }

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 6075,
+    "average_daily_users": 8228,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2019-07-12T01:56:00Z",
     "current_version": {
-        "id": 2474398,
+        "id": 2474796,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/versions/2474398",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/versions/2474796",
         "files": [
             {
-                "id": 1017560,
-                "created": "2020-10-04T17:40:33Z",
-                "hash": "sha256:ff855e90b060ed7425de4f0f54f1c730d8a595cd73935838cc33fcdd7477ff1a",
+                "id": 1017958,
+                "created": "2020-11-21T04:50:56Z",
+                "hash": "sha256:a042d570c60f7bc23487131714b230662c705c4e087af8e58dfbec10679a6c54",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 474238,
+                "size": 382817,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017560/phoenity_icons-3.0b5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017958/phoenity_icons-3.0b8-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,15 +50,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "First release for Thunderbird 78, migrated using the WindowListener API.\nUses large icons for the main toolbar, icon resizing doesn't work (yet)."
+            "en-US": "First release for Thunderbird 78, migrated using the WindowListener API.\nRestored the icon size option in the \"Customize Toolbar\" dialogs.\nLimited support for extensions (Cardbook, uBlockOrigin, Mail Redirect).\nIcon size is not always persistent (Cardbook)."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/versions/3.0b5",
-        "version": "3.0b5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/versions/3.0b8",
+        "version": "3.0b8"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This is a (limited) replacement for the <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-shredder/\">Phoenity Shredder</a> theme.\nFull themes are no longer supported on Thunderbird 68 and higher.\n\nIcon resizing doesn't work (yet) on Thunderbird 78.\nFor small icons add the following to userChrome.css:\n\n#mail-bar3 .toolbarbutton-1 .toolbarbutton-icon,\n#compose-toolbox .toolbarbutton-1 .toolbarbutton-icon {\n  min-width: 18px !important;\n  min-height: 18px !important;\n  width: 18px !important;\n  height: 18px !important;\n} \n\nFor large icons change 18px to 26px."
+        "en-US": "This is a (limited) replacement for the <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-shredder/\">Phoenity Shredder</a> theme.\nFull themes are no longer supported on Thunderbird 68 and higher.\n\nIcon size (small icons) can be set in the \"Customize Toolbar\" dialogs.\nSupports some extensions (Cardbook, uBlockOrigin, Mail Redirect).\n\nIcon size (small icons) is not persistent  on the Cardbook toolbar, to use small icons there you can add the following to userChrome.css:\n\n#cardbook-toolbox .toolbarbutton-1 .toolbarbutton-icon {\n  min-width: 18px !important;\n  min-height: 18px !important;\n  width: 18px !important;\n  height: 18px !important;\n}"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/phoenity-icons/edit",
@@ -77,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-05T12:55:28Z",
+    "last_updated": "2020-11-23T10:48:02Z",
     "name": {
         "en-US": "Phoenity Icons"
     },
@@ -117,10 +117,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.72822,
-        "count": 20,
-        "average": 4.8,
-        "text_count": 20
+        "bayesian_average": 4.81161,
+        "count": 29,
+        "average": 4.8621,
+        "text_count": 29
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/phoenity-icons/reviews/",
     "requires_payment": false,
