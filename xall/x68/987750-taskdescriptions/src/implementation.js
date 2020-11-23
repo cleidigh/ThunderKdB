@@ -18,7 +18,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
               toolbarButton.setAttribute("id", "task-descriptions");
               toolbarButton.setAttribute("class", "cal-event-toolbarbutton toolbarbutton-1");
               toolbarButton.setAttribute("mode", "dialog");
-              toolbarButton.setAttribute("label", "Task descriptions");
+              toolbarButton.setAttribute("label", "TaskDescriptions");
               toolbarButton.setAttribute("type", "menu");
               toolbarButton.style["list-style-image"] = "url(" + context.extension.getURL("desc16.png") + ")";
 
@@ -323,6 +323,68 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
                   window.frames.opener.document.getElementById('calendar-task-details-description').style.fontSize = 'large';
               };
 
+              var menu7 = window.document.createXULElement(
+                  "menu"
+              );
+              menu7.setAttribute("id", "seven");
+              menu7.setAttribute("label", "Table");
+              var menuPopup7 = window.document.createXULElement(
+                  "menupopup"
+              );
+              menuPopup7.setAttribute("id", "sevenOne");
+              menuPopup7.setAttribute("type", "popup");
+
+              var menuitem20 = window.document.createXULElement(
+                  "menuitem"
+              );
+              menuitem20.setAttribute("id", "sevenOneOne");
+              menuitem20.setAttribute("label", "table 1 x 1");
+              menuitem20.addEventListener("click", funcSevenOneOne);
+              function funcSevenOneOne() {
+                  var tableArr = new Array;
+tableArr = ['+--+\n|    |\n+--+', '+--+--+\n|    |    |\n+--+--+\n|    |    |\n+--+--+', '+--+--+--+\n|    |    |    |\n+--+--+--+\n|    |    |    |\n+--+--+--+\n|    |    |    |\n+--+--+--+', '+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+'];
+                  var tableApply = tableArr[0];
+                  window.frames[0].document.activeElement.setRangeText(tableApply);
+              };
+
+              var menuitem21 = window.document.createXULElement(
+                  "menuitem"
+              );
+              menuitem21.setAttribute("id", "sevenOneTwo");
+              menuitem21.setAttribute("label", "table 2 x 2");
+              menuitem21.addEventListener("click", funcSevenOneTwo);
+              function funcSevenOneTwo() {
+                  var tableArr = new Array;
+tableArr = ['+--+\n|    |\n+--+', '+--+--+\n|    |    |\n+--+--+\n|    |    |\n+--+--+', '+--+--+--+\n|    |    |    |\n+--+--+--+\n|    |    |    |\n+--+--+--+\n|    |    |    |\n+--+--+--+', '+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+'];
+                  var tableApply = tableArr[1];
+                  window.frames[0].document.activeElement.setRangeText(tableApply);
+              };
+
+              var menuitem22 = window.document.createXULElement(
+                  "menuitem"
+              );
+              menuitem22.setAttribute("id", "sevenOneThree");
+              menuitem22.setAttribute("label", "table 3 x 3");
+              menuitem22.addEventListener("click", funcSevenOneThree);
+              function funcSevenOneThree() {
+                  var tableArr = new Array;
+tableArr = ['+--+\n|    |\n+--+', '+--+--+\n|    |    |\n+--+--+\n|    |    |\n+--+--+', '+--+--+--+\n|    |    |    |\n+--+--+--+\n|    |    |    |\n+--+--+--+\n|    |    |    |\n+--+--+--+', '+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+'];
+                  var tableApply = tableArr[2];
+                  window.frames[0].document.activeElement.setRangeText(tableApply);
+              };
+
+              var menuitem23 = window.document.createXULElement(
+                  "menuitem"
+              );
+              menuitem23.setAttribute("id", "sevenOneFour");
+              menuitem23.setAttribute("label", "table 4 x 4");
+              menuitem23.addEventListener("click", funcSevenOneFour);
+              function funcSevenOneFour() {
+                  var tableArr = new Array;
+tableArr = ['+--+\n|    |\n+--+', '+--+--+\n|    |    |\n+--+--+\n|    |    |\n+--+--+', '+--+--+--+\n|    |    |    |\n+--+--+--+\n|    |    |    |\n+--+--+--+\n|    |    |    |\n+--+--+--+', '+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+\n|    |    |    |    |\n+--+--+--+--+'];
+                  var tableApply = tableArr[3];
+                  window.frames[0].document.activeElement.setRangeText(tableApply);
+              };
 
               
               menuPopup1.appendChild(menuitem1)
@@ -344,18 +406,24 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
               menuPopup6.appendChild(menuitem17)
               menuPopup6.appendChild(menuitem18)
               menuPopup6.appendChild(menuitem19)
+              menuPopup7.appendChild(menuitem20)
+              menuPopup7.appendChild(menuitem21)
+              menuPopup7.appendChild(menuitem22)
+              menuPopup7.appendChild(menuitem23)
               menu1.appendChild(menuPopup1)
               menu2.appendChild(menuPopup2)
               menu3.appendChild(menuPopup3)
               menu4.appendChild(menuPopup4)
               menu5.appendChild(menuPopup5)
               menu6.appendChild(menuPopup6)
+              menu7.appendChild(menuPopup7)
               menuPopup.appendChild(menu1);
               menuPopup.appendChild(menu2);
               menuPopup.appendChild(menu3);
               menuPopup.appendChild(menu4);
               menuPopup.appendChild(menu5);
               menuPopup.appendChild(menu6);
+              menuPopup.appendChild(menu7);
 
               toolbarButton.appendChild(menuPopup);
               window.document.getElementById("event-toolbar").appendChild(toolbarButton);

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-register.css" title="QuickFolderRegStyles" type="text/css"?>
+
+<?xml-stylesheet href="chrome://global/skin/xul.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css" ?>
+
+
+<!DOCTYPE prefwindow SYSTEM "chrome://quickfolders/locale/register.dtd" >
+
+<dialog 
+  title="&licenseWindow.title;"
+	id="qf-register"
+	buttons="none"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+	ondialogcancel="var cancel=QuickFolders.Licenser.cancel.bind(QuickFolders.Licenser); cancel();"
+	onload="var load=QuickFolders.Licenser.load.bind(QuickFolders.Licenser); load();"
+>
+
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
+	<script type="application/x-javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
+
+	
+	<vbox id="thePage">
+		<hbox style="vertical-align:middle;">
+			<div class="product">&getQuickFolders;</div>
+			<spacer flex="1" />
+			<vbox align="center">
+				<spacer flex="1" />
+				<hbox id="qfLicenseTerm" class="para">
+					<label id="licenseDateLabel">&qf.label.licenseValid;</label>
+					<label id="licenseDate" value="-" />
+				</hbox>
+				<spacer flex="1" />
+			</vbox>
+			<spacer flex="1"/>
+			<vbox>
+				<spacer flex="1"/>
+				<!-- align buttons bottom right -->
+				<label id="haveLicense">&qf.label.haveLicense;</label>
+				<hbox>
+					<button id="btnEnterCode"
+									label="&enterLicenseKey.button;"
+									tooltiptext="&enterLicenseKey.tooltip;"
+									oncommand="QuickFolders.Interface.viewLicense();window.close();" />
+				</hbox>
+			</vbox>
+			
+		</hbox>
+		
+		<description class="para">&intro;</description>
+
+		<description class="para">&testDrive;</description>
+			
+		<table>
+			<tr>
+			  <td>
+					<div class="heading">&yearlyLicense.title;</div>
+					<spacer flex="1" />
+				</td>
+			  <td>
+					<description class="para">&yearlyLicense.premiumFeatures;</description>
+					<label class="para link" 
+					onclick="QuickFolders.Licenser.premiumInfo(event);">&yearlyLicense.premiumFeatures.moreInfoLink;</label>
+					<description class="para">&yearlyLicense.usageTerm; &yearlyLicense.usageTerm1;</description>
+				</td>
+			</tr>	
+			<tr>	
+				<td>
+					<div class="heading">&updates.title;</div>
+					<spacer flex="1" />
+				</td>
+			  <td>
+					<description class="para">&updatesExpiry;</description>
+				</td>
+			</tr>	
+			<tr>	
+				<td>
+					<div class="heading">&vouchers.title;</div>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<description class="para">&freeLicense;</description>
+				</td>
+			</tr>	
+		</table>
+	</vbox>
+	
+	<hbox class="form">
+	  <vbox>
+			<hbox>
+				<label class="ref">&account.label;</label>
+				<menulist id="mailIdentity"
+					sizetopopup="none"
+					oncommand="QuickFolders.Licenser.selectIdentity(this);"
+					>
+					<menupopup>
+					</menupopup>
+				</menulist>
+			</hbox>
+			<hbox>
+				<label control="email"
+							 class="ref"
+							 value="&email.label;" 
+							 />
+				<html:input type="text" id="email" />
+			</hbox>
+		</vbox>
+	  <spacer flex="1"/>
+	  <vbox>
+			<hbox>
+				<label control="firstName"
+							 class="ref"
+							 value="&firstName.label;" 
+							 />
+				<html:input type="text" id="firstName" />
+			</hbox>
+			<hbox>
+				<label control="lastName"
+				       class="ref"
+							 value="&lastName.label;" 
+							 />
+				<html:input type="text" id="lastName" />
+			</hbox>
+		</vbox>
+		<spacer flex="3" />
+	</hbox>
+	<vbox id="buyBox">
+		<table class="buyAction">
+			<tr align="center">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">&buyLicense.instruct;</label>
+				</td>
+				<td class="btnLicenseContainer">
+					<button id="btnLicense"
+					  class="register"
+						label="&buyPersonalLicense.button;"
+						oncommand="QuickFolders.Licenser.goPro(0);" />
+				</td>
+			</tr>
+			<tr align="center">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">&buyDomainLicense.instruct;</label>
+				</td>
+				<td>
+					<button id="btnDomainLicense"
+						label="&buyDomainLicense.button;"
+						oncommand="QuickFolders.Licenser.goPro(1);" />
+				</td>
+			</tr>
+		</table>
+	</vbox>
+	<html:input type="text" id="referrer" collapsed="true"/>
+</dialog>

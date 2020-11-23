@@ -1,5 +1,67 @@
 {
   "extensionDescription": {
-    "message": "\"WarnAttachment\" affiche un avertissement lors de l'ouverture de pièces jointes potentiellement dangereuses. Certaines pièces jointes telles que les exécutables sont complètement bloquées."
+      "message": "\"WarnAttachment\" affiche un avertissement lors de l'ouverture de pièces jointes potentiellement dangereuses. Certaines pièces jointes telles que les exécutables sont complètement bloquées."
+  },
+  "warningTitle" : {
+      "message" : "Extension de fichier insécure"
+  },
+  "warningText" : {
+      "message" : "Ce fichier peut contenir du contenu malveillant. Veuillez vérifier si la source est digne de confiance."
+  },
+  "warningTextHint" :{
+      "message" : "Je veux toujours ouvrir le fichier."
+  },
+  "blockingTitle" : {
+      "message" : "Pièce jointe bloquée"
+  },
+  "blockingText" : {
+      "message" : "Pour vous protéger contre les logiciels malveillants, cette pièce jointe a été bloquée"
+  },
+  "options.warn.title" : {
+      "message" : "Extensions de fichier (avertissement):"
+  },
+  "options.warn.desc" : {
+      "message" : "Une boîte de dialogue d'avertissement apparaît pour ces extensions de fichier. Ce champ contient des valeurs séparées par des virgules."
+  },
+  "options.blocked.title" : {
+      "message" : "Extensions de fichier (bloqué):"
+  },
+  "options.blocked.desc" : {
+      "message" : "Ces extensions de fichiers seront complètement bloquées. Ce champ contient des valeurs séparées par des virgules."
+  },
+  "options.warn.user.title" : {
+      "message" : "Message personnalisé pour l'avertissement:"
+  },
+  "options.warn.user.desc" : {
+      "message" : "Laisser vide pour le message par défaut."
+  },
+  "options.blocked.user.title" : {
+      "message" : "Message personnalisé pour le blocage de fichier:"
+  },
+  "options.blocked.user.desc" : {
+      "message" : "Laisser vide pour le message par défau."
+  },
+  "options.title" : {
+      "message" : "WarnAttachment Settings"
+  },
+  "options.info.text.link.github" : {
+      "message" : "Visiter WarnAttachment sur github!"
+  },
+  "options.info.text.link.license" : {
+      "message" : "Afficher la licence (GNU General Public License v3.0)"
+  },
+  "options.savesettings":{
+      "message" : "Enregistrer les paramètres"
+  },
+  "options.resetsettings":{
+     "message" : "Réinitialiser les paramètres par défaut"
+  },
+  "options.notification.resetdone":
+  {
+      "message" : "Valeurs par défaut chargées"
+  },
+  "options.notification.savedone" :
+  {
+      "message" : "Changements sauvegardés"
   }
 }

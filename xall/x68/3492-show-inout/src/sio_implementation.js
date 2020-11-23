@@ -18,7 +18,6 @@ let strings={
 
 var gW;
 var gD;
-var gDBView;
 var gMyAddr;
 var gMyAddrArr;
 var gLocalFolder;
@@ -189,7 +188,7 @@ debug('init state='+state);
   gOutTextPrefix=prefs.OutTextPrefix || '';  //was ??, but bad for ATN
   state='init';
   Services.obs.addObserver(observer, "MsgCreateDBView", false);
-	observer.observe(null, "MsgCreateDBView", 'force');	// after enabling the addon there is other notification
+	observer.observe(null, "MsgCreateDBView", 'force');	// after enabling the addon there is no other notification
 }
 
 async function getAddon() {
@@ -637,7 +636,7 @@ var columnHandler_inoutcol = {
   getCellText:         function(row, col) {
 //debug('Get cell text for inoutcol '+row+'\n');
 /*
-    let messageURI = gDBView.getURIForViewIndex(row);
+    let messageURI = gW.gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
     if (cache.received(messageURI)=='in') return '<--';
     else return '-->';
@@ -645,12 +644,12 @@ var columnHandler_inoutcol = {
     return '';
   },
   getCellProperties:   function(row, col, properties) {
-//debug('Get cell inoutcol, isContainer='+gDBView.isContainer(row)+'\n');
+//debug('Get cell inoutcol, isContainer='+gW.gDBView.isContainer(row)+'\n');
 //dumpProps(row, col, properties);
     //probably should use:
-    //let key = gDBView.getKeyAt(row);
-    //let hdr = gDBView.db.GetMsgHdrForKey(key);
-    let messageURI = gDBView.getURIForViewIndex(row);
+    //let key = gW.gDBView.getKeyAt(row);
+    //let hdr = gW.gDBView.db.GetMsgHdrForKey(key);
+    let messageURI = gW.gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
     let received=cache.received(messageURI);
     let indicator=cache.indicator(messageURI);
@@ -699,17 +698,17 @@ var columnHandler_inoutcol = {
 //--------------------------------------
 var columnHandler_inoutaddresscol = {
   getCellText:         function(row, col) {
-    let messageURI = gDBView.getURIForViewIndex(row);
+    let messageURI = gW.gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
   //should probably use: FetchAuthor(msgHdr);
   //should probably use: FetchRecipients(msgHdr);
-  //debug('Get cell inoutaddresscol row='+row+' URI= '+messageURI+' returned '+cache.addr(messageURI)+'\n');
+//debug('Get cell text: inoutaddresscol row='+row+' URI= '+messageURI+' returned '+cache.addr(messageURI)+'\n');
     return cache.addr(messageURI);
   },
   getCellProperties:   function(row, col, properties) {
-//debug('Get cell inoutaddresscol row='+row+'\n');
+//debug('Get cell props: inoutaddresscol row='+row+'\n');
 //dumpProps(row, col, properties);
-    let messageURI = gDBView.getURIForViewIndex(row);
+    let messageURI = gW.gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
     let received=cache.received(messageURI);
     let indicator=cache.indicator(messageURI);
@@ -726,7 +725,7 @@ var columnHandler_inoutaddresscol = {
   getRowProperties:    function(row, properties) {
 //debug('Get row inoutaddresscol index='+row+'\n');
 //dumpProps(row, null, properties);
-    let messageURI = gDBView.getURIForViewIndex(row);
+    let messageURI = gW.gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
     let received=cache.received(messageURI);
     let indicator=cache.indicator(messageURI);
@@ -777,7 +776,7 @@ var columnHandler_inoutaddresscol = {
 //--------------------------------------
 var columnHandler_inoutthissidecol = {
   getCellText:         function(row, col) {
-    let messageURI = gDBView.getURIForViewIndex(row);
+    let messageURI = gW.gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
   //should probably use: FetchAuthor(msgHdr);
   //should probably use: FetchRecipients(msgHdr);
@@ -788,7 +787,7 @@ var columnHandler_inoutthissidecol = {
   getCellProperties:   function(row, col, properties) {
 //console.log('vGet cell inoutaddresscol row='+row+'\n');
 //dumpProps(row, col, properties);
-    let messageURI = gDBView.getURIForViewIndex(row);
+    let messageURI = gW.gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
     let received=cache.received(messageURI);
     let indicator=cache.indicator(messageURI);
@@ -805,7 +804,7 @@ var columnHandler_inoutthissidecol = {
   getRowProperties:    function(row, properties) {
 //debug('Get row inoutaddresscol index='+row+'\n');
 //dumpProps(row, null, properties);
-    let messageURI = gDBView.getURIForViewIndex(row);
+    let messageURI = gW.gDBView.getURIForViewIndex(row);
     cache.cache(messageURI);
     let received=cache.received(messageURI);
     let indicator=cache.indicator(messageURI);
@@ -866,14 +865,14 @@ var columnHandler_inoutthissidecol = {
 var sio_columnHandler = {
 	otherCCH: null,
   getCellText: function(row, col) {
-    gDBView.removeColumnHandler(col.id);
+    gW.gDBView.removeColumnHandler(col.id);
 		let val;
 		if (this.otherCCH) {
 			val=this.otherCCH.getCellText(row, col);
 		} else {
-			val=gDBView.getCellText(row, col);
+			val=gW.gDBView.getCellText(row, col);
 		}
-    gDBView.addColumnHandler(col.id, this);
+    gW.gDBView.addColumnHandler(col.id, this);
     return val;
   },
   getCellProperties: function(row, col, properties) {
@@ -882,7 +881,7 @@ var sio_columnHandler = {
 			if (props) properties=props;
 		}
 //original function already had set standard properties, just add our property
-		let messageURI = gDBView.getURIForViewIndex(row);
+		let messageURI = gW.gDBView.getURIForViewIndex(row);
 		cache.cache(messageURI);
 		let received=cache.received(messageURI);
 		let indicator=cache.indicator(messageURI);
@@ -974,13 +973,13 @@ debug('observer: addHandlersToCols for col='+col+' on='+state);
 debug('add handler to '+col);
 					let ch=Object.assign({}, sio_columnHandler);
 					ch.otherCCH=otherCCH.has(col)?otherCCH.get(col):null;
-					gDBView.addColumnHandler(col, ch);
+					gW.gDBView.addColumnHandler(col, ch);
 				}
 			} else {				// remove handler from specific column
 debug('remove handler from '+col);
-				gDBView.removeColumnHandler(col);
+				gW.gDBView.removeColumnHandler(col);
 				if (otherCCH.has(col)) {		// reset column handler for foreign columns
-					gDBView.addColumnHandler(col, otherCCH.get(col));
+					gW.gDBView.addColumnHandler(col, otherCCH.get(col));
 debug('reset original handler for '+col);
 				}
 			}
@@ -991,10 +990,10 @@ debug('reset original handler for '+col);
 					col=col.trim();
 					if (gColumns.has(col)) {
 debug('add initial handler to '+col);
-try { let d=gDBView.getColumnHandler(col); debug('col '+col+' already has a handler'); } catch(e) {}
+try { let d=gW.gDBView.getColumnHandler(col); debug('col '+col+' already has a handler'); } catch(e) {}
 						let ch=Object.assign({}, sio_columnHandler);	// clone the handler
 						ch.otherCCH=otherCCH.has(col)?otherCCH.get(col):null;
-						gDBView.addColumnHandler(col, ch);
+						gW.gDBView.addColumnHandler(col, ch);
 					}
 				});
 			} catch(e) { console.log('ShowInOut: addHandlersToCols: '+col+' add handler Error: '+e+'\n'); }
@@ -1004,10 +1003,10 @@ try { let d=gDBView.getColumnHandler(col); debug('col '+col+' already has a hand
 				col=col.trim();
 				if (gColumns.has(col)) {
 debug('finally remove handler from '+col);
-					try { gDBView.removeColumnHandler(col); } catch(e) {}
+					try { gW.gDBView.removeColumnHandler(col); } catch(e) {}
 					if (otherCCH.has(col)) {		// reset column handler for foreign columns
 debug('reset original handler for '+col);
-						gDBView.addColumnHandler(col, otherCCH.get(col));
+						gW.gDBView.addColumnHandler(col, otherCCH.get(col));
 					}
 				}
 			});
@@ -1018,21 +1017,14 @@ debug('reset original handler for '+col);
   {
     if (aTopic=='MsgCreateDBView') {
 debug('observer MsgCreateDBView state='+state+' aData='+aData+' aSubject='+aSubject);
-      if (aSubject) {
-debug('folder='+aSubject.folderURL);
-        if (aSubject!=gCurrentFolder) {
-debug('folder changed');
-          gCurrentFolder=aSubject;
-        } else {  //e.g. after opening a mail in new tab
-debug('folder did not changed, event ignored');
-          return;
-        }
-      }
+      if (aSubject) gCurrentFolder=aSubject;
+debug('folder='+gCurrentFolder.folderURL);
 			gW=Services.wm.getMostRecentWindow("mail:3pane");
+			if (!gW) return;	//e.g. if called with aData=force but master password not yet entered
 			gD=gW.document;
 			if (!aSubject && !aData) {
           //aSubject is normally a nsIMsgFolder
-					//but not on first call (when gDBView does not exists yet)
+					//but not on first call (when gW.gDBView does not exists yet)
           //or when an addon is installed or enabled
           //gData is normally null except we call it explicitly with 'force'
         if (addonType=='install') { //need a small time delay
@@ -1051,21 +1043,28 @@ debug('observer nothing to do');
         addonType='';
         return;
       }
-      gDBView=gW.gDBView;
-      if (typeof gDBView!='undefined' && gDBView) { //check mit typeof, da gelegentlich undefined!
+      if (typeof gW.gDBView!='undefined' && gW.gDBView) { //check mit typeof, da gelegentlich undefined!
 				if (state!='cols') {  // fill gColumns and add our own columns, only on first call!
           state='cols';
 					addCols();
         }
+
+				//normally, we have a new view, but not if a mail is opened in a new tab and switched to that tab
+				try {
+					let d=gW.gDBView.getColumnHandler('sio_inoutaddressCol');
+debug('unchanged view, do not add handlers');
+					return;
+				}	catch(e) {}
+
         //Must be set on every folder
 debug('add columnsHandlers for our own columns');
-        gDBView.addColumnHandler("sio_inoutCol", columnHandler_inoutcol);
-        gDBView.addColumnHandler("sio_inoutaddressCol", columnHandler_inoutaddresscol);
-        gDBView.addColumnHandler("sio_inoutthissideCol", columnHandler_inoutthissidecol);
+        gW.gDBView.addColumnHandler("sio_inoutCol", columnHandler_inoutcol);
+        gW.gDBView.addColumnHandler("sio_inoutaddressCol", columnHandler_inoutaddresscol);
+        gW.gDBView.addColumnHandler("sio_inoutthissideCol", columnHandler_inoutthissidecol);
 
         observer.addHandlersToCols('*', true);	// initially add generic columnHandlers to other columns
       }
-      else debug('observer: MsgCreateDBView: no gDBView yet');
+      else debug('observer: MsgCreateDBView: no gW.gDBView yet');
 		}
   }
 }
@@ -1151,17 +1150,17 @@ function setFilters() {
 
 function MsgSortByCorrespondent()
 {
-  gDBView.curCustomColumn="sio_inoutaddressCol";
+  gW.gDBView.curCustomColumn="sio_inoutaddressCol";
   gW.MsgSortThreadPane('byCustom');
 }
 function MsgSortByThisSide()
 {
-  gDBView.curCustomColumn="sio_inoutthissideCol";
+  gW.gDBView.curCustomColumn="sio_inoutthissideCol";
   gW.MsgSortThreadPane('byCustom');
 }
 function MsgSortByInOut()
 {
-  gDBView.curCustomColumn="sio_inoutCol";
+  gW.gDBView.curCustomColumn="sio_inoutCol";
   gW.MsgSortThreadPane('byCustom');
 }
 
@@ -1179,7 +1178,7 @@ debug('gColumn already has '+col.id);
         return;
       }
 			try {
-				let ch=gDBView.getColumnHandler(col.id);
+				let ch=gW.gDBView.getColumnHandler(col.id);
 debug('col='+col.id+' already has a columnHandler, saved');
 				otherCCH.set(col.id, ch);		// save for later user
 			} catch(e) {
@@ -1351,7 +1350,7 @@ debug('changedCols');
     if (col.id && !col.getAttribute('fixed') && !(col.id).includes('sio_')) {
 			if (gColumns.has(col.id)) return;
 			try {
-				let ch=gDBView.getColumnHandler(col.id);
+				let ch=gW.gDBView.getColumnHandler(col.id);
 debug('new col '+col.id+' found, already has a columnHandler, saved');
 				otherCCH.set(col.id, ch);		// save for later user
 			} catch(e) {}
@@ -1368,11 +1367,11 @@ debug('obsolete col '+col+' found, remove');
 		gColumns.delete(col);
 		if (otherCCH.has(col)) otherCCH.delete(col);
 		try {
-			let ch=gDBView.getColumnHandler(col); 
+			let ch=gW.gDBView.getColumnHandler(col); 
 debug('obsolete col '+col+' still had column handler (not removed)');
 //Probably i shouldn't do this in case other addons also try to remove the handler
 //but fires after sio and does not catch the exception!
-//			gDBView.removeColumnHandler(col); 
+//			gW.gDBView.removeColumnHandler(col); 
 		} 
 		catch(e) { /*debug('get or remove columnHandler throws '+e);*/ }
 		//remove from prefs is done in background

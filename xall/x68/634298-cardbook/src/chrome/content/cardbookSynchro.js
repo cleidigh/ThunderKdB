@@ -1,6 +1,5 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 var loader = Services.scriptloader;
 loader.loadSubScript("chrome://cardbook/content/cardbookIndexedDB.js", this);
@@ -14,8 +13,6 @@ var cardbookSynchro = {
 			// observers are needed not only UI but also for synchro
 			// there is no unregister launched
 			cardBookObserver.register();
-			cardboookModeMutationObserver.register();
-			
 
 			// once openDB is finished, it will fire an event
 			// and then load the cache and maybe sync the accounts

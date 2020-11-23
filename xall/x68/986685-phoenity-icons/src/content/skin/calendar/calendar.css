@@ -7,8 +7,21 @@
 
 .mail-toolbox > #calendar-toolbar2,
 .mail-toolbox > #task-toolbar2 {
-  padding-inline-start: 3px;
-  padding-inline-end: 3px;
+  padding-inline: 3px;
+}
+
+@media (-moz-os-version: windows-win7),
+       (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win10) {
+  .mail-toolbox > #calendar-toolbar2,
+  .mail-toolbox > #task-toolbar2 {
+    padding-inline: 4px;
+  }
+}
+
+#calendar-toolbar2[iconsize="small"],
+#task-toolbar2[iconsize="small"] {
+  padding: 0px 3px;
 }
 
 /* save button */

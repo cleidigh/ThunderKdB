@@ -1,7 +1,6 @@
 if ("undefined" == typeof(cardbookWindowUtils)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var cardbookWindowUtils = {
 		
@@ -562,15 +561,15 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 									vcard: [ 'vcard' ],
 									};
 			for (var i in nullableFields) {
-				var found = false;
 				var found1 = false;
 				var found2 = false;
-				for (var j = 0; j < nullableFields[i].length; j++) {
-					var row = document.getElementById(nullableFields[i][j] + 'Row');
-					var textbox = document.getElementById(nullableFields[i][j] + 'TextBox');
-					var textbox1 = document.getElementById(nullableFields[i][j] + 'classicalTextBox');
-					var textbox2 = document.getElementById(nullableFields[i][j] + 'modernTextBox');
-					var label = document.getElementById(nullableFields[i][j] + 'Label');
+				var found = false;
+				for (var field of nullableFields[i]) {
+					var row = document.getElementById(field + 'Row');
+					var textbox = document.getElementById(field + 'TextBox');
+					var textbox1 = document.getElementById(field + 'classicalTextBox');
+					var textbox2 = document.getElementById(field + 'modernTextBox');
+					var label = document.getElementById(field + 'Label');
 					if (textbox) {
 						var myTestValue = "";
 						if (textbox.value) {

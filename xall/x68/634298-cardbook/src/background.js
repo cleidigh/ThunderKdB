@@ -20,7 +20,7 @@ messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToo
 messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome://cardbook/content/wl_cardbookMessenger.js");
 
 // support for the message window
-messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome://cardbook/content/wl_cardbookMessageWindow.js");
+messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome://cardbook/content/wl_cardbookMessenger.js");
 
 // support for Lightning attendees
 messenger.WindowListener.registerWindow("chrome://calendar/content/calendar-event-dialog-attendees.xhtml", "chrome://cardbook/content/lightning/wl_lightningAttendees.js");
@@ -32,7 +32,6 @@ messenger.WindowListener.registerWindow("chrome://calendar/content/calendar-even
 messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome://cardbook/content/composeMsg/wl_composeMsg.js");
 
 // // support for filter messages
-// await messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome://cardbook/content/filters/ovl_filters.xhtml");
 // await messenger.WindowListener.registerWindow("chrome://messenger/content/FilterEditor.xhtml", "chrome://cardbook/content/filters/ovl_filterEditor.xhtml");
 // await messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome://cardbook/content/filters/ovl_filterEditor.xhtml");
 // await messenger.WindowListener.registerWindow("chrome://messenger/content/mailViewSetup.xhtml", "chrome://cardbook/content/filters/ovl_filterEditor.xhtml");

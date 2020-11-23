@@ -2,8 +2,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { NetUtil } = ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
 	var { FileUtils } = ChromeUtils.import("resource://gre/modules/FileUtils.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 	
 	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js", this);

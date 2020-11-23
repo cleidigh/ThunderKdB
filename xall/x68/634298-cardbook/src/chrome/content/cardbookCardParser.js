@@ -323,6 +323,14 @@ if ("undefined" == typeof(cardbookCardParser)) {
 									this.categories = cardbookRepository.cardbookUtils.cleanCategories(this.categories);
 								}
 								break;
+							// for Google
+							case "X-CATEGORIES":
+								if (vCardDataArrayTrailer != "") {
+									let value = cardbookRepository.cardbookUtils.unescapeString(cardbookRepository.cardbookUtils.escapeString(vCardDataArrayTrailer));
+									this.categories = cardbookRepository.cardbookUtils.unescapeArray(value.split(","));
+									this.categories = cardbookRepository.cardbookUtils.cleanCategories(this.categories);
+								}
+								break;
 							case "NOTE":
 								this.note = this.formatNote(vCardDataArrayTrailer);
 								break;

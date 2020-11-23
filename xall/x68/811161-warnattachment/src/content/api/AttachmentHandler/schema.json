@@ -1,0 +1,24 @@
+[
+  {
+    "namespace": "AttachmentHandler",
+    "events" : [
+        {
+            "name" : "onOpenAttachment",
+            "type" : "function",
+            "description" : "Called if an attachment is opened",
+            "parameters": [
+                {
+                    "name" : "attachmentInfo",
+                    "type" : "object",
+                    "description" : "The attachment info object"
+                }
+            ],
+            "returns" : {
+                "type" : "boolean",
+                "description" : "True if allowed"
+            }
+        }
+    ]
+  }
+]
+

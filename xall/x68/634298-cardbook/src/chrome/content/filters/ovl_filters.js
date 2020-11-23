@@ -2,8 +2,7 @@ if ("undefined" == typeof(ovl_filters)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { jsmime } = ChromeUtils.import("resource:///modules/jsmime.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var ovl_filters = {
 		
@@ -33,7 +32,7 @@ if ("undefined" == typeof(ovl_filters)) {
 			var myActionId = cardbookActions.startAction(myTopic);
 			for (var i = 0; i < count; i++) {
 				let hdr = aMsgHdrs.queryElementAt(i, Components.interfaces.nsIMsgDBHdr);
-				let addresses = MailServices.headerParser.parseEncodedHeader(hdr[aField]);
+				let addresses = MailServices.headerParser.parseEncodedHeaderW(hdr[aField]);
 				for (let address of addresses) {
 					cardbookRepository.cardbookUtils.addCardFromDisplayAndEmail(aActionValue, address.name, address.email, myCategory, myActionId);
 				}
@@ -55,7 +54,7 @@ if ("undefined" == typeof(ovl_filters)) {
 			var myActionId = cardbookActions.startAction(myTopic);
 			for (var i = 0; i < count; i++) {
 				let hdr = aMsgHdrs.queryElementAt(i, Components.interfaces.nsIMsgDBHdr);
-				let addresses = MailServices.headerParser.parseEncodedHeader(hdr[aField]);
+				let addresses = MailServices.headerParser.parseEncodedHeaderW(hdr[aField]);
 				for (let address of addresses) {
 					var myEmail = address.email.toLowerCase();
 					if (cardbookRepository.cardbookCardEmails[aActionValue]) {
@@ -93,7 +92,7 @@ if ("undefined" == typeof(ovl_filters)) {
 
 		_matchEmails: function(aMsgHdrEmails, aSearchValue, aSearchOp) {
 			let matches = false;
-			let addresses = MailServices.headerParser.parseEncodedHeader(aMsgHdrEmails);
+			let addresses = MailServices.headerParser.parseEncodedHeaderW(aMsgHdrEmails);
 			let i = 0;
 			for (let address of addresses) {
 				switch (aSearchOp) {

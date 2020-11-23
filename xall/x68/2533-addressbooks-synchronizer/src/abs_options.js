@@ -169,10 +169,12 @@ debug('upgraded='+prefs['upgraded']);
 	}
 
 	/*
-	 * show selected synctype
+	 * show selected synctype tab
 	 */
-	if (prefs['synctype'])
-		document.getElementById('tab_'+prefs['synctype']).checked='checked';
+	if (prefs['synctype']) {  //might be null
+		let tab=document.getElementById('tab_'+prefs['synctype']);
+		if (tab) tab.checked='checked';
+  }
 
 	/*
 	 *	set all <input> fields
@@ -187,7 +189,10 @@ debug('upgraded='+prefs['upgraded']);
 			if (type=='checkbox') {
 				if (value) input.checked='checked';
 			} else if (type=="radio") {
-				if (value) document.querySelector("input[value="+value+"]").checked=true;
+				if (value) {  //might be synctype='none' 
+          let rad=document.querySelector("input[value="+value+"]");
+          if (rad) rad.checked='checked';
+        }
 			} else if (type=="text") {
 				if (value) input.value=value;
 			}
@@ -293,12 +298,21 @@ debug('upgraded='+prefs['upgraded']);
 		t.parentElement.querySelector(".nested").classList.toggle("active");
 		t.classList.toggle("caret-down");
 	}
+	const folderTypes = ["inbox", "drafts", "sent", "trash", "templates", "archives", "junk", "outbox"];
 	let selfolder;
 	function sipFolders(elem, account, folders) {
-		for (let folder of folders) {
+		for (let folder of folders.sort(
+				(f1,f2)=>{return f1.name.toUpperCase().localeCompare(f2.name.toUpperCase());})) {
 			let li=document.createElement('li');
 			li.textContent=folder.name;
-			li.className=folder.type||'folder';
+			if (folder.type) {
+				if (folderTypes.indexOf(folder.type)>=0)
+					li.className=folder.type;
+				else {
+					li.className='unknown';
+debug('abs_options throws: unknown folder type '+folder.type+' for folder '+folder.name);
+				}
+			} else li.className='folder';
 			li.setAttribute('data-account', folder.accountId);
 			li.setAttribute('data-path', folder.path);
 			li.setAttribute('data-name', account.name+':'+folder.name);
@@ -328,6 +342,7 @@ debug('upgraded='+prefs['upgraded']);
 	}
 	if (prefs['imapfolderName']) {
 		let sel = document.getElementById("selectedIMAP");
+		sel.style.color='black';
 		sel.value=prefs['imapfolderName']; //+' ('+prefs['imapfolder']+')';
 	}
 
@@ -349,6 +364,11 @@ debug('upgraded='+prefs['upgraded']);
 		li.appendChild(ul);
 		sipFolders(ul, account, account.folders);
 		sip.appendChild(li);
+	}
+	if (prefs['imapfolderName'] && !selfolder) {
+debug("abs_options throws: ill. IMAP folder: no folder found for "+prefs['imapfolderAccount']+':'+prefs['imapfolderPath']);
+		let sel = document.getElementById("selectedIMAP");
+		sel.style.color='red';
 	}
 
 	noupload();
@@ -377,6 +397,14 @@ debug('upgraded='+prefs['upgraded']);
 		document.getElementById("doatest").addEventListener("click", DoATest);
 	}
 */
+  messenger.abs.onFilePicker.addListener(data => {
+debug('onFilePicker fired: '+JSON.stringify(data));
+    if (data.path) {
+      if (data.type=='path') GetPath(data.path);
+      else if (data.type=='file') GetFile(data.path);
+      else if (data.type=='save') GetSave(data.path) 
+    }
+  });
 } // init
 
 function show_externalFilename(event) {
@@ -430,38 +458,28 @@ debug(pref+' '+filename);
 async function ChoosePath() {
   let prompt=messenger.i18n.getMessage("choosesyncdir");
 	messenger.abs.filePicker(prompt, 'path', null, '');
-	GetPath();
 } // ChoosePath
-async function GetPath() {
-	let path=await messenger.abs.filePicker('', '', null, '');
-	if (path==null) setTimeout(GetPath, 500);
-	else if (path) {
-		let pref='localpath';
-		prefs[pref]=path;
-		let p={}; p[pref]=path;
-		messenger.storage.local.set(p);
-    messenger.abs.setPrefs(prefs, 'localpath');
-		document.getElementById('localpath').value=path;
-		document.getElementById('synclocal').checked=true;
-	}
+async function GetPath(path) {  //called from event
+  let pref='localpath';
+  prefs[pref]=path;
+  let p={}; p[pref]=path;
+  messenger.storage.local.set(p);
+  messenger.abs.setPrefs(prefs, 'localpath');
+  document.getElementById('localpath').value=path;
+  document.getElementById('synclocal').checked=true;
 }
 function ChooseFile() {
   let prompt=messenger.i18n.getMessage("choosefile");
   let mab=messenger.i18n.getMessage("mab");
 	messenger.abs.filePicker(prompt, 'file', { '*.sqlite': mab+" (*.sqlite)", '*.mab': '(*.mab)'}, '' );
-	GetFile();
 } // ChooseFile
-async function GetFile() {
-	let path=await messenger.abs.filePicker('', '', null, '');
-	if (path==null) setTimeout(GetFile, 500);
-	else if (path) {
-    document.getElementById( "MabFilePath" ).value = path;
-    //var mabFileName = filePicker.file.leafName;
-    //var mabName = mabFileName.substr( 0, mabFileName.lastIndexOf(".") );
- 		let mabName=path.replace(/.*[/\\]/, '');
-    mabName = mabName.substr( 0, mabName.lastIndexOf(".") );
-    document.getElementById( "MabName" ).value = mabName;
-	}
+async function GetFile(path) {  //called from event
+  document.getElementById( "MabFilePath" ).value = path;
+  //var mabFileName = filePicker.file.leafName;
+  //var mabName = mabFileName.substr( 0, mabFileName.lastIndexOf(".") );
+  let mabName=path.replace(/.*[/\\]/, '');
+  mabName = mabName.substr( 0, mabName.lastIndexOf(".") );
+  document.getElementById( "MabName" ).value = mabName;
 }
 
 /*
@@ -475,22 +493,15 @@ async function SaveMab() {
 	let book = await messenger.addressBooks.get(i2u[id]);
 	mabName=book.name;
 	messenger.abs.filePicker(prompt, 'save', { '*.sqlite': mab+" (*.sqlite)"}, mabName + '.sqlite' );
-	GetSave();
 }
-async function GetSave() {
-debug('entered');
-	let path=await messenger.abs.filePicker('', '', null, '');
-debug('GetSave got '+path);
-	if (path==null) setTimeout(GetSave, 500);
-	else if (path) {
-		let id = document.getElementById( "MabList" ).value;
-		let ret=await messenger.abs.saveMabFile(id, ''/*=use filepicker file*/);
+async function GetSave(path) {  //called from event
+  let id = document.getElementById( "MabList" ).value;
+  let ret=await messenger.abs.saveMabFile(id, ''/*=use filepicker file*/);
 debug('Saved '+id+' to '+path+' returned '+ret);
-		if (ret)
-      alert(messenger.i18n.getMessage('stored'));
-		else
-      alert(messenger.i18n.getMessage('storefailed'));
-	}
+  if (ret)
+    alert(messenger.i18n.getMessage('stored'));
+  else
+    alert(messenger.i18n.getMessage('storefailed'));
 }
 
 /*
@@ -578,6 +589,7 @@ async function usePwd(store)
   let syncpath = prefs['path'];
 	if (!syncprotocol || !synchost || !syncuser || !syncpath) return;
 	let syncpassword='';
+debug('call abspassword');
 	syncpassword = await messenger.abs.abspassword(syncprotocol, synchost, syncuser, pwd);
 //debug('password='+syncpassword+' should be '+pwd);
 	if (!store) pwdfield.value=syncpassword;

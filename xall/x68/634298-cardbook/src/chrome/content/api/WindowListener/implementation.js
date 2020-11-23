@@ -480,7 +480,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
                     }
                   }
                 }
-                
+
                 if (elements[i].hasAttribute("insertafter") && checkElements(elements[i].getAttribute("insertafter"))) {
                   let insertAfterElement = checkElements(elements[i].getAttribute("insertafter"));
 
@@ -527,7 +527,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
                   }
                   window[uniqueRandomID]._toolbarpalettes[palette.id] = palette;
                   injectChildren(Array.from(elements[i].children), palette);
-                } else {
+                } else if (!elements[i].hasAttribute("shouldExist")) {
                   // append element to the current container
                   if (debug) console.log(elements[i].tagName + "#" + elements[i].id + ": append to " + container.id);
                   elements[i].setAttribute("wlapi_autoinjected", uniqueRandomID);

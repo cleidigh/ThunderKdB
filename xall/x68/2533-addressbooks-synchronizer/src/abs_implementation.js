@@ -60,6 +60,7 @@ var optionsURI;
 var optionsWin;
 var hiddenWin=null;
 var exiting='';		//'quit' or 'close'
+var gFire=null;
 
 debug('entered');
 try {
@@ -239,29 +240,31 @@ debug('prefs');
 				},
 				filePicker: async function(prompt, type, filters, defaultpath) {
 debug('entered');
-					if (prompt) {	//show the filepicker
-						filepickerpath=null;
-						const nsIFilePicker = Ci.nsIFilePicker;
-						let filePicker = Cc["@mozilla.org/filepicker;1"].
-																createInstance(nsIFilePicker);
+          filepickerpath=null;
+          const nsIFilePicker = Ci.nsIFilePicker;
+          let filePicker = Cc["@mozilla.org/filepicker;1"].
+                              createInstance(nsIFilePicker);
 
-						let m3p=Services.wm.getMostRecentWindow("mail:3pane");
-						let mode=type=='path'?nsIFilePicker.modeGetFolder:
-											(type=='file'?nsIFilePicker.modeOpen:nsIFilePicker.modeSave);
-						filePicker.init(m3p, prompt, mode);
-						if (filters) {
-							for (let [filter, text] of Object.entries(filters))
-								filePicker.appendFilter( text, filter );
-						}
-						if (defaultpath) filePicker.defaultString = defaultpath;
+          let m3p=Services.wm.getMostRecentWindow("mail:3pane");
+          let mode=type=='path'?nsIFilePicker.modeGetFolder:
+                    (type=='file'?nsIFilePicker.modeOpen:nsIFilePicker.modeSave);
+          filePicker.init(m3p, prompt, mode);
+          if (filters) {
+            for (let [filter, text] of Object.entries(filters))
+              filePicker.appendFilter( text, filter );
+          }
+          if (defaultpath) filePicker.defaultString = defaultpath;
 
-						filePicker.open(rv => {
-							if (rv == nsIFilePicker.returnCancel ) filepickerpath='';
-							else { filepickerfile=filePicker.file; filepickerpath=filepickerfile.path; }
-						})
-					} else {	//return the result
-						return filepickerpath;		//null: not yet ready, '': cancel else: the path
-					}
+          filePicker.open(rv => {
+            if (rv == nsIFilePicker.returnCancel ) filepickerpath='';
+            else { filepickerfile=filePicker.file; filepickerpath=filepickerfile.path; }
+            if (gFire) {
+debug('filepicker: notify options window');
+              gFire.async({path: filepickerpath, type: type});
+            } else {
+debug('filepicker: options window has vanished');
+            }
+          })
 				},
 				saveMabFile: function(id, newPath) {
 					let ret=saveMabFile(id, newPath);
@@ -324,6 +327,18 @@ debug(uristring+' -> illegal uri');
 				abspassword: async function(protocol, host, user, pwd) {
 					return abspassword(protocol, host, user, pwd);
 				},
+        onFilePicker: new ExtensionCommon.EventManager({
+          context,
+          name: "abs.onFilePicker",
+          register(fire) {
+debug('onFilePicker register');
+            gFire=fire;
+            return function() {
+debug('onFilePicker unregister');
+              gFire=null;
+            };
+          },
+        }).api(),
         debug: async function(txt, ln) {
 					debug(txt, ln);
 				},
@@ -419,6 +434,8 @@ debug('dirTreeContext onpopupshowing='+ops);
     onUnloadWindow: function(w) {
   //does not fire on hiddenWin
 debug(''+w.document.location);
+			if (w.document.location=="chrome://global/content/commonDialog.xhtml")
+				return;		// might be the dialog for asking the master password
       let we = Services.wm.getEnumerator(null);	
       let c=0;
       while (we.hasMoreElements()) {

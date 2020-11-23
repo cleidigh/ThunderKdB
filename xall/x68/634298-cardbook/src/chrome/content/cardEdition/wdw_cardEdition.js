@@ -3,7 +3,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { FormHistory } = ChromeUtils.import("resource://gre/modules/FormHistory.jsm");
 	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 	XPCOMUtils.defineLazyModuleGetter(this, "PhoneNumber", "chrome://cardbook/content/formautofill/phonenumberutils/PhoneNumber.jsm");
 
 	var cardEditionNotification = {};
@@ -239,7 +239,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 					var myEmails = document.getElementById('addEmailGroupboxInput').value;
 					if (myEmails) {
 						emailAction = true;
-						let addresses = MailServices.headerParser.parseEncodedHeader(myEmails);
+						let addresses = MailServices.headerParser.parseEncodedHeaderW(myEmails);
 						for (let address of addresses) {
 							if (address.email.includes("@")) {
 								wdw_cardEdition.addEmailToAdded(address.email.toLowerCase());

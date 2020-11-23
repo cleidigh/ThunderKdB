@@ -13,9 +13,17 @@ let ui = {};
         // =============================================================================================================
         // maxAllowedQuoteDepth
         // =============================================================================================================
-        ui.maxAllowedQuoteDepth.value = localStorage.maxAllowedQuoteDepth ? localStorage.maxAllowedQuoteDepth : 1;
+        ui.maxAllowedQuoteDepth.value = localStorage.maxAllowedQuoteDepth !== undefined ? localStorage.maxAllowedQuoteDepth : 1;
         ui.maxAllowedQuoteDepth.addEventListener("change", () => {
             browser.storage.local.set({maxAllowedQuoteDepth: ui.maxAllowedQuoteDepth.value});
+        });
+
+        // =============================================================================================================
+        // autoRemove
+        // =============================================================================================================
+        ui.autoRemove.checked = localStorage.autoRemove !== undefined ? localStorage.autoRemove : false;
+        ui.autoRemove.addEventListener("change", () => {
+            browser.storage.local.set({autoRemove: ui.autoRemove.checked});
         });
 
         // =============================================================================================================
@@ -31,17 +39,25 @@ let ui = {};
         });
 
         // =============================================================================================================
-        // autoRemove
+        // removeQuotedReplyHeader
         // =============================================================================================================
-        ui.autoRemove.checked = localStorage.autoRemove ? localStorage.autoRemove : false;
-        ui.autoRemove.addEventListener("change", () => {
-            browser.storage.local.set({autoRemove: ui.autoRemove.checked});
+        ui.removeQuotedReplyHeader.checked = localStorage.removeQuotedReplyHeader !== undefined ? localStorage.removeQuotedReplyHeader : true;
+        ui.removeQuotedReplyHeader.addEventListener("change", () => {
+            browser.storage.local.set({removeQuotedReplyHeader: ui.removeQuotedReplyHeader.checked});
+        });
+
+        // =============================================================================================================
+        // replyHeaderPattern
+        // =============================================================================================================
+        ui.replyHeaderPattern.value = localStorage.replyHeaderPattern !== undefined ? localStorage.replyHeaderPattern : browser.i18n.getMessage("optionsReplyHeaderPatternDefault");
+        ui.replyHeaderPattern.addEventListener("change", () => {
+            browser.storage.local.set({replyHeaderPattern: ui.replyHeaderPattern.value});
         });
 
         // =============================================================================================================
         // contextMenuEntry
         // =============================================================================================================
-        ui.contextMenuEntry.checked = localStorage.contextMenuEntry ? localStorage.contextMenuEntry : true;
+        ui.contextMenuEntry.checked = localStorage.contextMenuEntry !== undefined ? localStorage.contextMenuEntry : true;
         ui.contextMenuEntry.addEventListener("change", () => {
             browser.storage.local.set({contextMenuEntry: ui.contextMenuEntry.checked});
         });

@@ -1,30 +1,56 @@
 {
-  "author": "Axel Grude",
-  "manifest_version": 2,
-  "name": "QuickFolders",
-	"description": "Bookmark your favorite mail folders in Thunderbird.",
-  "version": "4.18.1",
-  "developer": {
-	  "name": "Axel Grude",
-    "url": "http://quickfolders.org/index.html"
-	},
-  "applications": {
-    "gecko": {
-      "id": "quickfolders@curious.be",
-      "strict_min_version": "60.0",
-      "strict_max_version": "69.0"
+  "manifest_version" : 2,
+  "name" : "QuickFolders",
+  "description" : "__MSG_extensionDescription__",
+  "version" : "5.0",
+  "default_locale": "en",
+  "author": "Axel Grude, Klaus Buecher/opto",
+  "developer" : {
+      "name" : "Axel Grude, Klaus Buecher/opto",
+      "url" : "https://quickfolders.org/index.html"
+  },
+  "applications" : {
+    "gecko" : {
+        "id" : "quickfolders@curious.be",
+        "strict_min_version" : "78.0",
+        "strict_max_version" : "78.*"
     }
   },
-  "icons": {
-	  "16": "chrome/skin/ico/QF16x16.png",
-    "32": "chrome/skin/ico/quickfolders-Icon.png",
-    "64": "chrome/skin/ico/QF64x64.png"
+  "background": {
+    "scripts": ["qf-background.js"]
   },
-	
-  "legacy": {
-    "options": {
-      "page": "chrome://quickfolders/content/options.xul",
-      "open_in_tab": false
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "chrome/content/api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "chrome/content/api/WindowListener/implementation.js"
+      }
+    },
+    "LegacyPrefs": {
+      "schema": "chrome/content/api/LegacyPrefs/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["LegacyPrefs"]],
+        "script": "chrome/content/api/LegacyPrefs/implementation.js"
+
+      }
+    },
+    "Utilities": {
+      "schema": "chrome/content/api/Utilities/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["Utilities"]],
+        "script": "chrome/content/api/Utilities/implementation.js"
+
+       }
     }
-  }	
+  },
+
+ "icons" : {
+    "32" : "chrome/content/skin/ico/QuickFolders_32.svg",
+    "64" : "chrome/content/skin/ico/QuickFolders_32.svg"
+  }
+
 }

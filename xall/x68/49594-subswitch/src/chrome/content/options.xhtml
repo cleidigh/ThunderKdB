@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/dialogs.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css"?>
+<?xml-stylesheet href="resource://subjects_prefix_switch/options.css" type="text/css" ?>
+
+<!DOCTYPE dialog SYSTEM "chrome://subjects_prefix_switch/locale/subjects_prefix_switch.dtd">
+
+<dialog
+	id="subjects_prefix_switchoptions"
+	type="child"
+	buttons="accept,cancel"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+	onload="com.ktsystems.subswitch.OptionsPanel.optionsOnLoad();"
+    style="height: 500px;     width: 480px;"
+	persist="width height screenX screenY sizemode"
+	title="&subjects_prefix_switch.label.options.windowtitle;">
+
+    <script src="chrome://global/content/preferencesBindings.js" type="application/javascript"/>
+	<script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/const.js"/>
+    <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/utils.js"/>
+    <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/items.js"/>
+    <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/options.js"/>
+
+	<script type="application/javascript" src="chrome://subjects_prefix_switch/content/preferences.js"/>
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="subjects_prefix_switch.locale" src="chrome://subjects_prefix_switch/locale/subjects_prefix_switch.properties"/>
+    </stringbundleset>
+
+    <tabbox>
+		<tabs>
+		  <tab id="maintab" label="&subjects_prefix_switch.label.options.maintab;"/>
+		  <tab id="othertab" label="&subjects_prefix_switch.label.options.othertab;"/>
+		  <tab id="helptab" label="&subjects_prefix_switch.label.options.helptab;" />
+		</tabs>
+
+		<tabpanels flex="1" orient="vertical">
+		  <tabpanel id="maintabpanel" flex="1" orient="vertical">
+				<vbox>
+					<groupbox orient="vertical" align="stretch" flex="1" >
+					<hbox class="groupbox-title">
+				    <label class="header">&subjects_prefix_switch.label.options.tree.rds;</label>
+				  </hbox>
+				  <vbox>
+						<hbox flex="1">
+						<tree id="subjects_prefix_switchTree" align="stretch" flex="1" rows="4"
+							onselect="return com.ktsystems.subswitch.OptionsPanel.onSelectItem();"
+								ondblclick="return com.ktsystems.subswitch.OptionsPanel.editItem();">
+							<treecols>
+								<treecol id="default" label="&subjects_prefix_switch.label.options.tree.default;" persist="width" cycler="true"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="description" label="&subjects_prefix_switch.label.options.tree.description;" flex="1" persist="width"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="rd" label="&subjects_prefix_switch.label.options.tree.rd;" flex="1" persist="width"/>
+								<splitter class="tree-splitter"/>
+								<treecol id="showInNewMsgPopup" label="&subjects_prefix_switch.label.options.tree.showInNewMsgPopup;" persist="width" cycler="true"/>
+                                <splitter class="tree-splitter"/>
+                                <treecol id="aliases" label="&subjects_prefix_switch.label.setrd.aliases;" flex="1" persist="width"  />
+                            </treecols>
+							<treechildren/>
+						</tree>
+						<vbox>
+							<button class="new optionsButton"
+									label="&subjects_prefix_switch.label.options.button.new;"
+									id="new"
+									oncommand="return com.ktsystems.subswitch.OptionsPanel.newItem();"/>
+							<button class="edit optionsButton"
+									label="&subjects_prefix_switch.label.options.button.edit;"
+									id="edit"
+									oncommand="return com.ktsystems.subswitch.OptionsPanel.editItem();"/>
+							<button class="delete optionsButton"
+									label="&subjects_prefix_switch.label.options.button.delete;"
+									id="delete"
+									oncommand="return com.ktsystems.subswitch.OptionsPanel.deleteItem();"/>
+							<button class="duplicate optionsButton"
+									label="&subjects_prefix_switch.label.options.button.duplicate;"
+									id="duplicate"
+									oncommand="return com.ktsystems.subswitch.OptionsPanel.duplicateItem();"/>
+							<hbox>
+								<button class="up"
+										id="up"
+										oncommand="return com.ktsystems.subswitch.OptionsPanel.moveItem(true);"/>
+								<spacer flex="1"/>
+								<button class="down"
+										id="down"
+										oncommand="return com.ktsystems.subswitch.OptionsPanel.moveItem(false);"/>
+							</hbox>
+							<spacer flex="1"/>
+						</vbox>
+					</hbox>
+				</vbox>
+				</groupbox>
+				<checkbox id="offbydefault" label="&subjects_prefix_switch.label.options.offbydefault;" prefstring="offbydefault" defaultpref="false"/>
+				<checkbox id="beforeMsgSubject" label="&subjects_prefix_switch.label.options.msgSubject;" prefstring="beforeMsgSubject" defaultpref="true"/>
+				<checkbox id="contextmenu" label="&subjects_prefix_switch.label.options.contextmenu;" prefstring="contextmenu" defaultpref="true"/>
+				<html:input id="initdelay" prefstring="extensions.subjects_prefix_switch.initdelay" defaultpref="1000" hidden="true"/>
+			</vbox>
+			</tabpanel>
+		  <tabpanel id="othertabpanel">
+				<vbox>
+					<groupbox orient="vertical">
+					<hbox class="groupbox-title">
+			    	<label class="header">&subjects_prefix_switch.label.options.other.autodiscovery;</label>
+			  	</hbox>
+			  	<checkbox id="addRDtoEmail" label="&subjects_prefix_switch.label.options.addRDtoEmail;" prefstring="addRDtoEmail" defaultpref="true"/>
+					<checkbox id="loadRDfromEmail" label="&subjects_prefix_switch.label.options.loadRDfromEmail;" prefstring="loadRDfromEmail" defaultpref="true"/>
+					<spacer flex="1"/>
+					<spacer flex="1"/>
+					<grid>
+							<columns>
+								<column flex="1"/>
+								<column/>
+							</columns>
+							<rows>
+								<row>
+									 <description>&subjects_prefix_switch.label.options.discoveryIgnoreSigns;</description>
+									 <vbox align="center">
+										 <html:input align="center" id="discoveryIgnoreSigns" prefstring="extensions.subjects_prefix_switch.discoveryIgnoreSigns" defaultpref="[]\/ "/>
+									 </vbox>
+								</row>
+								<row>
+									<description width="300">&subjects_prefix_switch.label.options.discoveryItemRegex;</description>
+									<vbox align="center">
+										<html:input align="center" id="discoveryItemPattern" prefstring="extensions.subjects_prefix_switch.discoveryItemPattern" defaultpref="\[.+\]"/>
+									</vbox>
+								</row>
+							</rows>
+					</grid>
+					<separator style="margin-bottom:10px;" class="groove"/>
+
+					<description width="200" style="margin-bottom:10px;">&subjects_prefix_switch.label.options.discovery.autodisable.description;</description>
+					<hbox align="top">
+						<grid>
+							<columns>
+								<column/>
+								<column/>
+							</columns>
+							<rows>
+								<row>
+									<hbox align="center">
+										<label value="&subjects_prefix_switch.label.options.discovery.autodisable.description.address;"/>
+										<html:input id="address" size="10"/>
+									</hbox>
+									<vbox>
+										<button id="addAddress" class="addAddress optionsButton" label="&subjects_prefix_switch.label.options.discovery.autodisable.description.add;" oncommand="com.ktsystems.subswitch.OptionsPanel.addAutoSwitch('address');"/>
+										<button id="removeAddress"  class="removeAddress optionsButton" label="&subjects_prefix_switch.label.options.discovery.autodisable.description.remove;" oncommand="com.ktsystems.subswitch.OptionsPanel.removeAutoswitch('address');"/>
+									</vbox>
+								</row>
+							</rows>
+						</grid>
+						<hbox><vbox><richlistbox id="discoveryIgnoreList" prefstring="discoveryIgnoreList" defaultpref="-" seltype="single" flex="1" rows="3"/></vbox></hbox>
+					</hbox>
+					<description style="margin-top:10px;margin-bottom:10px;">&subjects_prefix_switch.label.options.discovery.autodisable.description.wildcard1;</description>
+					</groupbox>
+					<separator style="margin-bottom:10px;" class="groove"/>
+
+					<groupbox orient="horizhorizontal">
+					  <hbox class="groupbox-title">
+					    <label class="header">&subjects_prefix_switch.label.options.other.impexp;</label>
+					  </hbox>
+						<vbox align="center">
+							<hbox>
+								<button class="browse optionsButton" id="button-composer-pick" oncommand="return com.ktsystems.subswitch.OptionsPanel.onImportPressed();"
+										label="&subjects_prefix_switch.label.options.other.imp;" />
+								<button class="browse optionsButton" id="button-composer-pick" oncommand="return com.ktsystems.subswitch.OptionsPanel.onExportPressed();"
+										label="&subjects_prefix_switch.label.options.other.exp;" />
+							</hbox>
+						</vbox>
+					</groupbox>
+					<hbox id="ssMsg-notification">
+							<!-- notificationbox will be added here lazily. -->
+					</hbox>
+				</vbox>
+		  </tabpanel>
+		  <tabpanel id="helptabpanel">
+			  <hbox>
+				<vbox flex="1">
+					<description value="SubSwitch" style="font-weight: bold; font-size: x-large;"/>
+					<description value="Version 0.9.44"/>
+					<description value="Build 0.9.44 (2020-11-17)" style="font-size: 10px; color: #666666;"/>
+
+					<separator class="thin"/>
+
+					<description value="&subjects_prefix_switch.label.options.createdBy;" style="font-weight: bold;"/>
+					<label value="Tomasz Krajewski / ktsystems@gmail.com" class="text-link" onclick="com.ktsystems.subswitch.Utils.openMailURL('mailto:ktsystems@gmail.com');"/>
+
+					<separator class="thin"/>
+
+					<description style="margin-top:10px; font-weight: bold;">&subjects_prefix_switch.label.options.website;</description>
+					<label id="website" class="text-link" onclick="com.ktsystems.subswitch.Utils.openURL('https://github.com/tomaszkrajewski/tb-subswitch/issues');" style="margin-left:25px;" value="https://github.com/tomaszkrajewski/tb-subswitch/issues"/>
+
+					<separator class="thin"/>
+
+					<description style="margin-top:10px; font-weight: bold;">&subjects_prefix_switch.label.options.translate;</description>
+					<label id="website" class="text-link" onclick="com.ktsystems.subswitch.Utils.openURL('https://github.com/tomaszkrajewski/tb-subswitch/issues');" style="margin-left:25px;" value="https://github.com/tomaszkrajewski/tb-subswitch/issues"/>
+
+					<separator class="thin"/>
+
+					<description style="margin-top:10px; font-weight: bold;">&subjects_prefix_switch.label.options.settings.support;</description>
+					<hbox align="left">
+					<image src="resource://subjects_prefix_switch/btn_donate_SM.gif"
+						id="donateButton" href="" class="text-link"
+						style="margin-left:25px;"
+						onclick="com.ktsystems.subswitch.Utils.openURL('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=3ZHGJ9QSHRZNW');" />
+					</hbox>
+				</vbox>
+
+				<spacer width="15"/>
+
+				<vbox align="top">
+					<image src="resource://subjects_prefix_switch/sub_switch232.png" id="dtbAboutLogo" />
+				</vbox>
+			</hbox>
+		  </tabpanel>
+		</tabpanels>
+    </tabbox>
+
+</dialog>

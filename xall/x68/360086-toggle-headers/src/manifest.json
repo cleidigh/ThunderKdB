@@ -1,18 +1,37 @@
 {
-
   "manifest_version": 2,
   "name": "Toggle Headers",
-  "version": "2.0",
+  "version": "3.0",
   "author": "Matthias Schoettle",
   "homepage_url": "https://mattsch.com",
-  "description": "Allows toggling the message header setting through a keyboard shortcut (H).",
-  "legacy": {
-    "type": "xul"
-  },
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "applications": {
     "gecko": {
       "id": "toggle-headers@mattsch.com",
-      "strict_min_version": "68.0"
+      "strict_min_version": "74.0"
     }
+  },
+  "experiment_apis": {
+    "toggleHeadersApi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["toggleHeadersApi"]],
+        "script": "toggle-headers.js"
+      }
+    }
+  },
+  "commands": {
+    "toggle-headers": {
+      "description": "Toggle Headers",
+      "suggested_key": {
+        "default": "Ctrl+H",
+        "mac": "MacCtrl+H"
+      }
+    }
+  },
+  "background": {
+    "scripts": ["background.js"]
   }
 }

@@ -2,8 +2,7 @@ if ("undefined" == typeof(ovl_collected)) {
 	var { jsmime } = ChromeUtils.import("resource:///modules/jsmime.jsm");
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var ovl_collected = {
 		
@@ -55,10 +54,9 @@ if ("undefined" == typeof(ovl_collected)) {
 			resultEmailsCollections = cardbookRepository.cardbookPreferences.getAllEmailsCollections();
 			if (resultEmailsCollections && resultEmailsCollections.length != 0) {
 				var myFields = gMsgCompose.compFields;
-				var listToCollect = ["to", "cc", "bcc"];
-				for (var i = 0; i < listToCollect.length; i++) {
-					if (myFields[listToCollect[i]]) {
-						let addresses = MailServices.headerParser.parseEncodedHeader(myFields[listToCollect[i]]);
+				for (let field of ["to", "cc", "bcc"]) {
+					if (myFields[field]) {
+						let addresses = MailServices.headerParser.parseEncodedHeaderW(myFields[field]);
 						for (let address of addresses) {
 							ovl_collected.addCollectedContact(gMsgCompose.identity.key, resultEmailsCollections, address.name, address.email);
 							cardbookRepository.cardbookMailPopularity.updateMailPopularity(address.email);
@@ -67,10 +65,9 @@ if ("undefined" == typeof(ovl_collected)) {
 				}
 			} else {
 				var myFields = gMsgCompose.compFields;
-				var listToCollect = ["to", "cc", "bcc"];
-				for (var i = 0; i < listToCollect.length; i++) {
-					if (myFields[listToCollect[i]]) {
-						let addresses = MailServices.headerParser.parseEncodedHeader(myFields[listToCollect[i]]);
+				for (let field of ["to", "cc", "bcc"]) {
+					if (myFields[field]) {
+						let addresses = MailServices.headerParser.parseEncodedHeaderW(myFields[field]);
 						for (let address of addresses) {
 							cardbookRepository.cardbookMailPopularity.updateMailPopularity(address.email);
 						}

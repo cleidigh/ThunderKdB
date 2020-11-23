@@ -40,7 +40,7 @@ function updateUIOnSettingChange(changes, areaName) {
 async function setupListeners() {
   MailFolderKeyNavInput = document.querySelector("#MailFolderKeyNav");
   MailFolderKeyNavMenuItemInput = document.querySelector("#MailFolderKeyNavMenuItem");
-  let settings = await messenger.storage.local.get();
+  let settings = await getSavedSettings();
   updateUI(settings);
   MailFolderKeyNavInput.addEventListener("change", saveSettings);
   MailFolderKeyNavMenuItemInput.addEventListener("change", saveSettings);

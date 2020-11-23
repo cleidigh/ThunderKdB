@@ -7,6 +7,16 @@
 
 /* ::::: primary toolbar buttons ::::: */
 
+#compose-toolbox .toolbarbutton-1 .toolbarbutton-icon {
+  min-width: 26px;
+  min-height: 26px;
+}
+
+#compose-toolbox[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon {
+  min-width: 18px;
+  min-height: 18px;
+}
+
 #button-send {
   list-style-image: url("button-send.png");
 }
@@ -120,7 +130,7 @@
 }
 
 #AlignPopupButton {
-  -moz-image-region: rect(0px 176px 16px 160px);
+  -moz-image-region: rect(0px 160px 16px 144px);
 }
 
 #InsertPopupButton {
@@ -133,23 +143,24 @@
 
 /* ..... align menu ..... */
 
-#AlignPopup > menuitem {
-  list-style-image: url("format-buttons.png");
-}
 
-#AlignLeftItem {
+#AlignLeftItem, #AlignPopupButton[state="left"] {
+  list-style-image: url("format-buttons.png");
   -moz-image-region: rect(0px 160px 16px 144px);
 }
 
-#AlignCenterItem {
+#AlignCenterItem, #AlignPopupButton[state="center"] {
+  list-style-image: url("format-buttons.png");
   -moz-image-region: rect(0px 176px 16px 160px);
 }
 
-#AlignRightItem {
+#AlignRightItem, #AlignPopupButton[state="right"] {
+  list-style-image: url("format-buttons.png");
   -moz-image-region: rect(0px 192px 16px 176px);
 }
 
-#AlignJustifyItem {
+#AlignJustifyItem, #AlignPopupButton[state="justify"] {
+  list-style-image: url("format-buttons.png");
   -moz-image-region: rect(0px 208px 16px 192px);
 }
 

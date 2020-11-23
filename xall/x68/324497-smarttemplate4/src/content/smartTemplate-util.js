@@ -18,7 +18,7 @@ var SmartTemplate4_TabURIregexp = {
 };
 
 SmartTemplate4.Util = {
-	HARDCODED_CURRENTVERSION : "2.11.2",
+	HARDCODED_CURRENTVERSION : "2.12",
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "smarttemplate4@thunderbird.extension",
 	VersionProxyRunning: false,
@@ -1402,10 +1402,13 @@ SmartTemplate4.Util = {
 	
   isFilePathAbsolute : function isFilePathAbsolute(path) {
     if (!path) return false;
+     
     // check for user folder / drive letter or double slash
     return (path.toLowerCase().startsWith('/user') || 
       /([a-zA-Z]:)/.test(path) || 
       path.startsWith("\\") || path.startsWith("/"));
+      
+
   },
   
   // retrieve the folder path of a full file location (e.g. C:\user\myTemplate.html)
@@ -1418,8 +1421,11 @@ SmartTemplate4.Util = {
         appendedPath = "";
     if (fPart)
       newPath = path.substr(0,fPart) + slash;
-    if (filePath && newPath) 
-      appendedPath =filePath.substr(path[0]=='/' ? 1 : 0).replace(noSlash,slash);
+    // issue 77 - %file()% path truncated at front by 1 letter on Mac OS
+    if (filePath && newPath) {
+      let slashUnifiedFilePath = filePath.replace(noSlash, slash);
+      appendedPath = slashUnifiedFilePath.substr(slashUnifiedFilePath[0] == slash ? 1 : 0); // strip leading slash
+    }
     return newPath + appendedPath;
   },
   

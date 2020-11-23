@@ -1,6 +1,7 @@
 //see omni\modules\socket.jsm
 const NS_ERROR_MODULE_NETWORK = 2152398848; //z.B. in http://lxr.mozilla.org/mozilla/source/browser/base/content/web-panels.js
 const NS_BINDING_ABORTED = NS_ERROR_MODULE_NETWORK + 2; // z.B. in http://lxr.mozilla.org/mozilla/source/netwerk/base/public/nsNetError.h
+const NS_BINDING_FAILED = NS_ERROR_MODULE_NETWORK + 1; // z.B. in http://lxr.mozilla.org/mozilla/source/netwerk/base/public/nsNetError.h
 
 //see omni\modules\services-common\rest.js
 
@@ -90,7 +91,7 @@ gDownloadService=
   {
     if( !URI )
       return -1;
-debug('start: usePost='+usePost+' flmt='+flmt);
+debug('start: usePost='+usePost+' flmt='+flmt+' URI='+URI);
 
     this._callback=callback;
     this._lastModifiedTime=flmt?flmt.getTime()/1000:0;	//Date() to number TODO: 0 as default?
@@ -131,10 +132,11 @@ debug('onDataAvailable: '+offset+' '+count);
 //      this._inputStream = Cc["@mozilla.org/scriptableinputstream;1"]
 //                            .createInstance(Ci.nsIScriptableInputStream);
 //      this._inputStream.init(stream);
-
+			let first=this.length==0;
       this.data += NetUtil.readInputStreamToString(stream, count);
+      this.length+=count;
 
-      if (this.length==0 && this._lastModifiedTime) { // on first data, check time
+      if (first && this._lastModifiedTime) { // on first data, check time
 debug('onDataAvailable: first call, check rlmt');
         let rlmt=null;
         if (this._scheme=="http" || this._scheme=="https") {
@@ -142,7 +144,9 @@ debug('onDataAvailable: check http header');
           let httpc=this._channel.QueryInterface(Ci.nsIHttpChannel);
           if (httpc.responseStatus>=200 && httpc.responseStatus<300)
             //only available, if status is ok!
-            rlmt=new Date(httpc.getResponseHeader('Last-Modified'));
+						try {
+							rlmt=new Date(httpc.getResponseHeader('Last-Modified'));	//throws error if not available
+						} catch (e) { debug('No "Last-Modified" Header!'); }
 debug('onDataAvailable: got rlmt from header: '+rlmt);
             if (rlmt=='Invalid Date') rlmt=null;
 						else rlmt=Date.parse(rlmt)/1000;
@@ -166,13 +170,12 @@ debug('onDataAvailable: asked, cancel request');
           }
         }
       }
-      this.length+=count;
 //debug('onDataAvailable: length now '+this.length);
-
-
     } catch(e) {
-      if (e.result!=NS_BINDING_ABORTED)
+      if (e.result!=NS_BINDING_ABORTED) {
 				debug('onDataAvailable throws: '+e, e);
+				channel.cancel(NS_BINDING_FAILED);	// shows "Error TB-1" in dialog
+			} else debug('Request canceled');
     }
   },
   onStartRequest: function(request) {

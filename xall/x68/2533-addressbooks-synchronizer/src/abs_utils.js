@@ -100,7 +100,7 @@ debug('saving to '+file.path);
 debug('stored');
 		return true;
 	} catch(e) {
-		debug('throws: '+e, e);
+		debug('mabFile.copyTo throws: '+e, e);
 		return false;
 	}
 }
@@ -204,7 +204,7 @@ debug('main:cards#='+cards.length);
 debug('cards deleted');
 	} catch(e) {
 debug('throws: '+e, e);
-		return 'throws: '+e;
+		return 'ollectCardsToDelete throws: '+e;
 	}
 
 	return '';
@@ -255,7 +255,7 @@ debug('rab_ve: Probably corrupt addressbook', true);
 				}
 			}
 		} catch(e) {
-debug('throws: '+e, e);
+debug('recreate maillists throws: '+e, e);
 			return 'rab_ve: create cards for lists: '+e;
 		}
 		return '';
@@ -435,7 +435,7 @@ debug('calling callback');
 			});
 		});
 	} catch(e) {
-		debug('throws: '+e, e);
+		debug('flushDB throws: '+e, e);
 	}
 debug('returning');
 }	// function flushDB
@@ -631,7 +631,7 @@ debug('Found Addressbook Window');
         let kPersistCollapseMapStorage = "directoryTree.json";
         w.gDirectoryTreeView.init(w.gDirTree, kPersistCollapseMapStorage);
       } catch(e) {
-				debug('throws: '+e, e);
+				debug('refreshAddressbook throws: '+e, e);
 			}
     } else {
 debug('no abTree');
@@ -787,13 +787,11 @@ debug('entered gAbort='+gAbort);
     cleanUp();		// is uploadDone() or downloadDone()
     cleanUp=null;
   }
-	if (gTempName && !gAbort) {
-    if (!deleteTempFile(gTempName)) {
+	if (gTempName && gTempName.length && !gAbort) {
+    if (!deleteTempFile()) {
 debug('lifetimeTimer used wg. deleteTempFile');
 			lifetimeTimer.initWithCallback(killMe, 1000, Ci.nsITimer.TYPE_ONE_SHOT);
       return;
-    } else {
-      gTempName='';
     }
   }
 
@@ -882,33 +880,39 @@ debug('last modified date of dir '+dir.dirName+': '+lastModifiedDate);
 /*
  * delete temp file
  */
-function deleteTempFile(filename) {
-	let tmpFile=FileUtils.getFile("TmpD", [filename]);
-  if (!tmpFile.exists() || !tmpFile.isFile()) return true;
+function deleteTempFile() {
 debug('entered');
-  let deleted=false;
-  try {
-		tmpFile.remove(false);
+  let deleted=true;
+  gTempName.forEach((filename, index)=>{
+    if (!filename) return;  //already deleted
+    let tmpFile=FileUtils.File(filename);
+debug('delete '+tmpFile.path);
+    if (!tmpFile.exists() || !tmpFile.isFile()) return true;
+    try {
+      tmpFile.remove(false);
 debug('file deleted');
-  } catch(e) {
-debug('throws: '+e, e);
-    switch (e.result) {
-      case Components.results.NS_ERROR_FILE_ACCESS_DENIED:
-			//  after call to replaceAddressBook, an immediate remove
-			//  throws an 'access denied'
-			// killMe() will try again!
-        break;
-      case Components.results.NS_ERROR_FILE_NOT_FOUND:
-        deleted=true;
-        break;
-      default:
-        Services.prompt.alert(null, 'AddressbooksSync', 'deleteTempFile: '+e.message);
-        deleted=true; // not really
-        break;
+      gTempName[index]='';
+    } catch(e) {
+debug('deleteTempFile throws: '+e, e);
+      switch (e.result) {
+        case Components.results.NS_ERROR_FILE_ACCESS_DENIED:
+        //  after call to replaceAddressBook, an immediate remove
+        //  throws an 'access denied'
+        // killMe() will try again!
+          deleted=false;
+          break;
+        case Components.results.NS_ERROR_FILE_NOT_FOUND:
+          gTempName[index]='';
+          break;
+        default:
+          Services.prompt.alert(null, 'AddressbooksSync', 'deleteTempFile: '+e.message);
+          debug('deleteTempFile: '+e.message, e);
+          deleted=false;
+          break;
+      }
     }
-    return deleted;
-  }
-  return true;
+  });
+  return deleted;
 }
 
 /*
@@ -942,6 +946,7 @@ function getSyncURI() {
   let syncuser = prefs['user'];
   let syncpath = prefs['path'];
   if (!synchost && !syncuser || !syncprotocol) return '';
+debug('call abspassword');
   let syncpassword = abspassword(syncprotocol, synchost, syncuser, '');
 	
   let userpass=encodeURIComponent(syncuser) +(syncpassword?":"+encodeURIComponent(syncpassword):"");
@@ -958,10 +963,16 @@ function abspassword(protocol, host, user, pwd) {
 	let hostname = protocol+'://'+host;
 	let httprealm = 'AddressbooksSynchronizer';
 
+debug('entered');
 	let loginManager = Services.logins;
 
 	try {
+debug('call findLogins');
+//Exception... "User canceled master password entry"  nsresult: "0x80004004 (NS_ERROR_ABORT)"
+//wait for notifyObservers("passwordmgr-crypto-login");
+debug('isLoggedIn: '+loginManager.isLoggedIn);
 		let logins = loginManager.findLogins(hostname, null, httprealm);
+debug('findLogins returnes '+logins.length+' entries'); //+JSON.stringify(logins));	//shows password
 		for (let i = 0; i < logins.length; i++) {
 			if (logins[i].username == user) {
 				if (!pwd) return logins[i].password;
@@ -975,7 +986,7 @@ function abspassword(protocol, host, user, pwd) {
 			loginManager.addLogin(loginInfo);
 		}
 	} catch(e) {
-		debug('throws: '+e, e);
+		debug('abspassword throws: '+e, e);
 	}
 	return pwd;
 }
@@ -1210,17 +1221,13 @@ debug('	tab='+nativeTabInfo);
 }
 
 function initialize() {
-	if (initialized) return;
 debug('entered');
+	if (initialized) return;
 	initialized=true;
-	addCardListObserver();	// add observers for cards and lists
 	startTimer();
+	addCardListObserver();	// add observers for cards and lists
 	if (prefs['synctype'] && prefs['autodownload']) {
-debug('call download on start');
-    let delay = prefs['delayautodownload'];
-		lifetimeTimer.initWithCallback(()=>{showPopup('download', null, 'start', false);},
-									delay*1000, Ci.nsITimer.TYPE_ONE_SHOT);
-		//if !delay: 			showPopup('download', null, 'start', false);
+		downloadOnStart();
 	}
 	theHiddenWin(prefs['autoupload'] && prefs['synctype']=='imap');
 }
@@ -1245,6 +1252,32 @@ debug('call upload on close');
 		return false;
 }
 
+/*
+var loginObserver = {
+	QueryInterface: ChromeUtils.generateQI([
+		"nsIObserver",
+		"nsISupportsWeakReference",
+	]),
+  observe: function(aSubject, aTopic, aData) {
+debug('loginObserver called');
+		Services.obs.removeObserver(this, "passwordmgr-crypto-login");
+		showPopup('download', null, 'start', false);
+	}
+}
+*/
+function downloadOnStart() {
+debug('call download on start');
+	if (!Services.logins.isLoggedIn) { //masterpassword not yet given
+debug('masterpassword not yet given');
+//does not work :-( 
+//			Services.obs.addObserver(loginObserver, "passwordmgr-crypto-login");
+		lifetimeTimer.initWithCallback(()=>{downloadOnStart();},
+								5000, Ci.nsITimer.TYPE_ONE_SHOT);
+		return;
+	}
+	showPopup('download', null, 'start', false);
+}
+
 var loadTimer = Cc["@mozilla.org/timer;1"]
                         .createInstance(Ci.nsITimer);
 function startTimer() {
@@ -1252,17 +1285,19 @@ debug('entered');
   loadTimer.cancel();
 debug('timer canceled prefs='+prefs);
   if (prefs['loadtimer']>0 && (prefs['timeddownload']||prefs['timedupload'])) {
-      loadTimer.initWithCallback(timer, prefs['loadtimer']*60000,
+      loadTimer.initWithCallback(timedUpDownload, prefs['loadtimer']*60000,
                 Ci.nsITimer.TYPE_REPEATING_SLACK);
 debug('timer started every '+prefs['loadtimer']);
 	}
   if (prefs['noupload']) disableUpload();
 
 }
-var timer = {
+var timedUpDownload = {
   notify: function(aTimer)
   {
 debug('timer: fired');
+		if (!Services.logins.isLoggedIn) //masterpassword not yet given, wait till next time
+			return;
     if (prefs['timeddownload']) {
       if (prefs['timedupload']) pendingupload=true;		// do upload after download
       showPopup('download', null, 'auto', false);
@@ -1340,10 +1375,15 @@ function debug(txt, ln) {
 		let stack = e.stack.toString().split(/\r\n|\n/);
 		ln=stack[ex?0:1].replace(/file:\/\/.*\/(.*:\d+):\d+/, '$1');	//getExternalFilename@file:///D:/sourcen/Mozilla/thunderbird/Extensions/AddressbooksSync_wee/abs_utils.js:1289:6
 	}
+	if (ex) {
+		console.error('ABS: '+ln+' '+txt);
+	}
+
 	if (!prefs) {
 		var d=new Date();
 		var s=d.toLocaleString();
-		debugcache.set(debugcache.size+(ex?':fail':'')+'-'+s, '(cached) '+ln+' '+txt);
+//		debugcache.set(debugcache.size+(ex?':fail':'')+'-'+s, '(cached) '+ln+' '+txt);
+		debugcache.set(debugcache.size+'-'+s, '(cached) '+ln+' '+txt);
 		return;
 	}
 	if (!prefs['debug']) {
@@ -1377,16 +1417,11 @@ function debug(txt, ln) {
 	if (debugcache && debugcache.size) {
 console.log('ABS: debug: debugcache.size='+debugcache.size);
 		for (let [s, t] of debugcache) {
-			if (s.match(':fail-'))
-				console.error('ABS: '+t);
-			else
-				console.debug('ABS: '+t);
+			console.debug('ABS: '+t);
 		}
 		debugcache.clear();
 	}
-	if (ex)
-		console.error('ABS: '+ln+' '+txt);
-	else
+	if (!ex)
 		console.debug('ABS: '+ln+' '+txt);
 }
 

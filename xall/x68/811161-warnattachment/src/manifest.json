@@ -1,25 +1,58 @@
 {
-    "manifest_version": 2,
-    "applications": {
-        "gecko": {
-            "id":"warnattachment@jdede.de",
-            "strict_min_version": "68.0"
+  "manifest_version": 2,
+  "name": "WarnAttachment",
+  "version": "2.1",
+  "description": "__MSG_extensionDescription__",
+  "author": "Jens Dede",
+  "homepage_url": "https://github.com/jdede/WarnAttachment",
+  "default_locale" : "en",
+  "applications":{
+      "gecko" : {
+          "id": "warnattachment@jdede.de",
+          "strict_min_version" : "68.0",
+          "strict_max_version": "78.*"
+      }
+  },
+
+  "icons": {
+    "32": "icons/icon32.png",
+    "64": "icons/icon64.png"
+  },
+  "permissions": [
+      "storage"
+  ],
+  "background" : {
+      "scripts" : ["background.js"]
+  },
+  "options_ui" : {
+      "page":"content/options/options.html",
+      "open_in_tab" : false,
+      "browser_style" : true
+  },
+  "experiment_apis": {
+    "AttachmentHandler": {
+      "schema": "content/api/AttachmentHandler/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["AttachmentHandler"]],
+        "script": "content/api/AttachmentHandler/implementation.js"
+      }
+    },
+    "LegacyPrefMigration":{
+        "schema" : "content/api/LegacyPrefMigration/schema.json",
+        "parent": {
+            "scopes" : ["addon_parent"],
+            "paths" : [["LegacyPrefMigration"]],
+            "script" : "content/api/LegacyPrefMigration/implementation.js"
         }
     },
-    "default_locale": "en",
-    "name":"WarnAttachment",
-    "description":"__MSG_extensionDescription__",
-    "author": "Jens Dede",
-    "homepage_url": "https://github.com/jdede/WarnAttachment",
-    "version":"1.2",
-    "icons":{
-        "32" : "icons/icon32.png"
-    },
-    "legacy": {
-        "type":"xul",
-        "options":{
-            "page":"chrome://warnattachment/content/preferences.xul",
-            "open_in_tab":false
+    "DialogExperiment":{
+        "schema" : "content/api/DialogExperiment/schema.json",
+        "parent": {
+            "scopes" : ["addon_parent"],
+            "paths" : [["DialogExperiment"]],
+            "script" : "content/api/DialogExperiment/implementation.js"
         }
     }
+  }
 }

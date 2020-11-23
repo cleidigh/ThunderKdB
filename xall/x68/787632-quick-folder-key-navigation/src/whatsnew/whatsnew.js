@@ -6,21 +6,12 @@
 
 "use strict";
 
-// Localise page
-function localisePage() {
-  for (let el of window.document.querySelectorAll("[data-l10n-id]")) {
-    let id = el.getAttribute("data-l10n-id");
-    el.textContent = messenger.i18n.getMessage(id);
-  }
-}
+document.addEventListener("DOMContentLoaded", localisePage, {once: true});
 
-function setupListeners() {
+document.addEventListener("DOMContentLoaded", function() {
   let OKButton = document.querySelector("#whatsnew_button");
   OKButton.addEventListener("click", (event) => {
   	window.close();
   });
-}
-
-document.addEventListener("DOMContentLoaded", localisePage, {once: true});
-document.addEventListener("DOMContentLoaded", setupListeners, {once: true});
+}, {once: true});
 

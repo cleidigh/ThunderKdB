@@ -1,0 +1,31 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "PasteMarkDownSyntax@Sungho.Hwang",
+                   "strict_min_version": "78.0"
+                    }
+             },
+	"name": "PasteMarkdown&XHTMLForm",
+	"version": "47.4",
+	"description": "This is buttons to paste Markdown and XHTML form texts on event and task dialog descriptions.",
+             "icons": {
+               "16": "pms16.png",
+               "32": "pms32.png"
+                 },
+"background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+"experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["myapi"]],
+        "script": "implementation.js"
+      }
+    }
+  }
+}

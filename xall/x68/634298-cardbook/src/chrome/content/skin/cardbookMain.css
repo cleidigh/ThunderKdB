@@ -122,7 +122,7 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 #notemodernGroupbox,
 #noteclassicalGroupbox,
 #noteTabpanel,
-#othersGroupbox,
+#othersGroupboxWrapper,
 #vcardTabGroupbox {
     display: flex;
 }
@@ -130,7 +130,7 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 #notemodernTextBox,
 #noteclassicalTextBox,
 #noteTextBox,
-#othersGroupbox > #othersTextBox,
+#othersGroupboxWrapper > #othersTextBox,
 #vcardTextBox {
     width: 100%;
     box-sizing: border-box;
@@ -150,6 +150,7 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 	color: -moz-activehyperlinktext;
 }
 
+/* cute tabs */
 :root {
 	--box-border-color: ThreeDShadow;
 	--highlight-color: Highlight;

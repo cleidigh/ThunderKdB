@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/content/commonDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/commonDialog.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/accountManage.css" type="text/css"?>
+
+<!DOCTYPE dialog [
+  <!ENTITY % commonDialog SYSTEM "chrome://global/locale/commonDialog.dtd">
+  %commonDialog;
+  <!ENTITY % dialog1 SYSTEM "chrome://subjects_prefix_switch/locale/subjects_prefix_switch.dtd">
+  %dialog1;
+]>
+
+<dialog id="prefixFoundDialog"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        aria-describedby="info.body"
+        minwidth="300"
+        onload="com.ktsystems.subswitch.SetPrefix.oldCommonDialogOnLoad();
+                com.ktsystems.subswitch.SetPrefix.setRDOnLoad();
+                com.ktsystems.subswitch.PrefixFound.prefixFoundOnLoad()"
+        style="min-width: 29em; min-height: 8.5em; -moz-user-focus: ignore;">
+
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="subjects_prefix_switch.locale" src="chrome://subjects_prefix_switch/locale/subjects_prefix_switch.properties"/>
+  </stringbundleset>
+
+  <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/const.js"/>
+  <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/utils.js"/>
+  <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/items.js"/>
+  <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/setrd.js"/>
+  <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/prefix_found.js"/>
+
+  <commandset id="selectEditMenuItems">
+    <command id="cmd_copy" oncommand="goDoCommand('cmd_copy')" disabled="true"/>
+    <command id="cmd_selectAll" oncommand="goDoCommand('cmd_selectAll')"/>
+  </commandset>
+
+  <grid>
+    <columns>
+      <column/>
+      <column flex="1"/>
+    </columns>
+
+    <rows>
+      <row>
+        <hbox align="start">
+          <image id="info.icon" class="spaced"/>
+        </hbox>
+        <vbox id="infoContainer" >
+            <description id="info.header" class="header" />
+            <html:div>
+            <html:fieldset>
+                <description id="info.body" context="contentAreaContextMenu" tabindex="-1"/>
+                <html:table class="identity-table">
+                <html:tr>
+                    <html:th>
+                        <label id="description.label"
+                               value="&subjects_prefix_switch.label.setrd.description;"
+                               control="description"/>
+                    </html:th>
+                    <html:td>
+                        <html:input id="description"
+                                    type="text"
+                                    class="input-inline"
+                                    aria-labelledby="description.label"
+                                    size="30"/>
+                    </html:td>
+                </html:tr>
+                <html:tr>
+                    <html:th>
+                        <label id="rd.label"
+                               value="&subjects_prefix_switch.label.setrd.path;"
+                               control="rd"/>
+                    </html:th>
+                    <html:td>
+                        <html:input id="rd"
+                                    type="text"
+                                    class="input-inline"
+                                    aria-labelledby="rd.label"
+                                    size="30"/>
+                    </html:td>
+                </html:tr>
+                </html:table>
+                <separator class="thin"/>
+                <hbox flex="1">
+                    <checkbox id="aliasCheckbox" label="&subjects_prefix_switch.label.setrd.justAlias;"
+                              oncommand="com.ktsystems.subswitch.PrefixFound.updateAliasButton();" flex="1"/>
+                    <menulist id="aliasButton" disabled="true" size="30" aria-labelledby="aliasCheckbox" flex="1">
+                        <menupopup id="aliasMenuPopup" onpopupshowing="com.ktsystems.subswitch.PrefixFound.initAliasMenuPopup();" />
+                    </menulist>
+                </hbox>
+            </html:fieldset>
+            </html:div>
+        </vbox>
+      </row>
+    </rows>
+  </grid>
+  <separator style="margin-bottom:10px;" class="groove"/>
+</dialog>

@@ -3,21 +3,30 @@
     "applications": {
         "gecko": {
             "id": "confirmbeforedelete@caligraf",
-            "strict_min_version": "68.0"
+            "strict_min_version": "78.0"
         }
     },
     "name": "ConfirmBeforeDelete",
     "description": "Ask a confirm before to delete some items",
-    "version": "1.3",
+    "author": "Caligraf",
+    "version": "1.5.3",
     "homepage_url": "https://github.com/caligraf/ConfirmBeforeDelete/wiki",
     "icons": {
-		"32": "skin/icon32x32.png"
+        "16": "skin/icon16x16.png",
+		"32": "skin/icon32x32.png",
+        "64": "skin/icon64x64.png"
 	},
-    "legacy": {
-        "type": "xul",
-        "options": {
-            "page": "chrome://confirmbeforedelete/content/CBD-options.xul",
-            "open_in_tab": false
+    "experiment_apis": {
+      "WindowListener": {
+        "schema": "api/WindowListener/schema.json",
+        "parent": {
+          "scopes": ["addon_parent"],
+          "paths": [["WindowListener"]],
+          "script": "api/WindowListener/implementation.js"
         }
+      }
+    },
+    "background": {
+      "scripts": [ "background.js" ]
     }
 }

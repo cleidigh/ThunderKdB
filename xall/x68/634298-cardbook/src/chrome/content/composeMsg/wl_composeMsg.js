@@ -19,6 +19,7 @@ Services.scriptloader.loadSubScript("chrome://cardbook/content/composeMsg/ovl_ca
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookWindowUtils.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/observers/cardBookObserverRepository.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/observers/cardBookComposeMsgObserver.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://cardbook/content/observers/cardBookObserver.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/ovl_cardbook.js", window, "UTF-8");
 
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookInit.js", window, "UTF-8");
@@ -67,7 +68,7 @@ function onLoad(wasAlreadyOpen) {
 	</toolbarpalette>
 	`);
 
-		window.ovl_cardbookComposeMsg.loadMsg();
+	window.ovl_cardbookComposeMsg.loadMsg();
 };
 
 function onUnload(wasAlreadyOpen) {

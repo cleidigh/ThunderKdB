@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<head>
+<title>LeftTodaySubpaneOrLogo</title>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'  https://developer.mozillar.org/*"/> 
+<base target="_top"/> 
+<link rel="manifest" href="/manifest.json"/>
+<style>
+    body {
+       background-color: LightGrey;
+       border: 1px solid red;
+    }
+    #formOne {
+        background-color:IndianRed;
+        color:white;
+        width: 150px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formOne:active {
+        background-color:FireBrick;
+}
+    #formOne:hover {
+        background-color:FireBrick;
+}
+    #formTwo {
+        background-color:DeepSkyBlue;
+        color:white;
+        width: 150px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formTwo:active {
+        background-color:DodgerBlue;
+}
+    #formTwo:hover {
+        background-color:DodgerBlue;
+}
+    #formThree {
+        background-color:Chartreuse;
+        color:white;
+        width: 150px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formThree:active {
+        background-color:DarkGreen;
+}
+    #formThree:hover {
+        background-color:DarkGreen;
+}
+    #formFour {
+        background-color:Purple;
+        color:white;
+        width: 150px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formFour:active {
+        background-color:Indigo;
+}
+    #formFour:hover {
+        background-color:Indigo;
+}
+    #formFive {
+        background-color:DarkGrey;
+        color:white;
+        width: 150px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formFive:active {
+        background-color:Black;
+}
+    #formFive:hover {
+        background-color:Black;
+}
+    #formSix {
+        background-color:DarkSlateGrey;
+        color:white;
+        width: 150px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formSix:active {
+        background-color:Black;
+}
+    #formSix:hover {
+        background-color:Black;
+}
+    #formSeven {
+        background-color:Black;
+        color:white;
+        width: 150px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formSeven:active {
+        background-color:Grey;
+}
+    #formSeven:hover {
+        background-color:Grey;
+}
+    #formEight {
+        background-color:White;
+        color:black;
+        width: 150px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formEight:active {
+        background-color:Grey;
+}
+    #formEight:hover {
+        background-color:Grey;
+}
+    #titleOne {
+        background-color:LightGrey;
+        color:black;
+        width: 300px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #titleTwo {
+        background-color:LightGrey;
+        color:black;
+        width: 300px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #titleThree {
+        background-color:LightGrey;
+        color:black;
+        width: 300px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #titleFour {
+        background-color:LightGrey;
+        color:black;
+        width: 300px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divOne {
+        display: flex;
+        background-color:LightGrey;
+        color:black;
+        width: 300px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divTwo {
+        display: flex;
+        background-color:LightGrey;
+        color:black;
+        width: 300px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divThree {
+        display: flex;
+        background-color:LightGrey;
+        color:black;
+        width: 300px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divFour {
+        display: flex;
+        background-color:LightGrey;
+        color:black;
+        width: 300px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+</style>
+  </head>
+<body>
+<div id="titleOne">Today subpane to left top</div>
+<div id="divOne">
+<div id="formOne">Append t-subpane</div>
+<div id="formTwo">Remove t-subpane</div>
+</div>
+<div id="titleTwo">Today subpane to left bottom</div>
+<div id="divTwo">
+<div id="formThree">Append t-subpane</div>
+<div id="formFour">Remove t-subpane</div>
+</div>
+<div id="titleThree">Logo to folder pane</div>
+<div id="divThree">
+<div id="formFive">Append logo</div>
+<div id="formSix">Remove logo</div>
+</div>
+<div id="titleFour">Logo to side bar</div>
+<div id="divFour">
+<div id="formSeven">Append logo</div>
+<div id="formEight">Remove logo</div>
+</div>
+
+<script language="javascript" src="code.js"></script>
+</body>
+</html>

@@ -48,35 +48,24 @@ var default_prefs = {
   dayDef: [],
   checkDay: [],
   checkInvalidDate: false,
-  alwaysPopup: true
+  alwaysPopup: true,
+  expandMailLists: true
 };
 
 var currentIdentity = "common";
-
-browser.runtime.onMessage.addListener(async message => {
-  switch (message.message) {
-    case "SEND_IDS_AND_ABS":
-      buildAddressBooksBox("addrCheckAbs", message.addressbooks);
-      buildAddressBooksBox("recNameAbs", message.addressbooks);
-      await buildIdentityList(message.identities);
-      break;
-    default:
-      break;
-  }
-});
 
 function buildAddressBooksBox(boxId, addressbooks) {
   let box = document.getElementById(boxId);
   for (let id in addressbooks) {
     let name = addressbooks[id];
     let checkbox = document.createElement("input");
-    checkbox.setAttribute("id", boxId+":"+id);
+    checkbox.setAttribute("id", boxId + ":" + id);
     checkbox.setAttribute("name", boxId);
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("abId", id);
     let label = document.createElement("label");
     label.textContent = name;
-    label.setAttribute("for", boxId+":"+id);
+    label.setAttribute("for", boxId + ":" + id);
     let br = document.createElement("br");
     box.appendChild(checkbox);
     box.appendChild(label);
@@ -152,8 +141,10 @@ async function saveCASModePref() {
 function toggleConfigArea() {
   if (document.cas_form.casEnable[0].checked || document.cas_form.casEnable[2].checked) {
     document.getElementById("configArea").setAttribute("class", "box-collapse");
+    document.getElementById("generalConfigArea").setAttribute("class", "box-collapse");
   } else {
     document.getElementById("configArea").setAttribute("class", "box-visible");
+    document.getElementById("generalConfigArea").setAttribute("class", "box-visible");
   }
 }
 
@@ -201,7 +192,7 @@ async function initPrefs() {
         break;
       case "select":
         if (key == "addrList" || key == "attachExts" || key == "ngWords" || key == "mustWords") {
-          fillSelectOptions(elem, val)
+          fillSelectOptions(elem, val);
           continue; //no need to add event listener. event is triggered when the button is clicked.
         } else if (key == "abWhite" || key == "listWhite" || key == "attachBlacklistCheck") {
           prefs[key] ? elem.value = "true" : elem.value = "false";
@@ -225,7 +216,7 @@ async function initPrefs() {
         } else {
           //empty pref. save default.
           prefs[key] = default_prefs[key];
-          elem.value = default_prefs[key];
+          elem.value = formatJSONString(default_prefs[key]);
           savePrefs();
         }
         document.getElementById(key + "Err").setAttribute("class", "box-collapse");
@@ -259,7 +250,7 @@ async function initPrefs() {
 
   //address books for address check
   let checks = document.cas_form.addrCheckAbs;
-  for (let i=0; i<checks.length; i++) {
+  for (let i = 0; i < checks.length; i++) {
     let check = checks[i];
     check.checked = (prefs["addrCheckAbs"].indexOf(check.getAttribute("abId")) != -1);
     check.addEventListener("change", savePrefs);
@@ -267,7 +258,7 @@ async function initPrefs() {
 
   //address books for name check
   checks = document.cas_form.recNameAbs;
-  for (let i=0; i<checks.length; i++) {
+  for (let i = 0; i < checks.length; i++) {
     let check = checks[i];
     check.checked = (prefs["recNameAbs"].indexOf(check.getAttribute("abId")) != -1);
     check.addEventListener("change", savePrefs);
@@ -336,7 +327,8 @@ async function savePrefs() {
         } else if (type == "radio") {
           break;
         } else if (type == "number") {
-          prefs[key] = Number.isNaN(elem.value) ? 0 : elem.value;
+          let value = parseInt(elem.value);
+          prefs[key] = Number.isNaN(value) ? 0 : value;
         } else {
           prefs[key] = elem.value ? elem.value : "";
         }
@@ -353,13 +345,15 @@ async function savePrefs() {
         }
         break;
       case "textarea":
-        let value = parseJSONString(elem.value, key);
-        if (value) {
-          prefs[key] = value;
-          document.getElementById(key + "Err").setAttribute("class", "box-collapse");
-        } else { //invalid JSON string. rollback to old pref
-          elem.value = formatJSONString(prefs[key]);
-          document.getElementById(key + "Err").setAttribute("class", "box-visible");
+        if (elem.value.length > 0) {
+          let value = parseJSONString(elem.value, key);
+          if (value) {
+            prefs[key] = value;
+            document.getElementById(key + "Err").setAttribute("class", "box-collapse");
+          } else { //invalid JSON string. rollback to old pref
+            elem.value = formatJSONString(prefs[key]);
+            document.getElementById(key + "Err").setAttribute("class", "box-visible");
+          }
         }
         break;
       default:
@@ -375,11 +369,11 @@ async function savePrefs() {
 
   //day check
   saveNoteDayOptions();
-  
+
   //address books for address check
   let checks = document.cas_form.addrCheckAbs;
   prefs["addrCheckAbs"] = [];
-  for (let i=0; i<checks.length; i++) {
+  for (let i = 0; i < checks.length; i++) {
     let check = checks[i];
     if (check.checked) {
       prefs["addrCheckAbs"].push(check.getAttribute("abId"));
@@ -389,7 +383,7 @@ async function savePrefs() {
   //address books for name check
   checks = document.cas_form.recNameAbs;
   prefs["recNameAbs"] = [];
-  for (let i=0; i<checks.length; i++) {
+  for (let i = 0; i < checks.length; i++) {
     let check = checks[i];
     if (check.checked) {
       prefs["recNameAbs"].push(check.getAttribute("abId"));
@@ -422,7 +416,7 @@ function parseJSONString(str, elemId) {
   if (!value || (value.length != len)) {
     value = null;
   }
-  
+
   return value;
 }
 
@@ -675,6 +669,28 @@ function prepareDefaultPrefs() {
 async function init() {
   browser.runtime.sendMessage({
     message: "GET_IDS_AND_ABS"
+  }).then(message => {
+    buildAddressBooksBox("addrCheckAbs", message.addressbooks);
+    buildAddressBooksBox("recNameAbs", message.addressbooks);
+    buildIdentityList(message.identities);
+  }, async (reason) => {
+    console.log("[CAS_DEBUG] Promise rejected");
+    console.log("[CAS_DEBUG] " + reason);
+    console.log("[CAS_DEBUG] Call background function directly");
+    let bgpage = await browser.runtime.getBackgroundPage();
+    let message = await bgpage.getIDsAndABs();
+    buildAddressBooksBox("addrCheckAbs", message.addressbooks);
+    buildAddressBooksBox("recNameAbs", message.addressbooks);
+    buildIdentityList(message.identities);
+  }).catch(async (reason) => {
+    console.log("[CAS_DEBUG] Promise rejected");
+    console.log("[CAS_DEBUG] " + reason);
+    console.log("[CAS_DEBUG] Call background function directly");
+    let bgpage = await browser.runtime.getBackgroundPage();
+    let message = await bgpage.getIDsAndABs();
+    buildAddressBooksBox("addrCheckAbs", message.addressbooks);
+    buildAddressBooksBox("recNameAbs", message.addressbooks);
+    buildIdentityList(message.identities);
   });
 
   prepareDefaultPrefs();

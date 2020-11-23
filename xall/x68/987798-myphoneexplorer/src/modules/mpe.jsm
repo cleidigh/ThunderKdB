@@ -1,4 +1,4 @@
-const MPE_ADDON_VERSION = "3.0.10";
+const MPE_ADDON_VERSION = "3.0.11";
 
 Components.utils.import("resource://gre/modules/FileUtils.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
@@ -802,9 +802,14 @@ function GetAddressBook(abook)
 					return directory;
 				}
 			}
+			
+			if (abook == "moz-abmdbdirectory://abook.mab" && abName == "jsaddrbook://abook.sqlite"){
+				return directory;
+			}
 		}
 	  }
-	} 
+	}
+	
 	throw new Error("Addressbook " + abook + " not found !");
 }
 
@@ -1699,31 +1704,57 @@ var mpe = {
 			this.ItemsRead[i] = false;
 			const calid = i;
 			
-			var pcal = cal.async.promisifyCalendar(c);
-			pcal.getAllItems().then(function(items) {
-			   var b = false;
-			   var it = new Array();
-			   
-			   if (items.length) {
-				   	for(var n = 0;n < items.length;n++) {
-						it.push(items[n]);
+			c.getItems(Components.interfaces.calICalendar.ITEM_FILTER_ALL_ITEMS, 0, null, null, {
+				onOperationComplete: function(aCalendar, aStatus, aOperationType, aId, aDetail) 
+				{
+					var b = false;
+					mpe.ItemsRead[calid] = true;
+					
+					for(var n = 0;n < calendars.length;n++) {  //Check ob alle Kalender gelesen wurden
+						if (mpe.ItemsRead[n] != true){b = true;}
 					}
-			   } else {
-					debugPrint("Calendar empty! " + calid);
-			   }
-			   
-			   mpe.ItemCache[calid] = it;
-			   mpe.ItemsRead[calid] = true;
-
-				for(var n = 0;n < calendars.length;n++) {  //Check ob alle Kalender gelesen wurden
-					if (mpe.ItemsRead[n] != true){b = true;}
-				}
-				
-				if (b == false){
-					mpe.ItemCacheTimeStamp = Date.now();
-					aac.AsyncActionComplete(true);
+					
+					if (b == false){
+						mpe.ItemCacheTimeStamp = Date.now();
+						aac.AsyncActionComplete(true);
+					}
+				},
+		
+				onGetResult: function(aCalendar, aStatus, aItemType, aDetail, aItems)
+				{
+					if (aItems != null){
+						for(var i = 0;i < aItems.length;i++) {
+							mpe.ItemCache[calid].push(aItems[i]);
+						}
+					}
 				}
 			});
+			
+			//var pcal = cal.async.promisifyCalendar(c);
+			//pcal.getAllItems().then(function(items) {
+			//   var b = false;
+			//   var it = new Array();
+			//   
+			//   if (items.length) {
+			//	   	for(var n = 0;n < items.length;n++) {
+			//			it.push(items[n]);
+			//		}
+			//   } else {
+			//		debugPrint("Calendar empty! " + calid);
+			//   }
+			   
+			//   mpe.ItemCache[calid] = it;
+			//   mpe.ItemsRead[calid] = true;
+
+			//	for(var n = 0;n < calendars.length;n++) {  //Check ob alle Kalender gelesen wurden
+			//		if (mpe.ItemsRead[n] != true){b = true;}
+			//	}
+				
+			//	if (b == false){
+			//		mpe.ItemCacheTimeStamp = Date.now();
+			//		aac.AsyncActionComplete(true);
+			//	}
+			//});
 		}
 	},
 	
@@ -1735,16 +1766,16 @@ var mpe = {
 	
 			AsyncActionComplete: function(success)
 			{
-				
-				var itemdata = 'AddOn-Version='+MPE_ADDON_VERSION+'\r\n';
+				var lines = new Array();
+				lines.push('AddOn-Version='+MPE_ADDON_VERSION+'\r\n');
 	
 				for(var i = 0;i < this.mpe.ItemCache.length;i++) {
 					for(var j = 0;j < this.mpe.ItemCache[i].length;j++) {
-						itemdata += ItemToLine(this.mpe.ItemCache[i][j],this.mpe.CROCache[i]);
+						lines.push(ItemToLine(this.mpe.ItemCache[i][j],this.mpe.CROCache[i]));
 					}
 				}
 
-				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result export-items\r\n" + itemdata);
+				obs.notifyObservers( null,"MyPhoneExplorer_commandResult","result export-items\r\n" + lines.join(''));
 				aac.AsyncActionComplete(true);
 			}
 		};

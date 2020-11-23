@@ -4,6 +4,11 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var xulAppInfo = Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo);
 
 let doToggle = undefined; //declare it here to make removeEventlistener work
+let popupEvent = undefined;
+let mhcToolbarPopup = undefined;
+let mhcToolbarPopupMenuItem = undefined;
+let mhcToolbarBackup = undefined;
+let mhcPopupCustomToolbarMSG = undefined;
 
 var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
@@ -25,11 +30,29 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                 let headerViewToolbox = window.document.getElementById("header-view-toolbox");
                 let headerViewToolbar = window.document.getElementById("header-view-toolbar");
                 let expandedBoxSpacer = window.document.getElementById("expandedBoxSpacer");
+                let expandedHeaders = window.document.getElementById("expandedHeaders");
                 let expandedHeaders2 = window.document.getElementById("expandedHeaders2");
                 let otherActionsBox = window.document.getElementById("otherActionsBox");
+                let mailContext = window.document.getElementById("mailContext");
+                let menu_HeadersPopup = window.document.getElementById("menu_HeadersPopup");
 
                 let compactHeadersPopup = window.document.createXULElement("menupopup");
                 compactHeadersPopup.id = "compactHeadersPopup";
+
+                let expandedHeaders3 = window.document.createXULElement("html:table");
+                expandedHeaders3.id = "expandedHeaders3";
+                expandedHeaders3.setAttribute("style","display: inline-grid;");
+                if (expandedHeaders) expandedHeaders.insertAdjacentElement("afterend", expandedHeaders3);
+
+                let expandedHeaders4 = window.document.createXULElement("html:table");
+                expandedHeaders4.id = "expandedHeaders4";
+                expandedHeaders4.setAttribute("style","display: inline-grid;");
+                if (expandedHeaders3) expandedHeaders3.insertAdjacentElement("afterend", expandedHeaders4);
+
+                let expandedHeaders5 = window.document.createXULElement("html:table");
+                expandedHeaders5.id = "expandedHeaders5";
+                expandedHeaders5.setAttribute("style","display: grid; float: inline-end; margin-inline-end: 10px;");
+                if (expandedHeaders4) expandedHeaders4.insertAdjacentElement("afterend", expandedHeaders5);
 
                 let compactHeadersSingleLine = window.document.createXULElement("menuitem");
                 compactHeadersSingleLine.id = "compactHeadersSingleLine";
@@ -41,9 +64,9 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
                 let compactHeadersHideToolbar = window.document.createXULElement("menuitem");
                 compactHeadersHideToolbar.id = "compactHeadersHideToolbar";
                 compactHeadersHideToolbar.setAttribute("type", "checkbox");
-                compactHeadersHideToolbar.setAttribute("label", "Replace Header Toolbar");
-                compactHeadersHideToolbar.setAttribute("tooltiptext", "Replace the header toolbar \
-with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite (only in compact double line mode)");
+                compactHeadersHideToolbar.setAttribute("label", "Hide Header Toolbar");
+                compactHeadersHideToolbar.setAttribute("tooltiptext", "Hides the header toolbar \
+and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (only in compact double line mode)");
                 compactHeadersHideToolbar.addEventListener("command", () => toggleToolbar());
 
                 let compactHeadersViewAll = window.document.createXULElement("menuitem");
@@ -72,15 +95,50 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                   -moz-appearance: none; color: currentColor; -moz-context-properties: fill; fill: currentColor;");
 
                 let compactHeadersSeparator = window.document.createXULElement("menuseparator");
+                compactHeadersSeparator.id = "compactHeadersSeparator";
+
+                let compactHeadersHideHeaders = window.document.createXULElement("menuitem");
+                compactHeadersHideHeaders.id = "compactHeadersHideHeaders";
+                compactHeadersHideHeaders.addEventListener("command", () => hideHeaders());
+
+                let compactHeadersSeparator2 = window.document.createXULElement("menuseparator");
+                compactHeadersSeparator2.id = "compactHeadersSeparator2";
+
+                let compactHeadersSeparator3 = window.document.createXULElement("menuseparator");
+                compactHeadersSeparator3.id = "compactHeadersSeparator3";
+
+                let compactHeadersHideHeaders2 = window.document.createXULElement("menuitem");
+                compactHeadersHideHeaders2.id = "compactHeadersHideHeaders2";
+                compactHeadersHideHeaders2.addEventListener("command", () => hideHeaders());
 
                 let msgHeaderView = window.document.getElementById("msgHeaderView");
                 msgHeaderView.setAttribute("context", "compactHeadersPopup");
 
+                popupEvent = (event) => {
+                  mhcToolbarPopup = window.document.getElementById("mhcToolbarPopup");
+                  mhcPopupCustomToolbarMSG = window.document.getElementById("mhcPopupCustomToolbarMSG");
+                  if (mhcToolbarPopup) {
+                    mhcToolbarPopupMenuItem = mhcToolbarPopup.firstChild;
+                    compactHeadersHideToolbar.insertAdjacentElement("afterend", compactHeadersSeparator3);
+                    compactHeadersSeparator3.insertAdjacentElement("afterend", mhcToolbarPopupMenuItem);
+                    mhcToolbarBackup = window.mainPopupSet.removeChild(mhcToolbarPopup);
+                    expandedHeadersTopBox.setAttribute("context", "compactHeadersPopup");
+                  }
+                };
+                window.addEventListener('DOMContentLoaded', popupEvent);
+
+                let expandedsubjectRow = window.document.getElementById("expandedsubjectRow");
+                let expandedreplytoRow = window.document.getElementById("expandedreply-toRow");
+
                 let expandedtoRow = window.document.getElementById("expandedtoRow");
                 if (expandedtoRow) expandedtoRow.removeAttribute("style");
-                let expandedsubjectRow = window.document.getElementById("expandedsubjectRow");
                 let expandedtoLabel = window.document.getElementById("expandedtoLabel");
                 let expandedtoBox = window.document.getElementById("expandedtoBox");
+
+                let expandedccRow = window.document.getElementById("expandedccRow");
+                if (expandedccRow) expandedccRow.removeAttribute("style");
+                let expandedccLabel = window.document.getElementById("expandedccLabel");
+                let expandedccBox = window.document.getElementById("expandedccBox");
 
                 let expandedcontentBaseRow = window.document.getElementById("expandedcontent-baseRow");
                 let expandedcontentBaseLabel = window.document.getElementById("expandedcontent-baseLabel");
@@ -97,6 +155,10 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                 compactHeadersPopup.append(compactHeadersViewNormal);
                 window.mainPopupSet.append(compactHeadersPopup);
 
+                mailContext.append(compactHeadersHideHeaders);
+                menu_HeadersPopup.append(compactHeadersSeparator2);
+                menu_HeadersPopup.append(compactHeadersHideHeaders2);
+
                 compactHeadersButton.addEventListener("command", () => toggleHeaders());
                 compactHeadersBox.append(compactHeadersButton);
                 msgHeaderViewDeck.parentNode.insertBefore(compactHeadersBox, msgHeaderViewDeck);
@@ -105,6 +167,7 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                 msgHeaderViewDeck.addEventListener("dblclick", doToggle);
 
                 function singleLine() {
+                  expandedHeaders.removeAttribute("style");
                   expandedHeadersTopBox.setAttribute("style", "padding: 8px 0px 2px; height: 0px; min-width: -moz-fit-content;");
                   expandedHeadersBottomBox.setAttribute("style", "padding: 8px 0px 2px; height: 0px; width: -moz-available;");
                   if (xulAppInfo.OS == "WINNT") {
@@ -114,23 +177,37 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                   expandedBoxSpacer.setAttribute("style", "display: none;");
                   headerViewToolbox.setAttribute("style", "display: none;");
                   expandedHeadersBox.setAttribute("style", "-moz-box-orient: horizontal; display: flex;");
+                  if (expandedtoLabel) expandedtoLabel.setAttribute("style", "display: none;");
+                  if (expandedtoBox) expandedtoBox.setAttribute("style", "display: none;");
+                  if (expandedccLabel) expandedccLabel.setAttribute("style", "display: none;");
+                  if (expandedccBox) expandedccBox.setAttribute("style", "display: none;");
+                  if (expandedcontentBaseLabel) expandedcontentBaseLabel.setAttribute("style", "display: none;");
+                  if (expandedcontentBaseBox) expandedcontentBaseBox.setAttribute("style", "display: none;");
                 }
 
                 function doubleLine() {
-                  expandedHeadersTopBox.setAttribute("style", "min-height: 30px;");
+                  expandedHeadersTopBox.setAttribute("style", "min-height: 30px; overflow: hidden;\
+                    text-overflow: ellipsis; white-space: nowrap;");
                   expandedHeadersBottomBox.removeAttribute("style");
                   expandedBoxSpacer.setAttribute("style", "height: 8px;");
                   if (xulAppInfo.OS == "WINNT") {
-                    expandedHeadersTopBox.setAttribute("style", "min-height: 32px;");
+                    expandedHeadersTopBox.setAttribute("style", "min-height: 32px; overflow: hidden;\
+                      text-overflow: ellipsis; white-space: nowrap;");
                     expandedBoxSpacer.setAttribute("style", "height: 6px;");
                     expandedHeadersBottomBox.setAttribute("style", "margin-top: -3px;");
                   }
                   headerViewToolbox.removeAttribute("style");
                   expandedHeadersBox.removeAttribute("style");
+                  if (expandedtoLabel) expandedtoLabel.removeAttribute("style");
+                  if (expandedtoBox) expandedtoBox.removeAttribute("style");
+                  if (expandedccLabel) expandedccLabel.removeAttribute("style");
+                  if (expandedccBox) expandedccBox.removeAttribute("style");
+                  if (expandedcontentBaseLabel) expandedcontentBaseLabel.removeAttribute("style");
+                  if (expandedcontentBaseBox) expandedcontentBaseBox.removeAttribute("style");
                 }
 
                 function setLines() {
-                  window.gDBView.reloadMessage();
+                  if (expandedHeaders2.getAttribute("compact") == "compact") window.gDBView.reloadMessage();
                   if (expandedHeaders2.getAttribute("singleline") == "singleline") {
                     expandedHeaders2.setAttribute("singleline", "");
                     doubleLine();
@@ -151,9 +228,14 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                 }
 
                 function toggleToolbar() {
+                  if (expandedHeaders2.getAttribute("singleline") != "singleline") {
+                    if (expandedHeaders2.getAttribute("compact") == "compact") window.gDBView.reloadMessage();
+                  }
                   if (expandedHeaders2.getAttribute("hidetoolbar") == "hidetoolbar") {
                     expandedHeaders2.removeAttribute("hidetoolbar");
-                    if (expandedHeaders2.getAttribute("singleline") != "singleline") checkToolbar();
+                    if (expandedHeaders2.getAttribute("singleline") != "singleline") {
+                      checkToolbar();
+                    }
                   } else {
                     expandedHeaders2.setAttribute("hidetoolbar", "hidetoolbar");
                     if (expandedHeaders2.getAttribute("singleline") != "singleline") checkToolbar();
@@ -168,13 +250,38 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                   }
                 }
 
+                function hideHeaders() {
+                  if (expandedHeaders2.getAttribute("hideheaders") == "hideheaders") {
+                    compactHeadersHideHeaders.setAttribute("label", "Hide Headers");
+                    compactHeadersHideHeaders2.setAttribute("label", "Hide Headers");
+                    msgHeaderView.removeAttribute("style");
+                    expandedHeaders2.removeAttribute("hideheaders");
+                  } else {
+                    compactHeadersHideHeaders.setAttribute("label", "Show Headers");
+                    compactHeadersHideHeaders2.setAttribute("label", "Show Headers");
+                    msgHeaderView.setAttribute("style", "visibility: collapse;");
+                    expandedHeaders2.setAttribute("hideheaders", "hideheaders");
+                  }
+                }
+
                 function checkHeaders() {
-                  expandedHeaders2.setAttribute("persist", "compact; showall; singleline; hidetoolbar");
+                  expandedHeaders2.setAttribute("persist", "compact; showall; singleline; hidetoolbar; hideheaders");
                   if (expandedHeaders2.getAttribute("showall") == "showall") {
                     compactHeadersViewAll.setAttribute("checked", true);
                   } else {
                     compactHeadersViewNormal.setAttribute("checked", true);
                   }
+
+                  if (expandedHeaders2.getAttribute("hideheaders") == "hideheaders") {
+                    compactHeadersHideHeaders.setAttribute("label", "Show Headers");
+                    compactHeadersHideHeaders2.setAttribute("label", "Show Headers");
+                    msgHeaderView.setAttribute("style", "visibility: collapse;");
+                  } else {
+                    compactHeadersHideHeaders.setAttribute("label", "Hide Headers");
+                    compactHeadersHideHeaders2.setAttribute("label", "Hide Headers");
+                    msgHeaderView.removeAttribute("style");
+                  }
+
                   if (expandedHeaders2.getAttribute("compact") == "compact") {
                     checkToolbar();
                     compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
@@ -218,6 +325,10 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                   switch(expandedHeaders2.getAttribute("compact")) {
                   case "compact": expandedHeaders2.removeAttribute("compact");
                     checkToolbar();
+                    expandedtoBox.firstChild.removeAttribute("style");
+                    expandedccBox.firstChild.removeAttribute("style");
+                    expandedtoBox.lastChild.removeEventListener("click", doToggle);
+                    expandedccBox.lastChild.removeEventListener("click", doToggle);
                     compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-expanded.svg");
                     compactHeadersButton.setAttribute("tooltiptext", "Hide Details");
                     if (expandedHeaders2.getAttribute("showall") == "showall") window.MsgViewAllHeaders();
@@ -234,6 +345,10 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                   break;
                   default: expandedHeaders2.setAttribute("compact", "compact");
                     checkToolbar();
+                    expandedtoBox.firstChild.setAttribute("style", "overflow-x: hidden;");
+                    expandedccBox.firstChild.setAttribute("style", "overflow-x: hidden;");
+                    expandedtoBox.lastChild.addEventListener("click", doToggle);
+                    expandedccBox.lastChild.addEventListener("click", doToggle);
                     compactHeadersButton.setAttribute("image", "chrome://global/skin/icons/twisty-collapsed.svg");
                     compactHeadersButton.setAttribute("tooltiptext", "Show Details");
                     window.MsgViewNormalHeaders();
@@ -250,46 +365,41 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                 }
 
                 function checkToolbar() {
-                  expandedHeadersTopBox.setAttribute("style", "min-height: 30px;");
+                  expandedHeadersTopBox.setAttribute("style", "min-height: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;");
                   if (xulAppInfo.OS == "WINNT") {
-                    expandedHeadersTopBox.setAttribute("style", "min-height: 32px;");
+                    expandedHeadersTopBox.setAttribute("style", "min-height: 32px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;");
                   }
                   if (expandedHeaders2.getAttribute("compact") == "compact") {
                     if (expandedHeaders2.getAttribute("hidetoolbar") == "hidetoolbar") {
                       hideToolbar();
-                      //headerViewToolbox.setAttribute("style", "float: inline-start;");
-                      //expandedtoLabel.setAttribute("style", "padding-top: 6px; min-width: 35px;");
                     } else {
                       hideToolbar();
-                      //headerViewToolbox.removeAttribute("style");
                       headerViewToolbar.setAttribute("style", "margin-block: 4px -2px;");
-                      if (expandedtoRow) expandedtoLabel.setAttribute("style", "display: none;");
-                      if (expandedtoBox) expandedtoBox.setAttribute("style", "display: none;");
+                      //if (expandedtoRow) expandedtoLabel.setAttribute("style", "display: none;");
+                      //if (expandedtoBox) expandedtoBox.setAttribute("style", "display: none;");
+                      //if (expandedccRow) expandedccLabel.setAttribute("style", "display: none;");
+                      //if (expandedccBox) expandedccBox.setAttribute("style", "display: none;");
                       if (expandedcontentBaseLabel) expandedcontentBaseLabel.setAttribute("style", "display: none;");
                       if (expandedcontentBaseBox) expandedcontentBaseBox.setAttribute("style", "display: none;");
                     }
                   } else {
-                    //headerViewToolbox.removeAttribute("style");
                     showToolbar();
                   }
                 }
 
                 function hideToolbar() {
                   headerViewToolbar.setAttribute("style", "display: none;");
-                  headerViewToolbox.append(expandedtoRow);
-                  if (expandedtoLabel) expandedtoLabel.setAttribute("style", "padding-top: 6px;");
-                  if (expandedtoBox) expandedtoBox.setAttribute("style", "padding-top: 7px;");
-                  if (xulAppInfo.OS == "WINNT") {
-                    if (expandedtoLabel) expandedtoLabel.setAttribute("style", "padding-top: 5px;");
-                    if (expandedtoBox) expandedtoBox.setAttribute("style", "padding-top: 5px;");
-                  }
-                  headerViewToolbox.append(expandedcontentBaseRow);
-                  if (expandedcontentBaseLabel) expandedcontentBaseLabel.setAttribute("style", "padding-top: 6px;");
-                  if (expandedcontentBaseBox) expandedcontentBaseBox.setAttribute("style", "padding: 7px 4px 0 0 !important;");
-                  if (xulAppInfo.OS == "WINNT") {
-                    if (expandedcontentBaseLabel) expandedcontentBaseLabel.setAttribute("style", "padding-top: 5px;");
-                    if (expandedcontentBaseBox) expandedcontentBaseBox.setAttribute("style", "padding: 6px 6px 0 0 !important;");
-                  }
+                  if (expandedtoRow) expandedHeaders3.append(expandedtoRow);
+                  if (expandedtoLabel) expandedtoLabel.setAttribute("style", "padding: 0;");
+                  if (expandedtoBox) expandedtoBox.setAttribute("style", "padding: 0;");
+
+                  if (expandedccRow) expandedHeaders4.append(expandedccRow);
+                  if (expandedccLabel) expandedccLabel.setAttribute("style", "padding: 0;");
+                  if (expandedccBox) expandedccBox.setAttribute("style", "padding: 0;");
+
+                  if (expandedcontentBaseRow) expandedHeaders5.append(expandedcontentBaseRow);
+                  if (expandedcontentBaseLabel) expandedcontentBaseLabel.setAttribute("style", "padding: 0;");
+                  if (expandedcontentBaseBox) expandedcontentBaseBox.setAttribute("style", "padding: 0 !important;");
                 }
 
                 function showToolbar() {
@@ -297,7 +407,12 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
                   if (expandedsubjectRow) expandedsubjectRow.insertAdjacentElement("afterend", expandedtoRow);
                   if (expandedtoLabel) expandedtoLabel.removeAttribute("style");
                   if (expandedtoBox) expandedtoBox.removeAttribute("style");
-                  expandedHeaders2.append(expandedcontentBaseRow);
+
+                  if (expandedreplytoRow) expandedreplytoRow.insertAdjacentElement("afterend", expandedccRow);
+                  if (expandedccLabel) expandedccLabel.removeAttribute("style");
+                  if (expandedccBox) expandedccBox.removeAttribute("style");
+
+                  if (expandedcontentBaseRow) expandedHeaders2.append(expandedcontentBaseRow);
                   if (expandedcontentBaseLabel) expandedcontentBaseLabel.removeAttribute("style");
                   if (expandedcontentBaseBox) expandedcontentBaseBox.removeAttribute("style");
                 }
@@ -338,6 +453,7 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
   if (isAppShutdown) return;
 
   for (let window of Services.wm.getEnumerator("mail:3pane")) {
+
     let msgHeaderViewDeck = window.document.getElementById("msgHeaderViewDeck");
     if (msgHeaderViewDeck) msgHeaderViewDeck.removeAttribute("style");
     if (msgHeaderViewDeck) msgHeaderViewDeck.removeEventListener("dblclick", doToggle);
@@ -351,6 +467,15 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
       if (expandedtoRow) {
         expandedsubjectRow.insertAdjacentElement("afterend", expandedtoRow);
         expandedtoRow.removeAttribute("style");
+      }
+    }
+
+    let expandedreplytoRow = window.document.getElementById("expandedreply-toRow");
+    let expandedccRow = window.document.getElementById("expandedccRow");
+    if (expandedreplytoRow) {
+      if (expandedccRow) {
+        expandedreplytoRow.insertAdjacentElement("afterend", expandedccRow);
+        expandedccRow.removeAttribute("style");
       }
     }
 
@@ -387,6 +512,18 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
     let expandedsubjectBox = window.document.getElementById("expandedsubjectBox");
     if (expandedsubjectBox) expandedsubjectBox.removeAttribute("style");
 
+    let compactHeadersHideHeaders = window.document.getElementById("compactHeadersHideHeaders");
+    if (compactHeadersHideHeaders) compactHeadersHideHeaders.remove();
+
+    let compactHeadersSeparator2 = window.document.getElementById("compactHeadersSeparator2");
+    if (compactHeadersSeparator2) compactHeadersSeparator2.remove();
+
+    let compactHeadersHideHeaders2 = window.document.getElementById("compactHeadersHideHeaders2");
+    if (compactHeadersHideHeaders2) compactHeadersHideHeaders2.remove();
+
+    let msgHeaderView = window.document.getElementById("msgHeaderView");
+    if (msgHeaderView) msgHeaderView.removeAttribute("style");
+
     let compactHeadersViewAll = window.document.getElementById("compactHeadersViewAll");
     if (compactHeadersViewAll) {
       compactHeadersViewAll.remove();
@@ -415,9 +552,25 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
       }
       if (expandedcontentBaseRow) expandedHeaders2.append(expandedcontentBaseRow);
     }
+
+    let expandedHeaders3 = window.document.getElementById("expandedHeaders3");
+    if (expandedHeaders3) expandedHeaders3.remove();
+
+    let expandedHeaders4 = window.document.getElementById("expandedHeaders4");
+    if (expandedHeaders4) expandedHeaders4.remove();
+
+    let expandedHeaders5 = window.document.getElementById("expandedHeaders5");
+    if (expandedHeaders5) expandedHeaders5.remove();
+
+    if (mhcToolbarBackup) mhcToolbarPopup = mhcToolbarBackup;
+    mhcToolbarPopup.append(mhcToolbarPopupMenuItem);
+    window.mainPopupSet.append(mhcToolbarPopup);
+    expandedHeadersTopBox.setAttribute("context", "mhcToolbarPopup");
+    window.removeEventListener('DOMContentLoaded', popupEvent);
   }
 
   for (let window of Services.wm.getEnumerator("mail:messageWindow")) {
+
     let msgHeaderViewDeck = window.document.getElementById("msgHeaderViewDeck");
     if (msgHeaderViewDeck) msgHeaderViewDeck.removeAttribute("style");
     if (msgHeaderViewDeck) msgHeaderViewDeck.removeEventListener("dblclick", doToggle);
@@ -431,6 +584,15 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
       if (expandedtoRow) {
         expandedsubjectRow.insertAdjacentElement("afterend", expandedtoRow);
         expandedtoRow.removeAttribute("style");
+      }
+    }
+
+    let expandedreplytoRow = window.document.getElementById("expandedreply-toRow");
+    let expandedccRow = window.document.getElementById("expandedccRow");
+    if (expandedreplytoRow) {
+      if (expandedccRow) {
+        expandedreplytoRow.insertAdjacentElement("afterend", expandedccRow);
+        expandedccRow.removeAttribute("style");
       }
     }
 
@@ -467,6 +629,18 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
     let expandedsubjectBox = window.document.getElementById("expandedsubjectBox");
     if (expandedsubjectBox) expandedsubjectBox.removeAttribute("style");
 
+    let compactHeadersHideHeaders = window.document.getElementById("compactHeadersHideHeaders");
+    if (compactHeadersHideHeaders) compactHeadersHideHeaders.remove();
+
+    let compactHeadersSeparator2 = window.document.getElementById("compactHeadersSeparator2");
+    if (compactHeadersSeparator2) compactHeadersSeparator2.remove();
+
+    let compactHeadersHideHeaders2 = window.document.getElementById("compactHeadersHideHeaders2");
+    if (compactHeadersHideHeaders2) compactHeadersHideHeaders2.remove();
+
+    let msgHeaderView = window.document.getElementById("msgHeaderView");
+    if (msgHeaderView) msgHeaderView.removeAttribute("style");
+
     let compactHeadersViewAll = window.document.getElementById("compactHeadersViewAll");
     if (compactHeadersViewAll) {
       compactHeadersViewAll.remove();
@@ -495,6 +669,21 @@ with the recipient \r\nor, when reading news feeds, the link to the \r\nwebsite 
       }
       if (expandedcontentBaseRow) expandedHeaders2.append(expandedcontentBaseRow);
     }
+
+    let expandedHeaders3 = window.document.getElementById("expandedHeaders3");
+    if (expandedHeaders3) expandedHeaders3.remove();
+
+    let expandedHeaders4 = window.document.getElementById("expandedHeaders4");
+    if (expandedHeaders4) expandedHeaders4.remove();
+
+    let expandedHeaders5 = window.document.getElementById("expandedHeaders5");
+    if (expandedHeaders5) expandedHeaders5.remove();
+
+    if (mhcToolbarBackup) mhcToolbarPopup = mhcToolbarBackup;
+    mhcToolbarPopup.append(mhcToolbarPopupMenuItem);
+    window.mainPopupSet.append(mhcToolbarPopup);
+    expandedHeadersTopBox.setAttribute("context", "mhcToolbarPopup");
+    window.removeEventListener('DOMContentLoaded', popupEvent);
   }
   ExtensionSupport.unregisterWindowListener("compactHeadersListener");
   console.log("Compact Headers disabled");

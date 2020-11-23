@@ -2,8 +2,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { PluralForm } = ChromeUtils.import("resource://gre/modules/PluralForm.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var loader = Services.scriptloader;
 	loader.loadSubScript("chrome://cardbook/content/cardbookActions.js", this);
@@ -36,10 +35,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				toolbox.customizeDone = function(aEvent) {
 					MailToolboxCustomizeDone(aEvent, "CustomizeCardBookToolbar");
 					cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.cardbookToolbar.currentset", document.getElementById("cardbook-toolbar").getAttribute("currentset"));
-					cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.cardbookToolbar.mode", document.getElementById("cardbook-toolbar").getAttribute("mode"));
+					cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.cardbookToolbar.mode", document.getElementById("cardbook-toolbox").getAttribute("mode") + 
+																			"::" + document.getElementById("cardbook-toolbox").getAttribute("labelalign"));
         			wdw_cardbook.setAccountsTreeMenulist();
    			};
-				toolbox.setAttribute('toolbarHighlight','true');
+			toolbox.setAttribute('toolbarHighlight','true');
 			}
 		},
 
@@ -117,10 +117,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 		},
 
 		loadFirstWindow: function () {
+			window.setCursor("auto");
 			cardBookWindowObserver.register();
 			cardBookWindowPrefObserver.register();
 			cardBookWindowMutationObserver.register();
 			cardsTreeMutationObserver.register();
+			cardboookModeMutationObserver.register();
 			wdw_cardbook.setSyncControl();
 			wdw_cardbook.setAppMenu(false);
 			wdw_cardbook.setToolbarCustom();
@@ -1127,6 +1129,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			ovl_cardbookFindEvents.findEvents(null, [myEmail], myEmail, "mailto:" + myEmail, myCard.fn);
 		},
 
+		searchForOnlineKeyFromTree: function () {
+			wdw_cardbook.searchForOnlineKey(null, [wdw_cardbook.currentValue]);
+		},
+		
 		localizeCardFromTree: function () {
 			var myCard = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
 			wdw_cardbook.localizeCards(null, [myCard.adr[wdw_cardbook.currentIndex][0]]);
@@ -1203,6 +1209,12 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var listOfSelectedCard = [];
 			listOfSelectedCard = cardbookWindowUtils.getCardsFromCards();
 			wdw_cardbook.emailCards(listOfSelectedCard, null, aAction);
+		},
+
+		searchForOnlineKeyFromCards: function () {
+			var listOfSelectedCard = [];
+			listOfSelectedCard = cardbookWindowUtils.getCardsFromCards();
+			wdw_cardbook.searchForOnlineKey(listOfSelectedCard, null);
 		},
 
 		shareCardsByEmailFromAccountsOrCats: function () {
@@ -1356,6 +1368,39 @@ if ("undefined" == typeof(wdw_cardbook)) {
 						params.composeFields = composeFields;
 						msgComposeService.OpenComposeWindowWithParams(null, params);
 					}
+				}
+			}
+		},
+
+		searchForOnlineKey: function (aListOfSelectedCard, aListOfSelectedEmails) {
+			var listOfEmail = [];
+			if (aListOfSelectedCard) {
+				for (var i = 0; i < aListOfSelectedCard.length; i++) {
+					if (!aListOfSelectedCard[i].isAList) {
+						for (var j = 0; j < aListOfSelectedCard[i].email.length; j++) {
+							listOfEmail.push(aListOfSelectedCard[i].email[j][0][0].toLowerCase());
+						}
+					} else {
+						listOfEmail.push(aListOfSelectedCard[i].fn.replace('"', '\"'));
+					}
+				}
+			} else if (aListOfSelectedEmails) {
+				listOfEmail = JSON.parse(JSON.stringify(aListOfSelectedEmails));
+			}
+
+			for (let email of listOfEmail) {
+				let result = { value: email };
+				if (!EnigmailDialog.promptValue(window, l10n.formatValueSync("openpgp-key-man-discover-prompt"), result)) {
+					return;
+				}
+				
+				result.value = result.value.trim();
+				let isEmail = uidHelper.looksLikeEmail(result.value);
+				let imported = false;
+				if (isEmail) {
+					imported = KeyLookupHelper.lookupAndImportByEmail(window, result.value, true, null);
+				} else {
+					imported = KeyLookupHelper.lookupAndImportByKeyID(window, result.value, true, null);
 				}
 			}
 		},
@@ -3092,19 +3137,19 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		cardsTreeContextShowingNext: function () {
 			if (cardbookDirTree.visibleData.length == 0) {
-				wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
+				wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'searchForOnlineKeyFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
 													'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'pasteEntryFromCards', 'exportCardsToFileFromCards',
 													'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'convertListToCategoryFromCards', 'categoriesFromCards', 'printFromCards'], true);
 			} else {
 				cardbookWindowUtils.addCardsToCategoryMenuSubMenu('categoriesFromCardsMenuPopup');
 				wdw_cardbook.enableOrDisableElement(['findEventsFromCards'], true);
 				if (cardbookWindowUtils.getSelectedCardsCount() == 0) {
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
+					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'searchForOnlineKeyFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
 														'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'pasteEntryFromCards', 'exportCardsToFileFromCards',
 														'exportCardsToDirFromCards', 'mergeCardsFromCards', 'duplicateCardsFromCards', 'convertListToCategoryFromCards',
 														'categoriesFromCards', 'printFromCards'], true);
 				} else if (cardbookWindowUtils.getSelectedCardsCount() == 1) {
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
+					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'searchForOnlineKeyFromCards', 'shareCardsByEmailFromCards', 'findEmailsFromCards', 'findEventsFromCards',
 														'localizeCardsFromCards', 'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
 														'exportCardsToDirFromCards', 'duplicateCardsFromCards', 'categoriesFromCards', 'printFromCards'], false);
 					if (cardbookRepository.currentCopiedEntryLabel) {
@@ -3127,7 +3172,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					}
 					wdw_cardbook.cardsTreeLightningContextShowing();
 				} else {
-					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'shareCardsByEmailFromCards', 'localizeCardsFromCards',
+					wdw_cardbook.enableOrDisableElement(['toEmailCardsFromCards', 'ccEmailCardsFromCards', 'bccEmailCardsFromCards', 'searchForOnlineKeyFromCards', 'shareCardsByEmailFromCards', 'localizeCardsFromCards',
 														'openURLFromCards', 'cutCardsFromCards', 'copyCardsFromCards', 'pasteCardsFromCards', 'exportCardsToFileFromCards',
 														'exportCardsToDirFromCards', 'duplicateCardsFromCards', 'printFromCards'], false);
 					wdw_cardbook.enableOrDisableElement(['convertListToCategoryFromCards', 'findEmailsFromCards', 'findEventsFromCards'], true);

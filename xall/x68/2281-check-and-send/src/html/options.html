@@ -28,10 +28,15 @@
       <label l10n-tag="casOptConfigId" for="casEnable1"></label>
       <br>
       <input type="radio" name="casEnable" id="casEnable2" value="2">
-      <label l10n-tag="casOptAllDisabled" for="casEnable2"></label><br>
-      <p>
-        <input type="checkbox" name="alwaysPopup" id="alwaysPopup"><label l10n-tag="casOptAlwaysPopup" for="alwaysPopup"></label>
-      </p>
+      <label l10n-tag="casOptAllDisabled" for="casEnable2"></label>
+      <div id="generalConfigArea">
+        <p>
+          <input type="checkbox" name="alwaysPopup" id="alwaysPopup"><label l10n-tag="casOptAlwaysPopup" for="alwaysPopup"></label>
+        </p>
+        <p>
+          <input type="checkbox" name="expandMailLists" id="expandMailLists"><label l10n-tag="casOptExpandMailLists" for="expandMailLists"></label>
+        </p>
+      </div>
     </div>
 
     <!-- Config area -->
@@ -52,7 +57,7 @@
       </div>
       <p>
         <span l10n-tag="casOptTooManyToCc"></span>
-        <input type="number" name="recTypeNum" min="0" value="0" style="width: 3em" id="limitToCc">
+        <input type="number" name="recTypeNum" min="0" value="0" style="width: 4em" id="limitToCc">
         <span l10n-tag="casOptTooManyToCc2"></span>
       </p>
       <h3 l10n-tag="casOptRecAddr"></h3>
@@ -142,7 +147,7 @@
       <h3 l10n-tag="casOptAttach"></h3>
       <p>
         <span l10n-tag="casOptAttachSize"></span>
-        <input type="number" id="attachSizeLimit" min="0" value="0" style="width: 3em">
+        <input type="number" id="attachSizeLimit" min="0" value="0" style="width: 4em">
         <span l10n-tag="casOptAttachSize2"></span>
       </p>
       <p>
@@ -287,4 +292,5 @@
     </div>
   </form>
 </body>
+
 </html>

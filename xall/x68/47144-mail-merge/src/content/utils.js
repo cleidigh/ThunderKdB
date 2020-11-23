@@ -866,6 +866,7 @@ function compose(index) {
 				
 				try {
 					
+					compFields.setHeader("X-Send-Later-Uuid", Services.prefs.getStringPref("extensions.sendlater3.instance.uuid"));
 					compFields.setHeader("X-Send-Later-At", date.toUTCString());
 					compFields.setHeader("X-Send-Later-Recur", recur + every + between + only);
 					

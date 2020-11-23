@@ -15,4 +15,4 @@ pref("extensions.subjects_prefix_switch.rds_addresses", "");
 pref("extensions.subjects_prefix_switch.rds_sequences", "");
 
 // Set up user agent
-//shatafaka("general__useragent__extra__subswitch","SubSwitch/0.9.39");
+//shatafaka("general__useragent__extra__subswitch","SubSwitch/0.9.44");

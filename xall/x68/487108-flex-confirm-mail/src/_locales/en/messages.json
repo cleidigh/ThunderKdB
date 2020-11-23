@@ -1,0 +1,147 @@
+{
+  "extensionName": { "message": "Flex Confirm Mail" },
+  "extensionDescription": { "message": "Confirm mailaddress and attachments based on flexible rules." },
+
+
+  "confirmDialogTitle": { "message": "Confirm E-mail addresses." },
+  "confirmDialogInternalsCaption": { "message": "Your domain addresses" },
+  "confirmDialogExternalsCaption": { "message": "Other domain addresses" },
+  "confirmDialogSubjectCaption": { "message": "Subject: " },
+  "confirmDialogBodyCaption": { "message": "Body" },
+  "confirmDialogAttachmentsCaption": { "message": "Attachments" },
+  "confirmDialogAttachmentNameReinputPlaceholder": { "message": "Retype the filename for confirmation." },
+
+  "confirmDialogAccept": { "message": "Send" },
+  "confirmDialogCancel": { "message": "Cancel" },
+
+
+  "confirmMultipleRecipientDomainsTitle": { "message": "Multiple recipient domains in To or Cc" },
+  "confirmMultipleRecipientDomainsMessage": { "message": "There are multiple recipient domains in To or Cc.\n\n$DOMAINS$\n\nAll recipients information will be disclosed to all other recipients. Do you really want to send this message?",
+    "placeholders": {
+      "domains": { "content": "$1", "example": "example.com" }
+    }},
+  "confirmMultipleRecipientDomainsAccept": { "message": "Send" },
+  "confirmMultipleRecipientDomainsCancel": { "message": "Cancel" },
+
+
+  "confirmAttentionDomainsTitle": { "message": "Recipients with attention domains" },
+  "confirmAttentionDomainsMessage": { "message": "These recipients with attention domains are found:\n\n$RECIPIENTS$\n\nIf there is no problem, continue to send.",
+    "placeholders": {
+      "recipients": { "content": "$1", "example": "mail@example.com" }
+    }},
+  "confirmAttentionDomainsAccept": { "message": "Send" },
+  "confirmAttentionDomainsCancel": { "message": "Cancel" },
+
+
+  "confirmAttentionSuffixesTitle": { "message": "Attachments with attention file types" },
+  "confirmAttentionSuffixesMessage": { "message": "These attachments with attention extensions are found:\n\n$ATTACHMENTS$\n\nIf there is no problem, continue to send.",
+    "placeholders": {
+      "attachments": { "content": "$1", "example": "file.txt" }
+    }},
+  "confirmAttentionSuffixesAccept": { "message": "Send" },
+  "confirmAttentionSuffixesCancel": { "message": "Cancel" },
+
+
+  "confirmAttentionTermsTitle": { "message": "Attachments including attention term in their name" },
+  "confirmAttentionTermsMessage": { "message": "These attachments including attention term in their name are found:\n\n$ATTACHMENTS$\n\nIf there is no problem, continue to send.",
+    "placeholders": {
+      "attachments": { "content": "$1", "example": "file.txt" }
+    }},
+  "confirmAttentionTermsAccept": { "message": "Send" },
+  "confirmAttentionTermsCancel": { "message": "Cancel" },
+
+
+  "countdownDialogTitle": { "message": "Countdown" },
+  "countdownDialogMessage_before": { "message": "\u200b" },
+  "countdownDialogMessage_after": { "message": " seconds left to send." },
+  "countdownDialogSkip": { "message": "Send Now" },
+  "countdownDialogCancel": { "message": "Cancel" },
+
+
+  "showLastNameFirst": { "message": "false" },
+
+
+  "config_title": { "message": "Flex Confirm Mail Options" },
+
+  "config_recipients_caption": { "message": "Recipients" },
+
+  "config_confirmationMode_caption": { "message": "Confirm Recipients before Sending:" },
+  "config_confirmationMode_always_label": { "message": "Always" },
+  "config_confirmationMode_onModified_label": { "message": "Only when recipients are modified" },
+  "config_confirmationMode_never_label": { "message": "Never" },
+
+  "config_internalDomains_caption": { "message": "Domains treated as internals" },
+  "config_internalDomains_input_placeholder": { "message": "Input domain names per line (e.g. example.com)" },
+
+  "config_skipConfirmationForInternalMail_label": { "message": "Skip confirmation if all recipients are internals" },
+  "config_minConfirmationRecipientsCount_label_before": { "message": "Skip confirmation if there are/is only" },
+  "config_minConfirmationRecipientsCount_label_after": { "message": "or fewer recipient(s) (*0 means &quot;always confirm&quot;)" },
+  "config_confirmMultipleRecipientDomains_label": { "message": "Confirm when there are multiple domains in To/Cc recipients" },
+  "config_allowCheckAllInternals_label": { "message": "Allow to make all internal recipients to be checked with one checkbox" },
+  "config_allowCheckAllExternals_label": { "message": "Allow to make all foreign recipients to be checked with one checkbox" },
+
+
+  "config_attentionDomains_caption": { "message": "Specially alerted foreign domains in recipients" },
+
+  "config_attentionDomainsSource_caption": { "message": "Specially alerted foreign domains" },
+  "config_attentionDomains_label": { "message": "Use the manually managed list" },
+  "config_attentionDomains_input_placeholder": { "message": "Input domain names per line (e.g. example.com)" },
+  "config_attentionDomainsFile_label": { "message": "Use a list given as a file" },
+  "config_attentionDomainsFile_button_label": { "message": "Choose…" },
+  "config_attentionDomainsFile_input_placeholder": { "message": "Path to the file (e.g. \\FileServer\\Shared\\domains.txt)" },
+
+  "config_attentionDomainsHighlightMode_caption": { "message": "Highlight recipients of these domains" },
+  "config_attentionDomainsHighlightMode_always_label": { "message": "Always" },
+  "config_attentionDomainsHighlightMode_withAttachments_label": { "message": "Only when there is any attachment" },
+  "config_attentionDomainsHighlightMode_never_label": { "message": "Never" },
+
+  "config_attentionDomainsConfirmationMode_caption": { "message": "Re-confirmation when there is any recipient with one of these domains" },
+  "config_attentionDomainsConfirmationMode_always_label": { "message": "Always" },
+  "config_attentionDomainsConfirmationMode_withAttachments_label": { "message": "Only when there is any attachment" },
+  "config_attentionDomainsConfirmationMode_never_label": { "message": "Never" },
+
+
+  "config_attachments_caption": { "message": "Attachments" },
+
+  "config_requireCheckAttachment_label": { "message": "Require check attachments" },
+
+  "config_attentionSuffixesConfirm_label": { "message": "Confirm me again before send, if there is any attachment with one of these extensions in a message to foreign domains" },
+  "config_attentionSuffixes_label": { "message": "Use the manually managed list" },
+  "config_attentionSuffixes_input_placeholder": { "message": "Input file extensions per line (e.g. .exe, .pdf)" },
+  "config_attentionSuffixesFile_label": { "message": "Use a list given as a file" },
+  "config_attentionSuffixesFile_button_label": { "message": "Choose…" },
+  "config_attentionSuffixesFile_input_placeholder": { "message": "Path to the file (e.g. \\FileServer\\Shared\\suffixes.txt)" },
+
+  "config_attentionTermsConfirm_label": { "message": "Confirm me again before send, if there is any attachment name with one of these terms in a message to foreign domains" },
+  "config_attentionTerms_label": { "message": "Use the manually managed list" },
+  "config_attentionTerms_input_placeholder": { "message": "Input a term per line (e.g. important, confidential)" },
+  "config_attentionTermsFile_label": { "message": "Use a list given as a file" },
+  "config_attentionTermsFile_button_label": { "message": "Choose…" },
+  "config_attentionTermsFile_input_placeholder": { "message": "Path to the file (e.g. \\FileServer\\Shared\\suffixes.txt)" },
+
+  "config_requireReinputAttachmentNames_label": { "message": "Require to input file names of attachments, if there is any other domain recipient" },
+  "config_allowCheckAllAttachments_label": { "message": "Allow to make all attachments to be checked with one checkbox" },
+
+
+  "config_misc_caption": { "message": "Misc." },
+
+  "config_showCountdown_label": { "message": "Count down for " },
+  "config_countdownSeconds_label": { "message": " seconds before sending mail" },
+  "config_countdownAllowSkip_label": { "message": "Allow to skip countdown to send the mail immediately" },
+
+  "config_requireCheckSubject_label": { "message": "Require check the subject" },
+  "config_requireCheckBody_label": { "message": "Require to check the message body" },
+
+  "config_highlightExternalDomains_label": { "message": "Highlight forein recipient addesses" },
+  "config_largeFontSizeForAddresses_label": { "message": "Show addresses with larget font size" },
+  "config_alwaysLargeDialog_label": { "message": "Open confirmation dialog with large size always" },
+  "config_topMessage_label": { "message": "Top Message of the confirmation dialog:" },
+  "config_emphasizeTopMessage_label": { "message": "Empasize the top message" },
+  "config_emphasizeRecipientType_label": { "message": "Emphasize recipient types (To/Cc/Bcc)" },
+
+
+  "config_debug_caption": { "message": "Development" },
+
+  "config_debug_label": { "message": "Debug mode" },
+  "config_all_caption": { "message": "All Configs" }
+}

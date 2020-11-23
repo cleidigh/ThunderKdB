@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<html class="dialog">
+  <head>
+    <meta charset="UTF-8">
+    <script type="module" src="./confirm.js"></script>
+    <link rel="stylesheet" href="./confirm.css">
+    <title>__MSG_confirmDialogTitle__</title>
+  </head>
+  <body>
+    <form id="form" class="dialog-content" action="#" method="GET">
+      <div id="top-message"></div>
+      <div id="addressesContainer" class="flex-box">
+        <fieldset id="internalsContainer" class="flex-box">
+          <legend><label><input id="internalsAll" type="checkbox" class="all-checkbox">__MSG_confirmDialogInternalsCaption__</label></legend>
+          <div id="internals" class="flex-box listbox"></div>
+        </fieldset>
+        <hr class="splitter">
+        <fieldset id="externalsContainer" class="flex-box">
+          <legend><label><input id="externalsAll" type="checkbox" class="all-checkbox">__MSG_confirmDialogExternalsCaption__</label></legend>
+          <div id="externals" class="flex-box listbox"></div>
+        </fieldset>
+      </div>
+      <hr class="splitter">
+      <div id="bodyAndSubjectContainer" class="flex-box">
+        <div id="subjectContainer"><label><input id="subject" type="checkbox">__MSG_confirmDialogSubjectCaption__<span id="subjectField"></span></label></div>
+        <div id="bodyContainer" class="flex-box">
+          <div><label><input id="body" type="checkbox">__MSG_confirmDialogBodyCaption__</label></div>
+          <iframe id="bodyField"
+                  class="flex-box"></iframe>
+        </div>
+      </div>
+      <hr class="splitter">
+      <fieldset id="attachmentsContainer" class="flex-box">
+        <legend><label><input id="attachmentsAll" type="checkbox" class="all-checkbox">__MSG_confirmDialogAttachmentsCaption__</label></legend>
+        <div id="attachments" class="flex-box listbox"></div>
+      </fieldset>
+      <div class="dialog-buttons">
+        <button id="accept" type="submit">__MSG_confirmDialogAccept__</button>
+        <button id="cancel">__MSG_confirmDialogCancel__</button>
+      </div>
+    </form>
+  </body>
+</html>

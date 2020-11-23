@@ -1,0 +1,98 @@
+
+.optionsButton {
+    min-width: 16px;
+    -moz-image-region: rect(0px, 20px, 16px, 0px);
+}
+
+.up {
+  min-width: 16px;
+  list-style-image: url("resource://subjects_prefix_switch/up_s.png");
+}
+
+.up[disabled="true"] {
+  min-width: 16px;
+  list-style-image: url("resource://subjects_prefix_switch/up_s.png");
+  opacity: 0.5;
+}
+
+.down {
+  min-width: 16px;
+  list-style-image: url("resource://subjects_prefix_switch/down_s.png");
+}
+
+.down[disabled="true"] {
+  min-width: 16px;
+  list-style-image: url("resource://subjects_prefix_switch/down_s.png");
+  opacity: 0.5;
+}
+
+.addAddress {
+  list-style-image: url("resource://subjects_prefix_switch/right_s.png");
+}
+
+.removeAddress {
+  list-style-image: url("resource://subjects_prefix_switch/left_s.png");
+}
+
+.new {
+  list-style-image: url("resource://subjects_prefix_switch/new_s.png");
+}
+
+.duplicate {
+  list-style-image: url("resource://subjects_prefix_switch/copy_s.png");
+}
+
+.duplicate[disabled="true"] {
+  list-style-image: url("resource://subjects_prefix_switch/copy_s.png");
+  opacity: 0.5;
+}
+
+.edit {
+  list-style-image: url("resource://subjects_prefix_switch/edit_s.png");
+}
+
+.edit[disabled="true"] {
+  list-style-image: url("resource://subjects_prefix_switch/edit_s.png");
+  opacity: 0.5;
+}
+
+.delete {
+  list-style-image: url("resource://subjects_prefix_switch/delete_s.png");
+}
+
+.delete[disabled="true"] {
+ list-style-image: url("resource://subjects_prefix_switch/delete_s.png");
+  opacity: 0.5;
+}
+
+.browse {
+  list-style-image: url("resource://subjects_prefix_switch/browse.png");
+}
+
+#maintab {
+  list-style-image: url("resource://subjects_prefix_switch/general.png");
+}
+#othertab {
+  list-style-image: url("resource://subjects_prefix_switch/advanced.png");
+}
+
+#helptab {
+  list-style-image: url("resource://subjects_prefix_switch/about.png");
+}
+
+prefwindow[type="child"] {
+  padding: 0px;
+}
+
+prefpane {
+  padding-top: 8px;
+  padding-bottom: 10px;
+  -moz-padding-start: 8px;
+  -moz-padding-end: 10px;
+}
+
+.prefWindow-dlgbuttons {
+  padding-bottom: 10px;
+  -moz-padding-start: 8px;
+  -moz-padding-end: 10px;
+}

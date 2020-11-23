@@ -75,6 +75,8 @@ addEventListener("load", async () => {
 
   await getAll();
 
+  tb_minsize.addEventListener("change", setMinSize);
+
   r_noresize.addEventListener("change", setSize);
   r_small.addEventListener("change", setSize);
   r_medium.addEventListener("change", setSize);
@@ -102,6 +104,14 @@ addEventListener("load", async () => {
     }
   });
 });
+
+async function setMinSize() {
+  settingFromThisPage = true;
+  await browser.storage.local.set({
+    fileSizeMinimum: parseInt(tb_minsize.value, 10),
+  });
+  settingFromThisPage = false;
+}
 
 async function setSize() {
   let maxWidth, maxHeight;

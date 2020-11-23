@@ -78,8 +78,8 @@ debug('entered appstart='+appstarttime+' syncstate='+syncstate);
 
   donecount=0;
   gMabs=syncedAddressbooks('up', singleBook);
-
   cleanUp=uploadDone;
+  gTempName=new Array();
   if (synctype=='local') {
 		sendLocalData();
   } else if (synctype=='remote') {

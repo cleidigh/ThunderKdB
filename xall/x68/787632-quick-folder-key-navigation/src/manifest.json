@@ -3,7 +3,7 @@
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "author": "Andrew Hart",
-  "version": "3.1",
+  "version": "3.2",
 "homepage_url": "https://github.com/hartag/keynav",
   "default_locale": "en",
 
@@ -15,7 +15,7 @@
   },
 
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["defaults.js", "common.js", "background.js"]
   },
 
   "options_ui": {

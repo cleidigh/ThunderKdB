@@ -2,7 +2,7 @@ var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"
 
 var cardbookMailPopularity = {
 	updateMailPopularity: function (aEmail) {
-		let addresses = MailServices.headerParser.parseEncodedHeader(aEmail);
+		let addresses = MailServices.headerParser.parseEncodedHeaderW(aEmail);
 		for (let address of addresses) {
 			if (address.email == "") {
 				continue;

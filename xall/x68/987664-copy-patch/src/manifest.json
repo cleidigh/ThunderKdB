@@ -3,19 +3,54 @@
   "applications": {
     "gecko": {
       "id": "copypatch@kiszka.org",
-      "strict_min_version": "68.0"
+      "strict_min_version": "78.4.0"
     }
   },
   "name": "Copy Patch",
   "description": "Copy email content to clipboard for application as patch",
   "author": "Jan Kiszka",
-  "version": "1.3.2",
+  "version": "2.1",
   "homepage_url": "http://git.kiszka.org/copypatch.git",
   "icons": {
-    "32": "chrome/content/copypatch.png",
-    "64": "chrome/content/copypatch64.png"
+    "32": "copypatch.png",
+    "64": "copypatch64.png"
   },
-  "legacy": {
-    "type" : "bootstrap"
+  "background": {
+    "scripts": [
+      "background-script.js"
+    ]
+  },
+  "permissions": [
+    "messagesRead",
+    "messagesModify",
+    "clipboardWrite"
+  ],
+  "message_display_action": {
+    "default_icon": "copypatch64.png",
+    "default_title": "Copy Patch"
+  },
+  "commands": {
+    "copyPatch": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+P"
+      },
+      "description": "Copy as patch"
+    }
+  },
+  "experiment_apis": {
+    "CopyPatch": {
+      "schema": "api/CopyPatch/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "CopyPatch"
+          ]
+        ],
+        "script": "api/CopyPatch/implementation.js"
+      }
+    }
   }
 }

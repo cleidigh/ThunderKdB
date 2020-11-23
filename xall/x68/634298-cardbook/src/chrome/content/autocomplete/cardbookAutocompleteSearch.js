@@ -1,7 +1,7 @@
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 XPCOMUtils.defineLazyModuleGetter(this, "LDAPAbCardFormatter", "chrome://cardbook/content/autocomplete/LDAPAbCardFormatter.jsm");
 
 var loader = Services.scriptloader;
@@ -140,7 +140,7 @@ cardbookAutocompleteSearch.prototype = {
 	addResult: function addResult(aResult, aEmailValue, aComment, aPopularity, aType, aStyle, aLowerFn, aDirPrefId, aEmail) {
 		if (aEmailValue) {
 			var myComment = "";
-			if (cardbookRepository.cardbookPreferences.getStringPref("mail.autoComplete.commentColumn") == "1") {
+			if (Services.prefs.getIntPref("mail.autoComplete.commentColumn", 0) != 0) {
 				if (aComment) {
 					myComment = aComment;
 				}

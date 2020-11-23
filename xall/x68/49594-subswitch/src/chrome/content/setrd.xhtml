@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://global/skin/"?>
+<?xml-stylesheet href="resource://subjects_prefix_switch/options.css" type="text/css"?>
+
+<!DOCTYPE dialog [
+  <!ENTITY % messengercomposeDTD SYSTEM "chrome://messenger/locale/messengercompose/messengercompose.dtd" >
+  %messengercomposeDTD;
+  <!ENTITY % dialog1 SYSTEM "chrome://subjects_prefix_switch/locale/subjects_prefix_switch.dtd">
+  %dialog1;
+]>
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        id="subjects_prefix_switchSetSignature"
+        minwidth="300"
+        onload="return com.ktsystems.subswitch.SetPrefix.setRDOnLoad();"
+        buttons="accept,cancel"
+        title="&subjects_prefix_switch.label.setrd.title;">
+
+    <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/const.js"/>
+    <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/utils.js"/>
+    <script type="application/x-javascript" src="chrome://subjects_prefix_switch/content/setrd.js"/>
+
+    <script type="application/x-javascript" src="chrome://messenger/content/messengercompose/addressingWidgetOverlay.js"/>
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle id="subjects_prefix_switch.locale" src="chrome://subjects_prefix_switch/locale/subjects_prefix_switch.properties"/>
+    </stringbundleset>
+     <vbox>
+     <grid>
+        <columns>
+            <column/>
+            <column flex="1"/>
+        </columns>
+        <rows>
+            <row>
+                <hbox align="center">
+                    <label control="description" value="&subjects_prefix_switch.label.setrd.description;"/>
+                </hbox>
+                <hbox align="center">
+                    <html:input flex="1" id="description"/>
+                </hbox>
+            </row>
+            <row>
+                <hbox align="center">
+                    <label control="rd" value="&subjects_prefix_switch.label.setrd.path;"/>
+                </hbox>
+                <hbox align="center">
+                    <html:input flex="1" id="rd"
+                        oninput="com.ktsystems.subswitch.SetPrefix.onChangeRD(value);"/>
+                </hbox>
+            </row>
+            <separator style="margin-bottom:5px;"/>
+        <tabbox>
+          <tabs>
+              <tab label="&subjects_prefix_switch.label.setrd.aliases;"/>
+              <tab label="&subjects_prefix_switch.label.setrd.addresses;"/>
+              <tab label="&subjects_prefix_switch.label.options.othertab;"/>
+          </tabs>
+        <tabpanels>
+        <tabpanel id="aliasestab">
+        <vbox flex="1">
+            <html:input id="alias" />
+            <hbox align="center">
+                <spacer flex="1"/>
+                <button class="new optionsButton" id="addAlias" label="&subjects_prefix_switch.label.setrd.aliasesAdd;"
+                    oncommand="com.ktsystems.subswitch.SetPrefix.addAlias('address');"/>
+                <button class="delete optionsButton" id="removeAlias" label="&subjects_prefix_switch.label.setrd.aliasesRemove;"
+                    oncommand="com.ktsystems.subswitch.SetPrefix.removeAlias('address');"/>
+                <spacer flex="1"/>
+            </hbox>
+            <vbox>
+              <richlistbox id="aliasesList" seltype="single" rows="4"/>
+            </vbox>
+        </vbox>
+        </tabpanel>
+        <tabpanel id="addresstab">
+        <vbox flex="1">
+            <hbox align="center">
+                <menulist id="addressType">
+					<menupopup>
+						<menuitem value="To:" label="&toAddr2.label;"/>
+						<menuitem value="CC:"  label="&ccAddr2.label;" selected="true"/>
+						<menuitem value="BCC:" label="&bccAddr2.label;" />
+					</menupopup>
+                </menulist>
+                <html:input id="address" flex="1"
+                         type="autocomplete"
+                         autocompletesearch="mydomain addrbook"
+                         timeout="300" maxrows="4"
+                         completedefaultindex="true" forcecomplete="false"
+                         minresultsforpopup="3" ignoreblurwhilesearching="true"
+                         ontextentered="awRecipientTextCommand(eventParam, this)"
+                         onerrorcommand="awRecipientErrorCommand(eventParam, this)"
+                         oninput="gContentChanged=true; setupAutocomplete();"
+                         disableonsend="true"
+                         onkeypress="awRecipientKeyPress(event, this)"
+                         onkeydown="awRecipientKeyDown(event, this)" />
+            </hbox>
+            <hbox align="center">
+                <spacer flex="1"/>
+                <button class="new optionsButton" id="addAddress" label="&subjects_prefix_switch.label.setrd.addressesAdd;"
+                    oncommand="com.ktsystems.subswitch.SetPrefix.addAddress();"/>
+                <button class="delete optionsButton" id="removeAddress" label="&subjects_prefix_switch.label.setrd.addressesRemove;"
+                    oncommand="com.ktsystems.subswitch.SetPrefix.removeAddress();"/>
+                <spacer flex="1"/>
+            </hbox>
+            <vbox>
+              <richlistbox id="addressList" seltype="single" rows="4"/>
+            </vbox>
+        </vbox>
+        </tabpanel>
+        <tabpanel id="detailstab">
+        <vbox>
+            <row >
+                <hbox align="center">
+                    <label control="rdSequenceValue" value="&subjects_prefix_switch.label.setrd.sequence;"/>
+                </hbox>
+                <hbox align="center">
+                    <html:input type="number" min="0"
+                        max="com.ktsystems.subswitch.Const.SEQ_MAX_VALUE"
+                        flex="1"
+                        id="rdSequenceValue"/>
+                </hbox>
+            </row>
+        </vbox>
+        </tabpanel>
+        </tabpanels>
+        </tabbox>
+        </rows>
+       </grid>
+      <!-- -->
+
+    </vbox>
+    <separator style="margin-bottom:5px;" class="groove"/>
+</dialog>

@@ -1,29 +1,45 @@
 messenger.WindowListener.registerChromeUrl([
-    ["content",  "PhoenityIconsOverlay", "content/"]
+    ["content",  "PhoenityIcons", "content/"]
 ]);
 
 messenger.WindowListener.registerWindow(
     "chrome://messenger/content/addressbook/addressbook.xhtml",
-    "chrome://PhoenityIconsOverlay/content/scripts/loadAddressbook.js");
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
 
 messenger.WindowListener.registerWindow(
     "chrome://messenger/content/addressbook/abContactsPanel.xhtml",
-    "chrome://PhoenityIconsOverlay/content/scripts/loadAddressbook.js");
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
 
 messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messengercompose/messengercompose.xhtml",
-    "chrome://PhoenityIconsOverlay/content/scripts/loadCompose.js");
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
 
 messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messenger.xhtml",
-    "chrome://PhoenityIconsOverlay/content/scripts/loadMessenger.js");
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
 
 messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messageWindow.xhtml",
-    "chrome://PhoenityIconsOverlay/content/scripts/loadMessenger.js");
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
 
 messenger.WindowListener.registerWindow(
     "chrome://messenger/content/customizeToolbar.xhtml",
-    "chrome://PhoenityIconsOverlay/content/scripts/loadMessenger.js");
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
+
+messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/activity.xhtml",
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
+
+messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/subscribe.xhtml",
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
+
+messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/SearchDialog.xhtml",
+    "chrome://PhoenityIcons/content/scripts/loadMessenger.js");
+
+//messenger.WindowListener.registerWindow(
+    //"chrome://cardbook/content/contactsSidebar/wdw_cardbookContactsSidebar.xhtml",
+    //"chrome://PhoenityIcons/content/scripts/loadMessenger.js");
 
 messenger.WindowListener.startListening();

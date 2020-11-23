@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/content/quickfolders-categories.css" title="QuickFolderStyles" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/set_folder_category.dtd" >
+<dialog title="&qf.dialog.setcategory;"
+        buttons="accept,cancel"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        onload="QuickFolders.FolderCategory.init(this, window.arguments[1]);"
+>
+<!--  ondialogaccept="QuickFolders.FolderCategory.setSelectedCategory();var rv= window.arguments[2]; rv.btnClicked='ok';"   borked in Thunderbird 68 -->
+
+    <script type="text/javascript">
+		var QuickFolders = window.arguments[0];
+    </script>
+
+<vbox id="air">    
+    <description>&qf.description.categoryusage;</description>
+
+    <description>&qf.description.pulldown;</description>
+
+    <description>&qf.description.editcategory;</description>
+
+    <hbox style="margin-top: 1em">
+        <vbox>
+            <label>&qf.label.existingcategories;</label>
+
+            <richlistbox id="existing-categories"
+              ondblclick="QuickFolders.FolderCategory.setSelectedCategory();"
+              onselect="QuickFolders.FolderCategory.onSelectionChange(event);"
+              seltype="multiple"
+							flex="2">
+                <!-- added by script -->
+            </richlistbox>
+        </vbox>
+        <vbox>
+            <vbox class="gradientpanel"  id="green">
+                <label>&qf.label.newcategory;</label>
+
+                <hbox>
+                    <html:input
+                        id="new-category-name"
+                        onkeydown="if(event.key == 'Enter') { QuickFolders.FolderCategory.addToNewCategory() }"
+                    />
+                    <button label="&qf.button.add;" oncommand="QuickFolders.FolderCategory.addToNewCategory()" />
+                </hbox>
+            </vbox>
+
+            <vbox style="margin-top: 20px" class="gradientpanel"  id="yellow">
+                <label>&qf.label.renameselectedcategory;</label>
+
+                <hbox>
+                    <html:input
+                        id="rename-category-new-name"
+                        onkeydown="if(event.key == 'Enter') { QuickFolders.FolderCategory.renameSelectedCategory() }"
+                    />
+                    <button label="&qf.button.rename;" oncommand="QuickFolders.FolderCategory.renameSelectedCategory()" />
+                </hbox>
+            </vbox>
+
+            <vbox style="margin-top: 20px; min-height:50px; vertical-align:middle;" class="gradientpanel" id="red">
+                <button label="&qf.button.deleteselectedcategory;" oncommand="QuickFolders.FolderCategory.deleteSelectedCategory(event)"
+                style="vertical-align:middle;margin-top:10px;"/>
+            </vbox>
+        </vbox>
+    </hbox>
+    
+    <description id="multiCategory">&qf.description.multicategory;</description>
+</vbox>
+    
+</dialog>
+

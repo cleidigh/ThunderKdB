@@ -9,7 +9,6 @@
 
 var EXPORTED_SYMBOLS = ["PhoneNumber"];
 
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
 ChromeUtils.defineModuleGetter(this, "PHONE_NUMBER_META_DATA", "chrome://cardbook/content/formautofill/phonenumberutils/PhoneNumberMetaData.jsm");
 ChromeUtils.defineModuleGetter(this, "PhoneNumberNormalizer", "chrome://cardbook/content/formautofill/phonenumberutils/PhoneNumberNormalizer.jsm");
 

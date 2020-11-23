@@ -1,0 +1,148 @@
+{
+  "extensionName": { "message": "Flex Confirm Mail" },
+  "extensionDescription": { "message": "柔軟なルールに基づいて、送信前に宛先のアドレスや添付ファイルの確認を行うようにします。" },
+
+
+  "confirmDialogTitle": { "message": "宛先メールアドレスの確認" },
+  "confirmDialogInternalsCaption": { "message": "登録済みドメインのメールアドレス" },
+  "confirmDialogExternalsCaption": { "message": "外部ドメインのメールアドレス" },
+  "confirmDialogSubjectCaption": { "message": "件名: " },
+  "confirmDialogBodyCaption": { "message": "本文" },
+  "confirmDialogAttachmentsCaption": { "message": "添付ファイル" },
+  "confirmDialogAttachmentNameReinputPlaceholder": { "message": "確認のため添付ファイル名を再入力して下さい" },
+
+  "confirmDialogAccept": { "message": "送信" },
+  "confirmDialogCancel": { "message": "キャンセル" },
+
+
+  "confirmMultipleRecipientDomainsTitle": { "message": "複数のドメインがToまたはCcの宛先に含まれています" },
+  "confirmMultipleRecipientDomainsMessage": { "message": "ToまたはCcの宛先に複数のドメインが含まれています。\n\n$DOMAINS$\n\n送信すると、他の宛先の情報が全ての宛先に通知されます。送信してよろしいですか？",
+    "placeholders": {
+      "domains": { "content": "$1", "example": "example.com" }
+    }},
+  "confirmMultipleRecipientDomainsAccept": { "message": "送信" },
+  "confirmMultipleRecipientDomainsCancel": { "message": "キャンセル" },
+
+
+  "confirmAttentionDomainsTitle": { "message": "特別に注意が必要な宛先" },
+  "confirmAttentionDomainsMessage": { "message": "特別に注意が必要なドメインに属する以下の宛先があります。\n\n$RECIPIENTS$\n\n問題がない事を確認の上でメールを送信してください。",
+    "placeholders": {
+      "recipients": { "content": "$1", "example": "mail@example.com" }
+    }},
+  "confirmAttentionDomainsAccept": { "message": "送信" },
+  "confirmAttentionDomainsCancel": { "message": "キャンセル" },
+
+
+  "confirmAttentionSuffixesTitle": { "message": "特別に注意が必要な種類の添付ファイル" },
+  "confirmAttentionSuffixesMessage": { "message": "特別に注意が必要な拡張子を持つ以下の添付ファイルがあります。\n\n$ATTACHMENTS$\n\n問題がない事を確認の上でメールを送信してください。",
+    "placeholders": {
+      "attachments": { "content": "$1", "example": "file.txt" }
+    }},
+  "confirmAttentionSuffixesAccept": { "message": "送信" },
+  "confirmAttentionSuffixesCancel": { "message": "キャンセル" },
+
+
+  "confirmAttentionTermsTitle": { "message": "特別に注意が必要な名前の添付ファイル" },
+  "confirmAttentionTermsMessage": { "message": "特別に注意が必要な語句を名前に含む以下の添付ファイルがあります。\n\n$ATTACHMENTS$\n\n問題がない事を確認の上でメールを送信してください。",
+    "placeholders": {
+      "attachments": { "content": "$1", "example": "file.txt" }
+    }},
+  "confirmAttentionTermsAccept": { "message": "送信" },
+  "confirmAttentionTermsCancel": { "message": "キャンセル" },
+
+
+  "countdownDialogTitle": { "message": "カウントダウン" },
+  "countdownDialogMessage_before": { "message": "あと" },
+  "countdownDialogMessage_after": { "message": "秒で送信します" },
+  "countdownDialogSkip": { "message": "今すぐ送信" },
+  "countdownDialogCancel": { "message": "キャンセル" },
+
+
+  "showLastNameFirst": { "message": "true" },
+
+
+  "config_title": { "message": "Flex Confirm Mailの設定" },
+
+  "config_recipients_caption": { "message": "宛先" },
+
+  "config_confirmationMode_caption": { "message": "送信前の宛先確認:" },
+  "config_confirmationMode_always_label": { "message": "常に確認" },
+  "config_confirmationMode_onModified_label": { "message": "宛先が変更された時だけ確認" },
+  "config_confirmationMode_never_label": { "message": "確認しない" },
+
+  "config_internalDomains_caption": { "message": "組織内として扱うメールアドレスのドメイン名" },
+  "config_internalDomains_input_placeholder": { "message": "ドメイン名を1行ずつ入力（例：example.com）" },
+
+  "config_skipConfirmationForInternalMail_label": { "message": "すべての宛先が登録済みドメインのメール送信時は確認ダイアログを表示しない" },
+  "config_minConfirmationRecipientsCount_label_before": { "message": "宛先が" },
+  "config_minConfirmationRecipientsCount_label_after": { "message": "件以下の場合は確認ダイアログを表示しない（※0で常に確認）" },
+  "config_confirmMultipleRecipientDomains_label": { "message": "ToまたはCcの宛先に複数のドメインが含まれる場合に警告する" },
+  "config_allowCheckAllInternals_label": { "message": "組織内の宛先の一括チェックを許可" },
+  "config_allowCheckAllExternals_label": { "message": "外部の宛先の一括チェックを許可" },
+
+
+  "config_attentionDomains_caption": { "message": "特別に注意が必要な外部ドメインの宛先" },
+
+  "config_attentionDomainsSource_caption": { "message": "特別に注意が必要な外部ドメイン" },
+  "config_attentionDomains_label": { "message": "手動編集のリストを使用" },
+  "config_attentionDomains_input_placeholder": { "message": "ドメイン名を1行ずつ入力（例：example.com）" },
+  "config_attentionDomainsFile_label": { "message": "ファイル形式のリストを使用" },
+  "config_attentionDomainsFile_button_label": { "message": "参照..." },
+  "config_attentionDomainsFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\FileServer\\Shared\\domains.txt）" },
+
+  "config_attentionDomainsHighlightMode_caption": { "message": "これらのドメインに該当する宛先の強調表示" },
+  "config_attentionDomainsHighlightMode_always_label": { "message": "常に強調表示" },
+  "config_attentionDomainsHighlightMode_withAttachments_label": { "message": "添付ファイルがある時だけ強調表示" },
+  "config_attentionDomainsHighlightMode_never_label": { "message": "強調表示しない" },
+
+  "config_attentionDomainsConfirmationMode_caption": { "message": "これらのドメインに該当する宛先がある場合の送信確認後の再警告" },
+  "config_attentionDomainsConfirmationMode_always_label": { "message": "常に再度警告する" },
+  "config_attentionDomainsConfirmationMode_withAttachments_label": { "message": "添付ファイルがある時だけ再度警告する" },
+  "config_attentionDomainsConfirmationMode_never_label": { "message": "再度警告しない" },
+
+
+
+  "config_attachments_caption": { "message": "添付ファイル" },
+
+  "config_requireCheckAttachment_label": { "message": "添付ファイルの確認を求める" },
+
+  "config_attentionSuffixesConfirm_label": { "message": "これらの拡張子を持つファイルが外部ドメイン宛のメールに添付されている場合は再度警告する" },
+  "config_attentionSuffixes_label": { "message": "手動編集のリストを使用" },
+  "config_attentionSuffixes_input_placeholder": { "message": "ファイルの拡張子を1行ずつ入力（例：.exe、.pdf）" },
+  "config_attentionSuffixesFile_label": { "message": "ファイル形式のリストを使用" },
+  "config_attentionSuffixesFile_button_label": { "message": "参照..." },
+  "config_attentionSuffixesFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\FileServer\\Shared\\suffixes.txt）" },
+
+  "config_attentionTermsConfirm_label": { "message": "これらの語句を名前の一部に持つファイルが外部ドメイン宛のメールに添付されている場合は再度警告する" },
+  "config_attentionTerms_label": { "message": "手動編集のリストを使用" },
+  "config_attentionTerms_input_placeholder": { "message": "語句を1行ずつ入力（例：危険、社外秘）" },
+  "config_attentionTermsFile_label": { "message": "ファイル形式のリストを使用" },
+  "config_attentionTermsFile_button_label": { "message": "参照..." },
+  "config_attentionTermsFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\FileServer\\Shared\\phrases.txt）" },
+
+  "config_requireReinputAttachmentNames_label": { "message": "宛先に外部ドメインのアドレスがある場合、添付ファイル名の手動での入力を求める" },
+  "config_allowCheckAllAttachments_label": { "message": "添付ファイルのチェックボックスの一括制御を許可" },
+
+
+  "config_misc_caption": { "message": "その他" },
+
+  "config_showCountdown_label": { "message": "[送信]ボタンを押してから" },
+  "config_countdownSeconds_label": { "message": "秒間のカウントダウン後に実際に送信する" },
+  "config_countdownAllowSkip_label": { "message": "カウントを飛ばしてすぐに送信することを許容する" },
+
+  "config_requireCheckSubject_label": { "message": "件名の確認を求める" },
+  "config_requireCheckBody_label": { "message": "メール本文の確認を求める" },
+
+  "config_highlightExternalDomains_label": { "message": "外部ドメインの宛先のアドレスを強調表示する" },
+  "config_largeFontSizeForAddresses_label": { "message": "メールアドレスを大きなフォントサイズで表示する" },
+  "config_alwaysLargeDialog_label": { "message": "確認のダイアログを常に大きなサイズで開く" },
+  "config_topMessage_label": { "message": "確認のダイアログの冒頭メッセージ:" },
+  "config_emphasizeTopMessage_label": { "message": "メッセージを強調表示する" },
+  "config_emphasizeRecipientType_label": { "message": "宛先の種別（To/Cc/Bcc）を強調表示する" },
+
+
+  "config_debug_caption": { "message": "開発者向け" },
+
+  "config_debug_label": { "message": "デバッグモード" },
+  "config_all_caption": { "message": "すべての設定" }
+}

@@ -29,12 +29,20 @@ var dirObserver={
 //AddrBookManager.getDirectoryFromUID(uid)
   setUp() {
     for (let topic of this.topics) {
+try {
       Services.obs.addObserver(dirObserver, topic);
+} catch(e) { debug('listener setUp for topic "'+topic+'" '+(typeof dirObserver)+' throws: '+e, ''); }
     }
   },
   cleanUp() {
     for (let topic of this.topics) {
+try {
       Services.obs.removeObserver(dirObserver, topic);
+//sometimes throws NS_ERROR_ILLEGAL_VALUE (Mail from Albrecht Dreß, 14.11.20)
+//unknown topic throws NS_ERROR_FAILURE
+//null topic or null observer throws NS_ERROR_ILLEGAL_VALUE
+//Seems that the problem comes from a bad profile (according to Albrechts)
+} catch(e) { debug('listener cleanUp for topic "'+topic+'" '+(typeof dirObserver)+' throws: '+e, ''); }
     }
   },
 	bookUID: null,

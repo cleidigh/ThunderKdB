@@ -2,20 +2,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-/* ::::: directory pane icons ::::: */
+/* Address Book menuitem icons */
 
-treechildren::-moz-tree-image(DirCol) {
+.abMenuItem[AddrBook="true"] {
   list-style-image: url("./icons/addrbook.png");
 }
 
-treechildren::-moz-tree-image(DirCol, IsMailList-true) {
+.abMenuItem[MailList="true"] {
   list-style-image: url("./icons/ablist.png");
 }
 
-treechildren::-moz-tree-image(DirCol, IsRemote-true) {
-  list-style-image: url("./icons/remote-addrbook.gif");
+.abMenuItem[AddrBook="true"][IsRemote="true"] {
+  list-style-image: url("./icons/remote-addrbook.png");
 }
 
-treechildren::-moz-tree-image(DirCol, IsRemote-true, IsSecure-true) {
-  list-style-image: url("./icons/secure-remote-addrbook.gif");
+.abMenuItem[AddrBook="true"][IsRemote="true"][IsSecure="true"] {
+  list-style-image: url("./icons/secure-remote-addrbook.png");
 }

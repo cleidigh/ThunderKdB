@@ -9,10 +9,14 @@ var cardbookTabMonitor = {
 		if (currentSet) {
 			toolbar.currentSet = currentSet;
 		}
-		var mode = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.cardbookToolbar.mode");
-		if (mode) {
-			toolbar.setAttribute("mode", mode);
-			toolbox.setAttribute("mode", mode);
+		var mode = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.cardbookToolbar.mode").split("::");
+		if (mode[0]) {
+			toolbar.setAttribute("mode", mode[0]);
+			toolbox.setAttribute("mode", mode[0]);
+		}
+		if (mode[1]) {
+			toolbar.setAttribute("labelalign", mode[1]);
+			toolbox.setAttribute("labelalign", mode[1]);
 		}
 		document.getElementById("cardbookTabPanel").removeAttribute("collapsed");
 		wdw_cardbook.loadFirstWindow();
@@ -241,6 +245,7 @@ var ovl_cardbook = {
 		cardBookObserver.unregister();
 		myFormatObserver.unregister();
 		let tabmail = document.getElementById("tabmail");
+		// closing tabs
 		let cardbookMode = tabmail.tabModes.cardbook;
 		if (cardbookMode.tabs.length == 1) {
 			tabmail.closeTab(cardbookMode.tabs[0]);
@@ -249,6 +254,11 @@ var ovl_cardbook = {
 			if (tabmail.tabModes.contentTab.tabs[i].title == cardbookRepository.extension.localeData.localizeMessage("cardbookPrefTitle") + " (" + cardbookRepository.addonVersion + ")") {
 				tabmail.closeTab(tabmail.tabModes.contentTab.tabs[i]);
 			}
+		}
+		// unregistering
+		if (tabmail) {
+			tabmail.unregisterTabType(cardbookTabType);
+			tabmail.unregisterTabMonitor(cardbookTabMonitor);
 		}
 	},
 

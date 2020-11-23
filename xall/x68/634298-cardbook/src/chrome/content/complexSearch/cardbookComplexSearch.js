@@ -1,5 +1,4 @@
-// var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-// XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+// var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 // var EXPORTED_SYMBOLS = ["cardbookComplexSearch"];
 var cardbookComplexSearch = {

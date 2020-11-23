@@ -67,7 +67,7 @@ var cardbookRepository = {
 	defaultKindCustom : "X-ADDRESSBOOKSERVER-KIND",
 	defaultMemberCustom : "X-ADDRESSBOOKSERVER-MEMBER",
 
-	notAllowedCustoms : [ 'X-THUNDERBIRD-ETAG', 'X-ABDATE', 'X-ABLABEL' ],
+	notAllowedCustoms : [ 'X-THUNDERBIRD-ETAG', 'X-ABDATE', 'X-ABLABEL', 'X-CATEGORIES' ],
 	possibleCustomFields : { "X-CUSTOM1": {add: false}, "X-CUSTOM2": {add: false}, "X-CUSTOM3": {add: false}, "X-CUSTOM4": {add: false},
 							"X-PHONETIC-FIRST-NAME": {add: false}, "X-PHONETIC-LAST-NAME": {add: false}, "X-BIRTHPLACE": {add: false},
 							"X-ANNIVERSARY": {add: false}, "X-DEATHDATE": {add: false}, "X-DEATHPLACE": {add: false}, "X-GENDER": {add: false} },
@@ -447,7 +447,7 @@ var cardbookRepository = {
 	},
 
 	makeSearchString: function (aString) {
-		return cardbookRepository.normalizeString(aString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase());
+		return this.normalizeString(aString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase());
 	},
 
 	getLongSearchString: function(aCard) {

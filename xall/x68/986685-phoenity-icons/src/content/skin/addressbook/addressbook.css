@@ -2,6 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* ::::: primary toolbar buttons ::::: */
+
+#ab-toolbox .toolbarbutton-1 .toolbarbutton-icon {
+  min-width: 26px;
+  min-height: 26px;
+}
+
 #button-newcard {
   list-style-image: url("./icons/addressbook-toolbar.png");
   -moz-image-region: rect(0px 24px 24px 0px);
@@ -26,13 +33,18 @@
  list-style-image: url("./icons/addressbook-toolbar.png");
  -moz-image-region: rect(0px 120px 24px 96px);
 }
- 
+
 #button-abdelete {
   list-style-image: url("./icons/addressbook-toolbar.png");
   -moz-image-region: rect(0px 144px 24px 120px);
 }
 
 /* ::::: small primary toolbar buttons ::::: */
+
+#ab-toolbox[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon {
+  min-width: 18px;
+  min-height: 18px;
+}
 
 toolbar[iconsize="small"] #button-newcard {
   list-style-image: url("./icons/addressbook-toolbar-small.png");

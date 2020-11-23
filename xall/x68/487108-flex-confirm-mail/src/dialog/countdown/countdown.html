@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<html class="dialog">
+  <head>
+    <meta charset="UTF-8">
+    <script type="module" src="./countdown.js"></script>
+    <link rel="stylesheet" href="./countdown.css">
+    <title>__MSG_countdownDialogTitle__</title>
+  </head>
+  <body>
+    <form id="form" class="dialog-content" action="#" method="GET">
+      <div class="flex-box">
+        <div class="countdown-message">
+          <label>__MSG_countdownDialogMessage_before__</label>
+          <label id="count"></label>
+          <label>__MSG_countdownDialogMessage_after__</label>
+        </div>
+      </div>
+      <div class="dialog-buttons">
+        <button id="skip" type="submit">__MSG_countdownDialogSkip__</button>
+        <button id="cancel">__MSG_countdownDialogCancel__</button>
+      </div>
+    </form>
+  </body>
+</html>

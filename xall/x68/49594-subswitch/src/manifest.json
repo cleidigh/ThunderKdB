@@ -2,25 +2,34 @@
   "manifest_version": 2,
   "name": "SubSwitch",
   "description": "Switch on or off the maessage's prefix. Choose a new one from your predefined set.",
-  "version": "0.9.39",
+  "version": "0.9.44",
   "author": "Tomasz Krajewski",
   "homepage_url": "https://github.com/tomaszkrajewski/tb-SubSwitch",
-  "legacy":  {
-    "type": "xul",
-    "options": {
-      "page": "chrome://subjects_prefix_switch/content/options.xul",
-      "open_in_tab": false
-    }
-  },
   "applications": {
     "gecko": {
       "id": "{957509b1-217a-46c7-b08b-f67d08d53883}",
-      "strict_min_version": "68.1.0"
+      "strict_min_version": "78.0",
+      "strict_max_version": "83.0"
     }
   },
   "icons": {
     "16": "icons/sub_switch216.png",
     "24": "icons/sub_switch224.png",
     "32": "icons/sub_switch232.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
+    }
   }
 }

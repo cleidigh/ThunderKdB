@@ -54,8 +54,8 @@
 }
 
 #searchResultConv > .prplBuddyIcon > .protoIcon {
-  list-style-image: url("./icons/mail-toolbar-small.png");
-  -moz-image-region: rect(0px 368px 16px 352px);
+  list-style-image: url("./icons/Search-glass.png");
+  -moz-image-region: rect(0, 16px, 16px, 0);
 }
 
 #logTree,
@@ -71,31 +71,37 @@
 
 /* Toolbar icons */
 
-#chat-toolbar,
-#chat-toobar {
-  padding: 1px 3px;
+#chat-toolbar {
+  padding: 0px 3px;
 }
 
-#chat-toolbar .toolbarbutton-1 .toolbarbutton-icon,
-#chat-toobar .toolbarbutton-1 .toolbarbutton-icon {
-  width: 24px;
-  height: 24px;
+@media (-moz-os-version: windows-win7),
+       (-moz-os-version: windows-win8),
+       (-moz-os-version: windows-win10) {
+  #chat-toolbar {
+    padding: 1px 4px;
+  }
 }
 
-#chat-toolbar #button-chat-appmenu .toolbarbutton-icon,
-#chat-toobar #button-chat-appmenu .toolbarbutton-icon {
-  padding: 0px;
+#chat-toolbar[iconsize="small"] {
+  padding: 0px 2px;
 }
 
-#chat-toolbar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
-#chat-toobar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
+#chat-toolbar .toolbarbutton-1 .toolbarbutton-icon {
+  padding: 2px;
+}
+
+#chat-toolbar #button-chat-appmenu .toolbarbutton-icon  {
+  padding: 1px;
+}
+
+#chat-toolbar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon ,
 #statusTypeIcon.toolbarbutton-1 > .toolbarbutton-icon {
   width: 18px;
   height: 18px;
 }
 
-#chat-toolbar[iconsize="small"] #button-chat-appmenu .toolbarbutton-icon,
-#chat-toobar[iconsize="small"] #button-chat-appmenu .toolbarbutton-icon {
+#chat-toolbar[iconsize="small"] #button-chat-appmenu .toolbarbutton-icon {
   padding: 1px;
   margin: -1px;
 }
@@ -109,26 +115,24 @@
   -moz-image-region: rect(0px 22px 22px 0px);
 }
 
-#button-join-chat {
-  list-style-image: url("./icons/chat-toolbar.png");
-  -moz-image-region: rect(0px 44px 22px 22px);
-}
-
-#button-chat-accounts {
-  list-style-image: url("./icons/chat-toolbar.png");
-  -moz-image-region: rect(0px 66px 22px 44px);
-}
-
-/* Small toolbar icons */
-
 toolbar[iconsize="small"] #button-add-buddy {
   list-style-image: url("./icons/chat-toolbar-small.png");
   -moz-image-region: rect(0px 16px 16px 0px);
 }
 
+#button-join-chat {
+  list-style-image: url("./icons/chat-toolbar.png");
+  -moz-image-region: rect(0px 44px 22px 22px);
+}
+
 toolbar[iconsize="small"] #button-join-chat {
   list-style-image: url("./icons/chat-toolbar-small.png");
   -moz-image-region: rect(0px 32px 16px 16px);
+}
+
+#button-chat-accounts {
+  list-style-image: url("./icons/chat-toolbar.png");
+  -moz-image-region: rect(0px 66px 22px 44px);
 }
 
 toolbar[iconsize="small"] #button-chat-accounts {
@@ -198,6 +202,5 @@ toolbar[mode="text"] #statusTypeIcon .toolbarbutton-icon {
 
 .tabmail-tab[type="chat"],
 .alltabs-item[type="chat"] {
-  list-style-image: url("./icons/mail-toolbar-small.png");
-  -moz-image-region: rect(0px 320px 16px 304px);
+  list-style-image: url("./chat/chat-16.png");
 }

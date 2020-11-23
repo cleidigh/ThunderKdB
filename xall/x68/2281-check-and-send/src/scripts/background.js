@@ -51,36 +51,150 @@ var default_prefs = {
   dayDef: [],
   checkDay: [],
   checkInvalidDate: false,
-  alwaysPopup: true
+  alwaysPopup: true,
+  expandMailLists: true
 };
 
 async function init() {
   browser.composeAction.disable();
   await loadPrefsForCommon();
 }
-init();
+
+async function performChecking(tabId) {
+  let errCnt = 0;
+  initWarnings();
+  let details = await browser.compose.getComposeDetails(tabId);
+  await loadPrefsForCurrentIdentity(details.identityId);
+
+  if (prefs.expandMailLists) details = await expandMailLists(details);
+
+  errCnt += await checkIdentity(details);
+  errCnt += await checkAttachments(tabId);
+  errCnt += await checkWords(details);
+  errCnt += await checkRecipientNames(details);
+  errCnt += checkRecipientType(details);
+  errCnt += checkDuplicatedRecipients(details);
+  errCnt += await checkAddress(details);
+  errCnt += await checkDayDate(details);
+
+  let inSendSession = promiseMap.get(tabId) ? true : false;
+  let obj = {
+    message: "SEND_WARNINGS",
+    warnings: warnings,
+    session: inSendSession,
+    confirmation: (errCnt > 0 || prefs["alwaysPopup"])
+  };
+
+  return obj;
+}
+
+async function correctAndResumeSending(message) {
+  let beforeSendResolve = promiseMap.get(message.tabId);
+  if (beforeSendResolve) {
+    if (message.confirmed) {
+      let newDetails = [];
+      if (Object.keys(message.warnings).length > 0) { //length == 0 means no warning and no popup
+        warnings = message.warnings; //update warning info by user changes
+        newDetails = await applyRecipientChanges(message.tabId);
+      }
+
+      browser.composeAction.disable(message.tabId);
+
+      beforeSendResolve({
+        cancel: false,
+        details: newDetails
+      });
+    } else {
+      browser.composeAction.enable(message.tabId); //if missing, toolbar button is grayed out but enable. it is W.A.
+
+      beforeSendResolve({
+        cancel: true
+      });
+    }
+
+    promiseMap.delete(message.tabId);
+  }
+
+  return true;
+}
+
+async function getIDsAndABs() {
+  let ids = await getIdentities();
+  let abs = await getAddressBooks();
+  let obj = {
+    message: "SEND_IDS_AND_ABS",
+    identities: ids,
+    addressbooks: abs
+  };
+
+  return obj;
+}
+
+browser.runtime.onMessage.addListener(message => {
+  let aPromise = null;
+  switch (message.message) {
+    case "GET_IDS_AND_ABS":
+      aPromise = getIDsAndABs().then((obj) => {
+        return obj;
+      });
+      
+      /* Test code for promise reject */
+      //aPromise = Promise.reject(new Error('For test'));
+      
+      break;
+    case "GET_WARNINGS":
+      aPromise = performChecking(message.tabId).then((obj) => {
+        return obj;
+      });
+      break;
+    case "USER_CHECKED":
+      aPromise = correctAndResumeSending(message).then((obj) => {
+        return obj;
+      });
+      break;
+    default:
+      aPromise = Promise.resolve(true);
+      break;
+  }
+
+  return aPromise;
+});
+
+browser.storage.onChanged.addListener((changes, area) => {
+  for (let item in changes) {
+    let re = item.match(/cas_(.+)_mode/);
+    if (re) {
+      let id = re[1];
+      loadCASModeForIdentity(id, changes[item].newValue);
+    }
+  }
+});
 
 browser.compose.onBeforeSend.addListener((tab, details) => {
   let tabId = tab.id;
   let id = details.identityId;
 
-  if (cas_modes[id] != null) {
+  let aPromise = new Promise(resolve => {
+    promiseMap.set(tabId, resolve);
+  });
+
+  let check_mode = cas_modes[id] == "cas_common" ? cas_modes["common"] : cas_modes[id];
+  if (check_mode != null) {
     browser.composeAction.enable(tabId);
     browser.composeAction.openPopup();
-  } else {
-    setTimeout(() => {
-      let resolve = promiseMap.get(tabId);
-      if (resolve) {
-        resolve();
-      }
-    }, 100);
+  } else { //check is disabled
+    let resolve = promiseMap.get(tabId);
+    if (resolve) {
+      resolve({
+        cancel: false,
+      });
+      promiseMap.delete(tabId);
+    }
   }
 
   // Do NOT lose this Promise. Most of the compose window UI will be locked
   // until it is resolved. That's a very good way to annoy users.
-  return new Promise(resolve => {
-    promiseMap.set(tabId, resolve);
-  });
+  return aPromise;
 });
 
 function initWarnings() {
@@ -118,20 +232,25 @@ function initWarnings() {
 
 async function loadCASModes() {
   let ids = await getIdentities();
+  ids["common"] = "common";
 
   for (let id in ids) {
     let mode = "cas_" + id + "_mode";
     let result = await browser.storage.local.get(mode);
     let modeVal = result[mode];
-    if (modeVal == 0) {
-      cas_modes[id] = "cas_common";
-    } else if (modeVal == 1) {
-      cas_modes[id] = "cas_" + id;
-    } else if (modeVal == 2) {
-      cas_modes[id] = null; //no check
-    } else { //mode is not defined for the id
-      cas_modes[id] = "cas_common"; //use common
-    }
+    loadCASModeForIdentity(id, modeVal);
+  }
+}
+
+function loadCASModeForIdentity(id, modeVal) {
+  if (modeVal == 0) {
+    cas_modes[id] = "cas_common";
+  } else if (modeVal == 1) {
+    cas_modes[id] = "cas_" + id;
+  } else if (modeVal == 2) {
+    cas_modes[id] = null; //no check
+  } else { //mode is not defined for the id
+    cas_modes[id] = "cas_common"; //use common
   }
 }
 
@@ -153,7 +272,7 @@ async function loadPrefsForCurrentIdentity(id) {
       //set mode for id as use common
       let obj = {}
       let mode = "cas_" + id + "_mode";
-      obj[mode] = 0;
+      obj[mode] = 1;
       await browser.storage.local.set(obj);
 
       //save default prefs as common
@@ -175,82 +294,67 @@ function checkNewPrefs() {
   }
 }
 
-browser.runtime.onMessage.addListener(async message => {
-  switch (message.message) {
-    case "GET_IDS_AND_ABS":
-      let ids = await getIdentities();
-      let abs = await getAddressBooks();
-      browser.runtime.sendMessage({
-        message: "SEND_IDS_AND_ABS",
-        identities: ids,
-        addressbooks: abs
-      });
-      break;
-    case "GET_WARNINGS":
-      let errCnt = 0;
-      initWarnings();
-      let details = await browser.compose.getComposeDetails(message.tabId);
-      await loadPrefsForCurrentIdentity(details.identityId);
-
-      errCnt += await checkIdentity(details);
-      errCnt += await checkAttachments(message.tabId);
-      errCnt += await checkWords(details);
-      errCnt += await checkRecipientNames(details);
-      errCnt += checkRecipientType(details);
-      errCnt += checkDuplicatedRecipients(details);
-      errCnt += await checkAddress(details);
-      errCnt += await checkDayDate(details);
-      
-      let warnParam = (errCnt > 0 || prefs["alwaysPopup"]) ? warnings : [];
-
-      let inSendSession = promiseMap.get(message.tabId) ? true : false;
-
-      browser.runtime.sendMessage({
-        message: "SEND_WARNINGS",
-        warnings: warnParam,
-        session: inSendSession
-      });
-      break;
-    case "USER_CHECKED":
-      let resolve = promiseMap.get(message.tabId);
-      if (!resolve) {
-        break;
-      }
-
-      if (message.confirmed) {
-        let newDetails = [];
-        if (Object.keys(message.warnings).length > 0) { //length == 0 means no warning and no popup
-          warnings = message.warnings; //update warning info by user changes
-          newDetails = await applyRecipientChanges(message.tabId);
-        }
-        
-        browser.composeAction.disable(message.tabId);
-
-        resolve({
-          cancel: false,
-          details: newDetails
-        });
-      } else {
-        browser.composeAction.enable(message.tabId); //if missing, toolbar button is grayed out but enable. it is W.A.
-
-        resolve({
-          cancel: true
-        });
-      }
-
-      promiseMap.delete(message.tabId);
-
-      break;
-    default:
-      break;
+async function expandMailLists(details) {
+  let abooks = await browser.addressBooks.list(true); //get address books with maillists included
+  let mailLists = {};
+  for (let i = 0; i < abooks.length; i++) {
+    let abook = abooks[i];
+    for (let j = 0; j < abook.mailingLists.length; j++) {
+      mailLists[abook.mailingLists[j].name] = abook.mailingLists[j];
+    }
   }
-});
+
+  details.to = expandMailListMain(details.to, mailLists);
+  details.cc = expandMailListMain(details.cc, mailLists);
+  details.bcc = expandMailListMain(details.bcc, mailLists);
+  details.replyTo = expandMailListMain(details.replyTo, mailLists);
+
+  return details;
+}
+
+function expandMailListMain(recipients, mailLists) {
+  let ret = [];
+  for (let i = 0; i < recipients.length; i++) {
+    let contact = recipients[i];
+    if (contact.indexOf("@") < 0) { //maillist
+      let re = contact.match(/(.+) <.+>/); //maillist is represented as "list name <nick name>"
+      let listName = "";
+      if (re) {
+        listName = re[1];
+      } else { //just address
+        listName = contact;
+      }
+
+      let mailList = mailLists[listName];
+      if (mailList) {
+        for (let j = 0; j < mailList.contacts.length; j++) {
+          let child = mailList.contacts[j];
+          let addr = child.properties.PrimaryEmail ? child.properties.PrimaryEmail : child.properties.SecondEmail;
+          let name = child.properties.DisplayName;
+
+          if (name && addr) {
+            ret.push(name + " <" + addr + ">");
+          } else if (addr) {
+            ret.push(addr);
+          } else {
+            //what is this?
+          }
+        }
+      } else {
+        ret.push(contact);
+      }
+    } else { //address
+      ret.push(contact);
+    }
+  }
+
+  return ret;
+}
 
 async function getIdentities() {
   let accounts = await browser.accounts.list();
   let work = []; //already added identities
   let ret = [];
-
   for (let i = 0; i < accounts.length; i++) {
     let acc = accounts[i];
     let ids = acc.identities;
@@ -308,6 +412,9 @@ async function checkIdentity(details) {
 
 async function applyRecipientChanges(tabId) {
   let details = await browser.compose.getComposeDetails(tabId);
+
+  if (prefs.expandMailLists) details = await expandMailLists(details);
+
   let to = details.to;
   let cc = details.cc;
   let bcc = details.bcc;
@@ -430,7 +537,7 @@ async function checkAttachments(tabId) {
   let exts = prefs.attachExts;
   let sizeLimit = prefs.attachSizeLimit; //Mega Bytes
   let blacklistCheck = prefs.attachBlacklistCheck;
-  
+
   if (sizeLimit == 0 && !prefs.attachExtCheckEnable) {
     return 0;
   }
@@ -719,12 +826,24 @@ async function getRecipientNameCandidates(addrList, correct, removeNotInAb, addr
     if (contact.indexOf("@") < 0) { //maybe maillist
       continue;
     }
-    let re = contact.match(/(.+) <(\S+)>/);
-    if (re) {
-      let oldName = re[1];
-      let addr = re[2];
+    
+    let re = null;
+    let oldName = null;
+    let addr = null;
+    if (re = contact.match(/(.+) <(\S+)>/)) {
+      oldName = re[1];
+      addr = re[2];
+    } else if (re = contact.match(/(\S+@\S+)/)) {
+      /*
+      Address without name. If user input address without name but wrapped by <>,
+      the <> are removed by Thunderbird. So, the case will be in here too.
+      */
+      oldName = "";
+      addr = re[1];
+    }
+    
+    if (addr) {
       if (correct) {
-        //let contactNodes = await browser.contacts.quickSearch(addr);
         let contactNodes = await quickSearch(addrBooks, addr);
         let found = false;
         for (let j = 0; j < contactNodes.length; j++) {
@@ -952,7 +1071,7 @@ function popupAllAddresses(list) {
     let addr = list[i];
     let noreply = (addr.split("@")[0].indexOf("noreply") >= 0) || (addr.split("@")[0].indexOf("no-reply") >= 0);
     result.push({
-      address: list[i],
+      address: addr,
       index: i,
       abookError: true,
       listError: true,
@@ -1142,4 +1261,4 @@ function searchDateDefinition(def, key) {
   return index;
 }
 
-
+init();

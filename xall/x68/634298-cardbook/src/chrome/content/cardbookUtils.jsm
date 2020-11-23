@@ -515,7 +515,9 @@ var cardbookUtils = {
 		vCardData = this.appendToVcardData2(vCardData,"VERSION",false,vCard.version);
 		vCardData = this.appendToVcardData2(vCardData,"PRODID",false,vCard.prodid);
 		vCardData = this.appendToVcardData2(vCardData,"UID",false,vCard.uid);
-		vCardData = this.appendToVcardData2(vCardData,"CATEGORIES",false,this.unescapeArrayComma(this.escapeArrayComma(vCard.categories)).join(","));
+		if (cardbookRepository.cardbookPreferences.getType(vCard.dirPrefId) != "GOOGLE") {
+			vCardData = this.appendToVcardData2(vCardData,"CATEGORIES",false,this.unescapeArrayComma(this.escapeArrayComma(vCard.categories)).join(","));
+		}
 		// FN required
 		if (vCard.fn == "") {
 			vCardData = vCardData + "FN:" + "\r\n";
@@ -569,6 +571,9 @@ var cardbookUtils = {
 		vCardData = this.appendToVcardData3(vCardData,"LOGO",cardbookUtils.getMediaContentForCard(vCard, "logo", aMediaConversion));
 		vCardData = this.appendToVcardData3(vCardData,"SOUND",cardbookUtils.getMediaContentForCard(vCard, "sound", aMediaConversion));
 		
+		if (cardbookRepository.cardbookPreferences.getType(vCard.dirPrefId) == "GOOGLE") {
+			vCardData = this.appendToVcardData2(vCardData,"X-CATEGORIES",false,this.unescapeArrayComma(this.escapeArrayComma(vCard.categories)).join(","));
+		}
 		for (let i = 0; i < vCard.others.length; i++) {
 			vCardData = this.appendToVcardData2(vCardData,"",false,vCard.others[i]);
 		}

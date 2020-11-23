@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script type="module" src="/options/init.js"></script>
+    <link rel="stylesheet" type="text/css" href="options.css"/>
+    <title>__MSG_config_title__</title>
+  </head>
+  <body>
+    <section>
+    <h1>__MSG_config_recipients_caption__</h1>
+
+    <fieldset>
+      <legend>__MSG_config_confirmationMode_caption__</legend>
+      <ul>
+        <li><label><input name="confirmationMode" type="radio" value="1">__MSG_config_confirmationMode_always_label__</label></li>
+        <li><label><input name="confirmationMode" type="radio" value="2">__MSG_config_confirmationMode_onModified_label__</label></li>
+        <li><label><input name="confirmationMode" type="radio" value="0">__MSG_config_confirmationMode_never_label__</label></li>
+      </ul>
+    </fieldset>
+
+    <fieldset>
+      <legend>__MSG_config_internalDomains_caption__</legend>
+      <textarea id="internalDomainsField"
+                class="array-type-config"
+                data-array-config-key="internalDomains"
+                placeholder="__MSG_config_internalDomains_input_placeholder__"></textarea>
+    </fieldset>
+
+    <p><label><input id="skipConfirmationForInternalMail" type="checkbox">__MSG_config_skipConfirmationForInternalMail_label__</label></p>
+    <p><label>__MSG_config_minConfirmationRecipientsCount_label_before__
+                <input id="minConfirmationRecipientsCount" type="number" size="4">
+                __MSG_config_minConfirmationRecipientsCount_label_after__</label></p>
+    <p><label><input id="confirmMultipleRecipientDomains" type="checkbox">__MSG_config_confirmMultipleRecipientDomains_label__</label></p>
+
+    <hr class="spacer">
+
+    <p><label><input id="allowCheckAllInternals" type="checkbox">__MSG_config_allowCheckAllInternals_label__</label></p>
+    <p><label><input id="allowCheckAllExternals" type="checkbox">__MSG_config_allowCheckAllExternals_label__</label></p>
+    </section>
+
+    <section>
+    <h1>__MSG_config_attentionDomains_caption__</h1>
+
+    <fieldset>
+      <legend>__MSG_config_attentionDomainsSource_caption__</legend>
+      <ul>
+        <li><label><input name="attentionDomainsSource" type="radio" value="0">__MSG_config_attentionDomains_label__</label>
+            <textarea id="attentionDomainsField"
+                      class="array-type-config"
+                      data-array-config-key="attentionDomains"
+                      placeholder="__MSG_config_attentionDomains_input_placeholder__"></textarea>
+            </li>
+        <li><label class="require-native-messaging-host"
+                  ><input name="attentionDomainsSource" type="radio" value="1">__MSG_config_attentionDomainsFile_label__</label>
+            <br><label class="require-native-messaging-host"
+                      ><input id="attentionDomainsFile"
+                              class="filepath"
+                              type="text"
+                              placeholder="__MSG_config_attentionDomainsFile_input_placeholder__"></label></li>
+      </ul>
+    </fieldset>
+
+    <fieldset>
+      <legend>__MSG_config_attentionDomainsHighlightMode_caption__</legend>
+      <ul>
+        <li><label><input name="attentionDomainsHighlightMode" type="radio" value="1">__MSG_config_attentionDomainsHighlightMode_always_label__</label></li>
+        <li><label><input name="attentionDomainsHighlightMode" type="radio" value="2">__MSG_config_attentionDomainsHighlightMode_withAttachments_label__</label></li>
+        <li><label><input name="attentionDomainsHighlightMode" type="radio" value="0">__MSG_config_attentionDomainsHighlightMode_never_label__</label></li>
+      </ul>
+    </fieldset>
+
+    <fieldset>
+      <legend>__MSG_config_attentionDomainsConfirmationMode_caption__</legend>
+      <ul>
+        <li><label><input name="attentionDomainsConfirmationMode" type="radio" value="1">__MSG_config_attentionDomainsConfirmationMode_always_label__</label></li>
+        <li><label><input name="attentionDomainsConfirmationMode" type="radio" value="2">__MSG_config_attentionDomainsConfirmationMode_withAttachments_label__</label></li>
+        <li><label><input name="attentionDomainsConfirmationMode" type="radio" value="0">__MSG_config_attentionDomainsConfirmationMode_never_label__</label></li>
+      </ul>
+    </fieldset>
+
+
+    <section>
+    <h1>__MSG_config_attachments_caption__</h1>
+
+    <p><label><input id="requireCheckAttachment" type="checkbox">__MSG_config_requireCheckAttachment_label__</label></p>
+
+    <fieldset>
+      <legend><label><input id="attentionSuffixesConfirm" type="checkbox">__MSG_config_attentionSuffixesConfirm_label__</label></legend>
+      <ul>
+        <li><label><input name="attentionSuffixesSource" type="radio" value="0">__MSG_config_attentionSuffixes_label__</label>
+            <textarea id="attentionSuffixesField"
+                      class="array-type-config"
+                      data-array-config-key="attentionSuffixes"
+                      placeholder="__MSG_config_attentionSuffixes_input_placeholder__"></textarea>
+            </li>
+        <li><label class="require-native-messaging-host"
+                  ><input name="attentionSuffixesSource" type="radio" value="1">__MSG_config_attentionSuffixesFile_label__</label>
+            <br><label class="require-native-messaging-host"
+                      ><input id="attentionSuffixesFile"
+                              class="filepath"
+                              type="text"
+                              placeholder="__MSG_config_attentionSuffixesFile_input_placeholder__"></label></li>
+      </ul>
+    </fieldset>
+
+    <fieldset>
+      <legend><label><input id="attentionTermsConfirm" type="checkbox">__MSG_config_attentionTermsConfirm_label__</label></legend>
+      <ul>
+        <li><label><input name="attentionTermsSource" type="radio" value="0">__MSG_config_attentionTerms_label__</label>
+            <textarea id="attentionTermsField"
+                      class="array-type-config"
+                      data-array-config-key="attentionTerms"
+                      placeholder="__MSG_config_attentionTerms_input_placeholder__"></textarea>
+            </li>
+        <li><label class="require-native-messaging-host"
+                  ><input name="attentionTermsSource" type="radio" value="1">__MSG_config_attentionTermsFile_label__</label>
+            <br><label class="require-native-messaging-host"
+                      ><input id="attentionTermsFile"
+                              class="filepath"
+                              type="text"
+                              placeholder="__MSG_config_attentionTermsFile_input_placeholder__"></label></li>
+      </ul>
+    </fieldset>
+
+    <p><label><input id="requireReinputAttachmentNames" type="checkbox">__MSG_config_requireReinputAttachmentNames_label__</label></p>
+
+    <hr class="spacer">
+
+    <p><label><input id="allowCheckAllAttachments" type="checkbox">__MSG_config_allowCheckAllAttachments_label__</label></p>
+    </section>
+
+
+    <section>
+    <h1>__MSG_config_misc_caption__</h1>
+
+    <p><label><input id="showCountdown" type="checkbox">__MSG_config_showCountdown_label__</label>
+       <label><input id="countdownSeconds" type="number" size="5" min="1" max="3000">
+              __MSG_config_countdownSeconds_label__</label></p>
+    <p><label><input id="countdownAllowSkip" type="checkbox">__MSG_config_countdownAllowSkip_label__</label></p>
+
+    <hr class="spacer">
+
+    <p><label><input id="requireCheckSubject" type="checkbox">__MSG_config_requireCheckSubject_label__</label></p>
+    <p><label><input id="requireCheckBody" type="checkbox">__MSG_config_requireCheckBody_label__</label></p>
+
+    <hr class="spacer">
+
+    <p><label><input id="highlightExternalDomains" type="checkbox">__MSG_config_highlightExternalDomains_label__</label></p>
+    <p><label><input id="largeFontSizeForAddresses" type="checkbox">__MSG_config_largeFontSizeForAddresses_label__</label></p>
+    <p><label><input id="alwaysLargeDialog" type="checkbox">__MSG_config_alwaysLargeDialog_label__</label></p>
+    <p><label>__MSG_config_topMessage_label__
+              <input id="topMessage" type="text"></label></p>
+    <p class="sub"><label><input id="emphasizeTopMessage" type="checkbox">__MSG_config_emphasizeTopMessage_label__</label></p>
+    <p><label><input id="emphasizeRecipientType" type="checkbox">__MSG_config_emphasizeRecipientType_label__</label></p>
+    </section>
+
+
+    <section>
+    <h1>__MSG_config_debug_caption__</h1>
+    <p><label><input id="debug"
+                     type="checkbox">
+             __MSG_config_debug_label__</label></p>
+    <div id="debug-configs">
+      <h2>__MSG_config_all_caption__</h2>
+    </div>
+    </section>
+  </body>
+</html>

@@ -1,20 +1,51 @@
-if ("undefined" == typeof(ovl_list)) {
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
-	var ovl_list = {
-		expandRecipientsFromCardBook: function () {
-			var myFields = window.gMsgCompose.compFields;
-			var listToCollect = ["to", "cc", "bcc"];
-			for (var i = 0; i < listToCollect.length; i++) {
-				if (myFields[listToCollect[i]]) {
-					if (myFields[listToCollect[i]]) {
-						var myConversion = new cardbookListConversion(myFields[listToCollect[i]], window.gMsgCompose.identity.key);
-						myFields[listToCollect[i]] = cardbookRepository.arrayUnique(myConversion.emailResult).join(", ");
-					}
+var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+var { MimeParser } = ChromeUtils.import("resource:///modules/mimeParser.jsm");
+
+var ovl_list = {
+	expandRecipientsFromCardBook: function () {
+		var myFields = window.gMsgCompose.compFields;
+		for (let field of ["to", "cc", "bcc"]) {
+			if (myFields[field]) {
+				if (myFields[field]) {
+					var myConversion = new cardbookListConversion(myFields[field], window.gMsgCompose.identity.key);
+					myFields[field] = cardbookRepository.arrayUnique(myConversion.emailResult).join(", ");
 				}
 			}
 		}
-	};
+	},
+
+	doesListExist: function (aName) {
+		for (let j in cardbookRepository.cardbookCards) {
+			var myCard = cardbookRepository.cardbookCards[j];
+			if (myCard.isAList && myCard.fn == aName) {
+				return true;
+			}
+		}
+		return false;
+	},
+
+	mailListNameExists: function () {
+		var result = false;
+		const addressRows = [ "toAddrContainer", "ccAddrContainer", "bccAddrContainer", "newsgroupsAddrContainer" ];
+		
+		for (let parentID of addressRows) {
+			let parent = document.getElementById(parentID);
+			if (!parent) {
+				continue;
+			}
+			for (let address of parent.querySelectorAll(".address-pill")) {
+				let listNames = MimeParser.parseHeaderField(address.fullAddress, MimeParser.HEADER_ADDRESS);
+				let isMailingList = listNames.length > 0 && ovl_list.doesListExist(listNames[0].name);
+				if (isValidAddress(address.emailAddress) || isMailingList || address.emailInput.classList.contains("news-input")) {
+					// remove the error attribute
+					address.setAttribute("class", "address-pill");
+				} else {
+					result = true;
+				}
+			}
+		}
+		gSendLocked = result;
+	}
 };
 
 // expandRecipients
@@ -44,18 +75,10 @@ if ("undefined" == typeof(ovl_list)) {
 	// Override a function.
 	updateSendLock = function() {
 		// Execute original function.
-		// var rv = _original.apply(null, arguments);
+		var rv = _original.apply(null, arguments);
 		
 		// Execute some action afterwards.
-		// if (!gSendLocked) {
-		// 	let inputValue = awGetInputElement(row).value.trim();
-		// 	ovl_list.mailListNameExistsInCardBook(inputValue.replace(/ *<.*>/, ""));
-		// }
-		//
-		// return the original result
-		gSendLocked = false;
-		// return rv;
+		ovl_list.mailListNameExists();
 	};
 
 })();
-

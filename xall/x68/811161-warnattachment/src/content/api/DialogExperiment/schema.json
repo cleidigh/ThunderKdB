@@ -1,0 +1,48 @@
+[
+  {
+    "namespace": "DialogExperiment",
+    "functions": [
+      {
+        "name": "getWarningDialog",
+        "type": "function",
+        "description": "Returns a warning dialog.",
+        "async": true,
+        "parameters": [
+          {
+            "name": "title",
+            "type": "string",
+            "description": "The title of the dialog"
+          },{
+            "name": "text",
+            "type": "string",
+            "description": "The message text"
+          },{
+            "name": "checkboxhint",
+            "type": "string",
+            "description": "The hint for the checkbox"
+          }
+        ],
+        "returns" : {
+            "type":"boolean",
+            "description": "true: open the file"
+        }
+      },{
+        "name": "getBlockingDialog",
+        "type": "function",
+        "description": "Returns a blocking message dialog",
+        "async": true,
+        "parameters": [
+          {
+            "name": "title",
+            "type": "string",
+            "description": "The title of the dialog"
+          },{
+            "name": "text",
+            "type": "string",
+            "description": "The message text"
+          }
+        ]
+      }
+    ]
+  }
+]

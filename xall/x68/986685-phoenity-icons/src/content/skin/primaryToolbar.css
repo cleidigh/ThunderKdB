@@ -8,8 +8,7 @@
 /* ===== primaryToolbar.css ===== */
 
 .mail-toolbox > #mail-bar3 {
-  padding-inline-start: 3px;
-  padding-inline-end: 3px;
+  padding: 0px 3px;
 }
 
 .chromeclass-toolbar toolbarseparator:-moz-lwtheme {
@@ -64,6 +63,11 @@
   #folderPane-toolbar > toolbaritem > menulist {
     margin-bottom: 1px;
   }
+}
+
+/* restore the small icons checkbox in Customize window */
+#smallicons {
+  display: initial;
 }
 
 /* ::::: primary toolbar buttons ::::: */
@@ -258,6 +262,11 @@ toolbar[mode="text"] .button-appmenu .toolbarbutton-icon {
   list-style-image: url("./icons/button-addons.png");
 }
 
+#attachmentSaveAllSingle,
+#attachmentSaveAllMultiple {
+  list-style-image: url("./icons/attachment-save.png");
+}
+
 /* ::::: small primary toolbar buttons ::::: */
 
 toolbar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
@@ -269,8 +278,17 @@ toolbar[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon,
   height: 18px;
 }
 
+#mail-bar3[iconsize="small"] .toolbarbutton-1 .toolbarbutton-icon {
+  min-width: 18px;
+  min-height: 18px;
+}
+
 #quick-filter-bar-expando .toolbarbutton-1 .toolbarbutton-icon {
   display: none;
+}
+
+toolbar[iconsize="small"] .button-appmenu {
+  list-style-image: url("./icons/button-appmenu-small.png");
 }
 
 /* ::::: end small primary toolbar buttons ::::: */

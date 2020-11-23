@@ -1,0 +1,229 @@
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+@import url(/resources/ui-color.css);
+@import url(/extlib/dialog.css);
+
+:root.debug .row {
+  border: 1px dotted blue;
+}
+:root.debug .column {
+  border: 1px dotted red;
+}
+:root.debug .column * {
+  border: 1px dotted green;
+}
+
+
+div > label,
+p > label,
+legend > label {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.flex-box {
+  overflow-y: auto;
+}
+
+#internalsContainer,
+#externalsContainer,
+#attachmentsContainer {
+  min-height: 2em;
+}
+
+.listbox,
+iframe {
+  min-height: 4em;
+}
+
+iframe {
+  border: 1px solid var(--in-content-box-border-color);
+}
+
+hr.splitter {
+  border: none;
+  cursor: row-resize;
+  height: 0.25em;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+
+.listbox {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  white-space: nowrap;
+}
+
+.listbox .row {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.listbox .row:hover,
+.listbox .row.domain:hover {
+  background: var(--in-content-box-background-hover);
+}
+
+.listbox .column,
+.listbox .column > * {
+  align-items: center;
+  display: flex;
+  vertical-align: middle;
+}
+
+.listbox .column.flexible {
+  flex-grow: 1;
+  flex-shrink: 1;
+  position: relative;
+}
+
+/* placeholder for the cell */
+.listbox .column.flexible::after {
+  content: " ";
+}
+
+.listbox .column.flexible > * {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.listbox .column.flexible > .flexible-container > *:not(input) {
+  line-height: 1.25;
+  /* We need to specify these properties instead of the flexible-container because text-overflow doesn't work for display:flex elements. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* recipient type column */
+.listbox .row.recipient .column:nth-child(2),
+.listbox .row.recipient .column:nth-child(2) {
+  padding-left: 0.25em;
+  width: 3em;
+}
+
+.listbox .row.domain {
+  background: var(--bg-color);
+  min-height: 1.5em;
+  left: 0;
+  line-height: 1.5;
+  position: sticky;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.listbox .row.domain::before {
+  background: var(--grey-90-a10);
+  content: " ";
+  display: inline-block;
+  height: 1em;
+  margin: 0.25em 0.25em 0.25em 0;
+  mask: url("/resources/domain-unchecked.svg") no-repeat center / 100%;
+  width: 1em;
+}
+
+.listbox .row.domain.checked::before {
+  background-color: var(--orange-50);
+  mask-image: url("/resources/domain-checked.svg");
+}
+
+.listbox#externals .row.recipient {
+  padding-left: 1em;
+}
+
+.listbox#attachments .column.flexible .flexible-container span {
+  padding-left: 0.5em;
+}
+
+:root.highlight-attention-domains .listbox#externals .row.attention,
+.listbox#attachments .row.attention {
+  color: red;
+  font-weight bold;
+}
+
+
+:root.large-font-size-for-addresses .listbox .row.recipient,
+:root.large-font-size-for-addresses .listbox .row.recipient {
+  font-size: 120%;
+}
+
+:root.highlight-external-domains .listbox#externals .row.domain {
+  font-size: 125%;
+}
+:root.large-font-size-for-addresses.highlight-external-domains .listbox#externals .row.domain {
+  font-size: 160%;
+}
+
+:root.highlight-external-domains.highlight-attention-domains .listbox#externals .row.attention label {
+  text-shadow: 0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color),
+               0 0 5px var(--text-shadow-color);
+}
+
+:root.highlight-external-domains .listbox#externals .row.recipient.domain-even label {
+  --text-shadow-color: rgb(255, 230, 172);
+  background: rgb(255, 192, 0);
+}
+:root.highlight-external-domains .listbox#externals .row.recipient.domain-even:hover label {
+  background: rgba(255, 192, 0, 0.5);
+}
+/*
+:root.highlight-external-domains .listbox#externals:not(:focus) .row.recipient.domain-even label {
+  background: rgb(198, 156, 27);
+}
+*/
+
+:root.highlight-external-domains .listbox#externals .row.recipient.domain-odd label {
+  --text-shadow-color: rgb(220, 240, 252);
+  background: rgb(70, 170, 252);
+}
+:root.highlight-external-domains .listbox#externals .row.recipient.domain-odd:hover label {
+  background: rgba(70, 170, 252, 0.5);
+}
+/*
+:root.highlight-external-domains .listbox#externals:not(:focus) .row.recipient.domain-odd label {
+  background: rgb(72, 146, 206);
+}
+*/
+
+:root.emphasize-recipient-type .listbox .row.recipient .column:first-of-type {
+  font-weight:  bold;
+  font-size: 150%;
+}
+
+
+:root.emphasize-top-message #top-message {
+    color: red;
+    font-size: 160%;
+}

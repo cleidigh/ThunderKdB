@@ -1,6 +1,5 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 var cardBookWindowPrefObserver = {
 	register: function() {
@@ -119,6 +118,21 @@ var cardsTreeMutationObserver = {
 			attributes: true,
 			subtree: true,
 			attributeFilter: ["sortDirection", "sortResource"]
+		});
+	}
+};
+
+var cardboookModeMutationObserver = {
+	register: function() {
+		var observer = new MutationObserver(function handleMutations(mutations) {
+			if (document.getElementById("cardboookModeBroadcasterTab")) {
+				cardbookRepository.cardbookUtils.notifyObservers(document.getElementById("cardboookModeBroadcasterTab").getAttribute("mode") + "Mode");
+			}
+		});
+		observer.observe(document.getElementById("cardboookModeBroadcasterTab"), {
+			attributes: true,
+			subtree: true,
+			attributeFilter: ["mode"]
 		});
 	}
 };

@@ -100,6 +100,7 @@ debug('entered appstart='+appstarttime+' syncstate='+syncstate);
   donecount=0;
   gSingleBook=singleBook;
   gMabs=syncedAddressbooks('down', singleBook);
+  gTempName=new Array();
   if (synctype=='local') {
     cleanUp=localDownloadDone;
     getLocalData();
@@ -300,13 +301,19 @@ function downloadCallback(aStatus, aError, httpStatusText) {
       let s0=gDownloadService.remoteLastModTime?
         'lastMod remote: '+timeString(gDownloadService.remoteLastModTime*1000)
 //        :null;
-        :'lastMod remote: none found';
+        :'lastMod remote: none found or not checked';
       statustxt(".", 0, false, null, s0); // 4. dot: download complete
       try {
         let abData=gDownloadService.data;
 				if (abData.substr( 0, 6 ) == 'SQLite') {
-					gTempName='abstemp.sqlite';	//for automatic deletion!
-					let tmpFile = FileUtils.getFile("TmpD", [gTempName]);
+					let tmpFile = FileUtils.getFile("TmpD", ['abstemp.sqlite']);
+          tmpFile.createUnique(tmpFile.NORMAL_FILE_TYPE, parseInt("0600", 8));
+          if (tmpFile === null) {
+            statustxt('Could not create temp. file', 2, true);
+            break;
+          }
+					gTempName.push(tmpFile.path);	//for automatic deletion!
+
           let length=gDownloadService.length;
           writeMabData(tmpFile, abData, length);
           statustxt(".", 0, false); // 5. dot: file written

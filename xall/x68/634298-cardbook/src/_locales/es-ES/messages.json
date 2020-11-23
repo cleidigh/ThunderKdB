@@ -28,10 +28,10 @@
 		"message": "Guardar archivo"
 	},
 	"dirSaveTitle": {
-		"message": "Guardar carpeta"
+		"message": "Guardar directorio"
 	},
 	"dirChooseTitle": {
-		"message": "Elegir carpeta"
+		"message": "Elegir directorio"
 	},
 	"fileCreationVCFTitle": {
 		"message": "Crear un nuevo archivo VCF (codificado en UTF-8)"
@@ -43,7 +43,7 @@
 		"message": "Importar un archivo VCF (codificado en UTF-8)"
 	},
 	"dirImportTitle": {
-		"message": "Importar desde una carpeta"
+		"message": "Importar desde un directorio"
 	},
 	"fileCreationTPLTitle": {
 		"message": "Crear un nuevo archivo TPL"
@@ -58,19 +58,19 @@
 		"message": "Sin clasificación"
 	},
 	"collectedCards": {
-		"message": "Contactos recolectados"
+		"message": "Contactos recopilados"
 	},
 	"enableFromAccountsOrCats": {
-		"message": "Activar directorio"
+		"message": "Habilitar la libreta de direcciones"
 	},
 	"disableFromAccountsOrCats": {
-		"message": "Desactivar directorio"
+		"message": "Deshabilitar la libreta de direcciones"
 	},
 	"readWriteFromAccountsOrCats": {
-		"message": "Colocar el directorio en modo escritura"
+		"message": "Establecer la libreta de direcciones en modo de lectura y escritura"
 	},
 	"readOnlyFromAccountsOrCats": {
-		"message": "Colocar el directorio en modo solo lectura"
+		"message": "Establecer la libreta de direcciones en modo de solo lectura"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Editar categoría"
@@ -88,7 +88,7 @@
 		"message": "Eliminar nodo"
 	},
 	"convertNodeFromAccountsOrCats": {
-		"message": "Crear una Lista a partir del Nodo"
+		"message": "Crear lista a partir de nodo"
 	},
 	"viewCardButtonLabel": {
 		"message": "Consultar"
@@ -124,7 +124,7 @@
 		"message": "No se encontró ningún contacto duplicado"
 	},
 	"serverWarningGoogleLabel": {
-		"message": "El uso de Google es experimental, porque Google no respeta el estándar vCard."
+		"message": "El uso de Google es experimental porque Google no respeta el estándar vCard."
 	},
 	"Validating1Label": {
 		"message": "Validación ($P1$)…",
@@ -171,7 +171,7 @@
         }
 	},
 	"customFieldsErrorCHAR": {
-		"message": "Los campos personalizados no pueden contener caracteres como coma, punto y coma, dos puntos, o punto: $P1$",
+		"message": "Los campos personalizados no pueden contener caracteres como coma, punto y coma, dos puntos o punto: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -379,7 +379,7 @@
         }
 	},
 	"synchroModifPutOKToServer": {
-		"message": "$P1$: Modificaciones enviadas al servidor poussées sur le serveur: $P2$",
+		"message": "$P1$: Modificaciones enviadas con éxito al servidor: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -499,7 +499,7 @@
         }
 	},
 	"synchroForcedToResync": {
-		"message": "$P1$: Se requiere volver a sincronizar",
+		"message": "$P1$: Es necesario volver a sincronizar esta cuenta",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -510,7 +510,7 @@
 		"message": "Todas las sincronizaciones terminaron"
 	},
 	"discoveryRunning": {
-		"message": "$P1$: Descubrimiento de los directorios en curso",
+		"message": "$P1$: Descubrimiento automático de la libreta de direcciones en curso",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -595,7 +595,7 @@
         }
 	},
 	"cardAlreadyGetFromCache": {
-		"message": "$P1$: Contacto $P2$ ya recuperado desde el caché",
+		"message": "$P1$: Contacto $P2$ ya recuperado desde caché",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -606,7 +606,7 @@
         }
 	},
 	"cardGetFromCache": {
-		"message": "$P1$: Contacto $P2$ recuperado desde el caché",
+		"message": "$P1$: Contacto $P2$ recuperado desde caché",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -639,7 +639,7 @@
         }
 	},
 	"cardUpdatedOnServer": {
-		"message": "$P1$: Contacto $P2$ actualizado en el servidor (etag encontrado: $P3$, etag en el caché: $P4$)",
+		"message": "$P1$: Contacto $P2$ actualizado en el servidor (etag encontrado: $P3$, etag en caché: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -664,7 +664,7 @@
         }
 	},
 	"cardLoadedFromCache": {
-		"message": "$P1$: Contacto $P2$ cargado desde el caché",
+		"message": "$P1$: Contacto $P2$ cargado desde caché",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -675,7 +675,7 @@
         }
 	},
 	"cardLoadedFromCacheDB": {
-		"message": "$P1$: Contacto $P2$ cargado desde el caché (IndexedDB)",
+		"message": "$P1$: Contacto $P2$ cargado desde caché (IndexedDB)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -733,7 +733,7 @@
 		"message": "Conflicto de modificaciones sobre un contacto"
 	},
 	"askUserPersistMessage": {
-		"message": "Aplicar esta elección para los otros contactos"
+		"message": "Aplicar esta elección en los otros contactos"
 	},
 	"keepAskUserLabel": {
 		"message": "Conservar contacto"
@@ -779,7 +779,7 @@
         }
 	},
 	"serverCardDeleteFailed": {
-		"message": "$P1$: Contacto $P2$: error al borrar en el servidor (url: $P3$, estatus: $P4$)",
+		"message": "$P1$: Contacto $P2$: error al borrar en el servidor (url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -832,7 +832,7 @@
         }
 	},
 	"serverCardUpdateFailed": {
-		"message": "$P1$: Contact $P2$: error al actualizar en el servidor (url: $P3$, statut: $P4$)",
+		"message": "$P1$: Contact $P2$: error al actualizar en el servidor (url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -885,7 +885,7 @@
         }
 	},
 	"serverCardCreateFailed": {
-		"message": "$P1$: Contacto $P2$: error al crear en el servidor (url: $P3$, estatus: $P4$)",
+		"message": "$P1$: Contacto $P2$: error al crear en el servidor (url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -913,7 +913,7 @@
         }
 	},
 	"serverCardGetImageFailed": {
-		"message": "$P1$: Error al descargar la imagen para el contacto $P2$ (url: $P3$, estatus: $P4$)",
+		"message": "$P1$: Error al descargar la imagen del contacto $P2$ (url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -930,7 +930,7 @@
         }
 	},
 	"serverCardGetImageOK": {
-		"message": "$P1$: Imagen descargada para el contacto $P2$",
+		"message": "$P1$: Imagen descargada del contacto $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -941,7 +941,7 @@
         }
 	},
 	"serverCardGettingImage": {
-		"message": "$P1$: Descarga de la imagen para el contacto $P2$…",
+		"message": "$P1$: Descarga de la imagen del contacto $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -963,7 +963,7 @@
         }
 	},
 	"serverCardGetFailed": {
-		"message": "$P1$: Error al recuperar del servidor (url: $P2$, estatus: $P3$)",
+		"message": "$P1$: Error al recuperar del servidor (url: $P2$, estado: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -977,7 +977,7 @@
         }
 	},
 	"synchronizationFailed": {
-		"message": "$P1$: Error al sincronizar (etapa: $P2$, url: $P3$, estatus: $P4$)",
+		"message": "$P1$: Error al sincronizar (etapa: $P2$, url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1065,7 +1065,7 @@
         }
 	},
 	"googleAccessTokenOK": {
-		"message": "$P1$: Solicitud de \"access token Google\" exítosa, access token: $P2$",
+		"message": "$P1$: Solicitud de 'access token Google' exítosa, access token: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1076,7 +1076,7 @@
         }
 	},
 	"googleRefreshTokenOK": {
-		"message": "$P1$: Solicitud de \"refresh token Google\" exítosa, refresh token: $P2$",
+		"message": "$P1$: Solicitud de 'refresh token Google' exítosa, refresh token: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1087,7 +1087,7 @@
         }
 	},
 	"googleGetNewRefreshToken": {
-		"message": "$P1$: Recuperación de un nuevo \"refresh token Google\" sobre $P2$…",
+		"message": "$P1$: Recuperación de un nuevo 'refresh token Google' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1109,7 +1109,7 @@
         }
 	},
 	"googleRequestAccessToken": {
-		"message": "$P1$: Solicitud de \"access token Google\" sobre $P2$…",
+		"message": "$P1$: Solicitud de 'access token Google' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1120,7 +1120,7 @@
         }
 	},
 	"googleRequestRefreshToken": {
-		"message": "$P1$: Solicitud de \"refresh token Google\" sobre $P2$…",
+		"message": "$P1$: Solicitud de 'refresh token Google' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1131,7 +1131,7 @@
         }
 	},
 	"yahooAccessTokenOK": {
-		"message": "$P1$: Solicitud de \"access token Yahoo!\" exítosa, access token: $P2$",
+		"message": "$P1$: Solicitud de 'access token Yahoo!' exítosa, access token: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1142,7 +1142,7 @@
         }
 	},
 	"yahooRefreshTokenOK": {
-		"message": "$P1$: Solicitud de \"refresh token Yahoo!\" exítosa, refresh token: $P2$",
+		"message": "$P1$: Solicitud de 'refresh token Yahoo!' exítosa, refresh token: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1153,7 +1153,7 @@
         }
 	},
 	"yahooGetNewRefreshToken": {
-		"message": "$P1$: Recuperación de un nuevo \"refresh token Yahoo!\" sobre $P2$…",
+		"message": "$P1$: Recuperación de un nuevo 'refresh token Yahoo!' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1175,7 +1175,7 @@
         }
 	},
 	"yahooRequestAccessToken": {
-		"message": "$P1$: Solicitud de \"access token Yahoo!\" sobre $P2$…",
+		"message": "$P1$: Solicitud de 'access token Yahoo!' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1186,7 +1186,7 @@
         }
 	},
 	"yahooRequestRefreshToken": {
-		"message": "$P1$: Solicitud de \"refresh token Yahoo!\" sobre $P2$…",
+		"message": "$P1$: Solicitud de 'refresh token Yahoo!' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1246,7 +1246,7 @@
         }
 	},
 	"directoryAlreadyOpen": {
-		"message": "Carpeta $P1$ ya abierta por CardBook",
+		"message": "El directorio $P1$ ya está abierto en CardBook",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1268,7 +1268,7 @@
         }
 	},
 	"addressbookOpened": {
-		"message": "$P1$: Directorio abierto",
+		"message": "$P1$: Libreta de direcciones abierta",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1276,7 +1276,7 @@
         }
 	},
 	"addressbookModified": {
-		"message": "$P1$: Directorio modificado",
+		"message": "$P1$: Libreta de direcciones modificada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1284,7 +1284,7 @@
         }
 	},
 	"addressbookDeleted": {
-		"message": "$P1$: Directorio cerrado",
+		"message": "$P1$: Libreta de direcciones cerrada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1292,7 +1292,7 @@
         }
 	},
 	"addressbookCreated": {
-		"message": "$P1$: Directorio creado",
+		"message": "$P1$: Libreta de direcciones creada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1300,7 +1300,7 @@
         }
 	},
 	"addressbookDisabled": {
-		"message": "$P1$: Directorio desactivado",
+		"message": "$P1$: Libreta de direcciones deshabilitada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1308,7 +1308,7 @@
         }
 	},
 	"addressbookReadOnly": {
-		"message": "$P1$: Directorio en modo solo lectura",
+		"message": "$P1$: Libreta de direcciones en modo solo lectura",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1316,7 +1316,7 @@
         }
 	},
 	"addressbookReadWrite": {
-		"message": "$P1$: Directorio en modo lectura escritura",
+		"message": "$P1$: Libreta de direcciones en modo lectura y escritura",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1324,7 +1324,7 @@
         }
 	},
 	"addressbookEnabled": {
-		"message": "$P1$: Directorio activado",
+		"message": "$P1$: Libreta de direcciones habilitada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1455,10 +1455,10 @@
         }
 	},
 	"outgoingEmailCollectedUndo": {
-		"message": "Direcciones de correo electrónico salientes recolectadas"
+		"message": "Direcciones de correo electrónico salientes recopiladas"
 	},
 	"emailCollectedByFilterUndo": {
-		"message": "Direcciones de correo electrónico recolectadas por filtro"
+		"message": "Direcciones de correo electrónico recopiladas por filtro"
 	},
 	"emailDeletedByFilterUndo": {
 		"message": "Direcciones de correo electrónico eliminadas por filtro"
@@ -1470,7 +1470,7 @@
 		"message": "Contactos duplicados"
 	},
 	"displayNameGenerated": {
-		"message": "$P1$: campo \"nombre mostrado\" de estos contactos regenerado: $P2$",
+		"message": "$P1$: campo 'nombre mostrado' de estos contactos regenerado: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1590,7 +1590,7 @@
 		"message": "Línea copiada"
 	},
 	"nodeRenamedUndo": {
-		"message": "Nombre del nodo $P1$ modificado",
+		"message": "Nodo $P1$ renombrado",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1641,7 +1641,7 @@
         }
 	},
 	"exportsOKIntoDir": {
-		"message": "Contactos exportados en la carpeta $P1$",
+		"message": "Contactos exportados al directorio $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1649,7 +1649,7 @@
         }
 	},
 	"exportOKIntoDir": {
-		"message": "Contacto exportado en la carpeta $P1$",
+		"message": "Contacto exportado al directorio $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1660,16 +1660,16 @@
 		"message": "No es posible importar en el mismo archivo"
 	},
 	"importNotIntoSameDir": {
-		"message": "No es posible importar en la misma carpeta"
+		"message": "No es posible importar en el mismo directorio"
 	},
 	"clipboardWrong": {
-		"message": "Los datos en el clipboard no son utilizables"
+		"message": "No se pueden importar los datos del portapapeles"
 	},
 	"clipboardEmpty": {
-		"message": "El clipboard está vacío"
+		"message": "El portapapeles está vacío"
 	},
 	"imageError": {
-		"message": "Imagen no añadido por algun error"
+		"message": "Imagen no añadida debido a un error"
 	},
 	"imageErrorWithMessage": {
 		"message": "Imagen no añadida: $P1$",
@@ -1688,13 +1688,13 @@
         }
 	},
 	"contactsCopied": {
-		"message": "Contactos copiados en el clipboard"
+		"message": "Contactos copiados en el portapapeles"
 	},
 	"contactCopied": {
-		"message": "Contacto copiado en el clipboard"
+		"message": "Contacto copiado en el portapapeles"
 	},
 	"lineCopied": {
-		"message": "Línea copiada en el clipboard"
+		"message": "Línea copiada en el portapapeles"
 	},
 	"linePastedToCard": {
 		"message": "Línea pegada en el contacto: $P1$",
@@ -1763,40 +1763,40 @@
 		"message": "CardBook Bcc"
 	},
 	"cardbook.searchAll.name": {
-		"message": "CardBook De, Para, Cc o Bcc a"
+		"message": "CardBook De, Para, Cc o Bcc"
 	},
 	"cardbook.searchCorrespondents.name": {
 		"message": "Correspondientes CardBook"
 	},
 	"cardbook.addFrom.name": {
-		"message": "Añadir \"De\" a CardBook"
+		"message": "Añadir 'De' a CardBook"
 	},
 	"cardbook.addTo.name": {
-		"message": "Añadir \"Para\" a CardBook"
+		"message": "Añadir 'Para' a CardBook"
 	},
 	"cardbook.addCc.name": {
-		"message": "Añadir \"Cc\" a CardBook"
+		"message": "Añadir 'Cc' a CardBook"
 	},
 	"cardbook.addBcc.name": {
-		"message": "Añadir \"Bcc\" a CardBook"
+		"message": "Añadir 'Bcc' a CardBook"
 	},
 	"cardbook.addAll.name": {
-		"message": "Añadir \"De, Para, Cc o Bcc\" a CardBook"
+		"message": "Añadir 'De, Para, Cc o Bcc' a CardBook"
 	},
 	"cardbook.removeFrom.name": {
-		"message": "Eliminar \"De\" de CardBook"
+		"message": "Eliminar 'De' de CardBook"
 	},
 	"cardbook.removeTo.name": {
-		"message": "Eliminar \"Para\" de CardBook"
+		"message": "Eliminar 'Para' de CardBook"
 	},
 	"cardbook.removeCc.name": {
-		"message": "Eliminar \"Cc\" de CardBook"
+		"message": "Eliminar 'Cc' de CardBook"
 	},
 	"cardbook.removeBcc.name": {
-		"message": "Eliminar \"Bcc\" de CardBook"
+		"message": "Eliminar 'Bcc' de CardBook"
 	},
 	"cardbook.removeAll.name": {
-		"message": "Eliminar \"De, Para, Cc o Bcc\" de CardBook"
+		"message": "Eliminar 'De, Para, Cc o Bcc' de CardBook"
 	},
 	"urlDownloaded": {
 		"message": "URL descargada: $P1$",
@@ -1807,7 +1807,7 @@
         }
 	},
 	"addressbookHeader": {
-		"message": "Directorio"
+		"message": "Libreta de direcciones"
 	},
 	"photoLabel": {
 		"message": "Foto"
@@ -1840,10 +1840,10 @@
 		"message": "Apodo"
 	},
 	"genderLabel": {
-		"message": "Género"
+		"message": "Sexo"
 	},
 	"bdayLabel": {
-		"message": "Día de nacimiento"
+		"message": "Fecha de nacimiento"
 	},
 	"birthplaceLabel": {
 		"message": "Lugar de nacimiento"
@@ -1864,7 +1864,7 @@
 		"message": "Rol"
 	},
 	"orgLabel": {
-		"message": "Sociedad"
+		"message": "Organización"
 	},
 	"categoriesLabel": {
 		"message": "Categorías"
@@ -1879,7 +1879,7 @@
 		"message": "Correos electrónicos"
 	},
 	"imppLabel": {
-		"message": "Impp"
+		"message": "IM"
 	},
 	"urlLabel": {
 		"message": "URL"
@@ -1918,7 +1918,7 @@
 		"message": "Año"
 	},
 	"ABNameLabel": {
-		"message": "Directorio"
+		"message": "Libreta de direcciones"
 	},
 	"cardIconLabel": {
 		"message": "Icono"
@@ -1927,10 +1927,10 @@
 		"message": "Nombre"
 	},
 	"mailerLabel": {
-		"message": "Mailer"
+		"message": "Remitente"
 	},
 	"tzLabel": {
-		"message": "Tz"
+		"message": "Zona horaria"
 	},
 	"geoLabel": {
 		"message": "Geo"
@@ -1939,19 +1939,19 @@
 		"message": "Prodid"
 	},
 	"sortstringLabel": {
-		"message": "Sort string"
+		"message": "Ordenar cadena"
 	},
 	"uidLabel": {
-		"message": "ID del contacto"
+		"message": "ID de contacto"
 	},
 	"cbidLabel": {
 		"message": "ID de CardBook"
 	},
 	"class1Label": {
-		"message": "Class"
+		"message": "Clase"
 	},
 	"dirPrefIdLabel": {
-		"message": "ID del directorio"
+		"message": "ID de la libreta de direcciones"
 	},
 	"kindLabel": {
 		"message": "Tipo"
@@ -1960,7 +1960,7 @@
 		"message": "Etag"
 	},
 	"phoneticfirstnameLabel": {
-		"message": "Nombres (Fonético)"
+		"message": "Nombre de pila (Fonético)"
 	},
 	"phoneticlastnameLabel": {
 		"message": "Apellidos (Fonético)"
@@ -2020,7 +2020,7 @@
 		"message": "Error en la sincronización de los cumpleaños"
 	},
 	"syncListExistingEntry": {
-		"message": "$P1$: Entrada del calendario existente en Lightning: $P2$",
+		"message": "$P1$: Evento existente en Lightning: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2031,7 +2031,7 @@
         }
 	},
 	"syncListCreatedEntry": {
-		"message": "$P1$: Entrada del calendario creada en Lightning: $P2$",
+		"message": "$P1$: Evento creado en Lightning: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2042,7 +2042,7 @@
         }
 	},
 	"syncListErrorEntry": {
-		"message": "$P1$: Error al crear la entrada del calendario en Lightning: $P2$",
+		"message": "$P1$: Evento con error en Lightning: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2053,7 +2053,7 @@
         }
 	},
 	"noBirthdaysFoundMessage": {
-		"message": "Ningún cumpleaños encontrado para $P1$",
+		"message": "Ningún aniversario encontrado hasta el $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2072,10 +2072,10 @@
 		"message": "Cumpleaños de %1$S, Edad: %2$S"
 	},
 	"calendarNotFoundTitle": {
-		"message": "Recordatorio de cumpleaños - sincronización con Lightning cancelada"
+		"message": "Recordatorio de cumpleaños - Sincronización con Lightning cancelada"
 	},
 	"calendarNotFoundMessage": {
-		"message": "El calendario $P1$ no se puede encontrar. Sincronización con Lightning cancelada.",
+		"message": "Calendario $P1$ no encontrado. Sincronización con Lightning cancelada.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2083,10 +2083,10 @@
         }
 	},
 	"calendarNotWritableTitle": {
-		"message": "Recordatorio de cumpleaños - sincronización con Lightning cancelada"
+		"message": "Recordatorio de cumpleaños - Sincronización con Lightning cancelada"
 	},
 	"calendarNotWritableMessage": {
-		"message": "Calendario $P1$ no se puede modificar (puede estar en modo solo lectura o estar inaccesible). Sincronización con Lightning cancelada.",
+		"message": "Calendario $P1$ no modificable (puede estar en modo solo lectura o estar inaccesible). Sincronización con Lightning cancelada.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2105,7 +2105,7 @@
         }
 	},
 	"errorInfiniteLoopRecursion": {
-		"message": "Listas: la lista tiene una recursión infínita: $P1$",
+		"message": "Listas: recursividad de bucle infinito para las listas: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2113,7 +2113,7 @@
         }
 	},
 	"WRONG_VERSION": {
-		"message": "3.0 y 4.0 son las únicas versiones soportadas"
+		"message": "Solo se admiten vCards versión 3.0 o 4.0"
 	},
 	"unableToParseResponse": {
 		"message": "$P1$: No se puede analizar la respuesta del servidor en razón de la línea siguiente: $P2$",
@@ -2127,7 +2127,7 @@
         }
 	},
 	"dateEntry1Wrong": {
-		"message": "$P1$: el contacto $P2$ contiene una fecha ($P3$) que no sigue el formato de fechas del directorio ($P4$)",
+		"message": "$P1$: el contacto $P2$ tiene un campo de fecha ($P3$) que no coincide con el formato de la libreta de direcciones ($P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2144,7 +2144,7 @@
         }
 	},
 	"dateEntry2Wrong": {
-		"message": "El valor del campo de fecha ($P1$) no sigue el formato de fechas del directorio ($P2$)",
+		"message": "El campo de fecha ($P1$) no coincide con el formato de la libreta de direcciones ($P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2169,13 +2169,13 @@
         }
 	},
 	"eventNameNull": {
-		"message": "Por lo menos un evento tiene una descripción vacía"
+		"message": "Al menos un evento tiene una descripción vacía"
 	},
 	"eventDateNull": {
-		"message": "Por lo menos un evento tiene una fecha vacía"
+		"message": "Al menos un evento tiene una fecha vacía"
 	},
 	"invalidURL": {
-		"message": "URL inválido: $P1$",
+		"message": "URL inválida: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2240,7 +2240,7 @@
 		"message": "Desconocido"
 	},
 	"typesTooltip": {
-		"message": "Los tipos están definidos en las preferencias de CardBook. Los contactos solo pueden usar estos valores predefinidos, asegurarse que estos valores sean correctos."
+		"message": "Para cambiar los tipos disponibles, use las preferencias de CardBook."
 	},
 	"prefLabel": {
 		"message": "Preferencia"
@@ -2249,7 +2249,7 @@
 		"message": "Valor de la preferencia"
 	},
 	"prefWeightTooltip": {
-		"message": "Las preferencias pueden ser diferenciadas usando valores entre el 1 y el 100. Pero para un uso básico, este campo puede quedarse vacío."
+		"message": "Las preferencias pueden tener valores diferentes entre 1 y 100. Manténgalo vacío para un uso normal."
 	},
 	"impp.skype": {
 		"message": "Skype"
@@ -2264,22 +2264,22 @@
 		"message": "Tencent QQ"
 	},
 	"addToAddressbook": {
-		"message": "Añadir este directorio"
+		"message": "Añadir esta libreta de direcciones"
 	},
 	"wdw_cardEditionViewResultTitle": {
-		"message": "Modificar el contacto resultado"
+		"message": "Modificación de contacto resultante"
 	},
 	"wdw_cardEditionViewResultHideCreateTitle": {
-		"message": "Modificar el contacto resultado"
+		"message": "Modificación de contacto resultante"
 	},
 	"wdw_cardEditionAddEmailTitle": {
 		"message": "Registrar una nueva dirección de correo electrónico"
 	},
 	"wdw_cardEditionCreateContactTitle": {
-		"message": "Crear un nuevo contacto"
+		"message": "Nuevo contacto"
 	},
 	"wdw_cardEditionCreateListTitle": {
-		"message": "Crear una nueva lista de difusión"
+		"message": "Nueva lista de correo"
 	},
 	"wdw_cardEditionEditContactTitle": {
 		"message": "Modificar el contacto"
@@ -2297,7 +2297,7 @@
 		"message": "Consultar la lista"
 	},
 	"wdw_cardbookPrintTitleLong": {
-		"message": "Previsualización de impresión de $P1$ - CardBook - Thunderbird",
+		"message": "Vista previa de impresión de $P1$ - CardBook - Thunderbird",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2305,16 +2305,16 @@
         }
 	},
 	"wdw_cardbookPrintTitle": {
-		"message": "Previsualización de impresión"
+		"message": "Vista previa de impresión"
 	},
 	"displayGroupboxLabel": {
-		"message": "Nombre mostrado"
+		"message": "Nombre a mostrar"
 	},
 	"personalGroupboxLabel": {
-		"message": "Informaciones personales"
+		"message": "Información personal"
 	},
 	"orgGroupboxLabel": {
-		"message": "Informaciones profesionales"
+		"message": "Información profesional"
 	},
 	"categoriesHeader": {
 		"message": "Categorías"
@@ -2344,19 +2344,19 @@
 		"message": "Elementos seleccionados"
 	},
 	"mailPopularityGroupboxLabel": {
-		"message": "Popularidad de las direcciones de correo electrónico"
+		"message": "Popularidad del correo"
 	},
 	"addEntryTooltip": {
-		"message": "Añadir el registro"
+		"message": "Añadir entrada"
 	},
 	"removeEntryTooltip": {
-		"message": "Borrar el registro"
+		"message": "Eliminar entrada"
 	},
 	"upEntryTooltip": {
-		"message": "Subir el registro"
+		"message": "Subir"
 	},
 	"downEntryTooltip": {
-		"message": "Bajar el registro"
+		"message": "Bajar"
 	},
 	"validatedEntryTooltip": {
 		"message": "Válido"
@@ -2401,7 +2401,7 @@
         }
 	},
 	"accountDeletionConfirmMessage": {
-		"message": "¿Confirma la supresión del directorio $P1$ del referencial de CardBook?",
+		"message": "¿Seguro de que desea eliminar la libreta de direcciones $P1$ del repositorio de CardBook?",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2409,7 +2409,7 @@
         }
 	},
 	"accountDeletionDiscoveryConfirmMessage": {
-		"message": "El directorio $P1$ parece haber sido eliminado de su servidor. ¿Lo quiere suprimir del referencial de CardBook?",
+		"message": "La libreta de direcciones $P1$ parece haber sido eliminada de su servidor. ¿Desea eliminarla de su repositorio de CardBook?",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2453,7 +2453,7 @@
 		"message": "Elección de las columnas exportadas"
 	},
 	"exportavailableColumnsGroupboxLabel": {
-		"message": "Columnas a disposición"
+		"message": "Columnas disponibles"
 	},
 	"exportaddedColumnsGroupboxLabel": {
 		"message": "Columnas seleccionadas"
@@ -2477,7 +2477,7 @@
 		"message": "sin tipo"
 	},
 	"fieldDelimiterLabel": {
-		"message": "Separador de columnas"
+		"message": "Delimitador de campo"
 	},
 	"includePrefLabel": {
 		"message": "Incluir preferencias"
@@ -2486,13 +2486,13 @@
 		"message": "Primera fila de encabezado"
 	},
 	"missingColumnsConfirmMessage": {
-		"message": "El número de columnas seleccionadas es diferente del número de columnas del archivo. Las columnas que faltan o sobran no se tomarán en cuenta. ¿Proseguir?"
+		"message": "El número de columnas seleccionadas es diferente del número de columnas del archivo. Las columnas que faltan o sobran no se tomarán en cuenta. ¿Continuar?"
 	},
 	"toUpperCase": {
-		"message": "Poner en mayúsculas"
+		"message": "Convertir a mayúsculas"
 	},
 	"toLowerCase": {
-		"message": "Poner en minúsculas"
+		"message": "Convertir a minúsculas"
 	},
 	"copyFieldValue": {
 		"message": "Copiar ($P1$)",
@@ -2511,19 +2511,19 @@
         }
 	},
 	"wdw_cardbookRenameFieldEditTypeTitle": {
-		"message": "Modificar el nombre de un tipo"
+		"message": "Renombrar un tipo"
 	},
 	"wdw_cardbookRenameFieldAddTypeTitle": {
-		"message": "Añadir un nuevo tipo"
+		"message": "Nuevo tipo"
 	},
 	"wdw_cardbookRenameFieldOrgTitle": {
-		"message": "Modificación de las informaciones profesionales"
+		"message": "Editor de organización"
 	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
-		"message": "Modificación de las categorías"
+		"message": "Modificar categoría"
 	},
 	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "Agregar una nueva categoría"
+		"message": "Nueva categoría"
 	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "Editar nodo"
@@ -2552,31 +2552,31 @@
         }
 	},
 	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
-		"message": "Definición de una restricción sobre una cuenta de correo"
+		"message": "Definición de restricción de cuenta de correo"
 	},
 	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
-		"message": "Definición de una colecta de correos electrónicos salientes sobre una cuenta de correo"
+		"message": "Definición de recopilación de correos electrónicos salientes de la cuenta de correo"
 	},
 	"ignoreCaseIgnoreDiacriticLabel": {
-		"message": "Ignorar los acentos y la distinción entre mayúsculas y minúsculas"
+		"message": "Ignorar mayúsculas/minúsculas y signos ortográficos"
 	},
 	"ignoreCaseMatchDiacriticLabel": {
-		"message": "Ignorar la distinción entre mayúsculas y minúsculas, tomar en cuenta los acentos"
+		"message": "Ignorar mayúsculas/minúsculas, coincidir con signos ortográficos"
 	},
 	"matchCaseIgnoreDiacriticLabel": {
-		"message": "Tomar en cuenta la distinción entre mayúsculas y minúsculas, ignorar los acentos"
+		"message": "Coincidir con mayúsculas/minúsculas, ignorar signos ortográficos"
 	},
 	"matchCaseMatchDiacriticLabel": {
-		"message": "Tomar en cuenta los acentos y la distinción entre mayúsculas y minúsculas"
+		"message": "Coincidir con mayúsculas/minúsculas y signos ortográficos"
 	},
 	"allCategories": {
-		"message": "Ver todo"
+		"message": "Mostrar todo"
 	},
 	"onlyCategories": {
-		"message": "Solamente las categorías"
+		"message": "Solo categorías"
 	},
 	"noCategory": {
-		"message": "Ninguna categoría"
+		"message": "Solo contactos"
 	},
 	"multipleCategories": {
 		"message": "Varias categorías"
@@ -2611,10 +2611,10 @@
 		"message": "Excluir"
 	},
 	"sendButtonLabel": {
-		"message": "Escribir un correo a la selección"
+		"message": "Crea un mensaje nuevo"
 	},
 	"doNotShowAnymore": {
-		"message": "No avisarme cuando trato de enviar un correo electrónico a un contacto que no tiene dirección de correo."
+		"message": "No avisar cuando intente enviar un correo electrónico a contactos sin dirección de correo electrónico."
 	},
 	"emptyEmailsCardConfirmMessage": {
 		"message": "Este contacto no tiene dirección de correo electrónico: $P1$",
@@ -2645,10 +2645,10 @@
 		"message": "M"
 	},
 	"dateFormatsYLabel": {
-		"message": "Y"
+		"message": "A"
 	},
 	"customLabel": {
-		"message": "Diverso"
+		"message": "Personalizado"
 	},
 	"valueAlreadyExists": {
 		"message": "El valor $P1$ ya está presente",
@@ -2659,22 +2659,22 @@
         }
 	},
 	"allAccountsLabel": {
-		"message": "Todos los directorios"
+		"message": "Todas las libretas de direcciones"
 	},
 	"enabledAccountsLabel": {
-		"message": "Directorios activos"
+		"message": "Libretas de direcciones habilitadas"
 	},
 	"disabledAccountsLabel": {
-		"message": "Directorios inactivos"
+		"message": "Libretas de direcciones deshabilitadas"
 	},
 	"localAccountsLabel": {
-		"message": "Directorios locales"
+		"message": "Libretas de direcciones locales"
 	},
 	"remoteAccountsLabel": {
-		"message": "Directorios remotos"
+		"message": "Libretas de direcciones remotas"
 	},
 	"searchAccountsLabel": {
-		"message": "Búsquedas avanzadas"
+		"message": "Búsquedas guardadas"
 	},
 	"wdw_passwordMissingTitle": {
 		"message": "Contraseña faltante"
@@ -2708,7 +2708,7 @@
         }
 	},
 	"invalidEmail": {
-		"message": "$P1$ no es una dirección de correo electrónico válida porque no tiene la forma usuario@dominio.",
+		"message": "$P1$ no es una dirección de correo electrónico válida porque no tiene formato usuario@dominio.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2819,7 +2819,7 @@
 		"message": "CardBook"
 	},
 	"cardbookQFBButtonTooltip": {
-		"message": "Mostrar sólo los mensajes de personas en su libreta de direcciones"
+		"message": "Mostrar solo mensajes de personas de su libreta de direcciones"
 	},
 	"quickFilterBar.booleanMode.tooltip": {
 		"message": "Modo de filtrado de etiquetas"
@@ -2858,13 +2858,13 @@
 		"message": "j"
 	},
 	"editInCardBookMenuLabel": {
-		"message": "Modificar con CardBook"
+		"message": "Editar contacto de CardBook"
 	},
 	"editInCardBookMenuAccesskey": {
 		"message": "o"
 	},
 	"deleteInCardBookMenuLabel": {
-		"message": "Eliminar de CardBook"
+		"message": "Eliminar contacto de CardBook"
 	},
 	"deleteInCardBookMenuAccesskey": {
 		"message": "S"
@@ -2876,43 +2876,43 @@
 		"message": "n"
 	},
 	"findAllEmailsFromContactMessengerLabel": {
-		"message": "Encontrar los correos electrónicos de este contacto"
+		"message": "Buscar correos electrónicos relacionados con este contacto"
 	},
 	"findAllEmailsFromContactMessengerAccesskey": {
 		"message": "c"
 	},
 	"findEmailsFromEmailMessengerLabel": {
-		"message": "Encontrar los correos electrónicos de esta dirección de correo"
+		"message": "Buscar correos electrónicos relacionados con esta dirección de correo"
 	},
 	"findEmailsFromEmailMessengerAccesskey": {
 		"message": "a"
 	},
 	"findAllEventsFromContactMessengerLabel": {
-		"message": "Encontrar los eventos de este contacto"
+		"message": "Buscar eventos relacionados con este contacto"
 	},
 	"findAllEventsFromContactMessengerAccesskey": {
 		"message": "c"
 	},
 	"findEventsFromEmailMessengerLabel": {
-		"message": "Encontrar los eventos de esta dirección de correo"
+		"message": "Buscar eventos relacionados con esta dirección de correo"
 	},
 	"findEventsFromEmailMessengerAccesskey": {
 		"message": "a"
 	},
 	"mailContext-addToCardBookMenuLabel": {
-		"message": "Agregar a CardBook…"
+		"message": "Añadir contacto a CardBook…"
 	},
 	"mailContext-addToCardBookMenuAccesskey": {
 		"message": "j"
 	},
 	"addAllAttachementsToCardBookMenuLabel": {
-		"message": "Todo en CardBook…"
+		"message": "Todo a CardBook…"
 	},
 	"addAttachementToCardBookMenuLabel": {
-		"message": "En CardBook…"
+		"message": "A CardBook…"
 	},
 	"cardbookABPaneItemLabel": {
-		"message": "Panel de los directorios"
+		"message": "Panel de la libreta de direcciones"
 	},
 	"cardbookABPaneItemAccesskey": {
 		"message": "A"
@@ -2924,22 +2924,22 @@
 		"message": "O"
 	},
 	"wizard.title": {
-		"message": "Añadir un nuevo directorio"
+		"message": "Añadir una nueva libreta de direcciones"
 	},
 	"wizard.label": {
-		"message": "Añadir un nuevo directorio"
+		"message": "Añadir una nueva libreta de direcciones"
 	},
 	"welcomePage.wizard.description": {
 		"message": "Bienvenida"
 	},
 	"welcomePage.description": {
-		"message": "Parece que es la primera vez que se inicia CardBook. Tratará de recuperar contactos desde los directorios estándar y remotos de Thunderbird."
+		"message": "Parece que esta es la primera vez que se ejecuta CardBook. CardBook intentará recopilar contactos de las libretas de direcciones estándar y de las libretas de direcciones remotas de Thunderbird."
 	},
 	"initialPage.wizard.description": {
-		"message": "Ubicación del nuevo directorio."
+		"message": "Ubicación de la nueva libreta de direcciones."
 	},
 	"initialPage.description": {
-		"message": "Ubicación de su directorio:"
+		"message": "Ubicación de la libreta de direcciones:"
 	},
 	"initialPage.computer.label": {
 		"message": "Local"
@@ -2948,55 +2948,55 @@
 		"message": "Remoto"
 	},
 	"initialPage.standard.label": {
-		"message": "Importar los directorios estándar"
+		"message": "Importar libretas de direcciones estándar de Thunderbird"
 	},
 	"initialPage.search.label": {
-		"message": "Búsqueda en los directorios estándar existentes"
+		"message": "Buscar en las libretas de direcciones existentes"
 	},
 	"initialPage.find.label": {
-		"message": "Búsqueda en los directorios remotos"
+		"message": "Buscar libretas de direcciones remotas"
 	},
 	"localPage.wizard.description": {
-		"message": "Tipo y ubicación del nuevo directorio local."
+		"message": "Tipo y ubicación de la nueva libreta de direcciones local."
 	},
 	"localPage.type.description": {
-		"message": "Tipo de su directorio local:"
+		"message": "Tipo de la nueva libreta de direcciones local:"
 	},
 	"localPage.type.label": {
 		"message": "Tipo"
 	},
 	"localPage.createDB.label": {
-		"message": "Crear un nuevo directorio"
+		"message": "Crear una nueva libreta de direcciones"
 	},
 	"localPage.createDirectory.label": {
-		"message": "Crear un nuevo directorio (Carpeta)"
+		"message": "Crear una nueva libreta de direcciones (Directorio)"
 	},
 	"localPage.createFile.label": {
-		"message": "Crear un nuevo directorio (Archivo)"
+		"message": "Crear una nueva libreta de direcciones (Archivo)"
 	},
 	"localPage.openDirectory.label": {
-		"message": "Abrir un directorio existente (Carpeta)"
+		"message": "Abrir una libreta de direcciones existente (Directorio)"
 	},
 	"localPage.openFile.label": {
-		"message": "Abrir un directorio existente (Archivo)"
+		"message": "Abrir una libreta de direcciones existente (Archivo)"
 	},
 	"localPage.uri.groupbox": {
 		"message": "Dirección"
 	},
 	"localPage.uri.label": {
-		"message": "Carpeta o archivo:"
+		"message": "Directorio o archivo:"
 	},
 	"localPage.uri.description": {
-		"message": "Elija la ubicación del nuevo directorio local. Si es un nuevo archivo, se recomienda usar una extensión en .vcf."
+		"message": "Con el navegador, elija la ubicación de su nueva libreta de direcciones local. Si está creando un archivo nuevo, especifique .vcf como extensión de archivo."
 	},
 	"localPage.uributton.label": {
 		"message": "Navegar"
 	},
 	"remotePage.wizard.description": {
-		"message": "Tipo y ubicación del nuevo directorio remoto."
+		"message": "Tipo y ubicación de la nueva libreta de direcciones remota."
 	},
 	"remotePage.description": {
-		"message": "¿Cuál es el tipo de su directorio remoto? : (Cuidado con Google, que no respeta el estándar vCard)"
+		"message": "¿Cuál es el tipo de su libreta de direcciones remota? (Precaución: Google NO cumple con los estándares vCard)"
 	},
 	"remotePage.type.label": {
 		"message": "Tipo"
@@ -3017,13 +3017,13 @@
 		"message": "Conexión"
 	},
 	"remotePage.url.description": {
-		"message": "Para un tipo CardDAV, ingrese la URL de su directorio remoto. Puede usar una URL parcial (por ejemplo: http(s)://carddav.example.org). Para un tipo Google, este campo tiene que quedar vacío."
+		"message": "Para un tipo CardDAV, introduzca la URL de su libreta de direcciones remota. Puede intentar utilizar una URL parcial (ejemplo: http(s)://carddav.example.org). Para una libreta de direcciones de Google, no especifique este campo."
 	},
 	"remotePage.url.label": {
 		"message": "URL:"
 	},
 	"remotePage.credentials.description": {
-		"message": "Ingrese los identificadores de conexión. Para un tipo Google, el usuario tiene que ser la dirección de correo electróico Google."
+		"message": "Introduzca las credenciales para acceder a su libreta de direcciones. Para una libreta de direcciones de Google, el nombre de usuario debe ser su correo electrónico de Google."
 	},
 	"remotePage.user.label": {
 		"message": "Usuario:"
@@ -3038,10 +3038,10 @@
 		"message": "Validar"
 	},
 	"locationSearchPage.wizard.description": {
-		"message": "Definición de la búsqueda."
+		"message": "Definición de la búsqueda guardada."
 	},
 	"locationSearchPage.label": {
-		"message": "Búsqueda avanzada"
+		"message": "Búsqueda guardada"
 	},
 	"abSearchHeading.label": {
 		"message": "Buscar en:"
@@ -3065,7 +3065,7 @@
 		"message": "Autenticación Google"
 	},
 	"namePage.wizard.description": {
-		"message": "Propiedades del directorio"
+		"message": "Propiedades de la libreta de direcciones"
 	},
 	"namePage.selected.label": {
 		"message": "Seleccionado"
@@ -3086,37 +3086,37 @@
 		"message": "vCard"
 	},
 	"namesPage.wizard.description": {
-		"message": "Propiedades de los nuevos directorios"
+		"message": "Propiedades de las libretas de direcciones"
 	},
 	"namesPage.name.label": {
 		"message": "Nombres"
 	},
 	"namesPage.name.description": {
-		"message": "Varios directorios encontrados. Elija cuáles abrir, así como sus nombres:"
+		"message": "Se han descubierto varias libretas de direcciones. Elija las que desea abrir y sus nombres:"
 	},
 	"findPage.wizard.description": {
-		"message": "Búsqueda de directorios remotos"
+		"message": "Búsqueda de libreta de direcciones remota"
 	},
 	"findPage.name1.description": {
-		"message": "No se encontró ningun directorio remoto."
+		"message": "No se encontraron libretas de direcciones remotas."
 	},
 	"findPage.name2.description": {
-		"message": "Se encontró un directorio remoto. Directorio remoto válido para añadir:"
+		"message": "Se encontró una libreta de direcciones remota. Valide la libreta de direcciones remota para añadir:"
 	},
 	"findPage.name3.description": {
-		"message": "Se encontraron varios directorios remotos. Directorios remotos válidos para añadir:"
+		"message": "Se encontraron varias libretas de direcciones remotas. Valide las que quiera añadir:"
 	},
 	"finishPage.wizard.description": {
-		"message": "Configuración de directorios"
+		"message": "Configuración de libretas de direcciones"
 	},
 	"finishPage.description": {
-		"message": "Su nuevo directorio ha sido configurado exitosamente."
+		"message": "Su nueva libreta de direcciones se ha configurado correctamente."
 	},
 	"finishsPage.description": {
-		"message": "Sus nuevos directorio han sido configurados exitosamente."
+		"message": "Sus nuevas libretas de direcciones se han configurado correctamente."
 	},
 	"wdw_addressbooksEditTitle": {
-		"message": "Propiedades del directorio"
+		"message": "Propiedades de la libreta de direcciones"
 	},
 	"colorLabel": {
 		"message": "Color:"
@@ -3134,7 +3134,7 @@
 		"message": "Categorías"
 	},
 	"orgNodeLabel": {
-		"message": "Sociedad"
+		"message": "Organización"
 	},
 	"typeLabel": {
 		"message": "Tipo:"
@@ -3161,13 +3161,13 @@
 		"message": "Sincronización periódica"
 	},
 	"autoSyncLabel": {
-		"message": "Activar la sincronización periódica"
+		"message": "Habilitar la sincronización periódica"
 	},
 	"autoSyncAccesskey": {
 		"message": "A"
 	},
 	"autoSyncIntervalLabel": {
-		"message": "Intervalo para la sincronización periódica (minutos):"
+		"message": "Intervalo entre sincronizaciones periódicas (minutos):"
 	},
 	"autoSyncIntervalAccesskey": {
 		"message": "I"
@@ -3185,7 +3185,7 @@
 		"message": "m"
 	},
 	"resetFnFormulaLabel": {
-		"message": "Inicializar de nuevo"
+		"message": "Restaurar valores predeterminados"
 	},
 	"resetFnFormulaAccesskey": {
 		"message": "R"
@@ -3197,13 +3197,13 @@
 		"message": "A"
 	},
 	"wdw_adrEditionTitle": {
-		"message": "Modificación de dirección"
+		"message": "Editor de direcciones"
 	},
 	"adrPostOfficeLabel": {
 		"message": "Apartado postal"
 	},
 	"adrExtendedAddrLabel": {
-		"message": "Dpto"
+		"message": "Departamento"
 	},
 	"adrStreetLabel": {
 		"message": "Calle"
@@ -3212,7 +3212,7 @@
 		"message": "Ciudad"
 	},
 	"adrRegionLabel": {
-		"message": "Departamento"
+		"message": "Región"
 	},
 	"adrPostalCodeLabel": {
 		"message": "Código postal"
@@ -3224,7 +3224,7 @@
 		"message": "Obsoleto"
 	},
 	"daysLeftColumnLabel": {
-		"message": "Días faltantes"
+		"message": "Días restantes"
 	},
 	"nameColumnLabel": {
 		"message": "Nombre"
@@ -3284,7 +3284,7 @@
 		"message": "Cuenta de correo:"
 	},
 	"addressbookLabel": {
-		"message": "Directorio:"
+		"message": "Libreta de direcciones:"
 	},
 	"categoryLabel": {
 		"message": "Categoría:"
@@ -3323,7 +3323,7 @@
 		"message": "Edición"
 	},
 	"IMPPsTabLabel": {
-		"message": "Comunicaciones"
+		"message": "Comunicar"
 	},
 	"customFieldsTabLabel": {
 		"message": "Campos personalizados"
@@ -3353,7 +3353,7 @@
 		"message": "e"
 	},
 	"autocompletionTooltip": {
-		"message": "Remplaza la sugestión de direcciones de correo electrónico estándar por la sugestión de CardBook. Si está activa, se utilizarán las direcciones de correo electrónico de los directorios CardBook y de los correos electrónicos colectados."
+		"message": "Extiende el autocompletado estándar de contactos en las libretas de direcciones de Thunderbird con un autocompletado de contactos en las libretas de direcciones de CardBook."
 	},
 	"autocompleteSortByPopularityLabel": {
 		"message": "Ordenar las direcciones de correo electrónico por popularidad"
@@ -3368,13 +3368,13 @@
 		"message": "c"
 	},
 	"autocompleteShowAddressbookLabel": {
-		"message": "Ver el nombre del directorio"
+		"message": "Mostrar el nombre de la libreta de direcciones"
 	},
 	"autocompleteShowAddressbookAccesskey": {
 		"message": "V"
 	},
 	"autocompleteWithColorLabel": {
-		"message": "Usar el color del directorio"
+		"message": "Usar el color de la libreta de direcciones"
 	},
 	"autocompleteWithColorAccesskey": {
 		"message": "c"
@@ -3398,7 +3398,7 @@
 		"message": "R"
 	},
 	"useColorLabel": {
-		"message": "Usar el color del directorio para:"
+		"message": "Usar el color de la libreta de direcciones para:"
 	},
 	"useColorBackgroundLabel": {
 		"message": "El color del fondo"
@@ -3413,31 +3413,31 @@
 		"message": "x"
 	},
 	"useColorNothingLabel": {
-		"message": "Nada"
+		"message": "No usar"
 	},
 	"useColorNothingAccesskey": {
 		"message": "N"
 	},
 	"exclusiveLabel": {
-		"message": "CardBook, única fuente para los contactos"
+		"message": "Fuente única de contactos"
 	},
 	"exclusiveAccesskey": {
 		"message": "U"
 	},
 	"exclusiveTooltip": {
-		"message": "Si está desactivada, esta opción permite la búsqueda de contactos en los directorios estándar de Thunderbird para las estrellas amarillas, para el nombre mostrado en los correos electrónicos y la sugestión de direcciones de correo."
+		"message": "Si deshabilita esta opción, podrá recuperar las estrellas amarillas, el nombre a mostrar del correo electrónico y el autocompletado del correo electrónico en los contactos de las libretas de direcciones estándar de Thunderbird."
 	},
 	"accountsRestrictionsLabel": {
 		"message": "Restricciones de acceso para las cuentas de correo electrónico"
 	},
 	"accountsRestrictionsEnabledLabel": {
-		"message": "Activo"
+		"message": "Habilitado"
 	},
 	"accountsRestrictionsMailNameLabel": {
 		"message": "Cuenta de correo electrónico"
 	},
 	"accountsRestrictionsABNameLabel": {
-		"message": "Directorio"
+		"message": "Libreta de direcciones"
 	},
 	"accountsRestrictionsCatNameLabel": {
 		"message": "Categoría"
@@ -3452,10 +3452,10 @@
 		"message": "A"
 	},
 	"renameRestrictionLabel": {
-		"message": "Modificar"
+		"message": "Editar"
 	},
 	"renameRestrictionAccesskey": {
-		"message": "M"
+		"message": "E"
 	},
 	"deleteRestrictionLabel": {
 		"message": "Eliminar"
@@ -3464,19 +3464,19 @@
 		"message": "S"
 	},
 	"emailsCollectionLabel": {
-		"message": "Colecta de las direcciones de los correos electrónicos de salida"
+		"message": "Recopilar las direcciones de los correos electrónicos de salida"
 	},
 	"emailsCollectionTooltip": {
-		"message": "Se añade a la colecta de direcciones de correo electrónico estándar. está activa, las direcciones de correo electrónico que no se encuentran en los directorios CardBook serán añadidas en el o los directorios elegidos."
+		"message": "Extiende la recopilación de direcciones de correo electrónico salientes estándar de Thunderbird. Si está habilitado, las direcciones de correo electrónico que no estén presentes en ninguna libreta de direcciones de CardBook se añadirán a las libretas de direcciones seleccionadas."
 	},
 	"emailsCollectionEnabledLabel": {
-		"message": "Activo"
+		"message": "Habilitado"
 	},
 	"emailsCollectionMailNameLabel": {
 		"message": "Cuenta de correo electrónico"
 	},
 	"emailsCollectionABNameLabel": {
-		"message": "Directorio"
+		"message": "Libreta de direcciones"
 	},
 	"emailsCollectionCatNameLabel": {
 		"message": "Categoría"
@@ -3488,10 +3488,10 @@
 		"message": "A"
 	},
 	"renameEmailsCollectionLabel": {
-		"message": "Modificar"
+		"message": "Editar"
 	},
 	"renameEmailsCollectionAccesskey": {
-		"message": "M"
+		"message": "E"
 	},
 	"deleteEmailsCollectionLabel": {
 		"message": "Eliminar"
@@ -3500,19 +3500,19 @@
 		"message": "S"
 	},
 	"logGroupboxLabel": {
-		"message": "Diario"
+		"message": "Registro"
 	},
 	"debugModeLabel": {
-		"message": "Modo debug"
+		"message": "Modo de depuración"
 	},
 	"debugModeAccesskey": {
 		"message": "d"
 	},
 	"debugModeTooltip": {
-		"message": "Activar este modo para generar más información en los diarios."
+		"message": "Habilite el modo de depuración para ampliar el registro."
 	},
 	"statusInformationLineNumberLabel": {
-		"message": "Número de líneas del archivo de diario:"
+		"message": "Número de líneas guardadas en el archivo de registro:"
 	},
 	"statusInformationLineNumberAccesskey": {
 		"message": "N"
@@ -3620,7 +3620,7 @@
 		"message": "F"
 	},
 	"resetAdrFormulaLabel": {
-		"message": "Vaciar"
+		"message": "Restaurar valores predeterminados"
 	},
 	"resetAdrFormulaAccesskey": {
 		"message": "R"
@@ -3635,7 +3635,7 @@
 		"message": "A"
 	},
 	"dateDisplayedFormatLabel": {
-		"message": "Formato de la fecha:"
+		"message": "Formato de fecha:"
 	},
 	"dateDisplayedFormatAccesskey": {
 		"message": "d"
@@ -3653,7 +3653,7 @@
 		"message": "Selector de campos"
 	},
 	"editionWarn": {
-		"message": "Al editar un contacto, CardBook solo mostrará estos campos seleccionados."
+		"message": "Al editar un contacto, CardBook solo mostrará los campos seleccionados."
 	},
 	"fieldsButtonLabel": {
 		"message": "Establecer como predeterminado"
@@ -3668,7 +3668,7 @@
 		"message": "Campo PREF"
 	},
 	"usePreferenceValueLabel": {
-		"message": "Usar un valor para las preferencias (solamente para vCard 4.0)"
+		"message": "Usar un valor para las preferencias (solo para vCard 4.0)"
 	},
 	"usePreferenceValueAccesskey": {
 		"message": "v"
@@ -3680,7 +3680,7 @@
 		"message": "L"
 	},
 	"ABtypesGroupboxLabel": {
-		"message": "Directorio"
+		"message": "Libreta de direcciones"
 	},
 	"typesCategoryGoogleLabel": {
 		"message": "Google"
@@ -3716,7 +3716,7 @@
 		"message": "D"
 	},
 	"typesCategoryEmailLabel": {
-		"message": "Dirección de correo electrónico"
+		"message": "Correo electrónico"
 	},
 	"typesCategoryEmailAccesskey": {
 		"message": "E"
@@ -3749,10 +3749,10 @@
 		"message": "A"
 	},
 	"renameTypeLabel": {
-		"message": "Modificar"
+		"message": "Editar"
 	},
 	"renameTypeAccesskey": {
-		"message": "M"
+		"message": "E"
 	},
 	"deleteTypeLabel": {
 		"message": "Eliminar"
@@ -3770,7 +3770,7 @@
 		"message": "Este parámetro permite abrir directamente la dirección de mensajería instantánea usando el protocolo deseado."
 	},
 	"IMPPGroupboxLabel": {
-		"message": "Comunicaciones Internet"
+		"message": "Comunicaciones por Internet"
 	},
 	"preferIMPPPrefLabel": {
 		"message": "Preferir las comunicaciones Internet marcadas con"
@@ -3779,7 +3779,7 @@
 		"message": "P"
 	},
 	"preferIMPPPrefWarn": {
-		"message": "Para esta opción, si no hay comunicaciones Internet de tipo « pref », todas las comunicaciones Internet están tomadas en cuenta."
+		"message": "Si no se marca ninguna dirección, se propone una conexión a todas las direcciones del contacto."
 	},
 	"IMPPCodeHeaderLabel": {
 		"message": "Código"
@@ -3797,10 +3797,10 @@
 		"message": "A"
 	},
 	"renameIMPPLabel": {
-		"message": "Modificar"
+		"message": "Editar"
 	},
 	"renameIMPPAccesskey": {
-		"message": "M"
+		"message": "E"
 	},
 	"deleteIMPPLabel": {
 		"message": "Eliminar"
@@ -3839,7 +3839,7 @@
 		"message": "V"
 	},
 	"URLPhoneBackgroundLabel": {
-		"message": "Ejecutar en proceso de fondo"
+		"message": "Ejecutar en segundo plano"
 	},
 	"URLPhoneBackgroundAccesskey": {
 		"message": "S"
@@ -3857,7 +3857,7 @@
 		"message": "i"
 	},
 	"customFieldRankHeader": {
-		"message": "Ubicación"
+		"message": "Rango"
 	},
 	"customFieldCodeHeader": {
 		"message": "Nombre del campo"
@@ -3866,13 +3866,13 @@
 		"message": "Etiqueta del campo"
 	},
 	"customFieldsPersTitleLabel": {
-		"message": "Informaciones personales"
+		"message": "Información personal"
 	},
 	"customFieldsPersTitleAccesskey": {
 		"message": "P"
 	},
 	"customFieldsOrgTitleLabel": {
-		"message": "Informaciones profesionales"
+		"message": "Información profesional"
 	},
 	"customFieldsOrgTitleAccesskey": {
 		"message": "r"
@@ -3884,10 +3884,10 @@
 		"message": "A"
 	},
 	"renameCustomFieldsLabel": {
-		"message": "Modificar"
+		"message": "Editar"
 	},
 	"renameCustomFieldsAccesskey": {
-		"message": "M"
+		"message": "E"
 	},
 	"deleteCustomFieldsLabel": {
 		"message": "Eliminar"
@@ -3899,13 +3899,13 @@
 		"message": "El campo ORG puede contener un valor estructurado, compuesto de elementos separados por el carácter PUNTO Y COMA (por ejemplo: compañia;servicio;departamento). Los campos siguientes describen las etiquetas de estos elementos."
 	},
 	"orgRankLabel": {
-		"message": "Ubicación"
+		"message": "Rango"
 	},
 	"orgLabelLabel": {
 		"message": "Etiqueta del campo"
 	},
 	"listPanelLabel": {
-		"message": "Si su servidor no usa las categorías (como Google, Apple, Zimbra, etc…), las listas son una buena manera de enviar correos electrónicos a grupos. vCard 3.0 no toma en cuenta las listas de manera nativa, pero se puede habilitar de toda forma con campos personalizados, entonces para poder utilizar listas en vCard 3.0, tiene que definir estos campos."
+		"message": "Si su servidor no admite categorías (como Google, Apple, Zimbra, etc…), las listas son una buena manera de enviar correos electrónicos a grupos. vCard 3.0 no admite listas de forma nativa, pero esto se puede lograr con campos personalizados, por lo que si desea utilizar listas en vCard 3.0, debe definir estos campos."
 	},
 	"listGroupboxLabel": {
 		"message": "Campos personalizados para las listas"
@@ -3923,7 +3923,7 @@
 		"message": "M"
 	},
 	"resetListLabel": {
-		"message": "Vaciar"
+		"message": "Restaurar valores predeterminados"
 	},
 	"resetListAccesskey": {
 		"message": "R"
@@ -3995,10 +3995,10 @@
 		"message": "G"
 	},
 	"discoveryGroupboxLabel": {
-		"message": "Descubrimiento de directorios"
+		"message": "Descubrimiento de libretas de direcciones"
 	},
 	"discoveryWarn": {
-		"message": "A cada sincronización, un control sobre las URL siguientes se realizará para buscar los nuevos directorios o los que fueron eliminados."
+		"message": "En cada sincronización, se ejecutará una verificación en las URL siguientes para buscar libretas de direcciones nuevas o eliminadas."
 	},
 	"discoveryAccountsGroupboxLabel": {
 		"message": "Cuentas"
@@ -4016,13 +4016,13 @@
 		"message": "Envío de correos electrónicos"
 	},
 	"preferEmailPrefLabel": {
-		"message": "Preferir los corres electrónicos marcados con"
+		"message": "Preferir direcciones de correo electrónico marcadas con "
 	},
 	"preferEmailPrefAccesskey": {
 		"message": "P"
 	},
 	"preferEmailPrefWarn": {
-		"message": "Para esta opción, si no hay correos electrónicos de tipo « pref », todos los correos electrónicos se tomarán en cuenta."
+		"message": "Si no se marca ninguna dirección, el mensaje se envía a todas las direcciones del contacto."
 	},
 	"warnEmptyEmailsLabel": {
 		"message": "Avisarme cuando trato de enviar un correo electrónico a un contacto que no tiene dirección de correo"
@@ -4031,7 +4031,7 @@
 		"message": "M"
 	},
 	"useOnlyEmailLabel": {
-		"message": "Usar únicamente las direcciones de correo electrónico, sin los nombres"
+		"message": "Usar solo direcciones de correo electrónico, sin mostrar sus nombres"
 	},
 	"useOnlyEmailAccesskey": {
 		"message": "U"
@@ -4043,13 +4043,13 @@
 		"message": "Asociar una vCard"
 	},
 	"accountsVCardsEnabledLabel": {
-		"message": "Activo"
+		"message": "Habilitado"
 	},
 	"accountsVCardsMailLabel": {
 		"message": "Cuenta de correo"
 	},
 	"accountsVCardsABNameLabel": {
-		"message": "Directorio"
+		"message": "Libreta de direcciones"
 	},
 	"accountsVCardsFileNameLabel": {
 		"message": "Archivo adjunto"
@@ -4076,10 +4076,10 @@
 		"message": "S"
 	},
 	"birthdayListWarn": {
-		"message": "Los cumpleaños se buscan únicamente en los directorios de CardBook."
+		"message": "Los cumpleaños solo se buscan en las libretas de direcciones de CardBook."
 	},
 	"addressbooksGroupboxLabel": {
-		"message": "Directorios"
+		"message": "Libretas de direcciones"
 	},
 	"selectAllABsLabel": {
 		"message": "Seleccionar todo"
@@ -4112,7 +4112,7 @@
 		"message": "E"
 	},
 	"gender.conf.label": {
-		"message": "Género (solamente para vCard 4.0)"
+		"message": "Sexo (solamente para vCard 4.0)"
 	},
 	"birthplace.conf.label": {
 		"message": "Lugar de nacimiento (solamente para vCard 4.0)"
@@ -4319,13 +4319,13 @@
 		"message": "CardBook"
 	},
 	"enableAccountsTooltip": {
-		"message": "Activar o desactivar los directorios durante las búsquedas y sincronizaciones."
+		"message": "Habilite o deshabilite la búsqueda y sincronización de libretas de direcciones."
 	},
 	"colorAccountsTooltip": {
-		"message": "Elegir un color para los directorios durante las búsquedas sobre varios directorios."
+		"message": "Resultados de búsqueda de las libretas de direcciones en color (se utilizan cuando las búsquedas abarcan varias libretas de direcciones)"
 	},
 	"readonlyAccountsTooltip": {
-		"message": "Poner o no los directorios en solo lectura."
+		"message": "Configurar las libretas de direcciones en modo de solo lectura o lectura y escritura."
 	},
 	"searchRemoteLabel": {
 		"message": "Esta libreta de direcciones muestra contactos solo tras una búsqueda"
@@ -4334,22 +4334,22 @@
 		"message": "Seleccione las columnas que desea mostrar"
 	},
 	"cardbookAccountMenuLabel": {
-		"message": "Directorio"
+		"message": "Libreta de direcciones"
 	},
 	"cardbookAccountMenuAddServerLabel": {
-		"message": "Nuevo directorio"
+		"message": "Nueva libreta de direcciones"
 	},
 	"cardbookAccountMenuEditServerLabel": {
-		"message": "Modificar el directorio"
+		"message": "Editar la libreta de direcciones"
 	},
 	"cardbookAccountMenuCloseServerLabel": {
-		"message": "Eliminar el directorio"
+		"message": "Eliminar la libreta de direcciones"
 	},
 	"cardbookAccountMenuSyncLabel": {
-		"message": "Sincronizar el directorio"
+		"message": "Sincronizar la libreta de direcciones"
 	},
 	"cardbookAccountMenuSyncsLabel": {
-		"message": "Sincronizar todos los directorios"
+		"message": "Sincronizar todas las libreta de direcciones"
 	},
 	"cardbookContactsMenuLabel": {
 		"message": "Contactos"
@@ -4358,19 +4358,19 @@
 		"message": "Herramientas"
 	},
 	"cardbookToolsMenuBirthdayListLabel": {
-		"message": "Lista de cumpleaños"
+		"message": "Ver la lista de cumpleaños"
 	},
 	"cardbookToolsMenuSyncLightningLabel": {
-		"message": "Adición de los cumpleaños en el calendario"
+		"message": "Añadir los cumpleaños al calendario"
 	},
 	"cardbookToolsMenuFindAllDuplicatesLabel": {
-		"message": "Búsqueda de los contactos duplicados en todos los directorios"
+		"message": "Buscar contactos duplicados en todas las libretas de direcciones"
 	},
 	"cardbookToolsMenuFindSingleDuplicatesLabel": {
-		"message": "Búsqueda de los contactos duplicados en el directorio corriente"
+		"message": "Buscar contactos duplicados en la libreta de direcciones actual"
 	},
 	"cardbookToolsMenuPrefsLabel": {
-		"message": "Configuración de CardBook"
+		"message": "Preferencias de CardBook"
 	},
 	"cardbookToolbarLabel": {
 		"message": "Barra de herramientas de CardBook"
@@ -4379,7 +4379,7 @@
 		"message": "C"
 	},
 	"cardbookABPaneToolbarLabel": {
-		"message": "Barre de herramientas del panel de directorios CardBook"
+		"message": "Barra de herramientas del panel de la libreta de direcciones de CardBook"
 	},
 	"cardbookABPaneToolbarAccesskey": {
 		"message": "p"
@@ -4391,16 +4391,16 @@
 		"message": "P"
 	},
 	"cardbookToolbarAddServerButtonLabel": {
-		"message": "Nuevo directorio"
+		"message": "Nueva libreta de direcciones"
 	},
 	"cardbookToolbarAddServerButtonTooltip": {
-		"message": "Añadir un directorio local o remoto"
+		"message": "Añadir una libreta de direcciones local o remota"
 	},
 	"cardbookToolbarSyncButtonLabel": {
 		"message": "Sincronizar"
 	},
 	"cardbookToolbarSyncButtonTooltip": {
-		"message": "Sincronizar todos los directorios remotos"
+		"message": "Sincronizar todas las libretas de direcciones remotas"
 	},
 	"cardbookToolbarWriteButtonLabel": {
 		"message": "Escribir"
@@ -4430,25 +4430,25 @@
 		"message": "Nueva lista"
 	},
 	"cardbookToolbarAddListButtonTooltip": {
-		"message": "Crear una nueva lista de difusión"
+		"message": "Nueva lista de correo"
 	},
 	"cardbookToolbarEditButtonLabel": {
-		"message": "Modificar"
+		"message": "Editar"
 	},
 	"cardbookToolbarEditButtonTooltip": {
-		"message": "Permite la modificación de un contacto"
+		"message": "Editar el contacto seleccionado"
 	},
 	"cardbookToolbarRemoveButtonLabel": {
 		"message": "Eliminar"
 	},
 	"cardbookToolbarRemoveButtonTooltip": {
-		"message": "Permite la supresión de un contacto"
+		"message": "Eliminar contacto seleccionado"
 	},
 	"cardbookToolbarPrintButtonLabel": {
-		"message": "Vista preliminar"
+		"message": "Vista previa"
 	},
 	"cardbookToolbarPrintButtonTooltip": {
-		"message": "Permite imprimir la selección"
+		"message": "Vista previa de la selección"
 	},
 	"cardbookToolbarBackButtonLabel": {
 		"message": "Deshacer"
@@ -4469,16 +4469,16 @@
 		"message": "Menú CardBook"
 	},
 	"cardbookToolbarSearchBoxLabel": {
-		"message": "Búsqueda de los contactos"
+		"message": "Búsqueda de contactos"
 	},
 	"cardbookToolbarSearchBoxTooltip": {
-		"message": "Búsqueda de los contactos"
+		"message": "Búsqueda de contactos"
 	},
 	"cardbookToolbarComplexSearchLabel": {
-		"message": "Búsqueda avanzada"
+		"message": "Búsqueda guardada"
 	},
 	"cardbookToolbarComplexSearchTooltip": {
-		"message": "Búsqueda según condiciones múltiples"
+		"message": "Crea una nueva carpeta de búsqueda guardada"
 	},
 	"cardbookToolbarThMenuButtonLabel": {
 		"message": "Menú de la aplicación"
@@ -4487,10 +4487,10 @@
 		"message": "Mostrar el menú de Thunderbird"
 	},
 	"cardbookToolbarABMenuLabel": {
-		"message": "Vista de directorios"
+		"message": "Vista de libretas de direcciones"
 	},
 	"cardbookToolbarABMenuTooltip": {
-		"message": "Filtrar la manera de mostrar los directorios"
+		"message": "Filtrar cómo se muestran las libretas de direcciones"
 	},
 	"generalTabLabel": {
 		"message": "General"
@@ -4544,28 +4544,28 @@
 		"message": "Sonido"
 	},
 	"cardurlLabel": {
-		"message": "URL del contacto"
+		"message": "URL de la tarjeta"
 	},
 	"cacheuriLabel": {
-		"message": "URI del caché"
+		"message": "URI de la caché"
 	},
 	"localizeadrTreeLabel": {
-		"message": "Localizar"
+		"message": "Mostrar en el mapa"
 	},
 	"toEmailEmailTreeLabel": {
 		"message": "Escribir un nuevo mensaje"
 	},
 	"ccEmailEmailTreeLabel": {
-		"message": "Escribir un nuevo mensaje (copia / cc)"
+		"message": "Escribir un nuevo mensaje (copia/cc)"
 	},
 	"bccemailemailTreeLabel": {
-		"message": "Escribir un nuevo mensaje (copia oculta / bcc)"
+		"message": "Escribir un nuevo mensaje (copia oculta/bcc)"
 	},
 	"findemailemailTreeLabel": {
-		"message": "Encontrar los correos electrónicos de esta dirección de correo"
+		"message": "Buscar correos electrónicos relacionados con esta dirección de correo electrónico"
 	},
 	"findeventemailTreeLabel": {
-		"message": "Encontrar los eventos de esta dirección de correo"
+		"message": "Buscar eventos de calendario relacionados con esta dirección de correo electrónico"
 	},
 	"openURLTreeLabel": {
 		"message": "Abrir la URL"
@@ -4577,16 +4577,22 @@
 		"message": "Escribir un nuevo mensaje"
 	},
 	"ccEmailCardFromAccountsOrCatsLabel": {
-		"message": "Escribir un nuevo mensaje (copia / cc)"
+		"message": "Escribir un nuevo mensaje (copia/cc)"
 	},
 	"ccEmailCardFromCardsLabel": {
-		"message": "Escribir un nuevo mensaje (copia / cc)"
+		"message": "Escribir un nuevo mensaje (copia/cc)"
 	},
 	"bccEmailCardFromAccountsOrCatsLabel": {
-		"message": "Escribir un nuevo mensaje (copia oculta / bcc)"
+		"message": "Escribir un nuevo mensaje (copia oculta/bcc)"
 	},
 	"bccEmailCardFromCardsLabel": {
-		"message": "Escribir un nuevo mensaje (copia oculta / bcc)"
+		"message": "Escribir un nuevo mensaje (copia oculta/bcc)"
+	},
+	"searchForOnlineKeyFromCardsLabel": {
+		"message": "Descubrir claves en línea"
+	},
+	"searchForOnlineKeyTreeLabel": {
+		"message": "Descubrir claves en línea"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Compartir por correo electrónico"
@@ -4598,16 +4604,16 @@
 		"message": "Categoría"
 	},
 	"findEmailsFromCardsLabel": {
-		"message": "Encontrar los correos electrónicos del contacto"
+		"message": "Buscar correos electrónicos relacionados con este contacto"
 	},
 	"findEventsFromCardsLabel": {
-		"message": "Encontrar los eventos del contacto"
+		"message": "Buscar eventos de calendario relacionados con este contacto"
 	},
 	"localizeCardFromCardsLabel": {
-		"message": "Ubicar"
+		"message": "Mostrar en el mapa"
 	},
 	"openURLCardFromCardsLabel": {
-		"message": "Abrir las URLs"
+		"message": "Abrir las URL"
 	},
 	"cutCardFromAccountsOrCatsLabel": {
 		"message": "Cortar"
@@ -4628,22 +4634,22 @@
 		"message": "Pegar"
 	},
 	"pasteEntryLabel": {
-		"message": "Pegar la línea"
+		"message": "Pegar entrada"
 	},
 	"exportCardToFileLabel": {
-		"message": "Exportar hacia un archivo"
+		"message": "Exportar a un archivo"
 	},
 	"exportCardToDirLabel": {
-		"message": "Exportar hacia una carpeta"
+		"message": "Exportar a un directorio"
 	},
 	"importCardFromFileLabel": {
 		"message": "Importar contactos desde un archivo"
 	},
 	"importCardFromDirLabel": {
-		"message": "Importar contactos desde una carpeta"
+		"message": "Importar contactos desde un directorio"
 	},
 	"findDuplicatesFromAccountsOrCatsLabel": {
-		"message": "Búsqueda de contactos duplicados en el directorio corriente"
+		"message": "Buscar contactos duplicados en la libreta de direcciones actual"
 	},
 	"generateFnFromAccountsOrCatsLabel": {
 		"message": "Generar los nombres mostrados"
@@ -4658,13 +4664,13 @@
 		"message": "Convertir la lista en categoría"
 	},
 	"editAccountFromAccountsOrCatsLabel": {
-		"message": "Editar el directorio"
+		"message": "Editar la libreta de direcciones"
 	},
 	"syncAccountFromAccountsOrCatsLabel": {
-		"message": "Sincronizar el directorio"
+		"message": "Sincronizar la libreta de direcciones"
 	},
 	"removeAccountFromAccountsOrCatsLabel": {
-		"message": "Eliminar el directorio"
+		"message": "Eliminar la libreta de direcciones"
 	},
 	"editEventLabel": {
 		"message": "Modificar el evento"
@@ -4943,7 +4949,7 @@
 		"message": "Convertir las vCards"
 	},
 	"convertVCardsTooltip": {
-		"message": "La version vCard de algunos contactos es diferente de la versión vCard de su directorio, el botón puede convertir estas vCards."
+		"message": "La versión vCard de algunos contactos es diferente de la versión vCard de su libreta de direcciones, este botón puede convertir estas vCards"
 	},
 	"convertVCardsAccesskey": {
 		"message": "C"

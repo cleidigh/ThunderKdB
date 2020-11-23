@@ -2,8 +2,7 @@ if ("undefined" == typeof(cardbookListConversion)) {
 	var { jsmime } = ChromeUtils.import("resource:///modules/jsmime.jsm");
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	function cardbookListConversion(aEmails, aIdentity) {
 		this.emailResult = [];
@@ -41,7 +40,7 @@ if ("undefined" == typeof(cardbookListConversion)) {
 		_convert: function (aEmails, aIdentity) {
 			var memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
 			var useOnlyEmail = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
-			let addresses = MailServices.headerParser.parseEncodedHeader(aEmails);
+			let addresses = MailServices.headerParser.parseEncodedHeaderW(aEmails);
 			for (let address of addresses) {
 				let fullAddress = MailServices.headerParser.makeMimeAddress(address.name, address.email);
 				if (address.email.includes("@")) {

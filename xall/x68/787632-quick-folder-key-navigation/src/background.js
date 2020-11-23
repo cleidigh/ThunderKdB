@@ -7,31 +7,6 @@
 "use strict"; // use strict mode
 
 
-// Default settings. Initialize storage to these values.
-const defaultSettings = {
-  MailFolderKeyNav: true,
-  MailFolderKeyNavMenuItem: true
-}
-
-// If there are missing settings, save their default values.
-async function getSavedSettings() {
-  let settings = await messenger.storage.local.get();
-  let save = false;
-  if (!settings.hasOwnProperty("MailFolderKeyNav")) {
-    settings.MailFolderKeyNav = defaultSettings.MailFolderKeyNav;
-    save = true;
-  }
-  if (!settings.hasOwnProperty("MailFolderKeyNavMenuItem")) {
-    settings.MailFolderKeyNavMenuItem= defaultSettings.MailFolderKeyNavMenuItem;
-    save = true;
-  }
-  if (save) {
-    await messenger.storage.local.set(settings);
-  }
-  return(settings);
-}
-
-
 // For updating the state of the "Enable mail folder key navigation" menu item
 // in response to changes in settings saved in storage.local.
 var updateMenuItem = function(itemId) {

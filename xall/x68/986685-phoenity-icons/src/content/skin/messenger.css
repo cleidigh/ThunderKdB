@@ -9,10 +9,12 @@
 @namespace "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
 @namespace html "http://www.w3.org/1999/xhtml";
 
-@import url(chrome://PhoenityIconsOverlay/content/skin/folderPane.css);
-@import url(chrome://PhoenityIconsOverlay/content/skin/primaryToolbar.css);
-@import url(chrome://PhoenityIconsOverlay/content/skin/calendar/calendar.css);
-@import url(chrome://PhoenityIconsOverlay/content/skin/chat.css);
+/*
+@import url(chrome://PhoenityIcons/content/skin/folderPane.css);
+@import url(chrome://PhoenityIcons/content/skin/primaryToolbar.css);
+@import url(chrome://PhoenityIcons/content/skin/calendar/calendar.css);
+@import url(chrome://PhoenityIcons/content/skin/chat.css);
+*/
 
 
 /* ::::: online/offline icons ::::: */
@@ -48,3 +50,20 @@
 */
 }
 
+/* Address Book menuitem icons */
+
+.abMenuItem[AddrBook="true"] {
+  list-style-image: url("chrome://PhoenityIcons/content/skin/addressbook/icons/addrbook.png");
+}
+
+.abMenuItem[MailList="true"] {
+  list-style-image: url("chrome://PhoenityIcons/content/skin/addressbook/icons/ablist.png");
+}
+
+.abMenuItem[AddrBook="true"][IsRemote="true"] {
+  list-style-image: url("chrome://PhoenityIcons/content/skin/addressbook/icons/remote-addrbook.png");
+}
+
+.abMenuItem[AddrBook="true"][IsRemote="true"][IsSecure="true"] {
+  list-style-image: url("chrome://PhoenityIcons/content/skin/addressbook/icons/secure-remote-addrbook.png");
+}

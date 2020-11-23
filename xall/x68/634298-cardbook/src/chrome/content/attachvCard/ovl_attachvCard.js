@@ -1,7 +1,6 @@
 if ("undefined" == typeof(ovl_attachvCard)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var ovl_attachvCard = {
 		

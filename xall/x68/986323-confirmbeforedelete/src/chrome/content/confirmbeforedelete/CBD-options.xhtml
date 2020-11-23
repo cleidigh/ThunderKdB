@@ -1,0 +1,37 @@
+﻿<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://communicator/skin/" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://confirmbeforedelete/locale/confirmbeforedelete.dtd">
+<dialog id="d_options"
+        type="child"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+	    onload="CBDinitpanel();"
+        buttons="accept, cancel"
+        title="&CBDcaption;">
+    <script type="application/javascript" src="chrome://confirmbeforedelete/content/confirmbeforedelete/CBD-options.js"/>
+
+    <groupbox>
+        <checkbox id="CBDoption9" label="&CBDcheck9;" oncommand="toggleDeleteLock(this)"/> 
+        <checkbox id="CBDoption3" label="&CBDcheck3;" /> 
+        <checkbox id="CBDoption8" label="&CBDcheck8;" />
+        <checkbox id="CBDoption11" label="&CBDcheck11;" />
+        <checkbox id="CBDoption2" label="&CBDcheck2;" /> 
+        <checkbox id="CBDoption4" label="&CBDcheck4;" />
+        <checkbox id="CBDoption1" label="&CBDcheck1;" />
+        <checkbox id="CBDoption6" label="&CBDcheck6;" /> 
+        <separator />
+        <checkbox id="CBDoption5" label="&CBDcheck5;" /> 
+        <checkbox id="CBDoption7" label="&CBDcheck7;" oncommand="toggleFolderLock(this)"/>
+        
+        <checkbox id="CBDoption10" label="&CBDcheck10;"  oncommand="toggleTag(this)"/>
+        <menulist id="taglist" oncommand="listChange();" >
+			<menupopup id="tagpop">
+			</menupopup>
+        </menulist>
+    </groupbox>
+    
+    
+
+</dialog>

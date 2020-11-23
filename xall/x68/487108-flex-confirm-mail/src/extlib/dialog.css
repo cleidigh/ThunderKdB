@@ -1,0 +1,121 @@
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+:root,
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font: message-box;
+  line-height: 1;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  user-select: none;
+}
+
+:root.dialog > body {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.dialog-content {
+  opacity: 1;
+  transition: 0.25s opacity ease-out;
+}
+
+:root:not(.ready) .dialog-content {
+  opacity: 0;
+}
+
+.dialog-content,
+.flex-box {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.dialog-content {
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+:root:not(.offscreen) .dialog-content {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+
+:root.offscreen .dialog-content {
+  border: 1px solid;
+}
+
+
+.dialog-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: 0.5em;
+}
+
+.dialog-buttons button {
+  margin: 0 0.5em;
+  white-space: nowrap;
+}
+
+
+/* in-page dialog */
+
+.in-page-dialog.dialog-container {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.45);
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: 0.25s opacity ease-out;
+  z-index: 1000;
+}
+.in-page-dialog.dialog-container:not(.shown),
+.in-page-dialog.dialog-container:not(.shown) * {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.in-page-dialog.dialog {
+  flex-direction: column;
+  min-height: 0;
+}
+
+.in-page-dialog.dialog-contents {
+  flex-direction: column;
+  min-height: 0;
+}
+
+.in-page-dialog.dialog {
+  background: var(--bg-color);
+  color: var(--text-color);
+  max-height: 90%;
+  max-width: 90%;
+  padding: 1em;
+  resize: both;
+}

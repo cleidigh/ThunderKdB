@@ -74,48 +74,48 @@ function listen(window, node, event, func, capture) {
  * @return [function]: A 0-parameter function that undoes adding the callback.
  */
 function unload(callback, container) {
-  // Initialize the array of unloaders on the first usage
-  let unloaders = unload.unloaders;
-  if (unloaders == null)
-    unloaders = unload.unloaders = [];
+	// Initialize the array of unloaders on the first usage
+	let unloaders = unload.unloaders;
+	if (unloaders == null)
+		unloaders = unload.unloaders = [];
 
-  // Calling with no arguments runs all the unloader callbacks
-  if (callback == null) {
-    unloaders.slice().forEach(function(unloader) {return unloader()});
-    unloaders.length = 0;
-    return;
-  }
+	// Calling with no arguments runs all the unloader callbacks
+	if (callback == null) {
+		unloaders.slice().forEach(function(unloader) {return unloader()});
+		unloaders.length = 0;
+		return;
+	}
 
-  // The callback is bound to the lifetime of the container if we have one
-  if (container != null) {
-    // Remove the unloader when the container unloads
-    container.addEventListener("unload", unloader, false);
+	// The callback is bound to the lifetime of the container if we have one
+	if (container != null) {
+		// Remove the unloader when the container unloads
+		container.addEventListener("unload", unloader, false);
 
-    // Wrap the callback to additionally remove the unload listener
-    let origCallback = callback;
-    callback = function() {
-      container.removeEventListener("unload", unloader, false);
-      removeUnloader();
-      origCallback();
-    }
-  }
+		// Wrap the callback to additionally remove the unload listener
+		let origCallback = callback;
+		callback = function() {
+			container.removeEventListener("unload", unloader, false);
+			removeUnloader();
+			origCallback();
+		}
+	}
 
-  // Wrap the callback in a function that ignores failures
-  function unloader() {
-    try {
-      callback();
-    }
-    catch(ex) {}
-  }
-  unloaders.push(unloader);
+	// Wrap the callback in a function that ignores failures
+	function unloader() {
+		try {
+			callback();
+		}
+		catch(ex) {}
+	}
+	unloaders.push(unloader);
 
-  // Provide a way to remove the unloader
-  function removeUnloader() {
-    let index = unloaders.indexOf(unloader);
-    if (index != -1)
-      unloaders.splice(index, 1);
-  }
-  return removeUnloader;
+	// Provide a way to remove the unloader
+	function removeUnloader() {
+		let index = unloaders.indexOf(unloader);
+		if (index != -1)
+			unloaders.splice(index, 1);
+	}
+	return removeUnloader;
 }
 
 /**
@@ -175,3 +175,102 @@ function watchWindows(callback, type) {
 	// Make sure to stop watching for windows if we're unloading
 	unload(function(){Services.ww.unregisterNotification(windowWatcher)});
 }
+
+function setTimeout(callback, time)
+{
+	let timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
+	timer.initWithCallback(callback, time, Ci.nsITimer.TYPE_ONE_SHOT);
+	return timer;
+}
+
+function setDefaultPrefs(prefs)
+{
+	let p = prefs,
+			branch = Services.prefs.getDefaultBranch(PREF_BRANCH);
+
+	for (let key in p)
+	{
+		let val = p[key];
+		switch (typeof val)
+		{
+			case "boolean":
+				branch.setBoolPref(key, val);
+				val = pref.getBoolPref(key);
+				break;
+			case "number":
+				branch.setIntPref(key, val);
+				val = pref.getIntPref(key);
+				break;
+			case "string":
+				branch.setStringPref(key, val);
+				val = pref.getStringPref(key);
+				break;
+		}
+		prefs[key] = val;
+	}
+	return prefs;
+} //setDefaultPrefs()
+
+function onPrefChange(pref, aTopic, key)
+{
+	if(aTopic != "nsPref:changed" || typeof(prefs[key]) == "undefined")
+		return;
+
+	switch (pref.getPrefType(key))
+	{
+		case Ci.nsIPrefBranch.PREF_BOOL:
+			prefs[key] = pref.getBoolPref(key);
+			break;
+
+		case Ci.nsIPrefBranch.PREF_INT:
+			prefs[key] = pref.getIntPref(key);
+			break;
+
+		case Ci.nsIPrefBranch.PREF_STRING:
+			prefs[key] = pref.getStringPref(key);
+			break;
+		default:
+			return;
+	}
+} //onPrefChange()
+
+function disableAll(obj, r, s, f)
+{
+	if (!s && obj.hasAttribute && obj.hasAttribute("autoSLM"))
+		return true;
+
+	if (f || s || typeof(r) == "undefined")
+	{
+		if ("disabled" in obj && !("___autoSLM_disabled" in obj))
+		{
+			obj.___autoSLM_disabled = obj.disabled;
+		}
+		if (typeof(r) == "undefined")
+		{
+			obj.disabled = obj.___autoSLM_disabled;
+			delete obj.___autoSLM_disabled;
+		}
+		else
+		{
+			obj.disabled = r;
+		}
+	}
+	for(let i = 0; i < obj.childNodes.length; i++)
+	{
+		let a = disableAll(obj.childNodes[i], r, s, f);
+		if (a)
+			s = a;
+	}
+}
+
+function multiline(func, ws)
+{
+	func = func.toString();
+	func = func.slice(func.indexOf("/*") + 2, func.lastIndexOf("*/")).split("*//*").join("*/");
+	func = func.replace(/{SVG-([A-Z]+)}/g, function(a, b)
+	{
+		return SVG[b.toLowerCase()] || a;
+	});
+	return ws ? func : func.replace(/[\n\t]*/g, "");
+}
+

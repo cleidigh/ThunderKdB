@@ -63,6 +63,7 @@ browser.compose.onAttachmentAdded.addListener(async (tab, attachment) => {
 
 // Content context menu item.
 browser.shrunked.onComposeContextClicked.addListener(async (tab, file) => {
+  tabMap.delete(tab.id);
   return new Promise((resolve, reject) => {
     beginResize(tab, file, false).then(resolve, reject);
     showOptionsDialog(tab);
@@ -75,8 +76,8 @@ browser.shrunked.onAttachmentContextClicked.addListener(async (tab, indicies) =>
     return;
   }
 
+  tabMap.delete(tab.id);
   let attachments = await browser.compose.listAttachments(tab.id);
-
   for (let i of indicies) {
     let a = attachments[i];
     if (await shouldResize(a, false)) {
@@ -92,13 +93,15 @@ browser.shrunked.onAttachmentContextClicked.addListener(async (tab, indicies) =>
 
 // Message sending.
 browser.compose.onBeforeSend.addListener(async (tab, details) => {
+  let result = {};
   let { resizeAttachmentsOnSend } = await browser.storage.local.get({
     resizeAttachmentsOnSend: false,
   });
   if (!resizeAttachmentsOnSend) {
-    return;
+    return result;
   }
 
+  tabMap.delete(tab.id);
   let promises = [];
   let attachments = await browser.compose.listAttachments(tab.id);
   for (let a of attachments) {
@@ -112,17 +115,20 @@ browser.compose.onBeforeSend.addListener(async (tab, details) => {
   }
 
   if (!promises.length) {
-    return;
+    return result;
   }
 
   await showOptionsDialog(tab);
-  await Promise.allSettled(promises);
+  await Promise.all(promises).catch(() => {
+    result.cancel = true;
+  });
+  return result;
 });
 
 // Get a promise that resolves when resizing is complete.
 function beginResize(tab, file, notification = true) {
   return new Promise((resolve, reject) => {
-    if (!notification || !tabMap.has(tab.id)) {
+    if (!tabMap.has(tab.id)) {
       tabMap.set(tab.id, []);
     }
     let sourceFiles = tabMap.get(tab.id);

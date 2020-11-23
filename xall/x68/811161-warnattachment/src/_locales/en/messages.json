@@ -1,5 +1,76 @@
 {
   "extensionDescription": {
-    "message": "WarnAttachment shows an additional dialog to confirm opening of potentially dangerous attachments. Some attachments like executables etc. are completely blocked. This reduces the risk of malware especially for inexperienced users."
+      "message": "WarnAttachment shows an additional dialog to confirm opening of potentially dangerous attachments. Some attachments like executables etc. are completely blocked. This reduces the risk of malware especially for inexperienced users."
+  },
+  "warningTitle" : {
+      "message" : "Insecure file extension"
+  },
+  "warningText" : {
+      "message" : "This file might contain malicious content. Please double-check if the source is trustworthy."
+  },
+  "warningTextHint" :{
+      "message" : "I would like to open this file anyhow."
+  },
+  "blockingTitle" : {
+      "message" : "Attachment blocked"
+  },
+  "blockingText" : {
+      "message" : "To protect you against malware, this attachment cannot be opened on this machine."
+  },
+  "options.warn.title" : {
+      "message" : "File extensions to warn:"
+  },
+  "options.warn.desc" : {
+      "message" : "A warning dialog will be shown for these file extensions. This field contains comma-separated values."
+  },
+  "options.blocked.title" : {
+      "message" : "File extensions to block:"
+  },
+  "options.blocked.desc" : {
+      "message" : "These file extensions will be blocked completely. This field contains comma-separated values."
+  },
+  "options.warn.user.title" : {
+      "message" : "User defined message for warning:"
+  },
+  "options.warn.user.desc" : {
+      "message" : "Leave empty to use default message."
+  },
+  "options.blocked.user.title" : {
+      "message" : "User defined message for blocked attachments:"
+  },
+  "options.blocked.user.desc" : {
+      "message" : "Leave empty to use default message."
+  },
+  "options.title" : {
+      "message" : "WarnAttachment Settings"
+  },
+  "options.info.text.link.github" : {
+      "message" : "Visit WarnAttachment on github!"
+  },
+  "options.info.text.link.license" : {
+      "message" : "Show license online (GNU General Public License v3.0)"
+  },
+  "options.savesettings":{
+      "message" : "Save settings"
+  },
+  "options.resetsettings":{
+      "message" : "Reset to defaults"
+  },
+  "options.notification.resetdone":
+  {
+      "message" : "Reset done"
+  },
+  "options.notification.savedone" :
+  {
+      "message" : "Changes successfully saved"
+  },
+  "app.title" : {
+      "message" : "WarnAttachment"
+  },
+  "warningMessageTypes" : {
+      "message" : "DOC,DOCM,PPT,PPTM,XLS,XLSM,PPS,PPSM,ZIP,RAR,7Z,HTML,HTM"
+  },
+  "blockingMessageTypes" : {
+      "message" : "ADE,ADP,BAT,CHM,CMD,COM,CPL,EXE,HTA,INS,ISP,JAR,JS,JSE,LIB,LNK,MDE,MSC,MSI,MSP,MST,NSH,PIF,SCR,SCT,SHB,SYS,VB,VBE,VBS,VXD,WSC,WSF,WSH"
   }
 }

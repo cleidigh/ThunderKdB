@@ -2,8 +2,7 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 	var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { DisplayNameUtils } = ChromeUtils.import("resource:///modules/DisplayNameUtils.jsm");
-	var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-	XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var ovl_formatEmailCorrespondents = {
 		getIdentityForEmail: function(aEmail) {
@@ -54,6 +53,8 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 						return {found: found, result: aEmail};
 					}
 				}
+			} else {
+				return {found: found, result: aDefaultDisplay};
 			}
 		},
 
@@ -61,12 +62,11 @@ if ("undefined" == typeof(ovl_formatEmailCorrespondents)) {
 			var showCondensedAddresses = cardbookRepository.cardbookPreferences.getBoolPref("mail.showCondensedAddresses");
 			var exclusive = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.exclusive");
 			var results = [];
-			let addresses = MailServices.headerParser.parseEncodedHeader(aEmails);
+			let addresses = MailServices.headerParser.parseEncodedHeaderW(aEmails);
 			for (let address of addresses) {
 				var identity = ovl_formatEmailCorrespondents.getIdentityForEmail(address.email);
 				if (showCondensedAddresses) {
-					var myCardBookResult = {};
-					myCardBookResult = ovl_formatEmailCorrespondents.getCardBookDisplayNameFromEmail(address.email, address.name);
+					let myCardBookResult = ovl_formatEmailCorrespondents.getCardBookDisplayNameFromEmail(address.email, address.name);
 					if (identity) {
 						if (address.name) {
 							results.push(address.name);

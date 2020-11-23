@@ -1,6 +1,5 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-XPCOMUtils.defineLazyModuleGetter(this, "cardbookRepository", "chrome://cardbook/content/cardbookRepository.js", "cardbookRepository");
+var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 var cardBookObserver = {
 	
@@ -42,7 +41,9 @@ var cardBookObserver = {
 				cardbookRepository.cardbookSynchronization.loadAccounts();
 				break;
 			case "cardbook.syncFisnished":
-				ovl_cardbookMailContacts.refreshBlueStars();
+				if (!("undefined" == typeof(ovl_cardbookMailContacts))) {
+					ovl_cardbookMailContacts.refreshBlueStars();
+				}
 				break;
 			case "cardbook.cardCreated":
 			case "cardbook.cardModified":
@@ -78,18 +79,5 @@ var cardBookObserver = {
 				}
 				break;
 		}
-	}
-};
-
-var cardboookModeMutationObserver = {
-	register: function() {
-		var observer = new MutationObserver(function handleMutations(mutations) {
-			cardbookRepository.cardbookUtils.notifyObservers(document.getElementById("cardboookModeBroadcasterTab").getAttribute("mode") + "Mode");
-		});
-		observer.observe(document.getElementById("cardboookModeBroadcasterTab"), {
-			attributes: true,
-			subtree: true,
-			attributeFilter: ["mode"]
-		});
 	}
 };

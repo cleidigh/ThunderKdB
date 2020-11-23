@@ -200,6 +200,21 @@
       }
 
 
+    ],
+    "events": [
+      {
+        "name": "onFilePicker",
+        "type": "function",
+        "description": "Fires when filepicker has a file",
+        "parameters": [
+          {
+            "name": "path",
+            "type": "string",
+            "description": "path of picked file"
+          }
+        ]
+      }
     ]
+
   }
 ]

@@ -84,7 +84,7 @@ function connect() {
 debug('account='+prefs['imapfolderAccount']);
 	gAccount=MailServices.accounts.getAccount(prefs['imapfolderAccount']);
 	if (!gAccount) {
-debug("no account found for "+prefs['imapfolderAccount']+':'+prefs['imapfolderPath']);
+debug("imap connect throws: ill. IMAP folder: no account found for "+prefs['imapfolderAccount']+':'+prefs['imapfolderPath'], '');
     statustxt(errorstr(-3), 2, true);
     gAbort=2;
     killMe();
@@ -94,7 +94,7 @@ debug("no account found for "+prefs['imapfolderAccount']+':'+prefs['imapfolderPa
 	let rootFolder=server.rootMsgFolder;		//nsIMsgFolder
   gImapFolder=MailUtils.getExistingFolder(rootFolder.URI+prefs['imapfolderPath'], true);
   if (!gImapFolder) {
-debug("no folder found for "+prefs['imapfolderAccount']+': '+rootFolder.URI+prefs['imapfolderPath']);
+debug("imap connect throws: ill. IMAP folder: no folder found for "+prefs['imapfolderAccount']+': '+rootFolder.URI+prefs['imapfolderPath'], '');
     statustxt(errorstr(-3), 2, true);
     gAbort=2;
     killMe();
@@ -132,9 +132,6 @@ debug('connected');
 debug('saved draft folder '+gSavedDraftFolder);
       gIdty.draftFolder=gImapFolder.URI;
     }
-    gTempName='';
-  } else {
-    gTempName='absmail.eml';
   }
   cleanUp=imapSaveDone; // register cleanup function
 
@@ -294,13 +291,17 @@ debug('new single book filename='+externalFilename);
 
   let lms;
   if (!newSinglebook && !gForce && !prefs['notimecheck']) {
-    let datestr=theMsg.ccList;
-//debug('msg cc='+datestr);
+  let composeFields = Cc[
+    "@mozilla.org/messengercompose/composefields;1"
+  ].createInstance(Ci.nsIMsgCompFields);
+	let datestr=composeFields.splitRecipients(theMsg.ccList, false).toString();
 //need the X-LastModifiedTime header!
 //  see https://stackoverflow.com/questions/40417882/how-get-header-data-from-nsimsgdbhdr-in-thunderbird
 //debug('msg X-='+theMsg.getStringProperty('X-LastModifiedTime'));
 		let mlmt;
+debug('datestr from cc: '+datestr);
     if (datestr) {
+			datestr=datestr.replace(/<.*>/,'');	//remove fake email address
       let c=datestr.substr(0,1);
       if (c=='"' || c=="'") {
         let ind=datestr.indexOf(c, 1);
@@ -309,12 +310,12 @@ debug('msg cc now='+datestr);
       }
       mlmt=new Date(datestr);
 debug('from cc: mlmt='+mlmt);
-      if (!mlmt) {
-        mlmt=new Date(new Number(theMsg.date.toString()));
+      if (isNaN(mlmt)) {
+        mlmt=new Date(theMsg.date/1000);
 debug('from date: mlmt='+mlmt);
       }
     } else {
-      mlmt=new Date(new Number(theMsg.date.toString()));
+      mlmt=new Date(theMsg.date/1000);
 debug('no cc, from date: mlmt='+mlmt);
     }
 		let localMabFile=FileUtils.getFile("ProfD", [mabFilename]);
@@ -345,6 +346,7 @@ debug('   file-time='+flmt.valueOf()+'  msg-time='+mlmt.valueOf()+'\n');
     body: '',
     mabName: null,
     dir: null,
+    gTempName: null,
     onDataAvailable: function(request, inputStream, offset, count){
       try {
         let sis=Cc["@mozilla.org/scriptableinputstream;1"].
@@ -404,13 +406,22 @@ debug('   file-time='+flmt.valueOf()+'  msg-time='+mlmt.valueOf()+'\n');
 								msg=findWindow().atob(msg);
 							} catch(e) {
 								Services.prompt.alert(null, "AddressbooksSynchronizer", 'base64: '+e);
+								debug('base64: '+e, e);
 								throw('incompleteattachment');
 							}
 						}
 	debug('msg starts with : -'+msg.substr(0,10)+'-');
 							// write file to temporary file
-							gTempName='abstemp.sqlite';
-							let tmpFile=FileUtils.getFile("TmpD", [gTempName]);
+							let tmpFile=FileUtils.getFile("TmpD", ['abstemp.sqlite']);
+              tmpFile.createUnique(tmpFile.NORMAL_FILE_TYPE, parseInt("0600", 8));
+              if (tmpFile === null) {
+                statustxt('Could not create temp. file', 2, true);
+								Services.prompt.alert(null, "AddressbooksSynchronizer", 'bad tmpfile: '+e);
+								debug('bad tmpfile: '+e, e);
+								throw('failed');
+              }
+debug('in StreamListener gTempName='+typeof this.gTempName);
+              this.gTempName.push(tmpFile.path);	//for automatic deletion!
 	//debug('write tempfile: '+tmpFile.path);
 							if (writeMabData(tmpFile, msg, msg.length)) {
 								statustxt('.', 0, false); // 4. dot: temp file created
@@ -427,10 +438,12 @@ debug('   file-time='+flmt.valueOf()+'  msg-time='+mlmt.valueOf()+'\n');
 										}
 									} catch (e) {
 										Services.prompt.alert(null, "AddressbooksSynchronizer", 'imap replaceaddressbook: '+e);
+										debug('imap replaceaddressbook throws: '+e, e);
 									}
 								} else {
 	debug('message has unknown file format');
-									Services.prompt.alert(null, "AddressbooksSynchronizer", 'base64: '+e);
+									Services.prompt.alert(null, "AddressbooksSynchronizer", 'imap replaceaddressbook: '+e);
+									debug('imap replaceaddressbook throws: '+e, e);
 									throw('incompleteattachment');
 								}
 
@@ -452,6 +465,8 @@ debug('   file-time='+flmt.valueOf()+'  msg-time='+mlmt.valueOf()+'\n');
 
   streamListener.mabName=mabName;
   streamListener.dir=dir;
+debug('set streamListener gTempName='+typeof gTempName);
+  streamListener.gTempName=gTempName;
 	let aurl = new Object();
 	ms.CopyMessage(msgURI, streamListener, false, null, null, aurl);
 
@@ -624,7 +639,7 @@ debug('return');
 
   let header='';
   header+='Message-ID: '+getMsgId(externalFilename)+'\r\n';
-  header+='Date: '+Date(time)+'\r\n';
+  header+='Date: '+Date(time)+'\r\n'; //This does not conform to RFC2822, see getResentDate in smr_implementation on how todo
   header+='From: '+gIdty.email+'\r\n';
   header+='To: "Addressbooks Synchronizer"\r\n';
   header+='Subject: Addressbooks Synchronizer: '+eb64Name+'\r\n';
@@ -651,7 +666,16 @@ debug('return');
   tailer+='\r\n';
   tailer+='--------------'+time+'\r\n';
 
-  let tmpFile=FileUtils.getFile("TmpD", [gTempName]);
+  let tmpFile=FileUtils.getFile("TmpD", ['abstemp.sqlite']);
+  tmpFile.createUnique(tmpFile.NORMAL_FILE_TYPE, parseInt("0600", 8));
+  if (tmpFile === null) {
+    statustxt('Could not create temp. file', 2, true);
+    Services.prompt.alert(null, "AddressbooksSynchronizer", 'bad tmpfile: '+e);
+    debug('bad tmpfile: '+e, e);
+    return;
+  }
+  gTempName.push(tmpFile.path);	//for automatic deletion!
+
   let msg=header+abData+tailer;
   if (!writeMabData(tmpFile, msg, msg.length)) {
     statustxt(strings['notcopied'], 2, true);

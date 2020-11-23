@@ -65,8 +65,9 @@ class DavUploader {
             return this._doUpload(fileId, fileName, fileObject);
         } else {
             // There is a file of the same name
-            if ((Math.abs(stat.mtime - fileObject.lastModified) < 1000 &&
-                stat.size === fileObject.size)) {
+            // The mtime is in milliseconds, but on the cloud it's only accurate to seconds
+            if (Math.abs(stat.mtime - fileObject.lastModified) < 1000 &&
+                stat.size === fileObject.size) {
                 // It's the same as the local file
                 return { ok: true, };
             } else {
@@ -156,11 +157,13 @@ class DavUploader {
                 this._davUrl + encodepath(this._storageFolder + "/" + newPath + "/" + fileName),
         };
         if (await this._recursivelyCreateFolder(this._storageFolder + "/" + newPath)) {
-            return this._doDavCall(this._storageFolder + "/" + fileName, "MOVE", null, dest_header);
-        } else {
-            attachmentStatus.get(fileId).fail();
-            throw new Error("Couldn't create backup folder.");
+            const retval = await this._doDavCall(this._storageFolder + "/" + fileName, "MOVE", null, dest_header);
+            if (retval.ok && (retval.status === 201 || retval.status === 204)) {
+                return retval;
+            }
         }
+        attachmentStatus.get(fileId).fail();
+        throw new Error("Couldn't move file.");
     }
 
     /**

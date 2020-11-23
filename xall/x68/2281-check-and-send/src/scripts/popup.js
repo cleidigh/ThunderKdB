@@ -3,10 +3,10 @@ var warnings = [];
 
 function init() {
   document.casalert.okbutton.addEventListener("click", (event) => {
-    sendResult(true);
+    sendResult(true, false);
   });
   document.casalert.ngbutton.addEventListener("click", (event) => {
-    sendResult(false);
+    sendResult(false, false);
   });
   translate();
   requestWarnings();
@@ -17,29 +17,55 @@ async function requestWarnings() {
     active: true,
     currentWindow: true
   });
+
   let tabId = tabs[0].id;
-  browser.runtime.sendMessage({
+  let msgObj = {
     message: "GET_WARNINGS",
     tabId: tabId
+  };
+  browser.runtime.sendMessage(msgObj).then(message => {
+    warnings = message.warnings;
+    if (message.confirmation) {
+      updateWarnings(message.session);
+    } else {
+      //no error and popup is not needed
+      sendResult(true, true);
+    }
+  }, reason => {
+    console.log("[CAS_DEBUG] Promise rejected");
+    console.log("[CAS_DEBUG] " + reason);
+  }).catch(reason => {
+    console.log("[CAS_DEBUG] Promise rejected (unexpected)");
+    console.log("[CAS_DEBUG] " + reason);
   });
 }
 
-async function sendResult(confirmed) {
-  applyUserChanges();
+async function sendResult(confirmed, confSkipped) {
+  if (confirmed && !confSkipped) applyUserChanges();
   let tabs = await browser.tabs.query({
     active: true,
     currentWindow: true
   });
   let tabId = tabs[0].id;
-  await browser.runtime.sendMessage({
+  let msgObj = {
     message: "USER_CHECKED",
     tabId: tabId,
     confirmed: confirmed,
     warnings: warnings
-  });
+  };
 
-  //close popup automatically
-  window.close();
+  browser.runtime.sendMessage(msgObj).then(aParam => {
+    //close popup automatically
+    window.close();
+  }, reason => {
+    console.log("[CAS_DEBUG] Promise rejected");
+    console.log("[CAS_DEBUG] " + reason);
+    window.close();
+  }).catch(reason => {
+    console.log("[CAS_DEBUG] Promise rejected (unexpected)");
+    console.log("[CAS_DEBUG] " + reason);
+    window.close();
+  });
 }
 
 function applyUserChanges() {
@@ -102,35 +128,6 @@ function applyUserChanges() {
   }
 }
 
-browser.runtime.onMessage.addListener(async (message) => {
-  switch (message.message) {
-    case "SEND_WARNINGS":
-      warnings = message.warnings;
-      if (Object.keys(warnings).length > 0) {
-        updateWarnings(message.session);
-      } else {
-        //no error and popup is not needed
-        let tabs = await browser.tabs.query({
-          active: true,
-          currentWindow: true
-        });
-        let tabId = tabs[0].id;
-        await browser.runtime.sendMessage({
-          message: "USER_CHECKED",
-          tabId: tabId,
-          confirmed: true,
-          warnings: []
-        });
-
-        //close popup automatically
-        window.close();
-      }
-      break;
-    default:
-      break;
-  }
-});
-
 function updateWarnings(inSession) {
   document.getElementById("checkingMessage").setAttribute("class", "box-collapse");
   document.getElementById("warningArea").setAttribute("class", "box-visible");
@@ -162,8 +159,10 @@ function updateWarnings(inSession) {
 
   if (inSession) {
     document.getElementById("submitArea").setAttribute("class", "box-visible");
+    document.getElementById("submitMsgArea").setAttribute("class", "box-collapse");
   } else {
     document.getElementById("submitArea").setAttribute("class", "box-collapse");
+    document.getElementById("submitMsgArea").setAttribute("class", "box-visible");
   }
 }
 
