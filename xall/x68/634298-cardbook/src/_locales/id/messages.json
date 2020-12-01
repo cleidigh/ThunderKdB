@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Lokasi Tautan"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Impor dari berkas"
+	},
 	"uncategorizedCards": {
 		"message": "Tidak dikategorikan"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "??$P1$ : Key downloaded for contact $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Kontak $P2$ diunduh dari server",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "Kontak Salinan buta"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "Kontak Kepada atau Cc"
 	},
 	"cardbook.searchAll.name": {
 		"message": "Kontak Dari, Kepada, Salinan atau Salinan buta"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "v"
 	},
+	"keyTab.conf.label": {
+		"message": "??Public Keys??"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "K"
+	},
 	"advancedTab1Label": {
 		"message": "Canggih"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "??URL opening for soft phones??"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain $1, referring to the phone number.??"
+		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain {{1}}, referring to the phone number.??"
 	},
 	"URLPhoneURLLabel": {
 		"message": "Alamat URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vKartu"
 	},
+	"keyTabLabel": {
+		"message": "??Public Keys??"
+	},
 	"noteTabLabel": {
 		"message": "Catatan"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Tulis pesan baru (Salinan Buta / Bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "??Public keys??"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Temukan Kunci Daring"
+	},
+	"importKeyFromCards.label": {
+		"message": "??Import into OpenPGP Key Manager??"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Temukan Kunci Daring"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Temukan Kunci Daring"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "??Search for keys in OpenPGP key manager??"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Impor dari berkas"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Bagikan melalui email"

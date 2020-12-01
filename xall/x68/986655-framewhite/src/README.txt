@@ -1,13 +1,11 @@
-README version 1.8
+README version 1.9
 
 Title: FrameWhite.
-Main source: manifest.json, schema.json, popup.html, code.js, implementation.js, README.txt.
+Main source: manifest.json, popup.html, code.js, README.txt.
 Description: 
-This is a theme with white frames.
-So it is most white. 
-As result of test, white is fascinating without eye fatigue. 
+Enjoy black and white themes in Light theme.
 
 
 From Sungho Hwang.
 
-October 15th 2020.
+November 28th 2020.

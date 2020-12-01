@@ -3,7 +3,7 @@
 		"message": "CardBook"
 	},
 	"extDesc": {
-		"message": "vCard通讯录"
+		"message": "vCard 通讯录"
 	},
 	"browserActionTitle": {
 		"message": "CardBook",
@@ -53,6 +53,9 @@
 	},
 	"fileSelectionTitle": {
 		"message": "链接地址"
+	},
+	"fileSelectionGPGTitle": {
+		"message": "从文件导入"
 	},
 	"uncategorizedCards": {
 		"message": "未分类"
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : 为联系人 $P2$ 下载密钥失败 (url : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : 已为联系人 $P2$ 下载密钥",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : 正为联系人 $P2$ 下载密钥…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : 已从服务器下载联系人 $P2$",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook 密送"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook 收件人或抄送地址"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook 来自，发至，抄送，密送"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "公钥"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "K"
+	},
 	"advancedTab1Label": {
 		"message": "高级"
 	},
@@ -3773,7 +3824,7 @@
 		"message": "互联网通讯"
 	},
 	"preferIMPPPrefLabel": {
-		"message": "偏好标记了的互联网通讯 "
+		"message": "偏好标记了的互联网通讯"
 	},
 	"preferIMPPPrefAccesskey": {
 		"message": "P"
@@ -3812,7 +3863,7 @@
 		"message": "打开软电话的 URL"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "若选择电话的 URL 协议，将应用此选择。URL 应包含指向电话号码的 $1。"
+		"message": "若选择电话的 URL 协议，将应用此选择。URL 应包含指向电话号码的 {{1}}。"
 	},
 	"URLPhoneURLLabel": {
 		"message": "网址:"
@@ -4016,7 +4067,7 @@
 		"message": "发送电子邮件"
 	},
 	"preferEmailPrefLabel": {
-		"message": "偏好标记了的电子邮件 "
+		"message": "偏好标记了的电子邮件"
 	},
 	"preferEmailPrefAccesskey": {
 		"message": "P"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "公钥"
+	},
 	"noteTabLabel": {
 		"message": "备注"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "编写新消息 (复制 / 密送)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "公钥"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "在网上寻找密钥"
+	},
+	"importKeyFromCards.label": {
+		"message": "导入 OpenPGP 密钥管理器"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "在网上寻找密钥"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "在网上寻找密钥"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "搜索 OpenPGP 管理器中的密钥"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "从文件导入"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "以电子邮件分享"

@@ -506,7 +506,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			cardbookRepository.cardbookPreferences.setId(aDirPrefId, aDirPrefId);
 			cardbookRepository.cardbookPreferences.setUrl(aDirPrefId, wdw_addressbooksAdd.gCardDAVURLs[0][0]);
 			wdw_addressbooksAdd.gRunningDirPrefId.push(aDirPrefId);
-			cardbookRepository.cardbookRepository.cardbookPasswordManager.rememberPassword(aUsername, wdw_addressbooksAdd.gCardDAVURLs[0][0], aPassword, document.getElementById("rememberPasswordCheckbox").checked);
+			cardbookRepository.cardbookPasswordManager.rememberPassword(aUsername, wdw_addressbooksAdd.gCardDAVURLs[0][0], aPassword, document.getElementById("rememberPasswordCheckbox").checked);
 			
 			if (wdw_addressbooksAdd.gCardDAVURLs.length > 0) {
 				cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "Validating1Label", [wdw_addressbooksAdd.gCardDAVURLs[0][0]], "PRIORITY_INFO_MEDIUM");
@@ -553,7 +553,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				cardbookRepository.cardbookPreferences.setId(dirPrefId, dirPrefId);
 				cardbookRepository.cardbookPreferences.setUrl(dirPrefId, myURL);
 				wdw_addressbooksAdd.gRunningDirPrefId.push(dirPrefId);
-				cardbookRepository.cardbookRepository.cardbookPasswordManager.rememberPassword(myUsername, myURL, myPassword, document.getElementById("rememberPasswordCheckbox").checked);
+				cardbookRepository.cardbookPasswordManager.rememberPassword(myUsername, myURL, myPassword, document.getElementById("rememberPasswordCheckbox").checked);
 				
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookServerValidation[dirPrefId] = {length: 0, user: myUsername};
@@ -706,7 +706,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		onSuccessfulAuthentication: function (aResponse) {
 			var username = document.getElementById('remotePageUsername').value;
-			cardbookRepository.cardbookRepository.cardbookPasswordManager.rememberPassword(username, "", aResponse.refresh_token, document.getElementById("rememberPasswordCheckbox").checked);
+			cardbookRepository.cardbookPasswordManager.rememberPassword(username, "", aResponse.refresh_token, document.getElementById("rememberPasswordCheckbox").checked);
 			var wizard = document.getElementById("addressbook-wizard");
 			wizard.canAdvance = true;
 			wizard.advance();

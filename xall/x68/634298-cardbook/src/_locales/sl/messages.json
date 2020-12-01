@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Mesto povezave"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Uvozi iz datoteke"
+	},
 	"uncategorizedCards": {
 		"message": "Nekategorizirano"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "??$P1$ : Key downloaded for contact $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : stik $P2$ prenesen s strežnika",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Skp"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook Za ali Kp"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook Od, Za, Kp ali Skp"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "C"
 	},
+	"keyTab.conf.label": {
+		"message": "??Public Keys??"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "J"
+	},
 	"advancedTab1Label": {
 		"message": "Napredno"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "??URL opening for soft phones??"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain $1, referring to the phone number.??"
+		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain {{1}}, referring to the phone number.??"
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "??Public Keys??"
+	},
 	"noteTabLabel": {
 		"message": "Opombe"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Sestavi novo sporočilo (skrita kopija/skp)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
-		"message": "??Discover Keys Online??"
+	"publicKeysFromCards.label": {
+		"message": "??Public keys??"
+	},
+	"searchForOnlineKeyFromCards.label": {
+		"message": "??Discover keys online??"
+	},
+	"importKeyFromCards.label": {
+		"message": "??Import into OpenPGP Key Manager??"
 	},
 	"searchForOnlineKeyTreeLabel": {
-		"message": "??Discover Keys Online??"
+		"message": "??Discover keys online??"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "??Discover keys online??"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "??Search for keys in OpenPGP key manager??"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Uvozi iz datoteke"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Deli po e-pošti"

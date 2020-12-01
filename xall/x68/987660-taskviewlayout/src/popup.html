@@ -7,8 +7,23 @@
 <base target="_top"/> 
 <link rel="manifest" href="/manifest.json"/>
 <style>
+    #formOne {
+        background-color:IndianRed;
+        color:yellow;
+        font-weight: bold;
+        width: 300px;
+        text-align: center;
+        font: 17px sans-serif;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formOne:active {
+        background-color:FireBrick;
+}
     #formThree {
-        background-color:blue;
+        background-color:dodgerblue;
         color:yellow;
         font-weight: bold;
         width: 300px;
@@ -23,7 +38,7 @@
         background-color:navy;
 }
     #formTwo {
-        background-color:green;
+        background-color:seagreen;
         color:yellow;
         font-weight: bold;
         width: 300px;
@@ -39,8 +54,9 @@
 </style>
 </head>
 <body>
-<form id="formThree" action="https://www.thunderbird.net/en-US/" method="get">View to put task view vertically</form>
-<form id="formTwo" action="https://www.thunderbird.net/en-US/" method="get">View to put task view neutrally</form> 
+<form id="formOne">View to put task view upside</form>
+<form id="formThree">View to put task view vertical</form>
+<form id="formTwo">View to put task view neutral</form> 
 <script language="javascript" src="code.js"></script>
 </body>
 </html>

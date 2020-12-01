@@ -144,21 +144,29 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		addKeyTextbox: function (aParent, aId, aValue, aParameters, aIndex) {
 			var aKeyTextBox = cardbookElementTools.addTextbox(aParent, aId, aValue, aParameters);
 
-			if (aIndex == 0) {
-				function checkKeyTextBox(event) {
-					var myIdArray = this.id.split('_');
-					if (!document.getElementById(myIdArray[0] + '_1_addButton')) {
-						if (this.value == "") {
-							document.getElementById(myIdArray[0] + '_0_addButton').disabled = true;
-							document.getElementById(myIdArray[0] + '_0_removeButton').disabled = true;
-						} else {
-							document.getElementById(myIdArray[0] + '_0_addButton').disabled = false;
-							document.getElementById(myIdArray[0] + '_0_removeButton').disabled = false;
-						}
+			function checkKeyTextBox(event) {
+				let idArray = this.id.split('_');
+				let type = idArray[0];
+				let index = idArray[1];
+				let prevIndex = index - 1;
+				if (this.value == "") {
+					document.getElementById(type + "_" + index + "_addButton").disabled = true;
+					document.getElementById(type + "_" + index + "_removeButton").disabled = true;
+				} else {
+					document.getElementById(type + "_" + index + "_addButton").disabled = false;
+					document.getElementById(type + "_" + index + "_removeButton").disabled = false;
+				}
+				document.getElementById(type + "_" + index + "_downButton").disabled = true;
+				document.getElementById(type + "_" + index + "_upButton").disabled = true;
+				if (document.getElementById(type + "_" + prevIndex + "_addButton")) {
+					document.getElementById(type + "_" + prevIndex + "_addButton").disabled = true;
+					if (this.value != "") {
+						document.getElementById(type + "_" + prevIndex + "_downButton").disabled = false;
+						document.getElementById(type + "_" + index + "_upButton").disabled = false;
 					}
-				};
-				aKeyTextBox.addEventListener("input", checkKeyTextBox, false);
-			}
+				}
+			};
+			aKeyTextBox.addEventListener("input", checkKeyTextBox, false);
 			return aKeyTextBox;
 		},
 
@@ -644,6 +652,30 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			return aPrefButton;
 		},
 
+		addKeyButton: function (aParent, aType, aIndex, aKeyType) {
+			var aKeyButton = document.createXULElement('button');
+			aParent.appendChild(aKeyButton);
+			aKeyButton.setAttribute('id', aType + '_' + aIndex + '_PrefImage');
+			aKeyButton.setAttribute('class', 'cardbookKeyClass');
+			if (cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(aKeyType.types)) {
+				aKeyButton.setAttribute('haspref', 'true');
+			} else {
+				aKeyButton.removeAttribute('haspref');
+			}
+			let keyValue = aKeyType.value ? aKeyType.value : aKeyType.URI;
+			aKeyButton.setAttribute('keyValue', keyValue);
+
+			function fireKeyCheckBox(event) {
+				let confirmTitle = cardbookRepository.extension.localeData.localizeMessage("confirmTitle");
+				let confirmMsg = cardbookRepository.extension.localeData.localizeMessage("importKeyFromCards.label");
+				if (Services.prompt.confirm(window, confirmTitle, confirmMsg)) {
+					wdw_cardbook.importKeyFromValue(this.getAttribute('keyValue'));
+				}
+			};
+			aKeyButton.addEventListener("command", fireKeyCheckBox, false);
+			return aKeyButton;
+		},
+
 		addMenuTypelist: function (aParent, aType, aIndex, aCheckedArray) {
 			var aMenulist = document.createXULElement('menulist');
 			aParent.appendChild(aMenulist);
@@ -813,6 +845,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			var aEditButton = document.createXULElement('button');
 			aParent.appendChild(aEditButton);
 			aEditButton.setAttribute('id', aType + '_' + aIndex + '_' + aButtonName + 'Button');
+			aEditButton.setAttribute('class', 'small-button');
 			if (aButtonType == "add") {
 				aEditButton.setAttribute('label', '+');
 			} else if (aButtonType == "remove") {
@@ -830,7 +863,6 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			} else if (aButtonType == "link") {
 				aEditButton.setAttribute('label', '↔');
 			}
-			aEditButton.setAttribute('class', 'small-button');
 			aEditButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage(aButtonType + "EntryTooltip"));
 			// aEditButton.addEventListener("click", aFunction, false);
 			aEditButton.addEventListener("command", aFunction, false);

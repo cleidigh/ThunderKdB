@@ -43,6 +43,8 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			this.tel = [];
 			this.email = [];
 			this.emails = [];
+			this.impp = [];
+			this.url = [];
 			this.mailer = "";
 			this.tz = "";
 			this.geo = "";
@@ -56,11 +58,11 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			this.sortstring = "";
 			this.uid = "";
 			this.rev = "";
-			this.url = [];
 			this.version = "";
 			this.class1 = "";
-			this.key = "";
-			this.impp = [];
+			// array of {types: [], value: "", localURI: "", URI: "", extension: ""}
+			// 3.0 allows one key as 4.0 allows multiples keys : chosen multiple keys for all
+			this.key = [];
 			this.others = [];
 			this.cbid = "";
 
@@ -82,33 +84,43 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			return vString.replace(/\\:/g,":").replace(/\\;/g,";").replace(/\\,/g,",").split(/\\n/i).join("\n");
 		},
 		
-		mediaParser: function (aField, aString) {
+		mediaParser: function (aField, aString, aKeepBase64 = false) {
+			let record = {types: [], value: "", localURI: "", URI: "", extension: ""};
 			try {
 				aString = aString.replace(/\\\\n/g,"");
-				var localDelim0 = aString.indexOf(",",0);
-				var cacheDir = cardbookRepository.getLocalDirectory();
+				let localDelim0 = aString.indexOf(",",0);
+				let cacheDir = cardbookRepository.getLocalDirectory();
 				if (localDelim0 >= 0) {
 					// 4.0
 					// FROM : PHOTO:data:image/jpeg;base64,R0lGODlhCw…
-					var headerTmp = aString.substr(0,localDelim0);
+					// FROM : KEY:data:application/pgp-keys;base64,[base64-data]
+					var headerTmp = aString.substr(0,localDelim0).replace(/^:/, "");
 					var trailerTmp = aString.substr(localDelim0+1,aString.length);
 					var headerTmpArray = [];
 					headerTmpArray = headerTmp.toLowerCase().split(";");
-					this[aField].types = JSON.parse(JSON.stringify(headerTmpArray));
-					this[aField].value = atob(trailerTmp);
+					record.types = JSON.parse(JSON.stringify(headerTmpArray));
+					if (aKeepBase64) {
+						record.value = trailerTmp;
+					} else {
+						record.value = atob(trailerTmp);
+					}
 					for (let i = 0; i < headerTmpArray.length; i++) {
 						if (headerTmpArray[i].indexOf("data:image",0) >= 0) {
-							this[aField].extension = headerTmpArray[i].replace(/data:image\//g,"").replace(/\s/g,"");
+							record.extension = headerTmpArray[i].replace(/data:image\//g,"").replace(/\s/g,"");
 						}
 					}
-					this[aField].extension = cardbookRepository.cardbookUtils.formatExtension(this[aField].extension, "4.0");
+					record.extension = cardbookRepository.cardbookUtils.formatExtension(record.extension, "4.0");
 				} else {
 					// 3.0
 					// FROM : PHOTO;ENCODING=b;TYPE=image/jpeg:R0lGODlhCw…
+					// FROM : KEY;TYPE=PGP;ENCODING=b:[base64-data]
+					// FROM : KEY;TYPE=PGP:http://example.com/key.pgp
 					// FROM : PHOTO;X-ABCROP-RECTANGLE=ABClipRect_1&0&0&583&583&AbGQEWkRV74gSDvD5j4+wg==;VALUE=uri:https://p44-contacts.icloud.com:443/10151953909/wbs/01a57d0472c3cf027a6d20bb7d690688f17da8fb13
 					// FROM : PHOTO;ENCODING=B;TYPE=JPEG;VALUE=BINARY:/9j/4AAQSkZ
 					// 3.0 and 4.0
 					// FROM : PHOTO:http://www.example.com/pub/photos/jqpublic.gif
+					// 4.0
+					// FROM : KEY;MEDIATYPE=application/pgp-keys:http://example.com/key.pgp
 					var localDelim1 = aString.indexOf(":",0);
 					if (localDelim1 >= 0) {
 						var headerTmp = aString.substr(0,localDelim1);
@@ -116,25 +128,32 @@ if ("undefined" == typeof(cardbookCardParser)) {
 						var headerTmpArray = [];
 						headerTmpArray = headerTmp.toUpperCase().split(";");
 						if (trailerTmp.indexOf(cacheDir.path) >= 0) {
-							this[aField].localURI = trailerTmp;
-							this[aField].extension = cardbookRepository.cardbookUtils.getFileExtension(trailerTmp);
+							record.localURI = trailerTmp;
+							record.extension = cardbookRepository.cardbookUtils.getFileExtension(trailerTmp);
 						} else if ((trailerTmp.search(/^http/i) >= 0) || (trailerTmp.search(/^file/i) >= 0)) {
-							this[aField].URI = trailerTmp;
-							this[aField].extension = cardbookRepository.cardbookUtils.getFileExtension(trailerTmp);
+							record.URI = trailerTmp;
+							record.extension = cardbookRepository.cardbookUtils.getFileExtension(trailerTmp);
 						} else {
-							this[aField].value = atob(trailerTmp);
-							this[aField].types = JSON.parse(JSON.stringify(headerTmpArray));
+							if (aKeepBase64) {
+								record.value = trailerTmp;
+							} else {
+								record.value = atob(trailerTmp);
+							}
+							record.types = JSON.parse(JSON.stringify(headerTmpArray));
 							for (let i = 0; i < headerTmpArray.length; i++) {
 								if (headerTmpArray[i].indexOf("TYPE=",0) >= 0) {
-									this[aField].extension = headerTmpArray[i].replace("TYPE=","").replace("IMAGE/","").replace(/\s/g,"");
+									record.extension = headerTmpArray[i].replace("TYPE=","").replace("IMAGE/","").replace(/\s/g,"");
 								}
 							}
 						}
-						this[aField].extension = cardbookRepository.cardbookUtils.formatExtension(this[aField].extension, this.version);
+						record.extension = cardbookRepository.cardbookUtils.formatExtension(record.extension, this.version);
 					}
 				}
-			} catch(e) {
-				this[aField] = {types: [], value: "", localURI: "", URI: "", extension: ""};
+			} catch(e) {}
+			if (Array.isArray(this[aField])) {
+				this[aField].push(record);
+			} else {
+				this[aField] = record;
 			}
 		},
 	
@@ -365,11 +384,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								this.class1 = vCardDataArrayTrailer;
 								break;
 							case "KEY":
-								if (vCardDataArrayHeaderOption) {
-									this.key = vCardDataArrayHeaderOption + ":" + vCardDataArrayTrailer;
-								} else {
-									this.key = vCardDataArrayTrailer;
-								}
+								this.mediaParser("key", vCardDataArrayHeaderOption + ":" + vCardDataArrayTrailer, true);
 								break;
 							case "REV":
 								this.rev = vCardDataArrayTrailer;

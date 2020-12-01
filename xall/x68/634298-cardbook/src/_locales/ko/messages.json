@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "링크 주소"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "파일에서 가져오기"
+	},
 	"uncategorizedCards": {
 		"message": "카테고리 없음"
 	},
@@ -913,7 +916,7 @@
         }
 	},
 	"serverCardGetImageFailed": {
-		"message": "$P1$: $P2$ 연락처에서 이미지를 다운로드하지 못했습니다 (URL 주소: $P3$, 상태: $P4$)",
+		"message": "$P1$: $P2$ 연락처에서 이미지를 다운로드하지 못했습니다 (주소: $P3$, 상태: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -930,7 +933,7 @@
         }
 	},
 	"serverCardGetImageOK": {
-		"message": "$P1$: $P2$ 연락처에 다운로드 된 이미지",
+		"message": "$P1$: 연락처 $P2$를 위한 이미지 다운로드 완료",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -941,7 +944,46 @@
         }
 	},
 	"serverCardGettingImage": {
-		"message": "$P1$: $P2$ 연락처에 위한 이미지 다운로드 …",
+		"message": "$P1$: 연락처 $P2$를 위한 이미지 다운로드 중 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : 연락처 $P2$를 위해 키 다운로드 실패 (주소 : $P3$, 상태 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : 연락처 $P2$를 위한 키 다운로드 완료",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : 연락처 $P2$를 위한 키 다운로드 중…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook 숨은 참조"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook 받는 사람 또는 참조"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook 보낸 사람, 받는 사람, 참조 또는 숨은 참조"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "공개키"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "K"
+	},
 	"advancedTab1Label": {
 		"message": "고급"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "VoIP 전화 실행 URL"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "이 설정은 전화 연결을 위한 URL 프로토콜을 선택했을 경우에 적용됩니다. URL은 전화 번호를 나타내기 위해 $1을(를) 포함해야 합니다."
+		"message": "이 설정은 전화 연결을 위한 URL 프로토콜을 선택했을 경우에 적용됩니다. URL은 전화 번호를 나타내기 위해 {{1}}을(를) 포함해야 합니다."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL 주소:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "공개키"
+	},
 	"noteTabLabel": {
 		"message": "메모"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "새 메시지 쓰기(숨은 참조)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "공개키"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "온라인에서 키 찾기"
+	},
+	"importKeyFromCards.label": {
+		"message": "OpenPGP 키 관리자로 가져오기"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "온라인에서 키 찾기"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "온라인에서 키 찾기"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "OpenPGP 키 관리자에서 키 검색하기"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "파일에서 가져오기"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "이메일로 공유"

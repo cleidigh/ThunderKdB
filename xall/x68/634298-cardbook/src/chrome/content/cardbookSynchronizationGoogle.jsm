@@ -98,7 +98,7 @@ var cardbookSynchronizationGoogle = {
 							var connection = {connUser: "", connUrl: cardbookRepository.cardbookOAuthData.GOOGLE.TOKEN_REQUEST_URL, connPrefId: aConnection.connPrefId, connDescription: aConnection.connDescription};
 							cardbookSynchronizationGoogle.getNewRefreshTokenForGoogle(connection, myCode, function callback(aResponse) {
 																									wizard.close();
-																									cardbookRepository.cardbookRepository.cardbookPasswordManager.rememberPassword(aConnection.connUser, "", aResponse.refresh_token, true);
+																									cardbookRepository.cardbookPasswordManager.rememberPassword(aConnection.connUser, "", aResponse.refresh_token, true);
 																									if (aCallback) {
 																										aCallback(aConnection, aResponse.refresh_token, aOperationType, aParams);
 																									}

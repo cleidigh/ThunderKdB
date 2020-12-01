@@ -83,7 +83,7 @@ if ("undefined" == typeof(ovl_filters)) {
 		},
 
 		_searchEmails: function(aSearchValue, aEmail) {
-			if (aSearchValue) {
+			if (aSearchValue && aSearchValue != "allAddressBooks") {
 				return cardbookRepository.isEmailInPrefIdRegistered(aSearchValue, aEmail);
 			} else {
 				return cardbookRepository.isEmailRegistered(aEmail);
@@ -135,12 +135,10 @@ if ("undefined" == typeof(ovl_filters)) {
 				getAvailable: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
-				getAvailableOperators: function (scope, length) {
+				getAvailableOperators: function (scope) {
 					if (!ovl_filters._isLocalSearch(scope)) {
-						length.value = 0;
 						return [];
 					}
-					length.value = 2;
 					return [Components.interfaces.nsMsgSearchOp.IsInAB, Components.interfaces.nsMsgSearchOp.IsntInAB];
 				},
 				match: function (aMsgHdr, aSearchValue, aSearchOp) {
@@ -159,12 +157,10 @@ if ("undefined" == typeof(ovl_filters)) {
 				getAvailable: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
-				getAvailableOperators: function (scope, length) {
+				getAvailableOperators: function (scope) {
 					if (!ovl_filters._isLocalSearch(scope)) {
-						length.value = 0;
 						return [];
 					}
-					length.value = 2;
 					return [Components.interfaces.nsMsgSearchOp.IsInAB, Components.interfaces.nsMsgSearchOp.IsntInAB];
 				},
 				match: function (aMsgHdr, aSearchValue, aSearchOp) {
@@ -183,12 +179,10 @@ if ("undefined" == typeof(ovl_filters)) {
 				getAvailable: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
-				getAvailableOperators: function (scope, length) {
+				getAvailableOperators: function (scope) {
 					if (!ovl_filters._isLocalSearch(scope)) {
-						length.value = 0;
 						return [];
 					}
-					length.value = 2;
 					return [Components.interfaces.nsMsgSearchOp.IsInAB, Components.interfaces.nsMsgSearchOp.IsntInAB];
 				},
 				match: function (aMsgHdr, aSearchValue, aSearchOp) {
@@ -207,12 +201,10 @@ if ("undefined" == typeof(ovl_filters)) {
 				getAvailable: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
-				getAvailableOperators: function (scope, length) {
+				getAvailableOperators: function (scope) {
 					if (!ovl_filters._isLocalSearch(scope)) {
-						length.value = 0;
 						return [];
 					}
-					length.value = 2;
 					return [Components.interfaces.nsMsgSearchOp.IsInAB, Components.interfaces.nsMsgSearchOp.IsntInAB];
 				},
 				match: function (aMsgHdr, aSearchValue, aSearchOp) {
@@ -220,6 +212,36 @@ if ("undefined" == typeof(ovl_filters)) {
 				}
 			};
 			MailServices.filters.addCustomTerm(searchBcc);
+
+			var searchToOrCc = {
+				id: "cardbook#searchToOrCc",
+				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.searchToOrCc.name"),
+				getEnabled: function (scope, op) {
+					return ovl_filters._isLocalSearch(scope);
+				},
+				needsBody: false,
+				getAvailable: function (scope, op) {
+					return ovl_filters._isLocalSearch(scope);
+				},
+				getAvailableOperators: function (scope) {
+					if (!ovl_filters._isLocalSearch(scope)) {
+						return [];
+					}
+					return [Components.interfaces.nsMsgSearchOp.IsInAB, Components.interfaces.nsMsgSearchOp.IsntInAB];
+				},
+				// true && false => false
+				// true || false => true
+				match: function (aMsgHdr, aSearchValue, aSearchOp) {
+					if (aSearchOp == Components.interfaces.nsMsgSearchOp.IsntInAB) {
+						return (ovl_filters._matchEmails(aMsgHdr.recipients, aSearchValue, aSearchOp) &&
+								ovl_filters._matchEmails(aMsgHdr.ccList, aSearchValue, aSearchOp));
+					} else {
+						return (ovl_filters._matchEmails(aMsgHdr.recipients, aSearchValue, aSearchOp) ||
+								ovl_filters._matchEmails(aMsgHdr.ccList, aSearchValue, aSearchOp));
+					}
+				}
+			};
+			MailServices.filters.addCustomTerm(searchToOrCc);
 
 			var searchAll = {
 				id: "cardbook#searchAll",
@@ -231,12 +253,10 @@ if ("undefined" == typeof(ovl_filters)) {
 				getAvailable: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
-				getAvailableOperators: function (scope, length) {
+				getAvailableOperators: function (scope) {
 					if (!ovl_filters._isLocalSearch(scope)) {
-						length.value = 0;
 						return [];
 					}
-					length.value = 2;
 					return [Components.interfaces.nsMsgSearchOp.IsInAB, Components.interfaces.nsMsgSearchOp.IsntInAB];
 				},
 				// true && false => false
@@ -267,12 +287,10 @@ if ("undefined" == typeof(ovl_filters)) {
 				getAvailable: function (scope, op) {
 					return ovl_filters._isLocalSearch(scope);
 				},
-				getAvailableOperators: function (scope, length) {
+				getAvailableOperators: function (scope) {
 					if (!ovl_filters._isLocalSearch(scope)) {
-						length.value = 0;
 						return [];
 					}
-					length.value = 2;
 					return [Components.interfaces.nsMsgSearchOp.IsInAB, Components.interfaces.nsMsgSearchOp.IsntInAB];
 				},
 				// true && false => false

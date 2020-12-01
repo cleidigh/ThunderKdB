@@ -175,7 +175,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			}
 			
 			iCalString += "TRANSP:TRANSPARENT\n";
-			
+
 			var dtstart = "DTSTART:";
 			var dtend = "DTEND:";
 			if (cal.dtz.defaultTimezone.tzid) {

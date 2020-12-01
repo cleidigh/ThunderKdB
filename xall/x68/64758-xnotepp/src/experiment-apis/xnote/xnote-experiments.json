@@ -1,0 +1,83 @@
+[
+  {
+    "namespace": "xnoteapi",
+    "functions": [
+      {
+        "name": "init",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "initNote",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+    
+      {
+        "name": "closeNoteWindow",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+
+      {
+        "name": "getPref",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Old preference string excluding extensions.xnote. prefix."
+          }
+        ]
+      },
+
+      {
+        "name": "setPreferences",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "prefs",
+            "type": "any",
+            "description": "Set the preferences object from the local browser storage."
+          }
+        ]
+      },
+
+      {
+        "name": "getTbPref",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Old TB preference string."
+          }
+        ]
+      },
+
+      {
+        "name": "setTbPref",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "name",
+            "type": "string",
+            "description": "Old TB preference string."
+          },
+          {
+            "name": "value",
+            "type": "any",
+            "description": "TB preference value."
+          }
+        ]
+      }
+   ]
+  }
+]

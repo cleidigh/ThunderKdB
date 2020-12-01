@@ -125,8 +125,15 @@ const PREFS_INFO = [{
   component: BinaryOption
 }, {
   props: {
-    title: "options.compose_in_tab_title",
-    desc: "options.compose_in_tab_desc",
+    title: "options.hide_quick_reply_title",
+    desc: "options.hide_quick_reply_desc",
+    name: "hide_quick_reply"
+  },
+  component: BinaryOption
+}, {
+  props: {
+    title: "options.compose_in_tab2_title",
+    desc: "options.compose_in_tab2_desc",
     name: "compose_in_tab"
   },
   component: BinaryOption

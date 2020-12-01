@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Ubicación del enlace"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importar de archivo"
+	},
 	"uncategorizedCards": {
 		"message": "Sin clasificación"
 	},
@@ -76,7 +79,7 @@
 		"message": "Editar categoría"
 	},
 	"removeCategoryFromAccountsOrCats": {
-		"message": "Eliminar categoría"
+		"message": "Borrar categoría"
 	},
 	"convertCategoryFromAccountsOrCats": {
 		"message": "Convertir categoría en lista"
@@ -85,7 +88,7 @@
 		"message": "Editar nodo"
 	},
 	"removeNodeFromAccountsOrCats": {
-		"message": "Eliminar nodo"
+		"message": "Borrar nodo"
 	},
 	"convertNodeFromAccountsOrCats": {
 		"message": "Crear lista a partir de nodo"
@@ -127,7 +130,7 @@
 		"message": "El uso de Google es experimental porque Google no respeta el estándar vCard."
 	},
 	"Validating1Label": {
-		"message": "Validación ($P1$)…",
+		"message": "Validando ($P1$)…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -135,7 +138,7 @@
         }
 	},
 	"Validating2Label": {
-		"message": "Validación…"
+		"message": "Validando…"
 	},
 	"ValidatingURLFailedLabel": {
 		"message": "El formato de la URL es incorrecto"
@@ -930,7 +933,7 @@
         }
 	},
 	"serverCardGetImageOK": {
-		"message": "$P1$: Imagen descargada del contacto $P2$",
+		"message": "$P1$: Imagen del contacto $P2$ descargada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -942,6 +945,45 @@
 	},
 	"serverCardGettingImage": {
 		"message": "$P1$: Descarga de la imagen del contacto $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$: Error al descargar la clave del contacto $P2$ (url: $P3$, estado: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$: Clave del contacto $P2$ descargada",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Descarga de la clave del contacto $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1762,6 +1804,9 @@
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Bcc"
 	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook Para o CC"
+	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook De, Para, Cc o Bcc"
 	},
@@ -1784,19 +1829,19 @@
 		"message": "Añadir 'De, Para, Cc o Bcc' a CardBook"
 	},
 	"cardbook.removeFrom.name": {
-		"message": "Eliminar 'De' de CardBook"
+		"message": "Borrar 'De' de CardBook"
 	},
 	"cardbook.removeTo.name": {
-		"message": "Eliminar 'Para' de CardBook"
+		"message": "Borrar 'Para' de CardBook"
 	},
 	"cardbook.removeCc.name": {
-		"message": "Eliminar 'Cc' de CardBook"
+		"message": "Borrar 'Cc' de CardBook"
 	},
 	"cardbook.removeBcc.name": {
-		"message": "Eliminar 'Bcc' de CardBook"
+		"message": "Borrar 'Bcc' de CardBook"
 	},
 	"cardbook.removeAll.name": {
-		"message": "Eliminar 'De, Para, Cc o Bcc' de CardBook"
+		"message": "Borrar 'De, Para, Cc o Bcc' de CardBook"
 	},
 	"urlDownloaded": {
 		"message": "URL descargada: $P1$",
@@ -2409,7 +2454,7 @@
         }
 	},
 	"accountDeletionDiscoveryConfirmMessage": {
-		"message": "La libreta de direcciones $P1$ parece haber sido eliminada de su servidor. ¿Desea eliminarla de su repositorio de CardBook?",
+		"message": "La libreta de direcciones $P1$ parece haber sido borrada de su servidor. ¿Desea borrarla de su repositorio de CardBook?",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2700,7 +2745,7 @@
         }
 	},
 	"newTokenDescription": {
-		"message": "CardBook solicita acceder a su cuenta $P1$ para recuperar los contactos. Las credenciales y los datos de los contactos se transfieren solamente entre su computadora y Google, no hay otros sitios ajenos involucrados.",
+		"message": "CardBook solicita acceder a su cuenta $P1$ para recuperar los contactos. Las credenciales y los datos de contacto solo se transfieren entre su computadora y Google, no hay sitios de terceros involucrados.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2870,10 +2915,10 @@
 		"message": "S"
 	},
 	"IMPPMenuLabel": {
-		"message": "Conectar a"
+		"message": "Llamar a"
 	},
 	"IMPPMenuAccesskey": {
-		"message": "n"
+		"message": "a"
 	},
 	"findAllEmailsFromContactMessengerLabel": {
 		"message": "Buscar correos electrónicos relacionados con este contacto"
@@ -3179,7 +3224,7 @@
 		"message": "Nombre mostrado"
 	},
 	"fnFormulaLabel": {
-		"message": "Generación del nombre mostrado:"
+		"message": "Fórmula del nombre mostrado:"
 	},
 	"fnFormulaAccesskey": {
 		"message": "m"
@@ -3293,7 +3338,7 @@
 		"message": "Contacto"
 	},
 	"wdw_cardbookConfigurationAddIMPPTitle": {
-		"message": "Modificación de IMPP"
+		"message": "Editor de protocolo"
 	},
 	"IMPPCodeLabel": {
 		"message": "Código:"
@@ -3323,7 +3368,7 @@
 		"message": "Edición"
 	},
 	"IMPPsTabLabel": {
-		"message": "Comunicar"
+		"message": "Llamadas"
 	},
 	"customFieldsTabLabel": {
 		"message": "Campos personalizados"
@@ -3347,7 +3392,7 @@
 		"message": "Integración con Thunderbird"
 	},
 	"autocompletionLabel": {
-		"message": "Sugestión de direcciones de correo electrónico realizada por CardBook"
+		"message": "Autocompletado de direcciones de correo electrónico"
 	},
 	"autocompletionAccesskey": {
 		"message": "e"
@@ -3371,7 +3416,7 @@
 		"message": "Mostrar el nombre de la libreta de direcciones"
 	},
 	"autocompleteShowAddressbookAccesskey": {
-		"message": "V"
+		"message": "M"
 	},
 	"autocompleteWithColorLabel": {
 		"message": "Usar el color de la libreta de direcciones"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "Claves públicas"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "C"
+	},
 	"advancedTab1Label": {
 		"message": "Avanzado"
 	},
@@ -3590,25 +3641,25 @@
 		"message": "Apellidos Nombre"
 	},
 	"showNameAsLFAccesskey": {
-		"message": "o"
+		"message": "A"
 	},
 	"showNameAsLFCommaLabel": {
 		"message": "Apellidos, Nombre"
 	},
 	"showNameAsLFCommaAccesskey": {
-		"message": "f"
+		"message": "i"
 	},
 	"showNameAsFLLabel": {
 		"message": "Nombre Apellidos"
 	},
 	"showNameAsFLAccesskey": {
-		"message": "P"
+		"message": "o"
 	},
 	"showNameAsDSPLabel": {
 		"message": "Nombre mostrado"
 	},
 	"showNameAsDSPAccesskey": {
-		"message": "f"
+		"message": "m"
 	},
 	"adrFormulaCaption": {
 		"message": "Dirección"
@@ -3719,7 +3770,7 @@
 		"message": "Correo electrónico"
 	},
 	"typesCategoryEmailAccesskey": {
-		"message": "E"
+		"message": "C"
 	},
 	"typesCategoryImppLabel": {
 		"message": "IMPP"
@@ -3767,13 +3818,13 @@
 		"message": "R"
 	},
 	"IMPPGroupboxWarn": {
-		"message": "Este parámetro permite abrir directamente la dirección de mensajería instantánea usando el protocolo deseado."
+		"message": "Esta configuración permite llamadar por Internet utilizando el protocolo deseado."
 	},
 	"IMPPGroupboxLabel": {
-		"message": "Comunicaciones por Internet"
+		"message": "Llamadas por Internet"
 	},
 	"preferIMPPPrefLabel": {
-		"message": "Preferir las comunicaciones Internet marcadas con"
+		"message": "Preferir las llamadas de Internet marcadas con"
 	},
 	"preferIMPPPrefAccesskey": {
 		"message": "P"
@@ -3803,16 +3854,16 @@
 		"message": "E"
 	},
 	"deleteIMPPLabel": {
-		"message": "Eliminar"
+		"message": "Borrar"
 	},
 	"deleteIMPPAccesskey": {
-		"message": "S"
+		"message": "B"
 	},
 	"URLPhoneGroupboxLabel": {
 		"message": "Llamadas telefónicas por URL"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Esta sección se aplica solamente si el protocolo URL para teléfonos está seleccionado. La URL tiene que incluir $1, refiriéndose al número de teléfono."
+		"message": "Esta sección solo aplica si ha seleccionado el protocolo de URL para teléfono. La URL debe contener {{1}}, que hace referencia al número de teléfono."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -3941,16 +3992,16 @@
 		"message": "c"
 	},
 	"initialSyncLabel": {
-		"message": "Lanzar una sincronización al iniciar Thunderbird"
+		"message": "Sincronizar al inicio de Thunderbird"
 	},
 	"initialSyncAccesskey": {
-		"message": "L"
+		"message": "S"
 	},
 	"initialSyncDelayLabel": {
-		"message": "Tiempo antes de lanzar las primeras consultas (segundos):"
+		"message": "Retraso de sincronización al inicio (segundos):"
 	},
 	"initialSyncDelayAccesskey": {
-		"message": "v"
+		"message": "R"
 	},
 	"solveConflictsLabel": {
 		"message": "Si un contacto se ha modificado en el servidor y localmente:"
@@ -4016,7 +4067,7 @@
 		"message": "Envío de correos electrónicos"
 	},
 	"preferEmailPrefLabel": {
-		"message": "Preferir direcciones de correo electrónico marcadas con "
+		"message": "Preferir direcciones de correo electrónico marcadas con"
 	},
 	"preferEmailPrefAccesskey": {
 		"message": "P"
@@ -4094,13 +4145,13 @@
 		"message": "n"
 	},
 	"anniversary.conf.label": {
-		"message": "Cumpleaños (solamente para vCard 4.0)"
+		"message": "Cumpleaños (solo para vCard 4.0)"
 	},
 	"anniversary.conf.accesskey": {
 		"message": "C"
 	},
 	"deathdate.conf.label": {
-		"message": "Fecha de deceso (solamente para vCard 4.0)"
+		"message": "Fecha de deceso (solo para vCard 4.0)"
 	},
 	"deathdate.conf.accesskey": {
 		"message": "d"
@@ -4112,13 +4163,13 @@
 		"message": "E"
 	},
 	"gender.conf.label": {
-		"message": "Sexo (solamente para vCard 4.0)"
+		"message": "Sexo (solo para vCard 4.0)"
 	},
 	"birthplace.conf.label": {
-		"message": "Lugar de nacimiento (solamente para vCard 4.0)"
+		"message": "Lugar de nacimiento (solo para vCard 4.0)"
 	},
 	"deathplace.conf.label": {
-		"message": "Lugar de deceso (solamente para vCard 4.0)"
+		"message": "Lugar de deceso (solo para vCard 4.0)"
 	},
 	"calendarsGroupboxLabel": {
 		"message": "Calendarios"
@@ -4208,7 +4259,7 @@
 		"message": "Alarma(s) a n horas para los eventos del calendario (Ejemplo: 4,+1):"
 	},
 	"calendarEntryAlarmTooltip": {
-		"message": "Especifique cuántos días antes del cumpleaños quiere recibir una alarma. Si el campo está vacío, entonces no se lanzará ninguna alarma. Si quiere varias alarmas, especifique una lista separada por comas."
+		"message": "Introduzca con cuántas horas antes del cumpleaños quiere recibir una alarma de Lightning. Si el campo está vacío, no habrá alarma. Si desea varias, introduzca las alarmas en una lista separada por comas."
 	},
 	"calendarEntryAlarmAccesskey": {
 		"message": "n"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Claves públicas"
+	},
 	"noteTabLabel": {
 		"message": "Notas"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Escribir un nuevo mensaje (copia oculta/bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Claves públicas"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Descubrir claves en línea"
+	},
+	"importKeyFromCards.label": {
+		"message": "Importar al administrador de claves OpenPGP"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Descubrir claves en línea"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Descubrir claves en línea"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Buscar claves en el administrador de claves OpenPGP"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importar de archivo"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Compartir por correo electrónico"
@@ -4823,7 +4892,7 @@
 		"message": "E"
 	},
 	"impp.print.label": {
-		"message": "Comunicaciones de Internet"
+		"message": "Llamadas por Internet"
 	},
 	"impp.print.accesskey": {
 		"message": "i"
@@ -4928,10 +4997,10 @@
 		"message": "J"
 	},
 	"buttonRemoveFromListLabel": {
-		"message": "Eliminar"
+		"message": "Borrar"
 	},
 	"buttonRemoveFromListAccesskey": {
-		"message": "P"
+		"message": "B"
 	},
 	"buttonGuessFromListLabel": {
 		"message": "Adevinar"
@@ -4994,7 +5063,7 @@
 		"message": "Añadir a la lista"
 	},
 	"deletelistTreeLabel": {
-		"message": "Eliminar de la lista"
+		"message": "Borrar de la lista"
 	},
 	"editCardFromListLabel": {
 		"message": "Modificar este contacto"

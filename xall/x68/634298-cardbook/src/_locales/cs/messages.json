@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Adresa odkazu"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importovat ze souboru"
+	},
 	"uncategorizedCards": {
 		"message": "Nezařazeno"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : Klíč pro kontakt $P2$ se nepodařilo stáhnout (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Klíč kontaktu $P2$ úspěšně stažen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Stahování klíče kontaktu $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Kontakt $P2$ stažen ze serveru",
         "placeholders": {
@@ -1757,13 +1799,16 @@
 		"message": "CardBook komu"
 	},
 	"cardbook.searchCc.name": {
-		"message": "CardBook cc"
+		"message": "CardBook kopie"
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook bcc"
 	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook komu nebo kopie"
+	},
 	"cardbook.searchAll.name": {
-		"message": "CardBook od, komu, cc, nebo bcc"
+		"message": "CardBook od, komu, kopie, nebo bcc"
 	},
 	"cardbook.searchCorrespondents.name": {
 		"message": "Příjemci v CardBooku"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "C"
 	},
+	"keyTab.conf.label": {
+		"message": "Veřejné klíče"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "k"
+	},
 	"advancedTab1Label": {
 		"message": "Rozšířené"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "URL, která se má otevřít pro softwarové telefony"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Tato sekce se použije, pokud jste jako protokol u telefonu zvolily url. URL by měla obsahovat $1, což bude nahrazeno telefonním číslem."
+		"message": "Tato sekce se použije, pokud jste jako protokol u telefonu zvolily url. URL by měla obsahovat {{1}}, což bude nahrazeno telefonním číslem."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Veřejné klíče"
+	},
 	"noteTabLabel": {
 		"message": "Poznámky"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Vytvořit novou zprávu (skrytá kopie / bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Veřejné klíče"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Najít klíče na internetu"
+	},
+	"importKeyFromCards.label": {
+		"message": "Importovat do správce klíčů OpenPGP"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Najít klíče na internetu"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Najít klíče na internetu"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Hledat klíče ve správci klíčů OpenPGP"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importovat ze souboru"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Sdílet e-mailem"

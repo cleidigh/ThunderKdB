@@ -49,6 +49,7 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_cardEdition.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_cardEditionEvents.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/enigmail/cardbookEnigmail.js"/>
 	<!-- for the datepicker class -->
 	<script type="application/x-javascript" src="chrome://calendar/content/calendar-ui-utils.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookDatePicker.js"/>
@@ -90,6 +91,7 @@
 			<tab id="generalTab" label="__MSG_generalTabLabel__"/>
 			<tab id="noteTab" label="__MSG_noteTabLabel__"/>
 			<tab id="mailPopularityTab" label="__MSG_mailPopularityTabLabel__"/>
+			<tab id="keyTab" label="__MSG_keyTabLabel__"/>
 		</tabs>
 
 		<tabpanels id="mainEditionBox" flex="1">
@@ -295,7 +297,7 @@
 				<vbox id="contactGroupbox" flex="1">
 					<vbox id="classicalRows" flex="1"/>
 					<vbox id="modernRows" flex="1"/>
-					<vbox id="readWriteVbox" flex="1">
+					<vbox id="readWriteTypesVbox" flex="1">
 						<groupbox id="emailGroupbox" flex="1"/>
 						<groupbox id="telGroupbox" flex="1"/>
 						<groupbox id="adrGroupbox" flex="1"/>
@@ -459,6 +461,25 @@
 					</grid>
 				</groupbox>
 				<spacer flex="100"/>
+			</tabpanel>
+
+			<tabpanel id="keyTabpanel" orient="vertical" style="overflow:auto">
+				<vbox id="keyReadWriteToolsVbox" align="center" flex="1">
+					<hbox align="center" flex="1">
+						<button id="searchForOnlineKeyEditButton" tooltiptext="__MSG_searchForOnlineKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForOnlineKeyEdit();"/>
+						<button id="searchForThKeyEditButton" tooltiptext="__MSG_searchForThKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForThKeyEdit();"/>
+						<button id="searchForLocalKeyEditButton" tooltiptext="__MSG_searchForLocalKeyEditButton.tooltip__" onclick="wdw_cardEdition.searchForLocalKeyEdit();"/>
+					</hbox>
+				</vbox>
+				<hbox id="keyReadWriteHbox" flex="1">
+					<vbox flex="1">
+						<groupbox id="keyReadWriteGroupbox" flex="1"/>
+					</vbox>
+				</hbox>
+				<hbox id="keyReadOnlyHbox">
+					<box id="keyReadOnlyGroupbox"/>
+				</hbox>
+				<spacer id="keyTabSpacer" flex="100"/>
 			</tabpanel>
 		</tabpanels>
 	</tabbox>

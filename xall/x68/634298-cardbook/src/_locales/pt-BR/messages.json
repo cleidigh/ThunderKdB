@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Localização do link"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importar de arquivo"
+	},
 	"uncategorizedCards": {
 		"message": "Sem categoria"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : Falhou o download da chave para o contato $P2$ (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Descarregada chave do contato $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Descarregando a chave do contato $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Contato $P2$ descarregado do servidor",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Bcc"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook Para ou Cc"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook De, Para, Cc ou Bcc"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "Chaves públicas"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "C"
+	},
 	"advancedTab1Label": {
 		"message": "Avançado"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "URL de abertura para softphones"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Esta seção se aplica se você tiver selecionado o protocolo URL para telefone. O URL deve conter US $1, referindo-se ao número de telefone."
+		"message": "Esta seção se aplica se você tiver selecionado o protocolo URL para telefone. O URL deve conter US {{1}}, referindo-se ao número de telefone."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Chaves públicas"
+	},
 	"noteTabLabel": {
 		"message": "Notas"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Escrever nova mensagem (bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Chaves públicas"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Descobrir chaves online"
+	},
+	"importKeyFromCards.label": {
+		"message": "Importar para o Gerenciador de chaves do OpenPGP"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Descobrir chaves online"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Descobrir chaves online"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Buscar or chaves no Gerenciador de chaves do OpenPGP"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importar de um arquivo"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Enviar por email"

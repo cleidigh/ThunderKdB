@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Länkadress"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importera från fil"
+	},
 	"uncategorizedCards": {
 		"message": "Ogrupperad"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "??$P1$ : Key downloaded for contact $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Kontakten $P2$ laddade ner från servern",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "Kontakter Bcc"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "Kontakter Till eller Cc"
 	},
 	"cardbook.searchAll.name": {
 		"message": "Kontakter Från, Till, Cc eller Bcc"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "??Public Keys??"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "n"
+	},
 	"advancedTab1Label": {
 		"message": "Avancerad"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "??URL opening for soft phones??"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain $1, referring to the phone number.??"
+		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain {{1}}, referring to the phone number.??"
 	},
 	"URLPhoneURLLabel": {
 		"message": "Webbadress:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "??Public Keys??"
+	},
 	"noteTabLabel": {
 		"message": "Anteckningar"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Mejla kontakter (Dold kopia / bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "??Public keys??"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Hitta nycklar online"
+	},
+	"importKeyFromCards.label": {
+		"message": "??Import into OpenPGP Key Manager??"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Hitta nycklar online"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Hitta nycklar online"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "??Search for keys in OpenPGP key manager??"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importera från en fil"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Dela med mejl"

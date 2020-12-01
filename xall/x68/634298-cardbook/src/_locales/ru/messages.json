@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Адрес объекта ссылки"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Импорт из файла"
+	},
 	"uncategorizedCards": {
 		"message": "Без категории"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$: Не удалось получить ключ для контакта $P2$ (URL: $P3$, статус: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$: Получен ключ для контакта $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$: Получение ключа для контакта $P2$…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Контакт $P2$ загружен с сервера",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "Искать в CardBook по полю «Скрытая копия»"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "Искать в CardBook по полю «Кому» или «Копия»"
 	},
 	"cardbook.searchAll.name": {
 		"message": "Искать в CardBook по полю «От», «Кому», «Копия», «Скрытая копия»"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "Открытые ключи"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "О"
+	},
 	"advancedTab1Label": {
 		"message": "Дополнительно"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "URL для программных телефонов"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Параметры этого раздела применяются в случае, если в качестве протокола телефона выбран URL. URL должен содержать переменную «$1», которая будет заменена на номер телефона."
+		"message": "Параметры этого раздела применяются в случае, если в качестве протокола телефона выбран URL. URL должен содержать переменную «{{1}}», которая будет заменена на номер телефона."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Открытые ключи"
+	},
 	"noteTabLabel": {
 		"message": "Заметка"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Создать сообщение (скрытую копию)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Открытые ключи"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Поискать ключи в Интернете"
+	},
+	"importKeyFromCards.label": {
+		"message": "Импортировать в менеджер OpenPGP"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Поискать ключи в Интернете"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Поискать ключи в Интернете"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Поиск ключей в менеджере OpenPGP"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Импорт из файла"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Поделиться по email"

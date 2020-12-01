@@ -29,14 +29,13 @@ var cardbookDiscovery = {
 				// cannot be launched from cardbookRepository
 				cardbookIndexedDB.removeAccount(aDirPrefId, myDirPrefIdName);
 				cardbookRepository.cardbookPreferences.delBranch(aDirPrefId);
-				wdw_cardbook.loadCssRules();
 				cardbookRepository.cardbookUtils.formatStringForOutput("addressbookDeleted", [myDirPrefIdName]);
 				cardbookActions.addActivity("addressbookDeleted", [myDirPrefIdName], "deleteMail");
 				cardbookRepository.cardbookUtils.notifyObservers("addressbookDeleted");
 			}
 		}
 		catch (e) {
-			cardbookRepository.cardbookLog.updateStatusProgressInformation("cardbookRepository.removeAddressbook error : " + e, "Error");
+			cardbookRepository.cardbookLog.updateStatusProgressInformation("cardbookDiscovery.removeAddressbook error : " + e, "Error");
 		}
 	}
 };

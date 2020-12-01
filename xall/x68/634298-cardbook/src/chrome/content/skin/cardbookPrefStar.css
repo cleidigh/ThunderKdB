@@ -11,3 +11,21 @@
 	-moz-image-region: rect(0 16px 16px 0);
 }
 
+
+.cardbookKeyClass {
+	width: 50px !important;
+	height: 50px !important;
+	list-style-image: url("chrome://cardbook/content/skin/icons/key.svg");
+	-moz-context-properties: fill;
+	fill: -moz-DialogText;
+}
+.cardbookKeyClass[haspref="true"] {
+	fill: var(--toolbarbutton-icon-fill-attention);
+}
+:root[lwt-tree] .cardbookKeyClass {
+	fill: var(--lwt-text-color);
+}
+:root[lwt-tree] .cardbookKeyClass[haspref="true"] {
+	fill: var(--toolbarbutton-icon-fill-attention);
+}
+

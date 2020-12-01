@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/9/9020.png?modified=1479819670"
         }
     ],
-    "average_daily_users": 82084,
+    "average_daily_users": 81411,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,26 +18,26 @@
     "contributions_url": "https://paypal.me/eyalroz",
     "created": "2007-03-13T14:38:31Z",
     "current_version": {
-        "id": 2474334,
+        "id": 2474861,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "78.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/removedupes/versions/2474334",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/removedupes/versions/2474861",
         "files": [
             {
-                "id": 1017496,
-                "created": "2020-09-23T19:27:03Z",
-                "hash": "sha256:b733e97f052c90afbf8d3f25a56bb9cf767e2d4fbe39b8b6f2f76b84d74fbb39",
+                "id": 1018023,
+                "created": "2020-11-26T23:42:34Z",
+                "hash": "sha256:61183fe3b8d8a15f3b7f14c78a6de3c5cb29d843dae396bb2e516f6a934c2c6d",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 130285,
+                "size": 130267,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017496/remove_duplicate_messages-0.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018023/remove_duplicate_messages-0.5.1b2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -75,11 +75,11 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "Changes since the 0.4.x line:\n\n* Dropped the \"(Alternate)\" suffix from the name. From now on this extension will be known as \"Remove Duplicate Messages\".\n* Logic change: Missing values are now assumed to have (unknown) unique values, so they are not considered to be duplicates of other missing values in the same field ; a (hidden) preference controls this behavior.\n* **Compatibility**: Compatible with Thunderbird 68, 78 and probably all beta versions in-between.\n* **Compatibility**: No longer compatible with Seamonkey 1.x, Toolkitized Seamonkey (2.x)\n* **Compatibility**: No longer compatible with Thunderbird 30...67.\n* **Fix**: Status flag comparison criteria was present only on the menubutton but not in the preferences dialog - now it appears in both.\n\nInternal changes (no user visibility):\n\n* No longer using JARs\n* Reworked the directory structure\n* Dropped some files only in use by previous TB versions (but not all files for now)\n* Using John Bieling's \"WindowListener\"  from [here](<a rel=\"nofollow\" href=\"https://github.com/thundernest/addon-developer-support/\">https://github.com/thundernest/addon-developer-support/</a>), as an extension loader; see [this guide](<a rel=\"nofollow\" href=\"https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78\">https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78</a>) regarding how to use it.\n* Now using service getters provided by `Services.jsm` and `MailServices.jsm` whenever possible.\n* Now logging using a plain and simple `console.log()`/`console.error()`.\n* **Fix:** Corrected the default value of the hidden preference for allowing MD5 substitutes for Message ID (no effect on behavior)."
+            "en-US": "* Changed the review dialog name from \"Duplicate message deletion\" to \"Duplicate message review\" to make it clear not everything in the dialog was getting deleted.\n* **Fix**: Address stripping &amp; sorting no longer fails with a \"too much recursion\" error.\n\nInternal changes (no user visibility):\n\n* Build script rewritten"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/versions/0.5",
-        "version": "0.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/versions/0.5.1b2",
+        "version": "0.5.1b2"
     },
     "default_locale": "en-US",
     "description": {
@@ -112,7 +112,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-29T06:38:53Z",
+    "last_updated": "2020-11-27T04:24:53Z",
     "name": {
         "fr": "Supprimer les messages en double (Alternatif)",
         "de": "Entfernung doppelter Nachrichten (Alternative)",
@@ -139,10 +139,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.18505,
-        "count": 231,
-        "average": 4.1905,
-        "text_count": 231
+        "bayesian_average": 4.18692,
+        "count": 234,
+        "average": 4.1923,
+        "text_count": 234
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/reviews/",
     "requires_payment": false,
@@ -176,9 +176,11 @@
     "weekly_downloads": 1433,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-04T11:52:43Z"
         }

@@ -1,3 +1,6 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 var {
   XPCOMUtils
 } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
@@ -6,6 +9,8 @@ XPCOMUtils.defineLazyModuleGetters(this, {
   Customizations: "chrome://conversations/content/modules/assistant.js",
   ExtensionCommon: "resource://gre/modules/ExtensionCommon.jsm",
   GlodaAttrProviders: "chrome://conversations/content/modules/plugins/glodaAttrProviders.js",
+  makeFriendlyDateAgo: "resource:///modules/TemplateUtils.jsm",
+  MsgHdrToMimeMessage: "resource:///modules/gloda/MimeMessage.jsm",
   msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
   msgUriToMsgHdr: "chrome://conversations/content/modules/misc.js",
   NetUtil: "resource://gre/modules/NetUtil.jsm",
@@ -15,17 +20,6 @@ XPCOMUtils.defineLazyModuleGetters(this, {
   setupLogging: "chrome://conversations/content/modules/misc.js",
   Sqlite: "resource://gre/modules/Sqlite.jsm",
   OS: "resource://gre/modules/osfile.jsm"
-});
-XPCOMUtils.defineLazyGetter(this, "MsgHdrToMimeMessage", () => {
-  let tmp = {};
-
-  try {
-    ChromeUtils.import("resource:///modules/gloda/mimemsg.js", tmp);
-  } catch (ex) {
-    ChromeUtils.import("resource:///modules/gloda/MimeMessage.jsm", tmp);
-  }
-
-  return tmp.MsgHdrToMimeMessage;
 });
 const FILE_SIMPLE_STORAGE = "simple_storage.sqlite";
 const SIMPLE_STORAGE_TABLE_NAME = "conversations"; // To help updates to apply successfully, we need to properly unload the modules
@@ -422,7 +416,7 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
         async getAttachmentBody(id, partName) {
           const msgHdr = context.extension.messageManager.get(id);
           return new Promise((resolve, reject) => {
-            MsgHdrToMimeMessage(msgHdr, this, (mimeHdr, aMimeMsg) => {
+            MsgHdrToMimeMessage(msgHdr, null, (mimeHdr, aMimeMsg) => {
               const attachments = aMimeMsg.allAttachments.filter(x => x.partName == partName);
               const msgUri = Services.io.newURI(attachments[0].url);
               const tmpChannel = NetUtil.newChannel({
@@ -666,6 +660,10 @@ var conversations = class extends ExtensionCommon.ExtensionAPI {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           let msgUri = msgHdrGetUri(msgHdr);
           getAttachmentInfo(win, msgUri, attachment).detach(shouldSave);
+        },
+
+        async makeFriendlyDateAgo(date) {
+          return makeFriendlyDateAgo(new Date(date));
         },
 
         onCallAPI: new ExtensionCommon.EventManager({

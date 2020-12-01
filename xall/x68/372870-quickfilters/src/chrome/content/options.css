@@ -1,5 +1,5 @@
 @import url('chrome://quickfilters/content/contribute.css');
-@import url('chrome://quickfilters/skin/license.css');
+@import url('chrome://quickfilters/content/skin/license.css');
 
 /****** window & top panel ******/
 #quickfilters-preferences {
@@ -12,7 +12,8 @@
 
 #qf-options-version {
   margin-top: 13px;
-  margin-left: -5em;
+  margin-left: -4em; /* force into title the box */
+  padding-right: 4em;
   font: 12pt Calibri,arial,sans-serif;
   font-weight: bold;
   color: #FFFFFF;
@@ -28,16 +29,18 @@
 #qf-header-container {
 	width: 100%;
 	-moz-box-sizing: border-box;
-	background-image: url("chrome://messenger/skin/preferences/background.png");
-	background-color: transparent;
-	color: -moz-fieldtext;
 }
 
 #qf-options-icon {
-	height: 32px !important;
-	width: 32px !important;
+	height: 64px !important;
+	width: 64px !important;
 	padding: 0;
-	margin: 0 5px;
+	margin: 15px 5px 0;
+}
+
+#qf-youtubeBox {
+  margin-top: 25px;
+  padding: 10px;
 }
 
 #qf-youtube {
@@ -46,7 +49,8 @@
 }
 
 #qf-options-header {
-	margin: 5px 5px 5px 5px;
+	margin: 5px;
+    padding-block: 20px;
 	border: none;
 	color: #ffffff;
 	background-color: transparent !important;
@@ -76,26 +80,22 @@ hbox > button {
 }
 
 /****** advanced tab	********/
-#chkCurrentToolbarFiltersButton .checkbox-icon { 
-  list-style-image: url("chrome://quickfilters/skin/filterList_16.png"); 
-	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+#chkCurrentToolbarFiltersButton .checkbox-icon {
+  list-style-image: url("chrome://quickfilters/content/skin/filterList.svg");
 }
 
 #chkFoldersShortcut .checkbox-icon, /* pro tab: shortcuts option */
-#chkCurrentToolbarFolderButton .checkbox-icon { 
-  list-style-image: url("chrome://quickfilters/skin/run-filters-folder-16.png"); 
-	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+#chkCurrentToolbarFolderButton .checkbox-icon {
+  list-style-image: url("chrome://quickfilters/content/skin/runFilters.svg");
 }
 
 #chkMailsShortcut .checkbox-icon,  /* pro tab: shortcuts option */
-#chkCurrentToolbarMessagesButton .checkbox-icon { 
-  list-style-image: url("chrome://quickfilters/skin/run-filters-msg-16.png"); 
-	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+#chkCurrentToolbarMessagesButton .checkbox-icon {
+  list-style-image: url("chrome://quickfilters/content/skin/runFilters-selected.svg");
 }
 
-#chkCurrentFindFilterButton .checkbox-icon { 
-  list-style-image: url("chrome://quickfilters/skin/searchFilters_16.png"); 
-	-moz-image-region: rect(0px, 16px, 16px, 0px); 
+#chkCurrentFindFilterButton .checkbox-icon {
+  list-style-image: url("chrome://quickfilters/content/skin/searchFilters.svg");
 }
 
 
@@ -159,9 +159,9 @@ label [href^="mailto"] {
 
 button.text-link,
 label.text-link {
-	border-radius: 0.5em;
+	border-radius: 3px;
 	margin: 0.7em 6em 0.8em 10em!important;
-	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
+	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.6);
 	transition-property: box-shadow, margin;
 	transition-duration: 0.2s, 0.2s;
 }
@@ -174,12 +174,12 @@ label.text-link:hover {
 
 button.text-link,
 button.text-link[visited="true"],
-label.text-link, 
+label.text-link,
 label.text-link[visited="true"] {
 	border: 1px #AAA solid;
 	padding: 4px 2px 6px 5px !important;
 	text-decoration: underline !important;
-	vertical-align: middle !important;;
+	vertical-align: middle !important;
 	text-align: center;
 	font-size: 12px;
 }
@@ -232,7 +232,7 @@ label#getCopySentToCurrent:hover {
 
 
 /* youtube - red */
-button#L2 {
+label#L2 {
 	-moz-appearance: none;
   background: linear-gradient(to bottom, #6b0505 0%,#cc0000 31%,#ed3b3b 100%);
 	color: #F0F0F0 !important;
@@ -241,15 +241,15 @@ button#L2 {
 	-moz-image-region: rect(0, 16px, 16px, 0);
 }
 
-button#L2:hover,
-button#L2:focus {
+label#L2:hover,
+label#L2:focus {
 	background-color: rgb(251,202,159);
 	background-image: linear-gradient(to bottom, #6b050e 0%,#cc0011 16%,#ed3b4a 85%,#ed8080 100%) !important;
 	border: 1px #006 solid;
 	color: #FFFFFF !important;
 }
 
-button#L2:active {
+label#L2:active {
 	background-image: linear-gradient(to bottom, #6b2905 0%,#cc4700 31%,#ed793b 100%) !important;
 	text-decoration: underline;
 	border: 1px #006 solid;
@@ -344,10 +344,10 @@ hbox.quickhelp-dbg {
 	height: 4.5em !important;
 	min-width: 45em; /* avoid "shrinking" too much in licenseKey only mode */
 }
-.niceFont, 
-.niceFont description, 
+.niceFont,
+.niceFont description,
 .niceFont button,
-.niceFont button label
+.niceFont label
 {
   font-family: cambria, Georgia, serif;
   font-size: 10.2pt;

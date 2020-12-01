@@ -7,6 +7,8 @@ const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 const {AddonManager} = ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
 const {MailUtils} = ChromeUtils.import("resource:///modules/MailUtils.jsm");	//kann ggf. weg
 const {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");	//kann ggf. weg
+const { ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
+const Ci=Components.interfaces;
 
 let sb4f=Services.strings.createBundle("chrome://messenger/locale/folderWidgets.properties");
 
@@ -45,6 +47,16 @@ var gFlagList = { 'MSG_FOLDER_FLAG_VIRTUAL' : 0x0020,
 									'MSG_FOLDER_FLAG_TEMPLATES' : 0x400000,
 									'MSG_FOLDER_FLAG_JUNK' : 0x40000000 };
 var gSpecialFolders=0x0100|0x0400|0x0800|0x400000|0x40000000;
+
+nsIMsgCompDeliverMode
+PRInt32 	Now 	= 0
+PRInt32 	Later 	= 1
+PRInt32 	Save 	= 2
+PRInt32 	SaveAs 	= 3
+PRInt32 	SaveAsDraft 	= 4
+PRInt32 	SaveAsTemplate 	= 5
+PRInt32 	SendUnsent 	= 6
+PRInt32 	AutoSaveAsDraft 	= 7
 */
 
 var gAllowMove=false;  //TODO: used with 'also move original'
@@ -86,6 +98,8 @@ debug('onShutdown isAppShutdown='+isAppShutdown);
     return {
       cs2c: {
         migratePrefs: async function() {
+					registerListener();
+
           let mig=new Object;
           let b=Services.prefs.getBranch("extensions.copysent2current.");
           let prefs=b.getChildList("");
@@ -152,7 +166,7 @@ let gDefSent=0x1;
 debug('SetPrefs: changed Pref '+changedPref+' to '+prefs[changedPref]);
 				},
 /////////////////////////////////////////////////////////////////////////
-				getFcc: async function() {
+				getFcc: async function() {	//called from options.js
           let fcc={};
           for (let account of MailServices.accounts.accounts) {
             let key = account.key;
@@ -166,10 +180,10 @@ debug('SetPrefs: changed Pref '+changedPref+' to '+prefs[changedPref]);
           return fcc;
 				},
 /////////////////////////////////////////////////////////////////////////
-        setFcc: async function(wid, identityKey) {
+        setFcc: async function(wid, identityKey) {	//called from background if messenger.compose.onBeforeSend
 debug("setFcc started: wid="+wid);
 					let win=Services.wm.getOuterWindowWithId(wid);
-
+					win.CS2C_SENDDONE=true;
 /* This is ...
           let identity=MailServices.accounts.getIdentity(identityKey);
           let akey=null;
@@ -282,6 +296,22 @@ debug('setFcc finally: fcc='+msgCompFields.fcc+' fcc2='+msgCompFields.fcc2);
             } else {
               debug('MoveMessage: not called');
             }
+if (prefs.chooseBehindTest) {
+/* Test the choose-after-send popup */
+	let m3p=Services.wm.getMostRecentWindow("mail:3pane");
+let gDefaultLabel='';
+let gDefaultURI='';
+let gSentLabel='';
+let gSentURI='';
+let gAllowMove=true;
+//  var chooser=m3p.openDialog("chrome://copysent2current/content/chooser.xhtml","cs2c_chooser",
+  var chooser=m3p.openDialog(context.extension.rootURI.resolve("cs2c_chooser.html"),"cs2c_chooser",
+      'chrome=yes,modal=yes,titlebar=yes,alwaysRaised=yes,dialog=yes,close=no',//,left='+left+',top='+top,
+      gDefaultLabel, gDefaultURI, gSentLabel, gSentURI, gAllowMove);
+  var targeturi=picker.getAttribute("uri");
+debug("TARGET: "+targeturi);
+return false;	//do not send message
+}
           }
           else debug('account not enabled for cs2c');
 
@@ -289,20 +319,10 @@ if (prefs['test']) debug('test is set, prevent sending');
 					return prefs['test']?false:true;			//true to send, false to cancel
         },
 /////////////////////////////////////////////////////////////////////////
-        addMenu: async function(wid) {
+        addMenu: async function(wid) {		//called from background if messenger.windows.onCreated
 debug("addMenu started wid="+wid);
-
-					let cw;
-					let ws=Services.wm.getEnumerator(null);	//liefert nur ein chrome://messenger/content/messenger.xhtml
-					//let ws=Services.wm.getXULWindowEnumerator(null);	geht nicht
-					while (ws.hasMoreElements()) {
-						let w = ws.getNext();
-						debug("enum: "+w.location.href+' '+w.document.documentElement.getAttribute('windowtype'));
-						//chrome://messenger/content/messengercompose/messengercompose.xhtml msgcompose
-						if (w.location.href=='chrome://messenger/content/messengercompose/messengercompose.xhtml') cw=w;
-					}
-          sipMenu(cw);
-					//test(wid, cw);
+					let win=Services.wm.getOuterWindowWithId(wid);
+					sipMenu(win);
 				}
       }
     };
@@ -443,7 +463,7 @@ debug('identity='+identity.key+' .doFcc='+identity.doFcc+' account='+gAccount+' 
         }
       } else { //Must be a new message. Try to find the currently selected folder
         state+=' newMsg';
-        var mailWindow = Services.wm.getMostRecentWindow("mail:3pane");
+        var mailWindow = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
         if (mailWindow) {     //else: no main window
           state+=' window';
           var View=mailWindow.gDBView;  //nsIMsgDBView
@@ -568,10 +588,10 @@ function sipMenu(cw) {
 	ml.setAttribute('sizetopopup','always');
 	ml.style.minWidth='10em';
 
-	let fmp=doc.getElementById('fccMenuPopup');
+	let fmp=doc.getElementById('fccMenuPopup');	//Menu 'Optionen'->'Kopie ablegen in'
 	let menu=fmp.cloneNode(true);
 	menu.id='cs2c-selector';
-	let w=Services.wm.getMostRecentWindow("mail:3pane");
+	let w=Services.wm.getMostRecentWindow("mail:3pane");	//any mail:3pane does it
 	let v=w?w.document.getElementById('mailContext-fileHereMenu'):null;
 	menu.setAttribute('showRecent', 'true');
 	menu.setAttribute('recentLabel', v?v.getAttribute('recentLabel'):'Last');
@@ -707,6 +727,52 @@ debug('MoveMessage: Message not moved since target is same folder');
     Components.utils.reportError('CopySent2Current: Move of original message failed: '+e);
   }
 }
+
+let sendMessage={
+	handleEvent: function(e) {	//Fires after messenger.compose.onBeforeSend
+		let msgWin=e.view;
+		if (msgWin.CS2C_SENDDONE) {
+debug('compose-send-message fired but onBeforeSend was called');
+			return;
+		}
+		//let deliverMode=msgWin.gMsgCompose.deliverMode;
+		//the test for deliverMode doesn't seems to be reliable
+//debug('compose-send-message fired deliverMode='+deliverMode+' (==4,5,7?)');
+    //if (deliverMode==Ci.nsIMsgCompDeliverMode.SaveAsDraft ||				//4
+    //    deliverMode==Ci.nsIMsgCompDeliverMode.SaveAsTemplate ||			//5
+    //    deliverMode==Ci.nsIMsgCompDeliverMode.AutoSaveAsDraft) {		//7
+        //for drafts/template save current fcc selection for later use 
+			let picker=msgWin.document.getElementById('fccFolderPicker');
+			if (!picker) {
+debug('account not enabled for CS2C');
+				return;
+			}
+			let fcc=picker.getAttribute("uri");
+debug('set fcc='+fcc);
+			msgWin.gMsgCompose.compFields.fcc=fcc;
+		//}
+	}
+}
+function registerListener() {
+debug('registering window listener');
+  ExtensionSupport.registerWindowListener("CopySend2Current", {
+  /**/
+    chromeURLs: [
+      "chrome://messenger/content/messengercompose/messengercompose.xhtml"
+    ],
+  /**/
+    onLoadWindow: function(w) {
+debug('messengercompose loaded, initialize compose-send-message');
+			w.addEventListener('compose-send-message', sendMessage, true);
+		},
+    onUnloadWindow: function(w) {
+debug('messengercompose unloaded');
+			w.removeEventListener('compose-send-message', sendMessage, true);
+		}
+
+	});
+}
+
 
 function test(wid, cw) {
 /* TEST */

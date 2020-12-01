@@ -31,6 +31,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					fp.appendFilter("VCF File","*.vcf");
 				} else if (aType === "TPL") {
 					fp.appendFilter("TPL File","*.tpl");
+				} else if (aType === "GPG") {
+					fp.appendFilter("ASC File","*.asc");
+					fp.appendFilter("PUB File","*.pub");
+					fp.appendFilter("GPG File","*.gpg");
 				} else if (aType === "EXPORTFILE") {
 					//bug 545091 on linux and macosx
 					fp.defaultExtension = "vcf";
@@ -327,11 +331,11 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				var myResult = telProtocol + ":" + myValue;
 				cardbookRepository.cardbookUtils.openExternalURL(myResult);
 			} else {
-				var myUrl = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.URLPhoneURL").replace("$1", myValue);
+				var myUrl = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.URLPhoneURL").replace("{{1}}", myValue).replace("$1", myValue);
 				var myBackground = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.URLPhoneBackground");
 				if (myBackground) {
 					var myUser = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.URLPhoneUser");
-					var myPassword = cardbookRepository.cardbookRepository.cardbookPasswordManager.getPassword(myUser, myUrl);
+					var myPassword = cardbookRepository.cardbookPasswordManager.getPassword(myUser, myUrl);
 					var req = CardbookHttpRequest(myUrl, myUser);
 					req.withCredentials = true;					
 					req.open('GET', myUrl, true, myUser, myPassword);
@@ -747,7 +751,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 		displayCard: function (aCard, aReadOnly, aFollowLink) {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname",
 								"birthplace", "deathplace", "mailer", "geo", "sortstring",
-								"class1", "tz", "agent", "key", "prodid", "uid", "version", "dirPrefId", "cardurl", "etag" ];
+								"class1", "tz", "agent", "prodid", "uid", "version", "dirPrefId", "cardurl", "etag" ];
 			for (var field of fieldArray) {
 				if (document.getElementById(field + 'TextBox') && aCard[field]) {
 					document.getElementById(field + 'TextBox').value = aCard[field];
@@ -855,12 +859,18 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				}
 			}
 			cardbookWindowUtils.loadMailPopularity(aCard, aReadOnly);
+			
+			if (aReadOnly) {
+				cardbookWindowUtils.constructStaticKeysRows(aCard.dirPrefId, aCard.key, aCard.version);
+			} else {
+				cardbookWindowUtils.constructDynamicKeysRows(aCard.dirPrefId, "key", aCard.key, aCard.version);
+			}
 		},
 
 		clearCard: function () {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "gender",
 								"bday", "birthplace", "anniversary", "deathdate", "deathplace", "mailer", "geo", "sortstring", "class1", "tz",
-								"agent", "key", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag", "others", "vcard",
+								"agent", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag", "others", "vcard",
 								"photolocalURI", "logolocalURI", "soundlocalURI", "photoURI", "logoURI", "soundURI" ];
 			for (var i = 0; i < fieldArray.length; i++) {
 				if (document.getElementById(fieldArray[i] + 'TextBox')) {
@@ -892,6 +902,8 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			wdw_imageEdition.clearImageCard();
 			cardbookElementTools.deleteRows('addedCardsGroupbox');
 			cardbookElementTools.deleteRows('mailPopularityGroupbox');
+			cardbookElementTools.deleteRows("keyReadWriteGroupbox");
+			cardbookElementTools.deleteRows('keyReadOnlyGroupbox');
 		},
 
 		constructCustom: function (aReadOnly, aType, aOtherValue) {
@@ -1001,36 +1013,39 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			}
 		},
 
-		getTypeForLine: function (aType, aIndex) {
-			var myLineResult = [];
-			var myLineTypeResult = [];
-			
-			var myPrefButton = document.getElementById(aType + '_' + aIndex + '_PrefImage');
+		getPrefForLine: function (aType, aIndex) {
+			let result = [];
+			let myPrefButton = document.getElementById(aType + '_' + aIndex + '_PrefImage');
 			if (document.getElementById('versionTextBox').value === "4.0") {
 				if (myPrefButton.getAttribute('haspref')) {
-					var aPrefWeightBoxValue = document.getElementById(aType + '_' + aIndex + '_prefWeightBox').value;
-					if (aPrefWeightBoxValue) {
-						myLineTypeResult.push("PREF=" + aPrefWeightBoxValue);
+					if (document.getElementById(aType + '_' + aIndex + '_prefWeightBox')) {
+						result.push("PREF=" + document.getElementById(aType + '_' + aIndex + '_prefWeightBox').value);
 					} else {
-						myLineTypeResult.push("PREF=1");
+						result.push("PREF=1");
 					}
 				}
 			} else {
 				if (myPrefButton.getAttribute('haspref')) {
-					myLineTypeResult.push("TYPE=PREF");
+					result.push("TYPE=PREF");
 				}
 			}
+			return result;
+		},
+			
+		getTypeForLine: function (aType, aIndex) {
+			var myLineResult = [];
+			var myLineTypeResult = cardbookWindowUtils.getPrefForLine(aType, aIndex);
 
-			var myLineOtherType = document.getElementById(aType + '_' + aIndex + '_othersTypesBox').value;
-			if (myLineOtherType) {
-				myLineTypeResult = myLineTypeResult.concat(myLineOtherType.split(','));
+			if (document.getElementById(aType + '_' + aIndex + '_othersTypesBox')) {
+				let value = document.getElementById(aType + '_' + aIndex + '_othersTypesBox').value;
+				myLineTypeResult = myLineTypeResult.concat(value.split(','));
 			}
 			
 			var myLineTypeType = [];
 
-			var itemsListbox = document.getElementById(aType + '_' + aIndex + '_MenulistType');
 			var myTypes = [];
-			if (itemsListbox) {
+			if (document.getElementById(aType + '_' + aIndex + '_MenulistType')) {
+				var itemsListbox = document.getElementById(aType + '_' + aIndex + '_MenulistType');
 				var item = itemsListbox.querySelectorAll("menuitem.cardbook-item[checked]");
 				if (item[0]) {
 					var myValue = item[0].getAttribute('value').trim();
@@ -1160,6 +1175,29 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			return myResult;
 		},
 
+		getAllKeys: function (aRemoveNull) {
+			var type = "key";
+			var i = 0;
+			var result = [];
+			while (true) {
+				if (document.getElementById(type + '_' + i + '_hbox')) {
+					var keyTypes = cardbookWindowUtils.getPrefForLine(type, i);
+					var keyResult = document.getElementById(type + '_' + i + '_valueBox').value;
+					if (keyResult != "" || !aRemoveNull) {
+						if ((keyResult.search(/^http/i) >= 0) || (keyResult.search(/^file/i) >= 0)) {
+							result.push({types: keyTypes, value: "", localURI: "", URI: keyResult, extension: ""});
+						} else {
+							result.push({types: keyTypes, value: keyResult, localURI: "", URI: "", extension: ""});
+						}
+					}
+					i++;
+				} else {
+					break;
+				}
+			}
+			return result;
+		},
+
 		openAdrPanel: function (aAdrLine, aIdArray) {
 			wdw_cardEdition.currentAdrId = JSON.parse(JSON.stringify(aIdArray));
 			document.getElementById('adrPostOfficeTextBox').value = cardbookRepository.cardbookUtils.undefinedToBlank(aAdrLine[0][0]);
@@ -1177,7 +1215,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					document.getElementById('adrCountryMenulist').value = loc.formatValueSync("region-name-" + country.toLowerCase());
 				}
 			}
-			document.getElementById('adrPanel').openPopup(document.getElementById(wdw_cardEdition.currentAdrId.join("_")), 'after_start', 0, 0, false, false);
+			document.getElementById('adrPanel').openPopup(document.getElementById(wdw_cardEdition.currentAdrId.join("_")), 'after_start', 0, 0, true);
 		},
 
 		closeAdrPanel: function () {
@@ -1205,27 +1243,8 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 		},
 
 		cancelAdrPanel: function () {
-			cardbookWindowUtils.disableButtons(wdw_cardEdition.currentAdrId[0], wdw_cardEdition.currentAdrId[1]);
-		},
-
-		disableButtons: function (aType, aIndex) {
-			if (aIndex == 0) {
-				if (document.getElementById(aType + '_' + aIndex + '_valueBox').value == "") {
-					document.getElementById(aType + '_' + aIndex + '_removeButton').disabled = true;
-					document.getElementById(aType + '_' + aIndex + '_addButton').disabled = true;
-				} else {
-					document.getElementById(aType + '_' + aIndex + '_addButton').disabled = false;
-					document.getElementById(aType + '_' + aIndex + '_removeButton').disabled = false;
-				}
-			} else {
-				document.getElementById(aType + '_0_removeButton').disabled = false;
-				for (var i = 0; i < aIndex; i++) {
-					document.getElementById(aType + '_' + i + '_addButton').disabled = true;
-					document.getElementById(aType + '_' + i + '_downButton').disabled = false;
-				}
-			}
-			document.getElementById(aType + '_' + aIndex + '_downButton').disabled = true;
-			document.getElementById(aType + '_0_upButton').disabled = true;
+			let adrTextBox = document.getElementById(wdw_cardEdition.currentAdrId[0] + '_' + wdw_cardEdition.currentAdrId[1] + '_valueBox');
+			adrTextBox.dispatchEvent(new Event('input'));
 		},
 
 		findNextLine: function (aType) {
@@ -1255,7 +1274,17 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				cardbookWindowUtils.loadDynamicEventsTypes(aDirPrefId, aType, i+start, aEventType[i], aVersion);
 			}
 			if (aEventType.length == 0) {
-				cardbookWindowUtils.loadDynamicEventsTypes(aDirPrefId, aType, start, ["", ""], aVersion);
+				cardbookWindowUtils.loadDynamicEventsTypes(aDirPrefId, aType, start, ["", "", ""], aVersion);
+			}
+		},
+
+		constructDynamicKeysRows: function (aDirPrefId, aType, aKeyType, aVersion) {
+			var start = cardbookWindowUtils.findNextLine(aType);
+			for (var i = 0; i < aKeyType.length; i++) {
+				cardbookWindowUtils.loadDynamicKeysTypes(aDirPrefId, aType, i+start, aKeyType[i], aVersion);
+			}
+			if (aKeyType.length == 0) {
+				cardbookWindowUtils.loadDynamicKeysTypes(aDirPrefId, aType, start, {types: [], value: "", localURI: "", URI: "", extension: ""}, aVersion);
 			}
 		},
 
@@ -1268,6 +1297,12 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 		constructStaticEventsRows: function (aDirPrefId, aEventType, aVersion) {
 			for (var i = 0; i < aEventType.length; i++) {
 				cardbookWindowUtils.loadStaticEventsTypes(aDirPrefId, "event", i, aEventType[i], aVersion);
+			}
+		},
+
+		constructStaticKeysRows: function (aDirPrefId, aKey, aVersion) {
+			for (var i = 0; i < aKey.length; i++) {
+				cardbookWindowUtils.loadStaticKeysTypes(aDirPrefId, "key", i, aKey[i], aVersion);
 			}
 		},
 
@@ -1504,6 +1539,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				}
 			}
 
+			let keyTextbox;
 			if (aType == "impp") {
 				var serviceCode = cardbookRepository.cardbookTypes.getIMPPCode(aInputTypes);
 				var serviceProtocol = cardbookRepository.cardbookTypes.getIMPPProtocol(aCardValue);
@@ -1524,7 +1560,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 						myValue = myValue.replace(myRegexp, "");
 					}
 				}
-				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myValue, {}, aIndex);
+				keyTextbox = cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myValue, {}, aIndex);
 			} else if (aType == "adr") {
 				var myTmpArray = [];
 				for (var i = 0; i < aCardValue.length; i++) {
@@ -1532,9 +1568,9 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 						myTmpArray.push(aCardValue[i].replace(/\n/g, " "));
 					}
 				}
-				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {}, aIndex);
+				keyTextbox = cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', myTmpArray.join(" "), {}, aIndex);
 			} else {
-				cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', cardbookRepository.cardbookUtils.cleanArray(aCardValue).join(" "), {}, aIndex);
+				keyTextbox = cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', cardbookRepository.cardbookUtils.cleanArray(aCardValue).join(" "), {}, aIndex);
 			}
 
 			if (aType == "adr") {
@@ -1664,6 +1700,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					}
 					function assignUrlButton(aFile, aField) {
 						aField.value = "file://" + aFile.path;
+						aField.dispatchEvent(new Event('input'));
 					};
 					var myUrlTextBox = document.getElementById(aType + '_' + aIndex + '_valueBox');
 					try {
@@ -1737,7 +1774,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			};
 			cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'add', 'add', fireAddButton);
 
-			cardbookWindowUtils.disableButtons(aType, aIndex);
+			keyTextbox.dispatchEvent(new Event('input'));
 		},
 
 		loadDynamicEventsTypes: function (aDirPrefId, aType, aIndex, aEventType, aVersion) {
@@ -1753,7 +1790,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 			let myDateFormat = cardbookRepository.getDateFormat(aDirPrefId, aVersion);
 			cardbookElementTools.addDatepicker(aHBox, aType + '_' + aIndex + '_valueDateBox', cardbookRepository.cardbookDates.getDateStringFromVCardDate(aEventType[0], myDateFormat), {});
-			cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', aEventType[1], {}, aIndex);
+			var keyTextbox = cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', aEventType[1], {}, aIndex);
 
 			function fireUpButton(event) {
 				if (document.getElementById(this.id).disabled) {
@@ -1815,7 +1852,104 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			};
 			cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'add', 'add', fireAddButton);
 
-			cardbookWindowUtils.disableButtons(aType, aIndex);
+			keyTextbox.dispatchEvent(new Event('input'));
+		},
+
+		loadDynamicKeysTypes: function (aDirPrefId, aType, aIndex, aKeyType, aVersion) {
+			var aOrigBox = document.getElementById(aType + 'ReadWriteGroupbox');
+			
+			var aHBox = cardbookElementTools.addHBox(aType, aIndex, aOrigBox, {class: "input-container"});
+
+			var aPrefButton = cardbookElementTools.addPrefStar(aHBox, aType, aIndex, cardbookRepository.cardbookUtils.getPrefBooleanFromTypes(aKeyType.types))
+			
+			let value;
+			if (aKeyType.URI != "") {
+				value = aKeyType.URI;
+			} else {
+				value = aKeyType.value;
+			}
+			var keyTextbox = cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', value, {}, aIndex);
+
+			function fireLinkKeyButton(event) {
+				if (document.getElementById(this.id).disabled) {
+					return;
+				}
+				function assignUrlButton(aFile, aField) {
+					aField.value = "file://" + aFile.path;
+					aField.dispatchEvent(new Event('input'));
+				};
+				var myKeyTextBox = document.getElementById(aType + '_' + aIndex + '_valueBox');
+				try {
+					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
+					myFile.initWithPath(myKeyTextBox.value.replace("file://", ""));
+					cardbookWindowUtils.callFilePicker("fileSelectionTitle", "OPEN", "", "", myFile.parent, assignUrlButton, myKeyTextBox);
+				} catch(e) {
+					cardbookWindowUtils.callFilePicker("fileSelectionTitle", "OPEN", "", "", "", assignUrlButton, myKeyTextBox);
+				}
+			};
+			cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'link', 'link', fireLinkKeyButton);
+
+			function fireUpButton(event) {
+				if (document.getElementById(this.id).disabled) {
+					return;
+				}
+				var myAllValuesArray = cardbookWindowUtils.getAllKeys(false);
+				if (myAllValuesArray.length <= 1) {
+					return;
+				}
+				var temp = myAllValuesArray[aIndex*1-1];
+				myAllValuesArray[aIndex*1-1] = myAllValuesArray[aIndex];
+				myAllValuesArray[aIndex] = temp;
+				cardbookElementTools.deleteRows(aType + "ReadWriteGroupbox");
+				cardbookWindowUtils.constructDynamicKeysRows(aDirPrefId, aType, myAllValuesArray, aVersion);
+			};
+			cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'up', 'up', fireUpButton);
+			
+			function fireDownButton(event) {
+				if (document.getElementById(this.id).disabled) {
+					return;
+				}
+				var myAllValuesArray = cardbookWindowUtils.getAllKeys(false);
+				if (myAllValuesArray.length <= 1) {
+					return;
+				}
+				var temp = myAllValuesArray[aIndex*1+1];
+				myAllValuesArray[aIndex*1+1] = myAllValuesArray[aIndex];
+				myAllValuesArray[aIndex] = temp;
+				cardbookElementTools.deleteRows(aType + "ReadWriteGroupbox");
+				cardbookWindowUtils.constructDynamicKeysRows(aDirPrefId, aType, myAllValuesArray, aVersion);
+			};
+			cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'down', 'down', fireDownButton);
+
+			function fireRemoveButton(event) {
+				if (document.getElementById(this.id).disabled) {
+					return;
+				}
+				var myAllValuesArray = cardbookWindowUtils.getAllKeys(false);
+				cardbookElementTools.deleteRows(aType + "ReadWriteGroupbox");
+				if (myAllValuesArray.length == 0) {
+					cardbookWindowUtils.constructDynamicKeysRows(aDirPrefId, aType, myAllValuesArray, aVersion);
+				} else {
+					var removed = myAllValuesArray.splice(aIndex, 1);
+					cardbookWindowUtils.constructDynamicKeysRows(aDirPrefId, aType, myAllValuesArray, aVersion);
+				}
+			};
+			cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'remove', 'remove', fireRemoveButton);
+			
+			function fireAddButton(event) {
+				if (document.getElementById(this.id).disabled) {
+					return;
+				}
+				var myValue = document.getElementById(aType + '_' + aIndex + '_valueBox').value;
+				if (myValue == "") {                                                                                       
+					return;
+				}
+				var myNextIndex = 1+ 1*aIndex;
+				cardbookWindowUtils.loadDynamicKeysTypes(aDirPrefId, aType, myNextIndex, {types: [], value: "", localURI: "", URI: "", extension: ""}, aVersion);
+			};
+			cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'add', 'add', fireAddButton);
+
+			keyTextbox.dispatchEvent(new Event('input'));
 		},
 
 		loadStaticTypes: function (aDirPrefId, aType, aIndex, aInputTypes, aPgName, aPgType, aCardValue, aVersion, aFollowLink) {
@@ -2006,6 +2140,11 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			aRow.addEventListener("click", fireClick, false);
 		},
 
+		loadStaticKeysTypes: function (aDirPrefId, aType, aIndex, aKeyType, aVersion) {
+			var aOrigBox = document.getElementById(aType + 'ReadOnlyGroupbox');
+			var aButton = cardbookElementTools.addKeyButton(aOrigBox, aType, aIndex, aKeyType);
+		},
+
 		loadMailPopularity: function (aCard, aReadOnly) {
 			var myEmails = [];
 			if (aCard.isAList) {
@@ -2110,7 +2249,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				} else if (myPopup.childNodes.length == 1) {
 					myPopup.lastChild.doCommand();
 				} else {
-					myPopup.openPopup(aButton, 'after_start', 0, 0, false, false);
+					myPopup.openPopup(aButton, 'after_start', 0, 0, true);
 				}
 			}
 			catch (e) {

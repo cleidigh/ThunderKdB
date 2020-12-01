@@ -209,7 +209,7 @@ AutomaticDictionary.Class.prototype = {
 
     "allowPromotions": true,
     "notificationLevel": 'info', // or "warn" or "error"
-"logLevel":"debug",
+    "logLevel":"info",
     "stats.usages": 0
   },
 
@@ -711,7 +711,7 @@ AutomaticDictionary.Class.prototype = {
   },
 
   canSpellCheck:function(){
-    return this.compose_window.canSpellCheck();
+    return this.compose_window && this.compose_window.canSpellCheck();
   },
 
   getLangFor: function( addr ){

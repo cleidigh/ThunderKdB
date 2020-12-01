@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "author": "Lorenz Froihofer: support for TB >= 3.0, since Dec. 2009, Klaus Bücher since TB 78",
   "homepage_url": "https://github.com/xnotepp/xnote/wiki",
   "applications": {
@@ -15,14 +15,19 @@
   "default_locale" : "en_US",
 
   "icons": {
-    "32": "chrome/content/skin/icon32.png"
+    "32": "chrome/skin/icon32.png"
   },
+
+  "browser_action": {
+    "default_title": "XNote++",
+    "default_icon": "chrome/skin/icon32.png"
+	},
 
   "options_ui": {
     "page": "options/options.html"
   },
 
-  "permissions": ["activeTab", "tabs", "messagesRead"],
+  "permissions": ["activeTab", "tabs", "messagesRead", "storage"],
 
   "background": {
     "scripts": ["xn-background.js"]
@@ -30,23 +35,37 @@
 
   "experiment_apis": {
     "WindowListener": {
-      "schema": "chrome/content/api/WindowListener/schema.json",
+      "schema": "experiment-apis/WindowListener/windowlistener.json",
       "parent": {
         "scopes": ["addon_parent"],
         "paths": [["WindowListener"]],
-        "script": "chrome/content/api/WindowListener/implementation.js"
+        "script": "experiment-apis/WindowListener/windowlistener.js"
       }
-    }
-    ,
+    },
     "Utilities": {
-      "schema": "chrome/content/api/Utilities/schema.json",
+      "schema": "experiment-apis/Utilities/utilities.json",
       "parent": {
         "scopes": ["addon_parent"],
         "paths": [["Utilities"]],
-        "script": "chrome/content/api/Utilities/implementation.js"
+        "script": "experiment-apis/Utilities/utilities.js"
       
        }
+    },
+    "xnoteapi": {
+      "schema": "experiment-apis/xnote/xnote-experiments.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["xnoteapi"]],
+        "script": "experiment-apis/xnote/xnote-experiments.js"
+       }
+    },
+    "xnotefiles": {
+      "schema": "experiment-apis/files/files-api.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["xnotefiles"]],
+        "script": "experiment-apis/files/files-api.js"
+       }
     }
-  
-}
+  }
 }

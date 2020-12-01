@@ -1,4 +1,11 @@
+/* BEGIN LICENSE BLOCK
 
+SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK */
+// Script for splash screen displayed when updating this Extension
 
   addEventListener("click", async (event) => {
     if (event.target.id.startsWith("register")) {
@@ -16,17 +23,18 @@
 
 
   addEventListener("load", async (event) => {
-    const addonName = await browser.runtime.getManifest().name, // or mxUtilties.getAddonName()); == 'quickFilters'
-          hoursWorked = 250,
+    const manifest = await messenger.runtime.getManifest(),
+          browserInfo = await messenger.runtime.getBrowserInfo(),
+          addonName = manifest.name, // or mxUtilties.getAddonName()); == 'quickFilters'
+          addonVer = manifest.version,
+          appVer = browserInfo.version,
+          hoursWorked = 300,
           remindInDays = 10;
-    const mxUtilties = messenger.Utilities;
 
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
     i18n.updateDocument();
     
-        
-      
     let h1 = document.getElementById('heading-updated');
     if (h1) {
       // this api function can do replacements for us
@@ -40,9 +48,6 @@
     
     let verInfo = document.getElementById('active-version-info');
     if (verInfo) {
-      let addonVer = await mxUtilties.getAddonVersion(),
-          appVer = await mxUtilties.getTBVersion();
-      
       // use the i18n API      
       // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
       // for multiple replacements, pass an array

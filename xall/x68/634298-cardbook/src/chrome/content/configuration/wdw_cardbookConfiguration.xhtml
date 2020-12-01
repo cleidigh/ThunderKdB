@@ -193,6 +193,10 @@
 									<checkbox id="vcardTabCheckBox" label="__MSG_vCardTab.conf.label__"
 										accesskey="__MSG_vCardTab.conf.accesskey__"
 										preference="extensions.cardbook.vcardTabView" type="bool" instantApply="true"/>
+									<!-- test waiting -->
+									<!-- <checkbox id="keyTabCheckBox" label="__MSG_keyTab.conf.label__" -->
+										<!-- accesskey="__MSG_keyTab.conf.accesskey__" -->
+										<!-- preference="extensions.cardbook.keyTabView" type="bool" instantApply="true"/> -->
 								</vbox>
 							</groupbox>
 							<separator class="thin"/>					
@@ -386,6 +390,7 @@
 									<checkbox id="preferIMPPPrefCheckBox" label="__MSG_preferIMPPPrefLabel__"
 										accesskey="__MSG_preferIMPPPrefAccesskey__"
 										preference="extensions.cardbook.preferIMPPPref" type="bool" instantApply="true"/>
+									<separator orient="vertical" class="thin"/>
 									<image class="cardbookPrefStarClass" haspref="true"/>
 								</hbox>
 								<description>__MSG_preferIMPPPrefWarn__</description>
@@ -595,7 +600,7 @@
 										preference="extensions.cardbook.initialSync" type="bool"
 										oncommand="wdw_cardbookConfiguration.preferenceChanged('initialSync');"/>
 								</hbox>
-								<hbox align="center" class="indent">
+								<hbox flex="1" align="center" class="indent">
 									<label value="__MSG_initialSyncDelayLabel__"
 										accesskey="__MSG_initialSyncDelayAccesskey__"
 										control="initialSyncDelayTextBox"
@@ -615,7 +620,7 @@
 										<radio value="User" label="__MSG_solveConflictsUserLabel__" accesskey="__MSG_solveConflictsUserAccesskey__"/>
 									</radiogroup>
 								</hbox>
-								<hbox align="center">
+								<hbox flex="1" align="center">
 									<label value="__MSG_maxModifsPushedLabel__"
 										accesskey="__MSG_maxModifsPushedAccesskey__"
 										control="maxModifsPushedTextBox"
@@ -627,7 +632,7 @@
 							<separator class="thin"/>
 							<groupbox>
 								<label><html:h2>__MSG_requestsGroupboxLabel__</html:h2></label>
-								<hbox align="center">
+								<hbox flex="1" align="center">
 									<label value="__MSG_requestsTimeoutLabel__"
 										accesskey="__MSG_requestsTimeoutAccesskey__"
 										control="requestsTimeoutTextBox"
@@ -635,7 +640,7 @@
 									<html:input id="requestsTimeoutTextBox" type="number" min="1" max="180" class="size3"
 										preference="extensions.cardbook.requestsTimeout" instantApply="true"/>
 								</hbox>
-								<hbox align="center">
+								<hbox flex="1" align="center">
 									<label value="__MSG_multigetLabel__"
 										accesskey="__MSG_multigetAccesskey__"
 										control="multigetTextBox"
@@ -684,6 +689,7 @@
 										accesskey="__MSG_preferEmailPrefAccesskey__"
 										preference="extensions.cardbook.preferEmailPref" type="bool"
 										oncommand="wdw_cardbookConfiguration.preferenceChanged('preferEmailPref');"/>
+									<separator orient="vertical" class="thin"/>
 									<image class="cardbookPrefStarClass" haspref="true"/>
 								</hbox>
 								<description>__MSG_preferEmailPrefWarn__</description>
@@ -823,7 +829,7 @@
 							<separator class="thin"/>             
 							<groupbox>
 								<label><html:h2>__MSG_remindViaPopupWindowGroupboxLabel__</html:h2></label>
-								<hbox align="center">
+								<hbox flex="1" align="center">
 									<label value="__MSG_numberOfDaysForSearchingLabel__"
 										accesskey="__MSG_numberOfDaysForSearchingAccesskey__"
 										control="numberOfDaysForSearchingTextBox"
@@ -860,7 +866,7 @@
 							<separator class="thin"/>
 							<groupbox>
 								<label><html:h2>__MSG_remindViaLightningGroupboxLabel__</html:h2></label>
-								<hbox align="center">
+								<hbox flex="1" align="center">
 									<label value="__MSG_numberOfDaysForWritingLabel__"
 										accesskey="__MSG_numberOfDaysForWritingAccesskey__"
 										control="numberOfDaysForWritingTextBox"

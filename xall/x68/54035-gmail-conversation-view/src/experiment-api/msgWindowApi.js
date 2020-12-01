@@ -1,3 +1,6 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 var {
   XPCOMUtils
 } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
@@ -498,7 +501,8 @@ function summarizeThreadHandler(win, id) {
 
           aConversation.completed = true; // TODO: Re-enable this.
           // htmlpane.contentWindow.registerQuickReply();
-          // Make sure we respect the user's preferences.
+
+          win.gMessageDisplay.onLoadCompleted(); // Make sure we respect the user's preferences.
 
           if (Services.prefs.getBoolPref("mailnews.mark_message_read.auto")) {
             win.conversationsMarkReadTimeout = win.setTimeout(async function () {
@@ -600,6 +604,7 @@ function summarizeThreadHandler(win, id) {
 
 
         this.singleMessageDisplay = false;
+        this.onDisplayingMessage(this.folderDisplay.selectedMessages[0]);
         win.summarizeThread(this.folderDisplay.selectedMessages, this);
         return true;
       } // Else defer to showSummary to work it out based on thread selection.

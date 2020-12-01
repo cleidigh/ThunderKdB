@@ -1,0 +1,5046 @@
+ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+0: ChromeWindow about:blank
+​
+1: ChromeWindow about:blank
+​
+2: ChromeWindow about:blank
+​
+3: ChromeWindow about:blank
+​
+4: ChromeWindow chrome://messenger/content/multimessageview.xhtml
+​
+5: ChromeWindow about:blank
+​
+ADDR_DB_LARGE_COMMIT: 1
+​
+AbortController: function ()
+​
+AbortSignal: function ()
+​
+AbstractRange: function ()
+​
+AccessibleNode: function ()
+​
+AddAddressBook: function AddAddressBook()
+​
+AddContact: function AddContact(emailAddressNode)
+​
+AddFeedAccount: function AddFeedAccount()
+​
+AddIMAccount: function AddIMAccount()
+​
+AddMailAccount: function AddMailAccount()
+​
+AddOnNS19: Object { _mObserver: MutationObserver, window: ChromeWindow chrome://messenger/content/messenger.xhtml, document: HTMLDocument chrome://messenger/content/messenger.xhtml, … }
+​
+AddTag: function AddTag()
+​
+AddTagCallback: function AddTagCallback(name, color)
+​
+AddToSession: function AddToSession()
+​
+Addon: function ()
+​
+AddonEvent: function ()
+​
+AddonInstall: function ()
+​
+AddonManager: Object { ERROR_TIMEOUT: -1, ERROR_DOWNLOAD_ERROR: -2, ERROR_PARSE_ERROR: -3, … }
+​
+AddonManagerPermissions: Object { isHostPermitted: isHostPermitted(), … }
+​
+AddressBookListener: Object { onItemAdded: onItemAdded(aParentDir, aItem), onItemRemoved: onItemRemoved(aParentDir, aItem), onItemPropertyChanged: onItemPropertyChanged(aItem, aProperty, aOldValue, aNewValue) }
+​
+AdjustHeaderView: function AdjustHeaderView(headermode)
+​
+AnalyserNode: function ()
+​
+Animation: function ()
+​
+AnimationEffect: function ()
+​
+AnimationEvent: function ()
+​
+AnimationPlaybackEvent: function ()
+​
+AnimationTimeline: function ()
+​
+AnonymousContent: function ()
+​
+AppConstants: Object { NIGHTLY_BUILD: false, FENNEC_NIGHTLY: false, RELEASE_OR_BETA: true, … }
+​
+AppMenuNotifications: Object { _notifications: [], _hasInitialized: false, notifications: Getter, … }
+​
+Array: function Array()
+​
+ArrayBuffer: function ArrayBuffer()
+​
+Atomics: Atomics { … }
+​
+AttachmentInfo: function AttachmentInfo(contentType, url, name, uri, isExternalAttachment)
+​
+AttachmentListController: Object { supportsCommand: supportsCommand(command), isCommandEnabled: isCommandEnabled(command), doCommand: doCommand(command), … }
+​
+AttachmentMenuController: Object { commands: {…}, _canDetachFiles: _canDetachFiles(), _someFilesAvailable: _someFilesAvailable(), … }
+​
+Attr: function ()
+​
+Audio: function Audio()
+​
+AudioBuffer: function ()
+​
+AudioBufferSourceNode: function ()
+​
+AudioContext: function ()
+​
+AudioDestinationNode: function ()
+​
+AudioListener: function ()
+​
+AudioNode: function ()
+​
+AudioParam: function ()
+​
+AudioParamMap: function ()
+​
+AudioProcessingEvent: function ()
+​
+AudioScheduledSourceNode: function ()
+​
+AudioWorklet: function ()
+​
+AudioWorkletNode: function ()
+​
+AuthenticatorAssertionResponse: function ()
+​
+AuthenticatorAttestationResponse: function ()
+​
+AuthenticatorResponse: function ()
+​
+AutoChosen: function AutoChosen(aFileAutoChosen, aUriAutoChosen)
+​
+AutoConfigWizard: function AutoConfigWizard(okCallback)
+​
+AutoHideMenubar: Object { _node: Getter, _contextMenuListener: {…}, init: init(), … }
+​
+BarProp: function ()
+​
+BaseAudioContext: function ()
+​
+BatteryManager: function ()
+​
+BeforeUnloadEvent: function ()
+​
+BigInt: function BigInt()
+​
+BigInt64Array: function BigInt64Array()
+​
+BigUint64Array: function BigUint64Array()
+​
+BiquadFilterNode: function ()
+​
+Blob: function ()
+​
+BlobEvent: function ()
+​
+BondOpenPGP: Object { logException: logException(exc), _isEnabled: true, _alreadyTriedInit: true, … }
+​
+Boolean: function Boolean()
+​
+BroadcastChannel: function ()
+​
+BrowserAddonUI: Object { promptRemoveExtension: promptRemoveExtension(addon) }
+​
+BrowserConsoleManager: 
+​
+BrowserToolboxLauncher: function BrowserToolboxLauncher(onClose, onRun, overwritePreferences, binaryPath)
+​
+BrowserUtils: Object { dumpLn: dumpLn(args), restartApplication: restartApplication(), checkEmptyPageOrigin: checkEmptyPageOrigin(browser, uri), … }
+​
+BrowsingContext: function ()
+​
+BrowsingContextGroup: function ()
+​
+ByteLengthQueuingStrategy: function ByteLengthQueuingStrategy()
+​
+CDATASection: function ()
+​
+CSS: Object { supports: supports(), escape: escape(), … }
+​
+CSS2Properties: function ()
+​
+CSSAnimation: function ()
+​
+CSSConditionRule: function ()
+​
+CSSCounterStyleRule: function ()
+​
+CSSFontFaceRule: function ()
+​
+CSSFontFeatureValuesRule: function ()
+​
+CSSGroupingRule: function ()
+​
+CSSImportRule: function ()
+​
+CSSKeyframeRule: function ()
+​
+CSSKeyframesRule: function ()
+​
+CSSMediaRule: function ()
+​
+CSSMozDocumentRule: function ()
+​
+CSSNamespaceRule: function ()
+​
+CSSPageRule: function ()
+​
+CSSRule: function ()
+​
+CSSRuleList: function ()
+​
+CSSStyleDeclaration: function ()
+​
+CSSStyleRule: function ()
+​
+CSSStyleSheet: function ()
+​
+CSSSupportsRule: function ()
+​
+CSSTransition: function ()
+​
+Cache: function ()
+​
+CacheStorage: function ()
+​
+CalendarDeleteCommandEnabled: false
+​
+CalendarNewEventsCommandEnabled: false
+​
+CalendarNewTasksCommandEnabled: false
+​
+CallbackDebuggerNotification: function ()
+​
+CanComposeMessages: function CanComposeMessages()
+​
+CanDeleteFolder: function CanDeleteFolder(folder)
+​
+CanDetachAttachments: function CanDetachAttachments()
+​
+CanMarkMsgAsRead: function CanMarkMsgAsRead(markingRead)
+​
+CanRenameDeleteJunkMail: function CanRenameDeleteJunkMail(aFolderUri)
+​
+CanonicalBrowsingContext: function ()
+​
+CanvasCaptureMediaStream: function ()
+​
+CanvasGradient: function ()
+​
+CanvasPattern: function ()
+​
+CanvasRenderingContext2D: function ()
+​
+CaretPosition: function ()
+​
+CaretStateChangedEvent: function ()
+​
+Cc: nsXPCComponents_Classes { "@mozilla.org/xpcom/ini-parser-factory;1": nsJSCID, "@mozilla.org/messenger;1": nsJSCID, "@mozilla.org/uriloader/content-handler;1?type=application/x-addvcard": nsJSCID, … }
+​
+ChangeMailLayout: function ChangeMailLayout(newLayout)
+​
+ChangeMailLayoutForCommand: function ChangeMailLayoutForCommand(aCommand)
+​
+ChangeMessagePaneVisibility: function ChangeMessagePaneVisibility(now_hidden)
+​
+ChangeSelectionWithoutContentLoad: function ChangeSelectionWithoutContentLoad(event, tree, aSingleSelect)
+​
+ChannelMergerNode: function ()
+​
+ChannelSplitterNode: function ()
+​
+ChannelWrapper: function ()
+​
+CharacterData: function ()
+​
+CharsetMenu: Object { build: build(parent, deprecatedShowAccessKeys, showDetector), getData: getData(), _ensureDataReady: _ensureDataReady(), … }
+​
+CheckForMessageIdInFolder: function CheckForMessageIdInFolder(folder, messageId)
+​
+CheckerboardReportService: function ()
+​
+ChildProcessMessageManager: function ()
+​
+ChildSHistory: function ()
+​
+ChromeMessageBroadcaster: function ()
+​
+ChromeMessageSender: function ()
+​
+ChromeNodeList: function ()
+​
+ChromeUtils: Object { getObjectNodeId: getObjectNodeId(), saveHeapSnapshot: saveHeapSnapshot(), saveHeapSnapshotGetId: saveHeapSnapshotGetId(), … }
+​
+ChromeWorker: function ()
+​
+Ci: nsXPCComponents_Interfaces { imIContactsService: nsJSIID, nsIWebBrowserPersistResourceVisitor: nsJSIID, calIICSService: nsJSIID, … }
+​
+ClearAttachmentList: function ClearAttachmentList()
+​
+ClearAttachmentMenu: function ClearAttachmentMenu(popup)
+​
+ClearCurrentHeaders: function ClearCurrentHeaders()
+​
+ClearHeaderView: function ClearHeaderView(aHeaderTable)
+​
+ClearMessagePane: function ClearMessagePane()
+​
+ClearPendingReadTimer: function ClearPendingReadTimer()
+​
+ClearThreadPaneSelection: function ClearThreadPaneSelection()
+​
+Clipboard: function ()
+​
+ClipboardEvent: function ()
+​
+ClonedErrorHolder: function ()
+​
+CloseEvent: function ()
+​
+CloseTabOrWindow: function CloseTabOrWindow()
+​
+CoalesceGetMsgsForPop3ServersByDestFolder: function CoalesceGetMsgsForPop3ServersByDestFolder(currentServer, pop3DownloadServersArray, localFoldersToDownloadTo)
+​
+Color: class Color { constructor(r, g, b) }
+​
+CommandEvent: function ()
+​
+CommandUpdate_UndoRedo: function CommandUpdate_UndoRedo()
+​
+Comment: function ()
+​
+Components: nsXPCComponents { ID: nsXPCComponents_ID, Exception: nsXPCComponents_Exception, returnCode: 0, … }
+​
+ComposeMessage: function ComposeMessage(type, format, folder, messageArray)
+​
+CompositionEvent: function ()
+​
+ConfirmUnsubscribe: function ConfirmUnsubscribe(folders)
+​
+ConsoleInstance: function ()
+​
+ConstantSourceNode: function ()
+​
+ContentAreaUtils: Object { stringBundle: Getter }
+​
+ContentFrameMessageManager: function ()
+​
+ContentProcessMessageManager: function ()
+​
+ContentTypeIsSMIME: function ContentTypeIsSMIME(contentType)
+​
+ConversationOpener: function ConversationOpener()
+​
+ConvertSortTypeToColumnID: function ConvertSortTypeToColumnID(sortKey)
+​
+ConvolverNode: function ()
+​
+CopyEmailNewsAddress: function CopyEmailNewsAddress(addressNode, aIncludeName)
+​
+CopyMessageId: function CopyMessageId(messageId)
+​
+CopyMessageUrl: function CopyMessageUrl()
+​
+CopyNewsgroupName: function CopyNewsgroupName(newsgroupNode)
+​
+CopyNewsgroupURL: function CopyNewsgroupURL(newsgroupNode)
+​
+CopyWebsiteAddress: function CopyWebsiteAddress(websiteAddressNode)
+​
+CountQueuingStrategy: function CountQueuingStrategy()
+​
+Cr: nsXPCComponents_Results { NS_ERROR_XPC_NOT_ENOUGH_ARGS: 2153185281, NS_ERROR_XPC_NEED_OUT_OBJECT: 2153185282, NS_ERROR_XPC_CANT_SET_OUT_VAL: 2153185283, … }
+​
+CreateFilter: function CreateFilter(aHeaderNode, aMessage)
+​
+CreateMailWindowGlobals: function CreateMailWindowGlobals()
+​
+CreateOfferRequest: function ()
+​
+Credential: function ()
+​
+CredentialsContainer: function ()
+​
+CrossFolderNavigation: function CrossFolderNavigation(type)
+​
+Crypto: function ()
+​
+CryptoKey: function ()
+​
+Cu: nsXPCComponents_Utils { getGlobalForObject: getGlobalForObject(), readUTF8File: readUTF8File(), readUTF8URI: readUTF8URI(), … }
+​
+CustomElementRegistry: function ()
+​
+CustomEvent: function ()
+​
+CustomizableUI: Object { AREA_NAVBAR: "nav-bar", AREA_MENUBAR: "toolbar-menubar", AREA_TABSTRIP: "TabsToolbar", … }
+​
+CustomizeMailToolbar: function CustomizeMailToolbar(toolboxId, customizePopupId)
+​
+DBViewWrapper: function DBViewWrapper(aListener)
+​
+DOMException: function ()
+​
+DOMImplementation: function ()
+​
+DOMLinkHandler: Object { handleEvent: handleEvent(event), onLinkAdded: onLinkAdded(event) }
+​
+DOMLocalization: function ()
+​
+DOMMatrix: function ()
+​
+DOMMatrixReadOnly: function ()
+​
+DOMParser: function ()
+​
+DOMPoint: function ()
+​
+DOMPointReadOnly: function ()
+​
+DOMQuad: function ()
+​
+DOMRect: function ()
+​
+DOMRectList: function ()
+​
+DOMRectReadOnly: function ()
+​
+DOMRequest: function ()
+​
+DOMStringList: function ()
+​
+DOMStringMap: function ()
+​
+DOMTokenList: function ()
+​
+DataTransfer: function ()
+​
+DataTransferItem: function ()
+​
+DataTransferItemList: function ()
+​
+DataView: function DataView()
+​
+Date: function Date()
+​
+DebuggerNotification: function ()
+​
+DebuggerNotificationObserver: function ()
+​
+DefaultController: Object { supportsCommand: supportsCommand(command), isCommandEnabled: isCommandEnabled(command), doCommand: doCommand(command, aTab), … }
+​
+DelayNode: function ()
+​
+Deprecated: Object { warning: warning(aText, aUrl, aStack) }
+​
+DeviceMotionEvent: function ()
+​
+DeviceOrientationEvent: function ()
+​
+Directory: function ()
+​
+DisplayNameUtils: Object { formatDisplayName: formatDisplayName(aEmailAddress, aHeaderDisplayName, aContext, aCard), formatDisplayNameList: formatDisplayNameList(aHeaderValue, aContext), getCardForEmail: getCardForEmail(aEmailAddress) }
+​
+Document: function ()
+​
+DocumentFragment: function ()
+​
+DocumentTimeline: function ()
+​
+DocumentType: function ()
+​
+DominatorTree: function ()
+​
+DownloadLastDir: function DownloadLastDir(aWindow, aForcePrivate)
+​
+DownloadListener: function DownloadListener(win, transfer)
+​
+DownloadPaths: Object { sanitize: sanitize(leafName), createNiceUniqueFile: createNiceUniqueFile(templateFile), splitBaseNameAndExtension: splitBaseNameAndExtension(leafName) }
+​
+DownloadURL: function DownloadURL(aURL, aFileName, aInitiatingDocument)
+​
+Downloads: Object { PUBLIC: Getter, PRIVATE: Getter, ALL: Getter, … }
+​
+DragEvent: function ()
+​
+DynamicsCompressorNode: function ()
+​
+EditContact: function EditContact(emailAddressNode)
+​
+Element: function ()
+​
+EnableMenuItem: function EnableMenuItem(id, enableItem)
+​
+Enigmail: Object { getEnigmailSvc: getEnigmailSvc(), msg: {…}, hdrView: {…} }
+​
+EnigmailApp: Object { getName: getName(), _version: 0, _installLocation: 0, … }
+​
+EnigmailArmor: Object { locateArmoredBlock: locateArmoredBlock(text, offset, indentStr, beginIndexObj, endIndexObj, indentStrObj), locateArmoredBlocks: locateArmoredBlocks(text), extractSignaturePart: extractSignaturePart(signatureBlock, part), … }
+​
+EnigmailAttachment: Object { getFileName: getFileName(parent, byteData) }
+​
+EnigmailAutocrypt: Object { getKeyFromHeader: getKeyFromHeader(fromAddr, headerDataArr), processAutocryptHeader: async processAutocryptHeader(fromAddr, headerDataArr, dateSent, autoCryptEnabled, isGossip), importAutocryptKeys: async importAutocryptKeys(emailAddr, acceptGossipKeys), … }
+​
+EnigmailClipboard: Object { getClipboardContent: getClipboardContent(window, clipBoardType), setClipboardContent: setClipboardContent(str, clipBoardType) }
+​
+EnigmailCompat: Object { generateQI: generateQI(aCid), getExistingFolder: getExistingFolder(folderUri), getUrlFromUriSpec: getUrlFromUriSpec(uriSpec), … }
+​
+EnigmailConfigure: Object { configureEnigmail: async configureEnigmail(win, startingPreferences) }
+​
+EnigmailConstants: Object { POSSIBLE_PGPMIME: -2081, ENIG_NEVER: 0, ENIG_UNDEF: 1, … }
+​
+EnigmailCore: Object { createInstance: createInstance(), startup: startup(reason), version: 0, … }
+​
+EnigmailData: Object { getUnicodeData: getUnicodeData(data), extractMessageId: extractMessageId(uri), extractMimeMessageId: extractMimeMessageId(uri), … }
+​
+EnigmailDecryption: Object { isReady: isReady(win), getFromAddr: getFromAddr(win), decryptMessage: decryptMessage(parent, uiFlags, cipherText, signatureObj, exitCodeObj, statusFlagsObj, keyIdObj, userIdObj, sigDetailsObj, errorMsgObj, blockSeparationObj, encToDetailsObj), … }
+​
+EnigmailDialog: Object { confirmDlg: confirmDlg(win, mesg, okLabel, cancelLabel), alert: alert(win, mesg), info: info(win, mesg), … }
+​
+EnigmailEvents: Object { dispatchEvent: dispatchEvent(callbackFunction, sleepTimeMs, arrayOfArgs) }
+​
+EnigmailFiles: Object { potentialWindowsExecutable: potentialWindowsExecutable(file), isAbsolutePath: isAbsolutePath(filePath, isDosLike), resolvePathWithEnv: resolvePathWithEnv(executable), … }
+​
+EnigmailFixExchangeMsg: Object { fixExchangeMessage: fixExchangeMessage(hdr, brokenByApp, destFolderUri), getMessageBody: getMessageBody(), getRepairedMessage: getRepairedMessage(data), … }
+​
+EnigmailFuncs: Object { stripEmail: stripEmail(mailAddresses), parseEmails: parseEmails(mailAddrs, encoded), collapseAdvanced: collapseAdvanced(obj, attribute, dummy), … }
+​
+EnigmailGpg: Object { agentVersion: "", _agentPath: null, agentPath: Getter, … }
+​
+EnigmailKey: Object { formatFpr: formatFpr(fingerprint), extractPubkey: extractPubkey(statusMsg), importRevocationCert: importRevocationCert(keyId, keyBlockStr), … }
+​
+EnigmailKeyRing: Object { getAllKeys: getAllKeys(win, sortColumn, sortDirection), getKeyById: getKeyById(keyId, noLoadKeys), getKeysByEmail: getKeysByEmail(email, onlyValidUid, allowExpired), … }
+​
+EnigmailKeyServer: Object { download: download(keyIDs, keyserver, listener), downloadNoImport: downloadNoImport(keyIDs, keyserver, listener), upload: upload(keyIDs, keyserver, listener), … }
+​
+EnigmailKeyserverURIs: Object { getDefaultKeyServer: getDefaultKeyServer(), buildKeyserverUris: buildKeyserverUris(), validKeyserversExist: validKeyserversExist() }
+​
+EnigmailLocale: Object { getString: getString(aStr, subPhrases), getUILocale: getUILocale() }
+​
+EnigmailLog: Object { level: 3, data: (239) […], directory: null, … }
+​
+EnigmailMime: Object { createBoundary: createBoundary(), getBoundary: getBoundary(contentTypeStr), getProtocol: getProtocol(contentTypeStr), … }
+​
+EnigmailMsgRead: Object { ensureExtraAddonHeaders: ensureExtraAddonHeaders(), getUrlFromUriSpec: getUrlFromUriSpec(uriSpec), checkSignedAttachment: checkSignedAttachment(attachmentObj, index, currentAttachments), … }
+​
+EnigmailOS: Object { isDosLike: true, isWin32: true, isMac: false, … }
+​
+EnigmailPersistentCrypto: Object { dispatchMessages: dispatchMessages(aMsgHdrs, targetFolder, copyListener, move, targetKey), cryptMessage: cryptMessage(hdr, destFolder, move, targetKey) }
+​
+EnigmailPrefs: Object { startup: startup(reason), getPrefRoot: getPrefRoot(), getPrefBranch: getPrefBranch(), … }
+​
+EnigmailProtocolHandler: function EnigmailProtocolHandler()
+​
+EnigmailSingletons: Object { messageReader: {…}, lastDecryptedMessage: {…}, lastMessageDecryptTime: 0, … }
+​
+EnigmailStdlib: Object { composeInIframe: composeInIframe(aIframe), getEditorForIframe: getEditorForIframe(aIframe), citeString: citeString(aStr), … }
+​
+EnigmailStreams: Object { createChannel: createChannel(url), newStringStreamListener: newStringStreamListener(onStopCallback), newStringChannel: newStringChannel(uri, contentType, contentCharset, data, loadInfo), … }
+​
+EnigmailTime: Object { loc: "de-DE", initLocaleInfo: initLocaleInfo(), getDateTime: getDateTime(dateNum, withDate, withTime) }
+​
+EnigmailTimer: Object { setTimeout: setTimeout(callbackFunction, sleepTimeMs), clearTimeout: clear(aId) }
+​
+EnigmailURIs: Object { createMessageURI: createMessageURI(originalUrl, contentType, contentCharset, contentData, persist), deleteMessageURI: deleteMessageURI(uri), getMessageURI: getMessageURI(messageId), … }
+​
+EnigmailVerify: Object { lastMsgWindow: XPCWrappedNative_NoHelper, lastMsgUri: "imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX#54994", currentCtHandler: 2, … }
+​
+EnigmailVerifyAttachment: Object { attachment: attachment(verifyFile, sigFile) }
+​
+EnigmailWindows: Object { openWin: openWin(winName, spec, winOptions, optObj), getBestParentWin: getBestParentWin(), getFrame: getFrame(win, frameName), … }
+​
+EnsureMinimumNumberOfHeaders: function EnsureMinimumNumberOfHeaders(headerTable)
+​
+EnsureSubjectValue: function EnsureSubjectValue()
+​
+Error: function Error()
+​
+ErrorEvent: function ()
+​
+EvalError: function EvalError()
+​
+Event: function ()
+​
+EventCallbackDebuggerNotification: function ()
+​
+EventSource: function ()
+​
+EventTarget: function ()
+​
+ExtensionParent: Object { GlobalManager: {…}, HiddenExtensionPage: class HiddenExtensionPage, IconDetails: {…}, … }
+​
+ExtensionSupport: Object { registerWindowListener: registerWindowListener(aID, aExtensionHook), unregisterWindowListener: unregisterWindowListener(aID), openWindows: Getter, … }
+​
+ExtensionsUI: Object { sideloaded: Set [], updates: Set [], sideloadListener: null, … }
+​
+Extractor: function Extractor(fallbackLocale, dayStart, fixedLang)
+​
+FIREFOX_UID: "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+​
+FacetDriver: function FacetDriver(aNounDef, aWindow)
+​
+FeedMessageHandler: Object { gShowSummary: true, gToggle: false, kSelectOverrideWebPage: 0, … }
+​
+FeedUtils: Object { MOZ_PARSERERROR_NS: "http://www.mozilla.org/newlayout/xml/parsererror.xml", RDF_SYNTAX_NS: "http://www.w3.org/1999/02/22-rdf-syntax-ns#", RDF_SYNTAX_TYPE: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type", … }
+​
+File: function ()
+​
+FileInfo: function FileInfo(aSuggestedFileName, aFileName, aFileBaseName, aFileExt, aUri)
+​
+FileList: function ()
+​
+FileReader: function ()
+​
+FileSystem: function ()
+​
+FileSystemDirectoryEntry: function ()
+​
+FileSystemDirectoryReader: function ()
+​
+FileSystemEntry: function ()
+​
+FileSystemFileEntry: function ()
+​
+FileUtils: Object { MODE_RDONLY: 1, MODE_WRONLY: 2, MODE_RDWR: 4, … }
+​
+FillAttachmentListPopup: function FillAttachmentListPopup(aEvent, aPopup)
+​
+FillMessageIdContextMenu: function FillMessageIdContextMenu(messageIdNode)
+​
+FindInSidebar: function FindInSidebar(currentWindow, id)
+​
+FindNextChildFolder: function FindNextChildFolder(aParent, aAfter)
+​
+FindNextFolder: function FindNextFolder()
+​
+FindOther3PaneWindow: function FindOther3PaneWindow()
+​
+Flex: function ()
+​
+FlexItemValues: function ()
+​
+FlexLineValues: function ()
+​
+Float32Array: function Float32Array()
+​
+Float64Array: function Float64Array()
+​
+FluentBundle: function ()
+​
+FluentPattern: function ()
+​
+FluentResource: function ()
+​
+FocusEvent: function ()
+​
+FocusRingUpdate_Mail: function FocusRingUpdate_Mail()
+​
+FolderDisplayListenerManager: Object { _listeners: (2) […], registerListener: registerListener(aListener), unregisterListener: unregisterListener(aListener), … }
+​
+FolderDisplayWidget: function FolderDisplayWidget(aTabInfo, aMessageDisplayWidget)
+​
+FolderPaneContextMenuNewTab: function FolderPaneContextMenuNewTab(event)
+​
+FolderPaneController: Object { notificationbox: Getter, supportsCommand: supportsCommand(command), isCommandEnabled: isCommandEnabled(command), … }
+​
+FolderPaneOnClick: function FolderPaneOnClick(event)
+​
+FolderPaneSelectionChange: function FolderPaneSelectionChange()
+​
+FontFace: function ()
+​
+FontFaceSet: function ()
+​
+FontFaceSetLoadEvent: function ()
+​
+FormData: function ()
+​
+FormDataEvent: function ()
+​
+FrameCrashedEvent: function ()
+​
+FrameLoader: function ()
+​
+Function: function Function()
+​
+GainNode: function ()
+​
+Gamepad: function ()
+​
+GamepadButton: function ()
+​
+GamepadEvent: function ()
+​
+GamepadHapticActuator: function ()
+​
+GamepadPose: function ()
+​
+GenerateFilenameFromMsgHdr: function GenerateFilenameFromMsgHdr(msgHdr)
+​
+GenerateValidFilename: function GenerateValidFilename(filename, extension)
+​
+Geolocation: function ()
+​
+GeolocationCoordinates: function ()
+​
+GeolocationPosition: function ()
+​
+GeolocationPositionError: function ()
+​
+GetDefaultAccountRootFolder: function GetDefaultAccountRootFolder()
+​
+GetFirstSelectedMsgFolder: function GetFirstSelectedMsgFolder()
+​
+GetFolderMessages: function GetFolderMessages()
+​
+GetMessageIdFromNode: function GetMessageIdFromNode(messageIdNode, cleanMessageId)
+​
+GetMessagePane: function GetMessagePane()
+​
+GetMessagePaneFrame: function GetMessagePaneFrame()
+​
+GetMessagePaneWrapper: function GetMessagePaneWrapper()
+​
+GetMessagesForAllAuthenticatedAccounts: function GetMessagesForAllAuthenticatedAccounts()
+​
+GetMessagesForInboxOnServer: function GetMessagesForInboxOnServer(server)
+​
+GetMsgKeyFromURI: function GetMsgKeyFromURI(uri)
+​
+GetNewMsgs: function GetNewMsgs(server, folder)
+​
+GetNewsgroupServer: function GetNewsgroupServer()
+​
+GetNextNMessages: function GetNextNMessages(folder)
+​
+GetNumSelectedMessages: function GetNumSelectedMessages()
+​
+GetRootFoldersInFolderPaneOrder: function GetRootFoldersInFolderPaneOrder()
+​
+GetSaveModeForContentType: function GetSaveModeForContentType(aContentType, aDocument)
+​
+GetSelectedMsgFolders: function GetSelectedMsgFolders()
+​
+GetSubFoldersInFolderPaneOrder: function GetSubFoldersInFolderPaneOrder(folder)
+​
+GetThreadAndMessagePaneSplitter: function GetThreadAndMessagePaneSplitter()
+​
+GetThreadPaneFolder: function GetThreadPaneFolder()
+​
+GetThreadTree: function GetThreadTree()
+​
+Gloda: Object { kIndexerIdle: 0, kIndexerIndexing: 1, kWorkSync: 0, … }
+​
+GlodaSearchBoxTabMonitor: Object { monitorName: "glodaSearchBox", onTabTitleChanged: onTabTitleChanged(), onTabOpened: onTabOpened(aTab, aFirstTab, aOldTab), … }
+​
+GlodaSyntheticView: function GlodaSyntheticView(aArgs)
+​
+GlodaUtils: Object { PART_RE: /^[^?]+\?(?:\/;section=\d+\?)?(?:[^&]+&)*part=([^&]+)(?:&[^&]+)*$/, deMime: deMime(aString), _headerParser: XPCWrappedNative_NoHelper, … }
+​
+GoNextMessage: function GoNextMessage(type, startFromBeginning)
+​
+Grid: function ()
+​
+GridArea: function ()
+​
+GridDimension: function ()
+​
+GridLine: function ()
+​
+GridLines: function ()
+​
+GridTrack: function ()
+​
+GridTracks: function ()
+​
+HTMLAllCollection: function ()
+​
+HTMLAnchorElement: function ()
+​
+HTMLAreaElement: function ()
+​
+HTMLAudioElement: function ()
+​
+HTMLBRElement: function ()
+​
+HTMLBaseElement: function ()
+​
+HTMLBodyElement: function ()
+​
+HTMLButtonElement: function ()
+​
+HTMLCanvasElement: function ()
+​
+HTMLCollection: function ()
+​
+HTMLDListElement: function ()
+​
+HTMLDataElement: function ()
+​
+HTMLDataListElement: function ()
+​
+HTMLDetailsElement: function ()
+​
+HTMLDirectoryElement: function ()
+​
+HTMLDivElement: function ()
+​
+HTMLDocument: function ()
+​
+HTMLElement: function ()
+​
+HTMLEmbedElement: function ()
+​
+HTMLFieldSetElement: function ()
+​
+HTMLFontElement: function ()
+​
+HTMLFormControlsCollection: function ()
+​
+HTMLFormElement: function ()
+​
+HTMLFrameElement: function ()
+​
+HTMLFrameSetElement: function ()
+​
+HTMLHRElement: function ()
+​
+HTMLHeadElement: function ()
+​
+HTMLHeadingElement: function ()
+​
+HTMLHtmlElement: function ()
+​
+HTMLIFrameElement: function ()
+​
+HTMLImageElement: function ()
+​
+HTMLInputElement: function ()
+​
+HTMLLIElement: function ()
+​
+HTMLLabelElement: function ()
+​
+HTMLLegendElement: function ()
+​
+HTMLLinkElement: function ()
+​
+HTMLMapElement: function ()
+​
+HTMLMarqueeElement: function ()
+​
+HTMLMediaElement: function ()
+​
+HTMLMenuElement: function ()
+​
+HTMLMenuItemElement: function ()
+​
+HTMLMetaElement: function ()
+​
+HTMLMeterElement: function ()
+​
+HTMLModElement: function ()
+​
+HTMLOListElement: function ()
+​
+HTMLObjectElement: function ()
+​
+HTMLOptGroupElement: function ()
+​
+HTMLOptionElement: function ()
+​
+HTMLOptionsCollection: function ()
+​
+HTMLOutputElement: function ()
+​
+HTMLParagraphElement: function ()
+​
+HTMLParamElement: function ()
+​
+HTMLPictureElement: function ()
+​
+HTMLPreElement: function ()
+​
+HTMLProgressElement: function ()
+​
+HTMLQuoteElement: function ()
+​
+HTMLScriptElement: function ()
+​
+HTMLSelectElement: function ()
+​
+HTMLSlotElement: function ()
+​
+HTMLSourceElement: function ()
+​
+HTMLSpanElement: function ()
+​
+HTMLStyleElement: function ()
+​
+HTMLTableCaptionElement: function ()
+​
+HTMLTableCellElement: function ()
+​
+HTMLTableColElement: function ()
+​
+HTMLTableElement: function ()
+​
+HTMLTableRowElement: function ()
+​
+HTMLTableSectionElement: function ()
+​
+HTMLTemplateElement: function ()
+​
+HTMLTextAreaElement: function ()
+​
+HTMLTimeElement: function ()
+​
+HTMLTitleElement: function ()
+​
+HTMLTrackElement: function ()
+​
+HTMLUListElement: function ()
+​
+HTMLUnknownElement: function ()
+​
+HTMLVideoElement: function ()
+​
+HandleAllAttachments: function HandleAllAttachments(action)
+​
+HandleAppCommandEvent: function HandleAppCommandEvent(evt)
+​
+HandleColumnClick: function HandleColumnClick(columnID)
+​
+HandleJunkStatusChanged: function HandleJunkStatusChanged(folder)
+​
+HandleMDNResponse: function HandleMDNResponse(aUrl)
+​
+HandleMultipleAttachments: function HandleMultipleAttachments(attachments, action)
+​
+HandleSelectColClick: function HandleSelectColClick(event, row)
+​
+HandleSelectedAttachments: function HandleSelectedAttachments(action)
+​
+HashChangeEvent: function ()
+​
+HeaderView: function HeaderView(headerName, label)
+​
+Headers: function ()
+​
+HeapSnapshot: function ()
+​
+HiddenPluginEvent: function ()
+​
+HideMessageHeaderPane: function HideMessageHeaderPane()
+​
+History: function ()
+​
+IDBCursor: function ()
+​
+IDBCursorWithValue: function ()
+​
+IDBDatabase: function ()
+​
+IDBFactory: function ()
+​
+IDBFileHandle: function ()
+​
+IDBFileRequest: function ()
+​
+IDBIndex: function ()
+​
+IDBKeyRange: function ()
+​
+IDBMutableFile: function ()
+​
+IDBObjectStore: function ()
+​
+IDBOpenDBRequest: function ()
+​
+IDBRequest: function ()
+​
+IDBTransaction: function ()
+​
+IDBVersionChangeEvent: function ()
+​
+IFolderTreeMode: Object { generateMap: generateMap(aFolderTreeView), getParentOfFolder: getParentOfFolder(aFolder), getFolderForMsgHdr: getFolderForMsgHdr(aMsgHdr), … }
+​
+IIRFilterNode: function ()
+​
+IOUtils: Object { loadFileToString: loadFileToString(aFile), saveStringToFile: saveStringToFile(aFile, aData, aPerms), saveStreamToFile: saveStreamToFile(aIStream, aFile, aPerms), … }
+​
+IdleDeadline: function ()
+​
+IgnoreMDNResponse: function IgnoreMDNResponse()
+​
+IgnorePhishingWarning: function IgnorePhishingWarning()
+​
+Image: function Image()
+​
+ImageBitmap: function ()
+​
+ImageBitmapRenderingContext: function ()
+​
+ImageData: function ()
+​
+ImageDocument: function ()
+​
+Infinity: Infinity
+​
+InformUserOfCertError: function InformUserOfCertError(secInfo, targetSite)
+​
+InitAppFolderViewsMenu: function InitAppFolderViewsMenu()
+​
+InitAppMessageMenu: function InitAppMessageMenu()
+​
+InitAppViewSortByMenu: function InitAppViewSortByMenu()
+​
+InitAppmenuViewBodyMenu: function InitAppmenuViewBodyMenu()
+​
+InitAppmenuViewMessagesMenu: function InitAppmenuViewMessagesMenu()
+​
+InitEditMessagesMenu: function InitEditMessagesMenu()
+​
+InitGoMessagesMenu: function InitGoMessagesMenu()
+​
+InitMessageMark: function InitMessageMark()
+​
+InitMessageMenu: function InitMessageMenu()
+​
+InitMessageTags: function InitMessageTags(parent, elementName, classes)
+​
+InitMsgWindow: function InitMsgWindow()
+​
+InitPageMenu: function InitPageMenu(menuPopup, event)
+​
+InitPanes: function InitPanes()
+​
+InitRecentlyClosedTabsPopup: function InitRecentlyClosedTabsPopup(parent, elementName, classes, separatorName)
+​
+InitViewBodyMenu: function InitViewBodyMenu()
+​
+InitViewFolderViewsMenu: function InitViewFolderViewsMenu(event)
+​
+InitViewHeadersMenu: function InitViewHeadersMenu()
+​
+InitViewLayoutStyleMenu: function InitViewLayoutStyleMenu(event, appmenu)
+​
+InitViewMessagesMenu: function InitViewMessagesMenu()
+​
+InitViewSortByMenu: function InitViewSortByMenu()
+​
+InlineSpellChecker: function InlineSpellChecker(aEditor)
+​
+InputEvent: function ()
+​
+InspectorFontFace: function ()
+​
+InspectorUtils: Object { getAllStyleSheets: getAllStyleSheets(), getCSSStyleRules: getCSSStyleRules(), getRuleLine: getRuleLine(), … }
+​
+InstallTrigger: null
+​
+InstallTriggerImpl: function ()
+​
+Int16Array: function Int16Array()
+​
+Int32Array: function Int32Array()
+​
+Int8Array: function Int8Array()
+​
+InternalError: function InternalError()
+​
+IntersectionObserver: function ()
+​
+IntersectionObserverEntry: function ()
+​
+Intl: Object { … }
+​
+InvitationsManager: function InvitationsManager()
+​
+IsAccountOfflineEnabled: function IsAccountOfflineEnabled()
+​
+IsFolderCharsetEnabled: function IsFolderCharsetEnabled()
+​
+IsFolderSelected: function IsFolderSelected()
+​
+IsGetNewMessagesEnabled: function IsGetNewMessagesEnabled()
+​
+IsGetNextNMessagesEnabled: function IsGetNextNMessagesEnabled()
+​
+IsMailFolderSelected: function IsMailFolderSelected()
+​
+IsMenuItemShowing: function IsMenuItemShowing(menuID)
+​
+IsMessagePaneCollapsed: function IsMessagePaneCollapsed()
+​
+IsPropertiesEnabled: function IsPropertiesEnabled(command)
+​
+IsReplyAllEnabled: function IsReplyAllEnabled()
+​
+IsReplyEnabled: function IsReplyEnabled()
+​
+IsReplyListEnabled: function IsReplyListEnabled()
+​
+IsSendUnsentMsgsEnabled: function IsSendUnsentMsgsEnabled(unsentMsgsFolder)
+​
+IsSpecialFolderSelected: function IsSpecialFolderSelected(flags, checkAncestors)
+​
+IsSubscribeEnabled: function IsSubscribeEnabled()
+​
+IsViewNavigationItemEnabled: function IsViewNavigationItemEnabled()
+​
+JSON: JSON { … }
+​
+JSProcessActorChild: function ()
+​
+JSProcessActorParent: function ()
+​
+JSTreeSelection: function JSTreeSelection(aTree)
+​
+JSWindowActorChild: function ()
+​
+JSWindowActorParent: function ()
+​
+JXON: Object { build: build(oXMLParent, nVerbosity, bFreeze, bNesteAttributes) }
+​
+JunkSelectedMessages: function JunkSelectedMessages(setAsJunk)
+​
+KeyEvent: function ()
+​
+KeyLookupHelper: Object { lookupAndImportOnKeyserver: async lookupAndImportOnKeyserver(window, identifier, giveFeedbackToUser), lookupAndImportBySearchTerm: async lookupAndImportBySearchTerm(window, searchTerm, giveFeedbackToUser, whenDoneCB), lookupAndImportByKeyID: async lookupAndImportByKeyID(window, keyId, giveFeedbackToUser, whenDoneCB), … }
+​
+KeyboardEvent: function ()
+​
+KeyframeEffect: function ()
+​
+L10nOverlays: Object { ERROR_FORBIDDEN_TYPE: 1, ERROR_NAMED_ELEMENT_MISSING: 2, ERROR_NAMED_ELEMENT_TYPE_MISMATCH: 3, … }
+​
+LaunchCustomizeDialog: function LaunchCustomizeDialog()
+​
+LightweightThemeManager: Object { fallbackThemeData: Setter, currentThemeWithFallback: Getter, themeData: Getter }
+​
+LoadMsgWithRemoteContent: function LoadMsgWithRemoteContent()
+​
+LoadPostAccountWizard: function LoadPostAccountWizard()
+​
+Localization: function ()
+​
+Location: function ()
+​
+Log4Moz: Object { Level: {…}, getConfiguredLogger: getConfiguredLogger(loggername, level, consoleLevel, dumpLevel), LogMessage: Getter, … }
+​
+MODE_CREATE: 8
+​
+MODE_RDONLY: 1
+​
+MODE_TRUNCATE: 32
+​
+MODE_WRONLY: 2
+​
+MailConstants: Object { MOZ_OPENPGP: true }
+​
+MailConsts: Object { OpenMessageBehavior: {…} }
+​
+MailInstrumentation: Object { _currentState: null, _mfnListener: false, _observersRegistered: false, … }
+​
+MailOfflineMgr: Object { offlineManager: XPCWrappedNative_NoHelper, offlineBundle: stringbundle#bundle_offlinePrompts, init: init(), … }
+​
+MailPrefObserver: Object { observe: observe(subject, topic, prefName) }
+​
+MailServices: Object { mailSession: XPCWrappedNative_NoHelper, accounts: XPCWrappedNative_NoHelper, pop3: XPCWrappedNative_NoHelper, … }
+​
+MailSetCharacterSet: function MailSetCharacterSet(aEvent)
+​
+MailToolboxCustomizeDone: function MailToolboxCustomizeDone(aEvent, customizePopupId)
+​
+MailUtils: Object { discoverFolders: discoverFolders(), getFolderForFileInProfile: getFolderForFileInProfile(aFile), getExistingFolder: getExistingFolder(aFolderURI), … }
+​
+MailViewConstants: Object { kViewItemAll: 0, kViewItemUnread: 1, kViewItemTags: 2, … }
+​
+ManageTags: function ManageTags()
+​
+Map: function Map()
+​
+MarkMessageAsRead: function MarkMessageAsRead(msgHdr)
+​
+MarkSelectedMessagesFlagged: function MarkSelectedMessagesFlagged(markFlagged)
+​
+MarkSelectedMessagesRead: function MarkSelectedMessagesRead(markRead)
+​
+MatchGlob: function ()
+​
+MatchPattern: function ()
+​
+MatchPatternSet: function ()
+​
+Math: Math { … }
+​
+MathMLElement: function ()
+​
+MediaCapabilities: function ()
+​
+MediaCapabilitiesInfo: function ()
+​
+MediaDeviceInfo: function ()
+​
+MediaDevices: function ()
+​
+MediaElementAudioSourceNode: function ()
+​
+MediaEncryptedEvent: function ()
+​
+MediaError: function ()
+​
+MediaKeyError: function ()
+​
+MediaKeyMessageEvent: function ()
+​
+MediaKeySession: function ()
+​
+MediaKeyStatusMap: function ()
+​
+MediaKeySystemAccess: function ()
+​
+MediaKeys: function ()
+​
+MediaList: function ()
+​
+MediaQueryList: function ()
+​
+MediaQueryListEvent: function ()
+​
+MediaRecorder: function ()
+​
+MediaRecorderErrorEvent: function ()
+​
+MediaSource: function ()
+​
+MediaStream: function ()
+​
+MediaStreamAudioDestinationNode: function ()
+​
+MediaStreamAudioSourceNode: function ()
+​
+MediaStreamEvent: function ()
+​
+MediaStreamTrack: function ()
+​
+MediaStreamTrackAudioSourceNode: function ()
+​
+MediaStreamTrackEvent: function ()
+​
+MessageArchiver: function MessageArchiver()
+​
+MessageBroadcaster: function ()
+​
+MessageChannel: function ()
+​
+MessageClassifier: function MessageClassifier(aFolder, aTotalMessages)
+​
+MessageDisplayWidget: function MessageDisplayWidget()
+​
+MessageEvent: function ()
+​
+MessageIdClick: function MessageIdClick(node, event)
+​
+MessageListenerManager: function ()
+​
+MessagePaneDisplayWidget: function MessagePaneDisplayWidget(aBeVisible)
+​
+MessagePort: function ()
+​
+MessageSender: function ()
+​
+MessageTabDisplayWidget: function MessageTabDisplayWidget()
+​
+MessageTextFilter: Object { name: "text", domId: "qfb-qs-textbox", _parseSearchString: _parseSearchString(aSearchString), … }
+​
+MigrateFolderViews: function MigrateFolderViews()
+​
+MigrateJunkMailSettings: function MigrateJunkMailSettings()
+​
+MigrateOpenMessageBehavior: function MigrateOpenMessageBehavior()
+​
+MimeParser: Object { HEADER_UNSTRUCTURED: 0, HEADER_PARAMETER: 2, HEADER_ADDRESS: 3, … }
+​
+MimeType: function ()
+​
+MimeTypeArray: function ()
+​
+MouseEvent: function ()
+​
+MouseScrollEvent: function ()
+​
+MozCanvasPrintState: function ()
+​
+MozDocumentMatcher: function ()
+​
+MozDocumentObserver: function ()
+​
+MozElements: Object { printInstrumentation: printInstrumentation(collapsed), MozElementMixin: MozElementMixin(Base), BaseControlMixin: BaseControlMixin(Base), … }
+​
+MozHTMLElement: class MozElementBase {}
+​
+MozQueryInterface: function ()
+​
+MozSharedMap: function ()
+​
+MozSharedMapChangeEvent: function ()
+​
+MozStorageAsyncStatementParams: function ()
+​
+MozStorageStatementParams: function ()
+​
+MozStorageStatementRow: function ()
+​
+MozWritableSharedMap: function ()
+​
+MozXULElement: class MozElementBase {}
+​
+MsgAccountManager: function MsgAccountManager(selectPage, aServer)
+​
+MsgAccountWizard: function MsgAccountWizard(wizardCallback)
+​
+MsgApplyFilters: function MsgApplyFilters()
+​
+MsgApplyFiltersToSelection: function MsgApplyFiltersToSelection()
+​
+MsgArchiveSelectedMessages: function MsgArchiveSelectedMessages(event)
+​
+MsgBodyAllParts: function MsgBodyAllParts()
+​
+MsgBodyAllowHTML: function MsgBodyAllowHTML()
+​
+MsgBodyAsPlaintext: function MsgBodyAsPlaintext()
+​
+MsgBodySanitized: function MsgBodySanitized()
+​
+MsgComposeDraftMessage: function MsgComposeDraftMessage()
+​
+MsgCopyMessage: function MsgCopyMessage(aDestFolder)
+​
+MsgCreateFilter: function MsgCreateFilter()
+​
+MsgDeleteMessage: function MsgDeleteMessage(reallyDelete, fromToolbar)
+​
+MsgDisplayMessageInFolderTab: function MsgDisplayMessageInFolderTab(aMsgHdr)
+​
+MsgEditDraftMessage: function MsgEditDraftMessage(aEvent)
+​
+MsgEditMessageAsNew: function MsgEditMessageAsNew(aEvent)
+​
+MsgEditTemplateMessage: function MsgEditTemplateMessage(aEvent)
+​
+MsgFeedBodyRenderPrefs: function MsgFeedBodyRenderPrefs(plaintext, html, mime)
+​
+MsgFilterList: function MsgFilterList(args)
+​
+MsgFilters: function MsgFilters(emailAddress, folder, fieldName)
+​
+MsgForwardAsAttachment: function MsgForwardAsAttachment(event)
+​
+MsgForwardAsInline: function MsgForwardAsInline(event)
+​
+MsgForwardMessage: function MsgForwardMessage(event)
+​
+MsgGetMessage: function MsgGetMessage()
+​
+MsgGetMessagesForAccount: function MsgGetMessagesForAccount(aFolder)
+​
+MsgGetMessagesForAllAuthenticatedAccounts: function MsgGetMessagesForAllAuthenticatedAccounts()
+​
+MsgGetMessagesForAllServers: function MsgGetMessagesForAllServers(defaultServer)
+​
+MsgGetNextNMessages: function MsgGetNextNMessages()
+​
+MsgGroupBySort: function MsgGroupBySort()
+​
+MsgHdrSyntheticView: function MsgHdrSyntheticView(aMsgHdr)
+​
+MsgHdrToMimeMessage: function MsgHdrToMimeMessage(aMsgHdr, aCallbackThis, aCallback, aAllowDownload, aOptions)
+​
+MsgHdrViewObserver: Object { observe: observe(subject, topic, prefName) }
+​
+MsgJunk: function MsgJunk()
+​
+MsgJunkMailInfo: function MsgJunkMailInfo(aCheckFirstUse)
+​
+MsgMarkAllFoldersRead: function MsgMarkAllFoldersRead()
+​
+MsgMarkAllRead: function MsgMarkAllRead()
+​
+MsgMarkAsFlagged: function MsgMarkAsFlagged()
+​
+MsgMarkMsgAsRead: function MsgMarkMsgAsRead(read)
+​
+MsgMarkReadByDate: function MsgMarkReadByDate()
+​
+MsgMoveMessage: function MsgMoveMessage(aDestFolder)
+​
+MsgNewMessage: function MsgNewMessage(event)
+​
+MsgNewMessageFromTemplate: function MsgNewMessageFromTemplate(aEvent)
+​
+MsgOpenFromFile: function MsgOpenFromFile()
+​
+MsgOpenNewTabForFolder: function MsgOpenNewTabForFolder(aBackground)
+​
+MsgOpenNewWindowForFolder: function MsgOpenNewWindowForFolder(folderURI, msgKeyToSelect)
+​
+MsgOpenNewWindowForMessage: function MsgOpenNewWindowForMessage(aMsgHdr)
+​
+MsgOpenSelectedMessages: function MsgOpenSelectedMessages()
+​
+MsgPauseUpdates: function MsgPauseUpdates(aMenuitem)
+​
+MsgReplyGroup: function MsgReplyGroup(event)
+​
+MsgReplyMessage: function MsgReplyMessage(event)
+​
+MsgReplySender: function MsgReplySender(event)
+​
+MsgReplyToAllMessage: function MsgReplyToAllMessage(event)
+​
+MsgReplyToListMessage: function MsgReplyToListMessage(event)
+​
+MsgReverseSortThreadPane: function MsgReverseSortThreadPane()
+​
+MsgSaveAsFile: function MsgSaveAsFile()
+​
+MsgSaveAsTemplate: function MsgSaveAsTemplate()
+​
+MsgSearchAddresses: function MsgSearchAddresses()
+​
+MsgSearchMessages: function MsgSearchMessages(aFolder)
+​
+MsgSortAscending: function MsgSortAscending()
+​
+MsgSortByThread: function MsgSortByThread()
+​
+MsgSortDescending: function MsgSortDescending()
+​
+MsgSortThreadPane: function MsgSortThreadPane(sortName)
+​
+MsgSortThreaded: function MsgSortThreaded()
+​
+MsgSortUnthreaded: function MsgSortUnthreaded()
+​
+MsgStatusFeedback: Object { _statusText: label#statusText.statusbarpanel, _statusPanel: statuspanel#statusbar-display, _progressBar: html:progress#statusbar-icon.progressmeter-statusbar, … }
+​
+MsgSubscribe: function MsgSubscribe(folder)
+​
+MsgSynchronizeOffline: function MsgSynchronizeOffline()
+​
+MsgToggleFolderPane: function MsgToggleFolderPane()
+​
+MsgToggleMessagePane: function MsgToggleMessagePane()
+​
+MsgToggleThreaded: function MsgToggleThreaded()
+​
+MsgUnsubscribe: function MsgUnsubscribe(newsgroups)
+​
+MsgViewAllHeaders: function MsgViewAllHeaders()
+​
+MsgViewNormalHeaders: function MsgViewNormalHeaders()
+​
+MutationEvent: function ()
+​
+MutationObserver: function ()
+​
+MutationRecord: function ()
+​
+NaN: NaN
+​
+NamedNodeMap: function ()
+​
+NavigateToUri: function NavigateToUri(target)
+​
+Navigator: function ()
+​
+NetUtil: Object { asyncCopy: NetUtil_asyncCopy(aSource, aSink, aCallback), asyncFetch: NetUtil_asyncFetch(aSource, aCallback), newURI: NetUtil_newURI(aTarget, aOriginCharset, aBaseURI), … }
+​
+NeverVisibleMessageDisplayWidget: function NeverVisibleMessageDisplayWidget()
+​
+NewMailAccount: function NewMailAccount(msgWindow, okCallback, extraData)
+​
+NewMailAccountProvisioner: function NewMailAccountProvisioner(aMsgWindow, args)
+​
+Node: function ()
+​
+NodeFilter: function ()
+​
+NodeIterator: function ()
+​
+NodeList: function ()
+​
+Notification: function ()
+​
+Notifications: Object { _msgCounter: 0, _lastMessageTime: 0, _notificationPrefName: "mail.chat.show_desktop_notifications", … }
+​
+NotifyPaintEvent: function ()
+​
+Number: function Number()
+​
+OS: Object { File: File(fdmsg), Constants: {…}, Shared: {…}, … }
+​
+OTR: Object { hasRan: true, libLoaded: true, privateKeyPath: "C:\\gg\\INI\\Thunderbird78\\otr.private_key", … }
+​
+OTRUI: Object { enabled: true, stringsLoaded: true, debug: false, … }
+​
+Object: function Object()
+​
+OfflineAudioCompletionEvent: function ()
+​
+OfflineAudioContext: function ()
+​
+OfflineResourceList: function ()
+​
+OnAddressBookDataChanged: function OnAddressBookDataChanged(aAction, aParentDir, aItem)
+​
+OnLoadMessenger: function OnLoadMessenger()
+​
+OnLoadMsgHeaderPane: function OnLoadMsgHeaderPane()
+​
+OnLoadThreadPane: function OnLoadThreadPane()
+​
+OnMailWindowUnload: function OnMailWindowUnload()
+​
+OnMouseUpThreadAndMessagePaneSplitter: function OnMouseUpThreadAndMessagePaneSplitter()
+​
+OnMsgLoaded: function OnMsgLoaded(aUrl)
+​
+OnMsgParsed: function OnMsgParsed(aUrl)
+​
+OnResizeExpandedHeaderView: function OnResizeExpandedHeaderView()
+​
+OnTagsChange: function OnTagsChange()
+​
+OnUnloadMessenger: function OnUnloadMessenger()
+​
+OnUnloadMsgHeaderPane: function OnUnloadMsgHeaderPane()
+​
+OpenAttachmentFromBar: function OpenAttachmentFromBar(event)
+​
+OpenBrowserWithMessageId: function OpenBrowserWithMessageId(messageId)
+​
+OpenContainingFolder: function OpenContainingFolder()
+​
+OpenInboxForServer: function OpenInboxForServer(server)
+​
+OpenMessageByHeader: function OpenMessageByHeader(messageHeader, openInNewWindow)
+​
+OpenMessageForMessageId: function OpenMessageForMessageId(messageId)
+​
+OpenMessageInNewTab: function OpenMessageInNewTab(event)
+​
+OpenOrFocusWindow: function OpenOrFocusWindow(args, windowType, chromeURL)
+​
+OpenPhishingSettings: function OpenPhishingSettings()
+​
+Option: function Option()
+​
+OscillatorNode: function ()
+​
+OutputEmailAddresses: function OutputEmailAddresses(headerEntry, emailAddresses)
+​
+OutputMessageIds: function OutputMessageIds(headerEntry, headerValue)
+​
+OutputNewsgroups: function OutputNewsgroups(headerEntry, headerValue)
+​
+PROTO_TREE_VIEW: function PROTO_TREE_VIEW()
+​
+PageMenuParent: 
+​
+PageTransitionEvent: function ()
+​
+PaintRequest: function ()
+​
+PaintRequestList: function ()
+​
+PanelMultiView: class PanelMultiView { constructor(node) }
+​
+PanelUI: Object { kEvents: Getter, kElements: Getter, _initialized: false, … }
+​
+PannerNode: function ()
+​
+ParentProcessMessageManager: function ()
+​
+Path2D: function ()
+​
+PeerConnectionImpl: function ()
+​
+PeerConnectionObserver: function ()
+​
+Performance: function ()
+​
+PerformanceEntry: function ()
+​
+PerformanceEntryEvent: function ()
+​
+PerformanceMark: function ()
+​
+PerformanceMeasure: function ()
+​
+PerformanceNavigation: function ()
+​
+PerformanceNavigationTiming: function ()
+​
+PerformanceObserver: function ()
+​
+PerformanceObserverEntryList: function ()
+​
+PerformanceResourceTiming: function ()
+​
+PerformanceServerTiming: function ()
+​
+PerformanceTiming: function ()
+​
+PeriodicFilterManager: Object { _checkRateMilliseconds: 60000, _defaultFilterRateMinutes: 10, _initialized: true, … }
+​
+PeriodicWave: function ()
+​
+PermissionStatus: function ()
+​
+Permissions: function ()
+​
+PgpSqliteDb2: Object { openDatabase: openDatabase(), checkDatabaseStructure: async checkDatabaseStructure(), accCacheFingerprint: "", … }
+​
+PlacesBookmark: function ()
+​
+PlacesBookmarkAddition: function ()
+​
+PlacesBookmarkRemoved: function ()
+​
+PlacesEvent: function ()
+​
+PlacesObservers: Object { addListener: addListener(), removeListener: removeListener(), notifyListeners: notifyListeners(), … }
+​
+PlacesUtils: Object { TYPE_X_MOZ_PLACE_CONTAINER: "text/x-moz-place-container", TYPE_X_MOZ_PLACE_SEPARATOR: "text/x-moz-place-separator", TYPE_X_MOZ_PLACE: "text/x-moz-place", … }
+​
+PlacesVisit: function ()
+​
+PlacesWeakCallbackWrapper: function ()
+​
+Plugin: function ()
+​
+PluginArray: function ()
+​
+PluginCrashedEvent: function ()
+​
+PluralForm: Object { makeGetter: makeGetter(aRuleNum), ruleNum: Getter, get: makeGetter(aNum, aWords), … }
+​
+PointerEvent: function ()
+​
+PopStateEvent: function ()
+​
+PopupBlockedEvent: function ()
+​
+PopupNotifications: 
+​
+PrecompiledScript: function ()
+​
+PrintEnginePrint: function PrintEnginePrint()
+​
+PrintEnginePrintInternal: function PrintEnginePrintInternal(doPrintPreview, msgType)
+​
+PrintEnginePrintPreview: function PrintEnginePrintPreview()
+​
+PrintUtils: Object { init: init(), _bundle: Getter, showPageSetup: showPageSetup(), … }
+​
+PrioEncoder: Object { encode: encode(), … }
+​
+PrivateBrowsingUtils: Object { enabled: Getter, isWindowPrivate: pbu_isWindowPrivate(aWindow), isContentWindowPrivate: pbu_isWindowPrivate(aWindow), … }
+​
+ProcessMessageManager: function ()
+​
+ProcessingInstruction: function ()
+​
+ProgressEvent: function ()
+​
+Promise: function Promise()
+​
+PromiseDebugging: Object { getState: getState(), getPromiseID: getPromiseID(), getAllocationStack: getAllocationStack(), … }
+​
+PromiseRejectionEvent: function ()
+​
+Proxy: function Proxy()
+​
+PublicKeyCredential: function ()
+​
+PushManagerImpl: function ()
+​
+QuickFilterBarMuxer: Object { _init: _init(), onMakeActive: onMakeActive(aFolderDisplay), _updateToggle: _updateToggle(aTabInfo), … }
+​
+QuickFilterManager: Object { filterDefs: (10) […], filterDefsByName: {…}, textBoxDomId: "qfb-qs-textbox", … }
+​
+QuickFilterSearchListener: function QuickFilterSearchListener(aFolderDisplay, aFilterer, aFilterDef, aListener, aMuxer)
+​
+QuickFilterState: function QuickFilterState(aTemplateState, aJsonedState)
+​
+QuickSearchFocus: function QuickSearchFocus()
+​
+RTCCertificate: function ()
+​
+RTCDTMFSender: function ()
+​
+RTCDTMFToneChangeEvent: function ()
+​
+RTCDataChannel: function ()
+​
+RTCDataChannelEvent: function ()
+​
+RTCIceCandidate: function ()
+​
+RTCPeerConnection: function ()
+​
+RTCPeerConnectionIceEvent: function ()
+​
+RTCPeerConnectionStatic: function ()
+​
+RTCRtpReceiver: function ()
+​
+RTCRtpSender: function ()
+​
+RTCRtpTransceiver: function ()
+​
+RTCSessionDescription: function ()
+​
+RTCStatsReport: function ()
+​
+RTCTrackEvent: function ()
+​
+RadioNodeList: function ()
+​
+Range: function ()
+​
+RangeError: function RangeError()
+​
+ReadableStream: function ReadableStream()
+​
+Redo: function Redo()
+​
+ReferenceError: function ReferenceError()
+​
+Reflect: Object { … }
+​
+RefreshAllViewPopups: function RefreshAllViewPopups(viewPopup)
+​
+RefreshCustomViewsPopup: function RefreshCustomViewsPopup(parent, elementName, classes)
+​
+RefreshTagsPopup: function RefreshTagsPopup(parent, elementName, classes)
+​
+RefreshViewPopup: function RefreshViewPopup(viewPopup)
+​
+RegExp: function RegExp()
+​
+ReloadMessage: function ReloadMessage()
+​
+RemoveAllMessageTags: function RemoveAllMessageTags()
+​
+RemoveNewHeaderViews: function RemoveNewHeaderViews(aHeaderTable)
+​
+Request: function ()
+​
+ResizeObserver: function ()
+​
+ResizeObserverEntry: function ()
+​
+ResizeObserverSize: function ()
+​
+Response: function ()
+​
+RestoreFocusAfterHdrButton: function RestoreFocusAfterHdrButton()
+​
+RestoreSelectionWithoutContentLoad: function RestoreSelectionWithoutContentLoad(tree)
+​
+SAVEMODE_COMPLETE_DOM: 1
+​
+SAVEMODE_COMPLETE_TEXT: 2
+​
+SAVEMODE_FILEONLY: 0
+​
+STATE_FULLSCREEN: 4
+​
+STATE_MAXIMIZED: 1
+​
+STATE_MINIMIZED: 2
+​
+STATE_NORMAL: 3
+​
+SVGAElement: function ()
+​
+SVGAngle: function ()
+​
+SVGAnimateElement: function ()
+​
+SVGAnimateMotionElement: function ()
+​
+SVGAnimateTransformElement: function ()
+​
+SVGAnimatedAngle: function ()
+​
+SVGAnimatedBoolean: function ()
+​
+SVGAnimatedEnumeration: function ()
+​
+SVGAnimatedInteger: function ()
+​
+SVGAnimatedLength: function ()
+​
+SVGAnimatedLengthList: function ()
+​
+SVGAnimatedNumber: function ()
+​
+SVGAnimatedNumberList: function ()
+​
+SVGAnimatedPreserveAspectRatio: function ()
+​
+SVGAnimatedRect: function ()
+​
+SVGAnimatedString: function ()
+​
+SVGAnimatedTransformList: function ()
+​
+SVGAnimationElement: function ()
+​
+SVGCircleElement: function ()
+​
+SVGClipPathElement: function ()
+​
+SVGComponentTransferFunctionElement: function ()
+​
+SVGDefsElement: function ()
+​
+SVGDescElement: function ()
+​
+SVGElement: function ()
+​
+SVGEllipseElement: function ()
+​
+SVGFEBlendElement: function ()
+​
+SVGFEColorMatrixElement: function ()
+​
+SVGFEComponentTransferElement: function ()
+​
+SVGFECompositeElement: function ()
+​
+SVGFEConvolveMatrixElement: function ()
+​
+SVGFEDiffuseLightingElement: function ()
+​
+SVGFEDisplacementMapElement: function ()
+​
+SVGFEDistantLightElement: function ()
+​
+SVGFEDropShadowElement: function ()
+​
+SVGFEFloodElement: function ()
+​
+SVGFEFuncAElement: function ()
+​
+SVGFEFuncBElement: function ()
+​
+SVGFEFuncGElement: function ()
+​
+SVGFEFuncRElement: function ()
+​
+SVGFEGaussianBlurElement: function ()
+​
+SVGFEImageElement: function ()
+​
+SVGFEMergeElement: function ()
+​
+SVGFEMergeNodeElement: function ()
+​
+SVGFEMorphologyElement: function ()
+​
+SVGFEOffsetElement: function ()
+​
+SVGFEPointLightElement: function ()
+​
+SVGFESpecularLightingElement: function ()
+​
+SVGFESpotLightElement: function ()
+​
+SVGFETileElement: function ()
+​
+SVGFETurbulenceElement: function ()
+​
+SVGFilterElement: function ()
+​
+SVGForeignObjectElement: function ()
+​
+SVGGElement: function ()
+​
+SVGGeometryElement: function ()
+​
+SVGGradientElement: function ()
+​
+SVGGraphicsElement: function ()
+​
+SVGImageElement: function ()
+​
+SVGLength: function ()
+​
+SVGLengthList: function ()
+​
+SVGLineElement: function ()
+​
+SVGLinearGradientElement: function ()
+​
+SVGMPathElement: function ()
+​
+SVGMarkerElement: function ()
+​
+SVGMaskElement: function ()
+​
+SVGMatrix: function ()
+​
+SVGMetadataElement: function ()
+​
+SVGNumber: function ()
+​
+SVGNumberList: function ()
+​
+SVGPathElement: function ()
+​
+SVGPathSegList: function ()
+​
+SVGPatternElement: function ()
+​
+SVGPoint: function ()
+​
+SVGPointList: function ()
+​
+SVGPolygonElement: function ()
+​
+SVGPolylineElement: function ()
+​
+SVGPreserveAspectRatio: function ()
+​
+SVGRadialGradientElement: function ()
+​
+SVGRect: function ()
+​
+SVGRectElement: function ()
+​
+SVGSVGElement: function ()
+​
+SVGScriptElement: function ()
+​
+SVGSetElement: function ()
+​
+SVGStopElement: function ()
+​
+SVGStringList: function ()
+​
+SVGStyleElement: function ()
+​
+SVGSwitchElement: function ()
+​
+SVGSymbolElement: function ()
+​
+SVGTSpanElement: function ()
+​
+SVGTextContentElement: function ()
+​
+SVGTextElement: function ()
+​
+SVGTextPathElement: function ()
+​
+SVGTextPositioningElement: function ()
+​
+SVGTitleElement: function ()
+​
+SVGTransform: function ()
+​
+SVGTransformList: function ()
+​
+SVGUnitTypes: function ()
+​
+SVGUseElement: function ()
+​
+SVGViewElement: function ()
+​
+SanitizeAttachmentDisplayName: function SanitizeAttachmentDisplayName(aAttachment)
+​
+SaveAsFile: function SaveAsFile(uris)
+​
+SaveAsTemplate: function SaveAsTemplate(uri)
+​
+Screen: function ()
+​
+ScreenOrientation: function ()
+​
+ScriptProcessorNode: function ()
+​
+ScrollAreaEvent: function ()
+​
+ScrollViewChangeEvent: function ()
+​
+SearchForMessageIdInSubFolder: function SearchForMessageIdInSubFolder(folder, messageId)
+​
+SearchSpec: function SearchSpec(aViewWrapper)
+​
+SecurityController: Object { supportsCommand: supportsCommand(command), isCommandEnabled: isCommandEnabled(command) }
+​
+SecurityPolicyViolationEvent: function ()
+​
+SelectFolder: function SelectFolder(folderUri)
+​
+SelectServer: function SelectServer(server)
+​
+SelectedMessagesAreDeleted: function SelectedMessagesAreDeleted()
+​
+SelectedMessagesAreFlagged: function SelectedMessagesAreFlagged()
+​
+SelectedMessagesAreJunk: function SelectedMessagesAreJunk()
+​
+SelectedMessagesAreRead: function SelectedMessagesAreRead()
+​
+Selection: function ()
+​
+SendMDNResponse: function SendMDNResponse()
+​
+SendMailToNode: function SendMailToNode(addressNode, aEvent)
+​
+SendUnsentMessages: function SendUnsentMessages()
+​
+ServerContainsFolder: function ServerContainsFolder(server, folder)
+​
+Services: Object { prefs: XPCWrappedNative_NoHelper, appinfo: XPCWrappedNative_NoHelper, dirsvc: XPCWrappedNative_NoHelper, … }
+​
+SessionStoreManager: Object { _initialized: true, _restored: true, _sessionAutoSaveTimerIntervalMS: 300000, … }
+​
+SessionStoreUtils: Object { forEachNonDynamicChildFrame: forEachNonDynamicChildFrame(), addDynamicFrameFilteredListener: addDynamicFrameFilteredListener(), removeDynamicFrameFilteredListener: removeDynamicFrameFilteredListener(), … }
+​
+Set: function Set()
+​
+SetBusyCursor: function SetBusyCursor(window, enable)
+​
+SetFocusMessagePane: function SetFocusMessagePane()
+​
+SetFocusThreadPane: function SetFocusThreadPane()
+​
+SetFocusThreadPaneIfNotOnMessagePane: function SetFocusThreadPaneIfNotOnMessagePane()
+​
+SetGetMsgButtonTooltip: function SetGetMsgButtonTooltip()
+​
+SetMenuItemLabel: function SetMenuItemLabel(menuItemId, customLabel)
+​
+SetMessageTagLabel: function SetMessageTagLabel(menuitem, index, name)
+​
+SetNewsFolderColumns: function SetNewsFolderColumns()
+​
+SetTagHeader: function SetTagHeader()
+​
+SetupCommandUpdateHandlers: function SetupCommandUpdateHandlers()
+​
+SetupUndoRedoCommand: function SetupUndoRedoCommand(command)
+​
+ShadowRoot: function ()
+​
+SharedWorker: function ()
+​
+ShortcutUtils: Object { IS_VALID: "valid", INVALID_KEY: "invalid_key", INVALID_MODIFIER: "invalid_modifier", … }
+​
+ShowIgnoredMessageNotification: function ShowIgnoredMessageNotification(aMsgs, aSubthreadOnly)
+​
+ShowMenuItem: function ShowMenuItem(id, showItem)
+​
+ShowMessageHeaderPane: function ShowMessageHeaderPane()
+​
+SimpleGestureEvent: function ()
+​
+SourceBuffer: function ()
+​
+SourceBufferList: function ()
+​
+SpaceHit: function SpaceHit(event)
+​
+SpellCheckHelper: Object { EDITABLE: 1, INPUT: 2, TEXTAREA: 4, … }
+​
+StaticRange: function ()
+​
+Status: Object { toAttribute: toAttribute(aStatusType), _labels: {…}, toLabel: toLabel(aStatusType, aStatusText), … }
+​
+StereoPannerNode: function ()
+​
+Storage: function ()
+​
+StorageEvent: function ()
+​
+StorageManager: function ()
+​
+StreamFilter: function ()
+​
+StreamFilterDataEvent: function ()
+​
+String: function String()
+​
+StructuredCloneHolder: function ()
+​
+StyleSheet: function ()
+​
+StyleSheetApplicableStateChangeEvent: function ()
+​
+StyleSheetList: function ()
+​
+SubmitEvent: function ()
+​
+Subscribe: function Subscribe(preselectedMsgFolder)
+​
+SubscribeOKCallback: function SubscribeOKCallback(changeTable)
+​
+SubscribeToNewsgroup: function SubscribeToNewsgroup(newsgroupNode)
+​
+SubtleCrypto: function ()
+​
+SummaryFrameManager: function SummaryFrameManager(aFrame)
+​
+SwitchPaneFocus: function SwitchPaneFocus(event)
+​
+SwitchView: function SwitchView(command)
+​
+Symbol: function Symbol()
+​
+SyncMessageSender: function ()
+​
+SyntaxError: function SyntaxError()
+​
+Synthetic: function Synthetic(aHeader, aDuration, aMultiday)
+​
+TCPServerSocket: function ()
+​
+TCPServerSocketEvent: function ()
+​
+TCPSocket: function ()
+​
+TCPSocketErrorEvent: function ()
+​
+TCPSocketEvent: function ()
+​
+TabsInTitlebar: Object { init: init(), _initialized: true, _drawInTitlePref: "mail.tabs.drawInTitlebar", … }
+​
+TagUtils: Object { loadTagsIntoCSS: loadTagsIntoCSS(aDocument), addTagToAllDocumentSheets: addTagToAllDocumentSheets(aKey, aColor), isColorContrastEnough: isColorContrastEnough(aColor) }
+​
+TbSync: Object { enabled: true, shutdown: false, version: 0, … }
+​
+TelemetryStopwatch: Object { start: start(), running: running(), cancel: cancel(), … }
+​
+Text: function ()
+​
+TextClause: function ()
+​
+TextDecoder: function ()
+​
+TextEncoder: function ()
+​
+TextMetrics: function ()
+​
+TextTrack: function ()
+​
+TextTrackCue: function ()
+​
+TextTrackCueList: function ()
+​
+TextTrackList: function ()
+​
+ThemePrefObserver: Object { observe: observe(subject, topic, prefName) }
+​
+ThreadPaneDoubleClick: function ThreadPaneDoubleClick()
+​
+ThreadPaneKeyDown: function ThreadPaneKeyDown(event)
+​
+ThreadPaneOnClick: function ThreadPaneOnClick(event)
+​
+ThreadPaneOnDragOver: function ThreadPaneOnDragOver(aEvent)
+​
+ThreadPaneOnDragStart: function ThreadPaneOnDragStart(aEvent)
+​
+ThreadPaneOnDrop: function ThreadPaneOnDrop(aEvent)
+​
+ThreadPaneOnLoad: function ThreadPaneOnLoad()
+​
+ThreadPaneSelectionChanged: function ThreadPaneSelectionChanged()
+​
+ThreadTreeOnClick: function ThreadTreeOnClick(event)
+​
+TimeEvent: function ()
+​
+TimeRanges: function ()
+​
+TodayPane: Object { paneViews: null, start: null, switchCounter: 0, … }
+​
+ToggleFavoriteFolderFlag: function ToggleFavoriteFolderFlag()
+​
+ToggleInlineAttachment: function ToggleInlineAttachment(target)
+​
+ToggleMessageTag: function ToggleMessageTag(key, addKey)
+​
+ToggleMessageTagKey: function ToggleMessageTagKey(keyNumber)
+​
+ToggleMessageTagMenu: function ToggleMessageTagMenu(target)
+​
+ToolbarIconColor: Object { _windowState: {…}, init: init(), _initialized: true, … }
+​
+TracingListener: function TracingListener(aBrowser, aParams)
+​
+TrackEvent: function ()
+​
+TransceiverImpl: function ()
+​
+TransitionEvent: function ()
+​
+TransportErrorUrlListener: function TransportErrorUrlListener()
+​
+TreeColumn: function ()
+​
+TreeColumns: function ()
+​
+TreeContentView: function ()
+​
+TreeOnMouseDown: function TreeOnMouseDown(event)
+​
+TreeWalker: function ()
+​
+TryHandleAllAttachments: function TryHandleAllAttachments(action)
+​
+TypeError: function TypeError()
+​
+U2F: function ()
+​
+UIEvent: function ()
+​
+URIError: function URIError()
+​
+URL: function ()
+​
+URLSearchParams: function ()
+​
+Uint16Array: function Uint16Array()
+​
+Uint32Array: function Uint32Array()
+​
+Uint8Array: function Uint8Array()
+​
+Uint8ClampedArray: function Uint8ClampedArray()
+​
+Undo: function Undo()
+​
+UnloadCommandUpdateHandlers: function UnloadCommandUpdateHandlers()
+​
+UnloadPanes: function UnloadPanes()
+​
+UpdateCharsetMenu: function UpdateCharsetMenu(aCharset, aNode)
+​
+UpdateDeleteCommand: function UpdateDeleteCommand()
+​
+UpdateDeleteLabelsFromFolderCommand: function UpdateDeleteLabelsFromFolderCommand(folder, command)
+​
+UpdateDeleteToolbarButton: function UpdateDeleteToolbarButton()
+​
+UpdateEmailNodeDetails: function UpdateEmailNodeDetails(aEmailAddress, aDocumentNode, aCardDetails)
+​
+UpdateEmailPresenceDetails: function UpdateEmailPresenceDetails(aDocumentNode, aChatContact)
+​
+UpdateExpandedMessageHeaders: function UpdateExpandedMessageHeaders()
+​
+UpdateExtraAddressProcessing: function UpdateExtraAddressProcessing(aAddressData, aDocumentNode, aAction, aParentDir, aItem)
+​
+UpdateFullZoomMenu: function UpdateFullZoomMenu()
+​
+UpdateJunkButton: function UpdateJunkButton()
+​
+UpdateJunkToolbarButton: function UpdateJunkToolbarButton()
+​
+UpdateMailPaneConfig: function UpdateMailPaneConfig(aMsgWindowInitialized)
+​
+UpdateMailToolbar: function UpdateMailToolbar(caller)
+​
+UpdateReplyButtons: function UpdateReplyButtons()
+​
+UpdateSelectCol: function UpdateSelectCol()
+​
+UpdateSortIndicators: function UpdateSortIndicators(sortType, sortOrder)
+​
+UpdateStatusMessageCounts: function UpdateStatusMessageCounts(folder)
+​
+UpdateStatusQuota: function UpdateStatusQuota(folder)
+​
+VRDisplay: function ()
+​
+VRDisplayCapabilities: function ()
+​
+VRDisplayEvent: function ()
+​
+VREyeParameters: function ()
+​
+VRFieldOfView: function ()
+​
+VRFrameData: function ()
+​
+VRPose: function ()
+​
+VRStageParameters: function ()
+​
+VTTCue: function ()
+​
+VTTRegion: function ()
+​
+ValidityState: function ()
+​
+VideoPlaybackQuality: function ()
+​
+ViewChange: function ViewChange(aValue)
+​
+ViewChangeByMenuitem: function ViewChangeByMenuitem(aMenuitem)
+​
+ViewPageSource: function ViewPageSource(messages)
+​
+ViewPickerBinding: Object { _init: _init(), isVisible: Getter, currentViewValue: Getter, … }
+​
+ViewPickerOnLoad: function ViewPickerOnLoad()
+​
+VisualViewport: function ()
+​
+WaveShaperNode: function ()
+​
+WeakMap: function WeakMap()
+​
+WeakSet: function WeakSet()
+​
+WebAssembly: WebAssembly { compile: compile(), instantiate: instantiate(), validate: validate(), … }
+​
+WebExtensionContentScript: function ()
+​
+WebExtensionPolicy: function ()
+​
+WebGL2RenderingContext: function ()
+​
+WebGLActiveInfo: function ()
+​
+WebGLBuffer: function ()
+​
+WebGLContextEvent: function ()
+​
+WebGLFramebuffer: function ()
+​
+WebGLProgram: function ()
+​
+WebGLQuery: function ()
+​
+WebGLRenderbuffer: function ()
+​
+WebGLRenderingContext: function ()
+​
+WebGLSampler: function ()
+​
+WebGLShader: function ()
+​
+WebGLShaderPrecisionFormat: function ()
+​
+WebGLSync: function ()
+​
+WebGLTexture: function ()
+​
+WebGLTransformFeedback: function ()
+​
+WebGLUniformLocation: function ()
+​
+WebGLVertexArrayObject: function ()
+​
+WebKitCSSMatrix: function ()
+​
+WebSocket: function ()
+​
+WebrtcGlobalInformation: Object { getAllStats: getAllStats(), clearAllStats: clearAllStats(), getLogging: getLogging(), … }
+​
+WheelEvent: function ()
+​
+Window: function ()
+​
+WindowContext: function ()
+​
+WindowGlobalChild: function ()
+​
+WindowGlobalParent: function ()
+​
+WindowRoot: function ()
+​
+Worker: function ()
+​
+Worklet: function ()
+​
+XMLDocument: function ()
+​
+XMLHttpRequest: function ()
+​
+XMLHttpRequestEventTarget: function ()
+​
+XMLHttpRequestUpload: function ()
+​
+XMLSerializer: function ()
+​
+XPCNativeWrapper: function XPCNativeWrapper()
+​
+XPCOMUtils: Object { generateNSGetFactory: XPCU_generateNSGetFactory(componentsArray), defineLazyGetter: XPCU_defineLazyGetter(aObject, aName, aLambda), defineLazyScriptGetter: XPCU_defineLazyScriptGetter(aObject, aNames, aResource), … }
+​
+XPathEvaluator: function ()
+​
+XPathExpression: function ()
+​
+XPathResult: function ()
+​
+XSLTProcessor: function ()
+​
+XULCommandEvent: function ()
+​
+XULElement: function ()
+​
+XULFrameElement: function ()
+​
+XULMenuElement: function ()
+​
+XULPopupElement: function ()
+​
+XULTextElement: function ()
+​
+XULTreeElement: function ()
+​
+ZoomManager: Object { MIN: Getter, MAX: Getter, useFullZoom: Getter & Setter, … }
+​
+_compositeCalendar: XPCWrappedNative_NoHelper { prefPrefix: Getter & Setter, setStatusObserver: setStatusObserver(), defaultCalendar: Getter & Setter, … }
+​
+_showNewInstallModal: function _showNewInstallModal()
+​
+accountManager: XPCWrappedNative_NoHelper { allServers: Getter, allIdentities: Getter, defaultAccount: Getter & Setter, … }
+​
+accountProvisionerTabType: Object { openTab: openTab(aTab, aArgs), closeTab: closeTab(aTab), persistTab: persistTab(aTab), … }
+​
+adaptScheduleAgent: function adaptScheduleAgent(aItem)
+​
+addAttachmentToPopup: function addAttachmentToPopup(popup, attachment, attachmentIndex)
+​
+addCalendarNames: function addCalendarNames(aEvent)
+​
+addEmail: function addEmail()
+​
+addItemsFromCalendar: function addItemsFromCalendar(aCalendar, aAddItemsInternalFunc)
+​
+addItemsFromCompositeCalendarInternal: function addItemsFromCompositeCalendarInternal(eventArray)
+​
+addItemsFromSingleCalendarInternal: function addItemsFromSingleCalendarInternal(eventArray)
+​
+addMenuItem: function addMenuItem(aParent, aLabel, aValue, aCommand)
+​
+agendaListbox: Object { agendaListboxControl: null, mPendingRefreshJobs: null, soonDays: 5, … }
+​
+ahtButtonSetIcon: Object { startup: startup(), shutdown: shutdown(), observe: observe(subject, topic, data), … }
+​
+ahtButtonStatus: Object { startup: startup(), shutdown: shutdown(), observe: observe(subject, topic, data), … }
+​
+ahtFunctions: Object { prefer_plaintext: false, html_as: 0, disallow_classes: 0, … }
+​
+ahtHideAndShowStatusbarElements: Object { startup: startup(), shutdown: shutdown(), observe: observe(subject, topic, data), … }
+​
+ahtStatusbarSetLabelIcon: Object { startup: startup(), shutdown: shutdown(), observe: observe(subject, topic, data), … }
+​
+alert: function alert()
+​
+allAccountsSorted: function allAccountsSorted(aExcludeIMAccounts)
+​
+allowRemoteContentForAll: function allowRemoteContentForAll(aListNode)
+​
+allowRemoteContentForURI: function allowRemoteContentForURI(aUriSpec, aReload)
+​
+analyzeMessagesForJunk: function analyzeMessagesForJunk()
+​
+appIdleManager: Object { _appIdle: true, _timerInterval: 5000, _timerCallback: _timerCallback(), … }
+​
+appendCalendarItems: function appendCalendarItems(aItem, aCalendarMenuParent, aCalendarToUse, aOnCommand)
+​
+appendFiltersForContentType: function appendFiltersForContentType(aFilePicker, aContentType, aFileExtension, aSaveMode)
+​
+applicationCache: OfflineResourceList { status: 0, onchecking: null, onerror: null, … }
+​
+applyPersistedProperties: function applyPersistedProperties(aDialog)
+​
+arguments: Array [ "imap://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX", -1 ]
+​
+atStartupRestoreTabs: async function atStartupRestoreTabs(aDontRestoreFirstTab)
+​
+atob: function atob()
+​
+attachFileByAccountKey: function attachFileByAccountKey(aAccountKey)
+​
+attachURL: function attachURL()
+​
+attachmentItemCommand: function attachmentItemCommand(event)
+​
+backToolbarMenu_init: function backToolbarMenu_init(menuPopup)
+​
+blur: function blur()
+​
+boxAppendBody: function boxAppendBody(box, textString, aIsTooltip)
+​
+boxAppendBodySeparator: function boxAppendBodySeparator(vbox)
+​
+boxAppendLabeledDateTime: function boxAppendLabeledDateTime(box, labelProperty, date)
+​
+boxAppendLabeledDateTimeInterval: function boxAppendLabeledDateTimeInterval(box, labelProperty, item)
+​
+boxAppendLabeledText: function boxAppendLabeledText(box, labelProperty, textString)
+​
+boxInitializeHeaderTable: function boxInitializeHeaderTable(box)
+​
+browserDOMWindow: XPCWrappedNative_NoHelper { QueryInterface: QueryInterface(), OPEN_DEFAULTWINDOW: 0, OPEN_CURRENTWINDOW: 1, … }
+​
+btoa: function btoa()
+​
+buddyListContextMenu: function buddyListContextMenu(aXulMenu)
+​
+buildHelpMenu: function buildHelpMenu()
+​
+bundle: undefined
+​
+caches: CacheStorage {  }
+​
+cal: Object { createEvent: _instance(propval), createTodo: _instance(propval), createDateTime: _instance(propval), … }
+​
+calCalendarButtonDNDObserver: function calCalendarButtonDNDObserver()
+​
+calDNDBaseObserver: function calDNDBaseObserver()
+​
+calFilter: function calFilter()
+​
+calFilterProperties: function calFilterProperties()
+​
+calInitMessageMenu: function calInitMessageMenu()
+​
+calMailButtonDNDObserver: function calMailButtonDNDObserver()
+​
+calObserveDisplayDeckChange: function calObserveDisplayDeckChange(event)
+​
+calSwitchToCalendarMode: function calSwitchToCalendarMode()
+​
+calSwitchToMode: function calSwitchToMode(mode)
+​
+calSwitchToTaskMode: function calSwitchToTaskMode()
+​
+calTaskButtonDNDObserver: function calTaskButtonDNDObserver()
+​
+calViewDNDObserver: function calViewDNDObserver()
+​
+calendarCalendarButtonDNDObserver: Object { wrappedJSObject: {…} }
+​
+calendarController: Object { defaultController: null, commands: Set(58), updateCommands: updateCommands(), … }
+​
+calendarController2: Object { defaultController: null, commands: Set(18), updateCommands: updateCommands(), … }
+​
+calendarDeactivator: Object { windows: Set(1), calendars: Set(7), isCalendarActivated: true, … }
+​
+calendarExtract: Object { onShowLocaleMenu: onShowLocaleMenu(target), extractWithLocale: extractWithLocale(event, isEvent), extractFromEmail: extractFromEmail(isEvent, fixedLang, fixedLocale), … }
+​
+calendarItemTabType: Object { name: "calendarItem", perTabPanel: "vbox", idNumber: 0, … }
+​
+calendarListSetupContextMenu: function calendarListSetupContextMenu(event)
+​
+calendarListTooltipShowing: function calendarListTooltipShowing(event)
+​
+calendarMailButtonDNDObserver: Object { wrappedJSObject: {…} }
+​
+calendarNavigationBar: Object { setDateRange: setDateRange(startDate, endDate) }
+​
+calendarOfflineManager: Object { QueryInterface: MozQueryInterface, init: init(), uninit: uninit(), … }
+​
+calendarOnToolbarsPopupShowing: function calendarOnToolbarsPopupShowing(aEvent, aInsertPoint)
+​
+calendarTabMonitor: Object { monitorName: "calendarTabMonitor", onTabTitleChanged: onTabTitleChanged(), onTabOpened: onTabOpened(), … }
+​
+calendarTabType: Object { name: "calendar", panelId: "calendarTabPanel", modes: {…}, … }
+​
+calendarTaskButtonDNDObserver: Object { wrappedJSObject: {…} }
+​
+calendarUpdateDeleteCommand: function calendarUpdateDeleteCommand(selectedItems)
+​
+calendarUpdateNewItemsCommand: function calendarUpdateNewItemsCommand()
+​
+calendarViewController: Object { QueryInterface: MozQueryInterface, createNewEvent: createNewEvent(calendar, startTime, endTime, forceAllday), modifyOccurrence: modifyOccurrence(occurrence, newStartTime, newEndTime, newTitle), … }
+​
+calendarViewDNDObserver: Object { wrappedJSObject: {…} }
+​
+calendarWindowPrefs: Object { QueryInterface: MozQueryInterface, init: init(), cleanup: cleanup(), … }
+​
+canPaste: function canPaste()
+​
+canQuitApplication: function canQuitApplication(aData)
+​
+canRedo: function canRedo()
+​
+canUndo: function canUndo()
+​
+cancelAnimationFrame: function cancelAnimationFrame()
+​
+cancelIdleCallback: function cancelIdleCallback()
+​
+captureEvents: function captureEvents()
+​
+changeContextMenuForTask: function changeContextMenuForTask(aEvent)
+​
+changeMenuForTask: function changeMenuForTask(aEvent)
+​
+changeMode: function changeMode(mode)
+​
+chatHandler: Object { msgNotificationBar: Getter, _chatButtonUpdatePending: false, _notifiedUnreadCount: 0, … }
+​
+chatLogTreeGroupItem: function chatLogTreeGroupItem(aTitle, aLogItems)
+​
+chatLogTreeLogItem: function chatLogTreeLogItem(aLog, aText, aLevel)
+​
+chatLogTreeView: function chatLogTreeView(aTree, aLogs)
+​
+chatTabType: Object { name: "chat", panelId: "chatTabPanel", hasBeenOpened: false, … }
+​
+clearChatContextMenu: function clearChatContextMenu(popup)
+​
+clearInterval: function clearInterval()
+​
+clearTimeout: function clearTimeout()
+​
+close: function close()
+​
+closeWindow: function closeWindow(aClose, aPromptFunction)
+​
+closeWindowOrTab: function closeWindowOrTab(iframeId)
+​
+closed: false
+​
+commonUpdateReminder: function commonUpdateReminder(reminderList, calendarItem, lastAlarmSelection, calendar, reminderDetails, timezone, suppressDialogs)
+​
+composeEmailTo: function composeEmailTo()
+​
+composeMsgByType: function composeMsgByType(aCompType, aEvent)
+​
+compositeObserver: Object { QueryInterface: makeQI(iid), onStartBatch: onStartBatch(), onEndBatch: onEndBatch(), … }
+​
+confirm: function confirm()
+​
+console: Console { assert: assert(), clear: clear(), count: count(), … }
+​
+content: Window about:blank
+​
+contentAreaClick: function contentAreaClick(aEvent)
+​
+contentTabBaseType: Object { inContentWhitelist: (5) […], inContentOverlays: (5) […], shouldSwitchTo: shouldSwitchTo(), … }
+​
+contextChangeTaskCalendar: function contextChangeTaskCalendar(aEvent)
+​
+contextChangeTaskPriority: function contextChangeTaskPriority(aEvent, aPriority)
+​
+contextChangeTaskProgress: function contextChangeTaskProgress(aEvent, aProgress)
+​
+contextPostponeTask: function contextPostponeTask(aEvent, aDuration)
+​
+controllers: XPCWrappedNative_NoHelper { QueryInterface: QueryInterface(), getControllerForCommand: getControllerForCommand(), insertControllerAt: insertControllerAt(), … }
+​
+copyToClipboard: function copyToClipboard(aCalendarItemArray, aCutMode)
+​
+countOccurrences: function countOccurrences(aItem)
+​
+createEventWithDialog: function createEventWithDialog(calendar, startDate, endDate, summary, event, aForceAllday)
+​
+createHeaderEntry: function createHeaderEntry(prefix, headerListInfo)
+​
+createImageBitmap: function createImageBitmap()
+​
+createReminderFromMenuitem: function createReminderFromMenuitem(aMenuitem, aCalendar)
+​
+createTodoWithDialog: function createTodoWithDialog(calendar, dueDate, summary, todo, initialDate)
+​
+createTooltipHeaderDescription: function createTooltipHeaderDescription(text)
+​
+createTooltipHeaderLabel: function createTooltipHeaderLabel(text)
+​
+crossOriginIsolated: false
+​
+crypto: Crypto { subtle: SubtleCrypto }
+​
+ctypes: ctypes { CType: CType(), CData: CData(), PointerType: PointerType(), … }
+​
+currentAttachments: Array []
+​
+currentHeaderData: Object {  }
+​
+currentView: function currentView()
+​
+customElements: CustomElementRegistry {  }
+​
+customizeMailToolbarForTabType: function customizeMailToolbarForTabType()
+​
+cutToClipboard: function cutToClipboard(aCalendarItemArray)
+​
+dataMigrator: function dataMigrator(aTitle, aMigrateFunction, aArguments)
+​
+decodeURI: function decodeURI()
+​
+decodeURIComponent: function decodeURIComponent()
+​
+deleteItemsFromCalendar: function deleteItemsFromCalendar(aCalendar)
+​
+deleteJunkInFolder: function deleteJunkInFolder()
+​
+deleteSelectedEvents: function deleteSelectedEvents()
+​
+deleteSelectedItems: function deleteSelectedItems()
+​
+deleteToDoCommand: function deleteToDoCommand(aEvent, aDoNotConfirm)
+​
+determineActionsForJunkMsgs: function determineActionsForJunkMsgs(aFolder)
+​
+determineAttendeesInRow: function determineAttendeesInRow(maxLabelWidth)
+​
+devicePixelRatio: 1.25
+​
+dialogToolboxCustomizeDone: function dialogToolboxCustomizeDone(aToolboxChanged)
+​
+disableElementWithLock: function disableElementWithLock(elementId, lockId)
+​
+disableSaving: function disableSaving(disabled)
+​
+displayAttachmentsForExpandedView: async function displayAttachmentsForExpandedView()
+​
+displayAttachmentsForExpandedViewExternal: function displayAttachmentsForExpandedViewExternal()
+​
+dispose: function dispose()
+​
+disposeJob: function disposeJob(job)
+​
+doMidnightUpdate: function doMidnightUpdate()
+​
+doTransaction: function doTransaction(aAction, aItem, aCalendar, aOldItem, aListener, aExtResponse)
+​
+docShell: XPCWrappedNative_NoHelper { messageManager: , QueryInterface: QueryInterface(), name: , … }
+​
+document: HTMLDocument chrome://messenger/content/messenger.xhtml
+​
+dump: function dump()
+​
+editAttendees: function editAttendees()
+​
+editConfigState: function editConfigState(aArg)
+​
+editContactInlineUI: Object { _overlayLoaded: false, _overlayLoading: false, _writeable: true, … }
+​
+editPriority: function editPriority(aTarget)
+​
+editPrivacy: function editPrivacy(aTarget, aEvent)
+​
+editReminder: function editReminder(reminderList, calendarItem, lastAlarmSelection, calendar, timezone)
+​
+editRemoteContentSettings: function editRemoteContentSettings()
+​
+editSelectedEvents: function editSelectedEvents()
+​
+editShowTimeAs: function editShowTimeAs(aTarget)
+​
+editStatus: function editStatus(aTarget)
+​
+editToDoStatus: function editToDoStatus(aPercentComplete)
+​
+enableAcceptCommand: function enableAcceptCommand(aEnable)
+​
+enableElementWithLock: function enableElementWithLock(elementId, lockId)
+​
+enableInlineSpellCheck: function enableInlineSpellCheck(aEnableInlineSpellCheck)
+​
+encodeURI: function encodeURI()
+​
+encodeURIComponent: function encodeURIComponent()
+​
+endBatchTransaction: function endBatchTransaction()
+​
+ensureCalendarVisible: function ensureCalendarVisible(aCalendar)
+​
+ensureUnifinderLoaded: function ensureUnifinderLoaded()
+​
+errorWithDebug: function errorWithDebug(aString)
+​
+escape: function escape()
+​
+eval: function eval()
+​
+event: 
+​
+exportEntireCalendar: function exportEntireCalendar(aCalendar)
+​
+fetch: function fetch()
+​
+file_init: function file_init()
+​
+fillFolderPaneContextMenu: function fillFolderPaneContextMenu(aEvent)
+​
+fillMailContextMenu: function fillMailContextMenu(event)
+​
+filterFolderForJunk: function filterFolderForJunk()
+​
+find: function find()
+​
+findEmailNodeFromPopupNode: function findEmailNodeFromPopupNode(elt, popup)
+​
+finishCalendarUnifinder: function finishCalendarUnifinder()
+​
+fixIterator: function fixIterator(aEnum, aIface)
+​
+focus: function focus()
+​
+focusOnMail: function focusOnMail(tabNo, event)
+​
+focusSearch: function focusSearch()
+​
+folderListener: Object { OnItemAdded: OnItemAdded(parentItem, item), OnItemRemoved: OnItemRemoved(parentItem, item), OnItemPropertyChanged: OnItemPropertyChanged(item, property, oldValue, newValue), … }
+​
+folderNameCompare: function folderNameCompare(aString1, aString2)
+​
+folderPaneOnPopupHiding: function folderPaneOnPopupHiding()
+​
+forgetEncryptedURI: function forgetEncryptedURI()
+​
+formatUnifinderEventDateTime: function formatUnifinderEventDateTime(aDatetime)
+​
+forwardToolbarMenu_init: function forwardToolbarMenu_init(menuPopup)
+​
+frameElement: null
+​
+frames: ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+ftvItem: function ftvItem(aFolder, aFolderFilter)
+​
+ftv_SmartItem: function ftv_SmartItem(aFolder)
+​
+fullScreen: false
+​
+gAnyValidIdentity: false
+​
+gBuddyListContextMenu: null
+​
+gBuildAttachmentsForCurrentMsg: false
+​
+gBuiltExpandedView: false
+​
+gBundle: 
+​
+gCalendarEventTreeClicked: false
+​
+gCalendarStatusFeedback: Object { mCalendarStep: 0, mCalendarCount: 0, mProgressMode: 0, … }
+​
+gChatContextMenu: null
+​
+gChatSpellChecker: undefined
+​
+gChatTab: null
+​
+gConfig: Object { isEvent: null, privacy: null, hasPrivacy: null, … }
+​
+gContextMenu: undefined
+​
+gConversationOpener: Object {  }
+​
+gCryptoContainer: null
+​
+gCurSortType: undefined
+​
+gCurViewFlags: undefined
+​
+gCurrentMode: "mail"
+​
+gCustomizeSheet: false
+​
+gDBView: null
+​
+gDataMigrator: Object { mIsInFirefox: false, mPlatform: null, mDirService: null, … }
+​
+gDisallow_classes_no_html: 1
+​
+gDisplayStartupPage: false
+​
+gDragSpaceObserver: Object { pref: "mail.tabs.extraDragSpace", init: init(), uninit: uninit(), … }
+​
+gDummyHeaderIdIndex: 0
+​
+gEmailAddressHeaderNames: Array(6) [ "from", "reply-to", "to", … ]
+​
+gEncKeyId: null
+​
+gEncryptedUINode: null
+​
+gEncryptedURIService: null
+​
+gEncryptionCert: null
+​
+gEncryptionStatus: -1
+​
+gEncryptionStatusForURI: null
+​
+gEventTimer: undefined
+​
+gExpandedHeaderList: Array(11) [ {…}, {…}, {…}, … ]
+​
+gExpandedHeaderView: Object {  }
+​
+gExtensionsNotifications: Object { initialized: false, init: init(), uninit: uninit(), … }
+​
+gFocusedElement: null
+​
+gFolderDisplay: null
+​
+gFolderStatsHelpers: Object { kUnknownSize: "-", sumSubfoldersPref: false, sumSubfolders: false, … }
+​
+gFolderTreeController: Object { newFolder: newFolder(aParent), editFolder: editFolder(aTabID, aFolder), renameFolder: renameFolder(aFolder), … }
+​
+gFolderTreeView: Object { messengerBundle: null, load: load(aTree, aJSONFile), unload: unload(aJSONFile), … }
+​
+gHeadersShowReferences: false
+​
+gIgnoreSyntheticFolderPaneSelectionChange: false
+​
+gInTab: false
+​
+gInvitationsCalendarManagerObserver: Object { mStoredThis: ChromeWindow chrome://messenger/content/messenger.xhtml, QueryInterface: MozQueryInterface, onCalendarRegistered: onCalendarRegistered(aCalendar), … }
+​
+gInvitationsManager: null
+​
+gInvitationsOperationListener: Object { mCount: 0, QueryInterface: MozQueryInterface, onOperationComplete: onOperationComplete(aCalendar, aStatus, aOperationType, aId, aDetail), … }
+​
+gInvitationsRequestManager: Object { mRequestStatusList: {}, addRequestStatus: addRequestStatus(calendar, operation), cancelPendingRequests: cancelPendingRequests() }
+​
+gItemTabIds: Array []
+​
+gItemTabIdsCopy: undefined
+​
+gLastFocusedElement: null
+​
+gLastMessageUriToLoad: null
+​
+gLastShownCalendarView: Object { _lastView: null, get: get(), set: set(view) }
+​
+gMailViewList: null
+​
+gMailWindowLog: Object { _name: "mailWindow", _level: 20, _configured: true, … }
+​
+gMainWindow: null
+​
+gMarkViewedMessageAsReadTimer: null
+​
+gMessageDisplay: null
+​
+gMessageListeners: Array []
+​
+gMessageNotificationBar: Object { stringBundle: Getter, brandBundle: Getter, msgNotificationBar: Getter, … }
+​
+gMessagePane: undefined
+​
+gMessagePaneWrapper: <hbox id="messagepaneboxwrapper" flex="1" style="min-height:100px; min-width:100px;" height="377" width="200" persist="collapsed height width" collapsed="true">
+​
+gMidnightTimer: undefined
+​
+gMinNumberOfHeaders: 0
+​
+gMyLastEncryptedURI: null
+​
+gNavDebug: false
+​
+gNewAccountToLoad: null
+​
+gOtrEnabled: true
+​
+gPhishingDetector: Object { mCheckForIPAddresses: true, mCheckForMismatchedHosts: true, mDisallowFormActions: true, … }
+​
+gPrefTab: null
+​
+gRangeOffset: undefined
+​
+gRangeParent: undefined
+​
+gRightMouseButtonSavedSelection: null
+​
+gSMIMEBundle: null
+​
+gShowBiDi: false
+​
+gShowCondensedEmailAddresses: undefined
+​
+gShowFeedSummary: undefined
+​
+gSigKeyId: null
+​
+gSignatureStatus: -1
+​
+gSignatureStatusForURI: null
+​
+gSignedUINode: null
+​
+gSignerCert: null
+​
+gSpellChecker: Object { mEditor: undefined, mInlineSpellChecker: null, mOverMisspelling: false, … }
+​
+gStatusBar: null
+​
+gSummaryFrameManager: undefined
+​
+gTabmail: null
+​
+gThreadAndMessagePaneSplitter: null
+​
+gThreadPaneCommandUpdater: null
+​
+gThreePaneIncomingServerListener: Object { onServerLoaded: onServerLoaded(server), onServerUnloaded: onServerUnloaded(server), onServerChanged: onServerChanged(server) }
+​
+gUnifinderNeedsRefresh: true
+​
+gViewAllHeaders: false
+​
+gViewSourceUtils: 
+​
+gatherTextUnder: function gatherTextUnder(root)
+​
+getAttachmentsTotalSizeStr: function getAttachmentsTotalSizeStr()
+​
+getAttention: function getAttention()
+​
+getAttentionWithCycleCount: function getAttentionWithCycleCount()
+​
+getBrowser: function getBrowser()
+​
+getBrowserSelection: function getBrowserSelection(aCharLen)
+​
+getBrowserURL: function getBrowserURL()
+​
+getCharsetforSave: function getCharsetforSave(aDocument)
+​
+getComputedStyle: function getComputedStyle()
+​
+getContractIdForImportingFile: function getContractIdForImportingFile(file)
+​
+getCurrentNextOrPreviousRecurrence: function getCurrentNextOrPreviousRecurrence(calendarEvent)
+​
+getCurrentUnifinderFilter: function getCurrentUnifinderFilter()
+​
+getDefaultAlarmType: function getDefaultAlarmType(calendar)
+​
+getDefaultComputedStyle: function getDefaultComputedStyle()
+​
+getDefaultExtension: function getDefaultExtension(aFilename, aURI, aContentType)
+​
+getDefaultFileName: function getDefaultFileName(aDefaultFileName, aURI, aDocument, aContentDisposition)
+​
+getElementValue: function getElementValue(aElement, aPropertyName)
+​
+getEmail: function getEmail(url)
+​
+getEventStatusString: function getEventStatusString(aEvent)
+​
+getFileBaseName: function getFileBaseName(aFileName)
+​
+getFolderProperties: function getFolderProperties(aFolder, aOpen)
+​
+getGroupMessageManager: function getGroupMessageManager()
+​
+getIconForAttachment: function getIconForAttachment(attachment)
+​
+getInterface: function getInterface()
+​
+getInvalidAccounts: function getInvalidAccounts(accounts)
+​
+getInvitationsManager: function getInvitationsManager()
+​
+getItemsFromFile: function getItemsFromFile(file)
+​
+getLocale: function getLocale()
+​
+getMIMEInfoForType: function getMIMEInfoForType(aMIMEType, aExtension)
+​
+getMIMEService: function getMIMEService()
+​
+getMIMETypeForURI: function getMIMETypeForURI(aURI)
+​
+getMailToolbox: function getMailToolbox()
+​
+getMessagePaneBrowser: function getMessagePaneBrowser()
+​
+getMinimonth: function getMinimonth()
+​
+getMostRecentFolders: function getMostRecentFolders(aFolderList, aMaxHits, aTimeProperty)
+​
+getMostRecentMailWindow: function getMostRecentMailWindow()
+​
+getMsgToolbarMenu_init: function getMsgToolbarMenu_init()
+​
+getNormalizedLeafName: function getNormalizedLeafName(aFile, aDefaultExtension)
+​
+getNotificationBox: function getNotificationBox(aWindow)
+​
+getNotificationFromElement: function getNotificationFromElement(aElement)
+​
+getOptimalMinimumHeight: function getOptimalMinimumHeight(aXULElement)
+​
+getOptimalMinimumWidth: function getOptimalMinimumWidth(aXULElement)
+​
+getPostData: function getPostData(aDocument)
+​
+getPreviewForEvent: function getPreviewForEvent(aEvent, aIsTooltip)
+​
+getPreviewForItem: function getPreviewForItem(aItem, aIsTooltip)
+​
+getPreviewForTask: function getPreviewForTask(toDoItem, aIsTooltip)
+​
+getRegionalPrefsLocales: function getRegionalPrefsLocales()
+​
+getSelectedCalendar: function getSelectedCalendar()
+​
+getSelectedDay: function getSelectedDay()
+​
+getSelectedItems: function getSelectedItems()
+​
+getSelectedTasks: function getSelectedTasks(aEvent)
+​
+getSelection: function getSelection()
+​
+getSmartFolderName: function getSmartFolderName(aFolder)
+​
+getSoondaysPreference: function getSoondaysPreference()
+​
+getSpecialFolderString: function getSpecialFolderString(aFolder)
+​
+getSummarizedStyleValues: function getSummarizedStyleValues(aXULElement, aStyleProps)
+​
+getTaskTree: function getTaskTree()
+​
+getTimezoneCommandState: function getTimezoneCommandState()
+​
+getToDoStatusString: function getToDoStatusString(aToDo)
+​
+getToolboxIdForCurrentTabType: function getToolboxIdForCurrentTabType()
+​
+getTransactionMgr: function getTransactionMgr()
+​
+getViewDeck: function getViewDeck()
+​
+getWebExposedLocales: function getWebExposedLocales()
+​
+getWindowStateForSessionPersistence: function getWindowStateForSessionPersistence()
+​
+getWindowsVersionInfo: function getWindowsVersionInfo()
+​
+getWorkspaceID: function getWorkspaceID()
+​
+globalThis: ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+glodaFacetTabType: Object { name: "glodaFacet", perTabPanel: "vbox", lastTabId: 0, … }
+​
+goCopyImage: function goCopyImage()
+​
+goDoCommand: function goDoCommand(aCommand)
+​
+goOnEvent: function goOnEvent(aNode, aEvent)
+​
+goQuitApplication: function goQuitApplication()
+​
+goRestoreAllTabs: function goRestoreAllTabs()
+​
+goSetAccessKey: function goSetAccessKey(aCommand, aValueAttribute)
+​
+goSetCommandEnabled: function goSetCommandEnabled(aID, aEnabled)
+​
+goSetMenuValue: function goSetMenuValue(aCommand, aLabelAttribute)
+​
+goToDate: function goToDate(date)
+​
+goToggleToolbar: function goToggleToolbar(id, elementID)
+​
+goUpdateAttachmentCommands: function goUpdateAttachmentCommands()
+​
+goUpdateCommand: function goUpdateCommand(aCommand)
+​
+goUpdateFindTypeMenuItems: function goUpdateFindTypeMenuItems()
+​
+goUpdateGlobalEditMenuItems: function goUpdateGlobalEditMenuItems()
+​
+goUpdateMailMenuItems: function goUpdateMailMenuItems(commandset)
+​
+goUpdatePasteMenuItems: function goUpdatePasteMenuItems()
+​
+goUpdateSelectEditMenuItems: function goUpdateSelectEditMenuItems()
+​
+goUpdateUndoEditMenuItems: function goUpdateUndoEditMenuItems()
+​
+hRefForClickEvent: function hRefForClickEvent(aEvent, aDontCheckInputElement)
+​
+handleDeleteColClick: function handleDeleteColClick(event)
+​
+handleTaskContextMenuStateChange: function handleTaskContextMenuStateChange(aEvent)
+​
+handleWindowClose: function handleWindowClose(aResponse)
+​
+hasAVisibleNextSibling: function hasAVisibleNextSibling(aNode)
+​
+hideEmailNewsPopup: function hideEmailNewsPopup(addressNode)
+​
+hideHeaderView: function hideHeaderView(aHeaderTable)
+​
+hideMessageReadSecurityInfo: function hideMessageReadSecurityInfo()
+​
+history: History { scrollRestoration: "auto", state: null }
+​
+httpRequestObserver: function httpRequestObserver(aBrowser, aParams)
+​
+imContextMenu: function imContextMenu(aXulMenu)
+​
+imServices: Object { prefs: XPCWrappedNative_NoHelper, appinfo: XPCWrappedNative_NoHelper, dirsvc: XPCWrappedNative_NoHelper, … }
+​
+indexedDB: IDBFactory {  }
+​
+initAccountWizardTB: function initAccountWizardTB(args)
+​
+initAddonPrefsMenu: async function initAddonPrefsMenu(parent, elementName, classes, iconClasses)
+​
+initAppMenuPopup: function initAppMenuPopup()
+​
+initFileInfo: function initFileInfo(aFI, aURL, aURLCharset, aDocument, aContentType, aContentDisposition)
+​
+initHomeCalendar: function initHomeCalendar()
+​
+initMoveToFolderAgainMenu: function initMoveToFolderAgainMenu(aMenuItem)
+​
+initOpenPGPIfEnabled: function initOpenPGPIfEnabled()
+​
+initSearchMessagesMenu: function initSearchMessagesMenu()
+​
+initViewCalendarPaneMenu: function initViewCalendarPaneMenu()
+​
+initializeHeaderViewTables: function initializeHeaderViewTables()
+​
+initializeItemMenu: function initializeItemMenu(aLabel, aAccessKey)
+​
+injectCalendarCommandController: function injectCalendarCommandController()
+​
+injectedOverlays: Array [ "chrome://tbsync/content/overlays/messenger.xhtml" ]
+​
+innerHeight: 810
+​
+innerWidth: 921
+​
+internalPersist: function internalPersist(persistArgs)
+​
+internalSave: function internalSave(aURL, aDocument, aDefaultFileName, aContentDisposition, aContentType, aShouldBypassCache, aFilePickerTitleKey, aChosenData, aReferrerInfo, aInitiatingDocument, aSkipPrompt, aCacheKey, aIsContentWindowPrivate, aPrincipal)
+​
+intializeTabOrWindowVariables: function intializeTabOrWindowVariables()
+​
+intlUtils: IntlUtils {  }
+​
+invokeEventDragSession: function invokeEventDragSession(aItem, aXULBox)
+​
+isChromeWindow: true
+​
+isFinite: function isFinite()
+​
+isFullyOccluded: false
+​
+isLegalIPAddress: function isLegalIPAddress(aHostName, aAllowExtendedIPFormats)
+​
+isLegalLocalIPAddress: function isLegalLocalIPAddress(aIPAddress)
+​
+isLinkToAnchorOnPage: function isLinkToAnchorOnPage(aTargetNode)
+​
+isNaN: function isNaN()
+​
+isNewsURI: function isNewsURI(uri)
+​
+isSecureContext: true
+​
+isSortTypeValidForGrouping: function isSortTypeValidForGrouping(sortType)
+​
+isUnifinderHidden: function isUnifinderHidden()
+​
+itemConversion: Object { calendarItemFromMessage: calendarItemFromMessage(aItem, aMsgHdr), copyItemBase: copyItemBase(aItem, aTarget), taskFromEvent: taskFromEvent(aEvent), … }
+​
+kAllowRemoteContent: 2
+​
+kBlockRemoteContent: 1
+​
+kClassicMailLayout: 0
+​
+kDefaultMode: "all"
+​
+kMailCheckOncePrefName: "mail.startup.enabledMailCheckOnce"
+​
+kMailLayoutCommandMap: Object { cmd_viewClassicMailLayout: 0, cmd_viewWideMailLayout: 1, cmd_viewVerticalMailLayout: 2 }
+​
+kNoRemoteContentPolicy: 0
+​
+kNumFolderViews: 4
+​
+kPhishingNotSuspicious: 0
+​
+kPhishingWithIPAddress: 1
+​
+kPhishingWithMismatchedHosts: 2
+​
+kSaveAsType_Complete: 0
+​
+kSaveAsType_Text: 2
+​
+kStandardPaneConfig: 0
+​
+kVerticalMailLayout: 2
+​
+kVerticalPaneConfig: 2
+​
+kViewCurrent: "current-view"
+​
+kViewCurrentTag: "current-view-tag"
+​
+kViewItemAll: 0
+​
+kViewItemCustomize: 8
+​
+kViewItemFirstCustom: 9
+​
+kViewItemNotDeleted: 3
+​
+kViewItemTags: 2
+​
+kViewItemUnread: 1
+​
+kViewItemVirtual: 7
+​
+kViewTagMarker: ":"
+​
+kWideMailLayout: 1
+​
+kWidePaneConfig: 1
+​
+l10n: Localization {  }
+​
+launchBrowser: function launchBrowser(url, event)
+​
+length: 6
+​
+loadCalendarComponent: async function loadCalendarComponent()
+​
+loadCalendarManager: function loadCalendarManager()
+​
+loadCloudProviders: function loadCloudProviders(aItemObjects)
+​
+loadEventsFromFile: async function loadEventsFromFile(fileArg)
+​
+loadExtraTabs: function loadExtraTabs()
+​
+loadInboxForNewAccount: function loadInboxForNewAccount()
+​
+loadOpenPgpMessageSecurityInfo: async function loadOpenPgpMessageSecurityInfo()
+​
+loadReminders: function loadReminders(reminders, reminderList, calendar)
+​
+loadSmimeMessageSecurityInfo: function loadSmimeMessageSecurityInfo()
+​
+loadStartFolder: async function loadStartFolder(initialUri)
+​
+loadStartMsgHdr: async function loadStartMsgHdr(aStartMsgHdr)
+​
+loadStartPage: function loadStartPage(aForce)
+​
+localStorage: 
+​
+location: Location chrome://messenger/content/messenger.xhtml
+​
+locationbar: BarProp { visible: true }
+​
+logException: function logException(aException, aRethrow, aMsg)
+​
+ltn: Object { invitation: {…} }
+​
+ltnGetMailIdentitySelection: function ltnGetMailIdentitySelection()
+​
+ltnImipBar: Object { actionFunc: null, itipItem: null, foundItems: null, … }
+​
+ltnInitMailIdentitiesRow: function ltnInitMailIdentitiesRow()
+​
+ltnNotifyOnIdentitySelection: function ltnNotifyOnIdentitySelection()
+​
+ltnSaveMailIdentitySelection: function ltnSaveMailIdentitySelection()
+​
+mailContextOnContextMenu: function mailContextOnContextMenu(event)
+​
+mailContextOnPopupHiding: function mailContextOnPopupHiding(aEvent)
+​
+mailTabType: Object { name: "mail", panelId: "mailContent", modes: {…}, … }
+​
+mailtolength: 7
+​
+makeFilePicker: function makeFilePicker()
+​
+makeFileURI: function makeFileURI(aFile)
+​
+makeURI: function makeURI(aURL, aOriginCharset, aBaseURI)
+​
+makeWebBrowserPersist: function makeWebBrowserPersist()
+​
+matchCustomReminderToMenuitem: function matchCustomReminderToMenuitem(reminder, reminderList, calendar)
+​
+matchMedia: function matchMedia()
+​
+maximize: function maximize()
+​
+menuListIndexOf: function menuListIndexOf(menuList, value)
+​
+menuListSelectItem: function menuListSelectItem(menuListId, value)
+​
+menu_new_init: function menu_new_init()
+​
+menubar: BarProp { visible: true }
+​
+messageFlavorDataProvider: function messageFlavorDataProvider()
+​
+messageHeaderSink: Object { QueryInterface: MozQueryInterface, onStartHeaders: onStartHeaders(), onEndHeaders: onEndHeaders(), … }
+​
+messageManager: ChromeMessageBroadcaster { childCount: 1 }
+​
+messagePaneOnResize: function messagePaneOnResize(aEvent)
+​
+messenger: XPCWrappedNative_NoHelper { QueryInterface: QueryInterface(), setDisplayCharset: setDisplayCharset(), transactionManager: Getter, … }
+​
+migrateCalendarUI: function migrateCalendarUI()
+​
+migrateGlobalQuotingPrefs: function migrateGlobalQuotingPrefs(allIdentities)
+​
+migrateMailnews: function migrateMailnews()
+​
+minimize: function minimize()
+​
+minimonthPick: function minimonthPick(aNewDate)
+​
+modifyEventWithDialog: function modifyEventWithDialog(aItem, job, aPromptOccurrence, initialDate, aCounterProposal)
+​
+modifyTaskFromContext: function modifyTaskFromContext(aEvent, initialDate)
+​
+moveBy: function moveBy()
+​
+moveEventToolbox: function moveEventToolbox(aDestination)
+​
+moveTo: function moveTo()
+​
+moveToWorkspace: function moveToWorkspace()
+​
+mozInnerScreenX: 60
+​
+mozInnerScreenY: 39.20000076293945
+​
+mozRTCIceCandidate: function ()
+​
+mozRTCPeerConnection: function ()
+​
+mozRTCSessionDescription: function ()
+​
+mozScrollSnap: function mozScrollSnap()
+​
+msgDBCacheManager: Object { _initialized: true, _msgDBCacheTimer: null, _msgDBCacheTimerIntervalMS: 60000, … }
+​
+msgHdrViewSMIMEOnLoad: function msgHdrViewSMIMEOnLoad(event)
+​
+msgHdrViewSMIMEOnMessagePaneHide: function msgHdrViewSMIMEOnMessagePaneHide()
+​
+msgHdrViewSMIMEOnMessagePaneUnhide: function msgHdrViewSMIMEOnMessagePaneUnhide()
+​
+msgHdrViewSMIMEOnUnload: function msgHdrViewSMIMEOnUnload(event)
+​
+msgNewMailAccount: function msgNewMailAccount(msgWindow, okCallback, extraData)
+​
+msgOpenAccountWizard: function msgOpenAccountWizard(wizardCallback, type)
+​
+msgWindow: XPCWrappedNative_NoHelper { QueryInterface: QueryInterface(), statusFeedback: Getter & Setter, windowCommands: Getter & Setter, … }
+​
+myl10n: Localization {  }
+​
+name: ""
+​
+navDebug: function navDebug(str)
+​
+navigator: Navigator { doNotTrack: "1", maxTouchPoints: 0, oscpu: "Windows NT 10.0; Win64; x64", … }
+​
+neckoURLForMessageURI: function neckoURLForMessageURI(aMessageURI)
+​
+netscape: Object { … }
+​
+notificationCallbacks: Object { getInterface: getInterface(iid, instance) }
+​
+notifyDefaultButtonLoaded: function notifyDefaultButtonLoaded()
+​
+nsBrowserAccess: function nsBrowserAccess()
+​
+nsContextMenu: function nsContextMenu(aXulMenu, aIsShift)
+​
+nsDummyMsgHeader: function nsDummyMsgHeader()
+​
+nsFlavorDataProvider: function nsFlavorDataProvider()
+​
+nsIAbCard: nsJSIID { GENERATE_DISPLAY_NAME: 0, GENERATE_LAST_FIRST_ORDER: 1, GENERATE_FIRST_LAST_ORDER: 2, … }
+​
+nsIAbDirectory: nsJSIID { name: "nsIAbDirectory", number: "{72dc868b-db5b-4daa-b6c6-071be4a05d02}" }
+​
+nsIAbListener: nsJSIID { itemAdded: 1, directoryItemRemoved: 2, directoryRemoved: 4, … }
+​
+nsMsgKey_None: 4294967295
+​
+nsMsgStatusFeedback: function nsMsgStatusFeedback()
+​
+nsMsgViewIndex_None: 4294967295
+​
+nsMsgWindowCommands: function nsMsgWindowCommands()
+​
+observeViewDaySelect: function observeViewDaySelect(event)
+​
+onCancel: function onCancel(aIframeId)
+​
+onClickEmailPresence: function onClickEmailPresence(event, emailAddressNode)
+​
+onClickEmailStar: function onClickEmailStar(event, emailAddressNode)
+​
+onCommandCustomize: function onCommandCustomize()
+​
+onCommandDeleteItem: function onCommandDeleteItem()
+​
+onCommandSave: function onCommandSave(aIsClosing)
+​
+onCommandViewToolbar: function onCommandViewToolbar(aToolbarId, aMenuItemId)
+​
+onCopyOrDragStart: function onCopyOrDragStart(e)
+​
+onHideAttachmentItemContextMenu: function onHideAttachmentItemContextMenu()
+​
+onLoadLightningItemPanel: function onLoadLightningItemPanel(aIframeId, aUrl)
+​
+onMouseOverItem: function onMouseOverItem(occurrenceBoxMouseEvent)
+​
+onRemoteContentOptionsShowing: function onRemoteContentOptionsShowing(aEvent)
+​
+onSMIMEBeforeShowHeaderPane: function onSMIMEBeforeShowHeaderPane()
+​
+onSMIMEEndHeaders: function onSMIMEEndHeaders()
+​
+onSMIMEStartHeaders: function onSMIMEStartHeaders()
+​
+onShowAttachmentItemContextMenu: function onShowAttachmentItemContextMenu()
+​
+onShowAttachmentToolbarContextMenu: function onShowAttachmentToolbarContextMenu()
+​
+onShowOtherActionsPopup: function onShowOtherActionsPopup()
+​
+onShowSaveAttachmentMenuMultiple: function onShowSaveAttachmentMenuMultiple()
+​
+onShowSaveAttachmentMenuSingle: function onShowSaveAttachmentMenuSingle()
+​
+onSmartCardChange: function onSmartCardChange()
+​
+onTitlebarMaxClick: function onTitlebarMaxClick()
+​
+onUnloadLightningItemPanel: function onUnloadLightningItemPanel()
+​
+onViewToolbarsPopupShowing: function onViewToolbarsPopupShowing(event, toolboxIds, insertPoint, elementName, classes)
+​
+onabort: null
+​
+onabsolutedeviceorientation: null
+​
+onafterprint: null
+​
+onanimationcancel: null
+​
+onanimationend: null
+​
+onanimationiteration: null
+​
+onanimationstart: null
+​
+onauxclick: null
+​
+onbeforeprint: null
+​
+onbeforeunload: null
+​
+onblur: null
+​
+oncanplay: null
+​
+oncanplaythrough: null
+​
+onchange: null
+​
+onclick: null
+​
+onclose: null
+​
+oncontextmenu: null
+​
+oncuechange: null
+​
+ondblclick: null
+​
+ondevicelight: null
+​
+ondevicemotion: null
+​
+ondeviceorientation: null
+​
+ondeviceproximity: null
+​
+ondrag: null
+​
+ondragend: null
+​
+ondragenter: null
+​
+ondragexit: null
+​
+ondragleave: null
+​
+ondragover: null
+​
+ondragstart: null
+​
+ondrop: null
+​
+ondurationchange: null
+​
+onemptied: null
+​
+onended: null
+​
+onerror: null
+​
+onfocus: null
+​
+onformdata: null
+​
+ongotpointercapture: null
+​
+onhashchange: null
+​
+oninput: null
+​
+oninvalid: null
+​
+onkeydown: null
+​
+onkeypress: null
+​
+onkeyup: null
+​
+onlanguagechange: null
+​
+onload: function onload(event)
+​
+onloadeddata: null
+​
+onloadedmetadata: null
+​
+onloadend: null
+​
+onloadstart: null
+​
+onlostpointercapture: null
+​
+onmessage: null
+​
+onmessageerror: null
+​
+onmousedown: null
+​
+onmouseenter: null
+​
+onmouseleave: null
+​
+onmousemove: null
+​
+onmouseout: null
+​
+onmouseover: null
+​
+onmouseup: null
+​
+onmozfullscreenchange: null
+​
+onmozfullscreenerror: null
+​
+onoffline: null
+​
+ononline: null
+​
+onpagehide: null
+​
+onpageshow: null
+​
+onpause: null
+​
+onplay: null
+​
+onplaying: null
+​
+onpointercancel: null
+​
+onpointerdown: null
+​
+onpointerenter: null
+​
+onpointerleave: null
+​
+onpointermove: null
+​
+onpointerout: null
+​
+onpointerover: null
+​
+onpointerup: null
+​
+onpopstate: null
+​
+onprogress: null
+​
+onratechange: null
+​
+onrejectionhandled: null
+​
+onreset: null
+​
+onresize: function onresize(event)
+​
+onscroll: null
+​
+onseeked: null
+​
+onseeking: null
+​
+onselect: null
+​
+onselectstart: null
+​
+onshow: null
+​
+onstalled: null
+​
+onstorage: null
+​
+onsubmit: null
+​
+onsuspend: null
+​
+ontimeupdate: null
+​
+ontoggle: null
+​
+ontransitioncancel: null
+​
+ontransitionend: null
+​
+ontransitionrun: null
+​
+ontransitionstart: null
+​
+onunhandledrejection: null
+​
+onunload: function onunload(event)
+​
+onuserproximity: null
+​
+onvolumechange: null
+​
+onvrdisplayactivate: null
+​
+onvrdisplayconnect: null
+​
+onvrdisplaydeactivate: null
+​
+onvrdisplaydisconnect: null
+​
+onvrdisplaypresentchange: null
+​
+onwaiting: null
+​
+onwebkitanimationend: null
+​
+onwebkitanimationiteration: null
+​
+onwebkitanimationstart: null
+​
+onwebkittransitionend: null
+​
+onwheel: null
+​
+open: function open()
+​
+openAboutDebugging: function openAboutDebugging(hash)
+​
+openAboutDialog: function openAboutDialog()
+​
+openAboutSupport: function openAboutSupport()
+​
+openActivityMgr: function openActivityMgr()
+​
+openAddonsMgr: function openAddonsMgr(aView)
+​
+openAttachmentFromItemSummary: function openAttachmentFromItemSummary(aAttachmentId, item)
+​
+openCalendarSubscriptionsDialog: function openCalendarSubscriptionsDialog()
+​
+openChatContextMenu: function openChatContextMenu(popup)
+​
+openComposeWindowForRSSArticle: function openComposeWindowForRSSArticle(aMsgComposeWindow, aMsgHdr, aMessageUri, aType, aFormat, aIdentity, aMsgWindow)
+​
+openContentTab: function openContentTab(url, where, handlerRegExp)
+​
+openDialog: function openDialog()
+​
+openDictionaryList: function openDictionaryList(where)
+​
+openEventDialog: function openEventDialog(calendarItem, calendar, mode, callback, job, initialDate, counterProposal)
+​
+openFormattedURL: function openFormattedURL(aPrefName)
+​
+openGlodaSearchTab: function openGlodaSearchTab()
+​
+openIMAccountMgr: function openIMAccountMgr()
+​
+openIMAccountWizard: function openIMAccountWizard()
+​
+openInvitationsDialog: function openInvitationsDialog()
+​
+openKeyManager: function openKeyManager()
+​
+openLinkExternally: function openLinkExternally(url)
+​
+openLinkIn: function openLinkIn(aURL, aWhere, aOpenParams)
+​
+openLinkText: function openLinkText(event, what)
+​
+openLocalCalendar: function openLocalCalendar()
+​
+openNewCardDialog: function openNewCardDialog()
+​
+openNewEvent: function openNewEvent()
+​
+openNewMessage: function openNewMessage()
+​
+openNewTask: function openNewTask()
+​
+openOptionsDialog: function openOptionsDialog(aPaneID, aScrollPaneTo, aOtherArgs)
+​
+openPreferencesTab: function openPreferencesTab(paneID, scrollPaneTo, otherArgs)
+​
+openPrivacyPolicy: function openPrivacyPolicy(where)
+​
+openSavedFilesWnd: function openSavedFilesWnd()
+​
+openSubscriptionsDialog: function openSubscriptionsDialog(aFolder)
+​
+openSupportURL: function openSupportURL()
+​
+openTab: function openTab(tabType, tabParams, where)
+​
+openTrustedLinkIn: function openTrustedLinkIn(url, where, aParams)
+​
+openUILink: function openUILink(url, event)
+​
+openUILinkIn: function openUILinkIn(url, where, options)
+​
+openURL: function openURL(aURL)
+​
+openWebLinkIn: function openWebLinkIn(url, where, params)
+​
+openWebSearch: function openWebSearch(query, engine)
+​
+opener: ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+origin: "null"
+​
+outerHeight: 816
+​
+outerWidth: 932
+​
+overlayOnLoad: function overlayOnLoad()
+​
+overlayRepositionDialog: function overlayRepositionDialog()
+​
+overlayRestoreDefaultSet: function overlayRestoreDefaultSet()
+​
+overlayUpdateToolbarMode: function overlayUpdateToolbarMode(aModeValue)
+​
+ownerGlobal: ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+pageXOffset: 0
+​
+pageYOffset: 0
+​
+parent: ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+parseFloat: function parseFloat()
+​
+parseInt: function parseInt()
+​
+pasteFromClipboard: function pasteFromClipboard()
+​
+performActionsOnJunkMsgs: function performActionsOnJunkMsgs(aFolder, aJunkMsgHdrs, aGoodMsgHdrs)
+​
+performance: Performance { timeOrigin: 1606137366427.3604, timing: PerformanceTiming, navigation: PerformanceNavigation, … }
+​
+personalbar: BarProp { visible: true }
+​
+pickFileToImport: function pickFileToImport()
+​
+populateHistoryMenu: function populateHistoryMenu(menuPopup, isBackMenu)
+​
+postMessage: function postMessage()
+​
+postponeTask: function postponeTask(aDuration)
+​
+preferencesTabType: Object { name: "preferencesTab", perTabPanel: "vbox", lastBrowserId: 0, … }
+​
+prepareCalendarUnifinder: function prepareCalendarUnifinder()
+​
+print: function print()
+​
+processFolderForJunk: function processFolderForJunk(aAll)
+​
+promiseDocumentFlushed: function promiseDocumentFlushed()
+​
+promiseTargetFile: function promiseTargetFile(aFpP, aSkipPrompt, aRelatedURI)
+​
+prompt: function prompt()
+​
+promptDeleteCalendar: function promptDeleteCalendar(aCalendar)
+​
+promptOccurrenceModification: function promptOccurrenceModification(aItem, aNeedsFuture, aAction)
+​
+publishCalendarData: function publishCalendarData()
+​
+publishCalendarDataDialogResponse: function publishCalendarDataDialogResponse(CalendarPublishObject, aProgressDialog)
+​
+publishEntireCalendar: function publishEntireCalendar(aCalendar)
+​
+publishEntireCalendarDialogResponse: function publishEntireCalendarDialogResponse(CalendarPublishObject, aProgressDialog)
+​
+publishItemArray: function publishItemArray(aItemArray, aPath, aProgressDialog)
+​
+putItemsIntoCal: async function putItemsIntoCal(destCal, aItems, aFilePath)
+​
+queueMicrotask: function queueMicrotask()
+​
+realFrameElement: null
+​
+rearrangeAttendees: function rearrangeAttendees(attendees, parent, attendeesInRow, maxLabelWidth)
+​
+receiveMessage: function receiveMessage(aEvent)
+​
+recurrenceRule2String: function recurrenceRule2String(recurrenceInfo, startDate, endDate, allDay)
+​
+redo: function redo()
+​
+refreshEventTree: function refreshEventTree()
+​
+refreshEventsAndTasksMenu: function refreshEventsAndTasksMenu(event)
+​
+releaseEvents: function releaseEvents()
+​
+removeCalendarCommandController: function removeCalendarCommandController()
+​
+removeChildren: function removeChildren(aElement)
+​
+removeDisableAndCollapseOnReadonly: function removeDisableAndCollapseOnReadonly()
+​
+reportAccountTypes: function reportAccountTypes()
+​
+reportAddressBookTypes: function reportAddressBookTypes()
+​
+reportCalendars: function reportCalendars()
+​
+requestAnimationFrame: function requestAnimationFrame()
+​
+requestIdleCallback: function requestIdleCallback()
+​
+rescheduleInvitationsUpdate: function rescheduleInvitationsUpdate(firstDelay)
+​
+resizeBy: function resizeBy()
+​
+resizeTo: function resizeTo()
+​
+restore: function restore()
+​
+safeModeRestart: function safeModeRestart()
+​
+saveAsUrlListener: function saveAsUrlListener(aUri, aIdentity)
+​
+saveBrowser: function saveBrowser(aBrowser, aSkipPrompt, aBrowsingContext)
+​
+saveEventsToFile: function saveEventsToFile(calendarEventArray, aDefaultFileName)
+​
+saveKeyToFile: function saveKeyToFile(content, fileName)
+​
+saveLinkAttachmentsToFile: async function saveLinkAttachmentsToFile(aAttachmentInfoArray)
+​
+saveReminder: function saveReminder(item, calendar, reminderList)
+​
+saveURL: function saveURL(aURL, aFileName, aFilePickerTitleKey, aShouldBypassCache, aSkipPrompt, aReferrerInfo, aSourceDocument, aIsContentWindowPrivate, aPrincipal)
+​
+scheduleInvitationsUpdate: function scheduleInvitationsUpdate(firstDelay)
+​
+scheduleMidnightUpdate: function scheduleMidnightUpdate(refreshCallback)
+​
+scheduleNextCurrentEventUpdate: function scheduleNextCurrentEventUpdate(aRefreshCallback, aMsUntil)
+​
+screen: Screen { availWidth: 1536, availHeight: 864, width: 1536, … }
+​
+screenLeft: 54
+​
+screenTop: 39
+​
+screenX: 54
+​
+screenY: 39
+​
+scroll: function scroll()
+​
+scrollBy: function scrollBy()
+​
+scrollByLines: function scrollByLines()
+​
+scrollByPages: function scrollByPages()
+​
+scrollMaxX: 0
+​
+scrollMaxY: 0
+​
+scrollMinX: 0
+​
+scrollMinY: 0
+​
+scrollTo: function scrollTo()
+​
+scrollX: 0
+​
+scrollY: 0
+​
+scrollbars: BarProp { visible: true }
+​
+selectAllEvents: function selectAllEvents()
+​
+self: ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+sendMailToOrganizer: function sendMailToOrganizer(item)
+​
+sendMessage: function sendMessage(aMessage, aIframeId)
+​
+sessionStorage: 
+​
+setAttributeOnChildrenOrTheirCommands: function setAttributeOnChildrenOrTheirCommands(aAttribute, aValue, aElement)
+​
+setAttributeToChildren: function setAttributeToChildren(aParent, aAttribute, aValue, aFilterAttribute, aFilterValue)
+​
+setBooleanAttribute: function setBooleanAttribute(aXulElement, aAttribute, aValue)
+​
+setContextPartstat: function setContextPartstat(aTarget, aItems)
+​
+setCurrentEvent: function setCurrentEvent()
+​
+setCursor: function setCursor()
+​
+setDefaultItemValues: function setDefaultItemValues(aItem, aCalendar, aStartDate, aEndDate, aInitialDate, aForceAllday)
+​
+setDialogId: function setDialogId(aDialog, aNewId)
+​
+setElementValue: function setElementValue(aElement, aNewValue, aPropertyName)
+​
+setInterval: function setInterval()
+​
+setLocaleDefaultPreferences: function setLocaleDefaultPreferences()
+​
+setMsgHdrPropertyAndReload: function setMsgHdrPropertyAndReload(aProperty, aValue)
+​
+setResizable: function setResizable()
+​
+setSmartFolderName: function setSmartFolderName(aFolder, aName)
+​
+setSortByMenuItemCheckState: function setSortByMenuItemCheckState(id, value)
+​
+setTimeout: function setTimeout()
+​
+setUpCalendarAppMenuButtons: function setUpCalendarAppMenuButtons()
+​
+setUpCalendarAppMenuItems: function setUpCalendarAppMenuItems()
+​
+setUpInvitationsManager: function setUpInvitationsManager()
+​
+setupAttendanceMenu: function setupAttendanceMenu(aMenu, aItems)
+​
+setupAttendees: function setupAttendees(attendees, container, attendeesInRow, maxLabelWidth)
+​
+setupContextItemType: function setupContextItemType(aEvent, aItems)
+​
+setupDataTransfer: function setupDataTransfer(event, attachments)
+​
+setupDeleteMenuitem: function setupDeleteMenuitem(aDeleteId, aCalendar)
+​
+setupEmailAddressPopup: function setupEmailAddressPopup(emailAddressNode)
+​
+setupNewsgroupPopup: function setupNewsgroupPopup(newsgroupNode)
+​
+shouldReportForServiceWorkerScope: function shouldReportForServiceWorkerScope()
+​
+showAllCalendars: function showAllCalendars()
+​
+showChatTab: function showChatTab()
+​
+showCommandInSpecialFolder: function showCommandInSpecialFolder(aCommandIds, aFolderFlag)
+​
+showHeaderView: function showHeaderView(aHeaderTable)
+​
+showImapSignatureUnknown: function showImapSignatureUnknown()
+​
+showMailIntegrationDialog: function showMailIntegrationDialog()
+​
+showMessageReadSecurityInfo: function showMessageReadSecurityInfo()
+​
+showMessageSecurityPanel: function showMessageSecurityPanel()
+​
+showOnlyCalendar: function showOnlyCalendar(aCalendar)
+​
+showToolTip: function showToolTip(aToolTip, aItem)
+​
+sizeToContent: function sizeToContent()
+​
+smimeHeaderSink: Object { maxWantedNesting: maxWantedNesting(), getSelectedMessageURI: getSelectedMessageURI(), signedStatus: signedStatus(aNestingLevel, aSignatureStatus, aSignerCert, aMsgNeckoURL), … }
+​
+smimeReadOnLoad: function smimeReadOnLoad()
+​
+smimeReadOnUnload: function smimeReadOnUnload()
+​
+sortCalendarArray: function sortCalendarArray(calendars)
+​
+sortFolderItems: function sortFolderItems(aFtvItems)
+​
+specialTabs: Object { _kAboutRightsVersion: 1, _protocolSvc: Getter, REQUEST_TIMEOUT: 20000, … }
+​
+startBatchTransaction: function startBatchTransaction()
+​
+status: ""
+​
+statusFeedback: XPCWrappedNative_NoHelper { setWrappedStatusFeedback: setWrappedStatusFeedback(), QueryInterface: QueryInterface(), showStatusString: showStatusString(), … }
+​
+statusMessageCountsMonitor: Object { onTabTitleChanged: onTabTitleChanged(), onTabSwitched: onTabSwitched(aTab, aOldTab) }
+​
+statusSelector: Object { observe: observe(aSubject, aTopic, aMsg), displayUserIcon: displayUserIcon(), displayUserDisplayName: displayUserDisplayName(), … }
+​
+statusUtils: Object { toAttribute: toAttribute(aStatusType), _labels: {…}, toLabel: toLabel(aStatusType, aStatusText), … }
+​
+statusbar: BarProp { visible: true }
+​
+stop: function stop()
+​
+suggestUniqueFileName: function suggestUniqueFileName(aIdentifier, aType, aExistingNames)
+​
+summarizeFolder: function summarizeFolder(aMessageDisplay)
+​
+summarizeMultipleSelection: function summarizeMultipleSelection(aSelectedMessages, aMessageDisplay)
+​
+summarizeSelection: function summarizeSelection(aMessageDisplay)
+​
+summarizeThread: function summarizeThread(aSelectedMessages, aMessageDisplay)
+​
+switchCalendarView: function switchCalendarView(aType, aShow)
+​
+switchToTabHavingURI: function switchToTabHavingURI(aURI, aOpenNew, aOpenParams)
+​
+switchToView: function switchToView(viewType)
+​
+syncGridColumnWidths: function syncGridColumnWidths()
+​
+tabProgressListener: function tabProgressListener(aTab, aStartsBlank)
+​
+taskDetailsView: Object { onSelect: onSelect(event), loadCategories: loadCategories(), saveCategories: saveCategories(event), … }
+​
+taskEdit: Object { mObservedCalendar: XPCWrappedNative_NoHelper, observedCalendar: Getter & Setter, setupTaskField: setupTaskField(aTarget, aDisable, aValue), … }
+​
+taskViewCopyLink: function taskViewCopyLink(linkNode)
+​
+taskViewObserveDisplayDeckChange: function taskViewObserveDisplayDeckChange(event)
+​
+taskViewOnLoad: function taskViewOnLoad()
+​
+taskViewUpdate: function taskViewUpdate(filter)
+​
+tasksToEvents: function tasksToEvents(aEvent)
+​
+tasksToMail: function tasksToMail(aEvent)
+​
+tbSyncMessenger: Object { onInject: onInject(window), onRemove: onRemove(window) }
+​
+tearDownInvitationsManager: function tearDownInvitationsManager()
+​
+timeIndicator: Object { timer: null, start: start(interval, thisArg), cancel: cancel(), … }
+​
+timezoneObserver: Object { observe: observe() }
+​
+toAddressBook: function toAddressBook()
+​
+toImport: function toImport()
+​
+toJavaScriptConsole: function toJavaScriptConsole()
+​
+toMessengerWindow: function toMessengerWindow()
+​
+toOpenWindowByType: function toOpenWindowByType(inType, uri)
+​
+toSanitize: function toSanitize()
+​
+toXPCOMArray: function toXPCOMArray(aArray, aInterface)
+​
+toggleAttachmentList: function toggleAttachmentList(expanded, updateFocus)
+​
+toggleCalendarVisible: function toggleCalendarVisible(aCalendar)
+​
+toggleCompleted: function toggleCompleted(aEvent)
+​
+toggleLink: function toggleLink()
+​
+toggleOrientation: function toggleOrientation()
+​
+togglePaneSplitter: function togglePaneSplitter(splitterId)
+​
+toggleShowCompletedInView: function toggleShowCompletedInView()
+​
+toggleTasksInView: function toggleTasksInView()
+​
+toggleTimezoneLinks: function toggleTimezoneLinks()
+​
+toggleUnifinder: function toggleUnifinder()
+​
+toggleWorkdaysOnly: function toggleWorkdaysOnly()
+​
+toolbar: BarProp { visible: true }
+​
+top: ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+u2f: U2F { register: register(), sign: sign() }
+​
+uidHelper: Object { looksLikeEmail: looksLikeEmail(str), getPartsFromUidStr: getPartsFromUidStr(uid, resultObj) }
+​
+undefined: undefined
+​
+undo: function undo()
+​
+unescape: function unescape()
+​
+uneval: function uneval()
+​
+unifinderDaySelect: function unifinderDaySelect()
+​
+unifinderDoubleClick: function unifinderDoubleClick(event)
+​
+unifinderItemSelect: function unifinderItemSelect(aEvent)
+​
+unifinderKeyPress: function unifinderKeyPress(aEvent)
+​
+unifinderObserver: Object { QueryInterface: makeQI(iid), onStartBatch: onStartBatch(), onEndBatch: onEndBatch(), … }
+​
+unifinderSelect: function unifinderSelect(event)
+​
+unifinderTreeView: Object { ready: true, doingSelection: false, sortDirection: "ascending", … }
+​
+uninstallLightningAddon: async function uninstallLightningAddon()
+​
+uniqueFile: function uniqueFile(aLocalFile)
+​
+unitPluralForm: function unitPluralForm(aLength, aUnit, aIncludeLength)
+​
+unloadCalendarComponent: function unloadCalendarComponent()
+​
+unloadCalendarManager: function unloadCalendarManager()
+​
+updateAttachment: function updateAttachment(aArg)
+​
+updateAttachmentsDisplay: function updateAttachmentsDisplay(attachmentInfo, isFetching)
+​
+updateAttendeesCommand: function updateAttendeesCommand(aArg)
+​
+updateCheckedStateForIgnoreAndWatchThreadCmds: function updateCheckedStateForIgnoreAndWatchThreadCmds()
+​
+updateCommands: function updateCommands()
+​
+updateEmailAddressNode: function updateEmailAddressNode(emailAddressNode, address)
+​
+updateExpandedView: function updateExpandedView()
+​
+updateHeaderValue: function updateHeaderValue(aHeaderEntry, aHeaderValue)
+​
+updateItemTabState: function updateItemTabState(aArg)
+​
+updateLink: function updateLink(itemUrlString, linkRow, urlLink)
+​
+updateMailPaneUI: function updateMailPaneUI()
+​
+updateMarkCompletedMenuItem: function updateMarkCompletedMenuItem(aArg)
+​
+updateMenuLabelsPlural: function updateMenuLabelsPlural(aLengthFieldId, aMenuId)
+​
+updatePriority: function updatePriority(aArg)
+​
+updatePrivacy: function updatePrivacy(aArg)
+​
+updateReminderDetails: function updateReminderDetails(reminderDetails, reminderList, calendar)
+​
+updateSaveAllAttachmentsButton: function updateSaveAllAttachmentsButton()
+​
+updateSaveControls: function updateSaveControls(aSendNotSave)
+​
+updateShowTimeAs: function updateShowTimeAs(aArg)
+​
+updateStatus: function updateStatus(aArg)
+​
+updateTimezoneCommand: function updateTimezoneCommand(aArg)
+​
+updateTitle: function updateTitle(prefix, title)
+​
+updateTodayPaneButton: function updateTodayPaneButton()
+​
+updateTodayPaneButtonDate: function updateTodayPaneButtonDate()
+​
+updateUndoRedoMenu: function updateUndoRedoMenu()
+​
+updateUnitLabelPlural: function updateUnitLabelPlural(aLengthFieldId, aLabelId, aUnit)
+​
+urlSecurityCheck: function urlSecurityCheck(aURL, aPrincipal, aFlags)
+​
+validateFileName: function validateFileName(aFileName)
+​
+verifyAccounts: function verifyAccounts(wizardCallback, needsIdentity, wizardOpen)
+​
+viewEncryptionCert: function viewEncryptionCert()
+​
+viewEncryptionKey: function viewEncryptionKey()
+​
+viewSignatureCert: function viewSignatureCert()
+​
+viewSignatureKey: async function viewSignatureKey()
+​
+view_init: function view_init()
+​
+webkitURL: function ()
+​
+window: ChromeWindow chrome://messenger/content/messenger.xhtml
+​
+windowCloseListener: function windowCloseListener(aEvent)
+​
+windowGlobalChild: WindowGlobalChild { isClosed: false, isInProcess: true, isCurrentGlobal: true, … }
+​
+windowRoot: WindowRoot { ownerGlobal: ChromeWindow chrome://messenger/content/messenger.xhtml }
+​
+windowState: 3
+​
+windowUtils: XPCWrappedNative_NoHelper { outerWindowID: , getBoundsWithoutFlushing: getBoundsWithoutFlushing(), currentInnerWindowID: , … }
+​
+Symbol(Symbol.toStringTag): "Window"
+​
+<get BrowserConsoleManager()>: function get()
+​
+<get InstallTrigger()>: function InstallTrigger()
+​
+<set InstallTrigger()>: function InstallTrigger()
+​
+<get PageMenuParent()>: function get()
+​
+<get PopupNotifications()>: function get()
+​
+<get applicationCache()>: function applicationCache()
+​
+<get browserDOMWindow()>: function browserDOMWindow()
+​
+<set browserDOMWindow()>: function browserDOMWindow()
+​
+<get caches()>: function caches()
+​
+<get closed()>: function closed()
+​
+<get content()>: function content()
+​
+<set content()>: function content()
+​
+<get controllers()>: function controllers()
+​
+<set controllers()>: function controllers()
+​
+<get crossOriginIsolated()>: function crossOriginIsolated()
+​
+<get crypto()>: function crypto()
+​
+<get customElements()>: function customElements()
+​
+<get devicePixelRatio()>: function devicePixelRatio()
+​
+<set devicePixelRatio()>: function devicePixelRatio()
+​
+<get docShell()>: function docShell()
+​
+<get document()>: function document()
+​
+<get event()>: function event()
+​
+<set event()>: function event()
+​
+<get frameElement()>: function frameElement()
+​
+<get frames()>: function frames()
+​
+<set frames()>: function frames()
+​
+<get fullScreen()>: function fullScreen()
+​
+<set fullScreen()>: function fullScreen()
+​
+<get gBundle()>: function get()
+​
+<get gViewSourceUtils()>: function get()
+​
+<get history()>: function history()
+​
+<get indexedDB()>: function indexedDB()
+​
+<get innerHeight()>: function innerHeight()
+​
+<set innerHeight()>: function innerHeight()
+​
+<get innerWidth()>: function innerWidth()
+​
+<set innerWidth()>: function innerWidth()
+​
+<get intlUtils()>: function intlUtils()
+​
+<get isChromeWindow()>: function isChromeWindow()
+​
+<get isFullyOccluded()>: function isFullyOccluded()
+​
+<get isSecureContext()>: function isSecureContext()
+​
+<get length()>: function length()
+​
+<set length()>: function length()
+​
+<get localStorage()>: function localStorage()
+​
+<get location()>: function location()
+​
+<set location()>: function location()
+​
+<get locationbar()>: function locationbar()
+​
+<set locationbar()>: function locationbar()
+​
+<get menubar()>: function menubar()
+​
+<set menubar()>: function menubar()
+​
+<get messageManager()>: function messageManager()
+​
+<get mozInnerScreenX()>: function mozInnerScreenX()
+​
+<get mozInnerScreenY()>: function mozInnerScreenY()
+​
+<get name()>: function name()
+​
+<set name()>: function name()
+​
+<get navigator()>: function navigator()
+​
+<get onabort()>: function onabort()
+​
+<set onabort()>: function onabort()
+​
+<get onabsolutedeviceorientation()>: function onabsolutedeviceorientation()
+​
+<set onabsolutedeviceorientation()>: function onabsolutedeviceorientation()
+​
+<get onafterprint()>: function onafterprint()
+​
+<set onafterprint()>: function onafterprint()
+​
+<get onanimationcancel()>: function onanimationcancel()
+​
+<set onanimationcancel()>: function onanimationcancel()
+​
+<get onanimationend()>: function onanimationend()
+​
+<set onanimationend()>: function onanimationend()
+​
+<get onanimationiteration()>: function onanimationiteration()
+​
+<set onanimationiteration()>: function onanimationiteration()
+​
+<get onanimationstart()>: function onanimationstart()
+​
+<set onanimationstart()>: function onanimationstart()
+​
+<get onauxclick()>: function onauxclick()
+​
+<set onauxclick()>: function onauxclick()
+​
+<get onbeforeprint()>: function onbeforeprint()
+​
+<set onbeforeprint()>: function onbeforeprint()
+​
+<get onbeforeunload()>: function onbeforeunload()
+​
+<set onbeforeunload()>: function onbeforeunload()
+​
+<get onblur()>: function onblur()
+​
+<set onblur()>: function onblur()
+​
+<get oncanplay()>: function oncanplay()
+​
+<set oncanplay()>: function oncanplay()
+​
+<get oncanplaythrough()>: function oncanplaythrough()
+​
+<set oncanplaythrough()>: function oncanplaythrough()
+​
+<get onchange()>: function onchange()
+​
+<set onchange()>: function onchange()
+​
+<get onclick()>: function onclick()
+​
+<set onclick()>: function onclick()
+​
+<get onclose()>: function onclose()
+​
+<set onclose()>: function onclose()
+​
+<get oncontextmenu()>: function oncontextmenu()
+​
+<set oncontextmenu()>: function oncontextmenu()
+​
+<get oncuechange()>: function oncuechange()
+​
+<set oncuechange()>: function oncuechange()
+​
+<get ondblclick()>: function ondblclick()
+​
+<set ondblclick()>: function ondblclick()
+​
+<get ondevicelight()>: function ondevicelight()
+​
+<set ondevicelight()>: function ondevicelight()
+​
+<get ondevicemotion()>: function ondevicemotion()
+​
+<set ondevicemotion()>: function ondevicemotion()
+​
+<get ondeviceorientation()>: function ondeviceorientation()
+​
+<set ondeviceorientation()>: function ondeviceorientation()
+​
+<get ondeviceproximity()>: function ondeviceproximity()
+​
+<set ondeviceproximity()>: function ondeviceproximity()
+​
+<get ondrag()>: function ondrag()
+​
+<set ondrag()>: function ondrag()
+​
+<get ondragend()>: function ondragend()
+​
+<set ondragend()>: function ondragend()
+​
+<get ondragenter()>: function ondragenter()
+​
+<set ondragenter()>: function ondragenter()
+​
+<get ondragexit()>: function ondragexit()
+​
+<set ondragexit()>: function ondragexit()
+​
+<get ondragleave()>: function ondragleave()
+​
+<set ondragleave()>: function ondragleave()
+​
+<get ondragover()>: function ondragover()
+​
+<set ondragover()>: function ondragover()
+​
+<get ondragstart()>: function ondragstart()
+​
+<set ondragstart()>: function ondragstart()
+​
+<get ondrop()>: function ondrop()
+​
+<set ondrop()>: function ondrop()
+​
+<get ondurationchange()>: function ondurationchange()
+​
+<set ondurationchange()>: function ondurationchange()
+​
+<get onemptied()>: function onemptied()
+​
+<set onemptied()>: function onemptied()
+​
+<get onended()>: function onended()
+​
+<set onended()>: function onended()
+​
+<get onerror()>: function onerror()
+​
+<set onerror()>: function onerror()
+​
+<get onfocus()>: function onfocus()
+​
+<set onfocus()>: function onfocus()
+​
+<get onformdata()>: function onformdata()
+​
+<set onformdata()>: function onformdata()
+​
+<get ongotpointercapture()>: function ongotpointercapture()
+​
+<set ongotpointercapture()>: function ongotpointercapture()
+​
+<get onhashchange()>: function onhashchange()
+​
+<set onhashchange()>: function onhashchange()
+​
+<get oninput()>: function oninput()
+​
+<set oninput()>: function oninput()
+​
+<get oninvalid()>: function oninvalid()
+​
+<set oninvalid()>: function oninvalid()
+​
+<get onkeydown()>: function onkeydown()
+​
+<set onkeydown()>: function onkeydown()
+​
+<get onkeypress()>: function onkeypress()
+​
+<set onkeypress()>: function onkeypress()
+​
+<get onkeyup()>: function onkeyup()
+​
+<set onkeyup()>: function onkeyup()
+​
+<get onlanguagechange()>: function onlanguagechange()
+​
+<set onlanguagechange()>: function onlanguagechange()
+​
+<get onload()>: function onload()
+​
+<set onload()>: function onload()
+​
+<get onloadeddata()>: function onloadeddata()
+​
+<set onloadeddata()>: function onloadeddata()
+​
+<get onloadedmetadata()>: function onloadedmetadata()
+​
+<set onloadedmetadata()>: function onloadedmetadata()
+​
+<get onloadend()>: function onloadend()
+​
+<set onloadend()>: function onloadend()
+​
+<get onloadstart()>: function onloadstart()
+​
+<set onloadstart()>: function onloadstart()
+​
+<get onlostpointercapture()>: function onlostpointercapture()
+​
+<set onlostpointercapture()>: function onlostpointercapture()
+​
+<get onmessage()>: function onmessage()
+​
+<set onmessage()>: function onmessage()
+​
+<get onmessageerror()>: function onmessageerror()
+​
+<set onmessageerror()>: function onmessageerror()
+​
+<get onmousedown()>: function onmousedown()
+​
+<set onmousedown()>: function onmousedown()
+​
+<get onmouseenter()>: function onmouseenter()
+​
+<set onmouseenter()>: function onmouseenter()
+​
+<get onmouseleave()>: function onmouseleave()
+​
+<set onmouseleave()>: function onmouseleave()
+​
+<get onmousemove()>: function onmousemove()
+​
+<set onmousemove()>: function onmousemove()
+​
+<get onmouseout()>: function onmouseout()
+​
+<set onmouseout()>: function onmouseout()
+​
+<get onmouseover()>: function onmouseover()
+​
+<set onmouseover()>: function onmouseover()
+​
+<get onmouseup()>: function onmouseup()
+​
+<set onmouseup()>: function onmouseup()
+​
+<get onmozfullscreenchange()>: function onmozfullscreenchange()
+​
+<set onmozfullscreenchange()>: function onmozfullscreenchange()
+​
+<get onmozfullscreenerror()>: function onmozfullscreenerror()
+​
+<set onmozfullscreenerror()>: function onmozfullscreenerror()
+​
+<get onoffline()>: function onoffline()
+​
+<set onoffline()>: function onoffline()
+​
+<get ononline()>: function ononline()
+​
+<set ononline()>: function ononline()
+​
+<get onpagehide()>: function onpagehide()
+​
+<set onpagehide()>: function onpagehide()
+​
+<get onpageshow()>: function onpageshow()
+​
+<set onpageshow()>: function onpageshow()
+​
+<get onpause()>: function onpause()
+​
+<set onpause()>: function onpause()
+​
+<get onplay()>: function onplay()
+​
+<set onplay()>: function onplay()
+​
+<get onplaying()>: function onplaying()
+​
+<set onplaying()>: function onplaying()
+​
+<get onpointercancel()>: function onpointercancel()
+​
+<set onpointercancel()>: function onpointercancel()
+​
+<get onpointerdown()>: function onpointerdown()
+​
+<set onpointerdown()>: function onpointerdown()
+​
+<get onpointerenter()>: function onpointerenter()
+​
+<set onpointerenter()>: function onpointerenter()
+​
+<get onpointerleave()>: function onpointerleave()
+​
+<set onpointerleave()>: function onpointerleave()
+​
+<get onpointermove()>: function onpointermove()
+​
+<set onpointermove()>: function onpointermove()
+​
+<get onpointerout()>: function onpointerout()
+​
+<set onpointerout()>: function onpointerout()
+​
+<get onpointerover()>: function onpointerover()
+​
+<set onpointerover()>: function onpointerover()
+​
+<get onpointerup()>: function onpointerup()
+​
+<set onpointerup()>: function onpointerup()
+​
+<get onpopstate()>: function onpopstate()
+​
+<set onpopstate()>: function onpopstate()
+​
+<get onprogress()>: function onprogress()
+​
+<set onprogress()>: function onprogress()
+​
+<get onratechange()>: function onratechange()
+​
+<set onratechange()>: function onratechange()
+​
+<get onrejectionhandled()>: function onrejectionhandled()
+​
+<set onrejectionhandled()>: function onrejectionhandled()
+​
+<get onreset()>: function onreset()
+​
+<set onreset()>: function onreset()
+​
+<get onresize()>: function onresize()
+​
+<set onresize()>: function onresize()
+​
+<get onscroll()>: function onscroll()
+​
+<set onscroll()>: function onscroll()
+​
+<get onseeked()>: function onseeked()
+​
+<set onseeked()>: function onseeked()
+​
+<get onseeking()>: function onseeking()
+​
+<set onseeking()>: function onseeking()
+​
+<get onselect()>: function onselect()
+​
+<set onselect()>: function onselect()
+​
+<get onselectstart()>: function onselectstart()
+​
+<set onselectstart()>: function onselectstart()
+​
+<get onshow()>: function onshow()
+​
+<set onshow()>: function onshow()
+​
+<get onstalled()>: function onstalled()
+​
+<set onstalled()>: function onstalled()
+​
+<get onstorage()>: function onstorage()
+​
+<set onstorage()>: function onstorage()
+​
+<get onsubmit()>: function onsubmit()
+​
+<set onsubmit()>: function onsubmit()
+​
+<get onsuspend()>: function onsuspend()
+​
+<set onsuspend()>: function onsuspend()
+​
+<get ontimeupdate()>: function ontimeupdate()
+​
+<set ontimeupdate()>: function ontimeupdate()
+​
+<get ontoggle()>: function ontoggle()
+​
+<set ontoggle()>: function ontoggle()
+​
+<get ontransitioncancel()>: function ontransitioncancel()
+​
+<set ontransitioncancel()>: function ontransitioncancel()
+​
+<get ontransitionend()>: function ontransitionend()
+​
+<set ontransitionend()>: function ontransitionend()
+​
+<get ontransitionrun()>: function ontransitionrun()
+​
+<set ontransitionrun()>: function ontransitionrun()
+​
+<get ontransitionstart()>: function ontransitionstart()
+​
+<set ontransitionstart()>: function ontransitionstart()
+​
+<get onunhandledrejection()>: function onunhandledrejection()
+​
+<set onunhandledrejection()>: function onunhandledrejection()
+​
+<get onunload()>: function onunload()
+​
+<set onunload()>: function onunload()
+​
+<get onuserproximity()>: function onuserproximity()
+​
+<set onuserproximity()>: function onuserproximity()
+​
+<get onvolumechange()>: function onvolumechange()
+​
+<set onvolumechange()>: function onvolumechange()
+​
+<get onvrdisplayactivate()>: function onvrdisplayactivate()
+​
+<set onvrdisplayactivate()>: function onvrdisplayactivate()
+​
+<get onvrdisplayconnect()>: function onvrdisplayconnect()
+​
+<set onvrdisplayconnect()>: function onvrdisplayconnect()
+​
+<get onvrdisplaydeactivate()>: function onvrdisplaydeactivate()
+​
+<set onvrdisplaydeactivate()>: function onvrdisplaydeactivate()
+​
+<get onvrdisplaydisconnect()>: function onvrdisplaydisconnect()
+​
+<set onvrdisplaydisconnect()>: function onvrdisplaydisconnect()
+​
+<get onvrdisplaypresentchange()>: function onvrdisplaypresentchange()
+​
+<set onvrdisplaypresentchange()>: function onvrdisplaypresentchange()
+​
+<get onwaiting()>: function onwaiting()
+​
+<set onwaiting()>: function onwaiting()
+​
+<get onwebkitanimationend()>: function onwebkitanimationend()
+​
+<set onwebkitanimationend()>: function onwebkitanimationend()
+​
+<get onwebkitanimationiteration()>: function onwebkitanimationiteration()
+​
+<set onwebkitanimationiteration()>: function onwebkitanimationiteration()
+​
+<get onwebkitanimationstart()>: function onwebkitanimationstart()
+​
+<set onwebkitanimationstart()>: function onwebkitanimationstart()
+​
+<get onwebkittransitionend()>: function onwebkittransitionend()
+​
+<set onwebkittransitionend()>: function onwebkittransitionend()
+​
+<get onwheel()>: function onwheel()
+​
+<set onwheel()>: function onwheel()
+​
+<get opener()>: function opener()
+​
+<set opener()>: function opener()
+​
+<get origin()>: function origin()
+​
+<set origin()>: function origin()
+​
+<get outerHeight()>: function outerHeight()
+​
+<set outerHeight()>: function outerHeight()
+​
+<get outerWidth()>: function outerWidth()
+​
+<set outerWidth()>: function outerWidth()
+​
+<get pageXOffset()>: function pageXOffset()
+​
+<set pageXOffset()>: function pageXOffset()
+​
+<get pageYOffset()>: function pageYOffset()
+​
+<set pageYOffset()>: function pageYOffset()
+​
+<get parent()>: function parent()
+​
+<set parent()>: function parent()
+​
+<get performance()>: function performance()
+​
+<set performance()>: function performance()
+​
+<get personalbar()>: function personalbar()
+​
+<set personalbar()>: function personalbar()
+​
+<get realFrameElement()>: function realFrameElement()
+​
+<get screen()>: function screen()
+​
+<set screen()>: function screen()
+​
+<get screenLeft()>: function screenLeft()
+​
+<set screenLeft()>: function screenLeft()
+​
+<get screenTop()>: function screenTop()
+​
+<set screenTop()>: function screenTop()
+​
+<get screenX()>: function screenX()
+​
+<set screenX()>: function screenX()
+​
+<get screenY()>: function screenY()
+​
+<set screenY()>: function screenY()
+​
+<get scrollMaxX()>: function scrollMaxX()
+​
+<set scrollMaxX()>: function scrollMaxX()
+​
+<get scrollMaxY()>: function scrollMaxY()
+​
+<set scrollMaxY()>: function scrollMaxY()
+​
+<get scrollMinX()>: function scrollMinX()
+​
+<get scrollMinY()>: function scrollMinY()
+​
+<get scrollX()>: function scrollX()
+​
+<set scrollX()>: function scrollX()
+​
+<get scrollY()>: function scrollY()
+​
+<set scrollY()>: function scrollY()
+​
+<get scrollbars()>: function scrollbars()
+​
+<set scrollbars()>: function scrollbars()
+​
+<get self()>: function self()
+​
+<set self()>: function self()
+​
+<get sessionStorage()>: function sessionStorage()
+​
+<get status()>: function status()
+​
+<set status()>: function status()
+​
+<get statusbar()>: function statusbar()
+​
+<set statusbar()>: function statusbar()
+​
+<get toolbar()>: function toolbar()
+​
+<set toolbar()>: function toolbar()
+​
+<get top()>: function top()
+​
+<get u2f()>: function u2f()
+​
+<set u2f()>: function u2f()
+​
+<get window()>: function window()
+​
+<get windowGlobalChild()>: function windowGlobalChild()
+​
+<get windowRoot()>: function windowRoot()
+​
+<get windowState()>: function windowState()
+​
+<get windowUtils()>: function windowUtils()
+​
+<prototype>: WindowPrototype { … }
+

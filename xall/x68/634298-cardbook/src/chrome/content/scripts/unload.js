@@ -26,6 +26,7 @@ let JSMs = [
 	"chrome://cardbook/content/contactsSidebar/wdw_cardbookContactsSidebar.js",
 	"chrome://cardbook/content/csvTranslator/wdw_csvTranslator.js",
 	"chrome://cardbook/content/customizeToolbar/wl_customizeToolbar.js",
+	"chrome://cardbook/content/enigmail/cardbookEnigmail.js",
 	"chrome://cardbook/content/filters/cardbookFilterAction.js",
 	"chrome://cardbook/content/filters/ovl_filters.js",
 	"chrome://cardbook/content/findDuplicates/cardbookDuplicate.js",

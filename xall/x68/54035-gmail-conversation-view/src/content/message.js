@@ -29,7 +29,9 @@ class Message extends React.PureComponent {
       window.requestAnimationFrame(() => {
         window.scrollTo(0, this.li.getBoundingClientRect().top + window.scrollY + 5 - 44);
         this.onSelected();
-      });
+      }); // For any time we're mounting a new message, we're going to be loading
+      // it as well. That means we don't need to clear the scrollTo flag here,
+      // we can leave that to componentDidUpdate.
     }
 
     this.checkLateAttachments();
@@ -51,7 +53,16 @@ class Message extends React.PureComponent {
 
       window.requestAnimationFrame(() => {
         window.scrollTo(500, this.li.getBoundingClientRect().top + window.scrollY + 5 - 44);
-        this.onSelected();
+        this.onSelected(); // Only clear scrollTo if we're now not loading any iframes for
+        // this message. This should generally mean we get to scroll to the
+        // right place most of the time.
+
+        if (!this.props.iframesLoading) {
+          this.props.dispatch({
+            type: "CLEAR_SCROLLTO",
+            id: this.props.message.id
+          });
+        }
       });
     }
 
@@ -332,7 +343,7 @@ class Message extends React.PureComponent {
       multipleRecipients: this.props.message.multipleRecipients,
       recipientsIncludeLists: this.props.message.recipientsIncludeLists,
       isDraft: this.props.message.isDraft
-    }), this.props.isLastMessage && this.props.message.expanded && /*#__PURE__*/React.createElement(QuickReply, null));
+    }), this.props.isLastMessage && this.props.message.expanded && !this.props.hideQuickReply && /*#__PURE__*/React.createElement(QuickReply, null));
   }
 
 }
@@ -348,6 +359,7 @@ Message.propTypes = {
   index: PropTypes.number.isRequired,
   isLastMessage: PropTypes.bool.isRequired,
   hasBuiltInPdf: PropTypes.bool.isRequired,
+  hideQuickReply: PropTypes.bool.isRequired,
   message: PropTypes.object.isRequired,
   tenPxFactor: PropTypes.number.isRequired,
   prefs: PropTypes.object.isRequired,

@@ -393,12 +393,12 @@ RemoveDupes.MessengerOverlay = {
       // disallowed email address beginning with an apostrophy (') to
       // better handle single-quoted addresses such as
       // 'my.addr@somewhere.com'
-      "(?:\b|^)[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@" +
-      "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\b|$)","gi");
+      "(?:\\b|^)[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@" +
+      "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\\b|$)","gi");
     const gSingleQuotedEmailRegExp = RegExp(
-      "(?:\b|^)'[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@" +
-      "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?'","gi");
-    const gEncodedWordRegExp = RegExp("=\?.*\?=","g");
+      "(?:\\b|^)'[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@" +
+      "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?'","gi");
+    const gEncodedWordRegExp = RegExp("=\\?.*\\?=","g");
     if ((headerString == null) || (headerString == ""))
       return headerString;
     // if we suspect there's undecoded text, let's not do anything and

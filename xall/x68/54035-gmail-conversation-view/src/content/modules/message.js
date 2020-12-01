@@ -11,7 +11,10 @@ XPCOMUtils.defineLazyModuleGetters(this, {
   BrowserSim: "chrome://conversations/content/modules/browserSim.js",
   escapeHtml: "chrome://conversations/content/modules/misc.js",
   htmlToPlainText: "chrome://conversations/content/modules/misc.js",
+  MimeMessage: "resource:///modules/gloda/MimeMessage.jsm",
+  mimeMsgToContentSnippetAndMeta: "resource:///modules/gloda/GlodaContent.jsm",
   msgHdrGetUri: "chrome://conversations/content/modules/misc.js",
+  MsgHdrToMimeMessage: "resource:///modules/gloda/MimeMessage.jsm",
   NetUtil: "resource://gre/modules/NetUtil.jsm",
   parseMimeLine: "chrome://conversations/content/modules/misc.js",
   setupLogging: "chrome://conversations/content/modules/misc.js",
@@ -19,50 +22,6 @@ XPCOMUtils.defineLazyModuleGetters(this, {
 });
 XPCOMUtils.defineLazyGetter(this, "browser", function () {
   return BrowserSim.getBrowser();
-});
-XPCOMUtils.defineLazyGetter(this, "MimeMessage", () => {
-  let tmp = {};
-
-  try {
-    ChromeUtils.import("resource:///modules/gloda/mimemsg.js", tmp);
-  } catch (ex) {
-    ChromeUtils.import("resource:///modules/gloda/MimeMessage.jsm", tmp);
-  }
-
-  return tmp.MimeMessage;
-});
-XPCOMUtils.defineLazyGetter(this, "MsgHdrToMimeMessage", () => {
-  let tmp = {};
-
-  try {
-    ChromeUtils.import("resource:///modules/gloda/mimemsg.js", tmp);
-  } catch (ex) {
-    ChromeUtils.import("resource:///modules/gloda/MimeMessage.jsm", tmp);
-  }
-
-  return tmp.MsgHdrToMimeMessage;
-});
-XPCOMUtils.defineLazyGetter(this, "mimeMsgToContentSnippetAndMeta", () => {
-  let tmp = {};
-
-  try {
-    ChromeUtils.import("resource:///modules/gloda/connotent.js", tmp);
-  } catch (ex) {
-    ChromeUtils.import("resource:///modules/gloda/GlodaContent.jsm", tmp);
-  }
-
-  return tmp.mimeMsgToContentSnippetAndMeta;
-});
-XPCOMUtils.defineLazyGetter(this, "makeFriendlyDateAgo", () => {
-  let tmp = {};
-
-  try {
-    ChromeUtils.import("resource:///modules/templateUtils.js", tmp);
-  } catch (ex) {
-    ChromeUtils.import("resource:///modules/TemplateUtils.jsm", tmp);
-  }
-
-  return tmp.makeFriendlyDateAgo;
 });
 XPCOMUtils.defineLazyGetter(this, "gMessenger", function () {
   return Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
@@ -107,9 +66,9 @@ function addMsgListener(aMessage) {
   msgListeners.get(messageId).push(weakPtr);
 }
 
-function dateAccordingToPref(date) {
+async function dateAccordingToPref(date) {
   try {
-    return Prefs.no_friendly_date ? dateAsInMessageList(date) : makeFriendlyDateAgo(date);
+    return Prefs.no_friendly_date ? dateAsInMessageList(date) : await browser.conversations.makeFriendlyDateAgo(date);
   } catch (e) {
     return dateAsInMessageList(date);
   }
@@ -122,7 +81,7 @@ class Message {
     this._domNode = null;
     this._snippet = "";
     this._conversation = aConversation;
-    this._date = dateAccordingToPref(new Date(this._msgHdr.date / 1000)); // This one is for display purposes. We should always parse the non-decoded
+    this._date = new Date(this._msgHdr.date / 1000); // This one is for display purposes. We should always parse the non-decoded
     // author because there's more information in the encoded form (see #602)
 
     this._from = this.parse(this._msgHdr.author)[0]; // Might be filled to something more meaningful later, in case we replace the
@@ -238,7 +197,7 @@ class Message {
     const messageFolderType = messageHeader.folder.type;
     let data = {
       id: this._id,
-      date: this._date,
+      date: await dateAccordingToPref(this._date),
       folderName: await browser.conversations.getFolderName(this._id),
       hasRemoteContent: this.hasRemoteContent,
       isDraft: messageFolderType == "drafts",
@@ -596,7 +555,7 @@ class Message {
     let authorEmail = this._from.email;
     let authorAvatar = this._contacts[0][0].avatar;
     let authorColor = this._contacts[0][0].color;
-    let date = dateAccordingToPref(new Date(this._msgHdr.date / 1000)); // We try to convert the bodies to plain text, to enhance the readability in
+    let date = await dateAccordingToPref(new Date(this._msgHdr.date / 1000)); // We try to convert the bodies to plain text, to enhance the readability in
     // the forwarded conversation. Note: <pre> tags are not converted properly
     // it seems, need to investigate...
 

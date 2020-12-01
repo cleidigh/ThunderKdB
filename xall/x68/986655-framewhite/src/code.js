@@ -1,575 +1,73 @@
 formOne.addEventListener('click', function () {
-browser.setStyle.setOne('mail-toolbox', 'background-color', 'white');
-browser.setStyle.setOne('mail-toolbox', 'color', 'black');
-browser.setStyle.setOne('calendar-toolbox', 'background-color', 'white');
-browser.setStyle.setOne('calendar-toolbox', 'color', 'black');
-browser.setStyle.setOne('task-toolbox', 'background-color', 'white');
-browser.setStyle.setOne('task-toolbox', 'color', 'black');
-browser.setStyle.setOne('task-addition-box', 'background-color', 'white');
-browser.setStyle.setOne('task-addition-box', 'color', 'black');
-browser.setStyle.setOne('view-tabbox', 'background-color', 'white');
-browser.setStyle.setOne('calendar-nav-control', 'background-color', 'white');
-browser.setStyle.setOne('calendar-nav-control', 'color', 'black');
-browser.setStyle.setOne('view-deck', 'background-color', 'white');
-browser.setStyle.setOne('view-deck', 'color', 'black');
-browser.setStyle.setOne('calendar-view-box', 'background-color', 'white'); 
-browser.setStyle.setOne('calendar-view-box', 'color', 'black');
-browser.setStyle.setOne('calendar-view-splitter', 'background-color', 'white');
-browser.setStyle.setOne('threadTree', 'color', 'black');
-browser.setStyle.setOne('agenda-panel', 'background-color', 'white');
-browser.setStyle.setOne('agenda-panel', 'color', 'black');
-browser.setStyle.setOne('agenda-panel', 'border-color', '#F1F1F1');
-browser.setStyle.setOne('today-pane-panel', 'background-color', 'white');
-browser.setStyle.setOne('today-pane-panel', 'color', 'black');
-browser.setStyle.setOne('today-pane-panel', 'border-color', '#F1F1F1');
-browser.setStyle.setOne('todaypane-new-event-button', 'background-color', 'white');
-browser.setStyle.setOne('todaypane-new-event-button', 'color', 'black');
-browser.setStyle.setOne('status-bar', 'background-color', 'white');
-browser.setStyle.setOne('status-bar', 'color', 'black');
-browser.setStyle.setOne('status-bar', 'border-top', 'solid');
-browser.setStyle.setOne('status-bar', 'border-top-width', '1px');
-browser.setStyle.setOne('status-bar', 'border-top-color', 'black');
-browser.setStyle.setOne('quick-filter-bar', 'background-color', 'white');
-browser.setStyle.setOne('quick-filter-bar', 'color', 'black');
-browser.setStyle.setOne('calendar-add-task-button', 'border-color', '#F1F1F1');
-browser.setStyle.setOne('calendar-add-task-button', 'background-color', 'white');
-browser.setStyle.setOne('calendar-add-task-button', 'color', 'black');
-browser.setStyle.setOne('task-addition-box', 'background-color', 'white');
-browser.setStyle.setOne('task-addition-box', 'color', 'black');
-browser.setStyle.setOne('unifinder-searchBox', 'background-color', 'white');
-browser.setStyle.setOne('unifinder-searchBox', 'color', 'black');
-browser.setStyle.setOne('attachmentBar', 'background-color', 'white');
-browser.setStyle.setOne('attachmentBar', 'color', 'black');
-browser.setStyle.setOne('calendar-task-details-grid', 'color', 'black');
-browser.setStyle.setOne('calendar-task-tree', 'background-color', 'white');
-browser.setStyle.setOne('calendar-task-tree', 'color', 'black');
-browser.setStyle.setOne('folderUnreadCol', 'background-color', 'white');
-browser.setStyle.setOne('folderUnreadCol', 'color', 'black');
-browser.setStyle.setOne('folderTotalCol', 'background-color', 'white');
-browser.setStyle.setOne('folderTotalCol', 'color', 'black');
-browser.setStyle.setOne('folderSizeCol', 'background-color', 'white');
-browser.setStyle.setOne('folderSizeCol', 'color', 'black');
-browser.setStyle.setOne('unifinder-search-results-tree', 'background-color', 'white');
-browser.setStyle.setOne('unifinder-search-results-tree', 'color', 'black');
-browser.setStyle.setOne('calendar-task-tree', 'background-color', 'white');
-browser.setStyle.setOne('calendar-task-tree', 'color', 'black');
-browser.setStyle.setOne('ltnSidebar', 'background-color', 'white');
-browser.setStyle.setOne('ltnSidebar', 'color', 'black');
-browser.setStyle.setOne('folderPaneBox', 'background-color', 'white');
-browser.setStyle.setOne('folderPaneBox', 'color', 'black');
-browser.setStyle.setOne('agenda-toolbar', 'background-color', 'white');
-browser.setStyle.setOne('agenda-toolbar', 'color', 'black');
-browser.setStyle.setOne('agenda-listbox', 'filter', 'invert(1) brightness(1.5)');
-browser.setStyle.setOne('view-tabbox', 'background-color', 'white');
-browser.setStyle.setOne('view-tabbox', 'color', 'black');
-browser.setStyle.setOne('unifinder-task-edit-field', 'background-color', 'white');
-browser.setStyle.setOne('unifinder-task-edit-field', 'color', 'black');
-browser.setStyle.setOne('view-task-edit-field', 'background-color', 'white');
-browser.setStyle.setOne('view-task-edit-field', 'color', 'black');
-browser.setStyle.setOne('calendar-task-details', 'background-color', 'white');
-browser.setStyle.setOne('calendar-task-details', 'color', 'black');
-browser.setStyle.setOne('calendar-task-details-description', 'background-color', 'white');
-browser.setStyle.setOne('calendar-task-details-description', 'color', 'black');
-browser.setStyle.setOne('unifinder-todo-tree', 'background-color', 'white');
-browser.setStyle.setOne('unifinder-todo-tree', 'color', 'black');
-browser.setStyle.setOne('task-actions-toolbar', 'background-color', 'white');
-browser.setStyle.setOne('task-actions-toolbar', 'color', 'black');
-browser.setStyle.setOne('offline-status', 'background-color', 'white');
-browser.setStyle.setOne('offline-status', 'color', 'black');
-browser.setStyle.setOne('expandedHeadersTopBox', 'background-color', '#303030');
-browser.setStyle.setOne('expandedHeadersTopBox', 'color', 'white');
-browser.setStyle.setOne('searchInput', 'background-color', 'black');
-browser.setStyle.setOne('searchInput', 'color', 'white');
-browser.setStyle.setOne('gloda-search', 'background-color', 'black');
-browser.setStyle.setOne('gloda-search', 'color', 'black');
-browser.setStyle.setOne('calendar-task-tree', 'background-color', 'white');
-browser.setStyle.setOne('calendar-task-tree', 'color', 'black');
-browser.setStyle.setOne('calendar-task-details-container', 'background-color', 'white');
-browser.setStyle.setOne('calendar-task-details-container', 'color', 'black');
-browser.setStyle.setOne('messagepanebox', 'background-color', 'white');
-browser.setStyle.setOne('messagepanebox', 'color', 'black');
-browser.setStyle.setOne('titlebar-max', 'color', 'black');
-browser.setStyle.setOne('titlebar-min', 'color', 'black');
-browser.setStyle.setOne('titlebar-close', 'color', 'black');
-browser.setStyle.setOne('calendar-newtask-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('calendar-newevent-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('todaypane-new-event-button', 'background-color', 'white');
-browser.setStyle.setOne('todaypane-new-event-button', 'color', 'black');
-browser.setStyle.setOne('todaypane-new-event-button', 'background-color', 'white');
-browser.setStyle.setOne('todaypane-new-event-button', 'color', 'black');
-browser.setStyle.setOne('task-newtask-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button-delete', 'background-color', 'white');
-browser.setStyle.setOne('button-delete', 'color', 'black');
-browser.setStyle.setOne('button-saveandclose', 'background-color', 'white');
-browser.setStyle.setOne('button-saveandclose', 'color', 'black');
-browser.setStyle.setOne('button-privacy', 'background-color', 'white');
-browser.setStyle.setOne('button-privacy', 'color', 'black');
-browser.setStyle.setOne('button-attendees', 'background-color', 'white');
-browser.setStyle.setOne('button-attendees', 'color', 'black');
-browser.setStyle.setOne('button-freebusy', 'background-color', 'white');
-browser.setStyle.setOne('button-freebusy', 'color', 'black');
-browser.setStyle.setOne('calendar-add-task-button', 'background-color', 'white');
-browser.setStyle.setOne('calendar-add-task-button', 'color', 'black');
-browser.setStyle.setOne('button-url', 'background-color', 'white');
-browser.setStyle.setOne('button-url', 'color', 'black');
-browser.setStyle.setOne('button_archive', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_compact', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_file', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_followup', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_forward', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_getNewMessages', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_goForward', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_junk', 'filter', 'invert(0.3)');
-browser.setStyle.setOne('button_mark', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_next', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_nextMsg', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_previous', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button_previousMsg', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('msgHeaderView', 'background-color', '#303030');
-browser.setStyle.setOne('msgHeaderView', 'color', 'white');
-browser.setStyle.setOne('msgHeaderView', 'border-color', '#303030');
-browser.setStyle.setTwo('#button-getmsg>toolbarbutton>image', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#button-getmsg>toolbarbutton>label', 'filter', 'invert(0)');
-browser.setStyle.setTwo('#button-getmsg>dropmarker', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#button-newmsg>image', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#button-newmsg>label', 'filter', 'invert(0)');
-browser.setStyle.setTwo('#button-address>image', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#button-address>label', 'filter', 'invert(0)');
-browser.setStyle.setOne('hdrReplyButton', 'filter', 'invert(0)');
-browser.setStyle.setOne('hdrReplyToSenderButton', 'filter', 'invert(0)');
-browser.setStyle.setOne('hdrReplyAllButton', 'filter', 'invert(0)');
-browser.setStyle.setOne('hdrFollowupButton', 'filter', 'invert(0)');
-browser.setStyle.setOne('hdrReplyListButton', 'filter', 'invert(0)');
-browser.setStyle.setOne('hdrForwardButton', 'filter', 'invert(0)');
-browser.setStyle.setOne('hdrTrashButton', 'filter', 'invert(0)');
-browser.setStyle.setOne('calendar-delete-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('task-delete-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('calendar-delete-task-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('hdrJunkButton', 'filter', 'invert(0)');
-browser.setStyle.setOne('qfb-show-filter-bar', 'filter', 'invert(1)');
-browser.setStyle.setOne('button-appmenu', 'filter', 'invert(1)');
-browser.setStyle.setOne('button-add-buddy', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button-join-chat', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button-chat-accounts', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('calendar-tab-button', 'background-color', '#121212');
-browser.setStyle.setOne('task-tab-button', 'background-color', '#121212');
-browser.setStyle.setTwo('#calendar-synchronize-button>image', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#calendar-synchronize-button>label', 'filter', 'invert(0)');
-browser.setStyle.setTwo('#task-synchronize-button>image', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#task-synchronize-button>label', 'filter', 'invert(0)');
-browser.setStyle.setOne('task-newevent-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('calendar-edit-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('task-edit-button', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('task-actions-category', 'filter', 'invert(1)');
-browser.setStyle.setOne('task-actions-markcompleted', 'filter', 'invert(1)');
-browser.setStyle.setOne('button-priority', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('task-actions-priority', 'filter', 'invert(0.5)');
-browser.setStyle.setOne('button-status', 'filter', 'invert(0.5)');
-browser.setStyle.setTwo('findbar,.mail-toolbox,.contentTabToolbox', 'background-color', 'white');
-browser.setStyle.setTwo('findbar,.mail-toolbox,.contentTabToolbox', 'color', 'black');
-browser.setStyle.setTwo('#today-pane-panel > *', 'background-color', 'white');
-browser.setStyle.setTwo('#today-pane-panel > *', 'color', 'black');
-browser.setStyle.setTwo('.treecol-text', 'background-color', 'white');
-browser.setStyle.setTwo('.treecol-text', 'color', 'black');
-browser.setStyle.setTwo('tree>.calendar-task-treechildren', 'background-color', 'black');
-browser.setStyle.setTwo('tree>treechildren', 'background-color', 'black');
-browser.setStyle.setTwo('tree>treechildren', 'color', 'white');
-browser.setStyle.setTwo('tree>treechildren', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#threadTree>treechildren', 'background-color', 'black');
-browser.setStyle.setTwo('#threadTree>treechildren', 'color', 'white');
-browser.setStyle.setTwo('#threadTree>treechildren', 'filter', 'invert(1)');
-browser.setStyle.setTwo('.calendar-task-tree>treechildren', 'background-color', 'black');
-browser.setStyle.setTwo('.calendar-task-tree>treechildren', 'color', 'white');
-browser.setStyle.setTwo('.calendar-task-tree>treechildren', 'filter', 'invert(1)');
-browser.setStyle.setOne('button_getNewMessages', 'color', 'white');
-browser.setStyle.setOne('button_junk', 'color', 'white');
-browser.setStyle.setOne('button_mark', 'color', 'white');
-browser.setStyle.setOne('button-newmsg', 'color', 'white');
-browser.setStyle.setOne('calendar-delete-button', 'color', 'white');
-browser.setStyle.setOne('task-delete-button', 'color', 'white');
-browser.setStyle.setOne('task-newtask-button', 'color', 'white');
-browser.setStyle.setOne('button-tag', 'background-color', 'white');
-browser.setStyle.setTwo('#button-tag>image', 'filter', 'invert(1)');
-browser.setStyle.setOne('button-tag', 'color', 'white');
-browser.setStyle.setOne('button-chat', 'background-color', 'white');
-browser.setStyle.setTwo('#button-chat>stack>hbox>image', 'filter', 'invert(1)');
-browser.setStyle.setOne('button-chat', 'color', 'white');
-browser.setStyle.setOne('calendar-synchronize-button', 'color', 'white');
-browser.setStyle.setOne('task-synchronize-button', 'color', 'white');
-browser.setStyle.setOne('task-newevent-button', 'color', 'white');
-browser.setStyle.setOne('calendar-edit-button', 'color', 'white');
-browser.setStyle.setOne('task-edit-button', 'color', 'white');
-browser.setStyle.setOne('calendar-newevent-button', 'color', 'white');
-browser.setStyle.setOne('calendar-newtask-button', 'color', 'white');
-browser.setStyle.setOne('button-address', 'color', 'white');
-browser.setStyle.setTwo('#threadCols', 'background-color', 'white');
-browser.setStyle.setTwo('#threadCols', 'color', 'black');
-browser.setStyle.setTwo('#unifinder-search-field', 'background-color', 'white');
-browser.setStyle.setTwo('#unifinder-search-field', 'color', 'black');
-browser.setStyle.setTwo('search-textbox', 'background-color', 'white');
-browser.setStyle.setTwo('search-textbox', 'color', 'black');
-browser.setStyle.setTwo('.statusbarpanel>#calendar-status-todaypane-button', 'color', 'black');
-browser.setStyle.setTwo('#today-pane-panel>vbox', 'background-color', 'white');
-browser.setStyle.setTwo('#today-pane-panel>vbox', 'color', 'black');
-browser.setStyle.setTwo('#calendar-toolbox>toolbar>.button-appmenu', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#task-toolbox>toolbar>.button-appmenu', 'filter', 'invert(1)');
-browser.setStyle.setTwo('search-textbox#task-text-filter-field', 'background-color', 'white');
-browser.setStyle.setTwo('search-textbox#task-text-filter-field', 'color', 'black');
-browser.setStyle.setTwo('.mail-toolbox>toolbar>toolbaritem', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#calendar-list', 'filter', 'invert(0.8)');
-browser.setStyle.setTwo('#unifinder-search-results-tree>treechildren', 'background-color', 'black');
-browser.setStyle.setTwo('#unifinder-search-results-tree>treechildren', 'color', 'white');
-browser.setStyle.setTwo('#unifinder-search-results-tree>treechildren', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#unifinder-todo-tree>treechildren', 'background-color', 'black');
-browser.setStyle.setTwo('#unifinder-todo-tree>treechildren', 'color', 'navy');
-browser.setStyle.setTwo('#unifinder-todo-tree>treechildren', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#threadTree', 'background-color', 'white');
-browser.setStyle.setTwo('#msgHeaderViewDeck', 'filter', 'invert(0)');
-browser.setStyle.setTwo(':root', '--tabs-border-color', 'grey');
-browser.setStyle.setTwo('menubar', 'filter', 'invert(1)');
-browser.setStyle.setTwo('menubar', 'color', 'white');
-browser.setStyle.setTwo('toolbar', 'background-color', 'white');
-browser.setStyle.setTwo('toolbar', 'color', 'black');
-browser.setStyle.setTwo('toolbox', 'background-color', 'white');
-browser.setStyle.setTwo('toolbar>hbox', 'border-color', 'black');
-browser.setStyle.setOne('#tabbar>toolbar', 'background-color', 'black');
-browser.setStyle.setTwo('toolbar>toolbar', 'filter', 'invert(100%)  brightness(130%)');
-browser.setStyle.setOne('tabmail-tabs', 'filter', 'invert(1) hue-rotate(180deg) brightness(1.7)');
-browser.setStyle.setOne('tabmail-tabs', 'color', 'white');
-browser.setStyle.setTwo('tab', 'color', 'white');
-browser.setStyle.setTwo('tab:not([selected])', 'color', 'white');
-browser.setStyle.setTwo('tab[selected]', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(2)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(3)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(4)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(5)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(6)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(7)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(8)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(9)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(10)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(11)', 'color', 'white');
-browser.setStyle.setTwo('tab:nth-of-type(12)', 'color', 'white');
-browser.setStyle.setTwo('#qfb-show-filter-bar>.toolbarbutton-text', 'color', 'white');
-browser.setStyle.setTwo('#calendar-unifinder-button>.toolbarbutton-icon', 'filter', 'invert(1)');
-browser.setStyle.setTwo('.calendar-list-create', 'filter', 'invert(1)');
-browser.setStyle.setOne('task-actions-category', 'filter', 'invert(0)');
-browser.setStyle.setOne('task-actions-markcompleted', 'filter', 'invert(0)');
-browser.setStyle.setOne('task-actions-priority', 'filter', 'invert(0)');
-browser.setStyle.setOne('calendar-delete-task-button', 'filter', 'invert(0)');
-browser.setStyle.setTwo('#msgHeaderViewDeck>vbox', 'background-color', '#303030');
-browser.setStyle.setTwo('#msgHeaderViewDeck>vbox', 'color', 'white');
-browser.setStyle.setTwo('#msgHeaderViewDeck>#expandedHeaderView', 'background-color', '#303030');
-browser.setStyle.setTwo('#msgHeaderViewDeck>#expandedHeaderView', 'color', 'white');
-browser.setStyle.setTwo('#msgHeaderView>#compactHeadersBox>#compactHeadersButton', 'background-color', '#303030');
-browser.setStyle.setTwo('#msgHeaderView>#compactHeadersBox>#compactHeadersButton', 'color', 'white');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(1)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(2)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(3)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(4)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(5)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(6)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(7)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(8)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(9)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(10)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(11)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(12)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(13)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(14)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(15)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(16)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(17)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(18)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(19)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(20)', 'filter', 'invert(1)');
-browser.setStyle.setTwo('#calendar-view-splitter', 'background-color', 'transparent');
+var whiteTheme = {
+"colors": {
+"frame": "white",
+"bookmark_text": "black",
+"popup": "white",
+"popup_text": "black",
+"popup_border": "black",
+"popup_highlight": "lightgray",
+"popup_highlight_text": "black",
+"sidebar": "white",
+"sidebar_text": "black",
+"sidebar_highlight": "lightgray",
+"sidebar_highlight_text": "black",
+"sidebar_border": "black",
+"tab_text": "black",
+"tab_line": "blue",
+"tab_loading": "white",
+"tab_background_text": "black",
+"toolbar_field": "white",
+"toolbar_field_text": "black",
+"toolbar_field_highlight": "lightgray",
+"toolbar_field_highlight_text": "black",
+"toolbar_field_focus": "white",
+"toolbar_field_text_focus": "black",
+"toolbar_field_border": "black",
+"toolbar_field_border_focus": "red",
+"toolbar_top_separator": "black",
+"toolbar_bottom_separator": "black",
+"toolbar_vertical_separator": "black",
+"tab_selected": "white",
+"toolbar": "white"
+        }
+    }
+browser.theme.update(whiteTheme);
 });
 
 formTwo.addEventListener('click', function () {
-browser.setStyle.setOne('mail-toolbox', 'background-color', '');
-browser.setStyle.setOne('mail-toolbox', 'color', '');
-browser.setStyle.setOne('calendar-toolbox', 'background-color', '');
-browser.setStyle.setOne('calendar-toolbox', 'color', '');
-browser.setStyle.setOne('task-toolbox', 'background-color', '');
-browser.setStyle.setOne('task-toolbox', 'color', '');
-browser.setStyle.setOne('task-addition-box', 'background-color', '');
-browser.setStyle.setOne('task-addition-box', 'color', '');
-browser.setStyle.setOne('view-tabbox', 'background-color', '');
-browser.setStyle.setOne('calendar-nav-control', 'background-color', '');
-browser.setStyle.setOne('calendar-nav-control', 'color', '');
-browser.setStyle.setOne('view-deck', 'background-color', '');
-browser.setStyle.setOne('view-deck', 'color', '');
-browser.setStyle.setOne('calendar-view-box', 'background-color', ''); 
-browser.setStyle.setOne('calendar-view-box', 'color', '');
-browser.setStyle.setOne('calendar-view-splitter', 'background-color', '');
-browser.setStyle.setOne('threadTree', 'color', '');
-browser.setStyle.setOne('agenda-panel', 'background-color', '');
-browser.setStyle.setOne('agenda-panel', 'color', '');
-browser.setStyle.setOne('agenda-panel', 'border-color', '');
-browser.setStyle.setOne('today-pane-panel', 'background-color', '');
-browser.setStyle.setOne('today-pane-panel', 'color', '');
-browser.setStyle.setOne('today-pane-panel', 'border-color', '');
-browser.setStyle.setOne('todaypane-new-event-button', 'background-color', '');
-browser.setStyle.setOne('todaypane-new-event-button', 'color', '');
-browser.setStyle.setOne('status-bar', 'background-color', '');
-browser.setStyle.setOne('status-bar', 'color', '');
-browser.setStyle.setOne('status-bar', 'border-top', '');
-browser.setStyle.setOne('status-bar', 'border-top-width', '');
-browser.setStyle.setOne('status-bar', 'border-top-color', '');
-browser.setStyle.setOne('quick-filter-bar', 'background-color', '');
-browser.setStyle.setOne('quick-filter-bar', 'color', '');
-browser.setStyle.setOne('calendar-add-task-button', 'border-color', '');
-browser.setStyle.setOne('calendar-add-task-button', 'background-color', '');
-browser.setStyle.setOne('calendar-add-task-button', 'color', '');
-browser.setStyle.setOne('task-addition-box', 'background-color', '');
-browser.setStyle.setOne('task-addition-box', 'color', '');
-browser.setStyle.setOne('unifinder-searchBox', 'background-color', '');
-browser.setStyle.setOne('unifinder-searchBox', 'color', '');
-browser.setStyle.setOne('attachmentBar', 'background-color', '');
-browser.setStyle.setOne('attachmentBar', 'color', '');
-browser.setStyle.setOne('calendar-task-details-grid', 'color', '');
-browser.setStyle.setOne('calendar-task-tree', 'background-color', '');
-browser.setStyle.setOne('calendar-task-tree', 'color', '');
-browser.setStyle.setOne('folderUnreadCol', 'background-color', '');
-browser.setStyle.setOne('folderUnreadCol', 'color', '');
-browser.setStyle.setOne('folderTotalCol', 'background-color', '');
-browser.setStyle.setOne('folderTotalCol', 'color', '');
-browser.setStyle.setOne('folderSizeCol', 'background-color', '');
-browser.setStyle.setOne('folderSizeCol', 'color', '');
-browser.setStyle.setOne('unifinder-search-results-tree', 'background-color', '');
-browser.setStyle.setOne('unifinder-search-results-tree', 'color', '');
-browser.setStyle.setOne('calendar-task-tree', 'background-color', '');
-browser.setStyle.setOne('calendar-task-tree', 'color', '');
-browser.setStyle.setOne('ltnSidebar', 'background-color', '');
-browser.setStyle.setOne('ltnSidebar', 'color', '');
-browser.setStyle.setOne('folderPaneBox', 'background-color', '');
-browser.setStyle.setOne('folderPaneBox', 'color', '');
-browser.setStyle.setOne('agenda-toolbar', 'background-color', '');
-browser.setStyle.setOne('agenda-toolbar', 'color', '');
-browser.setStyle.setOne('agenda-listbox', 'filter', '');
-browser.setStyle.setOne('view-tabbox', 'background-color', '');
-browser.setStyle.setOne('view-tabbox', 'color', '');
-browser.setStyle.setOne('unifinder-task-edit-field', 'background-color', '');
-browser.setStyle.setOne('unifinder-task-edit-field', 'color', '');
-browser.setStyle.setOne('view-task-edit-field', 'background-color', '');
-browser.setStyle.setOne('view-task-edit-field', 'color', '');
-browser.setStyle.setOne('calendar-task-details', 'background-color', '');
-browser.setStyle.setOne('calendar-task-details', 'color', '');
-browser.setStyle.setOne('calendar-task-details-description', 'background-color', '');
-browser.setStyle.setOne('calendar-task-details-description', 'color', '');
-browser.setStyle.setOne('unifinder-todo-tree', 'background-color', '');
-browser.setStyle.setOne('unifinder-todo-tree', 'color', '');
-browser.setStyle.setOne('task-actions-toolbar', 'background-color', '');
-browser.setStyle.setOne('task-actions-toolbar', 'color', '');
-browser.setStyle.setOne('offline-status', 'background-color', '');
-browser.setStyle.setOne('offline-status', 'color', '');
-browser.setStyle.setOne('expandedHeadersTopBox', 'background-color', '');
-browser.setStyle.setOne('expandedHeadersTopBox', 'color', '');
-browser.setStyle.setOne('searchInput', 'background-color', '');
-browser.setStyle.setOne('searchInput', 'color', '');
-browser.setStyle.setOne('gloda-search', 'background-color', '');
-browser.setStyle.setOne('gloda-search', 'color', '');
-browser.setStyle.setOne('calendar-task-tree', 'background-color', '');
-browser.setStyle.setOne('calendar-task-tree', 'color', '');
-browser.setStyle.setOne('calendar-task-details-container', 'background-color', '');
-browser.setStyle.setOne('calendar-task-details-container', 'color', '');
-browser.setStyle.setOne('messagepanebox', 'background-color', '');
-browser.setStyle.setOne('messagepanebox', 'color', '');
-browser.setStyle.setOne('titlebar-max', 'color', '');
-browser.setStyle.setOne('titlebar-min', 'color', '');
-browser.setStyle.setOne('titlebar-close', 'color', '');
-browser.setStyle.setOne('calendar-newtask-button', 'filter', '');
-browser.setStyle.setOne('calendar-newevent-button', 'filter', '');
-browser.setStyle.setOne('todaypane-new-event-button', 'background-color', '');
-browser.setStyle.setOne('todaypane-new-event-button', 'color', '');
-browser.setStyle.setOne('todaypane-new-event-button', 'background-color', '');
-browser.setStyle.setOne('todaypane-new-event-button', 'color', '');
-browser.setStyle.setOne('task-newtask-button', 'filter', '');
-browser.setStyle.setOne('button-delete', 'background-color', '');
-browser.setStyle.setOne('button-delete', 'color', '');
-browser.setStyle.setOne('button-saveandclose', 'background-color', '');
-browser.setStyle.setOne('button-saveandclose', 'color', '');
-browser.setStyle.setOne('button-privacy', 'background-color', '');
-browser.setStyle.setOne('button-privacy', 'color', '');
-browser.setStyle.setOne('button-attendees', 'background-color', '');
-browser.setStyle.setOne('button-attendees', 'color', '');
-browser.setStyle.setOne('button-freebusy', 'background-color', '');
-browser.setStyle.setOne('button-freebusy', 'color', '');
-browser.setStyle.setOne('calendar-add-task-button', 'background-color', '');
-browser.setStyle.setOne('calendar-add-task-button', 'color', '');
-browser.setStyle.setOne('button-url', 'background-color', '');
-browser.setStyle.setOne('button-url', 'color', '');
-browser.setStyle.setOne('button_archive', 'filter', '');
-browser.setStyle.setOne('button_compact', 'filter', '');
-browser.setStyle.setOne('button_file', 'filter', '');
-browser.setStyle.setOne('button_followup', 'filter', '');
-browser.setStyle.setOne('button_forward', 'filter', '');
-browser.setStyle.setOne('button_getNewMessages', 'filter', '');
-browser.setStyle.setOne('button_goForward', 'filter', '');
-browser.setStyle.setOne('button_junk', 'filter', '');
-browser.setStyle.setOne('button_mark', 'filter', '');
-browser.setStyle.setOne('button_next', 'filter', '');
-browser.setStyle.setOne('button_nextMsg', 'filter', '');
-browser.setStyle.setOne('button_previous', 'filter', '');
-browser.setStyle.setOne('button_previousMsg', 'filter', '');
-browser.setStyle.setOne('msgHeaderView', 'background-color', '');
-browser.setStyle.setOne('msgHeaderView', 'color', '');
-browser.setStyle.setOne('msgHeaderView', 'border-color', '');
-browser.setStyle.setTwo('#button-getmsg>toolbarbutton>image', 'filter', '');
-browser.setStyle.setTwo('#button-getmsg>toolbarbutton>label', 'filter', '');
-browser.setStyle.setTwo('#button-getmsg>dropmarker', 'filter', '');
-browser.setStyle.setTwo('#button-newmsg>image', 'filter', '');
-browser.setStyle.setTwo('#button-newmsg>label', 'filter', '');
-browser.setStyle.setTwo('#button-address>image', 'filter', '');
-browser.setStyle.setTwo('#button-address>label', 'filter', '');
-browser.setStyle.setOne('hdrReplyToSenderButton', 'filter', '');
-browser.setStyle.setOne('hdrReplyAllButton', 'filter', '');
-browser.setStyle.setOne('hdrFollowupButton', 'filter', '');
-browser.setStyle.setOne('hdrReplyListButton', 'filter', '');
-browser.setStyle.setOne('hdrForwardButton', 'filter', '');
-browser.setStyle.setOne('hdrTrashButton', 'filter', '');
-browser.setStyle.setOne('calendar-delete-button', 'filter', '');
-browser.setStyle.setOne('task-delete-button', 'filter', '');
-browser.setStyle.setOne('calendar-delete-task-button', 'filter', '');
-browser.setStyle.setOne('hdrJunkButton', 'filter', '');
-browser.setStyle.setOne('qfb-show-filter-bar', 'filter', '');
-browser.setStyle.setOne('button-appmenu', 'filter', '');
-browser.setStyle.setOne('button-add-buddy', 'filter', '');
-browser.setStyle.setOne('button-join-chat', 'filter', '');
-browser.setStyle.setOne('button-chat-accounts', 'filter', '');
-browser.setStyle.setOne('calendar-tab-button', 'background-color', '');
-browser.setStyle.setOne('task-tab-button', 'background-color', '');
-browser.setStyle.setTwo('#calendar-synchronize-button>image', 'filter', '');
-browser.setStyle.setTwo('#calendar-synchronize-button>label', 'filter', '');
-browser.setStyle.setTwo('#task-synchronize-button>image', 'filter', '');
-browser.setStyle.setTwo('#task-synchronize-button>label', 'filter', '');
-browser.setStyle.setOne('task-newevent-button', 'filter', '');
-browser.setStyle.setOne('calendar-edit-button', 'filter', '');
-browser.setStyle.setOne('task-edit-button', 'filter', '');
-browser.setStyle.setOne('task-actions-category', 'filter', '');
-browser.setStyle.setOne('task-actions-markcompleted', 'filter', '');
-browser.setStyle.setOne('button-priority', 'filter', '');
-browser.setStyle.setOne('task-actions-priority', 'filter', '');
-browser.setStyle.setOne('button-status', 'filter', '');
-browser.setStyle.setTwo('findbar,.mail-toolbox,.contentTabToolbox', 'background-color', '');
-browser.setStyle.setTwo('findbar,.mail-toolbox,.contentTabToolbox', 'color', '');
-browser.setStyle.setTwo('#today-pane-panel > *', 'background-color', '');
-browser.setStyle.setTwo('#today-pane-panel > *', 'color', '');
-browser.setStyle.setTwo('.treecol-text', 'background-color', '');
-browser.setStyle.setTwo('.treecol-text', 'color', '');
-browser.setStyle.setTwo('tree>.calendar-task-treechildren', 'background-color', '');
-browser.setStyle.setTwo('tree>.calendar-task-treechildren', 'color', '');
-browser.setStyle.setTwo('tree>treechildren', 'background-color', '');
-browser.setStyle.setTwo('tree>treechildren', 'color', '');
-browser.setStyle.setTwo('tree>treechildren', 'filter', '');
-browser.setStyle.setTwo('#threadTree>treechildren', 'background-color', '');
-browser.setStyle.setTwo('#threadTree>treechildren', 'color', '');
-browser.setStyle.setTwo('#threadTree>treechildren', 'filter', '');
-browser.setStyle.setTwo('.calendar-task-tree>treechildren', 'background-color', '');
-browser.setStyle.setTwo('.calendar-task-tree>treechildren', 'color', '');
-browser.setStyle.setTwo('.calendar-task-tree>treechildren', 'filter', '');
-browser.setStyle.setOne('button_getNewMessages', 'color', '');
-browser.setStyle.setOne('button_junk', 'color', '');
-browser.setStyle.setOne('button_mark', 'color', '');
-browser.setStyle.setOne('button-newmsg', 'color', '');
-browser.setStyle.setOne('calendar-delete-button', 'color', '');
-browser.setStyle.setOne('task-delete-button', 'color', '');
-browser.setStyle.setOne('task-newtask-button', 'color', '');
-browser.setStyle.setOne('button-tag', 'background-color', '');
-browser.setStyle.setTwo('#button-tag>image', 'filter', '');
-browser.setStyle.setOne('button-tag', 'color', '');
-browser.setStyle.setOne('button-chat', 'background-color', '');
-browser.setStyle.setTwo('#button-chat>stack>hbox>image', 'filter', '');
-browser.setStyle.setOne('button-chat', 'color', '');
-browser.setStyle.setOne('calendar-synchronize-button', 'color', '');
-browser.setStyle.setOne('task-synchronize-button', 'color', '');
-browser.setStyle.setOne('task-newevent-button', 'color', '');
-browser.setStyle.setOne('calendar-edit-button', 'color', '');
-browser.setStyle.setOne('task-edit-button', 'color', '');
-browser.setStyle.setOne('calendar-newevent-button', 'color', '');
-browser.setStyle.setOne('calendar-newtask-button', 'color', '');
-browser.setStyle.setOne('button-address', 'color', '');
-browser.setStyle.setTwo('#threadCols', 'background-color', '');
-browser.setStyle.setTwo('#threadCols', 'color', '');
-browser.setStyle.setTwo('#unifinder-search-field', 'background-color', '');
-browser.setStyle.setTwo('#unifinder-search-field', 'color', '');
-browser.setStyle.setTwo('search-textbox', 'background-color', '');
-browser.setStyle.setTwo('search-textbox', 'color', '');
-browser.setStyle.setTwo('.statusbarpanel>#calendar-status-todaypane-button', 'color', '');
-browser.setStyle.setTwo('#today-pane-panel>vbox', 'background-color', '');
-browser.setStyle.setTwo('#today-pane-panel>vbox', 'color', '');
-browser.setStyle.setTwo('#calendar-toolbox>toolbar>.button-appmenu', 'filter', '');
-browser.setStyle.setTwo('#task-toolbox>toolbar>.button-appmenu', 'filter', '');
-browser.setStyle.setTwo('search-textbox#task-text-filter-field', 'background-color', '');
-browser.setStyle.setTwo('search-textbox#task-text-filter-field', 'color', '');
-browser.setStyle.setTwo('.mail-toolbox>toolbar>toolbaritem', 'filter', '');
-browser.setStyle.setTwo('#calendar-list', 'filter', '');
-browser.setStyle.setTwo('#unifinder-search-results-tree>treechildren', 'background-color', '');
-browser.setStyle.setTwo('#unifinder-search-results-tree>treechildren', 'color', '');
-browser.setStyle.setTwo('#unifinder-search-results-tree>treechildren', 'filter', '');
-browser.setStyle.setTwo('#unifinder-todo-tree>treechildren', 'background-color', '');
-browser.setStyle.setTwo('#unifinder-todo-tree>treechildren', 'color', '');
-browser.setStyle.setTwo('#unifinder-todo-tree>treechildren', 'filter', '');
-browser.setStyle.setTwo('#threadTree', 'background-color', '');
-browser.setStyle.setTwo('#msgHeaderViewDeck', 'filter', '');
-browser.setStyle.setTwo(':root', '--tabs-border-color', '');
-browser.setStyle.setTwo('menubar', 'filter', '');
-browser.setStyle.setTwo('menubar', 'color', '');
-browser.setStyle.setTwo('toolbar', 'background-color', '');
-browser.setStyle.setTwo('toolbar', 'color', '');
-browser.setStyle.setTwo('toolbox', 'background-color', '');
-browser.setStyle.setTwo('toolbar>hbox', 'border-color', '');
-browser.setStyle.setOne('#tabbar>toolbar', 'background-color', '');
-browser.setStyle.setTwo('toolbar>toolbar', 'filter', '');
-browser.setStyle.setOne('tabmail-tabs', 'filter', '');
-browser.setStyle.setOne('tabmail-tabs', 'color', '');
-browser.setStyle.setTwo('tab', 'color', '');
-browser.setStyle.setTwo('tab:not([selected])', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(2)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(3)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(4)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(5)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(6)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(7)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(8)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(9)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(10)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(11)', 'color', '');
-browser.setStyle.setTwo('tab:nth-of-type(12)', 'color', '');
-browser.setStyle.setTwo('#qfb-show-filter-bar>.toolbarbutton-text', 'color', '');
-browser.setStyle.setTwo('#calendar-unifinder-button>.toolbarbutton-icon', 'filter', '');
-browser.setStyle.setTwo('.calendar-list-create', 'filter', '');
-browser.setStyle.setOne('task-actions-category', 'filter', '');
-browser.setStyle.setOne('task-actions-markcompleted', 'filter', '');
-browser.setStyle.setOne('task-actions-priority', 'filter', '');
-browser.setStyle.setOne('calendar-delete-task-button', 'filter', '');
-browser.setStyle.setTwo('#msgHeaderViewDeck>vbox', 'background-color', '');
-browser.setStyle.setTwo('#msgHeaderViewDeck>vbox', 'color', '');
-browser.setStyle.setTwo('#msgHeaderViewDeck>#expandedHeaderView', 'background-color', '');
-browser.setStyle.setTwo('#msgHeaderViewDeck>#expandedHeaderView', 'color', '');
-browser.setStyle.setTwo('#msgHeaderView>#compactHeadersBox>#compactHeadersButton', 'background-color', '');
-browser.setStyle.setTwo('#msgHeaderView>#compactHeadersBox>#compactHeadersButton', 'color', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(1)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(2)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(3)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(4)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(5)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(6)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(7)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(8)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(9)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(10)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(11)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(12)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(13)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(14)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(15)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(16)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(17)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(18)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(19)', 'filter', '');
-browser.setStyle.setTwo('#tabs-toolbar>#tabbar-toolbar>.webextension-action:nth-of-type(20)', 'filter', '');
-browser.setStyle.setTwo('#calendar-view-splitter', 'background-color', '');
+var blackTheme = {
+"colors": {
+"frame": "black",
+"bookmark_text": "white",
+"popup": "#303030",
+"popup_text": "white",
+"popup_border": "gray",
+"popup_highlight": "gray",
+"popup_highlight_text": "white",
+"sidebar": "#303030",
+"sidebar_text": "white",
+"sidebar_highlight": "gray",
+"sidebar_highlight_text": "white",
+"sidebar_border": "gray",
+"tab_text": "white",
+"tab_line": "blue",
+"tab_loading": "#303030",
+"tab_background_text": "white",
+"toolbar_field": "#303030",
+"toolbar_field_text": "white",
+"toolbar_field_highlight": "gray",
+"toolbar_field_highlight_text": "white",
+"toolbar_field_focus": "blue",
+"toolbar_field_text_focus": "white",
+"toolbar_field_border": "gray",
+"toolbar_field_border_focus": "black",
+"toolbar_top_separator": "black",
+"toolbar_bottom_separator": "black",
+"toolbar_vertical_separator": "black",
+"tab_selected": "#303030",
+"toolbar": "#303030"
+        }
+    }
+browser.theme.update(blackTheme);
 });
-

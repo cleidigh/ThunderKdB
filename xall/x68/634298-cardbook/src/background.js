@@ -32,10 +32,10 @@ messenger.WindowListener.registerWindow("chrome://calendar/content/calendar-even
 messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome://cardbook/content/composeMsg/wl_composeMsg.js");
 
 // // support for filter messages
-// await messenger.WindowListener.registerWindow("chrome://messenger/content/FilterEditor.xhtml", "chrome://cardbook/content/filters/ovl_filterEditor.xhtml");
-// await messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome://cardbook/content/filters/ovl_filterEditor.xhtml");
-// await messenger.WindowListener.registerWindow("chrome://messenger/content/mailViewSetup.xhtml", "chrome://cardbook/content/filters/ovl_filterEditor.xhtml");
-// await messenger.WindowListener.registerWindow("chrome://messenger/content/virtualFolderProperties.xhtml", "chrome://cardbook/content/filters/ovl_filterEditor.xhtml");
+messenger.WindowListener.registerWindow("chrome://messenger/content/FilterEditor.xhtml", "chrome://cardbook/content/filters/wl_cardbookFilterAction.js");
+messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome://cardbook/content/filters/wl_cardbookFilterAction.js");
+messenger.WindowListener.registerWindow("chrome://messenger/content/mailViewSetup.xhtml", "chrome://cardbook/content/filters/wl_cardbookFilterAction.js");
+messenger.WindowListener.registerWindow("chrome://messenger/content/virtualFolderProperties.xhtml", "chrome://cardbook/content/filters/wl_cardbookFilterAction.js");
 
 
 messenger.WindowListener.startListening();

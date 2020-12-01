@@ -22,11 +22,16 @@ quickFilters.List = {
   updateButtons: function updateButtons() {
     let numFiltersSelected = this.getSelectedCount(this.FilterListElement),
         oneFilterSelected = (numFiltersSelected == 1);
-    document.getElementById("quickFiltersBtnClone").disabled = !oneFilterSelected;
-    document.getElementById("quickFiltersBtnMerge").disabled = (numFiltersSelected<2);
-    document.getElementById("quickFiltersBtnSort").disabled = (numFiltersSelected<2);
-    document.getElementById("quickFiltersBtnCut").disabled = (numFiltersSelected==0);
-    document.getElementById("quickFiltersBtnCopy").disabled = (numFiltersSelected==0);
+    try {
+      document.getElementById("quickFiltersBtnClone").disabled = !oneFilterSelected;
+      document.getElementById("quickFiltersBtnMerge").disabled = (numFiltersSelected<2);
+      document.getElementById("quickFiltersBtnSort").disabled = (numFiltersSelected<2);
+      document.getElementById("quickFiltersBtnCut").disabled = (numFiltersSelected==0);
+      document.getElementById("quickFiltersBtnCopy").disabled = (numFiltersSelected==0);
+    }
+    catch(ex) {
+      quickFilters.Util.logException('quickFilters.List.updateButtons: ', ex);
+    }
 		let runInFolderName = "N/A";
 		if (quickFilters.List.RunFolder)
 			runInFolderName = quickFilters.List.RunFolder.prettyName;
@@ -49,8 +54,6 @@ quickFilters.List = {
     try {
       if (typeof gCurrentFilterList !== "undefined")
         return gCurrentFilterList;
-      if (currentFilterList)
-        return currentFilterList(); // Sm
     }
     catch(ex) {
       quickFilters.Util.logException('quickFilters.List.FilterList: ', ex);
@@ -66,33 +69,11 @@ quickFilters.List = {
   } ,
 	
   get ServerMenu() {
-    switch(quickFilters.Util.Application) {
-      case 'SeaMonkey':
-        return document.getElementById("serverMenu");
-      case 'Thunderbird':
-        return document.getElementById("serverMenu");
-      case 'Postbox':
-        return document.getElementById("serverMenu");
-    }
-    return null;
+    return document.getElementById("serverMenu");
   } ,
   
   get ServerMenuPopup() {
-    switch(quickFilters.Util.Application) {
-      case 'SeaMonkey':
-        return document.getElementById("serverMenuPopup");
-      case 'Thunderbird':
-        return document.getElementById("serverMenuPopup");
-      case 'Postbox':
-        let parent = document.getElementById("serverMenu");
-        for (let i=0; i<parent.childNodes.length; i++) {
-          let p = parent.childNodes[i];
-          if (p.tagName && p.tagName == 'menupopup')
-            return p;
-        }
-        return null;
-    }
-    return null;
+    return document.getElementById("serverMenuPopup");
   } ,
 
   getSelectedFilterAt: function getSelectedFilterAt(list, i) {
@@ -133,9 +114,6 @@ quickFilters.List = {
   
   // Postbox: doesn't have selectedIndex; instead we use view.selection.currentIndex
   getSelectedIndex: function getSelectedIndex(list) {
-    if (list.view && list.view.selection) {
-      return list.view.selection.currentIndex;
-    }
     return list.selectedIndex;
   } ,
 	
@@ -190,7 +168,7 @@ quickFilters.List = {
 			// 4. open the editor
 			let args = { filter:newFilter, filterList: filtersList};
 			// check http://mxr.mozilla.org/comm-central/source/mailnews/base/search/content/FilterEditor.js
-			window.openDialog("chrome://messenger/content/FilterEditor.xul", "",
+			window.openDialog("chrome://messenger/content/FilterEditor.xhtml", "",
 												"chrome, modal, resizable,centerscreen,dialog=yes", args);
 												
 			if ("refresh" in args && args.refresh) {
@@ -378,7 +356,7 @@ quickFilters.List = {
     // *******   SYNCHRONOUS PART: Shows Filter Assistant!    *******
     // **************************************************************
     util.logDebugOptional("merge", "OPENING MODAL DIALOG\n==========================");
-    let win = window.openDialog('chrome://quickfilters/content/filterTemplate.xul',
+    let win = window.openDialog('chrome://quickfilters/content/filterTemplate.xhtml',
       'quickfilters-filterTemplate',
       'chrome,titlebar,centerscreen,modal,centerscreen,resizable=yes,accept=yes,cancel=yes',
       params,
@@ -427,7 +405,7 @@ quickFilters.List = {
 			for (let a = 0; a < aCollection.Count(); a++) {
 			  let append = true;
 			  for (let b = 0; b < util.getActionCount(newFilter); b++) { 
-					let ac = newActions.queryElementAt(b, Ci.nsIMsgRuleAction);
+					let ac = newActions[b].QueryInterface(Ci.nsIMsgRuleAction); // newActions.queryElementAt(b, Ci.nsIMsgRuleAction);
 				  if (ac.type == aCollection.GetElementAt(a).type
 					    &&
 							ac.strValue == aCollection.GetElementAt(a).strValue) {
@@ -474,7 +452,7 @@ quickFilters.List = {
     //args.filterName = targetFilter.filterName;
     // check http://mxr.mozilla.org/comm-central/source/mailnews/base/search/content/FilterEditor.js
     // => filterEditorOnLoad()
-    window.openDialog("chrome://messenger/content/FilterEditor.xul", "",
+    window.openDialog("chrome://messenger/content/FilterEditor.xhtml", "",
                       "chrome, modal, resizable,centerscreen,dialog=yes", args);
 
     // If the user hits ok in the filterEditor dialog we set args.refresh=true
@@ -520,26 +498,8 @@ quickFilters.List = {
 	} ,
 	
 	set RunFolder(f) {
-		// research: https://dxr.mozilla.org/comm-central/source/mail/base/content/FilterListDialog.js
-		switch (quickFilters.Util.Application) {
-			case 'SeaMonkey':
-				let runMenu = document.getElementById("runFiltersPopup");
-				runMenu.selectFolder(getFirstFolder(f));
-				break;
-			case 'Postbox':
-				// Postbox
-				if (typeof gRunFiltersFolderPicker !== 'undefined')
-					gRunFiltersFolderPicker.setAttribute("ref", f.URI);
-			  break;
-			default: // Tb
-				if (typeof setRunFolder !== 'undefined') // Tb52
-					setRunFolder(f);
-				else {
-					let runMenu = document.getElementById("runFiltersPopup");
-					if (runMenu) runMenu.selectFolder(f);
-				}
-			  break;
-		}
+    let runMenu = document.getElementById("runFiltersPopup");
+    if (runMenu) runMenu.selectFolder(f);
 		
 		if (typeof updateButtons !== 'undefined')
 			updateButtons();
@@ -547,10 +507,6 @@ quickFilters.List = {
 	
 	get RunFolder() {
 		// research: https://dxr.mozilla.org/comm-central/source/mail/base/content/FilterListDialog.js
-		if (quickFilters.Util.Application === 'SeaMonkey') {
-			let runMenu = document.getElementById("runFiltersPopup");
-			return getFirstFolder(runMenu._parentFolder);
-		}
 		if (typeof gRunFiltersFolder !== 'undefined') // Tb
 			return gRunFiltersFolder._folder;
 		if (typeof gRunFiltersFolderPicker !== 'undefined') // Pb 
@@ -611,14 +567,9 @@ quickFilters.List = {
 					filtersList = this.FilterList,
 					sourceFolder = filtersList.folder;
 		function getListIndex(filter) {
-			if (util.Application == 'Thunderbird')
-				for (let i=0; i<filtersList.filterCount; i++) {
-					if (list.getItemAtIndex(i)._filter == filter) return i;
-				}
-			else
-				for (let i=0; i<filtersList.filterCount; i++) {
-					if (getFilter(i) == filter) return i;  // getItemAtIndex does not exist in Pb/Sm
-				}
+			for (let i=0; i<filtersList.filterCount; i++) {
+				if (list.getItemAtIndex(i)._filter == filter) return i;
+			}
 			return -1;
 		}
 		let count = this.getSelectedCount(list);
@@ -629,9 +580,7 @@ quickFilters.List = {
 		}
 		this.clipboardList.splice(0); // discard old list
 		this.clipboardServer = this.CurrentFolder; // original account when copying to clipboard!
-		let cutFiltersList = (util.Application === 'Postbox') ?
-			sourceFolder.getFilterList(gFilterListMsgWindow) : 
-			sourceFolder.getEditableFilterList(gFilterListMsgWindow);
+		let cutFiltersList = sourceFolder.getEditableFilterList(gFilterListMsgWindow);
 				
 		// get all selected filters and sort them by their list position
 		// then copy to clipboardList array
@@ -728,13 +677,7 @@ quickFilters.List = {
           sourceFolder = this.clipboardServer.rootFolder,
           cutFiltersList;
 			if (isRemove) {
-        if (util.Application === 'Postbox') {
-          // mailWindowOverlay.js:1790
-          cutFiltersList = sourceFolder.getFilterList(gFilterListMsgWindow);
-        }
-        else {
-          cutFiltersList = sourceFolder.getEditableFilterList(gFilterListMsgWindow);
-        }
+        cutFiltersList = sourceFolder.getEditableFilterList(gFilterListMsgWindow);
       }
       if (isMove && !isSort) {  // we are moving within the same server, so let's get rid of all icons to avoid confusion.
         this.resetClipboardStylings();
@@ -807,146 +750,8 @@ quickFilters.List = {
 		
 	},
 
-  onTop : function onTop(evt) {
-		const util = quickFilters.Util;
-    let filtersList = this.FilterList, // Tb / SM
-        list = this.FilterListElement;
-    try {
-      if (this.getSelectedCount(list) != 1) {
-				let wrn = util.getBundleString('quickfilters.move.selectOne', 'Exactly one filter entry must be selected!');
-				util.popupAlert(wrn);
-        return;
-      }
-      let activeFilter = this.getSelectedFilterAt(list, 0);
-      if (activeFilter) {
-        filtersList.removeFilter(activeFilter);
-        filtersList.insertFilterAt(0, activeFilter);
-        this.rebuildFilterList();  // not on SM?
-        // SM
-        if (list.view) {
-          list.view.selection.clearSelection();  // Pb: gFilterTree
-          list.view.selection.select(0);
-          list.focus();
-        }
-        else
-          this.onFindFilter(false);
-
-        document.getElementById("quickFilters-reorderButtonTop").disabled=true;
-      }
-    }
-    catch(ex) {
-      util.logException('Exception while moving filter to top: ', ex);
-    }
-  } ,
-
-  onBottom : function onBottom(evt) {
-		const util = quickFilters.Util;
-    let filtersList = this.FilterList,
-        list =this.FilterListElement;
-    try {
-      if (this.getSelectedCount(list) != 1) {
-        let wrn = util.getBundleString('quickfilters.move.selectOne', 'Exactly one filter entry must be selected!');
-				util.popupAlert(wrn);
-        return;
-      }
-      let activeFilter = this.getSelectedFilterAt(list, 0);
-      if (activeFilter) {
-        filtersList.removeFilter(activeFilter);
-        filtersList.insertFilterAt(filtersList.filterCount, activeFilter); // rolled back :P
-        this.rebuildFilterList();
-        // SM
-        if (list.view) {
-          list.view.selection.clearSelection();  // Pb: gFilterTree
-          list.view.selection.select(filtersList.filterCount-1);
-          list.focus();
-        }
-        else
-          this.onFindFilter(false);
-
-        document.getElementById("quickFilters-reorderButtonBottom").disabled=true;
-      }
-    }
-    catch(ex) {
-      util.logException('Exception while moving filter to bottom: ', ex);
-    }
-  } ,
-
-  onUp: function onUp(event) {
-    let searchBox = document.getElementById("quickFilters-Search");
-    if (searchBox.value) {
-      let filtersList = this.FilterList, // Tb / SM
-          list = this.FilterListElement;
-      if (this.getSelectedCount(list) != 1)
-        return;
-
-      let activeFilter = this.getSelectedFilterAt(list, 0);
-      if (activeFilter) try {
-        let nextIndex = this.getSelectedIndex(list) - 1,
-            nextFilter = list.getItemAtIndex(nextIndex)._filter;
-        this.rebuildFilterList();
-
-        // assumption: item stays selected even after removing the search condition
-        let newIndex = this.getSelectedIndex(list)-1;
-        filtersList.removeFilter(activeFilter);
-
-        // insert before next visible item
-        // go up from selected index until finding the correct filter name
-        while (nextFilter.filterName!=list.getItemAtIndex(newIndex)._filter.filterName && nextIndex<this.getListElementCount(list))
-          newIndex--;
-        filtersList.insertFilterAt(newIndex, activeFilter);
-        this.rebuildFilterList();
-        //  To DO: need special code for POstbox...
-        list.selectedIndex = newIndex;
-
-      }
-      catch (ex) {
-        quickFilters.Util.logException('quickFilters.List.onDown: ', ex);
-      }
-      this.onFindFilter(false);
-    }
-    else
-      moveCurrentFilter(Components.interfaces.nsMsgFilterMotion.up);
-  } ,
-
-  onDown: function onDown(event) {
-    let searchBox = document.getElementById("quickFilters-Search");
-    if (searchBox.value) {
-      let filtersList = this.FilterList, // Tb / SM
-          list = this.FilterListElement;
-      if (this.getSelectedCount(list) != 1)
-        return;
-
-      let activeFilter = this.getSelectedFilterAt(list, 0);
-      if (activeFilter) try {
-        let nextIndex = list.selectedIndex+1,
-            nextFilter = list.getItemAtIndex(nextIndex)._filter;
-        this.rebuildFilterList();
-
-        // assumption: item stays selected even after removing the search condition
-        let newIndex = list.selectedIndex+1;
-        filtersList.removeFilter(activeFilter);
-
-        // insert after next visible item
-        // go down from selected index until finding the correct filter name
-        while (nextFilter.filterName!=list.getItemAtIndex(newIndex)._filter.filterName && nextIndex<this.getListElementCount(list))
-          newIndex++;
-        filtersList.insertFilterAt(newIndex, activeFilter);
-        this.rebuildFilterList();
-        list.selectedIndex = newIndex;
-      }
-      catch (ex) {
-        quickFilters.Util.logException('quickFilters.List.onDown: ', ex);
-      }
-      this.onFindFilter(false);
-    }
-    else
-      moveCurrentFilter(Components.interfaces.nsMsgFilterMotion.down);
-  } ,
-
   getListElementCount: function getListElementCount(list) {
-    if (typeof list.getRowCount !== "undefined")
-      return list.getRowCount();
-    return list.view.rowCount; // SM/Postbox: treeview
+    return list.getRowCount();
   } ,
 
   // remove any icons that were added as part of copy or cut functions
@@ -981,16 +786,12 @@ quickFilters.List = {
     let list = this.FilterListElement,
         numFiltersSelected = this.getSelectedCount(list),
         oneFilterSelected = (numFiltersSelected === 1),
-        buttonTop = document.getElementById("quickFilters-reorderButtonTop"),
-        buttonBottom = document.getElementById("quickFilters-reorderButtonBottom"),
         upDisabled = !(oneFilterSelected &&
                        this.getSelectedFilterAt(list, 0) != list.childNodes[1]);
     if (list.currentIndex === 0) // SM
       upDisabled = true;
-    buttonTop.disabled = upDisabled;
     let downDisabled = (!oneFilterSelected
         || list.currentIndex === this.getListElementCount(list)-1);
-    buttonBottom.disabled = downDisabled;
   } ,
 
   onLoadFilterList: function onLoadFilterList(evt) {
@@ -998,8 +799,14 @@ quickFilters.List = {
 		      prefs = quickFilters.Preferences,
 					qList = quickFilters.List;
     function removeElement(el) {
-      el.collapsed = true;
+      try {
+        el.collapsed = true;
+      }
+      catch(ex) {
+        util.logException('onLoadFilterList - removeElement() failed', ex);
+      }
     }
+    
     function formatListLabel(el) {
       if (el) {
         el.setAttribute('crop','end');
@@ -1057,16 +864,9 @@ quickFilters.List = {
 		filterListEl.setAttribute('context','quickFiltersContext');
 
     // check whether [Bug 450302] has landed - Thunderbird 24.0
-    let nativeSearchBox = getElement("searchBox"),
-    // check whether QuickFolder_s already does these modifications
-        quickFolderSearchBox = getElement("quickFilters-Search");
+    let nativeSearchBox = getElement("searchBox");
     //move buttons to the correct place
-    let buttonBottom = getElement("quickFilters-reorderButtonBottom"),
-        buttonTop = getElement("quickFilters-reorderButtonTop"),
-        down = getElement("reorderDownButton"),
-        up = getElement("reorderUpButton"),
-        searchBox = getElement("quickFilters-Search"),
-        countBox = getElement("quickFilters-Count"),
+    let down = getElement("reorderDownButton"),
         mergeButton = getElement("quickFilters-mergeButton");
     if (mergeButton) {
 		  if (isToolbar)
@@ -1075,7 +875,7 @@ quickFilters.List = {
 				down.parentNode.insertBefore(mergeButton, getElement("deleteButton").nextSibling);
     }
     
-    if (!nativeSearchBox) {
+ /* if (!nativeSearchBox) {
 			if (prefs.isDebugOption('filterSearch')) debugger;
       if (hbox && util.Application != 'Thunderbird') {
         // go into grid (into its own row!)
@@ -1083,51 +883,27 @@ quickFilters.List = {
             searchSpacer = getElement ('quickFiltersSearchSpacer'),
             rows = hbox.getElementsByTagName("rows")[0];
         rows.insertBefore(searchBoxContainer, rows.firstChild.nextSibling);
-        // use this flag to allow (experimental) search box in SM/Postbox
-        if (prefs.getBoolPref('notTB.searchbox')) {
-          searchBoxContainer.collapsed = false;
-          searchSpacer.collapsed = false;
-					qList.updateCountBox();
-        }
       }
-    }
+    } */
     
-    let sb = nativeSearchBox || quickFolderSearchBox;
+    let sb = nativeSearchBox;
     if (sb) {
       util.logDebugOptional('filterList', 'got search box, extending functionality...');
       let btnOptions = getElement('quickFilters-SearchOptions');
       btnOptions.collapsed = false;
       btnOptions = sb.parentNode.insertBefore(btnOptions, sb);
       // extend search methods:
-      if (util.Application == 'Thunderbird') {
-        filterSearchMatch = qList.filterSearchMatchExtended;
-        if (rebuildFilterList) {
-          if (!this.rebuildFilterList_Orig) {
-            this.rebuildFilterList_Orig = rebuildFilterList;
-            rebuildFilterList = function() { 
-              qList.rebuildFilterList_Orig(); 
-              qList.rebuildPost(); // step for styling the list after rebuilding
-            }
+      filterSearchMatch = qList.filterSearchMatchExtended;
+      if (rebuildFilterList) {
+        if (!this.rebuildFilterList_Orig) {
+          this.rebuildFilterList_Orig = rebuildFilterList;
+          rebuildFilterList = function() { 
+            qList.rebuildFilterList_Orig(); 
+            qList.rebuildPost(); // step for styling the list after rebuilding
           }
         }
       }
-      else {
-        // we do not define the global rebuildFilterList if it does not exist.
-        // if (!window.rebuildFilterList)
-        // window.rebuildFilterList = function() { 
-          // qList.rebuildFilterList(); 
-          // qList.rebuildPost(); // step for styling the list after rebuilding
-        // }
-      }
     
-      // once [Bug 450302] has landed, we do not need to add this functionality ourselves :)
-      // also same functionality is provided by QuickFolder_s already, so no need to do it from here
-      removeElement(buttonTop);
-      removeElement(buttonBottom);
-      if (nativeSearchBox) {
-        removeElement(searchBox);
-        removeElement(countBox);
-      }
       // in this case, this id should be assigned already by the bugfix
       formatListLabel(getElement("filterListLabel"));
     }
@@ -1138,13 +914,6 @@ quickFilters.List = {
       /** Add Top + Bottom Buttons **/
       // DOMi ugliness.
       util.logDebugOptional('filterList', 'no search box, adding top/bottom buttons...');
-      
-      if (up){
-        up.parentNode.insertBefore(buttonTop, up);
-      }
-      if (down){
-        down.parentNode.insertBefore(buttonBottom, down.nextSibling);
-      }
 		
       // overwrite handlers for moving filters while search is active
       // add additional listener for the filter list to select event
@@ -1193,26 +962,6 @@ quickFilters.List = {
         }
       }
 
-      // the following changes to the dialog layout are fairly fundamental, but they follow the (UI-reviewed)
-      // modifications in  [Bug 450302].
-      // 1. [Run Now] is relocated to the bottom, between filter target drop down and Filter Log.
-      //    there is a certain functional logic to this order
-      // 2. The search {filters} box is inserted to the right of the servers dropdown.
-      //    Again this makes sense as both elements cause the list contents to change.
-      // 3. An item count is appended to the right of the list description label
-      //    TO DO: description should be collapsible in favor of item count.
-			/// OLD CODE: Thunderbird < 24.0
-      if (util.Application === 'Thunderbird') {
-				util.logToConsole('Old Thunderbird application (no search box) - sorry, search is not supported in thie version of quickFilters.');
-      }
-      else {
-        util.logDebugOptional('filterList', 'SeaMonkey / Postbox: search box not supported.');
-        // for the moment we do not support this on SM / Postbox as I have problems with removing stuff from the treeview!
-        // in future we need to build our own tree
-        // build a treeview that supports hidden elements and overwrite gFilterTreeView
-        // #maildev@Neil: could create a virtual list, the SeaMonkey view is only interested in the filterCount property and the getFilterAt method
-        searchBox.collapsed = true;
-      }
     /************************************ 
      **    MODIFICATIONS  END          **
      ***********************************/
@@ -1232,21 +981,28 @@ quickFilters.List = {
         if (args[i].targetFolder) targetFolder = args[i].targetFolder;
         if (args[i].alphabetic) isAlphabetic = args[i].alphabetic;
       }
-      if (targetFilter) {
-        this.selectFilter(targetFilter);
-				if (isAlphabetic)
-					this.moveAlphabetic(targetFilter);
-				if (typeof getFirstFolder != 'undefined') {
-					// set run folder:
-					let rootFolder = qList.CurrentFolder.rootFolder,
-							first = getFirstFolder(rootFolder);
-					if (first) qList.RunFolder = first; 
-				}
-      }  
       if (targetFolder) {
         // prepare a dropdown with results!
         this.findFromTargetFolder(targetFolder);
       }
+      if (targetFilter) {
+        // Tb78
+        // trying timeout because this causes call to rebuildFilterList with exception "gSearchBox is null"
+        // maybe document isn't ready at this stage?
+        setTimeout(
+          function() {
+            qList.selectFilter(targetFilter);
+            if (isAlphabetic)
+              qList.moveAlphabetic(targetFilter);
+            if (typeof getFirstFolder != 'undefined') {
+              // set run folder:
+              let rootFolder = qList.CurrentFolder.rootFolder,
+                  first = getFirstFolder(rootFolder);
+              if (first) qList.RunFolder = first; 
+            }
+          }, 150
+        );
+      }  
     }
     // set zlevel to raisedZ
     // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIXULWindow
@@ -1281,10 +1037,15 @@ quickFilters.List = {
 		const util = quickFilters.Util;
     // highlight last edited filter: (after merge!!)
     // [Bug 25802] After editing existing Filter, it should be selected in List 
-    util.logDebugOptional('filterList', 'targetFilter argument passed:');
+    util.logDebugOptional('filterList', 'targetFilter argument passed: ' + targetFilter ? targetFilter.filterName : 'null');
     // reset the filter first
-    if (typeof resetSearchBox !== "undefined")  { // not in Postbox
+    try {
       resetSearchBox();  // http://mxr.mozilla.org/comm-central/source/mail/base/content/FilterListDialog.js#920
+    }
+    catch(ex) {
+      debugger;
+    }
+    finally {
       rebuildFilterList();
     }
     // if passed to window arguments, iterate and highlight matching filter
@@ -1305,9 +1066,8 @@ quickFilters.List = {
           list.ensureElementIsVisible(item);
           list.selectItem(item);
         } 
-        else {  // tree (Postbox + SeaMonkey)
-          list.view.selection.select(idx);
-          list.treeBoxObject.ensureRowIsVisible(idx);
+        else {  // tree (Postbox + SeaMonkey)#
+          alert("incompatible code in selectFilter!");
         }
         break;
       }
@@ -1315,8 +1075,11 @@ quickFilters.List = {
   } ,
   
 	// here is a hack for filtering, because the filtered view returns incorect rowCount
+  // Tb78 obsolete?
   updateCountBox: function updateCountBox(forceCount) {
 		try {
+      return;
+/*      
 			let countBox = document.getElementById("quickFilters-Count"),
 					sum = this.FilterList.filterCount,
 					filterList = this.FilterListElement,
@@ -1332,6 +1095,7 @@ quickFilters.List = {
 				countBox.value = document.getElementById ('quickFilters-Count-n-of-m').value
 					.replace('{0}', len.toString())
 					.replace('{1}', sum.toString());
+*/
 		}
 		catch(ex) {
 			quickFilters.Util.logException("Exception in quickFilters.List.updateCountBox()", ex);
@@ -1343,29 +1107,10 @@ quickFilters.List = {
   rebuildFilterList: function rebuildFilterList_qF() {
 		const util = quickFilters.Util;
 		try {
-			if (typeof gCurrentFilterList !== "undefined") { // Thunderbird
-				rebuildFilterList(gCurrentFilterList);
-			}
-			else {
-				if (util.Application === 'Postbox') {
-					refresh();
-					this.updateCountBox();
-					return;
-				}
-
-				// force a repaint through the BoxObject
-				let fl = this.FilterListElement,
-						// from: SM's setServer(uri) function
-						msgFolder = this.CurrentFolder;
-
-				//Calling getFilterList will detect any errors in rules.dat, backup the file, and alert the user
-				this.gFilterTreeView.filterList = msgFolder.getEditableFilterList(gFilterListMsgWindow);
-				fl.boxObject.invalidate();
-			}
-			this.updateCountBox();
+			rebuildFilterList(gCurrentFilterList);
+			// this.updateCountBox(); // is this obsolete? uses the now non-existent quickFilters-Count element
 		}
 		catch(ex) { util.logException('rebuildFilterList()', ex) }
-		
   } ,
 
 /**
@@ -1377,13 +1122,13 @@ quickFilters.List = {
   onFindFilter: function onFindFilter(focusSearchBox) {
     const util = quickFilters.Util,
 		      prefs = quickFilters.Preferences;
-    let searchBox = document.getElementById("quickFilters-Search"),
+    let searchBox = document.getElementById("searchBox"), // quickFilters-Search
         filterList = this.FilterListElement,
         keyWord = searchBox.value.toLocaleLowerCase();
 
     // simplest case: if filter was added or removed and searchbox is empty
     if (!keyWord && !focusSearchBox) {
-      this.updateCountBox();
+      //this.updateCountBox();
       return;
     }
 
@@ -1400,46 +1145,27 @@ quickFilters.List = {
         
     for (let i = rows - 1; i>=0; i--) {
       let matched = true;
-       // SeaMonkey (Postbox) vs Thunderbird - treeview vs listbox
-      if (filterList.nodeName === 'tree') {
-        // http://mxr.mozilla.org/comm-central/source/suite/mailnews/search/FilterListDialog.js
-        // SeaMonkey
-        item = getFilter(i); // SM / Postbox: defined in FilterListDialog.js 
-        title = item.filterName;
-        if (!this.filterSearchMatchExtended(item, keyWord)){
-          if (prefs.isDebugOption('filterSearch.detail')) debugger;    
-          matched = false;
-          filterList.view.performActionOnRow("delete", i); // the view is same as gFilterTreeView
-          filterList.boxObject.invalidateRow(i);
-          filterList.boxObject.rowCountChanged(i+1, -1); // was i + 1  -- same as gFilterTreeView.tree
-					hiddenCount++;
-          // problem: gFilterTreeView.filterList is not updated; see setServer(uri) in FilterListDialog.js
-          // maybe we can replace set filterList(val) { ... }
-          //   this.mFilterList = val  => replace with the "filtered" values
-        }
+      // Thunderbird
+      item = filterList.getItemAtIndex(i);
+      // in Tb78, this is now a richlistitem. It's first child is a label element with a value
+      title = item.firstChild.value; // item.firstChild.getAttribute("label");
+      if (title.toLocaleLowerCase().indexOf(keyWord) === -1)
+      {
+        matched = false;
+        filterList.removeChild(item);
       }
-      else {
-        // Thunderbird
-        item = filterList.getItemAtIndex(i);
-        title = item.firstChild.getAttribute("label");
-        if (title.toLocaleLowerCase().indexOf(keyWord) === -1)
-        {
-          matched = false;
-          filterList.removeChild(item);
-        }
 
-      }
       if (matched)
         util.logDebugOptional("filters", "matched filter: " + title);
     }
-    this.updateCountBox(rows-hiddenCount);
+    // this.updateCountBox(rows-hiddenCount);
     if (focusSearchBox)
       searchBox.focus();
 
   } ,
 
   validateFilterTargets: function validateFilterTargets(sourceURI, targetURI) {
-		quickFilters.Shim.validateFilterTargets(sourceURI, targetURI);
+		quickFilters.Util.validateFilterTargets(sourceURI, targetURI);
   },
 	
 	toggleAssistant: function toggleAssistant(btn) {
@@ -1921,7 +1647,7 @@ quickFilters.List = {
       filterConditionActionType: termActionType  // use this to scroll to and highlight the action needing to be removed
     };
     // for this functionality, we need to overload chrome://messenger/content/FilterEditor.xul
-    window.openDialog("chrome://messenger/content/FilterEditor.xul", "FilterEditor", "chrome,modal,titlebar,resizable,centerscreen", args);
+    window.openDialog("chrome://messenger/content/FilterEditor.xhtml", "FilterEditor", "chrome,modal,titlebar,resizable,centerscreen", args);
 
     if ("refresh" in args && args.refresh) {
       // reset search if edit was okay (name change might lead to hidden entry!)
@@ -1944,8 +1670,7 @@ quickFilters.List = {
 		
 		if (prefs.isDebugOption('filterSearch')) debugger;
 		
-		if (util.versionGreaterOrEqual(util.AppverFull, "67")) 
-		  var {MailServices} =  ChromeUtils.import("resource:///modules/MailServices.jsm");
+    var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
 
     
     // find out of we need to change server:
@@ -1955,6 +1680,7 @@ quickFilters.List = {
         uri = item.getAttribute('targetFolderUri'),
         actionType = item.getAttribute('actionType'),    
         // change server to correct account (originating inbox)
+        // PROBLEM HERE!! -->
         aFolder = account ?
 					(MailUtils ? 
 					  (MailUtils.getExistingFolder ? MailUtils.getExistingFolder(account.serverURI) : MailUtils.getFolderForURI(account.serverURI)) 
@@ -1963,29 +1689,13 @@ quickFilters.List = {
 
 		// check whether we changed to a different server:		
 		if (qList.CurrentFolder != aFolder) {
-			if (typeof onFilterFolderClick !== 'undefined') {
-				// Old Thunderbird specific code. Deprecated in Tb52
-				onFilterFolderClick(aFolder);
-			}
-			else {
-				if (typeof selectServer !== 'undefined') {
-					selectServer(aFolder.URI); // TB + Postbox!
-					if (typeof setFolder !== 'undefined') setFolder(aFolder); // roots the tree
-				}
-				else {
-					// Sm
-					let serverPopup = qList.ServerMenuPopup;
-					serverPopup.selectFolder(aFolder); // this didn't rebuild anymore!
-					if (typeof setServer !== 'undefined') setServer(aFolder);
-				}
-			}
-			if (util.Application !== 'Postbox') {
-				// rebuild list in case of server change
-				if (typeof gCurrentFilterList !== 'undefined')  // Tb
-					gCurrentFilterList = aFolder.getEditableFilterList(gFilterListMsgWindow);
-				qList.rebuildFilterList();
-				qList.RunFolder = aFolder;  // also refreshes buttons
-			}
+      let serverPopup = qList.ServerMenuPopup;
+      serverPopup.selectFolder(aFolder); // this didn't rebuild anymore!
+			// rebuild list in case of server change
+			if (typeof gCurrentFilterList !== 'undefined')  // Tb
+				gCurrentFilterList = aFolder.getEditableFilterList(gFilterListMsgWindow);
+			qList.rebuildFilterList();
+			qList.RunFolder = aFolder;  // also refreshes buttons
 		}
   
     // select found filter
@@ -1996,12 +1706,13 @@ quickFilters.List = {
   // search results are able to select a different server and thus may not be reset by changing the server manually
   // initial implementation: see quickFilters.searchFiltersFromFolder()
   findFromTargetFolder: function findFromTargetFolder(targetFolder) {
+    const util = quickFilters.Util;
     this.searchFilterResults = [];
-    quickFilters.Util.logDebug('findFromTargetFolder(' + targetFolder.prettyName + ')');
+    util.logDebug('findFromTargetFolder(' + targetFolder.prettyName + ')');
     
-		quickFilters.Shim.findFromTargetFolder(targetFolder, this.searchFilterResults);
+		util.findFromTargetFolder(targetFolder, this.searchFilterResults);
 		
-    quickFilters.Util.logDebug('findFromTargetFolder(' + targetFolder.prettyName + ') COMPLETE \n' 
+    util.logDebug('findFromTargetFolder(' + targetFolder.prettyName + ') COMPLETE \n' 
                                 + this.searchFilterResults.length + ' matches found');
   } ,
 	
@@ -2151,18 +1862,6 @@ quickFilters.List = {
 					let lastPath = path.substr(0, lastSlash);
 					util.logDebug("Storing Path: " + lastPath);
 					prefs.setStringPref('files.path', lastPath);
-          if (util.Application=='Postbox' && util.PlatformVersion<50) {
-            switch (mode) {
-              case 'load':
-                let settings = quickFilters.Util.Postbox_readFile(path);
-                readData(settings);
-                return;
-              case 'save':
-                quickFilters.Util.Postbox_writeFile(path, jsonData)
-                return;
-            }
-            throw ('invalid mode: ' + mode);
-          }
           
 					const {OS} = (typeof ChromeUtils.import == "undefined") ?
 						Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
@@ -2214,63 +1913,10 @@ quickFilters.List = {
     
 		if (fp.open)
 			fp.open(fpCallback);		
-  	else { // Postbox
-		  fpCallback(fp.show());
-  	}
     
     return true;    
   } ,
   
-  Postbox_writeFile: function Pb_writeFile(path, jsonData) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
-    
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE); // Postbox specific. deprecated in Tb 57
-    file.initWithPath(path);
-    // stateString.data = aData;
-    // Services.obs.notifyObservers(stateString, "sessionstore-state-write", "");
-
-    // Initialize the file output stream.
-    let ostream = Cc["@mozilla.org/network/safe-file-output-stream;1"].createInstance(Ci.nsIFileOutputStream);
-    ostream.init(file, 
-                 0x02 | 0x08 | 0x20,   // write-only,create file, reset if exists
-                 0x600,   // read+write permissions
-                 ostream.DEFER_OPEN); 
-
-    // Obtain a converter to convert our data to a UTF-8 encoded input stream.
-    let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
-    converter.charset = "UTF-8";
-
-    // Asynchronously copy the data to the file.
-    let istream = converter.convertToInputStream(jsonData); // aData
-    NetUtil.asyncCopy(istream, ostream, function(rc) {
-      if (Components.isSuccessCode(rc)) {
-        // do something for success
-      }
-    });
-  } ,
-  
-  Postbox_readFile: function Pb_readFile(path) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE); // Postbox specific. deprecated in Tb 57
-    file.initWithPath(path);
-          
-    let fstream = Cc["@mozilla.org/network/file-input-stream;1"].
-                  createInstance(Ci.nsIFileInputStream);
-    fstream.init(file, -1, 0, 0);
-
-    let cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].
-                  createInstance(Ci.nsIConverterInputStream);
-    cstream.init(fstream, "UTF-8", 0, 0);
-
-    let string  = {};
-    cstream.readString(-1, string);
-    cstream.close();
-    return string.value;    
-  }, 
 	
 /*
 nsresult nsMsgFilterList::SaveTextFilters(nsIOutputStream *aStream)

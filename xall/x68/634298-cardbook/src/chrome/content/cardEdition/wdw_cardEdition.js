@@ -24,6 +24,68 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		workingCard: {},
 		cardRegion: "",
 
+		getEmails: function () {
+			let emails = [];
+			let cardEmails = cardbookWindowUtils.getAllTypes("email", true);
+			for (let cardRow of cardEmails) {
+				emails.push(cardRow[0][0]);
+			}
+			return emails;
+		},
+
+		searchForOnlineKeyEdit: function () {
+			let emails = wdw_cardEdition.getEmails();
+			if (emails.length) {
+				cardbookEnigmail.searchForOnlineKeyEdit(emails);
+			}
+		},
+
+		searchForThKeyEdit: function () {
+			let emails = wdw_cardEdition.getEmails();
+			if (emails.length) {
+				cardbookEnigmail.searchForThKeyEdit(emails);
+			}
+		},
+
+		searchForLocalKeyEdit: function () {
+			cardbookWindowUtils.callFilePicker("fileSelectionGPGTitle", "OPEN", "GPG", "", "", wdw_cardEdition.searchForLocalKeyEditNext);
+		},
+
+		searchForLocalKeyEditNext: function (aFile) {
+			try {
+				if (aFile) {
+					var params = {};
+					params["showError"] = true;
+					cardbookRepository.cardbookSynchronization.getFileDataAsync(aFile.path, wdw_cardEdition.searchForLocalKeyEditNext2, params);
+				}
+			}
+			catch (e) {
+				cardbookRepository.cardbookLog.updateStatusProgressInformation("searchForLocalKeyEditNext error : " + e, "Error");
+			}
+		},
+
+		searchForLocalKeyEditNext2: function (aContent, aParam) {
+			try {
+				if (aContent) {
+					wdw_cardEdition.addKeyToEdit(aContent);
+				}
+			}
+			catch (e) {
+				cardbookRepository.cardbookLog.updateStatusProgressInformation("searchForLocalKeyEditNext2 error : " + e, "Error");
+			}
+		},
+	
+		addKeyToEdit: function (aKey) {
+			let type = "key";
+			let re = /[\n\u0085\u2028\u2029]|\r\n?/g;
+			aKey = aKey.replace(/-----(BEGIN|END) PGP PUBLIC KEY BLOCK-----/g, "").replace(re, "");
+			let allKeyArray = cardbookWindowUtils.getAllKeys(false);
+			allKeyArray = allKeyArray.filter(child => (child.value != "" || child.URI != ""));
+			allKeyArray.push({types: [], value: aKey, localURI: "", URI: "", extension: ""});
+			cardbookElementTools.deleteRows(type + "ReadWriteGroupbox");
+			cardbookWindowUtils.constructDynamicKeysRows(wdw_cardEdition.workingCard.dirPrefId, type, allKeyArray, wdw_cardEdition.workingCard.version);
+		},
+
 		displayListTrees: function (aTreeName) {
 			var cardsTreeView = {
 				get rowCount() { return wdw_cardEdition.cardbookeditlists[aTreeName].length; },
@@ -386,9 +448,14 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadOnlyGroupbox').setAttribute('hidden', 'true');
-				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
+				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
+				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
+				document.getElementById('categoriesReadOnlyGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('categoriesReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'false');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'false');
 				document.getElementById('saveEditionLabel').setAttribute('hidden', 'true');
@@ -400,9 +467,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadOnlyGroupbox').setAttribute('hidden', 'true');
-				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
+				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
+				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'false');
 				document.getElementById('saveEditionLabel').setAttribute('hidden', 'true');
@@ -416,11 +486,14 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('addressbookHeader').value = cardbookRepository.extension.localeData.localizeMessage("addressbookHeader");
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
-				document.getElementById('categoriesReadOnlyGroupbox').removeAttribute('hidden');
 				document.getElementById('fnTextBox').setAttribute('class', 'indent');
-				document.getElementById('listReadOnlyGroupbox').removeAttribute('hidden');
+				document.getElementById('categoriesReadOnlyGroupbox').removeAttribute('hidden');
 				document.getElementById('categoriesReadWriteGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('listReadOnlyGroupbox').removeAttribute('hidden');
 				document.getElementById('listReadWriteGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('keyReadOnlyHbox').removeAttribute('hidden');
+				document.getElementById('keyReadWriteHbox').setAttribute('hidden', 'true');
+				document.getElementById('keyReadWriteToolsVbox').setAttribute('hidden', 'true');
 				document.getElementById('defaultCardImage').removeAttribute('context');
 				document.getElementById('defaultCardImage').removeAttribute('ondblclick');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
@@ -434,7 +507,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				} else {
 					document.getElementById('classicalRows').setAttribute('hidden', 'true');
 				}
-				document.getElementById('readWriteVbox').setAttribute('hidden', 'true');
+				document.getElementById('readWriteTypesVbox').setAttribute('hidden', 'true');
 			} else if (window.arguments[0].editionMode == "EditContact" || window.arguments[0].editionMode == "EditList") {
 				document.getElementById('addressbookMenulistReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('addressbookMenulist').disabled = false;
@@ -443,9 +516,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadOnlyGroupbox').setAttribute('hidden', 'true');
-				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
+				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
+				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('classicalRows').setAttribute('hidden', 'true');
@@ -458,9 +534,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('existingDataGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('contactMenulist').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadOnlyGroupbox').setAttribute('hidden', 'true');
-				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
+				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
+				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('classicalRows').setAttribute('hidden', 'true');
@@ -474,9 +553,12 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('existingDataGroupbox').removeAttribute('hidden');
 				document.getElementById('contactMenulist').removeAttribute('hidden');
 				document.getElementById('categoriesReadOnlyGroupbox').setAttribute('hidden', 'true');
-				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('categoriesReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('listReadOnlyGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('listReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
+				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
+				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('classicalRows').setAttribute('hidden', 'true');
@@ -586,6 +668,13 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			} else {
 				document.getElementById('mailPopularityTab').setAttribute("collapsed", true);
 			}
+			// test waiting 
+			document.getElementById('keyTab').setAttribute("collapsed", true);
+			// test waiting if (isElementInPref("key")) {
+			// test waiting 	document.getElementById('keyTab').setAttribute("collapsed", false);
+			// test waiting } else {
+			// test waiting 	document.getElementById('keyTab').setAttribute("collapsed", true);
+			// test waiting }
 			if (isElementInPref("fn") || wdw_cardEdition.workingCard.fn) {
 				document.getElementById('fnGroupbox').removeAttribute('hidden');
 			} else {
@@ -1281,6 +1370,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				aCard[type] = cardbookWindowUtils.getAllTypes(type, true);
 			}
 			aCard.impp = cardbookWindowUtils.getIMPPTypes();
+			aCard.key = cardbookWindowUtils.getAllKeys(type, true);
 			
 			var othersTemp1 = [];
 			for (var i in cardbookRepository.customFields) {

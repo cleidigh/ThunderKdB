@@ -32,9 +32,7 @@ if ("undefined" == typeof(cardbookRichContext)) {
 							}
 						}
 						myTextbox.value = result;
-						if (myTextbox.oninput) {
-							myTextbox.oninput();
-						}
+						myTextbox.dispatchEvent(new Event('input'));
 					}, false);
 				menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("toUpperCase"));
 				menuItem.setAttribute("class", "cardbookMenuItem");
@@ -62,9 +60,7 @@ if ("undefined" == typeof(cardbookRichContext)) {
 							}
 						}
 						myTextbox.value = result;
-						if (myTextbox.oninput) {
-							myTextbox.oninput();
-						}
+						myTextbox.dispatchEvent(new Event('input'));
 					}, false);
 				menuItem.setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("toLowerCase"));
 				menuItem.setAttribute("class", "cardbookMenuItem");
@@ -119,7 +115,7 @@ if ("undefined" == typeof(cardbookRichContext)) {
 			menu.appendChild(menuItem);
 
 			var myPoint = document.elementFromPoint(event.clientX, event.clientY);
-			document.getElementById('basicFieldContextMenu').openPopup(myPoint, 'after_start', 0, 0, false, false);
+			document.getElementById('basicFieldContextMenu').openPopup(myPoint, 'after_start', 0, 0, true);
 		},
 
 		// don't have found a better way to add a contextual menu to a html:textarea or html:input
@@ -128,7 +124,7 @@ if ("undefined" == typeof(cardbookRichContext)) {
 				aEvent.stopImmediatePropagation();
 				wdw_cardbook.setCurrentTypeFromEvent(aEvent);
 				var myPoint = document.elementFromPoint(aEvent.clientX, aEvent.clientY);
-				document.getElementById('listsContextMenu').openPopup(myPoint, 'after_start', 0, 0, false, false);
+				document.getElementById('listsContextMenu').openPopup(myPoint, 'after_start', 0, 0, true);
 			}
 		},
 
@@ -139,7 +135,7 @@ if ("undefined" == typeof(cardbookRichContext)) {
 				var myType = event.target.id.split('_')[0];
 				wdw_cardbook.setCurrentTypeFromEvent(aEvent);
 				var myPoint = document.elementFromPoint(aEvent.clientX, aEvent.clientY);
-				document.getElementById(myType +'TreeContextMenu').openPopup(myPoint, 'after_start', 0, 0, false, false);
+				document.getElementById(myType +'TreeContextMenu').openPopup(myPoint, 'after_start', 0, 0, true);
 			}
 		}
 	};

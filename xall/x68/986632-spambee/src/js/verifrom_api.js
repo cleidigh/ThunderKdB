@@ -1518,6 +1518,7 @@ verifrom.actionButton.prototype = {
                 }.bind(this, resolvePromise, rejectPromise))
                 .catch((reason) => {
                     void 0;
+                    rejectPromise(reason);
                 });
         }.bind(this));
     },

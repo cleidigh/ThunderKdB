@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Τοποθεσία συνδέσμου"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Εισαγωγή από αρχείο"
+	},
 	"uncategorizedCards": {
 		"message": "Καμία κατηγορία"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "??$P1$ : Key downloaded for contact $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Επαφή $P2$ κατεβάστηκε από το διακομιστή",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "Επαφές Κρυφ. κοιν"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "Επαφές Προς ή Κοιν."
 	},
 	"cardbook.searchAll.name": {
 		"message": "Επαφές Από, Προς, Κοιν ή Κρυφ. κοιν"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "κ"
 	},
+	"keyTab.conf.label": {
+		"message": "??Public Keys??"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "δ"
+	},
 	"advancedTab1Label": {
 		"message": "Προχωρημένος"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "??URL opening for soft phones??"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain $1, referring to the phone number.??"
+		"message": "??This section applies if you have selected the url protocol for phone. The URL should contain {{1}}, referring to the phone number.??"
 	},
 	"URLPhoneURLLabel": {
 		"message": "Παγκόσμιους εντοπιστές πόρων:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "εικονική κάρτα (vCard)"
 	},
+	"keyTabLabel": {
+		"message": "??Public Keys??"
+	},
 	"noteTabLabel": {
 		"message": "Σημειώσεις"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Γράψτε ένα νέο μήνυμα (Κρυφ. κοιν)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "??Public keys??"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Ανακάλυψη κλειδιών στο διαδίκτυο"
+	},
+	"importKeyFromCards.label": {
+		"message": "??Import into OpenPGP Key Manager??"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Ανακάλυψη κλειδιών στο διαδίκτυο"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Ανακάλυψη κλειδιών στο διαδίκτυο"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "??Search for keys in OpenPGP key manager??"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Εισαγωγή από αρχείο"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Κοινή χρήση μέσω ηλεκτρονικού ταχυδρομείου"

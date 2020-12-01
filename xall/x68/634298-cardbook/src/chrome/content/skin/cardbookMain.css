@@ -98,26 +98,6 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 	display: inline-block;
 }
 
-/* edition */
-.cardbookExpandedClass {
-	/* Override button appearance */
-	-moz-appearance: none;
-	min-width: 20px;
-	margin-block: 0;
-	margin-inline: 1px 0;
-	border: 0;
-	background-color: transparent;
-	color: inherit;
-	-moz-user-focus: normal;
-	list-style-image: url("chrome://global/skin/icons/twisty-collapsed.svg");
-	-moz-context-properties: fill, fill-opacity;
-	fill: currentColor;
-	fill-opacity: 1;
-}
-.cardbookExpandedClass[expanded="true"] {
-	list-style-image: url("chrome://global/skin/icons/twisty-expanded.svg");
-}
-
 /* textarea */
 #notemodernGroupbox,
 #noteclassicalGroupbox,
@@ -189,4 +169,40 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 	margin-block: 0;
 	background-color: var(--tab-selected-background);
 	border-bottom: 2px solid var(--tab-line-color, var(--highlight-color));
+}
+
+/* edition */
+.cardbookExpandedClass {
+	/* Override button appearance */
+	-moz-appearance: none;
+	min-width: 20px;
+	margin-block: 0;
+	margin-inline: 1px 0;
+	border: 0;
+	background-color: transparent;
+	color: inherit;
+	-moz-user-focus: normal;
+	list-style-image: url("chrome://global/skin/icons/twisty-collapsed.svg");
+	-moz-context-properties: fill, fill-opacity;
+	fill: currentColor;
+	fill-opacity: 1;
+}
+.cardbookExpandedClass[expanded="true"] {
+	list-style-image: url("chrome://global/skin/icons/twisty-expanded.svg");
+}
+
+#searchForOnlineKeyEditButton {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/remote.svg");
+	-moz-context-properties: fill;
+	fill: currentColor;
+}
+#searchForThKeyEditButton {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/localdb.svg");
+	-moz-context-properties: fill;
+	fill: currentColor;
+}
+#searchForLocalKeyEditButton {
+	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/file.svg");
+	-moz-context-properties: fill;
+	fill: currentColor;
 }

@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Hivatkozás címe"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importálás fájlból"
+	},
 	"uncategorizedCards": {
 		"message": "Nincs kategorizálva"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : A(z) $P2$ névjegyhez nem sikerült letölteni a kulcsot (webcím : $P3$, állapot : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Kulcs letöltve a(z) $P2$ névjegyhez",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Folyamatban kulcsletöltés a(z) $P2$ névjegyhez …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : $P2$ névjegy sikeresen letöltött a számítógépes kiszolgálóról",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "Névjegyzék rejtett másolat kapott"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "Névjegyzék Címzett vagy másolatot kapott"
 	},
 	"cardbook.searchAll.name": {
 		"message": "Névjegyzék feladó, címzett, másolat vagy rejtett másolat kapott"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "v"
 	},
+	"keyTab.conf.label": {
+		"message": "Nyilvános kulcsok"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "K"
+	},
 	"advancedTab1Label": {
 		"message": "Speciális"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "Szoftver telefon"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Telefon URL-protokoll. Az URL-címnek $1-nek kell lennie, hivatkozva a telefonszámra."
+		"message": "Telefon URL-protokoll. Az URL-címnek {{1}}-nek kell lennie, hivatkozva a telefonszámra."
 	},
 	"URLPhoneURLLabel": {
 		"message": "Webcím:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Nyilvános kulcsok"
+	},
 	"noteTabLabel": {
 		"message": "Jegyzetek"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Új üzenet létrehozása (rejtett másolatok)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Nyilvános kulcsok"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Kulcsok felfedezése online"
+	},
+	"importKeyFromCards.label": {
+		"message": "Importálás az OpenPGP kulcskezelőbe"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Kulcsok felfedezése online"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Kulcsok felfedezése online"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Kulcsok keresése az OpenPGP kulcskezelőben"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importálás fájlból"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Új üzenet (névjegy melléklettel)"

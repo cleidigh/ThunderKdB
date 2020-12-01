@@ -1,28 +1,58 @@
 {
   "manifest_version": 2,
   "name": "quickFilters",
-  "description": "Quickly generate mail filters on the fly, by dragging and dropping mails and analyzing their attributes.",
-  "version": "4.4.1",
-  "author": "Axel Grude",
-  "legacy": {
-    "type": "xul",
-    "options": {
-      "page": "chrome://quickfilters/content/quickFilters-options.xul",
-      "open_in_tab": false
-    }
-  }	,
-  "developer": {
-	  "name": "Axel Grude",
-    "url": "http://quickfilters.quickfolders.org/index.html"
+  "description": "__MSG_extensionDescription__",
+  "version": "5.0",
+  "default_locale": "en",
+  "author": "Axel Grude, Klaus Buecher/opto",
+   "developer": {
+	  "name": "Axel Grude, Klaus Buecher/opto",
+    "url": "https://quickfilters.quickfolders.org/index.html"
 	},
   "applications": {
     "gecko": {
       "id": "quickFilters@axelg.com",
-      "strict_min_version": "60.0"
+      "strict_min_version" : "78.0",
+      "strict_max_version" : "78.*"
     }
   },
+  "options_ui": {
+    "page": "chrome/content/quickFilters-options.xhtml"
+  },  
+  "background": {
+      "scripts": ["qFi-background.js"]
+    },
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "chrome/content/api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "chrome/content/api/WindowListener/implementation.js"
+      }
+    },
+    "LegacyPrefs": {
+      "schema": "chrome/content/api/LegacyPrefs/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["LegacyPrefs"]],
+        "script": "chrome/content/api/LegacyPrefs/implementation.js"
+
+      }
+    },
+    "Utilities": {
+      "schema": "chrome/content/api/Utilities/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["Utilities"]],
+        "script": "chrome/content/api/Utilities/implementation.js"
+
+       }
+    }
+  },
+
   "icons": {
-    "32": "chrome/skin/QuickFilters_32.png",
-    "64": "chrome/skin/QuickFilters_64.png"
+    "32": "chrome/content/skin/QuickFilters_32.svg",
+    "64": "chrome/content/skin/QuickFilters_32.svg"
   }
 }

@@ -22,6 +22,7 @@ var cardBookWindowPrefObserver = {
 			case "mailPopularityTabView":
 			case "technicalTabView":
 			case "vcardTabView":
+			case "keyTabView":
 				wdw_cardbook.showCorrectTabs();
 				break;
 		}

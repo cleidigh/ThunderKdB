@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Posizione del Collegamento"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importa da file"
+	},
 	"uncategorizedCards": {
 		"message": "Non categorizzato"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : Non è stato possibile scaricare la chiave per il contatto $P2$ (url: $P3$, stato: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Chiave scaricata per il contatto $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Download della chiave per il contatto $P2$ in corso",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Contatto $P2$ scaricato dal server",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Ccn"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook A o Cc"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook Da, A, Cc oppure Ccn"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "Chiavi pubbliche"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "C"
+	},
 	"advancedTab1Label": {
 		"message": "Avanzate"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "Apertura URL per SoftPhone"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Questa sezione si applica se è stato selezionato il protocollo url per il telefono. L'URL dovrebbe contenere $1 nel punto dove si desidera posizionare il numero di telefono."
+		"message": "Questa sezione si applica se è stato selezionato il protocollo url per il telefono. L'URL dovrebbe contenere {{1}} nel punto dove si desidera posizionare il numero di telefono."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Chiavi pubbliche"
+	},
 	"noteTabLabel": {
 		"message": "Note"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Scrivi un nuovo messaggio (in copia nascosta/Ccn)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Chiavi pubbliche"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Individua chiavi online"
+	},
+	"importKeyFromCards.label": {
+		"message": "Importa nel gestore chiavi OpenPGP"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Individua chiavi online"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Individua chiavi online"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Cerca chiavi nel gestore chiavi OpenPGP"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importa da file"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Condividi con email"

@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Koppelingslocatie"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Uit bestand importeren"
+	},
 	"uncategorizedCards": {
 		"message": "Niet gecategoriseerd"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : Sleutel niet gedownload voor contactpersoon $P2$ (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Sleutel gedownload voor contactpersoon $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Sleutel wordt gedownload voor contactpersoon $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Contactpersoon $P2$ gedownload van de server",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Bcc"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook Aan of Cc"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook Van, Aan, Cc of Bcc"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "Publieke sleutels"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "s"
+	},
 	"advancedTab1Label": {
 		"message": "Geavanceerd"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "URL voor telefoneren"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Dit gedeelte is van toepassing op het internet-telefoneren. De URL moet $1 bevatten, om te refereren aan het telefoonnummer."
+		"message": "Dit gedeelte is van toepassing op het internet-telefoneren. De URL moet {{1}} bevatten, om te refereren aan het telefoonnummer."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Publieke sleutels"
+	},
 	"noteTabLabel": {
 		"message": "Notities"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Nieuw bericht aanmaken (blind copy / bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Publieke sleutels"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Sleutels online ontdekken"
+	},
+	"importKeyFromCards.label": {
+		"message": "Importeren in OpenPGP-sleutelbeheerder"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Sleutels online ontdekken"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Sleutels online ontdekken"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Zoek sleutels in OpenPGP-sleutelbeheerder"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Uit een bestand importeren"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Gegevens van contactpersoon aan iemand anders mailen"

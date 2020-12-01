@@ -33,6 +33,29 @@
         ]
       },
       {
+        "name":"confirmCheck",
+        "type":"function",
+        "async":true,
+        "parameters":[
+          {
+            "name":"title",
+            "type":"string"
+          },
+          {
+            "name":"message",
+            "type":"string"
+          },
+          {
+            "name": "checkMessage",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "type": "boolean"
+          }
+        ]
+      },
+      {
         "name": "generateMsgId",
         "type": "function",
         "async": true,
@@ -127,6 +150,42 @@
             "name": "content",
             "type": "string",
             "description": "New message contents"
+          }
+        ]
+      },
+      {
+        "name": "getAllScheduledMessages",
+        "type": "function",
+        "async": true,
+        "description": "Get a raw message.",
+        "parameters": [
+          {
+            "name": "accountId",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "deleteDraftByUri",
+        "type": "function",
+        "async": true,
+        "description": "Delete a draft message",
+        "parameters": [
+          {
+            "name": "accountId",
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "type": "string"
+          },
+          {
+            "name": "draftUri",
+            "type": "string"
           }
         ]
       },

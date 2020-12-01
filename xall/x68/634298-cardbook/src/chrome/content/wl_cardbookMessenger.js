@@ -14,6 +14,7 @@ Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookSynchro.j
 Services.scriptloader.loadSubScript("chrome://cardbook/content/formatEmailCorrespondents/ovl_formatEmailCorrespondents.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/layout/ovl_cardbookLayout.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/mailContact/ovl_cardbookMailContacts.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://cardbook/content/enigmail/cardbookEnigmail.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/ovl_cardbook.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/wdw_cardbook.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/birthdays/cardbookBirthdaysUtils.js", window, "UTF-8");
@@ -460,7 +461,7 @@ function onLoad(wasAlreadyOpen) {
 			
 			<menupopup id="basicFieldContextMenu"/>
 	
-			<menupopup id="adrTreeContextMenu" onpopupshowing="wdw_cardbook.adrTreeContextShowing(event);">
+			<menupopup id="adrTreeContextMenu" onpopupshowing="wdw_cardbook.adrTreeContextShowing();">
 				<menuitem id="localizeadrTree" label="__MSG_localizeadrTreeLabel__" oncommand="wdw_cardbook.localizeCardFromTree();"/>
 				<menuseparator/>
 				<menuitem id="copyadrTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
@@ -480,7 +481,7 @@ function onLoad(wasAlreadyOpen) {
 				<menuitem id="findemailemailTree" label="__MSG_findemailemailTreeLabel__" oncommand="wdw_cardbook.findEmailsFromTree();"/>
 				<menuitem id="findeventemailTree" label="__MSG_findeventemailTreeLabel__" oncommand="wdw_cardbook.findEventsFromTree();"/>
 				<menuseparator/>
-				<menuitem id="searchForOnlineKeyFromCards" label="__MSG_searchForOnlineKeyTreeLabel__" oncommand="wdw_cardbook.searchForOnlineKeyFromTree();"/>
+				<menuitem id="searchForOnlineKeyemailTree" label="__MSG_searchForOnlineKeyTreeLabel__" oncommand="wdw_cardbook.searchForOnlineKeyFromTree();"/>
 				<menuseparator/>
 				<menuitem id="copyemailTree" oncommand="wdw_cardbook.copyEntryFromTree();"/>
 			</menupopup>
@@ -555,8 +556,6 @@ function onLoad(wasAlreadyOpen) {
 				<menuitem id="toEmailCardsFromCards" label="__MSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('to');"/>
 				<menuitem id="ccEmailCardsFromCards" label="__MSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('cc');"/>
 				<menuitem id="bccEmailCardsFromCards" label="__MSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('bcc');"/>
-				<menuseparator/>
-				<menuitem id="searchForOnlineKeyFromCards" label="__MSG_searchForOnlineKeyFromCardsLabel__" oncommand="wdw_cardbook.searchForOnlineKeyFromCards();"/>
 				<menuitem id="shareCardsByEmailFromCards" label="__MSG_shareCardByEmailFromCardsLabel__" oncommand="wdw_cardbook.shareCardsByEmailFromCards();"/>
 				<menuseparator/>
 				<menu id="IMPPCardFromCards" label="__MSG_IMPPMenuLabel__">
@@ -569,6 +568,13 @@ function onLoad(wasAlreadyOpen) {
 				<menuitem id="localizeCardsFromCards" label="__MSG_localizeCardFromCardsLabel__" oncommand="wdw_cardbook.localizeCardsFromCards();"/>
 				<menuseparator/>
 				<menuitem id="openURLFromCards" label="__MSG_openURLCardFromCardsLabel__" oncommand="wdw_cardbook.openURLFromCards();"/>
+				<menuseparator/>
+				<menu id="publicKeysFromCards" label="__MSG_publicKeysFromCards.label__">
+					<menupopup id="publicKeysFromCardsMenuPopup">
+						<menuitem id="searchForOnlineKeyFromCards" label="__MSG_searchForOnlineKeyFromCards.label__" oncommand="wdw_cardbook.searchForOnlineKeyFromCards();"/>
+						<menuitem id="importKeyFromCards" label="__MSG_importKeyFromCards.label__" oncommand="wdw_cardbook.importKeyFromCards();"/>
+					</menupopup>
+				</menu>
 				<menuseparator/>
 				<menuitem id="cutCardsFromCards" label="__MSG_cutCardFromCardsLabel__" oncommand="wdw_cardbook.cutCardsFromCards();"/>
 				<menuitem id="copyCardsFromCards" label="__MSG_copyCardFromCardsLabel__" oncommand="wdw_cardbook.copyCardsFromCards();"/>
@@ -662,6 +668,7 @@ function onLoad(wasAlreadyOpen) {
 									<button id="mailPopularityTab" label="__MSG_mailPopularityTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('mailPopularityTabPanel');"/>
 									<button id="technicalTab" label="__MSG_technicalTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('technicalTabPanel');"/>
 									<button id="vcardTab" label="__MSG_vCardTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('vcardTabPanel');"/>
+									<button id="keyTab" label="__MSG_keyTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('keyTabPanel');"/>
 								</hbox>
 							</vbox>
 							<vbox id="generalTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">	
@@ -835,7 +842,7 @@ function onLoad(wasAlreadyOpen) {
 								</hbox>
 							</vbox>
 		
-							<vbox id="mailPopularityTabPanel" class="cardbookTab" style="overflow:auto;">
+							<vbox id="mailPopularityTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">
 								<groupbox id="mailPopularityReadWriteGroupbox" flex="1">
 									<grid>
 										<columns flex="1">
@@ -847,7 +854,6 @@ function onLoad(wasAlreadyOpen) {
 										</rows>
 									</grid>
 								</groupbox>
-								<spacer flex="100"/>
 							</vbox>
 		
 							<vbox id="technicalTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">
@@ -982,6 +988,10 @@ function onLoad(wasAlreadyOpen) {
 									<html:textarea id="vcardTextBox"/>
 								</groupbox>
 							</vbox>
+		
+							<vbox id="keyTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">
+								<box id="keyReadOnlyGroupbox"/>
+							</vbox>
 						</vbox>
 					</hbox>
 				</box>
@@ -999,7 +1009,7 @@ function onLoad(wasAlreadyOpen) {
 	
 	var firstRun = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.firstRun");
 	if (firstRun) {
-		wdw_cardbook.addAddressbook("first");
+		window.wdw_cardbook.addAddressbook("first");
 		cardbookRepository.cardbookPreferences.setBoolPref("extensions.cardbook.firstRun", false);
 	}
 	

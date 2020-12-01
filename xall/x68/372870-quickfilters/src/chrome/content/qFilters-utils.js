@@ -25,13 +25,13 @@ quickFilters.Properties = {
 var QuickFilters_TabURIregexp = {
   get _thunderbirdRegExp() {
     delete this._thunderbirdRegExp;
-    return this._thunderbirdRegExp = new RegExp("^http://quickfilters.quickfolders.org/");
+    return this._thunderbirdRegExp = new RegExp("^https://quickfilters.quickfolders.org/");
   }
 };
 
 
 quickFilters.Util = {
-  HARDCODED_CURRENTVERSION : "4.4.1",
+  HARDCODED_CURRENTVERSION : "5.0",
   HARDCODED_EXTENSION_TOKEN : ".hc",
   ADDON_ID: "quickFilters@axelg.com",
   VersionProxyRunning: false,
@@ -83,25 +83,14 @@ quickFilters.Util = {
 					Cc = Components.classes,
 					Ci =  Components.interfaces;
     let msgfolder = null;
-    if (typeof MailUtils != 'undefined') {
-			if (MailUtils.getExistingFolder)
-				return MailUtils.getExistingFolder(uri, checkFolderAttributes);
-			else	
-				return MailUtils.getFolderForURI(uri, checkFolderAttributes);
-    }
+    var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
     try {
-			let rdfService = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService);
-			msgfolder = rdfService.GetResource(uri);
-			if (!msgfolder) {
-				let main = this.getMail3PaneWindow(),
-						resource = main.GetMsgFolderFromUri ? main.GetMsgFolderFromUri(uri, checkFolderAttributes) : main.GetResourceFromUri(uri); // Postbox: this should be defined in widgetglue.js
-				msgfolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
-			}
-			if (checkFolderAttributes) {
-				if (!(msgfolder && (msgfolder.parent || msgfolder.isServer))) {
-					msgfolder = null;
-				}
-			}
+      if (typeof MailUtils != 'undefined') {
+        if (MailUtils.getExistingFolder)
+          return MailUtils.getExistingFolder(uri, checkFolderAttributes);
+        else	
+          return MailUtils.getFolderForURI(uri, checkFolderAttributes);
+      }
     }
     catch (ex) {
        //dump("failed to get the folder resource\n");
@@ -203,7 +192,8 @@ quickFilters.Util = {
           if(versionLabel) {
             versionLabel.setAttribute("value", addon.version);
             // move version into the box, depending on label length
-            util.logDebug("Version Box: " + versionLabel.boxObject.width + "px");
+            // boxObject is deprecated:
+            util.logDebug("Version Box: " + versionLabel.getBoundingClientRect().width + "px");
             // versionLabel.style.setProperty('margin-left', ((versionLabel.boxObject.width + 32)*(-1)).toString() + 'px', 'important');
           }
         }
@@ -347,10 +337,7 @@ quickFilters.Util = {
 	get tabContainer() {
 		if (!this._tabContainer) {
 		  let doc = this.getMail3PaneWindow().document;
-			if (this.Application=='Postbox')
-				this._tabContainer = doc.getElementById('tabmail').mTabContainer;
-			else
-				this._tabContainer = doc.getElementById('tabmail').tabContainer;
+			this._tabContainer = doc.getElementById('tabmail').tabContainer;
 		}
 		return this._tabContainer;
 	} ,
@@ -364,12 +351,7 @@ quickFilters.Util = {
 	} ,	
 	
 	get mailFolderTypeName() {
-		switch(this.Application) {
-			case "Thunderbird": return "folder";
-			case "SeaMonkey": return "3pane";
-			default: return "folder";
-		}
-		return "";
+    return "folder";
 	} ,	
 	
 	get tabmail() {
@@ -386,24 +368,9 @@ quickFilters.Util = {
 		    tabmail = this.tabmail;
 		if (tabmail) {
 		  let tabName = folder.name;
-			switch (this.Application) {
-				case 'Thunderbird':
-				  this.tempFolderTab = tabmail.openTab(this.mailFolderTypeName, 
-					  {folder: folder, messagePaneVisible: true, background: background, disregardOpener: true, 
-						title: tabName} ) ; 
-					break;
-				case 'SeaMonkey':
-					this.tempFolderTab = tabmail.openTab(this.mailFolderTypeName, 7, folder.URI); // '3pane'; how to implement background?
-					this.tabContainer.selectedIndex = tabmail.tabContainer.childNodes.length - 1;
-					break;
-				case 'Postbox':
-					win.MsgOpenNewTabForFolder(folder.URI, 
-					  null /* messageKey */, 
-						background);
-					let info = this.getTabInfoByIndex(tabmail, tabmail.mTabContainer.childNodes.length-1);
-					this.tempFolderTab = info;  
-					break;
-			}
+		  this.tempFolderTab = tabmail.openTab(this.mailFolderTypeName, 
+			  {folder: folder, messagePaneVisible: true, background: background, disregardOpener: true, 
+				title: tabName} ) ; 
 		}
 	} ,
 	
@@ -412,8 +379,6 @@ quickFilters.Util = {
 	  if(this.tempFolderTab) {
 		  if (this.tabmail.closeTab)
 				this.tabmail.closeTab(this.tempFolderTab);
-			else  // postbox
-				this.tabmail.removeTab(this.tempFolderTab, {skipAnimation: true});
 			this.tempFolderTab = null;
 		}
 	} ,
@@ -424,9 +389,9 @@ quickFilters.Util = {
 					util = quickFilters.Util;
     try {
       if (!icon)
-        icon = "chrome://quickfilters/skin/QuickFilters_32.png";
+        icon = "chrome://quickfilters/content/skin/QuickFilters_32.png";
       else
-        icon = "chrome://quickfilters/skin/" + icon;
+        icon = "chrome://quickfilters/content/skin/" + icon;
       if (!title)
         title = "quickFilters";
       util.logToConsole('popupAlert(' + text + ', ' + title + ')');
@@ -447,9 +412,9 @@ quickFilters.Util = {
 			let isTimeout = !(timeOut == 0);
 			if (!timeOut) timeOut = 4000;
       if (!icon)
-        icon = "chrome://quickfilters/skin/QuickFilters_32.png";
+        icon = "chrome://quickfilters/content/skin/QuickFilters_32.png";
       else
-        icon = "chrome://quickfilters/skin/" + icon;
+        icon = "chrome://quickfilters/content/skin/" + icon;
       if (!title)
         title = "quickFilters";
       let panel = document.getElementById('quickFilterNotification');
@@ -506,17 +471,7 @@ quickFilters.Util = {
 			notifyBox = gNotification.notificationbox;
 		}
 		else {
-			switch(util.Application) {
-				case 'Postbox': 
-					notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
-					break;
-				case 'Thunderbird': 
-					notificationId = 'mail-notification-box'
-					break;
-				case 'SeaMonkey':
-					notificationId = null;
-					break;
-			}
+			notificationId = 'mail-notification-box'
 			notifyBox = document.getElementById (notificationId);
 			if (!notifyBox) {
 				notifyBox = mainWin.document.getElementById (notificationId);
@@ -526,7 +481,9 @@ quickFilters.Util = {
 		let title = util.getBundleString("quickfilters.notification.proFeature.title", "Premium Feature"),
 		    theText = util.getBundleString("quickfilters.notification.premium.text",
 				"{1} is a Premium feature, please get a quickFilters Pro License for using it permanently. "),
-        featureTitle = util.getBundleString('quickfilters.premium.title.' + featureName, featureName);
+        featureTitle = 
+          (featureName.includes(' ')) ?
+          featureName : util.getBundleString('quickfilters.premium.title.' + featureName, featureName);
 		theText = theText.replace ("{1}", "'" + featureTitle + "'");
 		if (additionalText)
 			theText = theText + '  ' + additionalText;
@@ -599,17 +556,14 @@ quickFilters.Util = {
 			if (notifyBox) {
 				let item = notifyBox.getNotificationWithValue(notificationKey);
 				if (item)
-					notifyBox.removeNotification(item, (util.Application == 'Postbox'));
+					notifyBox.removeNotification(item, false);
 			}
 		
 			notifyBox.appendNotification( theText, 
 					notificationKey , 
-					"chrome://quickfilters/skin/proFeature.png" , 
+					"chrome://quickfilters/content/skin/proFeature.png" , 
 					notifyBox.PRIORITY_INFO_HIGH, 
 					nbox_buttons ); // , eventCallback
-			if (util.Application == 'Postbox') {
-				this.fixLineWrap(notifyBox, notificationKey);
-			}
 		}
 		else {
 			// fallback for systems that do not support notification (currently: SeaMonkey)
@@ -701,28 +655,6 @@ quickFilters.Util = {
       return null;
   },
   
-	// postbox helper function
-	pbGetSelectedMessages : function pbGetSelectedMessages() {
-	  let messageList = [];
-	  // guard against any other callers.
-	  if (quickFilters.Util.Application != 'Postbox')
-		  throw('pbGetSelectedMessages: Postbox specific function!');
-	  try {
-      let messageUris = quickFilters.Util.pbGetSelectedMessageUris();
-      //let messageIdList = [];
-      // messageList = Components.classes["@mozilla.org/supports-array;1"].createInstance(Components.interfaces.nsISupportsArray);
-      for (let i = 0; i < messageUris.length; i++) {
-        let messageUri = messageUris[i],
-            Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
-        messageList.push(Message);
-      }
-      return messageList;
-	  }
-	  catch (ex) {
-	    dump("GetSelectedMessages ex = " + ex + "\n");
-	    return null;
-	  }
-	} ,
 
   logTime: function logTime() {
     let timePassed = '',
@@ -804,33 +736,6 @@ quickFilters.Util = {
 		catch(ex) {;}
   },
 	
-  /** 
-	* getAccountsPostbox() return an Array of mail Accounts for Postbox
-	*/   
-	getAccountsPostbox: function getAccountsPostbox() {
-    const Ci = Components.interfaces,
-					Cc = Components.classes;
-	  let accounts=[],
-				accountManager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager),
-		    smartServers = accountManager.allSmartServers;
-		for (let i = 0; i < smartServers.Count(); i++) {
-			let smartServer = smartServers.QueryElementAt(i, Ci.nsIMsgIncomingServer),
-			    account_groups = smartServer.getCharValue("group_accounts");
-			if (account_groups)
-			{
-				let groups = account_groups.split(",");
-        for (let c=0; c < groups.length; c++) {
-          let accountKey = groups[c],
-					    account = accountManager.getAccount(accountKey);
-					if (account)
-					{
-						accounts.push(account);
-					}
-				}
-			}
-		}
-		return accounts;
-	},
 	
 	
   // safe wrapper to get member from account.identities array
@@ -838,12 +743,9 @@ quickFilters.Util = {
     const Ci = Components.interfaces;
     if (!ids) return null;
     try {
-      if (ids.queryElementAt) {
-        return ids.queryElementAt(index, Ci.nsIMsgIdentity);
-      }
-      if (ids.QueryElementAt) {  // Postbox
-        return ids.QueryElementAt(index, Ci.nsIMsgIdentity);
-      }
+      // replace queryElementAt with array[index].QueryInterface!
+      if (ids[index])
+        return ids[index].QueryInterface(Ci.nsIMsgIdentity);
       return null;
     }
     catch(ex) {
@@ -862,19 +764,6 @@ quickFilters.Util = {
 	
 	getTabMode: function getTabMode(tab) {
 	  if (tab.mode) {   // Tb / Sm
-		  if (this.Application=='SeaMonkey' && (typeof tab.modeBits != 'undefined')) {
-				const kTabShowFolderPane  = 1 << 0;
-				const kTabShowMessagePane = 1 << 1;
-				const kTabShowThreadPane  = 1 << 2;			
-				// SM: maybe also check	tab.getAttribute("type")=='folder'
-				// check for single message shown - SeaMonkey always uses 3pane!
-				// so we return "single message mode" when folder tree is hidden (to avoid switching away from single message or conversation)
-			  if ( (tab.modeBits & kTabShowMessagePane) 
-             && 
-             !(tab.modeBits & kTabShowFolderPane)) {
-				  return 'message';
-				}
-			}
 			return tab.mode.name;
 		}
 		if (tab.type)  // Pb
@@ -924,27 +813,6 @@ quickFilters.Util = {
 					Cc = Components.classes;
     try {
       this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
-      if (quickFilters.Util.Application==='SeaMonkey') {
-        let windowManager = Cc['@mozilla.org/appshell/window-mediator;1'].getService(Ci.nsIWindowMediator),
-            browserWin = windowManager.getMostRecentWindow( "navigator:browser" );
-        if (browserWin) {
-          let URI = linkURI;
-          setTimeout(function() { 
-						let tabBrowser = browserWin.getBrowser(),
-						    params = {"selected":true};
-					  browserWin.currentTab = tabBrowser.addTab(URI, params); 
-						if (browserWin.currentTab.reload) browserWin.currentTab.reload(); 
-						// activate last tab
-						if (tabBrowser && tabBrowser.tabContainer)
-							tabBrowser.tabContainer.selectedIndex = tabBrowser.tabContainer.childNodes.length-1;
-					}, 250);
-        }
-        else {
-          this.getMail3PaneWindow().window.openDialog(getBrowserURL(), "_blank", "all,dialog=no", linkURI, null, 'QuickFilters');
-        }
-
-        return;
-      }
       let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"]
                               .getService(Ci.nsIExternalProtocolService),
           ioservice = Cc["@mozilla.org/network/io-service;1"].
@@ -981,16 +849,9 @@ quickFilters.Util = {
 	  const util = quickFilters.Util;
     let ioservice,iuri,eps;
 
-    if (quickFilters.Util.Application==='SeaMonkey' || quickFilters.Util.Application==='Postbox')
-    {
-      this.openLinkInBrowserForced(util.makeUriPremium(URL));
-      if(null!=evt) evt.stopPropagation();
-    }
-    else {
-      if (this.openURLInTab(URL) && null!=evt) {
-        if (evt.preventDefault)  evt.preventDefault();
-        if (evt.stopPropagation)  evt.stopPropagation();
-      }
+    if (this.openURLInTab(URL) && null!=evt) {
+      if (evt.preventDefault)  evt.preventDefault();
+      if (evt.stopPropagation)  evt.stopPropagation();
     }
   },
 
@@ -998,42 +859,33 @@ quickFilters.Util = {
     let util = quickFilters.Util;
 		URL = util.makeUriPremium(URL);
     try {
-		  switch(quickFilters.Util.Application) {
-			  case "SeaMonkey":
-					this.openLinkInBrowserForced(URL);
-					return;
-				case "Postbox":
-					this.openLinkInBrowser(null, URL);
-					return;
-				case "Thunderbird":
-					let sTabMode="",
-					    tabmail = this.tabmail;
-					if (!tabmail) {
-						// Try opening new tabs in an existing 3pane window
-						let mail3PaneWindow = this.getMail3PaneWindow();
-						if (mail3PaneWindow) {
-							tabmail = mail3PaneWindow.document.getElementById("tabmail");
-							mail3PaneWindow.focus();
-						}
-					}
-					// note: findMailTab will activate the tab if it is already open
-					if (tabmail) {
-						if (!util.findMailTab(tabmail, URL)) {
-							sTabMode = (quickFilters.Util.Application === "Thunderbird" && quickFilters.Util.Appver >= 3) ? "contentTab" : "3pane";
-							tabmail.openTab(sTabMode,
-							{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFilters_TabURIregexp._thunderbirdRegExp);"});
-						}
-					}
-					else {
-						window.openDialog("chrome://messenger/content/", "_blank",
-											"chrome,dialog=no,all", null,
-							{ tabType: "contentTab", 
-								tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFilters_TabURIregexp._thunderbirdRegExp);", id:"QuickFilters_Weblink"} 
-							} 
-						);
-					}
+			let sTabMode="",
+			    tabmail = this.tabmail;
+			if (!tabmail) {
+				// Try opening new tabs in an existing 3pane window
+				let mail3PaneWindow = this.getMail3PaneWindow();
+				if (mail3PaneWindow) {
+					tabmail = mail3PaneWindow.document.getElementById("tabmail");
+					mail3PaneWindow.focus();
+				}
 			}
-    }
+			// note: findMailTab will activate the tab if it is already open
+			if (tabmail) {
+				if (!util.findMailTab(tabmail, URL)) {
+          sTabMode = "contentTab";  // "3pane" for Apver <= 3
+					tabmail.openTab(sTabMode,
+					{contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFilters_TabURIregexp._thunderbirdRegExp);"});
+				}
+			}
+			else {
+				window.openDialog("chrome://messenger/content/", "_blank",
+									"chrome,dialog=no,all", null,
+					{ tabType: "contentTab", 
+						tabParams: {contentPage: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFilters_TabURIregexp._thunderbirdRegExp);", id:"QuickFilters_Weblink"} 
+					} 
+				);
+			}
+		}
     catch(e) { return false; }
     return true;
   } ,
@@ -1170,12 +1022,12 @@ quickFilters.Util = {
     let version = util.VersionSanitized,
         sPrompt = util.getBundleString("quickfilters.confirmVersionLink", "Display version history for quickFilters");
     if (!ask || confirm(sPrompt)) {
-      util.openURL(null, util.makeUriPremium("http://quickfilters.quickfolders.org/version.html") + "#" + version);
+      util.openURL(null, util.makeUriPremium("https://quickfilters.quickfolders.org/version.html") + "#" + version);
     }
   } ,
 
   showLicensePage: function showLicensePage() {
-    quickFilters.Util.openURLInTab('http://quickfilters.quickfolders.org/donate.html');
+    quickFilters.Util.openURLInTab('https://quickfilters.quickfolders.org/donate.html');
   }  ,
 	
 	showYouTubePage: function showYouTubePage() {
@@ -1184,7 +1036,7 @@ quickFilters.Util = {
 
   showHomePage: function showHomePage(queryString) {
 	  if (!queryString) queryString='index.html';
-    quickFilters.Util.openURLInTab('http://quickfilters.quickfolders.org/' + queryString);
+    quickFilters.Util.openURLInTab('https://quickfilters.quickfolders.org/' + queryString);
   } ,
 	
   showBug: function showBug(bugNumber) {
@@ -1196,7 +1048,7 @@ quickFilters.Util = {
 	} ,
 	
 	showPremiumFeatures: function showPremiumFeatures() {
-    quickFilters.Util.openURLInTab('http://quickfilters.quickfolders.org/premium.html');
+    quickFilters.Util.openURLInTab('https://quickfilters.quickfolders.org/premium.html');
 	} ,
 	
   // Postbox special functions to avoid line being truncated
@@ -1726,9 +1578,12 @@ quickFilters.Util = {
       }
 			// avoid duplicate actions?
 			for (let b = 0; b < this.getActionCount(toFilter); b++) { 
-				let ac = newActions.queryElementAt ?
-					newActions.queryElementAt(b, Ci.nsIMsgRuleAction):
-					newActions.QueryElementAt(b, Ci.nsIMsgRuleAction);
+				let ac = newActions[b].QueryInterface(Ci.nsIMsgRuleAction);
+        /*
+          newActions.queryElementAt ?
+            newActions.queryElementAt(b, Ci.nsIMsgRuleAction):
+            newActions.QueryElementAt(b, Ci.nsIMsgRuleAction);
+            */
         // eliminate duplicates
 				if (ac.type == act.type
 						&& 
@@ -1841,7 +1696,6 @@ quickFilters.Util = {
       let list = fWin.quickFilters.List;
       if (list) {
         list.toggleSearchType('name');
-        // this will currently not work with SeaMonkey / Postbox (no search box)
         let searchBox = fWin.document.getElementById("searchBox");
         util.logDebugOptional('template.custom','filterCustomTemplates - searchBox=' + searchBox);
         if (searchBox) {
@@ -1956,7 +1810,7 @@ quickFilters.Util = {
         */
       setTimeout( function() {
         let args = { filter:targetFilter, filterList: filtersList};
-        util.getMail3PaneWindow().openDialog("chrome://messenger/content/FilterEditor.xul", "",
+        util.getMail3PaneWindow().openDialog("chrome://messenger/content/FilterEditor.xhtml", "",
                           "chrome, modal, resizable,centerscreen,dialog=yes", args);
         if ("refresh" in args && args.refresh) {
           // [Ok]
@@ -2034,7 +1888,7 @@ quickFilters.Util = {
         params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: win.quickFilters}, out:null};
         
 		// open options and open the last tab!
-    win.openDialog('chrome://quickfilters/content/quickFilters-options.xul',
+    win.openDialog('chrome://quickfilters/content/quickFilters-options.xhtml',
 				'quickfilters-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',
 				quickFilters,
 				params).focus();
@@ -2044,7 +1898,7 @@ quickFilters.Util = {
 	viewSupport: function viewSupport() {
 		let win = quickFilters.Util.getMail3PaneWindow(),
 		    params = {inn:{mode:"supportOnly",tab:-1, message: "", instance: win.quickFilters}, out:null};
-    win.openDialog('chrome://quickfilters/content/quickFilters-options.xul',
+    win.openDialog('chrome://quickfilters/content/quickFilters-options.xhtml',
 				'quickfilters-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',
 				quickFilters,
 				params).focus();
@@ -2053,7 +1907,7 @@ quickFilters.Util = {
 	viewAdvanced: function viewAdvanced() {
 		let win = quickFilters.Util.getMail3PaneWindow(),
 		    params = {inn:{mode:"advancedOnly",tab:-1, message: "", instance: win.quickFilters}, out:null};
-    win.openDialog('chrome://quickfilters/content/quickFilters-options.xul',
+    win.openDialog('chrome://quickfilters/content/quickFilters-options.xhtml',
 				'quickfilters-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',
 				quickFilters,
 				params).focus();
@@ -2062,7 +1916,7 @@ quickFilters.Util = {
 	viewFilterProps: function viewFilterProps() {
 		let win = quickFilters.Util.getMail3PaneWindow(),
 		    params = {inn:{mode:"newFilter",tab:-1, message: "", instance: win.quickFilters}, out:null};
-    win.openDialog('chrome://quickfilters/content/quickFilters-options.xul',
+    win.openDialog('chrome://quickfilters/content/quickFilters-options.xhtml',
 				'quickfilters-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',
 				quickFilters,
 				params).focus();
@@ -2109,7 +1963,7 @@ quickFilters.Util = {
 		      util = quickFilters.Util,
           Ci = Components.interfaces, 
           Cc = Components.classes;
-    let uri = "chrome://global/content/config.xul";
+    let uri = "chrome://global/content/config.xhtml";
 		if (util.Application)
 			uri += "?debug";
 
@@ -2139,6 +1993,156 @@ quickFilters.Util = {
         }
       });
   },
+  
+  // moved from the Shim object
+  validateFilterTargets: function validateFilterTargets(sourceURI, targetURI) {
+    const util = quickFilters.Util,
+          Ci = Components.interfaces;
+          
+    // fix any filters that might still point to the moved folder.
+    // 1. nsIMsgAccountManager  loop through list of servers
+    try {
+      let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
+                          .getService(Ci.nsIMsgAccountManager);
+      if (typeof ChromeUtils.import == "undefined")
+        Components.utils.import("resource:///modules/iteratorUtils.jsm");  
+      else
+        var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");  
+                          
+      for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+        if (account.incomingServer && account.incomingServer.canHaveFilters )
+        {
+          let ac = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer);
+          util.logDebugOptional("filters", "checking account for filter changes: " +  ac.prettyName);
+          // 2. getFilterList
+          let filterList = ac.getFilterList(gFilterListMsgWindow).QueryInterface(Ci.nsIMsgFilterList);
+          // 3. use  nsIMsgFilterList.matchOrChangeFilterTarget(oldUri, newUri, false)
+          if (filterList) {
+            filterList.matchOrChangeFilterTarget(sourceURI, targetURI, false)
+          }
+        }
+      }
+    }
+    catch(ex) {
+      util.logException("Exception in quickFilters.Util.validateFilterTargets ", ex);
+    }
+  }	,
+  
+  findFromTargetFolder: function findFromTargetFolder(targetFolder, searchFilterResults) {
+    const Util = quickFilters.Util,
+          Ci = Components.interfaces,
+          FA = Ci.nsMsgFilterAction;
+            
+    try {
+      let acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
+                          .getService(Ci.nsIMsgAccountManager);
+      
+      if (typeof ChromeUtils.import == "undefined")
+        Components.utils.import("resource:///modules/iteratorUtils.jsm");
+      else
+        var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
+      
+      // 1. create a list of matched filters and corresponding accounts 
+      //    (these will be linked via index
+      for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+        if (account.incomingServer && account.incomingServer.canHaveFilters ) {
+          let msg ='',
+              ac = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer),
+              // 2. getFilterList
+              filtersList = ac.getFilterList(gFilterListMsgWindow).QueryInterface(Ci.nsIMsgFilterList);
+          if (filtersList) {
+            // build a dictionary of terms; this might take some time!
+            let numFilters = filtersList.filterCount;
+            Util.logDebugOptional("filterSearch", "checking account [" + ac.prettyName + "] "
+                                   + "for target folder: " +  targetFolder.URI + '\n'
+                                   + "iterating " + numFilters + " filters...");
+            for (let idx = 0; idx < numFilters; idx++) {
+              let curFilter = filtersList.getFilterAt(idx),
+                  actionList = curFilter.sortedActionList,
+                  acLength = actionList.length;
+              // Match Target Folder by iterating all actions
+              for (let index = 0; index < acLength; index++) {
+                let // qryAt = actionList.queryElementAt ? actionList.queryElementAt : actionList.QueryElementAt,
+                    action = actionList[index].QueryInterface(Ci.nsIMsgRuleAction);  // qryAt(index, Ci.nsIMsgRuleAction);
+                if (action.type == FA.MoveToFolder || action.type == FA.CopyToFolder) {
+                  if (action.targetFolderUri) {
+                    let isMatch = (action.targetFolderUri === targetFolder.URI),
+                        label = isMatch ? "MATCHED URI: " : "Target URI:  ";
+                    msg += "[" + idx + "] " + label +  action.targetFolderUri + "\n";
+                    if (action.targetFolderUri === targetFolder.URI) { 
+                      Util.logDebugOptional("filterSearch", "FOUND FILTER MATCH:\n" + curFilter.filterName);
+                      searchFilterResults.push (
+                        {
+                          Filter: curFilter,
+                          Account: ac,
+                          Action: action
+                        }
+                      ); // create a new object which contains this trinity
+                      break; // only add one action per filter (in case it is duplicated)
+                    }
+                  }
+                }        
+              }
+              // .. End Match Action Loop
+            }       
+          }
+          Util.logDebugOptional("filterSearch.detail", msg);
+        }
+      }
+      Util.logDebugOptional("filterSearch", "Matches found: " + searchFilterResults.length);
+      
+      // 2. Persist in dropdown
+      // dropdown with terms
+      let filtersDropDown = document.getElementById('quickFiltersFoundResults');
+      filtersDropDown.selectedIndex = -1;
+      let menuPopup = quickFilters.List.clearFoundFiltersPopup(true);
+      
+      for (let idx = 0; idx < searchFilterResults.length; idx++) {
+        let target = searchFilterResults[idx],
+            menuItem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
+            dec = decodeURI(target.Action.targetFolderUri),
+            valueLabel = quickFilters.List.truncateLabel(dec, 30),
+            filterIdLabel = target.Filter.filterName;
+        if (target.Account.prettyName) {
+          filterIdLabel = '[' + target.Account.prettyName + '] ' +  filterIdLabel;
+        }
+        // let theLabel = filterIdLabel + ' = ' + this.getActionLabel(target.Action.type) + ': ' + valueLabel;
+        menuItem.setAttribute("label", filterIdLabel);
+        menuItem.targetFilter = target.Filter; 
+        menuItem.targetAccount = target.Account;  
+        menuItem.setAttribute("actionType", target.Action.type); 
+        menuItem.setAttribute("targetFolderUri", target.Action.targetFolderUri);        
+        menuPopup.appendChild(menuItem);
+      }
+      if (searchFilterResults.length) {
+        filtersDropDown.collapsed = false;
+        // hide duplicates button?
+        document.getElementById('quickFiltersBtnDupe').collapsed = true;
+        document.getElementById('quickFiltersBtnCancelDuplicates').collapsed = true;
+        // show cancel button
+        document.getElementById('quickFiltersBtnCancelFound').collapsed = false;
+        filtersDropDown.selectedIndex = 0;
+      }
+      
+    }
+    catch(ex) {
+      Util.logException("Exception in quickFilters.Util.findFromTargetFolder ", ex);
+    }  
+    
+  } ,  
+  
+  // center a window on screen
+  centerWindow: function(window) {
+    if (!window) return;
+    if (window.screenX==0) {
+      let dx = window.outerHeight / 2,
+          dy = window.outerWidth / 2;
+      window.moveTo(window.screen.availWidth/2 - dx,
+                    window.screen.availHeight/2 -dy);
+      
+    }
+  } ,
+
 	
   dummy: function() {
 		/* 
@@ -2400,19 +2404,8 @@ quickFilters.mimeDecoder = {
       // https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Address_Book_Examples
       // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
       
-      let allAddressBooks;
-
-      if (util.Application === "Postbox") {
-         // mailCore.js:2201 
-         // abCardForEmailAddress(aEmailAddress, aAddressBookOperations, aAddressBook)
-         let card = abCardForEmailAddress(mail,  Components.interfaces.nsIAbDirectory.opRead, {});
-         if (card) return card;
-         return null;
-      }
-      else {
-        let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager);
+      let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager),
         allAddressBooks = abManager.directories; 
-      }
       while (allAddressBooks.hasMoreElements()) {
         let addressBook = allAddressBooks.getNext()
                                          .QueryInterface(Components.interfaces.nsIAbDirectory);
@@ -2648,10 +2641,114 @@ quickFilters.mimeDecoder = {
 
 
 
-if (Components.classes["@mozilla.org/xre/app-info;1"].getService(Components.interfaces.nsIXULAppInfo).ID != "postbox@postbox-inc.com") {
-	const util = quickFilters.Util;
-	if (util.versionGreaterOrEqual(util.AppverFull, "61")) 
-		var {MailUtils} = ChromeUtils.import("resource:///modules/MailUtils.jsm");
-	else
-		Components.utils.import("resource:///modules/MailUtils.js");
+/*** Code moved from chimEcma/qFilters-shim-ecma.js  ===> **/
+var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+	
+if (!quickFilters.Util.Accounts) {
+	Object.defineProperty(quickFilters.Util, "Accounts",
+		{ get: function() {
+				const Ci = Components.interfaces,
+							Cc = Components.classes,
+							util = quickFilters.Util;
+				let aAccounts=[],
+            accounts = Cc["@mozilla.org/messenger/account-manager;1"]
+                     .getService(Ci.nsIMsgAccountManager).accounts;
+
+        if (typeof ChromeUtils.import == "undefined")
+          Components.utils.import("resource:///modules/iteratorUtils.jsm");  
+        else
+          var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");  
+
+        for (let ac of fixIterator(accounts, Ci.nsIMsgAccount)) {
+          aAccounts.push(ac);
+        };
+				return aAccounts;
+			}
+		});
 }
+
+if (!quickFilters.Shim) {
+	quickFilters.Shim = {
+		
+		getIdentityMailAddresses: function getIdentityMailAddresses(MailAddresses) {
+			const Util = quickFilters.Util,
+						Ci = Components.interfaces,
+						acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
+													.getService(Ci.nsIMsgAccountManager);
+													
+			if (typeof ChromeUtils.import == "undefined")
+				Components.utils.import("resource:///modules/iteratorUtils.jsm");
+			else
+				var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
+			
+			for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
+				try {
+					let idMail = '';
+					if (account.defaultIdentity) {
+						idMail = account.defaultIdentity.email;
+					}
+					else if (account.identities.length) {
+						idMail = account.identities[0].email; // outgoing identities
+					}
+					else {
+						Util.logDebug('getIdentityMailAddresses() found account without identities: ' + account.key);
+					}
+					if (idMail) {
+						idMail = idMail.toLowerCase();
+						if (idMail && MailAddresses.indexOf(idMail)==-1) 
+							MailAddresses.push(idMail);
+					}
+				}
+				catch(ex) {
+					Util.logException ('getIdentityMailAddresses()', ex);
+				}
+			}
+		} ,
+
+		cloneHeaders: function cloneHeaders(msgHdr, messageClone, dbg, appendProperty) {
+			// Object.entries does not exist before Platform==47
+			for (let [propertyName, prop] of Object.entries(msgHdr)) {
+				// propertyName is what you want
+				// you can get the value like this: myObject[propertyName]
+				try {
+					let hasOwn = msgHdr.hasOwnProperty(propertyName),
+							isCopied = false;  // replace msgHdr[propertyName] with prop
+					if (hasOwn && typeof prop != "function" && typeof prop != "object") {
+						messageClone[propertyName] = msgHdr[propertyName]; // copy to the clone!
+						if (messageClone[propertyName])  // make sure we have some data! (e.g. author, subject, recipient, date, charset, messageId)
+							dbg.countInit ++;
+						isCopied = true;
+					}
+					if (isCopied) {
+						dbg.test = appendProperty(dbg.test, msgHdr, propertyName);
+					}
+					else {
+						dbg.test2 = appendProperty(dbg.test2, msgHdr, propertyName);
+					}
+				}
+				catch(ex) { ; }
+			}
+		} ,
+		
+		findInboxFromRoot: function findInboxFromRoot(root, fflags) {
+			const Ci = Components.interfaces,
+			      util = quickFilters.Util;
+			if (typeof ChromeUtils.import == "undefined")
+				Components.utils.import("resource:///modules/iteratorUtils.jsm");
+			else
+				var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
+						
+			for (let folder of fixIterator(root.subFolders, Ci.nsIMsgFolder)) {
+				if (folder.getFlag && folder.getFlag(fflags.Inbox) || folder.getFlag(fflags.Newsgroup)) {
+					util.logDebugOptional('createFilter', "sourceFolder: determined Inbox " + folder.prettyName);
+					return folder;
+				}
+			}
+			return null;
+		} ,
+		
+		dummy: ', <== end Shim properties here'
+	} // end of Shim definition
+};
+/*** <<<===== END Code moved from chimEcma/qFilters-shim-ecma.js  **/
+

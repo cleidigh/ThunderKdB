@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Lier à :"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importer depuis un fichier"
+	},
 	"uncategorizedCards": {
 		"message": "Non classé"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : Téléchargement de la clé en erreur pour le contact $P2$ (url : $P3$, statut : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Clé téléchargée pour le contact $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Téléchargement de la clé pour le contact $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Contact $P2$ récupéré du serveur",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Copie cachée à"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook Pour ou Copie à"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook De, Pour, Copie à ou Copie cachée à"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "Clés publiques"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "C"
+	},
 	"advancedTab1Label": {
 		"message": "Avancé"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "Ouverture d'URL pour les softphones"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Cette section s'applique si vous avez sélectionné url comme protocole pour le téléphone. L'URL doit contenir $1, qui se réfère au numéro de téléphone."
+		"message": "Cette section s'applique si vous avez sélectionné url comme protocole pour le téléphone. L'URL doit contenir {{1}}, qui se réfère au numéro de téléphone."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL :"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Clés publiques"
+	},
 	"noteTabLabel": {
 		"message": "Notes"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Écrire un nouveau message (copie cachée / bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Clés publiques"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Rechercher des clés en ligne"
+	},
+	"importKeyFromCards.label": {
+		"message": "Importer dans le gestionnaire de clés OpenPGP"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Rechercher des clés en ligne"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Rechercher des clés en ligne"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Rechercher des clés dans le gestionnaire de clés OpenPGP"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importer depuis un fichier"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Partager par email"

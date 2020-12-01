@@ -49,10 +49,11 @@ const initialSummary = {
   conversation: null,
   defaultFontSize: 15,
   hasBuiltInPdf: false,
-  // TODO: What is loading used for?
-  loading: true,
+  hideQuickReply: false,
   iframesLoading: 0,
   isInTab: false,
+  // TODO: What is loading used for?
+  loading: true,
   OS: "win",
   tabId: null,
   tenPxFactor: 0.7,
@@ -285,6 +286,7 @@ const messageActions = {
         browserBackgroundColor,
         defaultDetailsShowing,
         defaultFontSize,
+        hideQuickReply: await getPreference("hide_quick_reply", false),
         OS: platformInfo.os,
         browserVersion: browserInfo.version
       });
@@ -793,6 +795,14 @@ function messages(state = initialMessages, action) {
         };
       }
 
+    case "APPEND_MESSAGES":
+      {
+        const newState = { ...state
+        };
+        newState.msgData = newState.msgData.concat(action.messages.msgData);
+        return newState;
+      }
+
     case "MSG_EXPAND":
       {
         return modifyOnlyMsg(state, action.msgUri, msg => {
@@ -921,12 +931,13 @@ function messages(state = initialMessages, action) {
         return newState;
       }
 
-    case "APPEND_MESSAGES":
+    case "CLEAR_SCROLLTO":
       {
-        const newState = { ...state
-        };
-        newState.msgData = newState.msgData.concat(action.msgData);
-        return newState;
+        return modifyOnlyMsgId(state, action.id, msg => {
+          return { ...msg,
+            scrollTo: false
+          };
+        });
       }
 
     case "MSG_SHOW_NOTIFICATION":
@@ -959,32 +970,52 @@ function messages(state = initialMessages, action) {
   }
 }
 
+async function handleShowDetails(messages, state, dispatch, updateFn) {
+  let defaultShowing = state.summary.defaultDetailsShowing;
+
+  for (let msg of messages.msgData) {
+    msg.detailsShowing = defaultShowing;
+  }
+
+  await updateFn();
+
+  if (defaultShowing) {
+    for (let msg of state.messages.msgData) {
+      await dispatch(messageActions.showMsgDetails({
+        id: msg.id,
+        detailsShowing: true
+      }));
+    }
+  }
+}
+
 var summaryActions = {
   replaceConversation({
     summary,
     messages
   }) {
     return async (dispatch, getState) => {
-      let defaultShowing = getState().summary.defaultDetailsShowing;
-
-      for (let msg of messages.msgData) {
-        msg.detailsShowing = defaultShowing;
-      }
-
-      await dispatch({
-        type: "REPLACE_CONVERSATION_DETAILS",
-        summary,
-        messages
+      await handleShowDetails(messages, getState(), dispatch, () => {
+        return dispatch({
+          type: "REPLACE_CONVERSATION_DETAILS",
+          summary,
+          messages
+        });
       });
+    };
+  },
 
-      if (defaultShowing) {
-        for (let msg of getState().messages.msgData) {
-          await dispatch(messageActions.showMsgDetails({
-            id: msg.id,
-            detailsShowing: true
-          }));
-        }
-      }
+  appendMessages({
+    summary,
+    messages
+  }) {
+    return async (dispatch, getState) => {
+      await handleShowDetails(messages, getState(), dispatch, () => {
+        return dispatch({
+          type: "APPEND_MESSAGES",
+          messages
+        });
+      });
     };
   },
 
@@ -1055,6 +1086,7 @@ function summary(state = initialSummary, action) {
           defaultDetailsShowing: action.defaultDetailsShowing,
           // Thunderbird 81 has built-in PDF viewer.
           hasBuiltInPdf: mainVersion >= 81,
+          hideQuickReply: action.hideQuickReply,
           OS: action.OS,
           tenPxFactor
         };

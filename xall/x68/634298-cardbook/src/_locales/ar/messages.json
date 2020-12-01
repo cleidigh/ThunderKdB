@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "موقع الارتباط"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "استورِد من ملف"
+	},
 	"uncategorizedCards": {
 		"message": "غير مصنف"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "??$P1$ : Key downloaded for contact $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "%1$S : جهة الإتصال %2$S حُملت من الخادم",
         "placeholders": {
@@ -1762,11 +1804,14 @@
 	"cardbook.searchBcc.name": {
 		"message": "CardBook ن.ك.م"
 	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook إلى أو ن.ك"
+	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook من، إلى، ن.ك أو ن.ك.م"
 	},
 	"cardbook.searchCorrespondents.name": {
-		"message": "CardBook المراسلون"
+		"message": "المراسلونCardBook"
 	},
 	"cardbook.addFrom.name": {
 		"message": "أضف من لــCardBook"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "??Public Keys??"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "K"
+	},
 	"advancedTab1Label": {
 		"message": "متقدم"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "فاتح عنوان URL للهواتف البرمجية"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "ينطبق هذا القسم إذا قمت بتحديد بروتوكول URL للهاتف. يجب أن يحتوي عنوان URL على $1، في إشارة إلى رقم الهاتف."
+		"message": "ينطبق هذا القسم إذا قمت بتحديد بروتوكول URL للهاتف. يجب أن يحتوي عنوان URL على {{1}}، في إشارة إلى رقم الهاتف."
 	},
 	"URLPhoneURLLabel": {
 		"message": "عنوان URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "??Public Keys??"
+	},
 	"noteTabLabel": {
 		"message": "الملاحظات"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "إكتب رسالة جديدة (نسخة مخفية / ن.ك.م)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
-		"message": "??Discover Keys Online??"
+	"publicKeysFromCards.label": {
+		"message": "??Public keys??"
+	},
+	"searchForOnlineKeyFromCards.label": {
+		"message": "??Discover keys online??"
+	},
+	"importKeyFromCards.label": {
+		"message": "??Import into OpenPGP Key Manager??"
 	},
 	"searchForOnlineKeyTreeLabel": {
-		"message": "??Discover Keys Online??"
+		"message": "??Discover keys online??"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "??Discover keys online??"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "??Search for keys in OpenPGP key manager??"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "استورِد من ملف"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "شارك بالبريد الإلكتروني"

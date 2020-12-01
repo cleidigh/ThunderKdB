@@ -137,10 +137,10 @@ browser.runtime.onMessage.addListener(message => {
       aPromise = getIDsAndABs().then((obj) => {
         return obj;
       });
-      
+
       /* Test code for promise reject */
       //aPromise = Promise.reject(new Error('For test'));
-      
+
       break;
     case "GET_WARNINGS":
       aPromise = performChecking(message.tabId).then((obj) => {
@@ -561,12 +561,14 @@ async function checkAttachments(tabId) {
   let sumFileSize = 0;
   for (let i = 0; i < attachNum; i++) {
     let name = attachments[i].name;
+    let hit = false;
     for (let j = 0; j < extsNum; j++) {
-      let hit = exts[j].test(name);
-      if ((blacklistCheck && hit) || (!blacklistCheck && !hit)) {
-        ngAttachments.push(name);
-        break;
-      }
+      hit = exts[j].test(name);
+      if (hit) break;
+    }
+    if ((blacklistCheck && hit) || (!blacklistCheck && !hit)) {
+      ngAttachments.push(name);
+      break;
     }
 
     try {
@@ -826,7 +828,7 @@ async function getRecipientNameCandidates(addrList, correct, removeNotInAb, addr
     if (contact.indexOf("@") < 0) { //maybe maillist
       continue;
     }
-    
+
     let re = null;
     let oldName = null;
     let addr = null;
@@ -841,7 +843,7 @@ async function getRecipientNameCandidates(addrList, correct, removeNotInAb, addr
       oldName = "";
       addr = re[1];
     }
-    
+
     if (addr) {
       if (correct) {
         let contactNodes = await quickSearch(addrBooks, addr);

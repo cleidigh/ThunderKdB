@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Adresa odkazu"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importovať zo súboru"
+	},
 	"uncategorizedCards": {
 		"message": "Nezaradené"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : Zlyhalo stiahnutie kľúča pre kontakt $P2$ (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Kľúč bol stiahnutý pre kontakt $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Sťahuje sa kľúč pre kontakt $P2$ …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "%1$S : Kontakt %2$S bol stiahnutý zo servera",
         "placeholders": {
@@ -1757,10 +1799,13 @@
 		"message": "CardBook Komu"
 	},
 	"cardbook.searchCc.name": {
-		"message": "CardBook Cc"
+		"message": "CardBook Kópia"
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Bcc"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook Komu alebo Kópia"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook Od, Komu, Kópia alebo Skrytá kópia (Bcc)"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "Verejné kľúče"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "k"
+	},
 	"advancedTab1Label": {
 		"message": "Pokročilé"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "Otváranie URL adries pre softwarové telefóny"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Táto časť platí, ak ste vybrali protokol adresy URL pre telefón. Adresa URL by mala obsahovať výraz $1, odkazujúci na telefónne číslo."
+		"message": "Táto časť platí, ak ste vybrali protokol adresy URL pre telefón. Adresa URL by mala obsahovať výraz {{1}}, odkazujúci na telefónne číslo."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL adresa:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Verejné kľúče"
+	},
 	"noteTabLabel": {
 		"message": "Poznámky"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Napísať novú správu (skrytá kópia - bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Verejné kľúče"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Vyhľadať kľúče online"
+	},
+	"importKeyFromCards.label": {
+		"message": "Importovať do Správcu kľúčov OpenPGP"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Vyhľadať kľúče online"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Vyhľadať kľúče online"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Hľadať kľúče v Správcovi kľúčov OpenPGP"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importovať zo súboru"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Zdieľať cez email"

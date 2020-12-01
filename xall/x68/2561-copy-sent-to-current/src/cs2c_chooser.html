@@ -1,0 +1,34 @@
+<html>
+<head>
+  <script type="application/javascript" src="cs2c_chooser.js"/>
+  <script type="application/javascript" src="cs2c_utils.js"/>
+</head>
+<body>
+  <!-- from messenger\content\messenger\mailWindowOverlay.xul #1419(copyMenu) -->
+  <input type="checkbox" id="de-ggbs-cs2c-move" onclick="setTimeout(de_ggbs_cs2c.mc.popup, 100)"
+    label="&moveoriginal.label;" accesskey="&moveoriginal.accesskey;"/>
+<!--
+  <menulist label="&copysent2choose.label;" uri="" id="de-ggbs-cs2c-copyMenuBox"
+            disableonsend="true"
+            displayformat="verbose" sizetopopup="none">
+    <menupopup id="de-ggbs-cs2c-copyMenuPopup" crop="none"
+                is="folder-menupopup" mode="filing"
+                class="menulist-menupopup" showFileHereLabel="true"
+                onpopupshown="de_ggbs_cs2c.mc.dofocus(event.target);"
+                onpopuphidden="document.getElementById('de-ggbs-cs2c-copyMenuBox').focus();"
+                oncommand="de_ggbs_cs2c.mc.picked(event)">
+      <menuitem label="dummy" id="default://"
+                accesskey="#" class="folderMenuItem menuitem-iconic" />
+      <menuitem label="sent" id="sent://"
+                accesskey="!" class="folderMenuItem menuitem-iconic" />
+      <menuitem label="&copysent2current.nocopy;" id="nocopy://"
+                accesskey="-" class="folderMenuItem menuitem-iconic" />
+      <menuseparator id="de-ggbs-cs2c-sep"/>
+      <menuitem label="dummy" id="lastused://"
+                accesskey="+" class="folderMenuItem menuitem-iconic" />
+      <menuseparator/>
+    </menupopup>
+  </menulist>
+-->
+</body>
+</html>

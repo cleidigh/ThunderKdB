@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 245,
+    "average_daily_users": 219,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,30 +18,30 @@
     "contributions_url": null,
     "created": "2014-04-13T16:01:49Z",
     "current_version": {
-        "id": 2472279,
+        "id": 2474877,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/x-unsent-support/versions/2472279",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/x-unsent-support/versions/2474877",
         "files": [
             {
-                "id": 1015349,
-                "created": "2019-09-06T18:13:32Z",
-                "hash": "sha256:e12d6b77abec34f85651c972c638a39e780feb171e34569be4ec0029cd10344a",
-                "is_restart_required": true,
+                "id": 1018039,
+                "created": "2020-11-28T18:32:10Z",
+                "hash": "sha256:bab5b7225c6040849b178495625578de855692de9adb4fbf2685d56a787b965b",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 10844,
+                "size": 7492,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015349/x_unsent_support-3.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018039/x_unsent_support-4.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 22,
             "name": {
@@ -73,11 +73,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "- now requires at least Thunderbird 68\n - fixed incompatibility with Thunderbird 68"
+            "en-US": "4.0.0:\n - now requires at least Thunderbird 78\n - fixed incompatibility with Thunderbird 78\n\n4.0.1:\n - fixed Thunderbird stopping to respond if an eml file with an invalid format is opened\n - fixed add-on sometimes not working at start"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/x-unsent-support/versions/3.0.0",
-        "version": "3.0.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/x-unsent-support/versions/4.0.1",
+        "version": "4.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -100,14 +100,14 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-07T07:17:27Z",
+    "last_updated": "2020-12-01T16:23:56Z",
     "name": {
         "en-US": "X-Unsent support"
     },
     "previews": [],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.64773,
+        "bayesian_average": 4.64734,
         "count": 4,
         "average": 5,
         "text_count": 4
@@ -134,10 +134,10 @@
     "weekly_downloads": 34,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-05-04T19:01:25Z"
         }

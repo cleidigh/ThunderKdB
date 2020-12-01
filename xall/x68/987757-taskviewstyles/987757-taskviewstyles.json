@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
         }
     ],
-    "average_daily_users": 51,
+    "average_daily_users": 54,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-01-07T03:16:42Z",
     "current_version": {
-        "id": 2473967,
+        "id": 2474862,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "68.0"
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewstyles/versions/2473967",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewstyles/versions/2474862",
         "files": [
             {
-                "id": 1017129,
-                "created": "2020-07-20T09:58:56Z",
-                "hash": "sha256:6fbee42f834faae28b7b3d55582d8d4974820f727789970afde61e9f96fe6614",
+                "id": 1018024,
+                "created": "2020-11-27T05:58:00Z",
+                "hash": "sha256:2e276fdea29566bddc030b0a43a037d7c439dec7b8a7be936958a5474b31bb85",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4764,
+                "size": 5535,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017129/taskviewstyles-2.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018024/taskviewstyles-3.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,15 +50,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "justify scripts were corrected as below.\n\nbrowser.SetStyle.set(\"calendar-task-details-description\", 'text-align', 'justify');\nbrowser.SetStyle.set(\"calendar-task-details-description\", 'text-align-last', 'justify');\nbrowser.SetStyle.set(\"calendar-task-details-description\", 'white-space', 'pre-line');\nbrowser.SetStyle.set(\"calendar-task-details-description\", 'text-align-last', 'left');\nbrowser.SetStyle.set(\"calendar-task-details-description\", 'text-justfy', 'inter-character');\n\nAny error was not found. completed."
+            "en-US": "<b>Version 3.1.</b>\n\n1) At disabled/removed from Add-ons Manager, task view are restored to default modes.\n2) New event button was added.\n3) New task button was added.\n4) X-small button in font size was added.\n5) X-large button in font size was added.\n6) Category button in task view was added.\n7) MarkCompleted button in task view was added.\n8) Priority button in task view was added.\n9) Print option was added (convert item to message).\n\nNovember 25 2020.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewstyles/versions/2.6",
-        "version": "2.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewstyles/versions/3.1",
+        "version": "3.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Version 2.7.</b> Upcoming version submitted.\n\n1) New event button was added.\n2) New task button was added.\n3) X-small button in font size was added.\n4) X-large button in font size was added.\n\n<b>If button texts were not aligned, please, change default font and size.<b>\n\n<b>If coupling with TaskDescriptions, it is good enough!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\nExecuted well.\n\n<b>To Hyun-geol who I like.</b>\n\n<b>Print task</b>\n1) Select a task on task tree.\n2) Select Convert To &gt; Message... on right-click menu.\n3) Select File &gt; Print (Preview) on menu options of compose window.\n<b>Printing is good, as it is.^^ I don't want anything more!</b></b></b>",
+        "en-US": "<b>Version 3.1.</b> updated in 2020-11-27.\n\n1) At disabled/removed from Add-ons Manager, task view are restored to default modes.\n2) New event button was added.\n3) New task button was added.\n4) X-small button in font size was added.\n5) X-large button in font size was added.\n6) Category button in task view was added.\n7) MarkCompleted button in task view was added.\n8) Priority button in task view was added.\n9) Print option was added (convert item to message).\n\n<b>If button texts were not aligned, please, change default font and size.<b>\n\n<b>If coupling with TaskDescriptions, it is good enough!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\nExecuted well.\n\n<b>To Hyun-geol who I like.</b>\n\n<b>Print task</b>\n1) Select a task on task tree.\n2) Select Convert To &gt; Message... on right-click menu.\n3) Select File &gt; Print (Preview) on menu options of compose window.\n<b>Printing is good, as it is.^^ I don't want anything more!</b></b></b>",
         "ko": "<b>If button texts were not aligned, please, change default font and size.<b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\nExecuted well.\n\n<b>To Hyun-geol who I like.</b>\n\n<b>Print task</b>\n1) Select a task on task tree.\n2) Select Convert To &gt; Message... on right-click menu.\n3) Select File &gt; Print (Preview) on menu options of compose window.\n<b>Printing is good, as it is.^^ I don't want anything more!</b></b></b>"
     },
     "developer_comments": null,
@@ -76,27 +76,27 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-07-20T10:07:36Z",
+    "last_updated": "2020-11-27T11:47:02Z",
     "name": {
         "en-US": "TaskviewStyles",
         "ko": "작업보기 스타일"
     },
     "previews": [
         {
-            "id": 206304,
+            "id": 206319,
             "caption": {
                 "en-US": "If button texts were not aligned, please, change default font and size."
             },
             "image_size": [
-                1115,
-                351
+                1090,
+                340
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206304.png?modified=1606057188",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206319.png?modified=1606399624",
             "thumbnail_size": [
                 320,
-                101
+                100
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206304.png?modified=1606057188"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206319.png?modified=1606399624"
         }
     ],
     "public_stats": false,
@@ -129,7 +129,8 @@
         "ext_comp": {
             "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp78plus": true
         }
     }
 }

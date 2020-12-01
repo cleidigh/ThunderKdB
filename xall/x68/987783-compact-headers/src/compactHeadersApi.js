@@ -41,17 +41,17 @@ var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
 
                 let expandedHeaders3 = window.document.createXULElement("html:table");
                 expandedHeaders3.id = "expandedHeaders3";
-                expandedHeaders3.setAttribute("style","display: inline-grid;");
+                expandedHeaders3.setAttribute("style","display: inline-grid; z-index: 0; position: relative;");
                 if (expandedHeaders) expandedHeaders.insertAdjacentElement("afterend", expandedHeaders3);
 
                 let expandedHeaders4 = window.document.createXULElement("html:table");
                 expandedHeaders4.id = "expandedHeaders4";
-                expandedHeaders4.setAttribute("style","display: inline-grid;");
+                expandedHeaders4.setAttribute("style","display: inline-grid; z-index: 0; position: relative;");
                 if (expandedHeaders3) expandedHeaders3.insertAdjacentElement("afterend", expandedHeaders4);
 
                 let expandedHeaders5 = window.document.createXULElement("html:table");
                 expandedHeaders5.id = "expandedHeaders5";
-                expandedHeaders5.setAttribute("style","display: grid; float: inline-end; margin-inline-end: 10px;");
+                expandedHeaders5.setAttribute("style","display: grid; float: inline-end; margin-inline-end: 10px; z-index: 0; position: relative;");
                 if (expandedHeaders4) expandedHeaders4.insertAdjacentElement("afterend", expandedHeaders5);
 
                 let compactHeadersSingleLine = window.document.createXULElement("menuitem");
@@ -144,6 +144,9 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                 let expandedcontentBaseLabel = window.document.getElementById("expandedcontent-baseLabel");
                 let expandedcontentBaseBox = window.document.getElementById("expandedcontent-baseBox");
 
+                let cryptoBox = window.document.getElementById("cryptoBox");
+                let expandedsubjectBox = window.document.getElementById("expandedsubjectBox");
+
                 checkHeaders();
                 checkLines();
                 markToolbar();
@@ -186,13 +189,11 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                 }
 
                 function doubleLine() {
-                  expandedHeadersTopBox.setAttribute("style", "min-height: 30px; overflow: hidden;\
-                    text-overflow: ellipsis; white-space: nowrap;");
+                  expandedHeadersTopBox.setAttribute("style", "min-height: 30px; white-space: nowrap;");
                   expandedHeadersBottomBox.removeAttribute("style");
                   expandedBoxSpacer.setAttribute("style", "height: 8px;");
                   if (xulAppInfo.OS == "WINNT") {
-                    expandedHeadersTopBox.setAttribute("style", "min-height: 32px; overflow: hidden;\
-                      text-overflow: ellipsis; white-space: nowrap;");
+                    expandedHeadersTopBox.setAttribute("style", "min-height: 32px; white-space: nowrap;");
                     expandedBoxSpacer.setAttribute("style", "height: 6px;");
                     expandedHeadersBottomBox.setAttribute("style", "margin-top: -3px;");
                   }
@@ -217,6 +218,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                     singleLine();
                     checkHeaders();
                   }
+                  if (expandedHeaders2.getAttribute("compact") != "compact") expandedHeadersTopBox.removeAttribute("style");
                 }
 
                 function checkLines() {
@@ -254,7 +256,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                   if (expandedHeaders2.getAttribute("hideheaders") == "hideheaders") {
                     compactHeadersHideHeaders.setAttribute("label", "Hide Headers");
                     compactHeadersHideHeaders2.setAttribute("label", "Hide Headers");
-                    msgHeaderView.removeAttribute("style");
+                    msgHeaderView.setAttribute("style", "background-color: -moz-Dialog !important;color: -moz-DialogText !important;");
                     expandedHeaders2.removeAttribute("hideheaders");
                   } else {
                     compactHeadersHideHeaders.setAttribute("label", "Show Headers");
@@ -279,7 +281,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                   } else {
                     compactHeadersHideHeaders.setAttribute("label", "Hide Headers");
                     compactHeadersHideHeaders2.setAttribute("label", "Hide Headers");
-                    msgHeaderView.removeAttribute("style");
+                    msgHeaderView.setAttribute("style", "background-color: -moz-Dialog !important;color: -moz-DialogText !important;");
                   }
 
                   if (expandedHeaders2.getAttribute("compact") == "compact") {
@@ -342,6 +344,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                       expandedHeaders2.children[i].removeAttribute("style");
                       doubleLine();
                     }
+                    expandedHeadersTopBox.removeAttribute("style");
                   break;
                   default: expandedHeaders2.setAttribute("compact", "compact");
                     checkToolbar();
@@ -365,25 +368,24 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                 }
 
                 function checkToolbar() {
-                  expandedHeadersTopBox.setAttribute("style", "min-height: 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;");
+                  expandedHeadersTopBox.setAttribute("style", "min-height: 30px; white-space: nowrap;");
                   if (xulAppInfo.OS == "WINNT") {
-                    expandedHeadersTopBox.setAttribute("style", "min-height: 32px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;");
+                    expandedHeadersTopBox.setAttribute("style", "min-height: 32px; white-space: nowrap;");
                   }
                   if (expandedHeaders2.getAttribute("compact") == "compact") {
                     if (expandedHeaders2.getAttribute("hidetoolbar") == "hidetoolbar") {
                       hideToolbar();
                     } else {
                       hideToolbar();
-                      headerViewToolbar.setAttribute("style", "margin-block: 4px -2px;");
-                      //if (expandedtoRow) expandedtoLabel.setAttribute("style", "display: none;");
-                      //if (expandedtoBox) expandedtoBox.setAttribute("style", "display: none;");
-                      //if (expandedccRow) expandedccLabel.setAttribute("style", "display: none;");
-                      //if (expandedccBox) expandedccBox.setAttribute("style", "display: none;");
+                      headerViewToolbar.setAttribute("style", "margin-block: 4px -2px; margin-inline-end:-2px;\
+                        z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
+                        background: linear-gradient(to right,transparent,-moz-Dialog 2em) !important;");
                       if (expandedcontentBaseLabel) expandedcontentBaseLabel.setAttribute("style", "display: none;");
                       if (expandedcontentBaseBox) expandedcontentBaseBox.setAttribute("style", "display: none;");
                     }
                   } else {
                     showToolbar();
+                    expandedHeadersTopBox.removeAttribute("style");
                   }
                 }
 
@@ -403,7 +405,9 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                 }
 
                 function showToolbar() {
-                  headerViewToolbar.setAttribute("style", "margin-block: 4px auto;");
+                  headerViewToolbar.setAttribute("style", "margin-block: 4px auto; margin-inline-end:-2px;\
+                    z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
+                    background: linear-gradient(to right,transparent,-moz-Dialog 2em) !important;");
                   if (expandedsubjectRow) expandedsubjectRow.insertAdjacentElement("afterend", expandedtoRow);
                   if (expandedtoLabel) expandedtoLabel.removeAttribute("style");
                   if (expandedtoBox) expandedtoBox.removeAttribute("style");
@@ -418,17 +422,14 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                 }
 
                 function hideCryptoBox() {
-                  let cryptoBox = window.document.getElementById("cryptoBox");
                   if (cryptoBox) cryptoBox.setAttribute("style", "display: none;")
                 }
 
                 function showCryptoBox() {
-                  let cryptoBox = window.document.getElementById("cryptoBox");
                   if (cryptoBox) cryptoBox.removeAttribute("style")
                 }
 
                 function hideOverflow() {
-                  let expandedsubjectBox = window.document.getElementById("expandedsubjectBox");
                   if (expandedsubjectBox) expandedsubjectBox.setAttribute("style", "overflow: hidden;\
                     text-overflow: ellipsis; white-space: nowrap; width: -moz-fit-content;");
                   //let tooltiptext = expandedsubjectBox.getAttribute("aria-label");
@@ -436,7 +437,6 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                 }
 
                 function showOverflow() {
-                  let expandedsubjectBox = window.document.getElementById("expandedsubjectBox");
                   if (expandedsubjectBox) expandedsubjectBox.removeAttribute("style");
                   //expandedsubjectBox.removeAttribute("tooltiptext");
                 }
@@ -562,11 +562,13 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
     let expandedHeaders5 = window.document.getElementById("expandedHeaders5");
     if (expandedHeaders5) expandedHeaders5.remove();
 
-    if (mhcToolbarBackup) mhcToolbarPopup = mhcToolbarBackup;
-    mhcToolbarPopup.append(mhcToolbarPopupMenuItem);
-    window.mainPopupSet.append(mhcToolbarPopup);
-    expandedHeadersTopBox.setAttribute("context", "mhcToolbarPopup");
-    window.removeEventListener('DOMContentLoaded', popupEvent);
+    if (mhcToolbarBackup) {
+      mhcToolbarPopup = mhcToolbarBackup;
+      mhcToolbarPopup.append(mhcToolbarPopupMenuItem);
+      window.mainPopupSet.append(mhcToolbarPopup);
+      expandedHeadersTopBox.setAttribute("context", "mhcToolbarPopup");
+      window.removeEventListener('DOMContentLoaded', popupEvent);
+    }
   }
 
   for (let window of Services.wm.getEnumerator("mail:messageWindow")) {
@@ -679,11 +681,13 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
     let expandedHeaders5 = window.document.getElementById("expandedHeaders5");
     if (expandedHeaders5) expandedHeaders5.remove();
 
-    if (mhcToolbarBackup) mhcToolbarPopup = mhcToolbarBackup;
-    mhcToolbarPopup.append(mhcToolbarPopupMenuItem);
-    window.mainPopupSet.append(mhcToolbarPopup);
-    expandedHeadersTopBox.setAttribute("context", "mhcToolbarPopup");
-    window.removeEventListener('DOMContentLoaded', popupEvent);
+    if (mhcToolbarBackup) {
+      mhcToolbarPopup = mhcToolbarBackup;
+      mhcToolbarPopup.append(mhcToolbarPopupMenuItem);
+      window.mainPopupSet.append(mhcToolbarPopup);
+      expandedHeadersTopBox.setAttribute("context", "mhcToolbarPopup");
+      window.removeEventListener('DOMContentLoaded', popupEvent);
+    }
   }
   ExtensionSupport.unregisterWindowListener("compactHeadersListener");
   console.log("Compact Headers disabled");

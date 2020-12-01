@@ -18,27 +18,29 @@
     "contributions_url": "",
     "created": "2019-08-17T06:16:20Z",
     "current_version": {
-        "id": 2474683,
+        "id": 2474889,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lefttodaysubpaneorlogo/versions/2474683",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lefttodaysubpaneorlogo/versions/2474889",
         "files": [
             {
-                "id": 1017845,
-                "created": "2020-11-09T10:41:28Z",
-                "hash": "sha256:81672a8e1be02c439999fee6d4a3823cefb4b07de6901e01900d9784a1a043e2",
+                "id": 1018051,
+                "created": "2020-11-30T07:30:54Z",
+                "hash": "sha256:3d71766f4f2aeed8e6a53991577080ab1b44b52212d02548931e65a2a0c5648c",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 35621,
+                "size": 22388,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017845/lefttodaysubpaneorlogo-8.8-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018051/lefttodaysubpaneorlogo-9.1-tb.xpi?src=",
+                "permissions": [
+                    "theme"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -50,15 +52,15 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Version 8.8.\n\nTitle was changed from OppositeTodaySubpane to LeftTodaySubpaneOrLogo.\n\n1) Option of appending logo to folder pane bottom was added.\n2) Option of appending logo to side bar bottom was added.\n\nNovember 9th 2020.\n\nFrom Sungho Hwang."
+            "en-US": "<b>Version 9.1.</b>\n\n1) Logo was changed to small size.\n2) When this add-on is disabled/removed, defaults are restored.\n3) Background color of logo in folder pane was fixed, but color is changed only in white, #fff, #38383D, #303030, black, automatically.\n4) Background color of logo in folder pane is not supported in Default theme, please, use Dark or Light theme or FrameWhite.\n5) When clicking remove button in case nothing is, remove buttons are not run. \n\nNovember 30 2020.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lefttodaysubpaneorlogo/versions/8.8",
-        "version": "8.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lefttodaysubpaneorlogo/versions/9.1",
+        "version": "9.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>[Notifications]</b>\nAppend today subpane to left top/bottm or append logo to left bottm.\nCurrent background color of logo at folder pane can be adjusted with this add-on, FrameWhite buttons repeated. \n\nsend a gift to a friend Eunjo.\n\nExecuted well as of 2020-08-11.\n\n<b>[Be careful when removing today subpane clones]\nwhen clicking each remove button,\nI have set that first child or last child would be removed \nSo, I have written [Warning] before each remove button.\nBe careful not to remove other child element.</b>\n\n<b>About all-day persistence of this program.</b>\nIf not closing operating system, please, use <b>Minimize on close</b>.",
+        "en-US": "<b>Version 9.1.</b> updated on 2020-12-02.\n1) Logo was changed to small size.\n2) When this add-on is disabled/removed, defaults are restored.\n3) Background color of logo in folder pane was fixed, but color is changed only in white, #fff, #38383D, #303030, black, automatically.\n4) Background color of logo in folder pane is not supported in Default theme, please, use Dark or Light theme or FrameWhite.\n5) When clicking remove button in case nothing is, remove buttons are not run. \n\n<b>[Notifications]</b>\nAppend today subpane to left top/bottm or append logo to left bottm.\n<b>Please, do not append 3 together.</b>\n\nsend a gift to a friend Eunjo.\n\n<b>About all-day persistence of this program.</b>\nIf not closing operating system, please, use <b>Minimize on close</b>.\n\n<b>[Next improvements]</b>\n<b>1) Would you recommend improvements for next version?</b>",
         "ko": "Today subpane is a emblem of Thunderbird.\nWhen today pane is hidden, \nIt feels sorry not to have this on screen.\nIt is to remain today subpane on folder and Lightning side bar.\n\nsend a gift to a friend Eunjo.\n\nExecuted well as of 2020-08-11.\n\n<b>[Be careful when removing today subpane clones]\nwhen clicking each remove button,\nI have set that first child or last child would be removed \nSo, I have written [Warning] before each remove button.\nBe careful not to remove other child element.</b>"
     },
     "developer_comments": null,
@@ -76,14 +78,14 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-09T10:59:17Z",
+    "last_updated": "2020-12-01T16:10:43Z",
     "name": {
         "en-US": "LeftTodaySubpaneOrLogo",
         "ko": "왼쪽편 투데이 서브페인과 로고"
     },
     "previews": [
         {
-            "id": 206248,
+            "id": 206329,
             "caption": {
                 "en-US": "Mail tab."
             },
@@ -91,60 +93,60 @@
                 170,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206248.png?modified=1604924406",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206329.png?modified=1606839873",
             "thumbnail_size": [
-                43,
+                42,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206248.png?modified=1604924406"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206329.png?modified=1606839873"
         },
         {
-            "id": 206249,
+            "id": 206330,
             "caption": {
                 "en-US": "Calendar tab."
             },
             "image_size": [
-                173,
+                171,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206249.png?modified=1604924406",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206330.png?modified=1606839873",
             "thumbnail_size": [
                 43,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206249.png?modified=1604924406"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206330.png?modified=1606839873"
         },
         {
-            "id": 206250,
+            "id": 206331,
             "caption": {
                 "en-US": "Tasks tab."
             },
             "image_size": [
-                174,
+                171,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206250.png?modified=1604924406",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206331.png?modified=1606839873",
             "thumbnail_size": [
                 43,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206250.png?modified=1604924406"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206331.png?modified=1606839873"
         },
         {
-            "id": 206251,
+            "id": 206332,
             "caption": {
-                "en-US": "Menu popup."
+                "en-US": "Menu."
             },
             "image_size": [
                 453,
                 423
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206251.png?modified=1604924354",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206332.png?modified=1606839873",
             "thumbnail_size": [
                 214,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206251.png?modified=1604924354"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206332.png?modified=1606839873"
         }
     ],
     "public_stats": true,
@@ -160,7 +162,7 @@
     "slug": "lefttodaysubpaneorlogo",
     "status": "public",
     "summary": {
-        "en-US": "Append today subpane to left top/bottm or append logo to left bottm.\nCurrent background color of logo at folder pane can be adjusted with this add-on, FrameWhite buttons repeated. \n\nsend a gift to a friend Eunjo.\n\nExecuted well as of 2020-11-09.",
+        "en-US": "Append today subpane to left top/bottm or append logo to left bottm.\n\nsend a gift to a friend Eunjo.\n\nExecuted well as of 2020-12-02.",
         "ko": "넓게 보기 위하여 투데이 페인을 숨길 때, \n투데이 서브페인을  폴더 페인과 캘린다 서브스크립션 페인에 남기세요.\n\n친구 은조에게 선물로 보내며.\n\n개발자 황성호."
     },
     "support_email": {
@@ -168,6 +170,7 @@
     },
     "support_url": null,
     "tags": [
+        "dynamic theme",
         "firefox57"
     ],
     "type": "extension",
@@ -179,6 +182,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-09T10:41:28Z",
+            "comp78pv_version": "8.8",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2019-08-17T18:47:58Z"
         }

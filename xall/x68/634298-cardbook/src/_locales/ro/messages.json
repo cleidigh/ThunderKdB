@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Locație link"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importă din fișierul"
+	},
 	"uncategorizedCards": {
 		"message": "Necategorisite"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "??$P1$ : Key downloaded for contact $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Contactul $P2$ a fost descărcat de pe server",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Copie ascunsă"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook Către sau Copie"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook De la, Către, Copie sau Copie ascunsă"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "v"
 	},
+	"keyTab.conf.label": {
+		"message": "??Public Keys??"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "C"
+	},
 	"advancedTab1Label": {
 		"message": "Avansat"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "URL pentru telefoane soft"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Această secțiune se aplică dacă pentru telefon ai selectat protocolul URL. URL-ul ar trebui să conțină $1, care este referință la numărul de telefo."
+		"message": "Această secțiune se aplică dacă pentru telefon ai selectat protocolul URL. URL-ul ar trebui să conțină {{1}}, care este referință la numărul de telefo."
 	},
 	"URLPhoneURLLabel": {
 		"message": "Adresă URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "??Public Keys??"
+	},
 	"noteTabLabel": {
 		"message": "Notițe"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Scrie un mesaj nou (copie ascunsă/ bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "??Public keys??"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Caută chei online"
+	},
+	"importKeyFromCards.label": {
+		"message": "??Import into OpenPGP Key Manager??"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Caută chei online"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Caută chei online"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "??Search for keys in OpenPGP key manager??"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importă dintr-un fișier"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Distribuie prin email"

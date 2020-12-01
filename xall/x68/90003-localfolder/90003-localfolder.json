@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5032,
+    "average_daily_users": 4194,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -26,30 +26,36 @@
     "contributions_url": "http://paypal.me/cleidigh",
     "created": "2010-03-03T02:00:09Z",
     "current_version": {
-        "id": 2472072,
+        "id": 2474878,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "60.0"
+                "max": "78.*",
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/localfolder/versions/2472072",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/localfolder/versions/2474878",
         "files": [
             {
-                "id": 1015140,
-                "created": "2019-08-16T03:51:56Z",
-                "hash": "sha256:de0ce35f45590fde7c38c250f3f4f0d84f128d7e7e29a4f8f9d4d9b2b5978714",
-                "is_restart_required": true,
+                "id": 1018040,
+                "created": "2020-11-28T22:42:48Z",
+                "hash": "sha256:7c7c3ea00bc1b9d7da37c8f99c85fedddf7b9ad42e0b942a5363fc0a43b761c0",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 43511,
+                "size": 52132,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015140/localfolders-2.0.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018040/localfolders-3.0.0-tb.xpi?src=",
+                "permissions": [
+                    "tabs",
+                    "activeTab",
+                    "file:///*",
+                    "<all_urls>",
+                    "about:accountsettings"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -58,11 +64,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fix icons on *nix\ngrey out labels"
+            "en-US": "Update for 78"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/localfolder/versions/2.0.2",
-        "version": "2.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/localfolder/versions/3.0.0",
+        "version": "3.0.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -99,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-08-16T09:01:11Z",
+    "last_updated": "2020-11-30T22:28:22Z",
     "name": {
         "fr": "LocalFolder",
         "de": "LokaleOrdner (LocalFolders)",
@@ -167,7 +173,7 @@
     "summary": {
         "fr": "Ajoutez autant de dossiers locaux que vous voulez.",
         "de": "Fügen Sie beliebig viele lokale Ordner hinzu, einschließlich zugeordneter Verzeichnisse.",
-        "en-US": "Add as many local folders as you want to.\nNew folders can reside on mapped or network locations.\n\n78 version in progress see repository for beta:\nworking for 78/68\nBETA TESTERS WANTED !\n<a rel=\"nofollow\" href=\"https://github.com/cleidigh/Localfolder-TB/issues/38\">https://github.com/cleidigh/Localfolder-TB/issues/38</a>",
+        "en-US": "Add as many local folders as you want to.\nNew folders can reside on mapped or network locations.\n\nNew 68/78 version !",
         "it": "Aggiungi tutte le cartelle locali che vuoi.\nLe nuove cartelle possono risiedere in percorsi mappati o di rete.",
         "hu": "Adjon hozzá annyi helyi mappát, amennyire szüksége van.",
         "pt-BR": "Adicione quantas pastas locais você desejar.\nNovas pastas podem residir em locais mapeados ou na rede.",
@@ -195,8 +201,10 @@
             "mext": true,
             "comp68": true,
             "comp69plus": true,
-            "comp60": true,
-            "comp61plus": true
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp60pv": true,
+            "comp60pv_date": "2019-02-07T06:04:03Z"
         }
     }
 }

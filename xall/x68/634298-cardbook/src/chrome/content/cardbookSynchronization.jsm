@@ -356,7 +356,7 @@ var cardbookSynchronization = {
 			// else finish ok : the sync would be done again if the password is changed
 			if (!cardbookRepository.cardbookServerChangedPwd[myPwdGetId].openWindow) {
 				cardbookRepository.cardbookServerChangedPwd[myPwdGetId].openWindow = true;
-				var newPwd = cardbookRepository.cardbookRepository.cardbookPasswordManager.getChangedPassword(aConnection.connUser, aConnection.connPrefId);
+				var newPwd = cardbookRepository.cardbookPasswordManager.getChangedPassword(aConnection.connUser, aConnection.connPrefId);
 				if (newPwd != "") {
 					cardbookRepository.cardbookServerChangedPwd[myPwdGetId].pwdChanged = true;
 				}
@@ -1186,6 +1186,10 @@ var cardbookSynchronization = {
 						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 					}
 					cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
+				} else {
+					cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSearchRemote", aConnection.connUrl, status], "Error");
+					cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
+					cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 				}
 			}
 		};
@@ -1376,6 +1380,10 @@ var cardbookSynchronization = {
 						cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncHandleRemainingTotal[aConnection.connPrefId] = cardbookRepository.cardbookServerSyncHandleRemainingDone[aConnection.connPrefId];
 					}
+					cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
+				} else {
+					cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "serverSyncCards", aConnection.connUrl, status], "Error");
+					cardbookRepository.cardbookServerSyncError[aConnection.connPrefId]++;
 					cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 				}
 			}
@@ -1901,14 +1909,14 @@ var cardbookSynchronization = {
 						cardbookRepository.cardbookServerSyncAgain[aPrefId] = aFirstSync;
 						cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
 						var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE.REFRESH_REQUEST_URL, connDescription: myPrefIdName};
-						var myCode = cardbookRepository.cardbookRepository.cardbookPasswordManager.getPassword(myPrefIdUser, myPrefIdUrl);
+						var myCode = cardbookRepository.cardbookPasswordManager.getPassword(myPrefIdUser, myPrefIdUrl);
 						cardbookRepository.cardbookSynchronizationGoogle.getNewAccessTokenForGoogle(connection, myCode, "GOOGLE", params);
 					} else if (myPrefIdType == "YAHOO") {
 						cardbookActions.initSyncActivity(aPrefId, myPrefIdName);
 						cardbookSynchronization.initMultipleOperations(aPrefId);
 						cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
 						var connection = {connUser: myPrefIdUser, connPrefId: aPrefId, connUrl: cardbookRepository.cardbookOAuthData.YAHOO.REFRESH_REQUEST_URL, connDescription: myPrefIdName};
-						var myCode = cardbookRepository.cardbookRepository.cardbookPasswordManager.getPassword(myPrefIdUser, myPrefIdUrl);
+						var myCode = cardbookRepository.cardbookPasswordManager.getPassword(myPrefIdUser, myPrefIdUrl);
 						cardbookRepository.cardbookSynchronizationYahoo.getNewAccessTokenForYahoo(connection, myCode, "YAHOO", params);
 					} else if (myPrefIdType == "APPLE") {
 						cardbookActions.initSyncActivity(aPrefId, myPrefIdName);
@@ -2393,10 +2401,10 @@ var cardbookSynchronization = {
 				}
 
 				for (var i = 0; i < myAccountsToAdd.length; i++) {
-					cardbookRepository.cardbookRepository.cardbookDiscovery.addAddressbook(myAccountsToAdd[i]);
+					cardbookRepository.cardbookDiscovery.addAddressbook(myAccountsToAdd[i]);
 				}
 				for (var i = 0; i < myAccountsToRemove.length; i++) {
-					cardbookRepository.cardbookRepository.cardbookDiscovery.removeAddressbook(myAccountsToRemove[i]);
+					cardbookRepository.cardbookDiscovery.removeAddressbook(myAccountsToRemove[i]);
 				}
 				for (var dirPrefId in cardbookRepository.cardbookServerValidation) {
 					cardbookSynchronization.stopDiscoveryOperations(dirPrefId);

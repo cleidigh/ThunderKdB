@@ -7,8 +7,8 @@
                  }
              },
 	"name": "FrameWhite",
-	"version": "62.5",
-	"description": "This is a theme with white frames.",
+	"version": "63.2",
+	"description": "Enjoy black and white themes in Light theme.",
              "icons": {
                 "32": "icons/w_large.png"
                 },
@@ -17,22 +17,6 @@
     "default_title": "FrameWhite",
     "default_popup": "popup.html"
   },
-"permissions": [
-        ],
- "experiment_apis": {
-    "setStyle": {
-      "schema": "schema.json",
-      "parent": {
-        "scopes": [
-          "addon_parent"
-        ],
-        "paths": [
-          [
-            "setStyle"
-          ]
-        ],
-        "script": "implementation.js"
-      }
-    }
-  }
+"permissions": [ "theme"
+        ]
 }

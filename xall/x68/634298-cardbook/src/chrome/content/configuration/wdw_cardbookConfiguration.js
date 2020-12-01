@@ -14,6 +14,7 @@ Preferences.addAll([
 	{ id: "extensions.cardbook.mailPopularityTabView", type: "bool" },
 	{ id: "extensions.cardbook.technicalTabView", type: "bool" },
 	{ id: "extensions.cardbook.vcardTabView", type: "bool" },
+	{ id: "extensions.cardbook.keyTabView", type: "bool" },
 	{ id: "extensions.cardbook.localizeEngine", type: "string" },
 	{ id: "extensions.cardbook.showNameAs", type: "string" },
 	{ id: "extensions.cardbook.adrFormula", type: "string" },
@@ -1665,7 +1666,7 @@ var wdw_cardbookConfiguration = {
 	loadURLPhonesPassword: function () {
 		var myUser = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.URLPhoneUser");
 		var myUrl = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.URLPhoneURL");
-		document.getElementById('URLPhonePasswordTextBox').value = cardbookRepository.cardbookRepository.cardbookPasswordManager.getPassword(myUser, myUrl);
+		document.getElementById('URLPhonePasswordTextBox').value = cardbookRepository.cardbookPasswordManager.getPassword(myUser, myUrl);
 	},
 
 	showPassword: function () {
@@ -1708,7 +1709,7 @@ var wdw_cardbookConfiguration = {
 		var myUser = document.getElementById('URLPhoneUserTextBox').value;
 		var myPassword = document.getElementById('URLPhonePasswordTextBox').value;
 		if (myPassword) {
-			cardbookRepository.cardbookRepository.cardbookPasswordManager.rememberPassword(myUser, myURL, myPassword, true);
+			cardbookRepository.cardbookPasswordManager.rememberPassword(myUser, myURL, myPassword, true);
 		}
 	},
 

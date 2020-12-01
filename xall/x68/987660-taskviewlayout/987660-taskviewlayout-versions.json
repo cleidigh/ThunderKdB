@@ -1,5 +1,48 @@
 [
     {
+        "id": 2474851,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/versions/2474851",
+        "files": [
+            {
+                "id": 1018013,
+                "created": "2020-11-26T06:33:52Z",
+                "hash": "sha256:23cdf81aa7ec88536645e5689595b58f8bd952913c292e0ef10ad8282d012615",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 4306,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018013/taskviewlayout-62.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "<b>Version 62.6.</b>\n\n1) At disabled/removed from Add-ons Manager, most of defaults are restored, except resizer.\n2) I fixed the problem that when resizing task view down, status bar moves down with task view.\n3) If not seeing status bar, adjust height with resizer at least level, So, now on, you can see status bar at the level.\n4) If adjusting each layout size, each layout size is restored.\n\nNovember 26 2020.\n\nFrom Sungho Hwang."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/62.6",
+        "version": "62.6"
+    },
+    {
         "id": 2473984,
         "channel": "listed",
         "compatibility": {
@@ -2544,55 +2587,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/50.4",
         "version": "50.4"
-    },
-    {
-        "id": 2472582,
-        "channel": "listed",
-        "compatibility": {
-            "thunderbird": {
-                "max": "*",
-                "min": "68.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/versions/2472582",
-        "files": [
-            {
-                "id": 1015654,
-                "created": "2019-09-13T16:33:39Z",
-                "hash": "sha256:62785caf8c534dedb3be8acee191e521aa54f29c1fa65e569d754530250d38f0",
-                "is_restart_required": false,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 7294,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015654/taskviewlayout-50.3-tb.xpi?src=",
-                "permissions": [
-                    "menus",
-                    "activeTab",
-                    "*://developer.mozilla.org/*",
-                    "webRequest",
-                    "*://mozilla.org/*",
-                    "*://*.mozilla.org/*"
-                ]
-            }
-        ],
-        "is_strict_compatibility_enabled": false,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "en-US": "On development."
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/50.3",
-        "version": "50.3"
     }
 ]

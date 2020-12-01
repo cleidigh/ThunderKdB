@@ -10,6 +10,7 @@ const {
 XPCOMUtils.defineLazyModuleGetters(this, {
   BrowserSim: "chrome://conversations/content/modules/browserSim.js",
   ContactManager: "chrome://conversations/content/modules/contact.js",
+  Gloda: "resource:///modules/gloda/GlodaPublic.jsm",
   groupArray: "chrome://conversations/content/modules/misc.js",
   MailServices: "resource:///modules/MailServices.jsm",
   MessageFromDbHdr: "chrome://conversations/content/modules/message.js",
@@ -26,17 +27,6 @@ XPCOMUtils.defineLazyGetter(this, "browser", function () {
 });
 XPCOMUtils.defineLazyGetter(this, "Log", () => {
   return setupLogging("Conversations.Conversation");
-});
-XPCOMUtils.defineLazyGetter(this, "Gloda", () => {
-  let tmp = {};
-
-  try {
-    ChromeUtils.import("resource:///modules/gloda/public.js", tmp);
-  } catch (ex) {
-    ChromeUtils.import("resource:///modules/gloda/GlodaPublic.jsm", tmp);
-  }
-
-  return tmp.Gloda;
 });
 const kMsgDbHdr = 0;
 const kMsgGloda = 1;
@@ -631,10 +621,11 @@ Conversation.prototype = {
 
     this._tellMeWhoToExpand(newMsgs, reactMsgData, -1);
 
-    this.dispatch({
-      type: "APPEND_MESSAGES",
-      msgData: reactMsgData
-    });
+    this.dispatch(this._htmlPane.summaryActions.appendMessages({
+      messages: {
+        msgData: reactMsgData
+      }
+    }));
   },
 
   // Once we're confident our set of messages is the right one, we actually

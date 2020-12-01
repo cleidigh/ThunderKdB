@@ -23,6 +23,10 @@ var cardbookUtils = {
 
 	formatExtension: function (aExtension, aVersion) {
 		switch (aExtension) {
+			case "pgp":
+			case "pub":
+				aExtension = "pgp";
+				break;
 			case "JPG":
 			case "jpg":
 				aExtension = "jpeg";
@@ -364,10 +368,10 @@ var cardbookUtils = {
 	},
 
 	// for media
-	appendToVcardData3: function (vString1, vString2, vString3) {
+	appendToVcardData3: function (vString1, vString2, vArray) {
 		var lResult = vString1;
-		if (vString3) {
-			lResult = lResult + this.splitLine(vString2 + vString3) + "\r\n";
+		for (let line of vArray) {
+			lResult = lResult + this.splitLine(vString2 + line) + "\r\n";
 		}
 		return lResult;
 	},
@@ -565,7 +569,7 @@ var cardbookUtils = {
 		vCardData = this.appendToVcardData2(vCardData,"REV",false,vCard.rev);
 		vCardData = this.appendToVcardData2(vCardData,"AGENT",false,vCard.agent);
 		vCardData = this.appendToVcardData2(vCardData,"TZ",false,this.escapeStrings(vCard.tz));
-		vCardData = this.appendToVcardData2(vCardData,"KEY",false,vCard.key);
+		vCardData = this.appendToVcardData3(vCardData,"KEY",cardbookUtils.getKeyContentForCard(vCard));
 
 		vCardData = this.appendToVcardData3(vCardData,"PHOTO",cardbookUtils.getMediaContentForCard(vCard, "photo", aMediaConversion));
 		vCardData = this.appendToVcardData3(vCardData,"LOGO",cardbookUtils.getMediaContentForCard(vCard, "logo", aMediaConversion));
@@ -666,39 +670,80 @@ var cardbookUtils = {
 
 	getMediaContentForCard: function(aCard, aType, aMediaConversion) {
 		try {
-			var result = "";
+			let result = [];
 			if (aMediaConversion) {
 				if (aCard[aType].URI) {
-					result = ";VALUE=URI:" + aCard[aType].URI;
+					result.push(";VALUE=URI:" + aCard[aType].URI);
 				} else if (aCard[aType].localURI) {
-					result = ";VALUE=URI:" + aCard[aType].localURI;
 					var myFileURI = Services.io.newURI(aCard[aType].localURI, null, null);
 					var content = btoa(cardbookUtils.getFileBinary(myFileURI));
 					if (aCard.version === "4.0") {
 						if (aCard[aType].extension != "") {
-							result = ":DATA:IMAGE/" + aCard[aType].extension.toUpperCase() + ";BASE64," + content;
+							result.push(":data:image/" + aCard[aType].extension.toUpperCase() + ";base64," + content);
 						} else {
-							result = ":BASE64," + content;
+							result.push(":base64," + content);
 						}
 					} else if (aCard.version === "3.0") {
 						if (aCard[aType].extension != "") {
-							result = ";ENCODING=B;TYPE=" + aCard[aType].extension.toUpperCase() + ":" + content;
+							result.push(";ENCODING=B;TYPE=" + aCard[aType].extension.toUpperCase() + ":" + content);
 						} else {
-							result = ";ENCODING=B:" + content;
+							result.push(";ENCODING=B:" + content);
 						}
 					}
 				}
 			} else {
 				if (aCard[aType].URI) {
-					result = ";VALUE=URI:" + aCard[aType].URI;
+					result.push(";VALUE=URI:" + aCard[aType].URI);
 				} else if (aCard[aType].localURI) {
-					result = ";VALUE=URI:" + aCard[aType].localURI;
+					result.push(";VALUE=URI:" + aCard[aType].localURI);
 				}
 			}
 			return result;
 		}
 		catch (e) {
 			cardbookRepository.cardbookLog.updateStatusProgressInformation("cardbookUtils.getMediaContentForCard error : " + e, "Error");
+		}
+	},
+
+	getKeyContentForCard: function(aCard) {
+		try {
+			let result = [];
+			for (let keyType of aCard.key) {
+				let pref = cardbookUtils.getPrefBooleanFromTypes(keyType.types);
+				if (keyType.URI) {
+					if (aCard.version === "4.0") {
+						if (pref) {
+							result.push(";PREF=1;VALUE=URI:" + keyType.URI);
+						} else {
+							result.push(";VALUE=URI:" + keyType.URI);
+						}
+					} else {
+						if (pref) {
+							result.push(";TYPE=PREF;VALUE=URI:" + keyType.URI);
+						} else {
+							result.push(";VALUE=URI:" + keyType.URI);
+						}
+					}
+				} else if (keyType.value) {
+					if (aCard.version === "4.0") {
+						if (pref) {
+							result.push(":pref=1;data:application/pgp-keys;base64," + keyType.value);
+						} else {
+							result.push(":base64," + keyType.value);
+						}
+					} else if (aCard.version === "3.0") {
+						if (pref) {
+							result.push(";TYPE=PREF;ENCODING=B:" + keyType.value);
+						} else {
+							result.push(";ENCODING=B:" + keyType.value);
+						}
+					}
+				}
+			}
+			return result;
+		}
+		catch (e) {
+			cardbookRepository.cardbookLog.updateStatusProgressInformation("cardbookUtils.getKeyContentForCard error : " + e, "Error");
 		}
 	},
 
@@ -1168,20 +1213,22 @@ var cardbookUtils = {
 	},
 
 	getPrefBooleanFromTypes: function(aArray) {
-		for (var i = 0; i < aArray.length; i++) {
-			var upperElement = aArray[i].toUpperCase();
-			if (upperElement === "PREF" || upperElement === "TYPE=PREF") {
-				return true;
-			} else if (upperElement.replace(/PREF=[0-9]*/i,"PREF") == "PREF") {
-				return true;
-			} else if (upperElement.replace(/^TYPE=/ig,"") !== upperElement) {
-				var tmpArray = aArray[i].replace(/^TYPE=/ig,"").split(",");
-				for (var j = 0; j < tmpArray.length; j++) {
-					var upperElement1 = tmpArray[j].toUpperCase();
-					if (upperElement1 === "PREF") {
-						return true;
-					} else if (upperElement1.replace(/PREF=[0-9]*/i,"PREF") == "PREF") {
-						return true;
+		if (aArray) {
+			for (var i = 0; i < aArray.length; i++) {
+				var upperElement = aArray[i].toUpperCase();
+				if (upperElement === "PREF" || upperElement === "TYPE=PREF") {
+					return true;
+				} else if (upperElement.replace(/PREF=[0-9]*/i,"PREF") == "PREF") {
+					return true;
+				} else if (upperElement.replace(/^TYPE=/ig,"") !== upperElement) {
+					var tmpArray = aArray[i].replace(/^TYPE=/ig,"").split(",");
+					for (var j = 0; j < tmpArray.length; j++) {
+						var upperElement1 = tmpArray[j].toUpperCase();
+						if (upperElement1 === "PREF") {
+							return true;
+						} else if (upperElement1.replace(/PREF=[0-9]*/i,"PREF") == "PREF") {
+							return true;
+						}
 					}
 				}
 			}
@@ -1380,6 +1427,7 @@ var cardbookUtils = {
 			}
 		}
 		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("mailPopularityTabLabel"), "mailpop"]);
+		// test waiting tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("keyTabLabel"), "key"]);
 		cardbookRepository.cardbookUtils.sortMultipleArrayByString(tmpArray,0,1);
 		return tmpArray;
 	},

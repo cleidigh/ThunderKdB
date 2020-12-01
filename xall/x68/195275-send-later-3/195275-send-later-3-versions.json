@@ -1,5 +1,59 @@
 [
     {
+        "id": 2474847,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2474847",
+        "files": [
+            {
+                "id": 1018009,
+                "created": "2020-11-25T18:44:30Z",
+                "hash": "sha256:e77467d5dd32865ac6770e774a1323eaecc61fdac4f237391dafe80d3f96710d",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 559198,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018009/send_later-8.4.5-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead",
+                    "accountsFolders",
+                    "menus",
+                    "menus.overrideContext",
+                    "activeTab",
+                    "messagesMove",
+                    "messagesRead",
+                    "compose",
+                    "notifications"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "This patch implements a workaround for Send Later's most serious bug report: cases in which send later was not correctly processing messages at their scheduled time.\n\nIt also includes lots of tweaks to keep Send Later running smoothly, including:\n\n    * Minor improvements and fixups to the scheduler dialog.\n        - Option to place message in outbox rather than send immediately\n        - Automatically adjust input based on schedule restrictions\n        - Relative time format is synchronized with the actual time at which send later executes (not necessarily on the minute)\n        - Relative time text updates periodically while the dialog remains open, rather than only being set when the input fields change.\n        - Fix bug with \"save these values as defaults\" in which default values were not properly restored.\n    * Fix locales, and merge translation changes from the 7.x branch\n    * Implement all the same pre-send checks as Thunderbird's native send operation, and make sure they only run once.\n    * Handle errors in cases where saveAsDraft fails to complete.\n    * Delay automatic updates until next restart (will not take effect until an update is available via ATN after this version)\n    * Offer opt-out from repeated resent message warnings"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.4.5",
+        "version": "8.4.5"
+    },
+    {
         "id": 2474800,
         "channel": "listed",
         "compatibility": {
@@ -2204,52 +2258,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.2.1",
         "version": "6.2.1"
-    },
-    {
-        "id": 2119331,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.53",
-                "min": "2.9"
-            },
-            "thunderbird": {
-                "max": "56.0",
-                "min": "8.0a1"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2119331",
-        "files": [
-            {
-                "id": 665874,
-                "created": "2017-06-15T17:41:40Z",
-                "hash": "sha256:6993beae360f43115acac695cb74adcfbc46f89adbb2966a3636d67006cd08d1",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 330160,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/665874/send_later-6.2-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "en-US": "New feature: <strong>Automatically cancelling recurring messages upon reply</strong>\n\nWhen scheduling a recurring message via the Send Later pop-up window, you may now indicate that the recurring message should be canceled and deleted from your Drafts folder if you receive a reply to it. This is useful, e.g., if you want to keep periodically reminding someone about something until they reply to indicate that the reminder is no longer needed.\n\nThanks, as always, to my translation volunteers, for assisting in translating this new feature to many languages!\n\nNew feature: <strong>Draft messages saved by Send Later are now more reliably marked as “read” so they don’t make your Drafts folder have an unread count unnecessarily.</strong>\n\nBug fixes:\n\nSend Later now uses separate, unique message IDs for scheduled drafts vs. the messages it actually sends, as well as for different copies of recurring messages. Previously, the message ID which Send Later used when sending a scheduled message was identical to the message ID that was used while the message was being stored in your Drafts folder. Furthermore, Send Later previously used that same message ID for all sent copies of recurring messages. Using the same message ID for drafts and recurring messages was incorrect both because message IDs of different copies of messages are supposed to be unique, and because some mail servers might get confused when a draft and a sent message have the same message ID.\n\nPreviously, when a recurring message was sent, Send Later briefly failed to include it in the count of pending messages. Now, Send Later consistently counts recurring messages in the pending message count."
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.2",
-        "version": "6.2"
     }
 ]

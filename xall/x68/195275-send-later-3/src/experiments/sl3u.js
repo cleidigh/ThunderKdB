@@ -8,6 +8,8 @@ const { Utils } = ChromeUtils.import("resource://services-settings/Utils.jsm");
 const { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 var { AddonManager } = ChromeUtils.import("resource://gre/modules/AddonManager.jsm");
 
+const { NetUtil } = ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
+
 const SendLaterVars = {
   fileNumber: 0,
   copyService: null,
@@ -95,7 +97,7 @@ const SendLaterFunctions = {
       ].getService(Ci.nsIMsgSendLater);
     return msgSendLater.getUnsentMessagesFolder(null);
   },
-  
+
   queueSendUnsentMessages() {
     if (Utils.isOffline) {
       console.debug("Deferring sendUnsentMessages while offline");
@@ -271,11 +273,11 @@ const SendLaterFunctions = {
 
   keyCodeEventTracker: {
     listeners: new Set(),
-  
+
     add(listener) {
       this.listeners.add(listener);
     },
-  
+
     remove(listener) {
       this.listeners.delete(listener);
     },
@@ -424,6 +426,21 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
           return Services.prompt.alert(window, (title || ""), (text || ""));
         },
 
+        async confirmCheck(title, message, checkMessage, state) {
+          function doConfirmCheck(resolve, reject) {
+            try {
+              let checkbox = { value: state };
+              let okToProceed = Services.prompt.confirmCheck(
+                null, title, message, checkMessage, checkbox
+              );
+              resolve(okToProceed && checkbox.value);
+            } catch (err) {
+              reject(`An error occurred in SL3U.doConfirmCheck: ${err}`);
+            }
+          }
+          return new Promise(doConfirmCheck.bind(this));
+        },
+
         async setLegacyPref(name, dtype, value) {
           const prefName = `extensions.sendlater3.${name}`;
 
@@ -566,29 +583,38 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
             // We disable spellcheck for the following -subject line, attachment
             // pane, identity and addressing widget therefore we need to explicitly
             // focus on the mail body when we have to do a spellcheck.
-            SetMsgBodyFrameFocus();
-            cw.cancelSendMessage = false;
-            cw.openDialog(
-              "chrome://messenger/content/messengercompose/EdSpellCheck.xhtml",
-              "_blank",
-              "dialog,close,titlebar,modal,resizable",
-              true,
-              true,
-              false
-            );
+            function doConfirm(resolve, reject) {
+              try {
+                SetMsgBodyFrameFocus();
+                cw.cancelSendMessage = false;
+                cw.openDialog(
+                  "chrome://messenger/content/messengercompose/EdSpellCheck.xhtml",
+                  "_blank",
+                  "dialog,close,titlebar,modal,resizable",
+                  true,
+                  true,
+                  false
+                );
+                resolve(cw.cancelSendMessage);
+              } catch (err) {
+                reject(`An error occurred in SL3U.confirmAction: ${err}`);
+              }
+            }
 
-            if (cw.cancelSendMessage) {
+            const cancelSendMessage = await (new Promise(doConfirm.bind(this)));
+
+            if (cancelSendMessage) {
               return false;
             }
+          }
 
-            // Strip trailing spaces and long consecutive WSP sequences from the
-            // subject line to prevent getting only WSP chars on a folded line.
-            let fixedSubject = subject.replace(/\s{74,}/g, "    ").trimRight();
-            if (fixedSubject != subject) {
-              subject = fixedSubject;
-              msgCompFields.subject = fixedSubject;
-              cw.document.getElementById("msgSubject").value = fixedSubject;
-            }
+          // Strip trailing spaces and long consecutive WSP sequences from the
+          // subject line to prevent getting only WSP chars on a folded line.
+          let fixedSubject = subject.replace(/\s{74,}/g, "    ").trimRight();
+          if (fixedSubject != subject) {
+            subject = fixedSubject;
+            msgCompFields.subject = fixedSubject;
+            cw.document.getElementById("msgSubject").value = fixedSubject;
           }
 
           // Remind the person if there isn't a subject
@@ -612,6 +638,85 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
               cw.document.getElementById("msgSubject").focus();
               return false;
             }
+          }
+
+          // Attachment Reminder: Alert the user if
+          //  - the user requested "Remind me later" from either the notification bar or the menu
+          //    (alert regardless of the number of files already attached: we can't guess for how many
+          //    or which files users want the reminder, and guessing wrong will annoy them a lot), OR
+          //  - the aggressive pref is set and the latest notification is still showing (implying
+          //    that the message has no attachment(s) yet, message still contains some attachment
+          //    keywords, and notification was not dismissed).
+          if (
+            cw.gManualAttachmentReminder ||
+            (Services.prefs.getBoolPref(
+              "mail.compose.attachment_reminder_aggressive"
+            ) &&
+              cw.gNotification.notificationbox.getNotificationWithValue(
+                "attachmentReminder"
+              ))
+          ) {
+            let flags =
+              Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_IS_STRING +
+              Services.prompt.BUTTON_POS_1 * Services.prompt.BUTTON_TITLE_IS_STRING;
+            let hadForgotten = Services.prompt.confirmEx(
+              cw,
+              getComposeBundle().getString("attachmentReminderTitle"),
+              getComposeBundle().getString("attachmentReminderMsg"),
+              flags,
+              getComposeBundle().getString("attachmentReminderFalseAlarm"),
+              getComposeBundle().getString("attachmentReminderYesIForgot"),
+              null,
+              null,
+              { value: 0 }
+            );
+            // Deactivate manual attachment reminder after showing the alert to avoid alert loop.
+            // We also deactivate reminder when user ignores alert with [x] or [ESC].
+            if (cw.gManualAttachmentReminder) {
+              cw.toggleAttachmentReminder(false);
+            }
+
+            if (hadForgotten) {
+              return false;
+            }
+          }
+
+          // Check if the user tries to send a message to a newsgroup through a mail
+          // account.
+          let identityList = cw.document.getElementById("msgIdentity");
+          let currentAccountKey = identityList.getAttribute("accountkey");
+          let account = MailServices.accounts.getAccount(currentAccountKey);
+          if (!account) {
+            throw new Error(
+              "currentAccountKey '" + currentAccountKey + "' has no matching account!"
+            );
+          }
+          if (
+            account.incomingServer.type != "nntp" &&
+            msgCompFields.newsgroups != ""
+          ) {
+            const kDontAskAgainPref = "mail.compose.dontWarnMail2Newsgroup";
+            // default to ask user if the pref is not set
+            let dontAskAgain = Services.prefs.getBoolPref(kDontAskAgainPref);
+            if (!dontAskAgain) {
+              let checkbox = { value: false };
+              let okToProceed = Services.prompt.confirmCheck(
+                cw,
+                getComposeBundle().getString("noNewsgroupSupportTitle"),
+                getComposeBundle().getString("recipientDlogMessage"),
+                getComposeBundle().getString("CheckMsg"),
+                checkbox
+              );
+              if (!okToProceed) {
+                return false;
+              }
+              if (checkbox.value) {
+                Services.prefs.setBoolPref(kDontAskAgainPref, true);
+              }
+            }
+            // remove newsgroups to prevent news_p to be set
+            // in nsMsgComposeAndSend::DeliverMessage()
+            msgCompFields.newsgroups = "";
           }
 
           // Before sending the message, check what to do with HTML message,
@@ -677,7 +782,13 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
           const verifyId = cw.gMsgCompose.compFields.getHeader("message-id");
 
           if (verifyId === newMessageId) {
-            cw.GenericSendMessage(Ci.nsIMsgCompDeliverMode.SaveAsDraft);
+            // Save the message to drafts
+            try {
+              cw.GenericSendMessage(Ci.nsIMsgCompDeliverMode.SaveAsDraft);
+            } catch (err) {
+              console.error("Unable to save message to drafts", err);
+              return false;
+            }
 
             // Set reply forward message flags
             try {
@@ -685,34 +796,38 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
               const originalURI = cw.gMsgCompose.originalMsgURI;
               console.debug("[SendLater]: Setting message reply/forward flags", type, originalURI);
 
-              if ( !originalURI ) { return; }
-              const messenger = Cc["@mozilla.org/messenger;1"].getService(Ci.nsIMessenger);
-              var hdr = messenger.msgHdrFromURI(originalURI);
-              switch (type) {
-                case Ci.nsIMsgCompType.Reply:
-                case Ci.nsIMsgCompType.ReplyAll:
-                case Ci.nsIMsgCompType.ReplyToSender:
-                case Ci.nsIMsgCompType.ReplyToGroup:
-                case Ci.nsIMsgCompType.ReplyToSenderAndGroup:
-                case Ci.nsIMsgCompType.ReplyWithTemplate:
-                case Ci.nsIMsgCompType.ReplyToList:
-                  hdr.folder.addMessageDispositionState(
-                    hdr, hdr.folder.nsMsgDispositionState_Replied);
-                  break;
-                case Ci.nsIMsgCompType.ForwardAsAttachment:
-                case Ci.nsIMsgCompType.ForwardInline:
-                  hdr.folder.addMessageDispositionState(
-                    hdr, hdr.folder.nsMsgDispositionState_Forwarded);
-                  break;
+              if ( originalURI ) {
+                const messenger = Cc["@mozilla.org/messenger;1"].getService(Ci.nsIMessenger);
+                var hdr = messenger.msgHdrFromURI(originalURI);
+                switch (type) {
+                  case Ci.nsIMsgCompType.Reply:
+                  case Ci.nsIMsgCompType.ReplyAll:
+                  case Ci.nsIMsgCompType.ReplyToSender:
+                  case Ci.nsIMsgCompType.ReplyToGroup:
+                  case Ci.nsIMsgCompType.ReplyToSenderAndGroup:
+                  case Ci.nsIMsgCompType.ReplyWithTemplate:
+                  case Ci.nsIMsgCompType.ReplyToList:
+                    hdr.folder.addMessageDispositionState(
+                      hdr, hdr.folder.nsMsgDispositionState_Replied);
+                    break;
+                  case Ci.nsIMsgCompType.ForwardAsAttachment:
+                  case Ci.nsIMsgCompType.ForwardInline:
+                    hdr.folder.addMessageDispositionState(
+                      hdr, hdr.folder.nsMsgDispositionState_Forwarded);
+                    break;
+                }
+              } else {
+                console.debug("SendLater: Unable to set reply / forward flags " +
+                             "for message. Cannot find original message URI");
               }
             } catch (err) {
-              console.warn("Failed to set flag for reply / forward", err);
+              console.warn("SendLater: Failed to set flag for reply / forward", err);
             }
-            return newMessageId;
+            return true;
           } else {
-            console.error(`Message ID not set correctly, ${verifyId} != ${newMessageId}`);
+            console.error(`SendLater: Message ID not set correctly, ${verifyId} != ${newMessageId}`);
           }
-          return null;
+          return false;
         },
 
         async sendNow() {
@@ -893,6 +1008,197 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
 
         async countUnsentMessages() {
           return SendLaterFunctions.getUnsentMessagesFolder().getTotalMessages(false);
+        },
+
+        async deleteDraftByUri(accountId, path, draftUri) {
+          const folderUri = SendLaterFunctions.folderPathToURI(accountId, path);
+          const folder = MailServices.folderLookup.getFolderForURL(folderUri);
+          const msgKey = draftUri.substr(draftUri.indexOf("#") + 1);
+          if (!folder) {
+            console.error("Cannot find folder");
+            return;
+          }
+          try {
+            console.info(`Deleting draft (${msgKey})`);
+            if (folder.getFlag(Ci.nsMsgFolderFlags.Drafts)) {
+              let msgs = Cc["@mozilla.org/array;1"].createInstance(
+                Ci.nsIMutableArray
+              );
+              msgs.appendElement(folder.GetMessageHeader(msgKey));
+              folder.deleteMessages(msgs, null, true, false, null, false);
+            }
+          } catch (ex) {
+            // couldn't find header - perhaps an imap folder.
+            console.debug(`couldn't find header - perhaps an imap folder.`);
+            let imapFolder = folder.QueryInterface(Ci.nsIMsgImapMailFolder);
+            if (imapFolder) {
+              imapFolder.storeImapFlags(
+                Ci.nsMsgFolderFlags.Expunged,
+                true,
+                [msgKey],
+                null
+              );
+            }
+          }
+        },
+
+        // async getMessageUri(accountId, path, messageKey) {
+        //   const folderUri = SendLaterFunctions.folderPathToURI(accountId, path);
+        //   const folder = MailServices.folderLookup.getFolderForURL(folderUri);
+        //   if (folder) {
+        //     const msgUri = folder.generateMessageURI(messageKey);
+        //     if (msgUri) {
+        //       console.log(`Got messageURI for ${messageKey}: ${msgUri}`);
+        //       return msgUri;
+        //     } else {
+        //       console.warn(`Unable to find message ${accountId}:${path}:${messageKey}`);
+        //     }
+        //   } else {
+        //     console.warn(`Unable to find folder ${accountId}:${path}`);
+        //     return null;
+        //   }
+        // },
+
+        async getAllScheduledMessages(accountId, path) {
+          const folderUri = SendLaterFunctions.folderPathToURI(accountId, path);
+          const folder = MailServices.folderLookup.getFolderForURL(folderUri);
+
+          console.log(`Folder URI: ${folderUri}`);
+
+          let allMessages = [];
+
+          function hasHeader(content, header) {
+            const regex = new RegExp(`^${header}:([^\r\n]*)\r\n(\\s[^\r\n]*\r\n)*`,'im');
+            const hdrContent = content.split(/\r\n\r\n/m)[0]+'\r\n';
+            return regex.test(hdrContent);
+          }
+
+          let N_MESSAGES = 0;
+          if (folder) {
+            let thisfolder = folder.QueryInterface(Ci.nsIMsgFolder)
+            let messageenumerator;
+            try {
+              messageenumerator = thisfolder.messages;
+            } catch (e) {
+              let lmf;
+              try {
+                lmf = thisfolder.QueryInterface(Ci.nsIMsgLocalMailFolder);
+              } catch (ex) {
+                if (// NS_MSG_ERROR_FOLDER_SUMMARY_OUT_OF_DATE
+                    (e.result == 0x80550005 ||
+                    // NS_MSG_ERROR_FOLDER_SUMMARY_MISSING
+                     e.result == 0x80550006) && lmf) {
+                  try {
+                    console.debug("Rebuilding summary: " + folder.URI);
+                    lmf.getDatabaseWithReparse(null, null);
+                  } catch (ex) {
+                    console.warn("Unable to rebuild summary.")
+                  }
+                } else {
+                  // Owl for Exchange, maybe others as well
+                  try {
+                    let o = {};
+                    let f = thisfolder.getDBFolderInfoAndDB(o);
+                    messageenumerator = f.EnumerateMessages();
+                  } catch (ex) {
+                    console.warn("Unable to get EnumerateMessages on DB as fallback");
+                  }
+                  if (messageenumerator) {
+                    console.info(".messages failed on " + folderUri +
+                                 ", using .EnumerateMessages on DB instead");
+                  } else {
+                    const window = Services.wm.getMostRecentWindow(null);
+                    Services.prompt.alert(window, null, "Encountered a corrupt folder "+folderUri);
+                    throw e;
+                  }
+                }
+              }
+            }
+
+            if (!messageenumerator) {
+              console.error("Unable to get message enumerator for folder.")
+            }
+
+            while (messageenumerator.hasMoreElements()) {
+              let next = messageenumerator.getNext();
+              if (next) {
+                N_MESSAGES++;
+                let msgHdr = next.QueryInterface(Ci.nsIMsgDBHdr);
+                const messageIdHeader = msgHdr.getStringProperty('message-id');
+                console.debug(`Loading message header for ${msgHdr.messageKey} <${messageIdHeader}>`);
+
+                let skipFlags = Ci.nsMsgMessageFlags.IMAPDeleted |
+                                Ci.nsMsgMessageFlags.Expunged;
+                if (msgHdr.flags & skipFlags) {
+                  continue;
+                }
+
+                let messageUri = folder.generateMessageURI(msgHdr.messageKey);
+
+                const messenger = Cc[
+                  "@mozilla.org/messenger;1"
+                ].createInstance(Ci.nsIMessenger);
+
+                const streamListener = Cc[
+                  "@mozilla.org/network/sync-stream-listener;1"
+                ].createInstance(Ci.nsISyncStreamListener);
+
+                const service = messenger.messageServiceFromURI(messageUri);
+
+                await new Promise((resolve, reject) => {
+                  service.streamMessage(
+                    messageUri,
+                    streamListener,
+                    null,
+                    {
+                      OnStartRunningUrl() {},
+                      OnStopRunningUrl(url, exitCode) {
+                        console.debug(
+                          `getRawMessage.streamListener.OnStopRunning ` +
+                          `received ${streamListener.inputStream.available()} bytes ` +
+                          `(exitCode: ${exitCode})`
+                        );
+                        if (exitCode === 0) {
+                          resolve();
+                        } else {
+                          Cu.reportError(exitCode);
+                          reject();
+                        }
+                      },
+                    },
+                    false,
+                    ""
+                  );
+                }).catch((ex) => {
+                  console.error(`Error reading message ${messageUri}`,ex);
+                });
+
+                const available = streamListener.inputStream.available();
+                if (available > 0) {
+                  const data = NetUtil.readInputStreamToString(
+                    streamListener.inputStream,
+                    available
+                  );
+                  if (hasHeader(data, "x-send-later-at")) {
+                    console.debug(`Message has send later headers ${messageUri}`);
+                    const hdr = {
+                      id: msgHdr.messageKey,
+                      uri: messageUri
+                    };
+                    allMessages.push({ hdr, data });
+                  }
+                } else {
+                  console.debug(`No data available`);
+                }
+              } else {
+                console.warn("Was promised more messages, but did not find them.");
+              }
+            }
+          } else {
+            console.error(`Unable to find folder ${accountId}:${path}`);
+          }
+          console.info(`Processed ${N_MESSAGES} messages in folder ${folderUri}`);
+          return allMessages;
         },
 
         async compactFolder(accountId, path) {

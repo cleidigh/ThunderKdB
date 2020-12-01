@@ -16,10 +16,10 @@ formTwo.addEventListener('click', function () {
           browser.myapi.setFive('calendarContent', 'allowEvents', 'true');
           browser.myapi.setFive('ltnSidebar', 'allowEvents', 'true');
           browser.myapi.setFive('minimonth-pane', 'allowEvents', 'true');
-          browser.myapi.setSix('ltnSidebar', 'removeChild', 'childOne');
+          browser.myapi.setSix();
           browser.myapi.setFive('messengerBox', 'allowEvents', 'true');
           browser.myapi.setFive('folderPaneBox', 'allowEvents', 'true');
-          browser.myapi.setSeven('folderPaneBox', 'removeChild', 'childTwo');
+          browser.myapi.setSeven();
 });
 
 formThree.addEventListener('click', function () {
@@ -32,16 +32,18 @@ formThree.addEventListener('click', function () {
 });
 
 formFour.addEventListener('click', function () {
-          browser.myapi.setEight('ltnSidebar', 'removeChild', 'childThree');
-          browser.myapi.setNine('folderPaneBox', 'removeChild', 'childFour');
+          browser.myapi.setEight();
+          browser.myapi.setNine();
 });
 
+
 formFive.addEventListener('click', function () {
-          browser.myapi.setTwelve('folderPaneBox', 'appendChild', 'imageTb4');
+         browser.runtime.sendMessage({execute: "do it as sidebar color"});
+         browser.myapi.setTwelve('folderPaneBox', 'appendChild', 'imageTb4');
 });
 
 formSix.addEventListener('click', function () {
-          browser.myapi.setThirteen('folderPaneBox', 'removeChild', 'LastChildOne');
+          browser.myapi.setThirteen();
 });
 
 formSeven.addEventListener('click', function () {
@@ -49,5 +51,5 @@ formSeven.addEventListener('click', function () {
 });
 
 formEight.addEventListener('click', function () {
-          browser.myapi.setFifteen('ltnSidebar', 'removeChild', 'LastChildTwo');
+          browser.myapi.setFifteen();
 });

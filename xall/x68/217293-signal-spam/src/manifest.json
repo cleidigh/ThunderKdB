@@ -9,7 +9,7 @@
 	"name": "Signal Spam",
 	"author": "VERIFROM for Signal Spam",
 	"description": "__MSG_description__",
-	"version": "4.0.4",
+	"version": "4.0.5",
 	"icons": {
 		"16": "logo/16x16.png",
 		"32": "logo/32x32.png",
@@ -80,7 +80,7 @@
 		]
 	},
 	"browser_action": {
-		"browser_style": true,
+		"browser_style": false,
 		"default_icon": "logo/logosignalspam.svg",
 		"default_title": "__MSG_report__",
 		"theme_icons": [
@@ -97,7 +97,7 @@
 		]
 	},
 	"message_display_action": {
-		"browser_style": true,
+		"browser_style": false,
 		"default_title": "__MSG_report__",
 		"default_icon": "logo/logosignalspam.svg",
 		"theme_icons": [
@@ -113,47 +113,5 @@
 			}
 		]
 	},
-	"web_accessible_resources": [
-		"html/empty.html",
-		"html/notAuthentified.html",
-		"html/notAvailable.html",
-		"html/notListening.html",
-		"html/notReady.html",
-		"html/options.html",
-		"html/spinner.html",
-		"img/close.png",
-		"img/spinner.gif",
-		"img/icon25.png",
-		"img/icon32.png",
-		"img/icon48.png",
-		"img/icon65.png",
-		"img/icon96.png",
-		"img/icon128.png",
-		"img/warning.png",
-		"img/Icone-Loupe.gif",
-		"img/VERIFROM-logo-marque-carre-RGB-96x96.png",
-		"img/warning.png",
-		"css/sidebar.css",
-		"specific/js/config.json",
-		"js/jquery-3.2.1.min.js",
-		"locales_signalspam/signalspam-fr.json",
-		"locales_signalspam/signalspam-fr-FR.json",
-		"locales_signalspam/signalspam-en.json",
-		"html/manifests/update-fr.html",
-		"html/manifests/update-en.html",
-		"html/manifests/install-fr.html",
-		"html/manifests/install-en.html",
-		"html/views/multipleReportsSentView.html",
-		"html/views/phishingEmailAlertView.html",
-		"html/views/reportEmailView.html",
-		"html/views/reportMultipleEmailsView.html",
-		"html/views/sendingReportsView.html",
-		"html/views/sendingSingleReportView.html",
-		"html/views/singleReportSentView.html",
-		"html/views/spinnerView.html",
-		"html/views/multipleReportsFailedView.html",
-		"html/views/singleReportFailedView.html",
-		"html/views/updateavailable.html",
-		"html/reminder.html"
-	]
+	"web_accessible_resources": []
 }

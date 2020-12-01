@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "リンク URL"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "ファイルからインポート"
+	},
 	"uncategorizedCards": {
 		"message": "未分類"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$：連絡先 $P2$ の公開鍵をダウンロードできませんでした（URL：$P3$、ステータス：$P4$）",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$：連絡先 $P2$ の公開鍵がダウンロードされました",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$：連絡先 $P2$ の公開鍵のダウンロード中…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$：連絡先 $P2$ がサーバーからダウンロードされました",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Bcc"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook 宛先または Cc"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook 差出人、宛先 、CcまたはBcc"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "公開鍵"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "K"
+	},
 	"advancedTab1Label": {
 		"message": "詳細"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "IP電話を開くURL"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "このセクションは電話用のプロトコルのURLを選択した場合に使われます。URLは電話番号を埋め込む箇所を示すための「$1」を含む必要があります。"
+		"message": "このセクションは電話用のプロトコルのURLを選択した場合に使われます。URLは電話番号を埋め込む箇所を示すための「{{1}}」を含む必要があります。"
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL："
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "公開鍵"
+	},
 	"noteTabLabel": {
 		"message": "メモ"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "新しいメッセージを作成（Bcc）"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "公開鍵"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "オンラインで鍵を検索"
+	},
+	"importKeyFromCards.label": {
+		"message": "OpenPGP Key Managerへインポート"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "オンラインで鍵を検索"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "オンラインで鍵を検索"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "OpenPGP Key Managerから公開鍵を検索"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "ファイルからインポート"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "メールで共有"

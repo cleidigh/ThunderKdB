@@ -1,7 +1,8 @@
-if (!xnote) var xnote={};
+if (!ExtensionParent) var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+if (!extension) var extension = ExtensionParent.GlobalManager.getExtension("xnote@froihofer.net");
+var {xnote} = ChromeUtils.import(extension.rootURI.resolve("chrome/modules/xnote.jsm"));
 if (!xnote.ns) xnote.ns={};
-
-ChromeUtils.import("resource://xnote/modules/commons.js", xnote.ns);
+ChromeUtils.import(extension.rootURI.resolve("chrome/modules/commons.jsm"), xnote.ns);
 
 xnote.ns.ColumnNote = function() {
 
@@ -15,20 +16,20 @@ xnote.ns.ColumnNote = function() {
       getCellText: function(row, col) {
         // ~ dump("xnote: getCellText: "+JSON.stringify(xnote, null, 2)+"\n");
         let xnotePrefs = xnote.ns.Commons.xnotePrefs;
-        if (xnotePrefs.getIntPref("show_first_x_chars_in_col") > 0) {
+        if (xnotePrefs.show_first_x_chars_in_col > 0) {
           let note = new xnote.ns.Note(getHeaderForRow(row).messageId);
           if (note.exists()) {
-            return " " + note.text.substr(0,xnotePrefs.getIntPref("show_first_x_chars_in_col"));
+            return " " + note.text.substr(0,xnotePrefs.show_first_x_chars_in_col);
           }
         }
         return null;
       },
       getSortStringForRow: function(hdr) {
         let xnotePrefs = xnote.ns.Commons.xnotePrefs;
-        if (xnotePrefs.getIntPref("show_first_x_chars_in_col") > 0) {
+        if (xnotePrefs.show_first_x_chars_in_col > 0) {
           let note = new xnote.ns.Note(hdr.messageId);
           if (note.exists()) {
-            return " " + note.text.substr(0,xnotePrefs.getIntPref("show_first_x_chars_in_col"));
+            return " " + note.text.substr(0,xnotePrefs.show_first_x_chars_in_col);
           }
           else {
             return "";
@@ -45,7 +46,7 @@ xnote.ns.ColumnNote = function() {
       getImageSrc:         function(row, col) {
         let hdr = getHeaderForRow(row);
         if(pub.hasNote(hdr.messageId)){
-          return "chrome://xnote/content/skin/xnote_context.png";
+          return "resource://xnote/skin/xnote_context.png";
         }
         else {
           return null;

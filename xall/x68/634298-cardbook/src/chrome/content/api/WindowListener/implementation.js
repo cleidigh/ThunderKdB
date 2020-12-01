@@ -304,7 +304,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
                 if (window.location.href == "chrome://messenger/content/messenger.xul" ||
                   window.location.href == "chrome://messenger/content/messenger.xhtml") {
 
-                  if (self.pathToOptionsPage) {
+                  if (self.pathToOptionsPage && false) {
                     try {
                       // add the add-on options menu if needed
                       if (!window.document.getElementById(self.menu_addonsManager_prefs_id)) {
@@ -314,21 +314,21 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
                             </menupopup>
                           </menu>
                         `, ["chrome://messenger/locale/messenger.dtd"]);
-
+                      
                       let element_addonsManager = window.document.getElementById(self.menu_addonsManager_id);
                       element_addonsManager.parentNode.insertBefore(addonprefs, element_addonsManager.nextSibling);
                       }
-
+                      
                       // add the options entry
                       let element_addonPrefs = window.document.getElementById(self.menu_addonPrefs_id);
                       let id = self.menu_addonPrefs_id + "_" + self.uniqueRandomID;
-
+                      
                       // Get the best size of the icon (16px or bigger)
                       let iconSizes = Object.keys(self.extension.manifest.icons);
                       iconSizes.sort((a,b)=>a-b);
                       let bestSize = iconSizes.filter(e => parseInt(e) >= 16).shift();
                       let icon = bestSize ? self.extension.manifest.icons[bestSize] : "";
-
+                      
                       let name = self.extension.manifest.name;
                       let entry = window.MozXULElement.parseXULToFragment(
                         `<menuitem class="menuitem-iconic" id="${id}" image="${icon}" label="${name}" />`);
@@ -622,7 +622,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
 
         //remove our entry in the add-on options menu
         if (
-          this.pathToOptionsPage &&
+          this.pathToOptionsPage && false &&
           (window.location.href == "chrome://messenger/content/messenger.xul" ||
           window.location.href == "chrome://messenger/content/messenger.xhtml")) {
           let id = this.menu_addonPrefs_id + "_" + this.uniqueRandomID;

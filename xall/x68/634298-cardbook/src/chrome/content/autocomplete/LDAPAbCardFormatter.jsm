@@ -120,8 +120,6 @@ var LDAPAbCardFormatter = {
 			formatted = formatted.replace(/\{mail\}/g, aCard.primaryEmail);
 
 			var placeHolders = aFormat.match(/\[[^\]]+\]/g);
-			// test console.log("test placeHolders : " + placeHolders.toSource());
-			// test console.log("test0 formatted : " + formatted.toSource());
 			// test if (placeHolders) {
 			// test 	Array.forEach(placeHolders, function(aPlaceHolder) {
 			// test 		var matcher = new RegExp(aPlaceHolder.replace(/([\[\]])/g, '\\$1'));
@@ -136,7 +134,6 @@ var LDAPAbCardFormatter = {
 				var value = this._getCardPropertyFromLDAPAttrName(attrName, aCard, aBook);
 				formatted = formatted.replace(matcher, value);
 			}
-			// test console.log("test1 formatted : " + formatted.toSource());
 			return formatted;
 		} catch(error) {
 			Components.utils.reportError(error);

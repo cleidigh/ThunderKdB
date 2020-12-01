@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Linkadresse"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Importer fra fil"
+	},
 	"uncategorizedCards": {
 		"message": "Ukategoriseret"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "??$P1$ : Key downloaded for contact $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$ : Kontakt $P2$ hentet fra server",
         "placeholders": {
@@ -1757,13 +1799,16 @@
 		"message": "CardBook Til"
 	},
 	"cardbook.searchCc.name": {
-		"message": "CardBook Cc"
+		"message": "CardBook Kopi til (Cc)"
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Bcc"
 	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook Til eller Kopi til"
+	},
 	"cardbook.searchAll.name": {
-		"message": "CardBook Fra, Til, Cc eller Bcc"
+		"message": "CardBook Fra, Til, Kopi til eller Bcc"
 	},
 	"cardbook.searchCorrespondents.name": {
 		"message": "CardBook-korrespondenter"
@@ -1775,13 +1820,13 @@
 		"message": "Tilføj Til til CardBook"
 	},
 	"cardbook.addCc.name": {
-		"message": "Tilføj Cc til CardBook"
+		"message": "Tilføj Kopi til til CardBook"
 	},
 	"cardbook.addBcc.name": {
 		"message": "Tilføj Bcc til CardBook"
 	},
 	"cardbook.addAll.name": {
-		"message": "Tilføj Fra, Til, Cc eller Bcc til CardBook"
+		"message": "Tilføj Fra, Til, Kopi til eller Bcc til CardBook"
 	},
 	"cardbook.removeFrom.name": {
 		"message": "Fjern Fra fra CardBook"
@@ -1790,13 +1835,13 @@
 		"message": "Fjern Til fra CardBook"
 	},
 	"cardbook.removeCc.name": {
-		"message": "Fjern Cc fra CardBook"
+		"message": "Fjern Kopi til fra CardBook"
 	},
 	"cardbook.removeBcc.name": {
 		"message": "Fjern Bcc fra CardBook"
 	},
 	"cardbook.removeAll.name": {
-		"message": "Fjern Fra, Til, Cc eller Bcc fra CardBook"
+		"message": "Fjern Fra, Til, Kopi til eller Bcc fra CardBook"
 	},
 	"urlDownloaded": {
 		"message": "URL hentet : $P1$",
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "??Public Keys??"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "K"
+	},
 	"advancedTab1Label": {
 		"message": "Avanceret"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "URL-åbning til softwaretelefoner"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Denne sektion er relevant hvis du har valgt url-protokollen til telefon. URL'en bør indeholde $1, der refererer til telefonnummeret."
+		"message": "Denne sektion er relevant hvis du har valgt url-protokollen til telefon. URL'en bør indeholde {{1}}, der refererer til telefonnummeret."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "??Public Keys??"
+	},
 	"noteTabLabel": {
 		"message": "Noter"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Skriv en ny meddelelse (blind kopi / bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
-		"message": "??Discover Keys Online??"
+	"publicKeysFromCards.label": {
+		"message": "??Public keys??"
+	},
+	"searchForOnlineKeyFromCards.label": {
+		"message": "??Discover keys online??"
+	},
+	"importKeyFromCards.label": {
+		"message": "??Import into OpenPGP Key Manager??"
 	},
 	"searchForOnlineKeyTreeLabel": {
-		"message": "??Discover Keys Online??"
+		"message": "??Discover keys online??"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "??Discover keys online??"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "??Search for keys in OpenPGP key manager??"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Importer fra fil"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Del via e-mail"

@@ -115,7 +115,7 @@ quickFilters.Licenser = {
   
   showDialog: function showDialog(featureName) {
 		let params = {inn:{referrer:featureName, instance: quickFilters}, out:null};
-		quickFilters.Util.getMail3PaneWindow().openDialog('chrome://quickfilters/content/register.xul','quickfilters-register','chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',quickFilters,params).focus();
+		quickFilters.Util.getMail3PaneWindow().openDialog('chrome://quickfilters/content/register.xhtml','quickfilters-register','chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',quickFilters,params).focus();
   } ,
   // list of eligible accounts
   get Accounts() {
@@ -243,7 +243,7 @@ quickFilters.Licenser = {
       }
       let ids = ac.identities; // array of nsIMsgIdentity
       if (ids) {
-        let idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
+        let idCount = ids ? ids.length : 0;
         util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities...');
         for (let i=0; i<idCount; i++) {
           // use ac.defaultIdentity ??
@@ -285,7 +285,7 @@ quickFilters.Licenser = {
   } ,
   
   goPro: function goPro(license_type) {
-    const productDetail = "http://sites.fastspring.com/quickfolders/product/quickfilters",
+    const productDetail = "https://sites.fastspring.com/quickfolders/product/quickfilters",
 					prefs = quickFilters.Preferences,
           util = quickFilters.Util;
     // redirect to registration site; pass in the feature that brought user here
@@ -300,11 +300,11 @@ quickFilters.Licenser = {
 			  break;
 			case 1: // domain license
 			  alert("Sorry - Domain licenses for quickFilters are still under development. Please contact me directy to discuss this.");
-				shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfiltersdomain";
+				shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfiltersdomain";
 				return; // EARLY EXIT EXIT EXIT
 			  break;
 			case 2: // license renewal
-				shortOrder = "http://sites.fastspring.com/quickfolders/instant/quickfiltersrenew";
+				shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfiltersrenew";
 				// addQuery = "&renewal=" + encodeURI(prefs.getStringPref('LicenseKey'));
 				featureName = encodeURI(prefs.getStringPref('LicenseKey'));
 				// should we autoselect the correct email address?
@@ -331,7 +331,7 @@ quickFilters.Licenser = {
 
    /* obsolete form submission from code */
   postForm  : function postForm_obsolete(util) {
-    let url ="http://sites.fastspring.com/quickfolders/product/quickfilters?action=order",
+    let url ="https://sites.fastspring.com/quickfolders/product/quickfilters?action=order",
         oReq;
     
     if (util.PlatformVersion >=16.0) {
@@ -591,7 +591,7 @@ quickFilters.Licenser = {
         util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] secondary ids");
         // ... allow using non default identities 
         let ids = ac.identities, // array of nsIMsgIdentity 
-            idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
+            idCount = ids ? ids.length : 0;
         util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids...");
         if (ids) {
           for (let i=0; i<idCount; i++) {

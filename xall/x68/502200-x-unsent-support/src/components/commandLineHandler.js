@@ -1,12 +1,8 @@
 /*
- * commandLineHandler.js
- *
  * Implements a nsICommandLineHandler.
  * The handler will react to .eml files with the included header "X-Unsent: 1"
  *
- * Version: 1.2.0 (06 September 2019)
- *
- * Copyright (c) 2014-2019 Philippe Lieser
+ * Copyright (c) 2014-2020 Philippe Lieser
  *
  * This software is licensed under the terms of the MIT License.
  *
@@ -14,11 +10,14 @@
  * included in all copies or substantial portions of the Software.
  */
 
-// options for JSHint
-/* eslint strict: ["warn", "function"] */
-/* eslint no-magic-numbers: ["warn", { "ignoreArrayIndexes": true, "ignore": [-1, 0, 1, 2] }] */
-/* global ChromeUtils, Components */
+// @ts-check
+///<reference path="../mozilla.d.ts" />
+///<reference path="./commandLineHandler.d.ts" />
+/* eslint-env shared-node-browser */
+/* global ChromeUtils, Components, ExtensionCommon */
 /* exported NSGetFactory */
+
+"use strict";
 
 const Cc = Components.classes;
 const Ci = Components.interfaces;
@@ -26,48 +25,61 @@ const Ci = Components.interfaces;
 // a unique ID
 const CLASS_ID = Components.ID("B19288D8-C285-11E3-9E49-91FC1C5D46B0");
 // const CLASS_NAME = "xUnsentCLH";
-const CLASS_DESCRIPTION = "X-Unsent support commandline handler";
+const CLASS_DESCRIPTION = "X-Unsent support command line handler";
 // id must be unique in application
 const CONTRACT_ID = "@pl/X-Unsent_support/clh;1";
 // category names are sorted alphabetically. Typical command-line handlers use a
 // category that begins with the letter "m".
-// const CLD_CATEGORY = "w-xUnsent";
-const RESOURCE_URI = "resource://xUnsent_support/";
+const CLD_CATEGORY = "w-xUnsent";
+
 const PREF_BRANCH = "extensions.xUnsent_support.";
 
-var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
-var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+/** @type {{XPCOMUtils: XPCOMUtilsM}} */
+const { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+/** @type {{Services: ServicesM}} */
+const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+// @ts-expect-error
+// eslint-disable-next-line no-redeclare
+const { setTimeout, clearTimeout } = ChromeUtils.import("resource://gre/modules/Timer.jsm");
+/** @type {{MailServices: MailServicesM}} */
+const { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+/** @type {{MailUtils: MailUtilsM}} */
+const { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
 
-var { Logging } = ChromeUtils.import(RESOURCE_URI+"logging.jsm");
 
+const messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
+const msgWindow = Cc["@mozilla.org/messenger/msgwindow;1"].createInstance(Ci.nsIMsgWindow);
 
-let messenger =Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
-let msgWindow = Cc["@mozilla.org/messenger/msgwindow;1"].createInstance(Ci.nsIMsgWindow);
-let log = Logging.getLogger("clh");
-var prefs = Services.prefs.getBranch(PREF_BRANCH);
+const prefs = Services.prefs.getBranch(PREF_BRANCH);
 
 /**
- * Utility functions
+ * Try to get a the user value of a preference
+ *
+ * @param {string} prefName
+ * @param {string} defaultValue - default value if no user value exists
+ * @returns {string}
  */
+function tryGetCharPref(prefName, defaultValue) {
+	if (prefs.prefHasUserValue(prefName)) {
+		return prefs.getCharPref(prefName);
+	}
+	return defaultValue;
+}
 
 /**
  * parse the message header
  *
- * @param {String} header
- *
- * @return {Object}
+ * @param {string} header
+ * @return {Object.<string, string[]>}
  */
 function parseHeader(header) {
-	"use strict";
-
-	let headerFields = {};
+	/** @type {Object.<string, string[]>} */
+	const headerFields = {};
 
 	// split header fields
-	let headerArray = header.split(/\r\n(?=\S|$)/);
+	const headerArray = header.split(/\r\n(?=\S|$)/);
 	let hName;
-	for(let i = 0; i < headerArray.length; i++) {
+	for (let i = 0; i < headerArray.length; i++) {
 		// store fields under header field name (in lower case) in an array
 		hName = headerArray[i].match(/\S+(?=\s*:)/);
 		if (hName !== null) {
@@ -75,7 +87,7 @@ function parseHeader(header) {
 			if (headerFields[hName] === undefined) {
 				headerFields[hName] = [];
 			}
-			headerFields[hName].push(headerArray[i]+"\r\n");
+			headerFields[hName].push(`${headerArray[i]}\r\n`);
 		}
 	}
 
@@ -85,34 +97,34 @@ function parseHeader(header) {
 /**
  * Reads the message and parses the header
  *
- * @param {String} msgURI
- *
- * @return {Object}
+ * @param {string} msgURI
+ * @return {Object.<string, string[]>}
  */
 function parseMsg(msgURI) {
-	"use strict";
-
 	let headerPlain = "";
 	let c;
 
 	// get inputStream for msg
-	let messageService = messenger.messageServiceFromURI(msgURI);
-	let nsIInputStream = Cc["@mozilla.org/network/sync-stream-listener;1"].
+	const messageService = messenger.messageServiceFromURI(msgURI);
+	const nsIInputStream = Cc["@mozilla.org/network/sync-stream-listener;1"].
 		createInstance(Ci.nsIInputStream);
-	let inputStream = Cc["@mozilla.org/scriptableinputstream;1"].
+	const inputStream = Cc["@mozilla.org/scriptableinputstream;1"].
 		createInstance(Ci.nsIScriptableInputStream);
 	inputStream.init(nsIInputStream);
 	messageService.CopyMessage(msgURI, nsIInputStream, false, null /* aUrlListener */, null /* aMsgWindow */, {});
 
 	// read header
 	// eslint-disable-next-line no-constant-condition
-	while(true) {
+	while (true) {
 		// read one character
 		c = inputStream.read(1);
+		if (c === "") {
+			throw new Error("End of file reached before end of header");
+		}
 
 		// control char reached
 		if (c === "\r" || c === "\n") {
-			c = c+inputStream.read(1);
+			c = c + inputStream.read(1);
 
 			if (c === "\r\n") {
 				// CRLF ending
@@ -149,101 +161,53 @@ function parseMsg(msgURI) {
  *
  * from https://mxr.mozilla.org/comm-central/source/mail/base/content/msgHdrViewOverlay.js
  *
- * @return {Void}
+ * @implements {nsIMsgDBHdr}
+ * @return {void}
  */
-function nsDummyMsgHeader()
-{
-	"use strict";
+// @ts-expect-error
+// eslint-disable-next-line no-empty-function
+function nsDummyMsgHeader() {
 }
 nsDummyMsgHeader.prototype =
 {
-	mProperties : new Array,
-	getStringProperty : function(aProperty) {
-		"use strict";
-
+	mProperties: new Array,
+	getStringProperty: function (aProperty) {
 		if (aProperty in this.mProperties) {
 			return this.mProperties[aProperty];
 		}
 		return "";
 	},
-	setStringProperty : function(aProperty, aVal) {
-		"use strict";
-
+	setStringProperty: function (aProperty, aVal) {
 		this.mProperties[aProperty] = aVal;
 	},
-	getUint32Property : function(aProperty) {
-		"use strict";
-
+	getUint32Property: function (aProperty) {
 		if (aProperty in this.mProperties) {
 			return parseInt(this.mProperties[aProperty], 10);
 		}
 		return 0;
 	},
-	setUint32Property: function(aProperty, aVal) {
-		"use strict";
-
+	setUint32Property: function (aProperty, aVal) {
 		this.mProperties[aProperty] = aVal.toString();
 	},
-	markHasAttachments : function(/*hasAttachments*/) {"use strict";},
-	messageSize : 0,
-	recipients : null,
+	// eslint-disable-next-line no-empty-function
+	markHasAttachments: function (/*hasAttachments*/) { },
+	messageSize: 0,
+	recipients: null,
+	/** @type {string?} */
 	author: null,
-	subject : "",
+	subject: "",
 	get mime2DecodedSubject() {
-		"use strict";
-
 		return this.subject;
 	},
-	ccList : null,
-	listPost : null,
-	messageId : null,
-	date : 0,
-	accountKey : "",
-	flags : 0,
+	ccList: null,
+	listPost: null,
+	messageId: null,
+	date: 0,
+	accountKey: "",
+	flags: 0,
 	// If you change us to return a fake folder, please update
 	// folderDisplay.js's FolderDisplayWidget's selectedMessageIsExternal getter.
-	folder : null
-};
-
-/**
- * Observes the opening of a toplevel window and calls
- * Services.appShell.exitLastWindowClosingSurvivalArea().
- * Unregisters itself after first call.
- *
- * used to prevent shutdown on app start
- *
- * @return {Void}
- */
-function DocumentOpendObserver()
-{
-	"use strict";
-
-	/*jshint validthis:true */
-	this.register();
-}
-
-DocumentOpendObserver.prototype = {
-	observe: function(/*subject, topic, data*/) {
-		"use strict";
-
-		log.debug("exitLastWindowClosingSurvivalArea");
-		Services.startup.exitLastWindowClosingSurvivalArea();
-		this.unregister();
-	},
-	register: function() {
-		"use strict";
-
-		let observerService = Components.classes["@mozilla.org/observer-service;1"].
-			getService(Components.interfaces.nsIObserverService);
-		observerService.addObserver(this, "toplevel-window-ready", false);
-	},
-	unregister: function() {
-		"use strict";
-
-		let observerService = Components.classes["@mozilla.org/observer-service;1"].
-			getService(Components.interfaces.nsIObserverService);
-		observerService.removeObserver(this, "toplevel-window-ready");
-	}
+	folder: null
 };
 
 /**
@@ -251,10 +215,12 @@ DocumentOpendObserver.prototype = {
  *
  * Reacts to the opening of an .eml file with the "X-Unsent" header set to 1.
  *
+ * @implements {nsICommandLineHandler}
  * @return {Void}
  */
+// @ts-expect-error
+// eslint-disable-next-line no-empty-function
 function CommandLineHandler() {
-	"use strict";
 }
 
 CommandLineHandler.prototype = {
@@ -266,33 +232,31 @@ CommandLineHandler.prototype = {
 		Ci.nsICommandLineHandler
 	]),
 
-	/* nsICommandLineHandler */
-	handle : function clh_handle(cmdLine)
-	{
-		"use strict";
-
+	// eslint-disable-next-line valid-jsdoc
+	/** @type {nsICommandLineHandler["handle"]} */
+	handle: function (cmdLine) {
 		let uri;
 
 		// most copied from
 		// https://mxr.mozilla.org/comm-central/source/mail/components/nsMailDefaultHandler.js
 
 		// The URI might be passed as the argument to the file parameter
-		let fileFlagPos = cmdLine.findFlag("file", false);
+		const fileFlagPos = cmdLine.findFlag("file", false);
 		if (fileFlagPos !== -1) {
-			uri = cmdLine.getArgument(fileFlagPos+1);
+			uri = cmdLine.getArgument(fileFlagPos + 1);
 		}
 
-		let count = cmdLine.length;
+		const count = cmdLine.length;
 		let i;
 		if (count && fileFlagPos === -1) {
 			i = 0;
 			while (i < count) {
-				let curarg = cmdLine.getArgument(i);
+				const curarg = cmdLine.getArgument(i);
 				if (!curarg.startsWith("-")) {
 					break;
 				}
 
-				log.debug("Warning: unrecognized command line flag " + curarg + "\n");
+				console.log(`X-Unsent support: Warning: unrecognized command line flag ${curarg}\n`);
 				// To emulate the pre-nsICommandLine behavior, we ignore the
 				// argument after an unrecognized flag.
 				i += 2;
@@ -314,46 +278,41 @@ CommandLineHandler.prototype = {
 		if (uri) {
 			if (uri.toLowerCase().endsWith(".eml")) {
 				// Open this eml in a new message window
-				let file = cmdLine.resolveFile(uri);
+				const file = cmdLine.resolveFile(uri);
 				// No point in trying to open a file if it doesn't exist or is empty
 				if (file.exists() && file.fileSize > 0) {
 					// Get the URL for this file
 					let fileURL = Services.io.newFileURI(file).
 						QueryInterface(Components.interfaces.nsIFileURL);
-					if (Services.vc.compare(Services.appinfo.platformVersion, "59.0-1") >= 0) {
-						fileURL = fileURL.mutate().setQuery("type=application/x-message-display").finalize();
-					} else {
-						fileURL.query = "?type=application/x-message-display";
-					}
+					fileURL = fileURL.mutate().setQuery("type=application/x-message-display").finalize();
 
 					try {
-						let msgURI = fileURL.spec;
-						let msgHdr = new nsDummyMsgHeader();
+						const msgURI = fileURL.spec;
+						const msgHdr = new nsDummyMsgHeader();
 
 						// get headers
-						let header = parseMsg(msgURI);
+						const header = parseMsg(msgURI);
 						// only continue if X-Unsent header exist
 						if (!header["x-unsent"]) {
 							return;
 						}
 						// only continue if X-Unsent header is set to 1
-						let x = header["x-unsent"][0];
-						if (x.substr(x.indexOf(":")+1).trim() !== "1") {
+						const x = header["x-unsent"][0];
+						if (x.substr(x.indexOf(":") + 1).trim() !== "1") {
 							return;
 						}
 
-						let msgCompType = Components.interfaces.nsIMsgCompType[
-							prefs.getCharPref("default.msgCompType")];
+						const msgCompType = Components.interfaces.nsIMsgCompType[
+							tryGetCharPref("default.msgCompType", "Template")];
 
 						// set author
-						if (header["from"] && header["from"][0]) {
-							msgHdr.author = header["from"][0].
+						if (header.from && header.from[0]) {
+							msgHdr.author = header.from[0].
 								replace(/\S+\s*:\s*/, "");
 						}
 						// get identity
-						let identity = MailUtils.getIdentityForHeader(msgHdr, msgCompType);
+						const [identity] = MailUtils.getIdentityForHeader(msgHdr, msgCompType);
 
-						log.debug("before compose");
 						MailServices.compose.OpenComposeWindow(
 							null, // string msgComposeWindowURL
 							msgHdr, // nsIMsgDBHdr msgHdr
@@ -361,36 +320,105 @@ CommandLineHandler.prototype = {
 							msgCompType, // nsIMsgCompType
 							Components.interfaces.nsIMsgCompFormat.Default,
 							identity, // nsIMsgIdentity identity
-							msgWindow);
-						log.debug("after compose");
+							null, // AUTF8String from
+							msgWindow, // nsIMsgWindow
+						);
 					} catch (e) {
-						log.error(e);
+						console.error("X-Unsent support:", e);
 						return;
 					}
 
 					// remove argument so it is not handled by nsMailDefaultHandler
 					if (fileFlagPos !== -1) {
 						// remove file flag and uri parameter
-						cmdLine.removeArguments(fileFlagPos, fileFlagPos+1);
+						cmdLine.removeArguments(fileFlagPos, fileFlagPos + 1);
 					} else {
 						// remove uri
 						cmdLine.removeArguments(i, i);
 					}
 					cmdLine.preventDefault = true;
-
-					// if now window is currently open
-					if (!Services.wm.getMostRecentWindow(null)) {
-						log.debug("no open window");
-						// prevent shutdown
-						log.debug("enterLastWindowClosingSurvivalArea");
-						Services.startup.enterLastWindowClosingSurvivalArea();
-						// eslint-disable-next-line no-new
-						new DocumentOpendObserver();
-					}
 				}
 			}
 		}
 	},
 };
 
-var NSGetFactory = XPCOMUtils.generateNSGetFactory([CommandLineHandler]);
+// eslint-disable-next-line no-invalid-this
+this.commandLineHandler = class extends ExtensionCommon.ExtensionAPI {
+	/**
+	 * Sleep for <ms> milliseconds.
+	 *
+	 * @param {number} ms
+	 * @return {Promise<void>}
+	 */
+	_sleep(ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+
+	/**
+	 * Wait until Components.manager.registerFactory will be available,
+	 * as it can be unavailable for a few milliseconds after startup.
+	 *
+	 * @returns {Promise<void>}
+	 */
+	async _waitForRegisterFactory() {
+		const overallTimeout = 15000;
+		let retrySleepTime = 100;
+		const retrySleepTimeIncrease = 50;
+		const retrySleepTimeMax = 500;
+
+		let timeout = false;
+		const timeoutId = setTimeout(() => {
+			timeout = true;
+		}, overallTimeout);
+		// eslint-disable-next-line no-unmodified-loop-condition
+		while (!timeout) {
+			if (Components.manager.registerFactory) {
+				clearTimeout(timeoutId);
+				return;
+			}
+			console.log("Components.manager.registerFactory not ready (will wait)");
+			await this._sleep(retrySleepTime);
+			retrySleepTime = Math.max(retrySleepTime + retrySleepTimeIncrease, retrySleepTimeMax);
+		}
+		throw Error("Components.manager.registerFactory not available");
+	}
+
+	/**
+	 * @param {ExtensionCommon.Context} context
+	 * @returns {{commandLineHandler: browser.commandLineHandler}}
+	 */
+	getAPI(context) {
+		return {
+			commandLineHandler: {
+				init: async () => {
+					// @ts-expect-error
+					const factory = XPCOMUtils.generateNSGetFactory([CommandLineHandler])(CLASS_ID);
+					await this._waitForRegisterFactory();
+					Components.manager.registerFactory(CLASS_ID, "exampleComponent", CONTRACT_ID,
+						factory);
+
+					Services.catMan.addCategoryEntry(
+						"command-line-handler",
+						CLD_CATEGORY,
+						CONTRACT_ID,
+						false,
+						false,
+					);
+
+					context.callOnClose({
+						close() {
+							Components.manager.unregisterFactory(CLASS_ID, factory);
+
+							Services.catMan.deleteCategoryEntry(
+								"command-line-handler",
+								CLD_CATEGORY,
+								false,
+							);
+						}
+					});
+				},
+			},
+		};
+	}
+};

@@ -1032,6 +1032,7 @@ function setEventListeners() {
     void 0;
     if (PARAM.OPTIONS.STOPPHISHING_BROWSING_ENABLED === true && ((options.userAuthentified === true && PARAM.OPTIONS.STOPPHISHING_USERACCOUNT_REQUIRED_ENABLED === true) || PARAM.OPTIONS.STOPPHISHING_USERACCOUNT_REQUIRED_ENABLED === false)) {
         void 0;
+
         if (browser.messageDisplay.onMessageDisplayed.hasListener(onMessageDisplayedHandler)===false)
             browser.messageDisplay.onMessageDisplayed.addListener(onMessageDisplayedHandler);
         if (browser.mailTabs.onSelectedMessagesChanged.hasListener(onSelectedMessagesChangedHandler)===false)
@@ -1578,8 +1579,15 @@ function onSelectedMessagesChangedHandler(tab,messageList) {
 
 
 var latestCheck=null, checkUrlsPromise = null, cancelPromise = null;
+
 function onMessageDisplayedHandler(tab,message) {
+    if (!message) {
+        void 0;
+        return;
+    }
+
     void 0;
+
 
     if (typeof tab!=="object") {
         void 0;

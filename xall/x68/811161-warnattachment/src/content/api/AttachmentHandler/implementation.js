@@ -38,20 +38,9 @@ var { ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupp
 
 var windowListener = new class extends ExtensionCommon.EventEmitter {
 
-  // save the original opener for attachments for later use
-  setOldOpener (o){
-      this.oldOpener = o;
-  }
-
-  // return the original opener
-  getOldOpener(){
-      return this.oldOpener;
-  }
-
   constructor() {
     super();
     this.callbackCount = 0;
-    this.oldOpener = undefined;
     this.callback = undefined;
   }
 
@@ -68,8 +57,8 @@ var windowListener = new class extends ExtensionCommon.EventEmitter {
           "chrome://messenger/content/messageWindow.xhtml",
         ],
         onLoadWindow: function(window) {
-          windowListener.setOldOpener(window.AttachmentInfo.prototype.open);
-          window.AttachmentInfo.prototype.open = function(attachment) {
+          window.originalOpener = window.AttachmentInfo.prototype.open;
+          window.AttachmentInfo.prototype.open = async function() {
               windowListener.callback({
                   contentType : this.contentType,
                   url : this.url,
@@ -79,7 +68,7 @@ var windowListener = new class extends ExtensionCommon.EventEmitter {
               }).then(result => {
                   if (result) {
                       // Call original handler
-                      windowListener.getOldOpener().apply(this, arguments);
+                      window.originalOpener.apply(this);
                   } else {
                       // File blocked. Do nothing
                   }
@@ -101,7 +90,7 @@ var windowListener = new class extends ExtensionCommon.EventEmitter {
           "chrome://messenger/content/messageWindow.xul",
           "chrome://messenger/content/messageWindow.xhtml",
         ].includes(window.location.href)) {
-          window.AttachmentInfo.prototype.open = this.getOldOpener();
+          window.AttachmentInfo.prototype.open = window.originalOpener;
         }
       }
       ExtensionSupport.unregisterWindowListener(LISTENER_NAME);

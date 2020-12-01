@@ -204,7 +204,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 					}
 				}
 				if (this.username) {
-					this.password = cardbookRepository.cardbookRepository.cardbookPasswordManager.getNotNullPassword(this.username, this.prefId, this.url);
+					this.password = cardbookRepository.cardbookPasswordManager.getNotNullPassword(this.username, this.prefId, this.url);
 				}
 				aHeader["Authorization"] = "Basic " + this.b64EncodeUnicode(this.username + ':' + this.password);
 			}
@@ -478,7 +478,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 					headers.accept = parameters.accept;
 				}
 				this.sendHTTPRequest(operation, null, headers);
-			} else if (operation == "GETIMAGE") {
+			} else if (operation == "GETIMAGE" || operation == "GETKEY") {
 				var headers = {};
 				if (parameters.accept !== null) {
 					headers.accept = parameters.accept;
@@ -496,11 +496,11 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				let headers = { "depth": (parameters.deep ? "1": "0"), "Content-Type": "application/xml; charset=utf-8"};
 				let query = this._buildPropfindRequest(parameters.props);
 				this.sendHTTPRequest(operation, query, headers);
-		   } else if (operation == "REPORTMULTIGET") {
+			} else if (operation == "REPORTMULTIGET") {
 				let headers = { "depth": (parameters.deep ? "1": "0"), "Content-Type": "application/xml; charset=utf-8"};
 				let query = this._buildMultigetRequest(parameters.props);
 				this.sendHTTPRequest("REPORT", query, headers);
-		   } else if (operation == "REPORTQUERY") {
+			} else if (operation == "REPORTQUERY") {
 				let headers = { "depth": (parameters.deep ? "1": "0"), "Content-Type": "application/xml; charset=utf-8"};
 				let query = this._buildQueryRequest(parameters.props);
 				this.sendHTTPRequest("REPORT", query, headers);
@@ -515,6 +515,10 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 	
 		getimage: function(accept) {
 			this.load("GETIMAGE", {accept: accept});
+		},
+	
+		getkey: function(accept) {
+			this.load("GETKEY", {accept: accept});
 		},
 	
 		put: function(data, contentType) {

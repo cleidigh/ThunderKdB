@@ -86,7 +86,7 @@ function registerQuickReply() {
 
         switch (aTopic) {
           case "modified":
-            newComposeSessionByDraftIf().catch(Cu.reportError);
+            newComposeSessionByDraftIf().catch(console.warn);
             break;
 
           case "removed":
@@ -245,7 +245,7 @@ function editFields(aFocusId) {
 
 function confirmDiscard(event) {
   if (!startedEditing() || confirm(strings.get("confirmDiscard"))) {
-    onDiscard().catch(Cu.reportError);
+    onDiscard().catch(console.warn);
   }
 }
 
@@ -1273,7 +1273,7 @@ function createStateListener(aComposeSession, aMsgHdrs, aId) {
 
 
         if (aId) {
-          SimpleStorage.remove(SIMPLE_STORAGE_TABLE_NAME, aId).catch(Cu.reportError);
+          SimpleStorage.remove(SIMPLE_STORAGE_TABLE_NAME, aId).catch(console.warn);
         } // Do stuff to the message we replied to.
 
 

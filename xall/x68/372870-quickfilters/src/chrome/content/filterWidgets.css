@@ -5,7 +5,7 @@
 }
 
 #quickFiltersBtnHelp {
-	list-style-image: url("chrome://quickfilters/skin/help_24.png");
+	list-style-image: url("chrome://quickfilters/content/skin/help.svg");
 }
 
 #quickFiltersHelpBar {
@@ -17,18 +17,30 @@
   background-image: none !important;
 }
 
-.search-value-custom[searchAttribute="quickFilters@axelg.com#replyTo"] {
-  -moz-binding: url("chrome://quickfilters/content/bindings.xml#textbox");
-	/* -moz-appearance: textfield; from fx forms.css  */
-	/* background-color: #FFFF66; light yellow, for testing, add qF icon later */
-	/*-moz-binding: url("chrome://global/content/bindings/textbox.xml#textbox");*/
+/*custom search conditions: overloading the textbox */
+
+/* style the file picker + textbox elements so that the textbox stretches */
+hbox.flexelementcontainer {
+  display: inline-flex !important;
+}
+hbox.flexelementcontainer[hidden] {
+  display: none !important;
+}
+input.flexinput {
+  flex-grow: 2 !important;
 }
 
-.search-value-custom[searchAttribute="quickFilters@axelg.com#replyTo"] .textbox-input {
-	background-image:  url("chrome://quickfilters/skin/qFilters-watermark.png");
+/* bindings removed for Thunderbird 78 */
+.search-value-custom[searchAttribute="quickFilters@axelg.com#replyTo"] {
+  -moz-box-flex: 1;
+}
+
+.search-value-custom[searchAttribute="quickFilters@axelg.com#replyTo"] .qi-textbox {
+	background-image:  url("chrome://quickfilters/content/skin/QuickFilters_32.svg");
+  background-size: auto 16px;
+  padding-left: 18px;
 	background-repeat: no-repeat;
-	background-position: right center;
-	background-position: right center;
+	background-position: left center;
 }
 
 #quickFilters-CustomTemplate {
@@ -46,7 +58,7 @@
 #customLogo {
   margin-left: 5px;
 	/* just a hack as I don't appear to be able to use img url for a chrome address? */
-	background-image:url("chrome://quickfilters/skin/proFeature24.png"); 
+	background-image:url("chrome://quickfilters/content/skin/proFeature24.png");
 	width: 54px;
 	height: 24px;
 }
@@ -61,7 +73,7 @@
 /*  shorthand:
     animation : animation-name animation-duration animation-timing-function animation-delay animation-iteration-count animation-direction
 		*/
-		
+
 @keyframes quickfiltersRotateY {
   from {
 	  transform: rotateY(0deg);
@@ -95,15 +107,15 @@
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
 /* menuitem.cmd[tagName="qfRegister"],  */
 tab#quickFilters-Pro {
-	list-style-image : url('chrome://quickfilters/skin/pro.png') !important;
+	list-style-image : url('chrome://quickfilters/content/skin/pro.png') !important;
 }
 
 tab#quickFilters-Pro.paid {
-	list-style-image : url('chrome://quickfilters/skin/pro-paid.png') !important;
+	list-style-image : url('chrome://quickfilters/content/skin/pro-paid.png') !important;
 }
 
 tab#quickFilters-Pro.expired {
-	list-style-image : url('chrome://quickfilters/skin/pro-expired.png') !important;
+	list-style-image : url('chrome://quickfilters/content/skin/pro-expired.png') !important;
 }
 
 
@@ -115,30 +127,17 @@ menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
 */
 
 tab#quickFilters-Actions {
-	list-style-image: url('chrome://quickfilters/skin/fugue-drill.png');
+	list-style-image: url('chrome://quickfilters/content/skin/wrench.svg');
 }
 
 tab#quickFilters-FilterProperties {
-	list-style-image : url('chrome://quickfilters/skin/fugue-asterisk.png');
+	list-style-image : url('chrome://quickfilters/content/skin/QuickFilters.svg');
 }
 
 tab#quickFilters-Advanced {
-	list-style-image : url('chrome://quickfilters/skin/settings-advanced.png');
+	list-style-image : url('chrome://quickfilters/content/skin/settings.svg');
 }
 
 tab#quickFilters-Support {
-	list-style-image : url('chrome://quickfilters/skin/info16.png') !important;
+	list-style-image : url('chrome://quickfilters/content/skin/info.svg') !important;
 }
-
-/* dual state animated icons (menuitems / tabs) */
-tab#quickFilters-Support:not([selected]),
-tab#quickFilters-Advanced:not([selected])
-{
-	-moz-image-region: rect(0px, 16px, 16px, 0px) !important;
-}
-tab#quickFilters-Support[selected="true"],
-tab#quickFilters-Advanced[selected="true"]
-{
-	-moz-image-region: rect(16px, 16px, 32px, 0px) !important;
-}
-

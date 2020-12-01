@@ -54,6 +54,9 @@
 	"fileSelectionTitle": {
 		"message": "Link-Adresse"
 	},
+	"fileSelectionGPGTitle": {
+		"message": "Import aus Datei"
+	},
 	"uncategorizedCards": {
 		"message": "Ohne Kategorie"
 	},
@@ -951,6 +954,45 @@
             }
         }
 	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : Der Schlüssel für Kontakt $P2$ konnte nicht heruntergeladen werden (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Der Schlüssel für Kontakt $P2$ wurde heruntergeladen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Der Schlüssel für Kontakt $P2$ wird heruntergeladen …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"serverCardGetOK": {
 		"message": "$P1$: Kontakt $P2$ von Server geladen",
         "placeholders": {
@@ -1761,6 +1803,9 @@
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Blindkopie (Bcc)"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook An (To) oder Kopie (CC)"
 	},
 	"cardbook.searchAll.name": {
 		"message": "CardBook Von (From), An (To), Kopie (Cc) oder Blindkopie (Bcc)"
@@ -3544,6 +3589,12 @@
 	"vCardTab.conf.accesskey": {
 		"message": "V"
 	},
+	"keyTab.conf.label": {
+		"message": "Öffentliche Schlüssel"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "S"
+	},
 	"advancedTab1Label": {
 		"message": "Erweitert"
 	},
@@ -3812,7 +3863,7 @@
 		"message": "URL zum Öffnen von Softphones"
 	},
 	"URLPhoneGroupboxWarn": {
-		"message": "Dieser Abschnitt trifft nur zu, wenn man ein url Protokoll für das Telefon festgelegt hat. Die URL sollte $1 als Platzhalter für die Telefonnummer enthalten."
+		"message": "Dieser Abschnitt trifft nur zu, wenn man ein url Protokoll für das Telefon festgelegt hat. Die URL sollte {{1}} als Platzhalter für die Telefonnummer enthalten."
 	},
 	"URLPhoneURLLabel": {
 		"message": "URL:"
@@ -4504,6 +4555,9 @@
 	"vCardTabLabel": {
 		"message": "vCard"
 	},
+	"keyTabLabel": {
+		"message": "Öffentliche Schlüssel"
+	},
 	"noteTabLabel": {
 		"message": "Notizen"
 	},
@@ -4588,11 +4642,26 @@
 	"bccEmailCardFromCardsLabel": {
 		"message": "Neue Nachricht verfassen (Blindkopie / Bcc)"
 	},
-	"searchForOnlineKeyFromCardsLabel": {
+	"publicKeysFromCards.label": {
+		"message": "Öffentliche Schlüssel"
+	},
+	"searchForOnlineKeyFromCards.label": {
 		"message": "Schlüssel online finden"
+	},
+	"importKeyFromCards.label": {
+		"message": "In den OpenPGP Key Manager importieren"
 	},
 	"searchForOnlineKeyTreeLabel": {
 		"message": "Schlüssel online finden"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Schlüssel online finden"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "Nach Schlüsseln suchen im OpenPGP Key Manager"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Import aus Datei"
 	},
 	"shareCardByEmailFromAccountsOrCatsLabel": {
 		"message": "Per E-Mail senden"

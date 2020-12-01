@@ -22,6 +22,8 @@ btn21.addEventListener('click', function () { SetTaskDetailsFontStyle("normal")}
 btn23.addEventListener('click', function () { SetTaskDetailsFontSize("small")});
 btn24.addEventListener('click', function () { SetTaskDetailsFontSize("medium")});
 btn25.addEventListener('click', function () { SetTaskDetailsFontSize("large")});
+btn35.addEventListener('click', function () { SetTaskDetailsFontSize("x-small")});
+btn36.addEventListener('click', function () { SetTaskDetailsFontSize("x-large")});
 
 btn27.addEventListener('click', function () { SetTaskDetailsTextAlignment("inherit")});
 btn28.addEventListener('click', function () { 
@@ -36,6 +38,12 @@ btn28.addEventListener('click', function () {
 btn29.addEventListener('click', function () { SetTaskDetailsTextAlignment("center")});
 btn30.addEventListener('click', function () { SetTaskDetailsTextAlignment("left")});
 btn31.addEventListener('click', function () { SetTaskDetailsTextAlignment("right")});
+btn33.addEventListener('click', function () { browser.SetStyle.setTwo(); });
+btn34.addEventListener('click', function () { browser.SetStyle.setThree(); });
+btn37.addEventListener('click', function () { browser.SetStyle.setFour(); });
+btn38.addEventListener('click', function () { browser.SetStyle.setFive(); });
+btn39.addEventListener('click', function () { browser.SetStyle.setSix(); });
+btn40.addEventListener('click', function () { browser.SetStyle.setSeven(); });
 
 // ---------------------------------
 

@@ -1,5 +1,48 @@
 [
     {
+        "id": 2474883,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "78.*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2474883",
+        "files": [
+            {
+                "id": 1018045,
+                "created": "2020-11-29T14:28:15Z",
+                "hash": "sha256:a9012940ba2330ada24743dc35afd59e3fc80f1710459a327dec2da2e92d4297",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 532391,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018045/quickfilters-5.0-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7111,
+            "name": {
+                "en-US": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)"
+            },
+            "text": {
+                "en-US": "All contents of The Program are subject to the Creative Commons (CC BY-ND 4.0) (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a>\nFor a  human-readable summary thereof please refer\n<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/quickFilters Pro tab, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author\n(Axel Grude)"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/5.0"
+        },
+        "release_notes": {
+            "en-US": "<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/14\">[issue 14]</a> quickFilters  was migrated to Thunderbird 78, and is now finally available after a lengthy beta phase on <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a>. This years conversion work was expensive and deep - I hired external developer Klaus Buecher  for the main conversion phase and also got some lovely new icons contributed by @Panglab who did a lot of design work for Thunderbird Core.\n\nI had a lot of extra days of work and around 3,500$ of expenses for this years Add-on conversions and releases -  also the web site had to be migrated from the now decommissioned free hosting on <a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a> to github pages. To help fund quickFilters for the next year and the unavoidable changes necessary to switch over to an API  based approach, you should <a rel=\"nofollow\" href=\"https://sites.fastspring.com/quickfolders/instant/quickfilters?referrer=atn-version-page\">buy a quickFilters Pro license</a>.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/33\">[issue 33]</a>Copy  / move mail context menu broken with quickfilters</li></ul>    \n<b> Thunderbird 78 Regressions Fixed </b>\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/39\">[issue 39]</a> Rewrite \"Reply-To\" custom condition to work without bindings. As bindings have been completely removed from Thunderbird 78 the custom condition for editing the Reply-to header have to be rewritten using JavaScript - I am using similar code to FiltaQuilla (mutation observers) which took me quite a few difficult days to develop.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/27\">[issue 27]</a> Filter creation (merging) window not sized constrained when many test items.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/26\">[issue 26]</a> \"Next Steps\" does not over-ride \"Settings/Actions.\"</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/5.0",
+        "version": "5.0"
+    },
+    {
         "id": 2473822,
         "channel": "listed",
         "compatibility": {

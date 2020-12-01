@@ -6,6 +6,8 @@ const SendLater = {
 
     watchAndMarkRead: new Set(),
 
+    loopTimeout: null,
+
     notify(title, text) {
       SLStatic.warn(`Alert: ${title}- ${text}`);
       browser.notifications.create(null, {
@@ -25,30 +27,8 @@ const SendLater = {
         `[${platformInfo.os} ${platformInfo.arch}]`);
     },
 
-    async getRaw(msgId, nTries) {
-      const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
-      let rawMsg = null;
-      let iteration = 0;
-      while (true) {
-        iteration += 1;
-
-        rawMsg = await browser.messages.getRaw(msgId).catch(err => {
-          SLStatic.warn(`Unable to fetch message ${msgId}.`, err);
-        });
-
-        if (rawMsg) {
-          SLStatic.debug(`Got message ${msgId} on attempt ${iteration}`);
-          return rawMsg;
-        } else {
-          if (iteration >= nTries) {
-            SLStatic.error("Giving up on message. Too many retries.",msgId);
-            return null;
-          } else {
-            SLStatic.warn(`getRaw failed on attempt ${iteration} for message ${msgId}. Will try again.`);
-            await sleep(2000+(Math.random()*6000));
-          }
-        }
-      }
+    async preSendCheck() {
+      return await browser.SL3U.preSendCheck();
     },
 
     async isEditing(msgId) {
@@ -57,71 +37,66 @@ const SendLater = {
     },
 
     async findDraftsHelper(folder) {
+      const that = this;
       // Recursive helper function to look through an account for draft folders
       if (folder.type === "drafts") {
         return folder;
       } else {
         const drafts = [];
         for (let subFolder of folder.subFolders) {
-          drafts.push(SendLater.findDraftsHelper(subFolder));
+          drafts.push(that.findDraftsHelper(subFolder));
         }
-        return Promise.all(drafts);
+        return await Promise.all(drafts);
       }
     },
 
     async getDraftFolders(acct) {
+      const that = this;
       const draftSubFolders = [];
       acct.folders.forEach(folder => {
-        draftSubFolders.push(SendLater.findDraftsHelper(folder));
+        draftSubFolders.push(that.findDraftsHelper(folder));
       });
-      return Promise.all(draftSubFolders).then(SLStatic.flatten);
+      return await Promise.all(draftSubFolders).then(SLStatic.flatten);
     },
 
     async forAllDraftFolders(callback) {
+      const that = this;
       try {
         let results = [];
         let accounts = await browser.accounts.list();
         for (let acct of accounts) {
-          let draftFolders = await SendLater.getDraftFolders(acct);
+          let draftFolders = await that.getDraftFolders(acct);
           for (let folder of draftFolders) {
             results.push(callback(folder));
           }
         }
-        return Promise.all(results);
+        return await Promise.all(results);
       } catch (ex) {
         SLStatic.error(ex);
       }
     },
 
-    async forAllDrafts(callback, sequential) {
+    async forAllDrafts(callback) {
+      const that = this;
       try {
         let results = [];
         let accounts = await browser.accounts.list();
         for (let acct of accounts) {
-          let draftFolders = await SendLater.getDraftFolders(acct);
-          for (let drafts of draftFolders) {
-            let page = await browser.messages.list(drafts);
+          let draftFolders = await that.getDraftFolders(acct);
+          for (let folder of draftFolders) {
+            let page = await browser.messages.list(folder);
             do {
-              for (let message of page.messages) {
-                if (sequential === true) {
-                  const result = await callback(message);
-                  results.push(result);
-                } else {
-                  const resultPromise = callback(message);
-                  results.push(resultPromise);
-                }
-              }
+              let pageResults = page.messages.map(
+                message => callback.call(that, message)
+              );
+              results = results.concat(pageResults);
               if (page.id) {
                 page = await browser.messages.continueList(page.id);
               }
             } while (page.id);
           }
         }
-        if (sequential === true) {
-          return results;
-        } else {
-          return Promise.all(results);
-        }
+        return await Promise.all(results);
       } catch (ex) {
         SLStatic.error(ex);
       }
@@ -169,7 +144,7 @@ const SendLater = {
       const inserted = Object.keys(customHeaders).map(name =>
         browser.SL3U.setHeader(name, (""+customHeaders[name]))
       );
-      await SendLater.expandRecipients(tabId);
+      await this.expandRecipients(tabId);
       await Promise.all(inserted);
       SLStatic.debug('headers',customHeaders);
 
@@ -177,25 +152,32 @@ const SendLater = {
       const newMessageId = await browser.SL3U.generateMsgId(composeDetails.identityId);
 
       if (preferences.markDraftsRead) {
-        SendLater.watchAndMarkRead.add(newMessageId);
+        this.watchAndMarkRead.add(newMessageId);
       }
 
-      await browser.SL3U.saveAsDraft(newMessageId);
-
-      browser.tabs.remove(tabId);
+      const success = await browser.SL3U.saveAsDraft(newMessageId);
+      if (success) {
+        browser.tabs.remove(tabId);
+      } else {
+        console.error("Something went wrong while scheduling this message.");
+      }
     },
 
-    async possiblySendMessage(msgHdr) {
-      if (!window.navigator.onLine) {
-        SLStatic.debug(`The option to send scheduled messages while ` +
-          `thunderbird is offline has not yet been implemented. Skipping.`);
+    async possiblySendMessage(msgHdr, rawContent) {
+      // Determines whether or not a particular draft message is due to be sent
+      SLStatic.debug(`Checking message ${msgHdr.uri}.`);
+
+      // const rawContent = await browser.messages.getRaw(msgHdr.id).catch(err => {
+      //   SLStatic.warn(`Unable to fetch message ${msgHdr.id}.`, err);
+      // });
+      if (!rawContent) {
+        SLStatic.warn("possiblySendMessage failed. Unable to get raw message contents.", msgHdr);
         return;
       }
 
-      // Determines whether or not a particular draft message is due to be sent
-      const rawContent = await SendLater.getRaw(msgHdr.id, 5);
-      if (rawContent === null) {
-        SLStatic.warn("possiblySendMessage failed. Unable to get raw message contents.",msgHdr);
+      if (!window.navigator.onLine) {
+        SLStatic.debug(`The option to send scheduled messages while ` +
+          `thunderbird is offline has not yet been implemented. Skipping.`);
         return;
       }
 
@@ -232,24 +214,34 @@ const SendLater = {
 
       if (lock[originalMsgId]) {
         const msgSubject = SLStatic.getHeader(rawContent, 'subject');
-        SLStatic.error(`Attempted to resend message "${msgSubject}" ${originalMsgId}.`)
-        const err = browser.i18n.getMessage("CorruptFolderError", [msgHdr.folder.path]) +
-          `\n\nSpecifically, it appears that message "${msgSubject}" ${originalMsgId} ` +
-          `has been sent before, but still exists in the Drafts folder. This may or may ` +
-          `not be indicative of a more serious problem. You might simply try deleting ` +
-          `(or re-scheduling) the message in question.` +
-          `\n\nSend Later will skip this message, but continue processing your other ` +
-          `scheduled draft messages when you close this alert.`;
-        await browser.SL3U.alert("", err);
+        if (preferences.optOutResendWarning === true) {
+          SLStatic.debug(`Encountered previously sent message "${msgSubject}" ${originalMsgId}.`);
+        } else {
+          SLStatic.error(`Attempted to resend message "${msgSubject}" ${originalMsgId}.`);
+          const confirmation = await browser.SL3U.confirmCheck(
+            browser.i18n.getMessage("ScheduledMessagesWarningTitle"),
+            browser.i18n.getMessage("CorruptFolderError", [msgHdr.folder.path]) +
+              `\n\nSpecifically, it appears that message "${msgSubject}" ${originalMsgId} ` +
+              `has been sent before, but still exists in the Drafts folder. This may or may ` +
+              `not be indicative of a more serious problem. You might simply try deleting ` +
+              `(or re-scheduling) the message in question.` +
+              `\n\nSend Later will skip this message, but continue processing your other ` +
+              `scheduled draft messages when you close this alert.`,
+            browser.i18n.getMessage("ConfirmAgain"),
+            true
+          );
+          preferences.optOutResendWarning = (confirmation === false);
+          await browser.storage.local.set({ preferences });
+        }
         return;
       }
 
       if (!(Date.now() >= nextSend.getTime())) {
-        // SLStatic.debug(`Message ${msgHdr.id} not due for send until ${SLStatic.humanDateTimeFormat(nextSend)}`);
+        SLStatic.debug(`Message ${msgHdr.id} not due for send until ${SLStatic.humanDateTimeFormat(nextSend)}`);
         return;
       }
 
-      if (await SendLater.isEditing(originalMsgId)) {
+      if (await this.isEditing(originalMsgId)) {
         SLStatic.debug(`Skipping message ${originalMsgId} while it is being edited`);
         return;
       }
@@ -271,8 +263,11 @@ const SendLater = {
 
         // Respect "send between" preference
         if (recur.between) {
-          if ((now < recur.between.start) || (now > recur.between.end)) {
-            SLStatic.debug(`Message ${msgHdr.id} outside of sendable time range.`);
+          if (SLStatic.compareTimes(now, '<', recur.between.start) ||
+              SLStatic.compareTimes(now, '>', recur.between.end)) {
+            SLStatic.debug(
+              `Message ${msgHdr.id} ${originalMsgId} outside of sendable time range.`,
+              recur.between);
             return;
           }
         }
@@ -282,7 +277,7 @@ const SendLater = {
           const today = (new Date()).getDay();
           if (!recur.days.includes(today)) {
             const wkday = new Intl.DateTimeFormat('default', {weekday:'long'});
-            SLStatic.debug(`Message ${msgHdr.id} not scheduled to send on ${wkday.format(new Date())}`);
+            SLStatic.debug(`Message ${msgHdr.id} not scheduled to send on ${wkday.format(new Date())}`,recur.days);
           }
         }
       }
@@ -375,7 +370,7 @@ const SendLater = {
         );
 
         if (preferences.markDraftsRead) {
-          SendLater.watchAndMarkRead.add(newMessageId);
+          this.watchAndMarkRead.add(newMessageId);
         }
 
         const success = await browser.SL3U.saveMessage(
@@ -387,13 +382,15 @@ const SendLater = {
         if (success) {
           SLStatic.info(`Scheduled next occurrence of message ` +
             `<${originalMsgId}>. Deleting original.`);
-          browser.messages.delete([msgHdr.id], true);
+          // browser.messages.delete([msgHdr.id], true);
+          return "delete_original";
         } else {
           SLStatic.error("Unable to schedule next recuurrence.");
         }
       } else {
-        SLStatic.info(`No recurrences for message <${originalMsgId}>. Deleting original.`);
-        browser.messages.delete([msgHdr.id], true);
+        SLStatic.info(`No recurrences for message ${originalMsgId} (${msgHdr.id}). Deleting original.`);
+        //browser.messages.delete([msgHdr.id], true);
+        return "delete_original";
       }
     },
 
@@ -431,6 +428,10 @@ const SendLater = {
         };
       }
 
+      const prefDefaults = await fetch(
+        "/utils/defaultPrefs.json"
+      ).then((ptxt) => ptxt.json());
+
       // Load legacy preferences
       if (currentMigrationNumber === 0) {
         // Merge any existing legacy preferences into the new storage system
@@ -438,9 +439,6 @@ const SendLater = {
         let legacyValuePromises = [];
 
         // Load values from legacy storage, substitute defaults if not defined.
-        let prefDefaults = await fetch(
-            "/utils/defaultPrefs.json"
-          ).then((ptxt) => ptxt.json());
         for (let prefName of Object.getOwnPropertyNames(prefDefaults)) {
           prefKeys.push(prefName);
           let dtype = prefDefaults[prefName][0];
@@ -449,14 +447,12 @@ const SendLater = {
           let pp; // Promise that resolves to this preference value.
           const isquickopt = prefName.match(/quickOptions(\d)Label/);
           if (isquickopt) {
-            const localizedDelayLabel = [
-              `${(new Sugar.Date(Date.now() + 60000 * 15)).relative()}`,
-              `${(new Sugar.Date(Date.now() + 60000 * 30)).relative()}`,
-              `${(new Sugar.Date(Date.now() + 60000 * 120)).relative()}`
-            ][+isquickopt[1] - 1];
-            pp = new Promise((resolve, reject) =>
+            const delayMins = (+prefDefaults[`quickOptions${isquickopt[1]}Args`][1])|0;
+            const localizedDelayLabel =
+              `${(new Sugar.Date(Date.now() + 60000 * delayMins)).relative()}`;
+            pp = new Promise((resolve, reject) => {
               resolve(localizedDelayLabel)
-            );
+            });
           } else if (legacyKey === null) {
             pp = new Promise((resolve, reject) => resolve(defVal));
           } else {
@@ -486,6 +482,17 @@ const SendLater = {
             preferences[key] = legacyPrefs[key];
           }
         });
+      }
+
+      SLStatic.logConsoleLevel = (preferences.logConsoleLevel||"info").toLowerCase();
+
+      // Pick up any new properties from defaults
+      for (let prefName of Object.getOwnPropertyNames(prefDefaults)) {
+        if (preferences[prefName] === undefined) {
+          const prefValue = prefDefaults[prefName][1];
+          SLStatic.debug(`Added new preference ${prefName}: ${prefValue}`);
+          preferences[prefName] = prefValue;
+        }
       }
 
       //if (currentMigrationNumber < 4)
@@ -520,26 +527,54 @@ const SendLater = {
     },
 
     async getActiveSchedules(matchUUID) {
-      const { preferences } = await browser.storage.local.get({ preferences: {} });
+      const allSchedulePromises = await browser.accounts.list().then(accounts => {
+        let folderSchedules = [];
+        for (let acct of accounts) {
+          let draftFolders = getDraftFolders(acct);
+          if (draftFolders && draftFolders.length > 0) {
+            for (let draftFolder of draftFolders) {
+              if (draftFolder) {
+                try {
+                  SLStatic.debug(`Checking for messages in folder ${draftFolder.path}`);
+                  const accountId = draftFolder.accountId, path = draftFolder.path;
+                  const thisFoldersSchedulePromise = browser.SL3U.getAllScheduledMessages(
+                    accountId, path
+                  ).then(messages => {
+                    let schedules = [];
+                    for (let message of messages) {
+                      let hdr = message.hdr;
+                      hdr.folder = draftFolder;
 
-      let allSchedules = await SendLater.forAllDrafts(async (msg) => {
-        const rawMessage = await SendLater.getRaw(msg.id, 5);
-        if (rawMessage === null) {
-          SLStatic.warn("getActiveSchedules.forAllDrafts failed. Unable to get raw message contents.",msg);
-          return;
+                      const rawMessage = message.data;
+
+                      const msgSendAt = SLStatic.getHeader(rawMessage, "x-send-later-at");
+                      const msgUUID = SLStatic.getHeader(rawMessage, "x-send-later-uuid");
+                      if (msgSendAt === undefined) {
+                        //return null;
+                      } else if (matchUUID && msgUUID != matchUUID) {
+                        //return null;
+                      } else {
+                        const nextSend = new Date(msgSendAt).getTime();
+                        schedules.push(nextSend);
+                      }
+                    }
+                    return schedules;
+                  });
+                  folderSchedules.push(thisFoldersSchedulePromise);
+                } catch (ex0) {
+                  SLStatic.error(ex0);
+                }
+              }
+            }
+          } else {
+            SLStatic.debug(`Unable to find drafts folder for account`, acct);
+          }
         }
-        const msgSendAt = SLStatic.getHeader(rawMessage, "x-send-later-at");
-        const msgUUID = SLStatic.getHeader(rawMessage, "x-send-later-uuid");
-        if (msgSendAt === undefined) {
-          return null;
-        } else if (matchUUID && msgUUID !== preferences.instanceUUID) {
-          return null;
-        } else {
-          const nextSend = new Date(msgSendAt).getTime();
-          return nextSend;
-        }
-      }, true);
-      return allSchedules.filter(v => v !== null);
+        return SLStatic.flatten(folderSchedules);
+      }).catch(SLStatic.error);
+
+      const allSchedules = await Promise.all(allSchedulePromises);
+      return SLStatic.flatten(allSchedules);
     },
 
     async doSanityCheck() {
@@ -548,7 +583,7 @@ const SendLater = {
       let message = "";
 
       try { // Compact Drafts folders and Outbox folder
-        const compactedDrafts = await SendLater.forAllDraftFolders(
+        const compactedDrafts = await this.forAllDraftFolders(
           async folder => {
             const accountId = folder.accountId, path = folder.path;
             SLStatic.log(`Compacting folder <${path}> in account ${accountId}`);
@@ -571,7 +606,7 @@ const SendLater = {
         message += `\n\nCompacting Outbox and/or Drafts folders failed with error:\n${e}`;
       }
 
-      const activeSchedules = await SendLater.getActiveSchedules(false);
+      const activeSchedules = await this.getActiveSchedules(preferences.instanceUUID);
       const nActive = activeSchedules.length;
       if (nActive > 0) {
         const soonest = new Sugar.Date(Math.min(...activeSchedules));
@@ -620,54 +655,6 @@ const SendLater = {
       return true;
     },
 
-    async continueOnUpgrade() {
-      let { preferences } = await browser.storage.local.get({
-        preferences: {}
-      });
-      let thisVersion = "0.0.0";
-      try {
-        const manifest = browser.runtime.getManifest();
-        thisVersion = manifest.version;
-      } catch (e) {
-        SLStatic.warn("Unable to read current Send Later version.", e);
-      }
-      const extensionName = browser.i18n.getMessage("extensionName");
-      if (thisVersion === preferences.versionNumber) {
-        SLStatic.debug("Version unchanged");
-        // Just a regular old restart. Not a version upgrade.
-        return true;
-      } else {
-        SLStatic.info(`Version upgraded from ${preferences.versionNumber} to ${thisVersion}`);
-        if (preferences.hideRestartNotification) {
-          //TODO: This is not yet implemented.
-          SLStatic.debug("User has chosen to hide notifications about restarts on upgrade.");
-          return true;
-        } else {
-          preferences.versionNumber = thisVersion;
-          await browser.storage.local.set({ preferences });
-
-          let title = browser.i18n.getMessage("extensionName");
-          let message = `A new version of ${title} has been installed.\n\n` +
-            `To prevent unexpected behavior, it is recommended that you ` +
-            `restart Thunderbird before using any of its functionality. ` +
-            `This is especially important when a previous version was ` +
-            `actively running prior to this upgrade.\n\n` +
-            `Click "OK" to continue loading ${extensionName}, or "Cancel" to ` +
-            `wait until the next Thunderbird restart.`;
-          title += ` ${thisVersion}`;
-
-          const okay = await browser.SL3U.confirmAction(title, message.trim());
-          if (okay === true) {
-            SLStatic.warn("Continuing without restart.");
-            return true;
-          } else if (okay === false) {
-            SLStatic.info("Returning early, and waiting until next restart.");
-            return false;
-          }
-        }
-      }
-    },
-
     async claimDrafts() {
       /*
        * Because the x-send-later-uuid header was omitted in beta
@@ -682,9 +669,11 @@ const SendLater = {
        * This should only happen once, and only for users who
        * have been following the beta releases.
        */
-      let claimed = await SendLater.forAllDrafts(async (msg) => {
-        const rawContent = await SendLater.getRaw(msg.id, 5);
-        if (rawContent === null) {
+      let claimed = await this.forAllDrafts(async (msg) => {
+        const rawContent = await browser.messages.getRaw(msg.id).catch(err => {
+          SLStatic.warn(`Unable to fetch message ${msg.id}.`, err);
+        });
+        if (!rawContent) {
           SLStatic.warn("claimDrafts.forAllDrafts failed. Unable to get raw message contents.",msg);
           return;
         }
@@ -713,7 +702,7 @@ const SendLater = {
             newMsgContent, "References", msgId);
 
           if (msg.read) {
-            SendLater.watchAndMarkRead.add(newMessageId);
+            this.watchAndMarkRead.add(newMessageId);
           }
 
           const success = await browser.SL3U.saveMessage(
@@ -731,13 +720,13 @@ const SendLater = {
             SLStatic.error("Unable to claim message");
           }
         }
-      }, true);
+      });
       claimed = claimed.filter(v => v !== null && v !== undefined);
       SLStatic.info(`Claimed ${claimed.length} scheduled messages.`);
     },
 
     async init() {
-      await SendLater.printVersionInfo();
+      await this.printVersionInfo();
 
       // Set custom DB headers preference, if not already set.
       await browser.SL3U.setCustomDBHeaders();
@@ -746,28 +735,23 @@ const SendLater = {
       // to the default level.
       SLStatic.logConsoleLevel = "info";
 
-      // Check if version has just been upgraded, and possibly
-      // prompt for restart if so.
-      if (!(await SendLater.continueOnUpgrade())) {
-        return;
-      }
-
       // Perform any pending preference migrations.
-      const previousMigration = await SendLater.migratePreferences();
+      const previousMigration = await this.migratePreferences();
       if (previousMigration < 3) {
         // This really shouldn't be necessary, but we should check
         // whether the outbox and drafts folders might be corrupted.
-        await SendLater.doSanityCheck();
+        await this.doSanityCheck();
       }
 
-      await SendLater.claimDrafts();
+      if (previousMigration > 0 && previousMigration < 4) {
+        await this.claimDrafts();
+      }
 
       const { preferences } =
         await browser.storage.local.get({ preferences: {} });
-      SendLater.prefCache = preferences;
-      SLStatic.logConsoleLevel = preferences.logConsoleLevel.toLowerCase();
+      this.prefCache = preferences;
 
-      // This listener should be added *after* all of the storate-related
+      // This listener should be added *after* all of the storage-related
       // setup is complete. It makes sure that subsequent changes to storage
       // are propagated to their respective
       browser.storage.onChanged.addListener(async (changes, areaName) => {
@@ -775,7 +759,7 @@ const SendLater = {
           SLStatic.debug("Propagating changes from local storage");
           const { preferences } =
             await browser.storage.local.get({ preferences: {} });
-          SendLater.prefCache = preferences;
+          this.prefCache = preferences;
           SLStatic.logConsoleLevel = preferences.logConsoleLevel.toLowerCase();
           const prefString = JSON.stringify(preferences);
           await browser.SL3U.notifyStorageLocal(prefString, false);
@@ -794,34 +778,6 @@ const SendLater = {
       SLStatic.debug("Registering window listeners");
       await browser.SL3U.startObservers();
       await browser.SL3U.bindKeyCodes();
-
-      // Start background loop to check for scheduled messages.
-      setTimeout(SendLater.mainLoop, 0);
-    },
-
-    mainLoop: function() {
-      SLStatic.debug("Entering main loop.");
-
-      browser.storage.local.get({ preferences: {} }).then((storage) => {
-        let interval = +storage.preferences.checkTimePref || 0;
-
-        if (storage.preferences.sendDrafts && interval > 0) {
-          SendLater.forAllDrafts(
-            SendLater.possiblySendMessage,
-            true
-          ).catch(SLStatic.error);
-        }
-
-        // TODO: Should use a persistent reference to the this timeout that can be
-        // scrapped and restarted upon changes in the delay preference.
-        interval = Math.max(1, interval);
-        SLStatic.debug(
-          `Next main loop iteration in ${interval} ` +
-          `minute${interval > 1 ? "s" : ""}.`
-        );
-        SLStatic.previousLoop = new Date();
-        setTimeout(SendLater.mainLoop, 60000*interval);
-      });
     }
 }; // SendLater
 
@@ -887,14 +843,15 @@ browser.compose.onBeforeSend.addListener(tab => {
     setTimeout(() => delete SendLater.composeState[tab.id], 1000);
     return { cancel: false };
   } else if (SendLater.prefCache.sendDoesSL) {
-    SLStatic.info("Send does send later. Opening popup.")
+    SLStatic.info("Send does send later. Opening popup.");
+    SendLater.composeState[tab.id] = "scheduling";
     browser.composeAction.enable(tab.id);
     browser.composeAction.openPopup();
     return ({ cancel: true });
   } else if (SendLater.prefCache.sendDoesDelay) {
     const sendDelay = SendLater.prefCache.sendDelay;
     SLStatic.debug(`Scheduling SendLater ${sendDelay} minutes from now.`);
-    SendLater.scheduleSendLater(tab.id, { delay: sendDelay });
+    SendLater.scheduleSendLater.call(SendLater, tab.id, { delay: sendDelay });
     return ({ cancel: true });
   } else {
     SLStatic.debug(`Bypassing send later.`);
@@ -950,7 +907,6 @@ browser.runtime.onMessage.addListener(async (message) => {
     case "doSendNow": {
       SLStatic.debug("User requested send immediately.");
       if (!window.navigator.onLine) {
-        // TODO -> Option to place in outbox.
         SendLater.notify("Thunderbird is offline.",
                         "Cannot send message at this time.");
       } else {
@@ -961,25 +917,53 @@ browser.runtime.onMessage.addListener(async (message) => {
       }
       break;
     }
+    case "doPlaceInOutbox": {
+      SLStatic.debug("User requested system send later.");
+      SendLater.composeState[message.tabId] = "sending";
+      browser.SL3U.builtInSendLater().then(()=>{
+        setTimeout(() => delete SendLater.composeState[message.tabId], 1000);
+      });
+      break;
+    }
+    case "getMainLoopStatus": {
+      response.previousLoop = SLStatic.previousLoop.getTime();
+      break;
+    }
     case "doSendLater": {
       SLStatic.debug("User requested send later.");
-      if (await browser.SL3U.preSendCheck()) {
-        const options = { sendAt: message.sendAt,
-                          recurSpec: message.recurSpec,
-                          args: message.args,
-                          cancelOnReply: message.cancelOnReply };
-        SendLater.scheduleSendLater(message.tabId, options);
-      } else {
-        SLStatic.info("User cancelled send via presendcheck.");
-      }
+      (async () => {
+        return (SendLater.composeState[message.tabId] === "scheduling") ||
+                (await SendLater.preSendCheck.call(SendLater));
+      })().then(dosend => {
+        console.log(dosend);
+        if (dosend) {
+          const options = { sendAt: message.sendAt,
+                            recurSpec: message.recurSpec,
+                            args: message.args,
+                            cancelOnReply: message.cancelOnReply };
+          SendLater.scheduleSendLater.call(SendLater, message.tabId, options);
+          delete SendLater.composeState[message.tabId];
+        } else {
+          SLStatic.info("User cancelled send via presendcheck.");
+        }
+      });
+      break;
+    }
+    case "closingComposePopup": {
+      delete SendLater.composeState[message.tabId];
+      console.log(`Removed tab ${message.tabId} from composeState map.`);
       break;
     }
     case "getScheduleText": {
       try {
         const dispMsgHdr =
           await browser.messageDisplay.getDisplayedMessage(message.tabId);
-        const rawDispMsg = await SendLater.getRaw(dispMsgHdr.id, 5);
-        if (rawDispMsg === null) {
+        const rawDispMsg =
+          await browser.messages.getRaw(dispMsgHdr.id).catch(err => {
+            SLStatic.warn(`Unable to fetch message ${dispMsgHdr.id}.`, err);
+          });
+
+        if (!rawDispMsg) {
           SLStatic.warn("getScheduleText failed. Unable to get raw message contents.",dispMsgHdr);
           return;
         }
@@ -1025,7 +1009,7 @@ browser.runtime.onMessage.addListener(async (message) => {
 
 // Listen for incoming messages, and check if they are in reponse to a scheduled
 // message with a 'cancel-on-reply' header.
-browser.messages.onNewMailReceived.addListener(async (folder, messagelist) => {
+browser.messages.onNewMailReceived.addListener((folder, messagelist) => {
   // First, we want to skip onNewMailReceived events triggered locally during
   // regular send, move, and copy operations. We never touch archives folders anyway,
   // so we can immediately ignore this if it's an operation on an archives folder.
@@ -1043,8 +1027,11 @@ browser.messages.onNewMailReceived.addListener(async (folder, messagelist) => {
     for (let hdr of messagelist.messages) {
       SLStatic.debug(`Received new message: ${hdr.subject}`);
 
-      const rawRecvdMsg = await SendLater.getRaw(hdr.id, 5);
-      if (rawRecvdMsg === null) {
+      const rawRecvdMsg =
+        await browser.messages.getRaw(hdr.id).catch(err => {
+          SLStatic.warn(`Unable to fetch message ${hdr.id}.`, err);
+        });
+      if (!rawRecvdMsg) {
         SLStatic.warn("onNewMailReceived.scanMessage failed. Unable to get raw message contents.",hdr);
         return;
       } else {
@@ -1072,28 +1059,50 @@ browser.messages.onNewMailReceived.addListener(async (folder, messagelist) => {
           const recvdMsgReplyTo =[...recvdMsgReplyToStr.matchAll(/(<\S*>)/gim)].map(i=>i[1]);
           SLStatic.debug(`Message is a reply to`, recvdMsgReplyTo);
 
-          SendLater.forAllDrafts(async draftMsg => {
-            const rawDraftMsg = await SendLater.getRaw(draftMsg.id, 5);
-            if (rawDraftMsg === null) {
-              SLStatic.warn("onNewMailReceived.scanMessage.forAllDrafts failed. Unable to get raw message contents.",draftMsg);
-              return;
-            }
+          // Loop over all draft messages, and check for overlap between this
+          // incoming message's 'in-reply-to' header, and any of the draft's
+          // 'references' headers.
+          browser.accounts.list().then(accounts => {
+            for (let acct of accounts) {
+              let draftFolders = getDraftFolders(acct);
+              if (draftFolders && draftFolders.length > 0) {
+                for (let draftFolder of draftFolders) {
+                  if (draftFolder) {
+                    try {
+                      SLStatic.debug(`Checking for messages in folder ${draftFolder.path}`);
+                      const accountId = draftFolder.accountId, path = draftFolder.path;
+                      browser.SL3U.getAllScheduledMessages(accountId, path).then(messages => {
+                        for (let message of messages) {
+                          let hdr = message.hdr;
+                          hdr.folder = draftFolder;
 
-            const draftId = SLStatic.getHeader(rawDraftMsg, "message-id");
-            const draftCancelOnReply = SLStatic.getHeader(rawDraftMsg, "x-send-later-cancel-on-reply");
-            const draftRefString = SLStatic.getHeader(rawDraftMsg, "references");
+                          const rawDraftMsg = message.data;
+                          const draftId = SLStatic.getHeader(rawDraftMsg, "message-id");
+                          const draftCancelOnReply = SLStatic.getHeader(rawDraftMsg, "x-send-later-cancel-on-reply");
+                          const draftRefString = SLStatic.getHeader(rawDraftMsg, "references");
 
-            const cancelOnReply = (draftCancelOnReply &&
-              ["true", "yes"].includes(draftCancelOnReply));
-            if (cancelOnReply) {
-              const draftMsgRefs = [...draftRefString.matchAll(/(<\S*>)/gim)].map(i=>i[1]);
-              const isReferenced = draftMsgRefs.some(item => recvdMsgReplyTo.includes(item));
-              if (isReferenced) {
-                SLStatic.info(`Received response to message ${draftId}. Deleting scheduled draft.`);
-                browser.messages.delete([draftMsg.id], true);
+                          const cancelOnReply = (draftCancelOnReply &&
+                            ["true", "yes"].includes(draftCancelOnReply));
+                          if (cancelOnReply) {
+                            const draftMsgRefs = [...draftRefString.matchAll(/(<\S*>)/gim)].map(i=>i[1]);
+                            const isReferenced = draftMsgRefs.some(item => recvdMsgReplyTo.includes(item));
+                            if (isReferenced) {
+                              SLStatic.info(`Received response to message ${draftId}. Deleting scheduled draft.`);
+                              browser.SL3U.deleteDraftByUri(accountId, path, hdr.uri);
+                            }
+                          }
+                        }
+                      }).catch(SLStatic.error);
+                    } catch (ex0) {
+                      SLStatic.error(ex0);
+                    }
+                  }
+                }
+              } else {
+                SLStatic.debug(`Unable to find drafts folder for account`, acct);
               }
             }
-          }, true);
+          }).catch(SLStatic.error);
         }
       }
     }
@@ -1103,11 +1112,12 @@ browser.messages.onNewMailReceived.addListener(async (folder, messagelist) => {
 browser.messageDisplay.onMessageDisplayed.addListener(async (tab, hdr) => {
   await browser.messageDisplayAction.disable(tab.id);
   if (hdr.folder.type === "drafts") {
+    let rawMessage = await browser.messages.getRaw(hdr.id).catch(err => {
+        SLStatic.warn(`Unable to fetch message ${hdr.id}.`, err);
+      });
     const { preferences } = await browser.storage.local.get({ preferences: {} });
     const instanceUUID = preferences.instanceUUID;
-
-    let rawMessage = await SendLater.getRaw(hdr.id, 5);
-    if (rawMessage === null) {
+    if (!rawMessage) {
       SLStatic.warn("onMessageDisplayed failed. Unable to get raw message contents.",hdr.id);
       return;
     } else {
@@ -1128,4 +1138,99 @@ browser.messageDisplay.onMessageDisplayed.addListener(async (tab, hdr) => {
   }
 });
 
-SendLater.init();
+browser.runtime.onUpdateAvailable.addListener((details) => {
+  const extensionName = browser.i18n.getMessage("extensionName");
+  const thisVersion = browser.runtime.getManifest().version;
+  const nextVersion = details.version||"";
+
+  browser.notifications.create(null, {
+    "type": "basic",
+    "title": `${extensionName} ${thisVersion}`,
+    "message": `${extensionName} ${nextVersion} is available and ` +
+               `will be upgraded next time you restart Thunderbird.`
+  });
+});
+
+function findDraftsHelper(folder) {
+  const that = this;
+  // Recursive helper function to look through an account for draft folders
+  if (folder.type === "drafts") {
+    return folder;
+  } else {
+    const drafts = [];
+    for (let subFolder of folder.subFolders) {
+      drafts.push(that.findDraftsHelper(subFolder));
+    }
+    return drafts;
+  }
+}
+
+function getDraftFolders(acct) {
+  const that = this;
+  const draftSubFolders = [];
+  acct.folders.forEach(folder => {
+    draftSubFolders.push(that.findDraftsHelper(folder));
+  });
+  return SLStatic.flatten(draftSubFolders);
+}
+
+function mainLoop() {
+  SLStatic.debug("Entering main loop.");
+  if (SendLater.loopTimeout) {
+    clearTimeout(SendLater.loopTimeout);
+  }
+
+  browser.storage.local.get({ preferences: {} }).then((storage) => {
+    let interval = +storage.preferences.checkTimePref || 0;
+
+    if (storage.preferences.sendDrafts && interval > 0) {
+      browser.accounts.list().then(accounts => {
+        for (let acct of accounts) {
+          let draftFolders = getDraftFolders(acct);
+          if (draftFolders && draftFolders.length > 0) {
+            for (let draftFolder of draftFolders) {
+              if (draftFolder) {
+                try {
+                  SLStatic.debug(`Checking for messages in folder ${draftFolder.path}`);
+                  const accountId = draftFolder.accountId, path = draftFolder.path;
+                  browser.SL3U.getAllScheduledMessages(accountId, path).then(messages => {
+                    for (let message of messages) {
+                      let hdr = message.hdr;
+                      hdr.folder = draftFolder;
+                      let callback = SendLater.possiblySendMessage.bind(SendLater);
+                      callback(hdr, message.data).then(result => {
+                        if (result === "delete_original") {
+                          browser.SL3U.deleteDraftByUri(accountId, path, hdr.uri);
+                        }
+                      }).catch(SLStatic.error);
+                    }
+                  }).catch(SLStatic.error);
+                } catch (ex0) {
+                  SLStatic.error(ex0);
+                }
+
+              }
+            }
+          } else {
+            SLStatic.debug(`Unable to find drafts folder for account`, acct);
+          }
+        }
+      }).catch(SLStatic.error);
+    }
+
+    interval = Math.max(1, interval);
+    SLStatic.debug(
+      `Next main loop iteration in ${interval} ` +
+      `minute${interval > 1 ? "s" : ""}.`
+    );
+    SLStatic.previousLoop = new Date();
+    SendLater.loopTimeout = setTimeout(mainLoop.bind(SendLater), 60000*interval);
+  }).catch(ex => {
+    SLStatic.error(ex);
+    SendLater.loopTimeout = setTimeout(mainLoop.bind(SendLater), 60000);
+  });
+}
+
+SendLater.init().then(
+  mainLoop.bind(SendLater)
+).catch(SLStatic.error);

@@ -2001,7 +2001,13 @@ function onSelectedMessagesChangedHandler(tab,messageList) {
 var latestCheck=null, checkUrlsPromise = null, cancelPromise = null;
 
 function onMessageDisplayedHandler(tab,message) {
+    if (!message) {
+        void 0;
+        return;
+    }
+
     void 0;
+
 
     if (typeof tab!=="object") {
         void 0;

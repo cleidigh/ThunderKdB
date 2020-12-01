@@ -42,20 +42,14 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         LicenseIsProUser() {
           return  win.SmartTemplate4.Util.hasLicense(false);
         },
-
-        getAddonVersion: function() {
-          return win.SmartTemplate4.Util.Version;
-        },
-
-        getTBVersion : function() { //somehow(??), we can also get this in MX
-          return Services.appinfo.version;//win.SmartTemplate4.Util.VersionSanitized;
-        },
-
-
-        getAddonName : function() {
-          return win.SmartTemplate4.Util.ADDON_NAME;
-        },
         
+        LicensedDaysLeft() {
+          let today = new Date(),
+              licensedDate = new Date(win.SmartTemplate4.Licenser.DecryptedDate),
+              daysLeft = parseInt((licensedDate - today) / (1000 * 60 * 60 * 24)); 
+          return daysLeft;
+        },
+
         openLinkExternally: function(url) {
           let uri = url;
           if (!(uri instanceof Ci.nsIURI)) {

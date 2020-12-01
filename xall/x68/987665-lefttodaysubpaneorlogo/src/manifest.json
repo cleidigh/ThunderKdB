@@ -7,7 +7,7 @@
                     }
              },
 	"name": "LeftTodaySubpaneOrLogo",
-	"version": "8.8",
+	"version": "9.1",
 	"description": "Append today subpane to left top/bottm or append logo to left bottm.",
              "icons": {
                "32": "ots32.png"
@@ -17,8 +17,11 @@
                  "default_title": "LeftTodaySubpaneOrLogo",
                 "default_popup": "popup.html"
                },
-             "permissions": [
+             "permissions": [ "theme"
               ],
+"background": {
+  "scripts": ["background.js"]
+},
  "experiment_apis": {
     "myapi": {
       "schema": "schema.json",
