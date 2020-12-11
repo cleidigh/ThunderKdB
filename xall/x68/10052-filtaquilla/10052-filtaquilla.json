@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
         }
     ],
-    "average_daily_users": 5678,
+    "average_daily_users": 5458,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -25,29 +25,29 @@
             "miscellaneous"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "https://www.paypal.com/donate?hosted_button_id=RH438A7X9SGRA",
     "created": "2008-12-18T00:17:43Z",
     "current_version": {
-        "id": 2473012,
+        "id": 2474969,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
+                "max": "73.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filtaquilla/versions/2473012",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filtaquilla/versions/2474969",
         "files": [
             {
-                "id": 1016119,
-                "created": "2019-12-13T17:09:10Z",
-                "hash": "sha256:4e4c9b1089ae028e20b46d11ed42d2cdc3d28938a274a44cca8737958cbda4dc",
+                "id": 1018131,
+                "created": "2020-12-08T15:41:33Z",
+                "hash": "sha256:a04cef42f95ce485f0fb5846c790da137dd3ff72f1778ce23b94d140d045c702",
                 "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 95359,
+                "size": 95708,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016119/filtaquilla-2.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018131/filtaquilla-2.1.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -81,18 +81,18 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "<b>Version 2.0</b>\n\nMade Compatible with THunderbird 68. FiltaQuilla had to be largely rewritten for Thunderbird 68, with substantial help from <a href=\"https://github.com/ptomulik\" rel=\"nofollow\">Paweł Tomulik</a>.\n\nGoing forward most bugfixes / new features will be exclusively available for Thunderbird 68. The reason for this is that through architectural changes on the Mozilla code platform the code for Thunderbird 60 and earlier is substantially different.\n\n<ul><li> Check the new <a href=\"https://github.com/RealRaven2000/FiltaQuilla/issues\" rel=\"nofollow\">Issue Tracker</a> for open problems and to add feature requests.</li><li> Added links to the quickFilters page for supporting the development team. </li></ul>\n<strong>Support My Work</strong>\n\nAs I am often asked about added features for filter conditions and actions for my Add-on <a href=\"https://addons.thunderbird.net/addon/quickfilters/\" rel=\"nofollow\">quickFilters</a> this is a good location for extending Filter behavior. \n\nIf you want to <b>support the FiltaQuilla project</b>, please install quickFilters and \n<strong>purchase a <a href=\"http://quickfilters.mozdev.org/premium.html\" rel=\"nofollow\">quickFilters Pro</a> license.</strong>\n\nI am keeping the license for FiltaQuilla as GPL 3.0, free to download and use."
+            "en-US": "Going forward most bugfixes / new features will be exclusively available for Thunderbird 78 - some changes may be backported to Thunderbird 68. The reason for this is that through architectural changes on the Mozilla code platform the code for Thunderbird 60 and earlier is substantially different.\n\n<ul><li> Currently working on a version for Thunderbird 78  - you can already <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/releases/\">get prereleases on my github</a>. Complete conversion is discussed at <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/64\">[issue 64]</a></li><li> 2.1.2 fixed a problem in manifest file (stric_max_verseion) that wouldn't allow it to update existing versions.</li><li> 2.1.1 added strict_max_version to avoid this Add-on being installed in Tb78 - where it would be incompatible</li><li> Added Icons and fixed look on Address book picker in Filter Editor</li><li> Corrected a string in german locale from \"Nicht ändern\" to \"Nicht benachrichtigen\"</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/67\">[issue 67]</a> Help links in options dialog were misdirected to the wrong page</li></ul>\n<strong>Support My Work</strong>\n\nAs I am often asked about added features for filter conditions and actions for my Add-on <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/quickfilters/\">quickFilters</a>. FiltaQuilla is a good location for extending Filter behavior. \n\nIf you want to <b>support the FiltaQuilla project</b>, please install quickFilters and \n<strong>purchase a <a rel=\"nofollow\" href=\"http://quickfilters.mozdev.org/premium.html\">quickFilters Pro</a> license.</strong>.\n\nYou can now also <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/filtaquilla.html#donate\">donate directly here</a>.\n\nI am keeping the license for FiltaQuilla as GPL 3.0, free to download and use."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filtaquilla/versions/2.0",
-        "version": "2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filtaquilla/versions/2.1.2",
+        "version": "2.1.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Mail filter custom actions.\n\nCurrently compatible with Thunderbird 68. IF you find bugs, please report them to:\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/\">https://github.com/RealRaven2000/FiltaQuilla/issues/</a>\n\nThe full detailed change log can be found here:\n<a rel=\"nofollow\" href=\"http://quickfilters.mozdev.org/fq-versions.html#latest\">http://quickfilters.mozdev.org/fq-versions.html#latest</a>\n\nFor Thunderbird 78 conversion (which is ongoing) please check:\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/64\">https://github.com/RealRaven2000/FiltaQuilla/issues/64</a>\n\nLatest beta for Thunderbird 78:\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/releases/tag/3.0pre44\">https://github.com/RealRaven2000/FiltaQuilla/releases/tag/3.0pre44</a>"
+        "en-US": "Adds custom actions and search terms to the mail filter system.\n\nCurrently compatible with Thunderbird 68. IF you find bugs, please report them to:\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/\">https://github.com/RealRaven2000/FiltaQuilla/issues/</a>\n\nThe full detailed change log can be found here:\n<a rel=\"nofollow\" href=\"http://quickfilters.mozdev.org/fq-versions.html#latest\">http://quickfilters.mozdev.org/fq-versions.html#latest</a>\n\nFor Thunderbird 78 conversion (which is currently ongoing) please check:\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/64\">https://github.com/RealRaven2000/FiltaQuilla/issues/64</a>\n\nLatest beta for Thunderbird 78:\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/releases/tag/3.0pre51\">https://github.com/RealRaven2000/FiltaQuilla/releases/tag/3.0pre51</a>"
     },
     "developer_comments": {
-        "en-US": "Source code:\n<a href=\"https://github.com/RealRaven2000/FiltaQuilla/\" rel=\"nofollow\">https://github.com/RealRaven2000/FiltaQuilla/</a>\nThere is currently an ongoing effort to make the code compatible with Tb68. See the \nthunderbird68 branch for detail."
+        "en-US": "Source code:\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/\">https://github.com/RealRaven2000/FiltaQuilla/</a>\n\nI am currently rewriting for Thunderbird 78 compatibility. You can find a working prerelease here:\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/releases/tag/3.0pre51\">https://github.com/RealRaven2000/FiltaQuilla/releases/tag/3.0pre51</a>"
     },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filtaquilla/edit",
     "guid": "filtaquilla@mesquilla.com",
@@ -110,78 +110,74 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-12-13T17:26:56Z",
+    "last_updated": "2020-12-08T19:17:14Z",
     "name": {
         "en-US": "FiltaQuilla"
     },
     "previews": [
         {
-            "id": 205630,
+            "id": 206344,
             "caption": {
-                "en-GB": "",
                 "en-US": "Setup screen showing available filter actions"
             },
             "image_size": [
-                763,
-                313
+                762,
+                356
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205630.png?modified=1553001467",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206344.png?modified=1607613244",
             "thumbnail_size": [
                 320,
-                131
+                150
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205630.png?modified=1553001467"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206344.png?modified=1607613244"
         },
         {
-            "id": 205631,
+            "id": 206345,
             "caption": {
-                "en-GB": "",
                 "en-US": "Setup screen showing available search terms"
             },
             "image_size": [
-                765,
-                287
+                757,
+                374
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205631.png?modified=1553001467",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206345.png?modified=1607613244",
             "thumbnail_size": [
                 320,
-                120
+                158
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205631.png?modified=1553001467"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206345.png?modified=1607613244"
         },
         {
-            "id": 205501,
+            "id": 206348,
             "caption": {
-                "en-GB": "",
                 "en-US": "Example for some filter rules added with FiltaQuilla"
             },
             "image_size": [
-                723,
-                500
+                622,
+                442
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205501.png?modified=1553001461",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206348.png?modified=1607613248",
             "thumbnail_size": [
-                289,
+                281,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205501.png?modified=1553001461"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206348.png?modified=1607613248"
         },
         {
-            "id": 205500,
+            "id": 206346,
             "caption": {
-                "en-GB": "",
-                "en-US": "Preferences dialog with links to support site and related quickFilters Add-on"
+                "en-US": "Preferences  with links to support site and related quickFilters Add-on"
             },
             "image_size": [
-                765,
-                404
+                764,
+                492
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205500.png?modified=1553001461",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206346.png?modified=1607613244",
             "thumbnail_size": [
-                320,
-                169
+                311,
+                200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205500.png?modified=1553001461"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206346.png?modified=1607613244"
         }
     ],
     "public_stats": false,
@@ -206,7 +202,11 @@
         "en-US": "http://quickfilters.quickfolders.org/filtaquilla.html"
     },
     "tags": [
-        "firefox57"
+        "clean inbox",
+        "filter rules",
+        "filters",
+        "firefox57",
+        "productivity"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filtaquilla/",

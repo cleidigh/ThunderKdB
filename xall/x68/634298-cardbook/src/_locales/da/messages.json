@@ -955,7 +955,7 @@
         }
 	},
 	"serverCardGetKeyFailed": {
-		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Nøgle kunne ikke hentes for kontakt $P2$ (url : $P3$, status : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -972,7 +972,7 @@
         }
 	},
 	"serverCardGetKeyOK": {
-		"message": "??$P1$ : Key downloaded for contact $P2$??",
+		"message": "$P1$ : Nøgle hentet for kontakt $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -983,7 +983,7 @@
         }
 	},
 	"serverCardGettingKey": {
-		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+		"message": "$P1$ : Henter nøgle for kontakt $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2116,6 +2116,9 @@
 	"eventEntryTitleMessage": {
 		"message": "Mærkedag for %1$S, Alder : %2$S"
 	},
+	"anniversaryCategory": {
+		"message": "Jubilæum"
+	},
 	"calendarNotFoundTitle": {
 		"message": "Mærkedagspåmindelse - Synkronisering med Lightning annulleret"
 	},
@@ -2691,6 +2694,12 @@
 	},
 	"dateFormatsYLabel": {
 		"message": "Y"
+	},
+	"autoComputeFn": {
+		"message": "Aktiver genereringen af det viste navn"
+	},
+	"dontAutoComputeFn": {
+		"message": "Deaktiver genereringen af det viste navn"
 	},
 	"customLabel": {
 		"message": "Brugerdefineret"
@@ -3590,7 +3599,7 @@
 		"message": "V"
 	},
 	"keyTab.conf.label": {
-		"message": "??Public Keys??"
+		"message": "Offentlige nøgler"
 	},
 	"keyTab.conf.accesskey": {
 		"message": "K"
@@ -3618,6 +3627,9 @@
 	},
 	"localizeEngineBingMapsAccesskey": {
 		"message": "B"
+	},
+	"previewLabel": {
+		"message": "Vis"
 	},
 	"localizeTargetLabel": {
 		"message": "Åbn eksterne links"
@@ -4531,6 +4543,18 @@
 	"cardbookToolbarComplexSearchTooltip": {
 		"message": "Opret en ny folder til gemte søgninger"
 	},
+	"cardbookToolbarNewEventLabel": {
+		"message": "Begivenhed"
+	},
+	"cardbookToolbarNewEventTooltip": {
+		"message": "Opret en ny begivenhed"
+	},
+	"cardbookToolbarNewTodoLabel": {
+		"message": "Opgave"
+	},
+	"cardbookToolbarNewTodoTooltip": {
+		"message": "Opret en ny opgave"
+	},
 	"cardbookToolbarThMenuButtonLabel": {
 		"message": "Menu"
 	},
@@ -4556,7 +4580,7 @@
 		"message": "vCard"
 	},
 	"keyTabLabel": {
-		"message": "??Public Keys??"
+		"message": "Offentlige nøgler"
 	},
 	"noteTabLabel": {
 		"message": "Noter"
@@ -4643,22 +4667,22 @@
 		"message": "Skriv en ny meddelelse (blind kopi / bcc)"
 	},
 	"publicKeysFromCards.label": {
-		"message": "??Public keys??"
+		"message": "Offentlige nøgler"
 	},
 	"searchForOnlineKeyFromCards.label": {
-		"message": "??Discover keys online??"
+		"message": "Opdag nøgler online"
 	},
 	"importKeyFromCards.label": {
-		"message": "??Import into OpenPGP Key Manager??"
+		"message": "Importer til OpenPGP Key Manager"
 	},
 	"searchForOnlineKeyTreeLabel": {
-		"message": "??Discover keys online??"
+		"message": "Opdag nøgler online"
 	},
 	"searchForOnlineKeyEditButton.tooltip": {
-		"message": "??Discover keys online??"
+		"message": "Opdag nøgler online"
 	},
 	"searchForThKeyEditButton.tooltip": {
-		"message": "??Search for keys in OpenPGP key manager??"
+		"message": "Søg efter nøgler i OpenPGP key manager"
 	},
 	"searchForLocalKeyEditButton.tooltip": {
 		"message": "Importer fra fil"
@@ -4674,6 +4698,15 @@
 	},
 	"findEmailsFromCardsLabel": {
 		"message": "Find e-mails relateret til denne kontakt"
+	},
+	"eventsAndTasksLabel": {
+		"message": "Begivenheder og opgaver"
+	},
+	"addEventFromCardsLabel": {
+		"message": "Ny begivenhed"
+	},
+	"addTodoFromCardsLabel": {
+		"message": "Ny opgave"
 	},
 	"findEventsFromCardsLabel": {
 		"message": "Find kalenderbegivenheder relateret til denne kontakt"

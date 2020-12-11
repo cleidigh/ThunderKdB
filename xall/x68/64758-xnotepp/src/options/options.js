@@ -9,27 +9,33 @@ var prefs = bgPage.getPreferences();
 var btnSelectStoragePath = document.getElementById("btnSelectStoragePath");
 
 function isInputType(node, type){
-	return node.nodeName.toLowerCase() == "input" && node.type.toLowerCase() == type.toLowerCase()
+	return node.nodeName.toLowerCase() == "input" && node.type.toLowerCase() == type.toLowerCase();
 }
 
 async function selectStoragePath() {
   console.debug("selectStoragePath called");
-  let startDir = prefs["storage_path"];
+  let startDir = prefs.storage_path;
   let profileDir = await bgPage.getProfileDirectory();
   if (startDir.startsWith("[ProfD]")) {
-    console.debug(`profileDir: ${profileDir}; startDir: ${startDir}`);
-    startDir = await bgPage.appendRelativePath(profileDir, startDir.substring(7));
-    console.debug(`startDir for selectStoragePath: ${startDir}`);
+    try {
+      console.debug(`profileDir: ${profileDir}; startDir: ${startDir}`);
+      startDir = await bgPage.appendRelativePath(profileDir, startDir.substring(7));
+      console.debug(`startDir for selectStoragePath: ${startDir}`);
+    }
+    catch (e) {
+      console.debug(`Directory does not exist: ${startDir}.`, e);
+      startDir = profileDir;
+    }
   }
   try {
     bgPage.selectDirectory(startDir, bgPage.browser.i18n.getMessage("Select.storage.dir")).then((storagePath) => {
-      console.debug(`selected storage path: ${storagePath}`)
+      console.debug(`selected storage path: ${storagePath}`);
       if (storagePath == null) return;
       //Check whether the new path is inside the profile directory
       //and if yes, make the path relative to the profile.
       if (storagePath.indexOf(profileDir) == 0) {
         if (storagePath.length == profileDir.length) {
-          storagePath = "[ProfD]"
+          storagePath = "[ProfD]";
         }
         else {
           storagePath = "[ProfD]"+storagePath.substr(profileDir.length+1);
@@ -37,7 +43,7 @@ async function selectStoragePath() {
       }
       let prefPath = document.getElementById("storage.path");
       prefPath.value = storagePath;
-      prefs["storage_path"] = storagePath;
+      prefs.storage_path = storagePath;
     });
   }
   catch (e) {

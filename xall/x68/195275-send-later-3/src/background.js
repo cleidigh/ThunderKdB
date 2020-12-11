@@ -39,7 +39,7 @@ const SendLater = {
     async findDraftsHelper(folder) {
       const that = this;
       // Recursive helper function to look through an account for draft folders
-      if (folder.type === "drafts") {
+      if (folder.type === "drafts" || folder.type === "templates") {
         return folder;
       } else {
         const drafts = [];
@@ -159,8 +159,12 @@ const SendLater = {
       if (success) {
         browser.tabs.remove(tabId);
       } else {
-        console.error("Something went wrong while scheduling this message.");
+        SLStatic.error("Something went wrong while scheduling this message.");
       }
+
+      setTimeout(() => {
+        this.setStatusBarIndicator.call(this, false);
+      }, 1000);
     },
 
     async possiblySendMessage(msgHdr, rawContent) {
@@ -172,12 +176,6 @@ const SendLater = {
       // });
       if (!rawContent) {
         SLStatic.warn("possiblySendMessage failed. Unable to get raw message contents.", msgHdr);
-        return;
-      }
-
-      if (!window.navigator.onLine) {
-        SLStatic.debug(`The option to send scheduled messages while ` +
-          `thunderbird is offline has not yet been implemented. Skipping.`);
         return;
       }
 
@@ -201,6 +199,11 @@ const SendLater = {
       const { preferences, lock } = await browser.storage.local.get({
         preferences: {}, lock: {}
       });
+
+      if (!preferences.sendWhileOffline && !window.navigator.onLine) {
+        SLStatic.debug(`Send Later is configured to disable sending while offline. Skipping.`);
+        return;
+      }
 
       if (!msgUUID) {
         SLStatic.debug(`Message <${originalMsgId}> has no uuid header.`);
@@ -298,6 +301,12 @@ const SendLater = {
         browser.storage.local.set({ lock }).then(() => {
           SLStatic.debug(`Locked message <${originalMsgId}> from re-sending.`);
         });
+        if (preferences.throttleDelay) {
+          SLStatic.debug(`Throttling send rate: ${preferences.throttleDelay/1000}s`);
+          await new Promise(resolve =>
+            setTimeout(resolve, preferences.throttleDelay)
+          );
+        }
       } else {
         SLStatic.error(`Something went wrong while sending message ${originalMsgId}`);
         return;
@@ -538,17 +547,13 @@ const SendLater = {
                   SLStatic.debug(`Checking for messages in folder ${draftFolder.path}`);
                   const accountId = draftFolder.accountId, path = draftFolder.path;
                   const thisFoldersSchedulePromise = browser.SL3U.getAllScheduledMessages(
-                    accountId, path
+                    accountId, path, false, true
                   ).then(messages => {
                     let schedules = [];
                     for (let message of messages) {
-                      let hdr = message.hdr;
-                      hdr.folder = draftFolder;
+                      const msgSendAt = message["x-send-later-at"];
+                      const msgUUID = message["x-send-later-uuid"];
 
-                      const rawMessage = message.data;
-
-                      const msgSendAt = SLStatic.getHeader(rawMessage, "x-send-later-at");
-                      const msgUUID = SLStatic.getHeader(rawMessage, "x-send-later-uuid");
                       if (msgSendAt === undefined) {
                         //return null;
                       } else if (matchUUID && msgUUID != matchUUID) {
@@ -609,9 +614,9 @@ const SendLater = {
       const activeSchedules = await this.getActiveSchedules(preferences.instanceUUID);
       const nActive = activeSchedules.length;
       if (nActive > 0) {
-        const soonest = new Sugar.Date(Math.min(...activeSchedules));
+        const soonest = new Date(Math.min(...activeSchedules));
         const nextActiveText = SLStatic.humanDateTimeFormat(soonest) +
-          ` (${soonest.relative()})`;
+          ` (${(new Sugar.Date(soonest)).relative()})`;
         message += `\n\nYou have ${nActive} message${nActive === 1 ? "" : "s"} ` +
           `scheduled to be delivered by Send Later.\nThe next one is ` +
           `scheduled for ${nextActiveText}.`;
@@ -725,6 +730,25 @@ const SendLater = {
       SLStatic.info(`Claimed ${claimed.length} scheduled messages.`);
     },
 
+    async setStatusBarIndicator(isActive) {
+      let statusMsg;
+      if (isActive) {
+        statusMsg = browser.i18n.getMessage("CheckingMessage");
+      } else {
+        const { preferences } = await browser.storage.local.get({ preferences: {} });
+        const activeSchedules = await this.getActiveSchedules(preferences.instanceUUID);
+        const nActive = activeSchedules.length;
+        if (nActive > 0) {
+          statusMsg = browser.i18n.getMessage("PendingMessage", [nActive]);
+        } else {
+          statusMsg = browser.i18n.getMessage("IdleMessage");
+        }
+      }
+
+      const extName = browser.i18n.getMessage("extensionName");
+      return await browser.SL3U.showStatus(`${extName} [${statusMsg}]`);
+    },
+
     async init() {
       await this.printVersionInfo();
 
@@ -766,9 +790,13 @@ const SendLater = {
         }
       });
 
-      await browser.SL3U.injectScript("utils/sugar-custom.js");
-      await browser.SL3U.injectScript("utils/static.js");
-      await browser.SL3U.injectScript("experiments/headerView.js");
+      await browser.SL3U.injectScripts([
+        "utils/sugar-custom.js",
+        "utils/static.js",
+        "experiments/headerView.js",
+        "experiments/statusBar.js"
+      ]);
+
 
       setTimeout(() => {
         const prefString = JSON.stringify(preferences);
@@ -778,6 +806,8 @@ const SendLater = {
       SLStatic.debug("Registering window listeners");
       await browser.SL3U.startObservers();
       await browser.SL3U.bindKeyCodes();
+
+      await this.setStatusBarIndicator(false);
     }
 }; // SendLater
 
@@ -810,10 +840,9 @@ browser.SL3U.onKeyCode.addListener(keyid => {
             SLStatic.error("Cannot find current compose window");
             return;
           } else {
+            SLStatic.debug(`Adding tab ${thistab.id} to composeSate map.`);
             SendLater.composeState[thistab.id] = "sending";
-            browser.SL3U.builtInSendLater().then(()=>{
-              setTimeout(() => delete SendLater.composeState[thistab.id], 1000);
-            });
+            browser.SL3U.builtInSendLater();
           }
         }).catch(ex => SLStatic.error("Error starting builtin send later",ex));
       } else {
@@ -837,13 +866,19 @@ browser.SL3U.onKeyCode.addListener(keyid => {
 
 // Intercept sent messages. Decide whether to handle them or just pass them on.
 browser.compose.onBeforeSend.addListener(tab => {
-  SLStatic.info(`Received onBeforeSend from tab`,tab);
-  if (SendLater.composeState[tab.id] === "sending") {
+  SLStatic.info(`Received onBeforeSend from tab ${tab.id}`);
+  if (SendLater.composeState[tab.id] === "sending" ||
+      SendLater.composeState[tab.id] === "sending_later") {
     // Avoid blocking extension's own send events
-    setTimeout(() => delete SendLater.composeState[tab.id], 1000);
+    SLStatic.debug(`User is currently in the process of sending this message.`);
+    setTimeout(() => {
+      SLStatic.debug(`Deleting tab ${tab.id} from composeSate map.`);
+      delete SendLater.composeState[tab.id]
+    }, 1000);
     return { cancel: false };
   } else if (SendLater.prefCache.sendDoesSL) {
     SLStatic.info("Send does send later. Opening popup.");
+    SLStatic.debug(`Adding tab ${tab.id} to composeSate map.`);
     SendLater.composeState[tab.id] = "scheduling";
     browser.composeAction.enable(tab.id);
     browser.composeAction.openPopup();
@@ -895,6 +930,19 @@ browser.runtime.onMessageExternal.addListener(
       });
       return true;
     }
+    else if (message["action"] === "parseDate") {
+      try {
+        const date = SLStatic.convertDate(message["value"], true);
+        if (date) {
+          const dateStr = SLStatic.parseableDateTimeFormat(date.getTime());
+          sendResponse(dateStr);
+          return;
+        }
+      } catch (ex) {
+        SLStatic.debug("Unable to parse date/time",ex);
+      }
+      sendResponse(null);
+    }
   });
 
 browser.runtime.onMessage.addListener(async (message) => {
@@ -911,17 +959,23 @@ browser.runtime.onMessage.addListener(async (message) => {
                         "Cannot send message at this time.");
       } else {
         SendLater.composeState[message.tabId] = "sending";
-        browser.SL3U.sendNow().then(()=>{
-          setTimeout(() => delete SendLater.composeState[message.tabId], 1000);
-        });
+        browser.SL3U.sendNow().then(
+          () => {
+            SLStatic.debug(`Deleting tab ${message.tabId} from composeSate map.`);
+            delete SendLater.composeState[message.tabId]
+          }
+        );
       }
       break;
     }
     case "doPlaceInOutbox": {
       SLStatic.debug("User requested system send later.");
-      SendLater.composeState[message.tabId] = "sending";
+      SendLater.composeState[message.tabId] = "sending_later";
       browser.SL3U.builtInSendLater().then(()=>{
-        setTimeout(() => delete SendLater.composeState[message.tabId], 1000);
+        () => {
+          SLStatic.debug(`Done sending later. Deleting tab ${message.tabId} from composeSate map.`);
+          delete SendLater.composeState[message.tabId]
+        }
       });
       break;
     }
@@ -935,7 +989,6 @@ browser.runtime.onMessage.addListener(async (message) => {
         return (SendLater.composeState[message.tabId] === "scheduling") ||
                 (await SendLater.preSendCheck.call(SendLater));
       })().then(dosend => {
-        console.log(dosend);
         if (dosend) {
           const options = { sendAt: message.sendAt,
                             recurSpec: message.recurSpec,
@@ -950,8 +1003,11 @@ browser.runtime.onMessage.addListener(async (message) => {
       break;
     }
     case "closingComposePopup": {
-      delete SendLater.composeState[message.tabId];
-      console.log(`Removed tab ${message.tabId} from composeState map.`);
+      if (SendLater.composeState[message.tabId] === "scheduling") {
+        SLStatic.debug(`Deleting tab ${message.tabId} from composeSate map.`);
+        delete SendLater.composeState[message.tabId]
+      }
+
       break;
     }
     case "getScheduleText": {
@@ -1016,6 +1072,8 @@ browser.messages.onNewMailReceived.addListener((folder, messagelist) => {
   if (["sent", "trash", "archives", "junk", "outbox"].includes(folder.type)) {
     SLStatic.debug(`Skipping onNewMailReceived for folder type ${folder.type}`);
     return;
+  } else {
+    SLStatic.debug(`Messages received in folder ${folder.path}`);
   }
 
   // We can't do this processing right away, because the message might not be
@@ -1071,15 +1129,11 @@ browser.messages.onNewMailReceived.addListener((folder, messagelist) => {
                     try {
                       SLStatic.debug(`Checking for messages in folder ${draftFolder.path}`);
                       const accountId = draftFolder.accountId, path = draftFolder.path;
-                      browser.SL3U.getAllScheduledMessages(accountId, path).then(messages => {
+                      browser.SL3U.getAllScheduledMessages(accountId, path, false, true).then(messages => {
                         for (let message of messages) {
-                          let hdr = message.hdr;
-                          hdr.folder = draftFolder;
-
-                          const rawDraftMsg = message.data;
-                          const draftId = SLStatic.getHeader(rawDraftMsg, "message-id");
-                          const draftCancelOnReply = SLStatic.getHeader(rawDraftMsg, "x-send-later-cancel-on-reply");
-                          const draftRefString = SLStatic.getHeader(rawDraftMsg, "references");
+                          const draftId = message["message-id"];
+                          const draftCancelOnReply = message["x-send-later-cancel-on-reply"];
+                          const draftRefString = message["references"];
 
                           const cancelOnReply = (draftCancelOnReply &&
                             ["true", "yes"].includes(draftCancelOnReply));
@@ -1088,7 +1142,7 @@ browser.messages.onNewMailReceived.addListener((folder, messagelist) => {
                             const isReferenced = draftMsgRefs.some(item => recvdMsgReplyTo.includes(item));
                             if (isReferenced) {
                               SLStatic.info(`Received response to message ${draftId}. Deleting scheduled draft.`);
-                              browser.SL3U.deleteDraftByUri(accountId, path, hdr.uri);
+                              browser.SL3U.deleteDraftByUri(accountId, path, message.uri);
                             }
                           }
                         }
@@ -1111,7 +1165,7 @@ browser.messages.onNewMailReceived.addListener((folder, messagelist) => {
 
 browser.messageDisplay.onMessageDisplayed.addListener(async (tab, hdr) => {
   await browser.messageDisplayAction.disable(tab.id);
-  if (hdr.folder.type === "drafts") {
+  if (hdr.folder.type === "drafts" || folder.type === "templates") {
     let rawMessage = await browser.messages.getRaw(hdr.id).catch(err => {
         SLStatic.warn(`Unable to fetch message ${hdr.id}.`, err);
       });
@@ -1138,6 +1192,93 @@ browser.messageDisplay.onMessageDisplayed.addListener(async (tab, hdr) => {
   }
 });
 
+browser.commands.onCommand.addListener((cmd) => {
+  const cmdId = (/send-later-shortcut-([123])/.exec(cmd))[1];
+
+  if (["1","2","3"].includes(cmdId)) {
+    browser.windows.getAll({
+      populate: true,
+      windowTypes: ["messageCompose"]
+    }).then((allWindows) => {
+      // Current compose windows
+      const ccWins = allWindows.filter((cWindow) => (cWindow.focused === true));
+      if (ccWins.length === 1) {
+        const ccTabs = ccWins[0].tabs.filter(tab => (tab.active === true));
+        if (ccTabs.length !== 1) { // No tabs?
+          throw new Error(`Unexpected situation: no tabs found in current window`);
+        }
+        const tabId = ccTabs[0].id;
+
+        browser.storage.local.get({
+          preferences: {},
+          ufuncs: {}
+        }).then(({ preferences, ufuncs }) => {
+          function evaluateUfunc(funcName, prev, argStr) {
+            let args = null;
+            if (argStr) {
+              try {
+                argStr = SLStatic.unparseArgs(SLStatic.parseArgs(argStr));
+                args = SLStatic.parseArgs(argStr);
+              } catch (ex) {
+                SLStatic.warn(ex);
+                return { err: (browser.i18n.getMessage("InvalidArgsTitle") + ": " +
+                                browser.i18n.getMessage("InvalidArgsBody")) };
+              }
+            }
+
+            const { sendAt, nextspec, nextargs, error } =
+              SLStatic.evaluateUfunc(funcName, funcBody, prev, args);
+            SLStatic.debug("User function returned:",
+                            {sendAt, nextspec, nextargs, error});
+
+            if (error) {
+              throw new Error(error);
+            } else {
+              let recur = SLStatic.parseRecurSpec(nextspec || "none") || { type: "none" };
+              if (recur.type !== "none") {
+                recur.args = nextargs || "";
+              }
+              const schedule = { sendAt, recur };
+              SLStatic.debug("commands.onCommand received ufunc response: ",schedule);
+              return schedule;
+            }
+          }
+
+          const funcName = preferences[`quickOptions${cmdId}funcselect`];
+          const funcArgs = preferences[`quickOptions${cmdId}Args`];
+          SLStatic.info(`Executing shortcut ${cmdId}: ${funcName}(${funcArgs})`);
+          const funcBody = ufuncs[funcName].body;
+
+          const schedule = evaluateUfunc(funcName, null, funcArgs);
+
+          (async () => {
+            return (SendLater.composeState[tabId] === "scheduling") ||
+                    (await SendLater.preSendCheck.call(SendLater));
+          })().then(dosend => {
+            if (dosend) {
+              const options = { sendAt: schedule.sendAt,
+                                recurSpec: SLStatic.unparseRecurSpec(schedule.recur),
+                                args: schedule.recur.args,
+                                cancelOnReply: schedule.recur.cancelOnReply };
+              SendLater.scheduleSendLater.call(SendLater, tabId, options);
+              SLStatic.debug(`Deleting tab ${tabId} from composeSate map.`);
+              delete SendLater.composeState[tabId];
+            } else {
+              SLStatic.debug("User cancelled send via presendcheck.");
+            }
+          });
+        });
+      } else if (ccWins.length === 0) {
+        // No compose window is opened
+        SLStatic.warn(`The currently active window is not a messageCompose window`);
+      } else {
+        // Whaaaat!?!?
+        throw new Error(`Unexpected situation: multiple active windows found?`);
+      }
+    }).catch(SLStatic.error);
+  }
+});
+
 browser.runtime.onUpdateAvailable.addListener((details) => {
   const extensionName = browser.i18n.getMessage("extensionName");
   const thisVersion = browser.runtime.getManifest().version;
@@ -1154,7 +1295,7 @@ browser.runtime.onUpdateAvailable.addListener((details) => {
 function findDraftsHelper(folder) {
   const that = this;
   // Recursive helper function to look through an account for draft folders
-  if (folder.type === "drafts") {
+  if (folder.type === "drafts" || folder.type === "templates") {
     return folder;
   } else {
     const drafts = [];
@@ -1182,9 +1323,12 @@ function mainLoop() {
 
   browser.storage.local.get({ preferences: {} }).then((storage) => {
     let interval = +storage.preferences.checkTimePref || 0;
+    const throttleDelay = storage.preferences.throttleDelay;
 
     if (storage.preferences.sendDrafts && interval > 0) {
-      browser.accounts.list().then(accounts => {
+      SendLater.setStatusBarIndicator.call(SendLater, true);
+
+      browser.accounts.list().then(async (accounts) => {
         for (let acct of accounts) {
           let draftFolders = getDraftFolders(acct);
           if (draftFolders && draftFolders.length > 0) {
@@ -1193,29 +1337,53 @@ function mainLoop() {
                 try {
                   SLStatic.debug(`Checking for messages in folder ${draftFolder.path}`);
                   const accountId = draftFolder.accountId, path = draftFolder.path;
-                  browser.SL3U.getAllScheduledMessages(accountId, path).then(messages => {
+                  let loopMessagesPromise = browser.SL3U.getAllScheduledMessages(
+                    accountId, path, true, false
+                  ).then(async (messages) => {
                     for (let message of messages) {
-                      let hdr = message.hdr;
-                      hdr.folder = draftFolder;
+                      message.folder = draftFolder;
                       let callback = SendLater.possiblySendMessage.bind(SendLater);
-                      callback(hdr, message.data).then(result => {
+                      let possiblySendPromise = callback(message, message.raw).then(async (result) => {
                         if (result === "delete_original") {
-                          browser.SL3U.deleteDraftByUri(accountId, path, hdr.uri);
+                          browser.SL3U.deleteDraftByUri(accountId, path, message.uri).catch((ex) => {
+                            SLStatic.error(`mainLoop.deleteDraftByUri error:`, ex);
+                          });
                         }
                       }).catch(SLStatic.error);
+                      if (throttleDelay) {
+                        await possiblySendPromise;
+                      }
                     }
                   }).catch(SLStatic.error);
+                  if (throttleDelay) {
+                    await loopMessagesPromise;
+                  }
                 } catch (ex0) {
                   SLStatic.error(ex0);
                 }
-
               }
             }
           } else {
             SLStatic.debug(`Unable to find drafts folder for account`, acct);
           }
         }
-      }).catch(SLStatic.error);
+      }).then(() => {
+        // If there is a throttle delay set, then we have already 'awaited'
+        // all of the action, and we can remove the status indicator now.
+        // Otherwise, let's leave it up for a bit, since the loop may still
+        // be processing asynchronously.
+        let statusMsgDuration = throttleDelay ? 0 : 4000;
+        setTimeout(() => {
+          SendLater.setStatusBarIndicator.call(SendLater, false);
+        }, statusMsgDuration);
+      }).catch((err) => {
+        SLStatic.error(err);
+        SendLater.setStatusBarIndicator.call(SendLater, false);
+      });
+    } else {
+      const extName = browser.i18n.getMessage("extensionName");
+      const disabledMsg = browser.i18n.getMessage("DisabledMessage");
+      browser.SL3U.showStatus(`${extName} [${disabledMsg}]`);
     }
 
     interval = Math.max(1, interval);

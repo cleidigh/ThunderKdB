@@ -208,20 +208,7 @@ if ("undefined" == typeof(wdw_cardbookEventContacts)) {
 				// wdw_cardbookEventContacts.loadEvents();
 			};
 		
-			event = cal.createEvent();
-			var calendar = cal.view.getCompositeCalendar(window).defaultCalendar;
-			var refDate = cal.dtz.now();
-			
-			var attendee = cal.createAttendee();
-			attendee.id = wdw_cardbookEventContacts.attendeeId;
-			attendee.commonName = wdw_cardbookEventContacts.attendeeName;
-			attendee.isOrganizer = false;
-			attendee.role = "REQ-PARTICIPANT";
-			attendee.userType = "INDIVIDUAL";
-			event.addAttendee(attendee);
-			
-			setDefaultItemValues(event, calendar, null, null, refDate, null);
-			openEventDialog(event, event.calendar, "new", onNewEvent, null);
+			cardbookLightning.createLightningEvent([[wdw_cardbookEventContacts.attendeeId, wdw_cardbookEventContacts.attendeeName]], onNewEvent);
 		},
 
 		chooseActionForKey: function (aEvent) {

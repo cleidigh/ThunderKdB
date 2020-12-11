@@ -198,7 +198,6 @@ function patchCardBookABSelector(es) {
 		es.updateSearchValue(menulist);
 
 		// override the opParentValue setter to detect operators which need no value
-		// this => es ??
 		wrapper.oldOpParentValueSetter = wrapper.__lookupSetter__('opParentValue');
 		wrapper.__defineSetter__('opParentValue', function(aValue) {
 			let elements = this.getElementsByClassName('search-value-custom');

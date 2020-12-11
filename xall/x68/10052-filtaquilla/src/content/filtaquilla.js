@@ -299,7 +299,7 @@
         apply: function(aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
           _aListener = aListener;
           var srcFolder = aMsgHdrs.queryElementAt(0, Ci.nsIMsgDBHdr).folder;
-          _dstFolder = MailUtils.getFolderForURI(aActionValue, false);
+          _dstFolder = (MailUtils.getExistingFolder) ? MailUtils.getExistingFolder(aActionValue, false) : MailUtils.getFolderForURI(aActionValue, false);
           // store the messages Ids to use post-copy
           _messageIds = [];
           for (var i = 0; i < aMsgHdrs.length; i++)
@@ -314,7 +314,7 @@
         },
         isValidForType: function(type, scope) { return type == Ci.nsMsgFilterType.Manual && copyAsReadEnabled;},
         validateActionValue: function(aActionValue, aFilterFolder, type) {
-          var msgFolder = MailUtils.getFolderForURI(aActionValue, false);
+          var msgFolder = (MailUtils.getExistingFolder) ? MailUtils.getExistingFolder(aActionValue, false) : MailUtils.getFolderForURI(aActionValue, false);
           if (!msgFolder || !msgFolder.canFileMessages)
           {
             return self.strings.GetStringFromName("filtaquilla.mustSelectFolder");
@@ -691,7 +691,7 @@
 								contentTypes.push(attachment.contentType);
 								urls.push(attachment.url);
 								displayNames.push(attachment.name);
-								let txt = "Detach attachment [" + j + "] to " + uniqueFile.path +
+								let txt = "Detach attachment [" + j + "] to " + this.directory +
 										"...\n msgURI=" + this.msgURI +
 										"\n att.url=" + attachment.url +
 										"\n att.ncontentType=" + attachment.contentType;
@@ -809,7 +809,7 @@
       name: self.strings.GetStringFromName("filtaquilla.moveLater.name"),
       apply: function(aMsgHdrs, aActionValue, copyListener, filterType, msgWindow) {
         let srcFolder = aMsgHdrs.queryElementAt(0, Ci.nsIMsgDBHdr).folder;
-        let dstFolder = MailUtils.getFolderForURI(aActionValue, false);
+        let dstFolder = (MailUtils.getExistingFolder) ? MailUtils.getExistingFolder(aActionValue, false) : MailUtils.getFolderForURI(aActionValue, false);
         // store the messages uris to use later
         let timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
         let currentIndex = moveLaterIndex++;

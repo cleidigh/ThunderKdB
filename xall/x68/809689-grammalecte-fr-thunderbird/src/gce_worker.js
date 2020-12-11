@@ -179,8 +179,6 @@ function init (sExtensionPath, dOptions=null, sContext="JavaScript", oInfo={}) {
             oSpellChecker = gc_engine.getSpellChecker();
             oTest = new TestGrammarChecking(gc_engine, sExtensionPath+"/grammalecte/fr/tests_data.json");
             oTokenizer = new Tokenizer("fr");
-            oLocution =  helpers.loadFile(sExtensionPath + "/grammalecte/fr/locutions_data.json");
-            lexgraph_fr.load(oSpellChecker, oTokenizer, oLocution);
             if (dOptions !== null) {
                 if (!(dOptions instanceof Map)) {
                     dOptions = helpers.objectToMap(dOptions);
@@ -231,16 +229,11 @@ function parseAndSpellcheck1 (sParagraph, sCountry, bDebug, bContext, oInfo={}) 
     postMessage(createResponse("parseAndSpellcheck1", {sParagraph: sParagraph, aGrammErr: aGrammErr, aSpellErr: aSpellErr}, oInfo, true));
 }
 
-function parseFull (sText, sCountry, bDebug, bContext, oInfo={}) {
-    let i = 0;
-    sText = sText.replace(/­/g, "").normalize("NFC");
-    for (let sParagraph of text.getParagraph(sText)) {
-        let lSentence = gc_engine.parse(sParagraph, sCountry, bDebug, null, bContext, true);
-        console.log("*", lSentence);
-        postMessage(createResponse("parseFull", {sParagraph: sParagraph, iParaNum: i, lSentence: lSentence}, oInfo, false));
-        i += 1;
-    }
-    postMessage(createResponse("parseFull", null, oInfo, true));
+function parseFull (sParagraph, sCountry, bDebug, bContext, oInfo={}) {
+    sParagraph = sParagraph.replace(/­/g, "").normalize("NFC");
+    let [lParagraphErrors, lSentences] = gc_engine.parse(sParagraph, sCountry, bDebug, null, bContext, true);
+    //console.log(lSentences);
+    postMessage(createResponse("parseFull", { lParagraphErrors: lParagraphErrors, lSentences: lSentences }, oInfo, true));
 }
 
 function getListOfTokens (sText, oInfo={}) {
@@ -249,7 +242,11 @@ function getListOfTokens (sText, oInfo={}) {
         sText = sText.replace(/­/g, "").normalize("NFC");
         for (let sParagraph of text.getParagraph(sText)) {
             if (sParagraph.trim() !== "") {
-                postMessage(createResponse("getListOfTokens", lexgraph_fr.getListOfTokensReduc(sParagraph, true), oInfo, false));
+                let lTokens = [ ...oTokenizer.genTokens(sParagraph) ];
+                for (let oToken of lTokens) {
+                    oSpellChecker.setLabelsOnToken(oToken);
+                }
+                postMessage(createResponse("getListOfTokens", { sParagraph: sParagraph, lTokens: lTokens }, oInfo, false));
             }
         }
         postMessage(createResponse("getListOfTokens", null, oInfo, true));
@@ -295,13 +292,22 @@ function resetOptions (oInfo={}) {
 }
 
 function tests () {
-    console.log(conj.getConj("devenir", ":E", ":2s"));
+    /*console.log(conj.getConj("devenir", ":E", ":2s"));
     console.log(mfsp.getMasForm("emmerdeuse", true));
     console.log(mfsp.getMasForm("pointilleuse", false));
     console.log(phonet.getSimil("est"));
     let aRes = gc_engine.parse("Je suit...");
     for (let oErr of aRes) {
         console.log(text.getReadableError(oErr));
+    }*/
+    for (let sWord of ["fatiqué", "coeur", "trèèèèèèèèès", "vraaaaiiiimeeeeennnt", "apele", "email", "Co2", "emmppâiiiller", "testt", "apelaion", "exsepttion", "sintaxik", "ebriete", "ennormmement"]) {
+        console.time("Suggestions for " + sWord);
+        for (let aSugg of oSpellChecker.suggest(sWord)) {
+            if (aSugg.length) {
+                console.log(sWord + " -> ", aSugg.join(" "));
+            }
+        }
+        console.timeEnd("Suggestions for " + sWord);
     }
 }
 

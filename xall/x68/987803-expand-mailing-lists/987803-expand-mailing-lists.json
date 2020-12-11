@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 139,
+    "average_daily_users": 154,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-03-28T16:46:00Z",
     "current_version": {
-        "id": 2474403,
+        "id": 2474916,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "75.0"
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/expand-mailing-lists/versions/2474403",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/expand-mailing-lists/versions/2474916",
         "files": [
             {
-                "id": 1017565,
-                "created": "2020-10-05T15:23:06Z",
-                "hash": "sha256:fba19c4e9bc79084f50618689a8f2672a3548c633e2eef0d5b5d7dcfcee6f264",
+                "id": 1018078,
+                "created": "2020-12-03T12:17:03Z",
+                "hash": "sha256:5b8735529a3937b4047d692c27865bdc35e4fb2156608213a2e7ce10e76d0ba2",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 118119,
+                "size": 24461,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017565/expand_mailing_lists-1.0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018078/expand_mailing_lists-1.1.0-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "addressBooks"
@@ -53,11 +53,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Outputs unmatched and empty lists unchanged."
+            "en-GB": "",
+            "en-US": "Includes display name with expanded addresses."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/expand-mailing-lists/versions/1.0.2",
-        "version": "1.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/expand-mailing-lists/versions/1.1.0",
+        "version": "1.1.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -88,7 +89,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-05T15:25:03Z",
+    "last_updated": "2020-12-03T12:20:03Z",
     "name": {
         "el": "Αναπτύξτε λίστες αλληλογραφίας",
         "fr": "Étendez les listes de diffusion",
@@ -159,7 +160,8 @@
         "ext_comp": {
             "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp78plus": true
         }
     }
 }

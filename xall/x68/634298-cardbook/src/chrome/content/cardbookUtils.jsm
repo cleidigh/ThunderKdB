@@ -85,13 +85,12 @@ var cardbookUtils = {
 		return cardbookRepository.arrayUnique(result);
 	},
 
-	formatAddress: function(aAddress) {
-		var result =  "";
-		var resultArray =  [];
-		var myAdrFormula = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.adrFormula");
-		if (myAdrFormula == "") {
-			myAdrFormula = cardbookRepository.defaultAdrFormula;
-		}
+	formatAddress: function(aAddress, aAdrFormula) {
+		let result =  "";
+		let resultArray =  [];
+		let myAdrFormula = aAdrFormula ||
+							cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.adrFormula") ||
+							cardbookRepository.defaultAdrFormula;
 		result = cardbookUtils.getStringFromFormula(myAdrFormula, aAddress);
 		var re = /[\n\u0085\u2028\u2029]|\r\n?/;
 		var myAdrResultArray = result.split(re);
@@ -1427,7 +1426,7 @@ var cardbookUtils = {
 			}
 		}
 		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("mailPopularityTabLabel"), "mailpop"]);
-		// test waiting tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("keyTabLabel"), "key"]);
+		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("keyTabLabel"), "key"]);
 		cardbookRepository.cardbookUtils.sortMultipleArrayByString(tmpArray,0,1);
 		return tmpArray;
 	},

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 707,
+    "average_daily_users": 665,
     "categories": {
         "firefox": [
             "other"
@@ -27,30 +27,37 @@
     "contributions_url": "",
     "created": "2018-10-30T10:36:25Z",
     "current_version": {
-        "id": 2470824,
+        "id": 2474950,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0a1"
+                "max": "*",
+                "min": "78.5.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-with/versions/2470824",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-with/versions/2474950",
         "files": [
             {
-                "id": 1013890,
-                "created": "2019-07-15T01:21:55Z",
-                "hash": "sha256:76c12f75b259a193337962d2ce286e26e2cdbcc6b3787b0f1ca715bc5af251e5",
-                "is_restart_required": true,
+                "id": 1018112,
+                "created": "2020-12-06T09:33:45Z",
+                "hash": "sha256:75c89017dfeab18674ff55259eef45e575972a67f6ab305f86b9f1397c1a386d",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 81722,
+                "size": 376494,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1013890/open_with-6.9.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018112/open_with-7.2.3-tb.xpi?src=",
+                "permissions": [
+                    "downloads",
+                    "menus",
+                    "messagesRead",
+                    "nativeMessaging",
+                    "storage",
+                    "tabs"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -59,11 +66,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This version contains updates needed for compatibility with Thunderbird 68.\n\n<a href=\"https://github.com/darktrojan/openwith/compare/VERSION_6.9.1...VERSION_6.9.2\" rel=\"nofollow\">https://github.com/darktrojan/openwith/compare/VERSION_6.9.1...VERSION_6.9.2</a>"
+            "en-US": "This is the first version for Thunderbird 78.\n\n<a rel=\"nofollow\" href=\"https://github.com/darktrojan/openwith/compare/VERSION_7.2.2...VERSION_7.2.3\">https://github.com/darktrojan/openwith/compare/VERSION_7.2.2...VERSION_7.2.3</a>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/open-with/versions/6.9.2",
-        "version": "6.9.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/open-with/versions/7.2.3",
+        "version": "7.2.3"
     },
     "default_locale": "en-US",
     "description": null,
@@ -77,26 +84,26 @@
     "homepage": {
         "en-US": "https://github.com/darktrojan/openwith"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/986/986334-64.png?modified=3d381822",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/986/986334-64.png?modified=6e81c8f4",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/986/986334-32.png?modified=3d381822",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/986/986334-64.png?modified=3d381822"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/986/986334-32.png?modified=6e81c8f4",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/986/986334-64.png?modified=6e81c8f4"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-07-15T03:50:36Z",
+    "last_updated": "2020-12-06T09:35:03Z",
     "name": {
         "en-US": "Open With"
     },
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.71775,
-        "count": 11,
-        "average": 3.8182,
-        "text_count": 11
+        "bayesian_average": 3.98506,
+        "count": 13,
+        "average": 4.0769,
+        "text_count": 13
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/open-with/reviews/",
     "requires_payment": false,
@@ -123,10 +130,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-10-30T10:36:25Z"
         }

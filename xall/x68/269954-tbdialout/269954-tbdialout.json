@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 505,
+    "average_daily_users": 484,
     "categories": {
         "thunderbird": [
             "contacts"
@@ -18,30 +18,30 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=LN8ZPNZBQ3GKL&source=url",
     "created": "2011-01-02T13:03:34Z",
     "current_version": {
-        "id": 2473704,
+        "id": 2474934,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/tbdialout/versions/2473704",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/tbdialout/versions/2474934",
         "files": [
             {
-                "id": 1016862,
-                "created": "2020-05-13T13:03:21Z",
-                "hash": "sha256:069d96770ee1332a7dc97f893877167e3878c0d043dc565365d4d828ec99558c",
-                "is_restart_required": true,
+                "id": 1018096,
+                "created": "2020-12-04T17:48:07Z",
+                "hash": "sha256:3ac1f801e112f449fbec0040e06a0ff6e0b3d22bc94504a724e38584c51ba91e",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 73612,
+                "size": 94103,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016862/tbdialout-1.8.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018096/tbdialout-2.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 5,
             "name": {
@@ -76,12 +76,12 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/tbdialout/versions/1.8.0",
-        "version": "1.8.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/tbdialout/versions/2.0.1",
+        "version": "2.0.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "TBDialOut adds toolbar buttons, context menu items and clickable links to allow you to dial a contact's phone directly from Thunderbird's addressbook. It can be configured to pass the phone number to the configured URL handler for one of the following: \n\n• callto:\n• tel:\n• sip:\n• skype:\n• Custom URL\n• Asterisk AMI\n\nYou will need to configure your chosen URL handler separately. \n\nThe 'Custom URL' option allows you to configure TBDialOut to set up a call by contacting a web service, such as those provided by Snom and Yealink phones and some software PBXes/switchboards.\n\nThe Asterisk AMI option is new in 1.7.0 and allows TBDialOut to communicate directly with an Asterisk software switchboard. \n\nInformation on configuration can be found at <a href=\"http://www.oak-wood.co.uk/tbdialout\" rel=\"nofollow\">http://www.oak-wood.co.uk/tbdialout</a>\n\n<strong>Want to help?</strong>\n\nTBDialOut currently has translations for en-US, en-GB, de, es-ES, nl, fr, zh-CN, sv-SE, ru and it. If you fancy translating it into another language, visit TBDialOut at Babelzilla <a href=\"http://bit.ly/tbdialout-l10n\" rel=\"nofollow\">http://bit.ly/tbdialout-l10n</a>.\n\nAnd if you fancy designing an icon for TBDialOut, get in touch!"
+        "en-US": "TBDialOut adds toolbar buttons, context menu items and clickable links to allow you to dial a contact's phone directly from Thunderbird's addressbook. It can be configured to pass the phone number to the configured URL handler for one of the following: \n\n• callto:\n• tel:\n• sip:\n• skype:\n• Custom URL\n• Asterisk AMI\n\nYou will need to configure your chosen URL handler separately. \n\nThe 'Custom URL' option allows you to configure TBDialOut to set up a call by contacting a web service, such as those provided by Snom and Yealink phones and some software PBXes/switchboards.\n\nThe Asterisk AMI option is new in 1.7.0 and allows TBDialOut to communicate directly with an Asterisk software switchboard. \n\nInformation on configuration can be found at <a rel=\"nofollow\" href=\"http://www.oak-wood.co.uk/tbdialout\">http://www.oak-wood.co.uk/tbdialout</a>\n\n<strong>Want to help?</strong>\n\nTBDialOut currently has translations for en-US, en-GB, de, es-ES, fr, hu, it, nl, ru, sv-SE and zh-CN. If you fancy translating it into another language I welcome pull requests at <a rel=\"nofollow\" href=\"https://github.com/tipichris/TBDialOut\">https://github.com/tipichris/TBDialOut</a>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/tbdialout/edit",
@@ -100,7 +100,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-05-19T21:55:59Z",
+    "last_updated": "2020-12-08T20:52:23Z",
     "name": {
         "ru": "TBDialOut",
         "fr": "TBDialOut",
@@ -210,10 +210,10 @@
     "weekly_downloads": 60,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-11-01T08:26:57Z"
         }

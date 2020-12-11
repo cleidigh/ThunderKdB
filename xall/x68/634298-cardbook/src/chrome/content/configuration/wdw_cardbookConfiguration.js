@@ -434,17 +434,21 @@ var wdw_cardbookConfiguration = {
 	loadAdrFormula: function () {
 		var adrFormula = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.adrFormula");
 		document.getElementById('adrFormulaTextBox').value = adrFormula.replace(/\n/g, "\\n").trim();
-		var myLabel = [];
-		myLabel.push("{{1}} : " + cardbookRepository.extension.localeData.localizeMessage("postOfficeLabel"));
-		myLabel.push("{{2}} : " + cardbookRepository.extension.localeData.localizeMessage("extendedAddrLabel"));
-		myLabel.push("{{3}} : " + cardbookRepository.extension.localeData.localizeMessage("streetLabel"));
-		myLabel.push("{{4}} : " + cardbookRepository.extension.localeData.localizeMessage("localityLabel"));
-		document.getElementById('adrFormula7').value = myLabel.join("    ");
-		myLabel = [];
-		myLabel.push("{{5}} : " + cardbookRepository.extension.localeData.localizeMessage("regionLabel"));
-		myLabel.push("{{6}} : " + cardbookRepository.extension.localeData.localizeMessage("postalCodeLabel"));
-		myLabel.push("{{7}} : " + cardbookRepository.extension.localeData.localizeMessage("countryLabel"));
-		document.getElementById('adrFormula8').value = myLabel.join("    ");
+		document.getElementById('formulaMemberLabel1').value = "{{1}} : " + cardbookRepository.extension.localeData.localizeMessage("postOfficeLabel");
+		document.getElementById('formulaMemberLabel2').value = "{{2}} : " + cardbookRepository.extension.localeData.localizeMessage("extendedAddrLabel");
+		document.getElementById('formulaMemberLabel3').value = "{{3}} : " + cardbookRepository.extension.localeData.localizeMessage("streetLabel");
+		document.getElementById('formulaMemberLabel4').value = "{{4}} : " + cardbookRepository.extension.localeData.localizeMessage("localityLabel");
+		document.getElementById('formulaMemberLabel5').value = "{{5}} : " + cardbookRepository.extension.localeData.localizeMessage("regionLabel");
+		document.getElementById('formulaMemberLabel6').value = "{{6}} : " + cardbookRepository.extension.localeData.localizeMessage("postalCodeLabel");
+		document.getElementById('formulaMemberLabel7').value = "{{7}} : " + cardbookRepository.extension.localeData.localizeMessage("countryLabel");
+		document.getElementById('formulaSampleTextBox1').value = cardbookRepository.extension.localeData.localizeMessage("postOfficeLabel");
+		document.getElementById('formulaSampleTextBox2').value = cardbookRepository.extension.localeData.localizeMessage("extendedAddrLabel");
+		document.getElementById('formulaSampleTextBox3').value = cardbookRepository.extension.localeData.localizeMessage("streetLabel");
+		document.getElementById('formulaSampleTextBox4').value = cardbookRepository.extension.localeData.localizeMessage("localityLabel");
+		document.getElementById('formulaSampleTextBox5').value = cardbookRepository.extension.localeData.localizeMessage("regionLabel");
+		document.getElementById('formulaSampleTextBox6').value = cardbookRepository.extension.localeData.localizeMessage("postalCodeLabel");
+		document.getElementById('formulaSampleTextBox7').value = cardbookRepository.extension.localeData.localizeMessage("countryLabel");
+		wdw_cardbookConfiguration.changeAdrPreview();
 	},
 
 	resetAdrFormula: function () {
@@ -452,7 +456,20 @@ var wdw_cardbookConfiguration = {
 		wdw_cardbookConfiguration.preferenceChanged('adrFormula');
 	},
 
+	changeAdrPreview: function () {
+		let addressFormula = document.getElementById('adrFormulaTextBox').value.replace(/\\n/g, "\n").trim();
+		let address = [ document.getElementById('formulaSampleTextBox1').value,
+						document.getElementById('formulaSampleTextBox2').value,
+						document.getElementById('formulaSampleTextBox3').value,
+						document.getElementById('formulaSampleTextBox4').value,
+						document.getElementById('formulaSampleTextBox5').value,
+						document.getElementById('formulaSampleTextBox6').value,
+						document.getElementById('formulaSampleTextBox7').value ]
+		document.getElementById('adrPreviewTextBox').value = cardbookRepository.cardbookUtils.formatAddress(address, addressFormula);
+	},
+
 	validateAdrFormula: function () {
+		wdw_cardbookConfiguration.changeAdrPreview();
 		if (document.getElementById('adrFormulaTextBox').value == "") {
 			wdw_cardbookConfiguration.resetAdrFormula();
 		}

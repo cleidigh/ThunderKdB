@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 17777,
+    "average_daily_users": 22755,
     "categories": {
         "seamonkey": [
             "bookmarks",
@@ -30,43 +30,43 @@
     "contributions_url": "",
     "created": "2006-08-27T04:57:18Z",
     "current_version": {
-        "id": 2474772,
+        "id": 2474979,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
-                "min": "78.0"
+                "max": "69.0",
+                "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2474772",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2474979",
         "files": [
             {
-                "id": 1017934,
-                "created": "2020-11-17T14:23:23Z",
-                "hash": "sha256:2c5800ef7e12ae4ae8ee93ef5ba46de4b822e91dd4d847c08802583bde64cc68",
-                "is_restart_required": false,
+                "id": 1018141,
+                "created": "2020-12-10T00:03:16Z",
+                "hash": "sha256:0a49870900d27510b1084b8b80118714f261de0bd64c6049675be48857caa1b4",
+                "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1061083,
+                "size": 984644,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017934/quickfolders_tabbed_folders-5.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018141/quickfolders_tabbed_folders-4.18.2-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 5006,
             "name": {
                 "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/5.0"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.18.2"
         },
         "release_notes": {
-            "en-US": "<ul><li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the nexty 12 months forward - please support this with a license or donation:</li><li>You can <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page\">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li><li>If you are not ready for a license you can also <a rel=\"nofollow\" href=\"https://quickfolders.org/donate.html#donate\">donate from here</a></li></ul>\n<b>Changes / Items worked</b>\n<ul><li>Removed backwards compatible (shim) code and all code implementing cross-compatibiliy for SeaMonkey and Postbox. The code base had to be forked into a new branch, so if I backport bugfixes this will double my work for the legacy Thunderbird users.</li><li>[issue 35] \"Skip Unread Folder\" hides \"Add star\" function... the Shortcut for skipping unread folders works even without pressing the Shift key</li><li>New icon layout base on the new <a rel=\"nofollow\" href=\"https://style.thunderbird.net/\">Photon Design System</a> for Thunderbird. The fantastic new Icon conversion was kindly done by Richard Paenglab</li><li> Removed nsIRDFService dependencies</li><li> rewrote preference bindings in all dialogs</li><li> rewrote search algorithm for missing mails in reading list - clicking on a missing mail there brings up a search dialog. Unfortunately this was not populated with meaningful search conditions </li><li> Klaus Buecher (@Opto) did the initial conversion of all XUL interface and fixed some bugs. John Bieling (from the Thunderbird team) helped with the WindowLoader implementation and fixing the broken preferences. Many thanks to both of themn for their fantastic work!</li></ul>\n<b>Known issues</b>\n<ul><li>Any dragover styling (special color, dropmarkers when moving tabs around) is currently broken - this is caused by an experimental style selector which has been now removed by Mozilla due to little take-up of the HTML community. We will need to recode these parts using JavaScript.</li></ul>"
+            "en-US": "This release backports some of the fixes that were also done in the new version for Thunderbird 78. If you want to get the latest features, it is recommended to update Thunderbird to the current 78 release version.\n\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/80\">[issue 80]</a> Recent Folders list not updated when moving email using drag and drop to the folder tree.  I have made the updating of this folder time stamp somewhat more aggressive, but avoiding to add folders like Inbox, Sent, Archives, Drafts, Junk, Trash and Templates because they would always end up on top.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/35\">[issue 35]</a> \"Skip Unread Folder\" hides \"Add star\" function... \n\nthe Shortcut for skipping unread folders works even without pressing the Shift key</li><li> Reading list: jumping to a missing mail brings up a search dialog. The conditions were not automatically filled - this version fixes that \nin Thunderbird 68.12.  I am not sure from which version forward this stopped working.</li><li> In the dialog \"change order of tabs\" the up and down labels on the buttons are not rendered for some reason - this is now worked around by removing the button styling from these elements</li><li> improve dropmarker behavior when dragging tabs over multiple rows </li><li> Thunderbird 78: QuickFolders is now also compatible with the new Thunderbird ESR</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/5.0",
-        "version": "5.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.18.2",
+        "version": "4.18.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -94,7 +94,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-19T18:50:00Z",
+    "last_updated": "2020-12-10T07:35:38Z",
     "name": {
         "en-US": "QuickFolders (Tabbed Folders)",
         "de": "QuickFolders (Ordner Tabs)",
@@ -510,10 +510,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.91406,
-        "count": 157,
-        "average": 4.9236,
-        "text_count": 157
+        "bayesian_average": 4.91461,
+        "count": 158,
+        "average": 4.9241,
+        "text_count": 158
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/reviews/",
     "requires_payment": false,
@@ -560,11 +560,10 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
+            "comp68": true,
             "comp69plus": true,
-            "comp78plus": true,
-            "comp61plus": true,
-            "comp60pv": true,
-            "comp60pv_date": "2018-03-13T16:48:50Z"
+            "comp60": true,
+            "comp61plus": true
         }
     }
 }

@@ -1,4 +1,4 @@
-const MPE_ADDON_VERSION = "3.0.11";
+const MPE_ADDON_VERSION = "3.0.12";
 
 Components.utils.import("resource://gre/modules/FileUtils.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
@@ -786,7 +786,13 @@ function GetAddressBook(abook)
 	var abName;
 	var abID;
 	var SubDirs;
+	var oldFilename = null;
+	
+	if (abook.startsWith("moz-abmdbdirectory://") && abook.endsWith(".mab")){
+		oldFilename = abook.substring(21, abook.length - 4);
+	}
 
+	console.log("abook=" + abook + " oldFilename=" + oldFilename);
 	let directories = MailServices.ab.directories;
 	for (let directory of directories){
 	  if (directory instanceof Components.interfaces.nsIAbDirectory) {
@@ -803,8 +809,11 @@ function GetAddressBook(abook)
 				}
 			}
 			
-			if (abook == "moz-abmdbdirectory://abook.mab" && abName == "jsaddrbook://abook.sqlite"){
-				return directory;
+			//Workaround damit z.B. bei moz-abmdbdirectory://abook.mab auch jsaddrbook://abook.sqlite
+			if (oldFilename != null){
+				if (abName == "jsaddrbook://" + oldFilename + ".sqlite"){
+					return directory;
+				}
 			}
 		}
 	  }

@@ -45,10 +45,12 @@ function downloadDone() {
 //TODO  refreshAddressbook();
 
 //TODO: eigentlich nur, wenn ok
-	let od=getOptionsDoc();
-	if (od) {
-		let dmn=od.getElementById("DownloadMabName");
-		if (dmn) dmn.value='';
+	if (gSingleBook) {
+		let od=getOptionsDoc();
+		if (od) {
+			let dmn=od.getElementById("DownloadMabName");
+			if (dmn) dmn.value='';
+		}
 	}
 
 /*TODO
@@ -163,7 +165,7 @@ function getLocalData() {
       mabName = book;
       externalFilename = mabName+".sqlite";
       newSinglebook=true;
-debug('new single book filename='+externalFilename+'\n');
+debug('new single book filename='+externalFilename);
 		} else {
 			dir=book.QueryInterface(Ci.nsIAbDirectory);
       mabName=dir.dirName;
@@ -184,7 +186,7 @@ debug('askOverwrite(2)');
     file.initWithFile(path);
     file.appendRelativePath(externalFilename);
     if (!file.exists()) {
-debug('File existiert nicht: '+file.path+'\n');
+debug('File existiert nicht: '+file.path);
 			statustxt(strings['nofile'], 2, true, null, file.path);
       continue;
     }
@@ -192,7 +194,7 @@ debug('File existiert nicht: '+file.path+'\n');
     let lms='';
     if (!newSinglebook) {
  			let localMabFile = FileUtils.getFile("ProfD", [mabFilename]);
-debug('local: modifytime mab: '+localMabFile.lastModifiedTime+' file: '+file.lastModifiedTime+'\n');
+debug('local: modifytime mab: '+localMabFile.lastModifiedTime+' file: '+file.lastModifiedTime);
       let lmfd=timeString(localMabFile.lastModifiedTime);
       let lfd=timeString(file.lastModifiedTime);
       lms='lastMod mab:'+lmfd+' file:'+lfd;

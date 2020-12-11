@@ -1,5 +1,113 @@
 [
     {
+        "id": 2474936,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2474936",
+        "files": [
+            {
+                "id": 1018098,
+                "created": "2020-12-04T19:36:34Z",
+                "hash": "sha256:1072c0ce96ea3254cd691b7b39448e47b14aa166df334abd2b89ac191d5b0bb3",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 566773,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018098/send_later-8.5.4-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead",
+                    "accountsFolders",
+                    "menus",
+                    "menus.overrideContext",
+                    "activeTab",
+                    "messagesMove",
+                    "messagesRead",
+                    "compose",
+                    "notifications"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Fixes bug with locating the draft folder message enumerator for local drafts folder."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.5.4",
+        "version": "8.5.4"
+    },
+    {
+        "id": 2474909,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2474909",
+        "files": [
+            {
+                "id": 1018071,
+                "created": "2020-12-02T15:58:48Z",
+                "hash": "sha256:bb9f2e6c1fcf8d109da97ae72b7915398f371fc4925c3c72fb5a3a439ed05759",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 566745,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018071/send_later-8.5.3-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead",
+                    "accountsFolders",
+                    "menus",
+                    "menus.overrideContext",
+                    "activeTab",
+                    "messagesMove",
+                    "messagesRead",
+                    "compose",
+                    "notifications"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Changes since 8.4.5:\n\nFeatures:\n\n* Status bar menu/indicator is back\n* Access key shortcuts are available within the message composition window and the popup dialog\n    * In the composition window, Ctrl+Alt+1/Ctrl+Alt+2/Ctrl+Alt+3 execute the user-defined shortcuts (15 min/30 min/ 2 hour delay by default)\n    * In the popup dialog Ctrl+1/Ctrl+2/Ctrl+3 also execute the shortcuts, Ctrl+Enter activates the \"Send at ...\" button, the \"Send Now\" and \"Place in Outbox\" buttons are connected to the same access keys as they were in the 7.x branch, with underlined characters in the button text to indicate what those keys are, and the shortcut keys can be manually bound to whatever arbitrary access key you'd like by placing an &amp; character in the shortcut label immediately preceding the character of your choice.\n        - e.g. creating a shortcut called Next &amp;Work Day would be rendered in the shortcut button as Next Work Day (W should be underlined, but github won't do that), and could be activated with Alt+Shift+W on Windows and Linux, or Ctrl+Option+W on Mac.\n* Automatically re-save drafts when they are opened for editing, effectively \"un-scheduling\" them.\n* Send rate throttling is possible, via an advanced configuration setting\n* Indicate in drafts folder column when a draft is invalid due to pgp encryption, or is not scheduled by this specific instance of Thunderbird.\n\nBug fixes and performance enhancements:\n\n* Fetch messages from the server only as absolutely necessary.\n* More judicious console log handling\n* Date/time locales are fixed for users whose default locale was different than their UI locale\n* Ensure overlay scripts are injected in the correct order every time\n* Fix the state lock for messages during 'place in outbox' operation (to avoid infinite spell check loop)\n* Minor fixups and improvements to the options page interface\n* Fix cases where an account has no dedicated \"drafts\" folder, by also checking the \"templates\" folder for scheduled drafts."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.5.3",
+        "version": "8.5.3"
+    },
+    {
         "id": 2474847,
         "channel": "listed",
         "compatibility": {
@@ -2164,99 +2272,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.3.1",
         "version": "6.3.1"
-    },
-    {
-        "id": 2163120,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.54",
-                "min": "2.17"
-            },
-            "thunderbird": {
-                "max": "57.0",
-                "min": "38.0a1"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2163120",
-        "files": [
-            {
-                "id": 706331,
-                "created": "2017-08-21T01:25:50Z",
-                "hash": "sha256:0f561b85974486a95c558ae70a491a3120fbbadb147cdeaed454d419c35a285d",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 353463,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/706331/send_later-6.3-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "en-US": "<strong>COMPATIBILITY: Postbox is no longer supported</strong>\n\nUnfortunately, Postbox does not support the newer JavaScript constructs I've had to start using to maintain compatibility with upcoming Thunderbird and SeaMonkey releases. Therefore, I can't continue to support Postbox in new Send Later releases until the maintainers of Postbox upgrade their JavaScript interpreter. In the meantime, Postbox users can continue to use <a rel=\"nofollow\" href=\"https://addons.mozilla.org/thunderbird/addon/send-later-3/versions/6.2.1\">version 6.2.1 of Send Later</a>, the final release which is compatible with Postbox.\n\n<strong>BUGFIX: Embedded images corrupted when editing scheduled drafts</strong>\n\nA recently introduced <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ee1330fc0cf390068a3b2a34cc178b804f3706061579c34eb25f261d09a4967a/https%3A//bugzilla.mozilla.org/show_bug.cgi%3Fid=1389242\">Thunderbird bug</a> was causing embedded images to become corrupted when the user opened a previously scheduled draft with embedded images to edit it. The real fix for this bug will require changes in Thunderbird, but in the meantime, I've implemented <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/2d892e740a3687b59d3ae8bac998080e84c604920273728663e3c091877fb8d0/https%3A//github.com/jikamens/send-later/commit/95010466da7f389419631e69894ea85d8a6c07fb\">a workaround</a>.\n\n<strong>BUGFIX: AM/PM in 12-hour timepicker flips to AM when it shouldn't</strong>\n\nIf the time-picker widget in the Send Later prompt window was in 12-hour mode, and it was displaying a PM time, and you entered a new hour in the hour part of the widget and hit tab, the \"PM\" would switch to \"AM\". It shouldn't have been doing that. It should be fixed now.\n\n<strong>BUGFIX: \"Cancel recurrence on reply\" getting set incorrectly sometimes</strong>\n\nThe \"Cancel recurrence on reply\" option was being set incorrectly sometimes, definitely when using a preset button in the toolbar configured to call a user-defined function, and possibly in other contexts as well. This has been fixed.\n\n<strong>ENHANCEMENT: Display release notes in SeaMonkey</strong>\n\nThe add-on will now display the Send Later release notes in SeaMonkey when they documented significant changes. Previously, this only worked in Thunderbird.\n\n<strong>COMPATIBILITY: Some old Thunderbird and SeaMonkey releases are no longer supported</strong>\n\nSeveral old, obsolete JavaScript constructs and interfaces used by Send Later are being desupported in impending Thunderbird and SeaMonkey releases. I've therefore had to update Send Later's code to use newer, supported constructs and interfaces. These are not compatible with Thunderbird releases prior to 20 or SeaMonkey releases prior to 2.17, so those older releases can no longer be supported."
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.3",
-        "version": "6.3"
-    },
-    {
-        "id": 2128572,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.54",
-                "min": "2.9"
-            },
-            "thunderbird": {
-                "max": "57.0",
-                "min": "8.0a1"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2128572",
-        "files": [
-            {
-                "id": 674301,
-                "created": "2017-06-29T14:49:29Z",
-                "hash": "sha256:2fa1fe35143d92aff3a03ed70e97ede467b36f458ce3f8ca9ec79c01246ef476",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 343832,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/674301/send_later-6.2.1-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "en-US": "Add a new preference controlling whether scheduled drafts are marked as read in the drafts folder or remain marked unread. This preference is enabled by default, i.e., drafts are marked read by default, because I believe this is the behavior the majority of users want.\n\nUpdate translations, including the start of a new (not yet complete) Czech translation."
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.2.1",
-        "version": "6.2.1"
     }
 ]

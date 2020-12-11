@@ -29,7 +29,7 @@ FiltaQuilla.Util = {
   mAppver: null,
 	mExtensionVer: null,
   VersionProxyRunning: false,
-	HARDCODED_CURRENTVERSION : "2.0", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "2.1.1", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "filtaquilla@mesquilla.com",
 	_prefs: null,
@@ -146,6 +146,7 @@ FiltaQuilla.Util = {
 
 	findMailTab: function findMailTab(tabmail, URL) {
 		const util = FiltaQuilla.Util;
+    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 		// mail: tabmail.tabInfo[n].browser
 		let baseURL = util.getBaseURI(URL),
 				numTabs = util.getTabInfoLength(tabmail);
@@ -156,7 +157,15 @@ FiltaQuilla.Util = {
 				let tabUri = util.getBaseURI(info.browser.currentURI.spec);
 				if (tabUri == baseURL) {
 					tabmail.switchToTab(i);
-					info.browser.loadURI(URL);
+          try {
+            let params = {
+              triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal()
+            }
+            info.browser.loadURI(URL, params);
+          }
+          catch(ex) {
+            util.logException(ex);
+          }
 					return true;
 				}
 			}
@@ -639,7 +648,6 @@ FiltaQuilla.Util = {
 
           }
           
-          util.loadPlatformStylesheet(window);
         }
         util.logDebugOptional ("firstrun","finally { } ends.");
       } // end finally      

@@ -24,7 +24,12 @@
               class="tab-button"
               panelid="tabsToolbarsPanel"
               role="tab"
-              data-localekey="tabLabelTabsToolbars"></button>
+              data-localekey="tabLabelTabsToolbars"></button
+     ><button id="tabButtonZoom"
+              class="tab-button"
+              panelid="tabsZoomPanel"
+              role="tab"
+              data-localekey="tabLabelZoom"></button>
     </div>
     <br/>
 
@@ -36,7 +41,7 @@
       <label for="tabsLoadInBackground"
              data-localekey="tabsLoadInBackground"></label>
       <div></div>
-      <label class="small-detail"
+      <label class="small-detail indent"
              data-localekey="tabsLoadInBackgroundExtra"></label>
       <hr>
 
@@ -45,7 +50,7 @@
       <label for="linkClickLoadsInTab"
              data-localekey="linkClickLoadsInTab"></label>
       <div></div>
-      <label class="small-detail"
+      <label class="small-detail indent"
              data-localekey="linkClickLoadsInTabExtra"></label>
       <div></div>
 
@@ -56,7 +61,7 @@
         <label for="linkClickLoadsInBackgroundTab"
                data-localekey="linkClickLoadsInBackgroundTab"></label>
         <div></div>
-        <label class="small-detail"
+        <label class="small-detail indent"
                data-localekey="linkClickLoadsInBackgroundTabExtra"></label>
       </fieldset>
 
@@ -65,7 +70,7 @@
       <label for="forceLinkClickLoadsInCurrentTab"
              data-localekey="forceLinkClickLoadsInCurrentTab"></label>
       <div></div>
-      <label class="small-detail"
+      <label class="small-detail indent"
              data-localekey="forceLinkClickLoadsInCurrentTabExtra"></label>
       <hr>
 
@@ -86,7 +91,7 @@
       <label for="useFirefoxCompatUserAgent"
              data-localekey="useFirefoxCompatUserAgent"></label>
       <div></div>
-      <label class="small-detail"
+      <label class="small-detail indent"
              data-localekey="useFirefoxCompatUserAgentExtra"></label>
       <hr>
 
@@ -157,6 +162,69 @@
                  data-localekey="showUrlToolbarAllTabs"></label>
         </form>
       </div>
+    </div>
+
+    <div id="tabsZoomPanel"
+         class="browser-style panel"
+         hidden="true">
+
+      <input id="customZoomEnabled"
+             type="checkbox"></input>
+      <label for="customZoomEnabled"
+             data-localekey="customZoomEnabled"></label>
+      <div></div>
+      <label class="small-detail"
+             data-localekey="customZoomExtra"></label>
+
+      <fieldset id="customZoomFieldset"
+                class="browser-style">
+        <hr>
+        <label for="zoomIncrement"
+               data-localekey="zoomIncrement"></label>
+        <input id="zoomIncrement"
+               type="number"
+               min="1"
+               max="20"
+               step="1"</input>
+        <label for="zoomIncrement"
+               data-localekey="zoomPercent"></label>
+        <div></div>
+        <label class="small-detail"
+               data-localekey="zoomIncrementExtra"></label>
+        <hr>
+
+        <label for="chromeZoomFactor"
+               data-localekey="chromeZoomFactor"></label>
+        <input id="chromeZoomFactor"
+               type="number"
+               min="30"
+               max="300"
+               step="1"</input>
+        <label for="chromeZoomFactor"
+               data-localekey="zoomPercent"></label>
+        <div></div>
+        <label class="small-detail"
+               data-localekey="chromeZoomFactorExtra"></label>
+        <hr>
+
+        <input id="globalZoomEnabled"
+               type="checkbox"></input>
+        <label for="globalZoomEnabled"
+               data-localekey="globalZoomEnabled"></label>
+        <div></div>
+        <label class="small-detail"
+               data-localekey="globalZoomEnabledExtra"></label>
+        <hr>
+
+        <input id="imageZoomEnabled"
+               type="checkbox"></input>
+        <label for="imageZoomEnabled"
+               data-localekey="imageZoomEnabled"></label>
+        <div></div>
+        <label class="small-detail"
+               data-localekey="imageZoomEnabledExtra"></label>
+      </fieldset>
+
     </div>
 
     <hr>

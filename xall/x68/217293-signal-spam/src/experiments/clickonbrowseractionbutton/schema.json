@@ -1,0 +1,27 @@
+[
+  {
+    "namespace": "clickonbrowseractionbutton",
+    "functions": [
+      {
+        "name": "click",
+        "type": "function",
+        "description": "Generate a click event on browserAction button. WORKAROUND for bug https://bugzilla.mozilla.org/show_bug.cgi?id=1681131",
+        "async": true,
+        "parameters": [
+          {
+            "name": "buttonId",
+            "type": "string",
+            "description": "The extension id",
+            "optional": false
+          },
+          {
+            "name": "windowId",
+            "type": "string",
+            "description": "The window id",
+            "optional": true
+          }
+        ]
+      }
+    ]
+  }
+]

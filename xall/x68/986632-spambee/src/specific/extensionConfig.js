@@ -2,11 +2,11 @@ var extensionConfig = {
 	"appInfo": {
 		"staging": false,
 		"environment": "thunderbird extension",
-		"version": "3.0.5",
+		"version": "3.0.6",
 		"updateManifestURL": {
 			"display": true,
-			"fr": "https://services.verifrom.com/spambee/extension/dist/thunderbird/update_manifests/thunderbird.3.0.5.fr.html",
-			"en": "https://services.verifrom.com/spambee/extension/dist/thunderbird/update_manifests/thunderbird.3.0.5.en.html",
+			"fr": "https://services.verifrom.com/spambee/extension/dist/thunderbird/update_manifests/thunderbird.3.0.6.fr.html",
+			"en": "https://services.verifrom.com/spambee/extension/dist/thunderbird/update_manifests/thunderbird.3.0.6.en.html",
 			"de": "https://services.verifrom.com/spambee/extension/dist/thunderbird/update_manifests/thunderbird.${version}.de.html",
 			"lu": "https://services.verifrom.com/spambee/extension/dist/thunderbird/update_manifests/thunderbird.${version}.de.html",
 			"lb": "https://services.verifrom.com/spambee/extension/dist/thunderbird/update_manifests/thunderbird.${version}.de.html"
@@ -42,11 +42,11 @@ var extensionConfig = {
 		"phishingAlertIcon": "/logo/icon32.png",
 		"quantum": true,
 		"safari": false,
-		"manifestVersion": "3.0.5"
+		"manifestVersion": "3.0.6"
 	},
 	"jsonConfig": {
 		"localFileName": "config/config.json",
-		"url": "https://services.verifrom.com/spambee/extension/params/thunderbird/prod/thunderbird-3.0.5.json",
-		"staging": "https://services.verifrom.com/spambee/extension/params/thunderbird/preprod/thunderbird-3.0.5.json"
+		"url": "https://services.verifrom.com/spambee/extension/params/thunderbird/prod/thunderbird-3.0.6.json",
+		"staging": "https://services.verifrom.com/spambee/extension/params/thunderbird/preprod/thunderbird-3.0.6.json"
 	}
 };

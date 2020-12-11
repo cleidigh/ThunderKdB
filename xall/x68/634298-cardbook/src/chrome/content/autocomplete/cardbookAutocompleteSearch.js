@@ -707,7 +707,7 @@ cardbookAutocompleteSearch.prototype = {
 			return;
 		}
 
-		if (aResult == Components.interfaces.nsIAbDirectoryQueryResultListener.queryResultError) {
+		if (aResult == Components.interfaces.nsIAutoCompleteResult.queryResultError) {
 			this.searchResult.searchResult = ACR.RESULT_FAILURE;
 			this.searchResult.defaultIndex = 0;
 		}
@@ -717,7 +717,7 @@ cardbookAutocompleteSearch.prototype = {
 			this.searchResult.searchResult = ACR.RESULT_SUCCESS;
 			this.searchResult.defaultIndex = 0;
 		} else {
-			if (aResult == Components.interfaces.nsIAbDirectoryQueryResultListener.queryResultComplete) {
+			if (aResult == Components.interfaces.nsIAutoCompleteResult.queryResultComplete) {
 				// LDAP completed but there were no matches (neither from LDAP nor from other address books)
 				this.searchResult.searchResult = ACR.RESULT_NOMATCH;
 			}

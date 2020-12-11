@@ -8,15 +8,20 @@
 <link rel="manifest" href="/manifest.json"/>
 <style>
     body {
-        background-color:darkgrey;
+        background-color:Gray;
+    }
+    #boxOne {
+        border: 4px solid red;
+    }
+    #boxTwo {
+        border: 4px solid yellow;
     }
     #formOne {
         background-color:white;
         color:black;
-        font-weight: bold;
         width: 300px;
         text-align: center;
-        font: 15px sans-serif;
+        font: 13px bold sans-serif;
         padding: 10px; 
         top: 0;
         left: 0;
@@ -24,14 +29,20 @@
     }
     #formOne:active {
         background-color:DodgerBlue;
+        color: white;
+        font: 13px bold sans-serif;
+    }
+    #formOne:hover {
+        background-color:DodgerBlue;
+        color: white;
+        font: 13px bold sans-serif;
 }
     #formTwo {
         background-color:black;
         color:white;
-        font-weight: bold;
         width: 300px;
         text-align: center;
-        font: 15px sans-serif;
+        font: 13px bold sans-serif;
         padding: 10px; 
         top: 0;
         left: 0;
@@ -39,12 +50,111 @@
     }
     #formTwo:active {
         background-color:FireBrick;
+        color: white;
+        font: 13px bold sans-serif;
+    }
+    #formTwo:hover {
+        background-color:FireBrick;
+        color: white;
+        font: 13px bold sans-serif;
+}
+    #formThree {
+        background-color:LightBlue;
+        color:black;
+        width: 300px;
+        text-align: center;
+        font: 13px bold sans-serif;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formThree:active {
+        background-color:navy;
+        color: white;
+        font: 13px bold sans-serif;
+    }
+    #formThree:hover {
+        background-color:navy;
+        color: white;
+        font: 13px bold sans-serif;
+}
+    #formFour {
+        background-color:LightGreen;
+        color:black;
+        width: 300px;
+        text-align: center;
+        font: 13px bold sans-serif;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formFour:active {
+        background-color:Green;
+        color: white;
+        font: 13px bold sans-serif;
+    }
+    #formFour:hover {
+        background-color:Green;
+        color: white;
+        font: 13px bold sans-serif;
+}
+    #formFive {
+        background-color:Gold;
+        color:black;
+        width: 300px;
+        text-align: center;
+        font: 13px bold sans-serif;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formFive:active {
+        background-color:Orange;
+        color: white;
+        font: 13px bold sans-serif;
+    }
+    #formFive:hover {
+        background-color:Orange;
+        color: white;
+        font: 13px bold sans-serif;
+}
+    #formSix {
+        background-color:pink;
+        color:black;
+        width: 300px;
+        text-align: center;
+        font: 13px bold sans-serif;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #formSix:active {
+        background-color:red;
+        color: white;
+        font: 13px bold sans-serif;
+    }
+    #formSix:hover {
+        background-color:red;
+        color: white;
+        font: 13px bold sans-serif;
 }
 </style>
 </head>
 <body>
-<form id="formOne">White Theme</form>
-<form id="formTwo">Black Theme</form>
+<div id="boxOne">
+<form id="formOne">FrameWhite</form>
+<form id="formTwo">FrameBlack</form>
+</div>
+<div id="boxTwo">
+<form id="formThree">LightBlue</form>
+<form id="formFour">LightGreen</form>
+<form id="formFive">LightYellow</form>
+<form id="formSix">LightRed</form>
+</div>
 <script language="javascript" src="code.js"></script>
 </body>
 </html>

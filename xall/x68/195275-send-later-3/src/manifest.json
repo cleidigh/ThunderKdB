@@ -5,7 +5,7 @@
 
   "description": "__MSG_extensionDescription__",
 
-  "version": "8.4.5",
+  "version": "8.5.4",
 
   "homepage_url": "https://github.com/Extended-Thunder/send-later/",
 
@@ -50,7 +50,8 @@
     "utils/static.js",
     "utils/defaultPrefs.json",
     "experiments/sl3u.js",
-    "experiments/headerView.js"
+    "experiments/headerView.js",
+    "experiments/statusBar.js"
   ],
 
   "options_ui": {
@@ -65,6 +66,21 @@
     "default_icon": "ui/icons/icon.png",
     "default_popup": "ui/popup.html",
     "default_title": "__MSG_extensionName__"
+  },
+
+  "commands": {
+    "send-later-shortcut-1": {
+      "suggested_key": { "default": "Ctrl+Alt+1" },
+      "description": "Execute Send Later's shortcut 1"
+    },
+    "send-later-shortcut-2": {
+      "suggested_key": { "default": "Ctrl+Alt+2" },
+      "description": "Execute Send Later's shortcut 2"
+    },
+    "send-later-shortcut-3": {
+      "suggested_key": { "default": "Ctrl+Alt+3" },
+      "description": "Execute Send Later's shortcut 3"
+    }
   },
 
   "message_display_action": {

@@ -1,5 +1,224 @@
 [
     {
+        "id": 2474956,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474956",
+        "files": [
+            {
+                "id": 1018118,
+                "created": "2020-12-07T15:07:39Z",
+                "hash": "sha256:fa93481d8d283eb607f7d6baba49594cbc908856fd5f391e251ff5b0e91e0667",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 268412,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018118/thirdstats-1.0.2-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "tabs",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.2 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects.",
+            "en-US": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.2 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects.",
+            "en-CA": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.2 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.0.2",
+        "version": "1.0.2"
+    },
+    {
+        "id": 2474955,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474955",
+        "files": [
+            {
+                "id": 1018117,
+                "created": "2020-12-07T14:58:43Z",
+                "hash": "sha256:8112391b38b03acd346ffcc98f20ba74e4d1165f69fa32ce95e9812dfcfa11df",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 268664,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018117/thirdstats-1.0.1-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "tabs",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.1 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects.",
+            "en-US": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.1 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects.",
+            "en-CA": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.1 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.0.1",
+        "version": "1.0.1"
+    },
+    {
+        "id": 2474924,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474924",
+        "files": [
+            {
+                "id": 1018086,
+                "created": "2020-12-04T08:16:27Z",
+                "hash": "sha256:858acf1c894f1d0d3ea1dfa60626c70178a0de13436c50b7b600089164c7c61b",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 267450,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018086/thirdstats-1.0.0-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "tabs",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects.",
+            "en-US": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects.",
+            "en-CA": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.0.0",
+        "version": "1.0.0"
+    },
+    {
         "id": 2474793,
         "channel": "listed",
         "compatibility": {

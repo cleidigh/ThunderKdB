@@ -51,29 +51,63 @@ function loadFnFormula () {
 	} else {
 		var allOrg = [];
 	}
-	var myLabel = [];
-	myLabel.push("{{1}} : " + cardbookRepository.extension.localeData.localizeMessage("prefixnameLabel"));
-	myLabel.push("{{2}} : " + cardbookRepository.extension.localeData.localizeMessage("firstnameLabel"));
-	myLabel.push("{{3}} : " + cardbookRepository.extension.localeData.localizeMessage("othernameLabel"));
-	myLabel.push("{{4}} : " + cardbookRepository.extension.localeData.localizeMessage("lastnameLabel"));
-	myLabel.push("{{5}} : " + cardbookRepository.extension.localeData.localizeMessage("suffixnameLabel"));
-	myLabel.push("{{6}} : " + cardbookRepository.extension.localeData.localizeMessage("nicknameLabel"));
-	document.getElementById('fnFormula7').value = myLabel.join("    ");
-	myLabel = [];
-	var count = 7;
-	if (allOrg.length === 0) {
-		myLabel.push("{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("orgLabel"));
+	document.getElementById('formulaMemberLabel1').value = "{{1}} : " + cardbookRepository.extension.localeData.localizeMessage("prefixnameLabel");
+	document.getElementById('formulaMemberLabel2').value = "{{2}} : " + cardbookRepository.extension.localeData.localizeMessage("firstnameLabel");
+	document.getElementById('formulaMemberLabel3').value = "{{3}} : " + cardbookRepository.extension.localeData.localizeMessage("othernameLabel");
+	document.getElementById('formulaMemberLabel4').value = "{{4}} : " + cardbookRepository.extension.localeData.localizeMessage("lastnameLabel");
+	document.getElementById('formulaMemberLabel5').value = "{{5}} : " + cardbookRepository.extension.localeData.localizeMessage("suffixnameLabel");
+	document.getElementById('formulaMemberLabel6').value = "{{6}} : " + cardbookRepository.extension.localeData.localizeMessage("nicknameLabel");
+	document.getElementById('formulaSampleTextBox1').value = cardbookRepository.extension.localeData.localizeMessage("prefixnameLabel");
+	document.getElementById('formulaSampleTextBox2').value = cardbookRepository.extension.localeData.localizeMessage("firstnameLabel");
+	document.getElementById('formulaSampleTextBox3').value = cardbookRepository.extension.localeData.localizeMessage("othernameLabel");
+	document.getElementById('formulaSampleTextBox4').value = cardbookRepository.extension.localeData.localizeMessage("lastnameLabel");
+	document.getElementById('formulaSampleTextBox5').value = cardbookRepository.extension.localeData.localizeMessage("suffixnameLabel");
+	document.getElementById('formulaSampleTextBox6').value = cardbookRepository.extension.localeData.localizeMessage("nicknameLabel");
+
+	let count = 6;
+	let rows = document.getElementById('formulaSampleRows');
+	if (allOrg.length == 0) {
 		count++;
+		let row = cardbookElementTools.addGridRow(rows, 'formulaSampleTextRow' + count, {align: 'center'});
+		let label = cardbookElementTools.addLabel(row, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("orgLabel"), null, {});
+		let textbox = cardbookElementTools.addTextbox(row, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("orgLabel"), {});
+		textbox.addEventListener("input", changeFnPreview);
+
 	} else {
 		for (let org of allOrg) {
-			myLabel.push("{{" + count + "}} : " + org);
 			count++;
+			let row = cardbookElementTools.addGridRow(rows, 'formulaSampleTextRow' + count, {align: 'center'});
+			let label = cardbookElementTools.addLabel(row, 'formulaMemberLabel' + count, "{{" + count + "}} : " + org, null, {});
+			let textbox = cardbookElementTools.addTextbox(row, 'formulaSampleTextBox' + count, org, {});
+			textbox.addEventListener("input", changeFnPreview);
 		}
 	}
-	myLabel.push("{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("titleLabel"));
 	count++;
-	myLabel.push("{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("roleLabel"));
-	document.getElementById('fnFormula8').value = myLabel.join("    ");
+	let rowTitle = cardbookElementTools.addGridRow(rows, 'formulaSampleTextRow' + count, {align: 'center'});
+	let labelTitle = cardbookElementTools.addLabel(rowTitle, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("titleLabel"), null, {});
+	let textboxTitle = cardbookElementTools.addTextbox(rowTitle, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("titleLabel"), {});
+	textboxTitle.addEventListener("input", changeFnPreview);
+	count++;
+	let rowRole = cardbookElementTools.addGridRow(rows, 'formulaSampleTextRow' + count, {align: 'center'});
+	let labelRole = cardbookElementTools.addLabel(rowRole, 'formulaMemberLabel' + count, "{{" + count + "}} : " + cardbookRepository.extension.localeData.localizeMessage("roleLabel"), null, {});
+	let textboxRole = cardbookElementTools.addTextbox(rowRole, 'formulaSampleTextBox' + count, cardbookRepository.extension.localeData.localizeMessage("roleLabel"), {});
+	textboxRole.addEventListener("input", changeFnPreview);
+	changeFnPreview();
+};
+
+function changeFnPreview () {
+	let fnFormula = document.getElementById('fnFormulaTextBox').value.replace(/\\n/g, "\n").trim();
+	let fn = [];
+	let i = 1;
+	while (true) {
+		if (document.getElementById('formulaSampleTextBox' + i)) {
+			fn.push(document.getElementById('formulaSampleTextBox' + i).value);
+			i++;
+		} else {
+			break;
+		}
+	}
+	document.getElementById('fnPreviewTextBox').value = cardbookRepository.cardbookUtils.getStringFromFormula(fnFormula, fn);
 };
 
 function populateApplyToAB () {
@@ -97,6 +131,7 @@ function applyApplyToAB (aEvent) {
 
 function resetFnFormula () {
 	document.getElementById('fnFormulaTextBox').value = cardbookRepository.defaultFnFormula;
+	changeFnPreview();
 };
 
 function showAutoSyncInterval () {

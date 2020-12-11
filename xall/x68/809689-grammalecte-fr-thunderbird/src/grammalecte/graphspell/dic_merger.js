@@ -38,7 +38,7 @@ const dic_merger = {
         }
         try {
             let oDAWG = new DAWG(lEntry, cStemming, sLangCode, sLangName, sDicName, sDescription, xProgressBar);
-            let oDict = oDAWG.createBinaryJSON(1);
+            let oDict = oDAWG.createBinaryJSON();
             return oDict;
         }
         catch (e) {

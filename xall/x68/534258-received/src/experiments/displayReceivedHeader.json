@@ -1,0 +1,55 @@
+[
+  {
+    "namespace": "displayReceivedHeader",
+    "functions": [
+      {
+        "name": "init",
+        "type": "function",
+        "parameters": []
+      },
+      {
+        "name": "setReceivedHeaderHidden",
+        "description": "Set hidden attribute to the Received header",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "tabId",
+            "type": "integer"
+          },
+          {
+            "name": "messageId",
+            "type": "integer"
+          },
+          {
+            "name": "hidden",
+            "description": "Hidden attribute value",
+            "type": "boolean"
+          }
+        ]
+      },
+      {
+        "name": "setReceivedHeaderValue",
+        "description": "Update the Received header value",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "tabId",
+            "type": "integer"
+          },
+          {
+            "name": "messageId",
+            "type": "integer"
+          },
+          {
+            "name": "headersArray",
+            "description": "Array of Received headers",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

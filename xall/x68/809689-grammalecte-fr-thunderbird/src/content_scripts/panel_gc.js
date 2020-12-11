@@ -6,6 +6,7 @@
 
 "use strict";
 
+
 function onGrammalecteGCPanelClick (xEvent) {
     try {
         let xElem = xEvent.target;
@@ -14,6 +15,8 @@ function onGrammalecteGCPanelClick (xEvent) {
                 oGrammalecte.oGCPanel.applySuggestion(xElem.id);
             } else if (xElem.id === "grammalecte_tooltip_ignore") {
                 oGrammalecte.oGCPanel.ignoreError(xElem.id);
+            } else if (xElem.id.startsWith("grammalecte_analysis")) {
+                oGrammalecte.oGCPanel.sendParagraphToLexicographer(parseInt(xElem.dataset.para_num, 10));
             } else if (xElem.id.startsWith("grammalecte_check")) {
                 oGrammalecte.oGCPanel.recheckParagraph(parseInt(xElem.dataset.para_num, 10));
             } else if (xElem.id.startsWith("grammalecte_hide")) {
@@ -66,6 +69,18 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
         // Lexicographer
         this.nLxgCount = 0;
         this.xLxgPanelContent = oGrammalecte.createNode("div", {id: "grammalecte_lxg_panel_content"});
+        this.xLxgInputBlock = oGrammalecte.createNode("div", {id: "grammalecte_lxg_input_block"});
+        this.xLxgInput = oGrammalecte.createNode("div", {id: "grammalecte_lxg_input", lang: "fr", contentEditable: "true"});
+        this.xLxgInputButton = oGrammalecte.createNode("div", {id: "grammalecte_lxg_input_button", textContent: "Analyse grammaticale"});
+        this.xLxgInputButton.addEventListener("click", () => { this.grammaticalAnalysis(); }, false);
+        this.xLxgInputButton2 = oGrammalecte.createNode("div", {id: "grammalecte_lxg_input_button", textContent: "Analyse lexicale"});
+        this.xLxgInputButton2.addEventListener("click", () => { this.getListOfTokens(); }, false);
+        this.xLxgInputBlock.appendChild(this.xLxgInput);
+        this.xLxgInputBlock.appendChild(this.xLxgInputButton);
+        this.xLxgInputBlock.appendChild(this.xLxgInputButton2);
+        this.xLxgPanelContent.appendChild(this.xLxgInputBlock);
+        this.xLxgResultZone = oGrammalecte.createNode("div", {id: "grammalecte_lxg_result_zone"});
+        this.xLxgPanelContent.appendChild(this.xLxgResultZone);
         this.xPanelContent.appendChild(this.xLxgPanelContent);
         // Conjugueur
         this.xConjPanelContent = oGrammalecte.createNode("div", {id: "grammalecte_conj_panel_content"});
@@ -114,10 +129,6 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
         this.xLxgButton.onclick = () => {
             if (!this.bWorking) {
                 this.showLexicographer();
-                this.clearLexicographer();
-                this.startWaitIcon();
-                oGrammalecteBackgroundPort.getListOfTokens(this.oTextControl.getText());
-                //oGrammalecteBackgroundPort.parseFull(this.oTextControl.getText())
             }
         };
         this.xConjButton.onclick = () => {
@@ -240,10 +251,10 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
         try {
             this.resetTimer();
             if (oResult && (oResult.sParagraph.trim() !== "" || oResult.aGrammErr.length > 0 || oResult.aSpellErr.length > 0)) {
-                let xNodeDiv = oGrammalecte.createNode("div", {className: "grammalecte_paragraph_block"});
                 // actions
                 let xActionsBar = oGrammalecte.createNode("div", {className: "grammalecte_paragraph_actions"});
                 xActionsBar.appendChild(oGrammalecte.createNode("div", {id: "grammalecte_check" + oResult.iParaNum, className: "grammalecte_paragraph_button grammalecte_green", textContent: "↻", title: "Réanalyser…"}, {para_num: oResult.iParaNum}));
+                xActionsBar.appendChild(oGrammalecte.createNode("div", {id: "grammalecte_analysis" + oResult.iParaNum, className: "grammalecte_paragraph_button grammalecte_blue", textContent: "»", title: "Analyse grammaticale…"}, {para_num: oResult.iParaNum}));
                 xActionsBar.appendChild(oGrammalecte.createNode("div", {id: "grammalecte_hide" + oResult.iParaNum, className: "grammalecte_paragraph_button grammalecte_red", textContent: "×", title: "Cacher", style: "font-weight: bold;"}));
                 // paragraph
                 let xParagraph = oGrammalecte.createNode("p", {id: "grammalecte_paragraph"+oResult.iParaNum, className: "grammalecte_paragraph", lang: "fr", contentEditable: "true"}, {para_num: oResult.iParaNum});
@@ -262,9 +273,10 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
                 , true);
                 this._tagParagraph(xParagraph, oResult.sParagraph, oResult.iParaNum, oResult.aGrammErr, oResult.aSpellErr);
                 // creation
-                xNodeDiv.appendChild(xActionsBar);
-                xNodeDiv.appendChild(xParagraph);
-                this.xParagraphList.appendChild(xNodeDiv);
+                let xParagraphBlock = oGrammalecte.createNode("div", {className: "grammalecte_paragraph_block"});
+                xParagraphBlock.appendChild(xActionsBar);
+                xParagraphBlock.appendChild(xParagraph);
+                this.xParagraphList.appendChild(xParagraphBlock);
                 this.nParagraph += 1;
             }
         }
@@ -501,7 +513,7 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
                 (res) => { window.setTimeout(() => { this.xClipboardButton.textContent = "📋"; }, 2000); }
             )
             .catch(
-                (e) => { showError(e); this._sendTextToClipboard(sText); }
+                (e) => { showError(e); this._sendTextToClipboardFallback(sText); }
             );
         } else {
             this._sendTextToClipboardFallback(sText);
@@ -532,32 +544,98 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
 
     clearLexicographer () {
         this.nLxgCount = 0;
-        while (this.xLxgPanelContent.firstChild) {
-            this.xLxgPanelContent.removeChild(this.xLxgPanelContent.firstChild);
+        while (this.xLxgResultZone.firstChild) {
+            this.xLxgResultZone.removeChild(this.xLxgResultZone.firstChild);
         }
     }
 
-    addLxgSeparator (sText) {
-        if (this.xLxgPanelContent.textContent !== "") {
-            this.xLxgPanelContent.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_separator", textContent: sText}));
-        }
-    }
-
-    addMessageToLxgPanel (sMessage) {
+    addMessageToLexicographer (sMessage) {
         let xNode = oGrammalecte.createNode("div", {className: "grammalecte_panel_flow_message", textContent: sMessage});
-        this.xLxgPanelContent.appendChild(xNode);
+        this.xLxgResultZone.appendChild(xNode);
     }
 
-    addListOfTokens (lToken) {
+
+    //  Grammatical analysis
+
+    sendParagraphToLexicographer (iParaNum) {
+        let xParagraph = this.xParent.getElementById("grammalecte_paragraph" + iParaNum);
+        this.xLxgInput.textContent = xParagraph.textContent;
+        this.grammaticalAnalysis();
+        this.showLexicographer();
+    }
+
+    grammaticalAnalysis (iParaNum) {
+        if (!this.bOpened || this.bWorking) {
+            return;
+        }
+        this.startWaitIcon();
+        this.clearLexicographer();
+        let sText = this.xLxgInput.innerText.replace(/\n/g, " ");
+        //console.log(sText);
+        this.addMessageToLexicographer("Analyse grammaticale : les mots sont analysés autant que possible en fonction du contexte. (Cette fonctionnalité n’est pas terminée et demeure EXPÉRIMENTALE).");
+        oGrammalecteBackgroundPort.parseFull(sText, "__GrammalectePanel__");
+    }
+
+    showParagraphAnalysis (oResult) {
+        if (!this.bOpened || oResult === null) {
+            return;
+        }
         try {
-            if (lToken) {
+            for (let oSentence of oResult.lSentences) {
                 this.nLxgCount += 1;
+                if (oSentence.sSentence.trim() !== "") {
+                    let xSentenceBlock = oGrammalecte.createNode("div", {className: "grammalecte_lxg_paragraph_sentence_block"});
+                    xSentenceBlock.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_list_num", textContent: this.nLxgCount}));
+                    xSentenceBlock.appendChild(oGrammalecte.createNode("p", {className: "grammalecte_lxg_paragraph_sentence", textContent: oSentence.sSentence}));
+                    let xTokenList = oGrammalecte.createNode("div", {className: "grammalecte_lxg_list_of_tokens"});
+                    for (let oToken of oSentence.lTokens) {
+                        if (oToken["sType"] != "INFO" && !oToken.hasOwnProperty("bMerged")) {
+                            //console.log(">", oToken["sValue"], oToken["sType"], oToken["bValidToken"]);
+                            if (oToken["sType"].startsWith("WORD") && !oToken["bValidToken"]) {
+                                oToken["sType"] = "UNKNOWN_WORD";
+                            }
+                            xTokenList.appendChild(this._createTokenBlock(oToken));
+                        }
+                    }
+                    xSentenceBlock.appendChild(xTokenList);
+                    this.xLxgResultZone.appendChild(xSentenceBlock);
+                }
+            }
+        }
+        catch (e) {
+            showError(e);
+        }
+        this.stopWaitIcon();
+    }
+
+
+    //  Lexical analysis
+
+    getListOfTokens () {
+        if (!this.bOpened || this.bWorking) {
+            return;
+        }
+        this.startWaitIcon();
+        this.clearLexicographer();
+        let sText = this.xLxgInput.innerText; // to get carriage return (\n)
+        //console.log(sText);
+        this.addMessageToLexicographer("Analyse lexicale : chaque mot est analysé indépendamment du contexte.");
+        oGrammalecteBackgroundPort.getListOfTokens(sText, "__GrammalectePanel__");
+    }
+
+    addListOfTokens (oResult) {
+        try {
+            if (oResult && oResult.sParagraph != "") {
+                this.nLxgCount += 1;
+                let xSentenceBlock = oGrammalecte.createNode("div", {className: "grammalecte_lxg_paragraph_sentence_block"});
+                xSentenceBlock.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_list_num", textContent: this.nLxgCount}));
+                xSentenceBlock.appendChild(oGrammalecte.createNode("p", {className: "grammalecte_lxg_paragraph_sentence", textContent: oResult.sParagraph}));
                 let xTokenList = oGrammalecte.createNode("div", {className: "grammalecte_lxg_list_of_tokens"});
-                xTokenList.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_list_num", textContent: this.nLxgCount}));
-                for (let oToken of lToken) {
+                for (let oToken of oResult.lTokens) {
                     xTokenList.appendChild(this._createTokenBlock(oToken));
                 }
-                this.xLxgPanelContent.appendChild(xTokenList);
+                xSentenceBlock.appendChild(xTokenList);
+                this.xLxgResultZone.appendChild(xSentenceBlock);
             }
         }
         catch (e) {
@@ -567,11 +645,15 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
 
     _createTokenBlock (oToken) {
         let xTokenBlock = oGrammalecte.createNode("div", {className: "grammalecte_lxg_token_block"});
+        // token description
         xTokenBlock.appendChild(this._createTokenDescr(oToken));
-        if (oToken.aSubElem) {
+        // subtokens
+        if (oToken.hasOwnProperty("lSubTokens")) {
             let xSubBlock = oGrammalecte.createNode("div", {className: "grammalecte_lxg_token_subblock"});
-            for (let oSubElem of oToken.aSubElem) {
-                xSubBlock.appendChild(this._createTokenDescr(oSubElem));
+            for (let oSubToken of oToken["lSubTokens"]) {
+                if (oSubToken["sValue"] != "") {
+                    xSubBlock.appendChild(this._createTokenDescr(oSubToken));
+                }
             }
             xTokenBlock.appendChild(xSubBlock);
         }
@@ -581,19 +663,16 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
     _createTokenDescr (oToken) {
         try {
             let xTokenDescr = oGrammalecte.createNode("div", {className: "grammalecte_lxg_token_descr"});
-            if (oToken.sType == "LOCP") {
-                xTokenDescr.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_token_also", textContent: "possiblement › "}));
-            }
-            xTokenDescr.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_token grammalecte_lxg_token_" + oToken.sType, textContent: oToken.sValue}));
-            xTokenDescr.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_token_colon", textContent: ":"}));
-            if (oToken.aLabel.length === 1) {
-                xTokenDescr.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_morph_elem_inline", textContent: oToken.aLabel[0]}));
-            } else {
-                let xMorphList = oGrammalecte.createNode("div", {className: "grammalecte_lxg_morph_list"});
-                for (let sLabel of oToken.aLabel) {
-                    xMorphList.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_morph_elem", textContent: "• " + sLabel}));
+            let sValue = (oToken.hasOwnProperty("sRealValue")) ? oToken["sRealValue"] : oToken["sValue"];
+            xTokenDescr.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_token grammalecte_lxg_token_" + oToken.sType, textContent: sValue}));
+            let xMorphList = oGrammalecte.createNode("div", {className: "grammalecte_lxg_morph_list"});
+            xTokenDescr.appendChild(xMorphList);
+            if (oToken.aLabels) {
+                for (let sLabel of oToken.aLabels) {
+                    xMorphList.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_morph_elem", textContent: "• " + sLabel.trim()}));
                 }
-                xTokenDescr.appendChild(xMorphList);
+            } else {
+                xMorphList.appendChild(oGrammalecte.createNode("div", {className: "grammalecte_lxg_morph_elem", textContent: "• " + "étiquettes non décrites : [" + oToken.lMorph + "]"}));
             }
             return xTokenDescr;
         }
@@ -602,12 +681,6 @@ class GrammalecteGrammarChecker extends GrammalectePanel {
         }
     }
 
-    setHidden (sClass, bHidden) {
-        let xPanelContent = this.xParent.getElementById('grammalecte_panel_content');
-        for (let xNode of xPanelContent.getElementsByClassName(sClass)) {
-            xNode.hidden = bHidden;
-        }
-    }
 
     // Conjugueur
 
@@ -874,9 +947,15 @@ class GrammalecteTooltip {
         // actions
         let xActions = oGrammalecte.createNode("div", {id: "grammalecte_tooltip_actions"});
         xActions.appendChild(oGrammalecte.createNode("div", {id: "grammalecte_tooltip_ignore", textContent: "Ignorer"}));
+        this.xLexEditNode = oGrammalecte.createNode("div", {id: "grammalecte_tooltip_open_lexed", textContent: "›› Éditeur lexical…"})
+        xActions.appendChild(this.xLexEditNode);
         xActions.appendChild(oGrammalecte.createNode("div", {id: "grammalecte_tooltip_url", textContent: "Voulez-vous en savoir plus ?…"}, {url: ""}));
         xActions.appendChild(oGrammalecte.createNode("div", {id: "grammalecte_tooltip_db_search", textContent: "››"}, {url: ""}));
         this.xTooltip.appendChild(xActions);
+        this.sUnknownWord = "";
+        this.xLexEditNode.onclick = () => {
+            oGrammalecteBackgroundPort.openLexiconEditor(this.sUnknownWord);
+        };
         // add tooltip to the page
         xGCPanelContent.appendChild(this.xTooltip);
         xGCPanelContent.appendChild(this.xTooltipArrow);
@@ -915,6 +994,7 @@ class GrammalecteTooltip {
                     this.xParent.getElementById("grammalecte_tooltip_url").dataset.url = "";
                     this.xParent.getElementById("grammalecte_tooltip_url").style.display = "none";
                 }
+                this.xParent.getElementById("grammalecte_tooltip_open_lexed").style.display = "none";
                 this.xParent.getElementById("grammalecte_tooltip_db_search").style.display = "none";
                 this.xParent.getElementById("grammalecte_tooltip_ignore").dataset.error_id = xNodeErr.dataset.error_id;
                 let iSugg = 0;
@@ -931,11 +1011,13 @@ class GrammalecteTooltip {
             }
             if (xNodeErr.dataset.error_type === "spelling") {
                 // spelling mistake
+                this.sUnknownWord = xNodeErr.textContent;
                 this.xParent.getElementById("grammalecte_tooltip_message").textContent = "Mot inconnu du dictionnaire.";
                 this.xParent.getElementById("grammalecte_tooltip_ignore").dataset.error_id = xNodeErr.dataset.error_id;
                 this.xParent.getElementById("grammalecte_tooltip_rule_id").style.display = "none";
                 this.xParent.getElementById("grammalecte_tooltip_url").dataset.url = "";
                 this.xParent.getElementById("grammalecte_tooltip_url").style.display = "none";
+                this.xParent.getElementById("grammalecte_tooltip_open_lexed").style.display = "inline-block";
                 this.xParent.getElementById("grammalecte_tooltip_db_search").style.display = "inline-block";
                 this.xParent.getElementById("grammalecte_tooltip_db_search").dataset.url = "https://grammalecte.net/dictionary.php?prj=fr&lemma="+xNodeErr.textContent;
                 this.clearSuggestionBlock();

@@ -26,8 +26,7 @@ var cardbookInit = {
 		prefs.setBoolPref("mailPopularityTabView", true);
 		prefs.setBoolPref("technicalTabView", true);
 		prefs.setBoolPref("vcardTabView", true);
-		// test waiting 
-		prefs.setBoolPref("keyTabView", false);
+		prefs.setBoolPref("keyTabView", true);
 		
 		prefs.setCharPref("panesView", "modern");
 		prefs.setBoolPref("syncAfterChange", true);
@@ -45,6 +44,7 @@ var cardbookInit = {
 		prefs.setBoolPref("useOnlyEmail", false);
 		
 		prefs.setCharPref("fieldsNameList", "allFields");
+		prefs.setBoolPref("autoComputeFn", true);
 
 		prefs.setBoolPref("usePreferenceValue", false);
 		prefs.setCharPref("preferenceValueLabel", "");
@@ -87,6 +87,7 @@ var cardbookInit = {
 		prefs.setCharPref("numberOfDaysForWriting", "366");
 		// localized
 		prefs.setCharPref("eventEntryTitle", cardbookRepository.extension.localeData.localizeMessage("eventEntryTitleMessage"));
+		prefs.setCharPref("calendarEntryCategories", cardbookRepository.extension.localeData.localizeMessage("anniversaryCategory"));
 		prefs.setCharPref("eventEntryTime", "00:00");
 		prefs.setBoolPref("eventEntryWholeDay", false);
 		prefs.setCharPref("calendarEntryAlarm", "168");
@@ -100,7 +101,7 @@ var cardbookInit = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "54.4");
+		prefs.setCharPref("addonVersion", "54.6");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);

@@ -10,6 +10,11 @@ let mhcToolbarPopupMenuItem = undefined;
 let mhcToolbarBackup = undefined;
 let mhcPopupCustomToolbarMSG = undefined;
 
+function stopDblclick(e) {
+  e.stopPropagation();
+  //e.preventDefault();
+}
+
 var compactHeadersApi = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
     return {
@@ -167,7 +172,9 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                 msgHeaderViewDeck.parentNode.insertBefore(compactHeadersBox, msgHeaderViewDeck);
 
                 doToggle = () => toggleHeaders();
-                msgHeaderViewDeck.addEventListener("dblclick", doToggle);
+                expandedHeadersTopBox.addEventListener("dblclick", doToggle);
+                expandedsubjectRow.addEventListener("dblclick", doToggle);
+                expandedsubjectBox.addEventListener("dblclick", stopDblclick, true);
 
                 function singleLine() {
                   expandedHeaders.removeAttribute("style");
@@ -195,7 +202,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                   if (xulAppInfo.OS == "WINNT") {
                     expandedHeadersTopBox.setAttribute("style", "min-height: 32px; white-space: nowrap;");
                     expandedBoxSpacer.setAttribute("style", "height: 6px;");
-                    expandedHeadersBottomBox.setAttribute("style", "margin-top: -3px;");
+                    expandedHeadersBottomBox.setAttribute("style", "margin-top: -1px;");
                   }
                   headerViewToolbox.removeAttribute("style");
                   expandedHeadersBox.removeAttribute("style");
@@ -256,7 +263,10 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                   if (expandedHeaders2.getAttribute("hideheaders") == "hideheaders") {
                     compactHeadersHideHeaders.setAttribute("label", "Hide Headers");
                     compactHeadersHideHeaders2.setAttribute("label", "Hide Headers");
-                    msgHeaderView.setAttribute("style", "background-color: -moz-Dialog !important;color: -moz-DialogText !important;");
+                    msgHeaderView.setAttribute("style", "background-color: var(--toolbar-non-lwt-bgcolor) !important;");
+                    if (xulAppInfo.OS == "WINNT") {
+                      msgHeaderView.setAttribute("style", "background-color: var(--lwt-toolbar-field-focus) !important;");
+                    }
                     expandedHeaders2.removeAttribute("hideheaders");
                   } else {
                     compactHeadersHideHeaders.setAttribute("label", "Show Headers");
@@ -281,7 +291,10 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                   } else {
                     compactHeadersHideHeaders.setAttribute("label", "Hide Headers");
                     compactHeadersHideHeaders2.setAttribute("label", "Hide Headers");
-                    msgHeaderView.setAttribute("style", "background-color: -moz-Dialog !important;color: -moz-DialogText !important;");
+                    msgHeaderView.setAttribute("style", "background-color: var(--toolbar-non-lwt-bgcolor) !important;");
+                    if (xulAppInfo.OS == "WINNT") {
+                      msgHeaderView.setAttribute("style", "background-color: var(--lwt-toolbar-field-focus) !important;");
+                    }
                   }
 
                   if (expandedHeaders2.getAttribute("compact") == "compact") {
@@ -371,6 +384,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                   expandedHeadersTopBox.setAttribute("style", "min-height: 30px; white-space: nowrap;");
                   if (xulAppInfo.OS == "WINNT") {
                     expandedHeadersTopBox.setAttribute("style", "min-height: 32px; white-space: nowrap;");
+                    expandedHeadersBottomBox.setAttribute("style", "margin-top: -1px;");
                   }
                   if (expandedHeaders2.getAttribute("compact") == "compact") {
                     if (expandedHeaders2.getAttribute("hidetoolbar") == "hidetoolbar") {
@@ -379,7 +393,12 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                       hideToolbar();
                       headerViewToolbar.setAttribute("style", "margin-block: 4px -2px; margin-inline-end:-2px;\
                         z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
-                        background: linear-gradient(to right,transparent,-moz-Dialog 2em) !important;");
+                        background: linear-gradient(to right,transparent,var(--toolbar-non-lwt-bgcolor) 2em) !important;");
+                      if (xulAppInfo.OS == "WINNT") {
+                        headerViewToolbar.setAttribute("style", "margin-block: 4px -2px; margin-inline-end:-2px;\
+                          z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
+                          background: linear-gradient(to right,transparent,var(--lwt-toolbar-field-focus) 2em) !important;");
+                      }
                       if (expandedcontentBaseLabel) expandedcontentBaseLabel.setAttribute("style", "display: none;");
                       if (expandedcontentBaseBox) expandedcontentBaseBox.setAttribute("style", "display: none;");
                     }
@@ -407,7 +426,12 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                 function showToolbar() {
                   headerViewToolbar.setAttribute("style", "margin-block: 4px auto; margin-inline-end:-2px;\
                     z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
-                    background: linear-gradient(to right,transparent,-moz-Dialog 2em) !important;");
+                    background: linear-gradient(to right,transparent,var(--toolbar-non-lwt-bgcolor) 2em) !important;");
+                  if (xulAppInfo.OS == "WINNT") {
+                    headerViewToolbar.setAttribute("style", "margin-block: 4px auto; margin-inline-end:-2px;\
+                      z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
+                      background: linear-gradient(to right,transparent,var(--lwt-toolbar-field-focus) 2em) !important;");
+                  }
                   if (expandedsubjectRow) expandedsubjectRow.insertAdjacentElement("afterend", expandedtoRow);
                   if (expandedtoLabel) expandedtoLabel.removeAttribute("style");
                   if (expandedtoBox) expandedtoBox.removeAttribute("style");
@@ -456,7 +480,6 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
 
     let msgHeaderViewDeck = window.document.getElementById("msgHeaderViewDeck");
     if (msgHeaderViewDeck) msgHeaderViewDeck.removeAttribute("style");
-    if (msgHeaderViewDeck) msgHeaderViewDeck.removeEventListener("dblclick", doToggle);
 
     let headerViewToolbar = window.document.getElementById("header-view-toolbar");
     if (headerViewToolbar) headerViewToolbar.removeAttribute("style");
@@ -464,6 +487,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
     let expandedsubjectRow = window.document.getElementById("expandedsubjectRow");
     let expandedtoRow = window.document.getElementById("expandedtoRow");
     if (expandedsubjectRow) {
+      expandedsubjectRow.removeEventListener("dblclick", doToggle);
       if (expandedtoRow) {
         expandedsubjectRow.insertAdjacentElement("afterend", expandedtoRow);
         expandedtoRow.removeAttribute("style");
@@ -496,6 +520,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
 
     let expandedHeadersTopBox = window.document.getElementById("expandedHeadersTopBox");
     if (expandedHeadersTopBox) expandedHeadersTopBox.removeAttribute("style");
+    if (expandedHeadersTopBox) expandedHeadersTopBox.removeEventListener("dblclick", doToggle);
 
     let expandedHeadersBottomBox = window.document.getElementById("expandedHeadersBottomBox");
     if (expandedHeadersBottomBox) expandedHeadersBottomBox.removeAttribute("style");
@@ -511,6 +536,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
 
     let expandedsubjectBox = window.document.getElementById("expandedsubjectBox");
     if (expandedsubjectBox) expandedsubjectBox.removeAttribute("style");
+    if (expandedsubjectBox) expandedsubjectBox.removeEventListener("dblclick", stopDblclick, true);
 
     let compactHeadersHideHeaders = window.document.getElementById("compactHeadersHideHeaders");
     if (compactHeadersHideHeaders) compactHeadersHideHeaders.remove();
@@ -575,7 +601,6 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
 
     let msgHeaderViewDeck = window.document.getElementById("msgHeaderViewDeck");
     if (msgHeaderViewDeck) msgHeaderViewDeck.removeAttribute("style");
-    if (msgHeaderViewDeck) msgHeaderViewDeck.removeEventListener("dblclick", doToggle);
 
     let headerViewToolbar = window.document.getElementById("header-view-toolbar");
     if (headerViewToolbar) headerViewToolbar.removeAttribute("style");
@@ -583,6 +608,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
     let expandedsubjectRow = window.document.getElementById("expandedsubjectRow");
     let expandedtoRow = window.document.getElementById("expandedtoRow");
     if (expandedsubjectRow) {
+      expandedsubjectRow.removeEventListener("dblclick", doToggle);
       if (expandedtoRow) {
         expandedsubjectRow.insertAdjacentElement("afterend", expandedtoRow);
         expandedtoRow.removeAttribute("style");
@@ -615,6 +641,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
 
     let expandedHeadersTopBox = window.document.getElementById("expandedHeadersTopBox");
     if (expandedHeadersTopBox) expandedHeadersTopBox.removeAttribute("style");
+    if (expandedHeadersTopBox) expandedHeadersTopBox.removeEventListener("dblclick", doToggle);
 
     let expandedHeadersBottomBox = window.document.getElementById("expandedHeadersBottomBox");
     if (expandedHeadersBottomBox) expandedHeadersBottomBox.removeAttribute("style");
@@ -630,6 +657,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
 
     let expandedsubjectBox = window.document.getElementById("expandedsubjectBox");
     if (expandedsubjectBox) expandedsubjectBox.removeAttribute("style");
+    if (expandedsubjectBox) expandedsubjectBox.removeEventListener("dblclick", stopDblclick, true);
 
     let compactHeadersHideHeaders = window.document.getElementById("compactHeadersHideHeaders");
     if (compactHeadersHideHeaders) compactHeadersHideHeaders.remove();

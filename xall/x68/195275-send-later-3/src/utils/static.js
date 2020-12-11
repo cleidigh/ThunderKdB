@@ -27,7 +27,6 @@ var SLStatic = {
     try {
       const { preferences } = await browser.storage.local.get({"preferences": {}});
       this.logConsoleLevel = (preferences.logConsoleLevel || "all").toLowerCase();
-      console.log(`Received logConsoleLevel: ${logConsoleLevel}`);
     } catch {}
   },
 
@@ -71,20 +70,6 @@ var SLStatic = {
     return `{${uuid}}`;
   },
 
-  parseableDateTimeFormat(date) {
-    const DATE_RFC2822 = "%a, %d %b %Y %T %z";
-    return (new Sugar.Date(date || new Date())).format(DATE_RFC2822);
-  },
-
-  humanDateTimeFormat(date) {
-    return (new Sugar.Date(date)).long();
-  },
-
-  shortHumanDateTimeFormat(date) {
-    return date.toLocaleString([], {month:'numeric',day:'numeric',year:'numeric',
-                                    hour:'numeric',minute:'2-digit'});
-  },
-
   convertTime(t) {
     if (!t) {
       return null;
@@ -103,24 +88,97 @@ var SLStatic = {
     }
   },
 
-  compare(a, comparison, b) {
+  convertDate(date, compareToLoop) {
+    if (!date) {
+      return null;
+    } else if (date.raw) {
+      date = date.raw;
+    }
+
+    if (typeof date === "string") {
+      let relativeTo = new Date();
+      if (compareToLoop) {
+        // Because Send Later does not necessarily start its main loop on the minute,
+        // it's a little tricky to process relative times, and present them to the user
+        // in a logical way. For example, if right now is 10:25:53, and the main loop
+        // will execute at 14 seconds past the minute, then should input like
+        // "5 minutes from now" be rounded to 10:30 or 10:31?
+        //
+        // It seems most logical to round up in these cases, so that's what we'll do.
+        const rSec = relativeTo.getSeconds(),
+              pSec = SLStatic.previousLoop.getSeconds();
+        if (rSec > pSec) {
+          const tdiff = rSec-pSec;
+          relativeTo = new Date(relativeTo.getTime() + 60000 - tdiff*1000);
+        }
+      }
+      const localeCode = SLStatic.i18n.getUILanguage();
+      let sugarDate = Sugar.Date.get(
+        relativeTo, date, {locale: localeCode, future: true}
+      );
+      if (!sugarDate.getTime()) {
+        // If that didn't work, try 'en' locale.
+        sugarDate = Sugar.Date.get(
+          relativeTo, date, {locale: "en", future: true}
+        );
+      }
+
+      if (sugarDate.getTime()) {
+        return new Date(sugarDate.getTime());
+      } else {
+        return null;
+      }
+    } else if (typeof date === "number") {
+      return new Date(date);
+    } else if (date.getTime) {
+      return new Date(date.getTime());
+    }
+    throw new Error(`Send Later error: unable to parse date format`, date);
+  },
+
+  parseableDateTimeFormat(date) {
+    date = SLStatic.convertDate(date);
+    const DATE_RFC2822 = "%a, %d %b %Y %T %z";
+    return Sugar.Date.format(date||(new Date()), DATE_RFC2822, "en");
+  },
+
+  humanDateTimeFormat(date) {
+    date = SLStatic.convertDate(date);
+    const options = {
+      hour: "numeric", minute: "numeric", weekday: "short",
+      month: "short", day: "numeric", year: "numeric"
+    }
+    return new Intl.DateTimeFormat([], options).format(date||(new Date()));
+  },
+
+  shortHumanDateTimeFormat(date) {
+    date = SLStatic.convertDate(date);
+    const options = {
+      hour: "numeric", minute: "numeric",
+      month: "numeric", day: "numeric", year: "numeric"
+    }
+    return new Intl.DateTimeFormat([], options).format(date||(new Date()));
+  },
+
+  compare(a, comparison, b, tolerance) {
+    if (!tolerance) {
+      tolerance = 0;
+    }
     switch (comparison) {
       case "<":
-        return (a < b);
+        return (a-b) < tolerance;
       case ">":
-        return (a > b);
+        return (a-b) > tolerance;
       case "<=":
-        return (a <= b);
+        return (a-b) <= tolerance;
       case ">=":
-        return (a >= b);
+        return (a-b) >= tolerance;
       case "==":
-        return (a == b);
       case "===":
-        return (a === b);
+        return Math.abs(a-b) <= tolerance;
       case "!=":
-        return (a != b);
       case "!==":
-        return (a !== b);
+        return Math.abs(a-b) > tolerance;
       default:
         throw new Error("Unknown comparison: "+comparison);
         break;
@@ -128,29 +186,31 @@ var SLStatic = {
   },
 
   compareDates(a,comparison,b) {
+    a = SLStatic.convertDate(a); b = SLStatic.convertDate(b);
     const A = new Date(a.getFullYear(), a.getMonth(), a.getDate());
     const B = new Date(b.getFullYear(), b.getMonth(), b.getDate());
     return SLStatic.compare(A.getTime(),comparison,B.getTime());
   },
 
-  compareTimes(a,comparison,b,ignoreSec) {
-    a = SLStatic.convertTime(a);
-    b = SLStatic.convertTime(b);
+  compareTimes(a,comparison, b, ignoreSec, tolerance) {
+    a = SLStatic.convertTime(a); b = SLStatic.convertTime(b);
     const A = new Date(2000, 0, 01, a.getHours(), a.getMinutes(),
                         (ignoreSec ? 0 : a.getSeconds()));
     const B = new Date(2000, 0, 01, b.getHours(), b.getMinutes(),
                         (ignoreSec ? 0 : b.getSeconds()));
-    return SLStatic.compare(A.getTime(),comparison,B.getTime());
+    return SLStatic.compare(A.getTime(), comparison, B.getTime(), tolerance);
   },
 
-  compareDateTimes(a, comparison, b, ignoreSec) {
-    const A = new Date(a.getTime());
-    const B = new Date(b.getTime());
+  compareDateTimes(a, comparison, b, ignoreSec, tolerance) {
+    const A = SLStatic.convertDate(a)
+    const B = SLStatic.convertDate(b);
+    A.setMilliseconds(0);
+    B.setMilliseconds(0);
     if (ignoreSec) {
       A.setSeconds(0);
       B.setSeconds(0);
     }
-    return SLStatic.compare(A.getTime(), comparison, B.getTime());
+    return SLStatic.compare(A.getTime(), comparison, B.getTime(), tolerance);
   },
 
   getWkdayName(input, style) {
@@ -190,6 +250,31 @@ var SLStatic = {
     } else {
       SLStatic.debug(`Unable to parse datetime`, datetime);
       return null;
+    }
+  },
+
+  // Splits a single label string into spans, where the first occurrence
+  // of the access key is in its own element, with an underline.
+  underlineAccessKey(label, modifier) {
+    let idx = label.indexOf(modifier||"&");
+    if (idx === -1 && modifier) {
+      modifier = modifier.toLowerCase();
+      idx = label.toLowerCase().indexOf(modifier);
+    }
+
+    if (idx === -1) {
+      const spanner = document.createElement("SPAN");
+      spanner.textContent = label;
+      return [spanner];
+    } else {
+      const span1 = document.createElement("SPAN");
+      span1.textContent = label.substr(0,idx);
+      const span2 = document.createElement("SPAN");
+      span2.style.textDecoration = "underline";
+      span2.textContent = modifier ? label[idx] : label[++idx];
+      const span3 = document.createElement("SPAN");
+      span3.textContent = label.substr(idx+1);
+      return [span1, span2, span3];
     }
   },
 
@@ -363,9 +448,9 @@ var SLStatic = {
     } else {
       scheduleText = this.i18n.getMessage("sendAtLabel");
       scheduleText += " " + SLStatic.humanDateTimeFormat(sendAt);
-      const fromNow = (sendAt.getTime()-(new Date()).getTime())/1000;
+      const fromNow = (sendAt.getTime()-Date.now())/1000;
       if (fromNow < 0 && fromNow > -90) {
-        scheduleText += ` (${(new Sugar.Date((new Date()).getTime()+100)).relative()})`;
+        scheduleText += ` (${(new Sugar.Date(Date.now()+100)).relative()})`;
       } else {
         scheduleText += ` (${(new Sugar.Date(sendAt)).relative()})`;
       }
@@ -881,22 +966,25 @@ if (SLStatic.i18n === null) {
     try {
       const ext = window.ExtensionParent.GlobalManager.extensionMap.get("sendlater3@kamens.us");
       SLStatic.i18n = {
+        getUILanguage() {
+          return ext.localeData.selectedLocale;
+        },
         getMessage(messageName, substitutions = [], options = {}) {
           try {
             messageName = messageName.toLowerCase();
 
             let messages, str;
 
-            const defaultLocale = ext.localeData.defaultLocale;
-            if (ext.localeData.messages.has(defaultLocale)) {
-              messages = ext.localeData.messages.get(defaultLocale);
+            const selectedLocale = ext.localeData.selectedLocale;
+            if (ext.localeData.messages.has(selectedLocale)) {
+              messages = ext.localeData.messages.get(selectedLocale);
               if (messages.has(messageName)) {
                 str = messages.get(messageName);
               }
             }
 
             if (str === undefined) {
-              SLStatic.warn(`Unable to find message ${messageName} in locale ${defaultLocale}`);
+              SLStatic.warn(`Unable to find message ${messageName} in locale ${selectedLocale}`);
               for (let locale of ext.localeData.availableLocales) {
                 if (ext.localeData.messages.has(locale)) {
                   messages = ext.localeData.messages.get(locale);
@@ -945,6 +1033,9 @@ if (SLStatic.i18n === null) {
   } else {
     // We're in a node process (unit test).
     SLStatic.i18n = {
+      getUILanguage() {
+        return "en-US";
+      },
       getMessage(key, args) {
         if (typeof args !== "object") {
           args = [args];
@@ -1044,4 +1135,11 @@ if (typeof browser === "undefined" && typeof require !== "undefined") {
     DaysInARow: {help:"Send the message now, and subsequently once per day at the same time, until it has been sent three times. Specify a number as an argument to change the total number of sends.",body:"// Send the first message now, subsequent messages once per day.\nif (! prev)\n    next = new Date();\nelse {\n    var now = new Date();\n    next = new Date(prev); // Copy date argument so we don't modify it.\n    do {\n        next.setDate(next.getDate() + 1);\n    } while (next < now);\n    // ^^^ Don't try to send in the past, in case Thunderbird was asleep at\n    // the scheduled send time.\n}\nif (! args) // Send messages three times by default.\n    args = [3];\nnextargs = [args[0] - 1];\n// Recur if we haven't done enough sends yet.\nif (nextargs[0] > 0)\n    nextspec = \"function \" + specname;"},
     Delay: {help:"Simply delay message by some number of minutes. First argument is taken as the delay time.", body:"next = new Date(Date.now() + args[0]*60000);"}
   };
+}
+
+try {
+  const UILocale = SLStatic.i18n.getUILanguage();
+  Sugar.Date.setLocale(UILocale.split("-")[0]);
+} catch (ex) {
+  console.warn("[SendLater]: Unable to set date Sugar.js locale", ex);
 }

@@ -326,6 +326,15 @@ const oGenerator = {
         }
     },
 
+    newEntry: function (sWord) {
+        if (typeof(sWord) !== "string" || !sWord) {
+            return;
+        }
+        oTabulations.showPage("add_page");
+        document.getElementById("lemma").value = sWord;
+        this.onWrite();
+    },
+
     onWrite: function () {
         if (document.getElementById("lemma").value.trim() !== "") {
             showElement("editor");
@@ -752,7 +761,7 @@ const oBinaryDict = {
         let lEntry = oLexiconTable.getEntries();
         if (lEntry.length > 0) {
             let oDAWG = new DAWG(lEntry, "S", "fr", "Français", this.sName, this.sDescription, xProgressNode);
-            let oJSON = oDAWG.createBinaryJSON(1);
+            let oJSON = oDAWG.createBinaryJSON();
             oDictHandler.saveDictionary(this.sName, oJSON);
             this.oIBDAWG = new IBDAWG(oJSON);
             this.setDictData(this.oIBDAWG.nEntry, this.oIBDAWG.sDate);
@@ -846,3 +855,21 @@ oBinaryDict.listen();
 oGenerator.listen();
 oTabulations.listen();
 oSearch.listen();
+
+
+/*
+    Messages received
+*/
+function handleMessage (oMessage, xSender, sendResponse) {
+    let {sActionRequest, oParam} = oMessage;
+    switch(sActionRequest) {
+        case "new_entry":
+            oGenerator.newEntry(oParam.sWord);
+            break;
+        default:
+            console.log("[Grammalecte] Lexicon editor. Unknown command: " + sActionRequest);
+    }
+    //sendResponse({sCommand: "none", result: "done"});
+}
+
+browser.runtime.onMessage.addListener(handleMessage);

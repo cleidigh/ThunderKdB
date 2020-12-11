@@ -241,6 +241,36 @@ var ovl_cardbook = {
 		}
 	},
 
+	load: function() {
+		let tabmail = document.getElementById('tabmail');
+		if (tabmail) {
+			tabmail.registerTabType(cardbookTabType);
+			tabmail.registerTabMonitor(cardbookTabMonitor);
+		}
+
+		var firstRun = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.firstRun");
+		if (firstRun) {
+			wdw_cardbook.addAddressbook("first");
+			cardbookRepository.cardbookPreferences.setBoolPref("extensions.cardbook.firstRun", false);
+		}
+
+		if (document.getElementById("addressBook")) {
+			document.getElementById("addressBook").removeAttribute("key");
+		}
+		if (document.getElementById("appmenu_addressBook")) {
+			document.getElementById("appmenu_addressBook").removeAttribute("key");
+		}
+		if (document.getElementById("key_addressbook")) {
+			document.getElementById("key_addressbook").setAttribute("key", "");
+		}
+
+		ovl_cardbook.overrideToolbarMenu();
+
+		if (document.getElementById("totalMessageCount")) {
+			document.getElementById("totalMessageCount").addEventListener("click", ovl_cardbook.openLogEdition, true);
+		}
+	},
+
 	unload: function() {
 		cardBookObserver.unregister();
 		myFormatObserver.unregister();

@@ -581,6 +581,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			}
 			document.getElementById('lastnameTextBox').focus();
 			document.getElementById('addressbookMenulistLabel').scrollIntoView();
+			wdw_cardEdition.autoComputeFn(document.getElementById('autoComputeFnButton'), cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autoComputeFn"));
 		},
 
 		setFieldsAsDefault: function () {
@@ -668,13 +669,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			} else {
 				document.getElementById('mailPopularityTab').setAttribute("collapsed", true);
 			}
-			// test waiting 
-			document.getElementById('keyTab').setAttribute("collapsed", true);
-			// test waiting if (isElementInPref("key")) {
-			// test waiting 	document.getElementById('keyTab').setAttribute("collapsed", false);
-			// test waiting } else {
-			// test waiting 	document.getElementById('keyTab').setAttribute("collapsed", true);
-			// test waiting }
+			if (isElementInPref("key")) {
+				document.getElementById('keyTab').setAttribute("collapsed", false);
+			} else {
+				document.getElementById('keyTab').setAttribute("collapsed", true);
+			}
 			if (isElementInPref("fn") || wdw_cardEdition.workingCard.fn) {
 				document.getElementById('fnGroupbox').removeAttribute('hidden');
 			} else {
@@ -863,26 +862,47 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			document.getElementById('lastnameTextBox').value = document.getElementById('firstnameTextBox').value;
 			document.getElementById('firstnameTextBox').value = tmpValue;
 			document.getElementById('lastnameTextBox').focus();
-			wdw_cardEdition.setDisplayName();
+			document.getElementById('lastnameTextBox').dispatchEvent(new Event('input'));
 		},
 
-		expandButton: function (aImage, aForce) {
-			var myGrid = document.getElementById(aImage.id.replace(/^expand/, "").replace(/Image$/, "").toLowerCase() + "Grid");
+		autoComputeFn: function (aButton, aForce) {
 			if ("undefined" == typeof(aForce)) {
-				if (!aImage.getAttribute('expanded')) {
+				if (!aButton.hasAttribute('autoComputeFn')) {
+					aButton.setAttribute('autoComputeFn', 'true');
+					aButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("dontAutoComputeFn"));
+				} else {
+					aButton.removeAttribute('autoComputeFn');
+					aButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("autoComputeFn"));
+				}
+				cardbookRepository.cardbookPreferences.setBoolPref("extensions.cardbook.autoComputeFn", !cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autoComputeFn"));
+			} else {
+				if (aForce == true) {
+					aButton.setAttribute('autoComputeFn', 'true');
+					aButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("dontAutoComputeFn"));
+				} else {
+					aButton.removeAttribute('autoComputeFn');
+					aButton.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("autoComputeFn"));
+				}
+			}
+		},
+
+		expandButton: function (aButton, aForce) {
+			var myGrid = document.getElementById(aButton.id.replace(/^expand/, "").replace(/Image$/, "").toLowerCase() + "Grid");
+			if ("undefined" == typeof(aForce)) {
+				if (!aButton.getAttribute('expanded')) {
 					myGrid.removeAttribute('hidden');
-					aImage.setAttribute('expanded', 'true');
+					aButton.setAttribute('expanded', 'true');
 				} else {
 					myGrid.setAttribute('hidden', 'true');
-					aImage.removeAttribute('expanded');
+					aButton.removeAttribute('expanded');
 				}
 			} else {
-				if (aForce === true) {
+				if (aForce == true) {
 					myGrid.removeAttribute('hidden');
-					aImage.setAttribute('expanded', 'true');
+					aButton.setAttribute('expanded', 'true');
 				} else {
 					myGrid.setAttribute('hidden', 'true');
-					aImage.removeAttribute('expanded');
+					aButton.removeAttribute('expanded');
 				}
 			}				
 		},
@@ -1077,25 +1097,27 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		setDisplayName: function () {
-			var myNewOrg = wdw_cardEdition.getOrg(false);
-			var myNewFn = cardbookRepository.cardbookUtils.getDisplayedNameFromFormula(document.getElementById('dirPrefIdTextBox').value, [document.getElementById('prefixnameTextBox').value.trim(),
-																document.getElementById('firstnameTextBox').value.trim(),
-																document.getElementById('othernameTextBox').value.trim(),
-																document.getElementById('lastnameTextBox').value.trim(),
-																document.getElementById('suffixnameTextBox').value.trim(),
-																document.getElementById('nicknameTextBox').value.trim()],
-																[myNewOrg,
-																document.getElementById('titleTextBox').value.trim(),
-																document.getElementById('roleTextBox').value.trim()]);
-			document.getElementById('fnTextBox').value = myNewFn;
-			wdw_cardEdition.workingCard.lastname = document.getElementById('lastnameTextBox').value.trim();
-			wdw_cardEdition.workingCard.firstname = document.getElementById('firstnameTextBox').value.trim();
-			wdw_cardEdition.workingCard.othername = document.getElementById('othernameTextBox').value.trim();
-			wdw_cardEdition.workingCard.suffixname = document.getElementById('suffixnameTextBox').value.trim();
-			wdw_cardEdition.workingCard.prefixname = document.getElementById('prefixnameTextBox').value.trim();
-			wdw_cardEdition.workingCard.nickname = document.getElementById('nicknameTextBox').value.trim();
-			wdw_cardEdition.workingCard.org = myNewOrg;
-			wdw_cardEdition.workingCard.fn = myNewFn;
+			if (document.getElementById('autoComputeFnButton').hasAttribute('autoComputeFn')) {
+				var myNewOrg = wdw_cardEdition.getOrg(false);
+				var myNewFn = cardbookRepository.cardbookUtils.getDisplayedNameFromFormula(document.getElementById('dirPrefIdTextBox').value, [document.getElementById('prefixnameTextBox').value.trim(),
+																	document.getElementById('firstnameTextBox').value.trim(),
+																	document.getElementById('othernameTextBox').value.trim(),
+																	document.getElementById('lastnameTextBox').value.trim(),
+																	document.getElementById('suffixnameTextBox').value.trim(),
+																	document.getElementById('nicknameTextBox').value.trim()],
+																	[myNewOrg,
+																	document.getElementById('titleTextBox').value.trim(),
+																	document.getElementById('roleTextBox').value.trim()]);
+				document.getElementById('fnTextBox').value = myNewFn;
+				wdw_cardEdition.workingCard.lastname = document.getElementById('lastnameTextBox').value.trim();
+				wdw_cardEdition.workingCard.firstname = document.getElementById('firstnameTextBox').value.trim();
+				wdw_cardEdition.workingCard.othername = document.getElementById('othernameTextBox').value.trim();
+				wdw_cardEdition.workingCard.suffixname = document.getElementById('suffixnameTextBox').value.trim();
+				wdw_cardEdition.workingCard.prefixname = document.getElementById('prefixnameTextBox').value.trim();
+				wdw_cardEdition.workingCard.nickname = document.getElementById('nicknameTextBox').value.trim();
+				wdw_cardEdition.workingCard.org = myNewOrg;
+				wdw_cardEdition.workingCard.fn = myNewFn;
+			}
 		},
 
 		loadDateFormatLabels: function () {

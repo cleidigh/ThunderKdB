@@ -33,6 +33,17 @@
         ]
       },
       {
+        "name":"showStatus",
+        "type":"function",
+        "async":true,
+        "parameters":[
+          {
+            "name":"message",
+            "type":"string"
+          }
+        ]
+      },
+      {
         "name":"confirmCheck",
         "type":"function",
         "async":true,
@@ -166,6 +177,14 @@
           {
             "name": "path",
             "type": "string"
+          },
+          {
+            "name": "onlyDueForSend",
+            "type": "boolean"
+          },
+          {
+            "name": "onlyHeaders",
+            "type": "boolean"
           }
         ]
       },
@@ -324,15 +343,15 @@
         "parameters": []
       },
       {
-        "name":"injectScript",
+        "name":"injectScripts",
         "type":"function",
-        "description":"Inject script into a global document.",
+        "description":"Inject scripts into a global document.",
         "async":true,
         "parameters": [
           {
-            "name":"filename",
-            "type":"string",
-            "description":"Path to script file."
+            "name":"filenames",
+            "type":"any",
+            "description":"Array of paths to script files."
           }
         ]
       },

@@ -9,7 +9,7 @@
 	"name": "Signal Spam",
 	"author": "VERIFROM for Signal Spam",
 	"description": "__MSG_description__",
-	"version": "4.0.5",
+	"version": "4.0.6",
 	"icons": {
 		"16": "logo/16x16.png",
 		"32": "logo/32x32.png",
@@ -61,6 +61,20 @@
 					]
 				],
 				"script": "experiments/legacyprefs/legacyprefs.js"
+			}
+		},
+		"clickonbrowseractionbutton": {
+			"schema": "experiments/clickonbrowseractionbutton/schema.json",
+			"parent": {
+				"scopes": [
+					"addon_parent"
+				],
+				"paths": [
+					[
+						"clickonbrowseractionbutton"
+					]
+				],
+				"script": "experiments/clickonbrowseractionbutton/clickonbrowseractionbutton.js"
 			}
 		}
 	},

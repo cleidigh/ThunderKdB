@@ -7,9 +7,7 @@
 
 function translate(params) {
     var txt = params["selectionText"];
-    browser.storage.local.set({ trans_target: txt, flg_start_trans: true });
-    browser.browserAction.setPopup({ popup: "popup/Translation.html" });
+    browser.storage.local.set({ txt_cont_menu: txt });
     browser.browserAction.openPopup();
-    browser.browserAction.setPopup({ popup: "popup/Home.html" }); // Home画面を戻す
 }
 

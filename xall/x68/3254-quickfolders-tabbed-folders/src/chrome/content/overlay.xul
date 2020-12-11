@@ -3,9 +3,7 @@
 <?xml-stylesheet href="chrome://quickfolders/content/quickfolders-layout.css"  title="QuickFolderStyles" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/content/quickfolders-thunderbird.css"  title="QuickFolderStyles" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/content/quickfolders-filters.css" title="QuickFoldersFilters" type="text/css"?>
-<?xml-stylesheet href="chrome://quickfolders/content/quickfolders-mods.css" type="text/css"?>
 <!-- <?xml-stylesheet href="chrome://messenger/content/bindings.css" type="text/css"?> -->
-
 
 <!DOCTYPE overlay SYSTEM "chrome://quickfolders/locale/overlay.dtd" >
 
@@ -16,6 +14,10 @@
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<!-- modern platform specific code that breaks postbox -->
+	<script type="application/javascript" src="chrome://quickfoldersShim/content/quickfolders-shim.js" />
+	<!-- new / old ECMA code - Postbox / Fossamail 25 -->
+	<script type="application/javascript" src="chrome://quickfoldersShimECMA/content/quickfolders-shimEcma.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-register.js" />
@@ -30,7 +32,7 @@
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-listener.js" />
 	
 	<keyset>
-		<key id="quickFolders-ToggleTree" keycode="VK_F7" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
+		<key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
 	</keyset>
 
 	<!-- Thunderbird & SeaMonkey -->
@@ -62,9 +64,9 @@
 			id="QuickFolders-Toolbar"
 			toolbarname="QuickFolders Toolbar"
 			class="toolbar-primary"
-			ondragover="window.QuickFolders.toolbarDragObserver.dragOver(event)"
-			ondrop="window.QuickFolders.toolbarDragObserver.drop(event)"
-			ondragenter="window.QuickFolders.toolbarDragObserver.dragEnter(event)"
+			ondragover="nsDragAndDrop.dragOver(event,QuickFolders.toolbarDragObserver)"
+			ondrop="nsDragAndDrop.drop(event,QuickFolders.toolbarDragObserver)"
+			ondragenter="nsDragAndDrop.dragEnter(event,QuickFolders.toolbarDragObserver)"
 			dragdroparea="QuickFolders-FoldersBox"
 			customizable="false"
 			context="QuickFolders-ToolbarPopup"

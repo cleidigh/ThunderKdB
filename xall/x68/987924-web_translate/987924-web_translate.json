@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12626/12626983.png?modified=1599932965"
         }
     ],
-    "average_daily_users": 1198,
+    "average_daily_users": 1779,
     "categories": {
         "thunderbird": [
             "language-support",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/fastaddons/8.88",
     "created": "2020-10-11T14:25:19Z",
     "current_version": {
-        "id": 2474900,
+        "id": 2474946,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2474900",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2474946",
         "files": [
             {
-                "id": 1018062,
-                "created": "2020-12-01T12:24:23Z",
-                "hash": "sha256:5c8cb1549010db4e4cf4f9514096864c68c0496b44af900061b69edb85740f2d",
+                "id": 1018108,
+                "created": "2020-12-05T19:33:26Z",
+                "hash": "sha256:da419d1c84307bc13a2f0759d1aa933ba9bfa341106d00bdf35e983465620540",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5137379,
+                "size": 5137088,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018062/web_translate-2.8-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018108/web_translate-2.9-tb.xpi?src=",
                 "permissions": [
                     "webRequest",
                     "webRequestBlocking",
@@ -79,11 +79,11 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "- yet another fix for the Google Translate new security protection...\n- fixed translator focus"
+            "en-US": "- yet another try to fix the broken Google Translate, this time more efficient and it should work on the first try (hopefully this fix will last for some time...)\n- fixing focus issues again\n- added fallback to Microsoft Bing if Google Translate fails"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/2.8",
-        "version": "2.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/2.9",
+        "version": "2.9"
     },
     "default_locale": "en-US",
     "description": {
@@ -106,7 +106,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-12-01T12:25:03Z",
+    "last_updated": "2020-12-05T19:35:04Z",
     "name": {
         "el": "Web Translate",
         "fr": "Web Translate",
@@ -164,10 +164,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.64734,
-        "count": 4,
+        "bayesian_average": 4.75851,
+        "count": 6,
         "average": 5,
-        "text_count": 4
+        "text_count": 6
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/reviews/",
     "requires_payment": false,

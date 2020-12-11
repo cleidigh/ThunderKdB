@@ -1564,12 +1564,12 @@ var cardbookSynchronization = {
 						if (certificateExceptionAdded) {
 							cardbookSynchronization.discoverPhase3(aConnection, aRootUrl, aOperationType, aParams);
 						} else {
-							cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+							cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase3", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
 					} else {
-						cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+						cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase3", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}
@@ -1664,12 +1664,12 @@ var cardbookSynchronization = {
 						if (certificateExceptionAdded) {
 							cardbookSynchronization.discoverPhase2(aConnection, aRootUrl, aOperationType, aParams);
 						} else {
-							cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+							cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase2", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
 					} else {
-						cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+						cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase2", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}
@@ -1741,12 +1741,12 @@ var cardbookSynchronization = {
 						if (certificateExceptionAdded) {
 							cardbookSynchronization.discoverPhase1(aConnection, aOperationType, aParams);
 						} else {
-							cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+							cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase1", aConnection.connUrl, status], "Error");
 							cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						}
 					} else {
-						cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "validateWithoutDiscovery", aConnection.connUrl, status], "Error");
+						cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "discoverPhase1", aConnection.connUrl, status], "Error");
 						cardbookRepository.cardbookServerDiscoveryError[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 					}

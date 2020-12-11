@@ -1,6 +1,7 @@
 // Listen for button click and expand all mailing lists
 
 // v1.0.2 keep unmatched lists
+// v1.1.0 include the display name in the expanded addresses
 
 // console.log ("Expand mailing lists addon active");
 
@@ -71,7 +72,12 @@ function buttonlistener(args) { //15
 // console.log("Matched list: " + possname + " Number of contacts: " + listarray[i].contacts.length);
               listarray[i].contacts.forEach(contactobj => {  //4
                 listmatched = true ;
-                expandedarray1.push(contactobj.properties.PrimaryEmail);
+// Include the display name in the expanded array.
+                if (contactobj.properties.DisplayName == contactobj.properties.PrimaryEmail) {
+                  expandedarray1.push(contactobj.properties.PrimaryEmail);
+                } else {
+                  expandedarray1.push(contactobj.properties.DisplayName + " <" + contactobj.properties.PrimaryEmail + ">");
+                }
               }); //4
             }; //5          
           }; //6

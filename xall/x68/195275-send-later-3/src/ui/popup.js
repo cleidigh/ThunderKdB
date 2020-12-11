@@ -483,7 +483,7 @@ const SLPopup = {
       const soon = new Sugar.Date(relativeTo.getTime() + (5*60*1000));
       dom["send-date"].value = soon.format('%Y-%m-%d');
       dom["send-time"].value = soon.format('%H:%M');
-      dom["send-datetime"].value = soon.long();
+      dom["send-datetime"].value = SLStatic.shortHumanDateTimeFormat(soon.getTime());
     }
 
     SLStatic.stateSetter(dom["sendon"].checked)(dom["onlyOnDiv"]);
@@ -514,37 +514,19 @@ const SLPopup = {
 
   parseSugarDate() {
     const dom = SLPopup.objectifyDOMElements();
-
-    // Because Send Later does not necessarily start its main loop on the minute,
-    // it's a little tricky to process relative times, and present them to the user
-    // in a logical way. For example, if right now is 10:25:53, and the main loop
-    // will execute at 14 seconds past the minute, then should input like
-    // "5 minutes from now" be rounded to 10:30 or 10:31?
-    //
-    // It seems most logical to round up in these cases, so that's what we'll do.
-    let relativeTo = new Date();
-    const rSec = relativeTo.getSeconds(),
-          pSec = SLStatic.previousLoop.getSeconds();
-    if (rSec > pSec) {
-      const tdiff = rSec-pSec;
-      relativeTo = new Date(relativeTo.getTime() + 60000 - tdiff*1000);
-    }
-
     try {
-      const localeCode = browser.i18n.getUILanguage();
-      const sendAt = new Sugar.Date(
-        Sugar.Date.get(relativeTo,
-          dom["send-datetime"].value,
-          {locale: localeCode,
-          future: true})
-      );
-      dom["send-date"].value = sendAt.format('%Y-%m-%d');
-      dom["send-time"].value = sendAt.format('%H:%M');
+      const sendAt = SLStatic.convertDate(dom["send-datetime"].value, true);
+      if (sendAt) {
+        const sugarSendAt = new Sugar.Date(sendAt);
+        dom["send-date"].value = sugarSendAt.format('%Y-%m-%d');
+        dom["send-time"].value = sugarSendAt.format('%H:%M');
+        return sendAt;
+      }
     } catch (ex) {
       SLStatic.debug("Unable to parse user input", ex);
-      dom["send-date"].value = '';
-      dom["send-time"].value = '';
     }
+    dom["send-date"].value = '';
+    dom["send-time"].value = '';
   },
 
   attachListeners() {
@@ -554,7 +536,7 @@ const SLPopup = {
       if (evt.target.id === "send-date" || evt.target.id === "send-time") {
         if (dom["send-date"].value && dom["send-time"].value) {
           const sendAt = SLStatic.parseDateTime(dom["send-date"].value, dom["send-time"].value);
-          dom["send-datetime"].value = (new Sugar.Date(sendAt)).long();
+          dom["send-datetime"].value = SLStatic.shortHumanDateTimeFormat(sendAt);
         }
       } else if (evt.target.id === "send-datetime") {
         SLPopup.parseSugarDate();
@@ -613,16 +595,68 @@ const SLPopup = {
         const funcArgs = preferences[`quickOptions${i}Args`];
 
         const quickBtn = dom[`quick-opt-${i}`];
-        quickBtn.value = preferences[`quickOptions${i}Label`];
+        const quickBtnLabel = preferences[`quickOptions${i}Label`];
+        const accelIdx = quickBtnLabel.indexOf("&");
+        if (accelIdx === -1) {
+          quickBtn.textContent = quickBtnLabel;
+        } else {
+          quickBtn.accessKey = quickBtnLabel[accelIdx+1];
+          const contents = SLStatic.underlineAccessKey(quickBtnLabel);
+          quickBtn.textContent = "";
+          for (let span of contents) {
+            quickBtn.appendChild(span);
+          }
+        }
         quickBtn.addEventListener("click", () => {
           const schedule = SLPopup.evaluateUfunc(funcName, null, funcArgs);
           SLPopup.doSendWithSchedule(schedule);
         });
+        document.addEventListener("keydown", (event) => {
+          if ((event.ctrlKey || event.metaKey) && event.code === `Digit${i}`) {
+            // Note: also catches Ctrl+Alt+{i}
+            event.preventDefault();
+            SLStatic.debug(`Executing shortcut ${i}`);
+            const schedule = SLPopup.evaluateUfunc(funcName, null, funcArgs);
+            SLPopup.doSendWithSchedule(schedule);
+          }
+        });
+      }
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if ((event.ctrlKey || event.metaKey) && event.code === "Enter") {
+        event.preventDefault();
+        const inputs = SLPopup.objectifyFormValues();
+        const schedule = SLPopup.parseInputs(inputs);
+        SLPopup.doSendWithSchedule(schedule);
       }
     });
 
     dom["sendNow"].addEventListener("click", SLPopup.doSendNow);
     dom["placeInOutbox"].addEventListener("click", SLPopup.doPlaceInOutbox);
+
+    (() => {
+      const label = browser.i18n.getMessage("sendNowLabel");
+      const accessKey = browser.i18n.getMessage("sendlater.prompt.sendnow.accesskey");
+      const contents = SLStatic.underlineAccessKey(label, accessKey);
+
+      dom["sendNow"].accessKey = accessKey;
+      dom["sendNow"].textContent = "";
+      for (let span of contents) {
+        dom["sendNow"].appendChild(span);
+      }
+    })();
+    (() => {
+      const label = browser.i18n.getMessage("sendlater.prompt.sendlater.label");
+      const accessKey = browser.i18n.getMessage("sendlater.prompt.sendlater.accesskey");
+      const contents = SLStatic.underlineAccessKey(label, accessKey);
+
+      dom["placeInOutbox"].accessKey = accessKey;
+      dom["placeInOutbox"].textContent = "";
+      for (let span of contents) {
+        dom["placeInOutbox"].appendChild(span);
+      }
+    })();
 
     setTimeout(() => document.getElementById("send-datetime").select(), 50);
   },

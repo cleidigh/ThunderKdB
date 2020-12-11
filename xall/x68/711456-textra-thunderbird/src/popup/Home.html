@@ -8,24 +8,75 @@
         <h2 style="margin:5px;">TexTra</h2>
     </div>
     <div align="right" style="margin: 5px; font-size:12px"><a href="javascript:void(0);" id="link_minna">みんなの自動翻訳</a></div>
-    <div style="padding:10px; background-color:#F4F7DE">
-        <span id="span_lang1">元言語</span>
-        <select id="lang1" value="ja"></select>
-        <input type="button" id="bt_lang_replace" value="⇔" />
-        <br />
-        <span id="span_lang2">訳言語</span>
-        <select id="lang2" value="en"></select>
-    </div>
-    <hr />
-    <a href="javascript:void(0);" id="link_trans">翻訳</a><br />
-    <a href="javascript:void(0);" id="link_lookup">辞書引き</a><br />
+
+    <table width="380" border="0">
+        <tr>
+            <div style="margin:5px;white-space:nowrap;">
+                <select id="lang1"></select>&nbsp;
+                <input type="button" id="bt_lang_replace" value="⇔" />
+                <select id="lang2" />
+            </div>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <textarea cols="40" rows="2" id="textbox_target" tabindex="1" style="line-height:19px"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td align="right" width="60%" nowrap>
+                <input type="button" id="btn_clear" value="クリア" tabindex="3" />
+                <input type="button" id="btn_paste_org" value="貼付け"  tabindex="4" />
+            </td>
+            <td align="right" width="5%">
+                <img id="img_wait" style="display:none" src="../icons/please_wait.gif" />
+            </td>
+            <td align="right" width="15%" nowrap>
+                <input type="button" id="btn_translation" value="翻訳" tabindex="2" />
+            </td>
+        </tr>
+    </table>
+
+    <table width="380" border="0">
+        <tr>
+            <td colspan="10">
+                <textarea cols="40" rows="2" id="textbox_trans" style="line-height:19px; background-color: #FFFFE0" tabindex="5"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="javascript:void(0);" id="link_trans_history">翻訳履歴</a>
+            </td>
+            <td align="right">
+                <input type="button" id="btn_copy_trans" value="コピー" tabindex="6" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="10">
+                <div id="div_trans_history" style="margin:5px; overflow:scroll; height:100px; width:400px; overflow-x: hidden; font-size:medium; display: none">
+                    <table id="tbl_trans_history" cellspacing='1' bgcolor='#0000cc' width='350'></table>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <hr id="hr_trans" />
+
+    <a href="javascript:void(0);" id="link_lookup">辞書引き</a>
+    <br />
     <hr />
 
-    <a href="javascript:void(0);" id="link_ログイン">ログイン設定</a> <br />
-    <a href="javascript:void(0);" id="link_機械翻訳API">機械翻訳API設定</a> <br />
-    <a href="javascript:void(0);" id="link_help">ヘルプ</a><br />
+    <a href="javascript:void(0);" id="link_ログイン">ログイン設定</a>
+    <br />
+    <a href="javascript:void(0);" id="link_機械翻訳API">機械翻訳API設定</a>
+    <br />
+    <a href="javascript:void(0);" id="link_help">ヘルプ</a>
+    <br />
     <script src="../js/jquery.js"></script>
     <script src="../js/utils.js"></script>
+    <script src="../js/api/oauth.js"></script>
+    <script src="../js/api/sha1.js"></script>
+    <script src="../js/api/aes.js"></script>
+    <script src="../js/api/api.js"></script>
     <script src="Home.js"></script>
 </body>
 </html>

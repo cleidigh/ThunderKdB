@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14196/14196754.png?modified=1600788309"
         }
     ],
-    "average_daily_users": 467,
+    "average_daily_users": 531,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "https://paypal.me/devmount",
     "created": "2020-09-28T12:23:48Z",
     "current_version": {
-        "id": 2474793,
+        "id": 2474956,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474793",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2474956",
         "files": [
             {
-                "id": 1017955,
-                "created": "2020-11-20T17:00:50Z",
-                "hash": "sha256:9643bf68d1a1c824d82d4ac9eb6bddad54078efd571e9886ad6648835b0cad58",
+                "id": 1018118,
+                "created": "2020-12-07T15:07:39Z",
+                "hash": "sha256:fa93481d8d283eb607f7d6baba49594cbc908856fd5f391e251ff5b0e91e0667",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 260247,
+                "size": 268412,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017955/thirdstats-0.8.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018118/thirdstats-1.0.2-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "messagesRead",
@@ -78,15 +78,17 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "- add translation contributors\n- improve contribution guidelines for new localization management\n- add logo to stats page heading\n- add-on option for start of week\n- remove legacy prefs\n- use more meaningful stats icon and tooltip in popup heading\n- set stats tab title depending on selected account\n- set stats tab favicon\n- make folder processing even more robust"
+            "en-GB": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.2 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects.",
+            "en-US": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.2 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects.",
+            "en-CA": "<b>Stats Cache</b>\nCan be enabled / disabled in the add-on options. Enabled by default. Once an account has been processed in the stats page, it's data will be cached and subsequently loaded much faster. Account stats can be reprocessed by a corresponding refresh button. Cache size is shown in the add-options, which also provide a button to clear the cache.\n\n<b>Account Selection</b>\nThe add-on options now provide a list of all existing accounts, where each account can be enabled / disabled. All non local accounts are enabled by default, except if there is only one local account. Disabled accounts won't appear in any accounts list and won't be included for stats processing. Release 1.0.2 contains a fix for a bug concerning the initialization of the accounts setting on the options page.\n\n<b>Form Field UX improved</b>\nForm fields now indicate the hover state and utilize transition effects."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/0.8.0",
-        "version": "0.8.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.0.2",
+        "version": "1.0.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This add-on provides detailed visual statistics of Thunderbird email accounts.\n\n<a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats\">Readme</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=bug_report.md\">Bug report</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=feature_request.md\">Feature request</a>\n\n<strong>Features</strong>\n<ul><li>Total numbers of emails and folders for all of your Thunderbird accounts</li><li>Sum of received and sent emails per year, per quarter, per month and per week</li><li>Sum of received and sent emails per daytime, per weekday and per month of year</li><li>Temporal distribution of received and sent emails per weekday per hour</li><li>Leaderboards of most contacted email addresses</li><li>Switch between all Thunderbird accounts (local accounts included)</li><li>Switch between a dark and a light theme</li><li>Language support for Catalan, Chinese, Czech, English, French, Galician, German, Hindi, Italian, Polish, Portuguese, Russian, Spanish, Swedish, and Thai (your language is missing? Create a <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=new_translation.md\">translation request</a>.)</li></ul>\n<strong>Additional hints</strong>\nTo properly recognize emails as sent, make sure to configure all email addresses you write from as identities for your email account. You can do so under account settings &gt; select your account &gt; click button more identities at the bottom and add or modify identities as you need. Use the add-on options to define identities for local accounts.\n\nAlso keep in mind, that the processing of large mailboxes can take a lot of time.",
+        "en-US": "This add-on provides detailed visual statistics of Thunderbird email accounts.\n\n<a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats\">Readme</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=bug_report.md\">Bug report</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=feature_request.md\">Feature request</a>\n\n<strong>Features</strong>\n<ul><li>Showing various stats in different chart types:\n<ul><li>Total numbers of emails and folders per account</li><li>Sum of received and sent emails per year and per month</li><li>Sum of received and sent emails per daytime and per weekday</li><li>Temporal distribution of received and sent emails per weekday per hour</li><li>Leaderboards of most contacted email addresses</li></ul></li><li>Activate all accounts that should be included (add-on option)</li><li>Use a dark or a light theme (add-on option)</li><li>Use a caching system to store already processed data (add-on option)</li><li>Language support for Catalan, Chinese, Czech, English, French, Galician, German, Hindi, Italian, Japanese, Polish, Portuguese, Russian, Spanish, Swedish, Thai and Turkish</li></ul>\n<strong>Additional hints</strong>\nTo properly recognize emails as sent, make sure to configure all email addresses you write from as identities for your email account. You can do so under account settings &gt; select your account &gt; click button more identities at the bottom and add or modify identities as you need. Use the add-on options to define identities for local accounts.\n\nAlso keep in mind, that the processing of large mailboxes can take a lot of time.",
         "de": "Dieses Add-on bietet eine detaillierte Übersicht statistischer Auswertungen der Thunderbird E-Mail Konten.\n\n<a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats\">Dokumentation</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=bug_report.md\">Fehler melden</a> - <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=feature_request.md\">Feature-Wunsch</a>\n\n<strong>Funktionen</strong>\n<ul><li>Gesamtanzahl aller E-Mails und Ordner aller Thunderbird Konten</li><li>Zusammenfassung empfangener und gesendeter E-Mails pro Jahr, pro Quartal, pro Monat und pro Woche</li><li>Zusammenfassung empfangener und gesendeter E-Mails pro Uhrzeit, pro Wochentag und pro Kalendermonat</li><li>Zeitliche Verteilung empfangener und gesendeter E-Mails pro Wochentag pro Stunde</li><li>Ranglisten der meist kontaktierten E-Mail-Adressen</li><li>Schnelles Wechseln zwischen allen Thunderbird Kontent (lokale Konten eingeschlossen)</li><li>Wechseln zwischen dunklem und hellem Theme</li><li>Sprachunterstützung für Katalanisch, Chinesisch, Tschechisch, Englisch, Französisch, Galizisch, Deutsch, Hindi, Italienisch, Polnisch, Portugiesisch, Russisch, Spanisch, Schwedisch und Thailändisch (deine Sprache fehlt? Erstelle einen <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/issues/new?template=new_translation.md\">Übersetzungs-Wunsch</a>.)</li></ul>\n<strong>Hinweise</strong>\nDamit E-Mails korrekt als gesendet erkannt werden, muss sichergestellt sein, dass alle eigenen E-Mail-Adressen als Identitäten konfiguriert sind. Die Einstellung kann unter Kontoeinstellungen &gt; Konto auswählen &gt; Button \"Mehr Identitäten\" vorgenommen werden. Identitäten für lokale Konten können in den Add-on Optionen eingestellt werden.\n\nBitte beachten, dass die Verarbeitung sehr großer Postfächer sehr lang dauern kann."
     },
     "developer_comments": null,
@@ -107,7 +109,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-20T17:05:02Z",
+    "last_updated": "2020-12-07T15:10:03Z",
     "name": {
         "ru": "ThirdStats",
         "fr": "ThirdStats",
@@ -128,20 +130,20 @@
     },
     "previews": [
         {
-            "id": 206225,
+            "id": 206335,
             "caption": {
                 "en-US": "ThirdStats on the Thunderbird default dark theme and light theme"
             },
             "image_size": [
                 1280,
-                642
+                640
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206225.png?modified=1603791695",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206335.png?modified=1607093509",
             "thumbnail_size": [
                 320,
                 160
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206225.png?modified=1603791695"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206335.png?modified=1607093509"
         },
         {
             "id": 206220,
@@ -152,12 +154,12 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206220.png?modified=1603791748",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206220.png?modified=1607093506",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206220.png?modified=1603791748"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206220.png?modified=1607093506"
         },
         {
             "id": 206221,
@@ -168,12 +170,12 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206221.png?modified=1603791693",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206221.png?modified=1607093506",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206221.png?modified=1603791693"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206221.png?modified=1607093506"
         },
         {
             "id": 206222,
@@ -184,12 +186,12 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206222.png?modified=1603791747",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206222.png?modified=1607093506",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206222.png?modified=1603791747"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206222.png?modified=1607093506"
         },
         {
             "id": 206223,
@@ -200,12 +202,12 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206223.png?modified=1603791745",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206223.png?modified=1607093506",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206223.png?modified=1603791745"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206223.png?modified=1607093506"
         },
         {
             "id": 206224,
@@ -216,20 +218,20 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206224.png?modified=1603791750",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206224.png?modified=1607093506",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206224.png?modified=1603791750"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206224.png?modified=1607093506"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.34499,
-        "count": 2,
+        "bayesian_average": 4.54115,
+        "count": 3,
         "average": 5,
-        "text_count": 2
+        "text_count": 3
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/reviews/",
     "requires_payment": false,

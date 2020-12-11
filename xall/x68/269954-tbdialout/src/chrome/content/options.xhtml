@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
+<?xml-stylesheet href="resource://tbdialout/skin/options.css" type="text/css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+  -   Version: MPL 1.1/GPL 2.0/LGPL 2.1
+  -
+  - The contents of this file are subject to the Mozilla Public License Version
+  - 1.1 (the "License"); you may not use this file except in compliance with
+  - the License. You may obtain a copy of the License at
+  - http://www.mozilla.org/MPL/
+  - 
+  - Software distributed under the License is distributed on an "AS IS" basis,
+  - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+  - for the specific language governing rights and limitations under the
+  - License.
+  -
+  - The Original Code is TBDialOut.
+  -
+  - The Initial Developer of the Original Code is
+  - Chris Hastie. http://www.oak-wood.co.uk
+  - Portions created by the Initial Developer are Copyright (C) 2010
+  - the Initial Developer. All Rights Reserved.
+  -
+  - TBDialOut was inspired by VOIP3 Dialer by MSelector, although the code
+  - has largely been rewritten. http://www.mselector.com
+  -
+  - Contributor(s):
+  -
+  - Alternatively, the contents of this file may be used under the terms of
+  - either the GNU General Public License Version 2 or later (the "GPL"), or
+  - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+  - in which case the provisions of the GPL or the LGPL are applicable instead
+  - of those above. If you wish to allow use of your version of this file only
+  - under the terms of either the GPL or the LGPL, and not to allow others to
+  - use your version of this file under the terms of the MPL, indicate your
+  - decision by deleting the provisions above and replace them with the notice
+  - and other provisions required by the GPL or the LGPL. If you do not delete
+  - the provisions above, a recipient may use your version of this file under
+  - the terms of any one of the MPL, the GPL or the LGPL.
+  - 
+  - ***** END LICENSE BLOCK ***** -->
+
+
+<dialog    
+   id="appPreferences"
+   buttons="accept"
+   title="__MSG_tbdoprefwindow.title__"
+   onload="tbdialoutprefs.onLoad()"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <commandset><command id="custominbackground_change" oncommand="tbdialoutprefs.setCustomAuthViz()"/></commandset>
+    <grid flex="1">
+
+      <columns>
+        <column flex="1"/>
+        <column flex="2"/>
+      </columns>
+
+      <rows>
+        <row align="center">
+          <label control="proto_menu" value="__MSG_tbdoproto_menu.label__:" accesskey="__MSG_tbdoproto_menu.accesskey__"/>
+          <menulist id="proto_menu" preference="extensions.tbdialout.proto" oncommand="tbdialoutprefs.setCustomOptViz()">
+            <menupopup>
+                <menuitem label="callto:" value="callto:"/>
+                <menuitem label="tel:" value="tel:"/>
+                <menuitem label="sip:" value="sip:"/>
+                <menuitem label="skype:" value="skype:"/>
+                <menuitem label="__MSG_tbdocustomurl_menu.label__" value="custom" />
+                <menuitem label="__MSG_tbdoasteriskami_menu.label__" value="asteriskami" />
+            </menupopup>
+          </menulist>
+        </row>
+
+        <row align="center">
+          <label control="plus_text" value="__MSG_tbdoplus_text.label__:" accesskey="__MSG_tbdoplus_text.accesskey__"/>
+          <html:input id="plus_text" preference="extensions.tbdialout.plus" size="2" />
+        </row>
+
+        <row align="center">
+          <label control="prefix_text" value="__MSG_tbdoprefix_text.label__:" accesskey="__MSG_tbdoprefix_text.accesskey__"/>
+          <html:input id="prefix_text" preference="extensions.tbdialout.prefix" size="2" />
+        </row>
+
+      </rows>
+    </grid>
+    
+    <groupbox id="tbdialout-options-customoptions">
+      <hbox class="groupbox-title">
+        <label class="header">__MSG_tbdocustomurl_boxcaption.label__</label>
+      </hbox>
+      <label class="tbdocustomoptions" value="__MSG_tbdocustomhint_text__" />
+      <grid flex="1">
+        <columns>
+          <column flex="1"/>
+          <column flex="4"/>
+        </columns>
+
+        <rows>
+          <row align="center">
+            <label class="tbdocustomoptions" control="customurl_text" value="__MSG_tbdocustomurl_text.label__:" accesskey="__MSG_tbdocustomurl_text.accesskey__"/>
+            <html:input class="tbdocustomoptions" id="customurl_text" preference="extensions.tbdialout.customurl" size="35" />
+          </row>
+          <row align="center">
+            <label class="tbdocustomoptions" control="customuser_text" value="__MSG_tbdocustomuser_text.label__:" accesskey="__MSG_tbdocustomuser_text.accesskey__"/>
+            <html:input class="tbdocustomoptions" id="customuser_text" preference="extensions.tbdialout.customuser" size="15" />
+          </row>
+          <row align="center">
+            <label class="tbdocustomoptions" control="custompass_text" value="__MSG_tbdocustompass_text.label__:" accesskey="__MSG_tbdocustompass_text.accesskey__"/>
+            <html:input class="tbdocustomoptions" id="custompass_text" size="15" type="password" onchange="tbdialoutprefs.saveCustomPassword()" />
+            <image id="tbdo-opt-custompass-img" class="alert-icon" height="24" width="24" onclick="tbdialoutprefs.openPassWarn();" tooltiptext="__MSG_tbdconfighelp_text.label__" />
+          </row>
+          <row align="center">
+            <!-- <label class="tbdocustomoptions" control="customexternalapp_cb" value="__MSG_tbdocustomexternalapp_cb.label__:" accesskey="__MSG_tbdocustomexternalapp_cb.accesskey__"/> -->
+            <checkbox class="tbdocustomoptions" id="custominbackground_cb" preference="extensions.tbdialout.custominbackground" label="__MSG_tbdocustominbackground_cb.label__" accesskey="__MSG_tbdocustominbackground_cb.accesskey__" command="custominbackground_change" />
+          </row>
+        </rows>
+      </grid>
+    </groupbox>
+
+    <groupbox id="tbdialout-options-amioptions">
+      <hbox class="groupbox-title">
+        <label class="header">__MSG_tbdoami_boxcaption.label__</label>
+      </hbox>
+      <grid flex="1">
+        <columns>
+          <column flex="1"/>
+          <column flex="4"/>
+        </columns>
+
+        <rows>
+          <row align="center">
+            <label class="tbdoamioptions" control="amihost_text" value="__MSG_tbdoamihost_text.label__:" accesskey="__MSG_tbdoamihost_text.accesskey__"/>
+            <html:input class="tbdoamioptions" id="amihost_text" preference="extensions.tbdialout.ami.host" size="25" />
+          </row>
+          <row align="center">
+            <label class="tbdoamioptions" control="amiport_text" value="__MSG_tbdoamiport_text.label__:" accesskey="__MSG_tbdoamiport_text.accesskey__"/>
+            <html:input class="tbdoamioptions" id="amiport_text" preference="extensions.tbdialout.ami.port" size="5" />
+          </row>
+          <row align="center">
+            <label class="tbdoamioptions" control="amiuser_text" value="__MSG_tbdoamiuser_text.label__:" accesskey="__MSG_tbdoamiuser_text.accesskey__"/>
+            <html:input class="tbdoamioptions" id="amiuser_text" preference="extensions.tbdialout.ami.user" size="15" />
+          </row>
+          <row align="center">
+            <label class="tbdoamioptions" control="amisecret_text" value="__MSG_tbdoamisecret_text.label__:" accesskey="__MSG_tbdoamisecret_text.accesskey__"/>
+            <html:input class="tbdoamioptions" id="amisecret_text" size="15" type="password" onchange="tbdialoutprefs.saveAmiPassword()" />
+            <image id="tbdo-opt-amisecret-img" class="alert-icon" height="24" width="24" onclick="tbdialoutprefs.openPassWarn();" tooltiptext="__MSG_tbdconfighelp_text.label__" />
+          </row>
+          <row align="center">
+            <label class="tbdoamioptions" control="amichannel_text" value="__MSG_tbdoamichannel_text.label__:" accesskey="__MSG_tbdoamichannel_text.accesskey__"/>
+            <html:input class="tbdoamioptions" id="amichannel_text" preference="extensions.tbdialout.ami.channel" size="15" />
+          </row>
+          <row align="center">
+            <label class="tbdoamioptions" control="amicontext_text" value="__MSG_tbdoamicontext_text.label__:" accesskey="__MSG_tbdoamicontext_text.accesskey__"/>
+            <html:input class="tbdoamioptions" id="amicontext_text" preference="extensions.tbdialout.ami.context" size="15" />
+          </row>
+          <row align="center">
+            <label class="tbdoamioptions" control="amicallerid_text" value="__MSG_tbdoamicallerid_text.label__:" accesskey="__MSG_tbdoamicallerid_text.accesskey__"/>
+            <html:input class="tbdoamioptions" id="amicallerid_text" preference="extensions.tbdialout.ami.callerid" size="15" />
+          </row>
+        </rows>
+      </grid>
+    </groupbox>
+    
+  <hbox flex="1" align="start">
+      <image id="tbdo-opt-help-img" class="message-icon" height="24" width="24" tooltiptext="__MSG_tbdconfighelp_text.label__"  onclick="tbdialoutprefs.openHelp();" />
+      <label id="tbdo-opt-help-txt" class="text-link" onclick="tbdialoutprefs.openHelp();" value="__MSG_tbdconfighelp_text.label__" />
+  </hbox>
+
+  <script 
+     src="chrome://global/content/preferencesBindings.js" 
+     type="application/javascript"/>
+  <script 
+     src="chrome://tbdialout/content/scripts/i18n.js" 
+     type="application/javascript"/>
+  <script 
+     src="chrome://tbdialout/content/options.js" 
+     type="application/javascript"/> 
+  <script 
+     src="chrome://tbdialout/content/preferences.js" 
+     type="application/javascript"/> 
+  <script 
+     src="chrome://tbdialout/content/utils.js" 
+     type="application/javascript"/> 
+  
+
+    
+</dialog>

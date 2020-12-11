@@ -64,7 +64,9 @@ var oGrammalecteTextEditor = {
     },
 
     purgeText: function (sText) {
-        return sText.replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+        //console.log(sText);
+        // return sText.replace(/&nbsp;/g, " ").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/\r\n/g, "\n").replace(/\r/g, "\n"); // probably useless now
+        return sText.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
     },
 
     clear: function () {
@@ -107,7 +109,7 @@ class HTMLPageEditor {
         this.lNode = [];
         this.bCheckSignature = bCheckSignature;
         this._lParsableNodes = ["P", "LI", "H1", "H2", "H3", "H4", "H5", "H6"];
-        this._lRootNodes = ["DIV", "UL", "OL"];
+        this._lRootNodes = ["DIV", "UL", "OL", "BLOCKQUOTE"];
         if (!this.bWrite) {
             // we don’t write back to the page
             oGrammalecte.oGCPanel.addMessageToGCPanel(oGrammalecteMessages["excluded_site"]);
@@ -123,9 +125,11 @@ class HTMLPageEditor {
         // recursive function
         try {
             for (let xNode of xRootNode.childNodes) {
-                if (xNode.className !== "moz-cite-prefix" && xNode.className !== "moz-forward-container" && xNode.tagName !== "BLOCKQUOTE"
-                    && (xNode.nodeType == Node.TEXT_NODE || (xNode.nodeType == Node.ELEMENT_NODE && !xNode.textContent.startsWith(">")))
+                if (xNode.className !== "moz-cite-prefix" && xNode.className !== "moz-forward-container"
+                    && ! (bThunderbird && xNode.tagName == "BLOCKQUOTE" && xNode.cite)
+                    && ( xNode.nodeType == Node.TEXT_NODE || (xNode.nodeType == Node.ELEMENT_NODE && !xNode.textContent.startsWith(">")) )
                     && xNode.textContent !== "") {
+                    // console.log("tag:", xNode.tagName, "class:", xNode.className, " nodeType:", xNode.nodeType, " type:", xNode.type);
                     if (xNode.tagName === undefined) {
                         if (!this.bCheckSignature && xNode.textContent.startsWith("-- ")) {
                             break;

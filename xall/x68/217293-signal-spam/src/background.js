@@ -1512,7 +1512,7 @@ function contextMenuHandler(info, tab) {
     switch (info.menuItemId) {
         case 'report':
             onSelectedMessagesChangedHandler(tab,info.selectedMessages);
-            clickOnActionButton.apply(verifrom.actionButton.instanceForTab(tab.id, tab.mailTab===true ? browser.browserAction : browser.messageDisplayAction),tab,info);
+            browser.clickonbrowseractionbutton.click(browser.runtime.id);
             break;
         case 'reportsListFromMessages':
         case 'reportsList':

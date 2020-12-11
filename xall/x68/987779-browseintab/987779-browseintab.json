@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 455,
+    "average_daily_users": 470,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-02-10T20:15:47Z",
     "current_version": {
-        "id": 2474619,
+        "id": 2474912,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/versions/2474619",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/versions/2474912",
         "files": [
             {
-                "id": 1017781,
-                "created": "2020-11-02T20:26:31Z",
-                "hash": "sha256:69a664bc094ad3f9e1f14a449f0b58490d77d9f64fb8bd944896571f558a5102",
+                "id": 1018074,
+                "created": "2020-12-02T20:46:09Z",
+                "hash": "sha256:a74848431f8c10049478667b4bcf5c208382dbfcc49c480594a54ff43a9812a5",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 46872,
+                "size": 49756,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017781/browseintab-2.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018074/browseintab-2.5-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
@@ -74,11 +74,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "<b>Version 2.4 changes</b>\n\n<li>Udate: refactor storage.local options changes notification.</li>\n<b>Version 2.3 changes</b>\n\n<li>Fix: Issue #5: Context menu: Undo/Redo is showing on messages list (thanks Kris Kelvin).</li><li>New: Issue #3: Add feature to open a new blank tab; allow edit of url in urlbar (thanks atErik).</li><li>New: Zoom applies to chrome as well as messages and web content.</li>\n<b>Version 2.2 changes</b>\n\n<li>New: implement browser_style in Options.</li>\n<b>Version 2.1 changes</b>\n\n<li>Fix: urlBar system url icon is not displayed.</li><li>Fix: handle zoom in tabs without a browser.</li><li>Fix: make urlBar zoom UI update work in multimessage browser, and glodaFacet tab name, chat tab type, chromeTab tab type browsers.</li><li>Fix: handle too large branding icon on startup.</li><li>Fix: ensure all listeners and traces cleaned up on extension disable.</li>\n<b>Version 2.0 changes</b>\n\n<li>New: make the urlBar look like someone cares.</li><li>New: add reload button in the urlBar and ctrl+F5/ctrl+shift+F5 for reload/reload skip cache.</li><li>New: add zoom level button in the urlBar, like Firefox; persist per tab setting across restarts.</li><li>New: fix url display in the urlBar for internationalization (IDN and localized paths).</li><li>New: options to display mail toolbar and url toolbar on all tabs.</li><li>Udate: updates and refactorings for Tb 78.</li>"
+            "en-US": "<b>Version 2.5 changes</b>\n<ul>  <li>New: implement custom zoom options - zoom increment, chrome zoom level, image zoom, ctrl-mouswheel zoom, left mousebutton down-mousewheel zoom.</li>  <li>Udate: refactor browser i18n and storage accesses from chrome.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/versions/2.4",
-        "version": "2.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/versions/2.5",
+        "version": "2.5"
     },
     "default_locale": "en-US",
     "description": {
@@ -101,7 +101,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-11-03T13:09:57Z",
+    "last_updated": "2020-12-04T15:36:00Z",
     "name": {
         "en-US": "BrowseInTab"
     },
@@ -168,7 +168,7 @@
     "slug": "browseintab",
     "status": "public",
     "summary": {
-        "en-US": "<a rel=\"nofollow\" href=\"https://bitbucket.org/alta8888/browseintab\">BrowseInTab</a> lets you open and browse any link in a Thunderbird content tab. Links are followed within the tab and back/forward navigation is supported."
+        "en-US": "<a rel=\"nofollow\" href=\"https://bitbucket.org/alta8888/browseintab\">BrowseInTab</a> lets you open and browse any link in a Thunderbird content tab. Links are followed within the tab and back/forward navigation is supported. Also with enhanced Zoom customization."
     },
     "support_email": null,
     "support_url": {
@@ -178,7 +178,7 @@
         "browse",
         "content",
         "firefox57",
-        "image zoom",
+        "image",
         "link",
         "tab",
         "web",
@@ -192,7 +192,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-02T20:26:31Z",
+            "comp78pv_version": "2.4",
+            "comp78pv_vmin": "78.0a1",
+            "comp78pv_vmax": "*"
         }
     }
 }

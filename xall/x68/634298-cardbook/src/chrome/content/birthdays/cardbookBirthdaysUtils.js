@@ -154,13 +154,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				}
 	
 				var calICalendar = Components.interfaces.calICalendar;
-				var startRange = new Date(lBirthdayDate.getTime() - (24 * 60 * 60 * 1000));
-				var endRange = new Date(lBirthdayDate.getTime() + (24 * 60 * 60 * 1000));
-				var startRangeDT = Components.classes["@mozilla.org/calendar/datetime;1"].createInstance(Components.interfaces.calIDateTime);
-				startRangeDT.nativeTime = startRange.getTime() * 1000;
-				var endRangeDT = Components.classes["@mozilla.org/calendar/datetime;1"].createInstance(Components.interfaces.calIDateTime);
-				endRangeDT.nativeTime = endRange.getTime() * 1000;
-				aCalendar1.getItems(calICalendar.ITEM_FILTER_TYPE_EVENT, 0, startRangeDT, endRangeDT, getListener);
+				aCalendar1.getItems(calICalendar.ITEM_FILTER_TYPE_EVENT, 0, null, null, getListener);
 			}
 		},
 
@@ -175,6 +169,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			}
 			
 			iCalString += "TRANSP:TRANSPARENT\n";
+			iCalString += "RRULE:FREQ=YEARLY\n";
 
 			var dtstart = "DTSTART:";
 			var dtend = "DTEND:";

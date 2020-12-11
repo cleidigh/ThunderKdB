@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<window id="tbdoPassWarnWnd" title="__MSG_tbdialoutButtonMenuHome.label__"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="tbdialoutPassWarn.onPassWarnLoad();">
+  <script 
+     src="chrome://tbdialout/content/scripts/i18n.js" 
+     type="application/javascript"/>
+  <script src="passwarn.js" type="application/javascript"/>
+  <!-- Initialise iframe with loading.xhtml to give some feedback to user whilst contact is made with remote site -->
+  <iframe type="content" id="tbdoPassWarnBrowser" src="chrome://tbdialout/content/loading.html" flex="1"/>
+</window>

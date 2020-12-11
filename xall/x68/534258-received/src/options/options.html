@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" type="text/css" href="chrome://global/skin/in-content/common.css"/>
+        <link rel="stylesheet" type="text/css" href="chrome://mozapps/content/extensions/aboutaddons.css"/>
+        <style type="text/css">
+            *|*:root {
+                --input-text-x-margin: 4px;
+            }
+            button {
+                text-align: center;
+                float: right;
+            }
+            input[type="text"] {
+                width: calc(100% - 2 * var(--input-text-x-margin));
+                margin-right: var(--input-text-x-margin);
+                margin-left: var(--input-text-x-margin);
+                text-overflow: ellipsis;
+            }
+            label {
+                font-weight: bold;
+            }
+            .addon-detail-row {
+                display: unset;
+                margin: 0;
+            }
+            .addon-detail-row:first-of-type {
+                border-top: none;
+            }
+            .received-examples p {
+                color: var(--in-content-deemphasized-text);
+                font-size: smaller;
+            }
+            .received-examples input[type="text"],
+            .received-examples input[type="text"]:focus {
+                border-color: var(--in-content-border-color);
+                box-shadow: none;
+            }
+        </style>
+    </head>
+
+<body>
+    <div class="addon-detail-row">
+        <form>
+            <label for="regexp">
+                Regular expression with capturing parentheses:
+            </label>
+            <input type="text" id="regexp" />
+            <button type="submit">Save</button>
+        </form>
+    </div>
+    <div class="addon-detail-row received-examples">
+        <b>Examples</b>
+        <p>
+            <input type="text" readonly=true value="(.*)" />
+            Displays all "Received" headers.
+        </p>
+        <p>
+            <input type="text" readonly=true value="^from (.+?) by mx\.example\.com" />
+            Displays the host where the email has come from. The regular expression should match the first
+            "Received" header added by the recipient's smtp server.
+        </p>
+        <p>
+            <input type="text" readonly=true value="^from (.+?)(?: \(using .+ requested\))? by mx\.example\.com" />
+            The same as above, but hides TLS information if any.
+        </p>
+        <p>
+            <input type="text" readonly=true value="^from (.+?)(?: \(using .+ requested\))? by (?:mx\.example\.com|mx\.example\.org|mxfront\d{1,2}[a-z]\.mail\.yandex\.net \(mxfront/Yandex\))" />
+            The same as above, but for accounts on different mail servers:
+            mx.example.com, mx.example.net, Yandex.Mail Service.
+        </p>
+    </div>
+    <script src="options.js"></script>
+</body>
+
+</html>

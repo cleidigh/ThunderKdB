@@ -89,6 +89,9 @@ class PlikConnection {
         currentAttachments[fileInfo.id]["X-UploadToken"] = uploadInfo.uploadToken;
 
         if (uploadInfo.downloadDomain) {
+            if (!uploadInfo.downloadDomain.endsWith('/')) {
+                uploadInfo.downloadDomain += '/';
+            }
             url = url.replace(this.serverUrl, uploadInfo.downloadDomain);
         }
 

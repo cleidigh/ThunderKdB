@@ -11,13 +11,12 @@ div#grammalecte_gc_panel_content {
 
 div.grammalecte_paragraph_block {
     margin: 5px 5px 0 5px;
+    background-color: hsl(0, 0%, 96%);
+    border-radius: 2px;
 }
-
 p.grammalecte_paragraph {
     margin: 0;
     padding: 12px;
-    background-color: hsl(0, 0%, 96%);
-    border-radius: 2px;
     line-height: 1.3;
     text-align: left;
     font-size: 14px;
@@ -25,7 +24,6 @@ p.grammalecte_paragraph {
     color: hsl(0, 0%, 0%);
     hyphens: none;
 }
-
 
 /*
     Action buttons
@@ -47,6 +45,13 @@ div.grammalecte_paragraph_button {
     border-radius: 2px;
 }
 
+div.grammalecte_paragraph_actions .grammalecte_blue {
+    color: hsl(0, 0%, 80%);
+}
+div.grammalecte_paragraph_actions .grammalecte_blue:hover {
+    background-color: hsl(210, 50%, 40%);
+    color: hsl(0, 0%, 100%);
+}
 div.grammalecte_paragraph_actions .grammalecte_green {
     color: hsl(0, 0%, 80%);
 }
@@ -146,7 +151,8 @@ div#grammalecte_tooltip_ignore:hover {
     color: hsla(0, 0%, 100%, 1);
     text-shadow: 0 0 3px hsl(30, 30%, 60%);
 }
-div#grammalecte_tooltip_url {
+div#grammalecte_tooltip_url,
+div#grammalecte_tooltip_open_lexed {
     display: inline-block;
     margin-left: 10px;
     padding: 1px 5px;
@@ -158,7 +164,8 @@ div#grammalecte_tooltip_url {
     font-size: 12px;
     text-decoration: none;
 }
-div#grammalecte_tooltip_url:hover {
+div#grammalecte_tooltip_url:hover,
+div#grammalecte_tooltip_open_lexed:hover {
     background-color: hsl(210, 50%, 60%);
     color: hsla(0, 0%, 100%, 1);
     text-shadow: 0 0 3px hsl(210, 30%, 60%);

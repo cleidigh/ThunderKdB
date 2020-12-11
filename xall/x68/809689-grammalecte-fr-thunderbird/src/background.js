@@ -348,7 +348,7 @@ function handleConnexion (xPort) {
                 openConjugueurWindow();
                 break;
             case "openLexiconEditor":
-                openLexiconEditor();
+                openLexiconEditor("__personal__", oParam["sWord"]);
                 break;
             default:
                 console.log("[background] Unknown command: " + sCommand);
@@ -370,7 +370,7 @@ browser.runtime.onConnect.addListener(handleConnexion);
 */
 if (bThunderbird) {
     messenger.composeAction.onClicked.addListener(function (xTab, xData) {
-        sendCommandToTab(xTab.id, "grammar_checker_compose_window");
+        sendCommandToTabViaPort(xTab.id, "grammar_checker_compose_window");
     });
 }
 
@@ -400,13 +400,13 @@ if (!bThunderbird) {
             // analyze
             case "grammar_checker_editable":
             case "grammar_checker_page":
-                sendCommandToTab(xTab.id, xInfo.menuItemId);
+                sendCommandToTabViaPort(xTab.id, xInfo.menuItemId);
                 break;
             case "grammar_checker_iframe":
-                sendCommandToTab(xTab.id, xInfo.menuItemId, xInfo.frameId);
+                sendCommandToTabViaPort(xTab.id, xInfo.menuItemId, xInfo.frameId);
                 break;
             case "grammar_checker_selection":
-                sendCommandToTab(xTab.id, xInfo.menuItemId, xInfo.selectionText);
+                sendCommandToTabViaPort(xTab.id, xInfo.menuItemId, xInfo.selectionText);
                 break;
             // tools
             case "conjugueur_window":
@@ -479,9 +479,14 @@ function storeGCOptions (dOptions) {
     browser.storage.local.set({"gc_options": dOptions});
 }
 
-function sendCommandToTab (iTab, sCommand, result=null) {
+function sendCommandToTabViaPort (iTab, sCommand, result=null) {
     let xTabPort = dConnx.get(iTab);
     xTabPort.postMessage({sActionDone: sCommand, result: result, oInfo: null, bEnd: false, bError: false});
+}
+
+function sendCommandToTab (iTab, sCommand, oParam=null) {
+    //console.log("send to:", iTab, "command:", sCommand, "params:", oParam);
+    browser.tabs.sendMessage(iTab, {sActionRequest: sCommand, oParam: oParam});
 }
 
 function sendCommandToCurrentTab (sCommand) {
@@ -508,8 +513,12 @@ function sendCommandToAllTabs (sCommand) {
     }
 }
 
-function openLexiconEditor (sName="__personal__") {
+
+let sWordForLexiconEditor = "";
+
+function openLexiconEditor (sName="__personal__", sWord="") {
     if (nTabLexiconEditor === null) {
+        sWordForLexiconEditor = sWord;
         if (bChrome) {
             browser.tabs.create({
                 url: browser.runtime.getURL("panel/lex_editor.html")
@@ -523,11 +532,15 @@ function openLexiconEditor (sName="__personal__") {
     }
     else {
         browser.tabs.update(nTabLexiconEditor, {active: true});
+        sendCommandToTab(nTabLexiconEditor, "new_entry", { sWord: sWord });
     }
 }
 
 function onLexiconEditorOpened (xTab) {
     nTabLexiconEditor = xTab.id;
+    if (sWordForLexiconEditor !== "") {
+        setTimeout(sendCommandToTab, 1000, nTabLexiconEditor, "new_entry", { sWord: sWordForLexiconEditor });
+    }
 }
 
 function openDictionaries () {

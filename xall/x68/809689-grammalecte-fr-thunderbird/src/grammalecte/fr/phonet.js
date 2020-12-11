@@ -29,7 +29,7 @@ var phonet = {
     },
 
     hasSimil: function (sWord, sPattern=null) {
-        // return True if there is list of words phonetically similar to sWord
+        // return True if there is list of words phonetically similar to <sWord>
         if (!sWord) {
             return false;
         }
@@ -52,7 +52,7 @@ var phonet = {
     },
 
     getSimil: function (sWord) {
-        // return list of words phonetically similar to sWord
+        // return list of words phonetically similar to <sWord>
         if (!sWord) {
             return [];
         }
@@ -69,7 +69,7 @@ var phonet = {
     },
 
     selectSimil: function (sWord, sPattern) {
-        // return a set of words phonetically similar to sWord and whom POS is matching sPattern
+        // return a set of words phonetically similar to <sWord> and whom POS is matching <sPattern>
         if (!sPattern) {
             return new Set(this.getSimil(sWord));
         }
@@ -82,6 +82,34 @@ var phonet = {
             }
         }
         return aSelect;
+    },
+
+    _getSetNumber (sWord) {
+        // return the set number where <sWord> belongs, else -1
+        if (this._dWord.has(sWord)) {
+            return this._dWord.get(sWord);
+        }
+        if (sWord.slice(0,1).gl_isUpperCase()) {
+            if (this._dWord.has(sWord.toLowerCase())) {
+                return this._dWord.get(sWord.toLowerCase());
+            }
+            if (sWord.gl_isUpperCase() && this._dWord.has(sWord.gl_toCapitalize())) {
+                return this._dWord.get(sWord.gl_toCapitalize());
+            }
+        }
+        return -1;
+    },
+
+    isSimilAs: function (sWord, sSimil) {
+        // return True if <sWord> phonetically similar to <sSimil> (<sWord> tested with several casing)
+        if (!sWord || !sSimil) {
+            return false;
+        }
+        let n = this._getSetNumber(sWord);
+        if (n == -1) {
+            return false;
+        }
+        return n == this._getSetNumber(sSimil);
     }
 };
 

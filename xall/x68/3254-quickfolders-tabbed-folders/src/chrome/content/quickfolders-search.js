@@ -10,9 +10,8 @@
 // to see Postbox doing it,
 // check mailnews\base\search\resources\content\SearchDialog.js
 //   and                                        searchTermOverlay.js
-// Thunderbird 78 -  a lot of the global elements are not available at load time - maybe we need to hook up with a different event?
 QuickFolders.SearchDialog = {
-  addSearchTerm: function addSearchTerm(folder, searchTerm) {
+  addSearchTerm: function addSearchTerm(searchTerm) {
     const Ci = Components.interfaces, 
           Cc = Components.classes,
           utils = QuickFolders.Util,
@@ -20,13 +19,11 @@ QuickFolders.SearchDialog = {
           typeOperator = Ci.nsMsgSearchOp;
     utils.logDebug('addSearchTerm(attrib = ' + searchTerm.attrib + ')');
     // let's try and clone the term using the proper session
-    let SearchTermList = document.getElementById("searchTermList"); 
-    let rowIndex = SearchTermList.getRowCount();  // used to be gSearchTermList
+    let rowIndex = gSearchTermList.getRowCount();
     // from http://mxr.mozilla.org/comm-central/source/mailnews/base/search/content/searchTermOverlay.js#232
     //      onMore() called when the [+] button is clicked on a row (simulate last row)
     
-    let searchScope = GetScopeForFolder(folder); // was gSearchScope
-    createSearchRow(rowIndex, searchScope, searchTerm, false);
+    createSearchRow(rowIndex, gSearchScope, searchTerm, false);
     gTotalSearchTerms++;
     updateRemoveRowButton();
 
@@ -56,16 +53,36 @@ QuickFolders.SearchDialog = {
           if (!folder.isServer)
             updateSearchFolderPicker(folder.URI);
         }
-      if (searchTerms.length) {
-        let addSearchTerm_quickfolders = this.addSearchTerm.bind(this);
-        setTimeout( function initSearchTerms() {
-            for (let i=0; i<searchTerms.length; i++) {
-              addSearchTerm_quickfolders(folder, searchTerms[i]);
-            }
-            // remove first (empty) row
-            removeSearchRow(0);
-            --gTotalSearchTerms;
-          }, 500);
+        
+      if ((util.Application == 'Postbox' || util.Application == 'SeaMonkey')
+          && 
+          typeof initializeSearchRows == 'function') 
+      {
+        // create a collection from array and pass it to initializeSearchRows
+        let termsArray = args.searchTerms,
+            templateCollection = Cc["@mozilla.org/supports-array;1"].createInstance(Ci.nsICollection),
+            count = termsArray.length;
+        for (let i = 0; i < count; i++) {
+          templateCollection.AppendElement(termsArray[i]);
+        }
+        for (let j = 0; j < count; j++) { // just doing it this way to prove my collection 'works'
+          gSearchSession.appendTerm(templateCollection.QueryElementAt(j, Ci.nsIMsgSearchTerm));
+        }
+        
+        // remove last row?
+        removeSearchRow(0); // possible?
+        --gTotalSearchTerms;
+        // now pass the collection
+        initializeSearchRows(nsMsgSearchScope.offlineMail, templateCollection);
+        initializeBooleanWidgets(); // make sure radiobutton 'all' is selected (from first searchTerm)
+      }
+      else {
+        for (let i=0; i<searchTerms.length; i++) {
+          this.addSearchTerm(searchTerms[i]);
+        }
+        // remove first (empty) row
+        removeSearchRow(0);
+        --gTotalSearchTerms;
       }
       // Postbox only ?
       if (saveSearchTerms && window.gSearchSession) {
@@ -77,3 +94,6 @@ QuickFolders.SearchDialog = {
   }
   
 }
+
+/* removed from xul overlay */
+window.addEventListener("load", function(e) { QuickFolders.SearchDialog.onLoad(e);}, false); 

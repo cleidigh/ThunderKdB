@@ -2,13 +2,13 @@ var extensionConfig = {
 	"appInfo": {
 		"staging": false,
 		"environment": "thunderbird extension",
-		"version": "4.0.5",
-		"manifestVersion": "4.0.5",
+		"version": "4.0.6",
+		"manifestVersion": "4.0.6",
 		"upgradeDB": false,
 		"updateManifestURL": {
 			"display": true,
-			"fr": "https://vrf01.signal-spam.fr/extension/dist/thunderbird/update_manifests/thunderbird.4.0.5.fr.html",
-			"en": "https://vrf01.signal-spam.fr/extension/dist/thunderbird/update_manifests/thunderbird.4.0.5.en.html"
+			"fr": "https://vrf01.signal-spam.fr/extension/dist/thunderbird/update_manifests/thunderbird.4.0.6.fr.html",
+			"en": "https://vrf01.signal-spam.fr/extension/dist/thunderbird/update_manifests/thunderbird.4.0.6.en.html"
 		},
 		"installManifestURL": {
 			"fr": "https://vrf01.signal-spam.fr/extension/dist/thunderbird/install_manifests/thunderbird.4.0.0.fr.html",
@@ -39,7 +39,7 @@ var extensionConfig = {
 	},
 	"jsonConfig": {
 		"localFileName": "config/config.json",
-		"url": "https://vrf01.signal-spam.fr/extension/params/thunderbird/prod/v4.0.5.json",
-		"staging": "https://vrf01.signal-spam.fr/extension/params/thunderbird/preprod/v4.0.5.json"
+		"url": "https://vrf01.signal-spam.fr/extension/params/thunderbird/prod/v4.0.6.json",
+		"staging": "https://vrf01.signal-spam.fr/extension/params/thunderbird/preprod/v4.0.6.json"
 	}
 };

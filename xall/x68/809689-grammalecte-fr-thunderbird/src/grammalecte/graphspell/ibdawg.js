@@ -152,60 +152,84 @@ if (typeof(process) !== 'undefined') {
 class SuggResult {
     // Structure for storing, classifying and filtering suggestions
 
-    constructor (sWord, nDistLimit=-1) {
+    constructor (sWord, nSuggLimit=10, nDistLimit=-1) {
         this.sWord = sWord;
         this.sSimplifiedWord = str_transform.simplifyWord(sWord);
         this.nDistLimit = (nDistLimit >= 0) ? nDistLimit :  Math.floor(sWord.length / 3) + 1;
         this.nMinDist = 1000;
-        this.aSugg = new Set();
-        this.dSugg = new Map([ [0, []],  [1, []],  [2, []] ]);
-        this.aAllSugg = new Set();      // all found words even those refused
+        // Temporary sets
+        this.aAllSugg = new Set();  // All suggestions, even the one rejected
+        this.dGoodSugg = new Map(); // Acceptable suggestions
+        this.dBestSugg = new Map(); // Best suggestions
+        // Parameters
+        this.nSuggLimit = nSuggLimit;
+        this.nSuggLimitExt = nSuggLimit + 2;                // we add few entries in case suggestions merge after casing modifications
+        this.nBestSuggLimit = Math.floor(nSuggLimit * 1.5); // n times the requested limit
+        this.nGoodSuggLimit = nSuggLimit * 15;              // n times the requested limit
     }
 
-    addSugg (sSugg, nDeep=0) {
+    addSugg (sSugg) {
         // add a suggestion
         if (this.aAllSugg.has(sSugg)) {
             return;
         }
         this.aAllSugg.add(sSugg);
-        if (!this.aSugg.has(sSugg)) {
-            let nDist = str_transform.distanceDamerauLevenshtein(this.sSimplifiedWord, str_transform.simplifyWord(sSugg));
-            if (nDist <= this.nDistLimit) {
-                if (sSugg.includes(" ")) { // add 1 to distance for split suggestions
-                    nDist += 1;
-                }
-                if (!this.dSugg.has(nDist)) {
-                    this.dSugg.set(nDist, []);
-                }
-                this.dSugg.get(nDist).push(sSugg);
-                this.aSugg.add(sSugg);
-                if (nDist < this.nMinDist) {
-                    this.nMinDist = nDist;
-                }
-                this.nDistLimit = Math.min(this.nDistLimit, this.nMinDist+1);
+        // jaro 0->1 1 les chaines sont égale
+        let nDistJaro = 1 - str_transform.distanceJaroWinkler(this.sSimplifiedWord, str_transform.simplifyWord(sSugg));
+        let nDist = Math.floor(nDistJaro * 10);
+        if (nDistJaro < .11) {        // Best suggestions
+            this.dBestSugg.set(sSugg, Math.round(nDistJaro*1000));
+            if (this.dBestSugg.size > this.nBestSuggLimit) {
+                this.nDistLimit = -1; // make suggest() to end search
             }
+        } else if (nDistJaro < .33) { // Good suggestions
+            this.dGoodSugg.set(sSugg, Math.round(nDistJaro*1000));
+            if (this.dGoodSugg.size > this.nGoodSuggLimit) {
+                this.nDistLimit = -1; // make suggest() to end search
+            }
+        } else {
+            if (nDist < this.nMinDist) {
+                this.nMinDist = nDist;
+            }
+            this.nDistLimit = Math.min(this.nDistLimit, this.nMinDist);
+        }
+        if (nDist <= this.nDistLimit) {
+            if (nDist < this.nMinDist) {
+                this.nMinDist = nDist;
+            }
+            this.nDistLimit = Math.min(this.nDistLimit, this.nMinDist+1);
         }
     }
 
-    getSuggestions (nSuggLimit=10, nDistLimit=-1) {
+    getSuggestions () {
         // return a list of suggestions
         let lRes = [];
-        if (this.dSugg.get(0).length) {
-            // we sort the better results with the original word
-            let dDistTemp = new Map();
-            lRes.forEach((sSugg) => { dDistTemp.set(sSugg, str_transform.distanceDamerauLevenshtein(this.sWord, sSugg)); });
-            lRes = lRes.sort((sA, sB) => { return dDistTemp.get(sA) - dDistTemp.get(sB); });
-            dDistTemp.clear();
-        }
-        for (let [nDist, lSugg] of this.dSugg.entries()) {
-            if (nDist > this.nDistLimit) {
-                break;
-            }
-            lRes.push(...lSugg);
-            if (lRes.length > nSuggLimit) {
-                break;
+        if (this.dBestSugg.size > 0) {
+            // sort only with simplified words
+            let lResTmp = [...this.dBestSugg.entries()].sort((a, b) => { return a[1] - b[1]; });
+            let nSize = Math.min(this.nSuggLimitExt, lResTmp.length);
+            for (let i=0;  i < nSize;  i++){
+                lRes.push(lResTmp[i][0]);
             }
         }
+        if (lRes.length < this.nSuggLimitExt) {
+            // sort with simplified words and original word
+            let lResTmp = [...this.dGoodSugg.entries()].sort((a, b) => {
+                // Low precision to rely more on simplified words
+                let nJaroA = Math.round(str_transform.distanceJaroWinkler(this.sWord, a[0]) * 10);
+                let nJaroB = Math.round(str_transform.distanceJaroWinkler(this.sWord, b[0]) * 10);
+                if (nJaroA == nJaroB) {
+                    return a[1] - b[1];     // warning: both lists are NOT sorted the same way (key: a-b)
+                } else {
+                    return nJaroB - nJaroA; // warning: both lists are NOT sorted the same way (key: b-a)
+                }
+            }).slice(0, this.nSuggLimitExt);
+            let nSize = Math.min(this.nSuggLimitExt, lResTmp.length);
+            for (let i=0;  i < nSize;  i++){
+                lRes.push(lResTmp[i][0]);
+            }
+        }
+        // casing
         if (this.sWord.gl_isUpperCase()) {
             lRes = lRes.map((sSugg) => { return sSugg.toUpperCase(); });
             lRes = [...new Set(lRes)];
@@ -214,12 +238,13 @@ class SuggResult {
             lRes = lRes.map((sSugg) => { return sSugg.slice(0,1).toUpperCase() + sSugg.slice(1); });
             lRes = [...new Set(lRes)];
         }
-        return lRes.slice(0, nSuggLimit);
+        return lRes.slice(0, this.nSuggLimit);
     }
 
     reset () {
-        this.aSugg.clear();
         this.dSugg.clear();
+        this.dGoodSugg.clear();
+        this.dBestSugg.clear();
     }
 }
 
@@ -252,35 +277,48 @@ class IBDAWG {
         }
         /*
             Properties:
-            sName, nCompressionMethod, sHeader, lArcVal, nArcVal, sByDic, sLang, nChar, nBytesArc, nBytesNodeAddress,
+            sName, sHeader, lArcVal, nArcVal, sByDic, sLang, nChar, nBytesArc, nBytesNodeAddress,
             nEntry, nNode, nArc, nAff, cStemming, nTag, dChar, nBytesOffset,
         */
 
-        /*
-            Bug workaround.
-            Mozilla’s JS parser sucks. Can’t read file bigger than 4 Mb!
-            So we convert huge hexadecimal string to list of numbers…
-            https://github.com/mozilla/addons-linter/issues/1361
-        */
-        let lTemp = [];
-        for (let i = 0;  i < this.sByDic.length;  i+=2) {
-            lTemp.push(parseInt(this.sByDic.slice(i, i+2), 16));
-        }
-        this.byDic = lTemp;
-        //this.byDic = new Uint8Array(lTemp);  // not quicker, even slower
-        /* end of bug workaround */
-
         if (!(this.sHeader.startsWith("/grammalecte-fsa/") || this.sHeader.startsWith("/pyfsa/"))) {
             throw TypeError("# Error. Not a grammalecte-fsa binary dictionary. Header: " + this.sHeader);
-        }
-        if (!(this.nCompressionMethod == 1 || this.nCompressionMethod == 2 || this.nCompressionMethod == 3)) {
-            throw RangeError("# Error. Unknown dictionary compression method: " + this.nCompressionMethod);
         }
         // <dChar> to get the value of an arc, <dCharVal> to get the char of an arc with its value
         this.dChar = helpers.objectToMap(this.dChar);
         this.dCharVal = this.dChar.gl_reverse();
         this.a2grams = (this.l2grams) ? new Set(this.l2grams) : null;
 
+        if (!this.hasOwnProperty("lByDic")) {
+            // old dictionary version
+            if (!this.hasOwnProperty("sByDic")) {
+                throw TypeError("# Error. No usable data in the dictionary.");
+            }
+            this.lByDic = [];
+            let nAcc = 0;
+            let lBytesBuffer = [];
+            let nDivisor = (this.nBytesArc + this.nBytesNodeAddress) / 2;
+            for (let i = 0;  i < this.sByDic.length;  i+=2) {
+                lBytesBuffer.push(parseInt(this.sByDic.slice(i, i+2), 16));
+                if (nAcc == (this.nBytesArc - 1)) {
+                    this.lByDic.push(this._convBytesToInteger(lBytesBuffer));
+                    lBytesBuffer = [];
+                }
+                else if (nAcc == (this.nBytesArc + this.nBytesNodeAddress - 1)) {
+                    this.lByDic.push(Math.round(this._convBytesToInteger(lBytesBuffer) / nDivisor));  // Math.round should be useless, BUT with JS who knowns what can happen…
+                    lBytesBuffer = [];
+                    nAcc = -1;
+                }
+                nAcc = nAcc + 1;
+            }
+        }
+
+        // masks
+        this._arcMask = (2 ** ((this.nBytesArc * 8) - 3)) - 1;
+        this._finalNodeMask = 1 << ((this.nBytesArc * 8) - 1);
+        this._lastArcMask = 1 << ((this.nBytesArc * 8) - 2);
+
+        // function to decode the affix/suffix code
         if (this.cStemming == "S") {
             this.funcStemming = str_transform.changeWordWithSuffixCode;
         } else if (this.cStemming == "A") {
@@ -289,37 +327,6 @@ class IBDAWG {
             this.funcStemming = str_transform.noStemming;
         }
 
-        this._arcMask = (2 ** ((this.nBytesArc * 8) - 3)) - 1;
-        this._finalNodeMask = 1 << ((this.nBytesArc * 8) - 1);
-        this._lastArcMask = 1 << ((this.nBytesArc * 8) - 2);
-
-
-        // Configuring DAWG functions according to nCompressionMethod
-        switch (this.nCompressionMethod) {
-            case 1:
-                this.morph = this._morph1;
-                this.stem = this._stem1;
-                this._lookupArcNode = this._lookupArcNode1;
-                this._getArcs = this._getArcs1;
-                this._writeNodes = this._writeNodes1;
-                break;
-            case 2:
-                this.morph = this._morph2;
-                this.stem = this._stem2;
-                this._lookupArcNode = this._lookupArcNode2;
-                this._getArcs = this._getArcs2;
-                this._writeNodes = this._writeNodes2;
-                break;
-            case 3:
-                this.morph = this._morph3;
-                this.stem = this._stem3;
-                this._lookupArcNode = this._lookupArcNode3;
-                this._getArcs = this._getArcs3;
-                this._writeNodes = this._writeNodes3;
-                break;
-            default:
-                throw ValueError("# Error: unknown code: " + this.nCompressionMethod);
-        }
         //console.log(this.getInfo());
         this.bAcronymValid = true;
         this.bNumAtLastValid = false;
@@ -330,12 +337,11 @@ class IBDAWG {
         if (self && self.hasOwnProperty("lexgraph_"+this.sLangCode)) { // self is the Worker
             this.lexicographer = self["lexgraph_"+this.sLangCode];
         }
-
     }
 
     getInfo () {
         return  `  Language: ${this.sLangName}   Lang code: ${this.sLangCode}   Dictionary name: ${this.sDicName}\n` +
-                `  Compression method: ${this.nCompressionMethod}   Date: ${this.sDate}   Stemming: ${this.cStemming}FX\n` +
+                `  Date: ${this.sDate}   Stemming: ${this.cStemming}FX\n` +
                 `  Arcs values:  ${this.nArcVal} = ${this.nChar} characters,  ${this.nAff} affixes,  ${this.nTag} tags\n` +
                 `  Dictionary: ${this.nEntry} entries,    ${this.nNode} nodes,   ${this.nArc} arcs\n` +
                 `  Address size: ${this.nBytesNodeAddress} bytes,  Arc size: ${this.nBytesArc} bytes\n`;
@@ -360,7 +366,6 @@ class IBDAWG {
             "nArc": this.nArc,
             "lArcVal": this.lArcVal,
             "nArcVal": this.nArcVal,
-            "nCompressionMethod": this.nCompressionMethod,
             "nBytesArc": this.nBytesArc,
             "nBytesNodeAddress": this.nBytesNodeAddress,
             "nBytesOffset": this.nBytesOffset,
@@ -391,10 +396,7 @@ class IBDAWG {
     isValid (sWord) {
         // checks if sWord is valid (different casing tested if the first letter is a capital)
         if (!sWord) {
-            return null;
-        }
-        if (sWord.includes("'")) { // ugly hack
-            sWord = sWord.replace("'", "’");
+            return true;
         }
         if (this.lookup(sWord)) {
             return true;
@@ -440,17 +442,20 @@ class IBDAWG {
                 return false;
             }
         }
-        return Boolean(this._convBytesToInteger(this.byDic.slice(iAddr, iAddr+this.nBytesArc)) & this._finalNodeMask);
+        return Boolean(this.lByDic[iAddr] & this._finalNodeMask);
     }
 
     getMorph (sWord) {
         // retrieves morphologies list, different casing allowed
+        if (!sWord) {
+            return [];
+        }
         sWord = str_transform.spellingNormalization(sWord);
-        let l = this.morph(sWord);
+        let l = this._morph(sWord);
         if (sWord[0].gl_isUpperCase()) {
-            l.push(...this.morph(sWord.toLowerCase()));
+            l.push(...this._morph(sWord.toLowerCase()));
             if (sWord.gl_isUpperCase() && sWord.length > 1) {
-                l.push(...this.morph(sWord.gl_toCapitalize()));
+                l.push(...this._morph(sWord.gl_toCapitalize()));
             }
         }
         return l;
@@ -469,13 +474,14 @@ class IBDAWG {
         let nMaxDel = Math.floor(sWord.length / 5);
         let nMaxHardRepl = Math.max(Math.floor((sWord.length - 5) / 4), 1);
         let nMaxJump = Math.max(Math.floor(sWord.length / 4), 1);
-        let oSuggResult = new SuggResult(sWord);
+        let oSuggResult = new SuggResult(sWord, nSuggLimit);
+        sWord = str_transform.cleanWord(sWord);
         if (bSplitTrailingNumbers) {
             this._splitTrailingNumbers(oSuggResult, sWord);
         }
         this._splitSuggest(oSuggResult, sWord);
         this._suggest(oSuggResult, sWord, nMaxSwitch, nMaxDel, nMaxHardRepl, nMaxJump);
-        let aSugg = oSuggResult.getSuggestions(nSuggLimit);
+        let aSugg = oSuggResult.getSuggestions();
         if (this.lexicographer) {
             aSugg = this.lexicographer.filterSugg(aSugg);
         }
@@ -509,7 +515,7 @@ class IBDAWG {
     _suggest (oSuggResult, sRemain, nMaxSwitch=0, nMaxDel=0, nMaxHardRepl=0, nMaxJump=0, nDist=0, nDeep=0, iAddr=0, sNewWord="", bAvoidLoop=false) {
         // returns a set of suggestions
         // recursive function
-        if (this._convBytesToInteger(this.byDic.slice(iAddr, iAddr+this.nBytesArc)) & this._finalNodeMask) {
+        if (this.lByDic[iAddr] & this._finalNodeMask) {
             if (sRemain == "") {
                 oSuggResult.addSugg(sNewWord);
                 for (let sTail of this._getTails(iAddr)) {
@@ -619,7 +625,7 @@ class IBDAWG {
         let aTails = new Set();
         for (let [nVal, jAddr] of this._getArcs(iAddr)) {
             if (nVal <= this.nChar) {
-                if (this._convBytesToInteger(this.byDic.slice(jAddr, jAddr+this.nBytesArc)) & this._finalNodeMask) {
+                if (this.lByDic[jAddr] & this._finalNodeMask) {
                     aTails.add(sTail + this.dCharVal.get(nVal));
                 }
                 if (n && aTails.size == 0) {
@@ -630,9 +636,6 @@ class IBDAWG {
         return aTails;
     }
 
-    // morph (sWord) {
-    //     is defined in constructor
-    // }
     getSimilarEntries (sWord, nSuggLimit=10) {
         // return a list of tuples (similar word, stem, morphology)
         if (sWord == "") {
@@ -660,21 +663,19 @@ class IBDAWG {
             console.log("Error in regex pattern");
             console.log(e.message);
         }
-        yield* this._select1(zFlexPattern, zTagsPattern, 0, "");
+        yield* this._select(zFlexPattern, zTagsPattern, 0, "");
     }
 
-    // VERSION 1
-
-    * _select1 (zFlexPattern, zTagsPattern, iAddr, sWord) {
+    * _select (zFlexPattern, zTagsPattern, iAddr, sWord) {
         // recursive generator
-        for (let [nVal, jAddr] of this._getArcs1(iAddr)) {
+        for (let [nVal, jAddr] of this._getArcs(iAddr)) {
             if (nVal <= this.nChar) {
                 // simple character
-                yield* this._select1(zFlexPattern, zTagsPattern, jAddr, sWord + this.lArcVal[nVal]);
+                yield* this._select(zFlexPattern, zTagsPattern, jAddr, sWord + this.lArcVal[nVal]);
             } else {
                 if (!zFlexPattern || zFlexPattern.test(sWord)) {
                     let sStem = this.funcStemming(sWord, this.lArcVal[nVal]);
-                    for (let [nMorphVal, _] of this._getArcs1(jAddr)) {
+                    for (let [nMorphVal, _] of this._getArcs(jAddr)) {
                         if (!zTagsPattern || zTagsPattern.test(this.lArcVal[nMorphVal])) {
                             yield [sWord, sStem, this.lArcVal[nMorphVal]];
                         }
@@ -684,7 +685,7 @@ class IBDAWG {
         }
     }
 
-    _morph1 (sWord) {
+    _morph (sWord) {
         // returns morphologies of sWord
         let iAddr = 0;
         for (let c of sWord) {
@@ -696,34 +697,34 @@ class IBDAWG {
                 return [];
             }
         }
-        if (this._convBytesToInteger(this.byDic.slice(iAddr, iAddr+this.nBytesArc)) & this._finalNodeMask) {
+        if (this.lByDic[iAddr] & this._finalNodeMask) {
             let l = [];
             let nRawArc = 0;
             while (!(nRawArc & this._lastArcMask)) {
-                let iEndArcAddr = iAddr + this.nBytesArc;
-                nRawArc = this._convBytesToInteger(this.byDic.slice(iAddr, iEndArcAddr));
+                let iEndArcAddr = iAddr + 1;
+                nRawArc = this.lByDic[iAddr];
                 let nArc = nRawArc & this._arcMask;
                 if (nArc > this.nChar) {
                     // This value is not a char, this is a stemming code
                     let sStem = ">" + this.funcStemming(sWord, this.lArcVal[nArc]);
                     // Now , we go to the next node and retrieve all following arcs values, all of them are tags
-                    let iAddr2 = this._convBytesToInteger(this.byDic.slice(iEndArcAddr, iEndArcAddr+this.nBytesNodeAddress));
+                    let iAddr2 = this.lByDic[iEndArcAddr];
                     let nRawArc2 = 0;
                     while (!(nRawArc2 & this._lastArcMask)) {
-                        let iEndArcAddr2 = iAddr2 + this.nBytesArc;
-                        nRawArc2 = this._convBytesToInteger(this.byDic.slice(iAddr2, iEndArcAddr2));
+                        let iEndArcAddr2 = iAddr2 + 1;
+                        nRawArc2 = this.lByDic[iAddr2];
                         l.push(sStem + "/" + this.lArcVal[nRawArc2 & this._arcMask]);
-                        iAddr2 = iEndArcAddr2+this.nBytesNodeAddress;
+                        iAddr2 = iEndArcAddr2 + 1;
                     }
                 }
-                iAddr = iEndArcAddr + this.nBytesNodeAddress;
+                iAddr = iEndArcAddr + 1;
             }
             return l;
         }
         return [];
     }
 
-    _stem1 (sWord) {
+    _stem (sWord) {
         // returns stems list of sWord
         let iAddr = 0;
         for (let c of sWord) {
@@ -735,82 +736,55 @@ class IBDAWG {
                 return [];
             }
         }
-        if (this._convBytesToInteger(this.byDic.slice(iAddr, iAddr+this.nBytesArc)) & this._finalNodeMask) {
+        if (this.lByDic[iAddr] & this._finalNodeMask) {
             let l = [];
             let nRawArc = 0;
             while (!(nRawArc & this._lastArcMask)) {
-                let iEndArcAddr = iAddr + this.nBytesArc;
-                nRawArc = this._convBytesToInteger(this.byDic.slice(iAddr, iEndArcAddr));
+                let iEndArcAddr = iAddr + 1;
+                nRawArc = this.lByDic[iAddr];
                 let nArc = nRawArc & this._arcMask;
                 if (nArc > this.nChar) {
                     // This value is not a char, this is a stemming code
                     l.push(this.funcStemming(sWord, this.lArcVal[nArc]));
                 }
-                iAddr = iEndArcAddr + this.nBytesNodeAddress;
+                iAddr = iEndArcAddr + 1;
             }
             return l;
         }
         return [];
     }
 
-    _lookupArcNode1 (nVal, iAddr) {
+    _lookupArcNode (nVal, iAddr) {
         // looks if nVal is an arc at the node at iAddr, if yes, returns address of next node else None
         while (true) {
-            let iEndArcAddr = iAddr+this.nBytesArc;
-            let nRawArc = this._convBytesToInteger(this.byDic.slice(iAddr, iEndArcAddr));
+            let iEndArcAddr = iAddr+1;
+            let nRawArc = this.lByDic[iAddr];
             if (nVal == (nRawArc & this._arcMask)) {
                 // the value we are looking for
                 // we return the address of the next node
-                return this._convBytesToInteger(this.byDic.slice(iEndArcAddr, iEndArcAddr+this.nBytesNodeAddress));
+                return this.lByDic[iEndArcAddr];
             }
             else {
                 // value not found
                 if (nRawArc & this._lastArcMask) {
                     return null;
                 }
-                iAddr = iEndArcAddr + this.nBytesNodeAddress;
+                iAddr = iEndArcAddr + 1;
             }
         }
     }
 
-    * _getArcs1 (iAddr) {
+    * _getArcs (iAddr) {
         // generator: return all arcs at <iAddr> as tuples of (nVal, iAddr)
         while (true) {
-            let iEndArcAddr = iAddr+this.nBytesArc;
-            let nRawArc = this._convBytesToInteger(this.byDic.slice(iAddr, iEndArcAddr));
-            yield [nRawArc & this._arcMask, this._convBytesToInteger(this.byDic.slice(iEndArcAddr, iEndArcAddr+this.nBytesNodeAddress))];
+            let iEndArcAddr = iAddr+1;
+            let nRawArc = this.lByDic[iAddr];
+            yield [nRawArc & this._arcMask, this.lByDic[iEndArcAddr]];
             if (nRawArc & this._lastArcMask) {
                 break;
             }
-            iAddr = iEndArcAddr+this.nBytesNodeAddress;
+            iAddr = iEndArcAddr+1;
         }
-    }
-
-    // VERSION 2
-    _morph2 (sWord) {
-        // to do
-    }
-
-    _stem2 (sWord) {
-        // to do
-    }
-
-    _lookupArcNode2 (nVal, iAddr) {
-        // to do
-    }
-
-
-    // VERSION 3
-    _morph3 (sWord) {
-        // to do
-    }
-
-    _stem3 (sWord) {
-        // to do
-    }
-
-    _lookupArcNode3 (nVal, iAddr) {
-        // to do
     }
 }
 

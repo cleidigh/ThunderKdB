@@ -72,6 +72,12 @@ Nict_TexTra.utils.clear_history_refer_dic = function (txt_org, lang_org, lang_tr
 // 翻訳履歴 追加
 Nict_TexTra.utils.add_history_translate = function (txt_org, txt_trans, lang_org, lang_trans) {
 
+    txt_org = txt_org.trim();
+    txt_trans = txt_trans.trim();
+
+    if (Nict_TexTra.utils.is_empty_string(txt_org) || Nict_TexTra.utils.is_empty_string(txt_trans)) return;
+    if (txt_org === txt_trans) return;
+
     chrome.storage.local.get(
         { "history_translate": "" },
         function (items) {
@@ -86,7 +92,7 @@ Nict_TexTra.utils.add_history_translate = function (txt_org, txt_trans, lang_org
             var ref_data = [txt_org, txt_trans, lang_org, lang_trans, str_time].join("\t--\t");
 
             $.each(list_his, function (ind, his) {
-                if (his != ref_data) list_his2.push(his);
+                if (his !== ref_data) list_his2.push(his);
             });
 
             list_his2.unshift(ref_data);
@@ -153,6 +159,9 @@ Nict_TexTra.utils.get_lang_name_1char = function (lang) {
         case 'th': return I18Nmes('mes_1031'); // 泰
         case 'pt': return I18Nmes('mes_1032'); // 葡
         case 'pt-BR': return I18Nmes('mes_1033'); // 葡ブ
+        case 'ar': return I18Nmes('mes_1035'); // 亜
+        case 'it': return I18Nmes('mes_1036'); // 伊
+        case 'ru': return I18Nmes('mes_1037'); // 露
         default: return "？";
     }
 };
@@ -285,7 +294,10 @@ const lang_items = [
     ['my', I18Nmes('mes_1010')], // ミャンマー語
     ['th', I18Nmes('mes_1011')], // タイ語
     ['pt', I18Nmes('mes_1012')], // ポルトガル語
-    ['pt-BR', I18Nmes('mes_1013')] // ポルトガル語(ブラジル)
+    ['pt-BR', I18Nmes('mes_1013')], // ポルトガル語(ブラジル)
+    ['ar', I18Nmes('mes_1014')], // アラビア語
+    ['it', I18Nmes('mes_1015')], // イタリア語
+    ['ru', I18Nmes('mes_1016')] // ロシア語
 ];
 
 

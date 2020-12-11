@@ -9,39 +9,43 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 33,
+    "average_daily_users": 30,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "",
     "created": "2014-08-01T03:04:04Z",
     "current_version": {
-        "id": 2472960,
+        "id": 2474931,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/received/versions/2472960",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/received/versions/2474931",
         "files": [
             {
-                "id": 1016067,
-                "created": "2019-12-01T15:11:03Z",
-                "hash": "sha256:b11a05757c858471d1b12b443320b9acedddeb79ba5ba86a682b08e8b256737b",
-                "is_restart_required": true,
+                "id": 1018093,
+                "created": "2020-12-04T16:36:47Z",
+                "hash": "sha256:1fc22b51ab15b35f88ebb66261c44c70a115a5a61f18fd8eac87f8dc70d8839c",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 6053,
+                "size": 7738,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016067/received-1.0.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018093/received-2.0.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "messagesRead",
+                    "messagesModify"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 18,
             "name": {
@@ -73,11 +77,11 @@
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
         "release_notes": {
-            "en-US": "* Convert to Thunderbird 68 compatible add-on. This breaks compatibility with previous Thunderbird versions."
+            "en-US": "The add-on has been rewritten as MailExtension.\n * This breaks compatibility with previous Thunderbird versions.\n * The add-on  requires full unrestricted access to Thunderbird for being able to display the Received header in the message header area.\n\n*Migration*\nYou need to re-enter the add-on configuration settings. It is merely a single option: the regular expression.\nIn case you forgot it, look for `extensions.received.regexp` preference in the Configuration Editor (about:config page)."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/received/versions/1.0.0",
-        "version": "1.0.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/received/versions/2.0.0",
+        "version": "2.0.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -93,16 +97,16 @@
     "homepage": {
         "en-US": "https://github.com/moisseev/received"
     },
-    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/534/534258-64.png?modified=a79b77e6",
     "icons": {
-        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
-        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/534/534258-32.png?modified=a79b77e6",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/534/534258-64.png?modified=a79b77e6"
     },
     "is_disabled": false,
     "is_experimental": true,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-12-08T12:26:14Z",
+    "last_updated": "2020-12-08T20:31:27Z",
     "name": {
         "en-US": "Received"
     },
@@ -114,12 +118,12 @@
                 472,
                 162
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/140/140302.png?modified=1530209147",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/140/140302.png?modified=1607614068",
             "thumbnail_size": [
                 320,
                 110
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/140/140302.png?modified=1530209147"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/140/140302.png?modified=1607614068"
         }
     ],
     "public_stats": true,
@@ -151,9 +155,10 @@
     "weekly_downloads": 22,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-02-17T16:04:36Z"
         }

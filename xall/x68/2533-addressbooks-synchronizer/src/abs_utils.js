@@ -1212,6 +1212,7 @@ function getOptionsDoc() {
 	let w=Services.wm.getMostRecentWindow("mail:3pane");
 	let tabmail=w.document.getElementById("tabmail");
 debug('tabmail='+tabmail);
+	if (!tabmail) return null;
 	for (let nativeTabInfo of tabmail.tabInfo) {
 debug('	tab='+nativeTabInfo);
 		if (nativeTabInfo.browser && nativeTabInfo.browser.contentDocument.location==optionsURI)

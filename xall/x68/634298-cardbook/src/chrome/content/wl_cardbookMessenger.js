@@ -35,6 +35,8 @@ Services.scriptloader.loadSubScript("chrome://messenger/content/mailCore.js", wi
 // for the textbox
 Services.scriptloader.loadSubScript("chrome://global/content/globalOverlay.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://global/content/editMenuOverlay.js", window, "UTF-8");
+// for the events and tasks
+Services.scriptloader.loadSubScript("chrome://cardbook/content/lightning/cardbookLightning.js", window, "UTF-8");
 
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
@@ -439,6 +441,18 @@ function onLoad(wasAlreadyOpen) {
 						oncommand="wdw_cardbook.editComplexSearch();"
 						mode="dialog"
 						class="toolbarbutton-1"/>
+					<toolbarbutton id="cardbookToolbarNewEvent"
+						label="__MSG_cardbookToolbarNewEventLabel__"
+						tooltiptext="__MSG_cardbookToolbarNewEventTooltip__"
+						oncommand="wdw_cardbook.createEvent();"
+						mode="dialog"
+						class="toolbarbutton-1"/>
+					<toolbarbutton id="cardbookToolbarNewTodo"
+						label="__MSG_cardbookToolbarNewTodoLabel__"
+						tooltiptext="__MSG_cardbookToolbarNewTodoTooltip__"
+						oncommand="wdw_cardbook.createTodo();"
+						mode="dialog"
+						class="toolbarbutton-1"/>
 					<toolbarbutton id="cardbookToolbarThMenuButton"
 						type="menu"
 						class="toolbarbutton-1 button-appmenu"
@@ -557,13 +571,19 @@ function onLoad(wasAlreadyOpen) {
 				<menuitem id="ccEmailCardsFromCards" label="__MSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('cc');"/>
 				<menuitem id="bccEmailCardsFromCards" label="__MSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('bcc');"/>
 				<menuitem id="shareCardsByEmailFromCards" label="__MSG_shareCardByEmailFromCardsLabel__" oncommand="wdw_cardbook.shareCardsByEmailFromCards();"/>
+				<menuitem id="findEmailsFromCards" label="__MSG_findEmailsFromCardsLabel__" oncommand="wdw_cardbook.findEmailsFromCards();"/>
 				<menuseparator/>
 				<menu id="IMPPCardFromCards" label="__MSG_IMPPMenuLabel__">
 					<menupopup id="IMPPCardFromCardsMenuPopup"/>
 				</menu>
 				<menuseparator/>
-				<menuitem id="findEmailsFromCards" label="__MSG_findEmailsFromCardsLabel__" oncommand="wdw_cardbook.findEmailsFromCards();"/>
-				<menuitem id="findEventsFromCards" label="__MSG_findEventsFromCardsLabel__" oncommand="wdw_cardbook.findEventsFromCards();"/>
+				<menu id="eventsAndTasksFromCards" label="__MSG_eventsAndTasksLabel__">
+					<menupopup id="categoriesFromCardsMenuPopup">
+						<menuitem id="addEventFromCards" label="__MSG_addEventFromCardsLabel__" oncommand="wdw_cardbook.createEvent();"/>
+						<menuitem id="addTodoFromCards" label="__MSG_addTodoFromCardsLabel__" oncommand="wdw_cardbook.createTodo();"/>
+						<menuitem id="findEventsFromCards" label="__MSG_findEventsFromCardsLabel__" oncommand="wdw_cardbook.findEventsFromCards();"/>
+					</menupopup>
+				</menu>
 				<menuseparator/>
 				<menuitem id="localizeCardsFromCards" label="__MSG_localizeCardFromCardsLabel__" oncommand="wdw_cardbook.localizeCardsFromCards();"/>
 				<menuseparator/>
@@ -628,7 +648,7 @@ function onLoad(wasAlreadyOpen) {
 						hidecolumnpicker="true" onkeyup="wdw_cardbook.selectAccountOrCatInNoSearch();" onclick="wdw_cardbook.selectAccountOrCatInNoSearch();">
 						<treecols id="accountsOrCatsTreecols">
 							<treecol id="accountTypeCheckbox" width="20" hideheader="true" persist="width ordinal hidden"/>
-							<treecol id="accountColor" width="17" hideheader="true" persist="width ordinal hidden" tooltiptext="__MSG_colorAccountsTooltip__"/>
+							<treecol id="accountColor" width="20" hideheader="true" persist="width ordinal hidden" tooltiptext="__MSG_colorAccountsTooltip__"/>
 							<treecol id="accountName" flex="1" persist="width ordinal hidden" primary="true" hideheader="true" crop="center"/>
 							<treecol id="accountId" persist="width ordinal hidden" hidden="true" hideheader="true"/>
 							<treecol id="accountType" persist="width ordinal hidden" hidden="true" hideheader="true"/>
@@ -1001,35 +1021,10 @@ function onLoad(wasAlreadyOpen) {
 	
 	`);
 
-	let tabmail = document.getElementById('tabmail');
-	if (tabmail) {
-		tabmail.registerTabType(window.cardbookTabType);
-		tabmail.registerTabMonitor(window.cardbookTabMonitor);
-	}
-	
-	var firstRun = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.firstRun");
-	if (firstRun) {
-		window.wdw_cardbook.addAddressbook("first");
-		cardbookRepository.cardbookPreferences.setBoolPref("extensions.cardbook.firstRun", false);
-	}
-	
-	if (document.getElementById("addressBook")) {
-		document.getElementById("addressBook").removeAttribute("key");
-	}
-	if (document.getElementById("appmenu_addressBook")) {
-		document.getElementById("appmenu_addressBook").removeAttribute("key");
-	}
-	if (document.getElementById("key_addressbook")) {
-		document.getElementById("key_addressbook").setAttribute("key", "");
-	}
-	
-	window.ovl_cardbook.overrideToolbarMenu();
-	
-	if (document.getElementById("totalMessageCount")) {
-		document.getElementById("totalMessageCount").addEventListener("click", window.ovl_cardbook.openLogEdition, true);
-	}
-	
+	window.ovl_cardbook.load();
+
 	window.ovl_filters.onLoad();
+
 	var ABFacetingFilter = {
 		name: "cardbook",
 		domId: "qfb-cardbook",

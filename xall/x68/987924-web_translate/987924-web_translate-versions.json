@@ -1,5 +1,74 @@
 [
     {
+        "id": 2474946,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2474946",
+        "files": [
+            {
+                "id": 1018108,
+                "created": "2020-12-05T19:33:26Z",
+                "hash": "sha256:da419d1c84307bc13a2f0759d1aa933ba9bfa341106d00bdf35e983465620540",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 5137088,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018108/web_translate-2.9-tb.xpi?src=",
+                "permissions": [
+                    "webRequest",
+                    "webRequestBlocking",
+                    "menus",
+                    "storage",
+                    "activeTab",
+                    "<all_urls>",
+                    "https://translate.google.co.uk/*",
+                    "https://translate.google.com/*",
+                    "https://translate.google.ie/*",
+                    "https://translate.google.ca/*",
+                    "https://translate.google.as/*",
+                    "https://translate.google.gy/*",
+                    "https://translate.google.bs/*",
+                    "https://translate.google.vg/*",
+                    "https://translate.google.dm/*",
+                    "https://translate.google.tt/*",
+                    "https://translate.google.nr/*",
+                    "https://translate.google.cn/*",
+                    "https://bing.com/*",
+                    "https://www.bing.com/*",
+                    "https://deepl.com/*",
+                    "https://www.deepl.com/*",
+                    "https://translate.yandex.ru/*",
+                    "https://translate.yandex.com/*",
+                    "https://www.translate.yandex.ru/*",
+                    "https://www.translate.yandex.com/*",
+                    "https://fanyi.baidu.com/*"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7057,
+            "name": {
+                "en-US": "All Rights Reserved"
+            },
+            "text": null,
+            "url": null
+        },
+        "release_notes": {
+            "en-US": "- yet another try to fix the broken Google Translate, this time more efficient and it should work on the first try (hopefully this fix will last for some time...)\n- fixing focus issues again\n- added fallback to Microsoft Bing if Google Translate fails"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/2.9",
+        "version": "2.9"
+    },
+    {
         "id": 2474900,
         "channel": "listed",
         "compatibility": {

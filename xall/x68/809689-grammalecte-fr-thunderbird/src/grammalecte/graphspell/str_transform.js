@@ -12,6 +12,7 @@ if (typeof(process) !== 'undefined') {
 }
 
 
+
 // Note: 48 is the ASCII code for "0"
 
 var str_transform = {
@@ -25,7 +26,8 @@ var str_transform = {
     },
 
     _xTransCharsForSpelling: new Map([
-        ['ſ', 's'],  ['ﬃ', 'ffi'],  ['ﬄ', 'ffl'],  ['ﬀ', 'ff'],  ['ﬅ', 'ft'],  ['ﬁ', 'fi'],  ['ﬂ', 'fl'],  ['ﬆ', 'st']
+        ['ſ', 's'],  ['ﬃ', 'ffi'],  ['ﬄ', 'ffl'],  ['ﬀ', 'ff'],  ['ﬅ', 'ft'],  ['ﬁ', 'fi'],  ['ﬂ', 'fl'],  ['ﬆ', 'st'],
+        ["'", '’']
     ]),
 
     spellingNormalization: function (sWord) {
@@ -46,7 +48,9 @@ var str_transform = {
         ['œ', 'oe'], ['æ', 'ae'],
         ['ſ', 's'],  ['ﬃ', 'ffi'],  ['ﬄ', 'ffl'],  ['ﬀ', 'ff'],  ['ﬅ', 'ft'],  ['ﬁ', 'fi'],  ['ﬂ', 'fl'],  ['ﬆ', 'st'],
         ["⁰", "0"], ["¹", "1"], ["²", "2"], ["³", "3"], ["⁴", "4"], ["⁵", "5"], ["⁶", "6"], ["⁷", "7"], ["⁸", "8"], ["⁹", "9"],
-        ["₀", "0"], ["₁", "1"], ["₂", "2"], ["₃", "3"], ["₄", "4"], ["₅", "5"], ["₆", "6"], ["₇", "7"], ["₈", "8"], ["₉", "9"]
+        ["₀", "0"], ["₁", "1"], ["₂", "2"], ["₃", "3"], ["₄", "4"], ["₅", "5"], ["₆", "6"], ["₇", "7"], ["₈", "8"], ["₉", "9"],
+        ["’", ""], ["'", ""], ["ʼ", ""], ["‘", ""], ["‛", ""], ["´", ""], ["`", ""], ["′", ""], ["‵", ""], ["՚", ""], ["ꞌ", ""], ["Ꞌ", ""],
+        ["-", ""]
     ]),
 
     simplifyWord: function (sWord) {
@@ -62,6 +66,12 @@ var str_transform = {
             i++;
         }
         return sNewWord.replace(/eau/g, "o").replace(/au/g, "o").replace(/ai/g, "éi").replace(/ei/g, "é").replace(/ph/g, "f");
+    },
+
+    cleanWord: function (sWord) {
+        // word clean for the user who make commun and preditive error help suggest
+        // remove letters repeated more than 2 times
+        return sWord.replace(/(.)\1{2,}/ig,'$1$1');
     },
 
     _xTransNumbersToExponent: new Map([
@@ -144,15 +154,107 @@ var str_transform = {
                     }
                 }
             }
-            return Math.floor(matrix[nLen1][nLen2]);
+            return matrix[nLen1][nLen2];
         }
         catch (e) {
             console.error(e);
         }
     },
 
+    distanceJaroWinkler: function(a, b, boost = .666) {
+        // https://github.com/thsig/jaro-winkler-JS
+        //if (a == b) { return 1.0; }
+        let a_len = a.length;
+        let b_len = b.length;
+        let a_flag = [];
+        let b_flag = [];
+        let search_range = Math.floor(Math.max(a_len, b_len) / 2) - 1;
+        let minv = Math.min(a_len, b_len);
+
+        // Looking only within the search range, count and flag the matched pairs.
+        let Num_com = 0;
+        let yl1 = b_len - 1;
+        for (let i = 0; i < a_len; i++) {
+          let lowlim = (i >= search_range) ? i - search_range : 0;
+          let hilim  = ((i + search_range) <= yl1) ? (i + search_range) : yl1;
+          for (let j = lowlim; j <= hilim; j++) {
+            if (b_flag[j] !== 1 && a[j] === b[i]) {
+              a_flag[j] = 1;
+              b_flag[i] = 1;
+              Num_com++;
+              break;
+            }
+          }
+        }
+
+        // Return if no characters in common
+        if (Num_com === 0) { return 0.0; }
+
+        // Count the number of transpositions
+        let k = 0;
+        let N_trans = 0;
+        for (let i = 0; i < a_len; i++) {
+          if (a_flag[i] === 1) {
+            let j;
+            for (j = k; j < b_len; j++) {
+              if (b_flag[j] === 1) {
+                k = j + 1;
+                break;
+              }
+            }
+            if (a[i] !== b[j]) { N_trans++; }
+          }
+        }
+        N_trans = Math.floor(N_trans / 2);
+
+        // Adjust for similarities in nonmatched characters
+        let N_simi = 0;
+        let adjwt = char_player.oDistanceBetweenChars;
+        if (minv > Num_com) {
+          for (let i = 0; i < a_len; i++) {
+            if (!a_flag[i]) {
+              for (let j = 0; j < b_len; j++) {
+                if (!b_flag[j]) {
+                  if (adjwt[a[i]] && adjwt[a[i]][b[j]]) {
+                    N_simi += adjwt[a[i]][b[j]];
+                    b_flag[j] = 2;
+                    break;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        let Num_sim = (N_simi / 10.0) + Num_com;
+
+        // Main weight computation
+        let weight = Num_sim / a_len + Num_sim / b_len + (Num_com - N_trans) / Num_com;
+        weight = weight / 3;
+
+        // Continue to boost the weight if the strings are similar
+        if (weight > boost) {
+          // Adjust for having up to the first 4 characters in common
+          let j = (minv >= 4) ? 4 : minv;
+          let i;
+          for (i = 0; (i < j) && a[i] === b[i]; i++) { }
+          if (i) { weight += i * 0.1 * (1.0 - weight) };
+
+          // Adjust for long strings.
+          // After agreeing beginning chars, at least two more must agree
+          // and the agreeing characters must be more than half of the
+          // remaining characters.
+          if (minv > 4 && Num_com > i + 1 && 2 * Num_com >= minv + i) {
+            weight += (1 - weight) * ((Num_com - i - 1) / (a_len * b_len - i*2 + 2));
+          }
+        }
+
+        return weight;
+    },
+
     showDistance (s1, s2) {
-        console.log(`Distance: ${s1} / ${s2} = ${this.distanceDamerauLevenshtein(s1, s2)})`);
+        console.log(`Distance Jaro-Winkler: ${s1} / ${s2} = ${this.distanceJaroWinkler(s1, s2)})`);
+        console.log(`Distance Damerau-Levenshtein: ${s1} / ${s2} = ${this.distanceDamerauLevenshtein(s1, s2)})`);
     },
 
     // Suffix only
@@ -240,7 +342,7 @@ if (typeof(exports) !== 'undefined') {
     exports.spellingNormalization = str_transform.spellingNormalization;
     exports.longestCommonSubstring = str_transform.longestCommonSubstring;
     exports.distanceDamerauLevenshtein = str_transform.distanceDamerauLevenshtein;
-    exports.distanceDamerauLevenshtein2 = str_transform.distanceDamerauLevenshtein2;
+    exports.distanceJaroWinkler = str_transform.distanceJaroWinkler;
     exports.showDistance = str_transform.showDistance;
     exports.changeWordWithSuffixCode = str_transform.changeWordWithSuffixCode;
     exports.changeWordWithAffixCode = str_transform.changeWordWithAffixCode;

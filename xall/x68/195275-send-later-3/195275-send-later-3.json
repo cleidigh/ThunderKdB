@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 34924,
+    "average_daily_users": 42785,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -29,26 +29,26 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jik%40kamens%2eus&lc=US&item_name=Send%20Later%20add%2don%20%28%245%2e00%20recommended%20donation%2c%20but%20give%20what%20you%27d%20like%21%29&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donat",
     "created": "2010-07-09T19:07:32Z",
     "current_version": {
-        "id": 2474847,
+        "id": 2474936,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.2.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2474847",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2474936",
         "files": [
             {
-                "id": 1018009,
-                "created": "2020-11-25T18:44:30Z",
-                "hash": "sha256:e77467d5dd32865ac6770e774a1323eaecc61fdac4f237391dafe80d3f96710d",
+                "id": 1018098,
+                "created": "2020-12-04T19:36:34Z",
+                "hash": "sha256:1072c0ce96ea3254cd691b7b39448e47b14aa166df334abd2b89ac191d5b0bb3",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 559198,
+                "size": 566773,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018009/send_later-8.4.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018098/send_later-8.5.4-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "accountsRead",
@@ -72,11 +72,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This patch implements a workaround for Send Later's most serious bug report: cases in which send later was not correctly processing messages at their scheduled time.\n\nIt also includes lots of tweaks to keep Send Later running smoothly, including:\n\n    * Minor improvements and fixups to the scheduler dialog.\n        - Option to place message in outbox rather than send immediately\n        - Automatically adjust input based on schedule restrictions\n        - Relative time format is synchronized with the actual time at which send later executes (not necessarily on the minute)\n        - Relative time text updates periodically while the dialog remains open, rather than only being set when the input fields change.\n        - Fix bug with \"save these values as defaults\" in which default values were not properly restored.\n    * Fix locales, and merge translation changes from the 7.x branch\n    * Implement all the same pre-send checks as Thunderbird's native send operation, and make sure they only run once.\n    * Handle errors in cases where saveAsDraft fails to complete.\n    * Delay automatic updates until next restart (will not take effect until an update is available via ATN after this version)\n    * Offer opt-out from repeated resent message warnings"
+            "en-US": "Fixes bug with locating the draft folder message enumerator for local drafts folder."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.4.5",
-        "version": "8.4.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.5.4",
+        "version": "8.5.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -167,7 +167,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-26T22:05:26Z",
+    "last_updated": "2020-12-05T21:48:33Z",
     "name": {
         "el": "Στείλετε αργότερα",
         "ca": "Enviar més tard",
@@ -248,10 +248,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.62542,
-        "count": 220,
-        "average": 4.6318,
-        "text_count": 220
+        "bayesian_average": 4.63326,
+        "count": 222,
+        "average": 4.6396,
+        "text_count": 222
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/reviews/",
     "requires_payment": false,

@@ -1,0 +1,141 @@
+{
+    "id": 987970,
+    "authors": [
+        {
+            "id": 14202078,
+            "name": "hiromiya",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/hiromiya-lndbl/",
+            "username": "hiromiya-lndbl",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2020-12-03T20:30:36Z",
+    "current_version": {
+        "id": 2474920,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/replaceholder/versions/2474920",
+        "files": [
+            {
+                "id": 1018082,
+                "created": "2020-12-03T20:30:36Z",
+                "hash": "sha256:7a3df60ef830dd2fb964763ce0d9f70de33909a9e140d4ed4682b62c48fb8f07",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 31045,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018082/replaceholder-1.0-tb.xpi?src=",
+                "permissions": [
+                    "compose"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": null,
+        "reviewed": "2020-12-03T20:45:03Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replaceholder/versions/1.0",
+        "version": "1.0"
+    },
+    "default_locale": "ja",
+    "description": {
+        "ja": "Replaceholder\n====\nThunderBirdの入力ウインドウにおいて特定のプレースホルダを日時に置換します。\n\n---\n## プレースホルダー\n入力画面の件名、本文内の各プレースホルダを日時や曜日等の文字列に置換します。\n\n### プレースホルダの書式\n```\n${yyyy}\n// output \"2020\"\n\n${yyyy.MM.dd HH:mm:ss.SSS} \n// output \"2020.12.03 00:57:23.348\"\n```\n\"${\" と \"}\" の間に出力フォーマットを記載します。  \n\n### パターン\n\n| 文字 | 内容 | 出力例 |\n| --- | --- | --- |\n| y | 年 | 20(yy), 2020(yyyy) |\n| M | 年における月 | 6(M), 06(MM), Jun(MMM), June(MMMMM), 水無月(JM) |\n| d | 月における日 | 3(d), 03(dd) |\n| E | 曜日の名前 | Sun(E), Sun(EEE), Sunday(EEEE), 日(JE) |\n| H | 一日における時(0 - 23) | 9(H), 09(HH) |\n| k | 一日における時(1 - 24) | 1(k), 01(kk) |\n| K | 午前/午後の時(0 - 11) | 2(K), 02(KK) |\n| h | 午前/午後の時(1 - 12) | 8(h), 08(hh) |\n| m | 分 | 5(m), 05(mm) |\n| s | 秒 | 7(s), 07(ss) |\n| S | ミリ秒 | 48(S)), 048(SSS) |\n\n---\n## 使い方\n1. 本拡張をインストール\n2. 編集画面に「Replaceholder」ボタンが出ます\n3. プレースホルダーを件名または本文内の任意の個所に入力\n4. 編集画面の「Replaceholder」ボタンを押すとプレースホルダーが置換されます\n\n※ あらかじめテンプレートにプレースホルダーを入力しておくのが便利です。\n\n---\n## Permissions\n- compose メッセージの編集に必要な権限です。\n\n---\n## github\n<a rel=\"nofollow\" href=\"https://github.com/hiromiya-lndbl/replaceholder\">https://github.com/hiromiya-lndbl/replaceholder</a>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/replaceholder/edit",
+    "guid": "replaceholder@lndbl.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ja": "https://github.com/hiromiya-lndbl/replaceholder"
+    },
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2020-12-03T20:45:03Z",
+    "name": {
+        "ja": "Replaceholder"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 1.59353,
+        "count": 1,
+        "average": 2,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replaceholder/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/987970",
+    "slug": "replaceholder",
+    "status": "public",
+    "summary": {
+        "ja": "Replace placeholders with date and time as you type.\n入力画面の件名、本文内の各プレースホルダを日時や曜日等の文字列に置換します。"
+    },
+    "support_email": null,
+    "support_url": {
+        "ja": "https://github.com/hiromiya-lndbl/replaceholder"
+    },
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/replaceholder/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp78plus": true
+        }
+    }
+}

@@ -9,40 +9,40 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 407,
+    "average_daily_users": 367,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
             "message-and-news-reading"
         ]
     },
-    "contributions_url": null,
+    "contributions_url": "",
     "created": "2011-07-30T13:20:35Z",
     "current_version": {
-        "id": 2472643,
+        "id": 2474973,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickarchiver/versions/2472643",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickarchiver/versions/2474973",
         "files": [
             {
-                "id": 1015724,
-                "created": "2019-09-19T21:41:53Z",
-                "hash": "sha256:753f4a2868fead179e107374f4488e1234433ae0bc26364c33850a9c8192c073",
-                "is_restart_required": true,
+                "id": 1018135,
+                "created": "2020-12-08T21:59:30Z",
+                "hash": "sha256:acfb4419625c7f72e2e6ac2bf3635fb8276d54b731dce95dc0b3238613b8eb0a",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 34160,
+                "size": 40012,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015724/quickarchiver-0.2.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018135/quickarchiver-0.2.8-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -72,29 +72,29 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "just added Thunderbird 68 compatibility, nothing else changed.\n\nSorry, I know there are a lot of useful feature requests in the comments (also here: <a href=\"https://github.com/otto802/quickarchiver/issues)\" rel=\"nofollow\">https://github.com/otto802/quickarchiver/issues)</a>. But currently I don't find the time to work on them. I'm using quickarchiver myself (in exact the way it is designed for now).",
-            "de": "Unterstützung für Thunderbird 68 ermöglicht."
+            "en-US": "Compatibility with Thunderbird 78",
+            "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickarchiver/versions/0.2.5",
-        "version": "0.2.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickarchiver/versions/0.2.8",
+        "version": "0.2.8"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Clean up your inbox! While moving a mail the first time, QuickArchiver remembers the destination folder and enables you to move further mails with a single click. You can apply rules by sender, recipient and subject. Using QuickArchiver you don't have to use complex filter rules and in contrast to using filters you can review your mails before they disappear from your inbox.\n\n<b>How easy it works:</b>\n<ul><li>While moving mails, QuickArchiver will remember the destination-folder and add an rule for it (default is by sender-address)</li><li>All mails applying to that rule will get a link in the extra column to move the mail quickly</li><li>Right-click on that link you can edit the rule (and also delete it)</li><li>Rules can be applied by sender, recipient or subject</li></ul>",
+        "en-US": "Getting things done and clean up your inbox! While moving a mail the first time, QuickArchiver remembers the destination folder and enables you to move further mails with a single click. You can apply rules by sender, recipient and subject. Using QuickArchiver you don't have to use complex filter rules and in contrast to using filters you can review your mails before they disappear from your inbox.\n\n<b>How easy it works:</b>\n<ul><li>While moving mails, QuickArchiver will remember the destination-folder and add an rule for it (default is by sender-address)</li><li>All mails applying to that rule will get a link in the extra column to move the mail quickly</li><li>Right-click on that link you can edit the rule (and also delete it)</li><li>Rules can be applied by sender, recipient or subject</li></ul>\nHint: You can also use the Shortcut SHIFT+A to archive selected mails to their QuickArchiver folder.",
         "de": "<ul><li>Beim Verschieben von Mails merkt sich QuickArchiver den Zielordner und legt dazu eine Regel an (Standarmässig nach Absender)</li><li>Bei weiteren Mail entsprechend der Regel bietet QuickArchiver in der Spalt Archivordner einen Link zum schnellen Verschieben der Mail an</li><li>Mit Rechtsklick auf den Ordnerlink kann die Regel bearbeitet werden (auch gelöscht werden)</li><li>Regeln können nach Absender, Empfänger oder Betreff angelegt werden</li></ul>"
     },
     "developer_comments": {
-        "en-US": "<b>Roadmap</b>\n<ul><li>Regular expressions</li><li>Shortcut to activate all rule in the entire folder</li></ul>\nOfficial GitHub Repository: <a href=\"https://github.com/otto802/quickarchiver\" rel=\"nofollow\">https://github.com/otto802/quickarchiver</a>",
-        "de": "Official GitHub Repository: <a href=\"https://github.com/otto802/quickarchiver\" rel=\"nofollow\">https://github.com/otto802/quickarchiver</a>"
+        "en-US": "Official GitHub Repository: <a rel=\"nofollow\" href=\"https://github.com/otto802/quickarchiver\">https://github.com/otto802/quickarchiver</a>",
+        "de": "Official GitHub Repository: <a rel=\"nofollow\" href=\"https://github.com/otto802/quickarchiver\">https://github.com/otto802/quickarchiver</a>"
     },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickarchiver/edit",
     "guid": "quickarchiver@bergerdata.de",
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
-        "en-US": "https://www.bergercity.de/software/quickarchiver",
-        "de": "http://www.bergercity.de/software/quickarchiver"
+        "en-US": "https://github.com/otto802/quickarchiver",
+        "de": "https://github.com/otto802/quickarchiver"
     },
     "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/downloads-64.png",
     "icons": {
@@ -105,45 +105,25 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-09-21T18:16:39Z",
+    "last_updated": "2020-12-08T23:12:53Z",
     "name": {
         "en-US": "QuickArchiver",
         "de": "QuickArchiver"
     },
     "previews": [
         {
-            "id": 61303,
-            "caption": {
-                "en-US": "Archive-folder column: click to move mails instantly to the displayed folder.",
-                "de": "Archivordner-Spalte: per klick wird die Mail verschoben"
-            },
+            "id": 206342,
+            "caption": null,
             "image_size": [
-                331,
-                195
+                698,
+                466
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/61/61303.png?modified=1530209009",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206342.png?modified=1607342187",
             "thumbnail_size": [
-                320,
-                189
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/61/61303.png?modified=1530209009"
-        },
-        {
-            "id": 61305,
-            "caption": {
-                "en-US": "How to enable the archive-folder column.",
-                "de": "So wird der Ordner eingeblendet."
-            },
-            "image_size": [
-                316,
-                492
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/61/61305.png?modified=1530209009",
-            "thumbnail_size": [
-                128,
+                300,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/61/61305.png?modified=1530209009"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206342.png?modified=1607342187"
         },
         {
             "id": 66568,
@@ -155,37 +135,20 @@
                 516,
                 258
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/66/66568.png?modified=1530209009",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/66/66568.png?modified=1607342245",
             "thumbnail_size": [
                 320,
                 160
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/66/66568.png?modified=1530209009"
-        },
-        {
-            "id": 61304,
-            "caption": {
-                "en-US": "Archive-folder column: click to move mail instantly to the displayed folder. (english Version)",
-                "de": "Archivordner-Spalte: per klick wird die Mail verschoben (english Version)"
-            },
-            "image_size": [
-                331,
-                195
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/61/61304.png?modified=1530209010",
-            "thumbnail_size": [
-                320,
-                189
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/61/61304.png?modified=1530209010"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/66/66568.png?modified=1607342245"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.9487,
-        "count": 23,
-        "average": 4,
-        "text_count": 23
+        "bayesian_average": 4.03163,
+        "count": 25,
+        "average": 4.08,
+        "text_count": 25
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickarchiver/reviews/",
     "requires_payment": false,
@@ -193,7 +156,7 @@
     "slug": "quickarchiver",
     "status": "public",
     "summary": {
-        "en-US": "Clean up your inbox! While moving a mail the first time, QuickArchiver remembers the destination folder and enables you to move further mails with a single click. You can apply rules by sender, recipient and subject.",
+        "en-US": "Getting things done and clean up your inbox! While moving a mail the first time, QuickArchiver remembers the destination folder and enables you to move further mails with a single click. You can apply rules by sender, recipient and subject.",
         "de": "Schnell den Posteingang aufräumen! Beim ersten verschieben einer Mail merkt sich QuickArchiver den Zielordner und ermöglicht folgende Mails mit nur einem Klick zu verschieben."
     },
     "support_email": {
@@ -201,8 +164,8 @@
         "de": "quickarchiver@bergerdata.de"
     },
     "support_url": {
-        "en-US": "https://www.bergercity.de/software/quickarchiver",
-        "de": "http://www.bergercity.de/software/quickarchiver"
+        "en-US": "https://github.com/otto802/quickarchiver",
+        "de": "https://github.com/otto802/quickarchiver"
     },
     "tags": [
         "archive",
@@ -225,10 +188,10 @@
     "weekly_downloads": 55,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-08-20T21:18:40Z"
         }

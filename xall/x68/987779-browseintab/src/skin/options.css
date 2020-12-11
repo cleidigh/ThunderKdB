@@ -67,8 +67,10 @@ button.tab-button[keyfocus] {
   box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.3); /* var(--in-content-border-active-shadow); */
 }
 
-#maxContentTabs {
- width: 3.1em;
+#maxContentTabs,
+#zoomIncrement,
+#chromeZoomFactor {
+ width: 3.5em;
  text-align: end;
 }
 
@@ -77,8 +79,11 @@ button.tab-button[keyfocus] {
 }
 
 .small-detail {
-  margin-inline-start: 30px;
   font-size: smaller;
+}
+
+.small-detail-indent {
+  margin-inline-start: 30px;
 }
 
 .small-note {

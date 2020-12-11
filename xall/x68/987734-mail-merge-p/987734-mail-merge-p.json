@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 14,
+    "average_daily_users": 53,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2019-12-08T17:09:22Z",
     "current_version": {
-        "id": 2474812,
+        "id": 2474953,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mail-merge-p/versions/2474812",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mail-merge-p/versions/2474953",
         "files": [
             {
-                "id": 1017974,
-                "created": "2020-11-22T21:56:06Z",
-                "hash": "sha256:0c477e449ce1c724aa2895ffbe405b1e43f25bcab5d166395c4b12b4a6a0b18e",
+                "id": 1018115,
+                "created": "2020-12-07T03:36:42Z",
+                "hash": "sha256:3c886d91484bdd7ef0c977ebc9624ba1937d3e091adfd44b067ea0993be20ada",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1227009,
+                "size": 1193770,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017974/mail_merge_p-2.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018115/mail_merge_p-2.3-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "compose",
@@ -76,11 +76,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Updated for Thunderbird 78"
+            "en-US": "* Updated FR and HU translations\n* Preview window now has scrollbars for long messages\n* Template substitutions are now unescaped so you can use \"Name &lt;email@mail.com&gt;\" style substitutions."
         },
-        "reviewed": "2020-11-23T15:13:30Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mail-merge-p/versions/2.2",
-        "version": "2.2"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mail-merge-p/versions/2.3",
+        "version": "2.3"
     },
     "default_locale": "en-US",
     "description": null,
@@ -101,7 +101,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-23T15:13:30Z",
+    "last_updated": "2020-12-08T20:22:59Z",
     "name": {
         "en-US": "Mail Merge P"
     },
@@ -184,14 +184,16 @@
     "slug": "mail-merge-p",
     "status": "public",
     "summary": {
-        "en-US": "Mail Merge with Preview, an enhanced version of Mail Merge by Alexander Bergmann. Allows you to send bulk messages based on a spreadsheet of data."
+        "en-US": "Mail Merge with Preview, an enhanced version of Mail Merge by Alexander Bergmann. MailMergeP Allows you to send bulk messages based on a spreadsheet of data."
     },
     "support_email": null,
     "support_url": {
         "en-US": "https://github.com/siefkenj/MailMerge"
     },
     "tags": [
-        "firefox57"
+        "firefox57",
+        "mailmerge",
+        "spreadsheet"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mail-merge-p/",
@@ -201,7 +203,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-22T21:56:06Z",
+            "comp78pv_version": "2.2",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

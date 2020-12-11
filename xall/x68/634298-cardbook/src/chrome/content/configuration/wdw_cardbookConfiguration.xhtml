@@ -193,10 +193,9 @@
 									<checkbox id="vcardTabCheckBox" label="__MSG_vCardTab.conf.label__"
 										accesskey="__MSG_vCardTab.conf.accesskey__"
 										preference="extensions.cardbook.vcardTabView" type="bool" instantApply="true"/>
-									<!-- test waiting -->
-									<!-- <checkbox id="keyTabCheckBox" label="__MSG_keyTab.conf.label__" -->
-										<!-- accesskey="__MSG_keyTab.conf.accesskey__" -->
-										<!-- preference="extensions.cardbook.keyTabView" type="bool" instantApply="true"/> -->
+									<checkbox id="keyTabCheckBox" label="__MSG_keyTab.conf.label__"
+										accesskey="__MSG_keyTab.conf.accesskey__"
+										preference="extensions.cardbook.keyTabView" type="bool" instantApply="true"/>
 								</vbox>
 							</groupbox>
 							<separator class="thin"/>					
@@ -234,28 +233,66 @@
 								<description>__MSG_formulaExplanation4__</description>
 								<description>__MSG_formulaExplanation5__</description>
 								<description>__MSG_formulaExplanation6__</description>
-								<description id="adrFormula7"/>
-								<description id="adrFormula8"/>
 								<separator class="thin"/>
-								<grid align="center" flex="1">
-									<columns>
-										<column/>
-										<column flex="1"/>
-										<column/>
-									</columns>
-					
-									<rows>
-										<row align="center">
-											<label value="__MSG_adrFormulaLabel__"
-												accesskey="__MSG_adrFormulaAccesskey__"
-												control="adrFormulaTextBox"
-												id="adrFormula"/>
-											<html:input id="adrFormulaTextBox" oninput="wdw_cardbookConfiguration.preferenceChanged('adrFormula');"/>
-											<button id="resetAdrFormulaButton" label="__MSG_resetAdrFormulaLabel__" accesskey="__MSG_resetAdrFormulaAccesskey__"
-												oncommand="wdw_cardbookConfiguration.resetAdrFormula();"/>
-										</row>
-									</rows>
-								</grid>
+								<hbox align="center" flex="1" class="input-container">
+									<label value="__MSG_adrFormulaLabel__"
+										accesskey="__MSG_adrFormulaAccesskey__"
+										control="adrFormulaTextBox"
+										id="adrFormula"/>
+									<html:input id="adrFormulaTextBox" oninput="wdw_cardbookConfiguration.preferenceChanged('adrFormula');"/>
+									<button id="resetAdrFormulaButton" label="__MSG_resetAdrFormulaLabel__" accesskey="__MSG_resetAdrFormulaAccesskey__"
+										oncommand="wdw_cardbookConfiguration.resetAdrFormula();"/>
+								</hbox>
+								<separator class="thin"/>
+								<vbox flex="1" class="indent">
+									<hbox flex="1">
+										<label><html:h3>__MSG_previewLabel__</html:h3></label>
+									</hbox>
+									<hbox flex="1">
+										<vbox flex="1">
+											<grid align="center" flex="1">
+												<columns>
+													<column/>
+													<column flex="1"/>
+												</columns>
+								
+												<rows>
+													<row align="center">
+														<label id="formulaMemberLabel1" control="formulaSampleTextBox1"/>
+														<html:input id="formulaSampleTextBox1" oninput="wdw_cardbookConfiguration.changeAdrPreview();"/>
+													</row>
+													<row align="center">
+														<label id="formulaMemberLabel2" control="formulaSampleTextBox2"/>
+														<html:input id="formulaSampleTextBox2" oninput="wdw_cardbookConfiguration.changeAdrPreview();"/>
+													</row>
+													<row align="center">
+														<label id="formulaMemberLabel3" control="formulaSampleTextBox3"/>
+														<html:input id="formulaSampleTextBox3" oninput="wdw_cardbookConfiguration.changeAdrPreview();"/>
+													</row>
+													<row align="center">
+														<label id="formulaMemberLabel4" control="formulaSampleTextBox4"/>
+														<html:input id="formulaSampleTextBox4" oninput="wdw_cardbookConfiguration.changeAdrPreview();"/>
+													</row>
+													<row align="center">
+														<label id="formulaMemberLabel5" control="formulaSampleTextBox6"/>
+														<html:input id="formulaSampleTextBox5" oninput="wdw_cardbookConfiguration.changeAdrPreview();"/>
+													</row>
+													<row align="center">
+														<label id="formulaMemberLabel6" control="formulaSampleTextBox6"/>
+														<html:input id="formulaSampleTextBox6" oninput="wdw_cardbookConfiguration.changeAdrPreview();"/>
+													</row>
+													<row align="center">
+														<label id="formulaMemberLabel7" control="formulaSampleTextBox7"/>
+														<html:input id="formulaSampleTextBox7" oninput="wdw_cardbookConfiguration.changeAdrPreview();"/>
+													</row>
+												</rows>
+											</grid>
+										</vbox>
+										<vbox id="adrPreviewWrapper" flex="1">
+											<html:textarea id="adrPreviewTextBox"/>
+										</vbox>
+									</hbox>
+								</vbox>
 							</groupbox>
 							<separator class="thin"/>					
 							<groupbox>

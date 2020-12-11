@@ -9,12 +9,15 @@
   END LICENSE BLOCK 
 */
 
-var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+if (typeof ChromeUtils.import == "undefined") 
+	Components.utils.import('resource://gre/modules/Services.jsm');
+else
+	var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 var QuickFolders_TabURIregexp = {
 	get _thunderbirdRegExp() {
 		delete this._thunderbirdRegExp;
-		return this._thunderbirdRegExp = new RegExp("^https://quickfolders.org/");
+		return this._thunderbirdRegExp = new RegExp("^http://quickfolders.org/");
 	}
 };
 
@@ -194,34 +197,29 @@ QuickFolders.Options = {
 	loadPreferences: function qf_loadPreferences() {
 		const util = QuickFolders.Util;
 		if (typeof Preferences == 'undefined') {
-      util.logToConsole("Preferences is not defined - this shouldn't happen!");
-      return;
+			if (typeof ChromeUtils.import == "undefined") 
+				Components.utils.import('resource://gre/modules/Services.jsm');
+			else
+				var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+			
+			let context={};
+			Services.scriptloader.loadSubScript("chrome://global/content/preferencesBindings.js", context, "UTF-8" /* The script's encoding */); 
+			if (typeof Preferences == 'undefined') {
+				util.logDebug("Skipping loadPreferences - Preferences object not defined");
+				return; // older versions of Thunderbird do not need this.
+			}
 		}	
 		util.logDebug("loadPreferences - start:");
-    
-    let myprefElements = document.querySelectorAll("[preference]");
-		let foundElements = {};
-		for (let myprefElement of myprefElements) {
-      let legacyPrefId = myprefElement.getAttribute("preference");
-			foundElements[legacyPrefId] = myprefElement;
-		}
-
 		let myprefs = document.getElementsByTagName("preference");
 		if (myprefs.length) {
 			let prefArray = [];
 			for (let it of myprefs) {
-				let p = new Object({ id: it.getAttribute('name'), 
+				let p = new Object({ id: it.id, 
 						      name: it.getAttribute('name'),
 						      type: it.getAttribute('type') });
-				// not supported
-				// if (it.getAttribute('instantApply') == "true") p.instantApply = true;
+				if (it.getAttribute('instantApply') == "true") p.instantApply = true;
 				prefArray.push(p);
-			    // manually change the shortname in the preference attribute to the actual
-				// preference "id" (as in the preference manager)
-				foundElements[it.id].setAttribute("preference", it.getAttribute("name"));
 			}
-			
-			
 			util.logDebug("Adding " + prefArray.length + " preferences to Preferences loader…")
 			if (Preferences)
 				Preferences.addAll(prefArray);
@@ -235,13 +233,12 @@ QuickFolders.Options = {
 					QI = QuickFolders.Interface,
 					options = QuickFolders.Options,
 					licenser = util.Licenser;
-    let isOptionsTab = window.arguments && window.arguments.length>1;
 					
 		util.logDebug("QuickFolders.Options.load()");
 		
 		if (prefs.isDebugOption('options')) debugger;
     // version number must be copied over first!
-		if (isOptionsTab && window.arguments[1].inn.instance) {
+		if (window.arguments && window.arguments[1].inn.instance) {
 			// QuickFolders = window.arguments[1].inn.instance; // avoid creating a new QuickFolders instance, reuse the one passed in!!
 			util.mExtensionVer = window.arguments[1].inn.instance.Util.Version;
 		}
@@ -252,26 +249,12 @@ QuickFolders.Options = {
 		if (!version) debugger;
 		
     util.logDebugOptional('options', 'QuickFolders.Options.load()');
-    let modeNum = -1;
-		if (isOptionsTab) {
+		if (window.arguments) {
 			try {
 				this.optionsMode = window.arguments[1].inn.mode;
 				// force selection of a certain pane (-1 ignores)
-        if (this.optionsMode) {
-          switch (this.optionsMode) {
-            case "helpOnly":
-              modeNum = this.QF_PREF_HELP;
-              break;
-            case "supportOnly":
-              modeNum = this.QF_PREF_SUPPORT;
-              break;
-            case "licenseKey":
-              modeNum = this.QF_PREF_LICENSE;
-              break;
-          }
-        }
-				if (modeNum >= 0)
-					prefs.setIntPref('lastSelectedOptionsTab', modeNum);
+				if (this.optionsMode >= 0)
+					prefs.setIntPref('lastSelectedOptionsTab', this.optionsMode);
 			}
 			catch(e) {;}
     }
@@ -338,26 +321,16 @@ QuickFolders.Options = {
 			earlyExit = true; // we do not set any values!
 		}
 		
-    let displayPanel = null;
     switch(this.optionsMode) {
       case "licenseKey":
-        displayPanel = getElement('QuickFolders-Options-goPro');
+        tabbox.selectedPanel = getElement('QuickFolders-Pro');
         break;
       case "helpOnly":
-        displayPanel = getElement('QuickFolders-Options-quickhelp');
+        tabbox.selectedPanel = getElement('QuickFolders-Help');
         break;
       case "supportOnly":
-        displayPanel = getElement('QuickFolders-Options-support');
+        tabbox.selectedPanel = getElement('QuickFolders-Support');
         break;
-    }
-    if (displayPanel) {
-      // tabbox.selectedPanel = displayPanel;
-      displayPanel.collapsed = false;
-      // for some reason it always stays at the last one
-      setTimeout(function() {
-        tabbox.selectedPanel = displayPanel;
-      }, 150);
-      
     }
     
     // .0 private license, .1 domain license
@@ -444,9 +417,8 @@ QuickFolders.Options = {
 		try {
 			let selectOptionsPane = prefs.getIntPref('lastSelectedOptionsTab');
 			if (selectOptionsPane >=0) {
-        debugger;
 				panels.selectedIndex = selectOptionsPane; // for some reason the tab doesn't get selected
-				panels.tabbox.selectedTab = panels.tabbox.tabs.children[selectOptionsPane];
+				panels.tabbox.selectedTab = panels.tabbox.tabs.childNodes[selectOptionsPane];
 			}
 		}
 		catch(e) { ; }
@@ -714,7 +686,7 @@ QuickFolders.Options = {
       }
       else {
         // reset License status of main instance
-        if (window.arguments && window.arguments.length>1 && window.arguments[1].inn.instance) {
+        if (window.arguments && window.arguments[1].inn.instance) {
           let mainLicenser = window.arguments[1].inn.instance.Licenser;
           if (mainLicenser) {
             mainLicenser.ValidationStatus =
@@ -1044,7 +1016,7 @@ QuickFolders.Options = {
 		prefs.setStringPref('currentFolderBar.background', styleValue);
 		prefs.setStringPref('currentFolderBar.background.selection', choice);
 		if (Preferences) {
-			Preferences.get('extensions.quickfolders.currentFolderBar.background')._value=styleValue;
+			Preferences.get('qfpa-CurrentFolder-Background')._value=styleValue;
 		}
 		//if (withUpdate)
 		//	QuickFolders.Interface.updateMainWindow();
@@ -1268,12 +1240,10 @@ QuickFolders.Options = {
 		const util = QuickFolders.Util,
 		      QI = util.getMail3PaneWindow().QuickFolders.Interface;
 		let prefString = cb.getAttribute("preference"),
-        pref = prefString;
-    //  using the new preference system, this attribute should be the actual full string of the pref.
-		//  pref = document.getElementById(prefString);
+		    pref = document.getElementById(prefString);
 		
-		if (prefString)
-			QuickFolders.Preferences.setBoolPrefVerbose(pref, cb.checked);  //  pref.getAttribute('name')
+		if (pref)
+			QuickFolders.Preferences.setBoolPrefVerbose(pref.getAttribute('name'), cb.checked);
 		if (noUpdate)
 			return true;
 		switch (pref) {
@@ -1325,9 +1295,9 @@ QuickFolders.Options = {
         getElement = document.getElementById.bind(document);
     
 		getElement('ExampleStripedColor').src=
-			isPastel ? "chrome://quickfolders/content/skin/ico/striped-example-pastel.gif" : "chrome://quickfolders/content/skin/ico/striped-example.gif";
+			isPastel ? "chrome://quickfolders/skin/ico/striped-example-pastel.gif" : "chrome://quickfolders/skin/ico/striped-example.gif";
 		getElement('ExampleFilledColor').src=
-			isPastel ? "chrome://quickfolders/content/skin/ico/full-example-pastel.gif" : "chrome://quickfolders/content/skin/ico/full-example.gif";
+			isPastel ? "chrome://quickfolders/skin/ico/full-example-pastel.gif" : "chrome://quickfolders/skin/ico/full-example.gif";
 
 		let picker = getElement('inactive-colorpicker');
 	
@@ -1540,7 +1510,7 @@ QuickFolders.Options = {
       + ', readOnly: ' + readOnly +')');
 			// "chrome://global/content/config.xul?debug"
 		const name = "Preferences:ConfigManager";
-		let uri = "chrome://global/content/config.xhtml";
+		let uri = "chrome://global/content/config.xul";
 		if (util.Application == 'Postbox')
 			uri += "?debug";
 
@@ -1591,7 +1561,7 @@ QuickFolders.Options = {
 		    sPrompt = util.getBundleString("qfConfirmVersionLink", "Display version history for QuickFolders");
 		if (!ask || confirm(sPrompt + " " + pureVersion + "?")) {
 			util.openURL(null, 
-			  util.makeUriPremium("https://quickfolders.org/version.html")
+			  util.makeUriPremium("http://quickfolders.org/version.html")
 				+ "#" + pureVersion);
 			return true;
 		}

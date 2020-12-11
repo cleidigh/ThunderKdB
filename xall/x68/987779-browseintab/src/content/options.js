@@ -14,6 +14,7 @@ var BrowseInTabOptions = {
   kShowMailToolbarAll: 2,
   kShowUrlToolbarWebPage: 0,
   kShowUrlToolbarAll: 1,
+  zoomIncrementDefault: 10,
   get contentBaseHeaderDefault() {
     return browser.i18n.getMessage("contentBaseHeader");
   },
@@ -38,6 +39,13 @@ var BrowseInTabOptions = {
     this.maxContentTabs = this.e("maxContentTabs");
     this.mailToolbarRadioForm = this.e("mailToolbarRadioForm");
     this.urlToolbarRadioForm = this.e("urlToolbarRadioForm");
+    this.tabButtonZoom = this.e("tabButtonZoom");
+    this.customZoomEnabled = this.e("customZoomEnabled");
+    this.customZoomFieldset = this.e("customZoomFieldset");
+    this.zoomIncrement = this.e("zoomIncrement");
+    this.chromeZoomFactor = this.e("chromeZoomFactor");
+    this.globalZoomEnabled = this.e("globalZoomEnabled");
+    this.imageZoomEnabled = this.e("imageZoomEnabled");
     this.restoreDefaults = this.e("restoreDefaults");
     /* eslint-enable */
 
@@ -152,6 +160,7 @@ var BrowseInTabOptions = {
         break;
       case "tabButtonLinks":
       case "tabButtonTabsToolbars":
+      case "tabButtonZoom":
         this.onTabClick(event);
         break;
       default:
@@ -284,6 +293,33 @@ var BrowseInTabOptions = {
           showUrlToolbar: Number(this.urlToolbarRadioForm.elements.showUrlToolbar.value)
         };
         break;
+      case "customZoomEnabled":
+        storageLocalData = {
+          customZoomEnabled: this.customZoomEnabled.checked
+        };
+        this.updateElements(this.customZoomFieldset, this.customZoomEnabled.checked);
+        break;
+      case "zoomIncrement":
+        storageLocalData = {
+          zoomIncrement: Number(this.zoomIncrement.value)
+        };
+        //this.chromeZoomFactor.step = storageLocalData.zoomIncrement;
+        break;
+      case "chromeZoomFactor":
+        storageLocalData = {
+          chromeZoomFactor: Number(this.chromeZoomFactor.value)
+        };
+        break;
+      case "globalZoomEnabled":
+        storageLocalData = {
+          globalZoomEnabled: this.globalZoomEnabled.checked
+        };
+        break;
+      case "imageZoomEnabled":
+        storageLocalData = {
+          imageZoomEnabled: this.imageZoomEnabled.checked
+        };
+        break;
       default:
         return;
     }
@@ -298,29 +334,36 @@ var BrowseInTabOptions = {
     }
 
     this.DEBUG &&
-      console.debug("BrowseInTabOptions.setStorageLocal: new storage.local ->");
-    this.DEBUG && console.debug(await browser.storage.local.get());
+      console.debug("BrowseInTabOptions.setStorageLocal: storageLocalData ->");
+    this.DEBUG && console.debug(storageLocalData);
   },
 
   async restoreOptions() {
     let setCurrentChoice = result => {
-      this.tabsLoadInBackground.checked = result?.tabsLoadInBackground || true;
-      this.linkClickLoadsInTab.checked = result?.linkClickLoadsInTab || false;
+      this.tabsLoadInBackground.checked = result?.tabsLoadInBackground ?? true;
+      this.linkClickLoadsInTab.checked = result?.linkClickLoadsInTab ?? false;
       this.linkClickLoadsInBackgroundTab.checked =
-        result?.linkClickLoadsInBackgroundTab || false;
+        result?.linkClickLoadsInBackgroundTab ?? false;
       this.forceLinkClickLoadsInCurrentTab.checked =
-        result?.forceLinkClickLoadsInCurrentTab || true;
-      this.showContentBase.checked = result?.showContentBase || true;
+        result?.forceLinkClickLoadsInCurrentTab ?? true;
+      this.showContentBase.checked = result?.showContentBase ?? true;
       this.contentBaseHeader.value =
         result?.contentBaseHeader || this.contentBaseHeaderDefault;
       this.useFirefoxCompatUserAgent.checked =
-        result?.useFirefoxCompatUserAgent || false;
+        result?.useFirefoxCompatUserAgent ?? false;
       this.maxContentTabs.value =
-        result?.maxContentTabs || this.maxContentTabsDefault;
+        result?.maxContentTabs ?? this.maxContentTabsDefault;
       this.mailToolbarRadioForm.elements.showMailToolbar.value =
-        result?.showMailToolbar || this.kShowMailToolbarDefault;
+        result?.showMailToolbar ?? this.kShowMailToolbarDefault;
       this.urlToolbarRadioForm.elements.showUrlToolbar.value =
-        result?.showUrlToolbar || this.kShowUrlToolbarWebPage;
+        result?.showUrlToolbar ?? this.kShowUrlToolbarWebPage;
+      this.customZoomEnabled.checked = result?.customZoomEnabled ?? false;
+      this.zoomIncrement.value =
+        result?.zoomIncrement ?? this.zoomIncrementDefault;
+      this.chromeZoomFactor.value = result?.chromeZoomFactor ?? 100;
+      //this.chromeZoomFactor.step = this.zoomIncrement.value;
+      this.globalZoomEnabled.checked = result?.globalZoomEnabled ?? false;
+      this.imageZoomEnabled.checked = result?.imageZoomEnabled ?? false;
 
       let panelIdToSelect =
         result?.lastSelectedTabPanelId ||
@@ -332,6 +375,7 @@ var BrowseInTabOptions = {
       /* eslint-disable */
       this.updateElements(this.linkClickOptionsFieldset, this.linkClickLoadsInTab.checked);
       this.updateElements(this.contentBaseFieldset, this.showContentBase.checked);
+      this.updateElements(this.customZoomFieldset, this.customZoomEnabled.checked);
       /* eslint-enable */
 
       this.DEBUG &&
@@ -355,6 +399,11 @@ var BrowseInTabOptions = {
       "maxContentTabs",
       "showMailToolbar",
       "showUrlToolbar",
+      "customZoomEnabled",
+      "zoomIncrement",
+      "chromeZoomFactor",
+      "globalZoomEnabled",
+      "imageZoomEnabled",
     ]);
     await getting.then(setCurrentChoice, onError);
   },

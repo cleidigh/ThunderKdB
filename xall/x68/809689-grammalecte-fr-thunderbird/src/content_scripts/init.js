@@ -300,7 +300,7 @@ const oGrammalecteBackgroundPort = {
     xConnect: browser.runtime.connect({name: "content-script port"}),
 
     start: function () {
-        console.log("[Grammalecte] background port: start.");
+        //console.log("[Grammalecte] background port: start.");
         this.listen();
         this.listen2();
         //this.ping();
@@ -344,12 +344,12 @@ const oGrammalecteBackgroundPort = {
         this.send("parseAndSpellcheck1", { sText: sText, sCountry: "FR", bDebug: false, bContext: false }, { sDestination: sDestination, sParagraphId: sParagraphId });
     },
 
-    getListOfTokens: function (sText) {
-        this.send("getListOfTokens", { sText: sText }, {});
+    parseFull: function (sText, sDestination, sParagraphId) {
+        this.send("parseFull", { sText: sText, sCountry: "FR", bDebug: false, bContext: false }, { sDestination: sDestination });
     },
 
-    parseFull: function (sText) {
-        this.send("parseFull", { sText: sText, sCountry: "FR", bDebug: false, bContext: false }, {});
+    getListOfTokens: function (sText, sDestination) {
+        this.send("getListOfTokens", { sText: sText }, { sDestination: sDestination });
     },
 
     getVerb: function (sVerb, bStart=true, bPro=false, bNeg=false, bTpsCo=false, bInt=false, bFem=false) {
@@ -364,8 +364,8 @@ const oGrammalecteBackgroundPort = {
         this.send("openURL", { "sURL": sURL });
     },
 
-    openLexiconEditor: function () {
-        this.send("openLexiconEditor");
+    openLexiconEditor: function (sWord="") {
+        this.send("openLexiconEditor", { sWord: sWord });
     },
 
     restartWorker: function (nTimeDelay=10) {
@@ -422,14 +422,18 @@ const oGrammalecteBackgroundPort = {
                     }
                     break;
                 case "parseFull":
-                    // TODO
+                    if (oInfo.sDestination == "__GrammalectePanel__") {
+                        oGrammalecte.oGCPanel.showParagraphAnalysis(result);
+                    }
                     break;
                 case "getListOfTokens":
-                    if (!bEnd) {
-                        oGrammalecte.oGCPanel.addListOfTokens(result);
-                    } else {
-                        oGrammalecte.oGCPanel.stopWaitIcon();
-                        oGrammalecte.oGCPanel.endTimer();
+                    if (oInfo.sDestination == "__GrammalectePanel__") {
+                        if (!bEnd) {
+                            oGrammalecte.oGCPanel.addListOfTokens(result);
+                        } else {
+                            oGrammalecte.oGCPanel.stopWaitIcon();
+                            oGrammalecte.oGCPanel.endTimer();
+                        }
                     }
                     break;
                 case "getSpellSuggestions":

@@ -1820,7 +1820,10 @@ var cardbookRepository = {
 	},
 
 	createCssAccountRules: function (aStyleSheet, aDirPrefId, aColor) {
-		var ruleString = ".cardbookAccountTreeClass treechildren::-moz-tree-cell(accountColor color_" + aDirPrefId + ") {background-color: " + aColor + ";}";
+		var ruleString = ".cardbookAccountTreeClass treechildren::-moz-tree-image(accountColor color_" + aDirPrefId + ") {\
+							list-style-image: url('chrome://cardbook/content/skin/icons/circle.svg');\
+							-moz-context-properties: fill;\
+							fill: " + aColor + ";}";
 		var ruleIndex = aStyleSheet.insertRule(ruleString, aStyleSheet.cssRules.length);
 	},
 

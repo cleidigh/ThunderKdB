@@ -191,6 +191,24 @@ treecol#cardIcon.cardIconHeader .treecol-sortdirection {
 	list-style-image: url("chrome://global/skin/icons/twisty-expanded.svg");
 }
 
+.cardbookAutoComputeFnClass {
+	/* Override button appearance */
+	-moz-appearance: none;
+	min-width: 20px;
+	margin-block: 0;
+	margin-inline: 1px 0;
+	border: 0;
+	background-color: transparent;
+	color: inherit;
+	-moz-user-focus: normal;
+	list-style-image: url("chrome://cardbook/content/skin/icons/computeKO.svg");
+	-moz-context-properties: fill;
+	fill: currentColor;
+}
+.cardbookAutoComputeFnClass[autoComputeFn="true"] {
+	list-style-image: url("chrome://cardbook/content/skin/icons/computeOK.svg");
+}
+
 #searchForOnlineKeyEditButton {
 	list-style-image: url("chrome://cardbook/content/skin/icons/addressbooks/remote.svg");
 	-moz-context-properties: fill;

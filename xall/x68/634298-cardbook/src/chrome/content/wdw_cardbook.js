@@ -631,6 +631,43 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			}
 		},
 
+		createEvent: function () {
+			let listOfSelectedCard = cardbookWindowUtils.getCardsFromCards();
+			let contacts = [];
+			for (let card of listOfSelectedCard) {
+				for (let email of card.emails) {
+					contacts.push(["mailto:" + email, card.fn]);
+				}
+			}
+			let onNewEvent = function(item, calendar, originalItem, listener) {
+				doTransaction('add', item, calendar, null, null);
+			};
+			cardbookLightning.createLightningEvent(contacts, onNewEvent);
+		},
+
+		createTodo: function () {
+			let listOfSelectedCard = cardbookWindowUtils.getCardsFromCards();
+			let description = "";
+			let title = "";
+			for (let card of listOfSelectedCard) {
+				// todo unify cardbookRepository.preferEmailPref and cardbookRepository.preferIMPPPref
+				let phone = cardbookRepository.cardbookUtils.getPrefAddressFromCard(card, "tel", cardbookRepository.preferEmailPref);
+				if (phone.length) {
+					description = description + card.fn + " (" + phone[0] + ")\r\n";
+				} else {
+					description = description + card.fn + "\r\n";
+				}
+			}
+			if (listOfSelectedCard.length == 1) {
+				title = description;
+				description = "";
+			}
+			let onNewEvent = function(item, calendar, originalItem, listener) {
+				doTransaction('add', item, calendar, null, null);
+			};
+			cardbookLightning.createLightningTodo(title, description, onNewEvent);
+		},
+
 		deleteCardsAndValidate: function (aCardList, aMessage) {
 			try {
 				var confirmTitle = cardbookRepository.extension.localeData.localizeMessage("confirmTitle");
@@ -3233,9 +3270,6 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					wdw_cardbook.enableOrDisableElement(['findEmailsFromCards', 'findEventsFromCards'], true);
 				}
 			}
-			// test waiting
-			wdw_cardbook.enableOrDisableElement(['publicKeysFromCards'], true);
-
 		},
 	
 		cardsTreeLightningContextShowing: function () {
