@@ -197,6 +197,9 @@ Enigmail.hdrView = {
       errorMsg = "";
 
     var replaceUid = null;
+    if (!userId) {
+      userId = "";
+    }
     if (keyId && gFolderDisplay.selectedMessage) {
       replaceUid = EnigmailMsgRead.matchUidToSender(keyId, gFolderDisplay.selectedMessage);
     }
@@ -562,6 +565,15 @@ Enigmail.hdrView = {
       let messageContainer = this.getPostboxContainer();
 
       let doc = document.getElementById("messagepane").contentDocument;
+      let sc = messageContainer.getElementsByClassName("securitycontentbox");
+
+      for (let i = 0; i < sc.length; i++) {
+        if (sc[i].id === "enigmailFlexActionButton") {
+          sc[i].parentElement.removeChild(sc[i]);
+          break;
+        }
+      }
+
       let div = doc.createElement('div');
       div.className = 'securitycontentbox';
       div.setAttribute('value', hdrMessage);
@@ -788,7 +800,13 @@ Enigmail.hdrView = {
         this.statusBar.setAttribute("signed", "unknown");
       }
       else if (statusFlags & EnigmailConstants.INLINE_KEY) {
-        this.enigmailBox.setAttribute("class", "expandedEnigmailBox enigmailHeaderBoxLabelSignatureUnknown");
+        if (!EnigmailCompat.isPostbox()) {
+          this.enigmailBox.setAttribute("class", "expandedEnigmailBox enigmailHeaderBoxLabelSignatureUnknown");
+        }
+        else {
+          Enigmail.hdrView.displayFlexAction(secInfo.statusInfo, EnigmailLocale.getString("detailsDlg.importKey"), "keyImp");
+          return;
+        }
       }
       else {
         this.enigmailBox.setAttribute("class", "expandedEnigmailBox enigmailHeaderBoxLabelNoSignature");
@@ -1107,9 +1125,7 @@ Enigmail.hdrView = {
     }
   },
 
-  onShowAttachmentContextMenu: function(event) {
-    EnigmailLog.DEBUG("enigmailMsgHdrViewOverlay.js: this.onShowAttachmentContextMenu\n");
-
+  getSelectedAttachment: function() {
     let contextMenu, selectedAttachments;
     if (EnigmailCompat.isPostbox()) {
       // Postbox
@@ -1121,7 +1137,26 @@ Enigmail.hdrView = {
       // Thunderbird
       contextMenu = document.getElementById('attachmentItemContext');
       selectedAttachments = contextMenu.attachments;
+
+      if (!contextMenu.attachments) {
+        // Interlink
+        let attachmentList = document.getElementById("attachmentList");
+        if (attachmentList.selectedItems.length > 0) {
+          selectedAttachments = [attachmentList.selectedItems[0].attachment];
+        }
+        else {
+          selectedAttachments = currentAttachments;
+        }
+      }
     }
+
+    return selectedAttachments;
+  },
+
+  onShowAttachmentContextMenu: function(event) {
+    EnigmailLog.DEBUG("enigmailMsgHdrViewOverlay.js: this.onShowAttachmentContextMenu\n");
+
+    let selectedAttachments = Enigmail.hdrView.getSelectedAttachment();
 
     var decryptOpenMenu = document.getElementById('enigmail_ctxDecryptOpen');
     var decryptSaveMenu = document.getElementById('enigmail_ctxDecryptSave');

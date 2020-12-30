@@ -64,11 +64,13 @@ var Overlays = {
       for (let listener of deferredLoad) {
         if (typeof listener == "function") {
           listener(fakeEvent);
-        } else if (listener && typeof listener == "object") {
+        }
+        else if (listener && typeof listener == "object") {
           listener.handleEvent(fakeEvent);
         }
       }
-    } else {
+    }
+    else {
       for (let listener of deferredLoad) {
         targetWindow.addEventListener("load", listener);
       }
@@ -140,7 +142,8 @@ function fetchOverlay(srcUrl) {
     // only load chrome, resource and file URLs, and that is our privileged chrome package.
     try {
       xhr.channel.owner = Services.scriptSecurityManager.getSystemPrincipal();
-    } catch (ex) {
+    }
+    catch (ex) {
       oconsole.error("insertXul: Failed to set system principal");
       xhr.close();
       reject("Failed to set system principal");
@@ -238,7 +241,8 @@ async function insertXul(addonID, srcUrl, window, document) {
         for (let i = index + 1; i < currentset.length; i++) {
           if (currentset[i].search(/^(separator|spacer|spring)$/) < 0) {
             before = $(currentset[i]);
-          } else {
+          }
+          else {
             before = getToolbarElem(toolbar, currentset, i);
           }
 
@@ -281,11 +285,13 @@ async function insertXul(addonID, srcUrl, window, document) {
       let pn = insertX(nn, "insertafter");
       if (pn) {
         pn.parentNode.insertBefore(nn, pn.nextSibling);
-      } else {
+      }
+      else {
         pn = insertX(nn, "insertbefore");
         if (pn) {
           pn.parentNode.insertBefore(nn, pn);
-        } else {
+        }
+        else {
           target.appendChild(nn);
         }
       }
@@ -310,12 +316,14 @@ async function insertXul(addonID, srcUrl, window, document) {
 
         if (node.hasAttribute("id")) {
           target = $(node.id);
-        } else if (node.hasAttribute("overlay_target")) {
+        }
+        else if (node.hasAttribute("overlay_target")) {
           target = $$(node.getAttribute("overlay_target"));
           if (target && !target.hasAttribute("id")) {
             target.id = `${addonID}_overlay_${anonymousTargetId++}`;
           }
-        } else {
+        }
+        else {
           target = rootNode;
         }
 
@@ -339,6 +347,17 @@ async function insertXul(addonID, srcUrl, window, document) {
             }
           }
 
+          let customToolbar = $("customToolbars");
+          let additionalToolbars = [];
+          for (let i of customToolbar.attributes) {
+            if (i.name.search(/^toolbar[0-9]+$/) === 0) {
+              let tbar = i.value.split(/\|/)[0];
+              let toolbarId = `__customToolbar_${tbar.replace(/ /g, "_")}`;
+              additionalToolbars.push(toolbarId);
+            }
+          }
+
+
           let toolbox = $(toolboxId);
           let palette = toolbox.palette;
           let c = node.children;
@@ -346,10 +365,16 @@ async function insertXul(addonID, srcUrl, window, document) {
           while (c.length > 0) {
             // added toolbar buttons are removed from the palette's children
             if (c[0].tagName && c[0].tagName === "toolbarbutton") {
-              addToolbarButton(palette, c[0], toolbarId);
+              let button = c[0];
+              addToolbarButton(palette, button, toolbarId);
+              for (let tbar in additionalToolbars) {
+                addToolbarButton(palette, button, additionalToolbars[tbar]);
+              }
             }
           }
-        } else if (!target) {
+
+        }
+        else if (!target) {
           oconsole.log(`injectDOM: no target for ${node.tagName}, not inserting`);
           continue;
         }
@@ -359,7 +384,8 @@ async function insertXul(addonID, srcUrl, window, document) {
           addNode(target, n);
         }
       }
-    } catch (ex) {
+    }
+    catch (ex) {
       oconsole.error("insertXul: injectDOM: failed to inject xul " + ex.message);
     }
   }
@@ -376,6 +402,14 @@ async function insertXul(addonID, srcUrl, window, document) {
   oconsole.log(`loaded: ${srcUrl}`);
   let overlaydoc = xhr.responseXML;
 
+  // get Processing instructions (such as <?xml-stylesheet ...>)
+  let processInstr = [];
+  overlaydoc.childNodes.forEach(function(node) {
+    if (node.nodeType === 7) {
+      processInstr.push(node);
+    }
+  });
+
   // clean the document a bit
 
   let emptyNodes = overlaydoc.evaluate("//text()[normalize-space(.) = '']", overlaydoc, null, 7, null);
@@ -391,9 +425,11 @@ async function insertXul(addonID, srcUrl, window, document) {
   for (let node of overlaydoc.documentElement.children) {
     if (node.tagName == "script") {
       scripts.push(node);
-    } else if (node.tagName == "link") {
+    }
+    else if (node.tagName == "link") {
       links.push(node);
-    } else {
+    }
+    else {
       xul.push(node);
     }
   }
@@ -416,13 +452,6 @@ async function insertXul(addonID, srcUrl, window, document) {
     }
   }
 
-  // load css into window
-  for (let node of links) {
-    if (node.getAttribute("rel") === "stylesheet") {
-      loadCss(addonID, node.getAttribute("href"), window);
-    }
-  }
-
   // load scripts into window
   let deferredLoad = [];
   for (let node of scripts) {
@@ -430,7 +459,8 @@ async function insertXul(addonID, srcUrl, window, document) {
     if (src) {
       oconsole.log("Loading script " + src);
       deferredLoad.push(...loadScriptFromUrl(src, window));
-    } else {
+    }
+    else {
       if (node.firstChild && node.firstChild.nodeName.search(/^#(text|cdata-section)$/) === 0) {
         oconsole.log("Loading inline script " + node.firstChild.wholeText.substr(0, 20));
         deferredLoad.push(...loadInlineScript(node.firstChild.wholeText, window));
@@ -467,7 +497,8 @@ function unloadCSS(url, targetWindow) {
   if ("windowUtils" in domWindow) {
     // TB < 64
     domWindowUtils = domWindow.windowUtils;
-  } else {
+  }
+  else {
     domWindowUtils = domWindow.getInterface(Ci.nsIDOMWindowUtils);
   }
   domWindowUtils.removeSheetUsingURIString(url, 1);
@@ -492,7 +523,8 @@ function loadCss(addonID, url, targetWindow) {
     link.setAttribute("href", url);
     link.setAttribute("extension_id", addonID);
     document.documentElement.appendChild(link);
-  } catch (ex) {
+  }
+  catch (ex) {
     oconsole.error(`loadCss: Error with loading CSS ${url}:\n${ex.message}`);
   }
 }
@@ -517,7 +549,8 @@ function loadScriptFromUrl(url, targetWindow) {
 
   try {
     Services.scriptloader.loadSubScript(url, targetWindow);
-  } catch (ex) {
+  }
+  catch (ex) {
     oconsole.error(`loadScriptFromUrl: Error with loading script ${url}:\n${ex.message}`);
   }
 
@@ -549,7 +582,8 @@ function loadInlineScript(scriptCode, targetWindow) {
   try {
     //targetWindow.eval(scriptCode);
     throw "not supported";
-  } catch (ex) {
+  }
+  catch (ex) {
     oconsole.error(`loadInlineScript: Error with loading script:\n${ex.message}`);
   }
 

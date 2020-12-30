@@ -15,6 +15,7 @@ var Cc = Components.classes;
 var Ci = Components.interfaces;
 
 var EnigmailRules = ChromeUtils.import("chrome://enigmail/content/modules/rules.jsm").EnigmailRules;
+var EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 
 // Initialize enigmailCommon
 EnigInitCommon("enigmailSingleRcptSettings");
@@ -93,10 +94,18 @@ function enigmailDlgOnLoad() {
   } else {
     document.getElementById("encrypt").selectedIndex = 1;
   }
-  if (typeof(window.arguments[INPUT].pgpmime) == "number") {
-    document.getElementById("pgpmime").selectedIndex = window.arguments[INPUT].pgpmime;
-  } else {
-    document.getElementById("pgpmime").selectedIndex = 1;
+
+  // Hide PGP/MIME line on Postbox and Interlink
+  if (EnigmailCompat.isPostbox() || EnigmailCompat.isInterlink()) {
+    document.getElementById("pgpMimeRow").setAttribute("hidden", "true");
+    document.getElementById("pgpmime").selectedIndex = 2;
+  }
+  else {
+    if (typeof(window.arguments[INPUT].pgpmime) == "number") {
+      document.getElementById("pgpmime").selectedIndex = window.arguments[INPUT].pgpmime;
+    } else {
+      document.getElementById("pgpmime").selectedIndex = 1;
+    }
   }
 }
 

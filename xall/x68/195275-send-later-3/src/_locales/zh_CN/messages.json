@@ -139,6 +139,10 @@
     "message": "每周",
     "description": ""
   },
+  "resetPrefsButton": {
+    "message": "重置偏好",
+    "description": ""
+  },
   "saveDefaultsLabel": {
     "message": "将这些数值保存为默认",
     "description": ""
@@ -221,6 +225,14 @@
   },
   "userGuideLabel": {
     "message": "用户指南",
+    "description": ""
+  },
+  "errorDateInPast": {
+    "message": "日期已过",
+    "description": ""
+  },
+  "DelayFunctionHelp": {
+    "message": "仅仅延迟数分钟发信。第一参数為延迟的时间。",
     "description": ""
   },
   "sendlater.prompt.sendlater.label": {
@@ -381,6 +393,10 @@
   },
   "donatelink.value": {
     "message": "捐赠",
+    "description": ""
+  },
+  "advancededitor.title": {
+    "message": "高级配置编辑器",
     "description": ""
   },
   "editorlink.value": {
@@ -668,23 +684,23 @@
     "description": ""
   },
   "SendingUnsentError": {
-    "message": "Send Later: 发送未发送消息时出错。您的发件箱可能已损坏，预定要发送的消息可能未被发出。参看 https://blog.kamens.us/send-later/#outbox",
+    "message": "Send Later: 发送未发送消息时出错。您的发件箱可能已损坏，预定要发送的消息可能未被发出。参看 https://extended-thunder.github.io/send-later/#corrupt-outbox",
     "description": ""
   },
   "CopyUnsentError": {
-    "message": "Send Later: 复制未发送消息到发件箱时出错（错误代码 $1）。Send Later已被禁用！参看 https://blog.kamens.us/send-later/#outbox-copy-failure",
+    "message": "Send Later: 复制未发送消息到发件箱时出错（错误代码 $1）。Send Later已被禁用！参看 https://extended-thunder.github.io/send-later/#outbox-copy-failure",
     "description": ""
   },
   "CopyRecurError": {
-    "message": "Send Later: 复制周期性消息到草稿箱时出错（错误代码 $1）。Send Later已被禁用！参看 https://blog.kamens.us/send-later/#drafts-copy-failure",
+    "message": "Send Later: 复制周期性消息到草稿箱时出错（错误代码 $1）。Send Later已被禁用！参看 https://extended-thunder.github.io/send-later/#drafts-copy-failure",
     "description": ""
   },
   "CorruptFolderError": {
-    "message": "Send Later: 文件夹 $1 可能已损坏。请打开其属性并修复它。参看 https://blog.kamens.us/send-later/#corrupt-drafts-error",
+    "message": "Send Later: 文件夹 $1 可能已损坏。请打开其属性并修复它。参看 https://extended-thunder.github.io/send-later/#corrupt-drafts-error",
     "description": ""
   },
   "MessageResendError": {
-    "message": "Send Later: 尝试重新发送已发送的消息？！你的发件箱或草稿文件夹 $1 可能已损坏。请按照 https://blog.kamens.us/send-later/#corrupt-outbox 上的描述进行修复。",
+    "message": "Send Later: 尝试重新发送已发送的消息？！你的发件箱或草稿文件夹 $1 可能已损坏。请按照 https://extended-thunder.github.io/send-later/#corrupt-outbox 上的描述进行修复。",
     "description": ""
   },
   "minutely": {
@@ -908,7 +924,7 @@
     "description": ""
   },
   "EnigmailIncompatText": {
-    "message": "现在安装的Enigmail版本与Send Later不兼容，因此Send Later消息日程已禁用。请联系Send Later维护人员(jik@kamens.us)以获得帮助。",
+    "message": "现在安装的Enigmail版本与Send Later不兼容，因此Send Later消息日程已禁用。请联系Send Later维护人员(send-later-support@extended-thunder.org)以获得帮助。",
     "description": ""
   },
   "TimeMismatchConfirmTitle": {
@@ -948,7 +964,7 @@
     "description": ""
   },
   "EditorReadMeCode": {
-    "message": "// Welcome to the Send Later function editor!\n//\n// The editor allows you to create JavaScript functions implementing complex\n// message scheduling logic which can be associated with shortcut buttons or\n// selected in the Send Later dialog.\n//\n// As you can see above, when a scheduling function is called, it will be given\n// three arguments:\n// * \"specname\" is needed if you want this function to recur (see below)\n// * \"prev\" is the previous scheduled send time, if this is a recurring\n//   invocation\n// * \"args\" is the extra arguments returned by the previous invocation if this\n//   is a recurring invocation\n//\n// Your code needs to set the variables \"next\", \"nextspec\", and\n// \"nextargs\" as follows:\n//\n// * \"next\" is either the number of minutes in the future or a Date object\n//   indicating when the message should be sent.\n// * \"nextspec\" is a recurrence specification if this is intended to be a\n//   recurring message (see\n//   https://blog.kamens.us/send-later/#dynamic-recurrence). If you don't set\n//   this, then the message will only be sent once. Note: if you want your\n//   function to be called again for recurrence, do:\n//     nextspec = \"function \" + specname;\n// * \"nextargs\" is an array of arguments you want to be passed into the next\n//   invocation of the function as \"args\".\n//\n// While you are working on your function, you can test it by filling in values\n// for \"prev\" and \"args\" in the Text boxes below and then clicking \"Execute\" to\n// execute the function and see the results.\n//\n// There are two pre-configured sample functions, \"BusinessHours\" and\n// \"DaysInARow\", which you can look at and play with to learn more.\n//\n// This \"ReadMeFirst\" function just causes the message to be sent around now,\n// via the following line.\nnext = new Date();",
+    "message": "// Welcome to the Send Later function editor!\n//\n// The editor allows you to create JavaScript functions implementing complex\n// message scheduling logic which can be associated with shortcut buttons or\n// selected in the Send Later dialog.\n//\n// As you can see above, when a scheduling function is called, it will be given\n// three arguments:\n// * \"specname\" is needed if you want this function to recur (see below)\n// * \"prev\" is the previous scheduled send time, if this is a recurring\n//   invocation\n// * \"args\" is the extra arguments returned by the previous invocation if this\n//   is a recurring invocation\n//\n// Your code needs to set the variables \"next\", \"nextspec\", and\n// \"nextargs\" as follows:\n//\n// * \"next\" is either the number of minutes in the future or a Date object\n//   indicating when the message should be sent.\n// * \"nextspec\" is a recurrence specification if this is intended to be a\n//   recurring message (see\n//   https://extended-thunder.github.io/send-later/#dynamic-recurrence). If you don't set\n//   this, then the message will only be sent once. Note: if you want your\n//   function to be called again for recurrence, do:\n//     nextspec = \"function \" + specname;\n// * \"nextargs\" is an array of arguments you want to be passed into the next\n//   invocation of the function as \"args\".\n//\n// While you are working on your function, you can test it by filling in values\n// for \"prev\" and \"args\" in the Text boxes below and then clicking \"Execute\" to\n// execute the function and see the results.\n//\n// There are two pre-configured sample functions, \"BusinessHours\" and\n// \"DaysInARow\", which you can look at and play with to learn more.\n//\n// This \"ReadMeFirst\" function just causes the message to be sent around now,\n// via the following line.\nnext = new Date();",
     "description": ""
   },
   "EditorReadMeHelp": {

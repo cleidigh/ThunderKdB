@@ -89,6 +89,7 @@ var cardbookInit = {
 		prefs.setCharPref("eventEntryTitle", cardbookRepository.extension.localeData.localizeMessage("eventEntryTitleMessage"));
 		prefs.setCharPref("calendarEntryCategories", cardbookRepository.extension.localeData.localizeMessage("anniversaryCategory"));
 		prefs.setCharPref("eventEntryTime", "00:00");
+		prefs.setBoolPref("repeatingEvent", true);
 		prefs.setBoolPref("eventEntryWholeDay", false);
 		prefs.setCharPref("calendarEntryAlarm", "168");
 		prefs.setBoolPref("calendarEntryAlarmMigrated", false);
@@ -101,7 +102,7 @@ var cardbookInit = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "54.6");
+		prefs.setCharPref("addonVersion", "54.8");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);

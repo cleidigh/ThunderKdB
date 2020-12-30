@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+-->
+
+<?xml-stylesheet href="chrome://messenger/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://enigmail/skin/enigmail.css" type="text/css"?>
+
+<!DOCTYPE window [
+<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd" >
+%brandDTD;
+<!ENTITY % enigMailDTD SYSTEM "chrome://enigmail/locale/enigmail.dtd" >
+%enigMailDTD;
+<!ENTITY % utilityDTD SYSTEM "chrome://communicator/locale/utilityOverlay.dtd">
+%utilityDTD;
+]>
+
+<dialog id="enigmailTb78Warning"
+        title=""
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept"
+        onload="onLoad();"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        buttonpack="center">
+
+  <!--script type="application/x-javascript" src="chrome://enigmail/content/ui/enigmailMsgBox.js"/ -->
+
+  <script type="application/x-javascript">
+    function onLoad() {
+      const EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
+      var dlg = document.getElementById("enigmailTb78Warning");
+      dlg.setAttribute("title", EnigmailLocale.getString("enigAlert"));
+    }
+  </script>
+
+  <hbox id="filler" style="min-width: 0%;">
+    <spacer style="width: 29em;"/>
+  </hbox>
+
+<grid>
+  <columns>
+    <column/>
+    <column flex="1"/>
+  </columns>
+
+  <rows>
+    <row>
+      <hbox id="iconContainer" align="start">
+        <image id="infoImage" class="spaced alert-icon"/>
+      </hbox>
+      <vbox id="infoContainer" pack="center">
+        <label class="enigmailDialogTitle" value="&enigmail.tb78warn.title;"/>
+
+        <spacer style="min-height: 1em;"/>
+
+        <vbox id="msgContainer" style="max-width: 45em;">
+          <description class="enigmailDialogBody" align="start"><html:b>&enigmail.tb78warn.heading;</html:b> &enigmail.tb78warn.desc1;<html:br/><html:br/></description>
+          <description class="enigmailDialogBody">&enigmail.tb78warn.desc2;<html:br/><html:br/></description>
+          <description class="enigmailDialogBody">&enigmail.tb78warn.desc3;<html:br/><html:br/></description>
+          <description class="enigmailDialogBody">&enigmail.tb78warn.desc4;<html:br/><html:br/></description>
+          <description class="enigmailDialogBody">&enigmail.tb78warn.desc5;</description>
+        </vbox>
+      </vbox>
+    </row>
+  </rows>
+</grid>
+</dialog>

@@ -1,16 +1,26 @@
-
+<b>Release 5.1</b>
 <ul>
-<li class="psa"> I am currently paying somebody to migrate all my Add-on support sites away from the free host on mozdev.org, which is going to close operation end of June. To keep having support sites and ongoing development, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> (the migration will cost around $500, so there are some expense I hope to recover from the user community).
+<li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the nexty 12 months forward - please support this with a license or donation:</li>
+<li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
+<li>If you are not ready for a license you can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a></ul>
 
-I will also have to rewrite all mail Add-ons as web extensions, which is currently not yet possible as all necessary APIs to replace the deprecated tech has not been implemented. As in between step I plan to release QuickFolders as a "web experiment" for Thunderbird 78+ but this will take a few weeks of work. If you are interested in using a version of  QuickFolders that works with Thunderbird 78, <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> to support the project.</li>
-
-<li> IMPROVEMENT IN 4.18:<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/27">[issue 27]</a> Drag to Create New Subfolders from tab could create unexpected results, if the entered folder name contained spaces. The space (and possibly other non-ASCII characters, such as Umlauts / diacritics),  would be url encoded (Space = <code>%20</code>) and could lead to failure of moving the mail or duplicated folders or non-working QuickFolders tabs.
-
-This problem was reported during the thunderbird 68.* release cycle so the fix may affect older versions of Thunderbird negatively. For user of older Thunderbird versions the behavior can be reverted by using the configuration setting: <code>extensions.quickfolders.newFolderCallback.encodeURI  = true</code></li>
-
-<li> FIXED IN 4.18.1:<br><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/34">[issue 34]</a> Option to make QuickFolders appear at the Bottom of Other Toolbars
-
-The new setting <i>Advanced / QuickFolders Bar Position</i> can be used to change the order of toolbars to push the QuickFolders bar further up / down in case other 3rd party toolbars are used. Set to 0 to have the toolbar at the top, 100 should work to push it below all other toolbars.
-
-The default is now set to make QuickFolders appear at the bottom of the mail tools again.</li>
+<b>Changes / Items worked</b>
+<ul>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/72">[issue 72]</a> Category "_Uncategorized" will show all categories after moving a folder to another category
+</li>
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/76">[issue 76]</a>Recent Folders List is not updated until Thunderbird is restarted.
+</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/80">[issue 80]</a> Recent Folders list not updated when moving email using drag and drop to the folder tree.  I have made the updating of this folder time stamp somewhat more aggressive, but avoiding to add folders like Inbox, Sent, Archives, Drafts, Junk, Trash and Templates because they would always end up on top.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/79">[issue 79]</a> Drag over color + Dropmarkers when reordering Tabs not working
+</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/81">[issue 81]</a> Current Folder Toolbar display - text is always black
+</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/84">[issue 84]</a> Can't drag envelope icon in Navigation bar (a.k.a. Current Folder) to a folder / QuickFolder drop target. Also the Navigation Bar is hidden if multiple mails or a thread is selected.</li>
+<li> Hide option to extend license if it is already more than 1 year into the future. </li>
+<li> Hide popup screen for licensed users who have > 40 days left on their license </li>
+<li> removed Encryption test code from options.js </li>
+<li> validateFilterTargets moved to other module to avoid console errors.</li>
+<li> Improve legibility of dropdown items in themed  QuickFolders options dialog. Especially affects users of dark themes </li>
+<li> In the dialog "change order of tabs" the <i>Up</i> and <i>Down</i> labels on the buttons were not rendered for some yet unknown reason - this is now worked around by removing the button styling from these elements</li>
 </ul>
+

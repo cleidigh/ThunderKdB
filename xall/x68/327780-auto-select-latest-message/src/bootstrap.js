@@ -25,17 +25,7 @@ function main(window)
 			listener =
 			{
 				timer: null,
-				last: 0,
-				onMessagesLoaded: function listener_onMessagesLoaded(aAll)
-				{
-					listener.selectMessageDelayed.apply(this, arguments);
-				},
-
-				onMakeActive: function listener_onMakeActive()
-				{
-					listener.selectMessageDelayed.apply(this, arguments);
-				},
-
+				calls: [],
 				selectMessageDelayed: function listener_selectMessageDelayed()
 				{
 					if (this.timer)
@@ -43,18 +33,22 @@ function main(window)
 
 					let that = this,
 							args = arguments;
+
+					this.calls[this.calls.length] = arguments[arguments.length-1];
 					//the timer needed to allow time to restore previous selection if any
 					this.timer = setTimeout(function(){listener.selectMessage.apply(that, args)}, 0);
 				},
 
 				selectMessage: function listener_selectMessage(obj)
 				{
+					let calls = Object.assign([], this.calls);
+					this.calls = [];
 					if (!prefs.sel)
 						return;
 
 					let isTextbox = this.isTextbox(window.document.activeElement);
 
-					if (obj.view.dbView && (!obj.view.dbView.numSelected || (obj.view.dbView.numSelected && !isTextbox && prefs.selForce)))
+					if (obj.view.dbView && (!obj.view.dbView.numSelected || (obj.view.dbView.numSelected && !isTextbox && prefs.selForce && calls.indexOf("onDisplayingFolder") != -1)))
 					{
 
 						let msgDefault = Ci.nsMsgNavigationType.firstMessage,
@@ -130,7 +124,37 @@ function main(window)
 				onTabClosing: function tabMan_onTabClosing(){},
 				onTabSwitched: function tabMan_onTabSwitched(tab){},
 			};
-
+	!function()
+	{
+		let listenerEvents = [
+//					"onActiveCreatedView",
+//					"onActiveMessagesLoaded",
+//					"onCreatedView",
+//					"onDestroyingView",
+					"onDisplayingFolder",
+//					"onFolderLoading",
+//					"onLeavingFolder",
+//					"onLoadingFolder",
+					"onMakeActive",
+//					"onMessageCountsChanged",
+//					"onMessagesLoaded",
+//					"onMessagesRemovalFailed",
+//					"onMessagesRemoved",
+//					"onSearching",
+//					"onSortChanged",
+		];
+		for (let i = 0; i < listenerEvents.length; i++)
+		{
+			let name = listenerEvents[i];
+			this[name] = function()
+			{
+				let args = Array.prototype.slice.call(arguments);
+				args[args.length] = name;
+				this.selectMessageDelayed.apply(this, args);
+			}
+		}
+		return true;
+	}.bind(listener)(),
 	window.FolderDisplayListenerManager.registerListener(listener);
 	listen(window, window, "unload", unload(function()
 	{

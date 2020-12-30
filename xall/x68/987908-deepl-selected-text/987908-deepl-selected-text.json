@@ -6,10 +6,10 @@
             "name": "Itagaki Fumihiko",
             "url": "https://addons.thunderbird.net/en-US/thunderbird/user/itagagaki/",
             "username": "itagagaki",
-            "picture_url": null
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14197/14197064.png?modified=1609136688"
         }
     ],
-    "average_daily_users": 634,
+    "average_daily_users": 717,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,28 +18,29 @@
     "contributions_url": "",
     "created": "2020-09-27T07:32:36Z",
     "current_version": {
-        "id": 2474345,
+        "id": 2475050,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/deepl-selected-text/versions/2474345",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/deepl-selected-text/versions/2475050",
         "files": [
             {
-                "id": 1017507,
-                "created": "2020-09-27T07:32:36Z",
-                "hash": "sha256:7f3d09e23c3d1700c928fdba4003e50b7a2ec027b0046f71b9722ade8416fb9a",
+                "id": 1018212,
+                "created": "2020-12-18T12:54:49Z",
+                "hash": "sha256:c2a3ffa5ac420a0fed36fa362ebf082dc3c3586cdd0ce6375eb2a29175b2096e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 10701,
+                "size": 24633,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017507/deepl-1.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018212/deepl-1.1.0-tb.xpi?src=",
                 "permissions": [
-                    "menus"
+                    "menus",
+                    "storage"
                 ]
             }
         ],
@@ -52,21 +53,24 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": null,
-        "reviewed": "2020-09-27T07:40:03Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/deepl-selected-text/versions/1.0.0",
-        "version": "1.0.0"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/deepl-selected-text/versions/1.1.0",
+        "version": "1.1.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This extension for Thunderbird 68+ adds a \"Translate with DeepL\" item to the context menu. When you select text and use it, a tab will open up, and it will translate the text for you at DeepL.",
-        "ja": "Thunderbird 68+用のこの拡張機能は、コンテキストメニューに「DeepLで翻訳」の項目を追加します。テキストを選択してそれを使用するとタブが開き、DeepLでテキストを翻訳します。"
+        "en-US": "This extension for Thunderbird 68+ adds a \"Translate with DeepL\" item to the context menu. When you select text and use it, a tab will open up, and it will translate the text for you at DeepL.\n\nYou can also choose to have it open in a new window instead of a tab.\nPlease set it in the options page.\n\n#### How to open the options page\n<ol><li>Click the menu button and click Add-ons, or select Tools &gt; Add-ons from the menu bar.</li><li>Click the three-dot button on \"DeepL selected text\" and select Options, or click \"DeepL selected text\" and click Options.</li></ol>\nNotes: Depending on the version of Thunderbird, the \"Translate with DeepL\" item may not appear in the context menu after installing this extension. In that case, please restart Thunderbird once.",
+        "ja": "Thunderbird 68+用のこの拡張機能は、コンテキストメニューに「DeepLで翻訳」の項目を追加します。テキストを選択してそれを使用するとタブが開き、DeepLでテキストを翻訳します。\n\nタブではなく新しいウィンドウで開くようにすることもできます。\nオプションページで設定して下さい。\n\n#### オプションページの開き方\n<ol><li>メニューボタンをクリックして アドオン を選択するか、メニューバーから ツール &gt; アドオン を選択してください。</li><li>「DeepL翻訳」の3点ボタンをクリックし、オプション を選択するか、「DeepL翻訳」をクリックして オプション をクリックしてください。</li></ol>\n\nご注意：Thunderbirdのバージョンによっては、この拡張機能をインストールしてもコンテキストメニューに「DeepLで翻訳」の項目が現れない場合があります。その場合は一度Thunderbirdを再起動してください。"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/deepl-selected-text/edit",
     "guid": "deepl@itagagaki",
     "has_eula": false,
     "has_privacy_policy": false,
-    "homepage": null,
+    "homepage": {
+        "en-US": "https://github.com/itagagaki/DeepL-Selected-Text",
+        "ja": "https://github.com/itagagaki/DeepL-Selected-Text"
+    },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987908-64.png?modified=47ba17df",
     "icons": {
         "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987908-32.png?modified=47ba17df",
@@ -76,7 +80,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-27T07:40:02Z",
+    "last_updated": "2020-12-18T12:55:03Z",
     "name": {
         "en-US": "DeepL Selected Text",
         "ja": "DeepL翻訳"
@@ -84,7 +88,7 @@
     "previews": [],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.33966,
+        "bayesian_average": 3.3394,
         "count": 3,
         "average": 3.6667,
         "text_count": 3

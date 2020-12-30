@@ -69,6 +69,13 @@ var EnigmailGnuPGUpdate = {
 
 
   isGnuPGUpdatable: function() {
+    if (!EnigmailPrefs.getPref("gpgUpgradeFrom20")) {
+      // don't upgrade if GnuPG 2.0.x is detected
+      if (EnigmailVersioning.greaterThan("2.1", EnigmailGpg.agentVersion)) {
+        return false;
+      }
+    }
+
     try {
       switch (EnigmailOS.getOS()) {
         case "Darwin":

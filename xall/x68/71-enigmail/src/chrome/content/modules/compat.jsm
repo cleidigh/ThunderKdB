@@ -11,6 +11,7 @@
 var EXPORTED_SYMBOLS = ["EnigmailCompat"];
 
 const POSTBOX_ID = "postbox@postbox-inc.com";
+const INTERLINK_NAME = "Interlink";
 const XPCOM_APPINFO = "@mozilla.org/xre/app-info;1";
 
 var gIsPostbox = null,
@@ -69,8 +70,15 @@ var EnigmailCompat = {
    * return true, if platform is newer than or equal a given version
    */
   isPlatformNewerThan: function(requestedVersion) {
+    let appInfo = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo);
     let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator);
-    let appVer = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo).platformVersion;
+    let appVer = "";
+    if (isInterlink()) {
+      appVer = appInfo.version;
+    }
+    else {
+      appVer = appInfo.platformVersion;
+    }
 
     return vc.compare(appVer, requestedVersion) >= 0;
   },
@@ -202,7 +210,11 @@ var EnigmailCompat = {
     }
   },
 
-  isPostbox: isPostbox
+  isPostbox: isPostbox,
+  isInterlink: isInterlink,
+  isThunderbird: function() {
+    return (!isPostbox() && !isInterlink());
+  }
 };
 
 function isPostbox() {
@@ -213,4 +225,8 @@ function isPostbox() {
   }
 
   return gIsPostbox;
+}
+
+function isInterlink() {
+  return Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULAppInfo).name === INTERLINK_NAME;
 }

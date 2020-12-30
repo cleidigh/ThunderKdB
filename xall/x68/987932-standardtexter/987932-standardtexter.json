@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 125,
+    "average_daily_users": 170,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,29 +18,32 @@
     "contributions_url": "",
     "created": "2020-10-31T18:34:37Z",
     "current_version": {
-        "id": 2474633,
+        "id": 2475006,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "68.0"
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/standardtexter/versions/2474633",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/standardtexter/versions/2475006",
         "files": [
             {
-                "id": 1017795,
-                "created": "2020-11-05T00:07:59Z",
-                "hash": "sha256:7cbc19793833252e0fe02f8810a23eed4c51dd0f1e41cf3d7818a51bb1ef2ca5",
+                "id": 1018168,
+                "created": "2020-12-12T02:29:50Z",
+                "hash": "sha256:27fe3ba5cd6def4b163c801679b184d1d2b3840cd495b5e55d0d253068d8ec44",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 240406,
+                "size": 208612,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017795/standardtexter-0.61-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018168/standardtexter-1.0.2-tb.xpi?src=",
                 "permissions": [
                     "downloads",
-                    "storage"
+                    "storage",
+                    "compose",
+                    "activeTab",
+                    "tabs"
                 ]
             }
         ],
@@ -54,8 +57,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/standardtexter/versions/0.61",
-        "version": "0.61"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/standardtexter/versions/1.0.2",
+        "version": "1.0.2"
     },
     "default_locale": "en-GB",
     "description": {
@@ -77,7 +80,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-05T09:06:08Z",
+    "last_updated": "2020-12-12T02:30:02Z",
     "name": {
         "en-GB": "StandardTexter",
         "de": "StandardTexter"
@@ -90,26 +93,26 @@
                 725,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206226.png?modified=1604434170",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206226.png?modified=1607740637",
             "thumbnail_size": [
                 181,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206226.png?modified=1604434170"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206226.png?modified=1607740637"
         },
         {
-            "id": 206227,
+            "id": 206351,
             "caption": null,
             "image_size": [
-                1086,
-                475
+                1020,
+                577
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206227.png?modified=1604434170",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206351.png?modified=1607740637",
             "thumbnail_size": [
                 320,
-                140
+                181
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206227.png?modified=1604434170"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206351.png?modified=1607740637"
         },
         {
             "id": 206228,
@@ -118,17 +121,17 @@
                 1088,
                 449
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206228.png?modified=1604434170",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206228.png?modified=1607740637",
             "thumbnail_size": [
                 320,
                 132
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206228.png?modified=1604434170"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206228.png?modified=1607740637"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.2408,
+        "bayesian_average": 4.24046,
         "count": 3,
         "average": 4.6667,
         "text_count": 3
@@ -142,14 +145,21 @@
         "en-GB": "With the help of this Add-on, up to 99 pre-made texts (standard texts, text modules or even signatures) can be stored, which can then be retrieved and inserted when writing an e-mail.\nThe texts can be preformatted with HTML.",
         "de": "Mit diesem Add-on können bis zu 99 vorgefertigte Texte (Standardtexte, Textbausteine oder auch Signaturen) gespeichert werden, die dann beim Verfassen einer E-Mail abgerufen u. eingefügt werden können.\nDie Texte können mit HTML vorformatiert werden."
     },
-    "support_email": null,
+    "support_email": {
+        "en-GB": "k-l-p@gmx.de",
+        "de": "k-l-p@gmx.de"
+    },
     "support_url": null,
     "tags": [
         "boilerplates",
         "firefox57",
         "signatures",
         "standard texts",
-        "text modules"
+        "standardtexte",
+        "text modules",
+        "textbausteine",
+        "textmodule",
+        "textvorlagen"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/standardtexter/",
@@ -158,7 +168,8 @@
         "ext_comp": {
             "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp78plus": true
         }
     }
 }

@@ -1,49 +1,12 @@
+/* no more bindings! */
 
-
-.ruleactionitem.filtaquillaAB menuitem {
-  list-style-image: url("chrome://messenger/skin/addressbook/icons/addrbook.png");
-  opacity: 0.85;
-}
-
-.ruleactionitem.filtaquillaAB menuitem.mailing-list {
-  list-style-image: url("chrome://messenger/skin/addressbook/icons/ablist.png");
-}
-
-.ruleactionitem.filtaquillaAB menuitem.is-remote.is-secure {
-  list-style-image: url("chrome://messenger/skin/addressbook/icons/secure-remote-addrbook.png");
-}
-
-
-
-
-.ruleactiontarget[type="filtaquilla@mesquilla.com#launchFile"] {
-  -moz-box-flex: 1;
-}
-
-.ruleactiontarget[type="filtaquilla@mesquilla.com#runFile"] {
-  -moz-box-flex: 1;
-}
-
-.ruleactiontarget[type="filtaquilla@mesquilla.com#addSender"] {
-  -moz-box-flex: 1;
-}
-
-.ruleactiontarget[type="filtaquilla@mesquilla.com#saveAttachment"] {
-  -moz-box-flex: 1;
-}
-
-.ruleactiontarget[type="filtaquilla@mesquilla.com#detachAttachments"] {
-  -moz-box-flex: 1;
-}
-
-.ruleactiontarget[type="filtaquilla@mesquilla.com#javascriptAction"] {
-  -moz-box-flex: 1;
-}
-
-.ruleactiontarget[type="filtaquilla@mesquilla.com#javascriptActionBody"] {
-  -moz-box-flex: 1;
-}
-
+.ruleactiontarget[type="filtaquilla@mesquilla.com#launchFile"],
+.ruleactiontarget[type="filtaquilla@mesquilla.com#runFile"],
+.ruleactiontarget[type="filtaquilla@mesquilla.com#addSender"],
+.ruleactiontarget[type="filtaquilla@mesquilla.com#saveAttachment"] ,
+.ruleactiontarget[type="filtaquilla@mesquilla.com#detachAttachments"] ,
+.ruleactiontarget[type="filtaquilla@mesquilla.com#javascriptAction"] ,
+.ruleactiontarget[type="filtaquilla@mesquilla.com#javascriptActionBody"] ,
 .ruleactiontarget[type="filtaquilla@mesquilla.com#saveMessageAsFile"] {
   -moz-box-flex: 1;
 }
@@ -52,36 +15,56 @@ toolbarbutton.focusbutton {
   -moz-user-focus: normal;
 }
 
-.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#subjectRegex"] {
-  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
+/* style the file picker + textbox elements so that the textbox stretches */
+hbox.flexelementcontainer {
+  display: inline-flex !important;
+}
+hbox.flexelementcontainer[hidden] {
+  display: none !important;
 }
 
-.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#attachmentRegex"] {
-  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
+input.flexinput,
+menulist.flexinput {
+  flex-grow: 2 !important;
 }
 
-.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#headerRegex"] {
-  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
+
+.ruleactionitem.filtaquillaAB menuitem {
+  list-style-image: url("chrome://messenger/skin/icons/address.svg");
+  opacity: 0.75 !important;
 }
 
+.ruleactionitem.filtaquillaAB menuitem.mailing-list {
+  list-style-image: url("chrome://messenger/skin/icons/ablist.svg");
+  opacity: 1.0;
+}
+
+.ruleactionitem.filtaquillaAB menuitem.is-remote {
+  list-style-image: url("chrome://messenger/skin/icons/globe.svg");
+  opacity: 1.0;
+}
+
+.ruleactionitem.filtaquillaAB menuitem.is-remote.is-secure {
+  list-style-image: url("chrome://messenger/skin/icons/globe-secure.svg");
+  opacity: 1.0;
+}
+
+/* textboxes */
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#attachmentRegex"],
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#headerRegex"],
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#searchBcc"],
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#folderName"],
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#subjectRegex"],
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#threadheadtag"],
+.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#threadanytag"] {
+  -moz-box-flex: 1;
+}
+
+
+
+/* JavaScript editor
+  OBSOLETE!
 .search-value-custom[searchAttribute="filtaquilla@mesquilla.com#javascript"] {
   -moz-binding: url("chrome://filtaquilla/content/bindings.xml#javascript");
 }
-
-.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#searchBcc"] {
-  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
-}
-
-.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#folderName"] {
-  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#textbox");
-}
-
-/*  converted to js, BUT AIN'T WORKING YET */
-.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#threadheadtag"] {
-  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#tag");
-}
-
-.search-value-custom[searchAttribute="filtaquilla@mesquilla.com#threadanytag"] {
-  -moz-binding: url("chrome://filtaquilla/content/bindings.xml#tag");
-}
-
+ */

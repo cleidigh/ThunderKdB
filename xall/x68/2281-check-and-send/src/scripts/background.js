@@ -568,7 +568,6 @@ async function checkAttachments(tabId) {
     }
     if ((blacklistCheck && hit) || (!blacklistCheck && !hit)) {
       ngAttachments.push(name);
-      break;
     }
 
     try {

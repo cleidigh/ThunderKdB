@@ -1,5 +1,48 @@
 [
     {
+        "id": 2475043,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "78.*",
+                "min": "74.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2475043",
+        "files": [
+            {
+                "id": 1018205,
+                "created": "2020-12-17T13:45:24Z",
+                "hash": "sha256:c47cbdcf7628e8acfa5d19f2c0fdb88e10f1710b0a7d51455d63fa56cd7ba1ac",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 762987,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018205/smarttemplates-3.2-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7344,
+            "name": {
+                "en-US": "CC BY-ND 4.0"
+            },
+            "text": {
+                "en-US": "LICENSE\n\n\nSmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the SmartTemplate4 Add-on (distributed as a XPI file) and all files contained within it\nPremium Feature - a feature or function of the software which is protected by the mechanism outlined below\nSmartTemplate4 Pro - Refers to the registered version of SmartTemplate4\n\n\nAll contents of The Program are subject to the GNU General Public License Version 3\n(the \"License\"); you may not use the file except in compliance with\nthe License. You may obtain a copy of the complete License at\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/legalcode\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a>\nFor a  human-readable summary thereof please refer\n<a href=\"http://creativecommons.org/licenses/by-nd/4.0/\" rel=\"nofollow\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by \na paid registration scheme. Registration keys can be obtained via various licensing links\nfrom within the software (Settings &gt; Advanced &gt; SmartTemplate4 Pro tab, SmartTemplate4 context menu, \npremium notification messages). The profits from Registration are used to develop\nand distribute the program further and to feed the author, as he would like to spend\nmore time developing open source software. Some Premium features may be available in \nthe free software, but they may be restricted (e.g. through a notification to the \nregistration). Premium features are not essential to the core functionality of \nthe Program, but are there to provide an incentive for financially supporting the \nenhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys.\nRegistration keys are personal, non-transferrable and usually restricted to a time period\n(typically one year). To protect their personal nature they are tied to the user's \nEmail address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused \nin order to avoid our monetisation by giving this away for free or cheaper than us \nthus disincentivising the current developers from putting a lot of time into \ndevelopment and support.\n\n\nIf plan to you use large portions of the code please contact the author\n(Axel Grude)\nAnd Support (Marky Mark DE)\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nCreative Commons (CC BY-ND 4.0) License for more details.\n\n\nATTRIBUTIONS\n\nSmartTemplate4 includes work by\n\nCurrent developer: \nAxel Grude\nMarky Mark DE\n\nContributors: \nAris - style support\ntool8 - development, Version 0.7.2 - 0.8.0\n\nTranslations: \nThe current list of translators is listed in the install.rdf (Add-ons Manager / About) and\ndisplayed on the \"about\" Tab.\n\nNOIA ICON SET:\nThis Iconset is Published under GNU LESSER GENERAL PUBLIC LICENSE \n-&gt; see:Noia_KDE_0.95.tar_4.tgz / lesser.txt\n\t\t       \nMade by Carlitus (Carles Carbonell Bernado)\n &lt;mail@carlitus.net&gt;"
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.2"
+        },
+        "release_notes": {
+            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.2\">can be found here</a>\n\n<b>Latest News</b>\n\nWe had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a Pro license</a>\n\nMigration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.\n\n<b>Improvements</b>\n<ul>  <li>New function (SmartTemplates Pro): &lt;tt&gt;%conditionalText(forwardMode,\"text1\",\"text2\")%&lt;/tt&gt; inserts text based on forwarding inline vs attached; added by Artem (conductor111 on github).</li>  <li>Omit update popup for users with licenses &gt; 40days</li>  <li>Domain Licenses can now be renewed (and extended 30 days before expiry) directly from the license dialog.</li>  <li>Reopening existing tabs on support site now correctly jumps to in page links (such as #donate)</li>  <li>Some minor improvements in layout for settings dialog and license screen.</li></ul>\n<b>Changes / Bug Fixes</b>\n<ul>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/98\">[issue 98]</a> - Fixed: %header.set(to,\"[addressee]\")% no longer working</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/100\">[issue 100]</a> - Trial period should restart on license expiry</li>  <li>Fixed some errors in Serbian, Slovenian and Portuguese help sections.</li>  <li>Fixed reminder for premium functions - this notification should be shown if a Standard User uses functions reserved for SmartTemplates Pro Users</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.2",
+        "version": "3.2"
+    },
+    {
         "id": 2474829,
         "channel": "listed",
         "compatibility": {
@@ -36,7 +79,7 @@
             "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.1"
         },
         "release_notes": {
-            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.1\">can be found here</a>\n\n<b>Latest News</b>\n\nWe had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a Pro license</a>\n\nMigration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.\n\n<b>Changes / Bug Fixes</b>\n<ul>  <li>This new early version after release of 3.0 for Thunderbird 78 was necessary after releasing 2.12.1 for my legacy users (Thunderbird 60 and older)</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/94\">[issue 94]</a></li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/94\"> - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST\n  </a><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/94\"></a><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/85\">[issue 85]</a></li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/85\"> - fixed more dead links linking to old mozdev bugzilla bugs (these are now archived on quickfolders.org)\n</a></ul>"
+            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.1\">can be found here</a>\n\n<b>Latest News</b>\n\nWe had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a Pro license</a>\n\nMigration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.\n\n<b>Changes / Bug Fixes</b>\n<ul>  <li>This new early version after release of 3.0 for Thunderbird 78 was necessary after releasing 2.12.1 for my legacy users (Thunderbird 60 and older)</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/94\">[issue 94]</a> - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/85\">[issue 85]</a> - fixed more dead links linking to old mozdev bugzilla bugs (these are now archived on <a rel=\"nofollow\" href=\"http://quickfolders.org\">quickfolders.org</a>)</li></ul>"
         },
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.1",

@@ -233,7 +233,6 @@
     targetToolbar="composeToolbar2"
     targetToolbarDefaultset="button-send,separator,button-address,spellingButton,button-attach,button-enigmail-encrypt,button-enigmail-sign,button-enigmail-pepEncrypt,button-save,spring"
     targetToolbox="compose-toolbox">
-
     <!-- 'Encrypt message' button -->
     <toolbarbutton class="toolbarbutton-1"
             id="button-enigmail-encrypt"
@@ -299,6 +298,7 @@
     </toolbarbutton>
   </toolbarpalette>
 
+
   <hbox id="status-bar">
     <hbox align="center" insertbefore="statusText" class="statusbarpanel" id="enigmail-pep-statusbar">
       <image class="enigmail-statusbar-pep-logo"/>
@@ -307,7 +307,5 @@
         onclick="Enigmail.msg.onPepHandshakeButton(event)"/>
     </hbox>
   </hbox>
-
-  <link rel="stylesheet" type="text/css" href="chrome://enigmail/skin/enigmail.css"/>
 
 </overlay>

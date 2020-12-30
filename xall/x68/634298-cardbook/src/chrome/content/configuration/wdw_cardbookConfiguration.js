@@ -56,6 +56,7 @@ Preferences.addAll([
 	{ id: "extensions.cardbook.numberOfDaysForWriting", type: "string" },
 	{ id: "extensions.cardbook.syncWithLightningOnStartup", type: "bool" },
 	{ id: "extensions.cardbook.eventEntryTitle", type: "string" },
+	{ id: "extensions.cardbook.repeatingEvent", type: "bool" },
 	{ id: "extensions.cardbook.eventEntryWholeDay", type: "bool" },
 	{ id: "extensions.cardbook.eventEntryTime", type: "string" },
 	{ id: "extensions.cardbook.calendarEntryAlarm", type: "string" },

@@ -333,6 +333,12 @@ EwsSend.prototype = {
         }
       }
       catch (e) {log.debug(e);}
+      if (bodyIsHtml) {
+        // Thunderbird 78 mangles <style><!-- --></style> elements by
+        // dropping the closing HTML comment. Exchange doesn't like this.
+        // Find and fix offending comments.
+        sendBody = sendBody.replace(/(<style[^]*?>\s*<!--[^]*?)(\s*<\/style>)/g, (match, prefix, suffix) => prefix.endsWith("-->") ? match : prefix + " -->" + suffix);
+      }
       let bodyPL = oPL(
                      {$value: (plainTextBody ? plainTextBody : sendBody),
                       $attributes: oPL({BodyType: bodyIsHtml ? "HTML" : "Text"})

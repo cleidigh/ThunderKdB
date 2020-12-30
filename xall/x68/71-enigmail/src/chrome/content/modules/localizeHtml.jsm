@@ -12,12 +12,12 @@ const EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/loc
 const EnigmailBuildDate = ChromeUtils.import("chrome://enigmail/content/modules/buildDate.jsm").EnigmailBuildDate;
 const EnigmailApp = ChromeUtils.import("chrome://enigmail/content/modules/app.jsm").EnigmailApp;
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
-const EnigmailGpgAgent = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI/gnupg-agent.jsm").EnigmailGpgAgent;
+const EnigmailGpgAgent = ChromeUtils.import("chrome://enigmail/content/modules/gpgAgent.jsm").EnigmailGpgAgent;
 const Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
 
 function getEnigmailVersion() {
   let versionStr = EnigmailApp.getVersion() + " (" + EnigmailBuildDate.built + ")";
-  return "Enigmail v" + versionStr;
+  return EnigmailLocale.getString("usingVersion", versionStr);
 }
 
 function getGpgWorking() {

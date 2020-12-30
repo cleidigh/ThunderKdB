@@ -124,6 +124,7 @@ var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
           defaultsBranch.setBoolPref("DarkTheme", false);
           // eslint-disable-next-line quotes
           defaultsBranch.setStringPref("OptionsJSON", '{"behavioursEnabled":true}');
+          defaultsBranch.setBoolPref("ReplaceTabs", false);
 
           let os = Services.appinfo.OS;
           let dir = (os == "WINNT" ? "win" : (os == "Darwin" ? "mac" : "linux"));

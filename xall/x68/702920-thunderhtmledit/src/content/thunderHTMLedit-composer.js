@@ -641,7 +641,9 @@ function MoveContentFromWYSIWYGtoSource(resetUndo) {
     encoder.setWrapColumn(width > 72 ? width : 72);
     let html = encoder.encodeToString();
 
-    html = html.replace(/\t/g, "&#x09;"); // Make tabs visible, Ace already shows NBSP.
+    if (ThunderHTMLeditPrefs.getPref("ReplaceTabs", "Bool")) {
+      html = html.replace(/\t/g, "&#x09;"); // Make tabs visible, Ace already shows NBSP.
+    }
     // eslint-disable-next-line prefer-template
     SourceEditor.setHTML(thisWin, "<!DOCTYPE html>" + html, resetUndo);
   } catch (e) { ThunderHTMLedit.handleException(e); }

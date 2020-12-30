@@ -2,7 +2,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -1591,7 +1591,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		}
 		
 		if ((composeType != "new") && !gMsgCompose.originalMsgURI)  {
-			util.popupAlert (util.ADDON_TITLE, "Missing message URI - SmartTemplate4 cannot process this message!");
+			util.popupAlert (util.ADDON_TITLE, "Missing message URI - SmartTemplates cannot process this message!");
 			return aString;
 		}
 
@@ -1703,7 +1703,8 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 		"header.set", "header.append", "header.prefix, header.delete",
     "header.deleteFromSubject",
 		"header.set.matchFromSubject", "header.append.matchFromSubject", "header.prefix.matchFromSubject",
-		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg"
+		"header.set.matchFromBody", "header.append.matchFromBody", "header.prefix.matchFromBody", "logMsg",
+    "conditionalText"
 	);
 	// new classification for time variables only
 	addTokens("reserved.time", 
@@ -2059,10 +2060,16 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
           // [issue 22] we need to prep the addressing widget to avoid inserting an empty line on top
           // rebuild all addresses - for this we need to remove all [dummy] rows
           // except for the very first one.
-          let listbox = document.getElementById("addressingWidget");
-          while (listbox.itemCount>1) { // remove everything apart from first item:
-            listbox.getItemAtIndex(listbox.itemCount-1).remove();
+          // [issue 98] - %header.set(to,"[addressee]")% no longer working
+          //            - addressingWidget was retired!
+          let adContainer = window.document.getElementById("toAddrContainer");
+          if (adContainer) {
+            let adPills = adContainer.querySelectorAll("mail-address-pill"); // first match if an address pill exists
+            for (let pill of adPills) {
+              adContainer.removeChild(pill);
+            }
           }
+          
           CompFields2Recipients(ComposeFields);
         }
       }
@@ -2444,6 +2451,9 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
             }
           }
           break;
+        case "conditionalText":
+          util.addUsedPremiumFunction('conditionalText');
+          return insertConditionalText(arg);
 				default:
           // [Bug 25904]
           if (token.indexOf('header')==0) {
@@ -2800,6 +2810,29 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 			util.logException("attachFile(" + pathUri + ")", ex);
 		}
 	}
+  
+  function insertConditionalText(rawArgs) {
+    if (rawArgs === null || rawArgs.length == 0) {
+      return "";
+    }
+    // get arguments such as: (forwardMode,"text1","text2"), args[1] - is a "switching" parameter
+    let args = rawArgs.match( /\( *(\w+) *\,.*?\)/ );
+    if (!args) {
+      return "";
+    }
+    const patternArgs = [...args[0].matchAll( /\"(.*?)\"/g )]; // get arguments (excludes quotation marks) ? non greedy
+    if (!patternArgs)
+      return "";
+
+    switch(args[1]) {
+      case 'forwardMode':    
+        if (util.getComposeType()!='fwd')
+          return "";
+        return util.isComposeTypeIsForwardInline() ? patternArgs[0][1] : (patternArgs.length > 1 ? patternArgs[1][1] : "");
+      default:
+        return "";
+    }
+  }
 	
   // sandboxing strings still works in 68.1.2, not sure when they will deprecate it...
   let supportEval = prefs.getMyBoolPref('allowScripts'), // disabled and hidden by default.

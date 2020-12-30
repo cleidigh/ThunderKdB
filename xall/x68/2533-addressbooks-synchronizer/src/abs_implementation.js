@@ -288,7 +288,7 @@ debug('returning '+ret);
 //missing ':' throws NS_ERROR_MALFORMED_URI
 //httpx:// throws NS_ERROR_FAILURE
 debug(JSON.stringify(uri));
-debug(uristring+' -> '+uri.scheme+' '+uri.host+' '+uri.filePath);
+debug(uristring+' -> '+uri.scheme+' '+uri.host+':'*uri.port+' '+uri.filePath);
             if (uri.scheme=='ftp' || uri.scheme=='http') {
 /*
               let sb=Services.strings.createBundle(
@@ -312,7 +312,7 @@ debug(uristring+' -> '+uri.scheme+' '+uri.host+' '+uri.filePath);
               Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
               return null;
             }
-            return {protocol: uri.scheme, host: uri.host, path: uri.filePath};
+            return {protocol: uri.scheme, host: uri.host+':'+uri.port, path: uri.filePath};
           } catch(e) {
 debug(e);
           }

@@ -10,460 +10,460 @@ var Cu = Components.utils;
 var Cc = Components.classes;
 var Ci = Components.interfaces;
 
-var E2TBLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
-var E2TBLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
-var E2TBDialog = ChromeUtils.import("chrome://enigmail/content/modules/dialog.jsm").EnigmailDialog;
-var E2TBWindows = ChromeUtils.import("chrome://enigmail/content/modules/windows.jsm").EnigmailWindows;
-var E2TBFiles = ChromeUtils.import("chrome://enigmail/content/modules/files.jsm").EnigmailFiles;
-var E2TBTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm").EnigmailTimer;
-var E2TBKeyRing = ChromeUtils.import("chrome://enigmail/content/modules/keyRing.jsm").EnigmailKeyRing;
-var E2TBCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
-var E2TBPrefs = ChromeUtils.import("chrome://enigmail/content/modules/prefs.jsm").EnigmailPrefs;
-var E2TBCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
-var E2TBApp = ChromeUtils.import("chrome://enigmail/content/modules/app.jsm").EnigmailApp;
-var Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
+var EnigmailAutoSetup = ChromeUtils.import("chrome://enigmail/content/modules/autoSetup.jsm").EnigmailAutoSetup;
+var EnigmailConstants = ChromeUtils.import("chrome://enigmail/content/modules/constants.jsm").EnigmailConstants;
+var EnigmailApp = ChromeUtils.import("chrome://enigmail/content/modules/app.jsm").EnigmailApp;
+var EnigmailPrefs = ChromeUtils.import("chrome://enigmail/content/modules/prefs.jsm").EnigmailPrefs;
+var EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
+var EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
+var EnigmailTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm").EnigmailTimer;
+var EnigmailLazy = ChromeUtils.import("chrome://enigmail/content/modules/lazy.jsm").EnigmailLazy;
+var EnigmailOS = ChromeUtils.import("chrome://enigmail/content/modules/os.jsm").EnigmailOS;
+var EnigmailDialog = ChromeUtils.import("chrome://enigmail/content/modules/dialog.jsm").EnigmailDialog;
+var EnigmailFiles = ChromeUtils.import("chrome://enigmail/content/modules/files.jsm").EnigmailFiles;
+var InstallGnuPG = ChromeUtils.import("chrome://enigmail/content/modules/installGnuPG.jsm").InstallGnuPG;
+var EnigmailConfigBackup = ChromeUtils.import("chrome://enigmail/content/modules/configBackup.jsm").EnigmailConfigBackup;
+var EnigmailGpgAgent = ChromeUtils.import("chrome://enigmail/content/modules/gpgAgent.jsm").EnigmailGpgAgent;
+var EnigmailKeyRing = ChromeUtils.import("chrome://enigmail/content/modules/keyRing.jsm").EnigmailKeyRing;
+var EnigmailWindows = ChromeUtils.import("chrome://enigmail/content/modules/windows.jsm").EnigmailWindows;
+var EnigmailPEPAdapter = ChromeUtils.import("chrome://enigmail/content/modules/pEpAdapter.jsm").EnigmailPEPAdapter;
+var EnigmailInstallPep = ChromeUtils.import("chrome://enigmail/content/modules/installPep.jsm").EnigmailInstallPep;
 
-// OpenPGP implementation in TB
-var EnigmailDialog = ChromeUtils.import("chrome://openpgp/content/modules/dialog.jsm").EnigmailDialog;
-var EnigmailKeyRing = ChromeUtils.import("chrome://openpgp/content/modules/keyRing.jsm").EnigmailKeyRing;
-var uidHelper = ChromeUtils.import("chrome://openpgp/content/modules/uidHelper.jsm").uidHelper;
-var PgpSqliteDb2 = ChromeUtils.import("chrome://openpgp/content/modules/sqliteDb.jsm").PgpSqliteDb2;
-var EnigmailCryptoAPI = ChromeUtils.import("chrome://openpgp/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
-var RNP = ChromeUtils.import("chrome://openpgp/content/modules/RNP.jsm").RNP;
-var EnigmailFuncs = ChromeUtils.import("chrome://openpgp/content/modules/funcs.jsm").EnigmailFuncs;
+const getCore = EnigmailLazy.loader("enigmail/core.jsm", "EnigmailCore");
 
-var gSelectedPrivateKeys = null,
-  gPublicKeys = [],
-  gGpgmeFpr = [],
-  gAcceptButton = null,
-  gCancelButton = null,
-  gDialogCancelled = false,
-  gProcessing = false,
-  gRestartNeeded = false,
-  gRequireGpgme = false;
+/* Imported from commonWorkflows.js: */
+/* global EnigmailCommon_importKeysFromFile: false */
+
+const FINAL_ACTION_DONOTHING = 0;
+const FINAL_ACTION_USEPEP = 1;
+const FINAL_ACTION_CREATEKEYS = 2;
+
+var gEnigmailSvc = null;
+var gResolveInstall = null;
+var gDownoadObj = null;
+var gFoundSetupType = {
+  value: -1
+};
+var gPepAvailable = null;
+var gSecretKeys = [];
+var gFinalAction = FINAL_ACTION_DONOTHING;
 
 function onLoad() {
-  E2TBLog.DEBUG(`setupWizard2.js: onLoad()\n`);
-
-  if (!E2TBCore.getService(window, false)) {
-    E2TBDialog.alert(window, E2TBLocale.getString("gpgNotInPath"));
-    window.close();
-    return;
-  }
-
+  EnigmailLog.DEBUG(`setupWizard2.js: onLoad()\n`);
   let dlg = document.getElementById("setupWizardDlg");
-  gAcceptButton = dlg.getButton("accept");
-  gAcceptButton.setAttribute("disabled", "true");
-  gCancelButton = dlg.getButton("cancel");
+  dlg.getButton("accept").setAttribute("disabled", "true");
 
-  let secKeys = E2TBKeyRing.getAllSecretKeys(false);
-  if (secKeys.length > 5) {
-    document.getElementById("manyKeys").style.visibility = "visible";
-  }
+  document.getElementById("foundAcSetupMessage").innerHTML = EnigmailLocale.getString("setupWizard.foundAcSetupMessage");
+  document.getElementById("foundAcNoSetupMsg").innerHTML = EnigmailLocale.getString("setupWizard.foundAcNoSetupMsg");
+  document.getElementById("setupComplete").innerHTML = EnigmailLocale.getString("setupWizard.setupComplete");
 
-  gSelectedPrivateKeys = secKeys.map(keyObj => {
-    return "0x" + keyObj.fpr;
+  // let the dialog be loaded asynchronously such that we can disply the dialog
+  // before we start working on it.
+  EnigmailTimer.setTimeout(onLoadAsync, 1);
+
+}
+
+function onLoadAsync() {
+  let installPromise = checkGnupgInstallation().then(foundGpg => {
+    if (foundGpg) {
+      document.getElementById("searchingGnuPG").style.visibility = "visible";
+      document.getElementById("foundGnuPG").style.visibility = "visible";
+      document.getElementById("findGpgBox").style.visibility = "collapse";
+      document.getElementById("requireGnuPG").style.visibility = "collapse";
+      document.getElementById("determineInstall").style.visibility = "visible";
+      gSecretKeys = EnigmailKeyRing.getAllSecretKeys(true);
+    }
+  });
+
+  let pepPromise = checkPepAvailability();
+
+  let setupPromise = EnigmailAutoSetup.getDeterminedSetupType().then(r => {
+    EnigmailLog.DEBUG(`setupWizard2.js: onLoadAsync: got setupType ${r.value}\n`);
+    gFoundSetupType = r;
+  });
+
+  Promise.all([installPromise, pepPromise, setupPromise]).then(r => {
+    displayExistingEmails();
+  }).catch(err => {
+    displayExistingEmails();
   });
 }
 
-function onAccept() {
-  if (gRestartNeeded) restartApplication();
-  return true;
-}
+/**
+ * Main function to display the found case matching the user's setup
+ */
+function displayExistingEmails() {
+  EnigmailLog.DEBUG(`setupWizard2.js: displayExistingEmails(): found setup type ${gFoundSetupType.value}\n`);
+  let prevInstallElem = "previousInstall_none";
+  let unhideButtons = [];
 
-function closeAfterCancel() {
-  E2TBLog.DEBUG("importExportWizard: closing after Cancel clicked\n");
-  window.close();
-  return false;
-}
-
-function onCancel() {
-  gDialogCancelled = true;
-  if (gProcessing) {
-    return false;
-  }
-  return true;
-}
-
-function selectPrivateKeys() {
-  let resultObj = {};
-  window.openDialog("chrome://enigmail/content/ui/enigmailKeySelection.xhtml", "", "chrome,dialog,centerscreen,modal", {
-    options: `private,allowexpired,trustallkeys,multisel,nosending,sendlabel=${E2TBLocale.getString("setupWizard.selectKeysButton")},`
-  }, resultObj);
-
-  if (resultObj.cancelled) return;
-  gSelectedPrivateKeys = resultObj.userList;
-  E2TBLog.DEBUG(`setupWizard2.js: selectPrivateKeys: selKey: ${gSelectedPrivateKeys.join(", ")}\n`);
-}
-
-function enableOpenPGPPref() {
-  E2TBPrefs.getPrefRoot().setBoolPref("mail.openpgp.enable", true);
-
-  return new Promise((resolve, reject) => {
-    E2TBTimer.setTimeout(function _f() {
-      resolve(true);
-    }, 1000);
-  });
-}
-
-async function startMigration() {
-  for (let btn of ["btnSelectPrivateKeys", "btnStartMigration"]) {
-    document.getElementById(btn).setAttribute("disabled", "true");
-  }
-
-  // enable OpenPGP functionality unconditionally
-  if (!E2TBPrefs.getPrefRoot().getBoolPref("mail.openpgp.enable")) {
-    await enableOpenPGPPref();
-    gRestartNeeded = true;
-  }
-
-  let BondOpenPGP = ChromeUtils.import("chrome://openpgp/content/BondOpenPGP.jsm").BondOpenPGP;
-  if (!BondOpenPGP.allDependenciesLoaded()) {
-    gRestartNeeded = false;
-    E2TBDialog.alert(window, E2TBLocale.getString("openpgpInitError"));
-    window.close();
-    return;
-  }
-
-  gProcessing = true;
-  let tmpDir = E2TBFiles.createTempSubDir("enig-exp", true);
-  exportKeys(tmpDir);
-  if (gDialogCancelled) return;
-
-  // temprarily disable saving keys
-  let origSaveKeyRing = RNP.saveKeyRings;
-
-  RNP.saveKeyRings = function() {};
-  RNP.init();
-  await PgpSqliteDb2.checkDatabaseStructure();
-
-  try {
-    await importKeys(tmpDir);
-  }
-  catch (x) {}
-  finally {
-    // restore saving function
-    RNP.saveKeyRings = origSaveKeyRing;
-  }
-
-  try {
-    RNP.saveKeyRings();
-  }
-  catch (ex) {
-    let profD = E2TBApp.getProfileDirectory();
-    profD.append("pubring.asc");
-    E2TBDialog.alert(window, E2TBLocale.getString("fileWriteFailed", profD.path));
-    window.close();
-    return;
-  }
-
-  if (gDialogCancelled) return;
-
-  document.getElementById("applyingSettings").style.visibility = "visible";
-  try {
-    tmpDir.remove(true);
-  }
-  catch (ex) {}
-  gProcessing = false;
-  EnigmailKeyRing.clearCache();
-  await applyKeySignatures();
-  applyAccountSettings();
-  if (gDialogCancelled) return;
-
-  if (gRestartNeeded) {
-    document.getElementById("restartNeeded").style.visibility = "visible";
+  if (gSecretKeys.length > 0) {
+    // secret keys are already available
+    EnigmailLog.DEBUG(`setupWizard2.js: displayExistingEmails: found existing keys\n`);
+    prevInstallElem = "previousInstall_keysAvailable";
   }
   else {
-    document.getElementById("migrationComplete").style.visibility = "visible";
+    switch (gFoundSetupType.value) {
+      case EnigmailConstants.AUTOSETUP_AC_SETUP_MSG:
+        // found Autocrypt Setup Message
+        prevInstallElem = "previousInstall_acSetup";
+        break;
+      case EnigmailConstants.AUTOSETUP_AC_HEADER:
+        // found Autocrypt messages
+        prevInstallElem = "previousInstall_ac";
+        unhideButtons = ["btnRescanInbox", "btnImportSettings"];
+        break;
+      case EnigmailConstants.AUTOSETUP_PEP_HEADER:
+        // found pEp encrypted messages
+        if (gPepAvailable) {
+          prevInstallElem = "previousInstall_pEp";
+          unhideButtons = ["btnImportKeys"];
+        }
+        else {
+          gFoundSetupType.value = EnigmailConstants.AUTOSETUP_ENCRYPTED_MSG;
+          displayExistingEmails();
+          return;
+        }
+        gFinalAction = FINAL_ACTION_USEPEP;
+        installPepIfNeeded();
+        enableDoneButton();
+        break;
+      case EnigmailConstants.AUTOSETUP_ENCRYPTED_MSG:
+        // encrypted messages without pEp or Autocrypt found
+        prevInstallElem = "previousInstall_encrypted";
+        unhideButtons = ["btnImportKeys"];
+        enableDoneButton();
+        break;
+      default:
+        // no encrypted messages found
+        enableDoneButton();
+        EnigmailPrefs.setPref("juniorMode", 0);
+        gFinalAction = FINAL_ACTION_CREATEKEYS;
+    }
   }
-  gAcceptButton.removeAttribute("disabled");
-  gCancelButton.setAttribute("disabled", "true");
+  document.getElementById("determineInstall").style.visibility = "collapse";
+  document.getElementById(prevInstallElem).style.visibility = "visible";
 
-  E2TBWindows.closeUpdateInfo();
+  for (let e of unhideButtons) {
+    document.getElementById(e).style.visibility = "visible";
+  }
 }
 
-
-
-function exportKeys(tmpDir) {
-  E2TBLog.DEBUG(`setupWizard2.js: exportKeys(${tmpDir.path})\n`);
-
-  document.getElementById("exportingKeys").style.visibility = "visible";
-
-  let exportProgess = document.getElementById("exportProgress");
-
-  function setExportProgress(percentComplete) {
-    exportProgess.setAttribute("value", percentComplete);
-  }
-
-  let allPubKeys = E2TBKeyRing.getAllKeys(window).keyList.map(keyObj => {
-    return "0x" + keyObj.fpr;
-  });
-
-  let exitCodeObj = {},
-    errorMsgObj = {},
-    totalNumKeys = gSelectedPrivateKeys.length + allPubKeys.length,
-    numKeysProcessed = 0;
-
-  for (let fpr of gSelectedPrivateKeys) {
-    let secKeyObj = E2TBKeyRing.getKeyById(fpr);
-    if (secKeyObj.token && secKeyObj.token !== "+") {
-      E2TBLog.DEBUG(`setupWizard2.js: exportKeys: found offline/smartcard key ${fpr}\n`);
-      gRequireGpgme = true;
-      gGpgmeFpr.push(fpr);
+/**
+ * Check if GnuPG is available and set dialog parts accordingly
+ */
+function checkGnupgInstallation() {
+  return new Promise((resolve, reject) => {
+    if (getEnigmailService(true)) {
+      resolve(true);
+      return;
     }
     else {
-      if (gDialogCancelled) return closeAfterCancel();
+      gResolveInstall = resolve;
+      document.getElementById("searchingGnuPG").style.visibility = "collapse";
+      document.getElementById("requireGnuPG").style.visibility = "visible";
 
-      let secKeyFile = tmpDir.clone();
-      secKeyFile.append(fpr + ".sec");
-
-      E2TBLog.DEBUG("setupWizard2.js: exportKeys: secFile: " + secKeyFile.path + "\n");
-      E2TBKeyRing.extractKey(true, fpr, secKeyFile, exitCodeObj, errorMsgObj);
-
-      ++numKeysProcessed;
-      setExportProgress(numKeysProcessed / totalNumKeys * 100);
-
-      if (exitCodeObj.value !== 0) {
-        E2TBLog.DEBUG(`importExportWizard: error while exporting secret key ${fpr}\n`);
-        E2TBDialog.alert(window, E2TBLocale.getString("dataExportError"));
-        return false;
+      if (InstallGnuPG.checkAvailability()) {
+        document.getElementById("installBox").style.visibility = "visible";
       }
-
-      numKeysProcessed += gSelectedPrivateKeys.length;
-      setExportProgress(numKeysProcessed / totalNumKeys * 100);
-    }
-  }
-
-  for (let fpr of allPubKeys) {
-    if (gDialogCancelled) return closeAfterCancel();
-
-    if (!(fpr in gSelectedPrivateKeys)) {
-      let pubKeyFile = tmpDir.clone();
-      pubKeyFile.append(fpr + ".asc");
-
-      E2TBKeyRing.extractKey(false, fpr, pubKeyFile, exitCodeObj, errorMsgObj);
-      if (exitCodeObj.value === 0) {
-        gPublicKeys.push(fpr);
+      else {
+        document.getElementById("findGpgBox").style.visibility = "visible";
       }
-
-      ++numKeysProcessed;
-      setExportProgress(numKeysProcessed / totalNumKeys * 100);
     }
-  }
-
-  document.getElementById("exportingKeys").style.visibility = "collapse";
-  document.getElementById("keysExported").style.visibility = "visible";
-
-  return true;
+  });
 }
 
-
-async function importKeys(tmpDir) {
-  E2TBLog.DEBUG(`setupWizard2.js: importKeys(${tmpDir.path})\n`);
-
-  let pubKeysFailed = [],
-    secKeysFailed = [];
-  let importProgess = document.getElementById("importProgress");
-
-  function setImportProgress(percentComplete) {
-    importProgess.setAttribute("value", percentComplete);
-  }
-
-  document.getElementById("importingKeys").style.visibility = "visible";
-
-  let numKeysProcessed = 0;
-  const totalNumKeys = gPublicKeys.length + gSelectedPrivateKeys.length;
-
-  for (let fpr of gSelectedPrivateKeys) {
-    if (gDialogCancelled) return closeAfterCancel();
-
-    if (gGpgmeFpr.indexOf(fpr) < 0) {
-      let secKeyFile = tmpDir.clone();
-      secKeyFile.append(fpr + ".sec");
-
-      E2TBLog.DEBUG("setupWizard2.js: importKeys: secFile: " + secKeyFile.path + "\n");
-      if (!(await importKeyFile(fpr, secKeyFile, true))) {
-        secKeysFailed.push(fpr);
-      }
-      ++numKeysProcessed;
-      setImportProgress(numKeysProcessed / totalNumKeys * 100);
-    }
-  }
-
-  if (secKeysFailed.length > 0) {
-    E2TBDialog.alert(
-      window,
-      E2TBLocale.getString("importSecKeysFailed", secKeysFailed.join("\n"))
-    );
-  }
-
-  if (gRequireGpgme) {
-    E2TBPrefs.getPrefRoot().setBoolPref("mail.openpgp.allow_external_gnupg", true);
-    let gpgPath = E2TBPrefs.getPref("agentPath");
-    if (gpgPath.length > 0) {
-      E2TBPrefs.getPrefRoot().setCharPref("mail.openpgp.alternative_gpg_path", gpgPath);
-    }
-    gRestartNeeded = true;
-  }
-
-  for (let fpr of gPublicKeys) {
-    if (gDialogCancelled) return closeAfterCancel();
-
-    let pubKeyFile = tmpDir.clone();
-    pubKeyFile.append(fpr + ".asc");
-
-    ++numKeysProcessed;
-    setImportProgress(numKeysProcessed / totalNumKeys * 100);
-
-    E2TBLog.DEBUG("setupWizard2.js: importKeys: pubFile: " + pubKeyFile.path + "\n");
-    if (!(await importKeyFile(fpr, pubKeyFile, false))) {
-      pubKeysFailed.push(fpr);
-    }
-  }
-
-  document.getElementById("importingKeys").style.visibility = "collapse";
-  document.getElementById("keysImported").style.visibility = "visible";
-
-  if (pubKeysFailed.length > 0) {
-    E2TBDialog.alert(
-      window,
-      E2TBLocale.getString("importPubKeysFailed", pubKeysFailed.join("\n"))
-    );
-  }
-  return true;
-}
-
-async function applyKeySignatures() {
-  E2TBLog.DEBUG(`setupWizard2.js: applyKeySignatures\n`);
-
-  const cApi = E2TBCryptoAPI();
-
-  let keyList = await cApi.getKeySignatures("", true);
-  const secKeyIds = [];
-  const numKeys = keyList.length;
-  let i = 0;
-
-  for (let fpr of gSelectedPrivateKeys) {
-    let keyObj = E2TBKeyRing.getKeyById(fpr);
-    secKeyIds[keyObj.keyId] = 1;
-
-    if (keyObj.ownerTrust === "u") {
-      await applyPersonalKey(keyObj.fpr);
-    }
-  }
-
-  for (let keyObj of keyList) {
-    let signedEmails = [];
-
-    if (secKeyIds[keyObj.keyId] === 1) continue; // skip secret keys
-
-    for (let u in keyObj.uid) {
-      let uid = keyObj.uid[u],
-        splitUid = {};
-
-      try {
-        uidHelper.getPartsFromUidStr(uid.userId, splitUid);
-        if (splitUid.email) {
-          for (let sig of uid.sigList) {
-            if (sig.signerKeyId in secKeyIds) {
-              signedEmails.push(splitUid.email);
-              break;
-            }
-          }
-        }
-      }
-      catch (x) {}
-    }
-
-    if (signedEmails.length > 0) {
-      E2TBLog.DEBUG(`setupWizard2.js: applyKeySignatures: setting 'verified' for 0x${keyObj.fpr}\n`);
-
-      await PgpSqliteDb2.updateAcceptance(
-        keyObj.fpr,
-        [...new Set(signedEmails)],
-        "verified"
-      );
-    }
-  }
-}
-
-
-function applyAccountSettings() {
-  const msgAccountManager = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager);
-  let accounts = msgAccountManager.accounts;
-
-  for (let i = 0; i < accounts.length; i++) {
-    let ac = accounts[i];
-    if (ac.incomingServer.type !== "none") {
-      for (let id = 0; id < ac.identities.length; id++) {
-        let ident = ac.identities[id];
-
-        if (ident.getBoolAttribute("enablePgp")) {
-          applyIdentitySettings(ident);
-        }
-      }
-    }
-  }
-
-  document.getElementById("applyingSettings").style.visibility = "collapse";
-  document.getElementById("settingsApplied").style.visibility = "visible";
-}
-
-function applyIdentitySettings(identity) {
-  const keyPolicy = identity.getIntAttribute("pgpKeyMode");
-  let keyObj = null;
-  if (keyPolicy === 1) {
-    // use key id
-    keyObj = EnigmailKeyRing.getKeyById(identity.getCharAttribute("pgpkeyId"));
+/**
+ * Determine if pEp is avaliable, and if it is not available,
+ * whether it can be downaloaded and installed. This does not
+ * trigger installation.
+ */
+async function checkPepAvailability() {
+  if (await EnigmailPEPAdapter.isPepAvailable(false)) {
+    gPepAvailable = true;
   }
   else {
-    // use "from" address
-    keyObj = EnigmailKeyRing.getSecretKeyByEmail(identity.email);
+    EnigmailPEPAdapter.resetPepAvailability();
+    gPepAvailable = await EnigmailInstallPep.isPepInstallerAvailable();
   }
 
-  if (keyObj) {
-    identity.setCharAttribute("openpgp_key_id", keyObj.keyId);
-    identity.setIntAttribute("encryptionpolicy", identity.getIntAttribute("defaultEncryptionPolicy") > 0 ? 2 : 0);
-    identity.setBoolAttribute("sign_mail", (identity.getIntAttribute("defaultSigningPolicy") > 0));
-    if (gGpgmeFpr.indexOf("0x" + keyObj.fpr) >= 0) {
-      identity.setCharAttribute("last_entered_external_gnupg_key_id", keyObj.keyId);
-      identity.setBoolAttribute("is_gnupg_key_id", true);
+  return gPepAvailable;
+}
+
+/**
+ * Try to access pEp, such that it will be installed if it's not available
+ */
+function installPepIfNeeded() {
+  EnigmailLog.DEBUG(`setupWizard2.js: installPepIfNeeded()\n`);
+  EnigmailPrefs.setPref("juniorMode", 2);
+  EnigmailPEPAdapter.isPepAvailable(true);
+}
+
+/**
+ * Try to initialize Enigmail (which will determine the location of GnuPG)
+ */
+function getEnigmailService(resetCheck) {
+  if (resetCheck)
+    gEnigmailSvc = null;
+
+  if (gEnigmailSvc) {
+    return gEnigmailSvc.initialized ? gEnigmailSvc : null;
+  }
+
+  try {
+    gEnigmailSvc = getCore().createInstance();
+  }
+  catch (ex) {
+    EnigmailLog.ERROR("setupWizard2.js: getEnigmailService: Error in instantiating EnigmailService\n");
+    return null;
+  }
+
+  EnigmailLog.DEBUG("setupWizard2.js: getEnigmailService: gEnigmailSvc = " + gEnigmailSvc + "\n");
+
+  if (!gEnigmailSvc.initialized) {
+    // Try to initialize Enigmail
+
+    try {
+      // Initialize enigmail
+      gEnigmailSvc.initialize(window, EnigmailApp.getVersion());
+
+      // Reset alert count to default value
+      EnigmailPrefs.getPrefBranch().clearUserPref("initAlert");
+    }
+    catch (ex) {
+      return null;
+    }
+
+    let configuredVersion = EnigmailPrefs.getPref("configuredVersion");
+    EnigmailLog.DEBUG("setupWizard2.js: getEnigmailService: " + configuredVersion + "\n");
+  }
+
+  return gEnigmailSvc.initialized ? gEnigmailSvc : null;
+}
+
+
+/**
+ * Locate GnuPG using the "Browse" button
+ */
+function locateGpg() {
+  const fileName = "gpg";
+  let ext = "";
+  if (EnigmailOS.isDosLike) {
+    ext = ".exe";
+  }
+
+  let filePath = EnigmailDialog.filePicker(window,
+    EnigmailLocale.getString("locateGpg"),
+    "", false, ext,
+    fileName + ext, null);
+
+  if (filePath) {
+    EnigmailPrefs.setPref("agentPath", EnigmailFiles.getFilePath(filePath));
+    let svc = getEnigmailService(true);
+
+    if (!svc) {
+      EnigmailDialog.alert(window, EnigmailLocale.getString("setupWizard.invalidGpg"));
+    }
+    else {
+      gResolveInstall(true);
     }
   }
+}
+
+function installGnuPG() {
+  let progressBox = document.getElementById("progressBox");
+  let downloadProgress = document.getElementById("downloadProgress");
+  let installProgressBox = document.getElementById("installProgressBox");
+  let installProgress = document.getElementById("installProgress");
+  let btnInstallGnupg = document.getElementById("btnInstallGnupg");
+  let btnLocateGnuPG = document.getElementById("btnLocateGnuPG");
+  window.outerHeight += 100;
+
+  btnInstallGnupg.setAttribute("disabled", true);
+  btnLocateGnuPG.setAttribute("disabled", true);
+  progressBox.style.visibility = "visible";
+
+  InstallGnuPG.startInstaller({
+    onStart: function(reqObj) {
+      gDownoadObj = reqObj;
+    },
+
+    onError: function(errorMessage) {
+      if (typeof(errorMessage) == "object") {
+        var s = EnigmailLocale.getString("errorType." + errorMessage.type);
+        if (errorMessage.type.startsWith("Security")) {
+          s += "\n" + EnigmailLocale.getString("setupWizard.downloadForbidden");
+        }
+        else
+          s += "\n" + EnigmailLocale.getString("setupWizard.downloadImpossible");
+
+        EnigmailDialog.alert(window, s);
+      }
+      else {
+        EnigmailDialog.alert(window, EnigmailLocale.getString(errorMessage));
+      }
+
+      this.returnToDownload();
+    },
+
+    onWarning: function(message) {
+      var ret = false;
+      if (message == "hashSumMismatch") {
+        ret = EnigmailDialog.confirmDlg(window, EnigmailLocale.getString("setupWizard.hashSumError"), EnigmailLocale.getString("dlgYes"),
+          EnigmailLocale.getString("dlgNo"));
+      }
+
+      if (!ret) this.returnToDownload();
+
+      return ret;
+    },
+
+    onProgress: function(event) {
+      if (event.lengthComputable) {
+        var percentComplete = event.loaded / event.total * 100;
+        downloadProgress.setAttribute("value", percentComplete);
+      }
+      else {
+        downloadProgress.removeAttribute("value");
+      }
+    },
+
+    onDownloaded: function() {
+      gDownoadObj = null;
+      downloadProgress.setAttribute("value", 100);
+      installProgressBox.style.visibility = "visible";
+    },
+
+
+    returnToDownload: function() {
+      window.outerHeight -= 100;
+      btnInstallGnupg.removeAttribute("disabled");
+      btnLocateGnuPG.removeAttribute("disabled");
+      progressBox.style.visibility = "collapse";
+      downloadProgress.setAttribute("value", 0);
+      installProgressBox.style.visibility = "collapse";
+    },
+
+    onLoaded: function() {
+      installProgress.setAttribute("value", 100);
+      progressBox.style.visibility = "collapse";
+      installProgressBox.style.visibility = "collapse";
+      document.getElementById("installBox").style.visibility = "collapse";
+      window.outerHeight -= 100;
+
+      let origPath = EnigmailPrefs.getPref("agentPath");
+      EnigmailPrefs.setPref("agentPath", "");
+
+      let svc = getEnigmailService(true);
+
+      if (!svc) {
+        EnigmailPrefs.setPref("agentPath", origPath);
+        this.returnToDownload();
+        EnigmailDialog.alert(window, EnigmailLocale.getString("setupWizard.installFailed"));
+      }
+      else {
+        gResolveInstall(true);
+      }
+    }
+  });
+}
+
+
+/**
+ * Import Autocrypt Setup Messages
+ */
+function importAcSetup() {
+  let btnInitiateAcSetup = document.getElementById("btnInitiateAcSetup");
+  btnInitiateAcSetup.setAttribute("disabled", true);
+  EnigmailAutoSetup.performAutocryptSetup(gFoundSetupType).then(r => {
+    if (r > 0) {
+      document.getElementById("previousInstall_none").style.visibility = "visible";
+      enableDoneButton();
+    }
+  });
+}
+
+/**
+ * Actively re-scan the inbox to find (for example) a new Autocrypt Setup Message
+ */
+function rescanInbox() {
+  EnigmailAutoSetup.determinePreviousInstallType().then(r => {
+    EnigmailLog.DEBUG(`setupWizard2.js: onLoad: got rescanInbox ${r.value}\n`);
+    gFoundSetupType = r;
+
+    for (let i of ["previousInstall_ac", "btnRescanInbox", "btnImportSettings"]) {
+      document.getElementById(i).style.visibility = "collapse";
+    }
+
+    displayExistingEmails();
+  }).catch(x => {
+    for (let i of ["previousInstall_ac", "btnRescanInbox", "btnImportSettings"]) {
+      document.getElementById(i).style.visibility = "collapse";
+    }
+    displayExistingEmails();
+  });
+}
+
+/**
+ * open the "Restore Settings and Keys" wizard
+ */
+function importSettings() {
+  EnigmailWindows.openImportSettings(window);
+}
+
+
+function enableDoneButton() {
+  let dlg = document.getElementById("setupWizardDlg");
+  dlg.getButton("cancel").setAttribute("collapsed", "true");
+  dlg.getButton("accept").removeAttribute("disabled");
+}
+
+
+function onCancel() {
+  if (gDownoadObj) {
+    gDownoadObj.abort();
+    gDownoadObj = null;
+  }
+
+  return true;
+}
+
+
+function onAccept() {
+  if (gFinalAction === FINAL_ACTION_CREATEKEYS) {
+    EnigmailAutoSetup.createKeyForAllAccounts();
+  }
+  return true;
+}
+
+function importKeysFromFile() {
+  EnigmailCommon_importKeysFromFile();
+  applyExistingKeys();
+}
+
+function applyExistingKeys() {
+  if (gFoundSetupType.value === EnigmailConstants.AUTOSETUP_PEP_HEADER && gPepAvailable) {
+    installPepIfNeeded();
+  }
+  else {
+    EnigmailPrefs.setPref("juniorMode", 0);
+    EnigmailAutoSetup.applyExistingKeys();
+  }
+
+  document.getElementById("btnApplyExistingKeys").setAttribute("disabled", "true");
+  document.getElementById("applyExistingKeysOK").style.visibility = "visible";
+  document.getElementById("previousInstall_none").style.visibility = "visible";
+  enableDoneButton();
 }
 
 function handleClick(event) {
-  /*
   if (event.target.hasAttribute("href")) {
     let target = event.target;
     event.stopPropagation();
     EnigmailWindows.openMailTab(target.getAttribute("href"));
-  } */
-}
-
-
-async function applyPersonalKey(fpr) {
-  try {
-    if (gGpgmeFpr.indexOf("0x" + fpr) < 0) {
-      // key imported in TB
-      await PgpSqliteDb2.acceptAsPersonalKey(fpr);
-    }
-    else {
-      // key for GpgME
-      let secKeyObj = E2TBKeyRing.getKeyById(fpr);
-      let emailArray = [];
-      for (let uid of secKeyObj.userIds) {
-        if (uid.type == "uid" && uid.keyTrust === "u") {
-          emailArray.push(EnigmailFuncs.stripEmail(uid.userId));
-        }
-      }
-
-      E2TBLog.DEBUG(`updating acceptance for ${fpr} / ${emailArray.join(", ")}`);
-      await PgpSqliteDb2.updateAcceptance(fpr, emailArray, "verified");
-    }
   }
-  catch (x) {}
 }
+
 
 document.addEventListener("dialogaccept", function(event) {
   if (!onAccept())
@@ -474,57 +474,3 @@ document.addEventListener("dialogcancel", function(event) {
   if (!onCancel())
     event.preventDefault(); // Prevent the dialog closing.
 });
-
-async function importKeyFile(fpr, inFile, isSecretKey) {
-  const cApi = EnigmailCryptoAPI();
-
-  try {
-    let res;
-    if ("importKeyFromFile" in cApi) {
-      res = await cApi.importKeyFromFile(window, passphrasePromptCallback, inFile, !isSecretKey, isSecretKey);
-    }
-    else
-      res = await cApi.importKeyFromFileAPI(window, passphrasePromptCallback, inFile, !isSecretKey, isSecretKey);
-
-    return (res && res.importedKeys && res.importedKeys.length > 0);
-  }
-  catch (ex) {
-    E2TBLog.DEBUG(`setupWizard2.js: import key failed for key ${fpr}\n`);
-    Services.console.logMessage(ex);
-
-    return false;
-  }
-}
-
-/**
- * opens a prompt, asking the user to enter passphrase for given key id
- * returns: the passphrase if entered (empty string is allowed)
- * resultFlags.canceled is set to true if the user clicked cancel
- */
-function passphrasePromptCallback(win, keyId, resultFlags) {
-  let p = {};
-  p.value = "";
-  let dummy = {};
-  if (
-    !Services.prompt.promptPassword(
-      win,
-      "",
-      E2TBLocale.getString("passphrasePrompt", [keyId]),
-      p,
-      null,
-      dummy
-    )
-  ) {
-    resultFlags.canceled = true;
-    return "";
-  }
-
-  resultFlags.canceled = false;
-  return p.value;
-}
-
-function restartApplication() {
-  let oAppStartup = Cc["@mozilla.org/toolkit/app-startup;1"].getService(Ci.nsIAppStartup);
-  if (!oAppStartup.eRestart) throw ("Restart is not supported");
-  oAppStartup.quit(oAppStartup.eAttemptQuit | oAppStartup.eRestart);
-}

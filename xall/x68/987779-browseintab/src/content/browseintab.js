@@ -127,6 +127,8 @@ var BrowseInTab = {
       "chromeZoomFactor",
       "globalZoomEnabled",
       "imageZoomEnabled",
+      "mousebuttonZoomEnabled",
+      "mousebuttonZoomImageOnlyEnabled",
     ]);
     await getting.then(setCurrentPrefs, onError);
   },
@@ -348,9 +350,11 @@ var BrowseInTab = {
     val = val ? val : 100;
     if (val == 100) {
       window.top.document.documentElement.style.fontSize = "";
+      Services.prefs.clearUserPref("layout.css.devPixelsPerPx");
     } else {
       let chromeFontSizeZoom = this.DEFAULT_FONTSIZE * (val / 100) + "px";
       window.top.document.documentElement.style.fontSize = chromeFontSizeZoom;
+      Services.prefs.setStringPref("layout.css.devPixelsPerPx", val / 100);
     }
   },
 
@@ -372,6 +376,26 @@ var BrowseInTab = {
       return defaultValue;
     }
     return this.customZoomEnabledPref && prefValue;
+  },
+
+  get mousebuttonZoomEnabledPref() {
+    let prefKey = "mousebuttonZoomEnabled";
+    let prefValue = this.getStorageLocal(prefKey);
+    let defaultValue = false;
+    if (prefValue == undefined) {
+      return defaultValue;
+    }
+    return this.customZoomEnabledPref && prefValue;
+  },
+
+  get mousebuttonZoomImageOnlyEnabledPref() {
+    let prefKey = "mousebuttonZoomImageOnlyEnabled";
+    let prefValue = this.getStorageLocal(prefKey);
+    let defaultValue = false;
+    if (prefValue == undefined) {
+      return defaultValue;
+    }
+    return this.mousebuttonZoomEnabledPref && prefValue;
   },
 
   onLoad() {
@@ -1555,11 +1579,29 @@ var BrowseInTab = {
   },
 
   onWheel(event) {
-    // Allow ctrl and left mouse button down + mousewheel to zoom.
-    if (!event.ctrlKey && event.buttons != 1) {
+    if (!this.customZoomEnabledPref) {
       return;
     }
     let t = event.target;
+    // Allow ctrl and left mouse button down + mousewheel to zoom.
+    if (
+      !event.ctrlKey &&
+      (event.buttons != 1 ||
+        (event.buttons == 1 &&
+          (!this.mousebuttonZoomEnabledPref ||
+            (!(t instanceof HTMLImageElement) &&
+              this.mousebuttonZoomImageOnlyEnabledPref))))
+    ) {
+      return;
+    }
+
+    // Hack to prevent mouseup click for openLinkExternally().
+    if (event.buttons == 1) {
+      this.inMouseWheelZoom = true;
+    } else {
+      delete this.inMouseWheelZoom;
+    }
+
     if (!(t instanceof HTMLImageElement)) {
       let tabInfo = this.e("tabmail")?.currentTabInfo;
       let browser = tabInfo?.browser;
@@ -2147,19 +2189,22 @@ var BrowseInTab = {
     if (tabInfo.firstTab) {
       // Don't forget the multimessage browser.
       let tabmail = this.e("tabmail");
-      let browser = this.e("multimessage");
-      if (browser && browser.webProgress && !browser._progressListenerAdded) {
+      let multimessagebrowser = this.e("multimessage");
+      if (
+        multimessagebrowser?.webProgress &&
+        !multimessagebrowser._progressListenerAdded
+      ) {
         this.DEBUG &&
           console.debug("InitializeTabForContent: init firstTab multimessage");
-        browser.webProgress.addProgressListener(
+        multimessagebrowser.webProgress.addProgressListener(
           tabmail.progressListener,
           Ci.nsIWebProgress.NOTIFY_ALL
         );
-        browser._progressListenerAdded = true;
+        multimessagebrowser._progressListenerAdded = true;
 
         // So the zoom change event is dispatched. Set zoom on browsingContext
         // manually in updateZoomUI().
-        browser.enterResponsiveMode();
+        multimessagebrowser.enterResponsiveMode();
       }
     }
 
@@ -2192,9 +2237,12 @@ var BrowseInTab = {
       );
 
       // Don't forget the multimessage browser, per tab.
-      let browser = this.e("multimessage");
-      if (browser?.webProgress) {
-        browser.webProgress.addProgressListener(
+      let multimessagebrowser = this.e("multimessage");
+      if (
+        ["folder"].includes(tabInfo.mode.type) &&
+        multimessagebrowser?.webProgress
+      ) {
+        multimessagebrowser.webProgress.addProgressListener(
           tabInfo.filter,
           Ci.nsIWebProgress.NOTIFY_ALL
         );
@@ -2207,7 +2255,8 @@ var BrowseInTab = {
   },
 
   RestoreTabs() {
-    let tabsInfo = this.e("tabmail")?.tabInfo ?? [];
+    let tabmail = this.e("tabmail");
+    let tabsInfo = tabmail?.tabInfo ?? [];
     for (let tabInfo of tabsInfo) {
       if (!["contentTab"].includes(tabInfo.mode.type)) {
         if (tabInfo.browser?.webProgress && tabInfo.filter) {
@@ -2215,8 +2264,24 @@ var BrowseInTab = {
             tabInfo.filter,
             Ci.nsIWebProgress.NOTIFY_ALL
           );
+          delete tabInfo.browser._progressListenerAdded;
+          if (["folder"].includes(tabInfo.mode.type)) {
+            let multimessagebrowser = this.e("multimessage");
+            multimessagebrowser.webProgress.removeProgressListener(
+              tabInfo.filter,
+              Ci.nsIWebProgress.NOTIFY_ALL
+            );
+            if (tabInfo.firstTab) {
+              multimessagebrowser.webProgress.removeProgressListener(
+                tabmail.progressListener,
+                Ci.nsIWebProgress.NOTIFY_ALL
+              );
+              delete multimessagebrowser._progressListenerAdded;
+            }
+          }
           delete tabInfo.filter;
         }
+
         this.DEBUG && console.debug("RestoreTabs: tabInfo -> " + tabInfo.tabId);
         this.DEBUG && console.debug(tabInfo);
         continue;
@@ -3728,7 +3793,7 @@ var BrowseInTab = {
       url = linkNode.href;
     }
     this.DEBUG &&
-      console.debug("openLinkInContentTab: url:where - " + url + ":" + where);
+      console.debug("openUrlPopupLink: url:where - " + url + ":" + where);
     if (!url || event.detail == 2 || event.button == 2) {
       return;
     }
@@ -3777,6 +3842,10 @@ var BrowseInTab = {
   },
 
   openLinkExternally(url, event) {
+    if (this.inMouseWheelZoom) {
+      delete this.inMouseWheelZoom;
+      return;
+    }
     event = event || this.savedContentAreaClickEvent;
     let linkNode = event && event.target;
     let loadInTab = this.linkClickLoadsInTabPref;

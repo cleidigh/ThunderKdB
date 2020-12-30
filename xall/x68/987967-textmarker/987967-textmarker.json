@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 47,
+    "average_daily_users": 307,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-30T23:11:49Z",
     "current_version": {
-        "id": 2474961,
+        "id": 2475065,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.5.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/textmarker/versions/2474961",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/textmarker/versions/2475065",
         "files": [
             {
-                "id": 1018123,
-                "created": "2020-12-08T00:54:43Z",
-                "hash": "sha256:92d6a4a9bfa658ca0818e0f67c1510089088c2381ece7ae1abc55b968edcb757",
+                "id": 1018227,
+                "created": "2020-12-22T00:15:50Z",
+                "hash": "sha256:644b346b5cf62e9bfbb2a90c3527194c464a82194332dd06368ccb34a2eb699a",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 95178,
+                "size": 192357,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018123/textmarker-3.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018227/textmarker-4.2.1-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "activeTab",
@@ -56,11 +56,13 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/textmarker/versions/3.2",
-        "version": "3.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/textmarker/versions/4.2.1",
+        "version": "4.2.1"
     },
     "default_locale": "en-CA",
-    "description": null,
+    "description": {
+        "en-CA": "\"Highlighting\" is achieved be changing the background colour of the selected text.\n\nTo undo highlighting, hold \"Shift\" + click the \"Mark\" button to reset the selected text to the document's background colour.\n\nQuick colour selection by holding \"Ctrl\" + clicking the \"Mark\" button.\n\nThe currently active colour is displayed in the button icon."
+    },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/textmarker/edit",
     "guid": "Textmarker@pharqcon.com",
@@ -76,7 +78,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-08T00:55:03Z",
+    "last_updated": "2020-12-22T00:20:03Z",
     "name": {
         "en-CA": "Textmarker"
     },
@@ -88,31 +90,45 @@
                 1086,
                 721
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206328.png?modified=1607098284",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206328.png?modified=1607871819",
             "thumbnail_size": [
                 301,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206328.png?modified=1607098284"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206328.png?modified=1607871819"
         },
         {
-            "id": 206336,
+            "id": 206357,
             "caption": null,
             "image_size": [
-                664,
-                800
+                892,
+                689
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206336.png?modified=1607098227",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206357.png?modified=1607871826",
             "thumbnail_size": [
-                166,
+                259,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206336.png?modified=1607098227"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206357.png?modified=1607871826"
+        },
+        {
+            "id": 206358,
+            "caption": null,
+            "image_size": [
+                380,
+                450
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206358.png?modified=1607871760",
+            "thumbnail_size": [
+                169,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206358.png?modified=1607871760"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.81655,
+        "bayesian_average": 4.81644,
         "count": 8,
         "average": 5,
         "text_count": 8
@@ -123,7 +139,7 @@
     "slug": "textmarker",
     "status": "public",
     "summary": {
-        "en-CA": "Changes background colour of selected text in order to highlight the text.\n(Works only during writing an e-mail, i.e. only in the compose window.)\nNew in V3.2: hold \"Shift\" + click \"Mark!\"-Button to set the selection to the document background col."
+        "en-CA": "Highlights selected text when composing emails. Default colour is yellow - other colours are available via Options.\n(Works only during writing an e-mail, i.e. only in the compose window.)"
     },
     "support_email": {
         "en-CA": "k-l-p@gmx.de"

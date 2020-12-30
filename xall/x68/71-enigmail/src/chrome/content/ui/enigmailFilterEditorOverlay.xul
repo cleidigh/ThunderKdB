@@ -9,6 +9,7 @@
  Filter Editor Overlay for Thunderbird 67 and newer
 -->
 
+<?xml-stylesheet href="chrome://enigmail/skin/enigmail.css" type="text/css"?>
 
 <!DOCTYPE window SYSTEM "chrome://enigmail/locale/enigmail.dtd" >
 
@@ -17,7 +18,6 @@
     xmlns:html="http://www.w3.org/1999/xhtml"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-  <link rel="stylesheet" type="text/css" href="chrome://enigmail/skin/enigmail.css"/>
   <script type="application/x-javascript" src="chrome://enigmail/content/ui/enigmailFilterEditorOverlay.js"/>
 
   <dialog insertafter="statusbar" id="FilterEditor">

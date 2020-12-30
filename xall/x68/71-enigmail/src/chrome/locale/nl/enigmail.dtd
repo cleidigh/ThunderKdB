@@ -1,41 +1,663 @@
-<!ENTITY enigmail.copyCmd.label                      "Kopiëren">
+<!ENTITY enigmail.SendingPrefs.label              "Algemene voorkeuren voor verzenden">
+<!ENTITY enigmail.about.accesskey           "E">
+<!ENTITY enigmail.about.label              "Over Enigmail">
+<!ENTITY enigmail.acKeyTransfer.displayPasswd.title  "Code voor Autocrypt-instellingsbericht:">
+<!ENTITY enigmail.acKeyTransfer.msgCreated.desc1     "Het configuratiebericht is naar uzelf verstuurd.">
+<!ENTITY enigmail.acKeyTransfer.msgCreated.desc2     "Schakel over naar het andere apparaat en open het bericht. U wordt gevraagd naar de configuratie-code. Voer de volgende cijfers in op de prompt:">
+<!ENTITY enigmail.acKeyTransfer.selectAccount.label  "Instellingsbericht creëren voor account:">
+<!ENTITY enigmail.acKeyTransfer.switchDevice.desc    "Als u klaar bent, is het andere apparaat klaar om Autocrypt te gebruiken.">
+<!ENTITY enigmail.acKeyTransfer.welcome.desc1        "Als u een ander apparaat hebt waarop Autocrypt is ingeschakeld, kunt u uw sleutel naar het andere apparaat overzetten via het ‘Autocrypt-configuratiebericht’.
+Met zo’n bericht kan je andere apparaat met een paar klikken net als Enigmail versleutelde e-mailberichten versturen en ontvangen.">
+<!ENTITY enigmail.acKeyTransfer.welcome.desc2        "Selecteer hieronder de account waarvoor u uw sleutel wilt overzetten.
+Wij tonen een configuratie-code (wachtwoord) op het scherm, die u op het andere apparaat moet invoeren om uw sleutel en overige instellingen te importeren.">
+<!ENTITY enigmail.acKeyTransfer.welcome.title        "Sleuteloverdracht initiëren">
+<!ENTITY enigmail.acKeyTransfer.window.title         "Autocrypt-sleuteloverdracht">
+<!ENTITY enigmail.acPreferEncrypt.label              "Voorkeur voor versleutelde e-mailberichten van de mensen met wie je e-mailt">
+<!ENTITY enigmail.acSetupPasswd.dlgTitle             "Autocrypt-instellingscode">
+<!ENTITY enigmail.acSetupPasswd.password             "Instellingscode:">
+<!ENTITY enigmail.acceptedKeysAllUsable.label     "Alle bruikbare sleutels">
+<!ENTITY enigmail.acceptedKeysAllUsable.tooltip   "Alle sleutels accepteren die noch door u zijn uitgeschakeld, noch door de eigenaar zijn herroepen/vervallen. Technisch gesproken gebruikt dit de GPG-optie ‘--trust-model always’.">
+<!ENTITY enigmail.acceptedKeysOption.label        "Accepteren voor versleuteld verzenden:">
+<!ENTITY enigmail.acceptedKeysTrusted.label       "Alleen vertrouwde sleutels">
+<!ENTITY enigmail.acceptedKeysTrusted.tooltip     "Aleen sleutels accepteren die zijn ondertekend door uzelf of door andere personen die u vertrouwt. Technisch gesproken accepteert u alleen ‘geldige’ sleutels voor versleuteling.">
+<!ENTITY enigmail.action.label                      "Actie">
+<!ENTITY enigmail.add.accesskey                     "T">
+<!ENTITY enigmail.add.label                         "Toevoegen">
+<!ENTITY enigmail.addPhoto.question.label            "Wilt u de volgende foto aan de sleutel toevoegen?">
+<!ENTITY enigmail.addPhoto.title                     "Foto aan sleutel toevoegen">
+<!ENTITY enigmail.addToRule.newRuleButton.accesskey  "N">
+<!ENTITY enigmail.addToRule.newRuleButton.label      "Nieuwe regel maken">
+<!ENTITY enigmail.addToRule.title                    "Sleutel toevoegen aan ontvangerregel">
+<!ENTITY enigmail.addToRule.useRuleButton.accesskey  "v">
+<!ENTITY enigmail.addToRule.useRuleButton.label      "Sleutel toevoegen aan geselecteerde regel">
+<!ENTITY enigmail.addUidDlg.email.label            "E-mail">
+<!ENTITY enigmail.addUidDlg.name.label             "Naam">
+<!ENTITY enigmail.addUidDlg.title                  "Enigmail - Gebruikers-ID toevoegen">
+<!ENTITY enigmail.adminSmartCard.accesskey  "c">
+<!ENTITY enigmail.adminSmartCard.label     "Smartcard beheren…">
+<!ENTITY enigmail.advanced.label         "Geavanceerd">
+<!ENTITY enigmail.advancedIdentityDlg.title          "Geavanceerde Enigmail-identiteitsinstellingen">
+<!ENTITY enigmail.advancedPrefsButton.label       "Geavanceerd…">
+<!ENTITY enigmail.afterDefaultsAndRules.label     "Na het toepassen van standaarden en regels:">
+<!ENTITY enigmail.agentAdditionalParam.label    "Bijkomende parameters voor GnuPG">
+<!ENTITY enigmail.agentAdditionalParam.tooltip  "Geef hier opties op die door GnuPG zullen worden gebruikt.">
+<!ENTITY enigmail.always.label                      "Altijd">
+<!ENTITY enigmail.amPrefDefaultEncrypt.label        "Standaardopties voor berichtopstelling">
+<!ENTITY enigmail.amPrefDesc.label                  "Ondersteuning voor OpenPGP-versleuteling en -ondertekening van berichten word geleverd door Enigmail. Om deze functionaliteit te gebruiken, dient GnuPG (gpg) te zijn geïnstalleerd.">
+<!ENTITY enigmail.amPrefEnablePgp.label             "OpenPGP-ondersteuning (Enigmail) voor dit profiel inschakelen">
+<!ENTITY enigmail.amPrefMimePreferEnigmail.label    "Enigmail (OpenPGP) de voorkeur geven">
+<!ENTITY enigmail.amPrefMimePreferProto.label       "Als zowel Enigmail- en S/MIME-versleuteling beschikbaar zijn, dan:">
+<!ENTITY enigmail.amPrefMimePreferSMime.label       "S/MIME de voorkeur geven">
+<!ENTITY enigmail.amPrefMsgComp.label               "Bericht opstellen">
+<!ENTITY enigmail.amPrefPgp.sendKeyWithMsg.label     "Mijn publieke sleutel als berichtbijlage verzenden">
+<!ENTITY enigmail.amPrefPgpHeader.id.label          "OpenPGP-sleutel-ID verzenden">
+<!ENTITY enigmail.amPrefPgpHeader.label             "‘OpenPGP’-berichtkop verzenden">
+<!ENTITY enigmail.amPrefPgpHeader.url.label         "URL voor het ophalen van de sleutel verzenden:">
+<!ENTITY enigmail.amPrefSelectKey.label             "Sleutel selecteren">
+<!ENTITY enigmail.amPrefTitle.label                 "Ondertekenings-/versleutelingsopties…">
+<!ENTITY enigmail.amPrefUseFromAddr.label           "E-mailadres van deze identiteit voor herkennen van OpenPGP-sleutel gebruiken">
+<!ENTITY enigmail.amPrefUseKeyId.label              "Specifieke OpenPGP-sleutel-ID (0x1234ABCD) gebruiken:">
+<!ENTITY enigmail.assignKeysByEmailAddr.label         "Per e-mailadres volgens sleutelbeheer">
+<!ENTITY enigmail.assignKeysByEmailAddr.tooltip       "Sleutels toekennen volgens de sleutel die in de sleutelbeheerder aan het emailadres is gekoppeld">
+<!ENTITY enigmail.assignKeysByRules.label             "Door regels per ontvanger">
+<!ENTITY enigmail.assignKeysByRules.tooltip           "Sleutels toekennen volgens de ontvangerregels. Altijd om het aanmaken van nieuwe regels vragen als dit de enige geselecteerde optie is.">
+<!ENTITY enigmail.assignKeysManuallyAlways.label      "Altijd (ook) handmatig">
+<!ENTITY enigmail.assignKeysManuallyAlways.tooltip    "Als laatste altijd het dialoogvenster voor het handmatig kiezen van sleutels tonen">
+<!ENTITY enigmail.assignKeysManuallyIfMissing.label   "Handmatig als sleutels ontbreken">
+<!ENTITY enigmail.assignKeysManuallyIfMissing.tooltip "Dialoogvenster tonen om handmatig sleutels toe te kennen als deze ontbreken">
+<!ENTITY enigmail.attachkey.accesskey          "b">
+<!ENTITY enigmail.attachkey.label              "Publieke sleutel bijvoegen…">
+<!ENTITY enigmail.attachmykey.accesskey        "M">
+<!ENTITY enigmail.attachmykey.label            "Mijn publieke sleutel bijvoegen">
+<!ENTITY enigmail.attachmykey.short.label      "Attach Key">
+<!ENTITY enigmail.autoDecrypt.accesskey     "a">
+<!ENTITY enigmail.autoDecrypt.label      "Berichten automatisch ontcijferen/verifiëren">
+<!ENTITY enigmail.autoEncryptDrafts.label         "Conceptberichten versleutelen bij opslaan">
+<!ENTITY enigmail.autoKeyRetrieve.label           "Sleutels voor ondertekeningverificatie automatisch downloaden">
+<!ENTITY enigmail.autoKeyRetrieve2.label          "van de volgende sleutelserver:">
+<!ENTITY enigmail.autoKeyServerSelection.label     "Altijd de eerste sleutelserver gebruiken">
+<!ENTITY enigmail.autoKeyServerSelection.tooltip   "Standaard de eerste server uit de lijst gebruiken.">
+<!ENTITY enigmail.autoSendEncryptedIfKeys.label   "Wanneer mogelijk">
+<!ENTITY enigmail.autoSendEncryptedIfKeys.tooltip "Automatisch versleutelen zodra minstens één sleutel bekend en geaccepteerd is (zie boven) en ontvangerregels de versleuteling niet voorkomen">
+<!ENTITY enigmail.autoSendEncryptedNever.label    "Nooit">
+<!ENTITY enigmail.autoSendEncryptedNever.tooltip  "Niet automatisch versleutelen, tenzij expliciet aangegeven in ontvangerregels">
+<!ENTITY enigmail.autoSendEncryptedOption.label   "Automatisch versleuteld verzenden">
+<!ENTITY enigmail.autocrypt.label         "Autocrypt">
+<!ENTITY enigmail.backupPrefs.tooltip     "Alle voorkeuren van Enigmail en uw OpenPGP-sleutels opslaan in een bestand.">
+<!ENTITY enigmail.backupPrefsButton.label "Instellingen en sleutels exporteren">
+<!ENTITY enigmail.backupRestore.desc       "Uw Enigmail-instellingen exporteren (back-up maken), inclusief uw OpenPGP-sleutels.">
+<!ENTITY enigmail.basic.label            "Basis">
+<!ENTITY enigmail.basicPrefs.label       "Basisinstellingen">
+<!ENTITY enigmail.basicUser.tooltip        "Klik dit aan als u geen menu-items en opties voor gevorderde gebruikers wilt zien.">
+<!ENTITY enigmail.basicUserMenus.label     "Geavanceerde instellingen en menu’s verbergen">
+<!ENTITY enigmail.browse.label             "Verkennen…">
+<!ENTITY enigmail.cancelKey.label         "Annuleren">
+<!ENTITY enigmail.cancelKey.tooltip       "Sleutelgeneratie annuleren">
+<!ENTITY enigmail.cardDetails.adminPin.accesskey     "P">
+<!ENTITY enigmail.cardDetails.adminPin.label         "Pincode wijzigen">
+<!ENTITY enigmail.cardDetails.authKey.label          "Authenticatiesleutel">
+<!ENTITY enigmail.cardDetails.cardMenu.accesskey     "S">
+<!ENTITY enigmail.cardDetails.cardMenu.label         "Smartcard">
+<!ENTITY enigmail.cardDetails.closeWindow.label      "Sluiten">
+<!ENTITY enigmail.cardDetails.editData.accesskey     "b">
+<!ENTITY enigmail.cardDetails.editData.label         "Kaartgegevens bewerken">
+<!ENTITY enigmail.cardDetails.encKey.label           "Coderingssleutel">
+<!ENTITY enigmail.cardDetails.female.label           "Vrouw">
+<!ENTITY enigmail.cardDetails.forcepin.label         "Pincodeondertekening forceren">
+<!ENTITY enigmail.cardDetails.genCardKey.accesskey   "g">
+<!ENTITY enigmail.cardDetails.genCardKey.label       "Sleutel genereren">
+<!ENTITY enigmail.cardDetails.keyCreated.label       "Aangemaakt">
+<!ENTITY enigmail.cardDetails.lang.label             "Taal">
+<!ENTITY enigmail.cardDetails.login.label            "Aanmeldingsgegevens">
+<!ENTITY enigmail.cardDetails.male.label             "Man">
+<!ENTITY enigmail.cardDetails.maxpinlen.label        "Max. lengte van pincode">
+<!ENTITY enigmail.cardDetails.name.label             "Voornaam, familienaam">
+<!ENTITY enigmail.cardDetails.no.label               "Nee">
+<!ENTITY enigmail.cardDetails.pinretry.label         "Pincode-herhaalteller">
+<!ENTITY enigmail.cardDetails.reset.label            "Leegmaken">
+<!ENTITY enigmail.cardDetails.save.label             "Opslaan">
+<!ENTITY enigmail.cardDetails.serial.label           "Serienummer">
+<!ENTITY enigmail.cardDetails.sex.label              "Geslacht">
+<!ENTITY enigmail.cardDetails.sigKey.label           "Ondertekensleutel">
+<!ENTITY enigmail.cardDetails.sigcount.label         "Ondertekeningenteller">
+<!ENTITY enigmail.cardDetails.title                  "OpenPGP-smartcard-details">
+<!ENTITY enigmail.cardDetails.url.label              "URL van publieke sleutel">
+<!ENTITY enigmail.cardDetails.vendor.label           "Fabrikant">
+<!ENTITY enigmail.cardDetails.yes.label              "Ja">
+<!ENTITY enigmail.cardPin.action.label               "Wat wilt u doen?">
+<!ENTITY enigmail.cardPin.adminPinRepeat.label       "Herhaal beheerpincode">
+<!ENTITY enigmail.cardPin.changeAdmPin.label         "Beheerpincode wijzigen">
+<!ENTITY enigmail.cardPin.changePin.label            "Pincode wijzigen">
+<!ENTITY enigmail.cardPin.currAdmPin.label           "Huidige beheerpincode">
+<!ENTITY enigmail.cardPin.currPin.label              "Huidige pincode">
+<!ENTITY enigmail.cardPin.newAdminPin.label          "Nieuwe beheerpincode">
+<!ENTITY enigmail.cardPin.newPin.label               "Nieuwe pincode">
+<!ENTITY enigmail.cardPin.pinRepeat.label            "Herhaal nieuwe pincode">
+<!ENTITY enigmail.cardPin.title                      "Smartcard-pincode wijzigen">
+<!ENTITY enigmail.cardPin.unblockPin.label           "Pincode deblokkeren">
+<!ENTITY enigmail.clearPassphrase.accesskey "w">
+<!ENTITY enigmail.clearPassphrase.label  "Opgeslagen wachtwoordzinnen wissen">
+<!ENTITY enigmail.clearSearch.accesskey             "L">
+<!ENTITY enigmail.clearSearch.label                 "Leegmaken">
+<!ENTITY enigmail.compose.editmanually.label        "Handmatig bewerken">
+<!ENTITY enigmail.compose.excesslength.label        "U hebt zeer lange regels in uw mail. Deze kunnen het beste anders worden behandeld om slechte ondertekeningen te vermijden.">
+<!ENTITY enigmail.compose.excesslength_action.label "Hoe wilt u verdergaan?">
+<!ENTITY enigmail.compose.sendasis_radio.label      "Ongewijzigd verzenden (en een onjuiste ondertekening riskeren)">
+<!ENTITY enigmail.compose.use_mime_radio.label      "PGP/MIME gebruiken (goede ondertekening, maar sommige ontvangers kunnen het niet ontcijferen)">
+<!ENTITY enigmail.compose.wrap_radio.label          "Automatisch uitlijnen (goede ondertekening, maar ziet er misschien niet goed uit)">
+<!ENTITY enigmail.composemenu.accesskey        "E">
+<!ENTITY enigmail.composetoolbar.desc         "Versleutelingsinfo van Enigmail">
+<!ENTITY enigmail.confirmBeforeSendingAlways.label           "Altijd">
+<!ENTITY enigmail.confirmBeforeSendingAlways.tooltip         "Altijd informatievenster over ondertekenen/versleutelen weergeven voordat een bericht wordt verzonden">
+<!ENTITY enigmail.confirmBeforeSendingIfEncrypted.label      "Wanneer versleuteld">
+<!ENTITY enigmail.confirmBeforeSendingIfEncrypted.tooltip    "Informatievenster over ondertekenen/versleutelen weergeven voordat een VERSLEUTELD bericht wordt verzonden">
+<!ENTITY enigmail.confirmBeforeSendingIfNotEncrypted.label   "Wanneer niet versleuteld">
+<!ENTITY enigmail.confirmBeforeSendingIfNotEncrypted.tooltip "Informatievenster over ondertekenen/versleutelen weergeven voordat een ONVERSLEUTELD bericht wordt verzonden">
+<!ENTITY enigmail.confirmBeforeSendingIfRules.label          "Als regels de standaardinstelling voor versleuteling hebben gewijzigd">
+<!ENTITY enigmail.confirmBeforeSendingIfRules.tooltip        "Informatievenster over ondertekenen/versleutelen weergeven voordat een bericht wordt verzonden als de versleutelingsvoorkeuren op basis van een ontvangerregel of door automatische versleuteling zijn gewijzigd">
+<!ENTITY enigmail.confirmBeforeSendingNever.label            "Nooit">
+<!ENTITY enigmail.confirmBeforeSendingNever.tooltip          "Geen informatievenster over ondertekenen/versleutelen weergeven voordat een bericht wordt verzonden">
+<!ENTITY enigmail.confirmBeforeSendingOption.label           "Bevestigen voor verzenden">
+<!ENTITY enigmail.copySecurityInfo.label           "Enigmail-beveiligingsinfo kopiëren">
+<!ENTITY enigmail.createRuleFromAddr.label         "Enigmail-regel maken van adres…">
+<!ENTITY enigmail.created.label                    "Aangemaakt">
+<!ENTITY enigmail.ctxDecryptOpen.accesskey          "c">
+<!ENTITY enigmail.ctxDecryptOpen.label              "Ontcijferen en openen">
+<!ENTITY enigmail.ctxDecryptSave.accesskey          "s">
+<!ENTITY enigmail.ctxDecryptSave.label              "Ontcijferen en opslaan als…">
+<!ENTITY enigmail.ctxImportKey.accesskey            "i">
+<!ENTITY enigmail.ctxImportKey.label                "OpenPGP-sleutel importeren">
+<!ENTITY enigmail.ctxVerifyAtt.accesskey            "O">
+<!ENTITY enigmail.ctxVerifyAtt.label                "Ondertekening verifiëren">
+<!ENTITY enigmail.debugMenu.accesskey       "D">
+<!ENTITY enigmail.debugMenu.label        "Debug-opties">
+<!ENTITY enigmail.decryptToFolder.accesskey "O">
+<!ENTITY enigmail.decryptToFolder.label     "Ontcijferen naar map">
+<!ENTITY enigmail.decryptbutton.label     "Ontcijferen">
+<!ENTITY enigmail.decryptbutton.tip       "Het bericht met Enigmail ontcijferen of verifiëren">
+<!ENTITY enigmail.decryptverify.accesskey   "O">
+<!ENTITY enigmail.decryptverify.label    "Ontcijferen/verifiëren">
+<!ENTITY enigmail.defaultEncryption.label         "Berichten standaard versleutelen">
+<!ENTITY enigmail.defaultKeySelOpts.accesskey  "s">
+<!ENTITY enigmail.defaultKeySelOpts.label      "Opties voor sleutelselectie…">
+<!ENTITY enigmail.defaultSigning.label            "Berichten standaard ondertekenen">
+<!ENTITY enigmail.defineRules.label               "Regels bewerken…">
+<!ENTITY enigmail.delete.accesskey                  "V">
+<!ENTITY enigmail.delete.label                      "Verwijderen">
+<!ENTITY enigmail.detailsHdrButton.label            "Details">
+<!ENTITY enigmail.disableSMIMEui.tooltip       "De S/MIME-knop in de werkbalk van het opstelvenster voor berichten verwijderen">
+<!ENTITY enigmail.displayKeyProperties.label       "Eigenschappen van sleutel bekijken">
 <!ENTITY enigmail.displayNoLonger.label             "Dit dialoogvenster niet meer weergeven als versleuteling niet mogelijk is">
 <!ENTITY enigmail.doneButton.accesskey    "S">
 <!ENTITY enigmail.doneButton.label        "Klaar">
+<!ENTITY enigmail.doubleDashSeparator.label "‘--’ is een scheidingsteken voor ondertekeningen">
+<!ENTITY enigmail.doubleDashSeparator.tooltip  "Twee mintekens op een lege regel geven een ondertekening aan">
+<!ENTITY enigmail.edit.accesskey                    "n">
+<!ENTITY enigmail.edit.label                        "Aanpassen">
+<!ENTITY enigmail.editRules.accesskey       "R">
+<!ENTITY enigmail.editRules.label        "Regels per ontvanger bewerken">
+<!ENTITY enigmail.email.label                       "E-mail">
+<!ENTITY enigmail.enableAutocrypt.label              "Autocrypt inschakelen">
+<!ENTITY enigmail.encDlgEncrypt.accesskey           "v">
+<!ENTITY enigmail.encDlgEncrypt.label               "Bericht versleutelen">
+<!ENTITY enigmail.encDlgInlinePgp.accesskey         "I">
+<!ENTITY enigmail.encDlgInlinePgp.label             "Inline PGP gebruiken">
+<!ENTITY enigmail.encDlgPgpMime.accesskey           "P">
+<!ENTITY enigmail.encDlgPgpMime.label               "PGP/MIME gebruiken">
+<!ENTITY enigmail.encDlgProtocol.label              "Versleutelings- en ondertekeningsstandaard">
+<!ENTITY enigmail.encDlgReset.accesskey             "r">
+<!ENTITY enigmail.encDlgReset.label                 "Terugzetten naar standaardwaarden">
+<!ENTITY enigmail.encDlgSMime.accesskey             "M">
+<!ENTITY enigmail.encDlgSMime.label                 "S/MIME gebruiken">
+<!ENTITY enigmail.encDlgSign.accesskey              "o">
+<!ENTITY enigmail.encDlgSign.label                  "Bericht ondertekenen">
+<!ENTITY enigmail.encrypt.label                     "Versleutelen">
+<!ENTITY enigmail.encryptAttachSkipDlg.label        "De geselecteerde methode voor alle toekomstige bijlagen gebruiken">
+<!ENTITY enigmail.encryptedsend.accesskey      "V">
+<!ENTITY enigmail.encryptedsend.key            "E">
+<!ENTITY enigmail.encryptedsend.label         "Bericht versleutelen">
+<!ENTITY enigmail.encryption.label                  "Versleuteling">
+<!ENTITY enigmail.encryptionDlg.label               "Enigmail-instellingen voor versleuteling &amp; ondertekening">
+<!ENTITY enigmail.encryptionModelConvenient.label "Standaard versleutelingsinstellingen gebruiken">
+<!ENTITY enigmail.encryptionModelManually.label   "Handmatig versleutelingsinstellingen configureren">
+<!ENTITY enigmail.enigAttachDontEncryptMsgEncrypt.label        "Het bericht niet versleutelen">
+<!ENTITY enigmail.enigAttachDontEncryptMsgEncryptAndSign.label "Het bericht niet versleutelen en ondertekenen">
+<!ENTITY enigmail.enigAttachDontEncryptMsgSign.label           "Het bericht niet ondertekenen">
+<!ENTITY enigmail.enigAttachInlineEncrypt.label         "Elke bijlage apart versleutelen en het bericht via inline PGP verzenden">
+<!ENTITY enigmail.enigAttachInlineEncryptAndSign.label  "Elke bijlage apart ondertekenen en het bericht met behulp van inline PGP verzenden">
+<!ENTITY enigmail.enigAttachInlineSign.label            "Elke bijlage apart ondertekenen en het bericht via inline PGP verzenden">
+<!ENTITY enigmail.enigAttachNoneEncrypt.label           "De berichttekst versleutelen, maar de bijlagen niet">
+<!ENTITY enigmail.enigAttachNoneEncryptAndSign.label    "Het bericht versleutelen en ondertekenen, maar de bijlagen niet">
+<!ENTITY enigmail.enigAttachNoneSign.label              "De berichttekst ondertekenen, maar de bijlagen niet">
+<!ENTITY enigmail.enigAttachPgpMimeEncrypt.label        "Het bericht als geheel versleutelen en met behulp van PGP/MIME verzenden">
+<!ENTITY enigmail.enigAttachPgpMimeEncryptAndSign.label "Het bericht als geheel versleutelen en ondertekenen en met behulp van PGP/MIME verzenden">
+<!ENTITY enigmail.enigAttachPgpMimeSign.label           "Het bericht als een geheel ondertekenen en met behulp van PGP/MIME verzenden">
+<!ENTITY enigmail.enigEncryptAttachDontEncryptMsg.label        "Het bericht niet versleutelen/ondertekenen">
+<!ENTITY enigmail.enigEncryptAttachInline.label         "Elke bijlage apart versleutelen/ondertekenen en het bericht met behulp van inline PGP verzenden">
+<!ENTITY enigmail.enigEncryptAttachNone.label           "Alleen de berichttekst versleutelen/ondertekenen, maar de bijlagen niet">
+<!ENTITY enigmail.enigEncryptAttachPgpMime.label        "Het bericht als een geheel versleutelen/ondertekenen en met behulp van PGP/MIME verzenden">
+<!ENTITY enigmail.enigmailAttachDesc.label          "Dit bericht bevat bijlagen. Hoe wilt u deze versleutelen/ondertekenen?">
+<!ENTITY enigmail.exchangeGarbage.desc              "Dit is een beschadigd PGP/MIME-bericht van MS Exchange. Als u de bijlagen niet kunt benaderen of problemen hebt met antwoorden of doorsturen, klik dan op de knop ‘Bericht repareren’ om het bericht te herstellen.">
+<!ENTITY enigmail.exchangeGarbage.fixButton.label   "Bericht repareren">
+<!ENTITY enigmail.exchangeGarbage.waitMessage       "Even geduld…">
+<!ENTITY enigmail.expertUser.tooltip       "Klik dit aan als u menu-items en opties voor gevorderde gebruikers wilt zien.">
+<!ENTITY enigmail.expertUserMenus.label    "Instellingen en menu’s voor gevorderden tonen">
+<!ENTITY enigmail.exportWiz.pgExport.done            "Uw OpenPGP-sleutels en uw Enigmail-instellingen zijn nu opgeslagen.
+                                                      Zet het gegenereerde bestand over naar uw nieuwe computer, start
+                                                      Thunderbird en start de Instellingenwizard vanuit het Enigmail-menu.">
+<!ENTITY enigmail.exportWiz.pgExport.exporting       "Opslaan wordt uitgevoerd. Mogelijk wordt om de wachtwoordzin(nen) van uw sleutel(s) gevraagd.">
+<!ENTITY enigmail.exportWiz.pgExport.failed          "Er is een fout opgetreden bij het exporteren. De instellingen konden niet worden opgeslagen.">
+<!ENTITY enigmail.exportWiz.pgExport.title           "Enigmail-instellingen exporteren">
+<!ENTITY enigmail.exportWiz.pgIntro.desc             "Met Enigmail kunt u alle instellingen inclusief uw OpenPGP-sleutels overzetten naar een nieuwe computer. Dit gebeurt in twee stappen:">
+<!ENTITY enigmail.exportWiz.pgIntro.specifyFile      "Geef de naam van het exportbestand op:">
+<!ENTITY enigmail.exportWiz.pgIntro.step1            "exporteer uw gegevens van uw oude computer met behulp van de wizard;">
+<!ENTITY enigmail.exportWiz.pgIntro.step2            "importeer uw gegevens op uw nieuwe computer met behulp van de wizard.">
+<!ENTITY enigmail.exportWiz.pgIntro.title            "Welkom bij de wizard Instellingen exporteren">
+<!ENTITY enigmail.exportWiz.title                    "Uw Enigmail-instellingen importeren">
+<!ENTITY enigmail.filterEditor.moveError.label       "Acties na ‘Permanent ontcijferen’ worden niet ondersteund.">
+<!ENTITY enigmail.finallySignEncrypted.label      "Versleutelde berichten ondertekenen">
+<!ENTITY enigmail.finallySignNotEncrypted.label   "Niet-versleutelde berichten ondertekenen">
+<!ENTITY enigmail.genCardKey.backupKey.label         "Back-up van de sleutel buiten de kaart opslaan">
+<!ENTITY enigmail.genCardKey.desc                    "<a class='enigmailStrong'>LET OP: het genereren van een sleutel kan enkele minuten duren.</a> Sluit het programma niet tijdens het aanmaken van de sleutel. U wordt gewaarschuwd zodra de sleutel is aangemaakt.">
+<!ENTITY enigmail.genCardKey.title                   "OpenPGP-sleutel genereren">
 <!ENTITY enigmail.general.okLabel         "OK">
+<!ENTITY enigmail.generateKey.label        "Sleutel genereren">
+<!ENTITY enigmail.generateKey.tooltip     "Genereert een nieuwe sleutel die compatibel is met OpenPGP voor versleuteling en ondertekening">
+<!ENTITY enigmail.help.accesskey            "H">
+<!ENTITY enigmail.help.label               "Help">
+<!ENTITY enigmail.importKey.label        "Sleutel importeren">
 <!ENTITY enigmail.importMissingKeys.accesskey       "n">
 <!ENTITY enigmail.importMissingKeys.label           "Ontbrekende sleutels downloaden">
 <!ENTITY enigmail.importMissingKeys.tooltip         "Ontbrekende sleutels van een keyserver proberen te importeren">
+<!ENTITY enigmail.importSetup.dlgTitle               "Instellingen en sleutels herstellen">
+<!ENTITY enigmail.importSetup.importingKeys          "Sleutels worden geïmporteerd in GnuPG. Dit kan enige tijd duren…">
+<!ENTITY enigmail.importSetup.restoringEnigmail      "Enigmail-instellingen herstellen…">
+<!ENTITY enigmail.importSetup.restoringGnupgSettings "GnuPG-instellingen herstellen…">
+<!ENTITY enigmail.importSetup.specifyImportFile      "Specificeer het back-up-bestand dat gebruikt moet worden om uw instellingen en sleutels te herstellen:">
+<!ENTITY enigmail.importSetup.startRestoreLabel      "Beginnen met herstellen">
+<!ENTITY enigmail.importSetup.topDesc                "Met behulp van deze dialoog kunt u uw instellingen en sleutels van een bestaande Enigmail-installatie herstellen. Gebruik het tabblad ‘Instellingen overzetten’ in de Enigmail-voorkeuren om een back-up van uw instellingen en sleutels te maken.">
+<!ENTITY enigmail.importpublickey.accesskey "P">
+<!ENTITY enigmail.importpublickey.label  "Publieke sleutel importeren">
+<!ENTITY enigmail.keepCryptoSettingsForReply.label   "Antwoorden op versleutelde/ondertekende berichten versleutelen/ondertekenen">
+<!ENTITY enigmail.keepCryptoSettingsForReply.tooltip "Wanneer mogelijk antwoorden op versleutelde/ondertekende e-mail versleutelen/ondertekenen">
+<!ENTITY enigmail.keyDetails.ID.label                "ID">
+<!ENTITY enigmail.keyDetails.algorithm.label         "Algoritme">
+<!ENTITY enigmail.keyDetails.alsoKnown.label         "Ook bekend als">
+<!ENTITY enigmail.keyDetails.change.label            "Wijzigen">
+<!ENTITY enigmail.keyDetails.created.label           "Aangemaakt">
+<!ENTITY enigmail.keyDetails.expiry.label            "Vervaldatum">
+<!ENTITY enigmail.keyDetails.fingerprint.label       "Vingerafdruk">
+<!ENTITY enigmail.keyDetails.keyPart.label           "Sleuteldeel">
+<!ENTITY enigmail.keyDetails.keyType.label           "Type">
+<!ENTITY enigmail.keyDetails.keyValidity.label       "Geldigheid">
+<!ENTITY enigmail.keyDetails.selAction.accesskey     "S">
+<!ENTITY enigmail.keyDetails.selAction.label         "Selecteer actie…">
+<!ENTITY enigmail.keyDetails.signKey.label           "Certificeren">
+<!ENTITY enigmail.keyDetails.signaturesTab           "Certificeringen">
+<!ENTITY enigmail.keyDetails.size.label              "Grootte">
+<!ENTITY enigmail.keyDetails.structureTab            "Structuur">
+<!ENTITY enigmail.keyDetails.title                   "Sleuteleigenschappen">
+<!ENTITY enigmail.keyDetails.trustStatus.label       "U vertrouwt op certificeringen">
+<!ENTITY enigmail.keyDetails.uidCertifiedCol         "Gebruikers-ID / Gecertificeerd door">
+<!ENTITY enigmail.keyDetails.usage.label             "Gebruik">
+<!ENTITY enigmail.keyDetails.userId.label            "Primaire gebruikers-ID">
+<!ENTITY enigmail.keyExpiry.expiryKey.label         "Sleutels waarvan u de vervaldatum wilt wijzigen:">
 <!ENTITY enigmail.keyExpiry.label                   "Vervaldatum">
+<!ENTITY enigmail.keyExpiry.title                   "Enigmail - Vervaldatum wijzigen">
+<!ENTITY enigmail.keyGen.console.label    "Sleutel aanmaken">
+<!ENTITY enigmail.keyGen.days.label       "dagen">
+<!ENTITY enigmail.keyGen.expire.label     "Sleutel vervalt over">
+<!ENTITY enigmail.keyGen.expiry.title     "Vervaldatum van sleutel">
+<!ENTITY enigmail.keyGen.keySize.label    "Sleutelgrootte">
+<!ENTITY enigmail.keyGen.keyType.ecc      "ECC (Elliptische Curve)">
+<!ENTITY enigmail.keyGen.keyType.label    "Sleuteltype">
+<!ENTITY enigmail.keyGen.keyType.rsa      "RSA">
+<!ENTITY enigmail.keyGen.months.label     "maanden">
+<!ENTITY enigmail.keyGen.noExpiry.label   "Sleutel vervalt niet">
+<!ENTITY enigmail.keyGen.years.label      "jaar">
 <!ENTITY enigmail.keyId.label                       "Sleutel-ID">
-<!ENTITY enigmail.keyMan.filter.label               "Sleutels zoeken">
+<!ENTITY enigmail.keyMan.addPhoto.accesskey          "f">
+<!ENTITY enigmail.keyMan.addPhoto.label            "Foto toevoegen">
+<!ENTITY enigmail.keyMan.addToPRRule.label         "Voeg toe aan per ontvanger regel">
+<!ENTITY enigmail.keyMan.calcTrust.label           "Sleutelvertrouwen">
+<!ENTITY enigmail.keyMan.changeExpiry.accesskey      "e">
+<!ENTITY enigmail.keyMan.changeExpiry.label        "Vervaldatum wijzigen">
+<!ENTITY enigmail.keyMan.changePwd.accesskey         "W">
+<!ENTITY enigmail.keyMan.changePwd.label           "Wachtwoordzin wijzigen">
+<!ENTITY enigmail.keyMan.close.accesskey             "l">
+<!ENTITY enigmail.keyMan.close.label               "Venster sluiten">
+<!ENTITY enigmail.keyMan.copyToClipbrd.accesskey     "P">
+<!ENTITY enigmail.keyMan.copyToClipbrd.label       "Publieke sleutels kopiëren naar klembord">
+<!ENTITY enigmail.keyMan.createMail.accesskey        "e">
+<!ENTITY enigmail.keyMan.createMail.label          "Schrijf e-mail aan geselecteerde sleutels">
+<!ENTITY enigmail.keyMan.ctxCopyToClipbrd.label    "Publieke sleutels kopiëren naar klembord">
+<!ENTITY enigmail.keyMan.ctxExportToFile.label     "Publieke sleutels exporteren naar bestand">
+<!ENTITY enigmail.keyMan.ctxGenRevoke.label        "Intrekkingscertificaat aanmaken &amp; opslaan">
+<!ENTITY enigmail.keyMan.ctxRefreshKey.label       "Publieke sleutels verversen vanaf sleutelserver">
+<!ENTITY enigmail.keyMan.ctxUploadToServer.label   "Publieke sleutels uploaden naar sleutelserver">
+<!ENTITY enigmail.keyMan.ctxViewPhoto.label        "Foto-ID bekijken">
+<!ENTITY enigmail.keyMan.delKey.accesskey            "d">
+<!ENTITY enigmail.keyMan.delKey.label              "Sleutel verwijderen">
+<!ENTITY enigmail.keyMan.downloadContactKeys.accesskey "S">
+<!ENTITY enigmail.keyMan.downloadContactKeys.label "Sleutels zoeken bij alle contacten">
+<!ENTITY enigmail.keyMan.editMenu.accesskey        "w">
+<!ENTITY enigmail.keyMan.editMenu.label            "Bewerken">
+<!ENTITY enigmail.keyMan.emptyTree.tooltip         "Typ zoekwoorden in het vak hierboven">
+<!ENTITY enigmail.keyMan.enableKey.accesskey         "S">
+<!ENTITY enigmail.keyMan.exportToFile.accesskey      "n">
+<!ENTITY enigmail.keyMan.exportToFile.label        "Sleutels exporteren naar bestand">
+<!ENTITY enigmail.keyMan.fileMenu.accesskey        "B">
+<!ENTITY enigmail.keyMan.fileMenu.label            "Bestand">
+<!ENTITY enigmail.keyMan.filter.label              "Sleutels zoeken">
+<!ENTITY enigmail.keyMan.fingerprint.label         "Vingerafdruk">
+<!ENTITY enigmail.keyMan.genRevoke.accesskey         "c">
+<!ENTITY enigmail.keyMan.genRevoke.label           "Intrekkingscertificaat">
+<!ENTITY enigmail.keyMan.generate.accesskey          "N">
+<!ENTITY enigmail.keyMan.generate.label            "Nieuw sleutelpaar">
+<!ENTITY enigmail.keyMan.generateMenu.accesskey    "G">
+<!ENTITY enigmail.keyMan.generateMenu.label        "Genereren">
+<!ENTITY enigmail.keyMan.importFromClipbrd.accesskey "k">
+<!ENTITY enigmail.keyMan.importFromClipbrd.label   "Sleutels importeren van klembord">
+<!ENTITY enigmail.keyMan.importFromFile.accesskey    "b">
+<!ENTITY enigmail.keyMan.importFromFile.label      "Sleutels importeren uit bestand">
+<!ENTITY enigmail.keyMan.importFromServer.accesskey  "Z">
+<!ENTITY enigmail.keyMan.importFromServer.label    "Zoeken naar sleutels">
+<!ENTITY enigmail.keyMan.importFromUrl.accesskey     "U">
+<!ENTITY enigmail.keyMan.importFromUrl.label       "Sleutels importeren van URL">
+<!ENTITY enigmail.keyMan.initiateAcBackup.accesskey  "A">
+<!ENTITY enigmail.keyMan.initiateAcBackup.label    "Autocrypt-configuratiebericht creëren">
+<!ENTITY enigmail.keyMan.keyDetails.accesskey        "S">
+<!ENTITY enigmail.keyMan.keyDetails.key              "I">
+<!ENTITY enigmail.keyMan.keyProps.label            "Sleuteleigenschappen">
+<!ENTITY enigmail.keyMan.keyType.label             "Type">
+<!ENTITY enigmail.keyMan.keyserverMenu.accesskey   "S">
+<!ENTITY enigmail.keyMan.keyserverMenu.label       "Sleutelserver">
+<!ENTITY enigmail.keyMan.manageUid.accesskey         "G">
+<!ENTITY enigmail.keyMan.manageUid.label           "Gebruikers-ID’s beheren">
+<!ENTITY enigmail.keyMan.nothingFound.tooltip      "Geen sleutels gevonden die aan uw criteria voldoen">
+<!ENTITY enigmail.keyMan.ownerTrust.label          "Eigenaarvertrouwen">
+<!ENTITY enigmail.keyMan.pEpBlacklisted.label      "Zwarte lijst">
+<!ENTITY enigmail.keyMan.pleaseWait.tooltip        "Wacht tot de sleutels zijn geladen…">
+<!ENTITY enigmail.keyMan.refreshAllKeys.accesskey    "A">
+<!ENTITY enigmail.keyMan.refreshAllKeys.label      "Alle publieke sleutels verversen">
+<!ENTITY enigmail.keyMan.refreshKey.key              "R">
+<!ENTITY enigmail.keyMan.refreshSelKeys.accesskey    "G">
+<!ENTITY enigmail.keyMan.refreshSelKeys.label      "Geselecteerde publieke sleutels verversen">
+<!ENTITY enigmail.keyMan.reload.accesskey            "h">
+<!ENTITY enigmail.keyMan.reload.label              "Sleutelcache opnieuw laden">
+<!ENTITY enigmail.keyMan.revokeKey.accesskey         "n">
+<!ENTITY enigmail.keyMan.revokeKey.label           "Sleutel intrekken">
+<!ENTITY enigmail.keyMan.selectAll.accesskey         "A">
+<!ENTITY enigmail.keyMan.selectAll.key               "A">
+<!ENTITY enigmail.keyMan.selectAll.label           "Alle sleutels selecteren">
+<!ENTITY enigmail.keyMan.sendKeys.accesskey          "z">
+<!ENTITY enigmail.keyMan.sendKeys.label            "Publieke sleutels verzenden per e-mail">
+<!ENTITY enigmail.keyMan.setTrust.accesskey          "v">
+<!ENTITY enigmail.keyMan.setTrust.label            "Sleutelvertrouwen instellen">
+<!ENTITY enigmail.keyMan.showAllKeys.accesskey       "T">
+<!ENTITY enigmail.keyMan.showAllKeys.label         "Standaard alle sleutels tonen">
+<!ENTITY enigmail.keyMan.showInvalidKeys.accesskey   "T">
+<!ENTITY enigmail.keyMan.showInvalidKeys.label     "Ongeldige sleutels tonen">
+<!ENTITY enigmail.keyMan.showOthersKeys.accesskey    "a">
+<!ENTITY enigmail.keyMan.showOthersKeys.label      "Sleutels van anderen tonen">
+<!ENTITY enigmail.keyMan.showPhoto.accesskey         "F">
+<!ENTITY enigmail.keyMan.showUntrustedKeys.accesskey "O">
+<!ENTITY enigmail.keyMan.showUntrustedKeys.label   "Onvertrouwde sleutels tonen">
+<!ENTITY enigmail.keyMan.sign.accesskey              "o">
+<!ENTITY enigmail.keyMan.sign.label                "Sleutel ondertekenen">
+<!ENTITY enigmail.keyMan.title                     "Enigmail-sleutelbeheer">
+<!ENTITY enigmail.keyMan.uploadToServer.accesskey    "P">
+<!ENTITY enigmail.keyMan.uploadToServer.label      "Publieke sleutels uploaden">
+<!ENTITY enigmail.keyMan.uploadToWkd.label         "Uploaden naar uw provider’s Webkey-directory">
+<!ENTITY enigmail.keyMan.userId.label              "Naam">
+<!ENTITY enigmail.keyMan.viewMenu.accesskey        "k">
+<!ENTITY enigmail.keyMan.viewMenu.label            "Bekijken">
+<!ENTITY enigmail.keyMan.viewPhoto.label           "Foto-ID">
+<!ENTITY enigmail.keyManWindow.accesskey           "S">
+<!ENTITY enigmail.keyManWindow.label               "Sleutelbeheer">
+<!ENTITY enigmail.keyNoPassphrase.label   "Geen wachtwoordzin">
+<!ENTITY enigmail.keyPassphrase.label     "Wachtwoordzin">
+<!ENTITY enigmail.keyPassphraseRepeat.label "Wachtwoordzin (herhaal)">
+<!ENTITY enigmail.keySearch.selectAll.key            "A">
+<!ENTITY enigmail.keySel.label           "Sleutelselectie">
 <!ENTITY enigmail.keySelection.label                "Selectie">
+<!ENTITY enigmail.keyTrust.dontKnow.label          "Ik weet het niet">
+<!ENTITY enigmail.keyTrust.fullTrust.label         "Ik vertrouw hem volledig">
+<!ENTITY enigmail.keyTrust.marginalTrust.label     "Ik vertrouw hem weinig">
+<!ENTITY enigmail.keyTrust.noTrust.label           "Ik vertrouw hem NIET">
+<!ENTITY enigmail.keyTrust.title                   "Enigmail - Sleutelvertrouwen instellen">
+<!ENTITY enigmail.keyTrust.trustKey.label          "Te vertrouwen sleutel:">
+<!ENTITY enigmail.keyTrust.trustLevel.label        "Hoeveel vertrouwen hebt u in de sleutel?">
+<!ENTITY enigmail.keyTrust.trustLevel.tooltip      "Bezoek voor meer informatie over niveau’s van sleutelvertrouwen: https://gpgtools.tenderapp.com/kb/faq/what-is-ownertrust-trust-levels-explained">
+<!ENTITY enigmail.keyTrust.ultimateTrust.label     "Ik vertrouw hem maximaal">
 <!ENTITY enigmail.keyUserId.label         "Account / Gebruikers-ID">
-<!ENTITY enigmail.messenger.menulabel               "Enigmail-voorkeuren overzetten">
+<!ENTITY enigmail.keygen.desc "<a class='enigmailStrong'>OPMERKING: Het maken van een sleutel kan meerdere minuten duren</a>. Sluit het programma niet af tijdens dit proces. Het helpt om tegelijkertijd websites te bezoeken of acties uit te voeren die de harde schijf intensief gebruiken. Dit zorgt ervoor dat het ‘willekeurbuffer’ gevuld blijft en dat het aanmaken van de sleutel sneller verloopt. Zodra de sleutel klaar is wordt een melding getoond.">
+<!ENTITY enigmail.keygenTitle.label       "OpenPGP-sleutel genereren">
+<!ENTITY enigmail.keyserver.label         "Sleutelservers">
+<!ENTITY enigmail.keyserverDlg.label      "Sleutelserver kiezen">
+<!ENTITY enigmail.keyservers.label        "Specificeer uw sleutelserver(s):">
+<!ENTITY enigmail.keyservers.sample2      "Voorbeeld: pool.sks-keyservers.net, pgp.mit.edu">
+<!ENTITY enigmail.label                   "Enigmail">
+<!ENTITY enigmail.manageUidDlg.addUid.label          "Toevoegen">
+<!ENTITY enigmail.manageUidDlg.affectedKey.label     "Sleutel om aan te passen:">
+<!ENTITY enigmail.manageUidDlg.availableUid.label    "Beschikbare gebruikers-ID’s:">
+<!ENTITY enigmail.manageUidDlg.revokeUid.label       "Intrekken">
+<!ENTITY enigmail.manageUidDlg.setPrimary.label      "Instellen als primair">
+<!ENTITY enigmail.manageUidDlg.title                 "Primaire gebruikers-ID wijzigen">
+<!ENTITY enigmail.matchBegin.label                  "Begint met">
+<!ENTITY enigmail.matchContains.label               "Bevat">
+<!ENTITY enigmail.matchDescEnd.label                "één van de bovenstaande adressen">
+<!ENTITY enigmail.matchDescStart.label              "Regel als ontvanger toepassen">
+<!ENTITY enigmail.matchEnd.label                    "Eindigt met">
+<!ENTITY enigmail.matchExact.label                  "Is exact">
+<!ENTITY enigmail.maxIdleMinutes.tooltip   "Wachtwoordzin beperkte tijd onthouden.">
+<!ENTITY enigmail.maxIdleMinutesHead.label "Wachtwoordzin">
+<!ENTITY enigmail.maxIdleMinutesTail.label "minuten inactiviteit (voordat u hem opnieuw moet invoeren)">
+<!ENTITY enigmail.maybe.label                       "Ja, wanneer geselecteerd bij Berichtopstelling">
+<!ENTITY enigmail.messeneger.pEpIcon.tootlip          "Dit bericht was met p≡p versleuteld. Klik het pictogram voor meer details.">
+<!ENTITY enigmail.messengermenu.accesskey "a">
+<!ENTITY enigmail.mime_parts_on_demand.label  "Alleen bijlagen downloaden wanneer geopend (alleen IMAP)">
+<!ENTITY enigmail.mime_parts_on_demand.tooltip "U dient dit UIT te zetten als u PGP/MIME-berichten in IMAP-mappen ontvangt.">
+<!ENTITY enigmail.moreOptions.label       "Meer opties">
+<!ENTITY enigmail.moveDown.accesskey                "l">
+<!ENTITY enigmail.moveDown.label                    "Omlaag">
+<!ENTITY enigmail.moveUp.accesskey                  "h">
+<!ENTITY enigmail.moveUp.label                      "Omhoog">
+<!ENTITY enigmail.msgViewColumn.tooltip              "Sorteren op OpenPGP-status">
+<!ENTITY enigmail.never.label                       "Nooit">
+<!ENTITY enigmail.nextAddress.label                 "De volgende regels voor het overeenkomende adres niet controleren">
+<!ENTITY enigmail.nextRule.label                    "Verdergaan met de volgende regel voor het overeenkomende adres">
+<!ENTITY enigmail.noHushMailSupport.label   "‘&lt;’ en ‘&gt;’ gebruiken om e-mailadressen op te geven">
+<!ENTITY enigmail.noHushMailSupport.tooltip    "Gebruik de tekens ‘&lt;’ en ‘&gt;’ om e-mailadressen voor GnuPG op te geven. Schakel dit uit als ontvangers oude Hushmail-sleutels hebben.">
+<!ENTITY enigmail.not.label                         "Niet">
+<!ENTITY enigmail.openPgpSecurity.label            "OpenPGP-beveiliging">
+<!ENTITY enigmail.openpgpPrefsButton.label        "Enigmail-voorkeuren">
+<!ENTITY enigmail.pEp.composestatus.label             "onbekend">
+<!ENTITY enigmail.pEp.label               "Enigmail/p≡p">
+<!ENTITY enigmail.pEp.privacyStatus.label             "Privacystatus:">
+<!ENTITY enigmail.pEp.revokeTrust.label               "p≡p-vertrouwen annuleren">
+<!ENTITY enigmail.pEp.trustWordsDlg.btnMistrust       "Verkeerde vertrouwenswoorden/Sleutel wantrouwen">
+<!ENTITY enigmail.pEp.trustWordsDlg.btnVerified       "Vertrouwenswoorden bevestigen">
+<!ENTITY enigmail.pEp.trustWordsDlg.fingerprint       "Vingerafdruk">
+<!ENTITY enigmail.pEp.trustWordsDlg.keySyncDesc       "U staat op het punt om een apparaat aan uw p≡p-apparatengroep toe te voegen. Bevestig dit door de volgende vertrouwenswoorden succesvol te verifiëren.">
+<!ENTITY enigmail.pEp.trustWordsDlg.myFingerprint     "Vingerafdruk voor mijn sleutel:">
+<!ENTITY enigmail.pEp.trustWordsDlg.overallDesc       "Vraag uw correspondent om zijn vertrouwenswoorden persoonlijk of via de telefoon aan u voor te lezen. Ze moeten overeenkomen met de vertrouwenswoorden hieronder.">
+<!ENTITY enigmail.pEp.trustWordsDlg.title             "p≡p-vertrouwenswoorden controleren">
+<!ENTITY enigmail.pEp.trustWordsDlg.trustwordsLong    "Lange vertrouwenswoorden">
+<!ENTITY enigmail.pEp.trustWordsDlg.trustwordsShort   "Vertrouwenswoorden">
+<!ENTITY enigmail.pEp.verifyTrustwords.accesskey      "H">
+<!ENTITY enigmail.pEp.verifyTrustwords.label          "p≡p Handdruk">
+<!ENTITY enigmail.passwordSettings.label   "Time-out voor wachtwoordzin">
+<!ENTITY enigmail.pepEnableProtection.accesskey     "B">
+<!ENTITY enigmail.pepEnableProtection.label         "Beveiliging inschakelen">
+<!ENTITY enigmail.pepHandshake.SuggestionTitle       "p≡p suggestie">
+<!ENTITY enigmail.pepHandshake.explanation           "Uitleg">
+<!ENTITY enigmail.pepPref.aboutTab.label             "Over">
+<!ENTITY enigmail.pepPref.accountSecurity.desc       "Accountbeveiliging">
+<!ENTITY enigmail.pepPref.accountTab.label           "Account">
+<!ENTITY enigmail.pepPref.autoKeyLookup.label        "Sleutels automatisch op server opzoeken">
+<!ENTITY enigmail.pepPref.compatTab.label            "Compatibiliteit">
+<!ENTITY enigmail.pepPref.credits.label              "Bijdragers">
+<!ENTITY enigmail.pepPref.enableEncryption.label     "Privacybescherming inschakelen">
+<!ENTITY enigmail.pepPref.openpgpCompatibility.label "OpenPGP-compatibiliteit">
+<!ENTITY enigmail.pepPref.passiveMode.label          "Mijn sleutel aan uitgaande berichten toevoegen">
+<!ENTITY enigmail.pepPref.protectedSubject.label     "Beveiligde berichtonderwerpen inschakelen">
+<!ENTITY enigmail.pepPref.storeSecurely.label        "Berichten veilig opslaan">
+<!ENTITY enigmail.pepPref.storeSecurely.title        "Berichten voor deze accounts veilig opslaan">
+<!ENTITY enigmail.pepPref.thanksTo.label             "Met dank aan">
+<!ENTITY enigmail.pepPref.warnReducedSecurity.label  "Een waarschuwing tonen als een bericht beveiliging verliest bij het beantwoorden of doorsturen">
+<!ENTITY enigmail.pepPref.window.title               "Enigmail/p≡p voorkeuren">
+<!ENTITY enigmail.pepPrepHandshake.desc              "Gegevens laden, even geduld…">
 <!ENTITY enigmail.perRecipientsOption.label         "Regel(s) per ontvanger aanmaken">
+<!ENTITY enigmail.pgpAccountSettings.accesskey "O">
+<!ENTITY enigmail.pgpAccountSettings.label     "Opties voor ondertekenen/versleutelen…">
+<!ENTITY enigmail.pgpKeys.label                     "OpenPGP-sleutel(s)">
+<!ENTITY enigmail.pgpMime.label          "PGP/MIME">
+<!ENTITY enigmail.pgpSecurityInfo.label            "Enigmail-beveiligingsinfo…">
+<!ENTITY enigmail.photoViewer.title                "OpenPGP-foto toon applicatie">
+<!ENTITY enigmail.pref.acSetupMessage.button "Autocrypt-configuratie starten">
+<!ENTITY enigmail.preferences.label       "Voorkeuren voor Enigmail">
+<!ENTITY enigmail.prefs.accesskey           "k">
+<!ENTITY enigmail.prefs.label            "Voorkeuren">
+<!ENTITY enigmail.prefs.overrideGpg.label     "Alternatief gebruiken">
+<!ENTITY enigmail.prefs.overrideGpg.tooltip   "Klik dit aan om een locatie voor GnuPG op te geven">
+<!ENTITY enigmail.prefs.pathsTitle.label      "Bestanden en mappen">
+<!ENTITY enigmail.privacyPprefPane.juniorMode         "Enigmail Juniormodus">
+<!ENTITY enigmail.privacyPprefPane.juniorModeAuto     "Automatisch beslissen of Juniormodus gebruikt moet worden">
+<!ENTITY enigmail.privacyPprefPane.juniorModeForceOff "Gebruik van S/MIME en Enigmail afdwingen">
+<!ENTITY enigmail.privacyPprefPane.juniorModeForceOn  "Gebruik van p≡p (Pretty Easy Privacy) afdwingen">
+<!ENTITY enigmail.progress.label                   "Voortgang">
+<!ENTITY enigmail.progressText.label               "Voortgang:">
+<!ENTITY enigmail.protectHeaders.accesskey     "O">
+<!ENTITY enigmail.protectHeaders.label         "Onderwerp beschermen">
+<!ENTITY enigmail.protectHeadersPrefs.label    "Onderwerp standaard versleutelen (alleen bij PGP-MIME-versleuteld bericht)">
+<!ENTITY enigmail.protectHeadersPrefs.tooltip  "Onderwerp en andere gevoelige headers uit versleutelde berichten verwijderen.">
+<!ENTITY enigmail.protectedSubjectText.label    "Onderwerptekst om versleutelde berichten te beveiligen">
+<!ENTITY enigmail.protectedSubjectText.placeholder "Versleuteld bericht">
+<!ENTITY enigmail.protectedSubjectText.tooltip  "Geef het onderwerp op dat bij het verzenden van versleutelde berichten publiekelijk zichtbaar zal zijn in plaats van het echte onderwerp">
+<!ENTITY enigmail.recent.accesskey          "R">
+<!ENTITY enigmail.recent.label              "Recente">
+<!ENTITY enigmail.recipientsSelectionOption.label "Hoe moeten de sleutels worden gekozen?">
 <!ENTITY enigmail.refreshKeys.accesskey             "v">
 <!ENTITY enigmail.refreshKeys.label                 "Sleutellijst vernieuwen">
+<!ENTITY enigmail.reload.accesskey          "B">
+<!ENTITY enigmail.reload.label             "Bericht opnieuw laden">
+<!ENTITY enigmail.resetPrefs.tooltip     "Alle Enigmail-voorkeuren naar hun standaardwaarden terugzetten.">
+<!ENTITY enigmail.resetPrefsButton.label "Terugzetten">
+<!ENTITY enigmail.resetRememberedValues.label     "Waarschuwingen terugzetten">
+<!ENTITY enigmail.resetRememberedValues.tooltip   "Alle waarschuwingsvensters en vragen die u eerder hebt verborgen opnieuw weergeven">
+<!ENTITY enigmail.restorePrefs.tooltip     "Alle voorkeuren van Enigmail en uw openPGP-sleutels herstellen vanuit een bestand.">
+<!ENTITY enigmail.restorePrefsButton.label "Instellingen en sleutels herstellen">
+<!ENTITY enigmail.revealAttachments.button          "Tonen">
+<!ENTITY enigmail.revealAttachmentsButton.label     "De bestandsnamen van de bijlagen zijn verborgen. Klik op ‘Tonen’ om de oorspronkelijke bestandsnamen te tonen.">
+<!ENTITY enigmail.ruleEmail.label                   "Enigmail-regels instellen voor">
+<!ENTITY enigmail.ruleEmail.tooltip                 "Vul alleen het e-mailadres in. Gebruik NIET de naam van de ontvanger; zo is ‘Een Naam &lt;een.naam@adres.net&gt;’ ongeldig">
+<!ENTITY enigmail.rulesEditor.label                 "Enigmail - Regels per ontvanger bewerken">
+<!ENTITY enigmail.sKeyDlg.carefulCheck.label       "Ik heb het zeer zorgvuldig gecontroleerd">
+<!ENTITY enigmail.sKeyDlg.casualCheck.label        "Ik heb het snel gecontroleerd">
+<!ENTITY enigmail.sKeyDlg.checked.label            "Hoe zorgvuldig hebt u gecontroleerd of de sleutel die u gaat ondertekenen werkelijk eigendom is van de hierbovengenoemde persoon/personen?">
+<!ENTITY enigmail.sKeyDlg.createLocal.label        "Lokale ondertekening (kan niet worden geëxporteerd)">
+<!ENTITY enigmail.sKeyDlg.fingerprint.label        "Vingerafdruk:">
+<!ENTITY enigmail.sKeyDlg.noAnswer.label           "Ik wil niet antwoorden">
+<!ENTITY enigmail.sKeyDlg.notChecked.label         "Ik heb het helemaal niet gecontroleerd">
+<!ENTITY enigmail.sKeyDlg.ownKeyTrust.label        "Noot: u moet het sleutelvertrouwen van de eigenaar van uw sleutels op maximaal instellen om hier te kunnen worden getoond.">
+<!ENTITY enigmail.sKeyDlg.signKey.label            "Sleutel om te ondertekenen:">
+<!ENTITY enigmail.sKeyDlg.signWithKey.label        "Sleutel om mee te ondertekenen:">
+<!ENTITY enigmail.sKeyDlg.title                    "Enigmail - Sleutel ondertekenen">
+<!ENTITY enigmail.savelogfile.label                   "Logboek opslaan naar bestand…">
+<!ENTITY enigmail.searchForKey.desc1	    "‘Voornaam Achternaam’ vindt alle sleutels die ‘Voornaam’ of ‘Achternaam’ bevatten">
+<!ENTITY enigmail.searchForKey.desc2      "‘Voornaam+Achternaam’ vindt alle sleutels die zowel ‘Voornaam’ als ‘Achternaam’ bevatten">
+<!ENTITY enigmail.searchForKey.desc3      "‘example.com’ vindt alle sleutels die ‘example.com’ bevatten, zoals bijvoorbeeld ‘example@example.com’">
+<!ENTITY enigmail.searchForKey.example    "Voorbeeld ‘Voornaam Achternaam &lt;email@example.com&gt;’">
+<!ENTITY enigmail.searchForKey.label      "Sleutel zoeken">
+<!ENTITY enigmail.searchKeyDlg.label               "OpenPGP-sleutels downloaden">
+<!ENTITY enigmail.searchKeyDlgCapt.label           "Sleutels gevonden - Selecteer om te importeren">
+<!ENTITY enigmail.searchKeyDlgSelAll.label         "Alle selecteren/deselecteren">
+<!ENTITY enigmail.searchRule.label                  "Regels met e-mailadressen bekijken bevattende:">
+<!ENTITY enigmail.seeAccountSettings.label        "Zie ook account-specifieke Enigmail-instellingen. (zie Accountinstellingen -> OpenPGP)">
+<!ENTITY enigmail.selKeysButton.accesskey           "S">
+<!ENTITY enigmail.selKeysButton.label               "Sleutel(s) selecteren…">
 <!ENTITY enigmail.send.label                        "Verzenden">
-<!ENTITY enigmail.setupWiz.applyingSettings          "Je accountinstellingen aan het toepassen…">
-<!ENTITY enigmail.setupWiz.exportingKeys             "Sleutels van GnuPG aan het exporteren…">
-<!ENTITY enigmail.setupWiz.importingKeys             "Sleutels in Thunderbird aan het importeren…">
-<!ENTITY enigmail.setupWiz.manyKeys.desc             "Je hebt verschillende private sleutels in GnuPG.  Als je deze niet allemaal in Thunderbird
-wil importeren, klik op de knop ‘Private sleutels selecteren’ om de sleutels die je nodig hebt te selecteren.">
-<!ENTITY enigmail.setupWiz.manyKeys.selectButton     "Privésleutels selecteren …">
-<!ENTITY enigmail.setupWiz.migrationComplete         "Klaar!  Enigmail is nu niet langer nodig en kan gedeïnstalleerd worden.">
-<!ENTITY enigmail.setupWiz.pgIntro.desc              "Deze dialoog zal je sleutels en instellingen van Enigmail en GnuPG exporteren, en
-deze importeren in de sleutelopslag van Thunderbird.">
-<!ENTITY enigmail.setupWiz.restartNeeded             "Om het instellen af te maken, zal Thunderbird nu herstart worden.">
-<!ENTITY enigmail.setupWiz.startMigration.button     "Migratie starten">
-<!ENTITY enigmail.setupWiz.startMigration.desc1      "Klik op de knop ‘Migratie starten’ om de migratie te starten.">
-<!ENTITY enigmail.setupWiz.startMigration.desc2      "Het migratieproces zal je privésleutels exporteren van GnuPG en importeren in Thunderbird.
-Als je sleutels zijn beschermd met een wachtwoordzin, dan zal je voor elke sleutel gevraagd worden deze in te voeren –
-eenmaal bij het exporteren van GnuPG en eenmaal bij het importeren in Thunderbird.">
-<!ENTITY enigmail.setupWiz.title                     "Je instellingen van Enigmail naar Thunderbird overdragen">
+<!ENTITY enigmail.sendOptionsMenu.accesskey    "z">
+<!ENTITY enigmail.sendOptionsMenu.label        "Opties voor verzenden…">
+<!ENTITY enigmail.sendersKeyMenu.accesskey  "v">
+<!ENTITY enigmail.sendersKeyMenu.label     "Sleutel van verzender">
+<!ENTITY enigmail.sending.label          "Aan het verzenden">
+<!ENTITY enigmail.sepratationDesc.label             "(Meerdere e-mailadressen scheiden met spaties)">
+<!ENTITY enigmail.setDefaultsFor.label              "Standaardwaarden voor…">
+<!ENTITY enigmail.setupWiz.accesskey        "t">
+<!ENTITY enigmail.setupWiz.applyExistingKeysBtn      "Mijn sleutels toepassen">
+<!ENTITY enigmail.setupWiz.checkingSetup             "Bestaande installatie controleren…">
+<!ENTITY enigmail.setupWiz.existingEncryptedMsg      "We hebben gedetecteerd dat u versleutelde berichten in uw e-mailmappen heeft. We raden aan om uw sleutels op uw bestaande apparaat te exporteren en deze hier te importeren. (Tip: u kunt ‘Sleutels importeren’ meerdere keren gebruiken, bijvoorbeeld om publieke en geheime sleutels te importeren.)">
+<!ENTITY enigmail.setupWiz.existingKeysFound         "We hebben gedetecteerd dat u al OpenPGP-sleutels heeft. We raden u aan om Enigmail te configureren, zodat u met deze sleutels kunt blijven werken.">
+<!ENTITY enigmail.setupWiz.importKeysBtn             "Sleutels importeren">
+<!ENTITY enigmail.setupWiz.label           "Installatiewizard">
+<!ENTITY enigmail.setupWiz.pgInstall.desc            "Enigmail vereist GnuPG voor het uitvoeren van cryptografische taken.
+                                                      De wizard heeft geprobeerd GnuPG te vinden, maar is daar niet in geslaagd.">
+<!ENTITY enigmail.setupWiz.pgInstall.downloadLabel   "GnuPG downloaden…">
+<!ENTITY enigmail.setupWiz.pgInstall.installButton   "GnuPG installeren…">
+<!ENTITY enigmail.setupWiz.pgInstall.installDesc1    "Enigmail kan GnuPG voor u downloaden en het installatieprogramma starten.
+                                                      Als u dit wilt, klik dan op de knop ‘GnuPGP installeren’ om GnuPG te downloaden en te installeren.">
+<!ENTITY enigmail.setupWiz.pgInstall.installDesc2    "Als u GnuPG al hebt geïnstalleerd, kunt u ook de knop ‘Bladeren’ gebruiken om het pad naar GnuPG handmatig op te geven.">
+<!ENTITY enigmail.setupWiz.pgInstall.installLabel    "Het installatieprogramma wordt gestart. Volg de stappen van de GnuPG-installatiewizard.">
+<!ENTITY enigmail.setupWiz.pgInstall.locateButton    "Bladeren…">
+<!ENTITY enigmail.setupWiz.pgInstall.locateDesc      "Geef zelf de plaats aan waar GnuPG is geïnstalleerd met de knop Bladeren.">
+<!ENTITY enigmail.setupWiz.pgIntro.desc              "Het lijkt erop dat u Enigmail voor het eerst op deze computer gebruikt.
+Om Enigmail te kunnen gebruiken, moet u het eerst goed instellen.
+Deze wizard kan u helpen bij het installatieproces.">
+<!ENTITY enigmail.setupWiz.rescanInboxBtn            "Postvak IN opnieuw scannen">
+<!ENTITY enigmail.setupWiz.searchingGnuPG            "Zoeken naar Enigmail…">
+<!ENTITY enigmail.setupWiz.startSetupButton          "Set-up starten">
+<!ENTITY enigmail.setupWiz.synchronizeWithPep        "Als u een ander apparaat gebruikt met p≡p, raden wij u aan om het andere apparaat met uw PC
+te synchroniseren. Sluit in dit geval de wizard af en wacht tot de synchronisatie begint.">
+<!ENTITY enigmail.setupWiz.title                     "Enigmail-instellingen">
+<!ENTITY enigmail.setupWiz.useImportKeys             "U kunt eventueel ook uw sleutels importeren met de knop ‘Sleutels importeren’ hieronder.">
+<!ENTITY enigmail.setupWiz.usingPepMode              "We hebben gedetecteerd dat u Pretty Easy Privacy (p≡p) gebruikt.">
+<!ENTITY enigmail.showPhoto.label                  "OpenPGP-foto-ID bekijken">
+<!ENTITY enigmail.sign.label                        "Ondertekenen">
+<!ENTITY enigmail.signSenderKey.label              "Sleutel ondertekenen…">
+<!ENTITY enigmail.signSenderKeyPopup.label         "Sleutel van verzender ondertekenen…">
+<!ENTITY enigmail.signedsend.accesskey         "O">
+<!ENTITY enigmail.signedsend.key               "S">
+<!ENTITY enigmail.signedsend.label            "Bericht ondertekenen">
+<!ENTITY enigmail.signing.label                     "Ondertekening">
+<!ENTITY enigmail.singleRcptSettings.desc           "(Let op: in geval van conflicten domineert ‘Nooit’ over ‘Altijd’)">
+<!ENTITY enigmail.singleRcptSettings.label          "Enigmail - Ontvangersinstellingen">
+<!ENTITY enigmail.tb78warn.desc1                     "maar wacht totdat Thunderbird zichzelf automatisch update.">
+<!ENTITY enigmail.tb78warn.desc2                     "De vertrouwde Enigmail Add-on komt niet beschikbaar voor Thunderbird 78. In plaats daarvan zal Thunderbird 78 een ingebouwde implementatie van OpenPGP bieden.">
+<!ENTITY enigmail.tb78warn.desc3                     "Het Thunderbird-team heeft echter nog enige tijd nodig om die af te maken. In versie 78.0 is de OpenPGP-ondersteuning nog experimenteel, en standaard niet geactiveerd.">
+<!ENTITY enigmail.tb78warn.desc4                     "Bent u niet afhankelijk van de versleuteling en beveiliging van berichten met OpenPGP, dan kunt u de ondersteuning handmatig activeren en ons helpen met het testen ervan.">
+<!ENTITY enigmail.tb78warn.desc5                     "Een stabiele versie van de OpenPGP functionaliteit is gepland voor Thunderbird versie 78.2.">
+<!ENTITY enigmail.tb78warn.heading                   "Gebruikt u OpenPGP voor de beveiliging van berichten, voer dan geen handmatige update uit naar Thunderbird 78.0,">
+<!ENTITY enigmail.tb78warn.title                     "Belangrijke informatie voor Thunderbird 78">
+<!ENTITY enigmail.tempTrustAllKeys.accesskey   "T">
+<!ENTITY enigmail.tempTrustAllKeys.label       "Sleutels van alle ontvangers vertrouwen">
+<!ENTITY enigmail.transferSettings.label "Overbrengingsinstellingen">
+<!ENTITY enigmail.trustSenderKey.label             "Sleutelvertrouwen instellen…">
+<!ENTITY enigmail.trustSenderKeyPopup.label        "Sleutelvertrouwen van verzender instellen…">
 <!ENTITY enigmail.uidValidity.label                 "Geldigheid">
+<!ENTITY enigmail.undoencryption.accesskey     "u">
+<!ENTITY enigmail.undoencryption.label         "Versleuteling ongedaan maken">
+<!ENTITY enigmail.useForSigning.label     "Gegenereerde sleutel voor de geselecteerde identiteit gebruiken">
+<!ENTITY enigmail.useInline.accesskey          "I">
+<!ENTITY enigmail.useInline.label              "Protocol: Inline PGP">
+<!ENTITY enigmail.useKeys.label                     "De volgende OpenPGP-sleutels gebruiken:">
+<!ENTITY enigmail.useNonDefaultComment.label "Enigmail-opmerking toevoegen in OpenPGP-ondertekening">
+<!ENTITY enigmail.usePGPMimeAlways.label          "Altijd PGP/MIME gebruiken">
+<!ENTITY enigmail.usePgpMime.accesskey         "G">
+<!ENTITY enigmail.usePgpMime.label             "Protocol: PGP/MIME">
+<!ENTITY enigmail.useSmime.accesskey           "S">
+<!ENTITY enigmail.useSmime.label               "Protocol: S/MIME">
 <!ENTITY enigmail.userSelSendEncrypted.accesskey    "V">
 <!ENTITY enigmail.userSelSendEncrypted.label        "Versleuteld verzenden">
 <!ENTITY enigmail.userSelSendSigned.accesskey       "O">
 <!ENTITY enigmail.userSelSendSigned.label           "Ondertekend verzenden">
 <!ENTITY enigmail.userSelectionList.label           "Enigmail-sleutelselectie">
 <!ENTITY enigmail.usersNotFound.label               "Ontvangers niet geldig, niet vertrouwd of niet gevonden">
+<!ENTITY enigmail.viewconsole.accesskey     "C">
+<!ENTITY enigmail.viewconsole.label      "Console bekijken">
+<!ENTITY enigmail.viewlog.accesskey         "L">
+<!ENTITY enigmail.viewlog.label          "Logboek bekijken">
+<!ENTITY enigmail.wrapHtmlBeforeSend.label        "Ondertekende HTML-tekst voor het verzenden laten teruglopen">
+<!ENTITY enigmail.wrapHtmlBeforeSend.tooltip      "De tekst herschikken om zeker te weten dat de ondetekening intact blijft">
+<!ENTITY enigmail.wrapSelectionList.label           "Uitlijning selecteren">

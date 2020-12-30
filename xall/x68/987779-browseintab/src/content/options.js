@@ -46,6 +46,9 @@ var BrowseInTabOptions = {
     this.chromeZoomFactor = this.e("chromeZoomFactor");
     this.globalZoomEnabled = this.e("globalZoomEnabled");
     this.imageZoomEnabled = this.e("imageZoomEnabled");
+    this.mousebuttonZoomEnabled = this.e("mousebuttonZoomEnabled");
+    this.mousebuttonZoomOptionsFieldset = this.e("mousebuttonZoomOptionsFieldset");
+    this.mousebuttonZoomImageOnlyEnabled = this.e("mousebuttonZoomImageOnlyEnabled");
     this.restoreDefaults = this.e("restoreDefaults");
     /* eslint-enable */
 
@@ -320,6 +323,17 @@ var BrowseInTabOptions = {
           imageZoomEnabled: this.imageZoomEnabled.checked
         };
         break;
+      case "mousebuttonZoomEnabled":
+        storageLocalData = {
+          mousebuttonZoomEnabled: this.mousebuttonZoomEnabled.checked
+        };
+        this.updateElements(this.mousebuttonZoomOptionsFieldset, this.mousebuttonZoomEnabled.checked);
+        break;
+      case "mousebuttonZoomImageOnlyEnabled":
+        storageLocalData = {
+          mousebuttonZoomImageOnlyEnabled: this.mousebuttonZoomImageOnlyEnabled.checked
+        };
+        break;
       default:
         return;
     }
@@ -364,6 +378,10 @@ var BrowseInTabOptions = {
       //this.chromeZoomFactor.step = this.zoomIncrement.value;
       this.globalZoomEnabled.checked = result?.globalZoomEnabled ?? false;
       this.imageZoomEnabled.checked = result?.imageZoomEnabled ?? false;
+      this.mousebuttonZoomEnabled.checked =
+        result?.mousebuttonZoomEnabled ?? false;
+      this.mousebuttonZoomImageOnlyEnabled.checked =
+        result?.mousebuttonZoomImageOnlyEnabled ?? false;
 
       let panelIdToSelect =
         result?.lastSelectedTabPanelId ||
@@ -376,6 +394,7 @@ var BrowseInTabOptions = {
       this.updateElements(this.linkClickOptionsFieldset, this.linkClickLoadsInTab.checked);
       this.updateElements(this.contentBaseFieldset, this.showContentBase.checked);
       this.updateElements(this.customZoomFieldset, this.customZoomEnabled.checked);
+      this.updateElements(this.mousebuttonZoomOptionsFieldset, this.mousebuttonZoomEnabled.checked);
       /* eslint-enable */
 
       this.DEBUG &&
@@ -404,6 +423,8 @@ var BrowseInTabOptions = {
       "chromeZoomFactor",
       "globalZoomEnabled",
       "imageZoomEnabled",
+      "mousebuttonZoomEnabled",
+      "mousebuttonZoomImageOnlyEnabled",
     ]);
     await getting.then(setCurrentChoice, onError);
   },

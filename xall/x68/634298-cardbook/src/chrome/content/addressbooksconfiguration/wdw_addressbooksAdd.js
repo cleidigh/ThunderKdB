@@ -473,12 +473,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "ValidatingURLFailedLabel");
 					return;
 				}
-				wdw_addressbooksAdd.gCardDAVURLs.push([url, false]); // [url, discovery]
+				wdw_addressbooksAdd.gCardDAVURLs.push([cardbookRepository.cardbookSynchronization.getSlashedUrl(url), false]); // [url, discovery]
+				wdw_addressbooksAdd.gCardDAVURLs.push([cardbookRepository.cardbookSynchronization.getSlashedUrl(url), true]);
 				wdw_addressbooksAdd.gCardDAVURLs.push([cardbookRepository.cardbookSynchronization.getWellKnownUrl(url), true]);
-				var carddavURL = cardbookRepository.cardbookSynchronization.getCardDAVUrl(url, username);
-				if (carddavURL != "") {
-					wdw_addressbooksAdd.gCardDAVURLs.push([carddavURL, false]);
-				}
 			}
 			
 			var dirPrefId = cardbookRepository.cardbookUtils.getUUID();

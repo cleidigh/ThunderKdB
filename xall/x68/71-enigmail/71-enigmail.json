@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/0/53.png?modified=1431246631"
         }
     ],
-    "average_daily_users": 92421,
+    "average_daily_users": 80550,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2004-06-14T18:46:43Z",
     "current_version": {
-        "id": 2474377,
+        "id": 2475059,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
-                "min": "77.0a1"
+                "max": "68.*",
+                "min": "68.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enigmail/versions/2474377",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/enigmail/versions/2475059",
         "files": [
             {
-                "id": 1017539,
-                "created": "2020-10-01T13:40:50Z",
-                "hash": "sha256:a38707694220a0772a8c27a5b7d5e8cffcd8621cc497415e93f95dd0d31c9cc5",
-                "is_restart_required": false,
+                "id": 1018221,
+                "created": "2020-12-20T17:12:03Z",
+                "hash": "sha256:55b5f6835a29d259edfa9d3cff22f257f5ab6dbb80bb9822dffe5adfdb2f5311",
+                "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 442394,
+                "size": 2831450,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017539/enigmail-2.2.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018221/enigmail-2.1.9-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 3338,
             "name": {
@@ -49,12 +49,10 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": {
-            "en-US": "Fixed an issue during startup that could block other add-ons."
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/versions/2.2.4",
-        "version": "2.2.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/versions/2.1.9",
+        "version": "2.1.9"
     },
     "default_locale": "en-US",
     "description": {
@@ -99,7 +97,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2020-10-01T13:49:11Z",
+    "last_updated": "2020-12-20T19:51:16Z",
     "name": {
         "ru": "Enigmail",
         "fr": "Enigmail",
@@ -133,10 +131,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.74378,
-        "count": 258,
-        "average": 3.7481,
-        "text_count": 258
+        "bayesian_average": 3.74859,
+        "count": 259,
+        "average": 3.7529,
+        "text_count": 259
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/enigmail/reviews/",
     "requires_payment": false,
@@ -175,9 +173,9 @@
     "weekly_downloads": 6498,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2020-08-16T09:35:36Z",
             "comp78pv_version": "2.2.1",

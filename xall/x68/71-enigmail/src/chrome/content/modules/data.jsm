@@ -21,7 +21,7 @@ function converter(charset) {
 
 var EnigmailData = {
   getUnicodeData: function(data) {
-    // convert output from 8-bit string to Unicode
+    // convert output from subprocess to Unicode
     var tmpStream = Cc["@mozilla.org/io/string-input-stream;1"].createInstance(Ci.nsIStringInputStream);
     tmpStream.setData(data, data.length);
     var inStream = Cc["@mozilla.org/scriptableinputstream;1"].createInstance(Ci.nsIScriptableInputStream);
@@ -65,7 +65,7 @@ var EnigmailData = {
    * Encode a string in base64, with a max. line length of 72 characters
    */
   encodeBase64: function(str) {
-    return btoa(str).replace(/(.{72})/g, "$1\r\n");
+    return btoa(str).replace(/(.{1,72})/g, "$1\r\n");
   },
 
   convertToUnicode: function(text, charset) {

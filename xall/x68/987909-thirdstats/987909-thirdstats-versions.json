@@ -1,5 +1,151 @@
 [
     {
+        "id": 2475073,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475073",
+        "files": [
+            {
+                "id": 1018235,
+                "created": "2020-12-23T16:34:23Z",
+                "hash": "sha256:dbc561091301358f80c1cc9782b3804e2e88377e32615f90440b733ca64e24f6",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 274932,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018235/thirdstats-1.1.1-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "tabs",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>➕ Filter for Single Folders</b>\nThe filter area of the stats page was extended by a select field for a single folder of the currently selected account for more fine-grained stats about single folders. Note, that folders will not be recursively processed. Only the messages of the specified folder are processed, not the messages of its subfolders. Also processing of folders won't be cached, so processing of folders with a lot of messages can take some time.\n\n<b>➕ Filter for Time Period</b>\nThe filter area of the stats page was extended by an additional filter a custom time period, adding 2 input fields for start and end date. Date input must be of format `YYYY-MM-DD` (input of `YYMMDD` gets auto-corrected). Date input can only be between 1970-01-01 and the current day (also gets auto-corrected). Start date must be before end date.\n\n<b>➕ Show or Hide Ordinate Axis</b>\nA new option to show or hide the vertical axis for line charts and vertical bar charts. It's deactivated by default, to maintain a cleaner UI.\n\n<b>⚡ Improve Performance of Popup Menu</b>\nProcessing of messages was completely removed from the popup menu. This heavily increases loading time of the popup, which serves as starting point to open the stats page in the first place.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.1.1\">full release on GitHub</a>.",
+            "en-US": "<b>➕ Filter for Single Folders</b>\nThe filter area of the stats page was extended by a select field for a single folder of the currently selected account for more fine-grained stats about single folders. Note, that folders will not be recursively processed. Only the messages of the specified folder are processed, not the messages of its subfolders. Also processing of folders won't be cached, so processing of folders with a lot of messages can take some time.\n\n<b>➕ Filter for Time Period</b>\nThe filter area of the stats page was extended by an additional filter a custom time period, adding 2 input fields for start and end date. Date input must be of format `YYYY-MM-DD` (input of `YYMMDD` gets auto-corrected). Date input can only be between 1970-01-01 and the current day (also gets auto-corrected). Start date must be before end date.\n\n<b>➕ Show or Hide Ordinate Axis</b>\nA new option to show or hide the vertical axis for line charts and vertical bar charts. It's deactivated by default, to maintain a cleaner UI.\n\n<b>⚡ Improve Performance of Popup Menu</b>\nProcessing of messages was completely removed from the popup menu. This heavily increases loading time of the popup, which serves as starting point to open the stats page in the first place.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.1.1\">full release on GitHub</a>.",
+            "en-CA": "<b>➕ Filter for Single Folders</b>\nThe filter area of the stats page was extended by a select field for a single folder of the currently selected account for more fine-grained stats about single folders. Note, that folders will not be recursively processed. Only the messages of the specified folder are processed, not the messages of its subfolders. Also processing of folders won't be cached, so processing of folders with a lot of messages can take some time.\n\n<b>➕ Filter for Time Period</b>\nThe filter area of the stats page was extended by an additional filter a custom time period, adding 2 input fields for start and end date. Date input must be of format `YYYY-MM-DD` (input of `YYMMDD` gets auto-corrected). Date input can only be between 1970-01-01 and the current day (also gets auto-corrected). Start date must be before end date.\n\n<b>➕ Show or Hide Ordinate Axis</b>\nA new option to show or hide the vertical axis for line charts and vertical bar charts. It's deactivated by default, to maintain a cleaner UI.\n\n<b>⚡ Improve Performance of Popup Menu</b>\nProcessing of messages was completely removed from the popup menu. This heavily increases loading time of the popup, which serves as starting point to open the stats page in the first place.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.1.1\">full release on GitHub</a>."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.1.1",
+        "version": "1.1.1"
+    },
+    {
+        "id": 2475071,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475071",
+        "files": [
+            {
+                "id": 1018233,
+                "created": "2020-12-23T10:20:36Z",
+                "hash": "sha256:332059f52654efd8aa4d9d1fbd7f321fd985dfa7c3602263f43786540a8d0cad",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 271563,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018233/thirdstats-1.1.0-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "tabs",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>➕ Filter for Single Folders</b>\nThe filter area of the stats page was extended by a select field for a single folder of the currently selected account for more fine-grained stats about single folders. Note, that folders will not be recursively processed. Only the messages of the specified folder are processed, not the messages of its subfolders. Also processing of folders won't be cached, so processing of folders with a lot of messages can take some time.\n\n<b>➕ Filter for Time Period</b>\nThe filter area of the stats page was extended by an additional filter a custom time period, adding 2 input fields for start and end date. Date input must be of format `YYYY-MM-DD` (input of `YYMMDD` gets auto-corrected). Date input can only be between 1970-01-01 and the current day (also gets auto-corrected). Start date must be before end date.\n\n<b>➕ Show or Hide Ordinate Axis</b>\nA new option to show or hide the vertical axis for line charts and vertical bar charts. It's deactivated by default, to maintain a cleaner UI.\n\n<b>⚡ Improve Performance of Popup Menu</b>\nProcessing of messages was completely removed from the popup menu. This heavily increases loading time of the popup, which serves as starting point to open the stats page in the first place.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.1.0\">full release on GitHub</a>.",
+            "en-US": "<b>➕ Filter for Single Folders</b>\nThe filter area of the stats page was extended by a select field for a single folder of the currently selected account for more fine-grained stats about single folders. Note, that folders will not be recursively processed. Only the messages of the specified folder are processed, not the messages of its subfolders. Also processing of folders won't be cached, so processing of folders with a lot of messages can take some time.\n\n<b>➕ Filter for Time Period</b>\nThe filter area of the stats page was extended by an additional filter a custom time period, adding 2 input fields for start and end date. Date input must be of format `YYYY-MM-DD` (input of `YYMMDD` gets auto-corrected). Date input can only be between 1970-01-01 and the current day (also gets auto-corrected). Start date must be before end date.\n\n<b>➕ Show or Hide Ordinate Axis</b>\nA new option to show or hide the vertical axis for line charts and vertical bar charts. It's deactivated by default, to maintain a cleaner UI.\n\n<b>⚡ Improve Performance of Popup Menu</b>\nProcessing of messages was completely removed from the popup menu. This heavily increases loading time of the popup, which serves as starting point to open the stats page in the first place.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.1.0\">full release on GitHub</a>.",
+            "en-CA": "<b>➕ Filter for Single Folders</b>\nThe filter area of the stats page was extended by a select field for a single folder of the currently selected account for more fine-grained stats about single folders. Note, that folders will not be recursively processed. Only the messages of the specified folder are processed, not the messages of its subfolders. Also processing of folders won't be cached, so processing of folders with a lot of messages can take some time.\n\n<b>➕ Filter for Time Period</b>\nThe filter area of the stats page was extended by an additional filter a custom time period, adding 2 input fields for start and end date. Date input must be of format `YYYY-MM-DD` (input of `YYMMDD` gets auto-corrected). Date input can only be between 1970-01-01 and the current day (also gets auto-corrected). Start date must be before end date.\n\n<b>➕ Show or Hide Ordinate Axis</b>\nA new option to show or hide the vertical axis for line charts and vertical bar charts. It's deactivated by default, to maintain a cleaner UI.\n\n<b>⚡ Improve Performance of Popup Menu</b>\nProcessing of messages was completely removed from the popup menu. This heavily increases loading time of the popup, which serves as starting point to open the stats page in the first place.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.1.0\">full release on GitHub</a>."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.1.0",
+        "version": "1.1.0"
+    },
+    {
         "id": 2474956,
         "channel": "listed",
         "compatibility": {

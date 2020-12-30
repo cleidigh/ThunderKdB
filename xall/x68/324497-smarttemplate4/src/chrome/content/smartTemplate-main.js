@@ -464,22 +464,31 @@ END LICENSE BLOCK
     #            - Rewrote filling in variables and focus method to work with new address widgets
     #            - rewrite all template dropdowns
     
-  Version 3.1 - WIP
+  Version 3.1 - 24/11/2020
     # version bump was necessary after release 2.12.1 for my legacy Thunderbird users (Tb60 and older)    
     # [issue 94] - SmartTemplates does not insert template when Forwarding inline based on an Email written with ST
     # [issue 85] - fixed some dead links linking to old mozdev bugzilla bugs (these are now archived on quickfolders.org)
     # Reenable the sandboxed string script by Benito van der Zander. Set extensions.smartTemplate4.allowScripts = true 
     #   to get them back!
     
+  Version 3.2 - 17/12/2020
+    # [issue 98] %header.set(to,"[addressee]")% no longer working
+    # [pr 97] %conditionalText(forwardMode,"text1","text2")% inserts text based on forwarding inline vs attached
+    #         Function added by Artem (conductor111 on github)
+    # Some minor improvements in layout for settings dialog and license screen
+    # Fixed: Reopening existing tabs on support site did not jump to in page links (such as #donate)
+    # Omit update popup for users with licenses > 40days
+    # [issue 100] Trial period should restart on license expiry
+    # Domain Licenses can now be renewed (and extended 30 days before expiry) directly from the license dialog.
+    # Fixed some errors in Serbian and Portuguese help section
+    # Fixed reminder for standard license holders using premium functions 
+    
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
 	
 	Version 2.x
-    # [issue 30] Reply button loses template menu items
     # [issue 28] Add "Smart Snippets": smart fragments that can be inserted from Composer.
     # [issue 27] Insert external HTML Templates from a web page URL
-    # [issue 24] Allow selecting different file template after opening composer. 
-      As starting point, we could just do a file open mechanism and an optional single toolbar button.
     # [issue 10] add %deliveryoptions% function to force Return Receipt.
     # [issue 12] <head> section is merged into <body>
 		# ...
@@ -695,7 +704,7 @@ var SmartTemplate4 = {
 		   ||
 			 gMsgCompose.type == (msgComposeType.EditTemplate || 16) 
 			 )
-			return; // let's do no processing in this case, so we can edit SmartTemplate4 variables
+			return; // let's do no processing in this case, so we can edit SmartTemplates variables
 			
 		// Tb 52 uses msgComposeType.Template for "Edit as New""
 		if (gMsgCompose.type == msgComposeType.Template && (typeof msgComposeType.EditTemplate == 'undefined')) {

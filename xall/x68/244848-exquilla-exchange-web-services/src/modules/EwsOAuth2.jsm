@@ -26,11 +26,12 @@ const kAuthDone = "https://login.microsoftonline.com/common/oauth2/nativeclient"
 // There are common versions of these pages, but the access tokens don't work.
 const kAuthPage = "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize";
 const kTokenURL = "https://login.microsoftonline.com/organizations/oauth2/v2.0/token";
-const kLogoutURL = "https://login.microsoftonline.com/organizations/oauth2/logout";
+const kLogoutURL = "https://login.microsoftonline.com/common/oauth2/logout";
 // Internal authentication type
 const kOAuth2Password = 25;
 // Known errors we get when attempting password grant
 const kErrorMFARequired = 50076;
+const kErrorExternalMFARequired = 50158;
 const kErrorConsentRequired = 65001;
 const kErrorPasswordInvalid = 50126;
 
@@ -173,7 +174,28 @@ class OAuth2Login {
         // End user needs to interactively login in every time
         let authCode = await this.openLoginWindow();
         // no exception, so it worked
-        return Ci.nsMsgAuthMethod.OAuth2;
+        let { accessToken, refreshToken } = await this.getAccessTokenFromAuthCode(authCode);
+        this.storeRefreshToken(refreshToken);
+        return Ci.nsMsgAuthMethod.OAuth2; // MFA
+      } else if (ex instanceof OAuth2PasswordInvalid) {
+        // Due to a Microsoft server bug, the server returns "password wrong"
+        // error code 50126 <https://login.microsoftonline.com/error?code=50126>
+        // in cases where a third party MFA provider is used.
+        // Try whether interactive MFA login works,
+        // and then check password-only login again, just in case.
+        // See bug #821
+        let authCode = await this.openLoginWindow();
+        try {
+          // no exception, so it worked, but check whether non-interactive OAuth2 password login works now
+          await this.getAccessTokenFromPassword();
+          // no exception, so it worked
+          return kOAuth2Password;
+        } catch (ex) {
+          // Probably third party MFA provider
+          let { accessToken, refreshToken } = await this.getAccessTokenFromAuthCode(authCode);
+          this.storeRefreshToken(refreshToken);
+          return Ci.nsMsgAuthMethod.OAuth2; // MFA
+        }
       } else {
         throw ex;
       }
@@ -307,7 +329,8 @@ class OAuth2Login {
     };
     let response = await fetch(kTokenURL, options);
     let data = await response.json();
-    if (data.error_codes && data.error_codes.includes(kErrorMFARequired)) {
+    if (data.error_codes && (data.error_codes.includes(kErrorMFARequired) ||
+        data.error_codes.includes(kErrorExternalMFARequired))) {
       throw new OAuth2MFARequired(data);
     }
     if (data.error_codes && data.error_codes.includes(kErrorConsentRequired)) {
@@ -441,25 +464,42 @@ class OAuth2Login {
       onPageLoaded : function(window, close) {
         // Fill in password
         var document = window.document;
+        function usernamePrefill() {
+          let inputs = [...document.querySelectorAll("input")];
+          let usernameFields = inputs.filter(input => input.type == "email" ||
+              input.type == "text" &&
+              (input.id.toLowerCase().includes("user") || input.name.toLowerCase().includes("user") ||
+               input.id.toLowerCase().includes("mail") || input.name.toLowerCase().includes("mail")));
+          let submit = inputs.filter(input => input.type == "submit");
+          if (usernameFields.length == 1 && submit.length == 1) {
+            let usernameField = usernameFields[0];
+            if (usernameField && !usernameField.value) {
+              usernameField.value = username;
+              usernameField.dispatchEvent(new window.Event("change"));
+            }
+          }
+        }
         function passwordPrefill() {
           let inputs = [...document.querySelectorAll("input")];
-          let pass = inputs.filter(input => input.type == "password");
-          let submit = inputs.filter(input => input.type == "submit");
-          if (pass.length == 1 && submit.length == 1) {
+          let passwordFields = inputs.filter(input => input.type == "password");
+          let submitButtons = inputs.filter(input => input.type == "submit");
+          if (passwordFields.length == 1 && submitButtons.length == 1) {
+            let passwordField = passwordFields[0];
             if (password && !triedPassword) {
               // We recognised the fields. Fill in and submit the form.
-              pass[0].value = password;
-              pass[0].dispatchEvent(new window.Event("change"));
-              submit[0].focus();
-              submit[0].click();
+              passwordField.value = password;
+              passwordField.dispatchEvent(new window.Event("change"));
+              submitButtons[0].focus();
+              submitButtons[0].click();
               triedPassword = true;
             } else {
-              pass[0].addEventListener("change", () => {
-                newPassword = pass[0].value;
+              passwordField.addEventListener("change", () => {
+                newPassword = passwordField.value;
               });
             }
           }
         }
+        usernamePrefill();
         passwordPrefill();
         // The Microsoft OAuth login page creates the login form dynamically.
         // We have to give this a chance to happen before trying to submit it.

@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
         }
     ],
-    "average_daily_users": 30,
+    "average_daily_users": 29,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-07-31T02:28:48Z",
     "current_version": {
-        "id": 2474940,
+        "id": 2475033,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eventview/versions/2474940",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eventview/versions/2475033",
         "files": [
             {
-                "id": 1018102,
-                "created": "2020-12-05T07:16:23Z",
-                "hash": "sha256:fd22336e4c7b295cf0fb38327ed91eddf66e7351c62461a24c082494cda349bb",
+                "id": 1018195,
+                "created": "2020-12-15T14:36:11Z",
+                "hash": "sha256:3d5cfb6ef6c1fb7d5290b6540908795a869b5c42131e6568981f1be0201f2e89",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4951,
+                "size": 5386,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018102/eventview-6.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018195/eventview-6.8-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,16 +50,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "<b>Version 6.6.</b>\n\n1) At clicking replace/remove Eventview button, if Eventview is not existent, these buttons are not run, regardless of side bar child numbers.\n\nDecember 5th 2020.\n\nFrom Sungho Hwang."
+            "en-US": "<b>Version 6.8.</b>\n\n1) I added button of \"Print selected event\".\n2) I added two buttons of \"Large\" and \"Small\" in description font size.\n\nDecember 15th 2020.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eventview/versions/6.6",
-        "version": "6.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eventview/versions/6.8",
+        "version": "6.8"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Version 6.5.</b> updated in 2020-11-27.\n\n1) Menuitem label was changed from \"Attach Eventview\" to \"Append Eventview\".\n2) Menuitem label was changed from \"Detach Eventview\" to \"Remove Eventview\".\n3) Menuitem \"Rplace Eventview\" was added.\n4) Loop to calendar items was applied.\nSo, weight of implementation.js was changed from 100 kbs to 20kbs.\n5) Background.js which open browserAction popup automatically was added.\n<b>By doing such things, Numbers of clicks were reduced in least numbers, twice.</b>\n\n<b>If changing calendar order, please, follow nexts.\n1) Remove old Eventview, if it exists.\n2) Single-click any item.\n3) Append Eventview, and then explore items in single-clicking them.\n4) If so, browserAction popup is opened automatically.\n5) To see different item data, click button of \"Replace Eventview\".\n</b>\nAs next update, I will change scripts to Calendars APIs.\n6) At disabled/removed from Add-ons Manager, defaults are restored.\n\n<b>Version 6.6.</b> updated in 2020-12-06.\n\n1) At clicking replace/remove Eventview button, if Eventview is not existent, these buttons are not run, regardless of side bar child numbers.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\n<b>Print event</b>\n1) Select a calendar item.\n2) Select Convert To &gt; Message... on right-click menu.\n3) Select File &gt; Print (Preview) on menu options of compose window.\n<b>Printing is good, as it is.^^ I don't want anything more!</b></b></b>",
-        "ko": "<b>Usage</b>\n1) First, Single-click a calendar item.\n2) And, click [Attach Eventview] in browserAction to view information of the event.\n3) At the end, click [Detach Eventview] in browserAction.\n4) Please, repeat 1) to 3) to view another event information.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\n<b>Print event</b>\n1) Select a calendar item.\n2) Select Convert To &gt; Message... on right-click menu.\n3) Select File &gt; Print (Preview) on menu options of compose window.\n<b>Printing is good, as it is.^^ I don't want anything more!</b></b></b>"
+        "en-US": "<b>Version 6.5.</b> updated in 2020-11-27.\n\n1) Menuitem label was changed from \"Attach Eventview\" to \"Append Eventview\".\n2) Menuitem label was changed from \"Detach Eventview\" to \"Remove Eventview\".\n3) Menuitem \"Rplace Eventview\" was added.\n4) Loop to calendar items was applied.\nSo, weight of implementation.js was changed from 100 kbs to 20kbs.\n5) Background.js which open browserAction popup automatically was added.\n<b>By doing such things, Numbers of clicks were reduced in least numbers, twice.</b>\n\n<b>If changing calendar order, please, follow nexts.\n1) Remove old Eventview, if it exists.\n2) Single-click any item.\n3) Append Eventview, and then explore items in single-clicking them.\n4) If so, browserAction popup is opened automatically.\n5) To see different item data, click button of \"Replace Eventview\".\n</b>\nAs next update, I will change scripts to Calendars APIs.\n6) At disabled/removed from Add-ons Manager, defaults are restored.\n\n<b>Version 6.6.</b> updated in 2020-12-06.\n\n1) At clicking replace/remove Eventview button, if Eventview is not existent, these buttons are not run, regardless of side bar child numbers.\n\n<b>Version 6.8.</b> updated in 2020-12-15.\n\n1) I added button of \"<b>Print selected event</b>\" that convert from event to message.\n2) I added two buttons of \"Large\" and \"Small\" in description font size.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b></b></b>",
+        "ko": "<b>Version 6.5.</b> updated in 2020-11-27.\n\n1) Menuitem label was changed from \"Attach Eventview\" to \"Append Eventview\".\n2) Menuitem label was changed from \"Detach Eventview\" to \"Remove Eventview\".\n3) Menuitem \"Rplace Eventview\" was added.\n4) Loop to calendar items was applied.\nSo, weight of implementation.js was changed from 100 kbs to 20kbs.\n5) Background.js which open browserAction popup automatically was added.\n<b>By doing such things, Numbers of clicks were reduced in least numbers, twice.</b>\n\n<b>If changing calendar order, please, follow nexts.\n1) Remove old Eventview, if it exists.\n2) Single-click any item.\n3) Append Eventview, and then explore items in single-clicking them.\n4) If so, browserAction popup is opened automatically.\n5) To see different item data, click button of \"Replace Eventview\".\n</b>\nAs next update, I will change scripts to Calendars APIs.\n6) At disabled/removed from Add-ons Manager, defaults are restored.\n\n<b>Version 6.6.</b> updated in 2020-12-06.\n\n1) At clicking replace/remove Eventview button, if Eventview is not existent, these buttons are not run, regardless of side bar child numbers.\n\n<b>Version 6.8.</b> updated in 2020-12-15.\n\n1) I added button of \"<b>Print selected event</b>\" that convert from event to message.\n2) I added two buttons of \"Large\" and \"Small\" in description font size.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b></b></b>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eventview/edit",
@@ -76,27 +76,27 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-05T21:37:31Z",
+    "last_updated": "2020-12-15T16:05:35Z",
     "name": {
         "en-US": "Eventview",
         "ko": "행사보기"
     },
     "previews": [
         {
-            "id": 206317,
+            "id": 206371,
             "caption": {
-                "en-US": "Eventview menu on Thunderbird v78."
+                "en-US": "Eventview menu."
             },
             "image_size": [
-                714,
-                212
+                354,
+                336
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206317.png?modified=1606388370",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206371.png?modified=1608043422",
             "thumbnail_size": [
-                320,
-                95
+                211,
+                200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206317.png?modified=1606388370"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206371.png?modified=1608043422"
         }
     ],
     "public_stats": false,
@@ -113,7 +113,7 @@
     "status": "public",
     "summary": {
         "en-US": "It seems like taskview, \nbut it would be enough with a small size because event is different to task.\nOf course, tooltip exists, but it shows information of events formally.\n\nBe a light.\nI thank God!",
-        "ko": "1) 일정표의 항목을 선택하세요.\n2) 단추의 팝업창에서 [Attach Eventview]를 누르세요.\n3) 왼쪽 사이드 바 아래에 행사보기가 나타나면 행사를 점검하세요.\n4) 행사를 점검하고서  [Detach Eventview]를 눌러 행사보기를 제거하세요.\n5) 1), 2), 3), 4)를 반복해서 보세요.\n\n빛이 되어라!\n하느님께 감사합니다.\n\n개발자 황성호."
+        "ko": "작업보기와 비슷하지만, 행사는 작업과 달라서 작은 크기로 충분할 겁니다.\n물론, 말풍선보기가 있지만, 행사보기는 정식으로 행사 정보를 보여줍니다. \n\n빛이 되어라!\n하느님께 감사합니다.\n\n개발자 황성호."
     },
     "support_email": {
         "en-US": "shh0884@outlook.kr"

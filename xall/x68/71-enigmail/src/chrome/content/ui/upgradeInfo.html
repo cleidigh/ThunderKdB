@@ -6,19 +6,25 @@
 -->
 <html>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="chrome://enigmail/content/skin/enigmail-html.css">
+  <link rel="stylesheet" href="chrome://enigmail/skin/enigmail-html.css">
   <head>
     <title txtId="upgradeInfo.doctitle"></title>
   </head>
 
-  <script src="chrome://enigmail/content/ui/upgradeInfo.js"></script>
+<script>
+Cu.import("chrome://enigmail/content/modules/localizeHtml.jsm");
+
+function onload() {
+  EnigmailLocalizeHtml.onPageLoad(document);
+}
+</script>
 
 <body onload="onload()">
 <header class="header">
   <div class="header-bar">
     <div class="header-icon">
       <a href="https://enigmail.net/" title="The Enigmail Project">
-    	  <img class="logo-img" src="chrome://enigmail/content/skin/enigmail-logo.png" alt="The Enigmail Project">
+    	  <img class="logo-img" src="chrome://enigmail/skin/enigmail-logo.png" alt="The Enigmail Project">
       </a>
     </div>
   </div>
@@ -26,26 +32,22 @@
 <div class="spacer"/>
 <div class="body">
   <h1 txtId="upgradeInfo.doctitle"></h1>
-  <h2 txtId="upgradeInfo.welcome1"></h2>
+  <p txtId="upgradeInfo.welcome1"></p>
   <p txtId="upgradeInfo.welcome2"></p>
 
-  <h2 txtId="upgradeInfo.migrateSettings.title"></h2>
-  <p txtId="upgradeInfo.migrateSettings.desc"></p>
+  <h2 txtId="upgradeInfo.encSubject.title"></h2>
+  <p txtId="upgradeInfo.encSubject.desc"></p>
 
-  <button type="button" id="btnPerformMigration" onclick="performMigration()" style="display: block; margin-left: auto; margin-right: auto;">
-    <span txtId="upgradeInfo.performMigration.buttonLabel"></span>
-  </button>
+  <h2 txtId="upgradeInfo.buttons.title">Changed behavior of Encrypt and Sign Buttons</h2>
+  <p txtId="upgradeInfo.buttons.desc"></p>
 
-  <br/><br/>
+  <h2 txtId="upgradeInfo.autocrypt.title"></h2>
+  <p txtId="upgradeInfo.autocrypt.desc"></p>
 
-  <h2 txtId="upgradeInfo.thankyou.title"></h2>
-  <p txtId="upgradeInfo.thankyou.desc1"></p>
-  <br/>
-  <p txtId="upgradeInfo.thankyou.desc2"></p>
-  <p>
-    <span style="font-size: 8px;" txtId="FNC_enigmailVersion"></span>
-  </p>
+  <h2 txtId="upgradeInfo.pEp.title"></h2>
+  <p txtId="upgradeInfo.pEp.desc"></p>
 
+  <p txtId="upgradeInfo.bottom.desc"></p>
 </div>
 
 </body>

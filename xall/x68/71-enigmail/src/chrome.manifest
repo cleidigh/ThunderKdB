@@ -2,28 +2,23 @@ content       enigmail                chrome/content/
 locale        enigmail    en-US       chrome/locale/en-US/
 
 
-# Skin for TBird Mac OS X
-skin          enigmail    classic/1.0 chrome/skin/tb-mac/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=Darwin
-# Skin for TBird Windows
-skin          enigmail    classic/1.0 chrome/skin/tb-win-xp/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=WINNT osversion<6
-skin          enigmail    classic/1.0 chrome/skin/aero/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=WINNT osversion>=6
-skin          enigmail    classic/1.0 chrome/skin/tb-win-xp/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=OS2
-# Skin for TBird other OS (e.g. Linux)
-skin          enigmail    classic/1.0 chrome/skin/tb-linux/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=Linux
-skin          enigmail    classic/1.0 chrome/skin/tb-linux/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=SunOS
-skin          enigmail    classic/1.0 chrome/skin/tb-linux/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=FreeBSD
-skin          enigmail    classic/1.0 chrome/skin/tb-linux/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=OpenBSD
-skin          enigmail    classic/1.0 chrome/skin/tb-linux/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=NetBSD
-skin          enigmail    classic/1.0 chrome/skin/tb-linux/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=AIX
-skin          enigmail    classic/1.0 chrome/skin/tb-linux/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=HP-UX
-skin          enigmail    classic/1.0 chrome/skin/tb-linux/ application!={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a} os=DragonFly
-# Skin for SeaMonkey
-skin          enigmail    classic/1.0 chrome/skin/classic-seamonkey/ application={92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}
-skin          enigmail    modern/1.0 chrome/skin/modern/
+# Skin for TBird / Postbox on Mac OS X
+skin          enigmail    classic/1.0 chrome/skin/tb-mac/ os=Darwin platformversion>=51.0
+# Skin for TBird / Postbox on Windows
+skin          enigmail    classic/1.0 chrome/skin/aero/ os=WINNT platformversion>=51.0
+skin          enigmail    classic/1.0 chrome/skin/aero/ os=OS2 platformversion>=51.0
+# Skin for TBird on other OS (e.g. Linux)
+skin          enigmail    classic/1.0 chrome/skin/tb-linux/ os=Linux platformversion>=51.0
+skin          enigmail    classic/1.0 chrome/skin/tb-linux/ os=SunOS platformversion>=51.0
+skin          enigmail    classic/1.0 chrome/skin/tb-linux/ os=FreeBSD platformversion>=51.0
+skin          enigmail    classic/1.0 chrome/skin/tb-linux/ os=OpenBSD platformversion>=51.0
+skin          enigmail    classic/1.0 chrome/skin/tb-linux/ os=NetBSD platformversion>=51.0
+skin          enigmail    classic/1.0 chrome/skin/tb-linux/ os=AIX platformversion>=51.0
+skin          enigmail    classic/1.0 chrome/skin/tb-linux/ os=HP-UX platformversion>=51.0
+skin          enigmail    classic/1.0 chrome/skin/tb-linux/ os=DragonFly platformversion>=51.0
 
-
-# Resource module registration
-# resource enigmail modules/
+# Skin for Interlink
+skin          enigmail    classic/1.0 chrome/skin/interlink/ platformversion<20.0
 
 # Additional languages
 locale        enigmail    ar       chrome/locale/ar/
@@ -41,7 +36,6 @@ locale        enigmail    gd       chrome/locale/gd/
 locale        enigmail    gl       chrome/locale/gl/
 locale        enigmail    hr       chrome/locale/hr/
 locale        enigmail    hu       chrome/locale/hu/
-locale        enigmail    hy       chrome/locale/hy/
 locale        enigmail    it       chrome/locale/it/
 locale        enigmail    ja       chrome/locale/ja/
 locale        enigmail    ko       chrome/locale/ko/

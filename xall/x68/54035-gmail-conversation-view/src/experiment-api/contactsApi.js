@@ -352,7 +352,7 @@ async function registerColumn(emails, betweenMeAndSomeone, betweenSomeoneAndMe, 
     //  would work as well.
   }
 
-  win.addEventListener("unload", () => {
+  win.addEventListener("beforeunload", () => {
     let col = win.document.getElementById("betweenCol");
 
     if (col) {

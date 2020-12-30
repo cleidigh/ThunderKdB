@@ -134,7 +134,7 @@ var EnigmailPEPAdapter = {
    * @return: Boolean: true - pEp is available / false - pEp is not usable
    */
   usingPep: function() {
-    if (EnigmailCompat.isPostbox()) return false;
+    if (!EnigmailCompat.isAtLeastTb68()) return false;
     if (!this.getPepJuniorMode()) return false;
 
     if ((gPepVersion !== null) && gPepVersion.api.length > 0) {
@@ -180,7 +180,7 @@ var EnigmailPEPAdapter = {
    * @return {Promise<Boolean>}: true if pEp is available / false otherwise
    */
   isPepAvailable: async function(attemptInstall = true) {
-    if (EnigmailCompat.isPostbox()) {
+    if (!EnigmailCompat.isAtLeastTb68()) {
       gPepAvailable = false;
       return false;
     }
@@ -253,7 +253,7 @@ var EnigmailPEPAdapter = {
   installPep: function(isManual = false) {
     EnigmailLog.DEBUG("pEpAdapter.jsm: installPep()\n");
 
-    if (EnigmailCompat.isPostbox()) {
+    if (!EnigmailCompat.isAtLeastTb68()) {
       return new Promise((resolve, reject) => {
         reject(-1);
       });
@@ -327,7 +327,7 @@ var EnigmailPEPAdapter = {
    */
   getPepJuniorMode: function() {
 
-    if (EnigmailCompat.isPostbox()) return false;
+    if (!EnigmailCompat.isAtLeastTb68()) return false;
     let mode = EnigmailPrefs.getPref("juniorMode");
     if (mode === 0) return false;
 

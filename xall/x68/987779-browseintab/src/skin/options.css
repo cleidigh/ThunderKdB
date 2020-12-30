@@ -12,23 +12,29 @@
   user-select: text;
 }
 
-hr,
 fieldset {
   border: 0;
+  margin-bottom: 0;
+}
+
+.browser-style.disabled label {
+  color: #999;
+  opacity: .5;
+}
+
+.inputlabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
 }
 
 input[type="radio"] {
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 input[type="radio"]:disabled,
 input[type="checkbox"]:disabled {
   opacity: 0.5;
-}
-
-input[type="radio"] + label,
-input[type="checkbox"] + label {
-  vertical-align: bottom;
 }
 
 /* From aboutaddons.css */
@@ -70,7 +76,7 @@ button.tab-button[keyfocus] {
 #maxContentTabs,
 #zoomIncrement,
 #chromeZoomFactor {
- width: 3.5em;
+ width: 4em;
  text-align: end;
 }
 
@@ -80,10 +86,11 @@ button.tab-button[keyfocus] {
 
 .small-detail {
   font-size: smaller;
+  display: block;
 }
 
 .small-detail-indent {
-  margin-inline-start: 30px;
+  margin-inline-start: 2.3em;
 }
 
 .small-note {

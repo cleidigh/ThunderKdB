@@ -15,10 +15,11 @@ const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.
 const EnigmailSystem = ChromeUtils.import("chrome://enigmail/content/modules/system.jsm").EnigmailSystem;
 const EnigmailConstants = ChromeUtils.import("chrome://enigmail/content/modules/constants.jsm").EnigmailConstants;
 const EnigmailLazy = ChromeUtils.import("chrome://enigmail/content/modules/lazy.jsm").EnigmailLazy;
-const EnigmailCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 
 const getEnigmailKeyRing = EnigmailLazy.loader("enigmail/keyRing.jsm", "EnigmailKeyRing");
+const getEnigmailGpg = EnigmailLazy.loader("enigmail/gpg.jsm", "EnigmailGpg");
 const getEnigmailFiles = EnigmailLazy.loader("enigmail/files.jsm", "EnigmailFiles");
+const getEnigmailRNG = EnigmailLazy.loader("enigmail/rng.jsm", "EnigmailRNG");
 
 
 const gStatusFlags = {
@@ -400,8 +401,6 @@ function splitErrorOutput(errOutput) {
 }
 
 function parseErrorLine(errLine, c) {
-  const cApi = EnigmailCryptoAPI();
-
   if (errLine.search(c.statusPat) === 0) {
     // status line
     c.statusLine = errLine.replace(c.statusPat, "");
@@ -416,8 +415,7 @@ function parseErrorLine(errLine, c) {
     }
   } else {
     // non-status line (details of previous status command)
-
-    if (!cApi.supportsFeature("decryption-info")) {
+    if (!getEnigmailGpg().getGpgFeature("decryption-info")) {
       if (errLine == "gpg: WARNING: message was not integrity protected") {
         // workaround for Gpg < 2.0.19 that don't print DECRYPTION_INFO
         c.statusFlags |= EnigmailConstants.DECRYPTION_FAILED;
@@ -527,7 +525,7 @@ function parseErrorOutputWith(c) {
       inDecryption = 0;
     } else if (inDecryption >0) {
       m = c.statusArray[i].match(/^(PLAINTEXT [0-9]+ [0-9]+ )(.*)$/);
-      if (m && m.length >= 3) c.retStatusObj.encryptedFileName = m[2];
+      if (m && m.length >= 3 && !m[2].match(/^-&[0-9]+$/)) c.retStatusObj.encryptedFileName = m[2];
     }
   }
 
@@ -620,7 +618,7 @@ var EnigmailErrorHandling = {
   getTempLogFile: function() {
     let logFile = getEnigmailFiles().getTempDirObj().clone();
     logFile.normalize();
-    logFile.append("gpgOutput.tmp");
+    logFile.append("gpgOutput." + getEnigmailRNG().generateRandomString(6));
     return logFile;
   },
 

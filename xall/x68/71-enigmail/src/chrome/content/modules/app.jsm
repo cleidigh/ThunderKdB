@@ -55,23 +55,11 @@ var EnigmailApp = {
     return EnigmailApp._version;
   },
 
-  /**
-   * Get Enigmail installation directory
-   */
-  getInstallLocation: function() {
-    return EnigmailApp._installLocation;
-  },
-
   setVersion: function(version) {
     EnigmailApp._version = version;
   },
 
-  setInstallLocation: function(location) {
-    EnigmailApp._installLocation = location;
-  },
-
   initAddon: function(addon) {
     EnigmailApp.setVersion(addon.version);
-    EnigmailApp.setInstallLocation(addon.installPath);
   }
 };

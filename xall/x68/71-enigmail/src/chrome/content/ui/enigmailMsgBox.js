@@ -13,7 +13,7 @@ var Ci = Components.interfaces;
 var EnigmailClipboard = ChromeUtils.import("chrome://enigmail/content/modules/clipboard.jsm").EnigmailClipboard;
 var EnigmailOS = ChromeUtils.import("chrome://enigmail/content/modules/os.jsm").EnigmailOS;
 var EnigmailLocale = ChromeUtils.import("chrome://enigmail/content/modules/locale.jsm").EnigmailLocale;
-var EnigmailTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm").EnigmailTimer;
+var EnigmailEvents = ChromeUtils.import("chrome://enigmail/content/modules/events.jsm").EnigmailEvents;
 
 function onLoad() {
   var dlg = document.getElementById("enigmailMsgBox");
@@ -91,7 +91,7 @@ function onLoad() {
   textbox.appendChild(textbox.ownerDocument.createTextNode(msgtext));
 
   window.addEventListener("keypress", onKeyPress);
-  EnigmailTimer.setTimeout(resizeDlg, 0);
+  EnigmailEvents.dispatchEvent(resizeDlg, 0);
 }
 
 function resizeDlg() {

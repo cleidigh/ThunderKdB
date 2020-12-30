@@ -27,15 +27,21 @@ QuickFolders.FolderTree = {
         return; // for now, disable it
       }
       else { treeView = gFolderTreeView; }
-      if (treeView.supportsIcons) return; // already defined!
-      QuickFolders.FolderTree.GetCellProperties = treeView.getCellProperties.bind(treeView);
+      if (gFolderTreeView.supportsIcons) return; // already defined!
+      if (QuickFolders.FolderTree.GetCellProperties)
+        return;
+      QuickFolders.FolderTree.GetCellProperties = gFolderTreeView.getCellProperties.bind(gFolderTreeView);
       //gFolderTreeView.getCellPropsWithoutIcons = gFolderTreeView.getCellProperties;  
-      treeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
-      treeView.getCellProperties = function(row, col) {
+      gFolderTreeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
+      gFolderTreeView.getCellProperties = function QuickFolders_getCellProperties(row, col) {
+        if (QuickFolders.FolderTree.GetCellProperties == gFolderTreeView.getCellProperties) {
+          debugger;
+          return null; // avoid "impossible" recursion?
+        }
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
         if (col.id == "folderNameCol") {
-          let folder = treeView.getFolderForIndex(row);
-          if (!treeView.qfIconsEnabled) {
+          let folder = gFolderTreeView.getFolderForIndex(row);
+          if (!gFolderTreeView.qfIconsEnabled) {
             return props;
           }
 					/*
@@ -46,7 +52,7 @@ QuickFolders.FolderTree = {
 					*/
 					
           try {
-						if (treeView.supportsIcons) {
+						if (gFolderTreeView.supportsIcons) {
 							let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
 							if (folderIcon) {
 								// save folder icon selector
@@ -69,7 +75,7 @@ QuickFolders.FolderTree = {
         }
         return props;
       } // end of override		
-      treeView.supportsIcons = true;
+      gFolderTreeView.supportsIcons = true;
       // now we need to iterate all Folders and find matches in our dictionary,
       // then inject the style rules for the icons...
       this.loadDictionary();
@@ -258,9 +264,10 @@ QuickFolders.FolderTree = {
 	forceRedraw: function() {
 		// force redrawing the folder pane
 		const util = QuickFolders.Util;
-		var box = document.getElementById("folderTree").boxObject;
 		// nsITreeBoxObject will be deprecated from Tb69
 		try {
+      const box = document.getElementById("folderTree").boxObject; // not working in Thunderbird 78
+      if(!box) return;
 			if (Components.interfaces.nsITreeBoxObject) {
 				box.QueryInterface(Components.interfaces.nsITreeBoxObject);
 				box.invalidate();
@@ -269,7 +276,7 @@ QuickFolders.FolderTree = {
 				box.element.invalidate();
 		}
 		catch (ex) {
-			util.logException('forceRedraw',ex);
+			util.logException('forceRedraw', ex);
 		}
 	} ,
 	/*									 

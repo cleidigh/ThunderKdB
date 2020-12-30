@@ -25,6 +25,9 @@ ChromeUtils.defineModuleGetter(
   "resource:///modules/AddrBookUtils.jsm"
 );
 
+const { clearTimeout, setTimeout } = ChromeUtils.import(
+  "resource://gre/modules/Timer.jsm"
+);
 const { XPCOMUtils } = ChromeUtils.import(
   "resource://gre/modules/XPCOMUtils.jsm"
 );
@@ -114,6 +117,27 @@ function parseExpression(aQuery) {
 }
 
 /**
+ * A pre-sorted list of directories in the right order, to be returned by
+ * AddrBookManager.directories. That function is called a lot, and there's
+ * no need to sort the list every time.
+ *
+ * Call updateSortedDirectoryList after `store` changes and before any
+ * notifications happen.
+ */
+let sortedDirectoryList = [];
+function updateSortedDirectoryList() {
+  sortedDirectoryList = [...store.values()];
+  sortedDirectoryList.sort((a, b) => {
+    let aPosition = a.dirPrefId ? a.getIntValue("position", 0) : 0;
+    let bPosition = b.dirPrefId ? b.getIntValue("position", 0) : 0;
+    if (aPosition != bPosition) {
+      return aPosition - bPosition;
+    }
+    return a.URI < b.URI ? -1 : 1;
+  });
+}
+
+/**
  * Initialise an address book directory by URI.
  *
  * @param {string} uri - URI for the directory.
@@ -126,10 +150,21 @@ function createDirectoryObject(uri, shouldStore = false) {
   let dir = Cc[
     `@mozilla.org/addressbook/directory;1?type=${scheme}`
   ].createInstance(Ci.nsIAbDirectory);
-  if (shouldStore) {
-    store.set(uri, dir);
+
+  try {
+    if (shouldStore) {
+      // This must happen before .init is called, or the OS X provider breaks
+      // in some circumstances. If .init fails, we'll remove it again.
+      store.set(uri, dir);
+    }
+    dir.init(uri);
+  } catch (ex) {
+    if (shouldStore) {
+      store.delete(uri);
+    }
+    throw ex;
   }
-  dir.init(uri);
+
   return dir;
 }
 
@@ -203,6 +238,8 @@ function ensureInitialized() {
       Cu.reportError(ex);
     }
   }
+
+  updateSortedDirectoryList();
 }
 
 Services.obs.addObserver(() => {
@@ -210,24 +247,27 @@ Services.obs.addObserver(() => {
   store = null;
 }, "addrbook-reload");
 
-/** @implements nsIAbManager */
+/** Cache for the cardForEmailAddress function, and timer to clear it. */
+let addressCache = new Map();
+let addressCacheTimer = null;
+
+/**
+ * @implements nsIAbManager
+ * @implements nsICommandLineHandler
+ */
 function AddrBookManager() {}
 AddrBookManager.prototype = {
-  QueryInterface: ChromeUtils.generateQI(["nsIAbManager"]),
+  QueryInterface: ChromeUtils.generateQI([
+    "nsIAbManager",
+    "nsICommandLineHandler",
+  ]),
   classID: Components.ID("{224d3ef9-d81c-4d94-8826-a79a5835af93}"),
+
+  /* nsIAbManager */
 
   get directories() {
     ensureInitialized();
-    let dirs = [...store.values()];
-    dirs.sort((a, b) => {
-      let aPosition = a.getIntValue("position", 0);
-      let bPosition = b.getIntValue("position", 0);
-      if (aPosition != bPosition) {
-        return aPosition - bPosition;
-      }
-      return a.URI < b.URI ? -1 : 1;
-    });
-    return new SimpleEnumerator(dirs);
+    return new SimpleEnumerator(sortedDirectoryList.slice());
   },
   getDirectory(uri) {
     if (uri.startsWith("moz-abdirectory://")) {
@@ -244,7 +284,10 @@ AddrBookManager.prototype = {
 
     let scheme = Services.io.extractScheme(uri);
     if (scheme == "jscarddav") {
-      throw Components.Exception("", Cr.NS_ERROR_UNEXPECTED);
+      throw Components.Exception(
+        `No ${scheme} directory for uri=${uri}`,
+        Cr.NS_ERROR_UNEXPECTED
+      );
     }
     if (scheme == "jsaddrbook") {
       let uriParts = URI_REGEXP.exec(uri);
@@ -260,7 +303,10 @@ AddrBookManager.prototype = {
             return list;
           }
         }
-        throw Components.Exception("", Cr.NS_ERROR_UNEXPECTED);
+        throw Components.Exception(
+          `No ${scheme} directory for uri=${uri}`,
+          Cr.NS_ERROR_UNEXPECTED
+        );
       }
     }
     // `tail` could either point to a mailing list or a query.
@@ -323,12 +369,16 @@ AddrBookManager.prototype = {
         uri = `moz-abldapdirectory://${prefName}`;
         let dir = createDirectoryObject(uri, true);
         this.notifyDirectoryItemAdded(null, dir);
+        updateSortedDirectoryList();
         Services.obs.notifyObservers(dir, "addrbook-directory-created");
         break;
       }
       case MAPI_DIRECTORY_TYPE: {
         if (store.has(uri)) {
-          throw Components.Exception("", Cr.NS_ERROR_UNEXPECTED);
+          throw Components.Exception(
+            `Can't create new ab of type=${type} - already exists`,
+            Cr.NS_ERROR_UNEXPECTED
+          );
         }
 
         Services.prefs.setIntPref(`${prefName}.dirType`, MAPI_DIRECTORY_TYPE);
@@ -345,11 +395,13 @@ AddrBookManager.prototype = {
           for (let folderURI of outlookInterface.getFolderURIs(uri)) {
             let dir = createDirectoryObject(folderURI, true);
             this.notifyDirectoryItemAdded(null, dir);
+            updateSortedDirectoryList();
             Services.obs.notifyObservers(dir, "addrbook-directory-created");
           }
         } else {
           let dir = createDirectoryObject(uri, true);
           this.notifyDirectoryItemAdded(null, dir);
+          updateSortedDirectoryList();
           Services.obs.notifyObservers(dir, "addrbook-directory-created");
         }
         break;
@@ -369,6 +421,7 @@ AddrBookManager.prototype = {
         uri = `${scheme}://${file.leafName}`;
         let dir = createDirectoryObject(uri, true);
         this.notifyDirectoryItemAdded(null, dir);
+        updateSortedDirectoryList();
         Services.obs.notifyObservers(dir, "addrbook-directory-created");
         break;
       }
@@ -421,6 +474,7 @@ AddrBookManager.prototype = {
     Services.prefs.clearUserPref(`${prefName}.uid`);
     Services.prefs.clearUserPref(`${prefName}.uri`);
     store.delete(uri);
+    updateSortedDirectoryList();
 
     // Clear this reference to the deleted address book.
     if (Services.prefs.getStringPref("mail.collect_addressbook") == uri) {
@@ -501,7 +555,6 @@ AddrBookManager.prototype = {
     }
     return false;
   },
-
   /**
    * Finds out if the directory name already exists.
    * @param {string} name - The name of a directory to check for.
@@ -515,15 +568,67 @@ AddrBookManager.prototype = {
     }
     return false;
   },
-
   generateUUID(directoryId, localId) {
     return `${directoryId}#${localId}`;
+  },
+  cardForEmailAddress(emailAddress) {
+    if (!emailAddress) {
+      return null;
+    }
+
+    if (addressCacheTimer) {
+      clearTimeout(addressCacheTimer);
+    }
+    addressCacheTimer = setTimeout(() => {
+      addressCacheTimer = null;
+      addressCache.clear();
+    }, 60000);
+
+    if (addressCache.has(emailAddress)) {
+      return addressCache.get(emailAddress);
+    }
+
+    for (let directory of sortedDirectoryList) {
+      try {
+        let card = directory.cardForEmailAddress(emailAddress);
+        if (card) {
+          addressCache.set(emailAddress, card);
+          return card;
+        }
+      } catch (ex) {
+        // Directories can throw, that's okay.
+      }
+    }
+
+    addressCache.set(emailAddress, null);
+    return null;
+  },
+
+  /* nsICommandLineHandler */
+
+  get helpInfo() {
+    return "  -addressbook       Open the address book at startup.\n";
+  },
+  handle(commandLine) {
+    let found = commandLine.handleFlag("addressbook", false);
+    if (!found) {
+      return;
+    }
+
+    Services.ww.openWindow(
+      null,
+      "chrome://messenger/content/addressbook/addressbook.xhtml",
+      "_blank",
+      "chrome,extrachrome,menubar,resizable,scrollbars,status,toolbar",
+      null
+    );
+    commandLine.preventDefault = true;
   },
 
   // This is here because it lives in Services.ab in Thunderbird 68.
   // After support is dropped it can be moved to the directory component.
   convertQueryStringToExpression(aQuery) {
-    let [expression, tail] = parseExpression(aQuery.replace(/\s/g, ""));
+    let [expression, tail] = parseExpression(aQuery.replace(/^\?|\s/g, ""));
     if (tail) {
       throw new Components.Exception("Trailing characters in query string", Cr.NS_ERROR_FAILURE);
     }

@@ -3,7 +3,94 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/ui/options.css"/>
+    <style>
+      html {
+        all: unset;
+      }
+
+      body {
+        font-family: sans-serif;
+        font-size: 0.9em;
+        font-weight: 300;
+      }
+
+      section {
+        padding: 0.5em 0;
+        margin: 1em 0;
+      }
+
+      #save-button, #reset-button {
+        margin: 0 1.3em 1em 0;
+        font-weight: bold;
+      }
+
+      #functionTestFields {
+        margin: 0.75em 0;
+        border:1px solid #ddd;
+      }
+
+      #functionTestOutput {
+        display:table-cell;
+        padding: 0.1em 0.6em 0.9em 0.6em;
+        width:100%;
+        line-height:1.6em;
+        min-height:2em;
+        background:#eee;
+      }
+
+      label {
+        display: block;
+        padding: 0.2em 0;
+      }
+
+      label:hover {
+        background-color: #EAEFF2;
+      }
+
+      .option-label {
+        white-space: nowrap;
+      }
+
+      .title {
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+        font-weight: bold;
+      }
+
+      .subtitle {
+        /* font-size: 1.0em; */
+        margin-bottom: 0.5em;
+        font-weight: bold;
+      }
+
+      .pre {
+        font-family: monospace;
+        margin:0px;
+      }
+
+      .div-table {
+        display: table;
+        border-spacing: 5px;
+      }
+      .div-table-row {
+        display: table-row;
+        clear: both;
+      }
+      .div-table-cell {
+        display: table-cell;
+      }
+
+      .footer {
+        font-size: 0.8em;
+        margin-top: 0.5em;
+        text-align:center;
+      }
+
+      .footer>a {
+        margin-left:1em;
+        margin-right:1em;
+      }
+    </style>
   </head>
 
   <body>
@@ -12,7 +99,7 @@
       <label>
         <span class="option-label localized __MSG_checkTimePrefLabel1__">Check every</span>
         <input type="number" min="0" id="checkTimePref" style="width:6em;" class="preference"/>
-        <span class="option-label localized __MSG_checkTimePrefLabel2__">minutes</span>
+        <span id="checkEveryUnits" class="option-label localized __MSG_checkTimePrefLabel2__">minutes</span>
       </label>
 
       <label>
@@ -55,7 +142,7 @@
           Show Send Later header</span>
       </label>
 
-      <label style="display:none;">
+      <label>
         <input type="checkbox" id="showStatus" class="preference"/>
         <span class="option-label localized __MSG_showStatusPrefLabel__">
           Show Send Later in status bar</span>
@@ -67,7 +154,7 @@
           Enforce time and day restrictions at delivery time</span>
       </label>
 
-      <label id="gracePeriodOptionBox" style="padding-left:1em;">
+      <label>
         <input type="checkbox" id="blockLateMessages" class="preference"/>
         <span class="option-label localized __MSG_blockLateMessagesPrefLabel1__">
           Don't deliver messages more than</span>
@@ -245,7 +332,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="advanced-section">
       <div class="title option-label localized __MSG_advancedOptionsTitle__">Advanced</div>
 
       <div id="advancedEditorTitle" class="subtitle option-label" style="cursor:pointer;">
@@ -258,13 +345,16 @@
       <div id="advancedConfigEditor" style="display:none;">
         <textarea id="advancedConfigText" type="textbox"
             class="pre"
-            style="width:80%;height:60em;margin: 0.25em 0px 0.25em 1em;"></textarea>
+            style="width:80%;height:50em;margin: 0.25em 0px 0.25em 1em;"></textarea>
         <div style="padding-left: 4em;">
-          <input id="advancedEditSave" type="button" style="margin-right:0.5em;"
+          <input id="advancedEditSave" type="button" style="margin:0.25em;"
             value="Save" class="localized __MSG_save.label__">
-          <input id="advancedEditReset" type="button" style="margin-right:0.5em;"
+          <input id="advancedEditReset" type="button" style="margin:0.25em;"
             value="Discard changes" class="localized __MSG_reset.label__">
+          <input id="clearPrefs" type="button" style="margin:0.25em;"
+            value="Reset Preferences" class="localized __MSG_resetPrefsButton__">
         </div>
+        <hr/>
       </div>
 
       <label for="logDumpLevel" style="display:none;">
@@ -309,11 +399,6 @@
     </section>
 
     <hr/>
-
-    <div style="width:100%;padding:0 auto;">
-      <button type="button" id="clearPrefs" style="display:compact;"
-          class="localized __MSG_resetPrefsButton__">Reset Preferences</button>
-    </div>
 
     <div class="footer">
       <a href="mailto:send-later-support@extended-thunder.org?subject=Send%20Later"

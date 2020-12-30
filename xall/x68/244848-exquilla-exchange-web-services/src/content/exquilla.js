@@ -408,7 +408,7 @@ var exquilla = Object.create(
       // email context menu
       let emailContextMenu = document.getElementById("emailAddressPopup");
       emailContextMenu.addEventListener("popupshowing", this.onEmailAddressPopup, false);
-    } catch (e) { log.error(e + "\n"); }
+    } catch (e) { log.error(e); }
 
     // We communicate the status text label to the ewsActivity module
     try  {
@@ -466,7 +466,7 @@ var exquilla = Object.create(
           if (!(safeGetJS(folders[0], "EwsMsgFolder")))
             break;
           return oldIsSendUnsentMsgsEnabled(folders[0]);
-        } catch (e) {log.info(e + "\n");}
+        } catch (e) {log.info(e);}
       } while (false);
       return oldIsSendUnsentMsgsEnabled(unsentMsgsFolder);
     }
@@ -484,7 +484,7 @@ var exquilla = Object.create(
           log.config("Sending messages from exquilla outbox");
           return ewsSendUnsentMessages(folders[0]);
         }
-      } catch (e) {log.info(e + "\n");}
+      } catch (e) {log.info(e);}
       log.debug("Using default sendUnsentMessages");
       return oldSendUnsentMessages();
     }

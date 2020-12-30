@@ -16,7 +16,9 @@ class _ConversationWrapper extends React.PureComponent {
     // options.css).
 
 
-    document.documentElement.setAttribute("dir", browser.conversations.getLocaleDirection());
+    browser.conversations.getLocaleDirection().then(dir => {
+      document.documentElement.setAttribute("dir", dir);
+    });
     this.props.dispatch(messageActions.waitForStartup());
   }
 

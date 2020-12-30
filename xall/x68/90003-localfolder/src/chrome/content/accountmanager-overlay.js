@@ -173,6 +173,7 @@ eu.philoux.localfolder.NewLocalFolder = function () {
         .getService(Ci.nsIWindowMediator)
 		.getMostRecentWindow("mail:3pane");
 
+	
 		w.lfver = eu.lfver;
 	// console.debug(w.lfver);
 	// console.debug(w.extension.version);

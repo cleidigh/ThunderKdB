@@ -43,13 +43,13 @@ QuickFolders.quickMove = {
 		const prefs = QuickFolders.Preferences,
 		      util = QuickFolders.Util;
     try {
-			if (prefs.isDebugOption('quickMove')) {
-				util.logDebugOptional('quickMove',"rememberLastFolder(" + URIorFolder + ", " + parentName + ")")
-			}
-			let fld = (URIorFolder.name) ? URIorFolder : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
-			    sRememberFolder = (parentName) ? parentName + "/" + fld.prettyName : fld.prettyName;
-			prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
-	      util.logDebugOptional('quickMove',"Storing: " + sRememberFolder);
+      if (prefs.isDebugOption('quickMove')) {
+        util.logDebugOptional('quickMove',"rememberLastFolder(" + URIorFolder + ", " + parentName + ")")
+      }
+      let fld = (URIorFolder.name) ? URIorFolder : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
+          sRememberFolder = (parentName) ? parentName + "/" + fld.prettyName : fld.prettyName;
+      prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
+      util.logDebugOptional('quickMove',"Storing: " + sRememberFolder);
     }
     catch (ex) {
       util.logException("rememberLastFolder( " + URIorFolder + ", " + parentName + ")", ex);
@@ -123,17 +123,13 @@ QuickFolders.quickMove = {
 		      QI = QuickFolders.Interface,
 		      prefs = QuickFolders.Preferences;
 					
-		if (typeof ChromeUtils.import == "undefined") {
-			ChromeUtils.import("resource://gre/modules/PluralForm.jsm");
-		}
-		else
-			var { PluralForm } = Components.utils.import("resource://gre/modules/PluralForm.jsm");
+    var { PluralForm } = Components.utils.import("resource://gre/modules/PluralForm.jsm");
 					
     let actionCount,
         fld = QuickFolders.Model.getMsgFolderFromUri(targetFolderUri, true),
         tabMode = QI.CurrentTabMode,    
         tabmail = document.getElementById("tabmail"),
-        currentTab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+        currentTab = tabmail.selectedTab;
 				
 		this.rememberLastFolder(fld, parentName);
         
@@ -185,8 +181,8 @@ QuickFolders.quickMove = {
       this.IsCopy.pop();
     }
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
-    for (let i = menu.childNodes.length-1; i>0; i--) {
-      let item = menu.childNodes[i];
+    for (let i = menu.children.length-1; i>0; i--) {
+      let item = menu.children[i];
       if (item.className.indexOf('msgUri')>=0 || item.tagName=='menuseparator')
         menu.removeChild(item);
     }

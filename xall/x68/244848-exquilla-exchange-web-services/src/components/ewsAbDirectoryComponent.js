@@ -161,7 +161,7 @@ EwsAbDirectory.prototype = {
 
   get readOnly()
   {
-    return !!this.isMailList;
+    return this.isMailList || this.mIsGAL;
   },
 
   useForAutocomplete: function _useForAutocomplete(aIdentityKey)

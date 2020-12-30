@@ -2,7 +2,7 @@
 /* 
 BEGIN LICENSE BLOCK
 
-	SmartTemplate4 is released under the Creative Commons (CC BY-ND 4.0)
+	SmartTemplates is released under the Creative Commons (CC BY-ND 4.0)
 	Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
 	For details, please refer to license.txt in the root folder of this extension
 
@@ -1436,12 +1436,11 @@ SmartTemplate4.classSmartTemplate = function() {
 			
 			// PREMIUM FUNCTIONS
 			// issue notifications for any premium features used.
-			// all used functions are stored in the main instance of SmartTemplate4 (3pane window)
-			if (util.mainInstance.Util.premiumFeatures.length 
-			    && (!util.hasLicense(false)
-					   || 
-						 prefs.isDebugOption('premium.testNotification'))) {
-				util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
+			// all used functions are stored in the main instance of SmartTemplates (3pane window)
+			if (util.mainInstance.Util.premiumFeatures.length)
+      {
+        if (!util.hasLicense(false) ||  util.Licenser.key_type==2 || prefs.isDebugOption('premium.testNotification'))
+          util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
 			}  
 			// reset the list of used premium functions for next turn
 			util.clearUsedPremiumFunctions();  // will affect main instance

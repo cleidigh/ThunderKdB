@@ -472,51 +472,22 @@ var EnigmailFuncs = {
   },
 
   /**
-   * Synchronize on a Promise: wait synchonously until a promise has completed and return
-   * the value that the promise returned.
-   *
-   * NOTE: just like await, this will throw an exception if the Promise fails with "reject"
-   *
-   * @param {Promise} promise: the promise to wait for
-   *
-   * @return {Variant} whatever the promise returns
+   * Synchronize a promise
    */
   syncPromise: function(promise) {
     let inspector = Cc["@mozilla.org/jsinspector;1"].createInstance(Ci.nsIJSInspector);
 
-    let res = null,
-      isError = false;
+    let res = null;
     let p = promise.then(gotResult => {
       res = gotResult;
       inspector.exitNestedEventLoop();
     }).catch(gotResult => {
       res = gotResult;
-      isError = true;
       inspector.exitNestedEventLoop();
     });
 
     inspector.enterNestedEventLoop(0);
 
-    if (isError) {
-      throw res;
-    }
-
     return res;
-  },
-
-  /**
-   * Convert an array containing numbers into a Hexadecimal string
-   *
-   * @param {Array} arr: input array
-   *
-   * @return {String} Hex-String
-   */
-  arrayToHex: function(arr) {
-    return arr.reduce((previousValue, i) => {
-      if (typeof(previousValue) === "number") {
-        previousValue = ("0" + previousValue.toString(16)).substr(-2);
-      }
-      return previousValue + ("0" + i.toString(16)).substr(-2);
-    }).toUpperCase();
   }
 };

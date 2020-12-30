@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
         }
     ],
-    "average_daily_users": 55,
+    "average_daily_users": 53,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2019-08-09T09:58:25Z",
     "current_version": {
-        "id": 2474851,
+        "id": 2474996,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/versions/2474851",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/versions/2474996",
         "files": [
             {
-                "id": 1018013,
-                "created": "2020-11-26T06:33:52Z",
-                "hash": "sha256:23cdf81aa7ec88536645e5689595b58f8bd952913c292e0ef10ad8282d012615",
+                "id": 1018158,
+                "created": "2020-12-11T12:23:14Z",
+                "hash": "sha256:907ec7c9463fb5c4c981c587d36d21b055c9237b4cfc86429f143a7806afd81f",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4306,
+                "size": 4378,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018013/taskviewlayout-62.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018158/taskviewlayout-62.7-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,16 +50,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "<b>Version 62.6.</b>\n\n1) At disabled/removed from Add-ons Manager, most of defaults are restored, except resizer.\n2) I fixed the problem that when resizing task view down, status bar moves down with task view.\n3) If not seeing status bar, adjust height with resizer at least level, So, now on, you can see status bar at the level.\n4) If adjusting each layout size, each layout size is restored.\n\nNovember 26 2020.\n\nFrom Sungho Hwang."
+            "en-US": "<b>Version 62.7.</b>\n\nI updated this add-on for compatibility with my new other add-on, FindTasksButton.\nIn case that FindTasksButton hide task addition box, TaskviewLayout show task addition box."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/62.6",
-        "version": "62.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewlayout/versions/62.7",
+        "version": "62.7"
     },
     "default_locale": "en-US",
     "description": {
         "en-US": "<b>Version 62.6.</b> updated in 2020-11-27.\n1) I added upside layout of taskview in version 62.6 again.\n2) At disabled/removed from Add-ons Manager, most of defaults are restored, except resizer.\n3) I fixed the problem that when resizing task view down, status bar moves down with task view.\n4) If not seeing status bar, adjust height with resizer at least level, So, now on, you can see status bar at the level.\n5) If adjusting each layout size, each layout size is restored.\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\n praise Stephen Kim Sou-hwan.\n\n<b>[Notes]\n1) If not seeing status bar, please, resize task tree (right bottom edge of task tree).\n</b>\n\n<b>About all-day persistence of this program.</b>\nIf not closing operating system, please, use <b>Minimize on close</b>.",
-        "ko": "<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\n praise Stephen Kim Sou-hwan.\n\n<b>[Notes]\nI removed a upside taskview in this version, because the functionality was not high.\n</b>\n\n<b>Horizontal level of taskview</b>\nAdjust horizontal level, <b>before clicking any button of browserAction.</b>\nIf so, during TaskviewLayout running time, horizontal level can be adjusted to that point."
+        "ko": "<b>Version 62.6.</b> updated in 2020-11-27.\n1) I added upside layout of taskview in version 62.6 again.\n2) At disabled/removed from Add-ons Manager, most of defaults are restored, except resizer.\n3) I fixed the problem that when resizing task view down, status bar moves down with task view.\n4) If not seeing status bar, adjust height with resizer at least level, So, now on, you can see status bar at the level.\n5) If adjusting each layout size, each layout size is restored.\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b>\n\n praise Stephen Kim Sou-hwan.\n\n<b>[Notes]\n1) If not seeing status bar, please, resize task tree (right bottom edge of task tree).\n</b>\n\n<b>About all-day persistence of this program.</b>\nIf not closing operating system, please, use <b>Minimize on close</b>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewlayout/edit",
@@ -76,7 +76,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-27T12:54:07Z",
+    "last_updated": "2020-12-15T15:23:34Z",
     "name": {
         "en-US": "TaskviewLayout",
         "ko": "작업보기 레이아웃"
@@ -130,7 +130,7 @@
     "status": "public",
     "summary": {
         "en-US": "Put task view upside. \nPut task view vertical.\nPut task view neutral.\nExecuted well.\n\npraise Stephen Kim Sou-hwan.",
-        "ko": "문서를 읽을 때는 올려서 보세요. &lt; 선더버드 v78에서는 이 기능을 뺏습니다.\n목록을 읽을 때는 내리고 보세요.\n행이 많은 문장은 세로로 보세요.\n세로로 크게 보시려면, 투데이 페인을 닫으세요.\n\n김수환 추기경님을 기리며.\n\n개발자 황성호."
+        "ko": "올려서 보는 기능과\n내려서 보는 기능과\n세로로 보는 기능이 있습니다.\n\n김수환 추기경님을 기리며.\n\n개발자 황성호."
     },
     "support_email": {
         "en-US": "shh0884@outlook.kr"
@@ -147,7 +147,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-26T06:33:52Z",
+            "comp78pv_version": "62.6",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

@@ -9,6 +9,7 @@ Preferences.addAll([
   { id: "extensions.thunderHTMLedit.FontSize", type: "int" },
   { id: "extensions.thunderHTMLedit.FontFamily", type: "string" },
   { id: "extensions.thunderHTMLedit.DarkTheme", type: "bool" },
+  { id: "extensions.thunderHTMLedit.ReplaceTabs", type: "bool" },
   { id: "extensions.thunderHTMLedit.OptionsJSON", type: "string" },
   { id: "extensions.thunderHTMLedit.License", type: "string" },
 ]);

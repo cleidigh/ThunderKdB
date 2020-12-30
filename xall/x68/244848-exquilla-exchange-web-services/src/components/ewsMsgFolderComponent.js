@@ -2160,8 +2160,15 @@ EwsMsgFolder.prototype = {
           if (!folders.length)
             log.debug("No folders found for GetNewMessages");
 
-          if (urlListener)
-            urlListener.OnStartRunningUrl(null);
+          if (urlListener) {
+            try { // COMPAT for TB 78 (bug 1682309)
+              urlListener.OnStartRunningUrl(null);
+            } catch (ex) { /* COMPAT for TB 78 (bug 1682309) */
+              if (ex.result != Cr.NS_ERROR_XPC_JSOBJECT_HAS_NO_FUNCTION_NAMED) {
+                throw ex;
+              }
+            } /* COMPAT for TB 78 (bug 1682309) */
+          }
 
           // Cripple point: don't proceed with invalid license
           if (!(await EnsureLicensed())) {

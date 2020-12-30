@@ -32,19 +32,12 @@
 
 (function filtaQuilla()
 {
-	debugger;
   
   Components.utils.import("resource://filtaquilla/inheritedPropertiesGrid.jsm");
-  try {
-    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-    var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
-  }
-  catch(ex) {
-    Components.utils.import("resource://gre/modules/Services.jsm");
-    Components.utils.import("resource:///modules/MailUtils.js");
-  }
-  
-	var {FiltaQuilla} = Components.utils.import("chrome://filtaquilla/content/filtaquilla-util.js"); // FiltaQuilla object
+  var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+  var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+  Services.scriptloader.loadSubScript("chrome://filtaquilla/content/filtaquilla-util.js") // FiltaQuilla object
+
 
   const Cc = Components.classes,
         Ci = Components.interfaces,
@@ -67,23 +60,12 @@
   self.initialized = false;
   self.name = filtaQuilla;
   
-  // (main window only) start version checker.
-  try {
-    let isCorrectWindow =
-      (document && document.getElementById('messengerWindow') &&
-       document.getElementById('messengerWindow').getAttribute('windowtype') === "mail:3pane");
-    if (isCorrectWindow)
-      window.addEventListener("load", 
-        function() { 
-          util.VersionProxy(window); 
-        }, true);
-  }
-  catch (ex) { util.logDebug("calling VersionProxy failed\n" + ex.message); }
-
-  const filtaquillaStrings = Cc["@mozilla.org/intl/stringbundle;1"]
-                                .getService(Ci.nsIStringBundleService)
-                                .createBundle("chrome://filtaquilla/locale/filtaquilla.properties"),
-        headerParser = Cc["@mozilla.org/messenger/headerparser;1"].getService(Ci.nsIMsgHeaderParser),
+  var { MailServices } = ChromeUtils.import(
+    "resource:///modules/MailServices.jsm"
+  );
+  const bundleService = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
+        filtaquillaStrings = bundleService.createBundle("chrome://filtaquilla/locale/filtaquilla.properties"),
+        headerParser = MailServices.headerParser,
         tagService = Cc["@mozilla.org/messenger/tagservice;1"].getService(Ci.nsIMsgTagService),
         abManager = Cc["@mozilla.org/abmanager;1"].getService(Ci.nsIAbManager),
         // cache the values of commonly used search operators
@@ -151,8 +133,10 @@
   };
 
   // javascript mime emitter functions
-  self._mimeMsg = {};
-  Cu.import("resource:///modules/gloda/mimemsg.js", self._mimeMsg);
+  //self._mimeMsg = {};
+  //Cu.import("resource:///modules/gloda/mimemsg.js", self._mimeMsg);
+  
+  self._mimeMsg = ChromeUtils.import("resource:///modules/gloda/MimeMessage.jsm"); // Tb78
 
   self._init = function() {
     self.strings = filtaquillaStrings;
@@ -299,7 +283,7 @@
         apply: function(aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
           _aListener = aListener;
           var srcFolder = aMsgHdrs.queryElementAt(0, Ci.nsIMsgDBHdr).folder;
-          _dstFolder = (MailUtils.getExistingFolder) ? MailUtils.getExistingFolder(aActionValue, false) : MailUtils.getFolderForURI(aActionValue, false);
+          _dstFolder = MailUtils.getExistingFolder(aActionValue, false);
           // store the messages Ids to use post-copy
           _messageIds = [];
           for (var i = 0; i < aMsgHdrs.length; i++)
@@ -314,7 +298,7 @@
         },
         isValidForType: function(type, scope) { return type == Ci.nsMsgFilterType.Manual && copyAsReadEnabled;},
         validateActionValue: function(aActionValue, aFilterFolder, type) {
-          var msgFolder = (MailUtils.getExistingFolder) ? MailUtils.getExistingFolder(aActionValue, false) : MailUtils.getFolderForURI(aActionValue, false);
+          var msgFolder = MailUtils.getExistingFolder(aActionValue, false);
           if (!msgFolder || !msgFolder.canFileMessages)
           {
             return self.strings.GetStringFromName("filtaquilla.mustSelectFolder");
@@ -537,7 +521,7 @@
             let uri = hdr.folder.generateMessageURI(hdr.messageKey);
             Services.console.logStringMessage("Queue filter request to print message: " + hdr.subject);
             let printDialog =
-              window.openDialog("chrome://messenger/content/msgPrintEngine.xul", "",
+              window.openDialog("chrome://messenger/content/msgPrintEngine.xhtml", "",
                                 "chrome,dialog=no,all,centerscreen",
                                 1, [uri], statusFeedback,
                                 false, Ci.nsIMsgPrintEngine.MNAB_PRINT_MSG, window);
@@ -570,6 +554,30 @@
       id: "filtaquilla@mesquilla.com#addSender",
       name: self.strings.GetStringFromName("filtaquilla.addSender.name"),
       apply: function(aMsgHdrs, aActionValue, aListener, aType, aMsgWindow) {
+        
+        // Helper function, removed in Tb78
+        function parseHeadersWithArray(aHeader, aAddrs, aNames, aFullNames) {
+          let addrs = [],
+            names = [],
+            fullNames = [];
+          let allAddresses = headerParser.parseEncodedHeader(aHeader, undefined, false);
+
+          // Don't index the dummy empty address.
+          if (aHeader.trim() == "") {
+            allAddresses = [];
+          }
+          for (let address of allAddresses) {
+            addrs.push(address.email);
+            names.push(address.name || null);
+            fullNames.push(address.toString());
+          }
+
+          aAddrs.value = addrs;
+          aNames.value = names;
+          aFullNames.value = fullNames;
+          return allAddresses.length;
+        }
+        
         let dir = abManager.getDirectory(aActionValue);
         if (!dir) {
           Cu.reportError("During filter action, can't find directory: " + aActionValue);
@@ -580,7 +588,7 @@
         for (let i = 0; i < count; i++) {
           let hdr = aMsgHdrs.queryElementAt(i, Ci.nsIMsgDBHdr);
           let addresses = {}, names = {};
-          headerParser.parseHeadersWithArray(hdr.mime2DecodedAuthor, addresses, names, {});
+          parseHeadersWithArray(hdr.mime2DecodedAuthor, addresses, names, {});
           names = names.value;
           addresses = addresses.value;
           if (addresses.length)
@@ -652,30 +660,47 @@
 
     SaveAttachmentCallback.prototype = {
       callback: function saveAttachmentCallback_callback(aMsgHdr, aMimeMessage) {
-				if (util.isDebug) {
-					util.logDebug('saveAttachmentCallback_callback');
-					debugger;
-				}
 				let txtStackedDump = "";
         this.msgURI = aMsgHdr.folder.generateMessageURI(aMsgHdr.messageKey);
         this.attachments = aMimeMessage.allAttachments;
         let messenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
 				try {
+          let ds = aMsgHdr.date / 1000,
+              msgDate = new Date(ds),  // this is cast to string for some stupid reason, so it's not useful.
+              msgSubject = aMsgHdr.subject;
+          if (util.isDebug) {
+            util.logDebug('saveAttachmentCallback_callback');
+            debugger;
+          }
+          // note: for some reason I could not use msgDate as it is treated here as a string not a Date object...
+          // the only workaround was to create new date objects at each step and call its functions directly:
+          let nicedate = " " + (new Date(ds)).getFullYear() + "-" + ((new Date(ds)).getMonth()+1) + "-" + (new Date(ds)).getDate()  + " " +  (new Date(ds)).getHours() + ":" + (new Date(ds)).getMinutes();
 					if (!this.detach) {
 						for (let j = 0; j < this.attachments.length; j++) {
-							let attachment = this.attachments[j],
-							// create a unique file for this attachment
-							    uniqueFile = this.directory.clone();
-							uniqueFile.append(attachment.name);
-							let txt = "Save attachment [" + j + "] to " + uniqueFile.path +
-									"...\n msgURI=" + this.msgURI +
-									"\n att.url=" + attachment.url +
-									"\n att.ncontentType=" + attachment.contentType;
-							util.logDebug(txt);
-							txtStackedDump += txtStackedDump + txt + "\n";
-							uniqueFile.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, 0o600);
-							messenger.saveAttachmentToFile(uniqueFile, attachment.url, this.msgURI,
-																						 attachment.contentType, null);
+              try {
+                let attachment = this.attachments[j];
+                if (attachment.url.startsWith("file:")) {
+                  util.logToConsole("Attachment for '" + msgSubject + "' from " 
+                    + nicedate + " was already removed from mail - last seen at this location:\n" 
+                    + attachment.url);
+                  continue;
+                }
+                // create a unique file for this attachment
+                let uniqueFile = this.directory.clone();
+                uniqueFile.append(attachment.name);
+                let txt = "Save attachment [" + j + "] to " + uniqueFile.path +
+                    "...\n msgURI=" + this.msgURI +
+                    "\n att.url=" + attachment.url +
+                    "\n att.ncontentType=" + attachment.contentType;
+                util.logDebug(txt);
+                txtStackedDump += txtStackedDump + txt + "\n";
+                uniqueFile.createUnique(Ci.nsIFile.NORMAL_FILE_TYPE, 0o600);
+                messenger.saveAttachmentToFile(uniqueFile, attachment.url, this.msgURI,
+                                               attachment.contentType, null);
+              }
+              catch (ex) {
+                util.logException("SaveAttachmentCallback\n" + txtStackedDump, ex);
+              }
 						}
 					}
 					else
@@ -687,11 +712,18 @@
 							    displayNames = [];
 							for (let j = 0; j < this.attachments.length; j++) {
 								let attachment = this.attachments[j];
+                if (attachment.url.startsWith("file:")) {
+                  util.logToConsole("Attachment for '" + msgSubject + "' from " + nicedate 
+                    + " was already removed from mail - last seen at this location:\n" 
+                    + attachment.url);
+                  continue;
+                }
+                
 								msgURIs.push(this.msgURI);
 								contentTypes.push(attachment.contentType);
 								urls.push(attachment.url);
 								displayNames.push(attachment.name);
-								let txt = "Detach attachment [" + j + "] to " + this.directory +
+								let txt = "Detach attachment [" + j + "] to " + this.directory.path +
 										"...\n msgURI=" + this.msgURI +
 										"\n att.url=" + attachment.url +
 										"\n att.ncontentType=" + attachment.contentType;
@@ -699,7 +731,7 @@
 								txtStackedDump += txtStackedDump + txt + "\n";
 
 							}
-							messenger.detachAttachmentsWOPrompts(this.directory, this.attachments.length,
+							messenger.detachAttachmentsWOPrompts(this.directory,
 																			contentTypes, urls, displayNames, msgURIs, null);
 						}
 					}
@@ -809,11 +841,14 @@
       name: self.strings.GetStringFromName("filtaquilla.moveLater.name"),
       apply: function(aMsgHdrs, aActionValue, copyListener, filterType, msgWindow) {
         let srcFolder = aMsgHdrs.queryElementAt(0, Ci.nsIMsgDBHdr).folder;
-        let dstFolder = (MailUtils.getExistingFolder) ? MailUtils.getExistingFolder(aActionValue, false) : MailUtils.getFolderForURI(aActionValue, false);
+        let dstFolder = MailUtils.getExistingFolder(aActionValue, false);
         // store the messages uris to use later
         let timer = Cc["@mozilla.org/timer;1"].createInstance(Ci.nsITimer);
         let currentIndex = moveLaterIndex++;
         moveLaterTimers[currentIndex] = timer;
+        // the message headers array gets cleared by Thunderbird 78! we need to save it elswhere
+        
+        
         let callback = new MoveLaterNotify(aMsgHdrs, srcFolder, dstFolder, currentIndex);
         timer.initWithCallback(callback, MOVE_LATER_DELAY, Ci.nsITimer.TYPE_ONE_SHOT);
       },
@@ -838,13 +873,11 @@
       getAvailable: function folderName_getAvailable(scope, op) {
         return _isLocalSearch(scope) && FolderNameEnabled;
       },
-      getAvailableOperators: function folderName_getAvailableOperators(scope, length) {
+      getAvailableOperators: function folderName_getAvailableOperators(scope) {
         if (!_isLocalSearch(scope))
         {
-          length.value = 0;
           return [];
         }
-        length.value = 6;
         return [Contains, DoesntContain, Is, Isnt, BeginsWith, EndsWith];
       },
       match: function folderName_match(aMsgHdr, aSearchValue, aSearchOp) {
@@ -896,13 +929,11 @@
       getAvailable: function searchBcc_getAvailable(scope, op) {
         return _isLocalSearch(scope) && SearchBccEnabled;
       },
-      getAvailableOperators: function searchBcc_getAvailableOperators(scope, length) {
+      getAvailableOperators: function searchBcc_getAvailableOperators(scope) {
         if (!_isLocalSearch(scope))
         {
-          length.value = 0;
           return [];
         }
-        length.value = 8;
         return [Contains, DoesntContain, Is, Isnt, IsEmpty, IsntEmpty,
                 BeginsWith, EndsWith];
       },
@@ -998,14 +1029,19 @@
       getAvailable: function subjectRegEx_getAvailable(scope, op) {
         return _isLocalSearch(scope) && SubjectRegexEnabled;
       },
-      getAvailableOperators: function subjectRegEx_getAvailableOperators(scope, length) {
-        if (!_isLocalSearch(scope))
-        {
-          length.value = 0;
-          return [];
+      getAvailableOperators: function subjectRegEx_getAvailableOperators(scope) {
+        try {
+          if (!_isLocalSearch(scope))
+          {
+            return [];
+          }
         }
-        length.value = 2;
-        return [Matches, DoesntMatch];
+        catch(ex) {
+          console.logException(ex);
+        }
+        finally {
+          return [Matches, DoesntMatch];
+        }
       },
       match: function subjectRegEx_match(aMsgHdr, aSearchValue, aSearchOp) {
         var subject = aMsgHdr.mime2DecodedSubject;
@@ -1084,13 +1120,11 @@
       getAvailable: function attachRegEx_getAvailable(scope, op) {
         return _isLocalSearch(scope) && AttachmentRegexEnabled;
       },
-      getAvailableOperators: function attachRegEx_getAvailableOperators(scope, length) {
+      getAvailableOperators: function attachRegEx_getAvailableOperators(scope) {
         if (!_isLocalSearch(scope))
         {
-          length.value = 0;
           return [];
         }
-        length.value = 2;
         return [Matches, DoesntMatch];
       },
       match: function attachRegEx_match(aMsgHdr, aSearchValue, aSearchOp) {
@@ -1147,13 +1181,11 @@
       getAvailable: function headerRegEx_getAvailable(scope, op) {
         return _isLocalSearch(scope) && HeaderRegexEnabled;
       },
-      getAvailableOperators: function headerRegEx_getAvailableOperators(scope, length) {
+      getAvailableOperators: function headerRegEx_getAvailableOperators(scope) {
         if (!_isLocalSearch(scope))
         {
-          length.value = 0;
           return [];
         }
-        length.value = 2;
         return [Matches, DoesntMatch];
       },
       match: function headerRegEx_match(aMsgHdr, aSearchValue, aSearchOp) {
@@ -1198,8 +1230,7 @@
       getAvailable: function javascript_getAvailable(scope, op) {
         return JavascriptEnabled;
       },
-      getAvailableOperators: function javascript_getAvailableOperators(scope, length) {
-        length.value = 2;
+      getAvailableOperators: function javascript_getAvailableOperators(scope) {
         return [Matches, DoesntMatch];
       },
       match: function javascript_match(message, aSearchValue, aSearchOp) {
@@ -1226,8 +1257,7 @@
       getAvailable: function threadHeadTag_getAvailable(scope, op) {
         return ThreadHeadTagEnabled;
       },
-      getAvailableOperators: function threadHeadTag_getAvailableOperators(scope, length) {
-        length.value = 6;
+      getAvailableOperators: function threadHeadTag_getAvailableOperators(scope) {
         return [Is, Isnt, Contains, DoesntContain, IsEmpty, IsntEmpty];
       },
       match: function threadHeadTag_matches(message, aSearchValue, aSearchOp) {
@@ -1289,8 +1319,7 @@
       getAvailable: function threadAnyTag_getAvailable(scope, op) {
         return ThreadAnyTagEnabled;
       },
-      getAvailableOperators: function threadAnyTag_getAvailableOperators(scope, length) {
-        length.value = 3;
+      getAvailableOperators: function threadAnyTag_getAvailableOperators(scope) {
         return [Contains, DoesntContain, IsntEmpty];
       },
       match: function threadAnyTag_matches(message, aSearchValue, aSearchOp) {
@@ -1376,9 +1405,21 @@
   // extension initialization
 
   self.onLoad = function() {
-		debugger;
     if (self.initialized)
       return;
+      
+    try {
+      let isCorrectWindow =
+        (document && document.getElementById('messengerWindow') &&
+         document.getElementById('messengerWindow').getAttribute('windowtype') === "mail:3pane");
+      if (isCorrectWindow) {
+        util.VersionProxy(window); 
+      }
+    }
+    catch (ex) { 
+      util.logDebug("calling VersionProxy failed\n" + ex.message); 
+    }
+      
     self._init();
 
     // Determine enabled actions from preferences
@@ -1550,9 +1591,14 @@
   };
 
   // local private functions
-
+  // constructor for the MoveLaterNotify object
   function MoveLaterNotify(aMessages, aSource, aDestination, aTimerIndex)  {
-    this.messages = aMessages;
+    // thunderbird 78 tidies up the aMessages array during apply, so we need to make a copy:
+    this.messages = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray)
+    // clone the messages array
+    for (let i=0; i<aMessages.length; i++) {
+      this.messages.appendElement(aMessages.queryElementAt(i, Ci.nsIMsgDBHdr), false);
+    }
     this.source = aSource;
     this.destination = aDestination;
     this.timerIndex = aTimerIndex;
@@ -1563,6 +1609,7 @@
     // Check the moveLater values for the headers. If this is set by a routine
     //  with a reliable finish listener, then we will wait until that is done to
     //  move. For others, we move on the first callback after the delay.
+    const isMove = true, allowUndo = false;
     let moveLaterCount = -1;
     this.recallCount--;
     for (let i = 0; i < this.messages.length; i++) {
@@ -1573,14 +1620,18 @@
           moveLaterCount = localCount;
       } catch(e) {}
     }
-    //dl('moveLaterCount is ' + moveLaterCount + ' recallCount is ' + this.recallCount);
     if ( (moveLaterCount <= 0) || (this.recallCount <= 0)) { // execute move    
       const copyService = Cc["@mozilla.org/messenger/messagecopyservice;1"]
                             .getService(Ci.nsIMsgCopyService);
-      copyService.CopyMessages(this.source, this.messages,
-                               this.destination, true,
-                               null, null, false);
+      copyService.CopyMessages(this.source, 
+                               this.messages,
+                               this.destination, 
+                               isMove,
+                               null, 
+                               null, 
+                               allowUndo);
       moveLaterTimers[this.timerIndex] = null;
+      this.messages.clear(); // release all objects, just in case.
     }
     else // reschedule another check
       moveLaterTimers[this.timerIndex].initWithCallback(this, MOVE_LATER_DELAY, Ci.nsITimer.TYPE_ONE_SHOT);
@@ -1908,6 +1959,7 @@
 	*/
 })();
 
-window.addEventListener("load", function(e) { filtaquilla.onLoad(e); }, false);
+// moved to filtaquilla-messenger.js
+// window.addEventListener("load", function(e) { filtaquilla.onLoad(e); }, false);
 
 // vim: set expandtab tabstop=2 shiftwidth=2:

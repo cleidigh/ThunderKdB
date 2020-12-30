@@ -374,22 +374,6 @@ var cardbookSynchronization = {
 		return {result: myArgs.result, resultConfirm: myArgs.resultConfirm};
 	},
 	
-	getCardDAVUrl: function (aUrl, aUser) {
-		aUrl = cardbookSynchronization.getSlashedUrl(aUrl);
-		if (aUrl.search(/\/dav\//) != -1) {
-			var relative = aUrl.match("(.*)/dav/(.*)");
-			if (relative && relative[1]) {
-				return relative[1] + "/dav/addressbooks/" + aUser;
-			}
-		} else if (aUrl.search(/\/carddav\//) != -1) {
-			var relative = aUrl.match("(.*)/carddav/(.*)");
-			if (relative && relative[1]) {
-				return relative[1] + "/carddav/addressbooks/" + aUser;
-			}
-		}
-		return "";
-	},
-
 	getSlashedUrl: function (aUrl) {
 		aUrl = aUrl.trim();
 		if (aUrl[aUrl.length - 1] != '/') {

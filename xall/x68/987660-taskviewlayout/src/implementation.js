@@ -133,6 +133,14 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             let taskContainer = window.document.getElementById('calendar-task-details-container');
             let taskAdditionBox = window.document.getElementById('task-addition-box');
             element.insertBefore(taskContainer, taskAdditionBox);
+           }
+           },
+          setSixteen: function() {
+            let windows = Services.wm.getEnumerator("mail:3pane");
+            while (windows.hasMoreElements()) {
+            let window = windows.getNext();
+            let taskAdditionBox = window.document.getElementById('task-addition-box');
+            if (taskAdditionBox.hidden == true) { taskAdditionBox.hidden = false; };
                     }
                 }
             }
@@ -148,6 +156,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
           var calendarTaskBox = Services.wm.getMostRecentWindow('mail:3pane').document.getElementById('calendar-task-box');
           var calendarTaskTree = Services.wm.getMostRecentWindow('mail:3pane').document.getElementById('calendar-task-tree');
           var calendarTaskDetailsContainer = Services.wm.getMostRecentWindow('mail:3pane').document.getElementById('calendar-task-details-container');
+          taskAddtionBox.hidden = 'false';
           calendarDisplayDeck.style.width = '50%';
           calendarContent.appendChild(window.document.getElementById('calendar-task-details-container'));
           calendarTaskBox.style.display = 'flex';

@@ -92,7 +92,7 @@ if ("undefined" == typeof(cardbookClipboard)) {
 
 		clipboardCanPaste: function(aType) {
             var flavors = cardbookClipboard.clipboardGetSupportedFlavors(aType);
-            return Services.clipboard.hasDataMatchingFlavors(flavors, flavors.length, Services.clipboard.kGlobalClipboard);
+            return Services.clipboard.hasDataMatchingFlavors(flavors, Services.clipboard.kGlobalClipboard);
 		},
 
 		clipboardGetData: function(aType) {
@@ -105,9 +105,8 @@ if ("undefined" == typeof(cardbookClipboard)) {
 
 			var flavor = {};
 			var data = {};
-			var len = {};
-			trans.getAnyTransferData(flavor, data, len);
-			return { flavor: flavor.value, data: data.value, length: len.value }; 
+			trans.getAnyTransferData(flavor, data);
+			return { flavor: flavor.value, data: data.value }; 
 		}
 	};
 };

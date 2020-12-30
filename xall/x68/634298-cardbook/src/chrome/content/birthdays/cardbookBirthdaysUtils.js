@@ -169,7 +169,9 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			}
 			
 			iCalString += "TRANSP:TRANSPARENT\n";
-			iCalString += "RRULE:FREQ=YEARLY\n";
+			if (cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.repeatingEvent")) {
+				iCalString += "RRULE:FREQ=YEARLY\n";
+			}
 
 			var dtstart = "DTSTART:";
 			var dtend = "DTEND:";
@@ -177,8 +179,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				dtstart = "DTSTART;TZID=" + cal.dtz.defaultTimezone.tzid + ":";
 				dtend = "DTEND;TZID=" + cal.dtz.defaultTimezone.tzid + ":";
 			}
-			var eventEntryWholeDay = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.eventEntryWholeDay");
-			if (eventEntryWholeDay) {
+			if (cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.eventEntryWholeDay")) {
 				iCalString += dtstart + aDate + "\n";
 				iCalString += dtend + aNextDate + "\n";
 			} else {
@@ -305,6 +306,10 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 					}
 				}
 				dateRef.setMonth(dateRef.getMonth() + 12);
+				// for repeating events one event is enough
+				if (cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.repeatingEvent")) {
+					return;
+				}
 			}
 		},
 	

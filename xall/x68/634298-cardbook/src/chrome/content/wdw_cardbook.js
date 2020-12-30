@@ -2709,6 +2709,10 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			wdw_cardbook.copyFieldValue(wdw_cardbook.currentType, label, wdw_cardbook.currentIndex, wdw_cardbook.currentValue);
 		},
 
+		copyPartialEntryFromTree: function (aPartialIndex) {
+			wdw_cardbook.copyPartialFieldValue(wdw_cardbook.currentType, wdw_cardbook.currentIndex, wdw_cardbook.currentValue, aPartialIndex);
+		},
+
 		copyFieldValue: function (aFieldName, aFieldLabel, aFieldIndex, aFieldValue, aFieldAllValue) {
 			var card = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
 			var dateFormat = cardbookRepository.getDateFormat(card.dirPrefId, card.version);
@@ -2756,6 +2760,17 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			// others
 			} else {
 				result = card[aFieldName].trim();
+			}
+			var message = cardbookRepository.extension.localeData.localizeMessage("lineCopied");
+			cardbookClipboard.clipboardSetText('text/unicode', result, message);
+		},
+
+		copyPartialFieldValue: function (aFieldName, aFieldIndex, aFieldValue, aPartialIndex) {
+			var card = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
+			var result = "";
+			// addresses
+			if (aFieldName == "adr") {
+				result = card[aFieldName][aFieldIndex][0][aPartialIndex];
 			}
 			var message = cardbookRepository.extension.localeData.localizeMessage("lineCopied");
 			cardbookClipboard.clipboardSetText('text/unicode', result, message);
@@ -3283,6 +3298,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		adrTreeContextShowing: function () {
 			wdw_cardbook.setCopyLabel('adr');
+			let adrElements = [ "PostOffice", "ExtendedAddr", "Street", "Locality", "Region", "PostalCode", "Country" ];
+			for (let element of adrElements) {
+				let label = cardbookRepository.extension.localeData.localizeMessage('adr' + element + 'Label');
+				wdw_cardbook.setElementIdLabelWithBundleArray('copyadr' + element + 'Tree', 'copyFieldValue', [ label ] );
+			}
 		},
 
 		telTreeContextShowing: function () {

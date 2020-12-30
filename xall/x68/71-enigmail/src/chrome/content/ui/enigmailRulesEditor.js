@@ -20,6 +20,7 @@ EnigInitCommon("enigmailRulesEditor");
 var EnigmailRules = ChromeUtils.import("chrome://enigmail/content/modules/rules.jsm").EnigmailRules;
 var EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 var EnigmailSearchCallback = ChromeUtils.import("chrome://enigmail/content/modules/searchCallback.jsm").EnigmailSearchCallback;
+var EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
 
 const INPUT = 0;
 const RESULT = 1;
@@ -33,6 +34,11 @@ function enigmailDlgOnLoad() {
   var enigmailSvc = GetEnigmailSvc();
   if (!enigmailSvc)
     return;
+
+  // hide PGP/MIME column on Postbox and Interlink
+  if (EnigmailCompat.isPostbox() || EnigmailCompat.isInterlink()) {
+    document.getElementById("pgpMime").setAttribute("collapsed", "true");
+  }
 
   var rulesListObj = {};
   if (EnigmailRules.getRulesData(rulesListObj)) {

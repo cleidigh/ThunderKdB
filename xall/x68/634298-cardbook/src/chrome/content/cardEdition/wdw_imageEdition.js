@@ -190,19 +190,21 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 						var myFile = data.data.QueryInterface(Components.interfaces.nsIFile);
 						wdw_imageEdition.addImageCardFromFileNext(myFile);
                     } else if (data.flavor === "text/unicode" || data.flavor === "text/plain") {
-                        var myText = data.data.QueryInterface(Components.interfaces.nsISupportsString).data;
-						if (myText.startsWith("https://") || myText.startsWith("http://")) {
-							wdw_imageEdition.addImageCardFromUrl(myText);
-						} else if (myText.startsWith("file:///")) {
-							var myFileURISpec = myText;
-							var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-							var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-							wdw_imageEdition.addImageCardFromFileNext(myFile);
-						} else if (myText.startsWith("/")) {
-							var myFileURISpec = "file://" + myText;
-							var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-							var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-							wdw_imageEdition.addImageCardFromFileNext(myFile);
+                        var myTextArray = data.data.QueryInterface(Components.interfaces.nsISupportsString).data.split("\n");
+                    	for (let myText of myTextArray) {
+							if (myText.startsWith("https://") || myText.startsWith("http://")) {
+								wdw_imageEdition.addImageCardFromUrl(myText);
+							} else if (myText.startsWith("file:///")) {
+								var myFileURISpec = myText;
+								var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+								var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+								wdw_imageEdition.addImageCardFromFileNext(myFile);
+							} else if (myText.startsWith("/")) {
+								var myFileURISpec = "file://" + myText;
+								var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+								var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
+								wdw_imageEdition.addImageCardFromFileNext(myFile);
+							}
 						}
                     }
                 }

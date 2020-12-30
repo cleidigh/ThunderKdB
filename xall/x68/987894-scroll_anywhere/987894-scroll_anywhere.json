@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12626/12626983.png?modified=1599932965"
         }
     ],
-    "average_daily_users": 67,
+    "average_daily_users": 75,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,32 +19,32 @@
     "contributions_url": "https://paypal.me/fastaddons/9",
     "created": "2020-09-12T17:16:39Z",
     "current_version": {
-        "id": 2474342,
+        "id": 2475010,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/scroll_anywhere/versions/2474342",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/scroll_anywhere/versions/2475010",
         "files": [
             {
-                "id": 1017504,
-                "created": "2020-09-26T10:15:35Z",
-                "hash": "sha256:06f7bad9682e39e39f6d2992829d7f747084f6aa633261461ca524dcc483ec77",
+                "id": 1018172,
+                "created": "2020-12-12T15:53:34Z",
+                "hash": "sha256:ccc955f168553831ef523011d022a3002837a908e89e311263b43a67e97d65c4",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 557817,
+                "size": 524051,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017504/scrollanywhere-8.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018172/scrollanywhere-8.6-tb.xpi?src=",
                 "permissions": [
-                    "compose",
-                    "messagesModify",
                     "storage",
                     "activeTab",
-                    "<all_urls>"
+                    "<all_urls>",
+                    "compose",
+                    "messagesModify"
                 ]
             }
         ],
@@ -57,11 +57,11 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "- fixed custom scrollbar style in message display window (in Thunderbird Beta 82)\n- added missing Slovak translations and fixed some grammar mistakes :)\n- added Thunderbird link to popup\n- improved popup icon styles"
+            "en-US": "- added scrolling for Google Sheets (this was crazy hard!)\n- fixed bug where scrollbar settings were applied even on disabled domains / URLs\n- added button to Popup window to temporarly show hidden scrollbars (if user has hidden scrollbars)\n- testing area in Options page now looks more like testing area (stripes!)\n- added performance optimization for super complex pages - if there is more than 10_000 elements on the page, cursor change will be disabled\n- removed old XML code again, this time we handle XML as normal HTML (when possible), this will fix some broken XML pages\n- fixed showing context menu when using scrolling with Right button and stopping scrolling with ESC key\n- fixed broken Right click / Copy (bad context menu without copy) - basically text got un-selected when on right-click when user enables scrolling with Right and Left button\n- fixed disabled icon (red) if page contains not-disabled frames (maybe those frames should be disabled as well?)\n- added Slovak translations and fixed some grammar mistakes :)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/scroll_anywhere/versions/8.5",
-        "version": "8.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/scroll_anywhere/versions/8.6",
+        "version": "8.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -84,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-09-26T10:20:03Z",
+    "last_updated": "2020-12-12T15:55:03Z",
     "name": {
         "ru": "ScrollAnywhere",
         "fr": "ScrollAnywhere",

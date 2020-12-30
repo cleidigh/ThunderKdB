@@ -1,5 +1,52 @@
 [
     {
+        "id": 2475010,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/scroll_anywhere/versions/2475010",
+        "files": [
+            {
+                "id": 1018172,
+                "created": "2020-12-12T15:53:34Z",
+                "hash": "sha256:ccc955f168553831ef523011d022a3002837a908e89e311263b43a67e97d65c4",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 524051,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018172/scrollanywhere-8.6-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "activeTab",
+                    "<all_urls>",
+                    "compose",
+                    "messagesModify"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7057,
+            "name": {
+                "en-US": "All Rights Reserved"
+            },
+            "text": null,
+            "url": null
+        },
+        "release_notes": {
+            "en-US": "- added scrolling for Google Sheets (this was crazy hard!)\n- fixed bug where scrollbar settings were applied even on disabled domains / URLs\n- added button to Popup window to temporarly show hidden scrollbars (if user has hidden scrollbars)\n- testing area in Options page now looks more like testing area (stripes!)\n- added performance optimization for super complex pages - if there is more than 10_000 elements on the page, cursor change will be disabled\n- removed old XML code again, this time we handle XML as normal HTML (when possible), this will fix some broken XML pages\n- fixed showing context menu when using scrolling with Right button and stopping scrolling with ESC key\n- fixed broken Right click / Copy (bad context menu without copy) - basically text got un-selected when on right-click when user enables scrolling with Right and Left button\n- fixed disabled icon (red) if page contains not-disabled frames (maybe those frames should be disabled as well?)\n- added Slovak translations and fixed some grammar mistakes :)"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/scroll_anywhere/versions/8.6",
+        "version": "8.6"
+    },
+    {
         "id": 2474342,
         "channel": "listed",
         "compatibility": {

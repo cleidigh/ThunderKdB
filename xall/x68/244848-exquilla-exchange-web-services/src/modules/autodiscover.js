@@ -34,7 +34,7 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
   {
     let status = 0;
     let displayName = "";
-    let urls = [];
+    let redirectCount = 0;
 
     // Bug 799234 added a check that the upload channel is rewound, but it does not appear
     //  to be and I am hitting an assertion. I believe there is a core bug that is causing
@@ -67,26 +67,24 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
     // bug 
     try
     {
-      let host = (/@(.*)/.exec(aEmail))[1];
+    while (redirectCount < 10) {
+      let host = (/@(.*)/.exec(eventListener.mEmail))[1];
+      let urls = [];
 
       // Because we support invalid SSL certificates (with confirmation), I want
       //  to change the order for autodiscover options to minimize the chance
       //  of being asked for confirmation of an invalid certificate.
 
-      // First, look for a SRV entry using the mesquilla external service
-      // (bug 14328 prevents this being done using Mozilla core code)
+      // First, look for a DNS SRV entry
       let adServerFromSRV = "";
-      let promiseGetSrv = new Promise(resolve => {
-        EwsAutoDiscover.getSrv(host, function(status, adServer) {
-          if (status == 200)
-          {
-            adServerFromSRV = adServer;
-            log.debug("getSrv returned " + adServer);
-          }
-          resolve();
-        });
-      });
-      await promiseGetSrv;
+      try {
+        let { DNS } = ChromeUtils.import("resource:///modules/DNS.jsm");
+        let SRV = await DNS.srv(Services.io.newURI("http://_autodiscover._tcp." + host).asciiHost);
+        adServerFromSRV = SRV[0].host;
+        log.debug("getSrv returned " + adServerFromSRV);
+      } catch (ex) {
+        // Some sort of DNS failure, e.g. no SRV record
+      }
 
       if (adServerFromSRV.length)
         urls.push("https://" + adServerFromSRV);
@@ -148,7 +146,7 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
         let originalUrl = url;
 
         // For some reason default redirect did not work reliably, so I manage it myself
-        for (let redirectCount = 0; redirectCount < 6; redirectCount++)
+        while (redirectCount < 10)
         { // inner loop of redirects
           eventListener.mUrl = url;
           // if the url is a simple http: we are just looking for redirect, so shorten the timeout
@@ -178,6 +176,7 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
               if (originalUrl.indexOf("http:") == 0)
                 originalUrl = url;
               log.config("redirecting to " + url + " originalUrl is now " + originalUrl);
+              redirectCount++;
               continue; // try redirect
             }
             else
@@ -199,6 +198,15 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
 
           if (status == 200)
           {
+            if (eventListener.mRedirectUrl)
+            {
+              url = eventListener.mRedirectUrl;
+              eventListener.mRedirectUrl = '';
+              log.config("redirecting to " + url);
+              redirectCount++;
+              continue; // try redirect
+            }
+
             log.config("request succeeded, ews url length=" + eventListener.mEwsUrl.length +
                       " contentType " + eventListener.mRequest.channel.contentType);
             // if parsed, show what we got
@@ -245,8 +253,21 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
           log.config('successful autodiscovery to url ' + url + ' with result ' + eventListener.mEwsUrl);
           break;
         }
+        if (eventListener.mRedirectEmail)
+        {
+          log.config('autodiscovery to url ' + url + ' redirected to addr ' + eventListener.mRedirectEmail);
+          break;
+        }
       } catch (e) { log.warn("autodiscovery inner error " + se(e));}}
-    }
+      if (eventListener.mRedirectEmail)
+      {
+        eventListener.mEmail = eventListener.mRedirectEmail;
+        eventListener.mRedirectEmail = '';
+        redirectCount++;
+        continue;
+      }
+      break;
+    }}
     catch (e) { log.warn("autodiscovery outer error " + se(e));}
     finally {
       Services.obs.removeObserver(observer, "http-on-modify-request");
@@ -294,6 +315,8 @@ function EventListener(aEmail, aUsername, aDomain, aPassword, aSavePassword)
   this.mInternalEwsUrl = ''; // the internal EWS url
   this.mEwsOWAGuessUrl = ''; // ews url guess from OWA
   this.mAuthMethod = Ci.nsMsgAuthMethod.passwordCleartext;
+  this.mRedirectUrl = '';
+  this.mRedirectEmail = '';
   this.mDisplayName = '';
   this.mFoundAutodiscover = false;
   this.mCallback = null;
@@ -413,7 +436,18 @@ EventListener.prototype =
           if (mainElement && mainElement.length)
           {
             this.mFoundAutodiscover = true;
-            this.mDisplayName = xml.getElementsByTagName("DisplayName")[0].textContent;
+            let redirectUrl = xml.getElementsByTagName("RedirectUrl");
+            if (redirectUrl.length) {
+              this.mRedirectUrl = redirectUrl[0].textContent;
+            }
+            let redirectAddr = xml.getElementsByTagName("RedirectAddr");
+            if (redirectAddr.length) {
+              this.mRedirectEmail = redirectAddr[0].textContent;
+            }
+            let displayName = xml.getElementsByTagName("DisplayName");
+            if (displayName.length) {
+              this.mDisplayName = displayName[0].textContent;
+            }
             protocols = xml.getElementsByTagName("Protocol");
           }
           else
@@ -699,98 +733,8 @@ EventListener.prototype =
   cancelTimeout: function _cancelTimeout() { this.mTimeoutTimer.cancel();},
 };
 
-// Async manager to manage inquiries to Mesquilla's DNS SRV lookup service
-function DnsEventListener(aHost, aCallback)
-{
-  this.mRequest = null;
-  this.mHost = aHost;
-  this.mStatus = 0;
-  this.mCallback = aCallback;
-}
-
-DnsEventListener.prototype = 
-{
-  sendRequest: function sendRequest()
-  {
-    this.mRequest = new XMLHttpRequest();
-    // Create the URL
-    let url = "http://node.mesquilla.com/srv?host=" + this.mHost;
-    
-    this.mRequest.addEventListener("load", this, false);
-    this.mRequest.addEventListener("error", this, false);
-    this.mRequest.addEventListener("abort", this, false);
-    this.mRequest.addEventListener("timeout", this, false);
-    this.mRequest.open("GET", url, true);
-
-    this.mRequest.channel.notificationCallbacks = this;
-    this.mRequest.setRequestHeader("Accept", "application/json");
-    this.mRequest.timeout = 5000; // In case my node goes down
-    this.mRequest.send();
-  },
-
-  handleEvent: function handleEvent(event)
-  {
-    log.debug('dnssrv handle event ' + event.type + ' readyState is ' + this.mRequest.readyState);
-    try {
-      if (event.type == "load" || event.type == "error" || event.type == "abort" || event.type == "timeout")
-      {
-        this.mStatus = this.mRequest.status;
-        log.debug('dnssrv request status: ' + this.mRequest.status + ' channel status ' + CN(this.mRequest.channel.status));
-      }
-    }
-    catch (e) {re(e);}
-    finally {this.mCallback();}
-  },
-
-  getInterface: function _getInterface(iid)
-  {
-    return this.QueryInterface(iid);
-  },
-
-  // nsISupports
-  QueryInterface: function(iid) {
-    if (!iid.equals(Ci.nsIInterfaceRequestor) &&
-        !iid.equals(Ci.nsISupports))
-      throw Components.results.NS_ERROR_NO_INTERFACE;
-    return this;
-  },
-};
-
-// use an external service to get a SRV record
-function getSrv(aHost, aCallback)
-{
-  async function coroutine()
-  {
-    let adServer = "";
-    let dnsEventListener;
-    try {
-      let promiseDnsEvent = new Promise(resolve => {
-        dnsEventListener = new DnsEventListener(aHost, resolve);
-        dnsEventListener.sendRequest();
-        log.debug("get SRV record for " + aHost);
-      });
-      await promiseDnsEvent;
-
-      // Parse the result into a single server
-      if (dnsEventListener.mStatus == 200)
-      try {
-        let addresses = JSON.parse(dnsEventListener.mRequest.responseText);
-        if (addresses && addresses.length)
-        {
-          adServer = addresses[0].name;
-          log.info("DNS SRV found an autodiscover server at " + adServer);
-        }
-      } catch(e) {re(e);}
-    }
-    catch (e) { log.warn("dnssrv error " + e);}
-    finally {aCallback(dnsEventListener.mStatus, adServer);}
-  }
-  coroutine();
-}
-
 // publically accessible items
 EwsAutoDiscover.doAutodiscover = doAutodiscover;
-EwsAutoDiscover.getSrv = getSrv;
 
 // helper functions
 function hostFromSpec(aSpec)

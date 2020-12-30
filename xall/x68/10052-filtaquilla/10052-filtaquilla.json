@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
         }
     ],
-    "average_daily_users": 5458,
+    "average_daily_users": 10526,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,30 +28,30 @@
     "contributions_url": "https://www.paypal.com/donate?hosted_button_id=RH438A7X9SGRA",
     "created": "2008-12-18T00:17:43Z",
     "current_version": {
-        "id": 2474969,
+        "id": 2474988,
         "compatibility": {
             "thunderbird": {
-                "max": "73.*",
-                "min": "68.0"
+                "max": "78.*",
+                "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filtaquilla/versions/2474969",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filtaquilla/versions/2474988",
         "files": [
             {
-                "id": 1018131,
-                "created": "2020-12-08T15:41:33Z",
-                "hash": "sha256:a04cef42f95ce485f0fb5846c790da137dd3ff72f1778ce23b94d140d045c702",
-                "is_restart_required": true,
+                "id": 1018150,
+                "created": "2020-12-10T14:54:46Z",
+                "hash": "sha256:3d9e86459081055f15a2b5416a5e08c7d2a6d750b0c4682dc9f6dd4d2bba0dae",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 95708,
+                "size": 143540,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018131/filtaquilla-2.1.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018150/filtaquilla-3.0.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -81,11 +81,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Going forward most bugfixes / new features will be exclusively available for Thunderbird 78 - some changes may be backported to Thunderbird 68. The reason for this is that through architectural changes on the Mozilla code platform the code for Thunderbird 60 and earlier is substantially different.\n\n<ul><li> Currently working on a version for Thunderbird 78  - you can already <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/releases/\">get prereleases on my github</a>. Complete conversion is discussed at <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/64\">[issue 64]</a></li><li> 2.1.2 fixed a problem in manifest file (stric_max_verseion) that wouldn't allow it to update existing versions.</li><li> 2.1.1 added strict_max_version to avoid this Add-on being installed in Tb78 - where it would be incompatible</li><li> Added Icons and fixed look on Address book picker in Filter Editor</li><li> Corrected a string in german locale from \"Nicht ändern\" to \"Nicht benachrichtigen\"</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/67\">[issue 67]</a> Help links in options dialog were misdirected to the wrong page</li></ul>\n<strong>Support My Work</strong>\n\nAs I am often asked about added features for filter conditions and actions for my Add-on <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/quickfilters/\">quickFilters</a>. FiltaQuilla is a good location for extending Filter behavior. \n\nIf you want to <b>support the FiltaQuilla project</b>, please install quickFilters and \n<strong>purchase a <a rel=\"nofollow\" href=\"http://quickfilters.mozdev.org/premium.html\">quickFilters Pro</a> license.</strong>.\n\nYou can now also <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/filtaquilla.html#donate\">donate directly here</a>.\n\nI am keeping the license for FiltaQuilla as GPL 3.0, free to download and use."
+            "en-US": "FiltaQuilla is now compatible with Thunderbird 78. Again, FiltaQuilla had to be largely rewritten for Thunderbird 78, because support for some key technologies was deprecated by Mozilla (bindings was central to making the filter editor work, so there was numerous days of work and guessing necessary to get it back on track. Many thanks to John Bieling from Thunderbird for helping especially with the very problematic Filter Editor.\n\nGoing forward most bugfixes / new features will be exclusively available for Thunderbird 78 - but there may be some minor backports for Thunderbird 68. The reason for this is that through architectural changes on the Mozilla code platform the code for Thunderbird 68 and earlier is substantially different.\n\nIf you would like to support FiltaQuilla with donation you can now <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/filtaquilla.html#donate\">do so here</a>\n\n<ul><li> Check the new <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues\">Issue Tracker</a> for open problems and to add feature requests.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/64\">[issue 64]</a> Make FiltaQuilla compatible with Thunderbird 78 ESR. The gruelling detail on all the necessary work can be read there.</li><li> All bindings were replaced with pure JavaScript. This affected editing <i>all</i> conditions that FiltaQuilla adds to the Filter Editor.</li><li> Printing didn't work anymore &lt;/p&gt;</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/45\">[issue 45]</a> Fixed \"Move later\" / \"Copy as Read\" For Thunderbird versions &gt; 64 </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/76\">[issue 76]</a> Fixed detach attachments - if the attachment was already removed then no empty file is generated, but a message is shown in error console showing the \"last seen location\" where the attachment was originally detached to. </li><li> Fixed behavior of opening FiltaQuilla page jumping to in-page links when a tab with the same basic URL is already shown</li><li> 3.0.1 - version bump because I had to rerelease 2.1.2 fixing a syntax error in manifest.json </li><li> 3.0.3 - fixed firstRun code so that support site is loaded on install / update</li></ul>\n<strong>Support My Work</strong>\n\nAs I am often asked about added features for filter conditions and actions for my Add-on <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/quickfilters/\">quickFilters</a> - FiltaQuilla is a better location for extending Filter behavior - specifically adding new types of Actions and Conditions. \n\nIf you want to <b>support the FiltaQuilla project</b>, please install quickFilters and \n<strong>purchase a <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/premium.html\">quickFilters Pro</a> license.</strong>\n\nYou can now also <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/filtaquilla.html#donate\">donate directly here</a>.\n\nI am keeping the license for FiltaQuilla as GPL 3.0, free to download and use."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filtaquilla/versions/2.1.2",
-        "version": "2.1.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filtaquilla/versions/3.0.3",
+        "version": "3.0.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -110,7 +110,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-08T19:17:14Z",
+    "last_updated": "2020-12-11T09:29:28Z",
     "name": {
         "en-US": "FiltaQuilla"
     },
@@ -182,7 +182,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.04077,
+        "bayesian_average": 4.04076,
         "count": 93,
         "average": 4.0538,
         "text_count": 93
@@ -214,9 +214,11 @@
     "xpilib": {
         "ext_comp": {
             "mext": true,
-            "comp68": true,
             "comp69plus": true,
+            "comp78plus": true,
             "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-12-13T17:09:10Z",
             "comp60pv": true,
             "comp60pv_date": "2018-11-10T15:36:00Z"
         }

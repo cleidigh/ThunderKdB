@@ -99,7 +99,7 @@ var EnigmailConstants = {
   DECRYPTION_INCOMPLETE: 0x00008000,
   DECRYPTION_FAILED: 0x00010000,
   DECRYPTION_OKAY: 0x00020000,
-  MISSING_MDC: 0x00040000, // indicates missing or bad MDC
+  MISSING_MDC: 0x00040000,
   TRUSTED_IDENTITY: 0x00080000,
   PGP_MIME_SIGNED: 0x00100000,
   PGP_MIME_ENCRYPTED: 0x00200000,
@@ -136,7 +136,7 @@ var EnigmailConstants = {
   CARD_PIN_UNBLOCK: 2,
   CARD_ADMIN_PIN_CHANGE: 3,
 
-  /* Keyserver error codes */
+  /* Keyserver error codes (in keyserver.jsm) */
   KEYSERVER_ERR_ABORTED: 1,
   KEYSERVER_ERR_SERVER_ERROR: 2,
   KEYSERVER_ERR_SECURITY_ERROR: 3,
@@ -165,11 +165,5 @@ var EnigmailConstants = {
   ADDON_DOWNGRADE: 8, // The add-on is being downgraded.
 
   /* Protected subject replacement as specified in Protected Headers Spec, draft 02*/
-  PROTECTED_SUBJECT: "...",
-
-  /* Reason why OpenPGP key needs to be decrypted */
-  KEY_DECRYPT_REASON_ENCRYPTED_MSG: 1,
-  KEY_DECRYPT_REASON_SIGN_MSG: 2,
-  KEY_DECRYPT_REASON_SIGNCRYPT_MSG: 3,
-  KEY_DECRYPT_REASON_MANIPULATE_KEY: 4
+  PROTECTED_SUBJECT: "..."
 };

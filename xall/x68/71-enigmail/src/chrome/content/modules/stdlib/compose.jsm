@@ -33,8 +33,13 @@ var MailServices;
 try {
   MailServices = ChromeUtils.import("resource:///modules/MailServices.jsm").MailServices;
 }
-catch (x){
-  MailServices = ChromeUtils.import("resource:///modules/mailServices.js").MailServices;
+catch (x) {
+  try {
+    MailServices = ChromeUtils.import("resource:///modules/MailServices.js").MailServices;
+  }
+  catch(x) {
+    MailServices = ChromeUtils.import("resource://gre/modules/mailServices.js").MailServices;
+  }
 }
 
 const {

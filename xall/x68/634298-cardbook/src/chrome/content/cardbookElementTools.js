@@ -148,22 +148,25 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				let idArray = this.id.split('_');
 				let type = idArray[0];
 				let index = idArray[1];
-				let prevIndex = index - 1;
+				let prevIndex = parseInt(index) - 1;
+				let nextIndex = parseInt(index) + +1;
+				document.getElementById(type + "_" + index + "_removeButton").disabled = false;
 				if (this.value == "") {
 					document.getElementById(type + "_" + index + "_addButton").disabled = true;
-					document.getElementById(type + "_" + index + "_removeButton").disabled = true;
 				} else {
 					document.getElementById(type + "_" + index + "_addButton").disabled = false;
-					document.getElementById(type + "_" + index + "_removeButton").disabled = false;
 				}
 				document.getElementById(type + "_" + index + "_downButton").disabled = true;
 				document.getElementById(type + "_" + index + "_upButton").disabled = true;
 				if (document.getElementById(type + "_" + prevIndex + "_addButton")) {
 					document.getElementById(type + "_" + prevIndex + "_addButton").disabled = true;
-					if (this.value != "") {
-						document.getElementById(type + "_" + prevIndex + "_downButton").disabled = false;
-						document.getElementById(type + "_" + index + "_upButton").disabled = false;
-					}
+					document.getElementById(type + "_" + prevIndex + "_downButton").disabled = false;
+					document.getElementById(type + "_" + index + "_upButton").disabled = false;
+				}
+				if (document.getElementById(type + "_" + nextIndex + "_addButton")) {
+					document.getElementById(type + "_" + index + "_addButton").disabled = true;
+					document.getElementById(type + "_" + index + "_downButton").disabled = false;
+					document.getElementById(type + "_" + nextIndex + "_upButton").disabled = false;
 				}
 			};
 			aKeyTextBox.addEventListener("input", checkKeyTextBox, false);

@@ -61,14 +61,13 @@ QuickFolders.ChangeOrder = {
 		let rows = this.$('QuickFolders-change-order-grid-rows'),
 		    row = document.createXULElement("row"),
 		    folderLabel = document.createXULElement("label");
-		// folderLabel.appendChild(document.createTextNode(label));
-    folderLabel.textContent = label;
+		folderLabel.appendChild(document.createTextNode(label));
 		row.appendChild(folderLabel);
 
 		let buttonUp = document.createXULElement("button");
 		buttonUp.className = "order-button-up";
 
-		buttonUp.setAttribute("label",this.upString);
+		buttonUp.setAttribute("label", this.upString);
     buttonUp.textContent = this.upString; // ugly hack for borked Tb78, no idea why no label shows...
     
 		buttonUp.linkedFolder = folder;
@@ -77,7 +76,7 @@ QuickFolders.ChangeOrder = {
 
 		let buttonDown = document.createXULElement("button");
 		buttonDown.className = "order-button-down";
-		buttonDown.setAttribute("label",this.downString);
+		buttonDown.setAttribute("label", this.downString);
     buttonDown.textContent = this.downString; // ugly hack for borked Tb78, no idea why no label shows...
     
 		buttonDown.linkedFolder = folder;

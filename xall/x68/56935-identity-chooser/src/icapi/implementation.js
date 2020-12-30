@@ -2,155 +2,189 @@ var { ExtensionCommon } = ChromeUtils.import("resource://gre/modules/ExtensionCo
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { EventEmitter } = ChromeUtils.import("resource://gre/modules/EventEmitter.jsm");
 
+var HTB = {};
 
-class IcButton {
-  constructor(action, buttonId, popupId) {
-    console.debug('IcButton#constructor -- begin');
-    console.debug(`IcButton#constructor: ${action}, ${buttonId}, ${popupId}`);
+class IcButton2 {
+  constructor(action, buttonId, innerButtonId = null) {
+    console.debug('IcButton2#constructor -- begin');
+    console.debug(`IcButton2#constructor: ${action}, ${buttonId}`);
 
     this.action = action;
     this.buttonId = buttonId;
-
-    if(popupId == null) {
-      this.popupId = buttonId + "Popup";
-    } else {
-      this.popupId = popupId;
-    }
+    this.innerButtonId = innerButtonId;
 
     this.identities = [];
     this.isAttached = false;
+    this.keyCommand = null;
+    this.keyOnCommand = null;
+    this.eventListeners = [];
 
-    console.debug('IcButton#constructor -- end');
+    console.debug('IcButton2#constructor -- end');
   }
 
   attachToWindow(window) {
-    console.debug("IcButton#attachToWindow -- begin");
+    console.debug("IcButton2#attachToWindow -- begin");
 
     this.window = window;
 
-    console.debug(`IcButton#attachToWindow: find button: ${this.buttonId}`);
-    this.domButton = this.findButton(this.window, this.buttonId);
+    console.debug(`IcButton2#attachToWindow: find button: ${this.buttonId}`);
 
-    if(this.domButton) {
-      console.debug("IcButton#attachToWindow: found button: ", this.domButton);
-      //
-      // Check if Button has already been converted into menu
-      if(this.domButton.hasAttribute("type") &&
-         this.domButton.getAttribute("type") == "menu") {
-        console.debug("IcButton#attachToWindow: button already turned into menu");
-        this.identityPopup = window.document.getElementById(this.popupId);
-      } else {
-        console.debug("IcButton#attachToWindow: convert button into menu");
-        this.setupButton(this.window, this.domButton);
+    var menu = HTB.hackToolbarbutton.getMenupopupElement(this.window,
+                                                         this.buttonId);
 
-        console.debug("IcButton#attachToWindow: create popup menu");
-        this.identityPopup = this.createPopupMenu(this.window, this.popupId);
+    HTB.hackToolbarbutton.allowDefaultAction(this.window,
+                                             this.buttonId,
+                                             false,
+                                             this.innerButtonId);
 
-        console.debug("IcButton#attachToWindow: add popup menu to button");
-        this.domButton.appendChild(this.identityPopup);
-      }
+    if(menu) {
+      menu.removeAttribute("oncommand");
 
-      console.debug("IcButton#attachToWindow: add popupshowing event listener");
-      this.identityPopup.addEventListener("popupshowing",
-                                          () => this.onPopupShowing(),
-                                          false);
+      this.eventListeners["popupshowing"] = () => this.onPopupShowing();
+      menu.addEventListener("popupshowing",
+                            this.eventListeners["popupshowing"],
+                            false);
+
+      this.eventListeners["command"] = (event) => this.identityClicked(event);
+      menu.addEventListener("command",
+                            this.eventListeners["command"],
+                            true);
 
       this.isAttached = true;
+
+      this.onPopupShowing();
     }
 
-    console.debug("IcButton#attachToWindow - end");
+    console.debug("IcButton2#attachToWindow - end");
   }
 
-  findButton(window, buttonId) {
-    return window.document.getElementById(buttonId);
+  detachFromWindow() {
+    console.debug(`IcButton2#detachFromWindow: find button: ${this.buttonId}`);
+
+    var menu = HTB.hackToolbarbutton.getMenupopupElement(this.window,
+                                                         this.buttonId);
+
+    if(menu) {
+      menu.removeEventListener("popupshowing",
+                               this.eventListeners["popupshowing"],
+                               false);
+      menu.removeEventListener("command",
+                               this.eventListeners["command"],
+                               true);
+    }
+
+    for (let identity of this.identities) {
+      HTB.hackToolbarbutton.removeMenuitem(this.window,
+                                           this.buttonId,
+                                           "identitychooser-" + this.buttonId + "-" +identity.id);
+    }
   }
 
-  setupButton(window, btn) {
-    console.debug("IcButton#setupButton -- start");
+  attachKeyToPopup(window, keyId) {
+    var keyElement = window.document.getElementById(keyId);
+    var menu = HTB.hackToolbarbutton.getMenupopupElement(window,
+                                                         this.buttonId);
+    if(keyElement && menu) {
+      this.keyCommand = keyElement.getAttribute("command");
+      this.keyOnCommand = keyElement.getAttribute("oncommand");
+      keyElement.removeAttribute("command");
+      keyElement.removeAttribute("oncommand");
 
-    //
-    // Remove default command handler
-    console.debug("IcButton#setupButton: remove old oncommand handler");
-    btn.removeAttribute("oncommand");
 
-    //
-    // Turn the button into a menu and add drop marker.
-    console.debug("IcButton#setupButton: convert to menu, add dropmarker");
-    btn.setAttribute("type", "menu");
-    btn.setAttribute("wantdropmarker", "true");
-    btn.appendChild(window.MozXULElement.parseXULToFragment(
-      `<dropmarker type="menu" class="toolbarbutton-menu-dropmarker"/>`));
+      var modifiers = keyElement.getAttribute("modifiers");
+      var key = keyElement.getAttribute("key");
 
-    console.debug("IcButton#setupButton -- end");
-    return btn;
+      this.openPopupKey =
+        modifiers.includes("shift") ? key.toUpperCase() : key.toLowerCase();
+
+      this.eventListeners["keyup"] = (event) => this.keyPressed(event);
+      window.addEventListener('keyup', this.eventListeners["keyup"]);
+    }
   }
 
-  createPopupMenu(window, popupId) {
-    console.debug("IcButton#createPopupMenu -- begin");
+  detachKeyFromPopup(keyId) {
+    var keyElement = this.window.document.getElementById(keyId);
 
-    var popup = window.document.createXULElement("menupopup");
-    popup.setAttribute("id", popupId);
+    if(keyElement) {
+      if(this.keyCommand) {
+        keyElement.setAttribute("command", this.keyCommand);
+      }
 
-    console.debug("IcButton#createPopupMenu: created popup: ", popup);
+      if(this.keyOnCommand) {
+        keyElement.setAttribute("oncommand", this.keyOnCommand);
+      }
 
-    console.debug("IcButton#createPopupMenu -- end");
-    return popup;
+      if(this.eventListeners["keyup"]) {
+        this.window.removeEventListener('keyup', this.eventListeners["keyup"]);
+      }
+    }
+  }
+
+  keyPressed(event) {
+    if(event.ctrlKey && (event.key == this.openPopupKey)) {
+      this.window.document.getElementById(this.buttonId).open = true;
+    }
   }
 
   addIdentity(identity) {
-    console.debug("IcButton#addIdentity -- begin");
-    console.debug("IcButton#addIdentity: identity:", identity);
+    console.debug("IcButton2#addIdentity -- begin");
+    console.debug("IcButton2#addIdentity: identity:", identity);
 
     this.identities.push(identity);
 
-    console.debug("IcButton#addIdentity -- end");
+    console.debug("IcButton2#addIdentity -- end");
   }
 
   onPopupShowing() {
-    console.debug("IcButton#onPopupShowing -- begin");
+    console.debug("IcButton2#onPopupShowing -- begin");
 
     if(this.isAttached) {
-      console.debug("IcButton#onPopupShowing: clear popup");
+      console.debug("IcButton2#onPopupShowing: clear popup");
       this.clearIdentityPopup();
 
       for (let identity of this.identities) {
-        var identityMenuItem = this.window.document.createXULElement("menuitem");
-        identityMenuItem.setAttribute("label",
-                                      identity.label);
-        identityMenuItem.setAttribute("value",
-                                      "identitychooser-" + identity.id);
-        identityMenuItem.addEventListener("command",
-                                          (event) => this.identityClicked(event),
-                                          false);
+        HTB.hackToolbarbutton.addMenuitem(this.window,
+                                          this.buttonId,
+                                          "identitychooser-" + this.buttonId + "-" +identity.id,
+                                          {
+                                            label: identity.label,
+                                            value: "identitychooser-" + identity.id
+                                          });
 
-        console.debug("IcButton#onPopupShowing: add identity to menu: ", identity);
-        this.identityPopup.appendChild(identityMenuItem);
+        console.debug("IcButton2#onPopupShowing: add identity to menu: ", identity);
       }
+
+      HTB.hackToolbarbutton.allowDefaultAction(this.window,
+                                               this.buttonId,
+                                               false);
     }
 
-    console.debug("IcButton#onPopupShowing -- end");
+    console.debug("IcButton2#onPopupShowing -- end");
   }
 
   clearIdentityPopup() {
-    for(let i = this.identityPopup.childNodes.length - 1; i >= 0; i--) {
-      let child = this.identityPopup.childNodes.item(i)
+    var menu = HTB.hackToolbarbutton.getMenupopupElement(this.window,
+                                                         this.buttonId);
+
+    for(let i = menu.childNodes.length - 1; i >= 0; i--) {
+      let child = menu.childNodes.item(i)
 
       // Remove menuitems created by identitychooser (child.value
       //   starts with "identitychooser-" or
       if((child.hasAttribute("value") &&
           child.getAttribute("value").indexOf("identitychooser-") > -1)) {
-        this.identityPopup.removeChild(child);
+        menu.removeChild(child);
       }
     }
   }
 
   identityClicked(event) {
-    console.debug("IcButton#identityClicked -- begin");
+    console.debug("IcButton2#identityClicked -- begin");
 
     event.stopPropagation();
     event.preventDefault();
 
-    let src = event.currentTarget;
+    let src = event.target;
     let info = [];
 
     if(event.shiftKey) {
@@ -176,87 +210,168 @@ class IcButton {
                         this.action,
                         info);
 
-    console.debug("IcButton#identityClicked -- end");
+    console.debug("IcButton2#identityClicked -- end");
 
     return false;
   }
+}
 
-  keyPressed(event) {
-    if(event.ctrlKey && (event.key == this.openPopupKey.toLowerCase() ||
-                         event.key == this.openPopupKey.toUpperCase())) {
-      this.window.document.getElementById(this.buttonId).open = true;
-    }
+class MainToolbarForwardButton extends IcButton2 {
+  constructor(action, buttonId) {
+    super(action, buttonId);
   }
 
-  attachKeyToPopup(window, keyId) {
-    var keyElement = window.document.getElementById(keyId);
+  attachToWindow(window) {
+    console.debug("MainToolbarForwardButton#attachToWindow -- begin");
 
-    if(keyElement) {
-      keyElement.removeAttribute("command");
-      this.openPopupKey = keyElement.getAttribute("key");
+    super.attachToWindow(window);
 
-      window.addEventListener('keyup', (event) => this.keyPressed(event));
-    }
+    HTB.hackToolbarbutton.allowDefaultAction2(this.window,
+                                              this.buttonId,
+                                              false);
+
+    HTB.hackToolbarbutton.hideMenuitem(this.window,
+                                       this.buttonId,
+                                       "button-ForwardAsInlineMenu");
+
+    HTB.hackToolbarbutton.hideMenuitem(this.window,
+                                       this.buttonId,
+                                       "button-ForwardAsAttachmentMenu");
+  }
+
+  detachFromWindow() {
+    console.debug("MainToolbarForwardButton#detachToWindow -- begin");
+
+    super.detachFromWindow();
+
+    HTB.hackToolbarbutton.allowDefaultAction2(this.window,
+                                              this.buttonId,
+                                              true);
+
+    HTB.hackToolbarbutton.unhideMenuitem(this.window,
+                                         this.buttonId,
+                                         "button-ForwardAsInlineMenu");
+
+    HTB.hackToolbarbutton.unhideMenuitem(this.window,
+                                         this.buttonId,
+                                         "button-ForwardAsAttachmentMenu");
   }
 }
 
-class SmartReplyButton extends IcButton {
-  constructor(action, buttonId, popupId) {
-    super(action, buttonId, popupId);
+class ReplyAllButton extends IcButton2 {
+  constructor(action, buttonId) {
+    super(action, buttonId);
   }
 
-  findButton(window, buttonId) {
-    console.debug("SmartReplyButton#findButton -- start");
-    console.debug(`SmartReplyButton#findButton: buttonId: ${buttonId}`);
+  attachToWindow(window) {
+    console.debug("ReplyAllButton#attachToWindow -- begin");
 
-    var smartReplyBtn = window.document.getElementById("hdrSmartReplyButton");
-    var orgReplyBtn = window.document.getElementById(buttonId);
-    var label = orgReplyBtn.getAttribute("label");
-    var tooltipText = orgReplyBtn.getAttribute("tooltiptext");
+    super.attachToWindow(window);
 
-    var newReplyBtn = window.MozXULElement.parseXULToFragment(
-      `<toolbarbutton id="${buttonId}"
-                      wantdropmarker="true"
-                      label="${label}"
-                      tooltiptext="${tooltipText}"
-                      class="toolbarbutton-1 msgHeaderView-button hdrReplyButton hdrReplyAllButton"/>`);
+    HTB.hackToolbarbutton.allowDefaultAction2(this.window,
+                                              this.buttonId,
+                                              false);
 
-    smartReplyBtn.replaceChild(newReplyBtn, orgReplyBtn);
+    HTB.hackToolbarbutton.hideMenuitem(this.window,
+                                       this.buttonId,
+                                       "hdrReplyAll_ReplyAllSubButton");
 
-    console.debug("SmartReplyButton#findButton -- end");
-    return window.document.getElementById(buttonId);
+    HTB.hackToolbarbutton.hideMenuitem(this.window,
+                                       this.buttonId,
+                                       "hdrReplyAllSubSeparator");
+
+    HTB.hackToolbarbutton.hideMenuitem(this.window,
+                                       this.buttonId,
+                                       "hdrReplySubButton");
   }
 
-  setupButton(window, btn) {
-    //
-    // Turn the button into a menu
-    btn.setAttribute("type", "menu");
+  detachFromWindow() {
+    console.debug("ReplyAllButton#detachToWindow -- begin");
 
-    return btn;
-  }
+    super.detachFromWindow();
 
-  createPopupMenu(window, popupId) {
-    console.debug("SmartReplyButton#createPopupMenu -- start");
-    console.debug(`SmartReplyButton#createPopupMenu: popupId: ${popupId}`);
+    HTB.hackToolbarbutton.allowDefaultAction2(this.window,
+                                              this.buttonId,
+                                              true);
 
-    var popup = window.document.createXULElement("menupopup");
-    popup.setAttribute("id", popupId);
+    HTB.hackToolbarbutton.unhideMenuitem(this.window,
+                                         this.buttonId,
+                                         "hdrReplyAll_ReplyAllSubButton");
 
-    console.debug("SmartReplyButton#createPopupMenu -- end");
-    return popup;
+    HTB.hackToolbarbutton.unhideMenuitem(this.window,
+                                         this.buttonId,
+                                         "hdrReplyAllSubSeparator");
+
+    HTB.hackToolbarbutton.unhideMenuitem(this.window,
+                                         this.buttonId,
+                                       "hdrReplySubButton");
   }
 }
 
 var icEventEmitter = new EventEmitter();
-var composeButton = new IcButton("compose", "button-newmsg");
-var replyButton = new IcButton("reply", "hdrReplyButton");
-var replyToSenderButton = new IcButton("reply", "hdrReplyToSenderButton");
-var replyAllButton = new SmartReplyButton("replyAll",
-                                          "hdrReplyAllButton",
-                                          "hdrReplyAllDropdown");
-var forwardButton = new IcButton("forward", "hdrForwardButton");
+var replyButton = new IcButton2("reply", "hdrReplyButton");
+var replyToSenderButton = new IcButton2("reply", "hdrReplyToSenderButton");
+var replyAllButton = new ReplyAllButton("replyAll",
+                                         "hdrReplyAllButton",
+                                         "hdrReplyAllDropdown");
+var forwardButton = new IcButton2("forward", "hdrForwardButton");
+
+// main toolbar buttons
+var composeButton = new IcButton2("compose", "button-newmsg");
+var mainToolbarReplyButton = new IcButton2("reply", "button-reply");
+var mainToolbarReplyAllButton = new IcButton2("replyAll", "button-replyall");
+var mainToolbarForwardButton = new MainToolbarForwardButton("forward",
+                                                            "button-forward");
+
 var icApi = class extends ExtensionCommon.ExtensionAPI {
+  onStartup() {
+    console.debug('icApi#onStartup');
+  }
+  onShutdown(isAppShutdown) {
+    console.debug('icApi#onShutdown');
+    if (isAppShutdown) {
+      return; // the application gets unloaded anyway
+    }
+
+    console.debug('icApi#onShutdown: composeButton detachFromWindow');
+    composeButton.detachFromWindow();
+    mainToolbarReplyButton.detachFromWindow();
+    mainToolbarReplyAllButton.detachFromWindow();
+    mainToolbarForwardButton.detachFromWindow();
+
+    composeButton.detachKeyFromPopup("key_newMessage2");
+    mainToolbarReplyButton.detachKeyFromPopup("key_reply");
+    mainToolbarReplyAllButton.detachKeyFromPopup("key_replyall");
+    mainToolbarForwardButton.detachKeyFromPopup("key_forward");
+
+    console.debug('icApi#onShutdown: replyButton detachFromWindow');
+    replyButton.detachFromWindow();
+
+    console.debug('icApi#onShutdown: replyToSenderButton detachFromWindow');
+    replyToSenderButton.detachFromWindow();
+
+    console.debug('icApi#onShutdown: replyAllButton detachFromWindow');
+    replyAllButton.detachFromWindow();
+
+    console.debug('icApi#onShutdown: forwardButton detachFromWindow');
+    forwardButton.detachFromWindow();
+
+    // Unload JSMs of this add-on
+    const Cu = Components.utils;
+    const rootURI = this.extension.rootURI.spec;
+    for (let module of Cu.loadedModules) {
+      if (module.startsWith(rootURI)) {
+        Cu.unload(module);
+      }
+    }
+    // Clear caches that could prevent upgrades from working properly
+    const { Services } = ChromeUtils.import(
+      "resource://gre/modules/Services.jsm");
+    Services.obs.notifyObservers(null, "startupcache-invalidate", null);
+  }
   getAPI(context) {
+    Services.scriptloader.loadSubScript(context.extension.getURL("hackToolbarbutton.js"), HTB, "UTF-8");
+
     return {
       icApi: {
         async initComposeMessageAction(windowId) {
@@ -280,16 +395,23 @@ var icApi = class extends ExtensionCommon.ExtensionAPI {
           replyToSenderButton.attachToWindow(window);
           replyAllButton.attachToWindow(window);
 
+          mainToolbarReplyButton.attachToWindow(window);
+          mainToolbarReplyButton.attachKeyToPopup(window, "key_reply");
+
+          mainToolbarReplyAllButton.attachToWindow(window);
+          mainToolbarReplyAllButton.attachKeyToPopup(window, "key_replyall");
+
           console.debug('icApi#initReplyMessageAction -- end');
         },
         async initForwardMessageAction(windowId) {
           console.debug('icApi#initForwardMessageAction -- begin');
           console.debug(`icApi.initForwardMessageAction: window id: ${windowId}`);
 
-
           let window = context.extension.windowManager.get(windowId, context).window;
-
           forwardButton.attachToWindow(window);
+
+          mainToolbarForwardButton.attachToWindow(window);
+          mainToolbarForwardButton.attachKeyToPopup(window, "key_forward");
 
           console.debug('icApi#initForwardMessageAction -- end');
         },
@@ -304,10 +426,16 @@ var icApi = class extends ExtensionCommon.ExtensionAPI {
           } else if(action == "reply") {
             replyButton.addIdentity(identity);
             replyToSenderButton.addIdentity(identity);
+
+            mainToolbarReplyButton.addIdentity(identity);
           } else if(action == "replyAll") {
             replyAllButton.addIdentity(identity);
+
+            mainToolbarReplyAllButton.addIdentity(identity);
           } else if(action == "forward") {
             forwardButton.addIdentity(identity);
+
+            mainToolbarForwardButton.addIdentity(identity);
           }
 
           console.debug('icApi#addIdentity -- end');

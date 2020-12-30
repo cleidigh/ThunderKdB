@@ -1038,6 +1038,7 @@ async function logErrorToServer(logMessage)
       stack: getStack(ex),
       app: "exquilla",
       version: "exq-" + await getExtensionVersion(),
+      hostAppVersion: Services.appinfo.version,
       user: getEmailAddressForUser(),
       exchangeURL: getLoginURLForUser(),
       parameters: ex.parameters,

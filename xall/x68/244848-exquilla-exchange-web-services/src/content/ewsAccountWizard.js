@@ -80,7 +80,7 @@ exquilla.AW = (function exquillaAW()
     title = exquillaStrings.GetStringFromName("adFailed");
     let promptService = Cc["@mozilla.org/embedcomp/prompt-service;1"]
                           .getService(Ci.nsIPromptService);
-    promptService.alert(window, title, alertText + (aServerErrorMsg ? "\n\n" + aServerErrorMsg : ""));
+    promptService.alert(window, title, (aServerErrorMsg ? aServerErrorMsg + "\n\n" : "") + alertText);
   }
 
   function doNothing()

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 26575,
+    "average_daily_users": 23431,
     "categories": {
         "thunderbird": [
             "calendar"
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.me/emmanuelrkr",
     "created": "2018-11-23T17:05:19Z",
     "current_version": {
-        "id": 2473413,
+        "id": 2475018,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "60.0"
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-google-calendar/versions/2473413",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-google-calendar/versions/2475018",
         "files": [
             {
-                "id": 1016537,
-                "created": "2020-02-10T18:34:29Z",
-                "hash": "sha256:2c70b4534aa2d1b3596c372d40c07e5322ce3aeb6b58cf92c7bf68d09d1b4bd1",
+                "id": 1018180,
+                "created": "2020-12-13T17:32:30Z",
+                "hash": "sha256:383e43c297cf5f91dfecc3b2dba5eb680e2afd32c043f24de7bca87d5d1488ec",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
                 "size": 21452,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016537/open_google_calendar-1.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018180/open_google_calendar-1.6-tb.xpi?src=",
                 "permissions": [
                     "tabs",
                     "webNavigation",
@@ -76,15 +76,15 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/open-google-calendar/versions/1.5",
-        "version": "1.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/open-google-calendar/versions/1.6",
+        "version": "1.6"
     },
     "default_locale": "fr",
     "description": {
-        "fr": "This extension adds a \"tab shortcut\" to the tab bar as well as an item to the\nTools menu which will open up Google Calendar in a new tab.\n\n*** Version Compatibility ***\nThunderbird 68 and Thunderbird 60\n\nIf this project help you reduce time, feel free to send any amount through paypal : <a href=\"https://www.paypal.me/emmanuelrkr\" rel=\"nofollow\">https://www.paypal.me/emmanuelrkr</a> and/or write a review.\n\nOn first use you should see the Google Calendar login page.  When you login you\nwill be prompted by a notification bar which can save your username and password\nfor the site.  \n\nThis password can be removed from the Security -&gt; Passwords section of your preferences.\n\nIf Thunderbird cookie settings are set to refuse cookies,\nyou must add an exception for <a href=\"https://calendar.google.com\" rel=\"nofollow\">https://calendar.google.com</a> \n(A simple exception for the entire <a href=\"http://google.com\" rel=\"nofollow\">google.com</a> domain does NOT work)."
+        "fr": "This extension adds a \"tab shortcut\" to the tab bar as well as an item to the\nTools menu which will open up Google Calendar in a new tab.\n\nThunderbird 78, 68 and 60\n\n<strong>If this project help you reduce time, feel free to send any amount through paypal : <a rel=\"nofollow\" href=\"https://www.paypal.me/emmanuelrkr\">https://www.paypal.me/emmanuelrkr</a> and/or write a review.</strong>\n\nOn first use you should see the Google Calendar login page.  When you login you\nwill be prompted by a notification bar which can save your username and password\nfor the site.  \n\n<strong>If Google ask each time login/password</strong>\nVerify your privacy configuration\nThunderbird Preferences -&gt; Privacy -&gt; Check \"Remember website and links I've visited\" and Check \"Accept cookies from sites\" , if necessary add <a rel=\"nofollow\" href=\"https://calendar.google.com\">https://calendar.google.com</a> in exceptions\n\n<strong>If you cannot login, logout or change account</strong>\nDelete cookies\nThunderbird Preferences -&gt; Privacy -&gt; Show Cookies ... -&gt; Remove google cookies\n\n<strong>If the page said: \"The browser you're using doesn't support JavaScript, or has JavaScript turned off</strong>\nInstead of clicking the existing account on \"Choose an account\" page, clicked \"Add account\" link.\n\n<strong>If Thunderbird cookie settings are set to refuse cookies</strong>\nyou must add an exception for <a rel=\"nofollow\" href=\"https://calendar.google.com\">https://calendar.google.com</a> \n(A simple exception for the entire <a rel=\"nofollow\" href=\"http://google.com\">google.com</a> domain does NOT work)."
     },
     "developer_comments": {
-        "fr": "It's a fork of repository archived : <a href=\"https://github.com/clarkbw/google-calendar-tab\" rel=\"nofollow\">https://github.com/clarkbw/google-calendar-tab</a> but compatible with Thunderbird Version 60.* and Thunderbird Version 68.*"
+        "fr": "It's a fork of repository archived : <a rel=\"nofollow\" href=\"https://github.com/clarkbw/google-calendar-tab\">https://github.com/clarkbw/google-calendar-tab</a> but compatible with Thunderbird Version 60.* , Thunderbird Version 68.* and Thunderbird Version 78.*"
     },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/open-google-calendar/edit",
     "guid": "opengooglecalendar@glicer",
@@ -102,7 +102,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-02-10T18:35:03Z",
+    "last_updated": "2020-12-13T17:35:03Z",
     "name": {
         "fr": "Open Google Calendar"
     },
@@ -124,7 +124,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.22726,
+        "bayesian_average": 4.22725,
         "count": 56,
         "average": 4.25,
         "text_count": 56
@@ -161,7 +161,8 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true
+            "comp60pv": true,
+            "comp60pv_date": "2018-11-23T17:05:19Z"
         }
     }
 }

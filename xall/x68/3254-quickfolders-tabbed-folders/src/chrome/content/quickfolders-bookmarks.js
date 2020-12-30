@@ -66,8 +66,7 @@ QuickFolders.bookmarks = {
           Cc = Components.classes,
           nsMsgSearchScope = Ci.nsMsgSearchScope,
           nsMsgSearchAttrib = Ci.nsMsgSearchAttrib,
-          nsMsgSearchOp = Ci.nsMsgSearchOp,
-          util = QuickFolders.Util;
+          nsMsgSearchOp = Ci.nsMsgSearchOp;
     function setTermValue(term, attr, op, valStr) {
       let val = term.value;
       term.attrib = attr;
@@ -84,26 +83,9 @@ QuickFolders.bookmarks = {
 	  function _getEmailAddress(a) {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}    
-    
-    // from test_bug404489.js 
-    var hitCount,
-        searchListener = {
-      onSearchHit(dbHdr, folder) {
-        debugger;
-        hitCount++;
-      },
-      onSearchDone(status) {
-        util.logDebug("Search found " + hitCount + " matches.");
-        searchSession = null;
-      },
-      onNewSearch() {
-        hitCount = 0;
-      },
-    }; 
-
-    
     let getFolder = QuickFolders.Model.getMsgFolderFromUri,
         folder = getFolder(entry.FolderUri),
+        util = QuickFolders.Util,
         searchSession = Cc["@mozilla.org/messenger/searchSession;1"].createInstance(Ci.nsIMsgSearchSession),
         searchTerms = [],
         offlineScope = (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_OFFLINE) ? nsMsgSearchScope.offlineMail : nsMsgSearchScope.onlineManual, // Postbox doesn't like nsMsgFolderFlags.Offline?
@@ -143,12 +125,9 @@ QuickFolders.bookmarks = {
                      entry.date);
         searchTerms.push(realTerm);
     }
-
-    // we overlay the dialog - the actual work is done in quickfolders-search.js
-    window.openDialog("chrome://messenger/content/SearchDialog.xul", "_blank",
+    window.openDialog("chrome://messenger/content/SearchDialog.xhtml", "_blank",
                       "chrome,resizable,status,centerscreen,dialog=no",
                       { folder: targetFolder, searchTerms: searchTerms, searchSession: searchSession });          
-                      
   },
   
   openMessage: function (entry, forceMethod)  {
@@ -280,8 +259,8 @@ QuickFolders.bookmarks = {
   // removes all bookmarks from reading list. retain command items.
   tearDownMenu: function tearDownMenu() {
     let menu = QuickFolders.Util.$('QuickFolders-readingListMenu');
-    for (let i = menu.childNodes.length-1; i>0; i--) {
-      let item = menu.childNodes[i];
+    for (let i = menu.children.length-1; i>0; i--) {
+      let item = menu.children[i];
       if (!item.classList.contains('cmd') || item.tagName=='menuseparator')
         menu.removeChild(item);
     }
@@ -619,17 +598,10 @@ QuickFolders.bookmarks = {
               try {
                 // are multiple mails selected?
                 let selectionCount =
-                  (['Postbox', 'SeaMonkey'].includes(util.Application)) ? GetNumSelectedMessages() :
-                  ((tab.messageDisplay && gFolderDisplay) ? gFolderDisplay.selectedIndices.length : 0);
+                  (tab.messageDisplay && gFolderDisplay) ? gFolderDisplay.selectedIndices.length : 0;
                 util.logDebugOptional("bookmarks", "selectionCount: " + selectionCount);
                 if (selectionCount>=1) { 
-                  let selectedMessages;
-                  if (util.Application === 'Postbox') {
-                    selectedMessages = util.pbGetSelectedMessages();
-                  }
-                  else {
-                    selectedMessages = gFolderDisplay.selectedMessages; 
-                  }
+                  let selectedMessages = gFolderDisplay.selectedMessages; 
                   let uriObjects = [];
                   for (let j=0; j<selectedMessages.length; j++) {
                     let msg = selectedMessages[j];
@@ -779,16 +751,6 @@ QuickFolders.bookmarks = {
     let util = QuickFolders.Util,
         bookmarks = QuickFolders.bookmarks; // "this" didn't work
     util.logDebug ('bookmarks.load…'); 
-    if (util.Application == 'Postbox' && util.PlatformVersion < 52) {
-      try {
-        let data = this.Postbox_readFile();
-        bookmarks.readBookmarksFromJson(data);
-      }
-      catch(ex) {
-        util.logException('QuickFolders.bookmarks.load()', ex);
-      }
-      return;
-    }
     
     let promise3;
     try {

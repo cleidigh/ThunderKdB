@@ -1,4 +1,5 @@
 formOne.addEventListener('click', function () {
+          browser.myapi.setSixteen();
           browser.myapi.setOne('calendarDisplayDeck', 'width', '50%');
           browser.myapi.setTwo('calendarContent', 'appendChild', 'taskContainer');
           browser.myapi.setThree('calendar-task-box', 'display', 'flex');
@@ -20,6 +21,7 @@ formOne.addEventListener('click', function () {
 });
 
 formTwo.addEventListener('click', function () {
+          browser.myapi.setSixteen();
           browser.myapi.setOne('calendarDisplayDeck', 'width', '50%');
           browser.myapi.setTwo('calendarContent', 'appendChild', 'taskContainer');
           browser.myapi.setThree('calendar-task-box', 'display', 'flex');
@@ -54,6 +56,7 @@ formTwo.addEventListener('click', function () {
 });
 
 formThree.addEventListener('click', function () {
+          browser.myapi.setSixteen();
           browser.myapi.setOne('calendarDisplayDeck', 'width', '50%');
           browser.myapi.setTwo('calendarContent', 'appendChild', 'taskContainer');
           browser.myapi.setThree('calendar-task-box', 'display', 'flex');
