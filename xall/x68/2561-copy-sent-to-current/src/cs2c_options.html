@@ -26,11 +26,18 @@
 			</div>
 		</div>
 	</fieldset>
-	<fieldset id="xyz"><legend></legend>
+	<fieldset id="xyz"><legend>__MSG_options__</legend>
 <!--
     <checkbox id="i_choosebehind" label="&chooseBehind.label;" preference="extensions.copysent2current.choosebehind"/>
 -->
-    <label>__MSG_moveoriginal_default__ <input type="checkbox" data-pref="movemessage"/></label>
+    <div><label>__MSG_chooseBehind_label__ <input type="checkbox" data-pref="chooseBehind"/></label></div>
+    <div><label>__MSG_moveoriginal_default__ <input type="checkbox" data-pref="movemessage"/></label></div>
+    <div>__MSG_toolbar__: <label>__MSG_expand_button__ '__MSG_sendButton__'<input type="checkbox" data-pref="use_HTB"/></label>
+    <label>__MSG_show_two_buttons__<input type="checkbox" data-pref="use_TBB"/></label></div>
+<!--
+'Symbolleisten' chrome/de/locale/de/messenger/messengercompose/messengercompose.dtd: <!ENTITY viewToolbarsMenuNew.label "Symbolleisten">
+'Senden' chrome/de/locale/de/messenger/messengercompose/messengercompose.dtd: <!ENTITY sendButton.label "Senden">
+-->
 	</fieldset>
 	<fieldset id="accesskeys"><legend>__MSG_accesskey_label__</legend>
     <label>

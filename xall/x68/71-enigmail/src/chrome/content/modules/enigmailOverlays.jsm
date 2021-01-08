@@ -37,8 +37,9 @@ var EXPORTED_SYMBOLS = ["EnigmailOverlays"];
 const APP_STARTUP = 1;
 const APP_SHUTDOWN = 2;
 
-const Services = ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
-const EnigmailCompat = ChromeUtils.import("chrome://enigmail/content/modules/compat.jsm").EnigmailCompat;
+const {
+  Services
+} = ChromeUtils.import("resource://gre/modules/Services.jsm", {});
 
 Components.utils.importGlobalProperties(["XMLHttpRequest"]);
 
@@ -49,80 +50,14 @@ const MY_ADDON_ID = "enigmail";
 var gMailStartupDone = false;
 var gCoreStartup = false;
 
-const interlinkDummyOverlay = [
-  "dummyOverlay.xul"
-];
-
-
 const overlays = {
   // main mail reading window
   "chrome://messenger/content/messenger.xul": [
-    "columnOverlay.xul", {
-      // Overlay for Thunderbird
-      url: "messengerOverlay-tbird.xul",
-      application: "!postbox@postbox-inc.com"
-    }, {
-      // Overlay for Postbox
-      url: "messengerOverlay-pbx.xul",
-      application: "postbox@postbox-inc.com"
-    },
-    "enigmailMessengerOverlay.xul",
-    "enigmailMsgHdrViewOverlay.xul"
+    "enigmailMessengerOverlay.xhtml"
   ],
-
-  // single message reader window
-  "chrome://messenger/content/messageWindow.xul": [{
-      // Overlay for Thunderbird
-      url: "messengerOverlay-tbird.xul",
-      application: "!postbox@postbox-inc.com"
-    }, {
-      // Overlay for Postbox
-      url: "messengerOverlay-pbx.xul",
-      application: "postbox@postbox-inc.com"
-    },
-    "enigmailMessengerOverlay.xul",
-    "enigmailMsgHdrViewOverlay.xul"
-  ],
-
-  "chrome://messenger/content/messengercompose/messengercompose.xul": [{
-    // Overlay for Thunderbird
-    url: "enigmailMsgComposeOverlay.xul",
-    application: "!postbox@postbox-inc.com"
-  }, {
-    // Overlay for Postbox
-    url: "enigmailMsgComposeOverlay-pbx.xul",
-    application: "postbox@postbox-inc.com"
-  }],
-
-  "chrome://messenger/content/FilterEditor.xul": [{
-    // Overlay for TB 67+
-    url: "enigmailFilterEditorOverlay.xul",
-    minGeckoVersion: "67.0a1"
-  }, {
-    // Overlay for TB <= 66
-    url: "tb60FilterEditorOverlay.xul",
-    maxGeckoVersion: "66.0"
-  }],
-  "chrome://messenger/content/FilterListDialog.xul": ["enigmailFilterListOverlay.xul"],
-  "chrome://messenger/content/am-identity-edit.xul": [
-    "enigmailAmIdEditOverlay.xul",
-    "enigmailEditIdentity.xul"
-  ],
-  "chrome://messenger/content/addressbook/addressbook.xul": ["enigmailAbCardViewOverlay.xul"],
-  "chrome://enigmail/content/ui/editSingleAccount.xul": ["enigmailEditIdentity.xul"],
-
-  // Overlay for privacy preferences in Thunderbird
-  "chrome://messenger/content/preferences/preferences.xul": [{
-    url: "enigmailPrivacyOverlay.xul",
-    application: "!postbox@postbox-inc.com"
-  }],
-
-  // Overlay for Customize Toolbar (Windows, Linux)
-  "chrome://messenger/content/customizeToolbar.xul": ["enigmailCustToolOverlay.xul"], // TB 60+
-  "chrome://global/content/customizeToolbar.xul": ["enigmailCustToolOverlay.xul"], // TB <= 52.x
-
-  // Overlay for Account Manager
-  "chrome://messenger/content/AccountManager.xul": ["accountManagerOverlay.xul"]
+  "chrome://messenger/content/messenger.xhtml": [
+    "enigmailMessengerOverlay.xhtml"
+  ]
 };
 
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
@@ -171,7 +106,6 @@ var WindowListener = {
         }
       }
 
-      DEBUG_LOG(`enigmailOverlays.jsm: setupUI: will load: ${url}\n`);
       ovl.push(BASE_PATH + url);
     }
 
@@ -192,15 +126,10 @@ var WindowListener = {
     domWindow.addEventListener("load", function listener() {
       domWindow.removeEventListener("load", listener, false);
 
-      if (EnigmailCompat.isInterlink()) {
-        WindowListener.setupUI(domWindow, interlinkDummyOverlay);
-      }
-      else {
-        for (let w in overlays) {
-          // If this is a relevant window then setup its UI
-          if (domWindow.document.location.href.startsWith(w))
-            WindowListener.setupUI(domWindow, overlays[w]);
-        }
+      for (let w in overlays) {
+        // If this is a relevant window then setup its UI
+        if (domWindow.document.location.href.startsWith(w))
+          WindowListener.setupUI(domWindow, overlays[w]);
       }
     }, false);
   },
@@ -218,13 +147,8 @@ var WindowListener = {
 function loadUiForWindow(domWindow) {
   for (let w in overlays) {
     // If this is a relevant window then setup its UI
-    if (domWindow.document.location.href.startsWith(w)) {
-      if (EnigmailCompat.isInterlink()) {
-        WindowListener.setupUI(domWindow, interlinkDummyOverlay);
-      }
-      else
-        WindowListener.setupUI(domWindow, overlays[w]);
-    }
+    if (domWindow.document.location.href.startsWith(w))
+      WindowListener.setupUI(domWindow, overlays[w]);
   }
 }
 

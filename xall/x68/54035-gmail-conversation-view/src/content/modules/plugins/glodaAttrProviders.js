@@ -1,7 +1,9 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
 var EXPORTED_SYMBOLS = ["GlodaAttrProviders"];
+
 /*
  * This file contains various attribute providers for Gloda, we're all storing
  *  them in this file. This file acts like a "plugin" for Gloda.
@@ -28,19 +30,22 @@ var EXPORTED_SYMBOLS = ["GlodaAttrProviders"];
  *  subject, hence this Gloda plugin
  */
 
-const {
-  PluginHelpers
-} = ChromeUtils.import("chrome://conversations/content/modules/plugins/helpers.js");
-const {
-  XPCOMUtils
-} = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
+const { PluginHelpers } = ChromeUtils.import(
+  "chrome://conversations/content/modules/plugins/helpers.js"
+);
+const { XPCOMUtils } = ChromeUtils.import(
+  "resource://gre/modules/XPCOMUtils.jsm"
+);
+
 XPCOMUtils.defineLazyModuleGetters(this, {
-  Gloda: "resource:///modules/gloda/GlodaPublic.jsm"
+  Gloda: "resource:///modules/gloda/GlodaPublic.jsm",
 });
+
 let AlternativeSender = {
   init: function _AlternativeSender_init() {
     this.defineAttributes();
   },
+
   defineAttributes: function _AlternativeSender_defineAttributes() {
     this._alternativeSenderAttribute = Gloda.defineAttribute({
       provider: this,
@@ -50,13 +55,18 @@ let AlternativeSender = {
       bind: true,
       singular: true,
       subjectNouns: [Gloda.NOUN_MESSAGE],
-      objectNoun: Gloda.NOUN_STRING
+      objectNoun: Gloda.NOUN_STRING,
     });
   },
-  process: function* _AlternativeSender_process(aGlodaMessage, aRawReps, aIsNew, aCallbackHandle) {
+
+  process: function* _AlternativeSender_process(
+    aGlodaMessage,
+    aRawReps,
+    aIsNew,
+    aCallbackHandle
+  ) {
     try {
       let alternativeSender = PluginHelpers.alternativeSender(aRawReps);
-
       if (alternativeSender) {
         aGlodaMessage.alternativeSender = alternativeSender;
       }
@@ -65,13 +75,16 @@ let AlternativeSender = {
     }
 
     yield Gloda.kWorkDone;
-  }
+  },
 };
+
 AlternativeSender.init();
+
 let ContentType = {
   init: function _ContentType_init() {
     this.defineAttributes();
   },
+
   defineAttributes: function _ContentType_defineAttributes() {
     this._bugzillaAttribute = Gloda.defineAttribute({
       provider: this,
@@ -81,10 +94,16 @@ let ContentType = {
       bind: true,
       singular: true,
       subjectNouns: [Gloda.NOUN_MESSAGE],
-      objectNoun: Gloda.NOUN_STRING
+      objectNoun: Gloda.NOUN_STRING,
     });
   },
-  process: function* _ContentType_process(aGlodaMessage, aRawReps, aIsNew, aCallbackHandle) {
+
+  process: function* _ContentType_process(
+    aGlodaMessage,
+    aRawReps,
+    aIsNew,
+    aCallbackHandle
+  ) {
     try {
       if (aRawReps.mime) {
         aGlodaMessage.contentType = aRawReps.mime.headers["content-type"];
@@ -94,13 +113,16 @@ let ContentType = {
     }
 
     yield Gloda.kWorkDone;
-  }
+  },
 };
+
 ContentType.init();
+
 let Bugzilla = {
   init: function _Bugzilla_init() {
     this.defineAttributes();
   },
+
   defineAttributes: function _Bugzilla_defineAttributes() {
     this._bugzillaAttribute = Gloda.defineAttribute({
       provider: this,
@@ -110,13 +132,18 @@ let Bugzilla = {
       bind: true,
       singular: true,
       subjectNouns: [Gloda.NOUN_MESSAGE],
-      objectNoun: Gloda.NOUN_STRING
+      objectNoun: Gloda.NOUN_STRING,
     });
   },
-  process: function* _Bugzilla_process(aGlodaMessage, aRawReps, aIsNew, aCallbackHandle) {
+
+  process: function* _Bugzilla_process(
+    aGlodaMessage,
+    aRawReps,
+    aIsNew,
+    aCallbackHandle
+  ) {
     try {
       let bugzilla = PluginHelpers.bugzilla(aRawReps);
-
       if (bugzilla) {
         aGlodaMessage.bugzillaInfos = JSON.stringify(bugzilla);
       }
@@ -125,13 +152,16 @@ let Bugzilla = {
     }
 
     yield Gloda.kWorkDone;
-  }
+  },
 };
+
 Bugzilla.init();
+
 let ConversationSubject = {
   init: function _ConversationSubject_init() {
     this.defineAttributes();
   },
+
   defineAttributes: function _ConversationSubject_defineAttributes() {
     this._alternativeSenderAttribute = Gloda.defineAttribute({
       provider: this,
@@ -144,16 +174,22 @@ let ConversationSubject = {
       specialColumnName: "subject",
       subjectNouns: [Gloda.NOUN_CONVERSATION],
       objectNoun: Gloda.NOUN_STRING,
-      canQuery: true
+      canQuery: true,
     });
   },
-  process: function* _ConversationSubject_process(aGlodaMessage, aRawReps, aIsNew, aCallbackHandle) {
+
+  process: function* _ConversationSubject_process(
+    aGlodaMessage,
+    aRawReps,
+    aIsNew,
+    aCallbackHandle
+  ) {
     yield Gloda.kWorkDone;
-  }
+  },
 };
+
 var GlodaAttrProviders = {
   init() {
     ConversationSubject.init();
-  }
-
+  },
 };

@@ -1041,7 +1041,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 							if (myDirPrefIdEnabled) {
 								if (!myDirPrefIdReadOnly) {
 									cardbookRepository.importConflictChoicePersist = false;
-									cardbookRepository.importConflictChoice = "overwrite";
+									cardbookRepository.importConflictChoice = "update";
 									var dataArray = myText.split("@@@@@");
 									if (dataArray.length) {
 										var myTopic = "cardsPasted";
@@ -1758,7 +1758,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 			var myDirPrefIdVCardVersion = cardbookRepository.cardbookPreferences.getVCardVersion(myDirPrefId);
 			var myDirPrefIdDateFormat = cardbookRepository.getDateFormat(myDirPrefId, myDirPrefIdVCardVersion);
 			cardbookRepository.importConflictChoicePersist = false;
-			cardbookRepository.importConflictChoice = "overwrite";
+			cardbookRepository.importConflictChoice = "update";
 			aEvent.preventDefault();
 			var myTopic = "cardsDragged";
 			var myActionId = cardbookActions.startAction(myTopic);
@@ -3454,7 +3454,13 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					}
 				}
 
-				document.getElementById("unreadMessageCount").setAttribute("hidden", "true");
+				var length = cardbookWindowUtils.getSelectedCards().length;
+				if (length > 1) {
+					document.getElementById("unreadMessageCount").removeAttribute("hidden");
+					document.getElementById("unreadMessageCount").value = cardbookRepository.extension.localeData.localizeMessage("numberContactsSelected", [length]);
+				} else {
+					document.getElementById("unreadMessageCount").setAttribute("hidden", "true");
+				}
 				document.getElementById("totalMessageCount").removeAttribute("hidden");
 				document.getElementById("totalMessageCount").value = myMessage;
 			}

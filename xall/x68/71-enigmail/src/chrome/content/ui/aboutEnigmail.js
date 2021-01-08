@@ -10,21 +10,12 @@ var Ci = Components.interfaces;
 
 const EnigmailLocalizeHtml = ChromeUtils.import("chrome://enigmail/content/modules/localizeHtml.jsm").EnigmailLocalizeHtml;
 const EnigmailWindows = ChromeUtils.import("chrome://enigmail/content/modules/windows.jsm").EnigmailWindows;
-const EnigmailGnuPGUpdate = ChromeUtils.import("chrome://enigmail/content/modules/gnupgUpdate.jsm").EnigmailGnuPGUpdate;
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
 const EnigmailTimer = ChromeUtils.import("chrome://enigmail/content/modules/timer.jsm").EnigmailTimer;
 
 function onload() {
   EnigmailTimer.setTimeout(() => {
     EnigmailLocalizeHtml.onPageLoad(document);
-
-    let enigmailSvc = EnigmailCore.getService();
-
-    if (enigmailSvc) {
-      if (EnigmailGnuPGUpdate.isGnuPGUpdatable()) {
-        document.getElementById("checkGnupgUpdate").classList.remove("hidden");
-      }
-    }
   }, 50);
 }
 

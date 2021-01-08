@@ -857,7 +857,7 @@ function timeString(time) { //time in milliseconds or Date() object
   };
   var s='unknown';
   try {
-    s=new Intl.DateTimeFormat('de-DE', options).format(time);
+    s=new Intl.DateTimeFormat(undefined, options).format(time);	//undefined for current locale
   } catch(e) {  }
   return s;
 }
@@ -1260,18 +1260,23 @@ var loginObserver = {
 		"nsISupportsWeakReference",
 	]),
   observe: function(aSubject, aTopic, aData) {
-debug('loginObserver called');
+debug('loginObserver called aSubject='+aSubject+' aTopic='+aTopic+' aData='+aData);
 		Services.obs.removeObserver(this, "passwordmgr-crypto-login");
-		showPopup('download', null, 'start', false);
+		//showPopup('download', null, 'start', false);
 	}
 }
 */
 function downloadOnStart() {
 debug('call download on start');
-	if (!Services.logins.isLoggedIn) { //masterpassword not yet given
-debug('masterpassword not yet given');
-//does not work :-( 
-//			Services.obs.addObserver(loginObserver, "passwordmgr-crypto-login");
+
+//debug('add loginObserver');
+//	Services.obs.addObserver(loginObserver, "passwordmgr-crypto-login");	//does not work :-( 
+
+	if (!Services.logins.isLoggedIn					 //masterpassword not yet given
+		|| prefs['synctype']=='imap' && !connect() && !gAbort
+			) {
+if (!Services.logins.isLoggedIn) debug('masterpassword not yet given');
+else debug('Not loggedin to imap server');
 		lifetimeTimer.initWithCallback(()=>{downloadOnStart();},
 								5000, Ci.nsITimer.TYPE_ONE_SHOT);
 		return;
@@ -1341,6 +1346,9 @@ debug('hiddenWin: open');
 //without args, TB crashes!!!
 		hiddenWin=Services.ww.openWindow(null, 'chrome://messenger/content/messageWindow.xhtml', 'abs',
 										'left=-10000', args);	//width=100,height=100
+debug('hiddenWin at '+hiddenWin.screenLeft);
+		hiddenWin.minimize();
+debug('hiddenWin minimized now at '+hiddenWin.screenLeft);
 //messagepanebox
 	} else {
 		if (hiddenWin) {

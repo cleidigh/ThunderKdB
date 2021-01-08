@@ -2664,7 +2664,7 @@ var cardbookSynchronization = {
 			if (aAskUser && !cardbookRepository.importConflictChoicePersist && cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
 				var message = cardbookRepository.extension.localeData.localizeMessage("cardAlreadyExists", [myTargetPrefIdName, aNewCard.fn]);
 				var confirmMessage = cardbookRepository.extension.localeData.localizeMessage("askUserPersistMessage");
-				var askUserResult = cardbookSynchronization.askUser(message, "keep", "overwrite", "duplicate", "merge", confirmMessage, false);
+				var askUserResult = cardbookSynchronization.askUser(message, "keep", "update", "duplicate", "merge", confirmMessage, false);
 				cardbookRepository.importConflictChoice = askUserResult.result;
 				cardbookRepository.importConflictChoicePersist = askUserResult.resultConfirm;
 				if (cardbookRepository.importConflictChoicePersist) {
@@ -2684,18 +2684,12 @@ var cardbookSynchronization = {
 				case "write":
 					cardbookRepository.saveCard({}, aNewCard, aActionId, true);
 					break;
-				case "overwrite":
-					if (cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
-						var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
-						cardbookRepository.currentAction[aActionId].total++;
-						cardbookRepository.deleteCards([myTargetCard], aActionId);
-					}
-					cardbookRepository.saveCard({}, aNewCard, aActionId, true);
-					break;
 				case "update":
 					if (cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid]) {
 						var myTargetCard = cardbookRepository.cardbookCards[myTargetPrefId+"::"+aNewCard.uid];
 						cardbookRepository.saveCard(myTargetCard, aNewCard, aActionId, true);
+					} else {
+						cardbookRepository.saveCard({}, aNewCard, aActionId, true);
 					}
 					break;
 				case "merge":

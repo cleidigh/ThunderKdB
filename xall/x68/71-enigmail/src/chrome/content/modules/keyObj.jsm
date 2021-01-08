@@ -27,6 +27,9 @@ var EXPORTED_SYMBOLS = ["newEnigmailKeyObj"];
   - secretAvailable - [Boolean] true if secret key is available
   - algoSym         - public key algorithm type (String, e.g. RSA)
   - keySize         - size of public key
+  - token           - S/N of card for keys on smartcard
+                      # for offline public keys
+                      + for regular secret keys
   - type            - "pub" or "grp"
   - userIds  - [Array]: - Contains ALL UIDs (including the primary UID)
                     * userId     - User ID
@@ -62,7 +65,6 @@ var EXPORTED_SYMBOLS = ["newEnigmailKeyObj"];
      * getMinimalPubKey
      * getVirtualKeySize
      * getSecretKey
-     * containsUid
 */
 
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
@@ -94,6 +96,7 @@ class EnigmailKeyObj {
     this.minimalKeyBlock = [];
     this.photoAvailable = false;
     this.secretAvailable = false;
+    this.token = "";
     this._sigList = null;
 
     this.type = keyData.type;
@@ -105,7 +108,7 @@ class EnigmailKeyObj {
 
     const ATTRS = [
       "created", "keyCreated", "keyTrust", "keyUseFor", "ownerTrust", "algoSym", "keySize",
-      "userIds", "subKeys", "fpr", "secretAvailable", "photoAvailable", "userId"
+      "userIds", "subKeys", "fpr", "secretAvailable", "photoAvailable", "userId", "token"
     ];
     for (let i of ATTRS) {
       if (i in keyData) {
@@ -126,7 +129,7 @@ class EnigmailKeyObj {
   get signatures() {
     if (this._sigList === null) {
       const cApi = EnigmailCryptoAPI();
-      this._sigList = cApi.sync(cApi.getKeySignatures(this.keyId));
+      this._sigList = cApi.sync(cApi.getKeySignatures(this.fpr));
     }
 
     return this._sigList;
@@ -488,7 +491,7 @@ class EnigmailKeyObj {
   }
 
   /**
-   * @param {Boolean} minimalKey: if true, reduce key to minimum required
+   * @param {Boolean} minimalKey  if true, reduce key to minimum required
    *
    * @return {Object}:
    *   - {Number} exitCode:  result code (0: OK)
@@ -498,35 +501,5 @@ class EnigmailKeyObj {
   getSecretKey(minimalKey) {
     const cApi = EnigmailCryptoAPI();
     return cApi.sync(cApi.extractSecretKey(this.fpr, minimalKey));
-  }
-
-  /**
-   * Check if the key contains a UID with a given email address
-   *
-   * @param {String} emailAddr: the email address to check for
-   *
-   * @return {Boolean}: true if email address found, false otherwise
-   */
-  containsUid(emailAddr) {
-    try {
-      emailAddr = EnigmailFuncs.stripEmail(emailAddr.toLowerCase());
-    } catch (x) {
-      emailAddr = emailAddr.toLowerCase();
-    }
-
-    for (let uid of this.userIds) {
-      let uidEmail;
-      try {
-        uidEmail = EnigmailFuncs.stripEmail(uid.userId.toLowerCase());
-      } catch (x) {
-        uidEmail = uid.userId.toLowerCase();
-      }
-
-      if (uidEmail === emailAddr) {
-        return true;
-      }
-    }
-
-    return false;
   }
 }

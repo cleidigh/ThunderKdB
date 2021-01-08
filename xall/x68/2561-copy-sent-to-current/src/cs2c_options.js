@@ -39,9 +39,17 @@ let debugcache='';
 
 async function doInit() {
 debug("options: init");
-
+	let prefnames=["movemessage", "chooseBehind", "accesskey_default", "accesskey_sent", "accesskey_nocopy",
+				"use_HTB", "use_TBB", "debug", "test"];
+  let accounts=await messenger.accounts.list();
+  for (let a of accounts) {
+		prefnames.push(a.id);
+		prefnames.push(a.id+'_curorsent');
+		prefnames.push(a.id+'_sentalso');
+		prefnames.push(a.id+'_totrash');
+	}
 	try {
-		prefs=await messenger.storage.local.get(null);
+		prefs=await messenger.storage.local.get(prefnames);
 	} catch(e) { 
 		// if options tab is visible on startup, getting prefs fails
 debug("options: failed to load prefs, wait...");
@@ -53,81 +61,87 @@ debug("options: failed to load prefs, wait...");
 debug('prefs: '+JSON.stringify(prefs));
   let fcc=await messenger.cs2c.getFcc();
 debug('got fcc '+JSON.stringify(fcc));
-	messenger.accounts.list().then(function(accounts) {
-		let ae=document.getElementById('accounts');
-		let tmpl=document.getElementById('_account');
-    for (let a of accounts) {
+	//let accounts=await messenger.accounts.list();
+	let ae=document.getElementById('accounts');
+	let tmpl=document.getElementById('_account');
+	for (let a of accounts) {
 debug('account: '+a.id+' '+a.name+' '+a.type);
 //a.type=imap, pop3, nntp, ...
-			if ( a.type!='imap' && a.type!='pop3' ) continue;
-      if (!fcc[a.id]) continue;
-			let ac=tmpl.cloneNode(true);
-      ac.removeAttribute('id');
-				let ai=ac.querySelector('#_account_id');	//checkbox
-			ai.id=a.id;
-			ai.value=a.id;
-			ai.setAttribute('data-type', a.type);
-			ai.onchange=accountChange;
-			let enabled=true;
-			if (prefs.hasOwnProperty(a.id)) {
-				if (prefs[a.id]) ai.setAttribute('checked', 'checked');
-				else enabled=false;
-			} else {	//fresh install or new account: assume 'true'
-				ai.setAttribute('checked', 'checked');
-				let p={}; p[a.id]=true;
-        prefs[a.id+'_curorsent']='current';
-        p[a.id+'_curorsent']='current';
-				messenger.storage.local.set(p);
-			}
-				e=ac.querySelector('#_account_name');	//label
-			e.removeAttribute('id');
-			e.textContent=a.name;
-				e=ac.querySelector('#_account_opts');	//div with opts
-			e.id=a.id+'_opts';
-			if (!enabled) e.style.display='none';
-				e=ac.querySelector("input[value=current]");
-			e.setAttribute('data-pref', a.id+'_curorsent');
-			e.setAttribute('name', a.id+'_vorgabe');
-			if (enabled && prefs[a.id+'_curorsent']=='current') e.setAttribute('checked', 'checked');
-				e=ac.querySelector("input[value=sent]");	
-			e.setAttribute('data-pref', a.id+'_curorsent');
-			e.setAttribute('name', a.id+'_vorgabe');
-			if (enabled && prefs[a.id+'_curorsent']=='sent') e.setAttribute('checked', 'checked');
-				e=ac.querySelector("input[data-pref=_account_sentalso]");	
-			e.setAttribute('data-pref', a.id+'_sentalso');
-			if (enabled && prefs[a.id+'_sentalso']) e.setAttribute('checked', 'checked');
-				e=ac.querySelector("input[data-pref=_account_totrash]");	
-			e.setAttribute('data-pref', a.id+'_totrash');
-			if (enabled && prefs[a.id+'_totrash']) e.setAttribute('checked', 'checked');
-			ae.appendChild(ac);
+		if ( a.type!='imap' && a.type!='pop3' ) continue;
+		if (!fcc[a.id]) continue;
+		let ac=tmpl.cloneNode(true);
+		ac.removeAttribute('id');
+			let ai=ac.querySelector('#_account_id');	//checkbox
+		ai.id=a.id;
+		ai.value=a.id;
+		ai.setAttribute('data-type', a.type);
+		ai.onchange=accountChange;
+		let enabled=true;
+		if (prefs.hasOwnProperty(a.id)) {
+			if (prefs[a.id]) ai.setAttribute('checked', 'checked');
+			else enabled=false;
+		} else {	//fresh install or new account: assume 'true'
+			ai.setAttribute('checked', 'checked');
+			let p={}; p[a.id]=true;
+			prefs[a.id+'_curorsent']='current';
+			p[a.id+'_curorsent']='current';
+			messenger.storage.local.set(p);
 		}
-    //tmpl.style.display='none';
+			e=ac.querySelector('#_account_name');	//label
+		e.removeAttribute('id');
+		e.textContent=a.name;
+			e=ac.querySelector('#_account_opts');	//div with opts
+		e.id=a.id+'_opts';
+		if (!enabled) e.style.display='none';
+			e=ac.querySelector("input[value=current]");
+		e.setAttribute('data-pref', a.id+'_curorsent');
+		e.setAttribute('name', a.id+'_vorgabe');
+		if (enabled && prefs[a.id+'_curorsent']=='current') e.setAttribute('checked', 'checked');
+			e=ac.querySelector("input[value=sent]");	
+		e.setAttribute('data-pref', a.id+'_curorsent');
+		e.setAttribute('name', a.id+'_vorgabe');
+		if (enabled && prefs[a.id+'_curorsent']=='sent') e.setAttribute('checked', 'checked');
+			e=ac.querySelector("input[data-pref=_account_sentalso]");	
+		e.setAttribute('data-pref', a.id+'_sentalso');
+		if (enabled && prefs[a.id+'_sentalso']) e.setAttribute('checked', 'checked');
+			e=ac.querySelector("input[data-pref=_account_totrash]");	
+		e.setAttribute('data-pref', a.id+'_totrash');
+		if (enabled && prefs[a.id+'_totrash']) e.setAttribute('checked', 'checked');
+		ae.appendChild(ac);
+	}
+	//tmpl.style.display='none';
+	if (!('chooseBehind' in prefs)) {
+		prefs.chooseBehind=false;
+		messenger.storage.local.set({chooseBehind: false});
+		messenger.cs2c.setPrefs(prefs, 'chooseBehind');
+	}
 
-		/*
-		 *	set all <input> fields
-		 */
-		let inputs=document.getElementsByTagName('input');
-		for (let input of inputs) {
-			let pref = input.getAttribute('data-pref');
-			if (pref && pref.charAt(0)!='_') {  //not the inputs in the template
-				input.addEventListener("change", prefChange);
-        if (!pref.includes('account')) {  //only non-account specific options
-          let value=prefs[pref];
-          let type=input.type;
+	/*
+	 *	set all <input> fields
+	 */
+	let inputs=document.getElementsByTagName('input');
+	for (let input of inputs) {
+		let pref = input.getAttribute('data-pref');
+		if (pref && pref.charAt(0)!='_') {  //not the inputs in the template
+			input.addEventListener("change", prefChange);
+			if (!pref.includes('account')) {  //only non-account specific options
+				let value=prefs[pref];
+				let type=input.type;
 debug('set input pref '+pref+' value='+value);
-          if (type=='checkbox') {
-            if (value) input.checked='checked';
-          } else if (type=="radio") {
-            if (value) document.querySelector("input[value="+value+"]").checked=true;
-          } else if (type=="text") {
-            if (value) input.value=value;
-          }
-        }
+				if (type=='checkbox') {
+					if (value) input.checked='checked';
+				} else if (type=="radio") {
+					if (value) document.querySelector("input[value="+value+"]").checked=true;
+				} else if (type=="text") {
+					if (value) input.value=value;
+				}
 			}
 		}
-
-		return accounts;
-	});
+	}
+	if (!('use_TBB' in prefs)) {
+		document.querySelector("[data-pref='use_TBB']").checked='checked';
+		//don't set use_TBB by default, used to show TBB in toolbar
+	}
 
 	function prefChange(event) {
 		let input=event.target;
@@ -142,7 +156,6 @@ debug('pref change: '+pref+' '+value);
 		prefs[pref]=value;
 		let p={}; 
 		p[pref]=value;
-
 		messenger.storage.local.set(p);
     messenger.cs2c.setPrefs(prefs, pref);
 

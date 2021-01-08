@@ -166,6 +166,12 @@ pref("extensions.enigmail.confirmBeforeSending", 0);
 // Show or hide the Enigmail (or pEp) column in the message list
 pref("extensions.enigmail.columnVisible", false);
 
+// Type of crypto-API to use - EXPERIMENTAL & INCOMPLETE -- DON'T USE!!!
+// 0: choose automatically
+// 1: GnuPG
+// 2: OpenPGP.js
+pref("extensions.enigmail.cryptoAPI", 1);
+
 // show "Missing Trust in own keys" message (and remember selected state)
 pref("extensions.enigmail.warnOnMissingOwnerTrust", true);
 
@@ -178,9 +184,6 @@ pref("extensions.enigmail.warnOnSendingNewsgroups", true);
 
 // holds the timestamp of the last check for GnuPG updates
 pref("extensions.enigmail.gpgLastUpdate", "0");
-
-// offer to upgrade from GnuPG 2.0 to 2.2 or newer
-pref("extensions.enigmail.gpgUpgradeFrom20", false);
 
 // set locale for GnuPG calls to en-US (Windows only)
 pref("extensions.enigmail.gpgLocaleEn", true);

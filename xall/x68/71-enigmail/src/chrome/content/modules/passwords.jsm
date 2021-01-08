@@ -8,15 +8,11 @@
 
 var EXPORTED_SYMBOLS = ["EnigmailPassword"];
 
-
-
 const EnigmailLazy = ChromeUtils.import("chrome://enigmail/content/modules/lazy.jsm").EnigmailLazy;
 const EnigmailPrefs = ChromeUtils.import("chrome://enigmail/content/modules/prefs.jsm").EnigmailPrefs;
 const EnigmailCore = ChromeUtils.import("chrome://enigmail/content/modules/core.jsm").EnigmailCore;
-const subprocess = ChromeUtils.import("chrome://enigmail/content/modules/subprocess.jsm").subprocess;
+const EnigmailCryptoAPI = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI.jsm").EnigmailCryptoAPI;
 
-
-const gpgAgent = EnigmailLazy.loader("enigmail/gpgAgent.jsm", "EnigmailGpgAgent");
 const getDialog = EnigmailLazy.loader("enigmail/dialog.jsm", "EnigmailDialog");
 const getLocale = EnigmailLazy.loader("enigmail/locale.jsm", "EnigmailLocale");
 
@@ -40,36 +36,19 @@ var EnigmailPassword = {
     return 5;
   },
 
-  clearPassphrase: function(win) {
+  clearPassphrase: async function(win) {
     // clear all passphrases from gpg-agent by reloading the config
     if (!EnigmailCore.getService()) return;
 
-    let exitCode = -1;
-    let isError = 0;
-
-    const proc = {
-      command: gpgAgent().connGpgAgentPath,
-      arguments: [],
-      charset: null,
-      environment: EnigmailCore.getEnvList(),
-      stdin: function(pipe) {
-        pipe.write("RELOADAGENT\n");
-        pipe.write("/bye\n");
-        pipe.close();
-      },
-      stdout: function(data) {
-        if (data.search(/^ERR/m) >= 0) {
-          ++isError;
-        }
-      }
-    };
+    const cApi = EnigmailCryptoAPI();
+    let isSuccess = false;
 
     try {
-      exitCode = subprocess.call(proc).wait();
+      isSuccess = await cApi.clearPassphrase();
     }
     catch (ex) {}
 
-    if (isError === 0) {
+    if (isSuccess) {
       getDialog().alert(win, getLocale().getString("passphraseCleared"));
     }
     else {

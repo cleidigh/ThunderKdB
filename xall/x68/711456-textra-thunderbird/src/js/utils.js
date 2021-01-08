@@ -340,3 +340,22 @@ Nict_TexTra.utils.get_browser_lang = function () {
 Nict_TexTra.utils.set_link = function (doc, elm_name, url) {
     doc.getElementById(elm_name).onclick = function () { window.location.href = url; };
 };
+
+Nict_TexTra.utils.get_length_bytes = function (str) {
+    return encodeURIComponent(str).replace(/%../g, "x").length;
+};
+
+Nict_TexTra.utils.get_time = function (tm) {
+    var lang = Nict_TexTra.utils.get_browser_lang();
+    var str_time;
+    var func_2d = function (str) { return ("0" + str).slice(-2); };
+    if (lang === "ja") {
+        str_time = tm.getMonth() + "月" + tm.getDate() + "日 " +
+            func_2d(tm.getHours()) + "時" +
+            func_2d(tm.getMinutes()) + "分";
+    } else {
+        str_time = tm.getMonth() + "/" + tm.getDate() + " " +
+            func_2d(tm.getHours()) + ":" + func_2d(tm.getMinutes());
+    }
+    return str_time;
+};

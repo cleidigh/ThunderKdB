@@ -3,9 +3,88 @@
     "message": "Display Mail User Agent T",
     "description": "Name of the extension."
   },
-
   "extensionDescription": {
     "message": "Wyświetla identyfikator programu, z użyciem którego została wysłana wybrana wiadomość",
     "description": "Description of the add-on."
+  },
+  "feedback.title": {
+    "message": "Informacja zwrotna",
+    "description": "feedback title"
+  },
+  "feedback.button.send": {
+    "message":  "Wyślij informacje",
+    "description": "title of feedback send button"
+  },
+  "feedback.button.close": {
+    "message":  "Zamknij",
+    "description": "title of feedback close button"
+  },
+  "dispMUA.NoUserAgent": {
+    "message": "Brak identyfikatora programu w wiadomości",
+    "description": "no MUA"
+  },
+  "dispMUA.supported": {
+    "message": "Ten program jest już obsługiwany!",
+    "description": "MUA supported"
+  },
+  "dispMUA.NOTsupported": {
+    "message": "Ten program NIE jest obsługiwany!",
+    "description": "MUA not supported"
+  },
+  "feedback.mailinfo1": {
+    "message": "Proszę o wiadomość, jeżeli dany program nie jest",
+    "description": "feedback mail info 1"
+  },
+  "feedback.mailinfo2": {
+    "message": "obsługiwany lub nie podoba Ci się jego ikona.",
+    "description": "feedback mail info 2"
+  },
+  "feedback.iconinfo": {
+    "message": "(PNG, 48x48, przezroczyste tło, dobra jakość)",
+    "description": "feedback icon info"
+  },
+  "feedback.subject": {
+    "message": "dispMUA: Informacja zwrotna",
+    "description": "feedback mail subject"
+  },
+  "feedback.body.MUA": {
+    "message": "Identyfikator programu (user agent):",
+    "description": "feedback mail body MUA"
+  },
+  "feedback.body.icon": {
+    "message": "Czy masz dla mnie ikonę programu?",
+    "description": "feedback mail body icon"
+  },
+  "feedback.body.url": {
+    "message": "Czy znasz adres strony internetowej tego programu?",
+    "description": "feedback mail body URL"
+  },
+  "options.icon.notify": {
+    "message": "Wyświetlanie ikon wykorzystuje WebExtension Experiments, co nie jest zalecane i może być niedostępne wcześniej niż później.",
+    "description": "icon display notity"
+  },
+  "options.icon.show": {
+    "message": "Wyświetlić ikonę jako obraz.",
+    "description": "Show icon image"
+  },
+  "options.icon.position": {
+    "message": "Umieść ikonę po lewej stronie",
+    "description": "Icon Location"
+  },
+  "options.button.apply": {
+    "message": "Zastosować",
+    "description": "apply button"
+  },
+  "options.button.import": {
+    "message": "Import",
+    "description": "import label for button"
+  },
+  "options.button.export": {
+    "message": "Eksport",
+    "description": "export button"
+  },
+  "options.button.applyOl": {
+    "message": "Zapisać",
+    "description": "apply overlay button"
   }
 }

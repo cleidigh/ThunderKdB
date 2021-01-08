@@ -59,34 +59,6 @@
     "message": "Dump մատյանի աստիճանը՝",
     "description": ""
   },
-  "logLevelAll": {
-    "message": "All",
-    "description": ""
-  },
-  "logLevelDebug": {
-    "message": "Debug",
-    "description": ""
-  },
-  "logLevelError": {
-    "message": "Error",
-    "description": ""
-  },
-  "logLevelFatal": {
-    "message": "Fatal",
-    "description": ""
-  },
-  "logLevelInfo": {
-    "message": "Info",
-    "description": ""
-  },
-  "logLevelTrace": {
-    "message": "Trace",
-    "description": ""
-  },
-  "logLevelWarn": {
-    "message": "Warn",
-    "description": ""
-  },
   "markReadPrefLabel": {
     "message": "Նշել հերթագրված սևագրերը որպես ընթերցված",
     "description": ""
@@ -139,10 +111,6 @@
     "message": "շաբաթական",
     "description": ""
   },
-  "resetPrefsButton": {
-    "message": "Reset Preferences",
-    "description": ""
-  },
   "saveDefaultsLabel": {
     "message": "Պահպանել որպես սկզբնադիր",
     "description": ""
@@ -163,12 +131,8 @@
     "message": "«Ուղարկելը»-ը «Ուղարկել ավելի ուշ»-ն է",
     "description": ""
   },
-  "sendDelayPrefLabel1": {
-    "message": "\"Send\" delays messages by",
-    "description": ""
-  },
   "sendDelayPrefLabel2": {
-    "message": "minutes",
+    "message": "րոպե",
     "description": ""
   },
   "sendSundayLabel": {
@@ -225,14 +189,6 @@
   },
   "userGuideLabel": {
     "message": "Օգտվողի ուղեցույցը",
-    "description": ""
-  },
-  "errorDateInPast": {
-    "message": "Selected date is in the past",
-    "description": ""
-  },
-  "DelayFunctionHelp": {
-    "message": "Simply delay message by some number of minutes. First argument is taken as the delay time.",
     "description": ""
   },
   "sendlater.prompt.sendlater.label": {
@@ -439,6 +395,22 @@
     "message": "Չհարցնել",
     "description": ""
   },
+  "delete.accesskey": {
+    "message": "Ն",
+    "description": ""
+  },
+  "reset.accesskey": {
+    "message": "Ե",
+    "description": ""
+  },
+  "save.accesskey": {
+    "message": "Չ",
+    "description": ""
+  },
+  "close.accesskey": {
+    "message": "Չ",
+    "description": ""
+  },
   "sendaround": {
     "message": "Ուղարկել մոտ.՝",
     "description": ""
@@ -504,23 +476,23 @@
     "description": ""
   },
   "SendingUnsentError": {
-    "message": "«Ուղարկել ավելի ուշ». Սխալ՝ չուղարկված նամակները ուղարկելիս: Հնարավոր է Ելքայինը վնասված է և պլանավորված նամակները չեն կարող ուղարկվել: Մանրամասները՝ https://blog.kamens.us/send-later/#outbox",
+    "message": "«Ուղարկել ավելի ուշ». Սխալ՝ չուղարկված նամակները ուղարկելիս: Հնարավոր է Ելքայինը վնասված է և պլանավորված նամակները չեն կարող ուղարկվել: Մանրամասները՝ https://extended-thunder.github.io/send-later/#corrupt-outbox",
     "description": ""
   },
   "CopyUnsentError": {
-    "message": "Ուղարկել ավելի ուշ. Սխալ՝ պլանավորված նամակը առաքման համար Ելքայինում պատճենելիս (կոդը՝ $1): Ուղարկել ավելի ուշ-ը անջատվել է: Մանրամասները՝ https://blog.kamens.us/send-later/#outbox-copy-failure",
+    "message": "Ուղարկել ավելի ուշ. Սխալ՝ պլանավորված նամակը առաքման համար Ելքայինում պատճենելիս (կոդը՝ $1): Ուղարկել ավելի ուշ-ը անջատվել է: Մանրամասները՝ https://extended-thunder.github.io/send-later/#outbox-copy-failure",
     "description": ""
   },
   "CopyRecurError": {
-    "message": "Ուղարկել ավելի ուշ. Սխալ՝ վերադարձված նամակը Սևագիր թղթապանակում պատճենելիս (կոդը՝ $1): Ուղարկել ավելի ուշ-ը անջատվել է: Մանրամասները՝ https://blog.kamens.us/send-later/#drafts-copy-failure",
+    "message": "Ուղարկել ավելի ուշ. Սխալ՝ վերադարձված նամակը Սևագիր թղթապանակում պատճենելիս (կոդը՝ $1): Ուղարկել ավելի ուշ-ը անջատվել է: Մանրամասները՝ https://extended-thunder.github.io/send-later/#drafts-copy-failure",
     "description": ""
   },
   "CorruptFolderError": {
-    "message": "«Ուղարկել ավելի ուշ». $1 թղթապանակը հնարավոր է վնասված է: Բացեք նրա հատկություները և վերականգնեք: Մանրամասնեը՝ https://blog.kamens.us/send-later/#corrupt-drafts-error",
+    "message": "«Ուղարկել ավելի ուշ». $1 թղթապանակը հնարավոր է վնասված է: Բացեք նրա հատկություները և վերականգնեք: Մանրամասնեը՝ https://extended-thunder.github.io/send-later/#corrupt-drafts-error",
     "description": ""
   },
   "MessageResendError": {
-    "message": "Ուղարկել ավելի ուշ. Ուղարկել հետո. Կրկի՞ն ուղարկել արդեն ուղարկված նամակները: Ձեր $1 Ելքային կամ Սևագրեր թղթապանակը հնարավոր է վնասված է: Ուղղեք այն ինչպես նկարագրված է https://blog.kamens.us/send-later/#corrupt-outbox-ում",
+    "message": "Ուղարկել ավելի ուշ. Ուղարկել հետո. Կրկի՞ն ուղարկել արդեն ուղարկված նամակները: Ձեր $1 Ելքային կամ Սևագրեր թղթապանակը հնարավոր է վնասված է: Ուղղեք այն ինչպես նկարագրված է https://extended-thunder.github.io/send-later/#corrupt-outbox-ում",
     "description": ""
   },
   "minutely": {
@@ -736,7 +708,7 @@
     "description": ""
   },
   "EnigmailIncompatText": {
-    "message": "Enigmail-ի տարբերակը անհամատեղելի է «Ուղարկել ավելի ուշ»-ի հետ, ուստի նամակների պլանավորումը անջատված է: Օգնության համար գրեք մեզ՝ jik@kamens.us",
+    "message": "Enigmail-ի տարբերակը անհամատեղելի է «Ուղարկել ավելի ուշ»-ի հետ, ուստի նամակների պլանավորումը անջատված է: Օգնության համար գրեք մեզ՝ send-later-support@extended-thunder.org",
     "description": ""
   },
   "TimeMismatchConfirmTitle": {

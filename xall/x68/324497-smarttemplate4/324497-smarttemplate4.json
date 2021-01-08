@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8093,
+    "average_daily_users": 6541,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,26 +28,26 @@
     "contributions_url": "",
     "created": "2011-06-23T15:49:52Z",
     "current_version": {
-        "id": 2475043,
+        "id": 2475113,
         "compatibility": {
             "thunderbird": {
                 "max": "78.*",
                 "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2475043",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2475113",
         "files": [
             {
-                "id": 1018205,
-                "created": "2020-12-17T13:45:24Z",
-                "hash": "sha256:c47cbdcf7628e8acfa5d19f2c0fdb88e10f1710b0a7d51455d63fa56cd7ba1ac",
+                "id": 1018275,
+                "created": "2021-01-04T18:24:13Z",
+                "hash": "sha256:9e921e90c800d2895dbbf21f0bd807db661a568c1a9e79a485ecbcbefdac2ae1",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 762987,
+                "size": 769577,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018205/smarttemplates-3.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018275/smarttemplates-3.3.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -57,14 +57,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.2"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.3.1"
         },
         "release_notes": {
-            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.2\">can be found here</a>\n\n<b>Latest News</b>\n\nWe had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a Pro license</a>\n\nMigration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.\n\n<b>Improvements</b>\n<ul>  <li>New function (SmartTemplates Pro): &lt;tt&gt;%conditionalText(forwardMode,\"text1\",\"text2\")%&lt;/tt&gt; inserts text based on forwarding inline vs attached; added by Artem (conductor111 on github).</li>  <li>Omit update popup for users with licenses &gt; 40days</li>  <li>Domain Licenses can now be renewed (and extended 30 days before expiry) directly from the license dialog.</li>  <li>Reopening existing tabs on support site now correctly jumps to in page links (such as #donate)</li>  <li>Some minor improvements in layout for settings dialog and license screen.</li></ul>\n<b>Changes / Bug Fixes</b>\n<ul>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/98\">[issue 98]</a> - Fixed: %header.set(to,\"[addressee]\")% no longer working</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/100\">[issue 100]</a> - Trial period should restart on license expiry</li>  <li>Fixed some errors in Serbian, Slovenian and Portuguese help sections.</li>  <li>Fixed reminder for premium functions - this notification should be shown if a Standard User uses functions reserved for SmartTemplates Pro Users</li></ul>"
+            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.3.1\">can be found here</a>\n\n<b>Latest News</b>\n\nWe had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a Pro license</a>\n\nMigration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.\n\n<b>Improvements</b>\n<ul>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/61\">[issue 61]</a> %quotePlaceholder(<i>quoteLevel</i>)% new function for including quoted mail within the template for styling - use the numeric <i>quoteLevel</i> parameter to exclude older quotes from the conversation. If a quote header block is configured in the account template this will be moved with the top of the quote.</li>     \n  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/96\">[issue 96]</a> Provide keyboard accelerators for Template picker.</li>  <li>Improved Scrolling behavior if %cursor% is used.</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/110\">[issue 110]</a> Enhancement: Maximize \"Account\" selector in settings.</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/112\">[issue 112]</a> Enhancement: Preselect account of current folder when opening settings (like in Tb68).</li></ul>\n<b>Changes / Bug Fixes</b>\n<ul>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/104\">[issue 104]</a> Polish locale crashes settings dialog </li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/102\">[issue 102]</a> Fixed: %dateformat()% fails if month name / day name variables are included and %language()% set.</li>  <li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/108\">[issue 108]</a> Fixed: Other Add-ons may accidentally duplicate template if they change the from address in Composer.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/108\">[issue 108]</a>Fixed: Other Add-ons may accidentally duplicate template if they change the from address in Composer.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.2",
-        "version": "3.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.3.1",
+        "version": "3.3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -92,7 +92,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2020-12-20T20:21:07Z",
+    "last_updated": "2021-01-04T19:14:54Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",

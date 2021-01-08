@@ -40,10 +40,11 @@ if ("undefined" == typeof(wdw_birthdaySync)) {
 				document.title = cardbookRepository.extension.localeData.localizeMessage("syncListWindowLabelEnded", [0,0]);
 			} else {
 				var totalRecordsToInsert = cardbookBirthdaysUtils.lBirthdayList.length * cardbookBirthdaysUtils.lCalendarList.length;
-				var totalRecordsInserted = cardbookBirthdaysUtils.lBirthdaySyncResult.length - cardbookBirthdaysUtils.lCalendarList.length;
+				var totalRecordsInserted = 0;
 				
 				var lBirthdaySyncResultGrouped = [];
 				for (var i=0; i<cardbookBirthdaysUtils.lBirthdaySyncResult.length; i++) {
+					totalRecordsInserted += cardbookBirthdaysUtils.lBirthdaySyncResult[i][1] + cardbookBirthdaysUtils.lBirthdaySyncResult[i][2] + cardbookBirthdaysUtils.lBirthdaySyncResult[i][3];
 					var jfound = -1;
 					for (var j=0; j<lBirthdaySyncResultGrouped.length; j++) {
 						if (cardbookBirthdaysUtils.lBirthdaySyncResult[i][4] == lBirthdaySyncResultGrouped[j][4] && jfound == -1) {

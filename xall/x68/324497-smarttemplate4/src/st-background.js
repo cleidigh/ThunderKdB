@@ -23,12 +23,13 @@
       case "update":
         {
           const mxUtilties = messenger.Utilities;
-          let isLicensed = await mxUtilties.isLicensed(true);
+          let isLicensed = await mxUtilties.isLicensed(true),
+              isStandardLicense = await mxUtilties.LicenseIsStandardUser();
           if (isLicensed) {
             // suppress update popup for users with licenses that have been recently renewed
             let gpdays = await mxUtilties.LicensedDaysLeft();
             console.log("Licensed - " + gpdays  + " Days left.");
-            if (gpdays>40) {
+            if (gpdays>40 && !isStandardLicense) {
               console.log("Omitting update popup!");
               return;
             }
@@ -51,9 +52,12 @@
    
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/smartTemplate-defaults.js");
   
+  // content smarttemplate4-locales locale/
+  
   messenger.WindowListener.registerChromeUrl([ 
       ["content",  "smarttemplate4", "chrome/content/"],
       ["resource", "smarttemplate4", "chrome/content/"],
+      ["content", "smarttemplate4-locales", "chrome/locale/"],
       ["locale", "smarttemplate4", "en-US", "chrome/locale/en-US/"],
       ["locale", "smarttemplate4", "cs", "chrome/locale/cs/"],
       ["locale", "smarttemplate4", "de", "chrome/locale/de/"],

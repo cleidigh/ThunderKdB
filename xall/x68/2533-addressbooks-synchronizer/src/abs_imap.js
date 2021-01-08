@@ -91,6 +91,35 @@ debug("imap connect throws: ill. IMAP folder: no account found for "+prefs['imap
     return false;
 	}
 	let server = gAccount.incomingServer;
+	if (server.passwordPromptRequired) {
+  // be sure we have logged on to the server
+debug('password is required');
+//don't ask for password as we do not know if there isn't already a normal password prompt */
+		let m3p = Services.wm.getMostRecentWindow("mail:3pane");
+		if (!m3p.gDBView) {
+debug('wait for view');
+			return;
+		}
+		if (m3p.gDBView.msgFolder.server.key!=server.key) {
+		// server for download is not the displayed folder, ask for password
+			try {
+				//let pwd=server.getPasswordWithUI('prompt', 'title', m3p.msgWindow);	//returns the password
+				let pwd=server.QueryInterface(Ci.nsIImapIncomingServer).PromptPassword(m3p.msgWindow);	//returns the password
+				if (server.passwordPromptRequired) {
+				// be sure we have logged on to the server
+debug('password still required');
+					return false;
+				}
+debug('got password');
+			} catch(e) {
+debug('PromptPassword throws '+e);
+				return false;
+			}
+		} else {
+debug('Normal password prompt should appear');
+			return false;
+		}
+	}
 	let rootFolder=server.rootMsgFolder;		//nsIMsgFolder
   gImapFolder=MailUtils.getExistingFolder(rootFolder.URI+prefs['imapfolderPath'], true);
   if (!gImapFolder) {
@@ -101,15 +130,16 @@ debug("imap connect throws: ill. IMAP folder: no folder found for "+prefs['imapf
     return false;
   }
 
-  // be sure we have logged on to the server
-  var m3p = Services.wm.getMostRecentWindow("mail:3pane");
-  if (m3p)
+  let m3p = Services.wm.getMostRecentWindow("mail:3pane");
+  if (m3p) {
+debug('update folder');
     gImapFolder.updateFolder(m3p.msgWindow);   //the msgWindow is essential!!
-  else
-    debug('no msgWindow\n');
+  } else {
+debug('no msgWindow');
     //with no msgWindow, we cannot connect, but thats ok if we had connected earlier
     //      otherwise may throw 'Access denied' error on upload
     //      or 'No message found' on download
+	}
   return true;
 }
 

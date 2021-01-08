@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!--?xml-stylesheet href="chrome://global/skin/" type="text/css"?-->
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/folderMenus.css" type="text/css"?>
+<!--<?xml-stylesheet href="chrome://copysent2current/skin/copysent2current.css" type="text/css"?>-->
+
+<!DOCTYPE overlay [
+<!ENTITY % messengerDTD SYSTEM "chrome://messenger/locale/messenger.dtd" >
+%messengerDTD;    <!-- copyHereMenu -->
+]>
+<!--<!ENTITY % copysent2currentDTD SYSTEM "chrome://copysent2current/locale/copysent2current.dtd" >
+%copysent2currentDTD;
+-->
+
+<window id="cs2c-menuBox" title="Copy Sent to Current abc"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" xmlns:html="http://www.w3.org/1999/xhtml"
+  onload="setTimeout(initpopup, 100)"
+  persist="screenX screenY">
+
+  <script type="application/javascript" src="chrome://messenger/content/customElements.js"/>
+  <script src="chrome://copysent2current/content/cs2c_chooser.js"></script>
+
+	<!--<button label="&cancelNewsMsgCmd.label;" oncommand="cancel();"/>-->
+  <checkbox id="movemessage" onclick="setTimeout(popup, 100)"
+    label="moveoriginal.label" accesskey="moveoriginal.accesskey"/>
+  <!-- from messenger\content\messenger\mailWindowOverlay.xul #1419(copyMenu) -->
+  <menulist label="Move original message" uri="" id="copyMenuBox"
+            disableonsend="true"
+            displayformat="verbose" sizetopopup="none">
+    <menupopup id="copyMenuPopup" crop="none"
+                is="folder-menupopup" mode="filing"
+                class="menulist-menupopup" showFileHereLabel="true"
+								showRecent="true"
+                recentLabel="&contextMoveCopyMsgRecentMenu.label;"
+                recentAccessKey="&contextMoveCopyMsgRecentMenu.accesskey;"
+                showFavorites="true"
+                favoritesLabel="&contextMoveCopyMsgFavoritesMenu.label;"
+                favoritesAccessKey="&contextMoveCopyMsgFavoritesMenu.accesskey;"
+                onpopupshown="shown(event.target);"
+                onpopuphidden="document.getElementById('copyMenuBox').focus();"
+                oncommand="picked(event)">
+      <menuitem label="dummy" id="default://"
+                accesskey="#" class="folderMenuItem menuitem-iconic"/>
+      <menuitem label="sent" id="sent://"
+                accesskey="!" class="folderMenuItem menuitem-iconic"/>
+      <menuitem label="No copy" id="nocopy://"
+                accesskey="-" class="folderMenuItem menuitem-iconic"/>
+      <menuseparator/>
+    </menupopup>
+  </menulist>
+</window>

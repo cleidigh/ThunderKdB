@@ -1,13 +1,20 @@
 //console.log('CopySent2Current Version 2.2b4');
-let dodebug=false;
+let prefs;
+let dodebug;
+let debugcache='';
+let preSelect={};	//object over window id
 
-messenger.cs2c.migratePrefs().then((prefs) => {
+async function getPrefs() {
+debug('getPrefs');
+	prefs=await messenger.cs2c.migratePrefs();
   let count=Object.entries(prefs).length;
   if (count) {  //migrated
 		messenger.storage.local.clear();//.then(function() {
 		//});
     if ('debug' in prefs === false) prefs.debug=false;
     if ('movemessage' in prefs === false) prefs.movemessage=false;
+		prefs.use_HTB=false;
+		//prefs.use_TBB=true;	//will be set after first call of addMenu
 		dodebug=prefs['debug'];
 debug(' preferences migrated:');
 //for (let [key, val] of Object.entries(prefs)) {debug(' pref: '+key+'->'+val); }
@@ -15,14 +22,26 @@ debug(JSON.stringify(prefs));
     messenger.storage.local.set(prefs);
     messenger.cs2c.setPrefs(prefs, '');
   } else {  // fresh install or already migrated
-    messenger.storage.local.get(null).then((prefs) => {
-      if ('debug' in prefs === false) prefs.debug=false;
-      if ('movemessage' in prefs === false) prefs.movemessage=false;
-			dodebug=prefs['debug'];
+		let prefnames=["movemessage", "chooseBehind", "accesskey_default", "accesskey_sent", "accesskey_nocopy",
+				"use_HTB", "use_TBB", "debug", "test"];
+		let accounts=await messenger.accounts.list();
+		for (let a of accounts) {
+			prefnames.push(a.id);
+			prefnames.push(a.id+'_curorsent');
+			prefnames.push(a.id+'_sentalso');
+			prefnames.push(a.id+'_totrash');
+		}
+		async function gP(prefnames) {
+			try {
+				prefs=await messenger.storage.local.get(prefnames);
+				let fresh=Object.entries(prefs).length==0;
+				if ('debug' in prefs === false) prefs.debug=false;
+				if ('movemessage' in prefs === false) prefs.movemessage=false;
+				dodebug=prefs['debug'];
 debug(' no preferences to migrate');
 debug(JSON.stringify(prefs));
-			messenger.accounts.list().then(function(accounts) {
-        for (let a of accounts) {
+				let accounts=await messenger.accounts.list();
+				for (let a of accounts) {
 debug(' account: '+a.id+' '+a.name+' '+a.type);
 															//a.type=imap, pop3, nntp, ...
 					if (!prefs.hasOwnProperty(a.id)) {	//fresh install or new account
@@ -30,19 +49,32 @@ debug(' account: '+a.id+' '+a.name+' '+a.type);
 						prefs[a.id+'_curorsent']='current';
 					}
 				}
-//TODO: remove preferences for no longer existing accounts
-      });
-      // No ??= operator :-(
-			prefs['accesskey_default'] = (prefs['accesskey_default'] || '%');   //was ??, but bad for ATN
-			prefs['accesskey_sent'] = (prefs['accesskey_sent'] || '!');  //was ??, but bad for ATN
-			prefs['accesskey_nocopy'] = (prefs['accesskey_nocopy'] || '-');  //was ??, but bad for ATN
-      messenger.storage.local.set(prefs);
-      messenger.cs2c.setPrefs(prefs, '');
-			return prefs;
-    });
-  }
-
-});
+				//TODO: remove preferences for no longer existing accounts
+				// No ??= operator :-(
+				prefs['accesskey_default'] = (prefs['accesskey_default'] || '%');   //was ??, but bad for ATN
+				prefs['accesskey_sent'] = (prefs['accesskey_sent'] || '!');  //was ??, but bad for ATN
+				prefs['accesskey_nocopy'] = (prefs['accesskey_nocopy'] || '-');  //was ??, but bad for ATN
+				if (!('use_HTB' in prefs)) {
+					prefs.use_HTB=false;
+					//prefs.use_TBB=true;	//will be set after first call of addMenu
+				}
+				messenger.storage.local.set(prefs);
+				messenger.cs2c.setPrefs(prefs, '');
+				//if (fresh) messenger.runtime.openOptionsPage();	//open options page on fresh install
+				if (!('chooseBehind' in prefs)) setTimeout(()=>{	//open options page
+debug('open options page');
+					messenger.runtime.openOptionsPage();
+				}, 2000);
+			} catch(e) { 
+debug("background: failed to load prefs, wait...");
+				setTimeout(gP, 500, prefnames);
+				return;
+			}
+		}
+		gP(prefnames);
+	}
+}
+getPrefs();
 
 var curAccount;
 var curFolder;
@@ -72,35 +104,102 @@ messenger.mailTabs.onDisplayedFolderChanged.addListener(async (tabId, folder) =>
 });
 
 messenger.compose.onBeforeSend.addListener(async (tab, details) => {
-	debug('onBeforeSend: Tab id: '+tab.id+' win: '+tab.windowId);
+debug('onBeforeSend: Tab id: '+tab.id+' win: '+tab.windowId);
 	//debug(' subject: '+details.subject);
   let identityKey=details.identityId;
-	debug('  from details: identity='+identityKey);
-	debug('  from current folder: account='+curAccount+' folder='+curFolder);
-	let ok=await messenger.cs2c.setFcc(tab.windowId, identityKey);
+debug('  from details: identity='+identityKey);
+debug('  from current folder: account='+curAccount+' folder='+curFolder);
+	let preSel=preSelect[tab.windowId]||'';
+	delete preSelect[tab.windowId];
+debug('  preSelect='+preSel);
+	let ok=await messenger.cs2c.setFcc(tab.windowId, identityKey, preSel);
 
 	return { cancel: !ok };
 });
-
-//see https://thunderbird-webextensions.readthedocs.io/en/latest/changes/beta77.html
-// no ChromeUtils in script!
-//let rcs=messenger.composeScripts.register({css: [],js: [{file: "cs2c_compose.js"}]});
 
 messenger.browserAction.onClicked.addListener(() => {
   messenger.runtime.openOptionsPage();
 });
 
 
+/*
 messenger.tabs.onCreated.addListener(async (tab) => {
 	debug(" Tab CREATED id: "+tab.id+" url: "+tab.url+" status: "+tab.status+" title: "+tab.title);
 });
+*/
 messenger.windows.onCreated.addListener(async (win) => {
-	debug(" Window CREATED "+win.id+"  "+win.state+"  "+win.type+" title: "+win.title);
+//	debug(" Window CREATED "+win.id+"  "+win.state+"  "+win.type+" title: "+win.title);
 	if (win.type!='messageCompose') return;
 	//messenger.tabs.insertCSS(/*win.tabs[0],*/ {file: 'cs2c_picker.css'});
 	let ok=await messenger.cs2c.addMenu(win.id);
+	if (!('use_TBB' in prefs)) {	//was first call!
+debug('was first call of addMenu with use_TBB');
+		prefs.use_TBB=true;
+		messenger.storage.local.set(prefs);
+    messenger.cs2c.setPrefs(prefs, '');
+	}
+	if (ok) {
+		addMenuItems(win);
+	}
 });
 
+
+//see https://github.com/thundernest/addon-developer-support/blob/master/auxiliary-apis/LegacyMenu/README.md
+//load .js and schema from https://github.com/thundernest/addon-developer-support/find/master
+function addMenuItems(window) {
+	if (`${window.type}` !== "messageCompose") {
+		return;
+	}
+debug('add menu items to compose window');
+	const id = `${window.id}`;
+	preSelect[id]='';
+	const desc_nc = {
+		"id": "cs2c_menu_sendnocopy",
+		"type": "menu-label",
+		"reference": "menu-item-send-now",
+		"position": "after",
+		"label": messenger.i18n.getMessage('sendNoCopyCmd_label'),
+		"accesskey": messenger.i18n.getMessage('sendNoCopyCmd_accesskey'),	//"O"
+		//gg: extended
+		"accel": 'D',
+		"modifiers": 'accel',
+		"command": "cmd_sendNow"
+	};
+	const desc_sf = {
+		"id": "cs2c_menu_send2sent",
+		"type": "menu-label",
+		"reference": "menu-item-send-now",
+		"position": "after",
+		"label": messenger.i18n.getMessage('sendCopy2SentCmd_label'),
+		"accesskey": messenger.i18n.getMessage('sendCopy2SentCmd_accesskey'),	//"F"
+		//gg: extended
+		"accel": 'D',
+		"modifiers": 'accel, shift',
+		"command": "cmd_sendNow"
+	};
+	messenger.LegacyMenu.add(id, desc_sf);
+	messenger.LegacyMenu.add(id, desc_nc);   
+}
+messenger.LegacyMenu.onCommand.addListener(
+	async (windowsId, id) => {
+		if (id == "cs2c_menu_send2sent") {
+debug('send with copy to sentfolder selected');
+			preSelect[windowsId]='toSentFolder';
+		} else if (id == "cs2c_menu_sendnocopy") {
+debug('send with nocopy selected');
+			preSelect[windowsId]='noCopy';
+		}
+	}
+);
+//prepareWindows();
+
 function debug(txt) {
-	if (dodebug) console.log('CS2C: '+txt);
+	if (typeof dodebug != 'undefined') {
+		if (dodebug) {
+			if (debugcache) console.log(debugcache); debugcache='';
+			console.log('CS2C: '+txt);
+		}
+	} else {
+		debugcache+='CS2C: '+txt+'\n';
+	}
 }

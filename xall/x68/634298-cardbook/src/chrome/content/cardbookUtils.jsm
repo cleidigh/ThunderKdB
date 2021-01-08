@@ -1587,7 +1587,7 @@ var cardbookUtils = {
 	addEtag: function(aCard, aEtag) {
 		if (aEtag) {
 			var myPrefType = cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId);
-			if (myPrefType != "FILE" || myPrefType != "DIRECTORY" || myPrefType != "LOCALDB") {
+			if (cardbookUtils.isMyAccountRemote(myPrefType)) {
 				cardbookUtils.nullifyEtag(aCard);
 				aCard.others.push("X-THUNDERBIRD-ETAG:" + aEtag);
 				aCard.etag = aEtag;

@@ -1,5 +1,59 @@
 [
     {
+        "id": 2475100,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "78.*",
+                "min": "78.2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2475100",
+        "files": [
+            {
+                "id": 1018262,
+                "created": "2021-01-02T23:30:36Z",
+                "hash": "sha256:2fbfad1e1dea1dddc8e10b45c3b2df35c0bf00c11b1845a5ee1f3f5576637548",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 474004,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018262/send_later-8.7.2-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead",
+                    "accountsFolders",
+                    "menus",
+                    "menus.overrideContext",
+                    "activeTab",
+                    "messagesMove",
+                    "messagesRead",
+                    "compose",
+                    "notifications"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Fixed translations for users with unsupported regional locale variants"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.7.2",
+        "version": "8.7.2"
+    },
+    {
         "id": 2475086,
         "channel": "listed",
         "compatibility": {
@@ -2239,52 +2293,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.3.4",
         "version": "6.3.4"
-    },
-    {
-        "id": 2282229,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.58",
-                "min": "2.17"
-            },
-            "thunderbird": {
-                "max": "61.0",
-                "min": "38.0a1"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2282229",
-        "files": [
-            {
-                "id": 823028,
-                "created": "2017-12-26T15:11:38Z",
-                "hash": "sha256:855fa88cb72f1595a7cc07e5cbcbbbb2e45935fc6ce9800f970b56ab22754a69",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 357996,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/823028/send_later-6.3.3-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "en-US": "Fix preferences button in add-ons manager in Thunderbird 59+."
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.3.3",
-        "version": "6.3.3"
     }
 ]

@@ -52,6 +52,7 @@
 
     Nict_TexTra.utils.set_link(doc, "link_lookup", "./Lookup_terms.html");
     Nict_TexTra.utils.set_link(doc, "link_ログイン", "./API_Settings.html");
+    Nict_TexTra.utils.set_link(doc, "link_ログイン_top", "./API_Settings.html");
     Nict_TexTra.utils.set_link(doc, "link_機械翻訳API", "./MT_API_settings.html");
 
     change_2_textareas_height();
@@ -83,11 +84,13 @@ function save_api_info() {
 function load_func() {
 
     chrome.storage.local.get(
-        { selected_lang_org: "ja", selected_lang_trans: "en", if_text_selected: "trans" },
+        { selected_lang_org: "ja", selected_lang_trans: "en", if_text_selected: "trans", user_name: null },
         function (infos) {
             var doc = window.document;
             doc.getElementById("lang1").value = infos.selected_lang_org;
             doc.getElementById("lang2").value = infos.selected_lang_trans;
+
+            if (!infos.user_name) doc.getElementById("link_ログイン_top").style.display = "block";
         }
     );
 
@@ -174,8 +177,7 @@ function show_translation_history() {
             $.each(list_his, function (ind, his) {
 
                 var tm = new Date(Date.parse(his["time"]));
-                var str_time = tm.getMonth() + "月" + tm.getDate() + "日 " +
-                    tm.getHours() + "時" + tm.getMinutes() + "分";
+                var str_time = Nict_TexTra.utils.get_time(tm);
 
                 var elm_tr = document.createElement("tr");
                 tbl_history.appendChild(elm_tr);
@@ -230,6 +232,7 @@ function adapt_multi_locale() {
 
     document.getElementById("link_lookup").innerText = I18Nmes('mes_0004'); // 辞書引き
     document.getElementById("link_ログイン").innerText = I18Nmes('mes_0007'); // ログイン設定
+    document.getElementById("link_ログイン_top").innerText = I18Nmes('mes_0014'); // ログイン設定を行ってください。
     document.getElementById("link_機械翻訳API").innerText = I18Nmes('mes_0008'); // 機械翻訳API設定
     document.getElementById("link_help").innerText = I18Nmes('mes_0009'); // ヘルプ
     //document.getElementById("").innerText = I18Nmes('mes_000'); // 

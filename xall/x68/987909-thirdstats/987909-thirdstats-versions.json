@@ -1,5 +1,78 @@
 [
     {
+        "id": 2475139,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475139",
+        "files": [
+            {
+                "id": 1018300,
+                "created": "2021-01-08T16:11:20Z",
+                "hash": "sha256:b8bbd451263dce0611d0fb00e278cc540a25e0d276d09b08e4dc18d3cf01327b",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 284593,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018300/thirdstats-1.2.0-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "tabs",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>Overall Account Stats</b>\nAccount processing and loading got completely revamped. An option to show sum of all account stats was added to the accounts selection. Due to performance reasons, this only works if cache is enabled. Folder filter is deactivated for `All Accounts (Sum)`, date range filter can be used with it. Keep in mind, that processing of a lot of large accounts can take a huge amount of time.\n\n<b>Open Overall Stats from Popup menu</b>\nOverall stats can now directly be opened via the popup menu.\nThe URL of the stats page changed. Already opened stats pages have to be closed and reopened again via the popup menu.\n\n<b>Timestamps</b>\nInformation about how old the displayed data is was added to the stats page in an information section below the filter. Passed time gets updated live in human readable units. It also shows the specific data retrieval date in a tooltip on hover.\n\n<b>Self Messages</b>\nAn option to handle self messages (messages from me to myself) was added. This can be `disabled` (default) to treat every email the same. It can be set to `Same Account Only` (Messages where sender and receiver are identities from the same account will be excluded) and `From Any Account` (Messages where sender and receiver are identities from any account will be excluded).\nNote that only \"pure self messages\" are taken into account, where all recipients match the corresponding identities. If e.g. a message was sent to one of my identities and another recipient, it's not counted\n\n<b>Progress Indicator</b>\nA top page progress indication bar was added, to show progress while data is retrieved. Percentage is shown on hover.\n\n<b>Leader Count</b>\nAn option to define the number of entries in leader-boards (most received from, most sent to) was added. Allowed are numbers between 1 and 999 due to keeping a reasonable cache size.\n\n<b>Show all accounts in Popup menu</b>\nAccount tiles are now two column and overflow content can be reached via scrolling.\n\n<b>Fix data of week 53</b>\nDays of January before week 1 got counted for week 53 of current year instead of week 53 of previous year. This affected both the weeks line chart as well as the activity heatmaps. To apply this fix, data of all accounts has to be reprocessed.\n\n<b>Rename Time Period to Date Range</b>\n\n<b>Improve Documentation</b>\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.2.0\">full release notes with screenshots on GitHub</a>.",
+            "en-US": "<b>Overall Account Stats</b>\nAccount processing and loading got completely revamped. An option to show sum of all account stats was added to the accounts selection. Due to performance reasons, this only works if cache is enabled. Folder filter is deactivated for `All Accounts (Sum)`, date range filter can be used with it. Keep in mind, that processing of a lot of large accounts can take a huge amount of time.\n\n<b>Open Overall Stats from Popup menu</b>\nOverall stats can now directly be opened via the popup menu.\nThe URL of the stats page changed. Already opened stats pages have to be closed and reopened again via the popup menu.\n\n<b>Timestamps</b>\nInformation about how old the displayed data is was added to the stats page in an information section below the filter. Passed time gets updated live in human readable units. It also shows the specific data retrieval date in a tooltip on hover.\n\n<b>Self Messages</b>\nAn option to handle self messages (messages from me to myself) was added. This can be `disabled` (default) to treat every email the same. It can be set to `Same Account Only` (Messages where sender and receiver are identities from the same account will be excluded) and `From Any Account` (Messages where sender and receiver are identities from any account will be excluded).\nNote that only \"pure self messages\" are taken into account, where all recipients match the corresponding identities. If e.g. a message was sent to one of my identities and another recipient, it's not counted\n\n<b>Progress Indicator</b>\nA top page progress indication bar was added, to show progress while data is retrieved. Percentage is shown on hover.\n\n<b>Leader Count</b>\nAn option to define the number of entries in leader-boards (most received from, most sent to) was added. Allowed are numbers between 1 and 999 due to keeping a reasonable cache size.\n\n<b>Show all accounts in Popup menu</b>\nAccount tiles are now two column and overflow content can be reached via scrolling.\n\n<b>Fix data of week 53</b>\nDays of January before week 1 got counted for week 53 of current year instead of week 53 of previous year. This affected both the weeks line chart as well as the activity heatmaps. To apply this fix, data of all accounts has to be reprocessed.\n\n<b>Rename Time Period to Date Range</b>\n\n<b>Improve Documentation</b>\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.2.0\">full release notes with screenshots on GitHub</a>.",
+            "en-CA": "<b>Overall Account Stats</b>\nAccount processing and loading got completely revamped. An option to show sum of all account stats was added to the accounts selection. Due to performance reasons, this only works if cache is enabled. Folder filter is deactivated for `All Accounts (Sum)`, date range filter can be used with it. Keep in mind, that processing of a lot of large accounts can take a huge amount of time.\n\n<b>Open Overall Stats from Popup menu</b>\nOverall stats can now directly be opened via the popup menu.\nThe URL of the stats page changed. Already opened stats pages have to be closed and reopened again via the popup menu.\n\n<b>Timestamps</b>\nInformation about how old the displayed data is was added to the stats page in an information section below the filter. Passed time gets updated live in human readable units. It also shows the specific data retrieval date in a tooltip on hover.\n\n<b>Self Messages</b>\nAn option to handle self messages (messages from me to myself) was added. This can be `disabled` (default) to treat every email the same. It can be set to `Same Account Only` (Messages where sender and receiver are identities from the same account will be excluded) and `From Any Account` (Messages where sender and receiver are identities from any account will be excluded).\nNote that only \"pure self messages\" are taken into account, where all recipients match the corresponding identities. If e.g. a message was sent to one of my identities and another recipient, it's not counted\n\n<b>Progress Indicator</b>\nA top page progress indication bar was added, to show progress while data is retrieved. Percentage is shown on hover.\n\n<b>Leader Count</b>\nAn option to define the number of entries in leader-boards (most received from, most sent to) was added. Allowed are numbers between 1 and 999 due to keeping a reasonable cache size.\n\n<b>Show all accounts in Popup menu</b>\nAccount tiles are now two column and overflow content can be reached via scrolling.\n\n<b>Fix data of week 53</b>\nDays of January before week 1 got counted for week 53 of current year instead of week 53 of previous year. This affected both the weeks line chart as well as the activity heatmaps. To apply this fix, data of all accounts has to be reprocessed.\n\n<b>Rename Time Period to Date Range</b>\n\n<b>Improve Documentation</b>\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.2.0\">full release notes with screenshots on GitHub</a>."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.2.0",
+        "version": "1.2.0"
+    },
+    {
         "id": 2475073,
         "channel": "listed",
         "compatibility": {

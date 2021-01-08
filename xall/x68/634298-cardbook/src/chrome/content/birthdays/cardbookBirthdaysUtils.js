@@ -49,6 +49,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 			// if calendar is not found, then abort
 			if (aCalendar == 0) {
+				cardbookBirthdaysUtils.lBirthdaySyncResult.push([aCalendar.name, 0, cardbookBirthdaysUtils.lBirthdayList.length, 0, aCalendar.id]);
 				errorTitle = cardbookRepository.extension.localeData.localizeMessage("calendarNotFoundTitle");
 				errorMsg = cardbookRepository.extension.localeData.localizeMessage("calendarNotFoundMessage", [aCalendar.name]);
 				Services.prompt.alert(null, errorTitle, errorMsg);
@@ -57,6 +58,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 			// check if calendar is writable - if not, abort
 			if (!(cardbookBirthdaysUtils.isCalendarWritable(aCalendar))) {
+				cardbookBirthdaysUtils.lBirthdaySyncResult.push([aCalendar.name, 0, cardbookBirthdaysUtils.lBirthdayList.length, 0, aCalendar.id]);
 				errorTitle = cardbookRepository.extension.localeData.localizeMessage("calendarNotWritableTitle");
 				errorMsg = cardbookRepository.extension.localeData.localizeMessage("calendarNotWritableMessage", [aCalendar.name]);
 				Services.prompt.alert(null, errorTitle, errorMsg);
@@ -64,10 +66,37 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			}
 
 			cardbookBirthdaysUtils.lBirthdaySyncResult.push([aCalendar.name, 0, 0, 0, aCalendar.id]);
-			cardbookBirthdaysUtils.syncBirthdays(aCalendar);
+			cardbookBirthdaysUtils.getCalendarItems(aCalendar);
 		},
 
-		syncBirthdays: function (aCalendar1) {
+		getCalendarItems: function (aCalendar) {
+			// prepare Listener
+			var getListener = {
+				mCalendar : aCalendar,
+				mItems : [],
+				mStatus : true,
+				onGetResult: function(aCalendar, aStatus, aItemType, aDetail, aItems) {
+					if (!Components.isSuccessCode(aStatus)) {
+						this.mStatus = false;
+					} else {
+						this.mItems = this.mItems.concat(aItems);
+					}
+				},
+				onOperationComplete: function (aCalendar, aStatus, aOperationType, aId, aDetail) {
+					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(this.mCalendar.name + " : debug mode : aStatus : " + this.mStatus);
+					if (this.mStatus) {
+						cardbookBirthdaysUtils.syncBirthdays(this.mCalendar, this.mItems);
+					} else {
+						cardbookBirthdaysUtils.lBirthdaySyncResult.push([this.mCalendar.name, 0, cardbookBirthdaysUtils.lBirthdayList.length, 0, this.mCalendar.id]);
+					}
+				}
+			}
+
+			var calICalendar = Components.interfaces.calICalendar;
+			aCalendar.getItems(calICalendar.ITEM_FILTER_TYPE_EVENT, 0, null, null, getListener);
+		},
+
+		syncBirthdays: function (aCalendar, aItems) {
 			var date_of_today = new Date();
 			for (var i = 0; i < cardbookBirthdaysUtils.lBirthdayList.length; i++) {
 				var ldaysUntilNextBirthday = cardbookBirthdaysUtils.lBirthdayList[i][0];
@@ -106,8 +135,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				}
 				var lBirthdayDateNextString = lYear + "" + lMonth + "" + lDay;
 
-				var lBirthdayId = cardbookRepository.cardbookUtils.getUUID();
-
 				var leventEntryTitle = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
 				if (cardbookBirthdaysUtils.lBirthdayList[i][3] != "?") {
 					var lEventDate = cardbookRepository.cardbookDates.convertDateStringToDate(cardbookBirthdaysUtils.lBirthdayList[i][3], cardbookBirthdaysUtils.lBirthdayList[i][7]);
@@ -115,46 +142,25 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				} else {
 					var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayDisplayName).replace("%2$S", lBirthdayAge).replace("%3$S", "?").replace("%4$S", lBirthdayName).replace("%S", lBirthdayDisplayName).replace("%S", lBirthdayAge);
 				}
-
-				// prepare Listener
-				var getListener = {
-					mBirthdayId : lBirthdayId,
-					mBirthdayName : lBirthdayName,
-					mBirthdayAge : lBirthdayAge,
-					mBirthdayDateString : lBirthdayDateString,
-					mBirthdayDateNextString : lBirthdayDateNextString,
-					mBirthdayTitle : lBirthdayTitle,
-					mBirthdayResultGetCount : 0,
-					mCalendar : aCalendar1,
-					onGetResult: function(aCalendar, aStatus, aItemType, aDetail, aItems) {
-						if (!Components.isSuccessCode(aStatus)) {
-							return;
-						}
-						cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(this.mCalendar.name + " : debug mode : aStatus : " + aStatus);
-						for (let item of aItems) {
-						   var summary = item.getProperty("SUMMARY");
-							if (summary == this.mBirthdayTitle) {
-								cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(this.mCalendar.name + " : debug mode : found : " + this.mBirthdayTitle + ", against : " + summary);
-								this.mBirthdayResultGetCount++;
-								break;
-							} else {
-								cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(this.mCalendar.name + " : debug mode : not found : " + this.mBirthdayTitle + ", against : " + summary);
-							}
-						}
-					},
-	
-					onOperationComplete: function (aCalendar, aStatus, aOperationType, aId, aDetail) {
-						if (this.mBirthdayResultGetCount === 0) {
-							cardbookBirthdaysUtils.addNewCalendarEntry(this.mCalendar, this.mBirthdayId, this.mBirthdayName, this.mBirthdayAge, this.mBirthdayDateString, this.mBirthdayDateNextString, this.mBirthdayTitle);
-						} else {
-							cardbookRepository.cardbookUtils.formatStringForOutput("syncListExistingEntry", [this.mCalendar.name, this.mBirthdayName]);
-							cardbookBirthdaysUtils.lBirthdaySyncResult.push([this.mCalendar.name, 1, 0, 0, this.mCalendar.id]);
-						}
+				var found = false;
+				for (let item of aItems) {
+					var summary = item.getProperty("SUMMARY");
+					if (summary == lBirthdayTitle) {
+						found = true;
+						cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aCalendar.name + " : debug mode : found : " + lBirthdayTitle + ", against : " + summary);
+						break;
+					} else {
+						cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aCalendar.name + " : debug mode : not found : " + lBirthdayTitle + ", against : " + summary);
 					}
 				}
-	
-				var calICalendar = Components.interfaces.calICalendar;
-				aCalendar1.getItems(calICalendar.ITEM_FILTER_TYPE_EVENT, 0, null, null, getListener);
+				if (!found) {
+					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aCalendar.name + " : debug mode : add : " + lBirthdayTitle);
+					var lBirthdayId = cardbookRepository.cardbookUtils.getUUID();
+					cardbookBirthdaysUtils.addNewCalendarEntry(aCalendar, lBirthdayId, lBirthdayName, lBirthdayAge, lBirthdayDateString, lBirthdayDateNextString, lBirthdayTitle);
+				} else {
+					cardbookRepository.cardbookUtils.formatStringForOutput("syncListExistingEntry", [aCalendar.name, lBirthdayName]);
+					cardbookBirthdaysUtils.lBirthdaySyncResult.push([aCalendar.name, 1, 0, 0, aCalendar.id]);
+				}
 			}
 		},
 

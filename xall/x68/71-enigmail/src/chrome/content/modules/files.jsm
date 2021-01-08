@@ -339,6 +339,8 @@ var EnigmailFiles = {
    *    3 - NOK: File object with required name exists but is not a directory
    */
   ensureWritableDirectory: function(dirObj, permissions) {
+    lazyLog().DEBUG(`files.jsm: ensureWritableDirectory(${dirObj.path})\n`);
+
     let retVal = -1;
     try {
       if (dirObj.isDirectory()) {

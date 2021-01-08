@@ -86,67 +86,68 @@ Nict_TexTra.api.trans_text = function (func_success, func_fail, infos) {
 
     Nict_TexTra.api.get_url_MT_API(lang_org, lang_trans, infos, function (url) {
 
-        infos["REQ_PARAMS"] = [
-            ["text", infos["text_org"]],
-            ["split", "0"]
-        ];
+        var list_text_org = Nict_TexTra.api.get_split_org(infos["text_org"]);
+        var list_text_trans = [];
+        var cnt_call_api = 0;
+        var cnt_org = list_text_org.length;
 
-        func_success_trans = function (infos) {
-            infos["text_org"] = infos["resultset"]["request"]["text"];
-            infos["text_trans"] = infos["resultset"]["result"]["text"];
-            infos["lang_org"] = lang_org;
-            infos["lang_trans"] = lang_trans;
-            infos["src"] = "trans";
-            return func_success(infos);
+        var func_trans_local = function (infos) {
+
+            if (cnt_call_api > 0) list_text_trans.push(infos["resultset"]["result"]["text"]);
+
+            if (cnt_call_api < cnt_org) {
+                infos["REQ_PARAMS"] = [
+                    ["text", list_text_org[cnt_call_api]],
+                    ["split", "0"]
+                ];
+                cnt_call_api += 1;
+                Nict_TexTra.api.call_api2(url, func_trans_local, func_fail, infos);
+            } else {
+                infos["text_trans"] = list_text_trans.join("\n");
+                infos["lang_org"] = lang_org;
+                infos["lang_trans"] = lang_trans;
+                return func_success(infos);
+            }
         };
 
-        Nict_TexTra.api.call_api2(url, func_success_trans, func_fail, infos);
+        func_trans_local(infos);
+
     }, func_fail);
 
 };
 
-// 類似文→翻訳（文章区切り）
-Nict_TexTra.api.trans_text_split = function (func_success, func_fail, infos) {
+// 翻訳対象の原文の分割
+// 2020/12/27 3,000バイトに達する直前の改行部分で分割
+Nict_TexTra.api.get_split_org = function (txt_org) {
 
-    var lang_org = infos["lang_org"];
-    var lang_trans = infos["lang_trans"];
-    if (!lang_org) { lang_org = infos["LOGIN_INFO"]["selected_lang_org"]; infos["lang_org"] = lang_org; }
-    if (!lang_trans) { lang_trans = infos["LOGIN_INFO"]["selected_lang_trans"]; infos["lang_trans"] = lang_trans; }
+    var MAX_LEN = 3000;
+    var lenb = Nict_TexTra.utils.get_length_bytes(txt_org);
+    if (lenb <= MAX_LEN) return [txt_org];
 
-    var texts_org = infos["text_org"];
-    var login_info = infos["LOGIN_INFO"];
+    var list_text = [];
+    var ind_return = -1;
+    var ind_start = 0;
+    var ary_txt_org = txt_org.split('');
+    var len_str = txt_org.length;
+    var sum_byte = 0;
+    var ind;
+    for (ind = 0; ind < len_str; ind++) {
+        var chr = ary_txt_org[ind];
+        var lenb_chr = Nict_TexTra.utils.get_length_bytes(chr);
+        if (chr === "\n") ind_return = ind;
+        if (sum_byte + lenb_chr > MAX_LEN) {
+            if (ind_return < ind_start) ind_return = ind - 1;
+            list_text.push(txt_org.substr(ind_start, ind_return - ind_start + 1));
+            ind_start = ind_return + 1;
+            ind = ind_start - 1;
+            sum_byte = 0;
+            continue;
+        }
+        sum_byte += lenb_chr;
+    }
+    if (ind !== ind_start) list_text.push(txt_org.substr(ind_start, len_str - ind_start));
 
-    var infos_text = {};
-    infos_text["LOGIN_INFO"] = login_info;
-    infos_text["text_org"] = texts_org;
-    infos_text["lang_org"] = lang_org;
-    infos_text["lang_trans"] = lang_trans;
-    infos_text["ind_split"] = 0;
-    infos_text["len_split"] = 1;
-
-    func_success_trans = function (infos) {
-        infos["text_org"] = infos["resultset"]["request"]["text"];
-        infos["text_trans"] = infos["resultset"]["result"]["text"];
-        infos["src"] = "trans";
-        return func_success(infos);
-    };
-
-    Nict_TexTra.api.trans_text(func_success_trans, func_fail, infos_text);
-
-};
-
-// 類似文検索
-Nict_TexTra.api.search_ruijibun = function (func_success, func_fail, infos) {
-
-    var url = Nict_TexTra.api.get_api_url("sim", infos);
-
-    infos["REQ_PARAMS"] = [
-        ["pid", infos["ruiji_dic_cds"]],
-        ["text", infos["text"]],
-        ["score", infos["score"]]
-    ];
-
-    Nict_TexTra.api.call_api2(url, func_success, func_fail, infos);
+    return list_text;
 
 };
 

@@ -36,83 +36,100 @@
 //console.log('AddressbooksSync Version 2.1b11b');
 debug("background started");
 
+var prefs;
+
 async function start() {
-	debug('entered');
-let page=messenger.extension.getBackgroundPage();
-debug('page='+page);
+debug('entered');
+//let page=messenger.extension.getBackgroundPage();
+//debug('page='+page);
 
-	messenger.abs.migratePrefs().then(async function(prefs) {
-		let count=Object.entries(prefs).length;
-		if (count>0) {
+	prefs=await messenger.abs.migratePrefs();
+	let count=Object.entries(prefs).length;
+	if (count>0) {
 debug('preferences migrated');
-			if (!prefs['imapusedraft']) prefs['imapuploadpolicy']='tmpfile';
-			else 												prefs['imapuploadpolicy']='draft';
-			delete prefs['imapusedraft'];
-			delete prefs['syncpolicy'];
-			if (!prefs['downloadpolicy']) prefs['downloadpolicy']='ask';
-			if (!prefs['synctype']) prefs['synctype']='none';
-			for (let [key, val] of Object.entries(prefs)) {
-				if (key.match('.up') &&  !prefs['separateupdown'])
-					prefs[key]=prefs[key.replace('.up','.down')];
-			}
-for (let [key, val] of Object.entries(prefs)) { debug('migrated pref: '+key+'->'+val); }
-			try {
-				await messenger.storage.local.clear();
-				await messenger.storage.local.set(prefs);
-debug('prefs stored');
-			} catch(e) {
-				debug('storing prefs throws: '+e, e);
-			}
-		} else {	//already migrated or fresh install
-debug('no preferences to migrate, read from storage');
-      prefs=await messenger.storage.local.get(null); //.then(function(prefs) {
-			if (!prefs['imapuploadpolicy']) prefs['imapuploadpolicy']='draft';
-			if (!prefs['downloadpolicy']) prefs['downloadpolicy']='ask';
-			if (!prefs['delayautodownload'] || prefs['delayautodownload']<2) prefs['delayautodownload']=2;
-			delete prefs['upgraded'];
-			await messenger.storage.local.set(prefs);
+		if (!prefs['imapusedraft']) prefs['imapuploadpolicy']='tmpfile';
+		else 												prefs['imapuploadpolicy']='draft';
+		delete prefs['imapusedraft'];
+		delete prefs['syncpolicy'];
+		if (!prefs['downloadpolicy']) prefs['downloadpolicy']='ask';
+		if (!prefs['synctype']) prefs['synctype']='none';
+		for (let [key, val] of Object.entries(prefs)) {
+			if (key.match('.up') &&  !prefs['separateupdown'])
+				prefs[key]=prefs[key.replace('.up','.down')];
 		}
+for (let [key, val] of Object.entries(prefs)) { debug('migrated pref: '+key+'->'+val); }
+		try {
+			await messenger.storage.local.clear();
+			await messenger.storage.local.set(prefs);
+debug('prefs stored');
+		} catch(e) {
+			debug('storing prefs throws: '+e, e);
+		}
+		startPart2(true);
+	} else {	//already migrated or fresh install
+debug('no preferences to migrate, read from storage');
+		async function gP() {
+			try {
+debug('load from storage');
+//see https://thunderbird.topicbox.com/groups/addons/T46e96308f41c0de1-M3c3661dc00f04476a0f89b28/issues-with-browser-storage-local-get
+				prefs=await messenger.storage.local.get(null);
+				if (!prefs['imapuploadpolicy']) prefs['imapuploadpolicy']='draft';
+				if (!prefs['downloadpolicy']) prefs['downloadpolicy']='ask';
+				if (!prefs['delayautodownload'] || prefs['delayautodownload']<2) prefs['delayautodownload']=2;
+				delete prefs['upgraded'];
+				await messenger.storage.local.set(prefs);
+				startPart2(false);
+			} catch(e) { 
+debug("background: failed to load prefs, wait...");
+				setTimeout(gP, 500);
+				return;
+			}
+		}
+		gP();
+	}
+}
 
+async function startPart2(migrated) {
 debug('ABS: background: prefs='+JSON.stringify(prefs));
-    let [ u2i, u2f ]=await messenger.abs.uids2ids();
+	let [ u2i, u2f ]=await messenger.abs.uids2ids();
 debug('ABS: background: u2i='+u2i);
-    //remove
-    //	ldap_2.servers.book.filename
-    //	ldap_2.servers.book.down
-    //	ldap_2.servers.book.up
-    //		for nonexisting books
-    let books=await messenger.addressBooks.list();
-    for (let [key, val] of Object.entries(prefs)) {
-      let m;
-      if ((m=key.match(/(^ldap_2\.servers\.[^.]*)\.(.*)/))) {
-        let ok=false;
-        let uid;
-        for (let book of books) {
-            //id=68364c8a-d629-4678-972f-bb92e758d90d
-            //name=ggbs
-          if (u2i[book.id]==m[1]) ok=true;
-        }
-        if (!ok) {
-          delete prefs[key];
-          messenger.storage.local.remove(key);
-        }
-      }
-    }
+	//remove
+	//	ldap_2.servers.book.filename
+	//	ldap_2.servers.book.down
+	//	ldap_2.servers.book.up
+	//		for nonexisting books
+	let books=await messenger.addressBooks.list();
+	for (let [key, val] of Object.entries(prefs)) {
+		let m;
+		if ((m=key.match(/(^ldap_2\.servers\.[^.]*)\.(.*)/))) {
+			let ok=false;
+			let uid;
+			for (let book of books) {
+					//id=68364c8a-d629-4678-972f-bb92e758d90d
+					//name=ggbs
+				if (u2i[book.id]==m[1]) ok=true;
+			}
+			if (!ok) {
+				delete prefs[key];
+				messenger.storage.local.remove(key);
+			}
+		}
+	}
 //for (let [key, val] of Object.entries(prefs)) {debug('background pref: '+key+'->'+val); }
 debug('prefs='+JSON.stringify(prefs));
-    messenger.abs.setPrefs(prefs, '');
+	messenger.abs.setPrefs(prefs, '');
 
-		if (count>0) {    // abs was upgraded
+	if (migrated) {    // abs was upgraded
 debug('open options');
-			try {
-				let w=await messenger.windows.getCurrent();
-				messenger.tabs.create({windowId: w.id, url: 'abs_options.html'});
-					//throws 'tabmail is null', but works with alert in implementation.js!
-			} catch(e) { debug('open options throws: '+e, e); }
-		}
-	});
+		try {
+			let w=await messenger.windows.getCurrent();
+			messenger.tabs.create({windowId: w.id, url: 'abs_options.html'});
+				//throws 'tabmail is null', but works with alert in implementation.js!
+		} catch(e) { debug('open options throws: '+e, e); }
+	}
 
 }
+
 function debug(txt, e) {
 	ex=typeof e!=='undefined';
 	if (!ex) e = new Error();

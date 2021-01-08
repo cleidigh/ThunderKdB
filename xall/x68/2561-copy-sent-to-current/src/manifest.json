@@ -3,7 +3,7 @@
   "name": "__MSG_extensionname__",
   "short_name": "CS2C",
   "description": "__MSG_extensiondescription__",
-  "version": "3.3",
+  "version": "3.7",
   "author": "Günter Gersdorf",
   "homepage_url": "https://www.ggbs.de/extensions/CopySent2Current.html",
   "applications": {
@@ -16,12 +16,20 @@
   // also see https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html
   "experiment_apis": {
     "cs2c": {
-      "schema": "schema.json",
+      "schema": "cs2c_schema.json",
       "parent": {
         "scopes": [ "addon_parent" ],
         "paths": [ [ "cs2c" ] ],
         "script": "cs2c_implementation.js",
         "events": ["startup"]
+      }
+    },
+    "LegacyMenu": {
+      "schema": "LegacyMenu_schema.json",
+      "parent": {
+        "scopes": [ "addon_parent" ],
+        "paths": [ [ "LegacyMenu" ] ],
+        "script": "cs2c_lm_implementation.js"
       }
     }
   },
@@ -29,8 +37,8 @@
     "scripts": ["cs2c_background.js"]
   },
   "icons": {
-    "32": "skin/copyMailIcon.png",
-    "48": "skin/copyMailIcon48.png"
+    "32": "content/skin/copyMailIcon.png",
+    "48": "content/skin/copyMailIcon48.png"
   },
   "options_ui": {
     "page": "cs2c_options.html",
@@ -47,11 +55,17 @@
   "browser_action": {
     "browser_style": true,
     "default_icon": {
-			"32": "skin/copyMailIcon.png",
-			"48": "skin/copyMailIcon48.png"
+			"32": "content/skin/copyMailIcon.png",
+			"48": "content/skin/copyMailIcon48.png"
     },
     "default_title": "__MSG_extensionname__"
   },
+//  "compose_action": {
+//    "browser_style": true,
+//		"default_area": "maintoolbar",
+//    "default_icon": "content/skin/sendNoCopy.png",
+//    "default_title": "Send and no copy"
+//  },
   "default_locale": "en"
 
 }

@@ -1,0 +1,75 @@
+[
+  {
+    "namespace": "cs2c",
+    "functions": [
+      {
+        "name": "migratePrefs",
+        "description": "Migrate preferences from preferences system to messenger.storage",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "setPrefs",
+        "description": "set prefs for local use",
+        "type": "function",
+        "async": false,
+        "parameters": [
+          {
+            "name": "theprefs",
+            "type": "any",
+            "description": "the preferences"
+          },
+          {
+            "name": "changedPrefs",
+            "type": "string",
+            "description": "the changed preference if any"
+          }
+ 				]
+      },
+      {
+        "name": "getFcc",
+        "description": "get fcc setting for accounts",
+        "type": "function",
+        "async": true,
+        "parameters": [ ]
+      },
+      {
+        "name": "setFcc",
+        "description": "set fcc and fcc2",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "wid",
+            "type": "integer",
+            "description": "The window id"
+          },
+          {
+            "name": "identity",
+            "type": "string",
+            "description": "The current identity id"
+          },
+          {
+            "name": "preSelect",
+            "type": "string",
+            "description": "A preselected folder"
+          }
+        ]
+      },
+      {
+        "name": "addMenu",
+        "description": "add cs2c menu",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "wid",
+            "type": "integer",
+            "description": "The window id"
+          }
+        ]
+      }
+    ]
+  }
+]

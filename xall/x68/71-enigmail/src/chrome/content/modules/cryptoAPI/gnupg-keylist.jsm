@@ -15,7 +15,7 @@ var EXPORTED_SYMBOLS = ["obtainKeyList", "createKeyObj",
 ];
 
 const EnigmailTime = ChromeUtils.import("chrome://enigmail/content/modules/time.jsm").EnigmailTime;
-const EnigmailGpg = ChromeUtils.import("chrome://enigmail/content/modules/gpg.jsm").EnigmailGpg;
+const EnigmailGpg = ChromeUtils.import("chrome://enigmail/content/modules/cryptoAPI/gnupg-core.jsm").EnigmailGpg;
 const EnigmailExecution = ChromeUtils.import("chrome://enigmail/content/modules/execution.jsm").EnigmailExecution;
 const EnigmailLog = ChromeUtils.import("chrome://enigmail/content/modules/log.jsm").EnigmailLog;
 const EnigmailTrust = ChromeUtils.import("chrome://enigmail/content/modules/trust.jsm").EnigmailTrust;
@@ -37,6 +37,7 @@ const OWNERTRUST_ID = 8;
 const USERID_ID = 9;
 const SIG_TYPE_ID = 10;
 const KEY_USE_FOR_ID = 11;
+const KEY_TOKEN = 14;
 
 const ALGO_SYMBOL = {
   1: "RSA",
@@ -139,12 +140,14 @@ function appendKeyItems(keyListString, keyList) {
         keyObj = keyList.index[listRow[KEY_ID]];
         if (keyObj) {
           keyObj.secretAvailable = true;
+          keyObj.token = listRow[KEY_TOKEN];
           // create a dummy object that is not added to the list since we already have the key
           keyObj = createKeyObj(listRow);
         } else {
           appendUnkownSecretKey(listRow[KEY_ID], keyListString, i, keyList);
           keyObj = keyList.index[listRow[KEY_ID]];
           keyObj.secretAvailable = true;
+          keyObj.token = listRow[KEY_TOKEN];
         }
         break;
       case "fpr":
@@ -254,7 +257,7 @@ function appendUnkownSecretKey(keyId, aKeyList, startIndex, keyList) {
 
 /**
  * Extract a photo ID from a key, store it as file and return the file object.
- 
+
  * @param {String} keyId:       Key ID / fingerprint
  * @param {Number} photoNumber: number of the photo on the key, starting with 0
  *
@@ -332,7 +335,7 @@ async function getPhotoFileFromGnuPG(keyId, photoNumber) {
       fileStream.close();
 
       // delete picFile upon exit
-      let extAppLauncher = Cc["@mozilla.org/mime;1"].getService(Ci.nsPIExternalAppLauncher);
+      let extAppLauncher = Cc["@mozilla.org/uriloader/external-helper-app-service;1"].getService(Ci.nsPIExternalAppLauncher);
       extAppLauncher.deleteTemporaryFileOnExit(picFile);
       return picFile;
     } catch (ex) {}
@@ -348,22 +351,24 @@ async function getPhotoFileFromGnuPG(keyId, photoNumber) {
  *                                    Only the first public key is processed!
  * @param {Boolean} ignoreUnknownUid  true if unknown signer's UIDs should be filtered out
  *
- * @return {Array of Object}:
- *     - uid
- *     - uidLabel
- *     - creationDate
- *     - sigList: [uid, creationDate, signerKeyId, sigType ]
+ * @return {Array<Object>}:
+ *    - keyId
+ *    - fpr
+ *    - uid: Array<Object>
+ *       - userId
+ *       - rawUserId
+ *       - created: creationDate of UID
+ *       - sigList: [uid, creationDate, signerKeyId, sigType ]
  */
 
 function extractSignatures(gpgKeyList, ignoreUnknownUid) {
   EnigmailLog.DEBUG("gnupg.js: extractSignatures\n");
 
-  var listObj = {};
+  let keyList = [],
+    keyObj = null;
 
-  let havePub = false;
   let currUid = "",
-    keyId = "",
-    fpr = "";
+    keyId = "";
 
   const lineArr = gpgKeyList.split(/\n/);
   for (let i = 0; i < lineArr.length; i++) {
@@ -378,24 +383,26 @@ function extractSignatures(gpgKeyList, ignoreUnknownUid) {
     const lineTokens = lineArr[i].split(/:/);
     switch (lineTokens[ENTRY_ID]) {
       case "pub":
-        if (havePub) {
-          return listObj;
+        if (keyObj) {
+          keyList.push(keyObj);
         }
-        havePub = true;
         keyId = lineTokens[KEY_ID];
+        keyObj = {
+          keyId: keyId,
+          fpr: "",
+          uid: {}
+        };
         break;
       case "fpr":
-        if (fpr === "")
-          fpr = lineTokens[USERID_ID];
+        if (keyObj.fpr === "")
+        keyObj.fpr = lineTokens[USERID_ID];
         break;
       case "uid":
       case "uat":
         currUid = lineTokens[UID_ID];
-        listObj[currUid] = {
+        keyObj.uid[currUid] = {
           userId: lineTokens[ENTRY_ID] == "uat" ? EnigmailLocale.getString("keyring.photo") : EnigmailData.convertGpgToUnicode(lineTokens[USERID_ID]),
           rawUserId: lineTokens[USERID_ID],
-          keyId: keyId,
-          fpr: fpr,
           created: EnigmailTime.getDateTime(lineTokens[CREATED_ID], true, false),
           sigList: []
         };
@@ -413,14 +420,15 @@ function extractSignatures(gpgKeyList, ignoreUnknownUid) {
           };
 
           if (!ignoreUnknownUid || sig.userId != UNKNOWN_SIGNATURE) {
-            listObj[currUid].sigList.push(sig);
+            keyObj.uid[currUid].sigList.push(sig);
           }
         }
         break;
     }
   }
 
-  return listObj;
+  if (keyObj) keyList.push(keyObj);
+  return keyList;
 }
 
 
