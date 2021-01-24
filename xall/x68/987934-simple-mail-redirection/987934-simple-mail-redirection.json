@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1156,
+    "average_daily_users": 1944,
     "categories": {
         "thunderbird": [
             "chat",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-11-03T20:06:31Z",
     "current_version": {
-        "id": 2475076,
+        "id": 2475224,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.5.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-mail-redirection/versions/2475076",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-mail-redirection/versions/2475224",
         "files": [
             {
-                "id": 1018238,
-                "created": "2020-12-24T08:10:18Z",
-                "hash": "sha256:abedf0920e61a390e2fdc8afc9f1272656ab441186bb323c9ce3588e2a7d3738",
+                "id": 1018385,
+                "created": "2021-01-22T09:41:21Z",
+                "hash": "sha256:1ab92648537c9efa39a6848e6ca307efa2073473222f793dafaa6b35538f0ea1",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 45037,
+                "size": 45335,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018238/simple_mail_redirection-1.8-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018385/simple_mail_redirection-1.9-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "addressBooks",
@@ -79,12 +79,12 @@
             "url": "http://www.gnu.org/licenses/gpl-2.0.html"
         },
         "release_notes": {
-            "en-US": "fixed bug when resending a message from local folders",
+            "en-US": "- fixed bug when redirecting from local folders and no default account found\n- fixed minor issue if TB is started via .eml file (but redirect not possible in this case)",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-mail-redirection/versions/1.8",
-        "version": "1.8"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-mail-redirection/versions/1.9",
+        "version": "1.9"
     },
     "default_locale": "en-US",
     "description": null,
@@ -103,7 +103,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-01T16:38:48Z",
+    "last_updated": "2021-01-22T14:21:42Z",
     "name": {
         "el": "Simple Mail Redirection",
         "ca": "Simple Mail Redirection",
@@ -173,9 +173,9 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.45613,
+        "bayesian_average": 4.33603,
         "count": 8,
-        "average": 4.625,
+        "average": 4.5,
         "text_count": 8
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-mail-redirection/reviews/",

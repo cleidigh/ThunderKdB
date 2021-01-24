@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11612/11612952.png?modified=1430013327"
         }
     ],
-    "average_daily_users": 188,
+    "average_daily_users": 239,
     "categories": {
         "thunderbird": [
             "composition"
@@ -61,7 +61,7 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Toggle wrapping of long lines in the message composition window when writing plaintext messages. Wrapping can be controlled via a toolbar button and a keyboard shortcut (STRG-SHIFT-W by default). The current state is visualized in the toolbar button. The shortcut can be adjusted via the Add-on Manager (click on the gear).\n\nOn order to use the add-on, turn off HTML composition (per account setting, Composition &amp; Addressing → Composition → Compose messages in HTML format) and also make sure that \"mailnews.send_plaintext_flowed\" is disabled in the configuration (about:config).\n\nNote that this add-on requires an WebExtension Experiment API, thus will requests \"full access\" on installation."
+        "en-US": "Toggle wrapping of long lines in the message composition window when writing plaintext messages. Wrapping can be controlled via a toolbar button and a keyboard shortcut (CTRL-SHIFT-W by default). The current state is visualized in the toolbar button. The shortcut can be adjusted via the Add-on Manager (click on the gear).\n\nOn order to use the add-on, turn off HTML composition (per account setting, Composition &amp; Addressing → Composition → Compose messages in HTML format) and also make sure that \"mailnews.send_plaintext_flowed\" is disabled in the configuration (about:config). Furthermore, mailnews.wraplength needs to be non-zero, or the add-on will be deactivated (toolbar button grayed out).\n\nNote that this add-on requires an WebExtension Experiment API, thus will requests \"full access\" on installation."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/toggle-line-wrap/edit",
@@ -87,10 +87,10 @@
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.94099,
-        "count": 3,
-        "average": 4.3333,
-        "text_count": 3
+        "bayesian_average": 4.18472,
+        "count": 4,
+        "average": 4.5,
+        "text_count": 4
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/toggle-line-wrap/reviews/",
     "requires_payment": false,

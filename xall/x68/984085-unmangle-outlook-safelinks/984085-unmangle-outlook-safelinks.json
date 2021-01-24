@@ -6,10 +6,10 @@
             "name": "Peter Havekes",
             "url": "https://addons.thunderbird.net/en-US/thunderbird/user/PeterHavekes/",
             "username": "PeterHavekes",
-            "picture_url": null
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14124/14124880.png?modified=1610376802"
         }
     ],
-    "average_daily_users": 88,
+    "average_daily_users": 169,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
@@ -19,30 +19,34 @@
     "contributions_url": "https://paypal.me/phavekes/5",
     "created": "2018-06-28T08:07:37Z",
     "current_version": {
-        "id": 2472994,
+        "id": 2475153,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unmangle-outlook-safelinks/versions/2472994",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unmangle-outlook-safelinks/versions/2475153",
         "files": [
             {
-                "id": 1016101,
-                "created": "2019-12-10T08:08:19Z",
-                "hash": "sha256:cb5f45ea83c4ab91e4c0ec9260de0a50536657b06398c40031ae64f4767f6f89",
-                "is_restart_required": true,
+                "id": 1018314,
+                "created": "2021-01-11T10:55:09Z",
+                "hash": "sha256:a7bd157d742b2713f6d275c696de951f8d692722696882b3dc01d19a32b05780",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 14465,
+                "size": 13122,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016101/unmangle_outlook_safelinks-2.0.2-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018314/unmangle_microsoft_atp_safelinks-3.0.1-tb.xpi?src=",
+                "permissions": [
+                    "messagesModify",
+                    "messagesRead",
+                    "compose"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,15 +75,17 @@
             },
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Also unmangle replies, forwards and text-emails"
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unmangle-outlook-safelinks/versions/2.0.2",
-        "version": "2.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unmangle-outlook-safelinks/versions/3.0.1",
+        "version": "3.0.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Thunderbird plugin to unmangle Outlook Protection Safelinks\n\nBased upon <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ee6381ef0a0f3a5ec79be84a8faf3d5987092cf51c77c4185c28d9db66aa0256/https%3A//github.com/mbattersby/unmangleOutlookSafelinks\">https://github.com/mbattersby/unmangleOutlookSafelinks</a>\nOriginal version by mib@post.com\n\nUsers of Office 365 Advanced Threat Protection wil change\nall url's in emails to redirect them to an Microsoft filter before opening.\nThis will leak information to microsoft and makes it impossible to see if\nthe original url was safe to open.\n\nE.g. a link to \n   <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/77106da0f11e4246e980289eaa0f7427df63baba9ad17c2c727af26b114fe00c/http%3A//phishingsite.fake.ru/you/are/hacked.php\">http://phishingsite.fake.ru/you/are/hacked.php</a>\nwil show as\n   <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/3f71eb60d3568698f757a8d832fd3858b75d8425e1859d42056232f61f6cb9fb/https%3A//emea01.safelinks.protection.outlook.com/%3Furl=http%253A%252F%252Fphishingsite.fake.ru%252Fyou%252Fare%252Fhacked.phpdata=02%257C01%257Csender.mail%2540domain.tld%257C8177af7905a4406ecae208d5dc1fb7c9%257C87c50b582ef2423da4dbaedde7c84efcfa%257C0%257C0%257C63453351150545403&amp;sdata=Te0O1xGxxxULxdzbxQ%252xxxyql2QjTt4Ken%252F00JB%252BV%252FPUA%253D&amp;reserved=0\">https://emea01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fphishingsite.fake.ru%2Fyou%2Fare%2Fhacked.phpdata=02%7C01%7Csender.mail%40domain.tld%7C8177af7905a4406ecae208d5dc1fb7c9%7C87c50b582ef2423da4dbaedde7c84efcfa%7C0%7C0%7C63453351150545403&amp;sdata=Te0O1xGxxxULxdzbxQ%2xxxyql2QjTt4Ken%2F00JB%2BV%2FPUA%3D&amp;reserved=0</a>\nand will not be recogniosed by a user as dangerous.\n\nThis plugin wil change the url back to the original value.",
-        "nl": "Thunderbird plugin to unmangle Outlook Protection Safelinks\n\nBased upon <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/ee6381ef0a0f3a5ec79be84a8faf3d5987092cf51c77c4185c28d9db66aa0256/https%3A//github.com/mbattersby/unmangleOutlookSafelinks\">https://github.com/mbattersby/unmangleOutlookSafelinks</a>\nOriginal version by mib@post.com\n\nUsers of Office365 who have Advanced Thread Protection enabled wil change\nall url's in emails to redirect them to an Microsoft filter before opening.\nThis will leak information to microsoft and makes it impossible to see if\nthe original url was safe to open.\n\nE.g. a link to \n\t<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/77106da0f11e4246e980289eaa0f7427df63baba9ad17c2c727af26b114fe00c/http%3A//phishingsite.fake.ru/you/are/hacked.php\">http://phishingsite.fake.ru/you/are/hacked.php</a> \nwil show as\n\t<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/07d2e2d3d0151490e414c31e7320c2cef0a12c5595fc198906b59293d5bed8ed/https%3A//emea01.safelinks.protection.outlook.com/%3Furl=http%253A%252F%252Fphishingsite.fake.ru%252Fyou%252Fare%252Fhacked.phpdata=02%257C01%257Csender.mail%2540domain.tld%257C8177af7905a4406ecae208d5dc1fb7c9%257C87c50b582ef2423da4dbaedde7c84efcfa%257C0%257C0%257C63453351150545403%2Bsdata=Te0O1xGxxxULxdzbxQ%252xxxyql2QjTt4Ken%252F00JB%252BV%252FPUA%253D%2Breserved=0\">https://emea01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fphishingsite.fake.ru%2Fyou%2Fare%2Fhacked.phpdata=02%7C01%7Csender.mail%40domain.tld%7C8177af7905a4406ecae208d5dc1fb7c9%7C87c50b582ef2423da4dbaedde7c84efcfa%7C0%7C0%7C63453351150545403+sdata=Te0O1xGxxxULxdzbxQ%2xxxyql2QjTt4Ken%2F00JB%2BV%2FPUA%3D+reserved=0</a>\n\nand will not be recogniosed by a user as dangerous.\n\n\nThis plugin wil change the url back to the original value."
+        "en-US": "Thunderbird plugin to unmangle Outlook Protection Safelinks\n\nBased upon <a rel=\"nofollow\" href=\"https://github.com/mbattersby/unmangleOutlookSafelinks\">https://github.com/mbattersby/unmangleOutlookSafelinks</a>, original version by mib@post.com\n\nOffice 365 Advanced Threat Protection will change all url's in emails to redirect them to an Microsoft filter before opening.\nThis will leak information to microsoft and makes it impossible to see if\nthe original url was safe to open.\n\nE.g. a link to \n   <a rel=\"nofollow\" href=\"http://phishingsite.fake.ru/you/are/hacked.php\">http://phishingsite.fake.ru/you/are/hacked.php</a>\nwill show as\n   <a rel=\"nofollow\" href=\"https://emea01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fphishingsite.fake.ru%2Fyou%2Fare%2Fhacked.phpdata=02%7C01%7Csender.mail%40domain.tld%7C8177af7905a4406ecae208d5dc1fb7c9%7C87c50b582ef2423da4dbaedde7c84efcfa%7C0%7C0%7C63453351150545403\">https://emea01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fphishingsite.fake.ru%2Fyou%2Fare%2Fhacked.phpdata=02%7C01%7Csender.mail%40domain.tld%7C8177af7905a4406ecae208d5dc1fb7c9%7C87c50b582ef2423da4dbaedde7c84efcfa%7C0%7C0%7C63453351150545403</a>&amp;sdata=Te0O1xGxxxULxdzbxQ%2xxxyql2QjTt4Ken%2F00JB%2BV%2FPUA%3D&amp;reserved=0\nand will not be recogniosed by a user as dangerous.\n\nThis plugin will change the url back to the original value.\n\nPlease report issues and requests <a rel=\"nofollow\" href=\"https://github.com/phavekes/unmangleOutlookSafelinks/issues/new/choose\"> here</a>",
+        "nl": "Thunderbird plugin om de zogenaamde safelinks van Microsoft te ontwarren.\n\nGebaseerd op <a rel=\"nofollow\" href=\"https://github.com/mbattersby/unmangleOutlookSafelinks\">https://github.com/mbattersby/unmangleOutlookSafelinks</a>\nEerste versie door mib@post.com\n\nOffice365 en <a rel=\"nofollow\" href=\"http://outlook.com\">outlook.com</a> gebruiken Advanced Thread Protection en zullen alle links in emails aanpassen om deze naar Microsoft om te leiden voordat je ze kunt openen.\n\nDit lekt persoonlijke informatie naar Microsoft en maakt het onmogelijk om te zien om de link veilig geopend kan worden.\n\nVragen en suggesties <a rel=\"nofollow\" href=\"https://github.com/phavekes/unmangleOutlookSafelinks/issues/new/choose\">kun je hier kwijt</a>.\n\nBijvoorbeeld een link naar :\n\t<a rel=\"nofollow\" href=\"http://phishingsite.fake.ru/you/are/hacked.php\">http://phishingsite.fake.ru/you/are/hacked.php</a> \nziet er in je email na het vertalen door microsoft zo uit:\n\t<a rel=\"nofollow\" href=\"https://emea01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fphishingsite.fake.ru%2Fyou%2Fare%2Fhacked.phpdata=02%7C01%7Csender.mail%40domain.tld%7C8177af7905a4406ecae208d5dc1fb7c9%7C87c50b582ef2423da4dbaedde7c84efcfa%7C0%7C0%7C63453351150545403+sdata=Te0O1xGxxxULxdzbxQ%2xxxyql2QjTt4Ken%2F00JB%2BV%2FPUA%3D+reserved=0\">https://emea01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fphishingsite.fake.ru%2Fyou%2Fare%2Fhacked.phpdata=02%7C01%7Csender.mail%40domain.tld%7C8177af7905a4406ecae208d5dc1fb7c9%7C87c50b582ef2423da4dbaedde7c84efcfa%7C0%7C0%7C63453351150545403+sdata=Te0O1xGxxxULxdzbxQ%2xxxyql2QjTt4Ken%2F00JB%2BV%2FPUA%3D+reserved=0</a>\n\nEen gebruiker zal dit niet herkennen als gevaarlijk.\n\n\nDeze plugin vertaalt de url terug naar de originele waarde\n\n<a rel=\"nofollow\" href=\"https://github.com/phavekes/unmangleOutlookSafelinks/issues/new/choose\">Suggesties en opmerkingen</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unmangle-outlook-safelinks/edit",
@@ -99,10 +105,10 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-12-11T05:25:52Z",
+    "last_updated": "2021-01-11T11:00:03Z",
     "name": {
-        "en-US": "Unmangle Outlook Safelinks",
-        "nl": "Unmangle Outlook Safelinks"
+        "en-US": "Unmangle Microsoft ATP Safelinks",
+        "nl": "Unmangle Microsoft ATP Safelinks"
     },
     "previews": [],
     "public_stats": true,
@@ -118,8 +124,8 @@
     "slug": "unmangle-outlook-safelinks",
     "status": "public",
     "summary": {
-        "en-US": "Users of Office 365 Advanced Threat Protection wil change\nall url's in emails to redirect them to an Microsoft filter before opening.\n\nThis plugin wil change the url back to the original value.",
-        "nl": "Thunderbird plugin to unmangle Outlook Protection Safelinks\n\nThis plugin wil change the dangerous Outlook 'safelinks' back to the original value."
+        "en-US": "Users of <a rel=\"nofollow\" href=\"http://outlook.com\">outlook.com</a> and o365 who have Advanced Thread Protection enabled will have all URL's in emails changed to redirect them to an Microsoft filter before opening. This is a bad idea.\n\nThis plugin will change the URL back to the original value.",
+        "nl": "Thunderbird plugin om de zogenaamde safelinks van Microsoft te ontwarren.\n\nDeze plugin zal alle onveilige 'safelinks' terug vertalen naar de originele waarde."
     },
     "support_email": {
         "en-US": "thunderbird-plugin@havekes.eu",
@@ -132,6 +138,7 @@
     "tags": [
         "atp",
         "firefox57",
+        "microsoft",
         "office 365 advanced threat protection",
         "outlook",
         "safelink",
@@ -142,10 +149,15 @@
     "weekly_downloads": 63,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-01-09T11:24:43Z",
+            "comp78pv_version": "3.0.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-06-28T08:07:37Z"
         }

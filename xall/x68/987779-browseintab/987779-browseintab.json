@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 441,
+    "average_daily_users": 556,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2020-02-10T20:15:47Z",
     "current_version": {
-        "id": 2475011,
+        "id": 2475175,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/versions/2475011",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/browseintab/versions/2475175",
         "files": [
             {
-                "id": 1018173,
-                "created": "2020-12-12T17:40:26Z",
-                "hash": "sha256:dbae74c0461c58a383db74c2228051b602c70f613e2d7ca3152d5238c476f6ca",
+                "id": 1018336,
+                "created": "2021-01-15T17:31:29Z",
+                "hash": "sha256:8d5b84f97b4adb3e4b0b8d2277aa669cd9141362e18f3b1878f251ce84386152",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 50395,
+                "size": 50623,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018173/browseintab-2.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018336/browseintab-2.7-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
@@ -74,11 +74,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "<b>Version 2.5 changes</b>\n<ul>  <li>New: implement additional custom zoom options for left mousebutton down-mousewheel zoom.</li>  <li>New: apply global chrome zoom setting to UI elements (icons, etc.) in addition to chrome font size.</li></ul>"
+            "en-US": "<b>Version 2.7 changes</b>\n<ul>  <li>Fix: ensure chrome zoom level applies to menubar, menulist, menupopup elements.</li>  <li>New: implement chrome zoom level for all windows.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/versions/2.6",
-        "version": "2.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/versions/2.7",
+        "version": "2.7"
     },
     "default_locale": "en-US",
     "description": {
@@ -101,7 +101,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-12-15T15:32:10Z",
+    "last_updated": "2021-01-16T09:28:10Z",
     "name": {
         "en-US": "BrowseInTab"
     },
@@ -173,9 +173,9 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.1091,
+        "bayesian_average": 4.51837,
         "count": 7,
-        "average": 4.2857,
+        "average": 4.7143,
         "text_count": 7
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/browseintab/reviews/",
@@ -194,6 +194,8 @@
         "browse",
         "content",
         "firefox57",
+        "font",
+        "font size",
         "image",
         "link",
         "tab",

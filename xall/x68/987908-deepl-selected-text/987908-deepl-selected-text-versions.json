@@ -1,5 +1,52 @@
 [
     {
+        "id": 2475150,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/deepl-selected-text/versions/2475150",
+        "files": [
+            {
+                "id": 1018311,
+                "created": "2021-01-11T04:22:50Z",
+                "hash": "sha256:66252434ecec35b9f4ac54ffdb65b37bb97a50178d50b70eec4964453251c618",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 14233,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018311/deepl-1.2.1-tb.xpi?src=",
+                "permissions": [
+                    "menus",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Added French locale. Thanks to DenBar for contribution.",
+            "ja": "フランス語のロケールを追加しました。DenBarさん、投稿ありがとうございました。"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/deepl-selected-text/versions/1.2.1",
+        "version": "1.2.1"
+    },
+    {
         "id": 2475080,
         "channel": "listed",
         "compatibility": {
@@ -38,7 +85,10 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Added keyboard shortcut. Ctrl+T now opens DeepL.\nAdded options to specify the language of the source and target texts.",
+            "ja": "キーボードショートカット Ctrl+T でDeepLを開くことができるようになりました。\n原文と訳文の言語を指定するオプションを追加しました。"
+        },
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/deepl-selected-text/versions/1.2.0",
         "version": "1.2.0"
@@ -82,7 +132,10 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Added options page.\nDeepL can now be opened in a new window.",
+            "ja": "オプションページを追加しました。\nDeepLを新しいウィンドウで開けるようになりました。"
+        },
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/deepl-selected-text/versions/1.1.0",
         "version": "1.1.0"
@@ -125,7 +178,10 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "First release",
+            "ja": "最初のリリース"
+        },
         "reviewed": "2020-09-27T07:40:03Z",
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/deepl-selected-text/versions/1.0.0",
         "version": "1.0.0"
