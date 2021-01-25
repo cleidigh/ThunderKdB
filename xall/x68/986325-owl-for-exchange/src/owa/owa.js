@@ -416,13 +416,39 @@ async CheckFolders(aForLogin)
   }
 
   let { folderList, rootFolderId } = await this.FindMyFolders(); // emails.js
+  let extraFolders = []; // {Array of FolderTree}
+  let publicFolders; // {Array of FolderTree} (If undefined, the server call failed)
+  try {
+    if (!this._noPublicFolder) {
+      /*
+       * Hotfix - disable public folders
+      publicFolders = await this.FindPublicFolders(); // emails.js
+      extraFolders = extraFolders.concat(publicFolders);
+      */
+      publicFolders = [];
+    }
+  } catch (ex) {
+    if (ex.type == "ErrorNoPublicFolderReplicaAvailable") {
+      // No public folders is an expected error, so we don't log that.
+      // Don't bother trying to check for public folders again this session.
+      this._noPublicFolder = true;
+    } else {
+      logError(ex);
+    }
+  }
   let sharedFolders; // {Array of FolderTree} (If undefined, the server call failed)
   try {
     sharedFolders = await this.GetSharedFolders(); // emails.js
+    extraFolders = extraFolders.concat(sharedFolders);
   } catch (ex) {
     logError(ex);
   }
-  let folderTree = ConvertFolderList(folderList, rootFolderId, sharedFolders);
+  let folderTree = ConvertFolderList(folderList, rootFolderId, extraFolders);
+  if (!publicFolders) {
+    // We failed to retrieve the list of public folders.
+    // Don't accidentally delete public folders that we retrieved previously.
+    folderTree[0].keepPublicFolders = true;
+  }
   if (!sharedFolders) {
     // We failed to retrieve the list of shared folders itself.
     // Don't accidentally delete shared folders that we retrieved previously.
@@ -494,7 +520,11 @@ OWAAccount.DispatchOperation = async function(aServerId, aOperation, aParameters
   case "GetExtensionURL":
     return GetExtensionURL(); // owl.js
   case "ClearAllValues":
+    let existingAccount = await gOWAAccounts.get(aServerId);
     gOWAAccounts.delete(aServerId);
+    if (existingAccount && existingAccount.autoCompleteListener) {
+      browser.autoComplete.onAutoComplete.removeListener(existingAccount.autoCompleteListener);
+    }
     return;
   case "VerifyLogin":
     let tempAccount = await getAccountObject(aServerId);
@@ -543,5 +573,5 @@ browser.webAccount.dispatcher.addListener(async function(aServerId, aOperation, 
 
 browser.webAccount.setSchemeOptions("owl", {
   authMethods: [3, 20, 10],
-  sentFolder: "SentMail",
+  sentFolderSelection: "SetByServer",
 });

@@ -25,10 +25,16 @@ var ovl_list = {
 	},
 
 	mailListNameExists: function () {
-		var result = false;
+		gSendLocked = true;
+		if (!gMsgCompose) {
+			return;
+		}
 		const addressRows = [ "toAddrContainer", "ccAddrContainer", "bccAddrContainer", "newsgroupsAddrContainer" ];
 		
 		for (let parentID of addressRows) {
+			if (!gSendLocked) {
+				break;
+			}
 			let parent = document.getElementById(parentID);
 			if (!parent) {
 				continue;
@@ -36,15 +42,15 @@ var ovl_list = {
 			for (let address of parent.querySelectorAll(".address-pill")) {
 				let listNames = MimeParser.parseHeaderField(address.fullAddress, MimeParser.HEADER_ADDRESS);
 				let isMailingList = listNames.length > 0 && ovl_list.doesListExist(listNames[0].name);
+				if (!cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.exclusive") && !isMailingList) {
+					isMailingList = listNames.length > 0 && MailServices.ab.mailListNameExists(listNames[0].name);
+				}
 				if (isValidAddress(address.emailAddress) || isMailingList || address.emailInput.classList.contains("news-input")) {
-					// remove the error attribute
-					address.setAttribute("class", "address-pill");
-				} else {
-					result = true;
+					gSendLocked = false;
+					break;
 				}
 			}
 		}
-		gSendLocked = result;
 	}
 };
 

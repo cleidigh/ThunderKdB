@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2
+  ,"applications": {
+    "gecko": {
+      "id": "tidybird@ganast.com"
+      ,"strict_min_version": "68.0"
+    }
+  }
+  ,"name": "Tidybird"
+  ,"description": "Organize email into folders quickly and easily."
+  ,"author": "George Anastassakis"
+  ,"version": "2.0"
+  ,"browser_action": {
+    "default_icon": "skin/icon.png"
+    ,"default_title": "Tidybird"
+  }
+  ,"background": {
+    "scripts": [
+      "background.js"
+    ]
+  }
+  ,"experiment_apis": {
+    "tidybird_api": {
+      "schema": "api/tidybird/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["tidybird_api"]],
+        "script": "api/tidybird/implementation.js",
+        "events": ["startup"]
+      }
+    }
+  }
+}

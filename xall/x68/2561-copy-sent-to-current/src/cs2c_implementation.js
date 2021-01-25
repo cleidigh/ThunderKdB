@@ -56,6 +56,21 @@ PRInt32 	SaveAsDraft 	= 4
 PRInt32 	SaveAsTemplate 	= 5
 PRInt32 	SendUnsent 	= 6
 PRInt32 	AutoSaveAsDraft 	= 7
+
+nsIMsgCompType
+PRInt32 	New 	= 0
+PRInt32 	Reply 	= 1
+PRInt32 	ReplyAll 	= 2
+PRInt32 	ForwardAsAttachment 	= 3
+PRInt32 	ForwardInline 	= 4
+PRInt32 	NewsPost 	= 5
+PRInt32 	ReplyToSender 	= 6
+PRInt32 	ReplyToGroup 	= 7
+PRInt32 	ReplyToSenderAndGroup 	= 8
+PRInt32 	Draft 	= 9
+PRInt32 	Template 	= 10
+PRInt32 	MailToUrl 	= 11
+PRInt32 	ReplyWithTemplate 	= 12
 */
 
 var prefs;
@@ -183,154 +198,24 @@ debug('SetPrefs: changed Pref '+changedPref+' to '+prefs[changedPref]);
         setFcc: async function(wid, identityKey, preSelect) {	//called from background if messenger.compose.onBeforeSend
 debug("setFcc started: wid="+wid+' identityKey'+identityKey+' preSelect='+preSelect);
 					let win=Services.wm.getOuterWindowWithId(wid);
-					win.CS2C_SENDDONE=true;
 debug('cs2c_params='+JSON.stringify(win.cs2c_params));
 
-/* This is ...
-          let identity=MailServices.accounts.getIdentity(identityKey);
-          let akey=null;
-          for (let account of MailServices.accounts.accounts) {
-            akey=account.key;
-            if (account.identities.find(id => id.valid && id.key == identityKey))
-              break;
-            akey=null;
-          }
-debug('selected identity='+identityKey+' '+identity+' account='+akey);
-*/
-/* ... identical to this
-let cidentity=win.getCurrentIdentity();
-let caccount=win.getCurrentAccountKey();
-debug('from window identity='+identity.key+' '+' account='+caccount);
-*/
+          let moveToURI=setFcc(win, identityKey, preSelect);
 
-          //check currently selected identity
-          let identity=MailServices.accounts.getIdentity(identityKey);
-debug(' selected identity is '+identityKey+' '+identity.identityName);
-          //identity might have been changed by user
-          if (!identity.doFcc) debug(' -- doFcc disabled!');
-
-          let account=win.cs2c_params.account;
-//TODO: this the account the compose window was opened with, this might have been changed by user
-debug('use account '+account);
-          if (!prefs[account]) {
-debug('account not enabled for cs2c');
-						return true;	//send message
-					}
-          let moveToURI='';
-					let sentFolder=win.cs2c_params.sentFolder;
-					let origURI=win.cs2c_params.origURI;
-					let fcc;
-debug('sentFolder='+sentFolder+' origURI='+origURI);
-					let doMove=(win.cs2c_params.allowMove && !prefs.chooseBehind) ?
-								win.document.getElementById('movemessage').checked : false;
-debug('doMove='+doMove);
-					if (preSelect=='noCopy') {
-						fcc="nocopy://";
-debug('preselect=nocopy://');
-					} else if (preSelect=='toSentFolder') {
-						fcc=sentFolder;
-debug('preselect='+sentFolder);
-					} else if (!('chooseBehind' in prefs) || !prefs.chooseBehind) {
-						let picker=win.document.getElementById('fccFolderPicker');
-						if (picker===null) return;
-						fcc=picker.getAttribute('uri');
-debug('from picker: fcc='+fcc);
-					} else {
-debug('chooseBehind');
-//see https://thunderbird.topicbox.com/groups/addons/Ta8337b5f8c8012d5-M39c0a2be87e919c7e9b65ca4/webextension-how-to-send-data-to-created-window-and-back-as-with-legacy-window-open
-						let chooser=win.openDialog(
-							"chrome://copysent2current/content/cs2c_chooser.xhtml",	// with registerChromeUrl
-							"_blank",
-							"chrome,dialog,modal,centerscreen,titlebar=yes,close=yes,width=200", //resizable,minimizable,titlebar,close",		//features
-							win.cs2c_params, prefs, strings
-						);
-						if (!('targeturi' in win.cs2c_params)) {
-debug('chooseBehind: send was canceled');
-							return false;		//send was canceled, do not send message
-						}
-						fcc=win.cs2c_params.targeturi;
-						doMove=win.cs2c_params.move;
-debug('target: '+fcc+' doMove='+doMove);
-					}
-
-					let msgCompFields = win.gMsgCompose.compFields;
-debug('vorher: fcc='+msgCompFields.fcc+' fcc2='+msgCompFields.fcc2);
-
-					if (fcc!='nocopy://') {
-						moveToURI=fcc;
-						//Mark folder for most recently used menu (uses mail.folder_widget.max_recent)
-						let time=Math.floor(Date.now() / 1000).toString();
-						let folder=MailUtils.getExistingFolder(fcc);
-						folder.setStringProperty('MRMTime', time);
-					} else if (prefs[account+'_totrash']) {    //nocopy is copy to trash
-							//find the Trash folder
-						let trashFolder;
-//             let account=MailServices.accounts.getAccount(account);
-//             let identity=account.defaultIdentity;
-debug('nocopy to trash using account: '+account);
-						let trashFolderURIs = new Array(sentFolder, 'mailbox://nobody@Local%20Folders');
-								//first try trash of current identity, else fallback to trash of 'Local Folders'
-						for (let i=0; i<trashFolderURIs.length; i++) {
-							let trashFolderURI=trashFolderURIs[i];
-							let folder=MailUtils.getExistingFolder(trashFolderURI);
-							let rootFolder = folder.rootFolder;
-							trashFolder = rootFolder.getFolderWithFlags(Components.interfaces.nsMsgFolderFlags.Trash);
-							if (trashFolder) break;
-						}
-debug('trash folder: '+trashFolder.URI);
-				
-						if (trashFolder) {
-							fcc=trashFolder.URI;
-							moveToURI=prefs['noMoveTrash']?'':trashFolder.URI;
-						} else {
-							console.error('CopySent2Current: '+strings['NoTrashFolder']);
-							fcc=sentFolder;
-							moveToURI=sentFolder;
-						}
-					}
-
-					//No need to check anything:
-					//	- if doFCC not set, setting fcc will be ignored
-					//	- if current folder is an account or news:, setting fcc will be ignored and the
-					//			the default sent folder will be used
-					//	- if current folder is a virtual folder, an errormessage is shown
-debug("set fcc to "+fcc);
-debug(' for message '+msgCompFields.subject);
-					msgCompFields.fcc=fcc;
-
-					if (msgCompFields.fcc.substring(0,4)=='owl:') {
-						//see mail from László Vági <laszlo.vagi@ericsson.com> (30.10.2019)
-						// Problem if 'Eule for Exchange' is installed
-						debug('schema owl: detected (Eule for Exchange)');
-					} else if (msgCompFields.fcc2) {
-						// fcc2 might contain a folder selected via menu Options/Send a copy to
-						debug('fcc2 already set to '+msgCompFields.fcc2+' by menu "Options/Send a copy to"');
-					} else if (prefs[account+'_sentalso'] && msgCompFields.fcc != sentFolder) {
-						// also to sent folder
-						if (msgCompFields.fcc=='nocopy://') {
-							msgCompFields.fcc = sentFolder;
-						} else {
-							msgCompFields.fcc2 = sentFolder;
-						}
-					}
-					if (msgCompFields.fcc2 && msgCompFields.fcc2.substr(0,7)!='imap://' &&  // if sent folder is local
-							msgCompFields.fcc.substr(0,7)=='imap://') {   // and fcc folder is remote
-						// since fcc2 is only performed when fcc succeeded, we want to be sure
-						// that the 'easier'(=copy to a local folder) is done first
-						let fcc2=msgCompFields.fcc2;
-						msgCompFields.fcc2 = msgCompFields.fcc;
-						msgCompFields.fcc  = fcc2;
-					}
-debug('setFcc finally: fcc='+msgCompFields.fcc+' fcc2='+msgCompFields.fcc2);
 if (prefs.test) console.warn('CS2C: test - do not send message');
 if (prefs.test) return false;	//do not send message
 
 					//Move message if requested and appropriate
 					//the message will be moved even if the send fails or gets aborted :-(
-debug('moveMessage='+win.cs2c_params.allowMove+' moveToURI='+moveToURI+' doMove='+doMove);
-					if (win.cs2c_params.allowMove && moveToURI && doMove) {
+debug('MoveMessage='+win.cs2c_params.allowMove+' moveToURI='+moveToURI);
+					if (win.cs2c_params.allowMove && moveToURI) {
+            let origURI=win.cs2c_params.origURI;
 debug('MoveMessage: delayed move from '+origURI+' to '+moveToURI);
-						win.setTimeout(MoveMessage, 100, origURI, moveToURI);
+            // with 'send later', win vanishes too quick
+            let w = Services.wm.getMostRecentWindow("mail:3pane");
+//TODO:win		let w = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
+            if (!w) w=win;
+						w.setTimeout(MoveMessage, 100, origURI, moveToURI);
 					} else {
 						debug('MoveMessage: not called');
 					}
@@ -346,6 +231,7 @@ debug("addMenu started wid="+wid);
 					if (!('chooseBehind' in prefs) || !prefs.chooseBehind) {
 debug('show chooser');
 						fpMenu(win);
+            setFcc(win, '', ''); //set fcc if later saved as draft or template
 					}
 else debug('dont show chooser chooseBehind='+prefs.chooseBehind);
 					if (prefs['use_HTB']) {
@@ -403,6 +289,153 @@ debug('add toolbar buttons');
 };
 
 ////////////////////////////////////////////////////////////////////////
+function setFcc(win, identityKey, preSelect) {
+/* This is ...
+          let identity=MailServices.accounts.getIdentity(identityKey);
+          let akey=null;
+          for (let account of MailServices.accounts.accounts) {
+            akey=account.key;
+            if (account.identities.find(id => id.valid && id.key == identityKey))
+              break;
+            akey=null;
+          }
+debug('selected identity='+identityKey+' '+identity+' account='+akey);
+*/
+/* ... identical to this
+let cidentity=win.getCurrentIdentity();
+let caccount=win.getCurrentAccountKey();
+debug('from window identity='+identity.key+' '+' account='+caccount);
+*/
+
+  //check currently selected identity
+  let identity;
+  if (identityKey)
+    identity=MailServices.accounts.getIdentity(identityKey);
+  else
+    identity=win.getCurrentIdentity();
+debug(' selected identity is '+identityKey+' '+identity.identityName);
+  //identity might have been changed by user
+  if (!identity.doFcc) debug(' -- doFcc disabled!');
+
+  let account=win.cs2c_params.account;
+//TODO: this the account the compose window was opened with, this might have been changed by user
+debug('use account '+account);
+  if (!prefs[account]) {
+debug('account not enabled for cs2c');
+    return true;	//send message
+  }
+  let moveToURI='';
+  let sentFolder=win.cs2c_params.sentFolder;
+  let origURI=win.cs2c_params.origURI;
+  let fcc;
+debug('sentFolder='+sentFolder+' origURI='+origURI);
+  let doMove=(win.cs2c_params.allowMove && !prefs.chooseBehind) ?
+        win.document.getElementById('movemessage').checked : false;
+debug('doMove='+doMove);
+  if (preSelect=='noCopy') {
+    fcc="nocopy://";
+debug('preselect=nocopy://');
+  } else if (preSelect=='toSentFolder') {
+    fcc=sentFolder;
+debug('preselect='+sentFolder);
+  } else if (!('chooseBehind' in prefs) || !prefs.chooseBehind) {
+    let picker=win.document.getElementById('fccFolderPicker');
+    if (picker===null) {
+debug('fccFolderPicker is null');
+      return;
+    }
+    fcc=picker.getAttribute('uri');
+debug('from picker: fcc='+fcc);
+  } else {
+debug('chooseBehind');
+//see https://thunderbird.topicbox.com/groups/addons/Ta8337b5f8c8012d5-M39c0a2be87e919c7e9b65ca4/webextension-how-to-send-data-to-created-window-and-back-as-with-legacy-window-open
+    let chooser=win.openDialog(
+      "chrome://copysent2current/content/cs2c_chooser.xhtml",	// with registerChromeUrl
+      "_blank",
+      "chrome,dialog,modal,centerscreen,titlebar=yes,close=yes,width=200", //resizable,minimizable,titlebar,close",		//features
+      win.cs2c_params, prefs, strings
+    );
+    if (!('targeturi' in win.cs2c_params)) {
+debug('chooseBehind: send was canceled');
+      return false;		//send was canceled, do not send message
+    }
+    fcc=win.cs2c_params.targeturi;
+    doMove=win.cs2c_params.move;
+debug('target: '+fcc+' doMove='+doMove);
+  }
+
+  let msgCompFields = win.gMsgCompose.compFields;
+debug('vorher: fcc='+msgCompFields.fcc+' fcc2='+msgCompFields.fcc2);
+
+  if (fcc!='nocopy://') {
+    moveToURI=fcc;
+    //Mark folder for most recently used menu (uses mail.folder_widget.max_recent)
+    let time=Math.floor(Date.now() / 1000).toString();
+    let folder=MailUtils.getExistingFolder(fcc);
+    folder.setStringProperty('MRMTime', time);
+  } else if (prefs[account+'_totrash']) {    //nocopy is copy to trash
+      //find the Trash folder
+    let trashFolder;
+//             let account=MailServices.accounts.getAccount(account);
+//             let identity=account.defaultIdentity;
+debug('nocopy to trash using account: '+account);
+    let trashFolderURIs = new Array(sentFolder, 'mailbox://nobody@Local%20Folders');
+        //first try trash of current identity, else fallback to trash of 'Local Folders'
+    for (let i=0; i<trashFolderURIs.length; i++) {
+      let trashFolderURI=trashFolderURIs[i];
+      let folder=MailUtils.getExistingFolder(trashFolderURI);
+      let rootFolder = folder.rootFolder;
+      trashFolder = rootFolder.getFolderWithFlags(Components.interfaces.nsMsgFolderFlags.Trash);
+      if (trashFolder) break;
+    }
+debug('trash folder: '+trashFolder.URI);
+
+    if (trashFolder) {
+      fcc=trashFolder.URI;
+      moveToURI=prefs['noMoveTrash']?'':trashFolder.URI;
+    } else {
+      console.error('CopySent2Current: '+strings['NoTrashFolder']);
+      fcc=sentFolder;
+      moveToURI=sentFolder;
+    }
+  }
+
+  //No need to check anything:
+  //	- if doFCC not set, setting fcc will be ignored
+  //	- if current folder is an account or news:, setting fcc will be ignored and the
+  //			the default sent folder will be used
+  //	- if current folder is a virtual folder, an errormessage is shown
+debug("set fcc to "+fcc);
+debug(' for message '+msgCompFields.subject);
+  msgCompFields.fcc=fcc;
+
+  if (msgCompFields.fcc.substring(0,4)=='owl:') {
+    //see mail from László Vági <laszlo.vagi@ericsson.com> (30.10.2019)
+    // Problem if 'Eule for Exchange' is installed
+    debug('schema owl: detected (Eule for Exchange)');
+  } else if (msgCompFields.fcc2) {
+    // fcc2 might contain a folder selected via menu Options/Send a copy to
+    debug('fcc2 already set to '+msgCompFields.fcc2+' by menu "Options/Send a copy to"');
+  } else if (prefs[account+'_sentalso'] && msgCompFields.fcc != sentFolder) {
+    // also to sent folder
+    if (msgCompFields.fcc=='nocopy://') {
+      msgCompFields.fcc = sentFolder;
+    } else {
+      msgCompFields.fcc2 = sentFolder;
+    }
+  }
+  if (msgCompFields.fcc2 && msgCompFields.fcc2.substr(0,7)!='imap://' &&  // if sent folder is local
+      msgCompFields.fcc.substr(0,7)=='imap://') {   // and fcc folder is remote
+    // since fcc2 is only performed when fcc succeeded, we want to be sure
+    // that the 'easier'(=copy to a local folder) is done first
+    let fcc2=msgCompFields.fcc2;
+    msgCompFields.fcc2 = msgCompFields.fcc;
+    msgCompFields.fcc  = fcc2;
+  }
+debug('setFcc finally: fcc='+msgCompFields.fcc+' fcc2='+msgCompFields.fcc2);
+  if (!doMove) moveToURI=null;
+  return moveToURI;
+}
 
 function getFolders(cw) {
 	let state='';
@@ -415,6 +448,9 @@ debug('identity='+identity.key+' .doFcc='+identity.doFcc+' account='+cw.cs2c_par
       //origURI: MessageURI if its a reply or some draft/template message
 	cw.cs2c_params.origURI=cw.gMsgCompose.originalMsgURI;
 	let origType=cw.gComposeType;
+debug('origURI='+cw.cs2c_params.origURI+' composeType='+origType);
+//if a .eml file has been opened:
+//origURI=mailbox:///T:/Temp/nsemail.eml?fetchCompleteMessage=true&number=0&realtype=message/rfc822 composeType=4
 
 /*beispiel:
 	let msgCompFields = cw.gMsgCompose.compFields;
@@ -494,14 +530,19 @@ debug('identity='+identity.key+' .doFcc='+identity.doFcc+' account='+cw.cs2c_par
 			} else {
 				//no fcc. Might be a template via 'Edit as new'
 				state+=' withoutFCC';
-				var msgHdr=messenger.msgHdrFromURI(cw.cs2c_params.origURI);  //nsIMsgDBHeader
-				curFolder=msgHdr.folder;
+        let msgHdr=messenger.msgHdrFromURI(cw.cs2c_params.origURI);  //nsIMsgDBHeader
+        curFolder=msgHdr.folder;
 			}
 		} else {
 		//for replies, current folder is the folder of the message replied to!
 			state+=' reply';
-			var msgHdr=messenger.msgHdrFromURI(cw.cs2c_params.origURI);  //nsIMsgDBHeader
-			curFolder=msgHdr.folder;
+      try {
+        let msgHdr=messenger.msgHdrFromURI(cw.cs2c_params.origURI);  //nsIMsgDBHeader
+        curFolder=msgHdr.folder;
+      } catch(e) {
+        state+=' .eml';
+        curFolder=MailUtils.getExistingFolder(cw.cs2c_params.sentFolder); //default to the fcc folder (or the default folder?)
+      }
 		}
 	} else if (cw.gMsgCompose.compFields.fcc) {    // fcc set by -compose parameter
 		debug("have fcc="+cw.gMsgCompose.compFields.fcc);
@@ -514,7 +555,7 @@ debug('identity='+identity.key+' .doFcc='+identity.doFcc+' account='+cw.cs2c_par
 		}
 	} else { //Must be a new message. Try to find the currently selected folder
 		state+=' newMsg';
-		var mailWindow = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
+		let mailWindow = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
 		if (mailWindow) {     //else: no main window
 			state+=' window';
 			var View=mailWindow.gDBView;  //nsIMsgDBView
@@ -625,6 +666,7 @@ function fpMenu(cw) {
 	let menu=fmp.cloneNode(true);
 	menu.id='cs2c-selector';
 	let w=Services.wm.getMostRecentWindow("mail:3pane");	//any mail:3pane does it
+//TODO:win		let w = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
 	let v=w?w.document.getElementById('mailContext-fileHereMenu'):null;
 	menu.setAttribute('showRecent', 'true');
 	menu.setAttribute('recentLabel', v?v.getAttribute('recentLabel'):'Last');
@@ -690,6 +732,7 @@ function fpMenu(cw) {
 		mi.setAttribute('label', name);
 		mi.setAttribute('uri',uri);
 		mi.setAttribute('lastlabel',name);
+    setFcc(cw, '', ''); //set fcc if later saved as draft or template
 	} );
 	ml.addEventListener("keydown", function(ev) {
 //console.log('key pressed '+ev.keyCode);
@@ -727,7 +770,7 @@ function prettyFolderName(folder) {
 }
 
 function MoveMessage(msguri, folderuri) {
-debug('MoveMessage: to '+folderuri);
+debug('MoveMessage started: to '+folderuri);
   try {
     //see https://developer.mozilla.org/en/Extensions/Thunderbird/HowTos/Common_Thunderbird_Use_Cases/View_Message
     var messenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
@@ -782,12 +825,17 @@ debug('registering window listener for customizeToolbar');
   ExtensionSupport.registerWindowListener("CopySent2Current", {
     chromeURLs: [
       "chrome://messenger/content/customizeToolbar.xhtml",
+      "chrome://messenger/content/messengercompose/messengercompose.xhtml",
     ],
     onLoadWindow: function(win) {
-			if (prefs['use_TBB'])  {
+      if (win.location=="chrome://messenger/content/customizeToolbar.xhtml") {
+        if (prefs['use_TBB'])  {
 debug('load stylesheet into '+win.document.location);
-				stylesheets(win);
-			}
+          stylesheets(win);
+        }
+      } else {
+debug('messengercopose opened');
+      }
 		}
 	})
 }
@@ -862,6 +910,7 @@ debug("fcc? folderpicker:"+identity.fccFolderPickerMode+" replyfollows:"+identit
           state+=' newMsg';
 					let curFolder='';
   	      let mailWindow = Services.wm.getMostRecentWindow("mail:3pane");	//ist nicht 'win' von oben!
+//TODO:win		let w = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
 debug("mailWindow: "+mailWindow);
   	      if (mailWindow) {     //else: no main window
             state+=' window';

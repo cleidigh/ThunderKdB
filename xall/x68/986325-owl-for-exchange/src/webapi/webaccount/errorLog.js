@@ -59,6 +59,7 @@ async function logErrorToServer(ex) {
       stack: getStack(ex),
       app: "owl",
       version: await getExtensionVersion(),
+      hostAppVersion: Services.appinfo.version,
       user: getEmailAddressForUser(),
       exchangeURL: getLoginURLForUser(),
       parameters: ex.parameters,

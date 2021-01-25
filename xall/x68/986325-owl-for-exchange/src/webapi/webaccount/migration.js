@@ -127,7 +127,12 @@ function verifyIMAPLogin(aOwlAccount) {
       server.valid = true;
       let bundle = Services.strings.createBundle("chrome://messenger/locale/imapMsgs.properties");
       let passwordPrompt = bundle.formatStringFromName("imapEnterServerPasswordPrompt", [server.realUsername, server.realHostName], 2); // COMPAT for TB 68 (bug 1557793)
-      let passwordTitle = bundle.GetStringFromName("imapEnterPasswordPromptTitle");
+      let passwordTitle;
+      try { // COMPAT for TB 68 (bug 1594178)
+        passwordTitle = bundle.formatStringFromName("imapEnterPasswordPromptTitleWithUsername", [server.realUsername]);
+      } catch (ex) { // COMPAT for TB 68 (bug 1594178)
+        passwordTitle = bundle.GetStringFromName("imapEnterPasswordPromptTitle"); // COMPAT for TB 68 (bug 1594178)
+      } // COMPAT for TB 68 (bug 1594178)
       server.password = aOwlAccount.incomingServer.getPasswordWithUI(passwordPrompt, passwordTitle, MailServices.mailSession.topmostMsgWindow);
         server.verifyLogon({
         OnStartRunningUrl(aURI) {

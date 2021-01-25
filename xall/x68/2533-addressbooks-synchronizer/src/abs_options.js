@@ -42,19 +42,33 @@ var i2u;
 async function doInit() {
 debug('entered');
 	try {
-		prefs=await messenger.storage.local.get(null);
-debug('prefs loaded');
-//for (let [key, val] of Object.entries(prefs)) {debug('pref: '+key+'->'+val+'\n'); }
-debug('prefs='+JSON.stringify(prefs));
+		let prefnames=['autodownload', 'autoupload', 'timeddownload', 'timedupload', 'synctype', 'localpath',
+		 'protocol', 'host', 'path', 'user', 'imapfolderAccount', 'imapfolderName', 'imapfolderPath',
+		 'downloadpolicy', 'imapuploadpolicy', 'usepost', 'hideallpopups', 'hidepopups', 'loadtimer',
+		 'notimecheck', 'noupload', 'separateupdown', 'noexternalappset', 'debug', 'upgraded'];
+		prefs=await messenger.storage.local.get(prefnames);
+debug('fixed prefs loaded');
 	} catch(e) {
 		// if options tab is visible on startup, getting prefs fails
 debug('failed to load prefs, wait...');
 		setTimeout(doInit, 500);
 		return;
 	}
-//for (let [key, val] of Object.entries(prefs)) {debug(' pref '+key+'->'+val); }
 
 	[ u2i, u2f ]=await messenger.abs.uids2ids();		//nsIAbDirectory.UID -> prefId (ldap2.server.xxx)
+	let books=await messenger.addressBooks.list();	//load prefs for books
+	let prefnames=[];
+	for (let book of books) {
+			//id=68364c8a-d629-4678-972f-bb92e758d90d
+			//name=ggbs
+		prefnames.push(u2i[book.id]+'.up');
+		prefnames.push(u2i[book.id]+'.down');
+		prefnames.push(u2i[book.id]+'.filename');
+	}
+debug('load prefs for book: '+JSON.stringify(prefnames));
+	Object.assign(prefs, await messenger.storage.local.get(prefnames));
+debug('prefs='+JSON.stringify(prefs));
+
 	i2u=new Object;
 	for (let [uid, id] of Object.entries(u2i)) {
 		i2u[id]=uid
@@ -150,7 +164,7 @@ debug('entered');
 		document.getElementById('autouploadnow').style.display=nu1;
 		document.getElementById('timedupload').parentElement.style.display=nu;
 		document.getElementById('autoupload').parentElement.style.display=nu;
-		if (prefs['nouload']) {
+		if (prefs['noupload']) {
 			document.getElementById('timedupload').checked=false;
 			document.getElementById('autoupload').checked=false;
 		}
@@ -343,11 +357,21 @@ debug('abs_options throws: unknown folder type '+folder.type+' for folder '+fold
 	if (prefs['imapfolderName']) {
 		let sel = document.getElementById("selectedIMAP");
 		sel.style.color='black';
-		sel.value=prefs['imapfolderName']; //+' ('+prefs['imapfolder']+')';
+		sel.value=prefs['imapfolderName'];
 	}
 
-	let accounts=await messenger.accounts.list();
 	let sip = document.getElementById("syncimapPicker");
+	let accounts=[];
+  try {
+    accounts=await messenger.accounts.list();
+  } catch(e) {
+    console.error('Please remove % signs from foldernames');
+    sip.innerHTML='<div style="color: red; margin: 20px;">Bitte entfernen sie alle %-Zeichen aus\
+    Ordnernamen!<br/>Es gibt einen Fehler in Thunderbird, der die Ausführung dieses Add-ons\
+    verhindert. Siehe Bug 1684327</div>\
+    <div style="color: red; margin: 20px;">Please remove any %-signs from foldernames!<br/>\
+    There is a bug in Thunderbird which prevents this add-on from running. See Bug 1684327</div>';
+  }
 	for (let account of accounts) {
 		if (account.type!='imap') continue; 
 		let li=document.createElement('li');

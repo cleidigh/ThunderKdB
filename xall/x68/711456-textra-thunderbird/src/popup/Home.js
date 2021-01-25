@@ -13,7 +13,7 @@
     $("#bt_lang_replace").click(function () {
         Nict_TexTra.utils.replace_lang_combo($("#lang1")[0], $("#lang2")[0]);
     });
-    doc.getElementById("link_minna").onclick = function () {
+    doc.getElementById("link_minhon").onclick = function () {
         Nict_TexTra.utils.get_url_minhon(function (url) {
             browser.tabs.create({ url: url });
         });
@@ -52,7 +52,6 @@
 
     Nict_TexTra.utils.set_link(doc, "link_lookup", "./Lookup_terms.html");
     Nict_TexTra.utils.set_link(doc, "link_ログイン", "./API_Settings.html");
-    Nict_TexTra.utils.set_link(doc, "link_ログイン_top", "./API_Settings.html");
     Nict_TexTra.utils.set_link(doc, "link_機械翻訳API", "./MT_API_settings.html");
 
     change_2_textareas_height();
@@ -66,7 +65,14 @@
             func_start_trans(datas.txt_cont_menu);
         }
     });
-    
+
+    var elm_btn_clear_all = doc.getElementById("btn_clear_history");
+    elm_btn_clear_all.onclick = function () {
+        //if (!confirm(I18Nmes('mes_0027'))) return;
+        Nict_TexTra.utils.clear_history_translate();
+        show_translation_history(null, true);
+    };
+
 };
 
 function save_api_info() {
@@ -90,7 +96,7 @@ function load_func() {
             doc.getElementById("lang1").value = infos.selected_lang_org;
             doc.getElementById("lang2").value = infos.selected_lang_trans;
 
-            if (!infos.user_name) doc.getElementById("link_ログイン_top").style.display = "block";
+            doc.getElementById("alert_login").style.display = infos.user_name ? "none" : "inline";
         }
     );
 
@@ -137,8 +143,14 @@ function show_result_translation(infos) {
     doc.getElementById("img_wait").style.display = "none";
     doc.getElementById("btn_translation").disabled = false;
 
-    Nict_TexTra.utils.add_history_translate(
-        text_org, text_trans, infos["lang_org"], infos["lang_trans"]);
+    if (text_org !== text_trans) {
+        Nict_TexTra.utils.add_history_translate(
+            text_org, text_trans, infos["lang_org"], infos["lang_trans"], function () {
+                if (doc.getElementById("div_trans_history").style.display !== "none") {
+                    show_translation_history(null, true); // 非表示
+                }
+            });
+    }
 }
 
 function suspend_translation() {
@@ -162,52 +174,82 @@ function change_2_textareas_height() {
 }
 
 // 翻訳履歴表示
-function show_translation_history() {
+function show_translation_history(ev, redraw) {
 
-    var div_his = document.getElementById("div_trans_history");
+    var doc = document;
+    var div_his = doc.getElementById("div_trans_history");
 
-    if (div_his.style.display === "none") {
+    if (redraw || div_his.style.display === "none") {
 
-        var tbl_history = document.getElementById("tbl_trans_history");
+        var tbl_history = doc.getElementById("tbl_trans_history");
+        tbl_history.setAttribute("style", "table-layout:fixed;");
         Nict_TexTra.utils.remove_element_children(tbl_history);
 
-        var func_show_his = function (infos) {
-            var list_his = infos["history_translate"];
+        var func_show_his = function (list_his) {
 
             $.each(list_his, function (ind, his) {
 
                 var tm = new Date(Date.parse(his["time"]));
                 var str_time = Nict_TexTra.utils.get_time(tm);
 
-                var elm_tr = document.createElement("tr");
+                var elm_tr = doc.createElement("tr");
                 tbl_history.appendChild(elm_tr);
                 elm_tr.setAttribute("bgcolor", "#FFFFFF");
-
-                var elm_td = document.createElement("td");
+                var elm_td = doc.createElement("td");
                 elm_tr.appendChild(elm_td);
-                elm_td.appendChild(document.createTextNode((ind + 1) + " : [" + Nict_TexTra.utils.get_2lang_name(his["lang_org"], his["lang_trans"]) + "] " + str_time));
-                elm_td.appendChild(document.createElement("br"));
 
-                var elm_link = document.createElement("a");
-                elm_td.appendChild(elm_link);
+                var elm_tbl_td = doc.createElement("Table");
+                elm_td.appendChild(elm_tbl_td);
+                elm_tbl_td.setAttribute("style", "width: 100%;");
+
+                var elm_tr2 = doc.createElement("tr");
+                elm_tbl_td.appendChild(elm_tr2);
+
+                var elm_td2 = doc.createElement("td");
+                elm_tr2.appendChild(elm_td2);
+
+                elm_td2.appendChild(doc.createTextNode((ind + 1) + " : [" + Nict_TexTra.utils.get_2lang_name(his["lang_org"], his["lang_trans"]) + "] " + str_time + " "));
+
+                elm_td2 = doc.createElement("td");
+                elm_tr2.appendChild(elm_td2);
+                elm_td2.setAttribute("align", "right");
+
+                var elm_btn_delete = doc.createElement("input");
+                elm_td2.appendChild(elm_btn_delete);
+                elm_btn_delete.setAttribute("type", "button");
+                elm_btn_delete.setAttribute("value", "✕");
+                elm_btn_delete.onclick = function () {
+                    Nict_TexTra.utils.remove_history_translate(
+                        [].slice.call(tbl_history.children).indexOf(elm_tr));
+                    tbl_history.removeChild(elm_tr);
+                };
+
+                elm_tr2 = doc.createElement("tr");
+                elm_tbl_td.appendChild(elm_tr2);
+                elm_td2 = doc.createElement("td");
+                elm_tr2.appendChild(elm_td2);
+                elm_td2.setAttribute("colspan", "2");
+
+                var elm_link = doc.createElement("a");
+                elm_td2.appendChild(elm_link);
                 elm_link.setAttribute("id", "link_hist_" + ind);
-                elm_link.setAttribute("href", "javascript:void(0);");
+                elm_link.setAttribute("href", "#");
                 elm_link.innerText = his["text_org"];
 
-                var elm_trans_hist = document.createElement("div");
-                elm_td.appendChild(elm_trans_hist);
+                var elm_trans_hist = doc.createElement("div");
+                elm_td2.appendChild(elm_trans_hist);
                 elm_trans_hist.setAttribute("id", "text_trans_hist_" + ind);
                 elm_trans_hist.innerText = his["text_trans"];
 
                 elm_link.onclick =
                     function () {
                         suspend_translation();
-                        document.getElementById("textbox_target").value = his["text_org"];
-                        document.getElementById("textbox_trans").value = his["text_trans"];
-                        document.getElementById("lang1").value = his["lang_org"];
-                        document.getElementById("lang2").value = his["lang_trans"];
+                        doc.getElementById("textbox_target").value = his["text_org"];
+                        doc.getElementById("textbox_trans").value = his["text_trans"];
+                        doc.getElementById("lang1").value = his["lang_org"];
+                        doc.getElementById("lang2").value = his["lang_trans"];
                         change_2_textareas_height();
-                        document.getElementById("textbox_target").focus();
+                        doc.getElementById("textbox_target").focus();
                     };
             });
 
@@ -222,17 +264,18 @@ function show_translation_history() {
 }
 
 function adapt_multi_locale() {
-    document.getElementById("link_minna").innerText = I18Nmes('mes_0010'); // みんなの自動翻訳
+    document.getElementById("link_minhon").innerText = I18Nmes('mes_0010'); // みんなの自動翻訳
 
     document.getElementById("btn_clear").innerText = chrome.i18n.getMessage('mes_0018'); // クリア
     document.getElementById("btn_paste_org").value = chrome.i18n.getMessage('mes_0020'); // 貼付け
     document.getElementById("btn_translation").innerText = I18Nmes('mes_0003'); // 翻訳
     document.getElementById("link_trans_history").innerText = I18Nmes('mes_0601'); // 翻訳履歴
     document.getElementById("btn_copy_trans").value = chrome.i18n.getMessage('mes_0019'); // コピー
+    document.getElementById("btn_clear_history").value = I18Nmes('mes_0018'); // クリア
 
     document.getElementById("link_lookup").innerText = I18Nmes('mes_0004'); // 辞書引き
     document.getElementById("link_ログイン").innerText = I18Nmes('mes_0007'); // ログイン設定
-    document.getElementById("link_ログイン_top").innerText = I18Nmes('mes_0014'); // ログイン設定を行ってください。
+    document.getElementById("alert_login").innerText = I18Nmes('mes_0014'); // ログイン設定を行ってください。
     document.getElementById("link_機械翻訳API").innerText = I18Nmes('mes_0008'); // 機械翻訳API設定
     document.getElementById("link_help").innerText = I18Nmes('mes_0009'); // ヘルプ
     //document.getElementById("").innerText = I18Nmes('mes_000'); // 

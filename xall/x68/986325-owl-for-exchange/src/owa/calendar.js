@@ -448,7 +448,7 @@ OWAAccount.ConvertToOWA = function(aFolder, aEvent) {
     recurrence.RecurrencePattern = {
       "__type": recurrenceType + "Recurrence:#Exchange",
       Interval: aEvent.recurrence.interval,
-      DaysOfWeek: aEvent.recurrence.days && aEvent.recurrence.days.map(day => kDays[day - 1]).join(" "),
+      DaysOfWeek: aEvent.recurrence.daysOfWeek && aEvent.recurrence.daysOfWeek.map(day => kDays[day - 1]).join(" "),
       FirstDayOfWeek: kDays[aEvent.recurrence.firstDayOfWeek - 1],
       DayOfWeekIndex: kWeeks[aEvent.recurrence.weekOfMonth - 1],
       DayOfMonth: aEvent.recurrence.dayOfMonth,
@@ -525,6 +525,11 @@ OWAAccount.ConvertToOWA = function(aFolder, aEvent) {
     Location: {
       __type: "EnhancedLocation:#Exchange",
       DisplayName: aEvent.location,
+      PostalAddress: {
+        __type: "PersonaPostalAddress:#Exchange",
+        Type: "Business",
+        LocationSource: "None",
+      },
     },
     StartTimeZone: {
       __type: "TimeZoneDefinitionType:#Exchange",
@@ -551,10 +556,6 @@ OWAAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
   if (invitation) {
     return invitation;
   }
-  // For OWA, we only get notifications, if we use `UpdateCalendarEvent`
-  // instead of the `UpdateItem` with the `SendMeetingInvitations` flag.
-  // But `CreateCalendarEvent` fails on Exchange 2013, if the event has no attendees.
-  let action = aNotify && aFolder == "calendar" && aEvent.requiredAttendees.length + aEvent.optionalAttendees.length ? "CreateCalendarEvent" : "CreateItem";
   let create = {
     __type: "CreateItemJsonRequest:#Exchange",
     Header: {
@@ -578,10 +579,36 @@ OWAAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
           Id: aFolder,
         },
       },
-      SendMeetingInvitations: false,
+      SendMeetingInvitations: aNotify ? "SendToAllAndSaveCopy" : "SendToNone",
     },
   };
-  let response = await this.CallService(action, create); // owa.js
+  let response = await this.CallService("CreateItem", create); // owa.js
+  if (aFolder != "tasks") { // TODO make the type a property of the object
+    // Need an extra server roundtrip to get the UID.
+    let fetch = {
+      __type: "GetItemJsonRequest:#Exchange",
+      Header: {
+        __type: "JsonRequestHeaders:#Exchange",
+        RequestServerVersion: "Exchange2013",
+      },
+      Body: {
+        __type: "GetItemRequest:#Exchange",
+        ItemShape: {
+          __type: "ItemResponseShape:#Exchange",
+          BaseShape: "IdOnly",
+          AdditionalProperties: [{
+            __type: "PropertyUri:#Exchange",
+            FieldURI: "calendar:UID",
+          }],
+        },
+        ItemIds: [{
+          __type: "ItemId:#Exchange",
+          Id: response.Items[0].ItemId.Id,
+        }],
+      },
+    };
+    response = await this.CallService("GetItem", fetch); // owa.js
+  }
   return {
     uid: response.Items[0].UID || response.Items[0].ItemId.Id,
     itemid: response.Items[0].ItemId.Id,
@@ -691,10 +718,6 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
       return;
     }
   }
-  // For OWA, we only get notifications, if we use `UpdateCalendarEvent`
-  // instead of the `UpdateItem` with the `SendMeetingInvitations` flag.
-  // But `CreateCalendarEvent` fails on Exchange 2013, if the event has no attendees.
-  let action = aNotify && aFolder == "calendar" && aOldEvent.requiredAttendees.length + aOldEvent.optionalAttendees.length + aNewEvent.requiredAttendees.length + aNewEvent.optionalAttendees.length ? "UpdateCalendarEvent" : "UpdateItem";
   let newEvent = OWAAccount.ConvertToOWA(aFolder, aNewEvent);
   let oldEvent = OWAAccount.ConvertToOWA(aFolder, aOldEvent);
   // OWA ignores a time zone change unless we include the time as well.
@@ -732,7 +755,7 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
     Id: aNewEvent.itemid,
   };
   let request = {
-    __type: action + "JsonRequest:#Exchange",
+    __type: "UpdateItemJsonRequest:#Exchange",
     Header: {
       __type: "JsonRequestHeaders:#Exchange",
       RequestServerVersion: "Exchange2013",
@@ -744,15 +767,7 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
         },
       },
     },
-    Body: action == "UpdateCalendarEvent" ? {
-      __type: "UpdateCalendarEventRequest:#Exchange",
-      ItemChange: {
-        __type: "ItemChange:#Exchange",
-        Updates: updates,
-        ItemId: itemId,
-      },
-      EventId: itemId,
-    } : {
+    Body: {
       __type: "UpdateItemRequest:#Exchange",
       ItemChanges: [{
         __type: "ItemChange:#Exchange",
@@ -761,11 +776,11 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
       }],
       ConflictResolution: "AlwaysOverwrite",
       MessageDisposition: "SaveOnly",
-      SendCalendarInvitationsOrCancellations: "SendToNone",
+      SendCalendarInvitationsOrCancellations: aNotify ? "SendToChangedAndSaveCopy" : "SendToNone",
       SuppressReadReceipts: true,
     },
   };
-  let response = await this.CallService(action, request); // owa.js
+  let response = await this.CallService("UpdateItem", request); // owa.js
   let responseTag = OWAAccount.kResponseMap[aNewEvent.participation];
   if (responseTag) {
     // If this is a recurring instance, we have to notify because

@@ -1230,7 +1230,10 @@ debug('entered');
 	if (prefs['synctype'] && prefs['autodownload']) {
 		downloadOnStart();
 	}
-	theHiddenWin(prefs['autoupload'] && prefs['synctype']=='imap');
+	if (openHiddenWin) {
+debug('main window available, open hiddenWin if necessary');
+		theHiddenWin(prefs['autoupload'] && prefs['synctype']=='imap');
+	}
 }
 function finalize(type) {
 	exiting=type;
@@ -1342,14 +1345,34 @@ function theHiddenWin(on) {
 	if (on) {
 		if (hiddenWin) try { hiddenWin.close(); } catch(e) {}
 debug('hiddenWin: open');
+/*
+				if (navigator.appVersion.includes("Win")) {
+					var OSName="WIN";
+				} else if (navigator.appVersion.includes("Mac")) {
+					var OSName="OSX";
+				} else {
+					var OSName="LINUX";
+				}
+*/
+debug('OS='+Services.appinfo.OS);
+		let left='left=-1000';
+		if (Services.appinfo.OS == "WINNT") {
+			left='left=-1000';
+		} else if (Services.appinfo.OS == "Linux") {
+			left='left=-199';
+		} else if (Services.appinfo.OS == "Darwin") {
+			left='left=-199';
+		}
 		let args = Cc["@mozilla.org/supports-string;1"].createInstance(Ci.nsISupportsString);
 //without args, TB crashes!!!
 		hiddenWin=Services.ww.openWindow(null, 'chrome://messenger/content/messageWindow.xhtml', 'abs',
-										'left=-10000', args);	//width=100,height=100
-debug('hiddenWin at '+hiddenWin.screenLeft);
-		hiddenWin.minimize();
-debug('hiddenWin minimized now at '+hiddenWin.screenLeft);
-//messagepanebox
+										'width=200,height=200,'+left, args);	//width=100,height=100,left=-10000 ,left=-199
+debug('hiddenWin: opened ');
+/*
+  		hiddenWin.setTimeout(()=>{hiddenWin.minimize();
+debug('hiddenWin: minimized');
+			}, 500);					//must be delayed! (100ms is to few!)
+*/
 	} else {
 		if (hiddenWin) {
 debug('hiddenWin: close');

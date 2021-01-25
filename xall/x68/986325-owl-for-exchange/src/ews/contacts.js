@@ -33,7 +33,11 @@ EWSAccount.convertProperties = function(aProperties) {
     t$GivenName: aProperties.FirstName || "",
     t$Nickname: aProperties.NickName || "",
     t$CompanyName: aProperties.Company || "",
-    // Email addresses special-cased below.
+    // These are placeholders so that the fields are created in schema order.
+    // The appropriate fields are filled in below.
+    t$Emailaddress$EmailAddress1: "",
+    t$Emailaddress$EmailAddress2: "",
+    t$Emailaddress$EmailAddress3: "",
     t$PhysicalAddress$Street$Home: aProperties.HomeAddress || "",
     t$PhysicalAddress$City$Home: aProperties.HomeCity || "",
     t$PhysicalAddress$State$Home: aProperties.HomeState || "",
@@ -262,8 +266,8 @@ browser.contacts.onDeleted.addListener(async (addressBook, id) => {
                 Id: itemId,
               },
             },
+            DeleteType: "MoveToDeletedItems",
           },
-          DeleteType: "MoveToDeletedItems",
         };
         await account.CallService(null, request);
       }
@@ -309,8 +313,8 @@ EWSAccount.prototype.convertContact = function(aContact) {
   aContact.PhysicalAddresses = this.explodeEntry(aContact.PhysicalAddresses);
   aContact.PhoneNumbers = this.explodeEntry(aContact.PhoneNumbers);
   return {
-    ItemId: aContact.ItemId.Id,
-    ChangeKey: aContact.ItemId.ChangeKey,
+    ItemId: aContact.ItemId && aContact.ItemId.Id,
+    ChangeKey: aContact.ItemId && aContact.ItemId.ChangeKey,
     FirstName: aContact.GivenName || "",
     LastName: aContact.Surname || "",
     DisplayName: aContact.DisplayName || "",
@@ -635,6 +639,10 @@ EWSAccount.prototype.DownloadGAL = async function(aMsgWindow) {
         throw ex;
       }
       for (let resolution of ensureArray(response.ResolutionSet.Resolution)) {
+        if (!resolution.Contact) {
+          // This is a match from the Contacts folder, but we don't need that.
+          continue;
+        }
         // This API returns up to four email addresses;
         // the Mailbox contains one while the Contact can contain three.
         // We'll combine the four addresses into a single array.
@@ -645,7 +653,6 @@ EWSAccount.prototype.DownloadGAL = async function(aMsgWindow) {
         // Secondary SMTP addresses are prefixed with smtp: so just find one
         let secondEmail = (emailAddresses.find(address => address.startsWith("smtp:")) || "").slice(5);
         // Tweak the result to be in convertContact format.
-        resolution.Contact.ItemId = { Id: "", ChangeKey: "" };
         resolution.Contact.EmailAddresses = {
           Entry: [{
             Value: primaryEmail,
@@ -683,7 +690,56 @@ EWSAccount.prototype.ResyncAddressBooks = async function(aMsgWindow) {
   let enableGAL = await browser.incomingServer.getBooleanValue(this.serverID, "GAL_enabled");
   if (enableGAL) {
     noAwait(this.DownloadGAL(aMsgWindow), logError);
+  } else if (browser.autoComplete && !this.autoCompleteListener) {
+    let identity = await browser.incomingServer.getIdentity(this.serverID);
+    let dirName = identity.email.slice(identity.email.indexOf("@") + 1) + " GAL";
+    this.autoCompleteListener = this.AutoComplete.bind(this);
+    browser.autoComplete.onAutoComplete.addListener(this.autoCompleteListener, {dirName, isSecure: true});
   }
+}
+
+EWSAccount.prototype.AutoComplete = async function(aSearchString) {
+  let query = {
+    m$ResolveNames: {
+      m$UnresolvedEntry: 'smtp:' + aSearchString,
+      ReturnFullContactData: true,
+    },
+  };
+  try {
+    response = await this.CallService(null, query); // ews.js
+  } catch (ex) {
+    if (ex.type == "ErrorNameResolutionNoResults") {
+      return [];
+    }
+    logError(ex);
+    throw ex;
+  }
+  let results = [];
+  for (let resolution of ensureArray(response.ResolutionSet.Resolution)) {
+    if (!resolution.Contact) {
+      // This is a match from the Contacts folder, but we don't need that.
+      continue;
+    }
+    // This API returns up to four email addresses;
+    // the Mailbox contains one while the Contact can contain three.
+    // We'll combine the four addresses into a single array.
+    let emailAddresses = ensureArray(resolution.Contact.EmailAddresses.Entry).map(entry => entry.Value);
+    emailAddresses.unshift(resolution.Mailbox.RoutingType + ":" + resolution.Mailbox.EmailAddress);
+    // The primary SMTP address is always prefixed with SMTP:
+    let primaryEmail = (emailAddresses.find(address => address.startsWith("SMTP:")) || "").slice(5);
+    // Secondary SMTP addresses are prefixed with smtp: so just find one
+    let secondEmail = (emailAddresses.find(address => address.startsWith("smtp:")) || "").slice(5);
+    // Tweak the result to be in convertContact format.
+    resolution.Contact.EmailAddresses = {
+      Entry: [{
+        Value: primaryEmail,
+      }, {
+        Value: secondEmail,
+      }],
+    };
+    results.push(this.convertContact(resolution.Contact));
+  }
+  return results;
 }
 
 /**

@@ -23,7 +23,7 @@
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
  * the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
- * in which case the provisions of the GPL or the LGPL are applicable instead
+ *f which case the provisions of the GPL or the LGPL are applicable instead
  * of those above. If you wish to allow use of your version of this file only
  * under the terms of either the GPL or the LGPL, and not to allow others to
  * use your version of this file under the terms of the MPL, indicate your
@@ -33,26 +33,52 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-//console.log('ShowInOut Version 2.2b3');
 
-messenger.sio.migratePrefs().then(function(prefs) {
+async function getPrefs() {
+debug('getPrefs');
+	let prefs=await messenger.sio.migratePrefs();
+//debug('migrated Prefs');
   let count=Object.entries(prefs).length;
   if (count) {
 		dodebug=prefs['debug'];
-debug('preferences migrated: '+JSON.stringify(prefs));
+//debug('preferences migrated: '+JSON.stringify(prefs));
 //for (let [key, val] of Object.entries(prefs)) {debug('pref: '+key+'->'+val); }
     messenger.storage.local.set(prefs);
     messenger.sio.init(prefs);
   } else {
-    messenger.storage.local.get(null).then(function(prefs) {
-      dodebug=prefs['debug'];
-debug('no preferences to migrate: '+JSON.stringify(prefs));
-//for (let [key, val] of Object.entries(prefs)) {debug('pref: '+key+'->'+val); }
-      messenger.sio.init(prefs);
-      return prefs;
-    });
-  }
-});
+		let prefnames=["InTextPrefix", "OutTextPrefix", "Columns", "debug"];
+//debug("get prefs "+JSON.stringify(prefnames));
+    let accounts=[];
+    try {
+      accounts=await messenger.accounts.list();
+    } catch(e) {
+      console.error('Please remove % signs from foldernames');
+      setTimeout(()=>{	//open options page
+debug('open options page');
+                messenger.runtime.openOptionsPage();
+              }, 2000);
+    }
+//debug("get accounts "+JSON.stringify(accounts));
+    for (let a of accounts) {
+			prefnames.push('AdditionalAddresses.'+a.id);
+			prefnames.push('AddAddressesTo.'+a.id);
+		}
+//debug("get prefs "+JSON.stringify(prefnames));
+		async function gP(prefnames) {
+			try {
+				let prefs=await messenger.storage.local.get(prefnames);
+//debug('no preferences to migrate: '+JSON.stringify(prefs));
+				dodebug=prefs['debug'];
+				messenger.sio.init(prefs);
+			} catch(e) {
+debug('get prefs throws error, try again');
+				setTimeout(gP, 500, prefnames);
+			}
+		}
+		gP(prefnames);
+	}
+}
+getPrefs();
 
 messenger.browserAction.onClicked.addListener(() => {
   messenger.runtime.openOptionsPage();

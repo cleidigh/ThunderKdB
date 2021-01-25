@@ -90,20 +90,24 @@ var BrowseInTab = {
   /*
    * Preferences.
    *
-   * Initialize a map from storage.local for sync pref retrieval. Ensure a
-   * map is available on startup, even if empty.
+   * Initialize a map from storage.local for sync pref retrieval.
    */
-  storageLocalMap: new Map(),
   async InitializeStorageLocalMap() {
+    if (this.storageLocalMap) {
+      return;
+    }
     this.DEBUG && console.debug("InitializeStorageLocalMap: START");
+    this.storageLocalMap = new Map();
     const setCurrentPrefs = result => {
       this.DEBUG && console.debug("InitializeStorageLocalMap: result ->");
       this.DEBUG && console.debug(result);
-      this.storageLocalMap = new Map(Object.entries(result));
-      // Initialize these system 'prefs'.
-      this.maxContentTabsPref;
-      this.loadInBackgroundPref;
-      this.updateZoomValues();
+      for (let prefKey of Object.keys(result)) {
+        let storageLocalData = {};
+        storageLocalData[prefKey] = { newValue: result[prefKey] };
+        this.onStorageLocalChanged(storageLocalData);
+      }
+
+      this.DEBUG && console.debug("InitializeStorageLocalMap: DONE");
     };
     let onError = error => {
       console.error(`BrowseInTab.InitializeStorageLocalMap: ${error}`);
@@ -153,71 +157,40 @@ var BrowseInTab = {
     }
 
     let tabmail = this.e("tabmail");
-    if (storageLocalData?.showMailToolbar) {
-      this.setMailToolbar(tabmail.currentTabInfo);
-    }
-    if (storageLocalData?.showUrlToolbar) {
-      this.setUrlToolbar(tabmail.currentTabInfo);
-    }
 
-    // Set these system 'prefs' if changed.
-    if (storageLocalData?.maxContentTabs) {
-      this.maxContentTabsPref;
-    }
-    if (storageLocalData?.loadInBackground) {
-      this.loadInBackgroundPref;
-    }
-    if (storageLocalData?.customZoomEnabled) {
-      this.updateZoomValues();
-    }
-    if (storageLocalData?.chromeZoomFactor) {
-      this.setChromeZoomFontSize(storageLocalData?.chromeZoomFactor?.newValue);
-    }
-    if (storageLocalData?.globalZoomEnabled) {
-      if (storageLocalData.globalZoomEnabled?.newValue) {
-        this.globalZoomFactor = this.tabZoomFactor;
-      }
+    switch (key) {
+      // Set this system 'pref' if changed.
+      case "tabsLoadInBackground":
+        this.loadInBackgroundPref;
+        break;
+      // Set this system 'pref' if changed.
+      case "maxContentTabs":
+        this.maxContentTabsPref;
+        break;
+      case "showMailToolbar":
+        this.setMailToolbar(tabmail.currentTabInfo);
+        break;
+      case "showUrlToolbar":
+        this.setUrlToolbar(tabmail.currentTabInfo);
+        break;
+      case "customZoomEnabled":
+        this.updateZoomValues();
+        break;
+      case "chromeZoomFactor":
+        this.setChromeZoomFontSize(storageLocalData.chromeZoomFactor.newValue);
+        break;
+      case "globalZoomEnabled":
+        if (storageLocalData.globalZoomEnabled.newValue) {
+          this.globalZoomFactor = this.tabZoomFactor;
+        }
+        break;
+      default:
+        break;
     }
   },
 
   getStorageLocal(key) {
-    return this.storageLocalMap.get(key);
-  },
-
-  get maxContentTabsPref() {
-    let prefKey = "maxContentTabs";
-    let prefValue = this.getStorageLocal(prefKey);
-    let defaultValue = specialTabs.contentTabType.modes.contentTab.maxTabs;
-    if (prefValue == undefined) {
-      return defaultValue;
-    }
-    specialTabs.contentTabType.modes.contentTab.maxTabs = prefValue;
-    return prefValue;
-  },
-
-  kShowMailToolbarDefault: 0,
-  kShowMailToolbarWebPage: 1,
-  kShowMailToolbarAll: 2,
-  get showMailToolbarPref() {
-    let prefKey = "showMailToolbar";
-    let prefValue = this.getStorageLocal(prefKey);
-    let defaultValue = this.kShowMailToolbarDefault;
-    if (prefValue == undefined) {
-      return defaultValue;
-    }
-    return prefValue;
-  },
-
-  kShowUrlToolbarWebPage: 0,
-  kShowUrlToolbarAll: 1,
-  get showUrlToolbarPref() {
-    let prefKey = "showUrlToolbar";
-    let prefValue = this.getStorageLocal(prefKey);
-    let defaultValue = this.kShowUrlToolbarWebPage;
-    if (prefValue == undefined) {
-      return defaultValue;
-    }
-    return prefValue;
+    return this.storageLocalMap?.get(key);
   },
 
   get loadInBackgroundPref() {
@@ -291,6 +264,49 @@ var BrowseInTab = {
     return prefValue;
   },
 
+  get DEFAULT_CONTENTTAB_MAXTABS() {
+    if (this._DEFAULT_CONTENTTAB_MAXTABS) {
+      return this._DEFAULT_CONTENTTAB_MAXTABS;
+    }
+    return (this._DEFAULT_CONTENTTAB_MAXTABS =
+      specialTabs.contentTabType.modes.contentTab.maxTabs);
+  },
+  get maxContentTabsPref() {
+    let prefKey = "maxContentTabs";
+    let prefValue = this.getStorageLocal(prefKey);
+    let defaultValue = this.DEFAULT_CONTENTTAB_MAXTABS;
+    if (prefValue == undefined) {
+      return defaultValue;
+    }
+    specialTabs.contentTabType.modes.contentTab.maxTabs = prefValue;
+    return prefValue;
+  },
+
+  kShowMailToolbarDefault: 0,
+  kShowMailToolbarWebPage: 1,
+  kShowMailToolbarAll: 2,
+  get showMailToolbarPref() {
+    let prefKey = "showMailToolbar";
+    let prefValue = this.getStorageLocal(prefKey);
+    let defaultValue = this.kShowMailToolbarDefault;
+    if (prefValue == undefined) {
+      return defaultValue;
+    }
+    return prefValue;
+  },
+
+  kShowUrlToolbarWebPage: 0,
+  kShowUrlToolbarAll: 1,
+  get showUrlToolbarPref() {
+    let prefKey = "showUrlToolbar";
+    let prefValue = this.getStorageLocal(prefKey);
+    let defaultValue = this.kShowUrlToolbarWebPage;
+    if (prefValue == undefined) {
+      return defaultValue;
+    }
+    return prefValue;
+  },
+
   kCustomZoomEnabledDefault: false,
   get customZoomEnabledPref() {
     let prefKey = "customZoomEnabled";
@@ -346,14 +362,45 @@ var BrowseInTab = {
     this.setChromeZoomFontSize(val);
   },
 
+  get DEFAULT_FONTSIZE() {
+    if (this._DEFAULT_FONTSIZE) {
+      return this._DEFAULT_FONTSIZE;
+    }
+    // Reset chrome zoom, if changed, for the real default.
+    Services.prefs.clearUserPref("layout.css.devPixelsPerPx");
+    window.top.document.documentElement.style.fontSize = "";
+    return (this._DEFAULT_FONTSIZE = Number(
+      window.top
+        .getComputedStyle(window.document.documentElement)
+        .getPropertyValue("font-size")
+        .split("px")[0]
+    ));
+  },
+
   setChromeZoomFontSize(val) {
+    this.DEBUG &&
+      console.debug(
+        "setChromeZoomFontSize: val:DEF - " + val + ":" + this.DEFAULT_FONTSIZE
+      );
     val = val ? val : 100;
     if (val == 100) {
-      window.top.document.documentElement.style.fontSize = "";
+      for (let win of Services.ww.getWindowEnumerator()) {
+        if ("style" in win.top.document.documentElement) {
+          this.DEBUG && console.debug(win);
+          win.top.document.documentElement.style.fontSize = "";
+          win.top.document.documentElement.removeAttribute("browseintabzoom");
+        }
+      }
       Services.prefs.clearUserPref("layout.css.devPixelsPerPx");
     } else {
       let chromeFontSizeZoom = this.DEFAULT_FONTSIZE * (val / 100) + "px";
-      window.top.document.documentElement.style.fontSize = chromeFontSizeZoom;
+      for (let win of Services.ww.getWindowEnumerator()) {
+        if ("style" in win.top.document.documentElement) {
+          win.top.document.documentElement.style.fontSize = chromeFontSizeZoom;
+          // eslint-disable-next-line prettier/prettier
+          win.top.document.documentElement.setAttribute("browseintabzoom", true);
+        }
+      }
       Services.prefs.setStringPref("layout.css.devPixelsPerPx", val / 100);
     }
   },
@@ -399,8 +446,9 @@ var BrowseInTab = {
   },
 
   onLoad() {
-    this.DEBUG && console.debug("onLoad: --> BrowseInTab ");
+    this.DEBUG && console.debug("onLoad: --> START");
     Services.obs.addObserver(this.Observer, "mail-tabs-session-restored");
+
     Services.obs.addObserver(this.Observer, this.obsTopicStorageLocalChanged);
     Services.ww.registerNotification(this.Observer);
 
@@ -413,7 +461,8 @@ var BrowseInTab = {
     });
 
     this.onWheelFunc = event => this.onWheel(event);
-    window.addEventListener("wheel", this.onWheelFunc, { capture: true });
+    // eslint-disable-next-line prettier/prettier
+    window.addEventListener("wheel", this.onWheelFunc, { capture: true, passive: false });
     this.onClickImageFunc = event => this.onClickImage(event);
     window.addEventListener("click", this.onClickImageFunc, { capture: true });
     window.addEventListener("FullZoomChange", this.onZoomChange);
@@ -444,7 +493,7 @@ var BrowseInTab = {
       ZoomManager.scrollReduceEnlarge = this.scrollReduceEnlargeFunc;
     }
     if ("messagePaneOnResize" in window) {
-      this.messagePaneOnResize = messagePaneOnResize;
+      this._messagePaneOnResize = messagePaneOnResize;
       // eslint-disable-next-line no-global-assign
       messagePaneOnResize = event => {
         this.DEBUG && console.debug("messagePaneOnResize: noop");
@@ -467,24 +516,1203 @@ var BrowseInTab = {
     this.DEBUG && console.debug("onUnload: --> BrowseInTab DONE");
   },
 
-  CompleteInit() {
+  async CompleteInit() {
     // This really is just the firstTab at this point, pre session restore.
     this.InitializeTabs();
+
     this.InitializeOverlayElements();
     this.gURLBar.constructr({ textbox: this.e("urlbar") });
 
-    this.DEFAULT_FONTSIZE = Number(
-      window.top
-        .getComputedStyle(window.document.documentElement)
-        .getPropertyValue("font-size")
-        .split("px")[0]
-    );
+    // Initialize the prefs.
+    await this.InitializeStorageLocalMap();
 
     if (SessionStoreManager._restored) {
       BrowseInTab.onMailTabsSessionRestored(true);
     }
 
     this.DEBUG && console.debug("CompleteInit: --> BrowseInTab");
+  },
+
+  /**
+   * Run after all tabs have been restored on startup event, or if initializing
+   * the extension post startup.
+   *
+   * @param {Boolean} postStartup - True if already restored post startup, ie
+   *                                in case of extension enable or install.
+   */
+  onMailTabsSessionRestored(postStartup) {
+    this.DEBUG && console.debug("onMailTabsSessionRestored: --> BrowseInTab");
+
+    let tabmail = this.e("tabmail");
+    let tabInfo = tabmail?.currentTabInfo;
+    if (tabInfo.tabNode.selected && this.globalZoomEnabledPref) {
+      // Restore the globalZoomFactor in the selected tab.
+      this.globalZoomFactor = this.tabZoomFactor;
+    }
+    this.setMailToolbar(tabInfo);
+
+    // For tab types that don't send a progress event after initialization,
+    // update url toolbar now. For postStartup, this is effectively the
+    // about:addons page.
+    if (
+      postStartup ||
+      ["folder", "message", "chat", "calendar", "tasks", "chromeTab"].includes(
+        tabInfo?.mode.type
+      ) ||
+      tabInfo?.browser.contentDocument.URL.match(/^about:|^moz-extension:/)
+    ) {
+      BrowseInTab.setUrlToolbar(tabInfo);
+
+      let uri = tabInfo.browser?.currentURI ?? document.documentURIObject;
+      let isInternalOverride = this.isInternalOverride(tabInfo, uri);
+      BrowseInTab.gIdentityHandler.updateIdentity(
+        tabInfo.securityState,
+        uri,
+        isInternalOverride
+      );
+    }
+  },
+
+  /*
+   * Custom zoom functions.
+   */
+  enlarge() {
+    BrowseInTab.DEBUG && console.debug("enlarge:");
+    if (BrowseInTab.customZoomEnabledPref) {
+      ZoomManager.zoom += BrowseInTab.zoomIncrementPref / 100;
+    } else {
+      ZoomManager._enlarge();
+    }
+  },
+
+  reduce() {
+    BrowseInTab.DEBUG && console.debug("reduce:");
+    if (BrowseInTab.customZoomEnabledPref) {
+      ZoomManager.zoom -= BrowseInTab.zoomIncrementPref / 100;
+    } else {
+      ZoomManager._reduce();
+    }
+  },
+
+  scrollZoomEnlarge(event) {
+    let browser = event instanceof XULElement ? event : event?.target;
+    BrowseInTab.DEBUG &&
+      console.debug("scrollZoomEnlarge: browser - " + browser?.id);
+    if (!browser) {
+      return;
+    }
+    let zoom = browser.fullZoom;
+    if (BrowseInTab.customZoomEnabledPref) {
+      zoom += BrowseInTab.zoomIncrementPref / 100;
+    } else {
+      zoom += 0.1;
+    }
+    let zoomMax = Services.prefs.getIntPref("zoom.maxPercent") / 100;
+    if (zoom > zoomMax) {
+      zoom = zoomMax;
+    }
+    browser.fullZoom = zoom;
+  },
+
+  scrollReduceEnlarge(event) {
+    let browser = event instanceof XULElement ? event : event?.target;
+    BrowseInTab.DEBUG &&
+      console.debug("scrollReduceEnlarge: browser - " + browser?.id);
+    if (!browser) {
+      return;
+    }
+    let zoom = browser.fullZoom;
+    if (BrowseInTab.customZoomEnabledPref) {
+      zoom -= BrowseInTab.zoomIncrementPref / 100;
+    } else {
+      zoom -= 0.1;
+    }
+    let zoomMin = Services.prefs.getIntPref("zoom.minPercent") / 100;
+    if (zoom < zoomMin) {
+      zoom = zoomMin;
+    }
+    browser.fullZoom = zoom;
+  },
+
+  get tabZoomFactor() {
+    let tabmail = this.e("tabmail");
+    return tabmail.currentTabInfo._ext?.BrowseInTab?.zoomFactor ?? 1;
+  },
+
+  set tabZoomFactor(val) {
+    let tabmail = this.e("tabmail");
+    if (!tabmail.currentTabInfo._ext.BrowseInTab) {
+      tabmail.currentTabInfo._ext.BrowseInTab = {};
+    }
+    tabmail.currentTabInfo._ext.BrowseInTab.zoomFactor = val;
+  },
+
+  onWheel(event) {
+    if (!this.customZoomEnabledPref) {
+      return;
+    }
+    let t = event.target;
+    // Allow ctrl and left mouse button down + mousewheel to zoom.
+    if (
+      !event.ctrlKey &&
+      (event.buttons != 1 ||
+        (event.buttons == 1 &&
+          (!this.mousebuttonZoomEnabledPref ||
+            (!(t instanceof HTMLImageElement) &&
+              this.mousebuttonZoomImageOnlyEnabledPref))))
+    ) {
+      return;
+    }
+
+    // Hack to prevent mouseup click for openLinkExternally().
+    if (event.buttons == 1) {
+      this.inMouseWheelZoom = true;
+    } else {
+      delete this.inMouseWheelZoom;
+    }
+
+    if (!(t instanceof HTMLImageElement)) {
+      let tabInfo = this.e("tabmail")?.currentTabInfo;
+      let browser = tabInfo?.browser;
+      // This is for lame chat tab, after user connect creating browser.
+      if (tabInfo?.mode.name == "chat" && t instanceof HTMLElement) {
+        browser = tabInfo.browser ?? tabInfo?.mode?.tabType.getBrowser(tabInfo);
+        if (browser) {
+          tabInfo.browser = browser;
+        } else {
+          return;
+        }
+      }
+      if (!browser) {
+        browser = getBrowser();
+      }
+      BrowseInTab.DEBUG &&
+        console.debug("onWheel: browser.id:target -> " + browser?.id);
+      BrowseInTab.DEBUG && console.debug(t);
+
+      // Don't zoom "content" if cursor is on chrome.
+      if (
+        t.ownerGlobal.isChromeWindow &&
+        t.ownerGlobal == t.ownerGlobal.window.top
+      ) {
+        return;
+      }
+      if (!browser) {
+        return;
+      }
+
+      event.preventDefault();
+
+      if (event.deltaY > 0) {
+        this.scrollReduceEnlarge(browser);
+      } else {
+        this.scrollZoomEnlarge(browser);
+      }
+
+      // Hack to clear false selection with left button down mousewheel.
+      let frameElement = t.ownerGlobal.window.frameElement;
+      if (frameElement) {
+        frameElement.contentDocument.getSelection().removeAllRanges();
+      } else {
+        browser.contentDocument.getSelection().removeAllRanges();
+      }
+      return;
+    }
+
+    if (!this.imageZoomEnabledPref) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (!(t._origClientWidth ?? false)) {
+      t._origClientWidth = t.clientWidth;
+    }
+    if (!(t._origClientHeight ?? false)) {
+      t._origClientHeight = t.clientHeight;
+    }
+    let curZoom = event.target._curZoom ?? 1;
+    let zoomIncrement = BrowseInTab.zoomIncrementPref / 100;
+    zoomIncrement = event.deltaY > 0 ? -zoomIncrement : zoomIncrement;
+    let zoomFactor = Math.round((curZoom + zoomIncrement) * 100) / 100;
+
+    BrowseInTab.DEBUG &&
+      console.debug("onWheel: image zoomFactor:img - " + zoomFactor + ":" + t);
+
+    t.style.width = t._origClientWidth * zoomFactor + "px";
+    t.style.height = t._origClientHeight * zoomFactor + "px";
+    t._curZoom = zoomFactor;
+    // When zooming, don't use native shrinktofit and overflowing handling.
+    t.removeAttribute("overflowing");
+    t.removeAttribute("shrinktofit");
+  },
+
+  onClickImage(event) {
+    let t = event.target;
+    if (
+      !this.imageZoomEnabledPref ||
+      !(t instanceof HTMLImageElement) ||
+      !event.ctrlKey
+    ) {
+      return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+
+    BrowseInTab.DEBUG &&
+      console.debug("onClickImage: reset target - " + event.target);
+    t.style.width = t.style.height = "";
+    delete t._curZoom;
+    delete t._origClientWidth;
+    delete t._origClientHeight;
+    if (
+      t.clientWidth - t.ownerDocument.body.offsetWidth >= 0 &&
+      (t.clientWidth <= t.naturalWidth || !t.naturalWidth)
+    ) {
+      t.setAttribute("overflowing", true);
+      t.setAttribute("shrinktofit", true);
+    }
+    //if (t.clientWidth > t.parentNode.clientWidth) {
+    //  t.setAttribute("overflowing", "true");
+    //  t.setAttribute("shrinktofit", "true");
+    //}
+  },
+
+  onZoomChange(event) {
+    let zoomFactor = ZoomManager.zoom;
+    if (BrowseInTab.globalZoomEnabledPref) {
+      BrowseInTab.globalZoomFactor = zoomFactor;
+    } else {
+      BrowseInTab.tabZoomFactor = zoomFactor;
+    }
+    BrowseInTab.DEBUG &&
+      console.debug("onZoomChange: zoomFactor - " + zoomFactor);
+    BrowseInTab.updateZoomUI();
+  },
+
+  InitializeOverlayElements() {
+    this.DEBUG && console.debug("InitializeOverlayElements: ");
+
+    // Add the stylesheets.
+    this.InitializeStyleSheet(
+      window.document,
+      "skin/browseintab.css",
+      this.addonName,
+      false
+    );
+
+    // Keys.
+    let modifier = AppConstants.platform == "macosx" ? "accel" : "alt";
+    this.e("mailKeys").appendChild(
+      MozXULElement.parseXULToFragment(`
+      <keyset extension="${this.addonId}">
+        <key id="keyNewTab_BiT"
+             key="${this.getLocaleMessage("newTabKey")}"
+             modifiers="accel"
+             oncommand="BrowseInTab.openInTab(null, false, 'tab')"/>
+        <key id="goBackKb_BiT"
+             keycode="VK_LEFT"
+             modifiers="${modifier}"
+             oncommand="BrowseInTab.BrowserController.doCommand('Browser:Back_BiT')"/>
+        <key id="goForwardKb_BiT"
+             keycode="VK_RIGHT"
+             modifiers="${modifier}"
+             oncommand="BrowseInTab.BrowserController.doCommand('Browser:Forward_BiT')"/>
+        <key id="key_reload_BiT"
+             keycode="VK_F5"
+             modifiers="accel"
+             oncommand="BrowseInTab.BrowserController.doCommand('Browser:Reload_BiT')"/>
+        <key id="key_reload_skip_cache_BiT"
+             keycode="VK_F5"
+             modifiers="accel,shift"
+             oncommand="BrowseInTab.BrowserController.doCommand('Browser:ReloadSkipCache_BiT')"/>
+      </keyset>
+      `)
+    );
+
+    // Context menu. Menuitems for links and back/forward.
+    /* eslint-disable */
+    this.e("mailContext").insertBefore(
+      MozXULElement.parseXULToFragment(`
+      <menuitem id="mailContext-openLinkInContentTab" extension="${this.addonId}"
+                label="${this.getLocaleMessage("openLinkInContentTabLabel")}"
+                accesskey="${this.getLocaleMessage("openLinkInContentTabAccesskey")}"
+                oncommand="BrowseInTab.openLinkInContentTab(event, 'tab');"/>
+      `),
+      this.e("mailContext-sep-open-browser")
+    );
+    this.e("mailContext").insertBefore(
+      MozXULElement.parseXULToFragment(`
+      <menuitem id="context-back_BiT" extension="${this.addonId}"
+                class="menuitem-iconic"
+                label="&goBackCmd.label;"
+                oncommand="BrowseInTab.BrowserController.doCommand('Browser:Back_BiT')"/>
+      <menuitem id="context-forward_BiT" extension="${this.addonId}"
+                class="menuitem-iconic"
+                label="&goForwardCmd.label;"
+                oncommand="BrowseInTab.BrowserController.doCommand('Browser:Forward_BiT')"/>
+      `, ["chrome://messenger/locale/messenger.dtd"]
+      ),
+      this.e("mailContext-reload")
+    );
+    /* eslint-enable */
+
+    this.onMailContextPopupShowingFunc = event =>
+      this.onMailContextPopupShowing(event);
+    this.e("mailContext").addEventListener(
+      "popupshowing",
+      this.onMailContextPopupShowingFunc
+    );
+
+    // Context menu for link popups.
+    /* eslint-disable */
+    let popupFragment = `
+      <menuitem class="urlpopup" extension="${this.addonId}"
+                label="&openLinkInBrowser.label;"
+                accesskey="&openLinkInBrowser.accesskey;"
+                oncommand="BrowseInTab.openUrlPopupLink(event, 'browser');"/>
+      <menuitem class="urlpopup" extension="${this.addonId}"
+                label="${this.getLocaleMessage("openLinkInContentTabLabel")}"
+                accesskey="${this.getLocaleMessage("openLinkInContentTabAccesskey")}"
+                oncommand="BrowseInTab.openUrlPopupLink(event, 'tab');"/>
+      <menuitem class="urlpopup" extension="${this.addonId}"
+                label="&copyLinkCmd.label;"
+                accesskey="&copyLinkCmd.accesskey;"
+                oncommand="BrowseInTab.copyLinkLocation(document.popupNode)"/>
+      `;
+    /* eslint-enable */
+
+    // Context menu for copyUrlPopup. Menuitems for <mail-urlfield> link.
+    let copyUrlPopup = this.e("copyUrlPopup");
+    copyUrlPopup.setAttribute("linknode", true);
+    copyUrlPopup.insertBefore(
+      MozXULElement.parseXULToFragment(popupFragment, [
+        "chrome://messenger/locale/messenger.dtd",
+      ]),
+      copyUrlPopup.lastElementChild
+    );
+
+    // Context menu for about pages links.
+    let aboutPagesPopup = this.e("aboutPagesContext");
+    aboutPagesPopup.insertBefore(
+      MozXULElement.parseXULToFragment(popupFragment, [
+        "chrome://messenger/locale/messenger.dtd",
+      ]),
+      aboutPagesPopup.firstElementChild
+    );
+    this.onLinkPopupShowingFunc = event => this.onLinkPopupShowing(event);
+    aboutPagesPopup.addEventListener(
+      "popupshowing",
+      this.onLinkPopupShowingFunc
+    );
+
+    // The new tab button - not customizable for now.
+    this.e("tabbar-toolbar").insertBefore(
+      MozXULElement.parseXULToFragment(`
+      <toolbarbutton id="new-tab-button" extension="${this.addonId}"
+                     class="toolbarbutton-1 chromeclass-toolbar-additional"
+                     label="${this.getLocaleMessage("newTabLabel")}"
+                     tooltiptext="${this.getLocaleMessage("newTabTooltip")}"
+                     oncommand="BrowseInTab.openInTab(null, false, 'tab')"
+                     Xremovable="true"/>
+      `),
+      this.e("tabbar-toolbar").firstElementChild
+    );
+
+    // Add a global urlbar.
+    let insertBeforeNode = this.e("tabmail-container");
+    /* eslint-disable */
+    let key_reloadStr = ShortcutUtils.prettifyShortcut(this.e("key_reload_BiT"));
+    let key_fullZoomResetStr = ShortcutUtils.prettifyShortcut(this.e("key_fullZoomReset"));
+    let urlToolbox = `
+      <vbox id="url-toolbox" extension="${this.addonId}"
+            class="contentTabToolbox"
+            hidden="true">
+        <hbox id="url-toolbar"
+              class="contentTabToolbar">
+          <toolbarbutton id="back-button"
+                         class="toolbarbutton-1"
+                         tooltiptext="&browseBackButton.tooltip;"
+                         disabled="true"
+                         oncommand="BrowseInTab.BrowserController.doCommand('Browser:Back_BiT')"/>
+          <toolbarbutton id="forward-button"
+                         class="toolbarbutton-1"
+                         tooltiptext="&browseForwardButton.tooltip;"
+                         disabled="true"
+                         oncommand="BrowseInTab.BrowserController.doCommand('Browser:Forward_BiT')"/>
+
+          <toolbaritem id="stop-reload-button"
+                       class="chromeclass-toolbar-additional"
+                       Xdata-l10n-id="toolbar-button-stop-reload"
+                       overflows="false">
+            <toolbarbutton id="reload-button"
+                           class="toolbarbutton-1"
+                           tooltiptext="${this.getLocaleMessage(
+                             "reloadCurrentPageOrMessage",
+                             [key_reloadStr]
+                           )}"
+                           oncommand="BrowseInTab.BrowserController.doCommand('Browser:ReloadOrDuplicate_BiT', event)"
+                           onclick="BrowseInTab.checkForMiddleClick(this, event);">
+            </toolbarbutton>
+            <toolbarbutton id="stop-button"
+                           class="toolbarbutton-1"
+                           tooltiptext="${this.getLocaleMessage("stopLoadingCurrentPageOrMessage")}"
+                           oncommand="BrowseInTab.BrowserController.doCommand('Browser:Stop_BiT')">
+            </toolbarbutton>
+          </toolbaritem>
+
+          <toolbaritem id="urlbar-container"
+                       class="chromeclass-location"
+                       align="center"
+                       flex="1">
+            <hbox id="urlbar"
+                  hidden="true"
+                  align="center"
+                  flex="1">
+              <hbox id="urlbar-input-container"
+                    flex="1">
+                <box id="identity-box"
+                     align="center">
+                  <image id="identity-icon"/>
+                  <label id="identity-icon-label"
+                         class="plain"
+                         crop="center"
+                         flex="1"/>
+                </box>
+
+                <moz-input-box id="moz-input-box"
+                               tooltip="aHTMLTooltip"
+                               class="urlbar-input-box"
+                               flex="1"
+                               role="combobox"
+                               aria-owns="urlbar-results">
+                  <html:input id="urlbar-scheme"
+                              hidden="true"
+                              required="required"/>
+                  <html:input id="urlbar-input"
+                              anonid="input"
+                              readonly="true"
+                              placeholder="${this.getLocaleMessage("urlbar-placeholder")}"
+                              onmousedown="if (event.button == 2) this.select();"/>
+                </moz-input-box>
+                <image id="urlbar-go-button"
+                       class="urlbar-icon"
+                       onclick="BrowseInTab.gURLBar.handleCommand(event);"
+                       tooltiptext="${this.getLocaleMessage("urlbar-go-button")}"/>
+
+                <hbox id="page-action-buttons" context="pageActionContextMenu">
+                  <toolbartabstop/>
+                  <image id="reader-mode-button"
+                         class="urlbar-icon urlbar-page-action"
+                         tooltip="dynamic-shortcut-tooltip"
+                         role="button"
+                         hidden="true"
+                         onclick="AboutReaderParent.buttonClick(event);"/>
+                  <toolbarbutton id="urlbar-zoom-button"
+                                 hidden="true"
+                                 tooltiptext="${this.getLocaleMessage(
+                                   "urlbarZoomButtonTooltip",
+                                   [key_fullZoomResetStr]
+                                 )}"
+                                 onclick="ZoomManager.reset();"/>
+                </hbox>
+
+              </hbox>
+            </hbox>
+          </toolbaritem>
+        </hbox>
+      </vbox>
+    `;
+    /* eslint-enable */
+    insertBeforeNode.parentElement.insertBefore(
+      MozXULElement.parseXULToFragment(urlToolbox, [
+        "chrome://messenger/locale/messenger.dtd",
+      ]),
+      insertBeforeNode
+    );
+
+    let textboxContextMenu = this.e("moz-input-box").querySelector(
+      ".textbox-contextmenu"
+    );
+    textboxContextMenu.addEventListener("popuphiding", event => {
+      document.popupNode.selectionStart = document.popupNode.selectionEnd = 0;
+    });
+
+    // Extension toolbarbuttons can only go on mail-bar3, which is not visible
+    // by default for content tabs.
+    insertBeforeNode.parentElement.insertBefore(
+      this.e("mail-toolbox"),
+      insertBeforeNode
+    );
+    this.DEBUG && console.debug("InitializeOverlayElements: DONE");
+  },
+
+  /*
+   * Inject a stylesheet, either chrome file or addon relative file.
+   *
+   * @param {Document} doc            - Document for the css injection.
+   * @param {String} styleSheetSource - Resource or relative file name.
+   * @param {String} styleName        - Name for DOM title.
+   * @param {Boolean} isChrome        - Is this a chrome url.
+   */
+  InitializeStyleSheet(doc, styleSheetSource, styleName, isChrome) {
+    this.DEBUG && console.debug("InitializeStyleSheet: ");
+    let href;
+    if (isChrome) {
+      href = styleSheetSource;
+    } else {
+      href = this.getBaseURL(styleSheetSource);
+    }
+
+    this.TRACE &&
+      console.debug("InitializeStyleSheet: styleSheet - " + styleSheetSource);
+    this.TRACE && console.debug("InitializeStyleSheet: href - " + href);
+    let link = doc.createElement("link");
+    link.setAttribute("id", this.addonId);
+    link.setAttribute("title", styleName);
+    link.setAttribute("rel", "stylesheet");
+    link.setAttribute("type", "text/css");
+    link.setAttribute("href", href);
+    // The |sheet| property is now (post Tb78) added after the sheet loads.
+    // We must do this when setting title else another extension using this
+    // technique may have its sheet be the |document.selectedStyleSheetSet|.
+    link.setAttribute("onload", "this.sheet.disabled=false");
+    doc.documentElement.appendChild(link);
+    this.DEBUG && console.debug(link.sheet);
+  },
+
+  RemoveObservers() {
+    for (let observer of Services.obs.enumerateObservers(
+      this.obsTopicStorageLocalChanged
+    )) {
+      Services.obs.removeObserver(observer, this.obsTopicStorageLocalChanged);
+    }
+
+    Services.ww.unregisterNotification(this.Observer);
+
+    let tabmail = this.e("tabmail");
+    tabmail?.unregisterTabMonitor(this.TabMonitor);
+
+    this.e("messagepane").removeEventListener(
+      "click",
+      this.contentAreaClickFunc,
+      { capture: true }
+    );
+
+    this.e("mailContext").removeEventListener(
+      "popupshowing",
+      this.onMailContextPopupShowingFunc
+    );
+    this.e("copyUrlPopup").removeAttribute("linknode");
+    this.e("aboutPagesContext").removeAttribute("linknode");
+    this.e("aboutPagesContext").removeEventListener(
+      "popupshowing",
+      this.onLinkPopupShowingFunc
+    );
+
+    /* eslint-disable */
+    window.removeEventListener("wheel", this.onWheelFunc, { capture: true, passive: false });
+    window.removeEventListener("click", this.onClickImageFunc, { capture: true });
+    /* eslint-enable */
+    window.removeEventListener("FullZoomChange", this.onZoomChange);
+    window.removeEventListener("TextZoomChange", this.onZoomChange);
+
+    AddonManager.removeAddonListener(this.AddonListener);
+    this.DEBUG && console.debug("RemoveObservers: DONE");
+  },
+
+  RestoreOverlayElements() {
+    let nodes = document.querySelectorAll(`[extension="${this.addonId}"]`);
+    for (let node of nodes) {
+      node.remove();
+    }
+
+    let parent = this.e("mailContent");
+    parent.insertBefore(this.e("mail-toolbox"), parent.firstElementChild);
+    this.DEBUG && console.debug("RestoreOverlayElements: DONE");
+  },
+
+  RestoreOverrideFunctions() {
+    // eslint-disable-next-line no-global-assign
+    openLinkExternally = this._openLinkExternally;
+    if ("ZoomManager" in window) {
+      ZoomManager.enlarge = ZoomManager._enlarge;
+      ZoomManager.reduce = ZoomManager._reduce;
+      ZoomManager.scrollZoomEnlarge = ZoomManager._scrollZoomEnlarge;
+      ZoomManager.scrollReduceEnlarge = ZoomManager._scrollReduceEnlarge;
+    }
+    // eslint-disable-next-line no-global-assign
+    messagePaneOnResize = this._messagePaneOnResize;
+    this.DEBUG && console.debug("RestoreOverrideFunctions: DONE");
+  },
+
+  RemoveStyles() {
+    let styleSheet = document.querySelector(`link[id="${this.addonId}"]`);
+    if (styleSheet) {
+      styleSheet.remove();
+    }
+    this.DEBUG && console.debug("RemoveStyles: DONE");
+  },
+
+  InitializeTabs() {
+    this.DEBUG && console.debug("InitializeTabs: ");
+    let tabmail = this.e("tabmail");
+    let tabsInfo = tabmail?.tabInfo ?? [];
+    for (let tabInfo of tabsInfo) {
+      this.InitializeTab(tabInfo);
+    }
+  },
+
+  /**
+   * Ensure our siteClickHandler is added to the tab.
+   *
+   * @param {TabInfo} tabInfo - the tabInfo for the tab.
+   */
+  InitializeTab(tabInfo) {
+    this.InitializeTabForContent(tabInfo);
+
+    // Excluded tab types:
+    // - preferencesTab: xul text-link nodes use MailGlue._handleLink().
+    if (!["contentTab"].includes(tabInfo.mode.type)) {
+      return;
+    }
+    if (
+      tabInfo.clickHandler &&
+      tabInfo.clickHandler.startsWith("BrowseInTab.")
+    ) {
+      return;
+    }
+    tabInfo.clickHandler = "BrowseInTab.siteClickHandler(event)";
+    tabInfo.browser.setAttribute("onclick", tabInfo.clickHandler);
+  },
+
+  /**
+   * Ensure 3pane folder and message tabs messagepane <browser> is initialized
+   * for webpage listeners, like contentTab type.
+   *
+   * @param {TabInfo} tabInfo - the tabInfo for the tab.
+   */
+  InitializeTabForContent(tabInfo) {
+    let type = tabInfo.mode.type;
+    let tabId = tabInfo.tabId;
+    this.DEBUG &&
+      console.debug(
+        "InitializeTabForContent: START tabId:type:title -  " +
+          tabId +
+          ":" +
+          type +
+          ":" +
+          tabInfo.title
+      );
+
+    if (["contentTab"].includes(type)) {
+      // Hide the per contentTab "urlbar".
+      let contentTabToolbox = tabInfo.panel.querySelector(".contentTabToolbox");
+      if (contentTabToolbox) {
+        contentTabToolbox.hidden = true;
+      }
+
+      if ("progressListener" in tabInfo) {
+        let progressListener = Object.assign({}, this.progressListener);
+        progressListener.tabInfo = tabInfo;
+        tabInfo.progressListener.addProgressListener(progressListener);
+      }
+      this.DEBUG && console.debug(tabInfo);
+      this.DEBUG &&
+        console.debug("InitializeTabForContent: DONE, tabId - " + tabId);
+      return;
+    }
+
+    if (["glodaFacet"].includes(tabInfo.mode.name)) {
+      let contentTabToolbox = tabInfo.panel.querySelector(".contentTabToolbox");
+      if (contentTabToolbox) {
+        contentTabToolbox.hidden =
+          this.showMailToolbarPref == this.kShowMailToolbarAll;
+      }
+      if (tabInfo.browser) {
+        tabInfo.browser.focus();
+        // So the zoom change event is dispatched. Set zoom on browsingContext
+        // manually in updateZoomUI().
+        tabInfo.browser.enterResponsiveMode();
+      }
+      this.DEBUG && console.debug(tabInfo);
+      this.DEBUG &&
+        console.debug("InitializeTabForContent: DONE, tabId - " + tabId);
+      return;
+    }
+
+    if (["chromeTab"].includes(type)) {
+      if (tabInfo.browser) {
+        // So the zoom change event is dispatched. Set zoom on browsingContext
+        // manually in updateZoomUI().
+        tabInfo.browser.enterResponsiveMode();
+      }
+    }
+
+    let documentURI =
+      tabInfo.browser?.documentURI ?? document.documentURIObject;
+    this.DEBUG &&
+      console.debug(
+        "InitializeTabForContent: browser documentURI - " + documentURI?.spec
+      );
+    if (tabInfo.firstTab) {
+      let multimessagebrowser = this.e("multimessage");
+      // So the zoom change event is dispatched. Set zoom on browsingContext
+      // manually in updateZoomUI().
+      multimessagebrowser.enterResponsiveMode();
+    }
+
+    this.DEBUG &&
+      console.debug(
+        "InitializeTabForContent: progressListenerAdded - " +
+          tabInfo.browser?._progressListenerAdded
+      );
+
+    // Ensure all tab <browser>s have our progressListener.
+    // The <browser id="messagepane"> is shared among tab types
+    // |folder, message, glodaList|. Each tab will get an event here, even if
+    // it is not the active tab.
+    if (tabInfo.browser?.webProgress && !tabInfo.filter) {
+      this.DEBUG && console.debug("InitializeTabForContent: !tabInfo.filter");
+      tabInfo.filter = Cc[
+        "@mozilla.org/appshell/component/browser-status-filter;1"
+      ].createInstance(Ci.nsIWebProgress);
+
+      let progressListener = Object.assign({}, this.progressListener);
+      progressListener.tabInfo = tabInfo;
+      tabInfo.filter.addProgressListener(
+        progressListener,
+        Ci.nsIWebProgress.NOTIFY_ALL
+      );
+
+      tabInfo.browser.webProgress.addProgressListener(
+        tabInfo.filter,
+        Ci.nsIWebProgress.NOTIFY_ALL
+      );
+
+      // Don't forget the multimessage browser, per tab.
+      /* */
+      let multimessagebrowser = this.e("multimessage");
+      if (
+        ["folder"].includes(tabInfo.mode.type) &&
+        multimessagebrowser?.webProgress
+      ) {
+        multimessagebrowser.webProgress.addProgressListener(
+          tabInfo.filter,
+          Ci.nsIWebProgress.NOTIFY_ALL
+        );
+      }
+    }
+
+    this.DEBUG && console.debug(tabInfo);
+    this.DEBUG &&
+      console.debug("InitializeTabForContent: DONE, tabId - " + tabId);
+  },
+
+  RestoreTabs() {
+    let tabmail = this.e("tabmail");
+    let tabsInfo = tabmail?.tabInfo ?? [];
+    for (let tabInfo of tabsInfo) {
+      if (!["contentTab"].includes(tabInfo.mode.type)) {
+        if (tabInfo.browser?.webProgress && tabInfo.filter) {
+          tabInfo.browser.webProgress.removeProgressListener(
+            tabInfo.filter,
+            Ci.nsIWebProgress.NOTIFY_ALL
+          );
+          delete tabInfo.browser._progressListenerAdded;
+          if (["folder"].includes(tabInfo.mode.type)) {
+            let multimessagebrowser = this.e("multimessage");
+            multimessagebrowser.webProgress?.removeProgressListener(
+              tabInfo.filter,
+              Ci.nsIWebProgress.NOTIFY_ALL
+            );
+          }
+          delete tabInfo.filter;
+        }
+
+        this.DEBUG && console.debug("RestoreTabs: tabInfo -> " + tabInfo.tabId);
+        this.DEBUG && console.debug(tabInfo);
+        continue;
+      }
+
+      // For contentTab type tabs.
+      if ("progressListener" in tabInfo) {
+        // Only one can be added, and we did, so we get to null it.
+        tabInfo.progressListener.mProgressListener = null;
+      }
+
+      if (tabInfo.clickHandler?.startsWith("BrowseInTab.")) {
+        tabInfo.clickHandler = "specialTabs.defaultClickHandler(event);";
+        tabInfo.browser.setAttribute("onclick", tabInfo.clickHandler);
+      }
+
+      let contentTabToolbox = tabInfo.panel.querySelector(".contentTabToolbox");
+      if (contentTabToolbox) {
+        contentTabToolbox.hidden = false;
+      }
+      this.DEBUG && console.debug("RestoreTabs: tabInfo -> " + tabInfo.tabId);
+      this.DEBUG && console.debug(tabInfo);
+    }
+
+    // Reset to defaults.
+    Services.prefs.clearUserPref("mail.tabs.loadInBackground");
+    specialTabs.contentTabType.modes.contentTab.maxTabs = this.DEFAULT_CONTENTTAB_MAXTABS;
+    Services.prefs.clearUserPref("layout.css.devPixelsPerPx");
+  },
+
+  /*
+   * Added on a per tab basis, even to shared tabInfo.browser like #messagepane.
+   *
+   * @implements {nsIWebProgressListener}
+   */
+  progressListener: {
+    tabInfo: null,
+    async onLocationChange(webProgress, request, location, flags) {
+      if (!this.tabInfo.tabNode.selected || !webProgress.isTopLevel) {
+        return;
+      }
+      let tabInfo = this.tabInfo;
+      let tabmail = BrowseInTab.e("tabmail");
+      let browser = tabmail.getBrowserForTab(tabInfo);
+
+      BrowseInTab.DEBUG &&
+        console.debug(
+          "onLocationChange: active tabId:tabTitle - " +
+            tabInfo.tabId +
+            ":" +
+            tabInfo.title
+        );
+
+      if (tabInfo.tabNode?.linkedPanel == "mailContent") {
+        // These are |folder, message, glodaList| tab types.
+        // Get the real browser, could be multimessage.
+        this.tabInfo.browser = browser;
+        // Clear the urlBar on location change to messagepane, it will be
+        // resolved later.
+        if (["messagepane", "multimessage"].includes(browser.id)) {
+          BrowseInTab.clearUrlToolbarUrl();
+        }
+        BrowseInTab.DEBUG &&
+          console.debug("onLocationChange: browser.id - " + browser.id);
+        BrowseInTab.DEBUG && console.debug(browser.documentURI.spec);
+      }
+      BrowseInTab.DEBUG && console.debug(location.spec);
+
+      if (browser && browser.documentURI.spec != "about:blank") {
+        // Only update here with the real url. Most about:blank urls are
+        // resolved later and are legitimate only for unselected messagepane.
+        let isSameDocument = !!(
+          flags & Ci.nsIWebProgressListener.LOCATION_CHANGE_SAME_DOCUMENT
+        );
+        let isErrorPage = !!(
+          flags & Ci.nsIWebProgressListener.LOCATION_CHANGE_ERROR_PAGE
+        );
+        if (
+          browser.didStartLoadSinceLastUserTyping() ||
+          (isErrorPage && location.spec != "about:blank") ||
+          (isSameDocument && browser.isNavigating) ||
+          (isSameDocument && !browser.userTypedValue)
+        ) {
+          browser.userTypedValue = null;
+        }
+        BrowseInTab.setUrlToolbar(tabInfo);
+      }
+    },
+    onSecurityChange(webProgress, request, state) {
+      this.tabInfo.securityState = state;
+      let tabInfo = this.tabInfo;
+      BrowseInTab.DEBUG &&
+        console.debug(
+          "onSecurityChange: tabId:securityState:selected:tabTitle - " +
+            tabInfo.tabId +
+            ":" +
+            state +
+            ":" +
+            tabInfo.tabNode.selected +
+            ":" +
+            tabInfo.title
+        );
+      BrowseInTab.DEBUG && console.debug(webProgress?.currentURI?.spec);
+      if (!tabInfo.tabNode.selected || !webProgress.isTopLevel) {
+        return;
+      }
+
+      let uri = tabInfo.browser.currentURI;
+      let spec = uri.spec;
+      let isSecureContext = tabInfo.browser.securityUI?.isSecureContext;
+      if (
+        this._state == state &&
+        this._lastLocation == spec &&
+        this._isSecureContext === isSecureContext
+      ) {
+        // Switching to a tab of the same URL doesn't change most security
+        // information, but tab specific permissions may be different.
+        // NOTE: for shared messagepane <browser>s we need to skip this.
+        //BrowseInTab.gIdentityHandler.refreshIdentityBlock();
+        //return;
+      }
+      this._state = state;
+      this._lastLocation = spec;
+      this._isSecureContext = isSecureContext;
+      // Make sure the "https" part of the URL is striked out or not,
+      // depending on the current mixed active content blocking state.
+      //BrowseInTab.gURLBar.formatValue();
+      try {
+        uri = Services.io.createExposableURI(uri);
+      } catch (e) {}
+
+      let isInternalOverride = BrowseInTab.isInternalOverride(tabInfo, uri);
+      BrowseInTab.gIdentityHandler.updateIdentity(
+        tabInfo.securityState,
+        uri,
+        isInternalOverride
+      );
+    },
+    onStateChange(webProgress, request, stateFlags, status) {
+      if (!this.tabInfo.tabNode.selected) {
+        return;
+      }
+
+      let tabInfo = this.tabInfo;
+      if (
+        stateFlags & Ci.nsIWebProgressListener.STATE_START &&
+        stateFlags & Ci.nsIWebProgressListener.STATE_IS_NETWORK
+      ) {
+        BrowseInTab.DEBUG &&
+          console.debug(
+            "onStateChange: START active tabId:busy:stateFlags:tabTitle - " +
+              tabInfo.tabId +
+              ":" +
+              tabInfo.busy +
+              ":" +
+              stateFlags +
+              ":" +
+              tabInfo.title
+          );
+
+        if (webProgress.isTopLevel) {
+          let browser = tabInfo.browser;
+          //let location;
+          let originalLocation;
+          try {
+            request.QueryInterface(Ci.nsIChannel);
+            //location = request.URI;
+            originalLocation = request.originalURI;
+          } catch (ex) {}
+          if (
+            !(
+              originalLocation &&
+              BrowseInTab.gURLBar.gInitialPages.includes(
+                originalLocation.spec
+              ) &&
+              originalLocation != "about:blank" &&
+              browser.initialPageLoadedFromUserAction !=
+                originalLocation.spec &&
+              browser.currentURI &&
+              browser.currentURI.spec == "about:blank"
+            )
+          ) {
+            // Indicating that we started a load will allow the location
+            // bar to be cleared when the load finishes.
+            browser.urlbarChangeTracker.startedLoad();
+          }
+        }
+
+        if (!(stateFlags & Ci.nsIWebProgressListener.STATE_RESTORING)) {
+          BrowseInTab.e("reload-button")?.setAttribute("displaystop", true);
+          BrowseInTab.DEBUG &&
+            console.debug("onStateChange: START set displaystop true");
+        }
+      } else if (
+        stateFlags & Ci.nsIWebProgressListener.STATE_STOP &&
+        stateFlags & Ci.nsIWebProgressListener.STATE_IS_NETWORK
+      ) {
+        if (webProgress.isTopLevel) {
+          let isSuccessful = Components.isSuccessCode(status);
+          let browser = tabInfo.browser;
+          if (browser) {
+            if (!isSuccessful) {
+              // && !this.mTab.isEmpty) {
+              // Restore the current document's location in case the
+              // request was stopped (possibly from a content script)
+              // before the location changed.
+              browser.userTypedValue = null;
+
+              let isNavigating = browser.isNavigating;
+              if (!isNavigating) {
+                //BrowseInTab.gURLBar.setURI();
+              }
+            } else if (isSuccessful) {
+              browser.urlbarChangeTracker.finishedLoad();
+            }
+          }
+        }
+        BrowseInTab.DEBUG &&
+          console.debug(
+            "onStateChange: STOP active tabId:busy:stateFlags:tabTitle - " +
+              tabInfo.tabId +
+              ":" +
+              tabInfo.busy +
+              ":" +
+              stateFlags +
+              ":" +
+              tabInfo.title
+          );
+        let uri = tabInfo.browser?.currentURI;
+        BrowseInTab.DEBUG &&
+          console.debug(
+            "onStateChange: browser.id:origURI:curURI - " + tabInfo.browser.id
+          );
+        BrowseInTab.DEBUG && console.debug(request?.originalURI?.spec);
+        BrowseInTab.DEBUG && console.debug(uri?.spec);
+
+        BrowseInTab.e("reload-button")?.removeAttribute("displaystop");
+        BrowseInTab.DEBUG &&
+          console.debug(
+            "onStateChange: STOP remove displaystop, haveUrlToolbarUrlValue - " +
+              BrowseInTab.haveUrlToolbarUrlValue(uri)
+          );
+
+        if (!BrowseInTab.haveUrlToolbarUrlValue(uri)) {
+          // For some tab type late loads update the urlBar now.
+          BrowseInTab.setUrlToolbar(tabInfo);
+
+          let isInternalOverride = BrowseInTab.isInternalOverride(tabInfo, uri);
+          BrowseInTab.gIdentityHandler.updateIdentity(
+            tabInfo.securityState,
+            uri,
+            isInternalOverride
+          );
+        }
+      }
+    },
+    // eslint-disable-next-line prettier/prettier
+    onProgressChange(webProgress, request, curSelf, maxSelf, curTotal, maxTotal) {},
+    onStatusChange(webProgress, request, status, message) {},
+    onContentBlockingEvent(webProgress, request, event) {},
+    QueryInterface: ChromeUtils.generateQI([
+      Ci.nsIWebProgressListener,
+      Ci.nsIWebProgressListener2,
+      Ci.nsISupportsWeakReference,
+    ]),
+  },
+
+  setMailToolbar(tabInfo) {
+    let tabType = tabInfo.mode.type;
+    this.DEBUG &&
+      console.debug(
+        "setMailToolbar: tabType:tabName - " + tabType + ":" + tabInfo.mode.name
+      );
+    let show = tabInfo.firstTab || tabInfo.tabNode.linkedPanel == "mailContent";
+    let showMailToolbarPref = this.showMailToolbarPref;
+    if (showMailToolbarPref == this.kShowMailToolbarAll) {
+      show = true;
+    } else if (showMailToolbarPref == this.kShowMailToolbarWebPage) {
+      if (tabType == "contentTab" || tabType == "preferencesTab") {
+        let documentURI = tabInfo.browser.documentURI;
+        this.DEBUG &&
+          console.debug("setMailToolbar: scheme - " + documentURI.scheme);
+        show =
+          ["http", "https"].includes(documentURI.scheme) ||
+          documentURI.spec == "about:blank";
+      }
+    }
+    this.e("mail-toolbox").hidden = !show;
+  },
+
+  isInternalOverride(tabInfo, uri) {
+    // Don't forget web page in messagepane.
+    return (
+      (tabInfo.tabNode?.linkedPanel == "mailContent" ||
+        tabInfo.mode.name == "glodaList") &&
+      !["chrome", "http", "https"].includes(uri.scheme)
+    );
+  },
+
+  haveUrlToolbarUrlValue(uri) {
+    let urlbarInput = this.gURLBar.inputField;
+    if (urlbarInput) {
+      this.DEBUG &&
+        console.debug(
+          "haveUrlToolbarUrlValue: urlbarInput.value - " + urlbarInput.value
+        );
+      return Boolean(urlbarInput.value) && urlbarInput.value != "about:blank";
+    }
+    return undefined;
+  },
+
+  clearUrlToolbarUrl() {
+    let urlbarInput = this.gURLBar.inputField;
+    if (urlbarInput) {
+      urlbarInput.value = "";
+    }
+  },
+
+  setUrlToolbar(tabInfo) {
+    let urlToolbox = this.e("url-toolbox");
+    if (!urlToolbox) {
+      return;
+    }
+
+    let tabmail = this.e("tabmail");
+    let browserForTab = tabInfo.browser || tabmail.getBrowserForTab(tabInfo);
+    let uri = tabInfo.browser?.currentURI || document.documentURIObject;
+    this.DEBUG && console.debug("setUrlToolbar: scheme - " + uri?.scheme);
+
+    let isInternalOverride = this.isInternalOverride(tabInfo, uri);
+    this.gURLBar.setURI(null, false, isInternalOverride);
+
+    let tabType = tabInfo.mode.type;
+    let urlbarInput = this.gURLBar.inputField;
+    this.DEBUG &&
+      console.debug(
+        "setUrlToolbar: tab type:name - " + tabType + ":" + tabInfo.mode.name
+      );
+
+    let isEditableUrl =
+      tabType == "contentTab" &&
+      (["http", "https"].includes(uri.scheme) ||
+        uri.spec == "about:blank" ||
+        uri.spec.startsWith("about:neterror"));
+
+    let show =
+      this.showUrlToolbarPref == this.kShowUrlToolbarAll || isEditableUrl;
+
+    // It's a new tab.
+    if (tabType == "contentTab" && uri.spec == "about:blank") {
+      this.clearUrlToolbarUrl();
+      urlbarInput.blur();
+      urlbarInput.selectionStart = urlbarInput.selectionEnd = 0;
+      urlbarInput.focus();
+      browserForTab.contentDocument.title = this.getLocaleMessage(
+        "newTabLabel"
+      );
+    }
+
+    let hasSessionHistory = tabInfo.browser && tabInfo.browser.sessionHistory;
+    urlToolbox.querySelector("#back-button").disabled = !(
+      hasSessionHistory && tabInfo.browser.canGoBack
+    );
+    urlToolbox.querySelector("#forward-button").disabled = !(
+      hasSessionHistory && tabInfo.browser.canGoForward
+    );
+    urlToolbox.querySelector(
+      "#reload-button"
+    ).disabled = !this.BrowserController.isCommandEnabled("Browser:Reload_BiT");
+
+    urlToolbox.hidden = !show;
+    urlbarInput.toggleAttribute("readonly", !isEditableUrl);
+
+    this.e("urlbar-zoom-button").hidden = true;
+    if (browserForTab) {
+      // Some tabs don't have a browser (chat); ZoomManager requires one.
+      if (this.globalZoomEnabledPref) {
+        ZoomManager.zoom = this.globalZoomFactor || 1;
+      } else {
+        ZoomManager.zoom = this.tabZoomFactor;
+      }
+      this.updateZoomUI(browserForTab);
+    }
   },
 
   /*****************************************************************************
@@ -695,7 +1923,7 @@ var BrowseInTab = {
      * Sets the URI to display in the location bar.
      */
     setURI(uri = null, dueToTabSwitch = false, isInternalOverride) {
-      let browser = this.window.getBrowser();
+      let browser = this.window?.getBrowser();
       let value = browser?.userTypedValue ?? null; // ?? this.document.URL;
       let valid = false;
 
@@ -1182,9 +2410,8 @@ var BrowseInTab = {
 
       // Try to decode as UTF-8 if there's no encoding sequence that we would break.
       if (!/%25(?:3B|2F|3F|3A|40|26|3D|2B|24|2C|23)/i.test(value)) {
-        /* eslint-disable */
+        // eslint-disable-next-line prettier/prettier
         let decodeASCIIOnly = !["https", "http", "file", "ftp", "news"].includes(scheme);
-        /* eslint-enable */
         if (decodeASCIIOnly) {
           // This only decodes ascii characters (hex) 20-7e, except 25 (%).
           // This avoids both cases stipulated below (%-related issues, and \r, \n
@@ -1299,7 +2526,6 @@ var BrowseInTab = {
       this.openLinkIn(url, where, params);
     },
 
-    /* XXeslint-disable complexity */
     openLinkIn(url, where, params) {
       if (!where || !url) {
         return;
@@ -1462,1207 +2688,6 @@ var BrowseInTab = {
     },
   },
 
-  /**
-   * Run after all tabs have been restored on startup event, or if initializing
-   * the extension post startup.
-   *
-   * @param {Boolean} postStartup - True if already restored post startup, ie
-   *                                in case of extension enable or install.
-   */
-  async onMailTabsSessionRestored(postStartup) {
-    this.DEBUG && console.debug("onMailTabsSessionRestored: --> BrowseInTab");
-
-    await this.InitializeStorageLocalMap();
-
-    let tabmail = this.e("tabmail");
-    let tabInfo = tabmail?.currentTabInfo;
-    if (tabInfo.tabNode.selected && this.globalZoomEnabledPref) {
-      // Restore the globalZoomFactor in the selected tab.
-      this.globalZoomFactor = this.tabZoomFactor;
-    }
-    this.setMailToolbar(tabInfo);
-
-    // For tab types that don't send a progress event after initialization,
-    // update url toolbar now. For postStartup, this is effectively the
-    // about:addons page.
-    if (
-      postStartup ||
-      ["folder", "message", "chat", "calendar", "tasks", "chromeTab"].includes(
-        tabInfo?.mode.type
-      ) ||
-      tabInfo?.browser.contentDocument.URL.match(/^about:|^moz-extension:/)
-    ) {
-      BrowseInTab.setUrlToolbar(tabInfo);
-
-      let uri = tabInfo.browser?.currentURI ?? document.documentURIObject;
-      let isInternalOverride = this.isInternalOverride(tabInfo, uri);
-      BrowseInTab.gIdentityHandler.updateIdentity(
-        tabInfo.securityState,
-        uri,
-        isInternalOverride
-      );
-    }
-  },
-
-  /*
-   * Custom zoom functions.
-   */
-  enlarge() {
-    BrowseInTab.DEBUG && console.debug("enlarge:");
-    if (BrowseInTab.customZoomEnabledPref) {
-      ZoomManager.zoom += BrowseInTab.zoomIncrementPref / 100;
-    } else {
-      ZoomManager._enlarge();
-    }
-  },
-
-  reduce() {
-    BrowseInTab.DEBUG && console.debug("reduce:");
-    if (BrowseInTab.customZoomEnabledPref) {
-      ZoomManager.zoom -= BrowseInTab.zoomIncrementPref / 100;
-    } else {
-      ZoomManager._reduce();
-    }
-  },
-
-  scrollZoomEnlarge(event) {
-    let browser = event instanceof XULElement ? event : event?.target;
-    BrowseInTab.DEBUG &&
-      console.debug("scrollZoomEnlarge: browser - " + browser?.id);
-    if (!browser) {
-      return;
-    }
-    let zoom = browser.fullZoom;
-    if (BrowseInTab.customZoomEnabledPref) {
-      zoom += BrowseInTab.zoomIncrementPref / 100;
-    } else {
-      zoom += 0.1;
-    }
-    let zoomMax = Services.prefs.getIntPref("zoom.maxPercent") / 100;
-    if (zoom > zoomMax) {
-      zoom = zoomMax;
-    }
-    browser.fullZoom = zoom;
-  },
-
-  scrollReduceEnlarge(event) {
-    let browser = event instanceof XULElement ? event : event?.target;
-    BrowseInTab.DEBUG &&
-      console.debug("scrollReduceEnlarge: browser - " + browser?.id);
-    if (!browser) {
-      return;
-    }
-    let zoom = browser.fullZoom;
-    if (BrowseInTab.customZoomEnabledPref) {
-      zoom -= BrowseInTab.zoomIncrementPref / 100;
-    } else {
-      zoom -= 0.1;
-    }
-    let zoomMin = Services.prefs.getIntPref("zoom.minPercent") / 100;
-    if (zoom < zoomMin) {
-      zoom = zoomMin;
-    }
-    browser.fullZoom = zoom;
-  },
-
-  get tabZoomFactor() {
-    let tabmail = this.e("tabmail");
-    return tabmail.currentTabInfo._ext?.BrowseInTab?.zoomFactor ?? 1;
-  },
-
-  set tabZoomFactor(val) {
-    let tabmail = this.e("tabmail");
-    if (!tabmail.currentTabInfo._ext.BrowseInTab) {
-      tabmail.currentTabInfo._ext.BrowseInTab = {};
-    }
-    tabmail.currentTabInfo._ext.BrowseInTab.zoomFactor = val;
-  },
-
-  onWheel(event) {
-    if (!this.customZoomEnabledPref) {
-      return;
-    }
-    let t = event.target;
-    // Allow ctrl and left mouse button down + mousewheel to zoom.
-    if (
-      !event.ctrlKey &&
-      (event.buttons != 1 ||
-        (event.buttons == 1 &&
-          (!this.mousebuttonZoomEnabledPref ||
-            (!(t instanceof HTMLImageElement) &&
-              this.mousebuttonZoomImageOnlyEnabledPref))))
-    ) {
-      return;
-    }
-
-    // Hack to prevent mouseup click for openLinkExternally().
-    if (event.buttons == 1) {
-      this.inMouseWheelZoom = true;
-    } else {
-      delete this.inMouseWheelZoom;
-    }
-
-    if (!(t instanceof HTMLImageElement)) {
-      let tabInfo = this.e("tabmail")?.currentTabInfo;
-      let browser = tabInfo?.browser;
-      // This is for lame chat tab, after user connect creating browser.
-      if (tabInfo?.mode.name == "chat" && t instanceof HTMLElement) {
-        browser = tabInfo.browser ?? tabInfo?.mode?.tabType.getBrowser(tabInfo);
-        if (browser) {
-          tabInfo.browser = browser;
-        } else {
-          return;
-        }
-      }
-      if (!browser) {
-        browser = getBrowser();
-      }
-      BrowseInTab.DEBUG &&
-        console.debug("onWheel: browser.id:target -> " + browser?.id);
-      BrowseInTab.DEBUG && console.debug(t);
-
-      // Don't zoom "content" if cursor is on chrome.
-      if (
-        t.ownerGlobal.isChromeWindow &&
-        t.ownerGlobal == t.ownerGlobal.window.top
-      ) {
-        return;
-      }
-      if (!browser) {
-        return;
-      }
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      if (event.deltaY > 0) {
-        this.scrollReduceEnlarge(browser);
-      } else {
-        this.scrollZoomEnlarge(browser);
-      }
-
-      // Hack to clear false selection with left button down mousewheel.
-      let frameElement = t.ownerGlobal.window.frameElement;
-      if (frameElement) {
-        frameElement.contentDocument.getSelection().removeAllRanges();
-      } else {
-        browser.contentDocument.getSelection().removeAllRanges();
-      }
-      return;
-    }
-
-    if (!this.imageZoomEnabledPref) {
-      return;
-    }
-
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (!(t._origClientWidth ?? false)) {
-      t._origClientWidth = t.clientWidth;
-    }
-    if (!(t._origClientHeight ?? false)) {
-      t._origClientHeight = t.clientHeight;
-    }
-    let curZoom = event.target._curZoom ?? 1;
-    let zoomIncrement = BrowseInTab.zoomIncrementPref / 100;
-    zoomIncrement = event.deltaY > 0 ? -zoomIncrement : zoomIncrement;
-    let zoomFactor = Math.round((curZoom + zoomIncrement) * 100) / 100;
-
-    BrowseInTab.DEBUG &&
-      console.debug("onWheel: image zoomFactor:img - " + zoomFactor + ":" + t);
-
-    t.style.width = t._origClientWidth * zoomFactor + "px";
-    t.style.height = t._origClientHeight * zoomFactor + "px";
-    t._curZoom = zoomFactor;
-    // When zooming, don't use native shrinktofit and overflowing handling.
-    t.removeAttribute("overflowing");
-    t.removeAttribute("shrinktofit");
-  },
-
-  onClickImage(event) {
-    let t = event.target;
-    if (
-      !this.imageZoomEnabledPref ||
-      !(t instanceof HTMLImageElement) ||
-      !event.ctrlKey
-    ) {
-      return;
-    }
-    event.preventDefault();
-    event.stopPropagation();
-
-    BrowseInTab.DEBUG &&
-      console.debug("onClickImage: reset target - " + event.target);
-    t.style.width = t.style.height = "";
-    delete t._curZoom;
-    delete t._origClientWidth;
-    delete t._origClientHeight;
-    if (
-      t.clientWidth - t.ownerDocument.body.offsetWidth >= 0 &&
-      (t.clientWidth <= t.naturalWidth || !t.naturalWidth)
-    ) {
-      t.setAttribute("overflowing", true);
-      t.setAttribute("shrinktofit", true);
-    }
-    //if (t.clientWidth > t.parentNode.clientWidth) {
-    //  t.setAttribute("overflowing", "true");
-    //  t.setAttribute("shrinktofit", "true");
-    //}
-  },
-
-  onZoomChange(event) {
-    let zoomFactor = ZoomManager.zoom;
-    if (BrowseInTab.globalZoomEnabledPref) {
-      BrowseInTab.globalZoomFactor = zoomFactor;
-    } else {
-      BrowseInTab.tabZoomFactor = zoomFactor;
-    }
-    BrowseInTab.DEBUG &&
-      console.debug("onZoomChange: zoomFactor - " + zoomFactor);
-    BrowseInTab.updateZoomUI();
-  },
-
-  InitializeOverlayElements() {
-    this.DEBUG && console.debug("InitializeOverlayElements: ");
-
-    // Add the stylesheets.
-    this.InitializeStyleSheet(
-      window.document,
-      "skin/browseintab.css",
-      this.addonName,
-      false
-    );
-
-    // Keys.
-    let modifier = AppConstants.platform == "macosx" ? "accel" : "alt";
-    this.e("mailKeys").appendChild(
-      MozXULElement.parseXULToFragment(`
-      <keyset extension="${this.addonId}">
-        <key id="keyNewTab_BiT"
-             key="${this.getLocaleMessage("newTabKey")}"
-             modifiers="accel"
-             oncommand="BrowseInTab.openInTab(null, false, 'tab')"/>
-        <key id="goBackKb_BiT"
-             keycode="VK_LEFT"
-             modifiers="${modifier}"
-             oncommand="BrowseInTab.BrowserController.doCommand('Browser:Back_BiT')"/>
-        <key id="goForwardKb_BiT"
-             keycode="VK_RIGHT"
-             modifiers="${modifier}"
-             oncommand="BrowseInTab.BrowserController.doCommand('Browser:Forward_BiT')"/>
-        <key id="key_reload_BiT"
-             keycode="VK_F5"
-             modifiers="accel"
-             oncommand="BrowseInTab.BrowserController.doCommand('Browser:Reload_BiT')"/>
-        <key id="key_reload_skip_cache_BiT"
-             keycode="VK_F5"
-             modifiers="accel,shift"
-             oncommand="BrowseInTab.BrowserController.doCommand('Browser:ReloadSkipCache_BiT')"/>
-      </keyset>
-      `)
-    );
-
-    // Context menu. Menuitems for links and back/forward.
-    /* eslint-disable */
-    this.e("mailContext").insertBefore(
-      MozXULElement.parseXULToFragment(`
-      <menuitem id="mailContext-openLinkInContentTab" extension="${this.addonId}"
-                label="${this.getLocaleMessage("openLinkInContentTabLabel")}"
-                accesskey="${this.getLocaleMessage("openLinkInContentTabAccesskey")}"
-                oncommand="BrowseInTab.openLinkInContentTab(event, 'tab');"/>
-      `),
-      this.e("mailContext-sep-open-browser")
-    );
-    this.e("mailContext").insertBefore(
-      MozXULElement.parseXULToFragment(`
-      <menuitem id="context-back_BiT" extension="${this.addonId}"
-                class="menuitem-iconic"
-                label="&goBackCmd.label;"
-                oncommand="BrowseInTab.BrowserController.doCommand('Browser:Back_BiT')"/>
-      <menuitem id="context-forward_BiT" extension="${this.addonId}"
-                class="menuitem-iconic"
-                label="&goForwardCmd.label;"
-                oncommand="BrowseInTab.BrowserController.doCommand('Browser:Forward_BiT')"/>
-      `, ["chrome://messenger/locale/messenger.dtd"]
-      ),
-      this.e("mailContext-reload")
-    );
-    /* eslint-enable */
-
-    this.onMailContextPopupShowingFunc = event =>
-      this.onMailContextPopupShowing(event);
-    this.e("mailContext").addEventListener(
-      "popupshowing",
-      this.onMailContextPopupShowingFunc
-    );
-
-    // Context menu for link popups.
-    /* eslint-disable */
-    let popupFragment = `
-      <menuitem class="urlpopup" extension="${this.addonId}"
-                label="&openLinkInBrowser.label;"
-                accesskey="&openLinkInBrowser.accesskey;"
-                oncommand="BrowseInTab.openUrlPopupLink(event, 'browser');"/>
-      <menuitem class="urlpopup" extension="${this.addonId}"
-                label="${this.getLocaleMessage("openLinkInContentTabLabel")}"
-                accesskey="${this.getLocaleMessage("openLinkInContentTabAccesskey")}"
-                oncommand="BrowseInTab.openUrlPopupLink(event, 'tab');"/>
-      <menuitem class="urlpopup" extension="${this.addonId}"
-                label="&copyLinkCmd.label;"
-                accesskey="&copyLinkCmd.accesskey;"
-                oncommand="BrowseInTab.copyLinkLocation(document.popupNode)"/>
-      `;
-    /* eslint-enable */
-
-    // Context menu for copyUrlPopup. Menuitems for <mail-urlfield> link.
-    let copyUrlPopup = this.e("copyUrlPopup");
-    copyUrlPopup.setAttribute("linknode", true);
-    copyUrlPopup.insertBefore(
-      MozXULElement.parseXULToFragment(popupFragment, [
-        "chrome://messenger/locale/messenger.dtd",
-      ]),
-      copyUrlPopup.lastElementChild
-    );
-
-    // Context menu for about pages links.
-    let aboutPagesPopup = this.e("aboutPagesContext");
-    aboutPagesPopup.insertBefore(
-      MozXULElement.parseXULToFragment(popupFragment, [
-        "chrome://messenger/locale/messenger.dtd",
-      ]),
-      aboutPagesPopup.firstElementChild
-    );
-    this.onLinkPopupShowingFunc = event => this.onLinkPopupShowing(event);
-    aboutPagesPopup.addEventListener(
-      "popupshowing",
-      this.onLinkPopupShowingFunc
-    );
-
-    // The new tab button - not customizable for now.
-    this.e("tabbar-toolbar").insertBefore(
-      MozXULElement.parseXULToFragment(`
-      <toolbarbutton id="new-tab-button" extension="${this.addonId}"
-                     class="toolbarbutton-1 chromeclass-toolbar-additional"
-                     label="${this.getLocaleMessage("newTabLabel")}"
-                     tooltiptext="${this.getLocaleMessage("newTabTooltip")}"
-                     oncommand="BrowseInTab.openInTab(null, false, 'tab')"
-                     Xremovable="true"/>
-      `),
-      this.e("tabbar-toolbar").firstElementChild
-    );
-
-    // Add a global urlbar.
-    let insertBeforeNode = this.e("tabmail-container");
-    /* eslint-disable */
-    let key_reloadStr = ShortcutUtils.prettifyShortcut(this.e("key_reload_BiT"));
-    let key_fullZoomResetStr = ShortcutUtils.prettifyShortcut(this.e("key_fullZoomReset"));
-    let urlToolbox = `
-      <vbox id="url-toolbox" extension="${this.addonId}"
-            class="contentTabToolbox"
-            hidden="true">
-        <hbox id="url-toolbar"
-              class="contentTabToolbar">
-          <toolbarbutton id="back-button"
-                         class="toolbarbutton-1"
-                         tooltiptext="&browseBackButton.tooltip;"
-                         disabled="true"
-                         oncommand="BrowseInTab.BrowserController.doCommand('Browser:Back_BiT')"/>
-          <toolbarbutton id="forward-button"
-                         class="toolbarbutton-1"
-                         tooltiptext="&browseForwardButton.tooltip;"
-                         disabled="true"
-                         oncommand="BrowseInTab.BrowserController.doCommand('Browser:Forward_BiT')"/>
-
-          <toolbaritem id="stop-reload-button"
-                       class="chromeclass-toolbar-additional"
-                       Xdata-l10n-id="toolbar-button-stop-reload"
-                       overflows="false">
-            <toolbarbutton id="reload-button"
-                           class="toolbarbutton-1"
-                           tooltiptext="${this.getLocaleMessage(
-                             "reloadCurrentPageOrMessage",
-                             [key_reloadStr]
-                           )}"
-                           oncommand="BrowseInTab.BrowserController.doCommand('Browser:ReloadOrDuplicate_BiT', event)"
-                           onclick="BrowseInTab.checkForMiddleClick(this, event);">
-            </toolbarbutton>
-            <toolbarbutton id="stop-button"
-                           class="toolbarbutton-1"
-                           tooltiptext="${this.getLocaleMessage("stopLoadingCurrentPageOrMessage")}"
-                           oncommand="BrowseInTab.BrowserController.doCommand('Browser:Stop_BiT')">
-            </toolbarbutton>
-          </toolbaritem>
-
-          <toolbaritem id="urlbar-container"
-                       class="chromeclass-location"
-                       align="center"
-                       flex="1">
-            <hbox id="urlbar"
-                  hidden="true"
-                  align="center"
-                  flex="1">
-              <hbox id="urlbar-input-container"
-                    flex="1">
-                <box id="identity-box"
-                     align="center">
-                  <image id="identity-icon"/>
-                  <label id="identity-icon-label"
-                         class="plain"
-                         crop="center"
-                         flex="1"/>
-                </box>
-
-                <moz-input-box id="moz-input-box"
-                               tooltip="aHTMLTooltip"
-                               class="urlbar-input-box"
-                               flex="1"
-                               role="combobox"
-                               aria-owns="urlbar-results">
-                  <html:input id="urlbar-scheme"
-                              hidden="true"
-                              required="required"/>
-                  <html:input id="urlbar-input"
-                              anonid="input"
-                              readonly="true"
-                              placeholder="${this.getLocaleMessage("urlbar-placeholder")}"
-                              onmousedown="if (event.button == 2) this.select();"/>
-                </moz-input-box>
-                <image id="urlbar-go-button"
-                       class="urlbar-icon"
-                       onclick="BrowseInTab.gURLBar.handleCommand(event);"
-                       tooltiptext="${this.getLocaleMessage("urlbar-go-button")}"/>
-
-                <hbox id="page-action-buttons" context="pageActionContextMenu">
-                  <toolbartabstop/>
-                  <image id="reader-mode-button"
-                         class="urlbar-icon urlbar-page-action"
-                         tooltip="dynamic-shortcut-tooltip"
-                         role="button"
-                         hidden="true"
-                         onclick="AboutReaderParent.buttonClick(event);"/>
-                  <toolbarbutton id="urlbar-zoom-button"
-                                 hidden="true"
-                                 tooltiptext="${this.getLocaleMessage(
-                                   "urlbarZoomButtonTooltip",
-                                   [key_fullZoomResetStr]
-                                 )}"
-                                 onclick="ZoomManager.reset();"/>
-                </hbox>
-
-              </hbox>
-            </hbox>
-          </toolbaritem>
-        </hbox>
-      </vbox>
-    `;
-    /* eslint-enable */
-    insertBeforeNode.parentElement.insertBefore(
-      MozXULElement.parseXULToFragment(urlToolbox, [
-        "chrome://messenger/locale/messenger.dtd",
-      ]),
-      insertBeforeNode
-    );
-
-    let textboxContextMenu = this.e("moz-input-box").querySelector(
-      ".textbox-contextmenu"
-    );
-    textboxContextMenu.addEventListener("popuphiding", event => {
-      document.popupNode.selectionStart = document.popupNode.selectionEnd = 0;
-    });
-
-    // Extension toolbarbuttons can only go on mail-bar3, which is not visible
-    // by default for content tabs.
-    insertBeforeNode.parentElement.insertBefore(
-      this.e("mail-toolbox"),
-      insertBeforeNode
-    );
-    this.DEBUG && console.debug("InitializeOverlayElements: DONE");
-  },
-
-  /*
-   * Inject a stylesheet, either chrome file or addon relative file.
-   *
-   * @param {Document} doc            - Document for the css injection.
-   * @param {String} styleSheetSource - Resource or relative file name.
-   * @param {String} styleName        - Name for DOM title.
-   * @param {Boolean} isChrome        - Is this a chrome url.
-   */
-  InitializeStyleSheet(doc, styleSheetSource, styleName, isChrome) {
-    this.DEBUG && console.debug("InitializeStyleSheet: ");
-    let href;
-    if (isChrome) {
-      href = styleSheetSource;
-    } else {
-      href = this.getBaseURL(styleSheetSource);
-    }
-
-    this.TRACE &&
-      console.debug("InitializeStyleSheet: styleSheet - " + styleSheetSource);
-    this.TRACE && console.debug("InitializeStyleSheet: href - " + href);
-    let link = doc.createElement("link");
-    link.setAttribute("id", this.addonId);
-    link.setAttribute("title", styleName);
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("type", "text/css");
-    link.setAttribute("href", href);
-    doc.documentElement.appendChild(link);
-    link.sheet.disabled = false;
-    this.DEBUG && console.debug(link.sheet);
-  },
-
-  RemoveObservers() {
-    for (let observer of Services.obs.enumerateObservers(
-      this.obsTopicStorageLocalChanged
-    )) {
-      Services.obs.removeObserver(observer, this.obsTopicStorageLocalChanged);
-    }
-
-    Services.ww.unregisterNotification(this.Observer);
-
-    let tabmail = this.e("tabmail");
-    tabmail?.unregisterTabMonitor(this.TabMonitor);
-
-    this.e("messagepane").removeEventListener(
-      "click",
-      this.contentAreaClickFunc,
-      { capture: true }
-    );
-
-    this.e("mailContext").removeEventListener(
-      "popupshowing",
-      this.onMailContextPopupShowingFunc
-    );
-    this.e("copyUrlPopup").removeAttribute("linknode");
-    this.e("aboutPagesContext").removeAttribute("linknode");
-    this.e("aboutPagesContext").removeEventListener(
-      "popupshowing",
-      this.onLinkPopupShowingFunc
-    );
-
-    /* eslint-disable */
-    window.removeEventListener("wheel", this.onWheelFunc, { capture: true });
-    window.removeEventListener("click", this.onClickImageFunc, { capture: true });
-    /* eslint-enable */
-    window.removeEventListener("FullZoomChange", this.onZoomChange);
-    window.removeEventListener("TextZoomChange", this.onZoomChange);
-
-    AddonManager.removeAddonListener(this.AddonListener);
-    this.DEBUG && console.debug("RemoveObservers: DONE");
-  },
-
-  RestoreOverlayElements() {
-    let nodes = document.querySelectorAll(`[extension="${this.addonId}"]`);
-    for (let node of nodes) {
-      node.remove();
-    }
-
-    let parent = this.e("mailContent");
-    parent.insertBefore(this.e("mail-toolbox"), parent.firstElementChild);
-    this.DEBUG && console.debug("RestoreOverlayElements: DONE");
-  },
-
-  RestoreOverrideFunctions() {
-    // eslint-disable-next-line no-global-assign
-    openLinkExternally = BrowseInTab._openLinkExternally;
-    if ("ZoomManager" in window) {
-      ZoomManager.enlarge = ZoomManager._enlarge;
-      ZoomManager.reduce = ZoomManager._reduce;
-      ZoomManager.scrollZoomEnlarge = ZoomManager._scrollZoomEnlarge;
-      ZoomManager.scrollReduceEnlarge = ZoomManager._scrollReduceEnlarge;
-    }
-    // eslint-disable-next-line no-global-assign
-    messagePaneOnResize = BrowseInTab._messagePaneOnResize;
-    this.DEBUG && console.debug("RestoreOverrideFunctions: DONE");
-  },
-
-  RemoveStyles() {
-    let styleSheet = document.querySelector(`link[id="${this.addonId}"]`);
-    if (styleSheet) {
-      styleSheet.remove();
-    }
-    this.DEBUG && console.debug("RemoveStyles: DONE");
-  },
-
-  InitializeTabs() {
-    this.DEBUG && console.debug("InitializeTabs: ");
-    let tabmail = this.e("tabmail");
-    let tabsInfo = tabmail?.tabInfo ?? [];
-    for (let tabInfo of tabsInfo) {
-      this.InitializeTab(tabInfo);
-    }
-  },
-
-  /**
-   * Ensure our siteClickHandler is added to the tab.
-   *
-   * @param {TabInfo} tabInfo - the tabInfo for the tab.
-   */
-  InitializeTab(tabInfo) {
-    this.InitializeTabForContent(tabInfo);
-
-    // Excluded tab types:
-    // - preferencesTab: xul text-link nodes use MailGlue._handleLink().
-    if (!["contentTab"].includes(tabInfo.mode.type)) {
-      return;
-    }
-    if (
-      tabInfo.clickHandler &&
-      tabInfo.clickHandler.startsWith("BrowseInTab.")
-    ) {
-      return;
-    }
-    tabInfo.clickHandler = "BrowseInTab.siteClickHandler(event)";
-    tabInfo.browser.setAttribute("onclick", tabInfo.clickHandler);
-  },
-
-  /**
-   * Ensure 3pane folder and message tabs messagepane <browser> is initialized
-   * for webpage listeners, like contentTab type.
-   *
-   * @param {TabInfo} tabInfo - the tabInfo for the tab.
-   */
-  InitializeTabForContent(tabInfo) {
-    let type = tabInfo.mode.type;
-    let tabId = tabInfo.tabId;
-    this.DEBUG &&
-      console.debug(
-        "InitializeTabForContent: START tabId:type:title -  " +
-          tabId +
-          ":" +
-          type +
-          ":" +
-          tabInfo.title
-      );
-
-    if (["contentTab"].includes(type)) {
-      // Hide the per contentTab "urlbar".
-      let contentTabToolbox = tabInfo.panel.querySelector(".contentTabToolbox");
-      if (contentTabToolbox) {
-        contentTabToolbox.hidden = true;
-      }
-
-      if ("progressListener" in tabInfo) {
-        let progressListener = Object.assign({}, this.progressListener);
-        progressListener.tabInfo = tabInfo;
-        tabInfo.progressListener.addProgressListener(progressListener);
-      }
-      this.DEBUG && console.debug(tabInfo);
-      this.DEBUG &&
-        console.debug("InitializeTabForContent: DONE, tabId - " + tabId);
-      return;
-    }
-
-    if (["glodaFacet"].includes(tabInfo.mode.name)) {
-      let contentTabToolbox = tabInfo.panel.querySelector(".contentTabToolbox");
-      if (contentTabToolbox) {
-        contentTabToolbox.hidden =
-          this.showMailToolbarPref == this.kShowMailToolbarAll;
-      }
-      if (tabInfo.browser) {
-        tabInfo.browser.focus();
-        // So the zoom change event is dispatched. Set zoom on browsingContext
-        // manually in updateZoomUI().
-        tabInfo.browser.enterResponsiveMode();
-      }
-      this.DEBUG && console.debug(tabInfo);
-      this.DEBUG &&
-        console.debug("InitializeTabForContent: DONE, tabId - " + tabId);
-      return;
-    }
-
-    if (["chromeTab"].includes(type)) {
-      if (tabInfo.browser) {
-        // So the zoom change event is dispatched. Set zoom on browsingContext
-        // manually in updateZoomUI().
-        tabInfo.browser.enterResponsiveMode();
-      }
-    }
-
-    let documentURI =
-      tabInfo.browser?.documentURI ?? document.documentURIObject;
-    this.DEBUG &&
-      console.debug(
-        "InitializeTabForContent: browser documentURI - " + documentURI?.spec
-      );
-
-    if (tabInfo.firstTab) {
-      // Don't forget the multimessage browser.
-      let tabmail = this.e("tabmail");
-      let multimessagebrowser = this.e("multimessage");
-      if (
-        multimessagebrowser?.webProgress &&
-        !multimessagebrowser._progressListenerAdded
-      ) {
-        this.DEBUG &&
-          console.debug("InitializeTabForContent: init firstTab multimessage");
-        multimessagebrowser.webProgress.addProgressListener(
-          tabmail.progressListener,
-          Ci.nsIWebProgress.NOTIFY_ALL
-        );
-        multimessagebrowser._progressListenerAdded = true;
-
-        // So the zoom change event is dispatched. Set zoom on browsingContext
-        // manually in updateZoomUI().
-        multimessagebrowser.enterResponsiveMode();
-      }
-    }
-
-    this.DEBUG &&
-      console.debug(
-        "InitializeTabForContent: progressListenerAdded - " +
-          tabInfo.browser?._progressListenerAdded
-      );
-
-    // Ensure all tab <browser>s have our progressListener.
-    // The <browser id="messagepane"> is shared among tab types
-    // |folder, message, glodaList|. Each tab will get an event here, even if
-    // it is not the active tab.
-    if (tabInfo.browser?.webProgress && !tabInfo.filter) {
-      this.DEBUG && console.debug("InitializeTabForContent: !tabInfo.filter");
-      tabInfo.filter = Cc[
-        "@mozilla.org/appshell/component/browser-status-filter;1"
-      ].createInstance(Ci.nsIWebProgress);
-
-      let progressListener = Object.assign({}, this.progressListener);
-      progressListener.tabInfo = tabInfo;
-      tabInfo.filter.addProgressListener(
-        progressListener,
-        Ci.nsIWebProgress.NOTIFY_ALL
-      );
-
-      tabInfo.browser.webProgress.addProgressListener(
-        tabInfo.filter,
-        Ci.nsIWebProgress.NOTIFY_ALL
-      );
-
-      // Don't forget the multimessage browser, per tab.
-      let multimessagebrowser = this.e("multimessage");
-      if (
-        ["folder"].includes(tabInfo.mode.type) &&
-        multimessagebrowser?.webProgress
-      ) {
-        multimessagebrowser.webProgress.addProgressListener(
-          tabInfo.filter,
-          Ci.nsIWebProgress.NOTIFY_ALL
-        );
-      }
-    }
-
-    this.DEBUG && console.debug(tabInfo);
-    this.DEBUG &&
-      console.debug("InitializeTabForContent: DONE, tabId - " + tabId);
-  },
-
-  RestoreTabs() {
-    let tabmail = this.e("tabmail");
-    let tabsInfo = tabmail?.tabInfo ?? [];
-    for (let tabInfo of tabsInfo) {
-      if (!["contentTab"].includes(tabInfo.mode.type)) {
-        if (tabInfo.browser?.webProgress && tabInfo.filter) {
-          tabInfo.browser.webProgress.removeProgressListener(
-            tabInfo.filter,
-            Ci.nsIWebProgress.NOTIFY_ALL
-          );
-          delete tabInfo.browser._progressListenerAdded;
-          if (["folder"].includes(tabInfo.mode.type)) {
-            let multimessagebrowser = this.e("multimessage");
-            multimessagebrowser.webProgress.removeProgressListener(
-              tabInfo.filter,
-              Ci.nsIWebProgress.NOTIFY_ALL
-            );
-            if (tabInfo.firstTab) {
-              multimessagebrowser.webProgress.removeProgressListener(
-                tabmail.progressListener,
-                Ci.nsIWebProgress.NOTIFY_ALL
-              );
-              delete multimessagebrowser._progressListenerAdded;
-            }
-          }
-          delete tabInfo.filter;
-        }
-
-        this.DEBUG && console.debug("RestoreTabs: tabInfo -> " + tabInfo.tabId);
-        this.DEBUG && console.debug(tabInfo);
-        continue;
-      }
-
-      // For contentTab type tabs.
-      if ("progressListener" in tabInfo) {
-        // Only one can be added, and we did, so we get to null it.
-        tabInfo.progressListener.mProgressListener = null;
-      }
-
-      if (tabInfo.clickHandler?.startsWith("BrowseInTab.")) {
-        tabInfo.clickHandler = "specialTabs.defaultClickHandler(event);";
-        tabInfo.browser.setAttribute("onclick", tabInfo.clickHandler);
-      }
-
-      let contentTabToolbox = tabInfo.panel.querySelector(".contentTabToolbox");
-      if (contentTabToolbox) {
-        contentTabToolbox.hidden = false;
-      }
-      this.DEBUG && console.debug("RestoreTabs: tabInfo -> " + tabInfo.tabId);
-      this.DEBUG && console.debug(tabInfo);
-    }
-  },
-
-  /*
-   * Added on a per tab basis, even to shared tabInfo.browser like #messagepane.
-   *
-   * @implements {nsIWebProgressListener}
-   */
-  progressListener: {
-    tabInfo: null,
-    async onLocationChange(webProgress, request, location, flags) {
-      if (!this.tabInfo.tabNode.selected || !webProgress.isTopLevel) {
-        return;
-      }
-      let tabInfo = this.tabInfo;
-      let tabmail = BrowseInTab.e("tabmail");
-      let browser = tabmail.getBrowserForTab(tabInfo);
-
-      BrowseInTab.DEBUG &&
-        console.debug(
-          "onLocationChange: active tabId:tabTitle - " +
-            tabInfo.tabId +
-            ":" +
-            tabInfo.title
-        );
-
-      if (tabInfo.tabNode?.linkedPanel == "mailContent") {
-        // These are |folder, message, glodaList| tab types.
-        // Get the real browser, could be multimessage.
-        this.tabInfo.browser = browser;
-        // Clear the urlBar on location change to messagepane, it will be
-        // resolved later.
-        if (["messagepane", "multimessage"].includes(browser.id)) {
-          BrowseInTab.clearUrlToolbarUrl();
-        }
-        BrowseInTab.DEBUG &&
-          console.debug("onLocationChange: browser.id - " + browser.id);
-        BrowseInTab.DEBUG && console.debug(browser.documentURI.spec);
-      }
-      BrowseInTab.DEBUG && console.debug(location.spec);
-
-      if (browser && browser.documentURI.spec != "about:blank") {
-        // Only update here with the real url. Most about:blank urls are
-        // resolved later and are legitimate only for unselected messagepane.
-        let isSameDocument = !!(
-          flags & Ci.nsIWebProgressListener.LOCATION_CHANGE_SAME_DOCUMENT
-        );
-        let isErrorPage = !!(
-          flags & Ci.nsIWebProgressListener.LOCATION_CHANGE_ERROR_PAGE
-        );
-        if (
-          browser.didStartLoadSinceLastUserTyping() ||
-          (isErrorPage && location.spec != "about:blank") ||
-          (isSameDocument && browser.isNavigating) ||
-          (isSameDocument && !browser.userTypedValue)
-        ) {
-          browser.userTypedValue = null;
-        }
-        BrowseInTab.setUrlToolbar(tabInfo);
-      }
-    },
-    onSecurityChange(webProgress, request, state) {
-      this.tabInfo.securityState = state;
-      let tabInfo = this.tabInfo;
-      BrowseInTab.DEBUG &&
-        console.debug(
-          "onSecurityChange: tabId:securityState:selected:tabTitle - " +
-            tabInfo.tabId +
-            ":" +
-            state +
-            ":" +
-            tabInfo.tabNode.selected +
-            ":" +
-            tabInfo.title
-        );
-      BrowseInTab.DEBUG && console.debug(webProgress?.currentURI?.spec);
-      if (!tabInfo.tabNode.selected || !webProgress.isTopLevel) {
-        return;
-      }
-
-      let uri = tabInfo.browser.currentURI;
-      let spec = uri.spec;
-      let isSecureContext = tabInfo.browser.securityUI?.isSecureContext;
-      if (
-        this._state == state &&
-        this._lastLocation == spec &&
-        this._isSecureContext === isSecureContext
-      ) {
-        // Switching to a tab of the same URL doesn't change most security
-        // information, but tab specific permissions may be different.
-        // NOTE: for shared messagepane <browser>s we need to skip this.
-        //BrowseInTab.gIdentityHandler.refreshIdentityBlock();
-        //return;
-      }
-      this._state = state;
-      this._lastLocation = spec;
-      this._isSecureContext = isSecureContext;
-      // Make sure the "https" part of the URL is striked out or not,
-      // depending on the current mixed active content blocking state.
-      //BrowseInTab.gURLBar.formatValue();
-      try {
-        uri = Services.io.createExposableURI(uri);
-      } catch (e) {}
-
-      let isInternalOverride = BrowseInTab.isInternalOverride(tabInfo, uri);
-      BrowseInTab.gIdentityHandler.updateIdentity(
-        tabInfo.securityState,
-        uri,
-        isInternalOverride
-      );
-    },
-    onStateChange(webProgress, request, stateFlags, status) {
-      if (!this.tabInfo.tabNode.selected) {
-        return;
-      }
-
-      let tabInfo = this.tabInfo;
-      if (
-        stateFlags & Ci.nsIWebProgressListener.STATE_START &&
-        stateFlags & Ci.nsIWebProgressListener.STATE_IS_NETWORK
-      ) {
-        BrowseInTab.DEBUG &&
-          console.debug(
-            "onStateChange: START active tabId:busy:stateFlags:tabTitle - " +
-              tabInfo.tabId +
-              ":" +
-              tabInfo.busy +
-              ":" +
-              stateFlags +
-              ":" +
-              tabInfo.title
-          );
-
-        if (webProgress.isTopLevel) {
-          let browser = tabInfo.browser;
-          //let location;
-          let originalLocation;
-          try {
-            request.QueryInterface(Ci.nsIChannel);
-            //location = request.URI;
-            originalLocation = request.originalURI;
-          } catch (ex) {}
-          if (
-            !(
-              originalLocation &&
-              BrowseInTab.gURLBar.gInitialPages.includes(
-                originalLocation.spec
-              ) &&
-              originalLocation != "about:blank" &&
-              browser.initialPageLoadedFromUserAction !=
-                originalLocation.spec &&
-              browser.currentURI &&
-              browser.currentURI.spec == "about:blank"
-            )
-          ) {
-            // Indicating that we started a load will allow the location
-            // bar to be cleared when the load finishes.
-            browser.urlbarChangeTracker.startedLoad();
-          }
-        }
-
-        if (!(stateFlags & Ci.nsIWebProgressListener.STATE_RESTORING)) {
-          BrowseInTab.e("reload-button")?.setAttribute("displaystop", true);
-          BrowseInTab.DEBUG &&
-            console.debug("onStateChange: START set displaystop true");
-        }
-      } else if (
-        stateFlags & Ci.nsIWebProgressListener.STATE_STOP &&
-        stateFlags & Ci.nsIWebProgressListener.STATE_IS_NETWORK
-      ) {
-        if (webProgress.isTopLevel) {
-          let isSuccessful = Components.isSuccessCode(status);
-          let browser = tabInfo.browser;
-          if (browser) {
-            if (!isSuccessful) {
-              // && !this.mTab.isEmpty) {
-              // Restore the current document's location in case the
-              // request was stopped (possibly from a content script)
-              // before the location changed.
-              browser.userTypedValue = null;
-
-              let isNavigating = browser.isNavigating;
-              if (!isNavigating) {
-                //BrowseInTab.gURLBar.setURI();
-              }
-            } else if (isSuccessful) {
-              browser.urlbarChangeTracker.finishedLoad();
-            }
-          }
-        }
-        BrowseInTab.DEBUG &&
-          console.debug(
-            "onStateChange: STOP active tabId:busy:stateFlags:tabTitle - " +
-              tabInfo.tabId +
-              ":" +
-              tabInfo.busy +
-              ":" +
-              stateFlags +
-              ":" +
-              tabInfo.title
-          );
-        let uri = tabInfo.browser?.currentURI;
-        BrowseInTab.DEBUG &&
-          console.debug(
-            "onStateChange: browser.id:origURI:curURI - " + tabInfo.browser.id
-          );
-        BrowseInTab.DEBUG && console.debug(request?.originalURI?.spec);
-        BrowseInTab.DEBUG && console.debug(uri?.spec);
-
-        BrowseInTab.e("reload-button")?.removeAttribute("displaystop");
-        BrowseInTab.DEBUG &&
-          console.debug(
-            "onStateChange: STOP remove displaystop, haveUrlToolbarUrlValue - " +
-              BrowseInTab.haveUrlToolbarUrlValue(uri)
-          );
-
-        if (!BrowseInTab.haveUrlToolbarUrlValue(uri)) {
-          // For some tab type late loads update the urlBar now.
-          BrowseInTab.setUrlToolbar(tabInfo);
-
-          let isInternalOverride = BrowseInTab.isInternalOverride(tabInfo, uri);
-          BrowseInTab.gIdentityHandler.updateIdentity(
-            tabInfo.securityState,
-            uri,
-            isInternalOverride
-          );
-        }
-      }
-    },
-    /* eslint-disable */
-    onProgressChange(webProgress, request, curSelf, maxSelf, curTotal, maxTotal) {},
-    onStatusChange(webProgress, request, status, message) {},
-    onContentBlockingEvent(webProgress, request, event) {},
-    /* eslint-enable */
-    QueryInterface: ChromeUtils.generateQI([
-      Ci.nsIWebProgressListener,
-      Ci.nsIWebProgressListener2,
-      Ci.nsISupportsWeakReference,
-    ]),
-  },
-
-  setMailToolbar(tabInfo) {
-    let tabType = tabInfo.mode.type;
-    this.DEBUG &&
-      console.debug(
-        "setMailToolbar: tabType:tabName - " + tabType + ":" + tabInfo.mode.name
-      );
-    let show = tabInfo.firstTab || tabInfo.tabNode.linkedPanel == "mailContent";
-    let showMailToolbarPref = this.showMailToolbarPref;
-    if (showMailToolbarPref == this.kShowMailToolbarAll) {
-      show = true;
-    } else if (showMailToolbarPref == this.kShowMailToolbarWebPage) {
-      if (tabType == "contentTab" || tabType == "preferencesTab") {
-        let documentURI = tabInfo.browser.documentURI;
-        this.DEBUG &&
-          console.debug("setMailToolbar: scheme - " + documentURI.scheme);
-        show =
-          ["http", "https"].includes(documentURI.scheme) ||
-          documentURI.spec == "about:blank";
-      }
-    }
-    this.e("mail-toolbox").hidden = !show;
-  },
-
-  isInternalOverride(tabInfo, uri) {
-    // Don't forget web page in messagepane.
-    return (
-      (tabInfo.tabNode?.linkedPanel == "mailContent" ||
-        tabInfo.mode.name == "glodaList") &&
-      !["chrome", "http", "https"].includes(uri.scheme)
-    );
-  },
-
-  haveUrlToolbarUrlValue(uri) {
-    let urlbarInput = this.gURLBar.inputField;
-    if (urlbarInput) {
-      this.DEBUG &&
-        console.debug(
-          "haveUrlToolbarUrlValue: urlbarInput.value - " + urlbarInput.value
-        );
-      return Boolean(urlbarInput.value) && urlbarInput.value != "about:blank";
-    }
-    return undefined;
-  },
-
-  clearUrlToolbarUrl() {
-    let urlbarInput = this.gURLBar.inputField;
-    if (urlbarInput) {
-      urlbarInput.value = "";
-    }
-  },
-
-  setUrlToolbar(tabInfo) {
-    let urlToolbox = this.e("url-toolbox");
-    if (!urlToolbox) {
-      return;
-    }
-
-    let tabmail = this.e("tabmail");
-    let browserForTab = tabInfo.browser || tabmail.getBrowserForTab(tabInfo);
-    let uri = tabInfo.browser?.currentURI || document.documentURIObject;
-    this.DEBUG && console.debug("setUrlToolbar: scheme - " + uri?.scheme);
-
-    let isInternalOverride = this.isInternalOverride(tabInfo, uri);
-    this.gURLBar.setURI(null, false, isInternalOverride);
-
-    let tabType = tabInfo.mode.type;
-    let urlbarInput = this.gURLBar.inputField;
-    this.DEBUG &&
-      console.debug(
-        "setUrlToolbar: tab type:name - " + tabType + ":" + tabInfo.mode.name
-      );
-
-    let isEditableUrl =
-      tabType == "contentTab" &&
-      (["http", "https"].includes(uri.scheme) ||
-        uri.spec == "about:blank" ||
-        uri.spec.startsWith("about:neterror"));
-
-    let show =
-      this.showUrlToolbarPref == this.kShowUrlToolbarAll || isEditableUrl;
-
-    // It's a new tab.
-    if (tabType == "contentTab" && uri.spec == "about:blank") {
-      this.clearUrlToolbarUrl();
-      urlbarInput.blur();
-      urlbarInput.selectionStart = urlbarInput.selectionEnd = 0;
-      urlbarInput.focus();
-      browserForTab.contentDocument.title = this.getLocaleMessage(
-        "newTabLabel"
-      );
-    }
-
-    let hasSessionHistory = tabInfo.browser && tabInfo.browser.sessionHistory;
-    urlToolbox.querySelector("#back-button").disabled = !(
-      hasSessionHistory && tabInfo.browser.canGoBack
-    );
-    urlToolbox.querySelector("#forward-button").disabled = !(
-      hasSessionHistory && tabInfo.browser.canGoForward
-    );
-    urlToolbox.querySelector(
-      "#reload-button"
-    ).disabled = !this.BrowserController.isCommandEnabled("Browser:Reload_BiT");
-
-    urlToolbox.hidden = !show;
-    urlbarInput.toggleAttribute("readonly", !isEditableUrl);
-
-    this.e("urlbar-zoom-button").hidden = true;
-    if (browserForTab) {
-      // Some tabs don't have a browser (chat); ZoomManager requires one.
-      if (this.globalZoomEnabledPref) {
-        ZoomManager.zoom = this.globalZoomFactor || 1;
-      } else {
-        ZoomManager.zoom = this.tabZoomFactor;
-      }
-      this.updateZoomUI(browserForTab);
-    }
-  },
-
   /*****************************************************************************
    * These functions are from browser-siteIdentity.js.                         *
    ****************************************************************************/
@@ -2676,7 +2701,6 @@ var BrowseInTab = {
     _state: 0,
     _secureInternalPages: /^(?:accounts.*|addons|cache|certificate|config|crashes|downloads|license|logins|preferences|protections|rights|sessionrestore|support|welcomeback|ion)(?:[?#]|$)/i,
 
-    /* eslint-disable */
     get _isBrokenConnection() {
       return this._state & Ci.nsIWebProgressListener.STATE_IS_BROKEN;
     },
@@ -2700,6 +2724,7 @@ var BrowseInTab = {
         this._state & Ci.nsIWebProgressListener.STATE_IDENTITY_EV_TOPLEVEL
       );
     },
+    /* eslint-disable */
     get _isMixedActiveContentLoaded() {
       return (
         this._state & Ci.nsIWebProgressListener.STATE_LOADED_MIXED_ACTIVE_CONTENT
@@ -2725,13 +2750,15 @@ var BrowseInTab = {
         this._state & Ci.nsIWebProgressListener.STATE_HTTPS_ONLY_MODE_UPGRADE_FAILED
       );
     },
+    /* eslint-enable */
     get _isCertUserOverridden() {
       return this._state & Ci.nsIWebProgressListener.STATE_CERT_USER_OVERRIDDEN;
     },
     get _isCertDistrustImminent() {
-      return this._state & Ci.nsIWebProgressListener.STATE_CERT_DISTRUST_IMMINENT;
+      return (
+        this._state & Ci.nsIWebProgressListener.STATE_CERT_DISTRUST_IMMINENT
+      );
     },
-    /* eslint-enable */
     get _isAboutCertErrorPage() {
       let browser = getBrowser();
       return (
@@ -3188,36 +3215,6 @@ var BrowseInTab = {
     },
   },
 
-  composeWindowSetup(window) {
-    if (
-      !this.showContentBasePref ||
-      Services.prefs.getIntPref("mail.show_headers") == 2
-    ) {
-      // If pref is off or if set to show all headers this isn't necessary.
-      return;
-    }
-    window.addEventListener("load", event => {
-      let composeWin = event.target;
-      let winType = composeWin.documentElement.getAttribute("windowtype");
-      this.DEBUG &&
-        console.debug("composeWindowSetup: load winType - " + winType);
-      if (winType != "msgcompose") {
-        return;
-      }
-
-      composeWin.documentElement.addEventListener(
-        "compose-window-init",
-        () => {
-          this.DEBUG && console.debug("composeWindowSetup:compose-window-init");
-          composeWin.defaultView.gMsgCompose.RegisterStateListener(
-            BrowseInTab.ComposeStateListener
-          );
-        },
-        { once: true }
-      );
-    });
-  },
-
   Observer: {
     observe(subject, topic, data) {
       BrowseInTab.TRACE &&
@@ -3236,7 +3233,7 @@ var BrowseInTab = {
           console.debug("Observer: " + topic + ", data - " + data);
         BrowseInTab.onStorageLocalChanged(JSON.parse(data));
       } else if (topic == "domwindowopened" && subject instanceof Window) {
-        BrowseInTab.composeWindowSetup(subject);
+        BrowseInTab.onDomWindowOpened(subject);
       }
     },
   },
@@ -3520,6 +3517,57 @@ var BrowseInTab = {
     }
     BrowseInTab.DEBUG && console.debug("waitForBrowserLoad: DONE url -> ");
     BrowseInTab.DEBUG && console.debug(tabInfo.browser?.documentURI.spec);
+  },
+
+  onDomWindowOpened(window) {
+    this.DEBUG && console.debug("onDomWindowOpened: START  window ->");
+    this.DEBUG && console.debug(window);
+
+    window.addEventListener("load", event => {
+      let win = event.target;
+      let winType = win.documentElement.getAttribute("windowtype");
+      this.DEBUG &&
+        console.debug("onDomWindowOpened: load winType - " + winType);
+
+      // Ensure chrome zoom applies to this window too.
+      if (this.customZoomEnabledPref) {
+        if ("style" in win.documentElement) {
+          this.DEBUG && console.debug(win);
+          let chromeFontSizeZoom =
+            this.DEFAULT_FONTSIZE * (this.chromeZoomFactorPref / 100) + "px";
+          // Add the stylesheets.
+          this.InitializeStyleSheet(
+            win,
+            "skin/browseintab.css",
+            this.addonName,
+            false
+          );
+          win.documentElement.style.fontSize = chromeFontSizeZoom;
+          win.documentElement.setAttribute("browseintabzoom", true);
+        }
+      }
+
+      // For content-base header link in compose window only.
+      if (
+        winType != "msgcompose" ||
+        !this.showContentBasePref ||
+        Services.prefs.getIntPref("mail.show_headers") == 2
+      ) {
+        // If pref is off or if set to show all headers this isn't necessary.
+        return;
+      }
+
+      win.documentElement.addEventListener(
+        "compose-window-init",
+        () => {
+          this.DEBUG && console.debug("onDomWindowOpened:compose-window-init");
+          win.defaultView.gMsgCompose.RegisterStateListener(
+            BrowseInTab.ComposeStateListener
+          );
+        },
+        { once: true }
+      );
+    });
   },
 
   /*

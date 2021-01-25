@@ -198,6 +198,39 @@ function deleteFromDatabase(aFolder, aHdrs, aKeys, aNotify, aIArray) {
 }
 
 /**
+ * Given an nsIMsgDBHdr, safely obtain its Exchange server message ID,
+ * if it has one. If it hasn't, and it's a real header, then report the error.
+ * @param aHdr {nsIMsgDBHdr}
+ * @returns    {String} or null/undefined
+ */
+function GetIdFromHdr(aHdr)
+{
+  try {
+    let id = aHdr.getStringProperty("X-GM-MSGID");
+    // The property would be missing if the header has already been deleted.
+    if (id) {
+      return id;
+    }
+  } catch (ex) {
+    // We also see NS_ERROR_NULL_POINTER thrown for some reason.
+  }
+
+  // Handle error cases
+  try {
+    // Checks whether the message was already deleted,
+    // and just skip this message without error.
+    if (!aHdr.folder.msgDatabase.ContainsKey(aHdr.messageKey)) {
+      return;
+    }
+  } catch (ex) {
+    logError(ex);
+  }
+  let error = new Error("Invalid message header");
+  error.name = "MissingMSGID";
+  logError(error);
+}
+
+/**
  * Given an array of message headers, returns the extension's ids,
  * plus optionally the database keys for those headers.
  * @param aMessages  {Array[nsIMsgDBHdr]} The message headers
@@ -209,16 +242,11 @@ function GetIdsAndKeysFromHdrs(aMessages, aKeys, aIsMessage)
 {
   let ids = [];
   for (let hdr of aMessages) {
-    if (!hdr.getStringProperty("X-GM-MSGID")) {
-      if (hdr.folder.msgDatabase.ContainsKey(hdr.messageKey)) {
-        // Not deleted, just invalid.
-        let error = new Error("Invalid message header");
-        error.name = "MissingMSGID";
-        logError(error);
-      }
+    let id = GetIdFromHdr(hdr);
+    if (!id) {
       continue;
     }
-    ids.push(hdr.getStringProperty("X-GM-MSGID"));
+    ids.push(id);
     if (aKeys) {
       aKeys.push(hdr.messageKey);
     }
@@ -324,16 +352,16 @@ function ApplyFilterHit(aFolder, aFilter, aHdr, aMsgWindow, aListener)
     case Ci.nsMsgFilterAction.MarkRead:
       aHdr.markRead(true);
       aListener.isNew = false;
-      noAwait(CallExtension(aFolder.server, "UpdateMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [aHdr.getStringProperty("X-GM-MSGID")], read: true }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
+      noAwait(CallExtension(aFolder.server, "UpdateMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [GetIdFromHdr(aHdr)], read: true }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
       break;
     case Ci.nsMsgFilterAction.MarkUnread:
       aHdr.markRead(false);
       aListener.isNew = true;
-      noAwait(CallExtension(aFolder.server, "UpdateMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [aHdr.getStringProperty("X-GM-MSGID")], read: false }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
+      noAwait(CallExtension(aFolder.server, "UpdateMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [GetIdFromHdr(aHdr)], read: false }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
       break;
     case Ci.nsMsgFilterAction.MarkFlagged:
       aHdr.markFlagged(true);
-      noAwait(CallExtension(aFolder.server, "UpdateMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [aHdr.getStringProperty("X-GM-MSGID")], flagged: true }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
+      noAwait(CallExtension(aFolder.server, "UpdateMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [GetIdFromHdr(aHdr)], flagged: true }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
       break;
     case Ci.nsMsgFilterAction.KillThread:
       try {
@@ -344,7 +372,7 @@ function ApplyFilterHit(aFolder, aFilter, aHdr, aMsgWindow, aListener)
       }
       aHdr.markRead(true);
       aListener.isNew = false;
-      noAwait(CallExtension(aFolder.server, "UpdateMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [aHdr.getStringProperty("X-GM-MSGID")], read: true }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
+      noAwait(CallExtension(aFolder.server, "UpdateMessages", { folder: aFolder.getStringProperty("FolderId"), messages: [GetIdFromHdr(aHdr)], read: true }, aMsgWindow), ex => ReportException(ex, aMsgWindow));
       break;
     case Ci.nsMsgFilterAction.WatchThread:
       try {
@@ -579,7 +607,7 @@ async function ResyncFolder(aFolder, aMsgWindow, aStatusFeedback, aGettingNewMes
       let count = 0;
       while (newIds.length) {
         // Check for messages that were deleted before we could download them.
-        newIds = newIds.filter(id => !oldHdrs[id] || oldHdrs[id].getStringProperty("X-GM-MSGID"));
+        newIds = newIds.filter(id => !oldHdrs[id] || GetIdFromHdr(oldHdrs[id]));
         if (!newIds.length) {
           break;
         }
@@ -610,13 +638,7 @@ async function ResyncFolder(aFolder, aMsgWindow, aStatusFeedback, aGettingNewMes
             // Do this before creating the new header so that id search works.
             // First check in case it has already been deleted.
             // In that case we just want to ignore this message.
-            if (!hdr.getStringProperty("X-GM-MSGID")) {
-              if (database.ContainsKey(hdr.messageKey)) {
-                // Not deleted, just invalid.
-                let error = new Error("Invalid message header");
-                error.name = "MissingMSGID";
-                logError(error);
-              }
+            if (!GetIdFromHdr(hdr)) {
               continue;
             }
             // We want to notify gloda and search integration,
@@ -758,8 +780,8 @@ function UpdateHeaderStates(aHdr, aMessage)
   if (typeof aMessage.isMessage == "boolean") {
     aHdr.setStringProperty("isMessage", String(aMessage.isMessage));
   }
-  if (Array.isArray(aMessage.keywords)) {
-    SetKeywordsOnHdr(aHdr, aMessage.keywords);
+  if (Array.isArray(aMessage.tags)) {
+    SetTagsOnHdr(aHdr, aMessage.tags);
   }
 }
 
@@ -781,7 +803,7 @@ function CopyDetailsToHdr(aHdr, aRe, aConv, aDetails, aPreview)
   aHdr.markRead(aDetails.read);
   aHdr.markFlagged(aDetails.flagged);
   aHdr.markHasAttachments(aDetails.hasAttachments);
-  SetKeywordsOnHdr(aHdr, aDetails.keywords);
+  SetTagsOnHdr(aHdr, aDetails.tags);
   aHdr.messageSize = aDetails.messageSize;
   if (aDetails.subject) {
     let subject = aDetails.subject;
@@ -822,30 +844,64 @@ function CopyDetailsToHdr(aHdr, aRe, aConv, aDetails, aPreview)
 }
 
 /**
- * Notifies if the keywords were changed on the server.
+ * If the tags were changed on the server,
+ * save tags in the local message and notify TB.
  *
- * @param aHdr      {nsIMsgDBHdr}   The target header
- * @param aKeywords {Array[String]} The new keywords
+ * @param aHdr  {nsIMsgDBHdr}   The target header
+ * @param aTags {Array[String]} The new tags
  */
-function SetKeywordsOnHdr(aHdr, aKeywords) {
-  let keywords = aKeywords.join(" ");
+function SetTagsOnHdr(aHdr, aTags) {
+  let keywords = aTags.map(keyForTag).join(" ");
   if (aHdr.getStringProperty("keywords") != keywords) {
     aHdr.setStringProperty("keywords", keywords);
-    aHdr.folder.NotifyPropertyFlagChanged(aHdr, "Keywords", 0, aKeywords.length);
+    aHdr.folder.NotifyPropertyFlagChanged(aHdr, "Keywords", 0, keywords.length);
+
+    // Unfortunately not everyone we want to listens to the above notification,
+    // so generate a fake flag change notification to update the thread pane view.
+    aHdr.folder.msgDatabase.NotifyHdrChangeAll(aHdr, aHdr.flags, aHdr.flags, null);
   }
+}
+
+/**
+ * Get or create a TB-internal key for a tag.
+ * - Tag = what the user sees
+ * - key/keyword = what TB saves internally
+ *
+ * @param aTag {String} The display name of the tag
+ * @returns    {String} The internal keyword of the tag
+ */
+function keyForTag(aTag) {
+  let key = MailServices.tags.getKeyForTag(aTag);
+  if (!key) {
+    MailServices.tags.addTag(aTag, "#000000", "");
+    key = MailServices.tags.getKeyForTag(aTag);
+  }
+  return key;
+}
+
+/**
+ * Convert an internal keyword list to a tag array.
+ * - Tag = what the user sees
+ * - key/keyword = what TB saves internally
+ *
+ * @param aKeywords {String}        A space-separated list of internal keywords
+ * @returns         {Array[String]} An array of tag display names
+ */
+function keywords2Tags(aKeywords) {
+  let tags = [];
+  for (let keyword of aKeywords.split(" ")) {
+    if (MailServices.tags.isValidKey(keyword)) {
+      tags.push(MailServices.tags.getTagForKey(keyword));
+    }
+  }
+  return tags;
 }
 
 async function BackgroundOfflineDownload(aHdrArray, aMsgWindow)
 {
   for (let hdr of aHdrArray) {
     // Check that the header hasn't been deleted.
-    if (!hdr.getStringProperty("X-GM-MSGID")) {
-      if (hdr.folder.msgDatabase.ContainsKey(hdr.messageKey)) {
-        // Not deleted, just invalid.
-        let error = new Error("Invalid message header");
-        error.name = "MissingMSGID";
-        logError(error);
-      }
+    if (!GetIdFromHdr(hdr)) {
       continue;
     }
     // Double-check, no point doing this if it got downloaded elsewhere.
@@ -1054,7 +1110,7 @@ Folder.prototype = {
             ex.parameters.subFolder.msgDatabase = "OK";
             ex.parameters.subFolder.nameOnServer = decodeURIComponent(folder.getStringProperty("owlEncodedFolderNameOnServer")) || folder.getStringProperty("owlFolderNameOnServer");
           } catch (ex2) {
-            ex.parameters.subFolder.msgDatabase = ex.name || "0x" + ex2.result.toString(16);
+            ex.parameters.subFolder.msgDatabase = ex2.name || "0x" + ex2.result.toString(16);
           }
         }
       } catch (ex2) {
@@ -1186,7 +1242,9 @@ Folder.prototype = {
       let keys = [];
       let isMessage = [];
       let ids = GetIdsAndKeysFromHdrs(hdrs, keys, isMessage);
-      await CallExtension(this.cppBase.server, "DeleteMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: ids, permanent: aPermanent, areMessages: !isMessage.includes(false) }, aMsgWindow);
+      if (ids.length) {
+        await CallExtension(this.cppBase.server, "DeleteMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: ids, permanent: aPermanent, areMessages: !isMessage.includes(false) }, aMsgWindow);
+      }
       // XXX TODO add the messages to the trash folder
       deleteFromDatabase(this.cppBase, hdrs, keys, !aWasMove, aMessages);
       this.cppBase.NotifyFolderEvent("DeleteOrMoveMsgCompleted");
@@ -1214,7 +1272,10 @@ Folder.prototype = {
       let numUnread = 0;
       if (aSrcFolder.server == cppBase.server) {
         // Same-server copy, just do the copy on the server.
-        await CallExtension(cppBase.server, aIsMove ? "MoveMessages" : "CopyMessages", { folder: aSrcFolder.getStringProperty("FolderId"), target: cppBase.getStringProperty("FolderId"), messages: GetIdsAndKeysFromHdrs(hdrs, keys) }, aMsgWindow);
+        let ids = GetIdsAndKeysFromHdrs(hdrs, keys);
+        if (ids.length) {
+          await CallExtension(cppBase.server, aIsMove ? "MoveMessages" : "CopyMessages", { folder: aSrcFolder.getStringProperty("FolderId"), target: cppBase.getStringProperty("FolderId"), messages: ids }, aMsgWindow);
+        }
         for (let hdr of hdrs) {
           if (!(hdr.flags & Ci.nsMsgMessageFlags.Read)) {
             numUnread++;
@@ -1250,7 +1311,7 @@ Folder.prototype = {
             };
             messageService.CopyMessage(uri, listener, aIsMove, null, aMsgWindow, {});
           });
-          await CallExtension(cppBase.server, "CreateMessageFromMime", { folder: target, content: await promise, draft: false, read: !!(hdr.flags & Ci.nsMsgMessageFlags.Read), flagged: !!(hdr.flags & Ci.nsMsgMessageFlags.Marked), keywords: keywords ? keywords.split(" ") : [] }, aMsgWindow);
+          await CallExtension(cppBase.server, "CreateMessageFromMime", { folder: target, content: await promise, draft: false, read: !!(hdr.flags & Ci.nsMsgMessageFlags.Read), flagged: !!(hdr.flags & Ci.nsMsgMessageFlags.Marked), tags: keywords2Tags(keywords) }, aMsgWindow);
           if (!(hdr.flags & Ci.nsMsgMessageFlags.Read)) {
             numUnread++;
           }
@@ -1329,7 +1390,7 @@ Folder.prototype = {
    * @param aHdrToReplace {nsIMsgDBHdr}    The previous draft
    * @param aIsDraft      {Boolean}        Whether this is a draft
    * @param aMsgFlags     {Number}         The flags to set on the message
-   * @param aKeywords     {String}         The tags to set on the message
+   * @param aKeywords     {String}         The keys to set on the message
    * @param aMsgWindow    {nsIMsgWindow}   The window to use for prompts
    * @param aListener     {nsIUrlListener} A listener for the new message key
    */
@@ -1338,7 +1399,7 @@ Folder.prototype = {
     try {
       let target = this.cppBase.getStringProperty("FolderType") == "Drafts" ? "" : this.cppBase.getStringProperty("FolderId");
       let content = await readFileAsync(aFile);
-      let id = await CallExtension(this.cppBase.server, "CreateMessageFromMime", { folder: target, content: content, draft: aIsDraft, read: !!(aMsgFlags & Ci.nsMsgMessageFlags.Read), flagged: !!(aMsgFlags & Ci.nsMsgMessageFlags.Marked), keywords: aKeywords ? aKeywords.split(" ") : [] }, aMsgWindow);
+      let id = await CallExtension(this.cppBase.server, "CreateMessageFromMime", { folder: target, content: content, draft: aIsDraft, read: !!(aMsgFlags & Ci.nsMsgMessageFlags.Read), flagged: !!(aMsgFlags & Ci.nsMsgMessageFlags.Marked), tags: keywords2Tags(aKeywords) }, aMsgWindow);
       if (aListener && id) {
         // XXX Thunderbird has a "pending header" system to avoid a full resync
         await ResyncFolder(strongThis.QueryInterface(Ci.nsIMsgFolder), aMsgWindow, null, false, false);
@@ -1400,7 +1461,10 @@ Folder.prototype = {
     let strongThis = this.delegator.get();
     try {
       let hdrs = toArray(aMessages, Ci.nsIMsgDBHdr);
-      await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: GetIdsAndKeysFromHdrs(hdrs, null), read: aIsRead }, null);
+      let ids = GetIdsAndKeysFromHdrs(hdrs, null);
+      if (ids.length) {
+        await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: ids, read: aIsRead }, null);
+      }
       this.cppBase.markMessagesRead(aMessages, aIsRead);
     } catch (ex) {
       logError(ex);
@@ -1417,7 +1481,9 @@ Folder.prototype = {
       } else { // COMPAT for TB 68 (bug 1594892)
         keys = this.cppBase.msgDatabase.markAllRead();
       } // COMPAT for TB 68 (bug 1594892)
-      await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: keys.map(key => this.cppBase.msgDatabase.GetMsgHdrForKey(key).getStringProperty("X-GM-MSGID")), read: true }, aMsgWindow);
+      if (keys.length) {
+        await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: keys.map(key => GetIdFromHdr(this.cppBase.msgDatabase.GetMsgHdrForKey(key))), read: true }, aMsgWindow);
+      }
     } catch (ex) {
       ReportException(ex, aMsgWindow);
     }
@@ -1426,7 +1492,10 @@ Folder.prototype = {
     let strongThis = this.delegator.get();
     try {
       let hdrs = toArray(aMessages, Ci.nsIMsgDBHdr);
-      await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: GetIdsAndKeysFromHdrs(hdrs, null), flagged: aIsFlagged }, null);
+      let ids = GetIdsAndKeysFromHdrs(hdrs, null);
+      if (ids.length) {
+        await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: ids, flagged: aIsFlagged }, null);
+      }
       this.cppBase.markMessagesFlagged(aMessages, aIsFlagged);
     } catch (ex) {
       logError(ex);
@@ -1437,7 +1506,9 @@ Folder.prototype = {
       // Get a list of the unread messages in the thread.
       let countTB68 = {}, keysTB68 = {}; // COMPAT for TB 68 (bug 1594892)
       let keys = this.cppBase.msgDatabase.MarkThreadRead(aThread, null, /* COMPAT for TB 68 (bug 1594892) */ countTB68, keysTB68) /* COMPAT for TB 68 (bug 1594892) */ || keysTB68.value;
-      await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: keys.map(key => this.cppBase.msgDatabase.GetMsgHdrForKey(key).getStringProperty("X-GM-MSGID")), read: true }, null);
+      if (keys.length) {
+        await CallExtension(this.cppBase.server, "UpdateMessages", { folder: this.cppBase.getStringProperty("FolderId"), messages: keys.map(key => GetIdFromHdr(this.cppBase.msgDatabase.GetMsgHdrForKey(key))), read: true }, null);
+      }
     } catch (ex) {
       logError(ex);
     }
@@ -1453,10 +1524,35 @@ Folder.prototype = {
     case "cmd_renameFolder":
     case "cmd_delete":
     case "button_delete":
-      return !Services.io.offline;
+      return !this.cppBase.isServer && !this.cppBase.getStringProperty("FolderType") && !Services.io.offline;
     default:
       return true;
     }
+  },
+  /**
+   * Called to arrange the order of top-level folders.
+   *
+   * Folders are sorted by concatenating their sort order (as a string)
+   * with the folder name. This means that 0Inbox sorts before 1Drafts etc.
+   * This works because there are 9 special folder types using order 0-8,
+   * while regular folders use order 9 and come last.
+   * This causes a problem because we want more than 10 sort orders.
+   * Newsgroups work around the problem by using sort orders of 9000-9999
+   * for their regular folders, so they still sort after special folders
+   * but also sort stably within themselves.
+   * However it turns out all we need to do is to add 10 to the default
+   * sort order, so now the special folders have orders 10-18, normal
+   * folders have order 19, and our shared and public folders can thus
+   * be given sort orders of 20 and 21 respectively.
+   */
+  get sortOrder() {
+    if (this.cppBase.flags & Ci.nsMsgFolderFlags.ImapPublic) {
+      return 21;
+    }
+    if (this.cppBase.flags & Ci.nsMsgFolderFlags.ImapOtherUser) {
+      return 20;
+    }
+    return this.cppBase.sortOrder + 10;
   },
   /**
    * Called to request message preview text for a message.
@@ -1483,9 +1579,12 @@ Folder.prototype = {
     let folder = this.cppBase.getStringProperty("FolderId");
     for (let hdr of toArray(aMessages, Ci.nsIMsgDBHdr)) {
       try {
-        let message = hdr.getStringProperty("X-GM-MSGID");
-        let keywords = hdr.getStringProperty("keywords");
-        await CallExtension(server, "UpdateKeywords", { folder, message, keywords: keywords ? keywords.split(" ") : [] });
+        let message = GetIdFromHdr(hdr);
+        if (!message) {
+          continue;
+        }
+        let tags = keywords2Tags(hdr.getStringProperty("keywords"));
+        await CallExtension(server, "UpdateTags", { folder, message, tags });
       } catch (ex) {
         logError(ex);
       }

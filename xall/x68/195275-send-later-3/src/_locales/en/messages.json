@@ -699,6 +699,9 @@
     "message": "Send Later: Folder $1 may be corrupt. Please open its properties and repair it. See https://extended-thunder.github.io/send-later/#corrupt-drafts-error.",
     "description": ""
   },
+  "CorruptFolderErrorDetails": {
+    "message": "Specifically, it appears that message “$1” $2 has been sent before, but still exists in the Drafts folder. This may or may not be indicative of a more serious problem. You might simply try deleting (or re-scheduling) the message in question.\n\nSend Later will skip this message, but continue processing your other scheduled draft messages when you close this alert."
+  },
   "MessageResendError": {
     "message": "Send Later: Attempt to resend already sent message?! Your Outbox or Drafts folder $1 is probably corrupt. Please repair them as described at https://extended-thunder.github.io/send-later/#corrupt-outbox.",
     "description": ""
@@ -911,6 +914,34 @@
     "message": "Scheduled messages warning",
     "description": ""
   },
+  "CompactionFailureWithError": {
+    "message": "Compacting Outbox and/or Drafts folders failed with error:"
+  },
+  "CompactionFailureNoError": {
+    "message": "Compacting $1 failed without error message."
+  },
+  "SanityCheckOutbox": {
+    "message": "You have $1 unsent message(s) which will be triggered to send next time a scheduled message becomes due."
+  },
+  "SanityCheckDrafts": {
+    "message": "You have $1 message(s) scheduled to be delivered by Send Later.\nThe next one is scheduled for $2.",
+    "description": "$1 is replaced with a number, and $2 is replaced with the date/time of the next scheduled message."
+  },
+  "SanityCheckCorruptFolderWarning": {
+    "message": "If these numbers don't look right to you, you might have a corrupted Outbox and/or Drafts folder(s). In that case it is advised that you compact and rebuild those folders before activating Send Later. See <$CORRUPTOUTBOXDOCS$> and <$CORRUPTDRAFTDOCS$> for more details.",
+    "description": "Part of \"sanity check\" prompt potentially displayed during version migration. If there are scheduled messages in the user's Drafts and/or Outbox folders, then the user will be prompted to confirm that the message counts are accurate. This message is preceeded by one or both of the translation strings: \"SanityCheckDrafts\" and/or \"SanityCheckOutbox\".",
+    "placeholders": {
+      "CorruptOutboxDocs": {
+        "content": "https://github.com/Extended-Thunder/send-later/wiki/Troubleshooting#Corrupt_Outbox_folder"
+      },
+      "CorruptDraftDocs": {
+        "content": "https://github.com/Extended-Thunder/send-later/wiki/Troubleshooting#Corrupt_Drafts_folders"
+      }
+    }
+  },
+  "SanityCheckConfirmOptionMessage": {
+    "message": "Select one of the options:\n  “OK”: Proceed as usual. You will not be prompted again.\n\n  “Cancel”: Send Later will be disabled via its own preferences.\n                    To re-enable Send Later, go to its options page and set\n                    the “Check every ___ minutes” preference to a non-zero value.\n                    You will receive this prompt again next time you restart\n                    Thunderbird"
+  },
   "ScheduledMessagesWarningQuitRequested": {
     "message": "There are messages scheduled to be sent. Send Later can only send messages when $1 is running. Are you sure you want to exit?",
     "description": ""
@@ -918,6 +949,12 @@
   "ScheduledMessagesWarningQuit": {
     "message": "Send Later can only send messages when $1 is running. Please remember to restart it before your messages are scheduled to be sent!",
     "description": ""
+  },
+  "EncryptionIncompatTitle": {
+    "message": "Encryption compatibility issue"
+  },
+  "EncryptionIncompatText": {
+    "message": "This message is encrypted with your own PGP key, and therefore cannot be delivered to its recipients. See this discussion for more details on why you're seeing this message: https://github.com/Extended-Thunder/send-later/discussions/200"
   },
   "EnigmailIncompatTitle": {
     "message": "Send Later / Enigmail compatibility issue",
@@ -1094,5 +1131,9 @@
   "CheckingMessage": {
     "message": "CHECKING",
     "description": ""
+  },
+  "LongDescription": {
+    "message": "This add-on changes the “Send Later” command (Ctrl+Shift+Return) in the message composition window, so that instead of merely copying the message into your Outbox so that it is sent the next time you go online or do “Send Unsent Messages”, a dialog pops up which allows you to specify when the message will be sent.\n\nYou can specify a specific time and date, or click “15 mins later”, “30 mins later” or “2 hours later”, or define custom shortcuts. You can also schedule a message to send repeatedly using simple rules (every N hours, days, etc.) or customizable functions.\n\nSend Later relies on powerful date input parsing provided by Andrew Plummer's <a href=\"https://sugarjs.com/\">Sugar.js library</a>.\n\nFeedback and bug reports are very welcome, and can be submitted via the project's <a href=\"https://github.com/Extended-Thunder/send-later/discussions\">GitHub page</a>.",
+    "description": "This text will be displayed on the ATN page, as well as the \"Details\" tab in Thunderbird's extension manager."
   }
 }

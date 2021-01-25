@@ -61,6 +61,7 @@ async function onCreate() {
       if (!error.message) {
         await browser.webAccount.createAccount(protocol, fullname.value, email.value, hostname, authMethod, username.value, password.value);
         deck.classList.add("success");
+        ensureFolderPaneVisbility();
         setTimeout(() => browser.tabs.remove(current.id), 3000);
         return;
       }
@@ -115,6 +116,17 @@ async function onCancel() {
   try {
     let current = await browser.tabs.getCurrent();
     await browser.tabs.remove(current.id);
+  } catch (ex) {
+    logError(ex);
+  }
+}
+
+async function ensureFolderPaneVisbility() {
+  try {
+    let tabs = await browser.mailTabs.query({ currentWindow: true });
+    // The API doesn't actually tell us which type a tab is.
+    // Fortunately the first tab is always a folder tab.
+    await browser.mailTabs.update(tabs[0].id, { folderPaneVisible: true });
   } catch (ex) {
     logError(ex);
   }

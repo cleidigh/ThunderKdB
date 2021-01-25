@@ -145,13 +145,7 @@ Channel.prototype = {
       // (In this case, it has neither the msgid property nor is in the msg DB.)
       // But do return the message, if the message is being moved by a filter.
       // (During filtering, it's has the msgid property,  but it's not yet added to msg DB.)
-      if (!this.hdr.getStringProperty("X-GM-MSGID")) {
-        if (this.folder.msgDatabase.ContainsKey(this.hdr.messageKey)) {
-          // Not deleted, just invalid.
-          let error = new Error("Invalid message header");
-          error.name = "MissingMSGID";
-          logError(error);
-        }
+      if (!GetIdFromHdr(this.hdr)) {
         this.cancel(Cr.NS_ERROR_NOT_AVAILABLE);
         return;
       }
@@ -213,7 +207,7 @@ Channel.prototype = {
   assembleSyntheticMIME: async function() {
     // Check whether the caller wants a specific attachment.
     let mimeContent = "";
-    let details = await CallExtension(this.folder.server, this.part ? "GetMessageProperties" : "GetMessage", { folder: this.folder.getStringProperty("FolderId"), message: this.hdr.getStringProperty("X-GM-MSGID") }, this.msgWindow);
+    let details = await CallExtension(this.folder.server, this.part ? "GetMessageProperties" : "GetMessage", { folder: this.folder.getStringProperty("FolderId"), message: GetIdFromHdr(this.hdr) }, this.msgWindow);
     let headers = new Map();
     if (!this.part) {
       // We're displaying a message, so provide some basic headers.
@@ -329,7 +323,7 @@ Channel.prototype = {
       "Content-Transfer-Encoding: base64\r\n\r\n";
     // Fetch the attachment if needed.
     if (aIncludeData) {
-      let content = await CallExtension(this.folder.server, "GetAttachment", { folder: this.folder.getStringProperty("FolderId"), message: this.hdr.getStringProperty("X-GM-MSGID"), attachment: aAttachment.id, }, this.msgWindow);
+      let content = await CallExtension(this.folder.server, "GetAttachment", { folder: this.folder.getStringProperty("FolderId"), message: GetIdFromHdr(this.hdr), attachment: aAttachment.id, }, this.msgWindow);
       // Base64 encode the attachment, but limit the line length.
       while (content.length > 57) {
         mimeContent += btoa(content.slice(0, 57)) + "\r\n";
@@ -472,13 +466,13 @@ let gPendingDownloads = {};
  */
 function DownloadFullMessage(aHdr, aMsgWindow)
 {
-  let key = aHdr.folder.server.serverURI + aHdr.getStringProperty("X-GM-MSGID");
+  let key = aHdr.folder.server.serverURI + GetIdFromHdr(aHdr);
   if (!gPendingDownloads[key]) {
     // This kicks off the download but returns a Promise of the result.
     // Our callers then await that Promise.
     gPendingDownloads[key] = (async () => {
       try {
-        let message = await CallExtension(aHdr.folder.server, "GetMessageCompleteMime", { folder: aHdr.folder.getStringProperty("FolderId"), message: aHdr.getStringProperty("X-GM-MSGID") }, aMsgWindow);
+        let message = await CallExtension(aHdr.folder.server, "GetMessageCompleteMime", { folder: aHdr.folder.getStringProperty("FolderId"), message: GetIdFromHdr(aHdr) }, aMsgWindow);
         if (aHdr.flags & Ci.nsMsgMessageFlags.Offline) {
           return message;
         }
@@ -506,13 +500,7 @@ function DownloadFullMessage(aHdr, aMsgWindow)
 function StoreOfflineMessage(aHdr, aContent)
 {
   // Check in case the message was deleted while we were downloading it.
-  if (!aHdr.getStringProperty("X-GM-MSGID")) {
-    if (aHdr.folder.msgDatabase.ContainsKey(aHdr.messageKey)) {
-      // Not deleted, just invalid.
-      let error = new Error("Invalid message header");
-      error.name = "MissingMSGID";
-      logError(error);
-    }
+  if (!GetIdFromHdr(aHdr)) {
     return;
   }
   // XXX Respect offline disk space preferences

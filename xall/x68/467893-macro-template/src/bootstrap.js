@@ -91,6 +91,9 @@ browser.tabs.onCreated.addListener(async (tab) => {
             }
             return s;
         };
+    // Call getComposeDetails twice.
+    // Hack for the problem that details of replies cannot be got correctly.
+    await browser.compose.getComposeDetails(tab.id);
     let details = await browser.compose.getComposeDetails(tab.id);
     if (details) {
         let date = new Date();

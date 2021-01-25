@@ -46,7 +46,7 @@ async function logErrorToServer(ex) {
       stack: getStack(ex),
       app: "owl",
       version: browser.runtime.getManifest().version,
-      //hostAppVersion: (await browser.runtime.getBrowserInfo()).version,
+      hostAppVersion: (await browser.runtime.getBrowserInfo()).version,
       user: await getEmailAddressForUser(),
       exchangeURL: await getLoginURLForUser(),
     }

@@ -520,7 +520,47 @@ OWAAccount.prototype.ResyncAddressBooks = async function() {
     if (GAL) {
       noAwait(this.DownloadGAL(GAL), logError);
     }
+  } else if (browser.autoComplete && !this.autoCompleteListener) {
+    let identity = await browser.incomingServer.getIdentity(this.serverID);
+    let dirName = identity.email.slice(identity.email.indexOf("@") + 1) + " GAL";
+    this.autoCompleteListener = this.AutoComplete.bind(this);
+    browser.autoComplete.onAutoComplete.addListener(this.autoCompleteListener, {dirName, isSecure: true});
   }
+}
+
+OWAAccount.prototype.AutoComplete = async function(aSearchString) {
+  let query = {
+    __type: "FindPeopleJsonRequest:#Exchange",
+    Header: {
+      __type: "JsonRequestHeaders:#Exchange",
+      RequestServerVersion: "Exchange2013",
+    },
+    Body: {
+      __type: "FindPeopleRequest:#Exchange",
+      IndexedPageItemView: {
+        __type: "IndexedPageView:#Exchange",
+        BasePoint: "Beginning",
+        Offset: 0,
+        MaxEntriesReturned: 100,
+      },
+      ParentFolderId: {
+        __type: "TargetFolderId:#Exchange",
+        BaseFolderId: {
+          __type: "DistinguishedFolderId:#Exchange",
+          Id: "directory",
+        },
+      },
+      PersonaShape: {
+        __type: "PersonaResponseShape:#Exchange",
+        BaseShape: "Default",
+      },
+      QueryString: aSearchString,
+      SearchPeopleSuggestionIndex: false,
+      ShouldResolveOneOffEmailAddress: false,
+    },
+  };
+  response = await this.CallService("FindPeople", query); // owa.js
+  return response.ResultSet.map(OWAAccount.convertPersona);
 }
 
 /**

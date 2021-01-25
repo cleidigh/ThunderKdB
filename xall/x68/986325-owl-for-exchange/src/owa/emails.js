@@ -14,10 +14,101 @@ OWAAccount.prototype.FindMyFolders = async function() {
   });
   let json = await this.CheckJSONResponse(response, url); // owa.js
   let {RootFolder} = json.findFolders.Body.ResponseMessages.Items[0];
+
+  // Fallback, just in case
+  if (!RootFolder) {
+    let query = {
+      __type: "FindFolderJsonRequest:#Exchange",
+      Header: {
+        __type: "JsonRequestHeaders:#Exchange",
+        RequestServerVersion: "Exchange2013",
+      },
+      Body: {
+        __type: "FindFolderRequest:#Exchange",
+        FolderShape: {
+          BaseShape: "Default",
+          AdditionalProperties: [{
+            __type: "PropertyUri:#Exchange",
+              FieldURI: "folder:FolderClass",
+          }, {
+            __type: "PropertyUri:#Exchange",
+              FieldURI: "folder:ParentFolderId",
+          }, {
+            __type: "PropertyUri:#Exchange",
+              FieldURI: "folder:DistinguishedFolderId",
+          }],
+        },
+        Paging: null,
+        ParentFolderIds: [{
+          __type: "DistinguishedFolderId:#Exchange",
+          Id: "msgfolderroot",
+        }],
+        ReturnParentFolder: true,
+        Traversal: "Deep",
+      },
+    };
+    let result = await this.CallService("FindFolder", query); // owa.js
+    RootFolder = result.RootFolder;
+  }
   return {
     folderList: RootFolder.Folders.filter(folder => folder.__type == "Folder:#Exchange"),
     rootFolderId: RootFolder.ParentFolder.FolderId.Id,
   };
+}
+
+/**
+ * Retrieves the visible public folder hierarchy under a given public folder.
+ *
+ * @param aParent {String?} The public folder id whose hierarchy to retrieve.
+ * @param aDepth  {Number?} The depth of folder hierarchy to retrieve.
+ * @returns       {Array[FolderTree]}
+ *
+ * Note: Subfolders of the given public folder are retrieved in parallel.
+ * If no folder id is passed, the function will attempt to recursively
+ * retrieve the entire public folder hierarchy to the given depth.
+ * Folders are only returned if they or one of their descendents are
+ * either writable or contain readable messages.
+ */
+OWAAccount.prototype.FindPublicFolders = async function(aParent, aDepth = 15) {
+  let query = {
+    __type: "FindFolderJsonRequest:#Exchange",
+    Header: {
+      __type: "JsonRequestHeaders:#Exchange",
+      RequestServerVersion: "Exchange2013",
+    },
+    Body: {
+      __type: "FindFolderRequest:#Exchange",
+      FolderShape: {
+        BaseShape: "Default",
+        AdditionalProperties: [{
+          __type: "PropertyUri:#Exchange",
+            FieldURI: "folder:EffectiveRights",
+        }],
+      },
+      Paging: null,
+      ParentFolderIds: [aParent ? {
+        __type: "FolderId:#Exchange",
+        Id: aParent,
+      } : {
+        __type: "DistinguishedFolderId:#Exchange",
+        Id: "publicfoldersroot",
+      }],
+      ReturnParentFolder: false,
+      Traversal: "Shallow",
+    },
+  };
+  let result = await this.CallService("FindFolder", query); // owa.js
+  let folders = await Promise.all(result.RootFolder.Folders.filter(folder => folder.__type == "Folder:#Exchange").map(async folder => ({
+    id: folder.FolderId.Id,
+    name: folder.DisplayName,
+    type: "ImapPublic",
+    total: folder.TotalCount,
+    unread: folder.UnreadCount,
+    children: folder.ChildFolderCount && aDepth ? await this.FindPublicFolders(folder.FolderId.Id, aDepth - 1) : [],
+    read: folder.EffectiveRights.Read,
+    write: folder.EffectiveRights.CreateContents,
+  })));
+  return folders.filter(folder => folder.children.length || folder.read && folder.total || folder.write);
 }
 
 /**
@@ -27,7 +118,7 @@ OWAAccount.prototype.FindMyFolders = async function() {
  *
  * If any of the calls to `FindSharedFolders()` throws an exception,
  * a placeholder object is substitutued in its place. This placeholder only
- * has the name and type properties, plus a boolean flag `keepSharedFolders`.
+ * has the name and type properties, plus a boolean flag `keepSubfolders`.
  */
 OWAAccount.prototype.GetSharedFolders = async function() {
   let result = await this.CallService("GetOtherMailboxConfiguration", {});
@@ -471,7 +562,7 @@ OWAAccount.ConvertItem = function(item) {
     recipients: item.ToRecipients ? item.ToRecipients.map(EWS2MailboxObject) : [],
     references: item.References || "",
     dateReceived: Date.parse(item.DateTimeReceived) / 1000 || 0,
-    keywords: item.Categories || [],
+    tags: item.Categories || [],
     preview: item.Preview || "",
     contentType: item.Body ? "text/" + item.Body.BodyType.toLowerCase() : "",
     body: item.Body ? item.Body.Value : "",
@@ -621,15 +712,15 @@ OWAAccount.prototype.ComposeMime = async function(aContent, aBccRecipients, aDSN
 /**
  * Create a message from MIME source
  *
- * @param aFolder   {String}  The id of the target folder (empty means Drafts)
- * @param aContent  {String}  The MIME source
- * @param aIsDraft  {Boolean} Whether the item is a draft
- * @param aRead     {Boolean} Whether the item is read or unread
- * @param aFlagged  {Boolean} Whether the item is flagged
- * @param aKeywords {Array[String]}
- * @returns         {String}  The id of the new item
+ * @param aFolder  {String}  The id of the target folder (empty means Drafts)
+ * @param aContent {String}  The MIME source
+ * @param aIsDraft {Boolean} Whether the item is a draft
+ * @param aRead    {Boolean} Whether the item is read or unread
+ * @param aFlagged {Boolean} Whether the item is flagged
+ * @param aTags    {Array[String]}
+ * @returns        {String}  The id of the new item
  */
-OWAAccount.prototype.CreateMime = async function(aFolder, aContent, aIsDraft, aRead, aFlagged, aKeywords) {
+OWAAccount.prototype.CreateMime = async function(aFolder, aContent, aIsDraft, aRead, aFlagged, aTags) {
   let create = {
     __type: "CreateItemJsonRequest:#Exchange",
     Header: {
@@ -659,7 +750,7 @@ OWAAccount.prototype.CreateMime = async function(aFolder, aContent, aIsDraft, aR
           StartDate: null,
           FlagStatus: aFlagged ? "Flagged" : "NotFlagged",
         },
-        Categories: aKeywords,
+        Categories: aTags,
       }],
       /* EWS accepts a SavedItemFolderId, but OWA doesn't seem to.
       SavedItemFolderId: {
@@ -833,11 +924,11 @@ OWAAccount.prototype.UpdateMessages = async function(aFolder, aItems, aRead, aFl
 /**
  * Change categories on a message
  *
- * @param aFolder   {String} The item's folder's id
- * @param aItem     {String} The ids of the item to update
- * @param aKeywords {Array[String]} The categories to set
+ * @param aFolder {String} The item's folder's id
+ * @param aItem   {String} The ids of the item to update
+ * @param aTags   {Array[String]} The categories to set
  */
-OWAAccount.prototype.UpdateKeywords = async function(aFolder, aItem, aKeywords) {
+OWAAccount.prototype.UpdateTags = async function(aFolder, aItem, aTags) {
   let request = {
     __type: "UpdateItemJsonRequest:#Exchange",
     Header: {
@@ -857,7 +948,7 @@ OWAAccount.prototype.UpdateKeywords = async function(aFolder, aItem, aKeywords) 
           __type: "SetItemField:#Exchange",
           Item: {
             __type: "Message:#Exchange", // OWA doesn't do Item for some reason
-            Categories: aKeywords,
+            Categories: aTags,
           },
           Path: {
             __type: "PropertyUri:#Exchange",
@@ -1074,7 +1165,7 @@ OWAAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "ComposeMessageFromMime":
     return this.ComposeMime(aParameters.content, aParameters.bcc, aParameters.deliveryReceipt);
   case "CreateMessageFromMime":
-    return this.CreateMime(aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged, aParameters.keywords);
+    return this.CreateMime(aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged, aParameters.tags);
   case "DeleteMessages":
     return this.DeleteMessages(aParameters.messages, aParameters.permanent, aParameters.areMessages);
   case "CopyMessages":
@@ -1083,8 +1174,8 @@ OWAAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
     return this.CopyOrMoveMessages(aParameters.target, aParameters.messages, "Move");
   case "UpdateMessages":
     return this.UpdateMessages(aParameters.folder, aParameters.messages, aParameters.read, aParameters.flagged);
-  case "UpdateKeywords":
-    return this.UpdateKeywords(aParameters.folder, aParameters.message, aParameters.keywords);
+  case "UpdateTags":
+    return this.UpdateTags(aParameters.folder, aParameters.message, aParameters.tags);
   case "SendMessageFromMime":
     return this.SendMime(aParameters.folder, aParameters.content, aParameters.bcc, aParameters.deliveryReceipt);
   case "SendMessage":

@@ -1,0 +1,38 @@
+[{
+  "namespace": "autoComplete",
+  "events": [{
+    "name": "onAutoComplete",
+    "type": "function",
+    "description": "Fires when searching for a contact.",
+    "parameters": [{
+      "name": "searchString",
+      "type": "string"
+    }],
+    "extraParameters": [{
+      "name": "parameters",
+      "type": "object",
+      "properties": {
+        "dirName": {
+          "type": "string",
+          "optional": true,
+          "description": "The initial name of the address book."
+        },
+        "isSecure": {
+          "type": "boolean",
+          "optional": true,
+          "description": "Whether the address book is searched securely."
+        },
+        "UID": {
+          "type": "string",
+          "optional": true,
+          "description": "The UID of the address book."
+        },
+        "uuid": {
+          "type": "string",
+          "optional": true,
+          "description": "The uuid of the address book."
+        }
+      }
+    }]
+  }]
+}]

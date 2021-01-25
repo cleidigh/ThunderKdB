@@ -59,6 +59,7 @@ var scriptsLoaded;
 var optionsURI;
 var optionsWin;
 var hiddenWin=null;
+var openHiddenWin=false;
 var exiting='';		//'quit' or 'close'
 var gFire=null;
 
@@ -357,7 +358,7 @@ debug("closing");
     let addOn=await AddonManager.getAddonByID("addressbookssync@ggbs.de");
     let console = Services.console;
     let app = Services.appinfo;
-    console.logStringMessage('AddressbooksSynchronizer: '+addOn.version+' on '+app.name+' '+app.version);
+    console.logStringMessage('AddressbooksSynchronizer: '+addOn.version+' on '+app.name+' '+app.version+' on '+app.OS);
 		version=addOn.version;
   }
 
@@ -375,12 +376,23 @@ debug('registering window listener');
     onLoadWindow: function(w) {
 debug(''+w.document.location);
   //		initialize();		//on first window only (via var initialized)	//now in getAPI
-      //if (w.location=='chrome://messenger/content/messageWindow.xhtml'
       if (w==hiddenWin) {
-debug('hiddenWin loaded');
-        hiddenWin.document.getElementById('messagepane').docShell.document.body.textContent=
+debug('hiddenWin loaded');		// fires before openWindow() returns!!
+       hiddenWin.document.getElementById('messagepane').docShell.document.body.textContent=
           strings['hiddenwin'];
-        hiddenWin.document.title=strings['hiddenwintitle'];
+       hiddenWin.document.title=strings['hiddenwintitle'];
+  		hiddenWin.setTimeout(()=>{
+				hiddenWin.minimize();								//must be delayed!
+debug('hiddenWin: minimized');
+			}, 100);
+     } else if (w.document.location=='chrome://messenger/content/messenger.xhtml') {
+debug('load hiddenWin if necessary');
+				if (!prefs) {
+debug('delay open hiddenWin until prefs available');
+					openHiddenWin=true;
+				} else if(!hiddenWin)	{
+					theHiddenWin(prefs['synctype']=='imap' && prefs['autoupload']);
+				}
       } else if (w.document.location=='chrome://messenger/content/addressbook/addressbook.xhtml') {
 debug('Addressbook loaded, try adding menu items');
         let tm=w.document.getElementById('taskPopup');
@@ -488,6 +500,7 @@ debug('hiddenWin closed');
 //				if (aSubject instanceof Ci.nsISupportsPRBool) {
 					if (!closecount) {
 						closecount++;
+						aSubject.QueryInterface(Ci.nsISupportsPRBool);
 						aSubject.data=finalize('quit');			// cancel quit request if necessary
 debug('quit-application-requested: cancel quit and call finalize(quit)');
 					} else {

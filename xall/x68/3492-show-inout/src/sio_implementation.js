@@ -1031,29 +1031,27 @@ debug('observer MsgCreateDBView state='+state+' aData='+aData+' aSubject='+aSubj
       if (aSubject) gCurrentFolder=aSubject;
 debug('folder='+gCurrentFolder);//!==null?gCurrentFolder.folderURL:'unknown');
 if (gCurrentFolder) debug('folder='+gCurrentFolder.folderURL);
-			//gW=Services.wm.getMostRecentWindow("mail:3pane");
-			//if (!gW) return;	//e.g. if called with aData=force but master password not yet entered
-			gD=gW.document;
 			if (!aSubject && !aData) {
           //aSubject is normally a nsIMsgFolder
 					//but not on first call (when gW.gDBView does not exists yet)
           //or when an addon is installed or enabled
           //gData is normally null except we call it explicitly with 'force'
         if (addonType=='install') { //need a small time delay
+					addonType='';
           gW.setTimeout(()=>{
             let changed=findCols();
             if (gFire) {
-  debug('install: Notify options window');
+debug('install: Notify options window');
               gFire.async(changed);
             } else {
-  debug('install: No options window to notify');
+debug('install: No options window to notify');
             }
           }, 100);
-        } else {
-debug('observer nothing to do');
+					return;
+        } else {	//might be a list view from a global search or TB started via .eml
+debug('observer: list view of a global search?');
+          if (!gW) return;  //with .eml
         }
-        addonType='';
-        return;
       }
       if (typeof gW.gDBView!='undefined' && gW.gDBView) { //check mit typeof, da gelegentlich undefined!
 //state				if (state!='cols') {  // fill gColumns and add our own columns, only on first call!
@@ -1092,7 +1090,6 @@ debug('add columnsHandlers for our own columns');
 
 function setFilters() {
 ////// Define filters
-	//gW=Services.wm.getMostRecentWindow("mail:3pane");
 	if (!gW) return;	//e.g. if called with aData=force but master password not yet entered
 debug('set quickFilters');
 debug('QuickFilterManager.textBoxDomId='+QuickFilterManager.textBoxDomId);
@@ -1198,6 +1195,10 @@ function MsgSortByInOut()
 function findCols() {
 debug('findCols');
   let tc=gD.getElementById("threadCols");
+  if (!tc) {
+debug("no threadCols yet doc="+gD.location.href);
+    return null;
+  }
   let changed=new Map();
 
 	// fill gColumns with [id->label] for all columns which can be styled
@@ -1205,12 +1206,12 @@ debug('findCols');
   cols.forEach(col=>{
     if (col.id && !col.getAttribute('fixed') && !(col.id).includes('sio_')) {
 			if (gColumns.has(col.id)) {
-//debug('gColumn already has '+col.id);
+debug('gColumn already has '+col.id);
         return;
       }
 			try {
 				let ch=gW.gDBView.getColumnHandler(col.id);
-debug('col='+col.id+' already has a columnHandler, saved');
+//debug('col='+col.id+' already has a columnHandler, saved');
 				otherCCH.set(col.id, ch);		// save for later user
 			} catch(e) {
 //debug('col='+col.id+' added to gColumns');
@@ -1220,6 +1221,13 @@ debug('col='+col.id+' already has a columnHandler, saved');
       changed.set(col.id, col.getAttribute('label'));
     }
   });
+  gColumns.forEach((label, colId)=>{
+		if (!gD.getElementById(colId)) {	//col removed
+//debug('col='+colId+' removed from gColumns');
+			gColumns.delete(colId);
+      changed.set(colId, '');
+		}
+	});
   return changed;
 }
 
@@ -1414,8 +1422,11 @@ debug('changedCols done, changed='+JSON.stringify(Array.from(changed)));
 }
 
 function onFocus(e) {
-debug('onFocus');
+	if (e.view.document.location.href!="chrome://messenger/content/messenger.xhtml")
+		return;
 	gW=e.view;
+	gD=gW.document;
+debug('onFocus');
 }
 function registerListener() {
 debug('registering window listener');
@@ -1427,20 +1438,17 @@ debug('registering window listener');
   /**/
     onLoadWindow: function(w) {
 debug('mail:3pane loaded');
-			if (w.gDBView) {
-debug('what should i do?');
-			} else {
-debug('no gDBView yet');
-				gCurrentFolder=null;
-				gW=w;
-				observer.observe(null, "MsgCreateDBView", 'force');	// after enabling the addon there is no other notification
-				if (filtersDone) {
-					//if second window is opened, we need to remove our filters or
-					//the new windows searches for the buttons which doesn't exists yet
-					//we add the filter back later
+			gCurrentFolder=null;
+			gW=w;
+			gD=gW.document;
+			observer.observe(null, "MsgCreateDBView", 'force');	// after enabling the addon there is no other notification
+			if (filtersDone) {
+				//if second window is opened, we need to remove our filters or
+				//the new windows searches for the buttons which doesn't exists yet
+				//we add the filter back later
 debug('remove filters');
-					QuickFilterManager.killFilter("sio-correspondent");
-					QuickFilterManager.killFilter("sio-thisside");
+				QuickFilterManager.killFilter("sio-correspondent");
+				QuickFilterManager.killFilter("sio-thisside");
 /*
 	gW.document.defaultView.FolderDisplayListenerManager.registerListener({
 		onMakeActive(aFolderDisplay) {
@@ -1452,8 +1460,6 @@ for (let key in aFolderDisplay) {
 		}
 	});
 */
-
-				}
 			}
 			w.addEventListener('focus', onFocus, true);
 		},

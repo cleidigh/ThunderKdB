@@ -13,12 +13,12 @@
  *
  * The Original Code is CopySent2Current.
  *
- * The Initial Developer of the Original Code is Günter Gersdorf.
+ * The Initial Developer of the Original Code is GÃ¼nter Gersdorf.
  * Portions created by the Initial Developer are Copyright (C) 2006
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
- *  Günter Gersdorf <G.Gersdorf@ggbs.de>
+ *  GÃ¼nter Gersdorf <G.Gersdorf@ggbs.de>
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -41,7 +41,18 @@ async function doInit() {
 debug("options: init");
 	let prefnames=["movemessage", "chooseBehind", "accesskey_default", "accesskey_sent", "accesskey_nocopy",
 				"use_HTB", "use_TBB", "debug", "test"];
-  let accounts=await messenger.accounts.list();
+  let accounts=[];
+  try {
+    accounts=await messenger.accounts.list();
+  } catch(e) {
+    console.error('Please remove % signs from foldernames');
+    let ae=document.getElementById('accounts');
+    ae.innerHTML='<div style="color: red; margin: 20px;">Bitte entfernen sie alle %-Zeichen aus\
+    Ordnernamen!<br/>Es gibt einen Fehler in Thunderbird, der die AusfÃ¼hrung dieses Add-ons\
+    verhindert. Siehe Bug 1684327</div>\
+    <div style="color: red; margin: 20px;">Please remove any %-signs from foldernames!<br/>\
+    There is a bug in Thunderbird which prevents this add-on from running. See Bug 1684327</div>';
+  }
   for (let a of accounts) {
 		prefnames.push(a.id);
 		prefnames.push(a.id+'_curorsent');
@@ -61,7 +72,6 @@ debug("options: failed to load prefs, wait...");
 debug('prefs: '+JSON.stringify(prefs));
   let fcc=await messenger.cs2c.getFcc();
 debug('got fcc '+JSON.stringify(fcc));
-	//let accounts=await messenger.accounts.list();
 	let ae=document.getElementById('accounts');
 	let tmpl=document.getElementById('_account');
 	for (let a of accounts) {

@@ -65,19 +65,32 @@ debug('prefs stored');
 		} catch(e) {
 			debug('storing prefs throws: '+e, e);
 		}
+
 		startPart2(true);
 	} else {	//already migrated or fresh install
 debug('no preferences to migrate, read from storage');
 		async function gP() {
 			try {
 debug('load from storage');
-//see https://thunderbird.topicbox.com/groups/addons/T46e96308f41c0de1-M3c3661dc00f04476a0f89b28/issues-with-browser-storage-local-get
-				prefs=await messenger.storage.local.get(null);
-				if (!prefs['imapuploadpolicy']) prefs['imapuploadpolicy']='draft';
-				if (!prefs['downloadpolicy']) prefs['downloadpolicy']='ask';
-				if (!prefs['delayautodownload'] || prefs['delayautodownload']<2) prefs['delayautodownload']=2;
+				let prefnames=['autodownload', 'autoupload', 'timeddownload', 'timedupload', 'synctype', 'localpath',
+				 'protocol', 'host', 'path', 'user', 'imapfolderAccount', 'imapfolderName', 'imapfolderPath',
+				 'downloadpolicy', 'imapuploadpolicy', 'usepost', 'hideallpopups', 'hidepopups', 'loadtimer',
+				 'notimecheck', 'noupload', 'separateupdown', 'noexternalappset', 'debug', 'upgraded'];
+				prefs=await messenger.storage.local.get(prefnames);
+				if (!prefs['imapuploadpolicy']) {
+					prefs['imapuploadpolicy']='draft';
+					let p={};
+					p['imapuploadpolicy']=prefs['imapuploadpolicy'];
+					await messenger.storage.local.set(p);
+				}
+				if (!prefs['downloadpolicy']) {
+					prefs['downloadpolicy']='ask';
+					let p={};
+					p['downloadpolicy']=prefs['downloadpolicy'];
+					await messenger.storage.local.set(p);			
+				}
 				delete prefs['upgraded'];
-				await messenger.storage.local.set(prefs);
+				await messenger.storage.local.remove('upgraded');
 				startPart2(false);
 			} catch(e) { 
 debug("background: failed to load prefs, wait...");
@@ -92,13 +105,26 @@ debug("background: failed to load prefs, wait...");
 async function startPart2(migrated) {
 debug('ABS: background: prefs='+JSON.stringify(prefs));
 	let [ u2i, u2f ]=await messenger.abs.uids2ids();
-debug('ABS: background: u2i='+u2i);
+debug('ABS: background: u2i='+JSON.stringify(u2i));	//"5bb36bed-f1be-4410-b157-54c08505225b"->"ldap_2.servers.ggbstest"
+debug('ABS: background: u2f='+JSON.stringify(u2f));	//empty at this time
+	let books=await messenger.addressBooks.list();
+	if (!migrated) {	//load prefs for books
+		let prefnames=[];
+		for (let book of books) {
+				//id=68364c8a-d629-4678-972f-bb92e758d90d
+				//name=ggbs
+			prefnames.push(u2i[book.id]+'.up');
+			prefnames.push(u2i[book.id]+'.down');
+			prefnames.push(u2i[book.id]+'.filename');
+		}
+debug('load prefs for book: '+JSON.stringify(prefnames));
+		Object.assign(prefs, await messenger.storage.local.get(prefnames));
+	}
 	//remove
 	//	ldap_2.servers.book.filename
 	//	ldap_2.servers.book.down
 	//	ldap_2.servers.book.up
 	//		for nonexisting books
-	let books=await messenger.addressBooks.list();
 	for (let [key, val] of Object.entries(prefs)) {
 		let m;
 		if ((m=key.match(/(^ldap_2\.servers\.[^.]*)\.(.*)/))) {
@@ -118,6 +144,18 @@ debug('ABS: background: u2i='+u2i);
 //for (let [key, val] of Object.entries(prefs)) {debug('background pref: '+key+'->'+val); }
 debug('prefs='+JSON.stringify(prefs));
 	messenger.abs.setPrefs(prefs, '');
+
+  //Just to check for bug 1684327
+  let accounts=[];
+  try {
+    accounts=await messenger.accounts.list();
+  } catch(e) {
+    console.error('Please remove % signs from foldernames');
+    setTimeout(()=>{	//open options page
+debug('open options page');
+              messenger.runtime.openOptionsPage();
+            }, 2000);
+  }
 
 	if (migrated) {    // abs was upgraded
 debug('open options');

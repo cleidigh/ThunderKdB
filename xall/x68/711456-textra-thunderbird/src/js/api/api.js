@@ -75,6 +75,7 @@ Nict_TexTra.api.get_url_MT_API = function (lang_org, lang_trans, infos, func_nex
 
 };
 
+
 // 翻訳
 Nict_TexTra.api.trans_text = function (func_success, func_fail, infos) {
 
@@ -84,70 +85,128 @@ Nict_TexTra.api.trans_text = function (func_success, func_fail, infos) {
     if (!lang_org) lang_org = login_info["selected_lang_org"];
     if (!lang_trans) lang_trans = login_info["selected_lang_trans"];
 
-    Nict_TexTra.api.get_url_MT_API(lang_org, lang_trans, infos, function (url) {
+    var list_text_org;
+    var func_trans_list = function (url) {
 
-        var list_text_org = Nict_TexTra.api.get_split_org(infos["text_org"]);
         var list_text_trans = [];
         var cnt_call_api = 0;
         var cnt_org = list_text_org.length;
 
-        var func_trans_local = function (infos) {
+        var func_trans_each_text = function (infos) {
 
             if (cnt_call_api > 0) list_text_trans.push(infos["resultset"]["result"]["text"]);
-
             if (cnt_call_api < cnt_org) {
-                infos["REQ_PARAMS"] = [
-                    ["text", list_text_org[cnt_call_api]],
-                    ["split", "0"]
-                ];
+                var txt = list_text_org[cnt_call_api];
                 cnt_call_api += 1;
-                Nict_TexTra.api.call_api2(url, func_trans_local, func_fail, infos);
+                if (Nict_TexTra.utils.is_empty_string(txt)) {
+                    infos.resultset = { result: { text: txt } };
+                    func_trans_each_text(infos);
+                    return;
+                }
+                infos["REQ_PARAMS"] = [["text", txt], ["split", "0"]];
+                Nict_TexTra.api.call_api2(url, func_trans_each_text, func_fail, infos);
             } else {
-                infos["text_trans"] = list_text_trans.join("\n");
+                infos["text_trans"] = list_text_trans.join("");
                 infos["lang_org"] = lang_org;
                 infos["lang_trans"] = lang_trans;
                 return func_success(infos);
             }
         };
 
-        func_trans_local(infos);
+        func_trans_each_text(infos);
 
-    }, func_fail);
+    };
+
+    var func_get_url = function (list_split) {
+        list_text_org = list_split;
+        Nict_TexTra.api.get_url_MT_API(lang_org, lang_trans, infos, func_trans_list, func_fail);
+    };
+
+    Nict_TexTra.api.get_split_org(infos["text_org"], infos, func_get_url, func_fail);
 
 };
 
-// 翻訳対象の原文の分割
-// 2020/12/27 3,000バイトに達する直前の改行部分で分割
-Nict_TexTra.api.get_split_org = function (txt_org) {
+Nict_TexTra.api.TRANS_MAX_LEN = 1000;
 
-    var MAX_LEN = 3000;
-    var lenb = Nict_TexTra.utils.get_length_bytes(txt_org);
-    if (lenb <= MAX_LEN) return [txt_org];
+// 翻訳対象の原文の分割
+// 2020/12/27 1,000バイトに達する直前の改行部分で分割
+// 分割順 段落＞制限バイト長判定＞文分割API
+Nict_TexTra.api.get_split_org = function (txt_org, infos, func_success, func_fail) {
+
+    var MAX_LEN = Nict_TexTra.api.TRANS_MAX_LEN;
+    var STR_PARA = /(\n{2,})/mg;
+    var list_para = txt_org.split(STR_PARA); // 段落分割
 
     var list_text = [];
-    var ind_return = -1;
-    var ind_start = 0;
-    var ary_txt_org = txt_org.split('');
-    var len_str = txt_org.length;
-    var sum_byte = 0;
-    var ind;
-    for (ind = 0; ind < len_str; ind++) {
-        var chr = ary_txt_org[ind];
-        var lenb_chr = Nict_TexTra.utils.get_length_bytes(chr);
-        if (chr === "\n") ind_return = ind;
-        if (sum_byte + lenb_chr > MAX_LEN) {
-            if (ind_return < ind_start) ind_return = ind - 1;
-            list_text.push(txt_org.substr(ind_start, ind_return - ind_start + 1));
-            ind_start = ind_return + 1;
-            ind = ind_start - 1;
-            sum_byte = 0;
-            continue;
-        }
-        sum_byte += lenb_chr;
-    }
-    if (ind !== ind_start) list_text.push(txt_org.substr(ind_start, len_str - ind_start));
+    for (var ind_para in list_para) {
 
-    return list_text;
+        var txt_para = list_para[ind_para];
+
+        // バイト長判定
+        var lenb = Nict_TexTra.utils.get_length_bytes(txt_para);
+        if (lenb <= MAX_LEN) { list_text.push(txt_para); continue; }
+
+        // 改行による分割
+        var ind_return = -1;
+        var ind_start = 0;
+        var ary_txt_org = txt_para.split('');
+        var len_str = txt_para.length;
+        var sum_byte = 0;
+        var ind;
+        for (ind = 0; ind < len_str; ind++) {
+            var chr = ary_txt_org[ind];
+            var lenb_chr = Nict_TexTra.utils.get_length_bytes(chr);
+            if (chr === "\n") ind_return = ind;
+            if (sum_byte + lenb_chr > MAX_LEN && ind_return > ind_start) {
+                list_text.push(txt_para.substr(ind_start, ind_return - ind_start + 1));
+                ind_start = ind_return + 1;
+                ind = ind_start - 1;
+                sum_byte = 0;
+                continue;
+            }
+            sum_byte += lenb_chr;
+        }
+        if (ind !== ind_start) list_text.push(txt_para.substr(ind_start, len_str - ind_start));
+    }
+
+    Nict_TexTra.api.get_split_org2(list_text, infos, func_success, func_fail);
+
+};
+
+Nict_TexTra.api.get_split_org2 = function (list_text, infos, func_success, func_fail) {
+
+    // 改行で分割できなかったテキストをAPIで分割
+    var MAX_LEN = Nict_TexTra.api.TRANS_MAX_LEN;
+    var list_text2 = [];
+    var ind_txt = 0;
+    var len_list = list_text.length;
+
+    var func_split;
+    var func_api_result = function (infos_split) {
+        var list_splited = infos_split["resultset"]["result"]["text"];
+        for (var id_list in list_splited) {
+            list_text2.push(list_splited[id_list]);
+        }
+        func_split();
+    };
+
+    func_split = function () {
+        if (ind_txt >= len_list) {
+            func_success(list_text2);
+            return;
+        }
+
+        var txt_para = list_text[ind_txt]; ind_txt++;
+
+        // バイト長判定
+        var lenb = Nict_TexTra.utils.get_length_bytes(txt_para);
+        if (lenb <= MAX_LEN) { list_text2.push(txt_para); func_split(); return; }
+
+        // APIによる分割
+        Nict_TexTra.api.split_sentence(txt_para, func_api_result, func_fail, infos);
+    };
+
+    func_split();
 
 };
 
@@ -175,7 +234,7 @@ Nict_TexTra.api.refer_dic = function (func_success, func_fail, infos) {
 
         var id_big_dic = Nict_TexTra.api._TABLE_DIC_FOR_LANG[lang_org + "-" + lang_trans];
         if (id_big_dic) list_id.push(id_big_dic);
-        if (list_id.length == 0) {
+        if (list_id.length === 0) {
             Nict_TexTra.utils.alert(chrome.i18n.getMessage('mes_0502')); // 用語集がありません。
             infos["error_cd"] = "no_dic";
             func_fail(infos);
@@ -314,7 +373,7 @@ Nict_TexTra.api.call_api2 = function (url, func_success, func_fail, infos) {
             var code_res = obj_json["resultset"]["code"];
             var list_ignore = infos["ignore_error_cd"];
             if (code_res === 0 ||
-                (list_ignore && $.inArray(code_res + '', list_ignore) >= 0)) {
+                list_ignore && $.inArray(code_res + '', list_ignore) >= 0) {
                 infos["resultset"] = obj_json["resultset"];
                 func_success(infos);
                 flg_success = true;
@@ -384,8 +443,8 @@ Nict_TexTra.api.func_fail_api_default = function (infos) {
     var result = resp ? resp["resultset"] : null;
     var cd = result ? result["code"] : null;
 
-    if (cd == "500" || cd == "501" ||
-        cd == "522" || cd == "523") {
+    if (cd === 500 || cd === 501 ||
+        cd === 522 || cd === 523) {
         Nict_TexTra.api.func_fail_login();
     } else {
         // API処理に失敗しました。
@@ -398,7 +457,7 @@ Nict_TexTra.api.func_fail_api_default = function (infos) {
 };
 
 Nict_TexTra.api.func_fail_api = function (func_dail_default, infos, response) {
-    if (response.indexOf("503 Service Unavailable") != -1) {
+    if (response.indexOf("503 Service Unavailable") !== -1) {
         // みんなの自動翻訳サーバが停止しています。
         // メンテナンス情報をご確認ください。
         Nict_TexTra.utils.alert(chrome.i18n.getMessage('mes_0505'));

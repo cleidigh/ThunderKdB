@@ -39,6 +39,7 @@ const kResponseMap = {
 const kTimeZoneMap = {
   "Australia/Darwin": "AUS Central Standard Time",
   "Australia/Sydney": "AUS Eastern Standard Time",
+  "Asia/Kabul": "Afghanistan Standard Time",
   "America/Anchorage": "Alaskan Standard Time",
   "Asia/Riyadh": "Arab Standard Time",
   "Asia/Dubai": "Arabian Standard Time",
@@ -47,6 +48,8 @@ const kTimeZoneMap = {
   "America/Halifax": "Atlantic Standard Time",
   "Asia/Baku": "Azerbaijan Standard Time",
   "Atlantic/Azores": "Azores Standard Time",
+  "America/Bahia": "Bahia Standard Time",
+  "Asia/Dhaka": "Bangladesh Standard Time",
   "America/Regina": "Canada Central Standard Time",
   "Atlantic/Cape_Verde": "Cape Verde Standard Time",
   "Asia/Yerevan": "Caucasus Standard Time",
@@ -67,18 +70,25 @@ const kTimeZoneMap = {
   "Africa/Cairo": "Egypt Standard Time",
   "Asia/Yekaterinburg": "Ekaterinburg Standard Time",
   "Europe/Kiev": "FLE Standard Time",
+  "Pacific/Fiji": "Fiji Standard Time",
   "Europe/London": "GMT Standard Time",
   "Europe/Bucharest": "GTB Standard Time",
   "Asia/Tbilisi": "Georgian Standard Time",
   "America/Godthab": "Greenland Standard Time",
   "Atlantic/Reykjavik": "Greenwich Standard Time",
+  "America/Port-au-Prince": "Haiti Standard Time",
   "Pacific/Honolulu": "Hawaiian Standard Time",
   "Asia/Kolkata": "India Standard Time",
   "Asia/Tehran": "Iran Standard Time",
   "Asia/Jerusalem": "Israel Standard Time",
   "Asia/Amman": "Jordan Standard Time",
+  "Europe/Kaliningrad": "Kaliningrad Standard Time",
   "Asia/Seoul": "Korea Standard Time",
+  "Africa/Tripoli": "Libya Standard Time",
+  "Pacific/Kiritimati": "Line Islands Standard Time",
+  "Asia/Magadan": "Magadan Standard Time",
   "Indian/Mauritius": "Mauritius Standard Time",
+  "Asia/Beirut": "Middle East Standard Time",
   "America/Montevideo": "Montevideo Standard Time",
   "Africa/Casablanca": "Morocco Standard Time",
   "America/Denver": "Mountain Standard Time",
@@ -88,6 +98,7 @@ const kTimeZoneMap = {
   "Africa/Windhoek": "Namibia Standard Time",
   "Asia/Kathmandu": "Nepal Standard Time",
   "Pacific/Auckland": "New Zealand Standard Time",
+  "America/St. Johns": "Newfoundland Standard Time",
   "Asia/Irkutsk": "North Asia East Standard Time",
   "Asia/Krasnoyarsk": "North Asia Standard Time",
   "America/Santiago": "Pacific SA Standard Time",
@@ -105,12 +116,16 @@ const kTimeZoneMap = {
   "Asia/Singapore": "Singapore Standard Time",
   "Africa/Johannesburg": "South Africa Standard Time",
   "Asia/Colombo": "Sri Lanka Standard Time",
+  "Asia/Damascus": "Syria Standard Time",
   "Asia/Taipei": "Taipei Standard Time",
   "Australia/Hobart": "Tasmania Standard Time",
+  "America/Araguaina": "Tocantins Standard Time",
   "Asia/Tokyo": "Tokyo Standard Time",
   "Pacific/Tongatapu": "Tonga Standard Time",
+  "Europe/Istanbul": "Turkey Standard Time",
   "America/Indiana/Indianapolis": "US Eastern Standard Time",
   "America/Phoenix": "US Mountain Standard Time",
+  "Asia/Ulaanbaatar": "Ulaanbaatar Standard Time",
   "America/Caracas": "Venezuela Standard Time",
   "Asia/Vladivostok": "Vladivostok Standard Time",
   "Australia/Perth": "W. Australia Standard Time",
@@ -119,6 +134,50 @@ const kTimeZoneMap = {
   "Asia/Tashkent": "West Asia Standard Time",
   "Pacific/Port_Moresby": "West Pacific Standard Time",
   "Asia/Yakutsk": "Yakutsk Standard Time",
+
+  // Lightning offers timezone "Europe/Dublin" as alias for "Europe/London".
+  // Both cities are in the same timezone.
+  // If the user creates an event in Lightning in "Europe/Dublin",
+  // the best we can do is to send it to Exchange as "GMT Standard Time",
+  // which Lightning will then display as "Europe/London".
+  "Africa/Abidjan": "Greenwich Standard Time",
+  "Africa/Kinshasa": "W. Central Africa Standard Time",
+  "America/Detroit": "Eastern Standard Time",
+  "America/Guadeloupe": "SA Western Standard Time",
+  "America/Lima": "SA Pacific Standard Time",
+  "America/Manaus": "SA Western Standard Time",
+  "America/North_Dakota/Center": "Central Standard Time",
+  "America/Puerto_Rico": "SA Western Standard Time",
+  "America/Toronto": "Eastern Standard Time",
+  "America/Vancouver": "Pacific Standard Time",
+  "America/Winnipeg": "Central Standard Time",
+  "America/Yellowknife": "Mountain Standard Time",
+  "Arctic/Longyearbyen": "W. Europe Standard Time",
+  "Asia/Hong_Kong": "China Standard Time",
+  "Asia/Istanbul": "Turkey Standard Time",
+  "Australia/Melbourne": "AUS Eastern Standard Time",
+  "Europe/Amsterdam": "W. Europe Standard Time",
+  "Europe/Athens": "GTB Standard Time",
+  "Europe/Belgrade": "Central Europe Standard Time",
+  "Europe/Bratislava": "Central Europe Standard Time",
+  "Europe/Brussels": "Romance Standard Time",
+  "Europe/Copenhagen": "Romance Standard Time",
+  "Europe/Dublin": "GMT Standard Time",
+  "Europe/Helsinki": "FLE Standard Time",
+  "Europe/Lisbon": "GMT Standard Time",
+  "Europe/Ljubljana": "Central Europe Standard Time",
+  "Europe/Madrid": "Romance Standard Time",
+  "Europe/Nicosia": "GTB Standard Time",
+  "Europe/Oslo": "W. Europe Standard Time",
+  "Europe/Prague": "Central Europe Standard Time",
+  "Europe/Riga": "FLE Standard Time",
+  "Europe/Rome": "W. Europe Standard Time",
+  "Europe/Stockholm": "W. Europe Standard Time",
+  "Europe/Tallinn": "FLE Standard Time",
+  "Europe/Vienna": "W. Europe Standard Time",
+  "Europe/Vilnius": "FLE Standard Time",
+  "Europe/Zurich": "W. Europe Standard Time",
+  "Pacific/Noumea": "Central Pacific Standard Time",
 };
 
 /// Converts Exchange privacy values into Lightning privacy values.
@@ -477,7 +536,7 @@ EWSAccount.ConvertToEWS = function(aFolder, aEvent) {
     }
     event.t$Recurrence["t$" + recurrenceType + "Recurrence"] = {
       t$Interval: aEvent.recurrence.interval,
-      t$DaysOfWeek: aEvent.recurrence.days && aEvent.recurrence.days.map(day => kDays[day - 1]).join(" "),
+      t$DaysOfWeek: aEvent.recurrence.daysOfWeek && aEvent.recurrence.daysOfWeek.map(day => kDays[day - 1]).join(" "),
       t$FirstDayOfWeek: kDays[aEvent.recurrence.firstDayOfWeek - 1],
       t$DayOfWeekIndex: kWeeks[aEvent.recurrence.weekOfMonth - 1],
       t$DayOfMonth: aEvent.recurrence.dayOfMonth,
@@ -544,7 +603,8 @@ EWSAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
     create.m$CreateItem.m$Items.t$Task = event;
   }
   let response = await this.CallService(null, create); // ews.js
-  if (aFolder == "calendar") {
+  if (aFolder != "tasks") { // TODO make the type a property of the object
+    // Need an extra server roundtrip to get the UID.
     let fetch = {
       m$GetItem: {
         m$ItemShape: {
@@ -606,6 +666,7 @@ EWSAccount.prototype.FindInvitationToRespond = async function(aFolder, aEvent) {
           Id: aFolder,
         },
       },
+      Traversal: "Shallow",
     },
   };
   let result = await this.CallService(null, find); // ews.js
@@ -894,8 +955,8 @@ EWSAccount.prototype.GetFreeBusy = async function(aAttendee, aStartTime, aEndTim
         t$MailboxData: {
           t$Email: {
             t$Address: aAttendee,
-            t$AttendeeType: "Required",
           },
+          t$AttendeeType: "Required",
         },
       },
       t$FreeBusyViewOptions: {

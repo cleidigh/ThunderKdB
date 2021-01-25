@@ -104,7 +104,8 @@ async function overlayListener(aDocument)
         let serverType = aDocument.getElementById("server.type").getAttribute("value");
         // If this is one of our server types then we need to set the text for it.
         if (gDispatchListeners.has(serverType)) {
-          window.setDivText("servertype.verbose", serverType);
+          window.setDivText("servertype.verbose", serverType); // COMPAT for TB 68 (bug 1628497)
+          window.setDivText("servertypeVerbose", serverType);
         } else {
           initServerType();
         }
@@ -162,13 +163,13 @@ async function overlayListener(aDocument)
           msgFccFolderPopup._teardown();
           msgFccFolderPopup._ensureInitialized();
           msgFccFolderPopup.selectFolder(msgFccFolderPopup.parentNode.folder);
-          let {sentFolder = "sameServer"} = gSchemeOptions.get(serverType);
+          let sentFolderSelection = gSchemeOptions.get(serverType).sentFolderSelection || "SameServer";
           aDocument.getElementById("identity.doFcc").disabled = true;
           aDocument.getElementById("identity.doFcc").checked = true;
           for (let element of aDocument.querySelectorAll(".depends-on-do-fcc")) {
             element.setAttribute("disabled", true);
           }
-          let disablePicker = sentFolder == "SentMail" || !aDocument.getElementById("identity.doFcc").checked;
+          let disablePicker = sentFolderSelection == "SetByServer" || !aDocument.getElementById("identity.doFcc").checked;
           msgFccFolderPopup.parentNode.disabled = disablePicker;
           aDocument.getElementById("fcc_selectFolder").disabled = disablePicker;
           aDocument.getElementById("identity.fccReplyFollowsParent").disabled = disablePicker;

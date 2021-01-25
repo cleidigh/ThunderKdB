@@ -490,7 +490,31 @@ async CheckFolders(aMsgWindow, aForLogin) {
     return;
   }
 
-  let folderTree = await this.FindMyFolders(aMsgWindow); // emails.js
+  let { folderList, rootFolderId } = await this.FindMyFolders(aMsgWindow); // emails.js
+  let publicFolders; // {Array of FolderTree} (If undefined, the server call failed)
+  try {
+    if (!this._noPublicFolder) {
+      /*
+       * Hotfix - Disable public folders
+      publicFolders = await this.FindPublicFolders(aMsgWindow); // emails.js
+      */
+      publicFolders = [];
+    }
+  } catch (ex) {
+    if (ex.type == "ErrorNoPublicFolderReplicaAvailable") {
+      // No public folders is an expected error, so we don't log that.
+      // Don't bother trying to check for public folders again this session.
+      this._noPublicFolder = true;
+    } else {
+      logError(ex);
+    }
+  }
+  let folderTree = ConvertFolderList(folderList, rootFolderId, publicFolders);
+  if (!publicFolders) {
+    // We failed to retrieve the list of public folders.
+    // Don't accidentally delete public folders that we retrieved previously.
+    folderTree[0].keepPublicFolders = true;
+  }
   await browser.incomingServer.sendFolderTree(this.serverID, folderTree);
 }
 
@@ -597,7 +621,11 @@ EWSAccount.DispatchOperation = async function(aServerId, aOperation, aParameters
   case "GetExtensionURL":
     return GetExtensionURL(); // owl.js
   case "ClearAllValues":
+    let existingAccount = await gEWSAccounts.get(aServerId);
     gEWSAccounts.delete(aServerId);
+    if (existingAccount && existingAccount.autoCompleteListener) {
+      browser.autoComplete.onAutoComplete.removeListener(existingAccount.autoCompleteListener);
+    }
     return;
   case "VerifyLogin":
     let tempAccount = await new EWSAccount(aServerId);
@@ -641,5 +669,5 @@ browser.webAccount.dispatcher.addListener(async function(aServerId, aOperation, 
 
 browser.webAccount.setSchemeOptions("owl-ews", {
   authMethods: [3],
-  sentFolder: "SameServer",
+  sentFolderSelection: "SameServer",
 });

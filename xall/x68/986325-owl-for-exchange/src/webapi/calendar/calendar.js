@@ -450,11 +450,9 @@ function JSON2Task(aJSON, aTask) {
  */
 function Item2JSON(aItem, aJSON) {
   aJSON.title = aItem.title;
-  aJSON.location = aItem.getProperty("location") || "";
   aJSON.description = aItem.getProperty("description");
   aJSON.priority = aItem.priority;
   aJSON.privacy = aItem.privacy;
-  aJSON.status = aItem.getProperty("TRANSP");
   let alarms = aItem.getAlarms(/* COMPAT for TB 68 (bug 1557504) */{});
   if (alarms.length == 1 && alarms[0].related == Ci.calIAlarm.ALARM_RELATED_START) {
     aJSON.reminder = alarms[0].offset.inSeconds;
@@ -490,10 +488,10 @@ function Item2JSON(aItem, aJSON) {
         let days = rule.getComponent("BYDAY", /* COMPAT for TB 68 (bug 1602425) */{});
         if (days[0] < 0) {
           aJSON.recurrence.weekOfMonth = 5;
-          aJSON.recurrence.days = days.map(day => -8 - day);
+          aJSON.recurrence.daysOfWeek = days.map(day => -8 - day);
         } else {
           aJSON.recurrence.weekOfMonth = days[0] >> 3;
-          aJSON.recurrence.days = days.map(day => day & 7);
+          aJSON.recurrence.daysOfWeek = days.map(day => day & 7);
         }
         // Calendar's "every weekday" option generates a daily rule,
         // but it's actually a weekly rule with recurrence days.
@@ -502,7 +500,7 @@ function Item2JSON(aItem, aJSON) {
         }
       }
       if (aJSON.recurrence.type == "WEEKLY") {
-        if (aJSON.recurrence.days) {
+        if (aJSON.recurrence.daysOfWeek) {
           aJSON.recurrence.firstDayOfWeek = Services.prefs.getIntPref("calendar.week.start", 0) + 1;
         } else {
           // Translate Calendar's "weekly" and "bi-weekly"
@@ -515,7 +513,7 @@ function Item2JSON(aItem, aJSON) {
         aJSON.recurrence.dayOfMonth = rule.getComponent("BYMONTHDAY", /* COMPAT for TB 68 (bug 1602425) */{})[0];
       }
       if ((aJSON.recurrence.type == "MONTHLY" || aJSON.recurrence.type == "YEARLY") &&
-          !(aJSON.recurrence.days || aJSON.recurrence.dayOfMonth)) {
+          !(aJSON.recurrence.daysOfWeek || aJSON.recurrence.dayOfMonth)) {
         // Translate Calendar's "monthly" into something Exchange can handle.
         aJSON.recurrence.dayOfMonth = aItem.recurrenceStartDate.day;
       }
@@ -563,6 +561,8 @@ function Event2JSON(aEvent, aJSON) {
   [aJSON.startDate, aJSON.startTimeZone] = DateTimeZone2JSON(aEvent.startDate);
   [aJSON.endDate, aJSON.endTimeZone] = DateTimeZone2JSON(aEvent.endDate);
   aJSON.isAllDayEvent = aEvent.startDate.isDate;
+  aJSON.location = aEvent.getProperty("location") || "";
+  aJSON.status = aEvent.getProperty("TRANSP");
   Item2JSON(aEvent, aJSON);
 }
 
@@ -925,11 +925,10 @@ class Calendar extends (cal && cal.provider.BaseClass) {
         newEvent.index = rule.QueryInterface(Ci.calIRecurrenceRule).getOccurrences(aNewEvent.parentItem.recurrenceStartDate, aNewEvent.parentItem.recurrenceStartDate, aNewEvent.recurrenceId, 0, /* COMPAT for TB 68 (bug 1602424) */{}).length + 1;
       }
       // Check whether we accepted or declined an invitation.
-      for (let newAttendee of aNewEvent.getAttendees(/* COMPAT for TB 68 (bug 1557504) */{})) {
-        let oldAttendee = aOldEvent.getAttendeeById(newAttendee.id);
-        if (oldAttendee && oldAttendee.participationStatus != newAttendee.participationStatus) {
-          newEvent.participation = newAttendee.participationStatus;
-        }
+      let oldAttendee = this.getInvitedAttendee(aOldEvent);
+      let newAttendee = this.getInvitedAttendee(aNewEvent);
+      if (oldAttendee && newAttendee && oldAttendee.participationStatus != newAttendee.participationStatus) {
+        newEvent.participation = newAttendee.participationStatus;
       }
       // Check whether anything changed that we support.
       if (JSON.stringify(newEvent) != JSON.stringify(oldEvent)) {

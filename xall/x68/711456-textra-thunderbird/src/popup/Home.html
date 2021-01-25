@@ -3,24 +3,29 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 
-<body bgcolor="#dbffff">
-    <div style="background-color:#00bb00; color:#ffffff;">
+<body bgcolor="#dbffff" style="width:400px; font-size:80%;">
+    <div style="background-color:#00bb00; color:#ffffff; width:95%">
         <h2 style="margin:5px;">TexTra</h2>
     </div>
-    <div align="right" style="margin: 5px; font-size:12px"><a href="javascript:void(0);" id="link_minna">みんなの自動翻訳</a></div>
-
-    <a href="javascript:void(0);" id="link_ログイン_top" style="font-size:120%; color:red; display: none;">※ログイン設定を行ってください。</a>
-    <table width="380" border="0">
+    <table width="95%" border="0">
         <tr>
-            <div style="margin:5px;white-space:nowrap;">
-                <select id="lang1"></select>&nbsp;
-                <input type="button" id="bt_lang_replace" value="⇔" />
-                <select id="lang2" />
-            </div>
+            <td colspan="3">
+                <div align="right" style="margin: 5px;"><a href="#" id="link_minhon">みんなの自動翻訳</a></div>
+                <div id="alert_login" style="display: none; color:red;"></div>
+            </td>
         </tr>
         <tr>
             <td colspan="3">
-                <textarea cols="40" rows="2" id="textbox_target" tabindex="1" style="line-height:19px"></textarea>
+                <div style="margin:5px;white-space:nowrap;">
+                    <select id="lang1"></select>&nbsp;
+                    <input type="button" id="bt_lang_replace" value="⇔" /><br />
+                    <select id="lang2" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <textarea rows="2" id="textbox_target" tabindex="1" style="line-height:19px; width:100%;"></textarea>
             </td>
         </tr>
         <tr>
@@ -37,14 +42,14 @@
         </tr>
     </table>
 
-    <table width="380" border="0">
+    <table width="95%" border="0" style="table-layout:fixed;">
         <tr>
-            <td colspan="10">
-                <textarea cols="40" rows="2" id="textbox_trans" style="line-height:19px; background-color: #FFFFE0" tabindex="5"></textarea>
+            <td colspan="2">
+                <textarea rows="2" id="textbox_trans" style="line-height:19px; background-color: #FFFFE0; width:100%;" tabindex="5"></textarea>
             </td>
         </tr>
         <tr>
-            <td>
+            <td nowrap>
                 <a href="javascript:void(0);" id="link_trans_history">翻訳履歴</a>
             </td>
             <td align="right">
@@ -52,9 +57,10 @@
             </td>
         </tr>
         <tr>
-            <td colspan="10">
-                <div id="div_trans_history" style="margin:5px; overflow:scroll; height:100px; width:400px; overflow-x: hidden; font-size:medium; display: none">
-                    <table id="tbl_trans_history" cellspacing='1' bgcolor='#0000cc' width='350'></table>
+            <td colspan="2">
+                <div id="div_trans_history" style="margin:5px; overflow:scroll; height:200px; width:100%; overflow-x: hidden; font-size:medium; display: none">
+                    <div align="right"><input id="btn_clear_history" type="button" /></div>
+                    <table id="tbl_trans_history" cellspacing='1' bgcolor='#0000cc' width='100%'></table>
                 </div>
             </td>
         </tr>

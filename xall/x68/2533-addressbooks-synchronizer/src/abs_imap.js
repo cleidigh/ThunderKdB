@@ -632,7 +632,7 @@ debug('SaveInFolderDone');
   composeFields.bodyIsAsciiOnly = true;
   composeFields.forcePlainText  = true;
   composeFields.attachVCard   = false;
-debug('composeFields set\n');
+debug('composeFields set');
 
 	let msgCompose = MailServices.compose.initCompose(params);
 	statustxt(".", 0, false); // 2. dot: InitCompose done

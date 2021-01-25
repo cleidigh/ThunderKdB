@@ -130,7 +130,7 @@ SendLaterHeaderView = {
     } else if (!msgContentType) {
       return { valid: false, detail: "Missing ContentType" };
     } else if (/encrypted/i.test(msgContentType)) {
-      return { valid: false, detail: "Encrypted", msg: SLStatic.i18n.getMessage("EnigmailIncompatTitle") };
+      return { valid: false, detail: "Encrypted", msg: SLStatic.i18n.getMessage("EncryptionIncompatTitle") };
     } else if (msgUuid !== instanceUUID) {
       return { valid: false, detail: "Wrong UUID", msg: `${msgUuid} != ${instanceUUID}` };
     }
@@ -304,7 +304,7 @@ SendLaterHeaderView = {
           localStorage.set(key, value)
           );
         return localStorage;
-      })(JSON.parse(data));
+      })(JSON.parse(data||"{}")||{});
       SendLaterHeaderView.storageLocalMap = storageMap;
       SLStatic.logConsoleLevel = (storageMap.get("logConsoleLevel")||"all").toLowerCase();
       SendLaterHeaderView.hideShowColumn();

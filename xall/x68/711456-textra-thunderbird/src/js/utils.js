@@ -70,7 +70,7 @@ Nict_TexTra.utils.clear_history_refer_dic = function (txt_org, lang_org, lang_tr
 
 
 // 翻訳履歴 追加
-Nict_TexTra.utils.add_history_translate = function (txt_org, txt_trans, lang_org, lang_trans) {
+Nict_TexTra.utils.add_history_translate = function (txt_org, txt_trans, lang_org, lang_trans, func_next) {
 
     txt_org = txt_org.trim();
     txt_trans = txt_trans.trim();
@@ -101,7 +101,28 @@ Nict_TexTra.utils.add_history_translate = function (txt_org, txt_trans, lang_org
             var infos = {
                 "history_translate": list_his2.join("\t--\n")
             };
-            chrome.storage.local.set(infos, function () { });
+            chrome.storage.local.set(infos, func_next);
+
+        }
+    );
+
+};
+
+// 翻訳履歴 削除
+Nict_TexTra.utils.remove_history_translate = function (ind_target) {
+
+    chrome.storage.local.get(
+        { "history_translate": "" },
+        function (items) {
+
+            var str_hist = items["history_translate"];
+            var list_his = str_hist ? str_hist.split("\t--\n") : [];
+            list_his.splice(ind_target, 1);
+
+            var infos = {
+                "history_translate": list_his.join("\t--\n")
+            };
+            chrome.storage.local.set(infos);
 
         }
     );
@@ -131,8 +152,7 @@ Nict_TexTra.utils.get_history_translate = function (func_success) {
                 });
             }
 
-            var infos = { "history_translate": list_his2 };
-            func_success(infos);
+            func_success(list_his2);
         }
     );
 };
@@ -350,11 +370,11 @@ Nict_TexTra.utils.get_time = function (tm) {
     var str_time;
     var func_2d = function (str) { return ("0" + str).slice(-2); };
     if (lang === "ja") {
-        str_time = tm.getMonth() + "月" + tm.getDate() + "日 " +
+        str_time = (tm.getMonth() + 1) + "月" + tm.getDate() + "日 " +
             func_2d(tm.getHours()) + "時" +
             func_2d(tm.getMinutes()) + "分";
     } else {
-        str_time = tm.getMonth() + "/" + tm.getDate() + " " +
+        str_time = (tm.getMonth() + 1) + "/" + tm.getDate() + " " +
             func_2d(tm.getHours()) + ":" + func_2d(tm.getMinutes());
     }
     return str_time;

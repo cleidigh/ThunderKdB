@@ -1,0 +1,40 @@
+#tidybirdButton, [place="palette"] > #tidybirdButton {
+  list-style-image: url("chrome://tidybird/skin/icon.png")
+}
+
+#tidybirdSplitter {
+  min-height: 2px;
+  min-width: 2px;
+}
+
+#tidybirdPane {
+  padding: 6px;
+  margin: 0;
+  overflow: auto;
+}
+
+.tidybird-folder-move-button {
+  margin: 3px 0;
+  height: 32px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tidybird-folder-move-button-label-1 {
+  -moz-appearance: none;
+  padding: 0;
+  margin: 3px 0;
+  font-weight: bold;
+  text-align: left;
+}
+
+.tidybird-folder-move-button-label-2 {
+  -moz-appearance: none;
+  padding: 0;
+  margin: 3px 0;
+  font-weight: normal;
+  text-align: right;
+  font-size: 0.8em;
+  line-height: 1.6em;
+ }

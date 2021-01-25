@@ -288,6 +288,9 @@ function UpdateFolderTree(aServer, aFolderTree)
 {
   // Get the current list of folders so we can delete non-existent ones.
   let foldersToSkip = Ci.nsMsgFolderFlags.Virtual;
+  if (aFolderTree[0].keepPublicFolders) {
+    foldersToSkip |= Ci.nsMsgFolderFlags.ImapPublic;
+  }
   if (aFolderTree[0].keepSharedFolders) {
     foldersToSkip |= Ci.nsMsgFolderFlags.ImapOtherUser;
   }

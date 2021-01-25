@@ -24,7 +24,16 @@ debug(JSON.stringify(prefs));
   } else {  // fresh install or already migrated
 		let prefnames=["movemessage", "chooseBehind", "accesskey_default", "accesskey_sent", "accesskey_nocopy",
 				"use_HTB", "use_TBB", "debug", "test"];
-		let accounts=await messenger.accounts.list();
+    let accounts=[];
+    try {
+      accounts=await messenger.accounts.list();
+    } catch(e) {
+      console.error('Please remove % signs from foldernames');
+      setTimeout(()=>{	//open options page
+debug('open options page');
+                messenger.runtime.openOptionsPage();
+              }, 2000);
+    }
 		for (let a of accounts) {
 			prefnames.push(a.id);
 			prefnames.push(a.id+'_curorsent');
@@ -40,7 +49,6 @@ debug(JSON.stringify(prefs));
 				dodebug=prefs['debug'];
 debug(' no preferences to migrate');
 debug(JSON.stringify(prefs));
-				let accounts=await messenger.accounts.list();
 				for (let a of accounts) {
 debug(' account: '+a.id+' '+a.name+' '+a.type);
 															//a.type=imap, pop3, nntp, ...
@@ -65,6 +73,15 @@ debug(' account: '+a.id+' '+a.name+' '+a.type);
 debug('open options page');
 					messenger.runtime.openOptionsPage();
 				}, 2000);
+
+//if TB is started with -compose the onCreated listener does not fire :-(
+//check, if current window is a messageCompose
+        //let w=await messenger.windows.getCurrent(); //this throws an error :-(
+        let wa=await messenger.windows.getAll({windowTypes: ['messageCompose']});  // this works :-)
+        if (wa.length) {
+    debug('started with a messageCompose window (-compose)');
+          initMessageCompose(wa[0])
+        }
 			} catch(e) { 
 debug("background: failed to load prefs, wait...");
 				setTimeout(gP, 500, prefnames);
@@ -72,6 +89,7 @@ debug("background: failed to load prefs, wait...");
 			}
 		}
 		gP(prefnames);
+
 	}
 }
 getPrefs();
@@ -79,7 +97,7 @@ getPrefs();
 var curAccount;
 var curFolder;
 messenger.mailTabs.onDisplayedFolderChanged.addListener(async (tabId, folder) => {
-	debug(" folder changed: "+tabId+" "+folder.accountId+' '+folder.path);
+debug(" folder changed: "+tabId+" "+folder.accountId+' '+folder.path);
 	curAccount=folder.accountId;
 	curFolder=folder.path;
 /*
@@ -127,9 +145,8 @@ messenger.tabs.onCreated.addListener(async (tab) => {
 	debug(" Tab CREATED id: "+tab.id+" url: "+tab.url+" status: "+tab.status+" title: "+tab.title);
 });
 */
-messenger.windows.onCreated.addListener(async (win) => {
-//	debug(" Window CREATED "+win.id+"  "+win.state+"  "+win.type+" title: "+win.title);
-	if (win.type!='messageCompose') return;
+async function initMessageCompose(win) {
+debug('initMessageCompose');
 	//messenger.tabs.insertCSS(/*win.tabs[0],*/ {file: 'cs2c_picker.css'});
 	let ok=await messenger.cs2c.addMenu(win.id);
 	if (!('use_TBB' in prefs)) {	//was first call!
@@ -141,6 +158,12 @@ debug('was first call of addMenu with use_TBB');
 	if (ok) {
 		addMenuItems(win);
 	}
+}
+messenger.windows.onCreated.addListener(async (win) => {
+//does not fire if TB is started with -compose
+//debug(" Window CREATED "+win.id+"  "+win.state+"  "+win.type+" title: "+win.title);
+	if (win.type!='messageCompose') return;
+  initMessageCompose(win);
 });
 
 

@@ -15,7 +15,7 @@ var gSendObserver = {
       if (!gSchemeOptions.has(incomingServer.type)) {
         return;
       }
-      let {sentFolder = "sameServer"} = gSchemeOptions.get(incomingServer.type);
+      let sentFolderSelection = gSchemeOptions.get(incomingServer.type).sentFolderSelection || "SameServer";
       /* fcc2 not supported yet */
       if (msgCompose.compFields.fcc && msgCompose.compFields.fcc2) {
         return;
@@ -25,7 +25,7 @@ var gSendObserver = {
         if (folder.server != incomingServer || !folder.getStringProperty("FolderId")) {
           return;
         }
-        if (sentFolder == "SentMail" && folder.getStringProperty("FolderType") != "SentMail") {
+        if (sentFolderSelection == "SetByServer" && folder.getStringProperty("FolderType") != "SentMail") {
           return;
         }
       }
@@ -83,6 +83,10 @@ Send.prototype = {
     this.cppBase.gatherMimeAttachments();
   },
   notifyListenerOnStopSending: async function(aMsgID, aStatus, aMsg, aFile) {
+    if (!Components.isSuccessCode(aStatus)) {
+      this.cppBase.notifyListenerOnStopSending(aMsgID, aStatus, aMsg, aFile);
+      return;
+    }
     let strongThis = this.delegator.get();
     let msgWindow = this.cppBase.getProgress().msgWindow;
     try {

@@ -218,6 +218,11 @@ X#identity-box[pageproxystate="valid"].unknownIdentity > #identity-icon {
     background-color: hsla(0,0%,70%,.2);
 }
 
+/* Zoom factor for font-size also needs to apply to menus */
+[browseintabzoom] menupopup, menubar, menulist {
+  font-size: inherit !important;
+}
+
 /* Zoom button */
 #urlbar-zoom-button {
   margin-inline: 6px;

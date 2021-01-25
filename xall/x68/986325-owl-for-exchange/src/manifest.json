@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.7.7",
+  "version": "0.7.7.5",
   "name": "__MSG_extName__",
   "description": "__MSG_extDescription__",
   "developer": {
@@ -83,6 +83,18 @@
           "calendarProvider"
         ]],
         "script": "webapi/calendar/calendar.js"
+      }
+    },
+    "autoComplete": {
+      "schema": "webapi/autocomplete/schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [[
+          "autoComplete"
+        ]],
+        "script": "webapi/autocomplete/autocomplete.js"
       }
     },
     "notificationbox": {

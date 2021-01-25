@@ -1,0 +1,38 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "TaskviewLayout@Sungho.Hwang",
+                   "strict_min_version": "78.0"
+                    }
+             },
+	"name": "TaskviewLayout",
+	"version": "62.7",
+	"description": "",
+             "icons": {
+               "32": "tv32.png"
+                 },
+"browser_action": {
+    "default_icon": "tv32.png",
+    "default_title": "TaskviewLayout",
+    "default_popup": "popup.html"
+  },
+"permissions": [
+        ],
+ "experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "myapi"
+          ]
+        ],
+       "script": "implementation.js"
+      }
+  }
+  }
+}

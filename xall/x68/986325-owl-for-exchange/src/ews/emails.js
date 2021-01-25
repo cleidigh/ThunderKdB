@@ -61,8 +61,61 @@ EWSAccount.prototype.FindMyFolders = async function(aMsgWindow) {
       }
     }
   }
-  let rootFolder = DistinguishedFolderIds[0];
-  return ConvertFolderList(response.RootFolder.Folders.Folder, rootFolder);
+  return {
+    folderList: response.RootFolder.Folders.Folder,
+    rootFolderId: DistinguishedFolderIds[0],
+  };
+}
+
+/**
+ * Retrieves the visible public folder hierarchy under a given public folder.
+ *
+ * @param aMsgWindow {Integer}
+ * @param aParent    {String?} The public folder id whose hierarchy to retrieve.
+ * @param aDepth     {Number?} The depth of folder hierarchy to retrieve.
+ * @returns          {Array[FolderTree]}
+ *
+ * Note: Subfolders of the given public folder are retrieved in parallel.
+ * If no folder id is passed, the function will attempt to recursively
+ * retrieve the entire public folder hierarchy to the given depth.
+ * Folders are only returned if they or one of their descendents are
+ * either writable or contain readable messages.
+ */
+EWSAccount.prototype.FindPublicFolders = async function(aMsgWindow, aParent, aDepth = 15) {
+  let query = {
+    m$FindFolder: {
+      Traversal: "Shallow",
+      m$FolderShape: {
+        t$BaseShape: "Default",
+        t$AdditionalProperties: {
+          t$FieldURI: [{
+            FieldURI: "folder:EffectiveRights",
+          }],
+        },
+      },
+      m$ParentFolderIds: aParent ? {
+        t$FolderId: [{
+          Id: aParent,
+        }],
+      } : {
+        t$DistinguishedFolderId: [{
+          Id: "publicfoldersroot",
+        }],
+      },
+    },
+  };
+  let result = await this.CallService(aMsgWindow, query);
+  let folders = await Promise.all(ensureArray(result.RootFolder.Folders.Folder).map(async folder => ({
+    id: folder.FolderId.Id,
+    name: folder.DisplayName,
+    type: "ImapPublic",
+    total: folder.TotalCount,
+    unread: folder.UnreadCount,
+    children: folder.ChildFolderCount && aDepth ? await this.FindPublicFolders(aMsgWindow, folder.FolderId.Id, aDepth - 1) : [],
+    read: folder.EffectiveRights.Read,
+    write: folder.EffectiveRights.CreateContents,
+  })));
+  return folders.filter(folder => folder.children.length || folder.read && folder.total || folder.write);
 }
 
 /**
@@ -313,7 +366,7 @@ EWSAccount.prototype.FindMessages = async function(aMsgWindow, aFolder, aSyncSta
       author: item.From ? EWS2MailboxObject(item.From.Mailbox) :
               item.Sender ? EWS2MailboxObject(item.Sender.Mailbox) : null,
       dateReceived: Date.parse(item.DateTimeReceived) / 1000 || 0,
-      keywords: ensureArray(item.Categories && item.Categories.String),
+      tags: ensureArray(item.Categories && item.Categories.String),
       preview: item.Preview || "",
       isMessage: item.ItemClass == "IPM.Note",
     })).concat(ensureArray(response.Changes.ReadFlagChange).map(item => ({
@@ -529,7 +582,7 @@ EWSAccount.prototype.ConvertItemResponse = function(aMessage) {
     recipients: item.ToRecipients ? ensureArray(item.ToRecipients.Mailbox).map(EWS2MailboxObject) : [],
     references: item.References || "",
     dateReceived: Date.parse(item.DateTimeReceived) / 1000 || 0,
-    keywords: ensureArray(item.Categories && item.Categories.String),
+    tags: ensureArray(item.Categories && item.Categories.String),
     preview: item.Preview || "",
     contentType: item.Body ? "text/" + item.Body.BodyType.toLowerCase() : "",
     body: item.Body ? item.Body.Value : "",
@@ -698,10 +751,10 @@ EWSAccount.prototype.ComposeMime = async function(aMsgWindow, aContent, aBccReci
  * @param aIsDraft   {Boolean} Whether the item is a draft
  * @param aRead      {Boolean} Whether the item is read or unread
  * @param aFlagged   {Boolean} Whether the item is flagged
- * @param aKeywords  {Array[String]}
+ * @param aTags      {Array[String]}
  * @returns          {String}  The id of the new item
  */
-EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, aIsDraft, aRead, aFlagged, aKeywords) {
+EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, aIsDraft, aRead, aFlagged, aTags) {
   let create = {
     m$CreateItem: {
       m$SavedItemFolderId: aFolder ? {
@@ -713,7 +766,7 @@ EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, 
         t$Message: [{
           t$MimeContent: btoa(aContent),
           t$Categories: {
-            t$String: aKeywords,
+            t$String: aTags,
           },
           t$ExtendedProperty: [{
             t$ExtendedFieldURI: {
@@ -722,13 +775,13 @@ EWSAccount.prototype.CreateMime = async function(aMsgWindow, aFolder, aContent, 
             },
             t$Value: aIsDraft ? MAPI_MSGFLAG_UNSENT : 0,
           }],
-          t$IsRead: aRead,
           t$Flag: {
             t$CompleteDate: null,
             t$DueDate: null,
             t$StartDate: null,
             t$FlagStatus: aFlagged ? "Flagged" : "NotFlagged",
           },
+          t$IsRead: aRead,
         }],
       },
       MessageDisposition: "SaveOnly",
@@ -958,9 +1011,9 @@ EWSAccount.prototype.UpdateMessages = async function(aMsgWindow, aFolder, aItems
  * @param aMsgWindow {Integer}
  * @param aFolder    {String} The target folder's id
  * @param aItem      {String} The id of the message to update
- * @param aKeywords  {Array[String]} The categories to set
+ * @param aTags      {Array[String]} The categories to set
  */
-EWSAccount.prototype.UpdateKeywords = async function(aMsgWindow, aFolder, aItem, aKeywords) {
+EWSAccount.prototype.UpdateTags = async function(aMsgWindow, aFolder, aItem, aTags) {
   let item = {
     Id: aItem,
   };
@@ -990,7 +1043,7 @@ EWSAccount.prototype.UpdateKeywords = async function(aMsgWindow, aFolder, aItem,
               },
               t$Item: {
                 t$Categories: {
-                  t$String: aKeywords,
+                  t$String: aTags,
                 },
               },
             },
@@ -1169,7 +1222,7 @@ EWSAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
   case "SendMessageFromMime":
     return this.SendMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.bcc, aParameters.deliveryReceipt);
   case "CreateMessageFromMime":
-    return this.CreateMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged, aParameters.keywords);
+    return this.CreateMime(aMsgWindow, aParameters.folder, aParameters.content, aParameters.draft, aParameters.read, aParameters.flagged, aParameters.tags);
   case "DeleteMessages":
     return this.DeleteMessages(aMsgWindow, aParameters.messages, aParameters.permanent, aParameters.areMessages);
   case "CopyMessages":
@@ -1178,8 +1231,8 @@ EWSAccount.prototype.ProcessOperation = function(aOperation, aParameters, aMsgWi
     return this.CopyOrMoveMessages(aMsgWindow, aParameters.target, aParameters.messages, "Move");
   case "UpdateMessages":
     return this.UpdateMessages(aMsgWindow, aParameters.folder, aParameters.messages, aParameters.read, aParameters.flagged);
-  case "UpdateKeywords":
-    return this.UpdateKeywords(aMsgWindow, aParameters.folder, aParameters.message, aParameters.keywords);
+  case "UpdateTags":
+    return this.UpdateTags(aMsgWindow, aParameters.folder, aParameters.message, aParameters.tags);
   case "GetAttachment":
     return this.GetAttachment(aMsgWindow, aParameters.folder, aParameters.message, aParameters.attachment);
   case "EmptyTrash":

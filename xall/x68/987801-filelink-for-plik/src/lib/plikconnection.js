@@ -83,7 +83,9 @@ class PlikConnection {
             delete currentAttachments[fileInfo.id].abortController;
         }
 
-        let url = this.serverUrl + ['file', uploadInfo.id, uploadedFileInfo.id, uploadedFileInfo.fileName,].join('/');
+        const encodedFileName = uploadedFileInfo.fileName.split("/").map(c => encodeURIComponent(c)).join("/");
+
+        let url = this.serverUrl + ['file', uploadInfo.id, uploadedFileInfo.id, encodedFileName,].join('/');
 
         currentAttachments[fileInfo.id].url = url;
         currentAttachments[fileInfo.id]["X-UploadToken"] = uploadInfo.uploadToken;

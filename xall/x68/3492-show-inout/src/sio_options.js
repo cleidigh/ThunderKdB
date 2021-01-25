@@ -13,12 +13,12 @@
  *
  * The Original Code is ShowInOut.
  *
- * The Initial Developer of the Original Code is Günter Gersdorf.
+ * The Initial Developer of the Original Code is GÃ¼nter Gersdorf.
  * Portions created by the Initial Developer are Copyright (C) 2006
  * the Initial Developer. All Rights Reserved.
  *
  * Contributor(s):
- *  Günter Gersdorf <G.Gersdorf@ggbs.de>
+ *  GÃ¼nter Gersdorf <G.Gersdorf@ggbs.de>
  *
  * Alternatively, the contents of this file may be used under the terms of
  * either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -108,7 +108,32 @@ debug('setEmails');
 
 async function doInit() {
 debug('doInit');
-  prefs=await messenger.storage.local.get(null);
+	let prefnames=["InTextPrefix", "OutTextPrefix", "Columns", "debug"];
+  let accounts=[];
+  try {
+    accounts=await messenger.accounts.list();
+  } catch(e) {
+    console.error('Please remove % signs from foldernames');
+    let ae=document.getElementById('accounts');
+    ae.outerHTML='<div id="accounts" style="color: red; margin: 20px;">Bitte entfernen sie alle %-Zeichen aus\
+    Ordnernamen!<br/>Es gibt einen Fehler in Thunderbird, der die AusfÃ¼hrung dieses Add-ons\
+    verhindert. Siehe Bug 1684327</div>\
+    <div style="color: red; margin: 20px;">Please remove any %-signs from foldernames!<br/>\
+    There is a bug in Thunderbird which prevents this add-on from running. See Bug 1684327</div>';
+  }
+  for (let a of accounts) {
+		prefnames.push('AdditionalAddresses.'+a.id);
+		prefnames.push('AddAddressesTo.'+a.id);
+	}
+//debug("get prefs "+JSON.stringify(prefnames));
+	try {
+		prefs=await messenger.storage.local.get(prefnames);
+	} catch(e) {
+debug('get prefs throws error, try again');
+		setTimeout(doInit, 500);
+		return;
+	}
+//debug("got prefs "+JSON.stringify(prefs));
 
   gLocalFolder=await messenger.sio.localfolder();
   document.getElementById('lfn').textContent=gLocalFolder.prettyName;
@@ -118,27 +143,22 @@ debug('doInit');
     document.getElementById('addTo_aa').disabled=!event.target.checked;
   };
 
-  messenger.accounts.list().then(function(accounts) {
-    let ae=document.getElementById('accounts');
-    let lf;
-    for (let i=0; i<accounts.length; i++) {
-      let a=accounts[i];
-      if (!gKey) gKey=a.id;
-      let o=document.createElement('option');
-      o.setAttribute('label', a.name);
-      o.setAttribute('value', a.id);
-      o.setAttribute('type', a.type);
-      o.setAttribute('class','folderMenuItem')
-      o.textContent=a.name;
-      if (a.type=='none') lf=o;
-      else                ae.appendChild(o);
-    }
-    ae.appendChild(lf);
-    ae.onchange=accountChange;
-    getEmails();    // get emails for first account
-    return accounts;
-  });
-
+  let ae=document.getElementById('accounts');
+  let lf;
+  for (let a of accounts) {
+    if (!gKey) gKey=a.id;
+    let o=document.createElement('option');
+    o.setAttribute('label', a.name);
+    o.setAttribute('value', a.id);
+    o.setAttribute('type', a.type);
+    o.setAttribute('class','folderMenuItem')
+    o.textContent=a.name;
+    if (a.type=='none') lf=o;
+    else                ae.appendChild(o);
+  }
+  if (lf) ae.appendChild(lf);
+  ae.onchange=accountChange;
+  getEmails();    // get emails for first account
 
   let itp=prefs.InTextPrefix||'';  //was ??, but bad for ATN
   document.getElementById('InTextPrefix').value=itp;
