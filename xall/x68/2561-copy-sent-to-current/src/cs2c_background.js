@@ -3,6 +3,7 @@ let prefs;
 let dodebug;
 let debugcache='';
 let preSelect={};	//object over window id
+let prefsAvailable=false;
 
 async function getPrefs() {
 debug('getPrefs');
@@ -20,7 +21,8 @@ debug(' preferences migrated:');
 //for (let [key, val] of Object.entries(prefs)) {debug(' pref: '+key+'->'+val); }
 debug(JSON.stringify(prefs));
     messenger.storage.local.set(prefs);
-    messenger.cs2c.setPrefs(prefs, '');
+    await messenger.cs2c.setPrefs(prefs, '');
+    prefsAvailable=true;
   } else {  // fresh install or already migrated
 		let prefnames=["movemessage", "chooseBehind", "accesskey_default", "accesskey_sent", "accesskey_nocopy",
 				"use_HTB", "use_TBB", "debug", "test"];
@@ -52,10 +54,13 @@ debug(JSON.stringify(prefs));
 				for (let a of accounts) {
 debug(' account: '+a.id+' '+a.name+' '+a.type);
 															//a.type=imap, pop3, nntp, ...
+//debug('  '+a.id+' '+prefs[a.id]+' '+prefs[a.id+'_curorsent']);
 					if (!prefs.hasOwnProperty(a.id)) {	//fresh install or new account
 						prefs[a.id]=true;
 						prefs[a.id+'_curorsent']='current';
-					}
+					} else if (prefs[a.id] && !prefs.hasOwnProperty(a.id+'_curorsent')) {
+						prefs[a.id+'_curorsent']='current';
+          }
 				}
 				//TODO: remove preferences for no longer existing accounts
 				// No ??= operator :-(
@@ -67,21 +72,13 @@ debug(' account: '+a.id+' '+a.name+' '+a.type);
 					//prefs.use_TBB=true;	//will be set after first call of addMenu
 				}
 				messenger.storage.local.set(prefs);
-				messenger.cs2c.setPrefs(prefs, '');
+				await messenger.cs2c.setPrefs(prefs, '');
+        prefsAvailable=true;
 				//if (fresh) messenger.runtime.openOptionsPage();	//open options page on fresh install
 				if (!('chooseBehind' in prefs)) setTimeout(()=>{	//open options page
 debug('open options page');
 					messenger.runtime.openOptionsPage();
 				}, 2000);
-
-//if TB is started with -compose the onCreated listener does not fire :-(
-//check, if current window is a messageCompose
-        //let w=await messenger.windows.getCurrent(); //this throws an error :-(
-        let wa=await messenger.windows.getAll({windowTypes: ['messageCompose']});  // this works :-)
-        if (wa.length) {
-    debug('started with a messageCompose window (-compose)');
-          initMessageCompose(wa[0])
-        }
 			} catch(e) { 
 debug("background: failed to load prefs, wait...");
 				setTimeout(gP, 500, prefnames);
@@ -146,6 +143,11 @@ messenger.tabs.onCreated.addListener(async (tab) => {
 });
 */
 async function initMessageCompose(win) {
+  if (!prefsAvailable) {  //this might happen if TB is called with -compose
+debug('prefs not yet available, delay initMessageCompose');
+		setTimeout(initMessageCompose, 100, win);
+    return
+  }
 debug('initMessageCompose');
 	//messenger.tabs.insertCSS(/*win.tabs[0],*/ {file: 'cs2c_picker.css'});
 	let ok=await messenger.cs2c.addMenu(win.id);
@@ -161,7 +163,7 @@ debug('was first call of addMenu with use_TBB');
 }
 messenger.windows.onCreated.addListener(async (win) => {
 //does not fire if TB is started with -compose
-//debug(" Window CREATED "+win.id+"  "+win.state+"  "+win.type+" title: "+win.title);
+debug(" Window CREATED "+win.id+"  "+win.state+"  "+win.type+" title: "+win.title);
 	if (win.type!='messageCompose') return;
   initMessageCompose(win);
 });

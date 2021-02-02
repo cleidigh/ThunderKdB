@@ -40,8 +40,8 @@ async function copyPatch()
     patch += msg.body.replace(/\r/g, "");
 
     /* Get rid of O365 unsafe links */
-    patch = patch.replace(
-        /https:\/\/[^\.]+\.safelinks\.protection\.outlook\.com\/\?url=([^&]*)&[^>\s]*/g,
+    patch = patch.replaceAll(
+        /https:\/\/[^\.]+\.safelinks\.protection\.outlook\.com\/\?url=([^&]*)&[-+a-zA-Z0-9%&/=.;]*/g,
         function(match, p1, offset, string) {
             return decodeURIComponent(p1);
         });

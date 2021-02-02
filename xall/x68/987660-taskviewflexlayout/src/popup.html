@@ -1,62 +1,160 @@
 <!DOCTYPE html>
 
 <head>
-<title>OppositeTodaySubpane</title>
+<title>TaskviewFlexLayout</title>
 <meta charset="UTF-8"/>
 <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://addons.thunderbird.net/en-US/">
 <base target="_top"/> 
 <link rel="manifest" href="/manifest.json"/>
 <style>
-    #formOne {
-        background-color:IndianRed;
-        color:yellow;
+    body {
+        background-color: white;
+        border: 1px solid navy;
+        width: 280px;
+}
+    #divZero { 
+        color:navy;
+        width: 250px;
+        text-align: left;
+        font-size: 14px;
         font-weight: bold;
-        width: 300px;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #divOne {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        font-weight: bold;
+        width: 250px;
         text-align: center;
-        font: 17px sans-serif;
-        padding: 10px; 
+        font: 14px sans-serif;
+        font-weight: bold;
+        padding: 7px; 
         top: 0;
         left: 0;
         right: 0;
     }
-    #formOne:active {
-        background-color:FireBrick;
+    #divOne:hover {
+        background-color: white;
+        border: 1px solid red;
+        color: red;
+    }
+    #divOne:active {
+        background-color: white;
+        border: 1px solid red;
+        color: red;
 }
-    #formThree {
-        background-color:dodgerblue;
-        color:yellow;
+    #divThree {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
         font-weight: bold;
-        width: 300px;
+        width: 250px;
         text-align: center;
-        font: 17px sans-serif;
-        padding: 10px; 
+        font: 14px sans-serif;
+        font-weight: bold;
+        padding: 7px; 
         top: 0;
         left: 0;
         right: 0;
     }
-    #formThree:active {
-        background-color:navy;
+    #divThree:hover {
+        background-color: white;
+        border: 1px solid red;
+        color: red;
+    }
+    #divThree:active {
+        background-color: white;
+        border: 1px solid red;
+        color: red;
 }
-    #formTwo {
-        background-color:seagreen;
-        color:yellow;
+    #divTwo {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
         font-weight: bold;
-        width: 300px;
+        width: 250px;
         text-align: center;
-        font: 17px sans-serif;
-        padding: 10px; 
+        font: 14px sans-serif;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
         left: 0;
         right: 0;
     }
-    #formTwo:active {
-       background-color:#003300;
+    #divTwo:hover {
+        background-color: white;
+        border: 1px solid red;
+        color: red;
+    }
+    #divTwo:active {
+        background-color: white;
+        border: 1px solid red;
+        color: red;
 }
+    #spaceOne {
+        background-color: white;
+        color:navy;
+        width: 235px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #spaceTwo {
+        background-color: white;
+        color:navy;
+        width: 235px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #spaceThree {
+        background-color: white;
+        color:navy;
+        width: 235px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #spaceFour {
+        background-color: white;
+        color:navy;
+        width: 235px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
 </style>
 </head>
 <body>
-<form id="formOne">View to put task view upside</form>
-<form id="formThree">View to put task view vertical</form>
-<form id="formTwo">View to put task view neutral</form> 
+<div id="divZero">
+<div id="spaceOne"></div>
+<div id="divOne">View to put task view upside</div>
+<div id="spaceTwo"></div>
+<div id="divThree">View to put task view vertical</div>
+<div id="spaceThree"></div>
+<div id="divTwo">View to put task view neutral</div> 
+<div id="spaceFour"></div>
 <script language="javascript" src="code.js"></script>
+</div>
 </body>
 </html>

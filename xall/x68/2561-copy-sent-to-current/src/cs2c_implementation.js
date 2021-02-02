@@ -5,6 +5,7 @@ const {MailUtils} = ChromeUtils.import("resource:///modules/MailUtils.jsm");	//k
 const {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");	//kann ggf. weg
 const { ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
 const Ci=Components.interfaces;
+const Cc=Components.classes;
 
 let sb4f=Services.strings.createBundle("chrome://messenger/locale/folderWidgets.properties");
 var HTB={};
@@ -57,20 +58,24 @@ PRInt32 	SaveAsTemplate 	= 5
 PRInt32 	SendUnsent 	= 6
 PRInt32 	AutoSaveAsDraft 	= 7
 
-nsIMsgCompType
-PRInt32 	New 	= 0
-PRInt32 	Reply 	= 1
-PRInt32 	ReplyAll 	= 2
-PRInt32 	ForwardAsAttachment 	= 3
-PRInt32 	ForwardInline 	= 4
-PRInt32 	NewsPost 	= 5
-PRInt32 	ReplyToSender 	= 6
-PRInt32 	ReplyToGroup 	= 7
-PRInt32 	ReplyToSenderAndGroup 	= 8
-PRInt32 	Draft 	= 9
-PRInt32 	Template 	= 10
-PRInt32 	MailToUrl 	= 11
-PRInt32 	ReplyWithTemplate 	= 12
+nsIMsgCompType, see comm\mailnews\compose\public\nsIMsgComposeParams.idl
+    const long New                      = 0;
+    const long Reply                    = 1;
+    const long ReplyAll                 = 2;
+    const long ForwardAsAttachment      = 3;
+    const long ForwardInline            = 4;
+    const long NewsPost                 = 5;
+    const long ReplyToSender            = 6;
+    const long ReplyToGroup             = 7;    // reply to Newsgroup
+    const long ReplyToSenderAndGroup    = 8;
+    const long Draft                    = 9;
+    const long Template                 = 10;  // New message from template.
+    const long MailToUrl                = 11;
+    const long ReplyWithTemplate        = 12;
+    const long ReplyToList              = 13;
+    const long Redirect                 = 14;
+    const long EditAsNew                = 15;
+    const long EditTemplate             = 16;
 */
 
 var prefs;
@@ -213,7 +218,6 @@ debug('MoveMessage='+win.cs2c_params.allowMove+' moveToURI='+moveToURI);
 debug('MoveMessage: delayed move from '+origURI+' to '+moveToURI);
             // with 'send later', win vanishes too quick
             let w = Services.wm.getMostRecentWindow("mail:3pane");
-//TODO:win		let w = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
             if (!w) w=win;
 						w.setTimeout(MoveMessage, 100, origURI, moveToURI);
 					} else {
@@ -224,7 +228,7 @@ debug('MoveMessage: delayed move from '+origURI+' to '+moveToURI);
         },
 /////////////////////////////////////////////////////////////////////////
         addMenu: async function(wid) {		//called from background if messenger.windows.onCreated
-debug("addMenu started wid="+wid);
+debug("addMenu started wid="+wid+' prefs='+prefs);
 					let win=Services.wm.getOuterWindowWithId(wid);
 					win.cs2c_params={};	//for window specific global parameters
 					if (!getFolders(win)) return false;	//cs2c not enabled for account
@@ -318,7 +322,7 @@ debug(' selected identity is '+identityKey+' '+identity.identityName);
   if (!identity.doFcc) debug(' -- doFcc disabled!');
 
   let account=win.cs2c_params.account;
-//TODO: this the account the compose window was opened with, this might have been changed by user
+//TODO: this is the account the compose window was opened with, this might have been changed by user
 debug('use account '+account);
   if (!prefs[account]) {
 debug('account not enabled for cs2c');
@@ -439,51 +443,83 @@ debug('setFcc finally: fcc='+msgCompFields.fcc+' fcc2='+msgCompFields.fcc2);
 
 function getFolders(cw) {
 	let state='';
+  let curFolder=null;
 	let identity=cw.getCurrentIdentity();
 	cw.cs2c_params.account=cw.getCurrentAccountKey();
 //    if (identity.doFcc && identity.fccFolderPickerMode>=gBase) {
 debug('identity='+identity.key+' .doFcc='+identity.doFcc+' account='+cw.cs2c_params.account+' useAccount='+prefs[cw.cs2c_params.account]);
 	if (!identity.doFcc || !prefs[cw.cs2c_params.account]) return false;		//cs2c not enabled
 
-      //origURI: MessageURI if its a reply or some draft/template message
+      //origURI: MessageURI if its a reply or some draft/template message, else empty
+      // points to template folder if its a template
 	cw.cs2c_params.origURI=cw.gMsgCompose.originalMsgURI;
-	let origType=cw.gComposeType;
-debug('origURI='+cw.cs2c_params.origURI+' composeType='+origType);
-//if a .eml file has been opened:
-//origURI=mailbox:///T:/Temp/nsemail.eml?fetchCompleteMessage=true&number=0&realtype=message/rfc822 composeType=4
+	let compType=cw.gComposeType;
+debug('origURI='+cw.cs2c_params.origURI+' composeType='+compType);
 
-/*beispiel:
-	let msgCompFields = cw.gMsgCompose.compFields;
-	let identity=cw.getCurrentIdentity();
-	let origMsgURI=cw.gMsgCompose.originalMsgURI;	//"" if new, else "imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX#53070"
-	let composeType=cw.gComposeType;								//0 if new, 6 for reply
-*/
+  //new message
+  //  origURI:  empty
+  //  draftURI: empty
+  //  composeType:  0,11   Ci.nsIMsgCompType.New,.MailToUrl
+  //  isMsgUri: n/a
+  //reply(all)/forward(inline/attachment)
+  //  origURI:  imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX#55681
+  //  draftURI: empty
+  //  composeType:  6,4,3,2,13   Ci.nsIMsgCompType.ReplyToSender,.ForwardInline,.ForwardAsAttachment,.ReplyAll,.ReplyToList
+  //  isMsgUri: true
+  //edit as new
+  //  origURI:  imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX#55681
+  //  draftURI: empty
+  //  composeType:  15   Ci.nsIMsgCompType.EditAsNew
+  //  isMsgUri: true
+  //draft bearbeiten - new draft
+  //  origURI:  imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX/Drafts#303
+  //  draftURI: imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX/Drafts#303?fetchCompleteMessage=true
+  //  composeType:  9   Ci.nsIMsgCompType.Draft
+  //  isMsgUri: true (but irrelevant, since its the draft)
+  //draft bearbeiten - draft from reply
+  //  origURI:  imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX#55604
+  //  draftURI: imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX/Drafts#315?fetchCompleteMessage=true
+  //  composeType:  9   Ci.nsIMsgCompType.Draft
+  //  isMsgUri: true is message still exists (but may be moved), false else
+  //new message from template
+  //  origURI:  imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX/Templates#26
+  //  draftURI: empty
+  //  composeType:  10  Ci.nsIMsgCompType.Template
+  //  isMsgUri: true (but irrelevant, since its the template)
+  //edit template
+  //  origURI:  imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX/Templates#26
+  //  draftURI: imap-message://ggbs@mailhost.iwf.ing.tu-bs.de/INBOX/Templates#26?fetchCompleteMessage=true&edittempl=true
+  //  composeType:  16  Ci.nsIMsgCompType.EditTemplate
+  //  isMsgUri: true (but irrelevant, since its the template)
+  //reply to opened .eml file:
+  //  origURI:  file:///T:/Temp/nsemail-20.eml
+  //  draftURI: empty
+  //  composeType:  6   Ci.nsIMsgCompType.ReplyToSender
+  //  isMsgUri: false
+  //forward of opened .eml file:
+  //  origURI:  mailbox:///T:/Temp/nsemail.eml?fetchCompleteMessage=true&number=0&realtype=message/rfc822
+  //  draftURI: empty
+  //  composeType:  4   Ci.nsIMsgCompType.ForwardInline
+  //  isMsgUri: false
 
-	//check, if this is really a message uri
-	//(otherwise it might be a mail attachment which can't be moved)
-	let messenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
-			QueryInterface(Components.interfaces.nsIMessenger);
-	let isMsgUri;
-	try {
-		//this will fail, if its not a message uri
-		let mh = messenger.messageServiceFromURI(cw.cs2c_params.origURI).messageURIToMsgHdr(cw.cs2c_params.origURI);
-		isMsgUri=true;
-	} catch(e) {
-		isMsgUri=false;
-	}
-	cw.cs2c_params.allowMove=cw.cs2c_params.origURI&&isMsgUri && origType!=9/*draft*/ && origType!=10/*template*/;
+	cw.cs2c_params.allowMove=false; // default to false
 
 	state+=' docopy';
 	cw.cs2c_params.sentFolder=identity.fccFolder;
 	cw.cs2c_params.sentLabel=prettyFolderName(MailUtils.getExistingFolder(cw.cs2c_params.sentFolder));
 
-	if (cw.cs2c_params.origURI) {                                 // Is Reply
-		//this could be a reply or a draft/template message
+	if (cw.cs2c_params.origURI) {  // Is Reply/Draft/Template/EditAsNew
 		state+=' reply/draft/template';
-		let messenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
-				QueryInterface(Components.interfaces.nsIMessenger);
-		if (origType==9/*draft*/ || origType==10/*template*/) {
-			state+=' draft';
+
+    let messenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
+        QueryInterface(Components.interfaces.nsIMessenger);
+
+		if (compType==Ci.nsIMsgCompType.Draft/*9*/ || compType==Ci.nsIMsgCompType.Template/*10*/
+        || compType==Ci.nsIMsgCompType.EditTemplate/*16*/
+        || compType==Ci.nsIMsgCompType.EditAsNew/*15*/) {
+
+			state+=compType==Ci.nsIMsgCompType.Draft?' draft':
+            (compType==Ci.nsIMsgCompType.EditAsNew?' editasnew':' template');
 
 			//try to extract FCC. Would be nice, if i could extract the header
 			//unfortunately the following does not work:
@@ -498,55 +534,89 @@ debug('origURI='+cw.cs2c_params.origURI+' composeType='+origType);
 			var fcc=mh.extractHeader("fcc", false);
 			*/
 			//therefore i read the content of the message and parse it
-			var MsgService = messenger.messageServiceFromURI(cw.cs2c_params.origURI);
-			var MsgStream = Components.classes["@mozilla.org/network/sync-stream-listener;1"]
-													 .createInstance();
-			var MsgStrem_Inputstream = MsgStream.QueryInterface(Components.interfaces.nsIInputStream);
-			var ScriptInput = Components.classes["@mozilla.org/scriptableinputstream;1"]
-													 .createInstance();
-			var ScriptInputStream = ScriptInput.QueryInterface(Components.interfaces.nsIScriptableInputStream);
-			ScriptInputStream.init(MsgStream);
-			try {
-				MsgService.streamMessage(cw.cs2c_params.origURI,MsgStream, null, null, false, null);
-			} catch (e) {Components.utils.reportError('CopySent2Current: compose.js: '+e); }
-			ScriptInputStream.available();
-			var content='';
-			var found=null;
-			while (ScriptInputStream.available()) {
-				content+=ScriptInputStream.read(512);
-				if ((found=content.match(/^FCC:\s*(.*)$/m))) break;
-				if (content.search(/\r\n\r\n/m)>=0) break;
-			}
-			ScriptInputStream.close();
-			var fcc=found?found[1]:'';
+
+      let draftURI=cw.gMsgCompose.compFields.draftId;   //only set on drafts and edit template
+debug('draftURI='+draftURI);
+      let uri=draftURI?draftURI:cw.cs2c_params.origURI;   //draftURI for drafts, origURI for templates
+      let fcc=readFCC(uri);
+
+      let origURI=cw.cs2c_params.origURI; //needed for 'withoutFCC'
+      if (compType==Ci.nsIMsgCompType.Template/*10*/
+        || compType==Ci.nsIMsgCompType.EditTemplate/*16*/
+        || compType==Ci.nsIMsgCompType.EditAsNew/*15*/
+        || draftURI.indexOf(cw.cs2c_params.origURI) === 0) {
+debug('origURI is draft,template or editasnew, remove origURI');
+        cw.cs2c_params.origURI=null;
+      }
 
 			if (fcc) {
 				state+=' withFCC';
+debug('found fcc in draft/template: '+fcc);
 				curFolder=MailUtils.getExistingFolder(fcc);
 				if (!curFolder) {
 					debug('state=draft: fcc folder for "'+fcc+'" not found', true);
 					curFolder=MailUtils.getExistingFolder(cw.cs2c_params.sentFolder); //default to the fcc folder (or the default folder?)
 				}
 			} else {
-				//no fcc. Might be a template via 'Edit as new'
+				//no fcc. Might be a message via 'Edit as new'
 				state+=' withoutFCC';
-        let msgHdr=messenger.msgHdrFromURI(cw.cs2c_params.origURI);  //nsIMsgDBHeader
-        curFolder=msgHdr.folder;
+        try {
+          let msgHdr=messenger.msgHdrFromURI(origURI);  //nsIMsgDBHeader
+          curFolder=msgHdr.folder;
+        } catch(e) {
+debug('original message no longer exists');
+          cw.cs2c_params.origURI=null;
+        }
 			}
-		} else {
+		} else {  // is reply
 		//for replies, current folder is the folder of the message replied to!
 			state+=' reply';
       try {
         let msgHdr=messenger.msgHdrFromURI(cw.cs2c_params.origURI);  //nsIMsgDBHeader
         curFolder=msgHdr.folder;
+        //see comm\mailnews\base\public\nsMsgFolderFlags.idl
+        let flags=Ci.nsMsgFolderFlags.Drafts|Ci.nsMsgFolderFlags.Templates;
+        if (curFolder.isSpecialFolder(flags, false)) {
+          let fcc=readFCC(cw.cs2c_params.origURI);
+debug('is draft/template folder got fcc='+fcc);
+          curFolder=MailUtils.getExistingFolder(fcc);
+          if (!curFolder) {
+debug('state=draft/template: fcc folder for "'+fcc+'" not found', true);
+            curFolder=MailUtils.getExistingFolder(cw.cs2c_params.sentFolder); //default to the fcc folder (or the default folder?)
+          }
+          cw.cs2c_params.origURI=null;
+        }
       } catch(e) {
         state+=' .eml';
         curFolder=MailUtils.getExistingFolder(cw.cs2c_params.sentFolder); //default to the fcc folder (or the default folder?)
+        cw.cs2c_params.origURI=null;
+debug('original message is file, unset origURI');
       }
 		}
-	} else if (cw.gMsgCompose.compFields.fcc) {    // fcc set by -compose parameter
+
+    if (cw.cs2c_params.origURI) {
+      //check, if this is really a message uri
+      //  otherwise it might be a mail attachment which can't be moved
+      //  or an already deleted message
+      try {
+        //this throws an error, if its not a message uri or message deleted
+        let mh=messenger.msgHdrFromURI(cw.cs2c_params.origURI);  //nsIMsgDBHeader
+          //but message might be moved to another folder
+        if (mh.messageId) {
+debug('have messageId, origURI still valid')
+          cw.cs2c_params.allowMove=true;
+        } else {
+debug('no messageId found, origURI has moved, no move')
+        }
+      } catch(e) {
+        cw.cs2c_params.origURI=null;
+debug('origURI not valid (message removed), no move');
+      }
+    }
+
+	} else if (cw.gMsgCompose.compFields.fcc) {  // fcc set by -compose parameter (not in TB78?!)
 		debug("have fcc="+cw.gMsgCompose.compFields.fcc);
-		state+=' haveFCC';
+		state+=' -composeWithFCC';
 		curFolder=MailUtils.getExistingFolder(cw.gMsgCompose.compFields.fcc);
 		if (!curFolder) {
 			debug("bad -compose parameter fcc="+cw.gMsgCompose.compFields.fcc+
@@ -555,7 +625,10 @@ debug('origURI='+cw.cs2c_params.origURI+' composeType='+origType);
 		}
 	} else { //Must be a new message. Try to find the currently selected folder
 		state+=' newMsg';
-		let mailWindow = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
+
+//		let mailWindow = cw.getMostRecentMailWindow();
+      //this returns null if TB has been started with -compose, even if mail:3pane has been opened later
+		let mailWindow = Services.wm.getMostRecentWindow("mail:3pane");
 		if (mailWindow) {     //else: no main window
 			state+=' window';
 			var View=mailWindow.gDBView;  //nsIMsgDBView
@@ -588,13 +661,17 @@ debug('origURI='+cw.cs2c_params.origURI+' composeType='+origType);
 
 	if (curFolder) {
 		if (curFolder.canFileMessages) {   // not news or virtual Folder
+debug('found curFolder '+curFolder.URI);
 			cw.cs2c_params.curFolder=curFolder.URI;
 			cw.cs2c_params.curLabel=prettyFolderName(curFolder);
 		} else {  // no usable current folder
+debug('folder not usable as curFolder: '+curFolder.URI);
 			cw.cs2c_params.curFolder=null;
 			curFolder=null;
 		}
-	}
+	} else {
+debug('No curFolder found');
+  }
 
 	if (prefs[cw.cs2c_params.account+'_curorsent']=='sent') {  	      // Sent folder is default
 		cw.cs2c_params.defFolder=cw.cs2c_params.sentFolder;
@@ -616,13 +693,36 @@ debug('origURI='+cw.cs2c_params.origURI+' composeType='+origType);
 	//in TB68, server.prettyName is just 'ggbs', in TB71 its G.Gersdorf@ggbs.de
 
 debug('State: '+state);
-//TODO:
-//When called via -compose parameter, the popup misses the folder hierarchy :-(
-//which seems to be a TB problem. With choosebehind, its ok.
 debug('set menu to: '+cw.cs2c_params.defLabel+' '+cw.cs2c_params.defFolder);
 
   return true;
 }	//getFolders
+
+function readFCC(uri) {
+  let messenger = Components.classes['@mozilla.org/messenger;1'].createInstance().
+        QueryInterface(Components.interfaces.nsIMessenger);
+  let MsgService = messenger.messageServiceFromURI(uri);
+  let MsgStream = Components.classes["@mozilla.org/network/sync-stream-listener;1"]
+                       .createInstance();
+  let MsgStrem_Inputstream = MsgStream.QueryInterface(Components.interfaces.nsIInputStream);
+  let ScriptInput = Components.classes["@mozilla.org/scriptableinputstream;1"]
+                       .createInstance();
+  let ScriptInputStream = ScriptInput.QueryInterface(Components.interfaces.nsIScriptableInputStream);
+  ScriptInputStream.init(MsgStream);
+  MsgService.streamMessage(uri, MsgStream, null, null, false, '');
+//			let c=ScriptInputStream.available();
+    // this always throws a non-catcheable error 'TransactionInactiveError:'
+    // it returns 0 if message does not exists (even if message has been moved to another folder)
+  let content='';
+  let found=null;
+  while (ScriptInputStream.available()) {
+    content+=ScriptInputStream.read(512);
+    if ((found=content.match(/^FCC:\s*(.*)$/m))) break;
+    if (content.search(/\r\n\r\n/m)>=0) break;
+  }
+  ScriptInputStream.close();
+  return found?found[1]:'';
+}
 
 function fpMenu(cw) {
 	let doc=cw.document;
@@ -645,7 +745,7 @@ function fpMenu(cw) {
 	let label=doc.createElementNS('http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul', 'label');
 	label.value=strings['copysent2choose_label'];
 	label.setAttribute('accessKey', strings['copysent2choose_accesskey']);
-	label.setAttribute('control','fccFolderPicker');  //TODO: working?
+	label.setAttribute('control','fccFolderPicker');
 	ti.appendChild(label);
 	tbar.appendChild(ti);
 
@@ -666,7 +766,6 @@ function fpMenu(cw) {
 	let menu=fmp.cloneNode(true);
 	menu.id='cs2c-selector';
 	let w=Services.wm.getMostRecentWindow("mail:3pane");	//any mail:3pane does it
-//TODO:win		let w = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
 	let v=w?w.document.getElementById('mailContext-fileHereMenu'):null;
 	menu.setAttribute('showRecent', 'true');
 	menu.setAttribute('recentLabel', v?v.getAttribute('recentLabel'):'Last');
@@ -770,6 +869,7 @@ function prettyFolderName(folder) {
 }
 
 function MoveMessage(msguri, folderuri) {
+//There is no, really no message or error, if source message does not exists!
 debug('MoveMessage started: to '+folderuri);
   try {
     //see https://developer.mozilla.org/en/Extensions/Thunderbird/HowTos/Common_Thunderbird_Use_Cases/View_Message
@@ -795,8 +895,16 @@ debug('MoveMessage started: to '+folderuri);
       var msgs=Components.classes["@mozilla.org/array;1"].
           createInstance(Components.interfaces.nsIMutableArray);
       msgs.appendElement(msgHdr, false);
+      let listener={
+        OnStartCopy: () => {
+debug('start move');
+        },
+        OnStopCopy: (status) => {
+debug('stop move status='+status);  //status=0 even if message does not exists
+        }
+      };
       copyService.CopyMessages(msgHdr.folder, msgs, folder,
-               true /* isMove */, null/*listener*/, null /*msgWindow*/, true /* allow undo */);
+               true /* isMove */, listener, null /*msgWindow*/, true /* allow undo */);
     } else {
 debug('MoveMessage: Message not moved since target is same folder');
     }
@@ -834,7 +942,7 @@ debug('load stylesheet into '+win.document.location);
           stylesheets(win);
         }
       } else {
-debug('messengercopose opened');
+debug('messengercompose opened');
       }
 		}
 	})
@@ -910,7 +1018,6 @@ debug("fcc? folderpicker:"+identity.fccFolderPickerMode+" replyfollows:"+identit
           state+=' newMsg';
 					let curFolder='';
   	      let mailWindow = Services.wm.getMostRecentWindow("mail:3pane");	//ist nicht 'win' von oben!
-//TODO:win		let w = cw.getMostRecentMailWindow();	//Services.wm.getMostRecentWindow("mail:3pane");
 debug("mailWindow: "+mailWindow);
   	      if (mailWindow) {     //else: no main window
             state+=' window';
@@ -949,6 +1056,7 @@ debug("fcc2 war: "+msgCompFields.fcc2);
 
 let debugcache='';
 function debug(txt, force) {
+//force=true;
 	if (force || prefs) {
 		if (force || prefs.debug) {
 			if (debugcache) console.log(debugcache); debugcache='';

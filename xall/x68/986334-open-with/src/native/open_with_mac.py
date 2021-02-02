@@ -7,7 +7,7 @@ import json
 import struct
 import subprocess
 
-VERSION = '7.2.3'
+VERSION = '7.2.4'
 
 try:
 	sys.stdin.buffer
@@ -64,18 +64,20 @@ def install():
 	locations = {
 		'chrome': os.path.join(home_path, 'Library', 'Application Support', 'Google', 'Chrome', 'NativeMessagingHosts'),
 		'chromium': os.path.join(home_path, 'Library', 'Application Support', 'Chromium', 'NativeMessagingHosts'),
+		'edge': os.path.join(home_path, 'Library', 'Application Support', 'Microsoft Edge', 'NativeMessagingHosts'),
 		'firefox': os.path.join(home_path, 'Library', 'Application Support', 'Mozilla', 'NativeMessagingHosts'),
-		'thunderbird': os.path.join(home_path, 'Library', 'Application Support', 'Thunderbird', 'NativeMessagingHosts'),
+		'thunderbird1': os.path.join(home_path, 'Library', 'Application Support', 'Thunderbird', 'NativeMessagingHosts'),
+		'thunderbird2': os.path.join(home_path, 'Library', 'Mozilla', 'NativeMessagingHosts'),
 	}
 	filename = 'open_with.json'
 
 	for browser, location in locations.items():
 		if os.path.exists(os.path.dirname(location)):
 			if not os.path.exists(location):
-				os.mkdir(location)
+				os.makedirs(location, exist_ok=True)
 
 			browser_manifest = manifest.copy()
-			if browser in ['firefox', 'thunderbird']:
+			if browser in ['firefox', 'thunderbird1', 'thunderbird2']:
 				browser_manifest['allowed_extensions'] = ['openwith@darktrojan.net']
 			else:
 				browser_manifest['allowed_origins'] = [
@@ -95,6 +97,7 @@ def find_browsers():
 		'Chromium',
 		'Firefox',
 		'Google Chrome',
+		'Microsoft Edge',
 		'Opera',
 		'Safari',
 		'SeaMonkey',

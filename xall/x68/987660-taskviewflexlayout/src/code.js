@@ -1,4 +1,4 @@
-formOne.addEventListener('click', function () {
+divOne.addEventListener('click', function () {
           browser.myapi.setSixteen();
           browser.myapi.setOne('calendarDisplayDeck', 'width', '50%');
           browser.myapi.setTwo('calendarContent', 'appendChild', 'taskContainer');
@@ -18,9 +18,11 @@ formOne.addEventListener('click', function () {
           browser.myapi.setEleven('calendar-task-box', 'flexDirection', 'column');
           browser.myapi.setFifteen('calendar-task-box', 'insertBefore', 'calendar-task-details-container', 'task-addition-box');
           browser.myapi.setFourteen('calendar-task-tree', 'refresh', 'true');
+          browser.myapi.setSeventeen();
+          browser.myapi.setEighteen();
 });
 
-formTwo.addEventListener('click', function () {
+divTwo.addEventListener('click', function () {
           browser.myapi.setSixteen();
           browser.myapi.setOne('calendarDisplayDeck', 'width', '50%');
           browser.myapi.setTwo('calendarContent', 'appendChild', 'taskContainer');
@@ -53,9 +55,11 @@ formTwo.addEventListener('click', function () {
           browser.myapi.setTen('calendar-task-tree', 'overflow', 'auto'); 
           browser.myapi.setEleven('calendar-task-box', 'flexDirection', '');
           browser.myapi.setFourteen('calendar-task-tree', 'refresh', 'true');
+          browser.myapi.setSeventeen();
+          browser.myapi.setEighteen();
 });
 
-formThree.addEventListener('click', function () {
+divThree.addEventListener('click', function () {
           browser.myapi.setSixteen();
           browser.myapi.setOne('calendarDisplayDeck', 'width', '50%');
           browser.myapi.setTwo('calendarContent', 'appendChild', 'taskContainer');
@@ -75,4 +79,6 @@ formThree.addEventListener('click', function () {
           browser.myapi.setNine('calendar-task-tree', 'resize', 'horizontal');
           browser.myapi.setTen('calendar-task-tree', 'overflow', 'auto');
           browser.myapi.setFourteen('calendar-task-tree', 'refresh', 'true');
+          browser.myapi.setSeventeen();
+          browser.myapi.setEighteen();
 });

@@ -142,7 +142,23 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
             let taskAdditionBox = window.document.getElementById('task-addition-box');
             if (taskAdditionBox.hidden == true) { taskAdditionBox.hidden = false; };
                     }
-                }
+                },
+          setSeventeen: function() {
+            let windows = Services.wm.getEnumerator("mail:3pane");
+              while (windows.hasMoreElements()) {
+                  let window = windows.getNext();
+                  let taskContainer = window.document.getElementById('calendar-task-details-container');
+                  taskContainer.style.borderWidth = '1px';
+              }
+              },
+          setEighteen: function() {
+            let windows = Services.wm.getEnumerator("mail:3pane");
+              while (windows.hasMoreElements()) {
+                  let window = windows.getNext();
+                  let taskContainer = window.document.getElementById('calendar-task-details-container');
+                  taskContainer.style.borderStyle = 'solid';
+                  }
+               }
             }
         }
     }
