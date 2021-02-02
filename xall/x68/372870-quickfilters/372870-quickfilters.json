@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
         }
     ],
-    "average_daily_users": 13397,
+    "average_daily_users": 14100,
     "categories": {
         "seamonkey": [
             "downloading-and-file-management"
@@ -22,26 +22,26 @@
     "contributions_url": null,
     "created": "2012-05-06T09:12:42Z",
     "current_version": {
-        "id": 2474910,
+        "id": 2475259,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
+                "max": "86.0",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2474910",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2475259",
         "files": [
             {
-                "id": 1018072,
-                "created": "2020-12-02T16:27:56Z",
-                "hash": "sha256:45d84938f37255b2ad3b5161de4a062dd27a5025ae30fcba8960d018281d64d8",
+                "id": 1018420,
+                "created": "2021-01-27T01:19:27Z",
+                "hash": "sha256:ed14e4f134275a0df82fe14d8336269083edb6b6c68da5216624285f8c57f3ca",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 532503,
+                "size": 533035,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018072/quickfilters-5.0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018420/quickfilters-5.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,14 +51,14 @@
             "name": {
                 "en-US": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/5.0.2"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/5.1"
         },
         "release_notes": {
-            "en-US": "quickFilters Change Log - Version 5.0.2\n\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/14\">[issue 14]</a> quickFilters  was migrated to Thunderbird 78, and is now finally available after a lengthy beta phase on <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a>. This years conversion work was expensive and deep - I hired external developer Klaus Buecher  for the main conversion phase and also got some lovely new icons contributed by @Panglab who did a lot of design work for Thunderbird Core.\n\nI had a lot of extra days of work and around 3,500$ of expenses for this years Add-on conversions and releases -  also the web site had to be migrated from the now decommissioned free hosting on <a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a> to github pages. To help fund quickFilters for the next year and the unavoidable changes necessary to switch over to an API  based approach, you should <a rel=\"nofollow\" href=\"https://sites.fastspring.com/quickfolders/instant/quickfilters?referrer=atn-version-page\">buy a quickFilters Pro license</a>.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/33\">[issue 33]</a>Copy  / move mail context menu broken with quickfilters</li></ul>    \n<b> Thunderbird 78 Regressions Fixed </b>\n<ul><li> 5.0.2 - Add-on was broken (no toolbar buttons / options dialog) for Spanish and Hungarian users due to a problem with localisation</li><li> 5.0.1 - fixed the broken options screen that comes up on Add-ons Manager. You cannot currently open options from there. PLease use the tools / addons menu or right-click the main icon (quickFilters assistant) on the toolbar</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/39\">[issue 39]</a> Rewrite \"Reply-To\" custom condition to work without bindings. As bindings have been completely removed from Thunderbird 78 the custom condition for editing the Reply-to header have to be rewritten using JavaScript - I am using similar code to FiltaQuilla (mutation observers) which took me quite a few difficult days to develop.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/27\">[issue 27]</a> Filter creation (merging) window not sized constrained when many test items.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/26\">[issue 26]</a> \"Next Steps\" does not over-ride \"Settings/Actions.\"</li></ul>"
+            "en-US": "<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/14\">[issue 14]</a> quickFilters  was migrated to Thunderbird 78, and is now finally available after a lengthy beta phase on <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a>. Last year's conversion work was expensive and deep - I hired external developer Klaus Buecher for the main conversion phase and also got some lovely new icons contributed by @Panglab who did a lot of design work for Thunderbird Core.\n\nI had a lot of extra days of work and around 3,500$ of expenses for this years Add-on conversions and releases -  also the web site had to be migrated from the now decommissioned free hosting on <a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a> to github pages. To help fund quickFilters for the next year and the unavoidable changes necessary to switch over to an API  based approach, you should <a rel=\"nofollow\" href=\"https://sites.fastspring.com/quickfolders/instant/quickfilters?referrer=atn-version-page\">buy a quickFilters Pro license</a>.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/33\">[issue 33]</a> Copy  / move mail context menu broken with quickfilters</li><li>Improved reopening any support sites already open in a tab by jumping to the correct place if necessary.</li></ul>    \n<b> Thunderbird 78 Regressions Fixed </b>\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/41\">[issue 41]</a> Fixed: Merge filters (at least manually) is broken. </li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/42\">[issue 42]</a> All cut / copied filters in list should be highlighted with icon. </li><li>Fixed: Filter Editor: The reply-to condition field can be broken / disabled if certain character combinations are used (usually involving parentheses or angle brackets)</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/44\">[issue 44]</a> Folder names default delimiter shows black diamond � instead » </li><li> Thunderbird 85 beta - Fixed the buttons \"Run filters on folder\" and \"Run filters on selected mails\" which stopped working due to a parameter change in the function MailServices.filters.applyFiltersToFolders(). Although I fixed this particular issue I make no guarantees for any functionality if you are using beta versions. During the ESR period I can only fully support the current ESR version Thunderbird 78.1 - 78.*.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/5.0.2",
-        "version": "5.0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/5.1",
+        "version": "5.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -83,7 +83,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-02T16:43:09Z",
+    "last_updated": "2021-01-27T05:45:47Z",
     "name": {
         "ru": "quickFilters",
         "fr": "quickFilters",

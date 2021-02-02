@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 611,
+    "average_daily_users": 857,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-30T23:11:49Z",
     "current_version": {
-        "id": 2475235,
+        "id": 2475280,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.5.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/textmarker/versions/2475235",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/textmarker/versions/2475280",
         "files": [
             {
-                "id": 1018396,
-                "created": "2021-01-23T22:51:35Z",
-                "hash": "sha256:302bb47c3af3b3903b395a13f3bdc9b0e4735c2bb5a4780bb3c5aab9621c1e4c",
+                "id": 1018441,
+                "created": "2021-01-28T15:34:16Z",
+                "hash": "sha256:0610463c321e1e336dbe767d2f9e55c727fb7f3d310bb75ace42fe5aec0f6ea7",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 193386,
+                "size": 197521,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018396/textmarker-4.5.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018441/textmarker-5.0.1-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "activeTab",
@@ -56,11 +56,13 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/textmarker/versions/4.5.3",
-        "version": "4.5.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/textmarker/versions/5.0.1",
+        "version": "5.0.1"
     },
     "default_locale": "en-CA",
     "description": {
+        "fr": "Le « surlignage » est obtenu en changeant la couleur de fond du texte sélectionné.\n\nPour annuler un surlignage, maintenir la touche « Maj » enfoncée et cliquer sur le bouton « Surligner », la couleur de fond du texte sélectionné redevient celle du document.\n\nPour changer rapidement de couleur, maintenir la touche « Ctrl » (sous Windows) ou « Command » (sous Mac) enfoncée et cliquer sur le bouton « Surligner ».\n\nLa couleur de surlignage active est indiquée dans l’icône du bouton.\n\n(Remarque importante : cette extension ne fonctionne pas si l’option Thunderbird « Outrepasser les couleurs spécifiées par le contenu avec celles choisies ci-dessus : » est réglée sur « Toujours ».)",
+        "de": "Die \"Hervorhebung\" wird erreicht, indem die Hintergrundfarbe des ausgewählten Textes geändert wird.\n\nUm die Hervorhebung rückgängig zu machen, halten Sie \"Umschalt\" + klicken Sie auf die Schaltfläche \"Mark\", um den markierten Text auf die Hintergrundfarbe des Dokuments zurückzusetzen.\n\nSchnelle Farbauswahl durch Halten von \"Strg\" + Klicken auf die Schaltfläche \"Mark\" auf Windows-Computer.\nSchnelle Farbauswahl durch \"Command\" + Klicken auf die Schaltfläche \"Mark\" auf Mac-Computer.\n\nDie aktuell aktive Farbe wird im Schaltflächensymbol angezeigt.\n\n(Wichtiger Hinweis: Wenn die Thunderbird-Option \"Ausgewählte Farben anstatt der Farben des Inhalts:\" auf \"Immer\" gesetzt ist, funktioniert das Add-on nicht.)",
         "en-CA": "\"Highlighting\" is achieved be changing the background colour of the selected text.\n\nTo undo highlighting, hold \"Shift\" + click the \"Mark\" button to reset the selected text to the document's background colour.\n\nQuick colour selection by holding \"Ctrl\" + clicking the \"Mark\" button on windows computer.\nQuick colour selection by holding \"Command\" + clicking the \"Mark\" button on Mac computer.\n\nThe currently active colour is displayed in the button icon.\n\n(Important remark: If the Thunderbird option \"Override the colours specified by the content with my selections above:\" is set to \"Always\", the Add-on will not work.)"
     },
     "developer_comments": null,
@@ -78,8 +80,10 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-23T22:55:02Z",
+    "last_updated": "2021-01-28T15:35:03Z",
     "name": {
+        "fr": "Textmarker",
+        "de": "Textmarker",
         "en-CA": "Textmarker"
     },
     "previews": [
@@ -128,10 +132,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.77664,
-        "count": 11,
-        "average": 4.9091,
-        "text_count": 11
+        "bayesian_average": 4.79481,
+        "count": 12,
+        "average": 4.9167,
+        "text_count": 12
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/textmarker/reviews/",
     "requires_payment": false,
@@ -139,6 +143,8 @@
     "slug": "textmarker",
     "status": "public",
     "summary": {
+        "fr": "Surligne le texte sélectionné lors de la composition des e-mails. La couleur par défaut est jaune - d’autres couleurs sont disponibles via Options.\n(Ne fonctionne que lors de l’écriture d’un e-mail, c.-à-d. uniquement dans la fenêtre de composition)",
+        "de": "Hebt den markierten Text beim Schreiben von E-Mails hervor. Die Standardfarbe ist gelb - andere Farben sind über die Einstellungen verfügbar.\n(Funktioniert nur beim Schreiben einer E-Mail, d. h. nur im Verfassenfenster.)",
         "en-CA": "Highlights selected text when composing emails. Default colour is yellow - other colours are available via Options.\n(Works only during writing an e-mail, i.e. only in the compose window.)"
     },
     "support_email": {

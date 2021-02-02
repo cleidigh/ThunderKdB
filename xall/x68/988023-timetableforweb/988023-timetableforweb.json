@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
         }
     ],
-    "average_daily_users": 0,
+    "average_daily_users": 2,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/paypalme/shh0884",
     "created": "2021-01-23T13:50:41Z",
     "current_version": {
-        "id": 2475236,
+        "id": 2475278,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/timetableforweb/versions/2475236",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/timetableforweb/versions/2475278",
         "files": [
             {
-                "id": 1018397,
-                "created": "2021-01-24T01:32:13Z",
-                "hash": "sha256:38a410211da88464a35952b220cea1d942e13341b83781a5bc6a97b808ac1d9a",
+                "id": 1018439,
+                "created": "2021-01-28T09:56:06Z",
+                "hash": "sha256:030018f8eb0800424ec5fb1011b0dacc2060d9e21ac0da8002e1c6d5ad8b0444",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4656,
+                "size": 14733,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018397/timetableforweb-1.5-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018439/timetableforweb-2.1-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
@@ -52,16 +52,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Version 1.5.\n\nI changed widths and font sizes larger."
+            "en-US": "Version 2.1.\n\nOuter line color of each timetable was changed from text color to frame color.\nSo, outer line color was as same as frame color.\n\nJanuary 28th 2021.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/timetableforweb/versions/1.5",
-        "version": "1.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/timetableforweb/versions/2.1",
+        "version": "2.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Timetable is displayed in browserAction popup.\n\n1) Write time schedule in each time table.\n2) Click \"Update\" button.\n3) If restart, click \"Display\" button, previous data are displayed.\n\n<b>Semi Web application using html window for indexedDB.</b>\n\n<b>Storage permission is needed for yourself.</b>\n\n<b>Display just previous schedule.</b>\n<b>Update current time schedule.</b>\n<b>Good to update future schedule too.</b>\n\nI thank God through Jesus Christ.\n\nJanuary 23th 2021.\n\nFrom Sungho Hwang.",
-        "ko": "Timetable is displayed in browserAction popup.\n\n1) Write time schedule in each time table.\n2) Click \"Update\" button.\n3) If restart, click \"Display\" button, previous data are displayed.\n\n<b>Semi Web application using html window for indexedDB.</b>\n\n<b>Storage permission is needed for yourself.</b>\n\n<b>Display just previous schedule.</b>\n<b>Update current time schedule.</b>\n<b>Good to update future schedule too.</b>\n\nI thank God through Jesus Christ.\n\nJanuary 23th 2021.\n\nFrom Sungho Hwang."
+        "en-US": "Timetable is displayed in browserAction popup.\n\nSemi Web application using html window for indexedDB.\n1) New Indexed Database for Timetable is created.\n2) New object store of the database is created.\n3) New record in the object store is created.\n4) Data in the record is updated if you fill each input field and click \"Update\" button.\n5) Data remain displayed automatically in each input field.\n\n# One record is updated, not adding next record. So, storage volume is saved.\n# I seem that timetable is not needed to add cumulative records which are different to calendar items.\n\nStorage permission is needed for yourself.\n\nDisplay just previous schedule.\nUpdate current time schedule.\nGood to update future schedule too.\n\n<b>I thank God through Jesus Christ.</b>\n\nJanuary 23th 2021.\n\nFrom Sungho Hwang.",
+        "ko": "Timetable is displayed in browserAction popup.\n\nSemi Web application using html window for indexedDB.\n1) New Indexed Database for Timetable is created.\n2) New object store of the database is created.\n3) New record in the object store is created.\n4) Data in the record is updated if you fill each input field and click \"Update\" button.\n5) Data remain displayed automatically in each input field.\n\n# One record is updated, not adding next record. So, storage volume is saved.\n# I seem that timetable is not needed to add cumulative records which are different to calendar items.\n\nStorage permission is needed for yourself.\n\nDisplay just previous schedule.\nUpdate current time schedule.\nGood to update future schedule too.\n\n<b>I thank God through Jesus Christ.</b>\n\nJanuary 23th 2021.\n\nFrom Sungho Hwang."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/timetableforweb/edit",
@@ -78,27 +78,27 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-24T01:35:03Z",
+    "last_updated": "2021-01-28T10:00:03Z",
     "name": {
         "en-US": "TimetableForWeb",
         "ko": "웹시간표"
     },
     "previews": [
         {
-            "id": 206419,
+            "id": 206426,
             "caption": {
                 "en-US": "Timetable for Web."
             },
             "image_size": [
-                1086,
-                576
+                1178,
+                556
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206419.png?modified=1611454651",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206426.png?modified=1612087896",
             "thumbnail_size": [
                 320,
-                170
+                151
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206419.png?modified=1611454651"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206426.png?modified=1612087896"
         }
     ],
     "public_stats": false,
@@ -114,8 +114,8 @@
     "slug": "timetableforweb",
     "status": "public",
     "summary": {
-        "en-US": "Timetable is displayed in browserAction popup.\n\n1) Write time schedule in each time table.\n2) Click \"Update\" button.\n3) If restart, click \"Display\" button, previous data are displayed.\n\nI thank God through Jesus Christ.",
-        "ko": "웹 시간표입니다.\n\n1) 각 시간일정을 시간표에 작성해보세요.\n2) 작성하고서 Update 단추를 누루세요.\n3) 재시작시에 Display 단추를 누르세요.\n\n하느님께 감사드립니다.\n\n개발자 황성호."
+        "en-US": "Timetable is displayed in browserAction popup.\n\nDisplay just previous schedule.\nUpdate current time schedule.\nGood to update future schedule too.\n\nI thank God through Jesus Christ.",
+        "ko": "웹시간표는 브라우저액션 팝업에서 열립니다.\n\n직전 시간표가 나타납니다.\n현재 시간표를 갱신하세요.\n다음날 시간표를 작성하셔도 좋습니다. \n\n하느님께 감사드립니다.\n\n개발자 황성호."
     },
     "support_email": {
         "en-US": "shh0884@outlook.kr"

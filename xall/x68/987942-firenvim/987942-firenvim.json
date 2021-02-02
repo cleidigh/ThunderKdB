@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-09T09:01:13Z",
     "current_version": {
-        "id": 2475138,
+        "id": 2475159,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "84.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/firenvim/versions/2475138",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/firenvim/versions/2475159",
         "files": [
             {
-                "id": 1018299,
-                "created": "2021-01-08T15:43:13Z",
-                "hash": "sha256:447fd1361550f4005a377bda4a76f5bd0d75442b8fd96332b6f152b7d3a5533f",
+                "id": 1018320,
+                "created": "2021-01-12T06:38:21Z",
+                "hash": "sha256:8fad39be43f1bfd5c7d863cf246b3191320bdc49a639b7ac77466e2ecc9a3262",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 379173,
+                "size": 381036,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018299/firenvim-0.2.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018320/firenvim-0.2.3-tb.xpi?src=",
                 "permissions": [
                     "nativeMessaging",
                     "storage",
@@ -76,11 +76,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "New features:\n- A canvas renderer has been merged, improving performance by a lot  (34a7ca8)\n- It is now possible to edit the HTML of contenteditable elements  (6ed8dfd)\n\nBug fixes:\n- Firenvim now works better with frames (8e6895e)\n- Firenvim won't focus the editor if it is closed while the page is  focused (934f772)\n- Firenvim will now work better with pages that remove its elements from  the page (b6003c6)\n- Firenvim will now respect XDG on Linux (44113e4)"
+            "en-US": "Bug Fixes:\n- Black bars/lines should be a thing of the past (930115b)\n- Firenvim will correctly identify again the element to take over when using its keyboard shortcuts (109adad)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/firenvim/versions/0.2.0",
-        "version": "0.2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/firenvim/versions/0.2.3",
+        "version": "0.2.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -103,7 +103,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-08T15:45:03Z",
+    "last_updated": "2021-01-12T06:40:03Z",
     "name": {
         "en-US": "Firenvim"
     },
