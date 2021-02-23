@@ -205,7 +205,7 @@ debug("setFcc started: wid="+wid+' identityKey'+identityKey+' preSelect='+preSel
 					let win=Services.wm.getOuterWindowWithId(wid);
 debug('cs2c_params='+JSON.stringify(win.cs2c_params));
 
-          let moveToURI=setFcc(win, identityKey, preSelect);
+          let moveToURI=setFcc(win, identityKey, preSelect, true);
 
 if (prefs.test) console.warn('CS2C: test - do not send message');
 if (prefs.test) return false;	//do not send message
@@ -235,7 +235,7 @@ debug("addMenu started wid="+wid+' prefs='+prefs);
 					if (!('chooseBehind' in prefs) || !prefs.chooseBehind) {
 debug('show chooser');
 						fpMenu(win);
-            setFcc(win, '', ''); //set fcc if later saved as draft or template
+            setFcc(win, '', '', false); //set fcc if later saved as draft or template
 					}
 else debug('dont show chooser chooseBehind='+prefs.chooseBehind);
 					if (prefs['use_HTB']) {
@@ -293,7 +293,7 @@ debug('add toolbar buttons');
 };
 
 ////////////////////////////////////////////////////////////////////////
-function setFcc(win, identityKey, preSelect) {
+function setFcc(win, identityKey, preSelect, isSend) {
 /* This is ...
           let identity=MailServices.accounts.getIdentity(identityKey);
           let akey=null;
@@ -422,10 +422,12 @@ debug(' for message '+msgCompFields.subject);
     debug('fcc2 already set to '+msgCompFields.fcc2+' by menu "Options/Send a copy to"');
   } else if (prefs[account+'_sentalso'] && msgCompFields.fcc != sentFolder) {
     // also to sent folder
-    if (msgCompFields.fcc=='nocopy://') {
-      msgCompFields.fcc = sentFolder;
-    } else {
-      msgCompFields.fcc2 = sentFolder;
+    if (isSend) { //set fcc2 only if its the real send and not a save to draft (BUG xxxxxxx)
+      if (msgCompFields.fcc=='nocopy://') {
+        msgCompFields.fcc = sentFolder;
+      } else {
+        msgCompFields.fcc2 = sentFolder;
+      }
     }
   }
   if (msgCompFields.fcc2 && msgCompFields.fcc2.substr(0,7)!='imap://' &&  // if sent folder is local
@@ -448,6 +450,10 @@ function getFolders(cw) {
 	cw.cs2c_params.account=cw.getCurrentAccountKey();
 //    if (identity.doFcc && identity.fccFolderPickerMode>=gBase) {
 debug('identity='+identity.key+' .doFcc='+identity.doFcc+' account='+cw.cs2c_params.account+' useAccount='+prefs[cw.cs2c_params.account]);
+  if (!prefs.hasOwnProperty(cw.cs2c_params.account)) {
+    prefs[cw.cs2c_params.account]=true;
+debug('pref for account '+cw.cs2c_params.account+' not set, assume true for new accounts');
+  }
 	if (!identity.doFcc || !prefs[cw.cs2c_params.account]) return false;		//cs2c not enabled
 
       //origURI: MessageURI if its a reply or some draft/template message, else empty
@@ -831,7 +837,7 @@ function fpMenu(cw) {
 		mi.setAttribute('label', name);
 		mi.setAttribute('uri',uri);
 		mi.setAttribute('lastlabel',name);
-    setFcc(cw, '', ''); //set fcc if later saved as draft or template
+    setFcc(cw, '', '', false); //set fcc if later saved as draft or template
 	} );
 	ml.addEventListener("keydown", function(ev) {
 //console.log('key pressed '+ev.keyCode);

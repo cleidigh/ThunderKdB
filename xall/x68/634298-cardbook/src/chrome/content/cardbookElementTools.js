@@ -197,6 +197,38 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			return aDatepicker;
 		},
 
+		addKeyTextarea: function (aParent, aId, aValue, aParameters, aIndex) {
+			var aKeyTextArea = cardbookElementTools.addTextarea(aParent, aId, aValue, aParameters);
+
+			function checkKeyTextArea(event) {
+				let idArray = this.id.split('_');
+				let type = idArray[0];
+				let index = idArray[1];
+				let prevIndex = parseInt(index) - 1;
+				let nextIndex = parseInt(index) + +1;
+				document.getElementById(type + "_" + index + "_removeButton").disabled = false;
+				if (this.value == "") {
+					document.getElementById(type + "_" + index + "_addButton").disabled = true;
+				} else {
+					document.getElementById(type + "_" + index + "_addButton").disabled = false;
+				}
+				document.getElementById(type + "_" + index + "_downButton").disabled = true;
+				document.getElementById(type + "_" + index + "_upButton").disabled = true;
+				if (document.getElementById(type + "_" + prevIndex + "_addButton")) {
+					document.getElementById(type + "_" + prevIndex + "_addButton").disabled = true;
+					document.getElementById(type + "_" + prevIndex + "_downButton").disabled = false;
+					document.getElementById(type + "_" + index + "_upButton").disabled = false;
+				}
+				if (document.getElementById(type + "_" + nextIndex + "_addButton")) {
+					document.getElementById(type + "_" + index + "_addButton").disabled = true;
+					document.getElementById(type + "_" + index + "_downButton").disabled = false;
+					document.getElementById(type + "_" + nextIndex + "_upButton").disabled = false;
+				}
+			};
+			aKeyTextArea.addEventListener("input", checkKeyTextArea, false);
+			return aKeyTextArea;
+		},
+
 		addTextarea: function (aParent, aId, aValue, aParameters) {
 			var aTextarea = document.createElementNS("http://www.w3.org/1999/xhtml","html:textarea");
 			aParent.appendChild(aTextarea);
@@ -633,7 +665,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			function firePrefCheckBox(event) {
 				var myIdArray = this.id.split('_');
 				if (document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBoxLabel') &&
-					document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox')) { 
+					document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox')) {
 					var myPrefWeightBoxLabel = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBoxLabel');
 					var myPrefWeightBox = document.getElementById(myIdArray[0] + '_' + myIdArray[1] + '_prefWeightBox');
 					if (this.getAttribute('haspref')) {
@@ -655,7 +687,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			return aPrefButton;
 		},
 
-		addKeyButton: function (aParent, aType, aIndex, aKeyType) {
+		addKeyButton: function (aParent, aType, aIndex, aKeyType, aCardFn, aCardDirPrefId) {
 			var aKeyButton = document.createXULElement('button');
 			aParent.appendChild(aKeyButton);
 			aKeyButton.setAttribute('id', aType + '_' + aIndex + '_PrefImage');
@@ -667,12 +699,20 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			}
 			let keyValue = aKeyType.value ? aKeyType.value : aKeyType.URI;
 			aKeyButton.setAttribute('keyValue', keyValue);
+			aKeyButton.setAttribute('cardFn', aCardFn);
+			aKeyButton.setAttribute('cardDirPrefId', aCardDirPrefId);
 
 			function fireKeyCheckBox(event) {
 				let confirmTitle = cardbookRepository.extension.localeData.localizeMessage("confirmTitle");
 				let confirmMsg = cardbookRepository.extension.localeData.localizeMessage("importKeyFromCards.label");
 				if (Services.prompt.confirm(window, confirmTitle, confirmMsg)) {
-					wdw_cardbook.importKeyFromValue(this.getAttribute('keyValue'));
+					wdw_cardbook.importKeyFromValue(
+						this.getAttribute('keyValue'),
+						{
+							'dirPrefId': this.getAttribute('cardDirPrefId'),
+							'fn': this.getAttribute('cardFn')
+						}
+					);
 				}
 			};
 			aKeyButton.addEventListener("command", fireKeyCheckBox, false);

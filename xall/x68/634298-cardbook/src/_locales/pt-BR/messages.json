@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "Sem categoria"
 	},
-	"collectedCards": {
-		"message": "Cartões agrupados"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "Habilitar agenda"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "Permissões de leitura (somente) na agenda"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "Criar Categoria"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Editar categoria"
@@ -250,7 +250,7 @@
         }
 	},
 	"synchroCardsUpToDate": {
-		"message": "$P1$ : Contatos atualizados até a data: $P2$",
+		"message": "$P1$ : Contatos atualizados até a data : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$ : Contatos apagados no disco : $P2$",
+		"message": "$P1$ : Contatos removidos localmente : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +305,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Contatos apagados no disco e atualizados no servidor : $P2$",
+		"message": "$P1$ : Contatos removidos localmente e atualizados no servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +316,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "$P1$ : Novos contactos no disco : $P2$",
+		"message": "$P1$ : Novos contatos localmente : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$ : Contatos atualizados no disco : $P2$",
+		"message": "$P1$ : Contatos atualizados localmente : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$ : Contatos atualizados no disco e servidor : $P2$",
+		"message": "$P1$ : Contatos atualizados localmente e no servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Contatos atualizados no disco e apagados no servidor : $P2$",
+		"message": "$P1$ : Contatos atualizados localmente e apagados no servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : Categorias atualizadas : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : Novas categorias no servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : Categorias atualizadas no servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : Categorias removidas no servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : Categorias removidas localmente : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Categorias removidas localmente e atualizadas no servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : Novas categorias locais : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : Categorias atualizadas localmente : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : Categorias atualizadas localmente e no servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Categorias atualizadas localmente e apagadas no servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -576,7 +686,7 @@
 		"message": "Todas as importações concluidas"
 	},
 	"cardDeletedOnDisk": {
-		"message": "$P1$ : Contato $P2$ apagado do disco",
+		"message": "$P1$ : Contato $P2$ apagado localmente",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -587,7 +697,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "$P1$ : Contato $P2$ atualizado no disco",
+		"message": "$P1$ : Contato $P2$ atualizado localmente",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -608,19 +718,8 @@
             }
         }
 	},
-	"cardGetFromCache": {
-		"message": "$P1$ : Contato $P2$ retirado do cache",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Contato $P2$ apagado do disco e atualizado no servidor",
+		"message": "$P1$ : Contato $P2$ apagado localmente e atualizado no servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -631,7 +730,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "$P1$ : Contato $P2$ atualizado no disco e no servidor",
+		"message": "$P1$ : Contato $P2$ atualizado localmente e no servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -666,17 +765,6 @@
             }
         }
 	},
-	"cardLoadedFromCache": {
-		"message": "$P1$ : Contato $P2$ carregado da cache",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardLoadedFromCacheDB": {
 		"message": "$P1$ : Contato $P2$ carregado da cache (IndexedDB)",
         "placeholders": {
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$ : Contato $P2$ novo no disco",
+		"message": "$P1$ : Contato $P2$ novo localmente",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Contato $P2$ atualizado no disco e apagado no servidor",
+		"message": "$P1$ : Contato $P2$ atualizado localmente e apagado no servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,31 +820,31 @@
             }
         }
 	},
-	"askUserTitle": {
-		"message": "Conflitos nas modificações do contato"
+	"cardAskUserTitle": {
+		"message": "Conflito na Alteração de Contato"
 	},
 	"askUserPersistMessage": {
 		"message": "Aplicar esta opção a outros contatos já existentes"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "Manter o contato"
 	},
-	"updateAskUserLabel": {
-		"message": "Re-escrever o contato"
+	"cardupdateAskUserLabel": {
+		"message": "Substituir o contato"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "Duplicar o contato"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "Apagar contato"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "Preferir alterações locais"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "Preferir alterações remotas"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "Juntar as diferenças"
 	},
 	"serverCardDeletedFromServer": {
@@ -1015,6 +1103,387 @@
             },
             "P3": {
                 "content": "$3"
+            }
+        }
+	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : Contato $P2$ : enviando solicitação para descritores dos contatos …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : Contato $P2$ : descritores recuperados",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : Contato $P2$ falha ao obter descritores no servidor (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : Contato $P2$ : enviando solicitação para atualizar descritores dos contatos …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : Contato $P2$ : descritores atualizados",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : Contato $P2$ falha ao atualizar descritores no servidor (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : Categoria $P2$ apagada localmente",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : Categoria $P2$ atualizada localmente",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : Categoria $P2$ já recuperada do cache",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Categoria $P2$ apagada localmente e atualizada no servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : Categoria $P2$ atualizado localmente e no servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : Categoria $P2$ atualizado no servidor (etag encontrada : $P3$, etag na cache : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : Encontrada nova categoria no servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : Categoria $P2$ carregada do cache (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : Categoria $P2$ nova localmente",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Categoria $P2$ atualizada localmente e apagada no servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : Categoria $P2$ apagada no servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "Conflito na Alteração de Categoria"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "Manter a categoria"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "Remover a categoria"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Preferir alterações locais"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Preferir alterações remotas"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : Categoria $P2$ apagada no servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : Categoria $P2$ não existe no servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : Categoria $P2$ não foi apagada no servidor (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : Categoria $P2$ : enviando pedido para remoção …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Categoria $P2$ atualizada no servidor (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Categoria $P2$ atualizada no servidor (sem etag na resposta)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : Categoria $P2$ não foi atualizada no servidor (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : Categoria $P2$ : enviando pedido para atualização …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : Categoria $P2$ criada no servidor (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Categoria $P2$ criada no servidor (sem etag na resposta)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : Categoria $P2$ não foi criada no servidor (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : Categoria $P2$ : enviando pedido para criação …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : Procurando categorias …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
             }
         }
 	},
@@ -1582,6 +2051,17 @@
         "placeholders": {
             "P1": {
                 "content": "$1"
+            }
+        }
+	},
+	"categoryRenamed": {
+		"message": "$P1$ : Categoria $P2$ renomeada",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
             }
         }
 	},
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "Editor da organização"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "Criar Categoria"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Editor de categoria"
 	},
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "Tipo:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Categoria:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "Categoria:"
@@ -2761,8 +3247,32 @@
             }
         }
 	},
-	"newTokenDescription": {
+	"warnDescription": {
 		"message": "Cardbook gostaria de acessar sua conta $P1$ para buscar contatos. Dados de contatos e credenciais só são transferidas entre o computador e Google, nenhuma outra parte está envolvida.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "Application: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "Client Identification: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "Escopo: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3401,9 +3911,6 @@
 	},
 	"birthdaylistTabLabel": {
 		"message": "Aniversário"
-	},
-	"synclistTabLabel": {
-		"message": "Lembretes de aniversário"
 	},
 	"integrationGroupboxLabel": {
 		"message": "Integração com Thunderbird"
@@ -4836,7 +5343,7 @@
 	"eventsTree.calendarname.tooltip2": {
 		"message": "Ordenar por nome da agenda"
 	},
-	"createEventLabel": {        
+	"createEventLabel": {
 		"message": "Novo evento"
 	},
 	"createEventAccesskey": {

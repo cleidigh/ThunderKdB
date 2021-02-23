@@ -64,7 +64,7 @@ if ("undefined" == typeof(ovl_attachments)) {
 							cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : attachment successfully downloaded");
 							var myTopic = "cardsImportedFromFile";
 							var myActionId = cardbookActions.startAction(myTopic, [this.mFile.leafName]);
-							cardbookRepository.cardbookSynchronization.loadFile(this.mFile, this.myDirPrefId, this.myDirPrefId, "WINDOW", "IMPORTFILE", myActionId);
+							cardbookRepository.cardbookSynchronization.loadFile(this.mFile, this.myDirPrefId, this.myDirPrefId, "IMPORTFILE", myActionId);
 							cardbookActions.endAsyncAction(myActionId);
 						} else {
 							cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : attachment not successfully downloaded, status : " + aStatus);

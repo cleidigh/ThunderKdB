@@ -423,6 +423,7 @@ var wdw_cardbookConfiguration = {
 	validateEncryptionPref: async function () {
 		var myNewCheck = document.getElementById('localDataEncryptionEnabledCheckBox').checked;
 		if (myNewCheck !== wdw_cardbookConfiguration.encryptionPrefOld) {
+			cardbookRepository.cardbookPreferences.setBoolPref("extensions.cardbook.localDataEncryption", myNewCheck);
 			if (myNewCheck) {
 				cardbookIndexedDB.encryptDBs();
 			} else {

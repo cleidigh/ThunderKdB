@@ -239,11 +239,19 @@
     "description": "Options."
   },
   "customZoomEnabled": {
-    "message": "Enable custom Zoom",
+    "message": "Enable custom zoom",
     "description": "Options."
   },
-  "customZoomExtra": {
-    "message": "* Zoom with Ctrl+/- or Ctrl-mousewheel up/down or left mousebutton down-mousewheel up/down.",
+  "globalZoomFactor": {
+    "message": "Global chrome and content zoom level:",
+    "description": "Options."
+  },
+  "globalZoomFactorExtra": {
+    "message": "* Setting for chrome font size and UI elements (folder list, message list, toolbars, tabs, icons) as well as content (messages, web pages, about system pages). Change is applied to content in a tab upon tab selection.",
+    "description": "Options."
+  },
+  "contentZoomLegend": {
+    "message": "Content zoom settings",
     "description": "Options."
   },
   "zoomIncrement": {
@@ -255,23 +263,15 @@
     "description": "Options."
   },
   "zoomIncrementExtra": {
-    "message": "* Per tab zoom on content (messages, web pages, system pages).",
+    "message": "* Additional factor for content, applied to the global setting above, using Ctrl+/- or Ctrl-mousewheel up/down or left mousebutton down-mousewheel up/down. Zoom level is shown in the url toolbar.",
     "description": "Options."
   },
-  "chromeZoomFactor": {
-    "message": "Chrome zoom level:",
+  "perTabZoomDisabled": {
+    "message": "Disable per tab zoom",
     "description": "Options."
   },
-  "chromeZoomFactorExtra": {
-    "message": "* Global setting for chrome font size and UI elements (folder list, message list, toolbars, tabs, icons).",
-    "description": "Options."
-  },
-  "globalZoomEnabled": {
-    "message": "Enable global zoom",
-    "description": "Options."
-  },
-  "globalZoomEnabledExtra": {
-    "message": "* Use current tab zoom level for all tabs, instead of per tab zoom setting for content.",
+  "perTabZoomDisabledExtra": {
+    "message": "* Use current tab zoom level for all tabs, instead of per tab zoom setting.",
     "description": "Options."
   },
   "imageZoomEnabled": {
@@ -279,7 +279,7 @@
     "description": "Options."
   },
   "imageZoomEnabledExtra": {
-    "message": "* Zoom image under the cursor only. Use Ctrl-left mouse button click to reset -- this restores click to toggle shrink-to-fit if the image is overflowing.",
+    "message": "* Zoom image under the cursor only. Use Ctrl-left mouse button click to reset -- this restores native click to toggle shrink-to-fit if the image is overflowing.",
     "description": "Options."
   },
   "mousebuttonZoomEnabled": {

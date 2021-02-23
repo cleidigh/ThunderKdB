@@ -1,5 +1,74 @@
 [
     {
+        "id": 2475401,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2475401",
+        "files": [
+            {
+                "id": 1018562,
+                "created": "2021-02-22T15:13:04Z",
+                "hash": "sha256:eb157a5c26ab3da04d509fa62b56086c8e620e7f6edac44d460180fe737c6184",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 5134157,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018562/web_translate-3.2-tb.xpi?src=",
+                "permissions": [
+                    "webRequest",
+                    "webRequestBlocking",
+                    "menus",
+                    "storage",
+                    "activeTab",
+                    "<all_urls>",
+                    "https://translate.google.co.uk/*",
+                    "https://translate.google.com/*",
+                    "https://translate.google.ie/*",
+                    "https://translate.google.ca/*",
+                    "https://translate.google.as/*",
+                    "https://translate.google.gy/*",
+                    "https://translate.google.bs/*",
+                    "https://translate.google.vg/*",
+                    "https://translate.google.dm/*",
+                    "https://translate.google.tt/*",
+                    "https://translate.google.nr/*",
+                    "https://translate.google.cn/*",
+                    "https://bing.com/*",
+                    "https://www.bing.com/*",
+                    "https://deepl.com/*",
+                    "https://www.deepl.com/*",
+                    "https://translate.yandex.ru/*",
+                    "https://translate.yandex.com/*",
+                    "https://www.translate.yandex.ru/*",
+                    "https://www.translate.yandex.com/*",
+                    "https://fanyi.baidu.com/*"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7057,
+            "name": {
+                "en-US": "All Rights Reserved"
+            },
+            "text": null,
+            "url": null
+        },
+        "release_notes": {
+            "en-US": "- hotfix for DeepL translator to honor target language setup when using the Popup window\n- added Baidu ads blocking in the translator\n- removed old fallback code for Google Translate\n- all providers now fallback to Microsoft Translator if they can't load - this affects Chrome only as Firefox and Thunderbird can load all translators just fine"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/3.2",
+        "version": "3.2"
+    },
+    {
         "id": 2475283,
         "channel": "listed",
         "compatibility": {

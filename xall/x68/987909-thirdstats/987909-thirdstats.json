@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14196/14196754.png?modified=1600788309"
         }
     ],
-    "average_daily_users": 855,
+    "average_daily_users": 1074,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,31 +18,32 @@
     "contributions_url": "https://paypal.me/devmount",
     "created": "2020-09-28T12:23:48Z",
     "current_version": {
-        "id": 2475239,
+        "id": 2475399,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475239",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475399",
         "files": [
             {
-                "id": 1018400,
-                "created": "2021-01-24T20:56:28Z",
-                "hash": "sha256:266d005b4b421fff7388aecc2626c4ae0f996488c9cb215f5c84ac2fce86139a",
+                "id": 1018560,
+                "created": "2021-02-22T12:14:23Z",
+                "hash": "sha256:0153eaccd42d3ee034269a03821ee5ec4d3dcab3368883072b5b142fa5fae88f",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 288092,
+                "size": 303348,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018400/thirdstats-1.3.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018560/thirdstats-1.5.0-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "messagesRead",
                     "tabs",
-                    "storage"
+                    "storage",
+                    "downloads"
                 ]
             }
         ],
@@ -78,13 +79,13 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-GB": "<b>Full Options Page</b>\nOptions can now be opened full page in an own tab. Corresponding gear icon links are in the popup menu as well as on the stats page.\n\n<b>Primary Stats in Popup Menu</b>\nOverall messages count was added to the popup menu account tiles again, as well as a background chart showing the annual progression of all messages (sum of sent and received messages). The data only shows up, if cache is enabled and cached date already exists for the corresponding account.\nimage\n\n<b>Years Navigation</b>\nTwo buttons for going to the next or previous year of the activity overview.\nimage\n\n<b>Better Handling of Solo Account</b>\nThe \"Open all stats\" in the popup menu now points to this single account, when a user only has one activated or existing account. Also a reload of the overall stats page shows that account properly instead of an empty account select field.\n\n<b>Include Local Accounts for Self Message Recognition</b>\nWhen option Self Messages is set to \"From Any Account\", local identities now are taken into account if a local account is active.\n\n<b>Include CC and BCC for Self Message Recognition</b>\nDespite the default receivers, CC and BCC are now also taken into account for self message recognition.\n\n<b>Restore Account name in Tab Title</b>\nThe stats page tab title now contains the account name again, if a single account is selected.\n\n<b>Initial Account List</b>\nAccount lists in the popup menu and on the stats page were initially listing all accounts, instead of the default setting of listing all non local accounts. This lead to unexpected behavior for users with only one local and one non-local account.\n\n<b>Hover Effect of Icons improved</b>\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.3.0\">full release notes with screenshots on GitHub</a>.",
-            "en-US": "<b>Full Options Page</b>\nOptions can now be opened full page in an own tab. Corresponding gear icon links are in the popup menu as well as on the stats page.\n\n<b>Primary Stats in Popup Menu</b>\nOverall messages count was added to the popup menu account tiles again, as well as a background chart showing the annual progression of all messages (sum of sent and received messages). The data only shows up, if cache is enabled and cached date already exists for the corresponding account.\nimage\n\n<b>Years Navigation</b>\nTwo buttons for going to the next or previous year of the activity overview.\nimage\n\n<b>Better Handling of Solo Account</b>\nThe \"Open all stats\" in the popup menu now points to this single account, when a user only has one activated or existing account. Also a reload of the overall stats page shows that account properly instead of an empty account select field.\n\n<b>Include Local Accounts for Self Message Recognition</b>\nWhen option Self Messages is set to \"From Any Account\", local identities now are taken into account if a local account is active.\n\n<b>Include CC and BCC for Self Message Recognition</b>\nDespite the default receivers, CC and BCC are now also taken into account for self message recognition.\n\n<b>Restore Account name in Tab Title</b>\nThe stats page tab title now contains the account name again, if a single account is selected.\n\n<b>Initial Account List</b>\nAccount lists in the popup menu and on the stats page were initially listing all accounts, instead of the default setting of listing all non local accounts. This lead to unexpected behavior for users with only one local and one non-local account.\n\n<b>Hover Effect of Icons improved</b>\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.3.0\">full release notes with screenshots on GitHub</a>.",
-            "en-CA": "<b>Full Options Page</b>\nOptions can now be opened full page in an own tab. Corresponding gear icon links are in the popup menu as well as on the stats page.\n\n<b>Primary Stats in Popup Menu</b>\nOverall messages count was added to the popup menu account tiles again, as well as a background chart showing the annual progression of all messages (sum of sent and received messages). The data only shows up, if cache is enabled and cached date already exists for the corresponding account.\nimage\n\n<b>Years Navigation</b>\nTwo buttons for going to the next or previous year of the activity overview.\nimage\n\n<b>Better Handling of Solo Account</b>\nThe \"Open all stats\" in the popup menu now points to this single account, when a user only has one activated or existing account. Also a reload of the overall stats page shows that account properly instead of an empty account select field.\n\n<b>Include Local Accounts for Self Message Recognition</b>\nWhen option Self Messages is set to \"From Any Account\", local identities now are taken into account if a local account is active.\n\n<b>Include CC and BCC for Self Message Recognition</b>\nDespite the default receivers, CC and BCC are now also taken into account for self message recognition.\n\n<b>Restore Account name in Tab Title</b>\nThe stats page tab title now contains the account name again, if a single account is selected.\n\n<b>Initial Account List</b>\nAccount lists in the popup menu and on the stats page were initially listing all accounts, instead of the default setting of listing all non local accounts. This lead to unexpected behavior for users with only one local and one non-local account.\n\n<b>Hover Effect of Icons improved</b>\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.3.0\">full release notes with screenshots on GitHub</a>."
+            "en-GB": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.0\">full release notes with screenshots on GitHub</a>.",
+            "en-US": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.0\">full release notes with screenshots on GitHub</a>.",
+            "en-CA": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.0\">full release notes with screenshots on GitHub</a>."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.3.0",
-        "version": "1.3.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.5.0",
+        "version": "1.5.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -113,7 +114,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-24T21:00:02Z",
+    "last_updated": "2021-02-22T12:15:03Z",
     "name": {
         "ru": "ThirdStats",
         "fr": "ThirdStats",
@@ -134,23 +135,23 @@
     },
     "previews": [
         {
-            "id": 206335,
+            "id": 206458,
             "caption": {
                 "en-US": "ThirdStats on the Thunderbird default dark theme and light theme"
             },
             "image_size": [
                 1280,
-                640
+                653
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206335.png?modified=1607093509",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206458.png?modified=1614013997",
             "thumbnail_size": [
                 320,
-                160
+                163
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206335.png?modified=1607093509"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206458.png?modified=1614013997"
         },
         {
-            "id": 206220,
+            "id": 206450,
             "caption": {
                 "en-US": "Featured numbers section of ThirdStats"
             },
@@ -158,15 +159,15 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206220.png?modified=1607093506",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206450.png?modified=1614013993",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206220.png?modified=1607093506"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206450.png?modified=1614013993"
         },
         {
-            "id": 206221,
+            "id": 206451,
             "caption": {
                 "en-US": "Total number of emails per year and per month since the oldest email till today"
             },
@@ -174,15 +175,15 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206221.png?modified=1607093506",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206451.png?modified=1614013915",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206221.png?modified=1607093506"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206451.png?modified=1614013915"
         },
         {
-            "id": 206222,
+            "id": 206452,
             "caption": {
                 "en-US": "Detailed analytics showing the sum of all emails per month, per day of week and per hour of day"
             },
@@ -190,15 +191,15 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206222.png?modified=1607093506",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206452.png?modified=1614013993",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206222.png?modified=1607093506"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206452.png?modified=1614013993"
         },
         {
-            "id": 206223,
+            "id": 206453,
             "caption": {
                 "en-US": "Heatmaps showing the temporal distribution of emails by combining weekday and daytime data"
             },
@@ -206,15 +207,15 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206223.png?modified=1607093506",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206453.png?modified=1614013990",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206223.png?modified=1607093506"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206453.png?modified=1614013990"
         },
         {
-            "id": 206224,
+            "id": 206454,
             "caption": {
                 "en-US": "Leaderboards showing the most contacted email addresses"
             },
@@ -222,20 +223,68 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206224.png?modified=1607093506",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206454.png?modified=1614013995",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206224.png?modified=1607093506"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206454.png?modified=1614013995"
+        },
+        {
+            "id": 206455,
+            "caption": {
+                "en-US": "Distribution of emails in folders"
+            },
+            "image_size": [
+                1067,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206455.png?modified=1614013991",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206455.png?modified=1614013991"
+        },
+        {
+            "id": 206456,
+            "caption": {
+                "en-US": "Activity overview showing the number of emails per day"
+            },
+            "image_size": [
+                1067,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206456.png?modified=1614013995",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206456.png?modified=1614013995"
+        },
+        {
+            "id": 206457,
+            "caption": {
+                "en-US": "Options page"
+            },
+            "image_size": [
+                1067,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206457.png?modified=1614013917",
+            "thumbnail_size": [
+                267,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206457.png?modified=1614013917"
         }
     ],
-    "public_stats": false,
+    "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.54115,
-        "count": 3,
+        "bayesian_average": 4.71271,
+        "count": 5,
         "average": 5,
-        "text_count": 3
+        "text_count": 5
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/reviews/",
     "requires_payment": false,

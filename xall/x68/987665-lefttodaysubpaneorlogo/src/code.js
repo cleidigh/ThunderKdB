@@ -38,8 +38,17 @@ formFour.addEventListener('click', function () {
 
 
 formFive.addEventListener('click', function () {
-         browser.runtime.sendMessage({execute: "do it as sidebar color"});
          browser.myapi.setTwelve('folderPaneBox', 'appendChild', 'imageTb4');
+async function execute(theme) { 
+
+var theme = await browser.theme.getCurrent();
+
+var getCurrentBackgroundColorSixteen = theme.colors.sidebar;
+
+browser.myapi.setSixteen("folderPaneBox", "backgroundColor", getCurrentBackgroundColorSixteen);
+};
+execute();
+browser.theme.onUpdated.addListener(execute);
 });
 
 formSix.addEventListener('click', function () {

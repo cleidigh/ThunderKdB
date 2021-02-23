@@ -1,4 +1,4 @@
-formOne.addEventListener('click', function () {
+divOne.addEventListener('click', function () {
 var whiteTheme = {
 "colors": {
 "frame": "white",
@@ -35,44 +35,44 @@ var whiteTheme = {
 browser.theme.update(whiteTheme);
 });
 
-formTwo.addEventListener('click', function () {
+divTwo.addEventListener('click', function () {
 var blackTheme = {
 "colors": {
 "frame": "black",
 "bookmark_text": "white",
-"popup": "#303030",
+"popup": "#555555",
 "popup_text": "white",
 "popup_border": "gray",
 "popup_highlight": "Black",
 "popup_highlight_text": "white",
-"sidebar": "#303030",
+"sidebar": "#555555",
 "sidebar_text": "white",
 "sidebar_highlight": "Black",
 "sidebar_highlight_text": "white",
 "sidebar_border": "gray",
 "tab_text": "white",
 "tab_line": "blue",
-"tab_loading": "#303030",
+"tab_loading": "#555555",
 "tab_background_text": "white",
-"toolbar_field": "#303030",
+"toolbar_field": "#555555",
 "toolbar_field_text": "white",
 "toolbar_field_highlight": "blue",
 "toolbar_field_highlight_text": "white",
-"toolbar_field_focus": "#303030",
+"toolbar_field_focus": "#555555",
 "toolbar_field_text_focus": "white",
 "toolbar_field_border": "gray",
 "toolbar_field_border_focus": "red",
-"toolbar_top_separator": "black",
-"toolbar_bottom_separator": "black",
-"toolbar_vertical_separator": "black",
-"tab_selected": "#303030",
-"toolbar": "#303030"
+"toolbar_top_separator": "gray",
+"toolbar_bottom_separator": "gray",
+"toolbar_vertical_separator": "gray",
+"tab_selected": "#555555",
+"toolbar": "#555555"
         }
     }
 browser.theme.update(blackTheme);
 });
 
-formThree.addEventListener('click', function () {
+divThree.addEventListener('click', function () {
 var blueTheme = {
 "colors": {
 "frame": "LightBlue",
@@ -109,7 +109,7 @@ var blueTheme = {
 browser.theme.update(blueTheme);
 });
 
-formFour.addEventListener('click', function () {
+divFour.addEventListener('click', function () {
 var greenTheme = {
 "colors": {
 "frame": "LightGreen",
@@ -146,7 +146,7 @@ var greenTheme = {
 browser.theme.update(greenTheme);
 });
 
-formFive.addEventListener('click', function () {
+divFive.addEventListener('click', function () {
 var yellowTheme = {
 "colors": {
 "frame": "Gold",
@@ -183,10 +183,10 @@ var yellowTheme = {
 browser.theme.update(yellowTheme);
 });
 
-formSix.addEventListener('click', function () {
+divSix.addEventListener('click', function () {
 var redTheme = {
 "colors": {
-"frame": "Pink",
+"frame": "pink",
 "bookmark_text": "black",
 "popup": "MistyRose",
 "popup_text": "black",
@@ -218,4 +218,115 @@ var redTheme = {
         }
     }
 browser.theme.update(redTheme);
+});
+
+divSeven.addEventListener('click', function () {
+var BYTheme = {
+"colors": {
+"frame": "LightBlue",
+"bookmark_text": "black",
+"popup": "LightBlue",
+"popup_text": "black",
+"popup_border": "black",
+"popup_highlight": "LightBlue",
+"popup_highlight_text": "black",
+"sidebar": "LightYellow",
+"sidebar_text": "black",
+"sidebar_highlight": "LightBlue",
+"sidebar_highlight_text": "black",
+"sidebar_border": "black",
+"tab_text": "black",
+"tab_line": "blue",
+"tab_loading": "Gold",
+"tab_background_text": "black",
+"toolbar_field": "LightYellow",
+"toolbar_field_text": "black",
+"toolbar_field_highlight": "blue",
+"toolbar_field_highlight_text": "black",
+"toolbar_field_focus": "LightYellow",
+"toolbar_field_text_focus": "black",
+"toolbar_field_border": "black",
+"toolbar_field_border_focus": "red",
+"toolbar_top_separator": "black",
+"toolbar_bottom_separator": "black",
+"toolbar_vertical_separator": "black",
+"tab_selected": "Gold",
+"toolbar": "Gold"
+        }
+    }
+browser.theme.update(BYTheme);
+});
+
+divEight.addEventListener('click', function () {
+var GYTheme = {
+"colors": {
+"frame": "LightGreen",
+"bookmark_text": "black",
+"popup": "LightGreen",
+"popup_text": "black",
+"popup_border": "black",
+"popup_highlight": "LightGreen",
+"popup_highlight_text": "black",
+"sidebar": "LightYellow",
+"sidebar_text": "black",
+"sidebar_highlight": "LightGreen",
+"sidebar_highlight_text": "black",
+"sidebar_border": "black",
+"tab_text": "black",
+"tab_line": "blue",
+"tab_loading": "Gold",
+"tab_background_text": "black",
+"toolbar_field": "LightYellow",
+"toolbar_field_text": "black",
+"toolbar_field_highlight": "blue",
+"toolbar_field_highlight_text": "black",
+"toolbar_field_focus": "LightYellow",
+"toolbar_field_text_focus": "black",
+"toolbar_field_border": "black",
+"toolbar_field_border_focus": "red",
+"toolbar_top_separator": "black",
+"toolbar_bottom_separator": "black",
+"toolbar_vertical_separator": "black",
+"tab_selected": "Gold",
+"toolbar": "Gold"
+        }
+    }
+browser.theme.update(GYTheme);
+});
+
+divNine.addEventListener('click', function () {
+var RYTheme = {
+"colors": {
+"frame": "pink",
+"bookmark_text": "black",
+"popup": "pink",
+"popup_text": "black",
+"popup_border": "black",
+"popup_highlight": "pink",
+"popup_highlight_text": "black",
+"sidebar": "LightYellow",
+"sidebar_text": "black",
+"sidebar_highlight": "pink",
+"sidebar_highlight_text": "black",
+"sidebar_border": "black",
+"tab_text": "black",
+"tab_line": "blue",
+"tab_loading": "Gold",
+"tab_background_text": "black",
+"toolbar_field": "LightYellow",
+"toolbar_field_text": "black",
+"toolbar_field_highlight": "blue",
+"toolbar_field_highlight_text": "black",
+"toolbar_field_focus": "LightYellow",
+"toolbar_field_text_focus": "black",
+"toolbar_field_border": "black",
+"toolbar_field_border_focus": "red",
+"toolbar_top_separator": "black",
+"toolbar_bottom_separator": "black",
+"toolbar_vertical_separator": "black",
+"tab_selected": "Gold",
+"toolbar": "Gold"
+        }
+    }
+browser.theme.update(RYTheme);
 });

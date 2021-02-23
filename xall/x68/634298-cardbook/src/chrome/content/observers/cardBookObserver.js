@@ -4,6 +4,7 @@ var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardb
 var cardBookObserver = {
 	
 	DBOpen: false,
+	catDBOpen: false,
 	undoDBOpen: false,
 	
 	register: function() {
@@ -21,19 +22,26 @@ var cardBookObserver = {
 					ovl_cardbook.reloadCardBookQFB();
 				}
 				break;
+			case "cardbook.catDBOpen":
+				this.catDBOpen = true;
+				if (this.catDBOpen && this.DBOpen && this.undoDBOpen) {
+					cardbookIndexedDB.upgradeDBs();
+				}
+				cardbookIndexedDB.openDB();
+				break;
 			case "cardbook.DBOpen":
 				this.DBOpen = true;
 				if (!("undefined" == typeof(ovl_cardbook))) {
 					ovl_cardbook.reloadCardBookQFB();
 				}
-				if (this.DBOpen && this.undoDBOpen) {
+				if (this.catDBOpen && this.DBOpen && this.undoDBOpen) {
 					cardbookIndexedDB.upgradeDBs();
 				}
 				cardbookRepository.cardbookSynchronization.loadComplexSearchAccounts();
 				break;
 			case "cardbook.undoDBOpen":
 				this.undoDBOpen = true;
-				if (this.DBOpen && this.undoDBOpen) {
+				if (this.catDBOpen && this.DBOpen && this.undoDBOpen) {
 					cardbookIndexedDB.upgradeDBs();
 				}
 				break;

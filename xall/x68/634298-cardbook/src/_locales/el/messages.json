@@ -1,6 +1,6 @@
 {
 	"extName": {
-		"message": "Επαφές (CardBook)"
+		"message": "CardBook"
 	},
 	"extDesc": {
 		"message": "Βιβλίο διευθύνσεων εικονική κάρτα (vCard)"
@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "Καμία κατηγορία"
 	},
-	"collectedCards": {
-		"message": "Συλλεγμένες επαφές"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "Ενεργοποίηση βιβλίου διευθύνσεων"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "Ορίστε το βιβλίο διευθύνσεων σε λειτουργία μόνο για ανάγνωση"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "??Create Category??"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Επεξεργασία κατηγορίας"
@@ -359,6 +359,116 @@
             }
         }
 	},
+	"synchroCategoriesUpToDate": {
+		"message": "??$P1$ : Categories up to date : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "??$P1$ : Categories new on server : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "??$P1$ : Categories updated on server : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "??$P1$ : Categories deleted from server : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "??$P1$ : Categories deleted locally : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "??$P1$ : Categories deleted locally and updated on server : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "??$P1$ : Categories new locally : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "??$P1$ : Categories updated locally : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "??$P1$ : Categories updated locally and on server : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "??$P1$ : Categories updated locally and deleted from server : $P2$??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"synchroModifGetOKFromServer": {
 		"message": "$P1$ : Τροποποιήσεις που ανακτήθηκαν με επιτυχία από το διακομιστή : $P2$",
         "placeholders": {
@@ -412,7 +522,7 @@
         }
 	},
 	"synchroDBFinishedResult": {
-		"message": "??$P1$ : Local database opened, contacts result :??",
+		"message": "$P1$ : Άνοιξε η τοπική βάση δεδομένων, αποτέλεσμα:",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -608,17 +718,6 @@
             }
         }
 	},
-	"cardGetFromCache": {
-		"message": "$P1$ : Επαφή $P2$ που ανακτήθηκε από την προσωρινή μνήμη",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardDeletedOnDiskUpdatedOnServer": {
 		"message": "$P1$ : Επαφή $P2$ διαγράφηκαν από δίσκο και ενημερώθηκαν στο διακομιστή",
         "placeholders": {
@@ -663,17 +762,6 @@
         "placeholders": {
             "P1": {
                 "content": "$1"
-            }
-        }
-	},
-	"cardLoadedFromCache": {
-		"message": "$P1$ : Επαφή $P2$ φορτωθεί από προσωρινή μνήμη",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
             }
         }
 	},
@@ -732,31 +820,31 @@
             }
         }
 	},
-	"askUserTitle": {
+	"cardAskUserTitle": {
 		"message": "Επικοινωνήστε με τη σύγκρουση τροποποίησης"
 	},
 	"askUserPersistMessage": {
 		"message": "Εφαρμόστε αυτήν την επιλογή για άλλες υπάρχουσες επαφές"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "Κρατήστε την επαφή"
 	},
-	"updateAskUserLabel": {
+	"cardupdateAskUserLabel": {
 		"message": "Αντικαταστήστε την επαφή"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "Διπλώστε την επαφή"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "Διαγράψτε την επαφή"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "Προτιμήστε την τοπική τροποποίηση"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "Προτιμήστε την απομακρυσμένη τροποποίηση"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "Συγχώνευση των διαφορών"
 	},
 	"serverCardDeletedFromServer": {
@@ -955,7 +1043,7 @@
         }
 	},
 	"serverCardGetKeyFailed": {
-		"message": "??$P1$ : Key failed to be downloaded for contact $P2$ (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Αποτυχία λήψης κλειδιού για την επαφή $P2$ (url : $P3$, status : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -983,7 +1071,7 @@
         }
 	},
 	"serverCardGettingKey": {
-		"message": "??$P1$ : Key downloading for contact $P2$ …??",
+		"message": "$P1$ : Λήψη κλειδιού για την επαφή $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1015,6 +1103,387 @@
             },
             "P3": {
                 "content": "$3"
+            }
+        }
+	},
+	"serverSendingGetCardLabels": {
+		"message": "??$P1$ : Contact $P2$ : sending contact labels obtention request …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "??$P1$ : Contact $P2$ : labels obtained??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "??$P1$ : Contact $P2$ : labels failed to be obtained on server (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "??$P1$ : Contact $P2$ : sending contact labels update request …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "??$P1$ : Contact $P2$ : labels updated??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "??$P1$ : Contact $P2$ : labels failed to be updated on server (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "??$P1$ : Category $P2$ deleted locally??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "??$P1$ : Category $P2$ updated locally??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "??$P1$ : Category $P2$ already retrieved from cache??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "??$P1$ : Category $P2$ deleted locally and updated on server??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "??$P1$ : Category $P2$ updated locally and on server??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "??$P1$ : Category $P2$ updated on server (etag found : $P3$, etag in cache : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "??$P1$ : Found a new category on server??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "??$P1$ : Category $P2$ loaded from cache (IndexedDB)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "??$P1$ : Category $P2$ new locally??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "??$P1$ : Category $P2$ updated locally and deleted from server??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "??$P1$ : Category $P2$ deleted from server??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "??Category Modification Conflict??"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "??Keep the category??"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "??Delete the category??"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Προτιμήστε την τοπική τροποποίηση"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Προτιμήστε την απομακρυσμένη τροποποίηση"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "??$P1$ : Category $P2$ deleted from server??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "??$P1$ : Category $P2$ does not exist on server??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "??$P1$ : Category $P2$ failed to be deleted from server (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "??$P1$ : Category $P2$ : sending deletion requests …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "??$P1$ : Category $P2$ updated on server (etag : $P3$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "??$P1$ : Category $P2$ updated on server (no etag in response)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "??$P1$ : Category $P2$ failed to be updated on server (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "??$P1$ : Category $P2$ : sending update requests …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "??$P1$ : Category $P2$ created on server (etag : $P3$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "??$P1$ : Category $P2$ created on server (no etag in response)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "??$P1$ : Category $P2$ failed to be created on server (url : $P3$, status : $P4$)??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "??$P1$ : Category $P2$ : sending create requests …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "??$P1$ : Searching categories …??",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
             }
         }
 	},
@@ -1432,7 +1901,7 @@
         }
 	},
 	"cardsConverted": {
-		"message": "??$P1$ : contacts converted into $P2$ : $P3$??",
+		"message": "$P1$ : επαφές μετατράπηκαν σε $P2$ : $P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1446,7 +1915,7 @@
         }
 	},
 	"cardsConvertedUndo": {
-		"message": "??VCards converted??"
+		"message": "Οι επαφές VCard μετατράπηκαν"
 	},
 	"cardsImportedFromFileUndo": {
 		"message": "??File $P1$ imported??",
@@ -1457,7 +1926,7 @@
         }
 	},
 	"cardsImportedFromDirUndo": {
-		"message": "??Directory $P1$ imported??",
+		"message": "Ο κατάλογος $P1$ εισήχθη",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1465,7 +1934,7 @@
         }
 	},
 	"undoActionDoneUndo": {
-		"message": "??Undo done ($P1$)??",
+		"message": "Αναίρεση ενέργειας ($P1$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1473,7 +1942,7 @@
         }
 	},
 	"redoActionDoneUndo": {
-		"message": "??Redo done ($P1$)??",
+		"message": "Επανάληψη ενέργειας ($P1$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1500,19 +1969,19 @@
 		"message": "??Outgoing email collected??"
 	},
 	"emailCollectedByFilterUndo": {
-		"message": "??Emails collected by filter??"
+		"message": "Emails που βρέθηκαν από το φίλτρο"
 	},
 	"emailDeletedByFilterUndo": {
-		"message": "??Emails deleted by filter??"
+		"message": "Emails που διαγράφηκαν από το φίλτρο"
 	},
 	"cardsMergedUndo": {
-		"message": "??Contacts merged??"
+		"message": "Επαφές συγχωνεύθηκαν "
 	},
 	"cardsDuplicatedUndo": {
-		"message": "??Contacts duplicated??"
+		"message": "Επαφές αντιγράφηκαν"
 	},
 	"displayNameGenerated": {
-		"message": "??$P1$ : contacts having their display names regenerated : $P2$??",
+		"message": "$P1$ : επαφές που ανανεώθηκε το όνομα προβολής τους : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1523,7 +1992,7 @@
         }
 	},
 	"displayNameGeneratedUndo": {
-		"message": "??Display names regenerated??"
+		"message": "Όνομα προβολής ανανεώθηκε"
 	},
 	"cardModifiedUndo": {
 		"message": "Επαφή $P1$ ενημερώθηκε",
@@ -1542,13 +2011,13 @@
         }
 	},
 	"cardsDeleted2Undo": {
-		"message": "??Contacts deleted??"
+		"message": "Επαφές διαγράφηκαν"
 	},
 	"cardsPastedUndo": {
-		"message": "??Contacts pasted??"
+		"message": "Επαφές επικολλήθηκαν"
 	},
 	"cardsDraggedUndo": {
-		"message": "??Contacts dragged??"
+		"message": "Επαφές μετακινήθηκαν"
 	},
 	"categoryCreated": {
 		"message": "$P1$ : Κατηγορία $P2$ δημιουργήθηκε",
@@ -1570,7 +2039,7 @@
         }
 	},
 	"categorySelectedUndo": {
-		"message": "??Category $P1$ selected??",
+		"message": "Κατηγορία $P1$ επιλέχθηκε",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1578,15 +2047,26 @@
         }
 	},
 	"categoryUnselectedUndo": {
-		"message": "??Category $P1$ unselected??",
+		"message": "Κατηγορία $P1$ αποεπιλέχθηκε",
         "placeholders": {
             "P1": {
                 "content": "$1"
             }
         }
 	},
+	"categoryRenamed": {
+		"message": "$P1$ : Κατηγορία $P2$ μετονομάστηκε",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"categoryRenamedUndo": {
-		"message": "??Category $P1$ renamed??",
+		"message": "Κατηγορία $P1$ μετονομάστηκε",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1613,7 +2093,7 @@
         }
 	},
 	"categoryConvertedToListUndo": {
-		"message": "??Category $P1$ converted to list??",
+		"message": "Κατηγορία $P1$ μετατράπηκε σε λίστα",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1621,7 +2101,7 @@
         }
 	},
 	"listConvertedToCategoryUndo": {
-		"message": "??List $P1$ converted to category??",
+		"message": "Λίστα $P1$ μετατράπηκε σε κατηγορία",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1629,10 +2109,10 @@
         }
 	},
 	"linePastedUndo": {
-		"message": "??Line pasted??"
+		"message": "Γραμμή επικολλήθηκε"
 	},
 	"nodeRenamedUndo": {
-		"message": "??Node $P1$ renamed??",
+		"message": "Κόμβος $P1$ μετονομάστηκε",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1640,7 +2120,7 @@
         }
 	},
 	"nodeDeleted": {
-		"message": "??$P1$ : Node $P2$ deleted??",
+		"message": "$P1$ : Κόμβος $P2$ διαγράφηκε",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1651,7 +2131,7 @@
         }
 	},
 	"nodeDeletedUndo": {
-		"message": "??Node $P1$ deleted??",
+		"message": "Κόμβος $P1$ διαγράφηκε",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1659,7 +2139,7 @@
         }
 	},
 	"listCreatedFromNodeUndo": {
-		"message": "??List $P1$ created from node??",
+		"message": "Λίστα $P1$ δημιουργήθηκε από κόμβο",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1813,13 +2293,13 @@
 		"message": "Επαφές Κρυφ. κοιν"
 	},
 	"cardbook.searchToOrCc.name": {
-		"message": "Επαφές Προς ή Κοιν."
+		"message": "CardBook Προς ή Κοιν."
 	},
 	"cardbook.searchAll.name": {
 		"message": "Επαφές Από, Προς, Κοιν ή Κρυφ. κοιν"
 	},
 	"cardbook.searchCorrespondents.name": {
-		"message": "??CardBook Correspondents??"
+		"message": "CardBook Επιστολογράφοι"
 	},
 	"cardbook.addFrom.name": {
 		"message": "Προσθέστε Από στο Επαφές"
@@ -2183,7 +2663,7 @@
         }
 	},
 	"dateEntry1Wrong": {
-		"message": "??$P1$ : Contact $P2$ has a date field value ($P3$) that does not match the date format of the address book ($P4$)??",
+		"message": "$P1$ : Η επαφή $P2$ έχει ένα πεδίο ημερομηνίας ($P3$) που δεν ταιριάζει με το format του βιβλίου διευθύνσεων ($P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2200,7 +2680,7 @@
         }
 	},
 	"dateEntry2Wrong": {
-		"message": "??Date field value ($P1$) does not match the date format of the address book ($P2$)??",
+		"message": "Το πεδίο ημερομηνίας ($P1$) δεν ταιριάζει με το format του βιβλίου διευθύνσεων ($P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2225,10 +2705,10 @@
         }
 	},
 	"eventNameNull": {
-		"message": "??At least one event has an empty description??"
+		"message": "Τουλάχιστον ένα γεγονός έχει κενή περιγραφή"
 	},
 	"eventDateNull": {
-		"message": "??At least one event has an empty date??"
+		"message": "Τουλάχιστον ένα γεγονός έχει κενή ημερομηνία"
 	},
 	"invalidURL": {
 		"message": "Μη έγκυρη παγκόσμιο εντοπισμό πόρων : $P1$",
@@ -2446,7 +2926,7 @@
         }
 	},
 	"nodeDeletionsConfirmMessagePF": {
-		"message": "??Are you sure you want to delete the node $P2$ which contains one contact?;Are you sure you want to delete the node $P2$ which contains $P1$ contacts???",
+		"message": "Είστε βέβαιοι ότι θέλετε να διαγράψετε τον κόμβο $P2$ που περιέχει μια επαφή;;Είστε βέβαιοι ότι θέλετε να διαγράψετε τον κόμβο $P2$ που περιέχει $P1$ επαφές;",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2536,7 +3016,7 @@
 		"message": "Πεδίο οριοθέτησης"
 	},
 	"includePrefLabel": {
-		"message": "??Include preferences??"
+		"message": "Με προτιμήσεις"
 	},
 	"lineHeaderLabel": {
 		"message": "Πρώτη γραμμή ως επικεφαλίδα"
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "Συντάκτης οργανισμός"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "??Create Category??"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Επεξεργασία κατηγορίας"
 	},
@@ -2582,7 +3065,7 @@
 		"message": "Προσθέστε μια νέα κατηγορία"
 	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
-		"message": "??Edit Node??"
+		"message": "Επεξεργασία κόμβου"
 	},
 	"wdw_cardbookRenameFieldEditTypeLabel": {
 		"message": "Τύπος:"
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "Τύπος:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Κατηγορία:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "Κατηγορία:"
@@ -2704,10 +3190,10 @@
 		"message": "έ"
 	},
 	"autoComputeFn": {
-		"message": "??Enable the generation of the display name??"
+		"message": "Να δημιουργείται όνομα προβολής"
 	},
 	"dontAutoComputeFn": {
-		"message": "??Disable the generation of the display name??"
+		"message": "Να μη δημιουργείται όνομα προβολής"
 	},
 	"customLabel": {
 		"message": "Προσαρμοσμένη"
@@ -2761,8 +3247,32 @@
             }
         }
 	},
-	"newTokenDescription": {
-		"message": "??CardBook would like to access your $P1$ account to retrieve contacts. Credentials and contact data are only transferred between your computer and Google, no third party sites are involved.??",
+	"warnDescription": {
+		"message": "Το CardBook θα ήθελε να αποκτήσει πρόσβαση στο $P1$ λογαριασμό σας για να ανακτήσει τις επαφές σας. Οι κωδικοί πρόσβασης και τα δεδομένα του λογαριασμού μεταφέρονται από τη Google αποκλειστικά στον υπολογιστή σας και δεν εμπλέκονται τρίτα μέρη.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "Εφαρμογή: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "Αναγνώριση δέκτη: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "Εμβέλεια: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2795,13 +3305,13 @@
 		"message": "Όλες οι επαφές"
 	},
 	"keyDescription": {
-		"message": "??Encryption key??"
+		"message": "Κλειδί κρυπτογράφησης"
 	},
 	"encryptionStarted": {
-		"message": "??Starting encryption??"
+		"message": "Εκκίνηση κρυπτογράφησης"
 	},
 	"encryptionProcessed": {
-		"message": "??Items encrypted: $P1$/$P2$??",
+		"message": "Αντικείμενα που κρυπτογραφήθηκαν: $P1$/$P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2812,13 +3322,13 @@
         }
 	},
 	"encryptionFinished": {
-		"message": "??Encryption finished??"
+		"message": "Κρυπτογράφηση ολοκληρώθηκε"
 	},
 	"decryptionStarted": {
-		"message": "??Starting decryption??"
+		"message": "Εκκίνηση αποκρυπτογράφησης"
 	},
 	"decryptionProcessed": {
-		"message": "??Items decrypted: $P1$/$P2$??",
+		"message": "Αντικείμενα που αποκρυπτογραφήθηκαν: $P1$/$P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2829,7 +3339,7 @@
         }
 	},
 	"decryptionFinished": {
-		"message": "??Decryption finished??"
+		"message": "Αποκρυπτογράφηση ολοκληρώθηκε"
 	},
 	"menu_undo.long.label": {
 		"message": "Αναίρεση - $P1$",
@@ -2995,7 +3505,7 @@
 		"message": "Καλώς ήρθατε"
 	},
 	"welcomePage.description": {
-		"message": "??It seems that this is the first time CardBook has been run. CardBook will attempt to collect contacts from Thunderbird’s standard address books and remote address books.??"
+		"message": "Φαίνεται ότι είναι η πρώτη φορά που εκτελείται το CardBook. Το CardBook θα προσπαθήσει να συλλέξει τις επαφές από το ενσωματωμένο βιβλίο διευθύνσεων του Thunderbird και τα απομακρυσμένα βιβλία διευθύνσεων."
 	},
 	"initialPage.wizard.description": {
 		"message": "Θέση για το νέο βιβλίο διευθύνσεων."
@@ -3016,7 +3526,7 @@
 		"message": "Αναζήτηση στα υπάρχοντα βιβλία διευθύνσεων"
 	},
 	"initialPage.find.label": {
-		"message": "??Search for remote address books??"
+		"message": "Αναζήτηση για απομακρυσμένα βιβλία διευθύνσεων"
 	},
 	"localPage.wizard.description": {
 		"message": "Τύπος και θέση του νέου τοπικού βιβλίου διευθύνσεων."
@@ -3157,19 +3667,19 @@
 		"message": "Πολλαπλά βιβλία διευθύνσεων έχουν ανακαλυφθεί. Επιλέξτε ποια βιβλία διευθύνσεων θέλετε να ανοίξετε και τα ονόματά τους:"
 	},
 	"findPage.wizard.description": {
-		"message": "??Remote address book search??"
+		"message": "Αναζήτηση απομακρυσμένου βιβλίου διευθύνσεων"
 	},
 	"findPage.name1.description": {
-		"message": "??No remote address books found.??"
+		"message": "Δε βρέθηκαν απομακρυσμένα βιβλία διευθύνσεων"
 	},
 	"findPage.name2.description": {
-		"message": "??One remote address book found. Validate remote address book to add:??"
+		"message": "Βρέθηκε ένα απομακρυσμένο βιβλίο διευθύνσεων. Επιβεβαίωση προσθήκης απομακρυσμένου βιβλίου διευθύνσεων :"
 	},
 	"findPage.name3.description": {
-		"message": "??Multiple remote address books found. Validate remote address books to add:??"
+		"message": "Βρέθηκαν πολλά βιβλία απομακρυσμένων διευθύνσεων. Επιβεβαίωση απομακρυσμένων βιβλίων διευθύνσεων για προσθήκη:"
 	},
 	"finishPage.wizard.description": {
-		"message": "??Address books configuration??"
+		"message": "Ρύθμιση βιβλίων διευθύνσεων"
 	},
 	"finishPage.description": {
 		"message": "Το νέο βιβλίο διευθύνσεων έχει ρυθμιστεί με επιτυχία."
@@ -3190,7 +3700,7 @@
 		"message": "ν"
 	},
 	"nodesLabel": {
-		"message": "??Nodes:??"
+		"message": "Κόμβοι:"
 	},
 	"categoriesNodeLabel": {
 		"message": "Κατηγορίες"
@@ -3253,7 +3763,7 @@
 		"message": "ρ"
 	},
 	"applyToABButtonLabel": {
-		"message": "??Apply to…??"
+		"message": "Εφαρμογή σε…"
 	},
 	"applyToABButtonAccesskey": {
 		"message": "A"
@@ -3401,9 +3911,6 @@
 	},
 	"birthdaylistTabLabel": {
 		"message": "Επέτειος"
-	},
-	"synclistTabLabel": {
-		"message": "Ειδοποιήσεις επετείου"
 	},
 	"integrationGroupboxLabel": {
 		"message": "Ενσωμάτωση στο Thunderbird"

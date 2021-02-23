@@ -28,6 +28,10 @@
     color: #fff !important;
 }
 
+menulist > menupopup {
+    background-color: var(--background-color-inactive);
+}
+
 #today-pane-panel > .sidebar-header {
     border-bottom: 0;
 }
@@ -372,7 +376,7 @@ calendar-day-label,
 .calendar-time-bar-box-even[orient="vertical"] {
     color: #fff !important;
     background-color: var(--background-color) !important;
-    border: none;*/
+    border: none;
 }
 
 .calendar-task-tree>treechildren:not(.autocomplete-treebody)::-moz-tree-cell-text(selected, focus), 

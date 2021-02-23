@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "Ukategoriseret"
 	},
-	"collectedCards": {
-		"message": "Indsamlede kontakter"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "Aktiver adressebog"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "Sæt adressebog i skrivebeskyttet tilstand"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "Opret kategori"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Rediger kategori"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$ : Kontakter slettet på disk : $P2$",
+		"message": "$P1$ : Kontakter slettet lokalt : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +305,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Kontakter slettet på disk og opdateret på server : $P2$",
+		"message": "$P1$ : Kontakter slettet lokalt og opdateret på server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +316,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "$P1$ : Kontakter nye på disk : $P2$",
+		"message": "$P1$ : Nye kontakter lokalt : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$ : Kontakter opdateret på disk : $P2$",
+		"message": "$P1$ : Kontakter opdateret lokalt : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$ : Kontakter opdateret på disk og server : $P2$",
+		"message": "$P1$ : Kontakter opdateret lokalt og på server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Kontakter opdateret på disk og slettet fra server : $P2$",
+		"message": "$P1$ : Kontakter opdateret lokalt og slettet fra server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : Kategorier ajour: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : Nye kategorier på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : Kategorier opdateret på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : Kategorier slettet fra server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : Kategorier slettet lokalt : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kategorier slettet lokalt og opdateret på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : Nye kategorier lokalt : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : Kategorier opdateret lokalt : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : Kategorier opdateret lokalt og på server : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kategorier opdateret lokalt og slettet fra server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -576,7 +686,7 @@
 		"message": "Alle importeringer færdige"
 	},
 	"cardDeletedOnDisk": {
-		"message": "$P1$ : Kontakter $P2$ slettet på disk",
+		"message": "$P1$ : Kontakt $P2$ slettet lokalt",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -587,7 +697,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "$P1$ : Kontakter $P2$ opdateret på disk",
+		"message": "$P1$ : Kontakt $P2$ opdateret lokalt",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -608,19 +718,8 @@
             }
         }
 	},
-	"cardGetFromCache": {
-		"message": "$P1$ : Kontakter $P2$ hentet fra mellemlager",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Kontakter $P2$ slettet på disk og opdateret på server",
+		"message": "$P1$ : Kontakt $P2$ slettet lokalt og opdateret på server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -631,7 +730,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "$P1$ : Kontakter $P2$ opdateret på disk og på server",
+		"message": "$P1$ : Kontakt $P2$ opdateret lokalt og på server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -666,17 +765,6 @@
             }
         }
 	},
-	"cardLoadedFromCache": {
-		"message": "$P1$ : Kontakt $P2$ indlæst fra mellemlager",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardLoadedFromCacheDB": {
 		"message": "$P1$ : Kontakt $P2$ indlæst fra mellemlager (IndexedDB)",
         "placeholders": {
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$ : Kontakt $P2$ ny på disk",
+		"message": "$P1$ : Kontakt $P2$ ny lokalt",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Kontakt $P2$ opdateret på disk og slettet fra server",
+		"message": "$P1$ : Kontakt $P2$ opdateret lokalt og slettet fra server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,31 +820,31 @@
             }
         }
 	},
-	"askUserTitle": {
-		"message": "Kontaktændringer konflikter"
+	"cardAskUserTitle": {
+		"message": "Kontaktændringskonflikt"
 	},
 	"askUserPersistMessage": {
 		"message": "Anvend dette valg for andre eksisterende kontakter"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "Behold kontakten"
 	},
-	"updateAskUserLabel": {
+	"cardupdateAskUserLabel": {
 		"message": "Overskriv kontakten"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "Dupliker kontakten"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "Slet kontakten"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "Foretræk den lokale ændring"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "Foretræk den fjerne ændring"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "Flet ændringerne"
 	},
 	"serverCardDeletedFromServer": {
@@ -799,7 +887,7 @@
         }
 	},
 	"serverCardSendingDeletion": {
-		"message": "$P1$ : Kontakt $P2$ : sender sletteforespørgsler …",
+		"message": "$P1$ : Kontakt $P2$ : sender sletningsforespørgsel …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -852,7 +940,7 @@
         }
 	},
 	"serverCardSendingUpdate": {
-		"message": "$P1$ : Kontakt $P2$ : sender opdateringsforespørgsler …",
+		"message": "$P1$ : Kontakt $P2$ : sender opdateringsforespørgsel …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -905,7 +993,7 @@
         }
 	},
 	"serverCardSendingCreate": {
-		"message": "$P1$ : Kontakt $P2$ : sender oprettelsesforespørgsler …",
+		"message": "$P1$ : Kontakt $P2$ : sender oprettelsesforespørgsel …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1018,6 +1106,387 @@
             }
         }
 	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : Kontakt $P2$ : sender kontaktmærkaters erhvervelsesforespørgsel …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : Kontakt $P2$ : mærkater erhvervet",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : Kontakt $P2$ : mærkater kunne ikke erhverves på server (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : Kontakt $P2$ : sender kontaktmærkaters opdateringsforespørgsel …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : Kontakt $P2$ : mærkater opdateret",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : Kontakt $P2$ : mærkater kunne ikke opdateres på server (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : Kategori $P2$ slettet lokalt",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : Kategori $P2$ opdateret lokalt",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : Kategori $P2$ allerede hentet fra mellemlager",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kategori $P2$ slettet lokalt og opdateret på server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : Kategori $P2$ opdateret lokalt og på server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : Kategori $P2$ opdateret på server (etag fundet : $P3$, etag i mellemlager : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : Fandt en ny kategori på server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : Kategori $P2$ indlæst fra mellemlager (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : Kategori $P2$ ny lokalt",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kategori $P2$ opdateret lokalt og slettet fra server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : Kategori $P2$ slettet fra server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "Kategoriændringskonflikt"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "Behold kategorien"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "Slet kategorien"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Foretræk den lokale ændring"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Foretræk den fjerne ændring"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : Kategori $P2$ slettet fra server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : Kategori $P2$ eksisterer ikke på server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : Kategori $P2$ kunne ikke slettes fra server (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : Kategori $P2$ : sender sletningsforespørgsel …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Kategori $P2$ opdateret på server (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kategori $P2$ opdateret på server (ingen etag i svar)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : Kategori $P2$ kunne ikke opdateres på server (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : Kategori $P2$ : sender opdateringsforespørgsel …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : Kategori $P2$ oprettet på server (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kategori $P2$ oprettet på server (ingen etag i svar)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : Kategori $P2$ kunne ikke oprettes på server (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : Kategori $P2$ : sender oprettelsesforespørgsel …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : Søger i kategorier …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"synchronizationFailed": {
 		"message": "$P1$ : Synkronisering mislykkedes (trin : $P2$, url : $P3$, status : $P4$)",
         "placeholders": {
@@ -1036,7 +1505,7 @@
         }
 	},
 	"synchronizationUnauthorized": {
-		"message": "$P1$: Kan ikke logge på serveren. Det skyldes sandsynligvis forkert konfiguration, brugernavn eller adgangskode.",
+		"message": "$P1$ : Kan ikke logge på serveren. Det skyldes sandsynligvis forkert konfiguration, brugernavn eller adgangskode.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1585,6 +2054,17 @@
             }
         }
 	},
+	"categoryRenamed": {
+		"message": "$P1$ : Kategori $P2$ omdøbt",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"categoryRenamedUndo": {
 		"message": "Kategori $P1$ omdøbt",
         "placeholders": {
@@ -1807,7 +2287,7 @@
 		"message": "CardBook Til"
 	},
 	"cardbook.searchCc.name": {
-		"message": "CardBook Kopi til (Cc)"
+		"message": "CardBook Cc"
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Bcc"
@@ -1816,7 +2296,7 @@
 		"message": "CardBook Til eller Kopi til"
 	},
 	"cardbook.searchAll.name": {
-		"message": "CardBook Fra, Til, Kopi til eller Bcc"
+		"message": "CardBook Fra, Til, Cc eller Bcc"
 	},
 	"cardbook.searchCorrespondents.name": {
 		"message": "CardBook-korrespondenter"
@@ -1828,13 +2308,13 @@
 		"message": "Tilføj Til til CardBook"
 	},
 	"cardbook.addCc.name": {
-		"message": "Tilføj Kopi til til CardBook"
+		"message": "Tilføj Cc til CardBook"
 	},
 	"cardbook.addBcc.name": {
 		"message": "Tilføj Bcc til CardBook"
 	},
 	"cardbook.addAll.name": {
-		"message": "Tilføj Fra, Til, Kopi til eller Bcc til CardBook"
+		"message": "Tilføj Fra, Til, Cc eller Bcc til CardBook"
 	},
 	"cardbook.removeFrom.name": {
 		"message": "Fjern Fra fra CardBook"
@@ -1843,13 +2323,13 @@
 		"message": "Fjern Til fra CardBook"
 	},
 	"cardbook.removeCc.name": {
-		"message": "Fjern Kopi til fra CardBook"
+		"message": "Fjern Cc fra CardBook"
 	},
 	"cardbook.removeBcc.name": {
 		"message": "Fjern Bcc fra CardBook"
 	},
 	"cardbook.removeAll.name": {
-		"message": "Fjern Fra, Til, Kopi til eller Bcc fra CardBook"
+		"message": "Fjern Fra, Til, Cc eller Bcc fra CardBook"
 	},
 	"urlDownloaded": {
 		"message": "URL hentet : $P1$",
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "Organisationsredigering"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "Opret kategori"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Rediger kategori"
 	},
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "Type:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Kategori:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "Kategori:"
@@ -2761,8 +3247,32 @@
             }
         }
 	},
-	"newTokenDescription": {
+	"warnDescription": {
 		"message": "CardBook vil gerne tilgå din konto $P1$ for at hente kontakter. Akkreditiver og kontaktdata bliver kun overført mellem din computer og Google. Ingen tredjepartssteder er involveret.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "Program: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "Klient-ID: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "Scope: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3134,7 +3644,7 @@
 	},
 	"namePage.name.label": {
 		"message": "Navn"
-	},                    
+	},
 	"namePage.color.label": {
 		"message": "Farve"
 	},
@@ -3401,9 +3911,6 @@
 	},
 	"birthdaylistTabLabel": {
 		"message": "Mærkedag"
-	},
-	"synclistTabLabel": {
-		"message": "Mærkedagspåmindelser"
 	},
 	"integrationGroupboxLabel": {
 		"message": "Integration i Thunderbird"

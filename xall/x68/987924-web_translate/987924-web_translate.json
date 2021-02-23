@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12626/12626983.png?modified=1599932965"
         }
     ],
-    "average_daily_users": 5887,
+    "average_daily_users": 7124,
     "categories": {
         "thunderbird": [
             "language-support",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/fastaddons/8.88",
     "created": "2020-10-11T14:25:19Z",
     "current_version": {
-        "id": 2475283,
+        "id": 2475401,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2475283",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2475401",
         "files": [
             {
-                "id": 1018444,
-                "created": "2021-01-29T12:33:09Z",
-                "hash": "sha256:6c6ef8bb05d81015a8c304b0a382ed525430904ec08b956c2af800d0c0ba5b28",
+                "id": 1018562,
+                "created": "2021-02-22T15:13:04Z",
+                "hash": "sha256:eb157a5c26ab3da04d509fa62b56086c8e620e7f6edac44d460180fe737c6184",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 5137244,
+                "size": 5134157,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018444/web_translate-3.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018562/web_translate-3.2-tb.xpi?src=",
                 "permissions": [
                     "webRequest",
                     "webRequestBlocking",
@@ -79,11 +79,11 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "- yet another hotfix for Google Translator"
+            "en-US": "- hotfix for DeepL translator to honor target language setup when using the Popup window\n- added Baidu ads blocking in the translator\n- removed old fallback code for Google Translate\n- all providers now fallback to Microsoft Translator if they can't load - this affects Chrome only as Firefox and Thunderbird can load all translators just fine"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/3.1",
-        "version": "3.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/3.2",
+        "version": "3.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -106,7 +106,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2021-01-29T12:35:03Z",
+    "last_updated": "2021-02-22T15:15:03Z",
     "name": {
         "el": "Web Translate",
         "fr": "Web Translate",
@@ -132,18 +132,36 @@
     },
     "previews": [
         {
+            "id": 206430,
+            "caption": {
+                "en-US": "Available from context menu and Pop-up window."
+            },
+            "image_size": [
+                1280,
+                770
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206430.png?modified=1612782847",
+            "thumbnail_size": [
+                320,
+                193
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206430.png?modified=1612782847"
+        },
+        {
             "id": 206190,
-            "caption": null,
+            "caption": {
+                "en-US": "Can be opened also in a new tab."
+            },
             "image_size": [
                 1280,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206190.png?modified=1602429724",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206190.png?modified=1612782840",
             "thumbnail_size": [
                 320,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206190.png?modified=1602429724"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206190.png?modified=1612782840"
         },
         {
             "id": 206191,
@@ -154,20 +172,20 @@
                 1280,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206191.png?modified=1602429675",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206191.png?modified=1612782840",
             "thumbnail_size": [
                 320,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206191.png?modified=1602429675"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206191.png?modified=1612782840"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.79122,
-        "count": 7,
-        "average": 5,
-        "text_count": 7
+        "bayesian_average": 4.60005,
+        "count": 11,
+        "average": 4.7273,
+        "text_count": 11
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/reviews/",
     "requires_payment": false,

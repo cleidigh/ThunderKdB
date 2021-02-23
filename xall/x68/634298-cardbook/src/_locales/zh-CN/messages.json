@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "未分类"
 	},
-	"collectedCards": {
-		"message": "已整理的联系人"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "启用通讯录"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "将通讯录设为只读模式"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "新建分类"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "编辑类别"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$ : 已从磁盘删除的联系人 : $P2$",
+		"message": "$P1$ : 联系人已从本地删除 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +305,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : 已从磁盘删除和服务器更新的联系人 : $P2$",
+		"message": "$P1$ : 联系人已从本地删除并在服务器更新 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +316,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "$P1$ : 磁盘的新联系人 : $P2$",
+		"message": "$P1$ : 联系人已在本地新建 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$ : 已在磁盘更新的磁盘 : $P2$",
+		"message": "$P1$ : 联系人已在本地更新 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$ : 已在磁盘和服务器更新的联系人 : $P2$",
+		"message": "$P1$ : 联系人已在本地更新并在服务器更新 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : 已从磁盘更新和服务器删除的联系人 : $P2$",
+		"message": "$P1$ : 联系人已在本地更新并在服务器删除 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : 类型已更新: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : 类型已在服务器新建 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : 类型已在服务器更新 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : 类型已从服务器删除 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : 类型已在本地删除 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : 类型已在本地删除并在服务器更新 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : 类型已在本地新建 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : 类型已在本地更新 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : 类型已在本地和服务器更新 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : 类型已在本地更新并在服务器删除 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -576,7 +686,7 @@
 		"message": "已完成全部导入"
 	},
 	"cardDeletedOnDisk": {
-		"message": "$P1$ : 已从磁盘删除联系人 $P2$ ",
+		"message": "$P1$ : 联系人 $P2$ 已在本地删除",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -587,7 +697,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "$P1$ : 已在磁盘更新联系人 $P2$ ",
+		"message": "$P1$ : 联系人 $P2$ 已在本地更新",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -608,19 +718,8 @@
             }
         }
 	},
-	"cardGetFromCache": {
-		"message": "$P1$ : 已从缓存检索联系人 $P2$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : 从磁盘删除和服务器更新联系人 $P2$",
+		"message": "$P1$ : 联系人 $P2$ 已在本地删除并在服务器更新",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -631,7 +730,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "$P1$ : 在磁盘和服务器更新联系人 $P2$",
+		"message": "$P1$ : 联系人 $P2$ 已在本地和服务器更新",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -666,17 +765,6 @@
             }
         }
 	},
-	"cardLoadedFromCache": {
-		"message": "$P1$ : 从缓存加载的联系人 $P2$",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardLoadedFromCacheDB": {
 		"message": "$P1$ : 从缓存加载的联系人 $P2$ (IndexedDB)",
         "placeholders": {
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$ : 磁盘上的新联系人 $P2$",
+		"message": "$P1$ : 联系人 $P2$ 已在本地新建",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : 在磁盘更新和服务器删除的联系人 $P2$",
+		"message": "$P1$ : 联系人 $P2$ 已在本地更新并在服务器删除",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,31 +820,31 @@
             }
         }
 	},
-	"askUserTitle": {
+	"cardAskUserTitle": {
 		"message": "联系人修改冲突"
 	},
 	"askUserPersistMessage": {
 		"message": "对其他已存在的联系人应用此选择"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "保留联系人"
 	},
-	"updateAskUserLabel": {
+	"cardupdateAskUserLabel": {
 		"message": "覆盖联系人"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "复制联系人"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "删除联系人"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "优先本地修改"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "优先远程修改"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "合并修改"
 	},
 	"serverCardDeletedFromServer": {
@@ -1015,6 +1103,387 @@
             },
             "P3": {
                 "content": "$3"
+            }
+        }
+	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : 联系人 $P2$ : 正在发送联系人标签获取请求 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : 联系人 $P2$ : 标签已获取",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : 联系人 $P2$ : 标签从服务器获取失败 (网址 : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : 联系人 $P2$ : 正在发送联系人标签更新请求 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : 联系人 $P2$ : 标签已更新",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : 联系人 $P2$ : 标签从服务器更新失败 (网址 : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : 类别 $P2$ 已在本地删除",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : 类别 $P2$ 已在本地更新",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : 已从缓存检索类别 $P2$ ",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : 类型 $P2$ 已在本地删除并在服务器更新",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : 类型 $P2$ 已在本地和服务器更新",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : 在服务器更新类别 $P2$ (已发现标签 : $P3$, 缓存中的标签 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : 已在服务器找到一个新类别",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : 从缓存加载的类别 $P2$ (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : 已重命名目录 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : 已在本地更新并在服务器删除类别 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : 已从服务器删除类别 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "类别修改冲突"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "保留类别"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "删除类别"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "优先本地修改"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "优先远程修改"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : 已从服务器删除类别 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : 服务器上不存在类别 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : 从服务器删除类别 $P2$ 失败 (网址: $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : 类别 $P2$ : 发送删除请求 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : 已在服务器更新类别 $P2$ (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : 已在服务器更新类别 $P2$ (无响应的标签)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : 从服务器更新类别 $P2$ 失败 (url : $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : 类别 $P2$ : 发送更新请求 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : 已在服务器新建类别 $P2$ (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : 已在服务器新建类别 $P2$ (无响应的标签)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : 在服务器新建类别 $P2$ 失败 (网址: $P3$, 状态 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : 类别 $P2$ : 发送创建请求 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : 搜索类别中 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
             }
         }
 	},
@@ -1582,6 +2051,17 @@
         "placeholders": {
             "P1": {
                 "content": "$1"
+            }
+        }
+	},
+	"categoryRenamed": {
+		"message": "$P1$ : 已重命名目录 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
             }
         }
 	},
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "组织编辑"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "新建分类"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "编辑类别"
 	},
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "类型:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "类别:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "类别:"
@@ -2761,8 +3247,32 @@
             }
         }
 	},
-	"newTokenDescription": {
+	"warnDescription": {
 		"message": "CardBook 想访问你的 $P1$ 账号以获取联系人。认证信息和联系人数据仅在你的电脑和 Google 之间传输，第三方站点无法获取。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "应用程序: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "客户端身份标识: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "范围: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3401,9 +3911,6 @@
 	},
 	"birthdaylistTabLabel": {
 		"message": "周年纪念日"
-	},
-	"synclistTabLabel": {
-		"message": "周年纪念日提醒"
 	},
 	"integrationGroupboxLabel": {
 		"message": "与 Thunderbird 集成"

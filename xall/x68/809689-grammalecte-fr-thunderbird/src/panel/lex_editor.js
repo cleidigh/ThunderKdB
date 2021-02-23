@@ -433,17 +433,17 @@ const oGenerator = {
                                             }
                                         } else {
                                             // participes passés
-                                            if (dFlex.get(":Q3") !== "") {
-                                                if (dFlex.get(":Q2") !== "") {
-                                                    this.lFlexion.push([dFlex.get(":Q1"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:m:s/*"]);
-                                                    this.lFlexion.push([dFlex.get(":Q2"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:m:p/*"]);
+                                            if (dFlex.get(":f:s") !== "") {
+                                                if (dFlex.get(":m:p") !== "") {
+                                                    this.lFlexion.push([dFlex.get(":m:s"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:m:s/*"]);
+                                                    this.lFlexion.push([dFlex.get(":m:p"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:m:p/*"]);
                                                 } else {
-                                                    this.lFlexion.push([dFlex.get(":Q1"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:m:i/*"]);
+                                                    this.lFlexion.push([dFlex.get(":m:s"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:m:i/*"]);
                                                 }
-                                                this.lFlexion.push([dFlex.get(":Q3"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:f:s/*"]);
-                                                this.lFlexion.push([dFlex.get(":Q4"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:f:p/*"]);
+                                                this.lFlexion.push([dFlex.get(":f:s"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:f:s/*"]);
+                                                this.lFlexion.push([dFlex.get(":f:p"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:A:f:p/*"]);
                                             } else {
-                                                this.lFlexion.push([dFlex.get(":Q1"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:e:i/*"]);
+                                                this.lFlexion.push([dFlex.get(":m:s"), ":V" + oVerb.cGroup + "_" + sVerbTag + ":Q:e:i/*"]);
                                             }
                                         }
                                     }

@@ -5,6 +5,10 @@
   list-style-image: url("chrome://messenger/skin/icons/new.svg");
 }
 
+.tabmail-tab[type="contentTab"][label=""] .tab-text.tab-label::before {
+  content: attr(tabtitlelabel);
+}
+
 /* Make the fake urlbar look like someone cares.. */
 #url-toolbox {
   visibility: visible;
@@ -216,11 +220,6 @@ X#identity-box[pageproxystate="valid"].unknownIdentity > #identity-icon {
 :not(.urlbar-icon-wrapper) > .urlbar-icon:not([disabled]):hover,
  .urlbar-icon-wrapper:not([disabled]):hover {
     background-color: hsla(0,0%,70%,.2);
-}
-
-/* Zoom factor for font-size also needs to apply to menus */
-[browseintabzoom] menupopup, menubar, menulist {
-  font-size: inherit !important;
 }
 
 /* Zoom button */

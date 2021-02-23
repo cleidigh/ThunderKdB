@@ -78,7 +78,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		addKeyToEdit: function (aKey) {
 			let type = "key";
 			let re = /[\n\u0085\u2028\u2029]|\r\n?/g;
-			aKey = aKey.replace(/-----(BEGIN|END) PGP PUBLIC KEY BLOCK-----/g, "").replace(re, "");
+			aKey = aKey.replace(/-----(BEGIN|END) PGP PUBLIC KEY BLOCK-----/g, "").trim().replace(re, "\\r\\n");
 			let allKeyArray = cardbookWindowUtils.getAllKeys(false);
 			allKeyArray = allKeyArray.filter(child => (child.value != "" || child.URI != ""));
 			allKeyArray.push({types: [], value: aKey, localURI: "", URI: "", extension: ""});
@@ -1392,8 +1392,15 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				aCard[type] = cardbookWindowUtils.getAllTypes(type, true);
 			}
 			aCard.impp = cardbookWindowUtils.getIMPPTypes();
-			aCard.key = cardbookWindowUtils.getAllKeys(type, true);
-			
+
+			var keys = cardbookWindowUtils.getAllKeys(type, true);
+			var re = /[\n\u0085\u2028\u2029]|\r\n?/g;
+			keys = keys.map(key => {
+				key.value = key.value.replace(/-----(BEGIN|END) PGP PUBLIC KEY BLOCK-----/g, "").trim().replace(re, "\\r\\n"); //key.value.replaceAll("\n", "\\n").replaceAll("\r", "\\r");
+				return key;
+			});
+			aCard.key = keys;
+
 			var othersTemp1 = [];
 			for (var i in cardbookRepository.customFields) {
 				for (var j = 0; j < cardbookRepository.customFields[i].length; j++) {

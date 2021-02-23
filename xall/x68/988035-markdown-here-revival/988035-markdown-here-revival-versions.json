@@ -1,0 +1,140 @@
+[
+    {
+        "id": 2475395,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/markdown-here-revival/versions/2475395",
+        "files": [
+            {
+                "id": 1018556,
+                "created": "2021-02-20T19:30:09Z",
+                "hash": "sha256:475d84d1607420193ca08a74685a5056c259f2f7a9be4a10e59540d533545dd7",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 511597,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018556/markdown_here_revival-3.1.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "<strong>Version 3.1.0</strong> - feature parity with old Markdown Here\n<ul><li>New permissions:\n<ul><li>\"Unrestricted access\" - This is for the notification bar</li></ul></li><li>Fixes:\n<ul><li>Math rendering works, it still uses the Google Chart API, so a request is\nsent to Google to draw the image. Also note that the image is not included\nin the email itself so recipients will need to allow remote images in their\nemail client. This feature is disabled by default for privacy reasons.<ul><li><strong>Syntax change:</strong> Math must be surrounded by backticks\n  (`) and dollar signs ($). The need for backticks will be removed\n  in a later release</li><li>Example: <code>`\\$-b \\pm \\sqrt{b\\^2 - 4ac} \\over 2a$`</code></li></ul></li><li>Updated default CSS so when Thunderbird is set to use a dark theme rendered HTML is still readable. If updating from a previous version, you will have to update \"Primary Styling CSS\" in the options page by clicking the \"Reset to Default\" button.</li><li>Notifications when unrendering HTML that has been changed and before sending an email that looks like it contains markdown.</li></ul></li><li>Other changes:\n<ul><li>Updated hotkey support to use builtin mailextension API</li><li>Using mailextension APIs to check email for unrendered markdown before sending</li><li>Removed code specific to webmail/browser support as a result of above two items</li><li>Removed dependency on JQuery in the options page</li><li>highlightjs (source code syntax highlighting)  updated to 10.6.0</li></ul></li><li>Known issues:\n<ul><li>The update page shown after new install or update is not written</li><li>Documentation needs some updates, specifically the Math syntax change noted above</li><li>There's no context menu (right-click) support for Thunderbird's compose window</li><li>Options page does not work in Thunderbird 86 beta</li></ul></li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/versions/3.1.0",
+        "version": "3.1.0"
+    },
+    {
+        "id": 2475296,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/markdown-here-revival/versions/2475296",
+        "files": [
+            {
+                "id": 1018457,
+                "created": "2021-02-05T02:58:05Z",
+                "hash": "sha256:38ced094466860f5d88bb582161f3f7cace7d7d8146bfb16d253791cb07808df",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 489481,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018457/markdown_here_revival-3.0.2-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "This is a preview release. It only runs on recent Thunderbird versions (78.5+ and 86.0beta  tested).\n\nKnown issues:\n- TeX math formulas do not render\n- Colors are not always usable with a dark Thunderbird theme"
+        },
+        "reviewed": "2021-02-05T03:20:03Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/versions/3.0.2",
+        "version": "3.0.2"
+    }
+]

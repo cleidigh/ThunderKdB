@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "Ohne Kategorie"
 	},
-	"collectedCards": {
-		"message": "Gesammelte Kontakte"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "Adressbuch aktivieren"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "Schreibgeschützten Modus aktivieren"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "Kategorie erstellen"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Kategorie bearbeiten"
@@ -207,7 +207,7 @@
         }
 	},
 	"synchroRunning": {
-		"message": "$P1$ : Synchronisation läuft",
+		"message": "$P1$: Synchronisation läuft",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -215,7 +215,7 @@
         }
 	},
 	"synchroNotTried": {
-		"message": "$P1$ : Synchronisation noch nicht durchgeführt.",
+		"message": "$P1$: Synchronisation noch nicht durchgeführt.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -223,7 +223,7 @@
         }
 	},
 	"synchroFinished": {
-		"message": "$P1$ : Synchronisation beendet",
+		"message": "$P1$: Synchronisation beendet",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$: Lokal gelöschte Kontakte: $P2$",
+		"message": "$P1$: Kontakte lokal gelöscht: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$: Lokal aktualisierte Kontakte: $P2$",
+		"message": "$P1$: Kontakte lokal aktualisiert: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$: Lokal und auf dem Server aktualisierte Kontakte: $P2$",
+		"message": "$P1$: Kontakte lokal und auf dem Server aktualisiert: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$: Lokal aktualisierte aber auf dem Server gelöschte Kontakte: $P2$",
+		"message": "$P1$: Kontakte lokal aktualisiert und vom Server gelöscht: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$: Nicht veränderte Kategorien: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$: Neue Kategorien auf dem Server: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$: Kategorien auf dem Server aktualisiert: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$: Kategorien vom Server gelöscht: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$: Kategorien lokal gelöscht: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$: Kategorien lokal gelöscht und auf dem Server aktualisiert: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$: Neue lokale Kategorien: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$: Kategorien lokal aktualisiert: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$: Kategorien lokal und auf dem Server aktualisiert: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$: Kategorien lokal aktualisiert und vom Server gelöscht: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -608,19 +718,8 @@
             }
         }
 	},
-	"cardGetFromCache": {
-		"message": "$P1$: Kontakt $P2$ aus dem Cache gelesen",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$: Kontakt $P2$ lokal gelöscht aber auf dem Server aktualisiert",
+		"message": "$P1$: Kontakt $P2$ lokal gelöscht und auf dem Server aktualisiert",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -666,17 +765,6 @@
             }
         }
 	},
-	"cardLoadedFromCache": {
-		"message": "$P1$: Kontakt $P2$ aus dem Cache geladen",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardLoadedFromCacheDB": {
 		"message": "$P1$: Kontakt $P2$ aus dem Cache geladen (IndexedDB)",
         "placeholders": {
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$: Neuer lokaler Kontakt $P2$",
+		"message": "$P1$: Neuer lokaler Kontakt: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$: Kontakt $P2$ lokal aktualisiert aber auf dem Server gelöscht",
+		"message": "$P1$: Kontakt $P2$ lokal aktualisiert und vom Server gelöscht",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -722,7 +810,7 @@
         }
 	},
 	"cardAlreadyExists": {
-		"message": "$P1$ : Kontakt $P2$ existiert bereits",
+		"message": "$P1$: Kontakt $P2$ existiert bereits",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,31 +820,31 @@
             }
         }
 	},
-	"askUserTitle": {
+	"cardAskUserTitle": {
 		"message": "Konflikt beim Ändern des Kontakts"
 	},
 	"askUserPersistMessage": {
 		"message": "Auswahl auf auch weitere bereits existierende Kontakte anwenden"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "Behalte den Kontakt"
 	},
-	"updateAskUserLabel": {
+	"cardupdateAskUserLabel": {
 		"message": "Überschreibe den Kontakt"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "Dupliziere den Kontakt"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "Lösche den Kontakt"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "Bevorzuge die lokale Änderung"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "Bevorzuge die serverseitige Änderung"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "Führe die Änderungen zusammen"
 	},
 	"serverCardDeletedFromServer": {
@@ -955,7 +1043,7 @@
         }
 	},
 	"serverCardGetKeyFailed": {
-		"message": "$P1$ : Der Schlüssel für Kontakt $P2$ konnte nicht heruntergeladen werden (url : $P3$, status : $P4$)",
+		"message": "$P1$: Der Schlüssel für Kontakt $P2$ konnte nicht heruntergeladen werden (url : $P3$, status : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -972,7 +1060,7 @@
         }
 	},
 	"serverCardGetKeyOK": {
-		"message": "$P1$ : Der Schlüssel für Kontakt $P2$ wurde heruntergeladen",
+		"message": "$P1$: Der Schlüssel für Kontakt $P2$ wurde heruntergeladen",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -983,7 +1071,7 @@
         }
 	},
 	"serverCardGettingKey": {
-		"message": "$P1$ : Der Schlüssel für Kontakt $P2$ wird heruntergeladen …",
+		"message": "$P1$: Der Schlüssel für Kontakt $P2$ wird heruntergeladen …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1015,6 +1103,387 @@
             },
             "P3": {
                 "content": "$3"
+            }
+        }
+	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$: Kontakt $P2$ : sende Anfrage für Kontakt Labels …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$: Kontakt $P2$ : Labels erhalten",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$: Kontakt $P2$ : Keine Labels vom Server erhalten (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$: Kontakt $P2$ : sende Aktualisierungs-Anfrage für die Kontakt Labels …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$: Kontakt $P2$ : Labels aktualisiert",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$: Kontakt $P2$ : Labels konnten auf dem Server nicht aktualisiert werden (url : $P3$, status : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$: Kategorie $P2$ lokal gelöscht",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$: Kategorie $P2$ lokal aktualisiert",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$: Kategorie $P2$ bereits aus dem Cache gelesen",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$: Kategorie $P2$ lokal gelöscht und auf dem Server aktualisiert",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$: Kategorie $P2$ lokal und auf dem Server aktualisiert",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$: Kontakt $P2$ auf dem Server aktualisiert (etag gefunden: $P3$, etag im Cache: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$: Neue Kategorie auf dem Server gefunden",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$: Kategorie $P2$ aus dem Cache geladen (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$: Neue lokale Kategorie $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$: Kategorie $P2$ lokal aktualisiert und vom Server gelöscht",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$: Kategorie $P2$ auf dem Server gelöscht",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "Konflikt beim Ändern der Kategorie"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "Kategorie behalten"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "Kategorie löschen"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Bevorzuge die lokale Änderung"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Bevorzuge die serverseitige Änderung"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$: Kategorie $P2$ auf dem Server gelöscht",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$: Kategorie $P2$ existiert nicht auf dem Server",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$: Kategorie $P2$ konnte nicht vom Server gelöscht werden (URL: $P3$, Status: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$: Kategorie $P2$: Sende Löschauftrag …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$: Kategorie $P2$ auf dem Server aktualisiert (etag: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$: Kategorie $P2$ auf dem Server aktualisiert (Kein etag in Antwort)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$: Kategorie $P2$ konnte nicht auf dem Server aktualisiert werden (URL: $P3$, Status: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$: Kategorie $P2$: Sende Aktualisierungsauftrag …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$: Kategorie $P2$ auf dem Server erstellt (etag: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$: Kategorie $P2$ auf dem Server erstellt (Kein etag in Antwort)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$: Kategorie $P2$ konnte nicht auf dem Server erstellt werden (URL: $P3$, Status: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$: Kategorie $P2$: Sende Erstellungsauftrag …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$: Suche Kategorien …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
             }
         }
 	},
@@ -1310,7 +1779,7 @@
         }
 	},
 	"addressbookOpened": {
-		"message": "$P1$ : Adressbuch geöffnet",
+		"message": "$P1$: Adressbuch geöffnet",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1318,7 +1787,7 @@
         }
 	},
 	"addressbookModified": {
-		"message": "$P1$ : Adressbuch geändert",
+		"message": "$P1$: Adressbuch geändert",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1350,7 +1819,7 @@
         }
 	},
 	"addressbookReadOnly": {
-		"message": "$P1$ : Adressbuch schreibgeschützt",
+		"message": "$P1$: Adressbuch schreibgeschützt",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1358,7 +1827,7 @@
         }
 	},
 	"addressbookReadWrite": {
-		"message": "$P1$ : Adressbuch im Lese- und Schreibmodus",
+		"message": "$P1$: Adressbuch im Lese- und Schreibmodus",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1432,7 +1901,7 @@
         }
 	},
 	"cardsConverted": {
-		"message": "$P1$ : Kontakte konvertiert zu $P2$ : $P3$",
+		"message": "$P1$: Kontakte konvertiert zu $P2$ : $P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1512,7 +1981,7 @@
 		"message": "Kontakte dupliziert"
 	},
 	"displayNameGenerated": {
-		"message": "$P1$ : Kontakte, deren Anzeigenamen wiederhergestellt worden ist : $P2$",
+		"message": "$P1$: Kontakte, deren Anzeigenamen wiederhergestellt worden ist: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1551,7 +2020,7 @@
 		"message": "Kontakte hineingezogen"
 	},
 	"categoryCreated": {
-		"message": "$P1$ : Kategorie $P2$ erstellt",
+		"message": "$P1$: Kategorie $P2$ erstellt",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1585,6 +2054,17 @@
             }
         }
 	},
+	"categoryRenamed": {
+		"message": "$P1$: Kategorie $P2$ umbenannt",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"categoryRenamedUndo": {
 		"message": "Kategorie $P1$ umbenannt",
         "placeholders": {
@@ -1594,7 +2074,7 @@
         }
 	},
 	"categoryDeleted": {
-		"message": "$P1$ : Kategorie $P2$ gelöscht",
+		"message": "$P1$: Kategorie $P2$ gelöscht",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1640,7 +2120,7 @@
         }
 	},
 	"nodeDeleted": {
-		"message": "$P1$ : Knoten $P2$ gelöscht",
+		"message": "$P1$: Knoten $P2$ gelöscht",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2073,7 +2553,7 @@
 		"message": "Synchronisation der Geburtstage fehlgeschlagen"
 	},
 	"syncListExistingEntry": {
-		"message": "$P1$ : Termin vorhanden in Lightning : $P2$",
+		"message": "$P1$: Termin vorhanden in Lightning: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2084,7 +2564,7 @@
         }
 	},
 	"syncListCreatedEntry": {
-		"message": "$P1$ : Termin erstellt in Lightning : $P2$",
+		"message": "$P1$: Termin erstellt in Lightning: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2095,7 +2575,7 @@
         }
 	},
 	"syncListErrorEntry": {
-		"message": "$P1$ : Termin fehlerhaft in Lightning : $P2$",
+		"message": "$P1$: Termin fehlerhaft in Lightning: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2172,7 +2652,7 @@
 		"message": "Nur vCards Version 3.0 oder 4.0 werden unterstützt"
 	},
 	"unableToParseResponse": {
-		"message": "$P1$ : Konnte die Antwort von Server nicht parsen. Fehlerhafte Zeile : $P2$",
+		"message": "$P1$: Konnte die Antwort von Server nicht parsen. Fehlerhafte Zeile: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "Bearbeitung der Organisation"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "Kategorie erstellen"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Bearbeitung der Kategorien"
 	},
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Kategorie:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "Kategorie:"
@@ -2761,8 +3247,32 @@
             }
         }
 	},
-	"newTokenDescription": {
+	"warnDescription": {
 		"message": "CardBook möchte auf ihren Account $P1$ zugreifen, um Kontakte herunterzuladen. Zugangsdaten sowie Kontaktdaten werden ausschließlich zwischen Ihrem Computer und Google ausgetauscht, es werden keine Daten an Drittseiten weitergeleitet.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "Anwendung: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "Client-Identifikation: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "Umfang: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3401,9 +3911,6 @@
 	},
 	"birthdaylistTabLabel": {
 		"message": "Geburtstage"
-	},
-	"synclistTabLabel": {
-		"message": "Geburtstage-Erinnerungen"
 	},
 	"integrationGroupboxLabel": {
 		"message": "Integration in Thunderbird"

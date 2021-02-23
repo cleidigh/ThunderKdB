@@ -186,7 +186,7 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
            if (queryFifteen.length = 1) {sidebar.removeChild(queryFifteen); };
                     }
                 },
-          setSixteen: function(id, property, value) {
+          setSixteen: function(id, property, getCurrentBackgroundColorSixteen) {
             let windows = Services.wm.getEnumerator("mail:3pane");
             while (windows.hasMoreElements()) {
             let window = windows.getNext();
@@ -195,56 +195,8 @@ var myapi = class extends ExtensionCommon.ExtensionAPI {
                 var Tb4 = extension.getURL("Tb4.png");
                 imageTb4.src = Tb4;
                 imageTb4.height = "200px";
-                window.document.getElementById("folderPaneBox").style.backgroundColor = 'white';
-              }
-          },
-          setSeventeen: function(id, property, value) {
-            let windows = Services.wm.getEnumerator("mail:3pane");
-            while (windows.hasMoreElements()) {
-            let window = windows.getNext();
-            let element = window.document.getElementById(id);
-                var imageTb4 = window.document.createXULElement("image");
-                var Tb4 = extension.getURL("Tb4.png");
-                imageTb4.src = Tb4;
-                imageTb4.height = "200px";
-                window.document.getElementById("folderPaneBox").style.backgroundColor = '#fff';
-              }
-          },
-          setEighteen: function(id, property, value) {
-            let windows = Services.wm.getEnumerator("mail:3pane");
-            while (windows.hasMoreElements()) {
-            let window = windows.getNext();
-            let element = window.document.getElementById(id);
-                var imageTb4 = window.document.createXULElement("image");
-                var Tb4 = extension.getURL("Tb4.png");
-                imageTb4.src = Tb4;
-                imageTb4.height = "200px";
-                window.document.getElementById("folderPaneBox").style.backgroundColor = '#38383D';
-              }
-          },
-          setNineteen: function(id, property, value) {
-            let windows = Services.wm.getEnumerator("mail:3pane");
-            while (windows.hasMoreElements()) {
-            let window = windows.getNext();
-            let element = window.document.getElementById(id);
-                var imageTb4 = window.document.createXULElement("image");
-                var Tb4 = extension.getURL("Tb4.png");
-                imageTb4.src = Tb4;
-                imageTb4.height = "200px";
-                window.document.getElementById("folderPaneBox").style.backgroundColor = '#303030';
-              }
-          },
-          setTwenty: function(id, property, value) {
-            let windows = Services.wm.getEnumerator("mail:3pane");
-            while (windows.hasMoreElements()) {
-            let window = windows.getNext();
-            let element = window.document.getElementById(id);
-                var imageTb4 = window.document.createXULElement("image");
-                var Tb4 = extension.getURL("Tb4.png");
-                imageTb4.src = Tb4;
-                imageTb4.height = "200px";
-                window.document.getElementById("folderPaneBox").style.backgroundColor = 'black';
-                   }
+                window.document.getElementById("folderPaneBox").style.backgroundColor = getCurrentBackgroundColorSixteen;
+                    }
                 }
             }
         }

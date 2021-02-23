@@ -10,23 +10,10 @@ const {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 // eslint-disable-next-line no-var
 var displayReceivedHeader = class extends ExtensionCommon.ExtensionAPI {
     getAPI(context) {
-
-        /**
-         * Get the Document for a specific message shown in a tab.
-         * Returns null if a different message is shown.
-         *
-         * Borrowed from dkim_verifier by Philippe Lieser.
-         *
-         * @param {number} tabId
-         * @param {number} messageId
-         * @returns {Document?}
-         */
-        function getDocumentForCurrentMsg(tabId, messageId) {
+        function getDocumentByTabId(tabId) {
             const {ExtensionParent} = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
             const target = ExtensionParent.apiManager.global.tabTracker.getTab(tabId);
             const window = Components.utils.getGlobalForObject(target);
-            const msg = context.extension.messageManager.convert(window.gFolderDisplay.selectedMessage);
-            if (msg.id !== messageId) return null;
             return window.document;
         }
 
@@ -65,15 +52,15 @@ var displayReceivedHeader = class extends ExtensionCommon.ExtensionAPI {
                         },
                     });
                 },
-                setReceivedHeaderHidden(tabId, messageId, hidden) {
-                    const document = getDocumentForCurrentMsg(tabId, messageId);
+                setReceivedHeaderHidden(tabId, hidden) {
+                    const document = getDocumentByTabId(tabId);
                     if (!document) return;
 
                     const mailHeaderfield = document.getElementById("expandedReceivedRow");
                     mailHeaderfield.hidden = hidden;
                 },
-                setReceivedHeaderValue(tabId, messageId, headersArray) {
-                    const document = getDocumentForCurrentMsg(tabId, messageId);
+                setReceivedHeaderValue(tabId, headersArray) {
+                    const document = getDocumentByTabId(tabId);
                     if (!document) return;
 
                     const headerRowValue = document.createElement("td");

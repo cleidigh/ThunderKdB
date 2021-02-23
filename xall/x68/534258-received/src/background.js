@@ -31,11 +31,11 @@ browser.messageDisplay.onMessageDisplayed.addListener((tab, message) => {
         if (headers) {
             browser.storage.local.get().then((res) => {
                 const parsed = parseReceivedHeaders(headers, res.regexp);
-                browser.displayReceivedHeader.setReceivedHeaderValue(tab.id, message.id, parsed);
-                browser.displayReceivedHeader.setReceivedHeaderHidden(tab.id, message.id, false);
+                browser.displayReceivedHeader.setReceivedHeaderValue(tab.id, parsed);
+                browser.displayReceivedHeader.setReceivedHeaderHidden(tab.id, !parsed.length);
             });
         } else {
-            browser.displayReceivedHeader.setReceivedHeaderHidden(tab.id, message.id, true);
+            browser.displayReceivedHeader.setReceivedHeaderHidden(tab.id, true);
         }
     });
 });

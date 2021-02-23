@@ -91,6 +91,12 @@ var cardbookUtils = {
 		let myAdrFormula = aAdrFormula ||
 							cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.adrFormula") ||
 							cardbookRepository.defaultAdrFormula;
+		// maybe a country code (Google uses them)
+		let lcRegionCode = aAddress[6].toLowerCase();
+		if (cardbookRepository.countriesList.includes(lcRegionCode)) {
+			const loc = new Localization(["toolkit/intl/regionNames.ftl"], true);
+			aAddress[6] = loc.formatValueSync("region-name-" + lcRegionCode);
+		}
 		result = cardbookUtils.getStringFromFormula(myAdrFormula, aAddress);
 		var re = /[\n\u0085\u2028\u2029]|\r\n?/;
 		var myAdrResultArray = result.split(re);
@@ -104,7 +110,6 @@ var cardbookUtils = {
 				var country = aCard.adr[i][0][6].toUpperCase();
 				if (country != "") {
 					const loc = new Localization(["toolkit/intl/regionNames.ftl"], true);
-					var regionStrBundle = Services.strings.createBundle("resource://gre/localization/" + cardbookRepository.getLang() + "/toolkit/intl/regionNames.ftl")
 					var lcRegionCode = country.toLowerCase();
 					// maybe a country code
 					if (cardbookRepository.countriesList.includes(lcRegionCode)) {
@@ -245,6 +250,12 @@ var cardbookUtils = {
 			}
 		}
 		return aArray;
+	},
+
+	compareArray: function (aArray1, aArray2) {
+		return aArray1.length === aArray2.length && aArray1.every(function(value, index) {
+			return value === aArray2[index];
+		});
 	},
 
 	splitLine: function (vString) {
@@ -589,29 +600,14 @@ var cardbookUtils = {
 	getvCardForEmail: function(aCard) {
 		var myTempCard = new cardbookCardParser();
 		cardbookUtils.cloneCard(aCard, myTempCard);
-		function filterArray(element) {
-			return (element.search(/^X-THUNDERBIRD-MODIFICATION:/) == -1 &&
-						element.search(/^X-THUNDERBIRD-ETAG:/) == -1);
-		}
-		myTempCard.others = myTempCard.others.filter(filterArray);
 		myTempCard.rev = "";
 		var cardContent = cardbookUtils.cardToVcardData(myTempCard, true);
 		myTempCard = null;
 		return cardContent;
 	},
 
-	// to avoid passing technical fields to server
-	// X-THUNDERBIRD-MODIFICATION is removed before so no need to remove it here
 	getvCardForServer: function(aCard) {
-		var myTempCard = new cardbookCardParser();
-		cardbookUtils.cloneCard(aCard, myTempCard);
-		function filterArray(element) {
-			return (element.search(/^X-THUNDERBIRD-ETAG:/) == -1);
-		}
-		myTempCard.others = myTempCard.others.filter(filterArray);
-		var cardContent = cardbookUtils.cardToVcardData(myTempCard, true);
-		myTempCard = null;
-		return cardContent;
+		return cardbookUtils.cardToVcardData(aCard, true);
 	},
 
 	addCardFromDisplayAndEmail: function (aDirPrefId, aDisplayName, aEmail, aCategory, aActionId) {
@@ -798,60 +794,67 @@ var cardbookUtils = {
 	},
 
 	getStringFromFormula: function(aFormula, aArray) {
-		var finalResult = "";
-		var myEscapedFormula = cardbookUtils.escapeString1(aFormula);
-		var myEscapedArray = cardbookUtils.escapeArray2(aArray);
-		for (var i = 1; i < myEscapedArray.length+1; i++) {
+		let myEscapedFormula = cardbookUtils.escapeString1(aFormula);
+		let myEscapedArray = cardbookUtils.escapeArray2(aArray);
+		for (let i = 1; i < myEscapedArray.length+1; i++) {
 			if (myEscapedFormula.indexOf("{{" + i + "}}") >= 0) {
-				var myRegExp = new RegExp("\\{\\{" + i + "\\}\\}", "g");
-				myEscapedFormula = myEscapedFormula.replace(myRegExp, myEscapedArray[i-1]);
+				let variableRegExp = new RegExp("\\{\\{" + i + "\\}\\}", "g");
+				myEscapedFormula = myEscapedFormula.replace(variableRegExp, myEscapedArray[i-1]);
 			}
 		}
-		var myFormulaArray = myEscapedFormula.split(')');
-		for (var i = 0; i < myFormulaArray.length; i++) {
-			var block = myFormulaArray[i].replace(/^\(/, "");
-			var blockArray = block.split('|');
-			if (blockArray.length == 1) {
-				finalResult = finalResult + blockArray[0];
-			} else if (blockArray.length == 2) {
-				if (blockArray[0].trim()) {
-					finalResult = finalResult + blockArray[0];
-				} else {
-					finalResult = finalResult + blockArray[1];
-				}
-			} else if (blockArray.length == 3) {
-				if (blockArray[0].toUpperCase() == blockArray[1].toUpperCase()) {
-					finalResult = finalResult + blockArray[2];
+		let blockRegExp = new RegExp("\\([^\\(\\)]*\\)", "g");
+		let maxLoopNumber = 1;
+		while (maxLoopNumber < 10) {
+			let blocks = myEscapedFormula.match(blockRegExp);
+			if (blocks) {
+				for (let block of blocks) {
+					var blockArray = block.replace("(", "").replace(")", "").split('|');
+					if (blockArray.length == 1) {
+						myEscapedFormula = myEscapedFormula.replace(block, blockArray[0]);
+					} else if (blockArray.length == 2) {
+						if (blockArray[0].trim()) {
+							myEscapedFormula = myEscapedFormula.replace(block, blockArray[0]);
+						} else {
+							myEscapedFormula = myEscapedFormula.replace(block, blockArray[1]);
+						}
+					} else if (blockArray.length == 3) {
+						if (blockArray[0].toUpperCase() == blockArray[1].toUpperCase()) {
+							myEscapedFormula = myEscapedFormula.replace(block, blockArray[2]);
+						}
+					} else {
+						if ("*" == blockArray[1]) {
+							if (blockArray[0].toUpperCase().includes(blockArray[2].toUpperCase())) {
+								myEscapedFormula = myEscapedFormula.replace(block, blockArray[3]);
+							} else if (blockArray[4]) {
+								myEscapedFormula = myEscapedFormula.replace(block, blockArray[4]);
+							}
+						} else if ("^" == blockArray[1]) {
+							if (blockArray[0].toUpperCase().startsWith(blockArray[2].toUpperCase())) {
+								myEscapedFormula = myEscapedFormula.replace(block, blockArray[3]);
+							} else if (blockArray[4]) {
+								myEscapedFormula = myEscapedFormula.replace(block, blockArray[4]);
+							}
+						} else if ("$" == blockArray[1]) {
+							if (blockArray[0].toUpperCase().endsWith(blockArray[2].toUpperCase())) {
+								myEscapedFormula = myEscapedFormula.replace(block, blockArray[3]);
+							} else if (blockArray[4]) {
+								myEscapedFormula = myEscapedFormula.replace(block, blockArray[4]);
+							}
+						} else  {
+							if (blockArray[0].toUpperCase() == blockArray[1].toUpperCase()) {
+								myEscapedFormula = myEscapedFormula.replace(block, blockArray[2]);
+							} else {
+								myEscapedFormula = myEscapedFormula.replace(block, blockArray[3]);
+							}
+						}
+					}
 				}
 			} else {
-				if ("*" == blockArray[1]) {
-					if (blockArray[0].toUpperCase().includes(blockArray[2].toUpperCase())) {
-						finalResult = finalResult + blockArray[3];
-					} else if (blockArray[4]) {
-						finalResult = finalResult + blockArray[4];
-					}
-				} else if ("^" == blockArray[1]) {
-					if (blockArray[0].toUpperCase().startsWith(blockArray[2].toUpperCase())) {
-						finalResult = finalResult + blockArray[3];
-					} else if (blockArray[4]) {
-						finalResult = finalResult + blockArray[4];
-					}
-				} else if ("$" == blockArray[1]) {
-					if (blockArray[0].toUpperCase().endsWith(blockArray[2].toUpperCase())) {
-						finalResult = finalResult + blockArray[3];
-					} else if (blockArray[4]) {
-						finalResult = finalResult + blockArray[4];
-					}
-				} else  {
-					if (blockArray[0].toUpperCase() == blockArray[1].toUpperCase()) {
-						finalResult = finalResult + blockArray[2];
-					} else {
-						finalResult = finalResult + blockArray[3];
-					}
-				}
+				break;
 			}
+			maxLoopNumber++;
 		}
-		return cardbookUtils.unescapeString1(finalResult);
+		return cardbookUtils.unescapeString1(myEscapedFormula);
 	},
 
 	setCalculatedFieldsWithoutRev: function(aCard) {
@@ -935,6 +938,18 @@ var cardbookUtils = {
 			}
 		}
 		return converted;
+	},
+
+	cloneCategory: function(sourceCategory, targetCategory) {
+		targetCategory.dirPrefId = sourceCategory.dirPrefId;
+		targetCategory.href = sourceCategory.href;
+		targetCategory.etag = sourceCategory.etag;
+		targetCategory.cbid = sourceCategory.cbid;
+		targetCategory.uid = sourceCategory.uid;
+		targetCategory.name = sourceCategory.name;
+		targetCategory.updated = sourceCategory.updated;
+		targetCategory.created = sourceCategory.created;
+		targetCategory.deleted = sourceCategory.deleted;
 	},
 
 	cloneCard: function(sourceCard, targetCard) {
@@ -1532,38 +1547,22 @@ var cardbookUtils = {
 		return false;
 	},
 
-	searchTagCreated: function(aCard) {
-		for (var i = 0; i < aCard.others.length; i++) {
-			if (aCard.others[i].indexOf("X-THUNDERBIRD-MODIFICATION:CREATED") >= 0) {
-				return true;
-			}
-		}
-		return false;
-	},
-
 	addTagCreated: function(aCard) {
 		cardbookUtils.nullifyTagModification(aCard);
-		aCard.others.push("X-THUNDERBIRD-MODIFICATION:CREATED");
 		aCard.created = true;
 	},
 
 	addTagUpdated: function(aCard) {
 		cardbookUtils.nullifyTagModification(aCard);
-		aCard.others.push("X-THUNDERBIRD-MODIFICATION:UPDATED");
 		aCard.updated = true;
 	},
 
 	addTagDeleted: function(aCard) {
 		cardbookUtils.nullifyTagModification(aCard);
-		aCard.others.push("X-THUNDERBIRD-MODIFICATION:DELETED");
 		aCard.deleted = true;
 	},
 
 	nullifyTagModification: function(aCard) {
-		function removeTagModification(element) {
-			return (element.indexOf("X-THUNDERBIRD-MODIFICATION:") == -1);
-		}
-		aCard.others = aCard.others.filter(removeTagModification);
 		aCard.created = false;
 		aCard.updated = false;
 		aCard.deleted = false;
@@ -1589,17 +1588,12 @@ var cardbookUtils = {
 			var myPrefType = cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId);
 			if (cardbookUtils.isMyAccountRemote(myPrefType)) {
 				cardbookUtils.nullifyEtag(aCard);
-				aCard.others.push("X-THUNDERBIRD-ETAG:" + aEtag);
 				aCard.etag = aEtag;
 			}
 		}
 	},
 
 	nullifyEtag: function(aCard) {
-		function removeEtag(element) {
-			return (element.indexOf("X-THUNDERBIRD-ETAG:") == -1);
-		}
-		aCard.others = aCard.others.filter(removeEtag);
 		aCard.etag = "";
 	},
 
@@ -2002,7 +1996,9 @@ var cardbookUtils = {
 		result.notEmptyResults = [];
 		for (let card of aListOfCards) {
 			if (card.isAList) {
-				result.notEmptyResults.push(MailServices.headerParser.makeMimeAddress(card.fn, card.fn));
+				var myConversion = new cardbookListConversion(card.fn + " <" + card.fn + ">");
+				myConversion.emailResult = cardbookRepository.arrayUnique(myConversion.emailResult).join(", ");
+				result.notEmptyResults = result.notEmptyResults.concat(myConversion.emailResult);
 			} else {
 				if (card.emails.length == 0) {
 					result.emptyResults.push(card.fn);

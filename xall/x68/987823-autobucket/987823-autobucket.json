@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14180/14180175.png?modified=1580647754"
         }
     ],
-    "average_daily_users": 70,
+    "average_daily_users": 64,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,32 +19,33 @@
     "contributions_url": "",
     "created": "2020-05-06T07:30:11Z",
     "current_version": {
-        "id": 2474267,
+        "id": 2475314,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2474267",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/autobucket/versions/2475314",
         "files": [
             {
-                "id": 1017429,
-                "created": "2020-09-14T13:17:30Z",
-                "hash": "sha256:1dc78cee8b678291ad6759d220dc6dae2b6d859722be5531f27e8da2cbad067f",
+                "id": 1018475,
+                "created": "2021-02-08T12:35:42Z",
+                "hash": "sha256:910cb050384c0f4ab77a263bc0c4bf1b541647ea028a2a33d8e3bc47c9299b07",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1730312,
+                "size": 1748840,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017429/autobucket-1.1.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018475/autobucket-1.2.0-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "menus",
                     "storage",
                     "accountsRead",
-                    "notifications"
+                    "notifications",
+                    "unlimitedStorage"
                 ]
             }
         ],
@@ -57,12 +58,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Upgrade the internal package you are using",
-            "ja": "使用している内部パッケージのバージョンアップ"
+            "en-US": "Fixed an issue where startup slows down while using",
+            "ja": "長い期間使い続けることで起動が遅くなっていく問題を修正しました"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.1.7",
-        "version": "1.1.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/autobucket/versions/1.2.0",
+        "version": "1.2.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -87,7 +88,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-14T13:20:03Z",
+    "last_updated": "2021-02-08T12:40:02Z",
     "name": {
         "en-US": "AutoBucket",
         "ja": "AutoBucket"

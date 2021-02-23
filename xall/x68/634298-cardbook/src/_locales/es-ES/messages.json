@@ -58,10 +58,7 @@
 		"message": "Importar de archivo"
 	},
 	"uncategorizedCards": {
-		"message": "Sin clasificación"
-	},
-	"collectedCards": {
-		"message": "Contactos recopilados"
+		"message": "Sin categorizar"
 	},
 	"enableFromAccountsOrCats": {
 		"message": "Habilitar la libreta de direcciones"
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "Establecer la libreta de direcciones en modo de solo lectura"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "Crear categoría"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Editar categoría"
@@ -94,13 +94,13 @@
 		"message": "Crear lista a partir de nodo"
 	},
 	"viewCardButtonLabel": {
-		"message": "Consultar"
+		"message": "Ver"
 	},
 	"editCardButtonLabel": {
 		"message": "Modificar"
 	},
 	"viewInCardBookMenuLabel": {
-		"message": "Consultar con CardBook"
+		"message": "Ver con CardBook"
 	},
 	"mergeCardsLabel": {
 		"message": "Fusionar contactos"
@@ -109,7 +109,7 @@
 		"message": "Ignorar"
 	},
 	"deleteCardsLabel": {
-		"message": "Eliminar"
+		"message": "Borrar"
 	},
 	"showForgottenLabel": {
 		"message": "Ver duplicados ignorados"
@@ -124,7 +124,7 @@
 		"message": "O"
 	},
 	"noContactsDuplicated": {
-		"message": "No se encontró ningún contacto duplicado"
+		"message": "No se encontraron contactos duplicados."
 	},
 	"serverWarningGoogleLabel": {
 		"message": "El uso de Google es experimental porque Google no respeta el estándar vCard."
@@ -188,7 +188,7 @@
 		"message": "Las etiquetas de los campos personalizados no pueden estar vacías."
 	},
 	"allContactsLoadedFromFile": {
-		"message": "$P1$: Todos los contactos fueron cargados desde el archivo.",
+		"message": "$P1$ : Todos los contactos fueron cargados desde el archivo.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -196,7 +196,7 @@
         }
 	},
 	"notAllContactsLoadedFromFile": {
-		"message": "$P1$: Varios contactos no pudieron ser cargados desde el archivo: error con $P2$.",
+		"message": "$P1$ : Varios contactos no pudieron ser cargados desde el archivo: error con $P2$.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -207,7 +207,7 @@
         }
 	},
 	"synchroRunning": {
-		"message": "$P1$: Sincronización en curso",
+		"message": "$P1$ : Sincronización en curso",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -215,7 +215,7 @@
         }
 	},
 	"synchroNotTried": {
-		"message": "$P1$: Sincronización no realizada",
+		"message": "$P1$ : Sincronización no realizada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -223,7 +223,7 @@
         }
 	},
 	"synchroFinished": {
-		"message": "$P1$: Sincronización terminada",
+		"message": "$P1$ : Sincronización terminada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -231,7 +231,7 @@
         }
 	},
 	"synchroFinishedResult": {
-		"message": "$P1$: Sincronización terminada, resultados:",
+		"message": "$P1$ : Sincronización terminada, resultados :",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -250,7 +250,7 @@
         }
 	},
 	"synchroCardsUpToDate": {
-		"message": "$P1$: Contactos actualizados: $P2$",
+		"message": "$P1$ : Contactos actualizados : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -261,7 +261,7 @@
         }
 	},
 	"synchroCardsNewOnServer": {
-		"message": "$P1$: Contactos nuevos en el servidor: $P2$",
+		"message": "$P1$ : Contactos nuevos en el servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -272,7 +272,7 @@
         }
 	},
 	"synchroCardsUpdatedOnServer": {
-		"message": "$P1$: Contactos actualizados en el servidor: $P2$",
+		"message": "$P1$ : Contactos actualizados en el servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -283,7 +283,7 @@
         }
 	},
 	"synchroCardsDeletedOnServer": {
-		"message": "$P1$: Contactos borrados del servidor: $P2$",
+		"message": "$P1$ : Contactos borrados del servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$: Contactos borrados del disco: $P2$",
+		"message": "$P1$ : Contactos borrados en local : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +305,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$: Contactos borrados del disco y actualizados en el servidor: $P2$",
+		"message": "$P1$ : Contactos borrados en local y actualizados en el servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +316,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "$P1$: Contactos nuevos en el disco: $P2$",
+		"message": "$P1$ : Contactos nuevos en local : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$: Contactos actualizados en el disco: $P2$",
+		"message": "$P1$ : Contactos actualizados en local : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$: Contactos actualizados en el disco y en el servidor: $P2$",
+		"message": "$P1$ : Contactos actualizados en local y en el servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$: Contactos actualizados en el disco y borrados del servidor: $P2$",
+		"message": "$P1$ : Contactos actualizados en local y borrados del servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : Categorías actualizadas : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : Categorías nuevas en el servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : Categorías actualizadas en el servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : Categorías borradas del servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : Categorías borradas en local : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Categorías borradas en local y actualizadas en el servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : Categorías nuevas en local : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : Categorías actualizadas en local : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : Categorías actualizadas en local y en el servidor : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Categorías actualizadas en local y borradas del servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -360,7 +470,7 @@
         }
 	},
 	"synchroModifGetOKFromServer": {
-		"message": "$P1$: Modificaciones recuperadas del servidor: $P2$",
+		"message": "$P1$ : Modificaciones recuperadas del servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -371,7 +481,7 @@
         }
 	},
 	"synchroModifGetKOFromServer": {
-		"message": "$P1$: Modificaciones no recuperadas del servidor: $P2$",
+		"message": "$P1$ : Modificaciones no recuperadas del servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -382,7 +492,7 @@
         }
 	},
 	"synchroModifPutOKToServer": {
-		"message": "$P1$: Modificaciones enviadas con éxito al servidor: $P2$",
+		"message": "$P1$ : Modificaciones enviadas con éxito al servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -393,7 +503,7 @@
         }
 	},
 	"synchroModifPutKOToServer": {
-		"message": "$P1$: Modificaciones no enviadas al servidor: $P2$",
+		"message": "$P1$ : Modificaciones no enviadas al servidor : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -404,7 +514,7 @@
         }
 	},
 	"synchroImpossible": {
-		"message": "$P1$: Sincronización imposible con el servidor.",
+		"message": "$P1$ : Sincronización imposible con el servidor.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -412,7 +522,7 @@
         }
 	},
 	"synchroDBFinishedResult": {
-		"message": "$P1$: Base de datos local abierta, resultados:",
+		"message": "$P1$ : Base de datos local abierta, resultados:",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -420,7 +530,7 @@
         }
 	},
 	"synchroDBCardsOK": {
-		"message": "$P1$: Contactos abiertos: $P2$",
+		"message": "$P1$ : Contactos abiertos : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -431,7 +541,7 @@
         }
 	},
 	"synchroDBCardsKO": {
-		"message": "$P1$: Contactos con error: $P2$",
+		"message": "$P1$ : Contactos con error : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -442,7 +552,7 @@
         }
 	},
 	"synchroDirFinishedResult": {
-		"message": "$P1$: Directorio abierto, resultados:",
+		"message": "$P1$ : Directorio abierto, resultados:",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -450,7 +560,7 @@
         }
 	},
 	"synchroDirCardsOK": {
-		"message": "$P1$: Contactos abiertos: $P2$",
+		"message": "$P1$ : Contactos abiertos : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -461,7 +571,7 @@
         }
 	},
 	"synchroDirCardsKO": {
-		"message": "$P1$: Contactos con error: $P2$",
+		"message": "$P1$ : Contactos con error : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -472,7 +582,7 @@
         }
 	},
 	"synchroFileFinishedResult": {
-		"message": "$P1$: Archivo abierto, resultados:",
+		"message": "$P1$ : Archivo abierto, resultados:",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -480,7 +590,7 @@
         }
 	},
 	"synchroFileCardsOK": {
-		"message": "$P1$: Contactos abiertos: $P2$",
+		"message": "$P1$ : Contactos abiertos : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -491,7 +601,7 @@
         }
 	},
 	"synchroFileCardsKO": {
-		"message": "$P1$: Contactos con error: $P2$",
+		"message": "$P1$ : Contactos con error : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -502,7 +612,7 @@
         }
 	},
 	"synchroForcedToResync": {
-		"message": "$P1$: Es necesario volver a sincronizar esta cuenta",
+		"message": "$P1$ : Es necesario volver a sincronizar esta cuenta",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -513,7 +623,7 @@
 		"message": "Todas las sincronizaciones terminaron"
 	},
 	"discoveryRunning": {
-		"message": "$P1$: Descubrimiento automático de la libreta de direcciones en curso",
+		"message": "$P1$ : Descubrimiento automático de la libreta de direcciones en curso",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -521,7 +631,7 @@
         }
 	},
 	"imageGetResponse": {
-		"message": "$P1$: Imágenes descargadas: $P2$",
+		"message": "$P1$ : Imágenes descargadas : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -532,7 +642,7 @@
         }
 	},
 	"imageGetError": {
-		"message": "$P1$: Imágenes con error: $P2$",
+		"message": "$P1$ : Imágenes con error : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -543,7 +653,7 @@
         }
 	},
 	"importFinishedResult": {
-		"message": "$P1$: Importación terminada, resultados:",
+		"message": "$P1$ : Importación terminada, resultados:",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -551,7 +661,7 @@
         }
 	},
 	"importCardsOK": {
-		"message": "$P1$: Contactos importados: $P2$",
+		"message": "$P1$ : Contactos importados : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -562,7 +672,7 @@
         }
 	},
 	"importCardsKO": {
-		"message": "$P1$: Contactos con error: $P2$",
+		"message": "$P1$ : Contactos con error : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -576,7 +686,7 @@
 		"message": "Todas las importaciones terminaron"
 	},
 	"cardDeletedOnDisk": {
-		"message": "$P1$: Contacto $P2$ borrado del disco",
+		"message": "$P1$ : Contacto $P2$ borrado en local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -587,7 +697,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "$P1$: Contacto $P2$ actualizado en el disco",
+		"message": "$P1$ : Contacto $P2$ actualizado en local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -598,18 +708,7 @@
         }
 	},
 	"cardAlreadyGetFromCache": {
-		"message": "$P1$: Contacto $P2$ ya recuperado desde caché",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
-	"cardGetFromCache": {
-		"message": "$P1$: Contacto $P2$ recuperado desde caché",
+		"message": "$P1$ : Contacto $P2$ recuperado desde caché",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -620,7 +719,7 @@
         }
 	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$: Contacto $P2$ borrado del disco y actualizado en el servidor",
+		"message": "$P1$ : Contacto $P2$ borrado en local y actualizado en el servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -631,7 +730,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "$P1$: Contacto $P2$ actualizado en el disco y en el servidor",
+		"message": "$P1$ : Contacto $P2$ actualizado en local y en el servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -642,7 +741,7 @@
         }
 	},
 	"cardUpdatedOnServer": {
-		"message": "$P1$: Contacto $P2$ actualizado en el servidor (etag encontrado: $P3$, etag en caché: $P4$)",
+		"message": "$P1$ : Contacto $P2$ actualizado en el servidor (etag encontrado: $P3$, etag en caché: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -659,26 +758,15 @@
         }
 	},
 	"cardNewOnServer": {
-		"message": "$P1$: Nuevo contacto encontrado en el servidor",
+		"message": "$P1$ : Nuevo contacto encontrado en el servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
-            }
-        }
-	},
-	"cardLoadedFromCache": {
-		"message": "$P1$: Contacto $P2$ cargado desde caché",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
             }
         }
 	},
 	"cardLoadedFromCacheDB": {
-		"message": "$P1$: Contacto $P2$ cargado desde caché (IndexedDB)",
+		"message": "$P1$ : Contacto $P2$ cargado desde caché (IndexedDB)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$: Contacto $P2$ nuevo en el disco",
+		"message": "$P1$ : Contacto $P2$ nuevo en local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$: Contacto $P2$ actualizado en el disco y borrado del servidor",
+		"message": "$P1$ : Contacto $P2$ actualizado en local y borrado del servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -711,7 +799,7 @@
         }
 	},
 	"cardDeletedOnServer": {
-		"message": "$P1$: Contacto $P2$ borrado del servidor",
+		"message": "$P1$ : Contacto $P2$ borrado del servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -722,7 +810,7 @@
         }
 	},
 	"cardAlreadyExists": {
-		"message": "$P1$: Contacto $P2$ ya presente",
+		"message": "$P1$ : Contacto $P2$ ya presente",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,35 +820,35 @@
             }
         }
 	},
-	"askUserTitle": {
-		"message": "Conflicto de modificaciones sobre un contacto"
+	"cardAskUserTitle": {
+		"message": "Conflicto de modificación del contacto"
 	},
 	"askUserPersistMessage": {
 		"message": "Aplicar esta elección en los otros contactos"
 	},
-	"keepAskUserLabel": {
-		"message": "Conservar contacto"
+	"cardkeepAskUserLabel": {
+		"message": "Mantener el contacto"
 	},
-	"updateAskUserLabel": {
-		"message": "Sobrescribir contacto"
+	"cardupdateAskUserLabel": {
+		"message": "Sobrescribir el contacto"
 	},
-	"duplicateAskUserLabel": {
-		"message": "Duplicar contacto"
+	"cardduplicateAskUserLabel": {
+		"message": "Duplicar el contacto"
 	},
-	"deleteAskUserLabel": {
-		"message": "Eliminar contacto"
+	"carddeleteAskUserLabel": {
+		"message": "Borrar el contacto"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "Preferir la modificación local"
 	},
-	"remoteAskUserLabel": {
-		"message": "Preferir la modificación del servidor"
+	"cardremoteAskUserLabel": {
+		"message": "Preferir la modificación remota"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "Fusionar diferencias"
 	},
 	"serverCardDeletedFromServer": {
-		"message": "$P1$: Contacto $P2$ borrado del servidor",
+		"message": "$P1$ : Contacto $P2$ borrado del servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -771,7 +859,7 @@
         }
 	},
 	"serverCardNotExistServer": {
-		"message": "$P1$: El contacto $P2$ no existe en el servidor",
+		"message": "$P1$ : El contacto $P2$ no existe en el servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -782,7 +870,7 @@
         }
 	},
 	"serverCardDeleteFailed": {
-		"message": "$P1$: Contacto $P2$: error al borrar en el servidor (url: $P3$, estado: $P4$)",
+		"message": "$P1$ : Contacto $P2$ : error al borrar desde el servidor (url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -799,7 +887,7 @@
         }
 	},
 	"serverCardSendingDeletion": {
-		"message": "$P1$: Contacto $P2$: envío de las solicitudes de supresión…",
+		"message": "$P1$ : Contacto $P2$ : enviando solicitud de borrado…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -810,7 +898,7 @@
         }
 	},
 	"serverCardUpdatedOnServerWithEtag": {
-		"message": "$P1$: Contacto $P2$ actualizado en el servidor (etag: $P3$)",
+		"message": "$P1$ : Contacto $P2$ actualizado en el servidor (etag: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -824,7 +912,7 @@
         }
 	},
 	"serverCardUpdatedOnServerWithoutEtag": {
-		"message": "$P1$: Contacto $P2$ actualizado en el servidor (sin etag en la respuesta)",
+		"message": "$P1$ : Contacto $P2$ actualizado en el servidor (sin etag en la respuesta)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -835,7 +923,7 @@
         }
 	},
 	"serverCardUpdateFailed": {
-		"message": "$P1$: Contact $P2$: error al actualizar en el servidor (url: $P3$, estado: $P4$)",
+		"message": "$P1$ : Contact $P2$: error al actualizar en el servidor (url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -852,7 +940,7 @@
         }
 	},
 	"serverCardSendingUpdate": {
-		"message": "$P1$: Contact $P2$: envío de las solicitudes de actualización…",
+		"message": "$P1$ : Contacto $P2$ : enviando solicitud de actualización…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -863,7 +951,7 @@
         }
 	},
 	"serverCardCreatedOnServerWithEtag": {
-		"message": "$P1$: Contacto $P2$ creado en el servidor (etag: $P3$)",
+		"message": "$P1$ : Contacto $P2$ creado en el servidor (etag: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -877,7 +965,7 @@
         }
 	},
 	"serverCardCreatedOnServerWithoutEtag": {
-		"message": "$P1$: Contacto $P2$ creado en el servidor (sin etag en la respuesta)",
+		"message": "$P1$ : Contacto $P2$ creado en el servidor (sin etag en la respuesta)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -888,7 +976,7 @@
         }
 	},
 	"serverCardCreateFailed": {
-		"message": "$P1$: Contacto $P2$: error al crear en el servidor (url: $P3$, estado: $P4$)",
+		"message": "$P1$ : Contacto $P2$: error al crear en el servidor (url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -905,7 +993,7 @@
         }
 	},
 	"serverCardSendingCreate": {
-		"message": "$P1$: Contact $P2$: envío de las solicitudes de creación…",
+		"message": "$P1$ : Contacto $P2$ : enviando solicitud de creación…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -916,7 +1004,7 @@
         }
 	},
 	"serverCardGetImageFailed": {
-		"message": "$P1$: Error al descargar la imagen del contacto $P2$ (url: $P3$, estado: $P4$)",
+		"message": "$P1$ : Error al descargar la imagen del contacto $P2$ (url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -933,7 +1021,7 @@
         }
 	},
 	"serverCardGetImageOK": {
-		"message": "$P1$: Imagen del contacto $P2$ descargada",
+		"message": "$P1$ : Imagen del contacto $P2$ descargada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -944,7 +1032,7 @@
         }
 	},
 	"serverCardGettingImage": {
-		"message": "$P1$: Descarga de la imagen del contacto $P2$…",
+		"message": "$P1$ : Descarga de la imagen del contacto $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -955,7 +1043,7 @@
         }
 	},
 	"serverCardGetKeyFailed": {
-		"message": "$P1$: Error al descargar la clave del contacto $P2$ (url: $P3$, estado: $P4$)",
+		"message": "$P1$ : Error al descargar la clave del contacto $P2$ (url : $P3$, estado : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -972,7 +1060,7 @@
         }
 	},
 	"serverCardGetKeyOK": {
-		"message": "$P1$: Clave del contacto $P2$ descargada",
+		"message": "$P1$ : Clave del contacto $P2$ descargada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -994,7 +1082,7 @@
         }
 	},
 	"serverCardGetOK": {
-		"message": "$P1$: Contacto $P2$ recuperado del servidor",
+		"message": "$P1$ : Contacto $P2$ recuperado del servidor",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1005,7 +1093,7 @@
         }
 	},
 	"serverCardGetFailed": {
-		"message": "$P1$: Error al recuperar del servidor (url: $P2$, estado: $P3$)",
+		"message": "$P1$ : Error al recuperar del servidor (url: $P2$, estado: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1018,8 +1106,389 @@
             }
         }
 	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : Contacto $P2$ : enviando solicitud de obtención de etiquetas del contacto …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : Contacto $P2$ : etiquetas obtenidas",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : Contacto $P2$ : no se pudieron obtener las etiquetas en el servidor (url : $P3$, estado : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : Contacto $P2$ : enviando solicitud de actualización de etiquetas del contacto …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : Contacto $P2$ : etiquetas actualizadas",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : Contacto $P2$ : no se pudieron actualizar las etiquetas en el servidor (url : $P3$, estado : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : Categoría $P2$ borrada en local",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : Categoría $P2$ actualizada en local",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : Categoría $P2$ recuperada desde caché",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Categoría $P2$ borrada en local y actualizada en el servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : Categoría $P2$ actualizada en local y en el servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : Categoría $P2$ actualizada en el servidor (etag encontrado : $P3$, etag en caché : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : Nueva categoría encontrada en el servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : Categoría $P2$ cargada desde caché (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : Categoría $P2$ nueva en local",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Categoría $P2$ actualizada en local y borrada del servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : Categoría $P2$ borrada del servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "Conflicto de modificación de la categoría"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "Mantener la categoría"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "Borrar la categoría"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Preferir la modificación local"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Preferir la modificación remota"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : Categoría $P2$ borrada del servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : La categoría $P2$ no existe en el servidor",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : Categoría $P2$ error al borrar desde el servidor (url : $P3$, estado : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : Categoría $P2$ : enviando solicitud de borrado…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Categoría $P2$ actualizada en el servidor (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Categoría $P2$ actualizada en el servidor (sin etag en la respuesta)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : Categoría $P2$ error al actualizar en el servidor (url : $P3$, estado : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : Categoría $P2$ : enviando solicitud de actualización…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : Categoría $P2$ creada en el servidor (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Categoría $P2$ creada en el servidor (sin etag en la respuesta)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : Categoría $P2$ error al crear en el servidor (url : $P3$, estado : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : Categoría $P2$ : enviando solicitud de creación…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : Buscando categorías …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"synchronizationFailed": {
-		"message": "$P1$: Error al sincronizar (etapa: $P2$, url: $P3$, estado: $P4$)",
+		"message": "$P1$ : Error al sincronizar (etapa: $P2$, url: $P3$, estado: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1036,7 +1505,7 @@
         }
 	},
 	"synchronizationUnauthorized": {
-		"message": "$P1$: Conexión al servidor imposible. La configuración, el identificador o la contraseña posiblemente sean incorrectos.",
+		"message": "$P1$ : No se puede iniciar sesión en el servidor. La configuración, nombre de usuario o contraseña pueden ser incorrectos.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1044,7 +1513,7 @@
         }
 	},
 	"synchronizationSearchingCards": {
-		"message": "$P1$: Buscando contactos…",
+		"message": "$P1$ : Buscando contactos …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1052,7 +1521,7 @@
         }
 	},
 	"synchronizationRequestDiscovery": {
-		"message": "$P1$: Solicitud de validación sin descubrimiento de URL sobre $P2$…",
+		"message": "$P1$ : Validación sin solicitud de descubrimiento en $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1063,7 +1532,7 @@
         }
 	},
 	"synchronizationRequestDiscovery4": {
-		"message": "$P1$: Solicitud de descubrimiento de URL fase 4 sobre $P2$…",
+		"message": "$P1$ : Solicitud de descubrimiento fase 4 en $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1074,7 +1543,7 @@
         }
 	},
 	"synchronizationRequestDiscovery3": {
-		"message": "$P1$: Solicitud de descubrimiento de URL fase 3 sobre $P2$…",
+		"message": "$P1$ : Solicitud de descubrimiento fase 3 en $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1085,7 +1554,7 @@
         }
 	},
 	"synchronizationRequestDiscovery2": {
-		"message": "$P1$: Solicitud de descubrimiento de URL fase 2 sobre $P2$…",
+		"message": "$P1$ : Solicitud de descubrimiento fase 2 en $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1096,7 +1565,7 @@
         }
 	},
 	"synchronizationRequestDiscovery1": {
-		"message": "$P1$: Solicitud de descubrimiento de URL fase 1 sobre $P2$…",
+		"message": "$P1$ : Solicitud de descubrimiento fase 1 en $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1107,7 +1576,7 @@
         }
 	},
 	"googleAccessTokenOK": {
-		"message": "$P1$: Solicitud de 'access token Google' exítosa, access token: $P2$",
+		"message": "$P1$ : Solicitud de token de acceso de Google exitosa, token de acceso : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1118,7 +1587,7 @@
         }
 	},
 	"googleRefreshTokenOK": {
-		"message": "$P1$: Solicitud de 'refresh token Google' exítosa, refresh token: $P2$",
+		"message": "$P1$ : Solicitud de 'refresh token Google' exítosa, refresh token: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1129,7 +1598,7 @@
         }
 	},
 	"googleGetNewRefreshToken": {
-		"message": "$P1$: Recuperación de un nuevo 'refresh token Google' sobre $P2$…",
+		"message": "$P1$ : Recuperación de un nuevo 'refresh token Google' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1140,7 +1609,7 @@
         }
 	},
 	"googleNewRefreshTokenOK": {
-		"message": "$P1$: Código de autorización recibido: $P2$…",
+		"message": "$P1$ : Código de autorización recibido: $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1151,7 +1620,7 @@
         }
 	},
 	"googleRequestAccessToken": {
-		"message": "$P1$: Solicitud de 'access token Google' sobre $P2$…",
+		"message": "$P1$ : Solicitud de token de acceso de Google en $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1162,7 +1631,7 @@
         }
 	},
 	"googleRequestRefreshToken": {
-		"message": "$P1$: Solicitud de 'refresh token Google' sobre $P2$…",
+		"message": "$P1$ : Solicitud de 'refresh token Google' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1173,7 +1642,7 @@
         }
 	},
 	"yahooAccessTokenOK": {
-		"message": "$P1$: Solicitud de 'access token Yahoo!' exítosa, access token: $P2$",
+		"message": "$P1$ : Solicitud de token de acceso de Yahoo! exitosa, token de acceso : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1184,7 +1653,7 @@
         }
 	},
 	"yahooRefreshTokenOK": {
-		"message": "$P1$: Solicitud de 'refresh token Yahoo!' exítosa, refresh token: $P2$",
+		"message": "$P1$ : Solicitud de 'refresh token Yahoo!' exítosa, refresh token: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1195,7 +1664,7 @@
         }
 	},
 	"yahooGetNewRefreshToken": {
-		"message": "$P1$: Recuperación de un nuevo 'refresh token Yahoo!' sobre $P2$…",
+		"message": "$P1$ : Recuperación de un nuevo 'refresh token Yahoo!' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1206,7 +1675,7 @@
         }
 	},
 	"yahooNewRefreshTokenOK": {
-		"message": "$P1$: Código de autorización recibido: $P2$…",
+		"message": "$P1$ : Código de autorización recibido: $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1217,7 +1686,7 @@
         }
 	},
 	"yahooRequestAccessToken": {
-		"message": "$P1$: Solicitud de 'access token Yahoo!' sobre $P2$…",
+		"message": "$P1$ : Solicitud de token de acceso de Yahoo! en $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1228,7 +1697,7 @@
         }
 	},
 	"yahooRequestRefreshToken": {
-		"message": "$P1$: Solicitud de 'refresh token Yahoo!' sobre $P2$…",
+		"message": "$P1$ : Solicitud de 'refresh token Yahoo!' sobre $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1239,7 +1708,7 @@
         }
 	},
 	"periodicSyncDeleting": {
-		"message": "$P1$: Supresión del procesamiento de sincronización periódica (id: $P2$)",
+		"message": "$P1$ : Borrando el proceso de sincronización periódica (id : $P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1250,7 +1719,7 @@
         }
 	},
 	"periodicSyncSetting": {
-		"message": "$P1$: Creación del procesamiento de sincronización periódica (intervalo: $P2$ ms, id: $P3$)",
+		"message": "$P1$ : Configuración del proceso de sincronización periódica (intervalo : $P2$ ms, id : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1264,7 +1733,7 @@
         }
 	},
 	"periodicSyncSyncing": {
-		"message": "$P1$: Sincronización en razón del procesamiento de sincronización periódica…",
+		"message": "$P1$ : Sincronizando debido a la configuración de sincronización periódica…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1296,7 +1765,7 @@
         }
 	},
 	"parsingCardError": {
-		"message": "$P1$: Error durante la traducción de la tarjeta de contacto: \n$P2$ \n$P3$",
+		"message": "$P1$ : Error al analizar el contacto : \n$P2$ \n$P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1310,7 +1779,7 @@
         }
 	},
 	"addressbookOpened": {
-		"message": "$P1$: Libreta de direcciones abierta",
+		"message": "$P1$ : Libreta de direcciones abierta",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1318,7 +1787,7 @@
         }
 	},
 	"addressbookModified": {
-		"message": "$P1$: Libreta de direcciones modificada",
+		"message": "$P1$ : Libreta de direcciones modificada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1326,7 +1795,7 @@
         }
 	},
 	"addressbookDeleted": {
-		"message": "$P1$: Libreta de direcciones cerrada",
+		"message": "$P1$ : Libreta de direcciones cerrada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1334,7 +1803,7 @@
         }
 	},
 	"addressbookCreated": {
-		"message": "$P1$: Libreta de direcciones creada",
+		"message": "$P1$ : Libreta de direcciones creada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1342,7 +1811,7 @@
         }
 	},
 	"addressbookDisabled": {
-		"message": "$P1$: Libreta de direcciones deshabilitada",
+		"message": "$P1$ : Libreta de direcciones deshabilitada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1350,7 +1819,7 @@
         }
 	},
 	"addressbookReadOnly": {
-		"message": "$P1$: Libreta de direcciones en modo solo lectura",
+		"message": "$P1$ : Libreta de direcciones en modo solo lectura",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1358,7 +1827,7 @@
         }
 	},
 	"addressbookReadWrite": {
-		"message": "$P1$: Libreta de direcciones en modo lectura y escritura",
+		"message": "$P1$ : Libreta de direcciones en modo lectura y escritura",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1366,7 +1835,7 @@
         }
 	},
 	"addressbookEnabled": {
-		"message": "$P1$: Libreta de direcciones habilitada",
+		"message": "$P1$ : Libreta de direcciones habilitada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1374,7 +1843,7 @@
         }
 	},
 	"cardCreated": {
-		"message": "$P1$: Contacto $P2$ creado",
+		"message": "$P1$ : Contacto $P2$ creado",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1385,7 +1854,7 @@
         }
 	},
 	"cardUpdated": {
-		"message": "$P1$: Contacto $P2$ actualizado",
+		"message": "$P1$ : Contacto $P2$ actualizado",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1396,7 +1865,7 @@
         }
 	},
 	"cardDeleted": {
-		"message": "$P1$: Contacto $P2$ borrado",
+		"message": "$P1$ : Contacto $P2$ borrado",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1407,7 +1876,7 @@
         }
 	},
 	"cardAddedToCategory": {
-		"message": "$P1$: Contacto $P2$ añadido a la categoría $P3$",
+		"message": "$P1$ : Contacto $P2$ añadido a la categoría $P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1421,7 +1890,7 @@
         }
 	},
 	"cardDeletedFromAllCategory": {
-		"message": "$P1$: Contacto $P2$ borrado de todas las categorías",
+		"message": "$P1$ : Contacto $P2$ borrado de todas las categorías",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1432,7 +1901,7 @@
         }
 	},
 	"cardsConverted": {
-		"message": "$P1$: contactos convertidos en $P2$: $P3$",
+		"message": "$P1$ : contactos convertidos en $P2$ : $P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1465,7 +1934,7 @@
         }
 	},
 	"undoActionDoneUndo": {
-		"message": "Cancelado ($P1$)",
+		"message": "Deshecho ($P1$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1512,7 +1981,7 @@
 		"message": "Contactos duplicados"
 	},
 	"displayNameGenerated": {
-		"message": "$P1$: campo 'nombre mostrado' de estos contactos regenerado: $P2$",
+		"message": "$P1$ : contactos con sus nombres mostrados regenerados : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1542,7 +2011,7 @@
         }
 	},
 	"cardsDeleted2Undo": {
-		"message": "Contactos eliminados"
+		"message": "Contactos borrados"
 	},
 	"cardsPastedUndo": {
 		"message": "Contactos pegados"
@@ -1551,7 +2020,7 @@
 		"message": "Contactos arrastrados"
 	},
 	"categoryCreated": {
-		"message": "$P1$: Categoría $P2$ creada",
+		"message": "$P1$ : Categoría $P2$ creada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1585,6 +2054,17 @@
             }
         }
 	},
+	"categoryRenamed": {
+		"message": "$P1$ : Categoría $P2$ renombrada",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"categoryRenamedUndo": {
 		"message": "Categoría $P1$ renombrada",
         "placeholders": {
@@ -1594,7 +2074,7 @@
         }
 	},
 	"categoryDeleted": {
-		"message": "$P1$: Categoría $P2$ borrada",
+		"message": "$P1$ : Categoría $P2$ borrada",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1629,7 +2109,7 @@
         }
 	},
 	"linePastedUndo": {
-		"message": "Línea copiada"
+		"message": "Línea pegada"
 	},
 	"nodeRenamedUndo": {
 		"message": "Nodo $P1$ renombrado",
@@ -1640,7 +2120,7 @@
         }
 	},
 	"nodeDeleted": {
-		"message": "$P1$: Nodo $P2$ eliminado",
+		"message": "$P1$ : Nodo $P2$ borrado",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1785,7 +2265,7 @@
         }
 	},
 	"numberContactsSelected": {
-		"message": "Seleccionado: $P1$",
+		"message": "Seleccionados: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1947,7 +2427,7 @@
 		"message": "Apartado postal"
 	},
 	"extendedAddrLabel": {
-		"message": "Departamento"
+		"message": "Apartamento o Suite"
 	},
 	"streetLabel": {
 		"message": "Calle"
@@ -1956,7 +2436,7 @@
 		"message": "Localidad"
 	},
 	"regionLabel": {
-		"message": "Región"
+		"message": "Región (estado o provincia)"
 	},
 	"postalCodeLabel": {
 		"message": "Código postal"
@@ -1995,16 +2475,16 @@
 		"message": "Ordenar cadena"
 	},
 	"uidLabel": {
-		"message": "ID de contacto"
+		"message": "Id de contacto"
 	},
 	"cbidLabel": {
-		"message": "ID de CardBook"
+		"message": "Id de CardBook"
 	},
 	"class1Label": {
 		"message": "Clase"
 	},
 	"dirPrefIdLabel": {
-		"message": "ID de la libreta de direcciones"
+		"message": "Id de la libreta de direcciones"
 	},
 	"kindLabel": {
 		"message": "Tipo"
@@ -2040,7 +2520,7 @@
 		"message": "Confirmar"
 	},
 	"birthdaysListWindowLabel": {
-		"message": "Lista de los cumpleaños (total: $P1$)",
+		"message": "Lista de los cumpleaños (total : $P1$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2059,7 +2539,7 @@
         }
 	},
 	"syncListWindowLabelEnded": {
-		"message": "Sincronización de los cumpleaños terminada ($P1$/$P2$)",
+		"message": "Sincronización de los cumpleaños finalizada ($P1$/$P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2073,7 +2553,7 @@
 		"message": "Error en la sincronización de los cumpleaños"
 	},
 	"syncListExistingEntry": {
-		"message": "$P1$: Evento existente en Lightning: $P2$",
+		"message": "$P1$ : Evento existente en Lightning : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2084,7 +2564,7 @@
         }
 	},
 	"syncListCreatedEntry": {
-		"message": "$P1$: Evento creado en Lightning: $P2$",
+		"message": "$P1$ : Evento creado en Lightning : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2095,7 +2575,7 @@
         }
 	},
 	"syncListErrorEntry": {
-		"message": "$P1$: Evento con error en Lightning: $P2$",
+		"message": "$P1$ : Evento con error en Lightning : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2125,7 +2605,7 @@
 		"message": "Cumpleaños de %1$S"
 	},
 	"anniversaryCategory": {
-		"message": "Aniversarios"
+		"message": "Cumpleaños"
 	},
 	"calendarNotFoundTitle": {
 		"message": "Recordatorio de cumpleaños - Sincronización con Lightning cancelada"
@@ -2172,7 +2652,7 @@
 		"message": "Solo se admiten vCards versión 3.0 o 4.0"
 	},
 	"unableToParseResponse": {
-		"message": "$P1$: No se puede analizar la respuesta del servidor en razón de la línea siguiente: $P2$",
+		"message": "$P1$ : No se puede analizar la respuesta del servidor en razón de la línea siguiente: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2183,7 +2663,7 @@
         }
 	},
 	"dateEntry1Wrong": {
-		"message": "$P1$: el contacto $P2$ tiene un campo de fecha ($P3$) que no coincide con el formato de la libreta de direcciones ($P4$)",
+		"message": "$P1$ : el contacto $P2$ tiene un campo de fecha ($P3$) que no sigue el formato de fechas de la libreta de direcciones ($P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2211,7 +2691,7 @@
         }
 	},
 	"validateIntegerMsg": {
-		"message": "El valor del campo $P1$ tiene que ser nulo, o un número entero entre 1 et $P2$ (valor: $P3$)",
+		"message": "El valor del campo $P1$ tiene que ser nulo, o un número entero entre 1 y $P2$ (valor: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2338,19 +2818,19 @@
 		"message": "Nueva lista de correo"
 	},
 	"wdw_cardEditionEditContactTitle": {
-		"message": "Modificar el contacto"
+		"message": "Editar el contacto"
 	},
 	"wdw_cardEditionEditListTitle": {
-		"message": "Modificar la lista"
+		"message": "Editar la lista"
 	},
 	"wdw_cardEditionAddLineTitle": {
-		"message": "Modificar el contacto"
+		"message": "Editar el contacto"
 	},
 	"wdw_cardEditionViewContactTitle": {
-		"message": "Consultar el contacto"
+		"message": "Ver el contacto"
 	},
 	"wdw_cardEditionViewListTitle": {
-		"message": "Consultar la lista"
+		"message": "Ver la lista"
 	},
 	"wdw_cardbookPrintTitleLong": {
 		"message": "Vista previa de impresión de $P1$ - CardBook - Thunderbird",
@@ -2406,7 +2886,7 @@
 		"message": "Añadir entrada"
 	},
 	"removeEntryTooltip": {
-		"message": "Eliminar entrada"
+		"message": "Borrar entrada"
 	},
 	"upEntryTooltip": {
 		"message": "Subir"
@@ -2421,7 +2901,7 @@
 		"message": "Validar"
 	},
 	"notValidatedEntryTooltip": {
-		"message": "Formato no válido"
+		"message": "Formato incorrecto"
 	},
 	"linkEntryTooltip": {
 		"message": "Crear enlace…"
@@ -2497,7 +2977,7 @@
         }
 	},
 	"choiceMappingTitle": {
-		"message": "Elección de los campos"
+		"message": "Elección del campo"
 	},
 	"choiceavailableColumnsGroupboxLabel": {
 		"message": "Campos disponibles"
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "Editor de organización"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "Crear categoría"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Modificar categoría"
 	},
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "Tipo:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Categoría:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "Categoría:"
@@ -2667,7 +3153,7 @@
 		"message": "Excluir"
 	},
 	"sendButtonLabel": {
-		"message": "Crea un mensaje nuevo"
+		"message": "Crear un mensaje nuevo"
 	},
 	"doNotShowAnymore": {
 		"message": "No avisar cuando intente enviar un correo electrónico a contactos sin dirección de correo electrónico."
@@ -2754,15 +3240,39 @@
 		"message": "({{3}}\n|)({{1}}\n|)({{6}} |)({{4}}|)(\n)({{5}}\n|)({{7}}|)"
 	},
 	"newTokenTitle": {
-		"message": "Inicie sesión en su cuenta: $P1$",
+		"message": "Inicie sesión en su cuenta $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
             }
         }
 	},
-	"newTokenDescription": {
+	"warnDescription": {
 		"message": "CardBook solicita acceder a su cuenta $P1$ para recuperar los contactos. Las credenciales y los datos de contacto solo se transfieren entre su computadora y Google, no hay sitios de terceros involucrados.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "Aplicación: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "Identificación del cliente: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "Alcance: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3402,9 +3912,6 @@
 	"birthdaylistTabLabel": {
 		"message": "Cumpleaños"
 	},
-	"synclistTabLabel": {
-		"message": "Recordatorios de los cumpleaños"
-	},
 	"integrationGroupboxLabel": {
 		"message": "Integración con Thunderbird"
 	},
@@ -3610,7 +4117,7 @@
 		"message": "Claves públicas"
 	},
 	"keyTab.conf.accesskey": {
-		"message": "C"
+		"message": "K"
 	},
 	"advancedTab1Label": {
 		"message": "Avanzado"
@@ -3637,7 +4144,7 @@
 		"message": "B"
 	},
 	"previewLabel": {
-		"message": "Vista preliminar"
+		"message": "Vista previa"
 	},
 	"localizeTargetLabel": {
 		"message": "Abrir los vínculos externos"
@@ -4522,10 +5029,10 @@
 		"message": "Eliminar contacto seleccionado"
 	},
 	"cardbookToolbarPrintButtonLabel": {
-		"message": "Vista previa"
+		"message": "Vista previa de impresión"
 	},
 	"cardbookToolbarPrintButtonTooltip": {
-		"message": "Vista previa de la selección"
+		"message": "Vista previa de impresión de la selección"
 	},
 	"cardbookToolbarBackButtonLabel": {
 		"message": "Deshacer"
@@ -4567,7 +5074,7 @@
 		"message": "Tarea"
 	},
 	"cardbookToolbarNewTodoTooltip": {
-		"message": "Crear una tarea nueva"
+		"message": "Crear una nueva tarea"
 	},
 	"cardbookToolbarThMenuButtonLabel": {
 		"message": "Menú de la aplicación"
@@ -4903,13 +5410,13 @@
 		"message": "N"
 	},
 	"personalLabel": {
-		"message": "Informaciones personales"
+		"message": "Información personal"
 	},
 	"personalAccesskey": {
 		"message": "p"
 	},
 	"org.print.label": {
-		"message": "Informaciones profesionales"
+		"message": "Información profesional"
 	},
 	"org.print.accesskey": {
 		"message": "o"
@@ -5128,7 +5635,7 @@
 		"message": "A"
 	},
 	"flushLogEditionLabel": {
-		"message": "Vaciar"
+		"message": "Limpiar lista"
 	},
 	"flushLogEditionAccesskey": {
 		"message": "V"
@@ -5149,12 +5656,12 @@
 		"message": "Fusión de contactos"
 	},
 	"mergeInstructionsLabel": {
-		"message": "Seleccione los campos que quiere conservar para el nuevo contacto"
+		"message": "Seleccione los campos que quiere mantener en el nuevo contacto"
 	},
 	"persTitleLabel": {
-		"message": "Informaciones personales"
+		"message": "Información personal"
 	},
 	"orgTitleLabel": {
-		"message": "Informaciones profesionales"
+		"message": "Información profesional"
 	}
 }

@@ -138,8 +138,8 @@ const oReplTable = {
     //// erase
     "erase_non_breaking_hyphens": [ [/­/g, ""] ],
     //// typographic signs
-    "ts_apostrophe":              [ [/\b([ldnjmtscç])['´‘′`](?=[a-zA-Zà-ö0-9À-Öø-ÿØ-ßĀ-ʯ])/ig, "$1’"],
-                                    [/\b(qu|jusqu|lorsqu|puisqu|quoiqu|quelqu|presqu|entr|aujourd|prud)['´‘′`]/ig, "$1’"] ],
+    "ts_apostrophe":              [ [/\b([ldnjmtscç])['´‘′`ʼ](?=[a-zA-Zà-ö0-9À-Öø-ÿØ-ßĀ-ʯ])/ig, "$1’"],
+                                    [/\b(qu|jusqu|lorsqu|puisqu|quoiqu|quelqu|presqu|entr|aujourd|prud)['´‘′`ʼ]/ig, "$1’"] ],
     "ts_ellipsis":                [ [/\.\.\./g, "…"],
                                     [/…\.\./g, "……"],
                                     [/…\.(?!\.)/g, "…"] ],

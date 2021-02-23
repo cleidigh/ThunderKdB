@@ -18,7 +18,7 @@ function logout_failure(result) {
 }
 
 function logout(result) {
-	console.log(result);
+	//console.log(result);
 	if( result != null && result.identities != null ) {
 		messenger.exp_logout.exp_logout(result.identities);
 	}

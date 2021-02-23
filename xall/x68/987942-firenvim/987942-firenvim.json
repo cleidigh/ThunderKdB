@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-09T09:01:13Z",
     "current_version": {
-        "id": 2475159,
+        "id": 2475297,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "84.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/firenvim/versions/2475159",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/firenvim/versions/2475297",
         "files": [
             {
-                "id": 1018320,
-                "created": "2021-01-12T06:38:21Z",
-                "hash": "sha256:8fad39be43f1bfd5c7d863cf246b3191320bdc49a639b7ac77466e2ecc9a3262",
+                "id": 1018458,
+                "created": "2021-02-05T07:45:44Z",
+                "hash": "sha256:f4d164fd1dca9eb4e7afec43570ae3d3329be8dd3e807e94cffbf823d3fab318",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 381036,
+                "size": 378488,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018320/firenvim-0.2.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018458/firenvim-0.2.4-tb.xpi?src=",
                 "permissions": [
                     "nativeMessaging",
                     "storage",
@@ -76,11 +76,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Bug Fixes:\n- Black bars/lines should be a thing of the past (930115b)\n- Firenvim will correctly identify again the element to take over when using its keyboard shortcuts (109adad)"
+            "en-US": "New features:\n- Error messages from neovim should be easier to understand (233ce64)\n- Firenvim now works with a windows browser and a wsl neovim (53229b4)\n- Firenvim now works with microsoft edge on windows (aa8b834)\n- Firenvim now works with chrome-dev/unstable on linux (2f7ed74)\n- A ton of new tests that should bring much more stability to Firenvim\n\nBug fixes:\n- Mouse coordinates used to be wrong when the browser was zoomed-in (696b978)\n- &lt;C-MouseLeft&gt; now works\n- Sending multiple events from neovim (e.g. write and focus_page) to\n  firenvim used to result in race conditions, now fixed (e00e2f6)\n- Setting the cursor position on firenvim writes now works on Chrome (bf549e0)\n- There used to be a race condition where Firenvim would start before\n  the content of the textarea was written to the disk, now fixed (801039d)\n- Browser shortcuts would sometimes be duplicated (c4be634)\n- The \"Toggle firenvim in this tab\" button did not always work when\n  trying to re-enable firenvim (5182bb6)\n\nFeature removal:\n- Browser shortcuts for focusPage/focusInput have been removed. They\n  have been broken for a while a nobody complained. Use\n  firenvim#focus_page() and firenvim#focus_input() instead (aaccf84)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/firenvim/versions/0.2.3",
-        "version": "0.2.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/firenvim/versions/0.2.4",
+        "version": "0.2.4"
     },
     "default_locale": "en-US",
     "description": {
@@ -103,7 +103,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-12T06:40:03Z",
+    "last_updated": "2021-02-05T07:50:03Z",
     "name": {
         "en-US": "Firenvim"
     },

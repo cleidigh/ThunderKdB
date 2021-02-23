@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2000,
+    "average_daily_users": 1932,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -21,26 +21,26 @@
     "contributions_url": null,
     "created": "2006-05-13T07:32:43Z",
     "current_version": {
-        "id": 2475246,
+        "id": 2475330,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-sent-to-current/versions/2475246",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-sent-to-current/versions/2475330",
         "files": [
             {
-                "id": 1018407,
-                "created": "2021-01-25T16:59:39Z",
-                "hash": "sha256:b1562edf49baf686ca36db55602aa550908de2ee7331096dd798777afb68b0ee",
+                "id": 1018491,
+                "created": "2021-02-10T10:09:32Z",
+                "hash": "sha256:11208d844f7def04d14918882c15f35303e08bd9cd34963ba38d0ddcbe84f4b2",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 56565,
+                "size": 56653,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018407/copy_sent_to_current-3.9-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018491/copy_sent_to_current-3.10-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "tabs",
@@ -84,12 +84,12 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "- Fixed bug when TB is started with -compose\n- Correctly extract fcc folder from draft if it was a reply saved as draft\n- Fixed multiple issues with drafts/templates",
+            "en-US": "- Fixed bug where disabled accounts aren't really disabled\n- Work around a bug where multiple copies are saved to the sent folder",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/versions/3.9",
-        "version": "3.9"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/versions/3.10",
+        "version": "3.10"
     },
     "default_locale": "en-US",
     "description": {
@@ -116,7 +116,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2021-01-26T17:00:53Z",
+    "last_updated": "2021-02-10T14:14:28Z",
     "name": {
         "en-US": "Copy Sent to Current"
     },
@@ -172,7 +172,7 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.26575,
+        "bayesian_average": 4.26574,
         "count": 93,
         "average": 4.2796,
         "text_count": 93

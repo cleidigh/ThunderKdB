@@ -21,9 +21,9 @@ if ("undefined" == typeof(cardbookActions)) {
 			cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.currentUndoId", cardbookRepository.currentUndoId);
 		},
 
-		addUndoCardsAction: function (aActionCode, aActionMessage, aOldCards, aNewCards) {
+		addUndoCardsAction: function (aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats) {
 			var myNextUndoId = cardbookRepository.currentUndoId + 1;
-			cardbookIndexedDB.addUndoItem(myNextUndoId, aActionCode, aActionMessage, aOldCards, aNewCards, false);
+			cardbookIndexedDB.addUndoItem(myNextUndoId, aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats, false);
 		},
 
 		undo: function () {
@@ -244,7 +244,7 @@ if ("undefined" == typeof(cardbookActions)) {
 		startAction: function (aActionCode, aArray, aRefreshAccount) {
 			cardbookRepository.currentActionId++;
 			if (!cardbookRepository.currentAction[cardbookRepository.currentActionId]) {
-				cardbookRepository.currentAction[cardbookRepository.currentActionId] = {actionCode : aActionCode, message : "", oldCards: [], newCards: [], total: 0, done: 0, files: [], refresh: ""};
+				cardbookRepository.currentAction[cardbookRepository.currentActionId] = {actionCode : aActionCode, message : "", oldCards: [], newCards: [], oldCats: [], newCats: [], totalCards: 0, doneCards: 0, totalCats: 0, doneCats: 0, files: [], refresh: ""};
 			}
 			if (aRefreshAccount) {
 				cardbookRepository.currentAction[cardbookRepository.currentActionId].refresh = aRefreshAccount;
@@ -259,7 +259,7 @@ if ("undefined" == typeof(cardbookActions)) {
 				var lTimerActions = cardbookActions.lTimerActionAll[aActionId];
 				lTimerActions.initWithCallback({ notify: function(lTimerActions) {
 					var myAction = cardbookRepository.currentAction[aActionId];
-					if (myAction.total == myAction.done) {
+					if (myAction.totalCards == myAction.doneCards && myAction.totalCats == myAction.doneCats) {
 						cardbookActions.endAction(aActionId);
 						lTimerActions.cancel();
 					}
@@ -274,7 +274,7 @@ if ("undefined" == typeof(cardbookActions)) {
 				if (myAction.files.length > 0) {
 					cardbookActions.addActivityFromUndo(aActionId);
 					if (myAction.actionCode != "undoActionDone" && myAction.actionCode != "redoActionDone") {
-						cardbookActions.addUndoCardsAction(myAction.actionCode, myAction.message, myAction.oldCards, myAction.newCards);
+						cardbookActions.addUndoCardsAction(myAction.actionCode, myAction.message, myAction.oldCards, myAction.newCards, myAction.oldCats, myAction.newCats);
 					}
 					if (myAction.refresh != "") {
 						cardbookRepository.cardbookUtils.notifyObservers(myAction.actionCode, "force::" + myAction.refresh);

@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "Без категории"
 	},
-	"collectedCards": {
-		"message": "Собранные контакты"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "Включить адресную книгу"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "Установить для адресной книги режим «только чтение»"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "Создать категорию"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Изменить категорию"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$ : Контактов удалено на диске : $P2$",
+		"message": "$P1$ : Удалено контактов на устройстве: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +305,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Контактов удалено на диске и обновлено на сервере : $P2$",
+		"message": "$P1$ : Удалено контактов на устройстве и обновлено на сервере: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +316,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "$P1$ : Контактов создано на диске : $P2$",
+		"message": "$P1$ : Новых контактов на устройстве: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$ : Контактов обновлено на диске : $P2$",
+		"message": "$P1$ : Обновлено контактов на устройстве: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$ : Контактов обновлено на диске и на сервере : $P2$",
+		"message": "$P1$ : Обновлено контактов на устройстве и на сервере: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Контактов обновлено на диске и удалено на сервере : $P2$",
+		"message": "$P1$ : Обновлено контактов на устройстве и удалено с сервера: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : Категорий обновлено: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : Новых категорий на сервере: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : Обновлённых категорий на сервере: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : Удалено категорий на сервере: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : Удалено категорий на устройстве: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Удалено категорий на устройстве и обновлено на сервере: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : Новых категорий на устройстве: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : Обновлено категорий на устройстве: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : Обновлено категорий на устройстве и на сервере: $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Обновлено категорий на устройстве и удалено с сервера: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -412,7 +522,7 @@
         }
 	},
 	"synchroDBFinishedResult": {
-		"message": "$P1$: Локальная база данных открыта, результаты:",
+		"message": "$P1$ : Локальная база данных открыта, результаты:",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -576,7 +686,7 @@
 		"message": "Импорт завершен"
 	},
 	"cardDeletedOnDisk": {
-		"message": "$P1$ : Контакт «$P2$» удалён с диска",
+		"message": "$P1$ : Контакт «$P2$» удалён на устройстве",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -587,7 +697,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "$P1$ : Контакт «$P2$» обновлён на диске",
+		"message": "$P1$ : Контакт «$P2$» обновлён на устройстве",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -608,19 +718,8 @@
             }
         }
 	},
-	"cardGetFromCache": {
-		"message": "$P1$ : Контакт «$P2$» получен из кэша",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Контакт «$P2$» удалён с диска и обновлён на сервере",
+		"message": "$P1$ : Контакт «$P2$» удалён на устройстве и обновлён на сервере",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -631,7 +730,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "$P1$ : Контакт $P2$ обновлён на диске и на сервере",
+		"message": "$P1$ : Контакт $P2$ обновлён на устройстве и на сервере",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -666,17 +765,6 @@
             }
         }
 	},
-	"cardLoadedFromCache": {
-		"message": "$P1$ : Контакт «$P2$» загружен из кеша",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardLoadedFromCacheDB": {
 		"message": "$P1$ : Контакт «$P2$» загружен из кеша (IndexedDB)",
         "placeholders": {
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$ : Контакт «$P2$» создан на диске",
+		"message": "$P1$ : Контакт «$P2$» создан на устройстве",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Контакт «$P2$» обновлён на диске и удалён на сервере",
+		"message": "$P1$ : Контакт «$P2$» обновлён на устройстве и удалён на сервере",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,31 +820,31 @@
             }
         }
 	},
-	"askUserTitle": {
+	"cardAskUserTitle": {
 		"message": "Конфликт изменения контакта"
 	},
 	"askUserPersistMessage": {
 		"message": "Применить это решение для других существующих контактов:"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "Сохранить контакт"
 	},
-	"updateAskUserLabel": {
+	"cardupdateAskUserLabel": {
 		"message": "Переписать контакт"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "Скопировать контакт"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "Удалить контакт"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "Приоритет локального изменения"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "Приоритет изменения на сервере"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "Объединить расхождения"
 	},
 	"serverCardDeletedFromServer": {
@@ -955,7 +1043,7 @@
         }
 	},
 	"serverCardGetKeyFailed": {
-		"message": "$P1$: Не удалось получить ключ для контакта $P2$ (URL: $P3$, статус: $P4$)",
+		"message": "$P1$ : Не удалось получить ключ для контакта $P2$ (URL: $P3$, статус: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -972,7 +1060,7 @@
         }
 	},
 	"serverCardGetKeyOK": {
-		"message": "$P1$: Получен ключ для контакта $P2$",
+		"message": "$P1$ : Получен ключ для контакта $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -983,7 +1071,7 @@
         }
 	},
 	"serverCardGettingKey": {
-		"message": "$P1$: Получение ключа для контакта $P2$…",
+		"message": "$P1$ : Получение ключа для контакта $P2$…",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1015,6 +1103,387 @@
             },
             "P3": {
                 "content": "$3"
+            }
+        }
+	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : Контакт «$P2$»: отправляется запрос на получение меток…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : Контакт «$P2$»: получены метки",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : Контакт «$P2$»: не удалось получить метки с сервера (url: $P3$, статус: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : Контакт «$P2$»: отправляется запрос на обновление меток…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : Контакт «$P2$»: метки обновлены",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : Контакт «$P2$»:  не удалось обновить метки на сервере (url: $P3$, статус: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : Категория «$P2$» удалена на устройстве",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : Категория «$P2$» обновлена на устройстве",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : Категория «$P2$» уже получена из кэша",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Категория «$P2$» удалена на устройстве и обновлена на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : Категория «$P2$» обновлена на устройстве и на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : Категория «$P2$» обновлена на сервере (найден etag: $P3$, etag в кэше: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : На сервере найдена новая категория",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : Категория «$P2$» загружена из кэша (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : Категория «$P2$» создана на устройстве",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Категория «$P2$» обновлена на устройстве и удалена на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : Категория «$P2$» удалена на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "Конфликт изменения категории"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "Сохранить категорию"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "Удалить категорию"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Приоритет локального изменения"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Приоритет изменения на сервере"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : Категория «$P2$» удалена на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : Категория «$P2$» не существует на сервере",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : Категорию «$P2$» не удалось удалить с сервера (url: $P3$, статус: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : Категория «$P2$»: отправляется запрос на удаление…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Категория «$P2$» обновлена на сервере (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Категория «$P2$» обновлена на сервере (etag не получен)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : Категорию «$P2$» не удалось обновить на сервере (url: $P3$, статус: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : Категория «$P2$»: отправляется запрос на обновление…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : Категория «$P2$» создана на сервере (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Категория «$P2$» создана на сервере (etag не получен)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : Категорию «$P2$» не удалось создать на сервере (url: $P3$, статус: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : Категория «$P2$»: отправляется запрос на создание…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : Поиск категорий…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
             }
         }
 	},
@@ -1432,7 +1901,7 @@
         }
 	},
 	"cardsConverted": {
-		"message": "$P1$: контакты преобразованы в $P2$: $P3$",
+		"message": "$P1$ : контакты преобразованы в $P2$: $P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1512,7 +1981,7 @@
 		"message": "Контакты дублируются"
 	},
 	"displayNameGenerated": {
-		"message": "$P1$: выполнено обновление поля «отображаемое имя» для количества контактов: $P2$",
+		"message": "$P1$ : выполнено обновление поля «отображаемое имя» для количества контактов: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1585,6 +2054,17 @@
             }
         }
 	},
+	"categoryRenamed": {
+		"message": "$P1$ : Категория $P2$ переименована",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"categoryRenamedUndo": {
 		"message": "Категория $P1$ переименована",
         "placeholders": {
@@ -1640,7 +2120,7 @@
         }
 	},
 	"nodeDeleted": {
-		"message": "$P1$: Удалена категория «$P2$»",
+		"message": "$P1$ : Удалена категория «$P2$»",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "Редактирование организации"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "Создать категорию"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Редактирование категорий"
 	},
@@ -2593,6 +3076,9 @@
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "Тип:"
 	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Категория:"
+	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "Категория:"
 	},
@@ -2600,7 +3086,7 @@
 		"message": "Категория:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
-		"message": "$P1$:",
+		"message": "$P1$ :",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2761,8 +3247,32 @@
             }
         }
 	},
-	"newTokenDescription": {
+	"warnDescription": {
 		"message": "Для синхронизации контактов требуется доступ к учётной записи $P1$. Данные для входа в учётную запись и сведения о контактах передаются между вашим устройством и серверами Google напрямую, без передачи этой информации третьим сторонам.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "Приложение: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "Идентификация клиента: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "Область поиска: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3401,9 +3911,6 @@
 	},
 	"birthdaylistTabLabel": {
 		"message": "Дни рождения"
-	},
-	"synclistTabLabel": {
-		"message": "Напоминания о днях рождения"
 	},
 	"integrationGroupboxLabel": {
 		"message": "Интеграция в Thunderbird"

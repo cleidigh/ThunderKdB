@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 14523,
+    "average_daily_users": 14201,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,26 +18,26 @@
     "contributions_url": null,
     "created": "2006-05-24T00:24:20Z",
     "current_version": {
-        "id": 2474849,
+        "id": 2475364,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2474849",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailbox-alert/versions/2475364",
         "files": [
             {
-                "id": 1018011,
-                "created": "2020-11-25T22:08:40Z",
-                "hash": "sha256:4aa0891a2cbe368dac2a6fbe70d550041e614cc1bae482800451aaf3ecbe7fb3",
+                "id": 1018525,
+                "created": "2021-02-16T20:04:18Z",
+                "hash": "sha256:6d3c4d05c592ae473eeed2644e18c9041f86f8056d2d8cdb320ed35c74aeb2c7",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 222430,
+                "size": 223330,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018011/mailbox_alert-0.26-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018525/mailbox_alert-0.27-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -73,11 +73,11 @@
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
         "release_notes": {
-            "en-US": "- Fix an error (\"ReferenceError: Services not found\") when trying to execute a command that itself contains an error. See <a rel=\"nofollow\" href=\"https://github.com/tjeb/Mailbox-Alert/issues/24\">https://github.com/tjeb/Mailbox-Alert/issues/24</a>\n- Workaround for an issue with running commands with arguments that have non-ascii characters, by forcing TB to convert it to utf-8"
+            "en-US": "o Update the popup notification to work better with (dark) themes\n  o Update the windowListener API to work with upcoming Thunderbird versions"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.26",
-        "version": "0.26"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/versions/0.27",
+        "version": "0.27"
     },
     "default_locale": "en-US",
     "description": {
@@ -100,7 +100,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-26T22:24:00Z",
+    "last_updated": "2021-02-17T10:24:42Z",
     "name": {
         "en-US": "Mailbox Alert"
     },
@@ -124,10 +124,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.95644,
-        "count": 142,
-        "average": 3.9648,
-        "text_count": 142
+        "bayesian_average": 3.96369,
+        "count": 143,
+        "average": 3.972,
+        "text_count": 143
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailbox-alert/reviews/",
     "requires_payment": false,

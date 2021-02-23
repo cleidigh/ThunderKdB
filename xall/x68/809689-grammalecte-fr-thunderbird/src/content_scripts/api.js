@@ -12,9 +12,13 @@ var oGrammalecteAPI = {
     sVersion: "1.0",
 
     generateNodeId: function (xNode) {
-        xNode.id = "grammalecte_generated_id_" + Date.now().toString(36) + "_" + (Math.floor(Math.random() * (1000000))).toString(36);
+        xNode.id = "grammalecte_generated_id_" + Date.now().toString(36) + "_" + this._random(0, 1000000).toString(10);
         console.log("[Grammalecte API] generated id:", xNode.id);
         return xNode.id;
+    },
+
+    _random: function (nMin, nMax) {
+        return Math.floor(Math.random() * (nMax - nMin + 1) + nMin);
     },
 
     openPanelForNode: function (vNode) {

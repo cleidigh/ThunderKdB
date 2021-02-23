@@ -23,7 +23,7 @@ class TestGrammarChecking {
     * testParse (bDebug=false) {
         const t0 = Date.now();
         let sURL;
-        if(typeof(process) !== 'undefined') {
+        if (typeof(process) !== 'undefined') {
             sURL = (this.spfTests !== "") ? this.spfTests : "./"+this.gce.lang+"/tests_data.json";
         } else {
             sURL = (this.spfTests !== "") ? this.spfTests : "resource://grammalecte/"+this.gce.lang+"/tests_data.json";
@@ -32,10 +32,14 @@ class TestGrammarChecking {
         let nInvalid = 0;
         let nTotal = 0;
         let sErrorText;
-        let sSugg;
+        let sExpectedSuggs;
         let sExpectedErrors;
+        let nTestWithExpectedError = 0;
+        let nTestWithExpectedErrorAndSugg = 0;
+        let nUnexpectedErrors = 0;
         let sTextToCheck;
         let sFoundErrors;
+        let sFoundSuggs;
         let sListErr;
         let sLineNum;
         let i = 1;
@@ -57,15 +61,18 @@ class TestGrammarChecking {
                         sOption = m[1];
                     }
                     if (sLine.includes("->>")) {
-                        [sErrorText, sSugg] = sLine.split("->>");
-                        sErrorText = sErrorText.trim();
-                        sSugg = sSugg.trim();
+                        [sErrorText, sExpectedSuggs] = this._splitTestLine(sLine);
+                        nTestWithExpectedErrorAndSugg += 1
                     } else {
                         sErrorText = sLine.trim();
+                        sExpectedSuggs = "";
                     }
                     sExpectedErrors = this._getExpectedErrors(sErrorText);
+                    if (sExpectedErrors.trim() != "") {
+                        nTestWithExpectedError += 1;
+                    }
                     sTextToCheck = sErrorText.replace(/\{\{/g, "").replace(/\}\}/g, "");
-                    [sFoundErrors, sListErr] = this._getFoundErrors(sTextToCheck, bDebug, sOption);
+                    [sFoundErrors, sListErr, sFoundSuggs] = this._getFoundErrors(sTextToCheck, bDebug, sOption);
                     if (sExpectedErrors !== sFoundErrors) {
                         yield "\n" + i.toString() +
                               "\n# Line num: " + sLineNum +
@@ -75,6 +82,16 @@ class TestGrammarChecking {
                               "\n  errors:   \n" + sListErr;
                         nInvalid = nInvalid + 1;
                     }
+                    else if (sExpectedSuggs) {
+                        if (!this._checkSuggestions(sExpectedSuggs, sFoundSuggs)) {
+                            yield  "\n# Line num: " + sLineNum +
+                                   "\n> to check: " + sTextToCheck +
+                                   "\n  expected: " + sExpectedSuggs +
+                                   "\n  found:    " + sFoundSuggs +
+                                   "\n  errors:   \n" + sListErr;
+                            nUnexpectedErrors += 1;
+                        }
+                    }
                     nTotal = nTotal + 1;
                 }
                 i = i + 1;
@@ -82,28 +99,67 @@ class TestGrammarChecking {
                     yield i.toString();
                 }
             }
-            bShowUntested = true;
+            yield "Tests with expected errors: " + nTestWithExpectedError + " and suggestions: " + nTestWithExpectedErrorAndSugg + " > " + nTestWithExpectedErrorAndSugg/nTestWithExpectedError*100 + " %";
+            if (nUnexpectedErrors) {
+                yield "Unexpected errors: " + nUnexpectedErrors;
+            }
+            yield* this._showUntestedRules()
         }
         catch (e) {
             console.error(e);
         }
-
-        if (bShowUntested) {
-            i = 0;
-            for (let [sOpt, sLineId, sRuleId] of this.gce.listRules()) {
-                if (sOpt !== "@@@@" && !this._aRuleTested.has(sLineId) && !/^[0-9]+[sp]$|^[pd]_/.test(sRuleId)) {
-                    sUntestedRules += sLineId + "/" + sRuleId + ", ";
-                    i += 1;
-                }
-            }
-            if (i > 0) {
-                yield sUntestedRules + "\n[" + i.toString() + " untested rules]";
-            }
-        }
-
         const t1 = Date.now();
         yield "Tests parse finished in " + ((t1-t0)/1000).toString()
             + " s\nTotal errors: " + nInvalid.toString() + " / " + nTotal.toString();
+    }
+
+    * _showUntestedRules () {
+        let i = 0;
+        for (let [sOpt, sLineId, sRuleId] of this.gce.listRules()) {
+            if (sOpt !== "@@@@" && !this._aRuleTested.has(sLineId) && !/^[0-9]+[sp]$|^[pd]_/.test(sRuleId)) {
+                sUntestedRules += sLineId + "/" + sRuleId + ", ";
+                i += 1;
+            }
+        }
+        if (i > 0) {
+            yield sUntestedRules + "\n[" + i.toString() + " untested rules]";
+        }
+    }
+
+    _splitTestLine (sLine) {
+        let [sText, sSugg] = sLine.split("->>");
+        sSugg = sSugg.trim().replace(/ /g, " ");
+        if (sSugg.startsWith('"') && sSugg.endsWith('"')) {
+            sSugg = sSugg.slice(1,-1);
+        }
+        return [sText.trim(), sSugg];
+    }
+
+    _getFoundErrors (sLine, bDebug, sOption) {
+        try {
+            let aErrs = [];
+            if (sOption) {
+                this.gce.setOption(sOption, true);
+                aErrs = this.gce.parse(sLine, "FR", bDebug);
+                this.gce.setOption(sOption, false);
+            } else {
+                aErrs = this.gce.parse(sLine, "FR", bDebug);
+            }
+            let sRes = " ".repeat(sLine.length);
+            let sListErr = "";
+            let lAllSugg = [];
+            for (let oErr of aErrs.sort( (a,b) => a["nStart"] - b["nStart"] )) {
+                sRes = sRes.slice(0, oErr["nStart"]) + "~".repeat(oErr["nEnd"] - oErr["nStart"]) + sRes.slice(oErr["nEnd"]);
+                sListErr += "    * {" + oErr['sLineId'] + " / " + oErr['sRuleId'] + "}  at  " + oErr['nStart'] + ":" + oErr['nEnd'] + "\n";
+                lAllSugg.push(oErr["aSuggestions"].join("|"));
+                this._aRuleTested.add(oErr["sLineId"]);
+            }
+            return [sRes, sListErr, lAllSugg.join("|||")];
+        }
+        catch (e) {
+            console.error(e);
+        }
+        return [" ".repeat(sLine.length), "", ""];
     }
 
     _getExpectedErrors (sLine) {
@@ -132,31 +188,26 @@ class TestGrammarChecking {
         return " ".repeat(sLine.length);
     }
 
-    _getFoundErrors (sLine, bDebug, sOption) {
-        try {
-            let aErrs = [];
-            if (sOption) {
-                this.gce.setOption(sOption, true);
-                aErrs = this.gce.parse(sLine, "FR", bDebug);
-                this.gce.setOption(sOption, false);
-            } else {
-                aErrs = this.gce.parse(sLine, "FR", bDebug);
-            }
-            let sRes = " ".repeat(sLine.length);
-            let sListErr = "";
-            for (let dErr of aErrs) {
-                sRes = sRes.slice(0, dErr["nStart"]) + "~".repeat(dErr["nEnd"] - dErr["nStart"]) + sRes.slice(dErr["nEnd"]);
-                sListErr += "    * {" + dErr['sLineId'] + " / " + dErr['sRuleId'] + "}  at  " + dErr['nStart'] + ":" + dErr['nEnd'] + "\n";
-                this._aRuleTested.add(dErr["sLineId"]);
-            }
-            return [sRes, sListErr];
+    _checkSuggestions (sAllExceptedSuggs, sAllFoundSuggs) {
+        let lAllExpectedSuggs = sAllExceptedSuggs.split("|||");
+        let lAllFoundSuggs = sAllFoundSuggs.split("|||");
+        if (lAllExpectedSuggs.length != lAllFoundSuggs.length) {
+            return false;
         }
-        catch (e) {
-            console.error(e);
+        for (let i = 0;  i < lAllExpectedSuggs.length;  i++) {
+            let lExpectedSuggs = lAllExpectedSuggs[i].split("|");
+            let lFoundSuggs = lAllFoundSuggs[i].split("|");
+            if (lExpectedSuggs.length != lFoundSuggs.length) {
+                return false;
+            }
+            let aExpectedSuggs = new Set(lExpectedSuggs);
+            let aFoundSuggs = new Set(lFoundSuggs);
+            if (aExpectedSuggs.size !== aFoundSuggs.size || ![...aExpectedSuggs].every(value => aFoundSuggs.has(value))) {
+                return false;
+            }
         }
-        return [" ".repeat(sLine.length), ""];
+        return true;
     }
-
 }
 
 

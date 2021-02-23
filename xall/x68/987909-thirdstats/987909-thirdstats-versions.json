@@ -1,5 +1,152 @@
 [
     {
+        "id": 2475399,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475399",
+        "files": [
+            {
+                "id": 1018560,
+                "created": "2021-02-22T12:14:23Z",
+                "hash": "sha256:0153eaccd42d3ee034269a03821ee5ec4d3dcab3368883072b5b142fa5fae88f",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 303348,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018560/thirdstats-1.5.0-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "tabs",
+                    "storage",
+                    "downloads"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.0\">full release notes with screenshots on GitHub</a>.",
+            "en-US": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.0\">full release notes with screenshots on GitHub</a>.",
+            "en-CA": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.0\">full release notes with screenshots on GitHub</a>."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.5.0",
+        "version": "1.5.0"
+    },
+    {
+        "id": 2475304,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475304",
+        "files": [
+            {
+                "id": 1018465,
+                "created": "2021-02-06T13:21:07Z",
+                "hash": "sha256:04e2a0e76f1f83a42ec8596994e928cf3cb13e9036b8939bb85cba14f8a3a471",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 293823,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018465/thirdstats-1.4.0-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "tabs",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>Account Comparison</b>\nA comparison mode showing the total number of emails for each account was added. This mode was created for the years, quarters, months, weeks, daytime, weekday and month charts and can be activated by a corresponding button in the top right corner of the chart section. This button is only active when \"All Accounts\" is selected. To keep things simple and clean, a distinction between received and sent mails was omitted in comparison mode - charts are always showing the total number of emails for the corresponding account. The colors for each account can be customized (see next point).\n\n<b>Custom Colors for accounts</b>\nThe accounts option on the options page was extended to set a custom color for each account.\n\n<b>Reset all Options</b>\nThe possibility to reset options to their default values was added. Pushing this button also removes all local identities (if set).\n\n<b>Uniform and Clearer Interface</b>\nThe stats page now consistently uses tab navigation for all chart groups. Chart titles are now the tab label itself and chart descriptions appear as tooltip on mouse hovering the tab. The active tab border color is now indicating the chart colors it is showing (e.g. a color gradient from blue to pink if received and sent mail numbers are shown). Also the view on ultra-wide screens was improved.\n\n<b>Annoying Reset of drop-down values</b>\nThe unwanted reset of values on opened select fields (like accounts or folders) on the stats page every second was caused by a state update for the display of how old the processed data is and is now fixed.\n\n<b>ThirdStats nightly builds</b>\nCutting edge alpha releases of ThirdStats can now be found on the dedicated ThirdStats CDN: <a rel=\"nofollow\" href=\"https://third-stats.cdn.devmount.com\">https://third-stats.cdn.devmount.com</a>. You can install these alpha releases and test them as you like (keep in mind that alpha releases can be unstable and break things).\n\n<b>Improve documentation and translations</b>\nThirdStats 1.4.0 is fully translated in English, German, French and Italian. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on GitLocalize: <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">https://gitlocalize.com/repo/5505</a>.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.4.0\">full release notes with screenshots on GitHub</a>.",
+            "en-US": "<b>Account Comparison</b>\nA comparison mode showing the total number of emails for each account was added. This mode was created for the years, quarters, months, weeks, daytime, weekday and month charts and can be activated by a corresponding button in the top right corner of the chart section. This button is only active when \"All Accounts\" is selected. To keep things simple and clean, a distinction between received and sent mails was omitted in comparison mode - charts are always showing the total number of emails for the corresponding account. The colors for each account can be customized (see next point).\n\n<b>Custom Colors for accounts</b>\nThe accounts option on the options page was extended to set a custom color for each account.\n\n<b>Reset all Options</b>\nThe possibility to reset options to their default values was added. Pushing this button also removes all local identities (if set).\n\n<b>Uniform and Clearer Interface</b>\nThe stats page now consistently uses tab navigation for all chart groups. Chart titles are now the tab label itself and chart descriptions appear as tooltip on mouse hovering the tab. The active tab border color is now indicating the chart colors it is showing (e.g. a color gradient from blue to pink if received and sent mail numbers are shown). Also the view on ultra-wide screens was improved.\n\n<b>Annoying Reset of drop-down values</b>\nThe unwanted reset of values on opened select fields (like accounts or folders) on the stats page every second was caused by a state update for the display of how old the processed data is and is now fixed.\n\n<b>ThirdStats nightly builds</b>\nCutting edge alpha releases of ThirdStats can now be found on the dedicated ThirdStats CDN: <a rel=\"nofollow\" href=\"https://third-stats.cdn.devmount.com\">https://third-stats.cdn.devmount.com</a>. You can install these alpha releases and test them as you like (keep in mind that alpha releases can be unstable and break things).\n\n<b>Improve documentation and translations</b>\nThirdStats 1.4.0 is fully translated in English, German, French and Italian. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on GitLocalize: <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">https://gitlocalize.com/repo/5505</a>.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.4.0\">full release notes with screenshots on GitHub</a>.",
+            "en-CA": "<b>Account Comparison</b>\nA comparison mode showing the total number of emails for each account was added. This mode was created for the years, quarters, months, weeks, daytime, weekday and month charts and can be activated by a corresponding button in the top right corner of the chart section. This button is only active when \"All Accounts\" is selected. To keep things simple and clean, a distinction between received and sent mails was omitted in comparison mode - charts are always showing the total number of emails for the corresponding account. The colors for each account can be customized (see next point).\n\n<b>Custom Colors for accounts</b>\nThe accounts option on the options page was extended to set a custom color for each account.\n\n<b>Reset all Options</b>\nThe possibility to reset options to their default values was added. Pushing this button also removes all local identities (if set).\n\n<b>Uniform and Clearer Interface</b>\nThe stats page now consistently uses tab navigation for all chart groups. Chart titles are now the tab label itself and chart descriptions appear as tooltip on mouse hovering the tab. The active tab border color is now indicating the chart colors it is showing (e.g. a color gradient from blue to pink if received and sent mail numbers are shown). Also the view on ultra-wide screens was improved.\n\n<b>Annoying Reset of drop-down values</b>\nThe unwanted reset of values on opened select fields (like accounts or folders) on the stats page every second was caused by a state update for the display of how old the processed data is and is now fixed.\n\n<b>ThirdStats nightly builds</b>\nCutting edge alpha releases of ThirdStats can now be found on the dedicated ThirdStats CDN: <a rel=\"nofollow\" href=\"https://third-stats.cdn.devmount.com\">https://third-stats.cdn.devmount.com</a>. You can install these alpha releases and test them as you like (keep in mind that alpha releases can be unstable and break things).\n\n<b>Improve documentation and translations</b>\nThirdStats 1.4.0 is fully translated in English, German, French and Italian. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on GitLocalize: <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">https://gitlocalize.com/repo/5505</a>.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.4.0\">full release notes with screenshots on GitHub</a>."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.4.0",
+        "version": "1.4.0"
+    },
+    {
         "id": 2475239,
         "channel": "listed",
         "compatibility": {

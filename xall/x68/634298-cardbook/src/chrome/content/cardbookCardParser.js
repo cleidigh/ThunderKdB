@@ -20,7 +20,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			}
 			this.cardurl = "";
 			this.cacheuri = "";
-			this.etag = "";
+			this.etag = "0";
 			this.updated = false;
 			this.deleted = false;
 			this.created = false;
@@ -433,10 +433,6 @@ if ("undefined" == typeof(cardbookCardParser)) {
 									this.impp.push([cardbookRepository.cardbookUtils.unescapeArray(vCardDataArrayTrailerArray), cardbookRepository.cardbookUtils.unescapeArray(vCardDataArrayHeaderOptionArray), myPGName, []]);
 								}
 								break;
-							case "X-THUNDERBIRD-ETAG":
-								this.etag = vCardDataArrayTrailer;
-								this.others.push(vCardDataArrayHeaderKey + ":" + vCardDataArrayTrailer);
-								break;
 							case "X-THUNDERBIRD-MODIFICATION":
 								switch (vCardDataArrayTrailer) {
 									case "UPDATED":
@@ -451,7 +447,6 @@ if ("undefined" == typeof(cardbookCardParser)) {
 									default:
 										break;
 								}
-								this.others.push(vCardDataArrayHeaderKey + ":" + vCardDataArrayTrailer);
 								break;
 							default:
 								if (vCardDataArrayHeaderKey) {

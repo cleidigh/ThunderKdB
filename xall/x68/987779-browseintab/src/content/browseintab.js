@@ -104,8 +104,12 @@ var BrowseInTab = {
       for (let prefKey of Object.keys(result)) {
         let storageLocalData = {};
         storageLocalData[prefKey] = { newValue: result[prefKey] };
-        this.onStorageLocalChanged(storageLocalData);
+        this.onStorageLocalChanged(storageLocalData, true);
       }
+
+      // Prefs to init on startup.
+      this.loadInBackgroundPref;
+      this.maxContentTabsPref;
 
       this.DEBUG && console.debug("InitializeStorageLocalMap: DONE");
     };
@@ -128,8 +132,8 @@ var BrowseInTab = {
       "showUrlToolbar",
       "customZoomEnabled",
       "zoomIncrement",
-      "chromeZoomFactor",
-      "globalZoomEnabled",
+      "globalZoomFactor",
+      "perTabZoomDisabled",
       "imageZoomEnabled",
       "mousebuttonZoomEnabled",
       "mousebuttonZoomImageOnlyEnabled",
@@ -144,8 +148,9 @@ var BrowseInTab = {
    * @param {Object} storageLocalData - The key-value pair that changed; the
    *                                    value contains an |oldValue| property
    *                                    and perhaps a |newValue| property.
+   * @param {Boolean} startup         - True if initializing.
    */
-  onStorageLocalChanged(storageLocalData) {
+  onStorageLocalChanged(storageLocalData, startup) {
     this.DEBUG && console.debug("onStorageLocalChanged:storageLocalData ->");
     this.DEBUG && console.debug(storageLocalData);
     let key = Object.keys(storageLocalData)[0];
@@ -154,6 +159,10 @@ var BrowseInTab = {
       this.storageLocalMap.set(key, values.newValue);
     } else {
       this.storageLocalMap.delete(key);
+    }
+
+    if (startup) {
+      return;
     }
 
     let tabmail = this.e("tabmail");
@@ -176,11 +185,11 @@ var BrowseInTab = {
       case "customZoomEnabled":
         this.updateZoomValues();
         break;
-      case "chromeZoomFactor":
-        this.setChromeZoomFontSize(storageLocalData.chromeZoomFactor.newValue);
+      case "globalZoomFactor":
+        this.setGlobalZoom(storageLocalData.globalZoomFactor.newValue);
         break;
-      case "globalZoomEnabled":
-        if (storageLocalData.globalZoomEnabled.newValue) {
+      case "perTabZoomDisabled":
+        if (storageLocalData.perTabZoomDisabled.newValue) {
           this.globalZoomFactor = this.tabZoomFactor;
         }
         break;
@@ -321,10 +330,10 @@ var BrowseInTab = {
 
   updateZoomValues() {
     if (this.customZoomEnabledPref) {
-      this.setChromeZoomFontSize(this.chromeZoomFactorPref);
+      this.setGlobalZoom(this.globalZoomFactorPref);
     } else {
       // Reset chrome zoom.
-      this.setChromeZoomFontSize(100);
+      this.setGlobalZoom(100);
     }
   },
 
@@ -339,8 +348,8 @@ var BrowseInTab = {
     return prefValue;
   },
 
-  get chromeZoomFactorPref() {
-    let prefKey = "chromeZoomFactor";
+  get globalZoomFactorPref() {
+    let prefKey = "globalZoomFactor";
     let prefValue = this.getStorageLocal(prefKey);
     let defaultValue = 100;
     if (prefValue == undefined) {
@@ -349,64 +358,49 @@ var BrowseInTab = {
     return prefValue;
   },
 
-  set chromeZoomFactorPref(val) {
-    let prefKey = "chromeZoomFactor";
-    if (val == 100) {
-      this.storageLocalMap.delete(prefKey, val);
-    } else {
-      this.storageLocalMap.set(prefKey, val);
-      let storageLocalData = {};
-      storageLocalData[prefKey] = val;
-      this.getMessenger().storage.local.set(storageLocalData);
-    }
-    this.setChromeZoomFontSize(val);
-  },
-
-  get DEFAULT_FONTSIZE() {
-    if (this._DEFAULT_FONTSIZE) {
-      return this._DEFAULT_FONTSIZE;
-    }
-    // Reset chrome zoom, if changed, for the real default.
-    Services.prefs.clearUserPref("layout.css.devPixelsPerPx");
-    window.top.document.documentElement.style.fontSize = "";
-    return (this._DEFAULT_FONTSIZE = Number(
-      window.top
-        .getComputedStyle(window.document.documentElement)
-        .getPropertyValue("font-size")
-        .split("px")[0]
-    ));
-  },
-
-  setChromeZoomFontSize(val) {
-    this.DEBUG &&
-      console.debug(
-        "setChromeZoomFontSize: val:DEF - " + val + ":" + this.DEFAULT_FONTSIZE
-      );
+  setGlobalZoom(val) {
+    this.DEBUG && console.debug("setGlobalZoom: val - " + val);
     val = val ? val : 100;
-    if (val == 100) {
-      for (let win of Services.ww.getWindowEnumerator()) {
-        if ("style" in win.top.document.documentElement) {
-          this.DEBUG && console.debug(win);
-          win.top.document.documentElement.style.fontSize = "";
-          win.top.document.documentElement.removeAttribute("browseintabzoom");
-        }
-      }
+    let reset = val == 100;
+    if (reset) {
       Services.prefs.clearUserPref("layout.css.devPixelsPerPx");
+      Services.prefs.clearUserPref("font.size.systemFontScale");
     } else {
-      let chromeFontSizeZoom = this.DEFAULT_FONTSIZE * (val / 100) + "px";
-      for (let win of Services.ww.getWindowEnumerator()) {
-        if ("style" in win.top.document.documentElement) {
-          win.top.document.documentElement.style.fontSize = chromeFontSizeZoom;
-          // eslint-disable-next-line prettier/prettier
-          win.top.document.documentElement.setAttribute("browseintabzoom", true);
+      Services.prefs.setStringPref("layout.css.devPixelsPerPx", val / 100);
+      Services.prefs.setIntPref("font.size.systemFontScale", val);
+    }
+
+    for (let win of Services.ww.getWindowEnumerator()) {
+      if ("windowUtils" in win) {
+        this.DEBUG && console.debug(win);
+        win.windowUtils.setVisualViewportSize(win.innerWidth, win.innerHeight);
+      }
+      let tabmail = win.document.getElementById("tabmail");
+      if (tabmail) {
+        for (let tabInfo of tabmail.tabInfo) {
+          if (
+            tabInfo.browser &&
+            ["contentTab", "preferencesTab", "chromeTab"].includes(
+              tabInfo.mode.type
+            )
+          ) {
+            // Set a dirty indicator to reload this tab type, onTabSwitched().
+            // This is the easiest way, given tab browsers may contain all
+            // sorts of <iframe>s and embedded <browser>s which presShell does
+            // not delegate when the above prefs change.
+            tabInfo._ext[this.TabMonitor.monitorName].globalZoomChanged = true;
+            this.DEBUG &&
+              console.debug(
+                "setGlobalZoom: globalZoomChanged for tab - " + tabInfo.title
+              );
+          }
         }
       }
-      Services.prefs.setStringPref("layout.css.devPixelsPerPx", val / 100);
     }
   },
 
-  get globalZoomEnabledPref() {
-    let prefKey = "globalZoomEnabled";
+  get perTabZoomDisabledPref() {
+    let prefKey = "perTabZoomDisabled";
     let prefValue = this.getStorageLocal(prefKey);
     let defaultValue = false;
     if (prefValue == undefined) {
@@ -545,7 +539,7 @@ var BrowseInTab = {
 
     let tabmail = this.e("tabmail");
     let tabInfo = tabmail?.currentTabInfo;
-    if (tabInfo.tabNode.selected && this.globalZoomEnabledPref) {
+    if (tabInfo.tabNode.selected && this.perTabZoomDisabledPref) {
       // Restore the globalZoomFactor in the selected tab.
       this.globalZoomFactor = this.tabZoomFactor;
     }
@@ -710,12 +704,8 @@ var BrowseInTab = {
       }
 
       // Hack to clear false selection with left button down mousewheel.
-      let frameElement = t.ownerGlobal.window.frameElement;
-      if (frameElement) {
-        frameElement.contentDocument.getSelection().removeAllRanges();
-      } else {
-        browser.contentDocument.getSelection().removeAllRanges();
-      }
+      t.ownerDocument.getSelection().removeAllRanges();
+
       return;
     }
 
@@ -780,7 +770,7 @@ var BrowseInTab = {
 
   onZoomChange(event) {
     let zoomFactor = ZoomManager.zoom;
-    if (BrowseInTab.globalZoomEnabledPref) {
+    if (BrowseInTab.perTabZoomDisabledPref) {
       BrowseInTab.globalZoomFactor = zoomFactor;
     } else {
       BrowseInTab.tabZoomFactor = zoomFactor;
@@ -1249,17 +1239,19 @@ var BrowseInTab = {
       }
     }
 
-    let documentURI =
-      tabInfo.browser?.documentURI ?? document.documentURIObject;
+    let currentURI = tabInfo.browser?.currentURI ?? document.documentURIObject;
     this.DEBUG &&
       console.debug(
-        "InitializeTabForContent: browser documentURI - " + documentURI?.spec
+        "InitializeTabForContent: browser currentURI - " + currentURI?.spec
       );
     if (tabInfo.firstTab) {
       let multimessagebrowser = this.e("multimessage");
       // So the zoom change event is dispatched. Set zoom on browsingContext
       // manually in updateZoomUI().
       multimessagebrowser.enterResponsiveMode();
+
+      // The firstTab doesn't get an onTabOpened();
+      tabInfo._ext[this.TabMonitor.monitorName] = {};
     }
 
     this.DEBUG &&
@@ -1394,11 +1386,14 @@ var BrowseInTab = {
         }
         BrowseInTab.DEBUG &&
           console.debug("onLocationChange: browser.id - " + browser.id);
-        BrowseInTab.DEBUG && console.debug(browser.documentURI.spec);
+        BrowseInTab.DEBUG && console.debug(browser.currentURI?.spec);
       }
       BrowseInTab.DEBUG && console.debug(location.spec);
 
-      if (browser && browser.documentURI.spec != "about:blank") {
+      if (
+        browser &&
+        ![undefined, "about:blank"].includes(browser.currentURI?.spec)
+      ) {
         // Only update here with the real url. Most about:blank urls are
         // resolved later and are legitimate only for unselected messagepane.
         let isSameDocument = !!(
@@ -1433,7 +1428,7 @@ var BrowseInTab = {
             tabInfo.title
         );
       BrowseInTab.DEBUG && console.debug(webProgress?.currentURI?.spec);
-      if (!tabInfo.tabNode.selected || !webProgress.isTopLevel) {
+      if (!tabInfo.tabNode.selected || !webProgress?.isTopLevel) {
         return;
       }
 
@@ -1609,12 +1604,12 @@ var BrowseInTab = {
       show = true;
     } else if (showMailToolbarPref == this.kShowMailToolbarWebPage) {
       if (tabType == "contentTab" || tabType == "preferencesTab") {
-        let documentURI = tabInfo.browser.documentURI;
+        let currentURI = tabInfo.browser.currentURI;
         this.DEBUG &&
-          console.debug("setMailToolbar: scheme - " + documentURI.scheme);
+          console.debug("setMailToolbar: scheme - " + currentURI.scheme);
         show =
-          ["http", "https"].includes(documentURI.scheme) ||
-          documentURI.spec == "about:blank";
+          ["http", "https"].includes(currentURI.scheme) ||
+          currentURI.spec == "about:blank";
       }
     }
     this.e("mail-toolbox").hidden = !show;
@@ -1706,7 +1701,7 @@ var BrowseInTab = {
     this.e("urlbar-zoom-button").hidden = true;
     if (browserForTab) {
       // Some tabs don't have a browser (chat); ZoomManager requires one.
-      if (this.globalZoomEnabledPref) {
+      if (this.perTabZoomDisabledPref) {
         ZoomManager.zoom = this.globalZoomFactor || 1;
       } else {
         ZoomManager.zoom = this.tabZoomFactor;
@@ -1941,6 +1936,7 @@ var BrowseInTab = {
         // only if there's no opener (bug 370555).
         if (
           this.isInitialPage(uri) &&
+          // TODO: in Tb 87 this is BrowserUIUtils.jsm and not in toolkit :/
           BrowserUtils.checkEmptyPageOrigin(browser, uri) &&
           !isInternalOverride
         ) {
@@ -2786,7 +2782,7 @@ var BrowseInTab = {
     },
     get _isPotentiallyTrustworthy() {
       let browser = getBrowser();
-      let uri = browser?.documentURI ?? document.documentURIObject;
+      let uri = browser?.currentURI ?? document.documentURIObject;
       return (
         !this._isBrokenConnection &&
         (this._isSecureContext || uri.scheme == "chrome")
@@ -3231,7 +3227,7 @@ var BrowseInTab = {
       } else if (topic == BrowseInTab.obsTopicStorageLocalChanged) {
         BrowseInTab.DEBUG &&
           console.debug("Observer: " + topic + ", data - " + data);
-        BrowseInTab.onStorageLocalChanged(JSON.parse(data));
+        BrowseInTab.onStorageLocalChanged(JSON.parse(data), false);
       } else if (topic == "domwindowopened" && subject instanceof Window) {
         BrowseInTab.onDomWindowOpened(subject);
       }
@@ -3262,7 +3258,7 @@ var BrowseInTab = {
     onTabPersist(tab) {
       let tabInfo = tab;
       let zoomFactor;
-      if (tabInfo.tabNode.selected && BrowseInTab.globalZoomEnabledPref) {
+      if (tabInfo.tabNode.selected && BrowseInTab.perTabZoomDisabledPref) {
         // Save the globalZoomFactor in the selected tab.
         zoomFactor = BrowseInTab.globalZoomFactor ?? 1;
       } else {
@@ -3316,9 +3312,9 @@ var BrowseInTab = {
         tabInfo.browser = tabInfo.mode.getBrowser();
       }
 
-      let documentURI = tabInfo.browser?.documentURI;
+      let currentURI = tabInfo.browser?.currentURI;
       BrowseInTab.DEBUG &&
-        console.debug("onTabSwitched: url - " + documentURI?.spec);
+        console.debug("onTabSwitched: url - " + currentURI?.spec);
 
       // Set the reload button to the correct state for this tab.
       BrowseInTab.e("reload-button")?.toggleAttribute(
@@ -3327,6 +3323,14 @@ var BrowseInTab = {
       );
 
       if (!SessionStoreManager._restored) {
+        return;
+      }
+
+      // This dirty zoom indicator applies to "contentTab", "preferencesTab",
+      // "chromeTab" tab types.
+      if (tabInfo._ext[this.monitorName]?.globalZoomChanged) {
+        tabInfo.browser.reloadWithFlags(Ci.nsIWebNavigation.LOAD_FLAGS_NONE);
+        delete tabInfo._ext[this.monitorName].globalZoomChanged;
         return;
       }
 
@@ -3379,6 +3383,8 @@ var BrowseInTab = {
             ":" +
             tabInfo.title
         );
+
+      tabInfo._ext[this.monitorName] = {};
 
       if (["chat", "glodaFacet"].includes(tabInfo.mode.name)) {
         // Wait for these load. Chat will only resolve if an account has
@@ -3435,16 +3441,16 @@ var BrowseInTab = {
         case "Browser:Stop_BiT":
           let currentTabInfo = tabmail?.currentTabInfo;
           if (
-            browser.documentURI.spec != "about:blank" &&
-            browser.id != "multimessage" &&
-            (currentTabInfo?.tabNode.linkedPanel == "mailContent" ||
-              ["contentTab", "preferencesTab"].includes(
+            browser.currentURI?.spec == "about:blank" ||
+            browser.id == "multimessage" ||
+            (currentTabInfo?.tabNode.linkedPanel != "mailContent" &&
+              !["contentTab", "preferencesTab"].includes(
                 currentTabInfo.mode.type
               ))
           ) {
-            return true;
+            return false;
           }
-          return false;
+          return true;
         default:
           return false;
       }
@@ -3504,7 +3510,7 @@ var BrowseInTab = {
   waitForBrowserLoadTimeIncrementsMS: 50,
   async waitForBrowserLoad(tabInfo) {
     BrowseInTab.DEBUG && console.debug("waitForBrowserLoad: START url -> ");
-    BrowseInTab.DEBUG && console.debug(tabInfo.browser?.documentURI.spec);
+    BrowseInTab.DEBUG && console.debug(tabInfo.browser?.currentURI?.spec);
     const sleep = ms => {
       return new Promise(resolve => setTimeout(resolve, ms));
     };
@@ -3516,7 +3522,7 @@ var BrowseInTab = {
       await sleep(this.waitForBrowserLoadTimeIncrementsMS);
     }
     BrowseInTab.DEBUG && console.debug("waitForBrowserLoad: DONE url -> ");
-    BrowseInTab.DEBUG && console.debug(tabInfo.browser?.documentURI.spec);
+    BrowseInTab.DEBUG && console.debug(tabInfo.browser?.currentURI?.spec);
   },
 
   onDomWindowOpened(window) {
@@ -3528,24 +3534,6 @@ var BrowseInTab = {
       let winType = win.documentElement.getAttribute("windowtype");
       this.DEBUG &&
         console.debug("onDomWindowOpened: load winType - " + winType);
-
-      // Ensure chrome zoom applies to this window too.
-      if (this.customZoomEnabledPref) {
-        if ("style" in win.documentElement) {
-          this.DEBUG && console.debug(win);
-          let chromeFontSizeZoom =
-            this.DEFAULT_FONTSIZE * (this.chromeZoomFactorPref / 100) + "px";
-          // Add the stylesheets.
-          this.InitializeStyleSheet(
-            win,
-            "skin/browseintab.css",
-            this.addonName,
-            false
-          );
-          win.documentElement.style.fontSize = chromeFontSizeZoom;
-          win.documentElement.setAttribute("browseintabzoom", true);
-        }
-      }
 
       // For content-base header link in compose window only.
       if (
@@ -3975,7 +3963,7 @@ var BrowseInTab = {
       // handling in class="text-link" in aboutAddonsExtra.js.
       this.DEBUG &&
         console.debug(
-          "siteClickHandler: xul linkNode.value - " + linkNode.value
+          "siteClickHandler: xul linkNode, value - " + linkNode.value
         );
       return false;
     }
@@ -3995,7 +3983,7 @@ var BrowseInTab = {
 
     if (
       !href ||
-      !href.startsWith("http") ||
+      !(href.startsWith("http") || href.startsWith("about:")) ||
       event.detail == 2 ||
       event.button == 2
     ) {
@@ -4003,11 +3991,12 @@ var BrowseInTab = {
     }
 
     if (
-      linkNode.ownerDocument.URL.startsWith("about:") ||
-      linkNode.ownerDocument.URL.startsWith("chrome:")
+      href.startsWith("http") &&
+      (linkNode.ownerDocument.URL.startsWith("about:") ||
+        linkNode.ownerDocument.URL.startsWith("chrome:"))
     ) {
       this.DEBUG &&
-        console.debug("siteClickHandler: about: or chrome: html linkNode");
+        console.debug("siteClickHandler: about: or chrome: html http linkNode");
       event.preventDefault();
       this.openLinkExternally(href, event);
       return false;
@@ -4072,7 +4061,7 @@ var BrowseInTab = {
       // be set this way.
       browser?.id == "multimessage" ||
       browser?.id.startsWith("chromeTabBrowser") ||
-      browser?.documentURI.spec ==
+      browser?.currentURI?.spec ==
         "chrome://messenger/content/glodaFacetView.xhtml"
     ) {
       browser.browsingContext.fullZoom = zoomFactor / 100;
@@ -4087,7 +4076,7 @@ var BrowseInTab = {
     urlbarZoomButton.hidden =
       defaultZoom == zoomFactor ||
       (browser &&
-        browser.currentURI.spec == "about:blank" &&
+        browser.currentURI?.spec == "about:blank" &&
         browser.id != "messagepane" &&
         (!browser.contentPrincipal ||
           browser.contentPrincipal.isNullPrincipal)) ||

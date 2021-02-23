@@ -16,8 +16,12 @@ fieldset {
   border: 0;
   margin-bottom: 0;
 }
+fieldset#contentZoomFieldset {
+  border: 2px solid threedface;
+}
 
-.browser-style.disabled label {
+.browser-style.disabled label,
+.browser-style.disabled legend {
   color: #999;
   opacity: .5;
 }
@@ -75,7 +79,7 @@ button.tab-button[keyfocus] {
 
 #maxContentTabs,
 #zoomIncrement,
-#chromeZoomFactor {
+#globalZoomFactor {
  width: 4em;
  text-align: end;
 }

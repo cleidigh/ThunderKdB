@@ -1,0 +1,249 @@
+{
+    "id": 988035,
+    "authors": [
+        {
+            "id": 14203692,
+            "name": "Rob Lemley",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/jfx2006/",
+            "username": "jfx2006",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14203/14203692.png?modified=1612163383"
+        }
+    ],
+    "average_daily_users": 56,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2021-02-05T02:58:05Z",
+    "current_version": {
+        "id": 2475395,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.5.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/markdown-here-revival/versions/2475395",
+        "files": [
+            {
+                "id": 1018556,
+                "created": "2021-02-20T19:30:09Z",
+                "hash": "sha256:475d84d1607420193ca08a74685a5056c259f2f7a9be4a10e59540d533545dd7",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 511597,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018556/markdown_here_revival-3.1.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "<strong>Version 3.1.0</strong> - feature parity with old Markdown Here\n<ul><li>New permissions:\n<ul><li>\"Unrestricted access\" - This is for the notification bar</li></ul></li><li>Fixes:\n<ul><li>Math rendering works, it still uses the Google Chart API, so a request is\nsent to Google to draw the image. Also note that the image is not included\nin the email itself so recipients will need to allow remote images in their\nemail client. This feature is disabled by default for privacy reasons.<ul><li><strong>Syntax change:</strong> Math must be surrounded by backticks\n  (`) and dollar signs ($). The need for backticks will be removed\n  in a later release</li><li>Example: <code>`\\$-b \\pm \\sqrt{b\\^2 - 4ac} \\over 2a$`</code></li></ul></li><li>Updated default CSS so when Thunderbird is set to use a dark theme rendered HTML is still readable. If updating from a previous version, you will have to update \"Primary Styling CSS\" in the options page by clicking the \"Reset to Default\" button.</li><li>Notifications when unrendering HTML that has been changed and before sending an email that looks like it contains markdown.</li></ul></li><li>Other changes:\n<ul><li>Updated hotkey support to use builtin mailextension API</li><li>Using mailextension APIs to check email for unrendered markdown before sending</li><li>Removed code specific to webmail/browser support as a result of above two items</li><li>Removed dependency on JQuery in the options page</li><li>highlightjs (source code syntax highlighting)  updated to 10.6.0</li></ul></li><li>Known issues:\n<ul><li>The update page shown after new install or update is not written</li><li>Documentation needs some updates, specifically the Math syntax change noted above</li><li>There's no context menu (right-click) support for Thunderbird's compose window</li><li>Options page does not work in Thunderbird 86 beta</li></ul></li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/versions/3.1.0",
+        "version": "3.1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Markdown Here Revival lets you write email in Markdown and render it (make it pretty!) before sending.\n\nVery easy to use:\n1. Write your email in Markdown.\n2. Click the Markdown Toggle button in the format toolbar\n3. It's pretty!\n\nThis is an open source project forked from Markdown Here to support modern Thunderbird versions."
+    },
+    "developer_comments": {
+        "en-US": "Everything should work in version 3.1.0.\n\nNext I will be focusing on getting the documentation updated."
+    },
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/markdown-here-revival/edit",
+    "guid": "markdown-here-revival@xul.calypsoblue.org",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "ru": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "fr": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "de": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "tr": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "en-US": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "ko": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "it": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "zh-CN": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "pt-BR": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "pl": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "zh-TW": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "ja": "https://gitlab.com/jfx2006/markdown-here-revival",
+        "es": "https://gitlab.com/jfx2006/markdown-here-revival"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/988/988035-64.png?modified=1f45fc98",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/988/988035-32.png?modified=1f45fc98",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/988/988035-64.png?modified=1f45fc98"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2021-02-20T23:21:40Z",
+    "name": {
+        "ru": "Markdown Here",
+        "fr": "Markdown Here",
+        "de": "Markdown Here",
+        "tr": "Markdown Here",
+        "en-US": "Markdown Here Revival",
+        "ko": "Markdown Here",
+        "it": "Markdown Here",
+        "zh-CN": "Markdown Here",
+        "pt-BR": "Markdown Here",
+        "pl": "Markdown Here",
+        "zh-TW": "Markdown Here",
+        "ja": "Markdown Here",
+        "es": "Markdown Here"
+    },
+    "previews": [
+        {
+            "id": 206429,
+            "caption": {
+                "en-US": "Write your emails in Markdown"
+            },
+            "image_size": [
+                1128,
+                638
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206429.png?modified=1613853405",
+            "thumbnail_size": [
+                320,
+                181
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206429.png?modified=1613853405"
+        },
+        {
+            "id": 206428,
+            "caption": {
+                "en-US": ".. and send as HTML!"
+            },
+            "image_size": [
+                1125,
+                636
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206428.png?modified=1613853405",
+            "thumbnail_size": [
+                320,
+                181
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206428.png?modified=1613853405"
+        },
+        {
+            "id": 206448,
+            "caption": {
+                "en-US": "Dark mode"
+            },
+            "image_size": [
+                1124,
+                722
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206448.png?modified=1613853332",
+            "thumbnail_size": [
+                311,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206448.png?modified=1613853332"
+        },
+        {
+            "id": 206449,
+            "caption": {
+                "en-US": "Dark mode rendered"
+            },
+            "image_size": [
+                1123,
+                648
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206449.png?modified=1613853410",
+            "thumbnail_size": [
+                320,
+                185
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206449.png?modified=1613853410"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/988035",
+    "slug": "markdown-here-revival",
+    "status": "public",
+    "summary": {
+        "ru": "Напишите ваш емейл в Markdown и сделайте его стильным.",
+        "fr": "Écrivez votre courriel avec Markdown, puis rendez-le attrayant.",
+        "de": "E-Mail in Markdown schreiben, dann aufhübschen lassen.",
+        "tr": "Markdown ile email yaz, sonra da güzelleştir.",
+        "en-US": "A revival of  the popular Markdown-Here addon for Thunderbird 78 and beyond.\n\nMarkdown Here Revival is a Thunderbird extension that lets you write emails in Markdown and render them as HTML before sending.",
+        "ko": "Write your email in Markdown, then make it pretty.",
+        "it": "Scrivi la tua email in Markdown, quindi rendila bella.",
+        "zh-CN": "用Markdown写一封漂亮的电子邮件。",
+        "pt-BR": "Escreva seu email em Markdown e o torne elegante.",
+        "pl": "Napisz e-mail w języku Markdown a następnie go upiększ.",
+        "zh-TW": "用Markdown寫一封漂亮的電子郵件。",
+        "ja": "Markdownで電子メールを美しく",
+        "es": "Escribe tu correo electrónico en Markdown, y hazlo bonito."
+    },
+    "support_email": {
+        "en-US": "xulsupport@calypsoblue.org"
+    },
+    "support_url": null,
+    "tags": [
+        "composer",
+        "firefox57",
+        "markdown"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp78plus": true
+        }
+    }
+}

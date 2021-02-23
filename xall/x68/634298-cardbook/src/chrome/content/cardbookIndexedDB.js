@@ -22,11 +22,14 @@ var cardbookIndexedDB = {
 			var db = e.target.result;
 			e.target.transaction.onerror = cardbookRepository.cardbookDatabase.onerror;
 		
-			if (db.objectStoreNames.contains("cards")) {
-				db.deleteObjectStore("cards");
+			if (e.oldVersion < 1) {
+				let store = db.createObjectStore("cards", {keyPath: "cbid", autoIncrement: false});
+				store.createIndex("cacheuriIndex", "cacheuri", { unique: false });
 			}
-			var store = db.createObjectStore("cards", {keyPath: "cbid", autoIncrement: false});
-			store.createIndex("cacheuriIndex", "cacheuri", { unique: false });
+			if (e.oldVersion < 7) {
+				let store = request.transaction.objectStore("cards");
+				store.createIndex("dirPrefIdIndex", "dirPrefId", { unique: false });
+			}
 		};
 		
 		// when success, call the observer for starting the load cache and maybe the sync
@@ -109,22 +112,6 @@ var cardbookIndexedDB = {
 		cursorRequest.onerror = cardbookRepository.cardbookDatabase.onerror;
 	},
 
-	// add the contact to the cache only if it is missing
-	addCardIfMissing: function (aDirPrefName, aCard) {
-		var db = cardbookRepository.cardbookDatabase.db;
-		var transaction = db.transaction(["cards"], "readonly");
-		var store = transaction.objectStore("cards");
-		var cursorRequest = store.get(aCard.cbid);
-	
-		cursorRequest.onsuccess = function(e) {
-			if (!(e.target.result != null)) {
-				cardbookIndexedDB.addCard(aDirPrefName, aCard);
-			}
-		};
-		
-		cursorRequest.onerror = cardbookRepository.cardbookDatabase.onerror;
-	},
-	
 	// Check if a card is present in the database
 	checkCardForUndoAction: function (aMessage, aCard, aActionId) {
 		var db = cardbookRepository.cardbookDatabase.db;
@@ -148,9 +135,8 @@ var cardbookIndexedDB = {
 	
 	// once the DB is open, this is the second step for the AB
 	// which use the DB caching
-	loadCards: function (aDirPrefId, aDirPrefName, aMode, aCallback) {
+	loadCards: function (aDirPrefId, aDirPrefName, aCallback) {
 		var cb = aCallback;
-		var myMode = aMode;
 		var db = cardbookRepository.cardbookDatabase.db;
 		var keyRange = IDBKeyRange.bound(aDirPrefId, aDirPrefId + '\uffff');
 		var transaction = db.transaction(["cards"], "readonly");
@@ -163,7 +149,7 @@ var cardbookIndexedDB = {
 		};
 
 		countRequest.onsuccess = function(e) {
-			cardbookRepository.cardbookServerSyncTotal[aDirPrefId] = countRequest.result;
+			cardbookRepository.cardbookServerCardSyncTotal[aDirPrefId] = countRequest.result;
 		};
 
 		countRequest.onerror = function(e) {
@@ -175,11 +161,11 @@ var cardbookIndexedDB = {
 				card = await cardbookIndexedDB.checkCard(aDirPrefName, card);
 			}
 			catch(e) {
-				cardbookRepository.cardbookServerSyncDone[aDirPrefId]++;
+				cardbookRepository.cardbookServerCardSyncDone[aDirPrefId]++;
 				return;
 			}
 			if (!card.deleted) {
-				cardbookRepository.addCardToRepository(card, myMode, card.cacheuri);
+				cardbookRepository.addCardToRepository(card, false, card.cacheuri);
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardLoadedFromCacheDB", [aDirPrefName, card.fn]);
 			} else {
 				if (cardbookRepository.cardbookFileCacheCards[aDirPrefId]) {
@@ -189,7 +175,7 @@ var cardbookIndexedDB = {
 					cardbookRepository.cardbookFileCacheCards[aDirPrefId][card.cacheuri] = card;
 				}
 			}
-			cardbookRepository.cardbookServerSyncDone[aDirPrefId]++;
+			cardbookRepository.cardbookServerCardSyncDone[aDirPrefId]++;
 		};
 
 		cursorRequest.onsuccess = async function(e) {
@@ -208,6 +194,200 @@ var cardbookIndexedDB = {
 		};
 	},
 
+	// first step for getting the categories
+	openCatDB: function () {
+		// generic output when errors on DB
+		cardbookRepository.cardbookCatDatabase.onerror = function(e) {
+			cardbookRepository.cardbookLog.updateStatusProgressInformation("Cat Database error : " + e.value, "Error");
+		};
+
+		var request = indexedDB.open(cardbookRepository.cardbookCatDatabaseName, cardbookRepository.cardbookCatDatabaseVersion);
+	
+		// when version changes
+		// for the moment delete all and recreate one new empty
+		request.onupgradeneeded = function(e) {
+			var db = e.target.result;
+			e.target.transaction.onerror = cardbookRepository.cardbookCatDatabase.onerror;
+
+			if (db.objectStoreNames.contains("categories")) {
+				db.deleteObjectStore("categories");
+			}
+			var store = db.createObjectStore("categories", {keyPath: "cbid", autoIncrement: false});
+			store.createIndex("dirPrefIdIndex", "dirPrefId", { unique: false });
+		};
+
+		// when success, call the observer for starting the load cache and maybe the sync
+		request.onsuccess = function(e) {
+			cardbookRepository.cardbookCatDatabase.db = e.target.result;
+			cardbookRepository.cardbookUtils.notifyObservers("catDBOpen");
+		};
+		
+		// when error, call the observer for starting the load cache and maybe the sync
+		request.onerror = function(e) {
+			cardbookRepository.cardbookUtils.notifyObservers("catDBOpen");
+			cardbookRepository.cardbookCatDatabase.onerror(e);
+		};
+	},
+
+
+	// check if the category is in a wrong encryption state
+	// then decrypt the category if possible
+	checkCategory: async function (aDirPrefName, aCategory) {
+		try {
+			var stateMismatched = cardbookIndexedDB.encryptionEnabled != 'encrypted' in aCategory;
+			var versionMismatched = aCategory.encryptionVersion && aCategory.encryptionVersion != cardbookEncryptor.VERSION;
+			if (stateMismatched || versionMismatched) {
+				if ('encrypted' in aCategory) {
+					aCategory = await cardbookEncryptor.decryptCategory(aCategory);
+				}
+				cardbookIndexedDB.addCategory(aDirPrefName, aCategory);
+			} else {
+				if ('encrypted' in aCategory) {
+					aCategory = await cardbookEncryptor.decryptCategory(aCategory);
+				}
+			}
+			return aCategory;
+		}
+		catch(e) {
+			cardbookRepository.cardbookLog.updateStatusProgressInformation("debug mode : Decryption failed e : " + e, "Error");
+			throw new Error("failed to decrypt the category : " + e);
+		}
+	},
+
+	// add or override the category to the cache
+	addCategory: async function (aDirPrefName, aCategory, aMode) {
+		var storedCategory = cardbookIndexedDB.encryptionEnabled ? (await cardbookEncryptor.encryptCategory(aCategory)) : aCategory;
+		var db = cardbookRepository.cardbookCatDatabase.db;
+		var transaction = db.transaction(["categories"], "readwrite");
+		var store = transaction.objectStore("categories");
+		var cursorRequest = store.put(storedCategory);
+		cursorRequest.onsuccess = function(e) {
+			if (cardbookIndexedDB.encryptionEnabled) {
+				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aDirPrefName + " : debug mode : Category " + aCategory.name + " written to encrypted CatDB");
+			} else {
+				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aDirPrefName + " : debug mode : Category " + aCategory.name + " written to CatDB");
+			}
+			if (aMode) {
+				cardbookActions.fetchCryptoActivity(aMode);
+			}
+		};
+		
+		cursorRequest.onerror = function(e) {
+			if (aMode) {
+				cardbookActions.fetchCryptoActivity(aMode);
+			}
+			cardbookRepository.cardbookCatDatabase.onerror();
+		};
+	},
+
+	// delete the category
+	removeCategory: function (aDirPrefName, aCategory) {
+		var db = cardbookRepository.cardbookCatDatabase.db;
+		var transaction = db.transaction(["categories"], "readwrite");
+		var store = transaction.objectStore("categories");
+		var cursorRequest = store.delete(aCategory.cbid);
+		cursorRequest.onsuccess = function(e) {
+			if (cardbookIndexedDB.encryptionEnabled) {
+				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aDirPrefName + " : debug mode : Category " + aCategory.name + " deleted from encrypted CatDB");
+			} else {
+				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aDirPrefName + " : debug mode : Category " + aCategory.name + " deleted from CatDB");
+			}
+		};
+		cursorRequest.onerror = cardbookRepository.cardbookCatDatabase.onerror;
+	},
+
+	// Check if a category is present in the database
+	checkCatForUndoAction: function (aMessage, aCategory, aActionId) {
+		var db = cardbookRepository.cardbookCatDatabase.db;
+		var transaction = db.transaction(["categories"], "readonly");
+		var store = transaction.objectStore("categories");
+		var cursorRequest = store.get(aCategory.cbid);
+	
+		cursorRequest.onsuccess = function(e) {
+			cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aMessage);
+			cardbookRepository.cardbookUtils.addTagCreated(aCategory);
+			var category = e.target.result;
+			if (category) {
+				aCategory.etag = category.etag;
+			}
+			cardbookRepository.saveCategory({}, aCategory, aActionId);
+			cardbookRepository.cardbookUtils.notifyObservers(cardbookRepository.currentAction[aActionId].actionCode);
+		};
+		
+		cursorRequest.onerror = cardbookRepository.cardbookCatDatabase.onerror;
+	},
+	
+	// once the DB is open, this is the second step for the AB
+	// which use the DB caching
+	loadCategories: function (aDirPrefId, aDirPrefName, aCallback) {
+		var cb = aCallback;
+		var db = cardbookRepository.cardbookCatDatabase.db;
+		var keyRange = IDBKeyRange.bound(aDirPrefId, aDirPrefId + '\uffff');
+		var transaction = db.transaction(["categories"], "readonly");
+		var store = transaction.objectStore("categories");
+		var countRequest = store.count(keyRange);
+		var cursorRequest = store.getAll(keyRange);
+	
+		transaction.oncomplete = function() {
+			cb(aDirPrefId);
+		};
+
+		countRequest.onsuccess = function(e) {
+			cardbookRepository.cardbookServerCatSyncTotal[aDirPrefId] = countRequest.result;
+		};
+
+		countRequest.onerror = function(e) {
+			cardbookRepository.cardbookCatDatabase.onerror(e);
+		};
+
+		const handleCategory = async category => {
+			try {
+				category = await cardbookIndexedDB.checkCategory(aDirPrefName, category);
+			}
+			catch(e) {
+				cardbookRepository.cardbookServerCatSyncDone[aDirPrefId]++;
+				return;
+			}
+			if (!category.deleted && category.name != cardbookRepository.cardbookUncategorizedCards) {
+				cardbookRepository.addCategoryToRepository(category, false, aDirPrefId);
+				cardbookRepository.cardbookUtils.formatStringForOutput("categoryLoadedFromCacheDB", [aDirPrefName, category.name]);
+			} else {
+				if (cardbookRepository.cardbookFileCacheCategories[aDirPrefId]) {
+					cardbookRepository.cardbookFileCacheCategories[aDirPrefId][category.href] = category;
+				} else {
+					cardbookRepository.cardbookFileCacheCategories[aDirPrefId] = {};
+					cardbookRepository.cardbookFileCacheCategories[aDirPrefId][category.href] = category;
+				}
+			}
+			cardbookRepository.cardbookServerCatSyncDone[aDirPrefId]++;
+		};
+
+		cursorRequest.onsuccess = async function(e) {
+			var result = e.target.result;
+			if (result) {
+				for (var category of result) {
+					handleCategory(category);
+				}
+			}
+		};
+
+		cursorRequest.onerror = function(e) {
+			cardbookRepository.cardbookCatDatabase.onerror(e);
+		};
+	},
+
+	// when all contacts were loaded from the cache
+	// tells that it is finished
+	cardsComplete: function (aDirPrefId) {
+		cardbookRepository.cardbookDBCardResponse[aDirPrefId]++;
+	},
+	
+	// when all categories were loaded from the cache
+	// tells that it is finished
+	catsComplete: function (aDirPrefId) {
+		cardbookRepository.cardbookDBCatResponse[aDirPrefId]++;
+	},
+	
 	// remove an account
 	removeAccount: function (aDirPrefId, aDirPrefName) {
 		var db = cardbookRepository.cardbookDatabase.db;
@@ -227,17 +407,24 @@ var cardbookIndexedDB = {
 		cursorRequest.onerror = function(e) {
 			cardbookRepository.cardbookDatabase.onerror(e);
 		};
-	},
 
-	// when all contacts were loaded from the cache
-	// tells that it is finished
-	itemsComplete: function (aDirPrefId) {
-		cardbookRepository.cardbookDBResponse[aDirPrefId]++;
-	},
+		var db = cardbookRepository.cardbookCatDatabase.db;
+		var transaction = db.transaction(["categories"], "readwrite");
+		var store = transaction.objectStore("categories");
+		var keyRange = IDBKeyRange.bound(aDirPrefId, aDirPrefId + '\uffff');
+		var cursorRequest = store.delete(keyRange);
 	
-	// load all contacts for an addressbook
-	loadDB: function (aDirPrefId, aDirPrefName, aMode) {
-		cardbookIndexedDB.loadCards(aDirPrefId, aDirPrefName, aMode, cardbookIndexedDB.itemsComplete);
+		cursorRequest.onsuccess = async function(e) {
+			if (cardbookIndexedDB.encryptionEnabled) {
+				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aDirPrefName + " : deleted from encrypted CatDB");
+			} else {
+				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aDirPrefName + " : deleted from CatDB");
+			}
+		};
+
+		cursorRequest.onerror = function(e) {
+			cardbookRepository.cardbookCatDatabase.onerror(e);
+		};
 	},
 
 	// first step for getting the undos
@@ -283,7 +470,7 @@ var cardbookIndexedDB = {
 				if ('encrypted' in aItem) {
 					aItem = await cardbookEncryptor.decryptUndoItem(aItem);
 				}
-				cardbookIndexedDB.addUndoItem(aItem.undoId, aItem.undoCode, aItem.undoMessage, aItem.oldCards, aItem.newCards, true);
+				cardbookIndexedDB.addUndoItem(aItem.undoId, aItem.undoCode, aItem.undoMessage, aItem.oldCards, aItem.newCards, aItem.oldCats, aItem.newCats, true);
 			} else {
 				if ('encrypted' in aItem) {
 					aItem = await cardbookEncryptor.decryptUndoItem(aItem);
@@ -316,8 +503,8 @@ var cardbookIndexedDB = {
 	},
 
 	// add an undo action
-	addUndoItem: async function (aUndoId, aUndoCode, aUndoMessage, aOldCards, aNewCards, aExactId, aMode) {
-		var undoItem = {undoId : aUndoId, undoCode : aUndoCode, undoMessage : aUndoMessage, oldCards: aOldCards, newCards: aNewCards};
+	addUndoItem: async function (aUndoId, aUndoCode, aUndoMessage, aOldCards, aNewCards, aOldCats, aNewCats, aExactId, aMode) {
+		var undoItem = {undoId : aUndoId, undoCode : aUndoCode, undoMessage : aUndoMessage, oldCards: aOldCards, newCards: aNewCards, oldCats: aOldCats, newCats: aNewCats};
 		var storedItem = cardbookIndexedDB.encryptionEnabled ? (await cardbookEncryptor.encryptUndoItem(undoItem)) : undoItem;
 		var db = cardbookRepository.cardbookActionsDatabase.db;
 		var transaction = db.transaction(["cardUndos"], "readwrite");
@@ -453,6 +640,18 @@ var cardbookIndexedDB = {
 			}
 			var myTopic = "undoActionDone";
 			var myActionId = cardbookActions.startAction(myTopic, [item.undoMessage]);
+			for (let myCatToCreate of item.oldCats) {
+				let myCatToDelete = item.newCats.find(child => child.dirPrefId+"::"+child.uid == myCatToCreate.dirPrefId+"::"+myCatToCreate.uid);
+				if (!myCatToDelete) {
+					var myMessage = "debug mode : executing undo " + cardbookRepository.currentUndoId + " adding myCatToCreate.cbid : " + myCatToCreate.cbid;
+					cardbookIndexedDB.checkCatForUndoAction(myMessage, myCatToCreate, myActionId);
+				} else {
+					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " updating myCatToCreate.cbid : " + myCatToCreate.cbid);
+					cardbookRepository.cardbookUtils.addTagUpdated(myCatToCreate);
+					myCatToCreate.etag = myCatToDelete.etag;
+					cardbookRepository.saveCategory(myCatToDelete, myCatToCreate, myActionId);
+				}
+			}
 			for (let myCardToDelete of item.newCards) {
 				let myCardToCreate1 = item.oldCards.find(child => child.cbid == myCardToDelete.cbid);
 				if (!myCardToCreate1) {
@@ -479,6 +678,14 @@ var cardbookIndexedDB = {
 					cardbookRepository.cardbookUtils.addTagUpdated(myCardToCreate);
 					myCardToCreate.etag = myCardToDelete.etag;
 					cardbookRepository.saveCard(myCardToDelete, myCardToCreate, myActionId, false);
+				}
+			}
+			for (let myCatToDelete of item.newCats) {
+				let myCatToCreate = item.oldCats.find(child => child.dirPrefId+"::"+child.uid == myCatToDelete.dirPrefId+"::"+myCatToDelete.uid);
+				if (!myCatToCreate) {
+					cardbookRepository.cardbookUtils.addTagCreated(myCatToDelete);
+					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " deleting myCatToDelete.cbid : " + myCatToDelete.cbid);
+					cardbookRepository.deleteCategories([myCatToDelete], myActionId);
 				}
 			}
 			cardbookRepository.currentUndoId--;
@@ -520,6 +727,18 @@ var cardbookIndexedDB = {
 			}
 			var myTopic = "redoActionDone";
 			var myActionId = cardbookActions.startAction(myTopic, [item.undoMessage]);
+			for (let myCatToCreate of item.newCats) {
+				let myCatToDelete = item.oldCats.find(child => child.dirPrefId+"::"+child.uid == myCatToCreate.dirPrefId+"::"+myCatToCreate.uid);
+				if (!myCatToDelete) {
+					var myMessage = "debug mode : executing redo " + cardbookRepository.currentUndoId + " adding myCatToCreate.cbid : " + myCatToCreate.cbid;
+					cardbookIndexedDB.checkCatForUndoAction(myMessage, myCatToCreate, myActionId);
+				} else {
+					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing redo " + cardbookRepository.currentUndoId + " updating myCatToCreate.cbid : " + myCatToCreate.cbid);
+					cardbookRepository.cardbookUtils.addTagUpdated(myCatToCreate);
+					myCatToCreate.etag = myCatToDelete.etag;
+					cardbookRepository.saveCategory(myCatToDelete, myCatToCreate, myActionId);
+				}
+			}
 			for (let myCardToDelete of item.oldCards) {
 				let myCardToCreate1 = item.newCards.find(child => child.cbid == myCardToDelete.cbid);
 				if (!myCardToCreate1) {
@@ -546,6 +765,14 @@ var cardbookIndexedDB = {
 					cardbookRepository.cardbookUtils.addTagUpdated(myCardToCreate);
 					myCardToCreate.etag = myCardToDelete.etag;
 					cardbookRepository.saveCard(myCardToDelete, myCardToCreate, myActionId, false);
+				}
+			}
+			for (let myCatToDelete of item.oldCats) {
+				let myCatToCreate = item.newCats.find(child => child.dirPrefId+"::"+child.uid == myCatToDelete.dirPrefId+"::"+myCatToDelete.uid);
+				if (!myCatToCreate) {
+					cardbookRepository.cardbookUtils.addTagCreated(myCatToDelete);
+					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing redo " + cardbookRepository.currentUndoId + " deleting myCatToDelete.cbid : " + myCatToDelete.cbid);
+					cardbookRepository.deleteCategories([myCatToDelete], myActionId);
 				}
 			}
 			cardbookRepository.currentUndoId++;
@@ -594,6 +821,67 @@ var cardbookIndexedDB = {
 			cardbookActions.finishCryptoActivity();
 			aDatabase.onerror(e);
 		};
+	},
+
+	encryptCategories: async function() {
+		var db = cardbookRepository.cardbookCatDatabase.db;
+		var categoriesTransaction = db.transaction(["categories"], "readonly");
+		return this.migrateItems(
+			cardbookRepository.cardbookCatDatabase,
+			categoriesTransaction.objectStore("categories"),
+			async category => {
+				try {
+					cardbookIndexedDB.addCategory(cardbookRepository.cardbookPreferences.getName(category.dirPrefId), category, "encryption");
+				}
+				catch(e) {
+					cardbookRepository.cardbookLog.updateStatusProgressInformation("debug mode : Encryption failed e : " + e, "Error");
+				}
+			},
+			category => !("encrypted" in category),
+			() => cardbookActions.finishCryptoActivityOK("encryption")
+		);
+	},
+
+	decryptCategories: async function() {
+		var db = cardbookRepository.cardbookCatDatabase.db;
+		var categoriesTransaction = db.transaction(["categories"], "readonly");
+		return this.migrateItems(
+			cardbookRepository.cardbookCatDatabase,
+			categoriesTransaction.objectStore("categories"),
+			async category => {
+				try {
+					category = await cardbookEncryptor.decryptCategory(category);
+					cardbookIndexedDB.addCategory(cardbookRepository.cardbookPreferences.getName(category.dirPrefId), category, "decryption");
+				}
+				catch(e) {
+					cardbookActions.fetchCryptoActivity("decryption");
+					cardbookRepository.cardbookLog.updateStatusProgressInformation("debug mode : Decryption failed e : " + e, "Error");
+				}
+			},
+			category => ("encrypted" in category),
+			() => cardbookActions.finishCryptoActivityOK("decryption")
+		);
+	},
+
+	upgradeCategories: async function() {
+		var db = cardbookRepository.cardbookCatDatabase.db;
+		var categoriesTransaction = db.transaction(["categories"], "readonly");
+		return this.migrateItems(
+			cardbookRepository.cardbookCatDatabase,
+			categoriesTransaction.objectStore("categories"),
+			async category => {
+				try {
+					category = await cardbookEncryptor.decryptCard(category);
+					cardbookIndexedDB.addCategory(cardbookRepository.cardbookPreferences.getName(category.dirPrefId), category, "encryption");
+				}
+				catch(e) {
+					cardbookActions.fetchCryptoActivity("encryption");
+					cardbookRepository.cardbookLog.updateStatusProgressInformation("debug mode : Encryption failed e : " + e, "Error");
+				}
+			},
+			category => ("encrypted" in category && category.encryptionVersion != cardbookEncryptor.VERSION),
+			() => cardbookActions.finishCryptoActivityOK("encryption")
+		);
 	},
 
 	encryptCards: async function() {
@@ -665,7 +953,7 @@ var cardbookIndexedDB = {
 			undoTransaction.objectStore("cardUndos"),
 			async item => {
 				try {
-					cardbookIndexedDB.addUndoItem(item.undoId, item.undoCode, item.undoMessage, item.oldCards, item.newCards, true, "encryption");
+					cardbookIndexedDB.addUndoItem(item.undoId, item.undoCode, item.undoMessage, item.oldCards, item.newCards, item.oldCats, item.newCats, true, "encryption");
 				}
 				catch(e) {
 					cardbookRepository.cardbookLog.updateStatusProgressInformation("debug mode : Undo encryption failed e : " + e, "Error");
@@ -685,7 +973,7 @@ var cardbookIndexedDB = {
 			async item => {
 				try {
 					item = await cardbookEncryptor.decryptUndoItem(item);
-					cardbookIndexedDB.addUndoItem(item.undoId, item.undoCode, item.undoMessage, item.oldCards, item.newCards, true, "decryption");
+					cardbookIndexedDB.addUndoItem(item.undoId, item.undoCode, item.undoMessage, item.oldCards, item.newCards, item.oldCats, item.newCats, true, "decryption");
 				}
 				catch(e) {
 					cardbookActions.fetchCryptoActivity("decryption");
@@ -706,7 +994,7 @@ var cardbookIndexedDB = {
 			async item => {
 				try {
 					item = await cardbookEncryptor.decryptUndoItem(item);
-					cardbookIndexedDB.addUndoItem(item.undoId, item.undoCode, item.undoMessage, item.oldCards, item.newCards, true, "encryption");
+					cardbookIndexedDB.addUndoItem(item.undoId, item.undoCode, item.undoMessage, item.oldCards, item.newCards, item.oldCats, item.newCats, true, "encryption");
 				}
 				catch(e) {
 					cardbookActions.fetchCryptoActivity("encryption");
@@ -721,6 +1009,7 @@ var cardbookIndexedDB = {
 	encryptDBs: async function() {
 		cardbookActions.initCryptoActivity("encryption");
 		Promise.all([
+			this.encryptCategories(),
 			this.encryptCards(),
 			this.encryptUndos()
 		]);
@@ -729,6 +1018,7 @@ var cardbookIndexedDB = {
 	decryptDBs: async function() {
 		cardbookActions.initCryptoActivity("decryption");
 		Promise.all([
+			this.decryptCategories(),
 			this.decryptCards(),
 			this.decryptUndos()
 		]);
@@ -739,6 +1029,7 @@ var cardbookIndexedDB = {
 		if (lastValidatedVersion != cardbookEncryptor.VERSION) {
 			cardbookActions.initCryptoActivity("encryption");
 			Promise.all([
+				this.upgradeCategories(),
 				this.upgradeCards(),
 				this.upgradeUndos()
 			]).then(() => {

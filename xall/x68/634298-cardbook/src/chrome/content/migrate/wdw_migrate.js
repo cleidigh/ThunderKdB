@@ -130,12 +130,12 @@ if ("undefined" == typeof(wdw_migrate)) {
 					cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
 				}
 
-				cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
+				cardbookRepository.cardbookServerCardSyncDone[aDirPrefIdTarget]++;
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_migrate.translateStandardCards error : " + e, "Error");
-				cardbookRepository.cardbookServerSyncError[aDirPrefIdTarget]++;
-				cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
+				cardbookRepository.cardbookServerCardSyncError[aDirPrefIdTarget]++;
+				cardbookRepository.cardbookServerCardSyncDone[aDirPrefIdTarget]++;
 			}
 		},
 
@@ -207,7 +207,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 							cardbookRepository.cardbookUtils.addMemberstoCard(myCard, myTargetMembers, "group");
 							
 							cardbookRepository.saveCard({}, myCard, "", true);
-							cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
+							cardbookRepository.cardbookServerCardSyncDone[aDirPrefIdTarget]++;
 
 							wdw_migrate.allLists[listName].solved = true;
 							wdw_migrate.allLists[listName].uid = myCard.uid;
@@ -220,8 +220,8 @@ if ("undefined" == typeof(wdw_migrate)) {
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_migrate.translateStandardLists error : " + e, "Error");
-				cardbookRepository.cardbookServerSyncError[aDirPrefIdTarget]++;
-				cardbookRepository.cardbookServerSyncDone[aDirPrefIdTarget]++;
+				cardbookRepository.cardbookServerCardSyncError[aDirPrefIdTarget]++;
+				cardbookRepository.cardbookServerCardSyncDone[aDirPrefIdTarget]++;
 			}
 		},
 
@@ -262,7 +262,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 						var myABCard = abCardsEnumerator.getNext();
 						myABCard = myABCard.QueryInterface(Components.interfaces.nsIAbCard);
 						if (!myABCard.isMailList) {
-							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
+							cardbookRepository.cardbookServerCardSyncTotal[aDirPrefIdTarget]++;
 							let myDateFormat = cardbookRepository.getDateFormat(aDirPrefIdTarget, aVersion);
 							Services.tm.currentThread.dispatch({ run: function() {
 								wdw_migrate.translateStandardCards(aDirPrefIdTarget, aDirPrefIdTargetName, myABCard, aVersion, myDateFormat);
@@ -278,7 +278,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 							wdw_migrate.allLists[myABList.dirName] = {};
 							wdw_migrate.allLists[myABList.dirName].solved = false;
 							wdw_migrate.allLists[myABList.dirName].list = myABList;
-							cardbookRepository.cardbookServerSyncTotal[aDirPrefIdTarget]++;
+							cardbookRepository.cardbookServerCardSyncTotal[aDirPrefIdTarget]++;
 						}
 					}
 					wdw_migrate.translateStandardLists(aDirPrefIdTarget, aDirPrefIdTargetName, aVersion);

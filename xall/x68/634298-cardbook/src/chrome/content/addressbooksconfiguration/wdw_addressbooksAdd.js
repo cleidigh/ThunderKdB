@@ -484,15 +484,15 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
 				var connection = {connUser: username, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
-				cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogle(connection, null, type, null);
-				wdw_addressbooksAdd.waitForRefreshTokenFinished(dirPrefId, url);
+				cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogleCarddav(connection, null, type, null);
+				wdw_addressbooksAdd.waitForRefreshTokenFinished(dirPrefId, url, type, username);
 			} else if (type == 'YAHOO') {
 				cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "Validating1Label", [url], "PRIORITY_INFO_MEDIUM");
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
 				var connection = {connUser: username, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
 				cardbookRepository.cardbookSynchronizationYahoo.requestNewRefreshTokenForYahoo(connection, null, type, null);
-				wdw_addressbooksAdd.waitForRefreshTokenFinished(dirPrefId, url);
+				wdw_addressbooksAdd.waitForRefreshTokenFinished(dirPrefId, url, type, username);
 			} else {
 				cardbookRepository.cardbookSynchronization.initDiscoveryOperations(dirPrefId);
 				wdw_addressbooksAdd.validateCardDAVURL(dirPrefId, username, password, type);
@@ -536,7 +536,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
 				var connection = {connUser: myUsername, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
-				cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogle(connection, null, myType, null);
+				cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogleCarddav(connection, null, myType, null);
 				wdw_addressbooksAdd.waitForFindRefreshTokenFinished(aRowId, dirPrefId, myURL);
 			} else if (myType == 'YAHOO') {
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
@@ -654,9 +654,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
 		},
 
-		waitForRefreshTokenFinished: function (aPrefId, aUrl) {
+		waitForRefreshTokenFinished: function (aPrefId, aUrl, aType, aUsername) {
 			wdw_addressbooksAdd.lTimerRefreshTokenAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
-			var lTimerRefreshToken = wdw_addressbooksAdd.lTimerRefreshTokenAll[aPrefId];
+			let lTimerRefreshToken = wdw_addressbooksAdd.lTimerRefreshTokenAll[aPrefId];
 			lTimerRefreshToken.initWithCallback({ notify: function(lTimerRefreshToken) {
 						if (cardbookRepository.cardbookRefreshTokenError[aPrefId] >= 1) {
 							cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "ValidationFailedLabel");
@@ -664,14 +664,20 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							wdw_addressbooksAdd.checklocationNetwork();
 							cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
 							lTimerRefreshToken.cancel();
-						} else if (cardbookRepository.cardbookRefreshTokenResponse[aPrefId] !== 1) {
+						} else if (cardbookRepository.cardbookRefreshTokenResponse[aPrefId] !== cardbookRepository.cardbookRefreshTokenRequest[aPrefId]) {
 							cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "Validating1Label", [aUrl], "PRIORITY_INFO_MEDIUM");
 						} else {
-							cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "OK");
-							wdw_addressbooksAdd.gValidateURL = true;
-							wdw_addressbooksAdd.checklocationNetwork();
-							cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
-							lTimerRefreshToken.cancel();
+							if (aType == "GOOGLE" && cardbookRepository.cardbookRefreshTokenResponse[aPrefId] !== 2 && "test1" == "test") {
+								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
+								var connection = {connUser: aUsername, connPrefId: aPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
+								cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogleClassic(connection, null, null, null);
+							} else {
+								cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "OK");
+								wdw_addressbooksAdd.gValidateURL = true;
+								wdw_addressbooksAdd.checklocationNetwork();
+								cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
+								lTimerRefreshToken.cancel();
+							}
 						}
 					}
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
@@ -679,7 +685,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		waitForFindRefreshTokenFinished: function (aRowId, aPrefId, aUrl) {
 			wdw_addressbooksAdd.lTimerRefreshTokenAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
-			var lTimerRefreshToken = wdw_addressbooksAdd.lTimerRefreshTokenAll[aPrefId];
+			let lTimerRefreshToken = wdw_addressbooksAdd.lTimerRefreshTokenAll[aPrefId];
 			lTimerRefreshToken.initWithCallback({ notify: function(lTimerRefreshToken) {
 						var myButton = document.getElementById('findPageValidateButton' + aRowId);
 						if (cardbookRepository.cardbookRefreshTokenError[aPrefId] >= 1) {
@@ -699,14 +705,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						}
 					}
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
-		},
-
-		onSuccessfulAuthentication: function (aResponse) {
-			var username = document.getElementById('remotePageUsername').value;
-			cardbookRepository.cardbookPasswordManager.rememberPassword(username, "", aResponse.refresh_token, document.getElementById("rememberPasswordCheckbox").checked);
-			var wizard = document.getElementById("addressbook-wizard");
-			wizard.canAdvance = true;
-			wizard.advance();
 		},
 
 		loadSearchName: function () {
@@ -1202,7 +1200,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, myAccount.type, myFile.path, myAccount.username, myAccount.color,
 																	myAccount.enabled, true, myAccount.vcard, false, myAccount.urnuuid,
 																	myAccount.DBcached, false, "0", true);
-						cardbookRepository.cardbookSynchronization.loadComplexSearchAccount(myAccount.dirPrefId, true, "WINDOW");
+						cardbookRepository.cardbookSynchronization.loadComplexSearchAccount(myAccount.dirPrefId, true);
 					} else  if (cardbookRepository.cardbookUtils.isMyAccountRemote(myAccount.type)) {
 						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, myAccount.type, myAccount.url, myAccount.username, myAccount.color,
 																	true, true, myAccount.vcard, myAccount.readonly, myAccount.urnuuid,
@@ -1218,7 +1216,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						cardbookRepository.cardbookSynchronization.initMultipleOperations(myAccount.dirPrefId);
 						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;
 						wdw_migrate.importCards(myAccount.sourceDirPrefId, myAccount.dirPrefId, myAccount.name, myAccount.vcard);
-						cardbookRepository.cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode, false, true);
+						cardbookRepository.cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, false, true);
 						// if the first proposed import of standard address books is finished OK
 						// then set CardBook as exclusive
 						if (myAccount.firstAction) {
@@ -1241,9 +1239,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							}
 							myFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
 						}
-						var myMode = "WINDOW";
-						cardbookRepository.cardbookSynchronization.loadFile(myFile, myAccount.dirPrefId, myAccount.dirPrefId, myMode, "NOIMPORTFILE", "");
-						cardbookRepository.cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode, false, true);
+						cardbookRepository.cardbookSynchronization.loadFile(myFile, myAccount.dirPrefId, myAccount.dirPrefId, "NOIMPORTFILE", "");
+						cardbookRepository.cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, false, true);
 					} else if (myAccount.type === "DIRECTORY") {
 						var myDir = myAccount.file;
 						if (myAccount.actionType === "CREATEDIRECTORY") {
@@ -1281,9 +1278,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 																	myAccount.DBcached, true, "60", true);
 						cardbookRepository.cardbookSynchronization.initMultipleOperations(myAccount.dirPrefId);
 						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;
-						var myMode = "WINDOW";
-						cardbookRepository.cardbookSynchronization.loadDir(myDir, myAccount.dirPrefId, myAccount.dirPrefId, myMode, "NOIMPORTDIR", "");
-						cardbookRepository.cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, myMode, false, true);
+						cardbookRepository.cardbookSynchronization.loadDir(myDir, myAccount.dirPrefId, myAccount.dirPrefId, "NOIMPORTDIR", "");
+						cardbookRepository.cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, false, true);
 					}
 					cardbookRepository.cardbookUtils.formatStringForOutput("addressbookCreated", [myAccount.name]);
 					cardbookActions.addActivity("addressbookCreated", [myAccount.name], "addItem");

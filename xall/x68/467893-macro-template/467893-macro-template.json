@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 85,
+    "average_daily_users": 91,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -22,26 +22,26 @@
     "contributions_url": null,
     "created": "2013-10-15T19:18:26Z",
     "current_version": {
-        "id": 2475173,
+        "id": 2475359,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/macro-template/versions/2475173",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/macro-template/versions/2475359",
         "files": [
             {
-                "id": 1018334,
-                "created": "2021-01-14T08:50:26Z",
-                "hash": "sha256:b41b002aca6bf3f3e83fb77b4fd2fff97e031766fa61a7e39a5646859d7e77eb",
+                "id": 1018520,
+                "created": "2021-02-16T11:28:44Z",
+                "hash": "sha256:e0d1ae0338be0668aeff387ba7e656cdfc3fbcacd424e32a7e5a4cb1c945ab92",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 13445,
+                "size": 14040,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018334/macro_template-3.0.0.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018520/macro_template-3.1.0.0-tb.xpi?src=",
                 "permissions": [
                     "compose"
                 ]
@@ -78,13 +78,13 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/macro-template/versions/3.0.0.1",
-        "version": "3.0.0.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/macro-template/versions/3.1.0.0",
+        "version": "3.1.0.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Macro Template is an Add-on to replace <em>Subject</em> fields and bodies of mail templates with the following macros:\nThank you for supporting Thunderbird 68 by <a rel=\"nofollow\" href=\"https://github.com/hiromiya-lndbl\">hiromiya-lndbl</a>.\n\n<ul><li><em>{{{y}}}</em> is replaced to the year without zero padding when you open the template.</li><li><em>{{{yyyy}}}</em> to the year with zero padding.</li><li><em>{{{M}}}</em> to the numerical month without zero padding.</li><li><em>{{{MM}}}</em> to the numerical month with zero padding.</li><li><em>{{{MMM}}}</em> to the 3-letter roman month name.</li><li><em>{{{MMMM}}}</em> to the roman month fullname.</li><li><em>{{{d}}}</em> to the day in month without zero padding.</li><li><em>{{{dd}}}</em> to the day in month with zero padding.</li><li><em>{{{E}}}</em> to the day fullname in week.</li><li><em>{{{EEE}}}</em> to the 3-letter day name in week.</li><li><em>{{{H}}}</em> to the hour (0 - 23) without zero padding.</li><li><em>{{{HH}}}</em> to the hour (0 - 23) with zero padding.</li><li><em>{{{m}}}</em> to the minute without zero padding.</li><li><em>{{{mm}}}</em> to the minute with zero padding.</li><li><em>{{{s}}}</em> to the second without zero padding.</li><li><em>{{{ss}}}</em> to the second with zero padding.</li></ul>",
-        "ja": "Macro Template は、日付用のマクロで、メールテンプレートの <em>件名 / 本文</em>を置換するアドオンです。\n<a rel=\"nofollow\" href=\"https://github.com/hiromiya-lndbl\">hiromiya-lndbl</a> 氏による Thunderbird 68 への対応に感謝します。\n\n<ul><li> <em>{{{y}}}</em> はテンプレートを開いた時の、ゼロ埋めをしない年に変換されます。 </li><li> <em>{{{yyyy}}}</em> はゼロ埋めをする年です。 </li><li> <em>{{{M}}}</em> はゼロ埋めをしない数字の月です。 </li><li> <em>{{{MM}}}</em> はゼロ埋めをする数字の月です。 </li><li> <em>{{{MMM}}}</em> は英語の月名で、3 文字に省略します。 </li><li> <em>{{{MMMM}}}</em> は英語の月名で、省略はしません。 </li><li> <em>{{{d}}}</em> はゼロ埋めをしない日です。 </li><li> <em>{{{dd}}}</em> はゼロ埋めをする日です。 </li><li> <em>{{{E}}}</em> は英語の曜日で、省略はしません。 </li><li> <em>{{{EEE}}}</em> は英語の曜日で、3 文字に省略します </li><li> <em>{{{H}}}</em> はゼロ埋めをしない時 (0 - 23) です。 </li><li> <em>{{{HH}}}</em> はゼロ埋めをする時 (0 - 23) です。 </li><li> <em>{{{m}}}</em> はゼロ埋めをしない分です。 </li><li> <em>{{{mm}}}</em> はゼロ埋めをする分です。 </li><li> <em>{{{s}}}</em> はゼロ埋めをしない秒です。 </li><li> <em>{{{ss}}}</em> はゼロ埋めをする秒です。 </li></ul>"
+        "en-US": "Macro Template is an Add-on to replace <em>Subject</em> fields and bodies of mail templates with the following macros:\nThank you for supporting Thunderbird 68 by <a rel=\"nofollow\" href=\"https://github.com/hiromiya-lndbl\">hiromiya-lndbl</a>.\nThank you for adding macros by <a rel=\"nofollow\" href=\"https://github.com/wl2776\">wl2776</a>.\n\n<ul><li><em>{{{y}}}</em> is replaced to the year without zero padding when you open the template.</li><li><em>{{{yyyy}}}</em> to the year with zero padding.</li><li><em>{{{M}}}</em> to the numerical month without zero padding.</li><li><em>{{{MM}}}</em> to the numerical month with zero padding.</li><li><em>{{{MMM}}}</em> to the 3-letter roman month name.</li><li><em>{{{MMMM}}}</em> to the roman month fullname.</li><li><em>{{{d}}}</em> to the day in month without zero padding.</li><li><em>{{{dd}}}</em> to the day in month with zero padding.</li><li><em>{{{E}}}</em> to the day fullname in week.</li><li><em>{{{EEE}}}</em> to the 3-letter day name in week.</li><li><em>{{{H}}}</em> to the hour (0 - 23) without zero padding.</li><li><em>{{{HH}}}</em> to the hour (0 - 23) with zero padding.</li><li><em>{{{m}}}</em> to the minute without zero padding.</li><li><em>{{{mm}}}</em> to the minute with zero padding.</li><li><em>{{{s}}}</em> to the second without zero padding.</li><li><em>{{{ss}}}</em> to the second with zero padding.</li><li><em>{{{w}}}</em> to the week (1-53) of the year.</li><li><em>{{{w1}}}</em> to the date of Monday of the week.</li><li><em>{{{w5}}}</em> to the date of Friday of the week.</li></ul>",
+        "ja": "Macro Template は、日付用のマクロで、メールテンプレートの <em>件名 / 本文</em>を置換するアドオンです。\n<a rel=\"nofollow\" href=\"https://github.com/hiromiya-lndbl\">hiromiya-lndbl</a> 氏による Thunderbird 68 への対応に感謝します。\n<a rel=\"nofollow\" href=\"https://github.com/wl2776\">wl2776</a> 氏によるマクロの追加に感謝します。\n\n<ul><li> <em>{{{y}}}</em> はテンプレートを開いた時の、ゼロ埋めをしない年に変換されます。 </li><li> <em>{{{yyyy}}}</em> はゼロ埋めをする年です。 </li><li> <em>{{{M}}}</em> はゼロ埋めをしない数字の月です。 </li><li> <em>{{{MM}}}</em> はゼロ埋めをする数字の月です。 </li><li> <em>{{{MMM}}}</em> は英語の月名で、3 文字に省略します。 </li><li> <em>{{{MMMM}}}</em> は英語の月名で、省略はしません。 </li><li> <em>{{{d}}}</em> はゼロ埋めをしない日です。 </li><li> <em>{{{dd}}}</em> はゼロ埋めをする日です。 </li><li> <em>{{{E}}}</em> は英語の曜日で、省略はしません。 </li><li> <em>{{{EEE}}}</em> は英語の曜日で、3 文字に省略します </li><li> <em>{{{H}}}</em> はゼロ埋めをしない時 (0 - 23) です。 </li><li> <em>{{{HH}}}</em> はゼロ埋めをする時 (0 - 23) です。 </li><li> <em>{{{m}}}</em> はゼロ埋めをしない分です。 </li><li> <em>{{{mm}}}</em> はゼロ埋めをする分です。 </li><li> <em>{{{s}}}</em> はゼロ埋めをしない秒です。 </li><li> <em>{{{ss}}}</em> はゼロ埋めをする秒です。 </li><li><em>{{{w}}}</em> は現在の年の週 (1-53) です。</li><li><em>{{{w1}}}</em> は週の月曜日の日付です。</li><li><em>{{{w5}}}</em> は週の金曜日の日付です。</li></ul>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/macro-template/edit",
@@ -93,7 +93,7 @@
     "has_privacy_policy": false,
     "homepage": {
         "en-US": "https://github.com/nattoheaven/macrotemplate",
-        "ja": ""
+        "ja": "https://github.com/nattoheaven/macrotemplate"
     },
     "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
     "icons": {
@@ -104,7 +104,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-14T08:55:02Z",
+    "last_updated": "2021-02-16T11:30:03Z",
     "name": {
         "en-US": "Macro Template",
         "ja": "Macro Template"
@@ -127,10 +127,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.54053,
-        "count": 3,
+        "bayesian_average": 4.64646,
+        "count": 4,
         "average": 5,
-        "text_count": 3
+        "text_count": 4
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/macro-template/reviews/",
     "requires_payment": false,

@@ -42,9 +42,9 @@ var BrowseInTabOptions = {
     this.tabButtonZoom = this.e("tabButtonZoom");
     this.customZoomEnabled = this.e("customZoomEnabled");
     this.customZoomFieldset = this.e("customZoomFieldset");
+    this.globalZoomFactor = this.e("globalZoomFactor");
     this.zoomIncrement = this.e("zoomIncrement");
-    this.chromeZoomFactor = this.e("chromeZoomFactor");
-    this.globalZoomEnabled = this.e("globalZoomEnabled");
+    this.perTabZoomDisabled = this.e("perTabZoomDisabled");
     this.imageZoomEnabled = this.e("imageZoomEnabled");
     this.mousebuttonZoomEnabled = this.e("mousebuttonZoomEnabled");
     this.mousebuttonZoomOptionsFieldset = this.e("mousebuttonZoomOptionsFieldset");
@@ -302,20 +302,20 @@ var BrowseInTabOptions = {
         };
         this.updateElements(this.customZoomFieldset, this.customZoomEnabled.checked);
         break;
+      case "globalZoomFactor":
+        storageLocalData = {
+          globalZoomFactor: Number(this.globalZoomFactor.value)
+        };
+        break;
       case "zoomIncrement":
         storageLocalData = {
           zoomIncrement: Number(this.zoomIncrement.value)
         };
-        //this.chromeZoomFactor.step = storageLocalData.zoomIncrement;
+        //this.globalZoomFactor.step = storageLocalData.zoomIncrement;
         break;
-      case "chromeZoomFactor":
+      case "perTabZoomDisabled":
         storageLocalData = {
-          chromeZoomFactor: Number(this.chromeZoomFactor.value)
-        };
-        break;
-      case "globalZoomEnabled":
-        storageLocalData = {
-          globalZoomEnabled: this.globalZoomEnabled.checked
+          perTabZoomDisabled: this.perTabZoomDisabled.checked
         };
         break;
       case "imageZoomEnabled":
@@ -372,11 +372,11 @@ var BrowseInTabOptions = {
       this.urlToolbarRadioForm.elements.showUrlToolbar.value =
         result?.showUrlToolbar ?? this.kShowUrlToolbarWebPage;
       this.customZoomEnabled.checked = result?.customZoomEnabled ?? false;
+      this.globalZoomFactor.value = result?.globalZoomFactor ?? 100;
+      //this.globalZoomFactor.step = this.zoomIncrement.value;
       this.zoomIncrement.value =
         result?.zoomIncrement ?? this.zoomIncrementDefault;
-      this.chromeZoomFactor.value = result?.chromeZoomFactor ?? 100;
-      //this.chromeZoomFactor.step = this.zoomIncrement.value;
-      this.globalZoomEnabled.checked = result?.globalZoomEnabled ?? false;
+      this.perTabZoomDisabled.checked = result?.perTabZoomDisabled ?? false;
       this.imageZoomEnabled.checked = result?.imageZoomEnabled ?? false;
       this.mousebuttonZoomEnabled.checked =
         result?.mousebuttonZoomEnabled ?? false;
@@ -419,9 +419,9 @@ var BrowseInTabOptions = {
       "showMailToolbar",
       "showUrlToolbar",
       "customZoomEnabled",
+      "globalZoomFactor",
       "zoomIncrement",
-      "chromeZoomFactor",
-      "globalZoomEnabled",
+      "perTabZoomDisabled",
       "imageZoomEnabled",
       "mousebuttonZoomEnabled",
       "mousebuttonZoomImageOnlyEnabled",

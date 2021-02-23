@@ -125,7 +125,7 @@ class HTMLPageEditor {
         // recursive function
         try {
             for (let xNode of xRootNode.childNodes) {
-                if (xNode.className !== "moz-cite-prefix" && xNode.className !== "moz-forward-container"
+                if (xNode.className !== "moz-cite-prefix" && xNode.className !== "moz-forward-container" && xNode.className !== "moz-signature"
                     && ! (bThunderbird && xNode.tagName == "BLOCKQUOTE" && xNode.cite)
                     && ( xNode.nodeType == Node.TEXT_NODE || (xNode.nodeType == Node.ELEMENT_NODE && !xNode.textContent.startsWith(">")) )
                     && xNode.textContent !== "") {
@@ -189,7 +189,7 @@ class HTMLPageEditor {
                 }
                 //console.log("[Grammalecte debug] Text sent to xWhat via event:", xEvent.detail);
             }
-            else if (iParagraph < this.lNode.length) {
+            else if (iParagraph < this.lNode.length  &&  this.lNode[iParagraph].textContent != oGrammalecteTextEditor.getParagraph(iParagraph)) {
                 this.lNode[iParagraph].textContent = oGrammalecteTextEditor.getParagraph(iParagraph);
             }
         }
@@ -199,6 +199,7 @@ class HTMLPageEditor {
     }
 
     loadText (sText) {
+        // function also used by the text formatter
         oGrammalecteTextEditor.loadText(sText);
         this.write();
     }
@@ -209,7 +210,7 @@ class HTMLPageEditor {
         }
         for (let [i, sParagraph] of oGrammalecteTextEditor.getParagraphs()) {
             if (i < this.lNode.length) {
-                this.lNode[iParagraph].textContent = sParagraph;
+                this.lNode[i].textContent = sParagraph;
             }
         }
     }

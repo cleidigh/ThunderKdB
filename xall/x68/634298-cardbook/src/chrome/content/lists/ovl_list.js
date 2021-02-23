@@ -3,13 +3,11 @@ var { MimeParser } = ChromeUtils.import("resource:///modules/mimeParser.jsm");
 
 var ovl_list = {
 	expandRecipientsFromCardBook: function () {
-		var myFields = window.gMsgCompose.compFields;
+		let myFields = window.gMsgCompose.compFields;
 		for (let field of ["to", "cc", "bcc"]) {
 			if (myFields[field]) {
-				if (myFields[field]) {
-					var myConversion = new cardbookListConversion(myFields[field], window.gMsgCompose.identity.key);
-					myFields[field] = cardbookRepository.arrayUnique(myConversion.emailResult).join(", ");
-				}
+				var myConversion = new cardbookListConversion(myFields[field], window.gMsgCompose.identity.key);
+				myFields[field] = cardbookRepository.arrayUnique(myConversion.emailResult).join(", ");
 			}
 		}
 	},

@@ -23,18 +23,18 @@ if ("undefined" == typeof(wdw_cardbookAskUser)) {
 	var wdw_cardbookAskUser = {
 		load: function () {
 			myAskUserObserver.register();
-			document.title = cardbookRepository.extension.localeData.localizeMessage("askUserTitle");
+			document.title = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].type + "AskUserTitle");
 			document.getElementById('messageLabel').value = window.arguments[0].message;
-			document.getElementById('askUserButton1').label = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].button1 + "AskUserLabel");
-			document.getElementById('askUserButton2').label = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].button2 + "AskUserLabel");
+			document.getElementById('askUserButton1').label = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].type + window.arguments[0].button1 + "AskUserLabel");
+			document.getElementById('askUserButton2').label = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].type + window.arguments[0].button2 + "AskUserLabel");
 			if (window.arguments[0].button3) {
-				document.getElementById('askUserButton3').label = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].button3 + "AskUserLabel");
+				document.getElementById('askUserButton3').label = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].type + window.arguments[0].button3 + "AskUserLabel");
 				document.getElementById('askUserButton3').hidden = false;
 			} else {
 				document.getElementById('askUserButton3').hidden = true;
 			}
 			if (window.arguments[0].button4) {
-				document.getElementById('askUserButton4').label = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].button4 + "AskUserLabel");
+				document.getElementById('askUserButton4').label = cardbookRepository.extension.localeData.localizeMessage(window.arguments[0].type + window.arguments[0].button4 + "AskUserLabel");
 				document.getElementById('askUserButton4').hidden = false;
 			} else {
 				document.getElementById('askUserButton4').hidden = true;

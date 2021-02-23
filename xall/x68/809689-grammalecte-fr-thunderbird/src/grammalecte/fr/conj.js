@@ -121,7 +121,7 @@ var conj = {
 
     _dGroup: new Map ([ ["0", "auxiliaire"], ["1", "1ᵉʳ groupe"], ["2", "2ᵉ groupe"], ["3", "3ᵉ groupe"] ]),
 
-    _dTenseIdx: new Map ([ [":PQ", 0], [":Ip", 1], [":Iq", 2], [":Is", 3], [":If", 4], [":K", 5], [":Sp", 6], [":Sq", 7], [":E", 8] ]),
+    _dTenseIdx: new Map ([ [":P", 0], [":Q", 1], [":Ip", 2], [":Iq", 3], [":Is", 4], [":If", 5], [":K", 6], [":Sp", 7], [":Sq", 8], [":E", 9] ]),
 
     isVerb: function (sVerb) {
         return this._dVerb.hasOwnProperty(sVerb);
@@ -131,6 +131,9 @@ var conj = {
         // returns conjugation (can be an empty string)
         if (!this._dVerb.hasOwnProperty(sVerb)) {
             return null;
+        }
+        if (sTense == ":Y") {
+            return sVerb;
         }
         if (!this._dPatternConj[sTense][this._lTags[this._dVerb[sVerb][1]][this._dTenseIdx.get(sTense)]].hasOwnProperty(sWho)) {
             return "";
@@ -142,6 +145,9 @@ var conj = {
         // returns false if no conjugation (also if empty) else true
         if (!this._dVerb.hasOwnProperty(sVerb)) {
             return false;
+        }
+        if (sTense == ":Y") {
+            return true;
         }
         if (this._dPatternConj[sTense][this._lTags[this._dVerb[sVerb][1]][this._dTenseIdx.get(sTense)]].hasOwnProperty(sWho)
                 && this._dPatternConj[sTense][this._lTags[this._dVerb[sVerb][1]][this._dTenseIdx.get(sTense)]][sWho]) {
@@ -158,58 +164,30 @@ var conj = {
         return this._lVtyp[this._dVerb[sVerb][0]];
     },
 
-    getSimil: function (sWord, sMorph, bSubst=false) {
-        if (!sMorph.includes(":V")) {
-            return new Set();
-        }
-        let sInfi = sMorph.slice(1, sMorph.indexOf("/"));
-        let aSugg = new Set();
-        let tTags = this._getTags(sInfi);
-        if (tTags) {
-            if (!bSubst) {
-                // we suggest conjugated forms
-                if (sMorph.includes(":V1")) {
-                    aSugg.add(sInfi);
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Ip", ":3s"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Ip", ":2p"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Iq", ":1s"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Iq", ":3s"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Iq", ":3p"));
-                } else if (sMorph.includes(":V2")) {
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Ip", ":1s"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Ip", ":3s"));
-                } else if (sMorph.includes(":V3")) {
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Ip", ":1s"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Ip", ":3s"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Is", ":1s"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":Is", ":3s"));
-                } else if (sMorph.includes(":V0a")) {
-                    aSugg.add("eus");
-                    aSugg.add("eut");
-                } else {
-                    aSugg.add("étais");
-                    aSugg.add("était");
+    getNamesFrom: function (sVerb) {
+        // returns a list of names derivating from <sVerb>
+        if (this._dVerbNames.hasOwnProperty(sVerb)) {
+            // there are names derivated from the verb
+            return this._dVerbNames[sVerb];
+        } else {
+            // we suggest past participles
+            let tTags = this._getTags(sVerb);
+            if (tTags) {
+                let aSugg = [ this._getConjWithTags(sVerb, tTags, ":Q", ":m:s") ];
+                if (this._hasConjWithTags(tTags, ":Q", ":f:s")) {
+                    aSugg.push(this._getConjWithTags(sVerb, tTags, ":Q", ":f:s"));
                 }
-                aSugg.delete("");
-            } else {
-                if (this._dVerbNames.hasOwnProperty(sInfi)) {
-                    // there are names derivated from the verb
-                    aSugg.gl_update(this._dVerbNames[sInfi]);
-                } else {
-                    // we suggest past participles
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":PQ", ":Q1"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":PQ", ":Q2"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":PQ", ":Q3"));
-                    aSugg.add(this._getConjWithTags(sInfi, tTags, ":PQ", ":Q4"));
-                    aSugg.delete("");
-                    // if there is only one past participle (epi inv), unreliable.
-                    if (aSugg.size === 1) {
-                        aSugg.clear();
-                    }
+                if (this._hasConjWithTags(tTags, ":Q", ":m:p")) {
+                    aSugg.push(this._getConjWithTags(sVerb, tTags, ":Q", ":m:p"));
                 }
+                if (this._hasConjWithTags(tTags, ":Q", ":f:p")) {
+                    aSugg.push(this._getConjWithTags(sVerb, tTags, ":Q", ":f:p"));
+                }
+                // if there is only one past participle (epi inv), unreliable.
+                return (aSugg.length > 1) ? aSugg : [];
             }
+            return [];
         }
-        return aSugg;
     },
 
     _getTags: function (sVerb) {
@@ -222,6 +200,9 @@ var conj = {
 
     _getConjWithTags: function (sVerb, tTags, sTense, sWho) {
         // returns conjugation (can be an empty string)
+        if (sTense == ":Y") {
+            return sVerb;
+        }
         if (!this._dPatternConj[sTense][tTags[this._dTenseIdx.get(sTense)]].hasOwnProperty(sWho)) {
             return "";
         }
@@ -230,6 +211,9 @@ var conj = {
 
     _hasConjWithTags: function (tTags, sTense, sWho) {
         // returns false if no conjugation (also if empty) else true
+        if (sTense == ":Y") {
+            return true;
+        }
         if (this._dPatternConj[sTense][tTags[this._dTenseIdx.get(sTense)]].hasOwnProperty(sWho)
                 && this._dPatternConj[sTense][tTags[this._dTenseIdx.get(sTense)]][sWho]) {
             return true;
@@ -299,18 +283,18 @@ class Verb {
         this.dConj = new Map ([
             [":Y", new Map ([
                 ["label", "Infinitif"],
-                [":", sVerb]
+                [":Y", sVerb]
             ])],
             [":P", new Map ([
                 ["label", "Participe présent"],
-                [":", conj._getConjWithTags(sVerb, this._tTags, ":PQ", ":P")]
+                [":P", conj._getConjWithTags(sVerb, this._tTags, ":P", ":P")]
             ])],
             [":Q", new Map ([
                 ["label", "Participes passés"],
-                [":Q1", conj._getConjWithTags(sVerb, this._tTags, ":PQ", ":Q1")],
-                [":Q2", conj._getConjWithTags(sVerb, this._tTags, ":PQ", ":Q2")],
-                [":Q3", conj._getConjWithTags(sVerb, this._tTags, ":PQ", ":Q3")],
-                [":Q4", conj._getConjWithTags(sVerb, this._tTags, ":PQ", ":Q4")],
+                [":m:s", conj._getConjWithTags(sVerb, this._tTags, ":Q", ":m:s")],
+                [":f:s", conj._getConjWithTags(sVerb, this._tTags, ":Q", ":f:s")],
+                [":m:p", conj._getConjWithTags(sVerb, this._tTags, ":Q", ":m:p")],
+                [":f:p", conj._getConjWithTags(sVerb, this._tTags, ":Q", ":f:p")],
             ])],
             [":Ip", new Map ([
                 ["label", "Présent"],
@@ -446,14 +430,14 @@ class Verb {
     }
 
     participePresent (bPro, bNeg, bTpsCo, bInt, bFem) {
-        if (!this.dConj.get(":P").get(":")) {
+        if (!this.dConj.get(":P").get(":P")) {
             return "";
         }
         let sPartPre;
         if (bTpsCo) {
-            sPartPre = (!bPro) ? conj._getConjWithTags(this.sVerbAux, this._tTagsAux, ":PQ", ":P") : conj.getConj("être", ":PQ", ":P");
+            sPartPre = (!bPro) ? conj._getConjWithTags(this.sVerbAux, this._tTagsAux, ":P", ":P") : conj.getConj("être", ":P", ":P");
         } else {
-            sPartPre = this.dConj.get(":P").get(":");
+            sPartPre = this.dConj.get(":P").get(":P");
         }
         if (sPartPre === "") {
             return "";
@@ -577,15 +561,15 @@ class Verb {
 
     _seekPpas (bPro, bFem, bPlur) {
         if (!bPro && this.sVerbAux == "avoir") {
-            return this.dConj.get(":Q").get(":Q1");
+            return this.dConj.get(":Q").get(":m:s");
         }
         if (!bFem) {
-            return (bPlur && this.dConj.get(":Q").get(":Q2")) ? this.dConj.get(":Q").get(":Q2") : this.dConj.get(":Q").get(":Q1");
+            return (bPlur && this.dConj.get(":Q").get(":f:s")) ? this.dConj.get(":Q").get(":f:s") : this.dConj.get(":Q").get(":m:s");
         }
         if (!bPlur) {
-            return (this.dConj.get(":Q").get(":Q3")) ? this.dConj.get(":Q").get(":Q3") : this.dConj.get(":Q").get(":Q1");
+            return (this.dConj.get(":Q").get(":m:p")) ? this.dConj.get(":Q").get(":m:p") : this.dConj.get(":Q").get(":m:s");
         }
-        return (this.dConj.get(":Q").get(":Q4")) ? this.dConj.get(":Q").get(":Q4") : this.dConj.get(":Q").get(":Q1");
+        return (this.dConj.get(":Q").get(":f:p")) ? this.dConj.get(":Q").get(":f:p") : this.dConj.get(":Q").get(":m:s");
     }
 
     createConjTable (bPro=false, bNeg=false, bTpsCo=false, bInt=false, bFem=false) {
@@ -595,10 +579,10 @@ class Verb {
             "t_ppre":   "Participe présent",
             "ppre":     this.participePresent(bPro, bNeg, bTpsCo, bInt, bFem),
             "t_ppas":   "Participes passés",
-            "ppas1":    this.participePasse(":Q1"),
-            "ppas2":    this.participePasse(":Q2"),
-            "ppas3":    this.participePasse(":Q3"),
-            "ppas4":    this.participePasse(":Q4"),
+            "ppas1":    this.participePasse(":m:s"),
+            "ppas2":    this.participePasse(":f:s"),
+            "ppas3":    this.participePasse(":m:p"),
+            "ppas4":    this.participePasse(":f:p"),
             "t_imp":    "Impératif",
             "t_impe":   (bInt) ? "" : ((!bTpsCo) ? "Présent" : "Passé"),
             "impe1":    (!bInt) ? this.imperatif(":2s", bPro, bNeg, bTpsCo, bFem) : "",
@@ -707,7 +691,7 @@ if (typeof(exports) !== 'undefined') {
     exports.getConj = conj.getConj;
     exports.hasConj = conj.hasConj;
     exports.getVtyp = conj.getVtyp;
-    exports.getSimil = conj.getSimil;
+    exports.getNamesFrom = conj.getNamesFrom;
     exports._getTags = conj._getTags;
     exports._getConjWithTags = conj._getConjWithTags;
     exports._hasConjWithTags = conj._hasConjWithTags;

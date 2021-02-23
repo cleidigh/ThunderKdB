@@ -7,153 +7,444 @@
 <base target="_top"/> 
 <link rel="manifest" href="/manifest.json"/>
 <style>
-    body {
-        background-color:Gray;
-    }
     #boxOne {
-        border: 4px solid red;
+        border-top: 1px solid navy;
+        border-left: 1px solid navy;
+        border-right: 1px solid navy;
+        padding: 5px; 
+        width: 272px;
     }
     #boxTwo {
-        border: 4px solid yellow;
+        border-top: 1px solid navy;
+        border-left: 1px solid navy;
+        border-right: 1px solid navy;
+        padding: 5px; 
+        width: 272px;
     }
-    #formOne {
+    #boxThree {
+        border-top: 1px solid navy;
+        border-bottom: 1px solid navy;
+        border-left: 1px solid navy;
+        border-right: 1px solid navy;
+        padding: 5px; 
+        width: 272px;
+    }
+    #divOne {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divOne:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divOne:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #divTwo {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divTwo:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divTwo:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #divThree {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divThree:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divThree:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #divFour {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divFour:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divFour:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #divFive {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divFive:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divFive:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #divSix {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divSix:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divSix:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #divSeven {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divSeven:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divSeven:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #divEight {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divEight:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divEight:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #divNine {
+        background-color:white;
+        color:navy;
+        border: 1px solid navy;
+        width: 250px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divNine:active {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    #divNine:hover {
+        background-color:white;
+        color: red;
+        border: 1px solid red;
+        font-size: 13px;
+        font-weight: bold;
+}
+    #spaceOne {
         background-color:white;
         color:black;
-        width: 300px;
+        width: 270px;
         text-align: center;
-        font: 13px bold sans-serif;
-        padding: 10px; 
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
         top: 0;
         left: 0;
         right: 0;
     }
-    #formOne:active {
-        background-color:DodgerBlue;
-        color: white;
-        font: 13px bold sans-serif;
-    }
-    #formOne:hover {
-        background-color:DodgerBlue;
-        color: white;
-        font: 13px bold sans-serif;
-}
-    #formTwo {
-        background-color:black;
-        color:white;
-        width: 300px;
-        text-align: center;
-        font: 13px bold sans-serif;
-        padding: 10px; 
-        top: 0;
-        left: 0;
-        right: 0;
-    }
-    #formTwo:active {
-        background-color:FireBrick;
-        color: white;
-        font: 13px bold sans-serif;
-    }
-    #formTwo:hover {
-        background-color:FireBrick;
-        color: white;
-        font: 13px bold sans-serif;
-}
-    #formThree {
-        background-color:LightBlue;
+    #spaceTwo {
+        background-color:white;
         color:black;
-        width: 300px;
+        width: 270px;
         text-align: center;
-        font: 13px bold sans-serif;
-        padding: 10px; 
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
         top: 0;
         left: 0;
         right: 0;
     }
-    #formThree:active {
-        background-color:navy;
-        color: white;
-        font: 13px bold sans-serif;
-    }
-    #formThree:hover {
-        background-color:navy;
-        color: white;
-        font: 13px bold sans-serif;
-}
-    #formFour {
-        background-color:LightGreen;
+    #spaceThree {
+        background-color:white;
         color:black;
-        width: 300px;
+        width: 270px;
         text-align: center;
-        font: 13px bold sans-serif;
-        padding: 10px; 
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
         top: 0;
         left: 0;
         right: 0;
     }
-    #formFour:active {
-        background-color:Green;
-        color: white;
-        font: 13px bold sans-serif;
-    }
-    #formFour:hover {
-        background-color:Green;
-        color: white;
-        font: 13px bold sans-serif;
-}
-    #formFive {
-        background-color:Gold;
+    #spaceFour {
+        background-color:white;
         color:black;
-        width: 300px;
+        width: 270px;
         text-align: center;
-        font: 13px bold sans-serif;
-        padding: 10px; 
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
         top: 0;
         left: 0;
         right: 0;
     }
-    #formFive:active {
-        background-color:Orange;
-        color: white;
-        font: 13px bold sans-serif;
-    }
-    #formFive:hover {
-        background-color:Orange;
-        color: white;
-        font: 13px bold sans-serif;
-}
-    #formSix {
-        background-color:pink;
+    #spaceFive {
+        background-color:white;
         color:black;
-        width: 300px;
+        width: 270px;
         text-align: center;
-        font: 13px bold sans-serif;
-        padding: 10px; 
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
         top: 0;
         left: 0;
         right: 0;
     }
-    #formSix:active {
-        background-color:red;
-        color: white;
-        font: 13px bold sans-serif;
+    #spaceSix {
+        background-color:white;
+        color:black;
+        width: 270px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
+        top: 0;
+        left: 0;
+        right: 0;
     }
-    #formSix:hover {
-        background-color:red;
-        color: white;
-        font: 13px bold sans-serif;
-}
+    #spaceOneOne {
+        background-color:white;
+        color:black;
+        width: 270px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #spaceThreeOne {
+        background-color:white;
+        color:black;
+        width: 270px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #spaceThreeTwo {
+        background-color:white;
+        color:black;
+        width: 270px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #spaceThreeThree {
+        background-color:white;
+        color:black;
+        width: 270px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #spaceFiveOne {
+        background-color:white;
+        color:black;
+        width: 270px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #spaceFiveTwo {
+        background-color:white;
+        color:black;
+        width: 270px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 2px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
 </style>
 </head>
 <body>
 <div id="boxOne">
-<form id="formOne">FrameWhite</form>
-<form id="formTwo">FrameBlack</form>
+<div id="spaceOne"></div>
+<div id="divOne">FrameWhite</div>
+<div id="spaceOneOne"></div>
+<div id="divTwo">FrameBlack</div>
+<div id="spaceTwo"></div>
 </div>
 <div id="boxTwo">
-<form id="formThree">LightBlue</form>
-<form id="formFour">LightGreen</form>
-<form id="formFive">LightYellow</form>
-<form id="formSix">LightRed</form>
+<div id="spaceThree"></div>
+<div id="divThree">LightBlue</div>
+<div id="spaceThreeOne"></div>
+<div id="divFour">LightGreen</div>
+<div id="spaceThreeTwo"></div>
+<div id="divFive">LightYellow</div>
+<div id="spaceThreeThree"></div>
+<div id="divSix">LightRed</div>
+<div id="spaceFour"></div>
+</div>
+<div id="boxThree">
+<div id="spaceFive"></div>
+<div id="divSeven">Blue&Yellow</div>
+<div id="spaceFiveOne"></div>
+<div id="divEight">Green&Yellow</div>
+<div id="spaceFiveTwo"></div>
+<div id="divNine">Red&Yellow</div>
+<div id="spaceSix"></div>
 </div>
 <script language="javascript" src="code.js"></script>
 </body>

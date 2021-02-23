@@ -298,7 +298,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 
 		addRowFromArray: function (aListOfCards, aField) {
 			for (let i = 0; i < aListOfCards.length; i++) {
-				if (aListOfCards[i][aField].length != 0) {
+				if (aListOfCards[i][aField]) {
 					return true;
 				}
 			}

@@ -352,8 +352,15 @@ org_mozdev_AutoSlide.slider = function() {
     var setHeight;
 
     var oldHeight = treeBox.height - document.getElementById("threadCols").getBoundingClientRect().height - 1;
-    var displayDeck = document.getElementById("displayDeck");
-    var oldDisplayDeckHeight = displayDeck.getBoundingClientRect().height;
+
+
+    var threadBox = document.getElementById("displayDeck");
+
+    if (!threadBox) {
+      threadBox = document.getElementById("displayBox");
+    }
+
+    var oldthreadBoxHeight = threadBox.getBoundingClientRect().height;
     debugLog("treeBox: " + treeBox);
     debugLog("tree.getPageLength(): " + tree.getPageLength());
     debugLog("minHeightPercent: " + minHeightPercent);
@@ -389,7 +396,7 @@ org_mozdev_AutoSlide.slider = function() {
     debugLog("new delta: "+deltaHeight);
 
 
-    var anotherDelta = oldDisplayDeckHeight + deltaHeight - displayDeck.getAttribute("minheight");
+    var anotherDelta = oldthreadBoxHeight + deltaHeight - threadBox.getAttribute("minheight");
     if (anotherDelta < 0) {
       deltaHeight = deltaHeight - anotherDelta;
     }
@@ -398,7 +405,7 @@ org_mozdev_AutoSlide.slider = function() {
     debugLog("old: "+oldHeight + " new: "+newHeight);
 
     messagePaneBox.setAttribute("height", newHeight);
-    displayDeck.setAttribute("height", displayDeck.getBoundingClientRect().height);
+    threadBox.setAttribute("height", threadBox.getBoundingClientRect().height);
 
     messagePaneBox.setAttribute("flex", "1");
     var messagePaneHBox = document.getElementById("messagepanehbox")

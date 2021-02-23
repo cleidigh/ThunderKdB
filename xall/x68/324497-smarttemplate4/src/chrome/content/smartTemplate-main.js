@@ -493,9 +493,38 @@ END LICENSE BLOCK
     # Improved Scrolling behavior if %cursor% is used.
     # Fixed: Resolve Names from AB / Remove email address - this happened even when a "mail" or "bracketMail" parameter is specified
     
-  Version 3.4 - WIP
+  Version 3.3.1 - 04/01/2020
     # [issue 110] Maximize "Account" selector dropdown
     # [issue 112] Tb78: current mail account is not preselected - this worked in Thunderbird 68
+    
+  Version 3.4.1 - 05/02/2021
+    # [issue 91] Improve functions %deleteQuotedText% and %replaceQuotedText% so they can  be used
+                 in plain text mode (quote level argument will be ignored)
+    # [issue 115] Erratic %datetime()% results when forcing HTML with Shift
+    # [issue 71] Added support for setting non-standard header attributes starting with "List" e.g. List-Unsubscribe
+    # Improved / fixed warning messages for users with expired licenses 
+    # [issue 82] Added a notice about soon-to-expire license in the status bar
+    # [issue 117] %header.set(from,"some@address.com")% not working in Thunderbird 78
+    # Added examples in variables window for %header.delete(subject)% and %header.set(from)% in 
+      (Modify Mail Header) section
+    # with option "Remove email address unless format parameter is specified", mail parts such as 
+      %from(...,mail)%, %from(...,bracketMail())% were removed
+   
+  Version 3.4.2 - 06/02/2020 
+    # [issue 119] XML Parsing Error settings dialog (it / sv / uk locales)
+    # Broken entities in the translations for Italian, Ukrainian and Swedish locale lead to the settings dialog not loading
+    # this is caused by google translate injecting double quotes into the strings where it shouldn't have.
+    
+  Version 3.4.3 - 08/02/2020 
+    # Open the license tab when status icon is clicked with expired license to make renewal easier.
+    
+  Version 3.4.4 - 
+    # [issue 120] Spanish locale broken which creates an error when options screen is displayed
+    
+
+  Version 3.5 - WIP
+    #
+
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS
@@ -973,7 +1002,8 @@ var SmartTemplate4 = {
 	
 	updateStatusBar: function updateStatusBar(show) {
 		const prefs = SmartTemplate4.Preferences,
-		      util = SmartTemplate4.Util;
+		      util = SmartTemplate4.Util,
+          licenser = SmartTemplate4.Licenser;
 		try {
 			util.logDebug('SmartTemplate4.updateStatusBar(' + show +')');
 			let isDefault = (typeof show == 'undefined' || show == 'default'),
@@ -981,22 +1011,48 @@ var SmartTemplate4 = {
 			    doc = isDefault ? document : util.Mail3PaneWindow.document,
 			    btn = doc.getElementById('SmartTemplate4Messenger');
 			if (btn) {
-				btn.collapsed =  !isVisible;
-				let labelMode = prefs.getMyIntPref('statusIconLabelMode'),
-				    theClass = 'statusbarpanel-iconic-text';
+				let labelMode = prefs.getMyIntPref('statusIconLabelMode');
+        btn.classList.remove(...btn.classList); // clear classlist array
+        btn.classList.add('statusbarpanel-iconic-text');
+        if (licenser.LicenseKey) {
+          let days = licenser.LicensedDaysLeft,
+              wrn = null;
+          if (licenser.isExpired)  {
+            wrn = "SmartTemplates License has expired {0} days ago.".replace("{0}", -days);
+            btn.classList.add("alertExpired");
+          }
+          else if (days<15) {
+            wrn = "SmartTemplates License will expire in {0} days!".replace("{0}", days);
+            btn.classList.add("alert");
+          }
+          if (wrn) {
+            btn.label = wrn;
+            isVisible = true;
+            labelMode = 2;
+          }
+          else {
+            if (licenser.key_type==2)
+              btn.label = "SmartTemplates";
+            else
+              btn.label = "SmartTemplates Pro";
+          }
+        }
+        else
+          btn.label = "SmartTemplates";
+				btn.collapsed = !isVisible;
+        
 				switch(labelMode) {
 					case 0:
-						theClass +=' hidden';
+						btn.classList.add('hidden');
 						break;
 					case 1:
 						//NOP;
 						break;
 					case 2:
-						theClass +=' always';
+						btn.classList.add('always');
 						break;
 				}
-				btn.className = theClass;
-				util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + theClass + ' , collapsed = ' + btn.collapsed);		
+				util.logDebugOptional('functions','SmartTemplate4Messenger btn.className = ' + btn.className + ' , collapsed = ' + btn.collapsed);		
 			}
 			else
 				util.logDebugOptional('functions','SmartTemplate4.updateStatusBar() - button SmartTemplate4Messenger not found in ' + doc);

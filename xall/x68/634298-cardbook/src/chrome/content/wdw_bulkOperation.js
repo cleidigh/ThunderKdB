@@ -13,8 +13,8 @@ if ("undefined" == typeof(wdw_logEdition)) {
 			lTimerBulkOperation.initWithCallback({ notify: function(lTimerBulkOperation) {
 						var close = true;
 						for (var dirPrefId in cardbookRepository.lTimerDirAll) {
-							var total = cardbookRepository.cardbookServerSyncTotal[dirPrefId];
-							var done = cardbookRepository.cardbookServerSyncDone[dirPrefId];
+							var total = cardbookRepository.cardbookServerCardSyncTotal[dirPrefId];
+							var done = cardbookRepository.cardbookServerCardSyncDone[dirPrefId];
 							if (total !=0 && done !=0) {
 								if (!(document.getElementById("bulkProgressmeter_" + dirPrefId))) {
 									var currentRow = cardbookElementTools.addGridRow(document.getElementById("bulkOperationRows"), 'bulkOperationRow_' + dirPrefId, {align: 'center'});

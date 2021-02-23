@@ -409,6 +409,28 @@ class SpellChecker {
         return lMorph;
     }
 
+    morph (sWord, sPattern, sNegPattern="") {
+        // analyse a token, return True if <sNegPattern> not in morphologies and <sPattern> in morphologies
+        let lMorph = this.getMorph(sWord);
+        if (lMorph.length == 0) {
+            return false;
+        }
+        // check negative condition
+        if (sNegPattern) {
+            if (sNegPattern == "*") {
+                // all morph must match sPattern
+                return lMorph.every(sMorph  =>  (sMorph.search(sPattern) !== -1));
+            }
+            else {
+                if (lMorph.some(sMorph  =>  (sMorph.search(sNegPattern) !== -1))) {
+                    return false;
+                }
+            }
+        }
+        // search sPattern
+        return lMorph.some(sMorph  =>  (sMorph.search(sPattern) !== -1));
+    }
+
     getLemma (sWord) {
         // retrieves lemmas
         if (this.bStorage) {
@@ -426,10 +448,12 @@ class SpellChecker {
             if (this.lexicographer.dSugg.has(sWord)) {
                 yield this.lexicographer.dSugg.get(sWord).split("|");
             } else if (sWord.gl_isTitle() && this.lexicographer.dSugg.has(sWord.toLowerCase())) {
-                let lRes = this.lexicographer.dSugg.get(sWord.toLowerCase()).split("|");
-                yield lRes.map((sSugg) => { return sSugg.slice(0,1).toUpperCase() + sSugg.slice(1); });
+                let lSuggs = this.lexicographer.dSugg.get(sWord.toLowerCase()).split("|");
+                yield lSuggs.map((sSugg) => { return sSugg.slice(0,1).toUpperCase() + sSugg.slice(1); });
             } else {
-                yield this.oMainDic.suggest(sWord, nSuggLimit, true);
+                let lSuggs = this.oMainDic.suggest(sWord, nSuggLimit, true);
+                lSuggs = lSuggs.filter((sSugg) => this.lexicographer.isValidSugg(sSugg, this));
+                yield lSuggs;
             }
         } else {
             yield this.oMainDic.suggest(sWord, nSuggLimit, true);

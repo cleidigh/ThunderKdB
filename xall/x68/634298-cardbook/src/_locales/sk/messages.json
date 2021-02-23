@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "Nezaradené"
 	},
-	"collectedCards": {
-		"message": "Zozbierané kontakty"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "Povoliť adresár"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "Nastaviť adresár do režimu iba na čítanie"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "Vytvoriť kategóriu"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Upraviť kategóriu"
@@ -196,7 +196,7 @@
         }
 	},
 	"notAllContactsLoadedFromFile": {
-		"message": "%1$S : Niektoré kontakty sa nepodarilo načítať zo súboru: %2$S chýb.",
+		"message": "$P1$ : Niektoré kontakty sa nepodarilo načítať zo súboru: $P2$ chýb.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -239,7 +239,7 @@
         }
 	},
 	"synchroProcessed": {
-		"message": "Kontaktov spracovaných: %1$S/%2$S",
+		"message": "Kontaktov spracovaných: $P1$/$P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -250,7 +250,7 @@
         }
 	},
 	"synchroCardsUpToDate": {
-		"message": "%1$S : Aktuálne kontakty : %2$S",
+		"message": "$P1$ : Aktuálne kontakty : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -261,7 +261,7 @@
         }
 	},
 	"synchroCardsNewOnServer": {
-		"message": "%1$S : Nové kontakty na serveri : %2$S",
+		"message": "$P1$ : Nové kontakty na serveri : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -272,7 +272,7 @@
         }
 	},
 	"synchroCardsUpdatedOnServer": {
-		"message": "%1$S : Aktualizované kontakty na serveri : %2$S",
+		"message": "$P1$ : Aktualizované kontakty na serveri : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -283,7 +283,7 @@
         }
 	},
 	"synchroCardsDeletedOnServer": {
-		"message": "%1$S : Vymazané kontakty zo servera : %2$S",
+		"message": "$P1$ : Vymazané kontakty zo servera : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "%1$S : Vymazané kontakty z disku : %2$S",
+		"message": "$P1$ : Kontakty odstránené lokálne : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +305,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "%1$S : Kontakty vymazané z disku a aktualizované na serveri : %2$S",
+		"message": "$P1$ : Kontakty vymazané lokálne a aktualizované na serveri : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +316,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "%1$S : Nové kontakty na disku : %2$S",
+		"message": "$P1$ : Nové lokálne kontakty : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "%1$S : Aktualizované kontakty na disku : %2$S",
+		"message": "$P1$ : Kontakty aktualizované lokálne : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "%1$S : Aktualizované kontakty na disku a serveri : %2$S",
+		"message": "$P1$ : Aktualizované kontakty lokálne a na serveri : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "%1$S : Kontakty aktualizované na disku disku a vymazané zo servera : %2$S",
+		"message": "$P1$ : Kontakty aktualizované lokálne a odstránené zo servera : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : Aktualizované kategórie : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : Nové kategórie na serveri : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : Kategórie aktualizované na serveri : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : Kategórie odstránené zo servera : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : Kategórie odstránené lokálne : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kategórie odstránené lokálne a aktualizované na serveri : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : Nové lokálne kategórie : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : Kategórie aktualizované lokálne : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : Kategórie aktualizované lokálne aj na serveri : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kategórie aktualizované lokálne a odstránené zo servera : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -360,7 +470,7 @@
         }
 	},
 	"synchroModifGetOKFromServer": {
-		"message": "%1$S : Úpravy boli úspešne načítané zo servera : %2$S",
+		"message": "$P1$ : Úpravy boli úspešne načítané zo servera : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -371,7 +481,7 @@
         }
 	},
 	"synchroModifGetKOFromServer": {
-		"message": "%1$S : Úpravy neboli úspešne načítané zo servera : %2$S",
+		"message": "$P1$ : Úpravy neboli úspešne načítané zo servera : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -382,7 +492,7 @@
         }
 	},
 	"synchroModifPutOKToServer": {
-		"message": "%1$S : Úpravy boli úspešne nahraté na server : %2$S",
+		"message": "$P1$ : Úpravy boli úspešne nahraté na server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -393,7 +503,7 @@
         }
 	},
 	"synchroModifPutKOToServer": {
-		"message": "%1$S : Úpravy neboli úspešne nahraté na server : %2$S",
+		"message": "$P1$ : Úpravy neboli úspešne nahraté na server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -420,7 +530,7 @@
         }
 	},
 	"synchroDBCardsOK": {
-		"message": "%1$S : Otvorené kontakty : %2$S",
+		"message": "$P1$ : Otvorené kontakty : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -431,7 +541,7 @@
         }
 	},
 	"synchroDBCardsKO": {
-		"message": "%1$S : Kontakty s chybami : %2$S",
+		"message": "$P1$ : Kontakty s chybami : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -450,7 +560,7 @@
         }
 	},
 	"synchroDirCardsOK": {
-		"message": "%1$S : Otvorené kontakty : %2$S",
+		"message": "$P1$ : Otvorené kontakty : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -461,7 +571,7 @@
         }
 	},
 	"synchroDirCardsKO": {
-		"message": "%1$S : Kontakty s chybami : %2$S",
+		"message": "$P1$ : Kontakty s chybami : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -480,7 +590,7 @@
         }
 	},
 	"synchroFileCardsOK": {
-		"message": "%1$S : Otvorené kontakty : %2$S",
+		"message": "$P1$ : Otvorené kontakty : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -491,7 +601,7 @@
         }
 	},
 	"synchroFileCardsKO": {
-		"message": "%1$S : Kontakty s chybami : %2$S",
+		"message": "$P1$ : Kontakty s chybami : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -521,7 +631,7 @@
         }
 	},
 	"imageGetResponse": {
-		"message": "%1$S : Obrázky stiahnuté : %2$S",
+		"message": "$P1$ : Obrázky stiahnuté : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -532,7 +642,7 @@
         }
 	},
 	"imageGetError": {
-		"message": "%1$S : Obrázky s chybami : %2$S",
+		"message": "$P1$ : Obrázky s chybami : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -551,7 +661,7 @@
         }
 	},
 	"importCardsOK": {
-		"message": "%1$S : Importované kontakty : %2$S",
+		"message": "$P1$ : Importované kontakty : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -562,7 +672,7 @@
         }
 	},
 	"importCardsKO": {
-		"message": "%1$S : Kontakty s chybami : %2$S",
+		"message": "$P1$ : Kontakty s chybami : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -576,7 +686,7 @@
 		"message": "Všetky importy dokončené"
 	},
 	"cardDeletedOnDisk": {
-		"message": "%1$S : Kontakt %2$S vymazaný z disku",
+		"message": "$P1$ : Kontakt $P2$ odstránený lokálne",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -587,7 +697,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "%1$S : Kontakt %2$S aktualizovaný na disku",
+		"message": "$P1$ : Kontakt $P2$ aktualizovaný lokálne",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -598,18 +708,7 @@
         }
 	},
 	"cardAlreadyGetFromCache": {
-		"message": "%1$S : Kontakt %2$S už bol získaný z medzipamäte",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
-	"cardGetFromCache": {
-		"message": "%1$S : Kontakt %2$S získaný z medzipamäte",
+		"message": "$P1$ : Kontakt $P2$ už bol získaný z medzipamäte",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -620,7 +719,7 @@
         }
 	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "%1$S : Kontakt %2$S vymazaný z disku a aktualizovaný na serveri",
+		"message": "$P1$ : Kontakt $P2$ odstránený lokálne a aktualizovaný na serveri",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -631,7 +730,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "%1$S : Kontakt %2$S bol aktualizovaný na disku a aj na serveri",
+		"message": "$P1$ : Kontakt $P2$ bol aktualizovaný lokálne aj na serveri",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -642,7 +741,7 @@
         }
 	},
 	"cardUpdatedOnServer": {
-		"message": "%1$S : Kontakt %2$S aktualizovaný na serveri (etag nájdený : %3$S, etag v medzipamäti : %4$S)",
+		"message": "$P1$ : Kontakt $P2$ aktualizovaný na serveri (etag nájdený : $P3$, etag v medzipamäti : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -666,19 +765,8 @@
             }
         }
 	},
-	"cardLoadedFromCache": {
-		"message": "%1$S : Kontakt %2$S načítaný z medzipamäte",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardLoadedFromCacheDB": {
-		"message": "%1$S : Kontakt %2$S načítaný z medzipamäte (IndexedDB)",
+		"message": "$P1$ : Kontakt $P2$ načítaný z medzipamäte (IndexedDB)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "%1$S : Kontakt %2$S nový na disku",
+		"message": "$P1$ : Nový lokálny kontakt $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "%1$S : Kontakt %2$S bol aktualizovaný na disku a vymazaný zo serveru",
+		"message": "$P1$ : Kontakt $P2$ bol aktualizovaný lokálne a odstránený zo servera",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -711,7 +799,7 @@
         }
 	},
 	"cardDeletedOnServer": {
-		"message": "%1$S : Kontakt %2$S bol vymazaný zo serveru",
+		"message": "$P1$ : Kontakt $P2$ bol vymazaný zo serveru",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -722,7 +810,7 @@
         }
 	},
 	"cardAlreadyExists": {
-		"message": "%1$S : Kontakt %2$S už existuje",
+		"message": "$P1$ : Kontakt $P2$ už existuje",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,35 +820,35 @@
             }
         }
 	},
-	"askUserTitle": {
+	"cardAskUserTitle": {
 		"message": "Konflikt úpravy kontaktu"
 	},
 	"askUserPersistMessage": {
 		"message": "Použiť túto voľbu pre ďalšie existujúce kontakty"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "Ponechať kontakt"
 	},
-	"updateAskUserLabel": {
+	"cardupdateAskUserLabel": {
 		"message": "Prepísať kontakt"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "Duplikovať kontakt"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "Vymazať kontakt"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "Uprednostniť lokálnu zmenu"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "Uprednostniť vzdialenú zmenu"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "Zlúčiť rozdiely"
 	},
 	"serverCardDeletedFromServer": {
-		"message": "%1$S : Kontakt %2$S vymazaný zo servera",
+		"message": "$P1$ : Kontakt $P2$ vymazaný zo servera",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -771,7 +859,7 @@
         }
 	},
 	"serverCardNotExistServer": {
-		"message": "%1$S : Kontakt %2$S neexistuje na serveri",
+		"message": "$P1$ : Kontakt $P2$ neexistuje na serveri",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -782,7 +870,7 @@
         }
 	},
 	"serverCardDeleteFailed": {
-		"message": "%1$S : Kontakt %2$S sa nepodarilo vymazať do servera (url : %3$S, stav : %4$S)",
+		"message": "$P1$ : Kontakt $P2$ sa nepodarilo vymazať do servera (url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -799,7 +887,7 @@
         }
 	},
 	"serverCardSendingDeletion": {
-		"message": "%1$S: Kontakt %2$S : odosiela sa žiadosť o vymazanie …n",
+		"message": "$P1$ : Kontakt $P2$ : odosiela sa žiadosť o vymazanie …n",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -810,7 +898,7 @@
         }
 	},
 	"serverCardUpdatedOnServerWithEtag": {
-		"message": "%1$S : Kontakt %2$S aktualizovaný na serveri (etag : %3$S)",
+		"message": "$P1$ : Kontakt $P2$ aktualizovaný na serveri (etag : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -824,7 +912,7 @@
         }
 	},
 	"serverCardUpdatedOnServerWithoutEtag": {
-		"message": "%1$S : Kontakt %2$S aktualizovaný na serveri (žiadny etag v odpovedi)",
+		"message": "$P1$ : Kontakt $P2$ aktualizovaný na serveri (žiadny etag v odpovedi)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -835,7 +923,7 @@
         }
 	},
 	"serverCardUpdateFailed": {
-		"message": "%1$S : Kontakt %2$S sa nepodarilo aktualizovať na serveri (url : %3$S, stav : %4$S)",
+		"message": "$P1$ : Kontakt $P2$ sa nepodarilo aktualizovať na serveri (url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -852,7 +940,7 @@
         }
 	},
 	"serverCardSendingUpdate": {
-		"message": "%1$S: Kontakt %2$S : odosiela sa žiadosť o aktualizáciu …n",
+		"message": "$P1$ : Kontakt $P2$ : odosiela sa žiadosť o aktualizáciu …n",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -863,7 +951,7 @@
         }
 	},
 	"serverCardCreatedOnServerWithEtag": {
-		"message": "%1$S : Kontakt %2$S vytvorený na serveri (etag : %3$S)",
+		"message": "$P1$ : Kontakt $P2$ vytvorený na serveri (etag : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -877,7 +965,7 @@
         }
 	},
 	"serverCardCreatedOnServerWithoutEtag": {
-		"message": "%1$S : Kontakt %2$S vytvorený na serveri (žiadny etag v odpovedi)",
+		"message": "$P1$ : Kontakt $P2$ vytvorený na serveri (žiadny etag v odpovedi)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -888,7 +976,7 @@
         }
 	},
 	"serverCardCreateFailed": {
-		"message": "%1$S : Kontakt %2$S sa nepodarilo vytvoriť na serveri (url : %3$S, stav : %4$S)",
+		"message": "$P1$ : Kontakt $P2$ sa nepodarilo vytvoriť na serveri (url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -905,7 +993,7 @@
         }
 	},
 	"serverCardSendingCreate": {
-		"message": "%1$S: Kontakt %2$S : odosiela sa žiadosť o vytvorenie …n",
+		"message": "$P1$ : Kontakt $P2$ : odosiela sa žiadosť o vytvorenie …n",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -916,7 +1004,7 @@
         }
 	},
 	"serverCardGetImageFailed": {
-		"message": "%1$S: Obrázok sa nepodarilo stiahnuť pre kontakt %2$S (adresa URL: %3$S, stav: %4$S)",
+		"message": "$P1$ : Obrázok sa nepodarilo stiahnuť pre kontakt $P2$ (adresa URL: $P3$, stav: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -933,7 +1021,7 @@
         }
 	},
 	"serverCardGetImageOK": {
-		"message": "%1$S : Obrázok stiahnutý pre kontakt %2$S",
+		"message": "$P1$ : Obrázok stiahnutý pre kontakt $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -944,7 +1032,7 @@
         }
 	},
 	"serverCardGettingImage": {
-		"message": "%1$S : Sťahovanie obrázku pre kontakt %2$S …",
+		"message": "$P1$ : Sťahovanie obrázku pre kontakt $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -994,7 +1082,7 @@
         }
 	},
 	"serverCardGetOK": {
-		"message": "%1$S : Kontakt %2$S bol stiahnutý zo servera",
+		"message": "$P1$ : Kontakt $P2$ bol stiahnutý zo servera",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1005,7 +1093,7 @@
         }
 	},
 	"serverCardGetFailed": {
-		"message": "%1$S : Nepodarilo sa stiahnuť zo servera (url : %2$S, stav : %3$S)",
+		"message": "$P1$ : Nepodarilo sa stiahnuť zo servera (url : $P2$, stav : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1018,8 +1106,389 @@
             }
         }
 	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : Kontakt $P2$ : odosiela sa žiadosť o získanie štítkov …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : Kontakt $P2$ : štítky získané",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : Kontakt $P2$ : nepodarilo sa získať štítky na serveri (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : Kontakt $P2$ : odosiela sa žiadosť o získanie štítkov …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : Kontakt $P2$ : štítky aktualizované",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : Kontakt $P2$ : nepodarilo sa aktualizovať štítky na serveri (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : Kategória $P2$ odstránená lokálne",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : Kategória $P2$ aktualizovaná lokálne",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : Kategória $P2$ už bola získaná z medzi-pamäte",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kategória $P2$ bola odstránená lokálne a aktualizovaná na serveri",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : Kategória $P2$ bola aktualizovaná lokálne aj na serveri",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : Kategória $P2$ bola aktualizovaná na serveri (etag nájdený : $P3$, etag v medzi-pamäti : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : Na serveri sa našla nová kategória",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : Kategória $P2$ bola načítaná z medzi-pamäte (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : Nová lokálna kategória $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kategória $P2$ bola aktualizovaná lokálne a odstránená zo servera",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : Kategória $P2$ bola odstránená zo servera",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "Konflikt úpravy kategórie"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "Ponechať kategóriu"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "Odstrániť kategóriu"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Uprednostniť lokálnu zmenu"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Uprednostniť vzdialenú zmenu"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : Kategória $P2$ bola odstránená zo servera",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : Kategória $P2$ neexistuje na serveri",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : Kategóriu $P2$ sa nepodarilo vymazať zo servera (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : Kategória $P2$ : odosiela sa žiadosť o odstránenie …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Kategória $P2$ aktualizovaná na serveri (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kategória $P2$ aktualizovaná na serveri (žiadny etag v odpovedi)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : Kategóriu $P2$ sa nepodarilo aktualizovať na serveri (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : Kategória $P2$ : odosiela sa žiadosť o aktualizáciu …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : Kategória $P2$ bola vytvorená na serveri (etag : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kategória $P2$ vytvorená na serveri (žiadny etag v odpovedi)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : Kategóriu $P2$ sa nepodarilo vytvoriť na serveri (url : $P3$, stav : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : Kategória $P2$ : odosiela sa žiadosť o vytvorenie …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : Vyhľadávanie kategórií …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"synchronizationFailed": {
-		"message": "%1$S : Synchronizácia zlyhala (stupeň : %2$S, url : %3$S, stav : %4$S)",
+		"message": "$P1$ : Synchronizácia zlyhala (stupeň : $P2$, url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1036,7 +1505,7 @@
         }
 	},
 	"synchronizationUnauthorized": {
-		"message": "$P1$: Nemožno sa prihlásiť na server. Pravdepodobne nesprávna konfigurácia, používateľské meno alebo heslo.",
+		"message": "$P1$ : Nemožno sa prihlásiť na server. Pravdepodobne nesprávna konfigurácia, používateľské meno alebo heslo.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1052,7 +1521,7 @@
         }
 	},
 	"synchronizationRequestDiscovery": {
-		"message": "%1$S : Overovanie bez žiadosti o objavovanie na %2$S …",
+		"message": "$P1$ : Overovanie bez žiadosti o objavovanie na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1063,7 +1532,7 @@
         }
 	},
 	"synchronizationRequestDiscovery4": {
-		"message": "%1$S : Fáza 4 požiadavky na preskúmanie na %2$S …",
+		"message": "$P1$ : Fáza 4 požiadavky na preskúmanie na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1074,7 +1543,7 @@
         }
 	},
 	"synchronizationRequestDiscovery3": {
-		"message": "%1$S : Fáza 3 požiadavky na preskúmanie na %2$S …",
+		"message": "$P1$ : Fáza 3 požiadavky na preskúmanie na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1085,7 +1554,7 @@
         }
 	},
 	"synchronizationRequestDiscovery2": {
-		"message": "%1$S : Fáza 2 požiadavky na preskúmanie na %2$S …",
+		"message": "$P1$ : Fáza 2 požiadavky na preskúmanie na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1096,7 +1565,7 @@
         }
 	},
 	"synchronizationRequestDiscovery1": {
-		"message": "%1$S : Fáza 1 požiadavky na preskúmanie na %2$S …",
+		"message": "$P1$ : Fáza 1 požiadavky na preskúmanie na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1107,7 +1576,7 @@
         }
 	},
 	"googleAccessTokenOK": {
-		"message": "%1$S : Žiadosť o prístupový token Google prebehla v poriadku, prístupový token : %2$S",
+		"message": "$P1$ : Žiadosť o prístupový token Google prebehla v poriadku, prístupový token : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1118,7 +1587,7 @@
         }
 	},
 	"googleRefreshTokenOK": {
-		"message": "%1$S : Žiadosť o prístupový token Google prebehla v poriadku, obnovovací token : %2$S",
+		"message": "$P1$ : Žiadosť o prístupový token Google prebehla v poriadku, obnovovací token : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1129,7 +1598,7 @@
         }
 	},
 	"googleGetNewRefreshToken": {
-		"message": "%1$S : Pokúšam sa získať nový obnovovací token Google na %2$S …",
+		"message": "$P1$ : Pokúšam sa získať nový obnovovací token Google na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1140,7 +1609,7 @@
         }
 	},
 	"googleNewRefreshTokenOK": {
-		"message": "%1$S : Prijatý autorizačný kód : %2$S …",
+		"message": "$P1$ : Prijatý autorizačný kód : $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1151,7 +1620,7 @@
         }
 	},
 	"googleRequestAccessToken": {
-		"message": "%1$S : Žiadosť o prístupový token Google na %2$S …",
+		"message": "$P1$ : Žiadosť o prístupový token Google na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1162,7 +1631,7 @@
         }
 	},
 	"googleRequestRefreshToken": {
-		"message": "%1$S : Žiadosť o obnovovací token Google na %2$S …",
+		"message": "$P1$ : Žiadosť o obnovovací token Google na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1173,7 +1642,7 @@
         }
 	},
 	"yahooAccessTokenOK": {
-		"message": "%1$S : Žiadosť o prístupový token Yahoo! prebehla v poriadku, prístupový token : %2$S",
+		"message": "$P1$ : Žiadosť o prístupový token Yahoo! prebehla v poriadku, prístupový token : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1184,7 +1653,7 @@
         }
 	},
 	"yahooRefreshTokenOK": {
-		"message": "%1$S : Žiadosť o prístupový token Yahoo! prebehla v poriadku, obnovovací token : %2$S",
+		"message": "$P1$ : Žiadosť o prístupový token Yahoo! prebehla v poriadku, obnovovací token : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1195,7 +1664,7 @@
         }
 	},
 	"yahooGetNewRefreshToken": {
-		"message": "%1$S : Pokúšam sa získať nový obnovovací token Yahoo! na %2$S …",
+		"message": "$P1$ : Pokúšam sa získať nový obnovovací token Yahoo! na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1206,7 +1675,7 @@
         }
 	},
 	"yahooNewRefreshTokenOK": {
-		"message": "%1$S : Prijatý autorizačný kód : %2$S …",
+		"message": "$P1$ : Prijatý autorizačný kód : $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1217,7 +1686,7 @@
         }
 	},
 	"yahooRequestAccessToken": {
-		"message": "%1$S : Žiadosť o prístupový token Yahoo! na %2$S …",
+		"message": "$P1$ : Žiadosť o prístupový token Yahoo! na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1228,7 +1697,7 @@
         }
 	},
 	"yahooRequestRefreshToken": {
-		"message": "%1$S : Žiadosť o obnovovací token Yahoo! na %2$S …",
+		"message": "$P1$ : Žiadosť o obnovovací token Yahoo! na $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1239,7 +1708,7 @@
         }
 	},
 	"periodicSyncDeleting": {
-		"message": "%1$S : Vymazávanie procesu periodickej synchronizácie (id : %2$S)",
+		"message": "$P1$ : Vymazávanie procesu periodickej synchronizácie (id : $P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1250,7 +1719,7 @@
         }
 	},
 	"periodicSyncSetting": {
-		"message": "%1$S : Nastavenie procesu periodickej synchronizácie (interval : %2$S ms, id : %3$S)",
+		"message": "$P1$ : Nastavenie procesu periodickej synchronizácie (interval : $P2$ ms, id : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1296,7 +1765,7 @@
         }
 	},
 	"parsingCardError": {
-		"message": "%1$S : Chyba pri analýze kontaktu : n%2$S n%3$S",
+		"message": "$P1$ : Chyba pri analýze kontaktu : n$P2$ n$P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1374,7 +1843,7 @@
         }
 	},
 	"cardCreated": {
-		"message": "%1$S : Kontakt %2$S vytvorený",
+		"message": "$P1$ : Kontakt $P2$ vytvorený",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1385,7 +1854,7 @@
         }
 	},
 	"cardUpdated": {
-		"message": "%1$S : Kontakt %2$S aktualizovaný",
+		"message": "$P1$ : Kontakt $P2$ aktualizovaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1396,7 +1865,7 @@
         }
 	},
 	"cardDeleted": {
-		"message": "%1$S : Kontakt %2$S vymazaný",
+		"message": "$P1$ : Kontakt $P2$ vymazaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1407,7 +1876,7 @@
         }
 	},
 	"cardAddedToCategory": {
-		"message": "%1$S : Kontakt %2$S bol úspešne pridaný do kategórie %3$S",
+		"message": "$P1$ : Kontakt $P2$ bol úspešne pridaný do kategórie $P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1421,7 +1890,7 @@
         }
 	},
 	"cardDeletedFromAllCategory": {
-		"message": "%1$S : Kontakt %2$S bol úspešne odstránený zo všetkých kategórií",
+		"message": "$P1$ : Kontakt $P2$ bol úspešne odstránený zo všetkých kategórií",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1432,7 +1901,7 @@
         }
 	},
 	"cardsConverted": {
-		"message": "%1$S : kontakty zmenené na %2$S : %3$S",
+		"message": "$P1$ : kontakty zmenené na $P2$ : $P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1449,7 +1918,7 @@
 		"message": "Vizitky VCards premenené"
 	},
 	"cardsImportedFromFileUndo": {
-		"message": "Súbor %1$S importovaný",
+		"message": "Súbor $P1$ importovaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1457,7 +1926,7 @@
         }
 	},
 	"cardsImportedFromDirUndo": {
-		"message": "Priečinok %1$S importovaný",
+		"message": "Priečinok $P1$ importovaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1465,7 +1934,7 @@
         }
 	},
 	"undoActionDoneUndo": {
-		"message": "Späť vykonané (%1$S)",
+		"message": "Späť vykonané ($P1$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1473,7 +1942,7 @@
         }
 	},
 	"redoActionDoneUndo": {
-		"message": "Znova vykonané (%1$S)",
+		"message": "Znova vykonané ($P1$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1481,7 +1950,7 @@
         }
 	},
 	"cardCreatedUndo": {
-		"message": "Kontakt %1$S vytvorený",
+		"message": "Kontakt $P1$ vytvorený",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1489,7 +1958,7 @@
         }
 	},
 	"cardUpdatedUndo": {
-		"message": "Kontakt %1$S aktualizovaný",
+		"message": "Kontakt $P1$ aktualizovaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1512,7 +1981,7 @@
 		"message": "Kontakty zdvojené"
 	},
 	"displayNameGenerated": {
-		"message": "%1$S : kontakty, ktoré majú vytvorené svoje zobrazované mená : %2$S",
+		"message": "$P1$ : kontakty, ktoré majú vytvorené svoje zobrazované mená : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1526,7 +1995,7 @@
 		"message": "Zobrazované mená boli vytvorené"
 	},
 	"cardModifiedUndo": {
-		"message": "Kontakt %1$S aktualizovaný",
+		"message": "Kontakt $P1$ aktualizovaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1534,7 +2003,7 @@
         }
 	},
 	"cardsDeleted1Undo": {
-		"message": "Kontakt %1$S vymazaný",
+		"message": "Kontakt $P1$ vymazaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1551,7 +2020,7 @@
 		"message": "Kontakty pretiahnuté"
 	},
 	"categoryCreated": {
-		"message": "%1$S : Kategória %2$S vytvorená",
+		"message": "$P1$ : Kategória $P2$ vytvorená",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1562,7 +2031,7 @@
         }
 	},
 	"categoryCreatedUndo": {
-		"message": "Kategória %1$S vytvorená",
+		"message": "Kategória $P1$ vytvorená",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1570,7 +2039,7 @@
         }
 	},
 	"categorySelectedUndo": {
-		"message": "Kategória %1$S vybratá",
+		"message": "Kategória $P1$ vybratá",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1578,15 +2047,26 @@
         }
 	},
 	"categoryUnselectedUndo": {
-		"message": "Kategória %1$S nie je vybratá",
+		"message": "Kategória $P1$ nie je vybratá",
         "placeholders": {
             "P1": {
                 "content": "$1"
             }
         }
 	},
+	"categoryRenamed": {
+		"message": "$P1$ : Kategória $P2$ premenovaná",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"categoryRenamedUndo": {
-		"message": "Kategória %1$S premenovaná",
+		"message": "Kategória $P1$ premenovaná",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1594,7 +2074,7 @@
         }
 	},
 	"categoryDeleted": {
-		"message": "%1$S : Kategória %2$S vymazaná",
+		"message": "$P1$ : Kategória $P2$ vymazaná",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1605,7 +2085,7 @@
         }
 	},
 	"categoryDeletedUndo": {
-		"message": "Kategória %1$S vymazaná",
+		"message": "Kategória $P1$ vymazaná",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1613,7 +2093,7 @@
         }
 	},
 	"categoryConvertedToListUndo": {
-		"message": "Kategória %1$S prevedená na zoznam",
+		"message": "Kategória $P1$ prevedená na zoznam",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1621,7 +2101,7 @@
         }
 	},
 	"listConvertedToCategoryUndo": {
-		"message": "Zoznam %1$S premenený na kategóriu",
+		"message": "Zoznam $P1$ premenený na kategóriu",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1632,7 +2112,7 @@
 		"message": "Riadok vložený"
 	},
 	"nodeRenamedUndo": {
-		"message": "Uzol %1$S premenovaný",
+		"message": "Uzol $P1$ premenovaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1640,7 +2120,7 @@
         }
 	},
 	"nodeDeleted": {
-		"message": "%1$S : Uzol %2$S vymazaný",
+		"message": "$P1$ : Uzol $P2$ vymazaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1651,7 +2131,7 @@
         }
 	},
 	"nodeDeletedUndo": {
-		"message": "Uzol %1$S vymazaný",
+		"message": "Uzol $P1$ vymazaný",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1659,7 +2139,7 @@
         }
 	},
 	"listCreatedFromNodeUndo": {
-		"message": "Zoznam %1$S vytvorený z uzla",
+		"message": "Zoznam $P1$ vytvorený z uzla",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1763,7 +2243,7 @@
         }
 	},
 	"numberContactsFoundModified": {
-		"message": "Počet nájdených kontaktov: %1$S (lokálne upravených: %2$S)",
+		"message": "Počet nájdených kontaktov: $P1$ (lokálne upravených: $P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1774,7 +2254,7 @@
         }
 	},
 	"numberContactsModified": {
-		"message": "Počet kontaktov: %1$S (lokálne upravených: %2$S)",
+		"message": "Počet kontaktov: $P1$ (lokálne upravených: $P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1807,7 +2287,7 @@
 		"message": "CardBook Komu"
 	},
 	"cardbook.searchCc.name": {
-		"message": "CardBook Kópia"
+		"message": "CardBook Cc"
 	},
 	"cardbook.searchBcc.name": {
 		"message": "CardBook Bcc"
@@ -2048,7 +2528,7 @@
         }
 	},
 	"syncListWindowLabelRunning": {
-		"message": "Synchronizácia výročí prebieha (%1$S/%2$S)",
+		"message": "Synchronizácia výročí prebieha ($P1$/$P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2059,7 +2539,7 @@
         }
 	},
 	"syncListWindowLabelEnded": {
-		"message": "Synchronizácia výročí dokončená (%1$S/%2$S)",
+		"message": "Synchronizácia výročí dokončená ($P1$/$P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2073,7 +2553,7 @@
 		"message": "Synchronizácia výročí zlyhala"
 	},
 	"syncListExistingEntry": {
-		"message": "%1$S : Existujúca udalosť v Lightningu : %2$S",
+		"message": "$P1$ : Existujúca udalosť v Lightningu : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2084,7 +2564,7 @@
         }
 	},
 	"syncListCreatedEntry": {
-		"message": "%1$S : Udalosť vytvorená v Lightningu : %2$S",
+		"message": "$P1$ : Udalosť vytvorená v Lightningu : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2095,7 +2575,7 @@
         }
 	},
 	"syncListErrorEntry": {
-		"message": "%1$S : Udalosť chybná v Lightningu : %2$S",
+		"message": "$P1$ : Udalosť chybná v Lightningu : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2150,7 +2630,7 @@
         }
 	},
 	"errorAttachingFile": {
-		"message": "Pripojenie vCard: Nie je možné vygenerovať súbor na pripojenie vCard k e-mailu : %1$S (%2$S)",
+		"message": "Pripojenie vCard: Nie je možné vygenerovať súbor na pripojenie vCard k e-mailu : $P1$ ($P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2172,7 +2652,7 @@
 		"message": "Podporované sú iba verzie vCard 3.0 alebo 4.0"
 	},
 	"unableToParseResponse": {
-		"message": "%1$S : Kvôli tomuto riadku nie je možné spracovať odpoveď servera: %2$S",
+		"message": "$P1$ : Kvôli tomuto riadku nie je možné spracovať odpoveď servera: $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2183,7 +2663,7 @@
         }
 	},
 	"dateEntry1Wrong": {
-		"message": "%1$S : Kontakt %2$S má hodnotu poľa dátumu (%3$S) ktorá nezodpovedá formátu dátumu v adresári (%4$S)n",
+		"message": "$P1$ : Kontakt $P2$ má hodnotu poľa dátumu ($P3$) ktorá nezodpovedá formátu dátumu v adresári ($P4$)n",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2200,7 +2680,7 @@
         }
 	},
 	"dateEntry2Wrong": {
-		"message": "Hodnota poľa pre dátum (%1$S) sa nezhoduje s formátom dátumu v adresári (%2$S)",
+		"message": "Hodnota poľa pre dátum ($P1$) sa nezhoduje s formátom dátumu v adresári ($P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2211,7 +2691,7 @@
         }
 	},
 	"validateIntegerMsg": {
-		"message": "Pole %1$S by malo mať nulovú hodnotu alebo celé číslo od 1 do %2$S (hodnota : %3$S)",
+		"message": "Pole $P1$ by malo mať nulovú hodnotu alebo celé číslo od 1 do $P2$ (hodnota : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "Editor organizácie"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "Vytvoriť kategóriu"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Upraviť kategóriu"
 	},
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "Typ:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Kategória:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "Kategória:"
@@ -2754,15 +3240,39 @@
 		"message": "({{3}}n|)({{1}}n|)({{4}} |)({{6}}|)(n)({{5}}n|)({{7}}|)"
 	},
 	"newTokenTitle": {
-		"message": "Prihláste sa do svojho účtu %1$S",
+		"message": "Prihláste sa do svojho účtu $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
             }
         }
 	},
-	"newTokenDescription": {
-		"message": "CardBook by chcel získať prístup k vášmu účtu %1$S pre získanie kontaktov. Poverovacie údaje a kontaktné údaje sa prenášajú iba medzi vašim počítačom a spoločnosťou Google, nie sú zapojené žiadne weby tretích strán.n",
+	"warnDescription": {
+		"message": "CardBook by chcel získať prístup k vášmu účtu $P1$ pre získanie kontaktov. Poverovacie údaje a kontaktné údaje sa prenášajú iba medzi vašim počítačom a spoločnosťou Google, nie sú zapojené žiadne weby tretích strán.n",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "Aplikácia: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "Identifikácia klienta: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "Rozsah: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2770,7 +3280,7 @@
         }
 	},
 	"invalidEmail": {
-		"message": "%1$S nie je platná e-mailová adresa, pretože nemá formu pouzivatel@domena.",
+		"message": "$P1$ nie je platná e-mailová adresa, pretože nemá formu pouzivatel@domena.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2778,7 +3288,7 @@
         }
 	},
 	"appendEmailLabel": {
-		"message": "Pridať do zoznamu: %1$S",
+		"message": "Pridať do zoznamu: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2801,7 +3311,7 @@
 		"message": "Začína sa šifrovanie"
 	},
 	"encryptionProcessed": {
-		"message": "Zašifrované položky: %1$S/%2$S",
+		"message": "Zašifrované položky: $P1$/$P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2818,7 +3328,7 @@
 		"message": "Začína sa dešifrovanie"
 	},
 	"decryptionProcessed": {
-		"message": "Dešifrované položky: %1$S/%2$S",
+		"message": "Dešifrované položky: $P1$/$P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2832,7 +3342,7 @@
 		"message": "Dešifrovanie dokončené"
 	},
 	"menu_undo.long.label": {
-		"message": "Späť - %1$S",
+		"message": "Späť - $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2843,7 +3353,7 @@
 		"message": "Späť"
 	},
 	"menu_redo.long.label": {
-		"message": "Znova - %1$S",
+		"message": "Znova - $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3402,9 +3912,6 @@
 	"birthdaylistTabLabel": {
 		"message": "Výročia"
 	},
-	"synclistTabLabel": {
-		"message": "Pripomienky výročia"
-	},
 	"integrationGroupboxLabel": {
 		"message": "Integrácia do Thunderbirdu"
 	},
@@ -3610,7 +4117,7 @@
 		"message": "Verejné kľúče"
 	},
 	"keyTab.conf.accesskey": {
-		"message": "k"
+		"message": "K"
 	},
 	"advancedTab1Label": {
 		"message": "Pokročilé"

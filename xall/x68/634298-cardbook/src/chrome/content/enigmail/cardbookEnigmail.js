@@ -98,7 +98,7 @@ var cardbookEnigmail = {
 	},
 
 	importKey: function (aValue) {
-		let keyValue = aValue;
+		let keyValue = aValue.replaceAll("\n", "\r\n").replaceAll("\r\r", "\r");
 		if (!keyValue.startsWith("-----BEGIN")) {
 			keyValue = "-----BEGIN PGP PUBLIC KEY BLOCK-----\r\n\r\n" + keyValue;
 			keyValue = keyValue + "\r\n-----END PGP PUBLIC KEY BLOCK-----";

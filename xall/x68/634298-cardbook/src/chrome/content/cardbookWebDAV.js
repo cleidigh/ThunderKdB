@@ -448,6 +448,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response code : ", aStatus);
 				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response etag : ", aChannel.getResponseHeader("etag"));
 			}
+
 			if (status !== 499 && status !== 0 && status !== 408) {
 				if (aResultLength > 0) {
 					var responseText = aResult;
@@ -473,17 +474,20 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 	
 		load: function(operation, parameters) {
 			if (operation == "GET") {
-				var headers = {};
+				let headers = {};
 				if (parameters.accept !== null) {
 					headers.accept = parameters.accept;
 				}
 				this.sendHTTPRequest(operation, null, headers);
 			} else if (operation == "GETIMAGE" || operation == "GETKEY") {
-				var headers = {};
+				let headers = {};
+				this.sendHTTPRequest("GET", null, headers, null, null, true);
+			} else if (operation == "GETLABELS" || operation == "GETCONTACT") {
+				let headers = {"Content-Type": "application/atom+xml; charset=UTF-8; type=feed"};
 				if (parameters.accept !== null) {
 					headers.accept = parameters.accept;
 				}
-				this.sendHTTPRequest("GET", null, headers, null, null, true);
+				this.sendHTTPRequest("GET", null, headers, null, null, false);
 			} else if (operation == "PUT") {
 				if (this.etag && this.etag != "0") {
 					this.sendHTTPRequest(operation, parameters.data, { "Content-Type": parameters.contentType,
@@ -491,6 +495,12 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				} else {
 					this.sendHTTPRequest(operation, parameters.data, { "Content-Type": parameters.contentType,
 																		"If-None-Match": "*" });
+				}
+			} else if (operation == "POST") {
+				if (this.etag && this.etag != "0") {
+					this.sendHTTPRequest(operation, parameters.data, { "If-Match": this.etag });
+				} else {
+					this.sendHTTPRequest(operation, parameters.data, {});
 				}
 			} else if (operation == "PROPFIND") {
 				let headers = { "depth": (parameters.deep ? "1": "0"), "Content-Type": "application/xml; charset=utf-8"};
@@ -505,7 +515,8 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				let query = this._buildQueryRequest(parameters.props);
 				this.sendHTTPRequest("REPORT", query, headers);
 			} else if (operation == "DELETE") {
-				this.sendHTTPRequest(operation, null, {});
+				this.sendHTTPRequest(operation, null, { "Content-Type": parameters.contentType,
+																		"If-Match": this.etag });
 			}
 		},
 	
@@ -513,16 +524,28 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			this.load("GET", {accept: accept});
 		},
 	
-		getimage: function(accept) {
-			this.load("GETIMAGE", {accept: accept});
+		getimage: function() {
+			this.load("GETIMAGE");
 		},
 	
-		getkey: function(accept) {
-			this.load("GETKEY", {accept: accept});
+		getlabels: function(accept) {
+			this.load("GETLABELS", {accept: accept});
+		},
+	
+		getContact: function(accept) {
+			this.load("GETCONTACT", {accept: accept});
+		},
+	
+		getkey: function() {
+			this.load("GETKEY");
 		},
 	
 		put: function(data, contentType) {
 			this.load("PUT", {data: data, contentType: contentType});
+		},
+	
+		post: function(data) {
+			this.load("POST", {data: data});
 		},
 	
 		propfind: function(props, deep) {
@@ -565,8 +588,8 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			this.sendHTTPRequest(aType, paramsArray.join("&"), aHeaders, cardbookRepository.cardbookUtils.cleanWebArray(paramsArray));
 		},
 		
-		delete: function() {
-			this.load("DELETE");
+		delete: function(contentType) {
+			this.load("DELETE", {contentType: contentType});
 		},
 		
 		_buildMultigetRequest: function(props) {

@@ -1,6 +1,6 @@
 {
 	"extName": {
-		"message": "연락처(CardBook)"
+		"message": "CardBook"
 	},
 	"extDesc": {
 		"message": "가상 카드(vCard) 주소록"
@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "카테고리 없음"
 	},
-	"collectedCards": {
-		"message": "수집 된 연락처"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "주소록 활성화"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "주소록을 읽기 전용 모드로 설정"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "카테고리 생성"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "카테고리 편집"
@@ -188,7 +188,7 @@
 		"message": "맞춤 필드 레이블은 비어있을 수 없습니다."
 	},
 	"allContactsLoadedFromFile": {
-		"message": "$P1$: 파일에서 모든 연락처 로드 됨.",
+		"message": "$P1$ : 파일에서 모든 연락처 로드 됨.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -196,7 +196,7 @@
         }
 	},
 	"notAllContactsLoadedFromFile": {
-		"message": "$P1$: 파일에서 모든 연락처가 로드되지 않았습니다: $P2$ 에러 발생.",
+		"message": "$P1$ : 파일에서 모든 연락처가 로드되지 않았습니다 : $P2$ 에러 발생.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -207,7 +207,7 @@
         }
 	},
 	"synchroRunning": {
-		"message": "$P1$: 동기화 실행 중",
+		"message": "$P1$ : 동기화 실행 중",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -215,7 +215,7 @@
         }
 	},
 	"synchroNotTried": {
-		"message": "$P1$: 동기화 시도되지 않음",
+		"message": "$P1$ : 동기화 시도되지 않음",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -223,7 +223,7 @@
         }
 	},
 	"synchroFinished": {
-		"message": "$P1$: 동기화 완료 됨",
+		"message": "$P1$ : 동기화 완료 됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -231,7 +231,7 @@
         }
 	},
 	"synchroFinishedResult": {
-		"message": "$P1$: 동기화 완료 됨, 연락처 결과:",
+		"message": "$P1$ : 동기화 완료 됨, 연락처 결과:",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -250,7 +250,7 @@
         }
 	},
 	"synchroCardsUpToDate": {
-		"message": "$P1$: 최신 상태 연락처: $P2$",
+		"message": "$P1$ : 최신 상태 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -261,7 +261,7 @@
         }
 	},
 	"synchroCardsNewOnServer": {
-		"message": "$P1$: 서버에서 새로운 연락처: $P2$",
+		"message": "$P1$ : 서버에서 새로운 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -272,7 +272,7 @@
         }
 	},
 	"synchroCardsUpdatedOnServer": {
-		"message": "$P1$: 서버에서 업데이트 된 연락처: $P2$",
+		"message": "$P1$ : 서버에서 업데이트 된 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -283,7 +283,7 @@
         }
 	},
 	"synchroCardsDeletedOnServer": {
-		"message": "$P1$: 서버에서 삭제된 연락처 : $P2$",
+		"message": "$P1$ : 서버에서 삭제된 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$: 디스크에서 삭제된 연락처 : $P2$",
+		"message": "$P1$ : 로컬에서 삭제된 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +305,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$: 디스크에서 삭제 되고 서버에서 업데이트 된 연락처 : $P2$",
+		"message": "$P1$ : 로컬에서 삭제되고 서버에서 업데이트된 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +316,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "$P1$: 디스크의 새 연락처: $P2$",
+		"message": "$P1$ : 새로운 로컬 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$: 디스크에서 업데이트 된 연락처:$P2$",
+		"message": "$P1$ : 로컬에서 업데이트된 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$: 디스크와 서버에서 업데이트 된 연락처: $P2$",
+		"message": "$P1$ : 로컬과 서버에서 업데이트된 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$: 서버에서 삭제되고 디스크에서 업데이트 된 연락처 : $P2$",
+		"message": "$P1$ : 로컬에서 업데이트되고 서버에서 삭제된 연락처 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : 최신 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : 서버에서 새로운 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : 서버에서 업데이트된 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : 서버에서 삭제된 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : 로컬에서 삭제된 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : 로컬에서 삭제되고 서버에서 업데이트된 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : 로컬에서 새로운 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : 로컬에서 업데이트된 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : 로컬과 서버에서 업데이트된 카테고리 : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : 로컬에서 업데이트되고 서버에서 삭제된 카테고리 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -360,7 +470,7 @@
         }
 	},
 	"synchroModifGetOKFromServer": {
-		"message": "$P1$: 서버에서 성공적으로 전달 받은 수정 사항 : $P2$",
+		"message": "$P1$ : 서버에서 성공적으로 전달 받은 수정 사항 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -371,7 +481,7 @@
         }
 	},
 	"synchroModifGetKOFromServer": {
-		"message": "$P1$: 서버에서 전달 받는데 실패한 수정 사항 : $P2$",
+		"message": "$P1$ : 서버에서 전달 받는데 실패한 수정 사항 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -382,7 +492,7 @@
         }
 	},
 	"synchroModifPutOKToServer": {
-		"message": "$P1$: 성공적으로 서버에 푸시한 수정 사항 : $P2$",
+		"message": "$P1$ : 성공적으로 서버에 푸시한 수정 사항 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -393,7 +503,7 @@
         }
 	},
 	"synchroModifPutKOToServer": {
-		"message": "$P1$: 서버에 푸시하는데 실패한 수정 사항 : $P2$",
+		"message": "$P1$ : 서버에 푸시하는데 실패한 수정 사항 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -404,7 +514,7 @@
         }
 	},
 	"synchroImpossible": {
-		"message": "$P1$: 서버와의 동기화가 불가능합니다.",
+		"message": "$P1$ : 서버와의 동기화가 불가능합니다.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -420,7 +530,7 @@
         }
 	},
 	"synchroDBCardsOK": {
-		"message": "$P1$: 연락처 열림: $P2$",
+		"message": "$P1$ : 연락처 열림 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -431,7 +541,7 @@
         }
 	},
 	"synchroDBCardsKO": {
-		"message": "$P1$: 오류가 있는 연락처: $P1$",
+		"message": "$P1$ : 오류가 있는 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -442,7 +552,7 @@
         }
 	},
 	"synchroDirFinishedResult": {
-		"message": "$P1$: 디렉토리 열림, 연락처 결과:",
+		"message": "$P1$ : 디렉토리 열림, 연락처 결과 :",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -450,7 +560,7 @@
         }
 	},
 	"synchroDirCardsOK": {
-		"message": "$P1$: 연락처 열림: $P2$",
+		"message": "$P1$ : 연락처 열림 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -461,7 +571,7 @@
         }
 	},
 	"synchroDirCardsKO": {
-		"message": "$P1$: 오류가 있는 연락처: $P2$",
+		"message": "$P1$ : 오류가 있는 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -472,7 +582,7 @@
         }
 	},
 	"synchroFileFinishedResult": {
-		"message": "$P1$: 파일 열림, 연락처 결과:",
+		"message": "$P1$ : 파일 열림, 연락처 결과 :",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -480,7 +590,7 @@
         }
 	},
 	"synchroFileCardsOK": {
-		"message": "$P1$: 연락처 열림: $P2$",
+		"message": "$P1$ : 연락처 열림 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -491,7 +601,7 @@
         }
 	},
 	"synchroFileCardsKO": {
-		"message": "$P1$: 오류가 있는 연락처: $P2$",
+		"message": "$P1$ : 오류가 있는 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -502,7 +612,7 @@
         }
 	},
 	"synchroForcedToResync": {
-		"message": "$P1$: 이 계정을 다시 동기화해야 합니다",
+		"message": "$P1$ : 이 계정을 다시 동기화해야 합니다",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -513,7 +623,7 @@
 		"message": "모든 동기화 완료"
 	},
 	"discoveryRunning": {
-		"message": "$P1$: 주소록 자동 검색 실행 중",
+		"message": "$P1$ : 주소록 자동 검색 실행 중",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -521,7 +631,7 @@
         }
 	},
 	"imageGetResponse": {
-		"message": "$P1$: 다운로드 된 이미지: $P2$",
+		"message": "$P1$ : 다운로드 된 이미지 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -532,7 +642,7 @@
         }
 	},
 	"imageGetError": {
-		"message": "$P1$: 오류가 있는 이미지: $P2$",
+		"message": "$P1$ : 오류가 있는 이미지 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -543,7 +653,7 @@
         }
 	},
 	"importFinishedResult": {
-		"message": "$P1$: 가져오기 완료, 연락처 결과:",
+		"message": "$P1$ : 가져오기 완료, 연락처 결과 :",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -551,7 +661,7 @@
         }
 	},
 	"importCardsOK": {
-		"message": "$P1$: 가져오기 한 연락처 : $P2$",
+		"message": "$P1$ : 가져오기 한 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -562,7 +672,7 @@
         }
 	},
 	"importCardsKO": {
-		"message": "$P1$: 오류가 있는 연락처: $P2$",
+		"message": "$P1$ : 오류가 있는 연락처 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -576,7 +686,7 @@
 		"message": "모든 가져오기 완료"
 	},
 	"cardDeletedOnDisk": {
-		"message": "$P1$: 연락처 $P2$이(가) 디스크에서 삭제 됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 로컬에서 삭제됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -587,7 +697,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "$P1$: 연락처 $P2$이(가) 디스크에 업데이트 됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 로컬에서 업데이트됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -598,18 +708,7 @@
         }
 	},
 	"cardAlreadyGetFromCache": {
-		"message": "$P1$: 연락처 $P2$을(를) 이미 캐시에서 받아 옴",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
-	"cardGetFromCache": {
-		"message": "$P1$: 연락처 $P2$을(를) 캐시에서 받아 옴",
+		"message": "$P1$ : 연락처 $P2$을(를) 이미 캐시에서 받아 옴",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -620,7 +719,7 @@
         }
 	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$: 연락처 $P2$이(가) 디스크에서 삭제되고 서버에서 업데이트 됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 로컬에서 삭제되고 서버에서 업데이트됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -631,7 +730,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "$P1$: 연락처 $P2$이(가) 디스크 및 서버에서 업데이트 됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 로컬과 서버에서 업데이트됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -642,7 +741,7 @@
         }
 	},
 	"cardUpdatedOnServer": {
-		"message": "$P1$: 연락처 $P2$이(가) 서버에서 업데이트 됨 (발견된 전자 태그: $P3$, 캐시된 전자 태그: $P4$)",
+		"message": "$P1$ : 연락처 $P2$이(가) 서버에서 업데이트 됨 (발견된 전자 태그: $P3$, 캐시된 전자 태그: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -659,26 +758,15 @@
         }
 	},
 	"cardNewOnServer": {
-		"message": "$P1$: 서버에서 새 연락처를 찾았습니다",
+		"message": "$P1$ : 서버에서 새 연락처를 찾았습니다",
         "placeholders": {
             "P1": {
                 "content": "$1"
-            }
-        }
-	},
-	"cardLoadedFromCache": {
-		"message": "$P1$: 연락처 $P2$이(가) 캐시에서 로드 됨",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
             }
         }
 	},
 	"cardLoadedFromCacheDB": {
-		"message": "$P1$: 연락처 $P2$이(가) 캐시에서 로드 됨 (IndexedDB)",
+		"message": "$P1$ : 연락처 $P2$이(가) 캐시에서 로드 됨 (IndexedDB)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$: 새 연락처 $P2$이(가) 디스크에 생성 됨",
+		"message": "$P1$ : 로컬에서 새로운 연락처 $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$: 연락처 $P2$이(가) 디스크에서 업데이트되고 서버에서 삭제 됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 로컬에서 업데이트되고 서버에서 삭제됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -711,7 +799,7 @@
         }
 	},
 	"cardDeletedOnServer": {
-		"message": "$P1$: 연락처 $P2$이(가) 서버에서 삭제됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 서버에서 삭제됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -722,7 +810,7 @@
         }
 	},
 	"cardAlreadyExists": {
-		"message": "$P1$: 연락처 $P2$이(가) 이미 존재 함",
+		"message": "$P1$ : 연락처 $P2$이(가) 이미 존재 함",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,35 +820,35 @@
             }
         }
 	},
-	"askUserTitle": {
+	"cardAskUserTitle": {
 		"message": "연락처 수정 충돌"
 	},
 	"askUserPersistMessage": {
 		"message": "다른 기존 연락처에이 선택 사항 적용"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "연락처 유지"
 	},
-	"updateAskUserLabel": {
+	"cardupdateAskUserLabel": {
 		"message": "연락처 덮어 쓰기"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "연락처 복제"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "연락처 삭제"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "로컬 변경 사항 우선"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "원격 변경 사항 우선"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "차이점 병합"
 	},
 	"serverCardDeletedFromServer": {
-		"message": "$P1$: 연락처 $P2$이(가) 서버에서 삭제 됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 서버에서 삭제 됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -771,7 +859,7 @@
         }
 	},
 	"serverCardNotExistServer": {
-		"message": "$P1$: 연락처 $P2$가 서버에 존재하지 않음",
+		"message": "$P1$ : 연락처 $P2$가 서버에 존재하지 않음",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -782,7 +870,7 @@
         }
 	},
 	"serverCardDeleteFailed": {
-		"message": "$P1$: 연락처 $P2$을(를) 서버에서 삭제하지 못했습니다 (URL 주소: $P3$, 상태: $P4$)",
+		"message": "$P1$ : 연락처 $P2$을(를) 서버에서 삭제하지 못했습니다 (URL 주소: $P3$, 상태: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -799,7 +887,7 @@
         }
 	},
 	"serverCardSendingDeletion": {
-		"message": "$P1$: 연락처 $P2$ : 삭제 요청을 보내는 중 …",
+		"message": "$P1$ : 연락처 $P2$ : 삭제 요청을 보내는 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -810,7 +898,7 @@
         }
 	},
 	"serverCardUpdatedOnServerWithEtag": {
-		"message": "$P1$: 연락처 $P2$가 서버에서 업데이트 됨 (전자 태그: $P3$)",
+		"message": "$P1$ : 연락처 $P2$가 서버에서 업데이트 됨 (전자 태그: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -824,7 +912,7 @@
         }
 	},
 	"serverCardUpdatedOnServerWithoutEtag": {
-		"message": "$P1$: 연락처 $P2$가 서버에서 업데이트 됨 (전자 태그 응답 없음)",
+		"message": "$P1$ : 연락처 $P2$가 서버에서 업데이트 됨 (전자 태그 응답 없음)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -835,7 +923,7 @@
         }
 	},
 	"serverCardUpdateFailed": {
-		"message": "$P1$: 연락처 $P2$가 서버에서 업데이트하지 못했습니다 (URL 주소: $P3$, 상태: $P4$)",
+		"message": "$P1$ : 연락처 $P2$가 서버에서 업데이트하지 못했습니다 (URL 주소: $P3$, 상태: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -852,7 +940,7 @@
         }
 	},
 	"serverCardSendingUpdate": {
-		"message": "$P1$: 연락처 $P2$: 업데이트 요청 보내기 중 …",
+		"message": "$P1$ : 연락처 $P2$: 업데이트 요청 보내기 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -863,7 +951,7 @@
         }
 	},
 	"serverCardCreatedOnServerWithEtag": {
-		"message": "$P1$: 연락처 $P2$가 서버에 생성 (전자 태그: $P3$)",
+		"message": "$P1$ : 연락처 $P2$가 서버에 생성 (전자 태그: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -877,7 +965,7 @@
         }
 	},
 	"serverCardCreatedOnServerWithoutEtag": {
-		"message": "$P1$: 연락처 $P2$가 서버에 생성 (전자 태그 응답없음)",
+		"message": "$P1$ : 연락처 $P2$가 서버에 생성 (전자 태그 응답없음)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -888,7 +976,7 @@
         }
 	},
 	"serverCardCreateFailed": {
-		"message": "$P1$: 연락처 $P2$를 서버에서 생성하지 못했습니다 (URL 주소: $P3$, 상태: $P4$)",
+		"message": "$P1$ : 서버에서 연락처 $P2$ 생성 실패 (URL 주소: $P3$, 상태: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -905,7 +993,7 @@
         }
 	},
 	"serverCardSendingCreate": {
-		"message": "$P1$: 연락처 $P2$: 생성 요청 보내기 중 …",
+		"message": "$P1$ : 연락처 $P2$: 생성 요청 보내기 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -916,7 +1004,7 @@
         }
 	},
 	"serverCardGetImageFailed": {
-		"message": "$P1$: $P2$ 연락처에서 이미지를 다운로드하지 못했습니다 (주소: $P3$, 상태: $P4$)",
+		"message": "$P1$ : $P2$ 연락처에서 이미지를 다운로드하지 못했습니다 (주소: $P3$, 상태: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -933,7 +1021,7 @@
         }
 	},
 	"serverCardGetImageOK": {
-		"message": "$P1$: 연락처 $P2$를 위한 이미지 다운로드 완료",
+		"message": "$P1$ : 연락처 $P2$를 위한 이미지 다운로드 완료",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -944,7 +1032,7 @@
         }
 	},
 	"serverCardGettingImage": {
-		"message": "$P1$: 연락처 $P2$를 위한 이미지 다운로드 중 …",
+		"message": "$P1$ : 연락처 $P2$를 위한 이미지 다운로드 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -955,7 +1043,7 @@
         }
 	},
 	"serverCardGetKeyFailed": {
-		"message": "$P1$ : 연락처 $P2$를 위해 키 다운로드 실패 (주소 : $P3$, 상태 : $P4$)",
+		"message": "$P1$ : 연락처 $P2$에 대한 키 다운로드 실패 (URL 주소 : $P3$, 상태 : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -994,7 +1082,7 @@
         }
 	},
 	"serverCardGetOK": {
-		"message": "$P1$: 서버에서 다운로드 된 연락처 $P2$",
+		"message": "$P1$ : 서버에서 다운로드 된 연락처 $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1005,7 +1093,7 @@
         }
 	},
 	"serverCardGetFailed": {
-		"message": "$P1$: 서버에서 다운로드하지 못했습니다 (URL 주소: $P2$, 상태: $P3$)",
+		"message": "$P1$ : 서버에서 다운로드하지 못했습니다 (URL 주소: $P2$, 상태: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1018,8 +1106,389 @@
             }
         }
 	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : 연락처 $P2$ : 연락처 레이블 획득 요청 보내는 중 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : 연락처 $P2$ : 레이블 획득",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : 연락처 $P2$ : 서버에서 레이블 획득 실패 (URL 주소 : $P3$, 상태 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : 연락처 $P2$ : 연락처 레이블 업데이트 요청 보내는 중 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : 연락처 $P2$ : 레이블 업데이트됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : 연락처 $P2$ : 서버에서 레이블 업데이트 실패 (URL 주소 : $P3$, 상태 : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : 로컬에서 카테고리 $P2$ 삭제됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : 로컬에서 카테고리 $P2$ 업데이트됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 이미 캐시에서 검색됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 로컬에서 삭제되고 서버에서 업데이트됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 로컬과 서버에서 업데이트 됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 서버에서 업데이트됨 (발견된 etag : $P3$, 캐시된 etag : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : 서버에서 새로운 카테고리 발견됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 캐시에서 로드됨 (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : 로컬에서 새로운 카테고리 $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 로컬에서 업데이트되고 서버에서 삭제됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 서버에서 삭제됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "카테고리 변경 내역 충돌"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "카테고리 유지"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "카테고리 삭제"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "로컬 변경 사항 우선"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "원격 변경 사항 우선"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 서버에서 삭제됨",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 서버에 존재하지 않음",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : 서버에서 카테고리 $P2$ 삭제 실패 (URL 주소: $P3$, 상태: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : 카테고리 $P2$ : 삭제 요청을 보내는 중 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 서버에서 업데이트됨 (etag: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 서버에서 업데이트 됨 (etag 응답 없음)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : 서버에서 카테고리 $P2$ 업데이트 실패 (URL 주소: $P3$, 상태: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : 카테고리 $P2$ : 업데이트 요청을 보내는 중 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 서버에서 생성됨 (etag: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : 카테고리 $P2$이(가) 서버에서 생성됨 (etag 응답 없음)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : 서버에서 카테고리 $P2$ 생성 실패 (URL 주소: $P3$, 상태: $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : 카테고리 $P2$ : 생성 요청을 보내는 중 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : 카테고리 검색 중 …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"synchronizationFailed": {
-		"message": "$P1$: 동기화 실패 (단계: $P2$, URL 주소: $P3$, 상태: $P4$)",
+		"message": "$P1$ : 동기화 실패 (단계: $P2$, URL 주소: $P3$, 상태: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1036,7 +1505,7 @@
         }
 	},
 	"synchronizationUnauthorized": {
-		"message": "$P1$: 서버에 로그인 할 수 없습니다. 잘못된 구성, 사용자 이름 또는 암호 일 것입니다.",
+		"message": "$P1$ : 서버에 로그인 할 수 없습니다. 잘못된 구성, 사용자 이름 또는 암호 일 것입니다.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1044,7 +1513,7 @@
         }
 	},
 	"synchronizationSearchingCards": {
-		"message": "$P1$: 연락처 검색 중 …",
+		"message": "$P1$ : 연락처 검색 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1052,7 +1521,7 @@
         }
 	},
 	"synchronizationRequestDiscovery": {
-		"message": "$P1$: $P2$에서 검색 요청없이 유효성 확인 중 …",
+		"message": "$P1$ : $P2$에서 검색 요청없이 유효성 확인 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1063,7 +1532,7 @@
         }
 	},
 	"synchronizationRequestDiscovery4": {
-		"message": "$P1$: $P2$에서 4 단계 요청 검색 중 …",
+		"message": "$P1$ : $P2$에서 4 단계 요청 검색 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1074,7 +1543,7 @@
         }
 	},
 	"synchronizationRequestDiscovery3": {
-		"message": "$P1$: $P2$에서 3 단계 요청 검색 중 …",
+		"message": "$P1$ : $P2$에서 3 단계 요청 검색 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1085,7 +1554,7 @@
         }
 	},
 	"synchronizationRequestDiscovery2": {
-		"message": "$P1$: $P2$에서 2 단계 요청 검색 중 …",
+		"message": "$P1$ : $P2$에서 2 단계 요청 검색 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1096,7 +1565,7 @@
         }
 	},
 	"synchronizationRequestDiscovery1": {
-		"message": "$P1$: $P2$에서 1 단계 요청 검색 중 …",
+		"message": "$P1$ : $P2$에서 1 단계 요청 검색 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1107,7 +1576,7 @@
         }
 	},
 	"googleAccessTokenOK": {
-		"message": "$P1$: 구글 액세스 토큰 요청 확인, 액세스 토큰: $P2$",
+		"message": "$P1$ : 구글 액세스 토큰 요청 확인, 액세스 토큰 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1118,7 +1587,7 @@
         }
 	},
 	"googleRefreshTokenOK": {
-		"message": "$P1$: 구글 새로 고침 토큰 요청 확인, 토큰 새로 고침: $P2$",
+		"message": "$P1$ : 구글 새로 고침 토큰 요청 확인, 토큰 새로 고침 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1129,7 +1598,7 @@
         }
 	},
 	"googleGetNewRefreshToken": {
-		"message": "$P1$: $P2$에서 새로운 Google 새로 고침 토큰 발급 시도 중 …",
+		"message": "$P1$ : $P2$에서 새로운 Google 새로 고침 토큰 발급 시도 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1140,7 +1609,7 @@
         }
 	},
 	"googleNewRefreshTokenOK": {
-		"message": "$P1$: 승인 코드 수신 : $P2$ …",
+		"message": "$P1$ : 승인 코드 수신 : $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1151,7 +1620,7 @@
         }
 	},
 	"googleRequestAccessToken": {
-		"message": "$P1$: $P2$에 대한 구글 액세스 토큰 요청 …",
+		"message": "$P1$ : $P2$에 대한 구글 액세스 토큰 요청 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1162,7 +1631,7 @@
         }
 	},
 	"googleRequestRefreshToken": {
-		"message": "$P1$: $P2$에 대한 Google 새로 고침 토큰 요청 …",
+		"message": "$P1$ : $P2$에 대한 Google 새로 고침 토큰 요청 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1173,7 +1642,7 @@
         }
 	},
 	"yahooAccessTokenOK": {
-		"message": "$P1$: Yahoo! 액세스 토큰 요청 확인, 액세스 토큰: $P2$",
+		"message": "$P1$ : Yahoo! 액세스 토큰 요청 확인, 액세스 토큰 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1184,7 +1653,7 @@
         }
 	},
 	"yahooRefreshTokenOK": {
-		"message": "$P1$: Yahoo! 새로 고침 토큰 요청 확인, 토큰 새로 고침: $P2$",
+		"message": "$P1$ : Yahoo! 새로 고침 토큰 요청 확인, 토큰 새로 고침 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1195,7 +1664,7 @@
         }
 	},
 	"yahooGetNewRefreshToken": {
-		"message": "$P1$: $P2$에서 새로운 Yahoo! 새로 고침 토큰 발급 시도 중 …",
+		"message": "$P1$ : $P2$에서 새로운 Yahoo! 새로 고침 토큰 발급 시도 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1206,7 +1675,7 @@
         }
 	},
 	"yahooNewRefreshTokenOK": {
-		"message": "$P1$: 승인 코드 수신 : $P2$ …",
+		"message": "$P1$ : 승인 코드 수신 : $P2$ …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1217,7 +1686,7 @@
         }
 	},
 	"yahooRequestAccessToken": {
-		"message": "$P1$: $P2$에 대한 Yahoo! 액세스 토큰 요청 …",
+		"message": "$P1$ : $P2$에 대한 Yahoo! 액세스 토큰 요청 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1228,7 +1697,7 @@
         }
 	},
 	"yahooRequestRefreshToken": {
-		"message": "$P1$: $P2$에 대한 Yahoo! 새로 고침 토큰 요청 …",
+		"message": "$P1$ : $P2$에 대한 Yahoo! 새로 고침 토큰 요청 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1239,7 +1708,7 @@
         }
 	},
 	"periodicSyncDeleting": {
-		"message": "$P1$: 정기적인 동기화 프로세스 삭제 (id: $P2$)",
+		"message": "$P1$ : 정기적인 동기화 프로세스 삭제 (id: $P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1250,7 +1719,7 @@
         }
 	},
 	"periodicSyncSetting": {
-		"message": "$P1$: 주기적 동기화 프로세스 설정 (간격: $P2$ 밀리초, id: $P3$)",
+		"message": "$P1$ : 주기적 동기화 프로세스 설정 (간격: $P2$ 밀리초, id: $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1264,7 +1733,7 @@
         }
 	},
 	"periodicSyncSyncing": {
-		"message": "$P1$: 주기적 동기화 설정에 따른 동기화 중 …",
+		"message": "$P1$ : 주기적 동기화 설정에 따른 동기화 중 …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1296,7 +1765,7 @@
         }
 	},
 	"parsingCardError": {
-		"message": "$P1$: 연락처를 파싱하는 중 오류가 발생했습니다: \n$P2$ \n$P3$",
+		"message": "$P1$ : 연락처를 파싱하는 중 오류가 발생했습니다: \n$P2$ \n$P3$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1310,7 +1779,7 @@
         }
 	},
 	"addressbookOpened": {
-		"message": "$P1$: 주소록 열림",
+		"message": "$P1$ : 주소록 열림",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1318,7 +1787,7 @@
         }
 	},
 	"addressbookModified": {
-		"message": "$P1$: 주소록 수정 됨",
+		"message": "$P1$ : 주소록 수정 됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1326,7 +1795,7 @@
         }
 	},
 	"addressbookDeleted": {
-		"message": "$P1$: 주소록 닫힘",
+		"message": "$P1$ : 주소록 닫힘",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1334,7 +1803,7 @@
         }
 	},
 	"addressbookCreated": {
-		"message": "$P1$: 주소록이 생성되었습니다",
+		"message": "$P1$ : 주소록이 생성되었습니다",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1342,7 +1811,7 @@
         }
 	},
 	"addressbookDisabled": {
-		"message": "$P1$: 주소록 사용 중지됨",
+		"message": "$P1$ : 주소록 사용 중지됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1350,7 +1819,7 @@
         }
 	},
 	"addressbookReadOnly": {
-		"message": "$P1$: 주소록 읽기 전용 모드의 주소록",
+		"message": "$P1$ : 주소록 읽기 전용 모드의 주소록",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1358,7 +1827,7 @@
         }
 	},
 	"addressbookReadWrite": {
-		"message": "$P1$: 읽기 - 쓰기 모드의 주소록",
+		"message": "$P1$ : 읽기 - 쓰기 모드의 주소록",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1366,7 +1835,7 @@
         }
 	},
 	"addressbookEnabled": {
-		"message": "$P1$: 주소록 활성화",
+		"message": "$P1$ : 주소록 활성화",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1374,7 +1843,7 @@
         }
 	},
 	"cardCreated": {
-		"message": "$P1$: 연락처 $P2$이(가) 생성됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 생성됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1385,7 +1854,7 @@
         }
 	},
 	"cardUpdated": {
-		"message": "$P1$: 연락처 $P2$이(가) 업데이트 됨",
+		"message": "$P1$ : 연락처 $P2$이(가) 업데이트 됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1396,7 +1865,7 @@
         }
 	},
 	"cardDeleted": {
-		"message": "$P1$: 연락처 $P2$이(가) 삭제되었습니다",
+		"message": "$P1$ : 연락처 $P2$이(가) 삭제되었습니다",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1407,7 +1876,7 @@
         }
 	},
 	"cardAddedToCategory": {
-		"message": "$P1$: 연락처 $P2$이(가) 카테고리 $P3$에 추가 되었습니다",
+		"message": "$P1$ : 연락처 $P2$이(가) 카테고리 $P3$에 성공적으로 추가됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1421,7 +1890,7 @@
         }
 	},
 	"cardDeletedFromAllCategory": {
-		"message": "$P1$: 연락처 $P2$이(가) 모든 카테고리에서 삭제 되었습니다",
+		"message": "$P1$ : 연락처 $P2$이(가) 성공적으로 모든 카테고리에서 삭제됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1551,7 +2020,7 @@
 		"message": "이동된 연락처"
 	},
 	"categoryCreated": {
-		"message": "$P1$: 카테고리 $P2$이(가) 생성 됨",
+		"message": "$P1$ : 카테고리 $P2$이(가) 생성 됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1585,6 +2054,17 @@
             }
         }
 	},
+	"categoryRenamed": {
+		"message": "$P1$ : 카테고리 $P2$ 이름 바꾸기",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
 	"categoryRenamedUndo": {
 		"message": "카테고리 $P1$ 이름 바꾸기",
         "placeholders": {
@@ -1594,7 +2074,7 @@
         }
 	},
 	"categoryDeleted": {
-		"message": "$P1$: 카테고리 $P2$가 삭제 됨",
+		"message": "$P1$ : 카테고리 $P2$가 삭제 됨",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2073,7 +2553,7 @@
 		"message": "기념일 동기화 실패"
 	},
 	"syncListExistingEntry": {
-		"message": "$P1$: Lightning의 기존 이벤트: $P2$",
+		"message": "$P1$ : Lightning의 기존 이벤트 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2084,7 +2564,7 @@
         }
 	},
 	"syncListCreatedEntry": {
-		"message": "$P1$: Lightning에서 생성된 이벤트: $P2$",
+		"message": "$P1$ : Lightning에서 생성된 이벤트 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2095,7 +2575,7 @@
         }
 	},
 	"syncListErrorEntry": {
-		"message": "$P1$: Lightning에서 오류가 발생한 이벤트: $P2$",
+		"message": "$P1$ : Lightning에서 오류가 발생한 이벤트 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2172,7 +2652,7 @@
 		"message": "vCard 버전 3.0 혹은 4.0만 지원 됨"
 	},
 	"unableToParseResponse": {
-		"message": "$P1$: 이 목록으로 인해 서버 응답을 분석 할 수 없습니다: $P2$",
+		"message": "$P1$ : 이 목록으로 인해 서버 응답을 분석 할 수 없습니다 : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "소속 편집기"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "카테고리 생성"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "카테고리 편집기"
 	},
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "유형:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "카테고리:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "카테고리:"
@@ -2761,8 +3247,32 @@
             }
         }
 	},
-	"newTokenDescription": {
+	"warnDescription": {
 		"message": "CardBook이 연락처를 받아오기 위해 귀하의 $P1$ 계정에 접근하고자 합니다. 로그인 정보와 연락처 데이터는 귀하의 컴퓨터와 Google 사이에만 전송되며 제 3 사이트는 연결되지 않습니다.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "애플리케이션: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "클라이언트 인증: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "영역: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3401,9 +3911,6 @@
 	},
 	"birthdaylistTabLabel": {
 		"message": "기념일"
-	},
-	"synclistTabLabel": {
-		"message": "기념일 알림"
 	},
 	"integrationGroupboxLabel": {
 		"message": "Thunderbird 통합 기능"
@@ -4543,7 +5050,7 @@
 		"message": "CardBook 메뉴"
 	},
 	"cardbookToolbarAppMenuButtonTooltip": {
-		"message": "CardBook  메뉴"
+		"message": "CardBook 메뉴"
 	},
 	"cardbookToolbarSearchBoxLabel": {
 		"message": "연락처 검색"

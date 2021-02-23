@@ -5,6 +5,7 @@ Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookEncryptor
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookIndexedDB.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookActions.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookCategoryParser.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookWindowUtils.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookElementTools.js", window, "UTF-8");
@@ -273,14 +274,14 @@ function onLoad(wasAlreadyOpen) {
 					<toolbarbutton id="cardbookToolbarWriteButton" is="toolbarbutton-menu-button" 
 						label="__MSG_cardbookToolbarWriteButtonLabel__"
 						tooltiptext="__MSG_cardbookToolbarWriteButtonTooltip__"
-						oncommand="wdw_cardbook.emailCardsFromWriteButton('2', 'to');"
+						oncommand="wdw_cardbook.emailCardsFromAction('to');"
 						class="toolbarbutton-1"
 						mode="dialog"
 						type="menu-button">
 						<menupopup>
-							<menuitem id="cardbookContactsMenuToEmailCards" label="__MSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'to');"/>
-							<menuitem id="cardbookContactsMenuCcEmailCards" label="__MSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'cc');"/>
-							<menuitem id="cardbookContactsMenuBccEmailCards" label="__MSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromWriteButton('1', 'bcc');"/>
+							<menuitem id="cardbookContactsMenuToEmailCards" label="__MSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('to');"/>
+							<menuitem id="cardbookContactsMenuCcEmailCards" label="__MSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('cc');"/>
+							<menuitem id="cardbookContactsMenuBccEmailCards" label="__MSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('bcc');"/>
 						</menupopup>
 					</toolbarbutton>
 					<toolbarbutton id="cardbookToolbarChatButton"
@@ -382,9 +383,9 @@ function onLoad(wasAlreadyOpen) {
 										</menupopup>
 									</menu>
 									<menuseparator/>
-									<menuitem id="cardbookContactsMenuToEmailCards" label="__MSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('to');"/>
-									<menuitem id="cardbookContactsMenuCcEmailCards" label="__MSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('cc');"/>
-									<menuitem id="cardbookContactsMenuBccEmailCards" label="__MSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('bcc');"/>
+									<menuitem id="cardbookContactsMenuToEmailCards" label="__MSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('to');"/>
+									<menuitem id="cardbookContactsMenuCcEmailCards" label="__MSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('cc');"/>
+									<menuitem id="cardbookContactsMenuBccEmailCards" label="__MSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('bcc');"/>
 									<menuseparator/>
 									<menu id="cardbookContactsMenuIMPPCards" label="__MSG_IMPPMenuLabel__">
 										<menupopup id="cardbookContactsMenuIMPPCardsMenuPopup"/>
@@ -535,9 +536,9 @@ function onLoad(wasAlreadyOpen) {
 				<menuseparator/>
 				<menuitem id="syncAccountFromAccountsOrCats" label="__MSG_syncAccountFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.syncAccountFromAccountsOrCats();"/>
 				<menuseparator/>
-				<menuitem id="toEmailCardsFromAccountsOrCats" label="__MSG_toEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAccountsOrCats('to');"/>
-				<menuitem id="ccEmailCardsFromAccountsOrCats" label="__MSG_ccEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAccountsOrCats('cc');"/>
-				<menuitem id="bccEmailCardsFromAccountsOrCats" label="__MSG_bccEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAccountsOrCats('bcc');"/>
+				<menuitem id="toEmailCardsFromAccountsOrCats" label="__MSG_toEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('to');"/>
+				<menuitem id="ccEmailCardsFromAccountsOrCats" label="__MSG_ccEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('cc');"/>
+				<menuitem id="bccEmailCardsFromAccountsOrCats" label="__MSG_bccEmailCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('bcc');"/>
 				<menuseparator/>
 				<menuitem id="shareCardsByEmailFromAccountsOrCats" label="__MSG_shareCardByEmailFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.shareCardsByEmailFromAccountsOrCats();"/>
 				<menuseparator/>
@@ -545,6 +546,7 @@ function onLoad(wasAlreadyOpen) {
 				<menuitem id="copyCardsFromAccountsOrCats" label="__MSG_copyCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.copyCardsFromAccountsOrCats();"/>
 				<menuitem id="pasteCardsFromAccountsOrCats" label="__MSG_pasteCardFromAccountsOrCatsLabel__" oncommand="wdw_cardbook.pasteCards();"/>
 				<menuseparator/>
+				<menuitem id="createNodeFromAccountsOrCats" oncommand="wdw_cardbook.selectNodeToAction('CREATE');"/>
 				<menuitem id="editNodeFromAccountsOrCats" oncommand="wdw_cardbook.selectNodeToAction('EDIT');"/>
 				<menuitem id="removeNodeFromAccountsOrCats" oncommand="wdw_cardbook.selectNodeToAction('REMOVE');"/>
 				<menuitem id="convertNodeFromAccountsOrCats" oncommand="wdw_cardbook.selectNodeToAction('CONVERT');"/>
@@ -575,9 +577,9 @@ function onLoad(wasAlreadyOpen) {
 					</menupopup>
 				</menu>
 				<menuseparator/>
-				<menuitem id="toEmailCardsFromCards" label="__MSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('to');"/>
-				<menuitem id="ccEmailCardsFromCards" label="__MSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('cc');"/>
-				<menuitem id="bccEmailCardsFromCards" label="__MSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromCards('bcc');"/>
+				<menuitem id="toEmailCardsFromCards" label="__MSG_toEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('to');"/>
+				<menuitem id="ccEmailCardsFromCards" label="__MSG_ccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('cc');"/>
+				<menuitem id="bccEmailCardsFromCards" label="__MSG_bccEmailCardFromCardsLabel__" oncommand="wdw_cardbook.emailCardsFromAction('bcc');"/>
 				<menuitem id="shareCardsByEmailFromCards" label="__MSG_shareCardByEmailFromCardsLabel__" oncommand="wdw_cardbook.shareCardsByEmailFromCards();"/>
 				<menuitem id="findEmailsFromCards" label="__MSG_findEmailsFromCardsLabel__" oncommand="wdw_cardbook.findEmailsFromCards();"/>
 				<menuseparator/>

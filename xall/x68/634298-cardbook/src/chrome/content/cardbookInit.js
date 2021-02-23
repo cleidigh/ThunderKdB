@@ -102,7 +102,7 @@ var cardbookInit = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "55.2");
+		prefs.setCharPref("addonVersion", "56.1");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);

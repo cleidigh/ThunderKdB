@@ -861,7 +861,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			cardbookWindowUtils.loadMailPopularity(aCard, aReadOnly);
 			
 			if (aReadOnly) {
-				cardbookWindowUtils.constructStaticKeysRows(aCard.dirPrefId, aCard.key, aCard.version);
+				cardbookWindowUtils.constructStaticKeysRows(aCard.dirPrefId, aCard.key, aCard.version, aCard.fn, aCard.dirPrefId);
 			} else {
 				cardbookWindowUtils.constructDynamicKeysRows(aCard.dirPrefId, "key", aCard.key, aCard.version);
 			}
@@ -1300,9 +1300,9 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			}
 		},
 
-		constructStaticKeysRows: function (aDirPrefId, aKey, aVersion) {
+		constructStaticKeysRows: function (aDirPrefId, aKey, aVersion, aCardFn, aCardDirPrefId) {
 			for (var i = 0; i < aKey.length; i++) {
-				cardbookWindowUtils.loadStaticKeysTypes(aDirPrefId, "key", i, aKey[i], aVersion);
+				cardbookWindowUtils.loadStaticKeysTypes(aDirPrefId, "key", i, aKey[i], aVersion, aCardFn, aCardDirPrefId);
 			}
 		},
 
@@ -1866,9 +1866,9 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			if (aKeyType.URI != "") {
 				value = aKeyType.URI;
 			} else {
-				value = aKeyType.value;
+				value = aKeyType.value.replaceAll("\\n", "\n").replaceAll("\\r", "\r");
 			}
-			var keyTextbox = cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', value, {}, aIndex);
+			var keyTextbox = cardbookElementTools.addKeyTextarea(aHBox, aType + '_' + aIndex + '_valueBox', value, { "style": "flex: 1" }, aIndex);
 
 			function fireLinkKeyButton(event) {
 				if (document.getElementById(this.id).disabled) {
@@ -2140,9 +2140,9 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			aRow.addEventListener("click", fireClick, false);
 		},
 
-		loadStaticKeysTypes: function (aDirPrefId, aType, aIndex, aKeyType, aVersion) {
+		loadStaticKeysTypes: function (aDirPrefId, aType, aIndex, aKeyType, aVersion, aCardFn, aCardDirPrefId) {
 			var aOrigBox = document.getElementById(aType + 'ReadOnlyGroupbox');
-			var aButton = cardbookElementTools.addKeyButton(aOrigBox, aType, aIndex, aKeyType);
+			var aButton = cardbookElementTools.addKeyButton(aOrigBox, aType, aIndex, aKeyType, aCardFn, aCardDirPrefId);
 		},
 
 		loadMailPopularity: function (aCard, aReadOnly) {

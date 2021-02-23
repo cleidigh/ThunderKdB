@@ -16,7 +16,7 @@ var cardbookSynchro = {
 
 			// once openDB is finished, it will fire an event
 			// and then load the cache and maybe sync the accounts
-			cardbookIndexedDB.openDB();
+			cardbookIndexedDB.openCatDB();
 
 			// query for some undos
 			cardbookIndexedDB.openUndoDB();

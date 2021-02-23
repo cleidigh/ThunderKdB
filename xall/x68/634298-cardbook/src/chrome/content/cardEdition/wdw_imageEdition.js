@@ -181,7 +181,6 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				var myType = "IMAGES";
                 if (cardbookClipboard.clipboardCanPaste(myType)) {
                     var data = cardbookClipboard.clipboardGetData(myType);
-
                     if (data.flavor.startsWith("image/")) {
                         var myExtension = data.flavor == "image/png" ? "png" : (data.flavor == "image/gif" ? "gif" : "jpg");
                         var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);

@@ -3,8 +3,6 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var EXPORTED_SYMBOLS = ["cardbookPasswordManager"];
 var cardbookPasswordManager = {
 
-	oauthPrefix: "chrome://cardbook/oauth",
-
 	getRootUrl: function (aUrl) {
 		try {
 			var urlArray1 = aUrl.split("://");
@@ -64,8 +62,10 @@ var cardbookPasswordManager = {
 		if (cardbookRepository.logins[aUsername] && cardbookRepository.logins[aUsername][myRootUrl]) {
 			return cardbookRepository.logins[aUsername][myRootUrl];
 		} else {
-			if (aUrl.startsWith(cardbookRepository.cardbookOAuthData.GOOGLE.ROOT_API) || aUrl.startsWith(cardbookRepository.cardbookOAuthData.YAHOO.ROOT_API)) {
-				var logins = Services.logins.findLogins(this.oauthPrefix, "User Refresh Token", null);
+			if (aUrl == cardbookRepository.cardbookOAuthData.GOOGLE.AUTH_PREFIX_CONTACTS ||
+				aUrl == cardbookRepository.cardbookOAuthData.GOOGLE.AUTH_PREFIX_LABELS ||
+				aUrl == cardbookRepository.cardbookOAuthData.YAHOO.AUTH_PREFIX_CONTACTS) {
+				var logins = Services.logins.findLogins(aUrl, "User Refresh Token", null);
 			} else {
 				var logins = Services.logins.findLogins(cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
 			}
@@ -80,22 +80,22 @@ var cardbookPasswordManager = {
 
 	addPassword: function (aUsername, aUrl, aPassword) {
 		var nsLoginInfo = new Components.Constructor("@mozilla.org/login-manager/loginInfo;1", Components.interfaces.nsILoginInfo, "init");
-		if (aUrl) {
-			var login_info = new nsLoginInfo(cardbookPasswordManager.getRootUrl(aUrl), "User login", null, aUsername, aPassword, "", "");
-		} else {
+		if (aUrl.startsWith(cardbookRepository.oauthPrefix)) {
 			// google and yahoo cases
-			var login_info = new nsLoginInfo(this.oauthPrefix, "User Refresh Token", null, aUsername, aPassword, "", "");
+			var login_info = new nsLoginInfo(aUrl, "User Refresh Token", null, aUsername, aPassword, "", "");
+		} else {
+			var login_info = new nsLoginInfo(cardbookPasswordManager.getRootUrl(aUrl), "User login", null, aUsername, aPassword, "", "");
 		}
 		Services.logins.addLogin(login_info);
 		return true;
 	},
 
 	removePassword: function (aUsername, aUrl) {
-		if (aUrl) {
-			var logins = Services.logins.findLogins(cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
-		} else {
+		if (aUrl.startsWith(cardbookRepository.oauthPrefix)) {
 			// google and yahoo cases
-			var logins = Services.logins.findLogins(this.oauthPrefix, "User Refresh Token", null);
+			var logins = Services.logins.findLogins(aUrl, "User Refresh Token", null);
+		} else {
+			var logins = Services.logins.findLogins(cardbookPasswordManager.getRootUrl(aUrl), "User login", null);
 		}
 		for (var i = 0; i < logins.length; i++) {
 			if (logins[i].username == aUsername) {

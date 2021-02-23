@@ -58,6 +58,7 @@ let JSMs = [
 	"chrome://cardbook/content/print/wdw_cardbookPrint.js",
 	"chrome://cardbook/content/cardbookActions.js",
 	"chrome://cardbook/content/cardbookCardParser.js",
+	"chrome://cardbook/content/cardbookCategoryParser.js",
 	"chrome://cardbook/content/cardbookClipboard.js",
 	"chrome://cardbook/content/cardbookDatePicker.js",
 	"chrome://cardbook/content/cardbookDates.jsm",

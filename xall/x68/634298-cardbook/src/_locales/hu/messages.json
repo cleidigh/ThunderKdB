@@ -1,6 +1,6 @@
 {
 	"extName": {
-		"message": "Névjegyzék (CardBook)"
+		"message": "CardBook"
 	},
 	"extDesc": {
 		"message": "vCard névjegyzék"
@@ -60,9 +60,6 @@
 	"uncategorizedCards": {
 		"message": "Nincs kategorizálva"
 	},
-	"collectedCards": {
-		"message": "Összegyűjtött névjegyek"
-	},
 	"enableFromAccountsOrCats": {
 		"message": "Névjegytár engedélyezze"
 	},
@@ -74,6 +71,9 @@
 	},
 	"readOnlyFromAccountsOrCats": {
 		"message": "Névjegytár csak olvasás mód beállítása"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "Kategória létrehozása"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Kategória szerkesztése"
@@ -294,7 +294,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$ : Számítógépes lemez névjegyek törölt : $P2$",
+		"message": "$P1$ : Névjegyek helyileg törölve : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +305,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Számítógépes lemez névjegyek törölt, és számítógépes kiszolgáló névjegyek frissített : $P2$",
+		"message": "$P1$ : Névjegyek helyileg törölve és a kiszolgálón frissítve : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +316,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "$P1$ : Számítógépes lemez névjegyek létrehozott : $P2$",
+		"message": "$P1$ : Névjegyek újak helyileg : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +327,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$ : Számítógépes lemez névjegyek frissített : $P2$",
+		"message": "$P1$ : Névjegyek helyileg frissültek : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +338,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$ : Számítógépes lemez névjegyek frissített és számítógépes kiszolgáló névjegyek frissített : $P2$",
+		"message": "$P1$ : Névjegyek helyileg és a kiszolgálón frissültek : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +349,117 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Számítógépes lemez névjegyek frissített és számítógépes kiszolgáló névjegyek törölt : $P2$",
+		"message": "$P1$ : Névjegyeket helyileg frissítették és törölték a kiszolgálóról : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : Kategóriák naprakészek : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : Kiszolgálón új kategóriák : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : Kiszolgálón frissített kategóriák : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : Kiszolgálóról törölt kategóriák : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : Helyileg törölt kategóriák : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Helyileg törölt és a kiszolgálón frissített kategóriák : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : Helyileg új kategóriák : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : Helyileg frissülő kategóriák : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : Helyileg és a kiszolgálón frissített kategóriák : $P2$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Helyileg frissített és a kiszolgálóról törölt kategóriák : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -360,7 +470,7 @@
         }
 	},
 	"synchroModifGetOKFromServer": {
-		"message": "$P1$ : Számítógépes kiszolgáló módosítás lekért sikeresenül : $P2$",
+		"message": "$P1$ : Kiszolgáló módosítás lekért sikeresenül : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -371,7 +481,7 @@
         }
 	},
 	"synchroModifGetKOFromServer": {
-		"message": "$P1$ : Számítógépes kiszolgáló módosítás lekért sikertelenül : $P2$",
+		"message": "$P1$ : Kiszolgáló módosítás lekért sikertelenül : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -382,7 +492,7 @@
         }
 	},
 	"synchroModifPutOKToServer": {
-		"message": "$P1$ : Számítógépes kiszolgáló módosítás felnyomott sikeresenül : $P2$",
+		"message": "$P1$ : Kiszolgáló módosítás felnyomott sikeresen : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -393,7 +503,7 @@
         }
 	},
 	"synchroModifPutKOToServer": {
-		"message": "$P1$ : Számítógépes kiszolgáló módosítás felnyomott sikertelenül : $P2$",
+		"message": "$P1$ : Kiszolgáló módosítás felnyomott sikertelenül : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -404,7 +514,7 @@
         }
 	},
 	"synchroImpossible": {
-		"message": "$P1$ : Összehangolás lehetetlen a számítógépes kiszolgálóval.",
+		"message": "$P1$ : Összehangolás lehetetlen a kiszolgálóval.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -576,7 +686,7 @@
 		"message": "Minden import kész"
 	},
 	"cardDeletedOnDisk": {
-		"message": "$P1$ : $P2$ névjegy törölt a számítógépes lemezrol",
+		"message": "$P1$ : $P2$ névjegy helyileg törölve",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -587,7 +697,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "$P1$ : $P2$ névjegy frissített számítógépes lemezre",
+		"message": "$P1$ : $P2$ névjegy helyileg frissítve",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -608,19 +718,8 @@
             }
         }
 	},
-	"cardGetFromCache": {
-		"message": "$P1$ : $P2$ névjegy lekért a gyorsítótárrol",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
-            }
-        }
-	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : $P2$ névjegy törölt a számítógépes lemezre, és frissített a számítógépes kiszolgálóra",
+		"message": "$P1$ : $P2$ névjegy helyileg törölve és frissítve a kiszolgálón",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -631,7 +730,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "$P1$ : $P2$ névjegy frissített a számítógépes lemezre, és frissített a számítógépes lemezre",
+		"message": "$P1$ : $P2$ névjegy helyileg és a kiszolgálón frissítve",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -642,7 +741,7 @@
         }
 	},
 	"cardUpdatedOnServer": {
-		"message": "$P1$ : $P2$ névjegy frissített a számítógépes kiszolgálóra (etag talált : $P3$, etag gyorsítótárban : $P4$)",
+		"message": "$P1$ : $P2$ névjegy frissített a kiszolgálóra (elektronikus címke talált : $P3$, elektronikus címke gyorsítótárban : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -659,21 +758,10 @@
         }
 	},
 	"cardNewOnServer": {
-		"message": "$P1$ : Talált egy új névjegy a számítógépes kiszolgáló",
+		"message": "$P1$ : Talált egy új névjegy a kiszolgálón",
         "placeholders": {
             "P1": {
                 "content": "$1"
-            }
-        }
-	},
-	"cardLoadedFromCache": {
-		"message": "$P1$ : $P2$ névjegy betöltött gyorsítótárról",
-        "placeholders": {
-            "P1": {
-                "content": "$1"
-            },
-            "P2": {
-                "content": "$2"
             }
         }
 	},
@@ -689,7 +777,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$ : $P2$ névjegy új lemezen",
+		"message": "$P1$ : $P2$ névjegy új helyileg",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -700,7 +788,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : $P2$ névjegy frissített számítógépes lemezre és törölt a számítógépes kiszolgálóról",
+		"message": "$P1$ : $P2$ névjegy helyileg frissítve és törölve a kiszolgálóról",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -711,7 +799,7 @@
         }
 	},
 	"cardDeletedOnServer": {
-		"message": "$P1$ : $P2$ névjegy törölt a számítógépes kiszolgálóról",
+		"message": "$P1$ : $P2$ névjegy törölt a kiszolgálóról",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -732,35 +820,35 @@
             }
         }
 	},
-	"askUserTitle": {
+	"cardAskUserTitle": {
 		"message": "Névjegy módosítás összeütközése"
 	},
 	"askUserPersistMessage": {
 		"message": "Alkalmazzuk ezt választás más meglévő névjegyekhez"
 	},
-	"keepAskUserLabel": {
+	"cardkeepAskUserLabel": {
 		"message": "Névjegy megtartása"
 	},
-	"updateAskUserLabel": {
+	"cardupdateAskUserLabel": {
 		"message": "Névjegy felülírása"
 	},
-	"duplicateAskUserLabel": {
+	"cardduplicateAskUserLabel": {
 		"message": "Névjegy megkettőzött"
 	},
-	"deleteAskUserLabel": {
+	"carddeleteAskUserLabel": {
 		"message": "Névjegy törlése"
 	},
-	"localAskUserLabel": {
+	"cardlocalAskUserLabel": {
 		"message": "Helyi módosítások előnyben részes"
 	},
-	"remoteAskUserLabel": {
+	"cardremoteAskUserLabel": {
 		"message": "Távoli módosítások előnyben részes"
 	},
-	"mergeAskUserLabel": {
+	"cardmergeAskUserLabel": {
 		"message": "Egyesíti a különbségek"
 	},
 	"serverCardDeletedFromServer": {
-		"message": "$P1$ : $P2$ névjegy törölt a számítógépes kiszolgálóról",
+		"message": "$P1$ : $P2$ névjegy törölt a kiszolgálóról",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -771,7 +859,7 @@
         }
 	},
 	"serverCardNotExistServer": {
-		"message": "$P1$ : $P2$ névjegy nem létezik a számítógépes kiszolgálón",
+		"message": "$P1$ : $P2$ névjegy nem létezik a kiszolgálón",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -782,7 +870,7 @@
         }
 	},
 	"serverCardDeleteFailed": {
-		"message": "$P1$ : $P2$ névjegy törlés sikertelen a számítógépes kiszolgálóról (webcím : $P3$, állapot : $P4$)",
+		"message": "$P1$ : $P2$ névjegy törlés sikertelen a kiszolgálóról (webcím : $P3$, állapot : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -810,7 +898,7 @@
         }
 	},
 	"serverCardUpdatedOnServerWithEtag": {
-		"message": "$P1$ : $P2$ névjegy frissített a számítógépes kiszolgálón (etag : $P3$)",
+		"message": "$P1$ : $P2$ névjegy frissített a kiszolgálón (elektronikus címke : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -824,7 +912,7 @@
         }
 	},
 	"serverCardUpdatedOnServerWithoutEtag": {
-		"message": "$P1$ : $P2$ névjegy frissített a számítógépes kiszolgálón (nincs etag válaszul)",
+		"message": "$P1$ : $P2$ névjegy frissített a kiszolgálón (nincs elektronikus címke válaszul)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -835,7 +923,7 @@
         }
 	},
 	"serverCardUpdateFailed": {
-		"message": "$P1$ : $P2$ névjegy frissítés sikertelen a számítógépes kiszolgálón (webcím : $P3$, állapot : $P4$)",
+		"message": "$P1$ : $P2$ névjegy frissítés sikertelen a kiszolgálón (webcím : $P3$, állapot : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -863,7 +951,7 @@
         }
 	},
 	"serverCardCreatedOnServerWithEtag": {
-		"message": "$P1$ : $P2$ névjegy létrehozott a számítógépes kiszolgálón (etag : $P3$)",
+		"message": "$P1$ : $P2$ névjegy létrehozott a kiszolgálón (elektronikus címke : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -877,7 +965,7 @@
         }
 	},
 	"serverCardCreatedOnServerWithoutEtag": {
-		"message": "$P1$ : $P2$ névjegy létrehozott a számítógépes kiszolgálón (nincs etag válaszul)",
+		"message": "$P1$ : $P2$ névjegy létrehozott a kiszolgálón (nincs elektronikus címke válaszul)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -888,7 +976,7 @@
         }
 	},
 	"serverCardCreateFailed": {
-		"message": "$P1$ : $P2$ névjegy létrehozása sikertelen a számítógépes kiszolgálón (webcím : $P3$, állapot : $P4$)",
+		"message": "$P1$ : $P2$ névjegy létrehozása sikertelen a kiszolgálón (webcím : $P3$, állapot : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -994,7 +1082,7 @@
         }
 	},
 	"serverCardGetOK": {
-		"message": "$P1$ : $P2$ névjegy sikeresen letöltött a számítógépes kiszolgálóról",
+		"message": "$P1$ : $P2$ névjegy sikeresen letöltött a kiszolgálóról",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1005,7 +1093,7 @@
         }
 	},
 	"serverCardGetFailed": {
-		"message": "$P1$ : Letöltése sikertelen a számítógépes kiszolgálóról (webcím : $P2$, állapot : $P3$)",
+		"message": "$P1$ : Letöltése sikertelen a kiszolgálóról (webcím : $P2$, állapot : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1015,6 +1103,387 @@
             },
             "P3": {
                 "content": "$3"
+            }
+        }
+	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : $P2$ névjegy : kapcsolattartó címkék küldése kérés megszerzése érdekében …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : $P2$ névjegy : kapott címkéket",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : $P2$ névjegy : a címkéket nem sikerült megszerezni a kiszolgálón (url : $P3$, állapot : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : $P2$ névjegy : kapcsolattartó címkék frissítési kérésének elküldése …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : $P2$ névjegy : címkék frissítve",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : $P2$ névjegy : címkéket nem sikerült frissíteni a kiszolgálón (url : $P3$, állapot : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : $P2$ kategória helyileg törölve",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : $P2$ kategória helyileg frissítve",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : $P2$ kategória már letöltve a gyorsítótárból",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : $P2$ kategória helyileg törölve és frissítve a kiszolgálón",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : $P2$ kategória frissítve helyileg és a kiszolgálón",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : $P2$ kategória frissítve a kiszolgálón (elektronikus címkét talált : $P3$, elektronikus címke a gyorsítótárban : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : Talált egy új kategóriát kiszolgálón",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : $P2$ kategória gyorsítótárból betöltve (IndexedDB)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : $P2$ kategória új helyileg",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : $P2$ kategória helyileg frissítve és törölve a kiszolgálóról",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : $P2$ kategória törölve a kiszolgálóról",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"categoryAskUserTitle": {
+		"message": "Kategória módosítási ütközés"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "Kategória megtartása"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "Kategória törlése"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Helyi módosítások előnyben részes"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Távoli módosítások előnyben részes"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : $P2$ kategória törölve a kiszolgálóról",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : $P2$ kategória nem létezik a kiszolgálón",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : $P2$ kategória nem sikerült törölni a kiszolgálóról (url : $P3$, állapot : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : $P2$ kategória : törlési kérelem küldése …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : $P2$ kategória frissítve a kiszolgálón (elektronikus címke : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : $P2$ kategória frissítve a kiszolgálón (nincs elektronikus címke válaszul)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : $P2$ kategória nem sikerült frissíteni a kiszolgálón (url : $P3$, állapot : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : $P2$ kategória : frissítési kérelem küldése …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : $P2$ kategória kiszolgálón létrehozva (elektronikus címke : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : $P2$ kategória kiszolgálón létrehozva (nincs elektronikus címke válaszul)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : $P2$ kategória nem sikerült létrehozni a kiszolgálón (url : $P3$, állapot : $P4$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            },
+            "P4": {
+                "content": "$4"
+            }
+        }
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : $P2$ kategória : létrehozási kérelem küldése …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            }
+        }
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : Kategóriák keresése …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
             }
         }
 	},
@@ -1036,7 +1505,7 @@
         }
 	},
 	"synchronizationUnauthorized": {
-		"message": "$P1$: Nem sikerült bejelentkezni a kiszolgálóra. Valószínűleg rossz a konfiguráció, a felhasználónév vagy a jelszó.",
+		"message": "$P1$ : Nem sikerült bejelentkezni a kiszolgálóra. Valószínűleg rossz a konfiguráció, a felhasználónév vagy a jelszó.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1044,7 +1513,7 @@
         }
 	},
 	"synchronizationSearchingCards": {
-		"message": "$P1$ : Keres névjegy …",
+		"message": "$P1$ : Névjegyek keresése …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1582,6 +2051,17 @@
         "placeholders": {
             "P1": {
                 "content": "$1"
+            }
+        }
+	},
+	"categoryRenamed": {
+		"message": "$P1$ : $P2$ kategória átnevezett",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
             }
         }
 	},
@@ -2183,7 +2663,7 @@
         }
 	},
 	"dateEntry1Wrong": {
-		"message": "$P1$ : A(z) $P2$ partnernak van egy dátummező értéke ($P3$), amely nem egyezik a névjegytár dátumformátumával ($P4$)",
+		"message": "$P1$ : A(z) $P2$ névjegynek van egy dátummező értéke ($P3$), amely nem egyezik a névjegytár dátumformátumával ($P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2575,6 +3055,9 @@
 	"wdw_cardbookRenameFieldOrgTitle": {
 		"message": "Szervezet szerkesztő"
 	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "Kategória létrehozása"
+	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Kategória szerkesztése"
 	},
@@ -2592,6 +3075,9 @@
 	},
 	"wdw_cardbookRenameFieldOrgLabel": {
 		"message": "Típus:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Kategória:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
 		"message": "Kategória:"
@@ -2632,7 +3118,7 @@
 		"message": "Csak kategóriák"
 	},
 	"noCategory": {
-		"message": "Csak kapcsolatok"
+		"message": "Csak névjegyek"
 	},
 	"multipleCategories": {
 		"message": "Több kategória"
@@ -2761,8 +3247,32 @@
             }
         }
 	},
-	"newTokenDescription": {
+	"warnDescription": {
 		"message": "A Névjegyzék szeretné elérni a(z) $P1$ fiókját, hogy hozzájutni a névjegyek adataihoz. A hitelesítő adatok és a névjegyek adatai csak a számítógép és a Google között kerülnek továbbításra, harmadik fél webhelyei nem vesznek részt.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"applicationName": {
+		"message": "Alkalmazás: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"clientID": {
+		"message": "Kliens azonosítása: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"scopeURL": {
+		"message": "Hatókör: $P1$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3402,9 +3912,6 @@
 	"birthdaylistTabLabel": {
 		"message": "Évforduló"
 	},
-	"synclistTabLabel": {
-		"message": "Évforduló emlékeztetők"
-	},
 	"integrationGroupboxLabel": {
 		"message": "Thunderbird integráció"
 	},
@@ -4033,7 +4540,7 @@
 		"message": "h"
 	},
 	"solveConflictsRemoteLabel": {
-		"message": "Inkább a szerver módosítás"
+		"message": "Inkább a kiszolgáló módosítás"
 	},
 	"solveConflictsRemoteAccesskey": {
 		"message": "s"
