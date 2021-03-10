@@ -1,5 +1,78 @@
 [
     {
+        "id": 2475437,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/versions/2475437",
+        "files": [
+            {
+                "id": 1018598,
+                "created": "2021-02-28T16:35:57Z",
+                "hash": "sha256:e026439d554d2b628ec321f8c84894eda79a96f4bbfc108e420e2491ebbdbe7d",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 52764,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018598/rspamd_spamness-2.0.0a2-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "menus",
+                    "messagesRead",
+                    "notifications",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 18,
+            "name": {
+                "el": "Άδεια BSD",
+                "vi": "Giấy phép BSD",
+                "ca": "Llicència BSD",
+                "it": "Licenza BSD",
+                "cs": "BSD licence",
+                "eu": "BSD Lizentzia",
+                "sv-SE": "BSD-licens",
+                "id": "Lisensi BSD",
+                "es": "Licencia BSD",
+                "ru": "Лицензия BSD",
+                "nl": "BSD-licentie",
+                "en-US": "BSD License",
+                "fr": "Licence BSD",
+                "bg": "BSD Лиценз",
+                "de": "BSD-Lizenz",
+                "da": "BSD-licens",
+                "fa": "مجوز BSD",
+                "hu": "BSD licenc",
+                "pt-PT": "Licença BSD",
+                "sr": "БСД лиценца",
+                "sq": "Leje BSD",
+                "ga-IE": "Ceadúnas BSD",
+                "sk": "Licencia BSD",
+                "zh-CN": "BSD 授权"
+            },
+            "text": {
+                "en-US": "Copyright (c) &lt;year&gt;, &lt;owner&gt;\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n    * Redistributions of source code must retain the above copyright notice,\n      this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the &lt;organization&gt; nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n&lt;/organization&gt;&lt;/owner&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/bsd-license.php"
+        },
+        "release_notes": {
+            "ru": "",
+            "en-US": "The add-on has been rewritten as a MailExtension.\n * This breaks compatibility with previous Thunderbird versions.\n * The add-on requires full unrestricted access to Thunderbird for being able to maintain functionality that is missing in MailExtension API.\n\n<b>Notable changes:</b>\n - Rmilter support has been dropped as Rmilter has been deprecated a long time ago.\n - Training buttons are missing drop-down \"move/copy\" menus. No time to implement.\n * Default and per-account training folder settings has been changed. Each folder URI textbox is replaced by an account selector and a folder path textbox.\n\n<b>Known major issues:</b>\n + Currently MailExtension API does not provide support for message parts on demand loading. Thus, in order to get headers the add-on has to load full mail message.\n + \"Unexpected error moving messages: 2147500037\" and \"Unexpected error copying messages: 2147500037\" while moving/copying messages with training buttons. Workaround: open a folder in the destination account before moving/copying (once per session is enough).\n\n<b>Migration from previous versions</b>\nThe add-on does not offer automated configuration migration from the XUL extension. After upgrade you should tweak the add-on configuration according to you needs."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/versions/2.0.0a2",
+        "version": "2.0.0a2"
+    },
+    {
         "id": 2473590,
         "channel": "listed",
         "compatibility": {

@@ -23,7 +23,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/11/11066/11066970.png?modified=1408630854"
         }
     ],
-    "average_daily_users": 472,
+    "average_daily_users": 482,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -32,26 +32,26 @@
     "contributions_url": "",
     "created": "2007-01-09T16:18:19Z",
     "current_version": {
-        "id": 2474780,
+        "id": 2475417,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.4.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/colored-diffs/versions/2474780",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/colored-diffs/versions/2475417",
         "files": [
             {
-                "id": 1017942,
-                "created": "2020-11-18T20:44:59Z",
-                "hash": "sha256:2765470a04ee5ca3fd5176c5155c243a68f092c946d55f868a319b5622bb10d9",
+                "id": 1018578,
+                "created": "2021-02-24T21:10:52Z",
+                "hash": "sha256:e4506380c7acbf2ad7c885644a37ba95b58073104aac825205217dab49a5bffa",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 124157,
+                "size": 124701,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017942/colored_diffs-2.1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018578/colored_diffs-2.1.1-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "messagesModify"
@@ -67,11 +67,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "This version embeds highlight.js v10.4.0, which comes with improved support for the diff language, in particular for patches generated with Git.\n\nIt also adds two new color themes, StackOverflow Light and Dark."
+            "en-US": "- Fix a bug where HTML-like tags (HTML, XML, etc.) in a diff would not be rendered correctly (<a rel=\"nofollow\" href=\"https://github.com/Qeole/colorediffs/issues/99\">https://github.com/Qeole/colorediffs/issues/99</a>)\n- Embed highlight.js v10.5.0 (No visible change expected)"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/colored-diffs/versions/2.1.0",
-        "version": "2.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/colored-diffs/versions/2.1.1",
+        "version": "2.1.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -87,35 +87,99 @@
     "homepage": {
         "en-US": "https://github.com/Qeole/colorediffs"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4268-64.png?modified=1603790771",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/4/4268-64.png?modified=1614203758",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4268-32.png?modified=1603790771",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4268-64.png?modified=1603790771"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/4/4268-32.png?modified=1614203758",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/4/4268-64.png?modified=1614203758"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-18T20:45:03Z",
+    "last_updated": "2021-02-24T21:15:03Z",
     "name": {
         "en-US": "Colored Diffs"
     },
     "previews": [
         {
-            "id": 175494,
+            "id": 206462,
             "caption": {
-                "en-US": "A patch received in Thunderbird and colorized by the add-on."
+                "en-US": "Colored patch, default theme and options."
             },
             "image_size": [
-                564,
-                525
+                809,
+                644
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/175/175494.png?modified=1603675997",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206462.png?modified=1614203683",
             "thumbnail_size": [
-                215,
+                251,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/175/175494.png?modified=1603675997"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206462.png?modified=1614203683"
+        },
+        {
+            "id": 206463,
+            "caption": {
+                "en-US": "Colored patch, white spaces are replaced by dots."
+            },
+            "image_size": [
+                809,
+                644
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206463.png?modified=1614203762",
+            "thumbnail_size": [
+                251,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206463.png?modified=1614203762"
+        },
+        {
+            "id": 206464,
+            "caption": {
+                "en-US": "Colored patch, alternative color scheme."
+            },
+            "image_size": [
+                809,
+                644
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206464.png?modified=1614203683",
+            "thumbnail_size": [
+                251,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206464.png?modified=1614203683"
+        },
+        {
+            "id": 206465,
+            "caption": {
+                "en-US": "Options page, color scheme selector."
+            },
+            "image_size": [
+                809,
+                644
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206465.png?modified=1614203762",
+            "thumbnail_size": [
+                251,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206465.png?modified=1614203762"
+        },
+        {
+            "id": 206466,
+            "caption": {
+                "en-US": "Options page, other options."
+            },
+            "image_size": [
+                809,
+                644
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206466.png?modified=1614203760",
+            "thumbnail_size": [
+                251,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206466.png?modified=1614203760"
         }
     ],
     "public_stats": true,

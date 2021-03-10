@@ -9,40 +9,46 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 231,
+    "average_daily_users": 251,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
             "privacy-and-security"
         ]
     },
-    "contributions_url": "",
+    "contributions_url": "https://paypal.me/yet",
     "created": "2015-12-29T04:58:41Z",
     "current_version": {
-        "id": 2473590,
+        "id": 2475437,
         "compatibility": {
             "thunderbird": {
-                "max": "68.*",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/versions/2473590",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/versions/2475437",
         "files": [
             {
-                "id": 1016736,
-                "created": "2020-04-03T13:31:57Z",
-                "hash": "sha256:a4f6b3c4c5aef43b53c84f51401bee0615aea919551fcb3a5f1e36c61c2fd80e",
-                "is_restart_required": true,
+                "id": 1018598,
+                "created": "2021-02-28T16:35:57Z",
+                "hash": "sha256:e026439d554d2b628ec321f8c84894eda79a96f4bbfc108e420e2491ebbdbe7d",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 71829,
+                "size": 52764,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016736/rspamd_spamness-1.1.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018598/rspamd_spamness-2.0.0a2-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "menus",
+                    "messagesRead",
+                    "notifications",
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 18,
             "name": {
@@ -74,11 +80,12 @@
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
         "release_notes": {
-            "en-US": "- Fix RGBA matching in theme detection when leading zero is omitted in Alpha channel (by @ichier)"
+            "ru": "",
+            "en-US": "The add-on has been rewritten as a MailExtension.\n * This breaks compatibility with previous Thunderbird versions.\n * The add-on requires full unrestricted access to Thunderbird for being able to maintain functionality that is missing in MailExtension API.\n\n<b>Notable changes:</b>\n - Rmilter support has been dropped as Rmilter has been deprecated a long time ago.\n - Training buttons are missing drop-down \"move/copy\" menus. No time to implement.\n * Default and per-account training folder settings has been changed. Each folder URI textbox is replaced by an account selector and a folder path textbox.\n\n<b>Known major issues:</b>\n + Currently MailExtension API does not provide support for message parts on demand loading. Thus, in order to get headers the add-on has to load full mail message.\n + \"Unexpected error moving messages: 2147500037\" and \"Unexpected error copying messages: 2147500037\" while moving/copying messages with training buttons. Workaround: open a folder in the destination account before moving/copying (once per session is enough).\n\n<b>Migration from previous versions</b>\nThe add-on does not offer automated configuration migration from the XUL extension. After upgrade you should tweak the add-on configuration according to you needs."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/versions/1.1.1",
-        "version": "1.1.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/versions/2.0.0a2",
+        "version": "2.0.0a2"
     },
     "default_locale": "en-US",
     "description": {
@@ -94,35 +101,36 @@
     "homepage": {
         "en-US": "https://github.com/moisseev/rspamd-spamness"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-64.png?modified=af0a4216",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-64.png?modified=3e4b8ed1",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-32.png?modified=af0a4216",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-64.png?modified=af0a4216"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-32.png?modified=3e4b8ed1",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/676/676875-64.png?modified=3e4b8ed1"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-30T23:47:17Z",
+    "last_updated": "2021-03-01T13:45:03Z",
     "name": {
         "en-US": "Rspamd-spamness"
     },
     "previews": [
         {
-            "id": 169791,
+            "id": 206467,
             "caption": {
+                "ru": "",
                 "en-US": "Rspamd-spamness adds a column to the thread pane (message list) and a header to the message pane. The size and saturation of a circle reflects larger or smaller spam score."
             },
             "image_size": [
-                700,
-                421
+                716,
+                415
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/169/169791.png?modified=1576042926",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206467.png?modified=1614613311",
             "thumbnail_size": [
                 320,
-                192
+                185
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/169/169791.png?modified=1576042926"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206467.png?modified=1614613311"
         }
     ],
     "public_stats": true,
@@ -158,9 +166,10 @@
     "weekly_downloads": 52,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-02-11T14:56:20Z"
         }

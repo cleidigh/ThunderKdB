@@ -9,36 +9,36 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 229,
+    "average_daily_users": 247,
     "categories": {
         "thunderbird": [
             "appearance",
             "calendar"
         ]
     },
-    "contributions_url": "",
+    "contributions_url": "https://www.paypal.com/paypalme/lucasbonomo",
     "created": "2019-10-13T20:40:43Z",
     "current_version": {
-        "id": 2474616,
+        "id": 2475476,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/g-suite-in-tab/versions/2474616",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/g-suite-in-tab/versions/2475476",
         "files": [
             {
-                "id": 1017778,
-                "created": "2020-11-02T13:03:01Z",
-                "hash": "sha256:66fe577a497b2ad7ac69995b1e4bc89599daa55a5d699a849ac674b0c28b3f23",
+                "id": 1018637,
+                "created": "2021-03-07T17:47:42Z",
+                "hash": "sha256:a1e7c75144d35de2a53a3e8fab4757e57f165cd0b848ba278a32a35f8ea8161d",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 108795,
+                "size": 147012,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017778/g_suite_in_tab-0.3.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018637/g_suite_in_tab-1.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -73,8 +73,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/g-suite-in-tab/versions/0.3.0",
-        "version": "0.3.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/g-suite-in-tab/versions/1.0.1",
+        "version": "1.0.1"
     },
     "default_locale": "es",
     "description": {
@@ -97,7 +97,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-02T13:05:03Z",
+    "last_updated": "2021-03-07T17:50:02Z",
     "name": {
         "es": "G Suite in tab"
     },
@@ -172,7 +172,7 @@
     "slug": "g-suite-in-tab",
     "status": "public",
     "summary": {
-        "es": "Abrir URL de G Suite en pestañas (por el momento solo están los botones de Calendar y Keep)"
+        "es": "Now you can open G Suite App in Thunderbird tabs. (Calendar, Contacts, Keep, Task and Drive)"
     },
     "support_email": {
         "es": "bonomo.lucas@gmail.com"
@@ -187,7 +187,9 @@
         "google calendar",
         "google contacts",
         "google keep",
-        "keep"
+        "google tasks",
+        "keep",
+        "tasks"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/g-suite-in-tab/",
@@ -197,7 +199,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-02T13:03:01Z",
+            "comp78pv_version": "0.3.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

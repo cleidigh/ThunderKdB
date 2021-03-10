@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 70,
+    "average_daily_users": 79,
     "categories": {
         "thunderbird": [
             "folders-and-filters"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2020-09-23T02:30:19Z",
     "current_version": {
-        "id": 2474329,
+        "id": 2475461,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
-                "min": "78.0"
+                "max": "68.*",
+                "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mark-gmail-read/versions/2474329",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mark-gmail-read/versions/2475461",
         "files": [
             {
-                "id": 1017491,
-                "created": "2020-09-23T02:30:19Z",
-                "hash": "sha256:428306f06d610a1e5097570f7cf4dcb218f29103a33b72c35dc407cb958980a6",
-                "is_restart_required": false,
+                "id": 1018622,
+                "created": "2021-03-03T15:48:13Z",
+                "hash": "sha256:a277f11300c3490b6f0788ea1783b3fcecf5656aa2ebc3a45eac5365b09f3166",
+                "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 17595,
+                "size": 14722,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017491/mark_gmail_read-3.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018622/mark_gmail_read-2.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -71,9 +71,9 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": null,
-        "reviewed": "2020-09-28T06:13:48Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mark-gmail-read/versions/3.0",
-        "version": "3.0"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mark-gmail-read/versions/2.0.1",
+        "version": "2.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -96,7 +96,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-09-28T06:13:48Z",
+    "last_updated": "2021-03-03T17:53:12Z",
     "name": {
         "cs": "Mark GMail Read",
         "en-US": "Mark GMail Read"
@@ -130,10 +130,14 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-09-23T02:30:19Z",
+            "comp78pv_version": "3.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

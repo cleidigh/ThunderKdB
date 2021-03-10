@@ -1,5 +1,51 @@
 [
     {
+        "id": 2475438,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/2475438",
+        "files": [
+            {
+                "id": 1018599,
+                "created": "2021-02-28T22:26:29Z",
+                "hash": "sha256:7851024935efe4e6c6e1d41dd7a33bd579b6e467c878e81a717cf514c13ef059",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 40533,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018599/shrunked_image_resizer-5.0.2-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "This version fixes two bugs:\n* Sending messages was broken if set to \"resize on send\" but choosing \"original size\".\n* Changes in Thunderbird beta prevented anything useful from happening.\n\nIt also contains updates to German and a new Finnish translation.\n\n<a rel=\"nofollow\" href=\"https://github.com/darktrojan/shrunked/compare/VERSION_5.0.1...VERSION_5.0.2\">https://github.com/darktrojan/shrunked/compare/VERSION_5.0.1...VERSION_5.0.2</a>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/shrunked-image-resizer/versions/5.0.2",
+        "version": "5.0.2"
+    },
+    {
         "id": 2474758,
         "channel": "listed",
         "compatibility": {
@@ -455,16 +501,16 @@
         "id": 2175743,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
-                "max": "60.*",
+            "firefox": {
+                "max": "56.*",
                 "min": "45.0"
             },
             "seamonkey": {
                 "max": "*",
                 "min": "2.40"
             },
-            "firefox": {
-                "max": "56.*",
+            "thunderbird": {
+                "max": "60.*",
                 "min": "45.0"
             }
         },
@@ -659,7 +705,7 @@
         "id": 1988366,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "51.0a1",
                 "min": "45.0"
             },
@@ -667,7 +713,7 @@
                 "max": "2.40.*",
                 "min": "2.40"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "51.0a1",
                 "min": "45.0"
             }
@@ -759,17 +805,17 @@
         "id": 1822820,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
-                "max": "47.0a1",
-                "min": "38.0"
+            "firefox": {
+                "max": "49.*",
+                "min": "43.0"
             },
             "seamonkey": {
                 "max": "2.39.*",
                 "min": "2.39"
             },
-            "firefox": {
-                "max": "49.*",
-                "min": "43.0"
+            "thunderbird": {
+                "max": "47.0a1",
+                "min": "38.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/1822820",
@@ -912,17 +958,17 @@
         "id": 1749466,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "44.0a1",
-                "min": "38.0"
+                "min": "39.0"
             },
             "seamonkey": {
                 "max": "2.39a1",
                 "min": "2.33"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "44.0a1",
-                "min": "39.0"
+                "min": "38.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/1749466",
@@ -1014,17 +1060,17 @@
         "id": 1724836,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "42.0a1",
-                "min": "38.0"
+                "min": "39.0"
             },
             "seamonkey": {
                 "max": "2.37a1",
                 "min": "2.33"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "42.0a1",
-                "min": "39.0"
+                "min": "38.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/1724836",
@@ -1116,7 +1162,7 @@
         "id": 1591536,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "41.*",
                 "min": "31.0"
             },
@@ -1124,7 +1170,7 @@
                 "max": "2.38.*",
                 "min": "2.26"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "41.*",
                 "min": "31.0"
             }
@@ -1218,7 +1264,7 @@
         "id": 1586934,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "34.0a1",
                 "min": "31.0"
             },
@@ -1226,7 +1272,7 @@
                 "max": "2.31a1",
                 "min": "2.26"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "34.0a1",
                 "min": "31.0"
             }
@@ -1269,7 +1315,7 @@
         "id": 1530424,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "33.*",
                 "min": "24.0"
             },
@@ -1277,7 +1323,7 @@
                 "max": "2.30.*",
                 "min": "2.24"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "33.*",
                 "min": "24.0"
             }
@@ -1320,7 +1366,7 @@
         "id": 1529588,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "30.0a1",
                 "min": "24.0"
             },
@@ -1328,7 +1374,7 @@
                 "max": "2.27a1",
                 "min": "2.24"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "30.0a1",
                 "min": "24.0"
             }
@@ -1371,7 +1417,7 @@
         "id": 1528462,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "30.0a1",
                 "min": "24.0"
             },
@@ -1379,7 +1425,7 @@
                 "max": "2.27a1",
                 "min": "2.24"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "30.0a1",
                 "min": "24.0"
             }
@@ -1473,17 +1519,17 @@
         "id": 1425068,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
-                "max": "21.0a1",
-                "min": "17.0"
+            "firefox": {
+                "max": "22.*",
+                "min": "19.0"
             },
             "seamonkey": {
                 "max": "2.18a1",
                 "min": "2.16"
             },
-            "firefox": {
-                "max": "22.*",
-                "min": "19.0"
+            "thunderbird": {
+                "max": "21.0a1",
+                "min": "17.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/1425068",
@@ -1524,7 +1570,7 @@
         "id": 1423920,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "21.0a1",
                 "min": "19.0"
             },
@@ -1532,7 +1578,7 @@
                 "max": "2.18a1",
                 "min": "2.16"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "21.0a1",
                 "min": "19.0"
             }
@@ -1575,7 +1621,7 @@
         "id": 1327811,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
+            "firefox": {
                 "max": "18.*",
                 "min": "11.0"
             },
@@ -1583,7 +1629,7 @@
                 "max": "2.15.*",
                 "min": "2.8"
             },
-            "firefox": {
+            "thunderbird": {
                 "max": "18.*",
                 "min": "11.0"
             }
@@ -1626,16 +1672,16 @@
         "id": 1320764,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
-                "max": "11.*",
+            "firefox": {
+                "max": "13.0a1",
                 "min": "10.0"
             },
             "seamonkey": {
                 "max": "2.8.*",
                 "min": "2.7"
             },
-            "firefox": {
-                "max": "13.0a1",
+            "thunderbird": {
+                "max": "11.*",
                 "min": "10.0"
             }
         },
@@ -1677,16 +1723,16 @@
         "id": 1317043,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
-                "max": "11.*",
+            "firefox": {
+                "max": "13.0a1",
                 "min": "10.0"
             },
             "seamonkey": {
                 "max": "2.8.*",
                 "min": "2.7"
             },
-            "firefox": {
-                "max": "13.0a1",
+            "thunderbird": {
+                "max": "11.*",
                 "min": "10.0"
             }
         },
@@ -1830,17 +1876,17 @@
         "id": 1261028,
         "channel": "listed",
         "compatibility": {
-            "thunderbird": {
-                "max": "7.*",
-                "min": "5.0"
+            "firefox": {
+                "max": "9.0a1",
+                "min": "3.6"
             },
             "seamonkey": {
                 "max": "2.4.*",
                 "min": "2.1"
             },
-            "firefox": {
-                "max": "9.0a1",
-                "min": "3.6"
+            "thunderbird": {
+                "max": "7.*",
+                "min": "5.0"
             }
         },
         "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/shrunked-image-resizer/versions/1261028",

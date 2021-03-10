@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 7,
+    "average_daily_users": 10,
     "categories": {
         "thunderbird": [
             "folders-and-filters"
@@ -18,30 +18,30 @@
     "contributions_url": "",
     "created": "2019-02-09T09:18:43Z",
     "current_version": {
-        "id": 2475288,
+        "id": 2475415,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "68.0"
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/hide-email-folders/versions/2475288",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/hide-email-folders/versions/2475415",
         "files": [
             {
-                "id": 1018449,
-                "created": "2021-02-02T20:20:37Z",
-                "hash": "sha256:2628efa47652d3d727697b0871a52f84bd33a32df648c8b4af5ae83f17bb5215",
-                "is_restart_required": true,
+                "id": 1018576,
+                "created": "2021-02-24T11:24:02Z",
+                "hash": "sha256:b028565828465e5b32551b3a57fce53e604df47c989b654dc8dfce1cbea4d3e9",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 14174,
+                "size": 2262,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018449/hide_email_folders-2.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018576/hide_email_folders-3.0.0-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 12,
             "name": {
@@ -72,8 +72,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/hide-email-folders/versions/2.0",
-        "version": "2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/hide-email-folders/versions/3.0.0",
+        "version": "3.0.0"
     },
     "default_locale": "en-US",
     "description": null,
@@ -92,7 +92,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-02-02T21:57:56Z",
+    "last_updated": "2021-02-24T12:04:52Z",
     "name": {
         "en-US": "Hide Email Folders"
     },
@@ -110,7 +110,7 @@
     "slug": "hide-email-folders",
     "status": "public",
     "summary": {
-        "en-US": "Hide the \"Email Folders\" entry from the folder pane. This only works for Unified folder view. With thanks to \"Alex Cabal\" for his \"Hide Local Folders\" extension."
+        "en-US": "Hide Email Folders from the Unified pane view.\n* This only works for Unified folder view.\nSpecial thanks to `C-E` and `Alex Cabal` for `Hide Local Folders` extension."
     },
     "support_email": null,
     "support_url": null,
@@ -125,6 +125,7 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2019-02-09T09:18:43Z"
         }

@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14203/14203692.png?modified=1612163383"
         }
     ],
-    "average_daily_users": 56,
+    "average_daily_users": 123,
     "categories": {
         "thunderbird": [
             "composition"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2021-02-05T02:58:05Z",
     "current_version": {
-        "id": 2475395,
+        "id": 2475440,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.5.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/markdown-here-revival/versions/2475395",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/markdown-here-revival/versions/2475440",
         "files": [
             {
-                "id": 1018556,
-                "created": "2021-02-20T19:30:09Z",
-                "hash": "sha256:475d84d1607420193ca08a74685a5056c259f2f7a9be4a10e59540d533545dd7",
+                "id": 1018601,
+                "created": "2021-03-01T05:31:07Z",
+                "hash": "sha256:d9321314eee52f2d43650a86217d866c7e05cf66e223e038d7e2f0c09655dcb4",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 511597,
+                "size": 438926,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018556/markdown_here_revival-3.1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018601/markdown_here_revival-3.1.1-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "storage"
@@ -76,11 +76,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "<strong>Version 3.1.0</strong> - feature parity with old Markdown Here\n<ul><li>New permissions:\n<ul><li>\"Unrestricted access\" - This is for the notification bar</li></ul></li><li>Fixes:\n<ul><li>Math rendering works, it still uses the Google Chart API, so a request is\nsent to Google to draw the image. Also note that the image is not included\nin the email itself so recipients will need to allow remote images in their\nemail client. This feature is disabled by default for privacy reasons.<ul><li><strong>Syntax change:</strong> Math must be surrounded by backticks\n  (`) and dollar signs ($). The need for backticks will be removed\n  in a later release</li><li>Example: <code>`\\$-b \\pm \\sqrt{b\\^2 - 4ac} \\over 2a$`</code></li></ul></li><li>Updated default CSS so when Thunderbird is set to use a dark theme rendered HTML is still readable. If updating from a previous version, you will have to update \"Primary Styling CSS\" in the options page by clicking the \"Reset to Default\" button.</li><li>Notifications when unrendering HTML that has been changed and before sending an email that looks like it contains markdown.</li></ul></li><li>Other changes:\n<ul><li>Updated hotkey support to use builtin mailextension API</li><li>Using mailextension APIs to check email for unrendered markdown before sending</li><li>Removed code specific to webmail/browser support as a result of above two items</li><li>Removed dependency on JQuery in the options page</li><li>highlightjs (source code syntax highlighting)  updated to 10.6.0</li></ul></li><li>Known issues:\n<ul><li>The update page shown after new install or update is not written</li><li>Documentation needs some updates, specifically the Math syntax change noted above</li><li>There's no context menu (right-click) support for Thunderbird's compose window</li><li>Options page does not work in Thunderbird 86 beta</li></ul></li></ul>"
+            "en-US": "Bugfix release for nested lists when Thunderbird is set to use \"body text\" format."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/versions/3.1.0",
-        "version": "3.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/versions/3.1.1",
+        "version": "3.1.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -114,10 +114,10 @@
         "64": "https://addons.thunderbird.net/user-media/addon_icons/988/988035-64.png?modified=1f45fc98"
     },
     "is_disabled": false,
-    "is_experimental": true,
+    "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-02-20T23:21:40Z",
+    "last_updated": "2021-03-01T13:42:21Z",
     "name": {
         "ru": "Markdown Here",
         "fr": "Markdown Here",
@@ -201,10 +201,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 0,
-        "count": 0,
-        "average": 0,
-        "text_count": 0
+        "bayesian_average": 4.34245,
+        "count": 2,
+        "average": 5,
+        "text_count": 2
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/reviews/",
     "requires_payment": false,
@@ -229,7 +229,9 @@
     "support_email": {
         "en-US": "xulsupport@calypsoblue.org"
     },
-    "support_url": null,
+    "support_url": {
+        "en-US": "https://gitlab.com/jfx2006/markdown-here-revival"
+    },
     "tags": [
         "composer",
         "firefox57",

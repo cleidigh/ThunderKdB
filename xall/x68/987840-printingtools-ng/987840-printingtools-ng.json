@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 3098,
+    "average_daily_users": 3733,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,30 +19,30 @@
     "contributions_url": "http://paypal.me/cleidigh",
     "created": "2020-06-05T22:31:33Z",
     "current_version": {
-        "id": 2475109,
+        "id": 2473799,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
+                "max": "72.*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/printingtools-ng/versions/2475109",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/printingtools-ng/versions/2473799",
         "files": [
             {
-                "id": 1018271,
-                "created": "2021-01-03T23:02:24Z",
-                "hash": "sha256:ecac25080579f7c460ab94c30bf12d1f39eb5be7f4cd466b8165565e7971cb14",
-                "is_restart_required": false,
+                "id": 1016961,
+                "created": "2020-06-12T19:50:57Z",
+                "hash": "sha256:111463d4cdb9a23278290a713f63ccdfeaf68f3384040734bdebc16ed23de327",
+                "is_restart_required": true,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 118607,
+                "size": 101012,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018271/printingtools_ng-2.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016961/printingtools_ng-0.1.3-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": false,
+        "is_strict_compatibility_enabled": true,
         "license": {
             "id": 6,
             "name": {
@@ -72,11 +72,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Version 2.0.0 : 68/78 Update - January 3, 2021\n\n- Upgraded for both 68/78 WL API\n- Show/Hide headers\n- Configurable number of attachments per line\n- New icons office, 7zip, TIFF"
+            "en-US": "- Fix missing strings in several locales\n- Add new locales\n- Default printer option"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/printingtools-ng/versions/2.0.0",
-        "version": "2.0.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/printingtools-ng/versions/0.1.3",
+        "version": "0.1.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -105,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-06T08:43:50Z",
+    "last_updated": "2020-06-12T21:22:55Z",
     "name": {
         "sk": "PrintingTools NG",
         "sv-SE": "PrintingTools NG",
@@ -246,7 +246,6 @@
             "mext": true,
             "comp68": true,
             "comp69plus": true,
-            "comp78plus": true,
             "comp61plus": true
         }
     }
