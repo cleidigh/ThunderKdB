@@ -1,11 +1,11 @@
-README version 2.1
+README version 2.2
 
 Title: FrameWhite.
 Main source: manifest.json, popup.html, code.js, README.txt.
 Description: 
-Enjoy FrameWhite, FrameBlack and LightBlue, LightGreen, LightYellow, LightRed and Additional Blue&Yellow, Green&Yellow, Red&Yellow themes.
+Enjoy FrameWhite, FrameBlack and BlueWhite, GreenWhite, RedWhite and LightBlue, LightGreen, LightYellow, LightRed and Additional Blue&Yellow, Green&Yellow, Red&Yellow themes.
 
 
 From Sungho Hwang.
 
-February 2nd 2020.
+March 3rd 2021.

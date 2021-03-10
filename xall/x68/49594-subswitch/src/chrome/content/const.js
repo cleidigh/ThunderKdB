@@ -21,6 +21,10 @@ com.ktsystems.subswitch.Const = {
     rx_user: "([a-zA-Z0-9][a-zA-Z0-9._-]*|\"([^\\\\\x80-\xff\015\012\"]|\\\\[^\x80-\xff])+\")",
     rx_domain: "([a-zA-Z0-9][a-zA-Z0-9._-]*\\.)*[a-zA-Z0-9][a-zA-Z0-9._-]*\\.[a-zA-Z]{2,5}",
     rx_wildcard: "[a-zA-Z0-9._-]*",
+    pattern_number: /{number:(N+)}/gi,
+    pattern_date: /{(date|time|datetime):[\w\\\/\-: ]+}/gi,
+    pattern_number_search: /\\{number:(N+)\\}/gi,
+    pattern_date_search: /{(date|time|datetime):[\w\\\/\-: ]+}/gi,
     subswitch_prefs: Components.classes["@mozilla.org/preferences-service;1"]
         .getService(Components.interfaces.nsIPrefService)
         .getBranch("extensions.subjects_prefix_switch."),

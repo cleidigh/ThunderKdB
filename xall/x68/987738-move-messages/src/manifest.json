@@ -1,13 +1,13 @@
 {
     "manifest_version": 2,
-    "name": "Move messages and yourself1.6",
+    "name": "Move messages and yourself1.7",
     "description": "Basic message move and folder display extension",
-    "version": "1.6",
+    "version": "1.7",
     "author": "agb",
     "applications": {
         "gecko": {
 	    "id": "{8f168a36-1dc7-11ea-9233-f290ba9c1df4}",
-            "strict_min_version": "68.0"
+            "strict_min_version": "78.0"
         }
     },
     "browser_action": {
@@ -34,9 +34,5 @@
     },
     "background": {
         "scripts": ["scripts/background.js"]
-    },
-    "options_ui": {
-        "page": "options.html",
-        "browser_style": false //'true' gives NS_ERROR_FILE_NOT_FOUND 
     }
 }

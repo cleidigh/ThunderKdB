@@ -62,10 +62,10 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 		var viewTabs = LightningCalendarTabs.win.document.getElementById("view-tabs");
 
 		if (viewTabs) {
-			LightningCalendarTabs.win.getViewDeck().addEventListener("viewloaded", function (event) {
+			LightningCalendarTabs.win.getViewBox().addEventListener("viewloaded", function (event) {
 				self.decideTabsVisibility();
 			}, false);
-			LightningCalendarTabs.win.getViewDeck().addEventListener("dayselect", function () {
+			LightningCalendarTabs.win.getViewBox().addEventListener("dayselect", function () {
 				self.updateTabs();
 			}, false);
 			//attach to lightning's tabs select event to switch tab type
@@ -83,7 +83,7 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 		this.startupInProgress = false;
 	};
 
-	LightningCalendarTabs.tabsController.prototype.shutdown = function() {
+	LightningCalendarTabs.tabsController.prototype.shutdown = function () {
 		var calendar = LightningCalendarTabs.win.document.getElementById("calendar-view-box");
 		calendar.removeChild(this.arrowscrollbox);
 	};
@@ -185,6 +185,9 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 		}
 	};
 
+	/**
+	 * create tabs container in the area between calendar and view switching tabs
+	 */
 	LightningCalendarTabs.tabsController.prototype.createTabBox = function () {
 		this.arrowscrollbox = LightningCalendarTabs.win.document.createXULElement("arrowscrollbox");
 		this.arrowscrollbox.setAttribute("orient", "horizontal");
@@ -195,7 +198,7 @@ var LightningCalendarTabs = LightningCalendarTabs || {};
 		this.tabs = LightningCalendarTabs.win.document.createXULElement("tabs");
 
 		var calendar = LightningCalendarTabs.win.document.getElementById("calendar-view-box");
-		var viewDeck = LightningCalendarTabs.win.document.getElementById("view-deck");
+		var viewDeck = LightningCalendarTabs.win.document.getElementById("view-box");
 
 		calendar.insertBefore(this.arrowscrollbox, viewDeck);
 

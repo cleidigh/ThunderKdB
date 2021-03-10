@@ -53,6 +53,7 @@
 					<radio pane="cardbook-syncPane" value="cardbook-syncPane" label="__MSG_syncTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-syncPane");'/>
 					<radio pane="cardbook-emailPane" value="cardbook-emailPane" label="__MSG_emailTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-emailPane");'/>
 					<radio pane="cardbook-birthdaylistPane" value="cardbook-birthdaylistPane" label="__MSG_birthdaylistTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-birthdaylistPane");'/>
+					<radio pane="cardbook-helpPane" value="cardbook-helpPane" label="__MSG_helpTabLabel__" oncommand='wdw_cardbookConfiguration.showPane("cardbook-helpPane");'/>
 				</radiogroup>
 				<spacer flex="1"/>
 			</vbox>
@@ -184,9 +185,9 @@
 							<groupbox>
 								<label><html:h2>__MSG_tabsEditingGroupboxLabel__</html:h2></label>
 								<vbox align="left">
-									<checkbox id="mailPopularityTabCheckBox" label="__MSG_mailPopularityTab.conf.label__"
-										accesskey="__MSG_mailPopularityTab.conf.accesskey__"
-										preference="extensions.cardbook.mailPopularityTabView" type="bool" instantApply="true"/>
+									<checkbox id="listTabCheckBox" label="__MSG_listTab.conf.label__"
+										accesskey="__MSG_listTab.conf.accesskey__"
+										preference="extensions.cardbook.listTabView" type="bool" instantApply="true"/>
 									<checkbox id="technicalTabCheckBox" label="__MSG_technicalTab.conf.label__"
 										accesskey="__MSG_technicalTab.conf.accesskey__"
 										preference="extensions.cardbook.technicalTabView" type="bool" instantApply="true"/>
@@ -968,6 +969,52 @@
 										id="calendarEntryCategoriesLabel"/>
 									<html:input id="calendarEntryCategoriesTextBox"
 										preference="extensions.cardbook.calendarEntryCategories" type="string" instantApply="true"/>
+								</hbox>
+							</groupbox>
+						</prefpane>
+
+						<prefpane id="cardbook-helpPane" label="__MSG_helpTabLabel__">
+							<label><html:h2>__MSG_translateLabel__</html:h2></label>
+							<groupbox class="indent">
+								<hbox flex="1" align="center">
+									<label>__MSG_websiteLabel__</label>
+									<separator orient="vertical" class="thin"/>
+									<label value="https://crowdin.com/project/cardbook" class="text-link"
+										onclick="cardbookRepository.cardbookUtils.openExternalURL(this.value)"/>
+								</hbox>
+							</groupbox>
+							<label><html:h2>__MSG_sourceCodeLabel__</html:h2></label>
+							<groupbox class="indent">
+								<hbox flex="1" align="center">
+									<label>__MSG_websiteLabel__</label>
+									<separator orient="vertical" class="thin"/>
+									<label value="https://gitlab.com/CardBook/CardBook/-/tree/master" class="text-link"
+										onclick="cardbookRepository.cardbookUtils.openExternalURL(this.value)"/>
+								</hbox>
+							</groupbox>
+							<label><html:h2>__MSG_documentationLabel__</html:h2></label>
+							<groupbox class="indent">
+								<hbox flex="1" align="center">
+									<label>__MSG_websiteLabel__</label>
+									<separator orient="vertical" class="thin"/>
+									<label value="https://gitlab.com/CardBook/CardBook/-/wikis/Documentation" class="text-link"
+										onclick="cardbookRepository.cardbookUtils.openExternalURL(this.value)"/>
+								</hbox>
+							</groupbox>
+							<label><html:h2>__MSG_supportLabel__</html:h2></label>
+							<groupbox class="indent">
+								<hbox flex="1" align="center">
+									<label>__MSG_websiteLabel__</label>
+									<separator orient="vertical" class="thin"/>
+									<label value="https://gitlab.com/CardBook/CardBook/-/issues" class="text-link"
+										onclick="cardbookRepository.cardbookUtils.openExternalURL(this.value)"/>
+								</hbox>
+							</groupbox>
+							<label><html:h2>__MSG_contributeLabel__</html:h2></label>
+							<groupbox class="indent">
+								<hbox flex="1" align="center">
+									<button class="addon-detail-contribute-button" label="__MSG_contributeLabel__"
+										oncommand="cardbookRepository.cardbookUtils.openExternalURL('https://www.paypal.com/paypalme/CardBook/10eur')"/>
 								</hbox>
 							</groupbox>
 						</prefpane>

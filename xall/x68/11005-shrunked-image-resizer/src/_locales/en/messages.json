@@ -1,18 +1,60 @@
 {
-  "extensionName": {
-    "message": "Shrunked Image Resizer"
+  "advanced.exif.label": {
+    "message": "Transfer EXIF data"
   },
-  "extensionDescription": {
-    "message": "Make your photos smaller, so they don't take forever to email or upload to websites."
+  "advanced.gps.label": {
+    "message": "Transfer GPS data"
   },
-
-
-
+  "advanced.label": {
+    "message": "Advanced"
+  },
+  "advanced.logenabled.label": {
+    "message": "Log messages to Error Console"
+  },
+  "advanced.orient.label": {
+    "message": "Automatically rotate images"
+  },
+  "advanced.resample.label": {
+    "message": "Resample images using javascript"
+  },
+  "advanced.resizeonsend.false": {
+    "message": "when attached"
+  },
+  "advanced.resizeonsend.label": {
+    "message": "Offer to resize image attachments:"
+  },
+  "advanced.resizeonsend.true": {
+    "message": "when sending email"
+  },
+  "cancel": {
+    "message": "Cancel"
+  },
+  "changelog.button.accesskey": {
+    "message": "C"
+  },
+  "changelog.button.label": {
+    "message": "What Changed?"
+  },
   "config.title": {
     "message": "Shrunked Image Resizer Configuration"
   },
+  "context.plural": {
+    "message": "Resize these images…"
+  },
+  "context.single": {
+    "message": "Resize this image…"
+  },
+  "custom.label": {
+    "message": "Custom"
+  },
+  "custom.pixels": {
+    "message": "px"
+  },
   "defaults.label": {
     "message": "Defaults"
+  },
+  "defaults.quality.better": {
+    "message": "Better Quality"
   },
   "defaults.quality.label": {
     "message": "JPEG Encoder Quality:"
@@ -20,188 +62,24 @@
   "defaults.quality.smaller": {
     "message": "Smaller Files"
   },
-  "defaults.quality.better": {
-    "message": "Better Quality"
-  },
-  "options.title": {
-    "message": "Shrunked Image Resizer Options"
-  },
-  "options.savedefault.label": {
-    "message": "Save as default settings"
-  },
-  "noresize.label": {
-    "message": "Original"
-  },
-  "small.label": {
-    "message": "500 px"
-  },
-  "medium.label": {
-    "message": "800 px"
-  },
-  "large.label": {
-    "message": "1200 px"
-  },
-  "custom.label": {
-    "message": "Custom"
-  },
-  "width.label": {
-    "message": "Width:"
-  },
-  "height.label": {
-    "message": "Height:"
-  },
-  "preview.label": {
-    "message": "Preview:"
-  },
-  "preview.previous.tooltip": {
-    "message": "Previous image"
-  },
-  "preview.next.tooltip": {
-    "message": "Next image"
-  },
-  "minsize.label": {
-    "message": "Minimum file size to resize:"
-  },
-  "maxsize.label": {
-    "message": "Maximum size for your photos:"
-  },
-  "custom.pixels": {
-    "message": "px"
-  },
-  "advanced.label": {
-    "message": "Advanced"
-  },
-  "advanced.resample.label": {
-    "message": "Resample images using javascript"
-  },
-  "advanced.exif.label": {
-    "message": "Transfer EXIF data"
-  },
-  "advanced.orient.label": {
-    "message": "Automatically rotate images"
-  },
-  "advanced.gps.label": {
-    "message": "Transfer GPS data"
-  },
-  "advanced.logenabled.label": {
-    "message": "Log messages to Error Console"
-  },
-  "advanced.resizeonsend.label": {
-    "message": "Offer to resize image attachments:"
-  },
-  "advanced.resizeonsend.false": {
-    "message": "when attached"
-  },
-  "advanced.resizeonsend.true": {
-    "message": "when sending email"
-  },
-
-
-
-  "ok": {
-    "message": "OK"
-  },
-  "cancel": {
-    "message": "Cancel"
-  },
   "dimensions": {
     "message": "$WIDTH$ px × $HEIGHT$ px",
     "placeholders": {
-      "width": {
-        "content": "$1",
-        "example": "800"
-      },
       "height": {
         "content": "$2",
         "example": "600"
-      }
-    }
-  },
-  "yes.accesskey": {
-    "message": "Y"
-  },
-  "yes.label": {
-    "message": "Yes"
-  },
-  "no.accesskey": {
-    "message": "N"
-  },
-  "no.label": {
-    "message": "No"
-  },
-  "question.single": {
-    "message": "Resize this image?"
-  },
-  "question.plural": {
-    "message": "Resize these images?"
-  },
-  "context.single": {
-    "message": "Resize this image…"
-  },
-  "context.plural": {
-    "message": "Resize these images…"
-  },
-  "preview.originalsize": {
-    "message": "Original dimensions: $WIDTH$ px × $HEIGHT$ px",
-    "placeholders": {
+      },
       "width": {
         "content": "$1",
         "example": "800"
-      },
-      "height": {
-        "content": "$2",
-        "example": "600"
       }
     }
   },
-  "preview.originalfilesize": {
-    "message": "Original file size: $SIZE$",
-    "placeholders": {
-      "size": {
-        "content": "$1",
-        "example": "4.3 MB"
-      }
-    }
+  "donate.button.accesskey": {
+    "message": "D"
   },
-  "preview.resized": {
-    "message": "Resized to: $WIDTH$ px × $HEIGHT$ px",
-    "placeholders": {
-      "width": {
-        "content": "$1",
-        "example": "800"
-      },
-      "height": {
-        "content": "$2",
-        "example": "600"
-      }
-    }
-  },
-  "preview.resizedfilesize.estimating": {
-    "message": "Estimating new file size…"
-  },
-  "preview.resizedfilesize": {
-    "message": "Estimated new file size: $SIZE$",
-    "placeholders": {
-      "size": {
-        "content": "$1",
-        "example": "4.3 MB"
-      }
-    }
-  },
-  "preview.notresized": {
-    "message": "Not resized"
-  },
-  "unit.bytes": {
-    "message": "B"
-  },
-  "unit.kilobytes": {
-    "message": "kB"
-  },
-  "unit.megabytes": {
-    "message": "MB"
-  },
-  "status.resizing": {
-    "message": "Resizing image…;Resizing images…"
+  "donate.button.label": {
+    "message": "Donate"
   },
   "donate.notification": {
     "message": "Shrunked Image Resizer has been updated to version $VERSION$. Shrunked is free, but your donation is appreciated!",
@@ -212,16 +90,132 @@
       }
     }
   },
-  "changelog.button.label": {
-    "message": "What Changed?"
+  "extensionDescription": {
+    "message": "Make your photos smaller, so they don't take forever to email or upload to websites."
   },
-  "changelog.button.accesskey": {
-    "message": "C"
+  "extensionName": {
+    "message": "Shrunked Image Resizer"
   },
-  "donate.button.label": {
-    "message": "Donate"
+  "height.label": {
+    "message": "Height:"
   },
-  "donate.button.accesskey": {
-    "message": "D"
+  "large.label": {
+    "message": "1200 px"
+  },
+  "maxsize.label": {
+    "message": "Maximum size for your photos:"
+  },
+  "medium.label": {
+    "message": "800 px"
+  },
+  "minsize.label": {
+    "message": "Minimum file size to resize:"
+  },
+  "no.accesskey": {
+    "message": "N"
+  },
+  "no.label": {
+    "message": "No"
+  },
+  "noresize.label": {
+    "message": "Original"
+  },
+  "ok": {
+    "message": "OK"
+  },
+  "options.savedefault.label": {
+    "message": "Save as default settings"
+  },
+  "options.title": {
+    "message": "Shrunked Image Resizer Options"
+  },
+  "preview.label": {
+    "message": "Preview:"
+  },
+  "preview.next.tooltip": {
+    "message": "Next image"
+  },
+  "preview.notresized": {
+    "message": "Not resized"
+  },
+  "preview.originalfilesize": {
+    "message": "Original file size: $SIZE$",
+    "placeholders": {
+      "size": {
+        "content": "$1",
+        "example": "4.3 MB"
+      }
+    }
+  },
+  "preview.originalsize": {
+    "message": "Original dimensions: $WIDTH$ px × $HEIGHT$ px",
+    "placeholders": {
+      "height": {
+        "content": "$2",
+        "example": "600"
+      },
+      "width": {
+        "content": "$1",
+        "example": "800"
+      }
+    }
+  },
+  "preview.previous.tooltip": {
+    "message": "Previous image"
+  },
+  "preview.resized": {
+    "message": "Resized to: $WIDTH$ px × $HEIGHT$ px",
+    "placeholders": {
+      "height": {
+        "content": "$2",
+        "example": "600"
+      },
+      "width": {
+        "content": "$1",
+        "example": "800"
+      }
+    }
+  },
+  "preview.resizedfilesize": {
+    "message": "Estimated new file size: $SIZE$",
+    "placeholders": {
+      "size": {
+        "content": "$1",
+        "example": "4.3 MB"
+      }
+    }
+  },
+  "preview.resizedfilesize.estimating": {
+    "message": "Estimating new file size…"
+  },
+  "question.plural": {
+    "message": "Resize these images?"
+  },
+  "question.single": {
+    "message": "Resize this image?"
+  },
+  "small.label": {
+    "message": "500 px"
+  },
+  "status.resizing": {
+    "message": "Resizing image…;Resizing images…"
+  },
+  "unit.bytes": {
+    "message": "B"
+  },
+  "unit.kilobytes": {
+    "message": "kB"
+  },
+  "unit.megabytes": {
+    "message": "MB"
+  },
+  "width.label": {
+    "message": "Width:"
+  },
+  "yes.accesskey": {
+    "message": "Y"
+  },
+  "yes.label": {
+    "message": "Yes"
   }
 }

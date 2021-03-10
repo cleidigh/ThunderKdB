@@ -36,7 +36,7 @@ const apiUrlShares = "/apps/files_sharing/api/v1/shares";
 const apiUrlGetApppassword = "/core/getapppassword";
 const apiUrlCapabilities = "/cloud/capabilities";
 const davUrlDefault = "remote.php/dav/files/";
-const ncMinimalVersion = 18;
+const ncMinimalVersion = 19;
 const ocMinimalVersion = 10 * 10000 + 0 * 100 + 10;
 //#endregion
 
@@ -156,11 +156,11 @@ class CloudConnection {
         if (data && data.quota) {
             if (data.quota.free) {
                 const free = parseInt(data.quota.free);
-                spaceRemaining = free >= 0 ? free : -1;
+                spaceRemaining = free >= 0 && free <= Number.MAX_SAFE_INTEGER ? free : -1;
             }
             if (data.quota.used) {
                 const used = parseInt(data.quota.used);
-                spaceUsed = used >= 0 ? used : -1;
+                spaceUsed = used >= 0 && used <= Number.MAX_SAFE_INTEGER ? used : -1;
             }
         }
         await messenger.cloudFile.updateAccount(this._accountId, { spaceRemaining, spaceUsed, });
@@ -387,8 +387,10 @@ class CloudConnection {
     async _findExistingShare(path_to_share, expireDate) {
         const shareinfo = await this._doApiCall(apiUrlShares + "?path=" + path_to_share);
 
-        return shareinfo.find(share =>
-            /// ... and if it's a public share ...
+        // If we the ApiCall fails, the result is not an Array. So make sure, we can call find() before we do
+        // Check for every existing share, if it meets our requirements:
+        return !shareinfo.find ? undefined : shareinfo.find(share =>
+            // It's a public share ...
             (share.share_type === 3) &&
             /* If a password is set, share_with is not empty in both cloud
             flavors. Since we have no chance to retreive the share password, we

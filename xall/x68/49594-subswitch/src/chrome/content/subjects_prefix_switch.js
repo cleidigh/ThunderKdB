@@ -424,7 +424,7 @@ com.ktsystems.subswitch.SubSwitchMain = {
         let ssKey, ssDesctiption;
         let remotePrefixItem;
         let ssHeader = aMimeMsg.get(com.ktsystems.subswitch.Const.SUBSWITCH_MIME_HEADER);
-        com.ktsystems.subswitch.Utils.dumpStr('parseSubSwitchMimeHeader; ssHeader ->'+ssHeader);
+        com.ktsystems.subswitch.Utils.dumpStr('findSubSwitchHeader; ssHeader ->'+ssHeader);
         var subMain = com.ktsystems.subswitch.SubSwitchMain;
 
         if (ssHeader) {
@@ -444,10 +444,12 @@ com.ktsystems.subswitch.SubSwitchMain = {
 
         if (ssKey != null) {
             remotePrefixItem = new com.ktsystems.subswitch.PrefixItem(ssDesctiption, ssKey);
-            com.ktsystems.subswitch.Utils.dumpStr('loadOriginalMsgSSHeader; dopasowanie prefiksu remoteSP ->'+remotePrefixItem);
+            com.ktsystems.subswitch.Utils.dumpStr('findSubSwitchHeader; dopasowanie prefiksu remoteSP ->'+remotePrefixItem);
 
-            let idx = subMain.loadRDProperty().indexOf(remotePrefixItem);
+            let rdData = subMain.loadRDProperty();
+            let idx = subMain.loadRDProperty().indexOfComplex(remotePrefixItem);
             let found = (idx >= 0);
+            com.ktsystems.subswitch.Utils.dumpStr('findSubSwitchHeader; found ->' + found);
 
             if (!found) {
                 if (!subMain.displayConfirm(remotePrefixItem)) {

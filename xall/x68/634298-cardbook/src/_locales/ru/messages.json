@@ -143,6 +143,9 @@
 	"ValidatingURLFailedLabel": {
 		"message": "URL не верен"
 	},
+	"ValidatingEmailFailedLabel": {
+		"message": "Введите действующий адрес эл. почты"
+	},
 	"ValidationFailedLabel": {
 		"message": "Ошибка при проверке"
 	},
@@ -741,7 +744,7 @@
         }
 	},
 	"cardUpdatedOnServer": {
-		"message": "$P1$ : Контакт «$P2$» обновлён на сервере (найден etag : $P3$, etag в кеше : $P4$)",
+		"message": "$P1$ : Контакт «$P2$» обновлён на сервере (найден etag : $P3$, etag в кэше : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2879,9 +2882,6 @@
 	"addedCardsGroupboxLabel": {
 		"message": "Выбранные элементы"
 	},
-	"mailPopularityGroupboxLabel": {
-		"message": "Почта"
-	},
 	"addEntryTooltip": {
 		"message": "Добавить запись"
 	},
@@ -3912,6 +3912,9 @@
 	"birthdaylistTabLabel": {
 		"message": "Дни рождения"
 	},
+	"helpTabLabel": {
+		"message": "Помощь"
+	},
 	"integrationGroupboxLabel": {
 		"message": "Интеграция в Thunderbird"
 	},
@@ -4095,11 +4098,11 @@
 	"listTabAccesskey": {
 		"message": "С"
 	},
-	"mailPopularityTab.conf.label": {
-		"message": "Рейтинг email"
+	"listTab.conf.label": {
+		"message": "Списки"
 	},
-	"mailPopularityTab.conf.accesskey": {
-		"message": "Р"
+	"listTab.conf.accesskey": {
+		"message": "C"
 	},
 	"technicalTab.conf.label": {
 		"message": "Тех.данные"
@@ -4121,6 +4124,12 @@
 	},
 	"advancedTab1Label": {
 		"message": "Дополнительно"
+	},
+	"popularityLabel": {
+		"message": "Популярность:"
+	},
+	"memberOfLabel": {
+		"message": "Присутствует на:"
 	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Использовать для показа местополжения"
@@ -4806,6 +4815,24 @@
 	"calendarEntryCategoriesAccesskey": {
 		"message": "к"
 	},
+	"translateLabel": {
+		"message": "Перевести"
+	},
+	"websiteLabel": {
+		"message": "Веб-сайт:"
+	},
+	"documentationLabel": {
+		"message": "Документация"
+	},
+	"sourceCodeLabel": {
+		"message": "Исходный код"
+	},
+	"supportLabel": {
+		"message": "Помощь по отладке"
+	},
+	"contributeLabel": {
+		"message": "Внести вклад"
+	},
 	"categoriesPicker.label": {
 		"message": "Фильтр категорий:"
 	},
@@ -5090,9 +5117,6 @@
 	},
 	"generalTabLabel": {
 		"message": "Основные"
-	},
-	"mailPopularityTabLabel": {
-		"message": "Рейтинг email"
 	},
 	"technicalTabLabel": {
 		"message": "Технические данные"

@@ -1,6 +1,8 @@
 if ("undefined" == typeof(cardbookWindowUtils)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
+	var loader = Services.scriptloader;
+	loader.loadSubScript("chrome://cardbook/content/lists/cardbookListConversion.js", this);
 
 	var cardbookWindowUtils = {
 		
@@ -748,7 +750,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 		},
 
-		displayCard: function (aCard, aReadOnly, aFollowLink) {
+		displayCard: function (aCard, aReadOnly) {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname",
 								"birthplace", "deathplace", "mailer", "geo", "sortstring",
 								"class1", "tz", "agent", "prodid", "uid", "version", "dirPrefId", "cardurl", "etag" ];
@@ -809,7 +811,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			var myEvents = cardbookRepository.cardbookUtils.getEventsFromCard(myNoteArray, myRemainingOthers);
 			if (aCard.isAList) {
 				if (aReadOnly) {
-					cardbookWindowUtils.loadStaticList(aCard, aFollowLink);
+					cardbookWindowUtils.loadStaticList(aCard);
 				} else {
 					wdw_cardEdition.displayLists(aCard);
 				}
@@ -819,7 +821,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					let myType = cardbookRepository.multilineFields[i];
 					if (aReadOnly) {
 						if (aCard[myType].length > 0) {
-							cardbookWindowUtils.constructStaticRows(aCard.dirPrefId, myType, aCard[myType], aCard.version, aFollowLink);
+							cardbookWindowUtils.constructStaticRows(aCard.dirPrefId, myType, aCard[myType], aCard.version);
 						}
 					} else {
 						if (myType == "impp") {
@@ -858,7 +860,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					myNoteBox.removeAttribute('readonly');
 				}
 			}
-			cardbookWindowUtils.loadMailPopularity(aCard, aReadOnly);
+			cardbookWindowUtils.loadEmailProperties(aCard, aReadOnly);
 			
 			if (aReadOnly) {
 				cardbookWindowUtils.constructStaticKeysRows(aCard.dirPrefId, aCard.key, aCard.version, aCard.fn, aCard.dirPrefId);
@@ -901,7 +903,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 			wdw_imageEdition.clearImageCard();
 			cardbookElementTools.deleteRows('addedCardsGroupbox');
-			cardbookElementTools.deleteRows('mailPopularityGroupbox');
+			cardbookElementTools.deleteRows('emailpropertyGroupbox');
 			cardbookElementTools.deleteRows("keyReadWriteGroupbox");
 			cardbookElementTools.deleteRows('keyReadOnlyGroupbox');
 		},
@@ -1288,9 +1290,9 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			}
 		},
 
-		constructStaticRows: function (aDirPrefId, aType, aArray, aVersion, aFollowLink) {
+		constructStaticRows: function (aDirPrefId, aType, aArray, aVersion) {
 			for (var i = 0; i < aArray.length; i++) {
-				cardbookWindowUtils.loadStaticTypes(aDirPrefId, aType, i, aArray[i][1], aArray[i][2], aArray[i][3], aArray[i][0], aVersion, aFollowLink);
+				cardbookWindowUtils.loadStaticTypes(aDirPrefId, aType, i, aArray[i][1], aArray[i][2], aArray[i][3], aArray[i][0], aVersion);
 			}
 		},
 
@@ -1952,7 +1954,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			keyTextbox.dispatchEvent(new Event('input'));
 		},
 
-		loadStaticTypes: function (aDirPrefId, aType, aIndex, aInputTypes, aPgName, aPgType, aCardValue, aVersion, aFollowLink) {
+		loadStaticTypes: function (aDirPrefId, aType, aIndex, aInputTypes, aPgName, aPgType, aCardValue, aVersion) {
 			if (aCardValue.join(" ") == "") {
 				return;
 			}
@@ -2145,52 +2147,60 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			var aButton = cardbookElementTools.addKeyButton(aOrigBox, aType, aIndex, aKeyType, aCardFn, aCardDirPrefId);
 		},
 
-		loadMailPopularity: function (aCard, aReadOnly) {
-			var myEmails = [];
+		loadEmailProperties: function (aCard, aReadOnly) {
+			let emails = [];
 			if (aCard.isAList) {
-				myEmails.push(aCard.fn.toLowerCase());
+				emails.push(aCard.fn.toLowerCase());
 			} else {
-				for (var i = 0; i < aCard.email.length; i++) {
-					myEmails.push(aCard.email[i][0][0].toLowerCase());
+				for (let email of aCard.email) {
+					emails.push(email[0][0].toLowerCase());
 				}
 			}
 
-			for (var i = 0; i < myEmails.length; i++) {
-				var aOrigBox = document.getElementById('mailPopularityGroupbox');
-
-				if (i == 0) {
-					cardbookElementTools.addCaption('mailPopularity', aOrigBox);
-				}
-
-				var aRow = document.createXULElement('row');
-				aOrigBox.appendChild(aRow);
-				aRow.setAttribute('id', 'mailPopularity_' + i + '_row');
-				aRow.setAttribute('flex', '1');
-				aRow.setAttribute('align', 'center');
-
+			document.getElementById("listTab").setAttribute("label", cardbookRepository.extension.localeData.localizeMessage("listsTabLabel"));
+			let aOrigBox = document.getElementById('emailpropertyGroupbox');
+			let popLabel = cardbookRepository.extension.localeData.localizeMessage("popularityLabel");
+			let i = 0;
+			for (let email of emails) {
+				cardbookElementTools.addCaptionWithLabel(null, aOrigBox, " ");
+				cardbookElementTools.addCaptionWithLabel(null, aOrigBox, email);
+				let aRow = cardbookElementTools.addGridRow(aOrigBox, 'mailPopularity_' + i + '_row', {align: 'center', flex: '1', class: 'indent'});
+				let mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[email] || "0";
 				if (aReadOnly) {
-					var aImage = document.createXULElement('image');
-					aRow.appendChild(aImage);
-					aImage.setAttribute('id', 'dummyMailPopularityPrefBox_' + i);
-					aImage.setAttribute('class', 'cardbookNoPrefStarClass');
-				}
-
-				if (cardbookRepository.cardbookMailPopularityIndex[myEmails[i]]) {
-					var mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[myEmails[i]];
+					cardbookElementTools.addLabel(aRow, 'pop_' + i + '_Textbox', popLabel, null, {readonly: 'true'});
+					cardbookElementTools.addLabel(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, null, {readonly: 'true'});
 				} else {
-					var mailPopularityValue = "";
-				}
-				if (aReadOnly) {
-					cardbookElementTools.addTextbox(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, {readonly: 'true'});
-					cardbookElementTools.addLabel(aRow, 'email_' + i + '_Textbox', myEmails[i], null, {readonly: 'true'});
-				} else {
+					cardbookElementTools.addLabel(aRow, 'pop_' + i + '_Textbox', popLabel, null, {});
 					cardbookElementTools.addTextbox(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, {});
-					cardbookElementTools.addLabel(aRow, 'email_' + i + '_Textbox', myEmails[i], null, {});
+				}
+				cardbookElementTools.addLabel(aRow, 'email_' + i + '_Textbox', email, null, {hidden: 'true'});
+				cardbookWindowUtils.addMemberOf(aCard.dirPrefId, email, aOrigBox, i, aCard.isAList);
+				i++;
+			}
+		},
+
+		addMemberOf: async function (aDirPrefId, aEmail, aOrigBox, aIndex, aIsAList) {
+			let memberOfLabel = cardbookRepository.extension.localeData.localizeMessage("memberOfLabel");
+			for (let list of cardbookRepository.cardbookDisplayCards[aDirPrefId].cards.filter(card => card.isAList)) {
+				let listConversion = new cardbookListConversion(list.fn + " <" + list.fn + ">", null, true);
+				if ((listConversion.emailResult.includes(aEmail) && !aIsAList) ||
+					(listConversion.recursiveList.includes(aEmail) && aIsAList && aEmail != list.fn)) {
+					let aRow = cardbookElementTools.addGridRow(aOrigBox, 'memberOf_' + aIndex + '_row', {align: 'center', flex: '1', class: 'indent'});
+					cardbookElementTools.addLabel(aRow, 'memberOf_' + aIndex + '_Textbox', memberOfLabel, null, {readonly: 'true'});
+					let listTextbox = cardbookElementTools.addLabel(aRow, 'fn_' + list.cbid + '_valueBox', cardbookRepository.cardbookUtils.getName(list), null, {readonly: 'true'});
+					listTextbox.setAttribute('class', 'text-link cardbookMemberOf');
+					listTextbox.addEventListener("click", cardbookWindowUtils.editCardFromList, false);
+
+					let itemList = aOrigBox.querySelectorAll(".cardbookMemberOf");
+					let items = Array.from(itemList, item => item.getAttribute("id"));
+					items = cardbookRepository.arrayUnique(items);
+					let listsTabLabel = cardbookRepository.extension.localeData.localizeMessage("listsTabLabel");
+					document.getElementById("listTab").setAttribute("label", listsTabLabel + " (" + items.length + ")");
 				}
 			}
 		},
 
-		loadStaticList: function (aCard, aFollowLink) {
+		loadStaticList: function (aCard) {
 			var addedCards = [];
 			var myMembers = cardbookRepository.cardbookUtils.getMembersFromCard(aCard);
 			for (let email of myMembers.mails) {
@@ -2208,14 +2218,11 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				var aOrigBox = document.getElementById('addedCardsGroupbox');
 
 				if (i == 0) {
-					cardbookElementTools.addCaption('addedCards', aOrigBox);
+					let label = cardbookRepository.extension.localeData.localizeMessage("addedCardsGroupboxLabel") + " (" + addedCards.length + ")";
+					cardbookElementTools.addCaptionWithLabel('addedCards', aOrigBox, label);
 				}
 
-				var aRow = document.createXULElement('row');
-				aOrigBox.appendChild(aRow);
-				aRow.setAttribute('id', 'addedCards_' + i + '_row');
-				aRow.setAttribute('flex', '1');
-				aRow.setAttribute('align', 'center');
+				var aRow = cardbookElementTools.addGridRow(aOrigBox, 'addedCards_' + i + '_row', {flex: '1', align: 'center'});
 
 				var aImage = document.createXULElement('image');
 				aRow.appendChild(aImage);
@@ -2225,19 +2232,8 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				cardbookElementTools.addLabel(aRow, 'email_' + addedCards[i][2] + '_valueBox', addedCards[i][1].join(" "), null, {readonly: 'true'});
 
 				var myCardTextbox = cardbookElementTools.addLabel(aRow, 'fn_' + addedCards[i][2] + '_valueBox', addedCards[i][0], null, {readonly: 'true'});
-
-				myCardTextbox.addEventListener("contextmenu", cardbookRichContext.fireListContext, false);
-				
-				if (aFollowLink) {
-					myCardTextbox.setAttribute('class', 'text-link');
-					function fireClick(event) {
-						if (wdw_cardbook) {
-							wdw_cardbook.chooseActionTreeForClick(event)
-						}
-					};
-					myCardTextbox.addEventListener("click", fireClick, false);
-				}
-
+				myCardTextbox.setAttribute('class', 'text-link');
+				myCardTextbox.addEventListener("click", cardbookWindowUtils.editCardFromList, false);
 			}
 		},
 
@@ -2389,6 +2385,29 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			catch (e) {
 				var errorTitle = "addCardToCategoryMenuSubMenu";
 				Services.prompt.alert(null, errorTitle, e);
+			}
+		},
+
+		editCardFromList: function (aEvent) {
+			let element = document.elementFromPoint(aEvent.clientX, aEvent.clientY);
+			let cbid = element.id.split('_')[1];
+			cardbookWindowUtils.editCardFromCard(cardbookRepository.cardbookCards[cbid]);
+		},
+
+		editCardFromCard: function (aCard) {
+			if (aCard) {
+				var myOutCard = new cardbookCardParser();
+				cardbookRepository.cardbookUtils.cloneCard(aCard, myOutCard);
+				if (myOutCard.isAList) {
+					var myType = "List";
+				} else {
+					var myType = "Contact";
+				}
+				if (cardbookRepository.cardbookPreferences.getReadOnly(aCard.dirPrefId)) {
+					cardbookWindowUtils.openEditionWindow(myOutCard, "View" + myType);
+				} else {
+					cardbookWindowUtils.openEditionWindow(myOutCard, "Edit" + myType);
+				}
 			}
 		},
 

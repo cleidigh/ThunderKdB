@@ -143,6 +143,9 @@
 	"ValidatingURLFailedLabel": {
 		"message": "URL 주소가 잘못되었습니다"
 	},
+	"ValidatingEmailFailedLabel": {
+		"message": "유효한 이메일이 필요합니다"
+	},
 	"ValidationFailedLabel": {
 		"message": "인증 실패"
 	},
@@ -1749,7 +1752,7 @@
         }
 	},
 	"fileAlreadyOpen": {
-		"message": "파일 $P1$이 이미 연락처에서 열려 있습니다",
+		"message": "파일 $P1$이 이미 CardBook에서 열려 있습니다",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1757,7 +1760,7 @@
         }
 	},
 	"directoryAlreadyOpen": {
-		"message": "디렉토리 $P1$는 이미 연락처에서 열려 있습니다",
+		"message": "디렉토리 $P1$는 이미 CardBook에서 열려 있습니다",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2254,7 +2257,7 @@
         }
 	},
 	"numberContactsModified": {
-		"message": "접촉 수 : $P1$ (로컬에서 수정 됨: $P2$)",
+		"message": "연락처 수 : $P1$ (로컬에서 수정 됨: $P2$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2879,9 +2882,6 @@
 	"addedCardsGroupboxLabel": {
 		"message": "선택된 항목"
 	},
-	"mailPopularityGroupboxLabel": {
-		"message": "메일 인기도"
-	},
 	"addEntryTooltip": {
 		"message": "항목 추가"
 	},
@@ -2937,7 +2937,7 @@
         }
 	},
 	"accountDeletionConfirmMessage": {
-		"message": "연락처 저장소에서 $P1$ 주소록을 삭제 하시겠습니까?",
+		"message": "CardBook 저장소에서 $P1$ 주소록을 삭제 하시겠습니까?",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2945,7 +2945,7 @@
         }
 	},
 	"accountDeletionDiscoveryConfirmMessage": {
-		"message": "주소록 $P1$이 (가) 서버에서 제거 된 것 같습니다, 연락처 저장소에서 제거 하시겠습니까?",
+		"message": "주소록 $P1$이 (가) 서버에서 제거 된 것 같습니다, CardBook 저장소에서 제거 하시겠습니까?",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -3607,7 +3607,7 @@
 		"message": "표시"
 	},
 	"remotePage.validatebutton.label": {
-		"message": "유효성을 검사하다"
+		"message": "유효성 검사"
 	},
 	"locationSearchPage.wizard.description": {
 		"message": "저장된 검색의 정의."
@@ -3912,6 +3912,9 @@
 	"birthdaylistTabLabel": {
 		"message": "기념일"
 	},
+	"helpTabLabel": {
+		"message": "도움말"
+	},
 	"integrationGroupboxLabel": {
 		"message": "Thunderbird 통합 기능"
 	},
@@ -3922,7 +3925,7 @@
 		"message": "o"
 	},
 	"autocompletionTooltip": {
-		"message": "연락처 주소록에 자동 완성 기능을 추가하여 Thunderbird 주소록의 연락처 자동 완성 기능을 확장합니다."
+		"message": "CardBook 주소록에 자동 완성 기능을 추가하여 Thunderbird 주소록의 연락처 자동 완성 기능을 확장합니다."
 	},
 	"autocompleteSortByPopularityLabel": {
 		"message": "인기도에 따라 전자 메일 주소 정렬"
@@ -4036,7 +4039,7 @@
 		"message": "보내는 전자 메일 수집"
 	},
 	"emailsCollectionTooltip": {
-		"message": "Thunderbird의 표준 발송 이메일 주소 컬렉션을 확장합니다. 이 옵션을 사용하면 연락처 주소록에 없는 이메일 주소가 선택한 주소록에 추가됩니다."
+		"message": "Thunderbird의 표준 발송 이메일 주소 컬렉션을 확장합니다. 이 옵션을 사용하면 CardBook 주소록에 없는 이메일 주소가 선택한 주소록에 추가됩니다."
 	},
 	"emailsCollectionEnabledLabel": {
 		"message": "활성화"
@@ -4095,11 +4098,11 @@
 	"listTabAccesskey": {
 		"message": "L"
 	},
-	"mailPopularityTab.conf.label": {
-		"message": "메일 인기"
+	"listTab.conf.label": {
+		"message": "목록"
 	},
-	"mailPopularityTab.conf.accesskey": {
-		"message": "M"
+	"listTab.conf.accesskey": {
+		"message": "L"
 	},
 	"technicalTab.conf.label": {
 		"message": "전문적"
@@ -4121,6 +4124,12 @@
 	},
 	"advancedTab1Label": {
 		"message": "고급"
+	},
+	"popularityLabel": {
+		"message": "인기:"
+	},
+	"memberOfLabel": {
+		"message": "의 멤버이다:"
 	},
 	"localizeEditingGroupboxLabel": {
 		"message": "지도에 표시"
@@ -4417,7 +4426,7 @@
 		"message": "S"
 	},
 	"URLPhoneBackgroundLabel": {
-		"message": "배경에서 실행"
+		"message": "백그라운드에서 실행"
 	},
 	"URLPhoneBackgroundAccesskey": {
 		"message": "S"
@@ -4615,7 +4624,7 @@
 		"message": "O"
 	},
 	"attachVCardWarn": {
-		"message": "이메일에 vCard를 자동으로 추가하려면 각 이메일 계정에 대한 vCard를 선택하십시오. 활성화되면, 연락처는 이 계정의 모든 발신 이메일에 이 vCard를 첨부합니다."
+		"message": "이메일에 vCard를 자동으로 추가하려면 각 이메일 계정에 대한 vCard를 선택하십시오. 활성화되면, CardBook은 이 계정의 모든 발신 이메일에 이 vCard를 첨부합니다."
 	},
 	"attachVCardGroupboxLabel": {
 		"message": "vCard 첨부"
@@ -4654,7 +4663,7 @@
 		"message": "D"
 	},
 	"birthdayListWarn": {
-		"message": "기념일은 연락처 주소록에서만 검색됩니다."
+		"message": "기념일은 CardBook 주소록에서만 검색됩니다."
 	},
 	"addressbooksGroupboxLabel": {
 		"message": "주소록"
@@ -4806,6 +4815,24 @@
 	"calendarEntryCategoriesAccesskey": {
 		"message": "g"
 	},
+	"translateLabel": {
+		"message": "번역 돌리기"
+	},
+	"websiteLabel": {
+		"message": "웹 사이트:"
+	},
+	"documentationLabel": {
+		"message": "문서"
+	},
+	"sourceCodeLabel": {
+		"message": "소스 코드"
+	},
+	"supportLabel": {
+		"message": "디버깅 지원"
+	},
+	"contributeLabel": {
+		"message": "기여하기"
+	},
 	"categoriesPicker.label": {
 		"message": "카테고리 필터:"
 	},
@@ -4954,16 +4981,16 @@
 		"message": "현재 주소록에서 중복된 연락처 찾기"
 	},
 	"cardbookToolsMenuPrefsLabel": {
-		"message": "연락처 환경 설정"
+		"message": "CardBook 환경 설정"
 	},
 	"cardbookToolbarLabel": {
-		"message": "연락처 도구 모음"
+		"message": "CardBook 도구 모음"
 	},
 	"cardbookToolbarAccesskey": {
 		"message": "a"
 	},
 	"cardbookABPaneToolbarLabel": {
-		"message": "연락처 주소록 창 도구 모음"
+		"message": "CardBook 주소록 창 도구 모음"
 	},
 	"cardbookABPaneToolbarAccesskey": {
 		"message": "d"
@@ -5090,9 +5117,6 @@
 	},
 	"generalTabLabel": {
 		"message": "일반"
-	},
-	"mailPopularityTabLabel": {
-		"message": "메일 인기도"
 	},
 	"technicalTabLabel": {
 		"message": "세부 정보"

@@ -51,6 +51,23 @@
   display: none;
 }
 
+/* for the contribute button */
+.addon-detail-contribute-button {
+	-moz-context-properties: fill;
+	fill: currentColor;
+	background-image: url("chrome://global/skin/icons/heart.svg");
+	background-repeat: no-repeat;
+	background-position: 8px;
+	padding-inline-start: 28px;
+	margin-top: var(--card-padding);
+	margin-bottom: 0;
+	align-self: flex-end;
+}
+
+.addon-detail-contribute-button:dir(rtl) {
+	background-position-x: right 8px;
+}
+
 
 /* Preference tabs */
 radio[pane=cardbook-generalPane] > .radio-check {
@@ -82,4 +99,7 @@ radio[pane=cardbook-emailPane] > .radio-check {
 }
 radio[pane=cardbook-birthdaylistPane] > .radio-check {
 	list-style-image: url("chrome://cardbook/content/skin/icons/smiley.svg");
+}
+radio[pane=cardbook-helpPane] > .radio-check {
+	list-style-image: url("chrome://cardbook/content/skin/icons/help.svg");
 }

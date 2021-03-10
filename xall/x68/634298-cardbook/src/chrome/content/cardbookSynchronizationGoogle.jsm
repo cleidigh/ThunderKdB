@@ -920,6 +920,8 @@ var cardbookSynchronizationGoogle = {
 						cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
 						cardbookRepository.addCardToRepository(aParams.aNewCard, true, aParams.aNewCard.uid);
 						cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+						// don't have received the etag so force resync
+						cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 					} else {
 						cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
 						// if aCard and aCard have the same cached medias
@@ -956,6 +958,8 @@ var cardbookSynchronizationGoogle = {
 	},
 
 	waitForGoogleSyncFinished: function (aPrefId, aPrefName) {
+		// wait 10 s to be sure the category were memorized by Google
+		var waitTime = 10000;
 		cardbookRepository.lTimerSyncAll[aPrefId] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 		var lTimerSync = cardbookRepository.lTimerSyncAll[aPrefId];
 		lTimerSync.initWithCallback({ notify: function(lTimerSync) {
@@ -977,26 +981,26 @@ var cardbookSynchronizationGoogle = {
 							cardbookActions.fetchSyncActivity(aPrefId, cardbookRepository.cardbookServerCardSyncDone[aPrefId], cardbookRepository.cardbookServerCardSyncTotal[aPrefId]);
 						}
 						if (request == response) {
-							if (cardbookRepository.cardbookServerSyncParams[aPrefId].length && cardbookRepository.cardbookAccessTokenRequest[aPrefId] == 1 && "test1" == "test") {
+							if (cardbookRepository.cardbookServerSyncParams[aPrefId].length && cardbookRepository.cardbookAccessTokenRequest[aPrefId] == 1) {
 								let currentConnection = cardbookRepository.cardbookServerSyncParams[aPrefId][0];
 								let connection = {connUser: currentConnection.connUser, connPrefId: currentConnection.connPrefId, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE.REFRESH_REQUEST_URL, connDescription: currentConnection.connDescription};
 								let params = {aPrefIdType: "GOOGLE"};
 								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-								// wait 10 s to be sure the category were memorized by Google
-								let { setTimeout } = ChromeUtils.import("resource:///modules/imXPCOMUtils.jsm");
-								setTimeout(function() {
+								
+								if ( cardbookRepository.cardbookServerUpdatedCatRequest[aPrefId] +  cardbookRepository.cardbookServerCreatedCatRequest[aPrefId] + cardbookRepository.cardbookServerDeletedCatRequest[aPrefId] == 0) {
 									cardbookSynchronizationGoogle.getNewAccessTokenForGoogleCarddav(connection, "GOOGLE", params);
-									}, 10000);
-							} else {				
+								} else {
+									let { setTimeout } = ChromeUtils.import("resource:///modules/imXPCOMUtils.jsm");
+									setTimeout(function() {
+										cardbookSynchronizationGoogle.getNewAccessTokenForGoogleCarddav(connection, "GOOGLE", params);
+										}, waitTime);
+								}
+							} else {
 								cardbookSynchronization.finishSync(aPrefId, aPrefName, myPrefIdType);
 								if (cardbookRepository.cardbookServerSyncAgain[aPrefId]) {
 									cardbookRepository.cardbookUtils.formatStringForOutput("synchroForcedToResync", [aPrefName]);
-									// wait 10 s to be sure the category were memorized by Google
-									let { setTimeout } = ChromeUtils.import("resource:///modules/imXPCOMUtils.jsm");
-									setTimeout(function() {
-										cardbookSynchronization.finishMultipleOperations(aPrefId);
-										cardbookSynchronization.syncAccount(aPrefId, false);
-										}, 10000);
+									cardbookSynchronization.finishMultipleOperations(aPrefId);
+									cardbookSynchronization.syncAccount(aPrefId, false);
 								} else {
 									cardbookSynchronization.finishMultipleOperations(aPrefId);
 									var total = cardbookSynchronization.getRequest() + cardbookSynchronization.getTotal() + cardbookSynchronization.getResponse() + cardbookSynchronization.getDone();
@@ -1017,11 +1021,7 @@ var cardbookSynchronizationGoogle = {
 											var myPrefId = syncAgain[j];
 											var myPrefName = cardbookRepository.cardbookUtils.getPrefNameFromPrefId(myPrefId);
 											cardbookRepository.cardbookUtils.formatStringForOutput("synchroForcedToResync", [myPrefName]);
-											// wait 10 s to be sure the category were memorized by Google
-											let { setTimeout } = ChromeUtils.import("resource:///modules/imXPCOMUtils.jsm");
-											setTimeout(function() {
-												cardbookSynchronization.syncAccount(myPrefId, false);
-												}, 10000);
+											cardbookSynchronization.syncAccount(myPrefId, false);
 										}
 										for (var j = 0; j < syncFailed.length; j++) {
 											var myPrefId = syncFailed[j];

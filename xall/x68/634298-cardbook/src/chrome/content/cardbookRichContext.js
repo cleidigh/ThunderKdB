@@ -119,16 +119,6 @@ if ("undefined" == typeof(cardbookRichContext)) {
 		},
 
 		// don't have found a better way to add a contextual menu to a html:textarea or html:input
-		fireListContext: function(aEvent) {
-			if (wdw_cardbook) {
-				aEvent.stopImmediatePropagation();
-				wdw_cardbook.setCurrentTypeFromEvent(aEvent);
-				var myPoint = document.elementFromPoint(aEvent.clientX, aEvent.clientY);
-				document.getElementById('listsContextMenu').openPopup(myPoint, 'after_start', 0, 0, true);
-			}
-		},
-
-		// don't have found a better way to add a contextual menu to a html:textarea or html:input
 		fireTypeContext: function(aEvent) {
 			if (wdw_cardbook) {
 				aEvent.stopImmediatePropagation();

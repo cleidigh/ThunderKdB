@@ -65,9 +65,17 @@ com.ktsystems.subswitch.PrefixesListSingleton = (function() {
                 com.ktsystems.subswitch.Utils.dumpStr(e);
             }
 
+            items.indexOfComplex = function(elt) {
+                return items.indexOfInternal(elt, true);
+            };
+
             items.indexOf = function(elt) {
+                return items.indexOfInternal(elt, false);
+            };
+
+            items.indexOfInternal = function(elt, deep) {
                 for (var i = 0; i < this.length; i++) {
-                    if (this[i].equals(elt)) {
+                    if (this[i].equals(elt, deep)) {
                         return i;
                     }
                 }
@@ -223,7 +231,7 @@ com.ktsystems.subswitch.PrefixItem.prototype = {
 
     get formattedPrefixValue(){
         var d1 = new Date();
-        var numberRE = new RegExp(/{number:(N+)}/gi);
+        var numberRE = new RegExp(com.ktsystems.subswitch.Const.pattern_number);
         var tmpPrefix = this.rd;
 
         com.ktsystems.subswitch.Utils.dumpStr('-> getFormattedPrefixValue; numberRE:'+numberRE+ '; tmpPrefix=' + tmpPrefix);
@@ -241,7 +249,7 @@ com.ktsystems.subswitch.PrefixItem.prototype = {
             }
         }
 
-        var dateRE       = new RegExp(/{(date|time|datetime):[\w\\\/\-: ]+}/gi);
+        var dateRE       = new RegExp(com.ktsystems.subswitch.Const.pattern_date);
 
         var dtMatchArr = tmpPrefix.match(dateRE);
         var dateValue = new Date();
@@ -260,8 +268,41 @@ com.ktsystems.subswitch.PrefixItem.prototype = {
         return tmpPrefix;
     },
 
-    equals : function (otherItem) {
-        //com.ktsystems.subswitch.Utils.dumpStr('-> equals; this:'+this+'; other:'+otherItem);
+    get patternPrefixString() {
+        com.ktsystems.subswitch.Utils.dumpStr('patternPrefixString - START');
+        var numberRE = new RegExp(com.ktsystems.subswitch.Const.pattern_number);
+        var numberReplacement = "\\d+"
+        var dateRE   = new RegExp(com.ktsystems.subswitch.Const.pattern_date);
+        var dateReplacement = ".+"
+        var tmpPrefix = this.rd;
+
+        com.ktsystems.subswitch.Utils.dumpStr('patternPrefixString; numberRE:'+numberRE+ '; dateRE=' + dateRE+ '; tmpPrefix=' + tmpPrefix);
+
+        if (tmpPrefix.match(numberRE)) {
+            var numnerMatchArr = numberRE.exec(tmpPrefix);
+
+            if (numnerMatchArr.length == 2) {
+                tmpPrefix = tmpPrefix.replace(numnerMatchArr[0], numberReplacement);
+            }
+        }
+/*
+        var dtMatchArr = tmpPrefix.match(dateRE);
+
+        if (dtMatchArr != null) {
+            for (var i=0; i<dtMatchArr.length; i++) {
+                var dateFormatRE = new RegExp(/{(date|time|datetime):([\w\\\/\-: ]+)}/gi);
+                var dateFormat = dateFormatRE.exec(dtMatchArr[i])[2];
+
+                tmpPrefix = tmpPrefix.replace(dtMatchArr[i], com.ktsystems.subswitch.Utils.dateFormat(dateValue, dateFormat));
+            }
+        }
+*/
+        com.ktsystems.subswitch.Utils.dumpStr('patternPrefixString - END');
+        return tmpPrefix;
+    },
+
+    equals : function (otherItem, deep) {
+        com.ktsystems.subswitch.Utils.dumpStr('-> equals; this:'+this+'; other:'+otherItem);
         if (this.compare(this.rd, otherItem.rd))
             return true;
 
@@ -279,6 +320,25 @@ com.ktsystems.subswitch.PrefixItem.prototype = {
             }
         }
 
+        if (deep) {
+            let cleanThis = this.removeIgnoredSigns(this.rd);
+            let rex = new RegExp(otherItem.removeIgnoredSigns(otherItem.patternPrefixString), "gi")
+
+            com.ktsystems.subswitch.Utils.dumpStr('-> equals; cleanThis:'+cleanThis+'; rex:'+rex);
+            if (cleanThis.match(rex)) {
+                com.ktsystems.subswitch.Utils.dumpStr('-> equals; matched');
+                return true
+            }
+
+            let cleanThat = otherItem.removeIgnoredSigns(otherItem.rd);
+            let rexThis = new RegExp(this.removeIgnoredSigns(this.patternPrefixString), "gi")
+
+            com.ktsystems.subswitch.Utils.dumpStr('-> equals; cleanThat:'+cleanThat+'; rex:'+rexThis);
+            if (cleanThat.match(rexThis)) {
+                com.ktsystems.subswitch.Utils.dumpStr('-> equals; matched');
+                return true
+            }
+        }
         return false;
     },
 

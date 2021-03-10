@@ -4,49 +4,45 @@ if ("undefined" == typeof(cardbookListConversion)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
-	function cardbookListConversion(aEmails, aIdentity) {
+	function cardbookListConversion(aEmails, aIdentity, aOnlyEmail) {
 		this.emailResult = [];
 		this.recursiveList = [];
-		this._convert(aEmails, aIdentity);
+		this._convert(aEmails, aIdentity, aOnlyEmail);
 	}
 	
 	cardbookListConversion.prototype = {
-		_verifyRecursivity: function (aList) {
-			for (var i = 0; i < this.recursiveList.length; i++) {
-				if (this.recursiveList[i] == aList) {
-					cardbookRepository.cardbookUtils.formatStringForOutput("errorInfiniteLoopRecursion", [this.recursiveList.toSource()], "Warning");
-					return false;
-				}
+		_verifyRecursivity: function (aListName) {
+			if (this.recursiveList.includes(aListName)) {
+				cardbookRepository.cardbookUtils.formatStringForOutput("errorInfiniteLoopRecursion", [this.recursiveList.toSource()], "Warning");
+				return false;
+			} else {
+				this.recursiveList.push(aListName);
+				return true;
 			}
-			this.recursiveList.push(aList);
-			return true;
 		},
 		
-		_getEmails: function (aCard, aOnlyEmail) {
+		_getEmails: function (aCard, aIdentity, aOnlyEmail) {
 			if (aCard.isAList) {
-				var myList = aCard.fn;
+				let myList = aCard.fn;
 				if (this._verifyRecursivity(myList)) {
-					this._convert(MailServices.headerParser.makeMimeAddress(myList, myList));
+					this._convert(MailServices.headerParser.makeMimeAddress(myList, myList), aIdentity, aOnlyEmail);
 				}
 			} else {
-				var listOfEmail = []
-				listOfEmail = cardbookRepository.cardbookUtils.getMimeEmailsFromCards([aCard], aOnlyEmail).join(", ");
-				if (listOfEmail != "") {
-					this.emailResult.push(listOfEmail);
-				}
+				let listOfEmail = cardbookRepository.cardbookUtils.getMimeEmailsFromCards([aCard], aOnlyEmail);
+				this.emailResult = this.emailResult.concat(listOfEmail);
 			}
 		},
 		
-		_convert: function (aEmails, aIdentity) {
-			var memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
-			var useOnlyEmail = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
+		_convert: function (aEmails, aIdentity, aOnlyEmail) {
+			let memberCustom = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.memberCustom");
+			let useOnlyEmail = aOnlyEmail || cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 			let addresses = MailServices.headerParser.parseEncodedHeaderW(aEmails);
 			for (let address of addresses) {
 				let fullAddress = MailServices.headerParser.makeMimeAddress(address.name, address.email);
 				if (address.email.includes("@")) {
 					if (useOnlyEmail) {
 						// we are forced to collect here because after the display name is removed
-						var resultEmailsCollections = [];
+						let resultEmailsCollections = [];
 						resultEmailsCollections = cardbookRepository.cardbookPreferences.getAllEmailsCollections();
 						if (resultEmailsCollections && resultEmailsCollections.length != 0) {
 							ovl_collected.addCollectedContact(aIdentity, resultEmailsCollections, address.name, address.email);
@@ -60,18 +56,20 @@ if ("undefined" == typeof(cardbookListConversion)) {
 				} else if (fullAddress.includes("{{") && fullAddress.includes("}}")) {
 					this.emailResult.push(fullAddress);
 				} else {
-					var found = false;
+					let found = false;
 					for (let j in cardbookRepository.cardbookCards) {
-						var myCard = cardbookRepository.cardbookCards[j];
+						let myCard = cardbookRepository.cardbookCards[j];
 						if (myCard.isAList && myCard.fn == address.name) {
 							found = true;
-							this.recursiveList.push(address.name);
+							if (!this.recursiveList.includes(address.name)) {
+								this.recursiveList.push(address.name);
+							}
 							let myMembers = cardbookRepository.cardbookUtils.getMembersFromCard(myCard);
 							for (let email of myMembers.mails) {
 								this.emailResult.push([email.toLowerCase()]);
 							}
 							for (let card of myMembers.uids) {
-								this._getEmails(card, useOnlyEmail);
+								this._getEmails(card, aIdentity, useOnlyEmail);
 							}
 							break;
 						}

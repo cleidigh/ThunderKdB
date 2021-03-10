@@ -258,7 +258,8 @@ var shrunked = class extends ExtensionCommon.ExtensionAPI {
             );
 
             let nativeTab = tabManager.get(tab.id).nativeTab;
-            let notifyBox = nativeTab.gNotification.notificationbox;
+            let notifyBox =
+              nativeTab.gComposeNotification || nativeTab.gNotification.notificationbox;
             let notification = notifyBox.getNotificationWithValue("shrunked-notification");
             if (imageCount == 0) {
               if (notification) {

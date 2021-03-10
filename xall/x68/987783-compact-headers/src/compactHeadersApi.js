@@ -274,7 +274,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                     compactHeadersHideHeaders.setAttribute("label", "Hide Headers");
                     compactHeadersHideHeaders2.setAttribute("label", "Hide Headers");
                     msgHeaderView.setAttribute("style", "background: var(--toolbar-non-lwt-bgcolor) !important;");
-                    if (xulAppInfo.OS == "WINNT") {
+                    if (xulAppInfo.OS == "WINNT" || xulAppInfo.OS == "Darwin") {
                       msgHeaderView.setAttribute("style", "background: var(--lwt-toolbar-field-focus) !important;");
                     }
                     expandedHeaders2.removeAttribute("hideheaders");
@@ -302,7 +302,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                     compactHeadersHideHeaders.setAttribute("label", "Hide Headers");
                     compactHeadersHideHeaders2.setAttribute("label", "Hide Headers");
                     msgHeaderView.setAttribute("style", "background: var(--toolbar-non-lwt-bgcolor) !important;");
-                    if (xulAppInfo.OS == "WINNT") {
+                    if (xulAppInfo.OS == "WINNT" || xulAppInfo.OS == "Darwin") {
                       msgHeaderView.setAttribute("style", "background: var(--lwt-toolbar-field-focus) !important;");
                     }
                   }
@@ -404,7 +404,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                       headerViewToolbar.setAttribute("style", "margin-block: 4px -2px; margin-inline-end:-2px;\
                         z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
                         background: linear-gradient(to right,transparent,var(--toolbar-non-lwt-bgcolor) 2em) !important;");
-                      if (xulAppInfo.OS == "WINNT") {
+                      if (xulAppInfo.OS == "WINNT" || xulAppInfo.OS == "Darwin") {
                         headerViewToolbar.setAttribute("style", "margin-block: 4px -2px; margin-inline-end:-2px;\
                           z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
                           background: linear-gradient(to right,transparent,var(--lwt-toolbar-field-focus) 2em) !important;");
@@ -437,7 +437,7 @@ and, when reading \r\nnews feeds, replaces it with the link to the \r\nwebsite (
                   headerViewToolbar.setAttribute("style", "margin-block: 4px auto; margin-inline-end:-2px;\
                     z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
                     background: linear-gradient(to right,transparent,var(--toolbar-non-lwt-bgcolor) 2em) !important;");
-                  if (xulAppInfo.OS == "WINNT") {
+                  if (xulAppInfo.OS == "WINNT" || xulAppInfo.OS == "Darwin") {
                     headerViewToolbar.setAttribute("style", "margin-block: 4px auto; margin-inline-end:-2px;\
                       z-index: 1; position: relative; padding-inline-start: 2em; padding-inline-end: 2px;\
                       background: linear-gradient(to right,transparent,var(--lwt-toolbar-field-focus) 2em) !important;");

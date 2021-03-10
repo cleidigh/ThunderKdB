@@ -73,7 +73,7 @@
 		"message": "Nastavit adresář jako jen pro čtení"
 	},
 	"createCategoryFromAccountsOrCats": {
-		"message": "??Create Category??"
+		"message": "Vytvořit kategorii"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Upravit kategorii"
@@ -142,6 +142,9 @@
 	},
 	"ValidatingURLFailedLabel": {
 		"message": "URL má nesprávný tvar"
+	},
+	"ValidatingEmailFailedLabel": {
+		"message": "Je požadován platný e-mail"
 	},
 	"ValidationFailedLabel": {
 		"message": "Ověření selhalo"
@@ -360,7 +363,7 @@
         }
 	},
 	"synchroCategoriesUpToDate": {
-		"message": "??$P1$ : Categories up to date : $P2$??",
+		"message": "$P1$ : Aktuální kontakty : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -371,7 +374,7 @@
         }
 	},
 	"synchroCategoriesNewOnServer": {
-		"message": "??$P1$ : Categories new on server : $P2$??",
+		"message": "$P1$ : Nové kategorie na serveru : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -382,7 +385,7 @@
         }
 	},
 	"synchroCategoriesUpdatedOnServer": {
-		"message": "??$P1$ : Categories updated on server : $P2$??",
+		"message": "$P1$ : Kategorie změněné na serveru : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -393,7 +396,7 @@
         }
 	},
 	"synchroCategoriesDeletedOnServer": {
-		"message": "??$P1$ : Categories deleted from server : $P2$??",
+		"message": "$P1$ : Kategorie smazané ze serveru : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -404,7 +407,7 @@
         }
 	},
 	"synchroCategoriesDeletedOnDisk": {
-		"message": "??$P1$ : Categories deleted locally : $P2$??",
+		"message": "$P1$ : Kategorie smazané lokálně : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -415,7 +418,7 @@
         }
 	},
 	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
-		"message": "??$P1$ : Categories deleted locally and updated on server : $P2$??",
+		"message": "$P1$ : Kategorie smazané lokálně a aktualizované na serveru : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -426,7 +429,7 @@
         }
 	},
 	"synchroCategoriesNewOnDisk": {
-		"message": "??$P1$ : Categories new locally : $P2$??",
+		"message": "$P1$ : Nové místní kategorie : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -437,7 +440,7 @@
         }
 	},
 	"synchroCategoriesUpdatedOnDisk": {
-		"message": "??$P1$ : Categories updated locally : $P2$??",
+		"message": "$P1$ : Místně změněné kategorie : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -448,7 +451,7 @@
         }
 	},
 	"synchroCategoriesUpdatedOnBoth": {
-		"message": "??$P1$ : Categories updated locally and on server : $P2$??",
+		"message": "$P1$ : Kategorie změněné místně a na serveru : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -459,7 +462,7 @@
         }
 	},
 	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
-		"message": "??$P1$ : Categories updated locally and deleted from server : $P2$??",
+		"message": "$P1$ : Kategorie změněné místně a smazané na serveru : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1107,7 +1110,7 @@
         }
 	},
 	"serverSendingGetCardLabels": {
-		"message": "??$P1$ : Contact $P2$ : sending contact labels obtention request …??",
+		"message": "$P1$ : Kontakt $P2$ : posílám požadavek na štítky kontaktu …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1118,7 +1121,7 @@
         }
 	},
 	"serverGetCardLabelsOK": {
-		"message": "??$P1$ : Contact $P2$ : labels obtained??",
+		"message": "$P1$ : Kontakt $P2$ : štítky získány",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1129,7 +1132,7 @@
         }
 	},
 	"serverGetCardLabelsFailed": {
-		"message": "??$P1$ : Contact $P2$ : labels failed to be obtained on server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Kontakt $P2$ : štítky se ze serveru nepodařilo získat (url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1146,7 +1149,7 @@
         }
 	},
 	"serverSendingPutCardLabels": {
-		"message": "??$P1$ : Contact $P2$ : sending contact labels update request …??",
+		"message": "$P1$ : Kontakt $P2$ : Odesílání požadavku na změnu štítků kontaktu …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1157,7 +1160,7 @@
         }
 	},
 	"serverPutCardLabelsOK": {
-		"message": "??$P1$ : Contact $P2$ : labels updated??",
+		"message": "$P1$ : Kontakt $P2$ : štítky aktualizovány",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1168,7 +1171,7 @@
         }
 	},
 	"serverPutCardLabelsFailed": {
-		"message": "??$P1$ : Contact $P2$ : labels failed to be updated on server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Kontakt $P2$ : štítky se na serveru nepodařilo aktualizovat (url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1185,7 +1188,7 @@
         }
 	},
 	"categoryDeletedOnDisk": {
-		"message": "??$P1$ : Category $P2$ deleted locally??",
+		"message": "$P1$ : Kategorie $P2$ smazána lokálně",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1196,7 +1199,7 @@
         }
 	},
 	"categoryUpdatedOnDisk": {
-		"message": "??$P1$ : Category $P2$ updated locally??",
+		"message": "$P1$ : Kategorie $P2$ místně změněna",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1207,7 +1210,7 @@
         }
 	},
 	"categoryAlreadyGetFromCache": {
-		"message": "??$P1$ : Category $P2$ already retrieved from cache??",
+		"message": "$P1$ : Kategorie $P2$ již získána z mezipaměti",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1218,7 +1221,7 @@
         }
 	},
 	"categoryDeletedOnDiskUpdatedOnServer": {
-		"message": "??$P1$ : Category $P2$ deleted locally and updated on server??",
+		"message": "$P1$ : Kategorie $P2$ smazána lokálně a aktualizována na serveru",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1229,7 +1232,7 @@
         }
 	},
 	"categoryUpdatedOnBoth": {
-		"message": "??$P1$ : Category $P2$ updated locally and on server??",
+		"message": "$P1$ : Kategorie $P2$ změněna místně a na serveru",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1240,7 +1243,7 @@
         }
 	},
 	"categoryUpdatedOnServer": {
-		"message": "??$P1$ : Category $P2$ updated on server (etag found : $P3$, etag in cache : $P4$)??",
+		"message": "$P1$ : Kategorie $P2$ změněna na serveru (nalezený etag : $P3$, etag v mezipaměti : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1257,7 +1260,7 @@
         }
 	},
 	"categoryNewOnServer": {
-		"message": "??$P1$ : Found a new category on server??",
+		"message": "$P1$ : Na serveru byla nalezena nová kategorie",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1265,7 +1268,7 @@
         }
 	},
 	"categoryLoadedFromCacheDB": {
-		"message": "??$P1$ : Category $P2$ loaded from cache (IndexedDB)??",
+		"message": "$P1$ : Kategorie $P2$ načtena z mezipaměti (IndexedDB)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1276,7 +1279,7 @@
         }
 	},
 	"categoryNewOnDisk": {
-		"message": "??$P1$ : Category $P2$ new locally??",
+		"message": "$P1$ : Kategorie $P2$ nová místně",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1287,7 +1290,7 @@
         }
 	},
 	"categoryUpdatedOnDiskDeletedOnServer": {
-		"message": "??$P1$ : Category $P2$ updated locally and deleted from server??",
+		"message": "$P1$ : Kategorie $P2$ změněna místně a smazaná na serveru",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1298,7 +1301,7 @@
         }
 	},
 	"categoryDeletedOnServer": {
-		"message": "??$P1$ : Category $P2$ deleted from server??",
+		"message": "$P1$ : Kategorie $P2$ smazaná ze serveru",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1309,13 +1312,13 @@
         }
 	},
 	"categoryAskUserTitle": {
-		"message": "??Category Modification Conflict??"
+		"message": "Konflikt změny kategorie"
 	},
 	"categorykeepAskUserLabel": {
-		"message": "??Keep the category??"
+		"message": "Ponechat kategorii"
 	},
 	"categorydeleteAskUserLabel": {
-		"message": "??Delete the category??"
+		"message": "Smazat kategorii"
 	},
 	"categorylocalAskUserLabel": {
 		"message": "Upřednostnit místní změnu"
@@ -1324,7 +1327,7 @@
 		"message": "Upřednostnit vzdálenou změnu"
 	},
 	"serverCategoryDeletedFromServer": {
-		"message": "??$P1$ : Category $P2$ deleted from server??",
+		"message": "$P1$ : Kategorie $P2$ smazána ze serveru",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1335,7 +1338,7 @@
         }
 	},
 	"serverCategoryNotExistServer": {
-		"message": "??$P1$ : Category $P2$ does not exist on server??",
+		"message": "$P1$ : Kategorie $P2$ neexistuje na serveru",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1346,7 +1349,7 @@
         }
 	},
 	"serverCategoryDeleteFailed": {
-		"message": "??$P1$ : Category $P2$ failed to be deleted from server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Kategorie $P2$ nebylo možné smazat ze serveru (url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1363,7 +1366,7 @@
         }
 	},
 	"serverCategorySendingDeletion": {
-		"message": "??$P1$ : Category $P2$ : sending deletion requests …??",
+		"message": "$P1$ : Kategorie $P2$ : odesílání požadavku na smazání …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1374,7 +1377,7 @@
         }
 	},
 	"serverCategoryUpdatedOnServerWithEtag": {
-		"message": "??$P1$ : Category $P2$ updated on server (etag : $P3$)??",
+		"message": "$P1$ : Kategorie $P2$ změněna na serveru (etag : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1388,7 +1391,7 @@
         }
 	},
 	"serverCategoryUpdatedOnServerWithoutEtag": {
-		"message": "??$P1$ : Category $P2$ updated on server (no etag in response)??",
+		"message": "$P1$ : Kategorie $P2$ změněna na serveru (v odpovědi chybí etag)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1399,7 +1402,7 @@
         }
 	},
 	"serverCategoryUpdateFailed": {
-		"message": "??$P1$ : Category $P2$ failed to be updated on server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Kategorie $P2$ nebylo možné aktualizovat na serveru (url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1416,7 +1419,7 @@
         }
 	},
 	"serverCategorySendingUpdate": {
-		"message": "??$P1$ : Category $P2$ : sending update requests …??",
+		"message": "$P1$ : Kategorie $P2$ : odesílání požadavku na změnu …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1427,7 +1430,7 @@
         }
 	},
 	"serverCategoryCreatedOnServerWithEtag": {
-		"message": "??$P1$ : Category $P2$ created on server (etag : $P3$)??",
+		"message": "$P1$ : Kategorie $P2$ vytvořena na serveru (etag : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1441,7 +1444,7 @@
         }
 	},
 	"serverCategoryCreatedOnServerWithoutEtag": {
-		"message": "??$P1$ : Category $P2$ created on server (no etag in response)??",
+		"message": "$P1$ : Kategorie $P2$ vytvořena na serveru (v odpovědi chybí etag)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1452,7 +1455,7 @@
         }
 	},
 	"serverCategoryCreateFailed": {
-		"message": "??$P1$ : Category $P2$ failed to be created on server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Kategorii $P2$ nebylo možné na serveru vytvořit (url : $P3$, stav : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1469,7 +1472,7 @@
         }
 	},
 	"serverCategorySendingCreate": {
-		"message": "??$P1$ : Category $P2$ : sending create requests …??",
+		"message": "$P1$ : Kategorie $P2$ : odesílání požadavku na vytvoření …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1480,7 +1483,7 @@
         }
 	},
 	"synchronizationSearchingCategories": {
-		"message": "??$P1$ : Searching categories …??",
+		"message": "$P1$ : Hledání kategorií …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1505,7 +1508,7 @@
         }
 	},
 	"synchronizationUnauthorized": {
-		"message": "$P1$: Nelze se přihlásit k serveru. Pravděpodobně chybné nastavení, uživatelské jméno nebo heslo.",
+		"message": "$P1$ : Nelze se přihlásit k serveru. Pravděpodobně chybné nastavení, uživatelské jméno nebo heslo.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2879,9 +2882,6 @@
 	"addedCardsGroupboxLabel": {
 		"message": "Vybrané položky"
 	},
-	"mailPopularityGroupboxLabel": {
-		"message": "Oblíbenost e-mailů"
-	},
 	"addEntryTooltip": {
 		"message": "Přidat záznam"
 	},
@@ -3056,7 +3056,7 @@
 		"message": "Editor organizace"
 	},
 	"wdw_cardbookRenameFieldCreateCatTitle": {
-		"message": "??Create Category??"
+		"message": "Vytvořit kategorii"
 	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Upravit kategorii"
@@ -3912,6 +3912,9 @@
 	"birthdaylistTabLabel": {
 		"message": "Narozeniny"
 	},
+	"helpTabLabel": {
+		"message": "Nápověda"
+	},
 	"integrationGroupboxLabel": {
 		"message": "Integrace do Thunderbirdu"
 	},
@@ -4095,11 +4098,11 @@
 	"listTabAccesskey": {
 		"message": "S"
 	},
-	"mailPopularityTab.conf.label": {
-		"message": "Oblíbenost e-mailů"
+	"listTab.conf.label": {
+		"message": "Seznamy"
 	},
-	"mailPopularityTab.conf.accesskey": {
-		"message": "E"
+	"listTab.conf.accesskey": {
+		"message": "S"
 	},
 	"technicalTab.conf.label": {
 		"message": "Technické"
@@ -4121,6 +4124,12 @@
 	},
 	"advancedTab1Label": {
 		"message": "Rozšířené"
+	},
+	"popularityLabel": {
+		"message": "Popularita:"
+	},
+	"memberOfLabel": {
+		"message": "Návštěvník:"
 	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Vyhledat"
@@ -4806,6 +4815,24 @@
 	"calendarEntryCategoriesAccesskey": {
 		"message": "g"
 	},
+	"translateLabel": {
+		"message": "Přeložit"
+	},
+	"websiteLabel": {
+		"message": "Webový server:"
+	},
+	"documentationLabel": {
+		"message": "Dokumentace"
+	},
+	"sourceCodeLabel": {
+		"message": "Zdrojový kód"
+	},
+	"supportLabel": {
+		"message": "Podpora ladění"
+	},
+	"contributeLabel": {
+		"message": "Přispět"
+	},
 	"categoriesPicker.label": {
 		"message": "Filtr kategorií:"
 	},
@@ -5090,9 +5117,6 @@
 	},
 	"generalTabLabel": {
 		"message": "Obecné"
-	},
-	"mailPopularityTabLabel": {
-		"message": "Oblíbenost e-mailů"
 	},
 	"technicalTabLabel": {
 		"message": "Technické"

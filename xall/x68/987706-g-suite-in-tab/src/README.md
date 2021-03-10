@@ -4,8 +4,11 @@ Thunderbird addons to open G Suite apps in a tab
 ![gsuite](media/gsuite.png)
 
 ## Screenshot
-![calendar](media/personalizar.png)
-![calendar](media/general.png)
+![barra1](media/barra1.png)
+
+![barra3](media/barra3.png)
+
+![personalizar](media/personalizar.png)
 
 
 ### 0.3.0

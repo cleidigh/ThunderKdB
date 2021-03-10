@@ -99,6 +99,9 @@ async function maybeResizeInline(target) {
         type: "resizeFile",
         file: srcFile,
       });
+      if (destFile === null) {
+        return;
+      }
       let destURL = await new Promise(resolve => {
         let reader = new FileReader();
         reader.onloadend = function() {

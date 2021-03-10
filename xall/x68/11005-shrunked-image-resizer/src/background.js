@@ -56,6 +56,9 @@ browser.compose.onAttachmentAdded.addListener(async (tab, attachment) => {
 
   let file = await attachment.getFile();
   let destFile = await beginResize(tab, file);
+  if (destFile === null) {
+    return;
+  }
   await browser.compose.updateAttachment(tab.id, attachment.id, {
     file: destFile,
   });
@@ -82,9 +85,12 @@ browser.shrunked.onAttachmentContextClicked.addListener(async (tab, indicies) =>
     let a = attachments[i];
     if (await shouldResize(a, false)) {
       let file = await a.getFile();
-      beginResize(tab, file, false).then(destFile =>
-        browser.compose.updateAttachment(tab.id, a.id, { file: destFile })
-      );
+      beginResize(tab, file, false).then(destFile => {
+        if (destFile === null) {
+          return;
+        }
+        browser.compose.updateAttachment(tab.id, a.id, { file: destFile });
+      });
     }
   }
 
@@ -107,9 +113,12 @@ browser.compose.onBeforeSend.addListener(async (tab, details) => {
   for (let a of attachments) {
     if (await shouldResize(a)) {
       let file = await a.getFile();
-      let promise = beginResize(tab, file, false).then(destFile =>
-        browser.compose.updateAttachment(tab.id, a.id, { file: destFile })
-      );
+      let promise = beginResize(tab, file, false).then(async destFile => {
+        if (destFile === null) {
+          return;
+        }
+        await browser.compose.updateAttachment(tab.id, a.id, { file: destFile });
+      });
       promises.push(promise);
     }
   }
@@ -170,9 +179,10 @@ async function doResize(tabId, maxWidth, maxHeight, quality) {
   let sourceFiles = tabMap.get(tabId);
   tabMap.delete(tabId);
 
+  // User opted not to resize.
   if (maxWidth < 0 || maxHeight < 0) {
     for (let source of sourceFiles) {
-      source.promise.reject("User opted to not resize.");
+      source.promise.resolve(null);
     }
     return;
   }

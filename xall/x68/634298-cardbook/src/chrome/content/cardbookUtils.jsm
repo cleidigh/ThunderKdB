@@ -1440,7 +1440,7 @@ var cardbookUtils = {
 				tmpArray.push([field, "org." + field]);
 			}
 		}
-		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("mailPopularityTabLabel"), "mailpop"]);
+		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("listsTabLabel"), "list"]);
 		tmpArray.push([cardbookRepository.extension.localeData.localizeMessage("keyTabLabel"), "key"]);
 		cardbookRepository.cardbookUtils.sortMultipleArrayByString(tmpArray,0,1);
 		return tmpArray;

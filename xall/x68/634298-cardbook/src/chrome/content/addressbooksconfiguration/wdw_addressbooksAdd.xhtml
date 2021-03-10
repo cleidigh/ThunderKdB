@@ -18,7 +18,7 @@
 	xmlns:html="http://www.w3.org/1999/xhtml"
 	onload="wdw_addressbooksAdd.loadWizard();"
 	windowtype="CardBook:addressbookAddWindow"
-	style="min-height:600px;min-width:1200px;"
+	style="min-height:600px;min-width:900px;"
 	lightweightthemes="true"
 	persist="screenX screenY width height sizemode">
 
@@ -163,13 +163,23 @@
 								required="true"
 								oninput="wdw_addressbooksAdd.remotePageTextboxInput();"/>
 						</row>
-						<separator class="groove-thin"/>
+					</rows>
+				</grid>
+				<separator class="groove-thin"/>
+				<grid>
+					<columns>
+						<column/>
+						<column/>
+						<column/>
+					</columns>
+					<rows>
 						<description>__MSG_remotePage.credentials.description__</description>
 						<row align="center">
 							<label id="remotePageUsernameLabel" value="__MSG_remotePage.user.label__" control="remotePageUsername"/>
 							<html:input id="remotePageUsername"
 								required="true"
 								oninput="wdw_addressbooksAdd.remotePageTextboxInput();"/>
+							<button id="validateEmailButton" label="!" oncommand="wdw_addressbooksAdd.changeEmail();" class="small-button"/>
 						</row>
 						<row align="center">
 							<label id="remotePagePasswordLabel" value="__MSG_remotePage.password.label__" control="remotePagePassword"/>

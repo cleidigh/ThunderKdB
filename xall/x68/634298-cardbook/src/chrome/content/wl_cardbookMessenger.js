@@ -628,10 +628,6 @@ function onLoad(wasAlreadyOpen) {
 				<menuitem id="copyImageLocationCard" label="__MSG_copyImageLocationCardLabel__" oncommand="wdw_imageEdition.copyImageLocationCard();"/>
 			</menupopup>
 	
-			<menupopup id="listsContextMenu">
-				<menuitem id="editCardFromList" label="__MSG_editCardFromListLabel__" oncommand="wdw_cardbook.editCardFromList();"/>
-			</menupopup>
-			
 			<hbox id="mainHbox" flex="1">
 				<vbox id="leftPaneVbox1" persist="width collapsed">
 					<vbox id="cardbookFolderPaneToolbox">
@@ -695,7 +691,7 @@ function onLoad(wasAlreadyOpen) {
 							<vbox>
 								<hbox id="cardbookContactButtonsBox">
 									<button id="generalTab" label="__MSG_generalTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('generalTabPanel');"/>
-									<button id="mailPopularityTab" label="__MSG_mailPopularityTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('mailPopularityTabPanel');"/>
+									<button id="listTab" label="__MSG_listsTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('listTabPanel');"/>
 									<button id="technicalTab" label="__MSG_technicalTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('technicalTabPanel');"/>
 									<button id="vcardTab" label="__MSG_vCardTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('vcardTabPanel');"/>
 									<button id="keyTab" label="__MSG_keyTabLabel__" class="cardbookContactButtons" oncommand="wdw_cardbook.showPane('keyTabPanel');"/>
@@ -872,16 +868,14 @@ function onLoad(wasAlreadyOpen) {
 								</hbox>
 							</vbox>
 		
-							<vbox id="mailPopularityTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">
-								<groupbox id="mailPopularityReadWriteGroupbox" flex="1">
+							<vbox id="listTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">
+								<groupbox id="emailpropertyGroupbox">
 									<grid>
 										<columns flex="1">
 											<column/>
 											<column flex="1"/>
 										</columns>
-										<rows flex="1">
-											<groupbox id="mailPopularityGroupbox" flex="1"/>
-										</rows>
+										<rows flex="1"/>
 									</grid>
 								</groupbox>
 							</vbox>

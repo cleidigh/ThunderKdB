@@ -19,7 +19,7 @@ var cardBookWindowPrefObserver = {
 			case "viewABContact":
 				ovl_cardbookLayout.resizePanes();
 				break;
-			case "mailPopularityTabView":
+			case "listTabView":
 			case "technicalTabView":
 			case "vcardTabView":
 			case "keyTabView":

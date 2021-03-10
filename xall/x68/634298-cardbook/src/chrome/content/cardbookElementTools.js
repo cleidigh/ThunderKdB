@@ -64,10 +64,18 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		},
 		
 		addCaption: function (aType, aParent) {
-			var aCaption = document.createXULElement('label');
+			let aCaption = document.createXULElement('label');
 			aParent.appendChild(aCaption);
 			aCaption.setAttribute('id', aType + '_caption');
 			aCaption.setAttribute('value', cardbookRepository.extension.localeData.localizeMessage(aType + "GroupboxLabel"));
+			aCaption.setAttribute('class', 'header');
+		},
+		
+		addCaptionWithLabel: function (aType, aParent, aValue) {
+			let aCaption = document.createXULElement('label');
+			aParent.appendChild(aCaption);
+			aCaption.setAttribute('id', aType + '_caption');
+			aCaption.setAttribute('value', aValue);
 			aCaption.setAttribute('class', 'header');
 		},
 		

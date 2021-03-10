@@ -23,7 +23,7 @@ var cardbookInit = {
 		prefs.setBoolPref("debugMode", false);
 		
 		prefs.setBoolPref("preferEmailEdition", true);
-		prefs.setBoolPref("mailPopularityTabView", true);
+		prefs.setBoolPref("listTabView", true);
 		prefs.setBoolPref("technicalTabView", true);
 		prefs.setBoolPref("vcardTabView", true);
 		prefs.setBoolPref("keyTabView", true);
@@ -102,7 +102,7 @@ var cardbookInit = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "56.1");
+		prefs.setCharPref("addonVersion", "56.9");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);

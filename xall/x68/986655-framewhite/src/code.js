@@ -1,4 +1,4 @@
-divOne.addEventListener('click', function () {
+subsub11.addEventListener('click', function () {
 var whiteTheme = {
 "colors": {
 "frame": "white",
@@ -35,7 +35,7 @@ var whiteTheme = {
 browser.theme.update(whiteTheme);
 });
 
-divTwo.addEventListener('click', function () {
+subsub12.addEventListener('click', function () {
 var blackTheme = {
 "colors": {
 "frame": "black",
@@ -72,7 +72,7 @@ var blackTheme = {
 browser.theme.update(blackTheme);
 });
 
-divThree.addEventListener('click', function () {
+subsub21.addEventListener('click', function () {
 var blueTheme = {
 "colors": {
 "frame": "LightBlue",
@@ -109,7 +109,7 @@ var blueTheme = {
 browser.theme.update(blueTheme);
 });
 
-divFour.addEventListener('click', function () {
+subsub22.addEventListener('click', function () {
 var greenTheme = {
 "colors": {
 "frame": "LightGreen",
@@ -146,7 +146,7 @@ var greenTheme = {
 browser.theme.update(greenTheme);
 });
 
-divFive.addEventListener('click', function () {
+subsub23.addEventListener('click', function () {
 var yellowTheme = {
 "colors": {
 "frame": "Gold",
@@ -183,7 +183,7 @@ var yellowTheme = {
 browser.theme.update(yellowTheme);
 });
 
-divSix.addEventListener('click', function () {
+subsub24.addEventListener('click', function () {
 var redTheme = {
 "colors": {
 "frame": "pink",
@@ -220,7 +220,7 @@ var redTheme = {
 browser.theme.update(redTheme);
 });
 
-divSeven.addEventListener('click', function () {
+subsub26.addEventListener('click', function () {
 var BYTheme = {
 "colors": {
 "frame": "LightBlue",
@@ -257,7 +257,7 @@ var BYTheme = {
 browser.theme.update(BYTheme);
 });
 
-divEight.addEventListener('click', function () {
+subsub27.addEventListener('click', function () {
 var GYTheme = {
 "colors": {
 "frame": "LightGreen",
@@ -294,7 +294,7 @@ var GYTheme = {
 browser.theme.update(GYTheme);
 });
 
-divNine.addEventListener('click', function () {
+subsub28.addEventListener('click', function () {
 var RYTheme = {
 "colors": {
 "frame": "pink",
@@ -329,4 +329,115 @@ var RYTheme = {
         }
     }
 browser.theme.update(RYTheme);
+});
+
+subsub13.addEventListener('click', function () {
+var BWTheme = {
+"colors": {
+"frame": "LightBlue",
+"bookmark_text": "black",
+"popup": "white",
+"popup_text": "black",
+"popup_border": "black",
+"popup_highlight": "LightGray",
+"popup_highlight_text": "Black",
+"sidebar": "white",
+"sidebar_text": "black",
+"sidebar_highlight": "LightGray",
+"sidebar_highlight_text": "Black",
+"sidebar_border": "black",
+"tab_text": "black",
+"tab_line": "blue",
+"tab_loading": "white",
+"tab_background_text": "black",
+"toolbar_field": "white",
+"toolbar_field_text": "black",
+"toolbar_field_highlight": "blue",
+"toolbar_field_highlight_text": "white",
+"toolbar_field_focus": "white",
+"toolbar_field_text_focus": "black",
+"toolbar_field_border": "black",
+"toolbar_field_border_focus": "red",
+"toolbar_top_separator": "black",
+"toolbar_bottom_separator": "black",
+"toolbar_vertical_separator": "black",
+"tab_selected": "white",
+"toolbar": "white"
+        }
+    }
+browser.theme.update(BWTheme);
+});
+
+subsub14.addEventListener('click', function () {
+var GWTheme = {
+"colors": {
+"frame": "LightGreen",
+"bookmark_text": "black",
+"popup": "white",
+"popup_text": "black",
+"popup_border": "black",
+"popup_highlight": "LightGray",
+"popup_highlight_text": "Black",
+"sidebar": "white",
+"sidebar_text": "black",
+"sidebar_highlight": "LightGray",
+"sidebar_highlight_text": "Black",
+"sidebar_border": "black",
+"tab_text": "black",
+"tab_line": "blue",
+"tab_loading": "white",
+"tab_background_text": "black",
+"toolbar_field": "white",
+"toolbar_field_text": "black",
+"toolbar_field_highlight": "blue",
+"toolbar_field_highlight_text": "white",
+"toolbar_field_focus": "white",
+"toolbar_field_text_focus": "black",
+"toolbar_field_border": "black",
+"toolbar_field_border_focus": "red",
+"toolbar_top_separator": "black",
+"toolbar_bottom_separator": "black",
+"toolbar_vertical_separator": "black",
+"tab_selected": "white",
+"toolbar": "white"
+        }
+    }
+browser.theme.update(GWTheme);
+});
+
+subsub15.addEventListener('click', function () {
+var RWTheme = {
+"colors": {
+"frame": "pink",
+"bookmark_text": "black",
+"popup": "white",
+"popup_text": "black",
+"popup_border": "black",
+"popup_highlight": "LightGray",
+"popup_highlight_text": "Black",
+"sidebar": "white",
+"sidebar_text": "black",
+"sidebar_highlight": "LightGray",
+"sidebar_highlight_text": "Black",
+"sidebar_border": "black",
+"tab_text": "black",
+"tab_line": "blue",
+"tab_loading": "white",
+"tab_background_text": "black",
+"toolbar_field": "white",
+"toolbar_field_text": "black",
+"toolbar_field_highlight": "blue",
+"toolbar_field_highlight_text": "white",
+"toolbar_field_focus": "white",
+"toolbar_field_text_focus": "black",
+"toolbar_field_border": "black",
+"toolbar_field_border_focus": "red",
+"toolbar_top_separator": "black",
+"toolbar_bottom_separator": "black",
+"toolbar_vertical_separator": "black",
+"tab_selected": "white",
+"toolbar": "white"
+        }
+    }
+browser.theme.update(RWTheme);
 });

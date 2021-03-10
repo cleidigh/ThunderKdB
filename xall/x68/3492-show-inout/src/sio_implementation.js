@@ -437,6 +437,11 @@ function getMailboxesArray(emails) {
 
 function checkEmail(email, key, domain) {
   if (!email) return false; // sometimes empty
+  if (!gMyAddrArr[key]) {
+    config.getMyEmails();
+debug('new account found, call getMyEmails');
+    //still one 'gMyAddrArr[key] is undefined' on the next line
+  }
   if (gMyAddrArr[key][email]!==undefined) return true;
   if (domain && gMyAddrArr[key][email.split('@')[1]]!==undefined) return true;
   return false;
@@ -1341,27 +1346,31 @@ debug('add our own columns');
 /*
 *  add buttons to quick filter toolbar
 */
-debug('add buttons to quickFilter bar')
   let qfb=gD.getElementById("quick-filter-bar-filter-text-bar");
-  let sb=gD.getElementById("qfb-qs-sender");
+	if (qfb) {	//totalquckfilter https://bitbucket.org/alta8888/totalquickfilter/wiki/Home might have removed parts of qfb
+debug('add buttons to quickFilter bar')
+		let sb=gD.getElementById("qfb-qs-sender");
 
-  let b=gD.createXULElement('toolbarbutton');
-  b.setAttribute('id','qfb-qs-sio-correspondent');
-  b.setAttribute('type','checkbox');
-  b.setAttribute('class','toolbarbuton-1');
-  b.setAttribute('label',strings.inoutaddressCol_label);
-  qfb.insertBefore(b, sb);
+		let b=gD.createXULElement('toolbarbutton');
+		b.setAttribute('id','qfb-qs-sio-correspondent');
+		b.setAttribute('type','checkbox');
+		b.setAttribute('class','toolbarbuton-1');
+		b.setAttribute('label',strings.inoutaddressCol_label);
+		qfb.insertBefore(b, sb);
 
-  b=gD.createXULElement('toolbarbutton');
-  b.setAttribute('id','qfb-qs-sio-thisside');
-  b.setAttribute('type','checkbox');
-  b.setAttribute('class','toolbarbuton-1');
-  b.setAttribute('label',strings.inoutthissideCol_label);
-  qfb.insertBefore(b, sb);
+		b=gD.createXULElement('toolbarbutton');
+		b.setAttribute('id','qfb-qs-sio-thisside');
+		b.setAttribute('type','checkbox');
+		b.setAttribute('class','toolbarbuton-1');
+		b.setAttribute('label',strings.inoutthissideCol_label);
+		qfb.insertBefore(b, sb);
 
 debug('setFilters')
-  setFilters();
-	filtersDone=true;
+		setFilters();
+		filtersDone=true;
+	}
+else debug('Seems that "totalquickfilter" is installed');
+
 /*
 *  load style sheets
 */
@@ -1443,12 +1452,14 @@ debug('mail:3pane loaded');
 			gD=gW.document;
 			observer.observe(null, "MsgCreateDBView", 'force');	// after enabling the addon there is no other notification
 			if (filtersDone) {
-				//if second window is opened, we need to remove our filters or
-				//the new windows searches for the buttons which doesn't exists yet
-				//we add the filter back later
+				let qfb=gD.getElementById("quick-filter-bar-filter-text-bar");
+				if (qfb) {	//totalquckfilter https://bitbucket.org/alta8888/totalquickfilter/wiki/Home might have removed parts of qfb
+					//if second window is opened, we need to remove our filters or
+					//the new windows searches for the buttons which doesn't exists yet
+					//we add the filter back later
 debug('remove filters');
-				QuickFilterManager.killFilter("sio-correspondent");
-				QuickFilterManager.killFilter("sio-thisside");
+					QuickFilterManager.killFilter("sio-correspondent");
+					QuickFilterManager.killFilter("sio-thisside");
 /*
 	gW.document.defaultView.FolderDisplayListenerManager.registerListener({
 		onMakeActive(aFolderDisplay) {
@@ -1460,6 +1471,7 @@ for (let key in aFolderDisplay) {
 		}
 	});
 */
+				}
 			}
 			w.addEventListener('focus', onFocus, true);
 		},

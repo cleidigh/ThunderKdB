@@ -73,7 +73,7 @@
 		"message": "Setează agenda în modul numai citire"
 	},
 	"createCategoryFromAccountsOrCats": {
-		"message": "??Create Category??"
+		"message": "Creează Categorie"
 	},
 	"editCategoryFromAccountsOrCats": {
 		"message": "Modifică Categoria"
@@ -142,6 +142,9 @@
 	},
 	"ValidatingURLFailedLabel": {
 		"message": "Adresa URL este incorectă"
+	},
+	"ValidatingEmailFailedLabel": {
+		"message": "Este necesară o adresă de e-mail validă"
 	},
 	"ValidationFailedLabel": {
 		"message": "Validarea a esuat"
@@ -294,7 +297,7 @@
         }
 	},
 	"synchroCardsDeletedOnDisk": {
-		"message": "$P1$ : Contacte șterse pe disc : $P2$",
+		"message": "$P1$ : Contacte șterse local : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -305,7 +308,7 @@
         }
 	},
 	"synchroCardsDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Contacte șterse pe disc și actualizate pe server : $P2$",
+		"message": "$P1$ : Contacte șterse local și actualizate pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -316,7 +319,7 @@
         }
 	},
 	"synchroCardsNewOnDisk": {
-		"message": "$P1$ : Contacte noi pe disc : $P2$",
+		"message": "$P1$ : Contacte locale noi : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -327,7 +330,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDisk": {
-		"message": "$P1$ : Contacte actualizate pe disc : $P2$",
+		"message": "$P1$ : Contacte actualizate local : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -338,7 +341,7 @@
         }
 	},
 	"synchroCardsUpdatedOnBoth": {
-		"message": "$P1$ : Contacte actualizate pe disc și server : $P2$",
+		"message": "$P1$ : Contacte actualizate local și pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -349,7 +352,7 @@
         }
 	},
 	"synchroCardsUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Contacte actualizate pe disc și șterse pe server : $P2$",
+		"message": "$P1$ : Contacte actualizate local și șterse de pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -360,7 +363,7 @@
         }
 	},
 	"synchroCategoriesUpToDate": {
-		"message": "??$P1$ : Categories up to date : $P2$??",
+		"message": "$P1$ : Categorii actualizate : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -371,7 +374,7 @@
         }
 	},
 	"synchroCategoriesNewOnServer": {
-		"message": "??$P1$ : Categories new on server : $P2$??",
+		"message": "$P1$ : Categorii noi pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -382,7 +385,7 @@
         }
 	},
 	"synchroCategoriesUpdatedOnServer": {
-		"message": "??$P1$ : Categories updated on server : $P2$??",
+		"message": "$P1$ : Categorii actualizate pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -393,7 +396,7 @@
         }
 	},
 	"synchroCategoriesDeletedOnServer": {
-		"message": "??$P1$ : Categories deleted from server : $P2$??",
+		"message": "$P1$ : Categorii șterse de pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -404,7 +407,7 @@
         }
 	},
 	"synchroCategoriesDeletedOnDisk": {
-		"message": "??$P1$ : Categories deleted locally : $P2$??",
+		"message": "$P1$ : Categorii șterse local : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -415,7 +418,7 @@
         }
 	},
 	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
-		"message": "??$P1$ : Categories deleted locally and updated on server : $P2$??",
+		"message": "$P1$ : Categorii șterse local și actualizate pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -426,7 +429,7 @@
         }
 	},
 	"synchroCategoriesNewOnDisk": {
-		"message": "??$P1$ : Categories new locally : $P2$??",
+		"message": "$P1$ : Categorii locale noi : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -437,7 +440,7 @@
         }
 	},
 	"synchroCategoriesUpdatedOnDisk": {
-		"message": "??$P1$ : Categories updated locally : $P2$??",
+		"message": "$P1$ : Categorii actualizate local : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -448,7 +451,7 @@
         }
 	},
 	"synchroCategoriesUpdatedOnBoth": {
-		"message": "??$P1$ : Categories updated locally and on server : $P2$??",
+		"message": "$P1$ : Categorii actualizate local și pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -459,7 +462,7 @@
         }
 	},
 	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
-		"message": "??$P1$ : Categories updated locally and deleted from server : $P2$??",
+		"message": "$P1$ : Categorii actualizate local și șterse de pe server : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -686,7 +689,7 @@
 		"message": "Toate importurile au fost terminate"
 	},
 	"cardDeletedOnDisk": {
-		"message": "$P1$ : Contactul $P2$ a fost șters de pe disc",
+		"message": "$P1$ : Contactul $P2$ a fost șters local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -697,7 +700,7 @@
         }
 	},
 	"cardUpdatedOnDisk": {
-		"message": "$P1$ : Contactul $P2$ a fost actualizat pe disc",
+		"message": "$P1$ : Contactul $P2$ a fost actualizat local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -719,7 +722,7 @@
         }
 	},
 	"cardDeletedOnDiskUpdatedOnServer": {
-		"message": "$P1$ : Contactul $P2$ a fost șters de pe disc și actualizat pe server",
+		"message": "$P1$ : Contactul $P2$ a fost șters local și actualizat pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -730,7 +733,7 @@
         }
 	},
 	"cardUpdatedOnBoth": {
-		"message": "$P1$ : Contactul $P2$ a fost actualizat pe disc și pe server",
+		"message": "$P1$ : Contactul $P2$ a fost actualizat local și pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -777,7 +780,7 @@
         }
 	},
 	"cardNewOnDisk": {
-		"message": "$P1$ : Contactul $P2$ nou pe disc",
+		"message": "$P1$ : Contactul $P2$ nou local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -788,7 +791,7 @@
         }
 	},
 	"cardUpdatedOnDiskDeletedOnServer": {
-		"message": "$P1$ : Contactul $P2$ a fost actualizat pe disc și șters de pe server",
+		"message": "$P1$ : Contactul $P2$ a fost actualizat local și șters de pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1107,7 +1110,7 @@
         }
 	},
 	"serverSendingGetCardLabels": {
-		"message": "??$P1$ : Contact $P2$ : sending contact labels obtention request …??",
+		"message": "$P1$ : Contactul $P2$ : trimitere cerere de obținere a etichetelor …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1118,7 +1121,7 @@
         }
 	},
 	"serverGetCardLabelsOK": {
-		"message": "??$P1$ : Contact $P2$ : labels obtained??",
+		"message": "$P1$ : Contactul $P2$ : etichetele au fost obținute",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1129,7 +1132,7 @@
         }
 	},
 	"serverGetCardLabelsFailed": {
-		"message": "??$P1$ : Contact $P2$ : labels failed to be obtained on server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Contactul $P2$ : etichetele nu au putut fi obținute de pe server (adresa url : $P3$, status : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1146,7 +1149,7 @@
         }
 	},
 	"serverSendingPutCardLabels": {
-		"message": "??$P1$ : Contact $P2$ : sending contact labels update request …??",
+		"message": "$P1$ : Contactul $P2$ : trimitere cerere de actualizare a etichetelor …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1157,7 +1160,7 @@
         }
 	},
 	"serverPutCardLabelsOK": {
-		"message": "??$P1$ : Contact $P2$ : labels updated??",
+		"message": "$P1$ : Contactul $P2$ : etichetele au fost actualizate",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1168,7 +1171,7 @@
         }
 	},
 	"serverPutCardLabelsFailed": {
-		"message": "??$P1$ : Contact $P2$ : labels failed to be updated on server (url : $P3$, status : $P4$)??",
+		"message": "$P1$: Contactul $P2$: etichetele nu au putut fi actualizate pe server (adresa url: $P3$, stare: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1185,7 +1188,7 @@
         }
 	},
 	"categoryDeletedOnDisk": {
-		"message": "??$P1$ : Category $P2$ deleted locally??",
+		"message": "$P1$ : Categoria $P2$ a fost ștearsă local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1196,7 +1199,7 @@
         }
 	},
 	"categoryUpdatedOnDisk": {
-		"message": "??$P1$ : Category $P2$ updated locally??",
+		"message": "$P1$ : Categoria $P2$ a fost actualizată local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1207,7 +1210,7 @@
         }
 	},
 	"categoryAlreadyGetFromCache": {
-		"message": "??$P1$ : Category $P2$ already retrieved from cache??",
+		"message": "$P1$ : Categoria $P2$ deja primită din cache",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1218,7 +1221,7 @@
         }
 	},
 	"categoryDeletedOnDiskUpdatedOnServer": {
-		"message": "??$P1$ : Category $P2$ deleted locally and updated on server??",
+		"message": "$P1$ : Categoria $P2$ a fost ștearsă local și actualizată pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1229,7 +1232,7 @@
         }
 	},
 	"categoryUpdatedOnBoth": {
-		"message": "??$P1$ : Category $P2$ updated locally and on server??",
+		"message": "$P1$ : Categoria $P2$ a fost actualizată local și pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1240,7 +1243,7 @@
         }
 	},
 	"categoryUpdatedOnServer": {
-		"message": "??$P1$ : Category $P2$ updated on server (etag found : $P3$, etag in cache : $P4$)??",
+		"message": "$P1$ : Categoria $P2$ a fost actualizată pe server (etag găsit : $P3$, etag în cache : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1257,7 +1260,7 @@
         }
 	},
 	"categoryNewOnServer": {
-		"message": "??$P1$ : Found a new category on server??",
+		"message": "$P1$ : Am găsit o categorie nouă pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1265,7 +1268,7 @@
         }
 	},
 	"categoryLoadedFromCacheDB": {
-		"message": "??$P1$ : Category $P2$ loaded from cache (IndexedDB)??",
+		"message": "$P1$ : Categoria $P2$ a fost încărcată din cache (IndexedDB)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1276,7 +1279,7 @@
         }
 	},
 	"categoryNewOnDisk": {
-		"message": "??$P1$ : Category $P2$ new locally??",
+		"message": "$P1$ : Categoria $P2$ nouă local",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1287,7 +1290,7 @@
         }
 	},
 	"categoryUpdatedOnDiskDeletedOnServer": {
-		"message": "??$P1$ : Category $P2$ updated locally and deleted from server??",
+		"message": "$P1$ : Categoria $P2$ a fost actualizată local și ștearsă de pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1298,7 +1301,7 @@
         }
 	},
 	"categoryDeletedOnServer": {
-		"message": "??$P1$ : Category $P2$ deleted from server??",
+		"message": "$P1$ : Categoria $P2$ a fost ștearsă de pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1309,13 +1312,13 @@
         }
 	},
 	"categoryAskUserTitle": {
-		"message": "??Category Modification Conflict??"
+		"message": "Conflict modificare categorie"
 	},
 	"categorykeepAskUserLabel": {
-		"message": "??Keep the category??"
+		"message": "Păstrează categoria"
 	},
 	"categorydeleteAskUserLabel": {
-		"message": "??Delete the category??"
+		"message": "Șterge categoria"
 	},
 	"categorylocalAskUserLabel": {
 		"message": "Preferă modificarea locală"
@@ -1324,7 +1327,7 @@
 		"message": "Preferă modificarea de la distanță"
 	},
 	"serverCategoryDeletedFromServer": {
-		"message": "??$P1$ : Category $P2$ deleted from server??",
+		"message": "$P1$ : Categoria $P2$ a fost ștearsă de pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1335,7 +1338,7 @@
         }
 	},
 	"serverCategoryNotExistServer": {
-		"message": "??$P1$ : Category $P2$ does not exist on server??",
+		"message": "$P1$ : Categoria $P2$ nu există pe server",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1346,7 +1349,7 @@
         }
 	},
 	"serverCategoryDeleteFailed": {
-		"message": "??$P1$ : Category $P2$ failed to be deleted from server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Categoria $P2$ nu a putut fi ștearsă de pe server (adresa URL : $P3$, stare : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1363,7 +1366,7 @@
         }
 	},
 	"serverCategorySendingDeletion": {
-		"message": "??$P1$ : Category $P2$ : sending deletion requests …??",
+		"message": "$P1$ : Categoria $P2$ : trimitere cerere de ștergere …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1374,7 +1377,7 @@
         }
 	},
 	"serverCategoryUpdatedOnServerWithEtag": {
-		"message": "??$P1$ : Category $P2$ updated on server (etag : $P3$)??",
+		"message": "$P1$ : Categoria $P2$ a fost actualizată pe server (etag : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1388,7 +1391,7 @@
         }
 	},
 	"serverCategoryUpdatedOnServerWithoutEtag": {
-		"message": "??$P1$ : Category $P2$ updated on server (no etag in response)??",
+		"message": "$P1$ : Categoria $P2$ a fost actualizată pe server (nici un etag în răspuns)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1399,7 +1402,7 @@
         }
 	},
 	"serverCategoryUpdateFailed": {
-		"message": "??$P1$ : Category $P2$ failed to be updated on server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Categoria $P2$ nu a putut fi actualizată pe server (adresa URL : $P3$, stare : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1416,7 +1419,7 @@
         }
 	},
 	"serverCategorySendingUpdate": {
-		"message": "??$P1$ : Category $P2$ : sending update requests …??",
+		"message": "$P1$ : Categoria $P2$ : trimitere cerere de actualizare …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1427,7 +1430,7 @@
         }
 	},
 	"serverCategoryCreatedOnServerWithEtag": {
-		"message": "??$P1$ : Category $P2$ created on server (etag : $P3$)??",
+		"message": "$P1$ : Categoria $P2$ a fost creată pe server (etag : $P3$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1441,7 +1444,7 @@
         }
 	},
 	"serverCategoryCreatedOnServerWithoutEtag": {
-		"message": "??$P1$ : Category $P2$ created on server (no etag in response)??",
+		"message": "$P1$ : Categoria $P2$ a fost creată pe server (nici un etag în răspuns)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1452,7 +1455,7 @@
         }
 	},
 	"serverCategoryCreateFailed": {
-		"message": "??$P1$ : Category $P2$ failed to be created on server (url : $P3$, status : $P4$)??",
+		"message": "$P1$ : Categoria $P2$ nu a putut fi creată pe server (adresa URL : $P3$, stare : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1469,7 +1472,7 @@
         }
 	},
 	"serverCategorySendingCreate": {
-		"message": "??$P1$ : Category $P2$ : sending create requests …??",
+		"message": "$P1$ : Categoria $P2$ trimitere cerere de creare …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1480,7 +1483,7 @@
         }
 	},
 	"synchronizationSearchingCategories": {
-		"message": "??$P1$ : Searching categories …??",
+		"message": "$P1$ : Căutare în categorii …",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2879,9 +2882,6 @@
 	"addedCardsGroupboxLabel": {
 		"message": "Elemente selectate"
 	},
-	"mailPopularityGroupboxLabel": {
-		"message": "Popularitate email"
-	},
 	"addEntryTooltip": {
 		"message": "Adaugă înregistrare"
 	},
@@ -3056,7 +3056,7 @@
 		"message": "Editor de organizație"
 	},
 	"wdw_cardbookRenameFieldCreateCatTitle": {
-		"message": "??Create Category??"
+		"message": "Creează Categorie"
 	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Editor de categorii"
@@ -3912,6 +3912,9 @@
 	"birthdaylistTabLabel": {
 		"message": "Aniversare"
 	},
+	"helpTabLabel": {
+		"message": "Ajutor"
+	},
 	"integrationGroupboxLabel": {
 		"message": "Integrare în Thunderbird"
 	},
@@ -4095,11 +4098,11 @@
 	"listTabAccesskey": {
 		"message": "L"
 	},
-	"mailPopularityTab.conf.label": {
-		"message": "Popularitate email"
+	"listTab.conf.label": {
+		"message": "Liste"
 	},
-	"mailPopularityTab.conf.accesskey": {
-		"message": "P"
+	"listTab.conf.accesskey": {
+		"message": "L"
 	},
 	"technicalTab.conf.label": {
 		"message": "Tehnic"
@@ -4121,6 +4124,12 @@
 	},
 	"advancedTab1Label": {
 		"message": "Avansat"
+	},
+	"popularityLabel": {
+		"message": "Popularitate:"
+	},
+	"memberOfLabel": {
+		"message": "Membru al:"
 	},
 	"localizeEditingGroupboxLabel": {
 		"message": "Afișează pe harta cu"
@@ -4806,6 +4815,24 @@
 	"calendarEntryCategoriesAccesskey": {
 		"message": "g"
 	},
+	"translateLabel": {
+		"message": "Tradu"
+	},
+	"websiteLabel": {
+		"message": "Site web:"
+	},
+	"documentationLabel": {
+		"message": "Documentație"
+	},
+	"sourceCodeLabel": {
+		"message": "Cod sursă"
+	},
+	"supportLabel": {
+		"message": "Suport pentru depanare"
+	},
+	"contributeLabel": {
+		"message": "Contribuie"
+	},
 	"categoriesPicker.label": {
 		"message": "Filtru categorie:"
 	},
@@ -5090,9 +5117,6 @@
 	},
 	"generalTabLabel": {
 		"message": "General"
-	},
-	"mailPopularityTabLabel": {
-		"message": "Popularitate email"
 	},
 	"technicalTabLabel": {
 		"message": "Tehnic"

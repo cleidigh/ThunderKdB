@@ -11,7 +11,7 @@ Preferences.addAll([
 	{ id: "extensions.cardbook.useColor", type: "string" },
 	{ id: "extensions.cardbook.debugMode", type: "bool" },
 	{ id: "extensions.cardbook.statusInformationLineNumber", type: "string" },
-	{ id: "extensions.cardbook.mailPopularityTabView", type: "bool" },
+	{ id: "extensions.cardbook.listTabView", type: "bool" },
 	{ id: "extensions.cardbook.technicalTabView", type: "bool" },
 	{ id: "extensions.cardbook.vcardTabView", type: "bool" },
 	{ id: "extensions.cardbook.keyTabView", type: "bool" },
@@ -693,6 +693,33 @@ var wdw_cardbookConfiguration = {
 				}
 			}
 			cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.fieldsNameList", cardbookRepository.cardbookUtils.unescapeStringSemiColon(tmpArray.join(";")));
+		}
+	},
+
+	validateFieldsFromOrgOrCustom: function (aOldField, aNewField) {
+		let fields = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.fieldsNameList").split(";");
+		if (fields[0] == "allFields") {
+			return;
+		} else if (aOldField || aNewField) {
+			if (aOldField) {
+				aOldField = cardbookRepository.cardbookUtils.escapeStringSemiColon(aOldField);
+				let i = 0;
+				while (i < fields.length) {
+					if (fields[i] === aOldField) {
+						fields.splice(i, 1);
+					} else {
+						++i;
+					}
+				}
+			}
+			if (aNewField) {
+				aNewField = cardbookRepository.cardbookUtils.escapeStringSemiColon(aNewField);
+				fields.push(aNewField);
+			}
+			cardbookRepository.cardbookPreferences.setStringPref("extensions.cardbook.fieldsNameList", fields.join(";"));
+			// need to reload the edition fields
+			wdw_cardbookConfiguration.loadFields();
+			wdw_cardbookConfiguration.sortTrees(null, "fieldsTree");
 		}
 	},
 
@@ -1702,7 +1729,7 @@ var wdw_cardbookConfiguration = {
 			document.getElementById('URLPhoneGroupbox').hidden = true;
 		} else {
 			document.getElementById('URLPhoneGroupbox').hidden = false;
-			if (wdw_cardbookConfiguration.allIMPPs['tel'].length == 1 && wdw_cardbookConfiguration.allIMPPs['tel'][0][2] == "url") {
+			if (wdw_cardbookConfiguration.allIMPPs['tel'].length == 1 && wdw_cardbookConfiguration.allIMPPs['tel'][0][2].toLowerCase() == "url") {
 				document.getElementById('URLPhoneURLLabel').disabled = false;
 				document.getElementById('URLPhoneURLTextBox').disabled = false;
 				document.getElementById('URLPhoneUserLabel').disabled = false;
@@ -1959,10 +1986,11 @@ var wdw_cardbookConfiguration = {
 			}
 			wdw_cardbookConfiguration.allCustomFields[type] = JSON.parse(JSON.stringify(result));
 			wdw_cardbookConfiguration.sortTrees(null, "customFieldsTree");
-			wdw_cardbookConfiguration.preferenceChanged('customFields');
-			// need to reload the edition fields
-			wdw_cardbookConfiguration.loadFields();
-			wdw_cardbookConfiguration.sortTrees(null, "fieldsTree");
+			if (!already) {
+				wdw_cardbookConfiguration.preferenceChanged('customFields', null, myArgs.code);
+			} else {
+				wdw_cardbookConfiguration.preferenceChanged('customFields');
+			}
 		}
 	},
 
@@ -2004,11 +2032,11 @@ var wdw_cardbookConfiguration = {
 				}
 				wdw_cardbookConfiguration.allCustomFields[type] = JSON.parse(JSON.stringify(result));
 				wdw_cardbookConfiguration.sortTrees(null, "customFieldsTree");
-				wdw_cardbookConfiguration.preferenceChanged('customFields');
-				// need to reload the edition fields
-				wdw_cardbookConfiguration.loadFields();
-				wdw_cardbookConfiguration.sortTrees(null, "fieldsTree");
-				wdw_cardbookConfiguration.preferenceChanged('fields');
+				if (!already) {
+					wdw_cardbookConfiguration.preferenceChanged('customFields', myCode, myArgs.code);
+				} else {
+					wdw_cardbookConfiguration.preferenceChanged('customFields');
+				}
 			}
 		}
 	},
@@ -2018,6 +2046,7 @@ var wdw_cardbookConfiguration = {
 		var myTree = document.getElementById('customFieldsTree');
 		if (myTree.currentIndex != -1) {
 			var myId = myTree.view.getCellText(myTree.currentIndex, myTree.columns.getNamedColumn('customFieldsRank'));
+			var myCode = myTree.view.getCellText(myTree.currentIndex, myTree.columns.getNamedColumn('customFieldsCode'));
 			var result = [];
 			var myCount = 0;
 			for (let i = 0; i < wdw_cardbookConfiguration.allCustomFields[type].length; i++) {
@@ -2028,11 +2057,7 @@ var wdw_cardbookConfiguration = {
 			}
 			wdw_cardbookConfiguration.allCustomFields[type] = JSON.parse(JSON.stringify(result));
 			wdw_cardbookConfiguration.sortTrees(null, "customFieldsTree");
-			wdw_cardbookConfiguration.preferenceChanged('customFields');
-			// need to reload the edition fields
-			wdw_cardbookConfiguration.loadFields();
-			wdw_cardbookConfiguration.sortTrees(null, "fieldsTree");
-			wdw_cardbookConfiguration.preferenceChanged('fields');
+			wdw_cardbookConfiguration.preferenceChanged('customFields', myCode, null);
 		}
 	},
 
@@ -2057,6 +2082,7 @@ var wdw_cardbookConfiguration = {
 				cardbookRepository.cardbookPreferences.setCustomFields(i, wdw_cardbookConfiguration.allCustomFields[i][j][2], wdw_cardbookConfiguration.allCustomFields[i][j][0] + ":" + wdw_cardbookConfiguration.allCustomFields[i][j][1]);
 			}
 		}
+		cardbookRepository.customFields = cardbookRepository.cardbookPreferences.getAllCustomFields();
 	},
 
 	resetCustomListFields: function () {
@@ -2205,10 +2231,11 @@ var wdw_cardbookConfiguration = {
 			}
 			wdw_cardbookConfiguration.allOrg = JSON.parse(JSON.stringify(result));
 			wdw_cardbookConfiguration.sortTrees(null, "orgTree");
-			wdw_cardbookConfiguration.preferenceChanged('orgStructure');
-			// need to reload the edition fields
-			wdw_cardbookConfiguration.loadFields();
-			wdw_cardbookConfiguration.sortTrees(null, "fieldsTree");
+			if (!already) {
+				wdw_cardbookConfiguration.preferenceChanged('orgStructure', null, "org." + myArgs.type);
+			} else {
+				wdw_cardbookConfiguration.preferenceChanged('orgStructure');
+			}
 		}
 	},
 	
@@ -2248,11 +2275,11 @@ var wdw_cardbookConfiguration = {
 				}
 				wdw_cardbookConfiguration.allOrg = JSON.parse(JSON.stringify(result));
 				wdw_cardbookConfiguration.sortTrees(null, "orgTree");
-				wdw_cardbookConfiguration.preferenceChanged('orgStructure');
-				// need to reload the edition fields
-				wdw_cardbookConfiguration.loadFields();
-				wdw_cardbookConfiguration.sortTrees(null, "fieldsTree");
-				wdw_cardbookConfiguration.preferenceChanged('fields');
+				if (!already) {
+					wdw_cardbookConfiguration.preferenceChanged('orgStructure', "org." + myLabel, "org." + myArgs.type);
+				} else {
+					wdw_cardbookConfiguration.preferenceChanged('orgStructure');
+				}
 			}
 		}
 	},
@@ -2261,6 +2288,7 @@ var wdw_cardbookConfiguration = {
 		var myTree = document.getElementById('orgTree');
 		if (myTree.currentIndex != -1) {
 			var myId = myTree.view.getCellText(myTree.currentIndex, myTree.columns.getNamedColumn('orgRank'));
+			var myLabel = myTree.view.getCellText(myTree.currentIndex, myTree.columns.getNamedColumn('orgLabel'));
 			var result = [];
 			var myCount = 0;
 			for (let i = 0; i < wdw_cardbookConfiguration.allOrg.length; i++) {
@@ -2271,11 +2299,7 @@ var wdw_cardbookConfiguration = {
 			}
 			wdw_cardbookConfiguration.allOrg = JSON.parse(JSON.stringify(result));
 			wdw_cardbookConfiguration.sortTrees(null, "orgTree");
-			wdw_cardbookConfiguration.preferenceChanged('orgStructure');
-			// need to reload the edition fields
-			wdw_cardbookConfiguration.loadFields();
-			wdw_cardbookConfiguration.sortTrees(null, "fieldsTree");
-			wdw_cardbookConfiguration.preferenceChanged('fields');
+			wdw_cardbookConfiguration.preferenceChanged('orgStructure', "org." + myLabel, null);
 		}
 	},
 	
@@ -2522,7 +2546,7 @@ var wdw_cardbookConfiguration = {
 		}
 	},
 
-	preferenceChanged: function (aPreference) {
+	preferenceChanged: function (aPreference, aOldField, aNewField) {
 		switch (aPreference) {
 			case "autocompletion":
 				wdw_cardbookConfiguration.validateAutoComplete();
@@ -2568,12 +2592,16 @@ var wdw_cardbookConfiguration = {
 				break;
 			case "customFields":
 				wdw_cardbookConfiguration.validateCustomFields();
+				// need to reload the edition fields
+				wdw_cardbookConfiguration.validateFieldsFromOrgOrCustom(aOldField, aNewField);
 				break;
 			case "customListFields":
 				wdw_cardbookConfiguration.validateCustomListFields();
 				break;
 			case "orgStructure":
 				wdw_cardbookConfiguration.validateOrg();
+				// need to reload the edition fields
+				wdw_cardbookConfiguration.validateFieldsFromOrgOrCustom(aOldField, aNewField);
 				break;
 			case "attachedVCard":
 				wdw_cardbookConfiguration.validateVCards();

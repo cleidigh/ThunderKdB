@@ -664,10 +664,10 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			} else {
 				document.getElementById('noteTab').setAttribute("collapsed", true);
 			}
-			if (isElementInPref("mailpop")) {
-				document.getElementById('mailPopularityTab').setAttribute("collapsed", false);
+			if (isElementInPref("list")) {
+				document.getElementById('listTab').setAttribute("collapsed", false);
 			} else {
-				document.getElementById('mailPopularityTab').setAttribute("collapsed", true);
+				document.getElementById('listTab').setAttribute("collapsed", true);
 			}
 			if (isElementInPref("key")) {
 				document.getElementById('keyTab').setAttribute("collapsed", false);
@@ -948,7 +948,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			var i = 0;
 			while (true) {
 				if (document.getElementById('mailPopularity_' + i + '_row')) {
-					var field = document.getElementById('mailPopularityTab').label.toLowerCase();
+					var field = cardbookRepository.extension.localeData.localizeMessage("popularityLabel");
 					var data = document.getElementById('popularity_' + i + '_Textbox').value.trim() * 1;
 					if (data == "") {
 						i++;
@@ -1026,8 +1026,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		displayCard: function (aCard) {
 			wdw_cardEdition.clearCard();
 			var aReadOnly = cardbookRepository.cardbookPreferences.getReadOnly(aCard.dirPrefId);
-			var aFollowLink = false;
-			cardbookWindowUtils.displayCard(aCard, aReadOnly, aFollowLink);
+			cardbookWindowUtils.displayCard(aCard, aReadOnly);
 			
 			// specific
 			document.getElementById('addressbookTextBox').value = cardbookRepository.cardbookPreferences.getName(aCard.dirPrefId);
