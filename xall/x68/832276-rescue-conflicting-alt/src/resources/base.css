@@ -1,0 +1,97 @@
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+
+@import url(./ui-color.css);
+
+:root.debug .row {
+  outline: 1px dotted blue;
+}
+:root.debug .column {
+  outline: 1px dotted red;
+}
+:root.debug .column * {
+  outline: 1px dotted green;
+}
+
+.hidden {
+  display: none !important;
+}
+
+input[type="text"],
+textarea {
+  font: menu;
+}
+
+button {
+  min-width: 6em;
+  padding: 0.25em 0.5em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+select,
+button {
+  font: caption;
+  font-size: 1em;
+  font-weight: noraml;
+}
+
+
+/* copied from /extlib/dialog.css */
+.flex-box {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.row {
+  align-items: center;
+  flex-direction: row;
+}
+.column {
+  flex-direction: column;
+}
+
+label.flex-box.row > input:last-child,
+label.flex-box.row > select:last-child {
+  margin-left: 0.5em;
+}
+
+
+.grid {
+  display: table;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.grid-row {
+  display: table-row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.grid-row > * {
+  display: table-cell;
+  padding-bottom: 0.15em;
+  padding-top: 0.15em;
+  vertical-align: middle;
+}
+
+.grid-row > label:first-child {
+  width: min-content;
+}
+
+.grid-row > *:last-child,
+.grid-row > *:last-child > *:first-child:last-child {
+  width: 100%;
+}

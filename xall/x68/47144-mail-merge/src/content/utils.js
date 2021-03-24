@@ -907,8 +907,6 @@ function compose(index) {
 	compFields.organization = win.gMsgCompose.compFields.organization;
 	compFields.priority = win.gMsgCompose.compFields.priority;
 	compFields.returnReceipt = win.gMsgCompose.compFields.returnReceipt;
-	try { compFields.securityInfo = win.gMsgCompose.compFields.securityInfo; } catch(e) { /* Thunderbird 60 */ }
-	try { compFields.composeSecure = win.gMsgCompose.compFields.composeSecure; } catch(e) { /* Thunderbird 68 */ }
 	/* compfields end */
 	
 	return compose;

@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "quicker quicksearch",
-  "description": "quicker searching: insert email address or email domain of selected message into quickfilterbox with a mouseclick from messagelist-contextmenu or by keyboard",
-  "version": "2.2",
+  "name": "Quicker Quicksearch",
+  "description": "quicker searching: insert email address, subject or email domain of selected message into quickfilterbox with a mouseclick from messagelist-contextmenu or by keyboard",
+  "version": "2.6",
   "author": "opto (Klaus Buecher)",
     "applications": {
         "gecko": {
@@ -31,6 +31,31 @@
     "scripts": [
       "background.js"
     ]
+  },
+
+
+  "commands": {
+    "quicksearch-email": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+B"
+
+      },
+      "description": "Send 'author email address' to the quickfilter bar"
+    },
+    "quicksearch-domain": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+N"
+      },
+      "description": "Send 'email domain address' to the quickfilter bar"
+    },
+
+    "quicksearch-subject": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+H"
+      },
+      "description": "Send 'email subject' to the quickfilter bar"
+    }
+
   }
   
 

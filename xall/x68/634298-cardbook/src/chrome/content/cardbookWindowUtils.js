@@ -359,8 +359,17 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 		panelMenulistKeydown: function (aEvent, aType, aMenupopupName) {
 			let myMenupopup = document.getElementById(aMenupopupName);
+			let myMenulist = document.getElementById(aMenupopupName.replace("Menupopup", "Menulist"));
 			let myTextbox = document.getElementById(aMenupopupName.replace("Menupopup", "Textbox"));
 			switch (aEvent.key) {
+				case "Escape":
+					myMenupopup.hidePopup();
+					setTimeout(function() {
+							myMenulist.focus();
+						}, 0);
+					aEvent.stopImmediatePropagation();
+					aEvent.preventDefault();
+					return;
 				case "ArrowDown":
 				case "ArrowUp":
 					myMenupopup.openPopup(myMenupopup, "after_start", 0, 0, false, false);
@@ -411,6 +420,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					setTimeout(function() {
 							myMenulist.focus();
 						}, 0);
+					aEvent.stopImmediatePropagation();
 					aEvent.preventDefault();
 					return;
 				case "Enter":
@@ -782,6 +792,30 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					document.getElementById('genderTextBox').addEventListener("contextmenu", cardbookRichContext.fireBasicFieldContext, true);
 				} else {
 					document.getElementById('genderTextBox').removeAttribute('readonly');
+				}
+			}
+
+			if (aCard.isAList) {
+				if (aReadOnly) {
+					document.getElementById('PreferMailFormatReadOnlyGroupbox').setAttribute('hidden', 'true');
+				} else {
+					document.getElementById('PreferMailFormatReadWriteGroupbox').setAttribute('hidden', 'true');
+				}
+			} else {
+				let mailFormat = cardbookRepository.cardbookUtils.getMailFormatFromCard(aCard);
+				if (aReadOnly) {
+					if (mailFormat == "1") {
+						document.getElementById('PreferMailFormatReadOnlyGroupbox').removeAttribute('hidden');
+						document.getElementById('PreferMailFormatTextbox').value = cardbookRepository.extension.localeData.localizeMessage("PlainText.label");
+					} else if (mailFormat == "2") {
+						document.getElementById('PreferMailFormatReadOnlyGroupbox').removeAttribute('hidden');
+						document.getElementById('PreferMailFormatTextbox').value = cardbookRepository.extension.localeData.localizeMessage("HTML.label");
+					} else {
+						document.getElementById('PreferMailFormatReadOnlyGroupbox').setAttribute('hidden', 'true');
+					}
+				} else {
+					document.getElementById('PreferMailFormatReadWriteGroupbox').removeAttribute('hidden');
+					document.getElementById("PreferMailFormatPopup").value = mailFormat;
 				}
 			}
 

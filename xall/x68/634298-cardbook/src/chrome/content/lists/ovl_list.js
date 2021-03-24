@@ -6,7 +6,7 @@ var ovl_list = {
 		let myFields = window.gMsgCompose.compFields;
 		for (let field of ["to", "cc", "bcc"]) {
 			if (myFields[field]) {
-				var myConversion = new cardbookListConversion(myFields[field], window.gMsgCompose.identity.key);
+				let myConversion = new cardbookListConversion(myFields[field], window.gMsgCompose.identity.key);
 				myFields[field] = cardbookRepository.arrayUnique(myConversion.emailResult).join(", ");
 			}
 		}
@@ -30,9 +30,10 @@ var ovl_list = {
 		const addressRows = [ "toAddrContainer", "ccAddrContainer", "bccAddrContainer", "newsgroupsAddrContainer" ];
 		
 		for (let parentID of addressRows) {
-			if (!gSendLocked) {
-				break;
-			}
+			// loop through all pills to update all the pill.classlist
+			// if (!gSendLocked) {
+			// 	break;
+			// }
 			let parent = document.getElementById(parentID);
 			if (!parent) {
 				continue;
@@ -44,8 +45,9 @@ var ovl_list = {
 					isMailingList = listNames.length > 0 && MailServices.ab.mailListNameExists(listNames[0].name);
 				}
 				if (isValidAddress(address.emailAddress) || isMailingList || address.emailInput.classList.contains("news-input")) {
+					address.classList.toggle("error", false);
 					gSendLocked = false;
-					break;
+					// break;
 				}
 			}
 		}

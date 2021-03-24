@@ -7,8 +7,8 @@
                  }
              },
 	"name": "FrameWhite",
-	"version": "63.8",
-	"description": "Enjoy FrameWhite, FrameBlack and BlueWhite, GreenWhite, RedWhite and LightBlue, LightGreen, LightYellow, LightRed and Additional Blue&Yellow, Green&Yellow, Red&Yellow themes.",
+	"version": "63.9",
+	"description": "Enjoy FrameWhite, FrameBlack and LightBlue, LightGreen, LightYellow, LightRed and BlueWhite, GreenWhite, RedWhite, and Additional BlueYellow, GreenYellow, RedYellow themes.",
              "icons": {
                 "32": "icons/w_large.png"
                 },
@@ -18,5 +18,21 @@
     "default_popup": "popup.html"
   },
 "permissions": [ "theme"
-        ]
+        ],
+  "experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "myapi"
+          ]
+        ],
+       "script": "implementation.js"
+      }
+  }
+  }
 }

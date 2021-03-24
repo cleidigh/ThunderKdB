@@ -158,14 +158,14 @@ const actions = {
       let accountDetail;
 
       if (!accountId) {
-        let accounts = await thunderbird_compat/* browser.accounts.list */.X.accounts.list();
+        let accounts = await thunderbird_compat/* browser.accounts.list */.Xh.accounts.list();
         accountDetail = accounts[0];
       } else {
-        accountDetail = await thunderbird_compat/* browser.accounts.get */.X.accounts.get(accountId);
+        accountDetail = await thunderbird_compat/* browser.accounts.get */.Xh.accounts.get(accountId);
       }
 
       let identityDetail = identityId ? accountDetail.identities.find(i => i.id == identityId) : accountDetail.identities[0];
-      const platformInfo = await thunderbird_compat/* browser.runtime.getPlatformInfo */.X.runtime.getPlatformInfo();
+      const platformInfo = await thunderbird_compat/* browser.runtime.getPlatformInfo */.Xh.runtime.getPlatformInfo();
       await dispatch(composeSlice.actions.setFromDetails({
         userModified: false,
         from: identityDetail.email,
@@ -206,12 +206,12 @@ const actions = {
       let state = getState();
       await dispatch(composeSlice.actions.setSendStatus({
         sending: true,
-        sendingMsg: thunderbird_compat/* i18n.getMessage */.a.getMessage("compose.sendingMessage")
+        sendingMsg: thunderbird_compat/* i18n.getMessage */.ag.getMessage("compose.sendingMessage")
       }));
       let success = true;
 
       try {
-        await thunderbird_compat/* browser.convCompose.send */.X.convCompose.send({
+        await thunderbird_compat/* browser.convCompose.send */.Xh.convCompose.send({
           from: state.identityId,
           to: state.to,
           subject: state.subject,
@@ -225,12 +225,12 @@ const actions = {
       await dispatch(composeSlice.actions.setSendStatus({
         sending: false,
         modified: false,
-        sendingMsg: success ? "" : thunderbird_compat/* i18n.getMessage */.a.getMessage("compose.couldntSendTheMessage")
+        sendingMsg: success ? "" : thunderbird_compat/* i18n.getMessage */.ag.getMessage("compose.couldntSendTheMessage")
       }));
 
       if (success) {
-        let currentTab = await thunderbird_compat/* browser.tabs.getCurrent */.X.tabs.getCurrent();
-        setTimeout(() => thunderbird_compat/* browser.tabs.remove */.X.tabs.remove(currentTab.id), 0);
+        let currentTab = await thunderbird_compat/* browser.tabs.getCurrent */.Xh.tabs.getCurrent();
+        setTimeout(() => thunderbird_compat/* browser.tabs.remove */.Xh.tabs.remove(currentTab.id), 0);
       }
     };
   }
@@ -339,7 +339,7 @@ const Compose = es/* connect */.$j(state => ({
  * @returns {(string | object[])}
  */
 
-function localize(prefsInfo, i18n = thunderbird_compat/* browser.i18n */.X.i18n) {
+function localize(prefsInfo, i18n = thunderbird_compat/* browser.i18n */.Xh.i18n) {
   if (!i18n) {
     throw new Error("`i18n` object not specified");
   }
@@ -371,21 +371,21 @@ function localize(prefsInfo, i18n = thunderbird_compat/* browser.i18n */.X.i18n)
 
 
 function Main() {
-  const [fieldsInfo, setFieldsInfo] = react.useState(localize(INPUT_FIELDS, thunderbird_compat/* i18n */.a));
-  const [localizedSendButton, setLocalizedSendButton] = react.useState(localize("compose.send", thunderbird_compat/* i18n */.a)); // When the i18n library is loaded, we want to translate all
+  const [fieldsInfo, setFieldsInfo] = react.useState(localize(INPUT_FIELDS, thunderbird_compat/* i18n */.ag));
+  const [localizedSendButton, setLocalizedSendButton] = react.useState(localize("compose.send", thunderbird_compat/* i18n */.ag)); // When the i18n library is loaded, we want to translate all
   // the localized strings.
 
   react.useEffect(() => {
-    if (!thunderbird_compat/* i18n.isPolyfilled */.a.isPolyfilled) {
+    if (!thunderbird_compat/* i18n.isPolyfilled */.ag.isPolyfilled) {
       // The native `browser.i18n` is syncronous, so if we're using
       // that version, the translations have already been loaded; do
       // nothing here
       return;
     }
 
-    thunderbird_compat/* i18n.isLoaded.then */.a.isLoaded.then(() => {
-      setFieldsInfo(localize(INPUT_FIELDS, thunderbird_compat/* i18n */.a));
-      setLocalizedSendButton(localize("compose.send", thunderbird_compat/* i18n */.a));
+    thunderbird_compat/* i18n.isLoaded.then */.ag.isLoaded.then(() => {
+      setFieldsInfo(localize(INPUT_FIELDS, thunderbird_compat/* i18n */.ag));
+      setLocalizedSendButton(localize("compose.send", thunderbird_compat/* i18n */.ag));
     }).catch(e => {
       throw e;
     });
@@ -609,6 +609,6 @@ store.dispatch(actions.initCompose(params.get("accountId"), params.get("identity
 /******/ 	
 /************************************************************************/
 /******/ 	// run startup
-/******/ 	return __webpack_require__.x();
+/******/ 	__webpack_require__.x();
 /******/ })()
 ;

@@ -869,6 +869,13 @@ function onLoad(wasAlreadyOpen) {
 							</vbox>
 		
 							<vbox id="listTabPanel" class="cardbookTab" style="overflow:auto;" flex="1">
+								<groupbox id="PreferMailFormatReadOnlyGroupbox">
+									<label class="header">__MSG_PreferMailFormatGroupbox.label__</label>
+									<hbox align="center" class="indent input-container">
+										<label control="PreferMailFormatTextbox" value="__MSG_PreferMailFormat.label__"/>
+										<html:input id="PreferMailFormatTextbox" style="min-height:36px;" readonly="true"/>
+									</hbox>
+								</groupbox>
 								<groupbox id="emailpropertyGroupbox">
 									<grid>
 										<columns flex="1">

@@ -22,7 +22,7 @@ if ("undefined" == typeof(cardbookActions)) {
 		},
 
 		addUndoCardsAction: function (aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats) {
-			var myNextUndoId = cardbookRepository.currentUndoId + 1;
+			let myNextUndoId = cardbookRepository.currentUndoId + 1;
 			cardbookIndexedDB.addUndoItem(myNextUndoId, aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats, false);
 		},
 

@@ -1585,11 +1585,8 @@ var cardbookUtils = {
 
 	addEtag: function(aCard, aEtag) {
 		if (aEtag) {
-			var myPrefType = cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId);
-			if (cardbookUtils.isMyAccountRemote(myPrefType)) {
-				cardbookUtils.nullifyEtag(aCard);
-				aCard.etag = aEtag;
-			}
+			cardbookUtils.nullifyEtag(aCard);
+			aCard.etag = aEtag;
 		}
 	},
 
@@ -1598,9 +1595,7 @@ var cardbookUtils = {
 	},
 
 	prepareCardForCreation: function(aCard, aPrefType, aUrl) {
-		if (aUrl[aUrl.length - 1] != '/') {
-			aUrl += '/';
-		}
+		aUrl = cardbookRepository.cardbookSynchronization.getSlashedUrl(aUrl);
 		if (aPrefType === "GOOGLE") {
 			aCard.cardurl = aUrl + aCard.uid;
 		} else {
@@ -1634,15 +1629,14 @@ var cardbookUtils = {
 
 	changeMediaFromFileToContent: function (aCard) {
 		try {
-			var mediaName = [ 'photo', 'logo', 'sound' ];
-
-			for (var i in mediaName) {
-				if (aCard[mediaName[i]].localURI) {
-					var myFileURISpec = aCard[mediaName[i]].localURI.replace("VALUE=uri:","");
+			let mediaName = [ 'photo', 'logo', 'sound' ];
+			for (let media of mediaName) {
+				if (aCard[media].localURI) {
+					var myFileURISpec = aCard[media].localURI.replace("VALUE=uri:","");
 					if (myFileURISpec.indexOf("file:///") === 0) {
 						var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-						aCard[mediaName[i]].value = cardbookUtils.getFileBinary(myFileURI);
-						aCard[mediaName[i]].localURI = "";
+						aCard[media].value = cardbookUtils.getFileBinary(myFileURI);
+						aCard[media].localURI = "";
 					}
 				}
 			}
@@ -1719,21 +1713,17 @@ var cardbookUtils = {
 	},
 
 	getFileNameFromUrl: function(aUrl) {
-		if (aUrl[aUrl.length - 1] == '/') {
-			var cleanUrl = aUrl.slice(0, -1);
-		} else {
-			var cleanUrl = aUrl;
-		}
-		var keyArray = cleanUrl.split("/");
-		var key = decodeURIComponent(keyArray[keyArray.length - 1]);
+		let cleanUrl = cardbookRepository.cardbookSynchronization.getSlashedUrl(aUrl).slice(0, -1);
+		let keyArray = cleanUrl.split("/");
+		let key = decodeURIComponent(keyArray[keyArray.length - 1]);
 		return key.replace(/^urn:uuid:/i, "").replace(/([\\\/\:\*\?\"\<\>\|]+)/g, '-');
 	},
 
-	getFileCacheNameFromCard: function(aCard, aPrefIdType) {
+	setCacheURIFromCard: function(aCard, aPrefIdType) {
 		if (aCard.cacheuri != "") {
-			return aCard.cacheuri;
+			return;
 		} else if (aPrefIdType === "DIRECTORY") {
-			var myDirPrefIdUrl = cardbookRepository.cardbookPreferences.getUrl(aCard.dirPrefId);
+			let myDirPrefIdUrl = cardbookRepository.cardbookPreferences.getUrl(aCard.dirPrefId);
 			aCard.cacheuri = cardbookUtils.getFileNameForCard(myDirPrefIdUrl, aCard.fn, aCard.uid);
 		} else {
 			if (aCard.cardurl) {
@@ -1746,7 +1736,14 @@ var cardbookUtils = {
 				}
 			}
 		}
-		return aCard.cacheuri;
+	},
+
+	setCacheURIFromValue: function(aCard, aValue) {
+		if (aCard.cacheuri != "") {
+			return;
+		} else if (aValue) {
+			aCard.cacheuri = aValue;
+		}
 	},
 
 	randomChannel: function(brightness) {
@@ -1889,6 +1886,28 @@ var cardbookUtils = {
 		return uidResult;
 	},
 
+	// 2 : HTML, 1 : PlainText, 0 : Unknown
+	getMailFormatFromCard: function (aCard) {
+		if (aCard) {
+			for (let other of aCard.others) {
+				let localDelim1 = other.indexOf(":",0);
+				if (localDelim1 >= 0) {
+					let header = other.substr(0,localDelim1).toUpperCase();
+					let trailer = other.substr(localDelim1+1, other.length).toUpperCase();
+					if (header == cardbookRepository.defaultEmailFormat) {
+						if (trailer == "TRUE") {
+							return 2;
+						} else if (trailer == "FALSE") {
+							return 1;
+						}
+						break;
+					}
+				}
+			}
+		}
+		return 0;
+	},
+
 	getMembersFromCard: function (aCard) {
 		let result = { mails: [], uids: [], kind: "" };
 		if (aCard.version == "4.0") {
@@ -1910,7 +1929,7 @@ var cardbookUtils = {
 			for (let other of aCard.others) {
 				var localDelim1 = other.indexOf(":",0);
 				if (localDelim1 >= 0) {
-					var header = other.substr(0,localDelim1);
+					var header = other.substr(0,localDelim1).toUpperCase();
 					var trailer = other.substr(localDelim1+1,other.length);
 					if (header == kindCustom) {
 						result.kind = trailer;
@@ -1944,7 +1963,7 @@ var cardbookUtils = {
 			for (var i = 0; i < aCard.others.length; i++) {
 				localDelim1 = aCard.others[i].indexOf(":",0);
 				if (localDelim1 >= 0) {
-					var header = aCard.others[i].substr(0,localDelim1);
+					var header = aCard.others[i].substr(0,localDelim1).toUpperCase();
 					var trailer = aCard.others[i].substr(localDelim1+1,aCard.others[i].length);
 					if (header == kindCustom || header == memberCustom) {
 						aCard.others.splice(i, 1);

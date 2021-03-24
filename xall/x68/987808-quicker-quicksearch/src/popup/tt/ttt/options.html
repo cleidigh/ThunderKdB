@@ -1,0 +1,86 @@
+<!--
+/*
+ * License:  see License.txt
+
+ * Code  for TB 78 or later: Creative Commons (CC BY-ND 4.0):
+ *      Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+ 
+ * Copyright: Klaus Buecher/opto 2021
+ * Contributors:  see Changes.txt
+ */
+
+
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
+	<title>Text Insert</title>
+	<link rel="stylesheet" type="text/css" href="../../media/css/jquery.dataTables.css">
+	<link rel="stylesheet" type="text/css" href="../../installed.css">
+	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
+	<style type="text/css" class="init">
+	
+	</style>
+<!--	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+-->
+	<script src="../lib/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="../../media/js/jquery.dataTables.js"></script>
+<!--
+
+
+		<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+
+		<link rel="stylesheet" type="text/css" href="../resources/syntax/shCore.css">
+
+	<script type="text/javascript" language="javascript" src="../resources/syntax/shCore.js"></script>
+
+
+	<link rel="stylesheet" type="text/css" href="../resources/demo.css">
+
+	<script type="text/javascript" language="javascript" src="../resources/demo.js"></script>
+
+<script type="text/javascript" language="javascript"  src= "data.js">  	</script>
+-->
+
+<script type="text/javascript" language="javascript" class="init" src= "options.js">
+
+	</script>
+</head>
+<body class="dt-example">
+	<div class="container">
+		<section>
+			<h2>Text Insert: Example and Text Replacement List</h2>
+			<div >
+				<p>First, you type the shortcut text. Example:  br </p>
+		
+				<p>Next, you press the insertion command: ctrl-d (both keys at the same time)</p>
+				<p>Result: 'br' is replaced by 'best regards'. Now, you can define and use text blocks/boilerplates.</p>
+				<p>'Dear #c best regards' will additionally set the cursor position at the synonym #c.</p>
+
+				
+				<div   >
+					<input type="button" id = "saveTable"  value = "save table"  class = "center-block" />
+
+				</div>
+				<div   class = "center-block">
+					<label for = "shortcutInp">Shortcut</label>
+					<input type="text" id = "shortcutInp" autofocus = "true" />
+					<label for = "repInp">Replacement</label>
+					<textarea type="text" id = "repInp" rows = "1"  cols = "65" replacement = "test to insert"> </textarea>
+				
+					<input type="button" id = "addInp" value = "Add"  />
+				</div>	
+		    </div>
+
+			<div class="demo-html"></div>			
+			<table id="example1"  class="display" style="width:100%">
+			</table>
+			</div>
+    	</section>
+    </div>
+</body>
+</html>

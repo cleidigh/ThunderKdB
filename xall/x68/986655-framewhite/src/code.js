@@ -33,6 +33,8 @@ var whiteTheme = {
         }
     }
 browser.theme.update(whiteTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "white");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "white");
 });
 
 subsub12.addEventListener('click', function () {
@@ -70,6 +72,8 @@ var blackTheme = {
         }
     }
 browser.theme.update(blackTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "black");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "black");
 });
 
 subsub21.addEventListener('click', function () {
@@ -107,6 +111,8 @@ var blueTheme = {
         }
     }
 browser.theme.update(blueTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "LightBlue");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "LightBlue");
 });
 
 subsub22.addEventListener('click', function () {
@@ -144,6 +150,8 @@ var greenTheme = {
         }
     }
 browser.theme.update(greenTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "LightGreen");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "LightGreen");
 });
 
 subsub23.addEventListener('click', function () {
@@ -181,6 +189,8 @@ var yellowTheme = {
         }
     }
 browser.theme.update(yellowTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "Gold");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "Gold");
 });
 
 subsub24.addEventListener('click', function () {
@@ -218,6 +228,8 @@ var redTheme = {
         }
     }
 browser.theme.update(redTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "pink");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "pink");
 });
 
 subsub26.addEventListener('click', function () {
@@ -255,6 +267,8 @@ var BYTheme = {
         }
     }
 browser.theme.update(BYTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "LightBlue");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "LightBlue");
 });
 
 subsub27.addEventListener('click', function () {
@@ -292,6 +306,8 @@ var GYTheme = {
         }
     }
 browser.theme.update(GYTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "LightGreen");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "LightGreen");
 });
 
 subsub28.addEventListener('click', function () {
@@ -329,6 +345,8 @@ var RYTheme = {
         }
     }
 browser.theme.update(RYTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "pink");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "pink");
 });
 
 subsub13.addEventListener('click', function () {
@@ -366,6 +384,8 @@ var BWTheme = {
         }
     }
 browser.theme.update(BWTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "LightBlue");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "LightBlue");
 });
 
 subsub14.addEventListener('click', function () {
@@ -403,6 +423,8 @@ var GWTheme = {
         }
     }
 browser.theme.update(GWTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "LightGreen");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "LightGreen");
 });
 
 subsub15.addEventListener('click', function () {
@@ -440,4 +462,6 @@ var RWTheme = {
         }
     }
 browser.theme.update(RWTheme);
+browser.myapi.addFrame("unifinder-searchBox", "backgroundColor", "pink");
+browser.myapi.addFrame("task-addition-box", "backgroundColor", "pink");
 });

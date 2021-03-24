@@ -67,10 +67,11 @@ var cardbookRepository = {
 	defaultAutocompleteRestrictSearchFields : "firstname|lastname",
 	defaultFnFormula : "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)({{7}}|)",
 	defaultAdrFormula : "",
+	defaultEmailFormat : "X-MOZILLA-HTML",
 	defaultKindCustom : "X-ADDRESSBOOKSERVER-KIND",
 	defaultMemberCustom : "X-ADDRESSBOOKSERVER-MEMBER",
 
-	notAllowedCustoms : [ 'X-ABDATE', 'X-ABLABEL', 'X-CATEGORIES' ],
+	notAllowedCustoms : [ 'X-ABDATE', 'X-ABLABEL', 'X-CATEGORIES', 'X-MOZILLA-HTML' ],
 	possibleCustomFields : { "X-CUSTOM1": {add: false}, "X-CUSTOM2": {add: false}, "X-CUSTOM3": {add: false}, "X-CUSTOM4": {add: false},
 							"X-PHONETIC-FIRST-NAME": {add: false}, "X-PHONETIC-LAST-NAME": {add: false}, "X-BIRTHPLACE": {add: false},
 							"X-ANNIVERSARY": {add: false}, "X-DEATHDATE": {add: false}, "X-DEATHPLACE": {add: false}, "X-GENDER": {add: false} },
@@ -492,7 +493,11 @@ var cardbookRepository = {
 	},
 
 	makeSearchString: function (aString) {
-		return this.normalizeString(aString.replace(/[\s+\-+\.+\,+\;+]/g, "").toUpperCase());
+		return this.normalizeString(aString.replace(/([\\\/\:\*\?\"\'\-\<\>\| ]+)/g, "").toUpperCase());
+	},
+
+	makeSearchStringWithoutNumber: function (aString) {
+		return cardbookRepository.makeSearchString(aString).replace(/([0123456789]+)/g, "");
 	},
 
 	getLongSearchString: function(aCard) {
@@ -925,7 +930,7 @@ var cardbookRepository = {
 		}
 	},
 
-	addCardToRepository: function (aCard, aMode, aFileName) {
+	addCardToRepository: function (aCard, aMode) {
 		try {
 			// needed only once when using > 55.2
 			if (cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId) == "GOOGLE" && !aCard.created && !aCard.updated) {
@@ -943,7 +948,7 @@ var cardbookRepository = {
 			cardbookRepository.addCardToLongSearch(aCard);
 			cardbookRepository.addCardToShortSearch(aCard);
 			cardbookRepository.addCardToList(aCard);
-			cardbookRepository.addCardToCache(aCard, aMode, aFileName);
+			cardbookRepository.addCardToCache(aCard, aMode);
 			cardbookRepository.addCardToDisplayAndCat(aCard, aCard.dirPrefId);
 			cardbookRepository.addCardToOrg(aCard, aCard.dirPrefId);
 			for (var dirPrefId in cardbookRepository.cardbookComplexSearch) {
@@ -992,7 +997,7 @@ var cardbookRepository = {
 		delete cardbookRepository.cardbookCategories[aCategory.cbid];
 	},
 		
-	addCardToCache: function(aCard, aAddCardToCache, aFileName) {
+	addCardToCache: function(aCard, aAddCardToCache) {
 		try {
 			var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(aCard.dirPrefId);
 			var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId);
@@ -1003,22 +1008,22 @@ var cardbookRepository = {
 			cardbookRepository.cardbookUtils.cachePutMediaCard(aCard, "logo", myDirPrefIdType);
 			cardbookRepository.cardbookUtils.cachePutMediaCard(aCard, "sound", myDirPrefIdType);
 
+			cardbookRepository.cardbookUtils.setCacheURIFromCard(aCard, myDirPrefIdType)
+			
 			if (myDirPrefIdType === "DIRECTORY") {
-				aCard.cacheuri = aFileName;
 				if (aAddCardToCache) {
 					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myFile.initWithPath(myDirPrefIdUrl);
-					myFile.append(aFileName);
+					myFile.append(aCard.cacheuri);
 					cardbookRepository.cardbookSynchronization.writeCardsToFile(myFile.path, [aCard], true);
 					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(myDirPrefIdName + " : debug mode : Contact " + aCard.fn + " written to directory");
 				}
 			} else {
-				aCard.cacheuri = aFileName;
 				if (cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId]) {
-					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aFileName] = aCard;
+					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri] = aCard;
 				} else {
 					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId] = {};
-					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aFileName] = aCard;
+					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri] = aCard;
 				}
 				if (myDirPrefIdDBCached && aAddCardToCache) {
 					cardbookIndexedDB.addCard(myDirPrefIdName, aCard);
@@ -1093,14 +1098,13 @@ var cardbookRepository = {
 
 	cacheDeleteMediaCard: function(aCard) {
 		try {
-			var myPrefName = cardbookRepository.cardbookUtils.getPrefNameFromPrefId(aCard.dirPrefId);
-			var mediaName = [ 'photo', 'logo', 'sound' ];
-
-			for (var i in mediaName) {
-				var cacheDir = cardbookRepository.cardbookUtils.getMediaCacheFile(aCard.uid, aCard.dirPrefId, aCard.etag, mediaName[i], aCard[mediaName[i]].extension);
+			let myPrefName = cardbookRepository.cardbookUtils.getPrefNameFromPrefId(aCard.dirPrefId);
+			let mediaName = [ 'photo', 'logo', 'sound' ];
+			for (let media of mediaName) {
+				let cacheDir = cardbookRepository.cardbookUtils.getMediaCacheFile(aCard.uid, aCard.dirPrefId, aCard.etag, media, aCard[media].extension);
 				if (cacheDir.exists() && cacheDir.isFile()) {
 					cacheDir.remove(true);
-					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(myPrefName + " : Contact " + aCard.fn + " " + [mediaName[i]] + " deleted from cache");
+					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(myPrefName + " : Contact " + aCard.fn + " " + [media] + " deleted from cache");
 				}
 			}
 		}
@@ -1755,6 +1759,18 @@ var cardbookRepository = {
 		}
 	},
 
+	addCardToAction: function (aActionId, aType, aCard) {
+		let action = cardbookRepository.currentAction[aActionId];
+		let tempCard = new cardbookCardParser();
+		cardbookRepository.cardbookUtils.cloneCard(aCard, tempCard);
+		cardbookRepository.cardbookUtils.changeMediaFromFileToContent(tempCard);
+		action[aType].push(tempCard);
+		cardbookRepository.currentAction[aActionId].files.push(tempCard.dirPrefId);
+		if (aType == "newCards") {
+			cardbookRepository.currentAction[aActionId].doneCards++;
+		}
+	},
+
 	saveCategory: function(aOldCat, aNewCat, aActionId) {
 		try {
 			if (cardbookRepository.cardbookPreferences.getReadOnly(aNewCat.dirPrefId) || !cardbookRepository.cardbookPreferences.getEnabled(aNewCat.dirPrefId)) {
@@ -1875,16 +1891,9 @@ var cardbookRepository = {
 			if (aOldCard.dirPrefId && cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid] && aOldCard.dirPrefId == aNewCard.dirPrefId) {
 				var myCard = cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid];
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
-					cardbookRepository.currentAction[aActionId].oldCards.push(myCard);
+					cardbookRepository.addCardToAction(aActionId, "oldCards", myCard);
 				}
-				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-					// if aOldCard and aNewCard have the same cached medias
-					cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aNewCard);
-					cardbookRepository.removeCardFromRepository(myCard, true);
-					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
-					cardbookRepository.cardbookUtils.nullifyEtag(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(aNewCard, myDirPrefIdType));
-				} else if (myDirPrefIdType === "FILE") {
+				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB" || myDirPrefIdType === "FILE") {
 					// if aOldCard and aNewCard have the same cached medias
 					cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aNewCard);
 					cardbookRepository.removeCardFromRepository(myCard, true);
@@ -1898,15 +1907,14 @@ var cardbookRepository = {
 						cardbookRepository.cardbookUtils.addTagUpdated(aNewCard);
 					}
 					cardbookRepository.removeCardFromRepository(myCard, true);
-					cardbookRepository.addCardToRepository(aNewCard, true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(aNewCard, myDirPrefIdType));
+					cardbookRepository.addCardToRepository(aNewCard, true);
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardUpdated", [myDirPrefIdName, aNewCard.fn]);
 			// Moved card
 			} else if (aOldCard.dirPrefId && aOldCard.dirPrefId != "" && cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid] && aOldCard.dirPrefId != aNewCard.dirPrefId) {
 				var myCard = cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid];
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
-					cardbookRepository.currentAction[aActionId].oldCards.push(myCard);
-					cardbookRepository.currentAction[aActionId].files.push(myCard.dirPrefId);
+					cardbookRepository.addCardToAction(aActionId, "oldCards", myCard);
 				}
 				var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myCard.dirPrefId);
 				var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myCard.dirPrefId);
@@ -1919,7 +1927,7 @@ var cardbookRepository = {
 						cardbookRepository.removeCardFromRepository(myCard, true);
 					} else {
 						cardbookRepository.cardbookUtils.addTagDeleted(myCard);
-						cardbookRepository.addCardToCache(myCard, true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(myCard));
+						cardbookRepository.addCardToCache(myCard, true);
 						cardbookRepository.removeCardFromRepository(myCard, false);
 					}
 				}
@@ -1929,37 +1937,29 @@ var cardbookRepository = {
 				var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(aNewCard.dirPrefId);
 				aNewCard.cardurl = "";
 				cardbookRepository.cardbookUtils.nullifyEtag(aNewCard);
-				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(aNewCard, myDirPrefIdType));
-				} else if (myDirPrefIdType === "FILE") {
+				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB" || myDirPrefIdType === "FILE") {
 					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
 					cardbookRepository.addCardToRepository(aNewCard, true);
 				} else {
 					cardbookRepository.cardbookUtils.addTagCreated(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(aNewCard, myDirPrefIdType));
+					cardbookRepository.addCardToRepository(aNewCard, true);
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardCreated", [myDirPrefIdName, aNewCard.fn]);
 			// New card
 			} else {
 				cardbookRepository.cardbookUtils.nullifyEtag(aNewCard);
-				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(aNewCard, myDirPrefIdType));
-				} else if (myDirPrefIdType === "FILE") {
+				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB" || myDirPrefIdType === "FILE") {
 					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
 					cardbookRepository.addCardToRepository(aNewCard, true);
 				} else {
 					cardbookRepository.cardbookUtils.addTagCreated(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(aNewCard, myDirPrefIdType));
+					cardbookRepository.addCardToRepository(aNewCard, true);
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardCreated", [myDirPrefIdName, aNewCard.fn]);
 			}
 			
 			if (aActionId && cardbookRepository.currentAction[aActionId]) {
-				cardbookRepository.currentAction[aActionId].newCards.push(aNewCard);
-				cardbookRepository.currentAction[aActionId].files.push(aNewCard.dirPrefId);
-				cardbookRepository.currentAction[aActionId].doneCards++;
+				cardbookRepository.addCardToAction(aActionId, "newCards", aNewCard);
 			}
 			aOldCard = null;
 		}
@@ -1970,9 +1970,8 @@ var cardbookRepository = {
 
 	deleteCards: function (aListOfCards, aActionId) {
 		try {
-			var length = aListOfCards.length;
-			for (var i = 0; i < length; i++) {
-				var myDirPrefId = aListOfCards[i].dirPrefId;
+			for (let card of aListOfCards) {
+				var myDirPrefId = card.dirPrefId;
 				if (cardbookRepository.cardbookPreferences.getReadOnly(myDirPrefId) || !cardbookRepository.cardbookPreferences.getEnabled(myDirPrefId)) {
 					if (aActionId && cardbookRepository.currentAction[aActionId]) {
 						cardbookRepository.currentAction[aActionId].doneCards++;
@@ -1980,25 +1979,24 @@ var cardbookRepository = {
 					continue;
 				}
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
-					cardbookRepository.currentAction[aActionId].oldCards.push(aListOfCards[i]);
-					cardbookRepository.currentAction[aActionId].files.push(myDirPrefId);
+					cardbookRepository.addCardToAction(aActionId, "oldCards", card);
 				}
 				var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myDirPrefId);
 				var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myDirPrefId);
 				if (myDirPrefIdType === "FILE") {
-					cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
+					cardbookRepository.removeCardFromRepository(card, false);
 				} else if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-					cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
+					cardbookRepository.removeCardFromRepository(card, true);
 				} else {
-					if (aListOfCards[i].created) {
-						cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
+					if (card.created) {
+						cardbookRepository.removeCardFromRepository(card, true);
 					} else {
-						cardbookRepository.cardbookUtils.addTagDeleted(aListOfCards[i]);
-						cardbookRepository.addCardToCache(aListOfCards[i], true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(aListOfCards[i]));
-						cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
+						cardbookRepository.cardbookUtils.addTagDeleted(card);
+						cardbookRepository.addCardToCache(card, true);
+						cardbookRepository.removeCardFromRepository(card, false);
 					}
 				}
-				cardbookRepository.cardbookUtils.formatStringForOutput("cardDeleted", [myDirPrefIdName, aListOfCards[i].fn]);
+				cardbookRepository.cardbookUtils.formatStringForOutput("cardDeleted", [myDirPrefIdName, card.fn]);
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
 					cardbookRepository.currentAction[aActionId].doneCards++;
 				}
@@ -2012,9 +2010,8 @@ var cardbookRepository = {
 	asyncDeleteCards: function (aListOfCards, aActionId) {
 		try {
 			Services.tm.currentThread.dispatch({ run: function() {
-				var length = aListOfCards.length;
-				for (var i = 0; i < length; i++) {
-					var myDirPrefId = aListOfCards[i].dirPrefId;
+				for (let card of aListOfCards) {
+					var myDirPrefId = card.dirPrefId;
 					if (cardbookRepository.cardbookPreferences.getReadOnly(myDirPrefId) || !cardbookRepository.cardbookPreferences.getEnabled(myDirPrefId)) {
 						if (aActionId && cardbookRepository.currentAction[aActionId]) {
 							cardbookRepository.currentAction[aActionId].doneCards++;
@@ -2023,25 +2020,24 @@ var cardbookRepository = {
 					}
 					Services.tm.currentThread.dispatch({ run: function() {
 						if (aActionId && cardbookRepository.currentAction[aActionId]) {
-							cardbookRepository.currentAction[aActionId].oldCards.push(aListOfCards[i]);
-							cardbookRepository.currentAction[aActionId].files.push(myDirPrefId);
+							cardbookRepository.addCardToAction(aActionId, "oldCards", card);
 						}
 						var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myDirPrefId);
 						var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myDirPrefId);
 						if (myDirPrefIdType === "FILE") {
-							cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
+							cardbookRepository.removeCardFromRepository(card, false);
 						} else if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-							cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
+							cardbookRepository.removeCardFromRepository(card, true);
 						} else {
-							if (aListOfCards[i].created) {
-								cardbookRepository.removeCardFromRepository(aListOfCards[i], true);
+							if (card.created) {
+								cardbookRepository.removeCardFromRepository(card, true);
 							} else {
-								cardbookRepository.cardbookUtils.addTagDeleted(aListOfCards[i]);
-								cardbookRepository.addCardToCache(aListOfCards[i], true, cardbookRepository.cardbookUtils.getFileCacheNameFromCard(aListOfCards[i]));
-								cardbookRepository.removeCardFromRepository(aListOfCards[i], false);
+								cardbookRepository.cardbookUtils.addTagDeleted(card);
+								cardbookRepository.addCardToCache(card, true);
+								cardbookRepository.removeCardFromRepository(card, false);
 							}
 						}
-						cardbookRepository.cardbookUtils.formatStringForOutput("cardDeleted", [myDirPrefIdName, aListOfCards[i].fn]);
+						cardbookRepository.cardbookUtils.formatStringForOutput("cardDeleted", [myDirPrefIdName, card.fn]);
 						if (aActionId && cardbookRepository.currentAction[aActionId]) {
 							cardbookRepository.currentAction[aActionId].doneCards++;
 						}

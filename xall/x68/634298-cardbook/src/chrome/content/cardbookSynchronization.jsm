@@ -670,13 +670,20 @@ var cardbookSynchronization = {
 						let connection = {connUser: aConnection.connUser, connPrefId: aConnection.connPrefId, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE.REFRESH_REQUEST_URL, connDescription: aConnection.connDescription};
 						let params = {aNewCard: aModifiedCard, aActionType: "PUT"};
 						cardbookRepository.cardbookServerSyncRequest[aConnection.connPrefId]++;
-						cardbookSynchronizationGoogle.getNewAccessTokenForGoogleClassic(connection, params, cardbookRepository.cardbookSynchronizationGoogle.serverGetCardLabels);
+						// let some time for processing the update before requerying
+						if ("undefined" == typeof(setTimeout)) {
+							var { setTimeout } = ChromeUtils.import("resource://gre/modules/Timer.jsm");
+						}
+						setTimeout(function() {
+								cardbookSynchronizationGoogle.getNewAccessTokenForGoogleClassic(connection, params, cardbookRepository.cardbookSynchronizationGoogle.serverGetCardLabels);
+						}, 2000);
 					} else {
 						cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
 						// if aCard and aCard have the same cached medias
 						cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aModifiedCard);
 						cardbookRepository.removeCardFromRepository(aCard, true);
-						cardbookRepository.addCardToRepository(aModifiedCard, true, cardbookRepository.cardbookUtils.getFileNameFromUrl(aConnection.connUrl));
+						cardbookRepository.cardbookUtils.setCacheURIFromValue(aModifiedCard, cardbookRepository.cardbookUtils.getFileNameFromUrl(aConnection.connUrl))
+						cardbookRepository.addCardToRepository(aModifiedCard, true);
 					}
 				} else {
 					cardbookRepository.cardbookUtils.addTagUpdated(aModifiedCard);
@@ -721,7 +728,8 @@ var cardbookSynchronization = {
 						cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 					}
 					cardbookRepository.cardbookUtils.nullifyTagModification(aCard);
-					cardbookRepository.addCardToRepository(aCard, true, cardbookRepository.cardbookUtils.getFileNameFromUrl(aConnection.connUrl));
+					cardbookRepository.cardbookUtils.setCacheURIFromValue(aCard, cardbookRepository.cardbookUtils.getFileNameFromUrl(aConnection.connUrl))
+					cardbookRepository.addCardToRepository(aCard, true);
 				} else {
 					cardbookRepository.cardbookServerCreatedCardError[aConnection.connPrefId]++;
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverCardCreateFailed", [aConnection.connDescription, aCard.fn, aConnection.connUrl, status], "Error");
@@ -858,7 +866,8 @@ var cardbookSynchronization = {
 													let myOldCard = cardbookRepository.cardbookCards[myCard.dirPrefId+"::"+myCard.uid];
 													cardbookRepository.removeCardFromRepository(myOldCard, true);
 												}
-												cardbookRepository.addCardToRepository(myCard, true, cardbookRepository.cardbookUtils.getFileNameFromUrl(aConnection.connUrl + href));
+												cardbookRepository.cardbookUtils.setCacheURIFromValue(myCard, cardbookRepository.cardbookUtils.getFileNameFromUrl(aConnection.connUrl + href))
+												cardbookRepository.addCardToRepository(myCard, true);
 												cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, myCard.fn]);
 												cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
 												cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
@@ -1203,7 +1212,8 @@ var cardbookSynchronization = {
 													}
 													continue;
 												}
-												cardbookRepository.addCardToRepository(myCard, false, cardbookRepository.cardbookUtils.getFileNameFromUrl(aConnection.connUrl + href));
+												cardbookRepository.cardbookUtils.setCacheURIFromValue(myCard, cardbookRepository.cardbookUtils.getFileNameFromUrl(aConnection.connUrl + href))
+												cardbookRepository.addCardToRepository(myCard, false);
 												cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, myCard.fn]);
 											} else {
 												cardbookRepository.cardbookServerGetCardError[aConnection.connPrefId]++;
@@ -2436,7 +2446,8 @@ var cardbookSynchronization = {
 								} else {
 									if (aParams.aImportMode.startsWith("NOIMPORT")) {
 										if (aParams.aPrefIdType === "DIRECTORY") {
-											cardbookRepository.addCardToRepository(myCard, false, aParams.aFile.leafName);
+											cardbookRepository.cardbookUtils.setCacheURIFromValue(myCard, aParams.aFile.leafName)
+											cardbookRepository.addCardToRepository(myCard, false);
 										} else if (aParams.aPrefIdType === "FILE") {
 											myCard.cardurl = "";
 											cardbookRepository.addCardToRepository(myCard, false);

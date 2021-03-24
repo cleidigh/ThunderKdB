@@ -21,4 +21,5 @@ Ctrl+Alt+J: copy domain to quicksearch box<br>
 
 (c) opto (Klaus Buecher)
 
-License: MPL 2
+License: Creative Commons (CC BY-ND 4.0):
+       Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 

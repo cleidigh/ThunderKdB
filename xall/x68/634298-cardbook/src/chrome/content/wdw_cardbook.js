@@ -542,8 +542,18 @@ if ("undefined" == typeof(wdw_cardbook)) {
 
 		findDuplicates: function (aDirPrefId) {
 			try {
-				var myArgs = {dirPrefId: aDirPrefId};
-				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/findDuplicates/wdw_findDuplicates.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
+				var windowsList = Services.wm.getEnumerator("CardBook:contactDuplicatesWindow");
+				var found = false;
+				while (windowsList.hasMoreElements()) {
+					var myWindow = windowsList.getNext();
+					myWindow.focus();
+					found = true;
+					break;
+				}
+				if (!found) {
+					var myArgs = {dirPrefId: aDirPrefId};
+					Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/findDuplicates/wdw_findDuplicates.xhtml", "", cardbookRepository.windowParams, myArgs);
+				}
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_cardbook.findDuplicates error : " + e, "Error");

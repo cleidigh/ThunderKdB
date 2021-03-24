@@ -132,7 +132,7 @@ SendLaterHeaderView = {
     } else if (/encrypted/i.test(msgContentType)) {
       return { valid: false, detail: "Encrypted", msg: SLStatic.i18n.getMessage("EncryptionIncompatTitle") };
     } else if (msgUuid !== instanceUUID) {
-      return { valid: false, detail: "Wrong UUID", msg: `${msgUuid} != ${instanceUUID}` };
+      return { valid: false, detail: `${msgUuid} != ${instanceUUID}`, msg: SLStatic.i18n.getMessage("incorrectUUID") };
     }
     return { valid: true };
   },
@@ -341,8 +341,12 @@ SendLaterHeaderView = {
           msghdr = null;
         }
         if (msghdr != null) {
+          const status = SendLaterHeaderView.checkValidSchedule(msghdr);
           let schedule = SendLaterHeaderView.getSchedule(msghdr);
-          if (schedule !== null) {
+          if ((schedule !== null)
+              &&
+              (status.valid === true || status.detail === "Missing ContentType"))
+            {
             try {
               let hdrText = SLStatic.formatScheduleForUIColumn(schedule);
               const headerBoxElement = document.getElementById("sendlater-expanded-Box");

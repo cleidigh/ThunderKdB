@@ -13,6 +13,7 @@
 	onclose="wdw_findDuplicates.cancel();"
 	id="wdw_findDuplicates" title="__MSG_wdw_findDuplicatesTitle__"
 	persist="screenX screenY width height sizemode" class="cardbookFindDuplicatesClass"
+	windowtype="CardBook:contactDuplicatesWindow"
 	lightweightthemes="true"
 	style="min-width:400px;min-height:100px;">
 
@@ -33,7 +34,7 @@
 		<key keycode="VK_ESCAPE" oncommand="wdw_findDuplicates.cancel();"/>
 	</keyset>
 
-	<hbox align="center" flex="1" style="overflow:auto">
+	<hbox id="recordsHbox" align="center" flex="1" style="overflow:auto">
 		<vbox align="center" flex="1" style="overflow:auto">
 			<hbox align="center" flex="1">
 				<description id="noContactsFoundDesc" style="width:400px"/>
@@ -49,12 +50,19 @@
 				</grid>
 			</hbox>
 		</vbox>
-   </hbox>
-
+	</hbox>
+	<hbox id="mergeAllVbox" align="center" flex="1" hidden="true">
+		<vbox id="mergeAllVbox" align="center" flex="1">
+			<html:progress id="mergeAll-progressmeter" value="0" max="100"/>
+		</vbox>
+	</hbox>
+	
 	<hbox align="center">
 		<description id="numberContactsFoundDesc" flex="1"/>
 		<spacer flex="1"/>
+		<button id="mergeAllLabel" label="__MSG_mergeAllEditionLabel__" accesskey="__MSG_mergeAllEditionAccesskey__" oncommand="wdw_findDuplicates.mergeAll();" hidden="true"/>
 		<button id="hideOrShowForgottenLabel" oncommand="wdw_findDuplicates.hideOrShowForgotten();"/>
+		<button id="moreOrLessLabel" label="__MSG_lessEditionLabel__" accesskey="__MSG_lessEditionAccesskey__" state="more" oncommand="wdw_findDuplicates.moreOrLess();"/>
 		<button id="cancelEditionLabel" label="__MSG_cancelEditionLabel__" accesskey="__MSG_cancelEditionAccesskey__" oncommand="wdw_findDuplicates.cancel();"/>
 	</hbox>
 </window>

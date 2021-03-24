@@ -122,6 +122,13 @@ if ("undefined" == typeof(wdw_migrate)) {
 					myCard.categories = JSON.parse(JSON.stringify(finalcatArray));
 				} catch (e) {}
 				
+				var PreferMailFormat = aABCard.getProperty("PreferMailFormat", "");
+				if (PreferMailFormat == "1") {
+					aCard.others.push(cardbookRepository.defaultEmailFormat + ":FALSE");
+				} else if (PreferMailFormat == "2") {
+					aCard.others.push(cardbookRepository.defaultEmailFormat + ":TRUE");
+				}
+
 				cardbookRepository.saveCard({}, myCard, "", true);
 
 				var email = aABCard.getProperty("PrimaryEmail", "");

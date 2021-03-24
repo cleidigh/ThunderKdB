@@ -646,7 +646,7 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
           function doAlertCheck(resolve, reject) {
             try {
               let checkbox = { value: state };
-              Services.prompt.clertCheck(
+              Services.prompt.alertCheck(
                 null, title, message, checkMessage, checkbox
               );
               resolve({ check: checkbox.value });
@@ -981,9 +981,10 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
             (Services.prefs.getBoolPref(
               "mail.compose.attachment_reminder_aggressive"
             ) &&
-              cw.gNotification.notificationbox.getNotificationWithValue(
-                "attachmentReminder"
-              ))
+              ( // gComposeNotification replaces gNotification.notificationbox
+                // in Thunderbird 86.
+                cw.gComposeNotification || cw.gNotification.notificationbox
+              ).getNotificationWithValue("attachmentReminder"))
           ) {
             let flags =
               Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_IS_STRING +
@@ -1294,19 +1295,22 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
                   status
                 );
 
-                const localStorage = context.apiCan.findAPIPath("storage.local");
-                localStorage.callMethodInParentProcess(
-                  "get", [{ "preferences": {} }]
-                ).then(({ preferences }) => {
-                  preferences.checkEvery = 0;
-                  localStorage.callMethodInParentProcess(
-                    "set", { preferences }
-                  );
-                }).catch((err) =>
-                  SendLaterFunctions.error(`Unable to disable extension`,err)
-                );
+                //// Maybe disable Send Later if copy operation failed?
+                // const localStorage = context.apiCan.findAPIPath("storage.local");
+                // localStorage.callMethodInParentProcess(
+                //   "get", [{ "preferences": {} }]
+                // ).then(({ preferences }) => {
+                //   preferences.checkEvery = 0;
+                //   localStorage.callMethodInParentProcess(
+                //     "set", { preferences }
+                //   );
+                // }).catch((err) =>
+                //   SendLaterFunctions.error(`Unable to disable extension`,err)
+                // );
+
+                const hexStatus = `0x${status.toString(16)}`;
                 const CopyUnsentError =
-                  SendLaterFunctions.getMessage(context, "CopyUnsentError", [status]);
+                  SendLaterFunctions.getMessage(context, "CopyUnsentError", [hexStatus]);
                 Services.prompt.alert(null, null, CopyUnsentError);
               }
             },
@@ -1348,7 +1352,7 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
               if (Components.isSuccessCode(status)) {
                 SendLaterFunctions.debug("SL3U.saveMessage: Saved updated message");
               } else {
-                SendLaterFunctions.error("SL3U.saveMessage:",status);
+                SendLaterFunctions.error("SL3U.saveMessage:", `0x${status.toString(16)}`);
               }
             },
             SetMessageKey: function(key) {
@@ -1410,11 +1414,17 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
           try {
             SendLaterFunctions.debug(`Deleting message (${draftUri})`);
             if (folder.getFlag(Ci.nsMsgFolderFlags.Drafts)) {
-              let msgs = Cc["@mozilla.org/array;1"].createInstance(
-                Ci.nsIMutableArray
-              );
-              msgs.appendElement(folder.GetMessageHeader(msgKey));
-              folder.deleteMessages(msgs, null, true, false, null, false);
+              try {
+                let msgHdr = folder.GetMessageHeader(msgKey);
+                folder.deleteMessages([msgHdr], null, true, false, null, false);
+              } catch (ex0) {
+                // TB versions < 86
+                let msgs = Cc["@mozilla.org/array;1"].createInstance(
+                  Ci.nsIMutableArray
+                );
+                msgs.appendElement(folder.GetMessageHeader(msgKey));
+                folder.deleteMessages(msgs, null, true, false, null, false);
+              }
             }
           } catch (ex) {
             // couldn't find header - perhaps an imap folder.
@@ -1452,7 +1462,7 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
                                          `Trying as LocalMailFolder (${folder.URI})`);
                 lmf = thisfolder.QueryInterface(Ci.nsIMsgLocalMailFolder);
               } catch (ex) {
-                SendLaterFunctions.warn("Unable to get folder as nsIMsgLocalMailFolder");
+                SendLaterFunctions.log("Unable to get folder as nsIMsgLocalMailFolder");
               }
 
               if (// NS_MSG_ERROR_FOLDER_SUMMARY_OUT_OF_DATE
@@ -1475,7 +1485,7 @@ var SL3U = class extends ExtensionCommon.ExtensionAPI {
                   SendLaterFunctions.warn("Unable to get EnumerateMessages on DB as fallback");
                 }
                 if (messageenumerator) {
-                  SendLaterFunctions.warn(".messages failed on " + folderUri +
+                  SendLaterFunctions.log(".messages failed on " + folderUri +
                                           ", using .EnumerateMessages on DB instead");
                 } else {
                   const window = Services.wm.getMostRecentWindow(null);

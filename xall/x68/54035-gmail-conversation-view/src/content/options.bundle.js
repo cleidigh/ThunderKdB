@@ -50,7 +50,7 @@ const prefsSlice = redux_toolkit_esm.createSlice({
 const actions = {
   initPrefs() {
     return async function (dispatch) {
-      const prefs = await thunderbird_compat/* browser.storage.local.get */.X.storage.local.get("preferences");
+      const prefs = await thunderbird_compat/* browser.storage.local.get */.Xh.storage.local.get("preferences");
       dispatch(prefsSlice.actions.set(prefs.preferences));
     };
   },
@@ -60,7 +60,7 @@ const actions = {
       const newPrefs = { ...getState(),
         [name]: value
       };
-      await thunderbird_compat/* browser.storage.local.set */.X.storage.local.set({
+      await thunderbird_compat/* browser.storage.local.set */.Xh.storage.local.set({
         preferences: newPrefs
       });
       dispatch(prefsSlice.actions.set(newPrefs));
@@ -170,7 +170,7 @@ const PREFS_INFO = [{
  * @returns {(string | object[])}
  */
 
-function localize(prefsInfo, i18n = thunderbird_compat/* browser.i18n */.X.i18n) {
+function localize(prefsInfo, i18n = thunderbird_compat/* browser.i18n */.Xh.i18n) {
   if (!i18n) {
     throw new Error("`i18n` object not specified");
   }
@@ -217,20 +217,20 @@ function localize(prefsInfo, i18n = thunderbird_compat/* browser.i18n */.X.i18n)
 }
 
 function openSetupAssistant() {
-  thunderbird_compat/* browser.tabs.create */.X.tabs.create({
+  thunderbird_compat/* browser.tabs.create */.Xh.tabs.create({
     url: "../assistant/assistant.html"
   });
 }
 
 function runUndoConversations() {
   (async () => {
-    await thunderbird_compat/* browser.conversations.undoCustomizations */.X.conversations.undoCustomizations();
-    const result = await thunderbird_compat/* browser.storage.local.get */.X.storage.local.get("preferences");
+    await thunderbird_compat/* browser.conversations.undoCustomizations */.Xh.conversations.undoCustomizations();
+    const result = await thunderbird_compat/* browser.storage.local.get */.Xh.storage.local.get("preferences");
     result.preferences.uninstall_infos = "{}";
-    await thunderbird_compat/* browser.storage.local.set */.X.storage.local.set({
+    await thunderbird_compat/* browser.storage.local.set */.Xh.storage.local.set({
       preferences: result.preferences
     });
-    window.alert(localize("options.undoCustomizations.finished", thunderbird_compat/* i18n */.a));
+    window.alert(localize("options.undoCustomizations.finished", thunderbird_compat/* i18n */.ag));
   })().catch(console.error);
 } //
 // React components to render the options types
@@ -415,27 +415,27 @@ const ConversationOptions = es/* connect */.$j(state => ({
 })(_ConversationOptions); // The entry point for the options page
 
 function Main() {
-  const [localizedName, setLocalizedName] = react.useState(localize("extensionName", thunderbird_compat/* i18n */.a));
-  const [localizedPrefsInfo, setLocalizedPrefsInfo] = react.useState(localize(PREFS_INFO, thunderbird_compat/* i18n */.a));
-  const [localizedStartAssistant, setLocalizedStartAssistant] = react.useState(localize("options.start_setup_assistant", thunderbird_compat/* i18n */.a));
-  const [localizedUndoCustomizations, setLocalizedUndoCustomizations] = react.useState(localize("options.undoCustomizations", thunderbird_compat/* i18n */.a));
-  const [localizedUndoCustomizationsTooltip, setLocalizedUndoCustomizationsTooltip] = react.useState(localize("options.undoCustomizations.tooltip", thunderbird_compat/* i18n */.a)); // When the i18n library is loaded, we want to translate all
+  const [localizedName, setLocalizedName] = react.useState(localize("extensionName", thunderbird_compat/* i18n */.ag));
+  const [localizedPrefsInfo, setLocalizedPrefsInfo] = react.useState(localize(PREFS_INFO, thunderbird_compat/* i18n */.ag));
+  const [localizedStartAssistant, setLocalizedStartAssistant] = react.useState(localize("options.start_setup_assistant", thunderbird_compat/* i18n */.ag));
+  const [localizedUndoCustomizations, setLocalizedUndoCustomizations] = react.useState(localize("options.undoCustomizations", thunderbird_compat/* i18n */.ag));
+  const [localizedUndoCustomizationsTooltip, setLocalizedUndoCustomizationsTooltip] = react.useState(localize("options.undoCustomizations.tooltip", thunderbird_compat/* i18n */.ag)); // When the i18n library is loaded, we want to translate all
   // the localized strings.
 
   react.useEffect(() => {
-    if (!thunderbird_compat/* i18n.isPolyfilled */.a.isPolyfilled) {
+    if (!thunderbird_compat/* i18n.isPolyfilled */.ag.isPolyfilled) {
       // The native `browser.i18n` is synchronous, so if we're using
       // that version, the translations have already been loaded; do
       // nothing here
       return;
     }
 
-    thunderbird_compat/* i18n.isLoaded.then */.a.isLoaded.then(() => {
-      setLocalizedName(localize("extensionName", thunderbird_compat/* i18n */.a));
-      setLocalizedPrefsInfo(localize(PREFS_INFO, thunderbird_compat/* i18n */.a));
-      setLocalizedStartAssistant(localize("options.start_setup_assistant", thunderbird_compat/* i18n */.a));
-      setLocalizedUndoCustomizations(localize("options.undoCustomizations", thunderbird_compat/* i18n */.a));
-      setLocalizedUndoCustomizationsTooltip(localize("options.undoCustomizations.tooltip", thunderbird_compat/* i18n */.a));
+    thunderbird_compat/* i18n.isLoaded.then */.ag.isLoaded.then(() => {
+      setLocalizedName(localize("extensionName", thunderbird_compat/* i18n */.ag));
+      setLocalizedPrefsInfo(localize(PREFS_INFO, thunderbird_compat/* i18n */.ag));
+      setLocalizedStartAssistant(localize("options.start_setup_assistant", thunderbird_compat/* i18n */.ag));
+      setLocalizedUndoCustomizations(localize("options.undoCustomizations", thunderbird_compat/* i18n */.ag));
+      setLocalizedUndoCustomizationsTooltip(localize("options.undoCustomizations.tooltip", thunderbird_compat/* i18n */.ag));
     }).catch(e => {
       throw e;
     });
@@ -662,6 +662,6 @@ react_dom.render( /*#__PURE__*/react.createElement(Main, null), document.querySe
 /******/ 	
 /************************************************************************/
 /******/ 	// run startup
-/******/ 	return __webpack_require__.x();
+/******/ 	__webpack_require__.x();
 /******/ })()
 ;

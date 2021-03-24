@@ -839,7 +839,7 @@ var cardbookSynchronizationGoogle = {
 									cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 									cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
 									cardbookRepository.cardbookUtils.addTagUpdated(aParams.aNewCard);
-									cardbookRepository.addCardToRepository(aParams.aNewCard, true, aParams.aNewCard.uid);
+									cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 									cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 									cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 								} else {
@@ -853,7 +853,7 @@ var cardbookSynchronizationGoogle = {
 								}
 								cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-								cardbookRepository.addCardToRepository(aParams.aNewCard, true, aParams.aNewCard.uid);
+								cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 								cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 							}
 						// updated contacts on CardBook : PUT
@@ -911,6 +911,8 @@ var cardbookSynchronizationGoogle = {
 			onDAVQueryComplete: function(status, response, askCertificate, etag) {
 				if (status > 199 && status < 400) {
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverPutCardLabelsOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+					// don't have received the etag so force resync
+					cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 					if (aParams.aActionType == "GET") {
 						if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 							let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
@@ -918,10 +920,8 @@ var cardbookSynchronizationGoogle = {
 						}
 						cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-						cardbookRepository.addCardToRepository(aParams.aNewCard, true, aParams.aNewCard.uid);
+						cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 						cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
-						// don't have received the etag so force resync
-						cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 					} else {
 						cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
 						// if aCard and aCard have the same cached medias
@@ -930,8 +930,8 @@ var cardbookSynchronizationGoogle = {
 							let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
 							cardbookRepository.removeCardFromRepository(aOldCard, true);
 						}
-						cardbookRepository.addCardToRepository(aParams.aNewCard, true, aParams.aNewCard.uid);
-						cardbookRepository.cardbookUtils.formatStringForOutput("serverCardUpdatedOnServerWithEtag", [aConnection.connDescription, aParams.aNewCard.fn]);
+						cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+						cardbookRepository.cardbookUtils.formatStringForOutput("serverCardUpdatedOnServerWithoutEtag", [aConnection.connDescription, aParams.aNewCard.fn]);
 					}						
 				} else {
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverPutCardLabelsFailed", [aConnection.connDescription, aParams.aNewCard.fn, aConnection.connUrl, status], "Error");
@@ -981,7 +981,7 @@ var cardbookSynchronizationGoogle = {
 							cardbookActions.fetchSyncActivity(aPrefId, cardbookRepository.cardbookServerCardSyncDone[aPrefId], cardbookRepository.cardbookServerCardSyncTotal[aPrefId]);
 						}
 						if (request == response) {
-							if (cardbookRepository.cardbookServerSyncParams[aPrefId].length && cardbookRepository.cardbookAccessTokenRequest[aPrefId] == 1) {
+							if (cardbookRepository.cardbookServerSyncParams[aPrefId].length && cardbookRepository.cardbookAccessTokenRequest[aPrefId] == 1 && cardbookRepository.cardbookAccessTokenError[aPrefId] != 1) {
 								let currentConnection = cardbookRepository.cardbookServerSyncParams[aPrefId][0];
 								let connection = {connUser: currentConnection.connUser, connPrefId: currentConnection.connPrefId, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE.REFRESH_REQUEST_URL, connDescription: currentConnection.connDescription};
 								let params = {aPrefIdType: "GOOGLE"};

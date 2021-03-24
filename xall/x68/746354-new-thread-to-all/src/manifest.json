@@ -1,21 +1,44 @@
 {
-	"manifest_version": 2,
-	"name": "NewThreadToAll",
-  "description": "Similiar to reply, it sends an email to all recipients/bcc/cc, but subject and body are empty.",
-	"version": "1.2.0",
-	"author": "opto (Klaus Buecher)",
-	"developer": {
-		"name": "opto (Klaus Buecher)"
-	},
- "legacy": {
-    "type": "xul"
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "2.1",
+  "author": "opto/Klaus Bücher",
+
+  "applications": {
+    "gecko": {
+      "id": "newthreadall@opto.one",
+      "strict_min_version": "78.4.0"
+
+    }
   },
+  "default_locale" : "en_US",
+
+
+  "message_display_action": {
+    "default_title": "++",
+    "default_icon": "replyall.svg"
+	},
+
+
+  "permissions": ["activeTab", "tabs",     "menus", "messagesRead", "storage", "compose"],
+
+  "background": {
+    "scripts": ["nt-background.js"]
+  },
+
+
+  "commands": {
+    "newThreadComm": {
+      "suggested_key": {
+        "default": "Ctrl+Alt+G"
+
+      },
+      "description": "New email to all recipients of this email"
+    }
+
+  }
+    
+
   
-	"applications": {
-		"gecko": {
-			"id": "newthreadall@opto.one",
-			"strict_min_version": "68.0"
-		}
-	}
 }
-                                                                                                                                                        

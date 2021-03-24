@@ -2,6 +2,39 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 var ovl_cardbookComposeMsg = {
+	GenericSendMessage: function() {
+		if (gSendFormat == Components.interfaces.nsIMsgCompSendFormat.AskUser) {
+			let myFields = gMsgCompose.compFields;
+			let allHtml = true;
+			let allPlain = true;
+			for (let field of ["to", "cc", "bcc"]) {
+				if (myFields[field] && (allHtml || allPlain)) {
+					let addresses = MailServices.headerParser.parseEncodedHeaderW(myFields[field]);
+					for (let address of addresses) {
+						if (allHtml || allPlain) {
+							let card = cardbookRepository.cardbookUtils.getCardFromEmail(address.email);
+							let format = cardbookRepository.cardbookUtils.getMailFormatFromCard(card);
+							if (format == 2) {
+								allPlain = false;
+							} else if (format == 1) {
+								allHtml = false;
+							} else {
+								allPlain = false;
+								allHtml = false;
+							}
+						}
+					}
+				}
+			}
+			if (allPlain) {
+				gSendFormat = Components.interfaces.nsIMsgCompSendFormat.PlainText;
+			}
+			if (allHtml) {
+				gSendFormat = Components.interfaces.nsIMsgCompSendFormat.HTML;
+			}
+		}
+	},
+
 	LoadIdentity: function() {
 		var mailWindow = Services.wm.getMostRecentWindow("msgcompose");
 		var outerID = mailWindow.windowUtils.outerWindowID;
@@ -76,5 +109,25 @@ var ovl_cardbookComposeMsg = {
 		// return the original result
 		return rv;
 	};
-
 })();
+
+// GenericSendMessage
+(function() {
+	// Keep a reference to the original function.
+	var _original = GenericSendMessage;
+
+	// Override a function.
+	GenericSendMessage = function() {
+
+		let myFields = gMsgCompose.compFields;
+		if (myFields) {
+			Recipients2CompFields(myFields);
+			// for lists		
+			expandRecipients();
+			ovl_cardbookComposeMsg.GenericSendMessage();
+		}
+		var rv = _original.apply(null, arguments);
+		return rv;
+	};
+})();
+

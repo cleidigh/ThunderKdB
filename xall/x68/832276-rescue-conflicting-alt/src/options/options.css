@@ -1,0 +1,131 @@
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+@import url("/resources/dialog.css");
+
+:root,
+body {
+  overflow: auto; /* cancel overflow:hdiden in dialog.css */
+}
+
+:root > * {
+  transition: opacity 0.25s ease-out;
+}
+:root:not(.initialized) > * {
+  opacity: 0;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 1em;
+}
+
+:root:not(.debugging) #debug-configs {
+  max-height: 0;
+  overflow: hidden;
+}
+
+:root:not(.debugging) #debug-configs * {
+  -moz-user-focus: ignore;
+  -moz-user-input: disabled;
+}
+
+hr.spacer {
+  border: 0 none transparent;
+  margin: 0 0 1em;
+}
+
+
+p, ul {
+  margin: 0 0 0.5em 0;
+  padding: 0;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+p.sub,
+div.sub {
+  margin-left: 2em;
+}
+
+ul p.sub {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+textarea {
+  height: 10em;
+  resize: vertical;
+  width: 100%;
+}
+
+select {
+  max-width: 100%;
+}
+
+
+.disabled {
+  opacity: 0.5;
+}
+.disabled .disabled,
+.disabled :disabled {
+  opacity: 1;
+}
+
+.locked {
+  display: none;
+}
+legend label.locked {
+  display: initial;
+}
+
+
+.in-page-dialog.dialog {
+  height: 90%;
+  width: 90%;
+  resize: none;
+}
+
+.in-page-dialog.dialog h1 {
+  background: var(--bg-color);
+  left: 0;
+  margin: 0;
+  padding: 0 0 0.2em;
+  position: sticky;
+  right: 0;
+  top: 0;
+}
+
+.inherit-default-account .inheritableFromDefaultAccount {
+  display: none !important;
+}
+
+
+.checkboxes-for-array-config {
+  border: 1px solid;
+  height: 10em;
+  overflow: auto;
+  padding: 0.5em;
+  resize: vertical;
+}
+
+.checkboxes-for-array-config label {
+  display: block;
+  margin: 0;
+}
+
+#visibleFields label,
+.visibleFields label {
+  white-space: nowrap;
+}
+
+.placeholders-description {
+  white-space: pre-wrap;
+}

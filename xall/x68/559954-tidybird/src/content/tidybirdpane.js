@@ -1,3 +1,5 @@
+// var tidybirdPane is used by parseXULToFragment in implementation.js from a new context
+// eslint-disable-next-line no-unused-vars
 var tidybirdPane = `
     <splitter
 	  id="tidybirdSplitter"
@@ -18,4 +20,4 @@ var tidybirdPane = `
 		<!-- folder move buttons will be dynamically added here -->
 	  </vbox>
     </vbox> 
-`
+`;

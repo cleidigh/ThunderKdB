@@ -35,7 +35,7 @@ FiltaQuilla.Util = {
   mAppver: null,
 	mExtensionVer: null,
   VersionProxyRunning: false,
-	HARDCODED_CURRENTVERSION : "3.0.3", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "3.1", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "filtaquilla@mesquilla.com",
 	_prefs: null,
@@ -213,6 +213,7 @@ FiltaQuilla.Util = {
             sTabMode,
             { 
               contentPage: URL, 
+              url: URL,
               clickHandler: "specialTabs.siteClickHandler(event, FiltaQuilla.TabURIregexp._thunderbirdRegExp);"
             }
           )

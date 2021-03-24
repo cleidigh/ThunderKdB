@@ -2,14 +2,14 @@
 
 // messenger is not yet known in TB 68
 (async () => {
-    function showTidybird() {
-        // runs in extensions private context => no access to the window
-        browser.tidybird_api.toggleWindowListener();
-    }
-    browser.browserAction.onClicked.addListener(showTidybird);
+  function showTidybird() {
+    // runs in extensions private context => no access to the window
+    browser.tidybird_api.toggleWindowListener();
+  }
+  browser.browserAction.onClicked.addListener(showTidybird);
 
-    // initialize the window listener
-    browser.tidybird_api.startWindowListener();
+  // initialize the window listener
+  browser.tidybird_api.startWindowListener();
 
-    //TODO -later- separate the windowListener & folderListener API and join them in a separate layer (here,content,...)
-})()
+  //TODO -later- separate the windowListener & folderListener API and join them in a separate layer (here,content,...)
+})();

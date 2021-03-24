@@ -1,0 +1,34 @@
+/*
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
+
+@import url(/extlib/dialog.css);
+@import url(./base.css);
+
+#form > .flex-box {
+  min-height: 0; /* required to shrink dialog content */
+}
+
+label + label {
+  margin-left: 0.5em;
+}
+
+.in-page-dialog.dialog {
+  display: flex;
+}
+
+.in-page-dialog.dialog-contents {
+  display: flex;
+  overflow: auto;
+  padding-right: 0.5em;
+}
+
+
+input.auto-grow {
+  --base-width: 3ch;
+  --offset-width: 1em;
+  width: calc(var(--base-width, 5ch) + var(--offset-width, 0));
+}

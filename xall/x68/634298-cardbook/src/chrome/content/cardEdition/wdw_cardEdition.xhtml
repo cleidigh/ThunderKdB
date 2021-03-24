@@ -453,7 +453,27 @@
 			</tabpanel>
 
 			<tabpanel orient="vertical" style="overflow:auto">
-				<groupbox id="emailpropertyGroupbox">
+				<groupbox id="PreferMailFormatReadWriteGroupbox">
+					<label class="header">__MSG_PreferMailFormatGroupbox.label__</label>
+					<hbox align="center" class="indent">
+						<label control="PreferMailFormatPopup" value="__MSG_PreferMailFormat.label__" accesskey="__MSG_PreferMailFormat.accesskey__"/>
+						<menulist id="PreferMailFormatPopup" sizetopopup="always">
+							<menupopup>
+								<menuitem value="0" label="__MSG_Unknown.label__"/>
+								<menuitem value="1" label="__MSG_PlainText.label__"/>
+								<menuitem value="2" label="__MSG_HTML.label__"/>
+							</menupopup>
+						</menulist>
+					</hbox>
+				</groupbox>
+				<groupbox id="PreferMailFormatReadOnlyGroupbox">
+					<label class="header">__MSG_PreferMailFormatGroupbox.label__</label>
+					<hbox align="center" class="indent input-container">
+						<label control="PreferMailFormatTextbox" value="__MSG_PreferMailFormat.label__"/>
+						<html:input id="PreferMailFormatTextbox" style="min-height:36px;" readonly="true"/>
+					</hbox>
+				</groupbox>
+        		<groupbox id="emailpropertyGroupbox">
 					<grid>
 						<columns flex="1">
 							<column/>

@@ -1,16 +1,31 @@
-#tidybirdButton, [place="palette"] > #tidybirdButton {
-  list-style-image: url("chrome://tidybird/skin/icon.png")
+#tidybirdButton,
+[place="palette"] > #tidybirdButton {
+  list-style-image: url("chrome://tidybird/skin/icon.png");
 }
 
 #tidybirdSplitter {
   min-height: 2px;
   min-width: 2px;
+  border-inline-start: 1px solid var(--splitter-color);
+  margin-inline-end: -4px;
+  -moz-appearance: none;
+  width: 5px;
+  margin-top: 0;
+  position: relative;
+  z-index: 10;
+  transition: border-width .3s ease-in;
+}
+
+:root[lwt-tree-brighttext] #tidybirdPane {
+  scrollbar-color: rgba(249,249,250,.4) rgba(20,20,25,.3);
 }
 
 #tidybirdPane {
   padding: 6px;
   margin: 0;
   overflow: auto;
+  background-color: var(--toolbar-bgcolor);
+  color: var(--lwt-text-color);
 }
 
 .tidybird-folder-move-button {
@@ -37,4 +52,4 @@
   text-align: right;
   font-size: 0.8em;
   line-height: 1.6em;
- }
+}

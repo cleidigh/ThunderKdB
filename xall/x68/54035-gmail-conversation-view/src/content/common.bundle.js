@@ -98,7 +98,7 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 ;// CONCATENATED MODULE: ./node_modules/immer/dist/immer.esm.js
-function n(n){for(var t=arguments.length,r=Array(t>1?t-1:0),e=1;e<t;e++)r[e-1]=arguments[e];if(false){ var i, o; }throw Error("[Immer] minified error nr: "+n+(r.length?" "+r.map((function(n){return"'"+n+"'"})).join(","):"")+". Find the full error at: https://bit.ly/3cXEKWf")}function t(n){return!!n&&!!n[Q]}function r(n){return!!n&&(function(n){if(!n||"object"!=typeof n)return!1;var t=Object.getPrototypeOf(n);return!t||t===Object.prototype}(n)||Array.isArray(n)||!!n[L]||!!n.constructor[L]||s(n)||v(n))}function e(r){return t(r)||n(23,r),r[Q].t}function i(n,t,r){void 0===r&&(r=!1),0===o(n)?(r?Object.keys:Z)(n).forEach((function(e){r&&"symbol"==typeof e||t(e,n[e],n)})):n.forEach((function(r,e){return t(e,r,n)}))}function o(n){var t=n[Q];return t?t.i>3?t.i-4:t.i:Array.isArray(n)?1:s(n)?2:v(n)?3:0}function u(n,t){return 2===o(n)?n.has(t):Object.prototype.hasOwnProperty.call(n,t)}function a(n,t){return 2===o(n)?n.get(t):n[t]}function f(n,t,r){var e=o(n);2===e?n.set(t,r):3===e?(n.delete(t),n.add(r)):n[t]=r}function c(n,t){return n===t?0!==n||1/n==1/t:n!=n&&t!=t}function s(n){return X&&n instanceof Map}function v(n){return q&&n instanceof Set}function p(n){return n.o||n.t}function l(n){if(Array.isArray(n))return Array.prototype.slice.call(n);var t=nn(n);delete t[Q];for(var r=Z(t),e=0;e<r.length;e++){var i=r[e],o=t[i];!1===o.writable&&(o.writable=!0,o.configurable=!0),(o.get||o.set)&&(t[i]={configurable:!0,writable:!0,enumerable:o.enumerable,value:n[i]})}return Object.create(Object.getPrototypeOf(n),t)}function d(n,e){return void 0===e&&(e=!1),y(n)||t(n)||!r(n)?n:(o(n)>1&&(n.set=n.add=n.clear=n.delete=h),Object.freeze(n),e&&i(n,(function(n,t){return d(t,!0)}),!0),n)}function h(){n(2)}function y(n){return null==n||"object"!=typeof n||Object.isFrozen(n)}function b(t){var r=tn[t];return r||n(18,t),r}function m(n,t){tn[n]||(tn[n]=t)}function _(){return true||0,U}function j(n,t){t&&(b("Patches"),n.u=[],n.s=[],n.v=t)}function g(n){O(n),n.p.forEach(S),n.p=null}function O(n){n===U&&(U=n.l)}function w(n){return U={p:[],l:U,h:n,m:!0,_:0}}function S(n){var t=n[Q];0===t.i||1===t.i?t.j():t.g=!0}function P(t,e){e._=e.p.length;var i=e.p[0],o=void 0!==t&&t!==i;return e.h.O||b("ES5").S(e,t,o),o?(i[Q].P&&(g(e),n(4)),r(t)&&(t=M(e,t),e.l||x(e,t)),e.u&&b("Patches").M(i[Q],t,e.u,e.s)):t=M(e,i,[]),g(e),e.u&&e.v(e.u,e.s),t!==H?t:void 0}function M(n,t,r){if(y(t))return t;var e=t[Q];if(!e)return i(t,(function(i,o){return A(n,e,t,i,o,r)}),!0),t;if(e.A!==n)return t;if(!e.P)return x(n,e.t,!0),e.t;if(!e.I){e.I=!0,e.A._--;var o=4===e.i||5===e.i?e.o=l(e.k):e.o;i(3===e.i?new Set(o):o,(function(t,i){return A(n,e,o,t,i,r)})),x(n,o,!1),r&&n.u&&b("Patches").R(e,r,n.u,n.s)}return e.o}function A(e,i,o,a,c,s){if( false&&0,t(c)){var v=M(e,c,s&&i&&3!==i.i&&!u(i.D,a)?s.concat(a):void 0);if(f(o,a,v),!t(v))return;e.m=!1}if(r(c)&&!y(c)){if(!e.h.N&&e._<1)return;M(e,c),i&&i.A.l||x(e,c)}}function x(n,t,r){void 0===r&&(r=!1),n.h.N&&n.m&&d(t,r)}function z(n,t){var r=n[Q];return(r?p(r):n)[t]}function I(n,t){if(t in n)for(var r=Object.getPrototypeOf(n);r;){var e=Object.getOwnPropertyDescriptor(r,t);if(e)return e;r=Object.getPrototypeOf(r)}}function E(n){n.P||(n.P=!0,n.l&&E(n.l))}function k(n){n.o||(n.o=l(n.t))}function R(n,t,r){var e=s(t)?b("MapSet").T(t,r):v(t)?b("MapSet").F(t,r):n.O?function(n,t){var r=Array.isArray(n),e={i:r?1:0,A:t?t.A:_(),P:!1,I:!1,D:{},l:t,t:n,k:null,o:null,j:null,C:!1},i=e,o=rn;r&&(i=[e],o=en);var u=Proxy.revocable(i,o),a=u.revoke,f=u.proxy;return e.k=f,e.j=a,f}(t,r):b("ES5").J(t,r);return(r?r.A:_()).p.push(e),e}function D(e){return t(e)||n(22,e),function n(t){if(!r(t))return t;var e,u=t[Q],c=o(t);if(u){if(!u.P&&(u.i<4||!b("ES5").K(u)))return u.t;u.I=!0,e=N(t,c),u.I=!1}else e=N(t,c);return i(e,(function(t,r){u&&a(u.t,t)===r||f(e,t,n(r))})),3===c?new Set(e):e}(e)}function N(n,t){switch(t){case 2:return new Map(n);case 3:return Array.from(n)}return l(n)}function T(){function r(n,t){var r=s[n];return r?r.enumerable=t:s[n]=r={configurable:!0,enumerable:t,get:function(){var t=this[Q];return false&&0,rn.get(t,n)},set:function(t){var r=this[Q]; false&&0,rn.set(r,n,t)}},r}function e(n){for(var t=n.length-1;t>=0;t--){var r=n[t][Q];if(!r.P)switch(r.i){case 5:a(r)&&E(r);break;case 4:o(r)&&E(r)}}}function o(n){for(var t=n.t,r=n.k,e=Z(r),i=e.length-1;i>=0;i--){var o=e[i];if(o!==Q){var a=t[o];if(void 0===a&&!u(t,o))return!0;var f=r[o],s=f&&f[Q];if(s?s.t!==a:!c(f,a))return!0}}var v=!!t[Q];return e.length!==Z(t).length+(v?0:1)}function a(n){var t=n.k;if(t.length!==n.t.length)return!0;var r=Object.getOwnPropertyDescriptor(t,t.length-1);return!(!r||r.get)}function f(t){t.g&&n(3,JSON.stringify(p(t)))}var s={};m("ES5",{J:function(n,t){var e=Array.isArray(n),i=function(n,t){if(n){for(var e=Array(t.length),i=0;i<t.length;i++)Object.defineProperty(e,""+i,r(i,!0));return e}var o=nn(t);delete o[Q];for(var u=Z(o),a=0;a<u.length;a++){var f=u[a];o[f]=r(f,n||!!o[f].enumerable)}return Object.create(Object.getPrototypeOf(t),o)}(e,n),o={i:e?5:4,A:t?t.A:_(),P:!1,I:!1,D:{},l:t,t:n,k:i,o:null,g:!1,C:!1};return Object.defineProperty(i,Q,{value:o,writable:!0}),i},S:function(n,r,o){o?t(r)&&r[Q].A===n&&e(n.p):(n.u&&function n(t){if(t&&"object"==typeof t){var r=t[Q];if(r){var e=r.t,o=r.k,f=r.D,c=r.i;if(4===c)i(o,(function(t){t!==Q&&(void 0!==e[t]||u(e,t)?f[t]||n(o[t]):(f[t]=!0,E(r)))})),i(e,(function(n){void 0!==o[n]||u(o,n)||(f[n]=!1,E(r))}));else if(5===c){if(a(r)&&(E(r),f.length=!0),o.length<e.length)for(var s=o.length;s<e.length;s++)f[s]=!1;else for(var v=e.length;v<o.length;v++)f[v]=!0;for(var p=Math.min(o.length,e.length),l=0;l<p;l++)void 0===f[l]&&n(o[l])}}}}(n.p[0]),e(n.p))},K:function(n){return 4===n.i?o(n):a(n)}})}function F(){function e(n){if(!r(n))return n;if(Array.isArray(n))return n.map(e);if(s(n))return new Map(Array.from(n.entries()).map((function(n){return[n[0],e(n[1])]})));if(v(n))return new Set(Array.from(n).map(e));var t=Object.create(Object.getPrototypeOf(n));for(var i in n)t[i]=e(n[i]);return t}function f(n){return t(n)?e(n):n}var c="add";m("Patches",{$:function(t,r){return r.forEach((function(r){for(var i=r.path,u=r.op,f=t,s=0;s<i.length-1;s++)"object"!=typeof(f=a(f,i[s]))&&n(15,i.join("/"));var v=o(f),p=e(r.value),l=i[i.length-1];switch(u){case"replace":switch(v){case 2:return f.set(l,p);case 3:n(16);default:return f[l]=p}case c:switch(v){case 1:return f.splice(l,0,p);case 2:return f.set(l,p);case 3:return f.add(p);default:return f[l]=p}case"remove":switch(v){case 1:return f.splice(l,1);case 2:return f.delete(l);case 3:return f.delete(r.value);default:return delete f[l]}default:n(17,u)}})),t},R:function(n,t,r,e){switch(n.i){case 0:case 4:case 2:return function(n,t,r,e){var o=n.t,s=n.o;i(n.D,(function(n,i){var v=a(o,n),p=a(s,n),l=i?u(o,n)?"replace":c:"remove";if(v!==p||"replace"!==l){var d=t.concat(n);r.push("remove"===l?{op:l,path:d}:{op:l,path:d,value:p}),e.push(l===c?{op:"remove",path:d}:"remove"===l?{op:c,path:d,value:f(v)}:{op:"replace",path:d,value:f(v)})}}))}(n,t,r,e);case 5:case 1:return function(n,t,r,e){var i=n.t,o=n.D,u=n.o;if(u.length<i.length){var a=[u,i];i=a[0],u=a[1];var s=[e,r];r=s[0],e=s[1]}for(var v=0;v<i.length;v++)if(o[v]&&u[v]!==i[v]){var p=t.concat([v]);r.push({op:"replace",path:p,value:f(u[v])}),e.push({op:"replace",path:p,value:f(i[v])})}for(var l=i.length;l<u.length;l++){var d=t.concat([l]);r.push({op:c,path:d,value:f(u[l])})}i.length<u.length&&e.push({op:"replace",path:t.concat(["length"]),value:i.length})}(n,t,r,e);case 3:return function(n,t,r,e){var i=n.t,o=n.o,u=0;i.forEach((function(n){if(!o.has(n)){var i=t.concat([u]);r.push({op:"remove",path:i,value:n}),e.unshift({op:c,path:i,value:n})}u++})),u=0,o.forEach((function(n){if(!i.has(n)){var o=t.concat([u]);r.push({op:c,path:o,value:n}),e.unshift({op:"remove",path:o,value:n})}u++}))}(n,t,r,e)}},M:function(n,t,r,e){r.push({op:"replace",path:[],value:t}),e.push({op:"replace",path:[],value:n.t})}})}function C(){function t(n,t){function r(){this.constructor=n}a(n,t),n.prototype=(r.prototype=t.prototype,new r)}function e(n){n.o||(n.D=new Map,n.o=new Map(n.t))}function o(n){n.o||(n.o=new Set,n.t.forEach((function(t){if(r(t)){var e=R(n.A.h,t,n);n.p.set(t,e),n.o.add(e)}else n.o.add(t)})))}function u(t){t.g&&n(3,JSON.stringify(p(t)))}var a=function(n,t){return(a=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(n,t){n.__proto__=t}||function(n,t){for(var r in t)t.hasOwnProperty(r)&&(n[r]=t[r])})(n,t)},f=function(){function n(n,t){return this[Q]={i:2,l:t,A:t?t.A:_(),P:!1,I:!1,o:void 0,D:void 0,t:n,k:this,C:!1,g:!1},this}t(n,Map);var o=n.prototype;return Object.defineProperty(o,"size",{get:function(){return p(this[Q]).size}}),o.has=function(n){return p(this[Q]).has(n)},o.set=function(n,t){var r=this[Q];return u(r),p(r).has(n)&&p(r).get(n)===t||(e(r),E(r),r.D.set(n,!0),r.o.set(n,t),r.D.set(n,!0)),this},o.delete=function(n){if(!this.has(n))return!1;var t=this[Q];return u(t),e(t),E(t),t.D.set(n,!1),t.o.delete(n),!0},o.clear=function(){var n=this[Q];u(n),p(n).size&&(e(n),E(n),n.D=new Map,i(n.t,(function(t){n.D.set(t,!1)})),n.o.clear())},o.forEach=function(n,t){var r=this;p(this[Q]).forEach((function(e,i){n.call(t,r.get(i),i,r)}))},o.get=function(n){var t=this[Q];u(t);var i=p(t).get(n);if(t.I||!r(i))return i;if(i!==t.t.get(n))return i;var o=R(t.A.h,i,t);return e(t),t.o.set(n,o),o},o.keys=function(){return p(this[Q]).keys()},o.values=function(){var n,t=this,r=this.keys();return(n={})[V]=function(){return t.values()},n.next=function(){var n=r.next();return n.done?n:{done:!1,value:t.get(n.value)}},n},o.entries=function(){var n,t=this,r=this.keys();return(n={})[V]=function(){return t.entries()},n.next=function(){var n=r.next();if(n.done)return n;var e=t.get(n.value);return{done:!1,value:[n.value,e]}},n},o[V]=function(){return this.entries()},n}(),c=function(){function n(n,t){return this[Q]={i:3,l:t,A:t?t.A:_(),P:!1,I:!1,o:void 0,t:n,k:this,p:new Map,g:!1,C:!1},this}t(n,Set);var r=n.prototype;return Object.defineProperty(r,"size",{get:function(){return p(this[Q]).size}}),r.has=function(n){var t=this[Q];return u(t),t.o?!!t.o.has(n)||!(!t.p.has(n)||!t.o.has(t.p.get(n))):t.t.has(n)},r.add=function(n){var t=this[Q];return u(t),this.has(n)||(o(t),E(t),t.o.add(n)),this},r.delete=function(n){if(!this.has(n))return!1;var t=this[Q];return u(t),o(t),E(t),t.o.delete(n)||!!t.p.has(n)&&t.o.delete(t.p.get(n))},r.clear=function(){var n=this[Q];u(n),p(n).size&&(o(n),E(n),n.o.clear())},r.values=function(){var n=this[Q];return u(n),o(n),n.o.values()},r.entries=function(){var n=this[Q];return u(n),o(n),n.o.entries()},r.keys=function(){return this.values()},r[V]=function(){return this.values()},r.forEach=function(n,t){for(var r=this.values(),e=r.next();!e.done;)n.call(t,e.value,e.value,this),e=r.next()},n}();m("MapSet",{T:function(n,t){return new f(n,t)},F:function(n,t){return new c(n,t)}})}function J(){T(),C(),F()}function K(n){return n}function $(n){return n}var G,U,W="undefined"!=typeof Symbol&&"symbol"==typeof Symbol("x"),X="undefined"!=typeof Map,q="undefined"!=typeof Set,B="undefined"!=typeof Proxy&&void 0!==Proxy.revocable&&"undefined"!=typeof Reflect,H=W?Symbol.for("immer-nothing"):((G={})["immer-nothing"]=!0,G),L=W?Symbol.for("immer-draftable"):"__$immer_draftable",Q=W?Symbol.for("immer-state"):"__$immer_state",V="undefined"!=typeof Symbol&&Symbol.iterator||"@@iterator",Y={0:"Illegal state",1:"Immer drafts cannot have computed properties",2:"This object has been frozen and should not be mutated",3:function(n){return"Cannot use a proxy that has been revoked. Did you pass an object from inside an immer function to an async process? "+n},4:"An immer producer returned a new value *and* modified its draft. Either return a new value *or* modify the draft.",5:"Immer forbids circular references",6:"The first or second argument to `produce` must be a function",7:"The third argument to `produce` must be a function or undefined",8:"First argument to `createDraft` must be a plain object, an array, or an immerable object",9:"First argument to `finishDraft` must be a draft returned by `createDraft`",10:"The given draft is already finalized",11:"Object.defineProperty() cannot be used on an Immer draft",12:"Object.setPrototypeOf() cannot be used on an Immer draft",13:"Immer only supports deleting array indices",14:"Immer only supports setting array indices and the 'length' property",15:function(n){return"Cannot apply patch, path doesn't resolve: "+n},16:'Sets cannot have "replace" patches.',17:function(n){return"Unsupported patch operation: "+n},18:function(n){return"The plugin for '"+n+"' has not been loaded into Immer. To enable the plugin, import and call `enable"+n+"()` when initializing your application."},20:"Cannot use proxies if Proxy, Proxy.revocable or Reflect are not available",21:function(n){return"produce can only be called on things that are draftable: plain objects, arrays, Map, Set or classes that are marked with '[immerable]: true'. Got '"+n+"'"},22:function(n){return"'current' expects a draft, got: "+n},23:function(n){return"'original' expects a draft, got: "+n}},Z="undefined"!=typeof Reflect&&Reflect.ownKeys?Reflect.ownKeys:void 0!==Object.getOwnPropertySymbols?function(n){return Object.getOwnPropertyNames(n).concat(Object.getOwnPropertySymbols(n))}:Object.getOwnPropertyNames,nn=Object.getOwnPropertyDescriptors||function(n){var t={};return Z(n).forEach((function(r){t[r]=Object.getOwnPropertyDescriptor(n,r)})),t},tn={},rn={get:function(n,t){if(t===Q)return n;var e=p(n);if(!u(e,t))return function(n,t,r){var e,i=I(t,r);return i?"value"in i?i.value:null===(e=i.get)||void 0===e?void 0:e.call(n.k):void 0}(n,e,t);var i=e[t];return n.I||!r(i)?i:i===z(n.t,t)?(k(n),n.o[t]=R(n.A.h,i,n)):i},has:function(n,t){return t in p(n)},ownKeys:function(n){return Reflect.ownKeys(p(n))},set:function(n,t,r){var e=I(p(n),t);if(null==e?void 0:e.set)return e.set.call(n.k,r),!0;if(!n.P){var i=z(p(n),t),o=null==i?void 0:i[Q];if(o&&o.t===r)return n.o[t]=r,n.D[t]=!1,!0;if(c(r,i)&&(void 0!==r||u(n.t,t)))return!0;k(n),E(n)}return n.o[t]=r,n.D[t]=!0,!0},deleteProperty:function(n,t){return void 0!==z(n.t,t)||t in n.t?(n.D[t]=!1,k(n),E(n)):delete n.D[t],n.o&&delete n.o[t],!0},getOwnPropertyDescriptor:function(n,t){var r=p(n),e=Reflect.getOwnPropertyDescriptor(r,t);return e?{writable:!0,configurable:1!==n.i||"length"!==t,enumerable:e.enumerable,value:r[t]}:e},defineProperty:function(){n(11)},getPrototypeOf:function(n){return Object.getPrototypeOf(n.t)},setPrototypeOf:function(){n(12)}},en={};i(rn,(function(n,t){en[n]=function(){return arguments[0]=arguments[0][0],t.apply(this,arguments)}})),en.deleteProperty=function(t,r){return false&&0,rn.deleteProperty.call(this,t[0],r)},en.set=function(t,r,e){return false&&0,rn.set.call(this,t[0],r,e,t[0])};var on=function(){function e(n){this.O=B,this.N=!0,"boolean"==typeof(null==n?void 0:n.useProxies)&&this.setUseProxies(n.useProxies),"boolean"==typeof(null==n?void 0:n.autoFreeze)&&this.setAutoFreeze(n.autoFreeze),this.produce=this.produce.bind(this),this.produceWithPatches=this.produceWithPatches.bind(this)}var i=e.prototype;return i.produce=function(t,e,i){if("function"==typeof t&&"function"!=typeof e){var o=e;e=t;var u=this;return function(n){var t=this;void 0===n&&(n=o);for(var r=arguments.length,i=Array(r>1?r-1:0),a=1;a<r;a++)i[a-1]=arguments[a];return u.produce(n,(function(n){var r;return(r=e).call.apply(r,[t,n].concat(i))}))}}var a;if("function"!=typeof e&&n(6),void 0!==i&&"function"!=typeof i&&n(7),r(t)){var f=w(this),c=R(this,t,void 0),s=!0;try{a=e(c),s=!1}finally{s?g(f):O(f)}return"undefined"!=typeof Promise&&a instanceof Promise?a.then((function(n){return j(f,i),P(n,f)}),(function(n){throw g(f),n})):(j(f,i),P(a,f))}if(!t||"object"!=typeof t){if((a=e(t))===H)return;return void 0===a&&(a=t),this.N&&d(a,!0),a}n(21,t)},i.produceWithPatches=function(n,t){var r,e,i=this;return"function"==typeof n?function(t){for(var r=arguments.length,e=Array(r>1?r-1:0),o=1;o<r;o++)e[o-1]=arguments[o];return i.produceWithPatches(t,(function(t){return n.apply(void 0,[t].concat(e))}))}:[this.produce(n,t,(function(n,t){r=n,e=t})),r,e]},i.createDraft=function(e){r(e)||n(8),t(e)&&(e=D(e));var i=w(this),o=R(this,e,void 0);return o[Q].C=!0,O(i),o},i.finishDraft=function(t,r){var e=t&&t[Q]; false&&(0);var i=e.A;return j(i,r),P(void 0,i)},i.setAutoFreeze=function(n){this.N=n},i.setUseProxies=function(t){t&&!B&&n(20),this.O=t},i.applyPatches=function(n,r){var e;for(e=r.length-1;e>=0;e--){var i=r[e];if(0===i.path.length&&"replace"===i.op){n=i.value;break}}var o=b("Patches").$;return t(n)?o(n,r):this.produce(n,(function(n){return o(n,r.slice(e+1))}))},e}(),un=new on,an=un.produce,fn=un.produceWithPatches.bind(un),cn=un.setAutoFreeze.bind(un),sn=un.setUseProxies.bind(un),vn=un.applyPatches.bind(un),pn=un.createDraft.bind(un),ln=un.finishDraft.bind(un);/* harmony default export */ const immer_esm = (an);
+function t(t){for(var n=arguments.length,r=Array(n>1?n-1:0),e=1;e<n;e++)r[e-1]=arguments[e];if(false){ var i, o; }throw Error("[Immer] minified error nr: "+t+(r.length?" "+r.map((function(t){return"'"+t+"'"})).join(","):"")+". Find the full error at: https://bit.ly/3cXEKWf")}function n(t){return!!t&&!!t[Q]}function r(t){return!!t&&(function(t){if(!t||"object"!=typeof t)return!1;var n=Object.getPrototypeOf(t);return!n||n===Object.prototype}(t)||Array.isArray(t)||!!t[L]||!!t.constructor[L]||s(t)||v(t))}function e(r){return n(r)||t(23,r),r[Q].t}function i(t,n,r){void 0===r&&(r=!1),0===o(t)?(r?Object.keys:Z)(t).forEach((function(e){r&&"symbol"==typeof e||n(e,t[e],t)})):t.forEach((function(r,e){return n(e,r,t)}))}function o(t){var n=t[Q];return n?n.i>3?n.i-4:n.i:Array.isArray(t)?1:s(t)?2:v(t)?3:0}function u(t,n){return 2===o(t)?t.has(n):Object.prototype.hasOwnProperty.call(t,n)}function a(t,n){return 2===o(t)?t.get(n):t[n]}function f(t,n,r){var e=o(t);2===e?t.set(n,r):3===e?(t.delete(n),t.add(r)):t[n]=r}function c(t,n){return t===n?0!==t||1/t==1/n:t!=t&&n!=n}function s(t){return X&&t instanceof Map}function v(t){return q&&t instanceof Set}function p(t){return t.o||t.t}function l(t){if(Array.isArray(t))return Array.prototype.slice.call(t);var n=tt(t);delete n[Q];for(var r=Z(n),e=0;e<r.length;e++){var i=r[e],o=n[i];!1===o.writable&&(o.writable=!0,o.configurable=!0),(o.get||o.set)&&(n[i]={configurable:!0,writable:!0,enumerable:o.enumerable,value:t[i]})}return Object.create(Object.getPrototypeOf(t),n)}function d(t,e){return void 0===e&&(e=!1),y(t)||n(t)||!r(t)?t:(o(t)>1&&(t.set=t.add=t.clear=t.delete=h),Object.freeze(t),e&&i(t,(function(t,n){return d(n,!0)}),!0),t)}function h(){t(2)}function y(t){return null==t||"object"!=typeof t||Object.isFrozen(t)}function b(n){var r=nt[n];return r||t(18,n),r}function m(t,n){nt[t]||(nt[t]=n)}function _(){return true||0,U}function j(t,n){n&&(b("Patches"),t.u=[],t.s=[],t.v=n)}function g(t){w(t),t.p.forEach(S),t.p=null}function w(t){t===U&&(U=t.l)}function O(t){return U={p:[],l:U,h:t,m:!0,_:0}}function S(t){var n=t[Q];0===n.i||1===n.i?n.j():n.g=!0}function P(n,e){e._=e.p.length;var i=e.p[0],o=void 0!==n&&n!==i;return e.h.O||b("ES5").S(e,n,o),o?(i[Q].P&&(g(e),t(4)),r(n)&&(n=M(e,n),e.l||x(e,n)),e.u&&b("Patches").M(i[Q],n,e.u,e.s)):n=M(e,i,[]),g(e),e.u&&e.v(e.u,e.s),n!==H?n:void 0}function M(t,n,r){if(y(n))return n;var e=n[Q];if(!e)return i(n,(function(i,o){return A(t,e,n,i,o,r)}),!0),n;if(e.A!==t)return n;if(!e.P)return x(t,e.t,!0),e.t;if(!e.I){e.I=!0,e.A._--;var o=4===e.i||5===e.i?e.o=l(e.k):e.o;i(3===e.i?new Set(o):o,(function(n,i){return A(t,e,o,n,i,r)})),x(t,o,!1),r&&t.u&&b("Patches").R(e,r,t.u,t.s)}return e.o}function A(e,i,o,a,c,s){if( false&&0,n(c)){var v=M(e,c,s&&i&&3!==i.i&&!u(i.D,a)?s.concat(a):void 0);if(f(o,a,v),!n(v))return;e.m=!1}if(r(c)&&!y(c)){if(!e.h.N&&e._<1)return;M(e,c),i&&i.A.l||x(e,c)}}function x(t,n,r){void 0===r&&(r=!1),t.h.N&&t.m&&d(n,r)}function z(t,n){var r=t[Q];return(r?p(r):t)[n]}function I(t,n){if(n in t)for(var r=Object.getPrototypeOf(t);r;){var e=Object.getOwnPropertyDescriptor(r,n);if(e)return e;r=Object.getPrototypeOf(r)}}function k(t){t.P||(t.P=!0,t.l&&k(t.l))}function E(t){t.o||(t.o=l(t.t))}function R(t,n,r){var e=s(n)?b("MapSet").T(n,r):v(n)?b("MapSet").F(n,r):t.O?function(t,n){var r=Array.isArray(t),e={i:r?1:0,A:n?n.A:_(),P:!1,I:!1,D:{},l:n,t:t,k:null,o:null,j:null,C:!1},i=e,o=rt;r&&(i=[e],o=et);var u=Proxy.revocable(i,o),a=u.revoke,f=u.proxy;return e.k=f,e.j=a,f}(n,r):b("ES5").J(n,r);return(r?r.A:_()).p.push(e),e}function D(e){return n(e)||t(22,e),function t(n){if(!r(n))return n;var e,u=n[Q],c=o(n);if(u){if(!u.P&&(u.i<4||!b("ES5").K(u)))return u.t;u.I=!0,e=N(n,c),u.I=!1}else e=N(n,c);return i(e,(function(n,r){u&&a(u.t,n)===r||f(e,n,t(r))})),3===c?new Set(e):e}(e)}function N(t,n){switch(n){case 2:return new Map(t);case 3:return Array.from(t)}return l(t)}function T(){function r(t,n){var r=s[t];return r?r.enumerable=n:s[t]=r={configurable:!0,enumerable:n,get:function(){var n=this[Q];return false&&0,rt.get(n,t)},set:function(n){var r=this[Q]; false&&0,rt.set(r,t,n)}},r}function e(t){for(var n=t.length-1;n>=0;n--){var r=t[n][Q];if(!r.P)switch(r.i){case 5:a(r)&&k(r);break;case 4:o(r)&&k(r)}}}function o(t){for(var n=t.t,r=t.k,e=Z(r),i=e.length-1;i>=0;i--){var o=e[i];if(o!==Q){var a=n[o];if(void 0===a&&!u(n,o))return!0;var f=r[o],s=f&&f[Q];if(s?s.t!==a:!c(f,a))return!0}}var v=!!n[Q];return e.length!==Z(n).length+(v?0:1)}function a(t){var n=t.k;if(n.length!==t.t.length)return!0;var r=Object.getOwnPropertyDescriptor(n,n.length-1);return!(!r||r.get)}function f(n){n.g&&t(3,JSON.stringify(p(n)))}var s={};m("ES5",{J:function(t,n){var e=Array.isArray(t),i=function(t,n){if(t){for(var e=Array(n.length),i=0;i<n.length;i++)Object.defineProperty(e,""+i,r(i,!0));return e}var o=tt(n);delete o[Q];for(var u=Z(o),a=0;a<u.length;a++){var f=u[a];o[f]=r(f,t||!!o[f].enumerable)}return Object.create(Object.getPrototypeOf(n),o)}(e,t),o={i:e?5:4,A:n?n.A:_(),P:!1,I:!1,D:{},l:n,t:t,k:i,o:null,g:!1,C:!1};return Object.defineProperty(i,Q,{value:o,writable:!0}),i},S:function(t,r,o){o?n(r)&&r[Q].A===t&&e(t.p):(t.u&&function t(n){if(n&&"object"==typeof n){var r=n[Q];if(r){var e=r.t,o=r.k,f=r.D,c=r.i;if(4===c)i(o,(function(n){n!==Q&&(void 0!==e[n]||u(e,n)?f[n]||t(o[n]):(f[n]=!0,k(r)))})),i(e,(function(t){void 0!==o[t]||u(o,t)||(f[t]=!1,k(r))}));else if(5===c){if(a(r)&&(k(r),f.length=!0),o.length<e.length)for(var s=o.length;s<e.length;s++)f[s]=!1;else for(var v=e.length;v<o.length;v++)f[v]=!0;for(var p=Math.min(o.length,e.length),l=0;l<p;l++)void 0===f[l]&&t(o[l])}}}}(t.p[0]),e(t.p))},K:function(t){return 4===t.i?o(t):a(t)}})}function F(){function e(t){if(!r(t))return t;if(Array.isArray(t))return t.map(e);if(s(t))return new Map(Array.from(t.entries()).map((function(t){return[t[0],e(t[1])]})));if(v(t))return new Set(Array.from(t).map(e));var n=Object.create(Object.getPrototypeOf(t));for(var i in t)n[i]=e(t[i]);return n}function f(t){return n(t)?e(t):t}var c="add";m("Patches",{$:function(n,r){return r.forEach((function(r){for(var i=r.path,u=r.op,f=n,s=0;s<i.length-1;s++){var v=o(f),p=i[s];0!==v&&1!==v||"__proto__"!==p&&"constructor"!==p||t(24),"function"==typeof f&&"prototype"===p&&t(24),"object"!=typeof(f=a(f,p))&&t(15,i.join("/"))}var l=o(f),d=e(r.value),h=i[i.length-1];switch(u){case"replace":switch(l){case 2:return f.set(h,d);case 3:t(16);default:return f[h]=d}case c:switch(l){case 1:return f.splice(h,0,d);case 2:return f.set(h,d);case 3:return f.add(d);default:return f[h]=d}case"remove":switch(l){case 1:return f.splice(h,1);case 2:return f.delete(h);case 3:return f.delete(r.value);default:return delete f[h]}default:t(17,u)}})),n},R:function(t,n,r,e){switch(t.i){case 0:case 4:case 2:return function(t,n,r,e){var o=t.t,s=t.o;i(t.D,(function(t,i){var v=a(o,t),p=a(s,t),l=i?u(o,t)?"replace":c:"remove";if(v!==p||"replace"!==l){var d=n.concat(t);r.push("remove"===l?{op:l,path:d}:{op:l,path:d,value:p}),e.push(l===c?{op:"remove",path:d}:"remove"===l?{op:c,path:d,value:f(v)}:{op:"replace",path:d,value:f(v)})}}))}(t,n,r,e);case 5:case 1:return function(t,n,r,e){var i=t.t,o=t.D,u=t.o;if(u.length<i.length){var a=[u,i];i=a[0],u=a[1];var s=[e,r];r=s[0],e=s[1]}for(var v=0;v<i.length;v++)if(o[v]&&u[v]!==i[v]){var p=n.concat([v]);r.push({op:"replace",path:p,value:f(u[v])}),e.push({op:"replace",path:p,value:f(i[v])})}for(var l=i.length;l<u.length;l++){var d=n.concat([l]);r.push({op:c,path:d,value:f(u[l])})}i.length<u.length&&e.push({op:"replace",path:n.concat(["length"]),value:i.length})}(t,n,r,e);case 3:return function(t,n,r,e){var i=t.t,o=t.o,u=0;i.forEach((function(t){if(!o.has(t)){var i=n.concat([u]);r.push({op:"remove",path:i,value:t}),e.unshift({op:c,path:i,value:t})}u++})),u=0,o.forEach((function(t){if(!i.has(t)){var o=n.concat([u]);r.push({op:c,path:o,value:t}),e.unshift({op:"remove",path:o,value:t})}u++}))}(t,n,r,e)}},M:function(t,n,r,e){r.push({op:"replace",path:[],value:n}),e.push({op:"replace",path:[],value:t.t})}})}function C(){function n(t,n){function r(){this.constructor=t}a(t,n),t.prototype=(r.prototype=n.prototype,new r)}function e(t){t.o||(t.D=new Map,t.o=new Map(t.t))}function o(t){t.o||(t.o=new Set,t.t.forEach((function(n){if(r(n)){var e=R(t.A.h,n,t);t.p.set(n,e),t.o.add(e)}else t.o.add(n)})))}function u(n){n.g&&t(3,JSON.stringify(p(n)))}var a=function(t,n){return(a=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,n){t.__proto__=n}||function(t,n){for(var r in n)n.hasOwnProperty(r)&&(t[r]=n[r])})(t,n)},f=function(){function t(t,n){return this[Q]={i:2,l:n,A:n?n.A:_(),P:!1,I:!1,o:void 0,D:void 0,t:t,k:this,C:!1,g:!1},this}n(t,Map);var o=t.prototype;return Object.defineProperty(o,"size",{get:function(){return p(this[Q]).size}}),o.has=function(t){return p(this[Q]).has(t)},o.set=function(t,n){var r=this[Q];return u(r),p(r).has(t)&&p(r).get(t)===n||(e(r),k(r),r.D.set(t,!0),r.o.set(t,n),r.D.set(t,!0)),this},o.delete=function(t){if(!this.has(t))return!1;var n=this[Q];return u(n),e(n),k(n),n.D.set(t,!1),n.o.delete(t),!0},o.clear=function(){var t=this[Q];u(t),p(t).size&&(e(t),k(t),t.D=new Map,i(t.t,(function(n){t.D.set(n,!1)})),t.o.clear())},o.forEach=function(t,n){var r=this;p(this[Q]).forEach((function(e,i){t.call(n,r.get(i),i,r)}))},o.get=function(t){var n=this[Q];u(n);var i=p(n).get(t);if(n.I||!r(i))return i;if(i!==n.t.get(t))return i;var o=R(n.A.h,i,n);return e(n),n.o.set(t,o),o},o.keys=function(){return p(this[Q]).keys()},o.values=function(){var t,n=this,r=this.keys();return(t={})[V]=function(){return n.values()},t.next=function(){var t=r.next();return t.done?t:{done:!1,value:n.get(t.value)}},t},o.entries=function(){var t,n=this,r=this.keys();return(t={})[V]=function(){return n.entries()},t.next=function(){var t=r.next();if(t.done)return t;var e=n.get(t.value);return{done:!1,value:[t.value,e]}},t},o[V]=function(){return this.entries()},t}(),c=function(){function t(t,n){return this[Q]={i:3,l:n,A:n?n.A:_(),P:!1,I:!1,o:void 0,t:t,k:this,p:new Map,g:!1,C:!1},this}n(t,Set);var r=t.prototype;return Object.defineProperty(r,"size",{get:function(){return p(this[Q]).size}}),r.has=function(t){var n=this[Q];return u(n),n.o?!!n.o.has(t)||!(!n.p.has(t)||!n.o.has(n.p.get(t))):n.t.has(t)},r.add=function(t){var n=this[Q];return u(n),this.has(t)||(o(n),k(n),n.o.add(t)),this},r.delete=function(t){if(!this.has(t))return!1;var n=this[Q];return u(n),o(n),k(n),n.o.delete(t)||!!n.p.has(t)&&n.o.delete(n.p.get(t))},r.clear=function(){var t=this[Q];u(t),p(t).size&&(o(t),k(t),t.o.clear())},r.values=function(){var t=this[Q];return u(t),o(t),t.o.values()},r.entries=function(){var t=this[Q];return u(t),o(t),t.o.entries()},r.keys=function(){return this.values()},r[V]=function(){return this.values()},r.forEach=function(t,n){for(var r=this.values(),e=r.next();!e.done;)t.call(n,e.value,e.value,this),e=r.next()},t}();m("MapSet",{T:function(t,n){return new f(t,n)},F:function(t,n){return new c(t,n)}})}function J(){T(),C(),F()}function K(t){return t}function $(t){return t}var G,U,W="undefined"!=typeof Symbol&&"symbol"==typeof Symbol("x"),X="undefined"!=typeof Map,q="undefined"!=typeof Set,B="undefined"!=typeof Proxy&&void 0!==Proxy.revocable&&"undefined"!=typeof Reflect,H=W?Symbol.for("immer-nothing"):((G={})["immer-nothing"]=!0,G),L=W?Symbol.for("immer-draftable"):"__$immer_draftable",Q=W?Symbol.for("immer-state"):"__$immer_state",V="undefined"!=typeof Symbol&&Symbol.iterator||"@@iterator",Y={0:"Illegal state",1:"Immer drafts cannot have computed properties",2:"This object has been frozen and should not be mutated",3:function(t){return"Cannot use a proxy that has been revoked. Did you pass an object from inside an immer function to an async process? "+t},4:"An immer producer returned a new value *and* modified its draft. Either return a new value *or* modify the draft.",5:"Immer forbids circular references",6:"The first or second argument to `produce` must be a function",7:"The third argument to `produce` must be a function or undefined",8:"First argument to `createDraft` must be a plain object, an array, or an immerable object",9:"First argument to `finishDraft` must be a draft returned by `createDraft`",10:"The given draft is already finalized",11:"Object.defineProperty() cannot be used on an Immer draft",12:"Object.setPrototypeOf() cannot be used on an Immer draft",13:"Immer only supports deleting array indices",14:"Immer only supports setting array indices and the 'length' property",15:function(t){return"Cannot apply patch, path doesn't resolve: "+t},16:'Sets cannot have "replace" patches.',17:function(t){return"Unsupported patch operation: "+t},18:function(t){return"The plugin for '"+t+"' has not been loaded into Immer. To enable the plugin, import and call `enable"+t+"()` when initializing your application."},20:"Cannot use proxies if Proxy, Proxy.revocable or Reflect are not available",21:function(t){return"produce can only be called on things that are draftable: plain objects, arrays, Map, Set or classes that are marked with '[immerable]: true'. Got '"+t+"'"},22:function(t){return"'current' expects a draft, got: "+t},23:function(t){return"'original' expects a draft, got: "+t},24:"Patching reserved attributes like __proto__, prototype and constructor is not allowed"},Z="undefined"!=typeof Reflect&&Reflect.ownKeys?Reflect.ownKeys:void 0!==Object.getOwnPropertySymbols?function(t){return Object.getOwnPropertyNames(t).concat(Object.getOwnPropertySymbols(t))}:Object.getOwnPropertyNames,tt=Object.getOwnPropertyDescriptors||function(t){var n={};return Z(t).forEach((function(r){n[r]=Object.getOwnPropertyDescriptor(t,r)})),n},nt={},rt={get:function(t,n){if(n===Q)return t;var e=p(t);if(!u(e,n))return function(t,n,r){var e,i=I(n,r);return i?"value"in i?i.value:null===(e=i.get)||void 0===e?void 0:e.call(t.k):void 0}(t,e,n);var i=e[n];return t.I||!r(i)?i:i===z(t.t,n)?(E(t),t.o[n]=R(t.A.h,i,t)):i},has:function(t,n){return n in p(t)},ownKeys:function(t){return Reflect.ownKeys(p(t))},set:function(t,n,r){var e=I(p(t),n);if(null==e?void 0:e.set)return e.set.call(t.k,r),!0;if(!t.P){var i=z(p(t),n),o=null==i?void 0:i[Q];if(o&&o.t===r)return t.o[n]=r,t.D[n]=!1,!0;if(c(r,i)&&(void 0!==r||u(t.t,n)))return!0;E(t),k(t)}return t.o[n]=r,t.D[n]=!0,!0},deleteProperty:function(t,n){return void 0!==z(t.t,n)||n in t.t?(t.D[n]=!1,E(t),k(t)):delete t.D[n],t.o&&delete t.o[n],!0},getOwnPropertyDescriptor:function(t,n){var r=p(t),e=Reflect.getOwnPropertyDescriptor(r,n);return e?{writable:!0,configurable:1!==t.i||"length"!==n,enumerable:e.enumerable,value:r[n]}:e},defineProperty:function(){t(11)},getPrototypeOf:function(t){return Object.getPrototypeOf(t.t)},setPrototypeOf:function(){t(12)}},et={};i(rt,(function(t,n){et[t]=function(){return arguments[0]=arguments[0][0],n.apply(this,arguments)}})),et.deleteProperty=function(n,r){return false&&0,rt.deleteProperty.call(this,n[0],r)},et.set=function(n,r,e){return false&&0,rt.set.call(this,n[0],r,e,n[0])};var it=function(){function e(t){this.O=B,this.N=!0,"boolean"==typeof(null==t?void 0:t.useProxies)&&this.setUseProxies(t.useProxies),"boolean"==typeof(null==t?void 0:t.autoFreeze)&&this.setAutoFreeze(t.autoFreeze),this.produce=this.produce.bind(this),this.produceWithPatches=this.produceWithPatches.bind(this)}var i=e.prototype;return i.produce=function(n,e,i){if("function"==typeof n&&"function"!=typeof e){var o=e;e=n;var u=this;return function(t){var n=this;void 0===t&&(t=o);for(var r=arguments.length,i=Array(r>1?r-1:0),a=1;a<r;a++)i[a-1]=arguments[a];return u.produce(t,(function(t){var r;return(r=e).call.apply(r,[n,t].concat(i))}))}}var a;if("function"!=typeof e&&t(6),void 0!==i&&"function"!=typeof i&&t(7),r(n)){var f=O(this),c=R(this,n,void 0),s=!0;try{a=e(c),s=!1}finally{s?g(f):w(f)}return"undefined"!=typeof Promise&&a instanceof Promise?a.then((function(t){return j(f,i),P(t,f)}),(function(t){throw g(f),t})):(j(f,i),P(a,f))}if(!n||"object"!=typeof n){if((a=e(n))===H)return;return void 0===a&&(a=n),this.N&&d(a,!0),a}t(21,n)},i.produceWithPatches=function(t,n){var r,e,i=this;return"function"==typeof t?function(n){for(var r=arguments.length,e=Array(r>1?r-1:0),o=1;o<r;o++)e[o-1]=arguments[o];return i.produceWithPatches(n,(function(n){return t.apply(void 0,[n].concat(e))}))}:[this.produce(t,n,(function(t,n){r=t,e=n})),r,e]},i.createDraft=function(e){r(e)||t(8),n(e)&&(e=D(e));var i=O(this),o=R(this,e,void 0);return o[Q].C=!0,w(i),o},i.finishDraft=function(n,r){var e=n&&n[Q]; false&&(0);var i=e.A;return j(i,r),P(void 0,i)},i.setAutoFreeze=function(t){this.N=t},i.setUseProxies=function(n){n&&!B&&t(20),this.O=n},i.applyPatches=function(t,r){var e;for(e=r.length-1;e>=0;e--){var i=r[e];if(0===i.path.length&&"replace"===i.op){t=i.value;break}}var o=b("Patches").$;return n(t)?o(t,r):this.produce(t,(function(t){return o(t,r.slice(e+1))}))},e}(),ot=new it,ut=ot.produce,at=ot.produceWithPatches.bind(ot),ft=ot.setAutoFreeze.bind(ot),ct=ot.setUseProxies.bind(ot),st=ot.applyPatches.bind(ot),vt=ot.createDraft.bind(ot),pt=ot.finishDraft.bind(ot);/* harmony default export */ const immer_esm = (ut);
 //# sourceMappingURL=immer.esm.js.map
 
 // EXTERNAL MODULE: ./node_modules/redux/es/redux.js
@@ -270,7 +270,7 @@ var createDraftSafeSelector = function createDraftSafeSelector() {
       rest[_key - 1] = arguments[_key];
     }
 
-    return selector.apply(void 0, [t(value) ? D(value) : value].concat(rest));
+    return selector.apply(void 0, [n(value) ? D(value) : value].concat(rest));
   };
 
   return wrappedSelector;
@@ -1081,7 +1081,7 @@ function createReducer(initialState, mapOrBuilderCallback, actionMatchers, defau
 
     return caseReducers.reduce(function (previousState, caseReducer) {
       if (caseReducer) {
-        if (t(previousState)) {
+        if (n(previousState)) {
           // If it's already a draft, we must already be inside a `createNextState` call,
           // likely because this is being wrapped in `createReducer`, `createSlice`, or nested
           // inside an existing draft. It's safe to just pass the draft to the mutator.
@@ -1284,7 +1284,7 @@ function createStateOperator(mutator) {
       }
     };
 
-    if (t(state)) {
+    if (n(state)) {
       // we must already be inside a `createNextState` call, likely because
       // this is being wrapped in `createReducer` or `createSlice`.
       // It's safe to just pass the draft to the mutator.
@@ -2155,6 +2155,3562 @@ T();
 
 /***/ }),
 
+/***/ 694:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "k": () => /* binding */ ConversationWrapper
+});
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__(294);
+// EXTERNAL MODULE: ./node_modules/react-redux/es/index.js + 15 modules
+var es = __webpack_require__(308);
+// EXTERNAL MODULE: ./node_modules/prop-types/index.js
+var prop_types = __webpack_require__(697);
+var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
+// EXTERNAL MODULE: ./addon/content/reducer/reducer-summary.js
+var reducer_summary = __webpack_require__(850);
+// EXTERNAL MODULE: ./addon/content/es-modules/thunderbird-compat.js + 1 modules
+var thunderbird_compat = __webpack_require__(415);
+;// CONCATENATED MODULE: ./addon/content/components/conversation/conversationFooter.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+
+class _ConversationFooter extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.forwardConversation = this.forwardConversation.bind(this);
+    this.printConversation = this.printConversation.bind(this);
+  }
+
+  forwardConversation() {
+    this.props.dispatch(reducer_summary/* summaryActions.forwardConversation */.v.forwardConversation());
+  }
+
+  printConversation() {
+    this.props.dispatch(reducer_summary/* summaryActions.printConversation */.v.printConversation());
+  }
+
+  render() {
+    return /*#__PURE__*/react.createElement("div", {
+      className: "bottom-links"
+    }, /*#__PURE__*/react.createElement("a", {
+      className: "link",
+      onClick: this.forwardConversation
+    }, thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.forwardConversation")), " "); // TODO: Get printing working again.
+    // –{" "}
+    // <a className="link" onClick={this.printConversation}>
+    //   {browser.i18n.getMessage("message.printConversation")}
+    // </a>
+  }
+
+}
+
+_ConversationFooter.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired
+};
+const ConversationFooter = es/* connect */.$j()(_ConversationFooter);
+// EXTERNAL MODULE: ./addon/content/reducer/reducer-messages.js
+var reducer_messages = __webpack_require__(901);
+;// CONCATENATED MODULE: ./addon/content/components/svgIcon.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+/**
+ * A basic SVG icon rendered using the `xlinkHref` ability
+ * of SVGs. You can specify the full path, or just the hash.
+ *
+ * @param {*} { fullPath, hash }
+ * @returns {React.ReactNode}
+ */
+
+function SvgIcon({
+  fullPath,
+  hash
+}) {
+  fullPath = fullPath || `material-icons.svg#${hash}`;
+  return /*#__PURE__*/react.createElement("svg", {
+    className: "icon",
+    viewBox: "0 0 24 24",
+    xmlns: "http://www.w3.org/2000/svg",
+    xmlnsXlink: "http://www.w3.org/1999/xlink"
+  }, /*#__PURE__*/react.createElement("use", {
+    xlinkHref: `icons/${fullPath}`
+  }));
+}
+SvgIcon.propTypes = {
+  fullPath: (prop_types_default()).string,
+  hash: (prop_types_default()).string
+};
+;// CONCATENATED MODULE: ./addon/content/components/conversation/conversationHeader.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+
+
+const LINKS_REGEX = /((\w+):\/\/[^<>()'"\s]+|www(\.[-\w]+){2,})/;
+
+class LinkifiedSubject extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    this.props.dispatch(reducer_summary/* summaryActions.openLink */.v.openLink({
+      url: event.target.title
+    }));
+    event.preventDefault();
+  }
+
+  render() {
+    let subject = this.props.subject;
+
+    if (this.props.loading) {
+      subject = thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.loading");
+    } else if (!subject) {
+      subject = thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.noSubject");
+    }
+
+    if (LINKS_REGEX.test(this.props.subject)) {
+      let contents = [];
+      let text = subject;
+
+      while (text && LINKS_REGEX.test(text)) {
+        let matches = LINKS_REGEX.exec(text);
+        let [pre, ...post] = text.split(matches[1]);
+        let link = /*#__PURE__*/react.createElement("a", {
+          href: matches[1],
+          title: matches[1],
+          className: "link",
+          onClick: this.handleClick
+        }, matches[1]);
+
+        if (pre) {
+          contents.push(pre);
+        }
+
+        contents.push(link);
+        text = post.join(matches[1]);
+      }
+
+      if (text) {
+        contents.push(text);
+      }
+
+      return /*#__PURE__*/react.createElement("div", {
+        className: "subject",
+        title: this.props.subject
+      }, /*#__PURE__*/react.createElement("span", null, contents));
+    }
+
+    return /*#__PURE__*/react.createElement("div", {
+      className: "subject",
+      title: this.props.subject
+    }, this.props.subject);
+  }
+
+}
+
+LinkifiedSubject.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  loading: (prop_types_default()).bool.isRequired,
+  subject: (prop_types_default()).string.isRequired
+};
+
+class _ConversationHeader extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.archiveToolbar = this.archiveToolbar.bind(this);
+    this.delete = this.delete.bind(this);
+    this.detachTab = this.detachTab.bind(this);
+    this.expandCollapse = this.expandCollapse.bind(this);
+    this.junkConversation = this.junkConversation.bind(this);
+    this.toggleRead = this.toggleRead.bind(this);
+  }
+
+  archiveToolbar(event) {
+    this.props.dispatch(reducer_messages/* messageActions.archiveConversation */.o.archiveConversation());
+  }
+
+  delete(event) {
+    this.props.dispatch(reducer_messages/* messageActions.deleteConversation */.o.deleteConversation());
+  }
+  /**
+   * This function gathers various information, encodes it in a URL query
+   * string, and then opens a regular chrome tab that contains our
+   * conversation.
+   */
+
+
+  detachTab(event) {
+    this.props.dispatch(reducer_messages/* messageActions.detachTab */.o.detachTab());
+  }
+
+  get areSomeMessagesCollapsed() {
+    return !this.props.msgData?.some(msg => msg.expanded);
+  }
+
+  get areSomeMessagesUnread() {
+    return this.props.msgData?.some(msg => !msg.read);
+  }
+
+  get canJunk() {
+    // TODO: Disable if in just a new tab? (e.g. double-click)
+    // as per old comment:
+    // We can never junk a conversation in a new tab, because the junk
+    // command only operates on selected messages, and we're not in a
+    // 3pane context anymore.
+    return this.props.msgData && this.props.msgData.length <= 1 && this.props.msgData.some(msg => !msg.isJunk);
+  }
+
+  expandCollapse(event) {
+    this.props.dispatch(reducer_messages/* messageActions.toggleConversationExpanded */.o.toggleConversationExpanded({
+      expand: this.areSomeMessagesCollapsed
+    }));
+  }
+
+  junkConversation(event) {
+    // This callback is only activated when the conversation is not a
+    //  conversation in a tab AND there's only one message in the conversation,
+    //  i.e. the currently selected message
+    this.props.dispatch(reducer_messages/* messageActions.markAsJunk */.o.markAsJunk({
+      id: this.props.msgData[0].id,
+      isJunk: true
+    }));
+  } // Mark the current conversation as read/unread. The conversation driver
+  //  takes care of setting the right class on us whenever the state
+  //  changes...
+
+
+  toggleRead(event) {
+    this.props.dispatch(reducer_messages/* messageActions.toggleConversationRead */.o.toggleConversationRead({
+      read: this.areSomeMessagesUnread
+    }));
+  }
+
+  render() {
+    document.title = this.props.subject;
+    return /*#__PURE__*/react.createElement("div", {
+      className: "conversationHeaderWrapper"
+    }, /*#__PURE__*/react.createElement("div", {
+      className: "conversationHeader"
+    }, /*#__PURE__*/react.createElement(LinkifiedSubject, {
+      dispatch: this.props.dispatch,
+      loading: this.props.loading,
+      subject: this.props.subject
+    }), /*#__PURE__*/react.createElement("div", {
+      className: "actions"
+    }, /*#__PURE__*/react.createElement("button", {
+      className: "button-flat",
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.trash.tooltip"),
+      onClick: this.delete
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "delete"
+    })), /*#__PURE__*/react.createElement("button", {
+      className: "button-flat",
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.archive.tooltip"),
+      onClick: this.archiveToolbar
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "archive"
+    })), this.canJunk && /*#__PURE__*/react.createElement("button", {
+      className: "button-flat junk-button",
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.junk.tooltip"),
+      onClick: this.junkConversation
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "whatshot"
+    })), /*#__PURE__*/react.createElement("button", {
+      className: "button-flat",
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.expand.tooltip"),
+      onClick: this.expandCollapse
+    }, /*#__PURE__*/react.createElement("svg", {
+      className: `icon expand ${this.areSomeMessagesCollapsed ? "" : "collapse"}`,
+      viewBox: "0 0 24 24",
+      xmlns: "http://www.w3.org/2000/svg",
+      xmlnsXlink: "http://www.w3.org/1999/xlink"
+    }, /*#__PURE__*/react.createElement("use", {
+      className: "expand-more",
+      xlinkHref: "icons/material-icons.svg#expand_more"
+    }), /*#__PURE__*/react.createElement("use", {
+      className: "expand-less",
+      xlinkHref: "icons/material-icons.svg#expand_less"
+    }))), /*#__PURE__*/react.createElement("button", {
+      className: `button-flat ${this.areSomeMessagesUnread ? "unread" : ""}`,
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.read.tooltip"),
+      onClick: this.toggleRead
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "new"
+    })), /*#__PURE__*/react.createElement("button", {
+      className: "button-flat",
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.detach.tooltip"),
+      onClick: this.detachTab
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "open_in_new"
+    })))));
+  }
+
+}
+
+_ConversationHeader.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  loading: (prop_types_default()).bool.isRequired,
+  subject: (prop_types_default()).string.isRequired,
+  msgData: (prop_types_default()).array.isRequired
+};
+const ConversationHeader = es/* connect */.$j(state => {
+  return {
+    loading: state.summary.loading,
+    subject: state.summary.subject,
+    msgData: state.messages.msgData
+  };
+})(_ConversationHeader);
+// EXTERNAL MODULE: ./addon/content/reducer/reducer-attachments.js
+var reducer_attachments = __webpack_require__(849);
+;// CONCATENATED MODULE: ./addon/content/components/message/attachments.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+const ICON_MAPPING = new Map([["application/msword", "x-office-document"], ["application/vnd.ms-excel", "x-office-spreadsheet"], ["application/vnd.ms-powerpoint", "x-office-presentation"], ["application/rtf", "x-office-document"], ["application/zip", "package-x-generic"], ["application/bzip2", "package-x-generic"], ["application/x-gzip", "package-x-generic"], ["application/x-tar", "package-x-generic"], ["application/x-compressed", "package-x-generic"], // "message/": "email",
+["text/x-vcalendar", "x-office-calendar"], ["text/x-vcard", "x-office-address-book"], ["text/html", "text-html"], ["application/pdf", "application-pdf"], ["application/x-pdf", "application-pdf"], ["application/x-bzpdf", "application-pdf"], ["application/x-gzpdf", "application-pdf"]]);
+const FALLBACK_ICON_MAPPING = new Map([// Fallbacks, at the end.
+["video/", "video-x-generic"], ["audio/", "audio-x-generic"], ["image/", "image-x-generic"], ["text/", "text-x-generic"]]);
+const PDF_MIME_TYPES = ["application/pdf", "application/x-pdf", "application/x-bzpdf", "application/x-gzpdf"];
+const RE_MSGKEY = /number=(\d+)/;
+
+class Attachment extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.preview = this.preview.bind(this);
+    this.onDragStart = this.onDragStart.bind(this);
+    this.downloadAttachment = this.downloadAttachment.bind(this);
+    this.openAttachment = this.openAttachment.bind(this);
+    this.deleteAttachment = this.deleteAttachment.bind(this);
+    this.detachAttachment = this.detachAttachment.bind(this);
+  }
+
+  isImage(contentType) {
+    return contentType.startsWith("image/");
+  }
+
+  isViewable(contentType) {
+    return this.isImage(contentType) || contentType.startsWith("text/");
+  }
+
+  isPdf(contentType) {
+    return PDF_MIME_TYPES.includes(contentType);
+  }
+
+  preview() {
+    // Keep similar capabilities as previous versions where the user
+    // can click the attachment to open the pdf.
+    if (this.isPdf(this.props.contentType) && this.props.hasBuiltInPdf) {
+      this.openAttachment();
+      return;
+    }
+
+    this.props.dispatch(reducer_attachments/* attachmentActions.previewAttachment */.m.previewAttachment({
+      name: this.props.name,
+      url: this.props.url,
+      isPdf: this.isPdf(this.props.contentType),
+      maybeViewable: this.isViewable(this.props.contentType)
+    }));
+  }
+
+  onDragStart(event) {
+    let info;
+
+    if (/(^file:|&filename=)/.test(this.props.url)) {
+      info = this.props.url;
+    } else {
+      info = this.props.url + "&type=" + this.props.contentType + "&filename=" + encodeURIComponent(this.props.name);
+    }
+
+    event.dataTransfer.setData("text/x-moz-url", `${info}\n${this.props.name}\n${this.props.size}`);
+    event.dataTransfer.setData("text/x-moz-url-data", this.props.url);
+    event.dataTransfer.setData("text/x-moz-url-desc", this.props.name);
+    event.dataTransfer.setData("application/x-moz-file-promise-url", this.props.url);
+    event.dataTransfer.setData("application/x-moz-file-promise", null);
+    event.stopPropagation();
+  }
+
+  downloadAttachment() {
+    this.props.dispatch(reducer_attachments/* attachmentActions.downloadAttachment */.m.downloadAttachment({
+      id: this.props.id,
+      attachmentUrl: this.props.url
+    }));
+  }
+
+  openAttachment() {
+    this.props.dispatch(reducer_attachments/* attachmentActions.openAttachment */.m.openAttachment({
+      id: this.props.id,
+      attachmentUrl: this.props.url
+    }));
+  }
+
+  detachAttachment() {
+    this.props.dispatch(reducer_attachments/* attachmentActions.detachAttachment */.m.detachAttachment({
+      id: this.props.id,
+      attachmentUrl: this.props.url,
+      shouldSave: true
+    }));
+  }
+
+  deleteAttachment() {
+    this.props.dispatch(reducer_attachments/* attachmentActions.detachAttachment */.m.detachAttachment({
+      id: this.props.id,
+      attachmentUrl: this.props.url,
+      shouldSave: false
+    }));
+  }
+
+  iconForMimeType(mimeType) {
+    if (ICON_MAPPING.has(mimeType)) {
+      return ICON_MAPPING.get(mimeType) + ".svg";
+    }
+
+    let split = mimeType.split("/");
+
+    if (split.length && FALLBACK_ICON_MAPPING.has(split[0] + "/")) {
+      return FALLBACK_ICON_MAPPING.get(split[0] + "/") + ".svg";
+    }
+
+    return "gtk-file.png";
+  }
+
+  render() {
+    const isPdf = this.isPdf(this.props.contentType);
+    const enablePreview = isPdf || this.isViewable(this.props.contentType);
+    const imgTitle = enablePreview ? browser.i18n.getMessage("attachments.viewAttachment.tooltip") : "";
+    let thumb;
+    let imgClass;
+
+    if (this.isImage(this.props.contentType)) {
+      thumb = this.props.url.replace(RE_MSGKEY, "number=" + this.props.messageKey);
+      imgClass = "resize-me";
+    } else {
+      thumb = "icons/" + this.iconForMimeType(this.props.contentType);
+      imgClass = "mime-icon";
+    } // TODO: Drag n drop
+    // Note: contextmenu is only supported in Gecko, though React will complain
+    // about it.
+    // Hoping to turn this into WebExtension based context menus at some
+    // stage: https://github.com/thunderbird-conversations/thunderbird-conversations/issues/1416
+
+    /* eslint-disable react/no-unknown-property */
+
+
+    return /*#__PURE__*/react.createElement("li", {
+      className: "attachment",
+      contextmenu: `attachmentMenu-${this.props.anchor}`
+    }, /*#__PURE__*/react.createElement("div", {
+      className: "attachmentThumb" + (enablePreview ? " view-attachment" : ""),
+      draggable: "true",
+      onClick: this.preview,
+      onDragStart: this.onDragStart
+    }, /*#__PURE__*/react.createElement("img", {
+      className: imgClass,
+      src: thumb,
+      title: imgTitle
+    })), /*#__PURE__*/react.createElement("div", {
+      className: "attachmentInfo align"
+    }, /*#__PURE__*/react.createElement("span", {
+      className: "filename"
+    }, this.props.name), /*#__PURE__*/react.createElement("span", {
+      className: "filesize"
+    }, this.props.formattedSize), /*#__PURE__*/react.createElement("div", {
+      className: "attachActions"
+    }, isPdf && !this.props.hasBuiltInPdf && /*#__PURE__*/react.createElement("a", {
+      className: "icon-link preview-attachment",
+      title: browser.i18n.getMessage("attachments.preview.tooltip"),
+      onClick: this.preview
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "visibility"
+    })), /*#__PURE__*/react.createElement("a", {
+      className: "icon-link download-attachment",
+      title: browser.i18n.getMessage("attachments.download.tooltip"),
+      onClick: this.downloadAttachment
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "file_download"
+    })), /*#__PURE__*/react.createElement("a", {
+      className: "icon-link open-attachment",
+      title: browser.i18n.getMessage("attachments.open.tooltip"),
+      onClick: this.openAttachment
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "search"
+    })))), /*#__PURE__*/react.createElement("menu", {
+      id: `attachmentMenu-${this.props.anchor}`,
+      type: "context"
+    }, /*#__PURE__*/react.createElement("menuitem", {
+      label: browser.i18n.getMessage("attachments.context.open"),
+      onClick: this.openAttachment
+    }), /*#__PURE__*/react.createElement("menuitem", {
+      label: browser.i18n.getMessage("attachments.context.save"),
+      onClick: this.downloadAttachment
+    }), /*#__PURE__*/react.createElement("menuitem", {
+      label: browser.i18n.getMessage("attachments.context.detach"),
+      onClick: this.detachAttachment
+    }), /*#__PURE__*/react.createElement("menuitem", {
+      label: browser.i18n.getMessage("attachments.context.delete"),
+      onClick: this.deleteAttachment
+    })));
+    /* eslint-enable react/no-unknown-property */
+  }
+
+}
+
+Attachment.propTypes = {
+  anchor: (prop_types_default()).string.isRequired,
+  dispatch: (prop_types_default()).func.isRequired,
+  contentType: (prop_types_default()).string.isRequired,
+  formattedSize: (prop_types_default()).string.isRequired,
+  hasBuiltInPdf: (prop_types_default()).bool.isRequired,
+  messageKey: (prop_types_default()).number.isRequired,
+  name: (prop_types_default()).string.isRequired,
+  size: (prop_types_default()).number.isRequired,
+  url: (prop_types_default()).string.isRequired,
+  id: (prop_types_default()).number.isRequired
+};
+class Attachments extends react.PureComponent {
+  constructor() {
+    super();
+    this.showGalleryView = this.showGalleryView.bind(this);
+    this.downloadAll = this.downloadAll.bind(this);
+  }
+
+  showGalleryView() {
+    this.props.dispatch(reducer_attachments/* attachmentActions.showGalleryView */.m.showGalleryView({
+      id: this.props.id
+    }));
+  }
+
+  downloadAll() {
+    this.props.dispatch(reducer_attachments/* attachmentActions.downloadAll */.m.downloadAll({
+      id: this.props.id
+    }));
+  }
+
+  render() {
+    const showGalleryLink = this.props.attachments.some(a => a.contentType.startsWith("image/"));
+    return /*#__PURE__*/react.createElement("ul", {
+      className: "attachments"
+    }, /*#__PURE__*/react.createElement("div", {
+      className: "attachHeader"
+    }, this.props.attachmentsPlural, /*#__PURE__*/react.createElement("a", {
+      className: "icon-link download-all",
+      onClick: this.downloadAll,
+      title: browser.i18n.getMessage("attachments.downloadAll.tooltip")
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "file_download"
+    })), showGalleryLink && /*#__PURE__*/react.createElement("a", {
+      onClick: this.showGalleryView,
+      className: "icon-link view-all",
+      title: browser.i18n.getMessage("attachments.gallery.tooltip")
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "photo_library"
+    }))), this.props.attachments.map(attachment => /*#__PURE__*/react.createElement(Attachment, {
+      anchor: attachment.anchor,
+      dispatch: this.props.dispatch,
+      key: attachment.anchor,
+      contentType: attachment.contentType,
+      formattedSize: attachment.formattedSize,
+      hasBuiltInPdf: this.props.hasBuiltInPdf,
+      messageKey: this.props.messageKey,
+      id: this.props.id,
+      name: attachment.name,
+      size: attachment.size,
+      url: attachment.url
+    })));
+  }
+
+}
+Attachments.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  attachments: (prop_types_default()).array.isRequired,
+  attachmentsPlural: (prop_types_default()).string.isRequired,
+  hasBuiltInPdf: (prop_types_default()).bool.isRequired,
+  messageKey: (prop_types_default()).number.isRequired,
+  id: (prop_types_default()).number.isRequired
+};
+// EXTERNAL MODULE: ./node_modules/react-dom/index.js
+var react_dom = __webpack_require__(935);
+;// CONCATENATED MODULE: ./addon/content/components/contactDetail.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+
+
+function _ContactDetail({
+  name,
+  email,
+  realEmail,
+  avatar,
+  contactId,
+  dispatch
+}) {
+  function onGeneralClick(event) {
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  function addContact(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(reducer_summary/* summaryActions.addContact */.v.addContact({
+      name,
+      email: realEmail
+    }));
+  }
+
+  function createFilter(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(reducer_summary/* summaryActions.createFilter */.v.createFilter({
+      email: realEmail
+    }));
+  }
+
+  function copyEmail(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(reducer_summary/* summaryActions.copyEmail */.v.copyEmail({
+      email: realEmail
+    }));
+  }
+
+  function editContact(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(reducer_summary/* summaryActions.editContact */.v.editContact({
+      email: realEmail
+    }));
+  }
+
+  function sendEmail(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(reducer_summary/* summaryActions.sendEmail */.v.sendEmail({
+      name,
+      email: realEmail
+    }));
+  }
+
+  function showInvolving(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(reducer_summary/* summaryActions.showMessagesInvolving */.v.showMessagesInvolving({
+      name,
+      email: realEmail
+    }));
+  } // If there is a card for the contact, provide the option to
+  // edit the card. Otherwise, provide an add button.
+
+
+  const contactEdit = contactId ? /*#__PURE__*/react.createElement("button", {
+    className: "editContact",
+    title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("contact.editContactTooltip"),
+    onClick: editContact
+  }, /*#__PURE__*/react.createElement(SvgIcon, {
+    hash: "edit"
+  })) : /*#__PURE__*/react.createElement("button", {
+    className: "addContact",
+    title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("contact.addContactTooltip"),
+    onClick: addContact
+  }, /*#__PURE__*/react.createElement(SvgIcon, {
+    hash: "add"
+  }));
+  return /*#__PURE__*/react.createElement("div", {
+    className: "tooltip",
+    onClick: onGeneralClick
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "arrow"
+  }), /*#__PURE__*/react.createElement("div", {
+    className: "arrow inside"
+  }), /*#__PURE__*/react.createElement("div", {
+    className: "authorInfoContainer"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "authorInfo"
+  }, /*#__PURE__*/react.createElement("span", {
+    className: "name",
+    title: name
+  }, name), /*#__PURE__*/react.createElement("span", {
+    className: "authorEmail"
+  }, /*#__PURE__*/react.createElement("span", {
+    className: "authorEmailAddress",
+    title: realEmail
+  }, realEmail), /*#__PURE__*/react.createElement("button", {
+    className: "copyEmail",
+    title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("contact.copyEmailTooltip"),
+    onClick: copyEmail
+  }, /*#__PURE__*/react.createElement(SvgIcon, {
+    hash: "content_copy"
+  })))), /*#__PURE__*/react.createElement("div", {
+    className: "authorPicture"
+  }, /*#__PURE__*/react.createElement("img", {
+    src: avatar
+  }))), /*#__PURE__*/react.createElement("div", {
+    className: "tipFooter"
+  }, /*#__PURE__*/react.createElement("button", {
+    className: "sendEmail",
+    title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("contact.sendEmailTooltip"),
+    onClick: sendEmail
+  }, /*#__PURE__*/react.createElement(SvgIcon, {
+    hash: "mail"
+  })), /*#__PURE__*/react.createElement("button", {
+    className: "showInvolving",
+    title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("contact.recentConversationsTooltip"),
+    onClick: showInvolving
+  }, /*#__PURE__*/react.createElement(SvgIcon, {
+    hash: "history"
+  })), contactEdit, /*#__PURE__*/react.createElement("button", {
+    className: "createFilter",
+    onClick: createFilter
+  }, thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("contact.createFilterTooltip"))));
+}
+
+_ContactDetail.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  name: (prop_types_default()).string.isRequired,
+  email: (prop_types_default()).string.isRequired,
+  realEmail: (prop_types_default()).string.isRequired,
+  avatar: (prop_types_default()).string.isRequired,
+  contactId: (prop_types_default()).string
+};
+const ContactDetail = es/* connect */.$j()(_ContactDetail);
+;// CONCATENATED MODULE: ./addon/content/components/message/messageActionButton.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+const ActionsToInfoMap = {
+  draft: {
+    title: "action.editDraft",
+    icon: "edit"
+  },
+  editAsNew: {
+    title: "action.editNew",
+    icon: "edit"
+  },
+  reply: {
+    title: "action.reply",
+    icon: "reply"
+  },
+  replyAll: {
+    title: "action.replyAll",
+    icon: "reply_all"
+  },
+  replyList: {
+    title: "action.replyList",
+    icon: "list"
+  },
+  forward: {
+    title: "action.forward",
+    icon: "forward"
+  },
+  archive: {
+    title: "action.archive",
+    icon: "archive"
+  },
+  delete: {
+    title: "action.delete",
+    icon: "delete"
+  },
+  classic: {
+    title: "action.viewClassic",
+    icon: "open_in_new"
+  },
+  source: {
+    title: "action.viewSource",
+    icon: "code"
+  }
+};
+function ActionButton({
+  type,
+  callback,
+  className,
+  showString
+}) {
+  const info = ActionsToInfoMap[type];
+  const title = thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage(info.title);
+
+  function action(event) {
+    callback({
+      type,
+      shiftKey: event && event.shiftKey
+    }, event);
+  }
+
+  return /*#__PURE__*/react.createElement("button", {
+    className: className || "",
+    title: title,
+    onClick: action
+  }, /*#__PURE__*/react.createElement(SvgIcon, {
+    hash: info.icon
+  }), " ", !!showString && title);
+}
+ActionButton.propTypes = {
+  callback: (prop_types_default()).func.isRequired,
+  className: (prop_types_default()).string,
+  showString: (prop_types_default()).bool,
+  type: (prop_types_default()).string.isRequired
+};
+;// CONCATENATED MODULE: ./addon/content/components/message/messageHeaderOptions.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+
+
+class OptionsMoreMenu extends react.PureComponent {
+  render() {
+    return /*#__PURE__*/react.createElement("div", {
+      className: "tooltip tooltip-menu menu"
+    }, /*#__PURE__*/react.createElement("div", {
+      className: "arrow"
+    }), /*#__PURE__*/react.createElement("div", {
+      className: "arrow inside"
+    }), /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("li", {
+      className: "action-reply"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "reply"
+    })), this.props.multipleRecipients && /*#__PURE__*/react.createElement("li", {
+      className: "action-replyAll"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "replyAll"
+    })), this.props.recipientsIncludeLists && /*#__PURE__*/react.createElement("li", {
+      className: "action-replyList"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "replyList"
+    })), /*#__PURE__*/react.createElement("li", {
+      className: "action-editNew"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "editAsNew"
+    })), /*#__PURE__*/react.createElement("li", {
+      className: "action-forward dropdown-sep"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "forward"
+    })), /*#__PURE__*/react.createElement("li", {
+      className: "action-archive"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "archive"
+    })), /*#__PURE__*/react.createElement("li", {
+      className: "action-delete"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "delete"
+    })), /*#__PURE__*/react.createElement("li", {
+      className: "action-classic"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "classic"
+    })), /*#__PURE__*/react.createElement("li", {
+      className: "action-source"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.props.msgSendAction,
+      className: "optionsButton",
+      showString: true,
+      type: "source"
+    }))));
+  }
+
+}
+
+OptionsMoreMenu.propTypes = {
+  multipleRecipients: (prop_types_default()).bool.isRequired,
+  recipientsIncludeLists: (prop_types_default()).bool.isRequired,
+  msgSendAction: (prop_types_default()).func.isRequired
+};
+class MessageHeaderOptions extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.replyAction = this.replyAction.bind(this);
+    this.showDetails = this.showDetails.bind(this);
+    this.displayMenu = this.displayMenu.bind(this);
+    this.state = {
+      expanded: false
+    };
+  }
+
+  componentWillUnmount() {
+    if (this.clickListener) {
+      document.removeEventListener("click", this.clickListener);
+      document.removeEventListener("keypress", this.keyListener);
+      document.removeEventListener("blur", this.keyListener);
+      this.clickListener = null;
+      this.keyListener = null;
+    }
+  }
+
+  replyAction(msg, event) {
+    event.stopPropagation();
+    event.preventDefault();
+    const payload = {
+      id: this.props.id,
+      shiftKey: msg.shiftKey
+    };
+    let action = null;
+
+    switch (msg.type) {
+      case "draft":
+        action = reducer_messages/* messageActions.editDraft */.o.editDraft(payload);
+        break;
+
+      case "reply":
+        action = reducer_messages/* messageActions.reply */.o.reply(payload);
+        break;
+
+      case "replyAll":
+        action = reducer_messages/* messageActions.replyAll */.o.replyAll(payload);
+        break;
+
+      case "replyList":
+        action = reducer_messages/* messageActions.replyList */.o.replyList(payload);
+        break;
+
+      case "forward":
+        action = reducer_messages/* messageActions.forward */.o.forward(payload);
+        break;
+
+      case "editAsNew":
+        action = reducer_messages/* messageActions.editAsNew */.o.editAsNew(payload);
+        break;
+
+      case "archive":
+        action = reducer_messages/* messageActions.archive */.o.archive({
+          id: this.props.id
+        });
+        break;
+
+      case "delete":
+        action = reducer_messages/* messageActions.delete */.o.delete({
+          id: this.props.id
+        });
+        break;
+
+      case "classic":
+        action = reducer_messages/* messageActions.openClassic */.o.openClassic(payload);
+        break;
+
+      case "source":
+        action = reducer_messages/* messageActions.openSource */.o.openSource(payload);
+        break;
+
+      default:
+        console.error("Don't know how to create an action for", msg);
+    }
+
+    this.props.dispatch(action);
+  }
+
+  showDetails(event) {
+    event.preventDefault();
+    event.stopPropagation(); // Force a blur, so that the button looks correct after clicking.
+
+    event.target.blur();
+    this.props.dispatch(reducer_messages/* messageActions.showMsgDetails */.o.showMsgDetails({
+      id: this.props.id,
+      detailsShowing: !this.props.detailsShowing
+    }));
+  }
+
+  displayMenu(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (!this.clickListener) {
+      this.clickListener = event => {
+        this.clearMenu();
+      };
+
+      this.keyListener = event => {
+        if (event.keyCode == KeyEvent.DOM_VK_ESCAPE) {
+          this.clearMenu();
+        }
+      };
+
+      this.onBlur = event => {
+        this.clearMenu();
+      };
+
+      document.addEventListener("click", this.clickListener);
+      document.addEventListener("keypress", this.keyListener);
+      document.addEventListener("blur", this.onBlur);
+    }
+
+    this.setState(prevState => ({
+      expanded: !prevState.expanded
+    }));
+  }
+
+  clearMenu() {
+    this.setState({
+      expanded: false
+    });
+
+    if (this.clickListener) {
+      document.removeEventListener("click", this.clickListener);
+      document.removeEventListener("keypress", this.keyListener);
+      document.removeEventListener("blur", this.keyListener);
+      this.clickListener = null;
+      this.keyListener = null;
+    }
+  }
+
+  render() {
+    let actionButtonType = "reply";
+
+    if (this.props.recipientsIncludeLists) {
+      actionButtonType = "replyList";
+    } else if (this.props.multipleRecipients) {
+      actionButtonType = "replyAll";
+    } else if (this.props.isDraft) {
+      actionButtonType = "draft";
+    }
+
+    return /*#__PURE__*/react.createElement("div", {
+      className: "options"
+    }, !!this.props.attachments.length && /*#__PURE__*/react.createElement("span", {
+      className: "attachmentIcon"
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "attachment"
+    })), /*#__PURE__*/react.createElement("span", {
+      className: "date"
+    }, /*#__PURE__*/react.createElement("span", {
+      title: this.props.fullDate
+    }, this.props.date)), this.props.expanded && /*#__PURE__*/react.createElement("span", {
+      className: "mainActionButton"
+    }, /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.replyAction,
+      className: "icon-link",
+      type: actionButtonType
+    })), this.props.expanded && /*#__PURE__*/react.createElement("span", {
+      className: "details" + this.props.detailsShowing ? "details-hidden" : 0
+    }, /*#__PURE__*/react.createElement("a", {
+      className: "icon-link",
+      onClick: this.showDetails,
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage(this.props.detailsShowing ? "message.hideDetails.tooltip" : "message.showDetails.tooltip")
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: this.props.detailsShowing ? "info" : "info_outline"
+    }))), this.props.expanded && /*#__PURE__*/react.createElement("span", {
+      className: "dropDown"
+    }, /*#__PURE__*/react.createElement("button", {
+      onClick: this.displayMenu,
+      className: "icon-link top-right-more",
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("message.moreMenu.tooltip")
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: "more_vert"
+    })), this.state.expanded && /*#__PURE__*/react.createElement(OptionsMoreMenu, {
+      recipientsIncludeLists: this.props.recipientsIncludeLists,
+      msgSendAction: this.replyAction,
+      multipleRecipients: this.props.multipleRecipients
+    })));
+  }
+
+}
+MessageHeaderOptions.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  date: (prop_types_default()).string.isRequired,
+  detailsShowing: (prop_types_default()).bool.isRequired,
+  expanded: (prop_types_default()).bool.isRequired,
+  fullDate: (prop_types_default()).string.isRequired,
+  id: (prop_types_default()).number.isRequired,
+  attachments: (prop_types_default()).array.isRequired,
+  multipleRecipients: (prop_types_default()).bool.isRequired,
+  recipientsIncludeLists: (prop_types_default()).bool.isRequired,
+  isDraft: (prop_types_default()).bool.isRequired
+};
+;// CONCATENATED MODULE: ./addon/content/components/message/messageTags.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+/**
+ * Determine if a background color is light enough to require dark text.
+ *
+ * @param {string} color
+ * @returns {boolean}
+ */
+
+function isColorLight(color) {
+  const rgb = color.substr(1) || "FFFFFF";
+  const [, r, g, b] = rgb.match(/(..)(..)(..)/).map(x => parseInt(x, 16) / 255);
+  const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return l > 0.8;
+}
+
+function MessageTag({
+  onClickX,
+  expanded,
+  name,
+  color
+}) {
+  const isLight = isColorLight(color);
+  return /*#__PURE__*/react.createElement("li", {
+    className: "tag" + (isLight ? " light-tag" : ""),
+    style: {
+      backgroundColor: color
+    }
+  }, name, expanded && /*#__PURE__*/react.createElement("span", {
+    className: "tag-x",
+    onClick: onClickX
+  }, " ", "x"));
+}
+MessageTag.propTypes = {
+  onClickX: (prop_types_default()).func.isRequired,
+  expanded: (prop_types_default()).bool.isRequired,
+  name: (prop_types_default()).string.isRequired,
+  color: (prop_types_default()).string.isRequired
+};
+function MessageTags({
+  expanded,
+  tags = [],
+  onTagsChange
+}) {
+  function removeTag(tagId) {
+    const filtered = tags.filter(tag => tag.key !== tagId);
+
+    if (filtered.length !== tags.length) {
+      // Only trigger a change if we actually removed a tag
+      onTagsChange(filtered);
+    }
+  }
+
+  return /*#__PURE__*/react.createElement("ul", {
+    className: "tags regular-tags"
+  }, tags.map((tag, i) => /*#__PURE__*/react.createElement(MessageTag, {
+    color: tag.color,
+    expanded: expanded,
+    key: i,
+    name: tag.name,
+    onClickX: () => {
+      removeTag(tag.key);
+    }
+  })));
+}
+MessageTags.propTypes = {
+  expanded: (prop_types_default()).bool.isRequired,
+  tags: (prop_types_default()).array.isRequired,
+  onTagsChange: (prop_types_default()).func.isRequired
+};
+
+function DkimTooltip({
+  strings
+}) {
+  const [primaryString, secondaryStrings = []] = strings;
+  const primaryTooltip = /*#__PURE__*/react.createElement("div", null, primaryString);
+  const secondaryTooltip = secondaryStrings.length ? /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("hr", null), secondaryStrings.map((s, i) => /*#__PURE__*/react.createElement("div", {
+    key: i
+  }, s)), /*#__PURE__*/react.createElement("div", null)) : null;
+  return /*#__PURE__*/react.createElement("span", null, primaryTooltip, secondaryTooltip);
+}
+
+DkimTooltip.propTypes = {
+  strings: (prop_types_default()).array.isRequired
+};
+function SpecialMessageTag({
+  icon,
+  name,
+  title = "",
+  tooltip = {},
+  onClick = null,
+  classNames
+}) {
+  return /*#__PURE__*/react.createElement("li", {
+    className: classNames + " special-tag" + (onClick ? " can-click" : ""),
+    title: title,
+    onClick: onClick
+  }, /*#__PURE__*/react.createElement(SvgIcon, {
+    fullPath: icon
+  }), name, tooltip.type === "dkim" && /*#__PURE__*/react.createElement(DkimTooltip, {
+    strings: tooltip.strings
+  }));
+}
+SpecialMessageTag.propTypes = {
+  classNames: (prop_types_default()).string.isRequired,
+  icon: (prop_types_default()).string.isRequired,
+  name: (prop_types_default()).string.isRequired,
+  title: (prop_types_default()).string,
+  onClick: (prop_types_default()).func,
+  tooltip: (prop_types_default()).object
+};
+function SpecialMessageTags({
+  onTagClick,
+  onFolderClick = null,
+  specialTags,
+  inView,
+  folderName
+}) {
+  let folderItem = null;
+
+  if (folderName && !inView) {
+    folderItem = /*#__PURE__*/react.createElement("li", {
+      className: "in-folder",
+      onClick: onFolderClick,
+      title: thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("tags.jumpToFolder.tooltip")
+    }, thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("tags.inFolder", [folderName]));
+  }
+
+  return /*#__PURE__*/react.createElement("ul", {
+    className: "tags special-tags"
+  }, specialTags && specialTags.map((tag, i) => /*#__PURE__*/react.createElement(SpecialMessageTag, {
+    classNames: tag.classNames,
+    icon: tag.icon,
+    key: i,
+    name: tag.name,
+    onClick: tag.details && (event => onTagClick(event, tag)),
+    title: tag.title,
+    tooltip: tag.tooltip
+  })), folderItem);
+}
+SpecialMessageTags.propTypes = {
+  onTagClick: (prop_types_default()).func.isRequired,
+  onFolderClick: (prop_types_default()).func,
+  folderName: (prop_types_default()).string.isRequired,
+  inView: (prop_types_default()).bool.isRequired,
+  specialTags: (prop_types_default()).array
+};
+;// CONCATENATED MODULE: ./addon/content/components/message/messageHeader.jsx
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+
+
+
+
+/**
+ * Normalize a contact into a string (used for i18n formatting).
+ *
+ * @param {*} contact
+ * @returns
+ */
+
+function contactToString(contact) {
+  return `${contact.name || ""} <${contact.displayEmail || contact.email}>`.trim();
+}
+/**
+ * Opens `popup` when the child element(s) are hovered over,
+ * or they are focused. The children are surrounded by a <span>.
+ * Any additional props are passed to the surrounding <span>.
+ * An element with `id=popup-container` is assumed to exist somewhere
+ * near the root of the DOM. The children elements are rendered,
+ * absolutely positions, inside the popup-container.
+ *
+ * @param {*} { children, popup, ...rest }
+ * @returnType {React.Node}
+ */
+
+
+function HoverFade({
+  children,
+  popup,
+  ...rest
+}) {
+  const [isHovering, setIsHovering] = react.useState(false);
+  const [shouldShowPopup, setShouldShowPopup] = react.useState(false);
+  const spanRef = react.useRef(null);
+  const popupParentNode = document.querySelector("#popup-container") || spanRef.current;
+  react.useEffect(() => {
+    let timeoutId = null;
+
+    if (isHovering) {
+      // If we hover over the label, we delay showing the popup.
+      timeoutId = window.setTimeout(() => {
+        if (isHovering) {
+          setShouldShowPopup(true);
+        } else {
+          setShouldShowPopup(false);
+        }
+      }, 400);
+    } else {
+      // If we're not hovering, we don't delay hiding the popup.
+      setShouldShowPopup(false);
+    }
+
+    return () => {
+      if (timeoutId != null) {
+        window.clearTimeout(timeoutId);
+      }
+    };
+  }, [isHovering, setShouldShowPopup]); // Calculate where to render the popup
+
+  const pos = spanRef.current?.getBoundingClientRect() || {
+    left: 0,
+    top: 0,
+    bottom: 0
+  };
+  const parentPos = popupParentNode?.getBoundingClientRect() || {
+    left: 0,
+    top: 0,
+    bottom: 0
+  };
+  return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("span", _extends({
+    ref: spanRef,
+    className: "fade-parent"
+  }, rest, {
+    onMouseEnter: () => {
+      setIsHovering(true);
+    },
+    onMouseLeave: () => {
+      setIsHovering(false);
+    }
+  }), children), popupParentNode && /*#__PURE__*/react_dom.createPortal( /*#__PURE__*/react.createElement("div", {
+    className: `fade-popup ${shouldShowPopup ? "hover" : ""}`,
+    style: {
+      left: pos.left - parentPos.left,
+      top: pos.bottom - parentPos.top
+    }
+  }, popup), popupParentNode));
+}
+
+HoverFade.propTypes = {
+  children: (prop_types_default()).node,
+  popup: (prop_types_default()).node
+};
+/**
+ * Display an email address wrapped in <...> braces.
+ *
+ * @param {*} { email }
+ * @returnType {React.Node}
+ */
+
+function Email({
+  email
+}) {
+  return `<${email.trim()}>`;
+}
+
+Email.propTypes = {
+  email: (prop_types_default()).string.isRequired
+};
+function DetailedContactLabel({
+  contact,
+  className
+}) {
+  // This component conditionally renders.
+  // In a detail view, there is a star at the start of the contact
+  // info and a line break at the end.
+  const star = contact.contactId && "\u2605 ";
+  let emailLabel = contact.email && /*#__PURE__*/react.createElement("span", {
+    className: "smallEmail"
+  }, " ", /*#__PURE__*/react.createElement(Email, {
+    email: contact.email
+  }));
+  return /*#__PURE__*/react.createElement(HoverFade, {
+    popup: /*#__PURE__*/react.createElement(ContactDetail, {
+      name: contact.name,
+      email: contact.displayEmail,
+      realEmail: contact.email,
+      avatar: contact.avatar,
+      contactId: contact.contactId
+    }),
+    style: {
+      display: "inline-block"
+    }
+  }, /*#__PURE__*/react.createElement("span", {
+    className: className
+  }, /*#__PURE__*/react.createElement("span", {
+    className: "contactName"
+  }, star, contact.name.trim(), emailLabel)));
+}
+DetailedContactLabel.propTypes = {
+  className: (prop_types_default()).string.isRequired,
+  contact: (prop_types_default()).object.isRequired
+};
+function ContactLabel({
+  contact,
+  className
+}) {
+  // This component conditionally renders.
+  let emailLabel = contact.displayEmail && /*#__PURE__*/react.createElement("span", {
+    className: "smallEmail"
+  }, " ", /*#__PURE__*/react.createElement(Email, {
+    email: contact.displayEmail
+  }));
+  return /*#__PURE__*/react.createElement(HoverFade, {
+    popup: /*#__PURE__*/react.createElement(ContactDetail, {
+      name: contact.name,
+      email: contact.displayEmail,
+      realEmail: contact.email,
+      avatar: contact.avatar,
+      contactId: contact.contactId
+    })
+  }, /*#__PURE__*/react.createElement("span", {
+    className: className
+  }, /*#__PURE__*/react.createElement("span", {
+    className: "contactName"
+  }, contact.name.trim(), emailLabel)));
+}
+ContactLabel.propTypes = {
+  className: (prop_types_default()).string.isRequired,
+  contact: (prop_types_default()).object.isRequired
+};
+
+function Avatar({
+  url,
+  initials,
+  isDefault,
+  style
+}) {
+  if (isDefault) {
+    return /*#__PURE__*/react.createElement("abbr", {
+      className: "contactInitials",
+      style: style
+    }, initials);
+  }
+
+  return /*#__PURE__*/react.createElement("span", {
+    className: "contactAvatar",
+    style: {
+      backgroundImage: `url('${url}')`
+    }
+  }, "\u00a0");
+}
+
+Avatar.propTypes = {
+  url: (prop_types_default()).string,
+  initials: (prop_types_default()).string,
+  isDefault: (prop_types_default()).bool,
+  style: (prop_types_default()).object
+};
+function MessageHeader({
+  starred,
+  expanded,
+  from,
+  msgUri,
+  id,
+  dispatch,
+  bcc,
+  cc,
+  date,
+  detailsShowing,
+  fullDate,
+  attachments,
+  multipleRecipients,
+  recipientsIncludeLists,
+  inView,
+  isDraft,
+  shortFolderName,
+  snippet,
+  tags,
+  to,
+  specialTags
+}) {
+  function onClickHeader() {
+    dispatch(reducer_messages/* messageActions.msgExpand */.o.msgExpand({
+      expand: !expanded,
+      msgUri
+    }));
+
+    if (!expanded) {
+      dispatch(reducer_messages/* messageActions.markAsRead */.o.markAsRead({
+        id
+      }));
+    }
+  }
+
+  function onClickStar(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    dispatch(reducer_messages/* messageActions.setStarred */.o.setStarred({
+      id,
+      starred: !starred
+    }));
+  }
+
+  const allTo = [...to, ...cc, ...bcc];
+  const allToMap = new Map(allTo.map(contact => [contactToString(contact), contact]));
+  const locale = thunderbird_compat/* browser.i18n.getUILanguage */.Xh.i18n.getUILanguage(); // TODO: Maybe insert this after contacts but before snippet:
+  // <span class="bzTo"> {{str "message.at"}} {{bugzillaUrl}}</span>
+
+  let extraContacts = null;
+
+  if (expanded && !detailsShowing) {
+    extraContacts = /*#__PURE__*/react.createElement(react.Fragment, null, thunderbird_compat/* browser.i18n.getMessage */.Xh.i18n.getMessage("header.to"), " ", new Intl.ListFormat(locale, {
+      style: "long",
+      type: "conjunction"
+    }).formatToParts(allToMap.keys()).map((item, i) => {
+      if (item.type === "literal") {
+        return /*#__PURE__*/react.createElement("span", {
+          className: "to",
+          key: i
+        }, item.value);
+      }
+
+      const contact = allToMap.get(item.value);
+      return /*#__PURE__*/react.createElement(ContactLabel, {
+        className: "to",
+        contact: contact,
+        key: item.value
+      });
+    }), " ");
+  }
+
+  if (!expanded) {
+    extraContacts = /*#__PURE__*/react.createElement(react.Fragment, null);
+  }
+
+  return /*#__PURE__*/react.createElement("div", {
+    className: `messageHeader hbox ${expanded ? "expanded" : ""}`,
+    onClick: onClickHeader
+  }, /*#__PURE__*/react.createElement("div", {
+    className: "shrink-box"
+  }, /*#__PURE__*/react.createElement("div", {
+    className: `star ${starred ? "starred" : ""}`,
+    onClick: onClickStar
+  }, /*#__PURE__*/react.createElement(SvgIcon, {
+    hash: "star"
+  })), /*#__PURE__*/react.createElement(Avatar, {
+    url: from.avatar,
+    style: from.colorStyle,
+    initials: from.initials,
+    isDefault: from.avatar.startsWith("chrome:")
+  }), " ", /*#__PURE__*/react.createElement(ContactLabel, {
+    className: "author",
+    contact: from
+  }), extraContacts, !expanded && /*#__PURE__*/react.createElement("span", {
+    className: "snippet"
+  }, /*#__PURE__*/react.createElement(MessageTags, {
+    onTagsChange: tags => {
+      dispatch(reducer_messages/* messageActions.setTags */.o.setTags({
+        id,
+        tags
+      }));
+    },
+    expanded: false,
+    tags: tags
+  }), /*#__PURE__*/react.createElement(SpecialMessageTags, {
+    onTagClick: (event, tag) => {
+      dispatch(reducer_messages/* messageActions.tagClick */.o.tagClick({
+        event,
+        msgUri,
+        details: tag.details
+      }));
+    },
+    folderName: shortFolderName,
+    inView: inView,
+    specialTags: specialTags
+  }), snippet)), /*#__PURE__*/react.createElement(MessageHeaderOptions, {
+    dispatch: dispatch,
+    date: date,
+    detailsShowing: detailsShowing,
+    expanded: expanded,
+    fullDate: fullDate,
+    id: id,
+    attachments: attachments,
+    multipleRecipients: multipleRecipients,
+    recipientsIncludeLists: recipientsIncludeLists,
+    isDraft: isDraft
+  }));
+}
+MessageHeader.propTypes = {
+  bcc: (prop_types_default()).array.isRequired,
+  cc: (prop_types_default()).array.isRequired,
+  dispatch: (prop_types_default()).func.isRequired,
+  date: (prop_types_default()).string.isRequired,
+  detailsShowing: (prop_types_default()).bool.isRequired,
+  expanded: (prop_types_default()).bool.isRequired,
+  from: (prop_types_default()).object.isRequired,
+  fullDate: (prop_types_default()).string.isRequired,
+  id: (prop_types_default()).number.isRequired,
+  msgUri: (prop_types_default()).string.isRequired,
+  attachments: (prop_types_default()).array.isRequired,
+  multipleRecipients: (prop_types_default()).bool.isRequired,
+  recipientsIncludeLists: (prop_types_default()).bool.isRequired,
+  inView: (prop_types_default()).bool.isRequired,
+  isDraft: (prop_types_default()).bool.isRequired,
+  shortFolderName: (prop_types_default()).string.isRequired,
+  snippet: (prop_types_default()).string.isRequired,
+  starred: (prop_types_default()).bool.isRequired,
+  tags: (prop_types_default()).array.isRequired,
+  to: (prop_types_default()).array.isRequired,
+  specialTags: (prop_types_default()).array
+};
+;// CONCATENATED MODULE: ./addon/content/components/message/messageDetails.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+function ContactList({
+  label,
+  contacts,
+  className = ""
+}) {
+  if (contacts.length === 0) {
+    return null;
+  }
+
+  return /*#__PURE__*/react.createElement("div", {
+    className: className
+  }, /*#__PURE__*/react.createElement("u", null, label), " ", contacts.map((contact, i) => /*#__PURE__*/react.createElement(react.Fragment, {
+    key: i
+  }, /*#__PURE__*/react.createElement(DetailedContactLabel, {
+    className: "",
+    contact: contact
+  }), /*#__PURE__*/react.createElement("br", null))));
+}
+
+ContactList.propTypes = {
+  label: (prop_types_default()).string.isRequired,
+  contacts: (prop_types_default()).array.isRequired,
+  className: (prop_types_default()).string
+};
+class MessageDetails extends react.PureComponent {
+  render() {
+    return /*#__PURE__*/react.createElement("div", null, !!this.props.from && /*#__PURE__*/react.createElement("div", {
+      className: "detailsLine fromLine"
+    }, /*#__PURE__*/react.createElement("u", null, browser.i18n.getMessage("message.fromHeader")), " ", /*#__PURE__*/react.createElement(DetailedContactLabel, {
+      className: "",
+      contact: this.props.from
+    })), /*#__PURE__*/react.createElement(ContactList, {
+      className: "detailsLine toLine",
+      label: browser.i18n.getMessage("message.toHeader"),
+      contacts: this.props.to
+    }), /*#__PURE__*/react.createElement(ContactList, {
+      className: "detailsLine ccLine",
+      label: browser.i18n.getMessage("message.ccHeader"),
+      contacts: this.props.cc
+    }), /*#__PURE__*/react.createElement(ContactList, {
+      className: "detailsLine bccLine",
+      label: browser.i18n.getMessage("compose.fieldBcc"),
+      contacts: this.props.bcc
+    }), !!this.props.extraLines?.length && this.props.extraLines.map((line, i) => {
+      return /*#__PURE__*/react.createElement("div", {
+        className: "detailsLine",
+        key: i
+      }, /*#__PURE__*/react.createElement("u", null, line.key, ":"), " ", line.value);
+    }));
+  }
+
+}
+MessageDetails.propTypes = {
+  bcc: (prop_types_default()).array.isRequired,
+  cc: (prop_types_default()).array.isRequired,
+  extraLines: (prop_types_default()).array,
+  from: (prop_types_default()).object.isRequired,
+  to: (prop_types_default()).array.isRequired
+};
+;// CONCATENATED MODULE: ./addon/content/components/message/messageFooter.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+class MessageFooter extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onActionButtonClick = this.onActionButtonClick.bind(this);
+  }
+
+  onActionButtonClick(msg) {
+    const payload = {
+      id: this.props.id,
+      shiftKey: msg.shiftKey
+    };
+    let action = null;
+
+    switch (msg.type) {
+      case "draft":
+        action = reducer_messages/* messageActions.editDraft */.o.editDraft(payload);
+        break;
+
+      case "reply":
+        action = reducer_messages/* messageActions.reply */.o.reply(payload);
+        break;
+
+      case "replyAll":
+        action = reducer_messages/* messageActions.replyAll */.o.replyAll(payload);
+        break;
+
+      case "replyList":
+        action = reducer_messages/* messageActions.replyList */.o.replyList(payload);
+        break;
+
+      case "forward":
+        action = reducer_messages/* messageActions.forward */.o.forward(payload);
+        break;
+
+      default:
+        console.error("Don't know how to create an action for", msg);
+    }
+
+    this.props.dispatch(action);
+  }
+
+  render() {
+    return /*#__PURE__*/react.createElement("div", {
+      className: "messageFooter"
+    }, /*#__PURE__*/react.createElement("div", {
+      className: "footerActions"
+    }, this.props.isDraft && /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.onActionButtonClick,
+      type: "draft"
+    }), !this.props.isDraft && /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.onActionButtonClick,
+      type: "reply"
+    }), !this.props.isDraft && this.props.multipleRecipients && /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.onActionButtonClick,
+      type: "replyAll"
+    }), !this.props.isDraft && this.props.recipientsIncludeLists && /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.onActionButtonClick,
+      type: "replyList"
+    }), !this.props.isDraft && /*#__PURE__*/react.createElement(ActionButton, {
+      callback: this.onActionButtonClick,
+      type: "forward"
+    })));
+  }
+
+}
+MessageFooter.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  id: (prop_types_default()).number.isRequired,
+  msgUri: (prop_types_default()).string.isRequired,
+  multipleRecipients: (prop_types_default()).bool.isRequired,
+  recipientsIncludeLists: (prop_types_default()).bool.isRequired,
+  isDraft: (prop_types_default()).bool.isRequired
+};
+;// CONCATENATED MODULE: ./addon/content/utils/quoting.js
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+/* Below are hacks heuristics for finding quoted parts in a given email */
+class _Quoting {
+  _canInclude(aNode) {
+    let v = aNode.tagName?.toLowerCase() == "br" || aNode.nodeType == aNode.TEXT_NODE && aNode.textContent.trim() === ""; // if (v) dump("Including "+aNode+"\n");
+
+    return v;
+  }
+
+  _isBody(aNode) {
+    if (aNode.tagName?.toLowerCase() == "body") {
+      return true;
+    }
+
+    let count = 0;
+
+    for (let node of aNode.parentNode.childNodes) {
+      // dump(node+" "+node.nodeType+"\n");
+      switch (node.nodeType) {
+        case node.TEXT_NODE:
+          if (node.textContent.trim().length) {
+            count++;
+          }
+
+          break;
+
+        case node.ELEMENT_NODE:
+          count++;
+          break;
+      }
+    } // dump(count+"\n");
+
+
+    return count == 1 && this._isBody(aNode.parentNode);
+  }
+
+  _implies(a, b) {
+    return !a || a && b;
+  }
+  /* Create a blockquote that encloses everything relevant, starting from marker.
+   * Marker is included by default, remove it later if you need to. */
+
+
+  _encloseInBlockquote(aDoc, marker) {
+    if (marker.previousSibling && this._canInclude(marker.previousSibling)) {
+      this._encloseInBlockquote(aDoc, marker.previousSibling);
+    } else if (!marker.previousSibling && !this._isBody(marker.parentNode)) {
+      this._encloseInBlockquote(aDoc, marker.parentNode);
+    } else if (this._implies(marker == marker.parentNode.firstChild, !this._isBody(marker.parentNode))) {
+      let blockquote = aDoc.createElement("blockquote");
+      blockquote.setAttribute("type", "cite");
+      marker.parentNode.insertBefore(blockquote, marker);
+
+      while (blockquote.nextSibling) {
+        blockquote.appendChild(blockquote.nextSibling);
+      }
+    }
+  }
+
+  _trySel(aDoc, sel, remove) {
+    let marker = aDoc.querySelector(sel);
+
+    if (marker) {
+      this._encloseInBlockquote(aDoc, marker);
+
+      if (remove) {
+        marker.remove();
+      }
+    }
+
+    return marker != null;
+  }
+  /* Hotmails use a <hr> to mark the start of the quoted part. */
+
+
+  convertHotmailQuotingToBlockquote1(aDoc) {
+    /* We make the assumption that no one uses a <hr> in their emails except for
+     * separating a quoted message from the rest */
+    this._trySel(aDoc, "body > hr, \
+       body > div > hr, \
+       body > pre > hr, \
+       body > div > div > hr, \
+       hr#stopSpelling", true);
+  }
+
+  convertMiscQuotingToBlockquote(aDoc) {
+    this._trySel(aDoc, ".yahoo_quoted");
+  }
+  /* Stupid regexp that matches:
+   * ----- Something that supposedly says the text below is quoted -----
+   * Fails 9 times out of 10. */
+
+
+  convertForwardedToBlockquote(aDoc) {
+    const re = /^\s*(-{5,15})(?:\s*)(?:[^ \f\n\r\t\v\u00A0\u2028\u2029-]+\s+)*[^ \f\n\r\t\v\u00A0\u2028\u2029-]+(\s*)\1\s*/gm;
+
+    const walk = aNode => {
+      for (const child of aNode.childNodes) {
+        const txt = child.textContent;
+        const m = txt.match(re);
+
+        if (child.nodeType == child.TEXT_NODE && !txt.includes("-----BEGIN PGP") && !txt.includes("----END PGP") && m && m.length) {
+          const marker = m[0]; // dump("Found matching text "+marker+"\n");
+
+          const i = txt.indexOf(marker);
+          const t1 = txt.substring(0, i);
+          const t2 = txt.substring(i + 1, child.textContent.length);
+          const tn1 = aDoc.createTextNode(t1);
+          const tn2 = aDoc.createTextNode(t2);
+          child.parentNode.insertBefore(tn1, child);
+          child.parentNode.insertBefore(tn2, child);
+          child.remove();
+
+          this._encloseInBlockquote(aDoc, tn2);
+
+          let ex = new Error();
+          ex.found = true;
+          throw ex;
+        } else if (m?.length) {
+          // We only move on if we found the matching text in the parent's text
+          // content, otherwise, there's no chance we'll find it in the child's
+          // content.
+          walk(child);
+        }
+      }
+    };
+
+    try {
+      walk(aDoc.body);
+    } catch (ex) {
+      if (!ex.found) {
+        throw ex;
+      }
+    }
+  }
+  /* If [b1] is a blockquote followed by [ns] whitespace nodes followed by [b2],
+   * append [ns] to [b1], then append all the child nodes of [b2] to [b1],
+   * effectively merging the two blockquotes together. */
+
+
+  fusionBlockquotes(aDoc) {
+    let blockquotes = new Set(aDoc.getElementsByTagName("blockquote"));
+
+    for (let blockquote of blockquotes) {
+      let isWhitespace = function (n) {
+        return n && (n.tagName?.toLowerCase() == "br" || n.nodeType == n.TEXT_NODE && n.textContent.match(/^\s*$/));
+      };
+
+      let isBlockquote = function (b) {
+        return b?.tagName?.toLowerCase() == "blockquote";
+      };
+
+      let blockquoteFollows = function (n) {
+        return n && (isBlockquote(n) || isWhitespace(n) && blockquoteFollows(n.nextSibling));
+      };
+
+      while (blockquoteFollows(blockquote.nextSibling)) {
+        while (isWhitespace(blockquote.nextSibling)) {
+          blockquote.appendChild(blockquote.nextSibling);
+        }
+
+        if (isBlockquote(blockquote.nextSibling)) {
+          let next = blockquote.nextSibling;
+
+          while (next.firstChild) {
+            blockquote.appendChild(next.firstChild);
+          }
+
+          blockquote.parentNode.removeChild(next);
+          blockquotes.delete(next);
+        } else {
+          console.warn("What?!");
+        }
+      }
+    }
+  }
+  /**
+   * Use heuristics to find common types of email quotes and
+   * wrap them in `<blockquote></blockquote>` tags.
+   *
+   * @param {HTMLDocument | string} doc
+   * @returns {HTMLDocument | string}
+   * @memberof _Quoting
+   */
+
+
+  normalizeBlockquotes(doc) {
+    // We want to return the same type of object that was passed to us. We allow
+    // both a string and an HTMLDom object.
+    const origType = typeof doc;
+
+    if (origType === "string") {
+      const parser = new DOMParser();
+      doc = parser.parseFromString(doc, "text/html");
+    }
+
+    try {
+      // These operations mutate the Dom
+      this.convertHotmailQuotingToBlockquote1(doc);
+      this.convertForwardedToBlockquote(doc);
+      this.convertMiscQuotingToBlockquote(doc);
+      this.fusionBlockquotes(doc);
+    } catch (e) {
+      console.log(e);
+    }
+
+    if (origType === "string") {
+      return doc.outerHTML;
+    }
+
+    return doc;
+  }
+
+}
+
+var Quoting = new _Quoting();
+;// CONCATENATED MODULE: ./addon/content/components/message/messageIFrame.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+
+let index = 0; // From https://searchfox.org/mozilla-central/rev/ec806131cb7bcd1c26c254d25cd5ab8a61b2aeb6/parser/nsCharsetSource.h
+// const kCharsetFromChannel = 11;
+
+const kCharsetFromUserForced = 13;
+const domParser = new DOMParser();
+const TOGGLE_TEMPLATE = `<button
+    class="link"
+    style="cursor: pointer; user-select: none; background-color: inherit; border: inherit;"
+    show-text=""
+    hide-text=""
+  >
+    SHOW/HIDE
+  </button>`;
+/**
+ * Create a DOM node that, when clicked, will hide or unhide `node`.
+ * The returned DOM node is automatically attached to the DOM right before `node`.
+ *
+ * @param {*} node
+ * @param {*} {
+ *     showText,
+ *     hideText,
+ *     linkClass = "",
+ *     smallSize = 11,
+ *     linkColor = "orange",
+ *     startHidden = true,
+ *     onToggle = () => {},
+ *   }
+ * @returns
+ */
+
+function createToggleForNode(node, {
+  showText,
+  hideText,
+  linkClass = "",
+  smallSize = 11,
+  linkColor = "orange",
+  startHidden = true,
+  onToggle = () => {}
+}) {
+  const toggle = domParser.parseFromString(TOGGLE_TEMPLATE, "text/html").body.childNodes[0];
+  toggle.setAttribute("show-text", showText);
+  toggle.setAttribute("hide-text", hideText);
+  toggle.style.color = linkColor;
+  toggle.style.fontSize = smallSize;
+  toggle.classList.add(...linkClass.split(/\s/));
+
+  function show() {
+    toggle.textContent = `- ${toggle.getAttribute("hide-text")} -`;
+    toggle.setAttribute("state", "visible");
+    node.style.display = ""; // The callback may want to do something with the size of the revealed node, so call the callback after it's visible
+
+    onToggle(true, node);
+  }
+
+  function hide() {
+    toggle.textContent = `- ${toggle.getAttribute("show-text")} -`;
+    toggle.setAttribute("state", "hidden"); // The callback may want to do something with the size of the revealed node, so call the callback before it's hidden
+
+    onToggle(false, node);
+    node.style.display = "none";
+  }
+
+  toggle.addEventListener("click", event => {
+    if (toggle.getAttribute("state") === "visible") {
+      hide();
+    } else {
+      show();
+    }
+  }, true);
+
+  if (startHidden) {
+    hide();
+  } else {
+    show();
+  }
+
+  node.insertAdjacentElement("beforebegin", toggle);
+  return toggle;
+}
+/**
+ * Generate a callback for the `onToggle` function of a toggle element.
+ * The callback will automatically resize the supplied iframe to grow or
+ * shrink depending on whether the toggle is in the open state or closed state.
+ *
+ * @param {*} iframe
+ * @returns
+ */
+
+
+function toggleCallbackFactory(iframe) {
+  return (visible, node) => {
+    const cs = iframe.contentWindow.getComputedStyle(node);
+    const h = node.getBoundingClientRect().height + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom);
+
+    if (visible) {
+      iframe.style.height = parseFloat(iframe.style.height) + h + "px";
+    } else {
+      iframe.style.height = parseFloat(iframe.style.height) - h + "px";
+    }
+  };
+}
+/**
+ * Sleep for the specified number of milliseconds
+ *
+ * @param {Number} ms - milliseconds to sleep
+ * @returns
+ */
+
+
+async function sleep(ms) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, ms);
+  });
+}
+/**
+ * Runs `func()` asynchronously until `validator(func())` is truthy.
+ * Sets progressively longer timeouts between calls to `func()` until
+ * eventually erroring.
+ *
+ * @param {Function} func
+ * @param {Function} validator
+ * @returns
+ */
+
+
+async function runUntilValid(func, validator) {
+  const ret = func();
+
+  if (validator(ret)) {
+    return ret;
+  }
+
+  const TIMEOUTS = [0, 0, 10, 10, 10];
+
+  for (const timeout of TIMEOUTS) {
+    await sleep(timeout);
+    const ret = func();
+
+    if (validator(ret)) {
+      return ret;
+    }
+  }
+
+  throw new Error(`Waited for intervals of ${TIMEOUTS} milliseconds, but validator never passed`);
+}
+/**
+ * This class exists because we need to manually manage the iframe - we don't
+ * want it reloading every time a prop changes.
+ *
+ * We only load the iframe when we need to - when it is expanded. If it is
+ * collapsed, we avoid it. This helps performance.
+ *
+ * The height mechanism is awkward - we generally set the height short when
+ * we start to render it, then expand it to the correct height once loaded,
+ * which attempts to avoid a sub-scroll.
+ */
+
+
+class MessageIFrame extends react.Component {
+  constructor(props) {
+    super(props);
+    this.index = index++;
+    this.currentUrl = null;
+    this.loading = false;
+    this.onClickIframe = this.onClickIframe.bind(this);
+    this._waitingForDom = false;
+  }
+
+  componentDidUpdate(prevProps) {
+    let startLoad = false; // dueToExpansion is used so that we can indicate if this load is happening
+    // as a result of an expansion or not. If it is a user expansion, we don't
+    // want to scroll the message to view, since the user may be viewing somewhere
+    // else.
+
+    this.dueToExpansion = undefined;
+
+    if (prevProps.neckoUrl != this.props.neckoUrl && this.props.expanded) {
+      // This is a hack which ensures that the iframe is a minimal height, so
+      // that when the message loads, the scroll height is set correctly, rather
+      // than to the potential height of the previously loaded message.
+      // TODO: Could we use a client height somewhere along the line?
+      this.iframe.classList.remove("hidden");
+      this.iframe.style.height = "20px";
+      startLoad = true;
+      this.dueToExpansion = false;
+    }
+
+    if (this.props.expanded) {
+      this.iframe.classList.remove("hidden");
+
+      if (this.currentUrl != this.props.msgUri || prevProps.hasRemoteContent && !this.props.hasRemoteContent || !prevProps.smimeReload && this.props.smimeReload) {
+        startLoad = true;
+
+        if (this.dueToExpansion === undefined) {
+          this.dueToExpansion = true;
+        }
+
+        this.iframe.style.height = "20px";
+      }
+    } else {
+      // Never start a load if we're going to be hidden.
+      startLoad = false; // If we're changing URL, then also force the iframe to be about:blank.
+      // This ensures that if the message is subsequently expanded, the proper
+      // notifications are sent.
+
+      if (prevProps.neckoUrl != this.props.neckoUrl) {
+        this.iframe.src = "about:blank";
+        this.currentUrl = "about:blank";
+      }
+
+      this.iframe.classList.add("hidden");
+    }
+
+    if (startLoad && thunderbird_compat/* isWebextension */.sE) {
+      const docShell = this.iframe.contentWindow.docShell;
+      docShell.appType = Ci.nsIDocShell.APP_TYPE_MAIL;
+      docShell.charset = "UTF-8";
+      const cv = docShell.contentViewer;
+      cv.hintCharacterSet = "UTF-8"; // This used to be kCharsetFromChannel = 11, however in 79/80 the code changed.
+      // This still needs to be forced, because bug 829543 isn't fixed yet.
+
+      cv.hintCharacterSetSource = kCharsetFromUserForced;
+      this.loading = true;
+      this.currentUrl = this.props.msgUri;
+      this.props.dispatch(reducer_summary/* summaryActions.msgStreamMsg */.v.msgStreamMsg({
+        docshell: this.iframe.contentWindow.docShell,
+        dueToExpansion: this.dueToExpansion,
+        msgUri: this.props.msgUri
+      }));
+    }
+  }
+
+  componentDidMount() {
+    if (!thunderbird_compat/* isWebextension */.sE) {
+      // If we are running in a test environment or in the browser, we cannot
+      // create iframes in the XUL namespace.
+      this.iframe = this.div.ownerDocument.createElement("iframe");
+      return;
+    } // TODO: Currently this must be an iframe created in the xul namespace,
+    // otherwise remote content blocking doesn't work. Figure out why the normal
+    // iframe has a originator location of `chrome://messenger/content/messenger.xul`
+    // rather than imap://.... (or whatever).
+
+
+    this.iframe = this.div.ownerDocument.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "iframe");
+    this.iframe.setAttribute("style", "height: 20px; overflow-y: hidden");
+    this.iframe.setAttribute("type", "content");
+    this.iframe.addEventListener("click", this.onClickIframe);
+    this.div.appendChild(this.iframe);
+    const docShell = this.iframe.contentWindow.docShell;
+    docShell.appType = Ci.nsIDocShell.APP_TYPE_MAIL;
+    docShell.charset = "UTF-8";
+    const cv = docShell.contentViewer;
+    cv.hintCharacterSet = "UTF-8"; // This used to be kCharsetFromChannel = 11, however in 79/80 the code changed.
+    // This still needs to be forced, because bug 829543 isn't fixed yet.
+
+    cv.hintCharacterSetSource = kCharsetFromUserForced;
+    this.registerListeners();
+
+    if (this.props.expanded) {
+      this.currentUrl = this.props.msgUri;
+      this.loading = true;
+      this.dueToExpansion = false;
+      this.props.dispatch(reducer_summary/* summaryActions.msgStreamMsg */.v.msgStreamMsg({
+        docshell: docShell,
+        msgUri: this.props.msgUri
+      }));
+    } else {
+      this.iframe.classList.add("hidden");
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.loading) {
+      this.props.dispatch(reducer_summary/* summaryActions.msgStreamLoadFinished */.v.msgStreamLoadFinished({
+        dueToExpansion: this.dueToExpansion
+      }));
+      this.loading = false;
+    }
+
+    if (!this._loadListener) {
+      return;
+    }
+
+    this.iframe.removeEventListener("load", this._loadListener, {
+      capture: true
+    });
+    delete this._loadListener;
+    this.iframe.removeEventListener("DOMContentLoaded", this._domloadListener, {
+      capture: true
+    });
+    delete this._domloadListener;
+  }
+
+  registerListeners() {
+    if (!this._loadListener) {
+      this._loadListener = this._onLoad.bind(this);
+      this.iframe.addEventListener("load", this._loadListener, {
+        capture: true
+      });
+      this._domloadListener = this._onDOMLoaded.bind(this);
+      this.iframe.addEventListener("DOMContentLoaded", this._domloadListener, {
+        capture: true
+      });
+    }
+  }
+
+  async adjustHeight() {
+    const doAdjustment = () => {
+      const iframeDoc = this.iframe.contentDocument; // The +1 here is due to having occasionally seen issues on Mac where
+      // the frame just doesn't quite scroll properly. In this case,
+      // getComputedStyle(body).height is .2px greater than the scrollHeight.
+      // Hence we try to work around that here.
+      // In #1517 made it +3 as occasional issues were still being seen with
+      // some messages.
+
+      const scrollHeight = iframeDoc.body.scrollHeight + 3;
+      this.iframe.style.height = scrollHeight + "px"; // So now we might overflow horizontally, which causes a horizontal
+      // scrollbar to appear, which narrows the vertical height available,
+      // which causes a vertical scrollbar to appear.
+
+      let iframeStyle = window.getComputedStyle(this.iframe);
+      let iframeExternalWidth = parseInt(iframeStyle.width); // 20px is a completely arbitrary default value which I hope is
+      // greater
+
+      if (iframeDoc.body.scrollWidth > iframeExternalWidth) {
+        this.iframe.style.height = iframeDoc.body.scrollHeight + 20 + "px";
+      }
+    };
+
+    try {
+      // When blockquotes are detected, an async function is run to compute
+      // their height. We need to wait for this function to finish before we
+      // adjust the height of the whole iframe. This is accomplished by waiting
+      // for `this._waitingForDom` to be set to `false`.
+      await runUntilValid(() => {}, () => !this._waitingForDom);
+      doAdjustment();
+    } catch (e) {
+      console.warn("Possible race condition; timed out while trying to adjust iframe height", e);
+      doAdjustment();
+    }
+  }
+
+  _onLoad(event) {
+    if (event.target.documentURI == "about:blank") {
+      return;
+    } // TODO: Handle BIDI
+
+
+    this.adjustHeight();
+    this.loading = false;
+    this.props.dispatch(reducer_summary/* summaryActions.msgStreamLoadFinished */.v.msgStreamLoadFinished({
+      dueToExpansion: this.dueToExpansion,
+      msgUri: this.props.msgUri,
+      iframe: this.iframe
+    }));
+  }
+
+  tweakFonts(iframeDoc) {
+    if (!this.props.prefs.tweakBodies) {
+      return [];
+    }
+
+    let textSize = Math.round(this.props.defaultFontSize * this.props.tenPxFactor * 1.2); // Assuming 16px is the default (like on, say, Linux), this gives
+    //  18px and 12px, which is what Andy had in mind.
+    // We're applying the style at the beginning of the <head> tag and
+    //  on the body element so that it can be easily overridden by the
+    //  html.
+    // This is for HTML messages only.
+
+    let styleRules = [];
+
+    if (iframeDoc.querySelectorAll(":not(.mimemail-body) > .moz-text-html").length) {
+      styleRules = ["body, table {", // "  line-height: 112.5%;",
+      "  font-size: " + textSize + "px;", "}"];
+    } // Do some reformatting + deal with people who have bad taste. All these
+    // rules are important: some people just send messages with horrible colors,
+    // which ruins the conversation view. Gecko tends to automatically add
+    // padding/margin to html mails. We still want to honor these prefs but
+    // usually they just black/white so this is pretty much what we want.
+
+
+    let fg = this.props.browserForegroundColor;
+    let bg = this.props.browserBackgroundColor;
+    styleRules = styleRules.concat(["body {", "  margin: 0; padding: 0;", "  color: " + fg + "; background-color: " + bg + ";", "}"]);
+    return styleRules;
+  }
+
+  async detectQuotes(iframe) {
+    // Launch various crappy pieces of code heuristics to
+    // convert most common quoting styles to real blockquotes. Spoiler:
+    // most of them suck.
+    Quoting.normalizeBlockquotes(iframe.contentDocument);
+
+    const getQuoteLength = async node => {
+      function heightFromStyle(style) {
+        return parseInt(style.height) / (parseInt(style.fontSize) * 1.5);
+      }
+
+      try {
+        const style = iframe.contentWindow.getComputedStyle(node); // If the computed height returned by `getQuoteLength` is NaN,
+        // that means the DOM hasn't had a chance to render it, and so it's
+        // size cannot be computed. In this case, we set a timeout to let
+        // the DOM render before we measure the height
+
+        this._waitingForDom = true;
+        const height = await runUntilValid(() => heightFromStyle(style), val => val && !Number.isNaN(val));
+        this._waitingForDom = false;
+        return height;
+      } catch (e) {// message arrived and window is not displayed, arg,
+        // cannot get the computed style, BAD
+      }
+
+      return undefined;
+    }; // If the first email contains quoted text, it was probably forwarded to us
+    // and we don't have the previous email for reference. In this case, don't normalize
+    // the quote. See:
+    // https://github.com/thunderbird-conversations/thunderbird-conversations/issues/179
+
+
+    if (this.props.initialPosition > 0) {
+      const win = iframe.contentWindow; // We look for the first blockquote that is long enough to be hidden
+
+      for (const blockquote of win.document.querySelectorAll("blockquote")) {
+        const quoteLength = await getQuoteLength(blockquote);
+
+        if (quoteLength > this.props.prefs.hideQuoteLength) {
+          createToggleForNode(blockquote, {
+            hideText: browser.i18n.getMessage("messageBody.hideQuotedText"),
+            showText: browser.i18n.getMessage("messageBody.showQuotedText"),
+            linkClass: "showhidequote",
+            smallSize: this.props.prefs.tweakChrome ? this.props.defaultFontSize * this.props.tenPxFactor * 1.1 : Math.round(100 * this.props.defaultFontSize * 11 / 12) / 100,
+            linkColor: "orange",
+            onToggle: toggleCallbackFactory(iframe)
+          }); // We only put a show/hide button on the first suitable quote,
+          // so if we've made it thus far, we're done.
+
+          break;
+        }
+      }
+    }
+  }
+
+  detectSigs(iframe) {
+    if (!this.props.prefs.hideSigs) {
+      return;
+    }
+
+    const win = iframe.contentWindow;
+    const sigNode = win.document.querySelector(".moz-txt-sig");
+
+    if (sigNode) {
+      createToggleForNode(sigNode, {
+        hideText: browser.i18n.getMessage("messageBody.hideSigText"),
+        showText: browser.i18n.getMessage("messageBody.showSigText"),
+        linkClass: "showhidesig",
+        smallSize: this.props.prefs.tweakChrome ? this.props.defaultFontSize * this.props.tenPxFactor * 1.1 : Math.round(100 * this.props.defaultFontSize * 11 / 12) / 100,
+        linkColor: "rgb(56, 117, 215)",
+        onToggle: toggleCallbackFactory(iframe)
+      });
+    }
+  }
+
+  injectCss(iframeDoc) {
+    // !important because messageContents.css is appended after us when the html
+    // is rendered
+    return ['blockquote[type="cite"] {', "  border-right-width: 0px;", "  border-left: 1px #ccc solid;", "  color: #666 !important;", "}", "span.moz-txt-formfeed {", "  height: auto;", "}"];
+  }
+
+  async _onDOMLoaded(event) {
+    if (event.target.documentURI == "about:blank") {
+      return;
+    }
+
+    const iframeDoc = this.iframe.contentDocument;
+    let styleRules = this.tweakFonts(iframeDoc);
+
+    if (!(this.props.realFrom && this.props.realFrom.includes("bugzilla-daemon"))) {
+      await this.detectQuotes(this.iframe);
+    }
+
+    this.detectSigs(this.iframe);
+    styleRules = styleRules.concat(this.injectCss(iframeDoc)); // Ugly hack (once again) to get the style inside the
+    // <iframe>. I don't think we can use a chrome:// url for
+    // the stylesheet because the iframe has a type="content"
+
+    let style = iframeDoc.createElement("style");
+    style.appendChild(iframeDoc.createTextNode(styleRules.join("\n")));
+    let head = iframeDoc.body.previousElementSibling;
+    head.appendChild(style);
+    this.adjustHeight();
+  }
+
+  onClickIframe(event) {
+    this.props.dispatch(reducer_messages/* messageActions.clickIframe */.o.clickIframe({
+      event
+    }));
+  }
+
+  render() {
+    // TODO: See comment in componentDidMount
+    // <iframe className={`iframe${this.index}`} type="content" ref={f => this.iframe = f}/>
+    return /*#__PURE__*/react.createElement("div", {
+      className: `iframewrap${this.index}`,
+      ref: d => this.div = d
+    });
+  }
+
+}
+MessageIFrame.propTypes = {
+  browserBackgroundColor: (prop_types_default()).string.isRequired,
+  browserForegroundColor: (prop_types_default()).string.isRequired,
+  defaultFontSize: (prop_types_default()).number.isRequired,
+  dispatch: (prop_types_default()).func.isRequired,
+  expanded: (prop_types_default()).bool.isRequired,
+  hasRemoteContent: (prop_types_default()).bool.isRequired,
+  initialPosition: (prop_types_default()).number.isRequired,
+  msgUri: (prop_types_default()).string.isRequired,
+  neckoUrl: (prop_types_default()).string.isRequired,
+  smimeReload: (prop_types_default()).bool.isRequired,
+  tenPxFactor: (prop_types_default()).number.isRequired,
+  prefs: (prop_types_default()).object.isRequired,
+  realFrom: (prop_types_default()).string.isRequired
+};
+;// CONCATENATED MODULE: ./addon/content/components/message/messageNotification.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+class RemoteContentNotification extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onAlwaysShowRemote = this.onAlwaysShowRemote.bind(this);
+    this.onShowRemote = this.onShowRemote.bind(this);
+  }
+
+  onShowRemote() {
+    this.props.dispatch(reducer_messages/* messageActions.showRemoteContent */.o.showRemoteContent({
+      id: this.props.id
+    }));
+  }
+
+  onAlwaysShowRemote() {
+    this.props.dispatch(reducer_messages/* messageActions.alwaysShowRemoteContent */.o.alwaysShowRemoteContent({
+      id: this.props.id,
+      realFrom: this.props.realFrom
+    }));
+  }
+
+  render() {
+    return /*#__PURE__*/react.createElement("div", {
+      className: "remoteContent notificationBar"
+    }, browser.i18n.getMessage("notification.remoteContentBlockedMsg") + " ", /*#__PURE__*/react.createElement("span", {
+      className: "show-remote-content"
+    }, /*#__PURE__*/react.createElement("a", {
+      className: "link",
+      onClick: this.onShowRemote
+    }, browser.i18n.getMessage("notification.showRemote")), " - "), /*#__PURE__*/react.createElement("span", {
+      className: "always-display"
+    }, /*#__PURE__*/react.createElement("a", {
+      className: "link",
+      onClick: this.onAlwaysShowRemote
+    }, browser.i18n.getMessage("notification.alwaysShowRemote", [this.props.realFrom]))));
+  }
+
+}
+
+RemoteContentNotification.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  id: (prop_types_default()).number.isRequired,
+  realFrom: (prop_types_default()).string.isRequired
+};
+
+class GenericSingleButtonNotification extends react.PureComponent {
+  render() {
+    return /*#__PURE__*/react.createElement("div", {
+      className: this.props.barClassName + " notificationBar"
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: this.props.iconName
+    }), this.props.notificationText, " ", /*#__PURE__*/react.createElement("span", {
+      className: this.props.buttonClassName
+    }, /*#__PURE__*/react.createElement("a", {
+      onClick: this.props.onButtonClick
+    }, this.props.buttonTitle)));
+  }
+
+}
+
+GenericSingleButtonNotification.propTypes = {
+  barClassName: (prop_types_default()).string.isRequired,
+  buttonClassName: (prop_types_default()).string.isRequired,
+  hideIcon: (prop_types_default()).bool,
+  onButtonClick: (prop_types_default()).func.isRequired,
+  buttonTitle: (prop_types_default()).string.isRequired,
+  iconName: (prop_types_default()).string.isRequired,
+  notificationText: (prop_types_default()).string.isRequired
+};
+
+class GenericMultiButtonNotification extends react.PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  onClick(actionParams) {
+    this.props.dispatch(reducer_messages/* messageActions.notificationClick */.o.notificationClick({
+      msgUri: this.props.msgUri,
+      notificationType: this.props.type,
+      ...actionParams
+    }));
+  }
+
+  render() {
+    return /*#__PURE__*/react.createElement("div", {
+      className: this.props.barClassName + " notificationBar"
+    }, /*#__PURE__*/react.createElement(SvgIcon, {
+      hash: this.props.iconName
+    }), this.props.notificationText, " ", this.props.buttons.map((button, i) => /*#__PURE__*/react.createElement("button", {
+      className: button.classNames,
+      tooltiptext: button.tooltiptext,
+      key: i,
+      onClick: this.onClick.bind(this, button.actionParams)
+    }, button.textContent)));
+  }
+
+}
+
+GenericMultiButtonNotification.propTypes = {
+  barClassName: (prop_types_default()).string.isRequired,
+  buttons: (prop_types_default()).object.isRequired,
+  dispatch: (prop_types_default()).func.isRequired,
+  hideIcon: (prop_types_default()).bool,
+  iconName: (prop_types_default()).string.isRequired,
+  msgUri: (prop_types_default()).string.isRequired,
+  notificationText: (prop_types_default()).string.isRequired,
+  type: (prop_types_default()).string.isRequired
+};
+
+class JunkNotification extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.props.dispatch(reducer_messages/* messageActions.markAsJunk */.o.markAsJunk({
+      isJunk: false,
+      id: this.props.id
+    }));
+  }
+
+  render() {
+    return /*#__PURE__*/react.createElement(GenericSingleButtonNotification, {
+      barClassName: "junkBar",
+      buttonClassName: "notJunk",
+      buttonTitle: browser.i18n.getMessage("notification.notJunk"),
+      iconName: "whatshot",
+      notificationText: browser.i18n.getMessage("notification.junkMsg"),
+      onButtonClick: this.onClick
+    });
+  }
+
+}
+
+JunkNotification.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  id: (prop_types_default()).number.isRequired
+};
+
+class OutboxNotification extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.props.dispatch(reducer_messages/* messageActions.sendUnsent */.o.sendUnsent());
+  }
+
+  render() {
+    return /*#__PURE__*/react.createElement(GenericSingleButtonNotification, {
+      barClassName: "outboxBar",
+      buttonClassName: "sendUnsent",
+      buttonTitle: browser.i18n.getMessage("notification.sendUnsent"),
+      iconName: "inbox",
+      notificationText: browser.i18n.getMessage("notification.isOutboxMsg"),
+      onButtonClick: this.onClick
+    });
+  }
+
+}
+
+OutboxNotification.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired
+};
+
+class PhishingNotification extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.props.dispatch(reducer_messages/* messageActions.ignorePhishing */.o.ignorePhishing({
+      id: this.props.id
+    }));
+  }
+
+  render() {
+    return /*#__PURE__*/react.createElement(GenericSingleButtonNotification, {
+      barClassName: "phishingBar",
+      buttonClassName: "ignore-warning",
+      buttonTitle: browser.i18n.getMessage("notification.ignoreScamWarning"),
+      iconName: "warning",
+      notificationText: browser.i18n.getMessage("notification.scamMsg"),
+      onButtonClick: this.onClick
+    });
+  }
+
+}
+
+PhishingNotification.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  id: (prop_types_default()).number.isRequired
+};
+class MessageNotification extends react.PureComponent {
+  render() {
+    if (this.props.isPhishing) {
+      return /*#__PURE__*/react.createElement(PhishingNotification, {
+        dispatch: this.props.dispatch,
+        id: this.props.id
+      });
+    }
+
+    if (this.props.hasRemoteContent) {
+      return /*#__PURE__*/react.createElement(RemoteContentNotification, {
+        dispatch: this.props.dispatch,
+        id: this.props.id,
+        realFrom: this.props.realFrom
+      });
+    }
+
+    if (this.props.canUnJunk) {
+      return /*#__PURE__*/react.createElement(JunkNotification, {
+        dispatch: this.props.dispatch,
+        id: this.props.id
+      });
+    }
+
+    if (this.props.isOutbox) {
+      return /*#__PURE__*/react.createElement(OutboxNotification, {
+        dispatch: this.props.dispatch
+      });
+    }
+
+    if (this.props.extraNotifications && this.props.extraNotifications.length) {
+      // Only display the first notification.
+      const notification = this.props.extraNotifications[0];
+      return /*#__PURE__*/react.createElement(GenericMultiButtonNotification, {
+        barClassName: notification.type + "Bar",
+        buttons: notification.buttons || [],
+        iconName: notification.iconName,
+        dispatch: this.props.dispatch,
+        msgUri: this.props.msgUri,
+        notificationText: notification.label,
+        type: notification.type
+      });
+    }
+
+    return null;
+  }
+
+}
+MessageNotification.propTypes = {
+  canUnJunk: (prop_types_default()).bool.isRequired,
+  dispatch: (prop_types_default()).func.isRequired,
+  extraNotifications: (prop_types_default()).array,
+  hasRemoteContent: (prop_types_default()).bool.isRequired,
+  isPhishing: (prop_types_default()).bool.isRequired,
+  isOutbox: (prop_types_default()).bool.isRequired,
+  id: (prop_types_default()).number.isRequired,
+  msgUri: (prop_types_default()).string.isRequired,
+  realFrom: (prop_types_default()).string.isRequired
+};
+;// CONCATENATED MODULE: ./addon/content/components/quickreply/quickReply.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+function QuickReply() {
+  return /*#__PURE__*/react.createElement("div", {
+    className: "quickReply disabled",
+    dir: "ltr"
+  }, /*#__PURE__*/react.createElement("small", null, /*#__PURE__*/react.createElement("i", null, "Quick Reply is temporarily disabled due to needing rewriting for Thunderbird 78+.")));
+}
+QuickReply.propTypes = {}; // These are the templates originally from stub.html for quickReply. Moved here
+// to help tidy that up and prepare.
+// The quick reply goes after the messaeFooter - if it is the last message
+// in the list.
+
+/*
+ <!-- This should be in the quickReply if above -->
+ <!-- {{tmpl "quickReply" this}} -->
+ <script id="quickReplyTemplate" type="text/x-handlebars-template"><![CDATA[
+   <div class="quickReply" ondragover="quickReplyCheckDrag(event);" ondrop="quickReplyDrop(event);">
+     <div class="quickReplyContacts">
+       <div class="quickReplyContactsHeader">
+         {{str "mostFrequentContacts"}}
+       </div>
+       <div class="quickReplyContactsBox">
+       </div>
+       <div class="quickReplyContactsMore">
+         <a class="quickReplyContactsMoreLink">
+           {{str "showMore"}}
+         </a>
+       </div>
+     </div>
+     <div class="quickReplyBox">
+       <div class="replyHeader">
+         <div class="quickReplyRecipients">
+           <ul class="fromField">
+             {{str "fieldFrom"}}
+             <li class="senderSwitcher"><a class="switchLeft" onclick="gComposeSession.cycleSender(-1)">◂</a> <a class="switchRight" onclick="gComposeSession.cycleSender(1)">▸</a></li>
+             <li class="senderName"></li>,
+             <li class="replyMethod">
+               <input type="radio" name="reply-method" value="reply"
+                 onchange="changeComposeFields('reply')" id="reply-radio"
+               /><label for="reply-radio">{{str "reply"}}</label>
+             </li>
+             <li class="replyMethod replyMethod-replyAll">
+               <input type="radio" name="reply-method" value="replyAll"
+                 onchange="changeComposeFields('replyAll')" id="replyAll-radio"
+               /><label for="replyAll-radio">{{str "replyAll"}}</label>
+             </li>
+             <li class="replyMethod replyMethod-replyList">
+               <input type="radio" name="reply-method" value="replyList"
+                 onchange="changeComposeFields('replyList')" id="replyList-radio"
+               /><label for="replyList-radio">{{str "replyList"}}</label>
+             </li>
+             <li class="replyMethod">
+               <input type="radio" name="reply-method" value="forward"
+                 onchange="changeComposeFields('forward')" id="forward-radio"
+               /><label for="forward-radio">{{str "forward"}}</label>
+             </li>
+             <li class="firstBar">|</li>
+             <li class="showCc"><a onclick="showCc(); editFields('cc');" href="javascript:">{{str "addCc"}}</a> |</li>
+             <li class="showBcc"><a onclick="showBcc(); editFields('bcc');" href="javascript:">{{str "addBcc"}}</a> |</li>
+             <li class="addAttachment"><a onclick="addAttachment();" href="javascript:">{{str "addAttachment"}}</a></li>
+           </ul>
+           <div class="editRecipientList editToList">
+             <div class="label">{{str "fieldTo"}}</div>
+             <div class="editInput"><input type="text" id="to" /></div>
+           </div>
+           <div class="editRecipientList editCcList" style="display: none">
+             <div class="label">{{str "fieldCc"}}</div>
+             <div class="editInput"><input type="text" id="cc" /></div>
+           </div>
+           <div class="editRecipientList editBccList" style="display: none">
+             <div class="label">{{str "fieldBcc"}}</div>
+             <div class="editInput"><input type="text" id="bcc" /></div>
+           </div>
+           <div class="editRecipientList editSubject" style="display: none">
+             <div class="label">{{str "fieldSubject"}}</div>
+             <div class="editInput"><input type="text" id="subject" /></div>
+           </div>
+           <ul class="recipientList toList">
+             {{str "fieldTo"}}
+             <li>{{str "pleaseWait"}}</li>
+             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('to');">{{str "compose.editField}}</a></li>
+           </ul>
+           <ul class="recipientList ccList" style="display: none;">
+             {{str "fieldCc"}}
+             <li>{{str "pleaseWait"}}</li>
+             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('cc');">{{str "compose.editField"}}</a></li>
+           </ul>
+           <ul class="recipientList bccList" style="display: none;">
+             {{str "fieldBcc"}}
+             <li>{{str "pleaseWait"}}</li>
+             <li class="add-more">&#xa0;- <a href="javascript:" onclick="editFields('bcc');">{{str "compose.editField"}}</a></li>
+           </ul>
+         </div>
+         <ul class="enigmail" style="display: none;">
+           <li class="replyEncrypt">
+             <input type="checkbox" name="enigmail-reply-encrypt" id="enigmail-reply-encrypt"
+             /><label for="enigmail-reply-encrypt">{{str "encrypt"}}</label>
+           </li>
+           <li class="replySign">
+             <input type="checkbox" name="enigmail-reply-sign" id="enigmail-reply-sign"
+             /><label for="enigmail-reply-sign">{{str "sign"}}</label>
+           </li>
+           <li class="replyPgpMime">
+             <input type="checkbox" name="enigmail-reply-pgpmime" id="enigmail-reply-pgpmime"
+             /><label for="enigmail-reply-pgpmime">PGP/MIME</label>
+           </li>
+         </ul>
+         <div class="quickReplyAttachments">
+         </div>
+         <div class="quickReplyHeader" style="display: none; overflow: auto">
+           <span class="statusMessage" style="float: left;"></span>
+           <span class="statusPercentage" style="float: right;"></span>
+           <span class="statusThrobber" style="float: right;">
+             <span class="loader" style="vertical-align: middle;"></span>
+           </span>
+         </div>
+       </div>
+
+       <ul class="inputs">
+         <li class="reply expand" ondragenter="quickReplyDragEnter(event);">
+           <div class="textWrap">
+             <div class="quickReplyIcon"><span>{{str "reply"}}</span> <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="material-icons.svg#reply"></use></svg></div>
+             <iframe mozframetype="content" class="textarea sans"></iframe>
+           </div>
+         </li>
+
+         <li class="replyAll expand" ondragenter="quickReplyDragEnter(event);">
+           <div class="textWrap">
+             <div class="quickReplyIcon"><span>{{str "replyAll"}}</span> <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><use xlink:href="material-icons.svg#reply_all"></use></svg></div>
+             <iframe mozframetype="content" class="textarea sans"></iframe>
+           </div>
+         </li>
+       </ul>
+
+       <div class="replyFooter" style="overflow: auto" tabindex="-1">
+         <button id="send" style="float:right;margin-left:3px;" onclick="gComposeSession.send();">
+           {{str "send"}}
+         </button>
+         <button id="sendArchive" style="float:right;margin-left:3px;"
+             onclick="gComposeSession.send({ archive: true });">
+           {{str "sendArchive"}}
+         </button>
+         <button id="save" style="float:right" onclick="onSave();">{{str "save"}}</button>
+         <a class="discard" href="javascript:" id="discard"
+           onclick="confirmDiscard()">{{str "discard"}}</a>
+       </div>
+     </div>
+   </div>
+   ]]>
+ </script>
+ <script id="quickReplyAttachmentTemplate" type="text/x-handlebars-template"><![CDATA[
+   <ul class="quickReplyAttachment">
+     {{str "attachment"}}:
+     <li>{{name}}</li> ({{size}}) -
+     <a href="javascript:" class="openAttachmentLink">{{str "open"}}</a> -
+     <a href="javascript:" class="removeAttachmentLink">{{str "removeAttachment"}}</a>
+   </ul>
+   ]]>
+ </script>
+*/
+// Old Message.js event handlers:
+//
+// this.register(".quickReply", function(event) {
+//   event.stopPropagation();
+// }, { action: "keyup" });
+// this.register(".quickReply", function(event) {
+//   event.stopPropagation();
+// }, { action: "keypress" });
+// this.register(".quickReply", function(event) {
+//   // Ok, so it's actually convenient to register our event listener on the
+//   //  .quickReply node because we can easily prevent it from bubbling
+//   //  upwards, but the problem is, if a message is appended at the end of
+//   //  the conversation view, this event listener is active and the one from
+//   //  the new message is active too. So we check that the quick reply still
+//   //  is inside our dom node.
+//   if (!self._domNode.getElementsByClassName("quickReply").length)
+//     return;
+//
+//   let window = self._conversation._htmlPane;
+//
+//   switch (event.keyCode) {
+//     case mainWindow.KeyEvent.DOM_VK_RETURN:
+//       if (isAccel(event)) {
+//         if (event.shiftKey)
+//           window.gComposeSession.send({ archive: true });
+//         else
+//           window.gComposeSession.send();
+//       }
+//       break;
+//
+//     case mainWindow.KeyEvent.DOM_VK_ESCAPE:
+//       Log.debug("Escape from quickReply");
+//       self._domNode.focus();
+//       break;
+//   }
+//   event.stopPropagation();
+// }, { action: "keydown" });
+;// CONCATENATED MODULE: ./addon/content/components/message/message.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+
+
+
+
+
+
+
+function isAccel(event) {
+  if (window.navigator.platform.includes("Mac")) {
+    return event.metaKey;
+  }
+
+  return event.ctrlKey;
+}
+/**
+ * Trap any errors in child component displaying an error
+ * message if any errors are encountered.
+ *
+ * Code taken from https://reactjs.org/blog/2017/07/26/error-handling-in-react-16.html
+ *
+ * @class ErrorBoundary
+ * @extends {React.Component}
+ */
+
+
+class ErrorBoundary extends react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      errorInfo: null
+    };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    this.setState({
+      error,
+      errorInfo
+    });
+  }
+
+  render() {
+    if (this.state.errorInfo) {
+      // Error path
+      return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("h4", null, "Error encountered while rendering."), /*#__PURE__*/react.createElement("details", {
+        style: {
+          whiteSpace: "pre-wrap"
+        }
+      }, this.state.error && this.state.error.toString(), /*#__PURE__*/react.createElement("br", null), this.state.errorInfo.componentStack));
+    } // Normally, just render children
+
+
+    return this.props.children;
+  }
+
+}
+
+ErrorBoundary.propTypes = {
+  children: (prop_types_default()).any
+};
+class Message extends react.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onSelected = this.onSelected.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.lastScrolledMsgUri != this.props.message.msgUri && this.props.message.scrollTo) {
+      this.lastScrolledMsgUri = this.props.message.msgUri; // The header is 44px high (yes, this is hard coded and ugly).
+
+      window.requestAnimationFrame(() => {
+        window.scrollTo(0, this.li.getBoundingClientRect().top + window.scrollY + 5 - 44);
+        this.onSelected();
+      }); // For any time we're mounting a new message, we're going to be loading
+      // it as well. That means we don't need to clear the scrollTo flag here,
+      // we can leave that to componentDidUpdate.
+    }
+
+    this.checkLateAttachments();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.message.expanded && !this.props.iframesLoading) {
+      this.handleAutoMarkAsRead();
+    } else if (!this.props.message.expanded || this.props.message.read) {
+      this.removeScrollListener();
+    }
+
+    if (!this.props.message.scrollTo) {
+      return;
+    }
+
+    if (this.lastScrolledMsgUri != this.props.message.msgUri || prevProps.iframesLoading && !this.props.iframesLoading) {
+      this.lastScrolledMsgUri = this.props.message.msgUri; // The header is 44px high (yes, this is hardcoded and ugly).
+
+      window.requestAnimationFrame(() => {
+        window.scrollTo(500, this.li.getBoundingClientRect().top + window.scrollY + 5 - 44);
+        this.onSelected(); // Only clear scrollTo if we're now not loading any iframes for
+        // this message. This should generally mean we get to scroll to the
+        // right place most of the time.
+
+        if (!this.props.iframesLoading) {
+          this.props.dispatch(reducer_messages/* messageActions.clearScrollto */.o.clearScrollto({
+            id: this.props.message.id
+          }));
+        }
+      });
+    }
+
+    this.checkLateAttachments();
+  }
+
+  componentWillUnmount() {
+    this.removeScrollListener();
+  }
+
+  checkLateAttachments() {
+    if (this.props.message.expanded && this.props.message.needsLateAttachments) {
+      this.props.dispatch(reducer_messages/* messageActions.getLateAttachments */.o.getLateAttachments({
+        id: this.props.message.id
+      }));
+    }
+  }
+
+  removeScrollListener() {
+    if (this._scrollListener) {
+      document.removeEventListener("scroll", this._scrollListener, true);
+      delete this._scrollListener;
+    }
+  } // Handles setting up the listeners for if we should mark as read when scrolling.
+
+
+  handleAutoMarkAsRead() {
+    // If we're already read, not expanded or auto read is turned off, then we
+    // don't need to add listeners.
+    if (!this.props.autoMarkAsRead || !this.props.message.expanded || this.props.message.read) {
+      this.removeScrollListener();
+      return;
+    }
+
+    if (this._scrollListener) {
+      return;
+    }
+
+    this._topInView = false;
+    this._bottomInView = false;
+    this._scrollListener = this.onScroll.bind(this);
+    document.addEventListener("scroll", this._scrollListener, true);
+  }
+
+  onSelected() {
+    this.props.dispatch(reducer_messages/* messageActions.selected */.o.selected({
+      msgUri: this.props.message.msgUri
+    }));
+  }
+
+  onKeyDown(event = {}) {
+    const {
+      key,
+      shiftKey
+    } = event;
+    const shortcut = `${isAccel(event) ? "accel-" : ""}${key}`;
+
+    function stopEvent() {
+      event.stopPropagation();
+      event.preventDefault();
+    } // Handle the basic keyboard shortcuts
+
+
+    switch (shortcut) {
+      case "accel-r":
+      case "accel-R":
+        this.props.dispatch(reducer_messages/* messageActions.reply */.o.reply({
+          msgUri: this.props.message.msgUri,
+          shiftKey
+        }));
+        stopEvent();
+        break;
+
+      case "accel-l":
+        this.props.dispatch(reducer_messages/* messageActions.forward */.o.forward({
+          msgUri: this.props.message.msgUri
+        }));
+        break;
+
+      case "accel-u":
+        this.props.dispatch(reducer_messages/* messageActions.openSource */.o.openSource({
+          msgUri: this.props.message.msgUri
+        }));
+        break;
+
+      case "a":
+        this.props.dispatch(reducer_messages/* messageActions.archive */.o.archive({
+          id: this.props.message.id
+        }));
+        break;
+
+      case "o":
+        this.props.dispatch(reducer_messages/* messageActions.msgExpand */.o.msgExpand({
+          msgUri: this.props.message.msgUri,
+          expand: !this.props.message.expanded
+        }));
+        break;
+
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
+        this.props.dispatch(reducer_messages/* messageActions.toggleTagByIndex */.o.toggleTagByIndex({
+          id: this.props.message.id,
+          tags: this.props.message.tags,
+          // Tag indexes start at 0
+          index: +shortcut - 1
+        }));
+        stopEvent();
+        break;
+
+      case "0":
+        // Remove all tags
+        this.props.dispatch(reducer_messages/* messageActions.setTags */.o.setTags({
+          id: this.props.message.id,
+          tags: []
+        }));
+        stopEvent();
+        break;
+
+      case "f":
+        this.props.advanceMessage(1);
+        stopEvent();
+        break;
+
+      case "b":
+        this.props.advanceMessage(-1);
+        stopEvent();
+        break;
+
+      default:
+        break;
+    }
+
+    this.onSelected();
+  }
+
+  onScroll() {
+    const rect = this.li.getBoundingClientRect();
+
+    if (!this._topInView) {
+      const top = rect.y;
+
+      if (top > 0 && top < window.innerHeight) {
+        this._topInView = true;
+      }
+    }
+
+    if (!this._bottomInView) {
+      const bottom = rect.y + rect.height;
+
+      if (bottom > 0 && bottom < window.innerHeight) {
+        this._bottomInView = true;
+      }
+    }
+
+    if (this._topInView && this._bottomInView) {
+      if (!this.props.message.read) {
+        this.props.dispatch(reducer_messages/* messageActions.markAsRead */.o.markAsRead({
+          id: this.props.message.id
+        }));
+      }
+
+      this.removeScrollListener();
+    }
+  }
+
+  render() {
+    // TODO: For printing, we used to have a container in-between the iframe
+    // and attachments container. Need to figure out how to get that back in
+    // and working.
+    // <div class="body-container"></div>
+    return /*#__PURE__*/react.createElement("li", {
+      className: "message",
+      ref: li => {
+        this.li = li;
+        this.props.setRef(li);
+      },
+      tabIndex: this.props.index + 1,
+      onFocusCapture: this.onSelected,
+      onClickCapture: this.onSelected,
+      onKeyDownCapture: this.onKeyDown
+    }, /*#__PURE__*/react.createElement(MessageHeader, {
+      dispatch: this.props.dispatch,
+      bcc: this.props.message.bcc,
+      cc: this.props.message.cc,
+      date: this.props.message.date,
+      detailsShowing: this.props.message.detailsShowing,
+      expanded: this.props.message.expanded,
+      from: this.props.message.from,
+      to: this.props.message.to,
+      fullDate: this.props.message.fullDate,
+      id: this.props.message.id,
+      msgUri: this.props.message.msgUri,
+      attachments: this.props.message.attachments,
+      multipleRecipients: this.props.message.multipleRecipients,
+      recipientsIncludeLists: this.props.message.recipientsIncludeLists,
+      inView: this.props.message.inView,
+      isDraft: this.props.message.isDraft,
+      shortFolderName: this.props.message.shortFolderName,
+      snippet: this.props.message.snippet,
+      starred: this.props.message.starred,
+      tags: this.props.message.tags,
+      specialTags: this.props.message.specialTags
+    }), this.props.message.expanded && this.props.message.detailsShowing && /*#__PURE__*/react.createElement(MessageDetails, {
+      bcc: this.props.message.bcc,
+      cc: this.props.message.cc,
+      extraLines: this.props.message.extraLines,
+      from: this.props.message.from,
+      to: this.props.message.to
+    }), this.props.message.expanded && /*#__PURE__*/react.createElement(MessageNotification, {
+      canUnJunk: this.props.message.isJunk && !this.props.displayingMultipleMsgs,
+      dispatch: this.props.dispatch,
+      extraNotifications: this.props.message.extraNotifications,
+      hasRemoteContent: this.props.message.hasRemoteContent,
+      isPhishing: this.props.message.isPhishing,
+      isOutbox: this.props.message.isOutbox,
+      id: this.props.message.id,
+      msgUri: this.props.message.msgUri,
+      realFrom: this.props.message.realFrom
+    }), /*#__PURE__*/react.createElement("div", {
+      className: "messageBody"
+    }, this.props.message.expanded && /*#__PURE__*/react.createElement(SpecialMessageTags, {
+      onFolderClick: () => {
+        this.props.dispatch(reducer_messages/* messageActions.switchToFolderAndMsg */.o.switchToFolderAndMsg({
+          id: this.props.message.id
+        }));
+      },
+      onTagClick: (event, tag) => {
+        this.props.dispatch(reducer_messages/* messageActions.tagClick */.o.tagClick({
+          event,
+          msgUri: this.props.message.msgUri,
+          details: tag.details
+        }));
+      },
+      folderName: this.props.message.folderName,
+      inView: this.props.message.inView,
+      specialTags: this.props.message.specialTags
+    }), this.props.message.expanded && /*#__PURE__*/react.createElement(MessageTags, {
+      onTagsChange: tags => {
+        this.props.dispatch(reducer_messages/* messageActions.setTags */.o.setTags({
+          id: this.props.message.id,
+          tags
+        }));
+      },
+      expanded: true,
+      tags: this.props.message.tags
+    }), /*#__PURE__*/react.createElement(ErrorBoundary, null, /*#__PURE__*/react.createElement(MessageIFrame, {
+      browserBackgroundColor: this.props.browserBackgroundColor,
+      browserForegroundColor: this.props.browserForegroundColor,
+      defaultFontSize: this.props.defaultFontSize,
+      dispatch: this.props.dispatch,
+      expanded: this.props.message.expanded,
+      hasRemoteContent: this.props.message.hasRemoteContent,
+      smimeReload: this.props.message.smimeReload,
+      initialPosition: this.props.message.initialPosition,
+      msgUri: this.props.message.msgUri,
+      neckoUrl: this.props.message.neckoUrl,
+      tenPxFactor: this.props.tenPxFactor,
+      prefs: this.props.prefs,
+      realFrom: this.props.message.realFrom
+    })), this.props.message.expanded && !!this.props.message.attachments.length && /*#__PURE__*/react.createElement(Attachments, {
+      dispatch: this.props.dispatch,
+      attachments: this.props.message.attachments,
+      attachmentsPlural: this.props.message.attachmentsPlural,
+      hasBuiltInPdf: this.props.hasBuiltInPdf,
+      messageKey: this.props.message.messageKey,
+      id: this.props.message.id
+    })), this.props.message.expanded && /*#__PURE__*/react.createElement(MessageFooter, {
+      dispatch: this.props.dispatch,
+      id: this.props.message.id,
+      msgUri: this.props.message.msgUri,
+      multipleRecipients: this.props.message.multipleRecipients,
+      recipientsIncludeLists: this.props.message.recipientsIncludeLists,
+      isDraft: this.props.message.isDraft
+    }), this.props.isLastMessage && this.props.message.expanded && !this.props.hideQuickReply && /*#__PURE__*/react.createElement(QuickReply, null));
+  }
+
+}
+Message.propTypes = {
+  autoMarkAsRead: (prop_types_default()).bool.isRequired,
+  browserBackgroundColor: (prop_types_default()).string.isRequired,
+  browserForegroundColor: (prop_types_default()).string.isRequired,
+  defaultFontSize: (prop_types_default()).number.isRequired,
+  dispatch: (prop_types_default()).func.isRequired,
+  displayingMultipleMsgs: (prop_types_default()).bool.isRequired,
+  iframesLoading: (prop_types_default()).number.isRequired,
+  index: (prop_types_default()).number.isRequired,
+  isLastMessage: (prop_types_default()).bool.isRequired,
+  hasBuiltInPdf: (prop_types_default()).bool.isRequired,
+  hideQuickReply: (prop_types_default()).bool.isRequired,
+  message: (prop_types_default()).object.isRequired,
+  tenPxFactor: (prop_types_default()).number.isRequired,
+  prefs: (prop_types_default()).object.isRequired,
+  setRef: (prop_types_default()).func.isRequired,
+  advanceMessage: (prop_types_default()).func.isRequired
+};
+;// CONCATENATED MODULE: ./addon/content/components/message/messageList.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+function _MessageList(props) {
+  // Keep a reference to child elements so `.focus()`
+  // can be called on them in response to a `advanceMessage()`
+  // call. The actual ref is stored in `React.useRef().current`
+  const {
+    current: childRefs
+  } = react.useRef([]);
+
+  function setRef(index, ref) {
+    childRefs[index] = ref;
+  }
+
+  function advanceMessage(index, step) {
+    const ref = childRefs[index + step];
+
+    if (!ref) {
+      return;
+    }
+
+    ref.focus();
+  }
+
+  return /*#__PURE__*/react.createElement("ul", {
+    id: "messageList"
+  }, !!props.messages.msgData && props.messages.msgData.map((message, index) => /*#__PURE__*/react.createElement(Message, {
+    key: index,
+    autoMarkAsRead: props.summary.autoMarkAsRead,
+    browserBackgroundColor: props.summary.browserBackgroundColor,
+    browserForegroundColor: props.summary.browserForegroundColor,
+    defaultFontSize: props.summary.defaultFontSize,
+    dispatch: props.dispatch,
+    displayingMultipleMsgs: !!props.messages.length,
+    hasBuiltInPdf: props.summary.hasBuiltInPdf,
+    hideQuickReply: props.summary.hideQuickReply,
+    iframesLoading: props.summary.iframesLoading,
+    index: index,
+    isLastMessage: index == props.messages.msgData.length - 1,
+    message: message,
+    tenPxFactor: props.summary.tenPxFactor,
+    prefs: props.summary.prefs,
+    advanceMessage: (step = 1) => {
+      advanceMessage(index, step);
+    },
+    setRef: ref => {
+      setRef(index, ref);
+    }
+  })));
+}
+
+_MessageList.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  messages: (prop_types_default()).object.isRequired,
+  summary: (prop_types_default()).object.isRequired
+};
+const MessageList = es/* connect */.$j(state => {
+  return {
+    messages: state.messages,
+    summary: state.summary
+  };
+})(_MessageList);
+;// CONCATENATED MODULE: ./addon/content/components/conversation/conversationWrapper.jsx
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+
+
+
+
+
+
+
+
+class _ConversationWrapper extends react.PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this._setHTMLAttributes(); // When moving to a WebExtension page this can simply be moved to CSS (see
+    // options.css).
+
+
+    thunderbird_compat/* browser.conversations.getLocaleDirection */.Xh.conversations.getLocaleDirection().then(dir => {
+      document.documentElement.setAttribute("dir", dir);
+    });
+    this.props.dispatch(reducer_messages/* messageActions.waitForStartup */.o.waitForStartup());
+  }
+
+  componentDidUpdate(prevProps) {
+    this._setHTMLAttributes(prevProps);
+  }
+
+  _setHTMLAttributes(prevProps) {
+    if (prevProps && this.props.OS == prevProps.OS && this.props.tweakChrome == prevProps.tweakChrome) {
+      return;
+    }
+
+    const html = document.body.parentNode;
+
+    if (this.props.tweakChrome && this.props.OS) {
+      html.setAttribute("os", this.props.OS);
+    } else {
+      html.removeAttribute("os");
+    }
+  }
+
+  render() {
+    return /*#__PURE__*/react.createElement(react.Fragment, null, /*#__PURE__*/react.createElement("div", {
+      id: "popup-container"
+    }), /*#__PURE__*/react.createElement(ConversationHeader, null), /*#__PURE__*/react.createElement(MessageList, null), /*#__PURE__*/react.createElement(ConversationFooter, null));
+  }
+
+}
+
+_ConversationWrapper.propTypes = {
+  dispatch: (prop_types_default()).func.isRequired,
+  tweakChrome: (prop_types_default()).bool.isRequired,
+  OS: (prop_types_default()).string
+};
+const ConversationWrapper = es/* connect */.$j(state => {
+  return {
+    tweakChrome: !!state.summary.prefs && state.summary.prefs.tweakChrome,
+    OS: state.summary.OS
+  };
+})(_ConversationWrapper);
+
+/***/ }),
+
 /***/ 415:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
@@ -2162,8 +5718,10 @@ T();
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "X": () => /* binding */ thunderbird_compat_browser,
-  "a": () => /* binding */ i18n
+  "Xh": () => /* binding */ thunderbird_compat_browser,
+  "ag": () => /* binding */ i18n,
+  "uC": () => /* binding */ initializeI18n,
+  "sE": () => /* binding */ isWebextension
 });
 
 ;// CONCATENATED MODULE: ./addon/prefs.js
@@ -2248,31 +5806,22 @@ class Prefs {
           prefs[prefName] = kPrefDefaults[prefName];
         }
       }
-    }
+    } // Version 2 was the migration from the legacy storage format for saved
+    // quick reply drafts. It might be better just to drop these completely
+    // now, but in case we decide to keep & use the old data:
+    //
+    // Stored in key/value format in draftsData (top-level).
+    // The key is the gloda id. The value was generated from this:
+    // {
+    //   msgUri: msgHdrGetUri(gComposeSession.params.msgHdr),
+    //   from: gComposeSession.params.identity.email,
+    //   to: JSON.parse($("#to").val()).join(","),
+    //   cc: JSON.parse($("#cc").val()).join(","),
+    //   bcc: JSON.parse($("#bcc").val()).join(","),
+    //   body: getActiveEditor().value,
+    //   attachments: gComposeSession.attachmentList.save()
+    // }
 
-    if (currentMigration < 2) {
-      try {
-        const legacyData = await browser.conversations.getLegacyStorageData();
-
-        if (legacyData && legacyData.length) {
-          await browser.storage.local.set({
-            draftsData: legacyData
-          }); // Stored in key/value format.
-          // The key is the gloda id. The value was generated from this:
-          // {
-          //   msgUri: msgHdrGetUri(gComposeSession.params.msgHdr),
-          //   from: gComposeSession.params.identity.email,
-          //   to: JSON.parse($("#to").val()).join(","),
-          //   cc: JSON.parse($("#cc").val()).join(","),
-          //   bcc: JSON.parse($("#bcc").val()).join(","),
-          //   body: getActiveEditor().value,
-          //   attachments: gComposeSession.attachmentList.save()
-          // }
-        }
-      } catch (ex) {
-        console.error("Couldn't migrate data: " + ex);
-      }
-    }
 
     if (currentMigration < 3) {
       prefs.hide_quick_reply = false;
@@ -2311,6 +5860,16 @@ class Prefs {
 // in Thunderbird
  // Make sure the browser object exists
 
+if (window.BrowserSim && !window.browser) {
+  // BrowserSim is a workaround until Conversations is converted to a webextension
+  // and has a native `browser` object available.
+  window.browser = window.BrowserSim.getBrowser();
+} // If we have a `window.browser` object, we are running as a webextension as opposed to
+// running in the browser or in test mode. We suppress certain expected errors when we
+// know that we're not a webextension.
+
+
+const isWebextension = !!window.browser;
 const thunderbird_compat_browser = window.browser || {}; // `i18n` is a replacement for `browser.i18n`.  `getMessage` defaults
 // `browser.i18n.getMessage` if the function exists. Otherwise, locale
 // information is `fetch`ed and `getMessage` is polyfilled. The `isLoaded`
@@ -2321,35 +5880,71 @@ const i18n = {
   isLoaded: Promise.resolve(true),
   isPolyfilled: true
 };
+const ALL_LOCALES = ["bg", "ca", "cs", "da", "de", "el", "en", "es", "eu", "fi", "fr", "gl", "he-IL", "hr", "it", "ja-JP", "lt", "nl", "pl", "pt-BR", "rm", "ru-RU", "sl", "sr", "sv-SE", "tr", "uk", "zh-CN", "zh-TW"];
+/**
+ * This function should only be used in the dev frame. It is exported
+ * to give the dev frame a way to mock a change to the UI language.
+ *
+ * @export
+ * @param {*} resolve
+ * @param {string} [locale="en"]
+ */
+
+async function initializeI18n(resolve, locale = "en") {
+  let resp;
+
+  try {
+    resp = await fetch(`../_locales/${locale}/messages.json`);
+  } catch (ex) {
+    // For tests.
+    resp = await fetch(`_locales/${locale}/messages.json`);
+  }
+
+  i18n._messages = await resp.json();
+  i18n._currentLocale = locale; // Replace the `getMessage` function with one that retrieves
+  // values from the loaded JSON.
+
+  i18n.getMessage = (messageName, substitutions) => {
+    let message = (i18n._messages[messageName] || {}).message || `<translation not found>${messageName}`;
+
+    if (!substitutions || !i18n._messages[messageName]) {
+      return message;
+    } // If we're here, we have a valid i18n object and we need to do
+    // some substitutions.
+
+
+    const placeholders = i18n._messages[messageName].placeholders; // `placeholders` is an object with keys and values={ content: "$?" }.
+    // We need to substitute strings of the form `$key$` with the content at the `$?` position
+    // of the `substitutions` array.
+
+    for (const key in placeholders) {
+      const index = parseInt(placeholders[key].content.slice(1), 10) - 1;
+      message = message.replace(`$${key}$`, substitutions[index]);
+    }
+
+    return message;
+  };
+
+  i18n.getUILanguage = async () => i18n._currentLocale;
+
+  i18n.getAcceptLanguages = async () => ALL_LOCALES;
+
+  resolve(true);
+}
 
 if (thunderbird_compat_browser.i18n) {
   i18n.getMessage = thunderbird_compat_browser.i18n.getMessage;
+  i18n.getUILanguage = thunderbird_compat_browser.i18n.getUILanguage;
+  i18n.getAcceptLanguages = thunderbird_compat_browser.i18n.getAcceptLanguages;
   i18n.isPolyfilled = false;
 } else {
-  async function initializeI18n(resolve) {
-    let resp;
-
-    try {
-      resp = await fetch("../_locales/en/messages.json");
-    } catch (ex) {
-      // For tests.
-      resp = await fetch("_locales/en/messages.json");
-    }
-
-    const json = await resp.json(); // Replace the `getMessage` function with one that retrieves
-    // values from the loaded JSON.
-
-    i18n.getMessage = (messageName, substitutions) => (json[messageName] || {}).message || `<translation not found>${messageName}`;
-
-    resolve(true);
-  } // Fake what we need from the i18n library
-
-
+  // Fake what we need from the i18n library
   i18n.isLoaded = new Promise((resolve, reject) => {
     // initializeI18n modifies the global i18n object and calls
     // `resolve(true)` when finished.
     initializeI18n(resolve).catch(reject);
   });
+  thunderbird_compat_browser.i18n = i18n;
 }
 
 if (!thunderbird_compat_browser.storage) {
@@ -2426,6 +6021,56 @@ if (!thunderbird_compat_browser.conversations) {
 
     send(details) {
       console.log(details);
+    },
+
+    async getLocaleDirection() {
+      // RTL languages taken from https://github.com/shadiabuhilal/rtl-detect/blob/master/lib/rtl-detect.js
+      const RTL_LANGUAGES = ["ae"
+      /* Avestan */
+      , "ar"
+      /* 'العربية', Arabic */
+      , "arc"
+      /* Aramaic */
+      , "bcc"
+      /* 'بلوچی مکرانی', Southern Balochi */
+      , "bqi"
+      /* 'بختياري', Bakthiari */
+      , "ckb"
+      /* 'Soranî / کوردی', Sorani */
+      , "dv"
+      /* Dhivehi */
+      , "fa"
+      /* 'فارسی', Persian */
+      , "glk"
+      /* 'گیلکی', Gilaki */
+      , "he"
+      /* 'עברית', Hebrew */
+      , "ku"
+      /* 'Kurdî / كوردی', Kurdish */
+      , "mzn"
+      /* 'مازِرونی', Mazanderani */
+      , "nqo"
+      /* N'Ko */
+      , "pnb"
+      /* 'پنجابی', Western Punjabi */
+      , "ps"
+      /* 'پښتو', Pashto, */
+      , "sd"
+      /* 'سنڌي', Sindhi */
+      , "ug"
+      /* 'Uyghurche / ئۇيغۇرچە', Uyghur */
+      , "ur"
+      /* 'اردو', Urdu */
+      , "yi"
+      /* 'ייִדיש', Yiddish */
+      ];
+      const locale = await i18n.getUILanguage();
+
+      if (locale && RTL_LANGUAGES.some(l => locale.startsWith(l))) {
+        return "rtl";
+      }
+
+      return "ltr";
     }
 
   };
@@ -2524,6 +6169,96 @@ if (!thunderbird_compat_browser.runtime) {
 }
 
 
+
+/***/ }),
+
+/***/ 849:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "m": () => /* binding */ attachmentActions
+/* harmony export */ });
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+const attachmentActions = {
+  previewAttachment({
+    name,
+    url,
+    isPdf,
+    maybeViewable
+  }) {
+    return async (dispatch, getState) => {
+      if (maybeViewable) {
+        // Can't use browser.tabs.create because imap://user@bar/ is an
+        // illegal url.
+        browser.conversations.createTab({
+          url,
+          type: "contentTab",
+          windowId: getState().summary.windowId
+        });
+      }
+
+      if (isPdf) {
+        browser.conversations.createTab({
+          url: "chrome://conversations/content/pdfviewer/wrapper.xhtml?uri=" + encodeURIComponent(url) + "&name=" + encodeURIComponent(name),
+          type: "chromeTab",
+          windowId: getState().summary.windowId
+        });
+      }
+    };
+  },
+
+  downloadAll({
+    id
+  }) {
+    return async () => {
+      await browser.conversations.downloadAllAttachments(id);
+    };
+  },
+
+  downloadAttachment({
+    id,
+    attachmentUrl
+  }) {
+    return async () => {
+      await browser.conversations.downloadAttachment(id, attachmentUrl);
+    };
+  },
+
+  openAttachment({
+    id,
+    attachmentUrl
+  }) {
+    return async () => {
+      await browser.conversations.openAttachment(id, attachmentUrl);
+    };
+  },
+
+  detachAttachment({
+    id,
+    attachmentUrl,
+    shouldSave
+  }) {
+    return async () => {
+      await browser.conversations.detachAttachment(id, attachmentUrl, shouldSave);
+    };
+  },
+
+  showGalleryView({
+    id
+  }) {
+    return async (dispatch, getState) => {
+      let msgUri = await browser.conversations.getMessageUriForId(id);
+      await browser.tabs.create({
+        url: "/gallery/index.html?uri=" + encodeURI(msgUri),
+        windowId: getState().summary.windowId
+      });
+    };
+  }
+
+};
 
 /***/ }),
 
@@ -3331,10 +7066,12 @@ function finalPropsSelectorFactory(dispatch, _ref2) {
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
   "zt": () => /* reexport */ components_Provider,
-  "$j": () => /* reexport */ connect
+  "$j": () => /* reexport */ connect,
+  "I0": () => /* reexport */ useDispatch,
+  "v9": () => /* reexport */ useSelector
 });
 
-// UNUSED EXPORTS: ReactReduxContext, batch, connectAdvanced, createDispatchHook, createSelectorHook, createStoreHook, shallowEqual, useDispatch, useSelector, useStore
+// UNUSED EXPORTS: ReactReduxContext, batch, connectAdvanced, createDispatchHook, createSelectorHook, createStoreHook, shallowEqual, useStore
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(294);
@@ -3342,11 +7079,11 @@ var react = __webpack_require__(294);
 var prop_types = __webpack_require__(697);
 ;// CONCATENATED MODULE: ./node_modules/react-redux/es/components/Context.js
 
-var Context_ReactReduxContext = /*#__PURE__*/react.createContext(null);
+var ReactReduxContext = /*#__PURE__*/react.createContext(null);
 
 if (false) {}
 
-/* harmony default export */ const Context = ((/* unused pure expression or super */ null && (Context_ReactReduxContext)));
+/* harmony default export */ const Context = ((/* unused pure expression or super */ null && (ReactReduxContext)));
 // EXTERNAL MODULE: ./node_modules/react-redux/es/utils/batch.js
 var utils_batch = __webpack_require__(256);
 ;// CONCATENATED MODULE: ./node_modules/react-redux/es/utils/Subscription.js
@@ -3422,7 +7159,7 @@ function createListenerCollection() {
   };
 }
 
-var Subscription_Subscription = /*#__PURE__*/function () {
+var Subscription = /*#__PURE__*/function () {
   function Subscription(store, parentSub) {
     this.store = store;
     this.parentSub = parentSub;
@@ -3483,7 +7220,7 @@ function Provider(_ref) {
       context = _ref.context,
       children = _ref.children;
   var contextValue = (0,react.useMemo)(function () {
-    var subscription = new Subscription_Subscription(store);
+    var subscription = new Subscription(store);
     subscription.onStateChange = subscription.notifyNestedSubs;
     return {
       store: store,
@@ -3506,7 +7243,7 @@ function Provider(_ref) {
       subscription.onStateChange = null;
     };
   }, [contextValue, previousState]);
-  var Context = context || Context_ReactReduxContext;
+  var Context = context || ReactReduxContext;
   return /*#__PURE__*/react.createElement(Context.Provider, {
     value: contextValue
   }, children);
@@ -3534,7 +7271,7 @@ var react_is = __webpack_require__(973);
 // is created synchronously, otherwise a store update may occur before the
 // subscription is created and an inconsistent state may be observed
 
-var useIsomorphicLayoutEffect_useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? react.useLayoutEffect : react.useEffect;
+var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? react.useLayoutEffect : react.useEffect;
 ;// CONCATENATED MODULE: ./node_modules/react-redux/es/components/connectAdvanced.js
 
 
@@ -3562,7 +7299,7 @@ function storeStateUpdatesReducer(state, action) {
 }
 
 function useIsomorphicLayoutEffectWithArgs(effectFunc, effectArgs, dependencies) {
-  useIsomorphicLayoutEffect_useIsomorphicLayoutEffect(function () {
+  useIsomorphicLayoutEffect(function () {
     return effectFunc.apply(void 0, effectArgs);
   }, dependencies);
 }
@@ -3700,7 +7437,7 @@ _ref) {
       _ref2$forwardRef = _ref2.forwardRef,
       forwardRef = _ref2$forwardRef === void 0 ? false : _ref2$forwardRef,
       _ref2$context = _ref2.context,
-      context = _ref2$context === void 0 ? Context_ReactReduxContext : _ref2$context,
+      context = _ref2$context === void 0 ? ReactReduxContext : _ref2$context,
       connectOptions = (0,objectWithoutPropertiesLoose/* default */.Z)(_ref2, ["getDisplayName", "methodName", "renderCountProp", "shouldHandleStateChanges", "storeKey", "withRef", "forwardRef", "context"]);
 
   if (false) { var customStoreWarningMessage; }
@@ -3777,7 +7514,7 @@ _ref) {
         if (!shouldHandleStateChanges) return NO_SUBSCRIPTION_ARRAY; // This Subscription's source should match where store came from: props vs. context. A component
         // connected to the store via props shouldn't use subscription from context, or vice versa.
 
-        var subscription = new Subscription_Subscription(store, didStoreComeFromProps ? null : contextValue.subscription); // `notifyNestedSubs` is duplicated to handle the case where the component is unmounted in
+        var subscription = new Subscription(store, didStoreComeFromProps ? null : contextValue.subscription); // `notifyNestedSubs` is duplicated to handle the case where the component is unmounted in
         // the middle of the notification loop, where `subscription` will then be null. This can
         // probably be avoided if Subscription's listeners logic is changed to not call listeners
         // that have been unsubscribed in the  middle of the notification loop.
@@ -4144,8 +7881,8 @@ function createConnect(_temp) {
  * }
  */
 
-function useReduxContext() {
-  var contextValue = useContext(ReactReduxContext);
+function useReduxContext_useReduxContext() {
+  var contextValue = (0,react.useContext)(ReactReduxContext);
 
   if (false) {}
 
@@ -4162,13 +7899,13 @@ function useReduxContext() {
  * @returns {Function} A `useStore` hook bound to the specified context.
  */
 
-function useStore_createStoreHook(context) {
+function createStoreHook(context) {
   if (context === void 0) {
     context = ReactReduxContext;
   }
 
-  var useReduxContext = context === ReactReduxContext ? useDefaultReduxContext : function () {
-    return useContext(context);
+  var useReduxContext = context === ReactReduxContext ? useReduxContext_useReduxContext : function () {
+    return (0,react.useContext)(context);
   };
   return function useStore() {
     var _useReduxContext = useReduxContext(),
@@ -4193,7 +7930,7 @@ function useStore_createStoreHook(context) {
  * }
  */
 
-var useStore = /*#__PURE__*/(/* unused pure expression or super */ null && (useStore_createStoreHook()));
+var useStore_useStore = /*#__PURE__*/(/* runtime-dependent pure expression or super */ 164 == __webpack_require__.j ? (createStoreHook()) : null);
 ;// CONCATENATED MODULE: ./node_modules/react-redux/es/hooks/useDispatch.js
 
 
@@ -4209,7 +7946,7 @@ function createDispatchHook(context) {
     context = ReactReduxContext;
   }
 
-  var useStore = context === ReactReduxContext ? useDefaultStore : createStoreHook(context);
+  var useStore = context === ReactReduxContext ? useStore_useStore : createStoreHook(context);
   return function useDispatch() {
     var store = useStore();
     return store.dispatch;
@@ -4237,7 +7974,7 @@ function createDispatchHook(context) {
  * }
  */
 
-var useDispatch = /*#__PURE__*/(/* unused pure expression or super */ null && (createDispatchHook()));
+var useDispatch = /*#__PURE__*/(/* runtime-dependent pure expression or super */ 164 == __webpack_require__.j ? (createDispatchHook()) : null);
 ;// CONCATENATED MODULE: ./node_modules/react-redux/es/hooks/useSelector.js
 
 
@@ -4250,18 +7987,18 @@ var refEquality = function refEquality(a, b) {
 };
 
 function useSelectorWithStoreAndSubscription(selector, equalityFn, store, contextSub) {
-  var _useReducer = useReducer(function (s) {
+  var _useReducer = (0,react.useReducer)(function (s) {
     return s + 1;
   }, 0),
       forceRender = _useReducer[1];
 
-  var subscription = useMemo(function () {
+  var subscription = (0,react.useMemo)(function () {
     return new Subscription(store, contextSub);
   }, [store, contextSub]);
-  var latestSubscriptionCallbackError = useRef();
-  var latestSelector = useRef();
-  var latestStoreState = useRef();
-  var latestSelectedState = useRef();
+  var latestSubscriptionCallbackError = (0,react.useRef)();
+  var latestSelector = (0,react.useRef)();
+  var latestStoreState = (0,react.useRef)();
+  var latestSelectedState = (0,react.useRef)();
   var storeState = store.getState();
   var selectedState;
 
@@ -4328,8 +8065,8 @@ function createSelectorHook(context) {
     context = ReactReduxContext;
   }
 
-  var useReduxContext = context === ReactReduxContext ? useDefaultReduxContext : function () {
-    return useContext(context);
+  var useReduxContext = context === ReactReduxContext ? useReduxContext_useReduxContext : function () {
+    return (0,react.useContext)(context);
   };
   return function useSelector(selector, equalityFn) {
     if (equalityFn === void 0) {
@@ -4343,7 +8080,7 @@ function createSelectorHook(context) {
         contextSub = _useReduxContext.subscription;
 
     var selectedState = useSelectorWithStoreAndSubscription(selector, equalityFn, store, contextSub);
-    useDebugValue(selectedState);
+    (0,react.useDebugValue)(selectedState);
     return selectedState;
   };
 }
@@ -4371,7 +8108,7 @@ function createSelectorHook(context) {
  * }
  */
 
-var useSelector = /*#__PURE__*/(/* unused pure expression or super */ null && (createSelectorHook()));
+var useSelector = /*#__PURE__*/(/* runtime-dependent pure expression or super */ 164 == __webpack_require__.j ? (createSelectorHook()) : null);
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
 var react_dom = __webpack_require__(935);
 ;// CONCATENATED MODULE: ./node_modules/react-redux/es/utils/reactBatchedUpdates.js

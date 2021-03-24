@@ -1,0 +1,84 @@
+<html>
+
+
+
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>StandardTexter - Settings</title>
+<style type="text/css">
+.myButton {
+   box-shadow:inset 0px 1px 0px 0px #ffffff;
+   background-color:#e1e1e1;
+   border-radius:6px;
+   border:1px solid black;
+   display:inline-block;
+   cursor:pointer;
+   color:black;
+   font-family:Arial;
+   font-size:15px;
+   font-weight:bold;
+   padding:6px 24px;
+   text-decoration:none;
+   height:20px;
+   width:200px;
+}
+.myButton:hover {
+   background-color:#a3a3a3;
+}
+.myButton:active {
+   position:relative;
+   top:1px;
+}
+textarea {
+   width: 50em;
+   height: 15em;
+   border: 1px solid black;
+   padding: 0.5em;
+   font-family: Verdana, sans-serif;
+   background: #FFC;
+}
+
+html,body,#overlayDiv {height:100%;}
+#overlayDiv {position:fixed;top:0;left:0;z-index:10;width:100%;background:#000;color:#fff;opacity:.5;display:none;}
+#overlayDiv p {display:none;}
+
+html,body,#infowrapperDiv {height:100%;}
+#infowrapperDiv {position:fixed;top:0;left:0;z-index:10;width:100%;background:#000;color:#fff;background:rgba(0, 0, 0, 0.6);overflow-y: scroll;display:none;}
+
+#infoDiv {position:relative;top:100;z-index:20;width:80%;margin:auto;background:white;color:black;opacity:1;padding:20px;box-shadow: 20px 20px 10px 10px rgba(0, 0, 0, 0.9);display:block;}
+
+#pageDiv {position:relative;z-index:1;}
+
+#closehinweis {position: absolute; border:none; margin-top:20px; margin-left:550px; width:240px; height:100px; font-family:Arial; font-size:9pt; font-weight:normal; z-index: -1;}
+#backuphinweis {position: absolute; border:none; margin-top:-10px; margin-left:550px; width:240px; height:100px; font-family:Arial; font-size:9pt; font-weight:normal; z-index: -1;}
+</style>
+</head>
+
+<body lang=DE>
+<div>
+
+  <div>    <input type="radio" id="contactChoice1"
+     name="contact" value="email" checked>
+    <label for="contactChoice1">Email</label>
+  </div>
+  
+  <div>
+      <input type="radio" id="contactChoice2"
+     name="contact" value="phone">
+    <label for="contactChoice2">Phone</label>
+  </div>
+  
+  <div>
+      <input type="radio" id="contactChoice3"
+     name="contact" value="mail">
+    <label for="contactChoice3">Mail</label>
+  </div>
+    </div>
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+
+
+</body>
+</html>

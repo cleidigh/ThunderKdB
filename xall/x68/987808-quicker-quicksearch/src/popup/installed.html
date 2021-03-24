@@ -1,29 +1,87 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+   <!--
+       /*
+ * License:  see License.txt
+
+ * Code  for TB 78 or later: Creative Commons (CC BY-ND 4.0):
+ *      Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+ 
+ * Copyright: Klaus Buecher/opto 2021
+ * Contributors:  see Changes.txt
+ */
+
+
+     -->
+ 
+
+
+     <!DOCTYPE HTML>
 <html>
   <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <title>Tools for quicker searching</title>
+  <title>Welcome to Quicker Quicksearch</title>
+  <link rel="stylesheet" href="popup.css" type="text/css">
+  <script type="application/javascript" src="installed.js"></script>
+
   </head>
   <body>
-<b>Quicker quicksearch</b>
-<br><br>
-This addon introduces some tools to help with quicker searching.
-<br><br>
-Every message in the messagelist has a new entry in its context (rightclick) menu:
-<br><br>
+    <div id="innerwrapper">
+      <h1>Successfully installed {addon} {version}.</h1>
+          <h2>Features</h2>    
+  
 
-<ul><li>   Quicksearch: email (click) / domain (Ctrl-click)  </li></ul>
-<br><br>
+          <br>
+          This addon introduces some tools to help with quicker searching. 
+       
+          Every message in the messagelist has a new entry in its context (rightclick) menu:
+          <br>
+          
+          <ul><li>   Quicksearch: email (click) / domain (Ctrl-click) / subject (Alt-click) </li></ul>
+          <br>
+          
+          <b>'Click'</b>:If this is clicked, the full emailaddress is inserted into the quick search box. So the messagelist will only show emails from/to this email address.
+          <br>    
+          <b>'Ctrl-Click'</b>: If this is clicked while ctrl is held down, the domain (xyz.de, for example) is entered into the quicksearch box. Now, all emails from/to all email addresses of that domain will be displayed.
+          <br>
+          <b>'Alt-Click'</b>: If this is clicked while alt is held down, the subject is entered into the quicksearch box. 
+        </ul>
+          <br><br>    
+          <b> by keyboard:</b><br>   
+          
+          <b>Ctrl+Alt+B:</b> copy author to quicksearch box<br>
+          <b>Ctrl+Alt+N:</b> copy domain to quicksearch box<br>   
+          <b>Ctrl+Alt+H:</b> copy domain to quicksearch box<br>   
+        
+          <br></p>
+       <p></p>
+      <li><b>Other addons:</b></li>
+             <p><b>Nostalgy++</b>: easy archiving/moving of emails to their destination folders, 
+             with autocomplete of folder names and rules for suggested folder. 
+             Compose window: always display cc or bcc, easy selecting input fields (to, cc, bcc, body, attachments), etc. 
+          </p>
+        <p><b>Text insert++</b>: Easy inserting standard text. br+ctrl-D converts to best regards. Define your own replacements. 
+        Cursor can be in the middle of the replacement text.</p>
+        <p><b>Attachment image viewer</b>: Download dialog shows thumbnail of image. Image viewer with zoom, rotate, flip, slideshow etc. </p>
+        <p><b>XNote++</b>: Add notes to your emails to remind or to plan a reply.     
+        <h2>Help with a Donation!</h2>
+        
+          
+          <p>
+          In TB 78, Thunderbird internals changed widely. Klaus Buecher/opto 
+          is making {addon} fully 
+          functional again. I appreciate if you can support
+        this work by a donation. </p>
+          <p> </p>
+          <p> </p>      
+        <div>    </div>
+           <p class="actionlinks">
+          <a id="donate">I want to contribute with a one time donation</a>
+        </p>
+        <p> </p>
+    
+    
+        
 
-<b>'Click'</b>:If this is clicked, the full emailaddress is inserted into the quick search box. So the messagelist will only show emails from/to this email address.
-<br>     <br>
-<b>'Ctrl-Click'</b>: If this is clicked while ctrl is held down, the domain (xyz.de, for example) is entered into the quicksearch box. Now, all emails from/to all email addresses of that domain will be displayed.
-</ul>
-<br><br>     <br>
-<b> by keyboard:</b><br>   <br>
-This feature works in TB 68-76, but cannot be uploaded to addons.thunderbird.net, it throws an error there. So it will follow in due time.
-<b>Ctrl+Alt+H:</b> copy author to quicksearch box<br>
-<b>Ctrl+Alt+J:</b> copy domain to quicksearch box<br>
+    </div>
   </body>
 </html>

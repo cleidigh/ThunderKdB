@@ -54,6 +54,13 @@ if ("undefined" == typeof(cardbookPrint)) {
 			cardbookPrint.openTag("style", 'type="text/css" id="sheet"', "");
 			cardbookPrint.result = cardbookPrint.result + "\r\n";
 			cardbookPrint.indentation = cardbookPrint.indentation + "   ";
+			cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".vCard { border-bottom: 2px solid black; padding: 0; }";
+			cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".table { text-align: left; word-wrap: break-word; vertical-align: top; }";
+			cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".datavalue { width: 100%; white-space: pre-wrap; word-wrap: break-word; }";
+			cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".typevalue { white-space: nowrap; }";
+			cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".dummyvalue { min-width: 10px; }";
+			cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".titlevalue { white-space: nowrap; font-weight: bold; }";
+			cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".print_preview_category { border: thin solid; display: inline; padding: 0 0.25em; }";
 			var styles = [];
 			for (let category in cardbookRepository.cardbookNodeColors) {
 				var categoryCleanName = cardbookRepository.cardbookUtils.formatCategoryForCss(category);
@@ -62,7 +69,7 @@ if ("undefined" == typeof(cardbookPrint)) {
 					continue;
 				}
 				var oppositeColor = cardbookRepository.getTextColorFromBackgroundColor(color);
-				cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".print_preview_category_" + categoryCleanName + "{ color: " + oppositeColor + "; background-color: " + color + "}";
+				cardbookPrint.result = cardbookPrint.result + cardbookPrint.indentation + ".print_preview_category_" + categoryCleanName + "{ color: " + oppositeColor + "; background-color: " + color + "; }";
 			}
 			cardbookPrint.indentation = cardbookPrint.indentation.replace("   ", "");
 			cardbookPrint.closeTag("style", true);

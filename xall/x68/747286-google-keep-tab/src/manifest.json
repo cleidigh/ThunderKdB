@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "thunderkeepplus@gmail.com",
+      "strict_min_version": "78.0"
+    }
+  },
+  "name": "Google Keep Tab",
+  "description": "__MSG_extensionDescription__",
+  "author": "[Garoe Dorta]",
+  "homepage_url": "https://github.com/Garoe/Thunderbird-Google-Keep-Tab/",
+  "version": "0.10.8",
+  "default_locale": "en",
+  "icons": {
+    "48": "skin/google_keep_icon.svg",
+    "96": "skin/google_keep_icon.svg"
+  },
+  "browser_action": {
+    "default_title": "Google Keep",
+    "default_icon": "skin/google_keep_icon.svg"
+  },
+  "background": {
+    "scripts": [
+      "src/background.js"
+    ]
+  }
+}

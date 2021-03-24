@@ -330,6 +330,31 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		searchAvailableCards: function (aSelectedList) {
+			function addCardFromLongSearch(aCard) {
+				for (let added of wdw_cardEdition.cardbookeditlists.addedCards) {
+					if (added[0] == aCard.uid) {
+						return;
+					}
+				}
+				if (aCard.uid != document.getElementById('uidTextBox').value) {
+					wdw_cardEdition.cardbookeditlists.availableCards.push([aCard.uid, aCard.fn, aCard.lastname, aCard.firstname, cardbookRepository.cardbookUtils.getName(aCard), "CARD"]);
+				}
+			}
+			function addCardFromCategories(aCard) {
+				for (let available of wdw_cardEdition.cardbookeditlists.availableCards) {
+					if (available[0] == aCard.uid) {
+						return;
+					}
+				}
+				for (let added of wdw_cardEdition.cardbookeditlists.addedCards) {
+					if (added[0] == aCard.uid) {
+						return;
+					}
+				}
+				if (aCard.uid != document.getElementById('uidTextBox').value) {
+					wdw_cardEdition.cardbookeditlists.availableCards.push([aCard.uid, aCard.fn, aCard.lastname, aCard.firstname, cardbookRepository.cardbookUtils.getName(aCard), "CARD"]);
+				}
+			}
 			var listOfUid = [];
 			if (!aSelectedList) {
 				var myTree = document.getElementById('availableCardsTree');
@@ -342,18 +367,18 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			var myCurrentDirPrefId = document.getElementById('dirPrefIdTextBox').value;
 			if (myCurrentDirPrefId != "") {
 				for (var i in cardbookRepository.cardbookCardLongSearch[myCurrentDirPrefId]) {
+					// cards
 					if (i.includes(searchValue) || searchValue == "") {
 						for (let card of cardbookRepository.cardbookCardLongSearch[myCurrentDirPrefId][i]) {
-							if (card.dirPrefId == myCurrentDirPrefId) {
-								var found = false;
-								for (var k = 0; k < wdw_cardEdition.cardbookeditlists.addedCards.length; k++) {
-									if (wdw_cardEdition.cardbookeditlists.addedCards[k][0] == card.uid) {
-										found = true;
-										break;
-									}
-								}
-								if (!found && card.uid != document.getElementById('uidTextBox').value) {
-									wdw_cardEdition.cardbookeditlists.availableCards.push([card.uid, card.fn, card.lastname, card.firstname, cardbookRepository.cardbookUtils.getName(card), "CARD"]);
+							addCardFromLongSearch(card);
+						}
+					}
+					// categories
+					if (searchValue) {
+						for (let category of cardbookRepository.cardbookAccountsCategories[myCurrentDirPrefId]) {
+							if (category.toUpperCase().includes(searchValue)) {
+								for (let card of cardbookRepository.cardbookDisplayCards[myCurrentDirPrefId+"::categories::"+category].cards) {
+									addCardFromCategories(card);
 								}
 							}
 						}
@@ -454,8 +479,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
 				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
 				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
-				document.getElementById('categoriesReadOnlyGroupbox').setAttribute('hidden', 'true');
-				document.getElementById('categoriesReadWriteGroupbox').removeAttribute('hidden');
+				document.getElementById('PreferMailFormatReadOnlyGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('PreferMailFormatReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'false');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'false');
 				document.getElementById('saveEditionLabel').setAttribute('hidden', 'true');
@@ -473,6 +498,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
 				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
 				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
+				document.getElementById('PreferMailFormatReadOnlyGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('PreferMailFormatReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'false');
 				document.getElementById('saveEditionLabel').setAttribute('hidden', 'true');
@@ -494,6 +521,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('keyReadOnlyHbox').removeAttribute('hidden');
 				document.getElementById('keyReadWriteHbox').setAttribute('hidden', 'true');
 				document.getElementById('keyReadWriteToolsVbox').setAttribute('hidden', 'true');
+				document.getElementById('PreferMailFormatReadOnlyGroupbox').removeAttribute('hidden');
+				document.getElementById('PreferMailFormatReadWriteGroupbox').setAttribute('hidden', 'true');
 				document.getElementById('defaultCardImage').removeAttribute('context');
 				document.getElementById('defaultCardImage').removeAttribute('ondblclick');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
@@ -522,6 +551,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
 				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
 				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
+				document.getElementById('PreferMailFormatReadOnlyGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('PreferMailFormatReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('classicalRows').setAttribute('hidden', 'true');
@@ -540,6 +571,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
 				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
 				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
+				document.getElementById('PreferMailFormatReadOnlyGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('PreferMailFormatReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('classicalRows').setAttribute('hidden', 'true');
@@ -559,6 +592,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('keyReadOnlyHbox').setAttribute('hidden', 'true');
 				document.getElementById('keyReadWriteHbox').removeAttribute('hidden');
 				document.getElementById('keyReadWriteToolsVbox').removeAttribute('hidden');
+				document.getElementById('PreferMailFormatReadOnlyGroupbox').setAttribute('hidden', 'true');
+				document.getElementById('PreferMailFormatReadWriteGroupbox').removeAttribute('hidden');
 				document.getElementById('createEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('createAndReplaceEditionLabel').setAttribute('hidden', 'true');
 				document.getElementById('classicalRows').setAttribute('hidden', 'true');
@@ -1418,6 +1453,13 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				othersTemp3 = othersTemp2.split(re);
 			}
 			aCard.others = othersTemp1.concat(othersTemp3);
+
+			aCard.others = aCard.others.filter(element => !element.toUpperCase().startsWith(cardbookRepository.defaultEmailFormat));
+			if (document.getElementById('PreferMailFormatPopup').value == "1") {
+				aCard.others.push(cardbookRepository.defaultEmailFormat + ":FALSE");
+			} else if (document.getElementById('PreferMailFormatPopup').value == "2") {
+				aCard.others.push(cardbookRepository.defaultEmailFormat + ":TRUE");
+			}
 
 			var myPGNextNumber = cardbookRepository.cardbookTypes.rebuildAllPGs(aCard);
 			var myEvents = cardbookWindowUtils.getAllEvents(true);

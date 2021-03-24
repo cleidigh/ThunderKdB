@@ -656,15 +656,19 @@ var cardbookIndexedDB = {
 				let myCardToCreate1 = item.oldCards.find(child => child.cbid == myCardToDelete.cbid);
 				if (!myCardToCreate1) {
 					let myCardToCreate2 = cardbookRepository.cardbookDisplayCards[myCardToDelete.dirPrefId].cards.find(child => child.cbid == myCardToDelete.cbid);
-					if (myCardToCreate2.created === true) {
-						cardbookRepository.cardbookUtils.addTagCreated(myCardToDelete);
-						cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " deleting myCardToDelete.cbid : " + myCardToDelete.cbid);
-						cardbookRepository.deleteCards([myCardToDelete], myActionId);
-					} else {
-						cardbookRepository.cardbookUtils.addTagDeleted(myCardToDelete);
-						myCardToDelete.etag = myCardToCreate2.etag;
-						cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " deleting myCardToDelete.cbid : " + myCardToDelete.cbid);
-						cardbookRepository.deleteCards([myCardToDelete], myActionId);
+					// may not exist anymore with the same id, for example for Google contacts where ids are changed
+					// in this tricky case, pass
+					if (myCardToCreate2) {
+						if (myCardToCreate2.created === true) {
+							cardbookRepository.cardbookUtils.addTagCreated(myCardToDelete);
+							cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " deleting myCardToDelete.cbid : " + myCardToDelete.cbid);
+							cardbookRepository.deleteCards([myCardToDelete], myActionId);
+						} else {
+							cardbookRepository.cardbookUtils.addTagDeleted(myCardToDelete);
+							myCardToDelete.etag = myCardToCreate2.etag;
+							cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : executing undo " + cardbookRepository.currentUndoId + " deleting myCardToDelete.cbid : " + myCardToDelete.cbid);
+							cardbookRepository.deleteCards([myCardToDelete], myActionId);
+						}
 					}
 				}
 			}
