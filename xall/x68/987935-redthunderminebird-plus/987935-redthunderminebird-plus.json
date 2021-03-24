@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 59,
+    "average_daily_users": 69,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-05T07:52:54Z",
     "current_version": {
-        "id": 2474636,
+        "id": 2475506,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/redthunderminebird-plus/versions/2474636",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/redthunderminebird-plus/versions/2475506",
         "files": [
             {
-                "id": 1017798,
-                "created": "2020-11-05T08:19:06Z",
-                "hash": "sha256:a40c72b460ccd768877710d6cb167a08c3f8e8495163440dc6a7cd23b65e17b4",
+                "id": 1018667,
+                "created": "2021-03-16T03:35:02Z",
+                "hash": "sha256:f20f14c2677c917344352d98c858c8b46a0c43215e97b6ae10592735acdde6f5",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 81244,
+                "size": 83923,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017798/redthunderminebird_plus_redmine-2.1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018667/redthunderminebird_plus_redmine-2.1.6-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "menus",
@@ -57,12 +57,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Support Thunderbird 78.\n* Support multiple accounts.\n* Support contextual menu command.\n* Add menu button to the message header area.\n* Add ability to log time entries when updating issues.\n* Add ability to remove last quotation part from the message body.\n* Add ability to paste images from the clipboard.\n\nKnow restriction:\n\n* Cannot extract attachments automatically. You need to save attachments to your local disk and drag &amp; drop files to the dialog manually.",
-            "ja": "* Thunderbird 78に対応\n* 複数アカウントに対応\n* 場合に応じたコンテキストメニューコマンドの自動選択に対応\n* メッセージヘッダ領域似メニューボタンを追加\n* チケット更新時に時間の記録を追加できるようにした\n* 本文の最後の引用を自動削除できるようにした\n* クリップボードからの画像の貼り付けに対応\n\n既知の制限事項:\n\n* 添付ファイルは自動的にはアップロードされません。一旦ローカルディスクにファイルを保存し、ダイアログに手動操作でドラッグ&amp;ドロップしてください。"
+            "en-US": "Fix regression: fallback to \"link to issue\" correctly when the updating message is not yet linked to any issue.",
+            "ja": "後退バグの修正：チケット更新時、まだチケットに関連付けられていないメッセージだった場合に、正しくチケット関連付けの操作にフォールバックするように修正"
         },
-        "reviewed": "2020-11-05T08:20:03Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/redthunderminebird-plus/versions/2.1.1",
-        "version": "2.1.1"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/redthunderminebird-plus/versions/2.1.6",
+        "version": "2.1.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -84,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-05T08:20:03Z",
+    "last_updated": "2021-03-16T03:35:03Z",
     "name": {
         "en-US": "RedThunderMineBird Plus",
         "ja": "RedThunderMineBird Plus - Redmine連携+"
@@ -191,7 +191,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-05T08:19:06Z",
+            "comp78pv_version": "2.1.1",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 0,
+    "average_daily_users": 5,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -60,7 +60,8 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This add-on makes it easy to open folders on a file server.\nWhen the address of a folder is written in the body of an email, \nsuch as \"\\nas\\share\\Documents\\2021\\Manual\\for printing\"\nJust click the add-on button to open the folder.\n\nIn order to use the add-on, you need to install two things: <strong>the add-on</strong> and <strong>the linked app</strong>.\nYou can download the linked app from the following website.\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>\n\n---\nThunderbirdでファイルサーバーのフォルダーを簡単に開くアドオンです。\nメッセージに「¥¥nas¥share¥ドキュメント¥2021¥マニュアル¥印刷用」のような\nフォルダーのアドレスが書かれているときに\nアドオンのボタンを押すだけでフォルダーを開くことができます\n\nアドオンを使用するために、<strong>アドオン</strong>と<strong>連係アプリ</strong>の2つをインストールする必要があります。\n連携アプリは以下のサイトからダウンロードできます。\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>"
+        "en-US": "This add-on makes it easy to open folders on a file server.\nWhen the address of a folder is written in the body of an email, \nsuch as \"\\nas\\share\\Documents\\2021\\Manual\\for printing\"\nJust click the add-on button to open the folder.\n\nIn order to use the add-on, you need to install two things: <strong>the add-on</strong> and <strong>the linked app</strong>.\nYou can download the linked app from the following website.\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>",
+        "ja": "Thunderbirdでファイルサーバーのフォルダーを簡単に開くアドオンです。\nメッセージに「¥¥nas¥share¥ドキュメント¥2021¥マニュアル¥印刷用」のような\nフォルダーのアドレスが書かれているときに\nアドオンのボタンを押すだけでフォルダーを開くことができます\n\nアドオンを使用するために、<strong>アドオン</strong>と<strong>連係アプリ</strong>の2つをインストールする必要があります。\n連携アプリは以下のサイトからダウンロードできます。\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/openfolder/edit",
@@ -85,7 +86,42 @@
         "en-US": "OpenFolder",
         "ja": "OpenFolder"
     },
-    "previews": [],
+    "previews": [
+        {
+            "id": 206477,
+            "caption": {
+                "en-US": "add-on",
+                "ja": ""
+            },
+            "image_size": [
+                382,
+                132
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206477.png?modified=1615644670",
+            "thumbnail_size": [
+                320,
+                111
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206477.png?modified=1615644670"
+        },
+        {
+            "id": 206475,
+            "caption": {
+                "en-US": "linked app",
+                "ja": "連携アプリ"
+            },
+            "image_size": [
+                383,
+                114
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206475.png?modified=1615644747",
+            "thumbnail_size": [
+                320,
+                95
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206475.png?modified=1615644747"
+        }
+    ],
     "public_stats": true,
     "ratings": {
         "bayesian_average": 0,
@@ -99,8 +135,8 @@
     "slug": "openfolder",
     "status": "public",
     "summary": {
-        "en-US": "Thunderbirdでファイルサーバーのフォルダーを簡単に開くアドオンです。\nメッセージに「¥¥nas¥share¥ドキュメント¥2021¥マニュアル¥印刷用」のような\nフォルダーのアドレスが書かれているときに\nアドオンのボタンを押すだけでフォルダーを開くことができます\n\nアドオンを使用するために、アドオンと連係アプリの2つをインストールする必要があります。\n連携アプリは以下のサイトからダウンロードできます。\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>",
-        "ja": "このアドオンを使うと、ファイルサーバー上のフォルダーを簡単に開くことができます。"
+        "en-US": "This add-on makes it easy to open folders on a file server.\n\nIn order to use the add-on, you need to install two things: the add-on and the linked app.\nYou can download the linked app from the following website.\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>",
+        "ja": "Thunderbirdでファイルサーバーのフォルダーを簡単に開くアドオンです。\n\nアドオンを使用するために、アドオンと連係アプリの2つをインストールする必要があります。\n連携アプリは以下のサイトからダウンロードできます。\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>"
     },
     "support_email": {
         "en-US": "email@openfolder.net"
@@ -109,9 +145,16 @@
         "en-US": "https://openfolder.net/"
     },
     "tags": [
+        "fail",
+        "fileserver",
         "firefox57",
+        "folder",
+        "nas",
+        "open",
+        "path",
         "unc",
-        "オープン",
+        "パス",
+        "ファイル",
         "ファイルサーバー",
         "フォルダー",
         "開く"

@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 23433,
+    "average_daily_users": 24041,
     "categories": {
         "seamonkey": [
             "bookmarks",
@@ -30,26 +30,26 @@
     "contributions_url": "",
     "created": "2006-08-27T04:57:18Z",
     "current_version": {
-        "id": 2475404,
+        "id": 2475547,
         "compatibility": {
             "thunderbird": {
-                "max": "86.0",
+                "max": "87.0",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2475404",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2475547",
         "files": [
             {
-                "id": 1018565,
-                "created": "2021-02-22T20:18:03Z",
-                "hash": "sha256:45abbd925f44fe314f493c39c18f65b299e9420fa35a36ba6cb7ed73a593af57",
+                "id": 1018708,
+                "created": "2021-03-19T12:18:54Z",
+                "hash": "sha256:9a59d3c1bfb5d4a7a94da0b1d69e20f30a6f85efec8c0af86c20d76775b1c665",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1058918,
+                "size": 1090975,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018565/quickfolders_tabbed_folders-5.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018708/quickfolders_tabbed_folders-5.4.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -59,14 +59,14 @@
             "name": {
                 "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/5.3"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/5.4.1"
         },
         "release_notes": {
-            "en-US": "<ul><li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li><li>You can <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page\">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li><li>If you are not ready for a license you can also <a rel=\"nofollow\" href=\"https://quickfolders.org/donate.html#donate\">donate from here</a></li></ul>\n<b>Fixed Thunderbird 78 Regressions</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/106\">[issue 106]</a> Backup function does not save general / advanced / layout settings.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/108\">[issue 108]</a> Some changes in options window are ignored and not stored. Settings that could not be changed from the options screen: \n- Premium / quick move display format \n- General / Message Navigation / Go to next unread mail.\n\nAlso, many layout settings were not updating immediately through the User Interface, because of broken instant apply settings. </li><li> Fixed highlighting of drop targets when dragging mails into a subfolder.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/111\">[issue 111]</a> Paint Mode stopped working in Thunderbird 78. You can now use Paint Mode again from the QuickFolders tools menu to change the colors of multiple tabs. (For best results use the flat style theme).\n\nActivate paint mode, then select a color from the palette and click on the tabs you want to change:\n\nThe colors displayed depend on the selected \"Palette for Colored Tabs\" which is a global setting and offers 3 choices (Standard, Pastel and Night Vision for dark themes). </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/101\">[issue 101]</a> If multiple categories are selected, closing QuickFolders settings reverts to \"Show All\". </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/88\">[issue 88]</a> Fixed highlighting of drop targets when dragging mails into a subfolder. </li></ul>\n<b>Improvements</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/82\">[issue 82]</a> Improved sorting of search results during quickMove / quickJump.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/109\">[issue 109]</a> Menu item Mark Messages read in Folder + subfolders not displayed as expected - it was only shown if the folder of the tab didn't have unread emails itself. This additional menu item that can be used to set subfolders read was only displayed if the actual folder of the tab itself had no unread emails, and only child folders had them. Configure this command in QuickFolders settings / Advanced / Menu Configuration / Mail Commands</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/37\">[issue 37]</a> When no match is found using the \"/\" in quickMove box, display \"No matching parent folders!\" instead of \"...\"</li></ul>\n<b>Other Bug Fixes</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/101\">[issue 101]</a> If multiple categories are selected, closing QuickFolders settings reverts to \"Show All\".</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/107\">[issue 107]</a> Restoring general / layout Settings only works if option for restoring folders also active.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/110\">[issue 110]</a> \"Tab-specific Properties\" overwrites <i>To</i> Address when clicking <i>Write</i> from Address Book.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/112\">[issue 112]</a> Reading List menu - Add current Item not working. </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/114\">[issue 114]</a> Make QuickFolders compatible with <i>Thunderbird beta 86.0b3</i>\n- Removed grids from options screen to support Thunderbird 86 and higher. Without the fix, the dialog was displayed to wide and items on the support tab did not render correctly.\n- Using renamed function FtvItem for creating Recent folders list.\n\nIf you find more regressions associated with Thunderbird 86 or higher, please report at issue 114 linked above.</li></ul>"
+            "en-US": "<b>Release 5.4.1</b>\n<ul><li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li><li>You can <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page\">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li><li>If you are not ready for a license you can also <a rel=\"nofollow\" href=\"https://quickfolders.org/donate.html#donate\">donate from here</a></li></ul>\n<b>Improvements</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/117\">[issue 117]</a> Add color picker for text color in tab-specific properties.</li><li> Added quickMove advanced settings panel for the following new features:\n\n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/118\">[issue 118]</a> Restrict quickMove results to current server. I also added a list of accounts to explicitely exclude selected servers from search results.<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/74\">[issue 74]</a> User Interface to enable silent mode / disable notification after moving mails. <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/119\">[issue 119]</a>The maximum number of search results can be changed from 25. </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/103\">[issue 103]</a> quickMove now also supports copying folders. To copy a folder, hold down the CTRL key while you drop it on the quickMove button. Queued folders are now also properly listed in the quickMove menu.</li></ul>\n<b>Bug Fixes</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/115\">[issue 115]</a> fix restoring of config values </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/116\">[issue 116]</a> Custom Text color in tab-specific is not set on tab.\n\nYou can use the advanced panel for a number of functions, such as not showing the unread status or excluding a folder (and optionally also its subfolders) from the quickMove search results. You can also prefill a different from address and to address when writing new mails. To display it, right-click any tab and select\"Tab-specific Properties\" from the QuickFolders commands submenu.</li><li> Regression in 5.4 (fixed in 5.4.1) <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/123\"> [issue 123]</a> Fixed: An error in the French translation leads to the Settings screen not loading.</li></ul>\n<b>Thunderbird 78 Regressions, Tb 87 and beyond</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/115\">[issue 115]</a> Restore does not load some general / layout setting. Some general / layout settings were not restored properly even when they were saved during backup. </li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/114\">[issue 114]</a> Make QuickFolders compatible with &lt;span class=\"emphasis\"&gt;Thunderbird beta 86.0b3&lt;/span&gt;\n\n- Fixed: Support Pages did not open anymore as content Tabs have a different parameter set.\n- Fixed: layout of advanced tab properties broken due to deprecated grid element.\n- Fixed: Copy / Move folders uses new MailServices.copy object\n\nIf you find more regressions associated with Thunderbird 86 or higher, please report them at issue 114 linked above.</li>            </ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/5.3",
-        "version": "5.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/5.4.1",
+        "version": "5.4.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -85,16 +85,16 @@
         "en-US": "http://quickfolders.org/index.html",
         "de": "http://quickfolders.mozdev.org/index.html"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-64.png?modified=1605883509",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-64.png?modified=1616077628",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-32.png?modified=1605883509",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-64.png?modified=1605883509"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-32.png?modified=1616077628",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/3/3254-64.png?modified=1616077628"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-02-22T21:12:52Z",
+    "last_updated": "2021-03-19T12:24:37Z",
     "name": {
         "en-US": "QuickFolders (Tabbed Folders)",
         "de": "QuickFolders (Ordner Tabs)",
@@ -110,12 +110,12 @@
                 700,
                 378
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69682.png?modified=1530208227",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69682.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 173
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69682.png?modified=1530208227"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69682.png?modified=1616077628"
         },
         {
             "id": 154194,
@@ -126,12 +126,12 @@
                 581,
                 241
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154194.png?modified=1530208229",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/154/154194.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 133
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154194.png?modified=1530208229"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/154/154194.png?modified=1616077628"
         },
         {
             "id": 29050,
@@ -143,12 +143,12 @@
                 570,
                 327
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/29/29050.png?modified=1530208230",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/29/29050.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 184
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/29/29050.png?modified=1530208230"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/29/29050.png?modified=1616077628"
         },
         {
             "id": 27537,
@@ -160,12 +160,12 @@
                 532,
                 180
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/27/27537.png?modified=1530208231",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/27/27537.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 108
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/27/27537.png?modified=1530208231"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/27/27537.png?modified=1616077628"
         },
         {
             "id": 52099,
@@ -177,12 +177,44 @@
                 440,
                 284
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/52/52099.png?modified=1530208233",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/52/52099.png?modified=1616077628",
             "thumbnail_size": [
                 310,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/52/52099.png?modified=1530208233"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/52/52099.png?modified=1616077628"
+        },
+        {
+            "id": 206486,
+            "caption": {
+                "en-US": "quickJump and quickMove mails by typing a few letters. Also supports subfolders!"
+            },
+            "image_size": [
+                275,
+                181
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206486.png?modified=1616077549",
+            "thumbnail_size": [
+                275,
+                181
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206486.png?modified=1616077549"
+        },
+        {
+            "id": 206485,
+            "caption": {
+                "en-US": "Advanced Search settings"
+            },
+            "image_size": [
+                623,
+                388
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206485.png?modified=1616077633",
+            "thumbnail_size": [
+                320,
+                199
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206485.png?modified=1616077633"
         },
         {
             "id": 72106,
@@ -193,12 +225,12 @@
                 700,
                 195
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72106.png?modified=1530208234",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72106.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 89
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72106.png?modified=1530208234"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72106.png?modified=1616077628"
         },
         {
             "id": 58315,
@@ -209,12 +241,12 @@
                 672,
                 396
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58315.png?modified=1530208235",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/58/58315.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 189
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58315.png?modified=1530208235"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/58/58315.png?modified=1616077628"
         },
         {
             "id": 130996,
@@ -225,12 +257,12 @@
                 499,
                 189
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/130/130996.png?modified=1530208237",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/130/130996.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 121
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/130/130996.png?modified=1530208237"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/130/130996.png?modified=1616077628"
         },
         {
             "id": 25832,
@@ -242,12 +274,12 @@
                 455,
                 53
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/25/25832.png?modified=1530208238",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/25/25832.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 37
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/25/25832.png?modified=1530208238"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/25/25832.png?modified=1616077628"
         },
         {
             "id": 28762,
@@ -259,12 +291,12 @@
                 571,
                 315
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28762.png?modified=1530208239",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/28/28762.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 177
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28762.png?modified=1530208239"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/28/28762.png?modified=1616077628"
         },
         {
             "id": 72102,
@@ -275,12 +307,12 @@
                 227,
                 237
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72102.png?modified=1530208241",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72102.png?modified=1616077628",
             "thumbnail_size": [
                 192,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72102.png?modified=1530208241"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72102.png?modified=1616077628"
         },
         {
             "id": 72101,
@@ -291,12 +323,12 @@
                 354,
                 525
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72101.png?modified=1530208242",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72101.png?modified=1616077628",
             "thumbnail_size": [
                 135,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72101.png?modified=1530208242"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72101.png?modified=1616077628"
         },
         {
             "id": 113924,
@@ -307,12 +339,12 @@
                 700,
                 493
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113924.png?modified=1530208243",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113924.png?modified=1616077628",
             "thumbnail_size": [
                 284,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113924.png?modified=1530208243"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113924.png?modified=1616077628"
         },
         {
             "id": 113925,
@@ -323,12 +355,12 @@
                 668,
                 525
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113925.png?modified=1530208245",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113925.png?modified=1616077628",
             "thumbnail_size": [
                 254,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113925.png?modified=1530208245"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113925.png?modified=1616077628"
         },
         {
             "id": 113922,
@@ -339,12 +371,12 @@
                 633,
                 525
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113922.png?modified=1530208246",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/113/113922.png?modified=1616077628",
             "thumbnail_size": [
                 241,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113922.png?modified=1530208246"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/113/113922.png?modified=1616077628"
         },
         {
             "id": 69684,
@@ -355,12 +387,12 @@
                 696,
                 440
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69684.png?modified=1530208247",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69684.png?modified=1616077628",
             "thumbnail_size": [
                 316,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69684.png?modified=1530208247"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69684.png?modified=1616077628"
         },
         {
             "id": 69685,
@@ -371,12 +403,12 @@
                 544,
                 508
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69685.png?modified=1530208248",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/69/69685.png?modified=1616077628",
             "thumbnail_size": [
                 214,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69685.png?modified=1530208248"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/69/69685.png?modified=1616077628"
         },
         {
             "id": 60224,
@@ -387,12 +419,12 @@
                 700,
                 150
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60224.png?modified=1530208250",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/60/60224.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 69
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60224.png?modified=1530208250"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/60/60224.png?modified=1616077628"
         },
         {
             "id": 32393,
@@ -404,92 +436,12 @@
                 700,
                 255
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/32/32393.png?modified=1530208251",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/32/32393.png?modified=1616077628",
             "thumbnail_size": [
                 320,
                 117
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/32/32393.png?modified=1530208251"
-        },
-        {
-            "id": 47186,
-            "caption": {
-                "en-US": "Personas Support: Translucent tabs and transparent toolbar"
-            },
-            "image_size": [
-                621,
-                274
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/47/47186.png?modified=1530208252",
-            "thumbnail_size": [
-                320,
-                141
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/47/47186.png?modified=1530208252"
-        },
-        {
-            "id": 67902,
-            "caption": {
-                "en-US": "Start \"Create Filter\" mode"
-            },
-            "image_size": [
-                700,
-                70
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67902.png?modified=1530208254",
-            "thumbnail_size": [
-                320,
-                32
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67902.png?modified=1530208254"
-        },
-        {
-            "id": 67903,
-            "caption": {
-                "en-US": "Filtering learning: just drag and drop emails, as usual leave the rest to the Wizard..."
-            },
-            "image_size": [
-                700,
-                481
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67903.png?modified=1530208255",
-            "thumbnail_size": [
-                291,
-                200
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67903.png?modified=1530208255"
-        },
-        {
-            "id": 72103,
-            "caption": {
-                "en-US": "... tell the filter assistant about the email you filed away ..."
-            },
-            "image_size": [
-                536,
-                366
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72103.png?modified=1530208256",
-            "thumbnail_size": [
-                293,
-                200
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72103.png?modified=1530208256"
-        },
-        {
-            "id": 67905,
-            "caption": {
-                "en-US": "...and it opens a brand new filter to customize, with matching conditions and filter action (move to folder ...)"
-            },
-            "image_size": [
-                700,
-                394
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/67/67905.png?modified=1530208257",
-            "thumbnail_size": [
-                320,
-                180
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/67/67905.png?modified=1530208257"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/32/32393.png?modified=1616077628"
         },
         {
             "id": 63977,
@@ -500,20 +452,20 @@
                 700,
                 494
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/63/63977.png?modified=1530208259",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/63/63977.png?modified=1616077628",
             "thumbnail_size": [
                 283,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/63/63977.png?modified=1530208259"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/63/63977.png?modified=1616077628"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.89065,
-        "count": 160,
-        "average": 4.9,
-        "text_count": 160
+        "bayesian_average": 4.8913,
+        "count": 161,
+        "average": 4.9006,
+        "text_count": 161
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/reviews/",
     "requires_payment": false,
@@ -563,13 +515,13 @@
             "comp69plus": true,
             "comp78plus": true,
             "comp61plus": true,
-            "comp60pv": true,
-            "comp60pv_date": "2018-03-13T16:48:50Z",
             "comp78pv": true,
             "comp78pv_date": "2020-11-17T14:23:23Z",
             "comp78pv_version": "5.0",
             "comp78pv_vmin": "78.0",
-            "comp78pv_vmax": "78.*"
+            "comp78pv_vmax": "78.*",
+            "comp60pv": true,
+            "comp60pv_date": "2018-03-13T16:48:50Z"
         }
     }
 }

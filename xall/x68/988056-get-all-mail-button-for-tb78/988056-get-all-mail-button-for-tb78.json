@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 35,
+    "average_daily_users": 85,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,27 +18,29 @@
     "contributions_url": "",
     "created": "2021-02-22T18:46:30Z",
     "current_version": {
-        "id": 2475407,
+        "id": 2475540,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/get-all-mail-button-for-tb78/versions/2475407",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/get-all-mail-button-for-tb78/versions/2475540",
         "files": [
             {
-                "id": 1018568,
-                "created": "2021-02-23T10:32:51Z",
-                "hash": "sha256:8315d5431c3e058e01b2d5d474073f9d9e681990278456683c3bcda21cac783c",
+                "id": 1018701,
+                "created": "2021-03-18T22:12:43Z",
+                "hash": "sha256:44d28a2b0482dd8b376a6372bd6fb0905333976797e08e26fa087918f0aa448a",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 36823,
+                "size": 102624,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018568/get_all_mail_button_for_tb78-1.0.1-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018701/get_all_mail_button_for_tb78-2.0.2-tb.xpi?src=",
+                "permissions": [
+                    "storage"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -49,10 +51,12 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
-        "reviewed": "2021-02-23T17:06:46Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/get-all-mail-button-for-tb78/versions/1.0.1",
-        "version": "1.0.1"
+        "release_notes": {
+            "en-US": "Added options page in order to choose between different button icons."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/get-all-mail-button-for-tb78/versions/2.0.2",
+        "version": "2.0.2"
     },
     "default_locale": "en-US",
     "description": {
@@ -73,17 +77,17 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-02-23T17:06:46Z",
+    "last_updated": "2021-03-19T12:45:22Z",
     "name": {
         "en-US": "Get All Mail Button for TB78++"
     },
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.91329,
-        "count": 2,
-        "average": 4.5,
-        "text_count": 2
+        "bayesian_average": 4.64597,
+        "count": 4,
+        "average": 5,
+        "text_count": 4
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/get-all-mail-button-for-tb78/reviews/",
     "requires_payment": false,
@@ -108,7 +112,12 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp78plus": true
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-02-23T10:32:51Z",
+            "comp78pv_version": "1.0.1",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
         }
     }
 }

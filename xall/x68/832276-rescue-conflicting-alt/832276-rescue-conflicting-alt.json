@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 10,
+    "average_daily_users": 14,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,30 +18,34 @@
     "contributions_url": "",
     "created": "2017-07-11T08:23:34Z",
     "current_version": {
-        "id": 2473451,
+        "id": 2475517,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.4.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rescue-conflicting-alt/versions/2473451",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rescue-conflicting-alt/versions/2475517",
         "files": [
             {
-                "id": 1016579,
-                "created": "2020-02-19T01:15:15Z",
-                "hash": "sha256:3ee16b2c2d71a3bf9d3c9f59c0fddf73e44c2cb4f86162ba831a6fe628d6417f",
-                "is_restart_required": true,
+                "id": 1018678,
+                "created": "2021-03-16T08:31:41Z",
+                "hash": "sha256:0eaa6a40c09ec5f8e6a1e5c4c00d1a6f5d37578cba1fe63cac2e8ac8f6217450",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 6817,
+                "size": 21724,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016579/rescue_conflicting_alternatives-0.4-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018678/rescue_conflicting_alternatives-2.0.1-tb.xpi?src=",
+                "permissions": [
+                    "messagesModify",
+                    "messagesRead",
+                    "storage"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -71,16 +75,17 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "* Fix typos in the package description"
+            "en-US": "Supports Thunderbird 78.4.0 and later",
+            "ja": "Thunderbird 78.4.0以降のバージョンに対応"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rescue-conflicting-alt/versions/0.4",
-        "version": "0.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rescue-conflicting-alt/versions/2.0.1",
+        "version": "2.0.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Sometimes messages with the type \"multipart/alternative\" can have multiple bodies with same Content-Type, like \"text/plain\". However Thunderbird automatically chooses the last one and ignores others, so we cannot read other part bodies even if the last one is broken.\n\nThis addon automatically detects such conflicting bodies and converts secondary part to an attachment.",
-        "ja": "\"multipart/alternative\"のメールにおいて、複数の本文パートが\"text/plain\"のような同じContent-Typeを持っている場合、Thunderbirdはそれらの中から最後の物を表示してそれ以外の本文パートを無視します。そのため、最後の本文パートが壊れている場合であっても、他の正常な本文パートは読めないという状態になってしまいます。\n\nこのアドオンは、そのような競合する本文パートを持つメールを自動検出して、2番目以降の競合する本文を添付ファイルに変換します。"
+        "en-US": "Sometimes messages with the type \"multipart/alternative\" can have multiple bodies with same Content-Type, like \"text/plain\". However Thunderbird automatically chooses the last one and ignores others, so we cannot read other part bodies even if the last one is broken.\n\nThis addon automatically detects such conflicting bodies and renders them after the regular body.\n(On Thunderbird 68, this converts such conflicting bodies to regular attachments.)",
+        "ja": "\"multipart/alternative\"のメールにおいて、複数の本文パートが\"text/plain\"のような同じContent-Typeを持っている場合、Thunderbirdはそれらの中から最後の物を表示してそれ以外の本文パートを無視します。そのため、最後の本文パートが壊れている場合であっても、他の正常な本文パートは読めないという状態になってしまいます。\n\nこのアドオンは、そのような競合する本文パートを持つメールを自動検出して、2番目以降の競合する本文を通常の本文の後に表示します。\n（Thunderbird 68以前のバージョンでは、競合する代替の本文を持つメールを通常の添付ファイルに変換します。）"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rescue-conflicting-alt/edit",
@@ -100,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-03-06T21:42:26Z",
+    "last_updated": "2021-03-16T08:35:03Z",
     "name": {
         "en-US": "Rescue Conflicting Alternatives",
         "ja": "Rescue Conflicting  Alternatives"
@@ -119,8 +124,8 @@
     "slug": "rescue-conflicting-alt",
     "status": "public",
     "summary": {
-        "en-US": "Converts a mail with conflicting alternative bodies to regular multipart mail.",
-        "ja": "競合する代替の本文を持つメールを通常の添付ファイルに変換します。"
+        "en-US": "Renders conflicting alternative bodies if the message has them.",
+        "ja": "競合する代替の本文がある場合に、それらを表示します。"
     },
     "support_email": null,
     "support_url": {
@@ -134,10 +139,10 @@
     "weekly_downloads": 38,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2019-03-20T07:08:55Z"
         }

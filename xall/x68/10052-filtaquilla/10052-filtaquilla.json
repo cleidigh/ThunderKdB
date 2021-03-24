@@ -16,7 +16,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
         }
     ],
-    "average_daily_users": 12349,
+    "average_daily_users": 12750,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,26 +28,26 @@
     "contributions_url": "https://www.paypal.com/donate?hosted_button_id=RH438A7X9SGRA",
     "created": "2008-12-18T00:17:43Z",
     "current_version": {
-        "id": 2474988,
+        "id": 2475481,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
+                "max": "87.0",
                 "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filtaquilla/versions/2474988",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filtaquilla/versions/2475481",
         "files": [
             {
-                "id": 1018150,
-                "created": "2020-12-10T14:54:46Z",
-                "hash": "sha256:3d9e86459081055f15a2b5416a5e08c7d2a6d750b0c4682dc9f6dd4d2bba0dae",
+                "id": 1018642,
+                "created": "2021-03-09T12:07:27Z",
+                "hash": "sha256:f5a27d4a35fa9518e2e84fc7876a14dc172108488717312b3c7ab92c4c9241f9",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 143540,
+                "size": 898068,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018150/filtaquilla-3.0.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018642/filtaquilla-3.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -81,11 +81,11 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "FiltaQuilla is now compatible with Thunderbird 78. Again, FiltaQuilla had to be largely rewritten for Thunderbird 78, because support for some key technologies was deprecated by Mozilla (bindings was central to making the filter editor work, so there was numerous days of work and guessing necessary to get it back on track. Many thanks to John Bieling from Thunderbird for helping especially with the very problematic Filter Editor.\n\nGoing forward most bugfixes / new features will be exclusively available for Thunderbird 78 - but there may be some minor backports for Thunderbird 68. The reason for this is that through architectural changes on the Mozilla code platform the code for Thunderbird 68 and earlier is substantially different.\n\nIf you would like to support FiltaQuilla with donation you can now <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/filtaquilla.html#donate\">do so here</a>\n\n<ul><li> Check the new <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues\">Issue Tracker</a> for open problems and to add feature requests.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/64\">[issue 64]</a> Make FiltaQuilla compatible with Thunderbird 78 ESR. The gruelling detail on all the necessary work can be read there.</li><li> All bindings were replaced with pure JavaScript. This affected editing <i>all</i> conditions that FiltaQuilla adds to the Filter Editor.</li><li> Printing didn't work anymore &lt;/p&gt;</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/45\">[issue 45]</a> Fixed \"Move later\" / \"Copy as Read\" For Thunderbird versions &gt; 64 </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/76\">[issue 76]</a> Fixed detach attachments - if the attachment was already removed then no empty file is generated, but a message is shown in error console showing the \"last seen location\" where the attachment was originally detached to. </li><li> Fixed behavior of opening FiltaQuilla page jumping to in-page links when a tab with the same basic URL is already shown</li><li> 3.0.1 - version bump because I had to rerelease 2.1.2 fixing a syntax error in manifest.json </li><li> 3.0.3 - fixed firstRun code so that support site is loaded on install / update</li></ul>\n<strong>Support My Work</strong>\n\nAs I am often asked about added features for filter conditions and actions for my Add-on <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/quickfilters/\">quickFilters</a> - FiltaQuilla is a better location for extending Filter behavior - specifically adding new types of Actions and Conditions. \n\nIf you want to <b>support the FiltaQuilla project</b>, please install quickFilters and \n<strong>purchase a <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/premium.html\">quickFilters Pro</a> license.</strong>\n\nYou can now also <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/filtaquilla.html#donate\">donate directly here</a>.\n\nI am keeping the license for FiltaQuilla as GPL 3.0, free to download and use."
+            "en-US": "<b>Version 3.1</b>\n\nFiltaQuilla is now compatible with Thunderbird 78. Again, FiltaQuilla had to be largely rewritten for Thunderbird 78, because support for some key technologies was deprecated by Mozilla (bindings was central to making the filter editor work, so there were numerous days of work and guessing necessary to get it back on track. Many thanks to John Bieling from Thunderbird for helping especially with the very problematic Filter Editor.\n\nGoing forward most bugfixes / new features will be exclusively available for Thunderbird 78 - but there may be some minor backports for Thunderbird 68. The reason for this is that through architectural changes on the Mozilla code platform the code for Thunderbird 68 and earlier is substantially different.\n\nIf you would like to support FiltaQuilla with donation you can now <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/filtaquilla.html#donate\">do so here</a>\n\n<ul><li> Check the new <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues\">Issue Tracker</a> for open problems and to add feature requests.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/94\">[issue 94]</a> Feature Request: Add ToneQuilla (sound notifications) functionality to FiltaQuilla. Removed some of the larger sounds and added the following sounds from <a rel=\"nofollow\" href=\"https://notificationsounds.com/\">notificationsounds.com</a> (CC license):\nmaybe-one-day-584, hold-your-horses-468, scratch-389, your-turn-491, knob-458, worthwhile-438, scissors-423. \nThe default location which the provided sounds are unpacked into is in profile/extensions/filtaquilla. You can either add your own sounds there for convenience or point to sounds in other locations.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/95\">[issue 95]</a> Support instant apply for changes in Options Window.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/89\">[issue 89]</a> Fixed: Options missing in Add-ons Manager. The settings for FiltaQuilla have been moved to the ... menu on the Add-ons Manager and removed from the tools menu going forward. </li><li> Completed strings in Swedish locale </li><li> Fixed a problem with the German translation for \"do not notify\"</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/FiltaQuilla/issues/97\">[issue 97]</a> Printing in background should not enable global setting 'print.always_print_silent' permanently.</li></ul>\n<strong>Support My Work</strong>\n\nAs I am often asked about added features for filter conditions and actions for my Add-on <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/quickfilters/\">quickFilters</a> - FiltaQuilla is a better location for extending Filter behavior - specifically adding new types of Actions and Conditions. \n\nIf you want to <b>support the FiltaQuilla project</b>, please install quickFilters and \n<strong>purchase a <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/premium.html\">quickFilters Pro</a> license.</strong>\n\nYou can now also <a rel=\"nofollow\" href=\"https://quickfilters.quickfolders.org/filtaquilla.html#donate\">donate directly here</a>.\n\nI am keeping the license for FiltaQuilla as GPL 3.0, free to download and use."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filtaquilla/versions/3.0.3",
-        "version": "3.0.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filtaquilla/versions/3.1",
+        "version": "3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -110,7 +110,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-11T09:29:28Z",
+    "last_updated": "2021-03-11T08:31:27Z",
     "name": {
         "en-US": "FiltaQuilla"
     },
@@ -182,7 +182,7 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.38437,
+        "bayesian_average": 4.38436,
         "count": 85,
         "average": 4.4,
         "text_count": 85

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 7573,
+    "average_daily_users": 7868,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2019-11-02T15:38:43Z",
     "current_version": {
-        "id": 2475450,
+        "id": 2475579,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "74.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2475450",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2475579",
         "files": [
             {
-                "id": 1018611,
-                "created": "2021-03-02T01:54:50Z",
-                "hash": "sha256:080297daaa36a25636c5900189df88fbacd5254d0965a91703863189a6777d34",
+                "id": 1018740,
+                "created": "2021-03-23T15:41:39Z",
+                "hash": "sha256:534cb43eb4dd5b12bf3bb2dc7d0892949d2a8b9757a96d38d16a3981bd7df4ba",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4448950,
+                "size": 4465595,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018611/display_mail_user_agent_t-2.1.47-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018740/display_mail_user_agent_t-2.1.51-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "storage",
@@ -76,17 +76,17 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Some more icon(2127 now)",
-            "ja": "アイコンの追加(全2127個)"
+            "en-US": "Some more icon(2135 now)\n\nI plan to change the icon display position to the message pane in the near future. \n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/\"></a>",
+            "ja": "アイコンの追加(全2135個)\n\n近いうちにアイコンの表示位置をメッセージペインに変更する予定です。\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/\"></a>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/2.1.47",
-        "version": "2.1.47"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/2.1.51",
+        "version": "2.1.51"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This addon is fork of Display Mail User Agent(DispMUA).\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.html\">http://www.juergen-ernst.de/addons/dispmua.html</a>\n\nSupport for Thunderbird 68 will end soon.\nThere is no explanation from the Thunderbird Team, but in order to realize \"Display the icon as an image.\" for Thunderbird 78, I had to use WebExtensions Experiments that I do not want to use, which caused \"Have full, unrestricted access to Thunderbird, and your computer\", but only \"Display the icon as an image.\" is achieved using WebExtensions Experiments.\nThere are four permissions to use as Thunderbird Web Extension: \"messagesRead\", \"storage\", \"accountsRead\", \"downloads\".\n\nFrequently Asked Questions\nQ: I don't see the icon. The character string such as Message-ID or DKIM-Signature is displayed.\nA: This happens if the email does not have an X-Mailer or User-Agent header. Since Display Mail User Agent T identifies the MUA based on X-Mailer or User-Agent in principle, it cannot handle emails that do not have these email headers. Display the message source (☰ → View → Message Source or Ctrl + U) and check it.",
-        "ja": "このアドオンはDisplay Mail User Agent(DispMUA)のフォークです。\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.htm\">http://www.juergen-ernst.de/addons/dispmua.htm</a>\n\nThunderbird 68向けの対応はもうすぐ終了します。\nThunderbird Teamからは何の説明もありませんがThunderbird 78向けに「アイコンを画像として表示」を実現するためには私は使いたくないWebExtensions Experimentsを使わざるを得ず、それが原因で「Thunderbirdとコンピューターへの完全に無制限なアクセス」を要求されますが、WebExtensions Experimentsを使用して実現しているのは「アイコンを画像として表示」するのみです。\nThunderbird WebExtensionとして使用する権限は\"messagesRead\", \"storage\", \"accountsRead\", \"downloads\"の4つです。",
+        "en-US": "This addon is fork of Display Mail User Agent(DispMUA).\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.html\">http://www.juergen-ernst.de/addons/dispmua.html</a>\n\nSupport for Thunderbird 68 has ended.\n\nThere is no explanation from the Thunderbird Team, but in order to realize \"Display the icon as an image.\" for Thunderbird 78, I had to use WebExtensions Experiments that I do not want to use, which caused \"Have full, unrestricted access to Thunderbird, and your computer\", but only \"Display the icon as an image.\" is achieved using WebExtensions Experiments.\nThere are four permissions to use as Thunderbird Web Extension: \"messagesRead\", \"storage\", \"accountsRead\", \"downloads\".\n\nFrequently Asked Questions\nQ: I don't see the icon. The character string such as Message-ID or DKIM-Signature is displayed.\nA: This happens if the email does not have an X-Mailer or User-Agent header. Since Display Mail User Agent T identifies the MUA based on X-Mailer or User-Agent in principle, it cannot handle emails that do not have these email headers. Display the message source (☰ → View → Message Source or Ctrl + U) and check it.\n\nI plan to change the icon display position to the message pane in the near future. Please refer to the screenshot.",
+        "ja": "このアドオンはDisplay Mail User Agent(DispMUA)のフォークです。\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.htm\">http://www.juergen-ernst.de/addons/dispmua.htm</a>\n\nThunderbird 68向けの対応は終了しました。\n\nThunderbird Teamからは何の説明もありませんがThunderbird 78向けに「アイコンを画像として表示」を実現するためには私は使いたくないWebExtensions Experimentsを使わざるを得ず、それが原因で「Thunderbirdとコンピューターへの完全に無制限なアクセス」を要求されますが、WebExtensions Experimentsを使用して実現しているのは「アイコンを画像として表示」するのみです。\nThunderbird WebExtensionとして使用する権限は\"messagesRead\", \"storage\", \"accountsRead\", \"downloads\"の4つです。\n\n近日中にアイコン表示位置をメッセージペインへ変更する予定です。スクリーンショットをご参考下さい。",
         "hu": ""
     },
     "developer_comments": null,
@@ -119,7 +119,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2021-03-02T11:39:30Z",
+    "last_updated": "2021-03-23T15:52:26Z",
     "name": {
         "fr": "Display Mail User Agent T",
         "de": "Display Mail User Agent T",
@@ -138,6 +138,40 @@
     },
     "previews": [
         {
+            "id": 206490,
+            "caption": {
+                "en-US": "I plan to change the icon display position to the message pane in the near future. Please refer to the screenshot.",
+                "ja": ""
+            },
+            "image_size": [
+                949,
+                588
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206490.png?modified=1616515022",
+            "thumbnail_size": [
+                320,
+                198
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206490.png?modified=1616515022"
+        },
+        {
+            "id": 206491,
+            "caption": {
+                "en-US": "Feedback screen (in the message pane)",
+                "ja": ""
+            },
+            "image_size": [
+                947,
+                600
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206491.png?modified=1616514936",
+            "thumbnail_size": [
+                316,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206491.png?modified=1616514936"
+        },
+        {
             "id": 205887,
             "caption": {
                 "en-US": "normal header view",
@@ -147,12 +181,12 @@
                 420,
                 95
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205887.png?modified=1579189071",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205887.png?modified=1616515016",
             "thumbnail_size": [
                 320,
                 72
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205887.png?modified=1579189071"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205887.png?modified=1616515016"
         },
         {
             "id": 205888,
@@ -164,12 +198,12 @@
                 602,
                 298
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205888.png?modified=1579189073",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205888.png?modified=1616515016",
             "thumbnail_size": [
                 320,
                 158
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205888.png?modified=1579189073"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205888.png?modified=1616515016"
         },
         {
             "id": 205889,
@@ -181,12 +215,12 @@
                 442,
                 390
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205889.png?modified=1579189072",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205889.png?modified=1616515016",
             "thumbnail_size": [
                 227,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205889.png?modified=1579189072"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205889.png?modified=1616515016"
         },
         {
             "id": 205890,
@@ -198,20 +232,20 @@
                 442,
                 393
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205890.png?modified=1579189074",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205890.png?modified=1616515016",
             "thumbnail_size": [
                 225,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205890.png?modified=1579189074"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205890.png?modified=1616515016"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.58545,
-        "count": 13,
-        "average": 4.6923,
-        "text_count": 13
+        "bayesian_average": 4.6139,
+        "count": 14,
+        "average": 4.7143,
+        "text_count": 14
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/reviews/",
     "requires_payment": false,

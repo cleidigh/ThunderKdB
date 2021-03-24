@@ -9,56 +9,61 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 33,
+    "average_daily_users": 50,
     "categories": {
         "thunderbird": [
             "composition",
             "message-and-news-reading"
         ]
     },
-    "contributions_url": "",
+    "contributions_url": "https://www.paypal.com/donate?hosted_button_id=SQY8UR8RB4BM8",
     "created": "2016-11-02T18:46:40Z",
     "current_version": {
-        "id": 2473595,
+        "id": 2475538,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.4.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-thread-to-all/versions/2473595",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-thread-to-all/versions/2475538",
         "files": [
             {
-                "id": 1016741,
-                "created": "2020-04-07T21:19:24Z",
-                "hash": "sha256:4f0dc3cf3899b56a4ba581ab0be4bb31b68f4bcfb33548c2b02262a463f21961",
-                "is_restart_required": true,
+                "id": 1018699,
+                "created": "2021-03-18T22:00:37Z",
+                "hash": "sha256:4794444425b34393649d22967d655f22ac8aeed2d305159bedbe05c4bea7ea19",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 8196,
+                "size": 15038,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016741/new_thread_to_all-1.2.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018699/email_an_alle-2.1-tb.xpi?src=",
+                "permissions": [
+                    "activeTab",
+                    "tabs",
+                    "menus",
+                    "messagesRead",
+                    "storage",
+                    "compose"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
+            "id": 7360,
+            "name": null,
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-thread-to-all/license/2.1"
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-thread-to-all/versions/1.2.0",
-        "version": "1.2.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-thread-to-all/versions/2.1",
+        "version": "2.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "In the message list, select an email and press 'New email To all'.\n\nThe compose window will open, filled with all recipients/cc/bcc.\n\nSubject line and body will stay empty, so that you can start a new communication.",
-        "de": ""
+        "en-US": "<b>Features in TB78</b>    \n     \n        <li><b>Reply++ button/message context menu/keyboard: shift-alt-G:</b></li>Start a new email compose. Use 'to', 'cc, 'bcc' of the currently selected email. Clean away subject, body, attachments, so that it is a new email.\n\n      <li><b>Alt/Reply++ button/Alt+message context menu:</b></li>      Just as standard button use, but keep old subject.\n\n      <li><b>Shift/Reply++ button/Shift+message context menu:</b></li>\nAdd your identity as bcc, so that you automatically force a copy to yourself.\n\n      <li><b>Other addons:</b></li>        <b>Nostalgy++</b>: easy archiving/moving of emails to their destination folders, \n             with autocomplete of folder names and rules for suggested folder. \n             Compose window: always display cc or bcc, easy selecting input fields (to, cc, bcc, body, attachments), etc. \n <b>Text insert++</b>: Easy inserting standard text. br+ctrl-D converts to best regards. Define your own replacements. \n        Cursor can be in the middle of the replacement text.\n<b>Attachment image viewer</b>: Download dialog shows thumbnail of image. Image viewer with zoom, rotate, flip, slideshow etc. \n             <b>Xnote++</b>: Add notes to your emails to remind or to plan a reply.",
+        "de": "<b>Features in TB78</b>    \n     \n        <li><b>Reply++ button/message context menu/keyboard: shift-alt-G:</b></li>Start a new email compose. Use 'to', 'cc, 'bcc' of the currently selected email. Clean away subject, body, attachments, so that it is a new email.\n\n      <li><b>Alt/Reply++ button/Alt+message context menu:</b></li>      Just as standard button use, but keep old subject.\n\n      <li><b>Shift/Reply++ button/Shift+message context menu:</b></li>Add your identity as bcc, so that you automatically force a copy to yourself.\n\n      <li><b>Other addons:</b></li>        <b>Nostalgy++</b>: easy archiving/moving of emails to their destination folders, \n             with autocomplete of folder names and rules for suggested folder. \n             Compose window: always display cc or bcc, easy selecting input fields (to, cc, bcc, body, attachments), etc. \n\n <b>Text insert++</b>: Easy inserting standard text. br+ctrl-D converts to best regards. Define your own replacements. \n        Cursor can be in the middle of the replacement text.\n\n<b>Attachment image viewer</b>: Download dialog shows thumbnail of image. Image viewer with zoom, rotate, flip, slideshow etc. \n\n             <b>Xnote++</b>: Add notes to your emails to remind or to plan a reply."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/new-thread-to-all/edit",
@@ -75,7 +80,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-09T00:29:24Z",
+    "last_updated": "2021-03-18T22:05:02Z",
     "name": {
         "en-US": "New Email To All:reply, ready for new subject/body",
         "de": "Email an alle"
@@ -83,10 +88,10 @@
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.34465,
-        "count": 2,
-        "average": 5,
-        "text_count": 2
+        "bayesian_average": 3.93908,
+        "count": 3,
+        "average": 4.3333,
+        "text_count": 3
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/new-thread-to-all/reviews/",
     "requires_payment": false,
@@ -98,7 +103,10 @@
         "de": "Ihr sendet oft an die gleichen Empfänger, drückt 'allen antworten' und löscht dann Betreff und Emailtext?\n\nDas macht ab jetzt dieses Addon."
     },
     "support_email": null,
-    "support_url": null,
+    "support_url": {
+        "en-US": "https://github.com/opto/New-Thread-To-All/issues",
+        "de": "https://github.com/opto/New-Thread-To-All/issues"
+    },
     "tags": [
         "firefox57"
     ],
@@ -107,10 +115,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true
+            "comp78plus": true
         }
     }
 }

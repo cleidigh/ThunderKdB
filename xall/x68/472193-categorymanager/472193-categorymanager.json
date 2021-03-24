@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8076,
+    "average_daily_users": 8514,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -19,26 +19,26 @@
     "contributions_url": "https://www.paypal.me/johnbieling",
     "created": "2013-11-16T12:13:16Z",
     "current_version": {
-        "id": 2474438,
+        "id": 2475498,
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "78.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/categorymanager/versions/2474438",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/categorymanager/versions/2475498",
         "files": [
             {
-                "id": 1017600,
-                "created": "2020-10-10T14:11:42Z",
-                "hash": "sha256:5bcc93fed8a2a733b048d7a39b14adcd37c5a257e4392ea102127d1becbf57ab",
+                "id": 1018659,
+                "created": "2021-03-13T19:32:52Z",
+                "hash": "sha256:a1833d05b11b850108554e1dc2eba831a33f2b34292f93a9a90718399b28f9c5",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 133809,
+                "size": 139802,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017600/categorymanager-4.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018659/categorymanager-4.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,10 +50,13 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Spanish translation, Options now in Add-on manager-",
+            "de": ""
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/categorymanager/versions/4.0",
-        "version": "4.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/categorymanager/versions/4.1",
+        "version": "4.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -78,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-10T23:38:50Z",
+    "last_updated": "2021-03-23T13:09:10Z",
     "name": {
         "en-US": "CategoryManager",
         "de": "CategoryManager"
@@ -260,10 +263,17 @@
     "weekly_downloads": 183,
     "xpilib": {
         "ext_comp": {
-            "compNoMax": true,
             "mext": true,
-            "comp68": true,
+            "comp69plus": true,
             "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-10-10T14:11:42Z",
+            "comp78pv_version": "4.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
+            "comp68pv": true,
+            "comp68pv_date": "2019-05-15T14:55:13Z",
             "comp60pv": true,
             "comp60pv_date": "2018-04-21T10:17:56Z"
         }
