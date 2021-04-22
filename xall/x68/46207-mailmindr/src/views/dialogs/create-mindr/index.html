@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="chrome://global/locale/global.css" />
+        <link rel="stylesheet" href="./index.css" />
+        <title>mailmindr</title>
+    </head>
+    <body>
+        <header>
+            <h1 data-i18n="view.dialog.create-mindr.header"></h1>
+        </header>
+        <main>
+            <form class="mailmindr-dialog">
+                <div class="mailmindr-fieldwrapper--caption">
+                    <label
+                        data-i18n="view.dialog.create-mindr.label.subject"
+                    ></label>
+                </div>
+                <div class="mailmindr-fieldwrapper--content">
+                    <label id="mailmindr--subject"
+                        >This is a very synthetic email subject</label
+                    >
+                </div>
+                <div class="mailmindr-fieldwrapper--caption">
+                    <label
+                        data-i18n="view.dialog.create-mindr.label.author"
+                    ></label>
+                </div>
+                <div class="mailmindr-fieldwrapper--content">
+                    <label id="mailmindr--author"></label>
+                </div>
+                <div class="mailmindr-fieldwrapper--caption">
+                    <label
+                        data-i18n="view.dialog.create-mindr.label.due"
+                    ></label>
+                </div>
+                <div class="mailmindr-fieldwrapper--content">
+                    <div>
+                        <select id="mailmindr--preset-time"></select>
+                    </div>
+                </div>
+                <div></div>
+                <div class="mailmindr-fieldwrapper--content">
+                    <div>
+                        <input id="mailmindr--date-picker" type="date" />
+                        <input id="mailmindr--time-picker" type="time" />
+                    </div>
+                </div>
+                <div class="mailmindr-fieldwrapper--caption">
+                    <label
+                        data-i18n="view.dialog.create-mindr.label.action"
+                    ></label>
+                </div>
+                <div class="mailmindr-fieldwrapper--content">
+                    <select id="mailmindr--preset-action"></select>
+                </div>
+                <div></div>
+                <div>
+                    <div>
+                        <input type="checkbox" id="mailmindr--icebox" />
+                        <label
+                            data-i18n="view.dialog.create-mindr.label.icebox"
+                            for="mailmindr--icebox"
+                        ></label>
+                    </div>
+                </div>
+                <div class="mailmindr-fieldwrapper--caption">
+                    <label
+                        data-i18n="view.dialog.create-mindr.label.remind-me"
+                    ></label>
+                </div>
+                <div class="mailmindr-fieldwrapper--content">
+                    <select id="mailmindr--preset-remind-me"></select>
+                </div>
+            </form>
+        </main>
+        <footer class="mailmindr-buttonbar">
+            <div class="mailmindr-buttonbar--wrapper">
+                <button
+                    style="display: none;"
+                    class="mailmindr-button mailmindr-button--remove"
+                    id="mailmindr--do-remove-mindr"
+                    data-i18n="view.dialog.create-mindr.caption.remove-follow-up"
+                ></button>
+                <button
+                    class="mailmindr-button"
+                    id="mailmindr--do-create-mindr"
+                    type="submit"
+                ></button>
+                <button
+                    class="mailmindr-button"
+                    id="mailmindr--do-cancel-create-mindr"
+                    data-i18n="view.dialog.create-mindr.caption.cancel"
+                ></button>
+            </div>
+        </footer>
+        <script type="module" src="./index.js"></script>
+    </body>
+</html>

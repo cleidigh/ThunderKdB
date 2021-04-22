@@ -413,7 +413,7 @@
         }
 	},
 	"synchroCategoriesDeletedOnDisk": {
-		"message": "$P1$ : Catégories supprimées s : $P2$",
+		"message": "$P1$ : Catégories supprimées localement : $P2$",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1115,6 +1115,36 @@
             }
         }
 	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : Téléchargement des catégories …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : Catégories obtenues",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : Récupération des catégories du serveur en erreur (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingGetCardLabels": {
 		"message": "$P1$ : Contact $P2$ : Téléchargement des catégories …",
         "placeholders": {
@@ -1151,6 +1181,36 @@
             },
             "P4": {
                 "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : Envoi des requêtes de mise à jour des catégories …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : Catégories mises à jour",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : Mise à jour des catégories du serveur en erreur (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
             }
         }
 	},
@@ -5469,6 +5529,12 @@
 	"org.print.accesskey": {
 		"message": "o"
 	},
+	"custom.print.label": {
+		"message": "Champs personnalisés"
+	},
+	"custom.print.accesskey": {
+		"message": "h"
+	},
 	"categories.print.label": {
 		"message": "Catégories"
 	},
@@ -5504,6 +5570,12 @@
 	},
 	"url.print.accesskey": {
 		"message": "U"
+	},
+	"event.print.label": {
+		"message": "Évènements"
+	},
+	"event.print.accesskey": {
+		"message": "v"
 	},
 	"note.print.label": {
 		"message": "Notes"

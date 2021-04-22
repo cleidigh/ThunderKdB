@@ -7,32 +7,28 @@
                  }
              },
 	"name": "FrameWhite",
-	"version": "63.9",
-	"description": "Enjoy FrameWhite, FrameBlack and LightBlue, LightGreen, LightYellow, LightRed and BlueWhite, GreenWhite, RedWhite, and Additional BlueYellow, GreenYellow, RedYellow themes.",
+	"version": "64.7",
+	"description": "Enjoy FrameWhite, FrameBlack and LightBlue, LightGreen, LightYellow, LightRed and BlueWhite, VioletWhite, GreenWhite, CyanWhite, RedWhite, OrangeWhite, KhakiWhite and Additional BlueYellow, GreenYellow, RedYellow themes.",
              "icons": {
                 "32": "icons/w_large.png"
                 },
+"theme_experiment": {
+    "stylesheet": "style.css",
+        "colors": {
+          "box_bg": "--box-bg",
+          "box_text": "--box-text"
+    }
+  },
 "browser_action": {
     "default_icon": "icons/w_large.png",
     "default_title": "FrameWhite",
     "default_popup": "popup.html"
   },
-"permissions": [ "theme"
-        ],
-  "experiment_apis": {
-    "myapi": {
-      "schema": "schema.json",
-      "parent": {
-        "scopes": [
-          "addon_parent"
-        ],
-        "paths": [
-          [
-            "myapi"
-          ]
-        ],
-       "script": "implementation.js"
-      }
-  }
-  }
+"background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+"permissions": ["theme"
+        ]
 }

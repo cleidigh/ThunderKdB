@@ -408,7 +408,7 @@ var wdw_cardbookConfiguration = {
 					if (myNewEmails.join(',') != myCard.emails.join(',')) {
 						var myTempCard = new cardbookCardParser();
 						cardbookRepository.cardbookUtils.cloneCard(myCard, myTempCard);
-						cardbookRepository.saveCard(myCard, myTempCard, null, false);
+						cardbookRepository.saveCardFromMove(myCard, myTempCard, null, false);
 					}
 				}
 			}

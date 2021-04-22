@@ -1,0 +1,65 @@
+@import '../styles/photon-colors.css';
+
+.mailmindr-message-bar {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 21px;
+    background-color: var(--purple-40);
+    color: var(--white-100);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.15em 0.5em;
+
+    font-size: 13px;
+    font-weight: 400;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.mailmindr-message-bar > .mailmindr-message-bar_content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+button.mailmindr-button {
+    appearance: none;
+    font-size: 1em;
+    margin: 4px 8px;
+    height: 24px;
+    min-width: 5.5em;
+    min-height: 32px;
+    color: inherit !important;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+button.mailmindr-button:hover {
+    border-color: rgba(128, 128, 128, 0.4);
+    background-color: rgba(12, 12, 13, 0.2);
+}
+
+button.mailmindr-button {
+    border-radius: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: 400;
+    min-width: 132px;
+    font-size: 13px;
+    background-color: var(--grey-90-a10);
+}
+
+button.mailmindr-button:hover {
+    background-color: var(--grey-90-a20);
+}
+
+button.mailmindr-button--micro {
+    height: 24px;
+    font-size: 11px;
+    min-width: unset;
+    min-height: unset;
+}

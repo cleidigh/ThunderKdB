@@ -3,8 +3,8 @@
 // var EXPORTED_SYMBOLS = ["cardbookComplexSearch"];
 var cardbookComplexSearch = {
 	
-	loadMatchAll: function (aDefaultValue) {
-		if (aDefaultValue) {
+	loadMatchAll: function (aValue) {
+		if (aValue == true) {
 			document.getElementById("booleanAndGroup").selectedIndex = 0;
 		} else {
 			document.getElementById("booleanAndGroup").selectedIndex = 1;
@@ -20,7 +20,7 @@ var cardbookComplexSearch = {
 				var mySearchObj = document.getElementById(aType + '_' + i + '_menulistObj').value;
 				var mySearchTerm = document.getElementById(aType + '_' + i + '_menulistTerm').value;
 				var mySearchValue = document.getElementById(aType + '_' + i + '_valueBox').value;
-				myResult.push([mySearchCase, mySearchObj, mySearchTerm, mySearchValue]);
+				myResult.push({case: mySearchCase, field: mySearchObj, term: mySearchTerm, value: mySearchValue});
 				i++;
 			} else {
 				break;
@@ -75,10 +75,10 @@ var cardbookComplexSearch = {
 		
 		var aHBox = cardbookElementTools.addHBox(aType, aIndex, aOrigBox, {class: "input-container"});
 
-		cardbookElementTools.addMenuCaselist(aHBox, aType, aIndex, aArray[0], {flex: "1"});
-		cardbookElementTools.addMenuObjlist(aHBox, aType, aIndex, aArray[1], {flex: "1"});
-		cardbookElementTools.addMenuTermlist(aHBox, aType, aIndex, aArray[2], {flex: "1"});
-		cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', aArray[3], {}, aIndex);
+		cardbookElementTools.addMenuCaselist(aHBox, aType, aIndex, aArray.case, {flex: "1"});
+		cardbookElementTools.addMenuObjlist(aHBox, aType, aIndex, aArray.field, {flex: "1"});
+		cardbookElementTools.addMenuTermlist(aHBox, aType, aIndex, aArray.term, {flex: "1"});
+		cardbookElementTools.addKeyTextbox(aHBox, aType + '_' + aIndex + '_valueBox', aArray.value, {}, aIndex);
 
 		function fireUpButton(event) {
 			if (document.getElementById(this.id).disabled) {
@@ -137,7 +137,7 @@ var cardbookComplexSearch = {
 				return;
 			}
 			var myNextIndex = 1+ 1*aIndex;
-			cardbookComplexSearch.loadDynamicTypes(aType, myNextIndex, ["","","",""]);
+			cardbookComplexSearch.loadDynamicTypes(aType, myNextIndex, {case: "", field: "", term: "", value: ""});
 		};
 		cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'add', 'add', fireAddButton);
 
@@ -151,33 +151,24 @@ var cardbookComplexSearch = {
 			cardbookComplexSearch.loadDynamicTypes(aType, i, aArray[i]);
 		}
 		if (aArray.length == 0) {
-			cardbookComplexSearch.loadDynamicTypes(aType, 0, ["","","",""]);
+			cardbookComplexSearch.loadDynamicTypes(aType, 0, {case: "", field: "", term: "", value: ""});
 		}
 	},
 
 	getSearch: function () {
-		var result = "searchAB:" + document.getElementById('addressbookMenulist').value;
-		var searchAll = document.getElementById('booleanAndGroup').value == "and" ? "true" : "false";
-		result = result + ":searchAll:" + searchAll;
-		var found = false;
-		var allRules = cardbookComplexSearch.getAllArray("searchTerms");
-		for (var i = 0; i < allRules.length; i++) {
-			if (allRules[i][2] == "IsEmpty") {
-				found = true;
-			} else if (allRules[i][2] == "IsntEmpty") {
-				found = true;
-			} else if (allRules[i][3] != "") {
-				found = true;
-			}
-			if (found) {
-				result = result + ":case:" + allRules[i][0] + ":field:" + allRules[i][1] + ":term:" + allRules[i][2] + ":value:" + allRules[i][3];
+		let result = {};
+		result.searchAB = document.getElementById('addressbookMenulist').value;
+		result.matchAll = document.getElementById('booleanAndGroup').selectedIndex == 0 ? true : false;
+
+		result.rules = [];
+		let found = false;
+		let allRules = cardbookComplexSearch.getAllArray("searchTerms");
+		for (let rule of allRules) {
+			if (rule.term == "IsEmpty" || rule.term == "IsntEmpty" || rule.value) {
+				result.rules.push({ case: rule.case, field: rule.field, term: rule.term, value: rule.value });
 			}
 		}
-		if (found) {
-			return result;
-		} else {
-			return "";
-		}
+		return result;
 	}
 
 };

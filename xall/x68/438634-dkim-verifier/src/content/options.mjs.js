@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 Philippe Lieser
+ * Copyright (c) 2020-2021 Philippe Lieser
  *
  * This software is licensed under the terms of the MIT License.
  *
@@ -13,21 +13,10 @@
 
 import ExtensionUtils from "../modules/extensionUtils.mjs.js";
 import Logging from "../modules/logging.mjs.js";
+import { getElementById } from "./domUtils.mjs.js";
 import prefs from "../modules/preferences.mjs.js";
 
 const log = Logging.getLogger("Options");
-
-/**
- * @param {string} id
- * @returns {HTMLElement}
- */
-function getElementById(id) {
-	const element = document.getElementById(id);
-	if (!element) {
-		throw new Error(`Could not find element with id '${id}'.`);
-	}
-	return element;
-}
 
 /**
  * Set the active pane to the given navigation selector
@@ -401,6 +390,14 @@ async function initAccount() {
  * @returns {void}
  */
 function initButtons() {
+	const keysView = getElementById("key.viewKeys");
+	keysView.addEventListener("click", () => {
+		ExtensionUtils.createOrRaisePopup(
+			"./keysView.html",
+			browser.i18n.getMessage("options_key.viewKeys"),
+		);
+	});
+
 	const signRulesDefaultsView = getElementById("signRulesDefaultsView");
 	signRulesDefaultsView.addEventListener("click", () => {
 		ExtensionUtils.createOrRaisePopup(
@@ -425,4 +422,4 @@ document.addEventListener("DOMContentLoaded", () => {
 	initAccount().
 		catch(e => log.fatal("Unexpected error in initAccount():", e));
 	initButtons();
-});
+}, { once: true });

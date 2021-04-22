@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
         }
     ],
-    "average_daily_users": 19,
+    "average_daily_users": 18,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/paypalme/shh0884",
     "created": "2020-12-10T13:46:31Z",
     "current_version": {
-        "id": 2475056,
+        "id": 2475707,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/findtasksbutton/versions/2475056",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/findtasksbutton/versions/2475707",
         "files": [
             {
-                "id": 1018218,
-                "created": "2020-12-20T07:21:23Z",
-                "hash": "sha256:f6c5dfb8ae9c65451482462c65ef6f4ef8b69b90b59c700e3e09ece871ae4782",
+                "id": 1018867,
+                "created": "2021-04-12T09:31:27Z",
+                "hash": "sha256:d9b94e8cee34388ae7fae3e11005477671738dde58a02248175984de490bd1a6",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 23145,
+                "size": 25733,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018218/findtasksbutton-3.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018867/findtasksbutton-5.7-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,16 +50,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "<b>Version 3.4.<b>\n\n1) Add the menu list filtering tasks by priority in task addition box.\n\nDecember 18th 2020.\n\nFrom Sungho Hwang.</b></b>"
+            "en-US": "Version 5.7.\n\nI made faults in options of task Status menu list, Two options of \"Not completed/Completed\" were existent in Show options in version 5.2 already. So, I corrected options of Status menu list to original Status options. \n\nApril 12th 2021.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/findtasksbutton/versions/3.4",
-        "version": "3.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/findtasksbutton/versions/5.7",
+        "version": "5.7"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Version 2.9.</b> updated in 2020-12-15.\n1) Add [Find Tasks] browserAction at tabs toolbar.\n2) Add tasks filter menu list before tasks filter input.\n\n<b>Version 3.4.</b> updated in 2020-12-20.\n1) Add the menu list filtering tasks by priority after tasks filter input.\n\nIf Clicking browserAction at tabs toolbar, \nyou can show and hide task addition box.\nAnd when showing task addition box, \nyou can see tasks filter menu list and tasks priority menu list.\nIf re-starting Thunderbird, these functions are initialized, \nif clicking browserAction again, these functions are restored.\n\nDecember 13th 2020.\n\nFrom Sungho Hwang.",
-        "ko": "<b>Version 2.9.</b> updated in 2020-12-15.\n1) Add [Find Tasks] browserAction at tabs toolbar.\n2) Add tasks filter menu list before tasks filter input.\n\n<b>Version 3.4.</b> updated in 2020-12-20.\n1) Add the menu list filtering tasks by priority after tasks filter input.\n\nIf Clicking browserAction at tabs toolbar, \nyou can show and hide task addition box.\nAnd when showing task addition box, \nyou can see tasks filter menu list and tasks priority menu list.\nIf re-starting Thunderbird, these functions are initialized, \nif clicking browserAction again, these functions are restored.\n\nDecember 13th 2020.\n\nFrom Sungho Hwang."
+        "en-US": "<b>Version 2.9.</b> updated in 2020-12-15.\n1) Add [Find Tasks] browserAction at tabs toolbar.\n2) Add tasks filter menu list before tasks filter input.\n\n<b>Version 3.4.</b> updated in 2020-12-20.\n1) Add the menu list filtering tasks by priority after tasks filter input.\n\nIf Clicking browserAction at tabs toolbar, \nyou can show and hide task addition box.\nAnd when showing task addition box, \nyou can see tasks filter menu list and tasks priority menu list.\nIf re-starting Thunderbird, these functions are initialized, \nif clicking browserAction again, these functions are restored.\n\n<b>Version 3.5.</b> updated in 2021-03-26.\nYou can make sure of length of task tree array on task addition box.\nYou can make sure of n-th record number.\n\n<b>Usage: Sort by start date &gt; Show: All &gt; Input number &gt; Find nth record &gt; Show: All again.</b>\n\n<b>Version 4.1.</b> updated in 2021-03-28.\n1) I changed input box type from text to number.\n1-1) minimum number is 0.\n1-2) maximum number is task tree array length - 1.\n2) I fixed close function to disable/remove add-on.\n3) I changed browserAction events to popup menu events.\n4) At using TaskviewGridLayout, broken phenomenon is fixed.\n5) I fixed doubling buttons at clicking it twice by disabling popup buttons after once.\n6) I revealed names of the main program and the add-on developer on browserAction popup window.\n\n<b>Version 4.2.</b> updated in 2021-04-01.\n1) I made minimal input value to find nth record from \"0\" to \"1\".\n2) I made button of \"Update FindTasksButton\" to update changes of tree array length.\n\n<b>Version 4.5.</b> updated in 2021-04-07. <b>The final upgrade version.</b>\n1) I fixed task addition box size to height 40px.\n2) I adjusted element widths properly.\n3) I completed it for task tree array length to be displayed in change automatically.\n4) Hereby, final upgrade of FindTasksButton has been achieved.\n\nApril 6th 2021.\n\nAnd, I am not a supported developer.\nWould you contribute some to me for continuous developments.\nI have happy dreams by one dollar and fifty cents,\nlike an international postage in minimum not a cup of coffee in high price. \n\nFrom Sungho Hwang.",
+        "ko": "<b>Version 2.9.</b> updated in 2020-12-15.\n1) Add [Find Tasks] browserAction at tabs toolbar.\n2) Add tasks filter menu list before tasks filter input.\n\n<b>Version 3.4.</b> updated in 2020-12-20.\n1) Add the menu list filtering tasks by priority after tasks filter input.\n\nIf Clicking browserAction at tabs toolbar, \nyou can show and hide task addition box.\nAnd when showing task addition box, \nyou can see tasks filter menu list and tasks priority menu list.\nIf re-starting Thunderbird, these functions are initialized, \nif clicking browserAction again, these functions are restored.\n\n<b>Version 3.5.</b> updated in 2021-03-26.\nYou can make sure of length of task tree array on task addition box.\nYou can make sure of n-th record number.\n\n<b>Usage: Sort by start date &gt; Show: All &gt; Input number &gt; Find nth record &gt; Show: All again.</b>\n\n<b>Version 4.1.</b> updated in 2021-03-28.\n1) I changed input box type from text to number.\n1-1) minimum number is 0.\n1-2) maximum number is task tree array length - 1.\n2) I fixed close function to disable/remove add-on.\n3) I changed browserAction events to popup menu events.\n4) At using TaskviewGridLayout, broken phenomenon is fixed.\n5) I fixed doubling buttons at clicking it twice by disabling popup buttons after once.\n6) I revealed names of the main program and the add-on developer on browserAction popup window.\n\n<b>Version 4.2.</b> updated in 2021-04-01.\n1) I made minimal input value to find nth record from \"0\" to \"1\".\n2) I made button of \"Update FindTasksButton\" to update changes of tree array length.\n\n<b>Version 4.5.</b> updated in 2021-04-07. <b>The final upgrade version.</b>\n1) I fixed task addition box size to height 40px.\n2) I adjusted element widths properly.\n3) I completed it for task tree array length to be displayed in change automatically.\n4) Hereby, final upgrade of FindTasksButton has been achieved.\n\nApril 6th 2021.\n\nAnd, I am not a supported developer.\nWould you contribute some to me for continuous developments.\nI have happy dreams by one dollar and fifty cents,\nlike an international postage in minimum not a cup of coffee in high price. \n\nFrom Sungho Hwang."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/findtasksbutton/edit",
@@ -76,27 +76,27 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-20T20:16:26Z",
+    "last_updated": "2021-04-12T13:15:53Z",
     "name": {
         "en-US": "FindTasksButton",
         "ko": "작업찾기단추"
     },
     "previews": [
         {
-            "id": 206376,
+            "id": 206503,
             "caption": {
-                "en-US": "1) Add tasks filter menu list. 2) Add [Find Tasks] button in tabs toolbar. 3) Add the menu list filtering tasks by priority in v3.4."
+                "en-US": "1) Add tasks filter menu list. 2) Add [Find Tasks] button in tabs toolbar. 3) Add the menu list filtering tasks by priority. 4) Make sure of task tree array length. 5) Make sure of n-th record in version 3.8."
             },
             "image_size": [
-                935,
-                130
+                1280,
+                137
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206376.png?modified=1608449024",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206503.png?modified=1616933535",
             "thumbnail_size": [
                 320,
-                44
+                34
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206376.png?modified=1608449024"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206503.png?modified=1616933535"
         }
     ],
     "public_stats": false,
@@ -112,8 +112,8 @@
     "slug": "findtasksbutton",
     "status": "public",
     "summary": {
-        "en-US": "1) Add Find Task button like Find Events button.\n2) Add tasks filter menu list.\n3) Add the menu list filtering tasks by priority.\n\nHi, Mom.\nI pray for my and your mother's good health.\n\nFrom a middle-age son.",
-        "ko": "1) 작업찾기단추를 추가해 보세요.\n2) 작업필터메뉴목록을 추가해 보세요.\n3) 우선순위별로 필터링하는 메뉴목록을 추가해 보세요.\n\n모든 어머니들께.\n\n건강하세요. 어머니.\n\n중년 아들로부터.\n\n개발자 황성호."
+        "en-US": "1) Add Find Task button.\n2) Add tasks filter menu list.\n3) Add the menu list filtering tasks by priority.\n4) Make sure of task tree array length and n-th record.\n\nHi, Mom.\nI pray for my and your mother's good health.\n\nFrom a middle-age son.",
+        "ko": "1) 작업찾기단추를 추가해 보세요.\n2) 작업필터메뉴목록을 추가해 보세요.\n3) 우선순위별로 필터링하는 메뉴목록을 추가해 보세요.\n4) 작업트리목록의 크기와 기록의 차수를 확인해 보세요.\n\n모든 어머니들께.\n\n건강하세요. 어머니.\n\n중년 아들로부터.\n\n개발자 황성호."
     },
     "support_email": {
         "en-US": "shh0884@outlook.kr"

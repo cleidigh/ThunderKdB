@@ -1115,6 +1115,36 @@
             }
         }
 	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : kapcsolattartó címkék küldése kérés megszerzése érdekében …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : kapott címkéket",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : a címkéket nem sikerült megszerezni a kiszolgálón (url : $P2$, állapot : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingGetCardLabels": {
 		"message": "$P1$ : $P2$ névjegy : kapcsolattartó címkék küldése kérés megszerzése érdekében …",
         "placeholders": {
@@ -1151,6 +1181,36 @@
             },
             "P4": {
                 "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : kapcsolattartó címkék frissítési kérésének elküldése …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : címkék frissítve",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : címkéket nem sikerült frissíteni a kiszolgálón (url : $P2$, állapot : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
             }
         }
 	},
@@ -5469,6 +5529,12 @@
 	"org.print.accesskey": {
 		"message": "p"
 	},
+	"custom.print.label": {
+		"message": "Egyéni mezők"
+	},
+	"custom.print.accesskey": {
+		"message": "E"
+	},
 	"categories.print.label": {
 		"message": "Kategória"
 	},
@@ -5504,6 +5570,12 @@
 	},
 	"url.print.accesskey": {
 		"message": "W"
+	},
+	"event.print.label": {
+		"message": "Események"
+	},
+	"event.print.accesskey": {
+		"message": "E"
 	},
 	"note.print.label": {
 		"message": "Jegyzetek"

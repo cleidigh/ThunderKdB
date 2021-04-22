@@ -4,5 +4,482 @@
     },
     "extensionName": {
         "message": "mailmindr"
+    },
+    "module.string-utils.chunk.and": {
+        "message": "and"
+    },
+    "module.string-utils.relative.now": {
+        "message": "now"
+    },
+    "module.string-utils.pluralize.separator": {
+        "message": ";",
+        "description": "Character used for splitting the pluralize rules"
+    },
+    "module.string-utils.relative.ahead.weeks.pluralize": {
+        "message": "in one week;in #1 weeks"
+    },
+    "module.string-utils.relative.ahead.weeks.pluralize.one": {
+        "message": "in one week"
+    },
+    "module.string-utils.relative.ahead.weeks.pluralize.other": {
+        "message": "in $NUM$ weeks",
+        "description": "",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ahead.days.pluralize": {
+        "message": "tomorrow;in #1 days"
+    },
+    "module.string-utils.relative.ahead.days.pluralize.one": {
+        "message": "tomorrow"
+    },
+    "module.string-utils.relative.ahead.days.pluralize.other": {
+        "message": "in $NUM$ days",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ahead.hours.pluralize": {
+        "message": "in #1 hour;in #1 hours"
+    },
+    "module.string-utils.relative.ahead.hours.pluralize.one": {
+        "message": "in one hour"
+    },
+    "module.string-utils.relative.ahead.hours.pluralize.other": {
+        "message": "in $NUM$ hours",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ahead.minutes.pluralize": {
+        "message": "in #1 minute;in #1 minutes"
+    },
+    "module.string-utils.relative.ahead.minutes.pluralize.one": {
+        "message": "in one minute"
+    },
+    "module.string-utils.relative.ahead.minutes.pluralize.other": {
+        "message": "in $NUM$ minutes",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ahead.and-minutes.pluralize": {
+        "message": "and #1 minute;and #1 minutes"
+    },
+    "module.string-utils.relative.ahead.and-minutes.pluralize.one": {
+        "message": "and one minute"
+    },
+    "module.string-utils.relative.ahead.and-minutes.pluralize.other": {
+        "message": "and $NUM$ minutes",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ahead.seconds.pluralize": {
+        "message": "in #1 second;in #1 seconds"
+    },
+    "module.string-utils.relative.ahead.seconds.pluralize.one": {
+        "message": "in one second"
+    },
+    "module.string-utils.relative.ahead.seconds.pluralize.other": {
+        "message": "in $NUM$ seconds",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ago.weeks.pluralize": {
+        "message": "one week ago;#1 weeks ago"
+    },
+    "module.string-utils.relative.ago.weeks.pluraliz.one": {
+        "message": "one week ago"
+    },
+    "module.string-utils.relative.ago.weeks.pluralize.other": {
+        "message": "$NUM$ weeks ago",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ago.days.pluralize": {
+        "message": "Yesterday;#1 days ago"
+    },
+    "module.string-utils.relative.ago.days.pluralize.one": {
+        "message": "Yesterday"
+    },
+    "module.string-utils.relative.ago.days.pluralize.other": {
+        "message": "$NUM$ days ago",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ago.hours.pluralize": {
+        "message": "#1 hour ago;#1 hours ago"
+    },
+    "module.string-utils.relative.ago.hours.pluralize.one": {
+        "message": "one hour ago"
+    },
+    "module.string-utils.relative.ago.hours.pluralize.other": {
+        "message": "$NUM$ hours ago",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ago.minutes.pluralize": {
+        "message": "#1 minute ago;#1 minutes ago"
+    },
+    "module.string-utils.relative.ago.minutes.pluralize.one": {
+        "message": "one minute ago"
+    },
+    "module.string-utils.relative.ago.minutes.pluralize.other": {
+        "message": "$NUM$ minutes ago",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ago.and-minutes.pluralize": {
+        "message": "and #1 minute;, #1 minutes"
+    },
+    "module.string-utils.relative.ago.and-minutes.pluralize.one": {
+        "message": "and one minute"
+    },
+    "module.string-utils.relative.ago.and-minutes.pluralize.other": {
+        "message": "and $NUM$ minutes",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "module.string-utils.relative.ago.seconds.pluralize": {
+        "message": "#1 second ago;#1 seconds ago"
+    },
+    "module.string-utils.relative.ago.seconds.pluralize.one": {
+        "message": "#1 second ago"
+    },
+    "module.string-utils.relative.ago.seconds.pluralize.other": {
+        "message": "$NUM$ seconds ago",
+        "placeholders": {
+            "num": {
+                "content": "$1",
+                "example": "2"
+            }
+        }
+    },
+    "presets.time.userdefined": {
+        "message": "User defined",
+        "description": "The option text when the user picks directly from date/time pickers"
+    },
+    "presets.action.flag": {
+        "message": "Flag/Start message"
+    },
+    "presets.action.mark-unread": {
+        "message": "Mark message as unread"
+    },
+    "presets.action.reminder-only": {
+        "message": "Show reminder"
+    },
+    "view.dialog.create-mindr.title.create": {
+        "message": "Create reminder"
+    },
+    "view.dialog.create-mindr.title.edit": {
+        "message": "Edit reminder"
+    },
+    "view.dialog.create-mindr.label.subject": {
+        "message": "Subject:"
+    },
+    "view.dialog.create-mindr.label.author": {
+        "message": "Author:"
+    },
+    "view.dialog.create-mindr.label.due": {
+        "message": "Due:"
+    },
+    "view.dialog.create-mindr.label.action": {
+        "message": "Action:"
+    },
+    "view.dialog.create-mindr.label.icebox": {
+        "message": "Move to icebox folder"
+    },
+    "view.dialog.create-mindr.label.remind-me": {
+        "message": "Remind me:"
+    },
+    "view.dialog.create-mindr.caption.remove-follow-up": {
+        "message": "Remove follow-up"
+    },
+    "view.dialog.create-mindr.caption.create-mindr": {
+        "message": "Create"
+    },
+    "view.dialog.create-mindr.caption.update-mindr": {
+        "message": "Update"
+    },
+    "view.dialog.create-mindr.caption.cancel": {
+        "message": "Cancel"
+    },
+    "view.dialog.create-mindr.header": {
+        "message": "Set follow-up"
+    },
+    "view.dialog.mindr-alert.caption.dismiss": {
+        "message": "Dismiss"
+    },
+    "view.dialog.mindr-alert.caption.dismiss-all": {
+        "message": "Dismiss all"
+    },
+    "view.dialog.mindr-alert.caption.snooze": {
+        "message": "Snooze"
+    },
+    "view.dialog.mindr-alert.caption.snooze-all": {
+        "message": "Snooze all"
+    },
+    "view.dialog.mindr-alert.title": {
+        "message": "#1 Reminders",
+        "description": "The title of the reminder dialog"
+    },
+    "view.dialog.mindr-alert.title.one": {
+        "message": "$1 Reminder",
+        "description": "The title of the reminder dialog when only one mindr is set"
+    },
+    "view.dialog.mindr-alert.title.other": {
+        "message": "$1 Reminders",
+        "description": "The title of the reminder dialog when no or one mindr is set"
+    },
+    "view.dialog.time-preset-editor.header": {
+        "message": "Timespan presets"
+    },
+    "view.dialog.time-preset-editor.text": {
+        "message": "Define periods of time when your emails are to be resubmitted. You can set a fixed resubmission time (example: in two days at 09:00 clock) or specify a relative time period (example: 3 days, 4 hours and 5 minutes)."
+    },
+    "view.dialog.time-preset-editor.option.fixed": {
+        "message": "Fixed time"
+    },
+    "view.dialog.time-preset-editor.option.relative": {
+        "message": "Relative to current time"
+    },
+    "view.dialog.time-preset-editor.label.auto-rename": {
+        "message": "Auto-rename"
+    },
+    "view.dialog.time-preset-editor.label.name": {
+        "message": "Display as:"
+    },
+    "view.dialog.time-preset-editor.label.fixed.days": {
+        "message": "Set resubmission in … days:"
+    },
+    "view.dialog.time-preset-editor.label.fixed.time": {
+        "message": "Reminder at:"
+    },
+    "view.dialog.time-preset-editor.label.relative.days": {
+        "message": "Days"
+    },
+    "view.dialog.time-preset-editor.label.relative.hours": {
+        "message": "Hours"
+    },
+    "view.dialog.time-preset-editor.label.relative.minutes": {
+        "message": "Minutes"
+    },
+    "view.dialog.time-preset-editor.caption.ok": {
+        "message": "OK"
+    },
+    "view.dialog.time-preset-editor.caption.cancel": {
+        "message": "Cancel"
+    },
+    "view.options.message.dialog-open.heading": {
+        "message": "There's a dialog open"
+    },
+    "view.options.message.dialog-open.text": {
+        "message": "There's a dialog open that causes the mailmidnr preferences to stay locked. If you're not able to find the dialog on your screen you can either bring the dialog to the front or ignore this and just unlock the settings."
+    },
+    "view.options.message.dialog-open.button.dialog-to-front": {
+        "message": "Bring dialog to front"
+    },
+    "view.options.message.dialog-open.button.proceed-anyways": {
+        "message": "Ignore and unlock settings"
+    },
+    "view.options.default-time-preset.label": {
+        "message": "Default follow-up:"
+    },
+    "view.options.default-action-preset.label": {
+        "message": "Default action:"
+    },
+    "view.options.snooze-time.label": {
+        "message": "Snooze time in Minutes:",
+        "description": "Default snooze time for alerts"
+    },
+    "view.options.default-icebox-folder.label": {
+        "message": "Icebox folder:",
+        "description": "Name of the setting for the folder, where all the messages are moved to (parked) until their due date is reached."
+    },
+    "view.options.default-icebox-folder.option-none": {
+        "message": "Select folder…",
+        "description": "The label/text of the option item when no selection is made for the icebox folder"
+    },
+    "view.options.get-help.website.label": {
+        "message": "Website"
+    },
+    "view.options.get-help.website.description": {
+        "message": "Get more information on how to use mailmindr and read about the feature roadmap on https://mailmindr.net/"
+    },
+    "view.options.get-help.twitter.label": {
+        "message": "Twitter"
+    },
+    "view.options.get-help.twitter.description": {
+        "message": "Looking for a direct connection to mailmindr? Check out the twitter account: @mailmindr"
+    },
+    "view.options.get-help.patreon.label": {
+        "message": "Become a patron"
+    },
+    "view.options.get-help.patreon.description": {
+        "message": "Want to support mailmindr on a monthly basis? Luckily there's a patreon page for this."
+    },
+    "view.options.get-help.paypal.label": {
+        "message": "PayPal Donation"
+    },
+    "view.options.get-help.paypal.description": {
+        "message": "Want to show some love and support? Support mailmindr with a donation via PayPal."
+    },
+    "view.options.get-help.facebook.label": {
+        "message": "facebook"
+    },
+    "view.options.get-help.facebook.description": {
+        "message": "There's a facebook page - join the community: https://facebook.com/mailmindr/"
+    },
+    "mailmindr.utils.core.plural.beforestart.minutes.one": {
+        "message": "$1 minute before due",
+        "description": "Menu entry, e.g. '1 minute before due'"
+    },
+    "mailmindr.utils.core.plural.beforestart.minutes.other": {
+        "message": "$1 minutes before due",
+        "description": "Menu entry, e.g. '10 minutes before due'"
+    },
+    "mailmindr.utils.core.plural.days.one": {
+        "message": "$1 day"
+    },
+    "mailmindr.utils.core.plural.days.other": {
+        "message": "$1 days"
+    },
+    "mailmindr.utils.core.plural.hours.one": {
+        "message": "hour"
+    },
+    "mailmindr.utils.core.plural.hours.other": {
+        "message": "$1 hours"
+    },
+    "mailmindr.utils.core.plural.minutes.one": {
+        "message": "$1 minute"
+    },
+    "mailmindr.utils.core.plural.minutes.other": {
+        "message": "$1 minutes"
+    },
+    "mailmindr.utils.core.plural.seconds.one": {
+        "message": "$1 second"
+    },
+    "mailmindr.utils.core.plural.seconds.other": {
+        "message": "$1 seconds"
+    },
+    "mailmindr.utils.core.NoName": {
+        "message": "Unknown"
+    },
+    "mailmindr.utils.core.hours": {
+        "message": "hour;hours"
+    },
+    "mailmindr.utils.core.days": {
+        "message": "day;days"
+    },
+    "mailmindr.utils.core.minutes": {
+        "message": "minute;minutes"
+    },
+    "mailmindr.utils.core.seconds": {
+        "message": "second;seconds"
+    },
+    "mailmindr.utils.core.timePair": {
+        "message": "#1 #2"
+    },
+    "mailmindr.utils.core.relative.weeks": {
+        "message": "in one week;in #1 weeks"
+    },
+    "mailmindr.utils.core.relative.days": {
+        "message": "tomorrow;in #1 days"
+    },
+    "mailmindr.utils.core.relative.hours": {
+        "message": "in #1 hour;in #1 hours"
+    },
+    "mailmindr.utils.core.relative.minutes": {
+        "message": "in #1 minute;in #1 minutes"
+    },
+    "mailmindr.utils.core.relative.and-minutes": {
+        "message": "and #1 minute;and #1 minutes"
+    },
+    "mailmindr.utils.core.relative.seconds": {
+        "message": "in #1 second;in #1 seconds"
+    },
+    "mailmindr.utils.core.relative.past.weeks": {
+        "message": "one week ago;#1 weeks ago"
+    },
+    "mailmindr.utils.core.relative.past.days": {
+        "message": "Yesterday;#1 days ago"
+    },
+    "mailmindr.utils.core.relative.past.hours": {
+        "message": "#1 hour ago;#1 hours ago"
+    },
+    "mailmindr.utils.core.relative.past.minutes": {
+        "message": "#1 minute ago;#1 minutes ago"
+    },
+    "mailmindr.utils.core.relative.past.and-minutes": {
+        "message": "and #1 minute;, #1 minutes"
+    },
+    "mailmindr.utils.core.relative.past.seconds": {
+        "message": "#1 second ago;#1 seconds ago"
+    },
+    "mailmindr.utils.core.relative.now": {
+        "message": "Now"
+    },
+    "mailmindr.utils.core.relative.today": {
+        "message": "Today"
+    },
+    "mailmindr.utils.core.fix.tostringpattern": {
+        "message": "#1, at #2"
+    },
+    "mailmindr.utils.core.remindme.before.on-time.other": {
+        "message": "At time of event",
+        "description": "Displayed when the reminder should be set at the time of the due date. Technically it's 0 minutes, so Intl.PluralRules will return 'other' for english and german."
+    },
+    "mailmindr.utils.core.remindme.before.minutes.one": {
+        "message": "One minute before"
+    },
+    "mailmindr.utils.core.remindme.before.minutes.other": {
+        "message": "$1 minutes before"
+    },
+    "mailmindr.utils.core.remindme.before.hours.one": {
+        "message": "One hour before"
+    },
+    "mailmindr.utils.core.remindme.before.hours.other": {
+        "message": "$1 hours before"
     }
 }

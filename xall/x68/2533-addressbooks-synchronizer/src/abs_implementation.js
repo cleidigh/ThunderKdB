@@ -51,6 +51,7 @@ const kDirectoryRoot = "jsaddrbook://";
 
 var extension;
 var version;
+var appVersion;
 var prefs;
 var filepickerpath;
 var filepickerfile;
@@ -62,6 +63,7 @@ var hiddenWin=null;
 var openHiddenWin=false;
 var exiting='';		//'quit' or 'close'
 var gFire=null;
+var chromeHandle=null;
 
 debug('entered');
 try {
@@ -93,6 +95,10 @@ debug('getApi entered');	//more than once!
     context.callOnClose(this);
 		this.getAddon();
 
+    let e10s=Services.prefs.getBoolPref("browser.tabs.remote.autostart", false);
+debug('e10s is '+(e10s?'enabled':'not enabled'));
+		if (!chromeHandle && e10s) registerChromeUrl(context, [ ["content", "addressbookssync", "content/"] ]);
+
 /*
  		let uri=context.extension.rootURI.resolve("content/addressbookssync.jsm");
 // if unpacked: uri=file:///D:/sourcen/Mozilla/thunderbird/Extensions/ShowInOut_wee/showInOut.jsm
@@ -106,8 +112,15 @@ debug('getApi entered');	//more than once!
 debug('optionsURI='+optionsURI);
 //moz-extension://1eb49a87-7593-4a1f-b05a-aa4abc1c7bc8/abs_options.html
 
-		statusURI=extension.rootURI.resolve("./abs_status.html");
+		if (!e10s) {
+			//TB<=85 or e10s disabled (browser.tabs.remote.autostart==false)
+			statusURI=extension.rootURI.resolve("./abs_status.html");
 //file:///D:/sourcen/Mozilla/thunderbird/Extensions/AddressbooksSync_wee/abs_status.html
+		} else {
+			//TB>=86 and e10s enabled (browser.tabs.remote.autostart==true)
+			statusURI='chrome://addressbookssync/content/abs_status.html';		// with registerChromeUrl
+		}
+debug('statusURI='+statusURI);
 
 		if (typeof scriptsLoaded=='undefined') {
 			debug('loading scripts');
@@ -360,6 +373,7 @@ debug("closing");
     let app = Services.appinfo;
     console.logStringMessage('AddressbooksSynchronizer: '+addOn.version+' on '+app.name+' '+app.version+' on '+app.OS);
 		version=addOn.version;
+		appVersion=app.version;
   }
 
 };
@@ -557,6 +571,19 @@ debug(aTopic+' '+aSubject+' '+aData);
 } catch(e) { debug('throws: '+e,e); }
   }
 }
+
+function registerChromeUrl(context, chromeData) {
+debug('registerChromeUrl');
+	const aomStartup = Cc["@mozilla.org/addons/addon-manager-startup;1"].getService(Ci.amIAddonManagerStartup);
+	const manifestURI = Services.io.newURI(
+		"manifest.json",
+		null,
+		context.extension.rootURI
+	);
+	chromeHandle = aomStartup.registerChrome(manifestURI, chromeData);         
+debug('registerChromeUrl chromeHandle='+chromeHandle);
+}
+
 
 let obs=Services.obs;
 obs.addObserver(observer,"quit-application-requested", false);	//does not fire if mail:3pane window is closed

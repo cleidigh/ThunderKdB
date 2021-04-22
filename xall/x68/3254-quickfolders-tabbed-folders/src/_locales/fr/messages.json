@@ -90,23 +90,31 @@
   },
   
   "special-offer-head" : {
-    "message": "12 ans de QuickFolders - Vente spéciale de Pâques!"
+    "message": "Rendez QuickFolders à l'épreuve du futur!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Cher {name} {boldEnd}, si vous n'avez pas encore de licence, pensez à prendre en charge QuickFolders à l'avenir. D'autres grands changements sur Thunderbird sont à venir et j'ai besoin de {boldStart} votre aide {boldEnd} pour suivre!"
+  } ,
+  
   "special-offer-content" : {
-    "message": "C'est maintenant la meilleure opportunité d'obtenir une licence car il y a une {boldStart} réduction de 50% {boldEnd} sur le prix d'une licence QuickFolders Pro pour célébrer les 12 ans de QuickFolders! Cette offre spéciale sera disponible jusqu'au {boldStart} 31 mars {boldEnd}."
+    "message": "Assurez la pérennité de QuickFolders et récupérez une licence tout en bénéficiant d'une {boldStart} réduction de 40% {boldEnd} sur le prix de QuickFolders Pro! Cette offre spéciale sera disponible jusqu'au {boldStart} 1er mai {boldEnd}."
   },
   
   "whats-new-intro" : {
-    "message": "Lisez les nouveautés depuis l'introduction de Thunderbird 78 ici:" 
+    "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):" 
   },
   
   "whats-new-btn" : {
     "message": "Quoi de neuf?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Points forts"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro dispose désormais de paramètres de recherche avancés tels que le déplacement silencieux et l'exclusion des comptes de votre choix ou la restriction des résultats dans un compte et des fonctions améliorées pour déplacer et copier des dossiers. J'ai également réparé plus de fonctions pour rester compatible avec Thunderbird 87 et supérieur."
+    "message" : "Cette version étend encore la fonction quickMove grâce aux fonctionnalités suivantes: {L1} Onglet Message unique: option pour ouvrir automatiquement l'e-mail suivant dans le même onglet après avoir déplacé un message {L2} {L1} Option pour annuler complètement quickMove (et vider sa liste de messages) avec une simple pression sur ÉCHAPPEMENT. {L2} {L1} Correspondance avancée des dossiers parents en lisant à partir des délimiteurs _ et d'espacement et en les traitant comme le début d'un nom recherché. {L2} {L1} Réparé: recherche de dossiers lors de la visualisation messages affichés dans les résultats de recherche ou à partir d'une conversation à plusieurs dossiers. {L2} {L1} Ces fonctions, ainsi que des fonctions supplémentaires permettant de restreindre les résultats de recherche de certains comptes, peuvent être configurées via les paramètres de recherche avancée de l'onglet QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 
@@ -117,16 +125,6 @@
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "Nous avons déjà consacré des ressources importantes (plus de $hoursSpent$ heures) au projet de conversion - et il y a beaucoup plus de travail pour corriger les régressions et les problèmes causés par les changements dans Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -170,7 +168,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Les modifications nécessaires pour passer au nouveau modèle sans héritage (expérience de messagerie) ont déjà pris plusieurs semaines et sont toujours en cours, tandis que certaines fonctions pourraient être affectées. Avec un module complémentaire complexe comme celui-ci, un travail coûteux devient inévitable. Merci de nous aider."
+    "message": "Les modifications pour convertir $addonName$ au nouveau modèle de programmation ont pris des semaines et étaient coûteuses. Il y a beaucoup plus de changements pour la prochaine version 2022. Avec un module complémentaire complexe comme celui-ci, un travail coûteux devient inévitable. Merci de nous aider.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

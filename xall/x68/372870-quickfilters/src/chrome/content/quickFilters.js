@@ -416,21 +416,36 @@ END LICENSE BLOCK
   5.0.2 - 02/12/2020
     # Add-on was broken (no toolbar buttons / options dialog) for Spanish and Hungarian users due to a problem with localisation  
     
-  5.1 - WIP
+  5.1 - 27/02/2021
     # Filter Editor: The reply-to field can be broken / disabled if certain character combinations are used 
     #     (usually involving parentheses or angle brackets)
     # [issue 41] Merge filters (at least manually) is broken
     # [issue 42] All cut / copied filters in list should be highlighted with icon
     # [issue 44] Folder names default delimiter shows black diamond �  instead »
+    # Improved reopening any support sites already open in a tab by jumping to the correct place if necessary
+    
+  5.2 - 06/04/2021
+    # [issue 11] Feature request: Sort Search Terms in a filter
+    # [issue 20] allow pasting filters multiple accounts across different accounts.
+    # [issue 51] Merging filters can lead to duplicate conditions
+    # [issue 52] Own Emails are not automatically suggested for merging when using context menu
+    # [issue 23] Avoid Empty Conditions list due to removed recipients - filter cannot be edited
+    # [issue 47] Using the %subject% placeholder in custom templates doesn't work in Assistant
+    # Moved settings from tools menu to Add-on Manager (according to standard)
+    # [issue 48] Make quickFilters compatible with Thunderbird 87 beta (ongoing):
+      - open sites in tab was broken because of modified openTab parameters
+      - search terms now in a different type of collection can lead to failures when defining new filters.
+      
+  5.3 - WIP
+    # ...
    
   ============================================================================================================
   FUTURE WORK:
   PREMIUM FEATURES:
 		# [Bug 26690] Add Extra Column In Filter Browser "Auto"
-		# [Bug 26373] Sort definitions within a filter
     # [Bug 25409] Extended autofill on selection: Date (sent date), Age in Days (current mail age), Tags, Priority, From/To/Cc etc., (Full) Subject
     # [Bug 25801]	Assistant in Merge mode, cancel does not undo changes 
-		
+    
 	 */
   
 var quickFilters = {
@@ -752,11 +767,7 @@ var quickFilters = {
   },
 
   onToolbarListCommand: function onToolbarListCommand(e) {
-	  if (quickFilters.Util.Application == 'Postbox') {
-			MsgFilters(null, null);
-		}
-		else 
-      goDoCommand('cmd_displayMsgFilters');
+    goDoCommand('cmd_displayMsgFilters');
   },
 
   onApplyFilters: function onApplyFilters(silent) {

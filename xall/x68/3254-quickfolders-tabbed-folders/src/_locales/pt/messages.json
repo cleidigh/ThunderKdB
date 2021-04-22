@@ -90,23 +90,31 @@
   },
   
   "special-offer-head" : {
-    "message": "12 anos de QuickFolders - Promoção Especial de Páscoa!"
+    "message": "Faça QuickFolders à prova de futuro!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Caro {name} {boldEnd}, se você ainda não tem uma licença, considere oferecer suporte a QuickFolders no futuro. Mais grandes mudanças no Thunderbird estão chegando e eu preciso de {boldStart} sua ajuda {boldEnd} para acompanhar!"
+  } ,
+  
   "special-offer-content" : {
-    "message": "Agora é a melhor oportunidade de obter uma licença, pois há uma {boldStart} redução de 50% {boldEnd} no preço de uma licença QuickFolders Pro para comemorar 12 anos de QuickFolders! Esta oferta especial estará disponível até {boldStart} 31 de março {boldEnd}."
+    "message": "Torne o QuickFolders à prova de futuro e obtenha uma licença enquanto há uma {boldStart} redução de 40% {boldEnd} no preço do QuickFolders Pro! Esta oferta especial estará disponível até {boldStart} 1º de maio {boldEnd}."
   },
   
   "whats-new-intro" : {
-    "message": "Leia sobre as novidades desde a introdução do Thunderbird 78 aqui:" 
+    "message": "Leia o registro de alterações detalhado aqui (somente em inglês):" 
   },
   
   "whats-new-btn" : {
     "message": "O que há de novo?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Luzes"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro agora possui configurações de pesquisa avançadas como movimentação silenciosa e exclusão de contas de sua escolha ou restrição de resultados dentro de uma conta e funções aprimoradas para movimentação e cópia de pastas. Eu também consertei mais funções para permanecer compatível com o Thunderbird 87 e superior."
+    "message" : "Esta versão estende ainda mais a função quickMove através dos seguintes recursos: {L1} Guia de mensagem única: opção para abrir automaticamente o próximo e-mail na mesma guia após mover uma mensagem {L2} {L1} Opção para cancelar completamente o quickMove (e esvaziar sua lista de ) com um único pressionamento de ESCAPE. {L2} {L1} Correspondência avançada de pastas pai, lendo de _ e delimitadores de espaço e tratando-os como o início de um nome pesquisado. {L2} {L1} Reparado: pesquisa de pastas durante a exibição mensagens exibidas nos resultados da pesquisa ou de conversas com várias pastas. {L2} {L1} Estas e outras funções para restringir os resultados da pesquisa de certas contas podem ser configuradas nas Configurações de pesquisa avançada na guia QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 
@@ -117,16 +125,6 @@
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "Já gastamos recursos significativos (mais de $hoursSpent$ horas) no projeto de conversão - e há muito mais trabalho para corrigir regressões e problemas causados por alterações no Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -170,7 +168,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "As alterações necessárias para mudar para o novo modelo sem legado (experiência de correio) já levaram várias semanas e ainda estão em andamento, enquanto algumas funções podem ser afetadas. Com um add-on complexo como este, o trabalho caro torna-se inevitável. Por favor nos ajude com isso."
+    "message": "As alterações para converter $addonName$ para o novo modelo de programação demoraram semanas e custaram caro. Existem muitas outras mudanças para a próxima versão de 2022. Com um complemento complexo como esse, o trabalho caro se torna inevitável. Por favor nos ajude com isso.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

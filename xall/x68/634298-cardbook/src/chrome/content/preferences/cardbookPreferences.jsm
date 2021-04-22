@@ -100,14 +100,11 @@ var cardbookPreferences = {
 
 	getAllCustomFields: function () {
 		try {
-			var finalResult = {};
-			var typesList = [ 'pers', 'org' ];
-			for (var i in typesList) {
-				var type = typesList[i];
+			let finalResult = {};
+			for (let type of [ 'pers', 'personal', 'org' ]) {
 				finalResult[type] = [];
-				var result = [];
-				result = this.getAllCustomFieldsByType(type);
-				for (let j = 0; j < result.length; j++) {
+				let result = this.getAllCustomFieldsByType(type);
+				if (result.length) {
 					finalResult[type] = result;
 				}
 			}

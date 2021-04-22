@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 50,
+    "average_daily_users": 55,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -71,7 +71,7 @@
     },
     "default_locale": "de",
     "description": {
-        "de": "Diese Erweiterung überprüft ungelesene E-Mails auf Spoofingversuche.  Die Wertigkeit der einzelnen Tests können in den Einstellungen geändert werden.  Ein Test nutzt eine externe Quelle. Wer dieses nicht möchte, kann in den Einstellungen den Haken setzen.\n\n(Aktuell gibt es noch Probleme bei E-Mails die über eine Mailing Liste gesendet worden sind. Ich bin dabei die Ursache zu suchen und so schnell wie Möglich zu Patchen.)\n\nAuf Wunsch der Rezension nochmal einzeln alle Rechte erklärt:\n1: accounts und messages brauche ich um von den accounts die jeweiligen ungelesenen Nachrichten überprüfen zu können\n2: storage und unlimitedstorage wird gebraucht um eine Spamblacklist lokal zu haben und nicht für jede E-Mail eine Abfrage ins netz zu machen\n3: webrequest .... irgendwoher muss die Blacklist und Information kommen.\n4: nun zu den einzelnen Webadressen\n4.1:  <a href=\"http://spamcheck.postmarkapp.com\" rel=\"nofollow\">spamcheck.postmarkapp.com</a> diese Webseite wird für den SpamAssassin test genutzt (der optionale der in den Einstellungen deaktiviert werden kann)\n4.2: <a href=\"http://talosintelligence.com\" rel=\"nofollow\">talosintelligence.com</a> diese webseite stellt eine Blacklist öffentlich zur verfügung welche jede stunde einmal runtergeladen / aktualisiert wird\n4.3 die RDAP informationen werden von den jeweiligen Registraturen auf anfrage freigegeben. diese fünf Registraturen (ARIN, RIPE, APNIC, LACNIC, AFRINIC) geben der erweiterung die information über hoststandort einer IP zurück. China und Brasilien haben mittlerweile eine eigene Registratur jedoch sind die Informationen zur zeit noch über die fünf großen Registraturen abrufbar (bei änderung müssen die neuen hinzugefügt werden). Die Abfragen gehen also auf die rdap-datenbank der jeweiligen Registratur daher die freigabe für <a href=\"http://rdap.REGISTRATUR.net\" rel=\"nofollow\">rdap.REGISTRATUR.net</a>"
+        "de": "Diese Erweiterung  wurde als Teil einer Bachelor Arbeit gebaut und überprüft ungelesene E-Mails auf Spoofingversuche.  Die Wertigkeit der einzelnen Tests können in den Einstellungen geändert werden.  Ein Test nutzt eine externe Quelle. Wer dieses nicht möchte, kann in den Einstellungen den Haken setzen.\n\nEs gibt es Probleme bei E-Mails die über eine Mailing Liste gesendet worden sind. Jedoch ist die Ursache bei der Art der Versendung weswegen ich keine Kontrolle darüber ausüben kann. Diese dann einfach nur mit Vorsicht betrachten.\n\nAuf Wunsch der Rezension nochmal einzeln alle Rechte erklärt:\n1: accounts und messages brauche ich um von den accounts die jeweiligen ungelesenen Nachrichten überprüfen zu können\n2: storage und unlimitedstorage wird gebraucht um eine Spamblacklist lokal zu haben und nicht für jede E-Mail eine Abfrage ins netz zu machen\n3: webrequest .... irgendwoher muss die Blacklist und Information kommen.\n4: nun zu den einzelnen Webadressen\n4.1:  <a rel=\"nofollow\" href=\"http://spamcheck.postmarkapp.com\">spamcheck.postmarkapp.com</a> diese Webseite wird für den SpamAssassin test genutzt (der optionale der in den Einstellungen deaktiviert werden kann)\n4.2: <a rel=\"nofollow\" href=\"http://talosintelligence.com\">talosintelligence.com</a> diese webseite stellt eine Blacklist öffentlich zur verfügung welche jede stunde einmal runtergeladen / aktualisiert wird\n4.3 die RDAP informationen werden von den jeweiligen Registraturen auf anfrage freigegeben. diese fünf Registraturen (ARIN, RIPE, APNIC, LACNIC, AFRINIC) geben der erweiterung die information über hoststandort einer IP zurück. China und Brasilien haben mittlerweile eine eigene Registratur jedoch sind die Informationen zur zeit noch über die fünf großen Registraturen abrufbar (bei änderung müssen die neuen hinzugefügt werden). Die Abfragen gehen also auf die rdap-datenbank der jeweiligen Registratur daher die freigabe für <a rel=\"nofollow\" href=\"http://rdap.REGISTRATUR.net\">rdap.REGISTRATUR.net</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/spoofdetection/edit",
@@ -95,10 +95,10 @@
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 0.841931,
-        "count": 1,
-        "average": 1,
-        "text_count": 1
+        "bayesian_average": 2.19632,
+        "count": 2,
+        "average": 2.5,
+        "text_count": 2
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/spoofdetection/reviews/",
     "requires_payment": false,

@@ -215,22 +215,32 @@ debug('throws: '+e, e);
    */
 function fillAddressBook(dir, file)
 {
+	function se2arr(seOrArr) {
+		//convert simpleEnumerator to array (up to TB87)
+		if (seOrArr.hasMoreElements) {
+//debug('simpleEnumerator to array');
+			let arr=new Array();
+			while (seOrArr.hasMoreElements())
+				arr.push(seOrArr.getNext());
+			return arr;
+		} else
+			return seOrArr;
+	}
 	function cardsAndLists(db, ab) {
 		//db: copy from   AddrBookDirectory
 		//ab: copy to     nsIAbDirectory
 //debug('  copy cards');
-		let cards=db.childCards;
+		let cards=se2arr(db.childCards);
 //debug('    copyCards: have enumerated the cards in tempDir');
 		let count=0;
-		while (cards.hasMoreElements()) {
-			let card = cards.getNext();
+		cards.forEach(card=>{
 			if (!card.isMailList) { // only non-maillists
 				ab.addCard(card);
 				count++;
 //debug('insert card '+card.primaryEmail);
 //debug('.');
 			}
-		}
+		});
 //debug('done, copied '+count+' cards');
 /*
 		if (count==0) { //no cards => corrupt addressbook
@@ -242,18 +252,16 @@ debug('rab_ve: Probably corrupt addressbook', true);
 
 //debug('  recreate maillists');
 		try {
-			let lists=db.childNodes;
-			while (lists.hasMoreElements()) {
-				let list=lists.getNext();
+			let lists=se2arr(db.childNodes);
+			lists.forEach(list=>{
 //debug('add list: '+list.dirName);
 				let newlist=ab.addMailList(list);
-				let cards=list.childCards;
-				while (cards.hasMoreElements()) {
-					let card=cards.getNext();
+				let cards=se2arr(list.childCards);
+				cards.forEach(card=>{
 					newlist.addCard(card);
 //debug('    card: '+card.displayName);
-				}
-			}
+				});
+			});
 		} catch(e) {
 debug('recreate maillists throws: '+e, e);
 			return 'rab_ve: create cards for lists: '+e;
@@ -377,13 +385,12 @@ debug('perform without popup');
 		let off=(exiting && prefs['hideallpopups'])?',left=-10000':'';
 		statusWin=Services.ww.openWindow(null, statusURI,
 			'_blank', 'chrome,resizable,titlebar=yes'+off, /*args*/null);
-debug('opened '+statusWin+' '+statusWin.document);
+debug('opened '+statusURI+' : '+statusWin+' '+statusWin.document);
 		//we have a document but it doesn't contains elements
 
 //TODO: probably listen for 'dom-window-destroyed' (see implementation.js)
 		statusWinTimer.initWithCallback(()=>{
-			statusWin.document.title=strings[direction+'_title'];
-			statusWin.document.getElementById('cancel').textContent=strings['cancel_label'];
+debug('statusWinTimer.initWithCallback: statusWin='+statusWin);
 
 			let ta=statusWin.document.getElementById('status');	//the textarea
 			if (!ta) {
@@ -393,6 +400,8 @@ debug('initialize popup window '+statusWin.location);
 				statusWinTimer.cancel();
 				let ta=statusWin.document.getElementById('status');	//the textarea
 				ta.textContent='Hallo!';
+			statusWin.document.title=strings[direction+'_title'];
+			statusWin.document.getElementById('cancel').textContent=strings['cancel_label'];
 
 				let b=statusWin.document.getElementsByTagName('button');	//cancel button
 				b[0].addEventListener("click", ()=>{
@@ -607,16 +616,18 @@ debug('got dir '+dir.dirName+' sync='+sync);
 /*
  * refresh addressbook window (seems to have no effect)
  */
+/*
 function refreshAddressbook() {
   // refresh addressbook view
   let windowsEnum = Services.wm.getEnumerator("mail:addressbook");
+debug('refreshAddressbook hasMoreElements');	//x
   while (windowsEnum.hasMoreElements()) {
 debug('Found Addressbook Window');
     let w=windowsEnum.getNext();
     let abTree=w.document.getElementById("dirTree");
     if (abTree) { //isn't there a better way?
       try {
-/*
+/ *
         var oi=abTree.view.selection.currentIndex;
         var ni=oi?oi-1:abTree.view.rowCount-1;
         //from abCommon.js
@@ -626,7 +637,7 @@ debug('Found Addressbook Window');
         abTree.view.selection.select(oi);
         w.ChangeDirectoryByURI(w.GetSelectedDirectory());
         w.gAbResultsTree.focus();
-*/
+* /
         //from chrome\messenger\content\messenger\addressbook\addressbook.js
         let kPersistCollapseMapStorage = "directoryTree.json";
         w.gDirectoryTreeView.init(w.gDirTree, kPersistCollapseMapStorage);
@@ -638,6 +649,7 @@ debug('no abTree');
     }
   }
 }	//function refreshAddressbook
+*/
 
 /*
  * statustxt (for status window)
@@ -827,6 +839,7 @@ debug('exiting='+exiting+' hiddenWin='+hiddenWin);
 debug('exiting(quit), call quit');
 			let we = Services.wm.getEnumerator(null);
 				//only returns chrome://messenger/content/messenger.xhtml (mail:3pane)
+debug('exiting hasMoreElements');	//x
 			if (we.hasMoreElements()) {
 				let w=we.getNext();
 				w.goQuitApplication();
@@ -1242,7 +1255,9 @@ debug('=================== Exiting type='+type);	//type=quit or close
 	removeCardListObserver();  // remove observers for cards and lists
 
   let windowsEnum = Services.wm.getEnumerator(null);
+debug('finalize hasMoreElements');	//x
   while (windowsEnum.hasMoreElements()) {
+debug('finalize hasMoreElements have window');	//x
     let w=windowsEnum.getNext();
 debug('found window '+w.location);
 	}

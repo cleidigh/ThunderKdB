@@ -6,6 +6,7 @@ var cardBookObserver = {
 	DBOpen: false,
 	catDBOpen: false,
 	undoDBOpen: false,
+	mailPopDBOpen: false,
 	
 	register: function() {
 		cardBookObserverRepository.registerAll(this);
@@ -22,28 +23,32 @@ var cardBookObserver = {
 					ovl_cardbook.reloadCardBookQFB();
 				}
 				break;
-			case "cardbook.catDBOpen":
-				this.catDBOpen = true;
-				if (this.catDBOpen && this.DBOpen && this.undoDBOpen) {
+			case "cardbook.mailPopDBOpen":
+				this.mailPopDBOpen = true;
+				if (this.mailPopDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen) {
 					cardbookIndexedDB.upgradeDBs();
 				}
-				cardbookIndexedDB.openDB();
+				cardbookIDBMailPop.loadMailPop();
+				break;
+			case "cardbook.catDBOpen":
+				this.catDBOpen = true;
+				if (this.mailPopDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen) {
+					cardbookIndexedDB.upgradeDBs();
+				}
+				cardbookIDBCard.openCardDB();
 				break;
 			case "cardbook.DBOpen":
 				this.DBOpen = true;
 				if (!("undefined" == typeof(ovl_cardbook))) {
 					ovl_cardbook.reloadCardBookQFB();
 				}
-				if (this.catDBOpen && this.DBOpen && this.undoDBOpen) {
+				if (this.mailPopDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen) {
 					cardbookIndexedDB.upgradeDBs();
 				}
-				cardbookRepository.cardbookSynchronization.loadComplexSearchAccounts();
+				cardbookIDBSearch.openSearchDB();
 				break;
-			case "cardbook.undoDBOpen":
-				this.undoDBOpen = true;
-				if (this.catDBOpen && this.DBOpen && this.undoDBOpen) {
-					cardbookIndexedDB.upgradeDBs();
-				}
+			case "cardbook.searchDBOpen":
+				cardbookRepository.cardbookSynchronization.loadComplexSearchAccounts();
 				break;
 			case "cardbook.complexSearchInitLoaded":
 				cardbookRepository.cardbookSynchronization.loadAccounts();

@@ -31,9 +31,9 @@ function getMessageSignature(message) {
   return JSON.stringify({
     subject: message.subject || null,
     from: (authorAddressMatched ? authorAddressMatched[1] : author) || null,
-    to: (message.to || message.recipients).sort(),
-    cc: (message.cc || message.ccList).sort(),
-    bcc: (message.bcc || message.bccList).sort()
+    to: (message.to || message.recipients || []).sort(),
+    cc: (message.cc || message.ccList || []).sort(),
+    bcc: (message.bcc || message.bccList || []).sort()
   });
 }
 
@@ -41,6 +41,7 @@ function getMessageSignature(message) {
 // There is no API to detect starting of a message composition,
 // so we now wait for a message from a new composition content.
 const mDetectedMessageTypeForTab = new Map();
+const mDetectedClipboardStateForTab = new Map();
 const mInitialSignatureForTab = new Map();
 const mInitialSignatureForTabWithoutSubject = new Map();
 const mLastContextMessagesForTab = new Map();
@@ -79,12 +80,62 @@ browser.runtime.onMessage.addListener((message, sender) => {
         mLastContextMessagesForTab.delete(sender.tab.id);
       });
       break;
+
+    case Constants.TYPE_COMPOSE_SOMETHING_COPIED:
+      Promise.all([
+        browser.compose.getComposeDetails(sender.tab.id),
+        navigator.clipboard.readText(),
+      ]).then(async results => {
+        const [details, text] = results;
+        const author = await getAddressFromIdentity(details.identityId);
+        const messageSignature = getMessageSignature({author, ...details});
+        configs.lastClipboardData = { messageSignature, text };
+        log('configs.lastClipboardData updated by TYPE_COMPOSE_SOMETHING_COPIED: ', configs.lastClipboardData);
+      });
+      break;
+
+    case Constants.TYPE_MESSAGE_DISPLAY_SOMETHING_COPIED:
+      Promise.all([
+        browser.messageDisplay.getDisplayedMessage(sender.tab.id),
+        navigator.clipboard.readText(),
+      ]).then(async results => {
+        const [details, text] = results;
+        const author = await getAddressFromIdentity(details.identityId);
+        const messageSignature = getMessageSignature({author, ...details});
+        configs.lastClipboardData = { messageSignature, text };
+        log('configs.lastClipboardData updated by TYPE_MESSAGE_DISPLAY_SOMETHING_COPIED: ', configs.lastClipboardData);
+      });
+      break;
+
+    case Constants.TYPE_COMPOSE_SOMETHING_PASTED:
+      Promise.all([
+        browser.compose.getComposeDetails(sender.tab.id),
+        navigator.clipboard.readText(),
+      ]).then(async results => {
+        const [details, text] = results;
+        const author = await getAddressFromIdentity(details.identityId);
+        const messageSignature = getMessageSignature({author, ...details});
+        const lastState = mDetectedClipboardStateForTab.get(sender.tab.id) || Constants.CLIPBOARD_STATE_SAFE;
+        if (configs.lastClipboardData &&
+            messageSignature != configs.lastClipboardData.messageSignature &&
+            text == configs.lastClipboardData.text)
+          mDetectedClipboardStateForTab.set(sender.tab.id, lastState | Constants.CLIPBOARD_STATE_PASTED_TO_DIFFERENT_SIGNATURE_MAIL);
+        else if (configs.acceptablePastedTextLength >= 0 && text.length > configs.acceptablePastedTextLength)
+          mDetectedClipboardStateForTab.set(sender.tab.id, lastState | Constants.CLIPBOARD_STATE_PASTED_TOO_LARGE_TEXT);
+        log('pasted: new state => ', mDetectedClipboardStateForTab.get(sender.tab.id));
+      });
+      break;
   }
 });
 browser.composeScripts.register({
   js: [
     // This sends a Constants.TYPE_COMPOSE_STARTED message on load.
     { file: '/resources/compose.js' }
+  ]
+});
+browser.messageDisplayScripts.register({
+  js: [
+    { file: '/resources/message-display.js' }
   ]
 });
 
@@ -177,6 +228,12 @@ async function needConfirmationOnModified(tab, details) {
 
     default:
       break;
+  }
+
+  const clipboardState = mDetectedClipboardStateForTab.get(tab.id) || Constants.CLIPBOARD_STATE_SAFE;
+  if (clipboardState & Constants.CLIPBOARD_STATE_UNSAFE) {
+    log('need confirmation because unsafe text is pasted');
+    return true;
   }
 
   const initialSignature = mInitialSignatureForTabWithoutSubject.get(tab.id);

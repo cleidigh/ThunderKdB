@@ -179,16 +179,16 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				iCalString += "RRULE:FREQ=YEARLY\n";
 			}
 
-			var dtstart = "DTSTART:";
-			var dtend = "DTEND:";
-			if (cal.dtz.defaultTimezone.tzid) {
-				dtstart = "DTSTART;TZID=" + cal.dtz.defaultTimezone.tzid + ":";
-				dtend = "DTEND;TZID=" + cal.dtz.defaultTimezone.tzid + ":";
-			}
+			var dtstart;
+			var dtend;
 			if (cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.eventEntryWholeDay")) {
+				dtstart = "DTSTART;VALUE=DATE:";
+				dtend = "DTEND;VALUE=DATE:";
 				iCalString += dtstart + aDate + "\n";
 				iCalString += dtend + aNextDate + "\n";
 			} else {
+				dtstart = "DTSTART;TZID=" + cal.dtz.defaultTimezone.tzid + ":";
+				dtend = "DTEND;TZID=" + cal.dtz.defaultTimezone.tzid + ":";
 				var eventEntryTime = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTime");
 				var EmptyParamRegExp1 = new RegExp("(.*)([^0-9])(.*)", "ig");
 				if (eventEntryTime.replace(EmptyParamRegExp1, "$1")!=eventEntryTime) {
@@ -227,7 +227,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			// finalize iCalString
 			iCalString += "END:VEVENT\n";
 			iCalString += "END:VCALENDAR\n";
-			
+
 			// create event Object out of iCalString
 			var event = Components.classes["@mozilla.org/calendar/event;1"].createInstance(Components.interfaces.calIEvent);
 			event.icalString = iCalString;
@@ -335,7 +335,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				var myCard = cardbookRepository.cardbookCards[i];
 				var myDirPrefId = myCard.dirPrefId;
 				if (myContact.includes(myDirPrefId) || myContact === "allAddressBooks") {
-					var dateFormat = cardbookRepository.getDateFormat(myDirPrefId, cardbookRepository.cardbookPreferences.getVCardVersion(myDirPrefId));
+					var dateFormat = cardbookRepository.getDateFormat(myDirPrefId, myCard.version);
 					var myDirPrefName = cardbookRepository.cardbookUtils.getPrefNameFromPrefId(myDirPrefId);
 					for (let field of cardbookRepository.dateFields) {
 						if (myCard[field] && myCard[field] != "" && search[field]) {

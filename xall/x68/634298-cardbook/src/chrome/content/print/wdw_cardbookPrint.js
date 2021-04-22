@@ -14,12 +14,14 @@ if ("undefined" == typeof(wdw_cardbookPrint)) {
 																			types: document.getElementById("displayTypesCheckBox").checked,
 																			personal: document.getElementById("personalCheckBox").checked,
 																			org: document.getElementById("orgCheckBox").checked,
+																			custom: document.getElementById("customCheckBox").checked,
 																			categories: document.getElementById("categoriesCheckBox").checked,
 																			adr: document.getElementById("adrCheckBox").checked,
 																			tel: document.getElementById("telCheckBox").checked,
 																			email: document.getElementById("emailCheckBox").checked,
 																			impp: document.getElementById("imppCheckBox").checked,
 																			url: document.getElementById("urlCheckBox").checked,
+																			event: document.getElementById("eventCheckBox").checked,
 																			note: document.getElementById("noteCheckBox").checked } );
 			document.getElementById("content").src = "data:text/html," + encodeURIComponent(wdw_cardbookPrint.myHTML);
 		},

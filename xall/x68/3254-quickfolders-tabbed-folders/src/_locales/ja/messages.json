@@ -90,23 +90,31 @@
   },
   
   "special-offer-head" : {
-    "message": "QuickFoldersの12年-特別なイースターセール！"
+    "message": "QuickFoldersを将来の証拠にしましょう！"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart}親愛なる{name} {boldEnd}、まだライセンスを取得していない場合は、将来のためにQuickFoldersをサポートすることを検討してください。 Thunderbirdのさらに大きな変更が予定されており、それに追いつくために{boldStart}あなたの助け{boldEnd}が必要です！"
+  } ,
+  
   "special-offer-content" : {
-    "message": "QuickFoldersの12周年を祝うために、QuickFolders Proライセンスの価格が {boldStart} 50％割引{boldEnd} されているため、今がライセンスを取得する最高の機会です。 この特別オファーは、{boldStart} 3月31日{boldEnd} までご利用いただけます。"
+    "message": "QuickFolders Proの価格が{boldStart} 40％割引{boldEnd}されている間に、QuickFoldersを将来にわたって保証し、ライセンスを取得してください。 この特別オファーは、{boldStart} 5月1日{boldEnd}までご利用いただけます。"
   },
   
   "whats-new-intro" : {
-    "message": "Thunderbird 78の導入以降の新機能については、こちらをご覧ください。" 
+    "message": "ここで詳細な変更ログを読んでください（英語のみ）：" 
   },
   
   "whats-new-btn" : {
     "message": "新着情報？"
   }, 
   
+  "whats-new-head" : {
+    "message": "ハイライト"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Proには、選択したアカウントのサイレント移動と除外、アカウント内の結果の制限などの高度な検索設定と、フォルダーの移動とコピーの機能の改善があります。 また、Thunderbird 87 以降との互換性を維持するために、より多くの機能を修復しました。"
+    "message" : "このバージョンでは、次の機能を通じてquickMove機能がさらに拡張されています。{L1} 単一メッセージタブ：メッセージを移動した後、同じタブで次の電子メールを自動的に開くオプション{L2} {L1} quickMoveを完全にキャンセルする（およびそのリストを空にする）オプション メッセージ）ESCAPEを1回押すだけです。{L2} {L1} _とスペースの区切り文字から読み取り、検索された名前の先頭のように扱うことで、親フォルダの高度な照合を行います。{L2} {L1}修復済み：表示中にフォルダを検索 検索結果またはマルチフォルダー会話から表示されるメッセージ。{L2} {L1}特定のアカウントからの検索結果を制限するこれらの機能および追加機能は、QuickFoldersProタブの[AdvancedSearchSettings]から構成できます。{L2}"
   },  
 
   "time-and-effort": { 
@@ -117,16 +125,6 @@
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "変換プロジェクトにはすでにかなりのリソース ($hoursSpent$ 時間以上) を費やしており、Thunderbird の変更によって引き起こされるリグレッションや問題の修正にはさらに多くの作業が必要です。",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -170,7 +168,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "新しいレガシーレスモデル（メール実験）に切り替えるために必要な変更は、すでに数週間かかり、現在も進行中ですが、一部の機能が影響を受ける可能性があります。このような複雑なアドオンのためには、多額のコストが避けられません。支援をお願いします。"
+    "message": "$addonName$を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。 次の2022バージョンにはさらに多くの変更があります。 このような複雑なアドオンを使用すると、コストのかかる作業が避けられなくなります。 これで私たちを助けてください。",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

@@ -1115,6 +1115,36 @@
             }
         }
 	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : trimitere cerere de obținere a etichetelor …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : etichetele au fost obținute",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : etichetele nu au putut fi obținute de pe server (adresa url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingGetCardLabels": {
 		"message": "$P1$ : Contactul $P2$ : trimitere cerere de obținere a etichetelor …",
         "placeholders": {
@@ -1154,6 +1184,36 @@
             }
         }
 	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : trimitere cerere de actualizare a etichetelor …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : etichetele au fost actualizate",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : etichetele nu au putut fi actualizate pe server (adresa url: $P2$, stare: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingPutCardLabels": {
 		"message": "$P1$ : Contactul $P2$ : trimitere cerere de actualizare a etichetelor …",
         "placeholders": {
@@ -1177,7 +1237,7 @@
         }
 	},
 	"serverPutCardLabelsFailed": {
-		"message": "$P1$: Contactul $P2$: etichetele nu au putut fi actualizate pe server (adresa url: $P3$, stare: $P4$)",
+		"message": "$P1$ : Contactul $P2$: etichetele nu au putut fi actualizate pe server (adresa url: $P3$, stare: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -2129,7 +2189,7 @@
         }
 	},
 	"nodeDeleted": {
-		"message": "$P1$: Nodul $P2$ a fost șters",
+		"message": "$P1$ : Nodul $P2$ a fost șters",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -5469,6 +5529,12 @@
 	"org.print.accesskey": {
 		"message": "o"
 	},
+	"custom.print.label": {
+		"message": "Câmpuri personalizate"
+	},
+	"custom.print.accesskey": {
+		"message": "i"
+	},
 	"categories.print.label": {
 		"message": "Categorii"
 	},
@@ -5504,6 +5570,12 @@
 	},
 	"url.print.accesskey": {
 		"message": "U"
+	},
+	"event.print.label": {
+		"message": "Evenimente"
+	},
+	"event.print.accesskey": {
+		"message": "E"
 	},
 	"note.print.label": {
 		"message": "Notițe"

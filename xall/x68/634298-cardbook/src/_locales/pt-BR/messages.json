@@ -1115,6 +1115,36 @@
             }
         }
 	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : enviando solicitação para descritores dos contatos …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : descritores recuperados",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : falha ao obter descritores no servidor (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingGetCardLabels": {
 		"message": "$P1$ : Contato $P2$ : enviando solicitação para descritores dos contatos …",
         "placeholders": {
@@ -1138,7 +1168,7 @@
         }
 	},
 	"serverGetCardLabelsFailed": {
-		"message": "$P1$ : Contato $P2$ falha ao obter descritores no servidor (url : $P3$, status : $P4$)",
+		"message": "$P1$ : Contato $P2$ : falha ao obter descritores no servidor (url : $P3$, status : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1151,6 +1181,36 @@
             },
             "P4": {
                 "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : enviando solicitação para atualizar descritores dos contatos …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : descritores atualizados",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : falha ao atualizar descritores no servidor (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
             }
         }
 	},
@@ -1177,7 +1237,7 @@
         }
 	},
 	"serverPutCardLabelsFailed": {
-		"message": "$P1$ : Contato $P2$ falha ao atualizar descritores no servidor (url : $P3$, status : $P4$)",
+		"message": "$P1$ : Contato $P2$ : falha ao atualizar descritores no servidor (url : $P3$, status : $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -5469,6 +5529,12 @@
 	"org.print.accesskey": {
 		"message": "o"
 	},
+	"custom.print.label": {
+		"message": "Campos customizaveis"
+	},
+	"custom.print.accesskey": {
+		"message": "a"
+	},
 	"categories.print.label": {
 		"message": "Categorias"
 	},
@@ -5504,6 +5570,12 @@
 	},
 	"url.print.accesskey": {
 		"message": "U"
+	},
+	"event.print.label": {
+		"message": "Eventos"
+	},
+	"event.print.accesskey": {
+		"message": "E"
 	},
 	"note.print.label": {
 		"message": "Notas"

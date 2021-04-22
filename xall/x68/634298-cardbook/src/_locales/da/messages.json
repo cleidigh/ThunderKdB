@@ -1115,6 +1115,36 @@
             }
         }
 	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : sender forespørgsel for at erhverve kontaktmærkater …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : mærkater erhvervet",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : mærkater kunne ikke erhverves på server (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingGetCardLabels": {
 		"message": "$P1$ : Kontakt $P2$ : sender kontaktmærkaters erhvervelsesforespørgsel …",
         "placeholders": {
@@ -1151,6 +1181,36 @@
             },
             "P4": {
                 "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : sender kontaktmærkaters opdateringsforespørgsel …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : mærkater opdateret",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : mærkater kunne ikke opdateres på server (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
             }
         }
 	},
@@ -5221,7 +5281,7 @@
 		"message": "Leveringsformat"
 	},
 	"PreferMailFormat.label": {
-		"message": "Foretrækker meddelelser i formatet:"
+		"message": "Foretrækker at modtage meddelelser formateret som:"
 	},
 	"PreferMailFormat.accesskey": {
 		"message": "r"
@@ -5469,6 +5529,12 @@
 	"org.print.accesskey": {
 		"message": "r"
 	},
+	"custom.print.label": {
+		"message": "Brugerdefinerede felter"
+	},
+	"custom.print.accesskey": {
+		"message": "B"
+	},
 	"categories.print.label": {
 		"message": "Kategorier"
 	},
@@ -5504,6 +5570,12 @@
 	},
 	"url.print.accesskey": {
 		"message": "R"
+	},
+	"event.print.label": {
+		"message": "Begivenheder"
+	},
+	"event.print.accesskey": {
+		"message": "B"
 	},
 	"note.print.label": {
 		"message": "Noter"

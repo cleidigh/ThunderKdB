@@ -1115,6 +1115,36 @@
             }
         }
 	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : enviando solicitud de obtención de etiquetas del contacto …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : etiquetas obtenidas",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : no se pudieron obtener las etiquetas en el servidor (url : $P2$, estado : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingGetCardLabels": {
 		"message": "$P1$ : Contacto $P2$ : enviando solicitud de obtención de etiquetas del contacto …",
         "placeholders": {
@@ -1151,6 +1181,36 @@
             },
             "P4": {
                 "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : enviando solicitud de actualización de etiquetas del contacto …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : etiquetas actualizadas",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : no se pudieron actualizar las etiquetas en el servidor (url : $P2$, estado : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
             }
         }
 	},
@@ -5469,6 +5529,12 @@
 	"org.print.accesskey": {
 		"message": "o"
 	},
+	"custom.print.label": {
+		"message": "Campos personalizados"
+	},
+	"custom.print.accesskey": {
+		"message": "a"
+	},
 	"categories.print.label": {
 		"message": "Categorías"
 	},
@@ -5504,6 +5570,12 @@
 	},
 	"url.print.accesskey": {
 		"message": "U"
+	},
+	"event.print.label": {
+		"message": "Eventos"
+	},
+	"event.print.accesskey": {
+		"message": "E"
 	},
 	"note.print.label": {
 		"message": "Notas"

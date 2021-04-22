@@ -90,23 +90,31 @@
   },
   
   "special-offer-head" : {
-    "message": "12 let QuickFolders - speciální velikonoční výprodej!"
+    "message": "Udělejte důkaz QuickFolders do budoucna!"
   } ,  
   
+  "special-offer-intro" : {
+    "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory QuickFolders pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
+  } ,
+  
   "special-offer-content" : {
-    "message": "Nyní je nejlepší příležitost získat licenci, protože k oslavě 12 let QuickFolders došlo k {boldStart}50% snížení{boldEnd} ceny licence QuickFolders Pro! Tato speciální nabídka bude k dispozici do {boldStart}31. Března{boldEnd}."
+    "message": "Udělejte QuickFolders budoucí důkaz a získejte licenci, zatímco u ceny QuickFolders Pro je {boldStart} 40% snížení {boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} 1. Května {boldEnd}."
   },
   
   "whats-new-intro" : {
-    "message": "Přečtěte si, co je nového od zavedení Thunderbirdu 78 zde:" 
+    "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   
   "whats-new-btn" : {
     "message": "Co je nového?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Hlavní body"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro má nyní pokročilé nastavení vyhledávání, jako je tiché přesouvání a vyloučení účtů podle vašeho výběru nebo omezení výsledků v rámci účtu a vylepšené funkce pro přesouvání a kopírování složek. Opravil jsem také více položek, abych zůstal kompatibilní s Thunderbirdem 87 a vyššími."
+    "message" : "Tato verze dále rozšiřuje funkci quickMove o následující funkce: {L1}Karta Jedna zpráva: možnost automaticky otevřít další e-mail na stejné kartě po přesunutí zprávy{L2} {L1} Možnost úplného zrušení quickMove (a vyprázdnění seznamu zprávy) jediným stisknutím klávesy ESCAPE. {L2} {L1} Pokročilé porovnávání nadřazených složek čtením z oddělovačů _ a mezer a zacházením s nimi jako se začátkem hledaného jména. {L2} {L1} Opraveno: vyhledávání složek při prohlížení zprávy zobrazené ve výsledcích vyhledávání nebo z vícesložkové konverzace. {L2} {L1} Tyto a další funkce omezující výsledky vyhledávání z určitých účtů lze konfigurovat pomocí Rozšířeného nastavení vyhledávání na kartě QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 
@@ -117,16 +125,6 @@
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "Na projekt převodu jsme již strávili značné prostředky (více než $hoursSpent$ hodin) - a je zde více práce s opravou regresí a problémů způsobených změnami v Thunderbirdu.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -170,7 +168,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Nezbytné úpravy přechodu na nový starší model (experiment pošty) již trvaly několik týdnů a stále probíhají, zatímco některé funkce by mohly být ovlivněny. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím."
+    "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

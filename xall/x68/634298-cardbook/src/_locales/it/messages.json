@@ -1115,6 +1115,36 @@
             }
         }
 	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : invio della richiesta di acquisizione etichette contatto …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : etichette acquisite",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : acquisizione delle etichette dal server fallita (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingGetCardLabels": {
 		"message": "$P1$ : Contatto $P2$: invio della richiesta di acquisizione etichette contatto …",
         "placeholders": {
@@ -1151,6 +1181,36 @@
             },
             "P4": {
                 "content": "$4"
+            }
+        }
+	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : invio della richiesta di aggiornamento etichette contatto …",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : etichette aggiornate",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : aggiornamento etichette sul server fallito (url : $P2$, status : $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
             }
         }
 	},
@@ -5469,6 +5529,12 @@
 	"org.print.accesskey": {
 		"message": "o"
 	},
+	"custom.print.label": {
+		"message": "Campi personalizzati"
+	},
+	"custom.print.accesskey": {
+		"message": "a"
+	},
 	"categories.print.label": {
 		"message": "Categorie"
 	},
@@ -5504,6 +5570,12 @@
 	},
 	"url.print.accesskey": {
 		"message": "U"
+	},
+	"event.print.label": {
+		"message": "Eventi"
+	},
+	"event.print.accesskey": {
+		"message": "E"
 	},
 	"note.print.label": {
 		"message": "Note"

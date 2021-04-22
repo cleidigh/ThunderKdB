@@ -214,15 +214,18 @@ debug('upload '+mabName+' ('+lmds+')');
   statustxt('- '+mabName+'.', 1, false, null, lmds);  // 1. dot: started
 
 //  get old messages for this addressbook
-  let deleteMsgs=Cc["@mozilla.org/array;1"]
-    .createInstance(Ci.nsIMutableArray);
+debug('appVersion='+appVersion);
+  let deleteMsgs=appVersion<'85'
+		? Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray)
+		: new Array();
   let msgId=getMsgId(externalFilename);
   let msgs=gImapFolder.messages;
   while (msgs.hasMoreElements()) {    //simpleEnumerator
     let msg=msgs.getNext();
     msg.QueryInterface(Ci.nsIMsgDBHdr);
     if (msg.messageId == msgId) {
-      deleteMsgs.appendElement(msg, false);
+      if (appVersion<'85') deleteMsgs.appendElement(msg, false);
+			else deleteMsgs.push(msg);
 debug('delete msg '+msgId);
     }
   }
@@ -608,7 +611,9 @@ debug('SaveInFolderDone');
 
   let composeFields = params.composeFields;
   composeFields.QueryInterface( Ci.nsIMsgCompFields);
-  composeFields.characterSet = 'UTF-8';
+	try {
+		composeFields.characterSet = 'UTF-8';	// UTF-8 is standard since TB82.3
+	} catch(e) {}
   composeFields.subject = 'Addressbooks Synchronizer: '+externalFilename;
   composeFields.to = '"Addressbooks Synchronizer"'; //gIdty.email; //needed, if doing encryption
 //  composeFields.from = 'Addressbooks Synchronizer'; // does not work (automatically overridden) :-(
@@ -642,7 +647,11 @@ debug('composeFields set');
 		//   aber immer noch up/download in Progress und kein Fehler in JavaScriptConsole
 		// Mit .Now ist die message tatsächlich verschickt worden :-)
 		// Mit .Later landet es in LocalFolders.unsent und will später versendet werden.
-	msgCompose.SendMsg(Ci.nsIMsgCompDeliverMode.SaveAsDraft,
+	if (msgCompose.SendMsg)	//up to TB82
+		msgCompose.SendMsg(Ci.nsIMsgCompDeliverMode.SaveAsDraft,
+											gIdty, gAccount.key, null, null);
+	else
+		msgCompose.sendMsg(Ci.nsIMsgCompDeliverMode.SaveAsDraft,	//might use await
 											gIdty, gAccount.key, null, null);
 	statustxt(".", 0, false); // 3. dot: SendMsg done
 

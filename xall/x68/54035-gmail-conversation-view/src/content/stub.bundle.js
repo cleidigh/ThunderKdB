@@ -760,7 +760,7 @@ const messagesSlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.createSlice(
       payload
     }) {
       return { ...state,
-        msgData: state.msgData.filter(m => m.msgUri === payload.msgUri)
+        msgData: state.msgData.filter(m => m.msgUri !== payload.msgUri)
       };
     },
 

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 10675,
+    "average_daily_users": 10865,
     "categories": {
         "thunderbird": [
             "composition",
@@ -19,31 +19,33 @@
     "contributions_url": null,
     "created": "2014-02-18T00:17:30Z",
     "current_version": {
-        "id": 2474777,
+        "id": 2475753,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "78.0"
+                "min": "78.4.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2474777",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/flex-confirm-mail/versions/2475753",
         "files": [
             {
-                "id": 1017939,
-                "created": "2020-11-18T09:39:26Z",
-                "hash": "sha256:a8653eb5d1899689bbbc1a29128b9d44977edd868e125fd501dfd1cd438dadcd",
+                "id": 1018913,
+                "created": "2021-04-19T03:07:52Z",
+                "hash": "sha256:0598c9134982f93fe9a66f840cd93fce732ab8affeb0778800b05f01aceff15f",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 45355,
+                "size": 48038,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017939/flex_confirm_mail-3.0.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018913/flex_confirm_mail-3.0.7-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "addressBooks",
+                    "clipboardRead",
                     "compose",
                     "menus",
+                    "messagesModify",
                     "messagesRead",
                     "nativeMessaging",
                     "storage",
@@ -57,15 +59,15 @@
             "name": {
                 "en-US": "MPL1.1"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/3.0.4"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/license/3.0.7"
         },
         "release_notes": {
-            "en-US": "Supports Thunderbrid 78.",
-            "ja": "Thunderbird 78に対応"
+            "en-US": "* Add ability to show confirmation when message body was copied and pasted between messages having different recipients.\n* Add ability to show confirmation when long text was pasted as the message body.\n* Add ability to choose external file list via a native messaging host.\n* Add ability to export configs.\n* Colorize attachments having attention terms in their filename.\n* Fix hanging with blank dialog in slow situations.\n* Drop support for Thunderbird 78.3.0 or older versions.",
+            "ja": "* 宛先が異なるメッセージ間でメッセージ本文がコピー&amp;ペーストされたことを検出できた場合に、誤送信防止の警告を表示できるようにした\n* 長いテキストをメッセージ本文に貼り付けたことを検出できた場合に、誤送信防止の警告を表示できるようにした\n* Native Messaging Host経由で、コモンダイアログを使って外部の例外リストを選択できるようにした\n* 設定をエクスポートできるように下\n* 警告が必要な語句をファイル名に含む添付ファイルについて、色分けして表示するようにした\n* Thunderbirdの動作が遅いときにダイアログが空になってハングアップする問題を修正\n* Thunderbird 78.3.0以前のバージョンへの対応を終了"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/3.0.4",
-        "version": "3.0.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/flex-confirm-mail/versions/3.0.7",
+        "version": "3.0.7"
     },
     "default_locale": "en-US",
     "description": {
@@ -90,7 +92,7 @@
     "is_experimental": true,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-18T09:40:03Z",
+    "last_updated": "2021-04-19T03:10:03Z",
     "name": {
         "en-US": "Flex Confirm Mail",
         "ja": "Flex Confirm Mail"
@@ -147,6 +149,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-11-18T09:39:26Z",
+            "comp78pv_version": "3.0.4",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-05-08T08:33:36Z"
         }

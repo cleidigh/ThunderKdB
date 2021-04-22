@@ -2,7 +2,13 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 var loader = Services.scriptloader;
-loader.loadSubScript("chrome://cardbook/content/cardbookIndexedDB.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIndexedDB.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCard.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookEncryptor.js", this);
 
 var cardbookSynchro = {
 
@@ -16,11 +22,14 @@ var cardbookSynchro = {
 
 			// once openDB is finished, it will fire an event
 			// and then load the cache and maybe sync the accounts
-			cardbookIndexedDB.openCatDB();
+			cardbookIDBCat.openCatDB();
 
 			// query for some undos
-			cardbookIndexedDB.openUndoDB();
-			
+			cardbookIDBUndo.openUndoDB();
+
+			// mail popularity
+			cardbookIDBMailPop.openMailPopDB();
+
 			cardbookRepository.firstLoad = true;
 		}
 		}
@@ -38,7 +47,6 @@ if (cookieBehavior == 2) {
 	Services.prefs.setIntPref("network.cookie.cookieBehavior", 1);
 }
 
-cardbookRepository.cardbookMailPopularity.loadMailPopularity();
 cardbookRepository.cardbookPreferDisplayName.loadPreferDisplayName();
 
 cardbookSynchro.runBackgroundSync();

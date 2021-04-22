@@ -1,0 +1,216 @@
+{
+    "id": 988087,
+    "authors": [
+        {
+            "id": 6493228,
+            "name": "Michele Locati",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/mlocati/",
+            "username": "mlocati",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/6/6493/6493228.png?modified=1617465370"
+        }
+    ],
+    "average_daily_users": 16,
+    "categories": {
+        "thunderbird": [
+            "folders-and-filters"
+        ]
+    },
+    "contributions_url": "https://paypal.me/mlocati",
+    "created": "2021-04-03T14:38:41Z",
+    "current_version": {
+        "id": 2475691,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/message-mover/versions/2475691",
+        "files": [
+            {
+                "id": 1018851,
+                "created": "2021-04-08T19:28:28Z",
+                "hash": "sha256:caa5dd3077387f7d1956ef0c220db76db2a79431c8e88e1b5c09243b694ea180",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 106614,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018851/message_mover-1.4.1-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "accountsFolders",
+                    "messagesRead",
+                    "messagesMove",
+                    "menus",
+                    "storage"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "<ul><li>Improve reporting errors while compacting folders</li><li>try to fix problems when compacting folders</li></ul>",
+            "it": "<ul><li>migliora gestione degli errori durante la compattazione delle cartelle</li><li>tentativo di correggere problemi quando si compattano le cartelle</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/message-mover/versions/1.4.1",
+        "version": "1.4.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Message Mover helps you move all the messages from one folder (and optionally in its sub-folders) to another folder.\n\nCompared to the feature available by default in Thunderbird:\n\n<ul><li>Message Mover moves a message at a time, so that if anything fails while copying many messages you won't end up having messages copied instead of moved</li><li>you can configure Message Mover to ignore errors that may occur while moving a message (so that all the other messages get moved anyway)</li><li>you can configure Message Mover to auto-start when Thunderbird starts, so that the move operation can continue even if you restart Thunderbird</li></ul>",
+        "it": "Message Mover aiuta a spostare tutti i messaggi da una cartella (e opzionalmente dalle sue sotto-cartelle) a un'altra cartella.\n\nRispetto alle funzionalità predefinite di Thunderbird:\n\n<ul><li>Message Mover sposta un messaggio per volta, in modo che se si verifica un errore durante lo spostamento di un messaggio l'operazione non viene interrotta (che causa l'avere copiato invece che spostato i messaggi)</li><li>è possibile configurare Message Mover in modo che ignori eventuali errori che possono verificarsi durante lo spostamento di un messaggio (in tal modo tutti gli altri messaggi verranno comunque spostati)</li><li>è possibile configurare Message Mover per avviarsi automaticamente all'avvio di Thunderbird, in modo che l'operazione di spostamento possa continuare anche se si riavvia Thunderbird</li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/message-mover/edit",
+    "guid": "messagemover@michele.locati.it",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/mlocati/thunderbird-message-mover",
+        "it": "https://github.com/mlocati/thunderbird-message-mover"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/988/988087-64.png?modified=8dbdb99a",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/988/988087-32.png?modified=8dbdb99a",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/988/988087-64.png?modified=8dbdb99a"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2021-04-10T23:12:36Z",
+    "name": {
+        "en-US": "Message Mover",
+        "it": "Message Mover"
+    },
+    "previews": [
+        {
+            "id": 206508,
+            "caption": {
+                "en-US": "You can manage this extension in the Add-ons > Message Mover > Options window",
+                "it": "È possibile gestire questa estensione nella finestra Componenti aggiuntivi > Message Mover > Opzioni"
+            },
+            "image_size": [
+                910,
+                619
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206508.png?modified=1617654125",
+            "thumbnail_size": [
+                294,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206508.png?modified=1617654125"
+        },
+        {
+            "id": 206512,
+            "caption": {
+                "en-US": "You can quickly set the source folder by clicking on a folder in the folders pane.",
+                "it": "È possibile selezionare velocemente la cartella di origine facendo clic col pulsante destro del mouse su una cartella nel pannello delle cartelle"
+            },
+            "image_size": [
+                437,
+                241
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206512.png?modified=1617654125",
+            "thumbnail_size": [
+                320,
+                176
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206512.png?modified=1617654125"
+        },
+        {
+            "id": 206509,
+            "caption": {
+                "en-US": "This extension is localized in Italian too",
+                "it": "L'estensione è disponibile anche in italiano"
+            },
+            "image_size": [
+                906,
+                627
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206509.png?modified=1617654125",
+            "thumbnail_size": [
+                289,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206509.png?modified=1617654125"
+        }
+    ],
+    "public_stats": true,
+    "ratings": {
+        "bayesian_average": 3.09546,
+        "count": 1,
+        "average": 4,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/message-mover/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/988087",
+    "slug": "message-mover",
+    "status": "public",
+    "summary": {
+        "en-US": "This add-on lets you move messages from a specific folder (and sub-folders) to a new folder.",
+        "it": "Sposta messaggi e cartelle silenziosamente"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/mlocati/thunderbird-message-mover/issues"
+    },
+    "tags": [
+        "cartella",
+        "firefox57",
+        "folder",
+        "message",
+        "messaggio",
+        "move",
+        "sposta"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/message-mover/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-04-03T14:38:41Z",
+            "comp78pv_version": "1.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*"
+        }
+    }
+}

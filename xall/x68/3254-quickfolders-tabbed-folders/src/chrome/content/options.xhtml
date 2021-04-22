@@ -65,7 +65,7 @@
 				       onclick="util.openLinkInBrowser(event,'https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A')" />
 				<spacer flex="1" />
 				<label id="qf-options-header-description"
-							 onclick="if (options.showVersionHistory(this, true)) setTimeout(function() { window.close(); });return false;"
+							 onclick="if (options.showVersionHistory(true)) setTimeout(function() { window.close(); });return false;"
 							 tooltiptext="&qf.options.versionnumber.tooltip;" />
 			</hbox>
 		</box>
@@ -580,7 +580,7 @@
 					<html:fieldset>
 						<html:legend>&qf.label.appearance;</html:legend>
 						<vbox>
-							<hbox>
+							<hbox class="toowide">
 								<vbox>
 									<hbox align="center">
 										<label class="textBoxLabel"
@@ -638,7 +638,7 @@
 												label="&qf.checkbox.showIcons;"
 												preference="qfpl-ShowIcons"
 												oncommand="options.toggleBoolPreference(this);" />
-							<hbox align="center">
+							<hbox align="center" class="toowide">
                 <label id="button-font-size-label"
                        value="&qf.label.buttonFontSizeNumeric;"
                        control="button-font-size" />
@@ -673,7 +673,7 @@
                 </hbox>
 							</hbox>
 							<separator class="thin" />
-							<hbox align="center" id="qf-tweakRadius">
+							<hbox align="center" id="qf-tweakRadius" class="toowide">
 								<checkbox id="chkCustomRadius"
 													label="&qf.options.themes.customCornerRadius.checkbox;"
 													preference="qfpl-CustomizedRadius"
@@ -706,7 +706,7 @@
 					</html:fieldset>
 					<html:fieldset>
 						<html:legend>&qf.label.Toolbar;</html:legend>
-						<hbox align="center">
+						<hbox align="center" class="toowide">
 							<label value="&qf.label.ToolbarBackground;" />
 							<html:input id="toolbar-colorpicker"
 													type="color"
@@ -1047,7 +1047,7 @@
             <div id="L3"
                  class="button"
                     tooltiptext="https://quickfolders.org/version.html"
-                    onclick="options.showVersionHistory(this, false); 
+                    onclick="options.showVersionHistory(false); 
                     setTimeout(function() { window.close(); });
                     return true;">
               <label>&qf.label.versionhistory;</label>

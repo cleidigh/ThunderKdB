@@ -7,11 +7,8 @@
 
   END LICENSE BLOCK */
 
-if (typeof ChromeUtils.import == "undefined") {
-	Components.utils.import("resource://gre/modules/Services.jsm");
-}
-else
-	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 if (!QuickFolders.StringBundle)
 	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
@@ -1214,8 +1211,9 @@ QuickFolders.Interface = {
 				menulist.value = v;
 				// if multiple select, check all boxes
 				for (let i=0; i<menulist.itemCount; i++) {
-					let it = menulist.getItemAtIndex(i),
-							isSelected = (cats.includes(it.value));
+					let it = menulist.getItemAtIndex(i);
+          if (it.tagName!='menuitem') continue;
+					let isSelected = (cats.includes(it.value));
 					if (isSelected) {
 						txtDebug += 'Check menuitem: ' + it.value + '\n';
 						it.setAttribute('checked', isSelected); // check selected value
@@ -1271,7 +1269,7 @@ QuickFolders.Interface = {
 		let tabmail = document.getElementById("tabmail"),
 		    info = util.getTabInfoByIndex(tabmail, tabIndex);
 		info.QuickFoldersCategory = categories;
-		let tab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+		let tab = tabmail.selectedTab;
 		if (tab == info) {
 			// current Tab:
 			QuickFolders.Interface.selectCategory(categories, false);
@@ -4396,7 +4394,7 @@ QuickFolders.Interface = {
       if (folder.subFolders.hasMoreElements) {
         // Tb78 and older - uses nsIMutableArray
         subfolders = [];
-        let x=100;
+        let x = 250;
         var subFolders = folder.subFolders;
 				while (subFolders.hasMoreElements()) {
 					let sf = subFolders.getNext().QueryInterface(Ci.nsIMsgFolder);
@@ -4484,18 +4482,7 @@ QuickFolders.Interface = {
 			if (isCtrlKey) {
 				let tabmail = document.getElementById("tabmail");
 				if (tabmail) {
-					switch (util.Application) {
-						case 'Thunderbird':
-							tabmail.openTab(util.mailFolderTypeName, {folder: folderUri, messagePaneVisible:true } );
-							break;
-						case 'SeaMonkey':
-							tabmail.openTab(util.mailFolderTypeName, 7, folderUri);
-							break;
-						case 'Postbox':
-							let win = util.getMail3PaneWindow();
-							win.MsgOpenNewTabForFolder(folderUri, null /* msgHdr.messageKey key*/, false /*Background*/ )
-							break;
-					}
+          tabmail.openTab(util.mailFolderTypeName, {folder: folderUri, messagePaneVisible:true } );
 				}
 			}
 		}
@@ -4505,19 +4492,18 @@ QuickFolders.Interface = {
 
 	// on down press reopen QuickFolders-FindPopup menu with ignorekeys="false"
 	findFolderKeyPress: function findFolderKeyPress(event) {
-	  const VK_UP = 0x26;
-	  const VK_DOWN = 0x28;
-		const VK_ESCAPE = 0x1B;
-    const VK_ENTER = 0x0D;
-		let isShift = (event && event.shiftKey) || false;
+    const prefs = QuickFolders.Preferences,
+          util = QuickFolders.Util,
+          QI = QuickFolders.Interface;
+
+    let menupopup, 
+        isShift = (event && event.shiftKey) || false;
 
     function makeEvent(evtType, evt) {
       let clonedEvent = new KeyboardEvent(evtType, evt); // keydown or keyup (was keypress)
       return clonedEvent;
     }
-		let menupopup,
-        util = QuickFolders.Util,
-        QI = QuickFolders.Interface;
+
 	  if (event.key) switch (event.key) {
       case "Enter":
 			  util.logDebugOptional("interface.findFolder","Enter");
@@ -4561,7 +4547,7 @@ QuickFolders.Interface = {
 				break;
 			case "Escape":
         event.preventDefault(); // [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
-			  if (isShift) // [Bug 26660] SHIFT + ESC resets move list
+			  if (isShift || prefs.getBoolPref("quickMove.premium.escapeClearsList") ) // [Bug 26660] SHIFT + ESC resets move list
 					QuickFolders.quickMove.resetList();
 			  QI.findFolder(false);
 			  QI.hideFindPopup();
@@ -4686,7 +4672,9 @@ QuickFolders.Interface = {
         maxLevel--;
         f = f.parent;
 
-        if (f.prettyName.toLowerCase().indexOf(ancestors[maxLevel])==0) {
+        // [issue 135] allow in-string search for parents using delimiters: - _ . and space!
+        let folderNameMatches = f.prettyName.toLowerCase().split(/[_ ]/);
+        if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>1)) {
 					// 1st (top level) match
 					if (!directParent) directParent = f;
 
@@ -4709,7 +4697,9 @@ QuickFolders.Interface = {
 					directParent = null;
 			while (f && maxLevel) {
 				maxLevel--;
-				if (f.prettyName.toLowerCase().indexOf(ancestors[maxLevel])==0) {
+        // [issue 135] allow in-string search for children using delimiters: - _ . and space!
+        let folderNameMatches = f.prettyName.toLowerCase().split(/[-_. ]/);
+				if (folderNameMatches.some(a => a.startsWith(search))) {   
 					if (!directParent) directParent = folder;
 					if (maxLevel == 0) {
 						if (parentList.indexOf(directParent)<0) {
@@ -4790,7 +4780,8 @@ QuickFolders.Interface = {
 			enteredSearch = enteredSearch.substr(parentPos+1); // original mixed case for subfolder creation; include placeholder for account
 			parentCount = parentString.split("/").length + 1; // original entry for parent
     }
-		let isFiling = QuickFolders.quickMove.isActive;
+		const isFiling = QuickFolders.quickMove.isActive,
+          isQuickJump = true;
     /********* old jump point *********/
 		/*
 		// [Bug 26565] if 1 unique full match is found - without children!, we can automatically jump there
@@ -4817,13 +4808,13 @@ QuickFolders.Interface = {
 		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
 
 		// multiple slashes?
-			util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
-			util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);
-			util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
+    util.logDebugOptional("interface.findFolder", "Calling allFoldersMatch(" + isFiling + ", isParentMatch(), parent='" + parentString + "', " + maxParentLevel + ",...)");
+    util.allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches);
+    util.logDebugOptional("interface.findFolder", "Got " + matches.length + " matches");
 
 		// no parent matches - Add one for a folder without children.
 		if (!matches.length && parentPos>0) {
-      for (let folder of util.allFoldersIterator(isFiling)) {
+      for (let folder of util.allFoldersIterator(isFiling, isQuickJump)) {
         addIfMatch(folder, matches.parentString || parentString, parents);
       }
 		}
@@ -5256,23 +5247,12 @@ QuickFolders.Interface = {
         util = QuickFolders.Util,
         idx = QuickFolders.tabContainer.selectedIndex,
         tabmail = document.getElementById("tabmail"),
-        tabs = tabmail.tabInfo || tabmail.tabOwners, // Pb: tabOwners
+        tabs = tabmail.tabInfo, 
         info = util.getTabInfoByIndex(tabmail, idx),
         tabMode = util.getTabMode(info);  // tabs[idx]
     // single message mode
     if (tabMode == 'message') {
-      let msg;
-      switch (util.Application) {
-        case 'Postbox':
-          msg = info._msgHdr;
-          break;
-        case 'Thunderbird':
-          msg = info.messageDisplay.displayedMessage
-          break;
-        case 'SeaMonkey':
-          msg = info.msgSelectedFolder;
-          break;
-      }
+      let msg = info.messageDisplay.displayedMessage;
       if (msg) {
         folder = msg.folder;
       }
@@ -5281,13 +5261,9 @@ QuickFolders.Interface = {
         return folder;
       }
     }
-
-    if (info.msgSelectedFolder)  // Sm
-      folder = info.msgSelectedFolder;
-    else if (  info.folderDisplay
-            && info.folderDisplay.view
-            && info.folderDisplay.view.displayedFolder)  // Tb
-      folder = info.folderDisplay.view.displayedFolder
+    let fD = info.folderDisplay;
+    if (fD && fD.view && fD.view.displayedFolder)  // Tb
+      folder = fD.view.displayedFolder
     else   // Postbox
       folder = GetFirstSelectedMsgFolder();
     QuickFolders.Util.logDebugOptional("mailTabs", "getCurrentTabMailFolder() returns: " + (folder ? folder.prettyName : 'n/a'));
@@ -5303,11 +5279,9 @@ QuickFolders.Interface = {
 				prefs = QuickFolders.Preferences; // let's not use _this_ in an event function
 		try  {
 			// avoid TB logging unnecessary errors in Stack Trace
-			if ((util.Application == 'Thunderbird') && !gFolderTreeView )
-				return;
+			if (!gFolderTreeView) return;
 
       // used to be: GetFirstSelectedMsgFolder() - but doesn't work in Sm
-      // SM use: info.msgSelectedFolder
       if (forceButton)
         folder = forceButton.folder;
       else if (forceFolder)
@@ -6160,13 +6134,11 @@ QuickFolders.Interface = {
 				bottomRadius = prefs.getIntPref('style.corners.customizedBottomRadiusN') + "px";
 			}
 
-			let legacyRadius = !util.isCSSRadius;
-
 			if (util.Application == 'SeaMonkey') btnSelector = btnSelector + ':not(.plain)';
-			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-topleft'     : 'border-top-left-radius', topRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-topright'    : 'border-top-right-radius', topRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-bottomleft'  : 'border-bottom-left-radius', bottomRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-bottomright' : 'border-bottom-right-radius', bottomRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, 'border-top-left-radius', topRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, 'border-top-right-radius', topRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, 'border-bottom-left-radius', bottomRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, 'border-bottom-right-radius', bottomRadius, true);
 
 			// QuickFolders Toolbar only
 			let btnInToolbarSelector = '.quickfolders-flat .folderBarContainer toolbarbutton',
@@ -6180,7 +6152,7 @@ QuickFolders.Interface = {
 			// BORDERS & SHADOWS
 			// for full colored tabs color the border as well!
 			// but should only apply if background image is set!!
-			let SHADOW = util.isCSSShadow ? 'box-shadow' : '-moz-box-shadow';
+			let SHADOW = 'box-shadow';
 			if (prefs.getBoolPref("buttonShadows")) {
 				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton', SHADOW,'1px -1px 3px -1px rgba(0,0,0,0.3)', true);
 				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton.selected-folder', SHADOW, '0px 0px 2px -1px rgba(0,0,0,0.9)', true);

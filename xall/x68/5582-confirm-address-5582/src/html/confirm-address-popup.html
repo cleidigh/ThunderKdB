@@ -4,27 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="text/css" media="screen" href="common.css">
     <style type="text/css">
-        .box_scrollbar {
-            overflow: auto;
-            width: 300px;
-            height: 80px;
-            padding: 5px;
-            border: 1px solid #000;
-            background-color: #F9F9F9;
-            color: #000;
-            font-size: 12px;
-        }
-
-        .box_title {
-            border: 1px solid #000;
-            padding: 5px;
-            width: 300px;
-            font-weight: bold;
-            font-size: 14px;
-            background-color: #000;
-            color: #fff;
-        }
     </style>
     <script src="../scripts/l10n.js" defer></script>
     <script src="../scripts/popup.js" defer></script>
@@ -54,6 +35,14 @@
             <!--<small l10n-tag="caDialogOtherdomainTooltip"></small>-->
             <!-- Outsider Domain addresses locate here -->
             <div id="otherDomainAddresses" class="box_scrollbar">
+            </div>
+        </div>
+        <div id="firstLinesofBody" style="display:none">
+            <div class="box_title">
+                <input type="checkbox" name="check_firstLinesOfBody">
+                <label for="check_firstLinesOfBody" l10n-tag="caDialogFirstLinesOfBody"></label>
+            </div>
+            <div id="mailBody" class="box_scrollbar">
             </div>
         </div>
         <div id="countdownArea" style="display:none;">

@@ -35,6 +35,19 @@ hr.spacer {
 }
 
 
+.flex-box {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.flex-box.row {
+  flex-direction: row;
+}
+
+
 p, ul {
   margin: 0 0 0.5em 0;
   padding: 0;
@@ -97,10 +110,19 @@ textarea {
   min-height: 6em;
 }
 
-li textarea,
-input[type="text"].filepath {
+li textarea {
   margin-left: 2em;
   width: calc(100% - 2em);
+}
+
+
+input[type="text"].filepath {
+  flex-grow: 1;
+  margin-left: 2em;
+}
+input[type="text"].filepath + button {
+  flex-grow: 0;
+  margin-left: 0.25em;
 }
 
 

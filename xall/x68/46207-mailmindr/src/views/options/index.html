@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./index.css" />
+        <title>mailmindr Preferences</title>
+    </head>
+    <body>
+        <aside>
+            <div class="mailmindr-sidebar-links">
+                <ul>
+                    <li>
+                        <button
+                            class="mailmindr-jump-button"
+                            data-jump-to="#mailmindr-common_settings"
+                        >
+                            Common settings
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            class="mailmindr-jump-button"
+                            data-jump-to="#mailmindr-presets"
+                        >
+                            Presets
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            class="mailmindr-jump-button"
+                            data-jump-to="#mailmindr-get_help"
+                        >
+                            Get help
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="mailmindr-sidebar-footer">
+                <button
+                    class="mailmindr-button mailmindr-button--micro mailmindr-sponsorlink mailmindr-button-web"
+                    data-web="https://mailmindr.net/sponsor"
+                >
+                    💜 Become a mailmindr sponsor
+                </button>
+            </div>
+
+            <div id="mailmindr-ui-lock">
+                <div class="mailmindr-ui-lock-shim" />
+                <div class="mailmindr-ui-lock-message" tabindex="1">
+                    <div>
+                        <div>
+                            <h2>
+                                🔐
+                                <span
+                                    data-i18n="view.options.message.dialog-open.heading"
+                                ></span>
+                            </h2>
+                            <p
+                                data-i18n="view.options.message.dialog-open.text"
+                            ></p>
+                        </div>
+                        <div>
+                            <button
+                                value="bring-to-front"
+                                class="mailmindr-lock-action"
+                                data-i18n="view.options.message.dialog-open.button.dialog-to-front"
+                            ></button>
+                            <button
+                                value="proceed-anyways"
+                                class="mailmindr-lock-action"
+                                data-i18n="view.options.message.dialog-open.button.proceed-anyways"
+                            ></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main>
+            <section>
+                <h1>mailmindr.</h1>
+            </section>
+            <section>
+                <fieldset>
+                    <legend>
+                        <h2 id="mailmindr-common_settings">Common Settings</h2>
+                    </legend>
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                data-i18n="view.options.snooze-time.label"
+                                for="mailmindr-options_snooze-time"
+                            ></label>
+                            <span
+                                class="mailmindr-option-description"
+                                id="mailmindr-options_snooze-time--description"
+                            >
+                                Snooze the reminder for a given number of
+                                minutes
+                            </span>
+                        </div>
+                        <div>
+                            <input
+                                type="number"
+                                id="mailmindr-options_snooze-time"
+                                aria-describedby="mailmindr-options_snooze-time--description"
+                            />
+                        </div>
+                    </div>
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                for="mailmindr-options_default-time-preset"
+                                data-i18n="view.options.default-time-preset.label"
+                            ></label>
+                            <span
+                                class="mailmindr-option-description"
+                                id="mailmindr-options_default-time-preset--description"
+                            >
+                                Pre-selected time setting when creating a new
+                                reminder
+                            </span>
+                        </div>
+                        <div>
+                            <select id="mailmindr-options_default-time-preset">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                data-i18n="view.options.default-action-preset.label"
+                            ></label>
+                            <span
+                                class="mailmindr-option-description"
+                                id="mailmindr-options_default-action-preset--description"
+                            >
+                                Pre-selected action setting when creating a new
+                                reminder
+                            </span>
+                        </div>
+                        <div>
+                            <select
+                                id="mailmindr-options_default-action-preset"
+                            >
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                data-i18n="view.options.default-icebox-folder.label"
+                            ></label>
+                            <span
+                                class="mailmindr-option-description"
+                                id="mailmindr-options_default-icebox-folder--description"
+                            >
+                                Messages will be moved to this folder once a
+                                reminder is set. On due time the message is
+                                moved back to its origin folder.
+                            </span>
+                        </div>
+                        <div>
+                            <select
+                                id="mailmindr-options_default-icebox-folder"
+                            >
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
+            <section>
+                <fieldset>
+                    <legend>
+                        <h2 id="mailmindr-presets">Presets</h2>
+                    </legend>
+                    <div class="mailmindr-options">
+                        <div>
+                            Time presets
+                        </div>
+                        <span
+                            class="mailmindr-option-description"
+                            id="mailmindr-options_time-preset-list--description"
+                        >
+                            Time presets can be a relative time (e.g. in 6
+                            hours) or an absolute time (e.g. in 2 days at 10:00
+                            a.m.). Define as many time presets as you like.
+                            mailmindr's internal presets cannot be removed and
+                            appear here in a disabled state.
+                        </span>
+                        <div class="mailmindr-options_time-preset-list-wrapper">
+                            <select
+                                id="mailmindr-options_time-preset-list"
+                                size="7"
+                                class="mailmindr-list"
+                            >
+                            </select>
+                            <div
+                                class="mailmindr-options_time-preset-list-button-bar"
+                            >
+                                <button
+                                    id="mailmindr-timespan-preset-add"
+                                    class="mailmindr-button"
+                                >
+                                    Add Preset
+                                </button>
+                                <button
+                                    id="mailmindr-timespan-preset-edit"
+                                    class="mailmindr-button"
+                                >
+                                    Edit Preset
+                                </button>
+                                <button
+                                    id="mailmindr-timespan-preset-remove"
+                                    class="mailmindr-button"
+                                >
+                                    Remove preset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+
+            <section>
+                <fieldset>
+                    <legend>
+                        <h2 id="mailmindr-get_help">Get help</h2>
+                    </legend>
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                data-i18n="view.options.get-help.website.label"
+                                for="mailmindr-get_help-website"
+                            ></label>
+                            <span
+                                data-i18n="view.options.get-help.website.description"
+                                class="mailmindr-option-description"
+                                id="mailmindr-get_help-website--description"
+                            >
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                class="mailmindr-button-web mailmindr-button"
+                                id="mailmindr-get_help-website"
+                                data-web="https://mailmindr.net/"
+                            >
+                                Open https://mailmindr.net/ in the browser
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                data-i18n="view.options.get-help.twitter.label"
+                                for="mailmindr-get_help-twitter"
+                            ></label>
+                            <span
+                                data-i18n="view.options.get-help.twitter.description"
+                                class="mailmindr-option-description"
+                                id="mailmindr-get_help-twitter--description"
+                            >
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                class="mailmindr-button-web mailmindr-button"
+                                id="mailmindr-get_help-twitter"
+                                data-web="https://twitter.com/mailmindr/"
+                            >
+                                Open https://twitter.com/mailmindr/ in the
+                                browser
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                data-i18n="view.options.get-help.patreon.label"
+                                for="mailmindr-get_help-patreon"
+                            ></label>
+                            <span
+                                data-i18n="view.options.get-help.patreon.description"
+                                class="mailmindr-option-description"
+                                id="mailmindr-get_help-patreon--description"
+                            >
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                class="mailmindr-button-web mailmindr-button"
+                                id="mailmindr-get_help-patreon"
+                                data-web="https://patreon.com/arndissler/"
+                            >
+                                Open https://patreon.com/arndissler/ in the
+                                browser
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                data-i18n="view.options.get-help.paypal.label"
+                                for="mailmindr-get_help-paypal"
+                            ></label>
+                            <span
+                                data-i18n="view.options.get-help.paypal.description"
+                                class="mailmindr-option-description"
+                                id="mailmindr-get_help-paypal--description"
+                            >
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                class="mailmindr-button-web mailmindr-button"
+                                id="mailmindr-get_help-paypal"
+                                data-web="https://paypal.me/mailmindr"
+                            >
+                                Open https://paypal.me/mailmindr in the browser
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mailmindr-options mailmindr-options--oneline">
+                        <div>
+                            <label
+                                data-i18n="view.options.get-help.facebook.label"
+                                for="mailmindr-get_help-facebook"
+                            ></label>
+                            <span
+                                data-i18n="view.options.get-help.facebook.description"
+                                class="mailmindr-option-description"
+                                id="mailmindr-get_help-facebook--description"
+                            >
+                            </span>
+                        </div>
+                        <div>
+                            <button
+                                class="mailmindr-button-web mailmindr-button"
+                                id="mailmindr-get_help-facebook"
+                                data-web="https://facebook.com/mailmindr/"
+                            >
+                                Open https://facebook.com/mailmindr/ in the
+                                browser
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </section>
+        </main>
+
+        <script type="module" src="./index.js"></script>
+    </body>
+</html>

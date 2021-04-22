@@ -1,4 +1,4 @@
-/*
+/**
  * Wrapper for the libunbound DNS library. The actual work is done in the
  * ChromeWorker libunboundWorker.jsm.js.
  *
@@ -68,9 +68,9 @@ class Deferred {
 	constructor() {
 		/** @type {Promise<T>} */
 		this.promise = new Promise((resolve, reject) => {
-			/** type {(reason: T) => void} */
+			/** @type {(reason: T) => void} */
 			this.resolve = resolve;
-			/** type {(reason: T) => void} */
+			/** @type {(reason: Error) => void} */
 			this.reject = reject;
 		});
 	}

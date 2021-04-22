@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="chrome://global/locale/global.css" />
+        <link rel="stylesheet" href="./index.css" />
+        <title>mailmindr</title>
+    </head>
+    <body>
+        <div class="mailmindr-three-pane">
+            <header>
+                <div class="mailmindr-alert-list-item">
+                    <div class="mailmindr-alert-list-item-icon">
+                        <img
+                            src="../../../images/mailmindr-envelope-plus-white.svg"
+                            width="45"
+                            height="45"
+                        />
+                    </div>
+                    <div class="mailmindr-alert-list-item-subject">
+                        This is a very, very, pretty long, and extremely
+                        unlikely subject title for an appointment
+                    </div>
+                    <div class="mailmindr-alert-list-item-author">
+                        Arnd Ißler &lt;hello@mailmindr.net&gt;
+                    </div>
+                    <div class="mailmindr-alert-list-item-due">
+                        In 15 minutes
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div id="mailmindr-alert-list" class="mailmindr-alert-list">
+                    <div class="mailmindr-alert-list-item">
+                        <div class="mailmindr-alert-list-item-icon"></div>
+                        <div class="mailmindr-alert-list-item-subject">
+                            Post an update on development status
+                        </div>
+                        <div class="mailmindr-alert-list-item-author">
+                            Arnd Ißler &lt;hello@mailmindr.net&gt;
+                        </div>
+                        <div class="mailmindr-alert-list-item-due">
+                            Now
+                        </div>
+                    </div>
+                    <div
+                        class="mailmindr-alert-list-item mailmindr-alert-list-item--selected"
+                    >
+                        <div class="mailmindr-alert-list-item-icon"></div>
+                        <div class="mailmindr-alert-list-item-subject">
+                            This is a very, very, pretty long, and extremely
+                            unlikely subject title for an appointment
+                        </div>
+                        <div class="mailmindr-alert-list-item-author">
+                            Arnd Ißler &lt;email@arndissler.net&gt;
+                        </div>
+                        <div class="mailmindr-alert-list-item-due">
+                            in 15 Minutes
+                        </div>
+                    </div>
+                    <div class="mailmindr-alert-list-item">
+                        <div class="mailmindr-alert-list-item-icon"></div>
+                        <div class="mailmindr-alert-list-item-subject">
+                            TB 78 update
+                        </div>
+                        <div class="mailmindr-alert-list-item-author">
+                            Arnd Ißler &lt;email@arndissler.net&gt;
+                        </div>
+                        <div class="mailmindr-alert-list-item-due">
+                            One month
+                        </div>
+                    </div>
+                    <div class="mailmindr-alert-list-item">
+                        <div class="mailmindr-alert-list-item-icon"></div>
+                        <div class="mailmindr-alert-list-item-subject">
+                            Last Item
+                        </div>
+                        <div class="mailmindr-alert-list-item-author">
+                            Arnd Ißler &lt;email@arndissler.net&gt;
+                        </div>
+                        <div class="mailmindr-alert-list-item-due">
+                            Tomorrow
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="mailmindr-buttonbar">
+                <div class="mailmindr-buttonbar--wrapper">
+                    <button
+                        class="mailmindr-button mailmindr-button--micro"
+                        id="mailmindr--do-dismiss-mindr"
+                        type="submit"
+                        data-i18n="view.dialog.mindr-alert.caption.dismiss"
+                    ></button>
+                    <button
+                        class="mailmindr-button mailmindr-button--micro"
+                        id="mailmindr--do-dismiss-all-mindr"
+                        data-i18n="view.dialog.mindr-alert.caption.dismiss-all"
+                    ></button>
+                    <button
+                        class="mailmindr-button mailmindr-button--micro"
+                        id="mailmindr--do-postpone-mindr"
+                        data-i18n="view.dialog.mindr-alert.caption.snooze"
+                    ></button>
+                    <button
+                        class="mailmindr-button mailmindr-button--micro"
+                        id="mailmindr--do-postpone-all-mindr"
+                        data-i18n="view.dialog.mindr-alert.caption.snooze-all"
+                    ></button>
+                </div>
+            </footer>
+        </div>
+        <script type="module" src="./index.js"></script>
+    </body>
+</html>

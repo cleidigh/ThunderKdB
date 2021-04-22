@@ -5,25 +5,21 @@ var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionPa
 
 var EXPORTED_SYMBOLS = ["cardbookRepository"];
 var cardbookRepository = {
-	cardbookCatDatabase : {},
-	cardbookCatDatabaseVersion : "3",
-	cardbookCatDatabaseName : "CardBookCat",
-	cardbookDatabase : {},
-	cardbookDatabaseVersion : "7",
-	cardbookDatabaseName : "CardBook",
-	cardbookActionsDatabase : {},
-	cardbookActionsDatabaseVersion : "6",
-	cardbookActionsDatabaseName : "CardBookUndo",
-
-	extension : ExtensionParent.GlobalManager.getExtension("cardbook@vigneau.philippe"),
+	cardbookCatDatabase: {},
+	cardbookDatabase: {},
+	cardbookActionsDatabase: {},
+	cardbookMailPopDatabase: {},
+	cardbookSearchDatabase: {},
 	
-	windowParams : "chrome,titlebar,resizable,all,dialog=no",
-	modalWindowParams : "modal,chrome,titlebar,resizable,minimizable=no",
+	extension: ExtensionParent.GlobalManager.getExtension("cardbook@vigneau.philippe"),
+	
+	windowParams: "chrome,titlebar,resizable,all,dialog=no",
+	modalWindowParams: "modal,chrome,titlebar,resizable,minimizable=no",
 	// Workaround for Bug 1151440 - the HTML color picker won't work
 	// in linux when opened from modal dialog
-	colorPickableDialogParams : (AppConstants.platform == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen",
-	colorPickableModalDialogParams : (AppConstants.platform == 'Linux') ? "chrome,titlebar,resizable,minimizable=no" : "modal,chrome,titlebar,resizable,minimizable=no",
-	countriesList : ["ad","ae","af","ag","ai","al","am","ao","aq","ar","as","at","au","aw","az","ba","bb","bd","be","bf","bg",
+	colorPickableDialogParams: (AppConstants.platform == 'Linux') ? "chrome,resizable,centerscreen" : "modal,chrome,resizable,centerscreen",
+	colorPickableModalDialogParams: (AppConstants.platform == 'Linux') ? "chrome,titlebar,resizable,minimizable=no" : "modal,chrome,titlebar,resizable,minimizable=no",
+	countriesList: ["ad","ae","af","ag","ai","al","am","ao","aq","ar","as","at","au","aw","az","ba","bb","bd","be","bf","bg",
 						"bh","bi","bj","bl","bm","bn","bo","bq","br","bs","bt","bv","bw","by","bz","ca","cc","cd","cf","cg","ch",
 						"ci","ck","cl","cm","cn","co","cp","cr","cu","cv","cw","cx","cy","cz","de","dg","dj","dk","dm","do","dz",
 						"ec","ee","eg","eh","er","es","et","fi","fj","fk","fm","fo","fr","ga","gb","gd","ge","gf","gg","gh","gi",
@@ -36,9 +32,9 @@ var cardbookRepository = {
 						"so","sr","ss","st","sv","sx","sy","sz","tc","td","tf","tg","th","tj","tk","tl","tm","tn","to","tr","tt",
 						"tv","tw","tz","ua","ug","us","uy","uz","va","vc","ve","vg","vi","vn","vu","wf","ws","xa","xb","xc","xd",
 						"xe","xg","xh","xj","xk","xl","xm","xp","xq","xr","xs","xt","xu","xv","xw","ye","yt","za","zm","zw"],
-	defaultCardImage : "chrome://cardbook/content/skin/contact-generic.svg",
+	defaultCardImage: "chrome://cardbook/content/skin/contact-generic.svg",
 	
-	allColumns : { "display": ["fn"],
+	allColumns: { "display": ["fn"],
 					"personal": ["prefixname", "firstname", "othername", "lastname", "suffixname", "nickname", "gender", "bday",
 									"birthplace", "anniversary", "deathdate", "deathplace"],
 					"org": ["org", "title", "role"],
@@ -54,30 +50,30 @@ var cardbookRepository = {
 					"technicalForTree": ["cardIcon", "name", "dirPrefId", "cbid", "class1", "etag", "geo", "mailer",
 											"prodid", "tz", "sortstring", "kind"] },
 
-	newFields : [ 'gender', 'birthplace', 'anniversary', 'deathdate', 'deathplace' ],
-	dateFields : [ 'bday', 'anniversary', 'deathdate' ],
-	multilineFields : [ 'email', 'tel', 'adr', 'impp', 'url' ],
-	possibleNodes : [ 'categories', 'org' ],
-	prefCSVPrefix : "*:",
+	newFields: [ 'gender', 'birthplace', 'anniversary', 'deathdate', 'deathplace' ],
+	dateFields: [ 'bday', 'anniversary', 'deathdate' ],
+	multilineFields: [ 'email', 'tel', 'adr', 'impp', 'url' ],
+	possibleNodes: [ 'categories', 'org' ],
+	prefCSVPrefix: "*:",
 
-	openedNodes : [],
-	defaultDisplayedColumns : "cardIcon,fn,email.0.all,tel.0.all,bday,rev",
-	defaultSortDirection : "fn",
-	defaultSortResource : "ascending",
-	defaultAutocompleteRestrictSearchFields : "firstname|lastname",
-	defaultFnFormula : "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)({{7}}|)",
-	defaultAdrFormula : "",
-	defaultEmailFormat : "X-MOZILLA-HTML",
-	defaultKindCustom : "X-ADDRESSBOOKSERVER-KIND",
-	defaultMemberCustom : "X-ADDRESSBOOKSERVER-MEMBER",
+	openedNodes: [],
+	defaultDisplayedColumns: "cardIcon,fn,email.0.all,tel.0.all,bday,rev",
+	defaultSortDirection: "fn",
+	defaultSortResource: "ascending",
+	defaultAutocompleteRestrictSearchFields: "firstname|lastname",
+	defaultFnFormula: "({{1}} |)({{2}} |)({{3}} |)({{4}} |)({{5}} |)({{6}} |)({{7}}|)",
+	defaultAdrFormula: "",
+	defaultEmailFormat: "X-MOZILLA-HTML",
+	defaultKindCustom: "X-ADDRESSBOOKSERVER-KIND",
+	defaultMemberCustom: "X-ADDRESSBOOKSERVER-MEMBER",
 
-	notAllowedCustoms : [ 'X-ABDATE', 'X-ABLABEL', 'X-CATEGORIES', 'X-MOZILLA-HTML' ],
-	possibleCustomFields : { "X-CUSTOM1": {add: false}, "X-CUSTOM2": {add: false}, "X-CUSTOM3": {add: false}, "X-CUSTOM4": {add: false},
+	notAllowedCustoms: [ 'X-ABDATE', 'X-ABLABEL', 'X-CATEGORIES', 'X-MOZILLA-HTML' ],
+	possibleCustomFields: { "X-CUSTOM1": {add: false}, "X-CUSTOM2": {add: false}, "X-CUSTOM3": {add: false}, "X-CUSTOM4": {add: false},
 							"X-PHONETIC-FIRST-NAME": {add: false}, "X-PHONETIC-LAST-NAME": {add: false}, "X-BIRTHPLACE": {add: false},
 							"X-ANNIVERSARY": {add: false}, "X-DEATHDATE": {add: false}, "X-DEATHPLACE": {add: false}, "X-GENDER": {add: false} },
 					
-	cardbookGenderLookup : { "F": "", "M": "", "N": "", "O": "", "U": "" },
-	cardbookCoreTypes : { "GOOGLE": { "adr" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
+	cardbookGenderLookup: { "F": "", "M": "", "N": "", "O": "", "U": "" },
+	cardbookCoreTypes: { "GOOGLE": { "adr" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
 										"email" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
 										"tel" : [ ["hometype", "HOME"], ["worktype", "WORK"], ["celltype", "CELL"], ["faxtype", "FAX"], ["pagertype", "PAGER"], ["workfaxtype", "FAX,WORK"], ["homefaxtype", "FAX,HOME"] ],
 										"url" : [ ["hometype", "HOME"], ["worktype", "WORK"], ["blogtype", "BLOG", "PG"], ["homepagetype", "HOMEPAGE", "PG"], ["profiletype", "PROFILE", "PG"] ],
@@ -105,195 +101,200 @@ var cardbookRepository = {
 									"impp" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
 									"addnew" : true } },
 
-	supportedVersion : ["3.0", "4.0"],
+	supportedVersion: ["3.0", "4.0"],
+
+	filtersInitialized: false,
 
 	logins: {},
 
-	preferEmailPref : true,
-	preferIMPPPref : true,
+	preferEmailPref: true,
+	preferIMPPPref: true,
 	
-	addonVersion : "",
-	userAgent : "",
-	prodid : "",
+	addonVersion: "",
+	userAgent: "",
+	prodid: "",
 	
-	useColor : "",
+	useColor: "",
 	
-	autocompleteRestrictSearch : false,
-	autocompleteRestrictSearchFields : [],
+	autocompleteRestrictSearch: false,
+	autocompleteRestrictSearchFields: [],
 
-	cardbookAccounts : [],
-	cardbookAccountsCategories : {},
-	cardbookAccountsNodes : {},
-	cardbookNodeColors : {},
-	cardbookCards : {},
-	cardbookCategories : {},
-	cardbookDisplayCards : {},
-	cardbookCardLongSearch : {},
-	cardbookCardShortSearch : {},
-	cardbookCardEmails : {},
-	cardbookFileCacheCards : {},
-	cardbookFileCacheCategories : {},
-	cardbookComplexSearch : {},
+	cardbookAccounts: [],
+	cardbookAccountsCategories: {},
+	cardbookAccountsNodes: {},
+	cardbookNodeColors: {},
+	cardbookCards: {},
+	cardbookCategories: {},
+	cardbookDisplayCards: {},
+	cardbookCardLongSearch: {},
+	cardbookCardShortSearch: {},
+	cardbookCardEmails: {},
+	cardbookFileCacheCards: {},
+	cardbookFileCacheCategories: {},
+	cardbookComplexSearch: {},
 
-	cardbookMailPopularityIndex : {},
-	cardbookPreferDisplayNameIndex : {},
-	cardbookDuplicateIndex : {},
+	cardbookMailPopularityIndex: {},
+	cardbookMailPopularityLastIndex: 1,
 
-	cardbookDirRequest : {},
-	cardbookDirResponse : {},
-	cardbookFileRequest : {},
-	cardbookFileResponse : {},
-	cardbookDBCardRequest : {},
-	cardbookDBCardResponse : {},
-	cardbookDBCatRequest : {},
-	cardbookDBCatResponse : {},
-	cardbookComplexSearchRequest : {},
-	cardbookComplexSearchResponse : {},
-	cardbookComplexSearchReloadRequest : {},
-	cardbookComplexSearchReloadResponse : {},
-	cardbookCardsFromCache : {},
-	cardbookCategoriesFromCache : {},
-	
-	cardbookServerValidation : {},
+	cardbookPreferDisplayNameIndex: {},
+	cardbookDuplicateIndex: {},
 
-	cardbookAccessTokenRequest : {},
-	cardbookAccessTokenResponse : {},
-	cardbookAccessTokenError : {},
-	cardbookRefreshTokenRequest : {},
-	cardbookRefreshTokenResponse : {},
-	cardbookRefreshTokenError : {},
-	cardbookServerDiscoveryRequest : {},
-	cardbookServerDiscoveryResponse : {},
-	cardbookServerDiscoveryError : {},
-	cardbookServerSyncRequest : {},
-	cardbookServerSyncResponse : {},
-	cardbookServerCardSyncDone : {},
-	cardbookServerCardSyncTotal : {},
-	cardbookServerCardSyncError : {},
-	cardbookServerCatSyncDone : {},
-	cardbookServerCatSyncTotal : {},
-	cardbookServerCatSyncError : {},
-	cardbookServerSyncNotUpdatedCard : {},
-	cardbookServerSyncNotUpdatedCat : {},
-	cardbookServerSyncNewCardOnServer : {},
-	cardbookServerSyncNewCatOnServer : {},
-	cardbookServerSyncNewCardOnDisk : {},
-	cardbookServerSyncNewCatOnDisk : {},
-	cardbookServerSyncUpdatedCardOnServer : {},
-	cardbookServerSyncUpdatedCatOnServer : {},
-	cardbookServerSyncUpdatedCardOnDisk : {},
-	cardbookServerSyncUpdatedCatOnDisk : {},
-	cardbookServerSyncUpdatedCardOnBoth : {},
-	cardbookServerSyncUpdatedCatOnBoth : {},
-	cardbookServerSyncUpdatedCardOnDiskDeletedCardOnServer : {},
-	cardbookServerSyncUpdatedCatOnDiskDeletedCatOnServer : {},
-	cardbookServerSyncDeletedCardOnDisk : {},
-	cardbookServerSyncDeletedCatOnDisk : {},
-	cardbookServerSyncDeletedCardOnDiskUpdatedCardOnServer : {},
-	cardbookServerSyncDeletedCatOnDiskUpdatedCatOnServer : {},
-	cardbookServerSyncDeletedCardOnServer : {},
-	cardbookServerSyncDeletedCatOnServer : {},
-	cardbookServerSyncAgain : {},
-	cardbookServerSyncCompareCardWithCacheDone : {},
-	cardbookServerSyncCompareCardWithCacheTotal : {},
-	cardbookServerSyncCompareCatWithCacheDone : {},
-	cardbookServerSyncCompareCatWithCacheTotal : {},
-	cardbookServerSyncHandleRemainingCardDone : {},
-	cardbookServerSyncHandleRemainingCardTotal : {},
-	cardbookServerSyncHandleRemainingCatDone : {},
-	cardbookServerSyncHandleRemainingCatTotal : {},
-	cardbookServerGetCardRequest : {},
-	cardbookServerGetCardResponse : {},
-	cardbookServerGetCardError : {},
-	cardbookServerGetCardForMergeRequest : {},
-	cardbookServerGetCardForMergeResponse : {},
-	cardbookServerGetCardForMergeError : {},
-	cardbookServerMultiGetArray : {},
-	cardbookServerSyncParams : {},
-	cardbookServerMultiGetRequest : {},
-	cardbookServerMultiGetResponse : {},
-	cardbookServerMultiGetError : {},
-	cardbookServerUpdatedCardRequest : {},
-	cardbookServerUpdatedCardResponse : {},
-	cardbookServerUpdatedCardError : {},
-	cardbookServerUpdatedCatRequest : {},
-	cardbookServerUpdatedCatResponse : {},
-	cardbookServerUpdatedCatError : {},
-	cardbookServerCreatedCardRequest : {},
-	cardbookServerCreatedCardResponse : {},
-	cardbookServerCreatedCardError : {},
-	cardbookServerCreatedCatRequest : {},
-	cardbookServerCreatedCatResponse : {},
-	cardbookServerCreatedCatError : {},
-	cardbookServerDeletedCardRequest : {},
-	cardbookServerDeletedCardResponse : {},
-	cardbookServerDeletedCardError : {},
-	cardbookServerDeletedCatRequest : {},
-	cardbookServerDeletedCatResponse : {},
-	cardbookServerDeletedCatError : {},
-	cardbookImageGetRequest : {},
-	cardbookImageGetResponse : {},
-	cardbookImageGetError : {},
-	cardbookSyncMode : {},
-	cardbookServerNotPushed : {},
+	cardbookDirRequest: {},
+	cardbookDirResponse: {},
+	cardbookFileRequest: {},
+	cardbookFileResponse: {},
+	cardbookDBCardRequest: {},
+	cardbookDBCardResponse: {},
+	cardbookDBCatRequest: {},
+	cardbookDBCatResponse: {},
+	cardbookComplexSearchRequest: {},
+	cardbookComplexSearchResponse: {},
+	cardbookComplexSearchReloadRequest: {},
+	cardbookComplexSearchReloadResponse: {},
+	cardbookCardsFromCache: {},
+	cardbookCategoriesFromCache: {},
 	
-	cardbookServerChangedPwd : {},
+	cardbookServerValidation: {},
+
+	cardbookAccessTokenRequest: {},
+	cardbookAccessTokenResponse: {},
+	cardbookAccessTokenError: {},
+	cardbookRefreshTokenRequest: {},
+	cardbookRefreshTokenResponse: {},
+	cardbookRefreshTokenError: {},
+	cardbookServerDiscoveryRequest: {},
+	cardbookServerDiscoveryResponse: {},
+	cardbookServerDiscoveryError: {},
+	cardbookServerSyncRequest: {},
+	cardbookServerSyncResponse: {},
+	cardbookServerCardSyncDone: {},
+	cardbookServerCardSyncTotal: {},
+	cardbookServerCardSyncError: {},
+	cardbookServerCatSyncDone: {},
+	cardbookServerCatSyncTotal: {},
+	cardbookServerCatSyncError: {},
+	cardbookServerSyncNotUpdatedCard: {},
+	cardbookServerSyncNotUpdatedCat: {},
+	cardbookServerSyncNewCardOnServer: {},
+	cardbookServerSyncNewCatOnServer: {},
+	cardbookServerSyncNewCardOnDisk: {},
+	cardbookServerSyncNewCatOnDisk: {},
+	cardbookServerSyncUpdatedCardOnServer: {},
+	cardbookServerSyncUpdatedCatOnServer: {},
+	cardbookServerSyncUpdatedCardOnDisk: {},
+	cardbookServerSyncUpdatedCatOnDisk: {},
+	cardbookServerSyncUpdatedCardOnBoth: {},
+	cardbookServerSyncUpdatedCatOnBoth: {},
+	cardbookServerSyncUpdatedCardOnDiskDeletedCardOnServer: {},
+	cardbookServerSyncUpdatedCatOnDiskDeletedCatOnServer: {},
+	cardbookServerSyncDeletedCardOnDisk: {},
+	cardbookServerSyncDeletedCatOnDisk: {},
+	cardbookServerSyncDeletedCardOnDiskUpdatedCardOnServer: {},
+	cardbookServerSyncDeletedCatOnDiskUpdatedCatOnServer: {},
+	cardbookServerSyncDeletedCardOnServer: {},
+	cardbookServerSyncDeletedCatOnServer: {},
+	cardbookServerSyncAgain: {},
+	cardbookServerSyncCompareCardWithCacheDone: {},
+	cardbookServerSyncCompareCardWithCacheTotal: {},
+	cardbookServerSyncCompareCatWithCacheDone: {},
+	cardbookServerSyncCompareCatWithCacheTotal: {},
+	cardbookServerSyncHandleRemainingCardDone: {},
+	cardbookServerSyncHandleRemainingCardTotal: {},
+	cardbookServerSyncHandleRemainingCatDone: {},
+	cardbookServerSyncHandleRemainingCatTotal: {},
+	cardbookServerGetCardRequest: {},
+	cardbookServerGetCardResponse: {},
+	cardbookServerGetCardError: {},
+	cardbookServerGetCardForMergeRequest: {},
+	cardbookServerGetCardForMergeResponse: {},
+	cardbookServerGetCardForMergeError: {},
+	cardbookServerMultiGetArray: {},
+	cardbookServerMultiGetGoogleArray: {},
+	cardbookServerMultiPutGoogleArray: {},
+	cardbookServerSyncParams: {},
+	cardbookServerMultiGetRequest: {},
+	cardbookServerMultiGetResponse: {},
+	cardbookServerMultiGetError: {},
+	cardbookServerUpdatedCardRequest: {},
+	cardbookServerUpdatedCardResponse: {},
+	cardbookServerUpdatedCardError: {},
+	cardbookServerUpdatedCatRequest: {},
+	cardbookServerUpdatedCatResponse: {},
+	cardbookServerUpdatedCatError: {},
+	cardbookServerCreatedCardRequest: {},
+	cardbookServerCreatedCardResponse: {},
+	cardbookServerCreatedCardError: {},
+	cardbookServerCreatedCatRequest: {},
+	cardbookServerCreatedCatResponse: {},
+	cardbookServerCreatedCatError: {},
+	cardbookServerDeletedCardRequest: {},
+	cardbookServerDeletedCardResponse: {},
+	cardbookServerDeletedCardError: {},
+	cardbookServerDeletedCatRequest: {},
+	cardbookServerDeletedCatResponse: {},
+	cardbookServerDeletedCatError: {},
+	cardbookImageGetRequest: {},
+	cardbookImageGetResponse: {},
+	cardbookImageGetError: {},
+	cardbookSyncMode: {},
+	cardbookServerNotPushed: {},
+	// used to remember the choice of overriding or not cards
+	// while importing, dragging, copying or duplicating
+	importConflictChoice: {},
+	importConflictChoicePersist: {},
 	
-	cardbookReorderMode : "NOREORDER",
-	cardbookSearchMode : "NOSEARCH",
-	cardbookSearchValue : "",
-	cardbookComplexSearchMode : "NOSEARCH",
-	cardbookComplexSearchPrefId : "",
+	cardbookServerChangedPwd: {},
+	
+	cardbookReorderMode: "NOREORDER",
+	cardbookSearchMode: "NOSEARCH",
+	cardbookSearchValue: "",
+	cardbookComplexSearchMode: "NOSEARCH",
+	cardbookComplexSearchPrefId: "",
 	// used to copy and paste 
-	currentCopiedEntry : [],
-	currentCopiedEntryValue : "",
-	currentCopiedEntryName : "",
-	currentCopiedEntryLabel : "",
+	currentCopiedEntry: [],
+	currentCopiedEntryValue: "",
+	currentCopiedEntryName: "",
+	currentCopiedEntryLabel: "",
 
-	autoSync : {},
-	autoSyncInterval : {},
-	autoSyncId : {},
-	initialSync : true,
+	autoSync: {},
+	autoSyncInterval: {},
+	autoSyncId: {},
+	initialSync: true,
 
-	lTimerLoadCacheAll : {},
-	lTimerDirAll : {},
-	lTimerSyncAll : {},
-	lTimerImportAll : {},
-	lComplexSearchAll : {},
-	lTimerNoSyncModeAll : {},
-	lTimerNewRefreshTokenAll : {},
+	lTimerLoadCacheAll: {},
+	lTimerDirAll: {},
+	lTimerSyncAll: {},
+	lTimerImportAll: {},
+	lComplexSearchAll: {},
+	lTimerNoSyncModeAll: {},
+	lTimerNewRefreshTokenAll: {},
 	
 	// used to ensure that the initial load is done only once
 	firstLoad: false,
 
-	// used to remember the choice of overriding or not cards
-	// while importing, dragging, copying or duplicating
-	importConflictChoice : "",
-	importConflictChoicePersist : false,
-
 	// used to store the msgIdentityKey by window
-	composeMsgIdentity : {},
+	composeMsgIdentity: {},
 	
 	// used to remember the choice of name and dates format
-	showNameAs : "",
-	dateDisplayedFormat : "0",
+	showNameAs: "",
+	dateDisplayedFormat: "0",
 
 	// used for discoveries
-	gDiscoveryDescription : "Discovery module",
+	gDiscoveryDescription: "Discovery module",
 
-	cardbookUncategorizedCards : "",
+	cardbookUncategorizedCards: "",
 	
-	cardbookMailPopularityFile : "mailPopularityIndex.txt",
-	cardbookPreferDisplayNameFile : "mailPreferDisplayName.txt",
-	cardbookDuplicateFile : "duplicateIndex.txt",
+	cardbookMailPopularityFile: "mailPopularityIndex.txt",
+	cardbookPreferDisplayNameFile: "mailPreferDisplayName.txt",
+	cardbookDuplicateFile: "duplicateIndex.txt",
 
-	customFields : {},
+	customFields: {},
 									
-	statusInformation : [],
+	statusInformation: [],
 
 	oauthPrefix: "chrome://cardbook/oauth",
 
-	cardbookOAuthData : {"GOOGLE": {
+	cardbookOAuthData: {"GOOGLE": {
 							EMAIL_TYPE:                 "@gmail.com",
 							VCARD_VERSIONS:             [ "3.0" ],
 							CLIENT_ID:                  "779554755808-957jloa2c3c8n0rrm1a5304fkik7onf0.apps.googleusercontent.com",
@@ -309,6 +310,7 @@ var cardbookRepository = {
 							LABELS_URL:                 "https://www.google.com/m8/feeds/groups/default/full?max-results=1000",
 							CONTACT_URL:                "https://www.google.com/m8/feeds/contacts/",
 							CONTACTS_URL:               "https://www.google.com/m8/feeds/contacts/default/full?max-results=10000",
+							BATCH:                      "https://www.google.com/m8/feeds/contacts/default/full/batch",
 							OAUTH_URL:                  "https://accounts.google.com/o/oauth2/auth",
 							TOKEN_REQUEST_URL:          "https://accounts.google.com/o/oauth2/token",
 							TOKEN_REQUEST_TYPE:         "POST",
@@ -337,44 +339,28 @@ var cardbookRepository = {
 							ROOT_API:                   "https://carddav.address.yahoo.com"}
 						},
 
-	APPLE_API : "https://contacts.icloud.com",
-	APPLE_VCARD_VERSIONS : [ "3.0" ],
+	APPLE_API: "https://contacts.icloud.com",
+	APPLE_VCARD_VERSIONS: [ "3.0" ],
 	
-	cardbookBirthdayPopup : 0,
+	cardbookBirthdayPopup: 0,
 
 	// actions
-	currentActionId : 0,
-	currentAction : {},
+	currentActionId: 0,
+	currentAction: {},
 	
 	// undos
-	currentUndoId : 0,
+	currentUndoId: 0,
 
 	loadCustoms: function () {
-		// for file opened with version <= 19.6
-		var typeList = [ 'Name', 'Org' ];
-		var numberList = [ '1', '2' ];
-		for (var i in typeList) {
-			var myTargetNumber = 0;
-			for (var j in numberList) {
-				try {
-					var mySourceField = "extensions.cardbook.customs.customField" + numberList[j] + typeList[i];
-					var mySourceValue = cardbookRepository.cardbookPreferences.getStringPref(mySourceField);
-					if (typeList[i] === "Name") {
-						var myTargetType = "pers";
-					} else {
-						var myTargetType = "org";
-					}
-					if (mySourceValue != "") {
-						cardbookRepository.cardbookPreferences.setCustomFields(myTargetType, myTargetNumber, mySourceValue);
-						myTargetNumber++;
-					}
-					Services.prefs.deleteBranch(mySourceField);
-				}
-				catch (e) {}
-			}
-		}
-		cardbookRepository.customFields = {};
 		cardbookRepository.customFields = cardbookRepository.cardbookPreferences.getAllCustomFields();
+		// for file opened with version <= 57.3
+		if (cardbookRepository.customFields.pers.length) {
+			for (let customLine of cardbookRepository.customFields.pers) {
+				cardbookRepository.cardbookPreferences.setCustomFields('personal', customLine[2], customLine[0] + ":" + customLine[1]);
+			}
+			cardbookRepository.cardbookPreferences.delCustomFields("pers");
+			cardbookRepository.customFields = cardbookRepository.cardbookPreferences.getAllCustomFields();
+		}
 		cardbookRepository.loadPossibleCustomFields();
 	},
 
@@ -382,8 +368,8 @@ var cardbookRepository = {
 		for (let myCode in cardbookRepository.possibleCustomFields) {
 			cardbookRepository.possibleCustomFields[myCode].label = cardbookRepository.extension.localeData.localizeMessage(myCode.replace(/^X-/, "").replace(/-/g, "").toLowerCase() + "Label");
 			let found = false;
-			for (let j = 0; j < cardbookRepository.customFields.pers.length; j++) {
-				if (cardbookRepository.customFields.pers[j][0] == myCode) {
+			for (let j = 0; j < cardbookRepository.customFields.personal.length; j++) {
+				if (cardbookRepository.customFields.personal[j][0] == myCode) {
 					found = true;
 					break;
 				}
@@ -393,10 +379,10 @@ var cardbookRepository = {
 	},
 
 	writePossibleCustomFields: function () {
-		let myCount = cardbookRepository.customFields.pers.length;
+		let myCount = cardbookRepository.customFields.personal.length;
 		for (let myCode in cardbookRepository.possibleCustomFields) {
 			if (cardbookRepository.possibleCustomFields[myCode].add && !cardbookRepository.possibleCustomFields[myCode].added) {
-				cardbookRepository.cardbookPreferences.setCustomFields('pers', myCount, myCode + ":" + cardbookRepository.possibleCustomFields[myCode].label);
+				cardbookRepository.cardbookPreferences.setCustomFields('personal', myCount, myCode + ":" + cardbookRepository.possibleCustomFields[myCode].label);
 				cardbookRepository.possibleCustomFields[myCode].added = true;
 				myCount++;
 			}
@@ -967,14 +953,6 @@ var cardbookRepository = {
 			cardbookRepository.addCategoryToList(aCategory);
 			cardbookRepository.addCategoryToCache(aCategory, aMode, aDirPrefId);
 			cardbookRepository.addCategoryToDisplay(aCategory, aDirPrefId);
-			for (var dirPrefId in cardbookRepository.cardbookComplexSearch) {
-				if (cardbookRepository.cardbookPreferences.getEnabled(dirPrefId) && !cardbookRepository.cardbookCategories[dirPrefId+"::"+aCategory.name]) {
-					var newCat = new cardbookCategoryParser(aCategory.name, dirPrefId);
-					cardbookRepository.addCategoryToList(newCat);
-					cardbookRepository.addCategoryToCache(newCat, aMode, dirPrefId);
-					cardbookRepository.addCategoryToDisplay(newCat, dirPrefId);
-				}
-			}
 		}
 		catch (e) {
 			cardbookRepository.cardbookLog.updateStatusProgressInformation("cardbookRepository.addCategoryToRepository error : " + e, "Error");
@@ -1026,7 +1004,7 @@ var cardbookRepository = {
 					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri] = aCard;
 				}
 				if (myDirPrefIdDBCached && aAddCardToCache) {
-					cardbookIndexedDB.addCard(myDirPrefIdName, aCard);
+					cardbookIDBCard.addCard(myDirPrefIdName, aCard);
 				}
 			}
 		}
@@ -1044,7 +1022,7 @@ var cardbookRepository = {
 			}
 			cardbookRepository.cardbookFileCacheCategories[aDirPrefId][aCategory.href] = aCategory;
 			if (aAddCardToCache && aCategory.name != cardbookRepository.cardbookUncategorizedCards) {
-				cardbookIndexedDB.addCategory(myDirPrefIdName, aCategory);
+				cardbookIDBCat.addCategory(myDirPrefIdName, aCategory);
 			}
 		}
 		catch(e) {
@@ -1071,7 +1049,7 @@ var cardbookRepository = {
 				}
 			} else {
 				if (myDirPrefIdDBCached) {
-					 cardbookIndexedDB.removeCard(myDirPrefIdName, aCard);
+					 cardbookIDBCard.removeCard(myDirPrefIdName, aCard);
 				}
 				if (cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri]) {
 					delete cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri];
@@ -1086,7 +1064,7 @@ var cardbookRepository = {
 	removeCategoryFromCache: function(aCategory) {
 		try {
 			var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(aCategory.dirPrefId);
-			cardbookIndexedDB.removeCategory(myDirPrefIdName, aCategory);
+			cardbookIDBCat.removeCategory(myDirPrefIdName, aCategory);
 			if (cardbookRepository.cardbookFileCacheCategories[aCategory.dirPrefId][aCategory.href]) {
 				delete cardbookRepository.cardbookFileCacheCategories[aCategory.dirPrefId][aCategory.href];
 			}
@@ -1317,15 +1295,17 @@ var cardbookRepository = {
 			var myCards = JSON.parse(JSON.stringify(cardbookRepository.cardbookDisplayCards[aDirPrefId+"::categories::"+aCategoryName].cards));
 			var length = myCards.length;
 			for (let card of myCards) {
-				// as it is possible to remove a category from a virtual folder
-				// should avoid to modify cards belonging to a read-only address book
-				if (cardbookRepository.cardbookPreferences.getReadOnly(card.dirPrefId)) {
-					continue;
-				}
 				var myOutCard = new cardbookCardParser();
 				cardbookRepository.cardbookUtils.cloneCard(card, myOutCard);
 				cardbookRepository.removeCategoryFromCard(myOutCard, aCategoryName);
-				cardbookRepository.saveCard(card, myOutCard, null, false);
+				// if aOldCard and aNewCard have the same cached medias
+				cardbookRepository.cardbookUtils.setCalculatedFields(myOutCard);
+				cardbookRepository.cardbookUtils.changeMediaFromFileToContent(myOutCard);
+				if (!myOutCard.created) {
+					cardbookRepository.cardbookUtils.addTagUpdated(myOutCard);
+				}
+				cardbookRepository.removeCardFromRepository(card, true);
+				cardbookRepository.addCardToRepository(myOutCard, true);
 			}
 		}
 	},
@@ -1482,28 +1462,26 @@ var cardbookRepository = {
 			}
 		};
 
-		for (var i = 0; i < cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules.length; i++) {
-			var myCaseOperator = cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][0];
+		for (let rule of cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules) {
+			var myCaseOperator = rule.case;
 			if (myCaseOperator.startsWith("d")) {
 				var myDiacritic = true;
-				var myCaseOperator = cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][0].substr(1);
-				var myValue = cardbookRepository.normalizeString(cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][3]);
+				var myCaseOperator = rule.case.substr(1);
+				var myValue = cardbookRepository.normalizeString(rule.value);
 			} else {
 				var myDiacritic = false;
-				var myCaseOperator = cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][0];
-				var myValue = cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][3];
+				var myCaseOperator = rule.case;
+				var myValue = rule.value;
 			}
 		
-			buildRegExp(aCard, myCaseOperator, cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][1],
-								cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][2], myValue,
-								myDiacritic);
+			buildRegExp(aCard, myCaseOperator, rule.field, rule.term, myValue, myDiacritic);
 			function searchArray(element) {
 				return element.search(myRegexp) != -1;
 			};
 			if (myField.length == 0) {
-				if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][2] == "IsEmpty") {
+				if (rule.term == "IsEmpty") {
 					var found = true;
-				} else if (cardbookRepository.cardbookComplexSearch[aComplexSearchDirPrefId].rules[i][2] == "IsntEmpty") {
+				} else if (rule.term == "IsntEmpty") {
 					var found = true;
 				} else {
 					var found = false;
@@ -1853,6 +1831,20 @@ var cardbookRepository = {
 		}
 	},
 
+	saveCardFromUpdate: function(aOldCard, aNewCard, aActionId, aCheckCategory) {
+		cardbookRepository.cardbookUtils.setCalculatedFields(aNewCard);
+		cardbookRepository.saveCard(aOldCard, aNewCard, aActionId, aCheckCategory);
+	},
+
+	saveCardFromMove: function(aOldCard, aNewCard, aActionId, aCheckCategory) {
+		if (aNewCard.rev) {
+			cardbookRepository.cardbookUtils.setCalculatedFieldsWithoutRev(aNewCard);
+		} else {
+			cardbookRepository.cardbookUtils.setCalculatedFields(aNewCard);
+		}
+		cardbookRepository.saveCard(aOldCard, aNewCard, aActionId, aCheckCategory);
+	},
+
 	saveCard: function(aOldCard, aNewCard, aActionId, aCheckCategory) {
 		try {
 			if (cardbookRepository.cardbookPreferences.getReadOnly(aNewCard.dirPrefId) || !cardbookRepository.cardbookPreferences.getEnabled(aNewCard.dirPrefId)) {
@@ -1886,7 +1878,6 @@ var cardbookRepository = {
 				}
 			}
 
-			cardbookRepository.cardbookUtils.setCalculatedFields(aNewCard);
 			// Existing card
 			if (aOldCard.dirPrefId && cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid] && aOldCard.dirPrefId == aNewCard.dirPrefId) {
 				var myCard = cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid];
@@ -2077,11 +2068,16 @@ var cardbookRepository = {
 		}
 	},
 
-	getRuleFile: function (aPrefId) {
-		var cacheDir = cardbookRepository.getLocalDirectory();
-		cacheDir.append(aPrefId);
-		cacheDir.append(aPrefId + ".rul");
-		return cacheDir;
+	addMailPop: function (aEmail, aValue) {
+		cardbookIDBMailPop.updateMailPop(aEmail, aValue);
+	},
+
+	addSearch: function (aSearch) {
+		cardbookIDBSearch.addSearch(aSearch);
+	},
+
+	removeSearch: function (aDirPrefId) {
+		cardbookIDBSearch.removeSearch(aDirPrefId);
 	},
 
 	getTextColorFromBackgroundColor: function (aHexBackgroundColor) {
@@ -2249,11 +2245,15 @@ loader.loadSubScript("chrome://cardbook/content/cardbookLog.jsm", cardbookReposi
 loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookTypes.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookDiscovery.jsm", cardbookRepository);
-loader.loadSubScript("chrome://cardbook/content/cardbookMailPopularity.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookPreferDisplayName.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookDates.jsm", cardbookRepository);
-loader.loadSubScript("chrome://cardbook/content/cardbookIndexedDB.js", this); //doesn't work with cardbookRepository instead of this
-loader.loadSubScript("chrome://cardbook/content/cardbookEncryptor.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIndexedDB.js", this); //doesn't work with cardbookRepository instead of this
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCard.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookEncryptor.js", this);
 loader.loadSubScript("chrome://cardbook/content/cardbookCategoryParser.js", this);
 loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js", this);
 loader.loadSubScript("chrome://cardbook/content/lists/cardbookListConversion.js", this);

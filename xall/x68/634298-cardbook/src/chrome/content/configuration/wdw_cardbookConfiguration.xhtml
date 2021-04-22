@@ -28,8 +28,13 @@
 	flex="1">
 
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookEncryptor.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookIndexedDB.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookEncryptor.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIndexedDB.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBCard.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBCat.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBUndo.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBSearch.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookElementTools.js"/>
@@ -517,7 +522,7 @@
 								<label><html:h2>__MSG_customFieldsTabLabel__</html:h2></label>
 								<hbox align="center">
 									<radiogroup id="customFieldsCategoryRadiogroup" orient="horizontal" onselect="wdw_cardbookConfiguration.sortTrees(null, 'customFieldsTree');">
-										<radio value="pers" label="__MSG_customFieldsPersTitleLabel__" accesskey="__MSG_customFieldsPersTitleAccesskey__" selected="true"/>
+										<radio value="personal" label="__MSG_customFieldsPersTitleLabel__" accesskey="__MSG_customFieldsPersTitleAccesskey__" selected="true"/>
 										<radio value="org" label="__MSG_customFieldsOrgTitleLabel__" accesskey="__MSG_customFieldsOrgTitleAccesskey__"/>
 									</radiogroup>
 								</hbox>

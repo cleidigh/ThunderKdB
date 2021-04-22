@@ -6,8 +6,7 @@
 
 var l10n = {
   updateString(string) {
-    return string.replace(/__MSG_(.+?)__/g, matched => {
-      const key = matched.slice(6, -2);
+    return string.replace(/__MSG_([@\w]+)__/g, (matched, key) => {
       return chrome.i18n.getMessage(key) || matched;
     });
   },

@@ -231,6 +231,10 @@ export async function open({ url, left, top, width, height, modal, opener } = {}
       browser.windows.onUpdated.addListener(onUpdated);
     else
       onUpdated.timer = setInterval(async () => {
+        if (!win) { // the window is not opened yet
+          mLogger(`Window is not opened yet`);
+          return;
+        }
         try {
           const updatedWin = await browser.windows.get(win.id);
           if (!updatedWin) {
@@ -457,6 +461,8 @@ export function initCancelButton(button) {
 }
 
 
+const FOCUSIBLE_ITEMS_SELECTOR = 'input:not([type="hidden"]), button, textarea, select, :link';
+
 export class InPageDialog {
   constructor() {
     const range = document.createRange();
@@ -480,10 +486,33 @@ export class InPageDialog {
   }
 
   show() {
+    this.$lastFocusedField = document.querySelector(':focus');
+
+    for (const field of document.querySelectorAll(FOCUSIBLE_ITEMS_SELECTOR)) {
+      if (this.container.contains(field))
+        field.tabIndex = 0;
+      else
+        field.tabIndex = -1;
+    }
     this.container.classList.add('shown');
+
+    // move focus to the first input field
+    this.container.querySelector(FOCUSIBLE_ITEMS_SELECTOR).focus();
   }
 
   hide() {
+    for (const field of document.querySelectorAll(FOCUSIBLE_ITEMS_SELECTOR)) {
+      if (this.container.contains(field))
+        field.tabIndex = -1;
+      else
+        field.tabIndex = 0;
+    }
     this.container.classList.remove('shown');
+
+    if (this.$lastFocusedField &&
+        this.$lastFocusedField.parentNode &&
+        !this.container.contains(this.$lastFocusedField))
+      this.$lastFocusedField.focus();
+    this.$lastFocusedField = null;
   }
 }

@@ -1,0 +1,148 @@
+@import url('../../mailmindr-core.css');
+@import url('../../../styles/lists.css');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    padding: 0.1em 0.5em;
+    border-top: 1px solid silver;
+    background-color: #eee;
+}
+
+footer div {
+    text-align: center;
+}
+
+button:hover {
+    border-color: transparent;
+}
+
+.mailmindr-list {
+    padding: 4px 0;
+}
+
+.mailmindr-list-item-content {
+    display: grid;
+    row-gap: 4px;
+    grid-template-columns: auto auto;
+    max-width: 320px;
+    /* grid-template-areas:
+        'subject    subject subject actions'
+        'author     author  author  actions'
+        'due        due     due     actions'
+        'notes      notes   notes   actions'; */
+    align-items: baseline;
+    grid-template-areas:
+        'subject subject'
+        'author author'
+        'due due'
+        'notes notes';
+}
+
+.mailmindr-list-item--is-in-past .mailmindr-list-item-subject,
+.mailmindr-list-item--is-in-past .mailmindr-list-item-author,
+.mailmindr-list-item--is-in-past .mailmindr-list-item-duedate,
+.mailmindr-list-item--is-in-past .mailmindr-list-item-note {
+    color: gray;
+}
+
+.mailmindr-list-item-content:hover {
+    grid-template-areas:
+        'subject actions'
+        'author author'
+        'due due'
+        'notes notes';
+}
+
+.mailmindr-list-item-content:hover .mailmindr-list-item-buttonpanel {
+    display: inline;
+    text-align: right;
+}
+
+.mailmindr-list-item-buttonpanel,
+.mailmindr-list-item-subject {
+    min-height: 22px;
+    max-height: 22px;
+}
+
+.mailmindr-list-item-buttonpanel {
+    display: none;
+    background-color: none;
+    grid-area: actions;
+    place-self: center end;
+}
+
+.mailmindr-list-item-buttonpanel ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.mailmindr-list-item-buttonpanel li {
+    display: inline;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.mailmindr-list-item-buttonpanel button {
+    width: 21px;
+    height: 21px;
+    padding: 2px !important;
+    margin: 0px !important;
+    min-width: unset;
+    min-height: unset;
+    background-color: unset;
+}
+
+.mailmindr-list-item-buttonpanel button img {
+    opacity: 40%;
+}
+
+.mailmindr-list-item-buttonpanel button:hover img {
+    opacity: 100%;
+}
+
+.mailmindr-list-item-subject {
+    grid-area: subject;
+    font-weight: bold;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+}
+
+.mailmindr-list-item-author {
+    grid-area: author;
+    font-size: 12px;
+    padding-left: 12px;
+}
+
+.mailmindr-list-item-duedate {
+    grid-area: due;
+    font-size: 12px;
+    padding-left: 12px;
+}
+
+.mailmindr-list-item-note {
+    grid-area: notes;
+    padding-left: 12px;
+}
+
+.mailmindr-list-item-actions {
+    grid-area: actions;
+    display: none;
+}
+
+.mailmindr-list-item {
+    padding: 0.25em 0.75em;
+}
+
+.mailmindr-list-item:hover {
+    border: 1px solid transparent;
+    background-color: rgba(12, 12, 13, 0.1);
+}

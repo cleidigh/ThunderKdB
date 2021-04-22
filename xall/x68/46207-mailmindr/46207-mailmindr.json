@@ -9,204 +9,145 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/3/3785/3785860.png?modified=1401885756"
         }
     ],
-    "average_daily_users": 391,
+    "average_daily_users": 481,
     "categories": {
         "thunderbird": [
+            "calendar",
             "message-and-news-reading"
         ]
     },
     "contributions_url": "https://paypal.me/mailmindr",
     "created": "2009-10-29T03:50:24Z",
     "current_version": {
-        "id": 2473874,
+        "id": 2475683,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailmindr/versions/2473874",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailmindr/versions/2475683",
         "files": [
             {
-                "id": 1017036,
-                "created": "2020-07-06T11:33:03Z",
-                "hash": "sha256:43ac4c99bbbb21c6108e978ff4b502b840499f0d163311ee35f1e8cf40ceb7ae",
-                "is_restart_required": true,
+                "id": 1018843,
+                "created": "2021-04-07T21:02:30Z",
+                "hash": "sha256:4235e00126159376343ae13614f40940ca97c0f570090ea3067c8470767593b3",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 133130,
+                "size": 70524,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017036/mailmindr-0.9.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018843/mailmindr-1.0.0-tb.xpi?src=",
                 "permissions": [
+                    "accountsRead",
+                    "menus",
+                    "messagesModify",
+                    "messagesMove",
+                    "messagesRead",
                     "storage"
                 ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
-            "id": 5,
+            "id": 3338,
             "name": {
-                "el": "Mozilla Public License, έκδοση 1.1",
-                "vi": "Giấy phép Công cộng Mozilla, phiên bản 1.1",
-                "ca": "Llicència MPL (Mozilla Public License), versió 1.1",
-                "it": "Licenza Mozilla Public License, versione 1.1",
-                "cs": "Mozilla Public License, verze 1.1",
-                "eu": "Mozilla Public License, 1.1 bertsioa",
-                "id": "Mozilla Public License, versi 1.1",
-                "es": "Licencia pública Mozilla, versión 1.1",
-                "ru": "Mozilla Public License, версия 1.1",
-                "nl": "Mozilla Public License, versie 1.1",
-                "en-US": "Mozilla Public License Version 1.1",
-                "pl": "Mozilla Public License, wersja 1.1",
-                "fr": "Mozilla Public License Version 1.1",
-                "bg": "Mozilla Публичен лиценз, версия 1.1",
-                "de": "Mozilla Public License Version 1.1",
-                "fa": "مجوز عمومی موزیلا، نسخهٔ ۱٫۱",
-                "pt-BR": "Licença personalizada",
-                "ja": "Mozilla Public License バージョン 1.1",
-                "pt-PT": "Mozilla Public License, versão 1.1",
-                "sr": "Мозилина јава лиценца, верзија 1.1",
-                "sq": "Leje Publike Mozilla, version 1.1",
-                "ko": "GPL/LGPL/MPL",
-                "ga-IE": "Ceadúnas Poiblí Mozilla, leagan 1.1",
-                "sk": "Mozilla Public License, verzia 1.1",
-                "zh-CN": "Mozilla 公共许可协议，版本 1.1",
-                "zh-TW": "Mozilla Public License，版本 1.1"
+                "en-US": "Mozilla Public License, version 2.0"
             },
-            "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
+            "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": {
-            "en-US": "# Bugfixes\n\n-   mails marked with a tag are shown in the corresponding tag color\n-   calculation of due dates/times is now independent from the language/locale settings of Thunderbird\n-   under some circumstances a mail wasn't moved pr copied to the correct destination folder or wasn't moved/copied at all\n-   display of due time is now correctly refreshed when postponing a follow up for 24hrs\n-   typos\n\n# Features\n\n-   set a follow-up on send: if there's a reply until the due date, the follow-up is deleted automatically\n-   set a follow-up via keyboard shortcut (Windows: [alt][ctrl][1], macOS: [option][1], Linux: [ctrl][1])\n-   when setting a follow-up the last used action is set by default\n-   follow-up-list is redesigned\n-   follow-ups can now be set from the context menu\n-   list of follow-ups got a context menu to easily edit, postpone a follow-up, or open/select the attached message"
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailmindr/versions/0.9.4",
-        "version": "0.9.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailmindr/versions/1.0.0",
+        "version": "1.0.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>AN UPDATE FOR THUNDERBIRD 78 WILL BE AVAILABLE SOON</strong>\n\n\n<strong>mailmindr</strong> is back. After three long years we're back at AMO. Completely rewritten code base. Faster. And better. And just for you. \n\nSet an e-mail on resubmission and mailmindr moves it back to your inbox. Or flag it. Or mark it as unread. Easy. \n\n<strong>Twitter</strong>: <a title=\"mailmindr is on twitter\" rel=\"nofollow\" href=\"https://twitter.com/mailmindr\">@mailmindr</a>\n<strong>Facebook</strong>: <a title=\"mailmindr is on facebook\" rel=\"nofollow\" href=\"https://www.facebook.com/mailmindr\">mailmindr</a>",
-        "de": "<strong>FÜR THUNDERBIRD 78 WIRD ES BALD EIN UPDATE GEBEN</strong>\n\n\n<strong>mailmindr ist zurück</strong> - das erste Wiedervorlage-AddOn für Thunderbird ist wieder da!\n\nLassen Sie sich von mailmindr an E-Mail erinnern, die Sie zu einem späteren Zeitpunkt beantworten wollen. Lassen sie mailmindr dazu die E-Mail als ungelesen markieren oder mit einem Schlagwort versehen oder in einen anderen Ordner verschieben/kopieren.\n\n<strong>Features</strong>\n<ul><li>Liste aller Wiedervorlagen direkt im Hauptfenster von Thunderbird</li><li>mailmindr <strong>per Schlagwort, Tastenkombination oder Toolbar aktivieren</strong></li><li>Wiedervorlage direkt beim <strong>versenden</strong> setzen</li><li>Anzeige von <strong>Outlook-Hinweisen</strong>: <em>Zur Nachverfolgung</em></li><li>Anzeige, ob eine E-Mail beantwortet wurde oder nicht: die Wiedervorlage wird durchgestrichen dargestellt und kann entfernt werden</li><li><strong>[NEU]</strong> <strong>Shortcut</strong>: Um Mails schnell und einfach auf Wiedervorlage zu setzen: CMD+SHIFT+W (Mac OSX) oder CTRL+SHIFT+W (Windows)</li><li><strong>[NEU]</strong> <strong>Inbox Zero</strong>: mailmindr entfernt die Nachrichten aus dem Posteingang und verschiebt sie bei Fälligkeit wieder zurück.</li><li><strong>[NEU]</strong> <strong>Aktionen-Vorbelegung</strong>: Aktionen können nun zum schnelleren Setzen der Wiedervorlage vorbelegt werden</li></ul>\n<strong>Twitter</strong>: <a title=\"mailmindr is on twitter\" rel=\"nofollow\" href=\"https://twitter.com/mailmindr\">@mailmindr</a>\n<strong>Facebook</strong>: <a title=\"mailmindr is on facebook\" rel=\"nofollow\" href=\"https://www.facebook.com/mailmindr\">mailmindr</a>"
+        "en-US": "Sets reminders on messages for follow-up: simply set a due date and time and mailmindr marks the message as \"unread\" or \"flag\" it. mailmindr can keep your inbox clean by moving messages out of your inbox and move them back on the due date and time you set.\n\nNeed support? Visit <a rel=\"nofollow\" href=\"https://mailmindr.net/\">https://mailmindr.net/</a> or send an email to hello @ mailmindr . net or reach out on Twitter (@mailmindr) or facebook (<a rel=\"nofollow\" href=\"https://www.facebook.com/mailmindr\">https://www.facebook.com/mailmindr</a>)"
     },
     "developer_comments": {
-        "en-US": "Got an idea how mailmindr can be improved? Send an e-mail or send a tweet to @mailmindr or use the <a href=\"https://www.facebook.com/mailmindr\" rel=\"nofollow\">facebook page</a>",
-        "de": "Du hast einen Verbesserungsvorschlag? Dann schicke uns doch eine E-Mail. Die Kontaktdaten findest Du auf der verlinkten Webseite. Alternativ zur E-Mail sendest Du einen Tweet an @mailmindr oder schreibst auf die <a href=\"https://www.facebook.com/mailmindr\" rel=\"nofollow\">facebook page</a>"
+        "en-US": "Got an idea how mailmindr can be improved? Send an e-mail or send a tweet to @mailmindr or use the <a href=\"https://www.facebook.com/mailmindr\" rel=\"nofollow\">facebook page</a>"
     },
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/mailmindr/edit",
     "guid": "mailmindr@arndissler.net",
-    "has_eula": true,
+    "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
-        "en-US": "https://mailmindr.net/",
-        "de": "https://mailmindr.net/"
+        "en-US": "https://mailmindr.net/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/46/46207-64.png?modified=1606227963",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/46/46207-64.png?modified=1618232462",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/46/46207-32.png?modified=1606227963",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/46/46207-64.png?modified=1606227963"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/46/46207-32.png?modified=1618232462",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/46/46207-64.png?modified=1618232462"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-07-15T11:24:38Z",
+    "last_updated": "2021-04-10T23:11:12Z",
     "name": {
-        "en-US": "mailmindr",
-        "de": "mailmindr"
+        "en-US": "mailmindr"
     },
     "previews": [
         {
-            "id": 121416,
+            "id": 206515,
             "caption": {
-                "en-US": "Set a reminder for your email: select mail, select date, time and an action. That's it!",
-                "de": "Schnell und einfach eine E-Mail auf Wiedervorlage setzen: Zeitpunkt und Aktion auswählen, fertig."
+                "en-US": "Set a reminder by selecting a due date and time and pick an action. It's as simple as that.",
+                "de": ""
             },
             "image_size": [
-                530,
-                387
+                612,
+                477
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/121/121416.png?modified=1530208645",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206515.png?modified=1618228625",
             "thumbnail_size": [
-                274,
+                257,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/121/121416.png?modified=1530208645"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206515.png?modified=1618228625"
         },
         {
-            "id": 121417,
+            "id": 206516,
             "caption": {
-                "en-US": "A dialog will be shown on resubmission.",
-                "de": "Ein Dialog erinnert zum Zeitpunkt der Wiedervorlage an die E-Mails."
+                "en-US": "Have an overview on all active reminders.",
+                "de": ""
             },
             "image_size": [
-                700,
-                399
+                372,
+                233
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/121/121417.png?modified=1530208645",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206516.png?modified=1618228621",
+            "thumbnail_size": [
+                319,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206516.png?modified=1618228621"
+        },
+        {
+            "id": 206517,
+            "caption": {
+                "en-US": "There's a prominent marker when a message with a follow-up is viewed.",
+                "de": ""
+            },
+            "image_size": [
+                522,
+                133
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206517.png?modified=1618228624",
             "thumbnail_size": [
                 320,
-                182
+                82
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/121/121417.png?modified=1530208645"
-        },
-        {
-            "id": 121418,
-            "caption": {
-                "en-US": "Only a click away: quick list for all active resubmissions. Simply jump to emails w/ resubmission or edit mindrs.",
-                "de": "Übersicht über aktuell gesetzte Wiedervorlagen. Durch Klick auf eine Wiedervorlage wird die passende E-mail ausgewählt - auch nachdem sie in einen anderen Ordner verschoben wurde."
-            },
-            "image_size": [
-                334,
-                191
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/121/121418.png?modified=1530208645",
-            "thumbnail_size": [
-                320,
-                183
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/121/121418.png?modified=1530208645"
-        },
-        {
-            "id": 121419,
-            "caption": {
-                "en-US": "Set presets for setting mindrs.",
-                "de": "mailmindr lässt sich umfangreich konfigurieren: beispielsweise verschiedene Zeit-Vorlagen für das setzen per Schlagwort oder Schaltfläche"
-            },
-            "image_size": [
-                632,
-                525
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/121/121419.png?modified=1530208646",
-            "thumbnail_size": [
-                241,
-                200
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/121/121419.png?modified=1530208646"
-        },
-        {
-            "id": 121420,
-            "caption": {
-                "en-US": "Define different presets for date and time.",
-                "de": "Vorlagen für die Erinnerungszeitpunkte lassen sich individuell konfigurieren."
-            },
-            "image_size": [
-                632,
-                525
-            ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/121/121420.png?modified=1530208646",
-            "thumbnail_size": [
-                241,
-                200
-            ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/121/121420.png?modified=1530208646"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206517.png?modified=1618228624"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.73376,
-        "count": 53,
-        "average": 3.7547,
-        "text_count": 53
+        "bayesian_average": 3.75728,
+        "count": 54,
+        "average": 3.7778,
+        "text_count": 54
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/mailmindr/reviews/",
     "requires_payment": false,
@@ -214,16 +155,13 @@
     "slug": "mailmindr",
     "status": "public",
     "summary": {
-        "en-US": "Follow up for Thunderbird E-Mails. Lightning or other AddOns are not required. Set a reminder by adding a label or by context menu and let mailmindr remind you.\n\nMore information on updates and planned features at <a href=\"https://mailmindr.net/\" rel=\"nofollow\">https://mailmindr.net/</a>",
-        "de": "Wiedervorlage von Thunderbird E-Mails - mailmindr erinnert an E-Mails, um sie zu einem späteren Zeitpunkt beantworten zu können. Lightning oder andere AddOns sind nicht erforderlich. Mehr Informationen und Updates unter <a href=\"https://mailmindr.net/\" rel=\"nofollow\">https://mailmindr.net/</a>"
+        "en-US": "Follow up for Thunderbird E-Mails. Lightning or other AddOns are not required. Set a reminder by adding a label or by context menu and let mailmindr remind you.\n\nMore information on updates and planned features at <a rel=\"nofollow\" href=\"https://mailmindr.net/\">https://mailmindr.net/</a>"
     },
     "support_email": {
-        "en-US": "hello@mailmindr.net",
-        "de": "hello@mailmindr.net"
+        "en-US": "hello@mailmindr.net"
     },
     "support_url": {
-        "en-US": "https://mailmindr.net/",
-        "de": "https://mailmindr.net/"
+        "en-US": "https://mailmindr.net/"
     },
     "tags": [
         "firefox57",
@@ -236,10 +174,10 @@
     "weekly_downloads": 38,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2019-09-02T14:24:47Z"
         }

@@ -1428,7 +1428,7 @@ var cardbookUtils = {
 		for (let field of cardbookRepository.allColumns.org) {
 			tmpArray.push([cardbookRepository.extension.localeData.localizeMessage(field + "Label"), field]);
 		}
-		for (let type of ["pers", "org"]) {
+		for (let type of ["personal", "org"]) {
 			for (let field of cardbookRepository.customFields[type]) {
 				tmpArray.push([field[1], field[0]]);
 			}
@@ -1629,14 +1629,17 @@ var cardbookUtils = {
 
 	changeMediaFromFileToContent: function (aCard) {
 		try {
-			let mediaName = [ 'photo', 'logo', 'sound' ];
-			for (let media of mediaName) {
-				if (aCard[media].localURI) {
-					var myFileURISpec = aCard[media].localURI.replace("VALUE=uri:","");
-					if (myFileURISpec.indexOf("file:///") === 0) {
-						var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-						aCard[media].value = cardbookUtils.getFileBinary(myFileURI);
-						aCard[media].localURI = "";
+			let mediaFields = [ 'photo', 'logo', 'sound' ];
+			let fields = [ 'localURI', 'URI' ];
+			for (let media of mediaFields) {
+				for (let field of fields) {
+					if (aCard[media][field]) {
+						var myFileURISpec = aCard[media][field].replace("VALUE=uri:","");
+						if (myFileURISpec.indexOf("file:///") === 0) {
+							var myFileURI = Services.io.newURI(myFileURISpec, null, null);
+							aCard[media].value = cardbookUtils.getFileBinary(myFileURI);
+							aCard[media][field] = "";
+						}
 					}
 				}
 			}

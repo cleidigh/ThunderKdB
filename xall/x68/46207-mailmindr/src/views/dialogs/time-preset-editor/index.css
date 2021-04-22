@@ -1,0 +1,59 @@
+@import url('../../mailmindr-core.css');
+
+.mailmindr-vertical-stack {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.mailmindr-vertical-stack > div {
+    /* outline: 1px solid orange; */
+}
+
+.mailmindr-horizontal-stack {
+    display: flex;
+    flex-direction: row;
+    row-gap: 5px;
+}
+
+.mailmindr-horizontal-stack > div {
+    /* outline: 1px solid deeppink; */
+}
+
+.mailmindr-buttonbar {
+    margin: 0.5em -0.25em;
+    color: initial;
+    grid-column: 2;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.mailmindr-buttonbar--wrapper {
+    display: flex;
+}
+
+h2 {
+    font-size: 1em;
+    margin-top: 0.75em;
+    margin-bottom: 0.5em;
+}
+
+fieldset {
+    padding: 1em 0;
+    border: 0;
+}
+
+input[type='text'] {
+    padding: 2px 4px;
+    font-size: 1em;
+}
+
+input:read-only {
+    color: gray;
+}

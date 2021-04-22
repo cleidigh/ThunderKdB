@@ -3,9 +3,9 @@ if ("undefined" == typeof(ovl_birthdays)) {
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 
 	var ovl_birthdays = {
-		lTimerPopup : null,
-		lPopupShowed : 0,
-		lEventTimerPopup : { notify: function(lTimerPopup) {
+		lTimerPopup: null,
+		lPopupShowed: 0,
+		lEventTimerPopup: { notify: function(lTimerPopup) {
 			if (cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.showPeriodicPopup")) {
 				var popupTime = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.periodicPopupIime");
 				var dateOfToday = new Date();
@@ -35,7 +35,7 @@ if ("undefined" == typeof(ovl_birthdays)) {
 					ovl_birthdays.lPopupShowed=0;
 				}
 			}
-		} },
+		}},
 	
 		onLoad: function() {
 			if (cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.showPopupOnStartup")) {

@@ -77,6 +77,7 @@ configs.$addObserver(onConfigChange);
 
 configs.$loaded.then(async () => {
   mParams = await Dialog.getParams();
+  log('confirmation dialog initialize ', mParams);
 
   mAttentionDomains = mParams.attentionDomains;
   mAttachmentClassifier = new AttachmentClassifier({
@@ -130,10 +131,12 @@ configs.$loaded.then(async () => {
   window.addEventListener(ResizableBox.TYPE_RESIZED, event => {
     configs.confirmDialogBoxSizes = event.detail;
   });
+  log('confirmation dialog initialize done');
 });
 
 
 function initInternals() {
+  log('initInternals ', mParams.internals);
   mInternalsAllCheck.disabled = mParams.internals.length == 0;
   mInternalsAllCheck.classList.toggle('hidden', !configs.allowCheckAllInternals);
   mInternalsAllCheck.addEventListener('change', _event => {
@@ -148,6 +151,7 @@ function initInternals() {
 }
 
 function initExternals() {
+  log('initExternals ', mParams.externals);
   mExternalsAllCheck.disabled = mParams.externals.length == 0;
   mExternalsAllCheck.classList.toggle('hidden', !configs.allowCheckAllExternals);
   mExternalsAllCheck.addEventListener('change', _event => {
@@ -191,6 +195,7 @@ function initExternals() {
 }
 
 function initBodyBlock() {
+  log('initBodyBlock ', mParams.details.body);
   const container = document.querySelector('#bodyAndSubjectContainer');
   container.classList.toggle('hidden', !configs.requireCheckSubject && !configs.requireCheckBody);
   container.previousElementSibling.classList.toggle('hidden', container.classList.contains('hidden')); // splitter
@@ -212,6 +217,7 @@ function initBodyBlock() {
 }
 
 function initAttachments() {
+  log('initAttachments ', mParams.attachments);
   const container = mAttachmentsList.closest('fieldset');
   container.classList.toggle('hidden', !configs.requireCheckAttachment);
   container.previousElementSibling.classList.toggle('hidden', container.classList.contains('hidden')); // splitter
@@ -228,7 +234,10 @@ function initAttachments() {
   });
   for (const attachment of mParams.attachments) {
     const row = createAttachmentRow(attachment);
-    if (mAttachmentClassifier.hasAttentionSuffix(attachment.name))
+    const hasAttentionSuffix = mAttachmentClassifier.hasAttentionSuffix(attachment.name);
+    const hasAttentionTerm = mAttachmentClassifier.hasAttentionTerm(attachment.name);
+    log('check attachment: ', attachment, { hasAttentionSuffix, hasAttentionTerm });
+    if (hasAttentionSuffix || hasAttentionTerm)
       row.classList.add('attention');
     mAttachmentsList.appendChild(row);
   }

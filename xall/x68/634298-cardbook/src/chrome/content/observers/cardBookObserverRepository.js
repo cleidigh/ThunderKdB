@@ -54,6 +54,8 @@ var cardBookObserverRepository = {
 		Services.obs.addObserver(aObserver, "cardbook.catDBOpen", false);
 		Services.obs.addObserver(aObserver, "cardbook.DBOpen", false);
 		Services.obs.addObserver(aObserver, "cardbook.undoDBOpen", false);
+		Services.obs.addObserver(aObserver, "cardbook.mailPopDBOpen", false);
+		Services.obs.addObserver(aObserver, "cardbook.searchDBOpen", false);
 		Services.obs.addObserver(aObserver, "cardbook.complexSearchInitLoaded", false);
 		Services.obs.addObserver(aObserver, "cardbook.complexSearchLoaded", false);
 		Services.obs.addObserver(aObserver, "cardbook.accountsLoaded", false);
@@ -105,6 +107,8 @@ var cardBookObserverRepository = {
 		Services.obs.removeObserver(aObserver, "cardbook.catDBOpen");
 		Services.obs.removeObserver(aObserver, "cardbook.DBOpen");
 		Services.obs.removeObserver(aObserver, "cardbook.undoDBOpen");
+		Services.obs.removeObserver(aObserver, "cardbook.mailPopDBOpen");
+		Services.obs.removeObserver(aObserver, "cardbook.searchDBOpen");
 		Services.obs.removeObserver(aObserver, "cardbook.complexSearchInitLoaded");
 		Services.obs.removeObserver(aObserver, "cardbook.complexSearchLoaded");
 		Services.obs.removeObserver(aObserver, "cardbook.accountsLoaded");

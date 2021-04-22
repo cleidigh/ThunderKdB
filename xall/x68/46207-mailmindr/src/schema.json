@@ -1,0 +1,20 @@
+[
+    {
+        "namespace": "mailmindrMessagesApi",
+        "functions": [
+            {
+                "name": "openMessageByMessageHeaderId",
+                "type": "function",
+                "description": "Open message by given messageHeaderId.",
+                "async": true,
+                "parameters": [
+                    {
+                        "name": "messageHeaderId",
+                        "type": "string",
+                        "description": "headerMessageId of the message that should be opened."
+                    }
+                ]
+            }
+        ]
+    }
+]

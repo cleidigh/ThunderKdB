@@ -379,3 +379,19 @@ Nict_TexTra.utils.get_time = function (tm) {
     }
     return str_time;
 };
+
+// chrome.storageからデータ取得
+Nict_TexTra.utils.get_datas_from_storage = async function (infos) {
+    var prom = new Promise(function (resolve, reject) {
+        chrome.storage.local.get(infos, resolve);
+    });
+    return await prom;
+};
+
+// chrome.storageにデータ保存
+Nict_TexTra.utils.set_datas_from_storage = async function (infos) {
+    var prom = new Promise(function (resolve, reject) {
+        chrome.storage.local.set(infos, resolve);
+    });
+    return await prom;
+};

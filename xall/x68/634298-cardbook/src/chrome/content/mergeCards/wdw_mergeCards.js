@@ -340,6 +340,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 					wdw_mergeCards.createLabel(aRow, i + 'Label', i + 'Label');
 					var selected = true;
 					for (let j = 0; j < listOfCards.length; j++) {
+						// to do create photo temp file
 						if (listOfCards[j][i].localURI != "") {
 							wdw_mergeCards.createCheckBox1(aRow, i + 'Checkbox' + j, selected);
 							wdw_mergeCards.createImageBox(aRow, i + 'Textbox' + j, listOfCards[j][i].localURI, selected, false);

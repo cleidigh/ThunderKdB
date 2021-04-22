@@ -62,7 +62,7 @@ cardbookAutocompleteResult.prototype = {
 		// need to collect popularity for lists
 		// when CardBook collects popularities lists are still splitted into emails
 		if (!this.listUpdated && this.getTypeAt(aIndex) == "CB_LIST") {
-			cardbookRepository.cardbookMailPopularity.updateMailPopularity(this.getEmailToUse(aIndex));
+			cardbookIDBMailPop.updateMailPop(this.getEmailToUse(aIndex));
 			// this function getFinalCompleteValueAt is called many times so to update only once we need this variable
 			this.listUpdated = true;
 			var myEmail = this.getValueAt(aIndex);
@@ -325,8 +325,8 @@ cardbookAutocompleteSearch.prototype = {
 								var first = true;
 								for (var l = 0; l < card.email.length; l++) {
 									var myCurrentPopularity = 0;
-									if (cardbookRepository.cardbookMailPopularityIndex[card.email[l][0][0].toLowerCase()]) {
-										myCurrentPopularity = parseInt(cardbookRepository.cardbookMailPopularityIndex[card.email[l][0][0].toLowerCase()]);
+									if (cardbookRepository.cardbookMailPopularityIndex[card.email[l][0][0].toLowerCase()] && cardbookRepository.cardbookMailPopularityIndex[card.email[l][0][0].toLowerCase()].count) {
+										myCurrentPopularity = parseInt(cardbookRepository.cardbookMailPopularityIndex[card.email[l][0][0].toLowerCase()].count);
 										if (first) {
 											myMinPopularity = myCurrentPopularity;
 											first = false;
@@ -344,8 +344,8 @@ cardbookAutocompleteSearch.prototype = {
 								}
 								// add Lists
 								if (card.isAList) {
-									if (cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()]) {
-										myCurrentPopularity = cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()];
+									if (cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()] && cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()].count) {
+										myCurrentPopularity = cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()].count;
 									}
 									this.addResult(card.fn + " <" + card.fn + ">", myComment, myCurrentPopularity, "CB_LIST", myStyle, card.fn.toLowerCase(), myDirPrefId, card.fn);
 								} else {

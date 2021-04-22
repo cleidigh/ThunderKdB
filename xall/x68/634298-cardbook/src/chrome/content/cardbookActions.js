@@ -12,9 +12,9 @@ if ("undefined" == typeof(cardbookActions)) {
 
 		setUndoAndRedoMenuAndButton: function () {
 			var myCurrentUndoId = cardbookRepository.currentUndoId;
-			cardbookIndexedDB.setUndoAndRedoMenuAndButton("menu_undo", "cardbookToolbarBackButton", myCurrentUndoId);
+			cardbookIDBUndo.setUndoAndRedoMenuAndButton("menu_undo", "cardbookToolbarBackButton", myCurrentUndoId);
 			myCurrentUndoId++;
-			cardbookIndexedDB.setUndoAndRedoMenuAndButton("menu_redo", "cardbookToolbarForwardButton", myCurrentUndoId);
+			cardbookIDBUndo.setUndoAndRedoMenuAndButton("menu_redo", "cardbookToolbarForwardButton", myCurrentUndoId);
 		},
 
 		saveCurrentUndoId: function () {
@@ -23,15 +23,15 @@ if ("undefined" == typeof(cardbookActions)) {
 
 		addUndoCardsAction: function (aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats) {
 			let myNextUndoId = cardbookRepository.currentUndoId + 1;
-			cardbookIndexedDB.addUndoItem(myNextUndoId, aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats, false);
+			cardbookIDBUndo.addUndoItem(myNextUndoId, aActionCode, aActionMessage, aOldCards, aNewCards, aOldCats, aNewCats, false);
 		},
 
 		undo: function () {
-			cardbookIndexedDB.executeUndoItem();
+			cardbookIDBUndo.executeUndoItem();
 		},
 
 		redo: function () {
-			cardbookIndexedDB.executeRedoItem();
+			cardbookIDBUndo.executeRedoItem();
 		},
 
 		initProcess: function(aProcessName, aContextDisplayText, aContextType, aIcon) {
@@ -273,7 +273,7 @@ if ("undefined" == typeof(cardbookActions)) {
 				var myAction = cardbookRepository.currentAction[aActionId];
 				if (myAction.files.length > 0) {
 					cardbookActions.addActivityFromUndo(aActionId);
-					if (myAction.actionCode != "undoActionDone" && myAction.actionCode != "redoActionDone") {
+					if (myAction.actionCode != "undoActionDone" && myAction.actionCode != "redoActionDone"  && myAction.actionCode != "syncMyPhoneExplorer") {
 						cardbookActions.addUndoCardsAction(myAction.actionCode, myAction.message, myAction.oldCards, myAction.newCards, myAction.oldCats, myAction.newCats);
 					}
 					if (myAction.refresh != "") {

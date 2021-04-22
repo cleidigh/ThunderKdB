@@ -5,6 +5,7 @@ loader.loadSubScript("chrome://cardbook/content/cardbookWebDAV.js", this);
 
 var EXPORTED_SYMBOLS = ["cardbookSynchronizationGoogle"];
 var cardbookSynchronizationGoogle = {
+	skippedLabels: [],
 
 	getGoogleOAuthURLForGoogleCarddav: function (aEmail) {
 		return cardbookRepository.cardbookOAuthData.GOOGLE.OAUTH_URL +
@@ -215,6 +216,12 @@ var cardbookSynchronizationGoogle = {
 						cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogleClassic(aConnection, cardbookSynchronizationGoogle.getNewAccessTokenForGoogleClassic, aParams, aFollowAction);
 					} else {
 						cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "getNewAccessTokenForGoogleClassic", aConnection.connUrl, status], "Error");
+						if (aParams.aActionType == "GET") {
+							cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
+						} else if (aParams.aActionType == "PUT") {
+							cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+						}
 						cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookAccessTokenError[aConnection.connPrefId]++;
 					}
@@ -374,6 +381,8 @@ var cardbookSynchronizationGoogle = {
 							let groupId = tmpArray[tmpArray.length - 1];
 							let title = entry.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "title")[0].textContent.trim();
 							if (title.startsWith("System Group:") || title == "Starred in Android") {
+								let idArray = id.split("/");
+								cardbookSynchronizationGoogle.skippedLabels.push(idArray[idArray.length-1]);
 								continue;
 							}
 							let linkNodes = entry.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "link");
@@ -462,8 +471,7 @@ var cardbookSynchronizationGoogle = {
 					var conflictResult = "keep";
 				} else {
 					var message = cardbookRepository.extension.localeData.localizeMessage("categoryDeletedOnDiskUpdatedOnServer", [aCatConnection.connDescription, myCacheCat.name]);
-					var askUserResult = cardbookSynchronization.askUser("category", message, "keep", "delete");
-					var conflictResult = askUserResult.result;
+					var conflictResult = cardbookSynchronization.askUser("category", aCatConnection.connPrefId, message, "keep", "delete");
 				}
 				
 				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(aCatConnection.connDescription + " : debug mode : conflict resolution : ", conflictResult);
@@ -509,8 +517,7 @@ var cardbookSynchronizationGoogle = {
 					var conflictResult = "remote";
 				} else {
 					var message = cardbookRepository.extension.localeData.localizeMessage("categoryUpdatedOnBoth", [aCatConnection.connDescription, myCacheCat.name]);
-					var askUserResult = cardbookSynchronization.askUser("category", message, "local", "remote");
-					var conflictResult = askUserResult.result;
+					var conflictResult = cardbookSynchronization.askUser("category", aCatConnection.connPrefId, message, "local", "remote");
 				}
 				
 				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(aCatConnection.connDescription + " : debug mode : conflict resolution : ", conflictResult);
@@ -630,8 +637,7 @@ var cardbookSynchronizationGoogle = {
 							var conflictResult = "delete";
 						} else {
 							var message = cardbookRepository.extension.localeData.localizeMessage("categoryUpdatedOnDiskDeletedOnServer", [aConnection.connDescription, aCategory.name]);
-							var askUserResult = cardbookSynchronization.askUser("category", message, "keep", "delete");
-							var conflictResult = askUserResult.result;
+							var conflictResult = cardbookSynchronization.askUser("category", aConnection.connPrefId, message, "keep", "delete");
 						}
 						
 						cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(aConnection.connDescription + " : debug mode : conflict resolution : ", conflictResult);
@@ -790,35 +796,52 @@ var cardbookSynchronizationGoogle = {
 		}
 	},
 
-	serverGetCardLabels: function(aConnection, aParams) {
-		var listener_get = {
-			onDAVQueryComplete: function(status, responseXML, askCertificate, etag) {
+	serverGetAllCardsLabels: function(aConnection) {
+		var listener_getContacts = {
+			onDAVQueryComplete: function(status, responseXML, askCertificate, etag, length) {
 				if (status > 199 && status < 400) {
-					cardbookRepository.cardbookUtils.formatStringForOutput("serverGetCardLabelsOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+					cardbookRepository.cardbookUtils.formatStringForOutput("serverGetLabelsOK", [aConnection.connDescription]);	
 					let nodes =  responseXML.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "entry");
-					let listOfCategories = [];
 					for (let entry of nodes) {
-						let id = entry.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "id")[0].textContent.trim();
-						let tmpArray = id.split("/");
-						let uid = tmpArray[tmpArray.length - 1];
-						let etag = entry.getAttribute('gd:etag').replace(/^\"/, "").replace(/\.\"$/, "").trim();
-						// new or updated contacts on Google server
-						// there two cases : 
-						// 1/ new contacts from Cardbook
-						// 2/ new or updated contacts from Google 
-						if (aParams.aActionType == "GET") {
-							let groups = responseXML.getElementsByTagNameNS("http://schemas.google.com/contact/2008", "groupMembershipInfo");
+						let status = entry.getElementsByTagNameNS("http://schemas.google.com/gdata/batch", "status");
+						let isSuccess = (status[0].getAttribute("code") == "200");
+						if (isSuccess) {
+							let id = entry.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "id")[0].textContent.trim();
+							let tmpArray = id.split("/");
+							let uid = tmpArray[tmpArray.length - 1];
+							let etag = entry.getAttribute('gd:etag').replace(/^\"/, "").replace(/\.\"$/, "").trim();
+							let aParams = cardbookRepository.cardbookServerMultiGetGoogleArray[aConnection.connPrefId][uid].params;
+							// new or updated contacts on Google server
+							// there two cases : 
+							// 1/ new contacts from Cardbook
+							// 2/ new or updated contacts from Google 
+							let groups = entry.getElementsByTagNameNS("http://schemas.google.com/contact/2008", "groupMembershipInfo");
 							if (aParams.aWhyGet == "UPDATEDONSERVER") {
 								aParams.aNewCard.categories = [];
 							}
 							let categoriesFound = false;
+							let serverCats = [];
+							let cardCats = [];
 							for (let group of groups) {
 								let href = group.getAttribute("href").replace("http://","https://").replace("/base/","/full/");
+								let hrefArray = href.split("/");
+								let id = hrefArray[hrefArray.length-1];
+								if (!cardbookSynchronizationGoogle.skippedLabels.includes(id)) {
+									serverCats.push(id);
+								}
 								if (cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href] && !aParams.aNewCard.categories.includes(cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href].name)) {
 									categoriesFound = true;
 									cardbookRepository.addCategoryToCard(aParams.aNewCard, cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href].name);
 								}
 							}
+							for (let href in cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId]) {
+								if (aParams.aNewCard.categories.includes(cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href].name)) {
+									cardCats.push(cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href].uid);
+								}
+							}
+							cardbookRepository.cardbookUtils.sortArrayByString(serverCats,1);
+							cardbookRepository.cardbookUtils.sortArrayByString(cardCats,1);
+							
 							if (!categoriesFound && aParams.aWhyGet == "NEWONSERVER" && aParams.aNewCard.categories.length) {
 								let stopAddCat = false;
 								// at first sync there might be categories not yet pushed to Google
@@ -843,8 +866,162 @@ var cardbookSynchronizationGoogle = {
 									cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 									cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 								} else {
-									cardbookRepository.cardbookServerSyncRequest[aConnection.connPrefId]++;
-									cardbookSynchronizationGoogle.serverPutCardLabels(aConnection, aParams, uid, etag, entry);
+									if (serverCats.join(":") != cardCats.join(":")) {
+										let entryWithCats = cardbookSynchronizationGoogle.updateCatEntryForServer(aConnection.connPrefId, aConnection.connUser, aParams.aNewCard, entry, true);
+										cardbookRepository.cardbookServerMultiPutGoogleArray[aConnection.connPrefId][uid] = {entry: entryWithCats, params: aParams};
+									} else {
+										if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
+											let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
+											cardbookRepository.removeCardFromRepository(aOldCard, true);
+										}
+										cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
+										cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+										cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+										cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+									}
+								}
+							} else {
+								if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
+									let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
+									cardbookRepository.removeCardFromRepository(aOldCard, true);
+								}
+								cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
+								cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+								cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+								cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+							}
+						} else {
+							cardbookRepository.cardbookUtils.formatStringForOutput("serverGetLabelsFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
+							cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerGetCardError[aConnection.connPrefId]++;
+						}
+					}
+				} else {
+					cardbookRepository.cardbookUtils.formatStringForOutput("serverGetLabelsFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
+					cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId] = cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId] + length;
+					cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId] = cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId] + length;
+					cardbookRepository.cardbookServerGetCardError[aConnection.connPrefId] = cardbookRepository.cardbookServerGetCardError[aConnection.connPrefId] + length;
+				}
+				if (cardbookRepository.cardbookServerMultiGetRequest[aConnection.connPrefId]-1 == cardbookRepository.cardbookServerMultiGetResponse[aConnection.connPrefId]) {
+					let doit = false
+					for (let id in cardbookRepository.cardbookServerMultiPutGoogleArray[aConnection.connPrefId]) {
+						doit = true;
+						break;
+					}
+					if (doit) {
+						let connection = {connUser: aConnection.connUser, connPrefId: aConnection.connPrefId, connUrl: cardbookRepository.cardbookOAuthData.GOOGLE.REFRESH_REQUEST_URL, connDescription: aConnection.connDescription};
+						cardbookRepository.cardbookServerSyncRequest[aConnection.connPrefId]++;
+						cardbookSynchronizationGoogle.getNewAccessTokenForGoogleClassic(connection, null, cardbookRepository.cardbookSynchronizationGoogle.serverPutAllCardsLabels);
+					}
+				}
+				cardbookRepository.cardbookServerMultiGetResponse[aConnection.connPrefId]++;
+			}
+		};
+		let multiget = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.multiget");
+		let length = 0;
+		let contactsId = [];
+		aConnection.connUrl = cardbookRepository.cardbookOAuthData.GOOGLE.BATCH;
+		for (let id in cardbookRepository.cardbookServerMultiGetGoogleArray[aConnection.connPrefId]) {
+			contactsId.push(id);
+			length++;
+			if (length == multiget) {
+				let request = new cardbookWebDAV(aConnection, listener_getContacts, "", false);
+				cardbookRepository.cardbookServerMultiGetRequest[aConnection.connPrefId]++;
+				request.getContacts(contactsId);
+				contactsId = [];
+				length = 0;
+			}
+		}
+		if (length != 0) {
+			let request = new cardbookWebDAV(aConnection, listener_getContacts, "", false);
+			cardbookRepository.cardbookServerMultiGetRequest[aConnection.connPrefId]++;
+			request.getContacts(contactsId);
+		}
+		cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
+		cardbookRepository.cardbookUtils.formatStringForOutput("serverSendingGetLabels", [aConnection.connDescription]);
+	},
+
+	serverGetCardLabels: function(aConnection, aParams) {
+		var listener_getContact = {
+			onDAVQueryComplete: function(status, responseXML, askCertificate, etag) {
+				if (status > 199 && status < 400) {
+					cardbookRepository.cardbookUtils.formatStringForOutput("serverGetCardLabelsOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+					let nodes =  responseXML.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "entry");
+					for (let entry of nodes) {
+						let id = entry.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "id")[0].textContent.trim();
+						let tmpArray = id.split("/");
+						let uid = tmpArray[tmpArray.length - 1];
+						let etag = entry.getAttribute('gd:etag').replace(/^\"/, "").replace(/\.\"$/, "").trim();
+						let groups = responseXML.getElementsByTagNameNS("http://schemas.google.com/contact/2008", "groupMembershipInfo");
+						if (aParams.aWhyGet == "UPDATEDONSERVER") {
+							aParams.aNewCard.categories = [];
+						}
+						let categoriesFound = false;
+						let serverCats = [];
+						let cardCats = [];
+						for (let group of groups) {
+							let href = group.getAttribute("href").replace("http://","https://").replace("/base/","/full/");
+							let hrefArray = href.split("/");
+							let id = hrefArray[hrefArray.length-1];
+							if (!cardbookSynchronizationGoogle.skippedLabels.includes(id)) {
+								serverCats.push(id);
+							}
+							if (cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href] && !aParams.aNewCard.categories.includes(cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href].name)) {
+								categoriesFound = true;
+								cardbookRepository.addCategoryToCard(aParams.aNewCard, cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href].name);
+							}
+						}
+						for (let href in cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId]) {
+							if (aParams.aNewCard.categories.includes(cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href].name)) {
+								cardCats.push(cardbookRepository.cardbookFileCacheCategories[aConnection.connPrefId][href].uid);
+							}
+						}
+						cardbookRepository.cardbookUtils.sortArrayByString(serverCats,1);
+						cardbookRepository.cardbookUtils.sortArrayByString(cardCats,1);
+
+						// new or updated contacts on Google server
+						// there two cases : 
+						// 1/ new contacts from Cardbook
+						// 2/ new or updated contacts from Google 
+						if (aParams.aActionType == "GET") {
+							if (!categoriesFound && aParams.aWhyGet == "NEWONSERVER" && aParams.aNewCard.categories.length) {
+								let stopAddCat = false;
+								// at first sync there might be categories not yet pushed to Google
+								// first create categories and then push contacts
+								for (let category of aParams.aNewCard.categories) {
+									if (!cardbookRepository.cardbookCategories[aConnection.connPrefId+"::"+category]) {
+										stopAddCat = true;
+										let aCategory = new cardbookCategoryParser(category, aConnection.connPrefId);
+										cardbookRepository.cardbookUtils.addTagCreated(aCategory);
+										cardbookRepository.addCategoryToRepository(aCategory, true, aConnection.connPrefId);
+									}
+								}
+								if (stopAddCat) {
+									if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
+										let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
+										cardbookRepository.removeCardFromRepository(aOldCard, true);
+									}
+									cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
+									cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+									cardbookRepository.cardbookUtils.addTagUpdated(aParams.aNewCard);
+									cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+									cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+									cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
+								} else {
+									if (serverCats.join(":") != cardCats.join(":")) {
+										let entryWithCats = cardbookSynchronizationGoogle.updateCatEntryForServer(aConnection.connPrefId, aConnection.connUser, aParams.aNewCard, entry, true);
+										cardbookRepository.cardbookServerMultiPutGoogleArray[aConnection.connPrefId][uid] = {entry: entryWithCats, params: aParams};
+									} else {
+										if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
+											let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
+											cardbookRepository.removeCardFromRepository(aOldCard, true);
+										}
+										cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
+										cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+										cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+										cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+									}
 								}
 							} else {
 								if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
@@ -858,8 +1035,19 @@ var cardbookSynchronizationGoogle = {
 							}
 						// updated contacts on CardBook : PUT
 						} else {
-							cardbookRepository.cardbookServerSyncRequest[aConnection.connPrefId]++;
-							cardbookSynchronizationGoogle.serverPutCardLabels(aConnection, aParams, uid, etag, entry);
+							if (serverCats.join(":") != cardCats.join(":")) {
+								cardbookRepository.cardbookServerSyncRequest[aConnection.connPrefId]++;
+								cardbookSynchronizationGoogle.serverPutCardLabels(aConnection, aParams, uid, etag, entry);
+							} else {
+								cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+								// if aCard and aCard have the same cached medias
+								cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aParams.aNewCard);
+								if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
+									let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
+									cardbookRepository.removeCardFromRepository(aOldCard, true);
+								}
+								cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+							}
 						}
 					}
 				} else {
@@ -880,12 +1068,12 @@ var cardbookSynchronizationGoogle = {
 			}
 		};
 		aConnection.connUrl = cardbookRepository.cardbookOAuthData.GOOGLE.CONTACT_URL + aConnection.connUser + "/full/" + aParams.aNewCard.uid;
-		var request = new cardbookWebDAV(aConnection, listener_get, "", false);
+		var request = new cardbookWebDAV(aConnection, listener_getContact, "", false);
 		cardbookRepository.cardbookUtils.formatStringForOutput("serverSendingGetCardLabels", [aConnection.connDescription, aParams.aNewCard.fn]);
 		request.getContact();
 	},
 
-	updateEntryForServer: function(aDirPrefId, aUserEmail, aCard, aGoogleEntry) {
+	updateCatEntryForServer: function(aDirPrefId, aUserEmail, aCard, aGoogleEntry, aBatchPrepare) {
 		for (let i = aGoogleEntry.childNodes.length -1; i >= 0; i--) {
 			let child = aGoogleEntry.childNodes[i];
 			if (child.tagName == "gContact:groupMembershipInfo") {
@@ -903,7 +1091,74 @@ var cardbookSynchronizationGoogle = {
 			categoryNode.setAttribute("href", "http://www.google.com/m8/feeds/groups/" + aUserEmail + "/base/" + myCategoryId);
 			aGoogleEntry.appendChild(categoryNode);
 		}
-		return aGoogleEntry.outerHTML;
+		let text = aGoogleEntry.outerHTML;
+		if (aBatchPrepare) {
+			text = text.replace("</id>", "</id><batch:operation type='update'/>");
+		}
+		return text;
+	},
+
+	serverPutAllCardsLabels: function(aConnection) {
+		var listener_putContacts = {
+			onDAVQueryComplete: function(status, responseXML, askCertificate, etag, length) {
+				if (status > 199 && status < 400) {
+					cardbookRepository.cardbookUtils.formatStringForOutput("serverPutLabelsOK", [aConnection.connDescription]);	
+					let nodes =  responseXML.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "entry");
+					for (let entry of nodes) {
+						let status = entry.getElementsByTagNameNS("http://schemas.google.com/gdata/batch", "status");
+						let isSuccess = (status[0].getAttribute("code") == "200");
+						if (isSuccess) {
+							let id = entry.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "id")[0].textContent.trim();
+							let tmpArray = id.split("/");
+							let uid = tmpArray[tmpArray.length - 1];
+							let aParams = cardbookRepository.cardbookServerMultiPutGoogleArray[aConnection.connPrefId][uid].params;
+							cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
+							if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
+								let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
+								cardbookRepository.removeCardFromRepository(aOldCard, true);
+							}
+							cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+							cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+							cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
+						} else {
+							cardbookRepository.cardbookUtils.formatStringForOutput("serverPutLabelsFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
+							cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
+							cardbookRepository.cardbookServerGetCardError[aConnection.connPrefId]++;
+						}
+					}
+				} else {
+					cardbookRepository.cardbookUtils.formatStringForOutput("serverPutLabelsFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
+					cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId] = cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId] + length;
+					cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId] = cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId] + length;
+					cardbookRepository.cardbookServerGetCardError[aConnection.connPrefId] = cardbookRepository.cardbookServerGetCardError[aConnection.connPrefId] + length;
+				}
+				cardbookRepository.cardbookServerMultiGetResponse[aConnection.connPrefId]++;
+			}
+		};
+		let multiget = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.multiget");
+		let length = 0;
+		let entries = [];
+		aConnection.connUrl = cardbookRepository.cardbookOAuthData.GOOGLE.BATCH;
+		for (let id in cardbookRepository.cardbookServerMultiPutGoogleArray[aConnection.connPrefId]) {
+			entries.push(cardbookRepository.cardbookServerMultiPutGoogleArray[aConnection.connPrefId][id].entry);
+			length++;
+			if (length == multiget) {
+				let request = new cardbookWebDAV(aConnection, listener_putContacts, "", false);
+				cardbookRepository.cardbookServerMultiGetRequest[aConnection.connPrefId]++;
+				request.putContacts(entries);
+				entries = [];
+				length = 0;
+			}
+		}
+		if (length != 0) {
+			let request = new cardbookWebDAV(aConnection, listener_putContacts, "", false);
+			cardbookRepository.cardbookServerMultiGetRequest[aConnection.connPrefId]++;
+			request.putContacts(entries);
+		}
+		cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
+		cardbookRepository.cardbookUtils.formatStringForOutput("serverSendingPutLabels", [aConnection.connDescription]);
 	},
 
 	serverPutCardLabels: function(aConnection, aParams, aCardUid, aCardEtag, aGoogleEntry) {
@@ -952,7 +1207,7 @@ var cardbookSynchronizationGoogle = {
 		};
 		aConnection.connUrl = cardbookRepository.cardbookOAuthData.GOOGLE.CONTACT_URL + aConnection.connUser + "/full/" + aCardUid;
 		var request = new cardbookWebDAV(aConnection, listener_updateContact, aCardEtag);
-		var categoryContent = cardbookSynchronizationGoogle.updateEntryForServer(aConnection.connPrefId, aConnection.connUser, aParams.aNewCard, aGoogleEntry);
+		var categoryContent = cardbookSynchronizationGoogle.updateCatEntryForServer(aConnection.connPrefId, aConnection.connUser, aParams.aNewCard, aGoogleEntry, false);
 		cardbookRepository.cardbookUtils.formatStringForOutput("serverSendingPutCardLabels", [aConnection.connDescription, aParams.aNewCard.fn]);
 		request.put(categoryContent, "application/atom+xml; charset=UTF-8; type=feed");
 	},

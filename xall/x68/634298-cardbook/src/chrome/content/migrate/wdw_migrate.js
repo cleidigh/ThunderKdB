@@ -124,17 +124,17 @@ if ("undefined" == typeof(wdw_migrate)) {
 				
 				var PreferMailFormat = aABCard.getProperty("PreferMailFormat", "");
 				if (PreferMailFormat == "1") {
-					aCard.others.push(cardbookRepository.defaultEmailFormat + ":FALSE");
+					myCard.others.push(cardbookRepository.defaultEmailFormat + ":FALSE");
 				} else if (PreferMailFormat == "2") {
-					aCard.others.push(cardbookRepository.defaultEmailFormat + ":TRUE");
+					myCard.others.push(cardbookRepository.defaultEmailFormat + ":TRUE");
 				}
 
-				cardbookRepository.saveCard({}, myCard, "", true);
+				cardbookRepository.saveCardFromUpdate({}, myCard, "", true);
 
-				var email = aABCard.getProperty("PrimaryEmail", "");
-				var emailValue = aABCard.getProperty("PopularityIndex", "0");
+				var email = aABCard.getProperty("PrimaryEmail", "").toLowerCase();
+				var emailValue = parseInt(aABCard.getProperty("PopularityIndex", "0"));
 				if (email != "" && emailValue != "0" && emailValue != " ") {
-					cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
+					cardbookRepository.addMailPop(email, emailValue);
 				}
 
 				cardbookRepository.cardbookServerCardSyncDone[aDirPrefIdTarget]++;
@@ -213,7 +213,7 @@ if ("undefined" == typeof(wdw_migrate)) {
 
 							cardbookRepository.cardbookUtils.addMemberstoCard(myCard, myTargetMembers, "group");
 							
-							cardbookRepository.saveCard({}, myCard, "", true);
+							cardbookRepository.saveCardFromUpdate({}, myCard, "", true);
 							cardbookRepository.cardbookServerCardSyncDone[aDirPrefIdTarget]++;
 
 							wdw_migrate.allLists[listName].solved = true;
@@ -292,10 +292,9 @@ if ("undefined" == typeof(wdw_migrate)) {
 					break;
 				}
 			}
-			cardbookRepository.cardbookMailPopularity.writeMailPopularity();
 			cardbookRepository.cardbookPreferDisplayName.writePreferDisplayName();
 			cardbookRepository.writePossibleCustomFields();
-			cardbookRepository.cardbookDirResponse[aDirPrefIdTarget]++;
+			cardbookRepository.cardbookDBCardResponse[aDirPrefIdTarget]++;
 		}
 		
 	};

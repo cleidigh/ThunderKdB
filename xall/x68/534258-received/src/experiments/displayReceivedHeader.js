@@ -1,10 +1,9 @@
-/* global ChromeUtils:readonly */
+/* global ChromeUtils, Components */
 /* exported displayReceivedHeader */
 
 "use strict";
 
 const {ExtensionCommon} = ChromeUtils.import("resource://gre/modules/ExtensionCommon.jsm");
-const {ExtensionSupport} = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
 const {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 // eslint-disable-next-line no-var
@@ -20,37 +19,33 @@ var displayReceivedHeader = class extends ExtensionCommon.ExtensionAPI {
         context.callOnClose(this);
         return {
             displayReceivedHeader: {
-                init() {
-                    // Listen for the main Thunderbird windows opening.
-                    ExtensionSupport.registerWindowListener("displayReceivedHeaderListener", {
-                        chromeURLs: ["chrome://messenger/content/messenger.xhtml"],
-                        onLoadWindow(window) {
-                            const {document} = window;
-                            const expandedHeaders2 = document.getElementById("expandedHeaders2");
+                addHeadersToWindowById(windowId) {
+                    const window = Services.wm.getOuterWindowWithId(windowId);
+                    const {document} = window;
+                    const expandedHeaders2 = document.getElementById("expandedHeaders2");
 
-                            if (expandedHeaders2) {
-                                const element = document.createElement("tr");
-                                element.id = "expandedReceivedRow";
+                    if (expandedHeaders2) {
+                        const element = document.createElement("tr");
+                        element.hidden = true;
+                        element.id = "expandedReceivedRow";
 
-                                const headerRowTitle = document.createElement("th");
-                                const headerRowTitleLabel = document.createXULElement("label");
-                                headerRowTitleLabel.id = "expandedReceivedLabel";
-                                headerRowTitleLabel.classList.add("headerName");
-                                headerRowTitleLabel.value = "Received";
-                                headerRowTitleLabel.control = "receivedReceivedHeader";
-                                headerRowTitle.appendChild(headerRowTitleLabel);
+                        const headerRowTitle = document.createElement("th");
+                        const headerRowTitleLabel = document.createXULElement("label");
+                        headerRowTitleLabel.id = "expandedReceivedLabel";
+                        headerRowTitleLabel.classList.add("headerName");
+                        headerRowTitleLabel.value = "Received";
+                        headerRowTitleLabel.control = "receivedReceivedHeader";
+                        headerRowTitle.appendChild(headerRowTitleLabel);
 
-                                const headerRowValue = document.createElement("td");
-                                headerRowValue.id = "receivedReceivedHeader";
+                        const headerRowValue = document.createElement("td");
+                        headerRowValue.id = "receivedReceivedHeader";
 
-                                element.appendChild(headerRowTitle);
-                                element.appendChild(headerRowValue);
-                                expandedHeaders2.appendChild(element);
-                            } else {
-                                throw Error("Could not find the expandedHeaders2 element");
-                            }
-                        },
-                    });
+                        element.appendChild(headerRowTitle);
+                        element.appendChild(headerRowValue);
+                        expandedHeaders2.appendChild(element);
+                    } else {
+                        throw Error("Could not find the expandedHeaders2 element");
+                    }
                 },
                 setReceivedHeaderHidden(tabId, hidden) {
                     const document = getDocumentByTabId(tabId);
@@ -84,12 +79,13 @@ var displayReceivedHeader = class extends ExtensionCommon.ExtensionAPI {
 
     // eslint-disable-next-line class-methods-use-this
     close() {
-        for (const window of Services.wm.getEnumerator("mail:3pane")) {
-            const expandedReceivedRow = window.document.getElementById("expandedReceivedRow");
-            if (expandedReceivedRow) {
-                expandedReceivedRow.remove();
+        ["mail:3pane", "mail:messageWindow"].forEach((windowType) => {
+            for (const window of Services.wm.getEnumerator(windowType)) {
+                const expandedReceivedRow = window.document.getElementById("expandedReceivedRow");
+                if (expandedReceivedRow) {
+                    expandedReceivedRow.remove();
+                }
             }
-        }
-        ExtensionSupport.unregisterWindowListener("displayReceivedHeaderListener");
+        });
     }
 };

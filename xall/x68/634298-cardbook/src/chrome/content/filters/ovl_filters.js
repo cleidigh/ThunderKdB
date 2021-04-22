@@ -125,6 +125,9 @@ if ("undefined" == typeof(ovl_filters)) {
 		},
 
 		onLoad: function () {
+			if (cardbookRepository.filtersInitialized == true) {
+				return;
+			}
 			var searchFrom = {
 				id: "cardbook#searchFrom",
 				name: cardbookRepository.extension.localeData.localizeMessage("cardbook.searchFrom.name"),
@@ -452,6 +455,8 @@ if ("undefined" == typeof(ovl_filters)) {
 				}
 			};
 			MailServices.filters.addCustomAction(removeAll);
+			
+			cardbookRepository.filtersInitialized = true;
 		}
 	};
 };

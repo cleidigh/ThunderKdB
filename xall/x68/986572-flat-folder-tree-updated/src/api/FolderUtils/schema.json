@@ -1,0 +1,19 @@
+[
+  {
+    "namespace": "FolderUtils",
+    "functions": [
+      {
+        "name": "getParent",
+        "type": "function",
+        "async": true,
+        "description": "Returns a MailFolder for the folder's parent",
+        "parameters": [
+          {
+            "name": "folder",
+            "$ref": "folders.MailFolder"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -90,23 +90,31 @@
   },
   
   "special-offer-head" : {
-    "message": "12 år av QuickFolders - Special påskförsäljning!"
+    "message": "Gör QuickFolders framtida bevis!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Kära {name} {boldEnd}, om du inte har någon licens ännu, kan du överväga att stödja QuickFolders för framtiden. Fler stora förändringar på Thunderbird kommer och jag behöver {boldStart} din hjälp {boldEnd} för att fortsätta!"
+  } ,
+  
   "special-offer-content" : {
-    "message": "Nu är det bästa tillfället att få en licens eftersom det finns en {boldStart} 50% rabatt {boldEnd} på priset på en QuickFolders Pro-licens för att fira 12 år av QuickFolders! Detta specialerbjudande kommer att finnas tillgängligt fram till {boldStart} 31 mars {boldEnd}."
+    "message": "Gör QuickFolders framtidssäkra och hämta en licens medan det finns en {boldStart} 40% rabatt {boldEnd} på priset på QuickFolders Pro! Detta specialerbjudande kommer att finnas tillgängligt fram till {boldStart} 1 maj {boldEnd}."
   },
   
   "whats-new-intro" : {
-    "message": "Läs om vad som är nytt sedan introduktionen av Thunderbird 78 här:" 
+    "message": "Läs den detaljerade ändringsloggen här (endast engelska):" 
   },
   
   "whats-new-btn" : {
     "message": "Vad är nytt?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Höjdpunkter"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro har nu avancerade sökinställningar som tyst flyttning och exkluderar konton efter eget val eller begränsar resultat inom ett konto och förbättrade funktioner för flyttning och kopiering av mappar. Jag reparerade också fler funktioner för att förbli kompatibla med Thunderbird 87 och högre."
+    "message" : "Denna version utökar quickMove-funktionen ytterligare genom följande funktioner: {L1} Flik för enstaka meddelanden: alternativ för att automatiskt öppna nästa e-post på samma flik efter att ett meddelande har flyttats {L2} {L1} Alternativ för att helt avbryta quickMove (och tömma listan över meddelanden) med ett enda tryck på ESCAPE. {L2} {L1} Avancerad matchning av överordnade mappar genom att läsa från _ och mellanslag och behandla dem som början på ett sökt namn. {L2} {L1} Reparerad: söka i mappar medan du tittar på meddelanden som visas i sökresultat eller från konversationer i flera mappar. {L2} {L1} Dessa och ytterligare funktioner för att begränsa sökresultat från vissa konton kan konfigureras via Avancerade sökinställningar på fliken QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 
@@ -117,16 +125,6 @@
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "Vi har redan spenderat betydande resurser (över $hoursSpent$ timmar) på konverteringsprojektet - och det finns mycket mer arbete med att fixa regressioner och problem som orsakas av förändringar i Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -170,7 +168,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "De nödvändiga ändringarna för att byta till den nya arvslösa modellen (mailexperiment) tog redan flera veckor och pågår fortfarande, medan vissa funktioner kan påverkas. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta."
+    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

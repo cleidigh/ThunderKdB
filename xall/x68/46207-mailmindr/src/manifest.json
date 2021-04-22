@@ -6,21 +6,74 @@
     "applications": {
         "gecko": {
             "id": "mailmindr@arndissler.net",
-            "strict_min_version": "68.0"
+            "strict_min_version": "78.0"
         }
     },
     "author": "Arnd Issler",
     "homepage_url": "https://mailmindr.net/",
-    "version": "0.9.4",
+    "version": "1.0.0",
     "icons": {
-        "32": "chrome/content/images/32x32/mailmindr.png"
+        "32": "images/mailmindr.png"
     },
-    "legacy": {
-        "type": "bootstrap",
-        "options": {
-            "page": "chrome://mailmindr/content/preferences/preferences.xul",
-            "open_in_tab": true
+    "permissions": [
+        "accountsRead",
+        "menus",
+        "messagesModify",
+        "messagesMove",
+        "messagesRead",
+        "storage"
+    ],
+    "browser_action": {
+        "browser_style": true,
+        "default_title": "Follow-Ups",
+        "default_popup": "views/popups/list-all/index.html",
+        "default_icon": "images/mailmindr-envelope-plus-icon.svg"
+    },
+    "message_display_action": {
+        "default_title": "Follow-Up",
+        "default_icon": "images/mailmindr-envelope-plus-icon.svg"
+    },
+    "background": {
+        "page": "scripts/mailmindr-background.html",
+        "persistent": true
+    },
+    "options_ui": {
+        "page": "views/options/index.html",
+        "open_in_tab": true,
+        "browser_style": true
+    },
+    "commands": {
+        "mailmindr_set_follow_up": {
+            "suggested_key": {
+                "windows": "Alt+Shift+1",
+                "mac": "Command+Shift+1",
+                "chromeos": "Ctrl+Shift+1",
+                "linux": "Ctrl+Shift+1"
+            }
+        },
+        "mailmindr_open_list": {
+            "suggested_key": {
+                "windows": "Alt+Shift+0",
+                "mac": "Command+Shift+0",
+                "chromeos": "Ctrl+Shift+0",
+                "linux": "Ctrl+Shift+0"
+            }
         }
     },
-    "permissions": ["storage"]
+    "experiment_apis": {
+        "mailmindrMessagesApi": {
+            "schema": "schema.json",
+            "parent": {
+                "scopes": [
+                    "addon_parent"
+                ],
+                "paths": [
+                    [
+                        "mailmindrMessagesApi"
+                    ]
+                ],
+                "script": "api/messages.js"
+            }
+        }
+    }
 }

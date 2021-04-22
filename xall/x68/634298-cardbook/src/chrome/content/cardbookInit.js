@@ -34,8 +34,8 @@ var cardbookInit = {
 		prefs.setCharPref("initialSyncDelay", "0");
 		prefs.setCharPref("solveConflicts", "User");
 		prefs.setCharPref("discoveryAccountsNameList", "");
-		prefs.setCharPref("multiget", "40");
-		prefs.setCharPref("maxModifsPushed", "40");
+		prefs.setCharPref("multiget", "100");
+		prefs.setCharPref("maxModifsPushed", "100");
 		prefs.setBoolPref("decodeReport", true);
 		
 		prefs.setBoolPref("preferEmailPref", true);
@@ -102,7 +102,7 @@ var cardbookInit = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "57.3");
+		prefs.setCharPref("addonVersion", "58.3");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);

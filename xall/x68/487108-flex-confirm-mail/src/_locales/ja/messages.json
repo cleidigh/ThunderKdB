@@ -67,7 +67,9 @@
 
   "config_confirmationMode_caption": { "message": "送信前の宛先確認:" },
   "config_confirmationMode_always_label": { "message": "常に確認" },
-  "config_confirmationMode_onModified_label": { "message": "宛先が変更された時だけ確認" },
+  "config_confirmationMode_onModified_label": { "message": "誤送信の危険性がある場合だけ確認" },
+  "config_confirmationMode_onModified_description_before": { "message": "宛先が変更された時、異なる宛先を含むメールからテキストをコピー＆ペーストした時、および" },
+  "config_confirmationMode_onModified_description_after": { "message": "文字より長い文字列をペーストした時に確認します。" },
   "config_confirmationMode_never_label": { "message": "確認しない" },
 
   "config_internalDomains_caption": { "message": "組織内として扱うメールアドレスのドメイン名" },
@@ -88,7 +90,9 @@
   "config_attentionDomains_input_placeholder": { "message": "ドメイン名を1行ずつ入力（例：example.com）" },
   "config_attentionDomainsFile_label": { "message": "ファイル形式のリストを使用" },
   "config_attentionDomainsFile_button_label": { "message": "参照..." },
-  "config_attentionDomainsFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\FileServer\\Shared\\domains.txt）" },
+  "config_attentionDomainsFile_button_dialogTitle": { "message": "特別に注意が必要な外部ドメインのリストを選択" },
+  "config_attentionDomainsFile_button_dialogDisplayName": { "message": "リストファイル" },
+  "config_attentionDomainsFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\\\FileServer\\Shared\\domains.txt）" },
 
   "config_attentionDomainsHighlightMode_caption": { "message": "これらのドメインに該当する宛先の強調表示" },
   "config_attentionDomainsHighlightMode_always_label": { "message": "常に強調表示" },
@@ -111,14 +115,18 @@
   "config_attentionSuffixes_input_placeholder": { "message": "ファイルの拡張子を1行ずつ入力（例：.exe、.pdf）" },
   "config_attentionSuffixesFile_label": { "message": "ファイル形式のリストを使用" },
   "config_attentionSuffixesFile_button_label": { "message": "参照..." },
-  "config_attentionSuffixesFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\FileServer\\Shared\\suffixes.txt）" },
+  "config_attentionSuffixesFile_button_dialogTitle": { "message": "添付ファイル名に含まれていた場合に再度警告する拡張子のリストを選択" },
+  "config_attentionSuffixesFile_button_dialogDisplayName": { "message": "リストファイル" },
+  "config_attentionSuffixesFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\\\FileServer\\Shared\\suffixes.txt）" },
 
   "config_attentionTermsConfirm_label": { "message": "これらの語句を名前の一部に持つファイルが外部ドメイン宛のメールに添付されている場合は再度警告する" },
   "config_attentionTerms_label": { "message": "手動編集のリストを使用" },
   "config_attentionTerms_input_placeholder": { "message": "語句を1行ずつ入力（例：危険、社外秘）" },
   "config_attentionTermsFile_label": { "message": "ファイル形式のリストを使用" },
   "config_attentionTermsFile_button_label": { "message": "参照..." },
-  "config_attentionTermsFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\FileServer\\Shared\\phrases.txt）" },
+  "config_attentionTermsFile_button_dialogTitle": { "message": "添付ファイル名に含まれていた場合に再度警告する語句のリストを選択" },
+  "config_attentionTermsFile_button_dialogDisplayName": { "message": "リストファイル" },
+  "config_attentionTermsFile_input_placeholder": { "message": "ファイルのパスを入力（例：\\\\FileServer\\Shared\\phrases.txt）" },
 
   "config_requireReinputAttachmentNames_label": { "message": "宛先に外部ドメインのアドレスがある場合、添付ファイル名の手動での入力を求める" },
   "config_allowCheckAllAttachments_label": { "message": "添付ファイルのチェックボックスの一括制御を許可" },

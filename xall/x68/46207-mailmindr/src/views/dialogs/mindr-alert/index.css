@@ -1,0 +1,128 @@
+@import url('../../mailmindr-core.css');
+
+* {
+    user-select: none;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(180deg, #2774c2, #2f96f5);
+    padding: 4px 8px;
+}
+
+header * {
+    color: whitesmoke;
+}
+
+main {
+    overflow: auto;
+    height: 100%;
+}
+
+footer {
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+.mailmindr-three-pane {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.mailmindr-alert-list-item {
+    font-size: 14px;
+    display: grid;
+    grid-template-areas:
+        'ico subject'
+        'ico author'
+        'ico due';
+    grid-template-columns: 50px auto;
+    grid-template-rows: 21px 19px 19px;
+    cursor: default;
+}
+
+.mailmindr-alert-list-item--overdue > .mailmindr-alert-list-item-due {
+    color: rgb(192, 1, 1);
+}
+
+.mailmindr-alert-list-item-icon {
+    grid-area: ico;
+}
+
+.mailmindr-alert-list-item-author {
+    grid-area: author;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.mailmindr-alert-list-item-subject {
+    grid-area: subject;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.mailmindr-alert-list-item-due {
+    font-size: 12px;
+    grid-area: due;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.mailmindr-alert-list {
+    width: 100%;
+}
+
+.mailmindr-alert-list .mailmindr-alert-list-item {
+    font-size: 12px;
+    display: grid;
+    grid-template-areas: 'ico subject due';
+    grid-template-columns: 50px auto 75px;
+    grid-template-rows: unset;
+    padding: 4px 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.mailmindr-alert-list .mailmindr-alert-list-item:hover {
+    background-color: whitesmoke;
+}
+
+.mailmindr-alert-list .mailmindr-alert-list-item--selected {
+    outline: 1px dotted black;
+    border-bottom: 1px solid transparent;
+    background-color: #ddd;
+}
+
+.mailmindr-alert-list
+    .mailmindr-alert-list-item
+    .mailmindr-alert-list-item-author {
+    display: none;
+}
+
+header .mailmindr-alert-list-item-due,
+header .mailmindr-alert-list-item-author {
+    font-weight: 350;
+}
+
+button {
+    font-size: 12px;
+    height: unset;
+    min-height: 21px;
+}

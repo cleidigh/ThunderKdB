@@ -6,3 +6,15 @@
 'use strict';
 
 browser.runtime.sendMessage({ type: 'compose-started' });
+
+function onCopy(_event) {
+  browser.runtime.sendMessage({ type: 'compose-something-copied' });
+}
+
+function onPaste(event) {
+  browser.runtime.sendMessage({ type: 'compose-something-pasted' });
+}
+
+document.addEventListener('copy', onCopy);
+document.addEventListener('cut', onCopy);
+document.addEventListener('paste', onPaste);

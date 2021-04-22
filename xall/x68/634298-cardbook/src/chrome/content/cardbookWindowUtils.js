@@ -259,7 +259,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					var myTopic = "cardCreated";
 				}
 				var myActionId = cardbookActions.startAction(myTopic, [aOutCard.fn]);
-				cardbookRepository.saveCard(aOrigCard, aOutCard, myActionId, true);
+				cardbookRepository.saveCardFromUpdate(aOrigCard, aOutCard, myActionId, true);
 				cardbookActions.endAction(myActionId);
 			}
 			catch (e) {
@@ -820,7 +820,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			}
 
 			var myRemainingOthers = [];
-			myRemainingOthers = cardbookWindowUtils.constructCustom(aReadOnly, 'pers', aCard.others);
+			myRemainingOthers = cardbookWindowUtils.constructCustom(aReadOnly, 'personal', aCard.others);
 			
 			cardbookWindowUtils.constructOrg(aReadOnly, aCard.org, aCard.title, aCard.role);
 			myRemainingOthers = cardbookWindowUtils.constructCustom(aReadOnly, 'org', myRemainingOthers);
@@ -927,11 +927,11 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			
 			// need to remove the Custom from Pers
 			// for the Org, everything is cleared out
-			var aListRows = document.getElementById('persRows');
+			var aListRows = document.getElementById('personalRows');
 			var j = aListRows.childNodes.length;
 			for (var i = 0; i < j; i++) {
-				if (document.getElementById('customField' + i + 'persRow')) {
-					aListRows.removeChild(document.getElementById('customField' + i + 'persRow'));
+				if (document.getElementById('customField' + i + 'personalRow')) {
+					aListRows.removeChild(document.getElementById('customField' + i + 'personalRow'));
 				}
 			}
 
@@ -2199,7 +2199,10 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				cardbookElementTools.addCaptionWithLabel(null, aOrigBox, " ");
 				cardbookElementTools.addCaptionWithLabel(null, aOrigBox, email);
 				let aRow = cardbookElementTools.addGridRow(aOrigBox, 'mailPopularity_' + i + '_row', {align: 'center', flex: '1', class: 'indent'});
-				let mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[email] || "0";
+				let mailPopularityValue = 0;
+				if (cardbookRepository.cardbookMailPopularityIndex[email.toLowerCase()]) {
+					mailPopularityValue = cardbookRepository.cardbookMailPopularityIndex[email.toLowerCase()].count;
+				}
 				if (aReadOnly) {
 					cardbookElementTools.addLabel(aRow, 'pop_' + i + '_Textbox', popLabel, null, {readonly: 'true'});
 					cardbookElementTools.addLabel(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, null, {readonly: 'true'});

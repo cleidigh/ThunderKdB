@@ -1,11 +1,7 @@
-/*
- * AuthVerifier.mjs.js
- *
+/**
  * Authentication Verifier.
  *
- * Version: 2.0.0pre1 (04 April 2020)
- *
- * Copyright (c) 2014-2020 Philippe Lieser
+ * Copyright (c) 2014-2021 Philippe Lieser
  *
  * This software is licensed under the terms of the MIT License.
  *
@@ -14,7 +10,7 @@
  */
 
 // @ts-check
-///<reference path="./AuthVerifier.d.ts" />
+///<reference path="./authVerifier.d.ts" />
 ///<reference path="../WebExtensions.d.ts" />
 ///<reference path="../experiments/storageMessage.d.ts" />
 /* eslint-env webextensions */
@@ -26,8 +22,9 @@ export const moduleVersion = "2.0.0";
 
 import ArhParser, * as ArhParserModule from "./arhParser.mjs.js";
 import Verifier, * as VerifierModule from "./dkim/verifier.mjs.js";
-import { domainIsInDomain, getDomainFromAddr } from "./utils.mjs.js";
+import { addrIsInDomain2, domainIsInDomain, getDomainFromAddr } from "./utils.mjs.js";
 import { DKIM_InternalError } from "./error.mjs.js";
+import DMARC from "./dkim/dmarc.mjs.js";
 import ExtensionUtils from "./extensionUtils.mjs.js";
 import Logging from "./logging.mjs.js";
 import MsgParser from "./msgParser.mjs.js";
@@ -42,9 +39,9 @@ const log = Logging.getLogger("AuthVerifier");
  * @property {String} version
  *           result version ("2.1")
  * @property {AuthResultDKIM[]} dkim
- * @property {ArhParserModule.ArhResInfo[]=} [spf]
- * @property {ArhParserModule.ArhResInfo[]=} [dmarc]
- * @property {{dkim?: AuthResultDKIM[]}=} [arh]
+ * @property {ArhParserModule.ArhResInfo[]} [spf]
+ * @property {ArhParserModule.ArhResInfo[]} [dmarc]
+ * @property {{dkim?: AuthResultDKIM[]}} [arh]
  *           added in version 2.1
  */
 /**
@@ -56,9 +53,9 @@ const log = Logging.getLogger("AuthVerifier");
  * @property {String} version
  *           result version ("3.0")
  * @property {VerifierModule.dkimSigResultV2[]} dkim
- * @property {ArhParserModule.ArhResInfo[]=} [spf]
- * @property {ArhParserModule.ArhResInfo[]=} [dmarc]
- * @property {{dkim?: VerifierModule.dkimSigResultV2[]}=} [arh]
+ * @property {ArhParserModule.ArhResInfo[]} [spf]
+ * @property {ArhParserModule.ArhResInfo[]} [dmarc]
+ * @property {{dkim?: VerifierModule.dkimSigResultV2[]}} [arh]
  */
 /**
  * @typedef {SavedAuthResultV3} SavedAuthResult
@@ -75,9 +72,9 @@ const log = Logging.getLogger("AuthVerifier");
  *           40: no sig
  * @property {String} result_str
  *           localized result string
- * @property {String[]=} [warnings_str]
+ * @property {String[]} [warnings_str]
  *           localized warnings
- * @property {String=} [favicon]
+ * @property {String} [favicon]
  *           url to the favicon of the sdid
  */
 /**
@@ -85,6 +82,17 @@ const log = Logging.getLogger("AuthVerifier");
  */
 
 export default class AuthVerifier {
+	/**
+	 * @param {Verifier} [dkimVerifier]
+	 * @param {DMARC} [dmarc]
+	 */
+	constructor(dkimVerifier, dmarc) {
+		/** @private */
+		this._dkimVerifier = dkimVerifier ?? new Verifier();
+		/** @private */
+		this._dmarc = dmarc ?? new DMARC();
+	}
+
 	static get DKIM_RES() {
 		return {
 			SUCCESS: 10,
@@ -120,15 +128,15 @@ export default class AuthVerifier {
 			headerFields: msgParsed.headers,
 			bodyPlain: msgParsed.body,
 			from: MsgParser.parseFromHeader(fromHeader[0]),
-			listId: "",
 		};
-		const listId = msgParsed.headers.get("list-id");
-		if (listId) {
-			msg.listId = MsgParser.parseListIdHeader(listId[0]);
+		const listIdHeader = msgParsed.headers.get("list-id");
+		let listId = "";
+		if (listIdHeader) {
+			listId = MsgParser.parseListIdHeader(listIdHeader[0]);
 		}
 
 		// read Authentication-Results header
-		const arhResult = await getARHResult(message, msg.headerFields, msg.from, msg.listId, message.folder.accountId);
+		const arhResult = await getARHResult(message, msg.headerFields, msg.from, listId, message.folder.accountId, this._dmarc);
 
 		if (arhResult) {
 			if (prefs["arh.replaceAddonResult"]) {
@@ -154,10 +162,10 @@ export default class AuthVerifier {
 		if (!savedAuthResult.dkim || savedAuthResult.dkim.length === 0) {
 			if (prefs["account.dkim.enable"](message.folder.accountId)) {
 				// verify DKIM signatures
-				const dkimResultV2 = await new Verifier().verify(msg);
+				const dkimResultV2 = await this._dkimVerifier.verify(msg);
 
-				await checkSignRules(message, dkimResultV2.signatures, msg.from, msg.listId);
-				VerifierModule.sortSignatures(dkimResultV2.signatures, msg.from, msg.listId);
+				await checkSignRules(message, dkimResultV2.signatures, msg.from, listId, this._dmarc);
+				sortSignatures(dkimResultV2.signatures, msg.from, listId);
 
 				savedAuthResult.dkim = dkimResultV2.signatures;
 			} else {
@@ -177,15 +185,11 @@ export default class AuthVerifier {
 	/**
 	 * Resets the stored authentication result of the msg.
 	 *
-	 * @param {any} messageId
+	 * @param {browser.messageDisplay.MessageHeader} message
 	 * @return {Promise<void>}
 	 */
-	resetResult(messageId) {
-		const promise = saveAuthResult(messageId, null);
-		promise.then(null, function onReject(exception) {
-			log.warn(exception);
-		});
-		return saveAuthResult(messageId, null);
+	static resetResult(message) {
+		return saveAuthResult(message, null);
 	}
 }
 
@@ -197,9 +201,10 @@ export default class AuthVerifier {
  * @param {string} from
  * @param {string} listId
  * @param {string} account
+ * @param {DMARC} dmarc
  * @return {Promise<SavedAuthResult|Null>}
  */
-async function getARHResult(message, headers, from, listId, account) {
+async function getARHResult(message, headers, from, listId, account, dmarc) {
 	const arHeaders = headers.get("authentication-results");
 	if (!arHeaders || !prefs["account.arh.read"](account)) {
 		return null;
@@ -256,11 +261,11 @@ async function getARHResult(message, headers, from, listId, account) {
 	// if ARH result is replacing the add-ons,
 	// check SDID and AUID of DKIM results
 	if (prefs["arh.replaceAddonResult"]) {
-		await checkSignRules(message, dkimSigResults, from, listId);
+		await checkSignRules(message, dkimSigResults, from, listId, dmarc);
 	}
 
 	// sort signatures
-	VerifierModule.sortSignatures(dkimSigResults, from);
+	sortSignatures(dkimSigResults, from);
 
 	const savedAuthResult = {
 		version: "3.0",
@@ -268,6 +273,7 @@ async function getARHResult(message, headers, from, listId, account) {
 		spf: arhSPF,
 		dmarc: arhDMARC,
 	};
+	log.debug("ARH result:", savedAuthResult);
 	return savedAuthResult;
 }
 
@@ -377,10 +383,10 @@ async function loadAuthResult(message) {
  * @param {VerifierModule.dkimSigResultV2[]} dkimResults
  * @param {string} from
  * @param {string} listId
- * returns {Promise<VerifierModule.dkimSigResultV2[]>}
+ * @param {DMARC} dmarc
  * @returns {Promise<void>}
  */
-async function checkSignRules(message, dkimResults, from, listId) {
+async function checkSignRules(message, dkimResults, from, listId, dmarc) {
 	if (!prefs["policy.signRules.enable"]) {
 		return;
 	}
@@ -388,11 +394,124 @@ async function checkSignRules(message, dkimResults, from, listId) {
 	const isOutgoingCallback = () => {
 		return ExtensionUtils.isOutgoing(message, from);
 	};
+	const dmarcToUse = prefs["policy.DMARC.shouldBeSigned.enable"] ? dmarc : undefined;
 
 	for (let i = 0; i < dkimResults.length; i++) {
 		// eslint-disable-next-line require-atomic-updates
-		dkimResults[i] = await SignRules.check(dkimResults[i], from, listId, isOutgoingCallback);
+		dkimResults[i] = await SignRules.check(dkimResults[i], from, listId, isOutgoingCallback, dmarcToUse);
 	}
+}
+
+/**
+ * Sort the given DKIM signatures.
+ *
+ * @param {VerifierModule.dkimSigResultV2[]} signatures
+ * @param {string} from
+ * @param {string} [listId]
+ * @return {void}
+ */
+function sortSignatures(signatures, from, listId) {
+	/**
+	 * @param {VerifierModule.dkimSigResultV2} sig1
+	 * @param {VerifierModule.dkimSigResultV2} sig2
+	 * @returns {number}
+	 */
+	function result_compare(sig1, sig2) {
+		if (sig1.result === sig2.result) {
+			return 0;
+		}
+
+		if (sig1.result === "SUCCESS") {
+			return -1;
+		} else if (sig2.result === "SUCCESS") {
+			return 1;
+		}
+
+		if (sig1.result === "TEMPFAIL") {
+			return -1;
+		} else if (sig2.result === "TEMPFAIL") {
+			return 1;
+		}
+
+		if (sig1.result === "PERMFAIL") {
+			return -1;
+		} else if (sig2.result === "PERMFAIL") {
+			return 1;
+		}
+
+		throw new DKIM_InternalError(`result_compare: sig1.result: ${sig1.result}; sig2.result: ${sig2.result}`);
+	}
+
+	/**
+	 * @param {VerifierModule.dkimSigResultV2} sig1
+	 * @param {VerifierModule.dkimSigResultV2} sig2
+	 * @returns {number}
+	 */
+	function warnings_compare(sig1, sig2) {
+		if (sig1.result !== "SUCCESS") {
+			return 0;
+		}
+		if (!sig1.warnings || sig1.warnings.length === 0) {
+			// sig1 has no warnings
+			if (!sig2.warnings || sig2.warnings.length === 0) {
+				// both signatures have no warnings
+				return 0;
+			}
+			// sig2 has warnings
+			return -1;
+		}
+		// sig1 has warnings
+		if (!sig2.warnings || sig2.warnings.length === 0) {
+			// sig2 has no warnings
+			return 1;
+		}
+		// both signatures have warnings
+		return 0;
+	}
+
+	/**
+	 * @param {VerifierModule.dkimSigResultV2} sig1
+	 * @param {VerifierModule.dkimSigResultV2} sig2
+	 * @returns {number}
+	 */
+	function sdid_compare(sig1, sig2) {
+		if (sig1.sdid === sig2.sdid) {
+			return 0;
+		}
+
+		if (sig1.sdid && addrIsInDomain2(from, sig1.sdid)) {
+			return -1;
+		} else if (sig2.sdid && addrIsInDomain2(from, sig2.sdid)) {
+			return 1;
+		}
+
+		if (listId) {
+			if (sig1.sdid && domainIsInDomain(listId, sig1.sdid)) {
+				return -1;
+			} else if (sig2.sdid && domainIsInDomain(listId, sig2.sdid)) {
+				return 1;
+			}
+		}
+
+		return 0;
+	}
+
+	signatures.sort(function (sig1, sig2) {
+		let cmp;
+		cmp = result_compare(sig1, sig2);
+		if (cmp !== 0) {
+			return cmp;
+		}
+		cmp = warnings_compare(sig1, sig2);
+		if (cmp !== 0) {
+			return cmp;
+		}
+		cmp = sdid_compare(sig1, sig2);
+		if (cmp !== 0) {
+			return cmp;
+		}
+		return -1;
+	});
 }
 
 /**
@@ -528,86 +647,86 @@ function dkimSigResultV2_to_AuthResultDKIM(dkimSigResult) { // eslint-disable-li
 				authResultDKIM.res_num = 30;
 			}
 			let errorType = dkimSigResult.errorType;
-			if (!errorType) {
-				throw new Error("expected errorType on PERMFAIL result");
-			}
-			if (!prefs["error.detailedReasons"]) {
-				switch (errorType) {
-					case "DKIM_SIGERROR_ILLFORMED_TAGSPEC":
-					case "DKIM_SIGERROR_DUPLICATE_TAG":
-					case "DKIM_SIGERROR_MISSING_V":
-					case "DKIM_SIGERROR_ILLFORMED_V":
-					case "DKIM_SIGERROR_MISSING_A":
-					case "DKIM_SIGERROR_ILLFORMED_A":
-					case "DKIM_SIGERROR_MISSING_B":
-					case "DKIM_SIGERROR_ILLFORMED_B":
-					case "DKIM_SIGERROR_MISSING_BH":
-					case "DKIM_SIGERROR_ILLFORMED_BH":
-					case "DKIM_SIGERROR_ILLFORMED_C":
-					case "DKIM_SIGERROR_MISSING_D":
-					case "DKIM_SIGERROR_ILLFORMED_D":
-					case "DKIM_SIGERROR_MISSING_H":
-					case "DKIM_SIGERROR_ILLFORMED_H":
-					case "DKIM_SIGERROR_SUBDOMAIN_I":
-					case "DKIM_SIGERROR_DOMAIN_I":
-					case "DKIM_SIGERROR_ILLFORMED_I":
-					case "DKIM_SIGERROR_ILLFORMED_L":
-					case "DKIM_SIGERROR_ILLFORMED_Q":
-					case "DKIM_SIGERROR_MISSING_S":
-					case "DKIM_SIGERROR_ILLFORMED_S":
-					case "DKIM_SIGERROR_ILLFORMED_T":
-					case "DKIM_SIGERROR_TIMESTAMPS":
-					case "DKIM_SIGERROR_ILLFORMED_X":
-					case "DKIM_SIGERROR_ILLFORMED_Z":
-						errorType = "DKIM_SIGERROR_ILLFORMED";
-						break;
-					case "DKIM_SIGERROR_VERSION":
-					case "DKIM_SIGERROR_UNKNOWN_A":
-					case "DKIM_SIGERROR_UNKNOWN_C_H":
-					case "DKIM_SIGERROR_UNKNOWN_C_B":
-					case "DKIM_SIGERROR_UNKNOWN_Q":
-						errorType = "DKIM_SIGERROR_UNSUPPORTED";
-						break;
-					case "DKIM_SIGERROR_KEY_ILLFORMED_TAGSPEC":
-					case "DKIM_SIGERROR_KEY_DUPLICATE_TAG":
-					case "DKIM_SIGERROR_KEY_ILLFORMED_V":
-					case "DKIM_SIGERROR_KEY_ILLFORMED_H":
-					case "DKIM_SIGERROR_KEY_ILLFORMED_K":
-					case "DKIM_SIGERROR_KEY_ILLFORMED_N":
-					case "DKIM_SIGERROR_KEY_MISSING_P":
-					case "DKIM_SIGERROR_KEY_ILLFORMED_P":
-					case "DKIM_SIGERROR_KEY_ILLFORMED_S":
-					case "DKIM_SIGERROR_KEY_ILLFORMED_T":
-						errorType = "DKIM_SIGERROR_KEY_ILLFORMED";
-						break;
-					case "DKIM_SIGERROR_KEY_INVALID_V":
-					case "DKIM_SIGERROR_KEY_HASHNOTINCLUDED":
-					case "DKIM_SIGERROR_KEY_UNKNOWN_K":
-					case "DKIM_SIGERROR_KEY_HASHMISMATCH":
-					case "DKIM_SIGERROR_KEY_NOTEMAILKEY":
-					case "DKIM_SIGERROR_KEYDECODE":
-						errorType = "DKIM_SIGERROR_KEY_INVALID";
-						break;
-					case "DKIM_SIGERROR_BADSIG":
-					case "DKIM_SIGERROR_CORRUPT_BH":
-					case "DKIM_SIGERROR_MISSING_FROM":
-					case "DKIM_SIGERROR_TOOLARGE_L":
-					case "DKIM_SIGERROR_NOKEY":
-					case "DKIM_SIGERROR_KEY_REVOKED":
-					case "DKIM_SIGERROR_KEY_TESTMODE":
-					case "DKIM_POLICYERROR_MISSING_SIG":
-					case "DKIM_POLICYERROR_KEYMISMATCH":
-					case "DKIM_POLICYERROR_KEY_INSECURE":
-					case "DKIM_POLICYERROR_WRONG_SDID":
-						break;
-					default:
-						log.warn(`unknown errorType: ${errorType}`);
+			let errorMsg;
+			if (errorType) {
+				if (!prefs["error.detailedReasons"]) {
+					switch (errorType) {
+						case "DKIM_SIGERROR_ILLFORMED_TAGSPEC":
+						case "DKIM_SIGERROR_DUPLICATE_TAG":
+						case "DKIM_SIGERROR_MISSING_V":
+						case "DKIM_SIGERROR_ILLFORMED_V":
+						case "DKIM_SIGERROR_MISSING_A":
+						case "DKIM_SIGERROR_ILLFORMED_A":
+						case "DKIM_SIGERROR_MISSING_B":
+						case "DKIM_SIGERROR_ILLFORMED_B":
+						case "DKIM_SIGERROR_MISSING_BH":
+						case "DKIM_SIGERROR_ILLFORMED_BH":
+						case "DKIM_SIGERROR_ILLFORMED_C":
+						case "DKIM_SIGERROR_MISSING_D":
+						case "DKIM_SIGERROR_ILLFORMED_D":
+						case "DKIM_SIGERROR_MISSING_H":
+						case "DKIM_SIGERROR_ILLFORMED_H":
+						case "DKIM_SIGERROR_SUBDOMAIN_I":
+						case "DKIM_SIGERROR_DOMAIN_I":
+						case "DKIM_SIGERROR_ILLFORMED_I":
+						case "DKIM_SIGERROR_ILLFORMED_L":
+						case "DKIM_SIGERROR_ILLFORMED_Q":
+						case "DKIM_SIGERROR_MISSING_S":
+						case "DKIM_SIGERROR_ILLFORMED_S":
+						case "DKIM_SIGERROR_ILLFORMED_T":
+						case "DKIM_SIGERROR_TIMESTAMPS":
+						case "DKIM_SIGERROR_ILLFORMED_X":
+						case "DKIM_SIGERROR_ILLFORMED_Z":
+							errorType = "DKIM_SIGERROR_ILLFORMED";
+							break;
+						case "DKIM_SIGERROR_VERSION":
+						case "DKIM_SIGERROR_UNKNOWN_A":
+						case "DKIM_SIGERROR_UNKNOWN_C_H":
+						case "DKIM_SIGERROR_UNKNOWN_C_B":
+						case "DKIM_SIGERROR_UNKNOWN_Q":
+							errorType = "DKIM_SIGERROR_UNSUPPORTED";
+							break;
+						case "DKIM_SIGERROR_KEY_ILLFORMED_TAGSPEC":
+						case "DKIM_SIGERROR_KEY_DUPLICATE_TAG":
+						case "DKIM_SIGERROR_KEY_ILLFORMED_V":
+						case "DKIM_SIGERROR_KEY_ILLFORMED_H":
+						case "DKIM_SIGERROR_KEY_ILLFORMED_K":
+						case "DKIM_SIGERROR_KEY_ILLFORMED_N":
+						case "DKIM_SIGERROR_KEY_MISSING_P":
+						case "DKIM_SIGERROR_KEY_ILLFORMED_P":
+						case "DKIM_SIGERROR_KEY_ILLFORMED_S":
+						case "DKIM_SIGERROR_KEY_ILLFORMED_T":
+							errorType = "DKIM_SIGERROR_KEY_ILLFORMED";
+							break;
+						case "DKIM_SIGERROR_KEY_INVALID_V":
+						case "DKIM_SIGERROR_KEY_HASHNOTINCLUDED":
+						case "DKIM_SIGERROR_KEY_UNKNOWN_K":
+						case "DKIM_SIGERROR_KEY_HASHMISMATCH":
+						case "DKIM_SIGERROR_KEY_NOTEMAILKEY":
+						case "DKIM_SIGERROR_KEYDECODE":
+							errorType = "DKIM_SIGERROR_KEY_INVALID";
+							break;
+						case "DKIM_SIGERROR_BADSIG":
+						case "DKIM_SIGERROR_CORRUPT_BH":
+						case "DKIM_SIGERROR_MISSING_FROM":
+						case "DKIM_SIGERROR_TOOLARGE_L":
+						case "DKIM_SIGERROR_NOKEY":
+						case "DKIM_SIGERROR_KEY_REVOKED":
+						case "DKIM_SIGERROR_KEY_TESTMODE":
+						case "DKIM_POLICYERROR_MISSING_SIG":
+						case "DKIM_POLICYERROR_KEYMISMATCH":
+						case "DKIM_POLICYERROR_KEY_INSECURE":
+						case "DKIM_POLICYERROR_WRONG_SDID":
+							break;
+						default:
+							log.warn(`unknown errorType: ${errorType}`);
+					}
 				}
+				errorMsg =
+					browser.i18n.getMessage(errorType,
+						dkimSigResult.errorStrParams) ||
+					errorType;
 			}
-			const errorMsg =
-				browser.i18n.getMessage(errorType,
-					dkimSigResult.errorStrParams) ||
-				errorType;
 			if (errorMsg) {
 				authResultDKIM.result_str = browser.i18n.getMessage("PERMFAIL",
 					[errorMsg]);

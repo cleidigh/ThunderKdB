@@ -90,23 +90,31 @@
   },
   
   "special-offer-head" : {
-    "message": "12 jaar QuickFolders - Speciale paasuitverkoop!"
+    "message": "Maak QuickFolders toekomstbestendig!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Beste {naam} {boldEnd}, als u nog geen licentie heeft, overweeg dan om QuickFolders voor de toekomst te ondersteunen. Er komen meer grote veranderingen aan in Thunderbird en ik heb {boldStart} uw hulp {boldEnd} nodig om bij te blijven!"
+  } ,
+  
   "special-offer-content" : {
-    "message": "Dit is de beste kans om een licentie te krijgen, want er is een {boldStart} 50% korting {boldEnd} op de prijs van een QuickFolders Pro-licentie om 12 jaar QuickFolders te vieren! Deze speciale aanbieding is beschikbaar tot {boldStart} 31 maart {boldEnd}."
+    "message": "Maak QuickFolders toekomstbestendig en haal een licentie op terwijl er {boldStart} 40% korting {boldEnd} is op de prijs van QuickFolders Pro! Deze speciale aanbieding is beschikbaar tot {boldStart} 1 mei {boldEnd}."
   },
   
   "whats-new-intro" : {
-    "message": "Lees hier wat er nieuw is sinds de introductie van Thunderbird 78:" 
+    "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):" 
   },
   
   "whats-new-btn" : {
     "message": "Wat is er nieuw?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Hoogtepunten"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro heeft nu geavanceerde zoekinstellingen zoals geruisloos verplaatsen en uitsluiten van accounts naar keuze of het beperken van resultaten binnen een account en verbeterde functies voor het verplaatsen en kopiëren van mappen. Ik heb ook meer functies gerepareerd om compatibel te blijven met Thunderbird 87 en hoger."
+    "message" : "Deze versie breidt de quickMove-functie verder uit met de volgende functies: {L1} Single Message Tab: optie om automatisch de volgende e-mail op hetzelfde tabblad te openen na het verplaatsen van een bericht {L2} {L1} Optie om quickMove volledig te annuleren (en de lijst met berichten) met een enkele druk op ESCAPE. {L2} {L1} Geavanceerde afstemming van bovenliggende mappen door het lezen van _ en spatiescheidingstekens en deze te behandelen als het begin van een gezochte naam. {L2} {L1} Gerepareerd: mappen zoeken tijdens het bekijken berichten die worden weergegeven in zoekresultaten of uit conversaties met meerdere mappen. {L2} {L1} Deze en aanvullende functies om zoekresultaten van bepaalde accounts te beperken, kunnen worden geconfigureerd via de geavanceerde zoekinstellingen op het tabblad QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 
@@ -117,16 +125,6 @@
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "We hebben al aanzienlijke middelen (meer dan $hoursSpent$ uur) besteed aan het conversieproject - en er is nog veel meer werk aan het oplossen van regressies en problemen veroorzaakt door veranderingen in Thunderbird.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -170,7 +168,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "De noodzakelijke wijzigingen om over te schakelen naar het nieuwe legacy-less model (mail-experiment) hebben al meerdere weken geduurd en zijn nog steeds aan de gang, terwijl sommige functies hierdoor kunnen worden beïnvloed. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee."
+    "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

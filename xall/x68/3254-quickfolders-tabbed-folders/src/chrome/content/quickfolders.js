@@ -445,7 +445,7 @@ END LICENSE BLOCK */
                    Removed grids from options screen to suport Thunderbird 86 and higher.
                    Using renamed function FtvItem for creating Recent folders list.
 
-  5.4 QuickFolders Pro - 19                                                                                                                                                                                     /03/2021
+  5.4.1 QuickFolders Pro - 19/03/2021
     ## [issue 115] fix restoring of config values
     ## [issue 116] Custom Text color in tab-specific is not set on tab
     ## [issue 117] Add color picker for text color in tab-specific properties
@@ -454,12 +454,25 @@ END LICENSE BLOCK */
     ## [issue 119] quickJump list - option to list more than 25 search results, persistently
     ## [issue 103] quickMove now also supports copying folders. To copy a folder, 
                    hold down the CTRL key while you drop it on the quickMove button
+                   
+  5.4.2 QuickFolders Pro - 28/03/2021
+    ## Added supoport for Thunderbird 88.0b1
+    ## replaced Tb account-manager module with MailServices
+    ## removed some of the excessive with from settings dialog
+    
+  5.5 QuickFolders Pro - WIP
+    ## [issue 136] quickMove - no folder suggestions while viewing in searched list (search results / open msg in conversation)
+    ## [issue 135] "/" for sub / parent folders should work for substring, not just prefix...
+                   Added the possibility to ignore _ and space within folder names so that parent folders with 
+                   prefixes such as "01_" or are composite of 2 terms with space e.g. "apple tree" can still be found.
+    ## [issue 134] Feature Request: Escape key to "Cancel quickMove" completely
+    ## changed folder tree shortcut from F7 to F9 (like in Thunderbird 68)
+    ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving -
+                   this behavior is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
+                   instead Tb will open the next mail - see extensions.quickfolders.quickMove.gotoNextMsgAfterMove
+
 
     
-    TO DO:
-    ## [issue 103] Feature Request: Support copying folders
-
-
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
 
@@ -573,7 +586,7 @@ var QuickFolders_PrepareSessionStore = function () {
       debugger;
 			let txt;
 			try {
-				aPersistedState.QuickFoldersCategory || "(no category)";
+				txt = aPersistedState.QuickFoldersCategory || "(no category)";
 		  } catch(ex) {;}
 			util.logDebug("restored tabs: " + txt);
 			// let  rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),
@@ -1607,7 +1620,7 @@ var QuickFolders = {
               let node = dragSession.sourceNode;
 
               // find out whether drop target button is right or left from source button:
-              if (node.hasAttributes()) {
+              if (node && node.hasAttributes()) {
                 // check previous siblings to see if target button is found - then it's to the left. otherwise it's to the right
                 let i = null,
                     sib = node;
@@ -1914,17 +1927,15 @@ var QuickFolders = {
           isMoveFolderQuickMove = false;
 			switch (contentType) {
 				case  "text/x-moz-folder": 
-					if (!isShift) {
-            // [issue 75] support moving folders through quickMove
-            if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
-              isMoveFolderQuickMove = true;
-            }
-            else {
-              let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
-                  "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
-              util.alert(sPrompt);
-              break;
-            }
+          // [issue 75] support moving folders through quickMove
+          if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+            isMoveFolderQuickMove = true;
+          }
+					if (!isShift && !isMoveFolderQuickMove) {
+            let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
+                "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
+            util.alert(sPrompt);
+            break;
 					}
 					// handler for dropping folders
 					try {
@@ -2626,8 +2637,14 @@ QuickFolders.FolderListener = {
             tabEntry = Model.getFolderEntry(parent.folderURL);
             
         if (tabEntry &&  tabEntry.flags & ADVANCED_FLAGS.SETMAIL_UNREAD) {
-          let messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-          messageList.appendElement(item , false);
+          let messageList;
+          if (util.versionGreaterOrEqual(util.ApplicationVersion, "85")) {
+            messageList = [item];
+          }
+          else {
+            messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+            messageList.appendElement(item , false);
+          }
           parent.markMessagesRead(messageList, false);
         }
         

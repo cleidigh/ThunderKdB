@@ -12,6 +12,8 @@ const OVERRIDE_DEFAULT_CONFIGS = {}; /* Replace this for more customization on a
 
 export const configs = new Configs({
   confirmationMode: Constants.CONFIRMATION_MODE_ALWAYS,
+  lastClipboardData: null,
+  acceptablePastedTextLength: 100,
   internalDomains: [],
 
   attentionDomainsHighlightMode: Constants.ATTENTION_HIGHLIGHT_MODE_ALWAYS,

@@ -1,5 +1,78 @@
 [
     {
+        "id": 2475617,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475617",
+        "files": [
+            {
+                "id": 1018778,
+                "created": "2021-03-29T21:42:01Z",
+                "hash": "sha256:7042bb4f80fe85b288e7696c99c6c669a3f77cd3ebbf4c4380fa19796ab219d7",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 307975,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018778/thirdstats-1.6.0-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "messagesRead",
+                    "storage",
+                    "downloads"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "text": {
+                "en-US": "The MIT License\n\nCopyright (c) &lt;year&gt; &lt;copyright holders=\"\"&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n&lt;/copyright&gt;&lt;/year&gt;"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-GB": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>.",
+            "en-US": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>.",
+            "en-CA": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.6.0",
+        "version": "1.6.0"
+    },
+    {
         "id": 2475486,
         "channel": "listed",
         "compatibility": {

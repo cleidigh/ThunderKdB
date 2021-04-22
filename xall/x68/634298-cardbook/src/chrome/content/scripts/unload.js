@@ -65,16 +65,19 @@ let JSMs = [
 	"chrome://cardbook/content/cardbookDirTree.js",
 	"chrome://cardbook/content/cardbookDiscovery.jsm",
 	"chrome://cardbook/content/cardbookElementTools.js",
-	"chrome://cardbook/content/cardbookEncryptor.js",
 	"chrome://cardbook/content/cardbookHttpRequest.jsm",
-	"chrome://cardbook/content/cardbookIndexedDB.js",
+	"chrome://cardbook/content/indexedDB/cardbookEncryptor.js",
+	"chrome://cardbook/content/indexedDB/cardbookIndexedDB.js",
+	"chrome://cardbook/content/indexedDB/cardbookIDBCard.js",
+	"chrome://cardbook/content/indexedDB/cardbookIDBCat.js",
+	"chrome://cardbook/content/indexedDB/cardbookIDBUndo.js",
+	"chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js",
+	"chrome://cardbook/content/indexedDB/cardbookIDBSearch.js",
 	"chrome://cardbook/content/cardbookInit.js",
 	"chrome://cardbook/content/cardbookLog.jsm",
-	"chrome://cardbook/content/cardbookMailPopularity.jsm",
 	"chrome://cardbook/content/cardbookPreferDisplayName.jsm",
 	"chrome://cardbook/content/cardbookNotifications.js",
 	"chrome://cardbook/content/cardbookPasswordManager.jsm",
-	"chrome://cardbook/content/cardbookRepository.js",
 	"chrome://cardbook/content/cardbookRichContext.js",
 	"chrome://cardbook/content/cardbookSynchro.js",
 	"chrome://cardbook/content/cardbookSynchronization.jsm",
@@ -92,7 +95,8 @@ let JSMs = [
 	"chrome://cardbook/content/wdw_cardbookAskUser.js",
 	"chrome://cardbook/content/wdw_cardbookRenameField.js",
 	"chrome://cardbook/content/wdw_logEdition.js",
-	"chrome://cardbook/content/wl_cardbookMessenger.js"
+	"chrome://cardbook/content/wl_cardbookMessenger.js",
+	"chrome://cardbook/content/cardbookRepository.js"
 ];
 
 for (let jsm of JSMs) {

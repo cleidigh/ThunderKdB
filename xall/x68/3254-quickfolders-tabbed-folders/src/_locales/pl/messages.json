@@ -90,23 +90,31 @@
   },
   
   "special-offer-head" : {
-    "message": "12 lat QuickFolders - Specjalna wyprzedaż wielkanocna!"
+    "message": "Przygotuj QuickFolders na przyszłość!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Drogi {name} {boldEnd}, jeśli nie masz jeszcze licencji, rozważ obsługę QuickFolders w przyszłości. Nadchodzą kolejne duże zmiany w Thunderbirdzie i potrzebuję {boldStart} Twojej pomocy {boldEnd}, aby nadążyć!"
+  } ,
+  
   "special-offer-content" : {
-    "message": "Teraz jest najlepsza okazja do zdobycia licencji, ponieważ istnieje {boldStart} 50% zniżki {boldEnd} na cenę licencji QuickFolders Pro z okazji 12-lecia QuickFolders! Ta oferta specjalna będzie dostępna do {boldStart} 31 marca {boldEnd}."
+    "message": "Przygotuj QuickFolders na przyszłość i pobierz licencję, dopóki cena QuickFolders Pro jest {boldStart} 40% obniżona {boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart} 1 maja {boldEnd}."
   },
   
   "whats-new-intro" : {
-    "message": "Przeczytaj o nowościach od czasu wprowadzenia Thunderbirda 78 tutaj:" 
+    "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):" 
   },
   
   "whats-new-btn" : {
     "message": "Co nowego?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Najważniejsze"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro ma teraz zaawansowane ustawienia wyszukiwania, takie jak ciche przenoszenie i wykluczanie wybranych kont lub ograniczanie wyników na koncie, a także ulepszone funkcje przenoszenia i kopiowania folderów. Naprawiłem także więcej funkcji, aby zachować zgodność z Thunderbirdem 87 i nowszymi."
+    "message" : "Ta wersja dodatkowo rozszerza funkcję quickMove o następujące funkcje: {L1} Pojedyncza karta wiadomości: opcja automatycznego otwierania następnej wiadomości e-mail na tej samej karcie po przeniesieniu wiadomości {L2} {L1} Opcja całkowitego anulowania quickMove (i opróżnienia jego listy wiadomości) jednym naciśnięciem klawisza ESCAPE. {L2} {L1} Zaawansowane dopasowywanie folderów nadrzędnych poprzez czytanie z _ i separatorów spacji i traktowanie ich jak początku wyszukiwanej nazwy. {L2} {L1} Naprawiono: wyszukiwanie folderów podczas przeglądania wiadomości wyświetlane w wynikach wyszukiwania lub z konwersacji obejmującej wiele folderów. {L2} {L1} Te i dodatkowe funkcje ograniczające wyniki wyszukiwania z niektórych kont można skonfigurować w ustawieniach wyszukiwania zaawansowanego na karcie QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 
@@ -117,16 +125,6 @@
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "Wydaliśmy już znaczne zasoby (ponad $hoursSpent$ godzin) na projekt konwersji - i jest więcej pracy w naprawianiu regresji i problemów spowodowanych zmianami w Thunderbirdzie.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -170,7 +168,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Niezbędne zmiany w celu przejścia na nowy model bez starszych wersji (eksperyment z pocztą) zajęły już wiele tygodni i nadal trwają, chociaż może to mieć wpływ na niektóre funkcje. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym."
+    "message": "Modyfikacje mające na celu konwersję $addonName$ do nowego modelu programowania zajęły tygodnie i były kosztowne. W następnej wersji 2022 jest znacznie więcej zmian. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

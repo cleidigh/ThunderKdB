@@ -408,7 +408,6 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 					}
 				};
 				xhr.ontimeout = function() {
-					this_.createTCPErrorFromFailedChannel(xhr);
 					this_.handleHTTPResponse(xhr, 408, xhr.responseText.length, xhr.responseText);
 				};
 				xhr.onload = function() {
@@ -482,6 +481,14 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			} else if (operation == "GETIMAGE" || operation == "GETKEY") {
 				let headers = {};
 				this.sendHTTPRequest("GET", null, headers, null, null, true);
+			} else if (operation == "GETCONTACTS") {
+				let headers = {"Content-Type": "application/atom+xml; charset=UTF-8; type=feed"};
+				let query = this._buildAllContactsGetRequest(parameters.props);
+				this.sendHTTPRequest("POST", query, headers, null, null, false);
+			} else if (operation == "PUTCONTACTS") {
+				let headers = {"Content-Type": "application/atom+xml; charset=UTF-8; type=feed"};
+				let query = this._buildAllContactsPutRequest(parameters.props);
+				this.sendHTTPRequest("POST", query, headers, null, null, false);
 			} else if (operation == "GETLABELS" || operation == "GETCONTACT") {
 				let headers = {"Content-Type": "application/atom+xml; charset=UTF-8; type=feed"};
 				if (parameters.accept !== null) {
@@ -530,6 +537,14 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 	
 		getlabels: function(accept) {
 			this.load("GETLABELS", {accept: accept});
+		},
+	
+		getContacts: function(props) {
+			this.load("GETCONTACTS", {props: props});
+		},
+	
+		putContacts: function(props) {
+			this.load("PUTCONTACTS", {props: props});
 		},
 	
 		getContact: function(accept) {
@@ -592,10 +607,34 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			this.load("DELETE", {contentType: contentType});
 		},
 		
+		_buildAllContactsGetRequest: function(props) {
+			var query = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+			query += "<feed xmlns='http://www.w3.org/2005/Atom' xmlns:gContact='http://schemas.google.com/contact/2008' xmlns:gd='http://schemas.google.com/g/2005' xmlns:batch='http://schemas.google.com/gdata/batch'>";
+			for (let id of props) {
+				this.reportLength++;
+				query += "<entry>";
+				query += "<id>https://www.google.com/m8/feeds/contacts/default/full/" + id + "</id>";
+				query += "<batch:operation type='query'/>";
+				query += "</entry>";
+			}
+			query += "</feed>";
+			return query;
+		},
+	
+		_buildAllContactsPutRequest: function(props) {
+			var query = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+			query += "<feed xmlns='http://www.w3.org/2005/Atom' xmlns:gContact='http://schemas.google.com/contact/2008' xmlns:gd='http://schemas.google.com/g/2005' xmlns:batch='http://schemas.google.com/gdata/batch'>";
+			for (let entry of props) {
+				this.reportLength++;
+				query += entry;
+			}
+			query += "</feed>";
+			return query;
+		},
+	
 		_buildMultigetRequest: function(props) {
 			var query = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 			query += "<C:addressbook-multiget xmlns:D=\"DAV:\" xmlns:C=\"urn:ietf:params:xml:ns:carddav\">";
-			
 			var version = cardbookRepository.cardbookPreferences.getVCardVersion(this.prefId);
 			query += "<D:prop><D:getetag/><C:address-data Content-Type='text/vcard' version='" + version + "'/></D:prop>";
 			for (var i = 0; i < props.length; i++) {

@@ -40,6 +40,7 @@ browser.messageDisplay.onMessageDisplayed.addListener((tabId, message) => {
 
   browser.messages.getFull(message.id).then((messagePart) => {
     browser.messageDisplayAction.setPopup({popup: ''});
+    browser.messageDisplayAction.setLabel({label: ''});
     dispMUA.headers = messagePart.headers;
     dispMUA.Info["messageId"] = message.id;
     //dispMUA.headerdata = this.content; // all headers strings
@@ -73,7 +74,8 @@ browser.messageDisplay.onMessageDisplayed.addListener((tabId, message) => {
     } else {
       browser.messageDisplayAction.setIcon({path: dispMUA.Info["PATH"]+dispMUA.Info["ICON"]});
     }
-    browser.messageDisplayAction.setTitle({title: str.length > len ? str.substr(0, len) + '...' : str});
+    //browser.messageDisplayAction.setTitle({title: str.length > len ? str.substr(0, len) + '...' : str});
+    browser.messageDisplayAction.setTitle({title: str});
     browser.storage.local.get().then((s) => {
       if (s.showIcon) {
         browser.messageDisplayAction.setTitle({title: " "});

@@ -42,22 +42,28 @@
         </tr>
     </table>
 
-    <table width="95%" border="0" style="table-layout:fixed;">
+    <table width="95%" border="0">
         <tr>
-            <td colspan="2">
+            <td colspan="3">
                 <textarea rows="2" id="textbox_trans" style="line-height:19px; background-color: #FFFFE0; width:100%;" tabindex="5"></textarea>
+                <div>
+                    <textarea rows="2" id="textbox_trans_gyaku" style="line-height:19px; background-color: #FFEBCD; width:100%; display:none" tabindex="6"></textarea>
+                </div>
             </td>
         </tr>
         <tr>
-            <td nowrap>
+            <td width="10%" nowrap>
                 <a href="javascript:void(0);" id="link_trans_history">翻訳履歴</a>
+            </td>
+            <td>
+                <label><input type="checkbox" id="chk_gyaku_honyaku" />逆翻訳</label>
             </td>
             <td align="right">
                 <input type="button" id="btn_copy_trans" value="コピー" tabindex="6" />
             </td>
         </tr>
         <tr>
-            <td colspan="2">
+            <td colspan="3">
                 <div id="div_trans_history" style="margin:5px; overflow:scroll; height:200px; width:100%; overflow-x: hidden; font-size:medium; display: none">
                     <div align="right"><input id="btn_clear_history" type="button" /></div>
                     <table id="tbl_trans_history" cellspacing='1' bgcolor='#0000cc' width='100%'></table>

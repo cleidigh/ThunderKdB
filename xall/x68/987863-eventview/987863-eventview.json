@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
         }
     ],
-    "average_daily_users": 40,
+    "average_daily_users": 46,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/paypalme/shh0884",
     "created": "2020-07-31T02:28:48Z",
     "current_version": {
-        "id": 2475166,
+        "id": 2475766,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eventview/versions/2475166",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eventview/versions/2475766",
         "files": [
             {
-                "id": 1018327,
-                "created": "2021-01-12T15:19:09Z",
-                "hash": "sha256:6e4b5c12a4c1125de29562fc389baefab9628a5d3eda1e3bb7c84238ec5c71c4",
+                "id": 1018926,
+                "created": "2021-04-21T12:33:46Z",
+                "hash": "sha256:9a12d2037f2b94e230681aa1f901b251e8f5c0ea119d546e512a80612bb38b7f",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 6728,
+                "size": 7085,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018327/eventview-7.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018926/eventview-8.7-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,16 +50,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Version 7.7.\n\n1) Each label of title, start date, end date, location, category, calendar was applied.\n2) Dynamic theme was applied. \nSo, this add-on is not worked in Default theme. Please, use Dark or Light theme.\n3) I changed Eventview from vbox to calendar-modevbox.\n4) I added buttons of \"New Event\" and \"Edit Event\".\n5) I decorated popup newly.\n6) Division line in each label of calendar information was applied.\n7) I changed horizontal lines from dashed to solid.\n8) I changed header color from popup color to frame color in version 7.7.\n\nJanuary 12th 2021.\n\nFrom Sungho Hwang."
+            "en-US": "Version 8.7.\n\n1) 237px or 474px of widths were added as options. ok.\n2) Popup style of browserAction was changed with icon.\n\nApril 21st 2021.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eventview/versions/7.7",
-        "version": "7.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/eventview/versions/8.7",
+        "version": "8.7"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<b>Version 6.5.</b> updated in 2020-11-27.\n\n1) Menuitem label was changed from \"Attach Eventview\" to \"Append Eventview\".\n2) Menuitem label was changed from \"Detach Eventview\" to \"Remove Eventview\".\n3) Menuitem \"Rplace Eventview\" was added.\n4) Loop to calendar items was applied.\nSo, weight of implementation.js was changed from 100 kbs to 20kbs.\n5) Background.js which open browserAction popup automatically was added.\n<b>By doing such things, Numbers of clicks were reduced in least numbers, twice.</b>\n\n<b>If changing calendar order, please, follow nexts.\n1) Remove old Eventview, if it exists.\n2) Single-click any item.\n3) Append Eventview, and then explore items in single-clicking them.\n4) If so, browserAction popup is opened automatically.\n5) To see different item data, click button of \"Replace Eventview\".\n</b>\nAs next update, I will change scripts to Calendars APIs.\n6) At disabled/removed from Add-ons Manager, defaults are restored.\n\n<b>Version 6.6.</b> updated in 2020-12-06.\n\n1) At clicking replace/remove Eventview button, if Eventview is not existent, these buttons are not run, regardless of side bar child numbers.\n\n<b>Version 6.8.</b> updated in 2020-12-15.\n\n1) I added button of \"<b>Print selected event</b>\" that convert from event to message.\n2) I added two buttons of \"Large\" and \"Small\" in description font size.\n\n<b>Version 7.7.</b> updated in 2021-01-12.\n\n1) Each label of title, start date, end date, location, category, calendar was applied.\n2) Dynamic theme was applied. \nSo, this add-on is not worked in Default theme. Please, use Dark or Light theme.\n3) I changed Eventview from vbox to calendar-modevbox.\n4) I added buttons of \"New Event\" and \"Edit Event\".\n5) I decorated popup newly.\n6) Division line in each label of calendar information was applied.\n7) I changed horizontal lines from dashed to solid.\n8) I changed header color from popup color to frame color in version 7.7.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b></b></b>",
-        "ko": "<b>Version 6.5.</b> updated in 2020-11-27.\n\n1) Menuitem label was changed from \"Attach Eventview\" to \"Append Eventview\".\n2) Menuitem label was changed from \"Detach Eventview\" to \"Remove Eventview\".\n3) Menuitem \"Rplace Eventview\" was added.\n4) Loop to calendar items was applied.\nSo, weight of implementation.js was changed from 100 kbs to 20kbs.\n5) Background.js which open browserAction popup automatically was added.\n<b>By doing such things, Numbers of clicks were reduced in least numbers, twice.</b>\n\n<b>If changing calendar order, please, follow nexts.\n1) Remove old Eventview, if it exists.\n2) Single-click any item.\n3) Append Eventview, and then explore items in single-clicking them.\n4) If so, browserAction popup is opened automatically.\n5) To see different item data, click button of \"Replace Eventview\".\n</b>\nAs next update, I will change scripts to Calendars APIs.\n6) At disabled/removed from Add-ons Manager, defaults are restored.\n\n<b>Version 6.6.</b> updated in 2020-12-06.\n\n1) At clicking replace/remove Eventview button, if Eventview is not existent, these buttons are not run, regardless of side bar child numbers.\n\n<b>Version 6.8.</b> updated in 2020-12-15.\n\n1) I added button of \"<b>Print selected event</b>\" that convert from event to message.\n2) I added two buttons of \"Large\" and \"Small\" in description font size.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b></b></b>"
+        "en-US": "<b>Version 6.5.</b> updated in 2020-11-27.\n\n1) Menuitem label was changed from \"Attach Eventview\" to \"Append Eventview\".\n2) Menuitem label was changed from \"Detach Eventview\" to \"Remove Eventview\".\n3) Menuitem \"Rplace Eventview\" was added.\n4) Loop to calendar items was applied.\nSo, weight of implementation.js was changed from 100 kbs to 20kbs.\n5) Background.js which open browserAction popup automatically was added.\n<b>By doing such things, Numbers of clicks were reduced in least numbers, twice.</b>\n\n<b>If changing calendar order, please, follow nexts.\n1) Remove old Eventview, if it exists.\n2) Single-click any item.\n3) Append Eventview, and then explore items in single-clicking them.\n4) If so, browserAction popup is opened automatically.\n5) To see different item data, click button of \"Replace Eventview\".\n</b>\nAs next update, I will change scripts to Calendars APIs.\n6) At disabled/removed from Add-ons Manager, defaults are restored.\n\n<b>Version 6.6.</b> updated in 2020-12-06.\n\n1) At clicking replace/remove Eventview button, if Eventview is not existent, these buttons are not run, regardless of side bar child numbers.\n\n<b>Version 6.8.</b> updated in 2020-12-15.\n\n1) I added button of \"<b>Print selected event</b>\" that convert from event to message.\n2) I added two buttons of \"Large\" and \"Small\" in description font size.\n\n<b>Version 7.7.</b> updated in 2021-01-12.\n\n1) Each label of title, start date, end date, location, category, calendar was applied.\n2) Dynamic theme was applied. \nSo, this add-on is not worked in Default theme. Please, use Dark or Light theme.\n3) I changed Eventview from vbox to calendar-modevbox.\n4) I added buttons of \"New Event\" and \"Edit Event\".\n5) I decorated popup newly.\n6) Division line in each label of calendar information was applied.\n7) I changed horizontal lines from dashed to solid.\n8) I changed header color from popup color to frame color in version 7.7.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n<b>\nAnd, I am not a supported developer.\nWould you contribute some to me for continuous developments.\nI have happy dreams by one dollar and fifty cents,\nlike an international postage in minimum not a cup of coffee in high price. \n</b>\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b></b></b>",
+        "ko": "<b>Version 6.5.</b> updated in 2020-11-27.\n\n1) Menuitem label was changed from \"Attach Eventview\" to \"Append Eventview\".\n2) Menuitem label was changed from \"Detach Eventview\" to \"Remove Eventview\".\n3) Menuitem \"Rplace Eventview\" was added.\n4) Loop to calendar items was applied.\nSo, weight of implementation.js was changed from 100 kbs to 20kbs.\n5) Background.js which open browserAction popup automatically was added.\n<b>By doing such things, Numbers of clicks were reduced in least numbers, twice.</b>\n\n<b>If changing calendar order, please, follow nexts.\n1) Remove old Eventview, if it exists.\n2) Single-click any item.\n3) Append Eventview, and then explore items in single-clicking them.\n4) If so, browserAction popup is opened automatically.\n5) To see different item data, click button of \"Replace Eventview\".\n</b>\nAs next update, I will change scripts to Calendars APIs.\n6) At disabled/removed from Add-ons Manager, defaults are restored.\n\n<b>Version 6.6.</b> updated in 2020-12-06.\n\n1) At clicking replace/remove Eventview button, if Eventview is not existent, these buttons are not run, regardless of side bar child numbers.\n\n<b>Version 6.8.</b> updated in 2020-12-15.\n\n1) I added button of \"<b>Print selected event</b>\" that convert from event to message.\n2) I added two buttons of \"Large\" and \"Small\" in description font size.\n\n<b>Version 7.7.</b> updated in 2021-01-12.\n\n1) Each label of title, start date, end date, location, category, calendar was applied.\n2) Dynamic theme was applied. \nSo, this add-on is not worked in Default theme. Please, use Dark or Light theme.\n3) I changed Eventview from vbox to calendar-modevbox.\n4) I added buttons of \"New Event\" and \"Edit Event\".\n5) I decorated popup newly.\n6) Division line in each label of calendar information was applied.\n7) I changed horizontal lines from dashed to solid.\n8) I changed header color from popup color to frame color in version 7.7.\n\n<b>It seems like taskview, but it would be enough with a small size because event is different to task.</b>\n<b>Of course, tooltip exists, but it shows information of events formally.<b>\n<b>\nAnd, I am not a supported developer.\nWould you contribute some to me for continuous developments.\nI have happy dreams by one dollar and fifty cents,\nlike an international postage in minimum not a cup of coffee in high price. \n</b>\n<b>Be a light.</b>\n<b>I thank God!</b>\n\n<b>Please, use browserAction to put it at tabs toolbar in where browserAction is pinned.</b></b></b>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/eventview/edit",
@@ -76,7 +76,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-01-12T16:40:18Z",
+    "last_updated": "2021-04-21T20:51:23Z",
     "name": {
         "en-US": "Eventview",
         "ko": "행사보기"

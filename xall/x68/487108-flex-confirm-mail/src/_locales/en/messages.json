@@ -67,7 +67,9 @@
 
   "config_confirmationMode_caption": { "message": "Confirm Recipients before Sending:" },
   "config_confirmationMode_always_label": { "message": "Always" },
-  "config_confirmationMode_onModified_label": { "message": "Only when recipients are modified" },
+  "config_confirmationMode_onModified_label": { "message": "Only for unsafe composition" },
+  "config_confirmationMode_onModified_description_before": { "message": "Confirmation will appear when recipients are modified, something text is copied and pasted from any message with different decipients, or text longer than " },
+  "config_confirmationMode_onModified_description_after": { "message": " characters is pasted." },
   "config_confirmationMode_never_label": { "message": "Never" },
 
   "config_internalDomains_caption": { "message": "Domains treated as internals" },
@@ -88,7 +90,9 @@
   "config_attentionDomains_input_placeholder": { "message": "Input domain names per line (e.g. example.com)" },
   "config_attentionDomainsFile_label": { "message": "Use a list given as a file" },
   "config_attentionDomainsFile_button_label": { "message": "Choose…" },
-  "config_attentionDomainsFile_input_placeholder": { "message": "Path to the file (e.g. \\FileServer\\Shared\\domains.txt)" },
+  "config_attentionDomainsFile_button_dialogTitle": { "message": "Choose a list of specially alerted foreign domains in recipients" },
+  "config_attentionDomainsFile_button_dialogDisplayName": { "message": "List File" },
+  "config_attentionDomainsFile_input_placeholder": { "message": "Path to the file (e.g. \\\\FileServer\\Shared\\domains.txt)" },
 
   "config_attentionDomainsHighlightMode_caption": { "message": "Highlight recipients of these domains" },
   "config_attentionDomainsHighlightMode_always_label": { "message": "Always" },
@@ -110,14 +114,18 @@
   "config_attentionSuffixes_input_placeholder": { "message": "Input file extensions per line (e.g. .exe, .pdf)" },
   "config_attentionSuffixesFile_label": { "message": "Use a list given as a file" },
   "config_attentionSuffixesFile_button_label": { "message": "Choose…" },
-  "config_attentionSuffixesFile_input_placeholder": { "message": "Path to the file (e.g. \\FileServer\\Shared\\suffixes.txt)" },
+  "config_attentionSuffixesFile_button_dialogTitle": { "message": "Choose a list of extensions in attachment names requiring reconfirmation" },
+  "config_attentionSuffixesFile_button_dialogDisplayName": { "message": "List File" },
+  "config_attentionSuffixesFile_input_placeholder": { "message": "Path to the file (e.g. \\\\FileServer\\Shared\\suffixes.txt)" },
 
   "config_attentionTermsConfirm_label": { "message": "Confirm me again before send, if there is any attachment name with one of these terms in a message to foreign domains" },
   "config_attentionTerms_label": { "message": "Use the manually managed list" },
   "config_attentionTerms_input_placeholder": { "message": "Input a term per line (e.g. important, confidential)" },
   "config_attentionTermsFile_label": { "message": "Use a list given as a file" },
   "config_attentionTermsFile_button_label": { "message": "Choose…" },
-  "config_attentionTermsFile_input_placeholder": { "message": "Path to the file (e.g. \\FileServer\\Shared\\suffixes.txt)" },
+  "config_attentionTermsFile_button_dialogTitle": { "message": "Choose a list of terms in attachment names requiring reconfirmation" },
+  "config_attentionTermsFile_button_dialogDisplayName": { "message": "List File" },
+  "config_attentionTermsFile_input_placeholder": { "message": "Path to the file (e.g. \\\\FileServer\\Shared\\suffixes.txt)" },
 
   "config_requireReinputAttachmentNames_label": { "message": "Require to input file names of attachments, if there is any other domain recipient" },
   "config_allowCheckAllAttachments_label": { "message": "Allow to make all attachments to be checked with one checkbox" },

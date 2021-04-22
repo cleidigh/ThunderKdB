@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5,
+    "average_daily_users": 18,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2021-03-07T14:55:07Z",
     "current_version": {
-        "id": 2475473,
+        "id": 2475768,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/openfolder/versions/2475473",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/openfolder/versions/2475768",
         "files": [
             {
-                "id": 1018634,
-                "created": "2021-03-07T14:55:07Z",
-                "hash": "sha256:26b5a6a865215946d24add1fcadab816bc6e1ce82f72e4e715259a1e3a55a36e",
+                "id": 1018928,
+                "created": "2021-04-21T14:06:41Z",
+                "hash": "sha256:959319b67a579e1ad59a6c802a819a781941b641e72975e84057723cfd249c72",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 11749,
+                "size": 11954,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018634/openfolder-1.0.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018928/openfolder-1.1.0-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "clipboardWrite"
@@ -53,14 +53,17 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
-        "reviewed": "2021-03-07T15:10:03Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/openfolder/versions/1.0.0",
-        "version": "1.0.0"
+        "release_notes": {
+            "en-US": "Message display in tabs is now supported.",
+            "ja": "タブでのメッセージ表示に対応しました。"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/openfolder/versions/1.1.0",
+        "version": "1.1.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This add-on makes it easy to open folders on a file server.\nWhen the address of a folder is written in the body of an email, \nsuch as \"\\nas\\share\\Documents\\2021\\Manual\\for printing\"\nJust click the add-on button to open the folder.\n\nIn order to use the add-on, you need to install two things: <strong>the add-on</strong> and <strong>the linked app</strong>.\nYou can download the linked app from the following website.\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>",
+        "en-US": "This add-on makes it easy to open folders on a file server.\nWhen the address of a folder is written in the body of an email, \nsuch as \"\\\\nas\\share\\Documents\\2021\\Manual\\for printing\"\nJust click the add-on button to open the folder.\n\nIn order to use the add-on, you need to install two things: <strong>the add-on</strong> and <strong>the linked app</strong>.\nYou can download the linked app from the following website.\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>",
         "ja": "Thunderbirdでファイルサーバーのフォルダーを簡単に開くアドオンです。\nメッセージに「¥¥nas¥share¥ドキュメント¥2021¥マニュアル¥印刷用」のような\nフォルダーのアドレスが書かれているときに\nアドオンのボタンを押すだけでフォルダーを開くことができます\n\nアドオンを使用するために、<strong>アドオン</strong>と<strong>連係アプリ</strong>の2つをインストールする必要があります。\n連携アプリは以下のサイトからダウンロードできます。\n\n<a rel=\"nofollow\" href=\"https://openfolder.net/\">https://openfolder.net/</a>"
     },
     "developer_comments": null,
@@ -81,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2021-03-07T15:10:03Z",
+    "last_updated": "2021-04-21T14:10:03Z",
     "name": {
         "en-US": "OpenFolder",
         "ja": "OpenFolder"

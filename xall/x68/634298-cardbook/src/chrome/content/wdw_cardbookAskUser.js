@@ -14,7 +14,7 @@ if ("undefined" == typeof(wdw_cardbookAskUser)) {
 		observe: function(aSubject, aTopic, aData) {
 			switch (aTopic) {
 				case "cardbook.importConflictChoicePersist":
-					wdw_cardbookAskUser.onChoicePersist();
+					wdw_cardbookAskUser.onChoicePersist(aData);
 					break;
 			}
 		}
@@ -61,9 +61,9 @@ if ("undefined" == typeof(wdw_cardbookAskUser)) {
 		},
 
 		onChoicePersist: function () {
-			if (cardbookRepository.importConflictChoicePersist) {
-				window.arguments[0].resultConfirm = cardbookRepository.importConflictChoicePersist;
-				window.arguments[0].result = cardbookRepository.importConflictChoice;
+			if (cardbookRepository.importConflictChoicePersist[window.arguments[0].dirPrefId] == true) {
+				window.arguments[0].resultConfirm = cardbookRepository.importConflictChoicePersist[window.arguments[0].dirPrefId];
+				window.arguments[0].result = cardbookRepository.importConflictChoice[window.arguments[0].dirPrefId];
 				wdw_cardbookAskUser.close();
 			}
 		},

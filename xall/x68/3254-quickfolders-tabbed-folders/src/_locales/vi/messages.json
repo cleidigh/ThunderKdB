@@ -90,23 +90,31 @@
   },
   
   "special-offer-head" : {
-    "message": "12 năm của QuickFolders - Giảm giá đặc biệt cho lễ Phục sinh!"
+    "message": "Làm cho QuickFolders bằng chứng trong tương lai!"
   } ,  
 
+  "special-offer-intro" : {
+    "message": "{boldStart} Kính gửi {name} {boldEnd}, nếu bạn chưa có giấy phép, vui lòng xem xét hỗ trợ QuickFolders trong tương lai. Sắp có nhiều thay đổi lớn hơn trên Thunderbird và tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!"
+  } ,
+  
   "special-offer-content" : {
-    "message": "Bây giờ là cơ hội tốt nhất để nhận Giấy phép vì có {boldStart} giảm 50% {boldEnd} giá của giấy phép QuickFolders Pro để kỷ niệm 12 năm QuickFolders! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 31 tháng 3 {boldEnd}."
+    "message": "Làm cho QuickFolders bằng chứng trong tương lai và tìm nạp Giấy phép trong khi {boldStart} giảm 40% {boldEnd} về giá của QuickFolders Pro! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 1 tháng 5 {boldEnd}."
   },
   
   "whats-new-intro" : {
-    "message": "Đọc thêm những gì mới kể từ khi Thunderbird 78 được giới thiệu tại đây:" 
+    "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):" 
   },
   
   "whats-new-btn" : {
     "message": "Có gì mới?"
   }, 
   
+  "whats-new-head" : {
+    "message": "Điểm nổi bật"
+  },
+  
   "whats-new-list" : {
-    "message" : "QuickFolders Pro hiện có các cài đặt tìm kiếm nâng cao như di chuyển im lặng và loại trừ tài khoản bạn chọn hoặc giới hạn kết quả trong tài khoản và các chức năng được cải thiện để di chuyển và sao chép thư mục. Tôi cũng đã sửa chữa nhiều chức năng hơn để vẫn tương thích với Thunderbird 87 trở lên."
+    "message" : "Phiên bản này mở rộng thêm chức năng quickMove thông qua các tính năng sau: {L1} Tab Tin nhắn Đơn: tùy chọn để tự động mở email tiếp theo trong cùng một tab sau khi chuyển một tin nhắn {L2} {L1} Tùy chọn để hủy hoàn toàn quickMove (và làm trống danh sách thư) chỉ với một lần nhấn ESCAPE. {L2} {L1} Đối sánh nâng cao các thư mục mẹ bằng cách đọc từ dấu _ và dấu cách và coi chúng như phần đầu của tên được tìm kiếm. {L2} {L1} Đã sửa chữa: tìm kiếm thư mục trong khi xem thông báo hiển thị trong kết quả tìm kiếm hoặc từ cuộc hội thoại nhiều thư mục. {L2} {L1} Bạn có thể định cấu hình các chức năng này và các chức năng bổ sung để hạn chế kết quả tìm kiếm từ một số tài khoản nhất định thông qua Cài đặt Tìm kiếm Nâng cao trên Tab QuickFolders Pro. {L2}"
   },  
 
   "time-and-effort": { 
@@ -117,16 +125,6 @@
         "example" : "QuickFolders"
       }    
     }
-  },
-  
-  "hours-effort" : {
-    "message": "Chúng tôi đã dành nguồn lực đáng kể (hơn $hoursSpent$ giờ) cho dự án chuyển đổi - và còn rất nhiều việc phải làm trong việc khắc phục các sự cố hồi quy và các vấn đề do các thay đổi trong Thunderbird gây ra.",
-    "placeholders": {
-      "hoursSpent" : {
-        "content" : "$1", 
-        "example" : "250"
-      }    
-    }    
   },
   
   "support-suggestion" : {
@@ -170,7 +168,13 @@
   }, 
 
   "ongoing-work": {
-    "message": "Các thay đổi cần thiết để chuyển sang mô hình kế thừa mới (thử nghiệm thư) đã mất nhiều tuần và vẫn đang tiếp tục, trong khi một số chức năng có thể bị ảnh hưởng. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Hãy giúp chúng tôi với điều này."
+    "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
   },
   
   "btn-want-a-license": {

@@ -30,7 +30,7 @@ function convertVCards () {
 			let myTempCard = new cardbookCardParser();
 			cardbookRepository.cardbookUtils.cloneCard(card, myTempCard);
 			if (cardbookRepository.cardbookUtils.convertVCard(myTempCard, myTargetName, myTargetVersion, myNewDateFormat, myNewDateFormat)) {
-				cardbookRepository.saveCard(card, myTempCard, myActionId, false);
+				cardbookRepository.saveCardFromUpdate(card, myTempCard, myActionId, false);
 				counter++;
 			}
 		}

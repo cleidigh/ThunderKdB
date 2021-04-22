@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 493,
+    "average_daily_users": 587,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/yet",
     "created": "2015-12-29T04:58:41Z",
     "current_version": {
-        "id": 2475437,
+        "id": 2475756,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/versions/2475437",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/rspamd-spamness/versions/2475756",
         "files": [
             {
-                "id": 1018598,
-                "created": "2021-02-28T16:35:57Z",
-                "hash": "sha256:e026439d554d2b628ec321f8c84894eda79a96f4bbfc108e420e2491ebbdbe7d",
+                "id": 1018916,
+                "created": "2021-04-19T13:35:55Z",
+                "hash": "sha256:8903dba338deb0e8cd4df61fe70c910727d20ed7d17a239c2a6121190c4e3ebd",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 52764,
+                "size": 53162,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018598/rspamd_spamness-2.0.0a2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018916/rspamd_spamness-2.0.0a5-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "menus",
@@ -80,12 +80,11 @@
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
         "release_notes": {
-            "ru": "",
-            "en-US": "The add-on has been rewritten as a MailExtension.\n * This breaks compatibility with previous Thunderbird versions.\n * The add-on requires full unrestricted access to Thunderbird for being able to maintain functionality that is missing in MailExtension API.\n\n<b>Notable changes:</b>\n - Rmilter support has been dropped as Rmilter has been deprecated a long time ago.\n - Training buttons are missing drop-down \"move/copy\" menus. No time to implement.\n * Default and per-account training folder settings has been changed. Each folder URI textbox is replaced by an account selector and a folder path textbox.\n\n<b>Known major issues:</b>\n + Currently MailExtension API does not provide support for message parts on demand loading. Thus, in order to get headers the add-on has to load full mail message.\n + \"Unexpected error moving messages: 2147500037\" and \"Unexpected error copying messages: 2147500037\" while moving/copying messages with training buttons. Workaround: open a folder in the destination account before moving/copying (once per session is enough).\n\n<b>Migration from previous versions</b>\nThe add-on does not offer automated configuration migration from the XUL extension. After upgrade you should tweak the add-on configuration according to you needs."
+            "en-US": "- Hide headers until their values are set"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/versions/2.0.0a2",
-        "version": "2.0.0a2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/rspamd-spamness/versions/2.0.0a5",
+        "version": "2.0.0a5"
     },
     "default_locale": "en-US",
     "description": {
@@ -110,7 +109,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-03-01T13:45:03Z",
+    "last_updated": "2021-04-21T20:52:50Z",
     "name": {
         "en-US": "Rspamd-spamness"
     },
@@ -170,6 +169,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-02-28T16:35:57Z",
+            "comp78pv_version": "2.0.0a2",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "*",
             "comp60pv": true,
             "comp60pv_date": "2018-02-11T14:56:20Z"
         }

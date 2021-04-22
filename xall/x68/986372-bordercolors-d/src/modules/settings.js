@@ -34,11 +34,7 @@ export class Settings {
   }
 
   get sizes() {
-    return [
-      { key: 'small',  label: 'Small' },
-      { key: 'medium', label: 'Medium' },
-      { key: 'large',  label: 'Large' },
-    ];
+    return [ 'small', 'medium', 'large' ];
   }
 
   get size() {

@@ -41,8 +41,13 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookNotifications.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookElementTools.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookWindowUtils.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookEncryptor.js"/>
-	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookIndexedDB.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookEncryptor.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIndexedDB.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBCard.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBCat.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBUndo.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBSearch.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_imageEdition.js"/>
@@ -181,7 +186,7 @@
 								<column/>
 								<column flex="1"/>
 							</columns>
-							<rows id="persRows">
+							<rows id="personalRows">
 								<row id="lastnameRow" align="center">
 									<hbox flex="1" align="center">
 										<label id="lastnameLabel" value="__MSG_lastnameLabel__" control="lastnameTextBox" class="header"/>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="./index.css" />
+        <title>mailmindr</title>
+    </head>
+    <body>
+        <main>
+            <h1 data-i18n="view.dialog.time-preset-editor.header"></h1>
+            <div class="mailmindr-vertical-stack">
+                <div class="mailmindr-vertical-stack">
+                    <label
+                        data-i18n="view.dialog.time-preset-editor.label.name"
+                    >
+                        <input
+                            type="text"
+                            id="mailmindr-timespan-name"
+                            value=""
+                        />
+                    </label>
+                    <label
+                        data-i18n="view.dialog.time-preset-editor.label.auto-rename"
+                    >
+                        <input type="checkbox" id="mailmindr-auto-rename" />
+                    </label>
+                </div>
+                <div>
+                    <fieldset class="mailmindr-time-preset-editor-type">
+                        <div data-i18n="view.dialog.time-preset-editor.text" />
+                        <div>
+                            <input
+                                id="mailmindr-timespan-type-fixed"
+                                type="radio"
+                                name="mailmindr-timespan-type-picker"
+                            />
+                            <label
+                                data-i18n="view.dialog.time-preset-editor.option.fixed"
+                                for="mailmindr-timespan-type-fixed"
+                            />
+                        </div>
+                        <div>
+                            <input
+                                id="mailmindr-timespan-type-relative"
+                                type="radio"
+                                name="mailmindr-timespan-type-picker"
+                            />
+                            <label
+                                data-i18n="view.dialog.time-preset-editor.option.relative"
+                                for="mailmindr-timespan-type-relative"
+                            />
+                        </div>
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset
+                        id="mailmindr-timespan-type-panel-fix"
+                        class="mailmindr-js-timespan-type-panel mailmindr-horizontal-stack"
+                    >
+                        <div>
+                            <label
+                                data-i18n="view.dialog.time-preset-editor.label.fixed.days"
+                            >
+                                <input
+                                    id="mailmindr-timespan-days-fixed"
+                                    type="number"
+                                    min="0"
+                                />
+                            </label>
+                        </div>
+                        <div>
+                            <label
+                                for="mailmindr-fixed-time-picker"
+                                data-i18n="view.dialog.time-preset-editor.label.fixed.time"
+                            >
+                                <input
+                                    type="time"
+                                    id="mailmindr-fixed-time-picker"
+                                />
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset
+                        id="mailmindr-timespan-type-panel-relative"
+                        class="mailmindr-js-timespan-type-panel mailmindr-horizontal-stack"
+                    >
+                        <div>
+                            <label
+                                data-i18n="view.dialog.time-preset-editor.label.relative.days"
+                                for="mailmindr-timespan-days"
+                            />
+                            <input
+                                id="mailmindr-timespan-days"
+                                type="number"
+                                min="0"
+                                style="width: 7em"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                data-i18n="view.dialog.time-preset-editor.label.relative.hours"
+                                for="mailmindr-timespan-hours"
+                            />
+                            <input
+                                id="mailmindr-timespan-hours"
+                                type="number"
+                                min="0"
+                                max="23"
+                                style="width: 7em"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                data-i18n="view.dialog.time-preset-editor.label.relative.minutes"
+                                for="mailmindr-timespan-minutes"
+                            />
+                            <input
+                                id="mailmindr-timespan-minutes"
+                                type="number"
+                                min="0"
+                                max="59"
+                                style="width: 7em"
+                            />
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </main>
+        <footer class="mailmindr-buttonbar">
+            <div class="mailmindr-buttonbar--wrapper">
+                <button
+                    id="mailmindr--do-apply"
+                    type="submit"
+                    data-i18n="view.dialog.time-preset-editor.caption.ok"
+                ></button>
+                <button
+                    id="mailmindr--do-cancel"
+                    data-i18n="view.dialog.time-preset-editor.caption.cancel"
+                ></button>
+            </div>
+        </footer>
+        <script type="module" src="./index.js"></script>
+    </body>
+</html>

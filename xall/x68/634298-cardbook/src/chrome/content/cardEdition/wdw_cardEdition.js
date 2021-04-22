@@ -752,7 +752,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 					}
 				}
 			}
-			for (let type of ['pers', 'org']) {
+			for (let type of ['personal', 'org']) {
 				for (let i = 0; i < cardbookRepository.customFields[type].length; i++) {
 					if (isElementInPref(cardbookRepository.customFields[type][i][0]) || document.getElementById('customField' + i + type + 'TextBox').value) {
 						document.getElementById('customField' + i + type + 'Row').removeAttribute('hidden');
@@ -1304,22 +1304,13 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			var i = 0;
 			while (true) {
 				if (document.getElementById('mailPopularity_' + i + '_row')) {
-					var email = document.getElementById('email_' + i + '_Textbox').value;
-					var emailValue = document.getElementById('popularity_' + i + '_Textbox').value;
-					if (emailValue == "") {
-						if (cardbookRepository.cardbookMailPopularityIndex[email]) {
-							delete cardbookRepository.cardbookMailPopularityIndex[email];
-						}
-					} else {
-						cardbookRepository.cardbookMailPopularityIndex[email] = emailValue;
-					}
+					var email = document.getElementById('email_' + i + '_Textbox').value.toLowerCase();
+					var emailValue = parseInt(document.getElementById('popularity_' + i + '_Textbox').value) || 0;
+					cardbookIDBMailPop.updateMailPop(email, emailValue);
 					i++;
 				} else {
 					break;
 				}
-			}
-			if (i > 0) {
-				cardbookRepository.cardbookMailPopularity.writeMailPopularity();
 			}
 		},
 

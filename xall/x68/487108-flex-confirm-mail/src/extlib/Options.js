@@ -366,7 +366,7 @@ class Options {
     document.getElementById('allconfigs-import-file').click();
   }
 
-  exportToFile() {
+  async exportToFile() {
     const values = {};
     for (const key of Object.keys(this.configs.$default).sort()) {
       const defaultValue = JSON.stringify(this.configs.$default[key]);
@@ -378,9 +378,18 @@ class Options {
     // Pretty print the exported JSON, because some major addons
     // including Stylus and uBlock do that.
     const exported = JSON.stringify(values, null, 2);
-    const link = document.getElementById('allconfigs-export-file');
-    link.href = URL.createObjectURL(new Blob([exported], { type: 'application/json' }));
-    link.click();
+    const browserInfo = browser.runtime.getBrowserInfo && await browser.runtime.getBrowserInfo();
+    switch (browserInfo && browserInfo.name) {
+      case 'Thunderbird':
+        window.open(`data:application/json,${encodeURIComponent(exported)}`);
+        break;
+
+      default:
+        const link = document.getElementById('allconfigs-export-file');
+        link.href = URL.createObjectURL(new Blob([exported], { type: 'application/json' }));
+        link.click();
+        break;
+    }
   }
 };
 

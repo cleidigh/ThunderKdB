@@ -1,0 +1,5805 @@
+{
+	"extName": {
+		"message": "CardBook"
+	},
+	"extDesc": {
+		"message": "vCard Adres Defteri"
+	},
+	"browserActionTitle": {
+		"message": "CardBook",
+		"description": "Switch to the CardBook tab"
+	},
+	"cardbookTitle": {
+		"message": "CardBook"
+	},
+	"cardbookPrefTitle": {
+		"message": "CardBook Seçenekler"
+	},
+	"statusProgressInformationTooltip": {
+		"message": "Kayıtları görmek için buraya tıklayın"
+	},
+	"imageSelectionTitle": {
+		"message": "Resim seçmek"
+	},
+	"imageSaveTitle": {
+		"message": "Resmi kaydet"
+	},
+	"fileSaveTitle": {
+		"message": "Dosyayı kaydet"
+	},
+	"dirSaveTitle": {
+		"message": "Klasörü kaydet"
+	},
+	"dirChooseTitle": {
+		"message": "Klasör seç"
+	},
+	"fileCreationVCFTitle": {
+		"message": "Yeni bir VCF dosyası oluştur (UTF-8 kodlamasında)"
+	},
+	"fileSelectionVCFTitle": {
+		"message": "Var olan bir VCF dosyasını aç (UTF-8 kodlamasında)"
+	},
+	"fileImportTitle": {
+		"message": "Bir VCF dosyasını içe aktar (UTF-8 kodlamasında)"
+	},
+	"dirImportTitle": {
+		"message": "Bir dizinden içe aktar"
+	},
+	"fileCreationTPLTitle": {
+		"message": "Yeni bir TPL dosyası oluştur"
+	},
+	"fileSelectionTPLTitle": {
+		"message": "Var olan bir TPL dosyasını aç"
+	},
+	"fileSelectionTitle": {
+		"message": "Link Konumu"
+	},
+	"fileSelectionGPGTitle": {
+		"message": "Dosyadan içe aktar"
+	},
+	"uncategorizedCards": {
+		"message": "Kategorilendirilmemiş"
+	},
+	"enableFromAccountsOrCats": {
+		"message": "Adres defterini etkinleştir"
+	},
+	"disableFromAccountsOrCats": {
+		"message": "Adres defterini devreden çıkar"
+	},
+	"readWriteFromAccountsOrCats": {
+		"message": "Adres defterini okunur-yazılır yap"
+	},
+	"readOnlyFromAccountsOrCats": {
+		"message": "Adres defterini salt okunur yap"
+	},
+	"createCategoryFromAccountsOrCats": {
+		"message": "Kategori Oluştur"
+	},
+	"editCategoryFromAccountsOrCats": {
+		"message": "Kategoriyi düzenle"
+	},
+	"removeCategoryFromAccountsOrCats": {
+		"message": "Kategoriyi sil"
+	},
+	"convertCategoryFromAccountsOrCats": {
+		"message": "Kategoriyi listeye çevir"
+	},
+	"editNodeFromAccountsOrCats": {
+		"message": "Düğümü düzenle"
+	},
+	"removeNodeFromAccountsOrCats": {
+		"message": "Düğümü sil"
+	},
+	"convertNodeFromAccountsOrCats": {
+		"message": "Düğümden liste oluştur"
+	},
+	"viewCardButtonLabel": {
+		"message": "Görünüm"
+	},
+	"editCardButtonLabel": {
+		"message": "Düzenle"
+	},
+	"viewInCardBookMenuLabel": {
+		"message": "CardBook ile bak"
+	},
+	"mergeCardsLabel": {
+		"message": "Kişileri Birleştir"
+	},
+	"forgetCardsLabel": {
+		"message": "Unut"
+	},
+	"deleteCardsLabel": {
+		"message": "Sil"
+	},
+	"showForgottenLabel": {
+		"message": "Unutulmuş tekrarlıları göster"
+	},
+	"showForgottenAccesskey": {
+		"message": "S"
+	},
+	"hideForgottenLabel": {
+		"message": "Unutulmuş tekrarlıları gizle"
+	},
+	"hideForgottenAccesskey": {
+		"message": "H"
+	},
+	"noContactsDuplicated": {
+		"message": "Tekrarlı kişi bulunamadı"
+	},
+	"targetCategoryLabel": {
+		"message": "sonuçlar"
+	},
+	"sourceCategoryLabel": {
+		"message": "kaynak"
+	},
+	"serverWarningGoogleLabel": {
+		"message": "Google kullanımı deneme aşamasındadır çünkü Google vCard standartlarına uygun değil."
+	},
+	"Validating1Label": {
+		"message": "Doğrulanıyor ($P1$)…",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"Validating2Label": {
+		"message": "Doğrulanıyor..."
+	},
+	"ValidatingURLFailedLabel": {
+		"message": "Link bozuk"
+	},
+	"ValidatingEmailFailedLabel": {
+		"message": "Geçerli bir e-posta adresi gerekiyor"
+	},
+	"ValidationFailedLabel": {
+		"message": "Doğrulanamadı"
+	},
+	"ValidationOKLabel": {
+		"message": "Doğrulandı"
+	},
+	"customFieldsErrorUPPERCASE": {
+		"message": "Özel alanların adları büyük harfle yazılmalı: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"customFieldsErrorX": {
+		"message": "Özel alanların adları X- ile başlamalı: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"customFieldsErrorFIELD": {
+		"message": "$P1$ önceden alınmış bir kelime olduğundan özel alan adı olarak kullanamazsınız",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"customFieldsErrorCHAR": {
+		"message": "Özel alanların adlarında virgül, noktalı virgül, iki nokta üstüste ve nokta gibi noktalama işaretleri bulunamaz: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"customFieldsErrorUNIQUE": {
+		"message": "Özel alan adları benzersiz olmalıdır (özel alanlar çoklu sekmelerde belirlenmiştir)"
+	},
+	"customFieldsErrorLABEL": {
+		"message": "Özel alan etiketleri boş bırakılamaz."
+	},
+	"allContactsLoadedFromFile": {
+		"message": "$P1$ : Bütün kişiler dosyadan yüklendi.",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"notAllContactsLoadedFromFile": {
+		"message": "$P1$ : Bütün kişiler dosyadan yüklenmedi: $P2$ de hata var.",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroRunning": {
+		"message": "$P1$ : Senkronizasyon çalışıyor",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroNotTried": {
+		"message": "$P1$ : Senkronizasyon denenmedi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroFinished": {
+		"message": "$P1$ : Senkronizasyon bitti",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroFinishedResult": {
+		"message": "$P1$ : Senkronizasyon bitti, kişilerin çıktısı :",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroProcessed": {
+		"message": "Kişiler işlendi : $P1$/$P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsUpToDate": {
+		"message": "$P1$ : Kişiler güncel : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsNewOnServer": {
+		"message": "$P1$ : Sunucudaki yeni kişiler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsUpdatedOnServer": {
+		"message": "$P1$ : Kişiler sunucuda güncellendi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsDeletedOnServer": {
+		"message": "$P1$ : Kişiler sunucudan silindi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsDeletedOnDisk": {
+		"message": "$P1$ : Kişiler cihazdan silindi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kişiler cihazdan silindi ve sunucuda güncellendi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsNewOnDisk": {
+		"message": "$P1$ : Yerel yeni kişiler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsUpdatedOnDisk": {
+		"message": "$P1$ : Kişiler cihazda güncellendi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsUpdatedOnBoth": {
+		"message": "$P1$ : Kişiler cihazda ve sunucuda güncellendi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCardsUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kişiler cihazda güncellendi ve sunucudan silindi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesUpToDate": {
+		"message": "$P1$ : Kategoriler güncel : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesNewOnServer": {
+		"message": "$P1$ : Sunucudaki yeni kategoriler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesUpdatedOnServer": {
+		"message": "$P1$ : Sunucuda güncellenmiş kategoriler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesDeletedOnServer": {
+		"message": "$P1$ : Sunucudan silinmiş kategoriler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesDeletedOnDisk": {
+		"message": "$P1$ : Silinmiş yerel kategoriler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Yerel olarak silinmiş ve sunucuda güncellenmiş kategoriler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesNewOnDisk": {
+		"message": "$P1$ : Yerel yeni kategoriler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesUpdatedOnDisk": {
+		"message": "$P1$ : Kategoriler yerel olarak güncellendi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesUpdatedOnBoth": {
+		"message": "$P1$ : Kategoriler sunucuda ve yerel olarak güncellendi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroCategoriesUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kategoriler yerel olarak güncellendi ve sunucudan silindi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroModifGetOKFromServer": {
+		"message": "$P1$ : Değişiklikler sunucudan başarıyla alındı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroModifGetKOFromServer": {
+		"message": "$P1$ : Değişiklikler sunucudan başarısızlıkla alındı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroModifPutOKToServer": {
+		"message": "$P1$ : Değişiklikler sunucuya başarıyla gönderildi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroModifPutKOToServer": {
+		"message": "$P1$ : Değişiklikler sunucuya başarısızlıkla gönderildi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroImpossible": {
+		"message": "$P1$ : Sunucuyla senkronizasyon imkansız",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroDBFinishedResult": {
+		"message": "$P1$ : Yerel veri tabanı açıldı, kişilerin sonucu :",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroDBCardsOK": {
+		"message": "$P1$ : Kişiler açıldı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroDBCardsKO": {
+		"message": "$P1$ : Kişiler hatalı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroDirFinishedResult": {
+		"message": "$P1$ : Klasör açıldı, kişilerin sonucu :",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroDirCardsOK": {
+		"message": "$P1$ : Kişiler açıldı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroDirCardsKO": {
+		"message": "$P1$ : Kişiler hatalı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroFileFinishedResult": {
+		"message": "$P1$ : Dosya açıldı, kişilerin sonucu :",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroFileCardsOK": {
+		"message": "$P1$ : Kişiler açıldı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroFileCardsKO": {
+		"message": "$P1$ : Kişiler hatalı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchroForcedToResync": {
+		"message": "$P1$ : Bu hesabın tekrar senkronize olması için zor kullandık",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchroAllFinished": {
+		"message": "Tüm senkronizasyonlar bitti"
+	},
+	"discoveryRunning": {
+		"message": "$P1$ : Otomatik adres defteri keşfi çalışıyor",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"imageGetResponse": {
+		"message": "$P1$ : Resimler indirildi : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"imageGetError": {
+		"message": "$P1$ : Resimler hatalı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"importFinishedResult": {
+		"message": "$P1$ : İçe aktarma tamamlandı, kişilerin sonuçları :",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"importCardsOK": {
+		"message": "$P1$ : Kişiler içe aktarıldı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"importCardsKO": {
+		"message": "$P1$ : Kişiler hatalı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"importAllFinished": {
+		"message": "Tüm içe aktarmalar tamamlandı"
+	},
+	"cardDeletedOnDisk": {
+		"message": "$P1$ : Kişi $P2$ yerel olarak silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardUpdatedOnDisk": {
+		"message": "$P1$ : Kişi $P2$ yerel olarak güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardAlreadyGetFromCache": {
+		"message": "$P1$ : Kişi $P2$ zaten önbellekten alınmış",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kişi $P2$ yerel olarak silindi ve sunucuda güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardUpdatedOnBoth": {
+		"message": "$P1$ : Kişi $P2$ sunucuda ve yerel olarak güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardUpdatedOnServer": {
+		"message": "$P1$ : Kişi $P2$ sunucuda güncellendi (etag bulundu : $P3$, etag önbellekte : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"cardNewOnServer": {
+		"message": "$P1$ : Sunucuda yeni kişi bulundu",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardLoadedFromCacheDB": {
+		"message": "$P1$ : Kişi $P2$ önbellekten yüklendi (IndexedDB)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardNewOnDisk": {
+		"message": "$P1$ : Kişi $P2$ yerel olarak yeni",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kişi $P2$ yerel olarak güncellendi ve sunucudan silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardDeletedOnServer": {
+		"message": "$P1$ : Kişi $P2$ sunucudan silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardAlreadyExists": {
+		"message": "$P1$ : Kişi $P2$ zaten var",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardAskUserTitle": {
+		"message": "Kişi Düzenleme Çakışması"
+	},
+	"askUserPersistMessage": {
+		"message": "Bu seçeneği diğer var olan kişilere de uygula"
+	},
+	"cardkeepAskUserLabel": {
+		"message": "Kişiyi tut"
+	},
+	"cardupdateAskUserLabel": {
+		"message": "Kişinin üstüne yaz"
+	},
+	"cardduplicateAskUserLabel": {
+		"message": "Kişiyi Tekrarla"
+	},
+	"carddeleteAskUserLabel": {
+		"message": "Kişiyi sil"
+	},
+	"cardlocalAskUserLabel": {
+		"message": "Yerel değişikliği tercih et"
+	},
+	"cardremoteAskUserLabel": {
+		"message": "Uzak değişikliği tercih et"
+	},
+	"cardmergeAskUserLabel": {
+		"message": "Farklılıkları birleştir"
+	},
+	"serverCardDeletedFromServer": {
+		"message": "$P1$ : Kişi $P2$ sunucudan silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardNotExistServer": {
+		"message": "$P1$ : Kişi $P2$ sunucuda yok",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardDeleteFailed": {
+		"message": "$P1$ : Kişi $P2$ sunudan silinemedi (url : $P3$, status : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverCardSendingDeletion": {
+		"message": "$P1$ : Kişi $P2$ : silme isteği gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Kişi $P2$ sunucuda güncellendi (etag : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"serverCardUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kişi $P2$ sunucuda güncellendi (no etag in response)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardUpdateFailed": {
+		"message": "$P1$ : Kişi $P2$ sunucuda güncellenemedi (url : $P3$, status : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverCardSendingUpdate": {
+		"message": "$P1$ : Kişi $P2$ : güncelleme isteği gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardCreatedOnServerWithEtag": {
+		"message": "$P1$ : Kişi $P2$ sunucuda oluşturuldu (etag : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"serverCardCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kişi $P2$ sunucuda oluşturuldu (no etag in response)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardCreateFailed": {
+		"message": "$P1$ : Kişi $P2$ sunucuda oluşturulamadı (url : $P3$, status : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverCardSendingCreate": {
+		"message": "$P1$ : Kişi $P2$ : oluşturma isteği gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardGetImageFailed": {
+		"message": "$P1$ : Kişi için resim indirilemedi $P2$ (link : $P3$, durum : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverCardGetImageOK": {
+		"message": "$P1$ : Kişi için resim indirildi $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardGettingImage": {
+		"message": "$P1$ : Kişi için resim indiriliyor $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardGetKeyFailed": {
+		"message": "$P1$ : Kişi için anahtar indirilemedi $P2$ (link : $P3$, durum : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverCardGetKeyOK": {
+		"message": "$P1$ : Kişi için anahtar indirildi $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardGettingKey": {
+		"message": "$P1$ : Kişi için anahtar indiriliyor $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardGetOK": {
+		"message": "$P1$ : Kişi $P2$ sunucudan indirildi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCardGetFailed": {
+		"message": "$P1$ : Sunucudan indirilemedi (link : $P2$, durum : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : kişi takma adlarını almak için istek gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : takma adlar alındı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : sunucuda takma adlar alınamadı, hata oluştu (link : $P2$, durum : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"serverSendingGetCardLabels": {
+		"message": "$P1$ : Kişi $P2$ : kişi takma adlarını almak için istek gönderiyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverGetCardLabelsOK": {
+		"message": "$P1$ : Kişi $P2$ : takma adları alındı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverGetCardLabelsFailed": {
+		"message": "$P1$ : Kişi $P2$ : sunucuda takma adları alınamadı (link : $P3$, durum : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : kişi takma adları için güncelle isteği gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : takma adlar güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : sunucuda takma adlar güncellenemedi, hata oluştu (link : $P2$, durum : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"serverSendingPutCardLabels": {
+		"message": "$P1$ : Kişi $P2$ : kişi takma adları güncelleme isteği gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverPutCardLabelsOK": {
+		"message": "$P1$ : Kişi $P2$ : takma adlar güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverPutCardLabelsFailed": {
+		"message": "$P1$ : Kişi $P2$ : sunucuda takma adlar güncellenemedi (link : $P3$, durum : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"categoryDeletedOnDisk": {
+		"message": "$P1$ : Kategori $P2$ yerel olarak silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryUpdatedOnDisk": {
+		"message": "$P1$ : Kategori $P2$ yerel olarak güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryAlreadyGetFromCache": {
+		"message": "$P1$ : Kategori $P2$ önbellekten zaten alındı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryDeletedOnDiskUpdatedOnServer": {
+		"message": "$P1$ : Kategori $P2$ yerel olarak silindi ve sunucuda güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryUpdatedOnBoth": {
+		"message": "$P1$ : Kategori $P2$ yerel olarak ve sunucuda güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryUpdatedOnServer": {
+		"message": "$P1$ : Kategori $P2$ sunucuda güncellendi (etag bulundu : $P3$, etag önbellekte : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"categoryNewOnServer": {
+		"message": "$P1$ : Sunucuda yeni bir kategori bulundu",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"categoryLoadedFromCacheDB": {
+		"message": "$P1$ : Kategori $P2$ önbellekten yüklendi (IndexedDB)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryNewOnDisk": {
+		"message": "$P1$ : Kategori $P2$ yerel olarak yeni",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryUpdatedOnDiskDeletedOnServer": {
+		"message": "$P1$ : Kategori $P2$ yerel olarak güncellendi ve sunucudan silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryDeletedOnServer": {
+		"message": "$P1$ : Kategori $P2$ sunucudan silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryAskUserTitle": {
+		"message": "Kategori Düzenleme Çakışması"
+	},
+	"categorykeepAskUserLabel": {
+		"message": "Kategoriyi tut"
+	},
+	"categorydeleteAskUserLabel": {
+		"message": "Kategoriyi sil"
+	},
+	"categorylocalAskUserLabel": {
+		"message": "Yerel değişikliği tercih et"
+	},
+	"categoryremoteAskUserLabel": {
+		"message": "Uzak değişikliği tercih et"
+	},
+	"serverCategoryDeletedFromServer": {
+		"message": "$P1$ : Kategori $P2$ sunucudan silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCategoryNotExistServer": {
+		"message": "$P1$ : Kategori $P2$ sunucuda yok",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCategoryDeleteFailed": {
+		"message": "$P1$ : Kategori $P2$ sunudan silinemedi (link : $P3$, durum : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverCategorySendingDeletion": {
+		"message": "$P1$ : Kategori $P2$ : silme isteği gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCategoryUpdatedOnServerWithEtag": {
+		"message": "$P1$ : Kategori $P2$ sunucuda güncellendi (etag : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"serverCategoryUpdatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kategori $P2$ sunucuda güncellendi (no etag in response)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCategoryUpdateFailed": {
+		"message": "$P1$ : Kategori $P2$ sunuda güncellenemedi (link : $P3$, durum : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverCategorySendingUpdate": {
+		"message": "$P1$ : Kategori $P2$ : güncelleme isteği gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCategoryCreatedOnServerWithEtag": {
+		"message": "$P1$ : Kategori $P2$ sunucuda oluşturuldu (etag : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"serverCategoryCreatedOnServerWithoutEtag": {
+		"message": "$P1$ : Kategori $P2$ sunucuda oluşturuldu (no etag in response)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"serverCategoryCreateFailed": {
+		"message": "$P1$ : Kategori $P2$ sunuda oluşturulamadı (link : $P3$, durum : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"serverCategorySendingCreate": {
+		"message": "$P1$ : Kategori $P2$ : oluşturma isteği gönderiliyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchronizationSearchingCategories": {
+		"message": "$P1$ : Kategoriler aranıyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchronizationFailed": {
+		"message": "$P1$ : Senkronizasyon hata verdi (adım : $P2$, link : $P3$, durum : $P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"synchronizationUnauthorized": {
+		"message": "$P1$ : Sunucuda oturum açılamıyor. Muhtemelen kurulum hatalı, kullanıcı adı ya da şifre.",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchronizationSearchingCards": {
+		"message": "$P1$ : Kişiler aranıyor …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"synchronizationRequestDiscovery": {
+		"message": "$P1$ : Keşfetme isteği olmadan onaylama üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchronizationRequestDiscovery4": {
+		"message": "$P1$ : Keşfediliyor faz 5 isteği üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchronizationRequestDiscovery3": {
+		"message": "$P1$ : Keşfediliyor faz 3 isteği üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchronizationRequestDiscovery2": {
+		"message": "$P1$ : Keşfediliyor faz 2 isteği üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"synchronizationRequestDiscovery1": {
+		"message": "$P1$ : Keşfediliyor faz 1 isteği üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"googleAccessTokenOK": {
+		"message": "$P1$ : Google erişim belirteci isteği onaylandı, erişim belirteci : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"googleRefreshTokenOK": {
+		"message": "$P1$ : Google yenileme belirteci isteği onaylandı, yenileme belirteci : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"googleGetNewRefreshToken": {
+		"message": "$P1$ : Yeni bir Google yenileme belirteci isteği deneniyor üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"googleNewRefreshTokenOK": {
+		"message": "$P1$ : Bir yetki kodu alındı : $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"googleRequestAccessToken": {
+		"message": "$P1$ : Google erişim belirteci isteği üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"googleRequestRefreshToken": {
+		"message": "$P1$ : Google yenileme belirteci isteği üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"yahooAccessTokenOK": {
+		"message": "$P1$ : Yahoo! erişim belirteci isteği onaylandı, erişim belirteci : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"yahooRefreshTokenOK": {
+		"message": "$P1$ : Yahoo! yenileme belirteci isteği onaylandı, yenileme belirteci : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"yahooGetNewRefreshToken": {
+		"message": "$P1$ : Yeni bir Yahoo! yenileme belirteci isteği deneniyor üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"yahooNewRefreshTokenOK": {
+		"message": "$P1$ : Bir yetki kodu alındı : $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"yahooRequestAccessToken": {
+		"message": "$P1$ : Yahoo! erişim belirteci isteği üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"yahooRequestRefreshToken": {
+		"message": "$P1$ : Yahoo! yenileme belirteci isteği üzerinde $P2$ …",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"periodicSyncDeleting": {
+		"message": "$P1$ : Periyodik senkronizasyon işlemi siliniyor (id : $P2$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"periodicSyncSetting": {
+		"message": "$P1$ : Periyodik senkronizasyon işlemi ayarı (ara : $P2$ ms, id : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"periodicSyncSyncing": {
+		"message": "$P1$ : Periyodik senkronizasyon ayarları sebebiyle senkronize ediliyor…",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"fileEmpty": {
+		"message": "Dosya $P1$ boş",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"fileAlreadyOpen": {
+		"message": "Dosya $P1$ zaten CardBook'ta açık",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"directoryAlreadyOpen": {
+		"message": "Klasör $P1$ zaten CardBook'ta açık",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"parsingCardError": {
+		"message": "$P1$ : Kişi analiz edilirken hata : \n$P2$ \n$P3$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"addressbookOpened": {
+		"message": "$P1$ : Adres defteri açıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"addressbookModified": {
+		"message": "$P1$ : Adres defteri değiştirildi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"addressbookDeleted": {
+		"message": "$P1$ : Adres defteri kapandı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"addressbookCreated": {
+		"message": "$P1$ : Adres defteri oluşturuldu",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"addressbookDisabled": {
+		"message": "$P1$ : Adres defteri devre dışı bırakıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"addressbookReadOnly": {
+		"message": "$P1$ : Adres defteri salt okunur modda",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"addressbookReadWrite": {
+		"message": "$P1$ : Adres defteri yazılır-okunur modda",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"addressbookEnabled": {
+		"message": "$P1$ : Adres defteri etkinleştirildi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardCreated": {
+		"message": "$P1$ : Kişi $P2$ oluşturuldu",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardUpdated": {
+		"message": "$P1$ : Kişi $P2$ güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardDeleted": {
+		"message": "$P1$ : Kişi $P2$ silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardAddedToCategory": {
+		"message": "$P1$ : Kişi $P2$ başarılı bir şekilde kategoriye eklendi $P3$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"cardDeletedFromAllCategory": {
+		"message": "$P1$ : Kişi $P2$ başarılı bir şekilde tüm kategorilerden kaldırıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"cardsConverted": {
+		"message": "$P1$ : kişiler şuna dönüştürüldü $P2$ : $P3$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"cardsConvertedUndo": {
+		"message": "VCards dönüştürüldü"
+	},
+	"cardsImportedFromFileUndo": {
+		"message": "Dosya $P1$ içe aktarıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardsImportedFromDirUndo": {
+		"message": "Klasör $P1$ içe aktarıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"undoActionDoneUndo": {
+		"message": "Geri alma tamamlandı ($P1$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"redoActionDoneUndo": {
+		"message": "Yineleme tamamlandı ($P1$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardCreatedUndo": {
+		"message": "Kişi $P1$ oluşturuldu",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardUpdatedUndo": {
+		"message": "Kişi $P1$ güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"outgoingEmailCollectedUndo": {
+		"message": "Giden e-posta toplandı"
+	},
+	"emailCollectedByFilterUndo": {
+		"message": "E-postalar filtre tarafından toplandı"
+	},
+	"emailDeletedByFilterUndo": {
+		"message": "E-postalar filtre tarafından silindi"
+	},
+	"cardsMergedUndo": {
+		"message": "Kişiler birleştirildi"
+	},
+	"cardsDuplicatedUndo": {
+		"message": "Kişiler tekrarlandı"
+	},
+	"displayNameGenerated": {
+		"message": "$P1$ : görünen isimleri yeniden oluşturulmuş kişiler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"displayNameGeneratedUndo": {
+		"message": "Görünen isimler yeniden oluşturuldu"
+	},
+	"cardModifiedUndo": {
+		"message": "Kişi $P1$ güncellendi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardsDeleted1Undo": {
+		"message": "Kişi $P1$ silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardsDeleted2Undo": {
+		"message": "Kişiler  silindi"
+	},
+	"cardsPastedUndo": {
+		"message": "Kişiler  yapıştırıldı"
+	},
+	"cardsDraggedUndo": {
+		"message": "Kişiler sürüklendi"
+	},
+	"categoryCreated": {
+		"message": "$P1$ : Kategori $P2$ oluşturuldu",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryCreatedUndo": {
+		"message": "Kategori $P1$ oluşturuldu",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"categorySelectedUndo": {
+		"message": "Kategori $P1$ seçildi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"categoryUnselectedUndo": {
+		"message": "Kategori $P1$ seçiimi kaldırıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"categoryRenamed": {
+		"message": "$P1$ : Kategori $P2$ yeniden adlandırıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryRenamedUndo": {
+		"message": "Kategori $P1$ yeniden adlandırıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"categoryDeleted": {
+		"message": "$P1$ : Kategori $P2$ silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"categoryDeletedUndo": {
+		"message": "Kategori $P1$ silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"categoryConvertedToListUndo": {
+		"message": "Kategori $P1$ listeye dönüştürüldü",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"listConvertedToCategoryUndo": {
+		"message": "Liste $P1$ kategoriye dönüştürüldü",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"linePastedUndo": {
+		"message": "Satır yapıştırıldı"
+	},
+	"nodeRenamedUndo": {
+		"message": "Düğüm $P1$ yeniden adlandırıldı",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"nodeDeleted": {
+		"message": "$P1$ : Düğüm $P2$ silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"nodeDeletedUndo": {
+		"message": "Düğüm $P1$ silindi",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"listCreatedFromNodeUndo": {
+		"message": "Liste $P1$ düğümden oluşturuldu",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"exportsOKIntoFile": {
+		"message": "Kişiler şu dosyaya aktarıldı $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"exportOKIntoFile": {
+		"message": "Kişi şu dosyaya aktarıldı $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"exportsOKIntoDir": {
+		"message": "Kişiler şu klasöre aktarıldı $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"exportOKIntoDir": {
+		"message": "Kişi şu klasöre aktarıldı $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"importNotIntoSameFile": {
+		"message": "Aynı dosyaya aktarılamaz"
+	},
+	"importNotIntoSameDir": {
+		"message": "Aynı klasöre aktarılamaz"
+	},
+	"clipboardWrong": {
+		"message": "Panodaki veri aktarılamıyor"
+	},
+	"clipboardEmpty": {
+		"message": "Pano boş"
+	},
+	"imageError": {
+		"message": "Bir hata nedeniyle resim eklenemedi"
+	},
+	"imageErrorWithMessage": {
+		"message": "Resim eklenemedi : $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"imageSavedToFile": {
+		"message": "Resim dosyaya kaydedildi : $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"contactsCopied": {
+		"message": "Kişiler panoya kopyalandı"
+	},
+	"contactCopied": {
+		"message": "Kişiler panoya kopyalandı"
+	},
+	"lineCopied": {
+		"message": "Satır panoya kopyalandı"
+	},
+	"linePastedToCard": {
+		"message": "Satır şu kişiye yapıştırıldı: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"numberContactsFound": {
+		"message": "Kişilerin sayısı bulundu: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"numberContacts": {
+		"message": "Kişilerin sayısı: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"numberContactsFoundModified": {
+		"message": "Kişilerin sayısı bulundu: $P1$ (yerel olarak düzenlenmiş: $P2$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"numberContactsModified": {
+		"message": "Kişilerin sayısı: $P1$ (yerel olarak düzenlenmiş: $P2$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"numberContactsSelected": {
+		"message": "Seçili: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"numberLines": {
+		"message": "Satırların sayısı: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardbook.searchFrom.name": {
+		"message": "CardBook'tan"
+	},
+	"cardbook.searchTo.name": {
+		"message": "CardBook'a"
+	},
+	"cardbook.searchCc.name": {
+		"message": "CardBook Cc"
+	},
+	"cardbook.searchBcc.name": {
+		"message": "CardBook Bcc"
+	},
+	"cardbook.searchToOrCc.name": {
+		"message": "CardBook'a ya da Cc"
+	},
+	"cardbook.searchAll.name": {
+		"message": "CardBook'tan, CardBook'a, Cc ya da Bcc"
+	},
+	"cardbook.searchCorrespondents.name": {
+		"message": "Cardbook Yazışanları"
+	},
+	"cardbook.addFrom.name": {
+		"message": "Kimden'i Cardbook'a ekle"
+	},
+	"cardbook.addTo.name": {
+		"message": "Kime'yi CardBook'a ekle"
+	},
+	"cardbook.addCc.name": {
+		"message": "Cc'yi CardBook'a ekle"
+	},
+	"cardbook.addBcc.name": {
+		"message": "Bcc'yi CardBook'a ekle"
+	},
+	"cardbook.addAll.name": {
+		"message": "Kimden, Kime, Cc ya da Bcc'yi CardBook'a ekle"
+	},
+	"cardbook.removeFrom.name": {
+		"message": "Kimden'i CardBook'tan kaldır"
+	},
+	"cardbook.removeTo.name": {
+		"message": "Kime'yi CardBook'tan kaldır"
+	},
+	"cardbook.removeCc.name": {
+		"message": "CardBook'tan Cc'yi kaldır"
+	},
+	"cardbook.removeBcc.name": {
+		"message": "CardBook'tan Bcc'yi kaldır"
+	},
+	"cardbook.removeAll.name": {
+		"message": "CardBook'tan Kimden, Kime, Cc ya da Bcc'yi kaldır"
+	},
+	"urlDownloaded": {
+		"message": "Link indirildi : $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"addressbookHeader": {
+		"message": "Adres defteri"
+	},
+	"photoLabel": {
+		"message": "Fotoğraf"
+	},
+	"versionLabel": {
+		"message": "Versiyon"
+	},
+	"revLabel": {
+		"message": "Son Güncelleme"
+	},
+	"lastnameLabel": {
+		"message": "Soyisim"
+	},
+	"firstnameLabel": {
+		"message": "İsim"
+	},
+	"othernameLabel": {
+		"message": "Diğer İsim"
+	},
+	"prefixnameLabel": {
+		"message": "Ön ek"
+	},
+	"suffixnameLabel": {
+		"message": "Son ek"
+	},
+	"fnLabel": {
+		"message": "Görünen İsim"
+	},
+	"nicknameLabel": {
+		"message": "Kullanıcı adı"
+	},
+	"genderLabel": {
+		"message": "Cinsiyet"
+	},
+	"bdayLabel": {
+		"message": "Doğum Günü"
+	},
+	"birthplaceLabel": {
+		"message": "Doğum Yeri"
+	},
+	"anniversaryLabel": {
+		"message": "Yıl Dönümü"
+	},
+	"deathdateLabel": {
+		"message": "Ölüm Tarihi"
+	},
+	"deathplaceLabel": {
+		"message": "Ölüm Yeri"
+	},
+	"titleLabel": {
+		"message": "Ünvan"
+	},
+	"roleLabel": {
+		"message": "Görev"
+	},
+	"orgLabel": {
+		"message": "Organizasyon"
+	},
+	"categoriesLabel": {
+		"message": "Kategoriler"
+	},
+	"adrLabel": {
+		"message": "Adresler"
+	},
+	"telLabel": {
+		"message": "Telefonlar"
+	},
+	"emailLabel": {
+		"message": "E-postalar"
+	},
+	"imppLabel": {
+		"message": "IM"
+	},
+	"urlLabel": {
+		"message": "Link"
+	},
+	"eventLabel": {
+		"message": "Etkinlikler"
+	},
+	"noteLabel": {
+		"message": "Notlar"
+	},
+	"postOfficeLabel": {
+		"message": "Posta Kutusu"
+	},
+	"extendedAddrLabel": {
+		"message": "Daire ya da Oda"
+	},
+	"streetLabel": {
+		"message": "Sokak"
+	},
+	"localityLabel": {
+		"message": "İlçe"
+	},
+	"regionLabel": {
+		"message": "Şehir"
+	},
+	"postalCodeLabel": {
+		"message": "Posta Kodu"
+	},
+	"countryLabel": {
+		"message": "Ülke"
+	},
+	"ageLabel": {
+		"message": "Yaş"
+	},
+	"yearLabel": {
+		"message": "Yıl"
+	},
+	"ABNameLabel": {
+		"message": "Adres Defteri"
+	},
+	"cardIconLabel": {
+		"message": "İkon"
+	},
+	"nameLabel": {
+		"message": "İsim"
+	},
+	"mailerLabel": {
+		"message": "Postacı"
+	},
+	"tzLabel": {
+		"message": "Zaman Dilimi"
+	},
+	"geoLabel": {
+		"message": "Geo"
+	},
+	"prodidLabel": {
+		"message": "Prodid"
+	},
+	"sortstringLabel": {
+		"message": "Sıralama Dizisi"
+	},
+	"uidLabel": {
+		"message": "Kişi Kimliği"
+	},
+	"cbidLabel": {
+		"message": "CardBook Kimliği"
+	},
+	"class1Label": {
+		"message": "Sınıf"
+	},
+	"dirPrefIdLabel": {
+		"message": "Adres Defteri Kimliği"
+	},
+	"kindLabel": {
+		"message": "Tür"
+	},
+	"etagLabel": {
+		"message": "Etag"
+	},
+	"phoneticfirstnameLabel": {
+		"message": "İsim (Fonetik)"
+	},
+	"phoneticlastnameLabel": {
+		"message": "Soyisim (Fonetik)"
+	},
+	"custom1Label": {
+		"message": "Özel 1"
+	},
+	"custom2Label": {
+		"message": "Özel 2"
+	},
+	"custom3Label": {
+		"message": "Özel 3"
+	},
+	"custom4Label": {
+		"message": "Özel 4"
+	},
+	"warningTitle": {
+		"message": "Uyarı"
+	},
+	"errorTitle": {
+		"message": "Hata"
+	},
+	"confirmTitle": {
+		"message": "Doğrulama"
+	},
+	"birthdaysListWindowLabel": {
+		"message": "Yıldönümleri listesi (toplam : $P1$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"syncListWindowLabelRunning": {
+		"message": "Yıldönümleri senkronizasyonu çalışıyor ($P1$/$P2$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"syncListWindowLabelEnded": {
+		"message": "Yıldönümleri senkronizasyonu bitti ($P1$/$P2$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"syncListWindowLabelFailed": {
+		"message": "Yıldönümleri senkronizasyonu hata verdi"
+	},
+	"syncListExistingEntry": {
+		"message": "$P1$ : Lightning'de var olan etkinlikler : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"syncListCreatedEntry": {
+		"message": "$P1$ : Etkinlik Lightning'de oluşturuldu : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"syncListErrorEntry": {
+		"message": "$P1$ : Lightning'deki etkinlik hatalı : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"noBirthdaysFoundMessage": {
+		"message": "Şu zamana kadar yıldönümü bulunamadı $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"noEmailFoundMessage": {
+		"message": "Şunun için e-posta bulunamadı $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"eventEntryTitleMessage": {
+		"message": "Şunun yıldönümü %1$S"
+	},
+	"anniversaryCategory": {
+		"message": "Yıldönümü"
+	},
+	"calendarNotFoundTitle": {
+		"message": "Yıldönümü Hatırlatıcı - Lightning ile senkronizasyon durduruldu"
+	},
+	"calendarNotFoundMessage": {
+		"message": "Takvim $P1$ bulunamadı. Lightning ile senkronizasyon durduruldu.",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"calendarNotWritableTitle": {
+		"message": "Yıldönümü Hatırlatıcı - Lightning ile senkronizasyon durduruldu"
+	},
+	"calendarNotWritableMessage": {
+		"message": "Takvim $P1$ yazılabilir değil (çevrimdışı ya da salt okunur olabilir?). Lightning ile senkronizasyon durduruldu.",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"errorAttachingFile": {
+		"message": "vCard Ekleme : Postaya eklenmek üzere vCard'a eklemek için dosya oluşturulamıyor  : $P1$ ($P2$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"errorInfiniteLoopRecursion": {
+		"message": "Listeler : listeler için sınırsız tekrar döngüsü : $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"WRONG_VERSION": {
+		"message": "Sadece vCard'ların 3.0 ve 4.0 versiyonları desteklenmektedir"
+	},
+	"unableToParseResponse": {
+		"message": "$P1$ : Şu satır yüzünden sunucunun yanıtını çözümlemek imkansız : $P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"dateEntry1Wrong": {
+		"message": "$P1$ : Kişi $P2$ tarih alanında değer var ($P3$) bu değer adres defterinin tarih formatına uymuyor ($P4$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			},
+			"P4": {
+				"content": "$4"
+			}
+		}
+	},
+	"dateEntry2Wrong": {
+		"message": "Tarih alanı değeri ($P1$) adres defterinin tarih formatına uymuyor ($P2$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"validateIntegerMsg": {
+		"message": "Alan $P1$ boş olmalı ya da tam sayı olmalı 1 ve $P2$ (değer : $P3$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			},
+			"P3": {
+				"content": "$3"
+			}
+		}
+	},
+	"eventNameNull": {
+		"message": "En az bir etkinliğin tanımı yok"
+	},
+	"eventDateNull": {
+		"message": "En az bir etkinliğin tarihi boş"
+	},
+	"invalidURL": {
+		"message": "Geçersiz Link : $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"cardbookSearchInputDefault": {
+		"message": "Arama…"
+	},
+	"blogtype": {
+		"message": "Blog"
+	},
+	"celltype": {
+		"message": "Mobil"
+	},
+	"faxtype": {
+		"message": "Faks"
+	},
+	"homefaxtype": {
+		"message": "Ev Faks"
+	},
+	"homepagetype": {
+		"message": "Ana Sayfa"
+	},
+	"hometype": {
+		"message": "Ev"
+	},
+	"iphonetype": {
+		"message": "iPhone"
+	},
+	"maintype": {
+		"message": "Ana"
+	},
+	"othertype": {
+		"message": "Diğer"
+	},
+	"pagertype": {
+		"message": "Çağrı"
+	},
+	"profiletype": {
+		"message": "Profil"
+	},
+	"workfaxtype": {
+		"message": "İş Faks"
+	},
+	"worktype": {
+		"message": "İş"
+	},
+	"types.gender.f": {
+		"message": "Kadın"
+	},
+	"types.gender.m": {
+		"message": "Erkek"
+	},
+	"types.gender.n": {
+		"message": "Boş"
+	},
+	"types.gender.o": {
+		"message": "Diğer"
+	},
+	"types.gender.u": {
+		"message": "Bilinmeyen"
+	},
+	"typesTooltip": {
+		"message": "Uygun türlere değiştirmek için CardBook seçeneklerini kullan"
+	},
+	"prefLabel": {
+		"message": "Seçenekler"
+	},
+	"prefValueLabel": {
+		"message": "Seçenekler değeri"
+	},
+	"prefWeightTooltip": {
+		"message": "Seçenekler 1 ile 100 arasında farklı değerlerde olabilir. Normal kullanım için boş bırak."
+	},
+	"impp.skype": {
+		"message": "Skype"
+	},
+	"impp.jabber": {
+		"message": "Jabber"
+	},
+	"impp.googletalk": {
+		"message": "Google Talk"
+	},
+	"impp.qq": {
+		"message": "Tencent QQ"
+	},
+	"addToAddressbook": {
+		"message": "Bu adres defterine ekle"
+	},
+	"wdw_cardEditionViewResultTitle": {
+		"message": "Kişi değiştirme sonucu"
+	},
+	"wdw_cardEditionViewResultHideCreateTitle": {
+		"message": "Kişi değiştirme sonucu"
+	},
+	"wdw_cardEditionAddEmailTitle": {
+		"message": "Yeni bir e-posta adresi kaydet"
+	},
+	"wdw_cardEditionCreateContactTitle": {
+		"message": "Yeni Kişi"
+	},
+	"wdw_cardEditionCreateListTitle": {
+		"message": "Yeni Posta Listesi"
+	},
+	"wdw_cardEditionEditContactTitle": {
+		"message": "Kişiyi Düzenle"
+	},
+	"wdw_cardEditionEditListTitle": {
+		"message": "Listeyi Düzenle"
+	},
+	"wdw_cardEditionAddLineTitle": {
+		"message": "Kişiyi Düzenle"
+	},
+	"wdw_cardEditionViewContactTitle": {
+		"message": "Kişiyi Gör"
+	},
+	"wdw_cardEditionViewListTitle": {
+		"message": "Listeyi Gör"
+	},
+	"wdw_cardbookPrintTitleLong": {
+		"message": "Baskı Önizleme $P1$ - CardBook - Thunderbird",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"wdw_cardbookPrintTitle": {
+		"message": "Baskı Önizleme"
+	},
+	"displayGroupboxLabel": {
+		"message": "Görünen İsim"
+	},
+	"personalGroupboxLabel": {
+		"message": "Kişisel bilgi"
+	},
+	"orgGroupboxLabel": {
+		"message": "Çalışma Bilgisi"
+	},
+	"categoriesHeader": {
+		"message": "Kategoriler"
+	},
+	"adrGroupboxLabel": {
+		"message": "Adresler"
+	},
+	"telGroupboxLabel": {
+		"message": "Telefon Numaraları"
+	},
+	"emailGroupboxLabel": {
+		"message": "E-posta Adresleri"
+	},
+	"urlGroupboxLabel": {
+		"message": "Linkler"
+	},
+	"eventGroupboxLabel": {
+		"message": "Etkinlikler"
+	},
+	"noteGroupboxLabel": {
+		"message": "Notlar"
+	},
+	"searchTermsGroupboxLabel": {
+		"message": "Arama terimleri"
+	},
+	"addedCardsGroupboxLabel": {
+		"message": "Seçilen öğeler"
+	},
+	"addEntryTooltip": {
+		"message": "Girdi Ekle"
+	},
+	"removeEntryTooltip": {
+		"message": "Girdi Sil"
+	},
+	"upEntryTooltip": {
+		"message": "Yukarı Taşı"
+	},
+	"downEntryTooltip": {
+		"message": "Aşağı Taşı"
+	},
+	"validatedEntryTooltip": {
+		"message": "Geçerli"
+	},
+	"noValidatedEntryTooltip": {
+		"message": "Doğrula"
+	},
+	"notValidatedEntryTooltip": {
+		"message": "Geçerli Olmayan Biçim"
+	},
+	"linkEntryTooltip": {
+		"message": "Link Oluştur…"
+	},
+	"selectedCardsDeletionConfirmMessagePF": {
+		"message": "Seçili kişiyi silmek istediğine emin misin?;Silmek istediğine emin misin $P1$ seçili kişiler?",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"catDeletionsConfirmMessagePF": {
+		"message": "Kategoriyi silmek istediğine emin misin $P2$ bir kişiyi kapsayan?;Kategoriyi silmek istediğine emin misin $P2$ kapsayan $P1$ kişileri?",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"nodeDeletionsConfirmMessagePF": {
+		"message": "Düğümü silmek istediğine emin misin $P2$ bir kişiyi kapsayan?;Düğümü silmek istediğine emin misin  $P2$ kapsayan $P1$ kişileri?",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"accountDeletionConfirmMessage": {
+		"message": "Adres defterini silmek istediğine emin misin $P1$ CardBook deposundan?",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"accountDeletionDiscoveryConfirmMessage": {
+		"message": "Adres defteri $P1$ sunucundan silinmiş görünüyor, onu CardBook depondan da silmek ister misin?",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"accountDeletiondeleteContentFileMessage": {
+		"message": "dosyayı sil $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"accountDeletiondeleteContentDirMessage": {
+		"message": "klasörü sil $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"directoryDeletionConfirmMessage": {
+		"message": "Klasör $P1$ boş değil. Bu klasördeki tüm nesneleri silmek istediğine emin misin?",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"choiceMappingTitle": {
+		"message": "Alan Seçimi"
+	},
+	"choiceavailableColumnsGroupboxLabel": {
+		"message": "Uygun Alanlar"
+	},
+	"choiceaddedColumnsGroupboxLabel": {
+		"message": "Seçilen Alanlar"
+	},
+	"exportMappingTitle": {
+		"message": "Alan Haritası Seçimi"
+	},
+	"exportavailableColumnsGroupboxLabel": {
+		"message": "Uygun Sütunlar"
+	},
+	"exportaddedColumnsGroupboxLabel": {
+		"message": "Seçilen Sütunlar"
+	},
+	"importMappingTitle": {
+		"message": "Alan Haritası Seçimi"
+	},
+	"importavailableColumnsGroupboxLabel": {
+		"message": "Uygun Sütunlar"
+	},
+	"importaddedColumnsGroupboxLabel": {
+		"message": "Seçilen Sütunlar"
+	},
+	"importfoundColumnsGroupboxLabel": {
+		"message": "Başlık Sütunu"
+	},
+	"importblankColumn": {
+		"message": "Boş Sütun"
+	},
+	"importNoTypeLabel": {
+		"message": "tür yok"
+	},
+	"fieldDelimiterLabel": {
+		"message": "Alan Sınırlayıcı"
+	},
+	"includePrefLabel": {
+		"message": "Seçenekleri dahil et"
+	},
+	"lineHeaderLabel": {
+		"message": "İlk satır başlık olarak"
+	},
+	"missingColumnsConfirmMessage": {
+		"message": "Seçilen sütunların sayısı dosyadaki sütunların sayısından farklı. Seçilmeyen ya da gereksiz sütunlar görmezden gelinecek. Devam edilsin mi?"
+	},
+	"toUpperCase": {
+		"message": "Büyük harfe çevir"
+	},
+	"toLowerCase": {
+		"message": "Küçük harflere çevir"
+	},
+	"copyFieldValue": {
+		"message": "Kopyala ($P1$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"pasteFieldValue": {
+		"message": "Yapıştır ($P1$)",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"wdw_cardbookRenameFieldEditTypeTitle": {
+		"message": "Türü Yeniden Adlandır"
+	},
+	"wdw_cardbookRenameFieldAddTypeTitle": {
+		"message": "Yeni Tür"
+	},
+	"wdw_cardbookRenameFieldOrgTitle": {
+		"message": "Organizasyon Editörü"
+	},
+	"wdw_cardbookRenameFieldCreateCatTitle": {
+		"message": "Kategori Oluştur"
+	},
+	"wdw_cardbookRenameFieldEditCatTitle": {
+		"message": "Kategoriyi Düzenle"
+	},
+	"wdw_cardbookRenameFieldAddCatTitle": {
+		"message": "Yeni Kategori"
+	},
+	"wdw_cardbookRenameFieldEditNodeTitle": {
+		"message": "Düğümü düzenle"
+	},
+	"wdw_cardbookRenameFieldEditTypeLabel": {
+		"message": "Tür:"
+	},
+	"wdw_cardbookRenameFieldAddTypeLabel": {
+		"message": "Tür:"
+	},
+	"wdw_cardbookRenameFieldOrgLabel": {
+		"message": "Tür:"
+	},
+	"wdw_cardbookRenameFieldCreateCatLabel": {
+		"message": "Kategori:"
+	},
+	"wdw_cardbookRenameFieldEditCatLabel": {
+		"message": "Kategori:"
+	},
+	"wdw_cardbookRenameFieldAddCatLabel": {
+		"message": "Kategori:"
+	},
+	"wdw_cardbookRenameFieldEditNodeLabel": {
+		"message": "$P1$:",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"wdw_cardbookConfigurationAddEmailsRestrictionTitle": {
+		"message": "E-posta Hesabı Kısıtlama Tanımlaması"
+	},
+	"wdw_cardbookConfigurationAddEmailsCollectionTitle": {
+		"message": "E-posta Hesabı E-posta Toplama Tanımlaması"
+	},
+	"ignoreCaseIgnoreDiacriticLabel": {
+		"message": "Küçük/büyük harfleri de aksanlıları de görmezden gel"
+	},
+	"ignoreCaseMatchDiacriticLabel": {
+		"message": "Küçük/büyük harfi görmezden gel, aksanlıları eşleştir"
+	},
+	"matchCaseIgnoreDiacriticLabel": {
+		"message": "Küçük/büyük harfleri eşleştir, aksanlıları görmezden gel"
+	},
+	"matchCaseMatchDiacriticLabel": {
+		"message": "Hem küçük/büyük harfleri hem de aksanlıları eşleştir"
+	},
+	"allCategories": {
+		"message": "Tümünü Göster"
+	},
+	"onlyCategories": {
+		"message": "Sadece Kategoriler"
+	},
+	"noCategory": {
+		"message": "Sadece Kişiler"
+	},
+	"multipleCategories": {
+		"message": "Çoklu Kategori"
+	},
+	"none": {
+		"message": "Boş"
+	},
+	"multipleTypes": {
+		"message": "Çoklu Tür"
+	},
+	"noType": {
+		"message": "Tür Yok"
+	},
+	"eventContactsWindowLabel": {
+		"message": "$P1$ için etkinlik",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"fnDuplicatedMessage": {
+		"message": "(kopyala)"
+	},
+	"allMailAccounts": {
+		"message": "Tüm E-posta Hesapları"
+	},
+	"includeLabel": {
+		"message": "Dahil et"
+	},
+	"excludeLabel": {
+		"message": "Dahil etme"
+	},
+	"sendButtonLabel": {
+		"message": "Yeni mesaj oluştur"
+	},
+	"doNotShowAnymore": {
+		"message": "E-posta adresi olmadan kişilere e-posta yollamaya çalıştığımda beni uyarma"
+	},
+	"emptyEmailsCardConfirmMessage": {
+		"message": "Bu kişinin e-posta adresi yok: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"emptyEmailsCardsConfirmMessage": {
+		"message": "Bu kişilerin e-posta adresleri yok: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"eventInNoteEventPrefix": {
+		"message": "Etkinlik"
+	},
+	"deathSuffix": {
+		"message": "(ölü)"
+	},
+	"dateFormatsDLabel": {
+		"message": "D"
+	},
+	"dateFormatsMLabel": {
+		"message": "M"
+	},
+	"dateFormatsYLabel": {
+		"message": "Y"
+	},
+	"autoComputeFn": {
+		"message": "Görünen ismi üretmeyi etkinleştir"
+	},
+	"dontAutoComputeFn": {
+		"message": "Görünen ismi üretmeyi kapat"
+	},
+	"customLabel": {
+		"message": "Özel"
+	},
+	"valueAlreadyExists": {
+		"message": "Değer $P1$ zaten var",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"allAccountsLabel": {
+		"message": "Tüm Adres Defterleri"
+	},
+	"enabledAccountsLabel": {
+		"message": "Etkinleştirilmiş Adres Defterleri"
+	},
+	"disabledAccountsLabel": {
+		"message": "Devre dışı bırakılmış adres defterleri"
+	},
+	"localAccountsLabel": {
+		"message": "Yerel Adres Defterleri"
+	},
+	"remoteAccountsLabel": {
+		"message": "Uzak Adres Defterleri"
+	},
+	"searchAccountsLabel": {
+		"message": "Kaydedilmiş Aramalar"
+	},
+	"wdw_passwordMissingTitle": {
+		"message": "Kayıp şifre"
+	},
+	"wdw_passwordWrongTitle": {
+		"message": "Geçersiz şifre"
+	},
+	"dateDisplayedFormatLong": {
+		"message": "Uzun: %P1%"
+	},
+	"dateDisplayedFormatShort": {
+		"message": "Kısa: %P1%"
+	},
+	"addressFormatFormula": {
+		"message": "({{3}}\n|)({{1}}\n|)({{4}} |)({{6}}|)(\n)({{5}}\n|)({{7}}|)"
+	},
+	"newTokenTitle": {
+		"message": "Hesabına giriş yap $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"warnDescription": {
+		"message": "CardBook kişileri almak için sizin $P1$ hesabınıza ulaşacak. Kimlik ve kişi bilgileri sadece bilgisayarınızla ile Google arasında transfer edilecek, üçüncü taraf siteler müdahil olamaz.  ",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"applicationName": {
+		"message": "Uygulama: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"clientID": {
+		"message": "İstemci Kimliği: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"scopeURL": {
+		"message": "Kapsam: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"invalidEmail": {
+		"message": "$P1$ geçerli bir e-posta adresi değil çünkü kullanıcı@sunucu formatında değil. ",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"appendEmailLabel": {
+		"message": "Listeye ekle: $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"categoryAddNew": {
+		"message": "Yeni kategori ekle"
+	},
+	"typeAddNew": {
+		"message": "Yeni tür ekle"
+	},
+	"allContacts": {
+		"message": "Tüm kişiler"
+	},
+	"keyDescription": {
+		"message": "Şifreleme anahtarı"
+	},
+	"encryptionStarted": {
+		"message": "Şifreleme başlatma"
+	},
+	"encryptionProcessed": {
+		"message": "Öğeler şifrelendi: $P1$/$P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"encryptionFinished": {
+		"message": "Şifreleme bitti"
+	},
+	"decryptionStarted": {
+		"message": "Şifre çözme başlatma"
+	},
+	"decryptionProcessed": {
+		"message": "Öğelerin şifresi çözüldü: $P1$/$P2$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			},
+			"P2": {
+				"content": "$2"
+			}
+		}
+	},
+	"decryptionFinished": {
+		"message": "Şifre çözme bitti"
+	},
+	"menu_undo.long.label": {
+		"message": "Geri al - $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"menu_undo.short.label": {
+		"message": "Geri al"
+	},
+	"menu_redo.long.label": {
+		"message": "Yinele - $P1$",
+		"placeholders": {
+			"P1": {
+				"content": "$1"
+			}
+		}
+	},
+	"menu_redo.short.label": {
+		"message": "Yinele"
+	},
+	"cardbookMenuItemLabel": {
+		"message": "CardBook"
+	},
+	"cardbookMenuItemAccesskey": {
+		"message": "b"
+	},
+	"cardbookMenuItemKey": {
+		"message": "b"
+	},
+	"cardbookMenuItemTooltip": {
+		"message": "CardBook sekmesine geç"
+	},
+	"cardbookToolbarButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookToolbarButtonTooltip": {
+		"message": "CardBook sekmesine geç"
+	},
+	"cardbookTabButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookTabButtonTooltip": {
+		"message": "CardBook sekmesine geç"
+	},
+	"cardbookQFBButtonLabel": {
+		"message": "CardBook"
+	},
+	"cardbookQFBButtonTooltip": {
+		"message": "Sadece adres defterindeki kişilerin mesajlarını göster"
+	},
+	"quickFilterBar.booleanMode.tooltip": {
+		"message": "Etiket filtreleme modu"
+	},
+	"quickFilterBar.booleanModeAny.label": {
+		"message": "Herhangi biri"
+	},
+	"quickFilterBar.booleanModeAny.tooltip": {
+		"message": "Seçili etiket kriterlerinden an az biri eşleşmeli"
+	},
+	"quickFilterBar.booleanModeAll.label": {
+		"message": "Tümü"
+	},
+	"quickFilterBar.booleanModeAll.tooltip": {
+		"message": "Bütün seçili etiket kriterleri eşleşmeli"
+	},
+	"newCardBookCardMenuLabel": {
+		"message": "CardBook Kişisi…"
+	},
+	"newCardBookCardMenuAccesskey": {
+		"message": "C"
+	},
+	"newCardBookCardMenuKey": {
+		"message": "N"
+	},
+	"newCardBookSearchMenuLabel": {
+		"message": "CardBook'u Ara…"
+	},
+	"newCardBookSearchMenuAccesskey": {
+		"message": "C"
+	},
+	"addToCardBookMenuLabel": {
+		"message": "Cardbook Kişisi Ekle"
+	},
+	"addToCardBookMenuAccesskey": {
+		"message": "d"
+	},
+	"editInCardBookMenuLabel": {
+		"message": "Cardbook Kişisi Düzenle"
+	},
+	"editInCardBookMenuAccesskey": {
+		"message": "E"
+	},
+	"deleteInCardBookMenuLabel": {
+		"message": "Cardbook Kişisi Sil"
+	},
+	"deleteInCardBookMenuAccesskey": {
+		"message": "D"
+	},
+	"IMPPMenuLabel": {
+		"message": "...e Bağlan"
+	},
+	"IMPPMenuAccesskey": {
+		"message": "o"
+	},
+	"findAllEmailsFromContactMessengerLabel": {
+		"message": "Bu Kişiyle İlgili E-postaları Bul"
+	},
+	"findAllEmailsFromContactMessengerAccesskey": {
+		"message": "c"
+	},
+	"findEmailsFromEmailMessengerLabel": {
+		"message": "Bu E-posta Adresiyle İlgili E-postaları Bul"
+	},
+	"findEmailsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"findAllEventsFromContactMessengerLabel": {
+		"message": "Bu Kişiyle İlgili Etkinlikleri Bul"
+	},
+	"findAllEventsFromContactMessengerAccesskey": {
+		"message": "c"
+	},
+	"findEventsFromEmailMessengerLabel": {
+		"message": "Bu E-posta Adresiyle İlgili Etkinlileri Bul"
+	},
+	"findEventsFromEmailMessengerAccesskey": {
+		"message": "e"
+	},
+	"mailContext-addToCardBookMenuLabel": {
+		"message": "Cardbook Kişisi Ekle…"
+	},
+	"mailContext-addToCardBookMenuAccesskey": {
+		"message": "d"
+	},
+	"addAllAttachementsToCardBookMenuLabel": {
+		"message": "Hepsini Cardbook'a…"
+	},
+	"addAttachementToCardBookMenuLabel": {
+		"message": "CardBook'a…"
+	},
+	"cardbookABPaneItemLabel": {
+		"message": "Adres Defteri Bölmesi"
+	},
+	"cardbookABPaneItemAccesskey": {
+		"message": "A"
+	},
+	"cardbookContactPaneItemLabel": {
+		"message": "Kişi Bölmesi"
+	},
+	"cardbookContactPaneItemAccesskey": {
+		"message": "O"
+	},
+	"wizard.title": {
+		"message": "Yeni adres defteri ekle"
+	},
+	"wizard.label": {
+		"message": "Yeni adres defteri ekle"
+	},
+	"welcomePage.wizard.description": {
+		"message": "Hoş Geldiniz"
+	},
+	"welcomePage.description": {
+		"message": "Cardbook ilk defa çalışıyormuş gibi görünüyor. Cardbook Thunderbird'ün standart adres defterlerinden ve uzak adres defterlerinden kişileri toplamaya çalışacak. "
+	},
+	"initialPage.wizard.description": {
+		"message": "Yeni adres defterinin yeri"
+	},
+	"initialPage.description": {
+		"message": "Adres defteri yeri"
+	},
+	"initialPage.computer.label": {
+		"message": "Yerel"
+	},
+	"initialPage.network.label": {
+		"message": "Uzak"
+	},
+	"initialPage.standard.label": {
+		"message": "Thunderbird'ün standart adres defterlerini içe aktar"
+	},
+	"initialPage.search.label": {
+		"message": "Var olan adres defterlerinin içinde ara"
+	},
+	"initialPage.find.label": {
+		"message": "Uzak adres defteri ara"
+	},
+	"localPage.wizard.description": {
+		"message": "Yeni yerel adres defteri için tür ve yer"
+	},
+	"localPage.type.description": {
+		"message": "Yerel adres defterinin türü:"
+	},
+	"localPage.type.label": {
+		"message": "Tür"
+	},
+	"localPage.createDB.label": {
+		"message": "Yeni adres defteri oluştur"
+	},
+	"localPage.createDirectory.label": {
+		"message": "Yeni adres defteri oluştur (Klasör)"
+	},
+	"localPage.createFile.label": {
+		"message": "Yeni adres defteri oluştur (Dosya)"
+	},
+	"localPage.openDirectory.label": {
+		"message": "Var olan bir adres defterini aç (Klasör)"
+	},
+	"localPage.openFile.label": {
+		"message": "Var olan bir adres defterini aç (Dosya)"
+	},
+	"localPage.uri.groupbox": {
+		"message": "Yer"
+	},
+	"localPage.uri.label": {
+		"message": "Klasör ya da dosya"
+	},
+	"localPage.uri.description": {
+		"message": "Göz atıcı kullanarak yeni yerel adres defteri için yer seç. Eğer yeni bir dosya oluşturuyorsan uzantısını .vcf olarak belirle."
+	},
+	"localPage.uributton.label": {
+		"message": "Göz at"
+	},
+	"remotePage.wizard.description": {
+		"message": "Yeni uzak adres defteri için tür ve yer."
+	},
+	"remotePage.description": {
+		"message": "Uzak adres defterinin türü nedir? (Dikkat: Google vCard standartlarını uymuyor)"
+	},
+	"remotePage.type.label": {
+		"message": "Tür"
+	},
+	"remotePage.carddav.label": {
+		"message": "CardDAV"
+	},
+	"remotePage.google.label": {
+		"message": "Google"
+	},
+	"remotePage.apple.label": {
+		"message": "Apple"
+	},
+	"remotePage.yahoo.label": {
+		"message": "Yahoo!"
+	},
+	"remotePage.connection.label": {
+		"message": "Bağlantı"
+	},
+	"remotePage.url.description": {
+		"message": "CardDAV türü için, uzak adres defterinin linkini gir. Tam olmayan link kullanmayı deneyebilirsin, (örneğin : http(s)://carddav.örnekwebsitesi.org). Google adres defteri için bu alanı belirtme. "
+	},
+	"remotePage.url.label": {
+		"message": "Link:"
+	},
+	"remotePage.credentials.description": {
+		"message": "Adres defterinize ulaşmak için kimlik bilgisini girin. Google adres defteri için kullanıcı adınız Google e-postanız olmalı. "
+	},
+	"remotePage.user.label": {
+		"message": "Kullanıcı:"
+	},
+	"remotePage.password.label": {
+		"message": "Şifre:"
+	},
+	"remotePage.passwordShow.label": {
+		"message": "Göster"
+	},
+	"remotePage.validatebutton.label": {
+		"message": "Doğrula"
+	},
+	"locationSearchPage.wizard.description": {
+		"message": "Kayıtlı arama tanımı"
+	},
+	"locationSearchPage.label": {
+		"message": "Kaydedilmiş Arama"
+	},
+	"abSearchHeading.label": {
+		"message": "İçinde ara:"
+	},
+	"abSearchHeading.accesskey": {
+		"message": "h"
+	},
+	"matchAll.label": {
+		"message": "Sonrakilerin tamamını eşleştir"
+	},
+	"matchAll.accesskey": {
+		"message": "a"
+	},
+	"matchAny.label": {
+		"message": "Sonrakilerden herhangi birini eşleştir"
+	},
+	"matchAny.accesskey": {
+		"message": "o"
+	},
+	"googleOauthPage.wizard.description": {
+		"message": "Google Kimlik Doğrulama"
+	},
+	"namePage.wizard.description": {
+		"message": "Adres Defteri Seçenekleri"
+	},
+	"namePage.selected.label": {
+		"message": "Seçili"
+	},
+	"namePage.name.label": {
+		"message": "İsim"
+	},
+	"namePage.color.label": {
+		"message": "Renk"
+	},
+	"namePage.urnuuid.label": {
+		"message": "Kullan urn:uuid"
+	},
+	"namePage.DBCached.label": {
+		"message": "Çevrimdışı Çalış"
+	},
+	"namePage.vCardVersion.label": {
+		"message": "vCard"
+	},
+	"namesPage.wizard.description": {
+		"message": "Adres Defterleri Seçenekleri"
+	},
+	"namesPage.name.label": {
+		"message": "İsimler"
+	},
+	"namesPage.name.description": {
+		"message": "Birden fazla adress defteri bulundu. Açılmasını istediğiniz adres defterlerini seçin ve isimleri :"
+	},
+	"findPage.wizard.description": {
+		"message": "Uzak adres defteri araması"
+	},
+	"findPage.name1.description": {
+		"message": "Uzak adref defteri bulunamadı"
+	},
+	"findPage.name2.description": {
+		"message": "Bir uzak adres defteri bulundu. Uzak adres defterini şuna eklemek için doğrula:"
+	},
+	"findPage.name3.description": {
+		"message": "Birden fazla uzak adres defteri bulundu. Uzak adres defterlerini şuna eklemek için doğrula:"
+	},
+	"finishPage.wizard.description": {
+		"message": "Adres defterleri yapılandırması"
+	},
+	"finishPage.description": {
+		"message": "Yeni adres defteriniz başarıyla yapılandırıldı"
+	},
+	"finishsPage.description": {
+		"message": "Yeni adres defterleriniz başarıyla yapılandırıldı"
+	},
+	"wdw_addressbooksEditTitle": {
+		"message": "Adres Defteri Seçenekleri"
+	},
+	"colorLabel": {
+		"message": "Renk:"
+	},
+	"name.ABedit.label": {
+		"message": "İsim:"
+	},
+	"name.ABedit.accesskey": {
+		"message": "N"
+	},
+	"nodesLabel": {
+		"message": "Düğümler:"
+	},
+	"categoriesNodeLabel": {
+		"message": "Kategoriler"
+	},
+	"orgNodeLabel": {
+		"message": "Organizasyon"
+	},
+	"typeLabel": {
+		"message": "Tür:"
+	},
+	"username.ABedit.label": {
+		"message": "Kullanıcı Adı:"
+	},
+	"vCardVersionLabel": {
+		"message": "vCard:"
+	},
+	"readonlyLabel": {
+		"message": "Salt-okunur mod"
+	},
+	"readonlyAccesskey": {
+		"message": "R"
+	},
+	"urnuuidLabel": {
+		"message": "urn:uuid kullan"
+	},
+	"DBCachedLabel": {
+		"message": "Çevrimdışı Çalış"
+	},
+	"autoSyncGroupboxLabel": {
+		"message": "Düzenli Senkronizasyon"
+	},
+	"autoSyncLabel": {
+		"message": "Düzenli senkronizasyonu etkinleştir"
+	},
+	"autoSyncAccesskey": {
+		"message": "E"
+	},
+	"autoSyncIntervalLabel": {
+		"message": "Düzenli senkorinazyonlar arası zaman (dakika):"
+	},
+	"autoSyncIntervalAccesskey": {
+		"message": "I"
+	},
+	"miscTabLabel": {
+		"message": "Çeşitli"
+	},
+	"fnFormulaCaption": {
+		"message": "Görünen İsim"
+	},
+	"fnFormulaLabel": {
+		"message": "Görünen İsim İlintisi:"
+	},
+	"fnFormulaAccesskey": {
+		"message": "y"
+	},
+	"resetFnFormulaLabel": {
+		"message": "Varsayılana Dön"
+	},
+	"resetFnFormulaAccesskey": {
+		"message": "V"
+	},
+	"applyToABButtonLabel": {
+		"message": "…a uygula"
+	},
+	"applyToABButtonAccesskey": {
+		"message": "A"
+	},
+	"wdw_adrEditionTitle": {
+		"message": "Adres düzenleyici"
+	},
+	"adrPostOfficeLabel": {
+		"message": "Posta Kutusu"
+	},
+	"adrExtendedAddrLabel": {
+		"message": "Daire ya da Oda"
+	},
+	"adrStreetLabel": {
+		"message": "Sokak"
+	},
+	"adrLocalityLabel": {
+		"message": "İlçe"
+	},
+	"adrRegionLabel": {
+		"message": "Şehir"
+	},
+	"adrPostalCodeLabel": {
+		"message": "Posta Kodu"
+	},
+	"adrCountryLabel": {
+		"message": "Ülke"
+	},
+	"deprecatedLabel": {
+		"message": "Terk edilmiş"
+	},
+	"daysLeftColumnLabel": {
+		"message": "Kalan günler"
+	},
+	"nameColumnLabel": {
+		"message": "İsim"
+	},
+	"ageColumnLabel": {
+		"message": "Yaş"
+	},
+	"dateOfBirthColumnLabel": {
+		"message": "Etkinlik tarihi"
+	},
+	"dateOfBirthFoundColumnLabel": {
+		"message": "Bulunan tarih"
+	},
+	"emailColumnLabel": {
+		"message": "E-posta"
+	},
+	"sendEmailLabel": {
+		"message": "Yeni Mesaj Oluştur"
+	},
+	"sendEmailAccesskey": {
+		"message": "E"
+	},
+	"syncLightningMenuItemLabel": {
+		"message": "Lightning ile senkronize et"
+	},
+	"syncLightningMenuAccesskey": {
+		"message": "S"
+	},
+	"calendarNameLabel": {
+		"message": "Takvim"
+	},
+	"calendarIdLabel": {
+		"message": "Takvim No"
+	},
+	"existingLabel": {
+		"message": "Var olan"
+	},
+	"failedLabel": {
+		"message": "Başarısız"
+	},
+	"succeededLabel": {
+		"message": "Başarılı"
+	},
+	"wdw_bulkOperationTitle": {
+		"message": "Çalışıyor…"
+	},
+	"wdw_cardbookConfigurationAddCustomFieldTitle": {
+		"message": "Özel Alan Düzenleyici"
+	},
+	"customFieldCodeLabel": {
+		"message": "Alan Adı:"
+	},
+	"customFieldLabelLabel": {
+		"message": "Alan Etiketi:"
+	},
+	"mailAccountLabel": {
+		"message": "Posta Hesabı:"
+	},
+	"addressbookLabel": {
+		"message": "Adres Defteri:"
+	},
+	"categoryLabel": {
+		"message": "Kategori:"
+	},
+	"contactLabel": {
+		"message": "Kişi"
+	},
+	"wdw_cardbookConfigurationAddIMPPTitle": {
+		"message": "İletişim Kuralları Düzenleyici"
+	},
+	"IMPPCodeLabel": {
+		"message": "Kod:"
+	},
+	"IMPPLabelLabel": {
+		"message": "Etiket:"
+	},
+	"IMPPProtocolLabel": {
+		"message": "İletişim Kuralı:"
+	},
+	"wdw_cardbookConfigurationAddVcardTitle": {
+		"message": "Bir vCard seç"
+	},
+	"contactVcardLabel": {
+		"message": "Kişi:"
+	},
+	"filenameLabel": {
+		"message": "Ekli dosya:"
+	},
+	"vCardLabel": {
+		"message": "vCard"
+	},
+	"CardBookTabLabel": {
+		"message": "Sekme"
+	},
+	"editionTabLabel": {
+		"message": "Sürüm"
+	},
+	"IMPPsTabLabel": {
+		"message": "İletişim"
+	},
+	"customFieldsTabLabel": {
+		"message": "Özel Alanlar"
+	},
+	"listsTabLabel": {
+		"message": "Listeler"
+	},
+	"syncTabLabel": {
+		"message": "Sync"
+	},
+	"emailTabLabel": {
+		"message": "E-posta"
+	},
+	"birthdaylistTabLabel": {
+		"message": "Yıl Dönümü"
+	},
+	"helpTabLabel": {
+		"message": "Yardım"
+	},
+	"integrationGroupboxLabel": {
+		"message": "Thunderbird içinde Tümleştirme"
+	},
+	"autocompletionLabel": {
+		"message": "E-posta adreslerinin otomatik tamamlanması"
+	},
+	"autocompletionAccesskey": {
+		"message": "o"
+	},
+	"autocompletionTooltip": {
+		"message": "Thunderbird adres defterlerindeki kişilerin otomatik tamamlanma standartlarını, CardBook adres defterlerindeki kişilerin herhangi bir otomatik tamamlanmasıyla yapılandır"
+	},
+	"autocompleteSortByPopularityLabel": {
+		"message": "E-posta adreslerini kullanım sıklığına göre sırala"
+	},
+	"autocompleteSortByPopularityAccesskey": {
+		"message": "p"
+	},
+	"autocompleteProposeConcatEmailsLabel": {
+		"message": "Sıralanmış e-postaları her kişi için öner"
+	},
+	"autocompleteProposeConcatEmailsAccesskey": {
+		"message": "i"
+	},
+	"autocompleteShowAddressbookLabel": {
+		"message": "Adres defteri adı göster"
+	},
+	"autocompleteShowAddressbookAccesskey": {
+		"message": "S"
+	},
+	"autocompleteWithColorLabel": {
+		"message": "Adres defteri rengi göster"
+	},
+	"autocompleteWithColorAccesskey": {
+		"message": "A"
+	},
+	"autocompleteRestrictSearchLabel": {
+		"message": "Arama alanını kısıtla"
+	},
+	"autocompleteRestrictSearchAccesskey": {
+		"message": "R"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Düzenle"
+	},
+	"chooseAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "D"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonLabel": {
+		"message": "Varsayılana Dön"
+	},
+	"resetAutocompleteRestrictSearchFieldsButtonAccesskey": {
+		"message": "V"
+	},
+	"useColorLabel": {
+		"message": "Adres defteri rengini şunun için kullan:"
+	},
+	"useColorBackgroundLabel": {
+		"message": "Arka plan rengi"
+	},
+	"useColorBackgroundAccesskey": {
+		"message": "A"
+	},
+	"useColorTextLabel": {
+		"message": "Yazı rengi"
+	},
+	"useColorTextAccesskey": {
+		"message": "Y"
+	},
+	"useColorNothingLabel": {
+		"message": "Hiçbiri"
+	},
+	"useColorNothingAccesskey": {
+		"message": "H"
+	},
+	"exclusiveLabel": {
+		"message": "Kişiler için benzersiz kaynak"
+	},
+	"exclusiveAccesskey": {
+		"message": "K"
+	},
+	"exclusiveTooltip": {
+		"message": "Eğer devre dışıysa, bu seçenek sarı yıldızlar, e-posta görünen isim ve e-posta otomatik tamamlama için Thunderbird standart adres defterlerindeki kişilerin alınmasına izin verir. "
+	},
+	"accountsRestrictionsLabel": {
+		"message": "Posta Hesabı Kısıtlama"
+	},
+	"accountsRestrictionsEnabledLabel": {
+		"message": "Etkin"
+	},
+	"accountsRestrictionsMailNameLabel": {
+		"message": "Posta Hesabı"
+	},
+	"accountsRestrictionsABNameLabel": {
+		"message": "Adres Defteri"
+	},
+	"accountsRestrictionsCatNameLabel": {
+		"message": "Kategori"
+	},
+	"accountsRestrictionsIncludeNameLabel": {
+		"message": "Tür"
+	},
+	"addRestrictionLabel": {
+		"message": "Ekle"
+	},
+	"addRestrictionAccesskey": {
+		"message": "E"
+	},
+	"renameRestrictionLabel": {
+		"message": "Düzenle"
+	},
+	"renameRestrictionAccesskey": {
+		"message": "D"
+	},
+	"deleteRestrictionLabel": {
+		"message": "Sil"
+	},
+	"deleteRestrictionAccesskey": {
+		"message": "S"
+	},
+	"emailsCollectionLabel": {
+		"message": "Giden E-postayı Topla"
+	},
+	"emailsCollectionTooltip": {
+		"message": "Thunderbird'ün standart giden e-posta adres koleksiyonu genişletir. Eğer etkinse, hiçbir CardBook adres defterinde bulunmayan e-posta adresleri seçilen adres defter(ler)ine eklenecek."
+	},
+	"emailsCollectionEnabledLabel": {
+		"message": "Etkin"
+	},
+	"emailsCollectionMailNameLabel": {
+		"message": "Posta Hesabı"
+	},
+	"emailsCollectionABNameLabel": {
+		"message": "Adres Defteri"
+	},
+	"emailsCollectionCatNameLabel": {
+		"message": "Kategori"
+	},
+	"addEmailsCollectionLabel": {
+		"message": "Ekle"
+	},
+	"addEmailsCollectionAccesskey": {
+		"message": "E"
+	},
+	"renameEmailsCollectionLabel": {
+		"message": "Düzenle"
+	},
+	"renameEmailsCollectionAccesskey": {
+		"message": "D"
+	},
+	"deleteEmailsCollectionLabel": {
+		"message": "Sil"
+	},
+	"deleteEmailsCollectionAccesskey": {
+		"message": "S"
+	},
+	"logGroupboxLabel": {
+		"message": "Kayıt"
+	},
+	"debugModeLabel": {
+		"message": "Hata ayıklama modu"
+	},
+	"debugModeAccesskey": {
+		"message": "m"
+	},
+	"debugModeTooltip": {
+		"message": "Uzatılmış giriş için hata ayıklama modunu etkinleştir."
+	},
+	"statusInformationLineNumberLabel": {
+		"message": "Kayıt dosyasında tutulacak satır sayısı:"
+	},
+	"statusInformationLineNumberAccesskey": {
+		"message": "k"
+	},
+	"tabsEditingGroupboxLabel": {
+		"message": "Görünen Sekmeler"
+	},
+	"listTabLabel": {
+		"message": "Liste"
+	},
+	"listTabAccesskey": {
+		"message": "L"
+	},
+	"listTab.conf.label": {
+		"message": "Listeler"
+	},
+	"listTab.conf.accesskey": {
+		"message": "L"
+	},
+	"technicalTab.conf.label": {
+		"message": "Teknik"
+	},
+	"technicalTab.conf.accesskey": {
+		"message": "T"
+	},
+	"vCardTab.conf.label": {
+		"message": "vCard"
+	},
+	"vCardTab.conf.accesskey": {
+		"message": "V"
+	},
+	"keyTab.conf.label": {
+		"message": "Genel Anahtarlar"
+	},
+	"keyTab.conf.accesskey": {
+		"message": "G"
+	},
+	"advancedTab1Label": {
+		"message": "Gelişmiş"
+	},
+	"popularityLabel": {
+		"message": "Kullanım Sıklığı:"
+	},
+	"memberOfLabel": {
+		"message": "Öğesi:"
+	},
+	"localizeEditingGroupboxLabel": {
+		"message": "Şununla Haritada Göster"
+	},
+	"localizeEngineOpenStreetMapLabel": {
+		"message": "OpenStreetMap"
+	},
+	"localizeEngineOpenStreetMapAccesskey": {
+		"message": "O"
+	},
+	"localizeEngineGoogleMapsLabel": {
+		"message": "Google Haritalar"
+	},
+	"localizeEngineGoogleMapsAccesskey": {
+		"message": "G"
+	},
+	"localizeEngineBingMapsLabel": {
+		"message": "Bing Haritalar"
+	},
+	"localizeEngineBingMapsAccesskey": {
+		"message": "B"
+	},
+	"previewLabel": {
+		"message": "Önizleme"
+	},
+	"localizeTargetLabel": {
+		"message": "Harici Linkleri Aç"
+	},
+	"localizeTargetInLabel": {
+		"message": "Thunderbird İçinde"
+	},
+	"localizeTargetInAccesskey": {
+		"message": "I"
+	},
+	"localizeTargetOutLabel": {
+		"message": "Thunderbird Dışında"
+	},
+	"localizeTargetOutAccesskey": {
+		"message": "U"
+	},
+	"showNameAsLabel": {
+		"message": "İsim Gösterme Biçimi"
+	},
+	"showNameAsLFLabel": {
+		"message": "Soyisim İsim"
+	},
+	"showNameAsLFAccesskey": {
+		"message": "F"
+	},
+	"showNameAsLFCommaLabel": {
+		"message": "Soyisim, İsim"
+	},
+	"showNameAsLFCommaAccesskey": {
+		"message": "i"
+	},
+	"showNameAsFLLabel": {
+		"message": "İsim Soyisim"
+	},
+	"showNameAsFLAccesskey": {
+		"message": "e"
+	},
+	"showNameAsDSPLabel": {
+		"message": "Görünen İsim"
+	},
+	"showNameAsDSPAccesskey": {
+		"message": "D"
+	},
+	"adrFormulaCaption": {
+		"message": "Adres"
+	},
+	"adrFormulaLabel": {
+		"message": "Adres Biçim İlintisi:"
+	},
+	"adrFormulaAccesskey": {
+		"message": "R"
+	},
+	"resetAdrFormulaLabel": {
+		"message": "Varsayılana Dön"
+	},
+	"resetAdrFormulaAccesskey": {
+		"message": "V"
+	},
+	"miscEditingGroupboxLabel": {
+		"message": "Çeşitli"
+	},
+	"preferEmailEditionLabel": {
+		"message": "Kişiye iki kere tıklandığında ona e-posta gönderme yerine onu düzenle"
+	},
+	"preferEmailEditionAccesskey": {
+		"message": "k"
+	},
+	"dateDisplayedFormatLabel": {
+		"message": "Tarih Yazı Formatı:"
+	},
+	"dateDisplayedFormatAccesskey": {
+		"message": "x"
+	},
+	"defaultRegionLabel": {
+		"message": "Varsayılan Bölge:"
+	},
+	"defaultRegionAccesskey": {
+		"message": "D"
+	},
+	"defaultRegionTooltip": {
+		"message": "Adresler ve biçimlendirilmiş telefon numaraları için varsayılan bölge."
+	},
+	"editionGroupboxLabel": {
+		"message": "Alan seçici"
+	},
+	"editionWarn": {
+		"message": "Bir kişi düzenlendiğinde Carbook varsayılan olarak bu seçili alanları gösterecek."
+	},
+	"fieldsButtonLabel": {
+		"message": "Varsayılan Yap"
+	},
+	"preferDisplayNameCheckBoxLabel": {
+		"message": "Her zaman görünen ismi mesaj başlığına tercih et"
+	},
+	"selectAllFieldsLabel": {
+		"message": "Tümünü Seç"
+	},
+	"preferenceGroupboxLabel": {
+		"message": "PREF Alanı"
+	},
+	"usePreferenceValueLabel": {
+		"message": "Seçenek değerini kullan (sadece vCard 4.0 içi)"
+	},
+	"usePreferenceValueAccesskey": {
+		"message": "p"
+	},
+	"preferenceValueLabel": {
+		"message": "PREF değer alanının etiketi"
+	},
+	"preferenceValueAccesskey": {
+		"message": "V"
+	},
+	"ABtypesGroupboxLabel": {
+		"message": "Adres defteri"
+	},
+	"typesCategoryGoogleLabel": {
+		"message": "Google"
+	},
+	"typesCategoryGoogleAccesskey": {
+		"message": "G"
+	},
+	"typesCategoryAppleLabel": {
+		"message": "Apple"
+	},
+	"typesCategoryAppleAccesskey": {
+		"message": "p"
+	},
+	"typesCategoryYahooLabel": {
+		"message": "Yahoo!"
+	},
+	"typesCategoryYahooAccesskey": {
+		"message": "Y"
+	},
+	"typesCategoryOthersLabel": {
+		"message": "Diğer"
+	},
+	"typesCategoryOthersAccesskey": {
+		"message": "O"
+	},
+	"typesGroupboxLabel": {
+		"message": "Türler"
+	},
+	"typesCategoryAdrLabel": {
+		"message": "Adres"
+	},
+	"typesCategoryAdrAccesskey": {
+		"message": "S"
+	},
+	"typesCategoryEmailLabel": {
+		"message": "E-posta"
+	},
+	"typesCategoryEmailAccesskey": {
+		"message": "m"
+	},
+	"typesCategoryImppLabel": {
+		"message": "IMPP"
+	},
+	"typesCategoryImppAccesskey": {
+		"message": "I"
+	},
+	"typesCategoryTelLabel": {
+		"message": "Telefon"
+	},
+	"typesCategoryTelAccesskey": {
+		"message": "H"
+	},
+	"typesCategoryUrlLabel": {
+		"message": "Link"
+	},
+	"typesCategoryUrlAccesskey": {
+		"message": "U"
+	},
+	"typesLabelLabel": {
+		"message": "Etiket"
+	},
+	"addTypeLabel": {
+		"message": "Ekle"
+	},
+	"addTypeAccesskey": {
+		"message": "E"
+	},
+	"renameTypeLabel": {
+		"message": "Düzenle"
+	},
+	"renameTypeAccesskey": {
+		"message": "D"
+	},
+	"deleteTypeLabel": {
+		"message": "Sil"
+	},
+	"deleteTypeAccesskey": {
+		"message": "S"
+	},
+	"resetTypeLabel": {
+		"message": "Varsayılana Dön"
+	},
+	"resetTypeAccesskey": {
+		"message": "V"
+	},
+	"IMPPGroupboxWarn": {
+		"message": "Bu kurulum internet bağlantılarının planlanan protokolü kullanmasına izin verir. "
+	},
+	"IMPPGroupboxLabel": {
+		"message": "İnternet Bağlantıları"
+	},
+	"preferIMPPPrefLabel": {
+		"message": "Şununla işaretlenmiş  internet bağlantılarını tercih et"
+	},
+	"preferIMPPPrefAccesskey": {
+		"message": "P"
+	},
+	"preferIMPPPrefWarn": {
+		"message": "İşaretlenen adres yoksa, kişinin tüm adresleri için bir bağlantı önerilecek."
+	},
+	"IMPPCodeHeaderLabel": {
+		"message": "Kod"
+	},
+	"IMPPLabelHeaderLabel": {
+		"message": "Etiket"
+	},
+	"IMPPProtocolHeaderLabel": {
+		"message": "İletişim Kuralı"
+	},
+	"addIMPPLabel": {
+		"message": "Ekle"
+	},
+	"addIMPPAccesskey": {
+		"message": "E"
+	},
+	"renameIMPPLabel": {
+		"message": "Düzenle"
+	},
+	"renameIMPPAccesskey": {
+		"message": "D"
+	},
+	"deleteIMPPLabel": {
+		"message": "Sil"
+	},
+	"deleteIMPPAccesskey": {
+		"message": "S"
+	},
+	"URLPhoneGroupboxLabel": {
+		"message": "Link yazılımsal telefonlar için açılıyor"
+	},
+	"URLPhoneGroupboxWarn": {
+		"message": "Bu bölüm eğer telefon için seçili link protokolünüz varsa uygulanır.  Link, telefon numarasına izafeten {{1}}, barındırmalı."
+	},
+	"URLPhoneURLLabel": {
+		"message": "Link:"
+	},
+	"URLPhoneURLAccesskey": {
+		"message": "U"
+	},
+	"URLPhoneUserLabel": {
+		"message": "Kullanıcı Adı:"
+	},
+	"URLPhoneUserAccesskey": {
+		"message": "s"
+	},
+	"URLPhonePasswordLabel": {
+		"message": "Şifre:"
+	},
+	"URLPhonePasswordAccesskey": {
+		"message": "P"
+	},
+	"URLPhonePasswordShowLabel": {
+		"message": "Göster"
+	},
+	"URLPhonePasswordShowAccesskey": {
+		"message": "w"
+	},
+	"URLPhoneBackgroundLabel": {
+		"message": "Arka planda çalıştır"
+	},
+	"URLPhoneBackgroundAccesskey": {
+		"message": "R"
+	},
+	"encryptionGroupboxLabel": {
+		"message": "Şifreleme"
+	},
+	"encryptionExplanation": {
+		"message": "CardBook yerel verinizi şifreleyebilir. Bu nedenle parola yöneticisinde tutulan gizli bir anahtar kullanacak. Eğer bu anahtarı kaybederseniz yerel verinizi kurtaramazsınız. Tam bir koruma için Thunderbird ana parolası özelliği önerilmektedir. "
+	},
+	"localDataEncryptionEnabledLabel": {
+		"message": "Yerel olarak önbelleklenmiş kartları şifrele"
+	},
+	"localDataEncryptionEnabledAccesskey": {
+		"message": "E"
+	},
+	"customFieldRankHeader": {
+		"message": "Sınıf"
+	},
+	"customFieldCodeHeader": {
+		"message": "Alan Adı"
+	},
+	"customFieldLabelHeader": {
+		"message": "Alan Etiketi"
+	},
+	"customFieldsPersTitleLabel": {
+		"message": "Kişisel bilgi"
+	},
+	"customFieldsPersTitleAccesskey": {
+		"message": "K"
+	},
+	"customFieldsOrgTitleLabel": {
+		"message": "Çalışma Bilgisi"
+	},
+	"customFieldsOrgTitleAccesskey": {
+		"message": "a"
+	},
+	"addCustomFieldsLabel": {
+		"message": "Ekle"
+	},
+	"addCustomFieldsAccesskey": {
+		"message": "E"
+	},
+	"renameCustomFieldsLabel": {
+		"message": "Düzenle"
+	},
+	"renameCustomFieldsAccesskey": {
+		"message": "D"
+	},
+	"deleteCustomFieldsLabel": {
+		"message": "Sil"
+	},
+	"deleteCustomFieldsAccesskey": {
+		"message": "S"
+	},
+	"orgWarn": {
+		"message": "ORG alanı noktalı virgül ile ayrılmış halde, yapılandırılmış yazı değeri içeren parçalar içerebilir. (Örneğin : şirketiniz;bölümünüz;alanınız). Aşağıdaki alan bu yapıdaki parça etiketlerini tanımlamaktadır."
+	},
+	"orgRankLabel": {
+		"message": "Sınıf"
+	},
+	"orgLabelLabel": {
+		"message": "Alan Etiketi"
+	},
+	"listPanelLabel": {
+		"message": "Eğer sunucunuz kategorileri desteklemiyorsa (Google, Apple, Zimbra vb...) listeler gruplara e-posta göndermek için güzel bir araçtır. vCard 3.0 tam olarak listeleri desteklememektedir ancak özel alanlarla bu yapılabilir. Eğer vCard 3.0 ile listeleri kullanmak isterseniz, bu alanları tanımlamalısınız. "
+	},
+	"listGroupboxLabel": {
+		"message": "Listeler için Özel Alanlar"
+	},
+	"kindCustomLabel": {
+		"message": "Tür:"
+	},
+	"kindCustomAccesskey": {
+		"message": "K"
+	},
+	"memberCustomLabel": {
+		"message": "Öğe:"
+	},
+	"memberCustomAccesskey": {
+		"message": "M"
+	},
+	"resetListLabel": {
+		"message": "Varsayılana Dön"
+	},
+	"resetListAccesskey": {
+		"message": "V"
+	},
+	"syncGroupboxLabel": {
+		"message": "Senkronizasyon"
+	},
+	"syncWarn": {
+		"message": "Senkronizasyon sizin değişikliklerinizi uzak sunucuya, sunuculardaki değişiklikleri de size ulaştırır. "
+	},
+	"syncAfterChangeLabel": {
+		"message": "Değişikliklerden sonra senkronize et"
+	},
+	"syncAfterChangeAccesskey": {
+		"message": "c"
+	},
+	"initialSyncLabel": {
+		"message": "Thunderbird başladığından senkronizasyonu çalıştır"
+	},
+	"initialSyncAccesskey": {
+		"message": "R"
+	},
+	"initialSyncDelayLabel": {
+		"message": "İlk senkronizasyon ertelemesi (saniye):"
+	},
+	"initialSyncDelayAccesskey": {
+		"message": "y"
+	},
+	"solveConflictsLabel": {
+		"message": "Eğer bir kişi hem sunucuda hem de yerel olarak güncellenmiş ise:"
+	},
+	"solveConflictsLocalLabel": {
+		"message": "Yerel değişikliği tercih et"
+	},
+	"solveConflictsLocalAccesskey": {
+		"message": "L"
+	},
+	"solveConflictsRemoteLabel": {
+		"message": "Uzak değişikliği tercih et"
+	},
+	"solveConflictsRemoteAccesskey": {
+		"message": "S"
+	},
+	"solveConflictsUserLabel": {
+		"message": "Kullanıcıya Sor"
+	},
+	"solveConflictsUserAccesskey": {
+		"message": "A"
+	},
+	"maxModifsPushedLabel": {
+		"message": "Senkronizasyon başına sevk edilen en fazla değişiklik sayısı:"
+	},
+	"maxModifsPushedAccesskey": {
+		"message": "M"
+	},
+	"requestsGroupboxLabel": {
+		"message": "İstekler"
+	},
+	"requestsTimeoutLabel": {
+		"message": "Zaman aşımı (saniye):"
+	},
+	"requestsTimeoutAccesskey": {
+		"message": "T"
+	},
+	"multigetLabel": {
+		"message": "GET istekleri için, kişileri şuna göre grupla:"
+	},
+	"multigetAccesskey": {
+		"message": "G"
+	},
+	"discoveryGroupboxLabel": {
+		"message": "Adres Defterleri Keşfi"
+	},
+	"discoveryWarn": {
+		"message": "Her senkorinazasyonda, yeni veya silinmiş adres defterlerini aramak için aşağıdaki linklerin bir kontrolü yapılacak. "
+	},
+	"discoveryAccountsGroupboxLabel": {
+		"message": "Hesaplar"
+	},
+	"advancedSyncGroupboxLabel": {
+		"message": "Gelişmiş Seçenekler"
+	},
+	"decodeReportLabel": {
+		"message": "REPORT istekleri için linkleri çöz"
+	},
+	"decodeReportAccesskey": {
+		"message": "D"
+	},
+	"miscEmailGroupboxLabel": {
+		"message": "E-posta Göndermek"
+	},
+	"preferEmailPrefLabel": {
+		"message": "Şununla işaretlenmiş e-posta adreslerini tercih et"
+	},
+	"preferEmailPrefAccesskey": {
+		"message": "P"
+	},
+	"preferEmailPrefWarn": {
+		"message": "İşaretlenen adres yoksa, mesaj kişinin tüm adreslerine gönderilecek. "
+	},
+	"warnEmptyEmailsLabel": {
+		"message": "E-posta adresi olmadan kişilere e-posta yollamaya çalıştığımda beni uyar"
+	},
+	"warnEmptyEmailsAccesskey": {
+		"message": "W"
+	},
+	"useOnlyEmailLabel": {
+		"message": "Görünen isimleri olmadan sadece e-posta adreslerini kullan"
+	},
+	"useOnlyEmailAccesskey": {
+		"message": "O"
+	},
+	"attachVCardWarn": {
+		"message": "E-postalarınıza otomatik olarak vCard eklemek için her e-posta hesabı için bir vCard seçin. Eğer aktifse CardBook bu hesaptan gönderilen her e-postaya bu vCard'ı ekleyecek"
+	},
+	"attachVCardGroupboxLabel": {
+		"message": "Bir vCard'a katıl"
+	},
+	"accountsVCardsEnabledLabel": {
+		"message": "Etkin"
+	},
+	"accountsVCardsMailLabel": {
+		"message": "Posta Hesabı"
+	},
+	"accountsVCardsABNameLabel": {
+		"message": "Adres Defteri"
+	},
+	"accountsVCardsFileNameLabel": {
+		"message": "Ekli dosya"
+	},
+	"accountsVCardsFnLabel": {
+		"message": "Kişi"
+	},
+	"addVCardLabel": {
+		"message": "Ekle"
+	},
+	"addVCardAccesskey": {
+		"message": "E"
+	},
+	"renameVCardLabel": {
+		"message": "Düzenle"
+	},
+	"renameVCardAccesskey": {
+		"message": "D"
+	},
+	"deleteVCardLabel": {
+		"message": "Sil"
+	},
+	"deleteVCardAccesskey": {
+		"message": "S"
+	},
+	"birthdayListWarn": {
+		"message": "Yıl dönümleri sadece CardBook adres defterlerinde aranır"
+	},
+	"addressbooksGroupboxLabel": {
+		"message": "Adres Defterleri"
+	},
+	"selectAllABsLabel": {
+		"message": "Tümünü Seç"
+	},
+	"searchForLabel": {
+		"message": "Şunu Ara:"
+	},
+	"bday.conf.label": {
+		"message": "Doğum Günü"
+	},
+	"bday.conf.accesskey": {
+		"message": "B"
+	},
+	"anniversary.conf.label": {
+		"message": "Yıl dönümü (sadece vCard 4.0 için)"
+	},
+	"anniversary.conf.accesskey": {
+		"message": "A"
+	},
+	"deathdate.conf.label": {
+		"message": "Ölüm Tarihi (sadece vCard 4.0 için)"
+	},
+	"deathdate.conf.accesskey": {
+		"message": "D"
+	},
+	"eventsLabel": {
+		"message": "Etkinlikler"
+	},
+	"eventsAccesskey": {
+		"message": "E"
+	},
+	"gender.conf.label": {
+		"message": "Cinsiyet (sadece vCard 4.0 için)"
+	},
+	"birthplace.conf.label": {
+		"message": "Doğum Yeri (sadece vCard 4.0 için)"
+	},
+	"deathplace.conf.label": {
+		"message": "Ölüm Yeri (sadece vCard 4.0 için)"
+	},
+	"calendarsGroupboxLabel": {
+		"message": "Takvimler"
+	},
+	"selectAllCalendarsLabel": {
+		"message": "Tümünü Seç"
+	},
+	"remindersTabLabel": {
+		"message": "Hatırlatmalar"
+	},
+	"remindViaPopupWindowGroupboxLabel": {
+		"message": "Açılır Pencere ile Hatırlat"
+	},
+	"numberOfDaysForSearchingLabel": {
+		"message": "Yıl dönümlerini kontrol etmek için gün sayısı:"
+	},
+	"numberOfDaysForSearchingAccesskey": {
+		"message": "N"
+	},
+	"showPopupOnStartupLabel": {
+		"message": "Başlangıçta açılır pencere göster"
+	},
+	"showPopupOnStartupAccesskey": {
+		"message": "S"
+	},
+	"showPeriodicPopupLabel": {
+		"message": "Günlük açılır pencere göster"
+	},
+	"showPeriodicPopupAccesskey": {
+		"message": "d"
+	},
+	"periodicPopupTimeLabel": {
+		"message": "Görünme zamanı (ss:dd)"
+	},
+	"periodicPopupTimeAccesskey": {
+		"message": "i"
+	},
+	"showPopupEvenIfNoBirthdayLabel": {
+		"message": "Yıl dönümleri listesi boş olduğunuda açılır pencere göster"
+	},
+	"showPopupEvenIfNoBirthdayAccesskey": {
+		"message": "h"
+	},
+	"remindViaLightningGroupboxLabel": {
+		"message": "Thunderbird Lightning Takvim Eklentisi ile Hatırlat"
+	},
+	"numberOfDaysForWritingLabel": {
+		"message": "Yıl dönümlerini yazmak için gün sayısı:"
+	},
+	"numberOfDaysForWritingAccesskey": {
+		"message": "w"
+	},
+	"syncWithLightningOnStartupLabel": {
+		"message": "Lightning ile başlangıçta senkronize et"
+	},
+	"syncWithLightningOnStartupAccesskey": {
+		"message": "L"
+	},
+	"calendarEntryTitleLabel": {
+		"message": "Calendar etkinliği için başlık:"
+	},
+	"calendarEntryTitleTooltip": {
+		"message": "Takvim etkinliği için örnek başlık. Sırasıyla isim ve yaş ile değiştirilecek &#37;S, iki yer tutucu içermeli. Eğer alan boşsa standart mesaj kullanılacak. "
+	},
+	"calendarEntryTitleAccesskey": {
+		"message": "T"
+	},
+	"resetCalendarEntryTitleButtonLabel": {
+		"message": "Varsayılana Dön"
+	},
+	"resetCalendarEntryTitleButtonAccesskey": {
+		"message": "V"
+	},
+	"calendarRepeatingEventLabel": {
+		"message": "Tekrarlı Etkinlik"
+	},
+	"calendarRepeatingEventAccesskey": {
+		"message": "R"
+	},
+	"calendarEntryTimeLabel": {
+		"message": "Takvim etkinliği için zaman (ss:dd):"
+	},
+	"calendarEntryTimeAccesskey": {
+		"message": "m"
+	},
+	"calendarEntryWholeDayLabel": {
+		"message": "Tüm gün için takvim etkinliği"
+	},
+	"calendarEntryWholeDayAccesskey": {
+		"message": "y"
+	},
+	"calendarEntryAlarmLabel": {
+		"message": "Takvim etkinlikleri için n saate kadar alarm(lar) (Örneğin: 4,+1):"
+	},
+	"calendarEntryAlarmTooltip": {
+		"message": "Lightning alarmının yıl dönümünden kaç saat önce hatırlatması gerektiğini gir. Eğer alan boşsa alarm çalmayacak. Eğer çoklu alarm istiyorsan alarmları virgülle ayrılmış listeye gir."
+	},
+	"calendarEntryAlarmAccesskey": {
+		"message": "n"
+	},
+	"calendarEntryCategoriesLabel": {
+		"message": "Takvim etkinlikleri için kategori(ler)"
+	},
+	"calendarEntryCategoriesTooltip": {
+		"message": "Bir veya birden fazla kategori, virgülle ayrılmış. Alan boşsa kategori olmayacak. "
+	},
+	"calendarEntryCategoriesAccesskey": {
+		"message": "g"
+	},
+	"translateLabel": {
+		"message": "Çevir"
+	},
+	"websiteLabel": {
+		"message": "Web sitesi:"
+	},
+	"documentationLabel": {
+		"message": "Belgeleme"
+	},
+	"sourceCodeLabel": {
+		"message": "Kaynak kod"
+	},
+	"supportLabel": {
+		"message": "Hata Ayıklama Desteği"
+	},
+	"contributeLabel": {
+		"message": "Katkıda bulun"
+	},
+	"categoriesPicker.label": {
+		"message": "Kategori Filtresi:"
+	},
+	"categoriesPicker.accesskey": {
+		"message": "t"
+	},
+	"deleteAddrBookCard.label": {
+		"message": "Sil"
+	},
+	"deleteAddrBookCard.accesskey": {
+		"message": "S"
+	},
+	"editAddrBookCard.label": {
+		"message": "Düzenle"
+	},
+	"editAddrBookCard.accesskey": {
+		"message": "D"
+	},
+	"addressbookPicker.label": {
+		"message": "Adres Defteri:"
+	},
+	"addressbookPicker.accesskey": {
+		"message": "k"
+	},
+	"searchContacts.label": {
+		"message": "Şunu Ara:"
+	},
+	"searchContacts.accesskey": {
+		"message": "o"
+	},
+	"SearchNameOrEmail.label": {
+		"message": "İsim veya E-posta"
+	},
+	"addtoToFieldMenu.label": {
+		"message": "Kime alanına ekle"
+	},
+	"addtoToFieldMenu.accesskey": {
+		"message": "A"
+	},
+	"addtoCcFieldMenu.label": {
+		"message": "CC alanına ekle"
+	},
+	"addtoCcFieldMenu.accesskey": {
+		"message": "C"
+	},
+	"addtoBccFieldMenu.label": {
+		"message": "Bcc alanına ekle"
+	},
+	"addtoBccFieldMenu.accesskey": {
+		"message": "B"
+	},
+	"addtoReplytoFieldMenu.label": {
+		"message": "Reply-To alanına ekle"
+	},
+	"addtoReplytoFieldMenu.accesskey": {
+		"message": "l"
+	},
+	"toButton.label": {
+		"message": "Kime Ekle:"
+	},
+	"toButton.accesskey": {
+		"message": "A"
+	},
+	"ccButton.label": {
+		"message": "CC'ye Ekle"
+	},
+	"ccButton.accesskey": {
+		"message": "C"
+	},
+	"bccButton.label": {
+		"message": "Bcc'ye Ekle:"
+	},
+	"bccButton.accesskey": {
+		"message": "B"
+	},
+	"replytoButton.label": {
+		"message": "Reply-To'ya Ekle:"
+	},
+	"replytoButton.accesskey": {
+		"message": "l"
+	},
+	"newContactAbContext.label": {
+		"message": "Yeni Kişi"
+	},
+	"newContactAbContext.accesskey": {
+		"message": "C"
+	},
+	"newListAbContext.label": {
+		"message": "Yeni Liste"
+	},
+	"newListAbContext.accesskey": {
+		"message": "L"
+	},
+	"wdw_cardbookWindowLabel": {
+		"message": "CardBook"
+	},
+	"enableAccountsTooltip": {
+		"message": "Adres defterlerinin arama ve senkronizasyonlarını etkinleştir veya devre dışı bırak."
+	},
+	"colorAccountsTooltip": {
+		"message": "Adres defterlerinin arama sonuçlarını renklendir (arama birden fazla adres defterinden sonuç bulduğunda kullan)."
+	},
+	"readonlyAccountsTooltip": {
+		"message": "Adres defterlerini salt-okunur veya yazma-okuma moda ayarla."
+	},
+	"searchRemoteLabel": {
+		"message": "Bu adres defteri sadece bir aramadan sonra kişileri gösterir"
+	},
+	"columnChooser2.tooltip": {
+		"message": "Görünecek sütunları seç"
+	},
+	"cardbookAccountMenuLabel": {
+		"message": "Adres Defteri"
+	},
+	"cardbookAccountMenuAddServerLabel": {
+		"message": "Yeni Adres Defteri"
+	},
+	"cardbookAccountMenuEditServerLabel": {
+		"message": "Adres Defterini Düzenle"
+	},
+	"cardbookAccountMenuCloseServerLabel": {
+		"message": "Adres Defterini Sil"
+	},
+	"cardbookAccountMenuSyncLabel": {
+		"message": "Adres Defterini Senkronize Et"
+	},
+	"cardbookAccountMenuSyncsLabel": {
+		"message": "Tüm Adres Defterlerini Senkronize Et"
+	},
+	"cardbookContactsMenuLabel": {
+		"message": "Kişiler"
+	},
+	"cardbookToolsMenuLabel": {
+		"message": "Araçlar"
+	},
+	"cardbookToolsMenuBirthdayListLabel": {
+		"message": "Yıl dönümü Listelerini Gör"
+	},
+	"cardbookToolsMenuSyncLightningLabel": {
+		"message": "Yıl dönümlerini Takvime Ekle"
+	},
+	"cardbookToolsMenuFindAllDuplicatesLabel": {
+		"message": "Tüm Adres Defterlerindeki Tekrarlı Kişileri Bul"
+	},
+	"cardbookToolsMenuFindSingleDuplicatesLabel": {
+		"message": "Bu Adres Defterindeki Tekrarlı Kişileri Bul"
+	},
+	"cardbookToolsMenuPrefsLabel": {
+		"message": "CardBook Seçenekler"
+	},
+	"cardbookToolbarLabel": {
+		"message": "CarBook Araç Çubuğu"
+	},
+	"cardbookToolbarAccesskey": {
+		"message": "a"
+	},
+	"cardbookABPaneToolbarLabel": {
+		"message": "CardBook Addres Defteri Bölme Araç Çubuğu"
+	},
+	"cardbookABPaneToolbarAccesskey": {
+		"message": "d"
+	},
+	"CustomizeCardBookToolbarLabel": {
+		"message": "Özelleştir…"
+	},
+	"CustomizeCardBookToolbarAccesskey": {
+		"message": "C"
+	},
+	"cardbookToolbarAddServerButtonLabel": {
+		"message": "Yeni Adres Defteri"
+	},
+	"cardbookToolbarAddServerButtonTooltip": {
+		"message": "Uzak veya yerel bir adres defteri ekle"
+	},
+	"cardbookToolbarSyncButtonLabel": {
+		"message": "Senkronize et"
+	},
+	"cardbookToolbarSyncButtonTooltip": {
+		"message": "Tüm uzak adres defterlerini senkronize et"
+	},
+	"cardbookToolbarWriteButtonLabel": {
+		"message": "Yaz"
+	},
+	"cardbookToolbarWriteButtonTooltip": {
+		"message": "Yeni mesaj oluştur"
+	},
+	"cardbookToolbarChatButtonLabel": {
+		"message": "...e Bağlan"
+	},
+	"cardbookToolbarChatButtonTooltip": {
+		"message": "Anlık mesaj yolla ya da sohbet başlat"
+	},
+	"cardbookToolbarConfigurationButtonLabel": {
+		"message": "Seçenekler"
+	},
+	"cardbookToolbarConfigurationButtonTooltip": {
+		"message": "CardBook Seçenekler"
+	},
+	"cardbookToolbarAddContactButtonLabel": {
+		"message": "Yeni Kişi"
+	},
+	"cardbookToolbarAddContactButtonTooltip": {
+		"message": "Yeni adres defteri kişisi oluştur"
+	},
+	"cardbookToolbarAddListButtonLabel": {
+		"message": "Yeni Liste"
+	},
+	"cardbookToolbarAddListButtonTooltip": {
+		"message": "Yeni Posta Listesi"
+	},
+	"cardbookToolbarEditButtonLabel": {
+		"message": "Düzenle"
+	},
+	"cardbookToolbarEditButtonTooltip": {
+		"message": "Seçili kişiyi düzenle"
+	},
+	"cardbookToolbarRemoveButtonLabel": {
+		"message": "Sil"
+	},
+	"cardbookToolbarRemoveButtonTooltip": {
+		"message": "Seçili kişiyi sil"
+	},
+	"cardbookToolbarPrintButtonLabel": {
+		"message": "Baskı Önizleme"
+	},
+	"cardbookToolbarPrintButtonTooltip": {
+		"message": "Seçili alanın baskı önizlemesi"
+	},
+	"cardbookToolbarBackButtonLabel": {
+		"message": "Geri al"
+	},
+	"cardbookToolbarBackButtonTooltip": {
+		"message": "Bir eylem geri git"
+	},
+	"cardbookToolbarForwardButtonLabel": {
+		"message": "Yinele"
+	},
+	"cardbookToolbarForwardButtonTooltip": {
+		"message": "Bir eylem için ilerle"
+	},
+	"cardbookToolbarAppMenuButtonLabel": {
+		"message": "CardBook menüsü"
+	},
+	"cardbookToolbarAppMenuButtonTooltip": {
+		"message": "CardBook menüsü"
+	},
+	"cardbookToolbarSearchBoxLabel": {
+		"message": "Kişi arama"
+	},
+	"cardbookToolbarSearchBoxTooltip": {
+		"message": "Kişi arama"
+	},
+	"cardbookToolbarComplexSearchLabel": {
+		"message": "Kaydedilmiş Arama"
+	},
+	"cardbookToolbarComplexSearchTooltip": {
+		"message": "Yeni kaydedilmiş arama klasörü oluştur"
+	},
+	"cardbookToolbarNewEventLabel": {
+		"message": "Etkinlik"
+	},
+	"cardbookToolbarNewEventTooltip": {
+		"message": "Yeni etkinlik oluştur"
+	},
+	"cardbookToolbarNewTodoLabel": {
+		"message": "Görev"
+	},
+	"cardbookToolbarNewTodoTooltip": {
+		"message": "Yeni görev oluştur"
+	},
+	"cardbookToolbarThMenuButtonLabel": {
+		"message": "AppMenu"
+	},
+	"cardbookToolbarThMenuButtonTooltip": {
+		"message": "Thunderbird menüsünü göster"
+	},
+	"cardbookToolbarABMenuLabel": {
+		"message": "Adres Defteri Görünümü"
+	},
+	"cardbookToolbarABMenuTooltip": {
+		"message": "Adres defterlerinin nasıl görüneceğini filtrele"
+	},
+	"generalTabLabel": {
+		"message": "Genel"
+	},
+	"technicalTabLabel": {
+		"message": "Teknik"
+	},
+	"vCardTabLabel": {
+		"message": "vCard"
+	},
+	"keyTabLabel": {
+		"message": "Genel Anahtarlar"
+	},
+	"noteTabLabel": {
+		"message": "Notlar"
+	},
+	"miscGroupboxLabel": {
+		"message": "Çeşitli"
+	},
+	"othersGroupboxLabel": {
+		"message": "Diğer"
+	},
+	"techGroupboxLabel": {
+		"message": "Teknik"
+	},
+	"labelGroupboxLabel": {
+		"message": "Etiketler"
+	},
+	"agentLabel": {
+		"message": "Vekil"
+	},
+	"keyLabel": {
+		"message": "Anahtar"
+	},
+	"photolocalURILabel": {
+		"message": "Yerel fotoğraf"
+	},
+	"logolocalURILabel": {
+		"message": "Yerel logo"
+	},
+	"soundlocalURILabel": {
+		"message": "Yerel ses"
+	},
+	"photoURILabel": {
+		"message": "Fotoğraf"
+	},
+	"logoURILabel": {
+		"message": "Logo"
+	},
+	"soundURILabel": {
+		"message": "Ses"
+	},
+	"cardurlLabel": {
+		"message": "Card Linki"
+	},
+	"cacheuriLabel": {
+		"message": "Önbellek URI"
+	},
+	"localizeadrTreeLabel": {
+		"message": "Haritada Göster"
+	},
+	"toEmailEmailTreeLabel": {
+		"message": "Yeni Mesaj Oluştur"
+	},
+	"ccEmailEmailTreeLabel": {
+		"message": "Yeni Mesaj Oluştur (kopyala / cc)"
+	},
+	"bccemailemailTreeLabel": {
+		"message": "Yeni Mesaj Oluştur (görünmeyen kopya / bcc)"
+	},
+	"findemailemailTreeLabel": {
+		"message": "Bu E-posta Adresiyle İlgili E-postaları Bul"
+	},
+	"findeventemailTreeLabel": {
+		"message": "Bu E-posta Adresiyle İlgili Etkinlileri Bul"
+	},
+	"openURLTreeLabel": {
+		"message": "Linki Aç"
+	},
+	"toEmailCardFromAccountsOrCatsLabel": {
+		"message": "Yeni Mesaj Oluştur"
+	},
+	"toEmailCardFromCardsLabel": {
+		"message": "Yeni Mesaj Oluştur"
+	},
+	"ccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Yeni Mesaj Oluştur (kopyala / cc)"
+	},
+	"ccEmailCardFromCardsLabel": {
+		"message": "Yeni Mesaj Oluştur (kopyala / cc)"
+	},
+	"bccEmailCardFromAccountsOrCatsLabel": {
+		"message": "Yeni Mesaj Oluştur (görünmeyen kopya / bcc)"
+	},
+	"bccEmailCardFromCardsLabel": {
+		"message": "Yeni Mesaj Oluştur (görünmeyen kopya / bcc)"
+	},
+	"PreferMailFormatGroupbox.label": {
+		"message": "Teslimat biçimi"
+	},
+	"PreferMailFormat.label": {
+		"message": "Tercih ettiği ileti alma biçimi:"
+	},
+	"PreferMailFormat.accesskey": {
+		"message": "b"
+	},
+	"Unknown.label": {
+		"message": "Bilinmiyor"
+	},
+	"PlainText.label": {
+		"message": "Düz metin"
+	},
+	"HTML.label": {
+		"message": "HTML"
+	},
+	"publicKeysFromCards.label": {
+		"message": "Genel Anahtarlar"
+	},
+	"searchForOnlineKeyFromCards.label": {
+		"message": "Çevrimiçi Anahtarları Keşfet"
+	},
+	"importKeyFromCards.label": {
+		"message": "OpenPGP Anahtar Yöneticisine Aktar"
+	},
+	"searchForOnlineKeyTreeLabel": {
+		"message": "Çevrimiçi Anahtarları Keşfet"
+	},
+	"searchForOnlineKeyEditButton.tooltip": {
+		"message": "Çevrimiçi anahtarları keşfet"
+	},
+	"searchForThKeyEditButton.tooltip": {
+		"message": "OpenPGP anahtar yöneticisinde anahtar ara"
+	},
+	"searchForLocalKeyEditButton.tooltip": {
+		"message": "Dosyadan içe aktar"
+	},
+	"shareCardByEmailFromAccountsOrCatsLabel": {
+		"message": "E-posta ile paylaş"
+	},
+	"shareCardByEmailFromCardsLabel": {
+		"message": "E-posta ile paylaş"
+	},
+	"categoryHeader": {
+		"message": "Kategori"
+	},
+	"findEmailsFromCardsLabel": {
+		"message": "Bu Kişiyle İlgili E-postaları Bul"
+	},
+	"eventsAndTasksLabel": {
+		"message": "Etkinlik ve Görevler"
+	},
+	"addEventFromCardsLabel": {
+		"message": "Yeni Etkinlik"
+	},
+	"addTodoFromCardsLabel": {
+		"message": "Yeni Görev"
+	},
+	"findEventsFromCardsLabel": {
+		"message": "Bu Kişiyle İlgili Etkinlikleri Bul"
+	},
+	"localizeCardFromCardsLabel": {
+		"message": "Haritada Göster"
+	},
+	"openURLCardFromCardsLabel": {
+		"message": "Linkleri Aç"
+	},
+	"cutCardFromAccountsOrCatsLabel": {
+		"message": "Kes"
+	},
+	"cutCardFromCardsLabel": {
+		"message": "Kes"
+	},
+	"copyCardFromAccountsOrCatsLabel": {
+		"message": "Kopyala"
+	},
+	"copyCardFromCardsLabel": {
+		"message": "Kopyala"
+	},
+	"pasteCardFromAccountsOrCatsLabel": {
+		"message": "Yapıştır"
+	},
+	"pasteCardFromCardsLabel": {
+		"message": "Yapıştır"
+	},
+	"pasteEntryLabel": {
+		"message": "Girişi Yapıştır"
+	},
+	"exportCardToFileLabel": {
+		"message": "Dışa Aktar: Dosyaya"
+	},
+	"exportCardToDirLabel": {
+		"message": "Dışa Aktar: Klasöre"
+	},
+	"importCardFromFileLabel": {
+		"message": "Kişileri Dosyadan İçe Aktar"
+	},
+	"importCardFromDirLabel": {
+		"message": "Kişileri Klasörden İçe Aktar"
+	},
+	"findDuplicatesFromAccountsOrCatsLabel": {
+		"message": "Bu Adres Defterindeki Tekrarlı Kişileri Bul"
+	},
+	"generateFnFromAccountsOrCatsLabel": {
+		"message": "Görünen İsimleri Oluştur"
+	},
+	"mergeCardsFromCardsLabel": {
+		"message": "Kişileri Birleştir"
+	},
+	"duplicateCardFromCardsLabel": {
+		"message": "Kişiyi Tekrarla"
+	},
+	"convertListToCategoryFromCardsLabel": {
+		"message": "Listeyi Kategoriye Dönüştür"
+	},
+	"editAccountFromAccountsOrCatsLabel": {
+		"message": "Adres Defterini Düzenle"
+	},
+	"syncAccountFromAccountsOrCatsLabel": {
+		"message": "Adres Defterini Senkronize Et"
+	},
+	"removeAccountFromAccountsOrCatsLabel": {
+		"message": "Adres Defterini Sil"
+	},
+	"editEventLabel": {
+		"message": "Etkinliği Düzenle"
+	},
+	"editEventAccesskey": {
+		"message": "E"
+	},
+	"eventsTree.title.label": {
+		"message": "Ünvan"
+	},
+	"eventsTree.title.tooltip2": {
+		"message": "Ünvana göre sırala"
+	},
+	"eventsTree.startdate.label": {
+		"message": "Başlat"
+	},
+	"eventsTree.startdate.tooltip2": {
+		"message": "Başlangıç tarihine göre sırala"
+	},
+	"eventsTree.enddate.label": {
+		"message": "Bitiş"
+	},
+	"eventsTree.enddate.tooltip2": {
+		"message": "Bitiş tarihine göre sırala"
+	},
+	"eventsTree.categories.label": {
+		"message": "Kategori"
+	},
+	"eventsTree.categories.tooltip2": {
+		"message": "Kategoriye göre sırala"
+	},
+	"eventsTree.location.label": {
+		"message": "Yer"
+	},
+	"eventsTree.location.tooltip2": {
+		"message": "Yere göre sırala"
+	},
+	"eventsTree.status.label": {
+		"message": "Durum"
+	},
+	"eventsTree.status.tooltip2": {
+		"message": "Duruma göre sırala"
+	},
+	"eventsTree.calendarname.label": {
+		"message": "Takvim İsmi"
+	},
+	"eventsTree.calendarname.tooltip2": {
+		"message": "Takvim ismine göre sırala"
+	},
+	"createEventLabel": {
+		"message": "Yeni Etkinlik"
+	},
+	"createEventAccesskey": {
+		"message": "N"
+	},
+	"adrFormulaExplanation": {
+		"message": "CardBook'un adreslerini biçimlendirme şeklini özelleştirmek mümkündür. Bu ilinti \"()\" ile kapatılmış bloklardan oluşur. Bu bloklarda “|” ile ayrılmış çok sayıda parça olabilir. "
+	},
+	"fnFormulaExplanation": {
+		"message": "CardBook'un Görünen İsim'i oluşturmasının özelleştirmesi mümkündür. Bu ilinti \"()\" ile kapatılmış bloklardan oluşur. Bu bloklarda “|” ile ayrılmış çok sayıda parça olabilir. "
+	},
+	"formulaExplanation1": {
+		"message": "({{1}}|{{2}}) : Eğer {{1}} boşsa, blok şununla değiştirilecek {{2}}."
+	},
+	"formulaExplanation2": {
+		"message": "({{1}}|{{2}}|{{3}}) : Eğer {{1}} eşitse {{2}}, blok şununla değiştirilecek {{3}}."
+	},
+	"formulaExplanation3": {
+		"message": "({{1}}|{{2}}|{{3}}|{{4}}) : Eğer {{1}} eşitse {{2}}, blok şununla değiştirilecek {{3}}, başka şununla {{4}}."
+	},
+	"formulaExplanation4": {
+		"message": "({{1}}|*|{{2}}|{{3}}|{{4}}) : Eğer {{1}} içerirse {{2}}, blok şununla değiştirilecek {{3}}, başka bununla {{4}}."
+	},
+	"formulaExplanation5": {
+		"message": "({{1}}|^|{{2}}|{{3}}|{{4}}) : Eğer {{1}} ile başlarsa {{2}}, blok şununla değiştirilecek {{3}}, başka şununla {{4}}."
+	},
+	"formulaExplanation6": {
+		"message": "({{1}}|$|{{2}}|{{3}}|{{4}}) : Eğer {{1}} ile biterse {{2}}, blok şununla değiştirilecek {{3}}, başka şununla {{4}}."
+	},
+	"settingsTitlelabel": {
+		"message": "Yazdırma Seçenekleri"
+	},
+	"title.print.label": {
+		"message": "Ünvan:"
+	},
+	"title.print.accesskey": {
+		"message": "T"
+	},
+	"displayHeadersLabel": {
+		"message": "Paragraf Başlıklarını Görüntüle"
+	},
+	"displayHeadersAccesskey": {
+		"message": "H"
+	},
+	"displayFieldNamesLabel": {
+		"message": "Alan adları"
+	},
+	"displayFieldNamesAccesskey": {
+		"message": "F"
+	},
+	"displayTypesLabel": {
+		"message": "Türler ve Seçenekler"
+	},
+	"displayTypesAccesskey": {
+		"message": "y"
+	},
+	"fieldsToPrintGroupboxLabel": {
+		"message": "Yazdırılacak Alanlar"
+	},
+	"displayLabel": {
+		"message": "Görünen İsim"
+	},
+	"displayAccesskey": {
+		"message": "D"
+	},
+	"personalLabel": {
+		"message": "Kişisel bilgi"
+	},
+	"personalAccesskey": {
+		"message": "P"
+	},
+	"org.print.label": {
+		"message": "Çalışma Bilgisi"
+	},
+	"org.print.accesskey": {
+		"message": "o"
+	},
+	"custom.print.label": {
+		"message": "Özel Alanlar"
+	},
+	"custom.print.accesskey": {
+		"message": "C"
+	},
+	"categories.print.label": {
+		"message": "Kategoriler"
+	},
+	"categories.print.accesskey": {
+		"message": "C"
+	},
+	"adr.print.label": {
+		"message": "Adresler"
+	},
+	"adr.print.accesskey": {
+		"message": "A"
+	},
+	"tel.print.label": {
+		"message": "Telefon Numaraları"
+	},
+	"tel.print.accesskey": {
+		"message": "T"
+	},
+	"email.print.label": {
+		"message": "E-posta Adresleri"
+	},
+	"email.print.accesskey": {
+		"message": "E"
+	},
+	"impp.print.label": {
+		"message": "İnternet Bağlantıları"
+	},
+	"impp.print.accesskey": {
+		"message": "I"
+	},
+	"url.print.label": {
+		"message": "Linkler"
+	},
+	"url.print.accesskey": {
+		"message": "U"
+	},
+	"event.print.label": {
+		"message": "Etkinlikler"
+	},
+	"event.print.accesskey": {
+		"message": "E"
+	},
+	"note.print.label": {
+		"message": "Notlar"
+	},
+	"note.print.accesskey": {
+		"message": "N"
+	},
+	"useColorCheckLabel": {
+		"message": "Renk Kullan"
+	},
+	"useColorCheckAccesskey": {
+		"message": "U"
+	},
+	"existingDataGroupboxLabel": {
+		"message": "Bu kişiye ekle"
+	},
+	"cardbookSwitchButtonTooltip": {
+		"message": "İsim ve soyismi değiştir"
+	},
+	"descriptionTextbox": {
+		"message": "Tanım"
+	},
+	"categoriesTextboxLabel": {
+		"message": "Yeni kategori ekle"
+	},
+	"typesTextboxLabel": {
+		"message": "Yeni tür ekle"
+	},
+	"categoriesListboxLabel": {
+		"message": "Var olan kategoriler"
+	},
+	"categoryMenuLabel": {
+		"message": "Yeni Kategori…"
+	},
+	"viewResultEditionLabel": {
+		"message": "Sonucu gör"
+	},
+	"viewResultEditionAccesskey": {
+		"message": "V"
+	},
+	"previousEditionLabel": {
+		"message": "Önceki"
+	},
+	"previousEditionAccesskey": {
+		"message": "P"
+	},
+	"nextEditionLabel": {
+		"message": "Sonraki"
+	},
+	"nextEditionAccesskey": {
+		"message": "N"
+	},
+	"createEditionLabel": {
+		"message": "Oluştur"
+	},
+	"createEditionAccesskey": {
+		"message": "T"
+	},
+	"createAndReplaceEditionLabel": {
+		"message": "Oluştur ve değiştir"
+	},
+	"createAndReplaceEditionAccesskey": {
+		"message": "R"
+	},
+	"saveEditionLabel": {
+		"message": "Kaydet"
+	},
+	"saveEditionAccesskey": {
+		"message": "S"
+	},
+	"validateEditionLabel": {
+		"message": "Geçerli"
+	},
+	"validateEditionAccesskey": {
+		"message": "V"
+	},
+	"cancelEditionLabel": {
+		"message": "İptal"
+	},
+	"cancelEditionAccesskey": {
+		"message": "C"
+	},
+	"closeEditionLabel": {
+		"message": "Kapat"
+	},
+	"closeEditionAccesskey": {
+		"message": "C"
+	},
+	"moreEditionLabel": {
+		"message": "Daha fazla göster"
+	},
+	"moreEditionAccesskey": {
+		"message": "m"
+	},
+	"lessEditionLabel": {
+		"message": "Daha az göster"
+	},
+	"lessEditionAccesskey": {
+		"message": "l"
+	},
+	"mergeAllEditionLabel": {
+		"message": "Hepsini Birleştir"
+	},
+	"mergeAllEditionAccesskey": {
+		"message": "M"
+	},
+	"buttonAppendToListLabel": {
+		"message": "Ekle"
+	},
+	"buttonAppendToListAccesskey": {
+		"message": "E"
+	},
+	"buttonRemoveFromListLabel": {
+		"message": "Kaldır"
+	},
+	"buttonRemoveFromListAccesskey": {
+		"message": "O"
+	},
+	"buttonGuessFromListLabel": {
+		"message": "Tahmin"
+	},
+	"buttonGuessFromListAccesskey": {
+		"message": "G"
+	},
+	"loadTemplateLabel": {
+		"message": "Şablon seç"
+	},
+	"saveTemplateLabel": {
+		"message": "Şablonu kaydet"
+	},
+	"convertVCardsLabel": {
+		"message": "vCards'ı Dönüştür"
+	},
+	"convertVCardsTooltip": {
+		"message": "Bazı kişilerin vCard versiyonu rehberinizdeki vCard versiyonundan farklıdır. Bu buton bu vCard'ları dönüştürebilir "
+	},
+	"convertVCardsAccesskey": {
+		"message": "o"
+	},
+	"wdw_findDuplicatesTitle": {
+		"message": "Kişileri Tekrarla"
+	},
+	"addImageCardFromFileLabel": {
+		"message": "Dosyadan resim ekle"
+	},
+	"pasteImageCardLabel": {
+		"message": "Resmi yapıştır"
+	},
+	"saveImageCardLabel": {
+		"message": "Resmi şu şekilde kaydet"
+	},
+	"copyImageCardLabel": {
+		"message": "Resmi kopyala"
+	},
+	"copyImageLocationCardLabel": {
+		"message": "Resim konumunu kopyala"
+	},
+	"deleteImageCardLabel": {
+		"message": "Resmi sil"
+	},
+	"kind.edit.label": {
+		"message": "Tür"
+	},
+	"kind.edit.accesskey": {
+		"message": "K"
+	},
+	"addEmailGroupboxLabel": {
+		"message": "E-posta Adresi"
+	},
+	"availableCardsGroupboxLabel": {
+		"message": "Var olan kişiler"
+	},
+	"nameOrEmailLabel": {
+		"message": "İsim veya E-posta"
+	},
+	"appendContactLabel": {
+		"message": "Listeye ekle"
+	},
+	"deletelistTreeLabel": {
+		"message": "Listeden kaldır"
+	},
+	"editCardFromListLabel": {
+		"message": "Kişiyi düzenle"
+	},
+	"wdw_logEditionTitle": {
+		"message": "Kayıt görüntüleyici"
+	},
+	"logEditionValueLabel": {
+		"message": "Tarih Damgası Olayı"
+	},
+	"refreshLogEditionLabel": {
+		"message": "Yenile"
+	},
+	"refreshLogEditionAccesskey": {
+		"message": "R"
+	},
+	"flushLogEditionLabel": {
+		"message": "Listeyi Temizle"
+	},
+	"flushLogEditionAccesskey": {
+		"message": "C"
+	},
+	"clipboardLogEditionLabel": {
+		"message": "Panoya Kopyala"
+	},
+	"clipboardLogEditionAccesskey": {
+		"message": "p"
+	},
+	"cancelLogEditionLabel": {
+		"message": "Tamam"
+	},
+	"cancelLogEditionAccesskey": {
+		"message": "O"
+	},
+	"wdw_mergeCardsTitle": {
+		"message": "Kişileri Birleştir"
+	},
+	"mergeInstructionsLabel": {
+		"message": "Yeni kişileri kaydetmek istediğin yeri seç"
+	},
+	"persTitleLabel": {
+		"message": "Kişisel bilgi"
+	},
+	"orgTitleLabel": {
+		"message": "Çalışma Bilgisi"
+	}
+}

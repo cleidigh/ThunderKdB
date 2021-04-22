@@ -1,7 +1,5 @@
 /**
- * crypto.mjs.js
- *
- * Version: 0.1.0 (02 February 2020)
+ * Unified crypto interface for Thunderbird/Browser and Node
  *
  * Copyright (c) 2020 Philippe Lieser
  *
@@ -74,7 +72,7 @@ function getWebDigestName(algorithm) {
  * Converts a string to an ArrayBuffer.
  * Characters >255 have their hi-byte silently ignored.
  *
- * @param {string} str - b64 encoded string
+ * @param {string} str - binary string
  * @returns {ArrayBuffer}
  */
 function strToArrayBuffer(str) {

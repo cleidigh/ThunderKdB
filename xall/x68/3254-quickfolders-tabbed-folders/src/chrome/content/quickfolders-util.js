@@ -72,10 +72,7 @@ var QuickFolders_TabURIopener = {
 
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
-  _isCSSGradients: -1,
-	_isCSSRadius: -1,
-	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "5.4.1", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.5", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -220,11 +217,6 @@ QuickFolders.Util = {
     Services.prompt.alert(null, caption, msg);
   },
 
-
-  checkDonationOrBuyLicenceReminder: function checkDonationOrBuyLicenceReminder () {
-
-  },
-  
   get supportsMap() {
     return (typeof Map == "function");
   } ,
@@ -640,9 +632,10 @@ QuickFolders.Util = {
 	} ,
 
 	// find the first mail tab representing a folder and open it
-	ensureFolderViewTab: function ensureFolderViewTab() {
+  // extension: pass in preferred folder and open that tab if it exists
+  // if we already are on a folder view, do nothing!
+	ensureFolderViewTab: function ensureFolderViewTab(folder = null) {
 		const util = QuickFolders.Util;
-		// TB 3 bug 22295 - if a single mail tab is opened this appears to close it!
 		let found=false,
 		    tabmail = document.getElementById("tabmail");
 		if (tabmail) {
@@ -656,15 +649,28 @@ QuickFolders.Util = {
 					// switchToTab
 					// iterate tabs
 					let tabInfoCount = util.getTabInfoLength(tabmail);
+          let firstFound = -1;
 					for (let i = 0; i < tabInfoCount; i++) {
 					  let info = util.getTabInfoByIndex(tabmail, i);
 						if (info && this.getTabMode(info) == util.mailFolderTypeName) { 
 							util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
-							tabmail.switchToTab(i);
-							found = true;
-							break;
+              if (firstFound<0) firstFound = i;
+              if (!folder) 
+                break;
+              else {
+                let fD = info ? info.folderDisplay : null;
+                if (fD.view && fD.view.displayedFolder && folder.URI == fD.view.displayedFolder.URI) {
+                  firstFound = i;
+                  break; // this is the one we want
+                }
+              }
 						}
 					}
+          if (firstFound>=0) {
+            tabmail.switchToTab(firstFound);
+            found = true;
+          }
+          
 					// if it can't find a tab with folders ideally it should call openTab to display a new folder tab
 					for (let i=0;(!found) && i < tabInfoCount; i++) {
 					  let info = util.getTabInfoByIndex(tabmail, i);
@@ -782,7 +788,8 @@ QuickFolders.Util = {
 	// change: let's pass back the messageList that was moved / copied
 	moveMessages: function moveMessages(targetFolder, messageUris, makeCopy) {
     const Ci = Components.interfaces,
-          util = QuickFolders.Util; 
+          util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences; 
 		let step = 0;
     if (!messageUris) 
       return null;
@@ -835,7 +842,7 @@ QuickFolders.Util = {
           }
         }
 
-				messageIdList.push(Message.messageId);
+				messageIdList.push(Message.messageId); 
         if (isListArray) 
           messageList.push(Message);
         else
@@ -853,6 +860,22 @@ QuickFolders.Util = {
         util.slideAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + targetFolder.prettyName);
         return null;
       }
+      
+      // [issue 132] Shift-M opens a new tab after moving the message...
+      // if we move the email and are in a single message window, we need to jump to the next unread mail first!
+      let tabmail = document.getElementById("tabmail"),
+          currentTabId = tabmail.currentTabInfo.tabId,  //  currentTabInfo = tabmail.tabInfo[QuickFolders.tabContainer.selectedIndex]
+          moveFromSingleMailTab = false;
+      if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
+        moveFromSingleMailTab = true;
+        // either go to the next mail... or close the tab
+        if (QuickFolders.quickMove.Settings.isGoNext) {
+          goDoCommand('cmd_nextMsg');
+          QuickFolders.Interface.ensureCurrentFolder();
+        }
+        document.getElementById('messagepane').focus();
+      }
+      
 			step = 5;
 			let cs = Components.classes["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 			step = 6;
@@ -867,10 +890,20 @@ QuickFolders.Util = {
         'isMove = (various)\n' + 
         'listener = QuickFolders.CopyListener\n' +
         'window = ' + mw + '\n' +
-        'allowUndo = true)');      
+        'allowUndo = true)'); 
+      let currentTab = tabmail.selectedTab;
 			cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
 			step = 8;
 			util.touch(targetFolder); // set MRUTime
+      if (moveFromSingleMailTab && currentTabId>0 && !QuickFolders.quickMove.Settings.isGoNext) {
+        // close single message tab:
+        if (currentTabId == tabmail.currentTabInfo.tabId) {
+          // TO DO: goto corresponding folder tab or at least tab 0
+          util.ensureFolderViewTab(sourceFolder);
+          // now close the tab Tb opened.
+          tabmail.closeTab(currentTab, false);
+        }
+      }
 			return messageIdList; // we need the first element for further processing
 		}
 		catch(e) {
@@ -1263,7 +1296,7 @@ QuickFolders.Util = {
 		}
 		return false;
 	} ,	
-	
+  
 	// dedicated function for email clients which don't support tabs
 	// and for secured pages (donation page).
 	openLinkInBrowserForced: function openLinkInBrowserForced(linkURI) {
@@ -1448,18 +1481,6 @@ QuickFolders.Util = {
 		}
 	},
 	
-	get isCSSGradients() {
-	  try {
-		  if (this._isCSSGradients !== -1)
-				return this._isCSSGradients;
-      this._isCSSGradients = true; // Thunderbird
-		}
-		catch(ex) {
-			this._isCSSGradients = false;
-		}
-		return this._isCSSGradients;
-	},
-	
 	aboutHost: function aboutHost() {
 		const util = QuickFolders.Util;
 		let txt = "App: " + util.Application + " " + util.ApplicationVersion + "\n" + 
@@ -1468,20 +1489,7 @@ QuickFolders.Util = {
 		  
 	} ,
 	
-	get isCSSRadius() {
-	  if (this._isCSSRadius === -1) {
-			this._isCSSRadius =	true
-		}
-		return this._isCSSRadius;
-	},
-	
-	get isCSSShadow() {
-		if (this._isCSSShadow === -1) {
-			this._isCSSShadow = true;
-		}
-		return this._isCSSShadow;
-	} ,
-	
+
 	// helper function for css value entries - strips off rule part and semicolon (end)
 	sanitizeCSSvalue: function sanitizeCSSvalue(val) {
 		let colon = val.indexOf(':');
@@ -1682,9 +1690,7 @@ QuickFolders.Util = {
 		try {
 			const Ci = Components.interfaces,
 			      util = QuickFolders.Util;
-			let Accounts = util.Accounts,
-			    acctMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]  
-	                        .getService(Ci.nsIMsgAccountManager); 
+			let Accounts = util.Accounts; 
 			for (let a=0; a<Accounts.length; a++) {
 				let account = Accounts[a];
 				if (account.incomingServer && account.incomingServer.canHaveFilters ) 
@@ -1698,12 +1704,20 @@ QuickFolders.Util = {
 						filterList.matchOrChangeFilterTarget(sourceURI, targetURI, false) 
 					}
 				}
-			}    
+			} 
 		}
 		catch(ex) {
 			QuickFolders.Util.logException("Exception in QuickFolders.Util.validateFilterTargets ", ex);
 		}
-	}
+	},
+  
+  showVersionHistory: function showVersionHistory() {
+		const util = QuickFolders.Util;
+    let version = util.VersionSanitized;
+    util.openURL(null, util.makeUriPremium("https://quickfolders.org/version.html") + "#" + version);
+  } ,
+  
+  
 
   
 };  // QuickFolders.Util
@@ -1713,7 +1727,8 @@ QuickFolders.Util = {
 QuickFolders.Util.FirstRun = {
 	init: function init() {
     const util = QuickFolders.Util,
-          prefs = QuickFolders.Preferences;
+          prefs = QuickFolders.Preferences,
+          quickMoveSettings = QuickFolders.quickMove.Settings;
 		let prev = -1, firstrun = true,
 		    showFirsts = true, debugFirstRun = false,
 		    prefBranchString = "extensions.quickfolders.",
@@ -1805,29 +1820,11 @@ QuickFolders.Util.FirstRun = {
         // this section does not get loaded if it's a fresh install.
 				suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");
 				
-				/** minor version upgrades / sales  **/
-				if (pureVersion.indexOf('4.8.3') == 0 && prev.indexOf("4.8") == 0)
-          suppressVersionScreen = true;
-				
-				
 				// SILENT UPDATES
 				// Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
-				//  same for 3.14.1, 3.14.2 etc - no donation screen
-				if ((pureVersion.indexOf('4.7.') == 0 && prev.indexOf("4.7") == 0)
-					  ||
-					  (pureVersion.indexOf('4.9.') == 0 && prev.indexOf("4.9") == 0)
-            ||
-            (pureVersion.indexOf('4.17.4') == 0 && prev.indexOf("4.17.3") == 0)
-					  )
-        {
-					suppressVersionScreen = true;
-				}
+				// then set suppressVersionScreen = true;
         if (isPremiumLicense) {
 					util.logDebugOptional ("firstrun","has premium license.");
-					if ((pureVersion.indexOf('4.8.1')==0  || pureVersion.indexOf('4.8.2')==0 )
-					    && prev.indexOf("4.8") == 0) {
-						suppressVersionScreen = true;
-					}
 				}
 				
 				let isThemeUpgrade = prefs.tidyUpBadPreferences();
@@ -1871,7 +1868,7 @@ QuickFolders.Util.FirstRun = {
 				}
 				
 				util.loadPlatformStylesheet(window);
-        QuickFolders.quickMove.Settings.loadExclusions();
+        quickMoveSettings.loadExclusions();
 			}
 			util.logDebugOptional ("firstrun","finally { } ends.");
 		} // end finally
@@ -1913,23 +1910,26 @@ QuickFolders.Util.iterateFolders = function folderIterator(folders, findItem, fn
 QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable, isQuickJumpOrMove = false) {
 	let Ci = Components.interfaces,
 			Cc = Components.classes,
-			acctMgr = Cc["@mozilla.org/messenger/account-manager;1"].getService(Ci.nsIMsgAccountManager),
+      {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm"), // replace account-manager
+			acctMgr = MailServices.accounts,
 			FoldersArray, allFolders,
 			util = QuickFolders.Util,
       quickMoveSettings = QuickFolders.quickMove.Settings,
       isLockedInAccount = quickMoveSettings.isLockInAccount,
-      currentFolder, currentServer;
+      currentFolder, currentServer = 0;
   if (isQuickJumpOrMove) {
     currentFolder = util.CurrentFolder;
-    if (!currentFolder) isQuickJumpOrMove = false; // can't determine current account
-    currentServer = currentFolder.server ? currentFolder.server.key : null;
+    if (!currentFolder) { // [issue 136] search result list has no current folder!
+      isLockedInAccount = false;
+    }
+    else {
+      currentServer = currentFolder.server ? currentFolder.server.key : null;
+    }
     quickMoveSettings.loadExclusions(); // prepare list of servers to omit
   }
-	
-	if (typeof ChromeUtils.import == "undefined")
-		Components.utils.import('resource:///modules/iteratorUtils.jsm'); 
-	else
-		var { fixIterator } = ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
+  
+  // toXPCOMArray(allFolders, Ci.nsIMutableArray) ?	
+  var { fixIterator } = ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
 	
   if (acctMgr.allFolders) { // Thunderbird & modern builds
 		FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
@@ -1956,24 +1956,9 @@ QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable, isQ
 		}		       
 		return fixIterator(FoldersArray, Ci.nsIMsgFolder);
 	}
-	else { //old / SeaMonkey?
-		/**   ### obsolete code  ###  */
-		FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-		let accounts = acctMgr.accounts;
-		allFolders = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-		// accounts will be changed from nsIMutableArray to nsIArray Tb24 (Sm2.17)
-		for (let account of fixIterator(acctMgr.accounts, Ci.nsIMsgAccount)) {
-      if ((isQuickJumpOrMove || writable) && !account.canFileMessagesOnServer) continue;
-			if (account.rootFolder)
-				account.rootFolder.ListDescendents(allFolders);
-			for (let aFolder of fixIterator(allFolders, Ci.nsIMsgFolder)) {
-				FoldersArray.appendElement(aFolder, false);
-				if (writable && !folder.canFileMessages) {
-					continue;
-				}
-			}		 
-		}	
-		return fixIterator(FoldersArray, Ci.nsIMsgFolder);
+	else { 
+    util.logToConsole("Error: allFolders missing in MailServices.accounts!");
+		return [];
 	}
 } 
 
@@ -2095,7 +2080,7 @@ QuickFolders.Util.generateMRUlist = function qfu_generateMRUlist(ftv) {
 		//items = [new ftvItem(f) for each (f in recent)];
 		for (let f of recent) { 
       if (typeof ftvItem == "function") 
-        items.push(new ftvItem(f));
+        items.push(new ftvItem(f)); // Tb78 and older
       else
         items.push(new FtvItem(f));
 	  };
@@ -2136,15 +2121,12 @@ QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentM
 
 Object.defineProperty(QuickFolders.Util, "Accounts",
 { get: function() {
-    const Ci = Components.interfaces,
-		      Cc = Components.classes;
-    let util = QuickFolders.Util, 
-        aAccounts=[];
-    Components.utils.import("resource:///modules/iteratorUtils.jsm");
-    let accounts = Cc["@mozilla.org/messenger/account-manager;1"]
-                 .getService(Ci.nsIMsgAccountManager).accounts;
-    aAccounts = [];
-    for (let ac of fixIterator(accounts, Ci.nsIMsgAccount)) {
+    var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); // replace account-manager
+    
+    let acMgr = MailServices.accounts,
+        aAccounts = [];
+        
+    for (let ac of acMgr.accounts) {
       aAccounts.push(ac);
     };
     return aAccounts;

@@ -299,10 +299,10 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 							let newCard = new cardbookCardParser();
 							cardbookRepository.cardbookUtils.cloneCard(card, newCard);
 							cardbookRepository.addCategoryToCard(newCard, sourceCat);
-							cardbookRepository.saveCard(card, newCard, myActionId, true);
+							cardbookRepository.saveCardFromUpdate(card, newCard, myActionId, true);
 						}
 						cardbookRepository.addCategoryToCard(myOutCard, targetCat);
-						cardbookRepository.saveCard({}, myOutCard, myActionId, true);
+						cardbookRepository.saveCardFromUpdate({}, myOutCard, myActionId, true);
 						wdw_findDuplicates.finishMergeAllIdAction(i);
 					}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 					i++;
@@ -352,7 +352,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 					case "CREATEANDREPLACE":
 						cardbookRepository.deleteCards(myArgs.cardsIn, myActionId);
 					case "CREATE":
-						cardbookRepository.saveCard({}, myArgs.cardsOut[0], myActionId, true);
+						cardbookRepository.saveCardFromUpdate({}, myArgs.cardsOut[0], myActionId, true);
 						wdw_findDuplicates.finishMergeAction(myId);
 						break;
 				}

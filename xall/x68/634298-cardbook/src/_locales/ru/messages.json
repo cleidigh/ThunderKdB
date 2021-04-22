@@ -1115,6 +1115,36 @@
             }
         }
 	},
+	"serverSendingGetLabels": {
+		"message": "$P1$ : отправляется запрос на получение меток…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsOK": {
+		"message": "$P1$ : получены метки",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverGetLabelsFailed": {
+		"message": "$P1$ : не удалось получить метки с сервера (url: $P2$, статус: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingGetCardLabels": {
 		"message": "$P1$ : Контакт «$P2$»: отправляется запрос на получение меток…",
         "placeholders": {
@@ -1154,6 +1184,36 @@
             }
         }
 	},
+	"serverSendingPutLabels": {
+		"message": "$P1$ : отправляется запрос на обновление меток…",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsOK": {
+		"message": "$P1$ : метки обновлены",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
+	"serverPutLabelsFailed": {
+		"message": "$P1$ : не удалось обновить метки на сервере (url: $P2$, статус: $P3$)",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            },
+            "P2": {
+                "content": "$2"
+            },
+            "P3": {
+                "content": "$3"
+            }
+        }
+	},
 	"serverSendingPutCardLabels": {
 		"message": "$P1$ : Контакт «$P2$»: отправляется запрос на обновление меток…",
         "placeholders": {
@@ -1177,7 +1237,7 @@
         }
 	},
 	"serverPutCardLabelsFailed": {
-		"message": "$P1$ : Контакт «$P2$»:  не удалось обновить метки на сервере (url: $P3$, статус: $P4$)",
+		"message": "$P1$ : Контакт «$P2$»: не удалось обновить метки на сервере (url: $P3$, статус: $P4$)",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -5469,6 +5529,12 @@
 	"org.print.accesskey": {
 		"message": "о"
 	},
+	"custom.print.label": {
+		"message": "Пользовательсткие поля"
+	},
+	"custom.print.accesskey": {
+		"message": "П"
+	},
 	"categories.print.label": {
 		"message": "Категории"
 	},
@@ -5504,6 +5570,12 @@
 	},
 	"url.print.accesskey": {
 		"message": "U"
+	},
+	"event.print.label": {
+		"message": "События"
+	},
+	"event.print.accesskey": {
+		"message": "C"
 	},
 	"note.print.label": {
 		"message": "Заметка"

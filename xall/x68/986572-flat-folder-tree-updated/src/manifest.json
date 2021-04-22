@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "applications": {
+    "gecko": {
+      "id": "flatfoldertree@nhellfire.github.io",
+      "strict_min_version": "68.0"
+    }
+  },
+
+  "name": "Flat Folder Tree",
+  "version": "1.1.5",
+  "default_locale": "en-US",
+  "icons": {
+    "32": "skin/folder.png"
+  },
+  "permissions": [ "menus", "accountsRead" ],
+
+  "background": {
+    "scripts": [
+      "content/flatfoldertree.js",
+      "background.js"
+    ]
+  },
+
+  "experiment_apis": {
+    "FlatFolderTreeMode": {
+      "schema": "api/FlatFolderTreeMode/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["FlatFolderTreeMode"]],
+        "script": "api/FlatFolderTreeMode/implementation.js"
+      }
+    },
+    "FolderUtils": {
+      "schema": "api/FolderUtils/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["FolderUtils"]],
+        "script": "api/FolderUtils/implementation.js"
+      }
+    }
+  }
+}

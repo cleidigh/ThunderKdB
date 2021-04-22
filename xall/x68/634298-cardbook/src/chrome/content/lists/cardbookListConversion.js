@@ -66,7 +66,7 @@ if ("undefined" == typeof(cardbookListConversion)) {
 							}
 							let myMembers = cardbookRepository.cardbookUtils.getMembersFromCard(myCard);
 							for (let email of myMembers.mails) {
-								this.emailResult.push([email.toLowerCase()]);
+								this.emailResult.push(email.toLowerCase());
 							}
 							for (let card of myMembers.uids) {
 								this._getEmails(card, aIdentity, useOnlyEmail);

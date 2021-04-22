@@ -29,15 +29,13 @@ async function renderIdentity(identity) {
   return template.element;
 }
 
-async function renderStyle(style) {
-  const isChecked = style.key == await settings.style;
-
+function renderStyle(style, isChecked) {
   const template = new Template('styleTemplate');
-  template.slot('label').innerText = style.label;
-  template.slot('radio').value = style.key;
-  if (isChecked) {
-    template.slot('radio').checked = true;
-  }
+  template.slot('radio').value = style;
+  template.slot('label').innerText =
+    browser.i18n.getMessage('style-' + style);
+
+  template.slot('radio').checked = isChecked;
   template.slot('radio').addEventListener(
     'change',
     event => settings.setStyle(event.target.value)
@@ -45,15 +43,13 @@ async function renderStyle(style) {
   return template.element;
 }
 
-async function renderSize(size) {
-  const isChecked = size.key == await settings.size;
-
+function renderSize(size, isChecked) {
   const template = new Template('sizeTemplate');
-  template.slot('label').innerText = size.label;
-  template.slot('radio').value = size.key;
-  if (isChecked) {
-    template.slot('radio').checked = true;
-  }
+  template.slot('radio').value = size;
+  template.slot('label').innerText =
+    browser.i18n.getMessage('size-' + size);
+
+  template.slot('radio').checked = isChecked;
   template.slot('radio').addEventListener(
     'change',
     event => settings.setSize(event.target.value)
@@ -61,7 +57,8 @@ async function renderSize(size) {
   return template.element;
 }
 
-function initialize() {
+async function initialize() {
+  // generate one color select for each identity
   const identities = new Identities();
   const colorSelectors = document.getElementById('colorSelectors');
 
@@ -70,19 +67,28 @@ function initialize() {
       .then(item => colorSelectors.appendChild(item))
   );
 
+  // generate radio buttons for styles
   const styles = new Styles();
   const styleSelectors = document.getElementById('styleSelectors');
+  const currentStyle = await settings.style;
 
-  styles.all.forEach(
-    style => renderStyle(style)
-      .then(item => styleSelectors.appendChild(item))
-  )
+  styles.all
+    .map(style => renderStyle(style, style == currentStyle))
+    .map(item => styleSelectors.appendChild(item));
 
+  // generate radio buttons for effect sizes
   const sizeSelectors = document.getElementById('sizeSelectors');
-  settings.sizes.forEach(
-    size => renderSize(size)
-      .then(item => sizeSelectors.appendChild(item))
-  );
+  const currentSize = await settings.size;
+
+  settings.sizes
+    .map(size => renderSize(size, size == currentSize))
+    .map(item => sizeSelectors.appendChild(item));
+
+  // inject localised strings in the options page
+  for (const node of document.querySelectorAll('[data-i18n]')) {
+    node.innerText = browser.i18n.getMessage(node.dataset.i18n)
+      || `⚠ No translation for "${node.dataset.i18n}"`;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", initialize);

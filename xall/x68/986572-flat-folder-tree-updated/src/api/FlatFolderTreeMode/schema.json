@@ -1,0 +1,58 @@
+[
+  {
+    "namespace": "FlatFolderTreeMode",
+    "functions": [
+      {
+        "name": "__FlatFolderTree_init",
+        "type": "function",
+        "description": "Initialize FolderTreeView mode",
+        "async": false,
+        "parameters": []
+      },
+      {
+        "name": "setFolderProperty",
+        "type": "function",
+        "description": "Sets FlatFolderTree properties on a folder",
+        "async": false,
+        "parameters": [
+          {
+            "name": "folder",
+            "$ref": "folders.MailFolder"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "setParentProperty",
+        "type": "function",
+        "description": "Sets FlatFolderTree properties on a folder's parent",
+        "async": false,
+        "parameters": [
+          {
+            "name": "folder",
+            "$ref": "folders.MailFolder"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "getFolderProperty",
+        "type": "function",
+        "description": "Returns FlatFolderTree properties for a folder",
+        "async": true,
+        "parameters": [
+          {
+            "name": "folder",
+            "$ref": "folders.MailFolder"
+          }
+        ]
+      }
+    ]
+  }
+]

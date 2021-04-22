@@ -1,0 +1,120 @@
+@import url('../../mailmindr-core.css');
+
+h1 {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.3em;
+}
+
+label {
+    user-select: none;
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+
+input[type='checkbox'] + label {
+    padding: 0 0.5em;
+}
+
+input[type='checkbox']:disabled + label {
+    color: silver;
+}
+
+input[type='checkbox'] + label::before {
+    content: '';
+    display: block;
+    float: left;
+    height: 16px;
+    width: 16px;
+    border: 1px solid rgba(12, 12, 13, 0.1);
+    border-radius: 2px;
+    background-color: var(--grey-90-a10);
+}
+
+input[type='checkbox']:checked + label::before {
+    background-image: url(chrome://global/skin/icons/check.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+input[type='checkbox'] + label:hover::before {
+    background-color: var(--grey-90-a20);
+}
+
+/* input[type='checkbox']:checked:hover + label::before {
+    background-color: var(--blue-70);
+} */
+
+input[type='date'],
+input[type='time'] {
+    font-size: 100%;
+    padding: 4px 8px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.mailmindr-dialog {
+    display: grid;
+    grid-template-columns: 100px auto;
+    column-gap: 10px;
+    row-gap: 4px;
+    grid-auto-flow: row;
+}
+
+.mailmindr-fieldwrapper--caption {
+    font-weight: bold;
+    min-height: 30px;
+}
+
+.mailmindr-fieldwrapper--caption > label {
+    vertical-align: -webkit-baseline-middle;
+}
+
+.mailmindr-fieldwrapper--content {
+    min-width: 0;
+}
+
+.mailmindr-fieldwrapper--content > label {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+}
+
+.mailmindr-buttonbar {
+    margin: 0.5em -0.25em;
+    color: initial;
+    grid-column: 2;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+.mailmindr-buttonbar--wrapper {
+    display: flex;
+}
+
+select {
+    color: inherit !important;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    min-height: 30px;
+    font-weight: 400;
+    padding: 0 8px;
+    text-decoration: none;
+    font-size: 1em;
+    background-color: rgba(12, 12, 13, 0.1);
+
+    width: 275px;
+}

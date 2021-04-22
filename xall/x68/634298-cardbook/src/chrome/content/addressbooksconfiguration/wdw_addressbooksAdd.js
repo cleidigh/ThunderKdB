@@ -36,20 +36,20 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		lTimerDiscoveryAll : {},
 		
 		initSearchDefinition: function () {
-			if (window.arguments[0].dirPrefId && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId] && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].searchAB) {
-				wdw_addressbooksAdd.gSearchDefinition['searchAB'] = cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].searchAB;
+			if (window.arguments[0].dirPrefId && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId]) {
+				wdw_addressbooksAdd.gSearchDefinition.searchAB = cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].searchAB;
 			} else {
-				wdw_addressbooksAdd.gSearchDefinition['searchAB'] = true;
+				wdw_addressbooksAdd.gSearchDefinition.searchAB = true;
 			}
-			if (window.arguments[0].dirPrefId && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId] && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].matchAll) {
-				wdw_addressbooksAdd.gSearchDefinition['matchAll'] = cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].matchAll;
+			if (window.arguments[0].dirPrefId && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId]) {
+				wdw_addressbooksAdd.gSearchDefinition.matchAll = cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].matchAll;
 			} else {
-				wdw_addressbooksAdd.gSearchDefinition['matchAll'] = 'and';
+				wdw_addressbooksAdd.gSearchDefinition.matchAll = true;
 			}
-			if (window.arguments[0].dirPrefId && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId] && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].rules) {
-				wdw_addressbooksAdd.gSearchDefinition['rules'] = JSON.parse(JSON.stringify(cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].rules));
+			if (window.arguments[0].dirPrefId && cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId]) {
+				wdw_addressbooksAdd.gSearchDefinition.rules = JSON.parse(JSON.stringify(cardbookRepository.cardbookComplexSearch[window.arguments[0].dirPrefId].rules));
 			} else {
-				wdw_addressbooksAdd.gSearchDefinition['rules'] = [["","","",""]];
+				wdw_addressbooksAdd.gSearchDefinition.rules = [{case: "", field: "", term: "", value: ""}];
 			}
 		},
 		
@@ -465,7 +465,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			wdw_addressbooksAdd.constructComplexSearch();
 			document.getElementById('addressbook-wizard').canAdvance = false;
 			function checkTerms() {
-				if (cardbookComplexSearch.getSearch() != "") {
+				if (cardbookComplexSearch.getSearch().rules.length) {
 					document.getElementById('addressbook-wizard').canAdvance = true;
 				} else {
 					document.getElementById('addressbook-wizard').canAdvance = false;
@@ -479,20 +479,9 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 
 		searchPageAdvance: function () {
 			let mySearch = cardbookComplexSearch.getSearch();
-
-			var relative = mySearch.match("^searchAB:([^:]*):searchAll:([^:]*)(.*)");
-			wdw_addressbooksAdd.gSearchDefinition.searchAB = relative[1];
-			if (relative[2] == "true") {
-				wdw_addressbooksAdd.gSearchDefinition.matchAll = true;
-			} else {
-				wdw_addressbooksAdd.gSearchDefinition.matchAll = false;
-			}
-			var tmpRuleArray = relative[3].split(/:case:/);
-			wdw_addressbooksAdd.gSearchDefinition.rules = [];
-			for (let tmpRule of tmpRuleArray) {
-				var relative = tmpRule.match("([^:]*):field:([^:]*):term:([^:]*):value:([^:]*)");
-				wdw_addressbooksAdd.gSearchDefinition.rules.push([relative[1], relative[2], relative[3], relative[4]]);
-			}
+			wdw_addressbooksAdd.gSearchDefinition.searchAB = mySearch.searchAB;
+			wdw_addressbooksAdd.gSearchDefinition.matchAll = mySearch.matchAll;
+			wdw_addressbooksAdd.gSearchDefinition.rules = JSON.parse(JSON.stringify(mySearch.rules));
 		},
 
 		showPassword: function (aCheckBox) {
@@ -856,11 +845,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			} else {
 				aCheckbox1.setAttribute('disabled', true);
 			}
-			var aCheckbox2 = document.createXULElement('checkbox');
-			aRow.appendChild(aCheckbox2);                                              
-			aCheckbox2.setAttribute('checked', false);
-			aCheckbox2.setAttribute('id', 'urnuuidCheckbox' + aId);
-			aCheckbox2.setAttribute("aria-labelledby", "namesPageUrnuuidLabel");
 		},
 
 		loadNames: function () {
@@ -1160,7 +1144,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		prepareSearchAllContactsAddressbook: function () {
 			var dirPrefId = cardbookRepository.cardbookUtils.getUUID();
 			var myName = cardbookRepository.extension.localeData.localizeMessage("allContacts");
-			wdw_addressbooksAdd.gFinishParams.push({type: "SEARCH", searchDef:"searchAB:allAddressBooks:searchAll:true:case:dig:field:version:term:IsntEmpty:value:",
+			wdw_addressbooksAdd.gFinishParams.push({type: "SEARCH", search: { searchAB: "allAddressBooks", matchAll: true, rules: [ { case: "dig", field: "version", term: "IsntEmpty", value: "" } ] },
 														name: myName, username: "", color: "", vcard: "", enabled: true,
 														dirPrefId: dirPrefId, DBcached: false, firstAction: false});
 		},
@@ -1174,7 +1158,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				var dirPrefId = cardbookRepository.cardbookUtils.getUUID();
 				var enabled = true;
 			}
-			wdw_addressbooksAdd.gFinishParams.push({type: "SEARCH", searchDef: cardbookComplexSearch.getSearch(), name: name, username: "", color: "", vcard: "", enabled: enabled,
+			wdw_addressbooksAdd.gFinishParams.push({type: "SEARCH", search: cardbookComplexSearch.getSearch(), name: name, username: "", color: "", vcard: "", enabled: enabled,
 														dirPrefId: dirPrefId, DBcached: false, firstAction: false});
 		},
 
@@ -1192,7 +1176,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						var aAddressbookVCard = document.getElementById('vCardVersionPageName' + i).value;
 						var aAddressbookDBCached = document.getElementById('DBCachedCheckbox' + i).checked;
 						var aAddressbookURL = document.getElementById('URLTextbox' + i).value;
-						var aAddressbookUrnuuid = document.getElementById('urnuuidCheckbox' + i).checked;
 						var aAddressbookUsername = aCheckbox.getAttribute('username');
 						var aAddressbookValidationType = aCheckbox.getAttribute('validationType');
 						var aAddressbookActionType = aCheckbox.getAttribute('actionType');
@@ -1205,13 +1188,13 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							}
 							wdw_addressbooksAdd.gFinishParams.push({type: aAddressbookValidationType, url: aAddressbookURL, name: aAddressbookName, username: aAddressbookUsername, color: aAddressbookColor,
 																	vcard: aAddressbookVCard, readonly: false, dirPrefId: aAddressbookId,
-																	urnuuid: aAddressbookUrnuuid, DBcached: aAddressbookDBCached, firstAction: false});
+																	DBcached: aAddressbookDBCached, firstAction: false});
 						} else if (myType == "LOCALDB") {
 							wdw_addressbooksAdd.gFinishParams.push({type: aAddressbookValidationType, name: aAddressbookName, username: "", color: aAddressbookColor, vcard: aAddressbookVCard, readonly: false, dirPrefId: aAddressbookId,
-																		urnuuid: aAddressbookUrnuuid, DBcached: true, firstAction: false});
+																		DBcached: true, firstAction: false});
 						} else if (myType == "FILE" || myType == "DIRECTORY") {
 							wdw_addressbooksAdd.gFinishParams.push({type: aAddressbookValidationType, actionType: aAddressbookActionType, file: wdw_addressbooksAdd.gFile, name: aAddressbookName, username: "",
-																	color: aAddressbookColor, vcard: aAddressbookVCard, readonly: false, dirPrefId: aAddressbookId, urnuuid: aAddressbookUrnuuid, DBcached: false, firstAction: false});
+																	color: aAddressbookColor, vcard: aAddressbookVCard, readonly: false, dirPrefId: aAddressbookId, DBcached: false, firstAction: false});
 						} else if (myType == "STANDARD") {
 							if (window.arguments[0].action == "first") {
 								var aFirstAction = true;
@@ -1221,7 +1204,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							wdw_addressbooksAdd.gFinishParams.push({type: "STANDARD", sourceDirPrefId: aAddressbookSourceDirPrefId,
 																name: aAddressbookName, username: "", color: aAddressbookColor, vcard: aAddressbookVCard, readonly: false,
 																dirPrefId: aAddressbookId, collected: aAddressbookSourceCollected,
-																urnuuid: aAddressbookUrnuuid, DBcached: true, firstAction: aFirstAction});
+																DBcached: true, firstAction: aFirstAction});
 						}
 					}
 					i++;
@@ -1240,19 +1223,15 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				var myAccount = wdw_addressbooksAdd.gFinishParams[i];
 				if (window.arguments[0].action == "search" && window.arguments[0].dirPrefId) {
 					wdw_cardbook.modifySearchAddressbook(myAccount.dirPrefId, myAccount.name, myAccount.color, myAccount.vcard, myAccount.readonly,
-													myAccount.urnuuid, myAccount.searchDef);
+													false, myAccount.search);
 				} else {
 					if (myAccount.type === "SEARCH") {
-						var myFile = cardbookRepository.getRuleFile(myAccount.dirPrefId);
-						if (myFile.exists()) {
-							myFile.remove(true);
-						}
-						myFile.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
-						cardbookRepository.cardbookUtils.writeContentToFile(myFile.path, myAccount.searchDef, "UTF8");
-						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, myAccount.type, myFile.path, myAccount.username, myAccount.color,
-																	myAccount.enabled, true, myAccount.vcard, false, myAccount.urnuuid,
+						myAccount.search.dirPrefId = myAccount.dirPrefId;
+						cardbookRepository.addSearch(myAccount.search);
+						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, myAccount.type, "", myAccount.username, myAccount.color,
+																	myAccount.enabled, true, myAccount.vcard, false, false,
 																	myAccount.DBcached, false, "0", true);
-						cardbookRepository.cardbookSynchronization.loadComplexSearchAccount(myAccount.dirPrefId);
+						cardbookRepository.cardbookSynchronization.loadComplexSearchAccount(myAccount.dirPrefId, myAccount.search);
 					} else  if (cardbookRepository.cardbookUtils.isMyAccountRemote(myAccount.type)) {
 						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, myAccount.type, myAccount.url, myAccount.username, myAccount.color,
 																	true, true, myAccount.vcard, myAccount.readonly, myAccount.urnuuid,
@@ -1263,10 +1242,10 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							cardbookRepository.addAccountToCollected(myAccount.dirPrefId);
 						}
 						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, "LOCALDB", "", myAccount.username, myAccount.color,
-																	true, true, myAccount.vcard, myAccount.readonly, myAccount.urnuuid,
+																	true, true, myAccount.vcard, myAccount.readonly, false,
 																	myAccount.DBcached, true, "60", true);
 						cardbookRepository.cardbookSynchronization.initMultipleOperations(myAccount.dirPrefId);
-						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;
+						cardbookRepository.cardbookDBCardRequest[myAccount.dirPrefId]++;
 						wdw_migrate.importCards(myAccount.sourceDirPrefId, myAccount.dirPrefId, myAccount.name, myAccount.vcard);
 						cardbookRepository.cardbookSynchronization.waitForLoadFinished(myAccount.dirPrefId, myAccount.name, false, true);
 						// if the first proposed import of standard address books is finished OK
@@ -1276,11 +1255,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						}
 					} else if (myAccount.type === "LOCALDB") {
 						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, myAccount.type, "", myAccount.username, myAccount.color,
-																	true, true, myAccount.vcard, myAccount.readonly, myAccount.urnuuid,
+																	true, true, myAccount.vcard, myAccount.readonly, false,
 																	myAccount.DBcached, true, "60", true);
 					} else if (myAccount.type === "FILE") {
 						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, myAccount.type, myAccount.file.path, myAccount.username, myAccount.color,
-																	true, true, myAccount.vcard, myAccount.readonly, myAccount.urnuuid,
+																	true, true, myAccount.vcard, myAccount.readonly, false,
 																	myAccount.DBcached, true, "60", true);
 						cardbookRepository.cardbookSynchronization.initMultipleOperations(myAccount.dirPrefId);
 						cardbookRepository.cardbookFileRequest[myAccount.dirPrefId]++;
@@ -1326,7 +1305,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 							}
 						}
 						cardbookRepository.addAccountToRepository(myAccount.dirPrefId, myAccount.name, myAccount.type, myDir.path, myAccount.username, myAccount.color,
-																	true, true, myAccount.vcard, myAccount.readonly, myAccount.urnuuid,
+																	true, true, myAccount.vcard, myAccount.readonly, false,
 																	myAccount.DBcached, true, "60", true);
 						cardbookRepository.cardbookSynchronization.initMultipleOperations(myAccount.dirPrefId);
 						cardbookRepository.cardbookDirRequest[myAccount.dirPrefId]++;

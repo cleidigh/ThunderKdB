@@ -11,23 +11,21 @@ if ("undefined" == typeof(wdw_logEdition)) {
 			wdw_bulkOperation.lTimerBulkOperation[1] = Components.classes["@mozilla.org/timer;1"].createInstance(Components.interfaces.nsITimer);
 			var lTimerBulkOperation = wdw_bulkOperation.lTimerBulkOperation[1];
 			lTimerBulkOperation.initWithCallback({ notify: function(lTimerBulkOperation) {
-						var close = true;
-						for (var dirPrefId in cardbookRepository.lTimerDirAll) {
-							var total = cardbookRepository.cardbookServerCardSyncTotal[dirPrefId];
-							var done = cardbookRepository.cardbookServerCardSyncDone[dirPrefId];
-							if (total !=0 && done !=0) {
+						let close = true;
+						for (var dirPrefId in cardbookRepository.lTimerImportAll) {
+							let total = cardbookRepository.cardbookServerCardSyncTotal[dirPrefId];
+							let done = cardbookRepository.cardbookServerCardSyncDone[dirPrefId];
+							let request = cardbookRepository.cardbookSynchronization.getRequest(dirPrefId) + cardbookRepository.cardbookSynchronization.getTotal(dirPrefId);
+							let response = cardbookRepository.cardbookSynchronization.getResponse(dirPrefId) + cardbookRepository.cardbookSynchronization.getDone(dirPrefId);
+							if (request != response) {
 								if (!(document.getElementById("bulkProgressmeter_" + dirPrefId))) {
-									var currentRow = cardbookElementTools.addGridRow(document.getElementById("bulkOperationRows"), 'bulkOperationRow_' + dirPrefId, {align: 'center'});
+									let currentRow = cardbookElementTools.addGridRow(document.getElementById("bulkOperationRows"), 'bulkOperationRow_' + dirPrefId, {align: 'center'});
 									cardbookElementTools.addLabel(currentRow, 'bulkOperationRowLabel_' + dirPrefId, cardbookRepository.cardbookPreferences.getName(dirPrefId), 'bulkOperationProgressmeter_' + dirPrefId);
 									cardbookElementTools.addProgressmeter(currentRow, "bulkProgressmeter_" + dirPrefId);
 								}
-								var value = Math.round(done / total * 100);
+								let value = Math.round(done / total * 100);
 								document.getElementById("bulkProgressmeter_" + dirPrefId).value = value;
-								if (value != 100) {
-									close = false;
-								}
-							} else if (document.getElementById("bulkProgressmeter_" + dirPrefId)) {
-								document.getElementById("bulkProgressmeter_" + dirPrefId).value = 100;
+								close = false;
 							}
 						}
 						if (close) {
@@ -35,7 +33,6 @@ if ("undefined" == typeof(wdw_logEdition)) {
 						}
 					}
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
-
 		},
 
 		cancel: function () {

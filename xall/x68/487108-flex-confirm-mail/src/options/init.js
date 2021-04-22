@@ -7,11 +7,12 @@
 
 import {
   configs,
-  //sendToHost
+  sendToHost,
 } from '/common/common.js';
 import * as Constants from '/common/constants.js';
 import Options from '/extlib/Options.js';
 import '/extlib/l10n.js';
+import * as Dialog from '/extlib/dialog.js';
 
 const options = new Options(configs);
 
@@ -73,6 +74,14 @@ function throttledUpdateArrayTypeTextArea(textarea) {
 }
 throttledUpdateArrayTypeTextArea.timers = new Map();
 
+async function chooseFile({ title, role, displayName, pattern, fileName }) {
+  const response = await sendToHost({
+    command: Constants.HOST_COMMAND_CHOOSE_FILE,
+    params: { title, role, displayName, pattern, fileName }
+  });
+  return response ? response.path.trim() : '';
+}
+
 
 window.addEventListener('DOMContentLoaded', async () => {
   await configs.$loaded;
@@ -107,8 +116,20 @@ window.addEventListener('DOMContentLoaded', async () => {
     (configs.$isLocked('attentionDomainsSoruce') &&
      configs.attentionDomainsSoruce == Constants.SOURCE_CONFIG)
   );
+  Dialog.initButton(document.querySelector('#attentionDomainsFileChoose'), async _event => {
+    const path = await chooseFile({
+      title:       browser.i18n.getMessage('config_attentionDomainsFile_button_dialogTitle'),
+      role:        'AttentionDomainsFileChoose',
+      displayName: `${browser.i18n.getMessage('config_attentionDomainsFile_button_dialogDisplayName')} (*.*)`,
+      pattern:     '*.*',
+      fileName:    attentionDomainsFile.value || ''
+    });
+    if (path)
+      configs.attentionDomainsFile = attentionDomainsFile.value = path;
+  });
   if (attentionDomainsFile.classList.contains('locked'))
     attentionDomainsFile.disabled = true;
+
 
   const attentionSuffixesField = document.querySelector('#attentionSuffixesField');
   attentionSuffixesField.classList.toggle(
@@ -127,8 +148,51 @@ window.addEventListener('DOMContentLoaded', async () => {
     (configs.$isLocked('attentionSuffixesSoruce') &&
      configs.attentionSuffixesSoruce == Constants.SOURCE_CONFIG)
   );
+  Dialog.initButton(document.querySelector('#attentionSuffixesFileChoose'), async _event => {
+    const path = await chooseFile({
+      title:       browser.i18n.getMessage('config_attentionSuffixesFile_button_dialogTitle'),
+      role:        'AttentionSuffixesFileChoose',
+      displayName: `${browser.i18n.getMessage('config_attentionSuffixesFile_button_dialogDisplayName')} (*.*)`,
+      pattern:     '*.*',
+      fileName:    attentionSuffixesFile.value || ''
+    });
+    if (path)
+      configs.attentionSuffixesFile = attentionSuffixesFile.value = path;
+  });
   if (attentionSuffixesFile.classList.contains('locked'))
     attentionSuffixesFile.disabled = true;
+
+
+  const attentionTermsField = document.querySelector('#attentionTermsField');
+  attentionTermsField.classList.toggle(
+    'locked',
+    configs.$isLocked('attentionTerms') ||
+    (configs.$isLocked('attentionTermsSoruce') &&
+     configs.attentionTermsSoruce == Constants.SOURCE_FILE)
+  );
+  if (attentionTermsField.classList.contains('locked'))
+    attentionTermsField.disabled = true;
+
+  const attentionTermsFile = document.querySelector('#attentionTermsFile');
+  attentionTermsFile.classList.toggle(
+    'locked',
+    configs.$isLocked('attentionTermsFile') ||
+    (configs.$isLocked('attentionTermsSoruce') &&
+     configs.attentionTermsSoruce == Constants.SOURCE_CONFIG)
+  );
+  Dialog.initButton(document.querySelector('#attentionTermsFileChoose'), async _event => {
+    const path = await chooseFile({
+      title:       browser.i18n.getMessage('config_attentionTermsFile_button_dialogTitle'),
+      role:        'AttentionTermsFileChoose',
+      displayName: `${browser.i18n.getMessage('config_attentionTermsFile_button_dialogDisplayName')} (*.*)`,
+      pattern:     '*.*',
+      fileName:    attentionTermsFile.value || ''
+    });
+    if (path)
+      configs.attentionTermsFile = attentionTermsFile.value = path;
+  });
+  if (attentionTermsFile.classList.contains('locked'))
+    attentionTermsFile.disabled = true;
 
   options.buildUIForAllConfigs(document.querySelector('#debug-configs'));
   onConfigChanged('debug');

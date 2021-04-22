@@ -42,7 +42,7 @@ if ("undefined" == typeof(ovl_collected)) {
 						var myNewCard = new cardbookCardParser();
 						cardbookRepository.cardbookUtils.cloneCard(myCard, myNewCard);
 						myNewCard.fn = aDisplayName;
-						cardbookRepository.saveCard(myCard, myNewCard, myActionId, true);
+						cardbookRepository.saveCardFromUpdate(myCard, myNewCard, myActionId, true);
 					}
 				}
 			}
@@ -59,7 +59,7 @@ if ("undefined" == typeof(ovl_collected)) {
 						let addresses = MailServices.headerParser.parseEncodedHeaderW(myFields[field]);
 						for (let address of addresses) {
 							ovl_collected.addCollectedContact(gMsgCompose.identity.key, resultEmailsCollections, address.name, address.email);
-							cardbookRepository.cardbookMailPopularity.updateMailPopularity(address.email);
+							cardbookIDBMailPop.updateMailPop(address.email);
 						}
 					}
 				}
@@ -69,7 +69,7 @@ if ("undefined" == typeof(ovl_collected)) {
 					if (myFields[field]) {
 						let addresses = MailServices.headerParser.parseEncodedHeaderW(myFields[field]);
 						for (let address of addresses) {
-							cardbookRepository.cardbookMailPopularity.updateMailPopularity(address.email);
+							cardbookIDBMailPop.updateMailPop(address.email);
 						}
 					}
 				}

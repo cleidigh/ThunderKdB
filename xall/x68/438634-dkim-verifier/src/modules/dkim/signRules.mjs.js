@@ -11,6 +11,7 @@
 
 // @ts-check
 ///<reference path="../../WebExtensions.d.ts" />
+///<reference path="../../RuntimeMessage.d.ts" />
 ///<reference path="../../experiments/mailUtils.d.ts" />
 /* eslint-env webextensions */
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "VerifierModule" }] */
@@ -107,7 +108,7 @@ const AUTO_ADD_RULE_FOR = {
 /** @type {Deferred<void>?} */
 let defaultRulesLoaded = null;
 /** @type {DkimSignRuleDefault[]} */
-let defaultRules;
+let defaultRules = [];
 /** @type {Deferred<void>?} */
 let userRulesLoaded = null;
 let userRulesMaxId = 0;
@@ -209,13 +210,18 @@ function glob(str, pattern) {
 }
 
 /**
+ * @typedef { import("./dmarc.mjs.js").default } DMARC
+ */
+
+/**
  * Determinate if an e-mail by fromAddress should be signed
  *
  * @param {string} fromAddress
  * @param {string} [listId]
+ * @param {DMARC} [dmarc]
  * @returns {Promise<DKIMSignPolicy>}
  */
-async function checkIfShouldBeSigned(fromAddress, listId) {
+async function checkIfShouldBeSigned(fromAddress, listId, dmarc) {
 	await loadUserRules();
 	/** @type {(DkimSignRuleDefault|DkimSignRuleUser)[]} */
 	let matchedRules = userRules.filter(rule => {
@@ -247,7 +253,15 @@ async function checkIfShouldBeSigned(fromAddress, listId) {
 	/** @type {DkimSignRuleDefault|DkimSignRuleUser=} */
 	const rule = matchedRules.sort((a, b) => b.priority - a.priority)[0];
 	if (!rule) {
-		// TODO: DMARC
+		if (dmarc) {
+			const dmarcRes = await dmarc.shouldBeSigned(fromAddress);
+			return {
+				shouldBeSigned: dmarcRes.shouldBeSigned,
+				sdid: dmarcRes.sdid,
+				foundRule: false,
+				hideFail: false,
+			};
+		}
 		return {
 			shouldBeSigned: false,
 			sdid: [],
@@ -365,12 +379,13 @@ export default class SignRules {
 	 * @param {string} from
 	 * @param {string} [listId]
 	 * @param {function(void): Promise<boolean>} [isOutgoingCallback]
+	 * @param {DMARC} [dmarc]
 	 * @returns {Promise<VerifierModule.dkimSigResultV2>}
 	 */
-	static async check(dkimResult, from, listId, isOutgoingCallback) {
+	static async check(dkimResult, from, listId, isOutgoingCallback, dmarc) {
 		await prefs.init();
 
-		const policy = await checkIfShouldBeSigned(from, listId);
+		const policy = await checkIfShouldBeSigned(from, listId, dmarc);
 		log.debug("shouldBeSigned: ", policy);
 		if (dkimResult.result === "none") {
 			if (policy.shouldBeSigned && !(isOutgoingCallback && await isOutgoingCallback())) {
@@ -403,6 +418,7 @@ export default class SignRules {
 	static clearRules() {
 		userRulesLoaded = null;
 		userRules = [];
+		userRulesMaxId = 0;
 		return browser.storage.local.remove("signRulesUser");
 	}
 
@@ -502,7 +518,8 @@ export default class SignRules {
 	 * @param {any} newValue
 	 * @returns {Promise<void>}
 	 */
-	static updateRule(id, propertyName, newValue) {
+	static async updateRule(id, propertyName, newValue) {
+		await loadUserRules();
 		const userRule = userRules.find(rule => rule.id === id);
 		if (!userRule) {
 			throw new Error(`Can not update non existing rule with id '${id}'`);
@@ -542,10 +559,11 @@ export default class SignRules {
 	 * @param {number} id
 	 * @returns {Promise<void>}
 	 */
-	static deleteRule(id) {
+	static async deleteRule(id) {
+		await loadUserRules();
 		const ruleIndex = userRules.findIndex(rule => rule.id === id);
 		if (ruleIndex === -1) {
-			throw new Error(`Can not update non existing rule with id '${id}'`);
+			throw new Error(`Can not delete non existing rule with id '${id}'`);
 		}
 		userRules.splice(ruleIndex, 1);
 		return storeUserRules();
@@ -604,8 +622,6 @@ export default class SignRules {
 				}
 				await SignRules.addRule(domain, null, fromAddressToAdd, sdid, RULE_TYPE.ALL, PRIORITY.AUTOINSERT_RULE_ALL);
 			}
-
-			log.trace("signedBy Task end");
 		})();
 		promise.then(null, function onReject(exception) {
 			// Failure!  We can inspect or report the exception.
@@ -622,11 +638,16 @@ export default class SignRules {
  * @returns {void}
  */
 export function initSignRulesProxy() {
-	browser.runtime.onMessage.addListener((request, sender, /*sendResponse*/) => {
+	browser.runtime.onMessage.addListener((runtimeMessage, sender, /*sendResponse*/) => {
 		if (sender.id !== "dkim_verifier@pl") {
 			return;
 		}
-		if (typeof request !== 'object' || request === null) {
+		if (typeof runtimeMessage !== 'object' || runtimeMessage === null) {
+			return;
+		}
+		/** @type {RuntimeMessage.Messages} */
+		const request = runtimeMessage;
+		if (request.module !== "SignRules") {
 			return;
 		}
 		if (request.method === "getDefaultRules") {

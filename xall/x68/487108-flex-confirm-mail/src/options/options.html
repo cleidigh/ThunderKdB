@@ -17,7 +17,12 @@
       <legend>__MSG_config_confirmationMode_caption__</legend>
       <ul>
         <li><label><input name="confirmationMode" type="radio" value="1">__MSG_config_confirmationMode_always_label__</label></li>
-        <li><label><input name="confirmationMode" type="radio" value="2">__MSG_config_confirmationMode_onModified_label__</label></li>
+        <li><label><input name="confirmationMode" type="radio" value="2">__MSG_config_confirmationMode_onModified_label__</label>
+            <p class="sub"
+              ><label>__MSG_config_confirmationMode_onModified_description_before__
+                      <input name="acceptablePastedTextLength" type="number" min="-1" size="6">
+                      __MSG_config_confirmationMode_onModified_description_after__</label></p>
+        </li>
         <li><label><input name="confirmationMode" type="radio" value="0">__MSG_config_confirmationMode_never_label__</label></li>
       </ul>
     </fieldset>
@@ -56,11 +61,14 @@
             </li>
         <li><label class="require-native-messaging-host"
                   ><input name="attentionDomainsSource" type="radio" value="1">__MSG_config_attentionDomainsFile_label__</label>
-            <br><label class="require-native-messaging-host"
+            <br><label class="require-native-messaging-host flex-box row"
                       ><input id="attentionDomainsFile"
-                              class="filepath"
+                              class="filepath flex-box column"
                               type="text"
-                              placeholder="__MSG_config_attentionDomainsFile_input_placeholder__"></label></li>
+                              placeholder="__MSG_config_attentionDomainsFile_input_placeholder__">
+                       <button id="attentionDomainsFileChoose"
+                               class="flex-box column"
+                              >__MSG_config_attentionDomainsFile_button_label__</button></label></li>
       </ul>
     </fieldset>
 
@@ -99,11 +107,14 @@
             </li>
         <li><label class="require-native-messaging-host"
                   ><input name="attentionSuffixesSource" type="radio" value="1">__MSG_config_attentionSuffixesFile_label__</label>
-            <br><label class="require-native-messaging-host"
+            <br><label class="require-native-messaging-host flex-box row"
                       ><input id="attentionSuffixesFile"
-                              class="filepath"
+                              class="filepath flex-box column"
                               type="text"
-                              placeholder="__MSG_config_attentionSuffixesFile_input_placeholder__"></label></li>
+                              placeholder="__MSG_config_attentionSuffixesFile_input_placeholder__">
+                       <button id="attentionSuffixesFileChoose"
+                               class="flex-box column"
+                              >__MSG_config_attentionSuffixesFile_button_label__</button></label></li>
       </ul>
     </fieldset>
 
@@ -118,11 +129,14 @@
             </li>
         <li><label class="require-native-messaging-host"
                   ><input name="attentionTermsSource" type="radio" value="1">__MSG_config_attentionTermsFile_label__</label>
-            <br><label class="require-native-messaging-host"
+            <br><label class="require-native-messaging-host flex-box row"
                       ><input id="attentionTermsFile"
-                              class="filepath"
+                              class="filepath flex-box column"
                               type="text"
-                              placeholder="__MSG_config_attentionTermsFile_input_placeholder__"></label></li>
+                              placeholder="__MSG_config_attentionTermsFile_input_placeholder__">
+                       <button id="attentionTermsFileChoose"
+                               class="flex-box column"
+                              >__MSG_config_attentionTermsFile_button_label__</button></label></li>
       </ul>
     </fieldset>
 

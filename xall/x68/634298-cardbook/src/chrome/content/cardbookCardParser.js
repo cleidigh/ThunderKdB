@@ -456,14 +456,14 @@ if ("undefined" == typeof(cardbookCardParser)) {
 								if (vCardDataArrayHeader == "X-CUSTOM1" || vCardDataArrayHeader == "X-CUSTOM2" || vCardDataArrayHeader == "X-CUSTOM3" || vCardDataArrayHeader == "X-CUSTOM4") {
 									var customLabel = cardbookRepository.extension.localeData.localizeMessage("customLabel");
 									var found = false
-									for (var i = 0; i < cardbookRepository.customFields['pers'].length; i++) {
-										if (cardbookRepository.customFields['pers'][i][0] == vCardDataArrayHeader) {
+									for (var i = 0; i < cardbookRepository.customFields['personal'].length; i++) {
+										if (cardbookRepository.customFields['personal'][i][0] == vCardDataArrayHeader) {
 											found = true;
 											break;
 										}
 									}
 									if (!found) {
-										cardbookRepository.cardbookPreferences.setCustomFields('pers', cardbookRepository.customFields['pers'].length, vCardDataArrayHeader + ":" + customLabel + vCardDataArrayHeader.replace("X-CUSTOM", ""));
+										cardbookRepository.cardbookPreferences.setCustomFields('personal', cardbookRepository.customFields['personal'].length, vCardDataArrayHeader + ":" + customLabel + vCardDataArrayHeader.replace("X-CUSTOM", ""));
 										cardbookRepository.loadCustoms();
 									}
 								}

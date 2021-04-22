@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14196/14196754.png?modified=1600788309"
         }
     ],
-    "average_daily_users": 1512,
+    "average_daily_users": 1605,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "https://paypal.me/devmount",
     "created": "2020-09-28T12:23:48Z",
     "current_version": {
-        "id": 2475486,
+        "id": 2475617,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475486",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475617",
         "files": [
             {
-                "id": 1018647,
-                "created": "2021-03-10T09:54:56Z",
-                "hash": "sha256:110878b1bd8bd9b93e03800420e662b6b01eea69969e00691379eb1add12a0c4",
+                "id": 1018778,
+                "created": "2021-03-29T21:42:01Z",
+                "hash": "sha256:7042bb4f80fe85b288e7696c99c6c669a3f77cd3ebbf4c4380fa19796ab219d7",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 303948,
+                "size": 307975,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018647/thirdstats-1.5.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018778/thirdstats-1.6.0-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "messagesRead",
@@ -78,13 +78,13 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-GB": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer. Also the privacy and security documentation was improved. Many thanks to @koobs.\n\n<b>Calendar Weeks from another year</b>\nFixes the computed weeks chart data by taking into account, that the first days of year can belong to the last week of the previous year as well as the last days of a year can belong to the first week of the next year.\n\n<b>Tabs Permission removed</b>\nThe tabs permission was not necessary and therefore removed.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.1\">full release notes with screenshots on GitHub</a>.",
-            "en-US": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer. Also the privacy and security documentation was improved. Many thanks to @koobs.\n\n<b>Calendar Weeks from another year</b>\nFixes the computed weeks chart data by taking into account, that the first days of year can belong to the last week of the previous year as well as the last days of a year can belong to the first week of the next year.\n\n<b>Tabs Permission removed</b>\nThe tabs permission was not necessary and therefore removed.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.1\">full release notes with screenshots on GitHub</a>.",
-            "en-CA": "<b>Folder Stats</b>\nA new chart showing the distribution of emails in folders was introduced. Number of emails per folder are visible in arc size and color intensity. Only non-empty folders are shown, each folder has a <i>received</i> and <i>sent</i> segment.\n\n<b>JSON Export</b>\nProvides the possibility to export stats data in JSON format. The export button is next to the options button in the top right corner of the stats page. It's always an export of the currently displayed data, making it possible to adjust the export by using the filter fields (accounts, folders, date range and contacts).\n\n<b>Filter for Contacts</b>\nA filter for contacts was added, showing stats for all messages, where this contact is the sender or one of the recipients. This filter provides a drop-down list of all email addresses shown in the most contacted charts.\n\n<b>Hungarian Translation</b>\nThirdStats is now available in Hungarian - many thanks to @ovari. The translation in your own language is incomplete or missing? Help me translating ThirdStats into your language on <a rel=\"nofollow\" href=\"https://gitlocalize.com/repo/5505\">GitLocalize</a>.\n\n<b>Auto-apply Option Changes</b>\nOption changes are now being watched on the stats page and automatically updated, Changes of <i>Dark mode</i>, <i>Vertical axis</i>, <i>Start of Week</i> and the account colors are directly applied. All other options need a window or cache refresh. Options now have a hint symbol with a tooltip that indicates, whether the stats page or the cache has do be refreshed after changing the options value.\n\n<b>Fix Received/Sent Numbers</b>\nThe case of email addresses wasn't handled properly when processing accounts. Now all email addresses and identities are converted to lowercase before processing them, removing the need to set the same identity in different cases.\n\n<b>Improve documentation and security policy</b>\nReadme feature list was adapted to the current changes. The security policy now contains FAQ. The footer of the stats page now contains a disclaimer. Also the privacy and security documentation was improved. Many thanks to @koobs.\n\n<b>Calendar Weeks from another year</b>\nFixes the computed weeks chart data by taking into account, that the first days of year can belong to the last week of the previous year as well as the last days of a year can belong to the first week of the next year.\n\n<b>Tabs Permission removed</b>\nThe tabs permission was not necessary and therefore removed.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.5.1\">full release notes with screenshots on GitHub</a>."
+            "en-GB": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>.",
+            "en-US": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>.",
+            "en-CA": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.5.1",
-        "version": "1.5.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.6.0",
+        "version": "1.6.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -115,7 +115,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-03-10T09:55:03Z",
+    "last_updated": "2021-03-29T21:45:03Z",
     "name": {
         "ru": "ThirdStats",
         "fr": "ThirdStats",
@@ -282,10 +282,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.57588,
-        "count": 8,
-        "average": 4.75,
-        "text_count": 8
+        "bayesian_average": 4.62337,
+        "count": 9,
+        "average": 4.7778,
+        "text_count": 9
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/reviews/",
     "requires_payment": false,

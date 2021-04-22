@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/4/4848/4848388.png?modified=1491448656"
         }
     ],
-    "average_daily_users": 29037,
+    "average_daily_users": 29145,
     "categories": {
         "seamonkey": [
             "privacy-and-security"
@@ -21,26 +21,26 @@
     "contributions_url": "",
     "created": "2007-08-25T22:21:10Z",
     "current_version": {
-        "id": 2474762,
+        "id": 2475727,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirm-address-5582/versions/2474762",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirm-address-5582/versions/2475727",
         "files": [
             {
-                "id": 1017924,
-                "created": "2020-11-16T15:45:08Z",
-                "hash": "sha256:2eccd06d03dac39980a8ff1cf4daf61cf5010fa1f2302f47d9b2042aa73af2b8",
+                "id": 1018887,
+                "created": "2021-04-14T12:25:40Z",
+                "hash": "sha256:11dd5c8c35830608d252b3d888faeafc0af116d5d30dd2ecdcfe0d44ec5af8fe",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 44181,
+                "size": 38363,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017924/confirm_address-1.3.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018887/confirm_address-1.3.8-tb.xpi?src=",
                 "permissions": [
                     "addressBooks",
                     "accountsRead",
@@ -84,16 +84,20 @@
             },
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "<ul><li>Supported French.</li><li>Flatten the icons.</li><li>Popup dialog supported the dark mode.</li><li>Enabled to show the first few lines of the email body to make it easier to check if the recipients are appropriate.  This feature can be disabled at option screen.</li></ul>",
+            "ja": "<ul><li>フランス語対応しました</li><li>フラットアイコンに変更しました</li><li>Thunderbirdがダークモードのときに、確認ダイアログもダークモードで表示するようにしました</li><li>確認ダイアログに本文の冒頭数行を表示できるようにし、宛先が正しいかどうかの確認をしやすくしました。<ul><li>この機能はオプション設定で無効にすることもできます</li><li>本文の冒頭を何行分表示させるかはオプションで設定してください</li></ul></li></ul>"
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirm-address-5582/versions/1.3.7",
-        "version": "1.3.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirm-address-5582/versions/1.3.8",
+        "version": "1.3.8"
     },
     "default_locale": "ja",
     "description": {
         "en-US": "Confirm-Address is Thunderbird Add-on that shows the confirm-address dialog when you send a mail.\nOnce you register YOUR DOMAIN (ex.\"<a rel=\"nofollow\" href=\"http://mycompany.com\">mycompany.com</a>\"), you will see Confirm-Address dialog with highlighted mail addresses when you send mail to other domain. And so, you can raise awareness of security and information leak.\n\n<strong>[Oct. 21, 2020 for Thunderbird 78 users]</strong>\n<ul><li>It is with great appreciation, I announce that Confirm-Address 1.3.6 which supports Thunderbird 78.\n<ul><li>(ver. 1.3.7) Fixed a bug \"Recipients lists are not shown when my domain is not set.</li></ul></li> <li>Thunderbird 78.* is now available.  Since it supported MailExtension, user interface is totally renewed.  None of its feature doesn't change/improve.</li></ul>\n\n<strong>[How to Install]</strong>\n<ul><li>Download addon file (extension = xpi) from this site or support site.</li><li>Click \"Thunderbird menubar &gt; Tools &gt; Addon\" to open addon page.</li><li>Drag &amp; drop downloaded addon file to addon page.</li></ul>\n<strong>[Help Wanted]</strong>\nLooking for someone who can donate their talent for translate texts to their own language.  Please contact Meatian.",
         "de": "Confirm-Address ist das Thunderbird-Add-On, das bestimmte Dialoge anzeigt, damit Benutzer überprüfen können, ob es einen falschen Empfänger oder fehlende Empfänger gibt.\n\n<strong> [Okt. 21, 2020 für Thunderbird 78-Benutzer] </strong>\nMit großer Anerkennung kündige ich an, dass Confirm-Address 1.3.6, das Thunderbird 78 unterstützt. * Jetzt verfügbar ist. Da MailExtension unterstützt wird, wird die Benutzeroberfläche vollständig erneuert. Keine seiner Funktionen ändert / verbessert sich nicht.",
         "pt-BR": "Confirm-Address é o complemento do Thunderbird com determinados diálogos para que os usuários verifiquem se não há destinatários errados ou se faltam destinatários.\n\n<strong> [outubro 21 de 2020 para usuários do Thunderbird 78] </strong>\nÉ com grande satisfação que anuncio que o Confirm-Address 1.3.6, que suporta o Thunderbird 78. *, já está disponível. Como suportava MailExtension, a interface do usuário foi totalmente renovada. Nenhum de seus recursos não muda / melhora.",
+        "fr": "Confirm-Address est le module complémentaire Thunderbird qui affiche la boîte de dialogue de confirmation d'adresse lorsque vous envoyez un e-mail.\nUne fois que vous avez enregistré VOTRE DOMAINE (ex. \"<a rel=\"nofollow\" href=\"http://Mycompany.com\">Mycompany.com</a>\"), vous verrez une boîte de dialogue de confirmation d'adresse avec des adresses e-mail en surbrillance lorsque vous envoyez des e-mails à un autre domaine. Ainsi, vous pouvez sensibiliser à la sécurité et aux fuites d'informations.",
         "ja": "Confirm-Addressは、メールを送信する前にあて先確認ダイアログを表示するThunderbirdアドオンです。また、あらかじめ自分が属する組織のドメイン(例えば\"<a rel=\"nofollow\" href=\"http://mycompany.com\">mycompany.com</a>\"など、自分の会社のドメイン名)を登録しておくと、組織外にメールを送る場合は、送信前にそのメールアドレスが強調表示されるため、情報漏洩に対する意識を高めることができます。\n\n<strong>[2020.10.21 Thunderbird ver.78をお使いの方々へ]</strong>\n<ul><li>Thunderbird 78.*に対応したConfirm-Address 1.3.6を作成いたしました。\n<ul><li>(ver.1.3.7) 自ドメインを設定していない時に宛先リストが表示されない件に対応しました。</li></ul></li><li>MailExtensionに対応したバージョンになりますため、確認画面などの見栄えがこれまでと変わりました。機能は変わっておりません。以前のバージョンをお使いいただいていた方には見慣れるまでに少し時間がかかるかも知れません。</li></ul>\n<strong>[インストールの手順]</strong>\n<ul><li>このサイト、もしくはサポートサイトからアドオンファイル(拡張子 .xpi)をダウンロードする</li><li>Thunderbirdの[ツール &gt; アドオン]を選択し、アドオンページを開く</li><li>ダウンロードしたアドオンファイルをThunderbirdのアドオンページにドラッグ＆ドロップする</li></ul>\n<strong>[お手伝い募集]</strong>\n・このアドオンを各言語に翻訳してくださる方\nMeatianまでご連絡下さい。"
     },
     "developer_comments": null,
@@ -105,60 +109,74 @@
         "en-US": "http://code.google.com/p/confirm-address/",
         "de": "https://github.com/Meatian/confirm-address",
         "pt-BR": "https://github.com/Meatian/confirm-address",
+        "fr": "https://github.com/Meatian/confirm-address",
         "ja": "https://github.com/Meatian/confirm-address"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/5/5582-64.png?modified=624dfc68",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/5/5582-64.png?modified=83a8cc31",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/5/5582-32.png?modified=624dfc68",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/5/5582-64.png?modified=624dfc68"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/5/5582-32.png?modified=83a8cc31",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/5/5582-64.png?modified=83a8cc31"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-16T15:50:03Z",
+    "last_updated": "2021-04-14T12:30:03Z",
     "name": {
         "en-US": "Confirm-Address",
         "de": "Confirm-Address",
         "pt-BR": "Confirm-Address",
+        "fr": "Confirm-Address",
         "ja": "Confirm-Address"
     },
     "previews": [
         {
-            "id": 206211,
-            "caption": null,
+            "id": 206520,
+            "caption": {
+                "en-US": "A new option \"Confirm the first few lines of the mail body:\" is introduced.",
+                "de": "Eine neue Option \"Bestätigen Sie die ersten Zeilen des E-Mail-Textes:\" wird eingeführt.",
+                "pt-BR": "Uma nova opção \"Confirme as primeiras linhas do corpo da mensagem:\" é introduzida.",
+                "fr": "Une nouvelle option \"Confirmer les premières lignes du corps du mail:\" est introduite.",
+                "ja": "オプション画面に「本文の冒頭行を表示する」が追加されました。"
+            },
             "image_size": [
-                670,
-                364
+                664,
+                391
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206211.png?modified=1603256159",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206520.png?modified=1618465442",
             "thumbnail_size": [
                 320,
-                174
+                188
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206211.png?modified=1603256159"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206520.png?modified=1618465442"
         },
         {
-            "id": 206212,
-            "caption": null,
+            "id": 206521,
+            "caption": {
+                "en-US": "Confirmation dialog on dark mode.",
+                "de": "Bestätigungsdialog im Dunkelmodus.",
+                "pt-BR": "Caixa de diálogo de confirmação no modo escuro.",
+                "fr": "Boîte de dialogue de confirmation en mode sombre.",
+                "ja": "ダークモードに対応した確認ダイアログです。"
+            },
             "image_size": [
-                669,
-                487
+                391,
+                540
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206212.png?modified=1603256161",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206521.png?modified=1618465442",
             "thumbnail_size": [
-                275,
+                145,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206212.png?modified=1603256161"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206521.png?modified=1618465442"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.49436,
-        "count": 64,
-        "average": 4.5156,
-        "text_count": 64
+        "bayesian_average": 4.48671,
+        "count": 65,
+        "average": 4.5077,
+        "text_count": 65
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirm-address-5582/reviews/",
     "requires_payment": false,
@@ -169,6 +187,7 @@
         "en-US": "Confirm E-mail address before sending mail",
         "de": "Confirm-Address ist das Thunderbird-Add-On, das bestimmte Dialoge anzeigt, damit Benutzer überprüfen können, ob es einen falschen Empfänger oder fehlende Empfänger gibt.",
         "pt-BR": "Confirm-Address é o complemento do Thunderbird com determinados diálogos para que os usuários verifiquem se não há destinatários errados ou se faltam destinatários.",
+        "fr": "Un module complémentaire Thunderbird qui affiche une boîte de dialogue confirmant le destinataire avant d'envoyer un e-mail.",
         "ja": "メールを送信する前にあて先確認ダイアログを表示するThunderbirdアドオンです。"
     },
     "support_email": {

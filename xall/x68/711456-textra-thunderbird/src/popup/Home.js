@@ -57,6 +57,15 @@
     change_2_textareas_height();
     adapt_multi_locale();
 
+    var chk_gh = doc.getElementById('chk_gyaku_honyaku');
+    var tb_gh = doc.getElementById('textbox_trans_gyaku');
+    chk_gh.onchange = async function () {
+        tb_gh.style.display = chk_gh.checked ? 'block' : 'none';
+        tb_gh.value = '';
+        Nict_TexTra.utils.set_datas_from_storage({ gyaku_honyaku: chk_gh.checked });
+        start_translation_gyaku();
+    };
+
     var st = browser.storage.local.get();
     st.then(function (datas) {
         if (datas.txt_cont_menu) {
@@ -68,7 +77,7 @@
 
     var elm_btn_clear_all = doc.getElementById("btn_clear_history");
     elm_btn_clear_all.onclick = function () {
-        //if (!confirm(I18Nmes('mes_0027'))) return;
+        if (!confirm(I18Nmes('mes_0027'))) return;
         Nict_TexTra.utils.clear_history_translate();
         show_translation_history(null, true);
     };
@@ -90,11 +99,16 @@ function save_api_info() {
 function load_func() {
 
     chrome.storage.local.get(
-        { selected_lang_org: "ja", selected_lang_trans: "en", if_text_selected: "trans", user_name: null },
+        {
+            selected_lang_org: "ja", selected_lang_trans: "en", if_text_selected: "trans",
+            user_name: null, gyaku_honyaku: false
+        },
         function (infos) {
             var doc = window.document;
             doc.getElementById("lang1").value = infos.selected_lang_org;
             doc.getElementById("lang2").value = infos.selected_lang_trans;
+            doc.getElementById("chk_gyaku_honyaku").checked = infos.gyaku_honyaku;
+            doc.getElementById('textbox_trans_gyaku').style.display = infos.gyaku_honyaku ? 'block' : 'none';
 
             doc.getElementById("alert_login").style.display = infos.user_name ? "none" : "inline";
         }
@@ -114,7 +128,7 @@ function start_translation() {
 
     var txt_org = doc.getElementById("textbox_target").value;
     if (Nict_TexTra.utils.is_empty_string(txt_org)) {
-        alert("翻訳する文字列を入力してください。");
+        alert(I18Nmes("mes_0028")); // 翻訳する文字列を入力してください。
         return;
     }
 
@@ -151,6 +165,52 @@ function show_result_translation(infos) {
                 }
             });
     }
+    start_translation_gyaku();
+}
+
+// 逆翻訳
+async function start_translation_gyaku() {
+
+    var doc = window.document;
+    if (!doc.getElementById('chk_gyaku_honyaku').checked) return;
+
+    var txt_org = doc.getElementById("textbox_trans").value;
+    if (Nict_TexTra.utils.is_empty_string(txt_org)) return;
+
+    doc.getElementById("btn_translation").disabled = true;
+
+    doc.getElementById("img_wait").style.display = "block";
+    _id_trans = txt_org;
+
+    var infos_lang = await Nict_TexTra.utils.get_datas_from_storage({
+        selected_lang_org: "ja", selected_lang_trans: "en"
+    });
+
+    var infos = {
+        text_org: txt_org, id: _id_trans,
+        lang_org: infos_lang.selected_lang_trans,
+        lang_trans: infos_lang.selected_lang_org
+    };
+    Nict_TexTra.api.call_api(Nict_TexTra.api.trans_text, show_result_translation_gyaku, null, infos);
+
+}
+
+function show_result_translation_gyaku(infos) {
+
+    if (infos.id !== _id_trans) return;
+
+    var doc = window.document;
+    if (!doc.getElementById('chk_gyaku_honyaku').checked) return;
+
+    var text_trans = infos["text_trans"];
+
+    var elm_trans_area = doc.getElementById("textbox_trans_gyaku");
+    elm_trans_area.value = text_trans;
+    change_textarea_height(elm_trans_area);
+
+    doc.getElementById("img_wait").style.display = "none";
+    doc.getElementById("btn_translation").disabled = false;
+
 }
 
 function suspend_translation() {
@@ -278,5 +338,4 @@ function adapt_multi_locale() {
     document.getElementById("alert_login").innerText = I18Nmes('mes_0014'); // ログイン設定を行ってください。
     document.getElementById("link_機械翻訳API").innerText = I18Nmes('mes_0008'); // 機械翻訳API設定
     document.getElementById("link_help").innerText = I18Nmes('mes_0009'); // ヘルプ
-    //document.getElementById("").innerText = I18Nmes('mes_000'); // 
 }

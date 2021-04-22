@@ -1,0 +1,41 @@
+﻿{
+	"manifest_version": 2,
+             "applications": {
+                "gecko": {
+                   "id": "OppositeTodaySubpane@Sungho.Hwang",
+                   "strict_min_version": "78.0"
+                    }
+             },
+	"name": "LeftTodaySubpaneOrLogoOrClock",
+	"version": "9.7",
+	"description": "Append today subpane to left top or append logo or clock to left bottm.",
+             "icons": {
+               "32": "ots32.png"
+                 },
+             "browser_action": {
+                 "default_icon": "ots32.png",
+                 "default_title": "LeftTodaySubpaneOrLogoOrClock",
+                "default_popup": "popup.html"
+               },
+             "permissions": [ "theme"
+              ],
+"background": {
+  "scripts": ["background.js"]
+},
+ "experiment_apis": {
+    "myapi": {
+      "schema": "schema.json",
+      "parent": {
+        "scopes": [
+          "addon_parent"
+        ],
+        "paths": [
+          [
+            "myapi"
+          ]
+        ],
+       "script": "implementation.js"
+      }
+  }
+  }
+}
