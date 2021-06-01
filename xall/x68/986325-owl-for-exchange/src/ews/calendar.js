@@ -29,9 +29,9 @@ const kFieldMap = {
 
 /// Converts Lightning participation status into Exchange response tags.
 const kResponseMap = {
-  DECLINED: "t$DeclineItem",
-  TENTATIVE: "t$TentativelyAcceptItem",
-  ACCEPTED: "t$AcceptItem",
+  DECLINED: "DeclineItem",
+  TENTATIVE: "TentativelyAcceptItem",
+  ACCEPTED: "AcceptItem",
 };
 
 /// Converts Lightning time zones into Exchange time zones
@@ -259,7 +259,7 @@ EWSAccount.prototype.SyncEvents = async function(aDelegate, aFolder, aSyncState)
         m$GetItem: {
           m$ItemShape: {
             t$BaseShape: "Default",
-            t$BodyType: "Text",
+            t$BodyType: "Best",
             t$AdditionalProperties: {
               t$FieldURI: [{
                 FieldURI: "item:Body",
@@ -282,9 +282,13 @@ EWSAccount.prototype.SyncEvents = async function(aDelegate, aFolder, aSyncState)
               }, {
                 FieldURI: "item:DateTimeReceived",
               }, {
+                FieldURI: "item:TextBody",
+              }, {
                 FieldURI: "calendar:IsAllDayEvent",
               }, {
                 FieldURI: "calendar:IsCancelled",
+              }, {
+                FieldURI: "calendar:MyResponseType",
               }, {
                 FieldURI: "calendar:RequiredAttendees",
               }, {
@@ -317,6 +321,14 @@ EWSAccount.prototype.SyncEvents = async function(aDelegate, aFolder, aSyncState)
           },
         },
       };
+      if (this.requestVersion < kExchange2013) {
+        // TextBody did not exist in Exchange 2010
+        fetch.m$GetItem.m$ItemShape.t$AdditionalProperties.t$FieldURI = fetch.m$GetItem.m$ItemShape.t$AdditionalProperties.t$FieldURI.filter(fieldURI => fieldURI.FieldURI != "item:TextBody");
+        fetch.m$GetItem.m$ItemShape.t$BodyType = "Text";
+      } else {
+        // MyResponseType is only needed in Exchange 2010
+        fetch.m$GetItem.m$ItemShape.t$AdditionalProperties.t$FieldURI = fetch.m$GetItem.m$ItemShape.t$AdditionalProperties.t$FieldURI.filter(fieldURI => fieldURI.FieldURI != "calendar:MyResponseType");
+      }
       let result = await this.CallService(null, fetch); // ews.js
       items = ensureArray(result).map(item => item.Items).map(EWSAccount.GetItem);
       for (let item of items) {
@@ -373,12 +385,14 @@ EWSAccount.ConvertEvent = function(aEvent) {
     reminder: aEvent.ReminderIsSet == "true" ? aEvent.ReminderMinutesBeforeStart * -60 : null,
     location: aEvent.Location,
     categories: ensureArray(aEvent.Categories && aEvent.Categories.String),
-    description: aEvent.Body && aEvent.Body.Value,
+    descriptionText: aEvent.TextBody && aEvent.TextBody.Value || aEvent.Body && aEvent.Body.Value,
+    descriptionHTML: aEvent.Body && aEvent.Body.BodyType == "HTML" && aEvent.Body.Value || null,
     recurrenceId: aEvent.RecurrenceId,
     recurrence: EWSAccount.ConvertRecurrence(aEvent.Recurrence),
     deletions: ensureArray(aEvent.DeletedOccurrences && aEvent.DeletedOccurrences.DeletedOccurrence).map(occurrence => occurrence.Start),
     modifications: ensureArray(aEvent.ModifiedOccurrences && aEvent.ModifiedOccurrences.Occurrence).map(EWSAccount.ConvertEvent),
     organizer: aEvent.Organizer && aEvent.Organizer.Mailbox && EWS2MailboxObject(aEvent.Organizer.Mailbox),
+    myResponse: kParticipationMap[aEvent.MyResponseType],
     requiredAttendees: ensureArray(aEvent.RequiredAttendees && aEvent.RequiredAttendees.Attendee).map(EWSAccount.ConvertAttendee),
     optionalAttendees: ensureArray(aEvent.OptionalAttendees && aEvent.OptionalAttendees.Attendee).map(EWSAccount.ConvertAttendee),
   };
@@ -462,8 +476,8 @@ EWSAccount.ConvertToEWS = function(aFolder, aEvent) {
     event.t$Sensitivity = "Confidential";
   }
   event.t$Body = {
-    BodyType: "Text",
-    _TextContent_: aEvent.description,
+    BodyType: aEvent.descriptionHTML ? "HTML" : "Text",
+    _TextContent_: aEvent.descriptionHTML || aEvent.descriptionText,
   };
   if (aEvent.categories.length) {
     event.t$Categories = {
@@ -585,10 +599,6 @@ EWSAccount.ConvertToEWS = function(aFolder, aEvent) {
  *   itemid {String} The id of the new item
  */
 EWSAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
-  let invitation = await this.FindInvitationToRespond(aFolder, aEvent);
-  if (invitation) {
-    return invitation;
-  }
   let event = EWSAccount.ConvertToEWS(aFolder, aEvent);
   let create = {
     m$CreateItem: {
@@ -633,15 +643,14 @@ EWSAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
  * Look for an invitation for a given meeting, to avoid creating a duplicate.
  * This can happen if the event hasn't been synchronised yet.
  *
- * @param aFolder {String}  The distinguished folder id
- * @param aEvent  {Object}  The meeting
- * @returns       {Object?} The invitation
+ * @param aUID      {String}  The UID of the event
+ * @param aResponse {String}  The response to be saved
+ * @param aNotify   {Boolean} Whether to notify the organiser
+ * @returns         {Object?} The invitation
  */
-EWSAccount.prototype.FindInvitationToRespond = async function(aFolder, aEvent) {
-  let responseTag = kResponseMap[aEvent.participation];
-  if (!responseTag) {
-    return null;
-  }
+EWSAccount.prototype.RespondToInboxInvitation = async function(aUID, aResponse, aNotify) {
+  let GlobalObjectId = btoa(aUID.replace(/../g, hex => String.fromCharCode(parseInt(hex, 16)))); // UID is hex encoded but GlobalObjectId uses Base 64 encoding
+  // Check whether the event was in fact in the calendar all along.
   let find = {
     m$FindItem: {
       m$ItemShape: {
@@ -656,28 +665,57 @@ EWSAccount.prototype.FindInvitationToRespond = async function(aFolder, aEvent) {
           },
           t$FieldURIOrConstant: {
             t$Constant: {
-              Value: btoa(aEvent.uid.replace(/../g, hex => String.fromCharCode(parseInt(hex, 16)))), // UID is hex encoded but Find wants Base 64 encoding
+              Value: GlobalObjectId,
             },
           },
         },
       },
       m$ParentFolderIds: {
         t$DistinguishedFolderId: {
-          Id: aFolder,
+          Id: "calendar",
         },
       },
       Traversal: "Shallow",
     },
   };
   let result = await this.CallService(null, find); // ews.js
-  if (!result.RootFolder.Items || !result.RootFolder.Items.CalendarItem || !result.RootFolder.Items.CalendarItem.ItemId) {
-    return null;
+  if (result.RootFolder.Items && result.RootFolder.Items.CalendarItem && result.RootFolder.Items.CalendarItem.ItemId) {
+    await this.RespondToInvitation(result.RootFolder.Items.CalendarItem.ItemId, aResponse, aNotify);
+    return {
+      uid: aUID,
+      itemid: result.RootFolder.Items.CalendarItem.ItemId.Id,
+    };
   }
-  await this.RespondToInvitation(result.RootFolder.Items.CalendarItem.ItemId, responseTag, "SaveOnly");
-  return {
-    uid: aEvent.uid,
-    itemid: result.RootFolder.Items.CalendarItem.ItemId.Id,
+  // Maybe the current inbox message is the invitation email.
+  let itemId = await browser.calendarProvider.getCurrentInvitation();
+  let fetch = {
+    m$GetItem: {
+      m$ItemShape: {
+        t$BaseShape: "IdOnly",
+        t$AdditionalProperties: {
+          t$ExtendedFieldURI: [{
+            DistinguishedPropertySetId: "Meeting",
+            PropertyId: 0x23,
+            PropertyType: "Binary",
+          }],
+        },
+      },
+      m$ItemIds: {
+        t$ItemId: {
+          Id: itemId,
+        },
+      },
+    },
   };
+  let response = await this.CallService(null, fetch); // ews.js
+  if (response.Items.MeetingRequest && response.Items.MeetingRequest.ExtendedProperty && response.Items.MeetingRequest.ExtendedProperty.Value == GlobalObjectId) {
+    let result = await this.RespondToInvitation(response.Items.MeetingRequest.ItemId, aResponse, aNotify);
+    return {
+      uid: aUID,
+      itemid: result.Items.CalendarItem.ItemId.Id,
+    };
+  }
+  throw new Error("Couldn't find invitation to respond!"); // XXX
 }
 
 /**
@@ -795,7 +833,7 @@ EWSAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
     delete oldEvent.t$End;
   }
   for (let key in kFieldMap) {
-    if (JSON.stringify(newEvent[key]) != JSON.stringify(oldEvent[key])) {
+    if (!deepCompareUnordered(newEvent[key], oldEvent[key])) {
       let namespace = kFieldMap[key] ? "item:" : aFolder == "tasks" ? "task:" : "calendar:";
       let field = {
         t$FieldURI: {
@@ -817,20 +855,49 @@ EWSAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
       }
     }
   }
-  request.m$UpdateItem.m$ItemChanges.t$ItemChange.t$Updates = updates;
-  let response = await this.CallService(null, request); // ews.js
-  let responseTag = kResponseMap[aNewEvent.participation];
-  if (responseTag) {
-    // If this is a recurring instance, we have to notify because
-    // Lightning won't tell us the original master recurrence later.
-    let isRecurrence = aNewEvent.index > 0;
-    await this.RespondToInvitation(response.Items.CalendarItem.ItemId, responseTag,
-      isRecurrence ? "SendAndSaveCopy" : "SaveOnly");
+  if (updates.t$SetItemField.length || updates.t$DeleteItemField.length) {
+    request.m$UpdateItem.m$ItemChanges.t$ItemChange.t$Updates = updates;
+    await this.CallService(null, request); // ews.js
   }
 }
 
 /**
  * Update the participation for an invitation
+ *
+ * @param aEventId      {String}  The id of the invitation to update
+ * @param aUID          {String}  The UID of the invitation to update
+ * @param aParticipaton {String}  The new participation status
+ * @param aIsRecurrence {Boolean} Whether this is a recurrence instance
+ *
+ * Due to Lightning limitations, we always have to notify for instances.
+ */
+EWSAccount.prototype.UpdateParticipation = async function(aEventId, aUID, aParticipation, aIsRecurrence) {
+  let response = kResponseMap[aParticipation];
+  if (!aEventId) {
+    return this.RespondToInboxInvitation(aUID, response, aIsRecurrence);
+  }
+  let fetch = {
+    m$GetItem: {
+      m$ItemShape: {
+        t$BaseShape: "IdOnly",
+      },
+      m$ItemIds: {
+        t$ItemId: {
+          Id: aEventId,
+        },
+      },
+    },
+  };
+  let result = await this.CallService(null, fetch); // ews.js
+  await this.RespondToInvitation(result.Items.CalendarItem.ItemId, response, aIsRecurrence);
+  return {
+    uid: aUID,
+    itemid: aEventId,
+  };
+}
+
+/**
+ * Notify the organiser of an invitation
  *
  * @param aEventId      {String}  The id of the invitation to update
  * @param aParticipaton {String}  The new participation status
@@ -840,8 +907,8 @@ EWSAccount.prototype.NotifyParticipation = async function(aEventId, aParticipati
   if (aIsRecurrence) {
     return; // We don't support this after the fact, due to Lightning weirdness.
   }
-  let responseTag = kResponseMap[aParticipation];
-  if (!responseTag || responseTag == "t$DeclineItem") {
+  let response = kResponseMap[aParticipation];
+  if (!response || response == "DeclineItem") {
     // We don't support this after the fact, because the item is already gone.
     return;
   }
@@ -857,44 +924,42 @@ EWSAccount.prototype.NotifyParticipation = async function(aEventId, aParticipati
       },
     },
   };
-  let response = await this.CallService(null, fetch); // ews.js
-  await this.RespondToInvitation(response.Items.CalendarItem.ItemId, responseTag, "SendAndSaveCopy");
+  let result = await this.CallService(null, fetch); // ews.js
+  await this.RespondToInvitation(result.Items.CalendarItem.ItemId, response, true);
 }
 
 /**
  * Respond to an invitation
  *
- * @param aEventId     {Object} The invitation to be responded to
- *          Id         {String}
- *          ChangeKey  {String}
- * @param aReponseTag  {String} The response to be made
- * @param aDisposition {String} Whether to notify the organiser
- *
- * aDisposition is either "SaveOnly" (don't notify) or "SendAndSaveCopy".
+ * @param aItemId     {Object}  The invitation to be responded to
+ *          Id        {String}
+ *          ChangeKey {String}
+ * @param aResponse   {String}  The response to be made
+ * @param aNotify     {Boolean} Whether to notify the organiser
  */
-EWSAccount.prototype.RespondToInvitation = async function(aEventId, aResponseTag, aNotify)
+EWSAccount.prototype.RespondToInvitation = async function(aItemId, aResponse, aNotify)
 {
-  if (aResponseTag == "t$DeclineItem") {
+  if (aResponse == "DeclineItem") {
     // We have to notify because we won't have a second chance.
-    aNotify = "SendAndSaveCopy";
+    aNotify = true;
   }
   let respond = {
     m$CreateItem: {
       m$Items: {},
-      MessageDisposition: aNotify,
+      MessageDisposition: aNotify ? "SendAndSaveCopy" : "SaveOnly",
     },
   };
-  respond.m$CreateItem.m$Items[aResponseTag] = {
-    t$ReferenceItemId: aEventId,
+  respond.m$CreateItem.m$Items["t$" + aResponse] = {
+    t$ReferenceItemId: aItemId,
   };
   try {
-    await this.CallService(null, respond); // ews.js
+    return await this.CallService(null, respond); // ews.js
   } catch (ex) {
     switch (ex.type) {
     case "ErrorCalendarIsCancelledForDecline":
       // Exchange deletes declined pending invitations.
       // For convenience, emulate this for cancelled invitations.
-      return this.DeleteEvent(aEventId.Id, true);
+      return this.DeleteEvent(aItemId.Id, true);
     case "ErrorCalendarIsCancelledForTentative":
     case "ErrorCalendarIsCancelledForAccept":
       ex.report = false;
@@ -1001,6 +1066,8 @@ browser.calendarProvider.dispatcher.addListener(async function(aServerId, aOpera
       return await account.CreateEvent(aParameters.folder, aParameters.event, aParameters.notify);
     case "UpdateEvent":
       return await account.UpdateEvent(aParameters.folder, aParameters.newEvent, aParameters.oldEvent, aParameters.notify);
+    case "UpdateParticipation":
+      return await account.UpdateParticipation(aParameters.id, aParameters.uid, aParameters.participation, aParameters.isRecurrence);
     case "NotifyParticipation":
       return await account.NotifyParticipation(aParameters.id, aParameters.participation, aParameters.isRecurrence);
     case "DeleteEvent":

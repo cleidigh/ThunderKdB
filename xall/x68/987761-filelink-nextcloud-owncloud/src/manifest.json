@@ -9,7 +9,7 @@
     "description": "__MSG_extensionDescription__",
     "homepage_url": "https://gitlab.com/joendres/filelink-nextcloud#cloud-filelink-for-nextcloud-and-owncloud",
     "author": "Johannes Endres",
-    "version": "3.9.2",
+    "version": "3.10.2",
     "icons": {
         "48": "icon48.png"
     },
@@ -28,6 +28,7 @@
     "background": {
         "scripts": [
             "lib/utils.js",
+            "lib/generatePassword.js",
             "lib/status.js",
             "lib/davuploader.js",
             "lib/cloudconnection.js",
@@ -37,7 +38,8 @@
     },
     "compose_action": {
         "default_popup": "progress/progress.html",
-        "default_title": "__MSG_status_menuname__",
+        "default_label": "__MSG_status_menuname__",
+        "default_title": "__MSG_status_menutooltip__",
         "default_icon": "icon48.png"
     },
     "default_locale": "en"

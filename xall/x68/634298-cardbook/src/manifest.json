@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_extName__",
-	"version": "58.3",
+	"version": "59.5",
 	"description": "__MSG_extDesc__",
 	"author": "Philippe VIGNEAU",
 	"default_locale": "en-US",
@@ -27,7 +27,15 @@
 				"paths": [["WindowListener"]],
 				"script": "chrome/content/api/WindowListener/implementation.js"
 			}
-		}
+		},
+		"NotifyTools": {
+			"schema": "chrome/content/api/NotifyTools/schema.json",
+			"parent": {
+			  "scopes": ["addon_parent"],
+			  "paths": [["NotifyTools"]],
+			  "script": "chrome/content/api/NotifyTools/implementation.js"
+			}
+		  }
 	},
 	"manifest_version": 2
 }

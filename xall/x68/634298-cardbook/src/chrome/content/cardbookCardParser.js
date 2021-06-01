@@ -60,15 +60,14 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			this.rev = "";
 			this.version = "";
 			this.class1 = "";
-			// array of {types: [], value: "", localURI: "", URI: "", extension: ""}
 			// 3.0 allows one key as 4.0 allows multiples keys : chosen multiple keys for all
 			this.key = [];
 			this.others = [];
 			this.cbid = "";
 
-			this.photo = {types: [], value: "", localURI: "", URI: "", extension: ""};
-			this.logo = {types: [], value: "", localURI: "", URI: "", extension: ""};
-			this.sound = {types: [], value: "", localURI: "", URI: "", extension: ""};
+			this.photo = {types: [], value: "", URI: "", extension: ""};
+			this.logo = {types: [], value: "", URI: "", extension: ""};
+			this.sound = {types: [], value: "", URI: "", extension: ""};
 
 			this.kind = "";
 			this.member = [];
@@ -84,12 +83,11 @@ if ("undefined" == typeof(cardbookCardParser)) {
 			return vString.replace(/\\:/g,":").replace(/\\;/g,";").replace(/\\,/g,",").split(/\\n/i).join("\n");
 		},
 		
-		mediaParser: function (aField, aString, aKeepBase64 = false) {
-			let record = {types: [], value: "", localURI: "", URI: "", extension: ""};
+		mediaParser: function (aField, aString) {
+			let record = {types: [], value: "", URI: "", extension: ""};
 			try {
 				aString = aString.replace(/\\\\n/g,"");
 				let localDelim0 = aString.indexOf(",",0);
-				let cacheDir = cardbookRepository.getLocalDirectory();
 				if (localDelim0 >= 0) {
 					// 4.0
 					// FROM : PHOTO:data:image/jpeg;base64,R0lGODlhCw…
@@ -99,11 +97,7 @@ if ("undefined" == typeof(cardbookCardParser)) {
 					var headerTmpArray = [];
 					headerTmpArray = headerTmp.toLowerCase().split(";");
 					record.types = JSON.parse(JSON.stringify(headerTmpArray));
-					if (aKeepBase64) {
-						record.value = trailerTmp;
-					} else {
-						record.value = atob(trailerTmp);
-					}
+					record.value = trailerTmp;
 					for (let i = 0; i < headerTmpArray.length; i++) {
 						if (headerTmpArray[i].indexOf("data:image",0) >= 0) {
 							record.extension = headerTmpArray[i].replace(/data:image\//g,"").replace(/\s/g,"");
@@ -127,18 +121,11 @@ if ("undefined" == typeof(cardbookCardParser)) {
 						var trailerTmp = aString.substr(localDelim1+1,aString.length);
 						var headerTmpArray = [];
 						headerTmpArray = headerTmp.toUpperCase().split(";");
-						if (trailerTmp.indexOf(cacheDir.path) >= 0) {
-							record.localURI = trailerTmp;
-							record.extension = cardbookRepository.cardbookUtils.getFileExtension(trailerTmp);
-						} else if ((trailerTmp.search(/^http/i) >= 0) || (trailerTmp.search(/^file/i) >= 0)) {
+						if ((trailerTmp.search(/^http/i) >= 0) || (trailerTmp.search(/^file/i) >= 0)) {
 							record.URI = trailerTmp;
 							record.extension = cardbookRepository.cardbookUtils.getFileExtension(trailerTmp);
 						} else {
-							if (aKeepBase64) {
-								record.value = trailerTmp;
-							} else {
-								record.value = atob(trailerTmp);
-							}
+							record.value = trailerTmp;
 							record.types = JSON.parse(JSON.stringify(headerTmpArray));
 							for (let i = 0; i < headerTmpArray.length; i++) {
 								if (headerTmpArray[i].indexOf("TYPE=",0) >= 0) {

@@ -6,6 +6,7 @@ Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardboo
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCard.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBImage.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://cardbook/content/cardbookActions.js", window, "UTF-8");
@@ -630,7 +631,6 @@ function onLoad(wasAlreadyOpen) {
 			<menupopup id="imageCardContextMenu">
 				<menuitem id="saveImageCard" label="__MSG_saveImageCardLabel__" oncommand="wdw_imageEdition.saveImageCard();"/>
 				<menuitem id="copyImageCard" label="__MSG_copyImageCardLabel__" oncommand="wdw_imageEdition.copyImageCard();"/>
-				<menuitem id="copyImageLocationCard" label="__MSG_copyImageLocationCardLabel__" oncommand="wdw_imageEdition.copyImageLocationCard();"/>
 			</menupopup>
 	
 			<hbox id="mainHbox" flex="1">
@@ -932,28 +932,19 @@ function onLoad(wasAlreadyOpen) {
 														<label id="keyLabel" value="__MSG_keyLabel__" control="keyTextBox" class="header"/>
 														<html:input id="keyTextBox"/>
 													</row>
-													<row id="photoLocalURIRow" align="center">
-														<label id="photolocalURILabel" value="__MSG_photolocalURILabel__" control="photolocalURITextBox" class="header"/>
-														<html:input id="photolocalURITextBox"/>
-													</row>
 													<row id="photoURIRow" align="center">
 														<label id="photoURILabel" value="__MSG_photoURILabel__" control="photoURITextBox" class="header"/>
+														<html:input id="photoExtensionTextBox" hidden="true"/>
 														<html:input id="photoURITextBox"/>
-													</row>
-													<row id="logoLocalURIRow" align="center">
-														<label id="logolocalURILabel" value="__MSG_logolocalURILabel__" control="logolocalURITextBox" class="header"/>
-														<html:input id="logolocalURITextBox"/>
 													</row>
 													<row id="logoURIRow" align="center">
 														<label id="logoURILabel" value="__MSG_logoURILabel__" control="logoURITextBox" class="header"/>
+														<html:input id="logoExtensionTextBox" hidden="true"/>
 														<html:input id="logoURITextBox"/>
-													</row>
-													<row id="soundLocalURIRow" align="center">
-														<label id="soundlocalURILabel" value="__MSG_soundlocalURILabel__" control="soundlocalURITextBox" class="header"/>
-														<html:input id="soundlocalURITextBox"/>
 													</row>
 													<row id="soundURIRow" align="center">
 														<label id="soundURILabel" value="__MSG_soundURILabel__" control="soundURITextBox" class="header"/>
+														<html:input id="soundExtensionTextBox" hidden="true"/>
 														<html:input id="soundURITextBox"/>
 													</row>
 												</rows>

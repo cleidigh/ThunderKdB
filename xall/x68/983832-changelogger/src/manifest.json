@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "version": "1.1.1",
+  "description": "__MSG_extensionDescription__",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "background": {
+    "scripts": ["background.bundle.js"]
+  },
+  "browser_action": {
+    "default_popup": "changelog.html",
+    "browser_style": true,
+    "default_icon": "icons/icon.svg",
+    "theme_icons": [
+      {
+        "light": "icons/icon-light.svg",
+        "dark": "icons/icon.svg",
+        "size": 16
+      }
+    ]
+  },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true
+  },
+  "permissions": [
+    "management",
+    "storage",
+    "notifications",
+    "https://addons.thunderbird.net/api/v4/addons/addon/*"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "changelogger@r01"
+    }
+  },
+  "default_locale": "en_US"
+}

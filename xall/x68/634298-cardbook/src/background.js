@@ -40,6 +40,18 @@ async function main() {
 	
 	
 	messenger.WindowListener.startListening();
+
+	/* SimpleMailRedirection */
+	async function externalListener(message, sender, sendResponse) {
+		// sender.id='simplemailredirection@ggbs.de'
+			if (message?.query) {
+			let data=await messenger.NotifyTools.notifyExperiment(message);
+			return data;
+			}
+		return {};
+		}
+		messenger.runtime.onMessageExternal.addListener(externalListener);
+
 };
 
 main();

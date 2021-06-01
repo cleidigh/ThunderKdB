@@ -43,7 +43,7 @@ var cardbookIDBSearch = {
 						myFile.initWithPath(cacheDir.path);
 						myFile.append(name);
 						myFile.append(name + ".rul");
-						if (myFile.exists()) {
+						if (myFile.exists() && myFile.isFile()) {
 							let promise = await OS.File.read(myFile.path).then(
 								function onSuccess(array) {
 									let decoder = new TextDecoder();

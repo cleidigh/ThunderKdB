@@ -8,6 +8,7 @@ It offers these features of Use BCC Instead:
 * Recipients in mailing lists are counted
 * If the limit is exceeded it displays a dialog - send or cancel
 * There is an option to send but change all recipients to BCC
+* There is an option (in preferences) to disable sending when the limit is exceeded
 
 It does not offer these features of Use BCC Instead:
 * Change the default in the compose window from TO to BCC

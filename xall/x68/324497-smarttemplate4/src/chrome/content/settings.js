@@ -149,19 +149,6 @@ SmartTemplate4.Settings = {
 		}
 	},
 	
-	clickLogo : function clickLogo() {
-		const util = SmartTemplate4.Util;
-		let testString = prompt("Enter name of original string for conversion (empty for entering any text)", "extensions.smarttemplate.id*.rspmsg"),
-		    result = "";
-		if (testString == '') {
-			testString = prompt("Enter a string");
-			result = util.convertPrefValue(testString, true);
-		}
-		else
-			result = util.convertPrefValue(testString, true);
-		
-	},
-
 	// Delete unused preferences.
 	//--------------------------------------------------------------------
 	cleanupUnusedPrefs : function cleanupUnusedPrefs() {
@@ -334,14 +321,14 @@ SmartTemplate4.Settings = {
 
 	// Setup default preferences and common settings
 	//--------------------------------------------------------------------
-	onLoad : function onLoad() {
+	onLoad: async function onLoad() {
 		const util = SmartTemplate4.Util,
 					prefs = SmartTemplate4.Preferences,
 					settings = SmartTemplate4.Settings,
 					getElement = window.document.getElementById.bind(window.document);
-		let mutObsDebug=false;
 
-		
+    // get important state info from background!
+    await SmartTemplate4.Util.init();
     
 		let isAdvancedPanelOpen = prefs.getMyBoolPref('expandSettings'),
         composeType = null;
@@ -361,39 +348,6 @@ SmartTemplate4.Settings = {
     
 		// Set account popup, duplicate DeckB to make account isntances
 		let CurId = this.fillIdentityListPopup();
-
-
-		if (mutObsDebug) {
-			// create an observer instance
-			var target = window.document.getElementById("deckB.nodef.id1");
-			console.log(target);
-			//console.log(target);
-			var observer = new (window.MutationObserver)(function (mutations) {
-				//debugger;
-				mutations.forEach(function (mutation) {
-				//console.log(mutation.currentTarget );//console.log("Success");
-					//$('#log').text('input text changed: "' + target.text() + '"');
-					//console.log(mutation, mutation.type);
-				});
-				try 
-			{
-				//console.log(mutation);
-				console.log("mutation observer:");
-				console.log(target);console.log(target.getAttribute("selectedIndex"))
-				let selInd = target.selectedIndex;
-				//target.setAttribute("selectedIndex",0);
-				console.log(" target.selectedIndex " + selInd);
-				console.log(" target.selectedPanel " + target.selectedPanel);
-				
-			}
-			catch(e) {console.log("deckB.nodef.id1 catch");}; 
-			/*   */   
-			});
-			observer.observe(target, { attributes: true,  childList: true, characterData: true, subtree: true });
-			console.log("deckB.nodef.id1-observer");//observer.disconnect(); - to stop observing
-
-		}
-
 
 
 		this.loadPreferences(); // initialise instantApply attributes for all nodes (including cloned ones)
@@ -535,15 +489,11 @@ SmartTemplate4.Settings = {
     replaceMail.disabled = !isResolveAddressBook || false;
     abBox.disabled = false;
 		
-		const licenser = SmartTemplate4.Licenser; // problem?
-					
     /*****  License  *****/
     settings.labelLicenseBtn(getElement("btnLicense"), "buy");
-    // validate License key
-    licenser.LicenseKey = prefs.getStringPref('LicenseKey');
-    getElement('txtLicenseKey').value = licenser.LicenseKey;
-    if (licenser.LicenseKey) {
-      SmartTemplate4.Settings.validateLicenseInOptions(true);
+    getElement('txtLicenseKey').value = SmartTemplate4.Util.licenseInfo.licenseKey;
+    if (SmartTemplate4.Util.licenseInfo.licenseKey) {
+      SmartTemplate4.Settings.validateLicenseInOptions(true); // silent=true - no sliding alert for blind people
     }
 		
 		if (isAdvancedPanelOpen) {
@@ -569,17 +519,8 @@ SmartTemplate4.Settings = {
 		let panels = getElement('ST4-Panels');
 		panels.addEventListener('select', function(evt) { SmartTemplate4.Settings.onTabSelect(panels,evt); } );
 		
-		if (!util.hasLicense(false)) {
-			let licenseDate = getElement('licenseDate'),
-			    licenseDateLbl = getElement('licenseDateLabel'),
-					txtGracePeriod= util.gracePeriodText(SmartTemplate4.Licenser.GracePeriod);
-          
-			if (!licenseDateLbl.getAttribute("originalContent")) { // save original label!
-				licenseDateLbl.setAttribute("originalContent", licenseDateLbl.textContent);
-			}
-			licenseDateLbl.textContent = txtGracePeriod;
-			licenseDateLbl.classList.add('important');
-			licenseDate.value = "";
+		if (!util.hasLicense(false) && SmartTemplate4.Util.licenseInfo.status != "Expired") {
+      settings.showTrialDate();
 		}
 
 		// window.addEventListener('dialogaccept', function () {  });
@@ -594,27 +535,23 @@ SmartTemplate4.Settings = {
       setTimeout(function() {txtLicense.focus();}, 200);
     }
     
+    window.addEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
 		util.logDebugOptional("functions", "onLoad() COMPLETE");
 		return true;
 	} ,
 	
 	onUnload : function() {
-// 		document.removeEventListener("SmartTemplate4CodeWord", SmartTemplate4.Listener.listen, false);
 		if (SmartTemplate4.fileTemplates.isModified) {
-			let parentWin = 
-			  (window.opener && window.opener.document.URL.endsWith("messenger.xhtml")) ?
-					window.opener :
-					SmartTemplate4.Util.Mail3PaneWindow;
-			parentWin.setTimeout (
-				function() {
-					const st4 = parentWin.SmartTemplate4;
-					st4.Util.logDebug("Refreshing fileTemplate menus...");
-					st4.fileTemplates.initMenus(true); // force reset!
-				} , 100
-			);
+      SmartTemplate4.Util.logDebug("fileTemplates were modified - notify to update all menus...");
+      SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
 		}
-		
+    window.removeEventListener("SmartTemplates.BackgroundUpdate", SmartTemplate4.Settings.validateLicenseFromEvent);
 	} ,
+
+  l10n: function() {
+    // [mx l10n] 
+    SmartTemplate4.Util.localize(window, {extra2: 'contribute_button'}); 
+  },
 	
 	toggleExamples: function toggleExamples(el) {
 		document.getElementById('templatesTab').collapsed = (el.checked);
@@ -699,11 +636,10 @@ SmartTemplate4.Settings = {
   // @functionName: file / basepath / attach - corresponding to the ST4 variables %file% / %basepath% / %attach%
   getFileName: function getFileName(code, editBox, functionName='file') {
     const Cc = Components.classes,
-          Ci = Components.interfaces;
+          Ci = Components.interfaces,
+          util = SmartTemplate4.Util;
     let fileType = "all",
 		    //localized text for filePicker filter menu
-		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
-		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
         filterText;
     switch (functionName) {
       case "style":
@@ -735,19 +671,19 @@ SmartTemplate4.Settings = {
       fp.init(window, "", fp.modeOpen); // second parameter: prompt
     switch (fileType) {
       case 'folder':
-        filterText = bundle.GetStringFromName("fpFolder");
+        filterText = util.getBundleString("fpFolder","Folder");
         fp.appendFilter(filterText, "*.");
         break;
       case 'style':
-        filterText = bundle.GetStringFromName("fpStyle");
+        filterText = util.getBundleString("fpStyle", "Style Sheet");
         fp.appendFilter(filterText, "*.css");
         break;
       case 'html':
-        filterText = bundle.GetStringFromName("fpHTMLFile");
+        filterText = util.getBundleString("fpHTMLFile", "HTML File / Text File");
         fp.appendFilter(filterText, "*.htm;*.html;*.txt");
         break;
       case 'image':
-        filterText = bundle.GetStringFromName("fpImageFile");
+        filterText = util.getBundleString("fpImageFile", "Image File");
          // fp.appendFilter(filterText, "*.png;*.jpg;*.jpeg;*.bmp;*.dib;*.ico;*.svg;*.gif;*.tif");
         fp.appendFilters(Ci.nsIFilePicker.filterImages);
         break;
@@ -781,17 +717,13 @@ SmartTemplate4.Settings = {
   // header.set(subject,"text")
   // header.set(to,"abc@de.com")
   getHeaderArgument: function getHeaderArgument(code) {
-		const Cc = Components.classes,
-          Ci = Components.interfaces,
-          strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
-		      bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties");
     let txtArg;
     if (code.indexOf('subject')>0)  {
-      txtArg = prompt(bundle.GetStringFromName('prompt.text'));
+      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.text', "Enter the text to add or set"));
       return code.replace("text", txtArg);
     }
     else {
-      txtArg = prompt(bundle.GetStringFromName('prompt.email'));
+      txtArg = prompt(SmartTemplate4.Util.getBundleString('prompt.email', "Enter an email address"));
       return code.replace("abc@de.com", txtArg);
     }
   } ,
@@ -950,7 +882,7 @@ SmartTemplate4.Settings = {
 				
 		// (Stationery replacement) file lists: menupopup add below common?
 		if (SmartTemplate4.Settings.isFileTemplates) {
-			const label = util.getBundleString("SmartTemplate4.fileTemplates", "File Templates");
+			const label = util.getBundleString("st.fileTemplates", "File Templates");
 			theMenu.appendItem(label, "fileTemplates", "file templates: to replace Stationery");
 		}
 				
@@ -999,8 +931,7 @@ SmartTemplate4.Settings = {
 		prefs.setMyBoolPref('expandSettings', true);
 
 		let versionBox = document.getElementById('versionBox');
-		// let's get the "top" instance of st4, as we know that already knows the version number!!
-		versionBox.value = SmartTemplate4.Util.Mail3PaneWindow.SmartTemplate4.Util.Version;
+		versionBox.value = SmartTemplate4.Util.Version; // cached from addoInfo
 	} ,
 
 	closeAdvanced: function closeAdvanced() {
@@ -1258,12 +1189,17 @@ SmartTemplate4.Settings = {
     let nickBox = document.getElementById('chkResolveABNick'),
 		    displayNameBox = document.getElementById('chkResolveABDisplay'),
         replaceMail = document.getElementById('chkResolveABRemoveMail');
-    if (el.checked) {
-      nickBox.checked = false;
-		}
-		displayNameBox.disabled = el.checked;
-		nickBox.disabled = el.checked;
-		replaceMail.disabled = el.checked;
+    setTimeout(
+      function() {
+        let isResolveAB = el.checked;
+        if (!isResolveAB) {
+          nickBox.checked = false;
+        }
+        displayNameBox.disabled = !isResolveAB;
+        nickBox.disabled = !isResolveAB;
+        replaceMail.disabled = !isResolveAB;
+      }
+    );
   } ,
   
   get currentId() {
@@ -1360,10 +1296,7 @@ SmartTemplate4.Settings = {
 					NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
 		util.popupLicenseNotification(mode + "_template", true, true); // save_template, load_template
 					
-    let //localized text for filePicker filter menu
-		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
-		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
-        filterText;
+    let filterText; //localized text for filePicker filter menu
     
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
         fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
@@ -1375,7 +1308,7 @@ SmartTemplate4.Settings = {
 			fp.displayDirectory = defaultPath; // nsILocalFile
 		}    
 		fp.init(window, "", fileOpenMode); // second parameter: prompt
-    filterText = bundle.GetStringFromName("fpJsonFile");
+    filterText = util.getBundleString("fpJsonFile", "JSON File");
     fp.appendFilter(filterText, "*.json");
     fp.defaultExtension = 'json';
     if (mode == 'save') {
@@ -1387,9 +1320,7 @@ SmartTemplate4.Settings = {
         if (fp.file) {
           let path = fp.file.path;
           
-					const {OS} = (typeof ChromeUtils.import == "undefined") ?
-						Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
+					const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});		
 					
 					// Remember last path
 					let lastSlash = path.lastIndexOf("/");
@@ -1473,8 +1404,11 @@ SmartTemplate4.Settings = {
     settings.fileAccountSettings('save', json, this.currentAccountName);
   } ,
   
-  load: function load() {
+  // load a Template file (not this module!)
+  load: async function load() {
 		const util = SmartTemplate4.Util;
+    
+    
     let currentDeck = this.getCurrentDeck(SmartTemplate4.Settings.accountId),
         tabbox = document.getElementById(currentDeck),
         txt = tabbox.getElementsByTagName('html:textarea'), // changed from textbox
@@ -1484,9 +1418,19 @@ SmartTemplate4.Settings = {
          textboxes:txt, 
          checkboxes:chk}
     );
-		
   } ,
-	
+
+  // send new key to background page for validation
+  validateNewKey: async function validateNewKey(el) {
+    this.trimLicense();
+    let input = document.getElementById('txtLicenseKey'),
+        key = input.value;
+    // The background script will validate the new key and send a broadcast to all consumers on sucess.
+    let rv = await SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateLicense", key: key });
+    // In this script, the consumer is onBackgroundUpdate.
+    // at this point, used to call validateLicenseInOptions(silent = false);
+  },
+  	
   trimLicense: function trimLicense() {
 		const util = SmartTemplate4.Util;
     let txtBox = document.getElementById('txtLicenseKey'),
@@ -1521,13 +1465,24 @@ SmartTemplate4.Settings = {
 		*/
   },
   
-  decryptLicense: function decryptLicense(silent = false) {
-		const util = SmartTemplate4.Util,
-		      licenser = SmartTemplate4.Licenser,
-					prefs = SmartTemplate4.Preferences,
-					globalLicenser = util.Licenser,
-					ELS = licenser.ELicenseState,
-					crypto = SmartTemplate4.Crypto;
+  showTrialDate: function() {
+    let licenseDate = document.getElementById('licenseDate'),
+        licenseDateLbl = document.getElementById('licenseDateLabel'),
+        txtGracePeriod= SmartTemplate4.Util.gracePeriodText(SmartTemplate4.Util.licenseInfo.trialDays);
+        
+    if (!licenseDateLbl.getAttribute("originalContent")) { // save original label!
+      licenseDateLbl.setAttribute("originalContent", licenseDateLbl.textContent);
+    }
+    licenseDateLbl.textContent = txtGracePeriod;
+    licenseDateLbl.classList.add('important');
+    licenseDate.value = "";
+  },
+
+      
+  // this function is called on load and from validateLicenseInOptions
+  // was decryptLicense
+  updateLicenseOptionsUI: async function updateLicenseOptionsUI(silent = false) {
+		const util = SmartTemplate4.Util;
 					
     let getElement = document.getElementById.bind(document),
         validationPassed       = getElement('validationPassed'),
@@ -1539,8 +1494,11 @@ SmartTemplate4.Settings = {
         validationEmailNoMatch = getElement('validationEmailNoMatch'),
 				validationDate         = getElement('validationDate'),
 				validationDateSpace    = getElement('validationDateSpace'),
-        decryptedMail, decryptedDate,
-				result = ELS.NotValidated;
+        licenseDate            = getElement('licenseDate'),
+        licenseDateLabel       = getElement('licenseDateLabel'),
+        decryptedMail = SmartTemplate4.Util.licenseInfo.email, 
+        decryptedDate = SmartTemplate4.Util.licenseInfo.expiryDate,
+				result = SmartTemplate4.Util.licenseInfo.status;
 		validationStandard.collapsed = true;
     validationPassed.collapsed = true;
     validationFailed.collapsed = true;
@@ -1552,59 +1510,30 @@ SmartTemplate4.Settings = {
 		validationDateSpace.collapsed = false;
     this.enablePremiumConfig(false);
     try {
-			var { Services } = 
-			  ChromeUtils.import ?
-			  ChromeUtils.import('resource://gre/modules/Services.jsm') :
-				Components.utils.import('resource://gre/modules/Services.jsm'); // Thunderbird 52
-			
-      this.trimLicense();
-      let txtBox = getElement('txtLicenseKey'),
-          license = txtBox.value;
-      // store new license key
-			prefs.setStringPref('LicenseKey', license);
-			if (!license) 
-				crypto.key_type=0; //reset
-      
-      let maxDigits = crypto.maxDigits, // this will be hardcoded in production 
-          LicenseKey,
-          encrypted = licenser.getCrypto(license),
-          mail = licenser.getMail(license),
-          date = licenser.getDate(license);
-      if (prefs.isDebug) {
-        let test = 
-            "┌───────────────────────────────────────────────────────────────┐\n"
-          + "│ SmartTemplate4.Licenser found the following License components:\n"
-          + "│ Email: " + mail + "\n"
-          + "│ Date: " + date + "\n"
-          + "│ Crypto: " + encrypted + "\n"
-          + "└───────────────────────────────────────────────────────────────┘";
-        util.logDebug(test);
+			var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+      let niceDate = decryptedDate;
+      if (decryptedDate) {
+        try { 
+          let d = new Date(decryptedDate);
+          niceDate =d.toLocaleDateString();
+        }
+        catch(ex) { niceDate = decryptedDate; }
       }
-      if (encrypted)
-        [result, LicenseKey] = licenser.validateLicense(license, maxDigits);
-      else { // reset internal state of object if no encrypted can be found!
-        result = ELS.Invalid;
-				licenser.DecryptedDate = "";
-				licenser.DecryptedMail = "";
-			}
-      decryptedDate = licenser.DecryptedDate;
-      getElement('licenseDate').value = decryptedDate; // invalid ??
-      decryptedMail = licenser.DecryptedMail;
       switch(result) {
-        case ELS.Valid:
+        case "Valid":
           this.enablePremiumConfig(true);
-					if (licenser.key_type==2)
+					if (SmartTemplate4.Util.licenseInfo.keyType==2) // standard license
             SmartTemplate4.Settings.showValidationMessage(validationStandard, silent);
 					else
 						SmartTemplate4.Settings.showValidationMessage(validationPassed, silent);
-          // test code
-          // getElement('txtEncrypt').value = LicenseKey;
+          licenseDate.value = niceDate;
+          licenseDateLabel.value = util.getBundleString("label.licenseValid", "Your license is valid until:");
           break;
-        case ELS.Invalid:
+        case "Invalid":
 				  validationDate.collapsed=true;
 					validationDateSpace.collapsed=true;
 				  let addonName = '';
-				  switch (license.substr(0,2)) {
+				  switch (SmartTemplate4.Util.licenseInfo.licenseKey.substr(0,2)) {
 						case 'QI':
 						case 'Q2': // quickfilters standard
 							addonName = 'quickFilters';
@@ -1623,26 +1552,33 @@ SmartTemplate4.Settings = {
 						let txt = validationInvalidAddon.textContent;
 						txt = txt.replace('{0}','SmartTemplates').replace('{1}','ST'); // keys for {0} start with {1}
 						if (txt.indexOf(addonName) < 0) {
-							txt += " " + util.getBundleString("SmartTemplate4.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
+							txt += " " + util.getBundleString("st.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
 						}
 						validationInvalidAddon.textContent = txt;
 					}
           break;
-        case ELS.Expired:
+        case "Expired":
+          licenseDateLabel.value = util.getBundleString("st.licenseValidation.expired","Your license expired on:");
+          licenseDate.value = niceDate;
           SmartTemplate4.Settings.showValidationMessage(validationExpired, false); // always show
           break;
-        case ELS.MailNotConfigured:
+        case "MailNotConfigured":
 				  validationDate.collapsed=true;
 					validationDateSpace.collapsed=true;
           SmartTemplate4.Settings.showValidationMessage(validationInvalidEmail, silent);
           // if mail was already replaced the string will contain [mail address] in square brackets
           validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
           break;
-        case ELS.MailDifferent:
+        case "MailDifferent":
 				  validationDate.collapsed=true;
 					validationDateSpace.collapsed=true;
           SmartTemplate4.Settings.showValidationMessage(validationFailed, silent);
           SmartTemplate4.Settings.showValidationMessage(validationEmailNoMatch, silent);
+          break;
+        case "Empty":
+          SmartTemplate4.Settings.showTrialDate();
+				  // validationDate.collapsed=true;
+					// validationDateSpace.collapsed=true;
           break;
         default:
           Services.prompt.alert(null,util.ADDON_TITLE,'Unknown license status: ' + result);
@@ -1659,17 +1595,13 @@ SmartTemplate4.Settings = {
 				}
 			}
 			
-			// transfer License state to main instance Licenser
-			globalLicenser.ValidationStatus =
-						(result != ELS.Valid) ? ELS.NotValidated : result;
-			globalLicenser.DecryptedDate = decryptedDate;
-			globalLicenser.DecryptedMail = decryptedMail;
-			globalLicenser.LicenseKey = LicenseKey;
-			globalLicenser.wasValidityTested = true; // no need to re-validate there
+			// show support tab if license is not empty 
+			let isSupportEnabled = (SmartTemplate4.Util.licenseInfo.LicenseKey) ? true : false;
+			document.getElementById('supportTab').collapsed = !(isSupportEnabled);
       
     }    
     catch(ex) {
-      util.logException("Error in SmartTemplate4.Settings.decryptLicense():\n", ex);
+      util.logException("Error in SmartTemplate4.Settings.updateLicenseOptionsUI():\n", ex);
     }
 		return result;
   } ,
@@ -1681,10 +1613,7 @@ SmartTemplate4.Settings = {
         finalLicense = '';        
     trans.addDataFlavor("text/unicode");
 		
-		var { Services } =
-		  ChromeUtils.import ?
-			ChromeUtils.import('resource://gre/modules/Services.jsm') :
-			Components.utils.import('resource://gre/modules/Services.jsm');
+		var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm') ;
 		
     Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
 
@@ -1697,9 +1626,14 @@ SmartTemplate4.Settings = {
 			finalLicense = this.trimLicense();
     }
     if (finalLicense) {
-      SmartTemplate4.Settings.validateLicenseInOptions(false);
+      // SmartTemplate4.Settings.validateLicenseInOptions(false);
+      SmartTemplate4.Settings.validateNewKey();
     }
   } ,
+  
+  validateLicenseFromEvent: function() {
+    SmartTemplate4.Settings.validateLicenseInOptions(false);
+  },
   
   validateLicenseInOptions: function validateLicenseInOptions(silent = false) {
 		function replaceCssClass(el,addedClass) {
@@ -1714,42 +1648,37 @@ SmartTemplate4.Settings = {
 			}
 		}
 		const util = SmartTemplate4.Util,
-					licenser = util.Licenser, // use global licenser? (stored in main window)
-					ELS = licenser.ELicenseState,
 					settings = SmartTemplate4.Settings,
-          prefs = SmartTemplate4.Preferences;
+          licenseInfo = SmartTemplate4.Util.licenseInfo;
 					
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
         btnLicense = getElement("btnLicense"),
 				proTab = getElement("SmartTemplate4-Pro"),
 				beautyTitle = getElement("SmartTemplate4AboutLogo");
-				
-		if (prefs.isDebugOption("premium.licenser")) debugger;
+        
+    // old call to decryptLicense was here
+    // 1 - sanitize License
+    // 2 - validate license
+        
     try {
-			//let decrypt = SmartTemplate4.Settings.decryptLicense.bind(SmartTemplate4.Settings);
-			let result = settings.decryptLicense(silent); // this.decrypt breaks internal scopes in licenser.validateLicense ?
-			// show support tab if license is not empty - util.Licenser uses global licenser object!
-			let isSupportEnabled = (licenser.LicenseKey) ? true : false;
-			getElement('supportTab').collapsed = !(isSupportEnabled);
-			if (isSupportEnabled) {
-//				let mainUtil = util.Mail3PaneWindow.SmartTemplate4.Util,
-//				    v = mainUtil.Version; // test
-			}
+      
+      // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
+      this.updateLicenseOptionsUI(silent);  // async! // was settings.decryptLicense
 			
       let silentUpdateOption = getElement("chkSilentUpdates");
-			switch(result) {
-				case ELS.Valid:
+			switch(licenseInfo.status) {
+				case "Valid":
 					let today = new Date(),
 					    later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
 							dateString = later.toISOString().substr(0, 10);
           silentUpdateOption.disabled = false;
 					// if we were a month ahead would this be expired?
-					if (licenser.DecryptedDate < dateString) {
+					if (licenseInfo.expiryDate < dateString) {
 						settings.labelLicenseBtn(btnLicense, "extend");
 					}
 					else {
-						if (licenser.key_type==2) { // standard license
+						if (licenseInfo.keyType==2) { // standard license
 							btnLicense.classList.add('upgrade'); // removes "pulsing" animation
 							settings.labelLicenseBtn(btnLicense, "upgrade");
 						}
@@ -1761,7 +1690,7 @@ SmartTemplate4.Settings = {
 					beautyTitle.classList.remove('aboutLogo');
 					beautyTitle.classList.add('aboutLogoPro');
 				  break;
-				case ELS.Expired:
+				case "Expired":
           silentUpdateOption.disabled = true;
 					settings.labelLicenseBtn(btnLicense, "renew");
 				  btnLicense.collapsed = false;
@@ -1778,11 +1707,9 @@ SmartTemplate4.Settings = {
 					beautyTitle.classList.add('aboutLogo');
 					beautyTitle.classList.remove('aboutLogoPro');
 			}
-			util.logDebug('validateLicense - result = ' + result);
+			util.logDebug('validateLicense - license status = ' + licenseInfo.status);
 			// make sure to refresh the file template menus!
 			SmartTemplate4.fileTemplates.isModified = true; 
-      util.Mail3PaneWindow.SmartTemplate4.updateStatusBar();
-      
     }
     catch(ex) {
       util.logException("Error in SmartTemplate4.Settings.validateLicenseInOptions():\n", ex);
@@ -1801,8 +1728,8 @@ SmartTemplate4.Settings = {
 		const prefs = SmartTemplate4.Preferences,
 		      util = SmartTemplate4.Util,
 					options = SmartTemplate4.Settings,
-		      licenser = util.Licenser,
-					State = licenser.ELicenseState;
+          licenseInfo = SmartTemplate4.Util.licenseInfo;
+          
 		if (!document.documentElement || !document.documentElement.getButton) {
 			util.logDebug("Cannot configure extra2 button, likely because this is a modern version of Thunderbird.");
 			return;
@@ -1826,24 +1753,24 @@ SmartTemplate4.Settings = {
 								"click", 
 								function(event) { 
 									setTimeout(function() { 
-										SmartTemplate4.Licenser.showDialog('extra2'); // referrer 
+                    SmartTemplate4.Util.showLicenseDialog("extra2"); 
 										window.close(); 
 									});	
 								}, 
 								false);
 						}
 						else {
-							switch (licenser.ValidationStatus) {
-								case State.Expired:
+							switch (licenseInfo.status) {
+								case "Expired":
 									options.labelLicenseBtn(donateButton, "renew");
 									break;
-								case State.Valid:
+								case "Valid":
 									donateButton.collapsed = true;
 									break;
-								case State.Invalid:
+								case "Invalid":
 									options.labelLicenseBtn(donateButton, "buy");
 									break;
-								case State.NotValidated: // hide?
+								case "NotValidated": // hide?
 								default:
 									options.labelLicenseBtn(donateButton, "buy");
 									break;
@@ -1865,23 +1792,23 @@ SmartTemplate4.Settings = {
 					
 		switch(validStatus) {
 			case  "extend":
-				let txtExtend = util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense", "Extend License!");
+				let txtExtend = util.getBundleString("st.notification.premium.btn.extendLicense", "Extend License!");
 				btnLicense.collapsed = false
 				btnLicense.label = txtExtend; // text should be extend not renew
 				btnLicense.setAttribute('tooltiptext',
-					util.getBundleString("SmartTemplate4.notification.premium.btn.extendLicense.tooltip", 
+					util.getBundleString("st.notification.premium.btn.extendLicense.tooltip", 
 						"This will extend the current license date by 1 year. It's typically cheaper than a new license."));
 				return txtExtend;
 			case "renew":
-				let txtRenew = util.getBundleString("SmartTemplate4.notification.premium.btn.renewLicense", "Renew License!");
+				let txtRenew = util.getBundleString("st.notification.premium.btn.renewLicense", "Renew License!");
 				btnLicense.label = txtRenew;
 			  return txtRenew;
 			case "buy":
-				let buyLabel = util.getBundleString("SmartTemplate4.notification.premium.btn.getLicense", "Buy License!");
+				let buyLabel = util.getBundleString("st.notification.premium.btn.getLicense", "Buy License!");
 				btnLicense.label = buyLabel;
 			  return buyLabel;
 			case "upgrade":
-				let upgradeLabel = util.getBundleString("SmartTemplate4.notification.premium.btn.upgrade", "Upgrade to Pro");
+				let upgradeLabel = util.getBundleString("st.notification.premium.btn.upgrade", "Upgrade to Pro");
 				btnLicense.label = upgradeLabel;
 				btnLicense.classList.add('upgrade'); // stop flashing
 			  return upgradeLabel;
@@ -1948,3 +1875,15 @@ SmartTemplate4.Settings = {
 
 };
 
+window.document.addEventListener('DOMContentLoaded', 
+  SmartTemplate4.Settings.l10n.bind(SmartTemplate4.Settings) , 
+  { once: true });
+  
+window.addEventListener('load', 
+  SmartTemplate4.Settings.onLoad.bind(SmartTemplate4.Settings) , 
+  { once: true });
+  
+window.addEventListener('unload', 
+  SmartTemplate4.Settings.onUnload.bind(SmartTemplate4.Settings) , 
+  { once: true });
+    

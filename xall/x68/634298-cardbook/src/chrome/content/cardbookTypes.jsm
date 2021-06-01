@@ -50,7 +50,7 @@ var cardbookTypes = {
 			for (var i = 0; i < cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType].length && !match; i++) {
 				var code = cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][0];
 				var types = cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][1];
-				var possibilities = types.split(";");
+				var possibilities = types.split(";").map(value => value.toUpperCase());
 				for (var j = 0; j < possibilities.length && !match; j++) {
 					var possibility = possibilities[j].split(",");
 					for (var k = 0; k < aSourceArray.length; k++) {
@@ -92,7 +92,7 @@ var cardbookTypes = {
 			for (var i = 0; i < cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType].length && !match; i++) {
 				var code = cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][0];
 				var types = cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][1];
-				var possibilities = types.split(";");
+				var possibilities = types.split(";").map(value => value.toUpperCase());
 				for (var j = 0; j < possibilities.length && !match; j++) {
 					var possibility = possibilities[j].split(",");
 					for (var k = 0; k < aSourceArray.length; k++) {
@@ -116,11 +116,11 @@ var cardbookTypes = {
 		var match = false;
 		for (var i = 0; i < cardbookRepository.cardbookCoreTypes[aABTypeFormat][aType].length && !match; i++) {
 			var code = cardbookRepository.cardbookCoreTypes[aABTypeFormat][aType][i][0];
-			if (code != aCode) {
+			if (code.toUpperCase() != aCode.toUpperCase()) {
 				continue;
 			}
 			var types = cardbookRepository.cardbookCoreTypes[aABTypeFormat][aType][i][1];
-			var possibilities = types.split(";");
+			var possibilities = types.split(";").map(value => value.toUpperCase());
 			for (var j = 0; j < possibilities.length && !match; j++) {
 				var possibility = possibilities[j].split(",");
 				for (var k = 0; k < aSourceArray.length; k++) {

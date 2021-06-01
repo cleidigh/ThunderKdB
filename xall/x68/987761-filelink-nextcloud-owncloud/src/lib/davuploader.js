@@ -1,27 +1,3 @@
-/* MIT License
-
-Copyright (c) 2020 Johannes Endres
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
-
-/* global encodepath, attachmentStatus, promisedTimeout */
-/* exported DavUploader */
-
 /** AbortControllers for all active uploads */
 const allAbortControllers = new Map();
 
@@ -52,17 +28,17 @@ class DavUploader {
     /**
      * Upload one file to the storage folder
      *
-     * @param {number} fileId The id Thunderbird uses to reference the upload
+     * @param {string} uploadId The id of the upload created in background.js
      * @param {string} fileName w/o path
      * @param {File} fileObject the local file as a File object
      * @returns {Promise<Response>}
      */
-    async uploadFile(fileId, fileName, fileObject) {
+    async uploadFile(uploadId, fileName, fileObject) {
         const stat = await this._getRemoteFileInfo(fileName);
 
         if (!stat) {
             // There is no conflicting file in the cloud
-            return this._doUpload(fileId, fileName, fileObject);
+            return this._doUpload(uploadId, fileName, fileObject);
         } else {
             // There is a file of the same name
             // The mtime is in milliseconds, but on the cloud it's only accurate to seconds
@@ -72,8 +48,8 @@ class DavUploader {
                 return { ok: true, };
             } else {
                 // It's different, move it out of the way
-                await this._moveFileToDir(fileId, fileName, "old_shares/" + (stat.mtime / 1000 | 0));
-                return this._doUpload(fileId, fileName, fileObject);
+                await this._moveFileToDir(uploadId, fileName, "old_shares/" + (stat.mtime / 1000 | 0));
+                return this._doUpload(uploadId, fileName, fileObject);
             }
         }
     }
@@ -109,9 +85,9 @@ class DavUploader {
                     break;
                 case 423: // Locked
                     // Maybe a parallel upload is currently creating the folder, so wait a little and try again
-                    // This timout is longer in reality because it adds to the waiting time in the queue
-                    if (retry_count < 3) {
-                        await promisedTimeout(500);
+                    // This timeout is longer in reality because it adds to the waiting time in the queue
+                    if (retry_count < 5) {
+                        await utils.promisedTimeout(400 + Math.floor(Math.random() * 200));
                         return await this._recursivelyCreateFolder(folder, retry_count++);
                     }
                     break;
@@ -144,17 +120,18 @@ class DavUploader {
 
     /**
      * Moves a file to a new destination folder
-     * @param {*} fileId The id of the upload as given by TB
+     * @param {string} uploadId The id of the upload created in background.js
      * @param {string} fileName The file's path and name relative to the storage
      * folder
      * @param {string} newPath The new path and name
      * @returns {Promise<Response>} A promise that resolves to the Response object of the DAV request
+     * @throws If any problem occurs
      */
-    async _moveFileToDir(fileId, fileName, newPath) {
-        attachmentStatus.get(fileId).set_status('moving');
+    async _moveFileToDir(uploadId, fileName, newPath) {
+        attachmentStatus.get(uploadId).set_status('moving');
         const dest_header = {
             "Destination":
-                this._davUrl + encodepath(this._storageFolder + "/" + newPath + "/" + fileName),
+                this._davUrl + utils.encodepath(this._storageFolder + "/" + newPath + "/" + fileName),
         };
         if (await this._recursivelyCreateFolder(this._storageFolder + "/" + newPath)) {
             const retval = await this._doDavCall(this._storageFolder + "/" + fileName, "MOVE", null, dest_header);
@@ -162,12 +139,12 @@ class DavUploader {
                 return retval;
             }
         }
-        attachmentStatus.get(fileId).fail();
+        attachmentStatus.get(uploadId).fail();
         throw new Error("Couldn't move file.");
     }
 
     /**
-     * Set the mtime, so later checks for identity with local file succeed
+     * Set the mtime, so we can later check for identity with local file
      * @param {string} fileName The name of the file to change
      * @param {number} newMtime The mtime to set ont the file as a unix
      * timestamp (seconds)
@@ -183,49 +160,56 @@ class DavUploader {
             </d:propertyupdate>`;
 
         this._doDavCall(this._storageFolder + '/' + fileName, "PROPPATCH", body);
+        // Ignore errors, because that might only trigger re-upload
     }
 
     /**
      * @returns {number} Free space in bytes or -1 if no info available
      */
     async _getFreeSpace() {
-        const response = await this._doDavCall(this._storageFolder + "/.", "PROPFIND");
+        const response = await this._doDavCall("/.", "PROPFIND");
         let free = -1;
         if (response.ok && response.status < 300) {
             const xmlDoc = new DOMParser().parseFromString(await response.text(), 'application/xml');
             free = parseInt(xmlDoc.getElementsByTagName("d:quota-available-bytes")[0].textContent);
         }
-        return isNaN(free) ? -1 : free;
+        return (isNaN(free) || free < 0) ? -1 : free;
     }
 
     /**
      *
-     * @param {number} fileId Thunderbird's internal file if
+     * @param {string} uploadId The id of the upload created in background.js
      * @param {string} fileName The name in the cloud
      * @param {File} fileObject The File object to upload
      * @returns {Promise<Response>} A Promise that resolves to the http response
      */
-    async _doUpload(fileId, fileName, fileObject) {
+    async _doUpload(uploadId, fileName, fileObject) {
+        // Is the file bigger than the maximum size for WebDAV?
+        attachmentStatus.get(uploadId).set_status('checkingsize');
+        if (fileObject.size > DAV_MAX_FILE_SIZE) {
+            attachmentStatus.get(uploadId).fail();
+            return { ok: false, };
+        }
         // Check it there is enough free space
-        attachmentStatus.get(fileId).set_status('checkingspace');
+        attachmentStatus.get(uploadId).set_status('checkingspace');
         const free = await this._getFreeSpace();
-        if (free >= 0 && free < fileObject.size) {
-            attachmentStatus.get(fileId).fail();
+        if (free !== -1 && free < fileObject.size) {
+            attachmentStatus.get(uploadId).fail();
             return { ok: false, };
         }
 
         // Make sure storageFolder exists. Creation implicitly checks for
         // existence of folder, so the extra webservice call for checking first
         // isn't necessary.
+        attachmentStatus.get(uploadId).set_status('creating');
         if (!(await this._recursivelyCreateFolder(this._storageFolder))) {
-            attachmentStatus.get(fileId).set_status('creating');
-            attachmentStatus.get(fileId).fail();
+            attachmentStatus.get(uploadId).fail();
             throw new Error("Upload failed: Can't create folder");
         }
 
         let response;
         try {
-            response = await this._xhrUpload(fileId, this._storageFolder + '/' + fileName, fileObject);
+            response = await this._xhrUpload(uploadId, this._storageFolder + '/' + fileName, fileObject);
             this._setMtime(fileName, fileObject.lastModified / 1000 | 0);
             // Handle errors that don't throw an exception
             if (response.status < 300) {
@@ -236,11 +220,11 @@ class DavUploader {
                 response = { aborted: true, url: "", };
             }
             else {
-                attachmentStatus.get(fileId).fail();
+                attachmentStatus.get(uploadId).fail();
                 response.ok = false;
             }
         }
-        allAbortControllers.delete(fileId);
+        allAbortControllers.delete(uploadId);
         return response;
     }    //#endregion
 
@@ -256,7 +240,7 @@ class DavUploader {
     _doDavCall(path, method, body, additional_headers) {
         let url = this._serverurl;
         url += this._davUrl;
-        url += encodepath(path);
+        url += utils.encodepath(path);
 
         let fetchInfo = {
             method,
@@ -273,15 +257,15 @@ class DavUploader {
 
     /**
      * 
-     * @param {*} fileId The id of this upload as supplied by Thunderbird
+     * @param {string} uploadId The id of the upload created in background.js
      * @param {string} path The path the file will be uploaded to
      * @param {Blob} data The file content (as a File object)
      * @returns {Promise} A promise that resolves to the XHR or rejects with the entire event
      */
-    async _xhrUpload(fileId, path, data) {
+    async _xhrUpload(uploadId, path, data) {
         let url = this._serverurl;
         url += this._davUrl;
-        url += encodepath(path);
+        url += utils.encodepath(path);
 
         // Remove session password as it interferes with credentials 
         await browser.cookies.remove({ url, name: "oc_sessionPassphrase", firstPartyDomain: "", });
@@ -301,9 +285,9 @@ class DavUploader {
             uploadRequest.addEventListener("abort", reject);
             uploadRequest.addEventListener("timeout", reject);
 
-            uploadRequest.addEventListener("loadstart", () => attachmentStatus.get(fileId).set_status('uploading'));
+            uploadRequest.addEventListener("loadstart", () => attachmentStatus.get(uploadId).set_status('uploading'));
             uploadRequest.upload.addEventListener("progress", e => {
-                attachmentStatus.get(fileId).set_progress(e.total ? e.loaded * 1.0 / e.total : 0);
+                attachmentStatus.get(uploadId).set_progress(e.total ? e.loaded * 1.0 / e.total : 0);
             });
 
             uploadRequest.open("PUT", url);
@@ -311,8 +295,11 @@ class DavUploader {
                 uploadRequest.setRequestHeader(key, this._davHeaders[key]);
             }
 
-            allAbortControllers.set(fileId, uploadRequest);
+            allAbortControllers.set(uploadId, uploadRequest);
             uploadRequest.send(data);
         });
     }
 }
+/* global DAV_MAX_FILE_SIZE */
+/* global attachmentStatus, utils */
+/* exported DavUploader */

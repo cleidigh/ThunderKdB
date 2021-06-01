@@ -9,6 +9,22 @@ if ("undefined" == typeof(cardbookEncryptor)) {
 		IV_PREFIX_SIZE: 8,
 		IV_COUNTER_SIZE: 8,
 
+		encryptImage: async function (aImage) {
+			var [encrypted, iv] = await cardbookEncryptor.encryptString(JSON.stringify(aImage));
+			return {
+				cbid:      aImage.cbid,
+				dirPrefId: aImage.dirPrefId,
+				encrypted,
+				iv,
+				encryptionVersion: this.VERSION
+			};
+		},
+
+		decryptImage: async function (aImage) {
+			var decryptedImage = JSON.parse(await cardbookEncryptor.decryptString(aImage.encrypted, aImage.iv));
+			return decryptedImage;
+		},
+
 		encryptMailPop: async function (aMailPop) {
 			var [encrypted, iv] = await cardbookEncryptor.encryptString(JSON.stringify(aMailPop));
 			return {

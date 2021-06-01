@@ -9,43 +9,14 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 	
 	var wdw_imageEdition = {
 		
-		windowId: 0,
-
-		writeImageToFile: function (aFile, aDataValue, aExtension) {
-			// remove an existing image (overwrite)
-			if (aFile.exists()) {
-				aFile.remove(true);
-			}
-			var ostream = FileUtils.openSafeFileOutputStream(aFile)
-			NetUtil.asyncCopy(aDataValue, ostream, function (status) {
-				if (Components.isSuccessCode(status)) {
-					wdw_imageEdition.addImageCard(aFile, wdw_cardEdition.workingCard, aExtension);
-				} else {
-					cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_imageEdition.writeImageToFile error : filename : " + aFile.path, "Error");
-				}
-			});
-		},
-
-		getEditionPhotoTempFile: function (aExtension) {
-			var myFile = cardbookRepository.cardbookUtils.getTempFile("cardbook");
-			if (!myFile.exists() || !myFile.isDirectory()) {
-				// read and write permissions to owner and group, read-only for others.
-				myFile.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
-			}
-			myFile.append(wdw_imageEdition.windowId);
-			if (!myFile.exists() || !myFile.isDirectory()) {
-				// read and write permissions to owner and group, read-only for others.
-				myFile.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0o774);
-			}
-			myFile.append(cardbookRepository.cardbookUtils.getUUID() + "." + aExtension);
-			return myFile;
-		},
-
-		purgeEditionPhotoTempFile: function () {
-			var myFile = cardbookRepository.cardbookUtils.getTempFile("cardbook");
-			myFile.append(wdw_imageEdition.windowId);
-			if (myFile.exists()) {
-				myFile.remove(true);
+		setMediaContentForCard: function(aDisplayDefault, aCard, aType, aExtension, aValue) {
+			document.getElementById(aType + 'URITextBox').value = aValue;
+			document.getElementById(aType + 'ExtensionTextBox').value = aExtension;
+			// edition
+			if (aDisplayDefault && aType == "photo") {
+				aCard[aType].extension = cardbookRepository.cardbookUtils.formatExtension(aExtension, aCard.version);
+				aCard[aType].value = aValue;
+				aCard[aType].URI = "";
 			}
 		},
 
@@ -55,26 +26,39 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			document.getElementById('imageBox').setAttribute('hidden', 'true');
 		},
 
-		displayImageCard: function (aCard, aDisplayDefault) {
-			if (aCard.photo.localURI) {
-				wdw_imageEdition.resizeImageCard(aCard.photo.localURI, aDisplayDefault);
-			} else {
-				if (aDisplayDefault) {
-					wdw_imageEdition.resizeImageCard(cardbookRepository.defaultCardImage, aDisplayDefault);
-				} else {
-					document.getElementById('imageBox').setAttribute('hidden', 'true');
-				}
-			}
+		displayImageCard: async function (aCard, aDisplayDefault) {
+			let dirname = cardbookRepository.cardbookPreferences.getName(aCard.dirPrefId);
+			wdw_imageEdition.setMediaContentForCard(aDisplayDefault, aCard, "logo", aCard.logo.extension, aCard.logo.value);
+			wdw_imageEdition.setMediaContentForCard(aDisplayDefault, aCard, "sound", aCard.sound.extension, aCard.sound.value);
+			await cardbookIDBImage.getImage("photo", dirname, aCard.cbid, aCard.fn)
+				.then( image => {
+					wdw_imageEdition.resizeImageCard(image, aDisplayDefault);
+				}).catch( () => {
+					if (aDisplayDefault) {
+						wdw_imageEdition.resizeImageCard(null, aDisplayDefault);
+					} else {
+						document.getElementById('imageBox').setAttribute('hidden', 'true');
+					}
+				});
 		},
 
-		resizeImageCard: function (aFileURI, aDisplayDefault) {
-			var myImage = document.getElementById('defaultCardImage');
-			var myDummyImage = document.getElementById('imageForSizing');
-			
+		resizeImageCard: function (aContent, aDisplayDefault) {
+			let myImage = document.getElementById('defaultCardImage');
+			let myDummyImage = document.getElementById('imageForSizing');
+			let content = 	"";
+			if (aContent && aContent.content) {
+				content = 'data:image/' + aContent.extension + ';base64,' + aContent.content;
+				wdw_imageEdition.setMediaContentForCard(aDisplayDefault, wdw_cardEdition.workingCard, "photo", aContent.extension, aContent.content);
+			} else {
+				content = cardbookRepository.defaultCardImage;
+				document.getElementById('photoURITextBox').value = "";
+				document.getElementById('photoExtensionTextBox').value = "";
+			}
+
 			myImage.src = "";
 			myDummyImage.src = "";
-			myDummyImage.src = aFileURI;
-			myDummyImage.onload = function() {
+			myDummyImage.src = content;
+			myDummyImage.onload = function(e) {
 				var myImageWidth = 170;
 				var myImageHeight = 170;
 				if (myDummyImage.width >= myDummyImage.height) {
@@ -86,72 +70,20 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 				}
 				myImage.width = widthFound;
 				myImage.height = heightFound;
-				myImage.src = aFileURI;
+				myImage.src = content;
 				document.getElementById('imageBox').removeAttribute('hidden');
 			}
-			myDummyImage.onerror = function() {
-				if (document.getElementById('photolocalURITextBox')) {
-					document.getElementById('photolocalURITextBox').value = "";
-				}
-				if (document.getElementById('photoURITextBox')) {
-					document.getElementById('photoURITextBox').value = "";
-				}
-				if (document.getElementById('photoExtensionTextBox')) {
-					document.getElementById('photoExtensionTextBox').value = "";
-				}
+			myDummyImage.onerror = function(e) {
+				document.getElementById('photoURITextBox').value = "";
+				document.getElementById('photoExtensionTextBox').value = "";
 				if (aDisplayDefault) {
-					wdw_imageEdition.resizeImageCard(cardbookRepository.defaultCardImage, aDisplayDefault);
+					wdw_imageEdition.resizeImageCard(null, aDisplayDefault);
 				}
 			}
 		},
 
 		addImageCardFromFile: function () {
-			cardbookWindowUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES", "", "", wdw_imageEdition.addImageCardFromFileNext);
-		},
-
-		addImageCardFromFileNext: function (aFile) {
-			var myExtension = cardbookRepository.cardbookUtils.getFileNameExtension(aFile.leafName);
-			if (myExtension != "") {
-				var myCard = wdw_cardEdition.workingCard;
-				myExtension = cardbookRepository.cardbookUtils.formatExtension(myExtension, myCard.version);
-				var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
-				var myFileURISpec = "file:///" + targetFile.path;
-				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-				var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-				aFile.copyToFollowingLinks(myFile1.parent, myFile1.leafName);
-				cardbookRepository.cardbookUtils.formatStringForOutput("imageSavedToFile", [myFile1.path]);
-				wdw_imageEdition.addImageCard(myFile1, myCard, myExtension);
-			}
-		},
-
-		addImageCardFromUrl: function (aUrl) {
-			var myExtension = cardbookRepository.cardbookUtils.getFileExtension(aUrl);
-			if (myExtension != "") {
-				var myCard = wdw_cardEdition.workingCard;
-				myExtension = cardbookRepository.cardbookUtils.formatExtension(myExtension, myCard.version);
-				var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
-				try {
-					var listener_getimage = {
-						onDAVQueryComplete: function(status, response, askCertificate, etag) {
-							if (status > 199 && status < 400) {
-								cardbookRepository.cardbookUtils.formatStringForOutput("urlDownloaded", [aUrl]);
-								cardbookRepository.cardbookUtils.writeContentToFile(targetFile.path, response, "NOUTF8");
-								wdw_imageEdition.addImageCard(targetFile, myCard, myExtension);
-							} else {
-								cardbookRepository.cardbookUtils.formatStringForOutput("imageErrorWithMessage", [status]);
-							}
-						}
-					};
-					var aDescription = cardbookRepository.cardbookUtils.getPrefNameFromPrefId(myCard.dirPrefId);
-					var aImageConnection = {connPrefId: myCard.dirPrefId, connUrl: aUrl, connDescription: aDescription};
-					var request = new cardbookWebDAV(aImageConnection, listener_getimage);
-					cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGettingImage", [aImageConnection.connDescription, myCard.fn]);
-					request.getimage();
-				}
-				catch(e) {
-					cardbookRepository.cardbookUtils.formatStringForOutput("imageErrorWithMessage", [e]);
-				}
-			}
+			cardbookWindowUtils.callFilePicker("imageSelectionTitle", "OPEN", "IMAGES", "", "", wdw_imageEdition.addImageCard);
 		},
 
 		checkDragImageCard: function (aEvent) {
@@ -162,15 +94,15 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			aEvent.preventDefault();
 			var myFile = aEvent.dataTransfer.mozGetDataAt("application/x-moz-file", 0);
 			if (myFile instanceof Components.interfaces.nsIFile) {
-				wdw_imageEdition.addImageCardFromFileNext(myFile);
+				wdw_imageEdition.addImageCard(myFile);
 			} else {
 				var link = aEvent.dataTransfer.getData("URL");
 				if (link) {
-					wdw_imageEdition.addImageCardFromUrl(link);
+					wdw_imageEdition.addImageCard(link);
 				} else {
 					link = aEvent.dataTransfer.getData("text/plain");
-					if (link.startsWith("https://") || link.startsWith("http://") ) {
-						wdw_imageEdition.addImageCardFromUrl(link);
+					if (link.startsWith("https://") || link.startsWith("http://") || link.startsWith("file://") ) {
+						wdw_imageEdition.addImageCard(link);
 					}
 				}
 			}
@@ -179,104 +111,69 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		pasteImageCard: function () {
 			try {
 				var myType = "IMAGES";
-                if (cardbookClipboard.clipboardCanPaste(myType)) {
-                    var data = cardbookClipboard.clipboardGetData(myType);
-                    if (data.flavor.startsWith("image/")) {
-                        var myExtension = data.flavor == "image/png" ? "png" : (data.flavor == "image/gif" ? "gif" : "jpg");
-                        var targetFile = wdw_imageEdition.getEditionPhotoTempFile(myExtension);
-						wdw_imageEdition.writeImageToFile(targetFile, data.data, myExtension);
-                    } else if (data.flavor == "application/x-moz-file") {
+				if (cardbookClipboard.clipboardCanPaste(myType)) {
+					var data = cardbookClipboard.clipboardGetData(myType);
+					if (data.flavor.startsWith("image/")) {
+						var myExtension = data.flavor == "image/png" ? "png" : (data.flavor == "image/gif" ? "gif" : "jpg");
+						wdw_imageEdition.resizeImageCard({extension: myExtension, content: data.data}, true);
+					} else if (data.flavor == "application/x-moz-file") {
 						var myFile = data.data.QueryInterface(Components.interfaces.nsIFile);
-						wdw_imageEdition.addImageCardFromFileNext(myFile);
-                    } else if (data.flavor === "text/unicode" || data.flavor === "text/plain") {
-                        var myTextArray = data.data.QueryInterface(Components.interfaces.nsISupportsString).data.split("\n");
-                    	for (let myText of myTextArray) {
-							if (myText.startsWith("https://") || myText.startsWith("http://")) {
-								wdw_imageEdition.addImageCardFromUrl(myText);
-							} else if (myText.startsWith("file:///")) {
-								var myFileURISpec = myText;
-								var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-								var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-								wdw_imageEdition.addImageCardFromFileNext(myFile);
-							} else if (myText.startsWith("/")) {
-								var myFileURISpec = "file://" + myText;
-								var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-								var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-								wdw_imageEdition.addImageCardFromFileNext(myFile);
+						wdw_imageEdition.addImageCard(myFile);
+					} else if (data.flavor === "text/unicode" || data.flavor === "text/plain") {
+						var myTextArray = data.data.QueryInterface(Components.interfaces.nsISupportsString).data.split("\n");
+						for (let myText of myTextArray) {
+							if (myText.startsWith("https://") || myText.startsWith("http://") || myText.startsWith("file://")) {
+								wdw_imageEdition.addImageCard(myText);
+								break;
 							}
 						}
-                    }
-                }
+					}
+				}
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_imageEdition.pasteImageCard error : " + e, "Error");
 			}
 		},
 
-		addImageCard: function (aFile, aCard, aExtension) {
-			if (aFile) {
-				if (aCard.version === "4.0") {
-					aExtension = aExtension.toLowerCase();
+		addImageCard: async function (aFileOrURL) {
+			if (aFileOrURL) {
+				let URI;
+				if (aFileOrURL instanceof Components.interfaces.nsIFile) {
+					URI = "file://" + aFileOrURL.path;
 				} else {
-					aExtension = aExtension.toUpperCase();
+					URI = aFileOrURL;
 				}
-				document.getElementById('photoURITextBox').value = "";
-				document.getElementById('photolocalURITextBox').value = "file:///" + aFile.path;
-				document.getElementById('photoExtensionTextBox').value = aExtension;
-				wdw_cardEdition.workingCard.photo.URI = "";
-				wdw_cardEdition.workingCard.photo.localURI = "file:///" + aFile.path;
-				wdw_cardEdition.workingCard.photo.extension = aExtension;
-				wdw_imageEdition.displayImageCard(wdw_cardEdition.workingCard, true);
+				var myExtension = cardbookRepository.cardbookUtils.getFileNameExtension(URI);
+				if (!myExtension) {
+					return;
+				}
+				let dirname = cardbookRepository.cardbookPreferences.getName(wdw_cardEdition.workingCard.dirPrefId);
+				let base64 = await cardbookRepository.cardbookUtils.getImageFromURI(wdw_cardEdition.workingCard.fn, dirname, URI);
+				wdw_imageEdition.resizeImageCard({extension: myExtension, content: base64}, true);
 			}
 		},
 
 		saveImageCard: function () {
-			var myFileURISpec = document.getElementById('photolocalURITextBox').value;
-			var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-			var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-			cardbookWindowUtils.callFilePicker("imageSaveTitle", "SAVE", "IMAGES", myFile.leafName, "", wdw_imageEdition.saveImageCardNext);
+			let defaultName = document.getElementById('fnTextBox').value + "." + document.getElementById('photoExtensionTextBox').value.toLowerCase();
+			cardbookWindowUtils.callFilePicker("imageSaveTitle", "SAVE", "IMAGES", defaultName, "", wdw_imageEdition.saveImageCardNext);
 		},
 
 		saveImageCardNext: function (aFile) {
-			var myFileURISpec = document.getElementById('photolocalURITextBox').value;
-			var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-			var myFile1 = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-			myFile1.copyToFollowingLinks(aFile.parent,aFile.leafName);
+			cardbookRepository.cardbookUtils.writeContentToFile(aFile.path, atob(document.getElementById('photoURITextBox').value), "NOUTF8");
 			cardbookRepository.cardbookUtils.formatStringForOutput("imageSavedToFile", [aFile.path]);
 		},
 
 		copyImageCard: function () {
 			try {
-				cardbookClipboard.clipboardSetImage(document.getElementById('photolocalURITextBox').value);
+				cardbookClipboard.clipboardSetImage(document.getElementById('photoURITextBox').value);
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_imageEdition.copyImageCard error : " + e, "Error");
 			}
 		},
 
-		copyImageLocationCard: function () {
-			try {
-				var myFileURISpec = document.getElementById('photolocalURITextBox').value;
-				var myExtension = cardbookRepository.cardbookUtils.getFileNameExtension(myFileURISpec);
-				var myFileURI = Services.io.newURI(myFileURISpec, null, null);
-				var myFile = myFileURI.QueryInterface(Components.interfaces.nsIFileURL).file;
-				
-				cardbookClipboard.clipboardSetText('text/unicode', myFile.path);
-			}
-			catch (e) {
-				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_imageEdition.copyImageLocationCard error : " + e, "Error");
-			}
-		},
-
 		deleteImageCard: function () {
-			var myCard = cardbookRepository.cardbookCards[document.getElementById('dirPrefIdTextBox').value+"::"+document.getElementById('uidTextBox').value];
-			document.getElementById('defaultCardImage').src = cardbookRepository.defaultCardImage;
-			document.getElementById('photolocalURITextBox').value = "";
-			document.getElementById('photoURITextBox').value = "";
-			wdw_cardEdition.workingCard.photo.URI = "";
-			wdw_cardEdition.workingCard.photo.localURI = "";
-			wdw_cardEdition.workingCard.photo.extension = "";
-			wdw_imageEdition.displayImageCard(wdw_cardEdition.workingCard, true);
+			wdw_imageEdition.resizeImageCard(null, true);
 		},
 
 		imageCardContextShowing: function () {

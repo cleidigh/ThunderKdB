@@ -38,6 +38,7 @@ if ("undefined" == typeof(cardbookElementTools)) {
 		addCategoriesRow: function (aCategories) {
 			var panesView = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.panesView");
 			var aParent = document.getElementById('categories' + panesView + 'Row');
+			cardbookElementTools.deleteRows(aParent.id);
 
 			for (category of aCategories) {
 				var aBox = document.createXULElement('box');

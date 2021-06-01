@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/in-content/common.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/prefPanels.css" type="text/css"?>
+<?xml-stylesheet href="chrome://messenger/skin/themeableDialog.css" type="text/css"?>
+
+<?xml-stylesheet href="aec_dialogs.css" type="text/css"?>
+
+<!DOCTYPE dialog SYSTEM "chrome://attachmentextractor_cont/locale/attachmentextractor.dtd">
+
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:html="http://www.w3.org/1999/xhtml" 
+  id="attachmentextractorFilenamePatternDialog" 
+  title="&attachmentextractor.filenamepatterndialog.title;" 
+  persist="screenX screenY width height" 
+  lightweightthemes="true"
+  buttons="accept,cancel" 
+  windowtype="attachmentextractor:fnpdialog">
+
+  <vbox align="center">
+    <hbox align="center">
+      <label value="&attachmentextractor.filenamepatterndialog.input.label;"/>
+      <spacer flex="1"/>
+      <button type="menu" 
+        class="tokens" 
+        label="&attachmentextractor.filenamepatterndialog.tokenbutton.label;">
+        <menupopup>
+          <menuitem label="#namepart#" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);"/>
+          <menuitem label="#extpart#" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);"/>
+          <menuitem label="#count#" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);" />
+          <menuitem label="%" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);" />
+          <menuitem label="#date#" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);" />
+          <menuitem label="#subject#" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);" />
+          <menuitem label="#from#" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);" />
+          <menuitem label="#fromemail#" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);" />
+          <menuitem label="#folder#" 
+            class="tokens" 
+            oncommand="add_to_pattern(this);" />
+        </menupopup>
+      </button>
+    </hbox>
+    <vbox align="left">
+      <separator class="thin"/>
+      <separator class="thin"/>
+      <html:input id="filenamepatternbox" style="width: 45em;" />
+      <separator class="thin"/>
+      <separator class="thin"/>
+      <checkbox id="savecheck" 
+        label="&attachmentextractor.filenamepatterndialog.checkbox.label;" 
+        accesskey="&attachmentextractor.filenamepatterndialog.checkbox.accesskey;" />
+      <separator class="thin"/>
+      <checkbox id="askalwaysfnp" 
+        label="&attachmentextractor.filenamepatterndialog.askalways.label;" 
+        accesskey="&attachmentextractor.filenamepatterndialog.askalways.accesskey;" />
+      <separator class="thin"/>
+    </vbox>
+  </vbox>
+
+  <script type="application/x-javascript" 
+    src="chrome://attachmentextractor_cont/content/aec_dialog_filenamePattern.js"></script>
+  <script
+    src="chrome://messenger/content/dialogShadowDom.js" 
+    type="application/javascript"/>
+
+</dialog>

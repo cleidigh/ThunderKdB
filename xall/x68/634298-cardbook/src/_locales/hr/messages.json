@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "Datoteka $P1$ ne postoji.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "Datoteka $P1$ prazno je",
         "placeholders": {
@@ -3125,9 +3133,6 @@
 		"message": "??Create Category??"
 	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
-		"message": "Uredi kategoriju"
-	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
 		"message": "Dodajte novu kategoriju"
 	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
@@ -3146,9 +3151,6 @@
 		"message": "Kategorija:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "Kategorija:"
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "Kategorija:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "Lozinka:"
 	},
-	"remotePage.passwordShow.label": {
-		"message": "Pokaži"
+	"showHidePassword.tooltip": {
+		"message": "Prikaži/sakrij lozinku"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Potvrdi"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "L"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "Pokaži"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "P"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "??Run in background??"
 	},
@@ -5214,15 +5210,6 @@
 	"keyLabel": {
 		"message": "Ključ"
 	},
-	"photolocalURILabel": {
-		"message": "Lokalna fotografija"
-	},
-	"logolocalURILabel": {
-		"message": "Lokalni logo"
-	},
-	"soundlocalURILabel": {
-		"message": "Local sound"
-	},
 	"photoURILabel": {
 		"message": "Fotografija"
 	},
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "Kopiraj sliku"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "Kopiraj lokaciju slike"
 	},
 	"deleteImageCardLabel": {
 		"message": "Izbriši sliku"

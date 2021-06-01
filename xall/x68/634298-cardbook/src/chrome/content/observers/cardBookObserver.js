@@ -7,6 +7,7 @@ var cardBookObserver = {
 	catDBOpen: false,
 	undoDBOpen: false,
 	mailPopDBOpen: false,
+	imageDBOpen: false,
 	
 	register: function() {
 		cardBookObserverRepository.registerAll(this);
@@ -16,6 +17,12 @@ var cardBookObserver = {
 		cardBookObserverRepository.unregisterAll(this);
 	},
 	
+	upgradeDBs: function() {
+		if (this.mailPopDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen && this.imageDBOpen) {
+			cardbookIndexedDB.upgradeDBs();
+		}
+	},
+	
 	observe: function(aSubject, aTopic, aData) {
 		switch (aTopic) {
 			case "cardbook.preferencesChanged":
@@ -23,18 +30,22 @@ var cardBookObserver = {
 					ovl_cardbook.reloadCardBookQFB();
 				}
 				break;
+			case "cardbook.undoDBOpen":
+				this.undoDBOpen = true;
+				this.upgradeDBs();
+				break;
+			case "cardbook.imageDBOpen":
+				this.imageDBOpen = true;
+				this.upgradeDBs();
+				break;
 			case "cardbook.mailPopDBOpen":
 				this.mailPopDBOpen = true;
-				if (this.mailPopDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen) {
-					cardbookIndexedDB.upgradeDBs();
-				}
+				this.upgradeDBs();
 				cardbookIDBMailPop.loadMailPop();
 				break;
 			case "cardbook.catDBOpen":
 				this.catDBOpen = true;
-				if (this.mailPopDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen) {
-					cardbookIndexedDB.upgradeDBs();
-				}
+				this.upgradeDBs();
 				cardbookIDBCard.openCardDB();
 				break;
 			case "cardbook.DBOpen":
@@ -42,9 +53,7 @@ var cardBookObserver = {
 				if (!("undefined" == typeof(ovl_cardbook))) {
 					ovl_cardbook.reloadCardBookQFB();
 				}
-				if (this.mailPopDBOpen && this.catDBOpen && this.DBOpen && this.undoDBOpen) {
-					cardbookIndexedDB.upgradeDBs();
-				}
+				this.upgradeDBs();
 				cardbookIDBSearch.openSearchDB();
 				break;
 			case "cardbook.searchDBOpen":

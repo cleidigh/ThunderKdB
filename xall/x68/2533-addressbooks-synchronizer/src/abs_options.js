@@ -45,7 +45,7 @@ debug('entered');
 		let prefnames=['autodownload', 'autoupload', 'timeddownload', 'timedupload', 'synctype', 'localpath',
 		 'protocol', 'host', 'path', 'user', 'imapfolderAccount', 'imapfolderName', 'imapfolderPath',
 		 'downloadpolicy', 'imapuploadpolicy', 'usepost', 'hideallpopups', 'hidepopups', 'loadtimer',
-		 'notimecheck', 'noupload', 'separateupdown', 'noexternalappset', 'debug', 'upgraded'];
+		 'notimecheck', 'noupload', 'separateupdown', 'noexternalappset', 'debug', 'upgraded', 'ftpwarn'];
 		prefs=await messenger.storage.local.get(prefnames);
 debug('fixed prefs loaded');
 	} catch(e) {
@@ -101,6 +101,7 @@ debug('splitURI: '+value+' -> '+JSON.stringify(uri));
         prefs['synctype']='remote';
         p['synctype']='remote';
 				document.getElementById('syncremote').checked=true;
+        p['ftpwarn']=0;
       }
     } else {
       prefs[pref]=value;
@@ -495,6 +496,7 @@ async function GetPath(path) {  //called from event
 function ChooseFile() {
   let prompt=messenger.i18n.getMessage("choosefile");
   let mab=messenger.i18n.getMessage("mab");
+  // '.mab' will be removed in filePicker if appVersion>=82
 	messenger.abs.filePicker(prompt, 'file', { '*.sqlite': mab+" (*.sqlite)", '*.mab': '(*.mab)'}, '' );
 } // ChooseFile
 async function GetFile(path) {  //called from event

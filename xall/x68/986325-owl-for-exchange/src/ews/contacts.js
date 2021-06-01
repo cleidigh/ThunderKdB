@@ -159,7 +159,7 @@ browser.contacts.onCreated.addListener(async contact => {
       browser.contacts.update(contact.id, { ChangeKey: changeKey });
     }
   } catch (ex) {
-    logError(ex);
+    ShowContactWriteFailure(ex);
   }
 });
 browser.contacts.onUpdated.addListener(async contact => {
@@ -192,10 +192,10 @@ browser.contacts.onUpdated.addListener(async contact => {
         },
       };
       let newFields = EWSAccount.convertProperties(contact.properties);
-      if (JSON.stringify(newFields) != JSON.stringify(oldFields)) {
+      if (!deepCompareUnordered(newFields, oldFields)) {
         let updates = request.m$UpdateItem.m$ItemChanges.t$ItemChange.t$Updates;
         for (let key in newFields) {
-          if (JSON.stringify(newFields[key]) != JSON.stringify(oldFields[key])) {
+          if (!deepCompareUnordered(newFields[key], oldFields[key])) {
             let value = newFields[key];
             let field = {};
             if (key == "t$ExtendedProperty") {
@@ -247,7 +247,7 @@ browser.contacts.onUpdated.addListener(async contact => {
       }
     }
   } catch (ex) {
-    logError(ex);
+    ShowContactWriteFailure(ex);
   }
 });
 browser.contacts.onDeleted.addListener(async (addressBook, id) => {
@@ -276,7 +276,7 @@ browser.contacts.onDeleted.addListener(async (addressBook, id) => {
     if (ex.type == "ErrorItemNotFound") {
       // Already deleted. Ignore.
     } else {
-      logError(ex);
+      ShowContactWriteFailure(ex);
     }
   }
 });
@@ -313,8 +313,8 @@ EWSAccount.prototype.convertContact = function(aContact) {
   aContact.PhysicalAddresses = this.explodeEntry(aContact.PhysicalAddresses);
   aContact.PhoneNumbers = this.explodeEntry(aContact.PhoneNumbers);
   return {
-    ItemId: aContact.ItemId && aContact.ItemId.Id,
-    ChangeKey: aContact.ItemId && aContact.ItemId.ChangeKey,
+    ItemId: aContact.ItemId && aContact.ItemId.Id || "",
+    ChangeKey: aContact.ItemId && aContact.ItemId.ChangeKey || "",
     FirstName: aContact.GivenName || "",
     LastName: aContact.Surname || "",
     DisplayName: aContact.DisplayName || "",
@@ -516,10 +516,8 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
     this.ReconcileDeletions(browser.contacts, this.contacts, addressBook.contacts || [], contacts);
     this.ReconcileDeletions(browser.mailingLists, this.mailingLists, addressBook.mailingLists || [], lists);
   } catch (ex) {
-    browser.contacts.create(addressBook.id, null, {
-      DisplayName: ex.message,
-      Notes: ex.stack,
-    });
+    ShowContactError(addressBook.id, ex);
+    // Don't throw this because it will just get reported twice.
     return;
   }
   // Update or create contacts from the server's list of items.
@@ -530,6 +528,9 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
         fetch.m$GetItem.m$ItemIds.t$ItemId[0].Id = contact.ItemId.Id;
         let response = await this.CallService(aMsgWindow, fetch); // ews.js
         let properties = this.convertContact(response.Items.Contact);
+        // Prefer the display name of personal contacts by default,
+        // but allow the user to change it, so only set it on first creation.
+        properties.PreferDisplayName = kPreferDisplayNameTrue;
         id = await browser.contacts.create(addressBook.id, null, properties);
         // Also track the new mapping.
         this.contacts.ids[contact.ItemId.Id] = id;
@@ -545,11 +546,7 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
         this.contacts.fields[contact.ItemId.Id] = EWSAccount.convertProperties(properties);
       }
     } catch (ex) {
-      logError(ex);
-      browser.contacts.create(addressBook.id, null, {
-        DisplayName: ex.message,
-        Notes: ex.stack,
-      });
+      ShowContactError(addressBook.id, ex);
     }
   }
   // Update or create mailing lists from the server's lists.
@@ -588,11 +585,7 @@ EWSAccount.prototype.ResyncContacts = async function(aMsgWindow) {
         await browser.mailingLists.addMember(id, member);
       }
     } catch (ex) {
-      logError(ex);
-      browser.contacts.create(addressBook.id, null, {
-        DisplayName: ex.message,
-        Notes: ex.stack,
-      });
+      ShowContactError(addressBook.id, ex);
     }
   }
   // Save our updated mappings.
@@ -615,7 +608,7 @@ EWSAccount.prototype.DownloadGAL = async function(aMsgWindow) {
     await browser.incomingServer.setStringValue(this.serverID, "GAL", id);
     addressBook = { id: id, contacts: [], mailingLists: [] };
   }
-  browser.webAccount.markAddressBookAsReadOnly(addressBook.id);
+  browser.uiTweaks.markAddressBookAsReadOnly(addressBook.id);
   try {
     let response;
     let contactMap = {};
@@ -669,6 +662,9 @@ EWSAccount.prototype.DownloadGAL = async function(aMsgWindow) {
         this.UpdateContact(contact, resolvedNames[primaryEmail]);
         delete contactMap[primaryEmail];
       } else {
+        // Don't prefer the display name of GAL contacts by default,
+        // but allow the user to change it, so only set it on first creation.
+        resolvedNames[primaryEmail].PreferDisplayName = kPreferDisplayNameFalse;
         await browser.contacts.create(addressBook.id, null, resolvedNames[primaryEmail]);
       }
     }
@@ -676,11 +672,9 @@ EWSAccount.prototype.DownloadGAL = async function(aMsgWindow) {
       browser.contacts.delete(contactMap[primaryEmail].id);
     }
   } catch (ex) {
-    browser.contacts.create(addressBook.id, null, {
-      DisplayName: ex.message,
-      Notes: ex.stack,
-    });
-    throw ex;
+    ShowContactError(addressBook.id, ex);
+    // Don't throw this because it will just get reported twice.
+    return;
   }
 }
 

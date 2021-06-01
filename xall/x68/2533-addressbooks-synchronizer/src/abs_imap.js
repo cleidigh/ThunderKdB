@@ -459,7 +459,6 @@ debug('in StreamListener gTempName='+typeof this.gTempName);
 							if (writeMabData(tmpFile, msg, msg.length)) {
 								statustxt('.', 0, false); // 4. dot: temp file created
 								if (msg.substr(0,6)=='SQLite') {
-	debug('message is '+(msg.substr(0,6)=='SQLite'?'sqlite':'mab'));
 									try {
 										// replace addressbook data
 										let ret;
@@ -474,7 +473,7 @@ debug('in StreamListener gTempName='+typeof this.gTempName);
 										debug('imap replaceaddressbook throws: '+e, e);
 									}
 								} else {
-	debug('message has unknown file format');
+debug('message has unknown file format');
 									Services.prompt.alert(null, "AddressbooksSynchronizer", 'imap replaceaddressbook: '+e);
 									debug('imap replaceaddressbook throws: '+e, e);
 									throw('incompleteattachment');

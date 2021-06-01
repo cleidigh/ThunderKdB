@@ -82,10 +82,63 @@ ul.actions {
 ul.actions *[collapsed=true],
 .actionlinks a[collapsed=true],
 p[collapsed=true],
-div[collapsed=true]{
+div[collapsed=true],
+img[collapsed=true]
+{
   visibility: collapse;
   display :none;
 }
+
+/* sales and other important announcments */
+.importantInfo {
+  background-color: rgba(0,0,0,0.9);
+  color: white;
+}
+
+.importantInfo p, 
+.importantInfo ul, 
+.importantInfo li {
+  color: white;
+}
+
+.importantInfo p b {
+  color: yellow !important;
+  background-color: transparent;
+}
+
+#specialBox {
+  border-radius: 6px;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding: 0.1em 1em;
+}
+
+#specialBox h2 {
+  background: none !important;
+  margin-top: 16px;
+  text-shadow:
+     -1px -1px 0 #EEE,  
+      1px -1px 0 #EEE,
+      -1px 1px 0 #EEE,
+       1px 1px 0 #EEE !important;
+  
+}
+
+#standardLicense #bargainIcon,
+#specialOffer #bargainIcon {
+  background: transparent !important;
+  cursor: pointer;
+  float: right;
+  position: relative;
+  right: -2em;
+  top: -2em;
+}
+
+#specialBox #standardLicense,
+#specialBox #specialOffer {
+  background: transparent !important;
+}
+
 #purchaseLicenseListItem { /* test */
 /*
   background-color: lightyellow;

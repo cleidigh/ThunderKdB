@@ -460,7 +460,7 @@ END LICENSE BLOCK */
     ## replaced Tb account-manager module with MailServices
     ## removed some of the excessive with from settings dialog
     
-  5.5 QuickFolders Pro - WIP
+  5.5 QuickFolders Pro - 18/04/2021
     ## [issue 136] quickMove - no folder suggestions while viewing in searched list (search results / open msg in conversation)
     ## [issue 135] "/" for sub / parent folders should work for substring, not just prefix...
                    Added the possibility to ignore _ and space within folder names so that parent folders with 
@@ -470,8 +470,24 @@ END LICENSE BLOCK */
     ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving -
                    this behavior is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
                    instead Tb will open the next mail - see extensions.quickfolders.quickMove.gotoNextMsgAfterMove
+                   
+  5.5.1 QuickFolders Pro - 27/04/2021
+    ## [issue 144] Mark folders + subfolders read stops at first generation (direct child folder) mails  
+    ## Fixed tool dialog "change the order of tabs"
+    ## Changed localization to web extension method. [mx-l10n]
+    ##   removed the legacy way of localization
+    ##   conversion of all dtd and properties files to messages.json
+    ##   calling overlay localisation with i18n.js
+    ## 	 replaced bundle strings - removed all instances of GetStringFromName
+    ##   label dialog extra buttons manually after i18n.updateDocument
+    
+  5.5.2 QuickFolders Pro - 28/04/2021
+    ## [issue 148] quickMove: parent folder containing an underscore not suggested as parent
+    ## quickMove: character » is replaced with encoded unicode entry \u00BB in Create subfolder menu item (side effect 
+       from converting localization to json in 5.5.1)
+    ## In Thunderbird 89, the options menu item was not displayed in Add-ons Manager.
 
-
+  
     
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
@@ -570,7 +586,7 @@ var QuickFolders_PrepareSessionStore = function () {
 		if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
 		mailTabType.QuickFolders_SessionStore = true;
 		// overwrite persist 
-		let orgPersist = mailTabType.modes["folder"].persistTab; // we might have to use QuickFolders.Util.mailFolderTypeName instead "folder" for SeaMonkey
+		let orgPersist = mailTabType.modes["folder"].persistTab;
 		mailTabType.modes["folder"].persistTab = function(aTab) {
 			let retval = orgPersist(aTab);
 			if (retval) {
@@ -580,7 +596,7 @@ var QuickFolders_PrepareSessionStore = function () {
 			return retval; 
 		}
 		// overwrite restoreTab
-		let orgRestore = mailTabType.modes["folder"].restoreTab; // we might have to use QuickFolders.Util.mailFolderTypeName instead "folder" for SeaMonkey
+		let orgRestore = mailTabType.modes["folder"].restoreTab;
 		mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
 			orgRestore(aTabmail, aPersistedState);
       debugger;
@@ -768,7 +784,7 @@ var QuickFolders = {
         let doc = document; // in case a stand alone window is opened (e..g double clicking an eml file)
         let qfToolbar = QI.Toolbar;
         
-        if (qfToolbar) qfToolbar.style.display = 'none';
+        // if (qfToolbar) qfToolbar.style.display = 'none';
         // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
 
         let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
@@ -894,7 +910,7 @@ var QuickFolders = {
 				  cats = tab.QuickFoldersCategory;
 				
 				util.logDebug('init: setting categories to ' + cats);
-				if (tabMode == util.mailFolderTypeName || tabMode == "message") {
+				if (tabMode == "folder" || tabMode == "message") {
 					// restore categories of first tab; set to "all" if not set
 					QI.currentActiveCategories = cats;
 				}
@@ -1191,7 +1207,7 @@ var QuickFolders = {
 						addFolder(sourceUri);
 					}
 					else {
-						if (!QuickFolders.ChangeOrder.insertAtPosition(sourceUri, "", myDragPos)) {
+						if (!QuickFolders.Model.insertAtPosition(sourceUri, "", myDragPos)) {
 							//a menu item for a tab that does not exist was dropped!
 							addFolder(sourceUri);
 						}
@@ -1388,56 +1404,22 @@ var QuickFolders = {
           
 					step='1. create sub folder: ' + aName;
 					util.logDebugOptional("dragToNew", step);
-					let platform = util.PlatformVersion;
-					if (typeof DeferredTask == 'undefined' && typeof Task != 'object') {  // legacy code. Remove once Task.jsm lands in Postbox
-						aFolder.createSubfolder(uriName, msgWindow);
+          let newFolderUri = aFolder.URI + "/" + uriName,
+              encodedUri = isEncodeUri ? uriName : encodeURI(uriName); // already encoded?
+          util.getOrCreateFolder(
+            newFolderUri, 
+            Ci.nsMsgFolderFlags.Mail).then(
+              function createFolderCallback(f) {
+                let fld = f || model.getMsgFolderFromUri(newFolderUri, true);
+                moveOrCopy(fld, currentURI);
+                
+              },
+              function failedCreateFolder(ex) {
+                util.logException('getOrCreateFolder() ', ex);	
+                util.alert("Something unforeseen happened trying to create the folder, for detailed info please check error console!");
+              }
+            );
 						
-						/* a workaround against the 'jumping back to source folder' of messages on synchronized servers */
-						let server = aFolder.server.QueryInterface(Ci.nsIMsgIncomingServer),
-								timeOut = (server.type == 'imap') ? 
-													prefs.getIntPref('dragToCreateFolder.imap.delay') : 0;
-						// Ugly legacy code. Remove once Task lands in Postbox
-						let deferredMove = function deferredMove_Postbox(parentFolder) {
-							// if folder creation is successful, we can continue with calling the
-							// other drop handler that takes care of dropping the messages!
-							step = '2. find new sub folder - old platform code running on Gecko ' + platform;
-							util.logDebugOptional("dragToNew", step);
-							let newFolder = model.getMsgFolderFromUri(parentFolder.URI + "/" + isEncodeUri ? uriName : encodeURI(uriName), true);
-							
-							if (!newFolder) {
-								QuickFolders.DeferredMoveCount = QuickFolders.DeferredMoveCount ? (QuickFolders.DeferredMoveCount+1) : 1;
-								if (QuickFolders.DeferredMoveCount<25) {  // async retry
-									setTimeout( function() { deferredMove(parentFolder); }, 500);
-								}
-								else { // we give up
-									QuickFolders.DeferredMoveCount = 0;
-								}
-								return;
-							}
-							menuItem.folder = newFolder.QueryInterface(Ci.nsIMsgFolder);
-							moveOrCopy(newFolder, currentURI);
-							// check bookmarks?
-						}						
-						setTimeout( function() { deferredMove(aFolder); }, timeOut);  // timeout for 1st try
-					}
-					else { // use async task for create folder and move
-					  let newFolderUri = aFolder.URI + "/" + uriName,
-                encodedUri = isEncodeUri ? uriName : encodeURI(uriName); // already encoded?
-						util.getOrCreateFolder(
-							newFolderUri, 
-							Ci.nsMsgFolderFlags.Mail).then(
-								function createFolderCallback(f) {
-									let fld = f || model.getMsgFolderFromUri(newFolderUri, true);
-									moveOrCopy(fld, currentURI);
-									
-								},
-								function failedCreateFolder(ex) {
-									util.logException('getOrCreateFolder() ', ex);	
-									util.alert("Something unforeseen happened trying to create the folder, for detailed info please check error console!");
-								}
-							);
-						
-					}
 					return true;
 				}
 				catch(ex) {
@@ -2103,7 +2085,7 @@ var QuickFolders = {
 				case "text/unicode":  // dropping another tab on this tab inserts it before
           // let buttonURI = dropData.data;
           let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
-					QuickFolders.ChangeOrder.insertAtPosition(buttonURI, DropTarget.folder.URI, "");
+					QuickFolders.Model.insertAtPosition(buttonURI, DropTarget.folder.URI, "");
 					break;
         default:
           isPreventDefault = false;
@@ -2339,7 +2321,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 				continue; 
 			// SM seems to have "false" tabs (without any info in them) we are not interested in them
 			if (  folderUri === tabURI
-			   && util.getTabMode(info) == util.mailFolderTypeName // SM folders only, no single msg.
+			   && util.getTabMode(info) == "folder"
 			   && i !== QuickFolders.tabContainer.selectedIndex)
 			{
         util.logDebugOptional("folders.select","matched folder to open tab, switching to tab " + i);

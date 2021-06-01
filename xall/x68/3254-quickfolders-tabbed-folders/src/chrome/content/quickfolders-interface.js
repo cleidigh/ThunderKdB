@@ -12,9 +12,6 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 if (!QuickFolders.StringBundle)
 	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-if (!QuickFolders.Properties)
-	QuickFolders.Properties = QuickFolders.StringBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties")
-		.QueryInterface(Components.interfaces.nsIStringBundle);
 
 QuickFolders.Interface = {
 	PaintModeActive: false,
@@ -115,15 +112,7 @@ QuickFolders.Interface = {
 	} ,
 
 	getUIstring: function getUIstring(id, defaultString) {
-		let s;
-		try {
-			s = QuickFolders.Properties.GetStringFromName(id);
-		}
-		catch(ex) {
-			QuickFolders.Util.logException('Exception during getUIstring(' + id + ') ', ex);
-			s = defaultString;
-		}
-		return s;
+    return QuickFolders.Util.getBundleString(id, defaultString);
 	},
 
 	setBoundKeyListener: function setBoundKeyListener(b) {
@@ -413,8 +402,6 @@ QuickFolders.Interface = {
         current = !existsMsgDisplay ? null : gMessageDisplay.displayedMessage.folder;
     if (!existsMsgDisplay) {
       let txt = "No gMessageDisplay in current view";
-      if (util.Application=='Postbox')
-        txt += "\nSorry, but Postbox doesn't support navigation from single message window!";
       util.logToConsole(txt);
       return;
     }
@@ -436,14 +423,7 @@ QuickFolders.Interface = {
 			goDoCommand('button_previous');
 		if (isSingleMessage) {
       this.ensureCurrentFolder();
-    } else
-      if (QuickFolders.Util.Application == 'Postbox'
-          &&
-          QuickFolders.Interface.CurrentTabMode == 'message')
-      {
-        // See mailWindow.js messagePaneOnClick(event)
-        // msgHdrViewOverlay.js   SelectMessageContainer(aContainer);
-      }
+    }
 	} ,
 
 	onGoNextMsg: function onGoNextMsg(button, isSingleMessage) {
@@ -456,14 +436,7 @@ QuickFolders.Interface = {
     // this will eventually call folderDisplay.navigate()
 		if (isSingleMessage) {
       this.ensureCurrentFolder();
-    } else
-      if (QuickFolders.Util.Application == 'Postbox'
-          &&
-          QuickFolders.Interface.CurrentTabMode == 'message')
-      {
-        // See mailWindow.js messagePaneOnClick(event)
-        // msgHdrViewOverlay.js   SelectMessageContainer(aContainer);
-      }
+    }
 	} ,
 
 	onToggleNavigation: function onToggleNavigation(button) {
@@ -1242,27 +1215,6 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	// Postbox specific: build a string script for restoring tab categories
-  restoreSessionScript	: function restoreSessionScript() {
-    const util = QuickFolders.Util;
-		let tabmail = document.getElementById("tabmail"),
-		    tabInfoCount = util.getTabInfoLength(tabmail),
-				restoreScript = '';
-		for (let i = 0; i < tabInfoCount; i++) {
-			let info = util.getTabInfoByIndex(tabmail, i);
-			if (info && util.getTabMode(info) == util.mailFolderTypeName) {
-			  // found a folder tab, with categories
-				let cats = info.QuickFoldersCategory;
-				if (cats) {
-					// escape any single quotes in category string:
-					let escaped = cats.replace(/\\([\s\S])|(')/g, "\\$1$2");
-					restoreScript += "QuickFolders.Interface.restoreCategories(" + i + ", '" + escaped + "');";
-				}
-			}
-		}
-		return restoreScript;
-	} ,
-
 	// this is used on session restore currently only by Postbox
 	restoreCategories: function restoreCategories(tabIndex, categories) {
     const util = QuickFolders.Util;
@@ -1344,7 +1296,7 @@ QuickFolders.Interface = {
 			let tab = util.getTabInfoByIndex(tabmail, idx), // in Sm, this can return null!
 			    tabMode = util.getTabMode(tab);
 			if (tab &&
-			    (tabMode == util.mailFolderTypeName || tabMode == "message")) {
+			    (tabMode == "folder" || tabMode == "message")) {
 				tab.QuickFoldersCategory = QI.currentActiveCategories; // store list!
 				// setTabValue does not exist (yet)
 				//if (sessionStoreManager.setTabValue)
@@ -1898,7 +1850,6 @@ QuickFolders.Interface = {
 			    numUnreadInSubFolders = isFolderInterface ? (folder.getNumUnread(true) - numUnread) : 0,
 			    numTotal = isFolderInterface ? folder.getTotalMessages(false) : 0,
 			    numTotalInSubFolders = isFolderInterface ? (folder.getTotalMessages(true) - numTotal) : 0,
-          ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS,
           isShowTotals = prefs.isShowTotalCount,
           isShowUnread = prefs.isShowUnreadCount,
 			    displayNumbers = [],
@@ -1927,9 +1878,9 @@ QuickFolders.Interface = {
 			label += (useName && useName.length > 0) ? useName : (folder ? folder.name : "?? " + util.getNameFromURI(entry.uri));
 
       if (isShowTotals && entry && entry.flags)
-        isShowTotals = (entry.flags & ADVANCED_FLAGS.SUPPRESS_COUNTS) ? false : true;
+        isShowTotals = (entry.flags & util.ADVANCED_FLAGS.SUPPRESS_COUNTS) ? false : true;
       if (isShowUnread && entry && entry.flags)
-        isShowUnread = (entry.flags & ADVANCED_FLAGS.SUPPRESS_UNREAD) ? false : true;
+        isShowUnread = (entry.flags & util.ADVANCED_FLAGS.SUPPRESS_UNREAD) ? false : true;
 
 			util.logDebugOptional("folders",
 				  "unread " + (isShowUnread ? "(displayed)" : "(not displayed)") + ": " + numUnread
@@ -2199,7 +2150,7 @@ QuickFolders.Interface = {
 	styleFolderButton: function styleFolderButton(button, nUnreadTotal, nUnreadSubfolders, numTotal, specialStyle, tabColor, gotNew, icon, entry) {
 		//reset style!
 		let cssClass = '',
-        ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
+        ADVANCED_FLAGS = QuickFolders.Util.ADVANCED_FLAGS;
 		//  toolbarbutton-menubutton-button
 
 		QuickFolders.Util.logDebugOptional("buttonStyle","styleFolderButton(" + button.getAttribute("label")
@@ -2266,7 +2217,7 @@ QuickFolders.Interface = {
   addCustomStyles: function addCustomStyles(button, entry) {
 		const util = QuickFolders.Util;
     function getLabel(button) {
-      let anonChildren = util.getAnonymousNodes(document,button);
+      let anonChildren = util.getAnonymousNodes(document,button); // button  ? button.getElementsByAttribute("class", "toolbarbutton-text") : null;
       if (!anonChildren) return null;
       for (let i=0; i<anonChildren.length; i++) {
         if (anonChildren[i].classList.contains('toolbarbutton-text'))
@@ -2274,7 +2225,7 @@ QuickFolders.Interface = {
       }
       return null;
     }
-    let ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
+    let ADVANCED_FLAGS = util.ADVANCED_FLAGS;
     // custom colors
     if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS)) {
       try {
@@ -2429,7 +2380,7 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.openFolderInNewTab()");
 		if (tabmail) {
 		  let tabName = folder.name;
-      tabmail.openTab(util.mailFolderTypeName, {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
+      tabmail.openTab("folder", {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
 		}
 	} ,
 
@@ -2700,32 +2651,31 @@ QuickFolders.Interface = {
         folder = util.getPopupNode(element).folder;
     // check whether f has folder as parent
     function hasAsParent(child, p) {
-      debugger;
       if (!child.parent || !p) return false;
-      if (child.parent == p) return true;
+      if (child.parent == p) {
+        return true;
+      }
       if (p.isServer || !p.parent) return false;
-      return hasAsParent(child, p.parent);
+      // [issue 144] Mark folders + subfolders read stops at first generation (direct child folder) mails.
+      // original version used the parent of 2nd argument!
+      return hasAsParent(child.parent, p); 
     }
 
     evt.stopPropagation();
     util.logDebugOptional("interface", "QuickFolders.Interface.onMarkAllRead()");
 		try {
 			let f = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-      if (util.Application == 'Postbox')
-        f.markAllMessagesRead();
-      else {
-        f.markAllMessagesRead(msgWindow); // msgWindow  - global
-        if (recursive) {  // [issue 3] Mark messages READ in folder and all its subfolders
-          // iterate all folders and mark all children as read:
-          for (let folder of util.allFoldersIterator(false)) {
-            // check unread
-            if (folder.getNumUnread(false) && hasAsParent(folder, f)) {
-              setTimeout(
-                function() { 
-                  folder.markAllMessagesRead(msgWindow);  // msgWindow  - global
-                }
-              )
-            }
+      f.markAllMessagesRead(msgWindow); // msgWindow  - global
+      if (recursive) {  // [issue 3] Mark messages READ in folder and all its subfolders
+        // iterate all folders and mark all children as read:
+        for (let folder of util.allFoldersIterator(false)) {
+          // check unread
+          if (folder.getNumUnread(false) && hasAsParent(folder, f)) {
+            setTimeout(
+              function() { 
+                folder.markAllMessagesRead(msgWindow);  // msgWindow  - global
+              }
+            )
           }
         }
       }
@@ -2744,15 +2694,7 @@ QuickFolders.Interface = {
 		    result = null;
 
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteFolder()");
-
-		if (((util.Application == 'Postbox') || (util.Application == 'SeaMonkey'))
-			  && typeof MsgDeleteFolder === 'function'
-			 ) {
-			QuickFolders_MySelectFolder(folderButton.folder.URI);
-			MsgDeleteFolder();
-		}
-		else
-			this.globalTreeController.deleteFolder(folderButton.folder);
+    this.globalTreeController.deleteFolder(folderButton.folder);
 		if (parent)
 			QuickFolders_MySelectFolder(parent.URI)
 
@@ -2784,14 +2726,8 @@ QuickFolders.Interface = {
 		QuickFolders.compactLastFolderSize = folder.sizeOnDisk;
 		QuickFolders.compactLastFolderUri = folder.URI;
 		QuickFolders.compactReportCommandType = 'emptyTrash';
-
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
-			QuickFolders_MySelectFolder(folder.URI);
-			MsgEmptyTrash();
-		}
-		else {
-			this.globalTreeController.emptyTrash(folder);
-		}
+    this.globalTreeController.emptyTrash(folder);
+    
 		QuickFolders.compactReportFolderCompacted = true; // activates up onIntPropertyChanged event listener
 	} ,
 
@@ -2799,24 +2735,8 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyJunk()");
-		if (typeof GetSelectedFolderURI === 'function') {
-		  // old Postbox Code
-			let getSelFunction;
-			try {
-			  // functions from folderPaneContext
-			  // Postbox hack: we pretend the tree folder was selected by temporarily replacing GetSelectedFolderURI
-			  getSelFunction = GetSelectedFolderURI;
-				GetSelectedFolderURI = function() { return folder.URI; };
-				deleteAllInFolder('emptyJunk');
-			}
-			catch(ex) { util.logException('Exception in onEmptyJunk ', ex);  };
-			if (getSelFunction)
-				GetSelectedFolderURI = getSelFunction;
-		}
-		else {
-			this.globalTreeController.emptyJunk(folder);
-		  this.compactFolder(folder, 'emptyJunk');
-		}
+    this.globalTreeController.emptyJunk(folder);
+    this.compactFolder(folder, 'emptyJunk');
 	} ,
 
 	onDeleteJunk: function onDeleteJunk(element) {
@@ -2833,12 +2753,7 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEditVirtualFolder()");
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
-			QuickFolders_MySelectFolder(folder.URI);
-			MsgFolderProperties();
-		}
-		else
-			this.globalTreeController.editVirtualFolder(folder);
+    this.globalTreeController.editVirtualFolder(folder);
 	} ,
 
 	onFolderProperties: function onFolderProperties(element) {
@@ -2852,12 +2767,7 @@ QuickFolders.Interface = {
 			return;
 		}
 
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
-			QuickFolders_MySelectFolder(folder.URI);
-			MsgFolderProperties();
-		}
-		else
-			this.globalTreeController.editFolder(null,folder);
+    this.globalTreeController.editFolder(null,folder);
 	} ,
 
 	openExternal: function openExternal(aFile) {
@@ -2946,19 +2856,8 @@ QuickFolders.Interface = {
 				||
 				folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_INBOX))
 		{
-			if (typeof GetNewMsgs != "undefined") { // Tb, Sm
-   			if (folder.server.type != 'none')
-				  GetNewMsgs(folder.server, folder);
-			}
-			else if (typeof MsgGetMessage != "undefined") {  // Postbox
-			  let getM = GetSelectedMsgFolders;
-				try {
-				  GetSelectedMsgFolders = function() { let msg=[]; msg.push(folder); return msg; };
-					GetFolderMessages();
-				}
-				catch(ex) {}
-				GetSelectedMsgFolders = getM;
-			}
+      if (folder.server.type != 'none')
+        GetNewMsgs(folder.server, folder);
 		}
 	} ,
 
@@ -3050,22 +2949,13 @@ QuickFolders.Interface = {
 		if (util.getOrCreateFolder) {
 			QI.onCreateInstantFolder(folder);  // async function
 		}
-		else { // legacy code - uses "classic" dialog.
-			if ((util.Application == 'SeaMonkey') ||
-          (util.Application == 'Postbox' && typeof MsgNewFolder === 'function'))
-			{
-				QuickFolders_MySelectFolder(folder.URI);
-				MsgNewFolder(NewFolder); // NewFolder() = global function - doesn't exist in Postbox!
-			}
-			else {
-				QI.globalTreeController.newFolder(folder);
-			}
+		else { 
+      QI.globalTreeController.newFolder(folder);
 		}
 	},
 
 	// * function for creating a new folder under a given parent
 	// see http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2359
-	// currently not used in Postbox build because it requires Tasc.async
 	onCreateInstantFolder: function onCreateInstantFolder(parentFolder, folderName) {
 		const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
@@ -3290,9 +3180,7 @@ QuickFolders.Interface = {
       }
     }
 
-		if (util.Application!="Postbox"
-		    &&
-		    prefs.getBoolPref("folderMenu.emptyJunk"))
+		if (prefs.getBoolPref("folderMenu.emptyJunk"))
 		{
 			// EmptyJunk
 			if (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_JUNK) {
@@ -4482,7 +4370,7 @@ QuickFolders.Interface = {
 			if (isCtrlKey) {
 				let tabmail = document.getElementById("tabmail");
 				if (tabmail) {
-          tabmail.openTab(util.mailFolderTypeName, {folder: folderUri, messagePaneVisible:true } );
+          tabmail.openTab("folder", {folder: folderUri, messagePaneVisible:true } );
 				}
 			}
 		}
@@ -4674,6 +4562,10 @@ QuickFolders.Interface = {
 
         // [issue 135] allow in-string search for parents using delimiters: - _ . and space!
         let folderNameMatches = f.prettyName.toLowerCase().split(/[_ ]/);
+        // [issue 148] splitting prevents full name to be matched!
+        if (folderNameMatches.length>1) {
+          folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
+        }
         if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>1)) {
 					// 1st (top level) match
 					if (!directParent) directParent = f;
@@ -4699,6 +4591,10 @@ QuickFolders.Interface = {
 				maxLevel--;
         // [issue 135] allow in-string search for children using delimiters: - _ . and space!
         let folderNameMatches = f.prettyName.toLowerCase().split(/[-_. ]/);
+        // [issue 148] splitting prevents full name to be matched!
+        if (folderNameMatches.length>1) {
+          folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
+        }
 				if (folderNameMatches.some(a => a.startsWith(search))) {   
 					if (!directParent) directParent = folder;
 					if (maxLevel == 0) {
@@ -4860,11 +4756,8 @@ QuickFolders.Interface = {
 		}
 		util.logDebugOptional("interface.findFolder", "built menu.");
 
-		// special commands: if slash was entered, allow creating subfolders. Exclude _old_ Postbox.
-		if (parentPos>0 &&
-		    (util.Application!='Postbox' ||
-				 util.Application=='Postbox' && typeof Task === 'object')
-				) {
+		// special commands: if slash was entered, allow creating subfolders.
+		if (parentPos>0) {
 			util.logDebugOptional("interface.findFolder", "/ entered, build create subfolder entries.");
 			// [Bug 26283] add matches from quickfolders (if named differently)
 			let isFound = false;
@@ -4883,7 +4776,7 @@ QuickFolders.Interface = {
 				if (matchPos == 0 && prefs.isDebugOption('quickMove')) debugger;
 				if (matchPos == 0
 				   &&
-				   !parents.some(function(p) { return p.URI == folderEntry.uri; } )) {  // function to replace p => p.uri == folderEntry.uri - Postbox can't understand this.
+				   !parents.some(function(p) { return p.URI == folderEntry.uri; } )) {  // function to replace p => p.uri == folderEntry.uri 
 					let nsIfolder = model.getMsgFolderFromUri(folderEntry.uri, false); // determine the real folder name
 					// this folder does not exist (under its real name) - add it!
 					nsIfolder.setStringProperty("isQuickFolder", true); // add this flag
@@ -5661,7 +5554,6 @@ QuickFolders.Interface = {
         prefs = QuickFolders.Preferences,
 				QI = QuickFolders.Interface,
 				util = QuickFolders.Util,
-				options = QuickFolders.Options,
 		    ssPalettes;
 		while (!parent.folder && parent.parentNode) {
 			parent=parent.parentNode;
@@ -5674,6 +5566,7 @@ QuickFolders.Interface = {
 				default:  // 'QuickFolders-Options-PalettePopup' etc.
 				  if (parent.id.indexOf('QuickFolders-Options-')<0)
 						continue;  //
+          var options = QuickFolders.Options; // should only work when called from the options menu!
 					// options dialog case: parent is menupopup
 					//   showPopup should have set this as 'targetNode'
 					let targetNode = parent.targetNode;
@@ -5932,7 +5825,7 @@ QuickFolders.Interface = {
 			    paletteEntry = prefs.getIntPref('style.DragOver.paletteEntry'),
 			    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry,
 			    dragOverGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
-			// for some reason this one is completely ignored by SeaMonkey and Postbox
+			
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.dragover', 'background-image', dragOverGradient, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.dragover','color', dragOverColor, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '[buttonover="true"]','color', dragOverColor, true);
@@ -6433,7 +6326,7 @@ QuickFolders.Interface = {
           + "visible = " + visible);
         if (selector == 'singleMailTab' && tabMode =='message'
             ||
-            selector == '' // && tabMode == util.mailFolderTypeName
+            selector == '' // && tabMode == "folder"
             ||
             selector == 'messageWindow'
            ) {
@@ -6888,393 +6781,6 @@ QuickFolders.Interface = {
 
 	}	,
 
-	storeConfig: function qf_storeConfig(preferences, prefMap) {
-		// see options.copyFolderEntries
-    const Cc = Components.classes,
-          Ci = Components.interfaces,
-		      service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
-					util = QuickFolders.Util,
-					prefs = QuickFolders.Preferences,
-					sFolderString =
-					  util.PlatformVersion < 57.0 ?
-					  service.getComplexValue("QuickFolders.folders", Ci.nsISupportsString).data :
-						service.getStringPref("QuickFolders.folders");
-		let obj = JSON.parse(sFolderString),
-        storedObj = { folders: obj }; // wrap into "folders" subobject, so we can add more settings
-
-		// add more settings here! (should we include license string?)
-		if (preferences) {
-			let prefInfos = preferences.getAll();
-			storedObj.general = [];
-			storedObj.advanced = [];
-			storedObj.layout = [];
-			storedObj.userStyle = [];
-			let isLicense =  (util.Licenser.isExpired || util.Licenser.isValidated);
-			if (isLicense)
-				storedObj.premium = [];
-      util.logDebug("Storing configuration...")
-
-			for (let info of prefInfos) {
-        let originId = prefMap[info.id];
-				let node = { key: info.id, val: info.value, originalId: originId }
-        if (originId) {
-          switch (originId.substr(0,5)) {
-            case 'qfpg-':  // general
-              storedObj.general.push(node);
-              break;
-            case 'qfpa-':  // advanced
-              storedObj.advanced.push(node);
-              break;
-            case 'qfpl-':  // layout
-              storedObj.layout.push(node);
-              break;
-            case 'qfpp-':  // premium - make sure not to import the License without confirmation!
-              if (isLicense)
-                storedObj.premium.push(node);
-              break;
-            default:
-              util.logDebug("Not storing - unknown preference category: " + node.key);
-          }
-        }
-        else {
-          util.logDebug("Not found - map entry for " + info.id);
-        }
-			}
-			// now save all color pickers.
-			let elements = document.getElementsByTagName('html:input');
-			for (let i=0; i<elements.length; i++) {
-				let element = elements[i];
-				if (element.getAttribute('type')=='color') {
-					let node = { elementInfo: element.getAttribute('elementInfo'), val: element.value };
-					storedObj.userStyle.push(node);
-				}
-			}
-      
-      // [issue 115] store selection for background dropdown
-      const bgKey = 'currentFolderBar.background.selection';
-      let backgroundSelection = prefs.getStringPref(bgKey);
-      storedObj.layout.push({
-        key: 'extensions.quickfolders.' + bgKey, 
-        val: backgroundSelection, 
-        originalId: 'qfpa-CurrentFolder-Selection'} 
-      );
-      
-		}
-
-		let prettifiedJson = JSON.stringify(storedObj, null, '  ');
-		this.fileConfig('save', prettifiedJson, 'QuickFolders-Config');
-    util.logDebug("Configuration stored.")
-	} ,
-
-	loadConfig: function qf_loadConfig(preferences) {
-    const prefs = QuickFolders.Preferences,
-          options = QuickFolders.Options,
-				  util = QuickFolders.Util;
-
-		function changePref(pref) {
-			let p = preferences.get(pref.key);
-			if (p) {
-				if (p._value != pref.val) {
-          // [issue 115] fix restoring of config values
-					util.logDebug("Changing [" + p.id + "] " + pref.originalId + " : " + pref.val);
-					p._value = pref.val;
-          let e = foundElements[pref.key];
-          if (e) {
-            switch(e.tagName) {
-              case 'checkbox':
-                e.checked = pref.val;
-                if (e.getAttribute('oncommand'))
-                  e.dispatchEvent(new Event("command"));
-                break;
-              case 'textbox': // legacy
-              case 'html:input':
-              case 'html:textarea':
-                e.value = pref.val;
-                if (e.id == "currentFolderBackground") {
-                  options.setCurrentToolbarBackgroundCustom();
-                }
-                break;
-              case 'menulist':
-                e.selectedIndex = pref.val;
-                let menuitem = e.selectedItem;
-                if (menuitem && menuitem.getAttribute('oncommand'))
-                  menuitem.dispatchEvent(new Event("command"));
-                break;
-              case 'radiogroup':
-                e.value = pref.val;
-                if (e.getAttribute('oncommand'))
-                  e.dispatchEvent(new Event("command"));
-              default:
-                debugger;
-                break;
-            }
-          }
-				}
-			}
-      else {
-        switch(pref.key) {
-          case 'extensions.quickfolders.currentFolderBar.background.selection':
-            if (pref.val && prefs.getStringPref(pref.key) != pref.val) {
-              options.setCurrentToolbarBackground(pref.val, true);
-            }
-            break;
-          default:
-            util.logDebug("loadConfig - unhandled preference: " + pref.key);
-        }
-      }
-		}
-    function readData(dataString) {
-			const Cc = Components.classes,
-						Ci = Components.interfaces,
-						service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
-            QI = QuickFolders.Interface;
-			try {
-				// removes prettyfication:
-				let config = dataString.replace(/\r?\n|\r/, ''),
-						data = JSON.parse(config),
-				    entries = data.folders,
-            isLayoutModified = false,
-						question = util.getBundleString('qf.prompt.restoreFolders',
-							"This will delete all QuickFolders tabs and replace with the items from the file." +
-							"\n{0} entries were read." +
-							"\nReplace tabs?");
-				if (prefs.getBoolPref('restoreConfig.tabs')
-				   && Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
-					for (let ent of entries) {
-						if (typeof ent.tabColor ==='undefined' || ent.tabColor ==='undefined')
-							ent.tabColor = 0;
-						// default the name!!
-						if (!ent.name) {
-							// retrieve the name from the folder uri (prettyName)
-							let f = QuickFolders.Model.getMsgFolderFromUri(ent.uri, false);
-							if (f)
-								ent.name = f.prettyName;
-							else
-								ent.name = util.getNameFromURI(ent.uri);
-						}
-					}
-					if (!entries.length)
-						entries=[];
-					// the following function calls this.updateMainWindow() which calls this.updateFolders()
-					util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(entries);
-					let invalidCount = 0,
-					    modelEntries = util.getMail3PaneWindow().QuickFolders.Model.selectedFolders;
-					// updateFolders() will append "invalid" property into entry of main model if folder URL cannot be found
-					for (let i=0; i<modelEntries.length; i++) {
-						if (modelEntries[i].invalid)
-							invalidCount++;
-					}
-
-					question = util.getBundleString('qf.prompt.loadFolders.confirm', "Accept the loaded Tabs?");
-					if (invalidCount) {
-						let wrn =
-						  util.getBundleString('qfInvalidTabCount', "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command.");
-						question = wrn.replace("{0}", invalidCount) + "\n" + question;
-					}
-					if (Services.prompt.confirm(window, "QuickFolders", question)) {
-						// store
-						prefs.storeFolderEntries(entries);
-					}
-					else {
-						// roll back
-						util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());
-					}
-					delete data.folders; // remove this part to move on to the rest of settings
-				}
-        // ====================================================================
-        // [issue 107] Restoring general / layout Settings only works if option for restoring folders also active
-        if (prefs.getBoolPref('restoreConfig.general') && data.general) {
-          for (let i=0; i<data.general.length; i++) {
-            changePref(data.general[i]);
-          }
-          isLayoutModified = true;
-        }
-        if (prefs.getBoolPref('restoreConfig.layout')) {
-          if (data.layout) {
-            for (let i=0; i<data.layout.length; i++) {
-              changePref(data.layout[i]);
-            }
-            isLayoutModified = true;
-          }
-          if (data.advanced) {
-            for (let i=0; i<data.advanced.length; i++) {
-              changePref(data.advanced[i]);
-            }
-          }
-
-          if (data.premium) {
-            for (let i=0; i<data.premium.length; i++) {
-              changePref(data.premium[i]);
-            }
-          }
-          // load custom colors and restore color pickers
-          // options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors')
-          if (data.userStyle) {
-            let elements = document.getElementsByTagName('html:input');
-            for (let i=0; i<elements.length; i++) {
-              let element = elements[i];
-              try {
-                if (element.getAttribute('type')=='color') {
-                  let elementInfo = element.getAttribute('elementInfo');
-                  // find the matching entry from json file
-                  for(let j=0; j<data.userStyle.length; j++) {
-                    let jnode = data.userStyle[j];
-                    if (jnode.elementInfo == elementInfo) {
-                      // only change value if nevessary
-                      if (element.value != jnode.val) {
-                        element.value = jnode.val; // change color picker itself
-                        util.logDebug("Changing [" + elementInfo + "] : " + jnode.val);
-                        let info = jnode.elementInfo.split('.');
-                        if (info.length == 2)
-                          options.styleUpdate(
-                            info[0],   // element name e..g. ActiveTab
-                            info[1],   // element style (color / background-color)
-                            jnode.val,
-                            element.getAttribute('previewLabel')); // preview tab / label
-                      }
-                      break;
-                    }
-                  }
-                  // QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue)
-                }
-              }
-              catch(ex) {
-                util.logException("Loading layout setting[" + i + "] (color picker " + element.id + ") failed:", ex);
-              }
-            }
-          }
-
-        }
-        if (isLayoutModified) { // instant visual feedback
-          // QI.updateMainWindow(true);
-          QI.updateObserver(); //  update the main window layout
-        }
-        
-			}
-			catch (ex) {
-				util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
-				Services.prompt.alert(null,"QuickFolders", util.getBundleString('qf.alert.pasteFolders.formatErr', "Could not create tabs. See error console for more detail."));
-			}
-		}
-    // find all controls with bound preferences
-    let myprefElements = document.querySelectorAll("[preference]"),
-		    foundElements = {};
-		for (let myprefElement of myprefElements) {
-      let prefName = myprefElement.getAttribute("preference");
-			foundElements[prefName] = myprefElement;
-		}	
-		this.fileConfig('load', null, null, readData); // load does the reading itself?
-	} ,
-
-	fileConfig: function qf_fileConfig(mode, jsonData, fname, readFunction) {
-		const Cc = Components.classes,
-          Ci = Components.interfaces,
-          util = QuickFolders.Util,
-					prefs = QuickFolders.Preferences,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
-		util.popupProFeature(mode + "_config"); // save_config, load_config
-    let filterText,
-		    fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
-        fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
-
-		let dPath = prefs.getStringPref('files.path');
-		if (dPath) {
-			let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-			defaultPath.initWithPath(dPath);
-			if (defaultPath.exists()) { // avoid crashes if the folder has been deleted
-				fp.displayDirectory = defaultPath; // nsILocalFile
-				util.logDebug("Setting default path for filepicker: " + dPath);
-			}
-			else {
-				util.logDebug("fileFilters()\nPath does not exist: " + dPath);
-			}
-		}
-		fp.init(window, "", fileOpenMode); // second parameter: prompt
-    filterText = util.getBundleString("qf.fpJsonFile","JSON File");
-    fp.appendFilter(filterText, "*.json");
-    fp.defaultExtension = 'json';
-    if (mode == 'save') {
-			let fileName = fname;
-/*
-			if (isDateStamp) {
-				let d = new Date(),
-				    timeStamp = d.getFullYear() + "-" + twoDigs(d.getMonth()+1) + "-" + twoDigs(d.getDate()) + "_" + twoDigs(d.getHours()) + "-" + twoDigs(d.getMinutes());
-				fileName = fname + "_" + timeStamp;
-			}
-			*/
-      fp.defaultString = fileName + '.json';
-    }
-
-    let fpCallback = function fpCallback_FilePicker(aResult) {
-      if (aResult == Ci.nsIFilePicker.returnOK || aResult == Ci.nsIFilePicker.returnReplace) {
-        if (fp.file) {
-          let path = fp.file.path;
-					// Store last Path
-					util.logDebug("File Picker Path: " + path);
-					let lastSlash = path.lastIndexOf("/");
-					if (lastSlash < 0) lastSlash = path.lastIndexOf("\\");
-					let lastPath = path.substr(0, lastSlash);
-					util.logDebug("Storing Path: " + lastPath);
-					prefs.setStringPref('files.path', lastPath);
-
-					const {OS} = (typeof ChromeUtils.import == "undefined") ?
-						Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
-
-          //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
-          switch (mode) {
-            case 'load':
-              let promiseRead = OS.File.read(path, { encoding: "utf-8" }); //  returns Uint8Array
-              promiseRead.then(
-                function readSuccess(data) {
-                  readFunction(data);
-                },
-                function readFailed(ex) {
-                  util.logDebug ('read() - Failure: ' + ex);
-                }
-              )
-              break;
-            case 'save':
-              // if (aResult == Ci.nsIFilePicker.returnReplace)
-              let promiseDelete = OS.File.remove(path);
-              // defined 2 functions
-              util.logDebug ('Setting up promise Delete');
-              promiseDelete.then (
-                function saveJSON() {
-                  util.logDebug ('saveJSON()…');
-                  // force appending correct file extension!
-                  if (!path.toLowerCase().endsWith('.json'))
-                    path += '.json';
-                  let promiseWrite = OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
-                  promiseWrite.then(
-                    function saveSuccess(byteCount) {
-                      util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
-                    },
-                    function saveReject(fileError) {  // OS.File.Error
-                      util.logDebug ('bookmarks.save error:' + fileError);
-                    }
-                  );
-                },
-                function failDelete(fileError) {
-                  util.logDebug ('OS.File.remove failed for reason:' + fileError);
-                }
-              );
-              break;
-          }
-        }
-      }
-    }
-
-		if (fp.open)
-			fp.open(fpCallback);
-  	else { // Postbox
-		  fpCallback(fp.show());
-  	}
-
-    return true;
- 		
-	},
-  
   // moved from options.js - this should update the main UI!
   updateObserver: function updateObserver() {
 		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);

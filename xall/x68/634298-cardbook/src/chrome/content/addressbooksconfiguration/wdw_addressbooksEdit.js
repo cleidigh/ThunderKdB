@@ -17,7 +17,7 @@ function convertNodes () {
 };
 
 function convertVCards () {
-	Services.tm.currentThread.dispatch({ run: function() {
+	Services.tm.currentThread.dispatch({ run: async function() {
 		let myTopic = "cardsConverted";
 		let myActionId = cardbookActions.startAction(myTopic);
 		let myTargetVersion = cardbookRepository.cardbookPreferences.getVCardVersion(window.arguments[0].dirPrefId);
@@ -30,7 +30,7 @@ function convertVCards () {
 			let myTempCard = new cardbookCardParser();
 			cardbookRepository.cardbookUtils.cloneCard(card, myTempCard);
 			if (cardbookRepository.cardbookUtils.convertVCard(myTempCard, myTargetName, myTargetVersion, myNewDateFormat, myNewDateFormat)) {
-				cardbookRepository.saveCardFromUpdate(card, myTempCard, myActionId, false);
+				await cardbookRepository.saveCardFromUpdate(card, myTempCard, myActionId, false);
 				counter++;
 			}
 		}

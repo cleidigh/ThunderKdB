@@ -30,13 +30,6 @@ OWAAccount.kFieldMap = {
   StartDate: "TaskStartDate",
 };
 
-/// Converts Lightning participation status into OWA response values.
-OWAAccount.kResponseMap = {
-  DECLINED: "Decline",
-  TENTATIVE: "Tentative",
-  ACCEPTED: "Accept",
-};
-
 /**
  * Synchronise calendar or task items from Exchange.
  *
@@ -185,6 +178,9 @@ OWAAccount.prototype.SyncEvents = async function(aDelegate, aFolder, aSyncState)
             FieldURI: "item:DateTimeCreated",
           }, {
             __type: "PropertyUri:#Exchange",
+            FieldURI: "item:Body",
+          }, {
+            __type: "PropertyUri:#Exchange",
             FieldURI: "item:Sensitivity",
           }, {
             __type: "PropertyUri:#Exchange",
@@ -207,6 +203,9 @@ OWAAccount.prototype.SyncEvents = async function(aDelegate, aFolder, aSyncState)
           }, {
             __type: "PropertyUri:#Exchange",
             FieldURI: "calendar:IsAllDayEvent",
+          }, {
+            __type: "PropertyUri:#Exchange",
+            FieldURI: "calendar:EnhancedLocation",
           }, {
             __type: "PropertyUri:#Exchange",
             FieldURI: "calendar:IsCancelled",
@@ -240,9 +239,6 @@ OWAAccount.prototype.SyncEvents = async function(aDelegate, aFolder, aSyncState)
           }, {
             __type: "PropertyUri:#Exchange",
             FieldURI: "calendar:EndTimeZone",
-          }, {
-            __type: "PropertyUri:#Exchange",
-            FieldURI: "calendar:EnhancedLocation",
           }, {
             __type: "PropertyUri:#Exchange",
             FieldURI: "task:CompleteDate",
@@ -355,7 +351,8 @@ OWAAccount.ConvertEvent = function(aEvent) {
     reminder: aEvent.ReminderIsSet ? aEvent.ReminderMinutesBeforeStart * -60 : null,
     location: aEvent.Location && aEvent.Location.DisplayName,
     categories: aEvent.Categories || [],
-    description: aEvent.TextBody && aEvent.TextBody.Value,
+    descriptionText: aEvent.TextBody && aEvent.TextBody.Value,
+    descriptionHTML: aEvent.Body && aEvent.Body.BodyType == "HTML" && aEvent.Body.Value || null,
     recurrenceId: aEvent.RecurrenceId,
     recurrence: OWAAccount.ConvertRecurrence(aEvent.Recurrence),
     deletions: aEvent.DeletedOccurrences ? aEvent.DeletedOccurrences.map(occurrence => occurrence.Start) : [],
@@ -479,8 +476,8 @@ OWAAccount.ConvertToOWA = function(aFolder, aEvent) {
       Subject: aEvent.title,
       Body: {
         __type: "BodyContentType:#Exchange",
-        BodyType: "Text",
-        Value: aEvent.description,
+        BodyType: aEvent.descriptionHTML ? "HTML" : "Text",
+        Value: aEvent.descriptionHTML || aEvent.descriptionText,
       },
       Sensitivity: aEvent.privacy == "CONFIDENTIAL" ? "Confidential" : aEvent.privacy == "PRIVATE" ? "Private" : "Normal",
       Categories: aEvent.categories,
@@ -499,8 +496,8 @@ OWAAccount.ConvertToOWA = function(aFolder, aEvent) {
     Subject: aEvent.title,
     Body: {
       __type: "BodyContentType:#Exchange",
-      BodyType: "Text",
-      Value: aEvent.description,
+      BodyType: aEvent.descriptionHTML ? "HTML" : "Text",
+      Value: aEvent.descriptionHTML || aEvent.descriptionText,
     },
     Sensitivity: aEvent.privacy == "CONFIDENTIAL" ? "Confidential" : aEvent.privacy == "PRIVATE" ? "Private" : "Normal",
     Categories: aEvent.categories,
@@ -552,10 +549,6 @@ OWAAccount.ConvertToOWA = function(aFolder, aEvent) {
  *   itemid {String} The id of the new item
  */
 OWAAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
-  let invitation = await this.FindInvitationToRespond(aEvent);
-  if (invitation) {
-    return invitation;
-  }
   let create = {
     __type: "CreateItemJsonRequest:#Exchange",
     Header: {
@@ -619,18 +612,14 @@ OWAAccount.prototype.CreateEvent = async function(aFolder, aEvent, aNotify) {
  * Look for an invitation for a given meeting, to avoid creating a duplicate.
  * This can happen if the event hasn't been synchronised yet.
  *
- * @param aEvent {Object}  The meeting
- * @returns      {Object?} The invitation
+ * @param aUID      {String}  The UID of the event
+ * @param aResponse {String}  The response to be saved
+ * @param aNotify   {Boolean} Whether to notify the organiser
+ * @returns         {Object?} The invitation
  */
-OWAAccount.prototype.FindInvitationToRespond = async function(aEvent) {
-  let responseTag = OWAAccount.kResponseMap[aEvent.participation];
-  if (!responseTag) {
-    return null;
-  }
+OWAAccount.prototype.RespondToInboxInvitation = async function(aUID, aResponse, aNotify) {
+  let GlobalObjectId = btoa(aUID.replace(/../g, hex => String.fromCharCode(parseInt(hex, 16)))); // UID is hex encoded but GlobalObjectId uses Base 64 encoding
   let itemId = await browser.calendarProvider.getCurrentInvitation();
-  if (!itemId) {
-    return null;
-  }
   let fetch = {
     __type: "GetItemJsonRequest:#Exchange",
     Header: {
@@ -643,8 +632,10 @@ OWAAccount.prototype.FindInvitationToRespond = async function(aEvent) {
         __type: "ItemResponseShape:#Exchange",
         BaseShape: "IdOnly",
         AdditionalProperties: [{
-          __type: "PropertyUri:#Exchange",
-          FieldURI: "meeting:AssociatedCalendarItemId",
+          __type: "ExtendedPropertyUri:#Exchange",
+          DistinguishedPropertySetId: "Meeting",
+          PropertyId: 0x23,
+          PropertyType: "Binary",
         }],
       },
       ItemIds: [{
@@ -654,21 +645,10 @@ OWAAccount.prototype.FindInvitationToRespond = async function(aEvent) {
     },
   };
   let result = await this.CallService("GetItem", fetch); // owa.js
-  if (!result.Items || !result.Items[0].AssociatedCalendarItemId) {
-    return null;
+  if (result.Items && result.Items[0].ExtendedProperty && result.Items[0].ExtendedProperty[0].Value == GlobalObjectId) {
+    return this.RespondToInvitation(itemId, aResponse, aNotify);
   }
-  itemId = result.Items[0].AssociatedCalendarItemId.Id;
-  fetch.Body.ItemIds[0].Id = itemId;
-  fetch.Body.ItemShape.AdditionalProperties[0].FieldURI = "calendar:UID";
-  result = await this.CallService("GetItem", fetch); // owa.js
-  if (!result.Items || result.Items[0].UID != aEvent.uid) {
-    return null;
-  }
-  await this.RespondToInvitation(itemId, responseTag, false);
-  return {
-    uid: aEvent.uid,
-    itemid: itemId,
-  };
+  throw new Error("Couldn't find invitation to respond!"); // XXX
 }
 
 /**
@@ -729,7 +709,7 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
   }
   let updates = [];
   for (let key in OWAAccount.kFieldMap) {
-    if (JSON.stringify(newEvent[key]) != JSON.stringify(oldEvent[key])) {
+    if (!deepCompareUnordered(newEvent[key], oldEvent[key])) {
       let field = {
         __type: newEvent[key] != null ? "SetItemField:#Exchange" : "DeleteItemField:#Exchange",
         Path: {
@@ -754,6 +734,9 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
     __type: "ItemId:#Exchange",
     Id: aNewEvent.itemid,
   };
+  if (!updates.length) {
+    return;
+  }
   let request = {
     __type: "UpdateItemJsonRequest:#Exchange",
     Header: {
@@ -780,18 +763,33 @@ OWAAccount.prototype.UpdateEvent = async function(aFolder, aNewEvent, aOldEvent,
       SuppressReadReceipts: true,
     },
   };
-  let response = await this.CallService("UpdateItem", request); // owa.js
-  let responseTag = OWAAccount.kResponseMap[aNewEvent.participation];
-  if (responseTag) {
-    // If this is a recurring instance, we have to notify because
-    // Lightning won't tell us the original master recurrence later.
-    let isRecurrence = aNewEvent.index > 0;
-    await this.RespondToInvitation(response.Items[0].ItemId.Id, responseTag, isRecurrence);
-  }
+  await this.CallService("UpdateItem", request); // owa.js
 }
 
 /**
  * Update the participation for an invitation
+ *
+ * @param aEventId      {String}  The id of the invitation to update
+ * @param aUID          {String}  The UID of the invitation to update
+ * @param aParticipaton {String}  The new participation status
+ * @param aIsRecurrence {Boolean} Whether this is a recurrence instance
+ *
+ * Due to Lightning limitations, we always have to notify for instances.
+ */
+OWAAccount.prototype.UpdateParticipation = async function(aEventId, aUID, aParticipation, aIsRecurrence) {
+  let response = kResponseMap[aParticipation];
+  let result = aEventId ?
+    await this.RespondToInvitation(aEventId, response, aIsRecurrence) :
+    await this.RespondToInboxInvitation(aUID, response, aIsRecurrence);
+  // For some reason OWA returns null values in the Items array.
+  return result && {
+    uid: aUID,
+    itemid: result.Items.find(item => item).ItemId.Id,
+  };
+}
+
+/**
+ * Notify the organiser of an invitation
  *
  * @param aEventId      {String}  The id of the invitation to update
  * @param aIsRecurrence {Boolean} Whether this is a recurrence instance
@@ -801,45 +799,64 @@ OWAAccount.prototype.NotifyParticipation = async function(aEventId, aParticipati
   if (aIsRecurrence) {
     return; // We don't support this after the fact, due to Lightning weirdness.
   }
-  let responseTag = OWAAccount.kResponseMap[aParticipation];
-  if (!responseTag || responseTag == "Decline") {
+  let response = kResponseMap[aParticipation];
+  if (!response || response == "Decline") {
     // We don't support this after the fact, because the item is already gone.
     return;
   }
-  await this.RespondToInvitation(aEventId, responseTag, true);
+  await this.RespondToInvitation(aEventId, response, true);
 }
 
 /**
  * Respond to an invitation
  *
- * @param aEventId    {String}  The invitation to be responded to
- * @param aReponse    {String}  The response to be made
- * @param aSend       {Boolean} Whether to notify the organiser
+ * @param aItemId   {String}  The invitation to be responded to
+ * @param aResponse {String}  The response to be made
+ * @param aNotify   {Boolean} Whether to notify the organiser
  */
-OWAAccount.prototype.RespondToInvitation = async function(aEventId, aResponse, aSend)
+OWAAccount.prototype.RespondToInvitation = async function(aItemId, aResponse, aNotify)
 {
   if (aResponse == "Decline") {
     // We have to notify because we won't have a second chance.
-    aSend = true;
+    aNotify = true;
   }
-  let respond = {
-    __type: "RespondToCalendarEventJsonRequest:#Exchange",
+  // We use this in preference to RespondToMeetingMessage because it
+  // returns the calendar event. (Both calls delete the message from
+  // the inbox, so we can't retrieve the event that way.)
+  let create = {
+    __type: "CreateItemJsonRequest:#Exchange",
     Header: {
       __type: "JsonRequestHeaders:#Exchange",
       RequestServerVersion: "Exchange2013",
     },
     Body: {
-      __type: "RespondToCalendarEventRequest:#Exchange",
-      EventId: {
-        __type: "ItemId:#Exchange",
-        Id: aEventId,
-        // XXX is the ChangeKey needed here?
-      },
-      Response: aResponse,
-      SendResponse: aSend,
+      __type: "CreateItemRequest:#Exchange",
+      Items: [{
+        __type: aResponse + ":#Exchange",
+        ReferenceItemId: {
+          __type: "ItemId:#Exchange",
+          Id: aItemId,
+        }
+      }],
+      MessageDisposition: aNotify ? "SendAndSaveCopy" : "SaveOnly",
     },
   };
-  await this.CallService("RespondToCalendarEvent", respond); // owa.js
+  try {
+    return await this.CallService("CreateItem", create); // owa.js
+  } catch (ex) {
+    switch (ex.type) {
+    case "ErrorCalendarIsCancelledForDecline":
+      // Exchange deletes declined pending invitations.
+      // For convenience, emulate this for cancelled invitations.
+      return this.DeleteEvent(aItemId, true);
+    case "ErrorCalendarIsCancelledForTentative":
+    case "ErrorCalendarIsCancelledForAccept":
+      ex.report = false;
+      throw ex;
+    default:
+      throw ex;
+    }
+  }
 }
 
 /**
@@ -961,6 +978,8 @@ browser.calendarProvider.dispatcher.addListener(async function(aServerId, aOpera
       return await account.CreateEvent(aParameters.folder, aParameters.event, aParameters.notify);
     case "UpdateEvent":
       return await account.UpdateEvent(aParameters.folder, aParameters.newEvent, aParameters.oldEvent, aParameters.notify);
+    case "UpdateParticipation":
+      return await account.UpdateParticipation(aParameters.id, aParameters.uid, aParameters.participation, aParameters.isRecurrence);
     case "NotifyParticipation":
       return await account.NotifyParticipation(aParameters.id, aParameters.participation, aParameters.isRecurrence);
     case "DeleteEvent":

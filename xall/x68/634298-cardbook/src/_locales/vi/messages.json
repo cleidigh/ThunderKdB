@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "Tập tin $P1$ không tồn tại.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "Tập tin $P1$ rỗng",
         "placeholders": {
@@ -3122,13 +3130,10 @@
 		"message": "Chỉnh sửa Tổ chức"
 	},
 	"wdw_cardbookRenameFieldCreateCatTitle": {
-		"message": "??Create Category??"
+		"message": "Thêm danh mục mới"
 	},
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Chỉnh sửa Danh mục"
-	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "Thêm danh mục mới"
 	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "??Edit Node??"
@@ -3146,9 +3151,6 @@
 		"message": "Danh mục:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "Danh mục:"
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "Danh mục:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "Mật khẩu:"
 	},
-	"remotePage.passwordShow.label": {
-		"message": "Chỉ"
+	"showHidePassword.tooltip": {
+		"message": "Hiện/ẩn mật khẩu"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Xác thực"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "M"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "Chỉ"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "h"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "??Run in background??"
 	},
@@ -5214,15 +5210,6 @@
 	"keyLabel": {
 		"message": "Chìa khóa"
 	},
-	"photolocalURILabel": {
-		"message": "Ảnh địa phương"
-	},
-	"logolocalURILabel": {
-		"message": "Biểu trưng địa phương"
-	},
-	"soundlocalURILabel": {
-		"message": "Âm thanh địa phương"
-	},
 	"photoURILabel": {
 		"message": "Ảnh"
 	},
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "Sao chép Ảnh"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "Sao chép địa chỉ Ảnh"
 	},
 	"deleteImageCardLabel": {
 		"message": "Xóa Ảnh"

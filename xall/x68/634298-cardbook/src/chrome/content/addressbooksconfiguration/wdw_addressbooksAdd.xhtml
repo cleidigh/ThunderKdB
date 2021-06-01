@@ -11,6 +11,8 @@
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
 <!-- for the display -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/themeableDialog.css"?>
+<!-- for the password icon -->
+<?xml-stylesheet href="chrome://messenger/skin/creationDialog.css" type="text/css"?>
 
 <window id="addressbook-wizard-window"
 	title="__MSG_wizard.title__"
@@ -138,7 +140,7 @@
 						<row align="center">
 							<radiogroup id="remotePageType" onselect="wdw_addressbooksAdd.remotePageSelect();" class="indent">
 								<radio value="CARDDAV" label="__MSG_remotePage.carddav.label__" selected="true"/>
-								<radio value="GOOGLE" label="__MSG_remotePage.google.label__"/>
+								<radio value="GOOGLE2" label="__MSG_remotePage.google.label__"/>
 								<radio value="APPLE" label="__MSG_remotePage.apple.label__"/>
 								<radio value="YAHOO" label="__MSG_remotePage.yahoo.label__"/>
 							</radiogroup>
@@ -177,18 +179,24 @@
 						<row align="center">
 							<label id="remotePageUsernameLabel" value="__MSG_remotePage.user.label__" control="remotePageUsername"/>
 							<html:input id="remotePageUsername"
+								class="hub-field"
 								required="true"
 								oninput="wdw_addressbooksAdd.remotePageTextboxInput();"/>
-							<button id="validateEmailButton" label="!" oncommand="wdw_addressbooksAdd.changeEmail();" class="small-button"/>
+							<image id="remotePageUsernameInfo"
+								class="form-icon"/>
 						</row>
 						<row align="center">
 							<label id="remotePagePasswordLabel" value="__MSG_remotePage.password.label__" control="remotePagePassword"/>
 							<html:input id="remotePagePassword"
 								type="password"
+								class="hub-field"
 								required="true"
 								oninput="wdw_addressbooksAdd.remotePageTextboxInput();"/>
-							<checkbox id="remotePagePasswordCheckbox" label="__MSG_remotePage.passwordShow.label__" oncommand="wdw_addressbooksAdd.showPassword(this);" disabled="false"/>
-						</row>
+							<image id="remotePagePasswordInfo"
+								class="form-icon icon-hidden"
+								tooltiptext="__MSG_showHidePassword.tooltip__"
+								onclick="wdw_addressbooksAdd.showPassword();"/>
+				   		</row>
 						<row align="center">
 							<label id="rememberPasswordLabel" control="rememberPasswordCheckbox"/>
 							<checkbox id="rememberPasswordCheckbox" disabled="false" checked="true"/>
@@ -288,7 +296,7 @@
 						<label id="findPageValidateLabel" value="__MSG_remotePage.validatebutton.label__"/>
 						<label id="findPageUserLabel" flex="1" value="__MSG_remotePage.user.label__"/>
 						<label id="findPagePasswordLabel" value="__MSG_remotePage.password.label__"/>
-						<label id="findPagePasswordShowLabel" value="__MSG_remotePage.passwordShow.label__"/>
+						<label id="findPagePasswordShowLabel" value="__MSG_showHidePassword.tooltip__"/>
 						<label id="findPageVCardVersionsLabel" hidden="true"/>
 						<label id="findPageURLLabel" hidden="true"/>
 						<label id="findPageABNameLabel" hidden="true"/>

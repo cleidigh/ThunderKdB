@@ -75,7 +75,7 @@ debug('load from storage');
 				let prefnames=['autodownload', 'autoupload', 'timeddownload', 'timedupload', 'synctype', 'localpath',
 				 'protocol', 'host', 'path', 'user', 'imapfolderAccount', 'imapfolderName', 'imapfolderPath',
 				 'downloadpolicy', 'imapuploadpolicy', 'usepost', 'hideallpopups', 'hidepopups', 'loadtimer',
-				 'notimecheck', 'noupload', 'separateupdown', 'noexternalappset', 'debug', 'upgraded'];
+				 'notimecheck', 'noupload', 'separateupdown', 'noexternalappset', 'debug', 'upgraded', 'ftpwarn'];
 				prefs=await messenger.storage.local.get(prefnames);
 				if (!prefs['imapuploadpolicy']) {
 					prefs['imapuploadpolicy']='draft';
@@ -105,8 +105,8 @@ debug("background: failed to load prefs, wait...");
 async function startPart2(migrated) {
 debug('ABS: background: prefs='+JSON.stringify(prefs));
 	let [ u2i, u2f ]=await messenger.abs.uids2ids();
-debug('ABS: background: u2i='+JSON.stringify(u2i));	//"5bb36bed-f1be-4410-b157-54c08505225b"->"ldap_2.servers.ggbstest"
-debug('ABS: background: u2f='+JSON.stringify(u2f));	//empty at this time
+//debug('ABS: background: u2i='+JSON.stringify(u2i));	//"5bb36bed-f1be-4410-b157-54c08505225b"->"ldap_2.servers.ggbstest"
+//debug('ABS: background: u2f='+JSON.stringify(u2f));	//empty at this time
 	let books=await messenger.addressBooks.list();
 	if (!migrated) {	//load prefs for books
 		let prefnames=[];
@@ -117,7 +117,7 @@ debug('ABS: background: u2f='+JSON.stringify(u2f));	//empty at this time
 			prefnames.push(u2i[book.id]+'.down');
 			prefnames.push(u2i[book.id]+'.filename');
 		}
-debug('load prefs for book: '+JSON.stringify(prefnames));
+debug('load prefs for books: '+JSON.stringify(prefnames));
 		Object.assign(prefs, await messenger.storage.local.get(prefnames));
 	}
 	//remove
@@ -142,8 +142,25 @@ debug('load prefs for book: '+JSON.stringify(prefnames));
 		}
 	}
 //for (let [key, val] of Object.entries(prefs)) {debug('background pref: '+key+'->'+val); }
-debug('prefs='+JSON.stringify(prefs));
-	messenger.abs.setPrefs(prefs, '');
+//debug('prefs='+JSON.stringify(prefs));
+  //get TB's version, getAddon() in implementation.js might be too late
+  let bi=await messenger.runtime.getBrowserInfo();
+	let cPrefs=await messenger.abs.setPrefs(prefs, 'TB:'+bi.version);
+  if (cPrefs) {
+    for (let [key, val] of Object.entries(cPrefs)) {
+      if (val!==null) {
+debug('initialize changed pref '+key+' -> '+val);
+        prefs[key]=val;
+        let p={};
+        p[key]=val;
+        await messenger.storage.local.set(p);
+      } else {
+debug('initialize removed pref '+key);
+        delete prefs[key];
+				await messenger.storage.local.remove(key);
+      }
+    }
+  }
 
   //Just to check for bug 1684327
   let accounts=[];

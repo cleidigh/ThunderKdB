@@ -9,25 +9,40 @@ END LICENSE BLOCK */
 /* shared module for installation popups */
 
 async function updateActions(addonName) {
-  const mxUtilties = messenger.Utilities;
+  let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  
   // LICENSING FLOW
-  
-  let isLicensed = await mxUtilties.isLicensed(true),
-      isExpired = await mxUtilties.LicenseIsExpired(),
-      isStandardUser = await mxUtilties.LicenseIsStandardUser();
+  let isStandardUser = (licenseInfo.keyType == 2),
+      isExpired = licenseInfo.isExpired,
+      isValid = licenseInfo.isValid;
         
-  //console.log("Addon " + addonName + "\n" +
-  //  "isLicensed = " + isLicensed + "\n" +
-  //  "isExpired = " + isExpired + "\n"
-  //);
-  
   function hide(id) {
     let el = document.getElementById(id);
-    if (el) el.setAttribute('collapsed',true);
+    if (el) {
+      el.setAttribute('collapsed',true);
+      return el;
+    }
+    return null;
+  }
+  function hideSelectorItems(cId) {
+    let elements = document.querySelectorAll(cId);
+		for (let el of elements) {
+      el.setAttribute('collapsed',true);
+    }
   }
   function show(id) {
     let el = document.getElementById(id);
-    if (el) el.setAttribute('collapsed',false);
+    if (el) {
+      el.setAttribute('collapsed',false);
+      return el;
+	  }
+	  return null;
+  }
+  function showSelectorItems(cId) {
+    let elements = document.querySelectorAll(cId);
+		for (let el of elements) {
+      el.setAttribute('collapsed',false);
+    }
   }
   // renew-your-license - already collapsed
   // renewLicenseListItem - already collapsed
@@ -37,9 +52,19 @@ async function updateActions(addonName) {
     hide('standardLicense');
   }
   
-  if (isLicensed) {
+  let isActionList = true;
+  let currentTime=new Date(),
+      endSale = new Date("2021-06-01"); // Next Sale End Date
+  let isSale = (currentTime < endSale);
+
+  if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
     hide('register');
+    
+    if (isSale && isStandardUser) {
+      showSelectorItems('.standardUpgradeSale');
+      hide('offerStandardUpgrade');
+    }
     
     if (isExpired) { // License Renewal
       hide('extendLicenseListItem');
@@ -54,8 +79,8 @@ async function updateActions(addonName) {
         show('standardLicense'); // this contains a button to upgrade
       }
       else {
-        let gpdays = await mxUtilties.LicensedDaysLeft();
-        if (gpdays<365) { // they may have seen this popup. Only show extend License section if it is < 1 year away
+        let gpdays = licenseInfo.licensedDaysLeft;
+        if (gpdays<100) { // they may have seen this popup. Only show extend License section if it is < 100 days away
           show('extendLicenseListItem');
           show('extend');
         }
@@ -63,9 +88,19 @@ async function updateActions(addonName) {
           show('licenseExtended');
           hide('extendLicenseListItem');
           hide('extend');
+          isActionList = false;
         }
       }
     }
+  }
+  else {
+    if (isSale) {
+      show('specialOffer');
+      hideSelectorItems('.donations');
+    }
+  }  
+  if (!isActionList) {
+    hide('actionBox');
   }  
   
 }

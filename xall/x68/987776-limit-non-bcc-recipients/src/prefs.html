@@ -1,23 +1,37 @@
 <html>
+  <head>
 
-	<style type="text/css">
-	  #wrapper  {display: grid;
-              grid-gap: 10px;}
-    .one {grid-column: 1}
-    .two {grid-column: 2}
-    #maxNonBCC      {width: 4em; }
-	</style>
+  	<style type="text/css">
+  
+      @media (prefers-color-scheme: dark)  {
+        body {
+          background-color: #202023;
+          color: #b1b1b3;
+          height: 100vh;
+        }
+      }
+  
+  	  #wrapper   {display: grid;
+                 grid-gap: 10px;}
+      .one       {grid-column: 1}
+      .two       {grid-column: 2}
+      #maxNonBCC {width: 4em; }
+  	</style>
+	
+  </head>
+  <body>
+    
+    <div id="wrapper">
+  
+      <label class="one" for="maxNonBCC" id="prefsNonBCCLimit">""</label>
+      <input class="two" type="number" id="maxNonBCC" name="maxNonBCC" min="0" max="999">
+  
+      <label class="one" for="strictLimit" id="prefsStrictLimit">""</label>
+      <input class="two" type="checkbox" id="strictLimit" name="strictLimit" >
+  
+    </div>
+  
+    <script type="text/javascript" src="prefs.js"></script>
 
-  <div id="wrapper">
-
-    <label class="one" for="maxNonBCC" id="prefsNonBCCLimit">""</label>
-    <input class="two" type="number" id="maxNonBCC" name="maxNonBCC" min="0" max="999">
-
-    <label class="one" for="strictLimit" id="prefsStrictLimit">""</label>
-    <input class="two" type="checkbox" id="strictLimit" name="strictLimit" >
-
-  </div>
-
-  <script type="text/javascript" src="prefs.js"></script>
-
+  </body>
 </html>

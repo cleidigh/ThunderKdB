@@ -23,8 +23,6 @@ const kScriptFiles = [
 var gDispatchListeners = new Map();
 /// A map of webextensions to additional options that affect their behaviour.
 var gSchemeOptions = new Map();
-/// A set of address book UIDs known to be global address lists.
-var gAddressBooksMarkedAsReadOnly = new Set();
 /// An array of modules that need to be registered with the component manager.
 var gModules = [];
 var {ExtensionError} = ExtensionUtils;
@@ -864,9 +862,6 @@ this.webAccount = class extends ExtensionAPI {
         },
       },
       webAccount: {
-        markAddressBookAsReadOnly: function(aUID) {
-          gAddressBooksMarkedAsReadOnly.add(aUID);
-        },
         wizard: function() {
           let mail3pane = Services.wm.getMostRecentWindow("mail:3pane");
           mail3pane.NewMailAccount(mail3pane.msgWindow);

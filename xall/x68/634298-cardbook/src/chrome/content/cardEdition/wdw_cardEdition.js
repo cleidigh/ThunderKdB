@@ -81,7 +81,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			aKey = aKey.replace(/-----(BEGIN|END) PGP PUBLIC KEY BLOCK-----/g, "").trim().replace(re, "\\r\\n");
 			let allKeyArray = cardbookWindowUtils.getAllKeys(false);
 			allKeyArray = allKeyArray.filter(child => (child.value != "" || child.URI != ""));
-			allKeyArray.push({types: [], value: aKey, localURI: "", URI: "", extension: ""});
+			allKeyArray.push({types: [], value: aKey, URI: "", extension: ""});
 			cardbookElementTools.deleteRows(type + "ReadWriteGroupbox");
 			cardbookWindowUtils.constructDynamicKeysRows(wdw_cardEdition.workingCard.dirPrefId, type, allKeyArray, wdw_cardEdition.workingCard.version);
 		},
@@ -985,15 +985,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				if (document.getElementById('mailPopularity_' + i + '_row')) {
 					var field = cardbookRepository.extension.localeData.localizeMessage("popularityLabel");
 					var data = document.getElementById('popularity_' + i + '_Textbox').value.trim() * 1;
-					if (data == "") {
-						i++;
-						continue;
-					} else if (data >=1 && data <= limit) {
-						i++;
-						continue;
+					if (data && (data > limit)) {
+						cardbookNotifications.setNotification(cardEditionNotification.errorNotifications, "validateIntegerMsg", [field, limit, data]);
+						return false;
 					}
-					cardbookNotifications.setNotification(cardEditionNotification.errorNotifications, "validateIntegerMsg", [field, limit, data]);
-					return false;
+					i++;
 				} else {
 					break;
 				}
@@ -1066,7 +1062,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			// specific
 			document.getElementById('addressbookTextBox').value = cardbookRepository.cardbookPreferences.getName(aCard.dirPrefId);
 			document.getElementById('categoriesTextBox').value = cardbookRepository.cardbookUtils.formatCategories(aCard.categories);
-			document.getElementById('photoExtensionTextBox').value = aCard.photo.extension;
 			if (!aReadOnly) {
 				wdw_cardEdition.loadCategories(aCard.categories);
 				cardbookElementTools.loadGender("genderMenupopup", "genderMenulist", wdw_cardEdition.workingCard.gender);
@@ -1081,9 +1076,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				document.getElementById('uidTextBox').setAttribute('hidden', 'true');
 				document.getElementById('versionTextBox').setAttribute('hidden', 'true');
 				document.getElementById('othersTextBox').setAttribute('hidden', 'true');
-				document.getElementById('photolocalURITextBox').setAttribute('hidden', 'true');
-				document.getElementById('photoURITextBox').setAttribute('hidden', 'true');
-				document.getElementById('photoExtensionTextBox').setAttribute('hidden', 'true');
 			}
 			for (let email of wdw_cardEdition.workingCard.emails) {
 				if (cardbookRepository.cardbookPreferDisplayNameIndex[email]) {
@@ -1294,10 +1286,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				}
 			};
 			document.getElementById('adrPanel').addEventListener("popuphidden", firePopupHiddenAdr, false);
-			
-			// for temporary photo
-			var editionWindow = Services.wm.getMostRecentWindow("CardBook:contactEditionWindow");
-			wdw_imageEdition.windowId = editionWindow.windowUtils.outerWindowID;
 		},
 
 		saveMailPopularity: function () {
@@ -1305,7 +1293,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			while (true) {
 				if (document.getElementById('mailPopularity_' + i + '_row')) {
 					var email = document.getElementById('email_' + i + '_Textbox').value.toLowerCase();
-					var emailValue = parseInt(document.getElementById('popularity_' + i + '_Textbox').value) || 0;
+					var emailValue = parseInt(document.getElementById('popularity_' + i + '_Textbox').value) || "0";
 					cardbookIDBMailPop.updateMailPop(email, emailValue);
 					i++;
 				} else {
@@ -1405,12 +1393,11 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			
 			aCard.note = document.getElementById('noteTextBox').value.trim();
 
-			aCard.photo = {};
-			aCard.photo.types = [];
-			aCard.photo.value = "";
-			aCard.photo.URI = document.getElementById('photoURITextBox').value;
-			aCard.photo.localURI = document.getElementById('photolocalURITextBox').value;
-			aCard.photo.extension = document.getElementById('photoExtensionTextBox').value;
+			for (let media of cardbookRepository.allColumns.media) {
+				aCard[media] = {types: [], value: "", URI: "", extension: ""};
+				aCard[media].value = document.getElementById(media + 'URITextBox').value;
+				aCard[media].extension = document.getElementById(media + 'ExtensionTextBox').value;
+			}
 
 			var typesList = [ 'email', 'tel', 'url', 'adr' ];
 			for (var type of typesList) {
@@ -1569,7 +1556,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			}
 		},
 
-		saveFinal: function (aClose = true) {
+		saveFinal: async function (aClose = true) {
 			if (wdw_cardEdition.validate()) {
 				var myOutCard = new cardbookCardParser();
 				wdw_cardEdition.calculateResult(myOutCard);
@@ -1579,17 +1566,15 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 
 				wdw_cardEdition.workingCard = null;
 				wdw_cardEdition.updateFormFields();
-
 				// no change, no save
 				if (window.arguments[0].editionMode != "ViewResult" && window.arguments[0].editionMode != "ViewResultHideCreate") {
-					var cardin = cardbookRepository.cardbookUtils.cardToVcardData(window.arguments[0].cardIn, true);
-					var cardout = cardbookRepository.cardbookUtils.cardToVcardData(myOutCard, true);
-					if (cardin == cardout) {
+					var cardin = await cardbookRepository.cardbookUtils.cardToVcardData(window.arguments[0].cardIn, true);
+					var cardout = await cardbookRepository.cardbookUtils.cardToVcardData(myOutCard, true);
+					if (cardin == cardout && window.arguments[0].cardIn.dirPrefId == myOutCard.dirPrefId) {
 						if (aClose) {
 							wdw_cardEdition.cancel();
-						} else {
-							return;
 						}
+						return;
 					}
 				}
 
@@ -1608,7 +1593,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				}
 				cardBookEditionObserver.unregister();
 				cardBookEditionPrefObserver.unregister();
-				wdw_imageEdition.purgeEditionPhotoTempFile();
 				if (aClose) {
 					wdw_cardEdition.closeWindow();
 				}
@@ -1648,7 +1632,6 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		closeWindow: function () {
-			wdw_imageEdition.purgeEditionPhotoTempFile();
 			close();
 		}
 

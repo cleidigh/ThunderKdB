@@ -1,5 +1,5 @@
 /**
- * Global Map to hold Status objects for all active uploads, indexed by whatever TB sends as fileId
+ * Global Map to hold Status objects for all active uploads, indexed by the uploadId created in background.js
  */
 const attachmentStatus = new Map();
 
@@ -28,9 +28,11 @@ class Status {
     }
 
     /**
-     * Send status to status popup, if it's listening (open)
+     * Update badge and send status to status popup, if it's listening (open)
      */
     static async update() {
+        const messages = attachmentStatus.size.toString();
+        messenger.composeAction.setBadgeText({ text: messages !== "0" ? messages : null, });
         if (port) {
             port.postMessage(attachmentStatus);
         }
@@ -38,10 +40,10 @@ class Status {
 
     /**
      * Remove one upload from the status map
-     * @param {*} index The fileId of an upload
+     * @param {string} uploadId The id of the upload created in background.js
      */
-    static async remove(index){
-        attachmentStatus.delete(index);
+    static async remove(uploadId) {
+        attachmentStatus.delete(uploadId);
         Status.update();
     }
 

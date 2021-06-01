@@ -2,6 +2,96 @@ files:
   - source: /chrome/locale/en/*.*
     translation: /chrome/locale/%locale%/%original_file_name%
     escape_special_characters: 0
+    languages_mapping:
+      locale:
+        af: af
+        ar: ar
+        be: be
+        bg: bg
+        ca: ca
+        cs: cs
+        da: da
+        de: de
+        el: el
+        en: en
+        es-ES: es
+        fi: fi
+        fr: fr
+        fy-NL: fy-NL
+        he: he
+        hr: hr
+        hu: hu
+        it: it
+        ja: ja
+        kk-KZ: kk-KZ
+        km: km
+        ko: ko
+        la-LA: la
+        lv: lv
+        mr: mr
+        ms: ms
+        nl: nl
+        'no': 'no'
+        pl: pl
+        ps: ps
+        pt-PT: pt
+        pt-BR: pt-BR
+        ro: ro
+        ru: ru
+        si-LK: si-LK
+        sk: sk
+        sr: sr
+        sv-SE: sv
+        tr: tr
+        uk: uk
+        vi: vi
+        zh-CN: zh
+        zh-TW: zh-TW
   - source: /_locales/en/*.json
     translation: /_locales/%locale_with_underscore%/%original_file_name%
     escape_special_characters: 0
+    languages_mapping:
+      locale_with_underscore:
+        af: af
+        ar: ar
+        be: be
+        bg: bg
+        ca: ca
+        cs: cs
+        da: da
+        de: de
+        el: el
+        en: en
+        es-ES: es
+        fi: fi
+        fr: fr
+        fy-NL: fy_NL
+        he: he
+        hr: hr
+        hu: hu
+        it: it
+        ja: ja
+        kk-KZ: kk_KZ
+        km: km
+        ko: ko
+        la-LA: la
+        lv: lv
+        mr: mr
+        ms: ms
+        nl: nl
+        'no': 'no'
+        pl: pl
+        ps: ps
+        pt-PT: pt
+        pt-BR: pt_BR
+        ro: ro
+        ru: ru
+        si-LK: si_LK
+        sk: sk
+        sr: sr
+        sv-SE: sv
+        tr: tr
+        uk: uk
+        vi: vi
+        zh-CN: zh
+        zh-TW: zh_TW

@@ -156,7 +156,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			aTextbox.setAttribute('rows', aLength);
 		},
 
-		createImageBox: function (aRow, aName, aValue, aSelected) {
+		createImageBox: function (aRow, aName, aValue, aExtension, aSelected) {
 			var aVbox = wdw_mergeCards.createVbox(aRow);
 			aVbox.setAttribute("width", "170px");
 			var aHbox = wdw_mergeCards.createHbox(aVbox);
@@ -168,7 +168,9 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			var aImage = document.createXULElement('image');
 			aHbox.appendChild(aImage);
 			aImage.setAttribute('id', aName + "Displayed");
-			wdw_mergeCards.arrayField[aName] = aValue;
+			wdw_mergeCards.arrayField[aName] = {};
+			wdw_mergeCards.arrayField[aName].value = aValue;
+			wdw_mergeCards.arrayField[aName].extension = aExtension;
 
 			aImage.src = "";
 			aImageForSizing.src = "";
@@ -188,7 +190,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 				myImage.setAttribute("height", heightFound);
 				myImage.setAttribute("src", this.src);
 			}, false);
-			aImageForSizing.src = aValue;
+			aImageForSizing.src = 'data:image/' + aExtension + ';base64,' + aValue;
 		},
 
 		createLabel: function (aRow, aName, aValue) {
@@ -317,16 +319,27 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			return false;
 		},
 
-		addRowFromPhoto: function (aListOfCards, aField) {
-			for (let i = 0; i < aListOfCards.length; i++) {
-				if (aListOfCards[i][aField].localURI != "") {
+		addRowFromPhoto: async function (aListOfCards, aField) {
+			let result = false;
+			for (let card of aListOfCards) {
+				if (card[aField].value != "") {
 					return true;
+				} else {
+					let dirname = cardbookRepository.cardbookPreferences.getName(card.dirPrefId);
+					await cardbookIDBImage.getImage(aField, dirname, card.cbid, card.fn)
+						.then( image => {
+							result = true;
+						})
+						.catch( () => { } );
+				}
+				if (result) {
+					break;
 				}
 			}
-			return false;
+			return result;
 		},
 		
-		load: function () {
+		load: async function () {
 			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_mergeCards.setHideCreate();
 			wdw_mergeCards.setContactOrList();
@@ -335,19 +348,26 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 			var aListRows = document.getElementById('fieldsVbox');
 			wdw_mergeCards.createAddressbook(aListRows, listOfCards);
 			for (let i of [ 'photo' ]) {
-				if (wdw_mergeCards.addRowFromPhoto(listOfCards, i)) {
+				if (await wdw_mergeCards.addRowFromPhoto(listOfCards, i)) {
 					var aRow = wdw_mergeCards.createRow(aListRows, i + 'Row');
 					wdw_mergeCards.createLabel(aRow, i + 'Label', i + 'Label');
 					var selected = true;
 					for (let j = 0; j < listOfCards.length; j++) {
-						// to do create photo temp file
-						if (listOfCards[j][i].localURI != "") {
+						let dirname = cardbookRepository.cardbookPreferences.getName(listOfCards[j].dirPrefId);
+						if (listOfCards[j][i].value != "") {
 							wdw_mergeCards.createCheckBox1(aRow, i + 'Checkbox' + j, selected);
-							wdw_mergeCards.createImageBox(aRow, i + 'Textbox' + j, listOfCards[j][i].localURI, selected, false);
+							wdw_mergeCards.createImageBox(aRow, i + 'Textbox' + j, listOfCards[j][i].value, listOfCards[j][i].extension, selected, false);
 							selected = false;
 						} else {
-							wdw_mergeCards.createHbox(aRow);
-							wdw_mergeCards.createHbox(aRow);
+							await cardbookIDBImage.getImage(i, dirname, listOfCards[j].cbid, listOfCards[j].fn)
+							.then( image => {
+								wdw_mergeCards.createCheckBox1(aRow, i + 'Checkbox' + j, selected);
+								wdw_mergeCards.createImageBox(aRow, i + 'Textbox' + j, image.content, image.extension, selected, false);
+								selected = false;
+							}).catch( () => {
+								wdw_mergeCards.createHbox(aRow);
+								wdw_mergeCards.createHbox(aRow);
+							});
 						}
 					}
 				}
@@ -685,6 +705,7 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 
 		calculateResult: function (aCard) {
 			listOfCards = window.arguments[0].cardsIn;
+			aCard.etag = "0";
 			aCard.version = wdw_mergeCards.version;
 			aCard.dirPrefId = listOfCards[0].dirPrefId;
 			for (let i of [ 'dirPrefId' ]) {
@@ -821,8 +842,8 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 					if (document.getElementById(i + 'Checkbox' + j)) {
 						var myCheckBox = document.getElementById(i + 'Checkbox' + j);
 						if (myCheckBox.checked) {
-							aCard[i].localURI = wdw_mergeCards.arrayField[i + 'Textbox' + j];
-							aCard[i].extension = cardbookRepository.cardbookUtils.getFileNameExtension(aCard[i].localURI);
+							aCard[i].value = wdw_mergeCards.arrayField[i + 'Textbox' + j].value;
+							aCard[i].extension = wdw_mergeCards.arrayField[i + 'Textbox' + j].extension;
 						}
 					}
 				}
@@ -858,8 +879,6 @@ if ("undefined" == typeof(wdw_mergeCards)) {
 		save: function () {
 			var myOutCard = new cardbookCardParser();
 			wdw_mergeCards.calculateResult(myOutCard);
-			var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myOutCard.dirPrefId);
-			cardbookRepository.cardbookUtils.cachePutMediaCard(myOutCard, "photo", myDirPrefIdType);
 			window.arguments[0].cardsOut = [myOutCard];
 			close();
 		},

@@ -149,6 +149,14 @@ var cardbookDates = {
 		}
 	},
 
+	lPad: function (aValue) {
+		aValue = "" + aValue;
+		if (aValue.length == 1) {
+			aValue = "0" + aValue;
+		}
+		return aValue;
+	},
+
 	getCorrectDatetime: function (aValue) {
 		// 20190208T000004
 		// 20190208T000004Z
@@ -284,31 +292,30 @@ var cardbookDates = {
 	},
 
 	convertDateStringToDateString: function (aDay, aMonth, aYear, aDateFormat) {
-		if (! isNaN(aMonth) && aMonth.length == 1) {
-			aMonth = "0" + aMonth;
-		}
-		if (! isNaN(aDay) && aDay.length == 1) {
-			aDay = "0" + aDay;
-		}
+		aMonth = cardbookDates.lPad(aMonth);
+		aDay = cardbookDates.lPad(aDay);
 		return cardbookDates.getFinalDateString(aDay, aMonth, aYear, aDateFormat);
 	},
 
-	convertDateToDateString: function (aDate, aDateFormat) {
-		var lYear = aDate.getFullYear();
-		var lMonth = aDate.getMonth() + 1;
+	splitDateIntoComponents: function (aDate) {
+		let lYear = aDate.getFullYear();
+		let lMonth = aDate.getMonth() + 1;
 		lMonth += "";
-		if (lMonth.length == 1) {
-			lMonth = "0"+lMonth;
-		}
-		var lDay = aDate.getDate();
+		lMonth = cardbookDates.lPad(lMonth);
+		let lDay = aDate.getDate();
 		lDay += "";
-		if (lDay.length == 1) {
-			lDay = "0" + lDay;
-		}
-		return cardbookDates.getFinalDateString(lDay, lMonth, lYear, aDateFormat);
+		lDay = cardbookDates.lPad(lDay);
+		return {day: lDay, month: lMonth, year: lYear};
+	},
+
+	convertDateToDateString: function (aDate, aDateFormat) {
+		let dateSplitted = cardbookDates.splitDateIntoComponents(aDate);
+		return cardbookDates.getFinalDateString(dateSplitted.day, dateSplitted.month, dateSplitted.year, aDateFormat);
 	},
 
 	getFinalDateString: function (aDay, aMonth, aYear, aDateFormat) {
+		aMonth = cardbookDates.lPad(aMonth);
+		aDay = cardbookDates.lPad(aDay);
 		if (aDateFormat == "YYYY-MM-DD") {
 			if (aYear == "") {
 				aYear = cardbookDates.defaultYear;
@@ -318,12 +325,12 @@ var cardbookDates = {
 			if (aYear == "") {
 				aYear = cardbookDates.defaultYear;
 			}
-			return aYear + aMonth + aDay;
+			return "" + aYear + aMonth + aDay;
 		} else {
 			if (aYear == "") {
 				aYear = "--";
 			}
-			return aYear + aMonth + aDay;
+			return "" + aYear + aMonth + aDay;
 		}
 	},
 

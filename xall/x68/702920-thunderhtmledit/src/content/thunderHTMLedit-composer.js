@@ -3,7 +3,6 @@
 
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
-var { fixIterator } = ChromeUtils.import("resource:///modules/iteratorUtils.jsm");
 
 var ThunderHTMLedit = {
   // general exception handler.
@@ -404,17 +403,51 @@ var ResetTheme;
 var Undo;
 var Redo;
 var thisWin;
+// eslint-disable-next-line max-len, comma-spacing
+var lc = ["A2FYC3R5","A2XHDXMU","A3NIZWF0","AG12ZXJV","AGFYCMTL","AGVYDMVI","AI5KZWPV","AKBQB3JN","AM9HY2HP","AM9LCMCU","AM9UYXMT","AM9ZQGRL","AMF5QHNH","AMLTQGPH","AMPZZG5A","AMVABW12","AMVADMVY","AMVMZNJ5","ANAUBGV2","ANV0DGFA","AW5MB0BK","AW5MB0BN","AW5MB0BR","AW5MB0BZ","AWFUBWVK","AWXWAXBW","AZDQZWJA","B2ZMAWNL","B3JKZXJZ","B3ZHAGLT","BGVUYS0Y","BMF0AGFU","BMF1BMF1","BMLJAGLN","BMVKZGVU","BWDYZWLZ","BWF0DGNS","BWFPBEBH","BWFPBEBT","BWFUDUBZ","BWFYDGLU","BWFYYY5N","BWLJAGFL","BWLRZUBQ","BWLRZUBW","BWNMCM9Z","BWVAZG9U","BWVNLMHH","BWZIQGXL","BXR5DHNL","C2FKANVR","C2FMZXJZ","C2FRZXMT","C2FSZXNA","C2HLZW4U","C2LSDMFP","C2NVDHQU","C2TABGFI","C2VYDMLJ","C2XHD2VR","C3NHNTU1","C3RLDMVA","C3RVEWFU","CGF0CMLJ","CGF0YM9Y","CGF5CGFS","CGHPBF9J","CGHVZMZT","CGJIMDMX","CGLLCNJL","CGLUQGDL","CGOUAGFH","CGPACGPH","CGV0ZXJO","CGV0ZXJZ","CGVWZXRY","CHBLCM5H","CM1VCMFS","CM9ZC2VI","CMLJAGFY","CMOUA2VJ","CMRLDMVU","D2H5DHDV","D2HHDHPN","D2LTQHZH","D2ROZ25K","D2VIDHVU","D3JPZ2H0","DG9TYXJK","DG9TYXMU","DGH1BMRL","DGHVCNN0","DGRHBWF0","DGV0C3V5","DHDHZ0BZ","DHDPBGVZ","DNRYDNRY","DXCUYWX0","Y29YYMFS","Y29YZWRL","Y29YZXLA","Y2HHAXJW","Y2HYAXNA","Y2HYAXNN","Y2XHDWRP","Y3VUB0BP","Y3ZPDGFS","YMD1AWXS","YMF1ZXJJ","YMVUAMFT","YNJ1BM8U","YNJ1Y2VA","YNNJYXJS","YS5WLMPH","YW5KCMV3","YW5KEUBU","YW5QYS5K","YWFMLXJH","YWNOAW0U","YWRSAW5K","YWRTAW5A","YWX0QHRT","YWXHAW4Z","YWXIZXJ0","YWXLEGFU","YXHLBC5N","YXJ2AWRA","YXRYB2NP","YY5JB3JI","Z29SBHDP","Z2FYDGHA","Z2FYYWDL","Z2JJCMVU","Z2LSBGVZ","Z2VVZMZA","Z3JHBNRA","ZG9TAW5P","ZG9UX3JL","ZGF2ZUBK","ZGF2ZUBT","ZGFUQGRP","ZGPAYXZV","ZGPJYXR0","ZGVZC2FP","ZHDPBGRL","ZHLZQG91","ZMFYBWVY","ZNJHBMNP","ZW1HBNVL","ZWFJQGFY","ZWJHEUBL","ZWLTYW50","ZWQUYWDV","ZWXICMFJ","ZWXJB29R","ZXJPY3D5","ZXJPYY5H"];
+
+function isLL(l) {
+  let s = 0;
+  let e = lc.length - 1;
+  while (s <= e) {
+    let m = Math.floor((s + e) / 2);
+    if (lc[m] === l) return true;
+    if (lc[m] < l) s = m + 1;
+    else e = m - 1;
+  }
+  return false;
+}
 
 function hasLicense() {
-  let license = ThunderHTMLeditPrefs.getPref("License", "String");
-  if (license != "unlicensed") {
-    for (let identity of fixIterator(ThunderHTMLedit.accounts.allIdentities,
-      Ci.nsIMsgIdentity)) {
-      if (!identity.email) continue;
-      if (license == thisWin.btoa(identity.email.toLowerCase())) {
-        // Services.console.logStringMessage("ThunderHTMLedit - "+identity.email+" - license: "+license);
-        return true;
-      }
+  let licensePref = ThunderHTMLeditPrefs.getPref("License", "String");
+  if (licensePref == "unlicensed") return false;
+
+  let license = licensePref.toUpperCase().replace(/[-=]/g, "").substring(0, 20);
+  let licenseOrg = license;
+  if (license.length <= 4) return false;
+  let legacyLicence = isLL(license.substring(0, 8));
+  for (let identity of ThunderHTMLedit.accounts.allIdentities) {
+    if (!identity.email) continue;
+    let email = identity.email.toLowerCase();
+    let check = thisWin.btoa(email).toUpperCase().replace(/=/g, "").substring(0, 20);
+    let s = 0;
+    let c = email.substring(0, 1);
+    if (c <= "i") s = 1;
+    else if (c <= "r") s = 2;
+    else s = 3;
+    if (!legacyLicence) {
+      license = licenseOrg.substring(licenseOrg.length - s) + licenseOrg.substring(0, licenseOrg.length - s);
+    }
+    if (license == check) {
+      // Services.console.logStringMessage("ThunderHTMLedit - "+identity.email+" - license: "+license);
+
+      // Let's switch to the new license but make sure the new license doesn't end up being
+      // a legacy license accidentally. If so, revert.
+      let licenseNew = license.substring(s) + license.substring(0, s);
+      if (isLL(licenseNew.substring(0, 8))) licenseNew = license;
+      licenseNew = licenseNew.replace(/(.....)/g, "$1-").replace(/-$/, "");
+      if (licenseNew != licensePref) ThunderHTMLeditPrefs.setPref("License", "String", licenseNew);
+      return true;
     }
   }
   return false;

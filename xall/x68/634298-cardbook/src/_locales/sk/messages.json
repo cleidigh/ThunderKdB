@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "Súbor $P1$ neexistuje.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "Súboe $P1$ je prázdny",
         "placeholders": {
@@ -3127,9 +3135,6 @@
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Upraviť kategóriu"
 	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "Nová kategória"
-	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "Upraviť uzol"
 	},
@@ -3146,9 +3151,6 @@
 		"message": "Kategória:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "Kategória:"
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "Kategória:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "Heslo:"
 	},
-	"remotePage.passwordShow.label": {
-		"message": "Zobraziť"
+	"showHidePassword.tooltip": {
+		"message": "Zobraziť/skryť heslo"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Overiť"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "H"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "Zobraziť"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "Z"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "Spustiť na pozadí"
 	},
@@ -5214,15 +5210,6 @@
 	"keyLabel": {
 		"message": "Kľúč"
 	},
-	"photolocalURILabel": {
-		"message": "Lokálna fotka"
-	},
-	"logolocalURILabel": {
-		"message": "Miestne logo"
-	},
-	"soundlocalURILabel": {
-		"message": "Miestny zvuk"
-	},
 	"photoURILabel": {
 		"message": "Fotka"
 	},
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "Kopírovať obrázok"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "Kopírovať umiestnenie obrázka"
 	},
 	"deleteImageCardLabel": {
 		"message": "Vymazať obrázok"

@@ -1,50 +1,43 @@
-/* MIT License
+messenger.cloudFile.getAllAccounts()
+    .then(
+        allAccounts => {
+            allAccounts.forEach(account => updateAccount(account.id));
+        });
 
-Copyright (c) 2020 Johannes Endres
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
-
-browser.storage.local.get().then(
-    allAccounts => {
-        for (const accountId in allAccounts) { updateAccount(accountId); }
-    });
+// If the current TB version does not support button labels, it uses the title instead
+if (!messenger.composeAction.setLabel) {
+    const manifest = browser.runtime.getManifest();
+    if (manifest.compose_action && manifest.compose_action.default_label) {
+        messenger.composeAction.setTitle({
+            title: manifest.compose_action.default_label.replace(
+                /^__MSG_([@\w]+)__$/, (matched, key) => {
+                    return browser.i18n.getMessage(key) || matched;
+                }),
+        });
+    }
+}
 
 messenger.cloudFile.onFileUpload.addListener(async (account, { id, name, data }) => {
     const ncc = new CloudConnection(account.id);
     await ncc.load();
-    return ncc.uploadFile(id, name, data);
+    return ncc.uploadFile(makeUploadId(account, id), name, data);
 });
 
 messenger.cloudFile.onFileUploadAbort.addListener(
     (account, fileId) => {
         /* global allAbortControllers */
         // defined in davuploader.js
-        const abortController = allAbortControllers.get(fileId);
+        const abortController = allAbortControllers.get(makeUploadId(account, fileId));
         if (abortController) {
             abortController.abort();
         }
-        Status.remove(fileId);
+        Status.remove(makeUploadId(account, fileId));
     });
 
 /** Don't delete any files because we want to reuse uploads.  */
 messenger.cloudFile.onFileDeleted.addListener(
     (account, fileId) => {
-        Status.remove(fileId);
+        Status.remove(makeUploadId(account, fileId));
     });
 
 /** Nothing to be done, so don't add a listener */
@@ -75,11 +68,17 @@ async function updateAccount(accountId) {
         if (ncc.serverUrl && !ncc.serverUrl.endsWith('/')) {
             ncc.serverUrl += '/';
         }
-
-        if (!ncc.userId) {
-            ncc.updateUserId();
-        }
     }
+}
+
+/**
+ * The fileId is only unique within one account. makeUploadId creates a string
+ * that identifies the upload even if more than one account is active.
+ * @param {CloudFileAccount} account The CloudFileAccount as supplied by Thunderbird
+ * @param {number} fileId The fileId supplied by Thunderbird
+ */
+function makeUploadId(account, fileId) {
+    return `${account.id}_${fileId}`;
 }
 
 /* Make jshint happy */

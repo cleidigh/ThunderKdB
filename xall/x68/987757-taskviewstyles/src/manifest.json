@@ -7,7 +7,7 @@
     }
   },
   "name": "TaskviewStyles",
-  "version": "3.1",
+  "version": "4.7",
   "description": "Change taskview styles",
   "icons": {
     "32": "icons/fontstyle.png"
@@ -18,18 +18,18 @@
     "default_popup": "popup.html"
   },
  "experiment_apis": {
-    "SetStyle": {
-      "schema": "api/SetStyle/schema.json",
+    "myapi": {
+      "schema": "schema.json",
       "parent": {
         "scopes": [
           "addon_parent"
         ],
         "paths": [
           [
-            "SetStyle"
+            "myapi"
           ]
         ],
-        "script": "api/SetStyle/implementation.js"
+        "script": "implementation.js"
       }
     }
   }

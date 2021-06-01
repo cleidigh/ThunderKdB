@@ -537,32 +537,7 @@ SmartTemplate4.classSmartTemplate = function() {
 			}
 				
 		}
-		/*   // OLD CODE
-		else {
-			switch (pref.getCom("mailnews.reply_header_type", 1)) {
-				case 3:	// LFLF + author + separator + ondate + colon+LF
-				case 2:	// LFLF + ondate + separator + author + colon+LF
-					lines += countLF(pref.getCom("mailnews.reply_header_separator", ","));
-					lines += countLF(pref.getCom("mailnews.reply_header_ondate", "(%s)"));
-				case 1:	// LFLF + author + colon+LF
-				default:	// Handle same as 1
-					lines += countLF(pref.getCom("mailnews.reply_header_authorwrote", "%s wrote"));
-					lines += countLF(pref.getCom("mailnews.reply_header_colon", ":"));
-				case 0:	// LFLF + LF
-					lines++;
-					break;
-			}
-			util.logDebugOptional('functions.delReplyHeader','older version of Tb [' + util.AppverFull + '], deleting ' + lines + ' lines');
 
-			// Delete original headers .. eliminates all #text nodes but deletes the others
-			while (rootEl.firstChild && lines > 0) {
-				if (rootEl.firstChild.nodeName != "#text") {
-					lines--;
-				}
-				deleteNodeTextOrBR(rootEl.firstChild, idKey);
-			}
-		}
-		*/
 		util.logDebugOptional('functions','SmartTemplate4.delReplyHeader() ENDS');
 	};
 
@@ -632,7 +607,6 @@ SmartTemplate4.classSmartTemplate = function() {
 				}
 				else {
 					// only older versions of Tb have 2 consecutive <BR>?? Tb13 has <br> <header> <br>
-					//if (util.versionSmaller(util.AppverFull, "10"))
 					brcnt = 0;
 				}
 				deleteHeaderNode(root.firstChild);
@@ -731,26 +705,22 @@ SmartTemplate4.classSmartTemplate = function() {
 
 			// remove the original Mail Header
 		util.logDebugOptional('functions.delForwardHeader','Remove the original header…');
-		if (util.versionGreaterOrEqual(util.PlatformVer, "12")) {
-			// recursive search from root element
-			node = findChildNode(rootEl, 'moz-email-headers-table');
-			if (node) {
-				util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
-				let nextNode = node.nextSibling;
-				deleteHeaderNode(node);
-				// delete trailing newlines!
-				deleteWhiteSpaceNodes(nextNode);
-			}
-			else {
-				util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
-				if (!gMsgCompose.composeHTML) {
-					truncateTo2BR(rootEl.firstChild);
-				}
-			}
-		}
-		else {
-			truncateTo2BR(rootEl);
-		}
+    // recursive search from root element
+    node = findChildNode(rootEl, 'moz-email-headers-table');
+    if (node) {
+      util.logDebugOptional('functions.delForwardHeader','found moz-email-headers-table; deleting');
+      let nextNode = node.nextSibling;
+      deleteHeaderNode(node);
+      // delete trailing newlines!
+      deleteWhiteSpaceNodes(nextNode);
+    }
+    else {
+      util.logDebugOptional('functions.delForwardHeader','Could not find moz-email-headers-table!');
+      if (!gMsgCompose.composeHTML) {
+        truncateTo2BR(rootEl.firstChild);
+      }
+    }
+		
 		util.logDebugOptional('functions','SmartTemplate4.delForwardHeader() ENDS');
 	}
 
@@ -1374,13 +1344,13 @@ SmartTemplate4.classSmartTemplate = function() {
 				      + '\n' + 'Copy template contents to clipboard?';
 							
 				SmartTemplate4.Message.display(errorText,
-				              "centerscreen,titlebar",
-											{ ok: function() {
-				              	let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
-				              	oClipBoard.copyString(template); },
-												cancel: function() { ;/* cancel NOP */ }
-											}
-				              , gMsgCompose.editor.document.defaultView
+          "centerscreen,titlebar",
+          { ok: function() {
+            let oClipBoard = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+            oClipBoard.copyString(template); },
+            cancel: function() { ;/* cancel NOP */ }
+          }, 
+          gMsgCompose.editor.document.defaultView
 				);
 			}
 		}
@@ -1403,27 +1373,33 @@ SmartTemplate4.classSmartTemplate = function() {
 		let isSignatureSetup = SmartTemplate4.Sig.isSignatureSetup,		
 		    serverInfo = util.getServerInfo(idKey), // find out server name and type (IMAP / POP3 etc.)
 		    common = SmartTemplate4.pref.isCommon(idKey) ? ' (uses Common)' : ''; // our "compact log" to assist our users more effective
-		util.logDebugOptional('functions.insertTemplate',
-		         'identityName:   ' + theIdentity.identityName + '\n'
-		       + 'key:            ' + theIdentity.key + common + '\n'
-		       + serverInfo
-		       + '------------------------------------------------\n'
-		       + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
-		       + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
-		       + 'sigBottom:      ' + theIdentity.sigBottom + '\n'       // sig at the end of the quoted text when replying above
-		       + 'attachSignature:' + theIdentity.attachSignature + '\n'
-		       + 'htmlSigFormat:  ' + SmartTemplate4.Sig.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
-		       + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
-		       + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
-		       + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
-		       + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
-		       + '%sig% type: [' + sigType + ']\n'
-		       + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
-		       + '------------------------------------------------\n'
-		       + 'SmartTemplate4: ' + util.Version + '\n'
-		       + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
-		       + 'HostSystem: ' + util.HostSystem + '\n'
-		       );
+        
+    try {
+      util.logDebugOptional('functions.insertTemplate',
+               'identityName:   ' + theIdentity.identityName + '\n'
+             + 'key:            ' + theIdentity.key + common + '\n'
+             + serverInfo
+             + '------------------------------------------------\n'
+             + 'sigOnReply:     ' + theIdentity.sigOnReply + '\n'
+             + 'sigOnForward:   ' + theIdentity.sigOnForward + '\n'
+             + 'sigBottom:      ' + theIdentity.sigBottom + '\n'       // sig at the end of the quoted text when replying above
+             + 'attachSignature:' + theIdentity.attachSignature + '\n'
+             + 'htmlSigFormat:  ' + SmartTemplate4.Sig.htmlSigFormat + '\n'   // Does htmlSigText contain HTML?
+             + 'composeHtml:    ' + theIdentity.composeHtml + '\n'
+             + 'replyOnTop:     ' + theIdentity.replyOnTop + '\n'      // quoting preference
+             + 'SmartTemplate4.isSignatureSetup:' + isSignatureSetup + '\n'
+             + 'SmartTemplate4.sigInTemplate: ' + SmartTemplate4.sigInTemplate + '\n'
+             + '%sig% type: [' + sigType + ']\n'
+             + 'compose case, is active? : ' + composeCase + ', ' + isActiveOnAccount + '\n'
+             + '------------------------------------------------\n'
+             + 'SmartTemplates version: ' + util.Version + '\n'
+             + 'Application: ' + util.Application + ' v' + util.AppverFull + '\n'
+             + 'HostSystem: ' + util.HostSystem + '\n'
+             );
+    }
+    catch(ex) {
+      util.logException("Logging detail failed", ex);
+    }
 
 		/* SIGNATURE HANDLING */
 		if (isActiveOnAccount) {  // && !sigVarDefined
@@ -1516,12 +1492,11 @@ SmartTemplate4.classSmartTemplate = function() {
 			
 			// PREMIUM FUNCTIONS
 			// issue notifications for any premium features used.
-			// all used functions are stored in the main instance of SmartTemplates (3pane window)
-			if (util.mainInstance.Util.premiumFeatures.length)
+			if (util.premiumFeatures.length)
       {
         // let's reset the local license
-        if (!util.hasLicense(true) ||  util.Licenser.key_type==2 || prefs.isDebugOption('premium.testNotification'))
-          util.popupLicenseNotification(util.mainInstance.Util.premiumFeatures, true, true);
+        if (!util.hasLicense() || util.licenseInfo.keyType==2 || prefs.isDebugOption('premium.testNotification'))
+          util.popupLicenseNotification(util.premiumFeatures, true, true);
 			}  
 			// reset the list of used premium functions for next turn
 			util.clearUsedPremiumFunctions();  // will affect main instance
@@ -1699,7 +1674,7 @@ SmartTemplate4.classSmartTemplate = function() {
 		resetDocument(gMsgCompose.editor, startup);
 		
 		// no license => show license notification.
-		if (!util.mainInstance.Licenser.isValidated) {
+		if (util.licenseInfo.status!="Valid") {
 			util.logDebugOptional('premium.licenser', 'show license popup (isValidated==false)');
 			util.popupLicenseNotification("", true, false);		// featureList = "" - standard for ALL features.
 		}
@@ -1707,8 +1682,12 @@ SmartTemplate4.classSmartTemplate = function() {
 			util.logDebugOptional('premium.licenser', 'License is validated, no popup');
 		
 		if (SmartTemplate4.hasDeferredVars) {
+      util.logDebug("Setting up listeners for deferred field variables!");
 			util.setupDeferredListeners(gMsgCompose.editor);
 		}
+    else {
+      util.logDebug("No deferred variables so we do not setup listeners...")
+    }
 		
 		util.logDebugOptional('functions.insertTemplate', ' finished. ' );
 		// remember  compose case for outside world

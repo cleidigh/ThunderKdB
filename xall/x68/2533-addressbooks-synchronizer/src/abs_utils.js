@@ -1,3 +1,10 @@
+//appVersion not yet available!
+try { //since TB89:
+  var { SQLiteDirectory }=ChromeUtils.import("resource:///modules/SQLiteDirectory.jsm");
+} catch(e) {  //up to TB88:
+  var { AddrBookDirectory, closeConnectionTo }=ChromeUtils.import("resource:///modules/AddrBookDirectory.jsm");
+}
+
 var appstarttime=Math.round(Date.now()/1000);
 var syncstate='';
 var initialized=false;
@@ -61,6 +68,7 @@ let strings={
 	"hiddenwinclosed": '',
 	"hiddenwin": '',
 	"hiddenwintitle": '',
+  "ftpwarn": ''
 };
 
 Object.keys(strings).forEach(key=>{
@@ -125,7 +133,7 @@ debug('book exist, askOverwrite(1)');
 debug('new book');
   }
 
-	if (filename.match(/^(.*)\.mab$/)) {
+	if (appVersion<82 && filename.match(/^(.*)\.mab$/)) {
 debug('Try to convert '+filename+' to sqlite addressbook');
 		file=await migrateBook(file, mabName, dir);
 		if (!file) return 'notcopied';
@@ -227,9 +235,10 @@ function fillAddressBook(dir, file)
 			return seOrArr;
 	}
 	function cardsAndLists(db, ab) {
-		//db: copy from   AddrBookDirectory
+		//db: copy from   AddrBookDirectory/SQLiteDirectory
 		//ab: copy to     nsIAbDirectory
 //debug('  copy cards');
+
 		let cards=se2arr(db.childCards);
 //debug('    copyCards: have enumerated the cards in tempDir');
 		let count=0;
@@ -269,6 +278,26 @@ debug('recreate maillists throws: '+e, e);
 		return '';
 	}	//end of cardsAndLists
 
+	const closeDB = async (db, file, tempbookname) => {
+debug('async close db '+file.path);
+    if (appVersion<89)
+      await closeConnectionTo(file);
+    else
+      await db.cleanUp();
+		Services.prefs.clearUserPref("ldap_2.servers."+tempbookname+".filename");
+debug('async remove tempfile '+file.path);
+		try { file.remove(false); }
+		catch(e) { debug('remove of tempfile '+file.path+' throws: '+e, e); }
+    if (appVersion>=89) {
+      let backupFile = file.clone();
+      backupFile.leafName = backupFile.leafName.replace(/\.sqlite$/, '.v2.sqlite');
+      if (backupFile.exists() && backupFile.isFile()) {
+debug('remove old backupFile '+backupFile.path);
+        backupFile.remove(false);
+      }
+    }
+	}
+
 debug('copy file to profD');
 //source file has to be in ProfD
 	let tempbookname;
@@ -279,7 +308,7 @@ debug('copy file to profD');
 		let tempFile=tdir.clone();
 		tempFile.appendRelativePath(tempName);
 		if (tempFile.exists() && tempFile.isFile()) {
-			/*await*/ closeConnectionTo(tempFile);  //just in case close sqlite db
+debug('remove old tempfile '+tempFile.path);
 			tempFile.remove(false);
 		}
 debug('use tempfile: copy '+file.path+' to '+tdir.path+' '+tempName);
@@ -290,11 +319,19 @@ debug('use tempfile: copy '+file.path+' to '+tdir.path+' '+tempName);
 debug('open the addressbook database file');
 		// open the addressbook database file
 		var db;
-		db = new AddrBookDirectory();
+debug('appVersion='+appVersion);
+    if (appVersion<89) {
+      db = new AddrBookDirectory();
+debug('<TB89: use AddrBookDirectory');
+    } else {
+      db = new SQLiteDirectory();
+debug('>=TB89: use SQLiteDirectory');
+    }
 		let uri='jsaddrbook://'+tempName;
 		Services.prefs.setCharPref("ldap_2.servers."+tempbookname+".filename", tempName);
 		db.init(uri);
-debug('opened '+file.path+' -> '+db);
+debug('opened '+file.path);
+//TB89: mail.addr_book: Backing up ggbstest_abstemp.sqlite to ggbstest_abstemp.v2.sqlite SQLiteDirectory.jsm:55:11
 	} catch(e) {
 debug('open mabfile: '+file.path+' '+file.permissions+' throws: '+e, e);
 		return 'rab_ve: open mabfile: '+file.path+' '+file.permissions+' '+e;
@@ -303,22 +340,24 @@ debug('open mabfile: '+file.path+' '+file.permissions+' throws: '+e, e);
 	try {
 		cardsAndLists(db, dir);
 	} catch(e) {
+    closeDB(db, file, tempbookname);
 		if (e===0) return "Corrupt addressbook";
 		else {
+//might throw error if downloaded addressbook is already version 2
+// (created/updated by >=TB89)
+//[Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [mozIStorageConnection.createStatement]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource:///modules/AddrBookDirectory.jsm :: get _lists :: line 199"  data: no]
+      if (e.message.includes('mozIStorageConnection.createStatement')) {
+debug('attempt to download a book which has already been updated by newer TB');
+        return ('\nAttempt to download a book which has already been updated by newer Thunderbird'+
+                '\nVersuch ein Adressbuch herunterzuladen, das von einem neueren Thunderbird geändert wurde');
+      } else {
 debug('cardsAndLists throws: '+e, e);
-			return 'rab_ve: cardsAndLists: '+e;
+        return 'rab_ve: cardsAndLists: '+e;
+      }
 		}
 	}
 
-	const closeDB = async (file, tempbookname) => {
-debug('async close db '+file.path);
-		await closeConnectionTo(file);
-		Services.prefs.clearUserPref("ldap_2.servers."+tempbookname+".filename");
-debug('async remove tempfile '+file.path);
-		try { file.remove(false); }
-		catch(e) { debug('remove of tempfile '+file.path+' throws: '+e, e); }
-	}
-	closeDB(file, tempbookname);
+	closeDB(db, file, tempbookname);
 	return '';
 } // fillAddressBook
 
@@ -370,18 +409,6 @@ debug('perform without popup');
 			else                       upload(singlebook, force);
 //		}
 	} else {	//usesPopup
-/*
-		let args = Cc["@mozilla.org/array;1"]
-										.createInstance(Ci.nsIMutableArray);
-		let s=Cc["@mozilla.org/supports-string;1"]
-				.createInstance(Ci.nsISupportsString);
-		s.data=strings[direction+'_title'];
-		args.appendElement(s, false);
-		let f=Cc["@mozilla.org/supports-string;1"]
-				.createInstance(Ci.nsISupportsString);
-		f.data=strings['cancel_label'];
-		args.appendElement(f, false);
-*/
 		let off=(exiting && prefs['hideallpopups'])?',left=-10000':'';
 		statusWin=Services.ww.openWindow(null, statusURI,
 			'_blank', 'chrome,resizable,titlebar=yes'+off, /*args*/null);
@@ -500,6 +527,7 @@ debug(dir.dirName+' alwaysask='+alwaysask);
 /*
  * migrate an old .mab addressbook to .sqlite
  */
+//obsolete since TB82
 async function migrateBook(oldFile, mabname, odir) {
 debug(oldFile.path+' as '+mabname);
 	let dir=odir;
@@ -511,7 +539,8 @@ debug(oldFile.path+' as '+mabname);
 		dir = MailServices.ab.getDirectoryFromId(pref);
 	}
 	let uri=dir.URI;
-	let newBook = new AddrBookDirectory();
+	let newBook;
+  newBook = new AddrBookDirectory();
 debug('newBook: '+newBook);
 	try {
 debug('newBook.init: '+uri);
@@ -1065,6 +1094,7 @@ function errorstr(aError) {
       intErr=19;
       error="Network reset"; // i.e. Service not available
       break;
+//ftp is obsolete since TB90
     case 0x804b0015:
       //NS_ERROR_FTP_LOGIN 21
       intErr=10;
@@ -1236,8 +1266,28 @@ debug('	tab='+nativeTabInfo);
 
 function initialize() {
 debug('entered');
-	if (initialized) return;
+	if (initialized) return null;
 	initialized=true;
+  let cPrefs={};
+  if (prefs['protocol']=='ftp') {
+    if (prefs['synctype']=='remote') {
+debug('cPrefs: ftpWarn is '+prefs['ftpwarn']);
+let delta=14*24*60*60*1000; //14 days
+      if (!prefs.hasOwnProperty('ftpwarn') || Date.now()-prefs['ftpwarn']>delta) {
+        prefs['ftpwarn']=Date.now();
+        cPrefs['ftpwarn']=prefs['ftpwarn'];
+        let uristring=prefs['protocol']+'://'+prefs['host']+prefs['path'];
+        let msg=uristring+'\n'+strings['ftpwarn'];
+        Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
+      }
+    } else {
+      //'remote' not currently selected but once 'ftp' was selected
+      //remove preference to prevent accidential using ftp
+      cPrefs['protocol']=null;
+      cPrefs['host']=null;
+      cPrefs['path']=null;
+    }
+  }
 	startTimer();
 	addCardListObserver();	// add observers for cards and lists
 	if (prefs['synctype'] && prefs['autodownload']) {
@@ -1247,6 +1297,7 @@ debug('entered');
 debug('main window available, open hiddenWin if necessary');
 		theHiddenWin(prefs['autoupload'] && prefs['synctype']=='imap');
 	}
+  return cPrefs;
 }
 function finalize(type) {
 	exiting=type;

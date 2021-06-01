@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "Soubor $P1$ nebyl nenalezen.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "Soubor $P1$ je prázdný",
         "placeholders": {
@@ -3127,9 +3135,6 @@
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Upravit kategorii"
 	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "Přidat novou kategorii"
-	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "Upravit uzel"
 	},
@@ -3146,9 +3151,6 @@
 		"message": "Kategorie:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "Kategorie:"
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "Kategorie:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "Heslo:"
 	},
-	"remotePage.passwordShow.label": {
-		"message": "Zobrazit"
+	"showHidePassword.tooltip": {
+		"message": "Zobrazit/Skrýt heslo"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Ověřit"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "H"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "Zobrazit"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "Z"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "Spustit na pozadí"
 	},
@@ -5214,15 +5210,6 @@
 	"keyLabel": {
 		"message": "Klíč"
 	},
-	"photolocalURILabel": {
-		"message": "Místní fotka"
-	},
-	"logolocalURILabel": {
-		"message": "místní logo"
-	},
-	"soundlocalURILabel": {
-		"message": "Místní zvuk"
-	},
 	"photoURILabel": {
 		"message": "Fotka"
 	},
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "Kopírovat obrázek"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "Kopírovat adresu obrázku"
 	},
 	"deleteImageCardLabel": {
 		"message": "Smazat obrázek"

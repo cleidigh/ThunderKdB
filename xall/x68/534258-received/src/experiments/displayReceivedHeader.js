@@ -61,10 +61,12 @@ var displayReceivedHeader = class extends ExtensionCommon.ExtensionAPI {
                     const headerRowValue = document.createElement("td");
                     headerRowValue.id = "receivedReceivedHeader";
 
-                    headersArray.forEach(function (item) {
+                    headersArray.forEach(function (header) {
                         const mailHeaderfield = document.createXULElement("mail-headerfield");
                         mailHeaderfield.flex = "1";
-                        mailHeaderfield.textContent = item;
+                        header.forEach(function (string) {
+                            mailHeaderfield.textContent += string;
+                        });
 
                         headerRowValue.appendChild(mailHeaderfield);
                     });

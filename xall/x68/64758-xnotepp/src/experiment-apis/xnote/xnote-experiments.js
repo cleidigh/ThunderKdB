@@ -40,6 +40,9 @@ function prefType(name) {
     case XNOTE_BASE_PREF_NAME+"show_on_select": {
       return "bool";
     }
+    case XNOTE_BASE_PREF_NAME+"show_in_messageDisplay": {
+      return "bool";
+    }
     case XNOTE_BASE_PREF_NAME+"show_first_x_chars_in_col": {
       return "int";
     }
@@ -70,7 +73,7 @@ var xnoteapi = class extends ExtensionCommon.ExtensionAPI {
           let storedVersion = xnote.ns.Commons.xnoteLegacyPrefs.prefHasUserValue("version") ?
                   xnote.ns.Commons.xnoteLegacyPrefs.getCharPref("version") : null
               
-          console.log(`storedVersion: ${storedVersion}; comparison: `+ (storedVersion == null));
+  //        console.log(`storedVersion: ${storedVersion}; comparison: `+ (storedVersion == null));
           xnote.ns.Commons.isNewInstallation = storedVersion == null;
           xnote.ns.Upgrades.checkUpgrades(storedVersion, xnote.ns.Commons.XNOTE_VERSION)
           xnote.ns.Commons.xnoteLegacyPrefs.setCharPref("version", xnote.ns.Commons.XNOTE_VERSION);
@@ -94,11 +97,29 @@ var xnoteapi = class extends ExtensionCommon.ExtensionAPI {
 
         async setPreferences(prefs) {
           xnote.ns.Commons.xnotePrefs = prefs;
-          console.debug({"XnotePrefs" : xnote.ns.Commons.xnotePrefs});
+ //         console.debug({"XnotePrefs" : xnote.ns.Commons.xnotePrefs});
           xnote.ns.Storage.updateStoragePath();
           xnote.ns.Commons.checkXNoteTag();
         },
 
+
+
+        async getXNote(id) {
+          let note = {};
+          try {
+
+            let realMessage = context.extension.messageManager.get(id);
+   //         console.log("realmsg", realMessage.messageId );
+            note = new xnote.ns.Note(realMessage.messageId);
+   //         console.log("xnote", note);
+ 
+                   } catch (ex) {
+            console.error(`Could not get TB mesg` );
+          }
+          return {text: note.text, date: note.modificationDate};
+        },
+
+  
         async getTbPref(name) {
           try {
             switch (prefType(name)) {
@@ -159,13 +180,13 @@ var xnoteapi = class extends ExtensionCommon.ExtensionAPI {
   }
 
   onShutdown(isAppShutdown) {
-    console.debug(`onShutdown: isAppShutdown=${isAppShutdown}`);
+//    console.debug(`onShutdown: isAppShutdown=${isAppShutdown}`);
     if (isAppShutdown) return;
   
-    Components.utils.unload(extension.rootURI.resolve("chrome/modules/xnote-upgrades.jsm"));
-    Components.utils.unload(extension.rootURI.resolve("chrome/modules/storage.jsm"));
-    Components.utils.unload(extension.rootURI.resolve("chrome/modules/commons.jsm"));
-    Components.utils.unload(extension.rootURI.resolve("chrome/modules/xnote.jsm"));
+    Components.utils.unload(xnoteExtension.rootURI.resolve("chrome/modules/xnote-upgrades.jsm"));
+    Components.utils.unload(xnoteExtension.rootURI.resolve("chrome/modules/storage.jsm"));
+    Components.utils.unload(xnoteExtension.rootURI.resolve("chrome/modules/commons.jsm"));
+    Components.utils.unload(xnoteExtension.rootURI.resolve("chrome/modules/xnote.jsm"));
 
     // invalidate the startup cache, such that after updating the addon the old
     // version is no longer cached

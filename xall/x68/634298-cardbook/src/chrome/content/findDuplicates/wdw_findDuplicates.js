@@ -7,7 +7,6 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 		gResults: [],
 		gResultsDirPrefId: [],
 		gHideForgotten: true,
-		cancel: false,
 		mergeAllCount: 0,
 		mergeAllDone: 0,
 
@@ -187,6 +186,115 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			}
 		},
 		
+		mergeOne: async function (aLineNumber, aSourceCat, aTargetCat, aActionId) {
+			let myOutCard = new cardbookCardParser();
+			myOutCard.dirPrefId = wdw_findDuplicates.gResults[aLineNumber][0].dirPrefId;
+			myOutCard.version = wdw_findDuplicates.gResults[aLineNumber][0].version;
+			
+			for (var j of [ 'photo' ]) {
+				var dirname = cardbookRepository.cardbookPreferences.getName(myOutCard.dirPrefId);
+				var image = {};
+				await cardbookIDBImage.getImage(j, dirname, wdw_findDuplicates.gResults[aLineNumber][0].dirPrefId+"::"+wdw_findDuplicates.gResults[aLineNumber][0].uid, wdw_findDuplicates.gResults[aLineNumber][0].fn)
+					.then(imageFound => { image = imageFound })
+					.catch( () => {} );
+				if (image.content && image.content != "") {
+					myOutCard[j].value = image.content;
+					myOutCard[j].extension = image.extension;
+				} else {
+					var out = false;
+					for (var k = 1; k < wdw_findDuplicates.gResults[aLineNumber].length; k++) {
+						await cardbookIDBImage.getImage(j, dirname, wdw_findDuplicates.gResults[aLineNumber][k].dirPrefId+"::"+wdw_findDuplicates.gResults[aLineNumber][k].uid, wdw_findDuplicates.gResults[aLineNumber][k][j].fn)
+							.then(image => {
+								myOutCard[j].value = image.content;
+								myOutCard[j].extension = image.extension;
+								out = true;
+							})
+							.catch( () => { } );
+						if (out == true) {
+							break;
+						}
+					}
+				}
+			}
+			var fields = cardbookRepository.allColumns.display.concat(cardbookRepository.allColumns.personal);
+			fields = fields.concat(cardbookRepository.allColumns.org);
+			for (let j of fields) {
+				myOutCard[j] = wdw_findDuplicates.gResults[aLineNumber][0][j];
+				if (!myOutCard[j]) {
+					for (let k = 1; k < wdw_findDuplicates.gResults[aLineNumber].length; k++) {
+						if (wdw_findDuplicates.gResults[aLineNumber][k][j]) {
+							myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[aLineNumber][k][j]));
+							break;
+						}
+					}
+				}
+			}
+			for (let j in cardbookRepository.customFields) {
+				for (let k = 0; k < cardbookRepository.customFields[j].length; k++) {
+					if (!cardbookRepository.cardbookUtils.getCardValueByField(myOutCard, cardbookRepository.customFields[j][k][0], false).length) {
+						for (let l = 1; l < wdw_findDuplicates.gResults[aLineNumber].length; l++) {
+							if (cardbookRepository.cardbookUtils.getCardValueByField(wdw_findDuplicates.gResults[aLineNumber][l], cardbookRepository.customFields[j][k][0], false).length) {
+								myOutCard.others.push(cardbookRepository.customFields[j][k][0] + ":" + cardbookRepository.cardbookUtils.getCardValueByField(wdw_findDuplicates.gResults[aLineNumber][l], cardbookRepository.customFields[j][k][0], false)[0]);
+								break;
+							}
+						}
+					}
+				}
+			}
+			for (let j of cardbookRepository.allColumns.categories) {
+				myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[aLineNumber][0][j]));
+				for (let k = 1; k < wdw_findDuplicates.gResults[aLineNumber].length; k++) {
+					myOutCard[j] = myOutCard[j].concat(wdw_findDuplicates.gResults[aLineNumber][k][j]);
+				}
+				myOutCard[j] = cardbookRepository.arrayUnique(myOutCard[j]);
+			}
+			for (let j of cardbookRepository.multilineFields) {
+				myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[aLineNumber][0][j]));
+				for (let k = 1; k < wdw_findDuplicates.gResults[aLineNumber].length; k++) {
+					myOutCard[j] = myOutCard[j].concat(wdw_findDuplicates.gResults[aLineNumber][k][j]);
+				}
+				for (var k=0; k<myOutCard[j].length; ++k) {
+					for (var l=k+1; l<myOutCard[j].length; ++l) {
+						if (j == "tel" && cardbookRepository.cardbookUtils.formatTelForSearching(myOutCard[j][k][0][0]) == cardbookRepository.cardbookUtils.formatTelForSearching(myOutCard[j][l][0][0])) {
+							myOutCard[j].splice(l--, 1);
+						} else if (j != "tel" && myOutCard[j][k][0][0] == myOutCard[j][l][0][0]) {
+							myOutCard[j].splice(l--, 1);
+						}
+					}
+				}
+			}
+			for (let j of [ 'event' ]) {
+				for (let k = 0; k < wdw_findDuplicates.gResults[aLineNumber].length; k++) {
+					let myEvents = cardbookRepository.cardbookUtils.getEventsFromCard(wdw_findDuplicates.gResults[aLineNumber][k].note.split("\n"), wdw_findDuplicates.gResults[aLineNumber][k].others);
+					let dateFormat = cardbookRepository.getDateFormat(wdw_findDuplicates.gResults[aLineNumber][k].dirPrefId, wdw_findDuplicates.gResults[aLineNumber][k].version);
+					let myPGNextNumber = cardbookRepository.cardbookTypes.rebuildAllPGs(myOutCard);
+					cardbookRepository.cardbookUtils.addEventstoCard(myOutCard, myEvents.result, myPGNextNumber, dateFormat);
+				}
+				// to do array unique
+			}
+			for (let j of cardbookRepository.allColumns.note) {
+				myOutCard[j] = wdw_findDuplicates.gResults[aLineNumber][0][j];
+				if (!myOutCard[j]) {
+					for (let k = 1; k < wdw_findDuplicates.gResults[aLineNumber].length; k++) {
+						if (wdw_findDuplicates.gResults[aLineNumber][k][j]) {
+							myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[aLineNumber][k][j]));
+							break;
+						}
+					}
+				}
+			}
+
+			for (let card of wdw_findDuplicates.gResults[aLineNumber]) {
+				let newCard = new cardbookCardParser();
+				cardbookRepository.cardbookUtils.cloneCard(card, newCard);
+				cardbookRepository.addCategoryToCard(newCard, aSourceCat);
+				await cardbookRepository.saveCardFromUpdate(card, newCard, aActionId, true);
+			}
+			cardbookRepository.addCategoryToCard(myOutCard, aTargetCat);
+			await cardbookRepository.saveCardFromUpdate({}, myOutCard, aActionId, true);
+			wdw_findDuplicates.finishMergeAllIdAction(aLineNumber, aActionId);
+		},
+		
 		mergeAll: function () {
 			let now = cardbookRepository.cardbookLog.getTime();
 			let sourceCat = now + "_" + cardbookRepository.extension.localeData.localizeMessage("sourceCategoryLabel")
@@ -194,15 +302,11 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			wdw_findDuplicates.mergeAllCount = wdw_findDuplicates.finishAction();
 			let myTopic = "cardsMerged";
 			let myActionId = cardbookActions.startAction(myTopic);
-			let i = 0;
+			var i = 0;
 			document.getElementById('recordsHbox').hidden = true;
 			document.getElementById('mergeAllVbox').hidden = false;
 			Services.tm.currentThread.dispatch({ run: function() {
 				while (document.getElementById(i + 'Row')) {
-					if (wdw_findDuplicates.cancel === true) {
-						wdw_findDuplicates.finishMergeAllAction(myActionId);
-						return;
-					}
 					let row = document.getElementById(i + 'Row');
 					if (row.getAttribute('delete') == 'true') {
 						i++;
@@ -212,102 +316,9 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 						continue;
 					}
 					
-					Services.tm.currentThread.dispatch({ run: function() {
-						let myOutCard = new cardbookCardParser();
-						myOutCard.dirPrefId = wdw_findDuplicates.gResults[i][0].dirPrefId;
-						
-						for (let j of [ 'photo' ]) {
-							myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[i][0][j]));
-							if (!myOutCard[j].localURI) {
-								for (let k = 1; k < wdw_findDuplicates.gResults[i].length; k++) {
-									if (wdw_findDuplicates.gResults[i][k][j].localURI) {
-										myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[i][k][j]));
-										break;
-									}
-								}
-							}
-						}
-						var fields = cardbookRepository.allColumns.display.concat(cardbookRepository.allColumns.personal);
-						fields = fields.concat(cardbookRepository.allColumns.org);
-						for (let j of fields) {
-							myOutCard[j] = wdw_findDuplicates.gResults[i][0][j];
-							if (!myOutCard[j]) {
-								for (let k = 1; k < wdw_findDuplicates.gResults[i].length; k++) {
-									if (wdw_findDuplicates.gResults[i][k][j]) {
-										myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[i][k][j]));
-										break;
-									}
-								}
-							}
-						}
-						for (let j in cardbookRepository.customFields) {
-							for (let k = 0; k < cardbookRepository.customFields[j].length; k++) {
-								if (!cardbookRepository.cardbookUtils.getCardValueByField(myOutCard, cardbookRepository.customFields[j][k][0], false).length) {
-									for (let l = 1; l < wdw_findDuplicates.gResults[i].length; l++) {
-										if (cardbookRepository.cardbookUtils.getCardValueByField(wdw_findDuplicates.gResults[i][l], cardbookRepository.customFields[j][k][0], false).length) {
-											myOutCard.others.push(cardbookRepository.customFields[j][k][0] + ":" + cardbookRepository.cardbookUtils.getCardValueByField(wdw_findDuplicates.gResults[i][l], cardbookRepository.customFields[j][k][0], false)[0]);
-											break;
-										}
-									}
-								}
-							}
-						}
-						for (let j of cardbookRepository.allColumns.categories) {
-							myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[i][0][j]));
-							for (let k = 1; k < wdw_findDuplicates.gResults[i].length; k++) {
-								myOutCard[j] = myOutCard[j].concat(wdw_findDuplicates.gResults[i][k][j]);
-							}
-							myOutCard[j] = cardbookRepository.arrayUnique(myOutCard[j]);
-						}
-						for (let j of cardbookRepository.multilineFields) {
-							myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[i][0][j]));
-							for (let k = 1; k < wdw_findDuplicates.gResults[i].length; k++) {
-								myOutCard[j] = myOutCard[j].concat(wdw_findDuplicates.gResults[i][k][j]);
-							}
-							for (var k=0; k<myOutCard[j].length; ++k) {
-								for (var l=k+1; l<myOutCard[j].length; ++l) {
-									if (j == "tel" && cardbookRepository.cardbookUtils.formatTelForSearching(myOutCard[j][k][0][0]) == cardbookRepository.cardbookUtils.formatTelForSearching(myOutCard[j][l][0][0])) {
-										myOutCard[j].splice(l--, 1);
-									} else if (j != "tel" && myOutCard[j][k][0][0] == myOutCard[j][l][0][0]) {
-										myOutCard[j].splice(l--, 1);
-									}
-								}
-							}
-						}
-						for (let j of [ 'event' ]) {
-							for (let k = 0; k < wdw_findDuplicates.gResults[i].length; k++) {
-								let myEvents = cardbookRepository.cardbookUtils.getEventsFromCard(wdw_findDuplicates.gResults[i][k].note.split("\n"), wdw_findDuplicates.gResults[i][k].others);
-								let dateFormat = cardbookRepository.getDateFormat(wdw_findDuplicates.gResults[i][k].dirPrefId, wdw_findDuplicates.gResults[i][k].version);
-								let myPGNextNumber = cardbookRepository.cardbookTypes.rebuildAllPGs(myOutCard);
-								cardbookRepository.cardbookUtils.addEventstoCard(myOutCard, myEvents.result, myPGNextNumber, dateFormat);
-							}
-							// to do array unique
-						}
-						for (let j of cardbookRepository.allColumns.note) {
-							myOutCard[j] = wdw_findDuplicates.gResults[i][0][j];
-							if (!myOutCard[j]) {
-								for (let k = 1; k < wdw_findDuplicates.gResults[i].length; k++) {
-									if (wdw_findDuplicates.gResults[i][k][j]) {
-										myOutCard[j] = JSON.parse(JSON.stringify(wdw_findDuplicates.gResults[i][k][j]));
-										break;
-									}
-								}
-							}
-						}
-		
-						for (let card of wdw_findDuplicates.gResults[i]) {
-							let newCard = new cardbookCardParser();
-							cardbookRepository.cardbookUtils.cloneCard(card, newCard);
-							cardbookRepository.addCategoryToCard(newCard, sourceCat);
-							cardbookRepository.saveCardFromUpdate(card, newCard, myActionId, true);
-						}
-						cardbookRepository.addCategoryToCard(myOutCard, targetCat);
-						cardbookRepository.saveCardFromUpdate({}, myOutCard, myActionId, true);
-						wdw_findDuplicates.finishMergeAllIdAction(i);
-					}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
+					Services.tm.currentThread.dispatch(wdw_findDuplicates.mergeOne(i, sourceCat, targetCat, myActionId), Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 					i++;
 				}
-				wdw_findDuplicates.finishMergeAllAction(myActionId);
 			}}, Components.interfaces.nsIEventTarget.DISPATCH_NORMAL);
 		},
 
@@ -342,7 +353,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			aButton.setAttribute('id', aName + 'Merge');
 			aButton.setAttribute('label', aLabel);
 			aButton.setAttribute('flex', '1');
-			function fireButton(event) {
+			async function fireButton(event) {
 				var myId = this.id.replace(/Merge$/, "");
 				var myArgs = {cardsIn: wdw_findDuplicates.gResults[myId], cardsOut: [], hideCreate: false, action: ""};
 				var myWindow = Services.wm.getMostRecentWindow("mail:3pane").openDialog("chrome://cardbook/content/mergeCards/wdw_mergeCards.xhtml", "", cardbookRepository.modalWindowParams, myArgs);
@@ -350,9 +361,9 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 				var myActionId = cardbookActions.startAction(myTopic);
 				switch (myArgs.action) {
 					case "CREATEANDREPLACE":
-						cardbookRepository.deleteCards(myArgs.cardsIn, myActionId);
+						await cardbookRepository.deleteCards(myArgs.cardsIn, myActionId);
 					case "CREATE":
-						cardbookRepository.saveCardFromUpdate({}, myArgs.cardsOut[0], myActionId, true);
+						await cardbookRepository.saveCardFromUpdate({}, myArgs.cardsOut[0], myActionId, true);
 						wdw_findDuplicates.finishMergeAction(myId);
 						break;
 				}
@@ -363,11 +374,14 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 		},
 
 
-		finishMergeAllIdAction: function (aId) {
+		finishMergeAllIdAction: function (aId, aActionId) {
 			wdw_findDuplicates.finishMergeAction(aId);
 			wdw_findDuplicates.mergeAllDone++;
 			let value = Math.round(wdw_findDuplicates.mergeAllDone / wdw_findDuplicates.mergeAllCount * 100);
 			document.getElementById("mergeAll-progressmeter").value = value;
+			if (wdw_findDuplicates.mergeAllDone == wdw_findDuplicates.mergeAllCount) {
+				wdw_findDuplicates.finishMergeAllAction(aActionId);
+			}
 		},
 
 		finishMergeAllAction: function (aActionId) {
@@ -445,7 +459,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			return myShownCount;
 		},
 
-		displayResults: function () {
+		displayResults: async function () {
 			cardbookElementTools.deleteRows('fieldsVbox');
 			var aListRows = document.getElementById('fieldsVbox');
 			var buttonMergeLabel = cardbookRepository.extension.localeData.localizeMessage("mergeCardsLabel");
@@ -474,7 +488,7 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 					var myCard = wdw_findDuplicates.gResults[i][j];
 					wdw_findDuplicates.createTextbox(aRow, i+"::"+j, myCard.fn, myCard.dirPrefId);
 				}
-				wdw_findDuplicates.createMergeButton(aRow, i, buttonMergeLabel);
+				await wdw_findDuplicates.createMergeButton(aRow, i, buttonMergeLabel);
 				if (!shouldBeForgotten) {
 					wdw_findDuplicates.createForgetButton(aRow, i, buttonForgetLabel);
 					myShownCount++;
@@ -543,15 +557,14 @@ if ("undefined" == typeof(wdw_findDuplicates)) {
 			cardbookDuplicate.loadDuplicate();
 		},
 
-		load: function () {
+		load: async function () {
 			i18n.updateDocument({ extension: cardbookRepository.extension });
 			wdw_findDuplicates.compareCards(window.arguments[0].dirPrefId);
 			wdw_findDuplicates.loadCssRules();
-			wdw_findDuplicates.displayResults();
+			await wdw_findDuplicates.displayResults();
 		},
 
 		cancel: function () {
-			wdw_findDuplicates.cancel = true;
 			cardbookRepository.cardbookDuplicateIndex = {};
 			close();
 		}

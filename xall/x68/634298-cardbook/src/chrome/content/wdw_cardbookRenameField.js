@@ -25,11 +25,20 @@ function validate () {
 			cardbookNotifications.setNotification(renameFieldNotification.errorNotifications, "valueAlreadyExists", [myValue]);
 			document.querySelector("dialog").getButton("accept").disabled = true;
 			return false;
-		} else {
-			cardbookNotifications.setNotification(renameFieldNotification.errorNotifications, "OK");
-			document.querySelector("dialog").getButton("accept").disabled = false;
-			return true;
 		}
+		if (window.arguments[0].context == "CreateCat" || window.arguments[0].context == "EditCat") {
+			var limit = 100000;
+			var field = cardbookRepository.extension.localeData.localizeMessage("popularityLabel");
+			var data = document.getElementById("mailPopTextBox").value.trim() * 1;
+			if (data && (data > limit)) {
+				cardbookNotifications.setNotification(renameFieldNotification.errorNotifications, "validateIntegerMsg", [field, limit, data]);
+				document.querySelector("dialog").getButton("accept").disabled = true;
+				return false;
+			}
+		}
+		cardbookNotifications.setNotification(renameFieldNotification.errorNotifications, "OK");
+		document.querySelector("dialog").getButton("accept").disabled = false;
+		return true;
 	}
 };
 
@@ -42,30 +51,41 @@ function onLoadDialog () {
 			var tmpArray = cardbookRepository.cardbookUtils.unescapeArray(cardbookRepository.cardbookUtils.escapeString(orgStructure).split(";"));
 			var idArray = window.arguments[0].id.split("::");
 			document.getElementById('typeLabel').value = cardbookRepository.extension.localeData.localizeMessage("wdw_cardbookRenameField" + window.arguments[0].context + "Label", [tmpArray[idArray.length - 2]]);
+		} else {
+			document.getElementById('typeLabel').value = cardbookRepository.extension.localeData.localizeMessage("orgNodeLabel");
 		}
 	} else {
 		document.getElementById('typeLabel').value = cardbookRepository.extension.localeData.localizeMessage("wdw_cardbookRenameField" + window.arguments[0].context + "Label");
 	}
 
-	if (window.arguments[0].context == "EditNode") {
-		document.getElementById('colorRow').hidden = true;
-	} else if ('color' in window.arguments[0]) {
-		if (window.arguments[0].color) {
-			document.getElementById('useColorCheck').checked = window.arguments[0].color;
-			document.getElementById('colorInput').value = window.arguments[0].color;
-		}
+	if ('color' in window.arguments[0]) {
+		document.getElementById('useColorCheck').checked = window.arguments[0].color;
+		document.getElementById('colorInput').value = window.arguments[0].color;
 	} else {
 		document.getElementById('colorRow').hidden = true;
+	}
+	if (window.arguments[0].context == "CreateCat" || window.arguments[0].context == "EditCat") {
+		let lowerCat = window.arguments[0].type.toLowerCase();
+		if (cardbookRepository.cardbookMailPopularityIndex[lowerCat] && cardbookRepository.cardbookMailPopularityIndex[lowerCat].count) {
+			document.getElementById('mailPopTextBox').value = cardbookRepository.cardbookMailPopularityIndex[lowerCat].count;
+		} else {
+			document.getElementById('mailPopTextBox').value = 0;
+		}
+	} else {
+		document.getElementById('mailPopRow').hidden = true;
 	}
 	document.getElementById('typeTextBox').value = window.arguments[0].type;
 	document.getElementById('typeTextBox').focus();
 };
 
-function onAcceptDialog () {
+function onAcceptDialog (aEvent) {
 	if (validate()) {
 		window.arguments[0].type = document.getElementById('typeTextBox').value.trim();
 		if (document.getElementById('colorRow').getAttribute("hidden") != "true") {
 			window.arguments[0].color = document.getElementById('useColorCheck').checked ? document.getElementById('colorInput').value : '';
+		}
+		if (document.getElementById('mailPopRow').getAttribute("hidden") != "true") {
+			window.arguments[0].mailpop = document.getElementById('mailPopTextBox').value.trim() || 0;
 		}
 		window.arguments[0].typeAction="SAVE";
 		if (typeof window.arguments[0].onSaved == "function") {
@@ -73,6 +93,8 @@ function onAcceptDialog () {
 		}
 		close();
 	}
+	aEvent.preventDefault();
+	document.querySelector("dialog").getButton("accept").disabled = false;
 };
 
 function onCancelDialog () {

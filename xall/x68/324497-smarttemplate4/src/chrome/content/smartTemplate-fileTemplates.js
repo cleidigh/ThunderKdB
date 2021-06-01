@@ -114,10 +114,9 @@ SmartTemplate4.fileTemplates = {
 		return this.document.getElementById('templateList.' + flavour)
 	},
 	
-  populateMenu: function populateMenu(doc, menu) {	
-		const util = SmartTemplate4.Util,
-		      createElement = doc.createXULElement ? doc.createXULElement.bind(doc) : doc.createElement.bind(doc);
-		// alert("to do: populate Menus under write / reply buttons (main window)");
+  // obsolete?
+  populateMenus: function populateMenu() {	
+    SmartTemplate4.Util.notifyTools.notifyBackground({ func: "updateTemplateMenus" });
 	},
 	
 	// adds an item to currently visible list
@@ -160,10 +159,7 @@ SmartTemplate4.fileTemplates = {
         // populate the Entries array; fallback to browser bookmark type if undefined
       }
     }
-    // main menu
-    let win = SmartTemplate4.Util.Mail3PaneWindow,
-        doc = win.document;
-    win.SmartTemplate4.fileTemplates.populateMenu(doc);
+    // SmartTemplate4.fileTemplates.populateMenus(); 
   },
 	
 	// label was changed, auto update the list!
@@ -214,12 +210,12 @@ SmartTemplate4.fileTemplates = {
 		
 		
     // check if it exists and replace label
-		const msgTitle = getBundleString('SmartTemplate4.fileTemplates.wrnSelectUpdateItem.caption','Templates - update')
+		const msgTitle = getBundleString('st.fileTemplates.wrnSelectUpdateItem.caption','Templates - update')
     if (!isNew) {
       let lb = FT.ListBox;      
       existingIndex = lb.selectedIndex;
       if (existingIndex<0) {
-				let txt = getBundleString('SmartTemplate4.fileTemplates.wrnSelectUpdateItem','You have to select an item from the list to update!');
+				let txt = getBundleString('st.fileTemplates.wrnSelectUpdateItem','You have to select an item from the list to update!');
         Services.prompt.alert(null, msgTitle, txt);
         return;
       }
@@ -229,12 +225,12 @@ SmartTemplate4.fileTemplates = {
     }
 				
     if (!label.trim()) {
-			let txt = getBundleString('SmartTemplate4.fileTemplates.wrnEnterTitle','Please enter a title!');
+			let txt = getBundleString('st.fileTemplates.wrnEnterTitle','Please enter a title!');
       Services.prompt.alert(null, msgTitle, txt);
       return;
     }
     if (!path.trim()) {
-			let txt = getBundleString('SmartTemplate4.fileTemplates.wrnEnterPath','Please enter a valid path!');
+			let txt = getBundleString('st.fileTemplates.wrnEnterPath','Please enter a valid path!');
       Services.prompt.alert(null, msgTitle, txt);
       return;
     }
@@ -311,21 +307,14 @@ SmartTemplate4.fileTemplates = {
     let path = new Array("extensions", "smartTemplates.json");
     // http://dxr.mozilla.org/comm-central/source/mozilla/toolkit/modules/FileUtils.jsm?from=FileUtils.jsm&case=true#41
 		
-		const { FileUtils } = 
-			ChromeUtils.import ?
-			ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
-			Components.utils.import("resource://gre/modules/FileUtils.jsm");
+		const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm');
 		
 		return FileUtils.getFile("ProfD", path); // implements nsIFile
   } ,	
   	
   readStringFile: function readStringFile() {
     // To read content from file
-    // const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {}); // TextDecoder
-		
-		const {OS} = (typeof ChromeUtils.import == "undefined") ?
-		  Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-		  ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+		const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
     // To read & write content to file
     // const {TextDecoder, TextEncoder, OS} = Cu.import("resource://gre/modules/osfile.jsm", {});  
     
@@ -397,10 +386,8 @@ SmartTemplate4.fileTemplates = {
 			if (!fromOptions) {
 				promise3 = promise2.then(
 					function promise2_populateMenu() {
-						const mwin = util.Mail3PaneWindow,
-									doc = mwin.document;
-						util.logDebug ('promise2.then populateMenu() ...'); 
-						mwin.SmartTemplate4.fileTemplates.populateMenu(doc);
+						util.logDebug ('promise2.then populateMenus() ...'); 
+						// SmartTemplate4.fileTemplates.populateMenus();
 						return promise2; // make loadCustomMenu chainable
 					},
 					function promise2_onFail(ex) {
@@ -422,10 +409,7 @@ SmartTemplate4.fileTemplates = {
     const util = SmartTemplate4.Util;
     
     try {
-      // const {OS} = Components.utils.import("resource://gre/modules/osfile.jsm", {});
-			const {OS} = (typeof ChromeUtils.import == "undefined") ?
-				Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-				ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+			const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
 				
       let fileTemplates = this, // closure this
           profileDir = OS.Constants.Path.profileDir,
@@ -543,7 +527,7 @@ SmartTemplate4.fileTemplates = {
           if (prefs.isDebugOption('fileTemplates.menus')) debugger;
 					event.stopImmediatePropagation();
 					if (event.target.disabled) {
-						let txt = util.getBundleString("SmartTemplate4.notification.restrictTemplates", "You need a SmartTemplates license to use more than {1} templates!");
+						let txt = util.getBundleString("st.notification.restrictTemplates", "You need a SmartTemplates license to use more than {1} templates!");
 						
 						SmartTemplate4.Message.display(
 							txt.replace("{1}", maxFreeItems), 
@@ -576,7 +560,7 @@ SmartTemplate4.fileTemplates = {
     */
 		
 		let menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem"),
-		menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.openFile","Open SmartTemplates file template…");		
+		menuTitle = util.getBundleString("st.fileTemplates.openFile","Open SmartTemplates file template…");		
 		menuitem.setAttribute("label", menuTitle);
 		menuitem.setAttribute("s4uiElement", "true");
 		menuitem.setAttribute("st4composeType", composeType);
@@ -600,7 +584,7 @@ SmartTemplate4.fileTemplates = {
 		/* [item 29]  Add configuration item to file template menus. */
     if (showConfigureItem) {
       menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
-      menuTitle = util.getBundleString("SmartTemplate4.fileTemplates.configureMenu","Configure menu items…");
+      menuTitle = util.getBundleString("st.fileTemplates.configureMenu","Configure menu items…");
       menuitem.setAttribute("label", menuTitle);
 			menuitem.setAttribute("s4uiElement", "true");
       menuitem.setAttribute("st4composeType", composeType);
@@ -625,7 +609,6 @@ SmartTemplate4.fileTemplates = {
       msgPopup.appendChild(menuitem);	
     }
     
-		
 		// push stationery separator down to the bottom - Stationery appends its own items dynamically.
 		if (lastChild && lastChild.tagName == 'menuseparator') {
 			msgPopup.appendChild(lastChild);
@@ -683,9 +666,22 @@ SmartTemplate4.fileTemplates = {
 		return menupopup;		
 	} ,
 	
+  initMenusWithReset: function() {
+    SmartTemplate4.Util.logDebug("Refreshing fileTemplate menus...");
+    SmartTemplate4.fileTemplates.initMenus(true);
+  },
+  
   initMenus: function (reset = false) {
 		const util = SmartTemplate4.Util,
           prefs = SmartTemplate4.Preferences;
+    let loc = "";
+    try { 
+      if (window)
+        loc = window.document.URL; 
+    }
+    catch(ex) {;}
+          
+    util.logDebugOptional("notifications.menus", "fileTemplates.initMenus()...[" + loc + "]");
 		function logDebug (t) {
 			util.logDebugOptional("fileTemplates", t);
 		} 
@@ -918,10 +914,7 @@ SmartTemplate4.fileTemplates = {
 					prefs = SmartTemplate4.Preferences,
 					NSIFILE = Ci.nsIFile || Ci.nsILocalFile;
 		
-    let //localized text for filePicker filter menu
-		    strBndlSvc = Cc["@mozilla.org/intl/stringbundle;1"].getService(Ci.nsIStringBundleService),
-		    bundle = strBndlSvc.createBundle("chrome://smarttemplate4/locale/settings.properties"),
-        filterText;
+    let filterText = util.getBundleString("fpFilterHtmlTemplate", "HTML Template"); //localized text for filePicker filter menu
 		
 		let fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker);
 				
@@ -938,12 +931,7 @@ SmartTemplate4.fileTemplates = {
 		} 
 		
 		fp.init(window, "", fp.modeOpen);
-		try {
-			filterText = bundle.GetStringFromName("fpFilterHtmlTemplate");
-		}
-		catch (ex) { 
-			filterText ="HTML Template"; 
-		}
+
     fp.appendFilter(filterText, "*.html; *.htm");
     fp.defaultExtension = 'html';
 		
@@ -1129,7 +1117,7 @@ SmartTemplate4.fileTemplates = {
 			catch(ex) {
         var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 				let parentWin = Services.wm.getMostRecentWindow("msgcompose"),
-				    errText = util.getBundleString("SmartTemplate4.fileTemplates.error.charSet",
+				    errText = util.getBundleString("st.fileTemplates.error.charSet",
 						  "Problems converting a HTML template from charset [{1}]\n"
 							+ "Using raw string data instead.\n"
 							+ "If this results in garbled characters, try adding an explicit 'meta charset=' to the head section. Maybe try ISO-8859-1?");
@@ -1179,7 +1167,7 @@ SmartTemplate4.fileTemplates = {
 				
 				if (!localFile.exists()) {
 					// template.loadingError = Stationery._f('template.file.not.exists', [template.url])
-					let text = util.getBundleString("SmartTemplate4.fileTemplates.error.filePath",
+					let text = util.getBundleString("st.fileTemplates.error.filePath",
 						 "Could not load the file template '{0}' from path:\n{1}\nThe file may have been removed or renamed.");
 					
 					this.lastError = text.replace('{0}', template.label).replace('{1}', template.path);

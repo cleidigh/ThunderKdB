@@ -1,33 +1,3 @@
-/* MIT License
-
-Copyright (c) 2020 Johannes Endres
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */
-
-/* global DavUploader  */
-/* global encodepath  */
-/* global daysFromTodayIso */
-/* global punycode */
-/* global Status */
-/* global attachmentStatus */
-/* global generatePassword */
-/* exported CloudConnection */
-
 //#region  Configurable options and useful constants
 const apiUrlBase = "ocs/v1.php";
 const apiUrlUserInfo = "/cloud/users/";
@@ -35,9 +5,10 @@ const apiUrlUserID = "/cloud/user";
 const apiUrlShares = "/apps/files_sharing/api/v1/shares";
 const apiUrlGetApppassword = "/core/getapppassword";
 const apiUrlCapabilities = "/cloud/capabilities";
-const davUrlDefault = "remote.php/dav/files/";
+const davUrlBase = "remote.php/dav/files/";
 const ncMinimalVersion = 19;
 const ocMinimalVersion = 10 * 10000 + 0 * 100 + 10;
+const DAV_MAX_FILE_SIZE = 0x100000000 - 1; /* Almost 4GB */
 //#endregion
 
 /**
@@ -55,7 +26,6 @@ class CloudConnection {
             "OCS-APIREQUEST": "true",
             "User-Agent": "Filelink for *cloud",
         };
-        this._davUrl = null;
         this.laststatus = null;
     }
 
@@ -83,49 +53,35 @@ class CloudConnection {
     /**
      * Upload a single file
      *
-     * @param {number} fileId The id Thunderbird uses to reference the upload
+     * @param {string} uploadId The id of the upload created in background.js
      * @param {string} fileName w/o path
      * @param {File} fileObject the local file as a File object
      */
-    async uploadFile(fileId, fileName, fileObject) {
+    async uploadFile(uploadId, fileName, fileObject) {
         const upload_status = new Status(fileName);
-        attachmentStatus.set(fileId, upload_status);
+        attachmentStatus.set(uploadId, upload_status);
 
         upload_status.set_status('preparing');
-        // Get the server's actual DAV URL
+
         if (!this._davUrl) {
-            // Start with default from docs
-            this._davUrl = davUrlDefault + this.userId;
-            // Fetch URL from capabilities
-            const data = await this._doApiCall(apiUrlCapabilities);
-            // Does it contain a value?
-            if (data && data.capabilities && data.capabilities.core && data.capabilities.core["webdav-root"]) {
-                try {
-                    const u = new URL(data.capabilities.core["webdav-root"]);
-                    // Is it a url on the same server
-                    if (u.host === (new URL(this.serverUrl)).host) {
-                        this._davUrl = u.origin + u.pathname;
-                    }
-                } catch (error) { }
-            }
+            this._davUrl = davUrlBase + this.userId;
         }
 
         const uploader = new DavUploader(
             this.serverUrl, this.username, this.password, this._davUrl, this.storageFolder);
 
-        const response = await uploader.uploadFile(fileId, fileName, fileObject);
+        const response = await uploader.uploadFile(uploadId, fileName, fileObject);
 
         if (response.aborted) {
             return response;
         } else if (response.ok) {
             upload_status.set_status('sharing');
             this.updateFreeSpaceInfo();
-            let url = await this._getShareLink(fileName, fileId);
+            let url = this._cleanUrl(await this._getShareLink(fileName, uploadId));
             if (url) {
                 if (upload_status.status !== 'generatedpassword') {
-                    Status.remove(fileId);
+                    Status.remove(uploadId);
                 }
-                url += "/download";
                 return { url, aborted: false, };
             }
         }
@@ -154,16 +110,18 @@ class CloudConnection {
 
         const data = await this._doApiCall(apiUrlUserInfo + this.userId);
         if (data && data.quota) {
-            if (data.quota.free) {
+            if ("free" in data.quota) {
                 const free = parseInt(data.quota.free);
                 spaceRemaining = free >= 0 && free <= Number.MAX_SAFE_INTEGER ? free : -1;
             }
-            if (data.quota.used) {
+            if ("used" in data.quota) {
                 const used = parseInt(data.quota.used);
                 spaceUsed = used >= 0 && used <= Number.MAX_SAFE_INTEGER ? used : -1;
             }
         }
-        await messenger.cloudFile.updateAccount(this._accountId, { spaceRemaining, spaceUsed, });
+        const uploadSizeLimit = spaceRemaining >= 0 ? Math.min(spaceRemaining, DAV_MAX_FILE_SIZE) : DAV_MAX_FILE_SIZE;
+
+        await messenger.cloudFile.updateAccount(this._accountId, { spaceRemaining, spaceUsed, uploadSizeLimit, });
 
         return data;
     }
@@ -172,7 +130,7 @@ class CloudConnection {
      * Delete all the properties that are read from the server's capabilities to clean out old values
      */
     forgetCapabilities() {
-        ['_davUrl', '_password_validate_url', '_password_generate_url', 'api_enabled',
+        ['_password_validate_url', '_password_generate_url', 'api_enabled',
             'public_shares_enabled', 'enforce_password', 'expiry_max_days',
             'cloud_versionstring', 'cloud_productname', 'cloud_type', 'cloud_supported',]
             .forEach(p => delete this[p]);
@@ -184,25 +142,15 @@ class CloudConnection {
     async updateCapabilities() {
         const data = await this._doApiCall(apiUrlCapabilities);
         if (!data._failed && data.capabilities) {
-            // Remember the URL to use in WebDAV calls
-            // Does it contain a value?
-            if (data && data.capabilities && data.capabilities.core && data.capabilities.core["webdav-root"]) {
-                try {
-                    const u = new URL(data.capabilities.core["webdav-root"]);
-                    // Is it a url on the same server
-                    if (u.host === (new URL(this.serverUrl)).host) {
-                        this._davUrl = u.origin + u.pathname;
-                    }
-                } catch (error) { }
-            }
-
             // Don't test data.capabilities.files_sharing.api_enabled because the next line contains it all
             // Is public sharing enabled?
-            this.public_shares_enabled = !!data.capabilities.files_sharing && data.capabilities.files_sharing.public && !!data.capabilities.files_sharing.public.enabled;
+            this.public_shares_enabled = !!data.capabilities.files_sharing &&
+                !!data.capabilities.files_sharing.public && !!data.capabilities.files_sharing.public.enabled;
             if (this.public_shares_enabled) {
                 // Remember if a download password is required
                 if (data.capabilities.files_sharing.public.password) {
-                    if (data.capabilities.files_sharing.public.password.enforced_for && 'boolean' === typeof data.capabilities.files_sharing.public.password.enforced_for.read_only) {
+                    if (data.capabilities.files_sharing.public.password.enforced_for &&
+                        'boolean' === typeof data.capabilities.files_sharing.public.password.enforced_for.read_only) {
                         // ownCloud
                         this.enforce_password = !!data.capabilities.files_sharing.public.password.enforced_for.read_only;
                     } else {
@@ -227,13 +175,13 @@ class CloudConnection {
                     if (u.host === (new URL(this.serverUrl)).host) {
                         this._password_validate_url = u.origin + u.pathname;
                     }
-                } catch (error) { }
+                } catch (error) { /* Error just means there is no url */ }
                 try {
                     const u = new URL(data.capabilities.password_policy.api.generate);
                     if (u.host === (new URL(this.serverUrl)).host) {
                         this._password_generate_url = u.origin + u.pathname;
                     }
-                } catch (error) { }
+                } catch (error) { /* Error just means there is no url */ }
             }
 
             // Take version from capabilities
@@ -292,6 +240,8 @@ class CloudConnection {
         if (data.id) {
             this.userId = data.id;
         }
+        // The DAV-path contains the userID, so update it
+        this._davUrl = davUrlBase + this.userId;
         return data;
     }
 
@@ -332,7 +282,8 @@ class CloudConnection {
         } else {
             return {
                 passed: true,
-                _failed: true, status: 'not_nc',
+                _failed: true,
+                status: 'not_nc',
                 statusText: 'Cloud does not validate passwords, probably not a Nextcloud instance.',
             };
         }
@@ -361,21 +312,33 @@ class CloudConnection {
      * Get a share link for the file, reusing an existing one with the same
      * parameters
      * @param {string} fileName The name of the file to share
-     * @param {number} fileId The of this upload as assigned by Thunderbird
-     * @returns {string} The share link
+     * @param {string} uploadId The id of the upload created in background.js
+     * @returns {string} The share link as returned by the OCS API
      */
-    async _getShareLink(fileName, fileId) {
-        const path_to_share = encodepath(this.storageFolder + "/" + fileName);
+    async _getShareLink(fileName, uploadId) {
+        const path_to_share = utils.encodepath(this.storageFolder + "/" + fileName);
         const expireDate = this.useExpiry ? daysFromTodayIso(this.expiryDays) : undefined;
 
+        // It's not possible to retreive an display the password for an existing share
         if (!this.useDlPassword) {
             //  Check if the file is already shared ...
             const existingShare = await this._findExistingShare(path_to_share, expireDate);
             if (existingShare && existingShare.url) {
-                return punycode.toUnicode(existingShare.url);
+                return existingShare.url;
             }
         }
-        return this._makeNewShare(path_to_share, expireDate, fileId);
+        return this._makeNewShare(path_to_share, expireDate, uploadId);
+
+        /**
+         * Adds the given number of days to the current date and returns an ISO sting of
+         * that date
+         * @param {number} days Number of days to add
+         */
+        function daysFromTodayIso(days) {
+            const d = new Date();
+            d.setDate(d.getDate() + parseInt(days));
+            return d.toISOString().slice(0, 10);
+        }
     }
 
     /**
@@ -410,10 +373,10 @@ class CloudConnection {
      * Share the file
      * @param {string} path_to_share The encoded path of the file
      * @param {string} expireDate The expiry date, encoded as ISO
-     * @param {number} fileId The of this upload as assigned by Thunderbird
+     * @param {string} uploadId The id of the upload created in background.js
      * @returns {string} The new share url or null
      */
-    async _makeNewShare(path_to_share, expireDate, fileId) {
+    async _makeNewShare(path_to_share, expireDate, uploadId) {
         let shareFormData = "path=" + path_to_share;
         shareFormData += "&shareType=3"; // 3 = public share
 
@@ -431,19 +394,36 @@ class CloudConnection {
         const data = await this._doApiCall(apiUrlShares, 'POST', { "Content-Type": "application/x-www-form-urlencoded", }, shareFormData);
 
         if (data && data.url) {
-            try {
-                const u = new URL(data.url);
-                if (u.host === (new URL(this.serverUrl)).host) {
-                    if (this.useDlPassword && this.useGeneratedDlPassword) {
-                        const status = attachmentStatus.get(fileId);
-                        status.password = this.downloadPassword;
-                        status.set_status('generatedpassword');
-                    }
-                    return punycode.toUnicode(u.origin) + u.pathname;
-                }
-            } catch (error) { }
+            if (this.useDlPassword && this.useGeneratedDlPassword) {
+                const status = attachmentStatus.get(uploadId);
+                status.password = this.downloadPassword;
+                status.set_status('generatedpassword');
+            }
+            return data.url;
         }
         return null;
+    }
+
+    /**
+     * - Remove all unwanted parts like username, parameters, ...
+     * - Convert punycode domain names to UTF-8
+     * - URIencode special characters in path
+     * @param {String} url An URL thant might contain illegal characters, Punycode and unwanted parameters
+     * @returns {?String} The cleaned URL or null if url is not a valid http(s) URL
+     */
+    _cleanUrl(url) {
+        let u;
+        try {
+            u = new URL(url);
+        } catch (error) {
+            return null;
+        }
+        if (!u.protocol.match(/^https?:$/)) {
+            return null;
+        }
+        const encoderUrl = u.origin.replace(u.hostname, punycode.toUnicode(u.hostname)) +
+            utils.encodepath(u.pathname);
+        return encoderUrl + (encoderUrl.endsWith("/") ? "" : "/") + "download";
     }
     //#endregion
 
@@ -490,7 +470,7 @@ class CloudConnection {
                 return { _failed: true, status: response.status, statusText: response.statusText, };
             }
             const parsed = await response.json();
-            if (!parsed || !parsed.ocs || !parsed.ocs.meta || !parsed.ocs.meta.statuscode) {
+            if (!parsed || !parsed.ocs || !parsed.ocs.meta || !isFinite(parsed.ocs.meta.statuscode)) {
                 return { _failed: true, status: 'invalid_json', statusText: "No valid data in json", };
             } else if (parsed.ocs.meta.statuscode >= 300) {
                 return { _failed: true, status: parsed.ocs.meta.statuscode, statusText: parsed.ocs.meta.message, };
@@ -503,3 +483,11 @@ class CloudConnection {
     }
     //#endregion
 }
+
+/* global utils*/
+/* global DavUploader  */
+/* global punycode */
+/* global Status */
+/* global attachmentStatus */
+/* global generatePassword */
+/* exported CloudConnection */

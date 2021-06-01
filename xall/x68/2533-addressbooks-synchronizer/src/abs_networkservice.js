@@ -113,7 +113,7 @@ debug('start: usePost='+usePost+' flmt='+flmt+' URI='+URI);
       this._channel.asyncOpen(this , null);
     } catch(e) {
       debug('throws: '+e, e);
-      return 'ABS: '+e;
+      return 'ABS: Remote Download: '+e;
     }
     return 0;
   },

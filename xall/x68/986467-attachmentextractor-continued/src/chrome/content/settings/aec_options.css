@@ -1,0 +1,44 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* 
+ * Don't display the lightweight-theme images
+ * because of overlaying the whole dialog.
+ * On the other hand we need the lightweight=true
+ * to have the dark and light mode ability
+ */
+
+/*
+#wdw_aecOptionsWindow:not([lwt-tree]):-moz-lwtheme {
+  background-image: none !important;
+}
+#wdw_aecOptionsWindow:not([lwt-tree]):-moz-lwtheme-darktext {
+  background: -moz-Dialog !important;
+  color: -moz-DialogText;
+  text-shadow: none;
+}
+legend:-moz-lwtheme {
+  background-color: unset !important;
+}
+*/
+/***************************************************************/
+
+#wdw_aecOptionsWindow {
+  width: 60em;
+  padding: 0.7em;
+}
+
+tabpanels {
+  margin: 0.5em;
+}
+
+fieldset {
+  border: none;
+}
+
+h2 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.3em;
+}

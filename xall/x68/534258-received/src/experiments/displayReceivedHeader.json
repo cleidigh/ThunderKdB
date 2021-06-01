@@ -42,7 +42,10 @@
             "description": "Array of Received headers",
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
           }
         ]

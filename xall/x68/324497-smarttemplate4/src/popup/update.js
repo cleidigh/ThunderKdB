@@ -8,8 +8,18 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
   addEventListener("click", async (event) => {
-    if (event.target.id.startsWith("register")) {
-      messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
+    if (event.target.id.startsWith("register") || event.target.id == 'bargainIcon') {
+      if (event.target.classList.contains("upgrade")) {
+        let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+
+        messenger.Utilities.openLinkExternally("http://sites.fastspring.com/quickfolders/product/smarttemplateupgrade?referrer=" + licenseInfo.licenseKey);
+      }
+      else {
+        messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=landing-update");
+      }
+    }
+    if (event.target.id=='whatsNew') {
+      messenger.Utilities.showVersionHistory();    
     }
     if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew") || event.target.id=="upgrade") {
       messenger.Utilities.showXhtmlPage("chrome://smarttemplate4/content/register.xhtml");
@@ -61,10 +71,6 @@ END LICENSE BLOCK */
       timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
     }
     
-    let measuredEffort =  document.getElementById('hours-effort');
-    if (measuredEffort) {
-      measuredEffort.innerText = messenger.i18n.getMessage("hours-effort", hoursWorked);
-    }
     
     let suggestion = document.getElementById('support-suggestion');
     if (suggestion) {
@@ -79,6 +85,50 @@ END LICENSE BLOCK */
     let remind = document.getElementById('label-remind-me');
     if (remind) {
       remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
+      
+    }
+    
+    let specialOffer = document.getElementById('specialOfferTxt');
+    if (specialOffer) {
+      let discount = "33%";
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [discount])
+          .replace(/\{boldStart\}/g,"<b>")
+          .replace(/\{boldEnd\}/g,"</b>");
+    }
+          
+    let userName = await messenger.Utilities.getUserName();
+    let specialIntro = document.getElementById('specialOfferIntro');
+    if (specialIntro) {
+      specialIntro.innerHTML =  messenger.i18n.getMessage('special-offer-intro')
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>")
+        .replace("{name}", userName);
+    }
+    let specialOfferStandard = document.getElementById('specialOfferStandard');
+    if (specialOfferStandard) {
+      let discount = "40%";
+      specialOfferStandard.innerHTML =  messenger.i18n.getMessage('license-standard-special-offer', [userName,discount])
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>");
+    }
+    let specialOfferTerms = document.getElementById('specialOfferTerms');
+    if (specialOfferTerms) {
+      specialOfferTerms.innerHTML =  messenger.i18n.getMessage('license-standard-special-terms')
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>");
+    } 
+    
+    let whatsNewLst = document.getElementById('whatsNewList');
+    if (whatsNewLst) {
+      whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
+        .replace(/\{L1\}/g,"<li>")
+        .replace(/\{L2\}/g,"</li>");
+      
+    }
+    
+    let ongoing = document.getElementById('ongoing-work');
+    if (ongoing) {
+      ongoing.innerText = messenger.i18n.getMessage("ongoing-work", addonName);
       
     }
     

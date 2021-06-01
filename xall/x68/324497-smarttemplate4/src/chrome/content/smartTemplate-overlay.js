@@ -369,11 +369,16 @@ SmartTemplate4.mimeDecoder = {
 	// see also: hg.mozilla.org/users/Pidgeot18_gmail.com/patch-queues/file/cd19874b48f8/patches-newmime/parser-charsets
 	//           http://encoding.spec.whatwg.org/#interface-textdecoder
 	//           
-	detectCharset: function(str) {
+	detectCharset: function(str, supressDefault=false) {
 		let charset = "";
 		 // not supported                  
 		 // #    RFC1555 ISO-8859-8 (Hebrew)
 		 // #    RFC1922 iso-2022-cn-ext (Chinese extended)
+    let encodedCharset = str.match(/=\?([^\?]*)\?/);
+    if (encodedCharset.length>1) {
+      // matchgroup 1 is the charset! 
+      charset = encodedCharset[1];
+    }
 
 		if (str.search(/\x1b\$[@B]|\x1b\(J|\x1b\$\(D/gi) !== -1) {   // RFC1468 (Japanese)
 		  charset = "iso-2022-jp"; 
@@ -391,8 +396,10 @@ SmartTemplate4.mimeDecoder = {
 		  charset = "iso-2022-jp-1"; 
 		}
 		if (!charset) { 
+      if (!supressDefault) {
 			let defaultSet = SmartTemplate4.Preferences.getMyStringPref ('defaultCharset');
 			charset = defaultSet ? defaultSet : '';  // should we take this from Thunderbird instead?
+		}
 		}
 		SmartTemplate4.Util.logDebugOptional('mime','mimeDecoder.detectCharset guessed charset: ' + charset +'...');
 		return charset;
@@ -406,6 +413,7 @@ SmartTemplate4.mimeDecoder = {
 
 		try {
 			if (/=\?/.test(theString)) {
+        // https://en.wikipedia.org/wiki/MIME#Encoded-Word
 				// RFC2231/2047 encoding.
 				// We need to escape the space and split by line-breaks,
 				// because getParameter stops convert at the space/line-breaks.
@@ -413,10 +421,20 @@ SmartTemplate4.mimeDecoder = {
         //    some even use a space character between 2 encoding blocks
         theString = theString.replace ("?= =?", "?=\n=?"); // space problem
 				let array = theString.split(/\s*\r\n\s*|\s*\r\s*|\s*\n\s*|\s*\t\s*/g);
+        // detect charset from the string and override if necessary
+        let customCharset = SmartTemplate4.mimeDecoder.detectCharset(theString, true) || charset; 
+        // https://searchfox.org/mozilla-central/source/netwerk/mime/nsIMIMEHeaderParam.idl
 				for (let i = 0; i < array.length; i++) {
-					decodedStr += this.headerParam
-					                  .getParameter(array[i].replace(/%/g, "%%").replace(/ /g, "-%-"), null, charset, true, { value: null })
-					                  .replace(/-%-/g, " ").replace(/%%/g, "%");
+          let aHeaderVal = array[i].replace(/%/g, "%%").replace(/ /g, "-%-");
+					decodedStr += 
+            this.headerParam
+              .getParameter(
+                aHeaderVal,     // header string 
+                null,           // name of a MIME header parameter
+                customCharset,  // fallback charset
+                true,           // aTryLocaleCharset
+                { value: null }
+              ).replace(/-%-/g, " ").replace(/%%/g, "%");
 				}
 			}
 			else {
@@ -488,12 +506,22 @@ SmartTemplate4.mimeDecoder = {
       // http://mxr.mozilla.org/comm-central/source/mailnews/addrbook/public/nsIAbCard.idl
       
       let abManager = Components.classes["@mozilla.org/abmanager;1"].getService(Components.interfaces.nsIAbManager),
-          allAddressBooks = abManager.directories; 
+          allAddressBooks = []; 
+          
+       if (Array.isArray(abManager.directories)) {
+         allAddressBooks = abManager.directories; // Tb 88
+       }
+       else {
+         let AB = abManager.directories;
+         while (AB.hasMoreElements()) {
+           let addressBook = AB.getNext().QueryInterface(Components.interfaces.nsIAbDirectory);
+           allAddressBooks.push(addressBook);
+         }
+       }
       
       // API-to-do: use API https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html
-      while (allAddressBooks.hasMoreElements()) {
-        let addressBook = allAddressBooks.getNext()
-                                         .QueryInterface(Components.interfaces.nsIAbDirectory);
+      for (let i=0; i<allAddressBooks.length; i++ ) {
+        let addressBook = allAddressBooks[i];
         if (addressBook instanceof Components.interfaces.nsIAbDirectory) { // or nsIAbItem or nsIAbCollection
           // alert ("Directory Name:" + addressBook.dirName);
           try {
@@ -568,9 +596,27 @@ SmartTemplate4.mimeDecoder = {
       return [del1, del2, isOptional];
     }
     
-		
 		if (typeof addrstr =='undefined')
 			return ''; // no address string (new emails)
+      
+    // fix mime encoded strings (cardbook seems to store these!)
+    // [issue 125] solve encoding problems
+    let isCorrectMime = true,
+        detectCharset = this.detectCharset.bind(this),
+        decode = this.decode.bind(this);
+    function correctMime(str) {
+      if (!isCorrectMime || !str) return str;
+      if (!str.includes("=?")) return str;
+      let cs = detectCharset(str, true);
+      if (cs) {
+        let corrected = decode(str, cs);
+        if (corrected != str) {
+          util.logDebug("Correcting MIME encoded word from AB: " + str + "  to:" + corrected + "\nGuessed charset: " + cs);
+          return corrected;
+        }
+      }
+      return str;
+    }      
 		
     //  %from% and %to% default to name followed by bracketed email address
     if (typeof format=='undefined' || format == '') {
@@ -628,6 +674,10 @@ SmartTemplate4.mimeDecoder = {
     function getCardProperty(p) {
       if (!card) return '';
       let r = card.getProperty(p,"");
+      if (r) {
+        let d = SmartTemplate4.mimeDecoder.decode(r);
+        if (d) return d;
+      }
       return r;
     }
 
@@ -648,8 +698,8 @@ SmartTemplate4.mimeDecoder = {
 					
       // [Bug 25816] - missing names caused by differing encoding
       // MIME decode (moved into the loop)
-      if (!bypassCharsetDecoder)
-        addressField = this.decode(array[i], charset);
+      // if (!bypassCharsetDecoder) this.decode(array[i], charset);
+      addressField = correctMime(array[i]); 
       
 			// Escape "," in mail addresses
 			array[i] = addressField.replace(/\r\n|\r|\n/g, "")
@@ -687,19 +737,19 @@ SmartTemplate4.mimeDecoder = {
 			fullName = addressee;
       
 			// attempt filling first & last name from AB
-      firstName = (isResolveNamesAB && card) ? card.firstName : '';
+      firstName = (isResolveNamesAB && card) ? correctMime(card.firstName) : '';
       if (isResolveNamesAB && card) {
 				if (prefs.getMyBoolPref('mime.resolveAB.preferNick')) {
-          firstName = card.getProperty("NickName", card.firstName);
+          firstName = correctMime(card.getProperty("NickName", card.firstName));
 				}
 				if (!firstName && prefs.getMyBoolPref('mime.resolveAB.displayName')) {
-					firstName = card.displayName;
+					firstName = correctMime(card.displayName);
           // displayName is usually the full name, so we may have to remove that portion for firstname.
           isFirstNameFromDisplay = true;
         }
       }
-      lastName = (isResolveNamesAB && card)  ? card.lastName : '';
-      fullName = (isResolveNamesAB && card && card.displayName) ? card.displayName : fullName;
+      lastName = (isResolveNamesAB && card)  ? correctMime(card.lastName) : '';
+      fullName = (isResolveNamesAB && card && card.displayName) ? correctMime(card.displayName) : fullName;
 			
 			
 			let isNameFound = (firstName.length + lastName.length > 0); // only set if name was found in AB
@@ -1478,37 +1528,38 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
         Cc = Components.classes,
 				Cu = Components.utils,
         util = SmartTemplate4.Util,
-        prefs = SmartTemplate4.Preferences,
-				mainLicenser = util.Mail3PaneWindow.SmartTemplate4.Licenser;
+        prefs = SmartTemplate4.Preferences;
 				
 	// make sure to use the licenser from main window, to save time.
-	if (!mainLicenser.isValidated && mainLicenser.GracePeriod<=0) {
+	if (SmartTemplate4.Util.licenseInfo.status != "Valid" && SmartTemplate4.Util.licenseInfo.trialDays<=0) {
 		let varX = RegExp(/%\S*%/); // any variable with no whitespaces in it
 		if (varX.test(msg)) {
-			const PreviewLength = 320,
+			const PreviewLength = 500,
 			      startVars = msg.search(/%\S*%/),
 						isTruncateStart = (startVars > 10); // cut off text before first %var%
-			let txtAlert = util.getBundleString("SmartTemplate4.notification.license.required", 
-			                 "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."),
-					txtParseTitle = util.getBundleString("SmartTemplate4.notification.parsing", "Parsing variables:"),
+			let txtAlert = util.getBundleString(
+            "st.notification.license.required", 
+            "SmartTemplates requires a license to continue working. Read more at the bottom of the compose window."),
+					txtParseTitle = util.getBundleString("st.notification.parsing", "Parsing variables:"),
 			    parseString = 
-						(isTruncateStart ? "…" : "") +
+						(isTruncateStart ? "…\n" : "") +
 						msg.substr(isTruncateStart ? startVars : 0);
 						
-			parseString = txtParseTitle + '\n' +
-			    parseString.substr(0, PreviewLength) +
+			parseString = parseString.substr(0, PreviewLength) +
 					(parseString.length>PreviewLength ? "…" : "")
 					
 			// show a fancier "branded" alert;
       // add countdown  - isLicenseWarning=true
       const parentWin = Services.wm.getMostRecentWindow("msgcompose") || window;
 			SmartTemplate4.Message.display(
-        txtAlert + '\n\n' + parseString, 
-				"centerscreen,titlebar,modal,dialog",
-				{ ok: function() { ; } , 
-          isLicenseWarning: true, 
-          licenser: mainLicenser},
-				parentWin
+        txtAlert + '\n' + txtParseTitle, 
+				"centerscreen,modal",
+				{ 
+          ok: function() { ; } , 
+          isLicenseWarning: true
+        },
+				parentWin,
+        parseString
 			);
 		}
 	}
@@ -1596,6 +1647,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
 				if (prefs.isDebugOption("tokens.deferred")) debugger;
 				// let's implement later resolving of variables for premium users:
 				// throws "hdr is null"
+        util.logException("classifyReservedWord(" + reservedWord + ")", ex);
 				SmartTemplate4.Message.parentWindow = gMsgCompose.editor.document.defaultView;
 				util.displayNotAllowedMessage(reservedWord);
 				return "";
@@ -2638,10 +2690,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
   // [Bug 25871] %file()% function
   function insertFileLink(txt, composeType) {
     util.logDebug("insertFileLink " + txt);
-    const { FileUtils } = 
-            ChromeUtils.import ?
-            ChromeUtils.import('resource://gre/modules/FileUtils.jsm') :
-            Components.utils.import("resource://gre/modules/FileUtils.jsm"),
+    const { FileUtils } = ChromeUtils.import('resource://gre/modules/FileUtils.jsm'),
           isFU = FileUtils && FileUtils.File;
 								
     // determine file type:
@@ -2822,10 +2871,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       }
     }
     catch(ex) {
-      var { Services } =
-        ChromeUtils.import ?
-        ChromeUtils.import('resource://gre/modules/Services.jsm') :
-        Components.utils.import('resource://gre/modules/Services.jsm');
+      var { Services } =ChromeUtils.import('resource://gre/modules/Services.jsm');
       
       util.logException("FAILED: insertFileLink(" + txt + ") \n You may get more info if you enable debug mode.",ex );
       Services.prompt.alert(null, "SmartTemplates", "Something went wrong trying to read a file: " + txt + "\n" +
@@ -2857,7 +2903,7 @@ SmartTemplate4.regularize = function regularize(msg, composeType, isStationery, 
       let localFile = new FileUtils.File(pathUri);				
 			
 			if (!localFile.exists()) {
-        let wrn = util.getBundleString("SmartTemplate4.fileFunction.notExists", "Function {0} could not find or access file. Check path below:");
+        let wrn = util.getBundleString("st.fileFunction.notExists", "Function {0} could not find or access file. Check path below:");
 				alert(wrn.replace("{0}", "'attachFile()'") + "\n" + pathUri);
 				return;
 			}

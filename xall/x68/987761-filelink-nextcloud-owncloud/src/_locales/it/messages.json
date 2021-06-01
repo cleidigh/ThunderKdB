@@ -1,0 +1,172 @@
+{
+  "extensionDescription": {
+    "message": "Carica allegati di grandi dimensioni sul tuo cloud e invia il link via email"
+  },
+  "extensionName": {
+    "message": "*cloud - FileLink per Nextcloud e ownCloud"
+  },
+  "saveButton": {
+    "message": "Salva"
+  },
+  "resetButton": {
+    "message": "Resetta"
+  },
+  "serverUrl": {
+    "message": "URL del server"
+  },
+  "serverUrl_details": {
+    "message": "L'URL di base del server cloud deve iniziare con http o https.\nSe il server viene eseguito su una porta non standard, inseriscilo nell'URL."
+  },
+  "username": {
+    "message": "Nome utente"
+  },
+  "username_details": {
+    "message": "Il tuo nome utente sul tuo server cloud"
+  },
+  "password": {
+    "message": "Token app o password"
+  },
+  "password_details": {
+    "message": "Un token app (preferibile) o una password.\nCon Nextcloud l'Add-On cerca di convertire la password in un token di app prima di memorizzarla. In caso di fallimento, la password viene memorizzata non cifrata."
+  },
+  "storageFolder": {
+    "message": "Percorso di archiviazione nel cloud"
+  },
+  "storageFolder_details": {
+    "message": "Percorso in cui verranno archiviati gli allegati nel cloud. Se non si esce, viene creato durante il caricamento."
+  },
+  "useNoDlPassword": {
+    "message": "Nessuna password"
+  },
+  "useNoDlPassword_details": {
+    "message": "Non è richiesta alcuna password per il download"
+  },
+  "useGeneratedDlPassword": {
+    "message": "Usa password generate"
+  },
+  "useGeneratedDlPassword_details": {
+    "message": "Verrà generata una password casuale per ogni file. Fare clic sul pulsante *stato cloud sopra il riquadro degli allegati per visualizzare e copiare le password generate dopo il caricamento."
+  },
+  "useDlPassword": {
+    "message": "Proteggere con password i download"
+  },
+  "oneDlPassword": {
+    "message": "Una password per tutti i download"
+  },
+  "useDlPassword_details": {
+    "message": "Questa password deve essere conforme alle regole che l'amministratore del cloud applica (ad esempio lunghezza, set di caratteri, ...). In caso contrario, il caricamento avrà esito negativo. Inoltra questa password ai destinatari; ne avranno bisogno per scaricare l'allegato."
+  },
+  "expiryDaysBefore": {
+    "message": "I download scadono dopo "
+  },
+  "expiryDaysAfter": {
+    "message": " giorni"
+  },
+  "expiry_details": {
+    "message": "Il numero di giorni in cui il download sarà disponibile, incluso oggi"
+  },
+  "freespace": {
+    "message": "Spazio libero ($FREE$GB di $FULL$GB)",
+    "placeholders": {
+      "free": {
+        "content": "$1"
+      },
+      "full": {
+        "content": "$2"
+      }
+    }
+  },
+  "success": {
+    "message": "Successo"
+  },
+  "error_0": {
+    "message": "Errore sconosciuto"
+  },
+  "error_typeerror": {
+    "message": "Nessuna connessione. Controlla l'URL del server e la connessione di rete"
+  },
+  "error_404": {
+    "message": "Verifica dell'account non riuscita: nome utente errato o errore rete o di cloud incompatibile"
+  },
+  "warn_unsupported_cloud": {
+    "message": "Versione obsoleta di Nextcloud o ownCloud. Potresti perdere dati. Chiedere all'amministratore del cloud di aggiornare"
+  },
+  "obsolete_version": {
+    "description": "This is displayed over the icon if the cloud version is not supported, so it should be quite short and contain at most two lines.",
+    "message": "Versione\nobsoleta"
+  },
+  "error_401": {
+    "message": "Accesso non riuscito. Controllare il nome utente e la password."
+  },
+  "error_503": {
+    "message": "Il server è in modalità di manutenzione. Riprova più tardi."
+  },
+  "error_sharing_off": {
+    "message": "La condivisione è disabilitata in questo cloud. Chiedi all'amministratore di abilitarlo."
+  },
+  "error_invalid_pw": {
+    "message": "Password di download non valida (i caricamenti falliranno). Il server dice: $ 1"
+  },
+  "error_password_enforced": {
+    "message": "Il cloud richiede una password di download."
+  },
+  "warn_expiry_too_long": {
+    "message": "L'amministratore del cloud ha impostato un tempo di scadenza massimo di $ 1 giorni. Il valore è stato ritagliato, altrimenti i caricamenti avrebbero avuto esito negativo."
+  },
+  "warn_no_config_check": {
+    "message": "Verifica dell'account non riuscita. Problemi di rete?"
+  },
+  "warn_insecure_http": {
+    "message": "Con http: i dati di accesso verranno trasferiti non crittografati. Usa https: invece. Se non funziona, chiedi al tuo amministratore."
+  },
+  "status_menutooltip": {
+    "description": "This is displayed as a tooltip when the mouse pointer hovers over the menu button labelled with 'status_menuname'",
+    "message": "Mostra lo stato *cloud uploads e le password generate"
+  },
+  "status_menuname": {
+    "description": "This short text is displayed on the menu button that opens the status popup next to the *cloud logo",
+    "message": "Stato"
+  },
+  "status_no_uploads": {
+    "message": "Nessun caricamento attivo"
+  },
+  "status_button_clear": {
+    "description": "Button to remove error messages from status popup",
+    "message": "Cancella notifiche caricamenti completi"
+  },
+  "status_preparing": {
+    "message": "Preparazione"
+  },
+  "status_creating": {
+    "message": "Creazione cartella"
+  },
+  "status_moving": {
+    "message": "Spostamento di file in conflitto"
+  },
+  "status_uploading": {
+    "message": "Caricamento"
+  },
+  "status_sharing": {
+    "message": "Condivisione"
+  },
+  "status_checkingsize": {
+    "description": "This will be displayed in the status popup. If this step fails this string will be with one indicating failure, eg 'Checking maximum file size failed'.",
+    "message": "Controllo dimensione massima del file"
+  },
+  "status_checkingspace": {
+    "message": "Controllo spazio libero"
+  },
+  "status_error": {
+    "description": "This will be combined with one of the states above, eg 'Preparing failed'. If this doesn't work in your language, please tell me.",
+    "message": "$1 non riuscito/a"
+  },
+  "status_password": {
+    "message": "password: $ 1"
+  },
+  "warn_nonascii_password": {
+    "message": "La password contiene caratteri che potrebbero causare problemi di accesso. Usa invece un token app."
+  },
+  "advanced_options": {
+    "message": "Opzioni avanzate"
+  }
+}

@@ -10,14 +10,22 @@ var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionPa
 const EXTENSION_NAME = "jorgk@thunderHTMLedit";
 var extension = ExtensionParent.GlobalManager.getExtension(EXTENSION_NAME);
 
-function loadCSS(url) {
-  const styleSheetService = Cc["@mozilla.org/content/style-sheet-service;1"]
-    .getService(Ci.nsIStyleSheetService);
-  const styleSheetURI = Services.io.newURI(url, null, null);
-  styleSheetService.loadAndRegisterSheet(styleSheetURI, styleSheetService.AUTHOR_SHEET);
+function loadCSS(url, win) {
+  let link = win.document.createElementNS(
+    "http://www.w3.org/1999/xhtml",
+    "link",
+  );
+  link.setAttribute("rel", "stylesheet");
+  link.setAttribute("type", "text/css");
+  link.setAttribute("href", url);
+
+  win.document.documentElement.appendChild(link);
 }
 
 function setupUI(win) {
+  let os = Services.appinfo.OS;
+  let dir = (os == "WINNT" ? "win" : (os == "Darwin" ? "mac" : "linux"));
+  loadCSS(extension.getURL(`content/skin/${dir}/composer.css`), win);
   let l10nObj = JSON.parse(ThunderHTMLedit.l10n);
 
   // All our stuff lives inside this object, so create it now.
@@ -99,6 +107,10 @@ var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
   }
 
   onShutdown(isAppShutdown) {
+    ExtensionSupport.unregisterWindowListener(EXTENSION_NAME);
+    for (let win of Services.wm.getEnumerator("msgcompose")) {
+      tearDownUI(win);
+    }
     if (isAppShutdown) return;
     this.chromeHandle.destruct();
     this.chromeHandle = null;
@@ -110,7 +122,6 @@ var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
   }
 
   getAPI(context) {
-    context.callOnClose(this);
     return {
       ThunderHTMLedit: {
         addComposeWindowListener(l10n) {
@@ -126,10 +137,6 @@ var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
           defaultsBranch.setStringPref("OptionsJSON", '{"behavioursEnabled":true}');
           defaultsBranch.setBoolPref("ReplaceTabs", false);
 
-          let os = Services.appinfo.OS;
-          let dir = (os == "WINNT" ? "win" : (os == "Darwin" ? "mac" : "linux"));
-          loadCSS(extension.getURL(`content/skin/${dir}/composer.css`));
-
           // Before we register our listener, we get the existing windows.
           let windows = ExtensionSupport.openWindows;  // Returns iterator.
           ThunderHTMLedit.existingWindows = [];
@@ -144,12 +151,5 @@ var ThunderHTMLedit = class extends ExtensionCommon.ExtensionAPI {
         },
       },
     };
-  }
-
-  close() {
-    ExtensionSupport.unregisterWindowListener(EXTENSION_NAME);
-    for (let win of Services.wm.getEnumerator("msgcompose")) {
-      tearDownUI(win);
-    }
   }
 };

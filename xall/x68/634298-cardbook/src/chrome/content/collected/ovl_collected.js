@@ -6,7 +6,7 @@ if ("undefined" == typeof(ovl_collected)) {
 
 	var ovl_collected = {
 		
-		addCollectedContact: function (aIdentity, aEmailsCollections, aDisplayName, aEmail) {
+		addCollectedContact: async function (aIdentity, aEmailsCollections, aDisplayName, aEmail) {
 			cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : start of emails identity : " + aIdentity);
 			cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2("debug mode : start of emails collection : " + aEmailsCollections.toSource());
 			if (!aEmail) {
@@ -24,12 +24,18 @@ if ("undefined" == typeof(ovl_collected)) {
 			if (!cardbookRepository.isEmailRegistered(aEmail)) {
 				for (var i = 0; i < aEmailsCollections.length; i++) {
 					var dirPrefId = aEmailsCollections[i][2];
+					// check for the address book
+					let account = cardbookRepository.cardbookAccounts.filter(child => dirPrefId == child[4]);
+					if (account.length == 0) {
+						cardbookRepository.cardbookLog.updateStatusProgressInformation("Email collection : wrong dirPrefId : " + dirPrefId, "Error");
+						continue;
+					}
 					if (!cardbookRepository.cardbookPreferences.getReadOnly(dirPrefId)) {
 						if (aEmailsCollections[i][0] == "true") {
 							if ((aIdentity == aEmailsCollections[i][1]) || ("allMailAccounts" == aEmailsCollections[i][1])) {
 								var dirPrefIdName = cardbookRepository.cardbookPreferences.getName(dirPrefId);
 								cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(dirPrefIdName + " : debug mode : trying to collect contact " + aDisplayName + " (" + aEmail + ")");
-								cardbookRepository.cardbookUtils.addCardFromDisplayAndEmail(dirPrefId, aDisplayName, aEmail, aEmailsCollections[i][3], myActionId);
+								await cardbookRepository.cardbookUtils.addCardFromDisplayAndEmail(dirPrefId, aDisplayName, aEmail, aEmailsCollections[i][3], myActionId);
 							}
 						}
 					}
@@ -42,14 +48,14 @@ if ("undefined" == typeof(ovl_collected)) {
 						var myNewCard = new cardbookCardParser();
 						cardbookRepository.cardbookUtils.cloneCard(myCard, myNewCard);
 						myNewCard.fn = aDisplayName;
-						cardbookRepository.saveCardFromUpdate(myCard, myNewCard, myActionId, true);
+						await cardbookRepository.saveCardFromUpdate(myCard, myNewCard, myActionId, true);
 					}
 				}
 			}
 			cardbookActions.endAction(myActionId);
 		},
 	
-		collectToCardBook: function () {
+		collectToCardBook: async function () {
 			var resultEmailsCollections = [];
 			resultEmailsCollections = cardbookRepository.cardbookPreferences.getAllEmailsCollections();
 			if (resultEmailsCollections && resultEmailsCollections.length != 0) {
@@ -58,7 +64,7 @@ if ("undefined" == typeof(ovl_collected)) {
 					if (myFields[field]) {
 						let addresses = MailServices.headerParser.parseEncodedHeaderW(myFields[field]);
 						for (let address of addresses) {
-							ovl_collected.addCollectedContact(gMsgCompose.identity.key, resultEmailsCollections, address.name, address.email);
+							await ovl_collected.addCollectedContact(gMsgCompose.identity.key, resultEmailsCollections, address.name, address.email);
 							cardbookIDBMailPop.updateMailPop(address.email);
 						}
 					}

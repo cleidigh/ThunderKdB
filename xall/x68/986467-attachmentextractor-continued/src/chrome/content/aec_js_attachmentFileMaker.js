@@ -309,7 +309,7 @@ if (typeof AttachmentFileMaker === "undefined") {
         .replace(this.tokenregexs.dollars, "$$$$");
     }
     /*if (!cache.recipients&&(stringin.indexOf('#toemail#')>-1)) {
-    	//cache.authoremail=(msheader.mime2DecodedAuthor?msheader.mime2DecodedRecipients+"":"").replace(/.*<|>.*|[\/\\#]+/g, "");
+      //cache.authoremail=(msheader.mime2DecodedAuthor?msheader.mime2DecodedRecipients+"":"").replace(/.*<|>.*|[\/\\#]+/g, "");
     }*/
     if (!cache.subject && (stringin.indexOf('#subject#') > -1)) {
       cache.subject = (msheader.mime2DecodedSubject ? msheader
@@ -429,11 +429,11 @@ if (typeof AttachmentFileMaker === "undefined") {
 
     count = "" + count;
     if (navigator.appVersion.indexOf("Windows") !== -1) {
-      aFileName = aFileName.replace(/[\"]+/g, "'") /*  " = '			*/
-        .replace(/[\*\:\?\t\v]+/g, " ") /*  * : ? tab vtab = 	*/
-        .replace(/[\<]+/g, "(") /*  < = (			*/
-        .replace(/[\>]+/g, ")") /*  > = )			*/
-        .replace(/[\/\|]+/g, "_"); /*  /| = _ 		    */
+      aFileName = aFileName.replace(/[\"]+/g, "'") /*  " = '      */
+        .replace(/[\*\:\?\t\v]+/g, " ") /*  * : ? tab vtab =   */
+        .replace(/[\<]+/g, "(") /*  < = (      */
+        .replace(/[\>]+/g, ")") /*  > = )      */
+        .replace(/[\/\|]+/g, "_"); /*  /| = _         */
       var comp = (folder === null || folder.path === null ? "" : folder.path) +
         "\\" + aFileName;
       comp = comp.replace(/\\/g, "");
@@ -469,7 +469,7 @@ if (typeof AttachmentFileMaker === "undefined") {
       aFileName = aFileName.replace(/[\. ]+\\/g, "\\");
     } else {
       if (navigator.appVersion.indexOf("Macintosh") !== -1) aFileName =
-        aFileName.replace(/[\:]+/g, "_"); /*   : = _ 	*/
+        aFileName.replace(/[\:]+/g, "_"); /*   : = _   */
       aFileName = aFileName.replace(/%/g, count).replace(/#extpart#/g, extpart
         .replace(this.tokenregexs.dollars, "$$$$"));
     }

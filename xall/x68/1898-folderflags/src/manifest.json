@@ -3,16 +3,31 @@
   "applications": {
     "gecko": {
       "id": "{2bc419d0-6cf3-11da-8494-000a95be0946}",
-      "strict_min_version": "68.0a1"
+      "strict_min_version": "68.0"
     }
   },
   "name": "__MSG_extensionName__",
-  "version": "1.3.0",
+  "version": "1.4.2",
   "description": "__MSG_extensionDescription__",
   "author": "Ryan Lee (ryan@ryanlee.org)",
   "homepage_url": "http://ryanlee.org/software/mozilla/thunderbird/folderflags/",
-  "legacy": {
-    "type": "xul"
+  "icons": {
+    "32": "chrome/skin/icon32x32.png"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "experiment_apis": {
+    "WindowListener": {
+      "schema": "api/WindowListener/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["WindowListener"]],
+        "script": "api/WindowListener/implementation.js"
+      }
+    }
   },
   "default_locale": "en"
 }

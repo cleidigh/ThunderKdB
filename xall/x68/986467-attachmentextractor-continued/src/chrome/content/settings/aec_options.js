@@ -28,15 +28,13 @@ if (typeof (wdw_aecOptions) === "undefined") {
       wdw_aecOptions.aeStringBundle = Services.strings.createBundle(
         "chrome://attachmentextractor_cont/locale/attachmentextractor.properties");
 
-      wdw_aecOptions.loadInitialPane();
-
       // enableFields in general pane
       wdw_aecOptions.enableField(document.getElementById(
         'afterextractpolicydetach'), 'afterextractpolicydetachconfirm');
       
       wdw_aecOptions.enableField(document.getElementById(
-        'afterextractsavemessage'), ['fnpsavemessage',
-        'fnpsavemessagecountpattern']);
+        'afterextractsavemessage'), ['fnpsavemessage','fnpsavemessage_label',
+        'fnpsavemessagecountpattern','fnpsavemessagecountpattern_label']);
 
       // enableFields in folders pane
       wdw_aecOptions.enableField(document.getElementById(
@@ -59,21 +57,15 @@ if (typeof (wdw_aecOptions) === "undefined") {
         'includepatternstextbox');
 
       wdw_aecOptions.enableField(document.getElementById(
-        'extractmode1'), ['setdatetoemailbox', 'minimumsize']);
-      wdw_aecOptions.enableField(document.getElementById(
         'returnreceiptsenabled'), ['override']);
 
       // enableFields in protocoll pane
       wdw_aecOptions.enableField(document.getElementById('reportgenenabled'),
-        ['reportname', 'reportgenthumbnail', 'reportgencssfile',
-          'reportgencssfilebutton', 'reportgenembedcss']);
-
+        ['reportname', 'reportname_label', 'reportgenthumbnail']);
 
       document.getElementById('filenamepattern_exampledate').value =
         exampleDate.toLocaleString();
       wdw_aecOptions.updateexamplefilename();
-
-      wdw_aecOptions.showTab();
     },
 
     enableAutoPaneFields: function() {
@@ -99,8 +91,8 @@ if (typeof (wdw_aecOptions) === "undefined") {
         wdw_aecOptions.enableField(document.getElementById(
           'autodetach'), 'autoextractpolicydetachconfirm');
         wdw_aecOptions.enableField(document.getElementById(
-          'autosavemessage'), ['autofnpsavemessage',
-          'autofnpsavemessagecountpattern'
+          'autosavemessage'), ['autofnpsavemessage', 'autofnpsavemessage_label',
+          'autofnpsavemessagecountpattern', 'autofnpsavemessagecountpattern_label'
         ]);
       }
     },
@@ -129,69 +121,6 @@ if (typeof (wdw_aecOptions) === "undefined") {
       }
       if (fieldID instanceof Array) wdw_aecOptions.enableField(
         aCheckbox, fieldID);
-
-      // start of disabling not working objects in options dialog for now
-      var notWorkingFeatures = [
-        "reportgencssfile",
-        "reportgencssfilebutton",
-        "reportgenembedcss",
-        "setdatetoemailbox",
-        "minimumsize",
-        "suggestfolderexcludekeywordstextbox"
-      ];
-      for (let i = 0; i < notWorkingFeatures.length; i++) {
-        let object = document.getElementById(notWorkingFeatures[i]);
-        if (object)
-          object.setAttribute("disabled", "true");
-      }
-      // end of disabling not working objects in options dialog for now
-
-    },
-
-    showPane: function(paneID) {
-      if (!paneID) {
-        return;
-      }
-
-      let pane = document.getElementById(paneID);
-      if (!pane) {
-        return;
-      }
-      document.getElementById("aec-selector").value = paneID;
-
-      let currentlySelected = document.getElementById("aec-paneDeck")
-        .querySelector("#aec-paneDeck > prefpane[selected]");
-      if (currentlySelected) {
-        if (currentlySelected === pane) {
-          return;
-        }
-        currentlySelected.removeAttribute("selected");
-      }
-
-      pane.setAttribute("selected", "true");
-      pane.dispatchEvent(new CustomEvent("paneSelected", {
-        bubbles: true
-      }));
-
-      document.documentElement.setAttribute("lastSelected", paneID);
-      Services.xulStore.persist(document.documentElement, "lastSelected");
-    },
-
-    loadInitialPane: function() {
-      if (document.documentElement.hasAttribute("lastSelected")) {
-        wdw_aecOptions.showPane(document.documentElement.getAttribute(
-          "lastSelected"));
-      } else {
-        wdw_aecOptions.showPane("aec-generalPane");;
-      }
-    },
-
-    showTab: function() {
-      if (window.arguments) {
-        if (window.arguments[0].showTab) {
-          wdw_aecOptions.showPane(window.arguments[0].showTab);
-        }
-      }
     },
 
     showDetachWarning: function(checkbox) {
@@ -724,3 +653,11 @@ if (typeof (wdw_aecOptions) === "undefined") {
 
   };
 }
+
+Preferences.addSyncFromPrefListener(
+  document.getElementById("savepathmrucount"),
+  function() { wdw_aecOptions.fillcountlist(); });
+
+Preferences.addSyncFromPrefListener(
+  document.getElementById("autotriggertag"),
+  function() { wdw_aecOptions.filltaglist(); });

@@ -157,7 +157,7 @@ OWAAccount.contactsListener = async function(aCreate, contact) {
       }
     }
   } catch (ex) {
-    logError(ex);
+    ShowContactWriteFailure(ex);
   }
 }
 
@@ -186,7 +186,7 @@ browser.contacts.onDeleted.addListener(async (addressBook, id) => {
       }
     }
   } catch (ex) {
-    logError(ex);
+    ShowContactWriteFailure(ex);
   }
 });
 
@@ -343,11 +343,9 @@ OWAAccount.prototype.ResyncContacts = async function(aFilter) {
     this.ReconcileDeletions(browser.contacts, this.contacts, addressBook.contacts || [], persons);
     this.ReconcileDeletions(browser.mailingLists, this.mailingLists, addressBook.mailingLists || [], lists);
   } catch (ex) {
-    browser.contacts.create(addressBook.id, null, {
-      DisplayName: ex.message,
-      Notes: ex.stack,
-    });
-    throw ex;
+    ShowContactError(addressBook.id, ex);
+    // Don't throw this because it will just get reported twice.
+    return;
   }
   // Update or create contacts from the server's list of persons.
   for (let properties of persons) {
@@ -355,6 +353,9 @@ OWAAccount.prototype.ResyncContacts = async function(aFilter) {
       let id = this.contacts.ids[properties.PersonaId];
       let contact = contactMap[id];
       if (!contact) {
+        // Prefer the display name of personal contacts by default,
+        // but allow the user to change it, so only set it on first creation.
+        properties.PreferDisplayName = kPreferDisplayNameTrue;
         id = await browser.contacts.create(addressBook.id, null, properties);
         contact = { id, properties };
         // Also track the new mapping.
@@ -371,11 +372,7 @@ OWAAccount.prototype.ResyncContacts = async function(aFilter) {
         this.FullContactUpdate(properties.PersonaId, contact, false);
       }
     } catch (ex) {
-      logError(ex);
-      browser.contacts.create(addressBook.id, null, {
-        DisplayName: ex.message,
-        Notes: ex.stack,
-      });
+      ShowContactError(addressBook.id, ex);
     }
   }
   // Update or create mailing lists from the server's lists.
@@ -407,11 +404,7 @@ OWAAccount.prototype.ResyncContacts = async function(aFilter) {
         await browser.mailingLists.addMember(id, this.contacts.ids[member]);
       }
     } catch (ex) {
-      logError(ex);
-      browser.contacts.create(addressBook.id, null, {
-        DisplayName: ex.message,
-        Notes: ex.stack,
-      });
+      ShowContactError(addressBook.id, ex);
     }
   }
   // Save our updated mappings.
@@ -438,7 +431,7 @@ OWAAccount.prototype.DownloadGAL = async function(aFilter) {
     await browser.incomingServer.setStringValue(this.serverID, "GAL", id);
     addressBook = { id: id, contacts: [], mailingLists: [] };
   }
-  browser.webAccount.markAddressBookAsReadOnly(addressBook.id);
+  browser.uiTweaks.markAddressBookAsReadOnly(addressBook.id);
   try {
     // Whether to get all details of all contacts in the GAL. Do you need the phone numbers?
     // Needs one server request per contact.
@@ -457,17 +450,16 @@ OWAAccount.prototype.DownloadGAL = async function(aFilter) {
       browser.mailingLists.delete(list.id);
     }
   } catch (ex) {
-    browser.contacts.create(addressBook.id, null, {
-      DisplayName: ex.message,
-      Notes: ex.stack,
-    });
-    throw ex;
+    ShowContactError(addressBook.id, ex);
   }
   // Update or create contacts from the server's list of persons.
   for (let properties of persons) {
     try {
       let contact = contactMap[properties.PersonaId];
       if (!contact) {
+        // Don't prefer the display name of GAL contacts by default,
+        // but allow the user to change it, so only set it on first creation.
+        properties.PreferDisplayName = kPreferDisplayNameFalse;
         id = await browser.contacts.create(addressBook.id, null, properties);
         contactMap[properties.PersonaId] = contact = { id, properties };
       } else if (!fullGALUpdates) {
@@ -480,11 +472,7 @@ OWAAccount.prototype.DownloadGAL = async function(aFilter) {
         this.FullContactUpdate(properties.PersonaId, contact, true);
       }
     } catch (ex) {
-      logError(ex);
-      browser.contacts.create(addressBook.id, null, {
-        DisplayName: ex.message,
-        Notes: ex.stack,
-      });
+      ShowContactError(addressBook.id, ex);
     }
   }
   // Create mailing lists from the server's lists.
@@ -496,11 +484,7 @@ OWAAccount.prototype.DownloadGAL = async function(aFilter) {
         browser.mailingLists.addMember(id, contactMap[member].id);
       }
     } catch (ex) {
-      logError(ex);
-      browser.contacts.create(addressBook.id, null, {
-        DisplayName: ex.message,
-        Notes: ex.stack,
-      });
+      ShowContactError(addressBook.id, ex);
     }
   }
 }
@@ -729,12 +713,8 @@ OWAAccount.prototype.FindPeople = async function(aFilter, aAddrBook) {
         group.getGroupInfoRequest.Paging.Offset += group.getGroupInfoRequest.Paging.MaxEntriesReturned;
       }
     } catch (ex) {
-      logError(ex);
+      ShowContactError(aAddrBook, ex);
       lists.splice(i--, 1);
-      browser.contacts.create(aAddrBook, null, {
-        DisplayName: ex.message,
-        Notes: ex.stack,
-      });
     }
   }
   persons = persons.map(OWAAccount.convertPersona);

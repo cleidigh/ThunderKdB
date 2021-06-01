@@ -5,29 +5,27 @@ Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTempla
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/scripts/hackToolbarbutton.js", window.SmartTemplate4, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-prefs.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-rsa.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-register.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/settings.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://smarttemplate4/content/smartTemplate-fileTemplates.js", window, "UTF-8");
 
-function onLoad(activatedWhileWindowOpen) {
-    let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
-    
+async function onLoad(activatedWhileWindowOpen) {
+  let layout = WL.injectCSS("chrome://smarttemplate4/content/skin/smartTemplate-overlay.css");
 
-    WL.injectElements(`
-    <!-- #### TOOLBAR BUTTON OVERLAY #### --> 
-    <stringbundleset id="stringbundleset">
-      <stringbundle id="smarttemplate4-strings" src="chrome://smartTemplate4/locale/smartTemplate-overlay.dtd" />
-    </stringbundleset>
-  `, ["chrome://smartTemplate4/locale/smartTemplate-overlay.dtd"]);
-
-   
+  window.SmartTemplate4.Util.notifyTools.enable();
+  await window.SmartTemplate4.Util.init();
   window.SmartTemplate4.startUp();
+  
+  window.addEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset.bind(window.SmartTemplate4.fileTemplates));
+  window.SmartTemplate4.fileTemplates.initMenusWithReset();
+  
 }
 
 function onUnload(isAddOnShutDown) {
   const util = window.SmartTemplate4.Util;
   util.logDebug("Single Message Window - onUnload(" + isAddOnShutDown + ")…");
+  
+  window.SmartTemplate4.Util.notifyTools.disable();
+  window.removeEventListener("SmartTemplates.BackgroundUpdate.updateTemplateMenus", window.SmartTemplate4.fileTemplates.initMenusWithReset);
+  
   if(isAddOnShutDown) {
     window.SmartTemplate4.shutDown();
   }

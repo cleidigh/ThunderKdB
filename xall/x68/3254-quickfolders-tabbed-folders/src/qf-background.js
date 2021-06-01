@@ -3,6 +3,8 @@
  * https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78
  */
 
+import * as util from "./scripts/qf-util.mjs";
+
 async function main() {
 
   // landing windows.
@@ -48,7 +50,9 @@ async function main() {
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
   
   messenger.WindowListener.registerChromeUrl([ 
-      ["content", "quickfolders", "chrome/content/"],
+      ["content", "quickfolders", "chrome/content/"]
+  ]);
+/*
       ["locale", "quickfolders", "en-US", "chrome/locale/en-US/"],
       ["locale", "quickfolders", "ca", "chrome/locale/ca/"],
       ["locale", "quickfolders", "de", "chrome/locale/de/"],
@@ -71,8 +75,7 @@ async function main() {
       ["locale", "quickfolders", "zh", "chrome/locale/zh/"],
       ["locale", "quickfolders", "zh-CHT", "chrome/locale/zh/"],
       ["locale", "quickfolders", "zh-TW", "chrome/locale/zh/"]
-  ]);
-
+ */
   messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
     
   //attention: each target window (like messenger.xul) can appear only once
@@ -101,3 +104,11 @@ async function main() {
 }
 
 main();
+
+messenger.NotifyTools.onNotifyBackground.addListener(async (info) => {
+  switch (info.func) {        
+    case"slideAlert":
+      util[info.func](...info.args);
+      break;
+  }
+});

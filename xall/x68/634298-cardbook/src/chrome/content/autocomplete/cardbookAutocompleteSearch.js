@@ -69,6 +69,7 @@ cardbookAutocompleteResult.prototype = {
 			var myConversion = new cardbookListConversion(myEmail, this.getIdentityAt(aIndex));
 			return cardbookRepository.arrayUnique(myConversion.emailResult).join(", ");
 		} else if (this.getTypeAt(aIndex) == "CB_CAT") {
+			cardbookIDBMailPop.updateMailPop(this.getEmailToUse(aIndex));
 			var useOnlyEmail = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 			var myDirPrefId = this.getDirPrefIdAt(aIndex);
 			var myCategory = this.getValueAt(aIndex);
@@ -148,7 +149,6 @@ cardbookAutocompleteSearch.prototype = {
 					myComment += " [" + aType + ":" + aPopularity + "]";
 				}
 			}
-
 			this.searchResult._searchResults.push({
 										 value: aEmailValue,
 										 comment: myComment,
@@ -166,7 +166,7 @@ cardbookAutocompleteSearch.prototype = {
 		}
 	},
 
-	sortResult: function addResult() {
+	sortResult: function sortResult() {
 		if (this.sortUsePopularity) {
 			function comparePop(a, b) { if (a.popularity > b.popularity) {return 0} else {return 1}; };
 			this.searchResult._searchResults.sort(comparePop);
@@ -324,7 +324,7 @@ cardbookAutocompleteSearch.prototype = {
 								var myMinPopularity = 0;
 								var first = true;
 								for (var l = 0; l < card.email.length; l++) {
-									var myCurrentPopularity = 0;
+									let myCurrentPopularity = 0;
 									if (cardbookRepository.cardbookMailPopularityIndex[card.email[l][0][0].toLowerCase()] && cardbookRepository.cardbookMailPopularityIndex[card.email[l][0][0].toLowerCase()].count) {
 										myCurrentPopularity = parseInt(cardbookRepository.cardbookMailPopularityIndex[card.email[l][0][0].toLowerCase()].count);
 										if (first) {
@@ -344,6 +344,7 @@ cardbookAutocompleteSearch.prototype = {
 								}
 								// add Lists
 								if (card.isAList) {
+									let myCurrentPopularity = 0;
 									if (cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()] && cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()].count) {
 										myCurrentPopularity = cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()].count;
 									}
@@ -397,7 +398,12 @@ cardbookAutocompleteSearch.prototype = {
 								} else {
 									var myStyle = myType + "_color_" + myDirPrefId + "-abook";
 								}
-								this.addResult(category, myComment, 0, "CB_CAT", myStyle, category.toLowerCase(), myDirPrefId, category);
+								let myCurrentPopularity = 0;
+								let lowerCat = category.toLowerCase();
+								if (cardbookRepository.cardbookMailPopularityIndex[lowerCat] && cardbookRepository.cardbookMailPopularityIndex[lowerCat].count) {
+									myCurrentPopularity = cardbookRepository.cardbookMailPopularityIndex[lowerCat].count;
+								}
+								this.addResult(category, myComment, myCurrentPopularity, "CB_CAT", myStyle, lowerCat, myDirPrefId, category);
 							}
 						}
 					}

@@ -63,7 +63,6 @@ var aeMessenger = {
       ptracker: aewindow.progress_tracker,
       m_file: file,
       realFileName: file.leafName,
-      minFileSize: aewindow.prefs.get("extract.minimumsize"),
       onProgressChange: function(aWebProgress, aRequest, aCurSelfProgress,
         aMaxSelfProgress, aCurTotalProgress, aMaxTotalProgress) {
         if (this.ptracker) this.ptracker.set_file_progress(
@@ -75,17 +74,10 @@ var aeMessenger = {
         if (aStatus & 0x00000010) {
           //if (this.ptracker) this.ptracker.set_file_progress(-1,0);
           this.ptracker = null;
-          if (this.m_file.fileSize < this.minFileSize) {
-            aedump("// file size (" + this.m_file.fileSize +
-              ") is below min (" + this.minFileSize +
-              ") so abort save.\n", 3);
-            this.m_file.remove(false);
-          } else { // rename temp file to actual filename.
-            try {
-              this.m_file.moveTo(null, this.realFileName);
-            } catch (e) {
-              aedump(e);
-            }
+          try {
+            this.m_file.moveTo(null, this.realFileName);
+          } catch (e) {
+            aedump(e);
           }
           if (typeof aewindow === "object") aewindow.currentTask
             .currentMessage.saveAtt_cleanUp(this.index, false);
@@ -95,7 +87,6 @@ var aeMessenger = {
       aMessage) {
         /*aedump("// "+aStatus+"\n",3);*/ }
     };
-    //persist.progressListener.minFileSize=aewindow.prefs.get("extract.minimumsize");
     file.leafName += "~~~";
     persist.saveURI(uri, null, null, null, "", file);
     return persist;
@@ -105,7 +96,7 @@ var aeMessenger = {
 
 // Now only (?) used for function saveMessageToDisk() (message content to a HTML file)
 function aeSaveMsgListener(m_file, m_messenger, m_contentType, afterAction, afterActionAttachmentindex,
-  aewindow, minFileSize) {
+  aewindow) {
   var aedump = aewindow.aedump;
 
   var mProgress = 0;
@@ -250,12 +241,12 @@ function aeSaveMsgListener(m_file, m_messenger, m_contentType, afterAction, afte
         m_outputStream.close();
       }
       /*
-	  if (mTransfer) {
-    	mTransfer.onProgressChange(null, null, mContentLength, mContentLength, mContentLength, mContentLength);
-    	mTransfer.onStateChange(null, null, nsIWebProgressListener.STATE_STOP, 0);
-    	mTransfer = null; // break any circular dependencies between the progress dialog and use
+    if (mTransfer) {
+      mTransfer.onProgressChange(null, null, mContentLength, mContentLength, mContentLength, mContentLength);
+      mTransfer.onStateChange(null, null, nsIWebProgressListener.STATE_STOP, 0);
+      mTransfer = null; // break any circular dependencies between the progress dialog and use
       }
-	  */
+    */
     } catch (e) {
       aedump(e);
     }
@@ -286,7 +277,7 @@ function aeSaveMsgListener(m_file, m_messenger, m_contentType, afterAction, afte
         /*if (aewindow.progress_tracker) aewindow.progress_tracker.set_file_progress(mProgress,mContentLength);*/
         /*
       if (mTransfer) mTransfer.OnProgressChange(null, request, mProgress, mContentLength, mProgress, mContentLength);
-		*/
+    */
       }
     } catch (e) {
       aedump(e);
@@ -298,22 +289,6 @@ function aeSaveMsgListener(m_file, m_messenger, m_contentType, afterAction, afte
     aedump("{function:aeSaveMsgListener.finish}\n", 2);
 
     if (!m_file || !m_file.exists()) return;
-
-    // Set file last-modified-datetimestamp to email datetimestamp
-    // this feature works only for the saved message HTML file
-    if (aewindow.prefs.get("setdatetoemail")) {
-      aedump('// m_file.lastModifiedTime Time before modification = ' + 
-        m_file.lastModifiedTime + '\n');
-      try {
-        m_file.lastModifiedTime = 
-          aewindow.currentTask.getMessageHeader().dateInSeconds * 1000;
-      } catch (e) {
-        aedump("//setting lastModifiedTime failed on current attachment\n",
-        0);
-      }
-      aedump('// m_file.lastModifiedTime Time after modification = ' + 
-        m_file.lastModifiedTime + '\n');
-    }
 
     // rename temp file to actual filename.
     // this last part is necessary to rename the saved message HTML file

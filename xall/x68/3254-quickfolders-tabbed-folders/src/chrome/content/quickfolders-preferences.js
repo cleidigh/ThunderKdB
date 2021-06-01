@@ -64,14 +64,7 @@ QuickFolders.Preferences = {
 
 		try {
 			const PS = this.service;
-			let folders = 
-			  (typeof PS.getStringPref === 'function') ?
-				PS.getStringPref(setting) :
-			  PS.getComplexValue(setting, Components.interfaces.nsISupportsString).data;
-			// fall back for old version
-			if (folders.length<3)
-				folders = PS.getStringPref("QuickFolders.folders");
-
+			let folders = PS.getStringPref(setting);
 			if(folders) {
 				folders = folders.replace(/\r?\n|\r/, ''); // remove all line breaks
 				let entries = JSON.parse(folders);
@@ -283,10 +276,7 @@ QuickFolders.Preferences = {
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
 		  const url = "extensions.quickfolders.textQuickfoldersLabel",
 					  PS = this.service;
-			let customTitle = 
-			  (typeof PS.getStringPref === 'function') ?
-				this.service.getStringPref(url) :
-			  this.service.getComplexValue(url, Components.interfaces.nsISupportsString).data;
+			let customTitle = PS.getStringPref(url);
 			return renewalLabel || customTitle;
 		}
 		catch(e) { return renewalLabel || 'QuickFolders'; }
@@ -325,71 +315,6 @@ QuickFolders.Preferences = {
 		}
 		catch (e) {return false; }
 		return false;
-	},
-
-	// updates all toxic preferences to skinning engine of v 2.7
-	// returns true if upgraded from a previous skinning engine
-	tidyUpBadPreferences: function tidyUpBadPreferences() {
-		let isUpgradeSkinning = false,
-        util = QuickFolders.Util;
-		try {
-			util.logDebugOptional('firstrun', 'tidyUpBadPreferences() ...');
-			// get rid of preferences that do not start with "preferences." and replace with newer versions.
-			if (this.existsCharPref('QuickFolders.Toolbar.Style.background-color')) {
-				let replacePref = function(id1, id2) {
-					let service = QuickFolders.Preferences.service,
-					    origPref = 'QuickFolders.' + id1 + '.Style.' + id2,
-					    sValue = "";
-					// save value set by user (if none, default will create it)
-					if (service.prefHasUserValue(origPref)) {
-						sValue = service.getStringPref(origPref);
-						let newPref = 'extensions.quickfolders.style.' + id1 + '.' + id2;
-						service.setStringPref(newPref, sValue);
-						util.logDebugOptional('firstrun', 'QuickFolders Update: Replaced bad preference {' + origPref + '} with {' + newPref + '}  value=' + sValue );
-					}
-					// delete bad preference
-					try { service.deleteBranch(origPref) } catch (ex) {;};
-				}
-
-				replacePref('ActiveTab','background-color');
-				replacePref('ActiveTab','color');
-				replacePref('DragOver','background-color');
-				replacePref('DragTab','background-color');
-				replacePref('DragTab','color');
-				replacePref('HoveredTab','background-color');
-				replacePref('HoveredTab','color');
-				replacePref('InactiveTab','background-color');
-				replacePref('InactiveTab','color');
-				replacePref('Toolbar','background-color');
-				isUpgradeSkinning = true;
-
-			}
-
-			if (this.existsBoolPref("extensions.quickfolders.showFlatStyle")) {
-				let theme = QuickFolders.Themes;
-
-				if (this.getBoolPref("showFlatStyle"))
-					this.CurrentThemeId = theme.themes.Flat.Id;
-				else {
-					if (this.getBoolPref("showNativeTabStyle"))
-						this.CurrentThemeId = theme.themes.NativeTabs.Id;
-					else
-						this.CurrentThemeId = theme.themes.ApplePills.Id; // Pills style
-				}
-
-				try {
-					this.service.deleteBranch("extensions.quickfolders.showFlatStyle");
-					this.service.deleteBranch("extensions.quickfolders.showNativeTabStyle");
-					isUpgradeSkinning = true;
-				}
-				catch (ex) { util.alert(ex);};
-			}
-		}
-		catch (ex) {
-			util.logException("tidyUpBadPreferences",ex) ;
-			return false;
-		};
-		return isUpgradeSkinning;
 	},
 
 	getUserStyle: function getUserStyle(sId, sType, sDefault) {
@@ -492,10 +417,7 @@ QuickFolders.Preferences = {
 		  
     try {
 		  const Ci = Components.interfaces, Cc = Components.classes;
-			prefString = 
-				this.service.getStringPref ?
-				this.service.getStringPref(key) :
-				this.service.getComplexValue(key, Ci.nsISupportsString).data;			
+			prefString = this.service.getStringPref(key);
     }
     catch(ex) {
       QuickFolders.Util.logDebug("Could not retrieve string pref: " + p + "\n" + ex.message);
@@ -565,12 +487,7 @@ QuickFolders.Preferences = {
 	},
   
   get supportsCustomIcon() {
-    switch(QuickFolders.Util.Application) {
-      case "Thunderbird":
-        return true;
-      default:
-        return false; // SeaMonkey and Postbox - custom icons not supported!
-    }
+    return true; // may be forbidden in future Thunderbird versions? 91+
   },
 	
 	unhideSmallIcons() {

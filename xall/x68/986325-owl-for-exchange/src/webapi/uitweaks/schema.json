@@ -1,6 +1,36 @@
 [{
   "namespace": "uiTweaks",
   "functions": [{
+    "name": "genericAlert",
+    "type": "function",
+    "description": "Alerts the user to an error.",
+    "async": true,
+    "parameters": [{
+      "name": "message",
+      "type": "string",
+      "description": "The message to alert."
+    }, {
+      "name": "title",
+      "type": "string",
+      "optional": true,
+      "description": "The title of the alert."
+    }, {
+      "name": "window",
+      "type": "string",
+      "optional": true,
+      "description": "The expected type of parent window."
+    }]
+  }, {
+    "name": "markAddressBookAsReadOnly",
+    "type": "function",
+    "description": "Marks an address book as read only in the UI.",
+    "async": true,
+    "parameters": [{
+      "name": "uid",
+      "type": "string",
+      "description": "The UID of the address book."
+    }]
+  }, {
     "name": "awaitSessionRestored",
     "type": "function",
     "description": "Waits until the Thunderbird session has been restored",
@@ -14,5 +44,4 @@
     "parameters": []
   }]
 }]
-
 

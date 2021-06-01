@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "The file $P1$ does not exist.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "File $P1$ is empty",
         "placeholders": {
@@ -3127,9 +3135,6 @@
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Edit Category"
 	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "New Category"
-	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "Edit Node"
 	},
@@ -3146,9 +3151,6 @@
 		"message": "Category:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "Category:"
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "Category:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "Password:"
 	},
-	"remotePage.passwordShow.label": {
-		"message": "Show"
+	"showHidePassword.tooltip": {
+		"message": "Show/Hide password"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Validate"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "P"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "Show"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "w"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "Run in background"
 	},
@@ -5214,15 +5210,6 @@
 	"keyLabel": {
 		"message": "Key"
 	},
-	"photolocalURILabel": {
-		"message": "Local photo"
-	},
-	"logolocalURILabel": {
-		"message": "Local logo"
-	},
-	"soundlocalURILabel": {
-		"message": "Local sound"
-	},
 	"photoURILabel": {
 		"message": "Photo"
 	},
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "Copy Image"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "Copy Image Location"
 	},
 	"deleteImageCardLabel": {
 		"message": "Delete Image"

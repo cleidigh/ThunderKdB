@@ -10,6 +10,7 @@ var cardbookRepository = {
 	cardbookActionsDatabase: {},
 	cardbookMailPopDatabase: {},
 	cardbookSearchDatabase: {},
+	cardbookImageDatabase: {},
 	
 	extension: ExtensionParent.GlobalManager.getExtension("cardbook@vigneau.philippe"),
 	
@@ -47,6 +48,7 @@ var cardbookRepository = {
 					"note": ["note"],
 					"calculated": ["age", "ABName"],
 					"technical": ["version", "rev", "uid"],
+					"media": [ 'photo', 'logo', 'sound' ],
 					"technicalForTree": ["cardIcon", "name", "dirPrefId", "cbid", "class1", "etag", "geo", "mailer",
 											"prodid", "tz", "sortstring", "kind"] },
 
@@ -78,6 +80,12 @@ var cardbookRepository = {
 										"tel" : [ ["hometype", "HOME"], ["worktype", "WORK"], ["celltype", "CELL"], ["faxtype", "FAX"], ["pagertype", "PAGER"], ["workfaxtype", "FAX,WORK"], ["homefaxtype", "FAX,HOME"] ],
 										"url" : [ ["hometype", "HOME"], ["worktype", "WORK"], ["blogtype", "BLOG", "PG"], ["homepagetype", "HOMEPAGE", "PG"], ["profiletype", "PROFILE", "PG"] ],
 										"impp" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
+										"addnew" : true },
+						"GOOGLE2": { "adr" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"] ],
+										"email" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"] ],
+										"tel" : [ ["hometype", "home"], ["worktype", "work"], ["celltype", "mobile"], ["pagertype", "pager"], ["workfaxtype", "workFax"], ["homefaxtype", "homeFax"], ["othertype", "other"], ["maintype", "main"] ],
+ 										"url" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"], ["blogtype", "blog"], ["homepagetype", "homePage"], ["profiletype", "profile"] ],
+										"impp" : [ ["hometype", "home"], ["worktype", "work"], ["othertype", "other"] ],
 										"addnew" : true },
 						"APPLE": { "adr" : [ ["hometype", "HOME"], ["worktype", "WORK"] ],
 									"email" : [ ["hometype", "HOME;HOME,INTERNET"], ["worktype", "WORK;WORK,INTERNET"], ["othertype", "OTHER;OTHER,INTERNET"] ],
@@ -218,6 +226,9 @@ var cardbookRepository = {
 	cardbookServerUpdatedCardRequest: {},
 	cardbookServerUpdatedCardResponse: {},
 	cardbookServerUpdatedCardError: {},
+	cardbookServerUpdatedCardPhotoRequest: {},
+	cardbookServerUpdatedCardPhotoResponse: {},
+	cardbookServerUpdatedCardPhotoError: {},
 	cardbookServerUpdatedCatRequest: {},
 	cardbookServerUpdatedCatResponse: {},
 	cardbookServerUpdatedCatError: {},
@@ -242,6 +253,10 @@ var cardbookRepository = {
 	// while importing, dragging, copying or duplicating
 	importConflictChoice: {},
 	importConflictChoicePersist: {},
+	importConflictChoiceImportValues: ["keep", "update", "duplicate", "merge"],
+	importConflictChoiceSync1Values: ["keep", "delete"],
+	importConflictChoiceSync2Values: ["local", "remote", "merge"],
+	importConflictChoiceSync3Values: ["local", "remote"],
 	
 	cardbookServerChangedPwd: {},
 	
@@ -309,11 +324,42 @@ var cardbookRepository = {
 							LABEL_URL:                  "https://www.google.com/m8/feeds/groups/",
 							LABELS_URL:                 "https://www.google.com/m8/feeds/groups/default/full?max-results=1000",
 							CONTACT_URL:                "https://www.google.com/m8/feeds/contacts/",
-							CONTACTS_URL:               "https://www.google.com/m8/feeds/contacts/default/full?max-results=10000",
 							BATCH:                      "https://www.google.com/m8/feeds/contacts/default/full/batch",
 							OAUTH_URL:                  "https://accounts.google.com/o/oauth2/auth",
 							TOKEN_REQUEST_URL:          "https://accounts.google.com/o/oauth2/token",
 							TOKEN_REQUEST_TYPE:         "POST",
+							TOKEN_REQUEST_GRANT_TYPE:   "authorization_code",
+							REFRESH_REQUEST_URL:        "https://accounts.google.com/o/oauth2/token",
+							REFRESH_REQUEST_TYPE:       "POST",
+							REFRESH_REQUEST_GRANT_TYPE: "refresh_token",
+							ROOT_API:                   "https://www.googleapis.com"},
+						"GOOGLE2": {
+							EMAIL_TYPE:                 "@gmail.com",
+							VCARD_VERSIONS:             [ "3.0" ],
+							CLIENT_ID:                  "779554755808-957jloa2c3c8n0rrm1a5304fkik7onf0.apps.googleusercontent.com",
+							CLIENT_SECRET:              "h3NUkhofCKAW2E1X_NKSn4C_",
+							REDIRECT_URI:               "urn:ietf:wg:oauth:2.0:oob",
+							REDIRECT_TITLE:             "Success code=",
+							RESPONSE_TYPE:              "code",
+							SCOPE_CONTACTS:             "https://www.googleapis.com/auth/contacts",
+							AUTH_PREFIX_CONTACTS:       "chrome://cardbook/oauth/people",
+							LABELS:                     "contactGroups",
+							LABELS_URL:                 "https://people.googleapis.com/v1/contactGroups",
+							LABELS_URL_SIZE:            "1000",
+							CONTACTS_URL:               "https://people.googleapis.com/v1/people/me/connections",
+							CONTACTS_URL_SIZE:          "1000",
+							CONTACT_URL:                "https://people.googleapis.com/v1/people",
+							BATCH_GET_URL:              "https://people.googleapis.com/v1/people:batchGet",
+							BATCH_GET_URL_SIZE:         "50",
+							SYNC_PERSON_FIELDS:         "metadata,memberships",
+							GET_PERSON_FIELDS:          "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,metadata,names,nicknames,organizations,phoneNumbers,photos,urls,userDefined",
+							UPDATE_PERSON_FIELDS:       "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,names,nicknames,organizations,phoneNumbers,urls,userDefined",
+							CREATE_PERSON_FIELDS:       "addresses,biographies,birthdays,emailAddresses,events,imClients,memberships,metadata,names,nicknames,organizations,phoneNumbers,urls,userDefined",
+							UPDATEPHOTO_PERSON_FIELDS:  "metadata",
+							DELETEPHOTO_PERSON_FIELDS:  "metadata",
+							OAUTH_URL:                  "https://accounts.google.com/o/oauth2/auth",
+							TOKEN_REQUEST_URL:          "https://accounts.google.com/o/oauth2/token",
+							TOKEN_REQUEST_TYPE:         "POST",                                                                      
 							TOKEN_REQUEST_GRANT_TYPE:   "authorization_code",
 							REFRESH_REQUEST_URL:        "https://accounts.google.com/o/oauth2/token",
 							REFRESH_REQUEST_TYPE:       "POST",
@@ -497,7 +543,7 @@ var cardbookRepository = {
 		lResult = lResult + aCard.fn + sep;
 		lResult = lResult + aCard.nickname + sep;
 		lResult = lResult + aCard.bday + sep;
-		// lResult = lResult + aCard.categories.join();
+		lResult = lResult + aCard.categories.join(sep) + sep;
 		for (let i = 0; i < aCard.adr.length; i++) {
 			lResult = lResult + aCard.adr[i][0].join() + sep;
 		}
@@ -853,7 +899,7 @@ var cardbookRepository = {
 		}
 	},
 
-	removeCardFromRepository: function (aCard, aCacheDeletion) {
+	removeCardFromRepository: async function (aCard, aCacheDeletion) {
 		try {
 			cardbookRepository.removeCardFromLongSearch(aCard);
 			cardbookRepository.removeCardFromShortSearch(aCard);
@@ -866,7 +912,7 @@ var cardbookRepository = {
 				}
 			}
 			if (aCacheDeletion) {
-				cardbookRepository.removeCardFromCache(aCard);
+				await cardbookRepository.removeCardFromCache(aCard);
 			}
 			cardbookRepository.removeCardFromList(aCard);
 			aCard = null;
@@ -916,10 +962,11 @@ var cardbookRepository = {
 		}
 	},
 
-	addCardToRepository: function (aCard, aMode) {
+	addCardToRepository: async function (aCard, aMode) {
 		try {
 			// needed only once when using > 55.2
-			if (cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId) == "GOOGLE" && !aCard.created && !aCard.updated) {
+			if ((cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId) == "GOOGLE" || cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId) == "GOOGLE2")
+					&& !aCard.created && !aCard.updated) {
 				for (let category of aCard.categories) {
 					if (!cardbookRepository.cardbookCategories[aCard.dirPrefId+"::"+category]) {
 						cardbookRepository.cardbookUtils.addTagUpdated(aCard);
@@ -934,7 +981,7 @@ var cardbookRepository = {
 			cardbookRepository.addCardToLongSearch(aCard);
 			cardbookRepository.addCardToShortSearch(aCard);
 			cardbookRepository.addCardToList(aCard);
-			cardbookRepository.addCardToCache(aCard, aMode);
+			await cardbookRepository.addCardToCache(aCard, aMode);
 			cardbookRepository.addCardToDisplayAndCat(aCard, aCard.dirPrefId);
 			cardbookRepository.addCardToOrg(aCard, aCard.dirPrefId);
 			for (var dirPrefId in cardbookRepository.cardbookComplexSearch) {
@@ -975,20 +1022,25 @@ var cardbookRepository = {
 		delete cardbookRepository.cardbookCategories[aCategory.cbid];
 	},
 		
-	addCardToCache: function(aCard, aAddCardToCache) {
+	addCardToCache: async function(aCard, aAddCardToCache) {
 		try {
 			var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(aCard.dirPrefId);
 			var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId);
 			var myDirPrefIdUrl = cardbookRepository.cardbookPreferences.getUrl(aCard.dirPrefId);
 			var myDirPrefIdDBCached = cardbookRepository.cardbookPreferences.getDBCached(aCard.dirPrefId);
 
-			cardbookRepository.cardbookUtils.cachePutMediaCard(aCard, "photo", myDirPrefIdType);
-			cardbookRepository.cardbookUtils.cachePutMediaCard(aCard, "logo", myDirPrefIdType);
-			cardbookRepository.cardbookUtils.cachePutMediaCard(aCard, "sound", myDirPrefIdType);
-
-			cardbookRepository.cardbookUtils.setCacheURIFromCard(aCard, myDirPrefIdType)
+			var mediaAdded = false;
+			for (let media of cardbookRepository.allColumns.media) {
+				var addMedia = aAddCardToCache || (aCard[media].value && aCard[media].value != "") || (aCard[media].localURI && aCard[media].localURI != "");
+				if (addMedia) {
+					await cardbookRepository.cardbookUtils.cachePutMediaCard(aCard, media);
+					mediaAdded = true;
+				}
+			}
+			cardbookRepository.cardbookUtils.setCacheURIFromCard(aCard, myDirPrefIdType);
 			
-			if (myDirPrefIdType === "DIRECTORY") {
+			let addCard = aAddCardToCache || mediaAdded;
+			if (myDirPrefIdType == "DIRECTORY") {
 				if (aAddCardToCache) {
 					var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 					myFile.initWithPath(myDirPrefIdUrl);
@@ -996,14 +1048,14 @@ var cardbookRepository = {
 					cardbookRepository.cardbookSynchronization.writeCardsToFile(myFile.path, [aCard], true);
 					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(myDirPrefIdName + " : debug mode : Contact " + aCard.fn + " written to directory");
 				}
-			} else {
+			} else if (myDirPrefIdType != "FILE") {
 				if (cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId]) {
 					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri] = aCard;
 				} else {
 					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId] = {};
 					cardbookRepository.cardbookFileCacheCards[aCard.dirPrefId][aCard.cacheuri] = aCard;
 				}
-				if (myDirPrefIdDBCached && aAddCardToCache) {
+				if (myDirPrefIdDBCached && addCard) {
 					cardbookIDBCard.addCard(myDirPrefIdName, aCard);
 				}
 			}
@@ -1030,15 +1082,15 @@ var cardbookRepository = {
 		}
 	},
 
-	removeCardFromCache: function(aCard) {
+	removeCardFromCache: async function(aCard) {
 		try {
-			cardbookRepository.cacheDeleteMediaCard(aCard);
-			
 			var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(aCard.dirPrefId);
 			var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(aCard.dirPrefId);
 			var myDirPrefIdUrl = cardbookRepository.cardbookPreferences.getUrl(aCard.dirPrefId);
 			var myDirPrefIdDBCached = cardbookRepository.cardbookPreferences.getDBCached(aCard.dirPrefId);
 
+			await cardbookRepository.cacheDeleteMediaCard(aCard, myDirPrefIdName);
+			
 			if (myDirPrefIdType === "DIRECTORY") {
 				var myFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				myFile.initWithPath(myDirPrefIdUrl);
@@ -1074,16 +1126,12 @@ var cardbookRepository = {
 		}
 	},
 
-	cacheDeleteMediaCard: function(aCard) {
+	cacheDeleteMediaCard: async function(aCard, aDirPrefName) {
 		try {
-			let myPrefName = cardbookRepository.cardbookUtils.getPrefNameFromPrefId(aCard.dirPrefId);
-			let mediaName = [ 'photo', 'logo', 'sound' ];
-			for (let media of mediaName) {
-				let cacheDir = cardbookRepository.cardbookUtils.getMediaCacheFile(aCard.uid, aCard.dirPrefId, aCard.etag, media, aCard[media].extension);
-				if (cacheDir.exists() && cacheDir.isFile()) {
-					cacheDir.remove(true);
-					cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(myPrefName + " : Contact " + aCard.fn + " " + [media] + " deleted from cache");
-				}
+			for (let media of cardbookRepository.allColumns.media) {
+				await cardbookIDBImage.removeImage( media, aDirPrefName,
+														{cbid: aCard.dirPrefId+"::"+aCard.uid, dirPrefId: aCard.dirPrefId, extension: aCard[media].extension, content: aCard[media].value},
+														aCard.fn);
 			}
 		}
 		catch(e) {
@@ -1290,7 +1338,7 @@ var cardbookRepository = {
 		cardbookRepository.addCategoryToCard(aCard, aNewCategoryName);
 	},
 
-	removeCardsFromCategory: function(aDirPrefId, aCategoryName) {
+	removeCardsFromCategory: async function(aDirPrefId, aCategoryName) {
 		if (cardbookRepository.cardbookDisplayCards[aDirPrefId+"::categories::"+aCategoryName]) {
 			var myCards = JSON.parse(JSON.stringify(cardbookRepository.cardbookDisplayCards[aDirPrefId+"::categories::"+aCategoryName].cards));
 			var length = myCards.length;
@@ -1298,14 +1346,13 @@ var cardbookRepository = {
 				var myOutCard = new cardbookCardParser();
 				cardbookRepository.cardbookUtils.cloneCard(card, myOutCard);
 				cardbookRepository.removeCategoryFromCard(myOutCard, aCategoryName);
-				// if aOldCard and aNewCard have the same cached medias
 				cardbookRepository.cardbookUtils.setCalculatedFields(myOutCard);
-				cardbookRepository.cardbookUtils.changeMediaFromFileToContent(myOutCard);
+				await cardbookRepository.cardbookUtils.changeMediaFromFileToContent(myOutCard);
 				if (!myOutCard.created) {
 					cardbookRepository.cardbookUtils.addTagUpdated(myOutCard);
 				}
-				cardbookRepository.removeCardFromRepository(card, true);
-				cardbookRepository.addCardToRepository(myOutCard, true);
+				await cardbookRepository.removeCardFromRepository(card, true);
+				await cardbookRepository.addCardToRepository(myOutCard, true);
 			}
 		}
 	},
@@ -1737,11 +1784,12 @@ var cardbookRepository = {
 		}
 	},
 
-	addCardToAction: function (aActionId, aType, aCard) {
+	addCardToAction: async function (aActionId, aType, aCard) {
 		let action = cardbookRepository.currentAction[aActionId];
 		let tempCard = new cardbookCardParser();
 		cardbookRepository.cardbookUtils.cloneCard(aCard, tempCard);
-		cardbookRepository.cardbookUtils.changeMediaFromFileToContent(tempCard);
+		tempCard.cacheuri = aCard.cacheuri;
+		await cardbookRepository.cardbookUtils.changeMediaFromFileToContent(tempCard);
 		action[aType].push(tempCard);
 		cardbookRepository.currentAction[aActionId].files.push(tempCard.dirPrefId);
 		if (aType == "newCards") {
@@ -1810,7 +1858,7 @@ var cardbookRepository = {
 				}
 				var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myDirPrefId);
 				var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myDirPrefId);
-				if (myDirPrefIdType === "GOOGLE") {
+				if (myDirPrefIdType == "GOOGLE" || myDirPrefIdType == "GOOGLE2") {
 					if (aListOfCategories[i].created) {
 						cardbookRepository.removeCategoryFromRepository(aListOfCategories[i], true, myDirPrefId);
 					} else {
@@ -1831,21 +1879,21 @@ var cardbookRepository = {
 		}
 	},
 
-	saveCardFromUpdate: function(aOldCard, aNewCard, aActionId, aCheckCategory) {
+	saveCardFromUpdate: async function(aOldCard, aNewCard, aActionId, aCheckCategory) {
 		cardbookRepository.cardbookUtils.setCalculatedFields(aNewCard);
-		cardbookRepository.saveCard(aOldCard, aNewCard, aActionId, aCheckCategory);
+		await cardbookRepository.saveCard(aOldCard, aNewCard, aActionId, aCheckCategory);
 	},
 
-	saveCardFromMove: function(aOldCard, aNewCard, aActionId, aCheckCategory) {
+	saveCardFromMove: async function(aOldCard, aNewCard, aActionId, aCheckCategory) {
 		if (aNewCard.rev) {
 			cardbookRepository.cardbookUtils.setCalculatedFieldsWithoutRev(aNewCard);
 		} else {
 			cardbookRepository.cardbookUtils.setCalculatedFields(aNewCard);
 		}
-		cardbookRepository.saveCard(aOldCard, aNewCard, aActionId, aCheckCategory);
+		await cardbookRepository.saveCard(aOldCard, aNewCard, aActionId, aCheckCategory);
 	},
 
-	saveCard: function(aOldCard, aNewCard, aActionId, aCheckCategory) {
+	saveCard: async function(aOldCard, aNewCard, aActionId, aCheckCategory) {
 		try {
 			if (cardbookRepository.cardbookPreferences.getReadOnly(aNewCard.dirPrefId) || !cardbookRepository.cardbookPreferences.getEnabled(aNewCard.dirPrefId)) {
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
@@ -1882,44 +1930,42 @@ var cardbookRepository = {
 			if (aOldCard.dirPrefId && cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid] && aOldCard.dirPrefId == aNewCard.dirPrefId) {
 				var myCard = cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid];
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
-					cardbookRepository.addCardToAction(aActionId, "oldCards", myCard);
+					await cardbookRepository.addCardToAction(aActionId, "oldCards", myCard);
 				}
 				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB" || myDirPrefIdType === "FILE") {
-					// if aOldCard and aNewCard have the same cached medias
-					cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aNewCard);
-					cardbookRepository.removeCardFromRepository(myCard, true);
+					await cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aNewCard);
+					await cardbookRepository.removeCardFromRepository(myCard, true);
 					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
 					cardbookRepository.cardbookUtils.nullifyEtag(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true);
+					await cardbookRepository.addCardToRepository(aNewCard, true);
 				} else {
-					// if aOldCard and aNewCard have the same cached medias
-					cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aNewCard);
+					await cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aNewCard);
 					if (!aNewCard.created) {
 						cardbookRepository.cardbookUtils.addTagUpdated(aNewCard);
 					}
-					cardbookRepository.removeCardFromRepository(myCard, true);
-					cardbookRepository.addCardToRepository(aNewCard, true);
+					await cardbookRepository.removeCardFromRepository(myCard, true);
+					await cardbookRepository.addCardToRepository(aNewCard, true);
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardUpdated", [myDirPrefIdName, aNewCard.fn]);
 			// Moved card
 			} else if (aOldCard.dirPrefId && aOldCard.dirPrefId != "" && cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid] && aOldCard.dirPrefId != aNewCard.dirPrefId) {
 				var myCard = cardbookRepository.cardbookCards[aOldCard.dirPrefId+"::"+aNewCard.uid];
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
-					cardbookRepository.addCardToAction(aActionId, "oldCards", myCard);
+					await cardbookRepository.addCardToAction(aActionId, "oldCards", myCard);
 				}
 				var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myCard.dirPrefId);
 				var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myCard.dirPrefId);
 				if (myDirPrefIdType === "FILE") {
-					cardbookRepository.removeCardFromRepository(myCard, false);
+					await cardbookRepository.removeCardFromRepository(myCard, false);
 				} else if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-					cardbookRepository.removeCardFromRepository(myCard, true);
+					await cardbookRepository.removeCardFromRepository(myCard, true);
 				} else {
 					if (myCard.created) {
-						cardbookRepository.removeCardFromRepository(myCard, true);
+						await cardbookRepository.removeCardFromRepository(myCard, true);
 					} else {
 						cardbookRepository.cardbookUtils.addTagDeleted(myCard);
-						cardbookRepository.addCardToCache(myCard, true);
-						cardbookRepository.removeCardFromRepository(myCard, false);
+						await cardbookRepository.addCardToCache(myCard, true);
+						await cardbookRepository.removeCardFromRepository(myCard, false);
 					}
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardDeleted", [myDirPrefIdName, myCard.fn]);
@@ -1930,10 +1976,10 @@ var cardbookRepository = {
 				cardbookRepository.cardbookUtils.nullifyEtag(aNewCard);
 				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB" || myDirPrefIdType === "FILE") {
 					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true);
+					await cardbookRepository.addCardToRepository(aNewCard, true);
 				} else {
 					cardbookRepository.cardbookUtils.addTagCreated(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true);
+					await cardbookRepository.addCardToRepository(aNewCard, true);
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardCreated", [myDirPrefIdName, aNewCard.fn]);
 			// New card
@@ -1941,16 +1987,16 @@ var cardbookRepository = {
 				cardbookRepository.cardbookUtils.nullifyEtag(aNewCard);
 				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB" || myDirPrefIdType === "FILE") {
 					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true);
+					await cardbookRepository.addCardToRepository(aNewCard, true);
 				} else {
 					cardbookRepository.cardbookUtils.addTagCreated(aNewCard);
-					cardbookRepository.addCardToRepository(aNewCard, true);
+					await cardbookRepository.addCardToRepository(aNewCard, true);
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardCreated", [myDirPrefIdName, aNewCard.fn]);
 			}
 			
 			if (aActionId && cardbookRepository.currentAction[aActionId]) {
-				cardbookRepository.addCardToAction(aActionId, "newCards", aNewCard);
+				await cardbookRepository.addCardToAction(aActionId, "newCards", aNewCard);
 			}
 			aOldCard = null;
 		}
@@ -1959,7 +2005,7 @@ var cardbookRepository = {
 		}
 	},
 
-	deleteCards: function (aListOfCards, aActionId) {
+	deleteCards: async function (aListOfCards, aActionId) {
 		try {
 			for (let card of aListOfCards) {
 				var myDirPrefId = card.dirPrefId;
@@ -1970,21 +2016,21 @@ var cardbookRepository = {
 					continue;
 				}
 				if (aActionId && cardbookRepository.currentAction[aActionId]) {
-					cardbookRepository.addCardToAction(aActionId, "oldCards", card);
+					await cardbookRepository.addCardToAction(aActionId, "oldCards", card);
 				}
 				var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myDirPrefId);
 				var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myDirPrefId);
 				if (myDirPrefIdType === "FILE") {
-					cardbookRepository.removeCardFromRepository(card, false);
+					await cardbookRepository.removeCardFromRepository(card, false);
 				} else if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-					cardbookRepository.removeCardFromRepository(card, true);
+					await cardbookRepository.removeCardFromRepository(card, true);
 				} else {
 					if (card.created) {
-						cardbookRepository.removeCardFromRepository(card, true);
+						await cardbookRepository.removeCardFromRepository(card, true);
 					} else {
 						cardbookRepository.cardbookUtils.addTagDeleted(card);
-						cardbookRepository.addCardToCache(card, true);
-						cardbookRepository.removeCardFromRepository(card, false);
+						await cardbookRepository.addCardToCache(card, true);
+						await cardbookRepository.removeCardFromRepository(card, false);
 					}
 				}
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardDeleted", [myDirPrefIdName, card.fn]);
@@ -2000,7 +2046,7 @@ var cardbookRepository = {
 
 	asyncDeleteCards: function (aListOfCards, aActionId) {
 		try {
-			Services.tm.currentThread.dispatch({ run: function() {
+			Services.tm.currentThread.dispatch({ run: async function() {
 				for (let card of aListOfCards) {
 					var myDirPrefId = card.dirPrefId;
 					if (cardbookRepository.cardbookPreferences.getReadOnly(myDirPrefId) || !cardbookRepository.cardbookPreferences.getEnabled(myDirPrefId)) {
@@ -2009,30 +2055,30 @@ var cardbookRepository = {
 						}
 						continue;
 					}
-					Services.tm.currentThread.dispatch({ run: function() {
-						if (aActionId && cardbookRepository.currentAction[aActionId]) {
-							cardbookRepository.addCardToAction(aActionId, "oldCards", card);
-						}
-						var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myDirPrefId);
-						var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myDirPrefId);
-						if (myDirPrefIdType === "FILE") {
-							cardbookRepository.removeCardFromRepository(card, false);
-						} else if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
-							cardbookRepository.removeCardFromRepository(card, true);
+					// Services.tm.currentThread.dispatch({ run: async function() {
+					if (aActionId && cardbookRepository.currentAction[aActionId]) {
+						await cardbookRepository.addCardToAction(aActionId, "oldCards", card);
+					}
+					var myDirPrefIdName = cardbookRepository.cardbookPreferences.getName(myDirPrefId);
+					var myDirPrefIdType = cardbookRepository.cardbookPreferences.getType(myDirPrefId);
+					if (myDirPrefIdType === "FILE") {
+						await cardbookRepository.removeCardFromRepository(card, false);
+					} else if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB") {
+						await cardbookRepository.removeCardFromRepository(card, true);
+					} else {
+						if (card.created) {
+							await cardbookRepository.removeCardFromRepository(card, true);
 						} else {
-							if (card.created) {
-								cardbookRepository.removeCardFromRepository(card, true);
-							} else {
-								cardbookRepository.cardbookUtils.addTagDeleted(card);
-								cardbookRepository.addCardToCache(card, true);
-								cardbookRepository.removeCardFromRepository(card, false);
-							}
+							cardbookRepository.cardbookUtils.addTagDeleted(card);
+							await cardbookRepository.addCardToCache(card, true);
+							await cardbookRepository.removeCardFromRepository(card, false);
 						}
-						cardbookRepository.cardbookUtils.formatStringForOutput("cardDeleted", [myDirPrefIdName, card.fn]);
-						if (aActionId && cardbookRepository.currentAction[aActionId]) {
-							cardbookRepository.currentAction[aActionId].doneCards++;
-						}
-					}}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
+					}
+					cardbookRepository.cardbookUtils.formatStringForOutput("cardDeleted", [myDirPrefIdName, card.fn]);
+					if (aActionId && cardbookRepository.currentAction[aActionId]) {
+						cardbookRepository.currentAction[aActionId].doneCards++;
+					}
+					// }}, Components.interfaces.nsIEventTarget.DISPATCH_SYNC);
 				}
 			}}, Components.interfaces.nsIEventTarget.DISPATCH_NORMAL);
 		}
@@ -2197,6 +2243,7 @@ var cardbookRepository = {
 			case "APPLE":
 			case "CARDDAV":
 			case "GOOGLE":
+			case "GOOGLE2":
 			case "YAHOO":
 				return "remote";
 				break;
@@ -2240,6 +2287,7 @@ loader.loadSubScript("chrome://cardbook/content/preferences/cardbookPreferences.
 loader.loadSubScript("chrome://cardbook/content/cardbookUtils.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookSynchronization.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookSynchronizationGoogle.jsm", cardbookRepository);
+loader.loadSubScript("chrome://cardbook/content/cardbookSynchronizationGoogle2.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookSynchronizationYahoo.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookLog.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookPasswordManager.jsm", cardbookRepository);
@@ -2251,9 +2299,12 @@ loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIndexedDB.js",
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCard.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBImage.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookEncryptor.js", this);
 loader.loadSubScript("chrome://cardbook/content/cardbookCategoryParser.js", this);
 loader.loadSubScript("chrome://cardbook/content/cardbookCardParser.js", this);
 loader.loadSubScript("chrome://cardbook/content/lists/cardbookListConversion.js", this);
+loader.loadSubScript("chrome://cardbook/content/scripts/notifyTools.js", this);
+loader.loadSubScript("chrome://cardbook/content/simpleMailRedirection/api_exp.js", this);

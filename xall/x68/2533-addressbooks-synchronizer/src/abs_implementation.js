@@ -4,7 +4,6 @@ const { AddonManager } = ChromeUtils.import("resource://gre/modules/AddonManager
 const { MailServices }=ChromeUtils.import("resource:///modules/MailServices.jsm");
 const { MailUtils }=ChromeUtils.import("resource:///modules/MailUtils.jsm");
 const { FileUtils }=ChromeUtils.import("resource://gre/modules/FileUtils.jsm");
-const { AddrBookDirectory, closeConnectionTo }=ChromeUtils.import("resource:///modules/AddrBookDirectory.jsm");
 const { NetUtil } = ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
 const { ExtensionSupport } = ChromeUtils.import("resource:///modules/ExtensionSupport.jsm");
 //const { ActivityManager } = ChromeUtils.import("resource:///modules/ActivityManager.jsm");	//this prevents TB from loading!
@@ -235,7 +234,7 @@ try {
 					let u2i=new Object;
 					let u2f=new Object;
 					for (let dir of MailServices.ab.directories) {
-debug('uids2ids: '+dir.UID+' -> '+dir.dirPrefId);
+//debug('uids2ids: '+dir.UID+' -> '+dir.dirPrefId);
 						u2i[dir.UID]=dir.dirPrefId;
 						if (typeof prefs!=='undefined') u2f[dir.UID]=getExternalFilename(dir);
 								//if called from background we have no prefs yet, but we don't need u2f there
@@ -244,14 +243,21 @@ debug('uids2ids: '+dir.UID+' -> '+dir.dirPrefId);
 } catch(e) {console.log('throws: '+e, e);}
 				},
 				setPrefs: function(theprefs, changedPref) {
-debug('prefs');
-						prefs=theprefs;
-						initialize();		//only on first call!
-						if (changedPref=='loadtimer' || changedPref=='timeddownload' || changedPref=='timedupload')
-							startTimer();
-						else if (changedPref=='synctype' || changedPref=='autoupload' || changedPref=='noupload')
-							theHiddenWin(prefs['synctype']=='imap' && prefs['autoupload']);
-				},
+debug('entered changedPref='+changedPref);
+          let [tb, version]=changedPref.split(':');
+          if (version) {
+            appVersion=version.replace(/^(\d+\.\d+)(\..*)?$/, '$1');
+debug('use appVersion '+appVersion);
+            changedPref='';
+          }
+          prefs=theprefs;
+          let cPrefs=initialize();		//only on first call!
+          if (changedPref=='loadtimer' || changedPref=='timeddownload' || changedPref=='timedupload')
+            startTimer();
+          else if (changedPref=='synctype' || changedPref=='autoupload' || changedPref=='noupload')
+            theHiddenWin(prefs['synctype']=='imap' && prefs['autoupload']);
+          return cPrefs;
+        },
 				filePicker: async function(prompt, type, filters, defaultpath) {
 debug('entered');
           filepickerpath=null;
@@ -264,8 +270,10 @@ debug('entered');
                     (type=='file'?nsIFilePicker.modeOpen:nsIFilePicker.modeSave);
           filePicker.init(m3p, prompt, mode);
           if (filters) {
-            for (let [filter, text] of Object.entries(filters))
+            for (let [filter, text] of Object.entries(filters)) {
               filePicker.appendFilter( text, filter );
+              if (appVersion>=82) break;  //no '.mab' anymore
+            }
           }
           if (defaultpath) filePicker.defaultString = defaultpath;
 
@@ -301,16 +309,23 @@ debug('returning '+ret);
 //'https:/www.' automatically adds a second /
 //missing ':' throws NS_ERROR_MALFORMED_URI
 //httpx:// throws NS_ERROR_FAILURE
+//TB89 with ftp disabled: does NOT throw an error
 debug(JSON.stringify(uri));
 debug(uristring+' -> '+uri.scheme+' '+uri.hostPort+' '+uri.filePath);
+            if (uri.scheme=='ftp') {
+              if (!Services.prefs.getBoolPref("network.ftp.enabled", false)) {
+                let sb=Services.strings.createBundle(
+                  "chrome://messenger/locale/accountCreationUtil.properties"
+                );
+                let msg=sb.GetStringFromName('url_parsing.error');  //URL not recognized
+                Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
+                return null;
+              } else {
+                let ans=Services.prompt.confirm(null, "Addressbooks Synchronizer", strings['ftpwarn']);
+                if (!ans) return null;
+              }
+            }
             if (uri.scheme=='ftp' || uri.scheme=='http') {
-/*
-              let sb=Services.strings.createBundle(
-                "chrome://passwordmgr/locale/passwordmgr.properties"
-              );
-              let msg=sb.formatStringFromName(
-                "insecureFieldWarningDescription2", [uristring, ]);
-*/
               let sb=Services.strings.createBundle(
                 "chrome://messenger/locale/accountCreation.properties"
               );
@@ -318,11 +333,12 @@ debug(uristring+' -> '+uri.scheme+' '+uri.hostPort+' '+uri.filePath);
                 "cleartext_warning", [uristring, ]);
               let ans=Services.prompt.confirm(null, "Addressbooks Synchronizer", msg);
               if (!ans) return null;
+
             } else if (uri.scheme!='https') {
               let sb=Services.strings.createBundle(
                 "chrome://messenger/locale/accountCreationUtil.properties"
               );
-              let msg=sb.GetStringFromName('url_scheme.error');
+              let msg=sb.GetStringFromName('url_scheme.error'); //URL scheme not allowed (e.g. file:)
               Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
               return null;
             }
@@ -334,7 +350,7 @@ debug(uristring+' -> illegal uri');
           let sb=Services.strings.createBundle(
             "chrome://messenger/locale/accountCreationUtil.properties"
           );
-          let msg=sb.GetStringFromName('url_parsing.error');
+          let msg=sb.GetStringFromName('url_parsing.error');  //URL not recognized
           Services.prompt.alert(null, "Addressbooks Synchronizer", msg);
           return null;
         },
@@ -373,7 +389,8 @@ debug("closing");
     let app = Services.appinfo;
     console.logStringMessage('AddressbooksSynchronizer: '+addOn.version+' on '+app.name+' '+app.version+' on '+app.OS);
 		version=addOn.version;
-		appVersion=app.version;
+		appVersion=app.version.replace(/^(\d+\.\d+)(\..*)?$/, '$1');
+debug('appVersion='+appVersion);
   }
 
 };

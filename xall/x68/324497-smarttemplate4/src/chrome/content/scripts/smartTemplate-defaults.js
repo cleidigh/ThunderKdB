@@ -1,6 +1,3 @@
-/* specify locale descriptions for addon-manager */
-pref("extensions.smarttemplate4@thunderbird.extension.description", "chrome://smartTemplate4/locale/settings.properties");
-
 /* global settings */
 pref("extensions.smartTemplate4.firstRun", true);
 pref("extensions.smartTemplate4.version", "?");
@@ -91,11 +88,14 @@ pref("extensions.smartTemplate4.debug.timeZones", false);
 pref("extensions.smartTemplate4.debug.timeStrings", false);
 pref("extensions.smartTemplate4.debug.headers", false);
 pref("extensions.smartTemplate4.debug.sandbox", false);
+pref("extensions.smartTemplate4.debug.notifications", false);
+pref("extensions.smartTemplate4.debug.notifications.menus", false);
 pref("extensions.smartTemplate4.debug.premium.licenser", false);
 pref("extensions.smartTemplate4.debug.premium.rsa", false);
 pref("extensions.smartTemplate4.debug.premium.testNotification", false);
 
 // SmartTemplate License specific:
+pref("extensions.smartTemplate4.license.gracePeriodDate","");
 pref("extensions.smartTemplate4.licenser.forceSecondaryIdentity",false);
 pref("extensions.smartTemplate4.licenseType", 0); // private license, 1-domain
 pref("extensions.smartTemplate4.LicenseKey", "");

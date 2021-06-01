@@ -1,199 +1,463 @@
 <!DOCTYPE html>
+
 <head>
-	<title>OppositeTodaySubpane</title>
-	<meta charset="UTF-8"/>
-	<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://addons.thunderbird.net/en-US/">
-	<base target="_top"/> 
-	<link rel="manifest" href="/manifest.json"/>
-	<style>
-		#btn1 {border: none; margin: 0px; padding: 0px; background-color: black ; color: white; font-size: 12px; width: 150px; font-family: sans-serif; height: 30px; text-align: left;}
-		#btn7 {border: none; margin: 0px; padding: 0px; background-color: black ; color: white; font-size: 12px; width: 150px; font-family: sans-serif; height: 30px; text-align: left;}
-		#btn13 {border: none; margin: 0px; padding: 0px; background-color: black ; color: white; font-size: 12px; width: 150px; font-family: sans-serif; height: 30px; text-align: left;}
-		#btn16 {border: none; margin: 0px; padding: 0px; background-color: black ; color: white; font-size: 12px; width: 150px; font-family: sans-serif; height: 30px; text-align: left;}
-		#btn19 {border: none; margin: 0px; padding: 0px; background-color: black ; color: white; font-size: 12px; width: 150px; font-family: sans-serif; height: 30px; text-align: left;}
-		#btn22 {border: none; margin: 0px; padding: 0px; background-color: black ; color: white; font-size: 12px; width: 150px; font-family: sans-serif; height: 30px; text-align: left;}
-		#btn26 {border: none; margin: 0px; padding: 0px; background-color: black ; color: white; font-size: 12px; width: 150px; font-family: sans-serif; height: 30px; text-align: left;}
-		#btn2 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn2:hover {background-color: red; color: white;}
-		#btn2:active {background-color: #850101; color: white;}
-		#btn3 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn3:hover {background-color: red; color: white;}
-		#btn3:active {background-color: #850101; color: white;}
-		#btn4 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn4:hover {background-color: red; color: white;}
-		#btn4:active {background-color: #850101; color: white;}
-		#btn5 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn5:hover {background-color: red; color: white;}
-		#btn5:active {background-color: #850101; color: white;}
-		#btn6 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn6:hover {background-color: red; color: white;}
-		#btn6:active {background-color: #850101; color: white;}
-		#btn8 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn8:hover {background-color: red; color: white;}
-		#btn8:active {background-color: #850101; color: white;}
-		#btn9 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn9:hover {background-color: red; color: white;}
-		#btn9:active {background-color: #850101; color: white;}
-		#btn10 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn10:hover {background-color: red; color: white;}
-		#btn10:active {background-color: #850101; color: white;}
-		#btn11 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn11:hover {background-color: red; color: white;}
-		#btn11:active {background-color: #850101; color: white;}
-		#btn12 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn12:hover {background-color: red; color: white;}
-		#btn12:active {background-color: #850101; color: white;}
-		#btn14 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn14:hover {background-color: red; color: white;}
-		#btn14:active {background-color: #850101; color: white;}
-		#btn15 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn15:hover {background-color: red; color: white;}
-		#btn15:active {background-color: #850101; color: white;}
-		#btn17 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn17:hover {background-color: red; color: white;}
-		#btn17:active {background-color: #850101; color: white;}
-		#btn18 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn18:hover {background-color: red; color: white;}
-		#btn18:active {background-color: #850101; color: white;}
-		#btn20 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn20:hover {background-color: red; color: white;}
-		#btn20:active {background-color: #850101; color: white;}
-		#btn21 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn21:hover {background-color: red; color: white;}
-		#btn21:active {background-color: #850101; color: white;}
-		#btn23 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn23:hover {background-color: red; color: white;}
-		#btn23:active {background-color: #850101; color: white;}
-		#btn24 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn24:hover {background-color: red; color: white;}
-		#btn24:active {background-color: #850101; color: white;}
-		#btn25 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn25:hover {background-color: red; color: white;}
-		#btn25:active {background-color: #850101; color: white;}
-		#btn27 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn27:hover {background-color: red; color: white;}
-		#btn27:active {background-color: #850101; color: white;}
-		#btn28 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn28:hover {background-color: red; color: white;}
-		#btn28:active {background-color: #850101; color: white;}
-		#btn29 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn29:hover {background-color: red; color: white;}
-		#btn29:active {background-color: #850101; color: white;}
-		#btn30 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn30:hover {background-color: red; color: white;}
-		#btn30:active {background-color: #850101; color: white;}
-		#btn31 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn31:hover {background-color: red; color: white;}
-		#btn31:active {background-color: #850101; color: white;}
-		#btn33 {border: none; margin: 0px; padding: 0px; background-color: red ; color: white; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn33:hover {background-color: blue; color: white;}
-		#btn33:active {background-color: blue; color: white;}
-		#btn34 {border: none; margin: 0px; padding: 0px; background-color: red ; color: white; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn34:hover {background-color: blue; color: white;}
-		#btn34:active {background-color: blue; color: white;}
-		#btn35 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn35:hover {background-color: red; color: white;}
-		#btn35:active {background-color: #850101; color: white;}
-		#btn36 {border: none; margin: 0px; padding: 0px; background-color: white ; color: black; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn36:hover {background-color: red; color: white;}
-		#btn36:active {background-color: #850101; color: white;}
-		#btn37 {border: none; margin: 0px; padding: 0px; background-color: green ; color: white; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn37:hover {background-color: orange; color: white;}
-		#btn37:active {background-color: orange; color: white;}
-		#btn38 {border: none; margin: 0px; padding: 0px; background-color: green ; color: white; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn38:hover {background-color: orange; color: white;}
-		#btn38:active {background-color: orange; color: white;}
-		#btn39 {border: none; margin: 0px; padding: 0px; background-color: green ; color: white; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn39:hover {background-color: orange; color: white;}
-		#btn39:active {background-color: orange; color: white;}
-		#btn40 {border: none; margin: 0px; padding: 0px; background-color: black ; color: white; font-size: 12px; width: 100px; font-family: sans-serif; height: 30px;}
-		#btn40:hover {background-color: darkslategray; color: white;}
-		#btn40:active {background-color: darkslategray; color: white;}
+<title></title>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://addons.thunderbird.net/en-US/">
+<base target="_top"/> 
+<link rel="manifest" href="/manifest.json"/>
+<style>
+    body { 
+        background-color: white;
+        width: 610px;
+}
+    #panel { 
+        display: flex;
+        color:navy;
+        width: 600px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #menu1 { 
+        color:navy;
+        width: 102px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #menu2 { 
+        color:navy;
+        width: 102px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #menu3 { 
+        color:navy;
+        width: 102px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #menu4 { 
+        color:navy;
+        width: 102px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #menu5 { 
+        color:navy;
+        width: 102px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #menu6 { 
+        color:navy;
+        width: 102px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #menu7 { 
+        color:navy;
+        width: 102px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+}
+    #menutitle1 {
+        background-color: black;
+        color:white;
+        width: 100px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        border: 1px solid navy;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #menutitle1:hover {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+    }
+    #menutitle1:active {
+        background-color: black;
+        border: 1px solid black;
+        color: whitle;
+}
+    #menutitle2 {
+        background-color: black;
+        color:white;
+        width: 100px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        border: 1px solid navy;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #menutitle2:hover {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+    }
+    #menutitle2:active {
+        background-color: black;
+        border: 1px solid black;
+        color: whitle;
+}
+    #menutitle3 {
+        background-color: black;
+        color:white;
+        width: 100px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        border: 1px solid navy;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #menutitle3:hover {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+    }
+    #menutitle3:active {
+        background-color: black;
+        border: 1px solid black;
+        color: whitle;
+}
+    #menutitle4 {
+        background-color: black;
+        color:white;
+        width: 100px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        border: 1px solid navy;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #menutitle4:hover {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+    }
+    #menutitle4:active {
+        background-color: black;
+        border: 1px solid black;
+        color: whitle;
+}
+    #menutitle5 {
+        background-color: black;
+        color:white;
+        width: 100px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        border: 1px solid navy;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #menutitle5:hover {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+    }
+    #menutitle5:active {
+        background-color: black;
+        border: 1px solid black;
+        color: whitle;
+}
+    #menutitle6 {
+        background-color: black;
+        color:white;
+        width: 100px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        border: 1px solid navy;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #menutitle6:hover {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+    }
+    #menutitle6:active {
+        background-color: black;
+        border: 1px solid black;
+        color: whitle;
+}
+    #menutitle7 {
+        background-color: black;
+        color:white;
+        width: 100px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        border: 1px solid navy;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #menutitle7:hover {
+        background-color: black;
+        border: 1px solid black;
+        color: white;
+    }
+    #menutitle7:active {
+        background-color: black;
+        border: 1px solid black;
+        color: whitle;
+}
+    #menuitem1 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem1:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem1:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem2 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem2:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem2:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem3 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem3:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem3:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem4 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem4:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem4:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem5 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem5:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem5:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem6 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem6:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem6:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem7 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem7:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem7:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem8 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem8:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem8:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem9 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem9:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem9:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem10 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem10:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem10:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem11 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem11:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem11:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem12 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem12:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem12:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem13 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem13:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem13:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem14 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem14:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem14:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem15 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem15:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem15:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem16 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem16:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem16:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem17 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem17:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem17:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem18 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem18:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem18:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem19 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem19:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem19:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem20 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem20:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem20:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem21 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem21:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem21:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem22 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem22:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem22:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem23 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem23:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem23:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem24 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem24:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem24:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem25 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem25:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem25:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem26 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem26:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem26:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem27 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem27:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem27:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem28 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem28:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem28:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem29 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem29:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem29:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem30 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem30:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem30:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem31 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem31:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem31:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem32 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem32:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem32:active { background-color: white; border: 1px solid red; color: red; }
+    #menuitem33 { background-color: red; color:white; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid red; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem33:hover { background-color: blue; border: 1px solid blue; color: white; }
+    #menuitem33:active { background-color: blue; border: 1px solid blue; color: white; }
+    #menuitem34 { background-color: white; color:black; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid white; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem34:hover { background-color: white; border: 1px solid white; color: black; }
+    #menuitem34:active { background-color: white; border: 1px solid red; color: black; }
+    #menuitem35 { background-color: white; color:black; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid white; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem35:hover { background-color: white; border: 1px solid white; color: black; }
+    #menuitem35:active { background-color: white; border: 1px solid red; color: black; }
+    #menuitem36 { background-color: white; color:navy; width: 100px; text-align: center; font-size: 13px; font-weight: bold; border: 1px solid navy; padding: 7px; top: 0; left: 0; right: 0; }
+    #menuitem36:hover { background-color: white; border: 1px solid red; color: red; }
+    #menuitem36:active { background-color: white; border: 1px solid red; color: red; }
 
-	</style>
+    #titleOne {
+        background-color: white;
+        color:black;
+        width: 590px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #titleTwo {
+        background-color: white;
+        color:navy;
+        width: 590px;
+        text-align: right;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 7px; 
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    #divImg {
+    padding: 25px;
+    }
+</style>
 </head>
-<body style="border: 2px solid red ; background-color: navy ; color: white ; top: 10px ; right: 10px ; bottom: 10px ; left: 0px ;">
-	<menu style="margin: 2px ; padding: 2px ;">
-	<button id="btn1">
-	<menu  style="font-weight: bold ;">Screen color:
-		<menuitem><button id="btn2">Dark</button></menuitem>
-		<menuitem><button id="btn3">Grey</button></menuitem>
-		<menuitem><button id="btn4">Light</button></menuitem>
-		<menuitem><button id="btn5">Khaki</button></menuitem>
-		<menuitem><button id="btn6">White</button></menuitem>
-	</menu>
-	</button>
-	</menu>
-
-	<menu style="margin: 2px ; padding: 2px ;">
-	<button id="btn7">
-	<menu  style="font-weight: bold ;">Font color:
-		<menuitem><button id="btn8">Black</button></menuitem>
-		<menuitem><button id="btn9">Blue</button></menuitem>
-		<menuitem><button id="btn10">Green</button></menuitem>
-		<menuitem><button id="btn11">Red</button></menuitem>
-		<menuitem><button id="btn12">White</button></menuitem>
-	</menu>
-	</button>
-	</menu>
-
-	<menu style="margin: 2px ; padding: 2px ;">
-	<button id="btn13">
-	<menu  style="font-weight: bold ;">Font family:
-		<menuitem><button id="btn14">Serif</button></menuitem>
-		<menuitem><button id="btn15">Sans-serif</button></menuitem>
-	</menu>
-	</button>
-	</menu>
-
-	<menu style="margin: 2px ; padding: 2px ;">
-	<button id="btn16">
-	<menu  style="font-weight: bold ;">Font weight:
-		<menuitem><button id="btn17">Bold</button></menuitem>
-		<menuitem><button id="btn18">Normal</button></menuitem>
-                                    <menuitem><button id="btn40">Print</button></menuitem>
-                                    <menuitem><button id="btn33">New Event</button></menuitem>
-                                    <menuitem><button id="btn34">New Task</button></menuitem>
-	</menu>
-	</button>
-	</menu>
-
-	<menu style="margin: 2px ; padding: 2px ;">
-	<button id="btn19">
-	<menu  style="font-weight: bold ;">Font style:
-		<menuitem><button id="btn20">Italic</button></menuitem>
-		<menuitem><button id="btn21">Normal</button></menuitem>
-		<menuitem><button id="btn37">Category</button></menuitem>
-		<menuitem><button id="btn38">Mark COMPL</button></menuitem>
-		<menuitem><button id="btn39">Priority</button></menuitem>
-	</menu>
-	</button>
-	</menu>
-
-	<menu style="margin: 2px ; padding: 2px ;">
-	<button id="btn22">
-	<menu  style="font-weight: bold ;">Font size:
-		<menuitem><button id="btn35">X-small</button></menuitem>
-		<menuitem><button id="btn23">Small</button></menuitem>
-		<menuitem><button id="btn24">Medium</button></menuitem>
-		<menuitem><button id="btn25">Large</button></menuitem>
-		<menuitem><button id="btn36">X-large</button></menuitem>
-	</menu>
-	</button>
-	</menu>
-
-	<menu style="margin: 2px ; padding: 2px ;">
-	<button id="btn26">
-	<menu  style="font-weight: bold ;">Text align:
-		<menuitem><button id="btn27">Inherit</button></menuitem>
-		<menuitem><button id="btn28">Justify</button></menuitem>
-		<menuitem><button id="btn29">Center</button></menuitem>
-		<menuitem><button id="btn30">Left</button></menuitem>
-		<menuitem><button id="btn31">Right</button></menuitem>
-	</menu>
-	</button>
-	</menu>
-
-	<script language="javascript" src="popup.js"></script>
+<body>
+<div id="titleOne">Mozilla Thunderbird</div>
+<div id="panel" display="flex">
+<div id="menu1">
+<div id="menutitle1">Screen color</div>
+<div id="menuitem1">Black</div>
+<div id="menuitem2">Dark Gray</div>
+<div id="menuitem3">Light Gray</div>
+<div id="menuitem4">White</div>
+<div id="menuitem5">Blue</div>
+<div id="menuitem6">Green</div>
+<div id="menuitem7">Khaki</div>
+<div id="menuitem8">Red</div>
+<div id="menuitem36">Others</div>
+</div>
+<div id="menu2">
+<div id="menutitle2">Font color</div>
+<div id="menuitem9">Black</div>
+<div id="menuitem10">Dark Gray</div>
+<div id="menuitem11">Light Gray</div>
+<div id="menuitem12">White</div>
+<div id="menuitem13">Blue</div>
+<div id="menuitem14">Green</div>
+<div id="menuitem15">Khaki</div>
+<div id="menuitem16">Red</div>
+</div>
+<div id="menu3">
+<div id="menutitle3">Font family</div>
+<div id="menuitem17">Serif</div>
+<div id="menuitem18">Sans-serif</div>
+<div id="menutitle4">Font weight</div>
+<div id="menuitem19">Bold</div>
+<div id="menuitem20">Normal</div>
+<div id="menutitle5">Font style</div>
+<div id="menuitem21">Italic</div>
+<div id="menuitem22">Normal</div>
+</div>
+<div id="menu6">
+<div id="menutitle6">Font size</div>
+<div id="menuitem23">X-Small</div>
+<div id="menuitem24">Small</div>
+<div id="menuitem25">Medium</div>
+<div id="menuitem26">Large</div>
+<div id="menuitem27">X-Large</div>
+<div id="menuitem33">Print</div>
+<div id="menuitem34">TaskviewStyles</div>
+<div id="menuitem35">version 4.7</div>
+</div>
+<div id="menu7">
+<div id="menutitle7">Text align</div>
+<div id="menuitem28">Inherit</div>
+<div id="menuitem29">Justify</div>
+<div id="menuitem30">Center</div>
+<div id="menuitem31">Left</div>
+<div id="menuitem32">Right</div>
+<div id="divImg"><img src="icons/fontstyle.png" style="widht: 64px; height: 64px;"></img></div>
+</div>
+</div>
+<div id="titleTwo">by Sungho Hwang</div>
+<script language="javascript" src="popup.js"></script>
 </body>
 </html>

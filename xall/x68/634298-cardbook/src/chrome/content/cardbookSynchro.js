@@ -6,6 +6,7 @@ loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIndexedDB.js",
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCard.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBUndo.js", this);
+loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBImage.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBSearch.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookEncryptor.js", this);
@@ -26,6 +27,9 @@ var cardbookSynchro = {
 
 			// query for some undos
 			cardbookIDBUndo.openUndoDB();
+
+			// query for some undos
+			cardbookIDBImage.openImageDB();
 
 			// mail popularity
 			cardbookIDBMailPop.openMailPopDB();

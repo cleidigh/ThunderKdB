@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "파일 $P1$가 존재하지 않습니다.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "파일 $P1$이(가) 비어 있습니다",
         "placeholders": {
@@ -3127,9 +3135,6 @@
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "카테고리 편집기"
 	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "새 카테고리 추가"
-	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "노드 수정"
 	},
@@ -3146,9 +3151,6 @@
 		"message": "카테고리:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "카테고리:"
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "카테고리:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "암호:"
 	},
-	"remotePage.passwordShow.label": {
-		"message": "표시"
+	"showHidePassword.tooltip": {
+		"message": "비밀번호 표시/숨기기"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "유효성 검사"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "P"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "표시"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "S"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "백그라운드에서 실행"
 	},
@@ -4882,7 +4878,7 @@
 		"message": "g"
 	},
 	"translateLabel": {
-		"message": "번역 돌리기"
+		"message": "번역"
 	},
 	"websiteLabel": {
 		"message": "웹 사이트:"
@@ -5213,15 +5209,6 @@
 	},
 	"keyLabel": {
 		"message": "키"
-	},
-	"photolocalURILabel": {
-		"message": "로컬 사진"
-	},
-	"logolocalURILabel": {
-		"message": "로컬 로고"
-	},
-	"soundlocalURILabel": {
-		"message": "로컬 소리"
 	},
 	"photoURILabel": {
 		"message": "사진"
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "이미지 복사"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "이미지 주소 복사"
 	},
 	"deleteImageCardLabel": {
 		"message": "이미지 삭제"

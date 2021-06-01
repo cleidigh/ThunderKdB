@@ -329,7 +329,6 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				} else {
 					let type = document.getElementById('remotePageType').value;
 					let username = document.getElementById('remotePageUsername').value;
-					let validateEmailButton = document.getElementById('validateEmailButton').value;
 					canValidate = wdw_addressbooksAdd.validateEmail();
 					let eList = curPage.getElementsByAttribute('required', 'true');
 					for (let i = 0; i < eList.length && canValidate; ++i) {
@@ -348,45 +347,37 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			let canValidate = true;
 			let type = document.getElementById('remotePageType').value;
 			let username = document.getElementById('remotePageUsername').value;
-			let validateEmailButton = document.getElementById('validateEmailButton');
-			if (type == 'GOOGLE' || type == 'YAHOO') {
+			let myRemotePageUsernameInfo = document.getElementById("remotePageUsernameInfo");
+			if (type == 'GOOGLE2' || type == 'YAHOO') {
 				canValidate = wdw_addressbooksAdd.isValidAddress(username);
 				if (canValidate) {
-					validateEmailButton.setAttribute('label', '✔');
+					myRemotePageUsernameInfo.classList.remove("icon-warning");
+					myRemotePageUsernameInfo.removeAttribute('tooltiptext');
 				} else {
-					validateEmailButton.setAttribute('label', '!');
+					myRemotePageUsernameInfo.classList.add("icon-warning");
+					myRemotePageUsernameInfo.setAttribute('tooltiptext', cardbookRepository.extension.localeData.localizeMessage("ValidatingEmailFailedLabel"));
 				}
 			}
 			return canValidate;
-		},
-
-		changeEmail: function () {
-			let type = document.getElementById('remotePageType').value;
-			let username = document.getElementById('remotePageUsername').value;
-			if (type == 'GOOGLE' || type == 'YAHOO') {
-				if (!wdw_addressbooksAdd.isValidAddress(username)) {
-					cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "ValidatingEmailFailedLabel");
-				}
-			}
 		},
 
 		remotePageSelect: function () {
 			wdw_addressbooksAdd.gValidateURL = false;
 			document.getElementById('remotePageURI').value = "";
 			document.getElementById('remotePageUsername').value = "";
+			document.getElementById("remotePageUsernameInfo").classList.remove("icon-warning");
+			document.getElementById("remotePageUsernameInfo").removeAttribute('tooltiptext');
 			document.getElementById('remotePagePassword').value = "";
 			
 			var type = document.getElementById('remotePageType').value;
-			if (type == 'GOOGLE') {
+			if (type == 'GOOGLE2') {
 				document.getElementById('remotePageUriLabel').disabled=true;
 				document.getElementById('remotePageURI').disabled=true;
 				document.getElementById('remotePageURI').setAttribute('required', 'false');
 				document.getElementById('remotePagePasswordLabel').disabled=true;
 				document.getElementById('remotePagePassword').disabled=true;
 				document.getElementById('remotePagePassword').setAttribute('required', 'false');
-				document.getElementById('remotePagePasswordCheckbox').disabled=true;
 				document.getElementById('rememberPasswordCheckbox').disabled=true;
-				document.getElementById('validateEmailButton').setAttribute('hidden', 'false');
 			} else if (type == 'YAHOO') {
 				document.getElementById('remotePageUriLabel').disabled=true;
 				document.getElementById('remotePageURI').disabled=true;
@@ -394,9 +385,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('remotePagePasswordLabel').disabled=true;
 				document.getElementById('remotePagePassword').disabled=true;
 				document.getElementById('remotePagePassword').setAttribute('required', 'false');
-				document.getElementById('remotePagePasswordCheckbox').disabled=true;
 				document.getElementById('rememberPasswordCheckbox').disabled=true;
-				document.getElementById('validateEmailButton').setAttribute('hidden', 'true');
 			} else if (type == 'APPLE') {
 				document.getElementById('remotePageUriLabel').disabled=true;
 				document.getElementById('remotePageURI').disabled=true;
@@ -404,9 +393,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('remotePagePasswordLabel').disabled=false;
 				document.getElementById('remotePagePassword').disabled=false;
 				document.getElementById('remotePagePassword').setAttribute('required', 'true');
-				document.getElementById('remotePagePasswordCheckbox').disabled=false;
 				document.getElementById('rememberPasswordCheckbox').disabled=false;
-				document.getElementById('validateEmailButton').setAttribute('hidden', 'true');
 			} else {
 				document.getElementById('remotePageUriLabel').disabled=false;
 				document.getElementById('remotePageURI').disabled=false;
@@ -414,9 +401,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 				document.getElementById('remotePagePasswordLabel').disabled=false;
 				document.getElementById('remotePagePassword').disabled=false;
 				document.getElementById('remotePagePassword').setAttribute('required', 'true');
-				document.getElementById('remotePagePasswordCheckbox').disabled=false;
 				document.getElementById('rememberPasswordCheckbox').disabled=false;
-				document.getElementById('validateEmailButton').setAttribute('hidden', 'true');
 			}
 			wdw_addressbooksAdd.checklocationNetwork();
 			cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "OK");
@@ -439,7 +424,7 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 		remotePageAdvance: function () {
 			let myType = document.getElementById('remotePageType').value;
 			// APPLE or CARDDAV have already been added to gAccountsFound
-			if (myType == "GOOGLE" || myType == "YAHOO") {
+			if (myType == "GOOGLE2" || myType == "YAHOO") {
 				wdw_addressbooksAdd.gAccountsFound = [];
 				wdw_addressbooksAdd.gAccountsFound.push([myType,
 															cardbookRepository.cardbookOAuthData[myType].ROOT_API,
@@ -484,12 +469,19 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			wdw_addressbooksAdd.gSearchDefinition.rules = JSON.parse(JSON.stringify(mySearch.rules));
 		},
 
-		showPassword: function (aCheckBox) {
-			var myPasswordTextbox = document.getElementById(aCheckBox.id.replace(/Checkbox$/, ''));
-			if (myPasswordTextbox.type != "password") {
-				myPasswordTextbox.setAttribute('type', 'password');
+		showPassword: function () {
+			let myPasswordTextbox = document.getElementById("remotePagePassword");
+			if (!myPasswordTextbox.value) {
+				return;
+			}
+
+			let myPasswordTextboxInfo = document.getElementById("remotePagePasswordInfo");
+			if (myPasswordTextbox.type == "password") {
+				myPasswordTextbox.type = "text";
+				myPasswordTextboxInfo.classList.add("icon-visible");
 			} else {
-				myPasswordTextbox.removeAttribute('type');
+				myPasswordTextbox.type = "password";
+				myPasswordTextboxInfo.classList.remove("icon-visible");
 			}
 		},
 
@@ -501,8 +493,8 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var type = document.getElementById('remotePageType').value;
 			var username = document.getElementById('remotePageUsername').value;
 			var password = document.getElementById('remotePagePassword').value;
-			if (type == 'GOOGLE') {
-				var url = cardbookRepository.cardbookOAuthData.GOOGLE.ROOT_API;
+			if (type == 'GOOGLE2') {
+				var url = cardbookRepository.cardbookOAuthData.GOOGLE2.ROOT_API;
 			} else if (type == 'YAHOO') {
 				var url = cardbookRepository.cardbookOAuthData.YAHOO.ROOT_API;
 			} else if (type == 'APPLE') {
@@ -520,12 +512,12 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			}
 			
 			var dirPrefId = cardbookRepository.cardbookUtils.getUUID();
-			if (type == 'GOOGLE') {
+			if (type == 'GOOGLE2') {
 				cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "Validating1Label", [url], "PRIORITY_INFO_MEDIUM");
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
 				var connection = {connUser: username, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
-				cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogleCarddav(connection, null, type, null);
+				cardbookRepository.cardbookSynchronizationGoogle2.requestNewRefreshTokenForGooglePeople(connection, null, type, null);
 				wdw_addressbooksAdd.waitForRefreshTokenFinished(dirPrefId, url, type, username);
 			} else if (type == 'YAHOO') {
 				cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "Validating1Label", [url], "PRIORITY_INFO_MEDIUM");
@@ -573,11 +565,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 			var myURL = document.getElementById('findPageURLTextbox' + aRowId).value;
 			var myUsername = document.getElementById('findUsernameTextbox' + aRowId).value;
 
-			if (myType == 'GOOGLE') {
+			if (myType == 'GOOGLE2') {
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
 				cardbookRepository.cardbookServerSyncRequest[dirPrefId]++;
 				var connection = {connUser: myUsername, connPrefId: dirPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
-				cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogleCarddav(connection, null, myType, null);
+				cardbookRepository.cardbookSynchronizationGoogle2.requestNewRefreshTokenForGooglePeople(connection, null, myType, null);
 				wdw_addressbooksAdd.waitForFindRefreshTokenFinished(aRowId, dirPrefId, myURL, myType, myUsername);
 			} else if (myType == 'YAHOO') {
 				cardbookRepository.cardbookSynchronization.initMultipleOperations(dirPrefId);
@@ -708,17 +700,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						} else if (cardbookRepository.cardbookRefreshTokenResponse[aPrefId] !== cardbookRepository.cardbookRefreshTokenRequest[aPrefId]) {
 							cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "Validating1Label", [aUrl], "PRIORITY_INFO_MEDIUM");
 						} else {
-							if (aType == "GOOGLE" && cardbookRepository.cardbookRefreshTokenResponse[aPrefId] !== 2) {
-								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-								var connection = {connUser: aUsername, connPrefId: aPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
-								cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogleClassic(connection, null, null, null);
-							} else {
-								cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "OK");
-								wdw_addressbooksAdd.gValidateURL = true;
-								wdw_addressbooksAdd.checklocationNetwork();
-								cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
-								lTimerRefreshToken.cancel();
-							}
+							cardbookNotifications.setNotification(ABAddNotification.resultNotifications, "OK");
+							wdw_addressbooksAdd.gValidateURL = true;
+							wdw_addressbooksAdd.checklocationNetwork();
+							cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
+							lTimerRefreshToken.cancel();
 						}
 					}
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);
@@ -738,17 +724,11 @@ if ("undefined" == typeof(wdw_addressbooksAdd)) {
 						} else if (cardbookRepository.cardbookRefreshTokenResponse[aPrefId] !== cardbookRepository.cardbookRefreshTokenRequest[aPrefId]) {
 							myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("Validating2Label"));
 						} else {
-							if (aType == "GOOGLE" && cardbookRepository.cardbookRefreshTokenResponse[aPrefId] !== 2) {
-								cardbookRepository.cardbookServerSyncRequest[aPrefId]++;
-								var connection = {connUser: aUsername, connPrefId: aPrefId, connDescription: wdw_addressbooksAdd.gValidateDescription};
-								cardbookRepository.cardbookSynchronizationGoogle.requestNewRefreshTokenForGoogleClassic(connection, null, null, null);
-							} else {
-								myButton.setAttribute('validated', 'true');
-								myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("ValidationOKLabel"));
-								wdw_addressbooksAdd.checkFindLinesRequired();
-								cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
-								lTimerRefreshToken.cancel();
-							}
+							myButton.setAttribute('validated', 'true');
+							myButton.setAttribute('label', cardbookRepository.extension.localeData.localizeMessage("ValidationOKLabel"));
+							wdw_addressbooksAdd.checkFindLinesRequired();
+							cardbookRepository.cardbookSynchronization.finishMultipleOperations(aPrefId);
+							lTimerRefreshToken.cancel();
 						}
 					}
 					}, 1000, Components.interfaces.nsITimer.TYPE_REPEATING_SLACK);

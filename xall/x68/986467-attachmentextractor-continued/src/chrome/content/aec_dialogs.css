@@ -1,0 +1,71 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* 
+ * Don't display the lightweight-theme images
+ * because of overlaying the whole dialog.
+ * On the other hand we need the lightweight=true
+ * to have the dark and light mode ability
+ */
+
+#wdw_aecOptionsWindow:not([lwt-tree]):-moz-lwtheme,
+#AEDialog:not([lwt-tree]):-moz-lwtheme,
+#attachmentextractorFilenamePatternDialog:not([lwt-tree]):-moz-lwtheme,
+#attachmentextractorSuggestedFolderDialog:not([lwt-tree]):-moz-lwtheme {
+  background-image: none !important;
+  text-shadow: none;
+}
+#wdw_aecOptionsWindow:not([lwt-tree]):-moz-lwtheme-darktext,
+#AEialog:not([lwt-tree]):-moz-lwtheme-darktext,
+#attachmentextractorFilenamePatternDialog:not([lwt-tree]):-moz-lwtheme-darktext,
+#attachmentextractorSuggestedFolderDialog:not([lwt-tree]):-moz-lwtheme-darktext {
+  background: -moz-Dialog !important;
+  color: -moz-DialogText;
+}
+legend:-moz-lwtheme {
+  background-color: unset !important;
+}
+
+button menupopup menu, button menupopup menuitem, menulist menupopup menu, menulist menupopup menuitem {
+  -moz-appearance: none;
+  background-color: var(--in-content-page-background);
+  color: var(--in-content-page-color);
+}
+button menupopup menu:hover, button menupopup menuitem:hover, menulist menupopup menu:hover, menulist menupopup menuitem:hover {
+  background-color: var(--button-background-hover) !important;
+}
+
+/***************************************************************/
+
+#wdw_aecOptionsWindow,
+#AEDialog,
+#attachmentextractorFilenamePatternDialog,
+#attachmentextractorSuggestedFolderDialog {
+  font: message-box;
+  -moz-appearance: none;
+  background-color: var(--in-content-page-background);
+  color: var(--in-content-page-color);
+}
+#AEDialog,
+#attachmentextractorFilenamePatternDialog,
+#attachmentextractorSuggestedFolderDialog {
+  padding: 1em;
+}
+
+
+/*
+#filenamepattern_examplegenerated,
+#filenamepattern_examplegenerated2,
+#filenamepattern {
+  background: #6b6b3c !important;
+}
+
+dialog#attachmentextractorFilenamePatternDialog {
+  width: 30em;
+}
+
+input#filenamepattern {
+  width: 25em;
+}
+*/

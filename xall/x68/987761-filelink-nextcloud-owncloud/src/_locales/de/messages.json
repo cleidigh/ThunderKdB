@@ -1,9 +1,9 @@
 {
-  "extensionName": {
-    "message": "*cloud - FileLink für Nextcloud und ownCloud"
-  },
   "extensionDescription": {
     "message": "Lade große Anhänge in deine Cloud und sende den Link per Mail"
+  },
+  "extensionName": {
+    "message": "*cloud - FileLink für Nextcloud und ownCloud"
   },
   "saveButton": {
     "message": "Speichern"
@@ -15,7 +15,7 @@
     "message": "Server-URL"
   },
   "serverUrl_details": {
-    "message": "Die URL des Cloud-Servers, muss mit http oder https beginnen.\nFalls der Server auf einem ungewöhnlichen Port läuft, gehört die Portnummer mit in die URL."
+    "message": "Die URL des Cloud-Servers muss mit http oder https beginnen.\nFalls der Server auf einem ungewöhnlichen Port läuft, gehört die Port-Nummer mit in die URL."
   },
   "username": {
     "message": "Username"
@@ -35,29 +35,26 @@
   "storageFolder_details": {
     "message": "Das Verzeichnis, in dem die Dateien abgelegt werden. Falls es nicht existiert, wird es automatisch angelegt."
   },
-  "downloadPasswords": {
-    "message": "Download-Passwörter"
-  },
-  "useNoDlPassword_details": {
-    "message": "Downloads sind ohne Passwort zugänglich"
-  },
-  "useDlPassword": {
-    "message": "Download-Passwörter"
-  },
   "useNoDlPassword": {
     "message": "Kein Passwort"
   },
-  "oneDlPassword": {
-    "message": "Ein Passwort für alle Downloads"
-  },
-  "useDlPassword_details": {
-    "message": "Dieses Passwort muss allen Richtlinien entsprechen, die der Admin deiner Cloud aufgestellt hat (Länge, Zeichen, Ziffern, ...), sonst schlägt der Upload fehl."
+  "useNoDlPassword_details": {
+    "message": "Downloads sind ohne Passwort zugänglich"
   },
   "useGeneratedDlPassword": {
     "message": "Ein zufälliges Passwort pro Datei"
   },
   "useGeneratedDlPassword_details": {
     "message": "Für jede Datei wird ein zufälliges Passwort erzeugt. Es erscheint nach dem Upload im Status-Dialog."
+  },
+  "useDlPassword": {
+    "message": "Download-Passwörter"
+  },
+  "oneDlPassword": {
+    "message": "Ein Passwort für alle Downloads"
+  },
+  "useDlPassword_details": {
+    "message": "Dieses Passwort muss allen Richtlinien entsprechen, die der Admin deiner Cloud aufgestellt hat (Länge, Zeichen, Ziffern, ...), sonst schlägt der Upload fehl."
   },
   "expiryDaysBefore": {
     "message": "Downloads verfügbar für "
@@ -66,7 +63,7 @@
     "message": " Tage"
   },
   "expiry_details": {
-    "message": "Die Dauer für die der Download verfügbar bleibt, heute mitgezählt"
+    "message": "Die Anzahl der Tage, für die der Download verfügbar bleibt, inklusive heute"
   },
   "freespace": {
     "message": "Freier Speicher: $FREE$ GB von $FULL$ GB",
@@ -85,6 +82,12 @@
   "error_0": {
     "message": "Unbekannter Fehler"
   },
+  "error_typeerror": {
+    "message": "Keine Verbindung zur Cloud. Prüfe die Server-URL und deine Netzwerkverbindung"
+  },
+  "error_404": {
+    "message": "Account-Prüfung fehlgeschlagen: User existiert nicht, inkompatible Cloud oder Netzwerkproblem"
+  },
   "warn_unsupported_cloud": {
     "message": "Datenverlust droht: Veraltete Version von Nextcloud oder ownCloud. Bitte den Cloud-Admin um ein Update"
   },
@@ -92,17 +95,11 @@
     "description": "This is displayed over the icon if the cloud version is not supported, so it should be quite short and contain at most two lines.",
     "message": "Veraltete\nVersion"
   },
-  "error_404": {
-    "message": "Account-Prüfung fehlgeschlagen: User existiert nicht, inkompatible Cloud oder Netzwerkproblem"
-  },
   "error_401": {
     "message": "Login fehlgeschlagen. Wahrscheinlich ist der Username oder das Passwort falsch."
   },
   "error_503": {
     "message": "Server ist im Wartungsmodus. Versuch es später wieder."
-  },
-  "error_typeerror": {
-    "message": "Keine Verbindung zur Cloud. Prüfe die Server-URL und deine Netzwerkverbindung"
   },
   "error_sharing_off": {
     "message": "Freigaben sind in dieser Cloud deaktiviert. Bitte den Admin, sie zu aktivieren."
@@ -120,9 +117,14 @@
     "message": "Account-Prüfung fehlgeschlagen, Netzwerkprobleme?"
   },
   "warn_insecure_http": {
-    "message": "Mit http werden die Login-Daten unverschlüsselt übertragen. Benutze lieber https:. Wenn das nicht funktioniert, frage den Admin."
+    "message": "Mit http: werden die Login-Daten unverschlüsselt übertragen. Benutze lieber https:. Wenn das nicht funktioniert, frage den Admin."
+  },
+  "status_menutooltip": {
+    "description": "This is displayed as a tooltip when the mouse pointer hovers over the menu button labelled with 'status_menuname'",
+    "message": "Zeige *cloud-Upload-Status und generierte Passwörter (falls vorhanden)"
   },
   "status_menuname": {
+    "description": "This short text is displayed on the menu button that opens the status popup next to the *cloud logo",
     "message": "Status"
   },
   "status_no_uploads": {
@@ -147,18 +149,22 @@
   "status_sharing": {
     "message": "Teilen"
   },
+  "status_checkingsize": {
+    "description": "This will be displayed in the status popup. If this step fails this string will be with one indicating failure, eg 'Checking maximum file size failed'.",
+    "message": "Überprüfen der maximalen Dateigröße"
+  },
   "status_checkingspace": {
     "message": "Speicherplatz prüfen"
+  },
+  "status_error": {
+    "description": "This will be combined with one of the states above, eg 'Preparing failed'. If this doesn't work in your language, please tell me.",
+    "message": "Fehler beim $1"
   },
   "status_password": {
     "message": "Passwort: $1"
   },
-  "status_error": {
-    "description": "This will be combined with one of the states above, eg 'Fehler beim Teilen'. If this doesn't work in your language, please tell me.",
-    "message": "Fehler beim $1"
-  },
   "warn_nonascii_password": {
-    "message": "Das Passwort enthält Zeichen, die oft Loginprobleme verursachen. Benutze hier besser ein App-Passwort (unter \"Sicherheit\" in den Einstellunten deiner Cloud)."
+    "message": "Das Passwort enthält Zeichen, die oft Login-Probleme verursachen. Benutze hier besser ein App Passwort (unter \"Sicherheit\" in den Einstellungen deiner Cloud)."
   },
   "advanced_options": {
     "message": "Erweiterte Optionen"

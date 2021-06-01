@@ -70,13 +70,14 @@ function onLoadDialog () {
 	validate();
 };
 
-function onAcceptDialog () {
+function onAcceptDialog (aEvent) {
 	if (validate()) {
 		window.arguments[0].code = document.getElementById('customFieldCodeTextBox').value.trim();
 		window.arguments[0].label = document.getElementById('customFieldLabelTextBox').value.trim();
 		window.arguments[0].typeAction="SAVE";
 		close();
 	}
+	aEvent.preventDefault();
 };
 
 function onCancelDialog () {

@@ -101,6 +101,7 @@ var cardbookPreferences = {
 	getAllCustomFields: function () {
 		try {
 			let finalResult = {};
+			// to delete pers
 			for (let type of [ 'pers', 'personal', 'org' ]) {
 				finalResult[type] = [];
 				let result = this.getAllCustomFieldsByType(type);

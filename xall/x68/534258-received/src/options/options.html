@@ -73,9 +73,13 @@
             The same as above, but hides TLS information if any.
         </p>
         <p>
-            <input type="text" readonly=true value="^from (.+?)(?: \(using .+ requested\))? by (?:mx\.example\.com|mx\.example\.org|mxfront\d{1,2}[a-z]\.mail\.yandex\.net \(mxfront/Yandex\))" />
+            <input type="text" readonly=true value="^from (.+?)(?: \(using .+ requested\))? by (?:mx\.example\.com|mx\.example\.org|[a-z]{3}\d-[0-9a-f]{12}\.qloud-c\.yandex\.net \(mxfront/Yandex\))" />
             The same as above, but for accounts on different mail servers:
             mx.example.com, mx.example.net, Yandex.Mail Service.
+        </p>
+        <p>
+            <input type="text" readonly=true value="^from (.+?) by mx\.example\.com.+for.+(; .+)$" />
+            Using two capturing groups to display host and time stamp.
         </p>
     </div>
     <script src="options.js"></script>

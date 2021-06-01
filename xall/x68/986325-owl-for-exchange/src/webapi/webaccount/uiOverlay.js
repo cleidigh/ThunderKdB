@@ -188,18 +188,6 @@ async function overlayListener(aDocument)
           setupFccItems();
         }
       };
-    } else if (/^chrome:\/\/messenger\/content\/addressbook\/ab((Edit|New)Card|(Edit|Mail)List)Dialog\.x(htm|u)l$/.test(aDocument.documentURI)) { // xul COMPAT for TB 68 (bug 1605845)
-      aDocument.defaultView.GetDirectoryFromURI = function(aURI) {
-        let directory = MailServices.ab.getDirectory(aURI);
-        if (gAddressBooksMarkedAsReadOnly.has(directory.UID)) {
-          directory = new Proxy(directory, {
-            get(directory, property) {
-              return property == "readOnly" ? true : directory[property];
-            },
-          });
-        }
-        return directory;
-      };
     } else if (aDocument.documentURI == "about:accountsettings" ||
         aDocument.documentURI == "chrome://messenger/content/AccountManager.xul") { // COMPAT for TB 68 (bug 1096006)
       let window = aDocument.defaultView;

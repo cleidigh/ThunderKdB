@@ -4,7 +4,7 @@ if ("undefined" == typeof(ovl_attachvCard)) {
 
 	var ovl_attachvCard = {
 		
-		attachvCard: function () {
+		attachvCard: async function () {
 			var selected = document.getElementById("msgIdentity").selectedItem;
 			var key = selected.getAttribute("identitykey");
 			var result = [];
@@ -30,7 +30,7 @@ if ("undefined" == typeof(ovl_attachvCard)) {
 									return;
 								}
 							}
-							cardbookRepository.cardbookUtils.writeContentToFile(myFile.path, cardbookRepository.cardbookUtils.getvCardForEmail(myCard), "UTF8");
+							cardbookRepository.cardbookUtils.writeContentToFile(myFile.path, await cardbookRepository.cardbookUtils.getvCardForEmail(myCard), "UTF8");
 							if (myFile.exists() && myFile.isFile()) {
 								attachment.url = "file:///" + myFile.path;
 								gMsgCompose.compFields.addAttachment(attachment);

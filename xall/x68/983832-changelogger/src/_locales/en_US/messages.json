@@ -1,0 +1,36 @@
+{
+  "extensionName": {
+    "message": "Changelogger",
+    "description": ""
+  },
+  "extensionDescription": {
+    "message": "Gets changelogs for updated addons",
+    "description": ""
+  },
+  "noChangelog": {
+    "message": "No release notes were provided by the developer for this version.",
+    "description": "Message to display if no release notes are found for this version."
+  },
+  "updateTitle": {
+    "message": "$EXTENSION$ updated to version $VERSION$",
+    "description": "Update notification title",
+    "placeholders": {
+      "extension": {
+        "content": "$1",
+        "example": "Changelogger"
+      },
+      "version": {
+        "content": "$2",
+        "example": "v1.0.6"
+      }
+    }
+  },
+  "noChangelogsYetTitle": {
+    "message": "No Changelogs",
+    "description": "Message title for if there are no changelogs yet."
+  },
+  "noChangelogsYet": {
+    "message": "There are no saved changelogs yet.\nChangelogs will be added here when extensions are installed or updated.",
+    "description": "Message for if no changelogs are saved yet"
+  }
+}

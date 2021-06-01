@@ -447,7 +447,6 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response code : ", aStatus);
 				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(this.logDescription + " : debug mode : response etag : ", aChannel.getResponseHeader("etag"));
 			}
-
 			if (status !== 499 && status !== 0 && status !== 408) {
 				if (aResultLength > 0) {
 					var responseText = aResult;
@@ -495,6 +494,15 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 					headers.accept = parameters.accept;
 				}
 				this.sendHTTPRequest("GET", null, headers, null, null, false);
+			} else if (operation == "GETLABELS2" || operation == "GETCONTACTS2") {
+				let headers = {"Content-Type": "application/json"};
+				this.sendHTTPRequest("GET", null, headers, null, null, false);
+			} else if (operation == "PATCHCONTACT2" || operation == "PATCHCONTACTPHOTO2") {
+				let headers = {"Content-Type": "application/json"};
+				this.sendHTTPRequest("PATCH", parameters.data, headers, null, null, false);
+			} else if (operation == "POSTCONTACT2") {
+				let headers = {"Content-Type": "application/json"};
+				this.sendHTTPRequest("POST", parameters.data, headers, null, null, false);
 			} else if (operation == "PUT") {
 				if (this.etag && this.etag != "0") {
 					this.sendHTTPRequest(operation, parameters.data, { "Content-Type": parameters.contentType,
@@ -522,8 +530,7 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 				let query = this._buildQueryRequest(parameters.props);
 				this.sendHTTPRequest("REPORT", query, headers);
 			} else if (operation == "DELETE") {
-				this.sendHTTPRequest(operation, null, { "Content-Type": parameters.contentType,
-																		"If-Match": this.etag });
+				this.sendHTTPRequest(operation, null, { "If-Match": this.etag });
 			}
 		},
 	
@@ -539,8 +546,33 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 			this.load("GETLABELS", {accept: accept});
 		},
 	
+		getLabels2: function() {
+			this.load("GETLABELS2");
+		},
+	
 		getContacts: function(props) {
 			this.load("GETCONTACTS", {props: props});
+		},
+	
+		getContacts2: function() {
+			this.load("GETCONTACTS2");
+		},
+	
+		patchContact2: function(data) {
+			this.load("PATCHCONTACT2", {data: data});
+		},
+	
+		patchContactPhoto2: function(data) {
+			this.load("PATCHCONTACTPHOTO2", {data: data});
+		},
+	
+		multiget2: function(length) {
+			this.reportLength = length;
+			this.load("GET", {});
+		},
+	
+		postContact2: function(data) {
+			this.load("POSTCONTACT2", {data: data});
 		},
 	
 		putContacts: function(props) {
@@ -586,27 +618,21 @@ if ("undefined" == typeof(cardbookWebDAV)) {
 	
 		googleToken: function(aType, aParams, aHeaders) {
 			this.hideResponse = true;
-			var paramsArray = [];
-			for (var param in aParams) {
-				paramsArray.push(param + "=" + encodeURIComponent(aParams[param]));
-			}
-			this.sendHTTPRequest(aType, paramsArray.join("&"), aHeaders, cardbookRepository.cardbookUtils.cleanWebArray(paramsArray));
+			let encodedParams = cardbookRepository.cardbookSynchronization.encodeParams(aParams);
+			this.sendHTTPRequest(aType, encodedParams, aHeaders, cardbookRepository.cardbookUtils.cleanRefreshToken(encodedParams));
 		},
 		
 		yahooToken: function(aType, aParams, aHeaders, aClientId, aClientSecret) {
 			this.hideResponse = true;
-			var paramsArray = [];
-			for (var param in aParams) {
-				paramsArray.push(param + "=" + encodeURIComponent(aParams[param]));
-			}
+			let encodedParams = cardbookRepository.cardbookSynchronization.encodeParams(aParams);
 			aHeaders["Authorization"] = "Basic " + this.b64EncodeUnicode(aClientId + ':' + aClientSecret);
-			this.sendHTTPRequest(aType, paramsArray.join("&"), aHeaders, cardbookRepository.cardbookUtils.cleanWebArray(paramsArray));
+			this.sendHTTPRequest(aType, encodedParams, aHeaders, cardbookRepository.cardbookUtils.cleanRefreshToken(encodedParams));
 		},
 		
-		delete: function(contentType) {
-			this.load("DELETE", {contentType: contentType});
+		delete: function() {
+			this.load("DELETE");
 		},
-		
+	
 		_buildAllContactsGetRequest: function(props) {
 			var query = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 			query += "<feed xmlns='http://www.w3.org/2005/Atom' xmlns:gContact='http://schemas.google.com/contact/2008' xmlns:gd='http://schemas.google.com/g/2005' xmlns:batch='http://schemas.google.com/gdata/batch'>";

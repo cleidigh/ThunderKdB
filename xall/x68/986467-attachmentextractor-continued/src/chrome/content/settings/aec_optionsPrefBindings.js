@@ -162,10 +162,6 @@ Preferences.addAll([{
   type: "bool"
 },
 {
-  id: "extensions.attachextract_cont.setdatetoemail",
-  type: "bool"
-},
-{
   id: "extensions.attachextract_cont.queuerequests",
   type: "bool"
 },
@@ -178,31 +174,15 @@ Preferences.addAll([{
   type: "bool"
 },
 {
-  id: "extensions.attachextract_cont.extract.minimumsize",
-  type: "int"
-},
-{
   id: "extensions.attachextract_cont.suggestfolder.disregardduplicates",
   type: "bool"
-},
-{
-  id: "extensions.attachextract_cont.suggestfolder.excludekeywords",
-  type: "string"
 },
 {
   id: "extensions.attachextract_cont.reportgen.thumbnail",
   type: "bool"
 },
 {
-  id: "extensions.attachextract_cont.reportgen.embedcss",
-  type: "bool"
-},
-{
   id: "extensions.attachextract_cont.reportgen.reportname",
-  type: "string"
-},
-{
-  id: "extensions.attachextract_cont.reportgen.cssfile",
   type: "string"
 },
 ]);

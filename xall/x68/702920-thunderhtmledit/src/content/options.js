@@ -16,6 +16,7 @@ Preferences.addAll([
 
 function licenseColour() {
   const input = document.getElementById("License");
+  if (/\s/.test(input.value)) input.value = input.value.replace(/\s/g, "");
   if (window.opener.ThunderHTMLedit_.hasLicense()) {
     input.setAttribute("style", "color: green");
   } else {

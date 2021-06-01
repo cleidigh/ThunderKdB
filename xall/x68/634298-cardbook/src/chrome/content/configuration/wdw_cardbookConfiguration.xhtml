@@ -9,6 +9,8 @@
 <?xml-stylesheet href="chrome://messenger/content/notification.css" type="text/css"?>
 <!-- for the textbox -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/input-fields.css"?>
+<!-- for the password icon -->
+<?xml-stylesheet href="chrome://messenger/skin/creationDialog.css" type="text/css"?>
 
 <?xml-stylesheet href="chrome://messenger/content/messenger.css"?>
 <?xml-stylesheet href="chrome://messenger/content/preferences/handlers.css"?>
@@ -33,6 +35,7 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBCard.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBCat.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBUndo.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBImage.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBMailPop.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/indexedDB/cardbookIDBSearch.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
@@ -368,7 +371,7 @@
 									<label><html:h2>__MSG_ABtypesGroupboxLabel__</html:h2></label>
 									<hbox align="center">
 										<radiogroup id="ABtypesCategoryRadiogroup" orient="horizontal" onselect="wdw_cardbookConfiguration.sortTrees(null, 'typesTree');">
-											<radio value="GOOGLE" label="__MSG_typesCategoryGoogleLabel__" accesskey="__MSG_typesCategoryGoogleAccesskey__" selected="true"/>
+											<radio value="GOOGLE2" label="__MSG_typesCategoryGoogleLabel__" accesskey="__MSG_typesCategoryGoogleAccesskey__" selected="true"/>
 											<radio value="APPLE" label="__MSG_typesCategoryAppleLabel__" accesskey="__MSG_typesCategoryAppleAccesskey__"/>
 											<radio value="YAHOO" label="__MSG_typesCategoryYahooLabel__" accesskey="__MSG_typesCategoryYahooAccesskey__"/>
 											<radio value="CARDDAV" label="__MSG_typesCategoryOthersLabel__" accesskey="__MSG_typesCategoryOthersAccesskey__"/>
@@ -503,9 +506,14 @@
 												accesskey="__MSG_URLPhonePasswordAccesskey__"
 												control="URLPhonePasswordTextBox"
 												id="URLPhonePasswordLabel"/>
-											<html:input id="URLPhonePasswordTextBox" type="password" onchange="wdw_cardbookConfiguration.preferenceChanged('URLPhonePassword');"/>
-											<checkbox id="passwordCheckBox" label="__MSG_URLPhonePasswordShowLabel__" accesskey="__MSG_URLPhonePasswordShowAccesskey__"
-												oncommand="wdw_cardbookConfiguration.showPassword();"/>
+											<html:input id="URLPhonePasswordTextBox"
+												type="password"
+												class="hub-field"
+												onchange="wdw_cardbookConfiguration.preferenceChanged('URLPhonePassword');"/>
+											<image id="URLPhonePasswordTextBoxInfo"
+												class="form-icon icon-hidden"
+												tooltiptext="__MSG_showHidePassword.tooltip__"
+												onclick="wdw_cardbookConfiguration.showPassword();"/>
 										</row>
 										<row align="center">
 											<checkbox id="URLPhoneBackgroundCheckBox" label="__MSG_URLPhoneBackgroundLabel__"

@@ -64,6 +64,7 @@ var cardbookPasswordManager = {
 		} else {
 			if (aUrl == cardbookRepository.cardbookOAuthData.GOOGLE.AUTH_PREFIX_CONTACTS ||
 				aUrl == cardbookRepository.cardbookOAuthData.GOOGLE.AUTH_PREFIX_LABELS ||
+				aUrl == cardbookRepository.cardbookOAuthData.GOOGLE2.AUTH_PREFIX_CONTACTS ||
 				aUrl == cardbookRepository.cardbookOAuthData.YAHOO.AUTH_PREFIX_CONTACTS) {
 				var logins = Services.logins.findLogins(aUrl, "User Refresh Token", null);
 			} else {

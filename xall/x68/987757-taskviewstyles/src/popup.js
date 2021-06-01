@@ -1,77 +1,167 @@
-btn2.addEventListener('click', function () { SetTaskDetailsBackgroundColor("#303030")});
-btn3.addEventListener('click', function () { SetTaskDetailsBackgroundColor("#808080")});
-btn4.addEventListener('click', function () { SetTaskDetailsBackgroundColor("#F1F1F1")});
-btn5.addEventListener('click', function () { SetTaskDetailsBackgroundColor("#F0E68C")});
-btn6.addEventListener('click', function () { SetTaskDetailsBackgroundColor("#FFFFFF")});
-
-btn8.addEventListener('click', function () { SetTaskDetailsFontColor("black")});
-btn9.addEventListener('click', function () { SetTaskDetailsFontColor("blue")});
-btn10.addEventListener('click', function () { SetTaskDetailsFontColor("green")});
-btn11.addEventListener('click', function () { SetTaskDetailsFontColor("red")});
-btn12.addEventListener('click', function () { SetTaskDetailsFontColor("white")});
-
-btn14.addEventListener('click', function () { SetTaskDetailsFontFamily("serif")});
-btn15.addEventListener('click', function () { SetTaskDetailsFontFamily("sans-serif")});
-
-btn17.addEventListener('click', function () { SetTaskDetailsFontWeight("bold")});
-btn18.addEventListener('click', function () { SetTaskDetailsFontWeight("normal")});
-
-btn20.addEventListener('click', function () { SetTaskDetailsFontStyle("italic")});
-btn21.addEventListener('click', function () { SetTaskDetailsFontStyle("normal")});
-
-btn23.addEventListener('click', function () { SetTaskDetailsFontSize("small")});
-btn24.addEventListener('click', function () { SetTaskDetailsFontSize("medium")});
-btn25.addEventListener('click', function () { SetTaskDetailsFontSize("large")});
-btn35.addEventListener('click', function () { SetTaskDetailsFontSize("x-small")});
-btn36.addEventListener('click', function () { SetTaskDetailsFontSize("x-large")});
-
-btn27.addEventListener('click', function () { SetTaskDetailsTextAlignment("inherit")});
-btn28.addEventListener('click', function () { 
-	SetTaskDetailsTextAlignment("justify")
-	// justify has some extra styles but we do not need an extra function just for these
-	browser.SetStyle.set("calendar-task-details-description", 'text-align', 'justify');
-	browser.SetStyle.set("calendar-task-details-description", 'text-align-last', 'justify');
-	browser.SetStyle.set("calendar-task-details-description", 'white-space', 'pre-line');
-	browser.SetStyle.set("calendar-task-details-description", 'text-align-last', 'left');
-	browser.SetStyle.set("calendar-task-details-description", 'text-justfy', 'inter-character');
+menuitem1.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "background-color", "Black");
 });
-btn29.addEventListener('click', function () { SetTaskDetailsTextAlignment("center")});
-btn30.addEventListener('click', function () { SetTaskDetailsTextAlignment("left")});
-btn31.addEventListener('click', function () { SetTaskDetailsTextAlignment("right")});
-btn33.addEventListener('click', function () { browser.SetStyle.setTwo(); });
-btn34.addEventListener('click', function () { browser.SetStyle.setThree(); });
-btn37.addEventListener('click', function () { browser.SetStyle.setFour(); });
-btn38.addEventListener('click', function () { browser.SetStyle.setFive(); });
-btn39.addEventListener('click', function () { browser.SetStyle.setSix(); });
-btn40.addEventListener('click', function () { browser.SetStyle.setSeven(); });
 
-// ---------------------------------
+menuitem2.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "background-color", "DarkGray");
+});
 
-function SetTaskDetailsBackgroundColor(color) {
-	browser.SetStyle.set("calendar-task-details-description", "background-color", color);
+menuitem3.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "background-color", "LightGray");
+});
+
+menuitem4.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "background-color", "White");
+});
+
+menuitem5.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "background-color", "Blue");
+});
+
+menuitem6.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "background-color", "Green");
+});
+
+menuitem7.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "background-color", "Khaki");
+});
+
+menuitem8.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "background-color", "Red");
+});
+
+menuitem9.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "color", "Black");
+});
+
+menuitem10.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "color", "DarkGray");
+});
+
+menuitem11.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "color", "LightGray");
+});
+
+menuitem12.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "color", "White");
+});
+
+menuitem13.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "color", "Blue");
+});
+
+menuitem14.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "color", "Green");
+});
+
+menuitem15.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "color", "Khaki");
+});
+
+menuitem16.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "color", "Red");
+});
+
+menuitem17.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-family", "serif");
+});
+
+menuitem18.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-family", "sans-serif");
+});
+
+menuitem19.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-weight", "bold");
+});
+
+menuitem20.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-weight", "normal");
+});
+
+menuitem21.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-style", "italic");
+});
+
+menuitem22.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-style", "normal");
+});
+
+menuitem23.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-size", "x-small");
+});
+
+menuitem24.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-size", "small");
+});
+
+menuitem25.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-size", "medium");
+});
+
+menuitem26.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-size", "large");
+});
+
+menuitem27.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "font-size", "x-large");
+});
+
+menuitem28.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "text-align", "inherit");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "justify");
+    browser.myapi.setOne("calendar-task-details-description", "white-space", "pre-line");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "left");
+    browser.myapi.setOne("calendar-task-details-description", "text-justify", "inter-character");
+});
+
+menuitem30.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "text-align", "center");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "center");
+    browser.myapi.setOne("calendar-task-details-description", "white-space", "pre-line");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "center");
+    browser.myapi.setOne("calendar-task-details-description", "text-justify", "inter-character");
+});
+
+menuitem31.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "text-align", "left");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "left");
+    browser.myapi.setOne("calendar-task-details-description", "white-space", "pre-line");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "left");
+    browser.myapi.setOne("calendar-task-details-description", "text-justify", "inter-character");
+});
+
+menuitem32.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "text-align", "right");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "right");
+    browser.myapi.setOne("calendar-task-details-description", "white-space", "pre-line");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "right");
+    browser.myapi.setOne("calendar-task-details-description", "text-justify", "inter-character");
+});
+menuitem33.addEventListener("click", function() {
+    browser.myapi.setTwo();
+});
+
+menuitem29.addEventListener("click", function() {
+    browser.myapi.setOne("calendar-task-details-description", "text-align", "justify");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "justify");
+    browser.myapi.setOne("calendar-task-details-description", "white-space", "pre-line");
+    browser.myapi.setOne("calendar-task-details-description", "text-align-last", "left");
+    browser.myapi.setOne("calendar-task-details-description", "text-justify", "inter-character");
+});
+
+menuitem36.addEventListener("click", function() {
+targetUrl = browser.runtime.getURL("rainbow.html");
+
+function rainbow() {
+browser.windows.create({
+              url: targetUrl,
+              height: 200,
+              width: 450,
+              titlePreface: "Other screen colors", 
+              state: "normal",
+              type: "popup"
+  });
+
 };
-
-function SetTaskDetailsFontColor(color) {
-	browser.SetStyle.set("calendar-task-details-description", "color", color);
-};
-
-function SetTaskDetailsFontFamily(family) {
-	browser.SetStyle.set("calendar-task-details-description", "font-family", family);
-};
-
-function SetTaskDetailsFontWeight(weight) {
-	browser.SetStyle.set("calendar-task-details-description", "font-weight", weight);
-};
-
-function SetTaskDetailsFontStyle(style) {
-	browser.SetStyle.set("calendar-task-details-description", "font-style", style);
-};
-
-function SetTaskDetailsFontSize(size) {
-	browser.SetStyle.set("calendar-task-details-description", "font-size", size);
-};
-
-function SetTaskDetailsTextAlignment(alignment) {
-	browser.SetStyle.set("calendar-task-details-description", "text-align", alignment);
-	browser.SetStyle.set("calendar-task-details-description", "text-align-last", alignment);
-};
+rainbow();
+});

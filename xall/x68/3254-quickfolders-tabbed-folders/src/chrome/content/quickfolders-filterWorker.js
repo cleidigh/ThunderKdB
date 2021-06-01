@@ -33,50 +33,37 @@ QuickFolders.FilterWorker = {
       if (!active && box) {
         let item = box.getNotificationWithValue(id);
         if(item)
-          box.removeNotification(item, (util.Application == 'Postbox'));
+          box.removeNotification(item, false);
       }   
     }
-    let util = QuickFolders.Util,
-        QI = QuickFolders.Interface,
-        prefs = QuickFolders.Preferences,
-		    notificationId,
-        notifyBox,
+    const util = QuickFolders.Util,
+          QI = QuickFolders.Interface,
+          prefs = QuickFolders.Preferences,
+		      notificationId = 'mail-notification-box';
+          
+    let notifyBox,
 				isQuickFilters = typeof window.quickFilters !== 'undefined';
         
 		util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
 		
 		if (!isQuickFilters) { // if quickFilters is installed, we omit all notifications and leave it to that Add-on to handle
-			switch(util.Application) {
-				case 'Postbox': 
-					notificationId = 'pbSearchThresholdNotifcationBar';  // msgNotificationBar
-					break;
-				case 'Thunderbird': 
-					notificationId = 'mail-notification-box';
-					break;
-				case 'SeaMonkey':
-					notificationId = null;
-					break;
-					
-			}
+
 			let notificationKey = "quickfolders-filter";
 
-			if (notificationId) {
-			  if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
-					notifyBox = specialTabs.msgNotificationBar;
-				}
-			  else
-					notifyBox = document.getElementById (notificationId);
-        if (notifyBox) {
-          let item=notifyBox.getNotificationWithValue(notificationKey)
-          if(item)
-            notifyBox.removeNotification(item, (util.Application == 'Postbox')); // second parameter in Postbox(not documented): skipAnimation
-        }
-        else {
-          util.logToConsole("Sorry - I cannot show notifyBox, cannot find element '" + notificationId + "'\n" +
-            "toggle_FilterMode(active=" + active + ");");
-        }
-        
-			}
+      if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
+        notifyBox = specialTabs.msgNotificationBar;
+      }
+      else
+        notifyBox = document.getElementById (notificationId);
+      if (notifyBox) {
+        let item=notifyBox.getNotificationWithValue(notificationKey)
+        if(item)
+          notifyBox.removeNotification(item, false); // second parameter in Postbox(not documented): skipAnimation
+      }
+      else {
+        util.logToConsole("Sorry - I cannot show notifyBox, cannot find element '" + notificationId + "'\n" +
+          "toggle_FilterMode(active=" + active + ");");
+      }
 			
 			if (active 
 				&& 
@@ -95,40 +82,17 @@ QuickFolders.FilterWorker = {
 				
 				if (notifyBox) {
 					// button for disabling this notification in the future
-						let nbox_buttons;
-						// the close button in Postbox is broken: skipAnimation defaults to false and 
-						// creates a invisible label with margin = (-height) pixeles, covering toolbars above
-						// therefore we implement our own close button in Postbox!!
-						if (util.Application == 'Postbox') {
-							nbox_buttons = [
-								{
-									label: dontShow,
-									accessKey: null,
-									callback: function() { QuickFolders.FilterWorker.showMessage(false); },
-									popup: null
-								},
-								{
-									label: 'X',
-									accessKey: 'x',
-									callback: function() { util.onCloseNotification(null, notifyBox, notificationKey); },
-									popup: null
-								}
-							];
-						}
-						else {
-							nbox_buttons = [
-								{
-									label: dontShow,
-									accessKey: null,
-									callback: function() { QuickFolders.FilterWorker.showMessage(false); },
-									popup: null
-								}
-							];
-						}
-						
+          let nbox_buttons = [
+            {
+              label: dontShow,
+              accessKey: null,
+              callback: function() { QuickFolders.FilterWorker.showMessage(false); },
+              popup: null
+            }
+          ];
 					
 				
-					notifyBox.appendNotification( theText, 
+					notifyBox.appendNotification(theText, 
 							notificationKey , 
 							"chrome://quickfolders/content/skin/ico/filterTemplate.png" , 
 							notifyBox.PRIORITY_INFO_LOW, 
@@ -382,20 +346,11 @@ QuickFolders.FilterWorker = {
 				let headerParser = Components.classes["@mozilla.org/messenger/headerparser;1"].getService(Components.interfaces.nsIMsgHeaderParser);
 				if (headerParser) {
 					util.logDebugOptional ("filters","parsing msg header...");
-					if (headerParser.extractHeaderAddressMailboxes) { // Tb 2 can't ?
-						if (util.Application=='Postbox') {
-							// guessing guessing guessing ...
-							// somehow this takes the C++ signature?
-							emailAddress = headerParser.extractHeaderAddressMailboxes(null, msg.author); 
-							ccAddress  =  headerParser.extractHeaderAddressMailboxes(null, msg.ccList)
-							bccAddress  =  headerParser.extractHeaderAddressMailboxes(null, msg.bccList)
-						}
-						else {
-							// Tb + SM
-							emailAddress = headerParser.extractHeaderAddressMailboxes(msg.author);
-							ccAddress  =  headerParser.extractHeaderAddressMailboxes(msg.ccList);
-							bccAddress  =  headerParser.extractHeaderAddressMailboxes(msg.bccList);
-						}
+					if (headerParser.extractHeaderAddressMailboxes) {
+            // Tb + SM
+            emailAddress = headerParser.extractHeaderAddressMailboxes(msg.author);
+            ccAddress  =  headerParser.extractHeaderAddressMailboxes(msg.ccList);
+            bccAddress  =  headerParser.extractHeaderAddressMailboxes(msg.bccList);
 					}
 					else { //exception for early versions of Tb - hence no l10n
 						util.alert("Sorry, but in this version of " + util.Application + ", we cannot do filters as it does not support extracting addresses from the message header!\n"
@@ -639,63 +594,6 @@ QuickFolders.FilterWorker = {
 		
 	},
 	
-	selectTemplate : function selectTemplate(element) {
-		if (!element) {
-			element = document.getElementById('qf-filter-templates');
-		}
-		QuickFolders.FilterWorker.SelectedValue = element.selectedItem.value;
-		this.setCurrentFilterTemplate(element.selectedItem.value);
-	} ,
-	
-	
-	acceptTemplate : function acceptTemplate() {
-		QuickFolders.FilterWorker.selectTemplate();
-		QuickFolders.FilterWorker.TemplateSelected = true;
-		let retVals = window.arguments[0];
-		retVals.answer  = true;
-		setTimeout(function() {window.close()});
-		return true;
-	} ,
-	
-	cancelTemplate : function cancelTemplate() {
-		QuickFolders.FilterWorker.TemplateSelected = false;
-		let retVals = window.arguments[0];
-		retVals.answer = false;
-		return true;
-	} ,
-	
-	
-	loadTemplate : function loadTemplate() {
-		// initialize list and preselect last chosen item!
-		let element = document.getElementById('qf-filter-templates'),
-        util = QuickFolders.Util;
-		element.value = this.getCurrentFilterTemplate();
-    try {
-      let loc = Services.locale.requestedLocales[0]; // QuickFolders.Preferences.service.getStringPref("general.useragent.locale");
-      if (loc) {
-        util.logDebug('Locale found: ' + loc);
-        if (loc.indexOf('en')!=0) {
-          // hide quickFilters hint for non-english locales for now:
-          // document.getElementById('quickFiltersPromoBox').collapsed = true;
-        }
-      }
-      // window.addEventListener('dialogaccept', function () { QuickFolders.Options.accept(); });
-      window.addEventListener('dialogcancel', function () { return QuickFolders.FilterWorker.cancelTemplate(); });
-      window.addEventListener('dialogextra1', function (event) { 
-        return QuickFolders.FilterWorker.acceptTemplate();
-      });
-      window.addEventListener('dialogextra2', function (event) { 
-        QuickFolders.Util.openLinkInBrowser(event,'https://quickfolders.org/donate.html');
-      });
-      
-      
-    }
-    catch (ex) {
-      util.logException("QuickFolders.FilterWorker.loadTemplate()", ex);
-    }
-    
-	} ,
-	
 	getCurrentFilterTemplate : function getCurrentFilterTemplate() {
 		return QuickFolders.Preferences.getStringPref("filters.currentTemplate");
 	} ,
@@ -721,16 +619,7 @@ QuickFolders.FilterWorker = {
 	},
 	
   getBundleString  : function getBundleString(id) {
-    //let bundle = document.getElementById("bundle_filter");
-    try {
-      if(!this.bundle)
-        this.bundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://quickfolders/locale/filters.properties");
-      return this.bundle.GetStringFromName(id);
-    }
-    catch(e) {
-      QuickFolders.Util.logException("Could not retrieve bundle string: " + id + "\n", e);
-    }
-    return '';
+    return QuickFolders.Util.getBundleString(id);
   },
 	
   selectTemplateFromList: function selectTemplateFromList(element) {

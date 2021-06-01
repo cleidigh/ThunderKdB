@@ -7,72 +7,14 @@
 
   END LICENSE BLOCK */
 
-if (typeof ChromeUtils.import == "undefined")
-	Components.utils.import('resource://gre/modules/Services.jsm'); // Thunderbird 52
-else
-	var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-
-var QuickFolders_ConsoleService=null;
-
-if (!QuickFolders.StringBundleSvc)
-	QuickFolders.StringBundleSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-if (!QuickFolders.Properties)
-	QuickFolders.Properties =
-		QuickFolders.StringBundleSvc.createBundle("chrome://quickfolders/locale/quickfolders.properties")
-			.QueryInterface(Components.interfaces.nsIStringBundle);
-
-if (!QuickFolders.Filter)
-	QuickFolders.Filter = {};
+ 
+var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+var QuickFolders_ConsoleService = null;
+if (!QuickFolders.Filter)	QuickFolders.Filter = {};
 	
-// code moved from options.js
-// open the new content tab for displaying support info, see
-// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
-var QuickFolders_TabURIopener = {
-	openURLInTab: function openURLInTab(URL) {
-    let util = QuickFolders.Util;
-		URL = util.makeUriPremium(URL);
-		try {
-			let sTabMode="",
-			    tabmail;
-			tabmail = document.getElementById("tabmail");
-			if (!tabmail) {
-				// Try opening new tabs in an existing 3pane window
-				let mail3PaneWindow = util.getMail3PaneWindow();
-				if (mail3PaneWindow) {
-					tabmail = mail3PaneWindow.document.getElementById("tabmail");
-					mail3PaneWindow.focus();
-				}
-			}
-			if (tabmail) {
-				// find existing tab with URL
-				if (!util.findMailTab(tabmail, URL)) {
-					sTabMode = "contentTab";
-					tabmail.openTab(sTabMode,
-					{contentPage: URL, url: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
-				}
-			}
-			else
-				window.openDialog(
-          "chrome://messenger/content/", "_blank",
-					"chrome,dialog=no,all", null,
-          { tabType: "contentTab", 
-            tabParams: {
-              contentPage: URL, 
-              url: URL, 
-              clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", 
-              id: "QuickFolders_Weblink"
-            } 
-          } 
-        );
-		}
-		catch(e) { return false; }
-		return true;
-	}
-};
-
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
-	HARDCODED_CURRENTVERSION : "5.5", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.5.2", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -334,10 +276,6 @@ QuickFolders.Util = {
     return null;
   } ,
   
-	get mailFolderTypeName() {
-    return "folder";
-	} ,
-
 	get PlatformVersion() {
 		if (null==this.mPlatformVer)
 			try {
@@ -352,34 +290,14 @@ QuickFolders.Util = {
 	} ,
 
 	slideAlert: function slideAlert(title, text, icon) {
-		const util = QuickFolders.Util;
-		util.logDebug('slideAlert: ' + text);
-		setTimeout(function() {
-				try {
-					if (!icon)
-						icon = "chrome://quickfolders/content/skin/ico/quickfolders-Icon.png";
-					Components.classes['@mozilla.org/alerts-service;1'].
-								getService(Components.interfaces.nsIAlertsService).
-								showAlertNotification(icon, title, text, false, '', null, 'quickfolders-alert');
-				} catch(e) {
-				// prevents runtime error on platforms that don't implement nsIAlertsService
-				}
-			} , 0);
+    /*	my first background call! */
+		QuickFolders.Util.notifyTools.notifyBackground({func: "slideAlert", args: [title, text, icon]});
 	} ,
 	
 //	disableFeatureNotification: function disableFeatureNotification(featureName) {
 //		QuickFolders.Preferences.setBoolPref("proNotify." + featureName, false);
 //	} ,
   
-	addConfigFeature: function addConfigFeature(filter, Default, textPrompt) {
-		// adds a new option to about:config, that isn't there by default
-		if (confirm(textPrompt)) {
-			// create (non existent filter setting:
-			QuickFolders.Preferences.setBoolPrefVerbose(filter, Default);
-			QuickFolders.Options.showAboutConfig(null, filter, true, false);
-		}
-	},
-	
 	onCloseNotification: function onCloseNotification(eventType, notifyBox, notificationKey) {
 		QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
 		window.setTimeout(function() {
@@ -644,7 +562,7 @@ QuickFolders.Util = {
 			if (tab) {
 			  let tabMode = this.getTabMode(tab);
 				util.logDebugOptional ("mailTabs", "ensureFolderViewTab - current tab mode: " + tabMode);
-				if (tabMode != util.mailFolderTypeName) { //  TB: 'folder', SM: '3pane'
+				if (tabMode != "folder") { 
 					// move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
 					// switchToTab
 					// iterate tabs
@@ -652,7 +570,7 @@ QuickFolders.Util = {
           let firstFound = -1;
 					for (let i = 0; i < tabInfoCount; i++) {
 					  let info = util.getTabInfoByIndex(tabmail, i);
-						if (info && this.getTabMode(info) == util.mailFolderTypeName) { 
+						if (info && this.getTabMode(info) == "folder") { 
 							util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
               if (firstFound<0) firstFound = i;
               if (!folder) 
@@ -974,26 +892,20 @@ QuickFolders.Util = {
 	// of folder is deleted we should not throw an error!
 	get CurrentFolder() {
 		const util = QuickFolders.Util;
-		let aFolder;
-		if (typeof(GetLoadedMsgFolder) != 'undefined') {
-			aFolder = GetLoadedMsgFolder();
-		}
-		else
-		{
-			let currentURI = null;
-			if (gFolderDisplay && gFolderDisplay.displayedFolder)
-				currentURI = gFolderDisplay.displayedFolder.URI;
-			// in search result folders, there is no current URI!
-			if (!currentURI)
-				return null;
-			try {
-				aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
-			}
-			catch(ex) {
-				util.logException(ex, "QuickFolders.Util.CurrentFolder (getter) failed.");
-				return null;
-			}
-		}
+		let aFolder,
+        currentURI = null;
+    if (gFolderDisplay && gFolderDisplay.displayedFolder)
+      currentURI = gFolderDisplay.displayedFolder.URI;
+    // in search result folders, there is no current URI!
+    if (!currentURI)
+      return null;
+    try {
+      aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+    }
+    catch(ex) {
+      util.logException(ex, "QuickFolders.Util.CurrentFolder (getter) failed.");
+      return null;
+    }
 		return aFolder;
 	} ,
 
@@ -1378,16 +1290,35 @@ QuickFolders.Util = {
 	},
 
 	getBundleString: function getBundleString(id, defaultText) { // moved from local copies in various modules.
-		let s="";
-		try {
-			s= QuickFolders.Properties.GetStringFromName(id);
+    // [mx-l10n]
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be');
+    let localized = extension.localeData.localizeMessage(id);
+  
+		let s = "";
+		if (localized) {
+			s = localized;
 		}
-		catch(e) {
-			s= defaultText;
+		else {
+			s = defaultText;
 			this.logToConsole ("Could not retrieve bundle string: " + id + "");
 		}
 		return s;
 	} ,
+  
+  localize: function(window, buttons = null) {
+		Services.scriptloader.loadSubScript(
+		  QuickFolders.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
+		  window,
+		  "UTF-8"
+		);
+	  window.i18n.updateDocument({extension: QuickFolders.Util.extension});
+		if (buttons) {
+			for (let [name, label] of Object.entries(buttons)) {
+		    window.document.documentElement.getButton(name).label =  QuickFolders.Util.extension.localeData.localizeMessage(label); // apply
+			}
+		}
+  } ,
 
 	getFolderTooltip: function getFolderTooltip(folder, btnLabel) {
 		// tooltip - see also Attributes section of
@@ -1481,12 +1412,11 @@ QuickFolders.Util = {
 		}
 	},
 	
-	aboutHost: function aboutHost() {
+	aboutHost: async function aboutHost() {
 		const util = QuickFolders.Util;
 		let txt = "App: " + util.Application + " " + util.ApplicationVersion + "\n" + 
 		   "PlatformVersion: " + util.PlatformVersion + "\nname: " + util.ApplicationName;
 		util.logToConsole(txt);
-		  
 	} ,
 	
 
@@ -1528,21 +1458,6 @@ QuickFolders.Util = {
 		let f = QuickFolders.Model.getMsgFolderFromUri(URI);
 		return (f && f.parent) ? true : false;
 	},
-	
-	polyFillEndsWidth: function polyFillEndsWidth() {
-		if (!String.prototype.endsWith) {
-			Object.defineProperty(String.prototype, 'endsWith', {
-					enumerable: false,
-					configurable: false,
-					writable: false,
-					value: function (searchString, position) {
-							position = (position || this.length) - searchString.length;
-							let lastIndex = this.lastIndexOf(searchString);
-							return lastIndex !== -1 && lastIndex === position;
-					}
-			});
-		}
-	},
   
   // open an email in a new tab
   openMessageTabFromHeader: function openMessageTabFromHeader(hdr) {
@@ -1566,18 +1481,6 @@ QuickFolders.Util = {
     }
     return true;
   } ,
- 
-  pbGetSelectedMessageUris: function pbGetSelectedMessageUris() {
-    let messageArray = {},
-        length = {},
-        view = GetDBView();
-    view.getURIsForSelection(messageArray, length);
-    if (length.value) {
-      return messageArray.value;
-    }
-    else
-      return null;
-  },
 	
 	loadPlatformStylesheet: function loadPlatformStylesheet(win) {
 		const QI = QuickFolders.Interface,
@@ -1588,15 +1491,12 @@ QuickFolders.Util = {
 		switch (util.HostSystem) {
 			case "linux":
 				path= 'chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles';
-				//QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/unix/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "winnt":
 				path= 'chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles';
-//				QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/win/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 			case "darwin":
 				path= 'chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles';
-				//QI.ensureStyleSheetLoaded('chrome://quickfolders/content/skin/mac/qf-platform.css', 'QuickFolderPlatformStyles');
 				break;
 		}
     
@@ -1607,57 +1507,6 @@ QuickFolders.Util = {
     },150);
     
 	} ,
-	
-  Postbox_writeFile: function Pb_writeFile(path, jsonData) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
-    
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE); // Postbox specific. deprecated in Tb 57
-    file.initWithPath(path);
-    // stateString.data = aData;
-    // Services.obs.notifyObservers(stateString, "sessionstore-state-write", "");
-
-    // Initialize the file output stream.
-    let ostream = Cc["@mozilla.org/network/safe-file-output-stream;1"].createInstance(Ci.nsIFileOutputStream);
-    ostream.init(file, 
-                 0x02 | 0x08 | 0x20,   // write-only,create file, reset if exists
-                 0x600,   // read+write permissions
-                 ostream.DEFER_OPEN); 
-
-    // Obtain a converter to convert our data to a UTF-8 encoded input stream.
-    let converter = Cc["@mozilla.org/intl/scriptableunicodeconverter"].createInstance(Ci.nsIScriptableUnicodeConverter);
-    converter.charset = "UTF-8";
-
-    // Asynchronously copy the data to the file.
-    let istream = converter.convertToInputStream(jsonData); // aData
-    NetUtil.asyncCopy(istream, ostream, function(rc) {
-      if (Components.isSuccessCode(rc)) {
-        // do something for success
-      }
-    });
-  } ,
-  
-  Postbox_readFile: function Pb_readFile(path) {
-    const Ci = Components.interfaces,
-          Cc = Components.classes,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
-    let file = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE); // Postbox specific. deprecated in Tb 57
-    file.initWithPath(path);
-          
-    let fstream = Cc["@mozilla.org/network/file-input-stream;1"].
-                  createInstance(Ci.nsIFileInputStream);
-    fstream.init(file, -1, 0, 0);
-
-    let cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].
-                  createInstance(Ci.nsIConverterInputStream);
-    cstream.init(fstream, "UTF-8", 0, 0);
-
-    let string  = {};
-    cstream.readString(-1, string);
-    cstream.close();
-    return string.value;    
-  }, 
 	
 	alertButtonNoFolder: function alertButtonNoFolder(button) {
 		let txt = button ? button.getAttribute('folderURI') : "";
@@ -1827,7 +1676,6 @@ QuickFolders.Util.FirstRun = {
 					util.logDebugOptional ("firstrun","has premium license.");
 				}
 				
-				let isThemeUpgrade = prefs.tidyUpBadPreferences();
 				QuickFolders.Model.updatePalette();
 
 				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
@@ -1838,9 +1686,7 @@ QuickFolders.Util.FirstRun = {
 
 					if (showFirsts) {
 						// version is different => upgrade (or conceivably downgrade)
-
 						// DONATION PAGE - REMOVED
-
 						// VERSION HISTORY PAGE
 						// display version history - disable by right-clicking label above show history panel
 						if (!suppressVersionScreen) {
@@ -1849,22 +1695,9 @@ QuickFolders.Util.FirstRun = {
 						}
 					}
 
-					if (isThemeUpgrade) {
-						sUpgradeMessage +=
-						  "\n" +
-						  util.getBundleString("qfUpdatedThemesEngineMsg",
-						  	"A new theming engine for QuickFolders has been installed, please select a look from the drop down box and click [Ok].");
-						window.setTimeout(function(){
-							// open options window for setting new theming engine options! for pimp my Tabs panel visible
-							QuickFolders.Interface.viewOptions(1, sUpgradeMessage);
-						}, 4600);
-					}
-					else
-						window.setTimeout(function(){
-							util.slideAlert("QuickFolders",sUpgradeMessage);
-						}, 3000);
-
-
+          window.setTimeout(function(){
+            util.slideAlert("QuickFolders",sUpgradeMessage);
+          }, 3000);
 				}
 				
 				util.loadPlatformStylesheet(window);
@@ -1900,7 +1733,7 @@ QuickFolders.Util.iterateFolders = function folderIterator(folders, findItem, fn
     }
   }
   return found;
-}
+} // QuickFolders.Util.iterateFolders
 
 
 
@@ -2232,33 +2065,7 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
           if (!isAsync || !needToCreate)
             resolve();
         });
-        await deferred;
-			
-				
-/*				
-      if (needToCreate) {
-        let deferred = PromiseUtils.defer();
-        let listener = {
-          OnStartRunningUrl(url) {},
-          OnStopRunningUrl(url, aExitCode) {
-            if (aExitCode == Cr.NS_OK)
-              deferred.resolve();
-            else
-              deferred.reject(aExitCode);
-          },
-          QueryInterface: XPCOMUtils.generateQI([Ci.nsIUrlListener])
-        };
-
-        // If any error happens, it will throw--causing the outer promise to
-        // reject.
-				logDebug('folder.createStorageIfMissing()...');		
-        folder.createStorageIfMissing(isAsync ? listener : null);
-        if (!isAsync || !needToCreate)
-          deferred.resolve();
-        yield deferred.promise;
-      }
-*/
-			
+        await deferred;	
 			
       }
 /*
@@ -2273,28 +2080,62 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
     return folder;
   };
 
-//			//// CHEAT SHEET
-// 			// from comm-central/mailnews/test/resources/filterTestUtils.js
-// 			let ATTRIB_MAP = {
-// 				// Template : [attrib, op, field of value, otherHeader]
-// 				"subject" : [Ci.nsMsgSearchAttrib.Subject, contains, "str", null],
-// 				"from" : [Ci.nsMsgSearchAttrib.Sender, contains, "str", null],
-// 				"date" : [Ci.nsMsgSearchAttrib.Date, Ci.nsMsgSearchOp.Is, "date", null],
-// 				"size" : [Ci.nsMsgSearchAttrib.Size, Ci.nsMsgSearchOp.Is, "size", null],
-// 				"message-id" : [Ci.nsMsgSearchAttrib.OtherHeader+1, contains, "str", "Message-ID"],
-// 				"user-agent" : [Ci.nsMsgSearchAttrib.OtherHeader+2, contains, "str", "User-Agent"]
-// 			 };
-// 			 // And this maps strings to filter actions
-// 			 let ACTION_MAP = {
-// 				// Template : [action, auxiliary attribute field, auxiliary value]
-// 				"priority" : [Ci.nsMsgFilterAction.ChangePriority, "priority", 6],
-// 				"delete" : [Ci.nsMsgFilterAction.Delete],
-// 				"read" : [Ci.nsMsgFilterAction.MarkRead],
-// 				"unread" : [Ci.nsMsgFilterAction.MarkUnread],
-// 				"kill" : [Ci.nsMsgFilterAction.KillThread],
-// 				"watch" : [Ci.nsMsgFilterAction.WatchThread],
-// 				"flag" : [Ci.nsMsgFilterAction.MarkFlagged],
-// 				"stop": [Ci.nsMsgFilterAction.StopExecution],
-// 				"tag" : [Ci.nsMsgFilterAction.AddTag, "strValue", "tag"]
-// 				"move" : [Ci.nsMsgFilterAction.MoveToFolder, "folder"]
-// 			 };
+
+// code moved from options.js
+// open the new content tab for displaying support info, see
+// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
+var QuickFolders_TabURIopener = {
+	openURLInTab: function openURLInTab(URL) {
+    let util = QuickFolders.Util;
+		URL = util.makeUriPremium(URL);
+		try {
+			let sTabMode="",
+			    tabmail;
+			tabmail = document.getElementById("tabmail");
+			if (!tabmail) {
+				// Try opening new tabs in an existing 3pane window
+				let mail3PaneWindow = util.getMail3PaneWindow();
+				if (mail3PaneWindow) {
+					tabmail = mail3PaneWindow.document.getElementById("tabmail");
+					mail3PaneWindow.focus();
+				}
+			}
+			if (tabmail) {
+				// find existing tab with URL
+				if (!util.findMailTab(tabmail, URL)) {
+					sTabMode = "contentTab";
+					tabmail.openTab(sTabMode,
+					{contentPage: URL, url: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
+				}
+			}
+			else
+				window.openDialog(
+          "chrome://messenger/content/", "_blank",
+					"chrome,dialog=no,all", null,
+          { tabType: "contentTab", 
+            tabParams: {
+              contentPage: URL, 
+              url: URL, 
+              clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", 
+              id: "QuickFolders_Weblink"
+            } 
+          } 
+        );
+		}
+		catch(e) { return false; }
+		return true;
+	}
+};
+
+
+
+// the following adds the notifyTools API as a util method to communicate with the background page
+// this mechanism will be used to replace legacy code with API calls.
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+QuickFolders.Util.extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
+Services.scriptloader.loadSubScript(
+  QuickFolders.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
+  QuickFolders.Util,
+  "UTF-8"
+);

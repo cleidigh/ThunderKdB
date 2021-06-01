@@ -1,158 +1,172 @@
 {
-    "extensionDescription": {
-        "message": "Puja els adjunts grans al teu núvol i envia l'enllaç per correu electrònic."
-    },
-    "extensionName": {
-        "message": "*cloud - FileLink per Nextcloud i ownCloud"
-    },
-    "saveButton": {
-        "message": "Desar"
-    },
-    "resetButton": {
-        "message": "Reinciar"
-    },
-    "serverUrl": {
-        "message": "URL del servidor"
-    },
-    "serverUrl_details": {
-        "message": "L'URL base del teu núvol, ha de començar per http o https.\nSi el teu servidor funciona amb un port no estàndard, afegeix-lo a l'URL."
-    },
-    "username": {
-        "message": "Usuari"
-    },
-    "username_details": {
-        "message": "El teu nom d'usuari al servidor."
-    },
-    "password": {
-        "message": "Testimoni o clau"
-    },
-    "password_details": {
-        "message": "Un testimoni d'aplicació (preferible) o la teva clau d'usuari.\nNomés amb Nextcloud: el complement provarà a convertir la clau en un testimoni d'aplicació abans d'emmagatzemar-la. Si no pot fer-ho, l'emmagatzemarà sense encriptar.."
-    },
-    "storageFolder": {
-        "message": "Ubicació al servidor"
-    },
-    "storageFolder_details": {
-        "message": "Ubicació on pujar els adjunts al servidor. Si no existeix, es crearà durant la càrrega."
-    },
-    "useDlPassword": {
-        "message": "Clau per les descàrregues:"
-    },
-    "useDlPassword_details": {
-        "message": "Aquesta clau ha de complir les regles que l'administrador del servidor ha fixat (longitud, tipus de caràcters, ...). Si no és així, la càrrega fallarà. Hauràs de comunicar la clau als destinataris; la necessitaran per la descàrrega dels adjunts."
-    },
-    "expiryDaysBefore": {
-        "message": "Expirar la descàrrega en "
-    },
-    "expiryDaysAfter": {
-        "message": " dies"
-    },
-    "expiry_details": {
-        "message": "El nombre de dies que la descàrrega estarà disponible, incloent-hi avui."
-    },
-    "freespace": {
-        "message": "Espai disponible ($FREE$GB de $FULL$GB)",
-        "placeholders": {
-            "free": {
-                "content": "$1"
-            },
-            "full": {
-                "content": "$2"
-            }
-        }
-    },
-    "success": {
-        "message": "Correcte"
-    },
-    "error_0": {
-        "message": "Error desconegut"
-    },
-    "error_typeerror": {
-        "message": "Sense connexió. Comprova la URL del servidor i la connexió de xarxa."
-    },
-    "error_404": {
-        "message": "L'usuari no existeix o no trobo un núvol compatible a la URL donada."
-    },
-    "warn_unsupported_cloud": {
-        "message": "Versió obsoleta de Nextcloud o ownCloud. Pots perdre dades. Contacta el teu administrador per actualitzar."
-    },
-    "obsolete_version": {
-        "description": "This is displayed instead of the icon if the cloud version is not supported, so it should be quite short and contain exactly two lines.",
-        "message": "Versió\nobsoleta"
-    },
-    "error_401": {
-        "message": "L'inici de sessió ha fallat. Comprova l'usuari i la clau."
-    },
-    "error_503": {
-        "message": "El servei es troba en mode de manteniment. Torna-ho a provar més tard."
-    },
-    "error_sharing_off": {
-        "message": "La compartició d'arxius està desactivada. Demana a l'administrador per activar-la."
-    },
-    "error_invalid_pw": {
-        "message": "Clau de descàrrega no vàlida (la càrrega fallarà). La raó donada pel servidor: $1"
-    },
-    "error_password_enforced": {
-        "message": "El teu núvol requereix una clau per la descàrrega."
-    },
-    "warn_expiry_too_long": {
-        "message": "L'administrador a fixat un temps d'expiració màxim de $1 dies. EL valor s'ha ajustat, si no la càrrega fallarà."
-    },
-    "useGeneratedDlPassword": {
-        "message": "Usa una clau generada"
-    },
-    "useNoDlPassword": {
-        "message": "Sense clau"
-    },
-    "useNoDlPassword_details": {
-        "message": "No es requerix una clau per la descàrrega"
-    },
-    "oneDlPassword": {
-        "message": "Una clau per totes les descàrregues"
-    },
-    "useGeneratedDlPassword_details": {
-        "message": "Una clau aleatòria es genera per cada arxiu. Copia-la a la notificació d'estat després de la càrrega."
-    },
-    "warn_insecure_http": {
-        "message": "Amb http: les teves dades són enviades sense encriptar. Feu servir https: millor. Si no ho teniu configurat, contacteu amb el vostre administrador."
-    },
-    "status_menuname": {
-        "message": "Estat"
-    },
-    "status_no_uploads": {
-        "message": "Cap càrrega activa"
-    },
-    "status_button_clear": {
-        "message": "Neteja les completades"
-    },
-    "status_preparing": {
-        "message": "Preparant"
-    },
-    "status_creating": {
-        "message": "Creant la carpeta"
-    },
-    "status_moving": {
-        "message": "Movent l'arxiu conflictiu"
-    },
-    "status_uploading": {
-        "message": "Carregant"
-    },
-    "status_sharing": {
-        "message": "Compartint"
-    },
-    "status_checkingspace": {
-        "message": "Comprovant l'espai lliure"
-    },
-    "status_error": {
-        "message": "error: $1"
-    },
-    "status_password": {
-        "message": "clau: $1"
-    },
-    "warn_nonascii_password": {
-        "message": "La clau conté caràcters que poden donar problemes a l'accedir. Fes servir una clau d'aplicació en el seu lloc."
-    },
-    "advanced_options": {
-        "message": "Opcions avançades"
+  "extensionDescription": {
+    "message": "Puja els adjunts grans al teu núvol i envia l'enllaç per correu electrònic."
+  },
+  "extensionName": {
+    "message": "*cloud - FileLink per Nextcloud i ownCloud"
+  },
+  "saveButton": {
+    "message": "Desar"
+  },
+  "resetButton": {
+    "message": "Reinciar"
+  },
+  "serverUrl": {
+    "message": "URL del servidor"
+  },
+  "serverUrl_details": {
+    "message": "L'URL base del teu núvol, ha de començar per http o https.\nSi el teu servidor funciona amb un port no estàndard, afegeix-lo a l'URL."
+  },
+  "username": {
+    "message": "Usuari"
+  },
+  "username_details": {
+    "message": "El teu nom d'usuari al servidor."
+  },
+  "password": {
+    "message": "Testimoni o clau"
+  },
+  "password_details": {
+    "message": "Un testimoni d'aplicació (preferible) o la teva clau d'usuari.\nNomés amb Nextcloud: el complement provarà a convertir la clau en un testimoni d'aplicació abans d'emmagatzemar-la. Si no pot fer-ho, l'emmagatzemarà sense encriptar.."
+  },
+  "storageFolder": {
+    "message": "Ubicació al servidor"
+  },
+  "storageFolder_details": {
+    "message": "Ubicació on pujar els adjunts al servidor. Si no existeix, es crearà durant la càrrega."
+  },
+  "useNoDlPassword": {
+    "message": "Sense clau"
+  },
+  "useNoDlPassword_details": {
+    "message": "No es requerix una clau per la descàrrega"
+  },
+  "useGeneratedDlPassword": {
+    "message": "Usa una clau generada"
+  },
+  "useGeneratedDlPassword_details": {
+    "message": "Una clau aleatòria es genera per cada arxiu. Copia-la a la notificació d'estat després de la càrrega."
+  },
+  "useDlPassword": {
+    "message": "Clau per les descàrregues:"
+  },
+  "oneDlPassword": {
+    "message": "Una clau per totes les descàrregues"
+  },
+  "useDlPassword_details": {
+    "message": "Aquesta clau ha de complir les regles que l'administrador del servidor ha fixat (longitud, tipus de caràcters, ...). Si no és així, la càrrega fallarà. Hauràs de comunicar la clau als destinataris; la necessitaran per la descàrrega dels adjunts."
+  },
+  "expiryDaysBefore": {
+    "message": "Expirar la descàrrega en "
+  },
+  "expiryDaysAfter": {
+    "message": " dies"
+  },
+  "expiry_details": {
+    "message": "El nombre de dies que la descàrrega estarà disponible, incloent-hi avui."
+  },
+  "freespace": {
+    "message": "Espai disponible ($FREE$GB de $FULL$GB)",
+    "placeholders": {
+      "free": {
+        "content": "$1"
+      },
+      "full": {
+        "content": "$2"
+      }
     }
+  },
+  "success": {
+    "message": "Correcte"
+  },
+  "error_0": {
+    "message": "Error desconegut"
+  },
+  "error_typeerror": {
+    "message": "Sense connexió. Comprova la URL del servidor i la connexió de xarxa."
+  },
+  "error_404": {
+    "message": "L'usuari no existeix o no trobo un núvol compatible a la URL donada."
+  },
+  "warn_unsupported_cloud": {
+    "message": "Versió obsoleta de Nextcloud o ownCloud. Pots perdre dades. Contacta el teu administrador per actualitzar."
+  },
+  "obsolete_version": {
+    "description": "This is displayed over the icon if the cloud version is not supported, so it should be quite short and contain at most two lines.",
+    "message": "Versió\nobsoleta"
+  },
+  "error_401": {
+    "message": "L'inici de sessió ha fallat. Comprova l'usuari i la clau."
+  },
+  "error_503": {
+    "message": "El servei es troba en mode de manteniment. Torna-ho a provar més tard."
+  },
+  "error_sharing_off": {
+    "message": "La compartició d'arxius està desactivada. Demana a l'administrador per activar-la."
+  },
+  "error_invalid_pw": {
+    "message": "Clau de descàrrega no vàlida (la càrrega fallarà). La raó donada pel servidor: $1"
+  },
+  "error_password_enforced": {
+    "message": "El teu núvol requereix una clau per la descàrrega."
+  },
+  "warn_expiry_too_long": {
+    "message": "L'administrador a fixat un temps d'expiració màxim de $1 dies. EL valor s'ha ajustat, si no la càrrega fallarà."
+  },
+  "warn_no_config_check": {
+    "message": "Ha fallat la verificació del compte. Comprova la connexió de xarxa."
+  },
+  "warn_insecure_http": {
+    "message": "Amb http: les teves dades són enviades sense encriptar. Feu servir https: millor. Si no ho teniu configurat, contacteu amb el vostre administrador."
+  },
+  "status_menutooltip": {
+    "description": "This is displayed as a tooltip when the mouse pointer hovers over the menu button labelled with 'status_menuname'",
+    "message": "Mostra les pujades y las claus generadas per *cloud (si existeixen)"
+  },
+  "status_menuname": {
+    "description": "This short text is displayed on the menu button that opens the status popup next to the *cloud logo",
+    "message": "Estat"
+  },
+  "status_no_uploads": {
+    "message": "Cap càrrega activa"
+  },
+  "status_button_clear": {
+    "description": "Button to remove error messages from status popup",
+    "message": "Neteja les completades"
+  },
+  "status_preparing": {
+    "message": "Preparant"
+  },
+  "status_creating": {
+    "message": "Creant la carpeta"
+  },
+  "status_moving": {
+    "message": "Movent l'arxiu conflictiu"
+  },
+  "status_uploading": {
+    "message": "Carregant"
+  },
+  "status_sharing": {
+    "message": "Compartint"
+  },
+  "status_checkingsize": {
+    "description": "This will be displayed in the status popup. If this step fails this string will be with one indicating failure, eg 'Checking maximum file size failed'.",
+    "message": "Comprovant la mida màxima permesa"
+  },
+  "status_checkingspace": {
+    "message": "Comprovant l'espai lliure"
+  },
+  "status_error": {
+    "description": "This will be combined with one of the states above, eg 'Preparing failed'. If this doesn't work in your language, please tell me.",
+    "message": "error: $1"
+  },
+  "status_password": {
+    "message": "clau: $1"
+  },
+  "warn_nonascii_password": {
+    "message": "La clau conté caràcters que poden donar problemes a l'accedir. Fes servir una clau d'aplicació en el seu lloc."
+  },
+  "advanced_options": {
+    "message": "Opcions avançades"
+  }
 }

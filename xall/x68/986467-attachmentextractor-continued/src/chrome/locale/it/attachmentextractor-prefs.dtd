@@ -1,0 +1,145 @@
+<!ENTITY attachmentextractor.settings.windowtitle "Impostazioni di AttachmentExtractor">
+<!ENTITY attachmentextractor.settings.homepage.label "Visita il sito web">
+<!ENTITY attachmentextractor.settings.generaltab.label "Generali">
+<!ENTITY attachmentextractor.settings.savefolders.caption "Cartelle per l&apos;estrazione degli allegati">
+<!ENTITY attachmentextractor.settings.overwritepolicy.label "Azione da effettuare quando l&apos;allegato ha lo stesso nome di un file già esistente">
+<!ENTITY attachmentextractor.settings.overwrite-replace.label "Sovrascrivi il file esistente con il nuovo allegato">
+<!ENTITY attachmentextractor.settings.overwrite-replace.accesskey "S">
+<!ENTITY attachmentextractor.settings.overwrite-ignore.label "Conserva il file esistente, non estrarre l&apos;allegato">
+<!ENTITY attachmentextractor.settings.overwrite-ignore.accesskey "C">
+<!ENTITY attachmentextractor.settings.overwrite-rename.label "Rinomina il file allegato per non sovrascrivere il file già esistente">
+<!ENTITY attachmentextractor.settings.overwrite-rename.accesskey "R">
+<!ENTITY attachmentextractor.settings.overwrite-ask.label "Chiedi ogni volta">
+<!ENTITY attachmentextractor.settings.overwrite-ask.accesskey "v">
+<!ENTITY attachmentextractor.settings.favoritefolder.dialogtitle "Favorite Folders">
+<!ENTITY attachmentextractor.settings.favoritefolder.description "The Favorite Folders allow for a given, faster selection.">
+<!ENTITY attachmentextractor.settings.favoritefolder.parents.label "The following folders are displayed as favorites:">
+<!ENTITY attachmentextractor.settings.favoritefolder.addbutton.label "Inserisci…">
+<!ENTITY attachmentextractor.settings.favoritefolder.clearbutton.label "Elimina">
+<!ENTITY attachmentextractor.settings.suggestfolder.dialogtitle "Opzioni delle cartelle suggerite">
+<!ENTITY attachmentextractor.settings.suggestfolder.description "È possibile suggerire una cartella nella quale estrarre gli allegati in base a parole chiave presenti nel campo Oggetto dei messaggi selezionati">
+<!ENTITY attachmentextractor.settings.suggestfolder.parents.label "Cartelle e sottocartelle nelle quali estrarre gli allegati">
+<!ENTITY attachmentextractor.settings.suggestfolder.addbutton.label "Inserisci…">
+<!ENTITY attachmentextractor.settings.suggestfolder.clearbutton.label "Elimina">
+<!ENTITY attachmentextractor.settings.suggestfolder.disregardduplicates.label "Ignora le parole chiave duplicate quando si ordinano le cartelle suggerite">
+<!ENTITY attachmentextractor.settings.suggestfolder.disregardduplicates.accesskey "I">
+<!ENTITY attachmentextractor.settings.suggestfolder.excludedkeywords.label "Parole chiave da escludere (separate da virgola):">
+<!ENTITY attachmentextractor.settings.savepathmru.caption "Cartelle più recentemente utilizzate">
+<!ENTITY attachmentextractor.settings.savepathmru.label "Attiva una lista di cartelle più recentemente utilizzate">
+<!ENTITY attachmentextractor.settings.savepathmru.count.label1 "Ultime cartelle da conservare:">
+<!ENTITY attachmentextractor.settings.savepathmru.count.label2 " ">
+<!ENTITY attachmentextractor.settings.savepathmru.accesskey "u">
+<!ENTITY attachmentextractor.settings.savepathmru.clearbutton.label "Elimina ora">
+<!ENTITY attachmentextractor.settings.savefolder.label "Cartella di salvataggio predefinita">
+<!ENTITY attachmentextractor.settings.savefolder.browsebutton "Sfoglia…">
+<!ENTITY attachmentextractor.settings.posttab.label "Dopo l&apos;estrazione">
+<!ENTITY attachmentextractor.settings.afterextractpolicy.label "Opzioni possibili dopo l&apos;estrazione degli allegati">
+<!ENTITY attachmentextractor.settings.after-delete.label "Elimina il messaggio">
+<!ENTITY attachmentextractor.settings.after-delete.accesskey "E">
+<!ENTITY attachmentextractor.settings.after-read.label "Marca il messaggio come letto">
+<!ENTITY attachmentextractor.settings.after-read.accesskey "l">
+<!ENTITY attachmentextractor.settings.after-detach.label "Elimina l&apos;allegato dal messaggio">
+<!ENTITY attachmentextractor.settings.after-detach.accesskey "n">
+<!ENTITY attachmentextractor.settings.after-detach.confirm.label "Delete without confirmation">
+<!ENTITY attachmentextractor.settings.after-detach.confirm.accesskey "w">
+<!ENTITY attachmentextractor.settings.notifywhendone.label "Notifica quando l&apos;estrazione degli allegati viene completata">
+<!ENTITY attachmentextractor.settings.notifywhendone.accesskey "o">
+<!ENTITY attachmentextractor.settings.after-savemessage.label "Salva il messaggio di testo in un file (nota: stesso modello per estrazione normale ed autoestrazione)">
+<!ENTITY attachmentextractor.settings.after-savemessage.accesskey "m">
+<!ENTITY attachmentextractor.settings.returnreceipts.button.label "Ricevute di ritorno…">
+<!ENTITY attachmentextractor.settings.returnreceipts.dialogtitle "Ricevute di ritorno">
+<!ENTITY attachmentextractor.settings.returnreceipts.label "Marcando un messaggio come letto le ricevute di ritorno verranno inviate automaticamente con AE">
+<!ENTITY attachmentextractor.settings.returnreceipts.enabled.label "Invia le ricevute di ritorno quando vengono richieste">
+<!ENTITY attachmentextractor.settings.returnreceipts.enabled.accesskey "v">
+<!ENTITY attachmentextractor.settings.returnreceipts.override.caption "Azione da effettuare per le ricevute di ritorno">
+<!ENTITY attachmentextractor.settings.returnreceipts.override.disabled.label "Applica le impostazioni di Thunderbird relative alle ricevute di ritorno">
+<!ENTITY attachmentextractor.settings.returnreceipts.override.disabled.accesskey "A">
+<!ENTITY attachmentextractor.settings.returnreceipts.override.enabled.label "Ignora l&apos;impostazione &apos;Chiedi&apos; ed invia le ricevute di ritorno con pop-up d&apos;avviso">
+<!ENTITY attachmentextractor.settings.returnreceipts.override.enabled.accesskey "I">
+<!ENTITY attachmentextractor.settings.reporttab.label "Opzioni del generatore di resoconti">
+<!ENTITY attachmentextractor.settings.reportgen.caption "Generatore di resoconto HTML">
+<!ENTITY attachmentextractor.settings.reportgen.label "Genera un resoconto ogni volta che si avvia AttachmentExtractor">
+<!ENTITY attachmentextractor.settings.reportgen.accesskey "G">
+<!ENTITY attachmentextractor.settings.reportgen.thumbnail.label "Quando possibile utilizza l&apos;anteprima di immagini per gli allegati">
+<!ENTITY attachmentextractor.settings.reportgen.thumbnail.accesskey "s">
+<!ENTITY attachmentextractor.settings.reportgen.embedcss.label "Incorpora le informazioni sullo stile nel resoconto, piuttosto che collegarsi al foglio di stile">
+<!ENTITY attachmentextractor.settings.reportgen.embedcss.accesskey "E">
+<!ENTITY attachmentextractor.settings.reportgen.cssfile.caption "Foglio di stile da utilizzare per il resoconto:">
+<!ENTITY attachmentextractor.settings.reportgen.reportname2.label "Nome del file del resoconto: ">
+<!ENTITY attachmentextractor.settings.reportgen.button.label "Opzioni del generatore di resoconti…">
+<!ENTITY attachmentextractor.settings.advancedtab.label "Avanzate">
+<!ENTITY attachmentextractor.settings.advancedmoretab.label "Avanzate II">
+<!ENTITY attachmentextractor.settings.extract.caption "Salvataggio degli allegati">
+<!ENTITY attachmentextractor.settings.doextract.label "Extract the Attachments.">
+<!ENTITY attachmentextractor.settings.doextract.accesskey "x">
+<!ENTITY attachmentextractor.settings.noextract.label "Disattiva il salvataggio degli allegati">
+<!ENTITY attachmentextractor.settings.noextract.accesskey "D">
+<!ENTITY attachmentextractor.settings.extract.minimumsize.caption "Dimensione minima degli allegati">
+<!ENTITY attachmentextractor.settings.extract.minsize_1024_bytes_SI-Unit_KiB-start.label "Salva gli allegati solo se maggiori dei seguenti KiB:">
+<!ENTITY attachmentextractor.settings.extract.minsize_1024_bytes_SI-Unit_KiB-end.label " ">
+<!ENTITY attachmentextractor.settings.queuerequests.caption "Estrazioni in coda">
+<!ENTITY attachmentextractor.settings.queuerequests.disabled.label "Avvia AttachmentExtractor ogni volta che viene richiesta l&apos;estrazione">
+<!ENTITY attachmentextractor.settings.queuerequests.disabled.accesskey "x">
+<!ENTITY attachmentextractor.settings.queuerequests.enabled.label "Attendi e metti in coda ogni richiesta di estrazione effettuata mentre AttachmentExtractor è avviata">
+<!ENTITY attachmentextractor.settings.queuerequests.enabled.accesskey "A">
+<!ENTITY attachmentextractor.settings.setdatetoemail.label "Imposta data/ora della modifica dell&apos;allegato in base a data/ora del messaggio">
+<!ENTITY attachmentextractor.settings.setdatetoemail.accesskey "o">
+<!ENTITY attachmentextractor.settings.inlinepolicy.label "Estrai anche le immagini incorporate (&apos;in linea&apos;)">
+<!ENTITY attachmentextractor.settings.inlinepolicy.accesskey "I">
+<!ENTITY attachmentextractor.settings.debug.caption "Debug">
+<!ENTITY attachmentextractor.settings.debug.label "Attiva la modalità di debug al riavvio. I messaggi verranno memorizzati nella console degli errori e nel file &apos;aec_debug.txt&apos; presente nella cartella del profilo">
+<!ENTITY attachmentextractor.settings.debug.accesskey "v">
+<!ENTITY attachmentextractor.settings.showprogressdialog.label "Mostra una finestra di avanzamento durante l&apos;estrazione">
+<!ENTITY attachmentextractor.settings.showprogressdialog.accesskey "M">
+<!ENTITY attachmentextractor.settings.progressdialogtext.label "Mostra oggetto del messaggio e nome degli allegati nella finestra di avanzamento">
+<!ENTITY attachmentextractor.settings.progressdialogtext.accesskey "M">
+<!ENTITY attachmentextractor.settings.includeexcludepolicy2.label "Estrazione dei file">
+<!ENTITY attachmentextractor.settings.includeexcludepolicy2-false.label "Estrai tutti i file eccetto quelli con estensione:">
+<!ENTITY attachmentextractor.settings.includeexcludepolicy2-false.accesskey "u">
+<!ENTITY attachmentextractor.settings.includeexcludepolicy2-true.label "Estrai solo i file con estensione:">
+<!ENTITY attachmentextractor.settings.includeexcludepolicy2-true.accesskey "t">
+<!ENTITY attachmentextractor.settings.filenametab.label "Modelli">
+<!ENTITY attachmentextractor.settings.filenamepatterngroup.label "Generazione del modello">
+<!ENTITY attachmentextractor.settings.filenamepattern.askalways.label "Ask always for filename pattern">
+<!ENTITY attachmentextractor.settings.filenamepattern.askalways.accesskey "A">
+<!ENTITY attachmentextractor.filenamepatterndialog.tokenbutton.label "Fare clic per aggiungere un token">
+<!ENTITY attachmentextractor.settings.filenamepattern.label "Modello utilizzato per generare nomi di file:">
+<!ENTITY attachmentextractor.settings.filenamepatterncount.label "Modello utilizzato per il conteggio dei file duplicati (#count#):">
+<!ENTITY attachmentextractor.settings.filenamepatterncleansubjectq.label "Utilizza">
+<!ENTITY attachmentextractor.settings.filenamepatterncleansubjectq.accesskey "a">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.caption "Esempio delle varie parti di un&apos;e-mail">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.withsubject "Oggetto dell&apos;e-mail (#subject#):">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.withcleansubject "Oggetto dopo eliminazione di &apos;re:&apos;, ecc:">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.recieveddate "E-mail ricevuta in data (#date#):">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.recieveddateformatted "Data/ora di applicazione del modello:">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.fromauthor2 "E-mail inviata da (#from# &lt;#fromemail#&gt;):">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.attachment "Allegato chiamato (#namepart##extpart#):">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.wouldgenerate "Da generare prima:">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.wouldgeneratethen "Da generare dopo:">
+<!ENTITY attachmentextractor.settings.filenamepattern.explanation.mailfolder "E-mail ricevuta nella cartella (#folder#):">
+<!ENTITY attachmentextractor.settings.filenamepatterndate.label "Modello utilizzato per le date (#date#):">
+<!ENTITY attachmentextractor.settings.filenamepatterndate.homepage.label "Riferimento dei codici di formattazione per #date#:">
+<!ENTITY attachmentextractor.settings.filenamepatterndate.editbutton.label "Modifica…">
+<!ENTITY attachmentextractor.settings.filenamepatterndate.dialogtitle "Impostazioni del modello per le date (#date#)">
+<!ENTITY attachmentextractor.settings.autotab.label "Autoestrazione">
+<!ENTITY attachmentextractor.settings.autoextract.label "Effettua l&apos;autoestrazione degli allegati quando si ricevono i messaggi">
+<!ENTITY attachmentextractor.settings.autoextract.accesskey "a">
+<!ENTITY attachmentextractor.settings.autoextract.savefolder.label "Percorso di salvataggio degli allegati:">
+<!ENTITY attachmentextractor.settings.autoextract.savefolder.browsebutton "Sfoglia…">
+<!ENTITY attachmentextractor.settings.autoextract.ontriggeronly.label "Effettua l&apos;autoestrazione degli allegati solo quando c&apos;è un&apos;etichetta corrispondente">
+<!ENTITY attachmentextractor.settings.autoextract.ontriggeronly.accesskey "z">
+<!ENTITY attachmentextractor.settings.autoextract.triggertag.label "Effettua l&apos;autoestrazione solo se l&apos;etichetta corrisponde a:">
+<!ENTITY attachmentextractor.settings.autoextract.cleartriggertag.label "Elimina le etichette dai messaggi">
+<!ENTITY attachmentextractor.settings.autoextract.cleartriggertag.accesskey "h">
+<!ENTITY attachmentextractor.settings.autoextract.waitforall.label "Attendi il download di tutti i messaggi prima di avviare l&apos;autoestrazione">
+<!ENTITY attachmentextractor.settings.autoextract.waitforall.accesskey "d">
+<!ENTITY attachmentextractor.settings.autoextract.onattachmentsonly.label "Effettua l&apos;autoestrazione solo per i messaggi contenenti allegati">
+<!ENTITY attachmentextractor.settings.autoextract.onattachmentsonly.accesskey "o">
+<!ENTITY attachmentextractor.settings.abouttab.label "Informazioni">
+<!ENTITY attachmentextractor.settings.requiresrestart.label "(Riavviare Thunderbird per rendere effettive le modifiche)">
+<!ENTITY attachmentextractor.settings.skipidentical.label "Escludi i file di dimensioni identiche">
+<!ENTITY attachmentextractor.settings.skipidentical.accesskey "d">
+<!ENTITY attachmentextractor.settings.SeparatedByComma "(Comma separated)">
+<!ENTITY attachmentextractor.settings.SeparatedBySemicolon "(Semicolon separated)">
+<!ENTITY attachmentextractor.settings.folderstab.label "Folders">
+<!ENTITY attachmentextractor.settings.protocolltab.label "Logs">

@@ -257,13 +257,20 @@ function JSON2Date(aDateString, aTimeZone, aIsAllDay) {
 function JSON2Item(aJSON, aItem) {
   aItem.id = aJSON.uid;
   aItem.title = aJSON.title;
-  aItem.setProperty("location", aJSON.location);
+  aItem.setProperty("LOCATION", aJSON.location);
   if (aItem.setCategories.length == 2) { // COMPAT for TB 68 (bug 1557504)
     aItem.setCategories(aJSON.categories.length, aJSON.categories); // COMPAT for TB 68 (bug 1557504)
   } else { // COMPAT for TB 68 (bug 1557504)
     aItem.setCategories(aJSON.categories);
   } // COMPAT for TB 68 (bug 1557504)
-  aItem.setProperty("description", aJSON.description);
+  // COMPAT for TB 78 (bug 1607834)
+  // In TB 91, change to aItem.descriptionText = aJSON.descriptionText, ditto for HTML
+  aItem.setProperty("DESCRIPTION", aJSON.descriptionText);
+  aItem.setProperty("X-ALT-DESC", aJSON.descriptionHTML);
+  if (aJSON.descriptionHTML) {
+    aItem.setPropertyParameter("X-ALT-DESC", "FMTTYPE", "text/html");
+  }
+  // end COMPAT for bug 1607834
   aItem.priority = aJSON.priority;
   aItem.privacy = aJSON.privacy;
   aItem.status = aJSON.isCancelled ? "CANCELLED" : null;
@@ -304,6 +311,12 @@ function JSON2Item(aJSON, aItem) {
     attendee.userType = "INDIVIDUAL";
     attendee.participationStatus = optional.participation;
     aItem.addAttendee(attendee);
+  }
+  if (aJSON.myResponse) {
+    let myAttendee = aItem.calendar.getInvitedAttendee(aItem);
+    if (myAttendee) {
+      myAttendee.participationStatus = aJSON.myResponse;
+    }
   }
   // Recurrence.
   let recurrenceInfo = null;
@@ -407,14 +420,16 @@ function JSON2Occurrence(aJSON, aOccurrence) {
 /**
  * Create an updated calIEvent object from JSON data
  *
- * @param aJSON {Object?}    The JSON data
- * @param aItem {calIEvent?} The previous version of the event, if any
- * @returns     {calIEvent}  A new, updated event
+ * @param aJSON     {Object?}      The JSON data
+ * @param aCalendar {calICalendar} The calendar which will own the event
+ * @param aItem     {calIEvent?}   The previous version of the event, if any
+ * @returns         {calIEvent}    A new, updated event
  *
  * Note: The original event is not modified.
  */
-function JSON2Event(aJSON, aEvent) {
+function JSON2Event(aJSON, aCalendar, aEvent) {
   let event = aEvent ? aEvent.clone() : cal.createEvent();
+  event.calendar = aCalendar;
   if (aJSON) {
     JSON2Occurrence(aJSON, event);
   }
@@ -424,14 +439,16 @@ function JSON2Event(aJSON, aEvent) {
 /**
  * Create an updated calITodo object from JSON data
  *
- * @param aJSON {Object?}   The JSON data
- * @param aItem {calITodo?} The previous version of the task, if any
- * @returns     {calITodo}  A new, updated task
+ * @param aJSON     {Object?}      The JSON data
+ * @param aCalendar {calICalendar} The calendar which will own the task
+ * @param aItem     {calITodo?}    The previous version of the task, if any
+ * @returns         {calITodo}     A new, updated task
  *
  * Note: The original task is not modified.
  */
-function JSON2Task(aJSON, aTask) {
+function JSON2Task(aJSON, aCalendar, aTask) {
   let task = aTask ? aTask.clone() : cal.createTodo();
+  task.calendar = aCalendar;
   if (aJSON) {
     task.entryDate = JSON2Date(aJSON.startDate);
     task.dueDate = JSON2Date(aJSON.dueDate);
@@ -450,7 +467,6 @@ function JSON2Task(aJSON, aTask) {
  */
 function Item2JSON(aItem, aJSON) {
   aJSON.title = aItem.title;
-  aJSON.description = aItem.getProperty("description");
   aJSON.priority = aItem.priority;
   aJSON.privacy = aItem.privacy;
   let alarms = aItem.getAlarms(/* COMPAT for TB 68 (bug 1557504) */{});
@@ -458,7 +474,11 @@ function Item2JSON(aItem, aJSON) {
     aJSON.reminder = alarms[0].offset.inSeconds;
   }
   aJSON.categories = aItem.getCategories(/* COMPAT for TB 68 (bug 1557504) */{});
-  aJSON.description = aItem.getProperty("description");
+  aJSON.descriptionText = aItem.getProperty("DESCRIPTION");
+  // Storage will delete the property parameter, but otherwise only accept HTML
+  if ([null, "text/html"].includes(aItem.getPropertyParameter("X-ALT-DESC", "FMTTYPE"))) {
+    aJSON.descriptionHTML = aItem.getProperty("X-ALT-DESC");
+  }
   aJSON.requiredAttendees = [];
   aJSON.optionalAttendees = [];
   for (let attendee of aItem.getAttendees(/* COMPAT for TB 68 (bug 1557504) */{})) {
@@ -561,7 +581,7 @@ function Event2JSON(aEvent, aJSON) {
   [aJSON.startDate, aJSON.startTimeZone] = DateTimeZone2JSON(aEvent.startDate);
   [aJSON.endDate, aJSON.endTimeZone] = DateTimeZone2JSON(aEvent.endDate);
   aJSON.isAllDayEvent = aEvent.startDate.isDate;
-  aJSON.location = aEvent.getProperty("location") || "";
+  aJSON.location = aEvent.getProperty("LOCATION") || "";
   aJSON.status = aEvent.getProperty("TRANSP");
   Item2JSON(aEvent, aJSON);
 }
@@ -642,6 +662,8 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       // Add our stack to the extension stack
       ex.stack += error.stack;
       Object.assign(error, ex);
+      // Explicitly copy the message as newer versions don't do that automatically
+      error.message = ex.message;
       throw error;
     }
   }
@@ -717,6 +739,10 @@ class Calendar extends (cal && cal.provider.BaseClass) {
     });
   }
   async replayChangesOn(aListener, aRetried) {
+    if (this.getProperty("calendarSyncVersion") != "0.7.7.5") {
+      this.setProperty("calendarSyncState", "");
+      this.setProperty("calendarSyncVersion", "0.7.7.5");
+    }
     let success;
     try {
       this.offlineStorage.startBatch();
@@ -755,8 +781,9 @@ class Calendar extends (cal && cal.provider.BaseClass) {
    *
    * @param folder {String} The well-known folder (either calendar or tasks)
    * @param creationFn {Function} A function to create an updated item
-   *   @param aJSON The JSON data to use to create or update the item
-   *   @param aEvent An optional existing event to update
+   *   @param aJSON     The JSON data to use to create or update the item
+   *   @param aCalendar This calendar
+   *   @param aEvent    An optional existing event to update
    * @returns {Boolean} Whether the sync state was valid
    */
   async syncEvents(folder, creationFn) {
@@ -801,8 +828,7 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       for (let event of result.events) {
         // This is actually an array of 0 or 1 old items.
         let oldEvent = await promiseStorage.getItem(event.uid);
-        let newEvent = creationFn(event, oldEvent[0]);
-        newEvent.calendar = this.superCalendar;
+        let newEvent = creationFn(event, this.superCalendar, oldEvent[0]);
         if (oldEvent[0]) {
           await promiseStorage.modifyItem(newEvent, oldEvent[0]);
         } else {
@@ -882,12 +908,9 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       let event = {};
       let folder = this.getItemFolder(aEvent, event);
       // Check whether we accepted or declined an invitation.
-      let newAttendee = this.getInvitedAttendee(aEvent);
-      if (newAttendee) {
-        event.participation = newAttendee.participationStatus;
-      }
-      let notify = getNotificationStatus(aEvent);
-      let { uid, itemid } = await this.callExtension("CreateEvent", { folder, event, notify } );
+      let { uid, itemid } = this.isInvitation(aEvent) ?
+        await this.callExtension("UpdateParticipation", { uid: aEvent.id, participation: this.getInvitedAttendee(aEvent).participationStatus, isRecurrence: aEvent.recurrenceId != null }) :
+        await this.callExtension("CreateEvent", { folder, event, notify: getNotificationStatus(aEvent) } );
       if (aEvent.id != uid) {
         if (aEvent.id) {
           let promiseStorage = cal.async.promisifyCalendar(this.offlineStorage);
@@ -927,10 +950,11 @@ class Calendar extends (cal && cal.provider.BaseClass) {
       // Check whether we accepted or declined an invitation.
       let oldAttendee = this.getInvitedAttendee(aOldEvent);
       let newAttendee = this.getInvitedAttendee(aNewEvent);
-      if (oldAttendee && newAttendee && oldAttendee.participationStatus != newAttendee.participationStatus) {
-        newEvent.participation = newAttendee.participationStatus;
+      if (this.isInvitation(aOldEvent) && this.isInvitation(aNewEvent) && oldAttendee.participationStatus != newAttendee.participationStatus) {
+        await this.callExtension("UpdateParticipation", { id: newEvent.itemid, uid: aNewEvent.id, participation: newAttendee.participationStatus, isRecurrence: aNewEvent.recurrenceId != null });
       }
       // Check whether anything changed that we support.
+      // This is just an optimisation so it doesn't have to be 100% perfect.
       if (JSON.stringify(newEvent) != JSON.stringify(oldEvent)) {
         let notify = getNotificationStatus(aNewEvent);
         await this.callExtension("UpdateEvent", { folder, newEvent, oldEvent, notify } );
@@ -1024,6 +1048,8 @@ try {
 }
 gCalendarProperties.factory = XPCOMUtils._getFactory(Calendar);
 gComponentRegistrar.registerFactory(gCalendarProperties.classID, gCalendarProperties.classDescription, gCalendarProperties.contractID, gCalendarProperties.factory);
+
+Services.scriptloader.loadSubScriptWithOptions(extensions.modules.get("calendar").url.slice(0, extensions.modules.get("calendar").url.lastIndexOf("/") + 1) + "uiOverlay.js", { ignoreCache: true });
 
 this.calendar = class extends ExtensionAPI {
   getAPI(context) {

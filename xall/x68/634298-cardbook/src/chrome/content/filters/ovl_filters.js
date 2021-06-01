@@ -18,7 +18,7 @@ if ("undefined" == typeof(ovl_filters)) {
 				}
 		},
 
-		_addEmails: function(aMsgHdrs, aActionValue, aField) {
+		_addEmails: async function(aMsgHdrs, aActionValue, aField) {
 			// a category might be included
 			var mySepPosition = aActionValue.indexOf("::",0);
 			if (mySepPosition != -1) {
@@ -34,7 +34,7 @@ if ("undefined" == typeof(ovl_filters)) {
 				let hdr = aMsgHdrs.queryElementAt(i, Components.interfaces.nsIMsgDBHdr);
 				let addresses = MailServices.headerParser.parseEncodedHeaderW(hdr[aField]);
 				for (let address of addresses) {
-					cardbookRepository.cardbookUtils.addCardFromDisplayAndEmail(aActionValue, address.name, address.email, myCategory, myActionId);
+					await cardbookRepository.cardbookUtils.addCardFromDisplayAndEmail(aActionValue, address.name, address.email, myCategory, myActionId);
 				}
 			}
 			cardbookActions.endAction(myActionId);

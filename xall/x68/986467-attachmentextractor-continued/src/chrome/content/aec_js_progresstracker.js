@@ -144,9 +144,18 @@ var progress_tracker = {
   set_status_text: function(entry, param) {
     try {
       if (this.statusFeedback && entry && entry !== "") {
-        var txt = (param) ? aewindow.aeStringBundle.formatStringFromName(
+
+        if (aec_versionChecker.compare(aec_currentVersion, "69") >= 0) {
+          // The 3rd parameter in formatStringFromName has been droped 
+          // for Thunderbird 69+
+          var txt = (param) ? aewindow.aeStringBundle.formatStringFromName(
+            entry, param) :
+          aewindow.aeStringBundle.GetStringFromName(entry);
+        } else {
+          var txt = (param) ? aewindow.aeStringBundle.formatStringFromName(
             entry, param, param.length) :
           aewindow.aeStringBundle.GetStringFromName(entry);
+        }
         this.statusFeedback.showStatusString(txt);
       }
     } catch (e) {
@@ -160,19 +169,19 @@ var progress_tracker = {
   },
 
   /*
-	toOpenWindowByType : function (type, uri) {
-    	var topWindow = this.getWindowByType(type);
-		if (topWindow) topWindow.focus();
-		else return window.open(uri, "_blank", "chrome,extrachrome,menubar,resizable,scrollbars,status,toolbar");
-		return topWindow;
-	},
+  toOpenWindowByType : function (type, uri) {
+      var topWindow = this.getWindowByType(type);
+    if (topWindow) topWindow.focus();
+    else return window.open(uri, "_blank", "chrome,extrachrome,menubar,resizable,scrollbars,status,toolbar");
+    return topWindow;
+  },
 
-	toCloseWindowByType : function(type) {
-		var topWindow=this.getWindowByType(type);
-		if ( topWindow ) topWindow.close();
-		//else aedump ('"'+type+'" not found');
-	},
-	*/
+  toCloseWindowByType : function(type) {
+    var topWindow=this.getWindowByType(type);
+    if ( topWindow ) topWindow.close();
+    //else aedump ('"'+type+'" not found');
+  },
+  */
 
   debug: aedump
 }
@@ -217,8 +226,16 @@ function AEC_Reportgen() {
     var bodyElem = get_bodyElem();
     var hrdiv_elem = aerg_document.createElement("div");
     var h6 = aerg_document.createElement("h6");
-    h6.appendChild(aerg_document.createTextNode(strBundle.formatStringFromName(
-      "ExtractionStarted", [new Date()], 1)));
+
+    if (aec_versionChecker.compare(aec_currentVersion, "69") >= 0) {
+      // The 3rd parameter in formatStringFromName has been droped 
+      // for Thunderbird 69+
+      h6.appendChild(aerg_document.createTextNode(strBundle.formatStringFromName(
+        "ExtractionStarted", [new Date()])));
+    } else {
+      h6.appendChild(aerg_document.createTextNode(strBundle.formatStringFromName(
+        "ExtractionStarted", [new Date()], 1)));
+    }
     hrdiv_elem.appendChild(h6);
     //hrdiv_elem.appendChild(aerg_document.createElement("hr"));
     bodyElem.appendChild(hrdiv_elem);
@@ -241,18 +258,6 @@ function AEC_Reportgen() {
       create_newreport();
       return;
     }
-    var newStyleElem = makeScriptSection();
-    if (newStyleElem) {
-      var oldStyleElem = aerg_document.getElementsByTagName("style");
-      if (oldStyleElem && oldStyleElem[0]) {
-        oldStyleElem = oldStyleElem[0];
-        oldStyleElem.parentNode.replaceChild(oldStyleElem, newStyleElem);
-      } else {
-        var headElem = aerg_document.getElementsByTagName("head");
-        headElem = headElem[0];
-        headElem.appendChild(newStyleElem);
-      }
-    }
   }
 
   function create_newreport() {
@@ -264,8 +269,6 @@ function AEC_Reportgen() {
       .GetStringFromName("ReportTitle")));
     headElem.appendChild(titleElem);
 
-    var styleElem = makeScriptSection();
-    if (styleElem) headElem.appendChild(styleElem);
     aerg_document.documentElement.appendChild(headElem);
 
     var bodyElem = aerg_document.createElement("body");
@@ -277,42 +280,6 @@ function AEC_Reportgen() {
     aerg_document.documentElement.appendChild(bodyElem);
   }
 
-  function makeScriptSection() {
-    var fileIn;
-    try {
-      fileIn = prefs.getFile("reportgen.cssfile");
-    } catch (e) {}
-    if (!fileIn) return null;
-    var styleElem;
-    if (prefs.get("reportgen.embedcss")) {
-      styleElem = aerg_document.createElement("style");
-      var css = " ";
-      if (fileIn && fileIn.exists()) {
-        try {
-          var inputStream = Cc['@mozilla.org/network/file-input-stream;1']
-            .createInstance(Ci.nsIFileInputStream);
-          var scriptableStream = Cc['@mozilla.org/scriptableinputstream;1']
-            .createInstance(Ci.nsIScriptableInputStream);
-          inputStream.init(file, 1, 0, false);
-          scriptableStream.init(inputStream);
-          css = scriptableStream.read(-1);
-          scriptableStream.close();
-          inputStream.close();
-        } catch (e) {
-          aedump(e);
-        }
-        styleElem.appendChild(aerg_document.createTextNode(css));
-      }
-    } else {
-      styleElem = aerg_document.createElement("link");
-      styleElem.setAttribute("REL", "stylesheet")
-      styleElem.setAttribute("HREF", fileHandler.getURLSpecFromFile(fileIn));
-      styleElem.setAttribute("TITLE", "Style");
-    }
-    styleElem.setAttribute("TYPE", "text/css");
-    return styleElem;
-  }
-
   function end_write() {
     var bodyElem = get_bodyElem();
     var hrdiv_elem = aerg_document.createElement("div");
@@ -320,8 +287,16 @@ function AEC_Reportgen() {
     hr.setAttribute("style", "visibility:hidden");
     hrdiv_elem.appendChild(hr);
     var h6 = aerg_document.createElement("h6");
-    h6.appendChild(aerg_document.createTextNode(strBundle.formatStringFromName(
-      "ExtractionEnded", [new Date()], 1)));
+
+    if (aec_versionChecker.compare(aec_currentVersion, "69") >= 0) {
+      // The 3rd parameter in formatStringFromName has been droped 
+      // for Thunderbird 69+
+      h6.appendChild(aerg_document.createTextNode(strBundle.formatStringFromName(
+        "ExtractionEnded", [new Date()])));
+    } else {
+      h6.appendChild(aerg_document.createTextNode(strBundle.formatStringFromName(
+        "ExtractionEnded", [new Date()], 1)));
+    }
     hrdiv_elem.appendChild(h6);
     hrdiv_elem.appendChild(aerg_document.createElement("hr"));
     hrdiv_elem.setAttribute("style", "clear:both");

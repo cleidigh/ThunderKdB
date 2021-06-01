@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "$P1$ ファイルが見つかりません。",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "ファイル $P1$ は空です",
         "placeholders": {
@@ -3127,9 +3135,6 @@
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "カテゴリーを編集"
 	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "新しいカテゴリーを追加する"
-	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "ノードを編集"
 	},
@@ -3146,9 +3151,6 @@
 		"message": "カテゴリー："
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "カテゴリー："
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "カテゴリー："
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "パスワード："
 	},
-	"remotePage.passwordShow.label": {
-		"message": "表示"
+	"showHidePassword.tooltip": {
+		"message": "パスワードを表示または隠す"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "検証"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "P"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "表示"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "S"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "バックグラウンドで実行"
 	},
@@ -5214,15 +5210,6 @@
 	"keyLabel": {
 		"message": "キー"
 	},
-	"photolocalURILabel": {
-		"message": "顔写真のローカルファイルURI"
-	},
-	"logolocalURILabel": {
-		"message": "ロゴのローカルファイルURI"
-	},
-	"soundlocalURILabel": {
-		"message": "音のローカルファイルURI"
-	},
 	"photoURILabel": {
 		"message": "顔写真"
 	},
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "画像をコピー"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "画像のURLをコピー"
 	},
 	"deleteImageCardLabel": {
 		"message": "画像を削除"

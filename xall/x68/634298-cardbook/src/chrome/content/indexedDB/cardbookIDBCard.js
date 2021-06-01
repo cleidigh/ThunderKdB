@@ -111,23 +111,29 @@ var cardbookIDBCard = {
 
 	// Check if a card is present in the database
 	checkCardForUndoAction: function(aMessage, aCard, aActionId) {
-		var db = cardbookRepository.cardbookDatabase.db;
-		var transaction = db.transaction(["cards"], "readonly");
-		var store = transaction.objectStore("cards");
-		var cursorRequest = store.get(aCard.cbid);
-	
-		cursorRequest.onsuccess = function(e) {
-			cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aMessage);
-			cardbookRepository.cardbookUtils.addTagCreated(aCard);
-			var card = e.target.result;
-			if (card) {
-				aCard.etag = card.etag;
-			}
-			cardbookRepository.saveCardFromMove({}, aCard, aActionId, false);
-			cardbookRepository.cardbookUtils.notifyObservers(cardbookRepository.currentAction[aActionId].actionCode);
-		};
+		return new Promise( function(resolve, reject) {
+			var db = cardbookRepository.cardbookDatabase.db;
+			var transaction = db.transaction(["cards"], "readonly");
+			var store = transaction.objectStore("cards");
+			var cursorRequest = store.get(aCard.cbid);
 		
-		cursorRequest.onerror = cardbookRepository.cardbookDatabase.onerror;
+			cursorRequest.onsuccess = async function(e) {
+				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug2(aMessage);
+				cardbookRepository.cardbookUtils.addTagCreated(aCard);
+				var card = e.target.result;
+				if (card) {
+					aCard.etag = card.etag;
+				}
+				await cardbookRepository.saveCardFromMove({}, aCard, aActionId, false);
+				cardbookRepository.cardbookUtils.notifyObservers(cardbookRepository.currentAction[aActionId].actionCode);
+				resolve();
+			};
+			
+			cursorRequest.onerror = function(e) {
+				reject();
+				cardbookRepository.cardbookDatabase.onerror(e);
+			};
+		});
 	},
 	
 	// once the DB is open, this is the second step for the AB
@@ -162,7 +168,7 @@ var cardbookIDBCard = {
 				return;
 			}
 			if (!card.deleted) {
-				cardbookRepository.addCardToRepository(card, false, card.cacheuri);
+				await cardbookRepository.addCardToRepository(card, false, card.cacheuri);
 				cardbookRepository.cardbookUtils.formatStringForOutput("cardLoadedFromCacheDB", [aDirPrefName, card.fn]);
 			} else {
 				if (cardbookRepository.cardbookFileCacheCards[aDirPrefId]) {

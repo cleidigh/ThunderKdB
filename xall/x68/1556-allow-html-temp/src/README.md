@@ -19,7 +19,7 @@
 ### Contribution
 
 You are welcomed to contribute to this project by:
-* adding or improving the localizations (i.e. translations) of Quote Colors via [Crowdin](https://crowdin.com/project/allow-html-temp) (if your language is not listed, please create an [issue](https://gitlab.com/ThunderbirdMailDE/allow-html-temp/issues/))
+* adding or improving the localizations (i.e. translations) of Allow HTML Temp via [Crowdin](https://crowdin.com/project/allow-html-temp) (if your language is not listed, please create an [issue](https://gitlab.com/ThunderbirdMailDE/allow-html-temp/issues/))
 * creating [issues](https://gitlab.com/ThunderbirdMailDE/allow-html-temp/issues/) about problems
 * creating [issues](https://gitlab.com/ThunderbirdMailDE/allow-html-temp/issues/) about possible improvements
 

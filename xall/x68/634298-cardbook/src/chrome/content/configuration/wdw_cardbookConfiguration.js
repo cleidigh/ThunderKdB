@@ -1416,7 +1416,7 @@ var wdw_cardbookConfiguration = {
 	},
 
 	loadTypes: function () {
-		var ABTypes = [ 'CARDDAV' , 'GOOGLE', 'APPLE', 'YAHOO' ];
+		var ABTypes = [ 'CARDDAV', 'GOOGLE2', 'APPLE', 'YAHOO' ];
 		for (var i in ABTypes) {
 			var myABType = ABTypes[i];
 			wdw_cardbookConfiguration.allTypes[myABType] = {};
@@ -1530,7 +1530,7 @@ var wdw_cardbookConfiguration = {
 
 	validateTypes: function () {
 		Services.prefs.deleteBranch(cardbookRepository.cardbookPreferences.prefCardBookCustomTypes);
-		var ABTypes = [ 'CARDDAV', 'GOOGLE', 'APPLE', 'YAHOO' ];
+		var ABTypes = [ 'CARDDAV', 'GOOGLE2', 'APPLE', 'YAHOO' ];
 		for (var i in ABTypes) {
 			var myABType = ABTypes[i];
 			for (var j in cardbookRepository.multilineFields) {
@@ -1716,11 +1716,18 @@ var wdw_cardbookConfiguration = {
 	},
 
 	showPassword: function () {
-		var passwordType = document.getElementById('URLPhonePasswordTextBox').type;
-		if (passwordType != "password") {
-			document.getElementById('URLPhonePasswordTextBox').type = "password";
+		let myPasswordTextbox = document.getElementById("URLPhonePasswordTextBox");
+		if (!myPasswordTextbox.value) {
+			return;
+		}
+
+		let myPasswordTextboxInfo = document.getElementById("URLPhonePasswordTextBoxInfo");
+		if (myPasswordTextbox.type == "password") {
+			myPasswordTextbox.type = "text";
+			myPasswordTextboxInfo.classList.add("icon-visible");
 		} else {
-			document.getElementById('URLPhonePasswordTextBox').type = "";
+			myPasswordTextbox.type = "password";
+			myPasswordTextboxInfo.classList.remove("icon-visible");
 		}
 	},
 

@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "Filen $P1$ findes ikke.",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "Fil $P1$ er tom",
         "placeholders": {
@@ -3127,9 +3135,6 @@
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Rediger kategori"
 	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "Tilføj en ny kategori"
-	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "Rediger knude"
 	},
@@ -3146,9 +3151,6 @@
 		"message": "Kategori:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "Kategori:"
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "Kategori:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "Adgangskode:"
 	},
-	"remotePage.passwordShow.label": {
-		"message": "Vis"
+	"showHidePassword.tooltip": {
+		"message": "Vis/skjul adgangskode"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Valider"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "A"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "Vis"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "V"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "Kør i baggrunden"
 	},
@@ -5214,15 +5210,6 @@
 	"keyLabel": {
 		"message": "Nøgle"
 	},
-	"photolocalURILabel": {
-		"message": "Lokalt foto"
-	},
-	"logolocalURILabel": {
-		"message": "Lokalt logo"
-	},
-	"soundlocalURILabel": {
-		"message": "Lokal lyd"
-	},
 	"photoURILabel": {
 		"message": "Foto"
 	},
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "Kopier billede"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "Kopier billedadresse"
 	},
 	"deleteImageCardLabel": {
 		"message": "Slet billede"

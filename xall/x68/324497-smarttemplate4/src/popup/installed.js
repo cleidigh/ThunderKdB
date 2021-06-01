@@ -29,7 +29,6 @@ addEventListener("click", async (event) => {
           addonVer = manifest.version,
           appVer = browserInfo.version,
           hoursWorked = 290;
-    const mxUtilties = messenger.Utilities;
 
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
@@ -64,6 +63,11 @@ addEventListener("click", async (event) => {
     let preference = document.getElementById('support-preference');
     if (preference) {
       preference.innerText = messenger.i18n.getMessage("support-preference", addonName);
+    }
+
+    let ongoing = document.getElementById('ongoing-work');
+    if (ongoing) {
+      ongoing.innerText = messenger.i18n.getMessage("ongoing-work", addonName);
     }
 
     let title = document.getElementById('window-title');

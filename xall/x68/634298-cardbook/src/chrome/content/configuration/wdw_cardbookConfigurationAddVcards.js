@@ -20,8 +20,8 @@ function changeFileName () {
 	document.getElementById('filenameTextbox').value = document.getElementById('contactMenulist').label + ".vcf";
 };
 		
-function changeVCard () {
-	document.getElementById('VCardTextbox').value = cardbookRepository.cardbookUtils.getvCardForEmail(cardbookRepository.cardbookCards[document.getElementById('CardBookABMenulist').value+"::"+document.getElementById('contactMenulist').value]);
+async function changeVCard () {
+	document.getElementById('VCardTextbox').value = await cardbookRepository.cardbookUtils.getvCardForEmail(cardbookRepository.cardbookCards[document.getElementById('CardBookABMenulist').value+"::"+document.getElementById('contactMenulist').value]);
 };
 		
 function checkRequired () {

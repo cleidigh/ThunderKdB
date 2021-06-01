@@ -7,12 +7,10 @@ if ("undefined" == typeof(cardbookClipboard)) {
 		clipboardSetImage: function (aURISpec) {
 			try {
 				var imgTools = Components.classes["@mozilla.org/image/tools;1"].getService(Components.interfaces.imgITools);
-				var myFileURI = Services.io.newURI(aURISpec, null, null);
-
 				// Thunderbird 52 and Linux
 				if (imgTools.decodeImageData) {
 					var myExtension = cardbookRepository.cardbookUtils.getFileNameExtension(aURISpec);
-					var imagedata = 'data:image/' + myExtension + ';base64,' + btoa(cardbookRepository.cardbookUtils.getFileBinary(myFileURI));
+					var imagedata = 'data:image/' + myExtension + ';base64,' + btoa(cardbookRepository.cardbookUtils.getFileBinary(aURISpec));
 					var channel = Services.io.newChannel2(imagedata, null, null, null, null, null, null, null);
 					var input = channel.open();
 					var container = {};
@@ -27,6 +25,7 @@ if ("undefined" == typeof(cardbookClipboard)) {
 					clipboard.setData(trans, null, clipid.kGlobalClipboard);
 				// Thunderbird 60
 				} else if (imgTools.decodeImageFromBuffer) {
+					var myFileURI = Services.io.newURI(aURISpec, null, null);
 					var myChannel = Services.io.newChannelFromURI(myFileURI,
 																	 null,
 																	 Services.scriptSecurityManager.getSystemPrincipal(),
@@ -36,7 +35,7 @@ if ("undefined" == typeof(cardbookClipboard)) {
 					NetUtil.asyncFetch(myChannel, function (inputStream, status) {
 						if (!Components.isSuccessCode(status)) {
 							return;
-						}
+						}							
 						var buffer = NetUtil.readInputStreamToString(inputStream, inputStream.available());
 						var container = imgTools.decodeImageFromBuffer(buffer, buffer.length, myChannel.contentType);
 						var wrapped = Components.classes["@mozilla.org/supports-interface-pointer;1"].createInstance(Components.interfaces.nsISupportsInterfacePointer);

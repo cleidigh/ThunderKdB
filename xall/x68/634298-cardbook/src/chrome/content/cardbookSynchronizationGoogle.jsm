@@ -242,7 +242,7 @@ var cardbookSynchronizationGoogle = {
 
 	googleSyncCards: function(aConnection, aPrefIdType, aValue) {
 		var listener_propfind = {
-			onDAVQueryComplete: function(status, responseJSON, askCertificate) {
+			onDAVQueryComplete: async function(status, responseJSON, askCertificate) {
 				if (status == 0) {
 					if (askCertificate) {
 						var certificateExceptionAdded = false;
@@ -290,7 +290,7 @@ var cardbookSynchronizationGoogle = {
 											var myUrl = baseUrl + key;
 											var myFileName = cardbookRepository.cardbookUtils.getFileNameFromUrl(myUrl);
 											var aCardConnection = {accessToken: aConnection.accessToken, connPrefId: aConnection.connPrefId, connUrl: myUrl, connDescription: aConnection.connDescription, connUser: aConnection.connUser};
-											cardbookSynchronization.compareServerCardWithCache(aCardConnection, aConnection, aPrefIdType, myUrl, etag, myFileName);
+											await cardbookSynchronization.compareServerCardWithCache(aCardConnection, aConnection, aPrefIdType, myUrl, etag, myFileName);
 											if (cardbookRepository.cardbookCardsFromCache[aConnection.connPrefId][myFileName]) {
 												delete cardbookRepository.cardbookCardsFromCache[aConnection.connPrefId][myFileName];
 												cardbookRepository.cardbookServerSyncHandleRemainingCardTotal[aConnection.connPrefId]--;
@@ -300,7 +300,7 @@ var cardbookSynchronizationGoogle = {
 								}
 							}
 						}
-						cardbookSynchronization.handleRemainingCardCache(aPrefIdType, aConnection);
+						await cardbookSynchronization.handleRemainingCardCache(aPrefIdType, aConnection);
 						cardbookRepository.cardbookServerSyncParams[aConnection.connPrefId][0] =  aConnection;
 					}
 					catch(e) {
@@ -345,7 +345,7 @@ var cardbookSynchronizationGoogle = {
 
 	googleSyncLabels: function(aConnection) {
 		var listener_getLabels = {
-			onDAVQueryComplete: function(status, responseXML, askCertificate) {
+			onDAVQueryComplete: async function(status, responseXML, askCertificate) {
 				if (status == 0) {
 					if (askCertificate) {
 						var certificateExceptionAdded = false;
@@ -408,7 +408,7 @@ var cardbookSynchronizationGoogle = {
 								cardbookRepository.cardbookServerSyncHandleRemainingCatTotal[aCatConnection.connPrefId]--;
 							}
 						}
-						cardbookSynchronizationGoogle.handleRemainingCatCache(aConnection, listOfCategories);
+						await cardbookSynchronizationGoogle.handleRemainingCatCache(aConnection, listOfCategories);
 					}
 					catch(e) {
 						cardbookRepository.cardbookLog.updateStatusProgressInformation(aConnection.connDescription + " : cardbookSynchronization.googleSyncLabels error : " + e, "Error");
@@ -471,7 +471,7 @@ var cardbookSynchronizationGoogle = {
 					var conflictResult = "keep";
 				} else {
 					var message = cardbookRepository.extension.localeData.localizeMessage("categoryDeletedOnDiskUpdatedOnServer", [aCatConnection.connDescription, myCacheCat.name]);
-					var conflictResult = cardbookSynchronization.askUser("category", aCatConnection.connPrefId, message, "keep", "delete");
+					var conflictResult = cardbookSynchronization.askUser("category", aCatConnection.connPrefId, message, cardbookRepository.importConflictChoiceSync1Values);
 				}
 				
 				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(aCatConnection.connDescription + " : debug mode : conflict resolution : ", conflictResult);
@@ -502,7 +502,7 @@ var cardbookSynchronizationGoogle = {
 						myCacheCat.etag = aCategory.etag;
 						cardbookSynchronizationGoogle.serverDeleteCategory(aCatConnection, myCacheCat);
 						break;
-					case "cancel":
+					default:
 						cardbookRepository.cardbookServerCatSyncDone[aCatConnection.connPrefId]++;
 						break;
 				}
@@ -517,7 +517,7 @@ var cardbookSynchronizationGoogle = {
 					var conflictResult = "remote";
 				} else {
 					var message = cardbookRepository.extension.localeData.localizeMessage("categoryUpdatedOnBoth", [aCatConnection.connDescription, myCacheCat.name]);
-					var conflictResult = cardbookSynchronization.askUser("category", aCatConnection.connPrefId, message, "local", "remote");
+					var conflictResult = cardbookSynchronization.askUser("category", aCatConnection.connPrefId, message,  cardbookRepository.importConflictChoiceSync3Values);
 				}
 				
 				cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(aCatConnection.connDescription + " : debug mode : conflict resolution : ", conflictResult);
@@ -553,7 +553,7 @@ var cardbookSynchronizationGoogle = {
 						cardbookRepository.updateCategoryFromRepository(aCategory, myCacheCat, aCatConnection.connPrefId);
 						cardbookRepository.cardbookServerCatSyncDone[aCatConnection.connPrefId]++;
 						break;
-					case "cancel":
+					default:
 						cardbookRepository.cardbookServerCatSyncDone[aCatConnection.connPrefId]++;
 						break;
 				}
@@ -606,7 +606,7 @@ var cardbookSynchronizationGoogle = {
 		cardbookRepository.cardbookServerSyncCompareCatWithCacheDone[aCatConnection.connPrefId]++;
 	},
 
-	handleRemainingCatCache: function (aConnection, aServerList) {
+	handleRemainingCatCache: async function (aConnection, aServerList) {
 		if (cardbookRepository.cardbookCategoriesFromCache[aConnection.connPrefId]) {
 			for (var i in cardbookRepository.cardbookCategoriesFromCache[aConnection.connPrefId]) {
 				var aCategory = cardbookRepository.cardbookCategoriesFromCache[aConnection.connPrefId][i];
@@ -637,7 +637,7 @@ var cardbookSynchronizationGoogle = {
 							var conflictResult = "delete";
 						} else {
 							var message = cardbookRepository.extension.localeData.localizeMessage("categoryUpdatedOnDiskDeletedOnServer", [aConnection.connDescription, aCategory.name]);
-							var conflictResult = cardbookSynchronization.askUser("category", aConnection.connPrefId, message, "keep", "delete");
+							var conflictResult = cardbookSynchronization.askUser("category", aConnection.connPrefId, message, cardbookRepository.importConflictChoiceSync1Values);
 						}
 						
 						cardbookRepository.cardbookLog.updateStatusProgressInformationWithDebug1(aConnection.connDescription + " : debug mode : conflict resolution : ", conflictResult);
@@ -650,11 +650,11 @@ var cardbookSynchronizationGoogle = {
 								break;
 							case "delete":
 								cardbookRepository.cardbookUtils.formatStringForOutput("categoryDeletedOnServer", [aConnection.connDescription, aCategory.name]);
-								cardbookRepository.removeCardsFromCategory(aConnection.connPrefId, aCategory.name);
+								await cardbookRepository.removeCardsFromCategory(aConnection.connPrefId, aCategory.name);
 								cardbookRepository.removeCategoryFromRepository(aCategory, true, aConnection.connPrefId);
 								cardbookRepository.cardbookServerCatSyncDone[aConnection.connPrefId]++;
 								break;
-							case "cancel":
+							default:
 								cardbookRepository.cardbookServerCatSyncDone[aConnection.connPrefId]++;
 								break;
 						}
@@ -662,7 +662,7 @@ var cardbookSynchronizationGoogle = {
 						// "DELETEDONSERVER"
 						cardbookRepository.cardbookServerCatSyncTotal[aConnection.connPrefId]++;
 						cardbookRepository.cardbookUtils.formatStringForOutput("categoryDeletedOnServer", [aConnection.connDescription, aCategory.name]);
-						cardbookRepository.removeCardsFromCategory(aConnection.connPrefId, aCategory.name);
+						await cardbookRepository.removeCardsFromCategory(aConnection.connPrefId, aCategory.name);
 						cardbookRepository.removeCategoryFromRepository(aCategory, true, aConnection.connPrefId);
 						cardbookRepository.cardbookServerCatSyncDone[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerSyncDeletedCatOnServer[aConnection.connPrefId]++;
@@ -693,7 +693,7 @@ var cardbookSynchronizationGoogle = {
 		if (cardbookSynchronization.getModifsPushed(aConnection.connPrefId) <= cardbookRepository.cardbookPreferences.getMaxModifsPushed()) {
 			var request = new cardbookWebDAV(aConnection, listener_delete, aCategory.etag);
 			cardbookRepository.cardbookUtils.formatStringForOutput("serverCategorySendingDeletion", [aConnection.connDescription, aCategory.name]);
-			request.delete(null, "text/vcard; charset=utf-8");
+			request.delete();
 		} else {
 			cardbookRepository.cardbookServerCatSyncDone[aConnection.connPrefId]++;
 			cardbookRepository.cardbookServerDeletedCatResponse[aConnection.connPrefId]++;
@@ -798,7 +798,7 @@ var cardbookSynchronizationGoogle = {
 
 	serverGetAllCardsLabels: function(aConnection) {
 		var listener_getContacts = {
-			onDAVQueryComplete: function(status, responseXML, askCertificate, etag, length) {
+			onDAVQueryComplete: async function(status, responseXML, askCertificate, etag, length) {
 				if (status > 199 && status < 400) {
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverGetLabelsOK", [aConnection.connDescription]);	
 					let nodes =  responseXML.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "entry");
@@ -857,12 +857,12 @@ var cardbookSynchronizationGoogle = {
 								if (stopAddCat) {
 									if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 										let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-										cardbookRepository.removeCardFromRepository(aOldCard, true);
+										await cardbookRepository.removeCardFromRepository(aOldCard, true);
 									}
 									cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 									cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
 									cardbookRepository.cardbookUtils.addTagUpdated(aParams.aNewCard);
-									cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+									await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 									cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 									cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 								} else {
@@ -872,22 +872,22 @@ var cardbookSynchronizationGoogle = {
 									} else {
 										if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 											let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-											cardbookRepository.removeCardFromRepository(aOldCard, true);
+											await cardbookRepository.removeCardFromRepository(aOldCard, true);
 										}
 										cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 										cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-										cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+										await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 										cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 									}
 								}
 							} else {
 								if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 									let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-									cardbookRepository.removeCardFromRepository(aOldCard, true);
+									await cardbookRepository.removeCardFromRepository(aOldCard, true);
 								}
 								cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-								cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+								await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 								cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 							}
 						} else {
@@ -944,7 +944,7 @@ var cardbookSynchronizationGoogle = {
 
 	serverGetCardLabels: function(aConnection, aParams) {
 		var listener_getContact = {
-			onDAVQueryComplete: function(status, responseXML, askCertificate, etag) {
+			onDAVQueryComplete: async function(status, responseXML, askCertificate, etag) {
 				if (status > 199 && status < 400) {
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverGetCardLabelsOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 					let nodes =  responseXML.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "entry");
@@ -1000,12 +1000,12 @@ var cardbookSynchronizationGoogle = {
 								if (stopAddCat) {
 									if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 										let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-										cardbookRepository.removeCardFromRepository(aOldCard, true);
+										await cardbookRepository.removeCardFromRepository(aOldCard, true);
 									}
 									cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 									cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
 									cardbookRepository.cardbookUtils.addTagUpdated(aParams.aNewCard);
-									cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+									await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 									cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 									cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 								} else {
@@ -1015,22 +1015,22 @@ var cardbookSynchronizationGoogle = {
 									} else {
 										if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 											let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-											cardbookRepository.removeCardFromRepository(aOldCard, true);
+											await cardbookRepository.removeCardFromRepository(aOldCard, true);
 										}
 										cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 										cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-										cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+										await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 										cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 									}
 								}
 							} else {
 								if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 									let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-									cardbookRepository.removeCardFromRepository(aOldCard, true);
+									await cardbookRepository.removeCardFromRepository(aOldCard, true);
 								}
 								cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 								cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-								cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+								await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 								cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 							}
 						// updated contacts on CardBook : PUT
@@ -1040,13 +1040,12 @@ var cardbookSynchronizationGoogle = {
 								cardbookSynchronizationGoogle.serverPutCardLabels(aConnection, aParams, uid, etag, entry);
 							} else {
 								cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-								// if aCard and aCard have the same cached medias
-								cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aParams.aNewCard);
+								await cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aParams.aNewCard);
 								if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 									let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-									cardbookRepository.removeCardFromRepository(aOldCard, true);
+									await cardbookRepository.removeCardFromRepository(aOldCard, true);
 								}
-								cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+								await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 							}
 						}
 					}
@@ -1100,7 +1099,7 @@ var cardbookSynchronizationGoogle = {
 
 	serverPutAllCardsLabels: function(aConnection) {
 		var listener_putContacts = {
-			onDAVQueryComplete: function(status, responseXML, askCertificate, etag, length) {
+			onDAVQueryComplete: async function(status, responseXML, askCertificate, etag, length) {
 				if (status > 199 && status < 400) {
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverPutLabelsOK", [aConnection.connDescription]);	
 					let nodes =  responseXML.getElementsByTagNameNS("http://www.w3.org/2005/Atom", "entry");
@@ -1115,11 +1114,11 @@ var cardbookSynchronizationGoogle = {
 							cardbookRepository.cardbookServerSyncAgain[aConnection.connPrefId] = true;
 							if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 								let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-								cardbookRepository.removeCardFromRepository(aOldCard, true);
+								await cardbookRepository.removeCardFromRepository(aOldCard, true);
 							}
 							cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 							cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-							cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+							await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 							cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 						} else {
 							cardbookRepository.cardbookUtils.formatStringForOutput("serverPutLabelsFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
@@ -1163,7 +1162,7 @@ var cardbookSynchronizationGoogle = {
 
 	serverPutCardLabels: function(aConnection, aParams, aCardUid, aCardEtag, aGoogleEntry) {
 		var listener_updateContact = {
-			onDAVQueryComplete: function(status, response, askCertificate, etag) {
+			onDAVQueryComplete: async function(status, response, askCertificate, etag) {
 				if (status > 199 && status < 400) {
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverPutCardLabelsOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 					// don't have received the etag so force resync
@@ -1171,21 +1170,20 @@ var cardbookSynchronizationGoogle = {
 					if (aParams.aActionType == "GET") {
 						if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 							let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-							cardbookRepository.removeCardFromRepository(aOldCard, true);
+							await cardbookRepository.removeCardFromRepository(aOldCard, true);
 						}
 						cardbookRepository.cardbookServerGetCardResponse[aConnection.connPrefId]++;
 						cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-						cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+						await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 						cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetOK", [aConnection.connDescription, aParams.aNewCard.fn]);
 					} else {
 						cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId]++;
-						// if aCard and aCard have the same cached medias
-						cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aParams.aNewCard);
+						await cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aParams.aNewCard);
 						if (cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid]) {
 							let aOldCard = cardbookRepository.cardbookCards[aParams.aNewCard.dirPrefId+"::"+aParams.aNewCard.uid];
-							cardbookRepository.removeCardFromRepository(aOldCard, true);
+							await cardbookRepository.removeCardFromRepository(aOldCard, true);
 						}
-						cardbookRepository.addCardToRepository(aParams.aNewCard, true);
+						await cardbookRepository.addCardToRepository(aParams.aNewCard, true);
 						cardbookRepository.cardbookUtils.formatStringForOutput("serverCardUpdatedOnServerWithoutEtag", [aConnection.connDescription, aParams.aNewCard.fn]);
 					}						
 				} else {

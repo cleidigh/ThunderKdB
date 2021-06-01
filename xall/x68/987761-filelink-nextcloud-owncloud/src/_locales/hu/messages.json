@@ -35,9 +35,6 @@
   "storageFolder_details": {
     "message": "Az az útvonal, ahova a mellékleteket a saját felhőben tárolja. Ha nem létezik, akkor a feltöltés során lesz létrehozva."
   },
-  "useDlPassword": {
-    "message": "Jelszóval védett letöltések"
-  },
   "useNoDlPassword": {
     "message": "Nincs jelszó"
   },
@@ -50,6 +47,9 @@
   "useGeneratedDlPassword_details": {
     "message": "Minden fájlhoz véletlenszerű jelszó jön létre. Másolja a jelszót az állapot előugró ablakból a feltöltés után."
   },
+  "useDlPassword": {
+    "message": "Jelszóval védett letöltések"
+  },
   "oneDlPassword": {
     "message": "Egy jelszó az összes letöltéshez"
   },
@@ -57,7 +57,7 @@
     "message": "Ennek a jelszónak meg kell felelnie a felhőrendszergazda által végrehajtott szabályoknak (pl. hosszúság, karakterkészlet,…). Ellenkező esetben a feltöltés sikertelen lesz. Mondja el ezt a jelszót a címzetteknek; szüksége lesz rá a melléklet letöltéséhez."
   },
   "expiryDaysBefore": {
-    "message": "Letöltések lejár:"
+    "message": "Letöltések lejár: "
   },
   "expiryDaysAfter": {
     "message": " nap"
@@ -88,18 +88,18 @@
   "error_404": {
     "message": "Fiók ellenőrzése sikertelen: helytelen felhasználónév, nem összeegyeztethetetlen felhő vagy hálózati hiba."
   },
-  "error_503": {
-    "message": "Kiszolgáló karbantartási módban van. Próbálkozzon újra később."
-  },
   "warn_unsupported_cloud": {
     "message": "A Nextcloud vagy a ownCloud elavult verziója. Elveszítheti az adatokat. Kérje meg a felhőrendszergazdát, hogy frissítse."
   },
   "obsolete_version": {
-    "description": "Ez az ikon felett jelenik meg, ha a felhő verziója nem támogatott, tehát elég rövidnek kell lennie, és legfeljebb két sort tartalmazhat.",
+    "description": "This is displayed over the icon if the cloud version is not supported, so it should be quite short and contain at most two lines.",
     "message": "Elavult\nverzió"
   },
   "error_401": {
     "message": "Bejelentkezés sikertelen. Ellenőrizze a felhasználónevet és a jelszót."
+  },
+  "error_503": {
+    "message": "Kiszolgáló karbantartási módban van. Próbálkozzon újra később."
   },
   "error_sharing_off": {
     "message": "Felhő megosztása letiltva. Kérdezze meg rendszergazdáját, hogy engedélyezze a megosztást."
@@ -119,15 +119,19 @@
   "warn_insecure_http": {
     "message": "A bejelentkezési adatokat titkosítatlanul továbbítják a HTTP-kapcsolat használatával. A bejelentkezéshez használja a HTTPS-kapcsolatot. Ha ez nem sikerül, kérje a rendszergazdák segítségét."
   },
+  "status_menutooltip": {
+    "description": "This is displayed as a tooltip when the mouse pointer hovers over the menu button labelled with 'status_menuname'",
+    "message": "*cloud feltöltések állapotának és a létrehozott jelszavak (ha vannak) megjelenítése"
+  },
   "status_menuname": {
-    "description": "Ezt a *cloud logó után helyezzük el, hogy létrejöjjön a gomb az üzenetírási ablakban, amely megnyitja az előrehaladás felbukkanó ablakot",
+    "description": "This short text is displayed on the menu button that opens the status popup next to the *cloud logo",
     "message": "Állapot"
   },
   "status_no_uploads": {
     "message": "Nincsenek folyamatban feltöltések"
   },
   "status_button_clear": {
-    "description": "Gomb az üzenetek eltávolításához az előugró ablakból",
+    "description": "Button to remove error messages from status popup",
     "message": "Teljesített feltöltések törlése"
   },
   "status_preparing": {
@@ -145,11 +149,15 @@
   "status_sharing": {
     "message": "Megosztás"
   },
+  "status_checkingsize": {
+    "description": "This will be displayed in the status popup. If this step fails this string will be with one indicating failure, eg 'Checking maximum file size failed'.",
+    "message": "Maximális fájlméret ellenőrzése"
+  },
   "status_checkingspace": {
     "message": "Szabad hely ellenőrzése"
   },
   "status_error": {
-    "description": "A(z) $1 helyébe a fenti állapotok egyike lép, például „Megosztás sikertelen”. Előtte és utána szöveget is elhelyezhet. Ha ez nem működik az Ön nyelvén, kérlek, mondja meg.",
+    "description": "This will be combined with one of the states above, eg 'Preparing failed'. If this doesn't work in your language, please tell me.",
     "message": "$1 sikertelen"
   },
   "status_password": {

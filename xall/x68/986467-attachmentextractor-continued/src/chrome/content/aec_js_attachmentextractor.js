@@ -235,7 +235,15 @@ if (typeof AttachmentExtractor === "undefined") {
     observe: function(subject, topic, d) {
       var windowtype;
       try {
-        var win = subject.QueryInterface(Ci.nsIDOMWindow);
+        var win = subject;
+        // With TB70, window objects don't need to be and cannot be QI'ed 
+        // to nsIDOMChromeWindow
+        // So give it a try to be compatible from 60 over 68 to 70+
+        try {
+          win = win.QueryInterface(Ci.nsIDOMWindow);
+        }
+        catch(e) {}
+
         windowtype = win.document.documentElement.getAttribute(
         'windowtype');
       } catch (e) {}
@@ -253,7 +261,7 @@ if (typeof AttachmentExtractor === "undefined") {
   AttachmentExtractor.prototype.openAEDialog = function(savefolder, messages,
     filenamepattern, background, deleteAtt) {
     return window.openDialog(
-      "chrome://attachmentextractor_cont/content/aec_dialog_detachProgress.xul",
+      "chrome://attachmentextractor_cont/content/aec_dialog_detachProgress.xhtml",
       "_blank",
       "chrome,extrachrome,menubar,resizable,scrollbars,status,toolbar",
       savefolder, messages, filenamepattern, gDBView, background, deleteAtt);
@@ -432,12 +440,11 @@ if (typeof AttachmentExtractor === "undefined") {
 
   AttachmentExtractor.prototype.getSuggestedSaveFolder = function(messages) {
 
-    function extractKeywords(str, nodupes, excludedwords) {
+    function extractKeywords(str, nodupes) {
       var out = str.toLowerCase().replace(/[\(\)\[\]\\\/\{\}\"\'\:\;\,\$\&]/g,
         "").split(/[ \-\_]/g);
-      if (!excludedwords) excludedwords = new Array();
       return out.filter(function(element, index, array) {
-        return (element !== "" && excludedwords.indexOf(element) === -1 && (
+        return (element !== "" && (
           !nodupes || index === 0 || array.lastIndexOf(element, index -
             1) === -1));
       });
@@ -467,13 +474,11 @@ if (typeof AttachmentExtractor === "undefined") {
     if (!this.prefs.hasUserValue("suggestfolder.parent.1")) return false;
 
     var nodupes = this.prefs.get("suggestfolder.disregardduplicates");
-    var excludedwords = this.prefs.get("suggestfolder.excludekeywords").split(
-      ",");
     var subjects = "";
     for (let i = 0; i < messages.length; i++) {
       subjects += messages[i].mime2DecodedSubject + " ";
     }
-    var keywords = extractKeywords(subjects, nodupes, excludedwords);
+    var keywords = extractKeywords(subjects, nodupes);
     // aedump(keywords.join(",")+"\n");
 
     var matchedFolders = new Array();
@@ -539,7 +544,7 @@ if (typeof AttachmentExtractor === "undefined") {
     // }
 
     window.openDialog(
-      "chrome://attachmentextractor_cont/content/aec_dialog_suggestedFolder.xul",
+      "chrome://attachmentextractor_cont/content/aec_dialog_suggestedFolder.xhtml",
       "",
       "chrome, dialog, modal, resizable", matchedFolders, out);
     if (out.browse) {
@@ -547,7 +552,7 @@ if (typeof AttachmentExtractor === "undefined") {
         this.getSaveFolder("messenger.save.dir", true, ""));
     }
     if (out.selectedIndex !== -1) {
-      return matchedFolders[out.selectedIndex].f;
+      return matchedFolders[out.selectedIndex].f.path;
     }
     return false;
   };
@@ -568,7 +573,7 @@ if (typeof AttachmentExtractor === "undefined") {
     };
     // 
     window.openDialog(
-      "chrome://attachmentextractor_cont/content/aec_dialog_filenamePattern.xul",
+      "chrome://attachmentextractor_cont/content/aec_dialog_filenamePattern.xhtml",
       "",
       "chrome, dialog, modal", input, check, askalwaysfnp, out);
     if (!out.value) return null;
@@ -1140,11 +1145,11 @@ if (typeof AttachmentExtractor === "undefined") {
         
         var mail,folder;
         try{
-        	try{folder=item.QueryInterface(Ci.nsIMsgFolder); }catch (ee){}
-        	if (!folder) {
-        		mail=item.QueryInterface(Ci.nsIMsgDBHdr);
-        		folder=mail.folder; 
-        	}
+          try{folder=item.QueryInterface(Ci.nsIMsgFolder); }catch (ee){}
+          if (!folder) {
+            mail=item.QueryInterface(Ci.nsIMsgDBHdr);
+            folder=mail.folder; 
+          }
         }catch (e) {aedump(e);aedump(item);return;}
         aedump("{function:itemDeleted("+folder.prettyName+")}\n",4);
         alert("test");*/

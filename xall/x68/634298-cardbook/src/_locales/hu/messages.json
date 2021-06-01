@@ -1809,6 +1809,14 @@
             }
         }
 	},
+	"fileNotFound": {
+		"message": "A következő fájl nem létezik: $P1$",
+        "placeholders": {
+            "P1": {
+                "content": "$1"
+            }
+        }
+	},
 	"fileEmpty": {
 		"message": "$P1$ fájl üres",
         "placeholders": {
@@ -3127,9 +3135,6 @@
 	"wdw_cardbookRenameFieldEditCatTitle": {
 		"message": "Kategória szerkesztése"
 	},
-	"wdw_cardbookRenameFieldAddCatTitle": {
-		"message": "Új kategória hozzáadása"
-	},
 	"wdw_cardbookRenameFieldEditNodeTitle": {
 		"message": "Csomópont szerkesztése"
 	},
@@ -3146,9 +3151,6 @@
 		"message": "Kategória:"
 	},
 	"wdw_cardbookRenameFieldEditCatLabel": {
-		"message": "Kategória:"
-	},
-	"wdw_cardbookRenameFieldAddCatLabel": {
 		"message": "Kategória:"
 	},
 	"wdw_cardbookRenameFieldEditNodeLabel": {
@@ -3669,8 +3671,8 @@
 	"remotePage.password.label": {
 		"message": "Jelszó:"
 	},
-	"remotePage.passwordShow.label": {
-		"message": "Jelszó megjelenítése"
+	"showHidePassword.tooltip": {
+		"message": "Jelszó megjelenítése/elrejtése"
 	},
 	"remotePage.validatebutton.label": {
 		"message": "Érvényesít"
@@ -4485,12 +4487,6 @@
 	"URLPhonePasswordAccesskey": {
 		"message": "e"
 	},
-	"URLPhonePasswordShowLabel": {
-		"message": "Jelszó megjelenítése"
-	},
-	"URLPhonePasswordShowAccesskey": {
-		"message": "m"
-	},
 	"URLPhoneBackgroundLabel": {
 		"message": "Fut a háttérben"
 	},
@@ -5214,15 +5210,6 @@
 	"keyLabel": {
 		"message": "Kulcs"
 	},
-	"photolocalURILabel": {
-		"message": "Helyi fotó"
-	},
-	"logolocalURILabel": {
-		"message": "Helyi embléma"
-	},
-	"soundlocalURILabel": {
-		"message": "Helyi hang"
-	},
 	"photoURILabel": {
 		"message": "Fénykép"
 	},
@@ -5729,9 +5716,6 @@
 	},
 	"copyImageCardLabel": {
 		"message": "Kép másolása"
-	},
-	"copyImageLocationCardLabel": {
-		"message": "Kép címének másolása"
 	},
 	"deleteImageCardLabel": {
 		"message": "Kép törlése"

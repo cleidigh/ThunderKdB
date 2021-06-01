@@ -207,7 +207,16 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 
 		openConfigurationWindow: function() {
 			try {
-				openTab("contentTab", {contentPage: "chrome://cardbook/content/configuration/wdw_cardbookConfiguration.xhtml",
+				var tabmail = document.getElementById("tabmail");
+				if (!tabmail) {
+					// Try opening new tabs in an existing 3pane window
+					let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");
+					if (mail3PaneWindow) {
+						tabmail = mail3PaneWindow.document.getElementById("tabmail");
+						mail3PaneWindow.focus();
+					}
+				}
+				tabmail.openTab("contentTab", {contentPage: "chrome://cardbook/content/configuration/wdw_cardbookConfiguration.xhtml",
 										onLoad(aEvent, aBrowser) {
 											document.getElementById('contentTabToolbox' + aBrowser.id.replace('contentTabBrowser','')).hidden = true;
 										}
@@ -240,7 +249,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			}
 		},
 
-		openEditionWindowSave: function(aOrigCard, aOutCard, aMode) {
+		openEditionWindowSave: async function(aOrigCard, aOutCard, aMode) {
 			try {
 				switch (aMode) {
 					// case "EditList":
@@ -259,7 +268,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					var myTopic = "cardCreated";
 				}
 				var myActionId = cardbookActions.startAction(myTopic, [aOutCard.fn]);
-				cardbookRepository.saveCardFromUpdate(aOrigCard, aOutCard, myActionId, true);
+				await cardbookRepository.saveCardFromUpdate(aOrigCard, aOutCard, myActionId, true);
 				cardbookActions.endAction(myActionId);
 			}
 			catch (e) {
@@ -571,7 +580,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 									pers: [ 'lastname', 'firstname', 'othername', 'prefixname', 'suffixname', 'nickname', 'bday', 'gender', 'birthplace', 'anniversary', 'deathdate', 'deathplace' ],
 									categories: [ 'categories' ],
 									note: [ 'note' ],
-									misc: [ 'mailer', 'geo', 'sortstring', 'class1', 'tz', 'agent', 'key', 'photolocalURI', 'photoURI', 'logolocalURI', 'logoURI', 'soundlocalURI', 'soundURI' ],
+									misc: [ 'mailer', 'geo', 'sortstring', 'class1', 'tz', 'agent', 'key', 'photoURI', 'logoURI', 'soundURI' ],
 									tech: [ 'dirPrefId', 'version', 'prodid', 'uid', 'cardurl', 'rev', 'etag' ],
 									others: [ 'others' ],
 									vcard: [ 'vcard' ],
@@ -825,7 +834,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			cardbookWindowUtils.constructOrg(aReadOnly, aCard.org, aCard.title, aCard.role);
 			myRemainingOthers = cardbookWindowUtils.constructCustom(aReadOnly, 'org', myRemainingOthers);
             
-			var fieldArray = [ [ "photo", "localURI" ] , [ "photo", "URI" ], [ "logo", "localURI" ] , [ "logo", "URI" ], [ "sound", "localURI" ] , [ "sound", "URI" ] ];
+			var fieldArray = [ [ "photo", "URI" ], [ "logo", "URI" ], [ "sound", "URI" ] ];
 			for (var field of fieldArray) {
 				if (document.getElementById(field[0] + field[1] + 'TextBox')) {
 					document.getElementById(field[0] + field[1] + 'TextBox').value = aCard[field[0]][field[1]];
@@ -907,7 +916,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			var fieldArray = [ "fn", "lastname", "firstname", "othername", "prefixname", "suffixname", "nickname", "gender",
 								"bday", "birthplace", "anniversary", "deathdate", "deathplace", "mailer", "geo", "sortstring", "class1", "tz",
 								"agent", "prodid", "uid", "version", "dirPrefId", "cardurl", "rev", "etag", "others", "vcard",
-								"photolocalURI", "logolocalURI", "soundlocalURI", "photoURI", "logoURI", "soundURI" ];
+								"photoURI", "logoURI", "soundURI" ];
 			for (var i = 0; i < fieldArray.length; i++) {
 				if (document.getElementById(fieldArray[i] + 'TextBox')) {
 					document.getElementById(fieldArray[i] + 'TextBox').value = "";
@@ -1054,7 +1063,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			let myPrefButton = document.getElementById(aType + '_' + aIndex + '_PrefImage');
 			if (document.getElementById('versionTextBox').value === "4.0") {
 				if (myPrefButton.getAttribute('haspref')) {
-					if (document.getElementById(aType + '_' + aIndex + '_prefWeightBox')) {
+					if (document.getElementById(aType + '_' + aIndex + '_prefWeightBox').value) {
 						result.push("PREF=" + document.getElementById(aType + '_' + aIndex + '_prefWeightBox').value);
 					} else {
 						result.push("PREF=1");
@@ -1089,7 +1098,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					var ABType = cardbookRepository.cardbookPreferences.getType(wdw_cardEdition.workingCard.dirPrefId);
 					var ABTypeFormat = cardbookRepository.getABTypeFormat(ABType);
 					for (var i = 0; i < cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType].length; i++) {
-						if (myValue == cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][0]) {
+						if (myValue.toUpperCase() == cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][0].toUpperCase()) {
 							var prefPossibility = cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][1].split(";")[0];
 							if (cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][2] && cardbookRepository.cardbookCoreTypes[ABTypeFormat][aType][i][2] == "PG") {
 								myTypes = [prefPossibility, "PG"];
@@ -1221,9 +1230,9 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					var keyResult = document.getElementById(type + '_' + i + '_valueBox').value;
 					if (keyResult != "" || !aRemoveNull) {
 						if ((keyResult.search(/^http/i) >= 0) || (keyResult.search(/^file/i) >= 0)) {
-							result.push({types: keyTypes, value: "", localURI: "", URI: keyResult, extension: ""});
+							result.push({types: keyTypes, value: "", URI: keyResult, extension: ""});
 						} else {
-							result.push({types: keyTypes, value: keyResult, localURI: "", URI: "", extension: ""});
+							result.push({types: keyTypes, value: keyResult, URI: "", extension: ""});
 						}
 					}
 					i++;
@@ -1320,7 +1329,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 				cardbookWindowUtils.loadDynamicKeysTypes(aDirPrefId, aType, i+start, aKeyType[i], aVersion);
 			}
 			if (aKeyType.length == 0) {
-				cardbookWindowUtils.loadDynamicKeysTypes(aDirPrefId, aType, start, {types: [], value: "", localURI: "", URI: "", extension: ""}, aVersion);
+				cardbookWindowUtils.loadDynamicKeysTypes(aDirPrefId, aType, start, {types: [], value: "", URI: "", extension: ""}, aVersion);
 			}
 		},
 
@@ -1981,7 +1990,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					return;
 				}
 				var myNextIndex = 1+ 1*aIndex;
-				cardbookWindowUtils.loadDynamicKeysTypes(aDirPrefId, aType, myNextIndex, {types: [], value: "", localURI: "", URI: "", extension: ""}, aVersion);
+				cardbookWindowUtils.loadDynamicKeysTypes(aDirPrefId, aType, myNextIndex, {types: [], value: "", URI: "", extension: ""}, aVersion);
 			};
 			cardbookElementTools.addEditButton(aHBox, aType, aIndex, 'add', 'add', fireAddButton);
 
@@ -2208,7 +2217,7 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 					cardbookElementTools.addLabel(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, null, {readonly: 'true'});
 				} else {
 					cardbookElementTools.addLabel(aRow, 'pop_' + i + '_Textbox', popLabel, null, {});
-					cardbookElementTools.addTextbox(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, {});
+					cardbookElementTools.addTextbox(aRow, 'popularity_' + i + '_Textbox', mailPopularityValue, {type:"number", min:"0", max:"100000", class:"size5"});
 				}
 				cardbookElementTools.addLabel(aRow, 'email_' + i + '_Textbox', email, null, {hidden: 'true'});
 				cardbookWindowUtils.addMemberOf(aCard.dirPrefId, email, aOrigBox, i, aCard.isAList);

@@ -52,6 +52,10 @@
 								<html:input id="colorInput" type="color" palettename="standard"/>
 							</hbox>
 						</row>
+						<row align="center" id="mailPopRow">
+							<label value="__MSG_popularityLabel__" control="mailPopTextBox"/>
+							<html:input id="mailPopTextBox" oninput="validate();" type="number" min="0" max="100000" class="size5"/>
+						</row>
 					</rows>
 				</grid>
 			</vbox>

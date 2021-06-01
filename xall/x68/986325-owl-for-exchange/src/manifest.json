@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "0.7.7.5",
+  "version": "0.7.8.1",
   "name": "__MSG_extName__",
   "description": "__MSG_extDescription__",
   "developer": {
@@ -23,9 +23,10 @@
   "background": {
     "scripts": [
       "config.js",
-      "owl.js",
       "license.js",
       "errorLog.js",
+      "shared/contacts.js",
+      "shared/misc.js",
       "ews/ews.js",
       "ews/emails.js",
       "ews/contacts.js",

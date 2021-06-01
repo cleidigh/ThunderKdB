@@ -83,7 +83,6 @@ var surfsafeStatsInterval;
 var hostHashTable = [];
 var localizationData;
 var socketClient = null;
-var socketPort = undefined;
 
 function payloadForSignalSpam(payload) {
     let emailPayload;
@@ -282,6 +281,19 @@ function pushSurfSafe() {
     });
 }
 
+let _usingManualPolling = false;
+function backToManualPolling() {
+    void 0;
+    if (_usingManualPolling === true)
+        return; 
+    _usingManualPolling = true;
+    setTimeout(planUpdatePhishingDatabase, PARAM.NOPUSHINTERVAL || 300000);
+    setTimeout(() => {
+        _usingManualPolling = false;
+    }, (PARAM.BACKTOPUSHTIMEOUT || PARAM.NOPUSHINTERVAL || 300000) * 10);
+}
+
+
 function downloadDatabase(callback) {
 
     void 0;
@@ -314,16 +326,6 @@ function downloadDatabase(callback) {
                         recordsArray = JSON.parse(JSONresponse);
                     }
                     else recordsArray = JSONresponse;
-
-                    let socketInfo = recordsArray.pop();
-                    if (!socketInfo.socketPort) {
-                        void 0;
-                        socketPort = 3027;
-                    }
-                    else socketPort = parseInt(socketInfo.socketPort);
-
-                    void 0;
-
                     storeDBRecords(recordsArray);
                     checkHostHashCache.clear();
                     if (typeof callback === 'function')
@@ -336,6 +338,13 @@ function downloadDatabase(callback) {
     });
 }
 
+let nextPhishingDBUpdate = 0;
+function planUpdatePhishingDatabase() {
+    nextPhishingDBUpdate++;
+    if (nextPhishingDBUpdate === 1)
+        updatePhishingDatabase();
+}
+
 function updatePhishingDatabase() {
     let lastTimeStamp;
     lastTimeStamp = getLatestTimeStamp();
@@ -346,43 +355,62 @@ function updatePhishingDatabase() {
 
     if (!lastTimeStamp) {
         void 0;
-        downloadDatabase(updatePhishingDatabase);
+        nextPhishingDBUpdate = 0;
+        downloadDatabase(planUpdatePhishingDatabase);
         return;
     }
 
-    connectToPushProxy();
+    if (backToManualPolling!==true)
+        connectToPushProxy(true);
 
+    let ids = hashLinkById ? Object.keys(hashLinkById): [];
+    if (ids.length > (PARAM.MAXIDS || 5000))
+        ids = ids.slice(ids.length-(PARAM.MAXIDS || 5000));
+    const data = JSON.stringify({"lastTimeStamp": lastTimeStamp, "lastResetTimeStamp": lastResetTimeStamp, "dbsize": hashLinkArray.size, ids: ids, _usingManualPolling: _usingManualPolling});
     verifrom.request.ajax({
         url: PARAM.URL_PROXY_UPDATE,
         contentType: "application/json",
         cache: false,
-        method: 'GET',
-        type: 'GET',
+        method: 'POST',
+        type: 'POST',
         dataType: 'json',
-        data: {"lastTimeStamp": lastTimeStamp, "lastResetTimeStamp": lastResetTimeStamp, "dbsize": hashLinkArray.size},
+        data: data,
         timeout: 60000,
         async: true,
         error: function (request, textStatus, errorThrown) {
             void 0;
-            setTimeout(updatePhishingDatabase, 30000);
+            nextPhishingDBUpdate = 0;
+            switch (request.status) {
+                case 429:
+                    backToManualPolling();
+                    disconnectFromProxy();
+                    break;
+                case 503:
+                    setTimeout(planUpdatePhishingDatabase, PARAM.WaitDBIsBack || 60000);
+                    break;
+                default:
+                    setTimeout(planUpdatePhishingDatabase, PARAM.WaitDBIsBack || 60000);
+                    break;
+            }
         },
         success: function (JSONresponse, textStatus, request) {
             void 0;
             switch (request.status) {
+                case 429:
+                    backToManualPolling();
+                    disconnectFromProxy();
+                    break;
                 case 503:
-                    void 0;
-                    setTimeout(updatePhishingDatabase, 30000);
+                    setTimeout(planUpdatePhishingDatabase, PARAM.WaitDBIsBack || 60000);
                     break;
                 case 204:
-                    void 0;
                     resetDB("204 received from proxy");
                     checkHostHashCache.clear();
                     downloadDatabase(function () {
-                        updatePhishingDatabase()
+                        planUpdatePhishingDatabase()
                     });
                     break;
                 case 200:
-                    void 0;
                     let recordsArray;
 
                     if (typeof JSONresponse !== 'object') {
@@ -390,24 +418,6 @@ function updatePhishingDatabase() {
                         recordsArray = JSON.parse(JSONresponse);
                     }
                     else recordsArray = JSONresponse;
-
-                    let socketInfo = recordsArray.pop();
-                    if (!socketInfo.socketPort) {
-                        void 0;
-                        socketInfo.socketPort = PARAM.SOCKETIO.defaultProxy || extensionConfig.appInfo.defaultSocketioPort || 3041;
-                    }
-                    if (!socketPort) {
-                        socketPort = parseInt(socketInfo.socketPort);
-                        connectToPushProxy();
-                    } else {
-                        if (socketPort !== parseInt(socketInfo.socketPort)) {
-                            void 0;
-                            socketClient.VerifromReconnect = true;
-                            socketPort = parseInt(socketInfo.socketPort);
-                            disconnectFromProxy();
-                        }
-                    }
-                    void 0;
 
                     if (recordsArray.length > 0) {
                         void 0;
@@ -417,109 +427,299 @@ function updatePhishingDatabase() {
                     else void 0;
                     break;
                 default:
+                    setTimeout(planUpdatePhishingDatabase, PARAM.WaitDBIsBack || 60000);
                     break;
             }
+            nextPhishingDBUpdate = 0;
         }
     });
 }
 
-function disconnectFromProxy() {
-    if (socketClient && (socketClient.connected === true || socketClient.disconnected === false)) {
+
+const disconnectListeners=[];
+function disconnectFromProxy(callback) {
+    try {
+        if (socketClient && !socketClient.disconnected) {
+            void 0;
+            if (typeof callback==="function")
+                disconnectListeners.push(callback);
+            socketClient.disconnect();
+        } else {
+            void 0;
+            if (typeof callback==="function")
+                disconnectListeners.push(callback);
+            let disconnectResolver;
+            while (disconnectResolver = disconnectListeners.shift()) {
+                void 0;
+                disconnectResolver();
+            }
+        }
+    } catch (e) {
         void 0;
-        socketClient.disconnect();
+        if (typeof callback==="function")
+            disconnectListeners.push(callback);
+        let disconnectResolver;
+        while (disconnectResolver = disconnectListeners.shift()) {
+            void 0;
+            disconnectResolver();
+        }
     }
 }
 
-function connectToPushProxy() {
-    disconnectFromProxy();
-    try {
-        if (socketClient === null || socketClient === undefined || (socketClient.connected === false || socketClient.disconnected === true)) {
-            if (socketClient && (socketClient.connected === false || socketClient.disconnected === true)) {
-                if (socketClient.VerifromConnecting) {
-                    void 0;
-                    return;
-                }
-                void 0;
-                socketClient.disconnect();
-                socketClient.VerifromConnecting = true;
-                socketClient.connect();
-                return;
-            }
-            else if (!socketClient) {
-                void 0;
-                if (socketPort)
-                    socketClient = io.connect(PARAM.URL_PROXY_PUSH, PARAM.SOCKETIO.OPTIONS);
-                else {
-                    void 0;
-                    return;
-                }
-            }
-
-            if (socketClient.VerifromListening)
-                return;
-
-            socketClient.VerifromListening = true;
-
+let _reconnecting = false;
+const eventHandlers = {
+    reload: {
+        handler: function() {
             void 0;
-
-            socketClient.on('updates', function (JSONresponse) {
-                let recordsArray;
-                void 0;
-                if (typeof JSONresponse !== 'object') {
+            refreshParams().then(err => {
+                setTimeout(() => {
                     void 0;
-                    recordsArray = JSON.parse(JSONresponse);
-                }
-                else recordsArray = JSONresponse;
-                storeDBRecords(recordsArray);
-                checkHostHashCache.clear();
+                    planUpdatePhishingDatabase();
+                },(PARAM.WaitDBIsBack || 30000) + Math.round(Math.random()*30000));
             });
-
-            if ("function"===typeof updateReport)
-                socketClient.on('reportstatus',function (message) {
+        },
+        target: "socket"
+    },
+    updates: {
+        handler: function(JSONresponse) {
+            let recordsArray;
+            void 0;
+            if (typeof JSONresponse !== 'object') {
+                void 0;
+                recordsArray = JSON.parse(JSONresponse);
+            }
+            else recordsArray = JSONresponse;
+            storeDBRecords(recordsArray);
+            checkHostHashCache.clear();
+        },
+        target: "socket"
+    },
+    reportstatus: {
+        active: "function"===typeof updateReport,
+        handler: function(message) {
+            void 0;
+            updateReport(message.UID,message.s,message.t);
+        },
+        target: "socket"
+    },
+    reset: {
+        handler: function(JSONresponse) {
+            void 0;
+            resetDB("Reset received from proxy");
+            checkHostHashCache.clear();
+            setTimeout(() => {
+                downloadDatabase(planUpdatePhishingDatabase);
+            }, (PARAM.WaitDBIsBack || 30000) + Math.round(Math.random()*30000));
+        },
+        target: "socket"
+    },
+    close: {
+        handler: function(JSONresponse) {
+            void 0;
+            disconnectFromProxy(()=>{
+                setTimeout(() => {
                     void 0;
-                    Promise.resolve().then(()=>{updateReport(message.UID,message.s,message.t)});
-                });
-
-            socketClient.on('close', function (JSONresponse) {
-                void 0;
-                disconnectFromProxy();
-                setTimeout(connectToPushProxy, 30000);
+                    planUpdatePhishingDatabase();
+                },(PARAM.WaitDBIsBack || 30000) + Math.round(Math.random()*30000)); 
             });
-
-            socketClient.on('reset', function (JSONresponse) {
-                void 0;
-                resetDB("Reset received from proxy");
-                checkHostHashCache.clear();
-                Promise.resolve().then(()=>{downloadDatabase(updatePhishingDatabase)});
-            });
-
-            socketClient.on('disconnect', function () {
-                socketClient.VerifromConnecting = false;
-                void 0;
-                if (socketClient.VerifromReconnect) {
-                    void 0;
-                    socketClient.VerifromReconnect = false;
+        },
+        target: "socket"
+    },
+    open: {
+        active: true,
+        handler: function() {
+            void 0;
+        },
+        target: "socket"
+    },
+    reconnect_attempt: {
+        active: true,
+        handler: function(nbAttempts) {
+            void 0;
+            try {
+                if (nbAttempts >= (PARAM.SOCKETIO.OPTIONS.reconnectionAttempts || PARAM.MAXPOLLINGATTEMPTS || 10)) {
+                    disconnectFromProxy(()=>{
+                        try {
+                            destroySocketConnection();
+                            if (socketClient.io && typeof socketClient.io.reconnectionAttempts==='function')
+                                socketClient.io.reconnectionAttempts((PARAM.SOCKETIO.OPTIONS.reconnectionAttempts || PARAM.MAXPOLLINGATTEMPTS || 10));
+                        } catch(e) {}
+                        socketClient = null;
+                        backToManualPolling();
+                    });
+                } else _reconnecting = true;
+            } catch(e) {
+                disconnectFromProxy(()=>{
+                    try {
+                        destroySocketConnection();
+                        if (socketClient.io && typeof socketClient.io.reconnectionAttempts==='function')
+                            socketClient.io.reconnectionAttempts((PARAM.SOCKETIO.OPTIONS.reconnectionAttempts || PARAM.MAXPOLLINGATTEMPTS || 10));
+                    } catch(e) {}
                     socketClient = null;
-                    Promise.resolve().then(()=>{connectToPushProxy()});
+                    backToManualPolling();
+                });
+            }
+        },
+        target: "socket.io",
+        removeOnDisconnect: false
+    },
+    connect: {
+        handler: function () {
+            void 0;
+            _reconnecting = false;
+        },
+        target: "socket",
+        removeOnDisconnect: false
+    },
+    disconnect: {
+        handler: function (reason) {
+            void 0;
+            if (socketClient.connected === false) {
+                void 0;
+                setHandlers(false);
+            } else {
+                void 0;
+            }
+            if (PARAM.SOCKETIO.PARAMS && PARAM.SOCKETIO.PARAMS.RECONNECT_ON && PARAM.SOCKETIO.PARAMS.RECONNECT_ON.includes(reason)) {
+                void 0;
+                setTimeout(() => {
+                    void 0;
+                    planUpdatePhishingDatabase();
+                },(PARAM.WaitDBIsBack || 30000) + Math.round(Math.random()*30000));
+            }
+            let disconnectResolver;
+            while (disconnectResolver = disconnectListeners.shift()) {
+                void 0;
+                disconnectResolver();
+            }
+        },
+        target: "socket",
+        removeOnDisconnect: false
+    },
+    reconnect: {
+        handler: function () {
+            void 0;
+            _reconnecting = false;
+            planUpdatePhishingDatabase();
+        },
+        target: "socket.io",
+        removeOnDisconnect: false
+    }
+};
+
+let _initializingHandlers = false;
+function setHandlers(activate = true) {
+    if (_initializingHandlers)
+        return setTimeout(setHandlers, 500, activate);
+    else _initializingHandlers = true;
+    let events = Object.keys(eventHandlers);
+    try {
+        for (let eventName of events) {
+            if (!socketClient)
+                break;
+            const event = eventHandlers[eventName];
+            if (event.active !== false) {
+                let target;
+                switch (event.target) {
+                    case "socket":
+                        target = socketClient;
+                        break;
+                    case "socket.io":
+                        target = socketClient.io;
+                        break;
+                    default:
+                        target = socketClient;
+                        break;
                 }
-            });
-
-            socketClient.on('reconnect', function () {
-                socketClient = this;
-                void 0;
-                Promise.resolve().then(()=>{updatePhishingDatabase()});
-            });
-
-            socketClient.on('connect', function () {
-                socketClient.VerifromConnecting = false;
-                void 0;
-            });
-
+                if (!target)
+                    continue;
+                if (event.removeOnDisconnect !== false && event.listening) {
+                    void 0;
+                    target.removeEventListener(eventName, event.handler);
+                    event.listening=false;
+                }
+                if (activate) {
+                    if (!event.listening) {
+                        event.listening = event.handler;
+                        target.addEventListener(eventName, event.handler);
+                        void 0;
+                    } else void 0;
+                }
+            }
         }
+    } catch(e) {}
+    _initializingHandlers=false;
+}
+
+let _listeningForConnect=false;
+function socketConnected() {
+    _reconnecting = false;
+    void 0;
+    if (socketClient.connected !== true)
+        void 0;
+    if (_usingManualPolling===true) {
+        _listeningForConnect = false;
+        destroySocketConnection();
+    }
+    setHandlers();
+    _listeningForConnect=false;
+}
+
+function listenForConnect() {
+    if (_listeningForConnect)
+        return;
+    else _listeningForConnect=true;
+    socketClient.once("connect",socketConnected);
+}
+
+function destroySocketConnection() {
+    try {
+        if (socketClient) {
+            setHandlers(false);
+            socketClient.destroy();
+            socketClient.close();
+        }
+    } catch(e) {}
+    socketClient = null;
+    _listeningForConnect = false;
+}
+
+let lastConnParams = "";
+function connectToPushProxy(ifNotConnected) { 
+    try {
+        if (!ifNotConnected && socketClient.connected === true) {
+            return disconnectFromProxy(()=>{
+                if (socketClient.connected !== false) {
+                    void 0;
+                    socketClient.connected = false;
+                }
+                connectToPushProxy(ifNotConnected);
+            });
+        }
+        if (_usingManualPolling===true)
+            return; 
+        if (socketClient && PARAM.SOCKETIO && lastConnParams && lastConnParams !== JSON.stringify(PARAM.SOCKETIO)) {
+            void 0;
+            destroySocketConnection();
+        }
+        if (!socketClient) {
+            void 0;
+            socketClient = io.connect(PARAM.URL_PROXY_PUSH, PARAM.SOCKETIO ? PARAM.SOCKETIO.OPTIONS : undefined);
+            listenForConnect();
+            lastConnParams = JSON.stringify(PARAM.SOCKETIO);
+        } else {
+            if (socketClient.connected === false && _reconnecting === false)  {
+                void 0;
+                socketClient.connect();
+                listenForConnect();
+            } else void 0;
+        }
+        void 0;
     } catch (err) {
         void 0;
     }
 }
+
 
 function updateLastDBReset() {
     let timestamp;
@@ -1311,10 +1511,14 @@ function checkUserCredentials(userOKCallback, userNotOKCallback, values) {
 }
 
 function refreshParams() {
-    loadParams().then(()=>{
-        void 0;
-    }).catch((reason)=>{
-        void 0;
+    return new Promise((resolve,reject) => {
+        loadParams().then(()=>{
+            void 0;
+            resolve();
+        }).catch((reason)=>{
+            void 0;
+            resolve(reason);
+        });
     });
 }
 
@@ -1512,7 +1716,13 @@ function contextMenuHandler(info, tab) {
     switch (info.menuItemId) {
         case 'report':
             onSelectedMessagesChangedHandler(tab,info.selectedMessages);
-            browser.clickonbrowseractionbutton.click(browser.runtime.id);
+            browser.clickonbrowseractionbutton.click(browser.runtime.id).then(r => {
+                if (r !== true) {
+                    const m = verifrom.locales.getMessage("critical.addbutton.message");
+                    const t = verifrom.locales.getMessage("critical.addbutton.title");
+                    displayNotification({message:m,title:t});
+                }
+            });
             break;
         case 'reportsListFromMessages':
         case 'reportsList':

@@ -93,20 +93,20 @@ var cardbookIDBMailPop = {
 
 	updateMailPop: async function(aEmail, aCount) {
 		aEmail = aEmail.toLowerCase();
-		aCount = parseInt(aCount);
 
 		if (aCount && cardbookRepository.cardbookMailPopularityIndex[aEmail] && aCount == cardbookRepository.cardbookMailPopularityIndex[aEmail].count) {
 			return;
 		}
 		let mailPop;
-		if (aCount) {
+		if (aCount && aCount != "0") {
+			aCount = parseInt(aCount);
 			if (cardbookRepository.cardbookMailPopularityIndex[aEmail]) {
 				mailPop = {email: aEmail, count: aCount, mailPopId: cardbookRepository.cardbookMailPopularityIndex[aEmail].mailPopId};
 			} else {
 				mailPop = {email: aEmail, count: aCount};
 			}
 			cardbookIDBMailPop.addMailPop(mailPop);
-		} else if (aCount == 0) {
+		} else if (aCount && aCount == "0") {
 			cardbookIDBMailPop.removeMailPop(aEmail);
 		} else {
 			if (cardbookRepository.cardbookMailPopularityIndex[aEmail]) {

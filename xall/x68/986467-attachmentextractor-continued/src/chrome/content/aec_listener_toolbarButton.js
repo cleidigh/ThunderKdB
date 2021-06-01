@@ -8,12 +8,14 @@ var {
   Services
 } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
+/*
 window.addEventListener("load", function(e) {
   aecButtonStatus.startup();
 }, false);
 window.addEventListener("unload", function(e) {
   aecButtonStatus.shutdown();
 }, false);
+*/
 
 var aecButtonStatus = {
 

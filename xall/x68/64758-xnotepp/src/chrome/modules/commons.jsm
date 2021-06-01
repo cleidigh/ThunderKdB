@@ -3,7 +3,7 @@
 let EXPORTED_SYMBOLS = ["Commons"];
 
 var Commons = function() {
-  const _XNOTE_VERSION = "3.1.3";
+  const _XNOTE_VERSION = "3.1.5";//"@@@XNOTE.VERSION@@@";
   
   // CONSTANT - Default tag name and color
   const XNOTE_TAG_NAME = "XNote";
@@ -70,7 +70,7 @@ var Commons = function() {
       return _xnotePrefs;
     },
     set xnotePrefs(xnotePrefs) {
-      console.debug(`New XNote Prefs: ${JSON.stringify(xnotePrefs)}`);
+    //  console.debug(`New XNote Prefs: ${JSON.stringify(xnotePrefs)}`);
       _xnotePrefs = xnotePrefs;
     },
     get useTag() {
@@ -80,7 +80,7 @@ var Commons = function() {
     checkXNoteTag : function() {
       //Check preference for whether tags should be used
       _useTag = _xnotePrefs.usetag;
-      console.debug(`checkXNoteTag: usetag=${_useTag}`);
+ //     console.debug(`checkXNoteTag: usetag=${_useTag}`);
       if(_useTag) {
         // Get the tag service.
         let tagService = Components.classes["@mozilla.org/messenger/tagservice;1"]

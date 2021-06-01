@@ -23,7 +23,6 @@ pref("extensions.attachextract_cont.savepathmru.enabled",true);
 pref("extensions.attachextract_cont.savepathmru.count",5);
 
 pref("extensions.attachextract_cont.suggestfolder.disregardduplicates",true);
-pref("extensions.attachextract_cont.suggestfolder.excludekeywords",""); 
 pref("extensions.attachextract_cont.suggestfolder.maxmatches",10);
 
 /* Filename pattern pane */
@@ -67,8 +66,6 @@ pref("extensions.attachextract_cont.includepatterns","*.jpeg;*.jpg;*.png");
 pref("extensions.attachextract_cont.excludepatterns","*.bat;*.exe;*.eml");
 
 pref("extensions.attachextract_cont.extract.enabled",true);
-pref("extensions.attachextract_cont.setdatetoemail",false);
-pref("extensions.attachextract_cont.extract.minimumsize",0);
 
 pref("extensions.attachextract_cont.returnreceipts.enabled",false);
 pref("extensions.attachextract_cont.returnreceipts.override",false);
@@ -79,8 +76,6 @@ pref("extensions.attachextract_cont.progressdialog.showtext",true);
 pref("extensions.attachextract_cont.extractinlinetoo",false);
 
 pref("extensions.attachextract_cont.reportgen.enabled",false);
-pref("extensions.attachextract_cont.reportgen.cssfile", "");
-pref("extensions.attachextract_cont.reportgen.embedcss", false);
 pref("extensions.attachextract_cont.reportgen.thumbnail", true);
 pref("extensions.attachextract_cont.reportgen.reportname", "aec_report.html");
 pref("extensions.attachextract_cont.reportgen.append", true);
@@ -92,6 +87,3 @@ pref("extensions.attachextract_cont.debugonstart",false);
 pref("extensions.attachextract_cont.nextattachmentdelay",5);
 pref("extensions.attachextract_cont.nextmessagedelay",50);
 pref("extensions.attachextract_cont.dontloadimages",true);
-
-/* hidden pref for hidden and unused option */
-pref("extensions.attachextract_cont.skipidentical",false);

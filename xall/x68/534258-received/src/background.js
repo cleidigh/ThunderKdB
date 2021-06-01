@@ -3,10 +3,15 @@
 "use strict";
 
 function parseReceivedHeader(headerStr, regexp) {
-    const capturedSubstr = headerStr.match(new RegExp(regexp));
-    if (capturedSubstr === null || typeof capturedSubstr[1] === "undefined")
-        return null;
-    return capturedSubstr[1];
+    const captured = headerStr.match(new RegExp(regexp));
+    if (captured === null) return null;
+    captured.shift();
+    // If the capturing group is optional ("* "or "?" quantifier) and didn’t match, its value is set to undefined.
+    const filtered = captured.filter(function (element) {
+        return typeof element !== "undefined";
+    });
+    if (!filtered.length) return null;
+    return filtered;
 }
 
 function parseReceivedHeaders(headers, regexp) {
