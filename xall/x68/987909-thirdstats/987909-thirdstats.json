@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14196/14196754.png?modified=1600788309"
         }
     ],
-    "average_daily_users": 1605,
+    "average_daily_users": 1655,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "https://paypal.me/devmount",
     "created": "2020-09-28T12:23:48Z",
     "current_version": {
-        "id": 2475617,
+        "id": 2475927,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475617",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475927",
         "files": [
             {
-                "id": 1018778,
-                "created": "2021-03-29T21:42:01Z",
-                "hash": "sha256:7042bb4f80fe85b288e7696c99c6c669a3f77cd3ebbf4c4380fa19796ab219d7",
+                "id": 1019087,
+                "created": "2021-05-26T08:10:29Z",
+                "hash": "sha256:8333aaa9f1c6c251a055525951b5c3c5becd2902c3cb91e4788457358e64d966",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 307975,
+                "size": 240573,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018778/thirdstats-1.6.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019087/thirdstats-1.7.0-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "messagesRead",
@@ -78,13 +78,13 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-GB": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>.",
-            "en-US": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>.",
-            "en-CA": "<b>Junk Metrics</b>\nAn addition to the featured numbers section: The number of emails flagged as junk, as well as an average junk score of all emails.\nPlus another contacts bar chart showing the contacts whose emails have been flagged as junk.\n\n<b>Account Comparison Icon Button</b>\nThe account comparison switch is now always visible. It's inactive if only one account is active in add-on options or a single account was selected in stats account filter. In both cases it shows a corresponding tooltip making clear, why this button is inactive. In active state, the tooltip shows what happens if the button is clicked.\n\n<b>Improved Accessibility</b>\nThe 'All Accounts' filter option is now made more aware by always showing it (it's disabled for only one single activated account) and placing a corresponding hint in the accounts option on the options page. The visibility of action buttons on the stats page (reload, export, options, year navigation) is improved by increasing contrast between icon color and background. This provides better accessibility and UX.\n\n<b>Default Values</b>\nNew, less author opinionated default values were set:\n<ul><li>Dark mode: off</li><li>Vertical axis: shown</li><li>Start of week: based on TB locale</li><li>Accounts: all activated</li></ul>\n<b>Improved Documentation and Wording</b>\nBadge links and some markdown issues got fixed. Also the option 'Self Messages' was renamed in 'Messages to Self'.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.6.0\">full release notes with screenshots on GitHub</a>."
+            "en-GB": "<b>Background Gradients for Line and Bar Charts</b>\nCharts now have a background gradient to highlight upper parts of the chart. This applies to line and bar charts (the gradient for the latter is not too strong to maintain the bar starting point).\n\n<b>Data not final Indication</b>\nDashed line style for the last segment of line charts indicating that the last data point isn't final yet. This doesn't apply if the date range filter is set.\n\n<b>Improved Doughnut Charts</b>\nDoughnut charts are now a bit thinner and tooltips now appear directly on the section the mouse is over.\n\n<b>Fix single entry Line Charts</b>\nCharts with one single entry on the x-axis now show a data point instead of nothing\n\n<b>Complete Translations</b>\nThirdStats is now fully available in English, German, French, Galician, Hungarian, Italian, Japanese, Russian and Swedish.\n\n<b>Improvement for Hungarian translation</b>\nUse of separate language keys for different output locations.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.7.0\">full release notes with screenshots on GitHub</a>.",
+            "en-US": "<b>Background Gradients for Line and Bar Charts</b>\nCharts now have a background gradient to highlight upper parts of the chart. This applies to line and bar charts (the gradient for the latter is not too strong to maintain the bar starting point).\n\n<b>Data not final Indication</b>\nDashed line style for the last segment of line charts indicating that the last data point isn't final yet. This doesn't apply if the date range filter is set.\n\n<b>Improved Doughnut Charts</b>\nDoughnut charts are now a bit thinner and tooltips now appear directly on the section the mouse is over.\n\n<b>Fix single entry Line Charts</b>\nCharts with one single entry on the x-axis now show a data point instead of nothing\n\n<b>Complete Translations</b>\nThirdStats is now fully available in English, German, French, Galician, Hungarian, Italian, Japanese, Russian and Swedish.\n\n<b>Improvement for Hungarian translation</b>\nUse of separate language keys for different output locations.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.7.0\">full release notes with screenshots on GitHub</a>.",
+            "en-CA": "<b>Background Gradients for Line and Bar Charts</b>\nCharts now have a background gradient to highlight upper parts of the chart. This applies to line and bar charts (the gradient for the latter is not too strong to maintain the bar starting point).\n\n<b>Data not final Indication</b>\nDashed line style for the last segment of line charts indicating that the last data point isn't final yet. This doesn't apply if the date range filter is set.\n\n<b>Improved Doughnut Charts</b>\nDoughnut charts are now a bit thinner and tooltips now appear directly on the section the mouse is over.\n\n<b>Fix single entry Line Charts</b>\nCharts with one single entry on the x-axis now show a data point instead of nothing\n\n<b>Complete Translations</b>\nThirdStats is now fully available in English, German, French, Galician, Hungarian, Italian, Japanese, Russian and Swedish.\n\n<b>Improvement for Hungarian translation</b>\nUse of separate language keys for different output locations.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.7.0\">full release notes with screenshots on GitHub</a>."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.6.0",
-        "version": "1.6.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.7.0",
+        "version": "1.7.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -115,7 +115,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-03-29T21:45:03Z",
+    "last_updated": "2021-05-26T08:15:03Z",
     "name": {
         "ru": "ThirdStats",
         "fr": "ThirdStats",
@@ -282,10 +282,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.62337,
-        "count": 9,
-        "average": 4.7778,
-        "text_count": 9
+        "bayesian_average": 4.65974,
+        "count": 10,
+        "average": 4.8,
+        "text_count": 10
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/reviews/",
     "requires_payment": false,

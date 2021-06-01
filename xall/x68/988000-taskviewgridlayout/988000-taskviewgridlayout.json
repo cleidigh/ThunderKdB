@@ -6,10 +6,10 @@
             "name": "Sungho Hwang",
             "url": "https://addons.thunderbird.net/en-US/thunderbird/user/shh0884/",
             "username": "shh0884",
-            "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1621780144"
         }
     ],
-    "average_daily_users": 9,
+    "average_daily_users": 7,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/paypalme/shh0884",
     "created": "2021-01-12T07:22:11Z",
     "current_version": {
-        "id": 2475760,
+        "id": 2475838,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewgridlayout/versions/2475760",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/taskviewgridlayout/versions/2475838",
         "files": [
             {
-                "id": 1018920,
-                "created": "2021-04-20T10:48:25Z",
-                "hash": "sha256:fd1afce49be2b89e2be8e08cb4eda1b4950b299f720db3979bd67e4cb54e34dd",
+                "id": 1018998,
+                "created": "2021-04-30T11:05:02Z",
+                "hash": "sha256:9d6759f79b2facf78f7e5d43c7513c9e40baa64c580c965edea8bc27e695666e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 6867,
+                "size": 6843,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018920/taskviewgridlayout-4.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018998/taskviewgridlayout-4.3-tb.xpi?src=",
                 "permissions": [
                     "theme"
                 ]
@@ -52,11 +52,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Version 4.1.\n\nGrid template rows of vbox in calendar task box for vertical layout were set from typo errors to \"100%\". \n\nApril 20th 2021.\n\nFrom Sungho Hwang."
+            "en-US": "Version 4.3\n\nErrors were found in theme. So, objects of Box background and text in Theme APIs were changed from box to unifinder search box and task addition box.\n\nApril 30th 2021.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewgridlayout/versions/4.1",
-        "version": "4.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/taskviewgridlayout/versions/4.3",
+        "version": "4.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -68,7 +68,10 @@
     "guid": "TaskviewGridLayout@Sungho.Hwang",
     "has_eula": false,
     "has_privacy_policy": false,
-    "homepage": null,
+    "homepage": {
+        "en-US": "https://www.xxhwangxx.net",
+        "ko": ""
+    },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/988/988000-64.png?modified=a3783cb7",
     "icons": {
         "32": "https://addons.thunderbird.net/user-media/addon_icons/988/988000-32.png?modified=a3783cb7",
@@ -78,7 +81,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-04-20T10:50:03Z",
+    "last_updated": "2021-04-30T11:10:03Z",
     "name": {
         "en-US": "TaskviewGridLayout",
         "ko": "작업보기 격자배치"
@@ -118,9 +121,11 @@
         "ko": "작업보기 배치에 두 버전이 있습니다.\n하나는 작업보기 격자배치이고,\n다른 하나는 기존의 작업보기 유동배치입니다.\n\n김수환 추기경님을 기리며.\n\n개발자 황성호."
     },
     "support_email": {
-        "en-US": "shh0884@outlook.kr"
+        "en-US": "sungho@xxhwangxx.net"
     },
-    "support_url": null,
+    "support_url": {
+        "en-US": "https://www.xxhwangxx.net"
+    },
     "tags": [
         "dynamic theme",
         "firefox57"

@@ -6,7 +6,7 @@
             "name": "Sungho Hwang",
             "url": "https://addons.thunderbird.net/en-US/thunderbird/user/shh0884/",
             "username": "shh0884",
-            "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1599199734"
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/13/13513/13513084.png?modified=1621780144"
         }
     ],
     "average_daily_users": 3,
@@ -18,26 +18,26 @@
     "contributions_url": "https://www.paypal.com/paypalme/shh0884",
     "created": "2021-03-30T11:55:19Z",
     "current_version": {
-        "id": 2475636,
+        "id": 2475792,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirmconversionsatselecting/versions/2475636",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirmconversionsatselecting/versions/2475792",
         "files": [
             {
-                "id": 1018797,
-                "created": "2021-04-01T09:11:01Z",
-                "hash": "sha256:0f6050b29891f9709fd9651dffdba88ee994c8ab8f38c51c68026aefd711b537",
+                "id": 1018952,
+                "created": "2021-04-23T11:42:35Z",
+                "hash": "sha256:74e8d20cd726b3b540d9321f9ca7e071164c4859c25ff4909ed11c8329cf833e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 16402,
+                "size": 16413,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018797/confirmconversionsatselecting-1.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018952/confirmconversionsatselecting-1.9-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -50,11 +50,11 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Version 1.6.\n\nI fixed browserAction popup window to open it automatically using typeof and changing thread tree name uniquely.\n\nApril 1st 2021.\n\nFrom Sungho Hwang."
+            "en-US": "Version 1.9\n\nThis version is to open browserAction popup window automatically.\nI added async function at click event listener of  thread tree last child to await recognition of thread tree. \n\nApril 23rd 2021.\n\nFrom Sungho Hwang."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirmconversionsatselecting/versions/1.6",
-        "version": "1.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirmconversionsatselecting/versions/1.9",
+        "version": "1.9"
     },
     "default_locale": "en-US",
     "description": {
@@ -66,7 +66,10 @@
     "guid": "ConfirmConversionsAtSelecting@Sungho.Hwang",
     "has_eula": false,
     "has_privacy_policy": false,
-    "homepage": null,
+    "homepage": {
+        "en-US": "https://www.xxhwangxx.net",
+        "ko": ""
+    },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/988/988086-64.png?modified=23b7903e",
     "icons": {
         "32": "https://addons.thunderbird.net/user-media/addon_icons/988/988086-32.png?modified=23b7903e",
@@ -76,7 +79,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-04-01T12:57:16Z",
+    "last_updated": "2021-04-26T16:37:34Z",
     "name": {
         "en-US": "ConfirmConversionsAtSelecting",
         "ko": "이메일 선택시 행사와 작업으로"
@@ -116,9 +119,11 @@
         "ko": "이메일 선택시 행사와 작업으로 변환하세요.\n이메일 선택시 browserAction 팝업 윈도우가 자동으로 열리지 않으면,\nAdd-ons Manager에서 이 add-on의 on/off 버튼을 껐다가 켜주세요.^^\n\n하느님께 영광을!"
     },
     "support_email": {
-        "en-US": "shh0884@outlook.kr"
+        "en-US": "sungho@xxhwangxx.net"
     },
-    "support_url": null,
+    "support_url": {
+        "en-US": "https://www.xxhwangxx.net"
+    },
     "tags": [
         "firefox57"
     ],

@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12956/12956744.png?modified=1491937407"
         }
     ],
-    "average_daily_users": 79,
+    "average_daily_users": 95,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,30 +18,52 @@
     "contributions_url": null,
     "created": "2016-05-30T09:05:18Z",
     "current_version": {
-        "id": 2474014,
+        "id": 2475924,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "60.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/torpedo-phishing-detection/versions/2474014",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/torpedo-phishing-detection/versions/2475924",
         "files": [
             {
-                "id": 1017176,
-                "created": "2020-07-29T16:09:48Z",
-                "hash": "sha256:dd0cbc43d06eca771374b51e88099f46a9acac21eaa6eeb9b5d138e05d1c1e9f",
-                "is_restart_required": true,
+                "id": 1019084,
+                "created": "2021-05-25T12:14:46Z",
+                "hash": "sha256:45cbab8248b30cabda3dbc5b095fc9be16244f6491ed2387a82bb725d19743be",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 634048,
+                "size": 277996,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017176/torpedo_tooltip_powered_phishing_email_detection-2.4.3-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019084/torpedo_tooltip_powered_phishing_email_detection-3.0.1-tb.xpi?src=",
+                "permissions": [
+                    "<all_urls>",
+                    "tabs",
+                    "storage",
+                    "messagesRead",
+                    "messagesModify",
+                    "compose",
+                    "https://mg.mail.yahoo.com/*",
+                    "https://mail.yahoo.com/*",
+                    "https://email.t-online.de/*",
+                    "https://outlook.live.com/*",
+                    "https://mail.aol.com/*",
+                    "https://navigator.web.de/*",
+                    "https://bap.navigator.web.de/*",
+                    "https://3c-bap.web.de/*",
+                    "https://3c.web.de/*",
+                    "https://bap.navigator.gmx.net/*",
+                    "https://navigator.gmx.net/*",
+                    "https://3c.gmx.net/*",
+                    "https://3c-bap.gmx.net/*",
+                    "https://mail.google.com/*",
+                    "https://owa.kit.edu/*"
+                ]
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 6,
             "name": {
@@ -72,8 +94,8 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/torpedo-phishing-detection/versions/2.4.3",
-        "version": "2.4.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/torpedo-phishing-detection/versions/3.0.1",
+        "version": "3.0.1"
     },
     "default_locale": "de",
     "description": {
@@ -98,7 +120,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-08-11T15:46:02Z",
+    "last_updated": "2021-05-25T12:15:03Z",
     "name": {
         "en-GB": "TORPEDO - TOoltip-poweRed Phishing Email DetectiOn",
         "de": "TORPEDO - TOoltip-poweRed Phishing Email DetectiOn"
@@ -163,10 +185,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.33659,
-        "count": 8,
-        "average": 4.5,
-        "text_count": 8
+        "bayesian_average": 4.40881,
+        "count": 9,
+        "average": 4.5556,
+        "text_count": 9
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/torpedo-phishing-detection/reviews/",
     "requires_payment": false,
@@ -196,12 +218,10 @@
     "weekly_downloads": 53,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
-            "comp60pv": true,
-            "comp60pv_date": "2018-04-28T16:54:17Z"
+            "comp60": true
         }
     }
 }

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 73,
+    "average_daily_users": 81,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2014-08-01T03:04:04Z",
     "current_version": {
-        "id": 2475757,
+        "id": 2475902,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/received/versions/2475757",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/received/versions/2475902",
         "files": [
             {
-                "id": 1018917,
-                "created": "2021-04-19T13:37:21Z",
-                "hash": "sha256:3a26a228540d521f77c2f2a61b98d104a1d548ca6ec4f1480adb0aff2195a3a0",
+                "id": 1019062,
+                "created": "2021-05-18T11:09:44Z",
+                "hash": "sha256:d6c676743304ffd4e9aff2d49f2467becb8b4865ae0570cb9c3ab458750c9fd2",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7681,
+                "size": 7871,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018917/received-2.1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019062/received-2.2.0-tb.xpi?src=",
                 "permissions": [
                     "storage",
                     "messagesRead",
@@ -77,15 +77,15 @@
             "url": "http://www.opensource.org/licenses/bsd-license.php"
         },
         "release_notes": {
-            "en-US": "- Hide header until its value is set"
+            "en-US": "+ Add support for multiple capturing groups\n\n*Updating*\nStarting from version 2.2.0 the add-on displays header parts that matches all capturing groups of the regular expression. Previously it displayed only the first capturing group match.\nUsers may need to update regular expressions replacing 2nd+ capturing groups with non-capturing groups `(:?…)`."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/received/versions/2.1.1",
-        "version": "2.1.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/received/versions/2.2.0",
+        "version": "2.2.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This add-on displays a \"Received\" message header part that matches the first capturing group of a regular expression.\n\nThe add-on returns separate matches for each \"Received\" header.\n\nThe add-on displays all \"Received\" headers if \"<strong>(.*)</strong>\" regular expression is used. To display specific part of the header change regexp in the add-on's options according to you needs.\n\nFor instance, to display the host where email came from the regular expression should match the first \"Received\" header added by recipient's smtp server, something like\n\"<strong>^from (.+?) by mx\\.example\\.com </strong>\"."
+        "en-US": "This add-on displays concatenated \"Received\" message header parts that match capturing groups of a regular expression.\n\nThe add-on returns separate matches for each \"Received\" header.\n\nThe add-on displays all \"Received\" headers if \"<strong>(.*)</strong>\" regular expression is used. To display specific parts of the header change regexp in the add-on's options according to you needs.\n\nFor instance, to display the host where email came from the regular expression should match the first \"Received\" header added by recipient's SMTP server, something like\n\"<strong>^from (.+?) by mx\\.example\\.com </strong>\"."
     },
     "developer_comments": {
         "en-US": "=====================================================\n Please visit issues page before posting any support-related issues here!\n <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/290b91eadaa9d84d9f899c373d431ed1b408f11a1402d2ce15fed62f013e1f8e/https%3A//github.com/moisseev/received/issues\">https://github.com/moisseev/received/issues</a>\n====================================================="
@@ -106,7 +106,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-04-19T14:09:21Z",
+    "last_updated": "2021-05-18T14:06:03Z",
     "name": {
         "en-US": "Received"
     },
@@ -128,10 +128,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 3.34552,
-        "count": 2,
+        "bayesian_average": 4.54495,
+        "count": 3,
         "average": 5,
-        "text_count": 2
+        "text_count": 3
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/received/reviews/",
     "requires_payment": false,

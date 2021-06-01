@@ -1,0 +1,144 @@
+{
+    "id": 983832,
+    "authors": [
+        {
+            "id": 12196373,
+            "name": "Rayquaza01",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/R01/",
+            "username": "R01",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/12/12196/12196373.png?modified=1507773684"
+        }
+    ],
+    "average_daily_users": 11,
+    "categories": {
+        "thunderbird": [
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2018-06-26T20:19:15Z",
+    "current_version": {
+        "id": 2475802,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/changelogger/versions/2475802",
+        "files": [
+            {
+                "id": 1018962,
+                "created": "2021-04-24T17:08:32Z",
+                "hash": "sha256:a4937b22a1042d086c5e1c9306c37bc6ac3f68e60499b29da84b075ac0db9357",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 21187,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018962/changelogger-1.1.1-tb.xpi?src=",
+                "permissions": [
+                    "management",
+                    "storage",
+                    "notifications",
+                    "https://addons.thunderbird.net/api/v4/addons/addon/*"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 22,
+            "name": {
+                "el": "Άδεια MIT/X11",
+                "vi": "Giấy phép MIT/X11",
+                "ca": "Llicència MIT/X11",
+                "it": "Licenza MIT/X11",
+                "cs": "MIT/X11 licence",
+                "eu": "MIT/X11 Lizentzia",
+                "sv-SE": "MIT/X11-licens",
+                "id": "Lisensi MIT/X11",
+                "es": "Licencia MIT/X11",
+                "ru": "Лицензия MIT/X11",
+                "nl": "MIT/X11-licentie",
+                "en-US": "MIT/X11 License",
+                "fr": "Licence MIT/X11",
+                "bg": "MIT/X11 Лиценз",
+                "de": "MIT/X11-Lizenz",
+                "da": "MIT/X11-licens",
+                "fa": "مجوز MIT/X11",
+                "hu": "MIT/X11 licenc",
+                "pt-PT": "Licença MIT/X11",
+                "sr": "MIT/X11 лиценца",
+                "sq": "Leje MIT/X11",
+                "ga-IE": "Ceadúnas MIT/X11",
+                "sk": "Licencia MIT/X11",
+                "zh-CN": "MIT/X11 许可协议"
+            },
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+        },
+        "release_notes": {
+            "en-US": "v1.1.1 Thunderbird Changes\n * This is the same as 1.1.1 for Firefox, but with minor changes to support Thunderbird (<a rel=\"nofollow\" href=\"https://github.com/Rayquaza01/changelogger/issues/14\">#14</a>)\n * <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a> is replaced with <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a>\n * Sync support is removed from Thunderbird version"
+        },
+        "reviewed": "2021-04-24T17:20:03Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/changelogger/versions/1.1.1",
+        "version": "1.1.1"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "<b>changelogger</b>\n\nA Firefox extension that gets changelogs for other Firefox extensions.\n\n<a rel=\"nofollow\" href=\"https://github.com/Rayquaza01/changelogger\">Changelogger on Github</a>\n\n<b>How to use:</b>\n\n<ol><li>Install Changelogger.</li><li>Wait for extensions to update or install new extensions.</li><li>When an extension updates, Changelogger will fetch its changelog and place it in the popup.</li></ol>\n<b>Options:</b>\n\n<ul><li>Badge (True or False) - Should the icon badge be shown when an extension is updated?</li><li>Notification (True or False) - whether to create a notification when an extension updates.</li><li>Max (number) - Max number of changelogs to store at once.</li><li>Ignore updates without changelogs (True or False) - Should updates with no changelogs be ignored?</li></ul>\nThe colorscheme will be automatically set (light or dark) based on your operating system's colorscheme setting.\n\n<b>Permissions:</b>\n\n<ul><li>management - required to detect when any extension updates</li><li>storage - required to save changelogs</li><li>notifications - required to notify user when any extension updates</li><li><a rel=\"nofollow\" href=\"https://addons.thunderbird.net/api/v4/addons/addon/*\">https://addons.thunderbird.net/api/v4/addons/addon/*</a> - required to fetch changelog from <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a> API</li></ul>\n<b>What counts as an update?</b>\n\nChangelogger triggers when an extension is installed or updated. It then checks if the installed version is the latest version on <a rel=\"nofollow\" href=\"http://addons.mozilla.org\">addons.mozilla.org</a>.\n * If it is, it tries to fetch the changelog from AMO.\n * If it isn't (or if it's a self distributed addon that's not available on AMO), it does not look for a changelog.\nThis way, you can manually install older or development versions of extensions without triggering Changelogger.\n\nChangelogger looks for changelogs in your browser's locale, and falls back to the default locale for the extension.\n\n<b>\"No Changelog found for this version\"</b>\n\nUpdates will be logged by Changelogger even if there was no changelog included with the update. You can change this by enabling \"Ignore Updates Without Changelogs\" in the options.\n\n<b>Acknowledgements:</b>\n\n<ul><li>Icons from <a rel=\"nofollow\" href=\"https://materialdesignicons.com/\">Material Design Icons</a> (<a rel=\"nofollow\" href=\"http://scripts.sil.org/OFL\">OFL 1.1</a>)</li><li>Uses Mozilla's <a rel=\"nofollow\" href=\"https://addons-server.readthedocs.io/en/latest/topics/api/v4_frozen/addons.html\">Addons Server API</a></li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/changelogger/edit",
+    "guid": "changelogger@r01",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/983/983832-64.png?modified=7071dd79",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/983/983832-32.png?modified=7071dd79",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/983/983832-64.png?modified=7071dd79"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2021-04-24T17:20:03Z",
+    "name": {
+        "en-US": "Changelogger"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/changelogger/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/983832",
+    "slug": "changelogger",
+    "status": "public",
+    "summary": {
+        "en-US": "Gets changelogs for updated addons"
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/Rayquaza01/changelogger/issues"
+    },
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/changelogger/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp60": true
+        }
+    }
+}

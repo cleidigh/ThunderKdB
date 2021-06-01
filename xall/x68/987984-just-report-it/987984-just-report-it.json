@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 145,
+    "average_daily_users": 171,
     "categories": {
         "thunderbird": [
             "privacy-and-security"
@@ -18,31 +18,32 @@
     "contributions_url": "",
     "created": "2020-12-17T21:52:41Z",
     "current_version": {
-        "id": 2475318,
+        "id": 2475857,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/just-report-it/versions/2475318",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/just-report-it/versions/2475857",
         "files": [
             {
-                "id": 1018479,
-                "created": "2021-02-08T20:47:27Z",
-                "hash": "sha256:0bb0229f9ae4eb693aa9b37cd977c468894b34d532f2991d8ae74630788e6a10",
+                "id": 1019017,
+                "created": "2021-05-07T02:13:17Z",
+                "hash": "sha256:3919d3fedf166c1d7e869e1dcd8482f10e3a30b15d5a48ae89cf471fb7b92d1d",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 101429,
+                "size": 102168,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018479/just_report_it-1.1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019017/just_report_it-1.2.1-tb.xpi?src=",
                 "permissions": [
                     "messagesMove",
                     "messagesRead",
                     "accountsRead",
-                    "storage"
+                    "storage",
+                    "menus"
                 ]
             }
         ],
@@ -77,19 +78,21 @@
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/just-report-it/versions/1.1.1",
-        "version": "1.1.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/just-report-it/versions/1.2.1",
+        "version": "1.2.1"
     },
     "default_locale": "en-CA",
     "description": {
-        "en-CA": "If you face any issues while using the add-on, or simply need help setting it up, please feel free contact us through our support email."
+        "en-CA": "Just Report It aims to make it quick and easy to report one or multiple emails to the registrar or spam cop!\n\n<b>For issues</b>\nPlease contact us through our support email. Alternatively, you may open an issue on our GitHub page: <a rel=\"nofollow\" href=\"https://github.com/justreportit/thunderbird/issues\">https://github.com/justreportit/thunderbird/issues</a>"
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/just-report-it/edit",
     "guid": "admin@justreport.it",
     "has_eula": false,
     "has_privacy_policy": false,
-    "homepage": null,
+    "homepage": {
+        "en-CA": "https://justreport.it"
+    },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987984-64.png?modified=206a8bf9",
     "icons": {
         "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987984-32.png?modified=206a8bf9",
@@ -99,7 +102,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-02-08T20:50:03Z",
+    "last_updated": "2021-05-07T02:15:03Z",
     "name": {
         "en-CA": "Just Report It"
     },
@@ -111,26 +114,40 @@
                 558,
                 210
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206404.png?modified=1612816119",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206404.png?modified=1619396661",
             "thumbnail_size": [
                 320,
                 120
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206404.png?modified=1612816119"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206404.png?modified=1619396661"
         },
         {
-            "id": 206421,
+            "id": 206528,
             "caption": null,
             "image_size": [
-                968,
-                733
+                308,
+                491
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206421.png?modified=1612816119",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206528.png?modified=1619396661",
             "thumbnail_size": [
-                264,
+                125,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206421.png?modified=1612816119"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206528.png?modified=1619396661"
+        },
+        {
+            "id": 206527,
+            "caption": null,
+            "image_size": [
+                985,
+                778
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206527.png?modified=1619396661",
+            "thumbnail_size": [
+                253,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206527.png?modified=1619396661"
         },
         {
             "id": 206422,
@@ -139,12 +156,12 @@
                 978,
                 397
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206422.png?modified=1612816119",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206422.png?modified=1619396661",
             "thumbnail_size": [
                 320,
                 130
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206422.png?modified=1612816119"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206422.png?modified=1619396661"
         },
         {
             "id": 206423,
@@ -153,12 +170,12 @@
                 969,
                 668
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206423.png?modified=1612816119",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206423.png?modified=1619396661",
             "thumbnail_size": [
                 290,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206423.png?modified=1612816119"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206423.png?modified=1619396661"
         },
         {
             "id": 206425,
@@ -167,12 +184,12 @@
                 980,
                 486
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206425.png?modified=1612816119",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206425.png?modified=1619396661",
             "thumbnail_size": [
                 320,
                 159
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206425.png?modified=1612816119"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206425.png?modified=1619396661"
         },
         {
             "id": 206431,
@@ -181,15 +198,15 @@
                 981,
                 569
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206431.png?modified=1612816124",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206431.png?modified=1619396661",
             "thumbnail_size": [
                 320,
                 186
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206431.png?modified=1612816124"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206431.png?modified=1619396661"
         }
     ],
-    "public_stats": false,
+    "public_stats": true,
     "ratings": {
         "bayesian_average": 4.41917,
         "count": 4,
@@ -208,7 +225,7 @@
         "en-CA": "support@justreport.it"
     },
     "support_url": {
-        "en-CA": "https://justreport.it"
+        "en-CA": "https://github.com/justreportit/thunderbird/issues"
     },
     "tags": [
         "firefox57",

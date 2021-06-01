@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 7966,
+    "average_daily_users": 8057,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2019-11-02T15:38:43Z",
     "current_version": {
-        "id": 2475758,
+        "id": 2475926,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "74.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2475758",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/versions/2475926",
         "files": [
             {
-                "id": 1018918,
-                "created": "2021-04-19T16:32:37Z",
-                "hash": "sha256:489dd8221b14bebb983538e788dba004de82aef208ae7cb4b7b7ec9482a0145b",
+                "id": 1019086,
+                "created": "2021-05-25T16:06:50Z",
+                "hash": "sha256:03fb5c4252ba6c455ff5c520b6e0ca24a050ae38e8d85ef3482c9e81b751da5c",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4480372,
+                "size": 4503125,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018918/display_mail_user_agent_t-2.1.58-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019086/display_mail_user_agent_t-2.1.64-tb.xpi?src=",
                 "permissions": [
                     "messagesRead",
                     "storage",
@@ -76,18 +76,29 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Added user-agent string\n\nI plan to change the icon display position to the message pane in the near future.",
-            "ja": "User Agent Stringの追加\n\n近いうちにアイコンの表示位置をメッセージペインに変更する予定です。"
+            "en-US": "Some more icon(2151 now)\n\nI plan to change the icon display position to the message pane in the near future.",
+            "ja": "アイコンの追加(全2151個)\n\n近いうちにアイコンの表示位置をメッセージペインに変更する予定です。"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/2.1.58",
-        "version": "2.1.58"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/display-mail-user-agent-t/versions/2.1.64",
+        "version": "2.1.64"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This addon is fork of Display Mail User Agent(DispMUA).\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.html\">http://www.juergen-ernst.de/addons/dispmua.html</a>\n\nSorry, feedback with no icon image and no site URL will be registered as no icon.\n\nSupport for Thunderbird 68 has ended.\n\nThere is no explanation from the Thunderbird Team, but in order to realize \"Display the icon as an image.\" for Thunderbird 78, I had to use WebExtensions Experiments that I do not want to use, which caused \"Have full, unrestricted access to Thunderbird, and your computer\", but only \"Display the icon as an image.\" is achieved using WebExtensions Experiments.\nThere are four permissions to use as Thunderbird Web Extension: \"messagesRead\", \"storage\", \"accountsRead\", \"downloads\".\n\nFrequently Asked Questions\nQ: I don't see the icon. The character string such as Message-ID or DKIM-Signature is displayed.\nA: This happens if the email does not have an X-Mailer or User-Agent header. Since Display Mail User Agent T identifies the MUA based on X-Mailer or User-Agent in principle, it cannot handle emails that do not have these email headers. Display the message source (☰ → View → Message Source or Ctrl + U) and check it.\n\nI plan to change the icon display position to the message pane in the near future. Please refer to the screenshot.",
-        "ja": "このアドオンはDisplay Mail User Agent(DispMUA)のフォークです。\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.htm\">http://www.juergen-ernst.de/addons/dispmua.htm</a>\n\nThunderbird 68向けの対応は終了しました。\n\nThunderbird Teamからは何の説明もありませんがThunderbird 78向けに「アイコンを画像として表示」を実現するためには私は使いたくないWebExtensions Experimentsを使わざるを得ず、それが原因で「Thunderbirdとコンピューターへの完全に無制限なアクセス」を要求されますが、WebExtensions Experimentsを使用して実現しているのは「アイコンを画像として表示」するのみです。\nThunderbird WebExtensionとして使用する権限は\"messagesRead\", \"storage\", \"accountsRead\", \"downloads\"の4つです。\n\n近日中にアイコン表示位置をメッセージペインへ変更する予定です。スクリーンショットをご参考下さい。",
-        "hu": ""
+        "fr": "",
+        "de": "This addon is fork of Display Mail User Agent(DispMUA).\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.html\">http://www.juergen-ernst.de/addons/dispmua.html</a>\n\nSorry, feedback with no icon image and no site URL will be registered as no icon.\n\nSupport for Thunderbird 68 has ended.\n\nThere is no explanation from the Thunderbird Team, but in order to realize \"Display the icon as an image.\" for Thunderbird 78, I had to use WebExtensions Experiments that I do not want to use, which caused \"Have full, unrestricted access to Thunderbird, and your computer\", but only \"Display the icon as an image.\" is achieved using WebExtensions Experiments.\nThere are four permissions to use as Thunderbird Web Extension: \"messagesRead\", \"storage\", \"accountsRead\", \"downloads\".\n\nFrequently Asked Questions\nQ: I don't see the icon. The character string such as Message-ID or DKIM-Signature is displayed.\nA: This happens if the email does not have an X-Mailer or User-Agent header. Since Display Mail User Agent T identifies the MUA based on X-Mailer or User-Agent in principle, it cannot handle emails that do not have these email headers. Display the message source (☰ → View → Message Source or Ctrl + U) and check it.\n\nI plan to change the icon display position to the message pane in the near future. Please refer to the screenshot.\n\nYou can also send an Amazon gift card to dispmua@outlook.com.\n<a rel=\"nofollow\" href=\"https://www.amazon.co.jp/dp/B004N3APGO/?language=en\">https://www.amazon.co.jp/dp/B004N3APGO/?language=en</a>",
+        "nl": "",
+        "pt-PT": "",
+        "zh-TW": "",
+        "en-US": "This addon is fork of Display Mail User Agent(DispMUA).\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.html\">http://www.juergen-ernst.de/addons/dispmua.html</a>\n\nSorry, feedback with no icon image and no site URL will be registered as no icon.\n\nSupport for Thunderbird 68 has ended.\n\nThere is no explanation from the Thunderbird Team, but in order to realize \"Display the icon as an image.\" for Thunderbird 78, I had to use WebExtensions Experiments that I do not want to use, which caused \"Have full, unrestricted access to Thunderbird, and your computer\", but only \"Display the icon as an image.\" is achieved using WebExtensions Experiments.\nThere are four permissions to use as Thunderbird Web Extension: \"messagesRead\", \"storage\", \"accountsRead\", \"downloads\".\n\nFrequently Asked Questions\nQ: I don't see the icon. The character string such as Message-ID or DKIM-Signature is displayed.\nA: This happens if the email does not have an X-Mailer or User-Agent header. Since Display Mail User Agent T identifies the MUA based on X-Mailer or User-Agent in principle, it cannot handle emails that do not have these email headers. Display the message source (☰ → View → Message Source or Ctrl + U) and check it.\n\nI plan to change the icon display position to the message pane in the near future. Please refer to the screenshot.\n\nYou can also send an Amazon gift card to dispmua@outlook.com.\n<a title=\"Amazon Gift Cards (E-mail type) \" rel=\"nofollow\" href=\"https://www.amazon.co.jp/dp/B004N3APGO/?language=en\">Amazon Gift Cards (E-mail type) </a> <a rel=\"nofollow\" href=\"https://www.amazon.co.jp/dp/B004N3APGO/?language=en\">https://www.amazon.co.jp/dp/B004N3APGO/?language=en</a>",
+        "tr": "",
+        "it": "",
+        "hu": "",
+        "zh-CN": "",
+        "pt-BR": "",
+        "sv-SE": "",
+        "ja": "このアドオンはDisplay Mail User Agent(DispMUA)のフォークです。\n<a rel=\"nofollow\" href=\"https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/\">https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent/</a>\n<a rel=\"nofollow\" href=\"http://www.juergen-ernst.de/addons/dispmua.htm\">http://www.juergen-ernst.de/addons/dispmua.htm</a>\n\nThunderbird 68向けの対応は終了しました。\n\nThunderbird Teamからは何の説明もありませんがThunderbird 78向けに「アイコンを画像として表示」を実現するためには私は使いたくないWebExtensions Experimentsを使わざるを得ず、それが原因で「Thunderbirdとコンピューターへの完全に無制限なアクセス」を要求されますが、WebExtensions Experimentsを使用して実現しているのは「アイコンを画像として表示」するのみです。\nThunderbird WebExtensionとして使用する権限は\"messagesRead\", \"storage\", \"accountsRead\", \"downloads\"の4つです。\n\n近日中にアイコン表示位置をメッセージペインへ変更する予定です。スクリーンショットをご参考下さい。\n\nご寄付頂くのもやぶさかではありません。\n<a title=\"Amazonギフト券(Eメールタイプ) \" rel=\"nofollow\" href=\"https://www.amazon.co.jp/dp/B004N3APGO/\">Amazonギフト券(Eメールタイプ) </a> <a rel=\"nofollow\" href=\"https://www.amazon.co.jp/dp/B004N3APGO/\">https://www.amazon.co.jp/dp/B004N3APGO/</a>\nEメールアドレス: dispmua@outlook.com",
+        "pl": ""
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/display-mail-user-agent-t/edit",
@@ -95,20 +106,20 @@
     "has_eula": false,
     "has_privacy_policy": false,
     "homepage": {
-        "fr": "http://www.juergen-ernst.de/addons/dispmua.html",
-        "de": "http://www.juergen-ernst.de/addons/dispmua.html",
-        "nl": "http://www.juergen-ernst.de/addons/dispmua.html",
-        "pt-PT": "http://www.juergen-ernst.de/addons/dispmua.html",
-        "zh-TW": "http://www.juergen-ernst.de/addons/dispmua.html",
+        "fr": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
+        "de": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
+        "nl": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
+        "pt-PT": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
+        "zh-TW": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
         "en-US": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
-        "tr": "http://www.juergen-ernst.de/addons/dispmua.html",
-        "it": "http://www.juergen-ernst.de/addons/dispmua.html",
+        "tr": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
+        "it": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
         "hu": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
-        "zh-CN": "http://www.juergen-ernst.de/addons/dispmua.html",
-        "pt-BR": "http://www.juergen-ernst.de/addons/dispmua.html",
-        "sv-SE": "http://www.juergen-ernst.de/addons/dispmua.html",
+        "zh-CN": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
+        "pt-BR": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
+        "sv-SE": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/",
         "ja": "https://addons.thunderbird.net/ja/thunderbird/addon/display-mail-user-agent-t/",
-        "pl": "http://www.juergen-ernst.de/addons/dispmua.html"
+        "pl": "https://addons.thunderbird.net/thunderbird/addon/display-mail-user-agent-t/"
     },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987719-64.png?modified=d1bef206",
     "icons": {
@@ -119,7 +130,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": false,
-    "last_updated": "2021-04-21T20:48:27Z",
+    "last_updated": "2021-05-26T11:35:36Z",
     "name": {
         "fr": "Display Mail User Agent T",
         "de": "Display Mail User Agent T",

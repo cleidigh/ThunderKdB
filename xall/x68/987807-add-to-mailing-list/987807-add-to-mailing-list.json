@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 483,
+    "average_daily_users": 484,
     "categories": {
         "thunderbird": [
             "contacts"
@@ -18,30 +18,31 @@
     "contributions_url": "",
     "created": "2020-04-14T15:30:42Z",
     "current_version": {
-        "id": 2473611,
+        "id": 2475905,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "60.0"
+                "min": "71.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/add-to-mailing-list/versions/2473611",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/add-to-mailing-list/versions/2475905",
         "files": [
             {
-                "id": 1016759,
-                "created": "2020-04-14T15:30:42Z",
-                "hash": "sha256:82372462edd77567eabba2c520cc1f1652a441d58a3d1ccc00a3e008002288c3",
+                "id": 1019065,
+                "created": "2021-05-18T16:47:24Z",
+                "hash": "sha256:1739ca5575fc6612233089e6154e960f19e9546aad4095867cc7f4acd958f61b",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 7066,
+                "size": 9429,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016759/ajouter_a_une_liste-1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019065/ajouter_a_une_liste-1.1-tb.xpi?src=",
                 "permissions": [
                     "addressBooks",
                     "tabs",
-                    "messagesRead"
+                    "messagesRead",
+                    "notifications"
                 ]
             }
         ],
@@ -54,12 +55,14 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": null,
-        "reviewed": "2020-04-14T15:40:03Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/add-to-mailing-list/versions/1.0",
-        "version": "1.0"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/add-to-mailing-list/versions/1.1",
+        "version": "1.1"
     },
     "default_locale": "en-US",
-    "description": null,
+    "description": {
+        "en-US": "AddToMailinglist is a add-on (MailExtension) for Thunderbird.\n\nIt add the current email address to an existing mailing list.\n\nThis add-on adds a button to the window for composing/reading an email. You can choose a mailing list to add this email address to.\n\n\n--------------------------------------\nCet add-ons ajoute un bouton à la fenêtre de rédaction d'un email. Vous pouvez choisir une liste de diffusion dans laquelle ajouter cet adresse mail."
+    },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/add-to-mailing-list/edit",
     "guid": "tb-addtomailinglists@tb.dev",
@@ -75,7 +78,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-04-14T15:40:03Z",
+    "last_updated": "2021-05-18T16:50:03Z",
     "name": {
         "fr": "Ajouter à une liste",
         "en-US": "Add to Mailing list"
@@ -101,10 +104,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.0553,
-        "count": 2,
-        "average": 3.5,
-        "text_count": 2
+        "bayesian_average": 2.44029,
+        "count": 3,
+        "average": 2.6667,
+        "text_count": 3
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/add-to-mailing-list/reviews/",
     "requires_payment": false,
@@ -120,7 +123,11 @@
         "en-US": "https://framagit.org/GTeam/addtomailinglist"
     },
     "tags": [
-        "firefox57"
+        "address",
+        "firefox57",
+        "list",
+        "mailing list",
+        "thunderbird"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/add-to-mailing-list/",
@@ -130,7 +137,8 @@
             "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp60": true
+            "comp60pv": true,
+            "comp60pv_date": "2020-04-14T15:30:42Z"
         }
     }
 }

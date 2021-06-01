@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 32,
+    "average_daily_users": 555,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2021-04-11T13:57:27Z",
     "current_version": {
-        "id": 2475709,
+        "id": 2475941,
         "compatibility": {
             "thunderbird": {
                 "max": "78.*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/google-4-tbsync/versions/2475709",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/google-4-tbsync/versions/2475941",
         "files": [
             {
-                "id": 1018869,
-                "created": "2021-04-12T12:36:21Z",
-                "hash": "sha256:797413cb2fac1b217b24be47dcddc9189f490e907037769936f2ddaa1f43059c",
+                "id": 1019101,
+                "created": "2021-05-30T07:50:23Z",
+                "hash": "sha256:4f4564b6a49e5acc36351c05e1ba8c090c81a521ee8a3440267e8b3f7c89f225",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 56764,
+                "size": 58478,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018869/google_4_tbsync-0.1.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019101/google_4_tbsync-0.1.4-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,19 +51,18 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Changed icon."
+            "en-US": "Bugfixes.",
+            "it": ""
         },
-        "reviewed": "2021-04-12T13:07:49Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/google-4-tbsync/versions/0.1.2",
-        "version": "0.1.2"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/google-4-tbsync/versions/0.1.4",
+        "version": "0.1.4"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "You need some specific credentials by Google to use this add-on. Please refer to <a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/How-to-generate-your-own-Google-API-Console-project-credentials\">How to generate your own Google API Console project credentials</a> for a step-by-step guide on how to generate them.\n\nAlso, you might have a look to the various <a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options\">Account options</a> and their meaning."
+        "en-US": "1) BACKUP YOUR (THUNDERBIRD AND GOOGLE) ADDRESSBOOKS BEFORE RUNNING THIS SOFTWARE!\n\n2) You must install and enable <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/tbsync\">TbSync</a> first, because this is an add-on to it. After that, just open the TbSync management interface and add a \"Google\" account.\n\n3) You also need some specific credentials by Google to use this add-on. Please refer to \"How to generate your own Google API Console project credentials\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/How-to-generate-your-own-Google-API-Console-project-credentials\">https://github.com/zanonmark/Google-4-TbSync/wiki/How-to-generate-your-own-Google-API-Console-project-credentials</a>] for a step-by-step guide on how to generate them.\n(And if this seems complicated, please blame Google, not me...)\n\n4) Also, you might have a look to the various \"Account options\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options\">https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options</a>] and their meaning.\n\n5) You are particularly suggested to enable the \"Read-only mode\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options#read-only-mode\">https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options#read-only-mode</a>].\n\n6) Please keep in mind that some limitations apply, see \"Current status and roadmap\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync#current-status-and-roadmap\">https://github.com/zanonmark/Google-4-TbSync#current-status-and-roadmap</a>].\nParticularly, adding a contact to (or removing it from) a Thunderbird mailing-list doesn't currently reflect back to Google. This will be fixed after the upcoming rewrite."
     },
-    "developer_comments": {
-        "en-US": "Please refer to <a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync\">https://github.com/zanonmark/Google-4-TbSync</a> for a list of known limitations."
-    },
+    "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/google-4-tbsync/edit",
     "guid": "google-4-tbsync@marcozanon.com",
     "has_eula": false,
@@ -78,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-04-12T13:07:49Z",
+    "last_updated": "2021-05-30T11:04:32Z",
     "name": {
         "en-US": "Google-4-TbSync"
     },
@@ -100,10 +99,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.85917,
-        "count": 1,
-        "average": 5,
-        "text_count": 1
+        "bayesian_average": 3.21374,
+        "count": 5,
+        "average": 3.4,
+        "text_count": 5
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/google-4-tbsync/reviews/",
     "requires_payment": false,
@@ -111,7 +110,7 @@
     "slug": "google-4-tbsync",
     "status": "public",
     "summary": {
-        "en-US": "This provider add-on adds Google synchronization capabilities to TbSync. Only contacts and contact groups are currently managed, using Google's People API."
+        "en-US": "This provider add-on adds Google synchronization capabilities to TbSync. Only contacts and contact groups are currently managed, using Google's People API.\n\nPlease read the \"About this Add-on\" section below carefully!"
     },
     "support_email": {
         "en-US": "info@marcozanon.com"
@@ -135,7 +134,12 @@
             "mext": true,
             "comp69plus": true,
             "comp78plus": true,
-            "comp61plus": true
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-04-12T12:36:21Z",
+            "comp78pv_version": "0.1.2",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*"
         }
     }
 }

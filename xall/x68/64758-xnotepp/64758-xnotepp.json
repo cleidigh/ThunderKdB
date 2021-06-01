@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 19933,
+    "average_daily_users": 19764,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,31 +28,32 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2AKE2G2B9J3ZS",
     "created": "2010-01-25T14:05:29Z",
     "current_version": {
-        "id": 2474958,
+        "id": 2475906,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
+                "max": "89.0",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xnotepp/versions/2474958",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/xnotepp/versions/2475906",
         "files": [
             {
-                "id": 1018120,
-                "created": "2020-12-07T17:52:02Z",
-                "hash": "sha256:bad5a62435e8dafeddf373344bbd1d7f781e6ce2b86a1135e2334b46bdd3bb64",
+                "id": 1019066,
+                "created": "2021-05-18T18:00:53Z",
+                "hash": "sha256:a144f1297f6aee5c706cc18bee288d853a75bc96b257b2d9989a8d1831bd988f",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 86593,
+                "size": 105380,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018120/xnote-3.1.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019066/xnote-3.1.7-tb.xpi?src=",
                 "permissions": [
                     "activeTab",
                     "tabs",
+                    "storage",
                     "messagesRead",
-                    "storage"
+                    "messagesModify"
                 ]
             }
         ],
@@ -85,12 +86,10 @@
             },
             "url": "http://www.gnu.org/licenses/lgpl-2.1.html"
         },
-        "release_notes": {
-            "en-US": "* Keeps compatibility with ImportExportTools NG version 10.0.2 and restores the toolbar button functionality"
-        },
+        "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/versions/3.1.3",
-        "version": "3.1.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/versions/3.1.7",
+        "version": "3.1.7"
     },
     "default_locale": "en-US",
     "description": {
@@ -106,16 +105,16 @@
         "en-US": "https://github.com/xnotepp/xnote/wiki",
         "de": "https://github.com/xnotepp/xnote/wiki"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-64.png?modified=1604527280",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-64.png?modified=1621362123",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-32.png?modified=1604527280",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-64.png?modified=1604527280"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-32.png?modified=1621362123",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/64/64758-64.png?modified=1621362123"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2020-12-08T19:45:57Z",
+    "last_updated": "2021-05-20T19:50:51Z",
     "name": {
         "en-US": "XNote++",
         "de": "XNote++"
@@ -123,25 +122,62 @@
     "previews": [
         {
             "id": 41393,
-            "caption": null,
+            "caption": {
+                "en-US": "XNote window, set position as desired",
+                "de": "XNote Fenster, beliebig positionierbar"
+            },
             "image_size": [
                 200,
                 150
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/41/41393.png?modified=1530208723",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/41/41393.png?modified=1621362123",
             "thumbnail_size": [
                 200,
                 150
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/41/41393.png?modified=1530208723"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/41/41393.png?modified=1621362123"
+        },
+        {
+            "id": 206551,
+            "caption": {
+                "en-US": "compact display of XNote in messagedisplay",
+                "de": "Kurzdarstellung der XNote im Mailfenster"
+            },
+            "image_size": [
+                952,
+                194
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206551.png?modified=1621362123",
+            "thumbnail_size": [
+                320,
+                65
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206551.png?modified=1621362123"
+        },
+        {
+            "id": 206552,
+            "caption": {
+                "en-US": "full size display of XNote in messagedisplay",
+                "de": "Volldarstellung der XNote im Mailfenster"
+            },
+            "image_size": [
+                940,
+                313
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206552.png?modified=1621362123",
+            "thumbnail_size": [
+                320,
+                107
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206552.png?modified=1621362123"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.57595,
-        "count": 107,
-        "average": 4.5888,
-        "text_count": 107
+        "bayesian_average": 4.57985,
+        "count": 108,
+        "average": 4.5926,
+        "text_count": 108
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/xnotepp/reviews/",
     "requires_payment": false,

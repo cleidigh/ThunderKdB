@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 66,
+    "average_daily_users": 79,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-05T07:52:54Z",
     "current_version": {
-        "id": 2475506,
+        "id": 2475876,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/redthunderminebird-plus/versions/2475506",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/redthunderminebird-plus/versions/2475876",
         "files": [
             {
-                "id": 1018667,
-                "created": "2021-03-16T03:35:02Z",
-                "hash": "sha256:f20f14c2677c917344352d98c858c8b46a0c43215e97b6ae10592735acdde6f5",
+                "id": 1019036,
+                "created": "2021-05-12T02:11:57Z",
+                "hash": "sha256:35bd1a0a76453d07368ad6db4c9b7b8e33f607e094e88b9ca2ac6943d51e7669",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 83923,
+                "size": 84460,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018667/redthunderminebird_plus_redmine-2.1.6-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019036/redthunderminebird_plus_redmine-2.1.7-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "menus",
@@ -57,12 +57,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Fix regression: fallback to \"link to issue\" correctly when the updating message is not yet linked to any issue.",
-            "ja": "後退バグの修正：チケット更新時、まだチケットに関連付けられていないメッセージだった場合に、正しくチケット関連付けの操作にフォールバックするように修正"
+            "en-US": "* Open link in the default browser on Thunderbird 78.6 and later.\n* Fix hanging with blank dialog on slow Thunderbird situations.",
+            "ja": "* Thunderbird 78.6以降で、リンクを既定のブラウザで開くようにした\n* Thunderbirdの動作が遅いときにダイアログが真白な状態でハングアップしてしまう問題を修正"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/redthunderminebird-plus/versions/2.1.6",
-        "version": "2.1.6"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/redthunderminebird-plus/versions/2.1.7",
+        "version": "2.1.7"
     },
     "default_locale": "en-US",
     "description": {
@@ -84,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-03-16T03:35:03Z",
+    "last_updated": "2021-05-12T02:15:03Z",
     "name": {
         "en-US": "RedThunderMineBird Plus",
         "ja": "RedThunderMineBird Plus - Redmine連携+"

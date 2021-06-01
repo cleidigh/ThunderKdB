@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 9092,
+    "average_daily_users": 8707,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,27 +28,30 @@
     "contributions_url": "",
     "created": "2011-06-23T15:49:52Z",
     "current_version": {
-        "id": 2475355,
+        "id": 2475932,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
+                "max": "90.0",
                 "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2475355",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2475932",
         "files": [
             {
-                "id": 1018516,
-                "created": "2021-02-15T10:59:43Z",
-                "hash": "sha256:12f5779d16fc950482589c6bb25299c52a505e6781f9442adf43c2a52fd6bd07",
+                "id": 1019092,
+                "created": "2021-05-27T12:22:48Z",
+                "hash": "sha256:721d31433049fa5cc65bdd8838d9e879c41008c91ef2a3e27da1a83aef524bb0",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 773400,
+                "size": 777880,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018516/smarttemplates-3.4.4-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019092/smarttemplates-3.5.3-tb.xpi?src=",
+                "permissions": [
+                    "notifications",
+                    "accountsRead"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -57,14 +60,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.4.4"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.5.3"
         },
         "release_notes": {
-            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.4.4\">can be found here</a>\n\n<b>Latest News</b>\n\n3.4.4 is a maintenance patch release that fixes a important problem [issue 121] in settings dialog, and also a broken Spanish locale - for details see below.\n\nWe had to rewrite much of the code to become compatible with Thunderbird 78. To keep having support sites and ongoing development, please <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/smarttemplate4?referrer=st-version-page\">buy a Pro license</a>\n\nMigration to the Thunderbird 78 Add-ons system - mail extensions with experimental APIs - was time intensive and costly. This is only the first step toward future proofing, next year Thunderbird may restrict the use of experimental APIs, which depends on having new APIs available on the Core side of the code. This relies on a good relationship between Add-on developers and the Core team (Thunderbird Council) and requires ongoing talking and design work on both sides; that's why the licensing model once again shows its superiority as it is able to fund the necessary time that needs to be spent.\n\n<b>Improvements</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/91\">[issue 91]</a> Improve functions %deleteQuotedText% and %replaceQuotedText% to work in plain text mode (quote level argument will be ignored). In plain text mode, you can now use this to remove quote marks, with the command %deleteQuotedText(\"\\&gt;\\s\")% or use %replaceQuotedText(\"\\&gt;\\s\",\"| \")% to replace the quote marks with straight vertical lines</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/71\">[issue 71]</a> Added support for setting non-standard header attributes starting with \"List\" e.g. List-Unsubscribe</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/82\">[issue 82]</a> Improved / fixed warning messages for users with expired licenses. Added a notice about soon-to-expire license in status bar.</li></ul>\n<b>Changes / Bug Fixes</b>\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/117\">[issue 117]</a> <code>%header.set(from,\"some@address.com\")%</code> not working in Thunderbird 78. You can now also add a name when setting the from address. For example <code>%header.set(from,\"Postmaster &lt;postm@address.com&gt;\")%</code> This function only works if the Email address is listed in any identity (including aliases).</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/115\">[issue 115]</a> Erratic %datetime()% results when forcing HTML with Shift. This happens when your account is configured to use plain text and you force a HTML reply using the Shift key. If you need special characters or HTML entities within your Dates, and encounter unexpected results, try breaking it up into separate %datetime()% calls. </li><li> Fixed: With option \"Remove email address unless format parameter is specified\", mail parts such as %from(...,mail)%, %from(...,bracketMail())% were removed </li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/119\">[issue 119]</a> (fixed in 3.4.2) XML Parsing Error settings dialog (it / sv / uk locales)</li><li>3.4.3 - open the license tab when status icon is clicked with expired license to make renewal easier.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/120\">[issue 120]</a> Spanish locale broken which creates an error when options screen is displayed (since 3.4.1)</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/121\">[issue 121]</a> Common settings are shown even though the correct account seems to be selected!</li></ul>"
+            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.5.3\">can be found here</a>\n\n<b>Enhancements</b>\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/125\">[issue 125]</a> Improved support for converting encoded characters used in address fields such as \"from\" </li></ul><b>Bug Fixes</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/133\">[issue 133]</a> Fixed in 3.5.3 - a Problem with Licensing Dialog that couldn't open the web shop if valid license was already entered.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/126\">[issue 126]</a> Fixed: Enabling 'Resolve names from Address book' falsely disables advanced options</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/130\">[issue 130]</a> Fixed: Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.</li><li> Added Localization for Catalan language - this is partly derived from the Occitan locale of an older version.</li><li> Problem with Trial date calculation due to new Legacy Prefs method - fixded in 3.5.2 </li></ul>\n<b>Miscellaneous</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/127\">[issue 127]</a> Make SmartTemplates compatible with Thunderbird 89.0 - this is ongoing work which aims for a smooth transition toward the next ESR version, Thunderbird 91 which is planned to be released in Summer 2022.</li><li> SmartTemplates now supports multiple Thunderbird windows, via the new background script notifications. Using the new background script notification mechanism for all template menus. When configuring the menus, these are now updated properly across all windows once the settings dialog is closed. Even with multiple Thunderbird windows opened. </li><li> Opening web pages (such as support) uses a different URL variable format from Thunderbird 80 onward, so this will work again with the latest version of SmartTemplates.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.4.4",
-        "version": "3.4.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.5.3",
+        "version": "3.5.3"
     },
     "default_locale": "en-US",
     "description": {
@@ -92,7 +95,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2021-02-15T11:27:45Z",
+    "last_updated": "2021-05-27T12:27:23Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",
@@ -315,9 +318,9 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.46727,
+        "bayesian_average": 4.49516,
         "count": 72,
-        "average": 4.4861,
+        "average": 4.5139,
         "text_count": 72
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/reviews/",

@@ -1,5 +1,64 @@
 [
     {
+        "id": 2475921,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/web_translate/versions/2475921",
+        "files": [
+            {
+                "id": 1019081,
+                "created": "2021-05-24T19:24:30Z",
+                "hash": "sha256:23f4b5a980c7cd7305e77059a0ddfe3ac4714434a6db9285a692587104aaf36a",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 5284746,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019081/web_translate-3.6-tb.xpi?src=",
+                "permissions": [
+                    "webRequest",
+                    "webRequestBlocking",
+                    "menus",
+                    "storage",
+                    "activeTab",
+                    "<all_urls>",
+                    "https://translate.google.com/*",
+                    "https://translate.google.cn/*",
+                    "https://bing.com/*",
+                    "https://www.bing.com/*",
+                    "https://deepl.com/*",
+                    "https://www.deepl.com/*",
+                    "https://translate.yandex.ru/*",
+                    "https://translate.yandex.com/*",
+                    "https://www.translate.yandex.ru/*",
+                    "https://www.translate.yandex.com/*",
+                    "https://fanyi.baidu.com/*"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7057,
+            "name": {
+                "en-US": "All Rights Reserved"
+            },
+            "text": null,
+            "url": null
+        },
+        "release_notes": {
+            "en-US": "3.6 version\n- fixed DeepL translator to work with selected text\n- fixed DeepL translator UI to fit whole into the popup\n- action for opening translator in a new tab will now NOT use a container\n- Thunderbird will now show Google Translate consent on install (otherwise it would fail)\n- translated addon to more languages"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/web_translate/versions/3.6",
+        "version": "3.6"
+    },
+    {
         "id": 2475755,
         "channel": "listed",
         "compatibility": {

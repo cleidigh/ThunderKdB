@@ -1,5 +1,181 @@
 [
     {
+        "id": 2475829,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2475829",
+        "files": [
+            {
+                "id": 1018989,
+                "created": "2021-04-28T13:37:13Z",
+                "hash": "sha256:eb152409f091a3a57e1525cdcec83e26e4f804097af330a2f19fdbd5908592be",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1018633,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018989/quickfolders_tabbed_folders-5.5.2-tb.xpi?src=",
+                "permissions": [
+                    "notifications"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 5006,
+            "name": {
+                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
+            },
+            "text": {
+                "en-US": "LICENSE\n\nQuickFolders is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the QuickFolders Add-on (distributed as a XPI file) and all files contained within it Premium Feature - a feature or function of the software which is protected by the mechanism outlined below QuickFolders Pro - Refers to the registered version of QuickFolders\n\nAll contents of The Program are subject to the GNU General Public License Version 3 (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a> \nFor a  human-readable summary thereof please refer <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/QuickFolders Pro tab, QuickFolders context menu, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author (Axel Grude)\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the Creative Commons (CC BY-ND 4.0) License for more details."
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/5.5.2"
+        },
+        "release_notes": {
+            "en-US": "<b>Release 5.5.2</b>\n<ul><li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li><li>You can <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page\">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li><li>If you are not ready for a license you can also <a rel=\"nofollow\" href=\"https://quickfolders.org/donate.html#donate\">donate from here</a></li></ul>\n\n<b>Fixes in 5.5.2</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/148\">[issue 148]</a> quickMove: parent folder containing an underscore not suggested as parent if typed from fully. This is a regression caused by changes in             <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/135\">[issue 135]</a> which allows for entering parent names by entering text within the string if that starts with an underscore or space - e.g. to find all child folders of \"001_Test\" you could just type \"tes/\". The regression caused it not to be suggested when typing \"001_tes/\" as it only would evaluate the substrings \"001\" and \"Test\" as possible parents.</li><li> Fixed: In some locales the character » is replaced with encoded unicode entry \\u00BB in Create subfolder menu item</li><li> Fixed: In Thunderbird 89, the options menu item was not displayed in Add-ons Manager.</li></ul>\n<b>Fixes in 5.5.1</b>\n<ul><li> Version 5.5.1 Hotfix: <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/136\">[issue 144]</a> Fixed: Mark folders + subfolders read stops at first generation (direct child folder) mails and potentially may have affected parent folders, too.</li><li> Version 5.5.1 - Fixed: The tool menu item  \"Change the order of tabs\" did not update the toolbar after clicking Ok. To make changes visible one had to click \"Refrehs Visible tabs\" </li><li> 5.5.1: Rewrote the legacy style localization to use the modern method which is a prerequisite for converting the Add-on to a \"mail extension\" in the future. </li><li> Version 5.5.1: Completed Hungarian, Simplified Chinese and Catalan locales.</li><b>Improvements</b><ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/136\">[issue 136]</a> Fixed: There were no folder suggestions during quickJump / quickMove while viewing mails in a virtual folder view (such as search results / or after open message in conversation). This was a  side effect of changes from <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/57\">[issue 57]</a>.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/135\">[issue 135]</a> quickMove / quickJump: When using \"/\" for parent folders searching for substrings should work better... The Search algorithm now recognizes Underscore _ and Space within folder names so that parent folders with  prefixes such as \"01_test\" can still be found without knowing the number (type \"test\\subfoldername\" to get \na match in this example). </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/132\">[issue 132]</a> In a single message tab, quickMove used to redisplay the mail after moving it with quickMove.\nThis behavior has now been changed on request to go to the next email instead. If necessary, this new behavior can be changed in via the advanced search settings button in the Single Message Tab box on the QF Pro settings tab.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/134\">[issue 134]</a> Feature Request: Escape key to \"Cancel quickMove\" completely. Before this change, Cancel would hide the search box but keep the list of mails queued to be moved so that more items could be added later. If necessary, the old behavior can be restored in the Advanced search settings dialog. </li><li> Changed folder tree shortcut from F7 to F9 (consistent with Thunderbird 68).  Push F0 to make the folder tree visible or quickly hide it.</li><li>Increased maximum subfolders in a dropdown menu from 100 to 250.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/140\">[issue 140]</a> Fixed: Restriction to current server unexpectedly suggests creating new subfolder.</li></ul></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/5.5.2",
+        "version": "5.5.2"
+    },
+    {
+        "id": 2475828,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.0",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2475828",
+        "files": [
+            {
+                "id": 1018988,
+                "created": "2021-04-28T11:53:42Z",
+                "hash": "sha256:ee3bea0e287170f0bd4bc9c1842a32c463ff763367b0672b1b5255c7bc7497ac",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 988722,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018988/quickfolders_tabbed_folders-4.21.4-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5006,
+            "name": {
+                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
+            },
+            "text": {
+                "en-US": "LICENSE\n\nQuickFolders is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the QuickFolders Add-on (distributed as a XPI file) and all files contained within it Premium Feature - a feature or function of the software which is protected by the mechanism outlined below QuickFolders Pro - Refers to the registered version of QuickFolders\n\nAll contents of The Program are subject to the GNU General Public License Version 3 (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a> \nFor a  human-readable summary thereof please refer <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/QuickFolders Pro tab, QuickFolders context menu, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author (Axel Grude)\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the Creative Commons (CC BY-ND 4.0) License for more details."
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.21.4"
+        },
+        "release_notes": {
+            "en-US": "Release 4.21.4\n\nThis release backports some of the fixes that were also done in the new version for Thunderbird 78. If you want to get the latest features, I highly recommend updating Thunderbird to the current 78 release version.\nTo support QuickFolders, <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page\">buy a license</a> or <a rel=\"nofollow\" href=\"https://quickfolders.org/donate.html?referrer=atn-version-page\">donate</a> to support the project.\n\n<b>Bug Fixes</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/148\">[issue 148]</a> quickMove: parent folder containing an underscore not suggested as parent if typed from fully. This is a regression caused by changes in             <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/135\">[issue 135]</a> which allows for entering parent names by entering text within the string if that starts with an underscore or space - e.g. to find all child folders of \"001_Test\" you could just type \"tes/\". The regression caused it not to be suggested when typing \"001_tes/\" as it only would evaluate the substrings \"001\" and \"Test\" as possible parents.</li><li>I am working on making QuickFolders compatible with Thunderbird 91, which is planned for release in summer 2021. There is a lot of rewriting going on in the background in order to replace internal functionality with the new API model. If you still ust THunderbird 68 or older, consider at least switching to Thunderbird 78 to get the <a rel=\"nofollow\" href=\"https://quickfolders.org/version.html#latest\">latest version of QuickFolders</a>.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.21.4",
+        "version": "4.21.4"
+    },
+    {
+        "id": 2475820,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2475820",
+        "files": [
+            {
+                "id": 1018980,
+                "created": "2021-04-26T21:35:59Z",
+                "hash": "sha256:1a6a39eceabc89525a9b8b6c2af447bcc09697476e80780b551177c6999a4075",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 1016936,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018980/quickfolders_tabbed_folders-5.5.1-tb.xpi?src=",
+                "permissions": [
+                    "notifications"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 5006,
+            "name": {
+                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
+            },
+            "text": {
+                "en-US": "LICENSE\n\nQuickFolders is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the QuickFolders Add-on (distributed as a XPI file) and all files contained within it Premium Feature - a feature or function of the software which is protected by the mechanism outlined below QuickFolders Pro - Refers to the registered version of QuickFolders\n\nAll contents of The Program are subject to the GNU General Public License Version 3 (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a> \nFor a  human-readable summary thereof please refer <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/QuickFolders Pro tab, QuickFolders context menu, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author (Axel Grude)\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the Creative Commons (CC BY-ND 4.0) License for more details."
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/5.5.1"
+        },
+        "release_notes": {
+            "en-US": "<b>Release 5.5.1</b>\n<ul><li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li><li>You can <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page\">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li><li>If you are not ready for a license you can also <a rel=\"nofollow\" href=\"https://quickfolders.org/donate.html#donate\">donate from here</a></li></ul>\n<b>Fixes in 5.5.1</b>\n<ul><li> Version 5.5.1 Hotfix: <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/136\">[issue 144]</a> Fixed: Mark folders + subfolders read stops at first generation (direct child folder) mails and potentially may have affected parent folders, too.</li><li> Version 5.5.1 - Fixed: The tool menu item  \"Change the order of tabs\" did not update the toolbar after clicking Ok. To make changes visible one had to click \"Refrehs Visible tabs\" </li><li> 5.5.1: Rewrote the legacy style localization to use the modern method which is a prerequisite for converting the Add-on to a \"mail extension\" in the future. </li><li> Version 5.5.1: Completed Hungarian, Simplified Chinese and Catalan locales.</li><b>Improvements</b><ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/136\">[issue 136]</a> Fixed: There were no folder suggestions during quickJump / quickMove while viewing mails in a virtual folder view (such as search results / or after open message in conversation). This was a  side effect of changes from <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/57\">[issue 57]</a>.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/135\">[issue 135]</a> quickMove / quickJump: When using \"/\" for parent folders searching for substrings should work better... The Search algorithm now recognizes Underscore _ and Space within folder names so that parent folders with  prefixes such as \"01_test\" can still be found without knowing the number (type \"test\\subfoldername\" to get \na match in this example). </li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/132\">[issue 132]</a> In a single message tab, quickMove used to redisplay the mail after moving it with quickMove.\nThis behavior has now been changed on request to go to the next email instead. If necessary, this new behavior can be changed in via the advanced search settings button in the Single Message Tab box on the QF Pro settings tab.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/134\">[issue 134]</a> Feature Request: Escape key to \"Cancel quickMove\" completely. Before this change, Cancel would hide the search box but keep the list of mails queued to be moved so that more items could be added later. If necessary, the old behavior can be restored in the Advanced search settings dialog. </li><li> Changed folder tree shortcut from F7 to F9 (consistent with Thunderbird 68).  Push F0 to make the folder tree visible or quickly hide it.</li><li>Increased maximum subfolders in a dropdown menu from 100 to 250.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/140\">[issue 140]</a> Fixed: Restriction to current server unexpectedly suggests creating new subfolder.</li></ul></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/5.5.1",
+        "version": "5.5.1"
+    },
+    {
+        "id": 2475811,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "69.0",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/2475811",
+        "files": [
+            {
+                "id": 1018971,
+                "created": "2021-04-26T10:30:06Z",
+                "hash": "sha256:2ed066c573a6f76a5388382ab32b6e9e7b3c48fb36791ce17a971ef400a28cf0",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 988615,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018971/quickfolders_tabbed_folders-4.21.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 5006,
+            "name": {
+                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
+            },
+            "text": {
+                "en-US": "LICENSE\n\nQuickFolders is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the QuickFolders Add-on (distributed as a XPI file) and all files contained within it Premium Feature - a feature or function of the software which is protected by the mechanism outlined below QuickFolders Pro - Refers to the registered version of QuickFolders\n\nAll contents of The Program are subject to the GNU General Public License Version 3 (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a> \nFor a  human-readable summary thereof please refer <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/QuickFolders Pro tab, QuickFolders context menu, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author (Axel Grude)\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the Creative Commons (CC BY-ND 4.0) License for more details."
+            },
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.21.3"
+        },
+        "release_notes": {
+            "en-US": "Release 4.21.3\n\nThis release backports some of the fixes that were also done in the new version for Thunderbird 78. If you want to get the latest features, I highly recommend updating Thunderbird to the current 78 release version.\nTo support QuickFolders, <a rel=\"nofollow\" href=\"http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page\">buy a license</a> or <a rel=\"nofollow\" href=\"https://quickfolders.org/donate.html?referrer=atn-version-page\">donate</a> to support the project.\n\n<b>Bug Fixes</b>\n<ul><li> \n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/144\">[issue 144]</a> Mark folders + subfolders read stops at first generation (direct child folder) mails  </li><li> \n<a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/QuickFolders/issues/145\">[issue 145]</a> Thunderbird 60 users only - QuickFolders always offers update to 4.21.2 - this is due to a faulty version number in the deprecated file install.rdf (which isn't used by Thunderbird 66 - 91 anymore).</li> <li>I am working on making QuickFolders compatible with Thunderbird 91, which is planned for release in summer 2021. There is a lot of rewriting going on in the background in order to replace internal functionality with the new API model. If you still ust THunderbird 68 or older, consider at least switching to Thunderbird 78 to get the <a rel=\"nofollow\" href=\"https://quickfolders.org/version.html#latest\">latest version of QuickFolders</a>.</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.21.3",
+        "version": "4.21.3"
+    },
+    {
         "id": 2475752,
         "channel": "listed",
         "compatibility": {
@@ -1122,7 +1298,7 @@
         "channel": "listed",
         "compatibility": {
             "seamonkey": {
-                "max": "2.49.*",
+                "max": "2.53.*",
                 "min": "2.34"
             },
             "thunderbird": {
@@ -1158,7 +1334,7 @@
             "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.14.1"
         },
         "release_notes": {
-            "en-US": "<b>Version 4.14.1</b>\n<ul><li> <a href=\"https://www.mozdev.org/bugs/show_bug.cgi?id=26654\" rel=\"nofollow\">[Bug 26654]</a> quickMove shortcuts triggered during in-mail search</li><li> quickMove: Improve remembering all entered parent folders when only a single match is found.</li><li> Replaced className logic with classList, where possible</li><li> Removed deprecated getCharPref function: make remembering folder tabs preferences backwards compatible for older clients (Interlink) by using getComplexValue / getStringPref instead (getCharPref could lead to faulty characters when using extended character sets)</li><li> Japanese locale completed - thanks to Masahiko Imanaka. </li><li> Fixed: Message Navigation Buttons in Current Folder bar could not be hidden via options.</li><li> Prepared code base for compatibility with Thunderbird 66 - this will be released as a separate version because it is currently impossible to release a version that is compatible with Thunderbird 60. </li><li> Replaced color pickers with HTML elements - these call the System Specific color pickers of your operating system.</li></ul>\nI am planning to release a first tryout version of QuickFolders for Thunderbird 64-66 in the beginning of May; it will likely have the same feature set as the current verision (4.14.1) - I am also working on converting my other Add-ons, quickFilters and SmartTemplate⁴."
+            "en-US": "<b>Version 4.14.1</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://www.mozdev.org/bugs/show_bug.cgi?id=26654\">[Bug 26654]</a> quickMove shortcuts triggered during in-mail search</li><li> quickMove: Improve remembering all entered parent folders when only a single match is found.</li><li> Replaced className logic with classList, where possible</li><li> Removed deprecated getCharPref function: make remembering folder tabs preferences backwards compatible for older clients (Interlink) by using getComplexValue / getStringPref instead (getCharPref could lead to faulty characters when using extended character sets)</li><li> Japanese locale completed - thanks to Masahiko Imanaka. </li><li> Fixed: Message Navigation Buttons in Current Folder bar could not be hidden via options.</li><li> Prepared code base for compatibility with Thunderbird 66 - this will be released as a separate version because it is currently impossible to release a version that is compatible with Thunderbird 60. </li><li> Replaced color pickers with HTML elements - these call the System Specific color pickers of your operating system.</li></ul>\nI am planning to release a first tryout version of QuickFolders for Thunderbird 64-66 in the beginning of May; it will likely have the same feature set as the current verision (4.14.1) - I am also working on converting my other Add-ons, quickFilters and SmartTemplate⁴."
         },
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.14.1",
@@ -2056,193 +2232,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.4.2",
         "version": "4.4.2"
-    },
-    {
-        "id": 1795713,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.41",
-                "min": "2.0"
-            },
-            "thunderbird": {
-                "max": "44.*",
-                "min": "19.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/1795713",
-        "files": [
-            {
-                "id": 381870,
-                "created": "2016-01-02T09:29:37Z",
-                "hash": "sha256:eb394b65b2401158cce662577277a0cad7a312a7f10d64d7619621c081c91e9d",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 689372,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/381870/quickfolders_tabbed_folders-4.3-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 5006,
-            "name": {
-                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
-            },
-            "text": {
-                "en-US": "LICENSE\n\nQuickFolders is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the QuickFolders Add-on (distributed as a XPI file) and all files contained within it Premium Feature - a feature or function of the software which is protected by the mechanism outlined below QuickFolders Pro - Refers to the registered version of QuickFolders\n\nAll contents of The Program are subject to the GNU General Public License Version 3 (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a> \nFor a  human-readable summary thereof please refer <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/QuickFolders Pro tab, QuickFolders context menu, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author (Axel Grude)\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the Creative Commons (CC BY-ND 4.0) License for more details."
-            },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.3"
-        },
-        "release_notes": {
-            "en-US": "<strong>Premium Features</strong>\n<ul><li> Set default To Email address and From Identity for creating new mails when in a folder. \n\nFor every Tab, you can add a default email address for sending emails To and a default identity. This makes it easier when we store email from different identities in the same mailbox (e.g. Local Folders). \n\t\t\nFor example: You can now configure your desired sender identity for each of your mailing lists. Or select a default recipient for when you write a new email from a folder.\n\nFor every QuickFolder, this can be enabled via the advanced Tab properties dialog.</li><li> <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/dbdca27c69fc6e2bb6c59e38500009e43126adfbb70ece6a391864c4403d8b5a/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=25682\">[Bug 25682]</a> Allow displaying multiple categories at the same time.</li><li> Version History doesn't show Donate reminders for Pro Users anymore (Javascript in browser / browser tabs must be enabled)</li></ul><strong>Free Improvements</strong>\n<ul><li> Remember last Settings Tab, even when closing window with Cancel button</li><li> Allow Tab Category of \"Never\" - Folder Aliases that only show up in quickMove / quickJump\n\n     You can now hide a QuickFolder Tab by selecting the Category \"Never Show (Folder Aliases)\". This means you can use the name of the <i>Tab</i> in the quickMove / quickJump functions for quickly navigating without using the original Folder name. </li><li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/33441b5dca691b78cb2ffc02bde3e1cc1a3c8a2c919d2ab2e950cd16c4da956f/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26116\">[Bug 26116]</a> Fixed: Tab Specific properties panel always jumps to primary screen.</li>\t\t </ul>"
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.3",
-        "version": "4.3"
-    },
-    {
-        "id": 1769942,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.39",
-                "min": "2.0"
-            },
-            "thunderbird": {
-                "max": "41.*",
-                "min": "19.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/1769942",
-        "files": [
-            {
-                "id": 362082,
-                "created": "2015-10-20T05:20:47Z",
-                "hash": "sha256:bfc1013f01e6daf2271c2190151d484984c13ab2037f654a5e3af3348d7e8519",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 676935,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/362082/quickfolders_tabbed_folders-4.2.2-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 5006,
-            "name": {
-                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
-            },
-            "text": {
-                "en-US": "LICENSE\n\nQuickFolders is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the QuickFolders Add-on (distributed as a XPI file) and all files contained within it Premium Feature - a feature or function of the software which is protected by the mechanism outlined below QuickFolders Pro - Refers to the registered version of QuickFolders\n\nAll contents of The Program are subject to the GNU General Public License Version 3 (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a> \nFor a  human-readable summary thereof please refer <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/QuickFolders Pro tab, QuickFolders context menu, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author (Axel Grude)\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the Creative Commons (CC BY-ND 4.0) License for more details."
-            },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.2.2"
-        },
-        "release_notes": {
-            "en-US": "<ul>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8c3d38e04236f081b2d955d7ff907505778a6a1c1447a30ce02574f036adc270/http%3A//sites.fastspring.com/quickfolders/instant/quickfoldersdomain\">QuickFolders Pro Domain Licenses</a> - get QuickFolders Pro at a reduced rate if you buy more than 5 for a specific domain. Just click the new button on the Licensing window.</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6fd7495f4403bd30c6e80ab0d10be8faf643c1307e7adcc8d3e64c4ff80c8ddb/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26070\">[Bug 26070]</a> quickCopy feature - use the quickMove button for copying mails to any folder, by holding down CTRL when dropping mails.</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/74d5562c99b3c8d94056e720cb412440b5cbb80799914269fd5b272444c05c13/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26088\">[Bug 26088]</a> Expand quickJump (Move/Copy) results to child folders. Enter start of the parent folder name, then forward slash '/' to search all child folders. </li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/da5117aa234768c959dcce2dd80cb760d91378a1a462847b3df3aa193094f5ef/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26071\">[Bug 26071]</a> Folder Tree hotkey - hit F9 to show/hide the folder tree (Premium Feature)</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/009da371e6e70b09ec63e5d8314a5e7d32dabb7e42c0b113457d09e06093a620/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26065\">[Bug 26065]</a> Fixed:  context menu disappears; in some rare cases the popup menus which are displayed on the first drag of a message to a QF tab will not be shown again until Thunderbird is restarted.</li>  <li>Added support for brighttext themes - some themes with dark backgrounds caused broken icons in the toolbar.</li>  <li>4.2.1: fixed registration buttons for non-English locales; disabled donation screen for Pro users.</li>  <li>4.2.2:  <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/c4b1c5782072d91095626131b7870279b6681f7d971f3f856ffd9a535c05f499/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26095\">[Bug 26095]</a> Renaming or Moving Folder causes orphaned Tabs on Subfolders</li></ul>"
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.2.2",
-        "version": "4.2.2"
-    },
-    {
-        "id": 1768912,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.39",
-                "min": "2.0"
-            },
-            "thunderbird": {
-                "max": "41.*",
-                "min": "19.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/1768912",
-        "files": [
-            {
-                "id": 361470,
-                "created": "2015-10-17T10:40:16Z",
-                "hash": "sha256:e0624b7a094121becf0e64215156ddce1cbd2516fa12d4279ba7817548cccb6f",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 675441,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/361470/quickfolders_tabbed_folders-4.2.1-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 5006,
-            "name": {
-                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
-            },
-            "text": {
-                "en-US": "LICENSE\n\nQuickFolders is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the QuickFolders Add-on (distributed as a XPI file) and all files contained within it Premium Feature - a feature or function of the software which is protected by the mechanism outlined below QuickFolders Pro - Refers to the registered version of QuickFolders\n\nAll contents of The Program are subject to the GNU General Public License Version 3 (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a> \nFor a  human-readable summary thereof please refer <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/QuickFolders Pro tab, QuickFolders context menu, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author (Axel Grude)\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the Creative Commons (CC BY-ND 4.0) License for more details."
-            },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.2.1"
-        },
-        "release_notes": {
-            "en-US": "<ul>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8c3d38e04236f081b2d955d7ff907505778a6a1c1447a30ce02574f036adc270/http%3A//sites.fastspring.com/quickfolders/instant/quickfoldersdomain\">QuickFolders Pro Domain Licenses</a> - get QuickFolders Pro at a reduced rate if you buy more than 5 for a specific domain. Just click the new button on the Licensing window.</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6fd7495f4403bd30c6e80ab0d10be8faf643c1307e7adcc8d3e64c4ff80c8ddb/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26070\">[Bug 26070]</a> quickCopy feature - use the quickMove button for copying mails to any folder, by holding down CTRL when dropping mails.</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/74d5562c99b3c8d94056e720cb412440b5cbb80799914269fd5b272444c05c13/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26088\">[Bug 26088]</a> Expand quickJump (Move/Copy) results to child folders. Enter start of the parent folder name, then forward slash '/' to search all child folders. </li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/da5117aa234768c959dcce2dd80cb760d91378a1a462847b3df3aa193094f5ef/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26071\">[Bug 26071]</a> Folder Tree hotkey - hit F9 to show/hide the folder tree (Premium Feature)</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/009da371e6e70b09ec63e5d8314a5e7d32dabb7e42c0b113457d09e06093a620/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26065\">[Bug 26065]</a> Fixed:  context menu disappears; in some rare cases the popup menus which are displayed on the first drag of a message to a QF tab will not be shown again until Thunderbird is restarted.</li>  <li>Added support for brighttext themes - some themes with dark backgrounds caused broken icons in the toolbar.</li>  <li>4.2.1: fixed registration buttons for non-English locales; disabled donation screen for Pro users.</li></ul>"
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.2.1",
-        "version": "4.2.1"
-    },
-    {
-        "id": 1768434,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.39",
-                "min": "2.0"
-            },
-            "thunderbird": {
-                "max": "41.*",
-                "min": "19.0"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfolders-tabbed-folders/versions/1768434",
-        "files": [
-            {
-                "id": 361136,
-                "created": "2015-10-16T05:23:08Z",
-                "hash": "sha256:9053ea1971b94004a40d67c942c275c8ef0bda30be861ecf8700dc45309b2509",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 675336,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/361136/quickfolders_tabbed_folders-4.2-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 5006,
-            "name": {
-                "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
-            },
-            "text": {
-                "en-US": "LICENSE\n\nQuickFolders is released under the Creative Commons (CC BY-ND 4.0)\nAttribution-NoDerivatives 4.0 International (CC BY-ND 4.0) \n\nTerms: \nThe Program - the QuickFolders Add-on (distributed as a XPI file) and all files contained within it Premium Feature - a feature or function of the software which is protected by the mechanism outlined below QuickFolders Pro - Refers to the registered version of QuickFolders\n\nAll contents of The Program are subject to the GNU General Public License Version 3 (the \"License\"); you may not use the file except in compliance with the License. You may obtain a copy of the complete License at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/5e8a842b13f9be44c6b18aa927d6c184ed787a15da4790bb1ca5215fbd624578/http%3A//creativecommons.org/licenses/by-nd/4.0/legalcode\">http://creativecommons.org/licenses/by-nd/4.0/legalcode</a> \nFor a  human-readable summary thereof please refer <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6f2c75b1bbc288678dd746617b583c424db4fecb647c3cff1d61c0ef18785715/http%3A//creativecommons.org/licenses/by-nd/4.0/\">http://creativecommons.org/licenses/by-nd/4.0/</a>\n\n\nPro Version\nThis Program contains a subset of features \"Premium Features\" which are protected by a paid registration scheme. Registration keys can be obtained via various licensing links from within the software (Options/QuickFolders Pro tab, QuickFolders context menu, premium notification messages). The profits from Registration are used to develop and distribute the program further and to feed the author, as he would like to spend more time developing open source software. Some Premium features may be available in the free software, but they may be restricted (e.g. through a notification to the registration). Premium features are not essential to the core functionality of the Program, but are there to provide an incentive for financially supporting the enhancement and support of the Software. \n\nRegistration Scheme\nRegistration is carried out via our web shop (FastSpring) which sells registration keys. Registration keys are personal, non-transferrable and usually restricted to a time period (typically one year). To protect their personal nature they are tied to the user's Email address.\n\nMotivation \nAs regards licensing, we want to avoid a situation where the project is reused in order to avoid our monetisation by giving this away for free or cheaper than us thus disincentivising the current developers from putting a lot of time into development and support.\n\nIf plan to you use large portions of the code please contact the author (Axel Grude)\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the Creative Commons (CC BY-ND 4.0) License for more details."
-            },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/license/4.2"
-        },
-        "release_notes": {
-            "en-US": "<ul>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/8c3d38e04236f081b2d955d7ff907505778a6a1c1447a30ce02574f036adc270/http%3A//sites.fastspring.com/quickfolders/instant/quickfoldersdomain\">QuickFolders Pro Domain Licenses</a> - get QuickFolders Pro at a reduced rate if you buy more than 5 for a specific domain. Just click the new button on the Licensing window.</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/6fd7495f4403bd30c6e80ab0d10be8faf643c1307e7adcc8d3e64c4ff80c8ddb/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26070\">[Bug 26070]</a> quickCopy feature - use the quickMove button for copying mails to any folder, by holding down CTRL when dropping mails.</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/74d5562c99b3c8d94056e720cb412440b5cbb80799914269fd5b272444c05c13/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26088\">[Bug 26088]</a> Expand quickJump (Move/Copy) results to child folders. Enter start of the parent folder name, then forward slash '/' to search all child folders. </li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/da5117aa234768c959dcce2dd80cb760d91378a1a462847b3df3aa193094f5ef/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26071\">[Bug 26071]</a> Folder Tree hotkey - hit F9 to show/hide the folder tree (Premium Feature)</li>  <li><a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/009da371e6e70b09ec63e5d8314a5e7d32dabb7e42c0b113457d09e06093a620/https%3A//www.mozdev.org/bugs/show_bug.cgi%3Fid=26065\">[Bug 26065]</a> Fixed:  context menu disappears; in some rare cases the popup menus which are displayed on the first drag of a message to a QF tab will not be shown again until Thunderbird is restarted.</li>  <li>Added support for brighttext themes - some themes with dark backgrounds caused broken icons in the toolbar.</li></ul>"
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfolders-tabbed-folders/versions/4.2",
-        "version": "4.2"
     }
 ]

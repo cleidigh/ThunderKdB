@@ -1,0 +1,139 @@
+{
+    "id": 988100,
+    "authors": [
+        {
+            "id": 11074922,
+            "name": "opto",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/opto/",
+            "username": "opto",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 12,
+    "categories": {
+        "thunderbird": [
+            "appearance",
+            "folders-and-filters"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2021-05-09T10:47:56Z",
+    "current_version": {
+        "id": 2475883,
+        "compatibility": {
+            "thunderbird": {
+                "max": "78.*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/glodaquilla-ng-index-ondisk/versions/2475883",
+        "files": [
+            {
+                "id": 1019043,
+                "created": "2021-05-12T14:50:31Z",
+                "hash": "sha256:0b911e85def33968578da2b5085c352b100aa98ab2d23da52777015f335a65a9",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 75995,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019043/glodaquilla_ng_searchindex_ondisk_status-1.3-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 6,
+            "name": {
+                "el": "GNU General Public License, έκδοση 3.0",
+                "vi": "Giấy phép Công cộng GNU, phiên bản 3.0",
+                "ca": "Llicència GPL (General Public License) de GNU, version 3.0",
+                "it": "Licenza GNU General Public License, versione 3.0",
+                "cs": "GNU General Public License, verze 3.0",
+                "eu": "GNU General Public License, 3.0 bertsioa",
+                "id": "GNU General Public License, versi 3.0",
+                "es": "Licencia pública GNU, versión 3.0",
+                "ru": "GNU General Public License, версия 3.0",
+                "nl": "GNU General Public License, versie 3.0",
+                "pl": "General Public Licence, wersja 3.0",
+                "de": "GNU General Public License, Version 3.0",
+                "en-US": "GNU General Public License, version 3.0",
+                "fa": "مجوز عمومی کلی گنو، نسخهٔ ۳٫۰",
+                "ja": "GNU General Public License バージョン 3.0",
+                "pt-PT": "GNU General Public License, versão 3.0",
+                "zh-TW": "GNU General Public License，版本 3.0",
+                "sq": "Leje e Përgjithshme Publike GNU, version 3.0",
+                "ga-IE": "GNU General Public License, leagan 3.0",
+                "sk": "GNU General Public License, verzia 3.0",
+                "zh-CN": "GNU 通用公共授权，版本 3.0",
+                "uk": "GNU General Public License, версія 3.0"
+            },
+            "url": "http://www.gnu.org/licenses/gpl-3.0.html"
+        },
+        "release_notes": null,
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/glodaquilla-ng-index-ondisk/versions/1.3",
+        "version": "1.3"
+    },
+    "default_locale": "de",
+    "description": {
+        "de": "<b>Glodaquilla - NG </b>is an extension to Thunderbird which allows to control which accounts or folders are included in Global Search and Indexing. Enhancing the standard operation, choices for account or  folder inclusion can be inherited/propagated to child folders.\n\nThe 'On Disk Status' column may help during mobile status, to indicate whether messages are fully downloaded yet.\n\nAlso adds columns to the Thunderbird message pane that are useful to monitor downloaded messages (in IMAP, for example) and/or are useful in monitoring theindexing process ('gloda-id' - is &gt;2 when indexing was successfull, 'gloda-dirty' - if a message is to be indexed).\n \n    Created by R. Kent James, updated to TB 60/78+ by Klaus Buecher/opto.\n\nExample: \n\n    <ul>      <li> Display whether message has been fully downloaded (in an extra column, relevant for IMAP)</li> \n      <li> Local/private spam or draft or temporary folders and subfolders can be in/excluded from indexing and global search</li>      <li> Archive folders and subfolders or local copies can be ex/included in indexing and global search</li>      <li> Allows global disabling indexing and then selectively enabling in single folder trees, or disabling at the account level rather the folder level, all with a single property.</li>      <li> If you have some IMAP folders with a lot of messages that you do not need to search, this plugin will make Thunderbird run very very fast (user comment)\n      </li>      <li> Display in an extra column whether message is to be indexed (\"gloda-dirty\")</li>        <li> Display in an extra column whether message has been indexed for search (if gloda-id is = 2, it cannot be indexed)</li>      </ul>\n    \nYou can report issues at  the home page for TB78: <a rel=\"nofollow\" href=\"https://github.com/opto/glodaquilla-NG/issues\">Glodaquilla-NG.</a>\n      It is gratefully appreciated if you can support the transfer to TB 78 by a <a rel=\"nofollow\" href=\"\">donation.</a>\n \n    <li><b>Other addons for search, message display, archiving, adding notes, image display:</b></li>   <b>Expression Search NG</b>: Enhance search capabilities of (quick)search: f:Fred t:John a:yes searches for all messages from Fred to John with an attachment (and many other search enhancements, see list further down)\n\n  <b>Quicker Quicksearch</b>:  easily search for recipients/domain/subject of highlighted email in quicksearch.\n\n<b>Nostalgy++</b>: easy archiving/moving of emails to their destination folders,\n      with autocomplete of folder names and rules for suggested folder.\n      Compose window: always display cc or bcc, easy selecting input fields (to, cc, bcc, body, attachments), etc.\n\n<b>Text insert</b>: Easy inserting standard text. br+ctrl-D converts to best regards. Define your own replacements. After insert, the cursor can be in the middle of the replacement text, to continue writing between a 'hello' and the regards.\n\n<b>Attachment image viewer</b>: Attachment download dialog shows thumbnail of image. Image viewer with zoom, rotate, flip, slideshow etc. \n\n<b>XNote++</b>: Add notes to your emails to remind or to plan a reply."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/glodaquilla-ng-index-ondisk/edit",
+    "guid": "glodaquilla-ng@opto.one",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": null,
+    "icon_url": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png",
+    "icons": {
+        "32": "https://addons.thunderbird.net/static/img/addon-icons/default-32.png",
+        "64": "https://addons.thunderbird.net/static/img/addon-icons/default-64.png"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2021-05-12T16:27:01Z",
+    "name": {
+        "de": "Glodaquilla-NG: Email onDisk Status, Search/Index"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/glodaquilla-ng-index-ondisk/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/988100",
+    "slug": "glodaquilla-ng-index-ondisk",
+    "status": "public",
+    "summary": {
+        "de": "Global Search/Indexing Enhancements/ On Disk Status for IMAP\nPermits selective enabling and disabling of search indexing on folders or accounts - with inheritence. Extra columns can show whether a mail is stored on disk and its indexing status."
+    },
+    "support_email": null,
+    "support_url": null,
+    "tags": [
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/glodaquilla-ng-index-ondisk/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "mext": true,
+            "comp69plus": true,
+            "comp78plus": true,
+            "comp61plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2021-05-12T12:20:58Z",
+            "comp78pv_version": "1.2",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "78.*"
+        }
+    }
+}

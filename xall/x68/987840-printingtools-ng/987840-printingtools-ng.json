@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 4483,
+    "average_daily_users": 4966,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,26 +19,26 @@
     "contributions_url": "http://paypal.me/cleidigh",
     "created": "2020-06-05T22:31:33Z",
     "current_version": {
-        "id": 2475484,
+        "id": 2475938,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/printingtools-ng/versions/2475484",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/printingtools-ng/versions/2475938",
         "files": [
             {
-                "id": 1018645,
-                "created": "2021-03-09T23:45:42Z",
-                "hash": "sha256:d558da966ebbb25bc206ab829a1ac1a772544e1bdd95778d6131a878bad7eef2",
+                "id": 1019098,
+                "created": "2021-05-28T23:54:40Z",
+                "hash": "sha256:c528c410d69c7ff3344acb8bb1a589cb26c6d631c1bdbe655fcc31dcd2bfad68",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 128099,
+                "size": 139377,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018645/printingtools_ng-2.0.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019098/printingtools_ng-2.0.6-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -72,17 +72,17 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Version 2.0.4 : 68/78 Update - March 9, 2021\n\n- Move options on 78 to addons page \n- Fix show/hide headers \n- Fix short date format #28\n- Fix line truncation #24\n- Fix long attachment truncation #23\n- Fix unpopulated printer list on install\n- Dutch locale improvements - @Vistaus"
+            "en-US": "Version 2.0.6 : 68/78/89+ Update - May 29, 2021\n\n- Allow compatibility to 89+ (experimental support only) #66\n- Add option: Use 'Cc' and 'Bcc' for all locales (otherwise localized)\n- Make header dynamically sized to largest item\n- Add option #67: Show p7m,p7s,vcf files\n- Add debug option : use 'initialsource' and/or 'finaloutput' \n  in custom name field for output\n- Fix #69  Set system option to allow custom fonts, inform user\n- Fix 'From' in Chinese locale\n- Various German, Japanese locale improvements\n\nAgain thanks for testers/localizers:\n@RRoenn\n@kiki-ja\n@tidebre67 \n@KC-T \n@madvinegar"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/printingtools-ng/versions/2.0.4",
-        "version": "2.0.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/printingtools-ng/versions/2.0.6",
+        "version": "2.0.6"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "PrintingTools NG provides numerous layout and formatting options for\nprinting messages, the address books and individual contacts.  It is\na fork and update of the original PrintingTools extension.  Currently\nthe extension supports Thunderbird 68-78.\n\nVersion 2.0.4 : 68/78 Update - March 9, 2021\n\n- Move options on 78 to addons page \n- Fix show/hide headers \n- Fix short date format #28\n- Fix line truncation #24\n- Fix long attachment truncation #23\n- Fix unpopulated printer list on install\n- Dutch locale improvements - @Vistaus\n\nThe following are the main enhancements provided by PrintingTools NG, \nsee the options for additional features.\n\nOptions &amp; Menus:\n- Options access from the Tools/Add-on options (68), add-ons page (78)\n- Printing Options menu added to File menu\n- Optional \"Printing Options\" button added to Print Preview window\n\nMessage Layout &amp; Formatting:\n- Add message header border\n- Add Username, Folder or custom title\n- Hide standard or extended headers\n- Reorder standard headers\n- Add for the attachment table to header with icons\n- Hide inline attachments\n- Configure font family and size\n- Highlight quoted text color, font and size\n- Print selected text only\n\nAddressBook &amp; Contact Layout &amp; Formatting:\n- Configure font family and size\n- Compact printing format option\n- Print name and e-mail only\n- Remove \"Card For\" from entries",
-        "de": "PrintingTools NG bietet zahlreiche Layout- und Formatierungsoptionen für\nDrucken von Nachrichten, Adressbüchern und einzelnen Kontakten. Es ist\neine Abzweigung und Aktualisierung der ursprünglichen PrintingTools-Erweiterung. Zur Zeit\nDie Erweiterung unterstützt Thunderbird 68-72 mit der Absicht, letztendlich\nKonvertierung in eine vollständige MailExtension für 78+.\n\n<b> Neue Version 0.1.3: Gebietsschemas / Drucker \n\n- Neue Standarddruckeroption (dauerhaft)\n- Fehlende Übersetzungen korrigieren\n- Viele neue Orte\n \nVollständige Gebietsschemaliste (Original und Neu):\n\n   (hy) Armenier, (ca) Katalaner, (zh-CN) Chinesen (vereinfacht),\n   (da) Dänisch, (nl) Niederländisch, (en) Englisch, (fi) Finnisch,\n   (fr) Französisch, (gl) Galizisch, (de) Deutsch, (el) Griechisch,\n   (hu) Ungarisch, (it) Italienisch, (ja) Japanisch, (ko) Koreanisch,\n   (nein) Norwegisch, (pl) Polnisch, (pt-PT) Portugiesisch (Portugal),\n   (ru) Russisch, (sk) Slowakisch, (sl) Slowenisch, (es) Spanisch,\n   (sv) schwedisch, (uk) ukrainisch\n\n\nIm Folgenden sind die wichtigsten Verbesserungen aufgeführt, die von PrintingTools NG bereitgestellt werden:\nWeitere Funktionen finden Sie in den Optionen.\n\nOptionen &amp; Menüs:\n- Zugriff auf Optionen über die Tools / Add-On-Optionen\n- Das Menü Druckoptionen wurde zu den Dateimenüs hinzugefügt\n- Optionale Schaltfläche \"Druckoptionen\" zum Fenster \"Seitenansicht\" hinzugefügt\n\nNachrichtenlayout und Formatierung:\n- Nachrichtenkopfrahmen hinzufügen\n- Fügen Sie Benutzername, Ordner oder benutzerdefinierten Titel hinzu\n- Standard- oder erweiterte Header ausblenden\n- Standard-Header neu anordnen\n- Fügen Sie die Anhangstabelle mit Symbolen zur Kopfzeile hinzu\n- Inline-Anhänge ausblenden\n- Konfigurieren Sie Schriftfamilie und Schriftgröße\n- Markieren Sie die zitierte Textfarbe, Schriftart und Größe\n- Nur ausgewählten Text drucken\n\nAdressbuch &amp; Kontakt Layout &amp; Formatierung:\n- Konfigurieren Sie Schriftfamilie und Schriftgröße\n- Kompakte Druckformatoption\n- Nur Name und E-Mail drucken\n- Entfernen Sie \"Card For\" aus den Einträgen</b>",
-        "ja": "PrintingTools NGは、多くのレイアウトとフォーマットのオプションを提供します\nメッセージ、アドレス帳、個々の連絡先の印刷。です\nオリジナルのPrintingTools拡張のフォークとアップデート。現在\n拡張機能は、最終的にはThunderbird 68-72をサポートします\n78+の完全なMailExtensionに変換します。\n\n<b>新しいバージョン0.1.3：ロケール/プリンタ\n\n-新しいデフォルトプリンターオプション（永続）\n-不足している翻訳を修正\n-多くの新しいロケール\n \n完全なロケールリスト（オリジナルと新規）：\n\n   （hy）アルメニア語、（ca）カタロニア語、（zh-CN）中国語（簡体字）、\n   （da）デンマーク語、（nl）オランダ語、（en）英語、（fi）フィンランド語、\n   （fr）フランス語、（gl）ガリシア語、（de）ドイツ語、（el）ギリシャ語、\n   （hu）ハンガリー語、（it）イタリア語、（ja）日本語、（ko）韓国語、\n   （いいえ）ノルウェー語、（pl）ポーランド語、（pt-PT）ポルトガル語（ポルトガル）、\n   （ru）ロシア語、（sk）スロバキア語、（sl）スロベニア語、（es）スペイン語、\n   （sv）スウェーデン語、（uk）ウクライナ語\n\n\n以下は、PrintingTools NGによって提供される主な機能強化です。\n追加機能のオプションを参照してください。\n\nオプションとメニュー：\n-ツール/アドオンオプションからのオプションアクセス\n-[ファイル]メニューに[印刷オプション]メニューを追加\n-オプションの「印刷オプション」ボタンが印刷プレビューウィンドウに追加されました\n\nメッセージのレイアウトとフォーマット：\n-メッセージヘッダーの境界線を追加する\n-ユーザー名、フォルダ、またはカスタムタイトルを追加\n-標準または拡張ヘッダーを非表示にする\n-標準ヘッダーの並べ替え\n-添付ファイルテーブルをアイコン付きのヘッダーに追加\n-インラインの添付ファイルを隠す\n-フォントファミリーとサイズを設定する\n-引用されたテキストの色、フォント、サイズを強調表示します\n-選択したテキストのみを印刷\n\nアドレス帳と連絡先のレイアウトとフォーマット：\n-フォントファミリーとサイズを設定する\n-コンパクトな印刷形式オプション\n-名前と電子メールのみを印刷\n-エントリから「カードの」を削除します</b>",
+        "en-US": "PrintingTools NG provides numerous layout and formatting options for\nprinting messages, the address books and individual contacts.  It is\na fork and update of the original PrintingTools extension.  Currently\nthe extension supports Thunderbird 68-78 with 89+ experimentally.\n\n\nVersion 2.0.6 : 68/78/89+ Update - May 29, 2021\n\n- Allow compatibility to 89+ (experimental support only) #66.\n- Add option: Use 'Cc' and 'Bcc' for all locales (otherwise localized).\n- Make header dynamically sized to largest item.\n- Add option #67: Show p7m,p7s,vcf files.\n- Add debug option : use 'initialsource' and/or 'finaloutput' \n  in custom name field for output.\n- Fix #69  Set system option to allow custom fonts, inform user.\n- Fix 'From' in Chinese locale.\n- Various German, Japanese locale improvements.\n\nAgain thanks for testers/localizers:\n@RRoenn\n@kiki-ja\n@tidebre67 \n@KC-T \n@madvinegar\n\n\nThe following are the main enhancements provided by PrintingTools NG, \nsee the options for additional features.\n\nOptions &amp; Menus:\n- Options access from the Tools/Add-on options.\n- Printing Options menu added to File menus.\n- Optional \"Printing Options\" but added to Print Preview window.\n\nMessage Layout &amp; Formatting:\n- Add customizable header border with CSS.\n- Add header background color.\n- Add Username, Folder or custom title.\n- Hide standard or extended headers.\n- Reorder standard headers.\n- Add for the attachment table to header with icons.\n- Show signature files.\n- Hide inline attachments.\n- Configure font family and size.\n- Highlight quoted text color, font and size.\n- Print selected text only.\n\nAddressBook &amp; Contact Layout &amp; Formatting:\n- Configure font family and size.\n- Compact printing format option.\n- Print name and e-mail only.\n- Remove \"Card For\" from entries.",
+        "de": "PrintingTools NG bietet zahlreiche Layout- und Formatierungsoptionen für\nDrucken von Nachrichten, Adressbüchern und einzelnen Kontakten. Es ist\neine Abzweigung und Aktualisierung der ursprünglichen PrintingTools-Erweiterung. Zur Zeit\nDie Erweiterung unterstützt Thunderbird 68-78 mit 89+ experimentell.\n\n\nVersion 2.0.6: 68/78/89 + Update - 29. Mai 2021\n\n- Kompatibilität bis 89+ zulassen (nur experimentelle Unterstützung) # 66\n- Option hinzufügen: Verwenden Sie 'Cc' und 'Bcc' für alle Gebietsschemas (ansonsten lokalisiert).\n- Stellen Sie die Größe des Headers dynamisch auf das größte Element ein\n- Option Nr. 67 hinzufügen: p7m-, p7s- und vcf-Dateien anzeigen\n- Debug-Option hinzufügen: Verwenden Sie 'initialsource' und / oder 'finaloutput'.\n  im benutzerdefinierten Namensfeld für die Ausgabe\n- Fix # 69 Systemoption festlegen, um benutzerdefinierte Schriftarten zuzulassen, Benutzer informieren\n- Korrigieren Sie 'Von' im chinesischen Gebietsschema\n- Verschiedene deutsche, japanische Gebietsschemaverbesserungen\n\nNochmals vielen Dank für Tester / Lokalisierer:\n@RRoenn\n@ kiki-ja\n@ tidebre67\n@ KC-T\n@ Madvinegar\n\n\nIm Folgenden sind die wichtigsten Verbesserungen aufgeführt, die von PrintingTools NG bereitgestellt werden:\nWeitere Funktionen finden Sie in den Optionen.\n\nOptionen &amp; Menüs:\n- Zugriff auf Optionen über die Tools / Add-On-Optionen\n- Menü \"Druckoptionen\" zu den Menüs \"Datei\" hinzugefügt\n- Optionale \"Druckoptionen\", jedoch zum Fenster \"Seitenansicht\" hinzugefügt\n\nNachrichtenlayout und Formatierung:\n- Nachrichtenkopfrahmen hinzufügen\n- Fügen Sie einen Benutzernamen, einen Ordner oder einen benutzerdefinierten Titel hinzu\n- Standard- oder erweiterte Header ausblenden\n- Standard-Header neu anordnen\n- Fügen Sie die Anhangstabelle mit Symbolen zur Kopfzeile hinzu\n- Fügen Sie mit CSS einen anpassbaren Rahmen hinzu\n- Inline-Anhänge ausblenden\n- Konfigurieren Sie Schriftfamilie und Schriftgröße\n- Markieren Sie die zitierte Textfarbe, Schriftart und Größe\n- Nur ausgewählten Text drucken\n\nAdressbuch &amp; Kontakt Layout &amp; Formatierung:\n- Konfigurieren Sie Schriftfamilie und Schriftgröße\n- Kompakte Druckformatoption\n- Nur Name und E-Mail drucken\n- Entfernen Sie \"Card For\" aus den Einträgen",
+        "ja": "PrintingTools NG provides numerous layout and formatting options for\nprinting messages, the address books and individual contacts.  It is\na fork and update of the original PrintingTools extension.  Currently\nthe extension supports Thunderbird 68-78 with 89+ experimentally.\n\n\nVersion 2.0.6 : 68/78/89+ Update - May 29, 2021\n\n- Allow compatibility to 89+ (experimental support only) #66.\n- Add option: Use 'Cc' and 'Bcc' for all locales (otherwise localized).\n- Make header dynamically sized to largest item.\n- Add option #67: Show p7m,p7s,vcf files.\n- Add debug option : use 'initialsource' and/or 'finaloutput' \n  in custom name field for output.\n- Fix #69  Set system option to allow custom fonts, inform user.\n- Fix 'From' in Chinese locale.\n- Various German, Japanese locale improvements.\n\nAgain thanks for testers/localizers:\n@RRoenn\n@kiki-ja\n@tidebre67 \n@KC-T \n@madvinegar\n\n\nThe following are the main enhancements provided by PrintingTools NG, \nsee the options for additional features.\n\nOptions &amp; Menus:\n- Options access from the Tools/Add-on options.\n- Printing Options menu added to File menus.\n- Optional \"Printing Options\" but added to Print Preview window.\n\nMessage Layout &amp; Formatting:\n- Add customizable header border with CSS.\n- Add header background color.\n- Add Username, Folder or custom title.\n- Hide standard or extended headers.\n- Reorder standard headers.\n- Add for the attachment table to header with icons.\n- Show signature files.\n- Hide inline attachments.\n- Configure font family and size.\n- Highlight quoted text color, font and size.\n- Print selected text only.\n\nAddressBook &amp; Contact Layout &amp; Formatting:\n- Configure font family and size.\n- Compact printing format option.\n- Print name and e-mail only.\n- Remove \"Card For\" from entries.PrintingTools NG はメッセージやアドレス帳、個々の連絡先を印刷するための多数のレイアウトおよび書式設定オプションを提供します。\nこれはオリジナルの PrintingTools 拡張機能をフォークして更新したものです。\n現在 Thunderbird 68 - 78 と実験的に 89+ をサポートしています。\n\nバージョン 2.0.6 : 68/78/89+ アップデート - 2021年5月29日\n\n    #66 89+ との互換性を適用しました。（実験的な対応です）\n    「すべてのロケールで'Cc'と'Bcc'を使用する(それ以外はローカライズ)」オプションを追加しました。\n    ヘッダーのサイズを最大項目に合わせて動的に対応するように変更しました。\n    #67 「p7m,p7s,vcf ファイルを表示する」オプションを追加しました。\n    出力のカスタムネームフィールドに「initialsource」または「'finaloutput」を使用するデバッグプションを追加しました。\n    #69 カスタムフォントを許可するシステムオプションを設定し，ユーザーに通知する修正をしました。\n    中国語ロケールの「From」を修正しました。\n    ドイツ語、日本語ロケールのいくつかの改善をしました。\n\nテスター、ローカライザーの皆さんに再度感謝します。\n@RRoenn\n@kiki-ja\n@tidebre67\n@KC-T\n@madvinegar\n\n\n以下は、PrintingToolsNGによって提供される主な拡張機能です。\n追加機能のオプションを参照してください。\n\nオプションとメニュー：\n-ツール/アドオンオプションからのオプションアクセス。\n-[ファイル]メニューに[印刷オプション]メニューが追加されました。\n-オプションの「印刷オプション」ですが、印刷プレビューウィンドウに追加されました。\n\nメッセージのレイアウトとフォーマット：\n-CSSでカスタマイズ可能なヘッダー境界線を追加します。\n-ヘッダーの背景色を追加します。\n-ユーザー名、フォルダ、またはカスタムタイトルを追加します。\n-標準ヘッダーまたは拡張ヘッダーを非表示にします。\n-標準ヘッダーを並べ替えます。\n-添付ファイルをアイコン付きのヘッダーに追加します。\n-署名ファイルを表示します。\n-インライン添付ファイルを非表示にします。\n-フォントファミリとサイズを構成します。\n-引用されたテキストの色、フォント、サイズを強調表示します。\n-選択したテキストのみを印刷します。\n\nAddressBookと連絡先のレイアウトとフォーマット：\n-フォントファミリとサイズを構成します。\n-コンパクトな印刷フォーマットオプション。\n-名前と電子メールのみを印刷します。\n-エントリから「CardFor」を削除します。103",
         "es": "PrintingTools NG ofrece numerosas opciones de diseño y formato para\nimprimir mensajes, libretas de direcciones y contactos individuales. Está\nuna bifurcación y actualización de la extensión original de PrintingTools. Actualmente\nla extensión es compatible con Thunderbird 68-72 con la intención de finalmente\nconvirtiendo a una MailExtension completa para 78.\n\n<b> Nueva versión 0.1.3: configuraciones regionales</b>"
     },
     "developer_comments": null,
@@ -105,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-03-10T17:23:01Z",
+    "last_updated": "2021-05-29T07:00:09Z",
     "name": {
         "sk": "PrintingTools NG",
         "sv-SE": "PrintingTools NG",
@@ -212,10 +212,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.64352,
-        "count": 18,
-        "average": 4.7222,
-        "text_count": 18
+        "bayesian_average": 4.64768,
+        "count": 21,
+        "average": 4.7143,
+        "text_count": 21
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/printingtools-ng/reviews/",
     "requires_payment": false,
@@ -225,7 +225,7 @@
     "summary": {
         "sk": "Nástroje na tlač správ a adries (NextGen)",
         "sv-SE": "Verktyg för utskrift av meddelanden och adresser (NextGen)",
-        "en-US": "Message &amp; Address Printing Tools (NextGen)\n\nNew 78 Update!  68/78 Compatible",
+        "en-US": "Message &amp; Address Printing Tools (NextGen)\n\nNew 78 Update with compatibility for 89+",
         "pt-BR": "Ferramentas de impressão de mensagens e endereços (NextGen)"
     },
     "support_email": null,
@@ -243,11 +243,9 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp68": true,
-            "comp69plus": true,
-            "comp78plus": true,
-            "comp61plus": true
+            "comp68": true
         }
     }
 }

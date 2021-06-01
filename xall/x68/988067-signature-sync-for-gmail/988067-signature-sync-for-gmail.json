@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 60,
+    "average_daily_users": 132,
     "categories": {
         "thunderbird": [
             "appearance",
@@ -19,31 +19,32 @@
     "contributions_url": "",
     "created": "2021-03-06T21:19:27Z",
     "current_version": {
-        "id": 2475469,
+        "id": 2475859,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.4.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-sync-for-gmail/versions/2475469",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-sync-for-gmail/versions/2475859",
         "files": [
             {
-                "id": 1018630,
-                "created": "2021-03-06T21:19:27Z",
-                "hash": "sha256:cf675d99f197239752358a865805ee3d94a2eb8d0051bec8fbc30430db768002",
+                "id": 1019019,
+                "created": "2021-05-08T15:05:27Z",
+                "hash": "sha256:3bb1ec696f9248c1a45e6e60eb30d12152d612344ca12171453e7d23764b7b28",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 15066,
+                "size": 19818,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018630/signature_sync_for_gmail-1.0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019019/signature_sync_for_gmail-2.0.2-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "identity",
                     "storage",
-                    "*://www.googleapis.com/*"
+                    "*://www.googleapis.com/*",
+                    "*://oauth2.googleapis.com/*"
                 ]
             }
         ],
@@ -78,22 +79,24 @@
             },
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
-        "release_notes": null,
-        "reviewed": "2021-03-11T08:26:05Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-sync-for-gmail/versions/1.0.2",
-        "version": "1.0.2"
+        "release_notes": {
+            "en-US": "<ul>      <li>        <b>Important change.</b> The add-on (version from Thunderbid add-on portal) contains now\n        default OAuth credentials, but it still during certification and can handle just limited\n        number of users.\n      </li>      <li>        <b>Breaking change!</b> Use \"desktop app\" oauth client type. Your OAuth credentials requires\n        update. Please follow\n        <a rel=\"nofollow\" href=\"https://github.com/kam193/thbrd-signature/wiki/Registering-own-OAuth-app-in-Google\">instructions</a>.\n      </li>      <li>Fix problem with sync stopped shortly after connection.</li>      <li>Show error popup after every 3 failed sync tries.</li>      <li>Show changelog page on major updates.</li>      <li>Dark theme support</li>    </ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-sync-for-gmail/versions/2.0.2",
+        "version": "2.0.2"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "This extension allows you to automatically use your signature from Gmail accounts in Thunderbird. No longer need to maintain two separated signatures!\n\nYou can select a Gmail account for every Thunderbird account. Signatures are synced on app startup, or when you click a button on the options page.\n\n<b>Attention!</b> This is still a beta version. Please report any troubles. In addition, <b>you need to configure your own OAuth credentials in Google</b>. This is described on a <a rel=\"nofollow\" href=\"https://github.com/kam193/thbrd-signature/wiki/Registering-own-OAuth-app-in-Google\">wiki page</a>. I hope this difficulty will be gone soon."
+        "en-US": "This extension allows you to automatically use your signature from Gmail accounts in Thunderbird. No longer need to maintain two separated signatures!\n\nYou can select a Gmail account for every Thunderbird account. Signatures are synced on app startup, or when you click a button on the options page. \n\nAfter installing, <b>please visit add-on options page and configure your sync!</b>\n\n100% privacy friendly - nothing is sent outside your Thunderbird, and if you wish, you can configure your own OAuth credentials in Google. This is described on a <a rel=\"nofollow\" href=\"https://github.com/kam193/thbrd-signature/wiki/Registering-own-OAuth-app-in-Google\">wiki page</a>. Starting version 2 it's just optional feature."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/signature-sync-for-gmail/edit",
     "guid": "signature-sync@thunderbird.extensions.kam193",
     "has_eula": false,
-    "has_privacy_policy": false,
+    "has_privacy_policy": true,
     "homepage": {
-        "en-US": "https://github.com/kam193/thbrd-signature"
+        "en-US": "https://thbrd-signature.kam193.eu/"
     },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/988/988067-64.png?modified=0f72bfa4",
     "icons": {
@@ -104,34 +107,50 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-03-11T08:26:05Z",
+    "last_updated": "2021-05-08T15:22:24Z",
     "name": {
         "en-US": "Signature sync for Gmail"
     },
     "previews": [
         {
-            "id": 206469,
+            "id": 206544,
             "caption": {
                 "en-US": "You can choose an Gmail account for every Thunderbird account"
             },
             "image_size": [
-                621,
+                625,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206469.png?modified=1615066933",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206544.png?modified=1620501751",
             "thumbnail_size": [
-                155,
+                156,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206469.png?modified=1615066933"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206544.png?modified=1620501751"
+        },
+        {
+            "id": 206545,
+            "caption": {
+                "en-US": "Dark theme (experimental) and using your own Google OAuth credentials are supported"
+            },
+            "image_size": [
+                654,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206545.png?modified=1620501756",
+            "thumbnail_size": [
+                164,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206545.png?modified=1620501756"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 0,
-        "count": 0,
-        "average": 0,
-        "text_count": 0
+        "bayesian_average": 3.85839,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/signature-sync-for-gmail/reviews/",
     "requires_payment": false,
@@ -143,7 +162,7 @@
     },
     "support_email": null,
     "support_url": {
-        "en-US": "https://github.com/kam193/thbrd-signature"
+        "en-US": "https://github.com/kam193/thbrd-signature/issues"
     },
     "tags": [
         "firefox57",
