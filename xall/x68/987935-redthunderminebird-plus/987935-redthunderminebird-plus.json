@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 79,
+    "average_daily_users": 72,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-05T07:52:54Z",
     "current_version": {
-        "id": 2475876,
+        "id": 2475970,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/redthunderminebird-plus/versions/2475876",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/redthunderminebird-plus/versions/2475970",
         "files": [
             {
-                "id": 1019036,
-                "created": "2021-05-12T02:11:57Z",
-                "hash": "sha256:35bd1a0a76453d07368ad6db4c9b7b8e33f607e094e88b9ca2ac6943d51e7669",
+                "id": 1019130,
+                "created": "2021-06-04T05:42:59Z",
+                "hash": "sha256:42f1f217dc0133dcb111b8e8a469a3be4d80f3798d7b66e47af0a33dec5fd856",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 84460,
+                "size": 84852,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019036/redthunderminebird_plus_redmine-2.1.7-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019130/redthunderminebird_plus_redmine-2.1.8-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "menus",
@@ -57,12 +57,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "* Open link in the default browser on Thunderbird 78.6 and later.\n* Fix hanging with blank dialog on slow Thunderbird situations.",
-            "ja": "* Thunderbird 78.6以降で、リンクを既定のブラウザで開くようにした\n* Thunderbirdの動作が遅いときにダイアログが真白な状態でハングアップしてしまう問題を修正"
+            "en-US": "* Open clicked URL with the default browser if possible.\n* Handle custom fields added to fetched issues correctly.\n* Support default configs provided via managed storage.",
+            "ja": "* 可能であれば、リンクを既定のブラウザーで開くようにした\n* 取得したチケットに追加されたカスタムフィールドを正しく取り扱えるように修正\n* Managed Storageによる規定の設定値の提供に対応"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/redthunderminebird-plus/versions/2.1.7",
-        "version": "2.1.7"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/redthunderminebird-plus/versions/2.1.8",
+        "version": "2.1.8"
     },
     "default_locale": "en-US",
     "description": {
@@ -84,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-05-12T02:15:03Z",
+    "last_updated": "2021-06-04T05:45:03Z",
     "name": {
         "en-US": "RedThunderMineBird Plus",
         "ja": "RedThunderMineBird Plus - Redmine連携+"

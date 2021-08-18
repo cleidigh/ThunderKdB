@@ -612,30 +612,39 @@ var cardbookSynchronizationGoogle2 = {
 				} else if (response && (status > 199 && status < 400)) {
 					cardbookRepository.cardbookServerSyncHandleRemainingCardTotal[aConnection.connPrefId] = cardbookSynchronization.getCardsNumber(aConnection.connPrefId);
 					let responseJSON = JSON.parse(response);
-					for (let resource of responseJSON.connections) {
-						let tmpArray = resource.resourceName.split("/");
-						let uid = tmpArray[tmpArray.length - 1];
-						let href = cardbookRepository.cardbookOAuthData.GOOGLE2.CONTACT_URL + "/" + uid;
-						let etag = resource.metadata.sources[0].etag;
-						cardbookSynchronizationGoogle2.contacts[aConnection.connPrefId][uid] = { href: href, etag: etag, memberships: resource.memberships, resourceEtag: resource.etag};
-						cardbookRepository.cardbookServerCardSyncTotal[aConnection.connPrefId]++;
-						cardbookRepository.cardbookServerSyncCompareCardWithCacheTotal[aConnection.connPrefId]++;
-					}
-					if (responseJSON.nextPageToken == null) {
-						for (let uid in cardbookSynchronizationGoogle2.contacts[aConnection.connPrefId]) {
-							let card = cardbookSynchronizationGoogle2.contacts[aConnection.connPrefId][uid];
-							let aCardConnection = {accessToken: aConnection.accessToken, connPrefId: aConnection.connPrefId, connUrl: card.href, connDescription: aConnection.connDescription,
-													connUser: aConnection.connUser};
-							await cardbookSynchronizationGoogle2.compareServerCardWithCache(aCardConnection, uid, card.etag, uid);
-							if (cardbookRepository.cardbookCardsFromCache[aCardConnection.connPrefId][uid]) {
-								delete cardbookRepository.cardbookCardsFromCache[aCardConnection.connPrefId][uid];
-								cardbookRepository.cardbookServerSyncHandleRemainingCardTotal[aCardConnection.connPrefId]--;
+					if (responseJSON.connections) {
+						for (let resource of responseJSON.connections) {
+							let tmpArray = resource.resourceName.split("/");
+							let uid = tmpArray[tmpArray.length - 1];
+							let href = cardbookRepository.cardbookOAuthData.GOOGLE2.CONTACT_URL + "/" + uid;
+							let etag = resource.metadata.sources[0].etag;
+							// Google sometimes answers the same contacts
+							if (typeof cardbookSynchronizationGoogle2.contacts[aConnection.connPrefId][uid] == "undefined") {
+								cardbookSynchronizationGoogle2.contacts[aConnection.connPrefId][uid] = { href: href, etag: etag, memberships: resource.memberships, resourceEtag: resource.etag};
+								cardbookRepository.cardbookServerCardSyncTotal[aConnection.connPrefId]++;
+								cardbookRepository.cardbookServerSyncCompareCardWithCacheTotal[aConnection.connPrefId]++;
 							}
 						}
-						await cardbookSynchronizationGoogle2.handleRemainingCardCache(aConnection);
+						if (responseJSON.nextPageToken == null) {
+							for (let uid in cardbookSynchronizationGoogle2.contacts[aConnection.connPrefId]) {
+								let card = cardbookSynchronizationGoogle2.contacts[aConnection.connPrefId][uid];
+								let aCardConnection = {accessToken: aConnection.accessToken, connPrefId: aConnection.connPrefId, connUrl: card.href, connDescription: aConnection.connDescription,
+														connUser: aConnection.connUser};
+								await cardbookSynchronizationGoogle2.compareServerCardWithCache(aCardConnection, uid, card.etag, uid);
+								if (cardbookRepository.cardbookCardsFromCache[aCardConnection.connPrefId][uid]) {
+									delete cardbookRepository.cardbookCardsFromCache[aCardConnection.connPrefId][uid];
+									cardbookRepository.cardbookServerSyncHandleRemainingCardTotal[aCardConnection.connPrefId]--;
+								}
+							}
+							await cardbookSynchronizationGoogle2.handleRemainingCardCache(aConnection);
+						} else {
+							cardbookRepository.cardbookServerSyncRequest[aConnection.connPrefId]++;
+							cardbookSynchronizationGoogle2.googleSyncContacts(aConnection, responseJSON.nextPageToken)
+						}
 					} else {
-						cardbookRepository.cardbookServerSyncRequest[aConnection.connPrefId]++;
-						cardbookSynchronizationGoogle2.googleSyncContacts(aConnection, responseJSON.nextPageToken)
+						console.debug(responseJSON);
+						cardbookRepository.cardbookUtils.formatStringForOutput("synchronizationFailed", [aConnection.connDescription, "googleSyncContacts", aConnection.connUrl, status], "Error");
+						cardbookRepository.cardbookServerCardSyncError[aConnection.connPrefId]++;
 					}
 					cardbookRepository.cardbookServerSyncResponse[aConnection.connPrefId]++;
 				} else {
@@ -895,6 +904,7 @@ var cardbookSynchronizationGoogle2 = {
 				} else {
 					cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId] = cardbookRepository.cardbookServerCardSyncDone[aConnection.connPrefId] + length;
 					cardbookRepository.cardbookServerMultiGetError[aConnection.connPrefId]++;
+					cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetFailed", [aConnection.connDescription, aConnection.connUrl, status], "Error");
 				}
 				cardbookRepository.cardbookServerMultiGetResponse[aConnection.connPrefId]++;
 			}
@@ -1164,11 +1174,11 @@ var cardbookSynchronizationGoogle2 = {
 		// 	GoogleContact.genders.push(gender);
 		// }
 
-		let isDate = cardbookRepository.cardbookDates.convertDateStringToDate(aCard.bday, dateFormat);
+		let isDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(aCard.bday, dateFormat);
 		if (isDate != "WRONGDATE") {
 			GoogleContact.birthdays = [];
 			let birthday = {};
-			let dateSplitted = cardbookDates.splitDateIntoComponents(isDate);
+			let dateSplitted = cardbookDates.splitUTCDateIntoComponents(isDate);
 			let day = parseInt(dateSplitted.day);
 			let month = parseInt(dateSplitted.month);
 			if (dateSplitted.year == "1604") {
@@ -1244,9 +1254,9 @@ var cardbookSynchronizationGoogle2 = {
 		let resultEvents = [];
 		let events = cardbookRepository.cardbookUtils.getEventsFromCard(aCard.note.split("\n"), aCard.others);
 		for (let event of events.result) {
-			let isDate = cardbookRepository.cardbookDates.convertDateStringToDate(event[0], dateFormat);
+			let isDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(event[0], dateFormat);
 			if (isDate != "WRONGDATE") {
-				let dateSplitted = cardbookDates.splitDateIntoComponents(isDate);
+				let dateSplitted = cardbookDates.splitUTCDateIntoComponents(isDate);
 				resultEvents.push([event[1], dateSplitted]);
 			}
 		}

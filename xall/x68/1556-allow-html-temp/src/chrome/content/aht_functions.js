@@ -355,14 +355,14 @@ var ahtFunctions = {
     try {
       if (!Services.prefs.getBoolPref(
         "extensions.allowhtmltemp.reset_javascript_default_done_once")) {
-        console.log("AHT: JS Reset pref is false or not yet existing");
+        // console.log("AHT: JS Reset pref is false or not yet existing");
 
         // Remove the AHT temp option for JavaScript
         if (!Services.prefs.getBoolPref(
           "extensions.allowhtmltemp.JavaScriptTemp")) {
-          console.log("AHT: default setting JavaScriptTemp is false or not existing");
+          // console.log("AHT: default setting JavaScriptTemp is false or not existing");
         } else {
-          console.log("AHT: default setting JavaScriptTemp existing and true - will be set to false");
+          // console.log("AHT: default setting JavaScriptTemp existing and true - will be set to false");
           Services.prefs.setBoolPref(
             "extensions.allowhtmltemp.JavaScriptTemp", false);
         }
@@ -371,7 +371,7 @@ var ahtFunctions = {
         if (!Services.prefs.getBoolPref(
           "javascript.enabled")) {
 
-          console.log("AHT: javascript.enabled is false - will be reset to true");
+          // console.log("AHT: javascript.enabled is false - will be reset to true");
           Services.prefs.setBoolPref(
             "javascript.enabled", true);
 
@@ -393,7 +393,7 @@ var ahtFunctions = {
             "extensions.allowhtmltemp.reset_javascript_default_done_once", true);
   
         } else {
-          console.log("AHT: javascript.enabled is true (default)");
+          // console.log("AHT: javascript.enabled is true (default)");
         }
 
       } else {

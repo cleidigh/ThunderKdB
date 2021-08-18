@@ -2,16 +2,402 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 901:
+/***/ 6141:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "o": () => /* binding */ messageActions,
-/* harmony export */   "B": () => /* binding */ messagesSlice
+/* harmony export */   "sE": () => (/* binding */ isWebextension),
+/* harmony export */   "Xh": () => (/* binding */ browser)
 /* harmony export */ });
-/* harmony import */ var _reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(850);
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(407);
-/* harmony import */ var _es_modules_thunderbird_compat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(415);
+/* unused harmony exports i18n, initializeI18n */
+/* harmony import */ var _prefs_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4131);
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+// A compatibility layer that can be imported whether in the browser or
+// in Thunderbird
+ // Make sure the browser object exists
+
+if (window.BrowserSim && !window.browser) {
+  // BrowserSim is a workaround until Conversations is converted to a webextension
+  // and has a native `browser` object available.
+  window.browser = window.BrowserSim.getBrowser();
+} // If we have a `window.browser` object, we are running as a webextension as opposed to
+// running in the browser or in test mode. We suppress certain expected errors when we
+// know that we're not a webextension.
+
+
+const isWebextension = !!window.browser;
+const browser = window.browser || {}; // `i18n` is a replacement for `browser.i18n`.  `getMessage` defaults
+// `browser.i18n.getMessage` if the function exists. Otherwise, locale
+// information is `fetch`ed and `getMessage` is polyfilled. The `isLoaded`
+// promise resolves to `true` when the library has fully loaded.
+
+const i18n = {
+  getMessage: (messageName, substitutions) => `<not loaded>${messageName}`,
+  isLoaded: Promise.resolve(true),
+  isPolyfilled: true
+};
+const ALL_LOCALES = ["bg", "ca", "cs", "da", "de", "el", "en", "es", "eu", "fi", "fr", "gl", "he-IL", "hr", "it", "ja-JP", "lt", "nl", "pl", "pt-BR", "rm", "ru-RU", "sl", "sr", "sv-SE", "tr", "uk", "zh-CN", "zh-TW"];
+/**
+ * This function should only be used in the dev frame. It is exported
+ * to give the dev frame a way to mock a change to the UI language.
+ *
+ * @export
+ * @param {*} resolve
+ * @param {string} [locale="en"]
+ */
+
+async function initializeI18n(resolve, locale = "en") {
+  let resp;
+
+  try {
+    resp = await fetch(`../_locales/${locale}/messages.json`);
+  } catch (ex) {
+    // For tests.
+    resp = await fetch(`_locales/${locale}/messages.json`);
+  }
+
+  i18n._messages = await resp.json();
+  i18n._currentLocale = locale; // Replace the `getMessage` function with one that retrieves
+  // values from the loaded JSON.
+
+  i18n.getMessage = (messageName, substitutions) => {
+    let message = (i18n._messages[messageName] || {}).message || `<translation not found>${messageName}`;
+
+    if (!substitutions || !i18n._messages[messageName]) {
+      return message;
+    } // If we're here, we have a valid i18n object and we need to do
+    // some substitutions.
+
+
+    const placeholders = i18n._messages[messageName].placeholders; // `placeholders` is an object with keys and values={ content: "$?" }.
+    // We need to substitute strings of the form `$key$` with the content at the `$?` position
+    // of the `substitutions` array.
+
+    for (const key in placeholders) {
+      const index = parseInt(placeholders[key].content.slice(1), 10) - 1;
+      message = message.replace(`$${key}$`, substitutions[index]);
+    }
+
+    return message;
+  };
+
+  i18n.getUILanguage = async () => i18n._currentLocale;
+
+  i18n.getAcceptLanguages = async () => ALL_LOCALES;
+
+  resolve(true);
+}
+
+if (browser.i18n) {
+  i18n.getMessage = browser.i18n.getMessage;
+  i18n.getUILanguage = browser.i18n.getUILanguage;
+  i18n.getAcceptLanguages = browser.i18n.getAcceptLanguages;
+  i18n.isPolyfilled = false;
+} else {
+  // Fake what we need from the i18n library
+  i18n.isLoaded = new Promise((resolve, reject) => {
+    // initializeI18n modifies the global i18n object and calls
+    // `resolve(true)` when finished.
+    initializeI18n(resolve).catch(reject);
+  });
+  browser.i18n = i18n;
+}
+
+if (!browser.storage) {
+  const DEFAULT_PREFS = { ..._prefs_js__WEBPACK_IMPORTED_MODULE_0__/* .kPrefDefaults */ .i,
+    // DEFAULT_PREFS is only used when browser.storage does not exist. I.e.,
+    // when running in the browser in dev mode. Turn on logging in this case.
+    logging_enabled: true
+  }; // Fake what we need from the browser storage library
+
+  const _stored = {
+    preferences: DEFAULT_PREFS
+  };
+  browser.storage = {
+    local: {
+      async get(key) {
+        if (typeof key === "undefined") {
+          return _stored;
+        }
+
+        if (typeof key === "string") {
+          return {
+            [key]: _stored[key]
+          };
+        }
+
+        if (Array.isArray(key)) {
+          const ret = {};
+
+          for (const k of key) {
+            if (k in _stored) {
+              ret[k] = _stored[k];
+            }
+          }
+
+          return ret;
+        } // the last case is that we are an object with default values
+
+
+        const ret = {};
+
+        for (const [k, v] of Object.entries(key)) {
+          ret[k] = k in _stored ? _stored[k] : v;
+        }
+
+        return ret;
+      },
+
+      async set(key) {
+        return Object.assign(_stored, key);
+      }
+
+    }
+  };
+}
+
+if (!browser.tabs) {
+  browser.tabs = {
+    async create() {},
+
+    async getCurrent() {
+      return {
+        id: "135246"
+      };
+    },
+
+    async remove() {}
+
+  };
+}
+
+if (!browser.conversations) {
+  browser.conversations = {
+    undoCustomizations() {},
+
+    send(details) {
+      console.log(details);
+    },
+
+    async getLocaleDirection() {
+      // RTL languages taken from https://github.com/shadiabuhilal/rtl-detect/blob/master/lib/rtl-detect.js
+      const RTL_LANGUAGES = ["ae"
+      /* Avestan */
+      , "ar"
+      /* 'العربية', Arabic */
+      , "arc"
+      /* Aramaic */
+      , "bcc"
+      /* 'بلوچی مکرانی', Southern Balochi */
+      , "bqi"
+      /* 'بختياري', Bakthiari */
+      , "ckb"
+      /* 'Soranî / کوردی', Sorani */
+      , "dv"
+      /* Dhivehi */
+      , "fa"
+      /* 'فارسی', Persian */
+      , "glk"
+      /* 'گیلکی', Gilaki */
+      , "he"
+      /* 'עברית', Hebrew */
+      , "ku"
+      /* 'Kurdî / كوردی', Kurdish */
+      , "mzn"
+      /* 'مازِرونی', Mazanderani */
+      , "nqo"
+      /* N'Ko */
+      , "pnb"
+      /* 'پنجابی', Western Punjabi */
+      , "ps"
+      /* 'پښتو', Pashto, */
+      , "sd"
+      /* 'سنڌي', Sindhi */
+      , "ug"
+      /* 'Uyghurche / ئۇيغۇرچە', Uyghur */
+      , "ur"
+      /* 'اردو', Urdu */
+      , "yi"
+      /* 'ייִדיש', Yiddish */
+      ];
+      const locale = await i18n.getUILanguage();
+
+      if (locale && RTL_LANGUAGES.some(l => locale.startsWith(l))) {
+        return "rtl";
+      }
+
+      return "ltr";
+    }
+
+  };
+}
+
+if (!browser.convCompose) {
+  browser.convCompose = {
+    send(details) {
+      console.log("Sending:", details);
+    }
+
+  };
+}
+
+if (!browser.accounts) {
+  browser.accounts = {
+    async list() {
+      return [{
+        id: "ac1",
+        identities: [{
+          id: `id3`,
+          email: `id3@example.com`
+        }]
+      }, {
+        id: "ac2",
+        identities: [{
+          id: `id4`,
+          email: `id4@example.com`
+        }]
+      }];
+    },
+
+    async get(id) {
+      return {
+        id,
+        identities: [{
+          id: `id${id}`,
+          email: `${id}@example.com`
+        }]
+      };
+    },
+
+    async setDefaultIdentity() {}
+
+  };
+}
+
+if (!browser.messageDisplay) {
+  browser.messageDisplay = {
+    async getDisplayedMessages(tabId) {
+      return [{
+        author: "author@example.com",
+        folder: {
+          accountId: "ac34",
+          path: "Inbox/test"
+        },
+        id: 123456,
+        read: false
+      }];
+    }
+
+  };
+}
+
+if (!browser.windows) {
+  browser.windows = {
+    async create() {},
+
+    async getCurrent() {
+      return {
+        focused: true,
+        id: 1,
+        tabs: [{
+          active: true,
+          highlighted: true,
+          id: 123,
+          index: 0,
+          selected: true
+        }],
+        type: "normal"
+      };
+    }
+
+  };
+}
+
+if (!browser.runtime) {
+  browser.runtime = {
+    async getPlatformInfo() {
+      return {
+        os: "win"
+      };
+    }
+
+  };
+}
+
+if (!browser.contacts) {
+  browser.contacts = {
+    async quickSearch(email) {
+      if (["foo@example.com", "bar@example.com"].includes(email)) {
+        return [{
+          id: "135246",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "foo@example.com",
+            SecondEmail: "bar@example.com",
+            DisplayName: "display name",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }];
+      } else if (email == "id4@example.com") {
+        return [{
+          id: "15263748",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "id4@example.com",
+            DisplayName: "id4 card",
+            PreferDisplayName: "1",
+            PhotoURI: undefined
+          }
+        }];
+      } else if (email == "extra@example.com") {
+        return [{
+          id: "75312468",
+          type: "contact",
+          properties: {
+            PrimaryEmail: "extra@example.com",
+            DisplayName: "extra card",
+            PreferDisplayName: "0",
+            PhotoURI: "https://example.com/fake"
+          }
+        }];
+      }
+
+      return [];
+    },
+
+    onCreated: {
+      addListener() {}
+
+    },
+    onUpdated: {
+      addListener() {}
+
+    },
+    onDeleted: {
+      addListener() {}
+
+    }
+  };
+}
+
+
+
+/***/ }),
+
+/***/ 8901:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "od": () => (/* binding */ messageActions),
+/* harmony export */   "Bw": () => (/* binding */ messagesSlice)
+/* harmony export */ });
+/* unused harmony export initialMessages */
+/* harmony import */ var _reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3850);
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9829);
+/* harmony import */ var _es_modules_thunderbird_compat_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6141);
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -131,7 +517,7 @@ const messageActions = {
       const params = new URL(document.location).searchParams;
       const isInTab = params.has("urls");
       const topWin = topMail3Pane(window);
-      await dispatch(_reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__/* .summaryActions.setConversationState */ .v.setConversationState({
+      await dispatch(_reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__/* .summaryActions.setConversationState */ .vX.setConversationState({
         isInTab,
         tabId: BrowserSim.getTabId(topWin, window),
         windowId: BrowserSim.getWindowId(topWin)
@@ -142,7 +528,7 @@ const messageActions = {
       const browserForegroundColor = await browser.conversations.getCorePref("browser.display.foreground_color");
       const browserBackgroundColor = await browser.conversations.getCorePref("browser.display.background_color");
       const defaultDetailsShowing = (await browser.conversations.getCorePref("mail.show_headers")) == 2;
-      await dispatch(_reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__/* .summaryActions.setSystemOptions */ .v.setSystemOptions({
+      await dispatch(_reducer_summary_js__WEBPACK_IMPORTED_MODULE_0__/* .summaryActions.setSystemOptions */ .vX.setSystemOptions({
         browserForegroundColor,
         browserBackgroundColor,
         defaultDetailsShowing,
@@ -182,13 +568,7 @@ const messageActions = {
       await dispatch(messageActions.initializeMessageThread({
         isInTab: true,
         params
-      })); // We used to have a function for opening the window as a quick compose
-      // in a tab. We'll need to figure out how to do this once we finish
-      // rewriting - it may be better to have a completely separate message
-      // composition option.
-      // } else if (params.get("quickCompose")) {
-      //   masqueradeAsQuickCompose();
-      // }
+      }));
     };
   },
 
@@ -649,29 +1029,34 @@ const messageActions = {
   }
 
 };
-const messagesSlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__.createSlice({
+const messagesSlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_2__/* .createSlice */ .oM({
   name: "messages",
   initialState: initialMessages,
   reducers: {
-    replaceConversationDetails(state, {
+    /**
+     * Update the message list either replacing or appending the messages.
+     *
+     * @param {object} messages
+     *   The messages to insert or append.
+     * @param {boolean} append
+     *   Set to true to append messages, false to replace the current conversation.
+     */
+    updateConversation(state, {
       payload
     }) {
       const {
-        messages
+        messages,
+        append
       } = payload;
+
+      if (append) {
+        return { ...state,
+          msgData: state.msgData.concat(messages.msgData)
+        };
+      }
+
       return { ...state,
         ...messages
-      };
-    },
-
-    appendMessages(state, {
-      payload
-    }) {
-      const {
-        messages
-      } = payload;
-      return { ...state,
-        msgData: state.msgData.concat(messages.msgData)
       };
     },
 
@@ -807,20 +1192,27 @@ Object.assign(messageActions, messagesSlice.actions);
 
 /***/ }),
 
-/***/ 850:
+/***/ 3850:
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "v": () => /* binding */ summaryActions,
-/* harmony export */   "o": () => /* binding */ summarySlice
+/* harmony export */   "vX": () => (/* binding */ summaryActions),
+/* harmony export */   "oj": () => (/* binding */ summarySlice)
 /* harmony export */ });
-/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(407);
-/* harmony import */ var _reducer_messages_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(901);
+/* unused harmony export initialSummary */
+/* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9829);
+/* harmony import */ var _contacts_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4093);
+/* harmony import */ var _reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8901);
+/* harmony import */ var _reducer_compose_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4978);
+/* harmony import */ var _reducer_quickReply_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5101);
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 /* global Conversations, getMail3Pane, topMail3Pane, printConversation */
+
+
+
 
 
 const initialSummary = {
@@ -854,7 +1246,7 @@ async function handleShowDetails(messages, state, dispatch, updateFn) {
 
   if (defaultShowing) {
     for (let msg of state.messages.msgData) {
-      await dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_0__/* .messageActions.showMsgDetails */ .o.showMsgDetails({
+      await dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__/* .messageActions.showMsgDetails */ .od.showMsgDetails({
         id: msg.id,
         detailsShowing: true
       }));
@@ -863,28 +1255,38 @@ async function handleShowDetails(messages, state, dispatch, updateFn) {
 }
 
 const summaryActions = {
-  replaceConversation({
+  /**
+   * Update a conversation either replacing or appending the messages.
+   *
+   * @param {object} [summary]
+   *   Only applies to replacing a conversation, the summary details to update.
+   * @param {object} messages
+   *   The messages to insert or append.
+   * @param {boolean} append
+   *   Set to true to append messages, false to replace the current conversation.
+   */
+  updateConversation({
     summary,
-    messages
+    messages,
+    append
   }) {
     return async (dispatch, getState) => {
-      await handleShowDetails(messages, getState(), dispatch, () => {
-        dispatch(summarySlice.actions.replaceSummaryDetails(summary));
-        return dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_0__/* .messageActions.replaceConversationDetails */ .o.replaceConversationDetails({
-          messages
-        }));
-      });
-    };
-  },
+      await handleShowDetails(messages, getState(), dispatch, async () => {
+        // The messages inside `msgData` don't come with filled in `to`/`from`/ect. fields.
+        // We need to fill them in ourselves.
+        await (0,_contacts_js__WEBPACK_IMPORTED_MODULE_0__/* .mergeContactDetails */ .A)(messages.msgData);
 
-  appendMessages({
-    summary,
-    messages
-  }) {
-    return async (dispatch, getState) => {
-      await handleShowDetails(messages, getState(), dispatch, () => {
-        return dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_0__/* .messageActions.appendMessages */ .o.appendMessages({
-          messages
+        if (!append) {
+          await dispatch(_reducer_compose_js__WEBPACK_IMPORTED_MODULE_2__/* .composeSlice.actions.resetStore */ .jz.actions.resetStore());
+          await dispatch(_reducer_quickReply_js__WEBPACK_IMPORTED_MODULE_3__/* .quickReplySlice.actions.setExpandedState */ .PK.actions.setExpandedState({
+            expanded: false
+          }));
+          await dispatch(summarySlice.actions.replaceSummaryDetails(summary));
+        }
+
+        return dispatch(_reducer_messages_js__WEBPACK_IMPORTED_MODULE_1__/* .messageActions.updateConversation */ .od.updateConversation({
+          messages,
+          append
         }));
       });
     };
@@ -923,7 +1325,7 @@ const summaryActions = {
         });
         let account = await browser.accounts.get(tab[0].displayedFolder.accountId);
         await browser.compose.beginNew({
-          identityId: account.identities[0].id,
+          identityId: account.identities[0]?.id,
           to: dest
         });
       } else {
@@ -1057,7 +1459,7 @@ const summaryActions = {
   }
 
 };
-const summarySlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice({
+const summarySlice = _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__/* .createSlice */ .oM({
   name: "summary",
   initialState: initialSummary,
   reducers: {
@@ -1146,24 +1548,28 @@ globalThis.conversationSummaryActions = summaryActions;
 
 /***/ }),
 
-/***/ 993:
+/***/ 4993:
 /***/ ((__unused_webpack___webpack_module__, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(294);
+var react = __webpack_require__(7294);
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
-var react_dom = __webpack_require__(935);
-// EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js + 3 modules
-var redux_toolkit_esm = __webpack_require__(407);
-// EXTERNAL MODULE: ./node_modules/react-redux/es/index.js + 15 modules
-var es = __webpack_require__(308);
-// EXTERNAL MODULE: ./node_modules/redux/es/redux.js
-var redux = __webpack_require__(890);
+var react_dom = __webpack_require__(3935);
+// EXTERNAL MODULE: ./node_modules/@reduxjs/toolkit/dist/redux-toolkit.esm.js
+var redux_toolkit_esm = __webpack_require__(9829);
+// EXTERNAL MODULE: ./node_modules/react-redux/es/index.js
+var es = __webpack_require__(533);
+// EXTERNAL MODULE: ./node_modules/redux/es/redux.js + 2 modules
+var redux = __webpack_require__(8676);
+// EXTERNAL MODULE: ./addon/content/reducer/reducer-compose.js
+var reducer_compose = __webpack_require__(4978);
 // EXTERNAL MODULE: ./addon/content/reducer/reducer-messages.js
-var reducer_messages = __webpack_require__(901);
+var reducer_messages = __webpack_require__(8901);
 // EXTERNAL MODULE: ./addon/content/reducer/reducer-summary.js
-var reducer_summary = __webpack_require__(850);
+var reducer_summary = __webpack_require__(3850);
+// EXTERNAL MODULE: ./addon/content/reducer/reducer-quickReply.js
+var reducer_quickReply = __webpack_require__(5101);
 ;// CONCATENATED MODULE: ./addon/content/reducer/reducer.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1171,9 +1577,13 @@ var reducer_summary = __webpack_require__(850);
 
 
 
+
+
 const conversationApp = redux/* combineReducers */.UY({
-  messages: reducer_messages/* messagesSlice.reducer */.B.reducer,
-  summary: reducer_summary/* summarySlice.reducer */.o.reducer
+  compose: reducer_compose/* composeSlice.reducer */.jz.reducer,
+  messages: reducer_messages/* messagesSlice.reducer */.Bw.reducer,
+  summary: reducer_summary/* summarySlice.reducer */.oj.reducer,
+  quickReply: reducer_quickReply/* quickReplySlice.reducer */.PK.reducer
 });
 ;// CONCATENATED MODULE: ./addon/content/reducer/reducer-deps.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
@@ -1198,8 +1608,8 @@ function printConversation(event) {
 
   oldPrint();
 }
-// EXTERNAL MODULE: ./addon/content/components/conversation/conversationWrapper.jsx + 17 modules
-var conversationWrapper = __webpack_require__(694);
+// EXTERNAL MODULE: ./addon/content/components/conversation/conversationWrapper.jsx + 19 modules
+var conversationWrapper = __webpack_require__(5908);
 ;// CONCATENATED MODULE: ./addon/content/stub.js
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1214,7 +1624,7 @@ var conversationWrapper = __webpack_require__(694);
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  conversationStore = redux_toolkit_esm.configureStore({
+  conversationStore = redux_toolkit_esm/* configureStore */.xC({
     reducer: conversationApp,
     // XXX bug #1461. Remove this code when that bug is resolved.
     //
@@ -1225,7 +1635,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // where it will take more work to eliminate the non-serializable
     // data. As a temporary workaround, exclude that data from the
     // checks.
-    middleware: redux_toolkit_esm.getDefaultMiddleware({
+    middleware: redux_toolkit_esm/* getDefaultMiddleware */.Bx({
       serializableCheck: {
         ignoredActions: ["summary/replaceSummaryDetails"],
         ignoredPaths: ["summary.conversation"]
@@ -1254,21 +1664,19 @@ document.addEventListener("DOMContentLoaded", () => {
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
-/******/ 		if(__webpack_module_cache__[moduleId]) {
-/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			loaded: false,
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
@@ -1277,17 +1685,45 @@ document.addEventListener("DOMContentLoaded", () => {
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
 /******/ 	
-/******/ 	// the startup function
-/******/ 	// It's empty as some runtime module handles the default behavior
-/******/ 	__webpack_require__.x = x => {}
 /************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					result = fn();
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
 /******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				() => module['default'] :
-/******/ 				() => module;
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
@@ -1305,52 +1741,9 @@ document.addEventListener("DOMContentLoaded", () => {
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/harmony module decorator */
-/******/ 	(() => {
-/******/ 		__webpack_require__.hmd = (module) => {
-/******/ 			module = Object.create(module);
-/******/ 			if (!module.children) module.children = [];
-/******/ 			Object.defineProperty(module, 'exports', {
-/******/ 				enumerable: true,
-/******/ 				set: () => {
-/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
-/******/ 				}
-/******/ 			});
-/******/ 			return module;
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/runtimeId */
-/******/ 	(() => {
-/******/ 		__webpack_require__.j = 831;
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
@@ -1359,14 +1752,11 @@ document.addEventListener("DOMContentLoaded", () => {
 /******/ 		
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// Promise = chunk loading, 0 = chunk loaded
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			831: 0
 /******/ 		};
 /******/ 		
-/******/ 		var deferredModules = [
-/******/ 			[993,592]
-/******/ 		];
 /******/ 		// no chunk on demand loading
 /******/ 		
 /******/ 		// no prefetching
@@ -1377,73 +1767,43 @@ document.addEventListener("DOMContentLoaded", () => {
 /******/ 		
 /******/ 		// no HMR manifest
 /******/ 		
-/******/ 		var checkDeferredModules = x => {};
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
 /******/ 		
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime, executeModules] = data;
+/******/ 			var [chunkIds, moreModules, runtime] = data;
 /******/ 			// add "moreModules" to the modules object,
 /******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0, resolves = [];
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					resolves.push(installedChunks[chunkId][0]);
-/******/ 				}
-/******/ 				installedChunks[chunkId] = 0;
-/******/ 			}
+/******/ 			var moduleId, chunkId, i = 0;
 /******/ 			for(moduleId in moreModules) {
 /******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
 /******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
 /******/ 				}
 /******/ 			}
-/******/ 			if(runtime) runtime(__webpack_require__);
+/******/ 			if(runtime) var result = runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			while(resolves.length) {
-/******/ 				resolves.shift()();
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkIds[i]] = 0;
 /******/ 			}
-/******/ 		
-/******/ 			// add entry modules from loaded chunk to deferred list
-/******/ 			if(executeModules) deferredModules.push.apply(deferredModules, executeModules);
-/******/ 		
-/******/ 			// run deferred modules when all chunks ready
-/******/ 			return checkDeferredModules();
+/******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunkthunderbirdconversations"] = self["webpackChunkthunderbirdconversations"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 		
-/******/ 		function checkDeferredModulesImpl() {
-/******/ 			var result;
-/******/ 			for(var i = 0; i < deferredModules.length; i++) {
-/******/ 				var deferredModule = deferredModules[i];
-/******/ 				var fulfilled = true;
-/******/ 				for(var j = 1; j < deferredModule.length; j++) {
-/******/ 					var depId = deferredModule[j];
-/******/ 					if(installedChunks[depId] !== 0) fulfilled = false;
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferredModules.splice(i--, 1);
-/******/ 					result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
-/******/ 				}
-/******/ 			}
-/******/ 			if(deferredModules.length === 0) {
-/******/ 				__webpack_require__.x();
-/******/ 				__webpack_require__.x = x => {};
-/******/ 			}
-/******/ 			return result;
-/******/ 		}
-/******/ 		var startup = __webpack_require__.x;
-/******/ 		__webpack_require__.x = () => {
-/******/ 			// reset startup function so it can be called again when more startup code is added
-/******/ 			__webpack_require__.x = startup || (x => {});
-/******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
-/******/ 		};
 /******/ 	})();
 /******/ 	
 /************************************************************************/
-/******/ 	// run startup
-/******/ 	__webpack_require__.x();
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, [415,800,50,978,859], () => (__webpack_require__(4993)))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
 /******/ })()
 ;

@@ -479,7 +479,7 @@ EWSAccount.ConvertToEWS = function(aFolder, aEvent) {
     BodyType: aEvent.descriptionHTML ? "HTML" : "Text",
     _TextContent_: aEvent.descriptionHTML || aEvent.descriptionText,
   };
-  if (aEvent.categories.length) {
+  if (aEvent.categories && aEvent.categories.length) {
     event.t$Categories = {
       t$String: aEvent.categories,
     };
@@ -513,14 +513,14 @@ EWSAccount.ConvertToEWS = function(aFolder, aEvent) {
   if (aEvent.location) {
     event.t$Location = aEvent.location;
   }
-  if (aEvent.requiredAttendees.length) {
+  if (aEvent.requiredAttendees && aEvent.requiredAttendees.length) {
     event.t$RequiredAttendees = {
       t$Attendee: aEvent.requiredAttendees.map(attendee => ({
         t$Mailbox: MailboxObject2EWS(attendee),
       })),
     };
   }
-  if (aEvent.optionalAttendees.length) {
+  if (aEvent.optionalAttendees && aEvent.optionalAttendees.length) {
     event.t$OptionalAttendees = {
       t$Attendee: aEvent.optionalAttendees.map(attendee => ({
         t$Mailbox: MailboxObject2EWS(attendee),

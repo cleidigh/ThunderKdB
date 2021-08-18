@@ -243,14 +243,6 @@ debug('upgraded='+prefs['upgraded']);
 		//name=Ehemalige
     let l=document.createElement('label');
     l.setAttribute('class', 'block');
-		let cb=document.createElement('input');
-    cb.setAttribute('type', 'checkbox');
-    cb.setAttribute('value', u2i[abook.id]);
-    cb.setAttribute('data-pref', u2i[abook.id]+'.down');
-		if (prefs[u2i[abook.id]+'.down'])
-			cb.checked=true;
-		cb.addEventListener("change", prefChange);
-    l.appendChild(cb)
 		if (prefs['separateupdown']) {
 			let cb1=document.createElement('input');
 			cb1.setAttribute('type', 'checkbox');
@@ -261,6 +253,14 @@ debug('upgraded='+prefs['upgraded']);
 			cb1.addEventListener("change", prefChange);
 			l.appendChild(cb1)
 		}
+		let cb=document.createElement('input');
+    cb.setAttribute('type', 'checkbox');
+    cb.setAttribute('value', u2i[abook.id]);
+    cb.setAttribute('data-pref', u2i[abook.id]+'.down');
+		if (prefs[u2i[abook.id]+'.down'])
+			cb.checked=true;
+		cb.addEventListener("change", prefChange);
+    l.appendChild(cb)
     let lt=document.createTextNode(abook.name);
     l.appendChild(lt);
 		l.setAttribute('data-pref', u2i[abook.id]+'.filename');

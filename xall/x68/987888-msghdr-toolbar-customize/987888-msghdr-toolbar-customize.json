@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 3389,
+    "average_daily_users": 3395,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-09-07T16:13:00Z",
     "current_version": {
-        "id": 2474808,
+        "id": 2475944,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "78.0"
+                "min": "78.6.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/msghdr-toolbar-customize/versions/2474808",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/msghdr-toolbar-customize/versions/2475944",
         "files": [
             {
-                "id": 1017970,
-                "created": "2020-11-22T14:11:11Z",
-                "hash": "sha256:871d9d4eda478bef925890d9914737e6f8f1bab2f5764406991b8dc0365d92d7",
+                "id": 1019104,
+                "created": "2021-05-30T15:30:16Z",
+                "hash": "sha256:8b639fd475ed94eb6ba8598e246a7bcd0432d718fbf8a77d5e2f5926bd174437",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 17466,
+                "size": 18424,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017970/message_header_toolbar_customize-2.1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019104/message_header_toolbar_customize-2.1.1-tb.xpi?src=",
                 "permissions": [
                     "storage"
                 ]
@@ -52,12 +52,12 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "New: Icon display can be configured for each button\nNew: Quick search toolbar buttons can be customized\nNew: Button label can be changed for message header and quick search toolbars\nNew: Calendar buttons in the tab toolbar and Today pane button can be hidden\nNew: Star and Print buttons are added to the message header toolbar (hidden by default)",
+            "en-US": "Added: restore default toolbar configuration when the add-on is disabled or removed\nAdded: customize window follows dark/light themes\nChanged: suppress opening multiple customize windows\nChanged: minVersion is changed to TB78.6.0 because v2.1.1 requires the following fix:\n                  <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1675940\">https://bugzilla.mozilla.org/show_bug.cgi?id=1675940</a>\nChanged: change UI for \"Individual\" icon configuration\nFixed: cannot open Quick filter bar if a button is set as hidden",
             "ja": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/versions/2.1.0",
-        "version": "2.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/versions/2.1.1",
+        "version": "2.1.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -84,7 +84,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2020-11-23T12:04:20Z",
+    "last_updated": "2021-06-02T11:08:50Z",
     "name": {
         "en-US": "Message Header Toolbar Customize",
         "ja": "Message Header Toolbar Customize"
@@ -280,10 +280,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.70331,
-        "count": 25,
-        "average": 4.76,
-        "text_count": 25
+        "bayesian_average": 4.70962,
+        "count": 29,
+        "average": 4.7586,
+        "text_count": 29
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/msghdr-toolbar-customize/reviews/",
     "requires_payment": false,

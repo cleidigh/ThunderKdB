@@ -108,7 +108,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 				lBirthdayDate.setDate(date_of_today.getUTCDate()+parseInt(ldaysUntilNextBirthday));
 
 				// generate Date as Ical compatible text string
-				var lYear = lBirthdayDate.getFullYear();
+				var lYear = lBirthdayDate.getUTCFullYear();
 				var lMonth = lBirthdayDate.getMonth() + 1;
 				lMonth += "";
 				if (lMonth.length == 1) {
@@ -137,8 +137,8 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 
 				var leventEntryTitle = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.eventEntryTitle");
 				if (cardbookBirthdaysUtils.lBirthdayList[i][3] != "?") {
-					var lEventDate = cardbookRepository.cardbookDates.convertDateStringToDate(cardbookBirthdaysUtils.lBirthdayList[i][3], cardbookBirthdaysUtils.lBirthdayList[i][7]);
-					var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayDisplayName).replace("%2$S", lBirthdayAge).replace("%3$S", lEventDate.getFullYear()).replace("%4$S", lBirthdayName).replace("%S", lBirthdayDisplayName).replace("%S", lBirthdayAge);
+					var lEventDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(cardbookBirthdaysUtils.lBirthdayList[i][3], cardbookBirthdaysUtils.lBirthdayList[i][7]);
+					var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayDisplayName).replace("%2$S", lBirthdayAge).replace("%3$S", lEventDate.getUTCFullYear()).replace("%4$S", lBirthdayName).replace("%S", lBirthdayDisplayName).replace("%S", lBirthdayAge);
 				} else {
 					var lBirthdayTitle = leventEntryTitle.replace("%1$S", lBirthdayDisplayName).replace("%2$S", lBirthdayAge).replace("%3$S", "?").replace("%4$S", lBirthdayName).replace("%S", lBirthdayDisplayName).replace("%S", lBirthdayAge);
 				}
@@ -267,7 +267,6 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 		},
 
 		calcDateOfNextBirthday: function (lDateRef, lDateOfBirth) {
-			var lDoB_Year = lDateOfBirth.getUTCFullYear();
 			var lDoB_Month= lDateOfBirth.getUTCMonth();
 			var lDoB_Day = lDateOfBirth.getUTCDate();
 			
@@ -289,16 +288,16 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 			var lAge;
 			var ldaysUntilNextBirthday;
 			var lDateOfBirthOld = aDateOfBirth;
-			var lDateOfBirth = cardbookRepository.cardbookDates.convertDateStringToDate(aDateOfBirth, aDateFormat);
+			var lDateOfBirth = cardbookRepository.cardbookDates.convertDateStringToDateUTC(aDateOfBirth, aDateFormat);
 
 			endDate.setUTCDate(date_of_today.getUTCDate()+parseInt(aNumberOfDays));
 			while (dateRef < endDate) {
 				lnextBirthday = this.calcDateOfNextBirthday(dateRef,lDateOfBirth);
-				if (lDateOfBirth.getFullYear() == cardbookRepository.cardbookDates.defaultYear) {
+				if (lDateOfBirth.getUTCFullYear() == cardbookRepository.cardbookDates.defaultYear) {
 					lAge = "?";
 					lDateOfBirthOld = "?";
 				} else {
-					lAge = lnextBirthday.getFullYear()-lDateOfBirth.getFullYear();
+					lAge = lnextBirthday.getFullYear()-lDateOfBirth.getUTCFullYear();
 				}
 				ldaysUntilNextBirthday = this.daysBetween(lnextBirthday, date_of_today);
 				if (parseInt(ldaysUntilNextBirthday) <= parseInt(aNumberOfDays)) {
@@ -340,7 +339,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 					for (let field of cardbookRepository.dateFields) {
 						if (myCard[field] && myCard[field] != "" && search[field]) {
 							var myFieldValue = myCard[field];
-							var isDate = cardbookRepository.cardbookDates.convertDateStringToDate(myFieldValue, dateFormat);
+							var isDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(myFieldValue, dateFormat);
 							if (isDate != "WRONGDATE") {
 								listOfEmail = cardbookRepository.cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 								if (field == "deathdate") {
@@ -356,7 +355,7 @@ if ("undefined" == typeof(cardbookBirthdaysUtils)) {
 					if (search.events) {
 						var myEvents = cardbookRepository.cardbookUtils.getEventsFromCard(myCard.note.split("\n"), myCard.others);
 						for (let j = 0; j < myEvents.result.length; j++) {
-							var isDate = cardbookRepository.cardbookDates.convertDateStringToDate(myEvents.result[j][0], dateFormat);
+							var isDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(myEvents.result[j][0], dateFormat);
 							if (isDate != "WRONGDATE") {
 								listOfEmail = cardbookRepository.cardbookUtils.getMimeEmailsFromCards([myCard], useOnlyEmail);
 								cardbookBirthdaysUtils.getAllBirthdaysByName(dateFormat, myEvents.result[j][0], myEvents.result[j][1], lnumberOfDays, myEvents.result[j][0], listOfEmail, myDirPrefId, myEvents.result[j][1]);

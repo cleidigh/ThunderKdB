@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14196/14196754.png?modified=1600788309"
         }
     ],
-    "average_daily_users": 1655,
+    "average_daily_users": 1594,
     "categories": {
         "thunderbird": [
             "miscellaneous"
@@ -18,26 +18,26 @@
     "contributions_url": "https://paypal.me/devmount",
     "created": "2020-09-28T12:23:48Z",
     "current_version": {
-        "id": 2475927,
+        "id": 2476153,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2475927",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/thirdstats/versions/2476153",
         "files": [
             {
-                "id": 1019087,
-                "created": "2021-05-26T08:10:29Z",
-                "hash": "sha256:8333aaa9f1c6c251a055525951b5c3c5becd2902c3cb91e4788457358e64d966",
+                "id": 1019313,
+                "created": "2021-07-31T10:52:03Z",
+                "hash": "sha256:fbd12ad8adb4f92ad123ce434cbf9dedb92aee2a02a0340d2a61162c51611143",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 240573,
+                "size": 230725,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019087/thirdstats-1.7.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019313/thirdstats-1.8.0-tb.xpi?src=",
                 "permissions": [
                     "accountsRead",
                     "messagesRead",
@@ -78,13 +78,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-GB": "<b>Background Gradients for Line and Bar Charts</b>\nCharts now have a background gradient to highlight upper parts of the chart. This applies to line and bar charts (the gradient for the latter is not too strong to maintain the bar starting point).\n\n<b>Data not final Indication</b>\nDashed line style for the last segment of line charts indicating that the last data point isn't final yet. This doesn't apply if the date range filter is set.\n\n<b>Improved Doughnut Charts</b>\nDoughnut charts are now a bit thinner and tooltips now appear directly on the section the mouse is over.\n\n<b>Fix single entry Line Charts</b>\nCharts with one single entry on the x-axis now show a data point instead of nothing\n\n<b>Complete Translations</b>\nThirdStats is now fully available in English, German, French, Galician, Hungarian, Italian, Japanese, Russian and Swedish.\n\n<b>Improvement for Hungarian translation</b>\nUse of separate language keys for different output locations.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.7.0\">full release notes with screenshots on GitHub</a>.",
-            "en-US": "<b>Background Gradients for Line and Bar Charts</b>\nCharts now have a background gradient to highlight upper parts of the chart. This applies to line and bar charts (the gradient for the latter is not too strong to maintain the bar starting point).\n\n<b>Data not final Indication</b>\nDashed line style for the last segment of line charts indicating that the last data point isn't final yet. This doesn't apply if the date range filter is set.\n\n<b>Improved Doughnut Charts</b>\nDoughnut charts are now a bit thinner and tooltips now appear directly on the section the mouse is over.\n\n<b>Fix single entry Line Charts</b>\nCharts with one single entry on the x-axis now show a data point instead of nothing\n\n<b>Complete Translations</b>\nThirdStats is now fully available in English, German, French, Galician, Hungarian, Italian, Japanese, Russian and Swedish.\n\n<b>Improvement for Hungarian translation</b>\nUse of separate language keys for different output locations.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.7.0\">full release notes with screenshots on GitHub</a>.",
-            "en-CA": "<b>Background Gradients for Line and Bar Charts</b>\nCharts now have a background gradient to highlight upper parts of the chart. This applies to line and bar charts (the gradient for the latter is not too strong to maintain the bar starting point).\n\n<b>Data not final Indication</b>\nDashed line style for the last segment of line charts indicating that the last data point isn't final yet. This doesn't apply if the date range filter is set.\n\n<b>Improved Doughnut Charts</b>\nDoughnut charts are now a bit thinner and tooltips now appear directly on the section the mouse is over.\n\n<b>Fix single entry Line Charts</b>\nCharts with one single entry on the x-axis now show a data point instead of nothing\n\n<b>Complete Translations</b>\nThirdStats is now fully available in English, German, French, Galician, Hungarian, Italian, Japanese, Russian and Swedish.\n\n<b>Improvement for Hungarian translation</b>\nUse of separate language keys for different output locations.\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.7.0\">full release notes with screenshots on GitHub</a>."
+            "en-US": "<b>Thunderbird 91 compatibility</b>\nWith many small internal fixes and improvements, ThirdStats now supports both: Thunderbird 78 and 91\n\n<b>Tags analysis</b>\nAn additional chart section for charts about tags. An horizontal bar chart was implemented showing the number of emails the corresponding tag is used with. There is now also an option to show the tag bars in their corresponding color, that has been configured in Thunderbird. This is deactivated per default.\n\n<b>Numbers section for starred and tagged mails</b>\nA numbers section about the count of starred and tagged emails.\n\n<b>Merge similar metrics for email counts</b>\nThe two existing sections about email counts in the featured numbers bar are now merged into one section with a small tab/arrow navigation. It also features an additional unit <i>mails per quarter</i>.\n\n<b>Show notice if no chart data available</b>\nAn icon and a notice is now shown, when a chart has no data at all.\n\n<b>Unify page titles</b>\nThe stats page title now is in the same format as the options page.\n\n<b>Fix identity comparison</b>\nSent emails are now properly recognized as sent, even if they don't contain angle brackets or have uppercase characters.\n\n<b>Fix bar chart tooltip</b>\nA tooltip is now always shown on a bar, as soon as the cursor intersects with it.\n\n<b>Dependency updates</b>\nKnow security vulnerabilities were fixed by updating dependencies to their latest available version.\n\n\nSee <a rel=\"nofollow\" href=\"https://github.com/devmount/third-stats/releases/tag/v1.8.0\">full release notes with screenshots on GitHub</a>."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.7.0",
-        "version": "1.7.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/versions/1.8.0",
+        "version": "1.8.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -115,7 +113,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-05-26T08:15:03Z",
+    "last_updated": "2021-07-31T10:55:03Z",
     "name": {
         "ru": "ThirdStats",
         "fr": "ThirdStats",
@@ -136,23 +134,23 @@
     },
     "previews": [
         {
-            "id": 206458,
+            "id": 206587,
             "caption": {
                 "en-US": "ThirdStats on the Thunderbird default dark theme and light theme"
             },
             "image_size": [
                 1280,
-                653
+                678
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206458.png?modified=1614013997",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206587.png?modified=1627420121",
             "thumbnail_size": [
                 320,
-                163
+                169
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206458.png?modified=1614013997"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206587.png?modified=1627420121"
         },
         {
-            "id": 206450,
+            "id": 206582,
             "caption": {
                 "en-US": "Featured numbers section of ThirdStats"
             },
@@ -160,15 +158,15 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206450.png?modified=1614013993",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206582.png?modified=1627420381",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206450.png?modified=1614013993"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206582.png?modified=1627420381"
         },
         {
-            "id": 206451,
+            "id": 206583,
             "caption": {
                 "en-US": "Total number of emails per year and per month since the oldest email till today"
             },
@@ -176,15 +174,15 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206451.png?modified=1614013915",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206583.png?modified=1627420118",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206451.png?modified=1614013915"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206583.png?modified=1627420118"
         },
         {
-            "id": 206452,
+            "id": 206584,
             "caption": {
                 "en-US": "Detailed analytics showing the sum of all emails per month, per day of week and per hour of day"
             },
@@ -192,12 +190,12 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206452.png?modified=1614013993",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206584.png?modified=1627420381",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206452.png?modified=1614013993"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206584.png?modified=1627420381"
         },
         {
             "id": 206453,
@@ -208,44 +206,44 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206453.png?modified=1614013990",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206453.png?modified=1627420113",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206453.png?modified=1614013990"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206453.png?modified=1627420113"
         },
         {
-            "id": 206454,
+            "id": 206585,
             "caption": {
-                "en-US": "Leaderboards showing the most contacted email addresses"
+                "en-US": "Leaderboards showing the most contacted email addresses and junk email addresses"
             },
             "image_size": [
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206454.png?modified=1614013995",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206585.png?modified=1627420379",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206454.png?modified=1614013995"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206585.png?modified=1627420379"
         },
         {
-            "id": 206455,
+            "id": 206586,
             "caption": {
-                "en-US": "Distribution of emails in folders"
+                "en-US": "Distribution of emails in folders and number of emails per tag"
             },
             "image_size": [
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206455.png?modified=1614013991",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206586.png?modified=1627420383",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206455.png?modified=1614013991"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206586.png?modified=1627420383"
         },
         {
             "id": 206456,
@@ -256,12 +254,12 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206456.png?modified=1614013995",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206456.png?modified=1627420113",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206456.png?modified=1614013995"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206456.png?modified=1627420113"
         },
         {
             "id": 206457,
@@ -272,20 +270,20 @@
                 1067,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206457.png?modified=1614013917",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206457.png?modified=1627420113",
             "thumbnail_size": [
                 267,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206457.png?modified=1614013917"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206457.png?modified=1627420113"
         }
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.65974,
-        "count": 10,
-        "average": 4.8,
-        "text_count": 10
+        "bayesian_average": 4.68481,
+        "count": 14,
+        "average": 4.7857,
+        "text_count": 14
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/thirdstats/reviews/",
     "requires_payment": false,

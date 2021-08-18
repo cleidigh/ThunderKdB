@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 555,
+    "average_daily_users": 1966,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -19,26 +19,26 @@
     "contributions_url": "",
     "created": "2021-04-11T13:57:27Z",
     "current_version": {
-        "id": 2475941,
+        "id": 2476197,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
-                "min": "78.0"
+                "max": "*",
+                "min": "91.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/google-4-tbsync/versions/2475941",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/google-4-tbsync/versions/2476197",
         "files": [
             {
-                "id": 1019101,
-                "created": "2021-05-30T07:50:23Z",
-                "hash": "sha256:4f4564b6a49e5acc36351c05e1ba8c090c81a521ee8a3440267e8b3f7c89f225",
+                "id": 1019357,
+                "created": "2021-08-08T19:34:34Z",
+                "hash": "sha256:cd5902706c94e8ef37da9d3f9cf885d0b57ec5223d65a6d9433d137b8ee183c1",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 58478,
+                "size": 67280,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019101/google_4_tbsync-0.1.4-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019357/google_4_tbsync-0.2.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,16 +51,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Bugfixes.",
+            "en-US": "* Ported code to TB91.\n* Minor fixes and changes.",
             "it": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/google-4-tbsync/versions/0.1.4",
-        "version": "0.1.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/google-4-tbsync/versions/0.2.1",
+        "version": "0.2.1"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "1) BACKUP YOUR (THUNDERBIRD AND GOOGLE) ADDRESSBOOKS BEFORE RUNNING THIS SOFTWARE!\n\n2) You must install and enable <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/tbsync\">TbSync</a> first, because this is an add-on to it. After that, just open the TbSync management interface and add a \"Google\" account.\n\n3) You also need some specific credentials by Google to use this add-on. Please refer to \"How to generate your own Google API Console project credentials\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/How-to-generate-your-own-Google-API-Console-project-credentials\">https://github.com/zanonmark/Google-4-TbSync/wiki/How-to-generate-your-own-Google-API-Console-project-credentials</a>] for a step-by-step guide on how to generate them.\n(And if this seems complicated, please blame Google, not me...)\n\n4) Also, you might have a look to the various \"Account options\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options\">https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options</a>] and their meaning.\n\n5) You are particularly suggested to enable the \"Read-only mode\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options#read-only-mode\">https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options#read-only-mode</a>].\n\n6) Please keep in mind that some limitations apply, see \"Current status and roadmap\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync#current-status-and-roadmap\">https://github.com/zanonmark/Google-4-TbSync#current-status-and-roadmap</a>].\nParticularly, adding a contact to (or removing it from) a Thunderbird mailing-list doesn't currently reflect back to Google. This will be fixed after the upcoming rewrite."
+        "en-US": "1) BACKUP YOUR (THUNDERBIRD AND GOOGLE) ADDRESSBOOKS BEFORE RUNNING THIS SOFTWARE!\n\n2) You must install and enable <a rel=\"nofollow\" href=\"https://addons.thunderbird.net/addon/tbsync\">TbSync</a> first, because this is an add-on to it. After that, just open the TbSync management interface and add a \"Google\" account.\n\n3) You also need some specific credentials by Google to use this add-on. Please refer to \"How to generate your own Google API Console project credentials\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/How-to-generate-your-own-Google-API-Console-project-credentials\">https://github.com/zanonmark/Google-4-TbSync/wiki/How-to-generate-your-own-Google-API-Console-project-credentials</a>] for a step-by-step guide on how to generate them.\n(And if this seems complicated, please blame Google, not me, as I'm forbidden from providing already built-in credentials...)\n\n4) Also, you might have a look to the various \"Account options\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options\">https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options</a>] and their meaning.\n\n5) You are particularly suggested to enable the \"Read-only mode\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options#read-only-mode\">https://github.com/zanonmark/Google-4-TbSync/wiki/Account-options#read-only-mode</a>].\n\n6) Please keep in mind that some limitations apply, see \"Current status and roadmap / Known limitations\" [<a rel=\"nofollow\" href=\"https://github.com/zanonmark/Google-4-TbSync#current-status-and-roadmap--known-limitations\">https://github.com/zanonmark/Google-4-TbSync#current-status-and-roadmap--known-limitations</a>].\nParticularly, adding a contact to (or removing it from) a Thunderbird mailing-list doesn't currently reflect back to Google. This will be fixed after the upcoming rewrite."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/google-4-tbsync/edit",
@@ -77,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-05-30T11:04:32Z",
+    "last_updated": "2021-08-08T20:01:58Z",
     "name": {
         "en-US": "Google-4-TbSync"
     },
@@ -99,10 +99,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 3.21374,
-        "count": 5,
-        "average": 3.4,
-        "text_count": 5
+        "bayesian_average": 3.7076,
+        "count": 14,
+        "average": 3.7857,
+        "text_count": 14
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/google-4-tbsync/reviews/",
     "requires_payment": false,
@@ -131,10 +131,10 @@
     "weekly_downloads": 0,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp69plus": true,
+            "comp68": true,
             "comp78plus": true,
-            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2021-04-12T12:36:21Z",
             "comp78pv_version": "0.1.2",

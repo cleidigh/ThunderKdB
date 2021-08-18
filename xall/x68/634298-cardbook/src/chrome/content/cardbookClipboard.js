@@ -50,7 +50,7 @@ if ("undefined" == typeof(cardbookClipboard)) {
 				}
 			}
 			catch (e) {
-				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_imageEdition.copyImageCard error : " + e, "Error");
+				cardbookRepository.cardbookLog.updateStatusProgressInformation("cardbookClipboard.clipboardSetImage error : " + e, "Error");
 			}
 		},
 

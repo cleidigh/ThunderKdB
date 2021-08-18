@@ -9,6 +9,8 @@ export const TYPE_FETCH_PARAMS = 'dialog::fetch-params';
 export const TYPE_RESPOND_PARAMS = 'dialog::respond-params';
 export const TYPE_FETCH_WINDOW_ID = 'dialog::fetch-window-id';
 export const TYPE_RESPOND_WINDOW_ID = 'dialog::respond-window-id';
+export const TYPE_FETCH_TAB_ID = 'dialog::fetch-tab-id';
+export const TYPE_RESPOND_TAB_ID = 'dialog::respond-tab-id';
 export const TYPE_READY = 'dialog::ready';
 export const TYPE_FOCUS = 'dialog::focus';
 export const TYPE_MOVED = 'dialog::moved';
@@ -278,9 +280,87 @@ export async function open({ url, left, top, width, height, modal, opener } = {}
           (typeof top == 'number' && openedWin.top != top))
         browser.windows.update(win.id, { left, top });
     });
+    // see also https://github.com/piroor/treestyletab/issues/2897
+    browser.tabs.query({ active: true, windowId: win.id }).then(tabs => {
+      browser.tabs.setZoom(tabs[0].id, 1);
+    });
 
     if (!('windowId' in dialogContentsParams))
       dialogContentsParams.windowId = win.id;
+  });
+}
+
+export async function openInTab({ url, windowId } = {}, dialogContentsParams = {}) {
+  const id = generateId();
+  mLogger('openInTab ', { id, url, windowId, dialogContentsParams });
+
+  const extraParams = `dialog-id=${id}&dialog-type=tab`;
+  if (url.includes('?'))
+    url = url.replace(/\?/, `?${extraParams}&`);
+  if (url.includes('#'))
+    url = url.replace(/#/, `?${extraParams}#`);
+  else
+    url = `${url}?${extraParams}`;
+
+  return new Promise(async (resolve, reject) => {
+    let tab; // eslint-disable-line prefer-const
+
+    const onMessage = (message, _sender) => {
+      if (!message || message.id != id)
+        return;
+
+      mLogger(`onMessage at ${id}`, message);
+      switch (message.type) {
+        case TYPE_FETCH_PARAMS:
+          return Promise.resolve(dialogContentsParams);
+
+        case TYPE_FETCH_TAB_ID:
+          return Promise.resolve(tab && tab.id || browser.tabs.TAB_ID_NONE);
+
+        case TYPE_READY:
+          return Promise.resolve(tab.id);
+
+        case TYPE_ACCEPT:
+          browser.runtime.onMessage.removeListener(onMessage);
+          browser.tabs.onRemoved.removeListener(onRemoved); // eslint-disable-line no-use-before-define
+          browser.tabs.remove(tab.id);
+          resolve(message);
+          break;
+
+        case TYPE_CANCEL:
+          browser.runtime.onMessage.removeListener(onMessage);
+          browser.tabs.onRemoved.removeListener(onRemoved); // eslint-disable-line no-use-before-define
+          browser.tabs.remove(tab.id);
+          reject(message);
+          break;
+      }
+    };
+    browser.runtime.onMessage.addListener(onMessage);
+
+    const onRemoved = tabId => {
+      if (!tab || tabId != tab.id)
+        return;
+      mLogger(`onRemoved on ${id}`);
+      unregisterListeners(); // eslint-disable-line no-use-before-define
+      browser.tabs.remove(tab.id);
+      reject();
+    };
+    browser.tabs.onRemoved.addListener(onRemoved);
+
+    const unregisterListeners = () => {
+      if (browser.runtime.onMessage.hasListener(onMessage))
+        browser.runtime.onMessage.removeListener(onMessage);
+      if (browser.tabs.onRemoved.hasListener(onRemoved))
+        browser.tabs.onRemoved.removeListener(onRemoved);
+    };
+
+    const extraParams = {};
+    if (windowId)
+      extraParams.windowId = windowId;
+    tab = await browser.tabs.create({
+      url,
+      ...extraParams,
+    });
   });
 }
 
@@ -317,9 +397,10 @@ export async function getParams() {
 export async function getWindowId() {
   const params = new URLSearchParams(location.search);
   const id = params.get('dialog-id');
+  const type = params.get('dialog-type');
   if (params.get('dialog-offscreen') != 'true')
     return browser.runtime.sendMessage({
-      type: TYPE_FETCH_WINDOW_ID,
+      type: type == 'tab' ? TYPE_FETCH_TAB_ID : TYPE_FETCH_WINDOW_ID,
       id
     });
   else
@@ -331,8 +412,14 @@ let mCurrentWindowId;
 export async function notifyReady() {
   const params = new URLSearchParams(location.search);
   const id = params.get('dialog-id');
+  const type = params.get('dialog-type');
 
   initDialogListener(id);
+
+  if (type == 'tab') {
+    document.documentElement.classList.add('ready');
+    return;
+  }
 
   const detail = {
     id,
@@ -412,6 +499,27 @@ function initDialogListener(id) {
   window.addEventListener('submit', event => {
     event.preventDefault();
   });
+}
+
+let mSizeToContentTimer;
+export function sizeToContent() {
+  if (!mCurrentWindowId)
+    return;
+
+  if (mSizeToContentTimer)
+    clearTimeout(mSizeToContentTimer);
+  mSizeToContentTimer = setTimeout(async () => {
+    const box = document.querySelector('#form > *:first-child');
+    const range = document.createRange();
+    range.selectNodeContents(box);
+    const delta = range.getBoundingClientRect().height - box.getBoundingClientRect().height;
+    range.detach();
+
+    const win = await browser.windows.get(mCurrentWindowId);
+    browser.windows.update(mCurrentWindowId, { height: Math.round(win.height + delta) });
+
+    mSizeToContentTimer = null;
+  }, 100);
 }
 
 export function accept(detail = null) {

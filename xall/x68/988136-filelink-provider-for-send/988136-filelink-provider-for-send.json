@@ -1,0 +1,123 @@
+{
+    "id": 988136,
+    "authors": [
+        {
+            "id": 10108346,
+            "name": "Teal Dulcet",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/tdulcet/",
+            "username": "tdulcet",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/10/10108/10108346.png?modified=1618818561"
+        }
+    ],
+    "average_daily_users": 14,
+    "categories": {
+        "thunderbird": [
+            "composition",
+            "privacy-and-security"
+        ]
+    },
+    "contributions_url": "https://www.paypal.me/TealDulcet",
+    "created": "2021-07-26T13:48:53Z",
+    "current_version": {
+        "id": 2476133,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "86.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filelink-provider-for-send/versions/2476133",
+        "files": [
+            {
+                "id": 1019293,
+                "created": "2021-07-26T13:48:53Z",
+                "hash": "sha256:1a389612e05a23a28af2476cacc909ca57cfedbc630e000116ac0d9e23218709",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 67705,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019293/filelink_provider_for_send-1.0-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "notifications",
+                    "<all_urls>"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2021-07-26T13:55:03Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-provider-for-send/versions/1.0",
+        "version": "1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "Easily and securely encrypt and upload large attachments to any <a rel=\"nofollow\" href=\"https://github.com/timvisee/send-instances/#instances\">Send service instance</a> (formerly <a rel=\"nofollow\" href=\"https://github.com/mozilla/send\">Firefox Send</a>) and send the links via e-mail using the Thunderbird CloudFile/FileLink API. Firefox Send was <a rel=\"nofollow\" href=\"https://support.mozilla.org/en-US/kb/what-happened-firefox-send\">discontinued by Mozilla</a> in 2020. It is now maintained by Tim Visée and called just <a rel=\"nofollow\" href=\"https://github.com/timvisee/send\">Send</a>.\n\n<ul><li>Enables simple, yet private file sharing with end-to-end encryption</li><li>Files are securely <a rel=\"nofollow\" href=\"https://github.com/timvisee/send/blob/master/docs/encryption.md\">encrypted</a> and uploaded locally in Thunderbird using the <a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API\">Web Crypto</a> and <a rel=\"nofollow\" href=\"https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API\">WebSocket</a> APIs</li><li>Files are encrypted and uploaded in chunks, so it requires very little memory (RAM) for even large files</li><li>Link(s) are automatically added to the e-mail by Thunderbird when upload(s) finish, which includes the encryption secret needed to decrypt the file(s)</li><li>When recipient clicks the link(s), the files securely download and decrypt locally in their browser using that encryption secret</li><li>Link(s) automatically expire after the download and time limit</li><li>Desktop notifications when the upload(s) start and finish</li><li>Users can specify the Send service instance(s) to use, defaults to the one provided by Tim Visée: <a rel=\"nofollow\" href=\"https://send.vis.ee\">https://send.vis.ee</a></li><li>Users can specify the download and time limits for each file and defaults for each Send service instance</li><li>Supports the maximum file size supported by each Send service instance, currently 10 GiB</li><li>Supports canceling the upload(s)</li><li>Supports deleting the file(s) from server after upload(s) finish</li><li>Supports all v3 (or greater) Send service servers/instances</li><li>Does NOT require a Firefox Account (FxA) or any other accounts, all uploads are anonymous</li><li>Supports the light/dark mode of your system automatically</li><li>Follows the <a rel=\"nofollow\" href=\"https://style.thunderbird.net/\">Thunderbird Photon Design</a></li></ul>\nMore information on the encryption used can be found in the official Send service documentation <a rel=\"nofollow\" href=\"https://github.com/timvisee/send/blob/master/docs/encryption.md\">here</a>.\n\n❤️ Please visit <a rel=\"nofollow\" href=\"https://www.tealdulcet.com/\">tealdulcet.com</a> to support this extension and my other software development.\n\n<b>Reviews are not monitored for bug reports.</b> Please use the GitHub repository to report any issues or make feature requests: <a rel=\"nofollow\" href=\"https://github.com/tdulcet/Thunderbird-Send\">https://github.com/tdulcet/Thunderbird-Send</a>\n\nThis add-on is not affiliated with Mozilla, Firefox or any Send service instance."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/filelink-provider-for-send/edit",
+    "guid": "send@tealdulcet.com",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://github.com/tdulcet/Thunderbird-Send"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/988/988136-64.png?modified=817edf01",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/988/988136-32.png?modified=817edf01",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/988/988136-64.png?modified=817edf01"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2021-07-26T13:55:03Z",
+    "name": {
+        "en-US": "FileLink provider for Send"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-provider-for-send/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/988136",
+    "slug": "filelink-provider-for-send",
+    "status": "public",
+    "summary": {
+        "en-US": "Securely encrypt and upload large attachments to any Send service instance (formerly Firefox Send)."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/tdulcet/Thunderbird-Send/issues"
+    },
+    "tags": [
+        "cloudfile",
+        "filelink",
+        "firefox57"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/filelink-provider-for-send/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp78plus": true
+        }
+    }
+}

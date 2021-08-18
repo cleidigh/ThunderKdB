@@ -37,10 +37,6 @@ const { PluginHelpers } = ChromeUtils.import(
   "chrome://conversations/content/modules/plugins/helpers.js",
   {}
 );
-const { Contacts } = ChromeUtils.import(
-  "chrome://conversations/content/modules/contact.js",
-  {}
-);
 const { Prefs } = ChromeUtils.import(
   "chrome://conversations/content/modules/prefs.js",
   {}
@@ -84,7 +80,7 @@ async function dateAccordingToPref(date) {
   try {
     return Prefs.no_friendly_date
       ? dateAsInMessageList(date)
-      : await browser.conversations.makeFriendlyDateAgo(date);
+      : await browser.conversations.makeFriendlyDateAgo(date.getTime());
   } catch (e) {
     return dateAsInMessageList(date);
   }
@@ -120,7 +116,6 @@ class Message {
     this.subject = this._msgHdr.mime2DecodedSubject;
 
     this._uri = msgHdrGetUri(this._msgHdr);
-    this._contacts = [];
     this._attachments = [];
     this.needsLateAttachments = false;
     this.contentType = "";
@@ -201,26 +196,6 @@ class Message {
     }
   }
 
-  async getContactsFrom(detail) {
-    let contacts = [];
-    for (const d of detail) {
-      // Not using Promise.all here as we want to let the contact manager
-      // get the data for the caching to work properly.
-      contacts.push([
-        await this._conversation._contactManager.getContactFromNameAndEmail(
-          d.name,
-          d.email
-        ),
-        d.email,
-      ]);
-    }
-    this._contacts = this._contacts.concat(contacts);
-    // false means "no colors"
-    return Promise.all(
-      contacts.map(([x, email]) => x.toTmplData(Contacts.kTo, email))
-    );
-  }
-
   async toReactData() {
     // Ok, brace ourselves for notifications happening during the message load
     //  process.
@@ -254,24 +229,15 @@ class Message {
       subject: messageHeader.subject,
       snippet: this._snippet,
       starred: messageHeader.flagged,
+      // We look up info on each contact in the Redux reducer;
+      // pass this information along so we know what to look up.
+      _contactsData: {
+        from: [this._from],
+        to: this._to,
+        cc: this._cc,
+        bcc: this._bcc,
+      },
     };
-
-    // 1) Generate Contact objects
-    let contactFrom = [
-      await this._conversation._contactManager.getContactFromNameAndEmail(
-        this._from.name,
-        this._from.email
-      ),
-      this._from.email,
-    ];
-    this._contacts.push(contactFrom);
-    // true means "with colors"
-    data.from = await contactFrom[0].toTmplData(Contacts.kFrom, contactFrom[1]);
-    data.from.separator = "";
-
-    data.to = await this.getContactsFrom(this._to);
-    data.cc = await this.getContactsFrom(this._cc);
-    data.bcc = await this.getContactsFrom(this._bcc);
 
     // Don't show "to me" if this is a bugzilla email
     // TODO: Make this work again?
@@ -292,7 +258,7 @@ class Message {
 
     data.fullDate = Prefs.no_friendly_date
       ? ""
-      : dateAsInMessageList(new Date(this._msgHdr.date / 1000));
+      : dateAsInMessageList(this._date);
 
     const userTags = await browser.messages.listTags();
     data.tags = messageHeader.tags.map((tagKey) => {
@@ -338,6 +304,7 @@ class Message {
         formattedSize,
         isExternal: att.isExternal,
         name: att.name,
+        partName: att._part,
         url: att.url,
         anchor: "msg" + this.initialPosition + "att" + i,
       });
@@ -515,9 +482,8 @@ class Message {
     }
 
     // If the message contains forms with action attributes, warn the user.
-    let formNodes = iframe.contentWindow.document.querySelectorAll(
-      "form[action]"
-    );
+    let formNodes =
+      iframe.contentWindow.document.querySelectorAll("form[action]");
 
     const neckoUrl = msgHdrToNeckoURL(this._msgHdr).spec;
     const url = Services.io
@@ -611,9 +577,8 @@ class Message {
     if (this.iframe) {
       // Fill the text node that will end up being printed. We can't
       // really print iframes, they don't wrap...
-      let bodyContainer = this._domNode.getElementsByClassName(
-        "body-container"
-      )[0];
+      let bodyContainer =
+        this._domNode.getElementsByClassName("body-container")[0];
       bodyContainer.textContent = this.bodyAsText;
     }
   }
@@ -624,11 +589,15 @@ class Message {
    * do our best to give this. We're trying not to stream it once more!
    */
   async exportAsHtml() {
-    let author = escapeHtml(this._contacts[0][0]._name);
+    const authorContact = await browser._background.request({
+      type: "contactDetails",
+      payload: this._from,
+    });
+    let author = escapeHtml(authorContact._name);
     let authorEmail = this._from.email;
-    let authorAvatar = this._contacts[0][0].avatar;
-    let authorColor = this._contacts[0][0].color;
-    let date = await dateAccordingToPref(new Date(this._msgHdr.date / 1000));
+    let authorAvatar = authorContact.avatar;
+    let authorColor = authorContact.color;
+    let date = await dateAccordingToPref(this._date);
     // We try to convert the bodies to plain text, to enhance the readability in
     // the forwarded conversation. Note: <pre> tags are not converted properly
     // it seems, need to investigate...
@@ -669,7 +638,28 @@ class Message {
 
 function hasIdentity(identityEmails, emailAddress) {
   const email = emailAddress.toLowerCase();
-  return identityEmails.some((e) => e.toLowerCase() == email);
+  return identityEmails.some((e) => e == email);
+}
+
+async function shouldEnableReplyAll(emails, propName) {
+  let seen = new Set();
+  let identityEmails = [];
+  for (let account of await browser.accounts.list()) {
+    if (!["imap", "pop3", "nntp"].includes(account.type)) {
+      continue;
+    }
+    for (let identity of account.identities) {
+      identityEmails.push(identity.email.toLowerCase());
+    }
+  }
+  return (
+    emails.filter((x) => {
+      let r =
+        !seen.has(x[propName]) && !hasIdentity(identityEmails, x[propName]);
+      seen.add(x[propName]);
+      return r;
+    }).length > 1
+  );
 }
 
 class MessageFromGloda extends Message {
@@ -722,18 +712,10 @@ class MessageFromGloda extends Message {
 
     this.isReplyListEnabled =
       "mailingLists" in glodaMsg && !!glodaMsg.mailingLists.length;
-    let seen = new Set();
-    const identityEmails = await browser.convContacts.getIdentityEmails({
-      includeNntpIdentities: true,
-    });
-    this.isReplyAllEnabled =
-      [glodaMsg.from, ...glodaMsg.to, ...glodaMsg.cc, ...glodaMsg.bcc].filter(
-        function (x) {
-          let r = !seen.has(x.value) && !hasIdentity(identityEmails, x.value);
-          seen.add(x.value);
-          return r;
-        }
-      ).length > 1;
+    this.isReplyAllEnabled = await shouldEnableReplyAll(
+      [glodaMsg.from, ...glodaMsg.to, ...glodaMsg.cc, ...glodaMsg.bcc],
+      "value"
+    );
   }
 }
 
@@ -790,24 +772,15 @@ class MessageFromDbHdr extends Message {
               aMimeMsg &&
               aMimeMsg.has("list-post") &&
               RE_LIST_POST.exec(aMimeMsg.get("list-post"));
-            let seen = new Set();
-            const identityEmails = await browser.convContacts.getIdentityEmails(
-              {
-                includeNntpIdentities: true,
-              }
-            );
-            this.isReplyAllEnabled =
+            this.isReplyAllEnabled = await shouldEnableReplyAll(
               [
                 ...parseMimeLine(aMimeMsg.get("from"), true),
                 ...parseMimeLine(aMimeMsg.get("to"), true),
                 ...parseMimeLine(aMimeMsg.get("cc"), true),
                 ...parseMimeLine(aMimeMsg.get("bcc"), true),
-              ].filter(function (x) {
-                let r =
-                  !seen.has(x.email) && !hasIdentity(identityEmails, x.email);
-                seen.add(x.email);
-                return r;
-              }).length > 1;
+              ],
+              "email"
+            );
 
             let findIsEncrypted = (x) =>
               x.isEncrypted ||

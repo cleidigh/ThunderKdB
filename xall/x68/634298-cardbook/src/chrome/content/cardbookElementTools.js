@@ -765,13 +765,12 @@ if ("undefined" == typeof(cardbookElementTools)) {
 			aMenupopup.appendChild(aMenuseparator);
 			
 			var sourceList = cardbookRepository.cardbookTypes.getTypesFromDirPrefId(aType, myDirPrefId);
-			cardbookRepository.cardbookUtils.sortMultipleArrayByString(sourceList,0,1)
+			cardbookRepository.cardbookUtils.sortMultipleArrayByString(sourceList,0,1);
 			var checkedCode = cardbookRepository.cardbookTypes.whichCodeTypeShouldBeChecked(aType, myDirPrefId, aCheckedArray, sourceList);
 			if (checkedCode.isAPg && !checkedCode.isAlreadyThere) {
 				sourceList.push([checkedCode.result, checkedCode.result]);
 				cardbookRepository.cardbookUtils.sortMultipleArrayByString(sourceList,0,1);
 			}
-			var myCheckedLabel = "";
 			for (let type of sourceList) {
 				let item = document.createXULElement("menuitem");
 				item.setAttribute("class", "menuitem-iconic cardbook-item");
@@ -780,7 +779,6 @@ if ("undefined" == typeof(cardbookElementTools)) {
 				item.setAttribute("type", "radio");
 				if (checkedCode.result == type[1]) {
 					item.setAttribute("checked", "true");
-					myCheckedLabel = type[0];
 				}
 				aMenupopup.appendChild(item);
 			}

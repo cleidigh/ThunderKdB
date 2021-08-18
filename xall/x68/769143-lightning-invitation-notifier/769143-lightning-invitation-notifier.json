@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 398,
+    "average_daily_users": 1361,
     "categories": {
         "thunderbird": [
             "calendar"
@@ -18,30 +18,30 @@
     "contributions_url": null,
     "created": "2017-01-10T08:12:26Z",
     "current_version": {
-        "id": 2472694,
+        "id": 2476098,
         "compatibility": {
             "thunderbird": {
-                "max": "73.0",
-                "min": "68.0"
+                "max": "*",
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lightning-invitation-notifier/versions/2472694",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/lightning-invitation-notifier/versions/2476098",
         "files": [
             {
-                "id": 1015783,
-                "created": "2019-09-30T21:09:16Z",
-                "hash": "sha256:1e3f3690f302a12e03d62379a5d262fab024e617f2d715e4a08528c4cccf1c44",
-                "is_restart_required": true,
+                "id": 1019258,
+                "created": "2021-07-16T04:39:26Z",
+                "hash": "sha256:1c6973bda3ca65b5b1b310c924416dbc676c618a2d0746beccf7744dc4fcf188",
+                "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 6776,
+                "size": 14582,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1015783/lightning_invitation_notifier-2.1b-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019258/lightning_invitation_notifier-78.0.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
-        "is_strict_compatibility_enabled": true,
+        "is_strict_compatibility_enabled": false,
         "license": {
             "id": 3338,
             "name": {
@@ -49,10 +49,12 @@
             },
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Enabled Support for Thunderbird v78+"
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lightning-invitation-notifier/versions/2.1b",
-        "version": "2.1b"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/lightning-invitation-notifier/versions/78.0.1",
+        "version": "78.0.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -75,7 +77,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2019-10-07T12:17:49Z",
+    "last_updated": "2021-07-16T09:36:15Z",
     "name": {
         "en-US": "Lightning Invitation Notifier"
     },
@@ -132,10 +134,10 @@
     "weekly_downloads": 166,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp61plus": true,
+            "comp78plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-16T06:18:11Z"
         }

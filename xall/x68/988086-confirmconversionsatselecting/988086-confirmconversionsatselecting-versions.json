@@ -1,5 +1,51 @@
 [
     {
+        "id": 2476016,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/confirmconversionsatselecting/versions/2476016",
+        "files": [
+            {
+                "id": 1019176,
+                "created": "2021-06-19T20:57:50Z",
+                "hash": "sha256:c4378afa999d6282324872266c29fac6aaaa784e79b0bd1156f8a82d44af2570",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 16472,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019176/confirmconversionsatselecting-2.1-tb.xpi?src=",
+                "permissions": [
+                    "tabs",
+                    "activeTab"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "At selecting a thread, browserAction popup window is opened automatically.\nFor the above action,\n1) I added listener to thread tree last child in implementation.js.\n2) I added listener to browser on activation of any tab in background.js.\n\nJune 20th 2021.\n\nFrom Sungho Hwang."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/confirmconversionsatselecting/versions/2.1",
+        "version": "2.1"
+    },
+    {
         "id": 2475792,
         "channel": "listed",
         "compatibility": {

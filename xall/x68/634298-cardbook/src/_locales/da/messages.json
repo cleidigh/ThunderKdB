@@ -150,7 +150,7 @@
 		"message": "URL er misdannet"
 	},
 	"ValidatingEmailFailedLabel": {
-		"message": "Gyldig mailadresse påkrævet"
+		"message": "Gyldig e-mail påkrævet"
 	},
 	"ValidationFailedLabel": {
 		"message": "Validering mislykkedes"
@@ -3348,7 +3348,7 @@
         }
 	},
 	"invalidEmail": {
-		"message": "$P1$ er ikke en gyldig mailadresse, da den ikke er i formen bruger@server.tld.",
+		"message": "$P1$ er ikke en gyldig e-mailadresse, da den ikke er i formen bruger@server.tld.",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -4012,6 +4012,18 @@
 	},
 	"autocompleteShowAddressbookAccesskey": {
 		"message": "V"
+	},
+	"autocompleteShowEmailTypeLabel": {
+		"message": "Vis e-mailtype"
+	},
+	"autocompleteShowEmailTypeAccesskey": {
+		"message": "e"
+	},
+	"autocompleteShowPopularityLabel": {
+		"message": "Vis popularitet"
+	},
+	"autocompleteShowPopularityAccesskey": {
+		"message": "p"
 	},
 	"autocompleteWithColorLabel": {
 		"message": "Brug adressebogsfarve"
@@ -4926,7 +4938,7 @@
 		"message": "g"
 	},
 	"SearchNameOrEmail.label": {
-		"message": "Navn eller mail"
+		"message": "Navn eller e-mail"
 	},
 	"addtoToFieldMenu.label": {
 		"message": "Tilføj i feltet Til"
@@ -5603,17 +5615,11 @@
 	"viewResultEditionAccesskey": {
 		"message": "V"
 	},
-	"previousEditionLabel": {
+	"previousEditButton.tooltip": {
 		"message": "Forrige"
 	},
-	"previousEditionAccesskey": {
-		"message": "F"
-	},
-	"nextEditionLabel": {
+	"nextEditButton.tooltip": {
 		"message": "Næste"
-	},
-	"nextEditionAccesskey": {
-		"message": "N"
 	},
 	"createEditionLabel": {
 		"message": "Opret"
@@ -5727,13 +5733,13 @@
 		"message": "T"
 	},
 	"addEmailGroupboxLabel": {
-		"message": "Mailadresse"
+		"message": "E-mailadresse"
 	},
 	"availableCardsGroupboxLabel": {
 		"message": "Tilgængelige kontakter"
 	},
 	"nameOrEmailLabel": {
-		"message": "Navn eller mail"
+		"message": "Navn eller e-mail"
 	},
 	"appendContactLabel": {
 		"message": "Tilføj til liste"

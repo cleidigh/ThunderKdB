@@ -63,12 +63,8 @@ class CloudConnection {
 
         upload_status.set_status('preparing');
 
-        if (!this._davUrl) {
-            this._davUrl = davUrlBase + this.userId;
-        }
-
         const uploader = new DavUploader(
-            this.serverUrl, this.username, this.password, this._davUrl, this.storageFolder);
+            this.serverUrl, this.username, this.password, davUrlBase + this.userId, this.storageFolder);
 
         const response = await uploader.uploadFile(uploadId, fileName, fileObject);
 
@@ -240,8 +236,6 @@ class CloudConnection {
         if (data.id) {
             this.userId = data.id;
         }
-        // The DAV-path contains the userID, so update it
-        this._davUrl = davUrlBase + this.userId;
         return data;
     }
 

@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/66/66492.png?modified=1554204559"
         }
     ],
-    "average_daily_users": 14012,
+    "average_daily_users": 12482,
     "categories": {
         "seamonkey": [
             "downloading-and-file-management"
@@ -22,26 +22,26 @@
     "contributions_url": null,
     "created": "2012-05-06T09:12:42Z",
     "current_version": {
-        "id": 2475715,
+        "id": 2476191,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2475715",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/quickfilters/versions/2476191",
         "files": [
             {
-                "id": 1018875,
-                "created": "2021-04-12T19:48:39Z",
-                "hash": "sha256:12d16e3d0b380d3ed70b3039cedda183a7203c0acc1a233ece517810d6d9bc75",
+                "id": 1019351,
+                "created": "2021-08-05T09:11:40Z",
+                "hash": "sha256:25a2a41b6134d16ece7c315f05dbbc66f43255c7622f0304f5c065e9d3a2955c",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 560741,
+                "size": 568573,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018875/quickfilters-5.2.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019351/quickfilters-5.3.1-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,14 +51,14 @@
             "name": {
                 "en-US": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/5.2.1"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/license/5.3.1"
         },
         "release_notes": {
-            "en-US": "quickFilters Change Log - Version 5.2.1\n\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/14\">[issue 14]</a> quickFilters  was migrated to Thunderbird 78, and is now finally available after a lengthy beta phase on <a rel=\"nofollow\" href=\"http://addons.thunderbird.net\">addons.thunderbird.net</a>. Last year's conversion work was expensive and deep - I hired external developer Klaus Buecher for the main conversion phase and also got some lovely new icons contributed by @Panglab who did a lot of design work for Thunderbird Core.\n\nI had a lot of extra days of work and around 3,500$ of expenses for this years Add-on conversions and releases -  also the web site had to be migrated from the now decommissioned free hosting on <a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a> to github pages. To help fund quickFilters for the next year and the unavoidable changes necessary to switch over to an API  based approach, you should <a rel=\"nofollow\" href=\"https://sites.fastspring.com/quickfolders/instant/quickfilters?referrer=atn-version-page\">buy a quickFilters Pro license</a>.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/55\">[issue 55]</a> 5.2.1 - Russian translation fixed by: Igor Zhigunov aka ashed</li><li> 5.2.1 - removed sort button from custom filter templates</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/11\">[issue 11]</a> New function: Sort Search Terms in a filter. To make it easy to view the list \ncorrectly, the new search terms are sorted by search attribute, operator and value.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/20\">[issue 20]</a> New function: Remember Copied filters List to insert to other Accounts multiple times. You can now copy a selection of filters to different accounts without having to re-select the filters every time. To enable this feature, open quickFilters settings, advanced, and select the box \"Enable pasting filters to multiple accounts\".</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/51\">[issue 51]</a> Fixed: Merging new filter conditions may lead to duplicate search terms.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/52\">[issue 52]</a> Own Emails are not automatically suggested for merging when using context menu</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/23\">[issue 23]</a> Avoid Empty Conditions list due to removed recipients - filter cannot be edited. In this case, (when removing invalid emails would lead to a filter without any search conditions) an error message is displayed instead of displaying a filter dialog that cannot be edited.</li><li>Added a step to the troubleshooter that finds filters without search terms.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/47\">[issue 47]</a> Fixed: Using the %subject% placeholder in custom templates doesn't work in Assistant. </li><li>quickFilters settings can now be opened from the Add-ons Manager (via the ... menu). You can also still use the shortcut of right-clicking the filter assistant button on the main toolbar.</li></ul>    \n<b> Thunderbird 87 Regressions Fixed </b>\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/48\">[issue 48]</a> Make quickFilters compatible with Thunderbird 87 beta (ongoing): \n  <ul>  <li>Removed strict maximum version - you can now run quickFilters in Thunderbird 88 beta versions. Please do not expect higher versions to work, my goal for the moment is strictly supporting next years ESR version in time.</li>  <li>open sites in tab was broken because of modified openTab parameters</li>  <li>search terms now in a different type of collection can lead to failures when defining new filters.</li>  </ul></li></ul>"
+            "en-US": "quickFilters Change Log - Version 5.3.1\n<ul><li>quickFilters is now compatible with Thunderbird 91, which commences the next ESR period (2021-2022).</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/67\">[issue 67]</a> Added colored icons and theme support in message filter list toolbar. </li><li>Splash screen: instead of displaying this as soon as Thunderbird installs a new version of Thunderbird, this is now available by clicking the message on the assistant button which shows the fact that quickFilters was updated.</li><li>Options are now available through Add-ons Manager / quickFilters \"Wrench Icon\".</li><li>Restricted special search methods in the filter list to licensed users only.</li></ul><b>Bug Fixes</b>\n<ul><li>The link on the registration screen in 5.3 accidentally directed to buy a QuickFolders license. This is now fixed in version 5.3.1.</li><li>The license validation didn't tell if license failing - fixed in 5.3.1</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/66\">[issue 66]</a> Fixed: On some machines, quickFilters is not loading at startup (due to accounts not loading)</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/quickFilters/issues/68\">[issue 68]</a> Fixed: Moving mails with context menu moves wrong mails (it switched to mail below the selection and moved that instead). </li><li>When an invalid license was entered in version 5.3 no feedback or reason for it not working was given.</li></ul><b>Localization</b>\n<ul><li>Use modern json localization format. This can avoid problems of dialogs not loading in non-English locales if a text is missing.</li><li>Completed Argentinian Locale using strings from the Spanish one.</li><li>Added Finnish, Portuguese and Polish translations (using google translate). </li></ul><b>Compatibility with Thunderbird 91</b>\n<ul><li>Fixed missing icons on sliding notification bars</li><li>Fixed style / visibility of [Buy License] button at bottom of settings dialog.</li><li>Removed deprecated fixIterator function from findInboxFromRoot() function</li><li>Using notifyTools for updating UI via background page (mail extension conversion).</li><li>Licenser code migrated into background script. </li><li>Hiding / showing the toolbar in filter list is now instant.</li><li>Removed obsolete legacy locale files.</li><li>Removed all references to the old <a rel=\"nofollow\" href=\"http://mozdev.org\">mozdev.org</a> site.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/5.2.1",
-        "version": "5.2.1"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/versions/5.3.1",
+        "version": "5.3.1"
     },
     "default_locale": "en-US",
     "description": {
@@ -74,16 +74,16 @@
     "homepage": {
         "en-US": "https://quickfilters.quickfolders.org/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/372/372870-64.png?modified=1608393654",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/372/372870-64.png?modified=1628184283",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/372/372870-32.png?modified=1608393654",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/372/372870-64.png?modified=1608393654"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/372/372870-32.png?modified=1628184283",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/372/372870-64.png?modified=1628184283"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-04-13T04:26:36Z",
+    "last_updated": "2021-08-05T09:34:15Z",
     "name": {
         "ru": "quickFilters",
         "fr": "quickFilters",
@@ -105,12 +105,12 @@
                 187,
                 73
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206377.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206377.png?modified=1628184283",
             "thumbnail_size": [
                 187,
                 73
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206377.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206377.png?modified=1628184283"
         },
         {
             "id": 206378,
@@ -121,12 +121,12 @@
                 654,
                 536
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206378.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206378.png?modified=1628184283",
             "thumbnail_size": [
                 244,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206378.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206378.png?modified=1628184283"
         },
         {
             "id": 206379,
@@ -137,12 +137,12 @@
                 616,
                 539
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206379.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206379.png?modified=1628184283",
             "thumbnail_size": [
                 229,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206379.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206379.png?modified=1628184283"
         },
         {
             "id": 206380,
@@ -153,12 +153,12 @@
                 1028,
                 800
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206380.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206380.png?modified=1628184283",
             "thumbnail_size": [
                 257,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206380.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206380.png?modified=1628184283"
         },
         {
             "id": 206381,
@@ -169,12 +169,12 @@
                 665,
                 481
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206381.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206381.png?modified=1628184283",
             "thumbnail_size": [
                 277,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206381.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206381.png?modified=1628184283"
         },
         {
             "id": 206382,
@@ -185,12 +185,12 @@
                 597,
                 183
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206382.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206382.png?modified=1628184283",
             "thumbnail_size": [
                 320,
                 98
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206382.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206382.png?modified=1628184283"
         },
         {
             "id": 112792,
@@ -201,28 +201,28 @@
                 561,
                 437
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/112/112792.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/112/112792.png?modified=1628184283",
             "thumbnail_size": [
                 257,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/112/112792.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/112/112792.png?modified=1628184283"
         },
         {
-            "id": 90466,
+            "id": 206588,
             "caption": {
                 "en-US": "Main toolbar buttons: Assistant, Run Filters, List Filters"
             },
             "image_size": [
-                497,
-                189
+                491,
+                111
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/90/90466.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206588.png?modified=1628184578",
             "thumbnail_size": [
                 320,
-                122
+                72
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/90/90466.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206588.png?modified=1628184578"
         },
         {
             "id": 90468,
@@ -233,12 +233,12 @@
                 542,
                 308
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/90/90468.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/90/90468.png?modified=1628184283",
             "thumbnail_size": [
                 320,
                 182
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/90/90468.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/90/90468.png?modified=1628184283"
         },
         {
             "id": 141582,
@@ -249,12 +249,12 @@
                 504,
                 357
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/141/141582.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/141/141582.png?modified=1628184283",
             "thumbnail_size": [
                 282,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/141/141582.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/141/141582.png?modified=1628184283"
         },
         {
             "id": 141584,
@@ -265,12 +265,12 @@
                 270,
                 93
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/141/141584.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/141/141584.png?modified=1628184283",
             "thumbnail_size": [
                 270,
                 93
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/141/141584.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/141/141584.png?modified=1628184283"
         },
         {
             "id": 205634,
@@ -281,12 +281,12 @@
                 548,
                 301
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205634.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205634.png?modified=1628184283",
             "thumbnail_size": [
                 320,
                 176
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205634.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205634.png?modified=1628184283"
         },
         {
             "id": 93859,
@@ -297,12 +297,12 @@
                 677,
                 486
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/93/93859.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/93/93859.png?modified=1628184283",
             "thumbnail_size": [
                 279,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/93/93859.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/93/93859.png?modified=1628184283"
         },
         {
             "id": 93861,
@@ -313,12 +313,12 @@
                 561,
                 437
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/93/93861.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/93/93861.png?modified=1628184283",
             "thumbnail_size": [
                 257,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/93/93861.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/93/93861.png?modified=1628184283"
         },
         {
             "id": 205557,
@@ -329,12 +329,12 @@
                 679,
                 441
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205557.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205557.png?modified=1628184283",
             "thumbnail_size": [
                 308,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205557.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205557.png?modified=1628184283"
         },
         {
             "id": 205558,
@@ -345,12 +345,12 @@
                 679,
                 441
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205558.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205558.png?modified=1628184283",
             "thumbnail_size": [
                 308,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205558.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205558.png?modified=1628184283"
         },
         {
             "id": 205559,
@@ -361,12 +361,12 @@
                 753,
                 441
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205559.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205559.png?modified=1628184283",
             "thumbnail_size": [
                 320,
                 187
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205559.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205559.png?modified=1628184283"
         },
         {
             "id": 139286,
@@ -377,12 +377,12 @@
                 572,
                 94
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139286.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139286.png?modified=1628184283",
             "thumbnail_size": [
                 320,
                 53
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139286.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139286.png?modified=1628184283"
         },
         {
             "id": 139288,
@@ -393,12 +393,12 @@
                 575,
                 197
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139288.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139288.png?modified=1628184283",
             "thumbnail_size": [
                 320,
                 110
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139288.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139288.png?modified=1628184283"
         },
         {
             "id": 139290,
@@ -409,12 +409,12 @@
                 545,
                 196
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139290.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139290.png?modified=1628184283",
             "thumbnail_size": [
                 320,
                 115
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139290.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139290.png?modified=1628184283"
         },
         {
             "id": 139292,
@@ -425,12 +425,12 @@
                 566,
                 283
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139292.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/139/139292.png?modified=1628184283",
             "thumbnail_size": [
                 320,
                 160
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139292.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/139/139292.png?modified=1628184283"
         },
         {
             "id": 205556,
@@ -441,12 +441,12 @@
                 783,
                 601
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205556.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/205/205556.png?modified=1628184283",
             "thumbnail_size": [
                 261,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205556.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/205/205556.png?modified=1628184283"
         },
         {
             "id": 72044,
@@ -457,20 +457,20 @@
                 554,
                 440
             ],
-            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72044.png?modified=1608393654",
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/72/72044.png?modified=1628184283",
             "thumbnail_size": [
                 252,
                 200
             ],
-            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72044.png?modified=1608393654"
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/72/72044.png?modified=1628184283"
         }
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.50244,
-        "count": 61,
-        "average": 4.5246,
-        "text_count": 61
+        "bayesian_average": 4.48651,
+        "count": 63,
+        "average": 4.5079,
+        "text_count": 63
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/quickfilters/reviews/",
     "requires_payment": false,

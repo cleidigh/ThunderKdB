@@ -13,6 +13,8 @@ var cardbookInit = {
 		prefs.setBoolPref("autocompleteSortByPopularity", true);
 		prefs.setBoolPref("proposeConcatEmails", false);
 		prefs.setBoolPref("autocompleteShowAddressbook", false);
+		prefs.setBoolPref("autocompleteShowEmailType", false);
+		prefs.setBoolPref("autocompleteShowPopularity", false);
 		prefs.setBoolPref("autocompleteWithColor", true);
 		prefs.setBoolPref("autocompleteRestrictSearch", false);
 		prefs.setCharPref("autocompleteRestrictSearchFields", cardbookRepository.defaultAutocompleteRestrictSearchFields);
@@ -102,7 +104,7 @@ var cardbookInit = {
 		prefs.setCharPref("accountShown", "");
 		prefs.setCharPref("uncategorizedCards", "");
 		prefs.setCharPref("categoryColors", "");
-		prefs.setCharPref("addonVersion", "59.5");
+		prefs.setCharPref("addonVersion", "60.2");
 		prefs.setCharPref("defaultRegion", "NOTSET");
 
 		prefs.setBoolPref("localDataEncryption", false);

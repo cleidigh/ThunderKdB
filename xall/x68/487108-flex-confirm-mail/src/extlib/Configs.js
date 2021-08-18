@@ -21,7 +21,8 @@ class Configs {
       delete defaults[key];
     }
     this.$default = defaults;
-    this._logging = logging || false;
+    this.$logging = logging || false;
+    this.$logs = [];
     this.$logger = logger;
     this._locked = new Set();
     this._lastValues = {};
@@ -46,10 +47,12 @@ class Configs {
   }
 
   _log(message, ...args) {
-    if (!this._logging)
+    message = `Configs[${location.href}] ${message}`;
+    this.$logs = this.$logs.slice(-1000);
+
+    if (!this.$logging)
       return;
 
-    message = `Configs[${location.href}] ${message}`;
     if (typeof this.$logger === 'function')
       this.$logger(message, ...args);
     else
@@ -70,7 +73,7 @@ class Configs {
       const [localValues, managedValues, lockedKeys] = await Promise.all([
         (async () => {
           try {
-            const localValues = await browser.storage.local.get(this.$default);
+            const localValues = await browser.storage.local.get(null); // keys must be "null" to get only stored values
             this._log('load: successfully loaded local storage');
             return localValues;
           }
@@ -103,13 +106,13 @@ class Configs {
             // storage.managed.get() fails on options page in Thunderbird.
             // The problem should be fixed by Thunderbird side.
             if (window.messenger) {
-                setTimeout(() => {
-                  if (resolved)
-                    return;
-                  resolved = true;
-                  this._log('load: failed to load managed storage: timeout');
-                  resolve(null);
-                }, 250);
+              setTimeout(() => {
+                if (resolved)
+                  return;
+                resolved = true;
+                this._log('load: failed to load managed storage: timeout');
+                resolve(null);
+              }, 250);
             }
           });
         })(),

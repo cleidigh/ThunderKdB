@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 873,
+    "average_daily_users": 787,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-02-15T04:48:08Z",
     "current_version": {
-        "id": 2473446,
+        "id": 2476277,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "68.0"
+                "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/config-button/versions/2473446",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/config-button/versions/2476277",
         "files": [
             {
-                "id": 1016574,
-                "created": "2020-02-16T10:30:57Z",
-                "hash": "sha256:64445a5517e708160c8b965a102bb5ffb30535858059185696e2c95436067684",
+                "id": 1019437,
+                "created": "2021-08-12T21:18:09Z",
+                "hash": "sha256:430517504bbca7ed05b7115afad8e7ad497d156e96e7d9210ee1bad4d72da04e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 6498,
+                "size": 5278,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1016574/config_button-1.1-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019437/config_button-1.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -71,14 +71,16 @@
             "url": "http://www.gnu.org/licenses/gpl-3.0.html"
         },
         "release_notes": {
-            "en-US": "Changed the icon."
+            "en-US": "Added option to open about:config in a tab.\nSet minimum version to Thunderbird 78."
         },
-        "reviewed": "2020-02-29T21:26:04Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/config-button/versions/1.1",
-        "version": "1.1"
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/config-button/versions/1.5",
+        "version": "1.5"
     },
     "default_locale": "en-US",
-    "description": null,
+    "description": {
+        "en-US": "Adds a Config Button, opens about:config in a dialog.\nOptionally  opens about:config in a new tab.\n\nRight click the button to set the option to open about:config in a new tab."
+    },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/config-button/edit",
     "guid": "configButton@dillinger",
@@ -96,7 +98,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-02-29T21:26:04Z",
+    "last_updated": "2021-08-12T22:03:13Z",
     "name": {
         "en-US": "Config Button"
     },
@@ -131,7 +133,7 @@
     "slug": "config-button",
     "status": "public",
     "summary": {
-        "en-US": "Adds a Config Button, opens about:config in a dialog"
+        "en-US": "Adds a Config Button, opens about:config in a dialog.\nOptionally  opens about:config in a new tab."
     },
     "support_email": {
         "en-US": "dillinger@kpnmail.nl"
@@ -147,7 +149,8 @@
         "ext_comp": {
             "compNoMax": true,
             "mext": true,
-            "comp68": true
+            "comp68": true,
+            "comp78plus": true
         }
     }
 }

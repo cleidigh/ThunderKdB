@@ -45,7 +45,7 @@ let JSMs = [
 	"chrome://cardbook/content/mailContact/ovl_cardbookFindEvents.js",
 	"chrome://cardbook/content/mailContact/ovl_cardbookMailContacts.js",
 	"chrome://cardbook/content/mergeCards/wdw_mergeCards.js",
-	"chrome://cardbook/content/migrate/wdw_migrate.js",
+	"chrome://cardbook/content/migrate/cardbookMigrate.jsm",
 	"chrome://cardbook/content/observers/cardBookComposeMsgObserver.js",
 	"chrome://cardbook/content/observers/cardBookEditionObserver.js",
 	"chrome://cardbook/content/observers/cardBookLightningObserver.js",

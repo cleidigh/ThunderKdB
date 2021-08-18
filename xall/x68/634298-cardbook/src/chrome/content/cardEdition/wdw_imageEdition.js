@@ -2,6 +2,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 	var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	var { NetUtil } = ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
 	var { FileUtils } = ChromeUtils.import("resource://gre/modules/FileUtils.jsm");
+	var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
 	var { cardbookRepository } = ChromeUtils.import("chrome://cardbook/content/cardbookRepository.js");
 	
 	var loader = Services.scriptloader;
@@ -91,6 +92,7 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 		},
 
 		dragImageCard: function (aEvent) {
+			// windows drag image : image/jpeg
 			aEvent.preventDefault();
 			var myFile = aEvent.dataTransfer.mozGetDataAt("application/x-moz-file", 0);
 			if (myFile instanceof Components.interfaces.nsIFile) {
@@ -98,11 +100,13 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 			} else {
 				var link = aEvent.dataTransfer.getData("URL");
 				if (link) {
-					wdw_imageEdition.addImageCard(link);
+					wdw_imageEdition.addImageCard(link.replace(/^blob\:/, ""));
 				} else {
 					link = aEvent.dataTransfer.getData("text/plain");
-					if (link.startsWith("https://") || link.startsWith("http://") || link.startsWith("file://") ) {
+					if (link.startsWith("https://") || link.startsWith("http://") || link.startsWith("file://")) {
 						wdw_imageEdition.addImageCard(link);
+					} else if (link.startsWith("blob:https://") || link.startsWith("blob:http://") || link.startsWith("blob:file://")) {
+						wdw_imageEdition.addImageCard(link.replace(/^blob\:/, ""));
 					}
 				}
 			}
@@ -110,17 +114,35 @@ if ("undefined" == typeof(wdw_imageEdition)) {
 
 		pasteImageCard: function () {
 			try {
-				var myType = "IMAGES";
+				// windows copy link : text/unicode
+				// windows copy image : image/jpeg
+				let myType = "IMAGES";
 				if (cardbookClipboard.clipboardCanPaste(myType)) {
-					var data = cardbookClipboard.clipboardGetData(myType);
+					let data = cardbookClipboard.clipboardGetData(myType);
 					if (data.flavor.startsWith("image/")) {
-						var myExtension = data.flavor == "image/png" ? "png" : (data.flavor == "image/gif" ? "gif" : "jpg");
-						wdw_imageEdition.resizeImageCard({extension: myExtension, content: data.data}, true);
+						let extension = data.flavor == "image/png" ? "png" : (data.flavor == "image/gif" ? "gif" : "jpg");
+						let inputStream = data.data;
+						if (AppConstants.platform == 'Linux') {
+							// does not work on Windows
+							let binaryImage = NetUtil.readInputStreamToString(inputStream, inputStream.available());
+							let image = btoa(binaryImage);
+							wdw_imageEdition.resizeImageCard({extension: extension, content: image}, true);
+						} else {
+							let myFile = Services.dirsvc.get("TmpD", Components.interfaces.nsIFile);
+							myFile.append(cardbookRepository.cardbookUtils.getUUID() + "." + extension);
+							let ostream = FileUtils.openSafeFileOutputStream(myFile)
+							NetUtil.asyncCopy(inputStream, ostream, async function (status) {
+								if (Components.isSuccessCode(status)) {
+									await wdw_imageEdition.addImageCard(myFile);
+									myFile.remove(true);
+								}
+							});
+						}
 					} else if (data.flavor == "application/x-moz-file") {
-						var myFile = data.data.QueryInterface(Components.interfaces.nsIFile);
+						let myFile = data.data.QueryInterface(Components.interfaces.nsIFile);
 						wdw_imageEdition.addImageCard(myFile);
 					} else if (data.flavor === "text/unicode" || data.flavor === "text/plain") {
-						var myTextArray = data.data.QueryInterface(Components.interfaces.nsISupportsString).data.split("\n");
+						let myTextArray = data.data.QueryInterface(Components.interfaces.nsISupportsString).data.split("\n");
 						for (let myText of myTextArray) {
 							if (myText.startsWith("https://") || myText.startsWith("http://") || myText.startsWith("file://")) {
 								wdw_imageEdition.addImageCard(myText);

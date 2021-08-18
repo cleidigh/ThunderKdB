@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2789,
+    "average_daily_users": 2641,
     "categories": {
         "thunderbird": [
             "folders-and-filters",
@@ -19,27 +19,30 @@
     "contributions_url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6K57TUFSNMVSJ&source=url",
     "created": "2019-12-18T06:25:41Z",
     "current_version": {
-        "id": 2474904,
+        "id": 2476125,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nostalgy_ng/versions/2474904",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nostalgy_ng/versions/2476125",
         "files": [
             {
-                "id": 1018066,
-                "created": "2020-12-01T22:02:05Z",
-                "hash": "sha256:f80521b824cf1b34511fd6172bb6357ae86cc657e10901cd1c85671525986b7b",
+                "id": 1019285,
+                "created": "2021-07-22T16:33:32Z",
+                "hash": "sha256:a4ff1fef4b9ea60711f2d2d190bc4c7647cc5bde0dde90d1a43f8d2aa9809fba",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 96905,
+                "size": 117003,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018066/emails_verwalten_nostalgy_fur_tb_78-2.2.4-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019285/emails_verwalten_archivieren_nostalgy_tb78-3.0.4-tb.xpi?src=",
+                "permissions": [
+                    "notifications",
+                    "messagesRead"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -49,17 +52,17 @@
                 "en-US": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International",
                 "de": "Creative Commons (CC BY-ND 4.0) Attribution-NoDerivatives 4.0 International"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/license/2.2.4"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/license/3.0.4"
         },
         "release_notes": null,
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/versions/2.2.4",
-        "version": "2.2.4"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/versions/3.0.4",
+        "version": "3.0.4"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "S moves an email. After typing a few letters, by autocomplete, a list of possible folder- destinations is shown and can be selected by up/down/enter or by mouse.\n\nRules can be defined, and shift-S moves the email to the predefined folder (which is shown in the status line).\n\nIn a similiar way, emails can be copied, the view shifted to the chosen folder. Folder pane, message list or message display can be selected, so that scrolling or up/down is directly applied in those parts of the main window.\n\nKeys (like S) can be chosen by the user. Consider to change the original choice of Nostalgy (S), because that prevents setting the star tag of emails by S.\n\nFast view of attachment images inside of TB.\n\nWhen composing a message, typing cc before the email address, changes the 'to' to 'cc' (or respectively, 'bcc').\n\n<b>This is a port of Nostalgy by Alain Frisch to TB 68 and TB78</b>. Nostalgy has adapted my version for TB 68 as well.\n\n\n<b>There are new features, for example: </b>\n* create new rule from last moving action. \n* quick create a rule from status line/by keyboard \n* direct apply a rule to all messages in its folder\n* compose dialog: always show cc or bcc line (per option)\n* viewing attachment images: esc-1 (esc-2, ...) displays the first image file (esc followed by 1). - v2.2.4",
-        "de": "S verschiebt eine email, der Ordner ist per 'Autocomplete' nach Eingabe einiger Buchstaben wählbar. \nWenn eine Regel angelegt wird, verschiebt Shift-S in den angegebenen Ordner. Ähnlich für Kopieren, gehe zu Ordner, und viele zusätzliche Funktionen.\n\n\nDie Buchstaben der Befehle sind frei wählbar.\n\nBildanhänge werden per Tastendruck angezeigt, intern direkt in TB. Eine Erweiterung mit Zoom, Diashow, Rotieren etc. ist in meinem addon 'Attachment Image Viewer/Slideshow'. Dort zeigt auch der download-Dialog eine Miniansicht des Bilds.\n\nTippt man beim Email-Verfassen in der Empfängerzeile cc (oder bcc, esc-c oder esc-b), dann ändert sich das \"An\" auf cc oder bcc. Man muss also nicht per Maus An/cc/bcc auswählen und bleibt im Fluss, wenn mann mehrere Adressen eingibt.\n\n<b>Dies ist die Übertragung von Nostalgy von Alain Frisch auf TB68 und TB 78</b>. Der Code für TB 68 wurde auch ins ursprüngliche Nostalgy Addon übernommen.\n\n<b>Neue Funktionen für TB 78: </b>\n* Regeln aus dem letzten Email-Verschieben erzeugen.\n* Neue Regel aus der Statuszeile mit n erzeugen\n* Regel direkt auf den folder anwenden, ohne emails zu markieren\n* Email verfassen: immer cc oder bcc Zeile anzeigen (Option)\n* Bildanhänge anzeigen, esc-1 zeigt das erste Bild, etc.\n\nAchtung, interne Sprache der Fenster noch Englisch."
+        "en-US": "<b>Attention for TB 78.11/TB 78.12/Thunderbird 64 bit:</b>\nThere have been timing problems in TB when using the 64 bit version of Thunderbird.\n3.0.4 should solve these problems. If it does for you, please ignore the following remarks.\nOtherwise, please comment on github or send info to the support email.\n\nFor version 2 in TB 64 bit: on TB loading, TB first sets Nostalgy keys, and after that, it sets its own TB keys, overwriting the keysetting of Nostalgy.\nIn earlier versions of TB, TB did wait with loadiing of addons until TB itself was ready.\n\nThat means after TB start, out of the box, the keys do not work.\nThere is a workaround: open TB addons page (tools-&gt; addons), deactivate Nostalgy++ with the blue slider switch, then reactivate Nostalgy++. Now it sets its key after TB is ready and they stay until the next restart.\n\n\n3.0.4 should solve this for TB 78 and TB 91. On win 10, the problem only comes up in 64 bit TB, 32bit TB works fine.\n\nPlease refrain from giving 1 star reviews, this is not a problem of Nostalgy. It is due to the many changes in TB (namely now multiprocess and other changes).\nIf there are technical problems, please report in the issue page on github (see support link). Please don't use the comment section for this, if it is only a temporary problem. 1,2,3 star comments are meant for addons having little functionality, not for temporary problems.\n\nMany thanks, Klaus\n<b>End of remarks for TB 78.11/TB 78.12/Thunderbird 64 bit:</b>\n\nS moves an email. After typing a few letters, by autocomplete, a list of possible folder- destinations is shown and can be selected by up/down/enter or by mouse.\n\nThe foldername '<b>in no</b>' proposes <b>in</b>box/software/<b>no</b>stalgy. '<b>ar no</b>' proposes <b>ar</b>chives/software/<b>no</b>stalgy. '<b>no</b>' would propose <b>both</b>.\n\nAlternatively, regex can be used to define foldernames for search. So 'in.*no'  does the same search as 'in no'.  (Don't type the '). (?!substring) returns folders not containing 'substring' in their name, so this helps to exclude 'archive' or 'local storage'.\n\nRules can be defined, and shift-S moves the email to the predefined folder (which is shown in the status line).\n\nAfter a few moves, statistical predicition proposes appropriate folders. \n\nIn a similiar way, emails can be copied, or the view can be shifted to the chosen folder (go). Go back allows to return the view to the previous folder.\nFolder pane, message list or message display can be selected by hotkeys, so that scrolling or up/down is directly applied in those parts of the main window.\n\nKeys (like S) can be chosen by the user. Consider to change the original choice of Nostalgy (S), because that prevents setting the star tag of emails by S.\n\nFast view of attachment images inside of TB.\n\nWhen composing a message, typing cc before the email address, changes the 'to' to 'cc' (or respectively, 'bcc').\n\n<b>This is a port of Nostalgy by Alain Frisch to TB 68 and TB78. The version for TB 91 will follow</b>. Nostalgy has adapted my version for TB 68 as well.\n\n\n<b>There are new features, for example: </b>\n<b>version 2.3:</b>\n* allow multiple substrings for search\n*go back to previous folder\n\n<b>version 2.2.6 and below:</b>\n* create new rule from last moving action. \n* quick create a rule from status line/by keyboard \n* direct apply a rule to all messages in its folder\n* compose dialog: always show cc or bcc line (per option)\n* viewing attachment images: esc-1 (esc-2, ...) displays the first image file (esc followed by 1). - v2.2.4",
+        "de": "<b>Attention for TB 78.11/TB 78.12/Thunderbird 64 bit:</b>\nThere have been timing problems in TB when using the 64 bit version of Thunderbird.\n3.0.4 should solve these problems. If it does for you, please ignore the following remarks.\nOtherwise, please comment on github or send info to the support email.\n\nFor version 2 in TB 64 bit: on TB loading, TB first sets Nostalgy keys, and after that, it sets its own TB keys, overwriting the keysetting of Nostalgy.\nIn earlier versions of TB, TB did wait with loadiing of addons until TB itself was ready.\n\nThat means after TB start, out of the box, the keys do not work.\nThere is a workaround: open TB addons page (tools-&gt; addons), deactivate Nostalgy++ with the blue slider switch, then reactivate Nostalgy++. Now it sets its key after TB is ready and they stay until the next restart.\n\n\n3.0.4 should solve this for TB 78 and TB 91. On win 10, the problem only comes up in 64 bit TB, 32bit TB works fine.\n\nPlease refrain from giving 1 star reviews, this is not a problem of Nostalgy. It is due to the many changes in TB (namely now multiprocess and other changes).\nIf there are technical problems, please report in the issue page on github (see support link). Please don't use the comment section for this, if it is only a temporary problem. 1,2,3 star comments are meant for addons having little functionality, not for temporary problems.\n\nMany thanks, Klaus\n<b>End of remarks for TB 78.11/TB 78.12/Thunderbird 64 bit:</b>\n\n\n\n\n\nS verschiebt eine email, der Ordner ist per 'Autocomplete' nach Eingabe einiger Buchstaben wählbar. \n\nDer Verzeichnisname '<b>in no</b>' schlägt <b>in</b>box/software/<b>no</b>stalgy vor,  '<b>ar no</b>'  hingegen <b>ar</b>chives/software/<b>no</b>stalgy. '<b>no</b>' würde <b>beide</b> Verzeichnisse zur Auswahl stellen.\n\nWenn eine Regel angelegt wird, verschiebt Shift-S in den angegebenen Ordner. \n\nDurch statistische Vorhersage können die Verzeichnisziele automatisch vorgeschlagen werden.\n\nÄhnlich für Kopieren, gehe zu Ordner, und viele zusätzliche Funktionen. Nach einem 'Gehe zu Ordner' erlaubt v2.3 auch das 'Zurückgehen zum vorherigen Ordner'.\n\n\nDie Buchstaben der Befehle sind frei wählbar.\n\nBildanhänge werden per Tastendruck angezeigt, intern direkt in TB. Eine Erweiterung mit Zoom, Diashow, Rotieren etc. ist in meinem addon 'Attachment Image Viewer/Slideshow'. Dort zeigt auch der download-Dialog eine Miniansicht des Bilds.\n\nTippt man beim Email-Verfassen in der Empfängerzeile cc (oder bcc, esc-c oder esc-b), dann ändert sich das \"An\" auf cc oder bcc. Man muss also nicht per Maus An/cc/bcc auswählen und bleibt im Fluss, wenn mann mehrere Adressen eingibt.\n\n<b>Dies ist die Übertragung von Nostalgy von Alain Frisch auf TB68 und TB 78, die Übertragung auf TB 91 ist in Vorbereitung.</b>. Der Code für TB 68 wurde auch ins ursprüngliche Nostalgy Addon übernommen.\n\n<b>Neue Funktionen für TB 78: </b>\n<b>Version 2.3</b>\n* Suche nach mehreren Zeichenketten im Verzeichnisnamen\n* Gehe zurück zum vorherigen folder\n\n<b>Version 2.2.6 und früher</b>\n* Regeln aus dem letzten Email-Verschieben erzeugen.\n* Neue Regel aus der Statuszeile mit n erzeugen\n* Regel direkt auf den folder anwenden, ohne emails zu markieren\n* Email verfassen: immer cc oder bcc Zeile anzeigen (Option)\n* Bildanhänge anzeigen, esc-1 zeigt das erste Bild, etc.\n\nAchtung, interne Sprache der Fenster noch Englisch."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/nostalgy_ng/edit",
@@ -76,7 +79,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-04T15:49:06Z",
+    "last_updated": "2021-07-22T18:06:27Z",
     "name": {
         "en-US": "Manage and archive emails / Nostalgy++ for TB78",
         "de": "Emails verwalten, archivieren / Nostalgy++  TB78"
@@ -181,10 +184,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.81557,
-        "count": 35,
-        "average": 4.8571,
-        "text_count": 35
+        "bayesian_average": 4.67249,
+        "count": 44,
+        "average": 4.7045,
+        "text_count": 44
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/nostalgy_ng/reviews/",
     "requires_payment": false,
@@ -192,8 +195,8 @@
     "slug": "nostalgy_ng",
     "status": "public",
     "summary": {
-        "en-US": "Shortcuts to move/copy messages, with folder name completion. \nSet rules for moving of messages to associated folders.  \nView images inside TB without external viewer.\n\nDonations to transfer to TB 78 and adding new features are acknowledged.",
-        "de": "Kopieren/Verschieben von emails per Tastendruck, mit Verzeichnisvorschlägen  nach Eingeben einiger Buchstaben. \nRegeln für Zielverzeichnisse lt Absender/Betreff. \nTools für den Verfassen Dialog/Suche.\nBildbetrachter für Anhänge."
+        "en-US": "Shortcuts to move/copy/archive messages, with folder name completion. \nSet rules for moving messages to associated folders.\nAutomatic rules by statistical observation.  \nView images inside TB without external viewer.\n\nFor v2.3/TB 78.11 see below",
+        "de": "Kopieren/Verschieben/Archivieren von emails per Tastendruck, mit Verzeichnisvorschlägen  nach Eingeben einiger Buchstaben. \nRegeln für Zielverzeichnisse lt Absender/Betreff/statist. Vorhersage. \n\nFor v2.3/TB 78.11 see below"
     },
     "support_email": {
         "en-US": "buecher@optosolar.com",

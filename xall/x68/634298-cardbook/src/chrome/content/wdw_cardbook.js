@@ -742,7 +742,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					wdw_cardbook.writeCardsToCSVFile(aFile.path, aFile.leafName, aListOfSelectedCard);
 				} else {
 					cardbookRepository.cardbookSynchronization.writeCardsToFile(aFile.path, aListOfSelectedCard, true);
-					wdw_cardbook.finishExportToFile(aListOfSelectedCard.length, aFile.leafName);
+					cardbookRepository.cardbookSynchronization.finishExportToFile(window, aListOfSelectedCard.length, aFile.leafName);
 				}
 			}
 			catch (e) {
@@ -789,24 +789,11 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					// a final blank line
 					output = output + "\r\n";
 					cardbookRepository.cardbookUtils.writeContentToFile(aFileName, output, "UTF8");
-					wdw_cardbook.finishExportToFile(aListofCard.length, aFileLeafName);
+					cardbookRepository.cardbookSynchronization.finishExportToFile(window, aListofCard.length, aFileLeafName);
 				}
 			}
 			catch (e) {
 				cardbookRepository.cardbookLog.updateStatusProgressInformation("wdw_cardbook.writeCardsToCSVFile error : " + e, "Error");
-			}
-		},
-
-		finishExportToFile: function (aListOfSelectedCardLength, aFileName) {
-			let alertTitle = cardbookRepository.extension.localeData.localizeMessage("exportCardToFileLabel");
-			if (aListOfSelectedCardLength > 1) {
-				cardbookRepository.cardbookUtils.formatStringForOutput("exportsOKIntoFile", [aFileName]);
-				let alertMessage = cardbookRepository.extension.localeData.localizeMessage("exportsOKIntoFile", [aFileName]);
-				Services.prompt.alert(window, alertTitle, alertMessage);
-			} else {
-				cardbookRepository.cardbookUtils.formatStringForOutput("exportOKIntoFile", [aFileName]);
-				let alertMessage = cardbookRepository.extension.localeData.localizeMessage("exportOKIntoFile", [aFileName]);
-				Services.prompt.alert(window, alertTitle, alertMessage);
 			}
 		},
 
@@ -832,17 +819,7 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					}
 	
 					cardbookRepository.cardbookSynchronization.writeCardsToDir(aDirectory.path, aListOfSelectedCard, true);
-
-					let alertTitle = cardbookRepository.extension.localeData.localizeMessage("exportCardToFileLabel");
-					if (aListOfSelectedCard.length > 1) {
-						cardbookRepository.cardbookUtils.formatStringForOutput("exportsOKIntoDir", [aDirectory.leafName]);
-						let alertMessage = cardbookRepository.extension.localeData.localizeMessage("exportsOKIntoDir", [aDirectory.leafName]);
-						Services.prompt.alert(window, alertTitle, alertMessage);
-					} else {
-						cardbookRepository.cardbookUtils.formatStringForOutput("exportOKIntoDir", [aDirectory.leafName]);
-						let alertMessage = cardbookRepository.extension.localeData.localizeMessage("exportOKIntoDir", [aDirectory.leafName]);
-						Services.prompt.alert(window, alertTitle, alertMessage);
-					}
+					cardbookRepository.cardbookSynchronization.finishExportToDir(window, aListOfSelectedCard.length, aDirectory.leafName);
 				}
 			}
 			catch (e) {
@@ -2827,8 +2804,8 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				cardbookRepository.currentCopiedEntryValue = JSON.stringify(card[aFieldName][aFieldIndex]);
 			// date fields
 			} else if (cardbookRepository.dateFields.includes(aFieldName)) {
-				var newDate = cardbookRepository.cardbookDates.convertDateStringToDate(card[aFieldName], dateFormat);
-				cardbookRepository.currentCopiedEntryValue = cardbookRepository.cardbookDates.convertDateToDateString(newDate, "4.0");
+				var newDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(card[aFieldName], dateFormat);
+				cardbookRepository.currentCopiedEntryValue = cardbookRepository.cardbookDates.convertUTCDateToDateString(newDate, "4.0");
 			// structured org
 			} else if (aFieldName.startsWith("org.")) {
 				cardbookRepository.currentCopiedEntryValue = aFieldAllValue.trim();
@@ -2897,9 +2874,9 @@ if ("undefined" == typeof(wdw_cardbook)) {
 				if (cardbookRepository.multilineFields.includes(cardbookRepository.currentCopiedEntryName)) {
 					myOutCard[cardbookRepository.currentCopiedEntryName].push(JSON.parse(cardbookRepository.currentCopiedEntryValue));
 				} else if (cardbookRepository.dateFields.includes(cardbookRepository.currentCopiedEntryName)) {
-					var newDate = cardbookRepository.cardbookDates.convertDateStringToDate(cardbookRepository.currentCopiedEntryValue, "4.0");
+					var newDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(cardbookRepository.currentCopiedEntryValue, "4.0");
 					var dateFormat = cardbookRepository.getDateFormat(myOutCard.dirPrefId, myOutCard.version);
-					myOutCard[cardbookRepository.currentCopiedEntryName] = cardbookRepository.cardbookDates.convertDateToDateString(newDate, dateFormat);
+					myOutCard[cardbookRepository.currentCopiedEntryName] = cardbookRepository.cardbookDates.convertUTCDateToDateString(newDate, dateFormat);
 				} else if (cardbookRepository.newFields.includes(cardbookRepository.currentCopiedEntryName)) {
 					if (myOutCard.version == "4.0") {
 						myOutCard[cardbookRepository.currentCopiedEntryName] = JSON.parse(cardbookRepository.currentCopiedEntryValue);
@@ -2922,9 +2899,9 @@ if ("undefined" == typeof(wdw_cardbook)) {
 					myOutCard[cardbookRepository.currentCopiedEntryName] = JSON.parse(cardbookRepository.currentCopiedEntryValue);
 				} else if (cardbookRepository.currentCopiedEntryName == 'event') {
 					var tmpArray = cardbookRepository.currentCopiedEntryValue.split("::");
-					var newDate = cardbookRepository.cardbookDates.convertDateStringToDate(tmpArray[0], "4.0");
+					var newDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(tmpArray[0], "4.0");
 					var dateFormat = cardbookRepository.getDateFormat(myOutCard.dirPrefId, myOutCard.version);
-					var dateString = cardbookRepository.cardbookDates.convertDateToDateString(newDate, dateFormat);
+					var dateString = cardbookRepository.cardbookDates.convertUTCDateToDateString(newDate, dateFormat);
 					var dateLabel = tmpArray[1];
 					var datePref = (tmpArray[2] == "true");
 					var myPGNextNumber = cardbookRepository.cardbookTypes.rebuildAllPGs(myOutCard);

@@ -1,5 +1,5 @@
-// This Source Code Form is subject to the terms of the
-// GNU General Public License, version 3.0.
+// Copyright (c) 2016, Jörg Knobloch. All rights reserved.
+
 var { AppConstants } = ChromeUtils.import("resource://gre/modules/AppConstants.jsm");
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
@@ -25,7 +25,7 @@ function getAddress(aHeader) {
   } else {
     from = isSent ? aHeader.mime2DecodedRecipients
       : aHeader.mime2DecodedAuthor;
-    from = from.replace(/\"/g, "");
+    from = from.replace(/"/g, "");
   }
   return from;
 }
@@ -141,7 +141,7 @@ const columnOverlay = {
     // Restore persisted attributes.
     let attributes = Services.xulStore.getAttributeEnumerator(
       this.win.document.URL,
-      "fromFreq"
+      "fromFreq",
     );
     for (let attribute of attributes) {
       let value = Services.xulStore.getValue(this.win.document.URL, "fromFreq", attribute);

@@ -37,7 +37,7 @@
    <h2>Usage directions for Nostalgy++</h2>
 
    <p>
-    Manage Emails/Nostalgy++ is an update of Nostalgy by Alain Frisch to TB 68 and now TB 78,
+    Manage Emails/Nostalgy++ is an update of Nostalgy by Alain Frisch to TB 68 and now TB 78 (TB 91 in preparation),
      combined with new functionality.
 
    </p>
@@ -74,6 +74,7 @@
    <table border="1">
     <tr><th>Shortcut</th><th>Description</th></tr>
     <tr><td>g</td><td>Open a specific folder</td></tr>
+    <tr><td>alt-g</td><td>Go back to the folder where you started the (g)o</td></tr>
     <tr><td>s</td><td>Move the current message to a specific folder</td></tr>
     <tr><td>b</td><td>Move the current message to a specific folder
     and go there</td></tr>
@@ -87,10 +88,14 @@
      Regular expressions are accepted as well (and .. is a
      short-hand for .* meaning: any sequence of characters). You can
      accept the first suggested completion with TAB + RETURN, or select
-     another one in the popup with the UP/DOWN keys and then RETURN.
+     another one in the popup with the UP/DOWN keys (or by mouse) and then RETURN.
      You can cancel the command with ESCAPE.
    </p>
-   <p>
+   <p>New search:</p>
+   <p>Even if not using regex, Nostalgy++ now allows multiple search criteria. For example, '<b>in no</b>' will find <b>in</b>box/software/<b>no</b>stalgy. '<b>ar no</b>'
+    will find <b>ar</b>chive/software/<b>no</b>stalgy. Just using 'no' will find both. Two or more criteria or parts of foldernames are allowed. Don't type the '!
+    </p>
+<p>
      If you choose a folder and append it by a new foldername (e.g./FolderName)
      the add new folder dialog will open and will allow to add the folder at the chosen
      position in the folder tree.
@@ -98,7 +103,7 @@
    <p>
      Before you type anything in the folder completion box, the popup
      can display the most recently selected folders. You can choose one
-     of them with the UP/DOWN keys. Due to recent chnanges in TB, 
+     of them with the UP/DOWN keys. Due to recent changes in TB, 
      you need to press back arrow followed by up arrow to populate this 
      box with the history.
    </p>
@@ -129,7 +134,7 @@
    </p>
 
    <p>
-     The g command also focuses the thread pane. 
+     The g command also focuses the thread pane. alt-g allows to go back.
      If you were doing a
      QuickSearch (that is, if you had typed some text in the search
      box), the same search carried over to the new folder. (not working yet in TB 78)
@@ -195,6 +200,8 @@
      dialog. 
    </p>
 
+   <p> If no entry for the folder 'Under' is given, then the rule will apply in any folder.
+   </p>
    <p>
      It is possible to match fields with a regexp instead of simply
      looking for a substring. This is done by enclosing the

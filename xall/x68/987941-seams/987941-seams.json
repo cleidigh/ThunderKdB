@@ -18,29 +18,30 @@
     "contributions_url": "",
     "created": "2020-11-07T11:59:23Z",
     "current_version": {
-        "id": 2474752,
+        "id": 2475950,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/seams/versions/2474752",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/seams/versions/2475950",
         "files": [
             {
-                "id": 1017914,
-                "created": "2020-11-15T15:49:28Z",
-                "hash": "sha256:0d100fc2c6ce78a48cee128530a57b6f63e83798adf7dadca8214596ad5b42cb",
+                "id": 1019110,
+                "created": "2021-06-01T21:14:07Z",
+                "hash": "sha256:71a5bcfb21915788d68ca1b113b9de942e8dd3e275fd1c32ef79feb8f92c70a4",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 13802,
+                "size": 22431,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017914/seams-1.1.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019110/seams-2.0.0-tb.xpi?src=",
                 "permissions": [
-                    "https://patchwork.kernel.org/",
-                    "messagesRead"
+                    "https://*/",
+                    "messagesRead",
+                    "storage"
                 ]
             }
         ],
@@ -77,15 +78,15 @@
         },
         "release_notes": {
             "en-GB": "",
-            "en-US": "- Add support for CI checks from Patchwork.\n- Provide visual feedback when clicking a command to copy it to the clipboard.\n- Improve CSS to make the different pop-up sections clearer."
+            "en-US": "- Add Preferences page.\n- Add configuration options to select which Patchwork instances to use. Multiple instances supported.\n- Add configuration options to select what information to display.\n- Add support for displaying patch IDs only (opt-in option).\n- Add support for cover letters."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/seams/versions/1.1.0",
-        "version": "1.1.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/seams/versions/2.0.0",
+        "version": "2.0.0"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong><em>Seams bring you Patchwork!</em></strong>\n\n<strong>Seams</strong> provides some integration with <a rel=\"nofollow\" href=\"http://jk.ozlabs.org/projects/patchwork/\">Patchwork</a>, the patch tracking system. It makes the patch state visible directly from Thunderbird. It also displays useful links to the patch or its series on a Patchwork instance or in mail archives, and ready-to-paste commands that can be used to apply the patch locally.\n\n<strong>Warning</strong>\n\n<strong>At this time the add-on only works for the <a rel=\"nofollow\" href=\"https://patchwork.kernel.org/\">Linux Patchwork instance</a>.</strong> This is simply because it has not been tested on other instances, and could maybe be adapted in the future.\n\n<strong>Usage</strong>\n\nWhenever a patch is displayed, Seams displays an action button above the message. The colored badge on that button indicates the current state of the patch, as retrieved from Patchwork.\n\nOn clicking the button, a panel appears and displays:\n\n<ul><li>The name of the Patchwork project for the patch.</li><li>The state of the patch (for example, <code>new</code>, <code>superseded</code>, <code>accepted</code>).</li><li>The state of CI checks, with expandable details if any. Click to load and\n  expand the details.</li><li>Links to the Patchwork pages for the patch and the series to which it belongs. Clicking the links open the pages in the panel. You can right-click on the links to open them in a browser or to copy the targets.</li><li>Links to the mail archives (for example, <a rel=\"nofollow\" href=\"http://lore.kernel.org\">lore.kernel.org</a>).</li><li>Commands to apply the patch or its full series to a local Git repository. Click on the command to copy it to the clipboard.</li></ul>\nThe button is not displayed when the message is not recognized as a patch, or when the add-on fails to retrieve metadata from Patchwork.\n\n<strong>Internals</strong>\n\nPatch detection currently works as follows:\n\n<ul><li>The message must have a specific substring in one of the recipient addresses (“to” or “cc”), for example <code>@vger.kernel.org</code>.</li><li>The subject of the message must begin with a <code>[</code> character, this is to avoid considering replies to patches as patches.</li><li>The subject of the message must not contain the substring <code> 0/</code>, which is often the marker of a cover letter for a series and not of a patch.</li></ul>\nWhen a message is displayed and recognized as a patch, the add-on sends an API request to the Patchwork instance to retrieve the state of the patch as well as some metadata. On clicking the action button, this information is reused to generate the panel.\n\n<strong>Disclaimer</strong>\n\nThis add-on is <strong>not</strong> an official add-on either developed, supported or otherwise endorsed by the community of the Patchwork project."
+        "en-US": "<strong><em>Seams bring you Patchwork!</em></strong>\n\n<strong>Seams</strong> provides some integration with <a rel=\"nofollow\" href=\"http://jk.ozlabs.org/projects/patchwork/\">Patchwork</a>, the patch tracking system. It makes the patch state visible directly from Thunderbird. It also displays useful links to the patch or its series on a Patchwork instance or in mail archives, and ready-to-paste commands that can be used to apply the patch locally.\n\nStarting from v2.0.0, the add-on offers a way to configure what Patchwork instances to use.\n\n<strong>Usage</strong>\n\nWhenever a patch is displayed, Seams displays an action button above the message. The colored badge on that button indicates the current state of the patch, as retrieved from Patchwork.\n\nOn clicking the button, a panel appears and displays:\n\n<ul><li>The name of the Patchwork project for the patch.</li><li>The state of the patch (for example, <code>new</code>, <code>superseded</code>, <code>accepted</code>).</li><li>The state of CI checks, with expandable details if any. Click to load and\n  expand the details.</li><li>Links to the Patchwork pages for the patch and the series to which it belongs. Clicking the links open the pages in the panel. You can right-click on the links to open them in a browser or to copy the targets.</li><li>Links to the mail archives (for example, <a rel=\"nofollow\" href=\"http://lore.kernel.org\">lore.kernel.org</a>).</li><li>Commands to apply the patch or its full series to a local Git repository. Click on the command to copy it to the clipboard.</li></ul>\nThe button is not displayed when the message is not recognized as a patch, or when the add-on fails to retrieve metadata from Patchwork.\n\n<strong>Internals</strong>\n\nPatch detection currently works as follows:\n\n<ul><li>The message must have a specific substring in one of the recipient addresses (“to” or “cc”), for example <code>@vger.kernel.org</code>.</li><li>The subject of the message must begin with a <code>[</code> character, this is to avoid considering replies to patches as patches.</li><li>Messages with subject matching <code> 0+/</code> are considered as cover letters for a patch series.</li></ul>\nWhen a message is displayed and recognized as a patch, the add-on sends an API request to the Patchwork instance to retrieve the state of the patch as well as some metadata. On clicking the action button, this information is reused to generate the panel.\n\nFor cover letters, the add-on also retrieves some information, but elements such as the state of a patch or the results for the checks are not available (because not relevant) and hence not displayed.\n\nIf several Patchwork instances are configured, and the message matches the pattern for several of them, the first one matching (as per the order in which instances are defined in the “Preferences” tab) is considered for retrieving and printing information related to the patch. Other matching instances are ignored.\n\n<strong>Disclaimer</strong>\n\nThis add-on is <strong>not</strong> an official add-on either developed, supported or otherwise endorsed by the community of the Patchwork project."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/seams/edit",
@@ -104,7 +105,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-15T15:50:03Z",
+    "last_updated": "2021-06-01T21:15:03Z",
     "name": {
         "en-US": "Seams"
     },
@@ -161,7 +162,7 @@
             "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206263.png?modified=1605456564"
         }
     ],
-    "public_stats": false,
+    "public_stats": true,
     "ratings": {
         "bayesian_average": 3.85891,
         "count": 1,

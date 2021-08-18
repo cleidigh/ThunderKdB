@@ -48,6 +48,7 @@ function onNostalgyAcceptChanges(event) {
    return false;
  }
 
+ /*
  var under = NostalgyFindFolderExact(gUnderSelect.value);
  if (!under) {
    alert("Please choose an existing folder");
@@ -55,7 +56,7 @@ function onNostalgyAcceptChanges(event) {
    event.preventDefault();
    return false;
  }
-
+*/
  
  if (gContainsSelect.value == "") {
    alert("Please provide a non-empty string for 'contains'");
@@ -80,17 +81,17 @@ function onNostalgyAcceptChanges(event) {
  return true;
 }
 
-function NostalgyChooseFolder() {
-  if (gFolderSelect.value != "") {
-    var folder = NostalgyResolveFolder(gFolderSelect.value);
-    if (folder) { gFolderSelect.value = NostalgyFolderName(folder); }
-  }
-}
+
+//? both  functions not called because ontextenetred not exist for html:input??
+//now done in  box.onkeypress in NostalgyFolderSelectionBox
+
 
 function NostalgyChooseUnder() {
+//  console.log("NostalgyChooseUnder");
   if (gUnderSelect.value != "") {
     let stpos = gUnderSelect.value.indexOf(">>");
-    let foldername = attachment.url.substr(stpos+3);
+ //   console.log("attachment", attachment);
+    let foldername = gUnderSelect.value.substr(stpos+3);//    attachment.url.substr(stpos+3);
     //var spl = gUnderSelect.value.match(/(.*) -> (.*)/);
 
     var under = NostalgyResolveFolder(foldername);
@@ -99,13 +100,30 @@ function NostalgyChooseUnder() {
   }
 }
 
-function onNostalgyKeyPressTxt(ev) {
+function NostalgyChooseFolder() {
+  if (gFolderSelect.value != "") {
+    var folder = NostalgyResolveFolder(gFolderSelect.value);
+    if (folder) { gFolderSelect.value = NostalgyFolderName(folder); }
+  }
+}
+//? both  functions not called because ontextenetred not exist for html:input??
+
+function onNostalgyKeyPressTxt(ev) {  //? no listener exists??  in  id="contains"
   if (ev.keyCode==KeyEvent.DOM_VK_RETURN) {
    setTimeout(function(){gUnderSelect.focus();},30);
    NostalgyStopEvent(ev);
   }
 }
 
+function onNostalgyKeyPressUnder(ev) {  //? not run because   box.onkeypress  in NostalgyFolderSelectionBox
+ //   if (ev.key=="Enter") {
+  if (ev.keyCode==KeyEvent.DOM_VK_RETURN) {
+
+          setTimeout(function(){gFolderSelect.focus();},30);
+   NostalgyStopEvent(ev);
+
+  }
+}
 
 
 function onNostalgyInputKeyPressed(ev) {

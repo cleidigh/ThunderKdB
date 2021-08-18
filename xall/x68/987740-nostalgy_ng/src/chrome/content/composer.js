@@ -108,13 +108,13 @@ var manage_emails = {};
 var toInputString="";
 
 function toInputUpdateValue(e) {
-  console.log("key"+e.key);
+//  console.log("key"+e.key);
  // console.log(e.target.value);
 /**/
   const toInput = NostalgyEBI("toAddrInput");;
   toInputString+= e.key ;
  //console.log("Input"+toInput.value);
- console.log("Merker"+toInputString);
+ //console.log("Merker"+toInputString);
  if ((e.key=="Enter") | (e.key=="Control") ) 
  {
   toInputString="";
@@ -129,10 +129,10 @@ function toInputUpdateValue(e) {
   window.showAddressRow(label_cc, 'addressRowBcc');
    toInput.value="";
    toInputString="";
-   console.log("Merker leer"+toInputString);
+  // console.log("Merker leer"+toInputString);
  
    e.target.value="";
-   console.log("bcc found");
+  // console.log("bcc found");
  }
  if (toInputString=="cc ")  
  {
@@ -140,7 +140,7 @@ function toInputUpdateValue(e) {
   window.showAddressRow(label_cc, 'addressRowCc');
   toInput.value="";
    toInputString="";e.target.value="";
-   console.log("cc found");
+ //  console.log("cc found");
  }
  if (toInputString=="to ")  
  {
@@ -148,7 +148,7 @@ function toInputUpdateValue(e) {
   window.showAddressRow(label_cc, 'addressRowTo');
    toInput.value="";
    toInputString="";e.target.value="";
-   console.log("to found");
+  // console.log("to found");
  }
   manage_emails.oldOnbeforehandlekeydown(e);
 
@@ -202,7 +202,7 @@ var done=0, ccdone=0, bccdone=0, prefsdone=0;
 
     }
 /*
-    console.log("headers-box changed");
+    //console.log("headers-box changed");
     //to
     var inp = window.document.getElementById("toAddrInput");
     if (!done) {
@@ -227,7 +227,9 @@ var done=0, ccdone=0, bccdone=0, prefsdone=0;
  //debugger;
 */
 
-catch(e) {console.log("headers-box not changed");}; 
+catch(e) {
+  //console.log("headers-box not changed");
+}; 
  /*   */
 }
 });

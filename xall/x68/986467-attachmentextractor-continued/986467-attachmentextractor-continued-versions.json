@@ -1,5 +1,357 @@
 [
     {
+        "id": 2476194,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "87.0",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2476194",
+        "files": [
+            {
+                "id": 1019354,
+                "created": "2021-08-08T15:39:44Z",
+                "hash": "sha256:69c081acda250c579025e7bb7a5dc0711aac0caf1e0d2c935150fd60ffe86848",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 229477,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019354/attachmentextractor_continued-3.0.9-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Bugfixes and changes from 3.0 - 3.0.9:\n<ul><li>Update WL-API to 1.56 to have the wrench icon for addon options in addon manager and fix some errors in console due to WL-API</li><li>encoding of umlaut paths (when using default save path)</li><li>entry in most recent used folders</li><li>subfolders created due to slashes in filenames (reworked the slashes replacement in filenames, to still allow subfolder creation from the user defined filename patterns from up version 3.0.9 - the slashes will now only be replaced in the given attachment filenames itself completely.)</li><li>Register missing eventListener for DebugOnStart and AutoExtract</li></ul>",
+            "de": "Fehlerbehebungen und Änderungen von 3.0 bis 3.0.9:\n<ul><li>Update der WL-API auf 1.56 bietet jetzt das Werkzeug-Icon im Add-on-Manager, um die Add-on-Optionen aufzurufen, und behebt ein paar Fehlermeldungen in der Fehlerkonsole</li><li>Umlaute in Ordnernamen wurden falsch behandelt, wenn man in den Standardordner gespeichert hat</li><li>Eintrag in der Liste der zuletzt genutzten Ordner wurde in einem Szenario falsch erstellt</li><li>Unterordner wurden unerwünscht erstellt, wenn Slashes in Dateinamen vorhanden sind (Das Entfernen von \"Slashes\" und \"Backslashes\" wurde in Version 3.0.9 nochmals überarbeitet, sodass jetzt wieder automatisiert Unterordner aus den vom Anwender definierten Dateinamenmustern erstellt werden können. Die Slashes werden jetzt nur noch aus den Dateinamen der Dateianhänge konsequent entfernt.)</li><li>Durch den Umbau des Addons für Thunderbird 78 wurden notwendige eventListener for DebugOnStart und AutoExtract nicht registriert</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/3.0.9",
+        "version": "3.0.9"
+    },
+    {
+        "id": 2476189,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "68.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2476189",
+        "files": [
+            {
+                "id": 1019349,
+                "created": "2021-08-04T22:45:04Z",
+                "hash": "sha256:e3456cda2dad0878bfcfc3f85d24399237dadc2b9ccebcbcde8590c1896b162f",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 223211,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019349/attachmentextractor_continued-2.0.12-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Reworked the slashes replacement in filenames, to still allow subfolder creation from the user defined filename patterns. The slashes will now only be replaced in the given attachment filenames itself completely.",
+            "de": "Das Entfernen von \"Slashes\" und \"Backslashes\" wurde überarbeitet, sodass jetzt wieder automatisiert Unterordner aus den vom Anwender definierten Dateinamenmustern erstellt werden können. Die Slashes werden jetzt nur noch aus den Dateinamen der Dateianhänge konsequent entfernt."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/2.0.12",
+        "version": "2.0.12"
+    },
+    {
+        "id": 2476177,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2476177",
+        "files": [
+            {
+                "id": 1019337,
+                "created": "2021-08-04T10:10:12Z",
+                "hash": "sha256:9a3c91e08a3bdf4f6e9d9e02ad8a21f49fb06eb3f8cb7705e68bfa7151e14803",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 216229,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019337/attachmentextractor_continued-1.5.8-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Reworked the slashes replacement in filenames, to still allow subfolder creation from the user defined filename patterns. The slashes will now only be replaced in the given attachment filenames itself completely.",
+            "de": "Das Entfernen von \"Slashes\" und \"Backslashes\" wurde überarbeitet, sodass jetzt wieder automatisiert Unterordner aus den vom Anwender definierten Dateinamenmustern erstellt werden können. Die Slashes werden jetzt nur noch aus den Dateinamen der Dateianhänge konsequent entfernt."
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/1.5.8",
+        "version": "1.5.8"
+    },
+    {
+        "id": 2475975,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "87.0",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2475975",
+        "files": [
+            {
+                "id": 1019135,
+                "created": "2021-06-04T17:47:16Z",
+                "hash": "sha256:1e045a656c1bea4e9113ae35f425e8e7b768ed5a91262a7342fc9da1aacfc8a5",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 229238,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019135/attachmentextractor_continued-3.0.8-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Bugfixes and changes from 3.0 - 3.0.8:\n<ul><li>Update WL-API to 1.56 to have the wrench icon for addon options in addon manager and fix some errors in console due to WL-API</li><li>encoding of umlaut paths (when using default save path)</li><li>entry in most recent used folders</li><li>subfolders created due to slashes in filenames</li><li>Register missing eventListener for DebugOnStart and AutoExtract</li></ul>",
+            "de": "Fehlerbehebungen und Änderungen von 3.0 bis 3.0.8:\n<ul><li>Update der WL-API auf 1.56 bietet jetzt das Werkzeug-Icon im Add-on-Manager, um die Add-on-Optionen aufzurufen, und behebt ein paar Fehlermeldungen in der Fehlerkonsole</li><li>Umlaute in Ordnernamen wurden falsch behandelt, wenn man in den Standardordner gespeichert hat</li><li>Eintrag in der Liste der zuletzt genutzten Ordner wurde in einem Szenario falsch erstellt</li><li>Unterordner wurden unerwünscht erstellt, wenn Slashes in Dateinamen vorhanden sind</li><li>Durch den Umbau des Addons für Thunderbird 78 wurden notwendige eventListener for DebugOnStart und AutoExtract nicht registriert</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/3.0.8",
+        "version": "3.0.8"
+    },
+    {
+        "id": 2475955,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "87.0",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2475955",
+        "files": [
+            {
+                "id": 1019115,
+                "created": "2021-06-03T06:25:22Z",
+                "hash": "sha256:e2c9dbbfef0d75a62a30beb245296da5d99b6d91600e4b3ced948cd88bed44bf",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 228584,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019115/attachmentextractor_continued-3.0.6-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Bugfixes and changes from 3.0 - 3.0.6:\n<ul><li>Update WL-API to 1.51 to have the wrench icon for addon options in addon manager</li><li>encoding of umlaut paths (when using default save path)</li><li>entry in most recent used folders</li><li>subfolders created due to slashes in filenames</li><li>Register missing eventListener for DebugOnStart and AutoExtract</li></ul>",
+            "de": "Fehlerbehebungen und Änderungen von 3.0 bis 3.0.6:\n<ul><li>Update der WL-API auf 1.51 bietet jetzt das Werkzeug-Icon im Add-on-Manager, um die Add-on-Optionen aufzurufen</li><li>Umlaute in Ordnernamen wurden falsch behandelt, wenn man in den Standardordner gespeichert hat</li><li>Eintrag in der Liste der zuletzt genutzten Ordner wurde in einem Szenario falsch erstellt</li><li>Unterordner wurden unerwünscht erstellt, wenn Slashes in Dateinamen vorhanden sind</li><li>Durch den Umbau des Addons für Thunderbird 78 wurden notwendige eventListener for DebugOnStart und AutoExtract nicht registriert</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/3.0.6",
+        "version": "3.0.6"
+    },
+    {
+        "id": 2475954,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "87.0",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2475954",
+        "files": [
+            {
+                "id": 1019114,
+                "created": "2021-06-02T17:31:39Z",
+                "hash": "sha256:f80d6811468c1b99ca29e869ff539bc878d62b398badbc111c02c7ab44e050b3",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 228481,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019114/attachmentextractor_continued-3.0.5-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Bugfixes:\n<ul><li>encoding of umlaut paths (when using default save path)</li><li>entry in most recent used folders</li><li>subfolders created due to slashes in filenames</li><li>Register missing eventListener for DebugOnStart and AutoExtract</li></ul>",
+            "de": "Fehlerbehebung:\n<ul><li>Umlaute in Ordnernamen wurden falsch behandelt, wenn man in den Standardordner gespeichert hat</li><li>Eintrag in der Liste der zuletzt genutzten Ordner wurde in einem Szenario falsch erstellt</li><li>Unterordner wurden unerwünscht erstellt, wenn Slashes in Dateinamen vorhanden sind</li><li>Durch den Umbau des Addons für Thunderbird 78 wurden notwendige eventListener for DebugOnStart und AutoExtract nicht registriert</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/3.0.5",
+        "version": "3.0.5"
+    },
+    {
+        "id": 2475953,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "68.*",
+                "min": "68.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2475953",
+        "files": [
+            {
+                "id": 1019113,
+                "created": "2021-06-02T16:17:27Z",
+                "hash": "sha256:6c17c38ad61f026c5050ce0dc63c2c23db8443c2400bb736abcc93b069a81d98",
+                "is_restart_required": true,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 223026,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019113/attachmentextractor_continued-2.0.11-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Backport 3 bugfixes to fix:\n<ul><li>encoding of umlaut paths (when using default save path)</li><li>entry in most recent used folders</li><li>subfolders created due to slashes in filenames</li></ul>",
+            "de": "3 Bugs werden behoben:\n<ul><li>Umlaute in Ordnernamen wurden falsch behandelt, wenn man in den Standardordner gespeichert hat</li><li>Eintrag in der Liste der zuletzt genutzten Ordner wurde in einem Szenario falsch erstellt</li><li>Unterordner werden unerwünscht erstellt, wenn Slashes in Dateinamen vorhanden sind</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/2.0.11",
+        "version": "2.0.11"
+    },
+    {
+        "id": 2475945,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "60.*",
+                "min": "60.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2475945",
+        "files": [
+            {
+                "id": 1019105,
+                "created": "2021-05-30T15:46:17Z",
+                "hash": "sha256:4b75ae463050f5d40d9b4240de5aa7d348fc2cc7f7a61032be4cdbc31f9d22e5",
+                "is_restart_required": true,
+                "is_webextension": false,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 216045,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019105/attachmentextractor_continued-1.5.7-tb.xpi?src=",
+                "permissions": []
+            }
+        ],
+        "is_strict_compatibility_enabled": true,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Backport 3 bugfixes to fix:\n<ul><li>encoding of umlaut paths (when using default save path)</li><li>entry in most recent used folders</li><li>subfolders created due to slashes in filenames</li></ul>",
+            "de": "3 Bugs werden behoben:\n<ul><li>Umlaute in Ordnernamen wurden falsch behandelt, wenn man in den Standardordner gespeichert hat</li><li>Eintrag in der Liste der zuletzt genutzten Ordner wurde in einem Szenario falsch erstellt</li><li>Unterordner werden unerwünscht erstellt, wenn Slashes in Dateinamen vorhanden sind</li></ul>"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/1.5.7",
+        "version": "1.5.7"
+    },
+    {
         "id": 2475908,
         "channel": "listed",
         "compatibility": {

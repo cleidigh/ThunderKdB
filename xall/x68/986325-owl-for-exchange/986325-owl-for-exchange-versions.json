@@ -1,5 +1,107 @@
 [
     {
+        "id": 2476028,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "91.*",
+                "min": "87.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/owl-for-exchange/versions/2476028",
+        "files": [
+            {
+                "id": 1019188,
+                "created": "2021-06-23T22:13:02Z",
+                "hash": "sha256:5cd69c766427dd5b04943574736ab9eb9f4d1671935de2fa35392f63b2062307",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 307081,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019188/eule_fur_exchange-0.7.8.5-tb.xpi?src=",
+                "permissions": [
+                    "addressBooks",
+                    "cookies",
+                    "storage",
+                    "tabs",
+                    "webNavigation",
+                    "webRequest",
+                    "webRequestBlocking",
+                    "https://*/*"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7057,
+            "name": {
+                "en-US": "All Rights Reserved"
+            },
+            "text": null,
+            "url": null
+        },
+        "release_notes": {
+            "en-US": "- Beta\n- Support TB 91\n- ActiveSync experimental\n- OAuth2 for EWS in alpha",
+            "de": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.7.8.5",
+        "version": "0.7.8.5"
+    },
+    {
+        "id": 2475973,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "78.*",
+                "min": "68.8.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/owl-for-exchange/versions/2475973",
+        "files": [
+            {
+                "id": 1019133,
+                "created": "2021-06-04T17:13:53Z",
+                "hash": "sha256:baaef52f5e8f66236cb7ef47500c4342d4eca2e8ad78ba99535b2c58aa31ade3",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 271659,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019133/eule_fur_exchange-0.7.8.2-tb.xpi?src=",
+                "permissions": [
+                    "addressBooks",
+                    "cookies",
+                    "storage",
+                    "tabs",
+                    "webNavigation",
+                    "webRequest",
+                    "webRequestBlocking",
+                    "https://*/*"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 7057,
+            "name": {
+                "en-US": "All Rights Reserved"
+            },
+            "text": null,
+            "url": null
+        },
+        "release_notes": {
+            "en-US": "* Calendar invitations: Fix more instances of 80004005 bug\n* Calendar: Fix regression: CalDAV",
+            "de": ""
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.7.8.2",
+        "version": "0.7.8.2"
+    },
+    {
         "id": 2475933,
         "channel": "listed",
         "compatibility": {
@@ -507,7 +609,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -557,7 +659,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -604,7 +706,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -751,7 +853,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -801,7 +903,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -839,7 +941,7 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "- EWS: Beta for calendar using EWS protocol\n- EWS: Make contacts writable\n- EWS: Work around invalid XML sent by Exchange server for messages with strange characters\n- Collect email addresses when sending\n- Office365: Remove accidentally configured SMTP server\n- Fix for <a href=\"http://outlook.com\" rel=\"nofollow\">outlook.com</a> <a href=\"http://live.com\" rel=\"nofollow\">live.com</a> Hotmail personal accounts, after Microsoft server breakage\n- Show errors during license fetch\n- Fix license notification in TB 68\n- Other bug fixes",
+            "en-US": "- EWS: Beta for calendar using EWS protocol\n- EWS: Make contacts writable\n- EWS: Work around invalid XML sent by Exchange server for messages with strange characters\n- Collect email addresses when sending\n- Office365: Remove accidentally configured SMTP server\n- Fix for <a rel=\"nofollow\" href=\"http://outlook.com\">outlook.com</a> <a rel=\"nofollow\" href=\"http://live.com\">live.com</a> Hotmail personal accounts, after Microsoft server breakage\n- Show errors during license fetch\n- Fix license notification in TB 68\n- Other bug fixes",
             "de": ""
         },
         "reviewed": null,
@@ -851,7 +953,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -901,7 +1003,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -949,7 +1051,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -994,7 +1096,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1030,7 +1132,7 @@
             "url": null
         },
         "release_notes": {
-            "en-US": "- Automatically sign in to Office365 and <a href=\"http://outlook.com\" rel=\"nofollow\">outlook.com</a> (frequent user request)\n- Update Sent folder after sending mail\n- Encryption: Beta level support (no guarantees)",
+            "en-US": "- Automatically sign in to Office365 and <a rel=\"nofollow\" href=\"http://outlook.com\">outlook.com</a> (frequent user request)\n- Update Sent folder after sending mail\n- Encryption: Beta level support (no guarantees)",
             "de": ""
         },
         "reviewed": null,
@@ -1042,7 +1144,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1090,7 +1192,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1138,7 +1240,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1186,7 +1288,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1234,7 +1336,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1282,7 +1384,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1327,7 +1429,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1372,7 +1474,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1417,7 +1519,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1462,7 +1564,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1507,7 +1609,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1555,7 +1657,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1603,7 +1705,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -1648,7 +1750,7 @@
         "channel": "listed",
         "compatibility": {
             "thunderbird": {
-                "max": "*",
+                "max": "60.*",
                 "min": "60.5"
             }
         },
@@ -2290,101 +2392,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.6.1",
         "version": "0.6.1"
-    },
-    {
-        "id": 2469290,
-        "channel": "listed",
-        "compatibility": {
-            "thunderbird": {
-                "max": "60.*",
-                "min": "60.4"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/owl-for-exchange/versions/2469290",
-        "files": [
-            {
-                "id": 1012412,
-                "created": "2019-02-15T06:13:24Z",
-                "hash": "sha256:309a51945691b105ddea3ff1afe747e968dce31507fff78d3c98d0835cab2f06",
-                "is_restart_required": false,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 170129,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012412/eule_fur_exchange-0.6-tb.xpi?src=",
-                "permissions": [
-                    "cookies",
-                    "storage",
-                    "tabs",
-                    "webNavigation",
-                    "https://*/*"
-                ]
-            }
-        ],
-        "is_strict_compatibility_enabled": false,
-        "license": {
-            "id": 7057,
-            "name": {
-                "en-US": "All Rights Reserved"
-            },
-            "text": null,
-            "url": null
-        },
-        "release_notes": {
-            "en-US": "Major bug fixes and speed improvements.\n\nFeatures:\n* Attachments: Show when the Exchange server deliberately blocks an attachment due to its file type, per administrator policy setting\n* Show folders that are not children of the inbox\n\nPerformance:\n* When opening a folder for the first time, now show the headers roughly 100 times faster\n* When downloading message data, adapt number of parallel calls to server limits\n* Improve performance of contact resync\n\nBig fixes:\n* Detect logout situation better\n* Better error logging on Error Console (Ctrl-Shift-J)\n* Refactor license logic code\n* Detect when creating 2 OWA accounts at the same server and prevent it",
-            "de": ""
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.6",
-        "version": "0.6"
-    },
-    {
-        "id": 2469281,
-        "channel": "listed",
-        "compatibility": {
-            "thunderbird": {
-                "max": "60.*",
-                "min": "60.4"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/owl-for-exchange/versions/2469281",
-        "files": [
-            {
-                "id": 1012404,
-                "created": "2019-02-13T16:36:13Z",
-                "hash": "sha256:0e71ee1be30d2afcc4743ed74dce903502d892df23e020d943c34158f23e7498",
-                "is_restart_required": false,
-                "is_webextension": true,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 165395,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1012404/eule_fur_exchange-0.5.5-tb.xpi?src=",
-                "permissions": [
-                    "cookies",
-                    "storage",
-                    "tabs",
-                    "webNavigation",
-                    "https://*/*"
-                ]
-            }
-        ],
-        "is_strict_compatibility_enabled": false,
-        "license": {
-            "id": 7057,
-            "name": {
-                "en-US": "All Rights Reserved"
-            },
-            "text": null,
-            "url": null
-        },
-        "release_notes": {
-            "en-US": "* Fixes critical security issue. Exposure is very limited, because JavaScript is disabled, so there is no known way to cause actual harm with this bug, but just in case there's a way to exploit this, we ship this fix.\n* Now blocks remote images as expected",
-            "de": ""
-        },
-        "reviewed": "2019-02-13T16:40:03Z",
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/owl-for-exchange/versions/0.5.5",
-        "version": "0.5.5"
     }
 ]

@@ -17,12 +17,14 @@ const SUPPORTED_APIS_NO_EVENTS = [
   "addressBooks",
   "compose",
   "contacts",
+  "convCompose",
   "mailTabs",
   "messageDisplay",
-  "messages",
   "runtime",
   "tabs",
   "windows",
+  // This is a temporary workaround so that we can "message" the background script.
+  "_background",
 ];
 
 const SUPPORTED_BASE_APIS = [
@@ -31,6 +33,7 @@ const SUPPORTED_BASE_APIS = [
   "convMsgWindow",
   "conversations",
   "i18n",
+  "messages",
   "storage",
 ];
 

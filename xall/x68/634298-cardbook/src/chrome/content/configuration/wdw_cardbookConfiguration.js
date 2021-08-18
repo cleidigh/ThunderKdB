@@ -5,6 +5,8 @@ Preferences.addAll([
 	{ id: "extensions.cardbook.autocompleteSortByPopularity", type: "bool" },
 	{ id: "extensions.cardbook.proposeConcatEmails", type: "bool" },
 	{ id: "extensions.cardbook.autocompleteShowAddressbook", type: "bool" },
+	{ id: "extensions.cardbook.autocompleteShowEmailType", type: "bool" },
+	{ id: "extensions.cardbook.autocompleteShowPopularity", type: "bool" },
 	{ id: "extensions.cardbook.autocompleteWithColor", type: "bool" },
 	{ id: "extensions.cardbook.autocompleteRestrictSearch", type: "bool" },
 	{ id: "extensions.cardbook.autocompleteRestrictSearchFields", type: "string" },
@@ -504,6 +506,8 @@ var wdw_cardbookConfiguration = {
 		document.getElementById('autocompleteSortByPopularityCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
 		document.getElementById('autocompleteProposeConcatEmailsCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
 		document.getElementById('autocompleteShowAddressbookCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
+		document.getElementById('autocompleteShowEmailTypeCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
+		document.getElementById('autocompleteShowPopularityCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
 		document.getElementById('autocompleteWithColorCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
 		document.getElementById('autocompleteRestrictSearchCheckBox').disabled=!document.getElementById('autocompletionCheckBox').checked;
 		if (document.getElementById('autocompletionCheckBox').checked && document.getElementById('autocompleteRestrictSearchCheckBox').checked) {

@@ -1,0 +1,247 @@
+{
+    "id": 988160,
+    "authors": [
+        {
+            "id": 10108346,
+            "name": "Teal Dulcet",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/tdulcet/",
+            "username": "tdulcet",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/10/10108/10108346.png?modified=1618818561"
+        },
+        {
+            "id": 10880788,
+            "name": "rugk",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/rugk/",
+            "username": "rugk",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 1,
+    "categories": {
+        "thunderbird": [
+            "language-support",
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2021-08-10T13:02:47Z",
+    "current_version": {
+        "id": 2476204,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "87.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unicodify-text-transformer/versions/2476204",
+        "files": [
+            {
+                "id": 1019364,
+                "created": "2021-08-10T13:02:47Z",
+                "hash": "sha256:a5c497001a4bd14c55861583c36e07c530f059d838985d3c093cccad24569441",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 134213,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019364/none-0.5-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "<all_urls>",
+                    "tabs",
+                    "compose",
+                    "menus"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": null,
+        "reviewed": "2021-08-10T13:10:03Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unicodify-text-transformer/versions/0.5",
+        "version": "0.5"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "This is a (Firefox and Thunderbird) add-on (MailExtension) that allows you to autocorrect common text sequences and convert text characters to a look like a special font.\nFor instance, it converts quotes like <code>\"these\"</code> to <code>“these”</code>, which are typographically correct.\nAdditionally, you can convert text into more than 20 different font styles and casing changes.\nYou can enable and disable any features in the options and adjust more settings regarding the behavior of the add-on.\n\n\n<b>Convert text to any style you want!</b>\n\nJust select text, right-click and let Unicodify convert the text into styles like:\n<ul>\t<li>Lowercase</li>\t<li>Uppercase</li>\t<li>Capitalize Each Word</li>\t<li>Toggle Case</li>\t<li>Superscript</li>\t<li>Small Caps</li>\t<li>Unicase</li>\t<li>Serif</li>\t<li>Sans-serif</li>\t<li>Bold</li>\t<li>Italic</li>\t<li>Script</li>\t<li>Fraktur</li>\t<li>Monospace</li>\t<li>Double-struck</li>\t<li>Circled</li>\t<li>Squared</li>\t<li>Fullwidth</li></ul>\n⚠️ Note that context menu does NOT currently work in Thunderbird's compose body because of <a rel=\"nofollow\" href=\"https://bugzilla.mozilla.org/show_bug.cgi?id=1716976\">Bug 1716976</a>.\n\n\n<b>✍️ Improve your typographic style! ✍️</b>\n\nWhen writing on any e-mail, this add-on optionally corrects your writing by using proper quotation marks or common symbols like arrows, fractions or mathematical signs.\n\nSome examples:\n<ul>\t<li><code>...</code> is corrected into <code>…</code></li>\t<li><code>~=</code> is corrected into <code>≅</code></li>\t<li><code>+-</code> is corrected into <code>±</code></li>\t<li><code>-+</code> is corrected into <code>∓</code></li>\t<li><code>&gt;=</code> is corrected into <code>≥</code></li>\t<li><code>1/4</code> is corrected into <code>¼</code></li>\t<li><code>--&gt;</code> is corrected into <code>⟶</code></li>\t<li><code>&lt;==&gt;</code> is corrected into <code>⟺</code></li>\t<li>and much more…</li></ul>\n<b>More Features</b>\n\n<ul>\t<li>Unicode autocorrection as you type:<ul>\t\t\t<li>Autocorrect <a rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Miscellaneous_Symbols\">Unicode symbols</a> (i.e. hyphens <code>--</code> with –, fractions <code>1/4</code> with ¼, etc.). Supports more\n\t\t\t\tthan 85 symbols.</li>\t\t\t<li>Use Unicode smart quotes ('single quotes' with ‘Unicode single quotes’ and \"double quotes\" with “Unicode double quotes”)</li>\t\t\t<li>Convert <a rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Number_Forms\">fractions</a> and <a rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Mathematical_constant\">mathematical constants</a> to Unicode characters (i.e. <code>1234.25</code>\n\t\t\t\twith 1234¼, etc.). Supports all Unicode fraction characters, Pi and e constants.</li>\t\t\t<li>Supports undoing autocorrections</li>\t\t</ul>\t</li>\t<li>Context menu with selected/highlighted text:<ul>\t\t\t<li><a rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols\">Unicode font</a> conversion. Supports more than 20 fonts.</li>\t\t\t<li>Change <a rel=\"nofollow\" href=\"https://en.wikipedia.org/wiki/Letter_case#Case_styles\">casing</a> (i.e. UPPER CASE, lower case, tOGGLE cASE, etc.). Supports all locales.</li>\t\t\t<li>Optionally show a live preview.</li>\t\t</ul>\t</li>\t<li>Very fast, even when typing on large e-mails.</li>\t<li>Supports the light/dark mode of your system automatically.</li>\t<li>Follows the <a rel=\"nofollow\" href=\"https://design.firefox.com/photon\">Firefox</a> and <a rel=\"nofollow\" href=\"https://style.thunderbird.net/\">Thunderbird</a> Photon Design.</li>\t<li>Puts your privacy first and does not send data anywhere.</li>\t<li>Translated into several languages. <a rel=\"nofollow\" href=\"https://github.com/rugk/unicodify/blob/main/CONTRIBUTING.md#Translations\">Contribute your own language!</a></li>\t<li>Settings can be managed by your administrator.</li></ul>\n\n\n<b>Development</b>\nThe add-on is free/libre open-source software and developed on GitHub. <a rel=\"nofollow\" href=\"https://github.com/rugk/unicodify\">Fork it on GitHub</a> and contribute.\n<a rel=\"nofollow\" href=\"https://github.com/rugk/unicodify/contribute\">There are some easy issues to start with.</a>\n\nThis extension works with modern Firefox and Thunderbird v87 or higher.\n\n\n<b>Contribute</b>\nYou can easily get involved in this project and help. Here are some ideas:\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/rugk/unicodify/blob/master/CONTRIBUTING.md#translations\">Translate this add-on into multiple languages!</a></li><li><a rel=\"nofollow\" href=\"https://github.com/rugk/unicodify/blob/master/CONTRIBUTING.md#coding\">Fix some easy issues and get started in add-on development</a> (or just try out the development version)</li><li><a rel=\"nofollow\" href=\"https://github.com/rugk/unicodify/blob/master/CONTRIBUTING.md#need-ideas\">Or check out some other add-on issues</a> (or translate them).</li></ul>Or, in any case, <a rel=\"nofollow\" href=\"https://github.com/rugk/unicodify/blob/master/CONTRIBUTING.md#support-us\">support us by spreading the word!</a>  ❤️\n\n\n\n<b>Permissions</b>\nThis add-on requires as few permissions as possible.\nAn explanation of all permissions, this add-on requests, can be found <a rel=\"nofollow\" href=\"https://github.com/rugk/unicodify/blob/master/assets/texts/en/permissions.md\">on this site</a>."
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/unicodify-text-transformer/edit",
+    "guid": "unicodify@rugk.github.io",
+    "has_eula": false,
+    "has_privacy_policy": true,
+    "homepage": {
+        "en-US": "https://github.com/rugk/unicodify"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/988/988160-64.png?modified=0b1609fc",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/988/988160-32.png?modified=0b1609fc",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/988/988160-64.png?modified=0b1609fc"
+    },
+    "is_disabled": false,
+    "is_experimental": true,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2021-08-10T13:10:03Z",
+    "name": {
+        "en-US": "Unicodify – Text transformer"
+    },
+    "previews": [
+        {
+            "id": 206589,
+            "caption": {
+                "en-US": "Show a live preview of all the text transform options directly in the context menu."
+            },
+            "image_size": [
+                739,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206589.png?modified=1628602051",
+            "thumbnail_size": [
+                185,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206589.png?modified=1628602051"
+        },
+        {
+            "id": 206590,
+            "caption": {
+                "en-US": "Disable any features you do not want or just make use of all of them. You can adjust the style and behavior as you like!"
+            },
+            "image_size": [
+                464,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206590.png?modified=1628602047",
+            "thumbnail_size": [
+                116,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206590.png?modified=1628602047"
+        },
+        {
+            "id": 206591,
+            "caption": {
+                "en-US": "Transform the selected text to more than 20 Unicode fonts or change the casing. Dark theme"
+            },
+            "image_size": [
+                739,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206591.png?modified=1628602050",
+            "thumbnail_size": [
+                185,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206591.png?modified=1628602050"
+        },
+        {
+            "id": 206592,
+            "caption": {
+                "en-US": "Show a live preview of all the text transform options directly in the context menu. Dark theme"
+            },
+            "image_size": [
+                739,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206592.png?modified=1628601742",
+            "thumbnail_size": [
+                185,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206592.png?modified=1628601742"
+        },
+        {
+            "id": 206593,
+            "caption": {
+                "en-US": "Show a live preview of all the text transform options directly in the context menu. Light theme"
+            },
+            "image_size": [
+                739,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206593.png?modified=1628602051",
+            "thumbnail_size": [
+                185,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206593.png?modified=1628602051"
+        },
+        {
+            "id": 206594,
+            "caption": {
+                "en-US": "Transform the selected text to more than 20 Unicode fonts or change the casing. Light theme"
+            },
+            "image_size": [
+                740,
+                800
+            ],
+            "image_url": "https://addons.thunderbird.net/user-media/previews/full/206/206594.png?modified=1628601742",
+            "thumbnail_size": [
+                185,
+                200
+            ],
+            "thumbnail_url": "https://addons.thunderbird.net/user-media/previews/thumbs/206/206594.png?modified=1628601742"
+        }
+    ],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 3.85762,
+        "count": 1,
+        "average": 5,
+        "text_count": 1
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unicodify-text-transformer/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/988160",
+    "slug": "unicodify-text-transformer",
+    "status": "public",
+    "summary": {
+        "en-US": "Easily and quickly autocorrect common symbols as ¼, transform text to “Unicode fonts” and change the casing."
+    },
+    "support_email": null,
+    "support_url": {
+        "en-US": "https://github.com/rugk/unicodify/issues"
+    },
+    "tags": [
+        "ascii",
+        "autocorrect",
+        "autoformat",
+        "case",
+        "change",
+        "convert",
+        "firefox57",
+        "font",
+        "format",
+        "fraction",
+        "generate",
+        "ligature",
+        "manipulate",
+        "quotes",
+        "replace",
+        "style",
+        "symbol",
+        "text",
+        "transform",
+        "type",
+        "unicode"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/unicodify-text-transformer/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp78plus": true
+        }
+    }
+}

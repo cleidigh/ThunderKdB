@@ -124,6 +124,9 @@ cardbookAutocompleteSearch.prototype = {
 	QueryInterface: ChromeUtils.generateQI([Components.interfaces.nsIAutoCompleteSearch]),
 
 	showAddressbookComments: false,
+	showAddressbook: false,
+	showEmailType: false,
+	showPopularity: false,
 	proposeConcatEmails: false,
 	autocompleteWithColor: true,
 	useColor: "background",
@@ -141,13 +144,8 @@ cardbookAutocompleteSearch.prototype = {
 	addResult: function addResult(aEmailValue, aComment, aPopularity, aType, aStyle, aLowerFn, aDirPrefId, aEmail) {
 		if (aEmailValue) {
 			var myComment = "";
-			if (Services.prefs.getIntPref("mail.autoComplete.commentColumn", 0) != 0) {
-				if (aComment) {
-					myComment = aComment;
-				}
-				if (cardbookRepository.debugMode) {
-					myComment += " [" + aType + ":" + aPopularity + "]";
-				}
+			if (this.showAddressbookComments) {
+				myComment = Object.values(aComment).join(" - ");
 			}
 			this.searchResult._searchResults.push({
 										 value: aEmailValue,
@@ -216,7 +214,25 @@ cardbookAutocompleteSearch.prototype = {
 		}
 		this.ABInclRestrictions["length"] = cardbookRepository.cardbookUtils.sumElements(this.ABInclRestrictions);
 	},
-	
+
+	addValueToComment: function (aComment, aCommentField, aValue, aCheck) {
+		if (aCheck) {
+			aComment[aCommentField] = aValue;
+		}
+	},
+
+	addAddressbookToComment: function (aComment, aAddressBookName) {
+		this.addValueToComment(aComment, "addressBook", aAddressBookName, this.showAddressbook);
+	},
+
+	addEmailTypeToComment: function (aComment, aEmailType) {
+		this.addValueToComment(aComment, "emailType", aEmailType, this.showEmailType && aEmailType);
+	},
+
+	addPopularityToComment: function (aComment, aPopularity) {
+		this.addValueToComment(aComment, "popularity", aPopularity || 0, this.showPopularity);
+	},
+
 	/**
 	 * Starts a search based on the given parameters.
 	 *
@@ -247,7 +263,10 @@ cardbookAutocompleteSearch.prototype = {
 		var newSearchString = cardbookRepository.makeSearchString(aSearchString);
 
 		this.sortUsePopularity = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteSortByPopularity");
-		this.showAddressbookComments = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
+		this.showAddressbook = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
+		this.showEmailType = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowEmailType");
+		this.showPopularity = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowPopularity");
+		this.showAddressbookComments = this.showAddressbook || this.showEmailType || this.showPopularity ;
 		this.useOnlyEmail = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.useOnlyEmail");
 		this.proposeConcatEmails = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.proposeConcatEmails");
 		this.autocompleteWithColor = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteWithColor");
@@ -257,6 +276,10 @@ cardbookAutocompleteSearch.prototype = {
 			var mySearchArray = cardbookRepository.cardbookCardShortSearch;
 		} else {
 			var mySearchArray = cardbookRepository.cardbookCardLongSearch;
+		}
+
+		if (this.showAddressbookComments) {
+			Services.prefs.setIntPref("mail.autoComplete.commentColumn", 1);
 		}
 
 		var mySearchParamObj = JSON.parse(aSearchParam);
@@ -269,10 +292,11 @@ cardbookAutocompleteSearch.prototype = {
 				var myDirPrefId = account[4];
 				if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
 					var myType = cardbookRepository.getABIconType(account[6]);
-					var myComment = null;
-					if (this.showAddressbookComments) {
-						// display addressbook name in the comments column
-						myComment = account[0];
+					var myComment = {};
+					this.addAddressbookToComment(myComment, account[0]);
+					if (this.showEmailType) {
+						var typeList = cardbookRepository.cardbookTypes.getTypesFromDirPrefId("email", myDirPrefId);
+						cardbookRepository.cardbookUtils.sortMultipleArrayByString(typeList,0,1);
 					}
 					for (var j in mySearchArray[myDirPrefId]) {
 						if (j.indexOf(newSearchString) >= 0 || newSearchString == "") {
@@ -302,7 +326,7 @@ cardbookAutocompleteSearch.prototype = {
 									}
 								}
 
-								var myStyle = myType + "_";
+								var myStyle = myType + "_color_" + myDirPrefId + "-abook";
 								if (this.autocompleteWithColor && this.useColor != "nothing") {
 									if (card.categories.length > 0) {
 										myStyle = myType + "_color_" + myDirPrefId + "-abook";
@@ -335,6 +359,39 @@ cardbookAutocompleteSearch.prototype = {
 									if (myMinPopularity > myCurrentPopularity) {
 										myMinPopularity = myCurrentPopularity;
 									}
+
+									if (this.showEmailType) {
+										var myInputTypes = [];
+										myInputTypes = cardbookRepository.cardbookUtils.getOnlyTypesFromTypes(card.email[l][1]);
+										var myDisplayedTypes = [];
+										if (card.email[l][3].length != 0 && card.email[l][2] != "") {
+											let found = false;
+											for (var m = 0; m < card.email[l][3].length; m++) {
+												let tmpArray = card.email[l][3][m].split(":");
+												if (tmpArray[0] == "X-ABLABEL") {
+													myDisplayedTypes.push(tmpArray[1]);
+													found = true;
+													break;
+												}
+											}
+											if (!found) {
+												myDisplayedTypes.push(myInputTypes.join());
+											}
+										} else {
+											myDisplayedTypes.push(myInputTypes.join());
+										}
+										var checkedCode = cardbookRepository.cardbookTypes.whichCodeTypeShouldBeChecked("email", myDirPrefId, myDisplayedTypes, typeList);
+										if (checkedCode.isAPg && !checkedCode.isAlreadyThere) {
+											typeList.push([checkedCode.result, checkedCode.result]);
+											cardbookRepository.cardbookUtils.sortMultipleArrayByString(typeList,0,1);
+										}
+										var emailType = typeList.filter( child => checkedCode.result == child[1])
+																.map( child => child[0])
+																.join(",") || "";
+										this.addEmailTypeToComment(myComment, emailType);
+									}
+
+									this.addPopularityToComment(myComment, myCurrentPopularity);
 									if (this.useOnlyEmail) {
 										this.addResult(card.email[l][0][0], myComment, myCurrentPopularity, "CB_ONE", myStyle, card.fn.toLowerCase(), myDirPrefId,  card.email[l][0][0]);
 									} else {
@@ -348,10 +405,12 @@ cardbookAutocompleteSearch.prototype = {
 									if (cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()] && cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()].count) {
 										myCurrentPopularity = cardbookRepository.cardbookMailPopularityIndex[card.fn.toLowerCase()].count;
 									}
+									this.addPopularityToComment(myComment, myCurrentPopularity);
 									this.addResult(card.fn + " <" + card.fn + ">", myComment, myCurrentPopularity, "CB_LIST", myStyle, card.fn.toLowerCase(), myDirPrefId, card.fn);
 								} else {
 									// otherwise it is already fetched above
 									if (this.proposeConcatEmails && card.emails.length > 1) {
+										this.addPopularityToComment(myComment, myMinPopularity);
 										if (this.useOnlyEmail) {
 											this.addResult(card.emails.join(" , "), myComment, myMinPopularity, "CB_ALL", myStyle, card.fn.toLowerCase(), myDirPrefId, card.emails.join(" , "));
 										} else {
@@ -372,11 +431,8 @@ cardbookAutocompleteSearch.prototype = {
 				var myDirPrefId = account[4];
 				if (cardbookRepository.verifyABRestrictions(myDirPrefId, "allAddressBooks", this.ABExclRestrictions, this.ABInclRestrictions)) {
 					var myType = cardbookRepository.getABIconType(account[6]);
-					var myComment = null;
-					if (this.showAddressbookComments) {
-						// display addressbook name in the comments column
-						myComment = cardbookRepository.cardbookPreferences.getName(myDirPrefId);
-					}
+					var myComment = {};
+					this.addAddressbookToComment(myComment, cardbookRepository.cardbookPreferences.getName(myDirPrefId));
 					for (let category of cardbookRepository.cardbookAccountsCategories[myDirPrefId]) {
 						if (((!(this.catInclRestrictions[myDirPrefId])) && (category != cardbookRepository.cardbookUncategorizedCards)) ||
 								((this.catInclRestrictions[myDirPrefId]) && (this.catInclRestrictions[myDirPrefId][category]))) {
@@ -403,6 +459,7 @@ cardbookAutocompleteSearch.prototype = {
 								if (cardbookRepository.cardbookMailPopularityIndex[lowerCat] && cardbookRepository.cardbookMailPopularityIndex[lowerCat].count) {
 									myCurrentPopularity = cardbookRepository.cardbookMailPopularityIndex[lowerCat].count;
 								}
+								this.addPopularityToComment(myComment, myCurrentPopularity);
 								this.addResult(category, myComment, myCurrentPopularity, "CB_CAT", myStyle, lowerCat, myDirPrefId, category);
 							}
 						}
@@ -430,11 +487,8 @@ cardbookAutocompleteSearch.prototype = {
 						});
 						performLDAPSearch = true;
 					} else {
-						var myComment = null;
-						if (this.showAddressbookComments) {
-							// display addressbook name in the comments column
-							myComment = contact.dirName;
-						}
+						var myComment = {};
+						this.addAddressbookToComment(myComment, contact.dirName);
 						var abCardsEnumerator = contact.childCards;
 						while (abCardsEnumerator.hasMoreElements()) {
 							var myABCard = abCardsEnumerator.getNext();
@@ -451,6 +505,7 @@ cardbookAutocompleteSearch.prototype = {
 											myDisplayName = myPrimaryEmail.substr(0,delim);
 										}
 										var myPopularity = myABCard.getProperty("PopularityIndex", "0");
+										this.addPopularityToComment(myComment, myPopularity);
 										if (this.useOnlyEmail) {
 											this.addResult(myPrimaryEmail, myComment, myPopularity, "TH_CARD", myStyle, myDisplayName.toLowerCase(), contact.dirPrefId, myPrimaryEmail);
 										} else {
@@ -468,6 +523,7 @@ cardbookAutocompleteSearch.prototype = {
 											myDisplayName = mySecondEmail.substr(0,delim);
 										}
 										var myPopularity = myABCard.getProperty("PopularityIndex", "0");
+										this.addPopularityToComment(myComment, myPopularity);
 										if (this.useOnlyEmail) {
 											this.addResult(mySecondEmail, myComment, myPopularity, "TH_CARD", myStyle, myDisplayName.toLowerCase(), contact.dirPrefId, mySecondEmail);
 										} else {
@@ -481,6 +537,7 @@ cardbookAutocompleteSearch.prototype = {
 								lSearchString = cardbookRepository.makeSearchString(lSearchString);
 								if (lSearchString.indexOf(newSearchString) >= 0) {
 									var myPopularity = myABCard.getProperty("PopularityIndex", "0");
+									this.addPopularityToComment(myComment, myPopularity);
 									this.addResult(MailServices.headerParser.makeMimeAddress(myDisplayName, myDisplayName), myComment, myPopularity, "TH_LIST", myStyle, myDisplayName.toLowerCase(), contact.dirPrefId, myDisplayName);
 								}
 							}
@@ -511,7 +568,6 @@ cardbookAutocompleteSearch.prototype = {
 			context = {};
 			
 			context.style = aStyle;
-			context.showAddressbookComments = cardbookRepository.cardbookPreferences.getBoolPref("extensions.cardbook.autocompleteShowAddressbook");
 			
 			context.bookName = aDirEntry.name;
 			context.book = MailServices.ab.getDirectory(uri).QueryInterface(Components.interfaces.nsIAbLDAPDirectory);
@@ -616,10 +672,8 @@ cardbookAutocompleteSearch.prototype = {
 			return;
 		}
 
-		var myComment = null;
-		if (aContext.showAddressbookComments) {
-			myComment = LDAPAbCardFormatter.commentFromCard(aCard, aContext.book, aContext.bookName);
-		}
+		var myComment = {};
+		this.addAddressbookToComment(myComment, aContext.bookName);
 		if (this.useOnlyEmail) {
 			this.addResult(aCard.primaryEmail, myComment, 0, "TH_LDAP", aContext.style, aCard.displayName.toLowerCase(), "", aCard.primaryEmail);
 		} else {

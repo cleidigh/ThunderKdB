@@ -1132,7 +1132,7 @@
         }
 	},
 	"serverGetLabelsFailed": {
-		"message": "??$P1$ : labels failed to be obtained on server (url : $P2$, status : $P3$)??",
+		"message": "??$P1$ : labels failed to be obtained from server (url : $P2$, status : $P3$)??",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -1168,7 +1168,7 @@
         }
 	},
 	"serverGetCardLabelsFailed": {
-		"message": "??$P1$ : Contact $P2$ : labels failed to be obtained on server (url : $P3$, status : $P4$)??",
+		"message": "??$P1$ : Contact $P2$ : labels failed to be obtained from server (url : $P3$, status : $P4$)??",
         "placeholders": {
             "P1": {
                 "content": "$1"
@@ -4013,6 +4013,18 @@
 	"autocompleteShowAddressbookAccesskey": {
 		"message": "T"
 	},
+	"autocompleteShowEmailTypeLabel": {
+		"message": "??Show email type??"
+	},
+	"autocompleteShowEmailTypeAccesskey": {
+		"message": "e"
+	},
+	"autocompleteShowPopularityLabel": {
+		"message": "??Show popularity??"
+	},
+	"autocompleteShowPopularityAccesskey": {
+		"message": "y"
+	},
 	"autocompleteWithColorLabel": {
 		"message": "Gunakan warna buku alamat"
 	},
@@ -5603,17 +5615,11 @@
 	"viewResultEditionAccesskey": {
 		"message": "T"
 	},
-	"previousEditionLabel": {
+	"previousEditButton.tooltip": {
 		"message": "Sebelumnya"
 	},
-	"previousEditionAccesskey": {
-		"message": "e"
-	},
-	"nextEditionLabel": {
+	"nextEditButton.tooltip": {
 		"message": "Selanjutnya"
-	},
-	"nextEditionAccesskey": {
-		"message": "l"
 	},
 	"createEditionLabel": {
 		"message": "Buat"

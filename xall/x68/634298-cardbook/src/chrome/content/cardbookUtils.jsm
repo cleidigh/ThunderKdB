@@ -660,14 +660,13 @@ var cardbookUtils = {
 		}
 	},
 
-	getImageFromURI: async function (aCardName, aDirname, aImageURI) {
-		return new Promise(function (resolve, reject) {
+	getImageFromURI: function (aCardName, aDirname, aImageURI) {
+		return new Promise((resolve, reject) => {
 			cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGettingImage", [aDirname, aCardName]);
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", aImageURI, true);
+			let xhr = new XMLHttpRequest();
 			xhr.responseType = "arraybuffer";
 			
-			xhr.addEventListener("load", function () {
+			xhr.onload = function () {
 				if (xhr.status === 200) {
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetImageOK", [aDirname, aCardName]);
 					let uInt8Array = new Uint8Array(this.response);
@@ -683,15 +682,16 @@ var cardbookUtils = {
 					cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetImageFailed", [aDirname, aCardName, aImageURI, xhr.status]);
 					reject();
 				}
-			}, false);
-			xhr.addEventListener("error", function () {
+			};
+			xhr.onerror = function () {
 				cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetImageFailed", [aDirname, aCardName, aImageURI, xhr.status]);
 				reject();
-			}, false);
-			xhr.addEventListener("timeout", function () {
+			};
+			xhr.ontimeout = function () {
 				cardbookRepository.cardbookUtils.formatStringForOutput("serverCardGetImageFailed", [aDirname, aCardName, aImageURI, xhr.status]);
 				reject();
-			}, false);
+			};
+			xhr.open("GET", aImageURI, true);
 			xhr.send();
 		});
 	},
@@ -786,26 +786,32 @@ var cardbookUtils = {
 		}
 	},
 
-	getDisplayedNameFromFormula: function(aDirPrefId, aNewN, aNewOrg) {
-		var result =  "";
-		var myFnFormula = cardbookRepository.cardbookPreferences.getFnFormula(aDirPrefId);
-		var orgStructure = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
-		var myOrg = aNewOrg[0];
+	getFnDataForFormula: function(aNewN, aNewOrg) {
+		let orgStructure = cardbookRepository.cardbookPreferences.getStringPref("extensions.cardbook.orgStructure");
+		let myOrg = aNewOrg[0];
+		let myOrgArray = [];
 		if (orgStructure != "") {
-			var myOrgArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(myOrg).split(";"));
-			var myOrgStructureArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(orgStructure).split(";"));
-			for (var i = myOrgArray.length; i < myOrgStructureArray.length; i++) {
+			myOrgArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(myOrg).split(";"));
+			let myOrgStructureArray = cardbookUtils.unescapeArray(cardbookUtils.escapeString(orgStructure).split(";"));
+			for (let i = myOrgArray.length; i < myOrgStructureArray.length; i++) {
 				myOrgArray.push("");
 			}
 		} else {
-			var myOrgArray = [cardbookUtils.unescapeString(cardbookUtils.escapeString(myOrg))];
+			myOrgArray = [cardbookUtils.unescapeString(cardbookUtils.escapeString(myOrg))];
 		}
-		var myArray = [];
-		myArray = myArray.concat(aNewN);
-		myArray = myArray.concat(myOrgArray);
-		myArray = myArray.concat(aNewOrg[1]);
-		myArray = myArray.concat(aNewOrg[2]);
-		result = cardbookUtils.getStringFromFormula(myFnFormula, myArray);
+		let fnData = [];
+		fnData = fnData.concat(aNewN);
+		fnData = fnData.concat(myOrgArray);
+		fnData = fnData.concat(aNewOrg[1]);
+		fnData = fnData.concat(aNewOrg[2]);
+		return fnData;
+	},
+
+	getDisplayedNameFromFormula: function(aDirPrefId, aNewN, aNewOrg) {
+		var result =  "";
+		var myFnFormula = cardbookRepository.cardbookPreferences.getFnFormula(aDirPrefId);
+		let data = cardbookUtils.getFnDataForFormula(aNewN, aNewOrg);
+		result = cardbookUtils.getStringFromFormula(myFnFormula, data);
 		return result.trim();
 	},
 
@@ -2300,12 +2306,11 @@ var cardbookUtils = {
 		try {
 			var myPrefName = cardbookUtils.getPrefNameFromPrefId(aCard.dirPrefId);
 			if (aCard[aField].value != "") {
-				await cardbookIDBImage.addImage( aField, myPrefName, 
-															{cbid: aCard.dirPrefId+"::"+aCard.uid, dirPrefId: aCard.dirPrefId, extension: aCard[aField].extension, content: aCard[aField].value},
-															aCard.fn)
-						.then( () => {
-							aCard[aField].value = ""
-						});
+				cardbookIDBImage.addImage( aField, myPrefName, 
+											{cbid: aCard.dirPrefId+"::"+aCard.uid, dirPrefId: aCard.dirPrefId, extension: aCard[aField].extension, content: aCard[aField].value},
+											aCard.fn, function () {
+												aCard[aField].value = "";
+											});
 			} else if (aCard[aField].localURI) {
 				let imageFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsIFile);
 				imageFile.initWithPath(aCard[aField].localURI.replace("file://", ""));
@@ -2314,12 +2319,11 @@ var cardbookUtils = {
 					let filenameArray = imageFile.leafName.split(".");
 					let uid = filenameArray[0];
 					let extension =  filenameArray[filenameArray.length-1];
-					await cardbookIDBImage.addImage( aField, myPrefName,
-																{cbid: aCard.dirPrefId+"::"+aCard.uid, dirPrefId: aCard.dirPrefId, extension: aCard[aField].extension, content: base64},
-																aCard.fn)
-						.then( () => {
-							aCard[aField].localURI = null;
-						});
+					cardbookIDBImage.addImage( aField, myPrefName,
+												{cbid: aCard.dirPrefId+"::"+aCard.uid, dirPrefId: aCard.dirPrefId, extension: aCard[aField].extension, content: base64},
+												aCard.fn, function () {
+													aCard[aField].localURI = null;
+												});
 				} else {
 					aCard[aField].localURI = null;
 				}
@@ -2328,9 +2332,9 @@ var cardbookUtils = {
 				let filenameArray = aCard[aField].URI.split(".");
 				let uid = filenameArray[0];
 				let extension =  filenameArray[filenameArray.length-1];
-				await cardbookIDBImage.addImage( aField, myPrefName,
-															{cbid: aCard.dirPrefId+"::"+aCard.uid, dirPrefId: aCard.dirPrefId, extension: aCard[aField].extension, content: base64},
-															aCard.fn);
+				cardbookIDBImage.addImage( aField, myPrefName,
+											{cbid: aCard.dirPrefId+"::"+aCard.uid, dirPrefId: aCard.dirPrefId, extension: aCard[aField].extension, content: base64},
+											aCard.fn);
 			}
 		}
 		catch(e) {

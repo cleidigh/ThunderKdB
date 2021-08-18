@@ -486,6 +486,32 @@ var cardbookSynchronization = {
 		cardbookRepository.cardbookUtils.formatStringForOutput("importCardsKO", [aPrefName, cardbookRepository.cardbookServerCardSyncError[aPrefId]]);
 	},
 
+	finishExportToFile: function (aWindow, aListOfSelectedCardLength, aFileName) {
+		let alertTitle = cardbookRepository.extension.localeData.localizeMessage("exportCardToFileLabel");
+		if (aListOfSelectedCardLength > 1) {
+			cardbookRepository.cardbookUtils.formatStringForOutput("exportsOKIntoFile", [aFileName]);
+			let alertMessage = cardbookRepository.extension.localeData.localizeMessage("exportsOKIntoFile", [aFileName]);
+			Services.prompt.alert(aWindow, alertTitle, alertMessage);
+		} else {
+			cardbookRepository.cardbookUtils.formatStringForOutput("exportOKIntoFile", [aFileName]);
+			let alertMessage = cardbookRepository.extension.localeData.localizeMessage("exportOKIntoFile", [aFileName]);
+			Services.prompt.alert(aWindow, alertTitle, alertMessage);
+		}
+	},
+
+	finishExportToDir: function (aWindow, aListOfSelectedCardLength, aDirName) {
+		let alertTitle = cardbookRepository.extension.localeData.localizeMessage("exportCardToFileLabel");
+		if (aListOfSelectedCardLength > 1) {
+			cardbookRepository.cardbookUtils.formatStringForOutput("exportsOKIntoDir", [aDirName]);
+			let alertMessage = cardbookRepository.extension.localeData.localizeMessage("exportsOKIntoDir", [aDirName]);
+			Services.prompt.alert(aWindow, alertTitle, alertMessage);
+		} else {
+			cardbookRepository.cardbookUtils.formatStringForOutput("exportOKIntoDir", [aDirName]);
+			let alertMessage = cardbookRepository.extension.localeData.localizeMessage("exportOKIntoDir", [aDirName]);
+			Services.prompt.alert(aWindow, alertTitle, alertMessage);
+		}
+	},
+
 	encodeParams: function(params) {
 		let paramsArray = [];
 		if (params) {
@@ -2497,10 +2523,9 @@ var cardbookSynchronization = {
 	loadFileAsync: async function (aContent, aParams) {
 		try {
 			if (aContent) {
-				var re = /[\n\u0085\u2028\u2029]|\r\n?/;
-				var fileContentArray = cardbookRepository.cardbookUtils.cleanArrayWithoutTrim(aContent.split(re));
-
-				var fileContentArrayLength = fileContentArray.length
+				let re = /[\n\u0085\u2028\u2029]|\r\n?/;
+				let fileContentArray = cardbookRepository.cardbookUtils.cleanArrayWithoutTrim(aContent.split(re));
+				let fileContentArrayLength = fileContentArray.length
 				// as we have presumed that we have one contact per file
 				let found = 0;
 				for (let i = 0; i < fileContentArrayLength; i++) {
@@ -2511,14 +2536,16 @@ var cardbookSynchronization = {
 						}
 					}
 				}
-				var cardContent = "";
+				let cardContent = "";
+				let endVcardFound = false;
 				for (let i = 0; i < fileContentArrayLength; i++) {
 					if (fileContentArray[i].toUpperCase().startsWith("BEGIN:VCARD")) {
 						cardContent = fileContentArray[i];
 					} else if (fileContentArray[i].toUpperCase().startsWith("END:VCARD")) {
+						endVcardFound = true
 						cardContent = cardContent + "\r\n" + fileContentArray[i];
 						try {
-							var myCard = new cardbookCardParser(cardContent, "", "", aParams.aPrefId);
+							let myCard = new cardbookCardParser(cardContent, "", "", aParams.aPrefId);
 							// Services.tm.currentThread.dispatch({ run: async function() {
 							if (myCard.version == "") {
 								if (aParams.aImportMode.startsWith("NOIMPORT")) {
@@ -2557,6 +2584,11 @@ var cardbookSynchronization = {
 					} else {
 						cardContent = cardContent + "\r\n" + fileContentArray[i];
 					}
+				}
+				if (!endVcardFound) {
+					cardbookRepository.cardbookUtils.formatStringForOutput("parsingCardError", [aParams.aPrefIdName, "END:VCARD not found", cardContent], "Error");
+					cardbookRepository.cardbookServerCardSyncError[aParams.aPrefId]++;
+					cardbookRepository.cardbookServerCardSyncDone[aParams.aPrefId]++;
 				}
 			} else {
 				cardbookRepository.cardbookServerCardSyncDone[aParams.aPrefId]++;

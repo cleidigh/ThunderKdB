@@ -14,6 +14,7 @@
  * https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78
  */
 
+var lastTab=0, lastWindow=0;
 
 messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
  // if (temporary) return; // skip during development
@@ -23,18 +24,47 @@ messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
         const url = messenger.runtime.getURL("popup/installed.html");
 //        const url = messenger.runtime.getURL("popup/about_content.html");
         //await browser.tabs.create({ url });
-        await messenger.windows.create({ url, type: "popup", height: 780, width: 990, });
+        await messenger.windows.create({ url, type: "popup", height: 780, width: 1090, });
       }
       break;
       case "update":
         {
           const url = messenger.runtime.getURL("popup/update.html");
           //await browser.tabs.create({ url });
-          await messenger.windows.create({ url, type: "popup", height: 780, width: 990, });
+          await messenger.windows.create({ url, type: "popup", height: 780, width: 1090, });
         }
         break;
       // see below
   }
+});
+
+
+var helpUrl = messenger.runtime.getURL("popup/about_content.html");
+//await browser.tabs.create({ url });
+//messenger.windows.create({ url, type: "popup", width: 910, height: 750, });
+
+messenger.NotifyTools.onNotifyBackground.addListener(async (info) => {
+   switch (info.command) {
+     case "showHelp":
+       //do something
+       let helpUrl = messenger.runtime.getURL("popup/about_content.html");
+  //     console.log("showHelp");
+       messenger.windows.create({ url: helpUrl, type: "popup", width: 700, height: 780, });
+
+       //let rv = await doSomething();
+       return;// rv;
+       break;
+   }
+ });
+
+
+
+messenger.tabs.onActivated.addListener(async (activeInfo) => {
+  //console.log("tab activated "+ activeInfo.tabId + " window: " + activeInfo.windowId);
+  lastTab = activeInfo.tabId;
+  lastWindow = activeInfo.windowId;
+  let tabInfo = await messenger.tabs.get( activeInfo.tabId);
+  messenger.Utilities.isMailTab(tabInfo.mailTab);
 });
 
 
@@ -48,7 +78,8 @@ async function main() {
         ["locale", "nostalgy", "en-US", "chrome/locale/en-US/"],
   //      ["locale", "quickfolders", "ca", "chrome/locale/ca/"],
         ["locale", "nostalgy", "de", "chrome/locale/de/"],
-  /*      ["locale", "quickfolders", "es-MX", "chrome/locale/es-MX/"],
+        ["resource",  "nostalgy",  ""]
+        /*      ["locale", "quickfolders", "es-MX", "chrome/locale/es-MX/"],
         ["locale", "quickfolders", "es", "chrome/locale/es/"],
         ["locale", "quickfolders", "fr", "chrome/locale/fr/"],
         ["locale", "quickfolders", "hu-HU", "chrome/locale/hu-HU/"],

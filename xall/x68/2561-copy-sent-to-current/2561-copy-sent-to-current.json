@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 1916,
+    "average_daily_users": 1714,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -21,26 +21,26 @@
     "contributions_url": null,
     "created": "2006-05-13T07:32:43Z",
     "current_version": {
-        "id": 2475330,
+        "id": 2476051,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-sent-to-current/versions/2475330",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/copy-sent-to-current/versions/2476051",
         "files": [
             {
-                "id": 1018491,
-                "created": "2021-02-10T10:09:32Z",
-                "hash": "sha256:11208d844f7def04d14918882c15f35303e08bd9cd34963ba38d0ddcbe84f4b2",
+                "id": 1019211,
+                "created": "2021-07-01T07:23:59Z",
+                "hash": "sha256:caf2e8aebaa773a8a5cdca6e03df356756e8f81d300bab99d8e5ed8db7b4e724",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 56653,
+                "size": 56730,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018491/copy_sent_to_current-3.10-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019211/copy_sent_to_current-3.11-tb.xpi?src=",
                 "permissions": [
                     "compose",
                     "tabs",
@@ -84,17 +84,17 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "- Fixed bug where disabled accounts aren't really disabled\n- Work around a bug where multiple copies are saved to the sent folder",
+            "en-US": "Fixed issues for TB8x/TB9x",
             "de": ""
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/versions/3.10",
-        "version": "3.10"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/versions/3.11",
+        "version": "3.11"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Allows to place a copy of sent messages (aka FCC) into the currently active folder or any other folder you choose, when you create the message. Usually the copies are placed into the 'Sent' folder. For replies you may also move the original message.\n\nUseful, if your mails are presorted e.g. on an IMAP-Server, and you want answers to a mail be saved along with the original mail.\n\nFor version 3.x under Thunderbird 78 please check my <a rel=\"nofollow\" href=\"https://www.ggbs.de/extensions/CopySent2Current.html\">website</a> for some hints!",
-        "de": "Erlaubt es, beim Senden einer Nachricht eine Kopie (aka FCC) im gerade aktiven Ordner oder einem beliebigen anderen Order abzulegen. (Standardmäßig werden Kopien immer im 'Gesendet'-Ordner abgelegt.) Bei Antworten kann auch die Originalmail mitverschoben werden.\n\nHilfreich, wenn die Mails z.B. auf einem IMAP Server vorsortiert sind und Antworten bei ihren Originalmails gespeichert werden sollen.\n\nFür Hinweise zu Version 3.1 unter TB78 beachten sie bitte meine <a rel=\"nofollow\" href=\"https://www.ggbs.de/extensions/CopySent2Current.html\">Webseite</a>."
+        "en-US": "Allows to place a copy of sent messages (aka FCC) into the currently active folder or any other folder you choose, when you create the message. Usually the copies are placed into the 'Sent' folder. For replies you may also move the original message.\n\nUseful, if your mails are presorted e.g. on an IMAP-Server, and you want answers to a mail be saved along with the original mail.\n\nFor <strong>Thunderbird 91</strong>:\nIf sending mails does not work any more, install a dictionary!\n(Tools-&gt;Preferences-&gt;Composition-&gt;Spelling-&gt;Download more Dictionaries)",
+        "de": "Erlaubt es, beim Senden einer Nachricht eine Kopie (aka FCC) im gerade aktiven Ordner oder einem beliebigen anderen Order abzulegen. (Standardmäßig werden Kopien immer im 'Gesendet'-Ordner abgelegt.) Bei Antworten kann auch die Originalmail mitverschoben werden.\n\nHilfreich, wenn die Mails z.B. auf einem IMAP Server vorsortiert sind und Antworten bei ihren Originalmails gespeichert werden sollen.\n\nFür <strong>Thunderbird 91</strong>:\nWenn das Senden von Mails nicht funktioniert, installieren sie ein Wörterbuch!\n(Extras-&gt;Einstellungen-&gt;Verfassen-&gt;Rechschreibung-&gt;Ein Wörterbuch herunterladen)"
     },
     "developer_comments": {
         "en-US": "For all people who would like to have another default folder, please consider changing your behavior: First select the desired folder in the folderpane, then create the new mail.\n\nPlease use latest version from the homepage (<a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/539da8c435e31266154950be22a1e4e341387c3d2618424ee2e70c37f9ccc8f6/http%3A//www.ggbs.de/extensions/CopySent2Current.html\">http://www.ggbs.de/extensions/CopySent2Current.html</a>)"
@@ -107,16 +107,16 @@
         "en-US": "http://www.ggbs.de/extensions/CopySent2Current.html",
         "de": "http://www.ggbs.de/extensions/CopySent2Current.html"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2561-64.png?modified=1600515676",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/2/2561-64.png?modified=1629270529",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2561-32.png?modified=1600515676",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2561-64.png?modified=1600515676"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/2/2561-32.png?modified=1629270529",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/2/2561-64.png?modified=1629270529"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": false,
-    "last_updated": "2021-02-10T14:14:28Z",
+    "last_updated": "2021-07-01T10:33:38Z",
     "name": {
         "en-US": "Copy Sent to Current"
     },
@@ -172,10 +172,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.27361,
-        "count": 94,
-        "average": 4.2872,
-        "text_count": 94
+        "bayesian_average": 4.28122,
+        "count": 95,
+        "average": 4.2947,
+        "text_count": 95
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/copy-sent-to-current/reviews/",
     "requires_payment": false,

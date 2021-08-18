@@ -9,6 +9,12 @@
  * to have the dark and light mode ability
  */
 
+ :root:-moz-lwtheme-brighttext {
+  --button-background: var(--in-content-button-background);
+  --button-background-hover: var(--in-content-button-background-hover);
+  --button-background-active: var(--in-content-button-background-active);
+}
+
 #wdw_aecOptionsWindow:not([lwt-tree]):-moz-lwtheme,
 #AEDialog:not([lwt-tree]):-moz-lwtheme,
 #attachmentextractorFilenamePatternDialog:not([lwt-tree]):-moz-lwtheme,
@@ -32,8 +38,25 @@ button menupopup menu, button menupopup menuitem, menulist menupopup menu, menul
   background-color: var(--in-content-page-background);
   color: var(--in-content-page-color);
 }
+
+/*
 button menupopup menu:hover, button menupopup menuitem:hover, menulist menupopup menu:hover, menulist menupopup menuitem:hover {
-  background-color: var(--button-background-hover) !important;
+  background-color: var(--in-content-button-background-hover) !important;
+}
+*/
+
+button, button[default="true"], menulist {
+  background-color: var(--in-content-button-background);
+}
+button:hover, button[default="true"]:hover, menulist:hover {
+  background-color: var(--in-content-button-background-hover);
+}
+button:active, button[default="true"]:active, menulist:active {
+  background-color: var(--in-content-button-background-active);
+}
+
+.radio-check, .checkbox-check {
+  background-color: var(--in-content-box-background) !important;
 }
 
 /***************************************************************/

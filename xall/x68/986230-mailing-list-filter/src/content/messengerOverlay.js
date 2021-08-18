@@ -34,17 +34,13 @@
   const Cu = Components.utils;
 
   // global scope variables
-  this.mailingListFilter = {};
+  window.mailingListFilter = {};
 
   // local shorthand for the global reference
-  var self = this.mailingListFilter;
+  var self = window.mailingListFilter;
 
   self.initialized = false;
   self.name = mailingListFilter;
-
-  const mailingListFilterStrings = Cc["@mozilla.org/intl/stringbundle;1"]
-                                .getService(Ci.nsIStringBundleService)
-                                .createBundle("chrome://mailing-list-filter/locale/mailing-list-filter.properties");
 
   const headerParser = Cc["@mozilla.org/messenger/headerparser;1"]
                           .getService(Ci.nsIMsgHeaderParser);
@@ -59,8 +55,6 @@
 
   self._init = function()
   {
-    self.strings = document.getElementById("mailing-list-filter-strings");
-
     self.match = function mailingList_match(aMsgHdr, aSearchValue, aSearchOp, searchRecipients)
     {
       let dir = abManager.getDirectory(aSearchValue);
@@ -69,31 +63,30 @@
         return;
       }
 
-      let addresses = {};
       addressesString = aMsgHdr.author;
       if (searchRecipients)
           addressesString = aMsgHdr.recipients + "," + aMsgHdr.ccList;
-      headerParser.parseHeadersWithArray(addressesString, addresses, {}, {});
-      let address = addresses.value[0];
+      let addresses = headerParser.parseEncodedHeader(addressesString);
 
       let matches = false;
 
-      if (dir.isMailList) {
+      for (const address of addresses) {
+        if (dir.isMailList) {
           // unfortunately cardForEmailAddress doesn't work as expected for mailing lists
           let cards = dir.childCards;
-          while (cards.hasMoreElements())
-          {
-              let card = cards.getNext().QueryInterface(Ci.nsIAbCard);
-              if (card.hasEmailAddress(address)) {
-                  matches = true;
-                  break;
-              }
+          while (cards.hasMoreElements()) {
+            let card = cards.getNext().QueryInterface(Ci.nsIAbCard);
+            if (card.hasEmailAddress(address.email)) {
+              matches = true;
+              break;
+            }
           }
-      } else {
-          matches = (dir.cardForEmailAddress(address) !== null);
+        } else {
+          matches = (dir.cardForEmailAddress(address.email) !== null);
+        }
       }
 
-      if (aSearchOp == IsInAB)
+      if (aSearchOp === IsInAB)
           return matches;
       else
           return !matches;
@@ -104,14 +97,12 @@
         return _isLocalSearch(scope);
     };
 
-    self.mailingList_getAvailableOperators = function (scope, length)
+    self.mailingList_getAvailableOperators = function (scope)
     {
         if (!_isLocalSearch(scope))
         {
-          length.value = 0;
           return [];
         }
-        length.value = 2;
         return [IsInAB, IsntInAB];
     };
 
@@ -119,7 +110,7 @@
     self.mailingList = 
     {
       id: "mailing-list-filter@peci1.cz#mailingList",
-      name: self.strings.getString("mailing-list-filter.term.name"),
+      name: WL.extension.localeData.localizeMessage("term-name"),
       getEnabled: self.mailingList_getEnabled,
       needsBody: false,
       getAvailable: self.mailingList_getAvailable,
@@ -134,7 +125,7 @@
     self.mailingListRecipients = 
     {
       id: "mailing-list-filter@peci1.cz#mailingListRecipients",
-      name: self.strings.getString("mailing-list-filter.termRecipients.name"),
+      name: WL.extension.localeData.localizeMessage("term-recipients-name"),
       getEnabled: self.mailingList_getEnabled,
       needsBody: false,
       getAvailable: self.mailingList_getAvailable,
@@ -177,4 +168,9 @@
   }
 })();
 
-window.addEventListener("load", function(e) { mailingListFilter.onLoad(e); }, false);
+function onLoad(activatedWhileWindowOpen) {
+  window.mailingListFilter.onLoad();
+}
+
+function onUnload(isAddOnShutown) {
+}

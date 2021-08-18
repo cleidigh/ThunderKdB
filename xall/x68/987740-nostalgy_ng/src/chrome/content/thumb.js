@@ -4,7 +4,7 @@ var {NetUtil} =   ChromeUtils.import("resource://gre/modules/NetUtil.jsm");
 var { MsgHdrToMimeMessage } = ChromeUtils.import("resource:///modules/gloda/MimeMessage.jsm");
 
   function getMime (mimeHdr, aMimeMsg)  {
-    console.log (aMimeMsg);
+  //  console.log (aMimeMsg);
     let test=aMimeMsg;
     debugger;
     return;
@@ -56,8 +56,8 @@ function StartThumb(window) {
 
     //debugger;
     var attachment = attachList.childNodes[imgIndex].attachment;
-    console.log(attachment);
-    console.log(attachment.contentType);
+  //  console.log(attachment);
+  //  console.log(attachment.contentType);
     let contentType = attachment.contentType;
     if (contentType == "image/jpeg"
     || contentType == "image/jpg"
@@ -146,7 +146,7 @@ function StreamListener  (resolve, reject) {
  //       resolve.height="200px";
  //       resolve.width="200px";
      //  resolve(this._data);
-        console.log(this._data);
+   //     console.log(this._data);
       } catch (e) {
        // reject("Error inside stream listener:\n" + e + "\n");
       }
@@ -382,7 +382,7 @@ var slideTeo = {
     let src = window.attachments[index].url;  //=img.src
     let uri = window.attachments[index].uri;  //= img.uri
     img.src=src;
-    console.log(window.attachments[index]);
+  //  console.log(window.attachments[index]);
     //img.attachment = window.attachments[index];
     //img.index = index;
 let gMessenger = Cc["@mozilla.org/messenger;1"].createInstance(Ci.nsIMessenger);
@@ -419,15 +419,15 @@ MsgHdrToMimeMessage(
 
 }
   let url = Services.io.newURI(src, null, null);
-  console.log(url);
+//  console.log(url);
  
   debugger;
   const tmpChannel = NetUtil.newChannel({
     uri: url,
     loadUsingSystemPrincipal: true,
   });
-  console.log( "contentType");
- console.log( tmpChannel.contentType);
+//  console.log( "contentType");
+// console.log( tmpChannel.contentType);
  /* 
   tmpChannel.asyncOpen(
     new StreamListener(img),//resolve, reject),

@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Sender Frequency",
   "description": "Adds a custom column for Sender Frequency to the thread pane",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": "Jorg K",
   "applications": {
     "gecko": {
@@ -20,8 +20,7 @@
         "paths": [
           ["SFreq"]
         ],
-        "script": "experiments.js",
-        "events": ["startup"]
+        "script": "experiments.js"
       }
     }
   },

@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 2575,
+    "average_daily_users": 2336,
     "categories": {
         "thunderbird": [
             "composition",
@@ -26,27 +26,30 @@
     "contributions_url": "",
     "created": "2006-06-29T15:39:10Z",
     "current_version": {
-        "id": 2474457,
+        "id": 2476144,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
-                "min": "78.0"
+                "min": "88.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-account/versions/2474457",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/folder-account/versions/2476144",
         "files": [
             {
-                "id": 1017619,
-                "created": "2020-10-13T20:52:30Z",
-                "hash": "sha256:4246e3b4aa22c86d95debe5257736be8e9488000d6d5531f9b43c08a257ab640",
+                "id": 1019304,
+                "created": "2021-07-28T16:38:22Z",
+                "hash": "sha256:ed0104259f38b27246ada0371ee8393891c6b345c8e3ceb5c29cb49dd2f6c7d4",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 29751,
+                "size": 37537,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1017619/folder_account-10.0-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019304/folder_account-11.0-tb.xpi?src=",
+                "permissions": [
+                    "accountsRead",
+                    "compose"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -80,10 +83,13 @@
             },
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
-        "release_notes": null,
+        "release_notes": {
+            "en-US": "Besides compatibility to Thunderbird 91 this release contains following changes:\n\n– restructured folder properties tab, arranging the different settings in a hopefully more meaningful way\n\n– option to sort the accounts/identities in the drop-down list in folder properties\n\n– \"Reply All\" with altered \"From\" account doesn't include the original receiving address in the list of recipients any more",
+            "de": ""
+        },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-account/versions/10.0",
-        "version": "10.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/folder-account/versions/11.0",
+        "version": "11.0"
     },
     "default_locale": "en-US",
     "description": {
@@ -111,7 +117,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-10-15T12:58:50Z",
+    "last_updated": "2021-07-28T19:09:24Z",
     "name": {
         "en-US": "Folder Account"
     },
@@ -170,6 +176,11 @@
             "mext": true,
             "comp68": true,
             "comp78plus": true,
+            "comp78pv": true,
+            "comp78pv_date": "2020-10-13T20:52:30Z",
+            "comp78pv_version": "10.0",
+            "comp78pv_vmin": "78.0",
+            "comp78pv_vmax": "85.0",
             "comp60pv": true,
             "comp60pv_date": "2018-11-06T21:12:01Z"
         }

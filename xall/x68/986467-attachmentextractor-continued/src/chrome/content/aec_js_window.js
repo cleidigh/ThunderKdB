@@ -433,7 +433,7 @@ aewindow.AETask = function(savefolder, selectedMsgs, filenamepattern, aewindow,
     if (!that.active) return;
     that.active = false;
 
-    // console.log("setTimeout");
+    // console.debug("setTimeout");
     // seems to be working okay
     setTimeout(function() {
       aewindow.consumeAETask
@@ -1022,7 +1022,7 @@ if (typeof AEMessage === "undefined") {
         0 /*aewindow.downloadManager.activeDownloadCount===0*/ )) {
       aewindow.currentMessage.saveAtt_cleanUp(attachmentindex, false);
     } else {
-      // console.log("setTimeout");
+      // console.debug("setTimeout");
       // not yet proofed
       this.cleanUpFilterTimeout = setTimeout(function() {
           aewindow.currentMessage.saveAtt_cleanUpFilter(attachmentindex)
@@ -1048,14 +1048,14 @@ if (typeof AEMessage === "undefined") {
     aewindow.progress_tracker.stopping_attachment(attachmentindex);
     attachmentindex++;
     if (attachmentindex >= this.attachments_ct.length) {
-      // console.log("setTimeout");
+      // console.debug("setTimeout");
       // seems to be working okay
       setTimeout(function() {
         aewindow.currentMessage.doAfterActions(aewindow
           .progress_tracker.message_states.MARKREAD)
         }, this.prefs.get("nextattachmentdelay"));
     } else {
-      // console.log("setTimeout");
+      // console.debug("setTimeout");
       // seems to be working okay
       setTimeout(function() {
         aewindow.currentMessage.saveAtt(attachmentindex)
@@ -1126,12 +1126,13 @@ if (typeof AEMessage === "undefined") {
                 false,  // false = do not save(?) or ask for destination folder (?)
                 thistask.detachWithoutConfirmation  // if true = delete without warning
               ); 
-              // console.log("setTimeout");
+              // console.debug("setTimeout");
               // seems to be working okay
               thistask.detachCancellationTimeout = setTimeout(function() {
                 aewindow.currentMessage.doAfterActions(states
                 .DELTEMPFILE)
-              }, 2000);
+              // }, 2000);
+              }, this.prefs.get("nextmessagedelay"));
               break;
             }
           }
@@ -1190,7 +1191,7 @@ if (typeof AEMessage === "undefined") {
               }
               this.SetMessageKey = function(aKey) {}
               this.OnStopCopy = function(aStatus) {
-                // console.log("setTimeout");
+                // console.debug("setTimeout");
                 // not yet proofed
                 setTimeout(function() {
                   aewindow.currentTask.selectNextMessage()
@@ -1203,7 +1204,7 @@ if (typeof AEMessage === "undefined") {
               .msgWindow, false, false, dCopyListener, true);
             break;
           }
-          // console.log("setTimeout");
+          // console.debug("setTimeout");
           // seems to be working okay
           setTimeout(function() {
             aewindow.currentTask.selectNextMessage()

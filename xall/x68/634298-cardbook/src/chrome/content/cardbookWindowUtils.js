@@ -2165,8 +2165,8 @@ if ("undefined" == typeof(cardbookWindowUtils)) {
 			
 			var dateFormat = cardbookRepository.getDateFormat(aDirPrefId, aVersion);
 			var myFormattedDate = cardbookRepository.cardbookDates.getFormattedDateForDateString(aEventType[0], dateFormat, cardbookRepository.dateDisplayedFormat);
-			var myDate = cardbookRepository.cardbookDates.convertDateStringToDate(aEventType[0], dateFormat);
-			var myDateString = cardbookRepository.cardbookDates.convertDateToDateString(myDate, "4.0");
+			var myDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(aEventType[0], dateFormat);
+			var myDateString = cardbookRepository.cardbookDates.convertUTCDateToDateString(myDate, "4.0");
 			var myValueTextbox1 = cardbookElementTools.addLabel(aRow, aType + '_' + aIndex + '_typeBox', myFormattedDate, null, {readonly: 'true',
 												fieldValue: myDateString + "::" + aEventType[1] + "::" + aEventType[2]});
 	

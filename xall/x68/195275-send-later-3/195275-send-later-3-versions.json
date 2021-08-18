@@ -1,5 +1,59 @@
 [
     {
+        "id": 2476131,
+        "channel": "listed",
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.2.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2476131",
+        "files": [
+            {
+                "id": 1019291,
+                "created": "2021-07-24T20:56:37Z",
+                "hash": "sha256:222d54d94f2f0403b52fb13cfaa03b01b04ba44b5b40a183750f26005a8924e3",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 495964,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019291/send_later-8.9.5-tb.xpi?src=",
+                "permissions": [
+                    "storage",
+                    "accountsRead",
+                    "accountsFolders",
+                    "menus",
+                    "menus.overrideContext",
+                    "activeTab",
+                    "messagesMove",
+                    "messagesRead",
+                    "compose",
+                    "notifications"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "text": {
+                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "Fix for compatibility with Thunderbird 91"
+        },
+        "reviewed": null,
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/8.9.5",
+        "version": "8.9.5"
+    },
+    {
         "id": 2475861,
         "channel": "listed",
         "compatibility": {
@@ -2288,52 +2342,5 @@
         "reviewed": null,
         "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.4.1",
         "version": "6.4.1"
-    },
-    {
-        "id": 2468748,
-        "channel": "listed",
-        "compatibility": {
-            "seamonkey": {
-                "max": "2.53.*",
-                "min": "2.17"
-            },
-            "thunderbird": {
-                "max": "60.*",
-                "min": "25.0a1"
-            }
-        },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/send-later-3/versions/2468748",
-        "files": [
-            {
-                "id": 1011979,
-                "created": "2018-10-20T14:09:48Z",
-                "hash": "sha256:4cc0abadf7dbd1250fefee34b571ee93be01b9a9378323f4ef554c3a1b5d2279",
-                "is_restart_required": true,
-                "is_webextension": false,
-                "is_mozilla_signed_extension": false,
-                "platform": "all",
-                "size": 456295,
-                "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1011979/send_later-6.4.0-sm+tb.xpi?src=",
-                "permissions": []
-            }
-        ],
-        "is_strict_compatibility_enabled": true,
-        "license": {
-            "id": 3338,
-            "name": {
-                "en-US": "Mozilla Public License, version 2.0"
-            },
-            "text": {
-                "en-US": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a rel=\"nofollow\" href=\"https://outgoing.prod.mozaws.net/v1/cfa1520767b4bc45590e23d48de7bec652c237ee0ad206608dfa16f2a0e21c8d/http%3A//mozilla.org/MPL/2.0/\">http://mozilla.org/MPL/2.0/</a>."
-            },
-            "url": "http://www.mozilla.org/MPL/2.0/"
-        },
-        "release_notes": {
-            "en-US": "Bump compatibility in XPI to make installation more reliable.\n\nUpdate the first day of the calendar week for some translations.\n\nAdd some Romanian translation strings."
-        },
-        "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/send-later-3/versions/6.4.0",
-        "version": "6.4.0"
     }
 ]

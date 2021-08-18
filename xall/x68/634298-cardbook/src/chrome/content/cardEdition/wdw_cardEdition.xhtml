@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookMain.css" type="text/css"?>
+<?xml-stylesheet href="chrome://cardbook/content/skin/cardbookEdition.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookAddressBooks.css" type="text/css"?>
 <?xml-stylesheet href="chrome://cardbook/content/skin/cardbookEmpty.css" type="text/css"?>
 <!-- for the icons of the CardBook menus -->
@@ -52,6 +53,7 @@
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookActions.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardbookCardParser.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_imageEdition.js"/>
+	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_templateEdition.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_cardEdition.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/cardEdition/wdw_cardEditionEvents.js"/>
 	<script type="application/x-javascript" src="chrome://cardbook/content/scripts/i18n.js"/>
@@ -520,8 +522,10 @@
 			<!-- notificationbox will be added here lazily. -->
 		</vbox>
 		<spacer flex="1"/>
-		<button id="previousEditionLabel" label="__MSG_previousEditionLabel__" accesskey="__MSG_previousEditionAccesskey__" oncommand="wdw_cardEdition.changeContact('previous');"/>
-		<button id="nextEditionLabel" label="__MSG_nextEditionLabel__" accesskey="__MSG_nextEditionAccesskey__" oncommand="wdw_cardEdition.changeContact('next');"/>
+		<!-- <button id="openTemplateButton" tooltiptext="__MSG_loadTemplateLabel__" oncommand="wdw_templateEdition.loadTemplate();"/> -->
+		<!-- <button id="saveTemplateButton" tooltiptext="__MSG_saveTemplateLabel__" oncommand="wdw_templateEdition.saveTemplate();"/> -->
+		<button id="previousEditButton" tooltiptext="__MSG_previousEditButton.tooltip__" oncommand="wdw_cardEdition.changeContact('previous');"/>
+		<button id="nextEditButton" tooltiptext="__MSG_nextEditButton.tooltip__" oncommand="wdw_cardEdition.changeContact('next');"/>
 		<menulist id="fieldsMenulist" flex="1">
 			<menupopup id="fieldsMenupopup"
 				onpopuphiding="wdw_cardEdition.changeEditionFields();return event.explicitOriginalTarget.localName != 'menuitem'" ignorekeys="true">

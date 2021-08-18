@@ -37,10 +37,36 @@ var manage_emails = {
   lastContains:"",
   lastUnder:"",
   lastFolder:"",
+  folderBeforeGo: "",
   lastRule:"",
+  isMailTab: false,
   WL: {},
   factory_registered: false,
 
+ ADDON_ID: "nostalgy@opto.one",
+ 
+  notifyBackground: function (data) {
+    if (this.ADDON_ID == "") {
+      throw new Error("notifyTools: ADDON_ID is empty!");
+    }
+    return new Promise((resolve) => {
+      Services.obs.notifyObservers(
+        { data, resolve },
+        "NotifyBackgroundObserver",
+        this.ADDON_ID
+      );
+    });
+  },
+ 
+statusbarIconSRC: 'resource://nostalgy/skin/iconmonstr-copy-14-16.png',
+
+  showHelpFile: function() { 
+    manage_emails.notifyBackground({command: "showHelp"});//.then((data) => {
+    //  console.log(data);
+    //});
+ },
+ 
+ 
   //propose rule from last copy/move
   convertToRule: function (mode) {
     this.lastRule = { sender:true, recipients:true, subject:false,
@@ -58,7 +84,7 @@ mode, this,null);
   },
 
   applyRule: function applyRule(rule) {
-     console.log("applyrule");// see edit.prefs.js
+  //   console.log("applyrule");// see edit.prefs.js
 
   },
   getCurrentFolder: function getCurrentFolder() {
@@ -76,7 +102,9 @@ mode, this,null);
       mainWindow.gFolderTreeView.selectFolder(this.NostalgyFindFolderExact(folder), true);
       mainWindow.gFolderTreeView.mode = saved_mode;
      }
-     } catch (ex) { console.log("Ex: " + ex); }
+     } catch (ex) { 
+       //console.log("Ex: " + ex);
+       }
 
  //     try {
   /*
@@ -125,8 +153,8 @@ mode, this,null);
            // let filterValues= mainWindow.QuickFilterBarMuxer.activeFilterer.filterValues.entries();
            // let noSelected= filterValues["results"];//mainWindow.QuickFilterBarMuxer.activeFilterer.filterValues[results];
            // console.log(noSelected);
-            console.log(mainWindow.gFolderDisplay.view.dbView.rowCount);
-            console.log(mainWindow.QuickFilterBarMuxer.activeFilterer);
+  //          console.log(mainWindow.gFolderDisplay.view.dbView.rowCount);
+  //          console.log(mainWindow.QuickFilterBarMuxer.activeFilterer);
            
            function selectMove()
            {
@@ -134,7 +162,7 @@ mode, this,null);
              let iC=0;
              //for (iC=0;iC<noSelected;iC++)  mainWindow.gFolderDisplay.selectViewIndex(iC);//mainWindow.gFolderDisplay.tree.view.selection.select(iC); ;
   //let mainWindow1=Services.wm.getMostRecentWindow("mail:3pane");
-   console.log(mainWindow.QuickFilterBarMuxer.activeFilterer.filterValues.results);
+  // console.log(mainWindow.QuickFilterBarMuxer.activeFilterer.filterValues.results);
    mainWindow.gFolderDisplay.treeSelection.clearSelection();
    mainWindow.gFolderDisplay.treeSelection.rangedSelect(0, noSelected-1, true);
   // mainWindow.gFolderDisplay.treeSelection.rangedSelect(1, 1, true);

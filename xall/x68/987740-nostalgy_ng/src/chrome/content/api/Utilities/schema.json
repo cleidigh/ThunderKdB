@@ -3,6 +3,20 @@
     "namespace": "Utilities",
     "functions": [ 
       {
+        "name": "isMailTab",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "isMailTab",
+            "type": "boolean",
+            "description": "is activated Tab a mailTab?"
+          }
+        ]
+      },
+
+ 
+      {
         "name": "logDebug",
         "type": "function",
         "async": true,
@@ -16,6 +30,7 @@
       },
 
  
+
 
       {
         "name": "showXhtmlPage",

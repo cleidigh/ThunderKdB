@@ -90,6 +90,13 @@ shortcuts to move/copy the message to this folder.</label>
   <button label="Move down" accesskey="W" oncommand="NostalgyDoMoveDown();"/>
   <separator orient="vertical"/>
   <button label="Export rules" oncommand="NostalgyExportRules();"/>
+
+  <!---
+  <html:a href="mailto:" id = "emailrulelink">
+    <button label="Email rules" id = "emailrule"/>
+	</html:a>
+
+  -->
   <button label="Import rules" oncommand="NostalgyImportRules();"/>
   </hbox>
  </vbox>
@@ -139,11 +146,29 @@ shortcuts to move/copy the message to this folder.</label>
   <radio value="Copy" label="Copy"/>
   <radio value="SaveGo" label="Save+Go"/>
   </radiogroup>
-  <html:input style="width:600px" type="autocomplete" id="folderselect"
-           autocompletesearch="nostalgy-autocomplete"
-           completeselectedindex="true"
-           nostalgyfolderbox="NostalgySelectFolder();"/>
-  <button label="Create"  oncommand="NostalgySelectFolder();"/>
+  
+           <html:input is="autocomplete-input" id="folderselect"
+                            type="text"
+                            
+                            disableonsend="true"
+                            autocompletesearch="nostalgy-autocomplete"
+                            autocompletesearchparam="{}"
+                            timeout="300"
+                            maxrows="25"
+                            completedefaultindex="true"
+                            forcecomplete="true"
+                            completeselectedindex="true"
+                            minresultsforpopup="2"
+                            ignoreblurwhilesearching="true"
+                            nostalgyfolderbox="NostalgySelectFolderForKey();"
+                     
+                          
+                            recipienttype="addr_to"
+                            size="70"     />
+
+ 
+ 
+           <button label="Create"  oncommand="NostalgySelectFolder();"/>
   </hbox>
  </groupbox>
  </tabpanel>

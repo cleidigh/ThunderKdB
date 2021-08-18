@@ -428,12 +428,19 @@ if (typeof AttachmentFileMaker === "undefined") {
     }
 
     count = "" + count;
+
+    // aedump("aFileName: "+aFileName+"\n");
+    // lift the slashes replacement a few lines up and replace forward 
+    // and backslash on all platforms to prevent creating subfolders
+    aFileName = aFileName.replace(/[\/\\]+/g, "-");    /*  / \  = -  */
+    // aedump("aFileName: "+aFileName+"\n");
+
     if (navigator.appVersion.indexOf("Windows") !== -1) {
-      aFileName = aFileName.replace(/[\"]+/g, "'") /*  " = '      */
-        .replace(/[\*\:\?\t\v]+/g, " ") /*  * : ? tab vtab =   */
-        .replace(/[\<]+/g, "(") /*  < = (      */
-        .replace(/[\>]+/g, ")") /*  > = )      */
-        .replace(/[\/\|]+/g, "_"); /*  /| = _         */
+      aFileName = aFileName.replace(/[\"]+/g, "'") /*  "  = '  */
+        .replace(/[\*\:\?\t\v]+/g, " ")            /*  * : ? tab vtab  =   */
+        .replace(/[\|]+/g, "-")                    /*  |  = -  */
+        .replace(/[\<]+/g, "(")                    /*  <  = (  */
+        .replace(/[\>]+/g, ")");                   /*  >  = )  */
       var comp = (folder === null || folder.path === null ? "" : folder.path) +
         "\\" + aFileName;
       comp = comp.replace(/\\/g, "");
@@ -469,7 +476,7 @@ if (typeof AttachmentFileMaker === "undefined") {
       aFileName = aFileName.replace(/[\. ]+\\/g, "\\");
     } else {
       if (navigator.appVersion.indexOf("Macintosh") !== -1) aFileName =
-        aFileName.replace(/[\:]+/g, "_"); /*   : = _   */
+        aFileName.replace(/[\:]+/g, "-"); /*   : = -   */
       aFileName = aFileName.replace(/%/g, count).replace(/#extpart#/g, extpart
         .replace(this.tokenregexs.dollars, "$$$$"));
     }

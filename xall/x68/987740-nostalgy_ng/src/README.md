@@ -39,6 +39,8 @@ Installation
 The easiest way to install Nostalgy++ is through  Thunderbird`s addon page. It
 will automatically update itself when new versions are released.
 
+Test version and bug fixes are available on github at https://github.com/opto/nostalgy-xpi/releases
+
 
 
 Authors
@@ -49,5 +51,5 @@ Alain Frisch is the original author.
 Many users contributed patches, in particular to adapt Nostalgy to run
 with newer versions of Thunderbird.  They are credited in the [CHANGES.txt](CHANGES.txt) file.
 
-The update to TB 68 and TB 78 was prepared by Klaus Buecher/opto.
+The update to TB 68 and TB 78 - 86 was prepared by Klaus Buecher/opto.
 

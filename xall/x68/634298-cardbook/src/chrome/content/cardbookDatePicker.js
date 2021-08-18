@@ -97,8 +97,8 @@ customElements.whenDefined("menulist-editable").then(() => {
 		
 			set value(val) {
 				this._inputBoxValue = val;
-				let myDate = cardbookRepository.cardbookDates.convertDateStringToDate(val, this.dateformat);
-				if (myDate != "WRONGDATE" && myDate.getFullYear() != cardbookRepository.cardbookDates.defaultYear) {
+				let myDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(val, this.dateformat);
+				if (myDate != "WRONGDATE" && myDate.getUTCFullYear() != cardbookRepository.cardbookDates.defaultYear) {
 					this._minimonthValue = myDate;
 				} else {
 					this._minimonthValue = new Date();

@@ -44,20 +44,20 @@ var aecButtonStatus = {
       if ((gFolderDisplay.selectedCount < 1) || 
           (gFolderDisplay.selectedMessageIsFeed) ||    // disable in case of rss feeds
           (gFolderDisplay.selectedMessageIsNews)) {    // disable in case of newsgroups
-        // console.log("AEC selected Message is RSS or News or gFolderDisplay.selectedCount < 1");
+        // console.debug("AEC selected Message is RSS or News or gFolderDisplay.selectedCount < 1");
         aecButtonStatus.disableButtons();
       } else {
         aecButtonStatus.enableButtons();
       }
     } catch (e) {
-      // console.log("AEC catch error");
+      // console.debug("AEC catch error");
       aecButtonStatus.enableButtons();
     }
   },
 
   enableButtons: function() {
-    // console.log("aec ----------------");
-    // console.log("aec enableButtons");
+    // console.debug("aec ----------------");
+    // console.debug("aec enableButtons");
 
     let aecToolbarButton = document.getElementById("aec-toolbarButton");
     if (aecToolbarButton)
@@ -65,8 +65,8 @@ var aecButtonStatus = {
   },
 
   disableButtons: function() {
-    // console.log("aec ----------------");
-    // console.log("aec disableButtons");
+    // console.debug("aec ----------------");
+    // console.debug("aec disableButtons");
 
     let aecToolbarButton = document.getElementById("aec-toolbarButton");
     if (aecToolbarButton)

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 72773,
+    "average_daily_users": 64076,
     "categories": {
         "thunderbird": [
             "contacts",
@@ -19,27 +19,30 @@
     "contributions_url": "https://www.paypal.me/CardBook/10eur",
     "created": "2015-07-21T05:46:14Z",
     "current_version": {
-        "id": 2475936,
+        "id": 2476286,
         "compatibility": {
             "thunderbird": {
-                "max": "79.0",
-                "min": "78.0a1"
+                "max": "*",
+                "min": "91.0a1"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2475936",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/cardbook/versions/2476286",
         "files": [
             {
-                "id": 1019096,
-                "created": "2021-05-28T10:27:13Z",
-                "hash": "sha256:339bcecea52045392699ff44c193c43f38691d93ea7df9396c524419cc302232",
+                "id": 1019446,
+                "created": "2021-08-14T21:49:57Z",
+                "hash": "sha256:f9b8f3a416c687d3bd2aa4d9a294a45029ac2799e1702a01e702b380dbceca92",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 1052949,
+                "size": 1077854,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019096/cardbook-59.5-tb.xpi?src=",
-                "permissions": []
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019446/cardbook-70.9-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "accountsRead"
+                ]
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -52,11 +55,11 @@
         },
         "release_notes": {
             "fr": "",
-            "en-US": "- fix for multiples drag and drop accross AB"
+            "en-US": "- fix for endless Google sync\n- fix for sending email\n- fix for printing"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/59.5",
-        "version": "59.5"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/versions/70.9",
+        "version": "70.9"
     },
     "default_locale": "en-US",
     "description": {
@@ -129,7 +132,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2021-05-28T18:00:32Z",
+    "last_updated": "2021-08-15T17:39:13Z",
     "name": {
         "el": "Επαφές (CardBook)",
         "vi": "CardBook",
@@ -633,10 +636,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.3548,
-        "count": 343,
-        "average": 4.3586,
-        "text_count": 343
+        "bayesian_average": 4.3589,
+        "count": 353,
+        "average": 4.3626,
+        "text_count": 353
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/cardbook/reviews/",
     "requires_payment": false,
@@ -738,17 +741,15 @@
     "weekly_downloads": 3717,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp69plus": true,
+            "comp68": true,
             "comp78plus": true,
-            "comp61plus": true,
             "comp78pv": true,
-            "comp78pv_date": "2020-10-02T15:11:36Z",
-            "comp78pv_version": "52.3",
+            "comp78pv_date": "2020-11-19T07:24:01Z",
+            "comp78pv_version": "54.0",
             "comp78pv_vmin": "78.0a1",
-            "comp78pv_vmax": "79.0",
-            "comp68pv": true,
-            "comp68pv_date": "2020-10-08T07:49:52Z"
+            "comp78pv_vmax": "79.0"
         }
     }
 }

@@ -947,11 +947,19 @@ class Calendar extends (cal && cal.provider.BaseClass) {
         let [[rule]] = splitRecurrenceRules(aNewEvent.parentItem.recurrenceInfo);
         newEvent.index = rule.QueryInterface(Ci.calIRecurrenceRule).getOccurrences(aNewEvent.parentItem.recurrenceStartDate, aNewEvent.parentItem.recurrenceStartDate, aNewEvent.recurrenceId, 0, /* COMPAT for TB 68 (bug 1602424) */{}).length + 1;
       }
-      // Check whether we accepted or declined an invitation.
-      let oldAttendee = this.getInvitedAttendee(aOldEvent);
-      let newAttendee = this.getInvitedAttendee(aNewEvent);
-      if (this.isInvitation(aOldEvent) && this.isInvitation(aNewEvent) && oldAttendee.participationStatus != newAttendee.participationStatus) {
-        await this.callExtension("UpdateParticipation", { id: newEvent.itemid, uid: aNewEvent.id, participation: newAttendee.participationStatus, isRecurrence: aNewEvent.recurrenceId != null });
+      if (this.isInvitation(aOldEvent) && this.isInvitation(aNewEvent)) {
+        // Check whether we accepted or declined an invitation.
+        let oldAttendee = this.getInvitedAttendee(aOldEvent);
+        let newAttendee = this.getInvitedAttendee(aNewEvent);
+        if (oldAttendee.participationStatus != newAttendee.participationStatus) {
+          await this.callExtension("UpdateParticipation", { id: newEvent.itemid, uid: aNewEvent.id, participation: newAttendee.participationStatus, isRecurrence: aNewEvent.recurrenceId != null });
+        }
+        // Exchange only allows to update certain properties and fails, if we update everything.
+        // Thus, we only update the reminder of an invitation, because
+        // Lightning's UI only allows the reminder to be changed.)
+        let { itemid, reminder, index } = newEvent;
+        oldEvent = { itemid, reminder: oldEvent.reminder };
+        newEvent = { itemid, reminder, index };
       }
       // Check whether anything changed that we support.
       // This is just an optimisation so it doesn't have to be 100% perfect.

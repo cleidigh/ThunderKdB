@@ -341,13 +341,13 @@ function overlayListener(aDocument) {
       // Block HTTP requests from the edited document.
       let eventDialogRequestObserver = {
         observe(aSubject, aTopic, aData) {
-          if (aTopic == "http-on-modify-request" && aSubject instanceof Ci.nsIChannel && aSubject.loadInfo && aSubject.loadInfo.loadingDocument == editorElement.contentDocument) {
+          if (aTopic == "http-on-modify-request" && aSubject instanceof Ci.nsIChannel && aSubject.loadInfo && aSubject.loadInfo.loadingDocument && aSubject.loadInfo.loadingDocument == editorElement.contentDocument) {
             aSubject.cancel(Cr.NS_ERROR_ABORT);
           }
         },
       };
       Services.obs.addObserver(eventDialogRequestObserver, "http-on-modify-request");
-      aDocument.addEventListener("unload", function() {
+      aDocument.defaultView.addEventListener("unload", function() {
         Services.obs.removeObserver(eventDialogRequestObserver, "http-on-modify-request");
       });
       let loadDialog = aDocument.defaultView.loadDialog;
@@ -371,30 +371,12 @@ function overlayListener(aDocument) {
       aDocument.defaultView.saveDialog = function(aItem) {
         saveDialog(aItem);
         let editor = editorElement.getHTMLEditor(editorElement.contentWindow);
-        let mode = Ci.nsIDocumentEncoder.OutputFormatted | Ci.nsIDocumentEncoder.OutputWrap | Ci.nsIDocumentEncoder.OutputLFLineBreak | Ci.nsIDocumentEncoder.OutputNoScriptContent | Ci.nsIDocumentEncoder.OutputNoFramesContent | Ci.nsIDocumentEncoder.OutputBodyOnly;
-        aItem.setProperty("DESCRIPTION", editor.outputToString("text/plain", mode));
-        aItem.setProperty("X-ALT-DESC", editor.outputToString("text/html", mode));
-        aItem.setPropertyParameter("X-ALT-DESC", "FMTTYPE", "text/html");
-      }
-      aDocument.defaultView.isItemChanged = function() {
-        let newItem = aDocument.defaultView.saveItem();
-        let oldItem = aDocument.defaultView.calendarItem;
-
-        // Special-case the description in case of line ending changes.
-        let editor = editorElement.getHTMLEditor(editorElement.contentWindow);
-        if (!editor.documentModified) {
-          newItem.setProperty("DESCRIPTION", oldItem.getProperty("DESCRIPTION"));
-          let descriptionHTML = getDescriptionHTML(oldItem);
-          newItem.setProperty("X-ALT-DESC", descriptionHTML);
-          if (descriptionHTML) {
-            newItem.setPropertyParameter("X-ALT-DESC", "FMTTYPE", "text/html");
-          }
+        if (editor.documentModified) {
+          let mode = Ci.nsIDocumentEncoder.OutputFormatted | Ci.nsIDocumentEncoder.OutputWrap | Ci.nsIDocumentEncoder.OutputLFLineBreak | Ci.nsIDocumentEncoder.OutputNoScriptContent | Ci.nsIDocumentEncoder.OutputNoFramesContent | Ci.nsIDocumentEncoder.OutputBodyOnly;
+          aItem.setProperty("DESCRIPTION", editor.outputToString("text/plain", mode));
+          aItem.setProperty("X-ALT-DESC", editor.outputToString("text/html", mode));
+          aItem.setPropertyParameter("X-ALT-DESC", "FMTTYPE", "text/html");
         }
-
-        if (newItem.calendar.id == oldItem.calendar.id && cal.item.compareContent(newItem, oldItem)) {
-          return false;
-        }
-        return true;
       }
     }
   } catch (ex) {

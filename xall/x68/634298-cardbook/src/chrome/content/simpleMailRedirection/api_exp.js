@@ -70,7 +70,7 @@ function lists(id) {
       let card = cardbookRepository.cardbookCards[j];
       if (card.isAList) {
         let bcolor=cardbookRepository.cardbookNodeColors[card.categories[0]]
-             ??cardbookRepository.cardbookPreferences.getColor(card.dirPrefId);
+             cardbookRepository.cardbookPreferences.getColor(card.dirPrefId);
         let fcolor=cardbookRepository.getTextColorFromBackgroundColor(bcolor);
         lists.push({name: card.fn, id: card.dirPrefId+'::'+card.uid, bcolor: bcolor, fcolor: fcolor});
       }
@@ -93,7 +93,7 @@ function contacts(search) {
         if (j.indexOf(searchString) >= 0 || searchString == "") {
           for (let card of searchArray[dirPrefId][j]) {
             let bcolor=cardbookRepository.cardbookNodeColors[card.categories[0]]
-                ??cardbookRepository.cardbookPreferences.getColor(card.dirPrefId);
+                cardbookRepository.cardbookPreferences.getColor(card.dirPrefId);
             let fcolor=cardbookRepository.getTextColorFromBackgroundColor(bcolor);
             card.bcolor=bcolor;
             card.fcolor=fcolor;

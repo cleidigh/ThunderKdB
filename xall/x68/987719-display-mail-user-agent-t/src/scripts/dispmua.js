@@ -50,7 +50,8 @@ browser.messageDisplay.onMessageDisplayed.addListener((tabId, message) => {
     Object.keys(dispMUA.headers).forEach(function (key) {
       for (let i = 0; i < dispMUA.headers[key].length; i++) {
         if (dispMUA.headers[key][i].length > 0 && !ascii.test(dispMUA.headers[key][i])) {
-          dispMUA.headers[key][i] = mheader + btoa(unescape(encodeURIComponent(decodeURIComponent(escape(dispMUA.headers[key][i]))))) + "?=";
+          //dispMUA.headers[key][i] = mheader + btoa(unescape(encodeURIComponent(decodeURIComponent(escape(dispMUA.headers[key][i]))))) + "?=";
+          dispMUA.headers[key][i] = mheader + btoa(unescape(encodeURIComponent(dispMUA.headers[key][i]))) + "?=";
         }
       }
     });
@@ -87,7 +88,7 @@ browser.messageDisplay.onMessageDisplayed.addListener((tabId, message) => {
           }
           browser.dispmuaApi.insertBefore("", dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, target);
         } else {
-          browser.dispmuaApi.insertBefore(browser.extension.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, target);
+          browser.dispmuaApi.insertBefore(browser.runtime.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, target);
         }
         browser.dispmuaApi.move(iId, target);
       }
@@ -99,7 +100,7 @@ browser.messageDisplay.onMessageDisplayed.addListener((tabId, message) => {
 browser.windows.onCreated.addListener((window) => {
   if (window.type == "messageDisplay") {
     //browser.dispmuaApi.create(iId, "otherActionsBox");
-    //browser.dispmuaApi.insertBefore(browser.extension.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, "otherActionsBox");
+    //browser.dispmuaApi.insertBefore(browser.runtime.getURL(""), dispMUA.Info["PATH"]+dispMUA.Info["ICON"], dispMUA.Info["STRING"], iId, "otherActionsBox");
     console.log("new messageDisplay created.")
   }
 });
@@ -115,7 +116,7 @@ function connected(p) {
         port.postMessage({
           "cmd": m.command,
           "mid": dispMUA.Info["messageId"],
-          "eid": browser.extension.getURL(""),
+          "eid": browser.runtime.getURL(""),
           "iid": dispMUA.identityId,
           "path": dispMUA.Info["PATH"],
           "icon": dispMUA.Info["ICON"],

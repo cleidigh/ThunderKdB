@@ -9,7 +9,7 @@
             "picture_url": "https://addons.thunderbird.net/user-media/userpics/0/9/9020.png?modified=1479819670"
         }
     ],
-    "average_daily_users": 85548,
+    "average_daily_users": 75172,
     "categories": {
         "thunderbird": [
             "message-and-news-reading"
@@ -18,26 +18,26 @@
     "contributions_url": "https://paypal.me/eyalroz",
     "created": "2007-03-13T14:38:31Z",
     "current_version": {
-        "id": 2474861,
+        "id": 2476199,
         "compatibility": {
             "thunderbird": {
-                "max": "78.*",
+                "max": "*",
                 "min": "68.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/removedupes/versions/2474861",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/removedupes/versions/2476199",
         "files": [
             {
-                "id": 1018023,
-                "created": "2020-11-26T23:42:34Z",
-                "hash": "sha256:61183fe3b8d8a15f3b7f14c78a6de3c5cb29d843dae396bb2e516f6a934c2c6d",
+                "id": 1019359,
+                "created": "2021-08-09T10:39:59Z",
+                "hash": "sha256:076a58be90e7c4d1b797b8f9197d08463326f44b976342bea688fae4226381d1",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 130267,
+                "size": 133374,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018023/remove_duplicate_messages-0.5.1b2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019359/remove_duplicate_messages-0.5.2b4-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -75,11 +75,11 @@
             "url": "http://www.mozilla.org/MPL/MPL-1.1.html"
         },
         "release_notes": {
-            "en-US": "* Changed the review dialog name from \"Duplicate message deletion\" to \"Duplicate message review\" to make it clear not everything in the dialog was getting deleted.\n* **Fix**: Address stripping &amp; sorting no longer fails with a \"too much recursion\" error.\n\nInternal changes (no user visibility):\n\n* Build script rewritten"
+            "en-US": "Changes since v0.5.1:\n\n* Updated the extension loader (\"Window Listener\") API to v1.5.6.\n* Build script changes.\n* Review dialog title change.\n* Dropped some internal checks relevant for unsupported, older TB versions.\n* Bug fix: Email address stripping no longer fails when some characters need to be escaped.\n* Thunderbird 91 Compatibility:\n\t* Fixed #56: No longer failing to recurse subfolders in dupe search with TB 86 and later.\n\t* Fixed #55: No longer failing when trying to move messages to Trash with TB 91.\n\t* Other minor internal changes."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/versions/0.5.1b2",
-        "version": "0.5.1b2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/versions/0.5.2b4",
+        "version": "0.5.2b4"
     },
     "default_locale": "en-US",
     "description": {
@@ -112,7 +112,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-11-27T04:24:53Z",
+    "last_updated": "2021-08-09T15:28:19Z",
     "name": {
         "fr": "Supprimer les messages en double (Alternatif)",
         "de": "Entfernung doppelter Nachrichten (Alternative)",
@@ -139,10 +139,10 @@
     ],
     "public_stats": true,
     "ratings": {
-        "bayesian_average": 4.07088,
-        "count": 251,
-        "average": 4.0757,
-        "text_count": 251
+        "bayesian_average": 4.06585,
+        "count": 255,
+        "average": 4.0706,
+        "text_count": 255
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/removedupes/reviews/",
     "requires_payment": false,
@@ -176,11 +176,9 @@
     "weekly_downloads": 1433,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
             "comp68": true,
-            "comp69plus": true,
-            "comp78plus": true,
-            "comp61plus": true,
             "comp60pv": true,
             "comp60pv_date": "2018-04-04T11:52:43Z"
         }

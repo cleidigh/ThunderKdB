@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5052,
+    "average_daily_users": 5347,
     "categories": {
         "thunderbird": [
             "chat",
@@ -88,7 +88,8 @@
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>Please download from Thunderbird's add-on tab, from Firefox you get an old version!</strong>\n\nVersion 1.10 allows to \n- select identity to send messages from\n- select CC and BCC\n- save redirected messages to the sent folder\nVersion 1.12 allows to\n- select maillists\n- zoom the window (CTRL/+, CTRL/- and CTRL/0)\n- use CTRL/Enter for 'Send'"
+        "en-US": "<strong>Please download from Thunderbird's add-on tab, from Firefox you get an old version!</strong>\n\nThis AddOn implements redirect as defined in <a rel=\"nofollow\" href=\"https://datatracker.ietf.org/doc/html/rfc5322#section-3.6.6\">RFC5322, Section 3.6.6</a>.\nThunderbird 91 introduces it's own 'Redirect' which works quite differently. It's more a\n'Forward' but without quoting the original mail.",
+        "de": "Bitte aus Thunderbird's Add-ons Einstellungen herunterladen, aus Firefox heraus bekommt man u. U. eine veraltete Version!\n\nDieses AddOn implementiert das Umleiten gemäß <a rel=\"nofollow\" href=\"https://datatracker.ietf.org/doc/html/rfc5322#section-3.6.6\">RFC5322, Abschnitt 3.6.6</a>.\nDie in Thunderbird 91 neu eingeführte Funktion 'Umleiten' funktioniert völlig anders\nund ist eher ein Weiterleiten ohne die Originalmail als Zitat zu markieren."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-mail-redirection/edit",
@@ -175,10 +176,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.61512,
-        "count": 14,
-        "average": 4.7143,
-        "text_count": 14
+        "bayesian_average": 4.60093,
+        "count": 16,
+        "average": 4.6875,
+        "text_count": 16
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-mail-redirection/reviews/",
     "requires_payment": false,

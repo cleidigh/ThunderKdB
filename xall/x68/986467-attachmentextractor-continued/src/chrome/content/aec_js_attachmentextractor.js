@@ -135,7 +135,7 @@ if (typeof AttachmentExtractor === "undefined") {
       }
     }
 
-    //aedump("folder: "+folder);
+    aedump("folder: "+folder+"\n");
     if (folder) this.startAttachmentextraction(folder, messages, fnp, false,
       false);
   };
@@ -424,7 +424,7 @@ if (typeof AttachmentExtractor === "undefined") {
   AttachmentExtractor.prototype.getDefaultSaveFolder = function() {
     aedump('{function:AttachmentExtractor.getDefaultSaveFolder}\n',2);
     if (this.prefs.hasUserValue("defaultsavepath")) {
-      return this.prefs.get("defaultsavepath");
+      return this.prefs.getFile("defaultsavepath");
     } else {
       return this.getSaveFolder("defaultsavepath", true);
     }

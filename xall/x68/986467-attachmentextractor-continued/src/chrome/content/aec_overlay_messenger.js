@@ -654,6 +654,7 @@ function onLoad(activatedWhileWindowOpen) {
   `,
   ["chrome://attachmentextractor_cont/locale/attachmentextractor.dtd","chrome://messenger/locale/messenger.dtd"]);
 
+  window.attachmentextractor.init();
   window.aecButtonStatus.startup();
   window.aecMenuItemStatus.startup();
 

@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 5151,
+    "average_daily_users": 5933,
     "categories": {
         "thunderbird": [
             "importexport",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "created": "2019-01-01T18:38:14Z",
     "current_version": {
-        "id": 2475908,
+        "id": 2476194,
         "compatibility": {
             "thunderbird": {
                 "max": "87.0",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2475908",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/versions/2476194",
         "files": [
             {
-                "id": 1019068,
-                "created": "2021-05-19T10:49:35Z",
-                "hash": "sha256:9b266c7874cc0aa4d0052a24dce00a947dae4d1b09d0f3ccac33e2adffc585a6",
+                "id": 1019354,
+                "created": "2021-08-08T15:39:44Z",
+                "hash": "sha256:69c081acda250c579025e7bb7a5dc0711aac0caf1e0d2c935150fd60ffe86848",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 228180,
+                "size": 229477,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019068/attachmentextractor_continued-3.0-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019354/attachmentextractor_continued-3.0.9-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,16 +51,16 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Updated Code for Thunderbird 78 compatibility\nRemoved some (still) none working features\n\n<b>Note:</b>\nThis addons <b>options dialog</b> has now to be opened in Thunderbird 78 from the Addons Manager Tab using the little menu at the <b>3-dot-icon</b> button:\n\n<a rel=\"nofollow\" href=\"https://support.mozilla.org/en-US/kb/thunderbird-add-ons-frequently-asked-questions#w_how-do-i-configure-add-ons\">https://support.mozilla.org/en-US/kb/thunderbird-add-ons-frequently-asked-questions#w_how-do-i-configure-add-ons</a>",
-            "de": "Versionsreihe 3.* des Add-ons ist für Thunderbird 78.* geeignet. Dazu wurde interner Code entsprechend überarbeitet. Außerdem wurden ein paar (schon lange) nicht korrekt funktionierende Funktionen aus dem Optionen-Dialog entfernt.\n\n<b>Hinweis:</b>\nDer Einstellungen-Dialog des Add-ons muss jetzt aus dem Add-ons-Manager heraus aufgerufen werden (also nicht mehr aus dem Extras-Menü). Im Add-on-Manager-Tab findet man die Einstellungen in Thunderbird 78 in einem kleinen Menü, wenn man im Add-on-Manager auf das 3-Punkt-Symbol bei dem Add-on klickt.\n\n<a rel=\"nofollow\" href=\"https://support.mozilla.org/de/kb/add-ons-faq#w_wie-konfigurieren-sie-add-ons\">https://support.mozilla.org/de/kb/add-ons-faq#w_wie-konfigurieren-sie-add-ons</a>"
+            "en-US": "Bugfixes and changes from 3.0 - 3.0.9:\n<ul><li>Update WL-API to 1.56 to have the wrench icon for addon options in addon manager and fix some errors in console due to WL-API</li><li>encoding of umlaut paths (when using default save path)</li><li>entry in most recent used folders</li><li>subfolders created due to slashes in filenames (reworked the slashes replacement in filenames, to still allow subfolder creation from the user defined filename patterns from up version 3.0.9 - the slashes will now only be replaced in the given attachment filenames itself completely.)</li><li>Register missing eventListener for DebugOnStart and AutoExtract</li></ul>",
+            "de": "Fehlerbehebungen und Änderungen von 3.0 bis 3.0.9:\n<ul><li>Update der WL-API auf 1.56 bietet jetzt das Werkzeug-Icon im Add-on-Manager, um die Add-on-Optionen aufzurufen, und behebt ein paar Fehlermeldungen in der Fehlerkonsole</li><li>Umlaute in Ordnernamen wurden falsch behandelt, wenn man in den Standardordner gespeichert hat</li><li>Eintrag in der Liste der zuletzt genutzten Ordner wurde in einem Szenario falsch erstellt</li><li>Unterordner wurden unerwünscht erstellt, wenn Slashes in Dateinamen vorhanden sind (Das Entfernen von \"Slashes\" und \"Backslashes\" wurde in Version 3.0.9 nochmals überarbeitet, sodass jetzt wieder automatisiert Unterordner aus den vom Anwender definierten Dateinamenmustern erstellt werden können. Die Slashes werden jetzt nur noch aus den Dateinamen der Dateianhänge konsequent entfernt.)</li><li>Durch den Umbau des Addons für Thunderbird 78 wurden notwendige eventListener for DebugOnStart und AutoExtract nicht registriert</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/3.0",
-        "version": "3.0"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/versions/3.0.9",
+        "version": "3.0.9"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "<strong>About version series:</strong>\n<ul><li>4.* will be intended for upcoming Thunderbird 91.*</li><li>3.* is intended for Thunderbird 78.*</li><li>2.* is intended for Thunderbird 68.*</li><li>1.5.* is intended for Thunderbird 60.*</li></ul>\n<strong>Warning:</strong>\nThis project should be regarded as inherently a work in progress. Most of the functionality is achieved by leveraging existing Thunderbird functionality in a more efficient way, so it should be safe. Some of the functions involve modifying your emails, but warnings are displayed as appropriate. \nIn summary, <strong>I take absolutely no responsibility of the actions of the add-on, either unintended or otherwise</strong>.\n\nThe source code of the add-on is open source and is available at <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/attachment-extractor-continued\"> GitLab </a>.\n\nThe translations available so far can be found on the <a rel=\"nofollow\" href=\"https://crowdin.com/project/attachmentextractor-continued\"> CrowdIn </a> platform."
+        "en-US": "<strong>About version series:</strong>\n<ul><li>4.* will be intended for upcoming Thunderbird 91.*</li><li>3.* is intended for Thunderbird 78.*</li><li>2.* is intended for Thunderbird 68.*</li><li>1.5.* is intended for Thunderbird 60.*</li></ul>\n<strong>Warning:</strong>\nThis project should be regarded as inherently a work in progress. Most of the functionality is achieved by leveraging existing Thunderbird functionality in a more efficient way, so it should be safe. Some of the functions involve modifying your emails, but warnings are displayed as appropriate. \nIn summary, <strong>I take absolutely no responsibility of the actions of the add-on, either unintended or otherwise</strong>.\n\nThe source code of the add-on is open source and is available at <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/attachment-extractor-continued\"> GitLab </a>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/attachmentextractor-continued/edit",
@@ -79,7 +79,7 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-05-20T18:34:59Z",
+    "last_updated": "2021-08-08T20:04:05Z",
     "name": {
         "en-US": "AttachmentExtractor Continued"
     },
@@ -393,10 +393,10 @@
     ],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 4.36702,
-        "count": 70,
-        "average": 4.3857,
-        "text_count": 70
+        "bayesian_average": 4.30795,
+        "count": 77,
+        "average": 4.3247,
+        "text_count": 77
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/attachmentextractor-continued/reviews/",
     "requires_payment": false,
@@ -422,15 +422,15 @@
             "comp69plus": true,
             "comp78plus": true,
             "comp61plus": true,
+            "comp68pv": true,
+            "comp68pv_date": "2019-11-23T20:35:38Z",
+            "comp60pv": true,
+            "comp60pv_date": "2019-10-30T14:00:06Z",
             "comp78pv": true,
             "comp78pv_date": "2021-05-17T19:47:03Z",
             "comp78pv_version": "3.0b3",
             "comp78pv_vmin": "78.0",
-            "comp78pv_vmax": "87.0",
-            "comp68pv": true,
-            "comp68pv_date": "2019-11-23T20:35:38Z",
-            "comp60pv": true,
-            "comp60pv_date": "2019-10-30T14:00:06Z"
+            "comp78pv_vmax": "87.0"
         }
     }
 }

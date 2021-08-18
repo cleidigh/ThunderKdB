@@ -1059,8 +1059,7 @@ var cardbookRepository = {
 					cardbookIDBCard.addCard(myDirPrefIdName, aCard);
 				}
 			}
-		}
-		catch(e) {
+		}	catch(e) {
 			cardbookRepository.cardbookLog.updateStatusProgressInformation("cardbookRepository.addCardToCache error : " + e, "Error");
 		}
 	},
@@ -1933,13 +1932,11 @@ var cardbookRepository = {
 					await cardbookRepository.addCardToAction(aActionId, "oldCards", myCard);
 				}
 				if (myDirPrefIdType === "DIRECTORY" || myDirPrefIdType === "LOCALDB" || myDirPrefIdType === "FILE") {
-					await cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aNewCard);
 					await cardbookRepository.removeCardFromRepository(myCard, true);
 					cardbookRepository.cardbookUtils.nullifyTagModification(aNewCard);
 					cardbookRepository.cardbookUtils.nullifyEtag(aNewCard);
 					await cardbookRepository.addCardToRepository(aNewCard, true);
 				} else {
-					await cardbookRepository.cardbookUtils.changeMediaFromFileToContent(aNewCard);
 					if (!aNewCard.created) {
 						cardbookRepository.cardbookUtils.addTagUpdated(aNewCard);
 					}
@@ -2295,6 +2292,7 @@ loader.loadSubScript("chrome://cardbook/content/cardbookTypes.jsm", cardbookRepo
 loader.loadSubScript("chrome://cardbook/content/cardbookDiscovery.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookPreferDisplayName.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/cardbookDates.jsm", cardbookRepository);
+loader.loadSubScript("chrome://cardbook/content/migrate/cardbookMigrate.jsm", cardbookRepository);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIndexedDB.js", this); //doesn't work with cardbookRepository instead of this
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCard.js", this);
 loader.loadSubScript("chrome://cardbook/content/indexedDB/cardbookIDBCat.js", this);

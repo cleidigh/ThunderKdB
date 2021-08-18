@@ -16,7 +16,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 8707,
+    "average_daily_users": 7570,
     "categories": {
         "seamonkey": [
             "miscellaneous"
@@ -28,30 +28,27 @@
     "contributions_url": "",
     "created": "2011-06-23T15:49:52Z",
     "current_version": {
-        "id": 2475932,
+        "id": 2476011,
         "compatibility": {
             "thunderbird": {
                 "max": "90.0",
                 "min": "74.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2475932",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smarttemplate4/versions/2476011",
         "files": [
             {
-                "id": 1019092,
-                "created": "2021-05-27T12:22:48Z",
-                "hash": "sha256:721d31433049fa5cc65bdd8838d9e879c41008c91ef2a3e27da1a83aef524bb0",
+                "id": 1019171,
+                "created": "2021-06-17T09:01:03Z",
+                "hash": "sha256:4d38b8554345b003f17a2ec7d89d59851c92a05cebb992c50c4819dc0729c056",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 777880,
+                "size": 838658,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019092/smarttemplates-3.5.3-tb.xpi?src=",
-                "permissions": [
-                    "notifications",
-                    "accountsRead"
-                ]
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019171/smarttemplates-3.6-tb.xpi?src=",
+                "permissions": []
             }
         ],
         "is_strict_compatibility_enabled": false,
@@ -60,14 +57,14 @@
             "name": {
                 "en-US": "CC BY-ND 4.0"
             },
-            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.5.3"
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/license/3.6"
         },
         "release_notes": {
-            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.5.3\">can be found here</a>\n\n<b>Enhancements</b>\n<ul><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/125\">[issue 125]</a> Improved support for converting encoded characters used in address fields such as \"from\" </li></ul><b>Bug Fixes</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/133\">[issue 133]</a> Fixed in 3.5.3 - a Problem with Licensing Dialog that couldn't open the web shop if valid license was already entered.</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/126\">[issue 126]</a> Fixed: Enabling 'Resolve names from Address book' falsely disables advanced options</li><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/130\">[issue 130]</a> Fixed: Error in localization for Traditional Chinese (zh-TW) breaks settings dialog.</li><li> Added Localization for Catalan language - this is partly derived from the Occitan locale of an older version.</li><li> Problem with Trial date calculation due to new Legacy Prefs method - fixded in 3.5.2 </li></ul>\n<b>Miscellaneous</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/127\">[issue 127]</a> Make SmartTemplates compatible with Thunderbird 89.0 - this is ongoing work which aims for a smooth transition toward the next ESR version, Thunderbird 91 which is planned to be released in Summer 2022.</li><li> SmartTemplates now supports multiple Thunderbird windows, via the new background script notifications. Using the new background script notification mechanism for all template menus. When configuring the menus, these are now updated properly across all windows once the settings dialog is closed. Even with multiple Thunderbird windows opened. </li><li> Opening web pages (such as support) uses a different URL variable format from Thunderbird 80 onward, so this will work again with the latest version of SmartTemplates.</li></ul>"
+            "en-US": "Full change log with screen shots <a rel=\"nofollow\" href=\"https://smarttemplates.quickfolders.org/version.html#3.6\">can be found here</a>\n\n<b>Enhancements</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/135\">[issue 135]</a> Expand multiple recipients with %to(firstname)% in New Mail Template.\n\nWhen replying to an email we expect the variable %to(firstname)% to fill in all recipient names, using the address widget. They will be delimited by the character entered in advanced settings under the Name Rules box.</li><li><a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/137\">[issue 137]</a>\nSmartTemplates doesn't auto-update to 3.5.4 (because it needs permissions?)\n\nAfter adding necessary permissions for using the new mail extension APIs (for accounts and notifications), the user isn't prompted to install the updated Add-on anymore. Instead there is a small yellow \"warning\" icon added to the main menu button, which must be clicked to reveal questions about adding permissions.\n\nI noticed that the majority of users suddenly stopped updating and found that the permissions was the likely cause. As this is now standard behavior in Thunderbird in order to prevent users being distracted from their   daily workflow, I had to remove the permissions and modern API code and create my own version so I could make sure my users are updated with the latest version. I have no final satisfactory solution for this behavior as conversion to the new APIs is 100% necessary in order to rewrite SmartTemplates for future versions of Thunderbird. \n\nThe main menu button currently has a little yellow warning triangle if Add-ons are awaiting new permissions.\n\nI hope to either educate my users to complete upgrades by clicking this button or code another method of directly alerting the user from the previous version of SmartTemplates when a new version is available.</li></ul>\n<b>Bug Fixes</b>\n<ul><li> <a rel=\"nofollow\" href=\"https://github.com/RealRaven2000/SmartTemplate4/issues/134\">[issue 134]</a> Support tab missing in version 3.5.4</li></ul>\n<b>Miscellaneous</b>\n<ul><li> Removed animation on Splash screen for licensed users.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.5.3",
-        "version": "3.5.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smarttemplate4/versions/3.6",
+        "version": "3.6"
     },
     "default_locale": "en-US",
     "description": {
@@ -95,7 +92,7 @@
     "is_experimental": false,
     "is_featured": true,
     "is_source_public": true,
-    "last_updated": "2021-05-27T12:27:23Z",
+    "last_updated": "2021-06-17T10:46:25Z",
     "name": {
         "ru": "SmartTemplate4",
         "fr": "SmartTemplate4",

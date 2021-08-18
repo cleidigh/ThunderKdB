@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 10808,
+    "average_daily_users": 9831,
     "categories": {
         "thunderbird": [
             "message-and-news-reading",
@@ -19,26 +19,26 @@
     "contributions_url": "https://paypal.me/ThunderbirdMailDE/",
     "created": "2005-11-30T18:50:39Z",
     "current_version": {
-        "id": 2475817,
+        "id": 2476206,
         "compatibility": {
             "thunderbird": {
-                "max": "80.0",
-                "min": "78.0"
+                "max": "*",
+                "min": "90.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-html-temp/versions/2475817",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-html-temp/versions/2476206",
         "files": [
             {
-                "id": 1018977,
-                "created": "2021-04-26T18:33:15Z",
-                "hash": "sha256:0501a596399a408156a368e49fa062299ac55aeb5a5cc9cbe634aef02af651df",
+                "id": 1019366,
+                "created": "2021-08-10T21:31:16Z",
+                "hash": "sha256:3d8283724a77f6cd3723f765d7f46a89ce0c5fa0210a9639f9cb1bb1c0ddc80e",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 100056,
+                "size": 100878,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018977/allow_html_temp-6.3.3-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019366/allow_html_temp-7.0b4-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -51,17 +51,17 @@
             "url": "http://www.mozilla.org/MPL/2.0/"
         },
         "release_notes": {
-            "en-US": "Internal change / update for the WindowListener-API.\n\n<b>Note:</b>\nThis addons <b>options dialog</b> has now to be opened in Thunderbird 78 from the Addons Manager Tab using the little menu at the <b>3-dot-icon</b> button:\n\n<a rel=\"nofollow\" href=\"https://support.mozilla.org/en-US/kb/thunderbird-add-ons-frequently-asked-questions#w_how-do-i-configure-add-ons\">https://support.mozilla.org/en-US/kb/thunderbird-add-ons-frequently-asked-questions#w_how-do-i-configure-add-ons</a>",
-            "de": "Interne Änderung / Update der WindowListener-API\n\n<b>Hinweis:</b>\nDer Einstellungen-Dialog des Add-ons muss jetzt aus dem Add-ons-Manager heraus aufgerufen werden (also nicht mehr aus dem Extras-Menü). Im Add-on-Manager-Tab findet man die Einstellungen in Thunderbird 78 in einem kleinen Menü, wenn man im Add-on-Manager auf das 3-Punkt-Symbol bei dem Add-on klickt.\n\n<a rel=\"nofollow\" href=\"https://support.mozilla.org/de/kb/add-ons-faq#w_wie-konfigurieren-sie-add-ons\">https://support.mozilla.org/de/kb/add-ons-faq#w_wie-konfigurieren-sie-add-ons</a>"
+            "en-US": "Version series 7.* is updated for Thunderbird 91.*\n\n<b>Fixes and Changes</b>\n<ul><li>Fix for a bug (error in console) with NNTP (newsgroup) messages</li></ul>",
+            "de": "Die Versionsreihe 7.* des Add-ons wurde für Thunderbird 91.* angepasst.\n\n<b>Bugfixes und Änderungen</b>\n<ul><li>Ein Fehler (in der Fehlerkonsole) beim Anzeigen von NNTP (Newsgruppen-)Nachrichten wurde behoben.</li></ul>"
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/allow-html-temp/versions/6.3.3",
-        "version": "6.3.3"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/allow-html-temp/versions/7.0b4",
+        "version": "7.0b4"
     },
     "default_locale": "en-US",
     "description": {
-        "en-US": "Allows to have HTML temporarily enabled (and displayed) in the currently selected message by only one click. When switching to another message, it'll be shown automatically again in plain text or simple html mode (according to your settings).\n\nThe source code of the add-on is open source and is available at <a href=\"https://gitlab.com/ThunderbirdMailDE/allow-html-temp\" rel=\"nofollow\"> GitLab </a>.\n\nThe translations available so far can be found on the <a href=\"https://crowdin.com/project/allow-html-temp\" rel=\"nofollow\"> CrowdIn </a> platform.",
-        "de": "Mit einem Klick auf die Schaltfläche \"HTML zeigen\" der Erweiterung \"Allow HTML Temp\" wird eine gerade angezeigte Nachricht sofort einmalig formatiert angezeigt (wenn HTML-Code enthalten ist). Direkt danach ist der HTML-Modus wieder deaktiviert.\n\nDer Quellcode des Add-ons ist Open-Source und steht auf <a href=\"https://gitlab.com/ThunderbirdMailDE/allow-html-temp\" rel=\"nofollow\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a href=\"https://crowdin.com/project/allow-html-temp\" rel=\"nofollow\">CrowdIn</a>."
+        "en-US": "Allows to have HTML temporarily enabled (and displayed) in the currently selected message by only one click. When switching to another message, it'll be shown automatically again in plain text or simple html mode (according to your settings).\n\nThe source code of the add-on is open source and is available at <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/allow-html-temp\"> GitLab </a>.",
+        "de": "Mit einem Klick auf die Schaltfläche \"HTML zeigen\" der Erweiterung \"Allow HTML Temp\" wird eine gerade angezeigte Nachricht sofort einmalig formatiert angezeigt (wenn HTML-Code enthalten ist). Direkt danach ist der HTML-Modus wieder deaktiviert.\n\nDer Quellcode des Add-ons ist Open-Source und steht auf <a rel=\"nofollow\" href=\"https://gitlab.com/ThunderbirdMailDE/allow-html-temp\">GitLab</a> zur Verfügung.\n\nDie bisher vorhandenen Übersetzungen findet man auf der Plattform <a rel=\"nofollow\" href=\"https://crowdin.com/project/allow-html-temp\">CrowdIn</a>."
     },
     "developer_comments": null,
     "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/allow-html-temp/edit",
@@ -72,16 +72,16 @@
         "en-US": "https://www.thunderbird-mail.de/lexicon/entry/226-allow-html-temp-add-on-to-allow-html-only-temporarily/",
         "de": "https://www.thunderbird-mail.de/lexicon/entry/14-allow-html-temp/"
     },
-    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-64.png?modified=1600199357",
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-64.png?modified=1623337827",
     "icons": {
-        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-32.png?modified=1600199357",
-        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-64.png?modified=1600199357"
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-32.png?modified=1623337827",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/1/1556-64.png?modified=1623337827"
     },
     "is_disabled": false,
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2021-04-27T10:26:24Z",
+    "last_updated": "2021-08-11T09:36:19Z",
     "name": {
         "en-US": "Allow HTML Temp",
         "de": "Allow HTML Temp"
@@ -374,17 +374,15 @@
     "weekly_downloads": 219,
     "xpilib": {
         "ext_comp": {
+            "compNoMax": true,
             "mext": true,
-            "comp69plus": true,
+            "comp68": true,
             "comp78plus": true,
-            "comp61plus": true,
             "comp78pv": true,
             "comp78pv_date": "2020-08-28T22:46:07Z",
             "comp78pv_version": "6.0.0",
             "comp78pv_vmin": "78.0",
             "comp78pv_vmax": "80.0",
-            "comp68pv": true,
-            "comp68pv_date": "2020-07-24T17:15:20Z",
             "comp60pv": true,
             "comp60pv_date": "2019-01-04T14:57:07Z"
         }

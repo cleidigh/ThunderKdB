@@ -105,13 +105,13 @@ function onLoad(activatedWhileWindowOpen) {
 `, ["chrome://nostalgy/locale/nostalgy.dtd"]);
 
  
-console.log("messageWindow-nostalgy");
+//console.log("messageWindow-nostalgy");
 window.onNostalgyLoad();
 
 
 }
 
 function onUnload(isAddOnShutDown) {
-    console.log("unload messageWindow-nostalgy");
+//    console.log("unload messageWindow-nostalgy");
 //    window.onNostalgyUnload();  //also unregisters factory??
 }

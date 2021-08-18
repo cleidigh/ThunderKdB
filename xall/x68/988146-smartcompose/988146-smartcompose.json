@@ -1,0 +1,141 @@
+{
+    "id": 988146,
+    "authors": [
+        {
+            "id": 14213977,
+            "name": "Tim Wißmann",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/twity1337/",
+            "username": "twity1337",
+            "picture_url": "https://addons.thunderbird.net/user-media/userpics/14/14213/14213977.png?modified=1626782217"
+        },
+        {
+            "id": 14201492,
+            "name": "Eicke Godehardt",
+            "url": "https://addons.thunderbird.net/en-US/thunderbird/user/godehardt/",
+            "username": "godehardt",
+            "picture_url": null
+        }
+    ],
+    "average_daily_users": 0,
+    "categories": {
+        "thunderbird": [
+            "composition"
+        ]
+    },
+    "contributions_url": "",
+    "created": "2021-08-01T11:21:29Z",
+    "current_version": {
+        "id": 2476162,
+        "compatibility": {
+            "thunderbird": {
+                "max": "*",
+                "min": "78.0"
+            }
+        },
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smartcompose/versions/2476162",
+        "files": [
+            {
+                "id": 1019322,
+                "created": "2021-08-01T11:21:29Z",
+                "hash": "sha256:0cf2038d5c2798e96b7a90954b4b3976bf93acfab297e2e5366fd2e5ec0f93e2",
+                "is_restart_required": false,
+                "is_webextension": true,
+                "is_mozilla_signed_extension": false,
+                "platform": "all",
+                "size": 73039,
+                "status": "public",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019322/smartcompose-1.0-tb.xpi?src=",
+                "permissions": [
+                    "compose",
+                    "activeTab",
+                    "storage",
+                    "menus",
+                    "menus.overrideContext"
+                ]
+            }
+        ],
+        "is_strict_compatibility_enabled": false,
+        "license": {
+            "id": 3338,
+            "name": {
+                "en-US": "Mozilla Public License, version 2.0"
+            },
+            "url": "http://www.mozilla.org/MPL/2.0/"
+        },
+        "release_notes": {
+            "en-US": "<strong>Breaking change:</strong> Migration to Webextension API"
+        },
+        "reviewed": "2021-08-16T10:19:32Z",
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smartcompose/versions/1.0",
+        "version": "1.0"
+    },
+    "default_locale": "en-US",
+    "description": {
+        "en-US": "The addon stores the salutation and the language used in an email and restores them automatically after the recipient of the next email is determined.\n\nThe most important features are summarized below:\n<ul><li>Saving the language and salutation after sending a message.</li><li>Automatic filling of salutation when composing, replying and forwarding</li><li>Automatic setting of the used dictionary language depending on the recipient</li><li>Intelligent selection of the language depending on the email address used (taking into account name and domain)</li><li>Reduction of repeated email signatures <em>(currently under development!)</em></li></ul>The addon is automatically disabled for group conversations, because the salutation can differ here.\n\nThis addon is developed and maintained by an working group of Frankfurt University of Applied Science, Germany.\nWe would be happy if you visit <a title=\"Frankfurt University of Applied Science\" rel=\"nofollow\" href=\"https://www.frankfurt-university.de/en/\">our Website</a>!\n\n<strong>The addon requires the following permissions:</strong>\n<ul><li><strong>Have full, unrestricted access to Thunderbird, and your computer</strong>\nThe ability to detect changes in the recipient list, as well as the ability to automatically change the dictionary language and detect changes in code is required. Unfortunately, Thunderbirds permission-based API is not providing this feature yet and an experimental API is required. This is why we need this permission. Further details can be read <a rel=\"nofollow\" href=\"https://support.mozilla.org/en-US/kb/permission-request-messages-thunderbird-extensions#w_have-full-unrestricted-access-to-thunderbird-and-your-computer\">here</a>.</li></ul>"
+    },
+    "developer_comments": null,
+    "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/smartcompose/edit",
+    "guid": "smartcompose@fra-uas.de",
+    "has_eula": false,
+    "has_privacy_policy": false,
+    "homepage": {
+        "en-US": "https://www.frankfurt-university.de/en/studies/master-programs/general-computer-science-msc/general-computer-science-msc/",
+        "de": "https://www.frankfurt-university.de"
+    },
+    "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/988/988146-64.png?modified=eb55aa17",
+    "icons": {
+        "32": "https://addons.thunderbird.net/user-media/addon_icons/988/988146-32.png?modified=eb55aa17",
+        "64": "https://addons.thunderbird.net/user-media/addon_icons/988/988146-64.png?modified=eb55aa17"
+    },
+    "is_disabled": false,
+    "is_experimental": false,
+    "is_featured": false,
+    "is_source_public": true,
+    "last_updated": "2021-08-16T10:19:32Z",
+    "name": {
+        "en-US": "smartCompose",
+        "de": "smartCompose"
+    },
+    "previews": [],
+    "public_stats": false,
+    "ratings": {
+        "bayesian_average": 0,
+        "count": 0,
+        "average": 0,
+        "text_count": 0
+    },
+    "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smartcompose/reviews/",
+    "requires_payment": false,
+    "review_url": "https://addons.thunderbird.net/en-US/reviewers/review/988146",
+    "slug": "smartcompose",
+    "status": "public",
+    "summary": {
+        "en-US": "A smart Plugin which provides functionalities to compose emails.",
+        "de": "A smart Plugin which provides functionalities to compose emails."
+    },
+    "support_email": {
+        "en-US": "tim.wissmann@stud.fra-uas.de"
+    },
+    "support_url": null,
+    "tags": [
+        "compose",
+        "dictionary",
+        "firefox57",
+        "helper",
+        "intelligent",
+        "recipient",
+        "salutation",
+        "smart"
+    ],
+    "type": "extension",
+    "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/smartcompose/",
+    "weekly_downloads": 0,
+    "xpilib": {
+        "ext_comp": {
+            "compNoMax": true,
+            "mext": true,
+            "comp68": true,
+            "comp78plus": true
+        }
+    }
+}

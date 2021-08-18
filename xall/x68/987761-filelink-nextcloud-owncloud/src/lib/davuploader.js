@@ -61,36 +61,40 @@ class DavUploader {
      * @param {string} folder 
      * @returns {boolean} if creation succeeded
      */
-    async _recursivelyCreateFolder(folder, retry_count = 0) {
-        // Looks clumsy, but *always* make sure recursion ends
-        if ("/" === folder) {
-            return false;
-        } else {
-            let response;
+    async _recursivelyCreateFolder(fullPath) {
+        const parts = fullPath.split("/");
+        for (let i = 2; i <= parts.length; i++) {
+            const folder = parts.slice(0, i).join("/");
+            if (!await this.findOrCreateFolder(folder)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    async findOrCreateFolder(folder) {
+        let response;
+        let retry_count = 0;
+        while (retry_count < 5) {
+
             try {
                 response = await this._doDavCall(folder, 'MKCOL');
             } catch (e) {
                 return false;
             }
+
             switch (response.status) {
                 case 405: // Already exists
                 case 201: // Created successfully
                     return true;
-                case 409: // Intermediate folder missing
-                    // Try to create parent folder
-                    if (await this._recursivelyCreateFolder(folder.split("/").slice(0, -1).join("/"))) {
-                        // Try again to create the initial folder
-                        return this._recursivelyCreateFolder(folder);
-                    }
-                    break;
                 case 423: // Locked
                     // Maybe a parallel upload is currently creating the folder, so wait a little and try again
                     // This timeout is longer in reality because it adds to the waiting time in the queue
-                    if (retry_count < 5) {
-                        await utils.promisedTimeout(400 + Math.floor(Math.random() * 200));
-                        return await this._recursivelyCreateFolder(folder, retry_count++);
-                    }
+                    await utils.promisedTimeout(400 + Math.floor(Math.random() * 200));
+                    retry_count++;
                     break;
+                default:
+                    return false;
             }
         }
         return false;
@@ -106,14 +110,16 @@ class DavUploader {
         const response = await this._doDavCall(this._storageFolder + '/' + fileName, "PROPFIND");
         // something with the right name exists ...
         if (response.ok && response.status < 300) {
-            const xmlDoc = new DOMParser().parseFromString(await response.text(), 'application/xml');
-            // ... and it's a file ...
-            if (null === xmlDoc.getElementsByTagName("d:resourcetype")[0].firstChild) {
-                return {
-                    mtime: (new Date(xmlDoc.getElementsByTagName("d:getlastmodified")[0].textContent)).getTime(),
-                    size: Number(xmlDoc.getElementsByTagName("d:getcontentlength")[0].textContent),
-                };
-            }
+            try {
+                const xmlDoc = new DOMParser().parseFromString(await response.text(), 'application/xml');
+                // ... and it's a file ...
+                if (null === xmlDoc.getElementsByTagName("d:resourcetype")[0].firstChild) {
+                    return {
+                        mtime: (new Date(xmlDoc.getElementsByTagName("d:getlastmodified")[0].textContent)).getTime(),
+                        size: Number(xmlDoc.getElementsByTagName("d:getcontentlength")[0].textContent),
+                    };
+                }
+            } catch (_) { }
         }
         return null;
     }

@@ -89,12 +89,22 @@ END LICENSE BLOCK
     # Added catalan locale (transformed from occitan)
     # fixed openTab in Tb80 (added url parameter)
     
-  Version 3.6 - WIP
+  Version 3.5.3 - 27/05/2021
     # Ongoing work Remove usage of main window instance - for premium feature messages
     # Removed many entries (especially in new Licenser module + background pages) to keep the error console clean 
     # - these are now dependent on debug settings and can be added according to troubleshooting requirements.
     # Added event listener to composer windows so the template menus can be reconfigured in real time.
-    # 
+    # Fixed a regression with links from the Registration dialog caused by the migration to the new licensing modul 
+    
+  Version 3.5.4 - 03/06/2021
+    # New version of WindowListener to support wrench button to access Add-on settings
+
+  Version 3.6 - 17/06/2021
+    # [issue 134] Support tab missing in version 3.5.4
+    # [issue 137] SmartTemplates doesn't auto-update to 3.5.4 (because it needs permissions?)
+    # [issue 135] Expand multiple recipients with %to(firstname)% in New Mail Template.
+    # Removed all permissions for accounts, notifications
+
     
 =========================
   KNOWN ISSUES / FUTURE FUNCTIONS

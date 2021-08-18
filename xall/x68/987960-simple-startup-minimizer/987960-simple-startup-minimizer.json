@@ -9,7 +9,7 @@
             "picture_url": null
         }
     ],
-    "average_daily_users": 877,
+    "average_daily_users": 1027,
     "categories": {
         "thunderbird": [
             "appearance"
@@ -18,26 +18,26 @@
     "contributions_url": "",
     "created": "2020-11-24T17:28:35Z",
     "current_version": {
-        "id": 2474902,
+        "id": 2476278,
         "compatibility": {
             "thunderbird": {
                 "max": "*",
                 "min": "78.0"
             }
         },
-        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-startup-minimizer/versions/2474902",
+        "edit_url": "https://addons.thunderbird.net/en-US/developers/addon/simple-startup-minimizer/versions/2476278",
         "files": [
             {
-                "id": 1018064,
-                "created": "2020-12-01T16:19:30Z",
-                "hash": "sha256:0448eced8f7513c8fe80fa7af6820a80d6418f5435dddc0105e853a7d4fc8007",
+                "id": 1019438,
+                "created": "2021-08-12T22:01:14Z",
+                "hash": "sha256:dc2e9de0ff67e3eece39337116ed93d0aa9617a0e5e2b5387852ea737d629b10",
                 "is_restart_required": false,
                 "is_webextension": true,
                 "is_mozilla_signed_extension": false,
                 "platform": "all",
-                "size": 4166,
+                "size": 4645,
                 "status": "public",
-                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1018064/simple_startup_minimizer-0.2-tb.xpi?src=",
+                "url": "https://addons.thunderbird.net/thunderbird/downloads/file/1019438/simple_startup_minimizer-0.5-tb.xpi?src=",
                 "permissions": []
             }
         ],
@@ -73,11 +73,11 @@
             "url": "http://www.opensource.org/licenses/mit-license.php"
         },
         "release_notes": {
-            "en-US": "Added a small delay before the window minimizes so that it can work on slower systems."
+            "en-US": "What's New?\n- Fixed issue where the addon doesn't work for some users.\n- Addon will minimize faster (there was 200 ms delay).\n- Ensure compatibility with Thunderbird v91.\n\nKnown Issues:\n- Thunderbird icon in tray may disappear if you have the \"move to tray when minimized\" option enabled in the preferences, this is an issue from TB itself and nothing I am aware of can be done about it."
         },
         "reviewed": null,
-        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-startup-minimizer/versions/0.2",
-        "version": "0.2"
+        "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-startup-minimizer/versions/0.5",
+        "version": "0.5"
     },
     "default_locale": "en-US",
     "description": null,
@@ -86,7 +86,9 @@
     "guid": "farahats9@yahoo.com",
     "has_eula": false,
     "has_privacy_policy": false,
-    "homepage": null,
+    "homepage": {
+        "en-US": "https://github.com/farahats9/simple-startup-minimizer"
+    },
     "icon_url": "https://addons.thunderbird.net/user-media/addon_icons/987/987960-64.png?modified=345d2e65",
     "icons": {
         "32": "https://addons.thunderbird.net/user-media/addon_icons/987/987960-32.png?modified=345d2e65",
@@ -96,17 +98,17 @@
     "is_experimental": false,
     "is_featured": false,
     "is_source_public": true,
-    "last_updated": "2020-12-01T16:20:03Z",
+    "last_updated": "2021-08-12T22:05:03Z",
     "name": {
         "en-US": "Simple Startup Minimizer"
     },
     "previews": [],
     "public_stats": false,
     "ratings": {
-        "bayesian_average": 2.91654,
-        "count": 10,
-        "average": 3,
-        "text_count": 10
+        "bayesian_average": 3.07945,
+        "count": 14,
+        "average": 3.1429,
+        "text_count": 14
     },
     "ratings_url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-startup-minimizer/reviews/",
     "requires_payment": false,
@@ -122,7 +124,8 @@
     "support_url": null,
     "tags": [
         "firefox57",
-        "thunderbird78"
+        "thunderbird78",
+        "thunderbird91"
     ],
     "type": "extension",
     "url": "https://addons.thunderbird.net/en-US/thunderbird/addon/simple-startup-minimizer/",

@@ -25,7 +25,7 @@ Services.scriptloader.loadSubScript("chrome://nostalgy/content/edit_prefs.js", w
 /**/
 
 function onLoad(activatedWhileWindowOpen) {
-    console.log (Services.appinfo.version);
+  //  console.log (Services.appinfo.version);
  /*
     let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
     layout.setAttribute("title", "QuickFolderStyles");
@@ -63,7 +63,7 @@ function onLoad(activatedWhileWindowOpen) {
    <hbox   id="status-bar">
 
         <hbox insertbefore="unreadMessageCount"   class="statusbar">
-    <button id="me-help" label = "N++ Help" />
+    <image id="me-help" src = "resource://nostalgy/skin/iconmonstr-copy-14-24.png" />
      <label  id="statusbar-nostalgy-label" class="statusbarpanel"
             value="&nostalgy.memo;"    hidden = "true"/>
      <label  id="statusbar-nostalgy-label-newRule"       class="statusbarpanel"
@@ -105,7 +105,7 @@ function onLoad(activatedWhileWindowOpen) {
    </hbox> 
 `, ["chrome://nostalgy/locale/nostalgy.dtd"]);
 
-console.log("messenger-nostalgy");
+//console.log("messenger-nostalgy");
 window.onNostalgyLoad();
 
 manage_emails.WL = WL;
@@ -114,7 +114,7 @@ manage_emails.WL = WL;
 }
 
 function onUnload(isAddOnShutDown) {
-    console.log("nostalgy unload");
+ //   console.log("nostalgy unload");
     window.onNostalgyUnload();
     Components.classes["@mozilla.org/xre/app-info;1"].
     getService(Components.interfaces.nsIXULRuntime).invalidateCachesOnRestart();

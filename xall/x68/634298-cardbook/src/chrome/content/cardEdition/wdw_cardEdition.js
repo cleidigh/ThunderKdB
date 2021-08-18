@@ -1002,7 +1002,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 			for (var field of cardbookRepository.dateFields) {
 				var myValue = document.getElementById(field + 'Datepicker').value.trim();
 				if (myValue.length > 0) {
-					var isDate = cardbookRepository.cardbookDates.convertDateStringToDate(myValue, dateFormat);
+					var isDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(myValue, dateFormat);
 					if (isDate == "WRONGDATE") {
 						cardbookNotifications.setNotification(cardEditionNotification.errorNotifications, "dateEntry2Wrong", [myValue, dateFormat]);
 						return false;
@@ -1014,7 +1014,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				if (document.getElementById('event_' + i + '_hbox')) {
 					var myEventDate = document.getElementById('event_' + i + '_valueDateBox').value.trim();
 					if (myEventDate != "") {
-						var isDate = cardbookRepository.cardbookDates.convertDateStringToDate(myEventDate, dateFormat);
+						var isDate = cardbookRepository.cardbookDates.convertDateStringToDateUTC(myEventDate, dateFormat);
 						if (isDate == "WRONGDATE") {
 							cardbookNotifications.setNotification(cardEditionNotification.errorNotifications, "dateEntry2Wrong", [myEventDate, dateFormat]);
 							return false;
@@ -1478,8 +1478,8 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 		},
 
 		cancelPreviousNext: function () {
-			document.getElementById('previousEditionLabel').setAttribute('hidden', 'true');
-			document.getElementById('nextEditionLabel').setAttribute('hidden', 'true');
+			document.getElementById('previousEditButton').setAttribute('hidden', 'true');
+			document.getElementById('nextEditButton').setAttribute('hidden', 'true');
 		},
 
 		changePreviousNext: function () {
@@ -1497,16 +1497,16 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 				let card = cardbookRepository.cardbookDisplayCards[myCurrentAccountId].cards[i];
 				if (card.cbid == window.arguments[0].cardIn.cbid) {
 					if (i == 0 && i != cardbookRepository.cardbookDisplayCards[myCurrentAccountId].cards.length - 1) {
-						document.getElementById('previousEditionLabel').setAttribute('hidden', 'true');
-						document.getElementById('nextEditionLabel').removeAttribute('hidden');
+						document.getElementById('previousEditButton').setAttribute('hidden', 'true');
+						document.getElementById('nextEditButton').removeAttribute('hidden');
 					} else if (i == 0 && i == cardbookRepository.cardbookDisplayCards[myCurrentAccountId].cards.length - 1) {
 						wdw_cardEdition.cancelPreviousNext();
 					} else if (i == cardbookRepository.cardbookDisplayCards[myCurrentAccountId].cards.length - 1) {
-						document.getElementById('previousEditionLabel').removeAttribute('hidden');
-						document.getElementById('nextEditionLabel').setAttribute('hidden', 'true');
+						document.getElementById('previousEditButton').removeAttribute('hidden');
+						document.getElementById('nextEditButton').setAttribute('hidden', 'true');
 					} else {
-						document.getElementById('previousEditionLabel').removeAttribute('hidden');
-						document.getElementById('nextEditionLabel').removeAttribute('hidden');
+						document.getElementById('previousEditButton').removeAttribute('hidden');
+						document.getElementById('nextEditButton').removeAttribute('hidden');
 					}
 					break;
 				};
@@ -1583,7 +1583,7 @@ if ("undefined" == typeof(wdw_cardEdition)) {
 					myOutCard.uid = "urn:uuid:" + myOutCard.uid;
 				}
 				window.arguments[0].cardOut = myOutCard;
-				
+
 				if (window.arguments[0].editionMode == "AddEmail") {
 					wdw_cardEdition.cloneCard(window.arguments[0].cardOut, window.arguments[0].cardIn);
 				}

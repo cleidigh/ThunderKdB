@@ -510,11 +510,11 @@ OWAAccount.ConvertToOWA = function(aFolder, aEvent) {
     Start: aEvent.startDate,
     End: aEvent.endDate,
     FreeBusyType: aEvent.status == "OPAQUE" ? "Busy" : "Free",
-    RequiredAttendees: aEvent.requiredAttendees.map(attendee => ({
+    RequiredAttendees: aEvent.requiredAttendees && aEvent.requiredAttendees.map(attendee => ({
       __type: "AttendeeType:#Exchange",
       Mailbox: MailboxObject2OWA(attendee),
     })),
-    OptionalAttendees: aEvent.optionalAttendees.map(attendee => ({
+    OptionalAttendees: aEvent.optionalAttendees && aEvent.optionalAttendees.map(attendee => ({
       __type: "AttendeeType:#Exchange",
       Mailbox: MailboxObject2OWA(attendee),
     })),

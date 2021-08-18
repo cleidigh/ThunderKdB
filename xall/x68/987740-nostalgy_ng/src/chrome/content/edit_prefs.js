@@ -16,13 +16,13 @@ var { manage_emails } = ChromeUtils.import("chrome://nostalgy/content/manage_ema
 
 manage_emails.applyRule= function applyRule(rule) {
   let item = nostalgy_gList.selectedItem;
-  console.log("applyrule1");
+ // console.log("applyrule1");
   //console.log(this.getCurrentFolder());
   //console.log(item);
   let rule2apply = NostalgyRuleOfItem(item);
-  console.log(rule2apply);
+  //console.log(rule2apply);
   let currentFolder = this.getCurrentFolder();
-  console.log(currentFolder);
+ // console.log(currentFolder);
   this.showFolder(rule2apply.under);
   //NostalgyDoSearch(rule2apply.contains);
   var input = this.getMainWindowElement("qfb-qs-textbox");
@@ -343,10 +343,7 @@ function NostalgyRemoveRow(r) {
 function onNostalgyEditPrefsLoad() {
  document.addEventListener("dialogaccept", (event) => { onNostalgyAcceptChanges(); });
   NostalgyFolderSelectionBoxes();
- document.addEventListener("dialogextra2", (event) => { const url = manage_emails.WL.messenger.runtime.getURL("popup/about_content.html");
-                                                        manage_emails.WL.messenger.windows.create({ url, type: "popup", height: 700, width: 780, });
-                                                        //openDialog('chrome://nostalgy/content/about.html', 'about_nostalgy', 'resizable=yes'); 
-                                                      });
+ document.addEventListener("dialogextra2", (event) => { manage_emails.showHelpFile(); });
 
   nostalgy_gList = NostalgyEBI("nrules");
   nostalgy_folder_select = NostalgyEBI("folderselect");
@@ -479,7 +476,18 @@ function NostalgySelectFolder() {
   }
 }
 
-
+function NostalgySelectFolderForKey() {
+//  console.log("NostalgySelectFolderForKey");
+  if (nostalgy_folder_select.value != "") {
+    let stpos = nostalgy_folder_select.value.indexOf(">>");
+//    let foldername = attachment.url.substr(stpos+3);
+    var folder = NostalgyResolveFolder(nostalgy_folder_select.value);
+    if (folder) {
+      var name = NostalgyFolderName(folder);
+       nostalgy_folder_select.value = name;
+    }
+  }
+}
 
 
 function NostalgyDoRestart() {
@@ -488,6 +496,12 @@ function NostalgyDoRestart() {
   Services.startup.quit(Ci.nsIAppStartup.eRestart | Ci.nsIAppStartup.eForceQuit);
 }
 
+
+function NostalgyEmailRules() {
+//  let fwd = self.document.getElementById('xnote-button-forward');
+//  fwd.href = "mailto:?body=" + encodeURI( NostalgyMkPrefStr(););
+var rules = NostalgyMkPrefStr();
+}
 
 
 

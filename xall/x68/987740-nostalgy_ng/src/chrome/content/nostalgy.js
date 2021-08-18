@@ -53,6 +53,7 @@ var nostalgy_on_move_completed = null;
 var nostalgy_selection_saved = null;
 var nostalgy_statusbar_nostalgy_label_newRule = null;  //new Rule label
 var DELAY_AFTER_CREATING_FOLDER = 200;
+var TB_statusTextBox = null;
 
 function NostalgyIsDefined(s) {
     return (typeof(window[s]) != "undefined");
@@ -213,7 +214,7 @@ return;
         ||(r.sender && NostalgyMatchContains(sender,r.contains))
         ||(r.recipients && NostalgyMatchContains(recipients,r.contains)))
  //        && (current_folder.indexOf(r.under) == 0))
-         && (current_folder ==r.under))
+         && ((current_folder ==r.under)  || (r.under =="") ))
       {
         folder = NostalgyFindFolderExact(r.folder);
       }
@@ -289,11 +290,9 @@ function onNostalgyLoad() {
 
  nostalgy_help_button = NostalgyEBI("me-help");//c needs to be after register_keys
  nostalgy_help_button.setAttribute("tooltiptext", nostalgy_default_label + " rule: (n)ew / conv(e)rt");
+ //nostalgy_help_button.setAttribute("src", manage_emails.statusbarIconSRC);
  //nostalgy_help_button.addEventListener("click", onNostalgyResize, false);
- nostalgy_help_button.addEventListener("click", (event) => { const url = manage_emails.WL.messenger.runtime.getURL("popup/about_content.html");
-                                                        manage_emails.WL.messenger.windows.create({ url, type: "popup", height: 700, width: 780, });
-                                                        //openDialog('chrome://nostalgy/content/about.html', 'about_nostalgy', 'resizable=yes'); 
-                                                      });
+ nostalgy_help_button.addEventListener("click", (event) => { manage_emails.showHelpFile();});
 
  
  nostalgy_folderBox = NostalgyEBI("nostalgy-folderbox");//c html:input for folders
@@ -304,7 +303,7 @@ function onNostalgyLoad() {
  nostalgy_statusbar_nostalgy_label_newRule = NostalgyEBI("statusbar-nostalgy-label-newRule");
  NostalgyFolderSelectionBox(nostalgy_folderBox);
  nostalgy_label.label = nostalgy_default_label;
-
+ TB_statusTextBox =  NostalgyEBI("statusTextBox");//c box with network indicator etc
  nostalgy_folderBox.setAttribute("size",nostalgy_folderBoxChars);
 
  if (!nostalgy_in_message_window) {
@@ -353,9 +352,9 @@ function NostalgyHideIfBlurred() {
 }
 
 function NostalgyHide(restore) {
- nostalgy_statusBar.hidden = true;
+ nostalgy_statusBar.hidden = true;  //c box for folder input
  nostalgy_th_statusBar.hidden = nostalgy_th_statusBar_orig_hidden;
-
+ TB_statusTextBox.hidden = false;
  if (nostalgy_focus_saved) {
   if (restore) nostalgy_focus_saved.focus ();
   nostalgy_focus_saved = null;
@@ -402,6 +401,8 @@ function NostalgyCmd(lab,cmd,require_file) {
  nostalgy_focus_saved = document.commandDispatcher.focusedElement;
  if (!nostalgy_focus_saved) { nostalgy_focus_saved = NostalgyEBI("messagepane").contentWindow; }
 
+ TB_statusTextBox.hidden = true;
+ 
  nostalgy_search_folder_options.require_file = require_file;
  nostalgy_cmdLabel.value = lab;
  nostalgy_command = cmd;
@@ -953,6 +954,7 @@ function onNostalgyInputKeyPressed(ev) {
 }
 
 function onNostalgyKeyPress(ev) {
+  if (manage_emails.isMailTab)  {
   if (!nostalgy_statusBar.hidden) return;  //c only if folderbox is not displayed
 
   if (NostalgyEscapePressed >= 1) {
@@ -977,6 +979,7 @@ function onNostalgyKeyPress(ev) {
      }
     return;
   }
+  
 //"dialog,chrome,modal,titlebar,resizable=yes"
 //"chrome,centerscreen,dependent,alwaysRaised"
 
@@ -991,6 +994,7 @@ var kn = NostalgyRecognizeKey(ev);
        }
   var k = nostalgy_active_keys[kn];
   if (k && NostalgyParseCommand(k)) NostalgyStopEvent(ev);
+      } ;//else NostalgyStopEvent(ev);
 }
 
 function NostalgyParseCommand(k) {
@@ -1012,12 +1016,25 @@ function NostalgyParseCommand(k) {
 
 function NostalgyGoCommand() {
   if (!nostalgy_in_message_window)  {
+    manage_emails.folderBeforeGo = NostalgyCurrentFolder();
     NostalgyCmd('Go to folder:', NostalgyShowFolder, false);
     return true;
   } else return false;
 }
+
+function NostalgyGoBackCommand() {
+  if (!nostalgy_in_message_window)  {
+//NostalgyCmd('Go back from folder:', NostalgyShowFolder, false);
+    NostalgyShowFolder(manage_emails.folderBeforeGo);
+    return true;
+  } else return false;
+  
+}
+
+
 function NostalgyGoSuggestedCommand() {
   if (!nostalgy_in_message_window)  {
+    manage_emails.folderBeforeGo = NostalgyCurrentFolder();
     NostalgySuggested(NostalgyShowFolder);
     return true;
   } else return false;
